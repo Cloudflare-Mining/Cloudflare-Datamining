@@ -1,0 +1,133 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/content-signals-policy">English</a>、<a href="https://blog.cloudflare.com/fr-fr/content-signals-policy">Français</a>、<a href="https://blog.cloudflare.com/de-de/content-signals-policy">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/content-signals-policy">한국어</a>、<a href="https://blog.cloudflare.com/es-es/content-signals-policy">Español</a>、<a href="https://blog.cloudflare.com/nl-nl/content-signals-policy">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/content-signals-policy">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZnWk49LOi8USluhXstwJJ/36c179d0ef439bc7701c86e620212e71/BLOG-2956_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Webをオープンかつ活発な場として維持するためには、オープンなアクセスを許可しつつ、コンテンツ制作者が自分の製作物の利用方法に対する意向を表明できる仕組みの必要性が増しています。しかし、現状の選択肢はあまりに偏っています。Webサイト運営者は、自分のコンテンツが望まない目的で使用されるリスクを黙認してWeb上に公開するか、ログインしなければ閲覧できないように制限するかのいずれかの選択を迫られます。</p>
+	<p>こうしたクローラーやデータスクレイパーによるコンテンツ利用に対する懸念に対処するため、私たちは「コンテンツシグナルポリシー」を導入します。このポリシーはrobots.txtに新たに加わる仕組みで、コンテンツがアクセスされた後に自分のコンテンツの利用方法に対する意向を表明できるようにするものです。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-robots-txt-does-and-does-not-do-today"><code>robots.txt</code>が現在できること、できないこと</h2>
+		<a href="https://blog.cloudflare.com/#what-robots-txt-does-and-does-not-do-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>Robots.txt</u></a>は、ドメイン上に置かれるプレーンテキストファイルで、<a href="https://www.rfc-editor.org/rfc/rfc9309.html" target="_blank" rel="noopener noreferrer"><u>Robots Exclusion Protocol（ロボット排除プロトコル）</u></a>を実装するものです。このファイルを使用して、どのクローラーやボットに、サイトのどの部分へのアクセスを許可するかを指定できます。&nbsp;多くのクローラーや一部のボットはrobots.txtファイルに従いますが、すべてが従うわけではありません。</p>
+	<p>たとえば、すべてのクローラーにサイト全体へのアクセスを許可したい場合、次の内容を記述したrobots.txtファイルを設置します：</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Allow: /
+</code></pre>
+	<p>user-agentは、ブラウザやボットがアクセス先に対して自分を識別するための情報です。この例のアスタリスク（*）は、「すべてのユーザーエージェント、デバイス、ブラウザからのコンテンツへのアクセスを許可する」という意味を表し、<code>Allow</code>フィールドの「/」は、サイト全体へのアクセスを許可することを示しています。</p>
+	<p><code>robots.txt</code>ファイルには、#記号を行頭に追加することでコメントを記述することができます。ボットや機械はこれらのコメントを無視するため、ファイルを読む人にメモを残すことができます。<a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>例</u></a>を示します：</p>
+	<pre class="language-Rust"><code class="language-Rust">#    .__________________________.
+#    | .___________________. |==|
+#    | | ................. | |  |
+#    | | ::[ Dear robot ]: | |  |
+#    | | ::::[ be nice ]:: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | | ,|
+#    | !___________________! |(c|
+#    !_______________________!__!
+#   /                            \
+#  /  [][][][][][][][][][][][][]  \
+# /  [][][][][][][][][][][][][][]  \
+#(  [][][][][____________][][][][]  )
+# \ ------------------------------ /
+#  \______________________________/
+</code></pre>
+	<p>Webサイト所有者は、<code>robots.txt</code>に、特定のユーザーエージェント（特定のボットユーザーエージェントやブラウザユーザーエージェント）のみを許可したり、サイト内の特定の場所のクロールを許可または拒否を記述することで、より詳細な指示を与えることができます。以下の例は、ボットに、パス「archives」のクロールをスキップするように指示するものです。</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Disallow: /archives/
+</code></pre>
+	<p>次の例では、さらに具体的に、Googleのボットにパス「archives」のクロールをスキップするように指示をしています。</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: Googlebot 
+Disallow: /archives/
+</code></pre>
+	<p>このように、どのクローラーを許可するか、サイトのどの部分のアクセスを許可するかを指定できます。しかし、アクセス後のコンテンツの「許可する利用方法」までを知らせることはできません。そのため、多くの人が<a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>気付いている</u></a>ように、アクセス後のデータ利用ルールを機械が読める形で示す標準的な方法が必要になっています。&nbsp;</p>
+	<p>これがまさに「コンテンツシグナルポリシー」の役割であり、これを使用することで、クローラーに対して自分のコンテンツに対して「許可する行動」と「拒否する行動」に対する意向を伝えることができます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-we-launching-the-content-signals-policy-now">なぜ今、「コンテンツシグナルポリシー」を開始するのか？&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-are-we-launching-the-content-signals-policy-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>毎日、インターネットから膨大な量のデータをスクレイピングしている企業があります。こうしたデータスクレイパーをWebサイトの運営者が受け入れた場合、現実的なコストが発生します。特にこれによる対価が得られない場合、いわゆる<a href="https://en.wikipedia.org/wiki/Free-rider_problem" target="_blank" rel="noopener noreferrer"><u>ただ乗り（free-rider）問題</u></a>を経験することになります。そして状況はさらに悪化していく見込みです。私たちは、2029年末までにインターネット上のボットトラフィックが人間のトラフィックを上回り、さらに2031年までにはボット活動だけで現在のインターネットトラフィックの総量を上回ると予測しています。&nbsp;</p>
+	<p>インターネットのデファクトスタンダードが、こうした状況を許してきました。これまでの習慣では、データを引用する代わりに、コンテンツの制作者につながる参照（リンク等）が示されたり、最低限コンテンツ製作者を著者として引用する形での帰属が付与されていました。ブログ黎明期の<a href="https://en.wikipedia.org/wiki/Linkback" target="_blank" rel="noopener noreferrer"><u>リンクバック</u></a>を振り返ると、これは、コンテンツ制作者に敬意を示す方法でした。お金のやり取りはありませんでしたが、その帰属から将来の自分のサイトを訪れる人がいるなど、本質的な価値を持ち合わせていました。この慣習は、<a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener noreferrer"><u>MIT</u></a>や<a href="https://creativecommons.org/share-your-work/cclicenses" target="_blank" rel="noopener noreferrer"><u>Creative Commons</u></a>など多くの寛容なライセンスにも組み込まれており、それぞれ元の制作者への帰属表示を義務付けています。&nbsp;</p>
+	<p>そこから時代は変わり、現在では、スクレイピングされたコンテンツが、オリジナルの制作者に対して経済的な競合となることも出てきました。これによりコンテンツ制作者は、コンテンツやデータへのアクセスを遮断するか、参照ユーザーが少なく、帰属表示が少ない現実を受け入れるか、という<a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>難しい選択</u></a>を迫られています。もし前者の選択肢しかなければ、Web上にアイデアを自由に発信する機会が損なわれ、AIエコシステムに新たに参入するクリエイターは、新しいモデルを訓練する取り組みの中、不当かつ不利な立場に置かれることになります。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-cloudflare-content-signals-policy">Cloudflareの「コンテンツシグナルポリシー」</h2>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-content-signals-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>「コンテンツシグナルポリシー」は、ウェブサイト運営者のrobots.txtファイルに組み込まれます。これは、人間が読めるテキストで記述され、#記号の後に書くことでコメントとして扱われます。このポリシーでは、3つのコンテンツシグナル（search、ai-input、ai-train）と、それらのクローラーとの関連性を定義します。</p>
+	<p>Webサイト運営者は、必要に応じて機械が読み取れるコンテンツ信号を使用して、自分の希望を表明できます。&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust"># As a condition of accessing this website, you agree to abide by the following content signals:
+
+# (a)  If a content-signal = yes, you may collect content for the corresponding use.
+# (b)  If a content-signal = no, you may not collect content for the corresponding use.
+# (c)  If the website operator does not include a content signal for a corresponding use, the website operator neither grants nor restricts permission via content signal with respect to the corresponding use.
+
+# The content signals and their meanings are: 
+
+# search: building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents).  Search does not include providing AI-generated search summaries.
+# ai-input: inputting content into one or more AI models (e.g., retrieval augmented generation, grounding, or other real-time taking of content for generative AI search answers). 
+# ai-train: training or fine-tuning AI models.
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET. </code></pre>
+	<p>このテキストは3つの部分で構成されています：</p>
+	<ul>
+		<li>
+			<p>1段落目には、企業に対するコンテンツシグナルの解釈方法を記述します。&nbsp;「Yes」は許可、「No」は禁止を意味し、記述がなければ指示はありません。最後の「中立」の選択肢は重要です。Webサイト運営者は、別のコンテンツには影響を及ぼすことなく、ある特定のコンテンツに限定して意向を表明することができます。&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>2段落目は、コンテンツシグナルの用語を定義しています。信号はシンプルにしてあり、コンテンツにアクセスする誰もが簡単に従えるようにしています。&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>最後の段落では、自動でアクセスしてくる人々に、これらのコンテンツ信号がさまざまな法域で法的権利を持つ可能性があることを注意喚起しています。&nbsp;</p>
+		</li>
+	</ul>
+	<p>ウェブサイトの運営者は、機械が読み取れるよう「yes」または「no」をカンマ区切りで記述して具体的な意向を表明することができます。Webサイト運営者が、検索を許可し、トレーニングを禁止し、AI入力に関して特に意向を示さない場合、robots.txtに以下のように記述します：</p>
+	<pre class="language-Rust"><code class="language-Rust">User-Agent: *
+Content-Signal: search=yes, ai-train=no 
+Allow: / 
+</code></pre>
+	<p>上記の例のようにWebサイトの運営者が「ai-input」のコンテンツシグナルを空白のままにした場合、使用に関して何の意向も示さないという意味ではなく、単にrobots.txtファイルのこの部分で意向を示していないだけに過ぎません。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-add-content-signals-to-your-website">Webサイトにコンテンツシグナルを追加する方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-add-content-signals-to-your-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>既にrobots.txtファイルの設定方法をご存知の方であれば、コンテンツシグナルの導入は簡単で、単に上で紹介したコンテンツシグナルポリシーを追加し、コンテンツシグナルで意向を定義するだけです。&nbsp;&nbsp;</p>
+	<p>私たちは、コンテンツシグナルの導入をさらに簡単なものにしたいと考えています。Cloudflareのお客様はすでに380万以上のドメインで、マネージドrobots.txt機能を有効にし、AIのトレーニングが自分のドメインのコンテンツを使用しないよう企業に指示しています。これらのお客様の場合、当社が既に提供しているrobots.txtファイルにコンテンツシグナルポリシーと以下のシグナルが自動で追記されます：</p>
+	<pre class="language-Rust"><code class="language-Rust">Content-Signal: search=yes, ai-train=no</code></pre>
+	<p>ただし、「ai-input」シグナルについてはお客様の意向が不明であることと、憶測で設定すべきではないと言う考えからは追記は行いません。&nbsp;&nbsp;</p>
+	<p>本日より、既存のrobots.txtファイルがないすべての無料プランのゾーンのお客様に対して、コメント付きの人間が読めるコンテンツシグナルポリシーを提供します。実際には、そのドメインのrobots.txtへのリクエストは、コンテンツシグナルが何であるかを定義するコメントを返すことを意味します。これらのコメントはクローラーには無視されます。重要なのは、AllowまたはDisallowディレクティブが含まれておらず、実際のコンテンツシグナルも提供しないことです。ユーザーは、準備ができたときに、実際の意向を選択し、表現することができます。既存のrobots.txtファイルをお持ちのお客様に変更点はありません。</p>
+	<p>無料プランのゾーンのお客様は、Cloudflareダッシュボードの「セキュリティ設定」セクションおよび「概要」セクションで、コンテンツシグナルポリシーを無効にすることができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69VPgMTwoI1KqUTP4cNqG5/9576a3ca6eeee93b58688aea7f7ff0ae/BLOG-2956_2.png" alt="BLOG-2956 2" class="kg-image" width="1686" height="684" loading="lazy">
+	</figure>
+	<p>独自のコンテンツシグナルを作成するには、<a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>ContentSignals.org</u></a>で生成されたテキストをコピーして<code>robots.txt</code>ファイルに貼り付けるか、Deploy to Cloudflareボタンから即座にデプロイすることができます。トレーニングを許可しない意向を表明する場合、<a href="https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt" target="_blank" rel="noopener noreferrer"><u>マネージドrobots.txt機能</u></a>をオンにすることもできます。&nbsp;</p>
+	<p>コンテンツシグナルはあくまでの意向を表明するものであり、スクレイピングに対する技術的な対策ではないことを認識しておくことが重要です。一部の企業は、これを無視する可能性もあります。Webサイト運営者として、自分のコンテンツが他者からどのように扱われるかを制御したい場合は、コンテンツシグナルを<a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>ルールや<a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>ボット管理</u></a>と組み合わせることが最善であると考えています。</p>
+	<p>Cloudflareが提供するこれらの機能に対する使いやすさの向上も目指す一方、私たちは人や場所を選ばずに使える仕組みにしたいと考えています。この慣行を促進するために、私たちは<a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank" rel="noopener noreferrer"><u>CC0ライセンス</u></a>の下でこのポリシーをリリースし、誰でも自由に実装、使用できるようにします。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のお客様は、どのクローラーを許可するか、何をブロックするかなど、完全な管理権を握ることができます。スーパーインテリジェンス向けに情報を提供したいと考える方もいれば、より厳密な制御を望む方もいます。私たちは、その判断はお客様自身に委ねられるべきだと考えています。</p>
+	<p>コンテンツシグナルを使用すると、誰もがアクセスされた後の自分のコンテンツの使われ方に対する意向を表明することができます。このような仕組みはもっと早くから提供されるべきでした。&nbsp;</p>
+	<p>課題はまだ残されています。ルールを示しても、それは他者がそのルールを認識することで初めて機能します。そのため、当社は引き続き標準化団体と協力し、お客様のニーズに応えつつ、広くインターネットコミュニティに受け入れられるソリューションの開発・標準化に取り組んでいきます。</p>
+	<p>この取り組みに対する皆さんの参加をお待ちしています。オープンWebは勝ち取る価値があります。</p>
+</div>

@@ -1,0 +1,136 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/agents-stripe-projects">English</a>、<a href="https://blog.cloudflare.com/de-de/agents-stripe-projects">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/agents-stripe-projects">한국어</a>、<a href="https://blog.cloudflare.com/fr-fr/agents-stripe-projects">Français</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zsV0PbSCJ5t1ImOeO6ymW/31f074c51b99bf86454aa201e43ed53f/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>コーディングエージェントは、ソフトウェアの構築が得意です。しかし、本番環境にデプロイするには、アプリをクラウド上でホストするために、アカウント、支払い方法、APIトークンの3つが必要になります。これまでは人間が直接処理する作業でした。エージェントがユーザーに代わって処理することが増えています。エージェントは、人間の顧客ができるすべてのタスクを実行する必要があります。彼らは、Cloudflareの使用やCloudflare APIを呼び出すことを選択するために、より順位の高い問題を与えられます。</p>
+	<p>本日より、エージェントはユーザーに代わってCloudflareをプロビジョニングできるようになりました。彼らはCloudflareアカウントを作成し、有料サブスクリプションを開始し、ドメインを登録し、APIトークンを返して、すぐにコードをデプロイできます。人間はグループに関与して許可を与え、Cloudflareの利用規約に同意する必要がありますが、他の方法では最初から最後まで人の操作は必要ありません。ダッシュボードに移動したり、APIトークンをコピー＆ペーストしたり、クレジットカードの情報を入力したりする必要はありません。追加のセットアップは不要で、エージェントは新しい本番アプリケーションを一度にデプロイするのに必要なものすべてを利用できます。そして、Cloudflareの<a href="https://blog.cloudflare.com/code-mode"><u>Code Mode MCPサーバー</u></a>と<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a>により、さらに優れた結果を得ることができます。</p>
+	<p>これらはすべて、<a href="https://projects.dev" target="_blank" rel="noopener noreferrer"><u>Stripe Projects</u></a>の立ち上げの一環としてStripeと共同設計した新しいプロトコルを介して動作します。</p>
+	<p>Stripeとの新たなパートナーシップの締結、そして<a href="https://stripe.com/atlas" target="_blank" rel="noopener noreferrer"><u>Stripe Atlas</u></a> を利用して法人を設立するすべての新規スタートアップ企業に、<a href="https://support.stripe.com/questions/stripe-atlas-perks-partners" target="_blank" rel="noopener noreferrer"><u>10万ドルのCloudflareクレジット</u></a>を提供できることを大変嬉しく思います。しかし、この新しいプロトコルは、サインインしたユーザーを持つあらゆるプラットフォームがStripeと同じようにCloudflareと統合することを可能にし、エンドユーザーにとって摩擦はありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-zero-to-production-without-any-setup-or-manual-steps">仕組み：セットアップや手動手順なしで、ゼロから本番まで</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-zero-to-production-without-any-setup-or-manual-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe CLI</u></a>を<a href="https://docs.stripe.com/projects" target="_blank" rel="noopener noreferrer"><u>Stripe Projectsプラグイン</u></a>とともにインストールし、Stripeにログインして、新規プロジェクトを開始してください。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>その後、エージェントに新しいものを構築し、新しいドメインにデプロイするように指示します。この全体の流れを要約した2分間の動画を以下からご覧いただけます。</p>
+	<div style="position: relative; padding-top: 54.48275862068967%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3c85ef631a52c381990431af3ef01b9d/iframe?preload=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3c85ef631a52c381990431af3ef01b9d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>StripeにログインしているメールにすでにCloudflareアカウントがある場合、エージェントのアクセスを許可するために、通常のOAuthフローが表示されます。ログインしているメールアドレスに既存のCloudflareアカウントがない場合、Cloudflareがお客様とエージェントのアカウントを自動的にプロビジョニングします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y4grvxbS3wPfLYOGPV0PE/230d2f439ff9ea8cc75fe6cde9469792/image8.png" alt="" class="kg-image" width="1999" height="1147" loading="lazy">
+	</figure>
+	<p>ここでは、エージェントが新しいCloudflareアカウントにサイトを構築およびデプロイし、次にStripe Projects CLIを使用してドメインを登録すると表示されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EKRFYCJLYdsFBVVAkrmnX/82a9781b1e5f8818093f1028decd310b/image6.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>エージェントは必要に応じて入力と承認を求めます。例えば、Stripeアカウントに支払方法が連携されていない場合、エージェントは支払方法を追加するよう促します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oTud5jPuMjldOEhLBbMrd/fb91e1065a84668f7bd606963006641b/image1.png" alt="" class="kg-image" width="1999" height="924" loading="lazy">
+	</figure>
+	<p>最終的に、エージェントは本番環境にデプロイされ、アプリは新しく登録されたドメインで実行されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57boiRl1hScbG8n1ktcUzt/d97e1fc46610329e21accaa34ad92f13/image4.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>エージェントは、Cloudflareアカウントがまったくない状態から、事前設定された<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>エージェントスキル</u></a>や<a href="https://blog.cloudflare.com/code-mode-mcp"><u>MCPサーバー</u></a>もない状態を経て、以下を持つようになりました。</p>
+	<ul>
+		<li>
+			<p>新規Cloudflareアカウントのプロビジョニングがある</p>
+		</li>
+		<li>
+			<p>APIトークンを取得する</p>
+		</li>
+		<li>
+			<p>ドメインを購入した</p>
+		</li>
+		<li>
+			<p>本番環境にアプリをデプロイ</p>
+		</li>
+	</ul>
+	<p>しかし、待ってください。エージェントはどのようにして、これらすべてを実行できると発見したのでしょうか？プロビジョニング可能なサービスやドメインの購入方法をどのようにして知るのでしょうか？Cloudflareにデプロイする方法を理解するのに必要なコンテキストをどのようにして得たのでしょうか？それでは詳しい内容に入りましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-protocol-and-integration-works">プロトコルと統合の仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-the-protocol-and-integration-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記のエージェント、Stripe、Cloudflare間のインタラクションには3つの構成要素があります。</p>
+	<ul>
+		<li>
+			<p><b>ディスカバリー</b>—エージェントは、コマンドを呼び出して利用可能なサービスのカタログを照会できます。</p>
+		</li>
+		<li>
+			<p><b>認証</b> — プラットフォームはユーザーのIDを証明し、プロバイダーがアカウントをプロビジョニングしたり、既存のアカウントをリンクしたり、安全にエージェントに認証情報を発行できるようにします。</p>
+		</li>
+		<li>
+			<p><b>支払い</b> — プラットフォームは、プロバイダーが顧客に請求するために使用できる支払いトークンを提供し、エージェントがサブスクリプションを開始し、購入を行い、使用量ベースで請求されます。</p>
+		</li>
+	</ul>
+	<p>これらは、OAuth、OIDC、決済トークン化など、従来の技術および既存の標準に基づいて構築されていますが、組み合わせて使用することで、人間がループに入る必要がある可能性のある多くのステップを排除することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="discovery-how-agents-find-services-they-can-provision-themselves">ディスカバリー：エージェントが自分でプロビジョニングできるサービスを見つける方法</h2>
+		<a href="https://blog.cloudflare.com/#discovery-how-agents-find-services-they-can-provision-themselves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記のエージェントセッションでは、エージェントがCLIコマンド<code>stripe projects add cloudflare/registrar:domain</code>を実行する前に、まず <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Registrar</u></a>サービスを検出する必要がありました。これは、利用可能なサービスを返す、<code>stripe projects catalog</code>コマンドを呼び出すことでこれを行いました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fGiH332y2mAIfxiPT4Uof/cad52b61f6f7c89088ea3d54cb678a46/image2.png" alt="" class="kg-image" width="1999" height="755" loading="lazy">
+	</figure>
+	<p>他のプロバイダーが提供する<a href="https://developers.cloudflare.com/directory" target="_blank" rel="noopener noreferrer"><u>Cloudflareの製品</u></a>とサービスのフルセットは、<a href="https://docs.stripe.com/projects#available-providers" target="_blank" rel="noopener noreferrer"><u>長く、増え続けており</u></a>、おそらく人間を圧倒しています。しかし、エージェントにとっては、このサービスのカタログはまさに必要なコンテキストです。エージェントは、ユーザーの依頼内容やユーザーの好みに基づいて、このカタログから使用するサービスを選択します。しかし、ユーザーはどのプロバイダーのどのサービスが提供されているかを事前に知る必要はなく、入力を提供する必要もありません。Cloudflareのようなプロバイダーは、JSONを返すシンプルなREST API経由でこのカタログを利用できるようにし、エージェントが必要なものすべてを提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="authorization-instant-account-creation-for-new-users">認証：新規ユーザーのアカウント作成を即座に行う</h2>
+		<a href="https://blog.cloudflare.com/#authorization-instant-account-creation-for-new-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントがサービスを選択してプロビジョニングすると（例：<code>stripe projects add cloudflare/registrar:domain</code>）、Cloudflareアカウント内のリソースをプロビジョニングします。しかし、どうすればユーザーをサインアップページに誘導せず、オンデマンドで作成できるのでしょうか？</p>
+	<p>最初に、ユーザーがどのようにStripeアカウントにサインインしたかを覚えていますか？StripeはIDプロバイダーとして機能し、ユーザーのIDを証明します。既にアカウントが存在しない場合、Cloudflareは自動的にユーザーの新しいアカウントをプロビジョニングし、認証情報をStripe Projects CLIに返します。CLIは安全に保存されますが、エージェントがCloudflareに認証済みのリクエストを行うために使用することができます。つまり、Cloudflareやその他のサービスを初めて使う人でも、余分な手順なしで、エージェントを使用してすぐに構築を始めることができます。</p>
+	<p>ユーザーがすでにCloudflareアカウントをお持ちの場合、標準のOAuthフローを介して送信され、Stripe Projects CLIへのアクセスが許可され、既存のCloudflareアカウントでリソースをプロビジョニングできるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info">支払い：クレジットカード情報を渡すことなく、エージェントが支出できる予算を付与する</h2>
+		<a href="https://blog.cloudflare.com/#payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>「エージェントが少し超えてドメインを購入し始めたらどうなるか？多額の費用を負担することになるか？エージェントのクレジットカード対応を本当に信頼できるのでしょうか？」</p>
+	<p>プロトコルは、これを2つの方法で実現します。エージェントが有料サービスをプロビジョニングする場合、Stripeはプロバイダー（Cloudflare）へのリクエストに支払いトークンを含めます。クレジットカード番号のような生の支払い情報は、エージェントと共有することはありません。Stripeは、エージェントが1つのプロバイダーに支出できる最高額として、デフォルトで$100.00USDを設定します。この上限を引き上げる準備ができたら、Cloudflareアカウントで<a href="https://developers.cloudflare.com/changelog/post/2026-04-13-billable-usage-dashboard-and-budget-alerts" target="_blank" rel="noopener noreferrer"><u>予算アラート</u></a>を設定できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does">サインインユーザーがいるプラットフォームであれば、Stripeと同じようにCloudflareと統合できます。</h2>
+		<a href="https://blog.cloudflare.com/#any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サインインしたユーザーがいるプラットフォームはすべて「オーケストレーター」として機能し、StripeがStripe Projectsで使うのと同じ役割を果たし、Cloudflareと統合することができます。</p>
+	<p>製品がコーディングエージェントだとしましょう。Cloudflareや他のサービスを使って、ユーザーが構築したものを本番環境にデプロイできるようになることを望みます。しかし、絶対にしたくないことは、それをどこでどのようにデプロイするかという承認フローと決定ツリーの採用に、ユーザーを悩ませることです。単に人を合理化したいだけなのです。</p>
+	<p>プラットフォームは、すでにサインインしているユーザーとともにオーケストレーターとして機能します。ユーザーが、エージェントに提供するための <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>ドメイン</u></a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>ストレージバケット</u></a>、<a href="https://blog.cloudflare.com/dynamic-workers"><u>サンドボックス</u></a>、または<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>その他のもの</u></a>を必要とするとき、Cloudflareに1回のAPI呼び出しを行うことで、ユーザーに新しいCloudflareアカウントをプロビジョニングし、ユーザーに代わって認証されたリクエストを行うためのトークンを取得します。</p>
+	<p>あるいは、CloudflareがPlanetscaleと提携して<a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers"><u>Cloudflareから直接Planetscale Postgresデータベースを作成する</u></a>ことを可能にしているのと同様に、Cloudflareのお客様がサービスを簡単にプロビジョニングできるようにしたいとします。私たちは、この新しいプロトコルが軌道に乗る前にPlanetscaleに取り組み始めましたが、ここでのフローは非常によく似ています。Cloudflareはオーケストレーターとして機能し、PlanetScaleアカウントに接続し、データベースを作成し、ユーザーの既存の支払い方法で課金できるようにします。</p>
+	<p>この新しいプロトコルは、多くのプラットフォームが長年にわたって行ってきた、多くの場合、特定のプラットフォームに特化した、またはカスタムの方法で行われてきたタイプの製品を横断する統合を標準化します。標準がなければ、各統合にはエンジニアリング作業が必要で、多くの場合、将来の統合に活用できないことがよくありました。<a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>OAuth標準</u></a>によって、アカウントへのアクセスを他のプラットフォームに委任することが可能になったのと同様に、このプロトコルはOAuthを使用し、決済やアカウント作成にも対応しており、エージェントを第一級の要素として扱います。</p>
+	<p>当社は、この規格を進化させ続け、Stripeと協力して、近々公式な仕様を共有できることを楽しみにしています。また、より多くのプラットフォームとの統合も可能です。お客様のプラットフォームをCloudflareとどのように統合したいかをお聞かせいただくため、<a href="https://blog.cloudflare.com/#"><u>agenticpartnerships@cloudflare.com</u></a>までメールでお問い合わせください。</p>
+	<div class="flex anchor relative">
+		<h2 id="give-your-agent-the-power-to-provision-and-pay">エージェントのプロビジョニングと支払いに権限を与える</h2>
+		<a href="https://blog.cloudflare.com/#give-your-agent-the-power-to-provision-and-pay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stripe Projectsはオープンベータ版で、Cloudflareのアカウントをお持ちでない方でも始められます。<a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe CLI</u></a>をインストールし、Stripeにログインして、新規プロジェクトを開始するだけです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>エージェントにCloudflare上で何か新しいものを構築するよう指示し、あなたが構築したものを私たちに見せてください！</p>
+</div>

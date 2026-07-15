@@ -1,0 +1,334 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q4">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q4">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q4">Français</a>、<a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q4">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q4">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q4">Português</a>、<a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2024-q4">Español</a>、<a href="https://blog.cloudflare.com/id-id/ddos-threat-report-for-2024-q4">Indonesia</a>、<a href="https://blog.cloudflare.com/sv-se/ddos-threat-report-for-2024-q4">Svenska</a>、<a href="https://blog.cloudflare.com/nl-nl/ddos-threat-report-for-2024-q4">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q4">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6guiqnKfcklw6BYnwasnf2/194151e6f9a2b428cc71d29c1a7414c6/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2020年の初版レポートから5年を経て、『Cloudflare DDoS脅威レポート第20版』へようこそ。</p>
+	<p>四半期ごとに発表されるこのレポートでは、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Cloudflareネットワーク</u></a>のデータに基づいて、<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>分散型サービス拒否（DDoS）攻撃</u></a>の進化する脅威の状況を包括的に分析しています。本版では、2024年第4四半期に焦点を当てながら、今年全体を振り返ります。</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-unique-vantage-point">Cloudflareのユニークな視点</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-unique-vantage-point" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020"><u>最初のレポート</u></a>を発行したとき、Cloudflareのグローバルネットワーク容量は35テラビット/秒（Tbps）でした。それ以来、当社のネットワークの容量は817%増加し、321Tbpsに達しました。グローバルプレゼンスも2020年初頭の200都市から2024年末には330都市へと65%拡大しました。</p>
+	<p>この大規模なネットワークを使用して、当社は<a href="https://w3techs.com/technologies/overview/proxy" target="_blank" rel="noopener noreferrer"><u>全Webサイトのほぼ20%</u></a>と、18,000に近いCloudflareのお客様の<a href="https://www.cloudflare.com/learning/network-layer/what-is-a-subnet" target="_blank" rel="noopener noreferrer"><u>IPネットワーク</u></a>にサービスを提供し、保護しています。この広範なインターネットコミュニティに役立つ重要な洞察とトレンドを提供できるのは、こうした広範なインフラストラクチャと顧客基盤のおかげです。</p>
+	<div class="flex anchor relative">
+		<h2 id="key-ddos-insights">DDoSに関する主な洞察</h2>
+		<a href="https://blog.cloudflare.com/#key-ddos-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>2024年、Cloudflareの自律型DDoS防御システムは約2,130万件のDDoS攻撃をブロックしました。これは2023年と比較して53%の増加です。平均して、2024年にCloudflareは毎時4,870件のDDoS攻撃をブロックしました。</p>
+		</li>
+		<li>
+			<p>第4四半期には、420件以上の攻撃が超帯域幅消費型で、1秒あたり10億パケット（pps）、1Tbpsを超えています。さらに、1Tbpsを超える攻撃の量は、前四半期比で1,885%という驚異的な増加率を記録しました。</p>
+		</li>
+		<li>
+			<p>2024年のハロウィーンの週、CloudflareのDDoS防御システムは、報告史上最大規模の5.6テラビット/秒（Tbps）のDDoS攻撃を自律的に検出することに成功し、阻止しました。</p>
+		</li>
+	</ul>
+	<p><i>DDoS攻撃やその他のタイプのサイバー脅威の詳細については、</i><a href="https://www.cloudflare.com/learning" target="_blank" rel="noopener noreferrer"><i><u>ラーニングセンター</u></i></a><i>にアクセスするか、Cloudflareブログで</i><a href="https://blog.cloudflare.com/tag/ddos-reports"><i><u>過去のDDoS脅威レポート</u></i></a><i>を読むか、当社のインタラクティブハブである</i><a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank" rel="noopener noreferrer"><i><u>Cloudflare Radar</u></i></a><i>をご覧ください。これらのリソースやその他のインターネットトレンドの調査に興味のある方のために、</i><a href="https://developers.cloudflare.com/radar" target="_blank" rel="noopener noreferrer"><i><u>無料のAPI</u></i></a><i>もご用意しています。また、レポート作成の際に使われた</i><a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank" rel="noopener noreferrer"><i><u>方法</u></i></a><i>についてもご覧いただけます。</i></p>
+	<div class="flex anchor relative">
+		<h2 id="anatomy-of-a-ddos-attack">DDoS攻撃の分析</h2>
+		<a href="https://blog.cloudflare.com/#anatomy-of-a-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年第4四半期だけで、Cloudflareは690万件のDDoS攻撃を軽減しました。これは、前四半期比で16％増、前年比で83％増です。</p>
+	<p>2024年第4四半期のDDoS攻撃のうち、49%（340万）が<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>レイヤー3</u></a>・<a href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer" target="_blank" rel="noopener noreferrer"><u>レイヤー4</u></a>DDoS攻撃で、51%（350万）がHTTP DDoS攻撃でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33qc2yEBIE4Tmq6ke3dOIY/398216db2fb03e6093f55dac35394568/image13.png" alt="image13" class="kg-image" width="1587" height="720" loading="lazy">
+	</figure>
+	<p><i><sup>690万件のDDoS攻撃の内訳：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="http-ddos-attacks">HTTP DDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#http-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTTP DDoS攻撃の大半（73%）は、既知の<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer">ボットネット</a>によって発信されました。これらの攻撃の迅速な検出と阻止は、大規模なネットワークを運用し、多くの種類の攻撃やボットネットを確認した結果として可能になりました。これにより、セキュリティエンジニアや研究者は、これらの攻撃に対する軽減効果を高めるための経験則に基づく解決法を考案していくことができます。</p>
+	<p>さらに11%が、正規のブラウザを装って実行されたHTTP DDoS攻撃でした。他の10％は、疑わしい、または異常なHTTP属性を含む攻撃でした。残りの8%の「その他」は、一般的な<a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>HTTPフラッド</u></a>、帯域幅消費型のキャッシュ破壊攻撃、ログインエンドポイントを標的とする帯域幅消費型攻撃でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27nsCB9HReu48XtiJKufwg/cb8814d1cc390e4cd1ffea9316fd589e/image19.png" alt="image19" class="kg-image" width="1236" height="720" loading="lazy">
+	</figure>
+	<p><i><sup>HTTP DDoS攻撃上位ベクトル：2024年第4四半期</sup></i></p>
+	<p>これらの<a href="https://www.cloudflare.com/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer">攻撃ベクトル</a>または攻撃グループは必ずしも排他的ではないということです。例えば、既知のボットネットもブラウザになりすまし、不審なHTTP属性を持ちますが、この分析はHTTP DDoS攻撃を分かりやすく分類するための最初の試みです。</p>
+	<div class="flex anchor relative">
+		<h3 id="top-user-agents">上位ユーザーエージェント</h3>
+		<a href="https://blog.cloudflare.com/#top-user-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Googleの<a href="https://chromereleases.googleblog.com" target="_blank" rel="noopener noreferrer"><u>リリースノート</u></a>によると、このレポートの発行時点で、Windows、Mac、iOS、およびAndroid向けのChromeの現行の安定版は132です。しかし、DDoS攻撃で最も頻繁に表示されたトップ13のユーザーエージェントは、118から129のChromeのバージョンであったため、脅威アクターはまだ遅れているようです。</p>
+	<p>HITV_ST_PLATFORMユーザーエージェントは、総リクエスト数に占めるDDoSリクエストの割合が最も高く（99.9%）、DDoS攻撃でほぼ唯一使用されるユーザーエージェントとなっています。言い換えると、HITV_ST_PLATFORMユーザーエージェントから来るトラフィックを調べてみると、それが正当なトラフィックである可能性は0.1%です。</p>
+	<p>脅威アクターは一般的でないユーザーエージェントの使用を避け、通常のトラフィックに紛れ込ませるChromeのような一般的なエージェントを好むことが多いようです。スマートTVとセットトップボックスに関連するHITV_ST_PLATFORMユーザーエージェントの存在は、特定のサイバー攻撃に関与するデバイスが侵害されたスマートTVまたはセットトップボックスであることを示唆しています。この観測結果は、スマートテレビやセットトップボックスを含め、すべてのインターネット接続デバイスをサイバー攻撃に悪用されないよう保護することの重要性を浮き彫りにしています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uUCjjPdGu63u7OmgRE6Yw/4b15c1e88cfe86ae0bc5824346908b24/image18.png" alt="image18" class="kg-image" width="1274" height="737" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃で悪用された主なユーザーエージェント：2024年第4四半期</sup></i></p>
+	<p>2位はユーザーエージェントである<a href="https://github.com/benoitc/hackney" target="_blank" rel="noopener noreferrer"><u>hackney</u></a>であり、このユーザーエージェントを含むリクエストの93%がDDoS攻撃の一部となっています。hackneyのユーザーエージェントから来るトラフィックに遭遇した場合、それが正当なトラフィックである可能性は7%です。HackneyはErlangのHTTPクライアントライブラリであり、HTTPリクエストを行うために使用され、Erlang/Elixirのエコシステムで人気があります。</p>
+	<p>DDoS攻撃で使用されたその他のユーザーエージェントは<a href="https://www.utorrent.com" target="_blank" rel="noopener noreferrer"><u>uTorrent</u></a>です。これは、ファイルをダウンロードするための一般的なBitTorrentクライアントに関連付けられています。<a href="https://pkg.go.dev/net/http" target="_blank" rel="noopener noreferrer"><u>Go-http-client</u></a>と<a href="https://github.com/valyala/fasthttp" target="_blank" rel="noopener noreferrer"><u>fasthttp</u></a>もDDoS攻撃でよく使われました。前者はGoの標準ライブラリのデフォルトのHTTPクライアントであり、後者は高性能な代替手段です。fasthttpは高速Webアプリケーションの構築に使用されますが、DDoS攻撃やWebスクレイピングにもよく悪用されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="http-attributes-commonly-used-in-ddos-attacks">DDoS攻撃でよく使用されるHTTP属性</h2>
+		<a href="https://blog.cloudflare.com/#http-attributes-commonly-used-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="http-methods">HTTPメソッド</h3>
+		<a href="https://blog.cloudflare.com/#http-methods" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer"><u>HTTPメソッド</u></a>（HTTP動詞とも呼ばれる）は、サーバー上のリソースに対して実行するアクションを定義します。これらはHTTPプロトコルの一部であり、クライアント（ブラウザなど）とサーバー間の通信を可能にします。</p>
+	<p>GETメソッドが最も一般的に使用されます。正当なHTTPリクエストのほぼ70%がGETメソッドを使用しました。2位はPOSTメソッドで、27%のシェアを占めています。</p>
+	<p>DDoS攻撃では、異なる状況が見られます。HEADメソッドを使用したHTTPリクエストのほぼ14%がDDoS攻撃の一部でした。正当なHTTPリクエストにはほとんど存在しないものです（全リクエストの0.75%）。2位はDELETEメソッドで、使用率の約7%がDDoS目的でした。</p>
+	<p>DDoS攻撃でよく見られるメソッドと正当なトラフィックでのメソッドの割合の大きな違いが明らかです。セキュリティ管理者は、この情報を使用し、これらのヘッダーに基づいてセキュリティ体制を最適化することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fD5aUHaIkRMUNPZJI0LKW/d5856e7ce13cb7d1e28727401b885b1a/image10.png" alt="image10" class="kg-image" width="1286" height="739" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃と正当なトラフィックにおけるHTTPメソッドの割合：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="http-paths">HTTPパス</h3>
+		<a href="https://blog.cloudflare.com/#http-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTTPパスは、特定のサーバーリソースを記述します。HTTPメソッドに応じて、サーバーはリソース上でアクションを実行します。</p>
+	<p>例えば、GET<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/ddos-protection/</u></a>は、リソース「/ddos-protection/」のコンテンツを取得するようにサーバーに指示します。</p>
+	<p>DDoS攻撃は多くの場合、Webサイトのルート（「/」）を標的にしますが、特定のパスを標的にする場合もあります。2024年第4四半期、「/wp-admin/」パスへのHTTPリクエストの98%がDDoS攻撃の一部でした。「/wp-admin/」パスは、<a href="https://wordpress.com/support/dashboard" target="_blank" rel="noopener noreferrer"><u>WordPress Webサイト</u></a>のデフォルトの管理者ダッシュボードです。</p>
+	<p>当然ながら、多くのパスは特定のWebサイトに固有のものですが、以下のグラフでは、最も攻撃された上位の<i>一般的</i>なパスを提供しています。セキュリティ管理者は、このデータを基に、必要に応じてこれらのエンドポイントの保護を強化することができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I9SweJVs4sLYjgHy469NN/b7d0e76648b0ec26af32143a45dc1dd6/image21.png" alt="image21" class="kg-image" width="1275" height="750" loading="lazy">
+	</figure>
+	<p>&nbsp;<i><sup>HTTP DDoS攻撃の標的となった上位HTTPパス：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="http-vs-https">HTTP 対 HTTPS</h2>
+		<a href="https://blog.cloudflare.com/#http-vs-https" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>第4四半期、正当なトラフィックのほぼ94%が<a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer"><u>HTTPS</u></a>でした。平文（暗号化されていない）HTTPはわずか6%でした。DDoS攻撃トラフィックを見ると、HTTP DDoS攻撃リクエストの約92%がHTTPSを介し、約8%が平文のHTTPを介したものでした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1grfbkXvzjh8nXJYtrhiJP/8ff46ac59d296fcad89475f2bc242184/unnamed__2_.png" alt="image20" class="kg-image" width="1600" height="1001" loading="lazy">
+	</figure>
+	<p><i><sup>正当なトラフィックとDDoS攻撃におけるHTTPとHTTPSの比較：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="layer-3-layer-4-ddos-attacks">レイヤー3、レイヤー4へのDDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#layer-3-layer-4-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>レイヤー3とレイヤー4（ネットワーク層）で最も一般的な攻撃ベクトルの上位3つは、<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>SYNフラッド</u></a>（38%）、<a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>DNSフラッド攻撃</u></a>（16%）、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>UDPフラッド</u></a>（14%）でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hXTXtKe2kVD9fjw26aIN8/7bbd5ef01b04a3bba28232cdcf876c3a/image1.png" alt="image1" class="kg-image" width="1924" height="1104" loading="lazy">
+	</figure>
+	<p><i><sup>L3・L4 DDoS攻撃ベクトル：2024年第4四半期</sup></i></p>
+	<p>その他の一般的な攻撃ベクトル、またはボットネットタイプは、<a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>Mirai</u></a>です。Mirai攻撃はネットワーク層DDoS攻撃全体の6%を占め、前四半期比131%増となりました。2024年第4四半期には、Miraiの亜種ボットネットが過去最大のDDoS攻撃を引き起こしましたが、これについては<a href="https://blog.cloudflare.com/#the-largest-ddos-attack-on-record"><u>次のセクション</u></a>で説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="emerging-attack-vectors">新たな攻撃ベクトル</h2>
+		<a href="https://blog.cloudflare.com/#emerging-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>次のセクションに移る前に、今四半期に観測された別の攻撃ベクトルの増加について説明しておきたいと思います。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Hz074MxtzzdG4uvCM8P93/af6c86b023160f66acf0fe209386acf7/image8.png" alt="image8" class="kg-image" width="1924" height="1088" loading="lazy">
+	</figure>
+	<p><i><sup>新たな脅威の上位：2024年第4四半期</sup></i></p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack" target="_blank" rel="noopener noreferrer"><u>Memcached DDoS攻撃</u></a>は、前四半期比314%増と、最も高い伸びを示しました。<a href="https://memcached.org" target="_blank" rel="noopener noreferrer"><u>Memcached</u></a>は、Webサイトおよびネットワークを高速化するためのデータベースのキャッシングシステムです。<a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a>をサポートするMemcachedサーバーは、増幅型/リフレクション型DDoS攻撃を仕掛けるために悪用される可能性があります。この事例では、攻撃者はキャッシングシステムにコンテンツを要求し、UDPパケットの送信元IPとして被害者のIPアドレスを詐称します。被害者には、最初のリクエストよりも最大51,200倍に増幅されたMemcacheの応答が殺到することになります。</p>
+	<p>BitTorrent DDoS攻撃は今四半期、304%と急増しました。<a href="https://en.wikipedia.org/wiki/BitTorrent" target="_blank" rel="noopener noreferrer"><u>BitTorrentプロトコル</u></a>は、ピアツーピアのファイル共有に使用される通信プロトコルです。BitTorrentクライアントが効率的にファイルを見つけ、ダウンロードできるように、BitTorrentクライアントは<a href="https://en.wikipedia.org/wiki/BitTorrent_tracker" target="_blank" rel="noopener noreferrer"><u>BitTorrentトラッカー</u></a>または<a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="noopener noreferrer"><u>分散ハッシュテーブル（DHT）</u></a>を利用して、目的のファイルを<a href="https://en.wikipedia.org/wiki/Glossary_of_BitTorrent_terms#Seed_/_seeding" target="_blank" rel="noopener noreferrer"><u>シードする</u></a>ピアを識別することができます。この概念は、DDoS攻撃を仕掛けるために悪用される可能性があります。悪意のある行為者は、トラッカーとDHTシステム内のシーダーIPアドレスとして、被害者のIPアドレスに<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer"><u>なりすます</u></a>ことができます。そして、クライアントはこれらのIPアドレスからファイルを要求することになります。ファイルを要求するクライアントの数が十分であれば、被害者が処理できる以上のトラフィックであふれさせることができるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-largest-ddos-attack-on-record">過去最大のDDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#the-largest-ddos-attack-on-record" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>10月29日、東アジアのインターネットサービスプロバイダー（ISP）である、Cloudflare <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Magic Transit</u></a>のお客様を標的に、Mirai亜種ボットネットに発信された5.6Tbpsの<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>UDP DDoS攻撃</u></a>が発生しました。この攻撃の所要時間はわずか80秒で、1万3,000台以上の<a href="https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot" target="_blank" rel="noopener noreferrer"><u>IoT</u></a>デバイスから発信されました。検出と軽減は、Cloudflareの分散型防御システムによって完全に自律的に行われました。人的介入は不要で、アラートもトリガーもせず、パフォーマンスの低下もありませんでした。このシステムは意図したとおりに機能しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/kx3Uj4y4G4KZ6yNritxg4/d47e8f1b51a630bce28e8b036a4e7b64/image16.png" alt="image16" class="kg-image" width="1288" height="614" loading="lazy">
+	</figure>
+	<p><i><sup>Cloudflareの自律型DDoS防御は、5.6TbpsのMirai DDoS攻撃を人的介入なしに軽減</sup></i></p>
+	<p>ユニークソースIPアドレスの総数は約13,000でしたが、1秒あたりの平均ユニークソースIPアドレスは5,500でした。また、1秒あたりの固有の送信元ポート数も同程度でした。下のグラフでは、各線が13,000個の異なる送信元IPアドレスの1つを表しており、示されているように、それぞれの貢献は毎秒8Gbps未満です。各IPアドレスの1秒あたりの平均割合は、約1Gbps（5.6Tbpsの約0.012%）でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2biclYyny81QnJxQpP3PcF/8e1ec9c4b227043b1bd05914c1f543b1/image14.png" alt="image14" class="kg-image" width="1211" height="508" loading="lazy">
+	</figure>
+	<p><i><sup>5.6TbpsのDDoS攻撃を13,000個のソースIPアドレスが仕掛ける</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="hyper-volumetric-ddos-attacks">超帯域幅消費型DDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年第3四半期には、超帯域幅消費型ネットワーク層DDoS攻撃に増加が見られました。2024年第4四半期、1Tbpsを超える攻撃は前四半期比で1,885%増、1億pps（1秒あたりのパケット数）を超える攻撃は前四半期比で175%増となりました。1億ppsを超える攻撃の16%は、10億ppsを超えています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3L3X48ztfIeGRVe3Su009z/b6798328b8926b33ea78b0617ee3aad5/image6.png" alt="image6" class="kg-image" width="1239" height="494" loading="lazy">
+	</figure>
+	<p><i><sup>超帯域幅消費型L3・L4 DDoS攻撃の分布：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-size">攻撃規模</h2>
+		<a href="https://blog.cloudflare.com/#attack-size" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTTP DDoS攻撃の大半（63%）は、毎秒50,000リクエストを超えるものではありませんでした。一方で、HTTP DDoS攻撃の3%が毎秒1億リクエストを超えています。</p>
+	<p>同様に、ネットワーク層DDoS攻撃の大半も小規模なものです。93%が500Mbpsを超えず、87%が毎秒50,000パケットを超えませんでした。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25TQ7mayQOrr3ZpG1yLADa/ce08756eec2fbb2b213aad1668d59b4f/unnamed.png" alt="image22" class="kg-image" width="1600" height="905" loading="lazy">
+	</figure>
+	<p><i><sup>パケットレート別攻撃規模の前四半期比：2024年第4四半期</sup></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eNqV8gIxZgukwropBeyvs/23f128993b6573a3acb6e2a33306813d/unnamed__1_.png" alt="image3" class="kg-image" width="1600" height="918" loading="lazy">
+	</figure>
+	<p><i><sup>ビットレート別攻撃規模の前四半期比：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-duration">攻撃期間</h2>
+		<a href="https://blog.cloudflare.com/#attack-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTTP DDoS攻撃の大半（72%）は、10分未満で終了しています。HTTP DDoS攻撃の約22%が1時間以上、11%が24時間以上続きました。</p>
+	<p>同様に、ネットワーク層DDoS攻撃の91%も10分以内に終了しています。1時間以上続いたのはわずか2%でした。</p>
+	<p>全体として、DDoS攻撃の時間は前四半期比で大幅に減少しました。ほとんどの攻撃は、持続時間が非常に短いため、ほとんどの場合、人がアラートに対応し、トラフィックを分析し、緩和策を適用することは現実的ではありません。攻撃期間が短いことは、<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">インラインで常時稼働する自動DDoS攻撃対策サービス</a>の必要性を強調しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Yfb7JGpZ2GTXR2HYK5pAS/55a1dbf4eec229e7154cf223d542e3bf/unnamed__3_.png" alt="image11" class="kg-image" width="1600" height="906" loading="lazy">
+	</figure>
+	<p><i><sup>攻撃時間の前四半期比：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-sources">攻撃ソース</h2>
+		<a href="https://blog.cloudflare.com/#attack-sources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年の第4四半期、2四半期連続で、インドネシアが世界中の<a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#source-country" target="_blank" rel="noopener noreferrer"><u>DDoS攻撃の最大の発生源</u></a>となりました。HTTP DDoS攻撃はなりすましができないため、攻撃がどこから発生しているかを把握するために、HTTP DDoS攻撃を開始するソースIPアドレスをマッピングします。レイヤー3とレイヤー4DDoS攻撃には、DDoSパケットが取り込まれたデータセンターの場所を利用します。これにより、レイヤー3とレイヤー4でのなりすましに対処できます。世界330都市以上に広がる広範なネットワークにより、地理的な正確さを保証できます。</p>
+	<p>2位は香港で、前四半期から順位を5つ上げました。シンガポールは3つ順位を上げ、3位になりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Z7DgqDBlKbd3eDRv7ZVmL/49aabaee6301a3c93bb40851e645dd42/image2.png" alt="image2" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃の最大発生源トップ10：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="top-source-networks">上位の送信元ネットワーク</h3>
+		<a href="https://blog.cloudflare.com/#top-source-networks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>自律システム</u></a>（AS）は、単一のルーティングポリシーを持つ大規模なネットワークまたはネットワークグループです。インターネットに接続するすべてのコンピューターまたはデバイスがASに接続されています。お使いのASを確認するには、<a href="https://radar.cloudflare.com/ip" target="_blank" rel="noopener noreferrer">https://radar.cloudflare.com/ip</a>をご覧ください。</p>
+	<p>DDoS攻撃、特にHTTP DDoS攻撃の発信元を見ると、際立っている自律システムがいくつかあります。</p>
+	<p>2024年第4四半期に最も多くのHTTP DDoS攻撃トラフィックが見られたASは、ドイツを拠点とする<a href="https://radar.cloudflare.com/security-and-attacks/as24940" target="_blank" rel="noopener noreferrer"><u>Hetzner（AS24940）</u></a>でした。HTTP DDoSリクエスト全体のほぼ5%がHetzerのネットワークから発信されており、言い換えれば、CloudflareがブロックしたHTTP DDoSリクエスト100件のうち5件がHetznerのネットワークから発信されています。</p>
+	<p>2位は米国を拠点とする<a href="https://radar.cloudflare.com/security-and-attacks/as14061" target="_blank" rel="noopener noreferrer"><u>Digital Ocean（AS14061）</u></a>、3位はフランスの<a href="https://radar.cloudflare.com/security-and-attacks/as16276" target="_blank" rel="noopener noreferrer"><u>OVH（AS16276）</u></a>でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pQUunzZ0ioH48lTOJOLVe/8dc42b7904b0f0b838f117ce5f35a35a/image12.png" alt="image12" class="kg-image" width="1920" height="1082" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃の最大発生元ネットワークトップ10：2024年第4四半期</sup></i></p>
+	<p>上記のような多くのネットワーク事業者にとって、インフラストラクチャを悪用して攻撃を仕掛ける悪意のある行為者を特定することは、難しい場合があります。ネットワーク事業者やサービスプロバイダーによる不正行為の取り締まりを支援するために、当社は<b>無料</b>の<a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>DDoSボットネット脅威インテリジェンスフィード</u></a>を提供し、自律システム番号所有者に、DDoS攻撃に関与していることが確認されたIPアドレスのリストを提供しています。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="top-threat-actors">上位脅威アクター</h2>
+		<a href="https://blog.cloudflare.com/#top-threat-actors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DDoS攻撃の標的となったCloudflareのお客様を対象にアンケートを実施したところ、過半数が「誰に攻撃されたかわからない」と回答しています。攻撃者がわかった企業では、攻撃の背後にある脅威アクターの第1位として競合企業を報告しています（40%）。その他の17%は「国家レベルまたは国家が支援する脅威アクターが攻撃の背後にある」と報告し、それに近い割合が「不満を抱いたユーザーや顧客が攻撃の背後にある」と報告しています。</p>
+	<p>さらに14%が「恐喝者が攻撃の背後にいた」と回答しています。7%が自ら招いたDDoSだったと述べており、2%はハクティビズムを攻撃の原因とし、さらに2%は元従業員が仕掛けた攻撃だったと報告しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gThccj4k75gfFoGBn301W/403bd5cf3984611490e7d90f3435f3c1/image15.png" alt="image15" class="kg-image" width="1344" height="738" loading="lazy">
+	</figure>
+	<p><i><sup>上位の脅威アクター：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-ddos-attacks">ランサムDDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年の第4四半期には、予想されたように<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ランサムDDoS攻撃</u></a>の急増が観察されました。第4四半期は、オンラインショッピングや旅行の手配、ホリデーシーズンでのアクティビティが増加し、サイバー犯罪者にとって絶好の時期であることから、このスパイクは予測可能なものでした。ピーク時にこれらのサービスが中断すると、組織の収益に大幅な影響を与え、フライトの遅延やキャンセルなど、実際の混乱を引き起こす可能性があります。</p>
+	<p>第4四半期には、DDoS攻撃の標的となったCloudflareのお客様の12%が、身代金の支払いを脅迫したり、脅迫されたりしたと報告しています。これは、2023年第4四半期と比較した前四半期比78％増、前年同期比25％増です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BV3NoLbxwzO0ShVyCwQ97/7ccb684195b6efef0db209aefffff476/image17.png" alt="image17" class="kg-image" width="1286" height="729" loading="lazy">
+	</figure>
+	<p><i><sup>四半期別のランサムDDoS攻撃の報告：2024年</sup></i></p>
+	<p>2024年全体を振り返ると、Cloudflareは5月にランサムDDoS攻撃の報告を最も多く受けました。第4四半期は、10月（10%）、11月（13%）、12月（14%）から徐々に増加し、7か月間の高水準となりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EllNHd6iUWkQ6Z481gLss/a20b10f96d4f7a649dfa23beceebad8e/image9.png" alt="image9" class="kg-image" width="1310" height="723" loading="lazy">
+	</figure>
+	<p><i><sup>月別のランサムDDoS攻撃の報告：2024年</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="target-of-attacks">攻撃の標的</h2>
+		<a href="https://blog.cloudflare.com/#target-of-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年第4四半期、中国は<a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-country" target="_blank" rel="noopener noreferrer"><u>最も攻撃された国</u></a>としての地位を維持しました。どの国がより多くの攻撃の対象となっているかを把握するために、お客様の請求先国別にDDoS攻撃をグループ化しています。&nbsp;</p>
+	<p>フィリピンは、トップ10の中で2番目に攻撃された国として初登場しました。台湾は前四半期と比較して7順位上げて3位に躍り出ました。</p>
+	<p>下のマップでは、前四半期と比較した最も攻撃された場所トップ10とそのランキングの変化をご覧いただけます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TosbZ02NmNGbgpwkskUNs/6f96885b4de89c34403551a03a01e634/image5.png" alt="image5" class="kg-image" width="1999" height="1445" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃で最も攻撃された場所トップ10：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="most-attacked-industries">最も攻撃された業界</h2>
+		<a href="https://blog.cloudflare.com/#most-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年第4四半期には、最も<a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-industry" target="_blank" rel="noopener noreferrer"><u>攻撃された業界</u></a>として、<i>電気通信サービスプロバイダーおよび通信事業者業界</i>が（前四半期の）3位から1位に跳ね上がりました。どの業界がより多くの攻撃の対象となっているかを把握するため、DDoS攻撃をお客様の業界ごとにグループ化しています。2位は<i>インターネット</i>業界、3位は<i>マーケティングと広告</i>でした。</p>
+	<p><i>銀行・金融サービス</i>業界は、2024年第3四半期の1位から、第4四半期には8位になり、順位を7つ下げました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/444JREdNrmb6yePqqfGI4B/a268a1d3d3cd1dd7d9e076ffcf5b06c5/image7.png" alt="image7" class="kg-image" width="1999" height="1183" loading="lazy">
+	</figure>
+	<p><i><sup>DDoS攻撃によって最も攻撃された業界トップ10：2024年第4四半期</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="our-commitment-to-unmetered-ddos-protection">定額制のDDoS攻撃対策に対する当社の取り組み</h2>
+		<a href="https://blog.cloudflare.com/#our-commitment-to-unmetered-ddos-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年第4四半期には、レイヤー3とレイヤー4 DDoS攻撃の超帯域幅消費型攻撃が急増し、最大のものはこれまでの記録を更新する5.6Tbpsに達しました。この攻撃規模の拡大により、容量に限りのあるクラウドDDoS攻撃対策サービスやオンプレミスのDDoSアプライアンスは時代遅れになっています。</p>
+	<p>地政学的要因から強力なボットネットの使用が増加し、脆弱な標的の範囲が広がっています。ランサムDDoS攻撃の増加による懸念も増大しています。</p>
+	<p>攻撃を受けてからDDoS攻撃対策を実装する企業が多いのが現状です。今回の調査結果から、事前予防的なセキュリティ戦略を持つ企業は、耐障害性が高いことがわかりました。Cloudflareでは、現在の脅威や将来のリスクの両方に対する予防的な保護を提供するために、自動化された防御と包括的なセキュリティポートフォリオに投資しています。</p>
+	<p>世界330都市にまたがる321Tbpsのネットワークで、Cloudflareは攻撃の規模や期間、量にかかわらず、<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">定額制で無制限のDDoS攻撃対策</a>を提供していくよう努めていきます。</p>
+</div>

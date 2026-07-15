@@ -1,0 +1,61 @@
+<div class="mb2 gray5">2 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/casb-dlp">English</a>, <a href="https://blog.cloudflare.com/zh-tw/casb-dlp">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/casb-dlp">Français</a>, <a href="https://blog.cloudflare.com/de-de/casb-dlp">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-dlp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/casb-dlp">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/casb-dlp">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s4kyXV1qmn4CRFLbpXLAk/570f1b4cf21aecba70786af5ee1a0401/casb-dlp.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>El agente de seguridad de acceso a la nube (CASB) de Cloudflare explora las aplicaciones SaaS en busca de configuraciones erróneas, actividad de usuarios no autorizados, shadow IT y otros problemas de la seguridad de datos. Las amenazas de seguridad descubiertas se comunican a los administradores de TI y de seguridad para su corrección oportuna. Esto elimina la necesidad de realizar infinidad de comprobaciones manuales en una larga lista de aplicaciones.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Wqq52bJYYraL6kGegsWIc/d2b89355122ed7b0055bf5de4cc4847b/image4-12.png" alt="How Cloudflare CASB and DLP work together to protect your data" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Sin embargo, los clientes de Cloudflare han manifestado que desean disponer de más información para evaluar el riesgo asociado con una configuración errónea. La exposición pública de una planificación de futbol interno es muchísimo menos importante que la de una lista de clientes. Por lo tanto, estos quieren que estas situaciones se aborden de forma distinta. Nos han pedido que identifiquemos dónde se exponen datos confidenciales, y reducir así su tiempo de evaluación y corrección en caso de que se produzcan incidentes o fugas de datos. A partir de estos comentarios, hemos reconocido otra oportunidad para hacer lo que Cloudflare hace mejor: combinar los mejores componentes de nuestros productos para resolver los problemas de los clientes.</p>
+	<p>Lo que tenemos ahora en marcha es un interesante esfuerzo para proporcionar a los usuarios de <a href="https://www.cloudflare.com/es-es/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> una forma de recibir la misma cobertura de prevención de pérdida de datos (DLP) no solo para los datos confidenciales que circulan por la red: DLP para SaaS para los datos almacenados en las aplicaciones SaaS más populares utilizadas por millones de organizaciones.</p>
+	<p>Con estas funciones, disponibles próximamente, los clientes podrán conectar sus aplicaciones SaaS en solo unos clics y explorar si contienen datos confidenciales. Por ejemplo, información de identificación personal, información de tarjetas de pago e incluso expresiones regulares personalizadas que se hayan almacenado en documentos, hojas de cálculo, PDF y otros archivos cargados. Esto proporciona a los clientes las señales para evaluar y corregir rápidamente los riesgos de seguridad importantes.</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-casb">¿Qué es CASB?</h3>
+		<a href="https://blog.cloudflare.com/#understanding-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lanzado en septiembre, el agente de seguridad de acceso a la nube (CASB) de la API de Cloudflare ya ha permitido a las organizaciones analizar de forma detallada, rápida y sencilla la seguridad de sus aplicaciones SaaS, ya se trate de Google Workspace, Microsoft 365 o cualquier otra aplicación SaaS compatible (incluidas Salesforce y Box, anunciadas hoy). Con CASB, los operadores han podido comprender qué problemas de seguridad de SaaS podrían estar poniendo en riesgo su organización y a sus empleados. Por ejemplo, ajustes no seguros y configuraciones erróneas, archivos compartidos de forma inadecuada, riesgos del acceso de los usuarios y el incumplimiento de las prácticas recomendadas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vES53c15VUuvf2jGa0tGh/7ac679bf0220f2b6ee3076ddf34fc4a5/image2.jpg" alt="" class="kg-image" width="1600" height="1000" loading="lazy">
+
+	</figure>
+	<p>"¿Pero qué pasa con los datos confidenciales que se almacenan <i>dentro</i> de los archivos en los que estamos colaborando? ¿Cómo los podemos identificar?"</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-dlp">¿Qué es DLP?</h3>
+		<a href="https://blog.cloudflare.com/#understanding-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lanzado también en septiembre, la prevención de pérdida de datos (DLP) de Cloudflare para los datos en tránsito ha proporcionado a los usuarios de Gateway, la puerta de enlace web segura (SWG) de Cloudflare, una forma de gestionar y bloquear completamente el movimiento de la información confidencial dentro y fuera de la red corporativa, lo que evita que caiga en las manos equivocadas. En este caso, DLP puede detectar cadenas confidenciales, como números de tarjeta de crédito y de la seguridad social, cuando los empleados intentan comunicarlas de una u otra forma, como cargándolas en un documento en Google Drive o enviándolas en un mensaje en Slack. La prevención de pérdida de datos de Cloudflare bloquea la solicitud HTTP antes de que llegue a la aplicación de destino.</p>
+	<p>Sin embargo, una vez más, recibimos las mismas preguntas y comentarios que antes.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Tioay2oFOuQnRla7yv3Ty/94d810dcd8faa75059ca4a73f445bcc9/image3-14.png" alt="" class="kg-image" width="1478" height="1174" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qDIi5N0R3koBNDcpbQQBg/f7e21759ba2778d1d9b2a87fbd125978/image1-25.png" alt="" class="kg-image" width="1688" height="1150" loading="lazy">
+
+	</figure>
+	<p>"¿Qué pasa con los datos en nuestras aplicaciones SaaS? La información almacenada allí no será visible a través de la red".</p>
+	<div class="flex anchor relative">
+		<h3 id="casb-dlp-better-together">CASB + DLP, mejor juntos</h3>
+		<a href="https://blog.cloudflare.com/#casb-dlp-better-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Zero Trust añadirá una nueva sinergia de productos, disponible a principios de 2023, que permitirá a los clientes explorar los archivos almacenados en sus aplicaciones SaaS e identificar los datos confidenciales que contengan.</p>
+	<p>¿Números de tarjeta de crédito en Google Doc? Sin problema. ¿Números de la seguridad social en hojas de cálculo de Excel? CASB te informará.</p>
+	<p>Con esta colaboración de productos, Cloudflare proporcionará a los administradores de TI y de seguridad una área más crítica de la cobertura de seguridad, lo que completa nuestro recorrido para la prevención de la pérdida de datos. Con DLP para los datos en tránsito, CASB para la supervisión del uso compartido de archivos e incluso el aislamiento remoto del navegador (RBI) y Area 1 para DLP de datos en uso y DLP del correo electrónico, respectivamente, las organizaciones pueden estar tranquilas sabiendo que están preparadas para evitar con éxito cualquier situación de exfiltración y uso indebido de datos.</p>
+	<p>Mientras continuamos con el desarrollo, nos encantaría que nos contaras cómo este tipo de funcionalidad podría utilizarse en una organización como la tuya. ¿Te interesa saber más sobre alguno de estos productos o lo que vendrá? Ponte en contacto con tu gerente de cuenta o <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">haz clic aquí para ponerte en contacto</a> si no utilizas aún Cloudflare.</p>
+</div>

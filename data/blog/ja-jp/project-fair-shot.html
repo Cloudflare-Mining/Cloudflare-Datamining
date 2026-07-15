@@ -1,0 +1,53 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/project-fair-shot">English</a>、<a href="https://blog.cloudflare.com/zh-tw/project-fair-shot">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/project-fair-shot">Français</a>、<a href="https://blog.cloudflare.com/de-de/project-fair-shot">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/project-fair-shot">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/project-fair-shot">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/project-fair-shot">Português</a>、<a href="https://blog.cloudflare.com/es-es/project-fair-shot">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/project-fair-shot">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HPQ9SIZyrrI99Z2wTNsBY/f0b9e3ee15c485ea16f7a063b5d993f4/project-fair-shot.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>世界各国の政府と医療機関が、公平かつ効率的に新型コロナワクチンを分配するという史上最も困難な物流問題に頭を抱えています。ワクチン接種を受ける資格がある人への通知、予約資格がある人たちの登録、予約通りに来られるかどうかの確認、必要な取扱い条件下でのワクチンの輸送、ワクチン接種を行うための訓練を受けた職員の有無の確認などの課題がありますが、さらに接種は二回必要なので、これらのことをもう一度行う必要があります。</p>
+	<p>Cloudflareはこうした問題のほとんどで、役に立つことはできませんが、当社がお手伝いできる重要な部分があることに気づきました。それは、最初にワクチンの予約をする時に、登録Webサイトが負荷でクラッシュしないようにすることでした。プロジェクトFair Shotは、Cloudflareの新しい待機室サービスを政府、地方自治体、病院、薬局、新型コロナワクチンの配布を担当するその他の団体に、無料で提供します。世界中の対象団体のみなさまに少なくとも2021年7月1日まで無料でご利用いただけます。またはワクチンの供給よりも需要の方が多い場合は、さらに期間を延長します。</p>
+	<div class="flex anchor relative">
+		<h3 id="crashing-registration-websites">登録Webサイトのクラッシュ</h3>
+		<a href="https://blog.cloudflare.com/#crashing-registration-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ワクチンの接種登録Webサイトが負荷のためにクラッシュする問題は机上の空論ではありません。こうした団体がワクチン接種予約を試みる際に、繰り返しクラッシュが起こっているのです。先週末、Cloudflareで胸に応える出来事がありました。当社の上級役員チームメンバーの夫人が、両親のためにワクチン接種の登録をしようとしていました。ご両親は接種の基準をすべて満たしており、住んでいる地域の自治体のサイトは12時に開く予定でした。</p>
+	<p>サイトが開く時間になったのですが、すぐにクラッシュしてしまいました。これはハッカーや悪意のある行為が引き金となったのではありません。単に、大勢の人が一度にサイトへのアクセスを試みただけだったのです。「Cloudflareで、こうしたサイトが過負荷にならないように正しい手順でキューに入れるように整理するサービスを構築したらどうなの？」と、彼女は夫に言ったのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-virtual-waiting-room">バーチャルな待機室</h3>
+		<a href="https://blog.cloudflare.com/#a-virtual-waiting-room" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>実を言うと、すでにこうした機能に取り組み始めていたのですが、このユースケースのためではありませんでした。供給よりも需要の方が多いところで、何かを公平に分配するという問題では、当社のクライアント数社のことが思い浮かびます。販売対象が、人気のコンサートチケットや最新のスニーカー、人気の国立公園でのハイキングアクセスであっても、購入する資格を持つ人全員に公平なチャンスを確保するのは難しい課題です。</p>
+	<p>解決策は、実際の販売に先立って数が少ない商品を入手できるように登録をしておくことです。事前にサイトを訪れた人は誰でも、キューに入ることができます。販売を開始する直前に、キューの順番がランダムに（そして公平に）シャッフルされます。その後、人々はキュー内で、新しいランダムな位置順で配置されます。いつでもサイトのバックエンドが対処できる限りの数しか処理されません。</p>
+	<p>Cloudflareでは、この機能をお客様のために待機室として構築していました。（待機室の技術的な詳細については、この機能の構築を手掛けたBrian Batraskiが投稿する本記事をお読みください。）この技術は、コード変更もハードウェアのインストールも不要で、既存のWeb登録サイトの前で使えるため、強力です。シンプルなDNS変更をして、簡単にCloudflareをデプロイすると、待機室が設定できます。そして、どれだけリソースが不十分な状態でもトランザクションサイトが需要に追いつけるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="recognizing-a-critical-need-moving-up-the-launch">極めて重大なニーズを認識し、開始を早める</h3>
+		<a href="https://blog.cloudflare.com/#recognizing-a-critical-need-moving-up-the-launch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>もともと、2月にリリースする予定でした。しかし、ワクチンのサイトに負荷がかかってクラッシュし、ワクチン接種の資格を持つ人たちのフラストレーションがたまっていくのを見た時、開設を急ぎ、公平なワクチン分配に悩む団体に無料でサービスを提供する必要があると感じたのです。こうして誕生したのが、プロジェクトFair Shotです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uLLKSoVvU8DUWVz01jPSS/86836f828b64ad2b022e2e189d045887/Project-fair-shot-icon.png" alt="" class="kg-image" width="446" height="218" loading="lazy">
+
+	</figure>
+	<p>政府、地方自治体、病院、薬局、診療所、ワクチン分配のための予約を取り扱う団体の方々は、こちらのサイトから、プロジェクトFair Shotにお申し込みいただけます。<a href="https://projectfairshot.org" target="_blank" rel="noopener noreferrer">projectfairshot.org</a></p>
+	<div class="flex anchor relative">
+		<h3 id="giving-front-line-organizations-the-technical-resources-they-need">医療の最前線にいる団体に、必要な技術リソースを提供する</h3>
+		<a href="https://blog.cloudflare.com/#giving-front-line-organizations-the-technical-resources-they-need" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このサービスは、参加要件を満たす団体のみなさまには、少なくとも2021年7月1日までの期間無料でご利用いただけます。また、ワクチンの供給よりも需要の方が多い場合は、さらに期間を延長します。当社は、医療用低温保存の専門家ではありませんし、私は注射器の針を見るだけで気分が悪くなってしまうタイプなので、ワクチン分配の物流的な問題の多くで、お役に立てません。しかしこの部分なら、どのようにサポートできるのかわかりますし、当社のチームは、自分たちができることはすべてやる必要があることを認識していました。</p>
+	<p>今回の危機のスーパーヒーローは、患者をケアする医療従事者のみなさんであり、こんな奇跡のようなワクチンを短時間で開発した科学者のみなさんです。世界が最もインターネットを必要としている時に、インターネットの機能を維持するためにCloudflareがサポートとして貢献できたことを誇りに思っています。プロジェクトFair Shotは、より良いインターネットを構築するという当社のミッションを果たすもう1つの方法です。</p>
+</div>

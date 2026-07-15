@@ -1,0 +1,203 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/protecting-global-democracy-against-threats-from-emerging-technology">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/protecting-global-democracy-against-threats-from-emerging-technology">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/protecting-global-democracy-against-threats-from-emerging-technology">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/protecting-global-democracy-against-threats-from-emerging-technology">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/protecting-global-democracy-against-threats-from-emerging-technology">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/protecting-global-democracy-against-threats-from-emerging-technology">Español</a>, en <a href="https://blog.cloudflare.com/id-id/protecting-global-democracy-against-threats-from-emerging-technology">Indonesia</a> et en <a href="https://blog.cloudflare.com/zh-cn/protecting-global-democracy-against-threats-from-emerging-technology">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rMRXxC3nQ6voyWqW7SF7/a75749eb980bcdf8a45377aa9521517e/protecting-global-democracy-against-threats-from-emerging-technology.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>L'année 2024 doit voir se dérouler plus de 80 élections nationales, affectant directement près de 4,2 milliards d'individus à divers endroits du monde, comme en Indonésie, aux États-Unis, en Inde et dans l'Union européenne. Il s'agit du cycle électoral le plus étendu à l'échelle mondiale jusqu'en 2048. Les élections constituent la pierre angulaire de la démocratie, car elles donnent aux citoyens les moyens de façonner leur gouvernement, de demander des comptes à leurs dirigeants et de participer au processus politique.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qqWEJxH0Ut9YAAoR5qdKh/bb10189a5aeeef795c63b21fefd46236/image2-18.png" alt="Cloudflare protects global democracy against threats from emerging technology during the 2024 voting season" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Depuis sept ans, Cloudflare soutient gratuitement les administrations locales et nationales qui organisent des élections. Les élections à venir dans le monde entier nous rappellent l'importance de nos services pour assurer la fiabilité et la sécurité des informations électorales contre ceux qui cherchent à perturber ces processus. Malheureusement, les problèmes auxquels les responsables électoraux font face s'avèrent de plus en plus compliqués lorsqu'il s'agit d'assurer la sécurité des élections. Leur résolution nécessite dès lors de faciliter le partage d'informations, le renforcement des capacités et les efforts conjoints afin de sauvegarder le processus démocratique.</p>
+	<p>Cloudflare soutient une vaste gamme d'acteurs du domaine électoral en leur proposant des outils d'amélioration de la sécurité, des performances et de la fiabilité conçus pour faciliter ce dernier. Avec les <a href="https://www.cloudflare.com/impact" target="_blank" rel="noopener noreferrer">projets Cloudflare Impact,</a> nous avons découvert un moyen de protéger toute une série de parties prenantes jouant un rôle important dans le processus électoral et de mieux les préparer à l'inattendu. En développant nos différents projets Impact, qui protègent aujourd'hui plus de 2 900 domaines, nous avons appris comment protéger au mieux les groupes vulnérables en ligne.</p>
+	<p>Nous souhaitons profiter de la Security Week pour vous donner un aperçu de la manière dont nous préparons les groupes travaillant à l'organisation des différentes élections à travers le monde pour 2024, tout en explorant les nouvelles tendances en matière de menaces.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-look-at-the-year-ahead">Un regard sur l'année à venir</h3>
+		<a href="https://blog.cloudflare.com/#a-look-at-the-year-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les <a href="https://www.cloudflare.com/cloudflare-for-government" target="_blank" rel="noopener noreferrer">administrations locales et nationales</a> jouent un rôle essentiel dans divers aspects du processus électoral. De l'inscription des électeurs au dépôt des candidatures, en passant par l'installation des bureaux de vote, la distribution des bulletins, le dépouillement des votes et la communication des résultats des élections, ces structures veillent à ce que les élections se déroulent de manière équitable, sûre et efficace.</p>
+	<p>L'une des leçons que nous avons retenues des sept dernières années, c'est que les responsables électoraux ont encore plus de pain sur la planche lorsqu'il s'agit d'organiser des élections libres et équitables. Les pays qui organisent des élections cette année sont susceptibles d'être confrontés à un éventail complexe de menaces, allant de la manipulation des électeurs aux violences physiques. Malheureusement, dans de nombreux pays, les responsables électoraux ont subi les foudres de certains politiciens et électeurs, car les résultats avaient déplu à ces derniers. De même, bon nombre d'officiels ont fait l'objet de menaces de mort, de harcèlement en ligne et de mauvais traitements. En avril 2023, le <a href="https://www.brennancenter.org/our-work/analysis-opinion/poll-election-officials-shows-high-turnover-amid-safety-threats-and" target="_blank" rel="noopener noreferrer">Brennan Center a relevé que 45 %</a> des agents électoraux locaux déclaraient craindre pour la sécurité de leurs collègues.</p>
+	<p>En matière de protection des infrastructures en ligne, la sécurisation des systèmes d'inscription des électeurs, la garantie de l'intégrité des informations liées aux élections et la planification d'une réponse efficace aux incidents s'avèrent nécessaires, car les menaces en ligne sont de plus en plus sophistiquées. Ainsi, pour prendre un exemple, au cours des trois mois précédant les élections américaines de mi-mandat de 2022, <a href="https://blog.cloudflare.com/fr-fr/securing-the-inboxes-of-democracy-fr-fr">Cloudflare a empêché l'envoi d'environ 150 000 e-mails de phishing</a> visant des responsables de campagne.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-use-our-services-to-promote-free-and-fair-elections">Comment nous utilisons nos services pour promouvoir des élections libres et équitables</h3>
+		<a href="https://blog.cloudflare.com/#how-we-use-our-services-to-promote-free-and-fair-elections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans le domaine des élections, le principe de base qui sous-tend notre travail repose sur l'idée que l'accès à des informations précises sur le vote, comme celles fournies par les administrations nationales et locales, est fondamental pour le bon fonctionnement de la démocratie. Nous nous considérons ainsi comme une pièce d'un grand puzzle concernant la protection des élections.</p>
+	<p>La protection des entités électorales est une tâche énorme et les partenariats qui proposent un large éventail de rôles et d'expertise constituent une force. Nous avons observé certains groupes, tels que la CISA (Cybersecurity and Infrastructure Security Agency, l'agence pour la cybersécurité et la sécurité des infrastructures), <a href="https://apnews.com/article/election-security-2024-voting-cybersecurity-8bda7ab6b3f921d363ab3257fd4b378b" target="_blank" rel="noopener noreferrer">accroître leur rôle dans le renforcement des efforts de sécurité des élections</a> ces dernières années. Plusieurs partenariats ont également été conclus entre les administrations, les organisations et les entreprises privées afin de fournir aux responsables électoraux les outils et l'expertise nécessaires à la sécurisation du processus démocratique.  </p>
+	<p>En 2020, <a href="https://blog.cloudflare.com/cloudflares-athenian-project-expands-internationally">nous nous sommes associés</a> à l'International Foundation for Electoral Systems (IFES, la Fondation internationale des systèmes électoraux) pour trouver un moyen d'étendre nos mesures de protection aux organes de gestion des élections en dehors des États-Unis. Dans le cadre de ce partenariat, nous avons pu proposer nos services de niveau Enterprise à six organismes de gestion des élections, dont la Commission électorale centrale du Kosovo, la Commission électorale nationale de Macédoine du Nord et de nombreux organismes électoraux locaux au Canada.</p>
+	<blockquote>
+		<p>« Cloudflare est un facilitateur technologique pour la Commission électorale nationale en Macédoine du Nord et ses outils nous aident à garantir que les résultats des élections anticipées seront accessibles à l'ensemble de la population. La visibilité et la transparence s'en trouvent ainsi favorisées. » <b>Vladislav Bidikov</b>, membre du groupe de travail sur la cybersécurité, Commission électorale nationale de Macédoine du Nord</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="internet-trends-during-elections">Tendances d'Internet pendant les élections</h3>
+		<a href="https://blog.cloudflare.com/#internet-trends-during-elections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En examinant les tendances d'Internet pendant les élections, nous avons constaté dans plusieurs pays que le trafic Internet diminue généralement pendant la journée, lorsque les votants se rendent dans les isoloirs. C'était, par exemple, le cas en <a href="https://blog.cloudflare.com/fr-fr/french-elections-2022-runoff-fr-fr">France</a> et au <a href="https://blog.cloudflare.com/how-the-brazilian-presidential-elections-affected-internet-traffic">Brésil</a> en 2022. Le trafic augmente généralement après la fermeture des isoloirs, lorsque les citoyens sont à la recherche des résultats. Cette tendance est également partagée par les chaînes de télévision traditionnelles.</p>
+	<p>L'Indonésie, pays qui compte plus de 200 millions d'électeurs (pour une population de 275 millions d'habitants) et plus de 17 000 îles, a tenu des <a href="https://www.aljazeera.com/news/2024/2/14/prabowo-subianto-claims-victory-in-indonesian-presidential-election" target="_blank" rel="noopener noreferrer">élections législatives le mercredi 14 février</a>. Ce jour-là, le trafic journalier a chuté de 5 % par rapport à la semaine précédente. Le trafic horaire a chuté de 15 % entre 8 h et 13 h, heure locale (heure de l'Indonésie occidentale, UTC+7, sous laquelle vit la majorité de la population), lorsque les bureaux de vote étaient ouverts. Le trafic s'est révélé inférieur à celui de la semaine précédente le même jour et n'a repris son rythme habituel que le lendemain.</p>
+	<p>En revanche, l'utilisation des appareils mobiles a atteint son niveau le plus élevé de l'année 2024 le 14 février, en totalisant 77 % de l'ensemble des requêtes en provenance du pays.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aL3vXiXZApsOeusGXfmH1/c7382ee91391e3e1a01fc0039b5ab803/Untitled.png" alt="" class="kg-image" width="1600" height="525" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="pakistan-election-day-internet-outage">Panne d'Internet le jour de l'élection au Pakistan</h3>
+		<a href="https://blog.cloudflare.com/#pakistan-election-day-internet-outage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kXh1WxSFeusuxTvQbRwls/b96994e698c2f912f5c863a2305b4857/Untitled--1-.png" alt="" class="kg-image" width="1600" height="516" loading="lazy">
+
+	</figure>
+	<p>Le Pakistan a tenu des élections législatives le 8 février. Au cours de cette période, nos données montrent une panne qui a commencé vers 2 h UTC et qui s'est rétablie après 15 h. La coupure d'Internet visait les réseaux mobiles et a été critiquée par <a href="https://www.amnesty.org/en/latest/news/2024/02/pakistan-election-day-internet-shutdown-is-a-reckless-attack-on-peoples-rights" target="_blank" rel="noopener noreferrer">Amnesty International</a>.</p>
+	<p>Les réseaux mobiles Telenor (AS24499), Jazz (AS45669) et Zong (AS59257) ont été touchés. Vous trouverez ci-dessous une vue du réseau Telenor, par exemple :</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cFdm3IDJ17kp08RkUfiXZ/aca836cf741b90562506249cfcee04c7/Untitled--2-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>En outre, la plateforme de réseaux sociaux X a connu une <a href="https://pakobserver.net/court-directs-govt-to-restore-x-twitter-across-pakistan" target="_blank" rel="noopener noreferrer">perturbation d'ampleur nationale</a> à la suite de manifestations déclenchées par les allégations de fraude électorale lors des élections législatives. En ce qui concerne les interruptions d'Internet, nous constatons que les coupures complètes d'Internet représentent le type d'interruption le plus sérieux, mais les limites imposées à l'utilisation des réseaux sociaux et des applications de messagerie, en particulier pendant les élections, constituent également des obstacles majeurs. Bon nombre de ces plateformes sont devenues indispensables aux journalistes et aux médias, car elles constituent un canal important leur permettant d'entrer en contact avec le public, de partager et de faire connaître leur contenu, mais aussi de communiquer en toute sécurité avec leurs sources.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uJBZnZfOcuboioFFtbwZP/7a337be34bafc08b34b419f5ed9bb914/Untitled--3-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-do-you-prepare-for-the-unexpected">Comment se préparer à l'imprévu ?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-you-prepare-for-the-unexpected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons déjà détaillé le travail que nous avons effectué lors de nombreuses élections aux États-Unis, y compris la manière dont nous avons protégé les <a href="https://blog.cloudflare.com/2020-us-election-cybersecurity-analysis">élections de 2020</a> lors d'une période d'incertitude. Alors que nous nous préparons pour les élections de 2024, nous continuerons à collaborer avec les experts afin de déterminer le meilleur moyen de proposer nos services. L'année dernière, nous avons conduit une <a href="https://blog.cloudflare.com/2024-the-year-of-elections">analyse des menaces</a> pesant sur les groupes électoraux. En voici les grandes lignes :</p>
+	<p>En début d'année, nous avons organisé des webinaires à destination des administrations locales et nationales dans le cadre du projet Athenian, afin d'identifier des recommandations de configuration et de transmettre les leçons que nous avons retenues des élections de mi-mandat de 2020 et 2022 aux États-Unis. Nous avons abordé divers sujets, comme la prévention de la défiguration des sites web, et les éléments qui doivent figurer sur une liste de contrôle de sécurité, comme la vérification des dates d'expiration des domaines et des certificats SSL. Nous sommes heureux d'annoncer que bon nombre des efforts visant à aider les administrations locales et nationales à définir les configurations dont elles ont besoin pour s'assurer de tirer le meilleur parti de nos produits Cloudflare gratuits ont été couronnés de succès, avec plus de 92 % des domaines relevant du projet utilisant nos <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records" target="_blank" rel="noopener noreferrer">services de proxy</a> pour protéger leur site web. Il reste toutefois encore beaucoup à faire. Nous avons constaté que l'<a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication" target="_blank" rel="noopener noreferrer">authentification à deux facteurs</a> demeure un problème et nous encourageons vivement les participants à l'activer pour protéger les comptes et les informations sensibles.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bV7Tbjla2as6nmfbExxuh/0698cdab258b20686dd33e95a665ed16/image10-4.png" alt="" class="kg-image" width="1866" height="702" loading="lazy">
+
+	</figure>
+	<p>À l'approche des élections, certaines entités électorales plus importantes, comme des secrétaires d'État, des <a href="https://www.cisecurity.org/elections" target="_blank" rel="noopener noreferrer">organisations à but non lucratif</a> soutenant les responsables électoraux et des <a href="https://www.cisa.gov/topics/partnerships-and-collaboration/joint-cyber-defense-collaborative" target="_blank" rel="noopener noreferrer">agences gouvernementales</a>, nous ont contactés pour solliciter notre expertise sur la manière de soutenir au mieux les groupes électoraux plus petits.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-keeps-state-and-local-election-officials-up-at-night">Qu'est-ce qui empêche les responsables électoraux locaux et nationaux de dormir ?</h3>
+		<a href="https://blog.cloudflare.com/#what-keeps-state-and-local-election-officials-up-at-night" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Afin de préparer les élections générales de 2024 aux États-Unis, nous avons souhaité en savoir plus sur les préoccupations des administrations locales et nationales protégées par le projet Athenian concernant les menaces pour leur sécurité en ligne. Nous avons adressé une brève étude aux participants et avons découvert les éléments suivants :</p>
+	<ul>
+		<li>
+			<p>Une majorité de participants pensent que l'utilisation des <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer">outils d'IA générative</a> aura un impact significatif sur les élections de 2024.</p>
+		</li>
+		<li>
+			<p>80 % des participants interrogés ont indiqué que leur équipe avait subi une attaque de phishing par e-mail au cours de l'année écoulée.</p>
+		</li>
+		<li>
+			<p>La confiance et la réputation sont les principales préoccupations en cas de cyberattaque, suivies de près par les opérations électorales.</p>
+		</li>
+	</ul>
+	<p>Nous avons demandé aux participants quels éléments ils souhaiteraient voir mieux compris concernant leurs efforts en matière de sécurité et de fiabilité des élections, et la réponse d'un comté a retenu notre attention. Pour paraphraser, ses responsables ont déclaré que les agents électoraux sont également des citoyens et des résidents de leurs communautés, et qu'ils s'efforcent d'organiser des élections sûres et équitables. Nous sommes impatients d'en savoir plus sur les menaces qui pèsent sur ces groupes et sur la manière dont nos produits peuvent les aider à protéger leurs données internes contre les attaques.</p>
+	<div class="flex anchor relative">
+		<h3 id="super-tuesday">Super Tuesday</h3>
+		<a href="https://blog.cloudflare.com/#super-tuesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aux États-Unis, le Super Tuesday concerne plusieurs États (parmi lesquels la Californie, l'Alabama, l'Iowa et la Caroline du Nord) qui organisent leurs primaires ou leurs caucus le même jour. Il est donc souvent considéré comme un tournant décisif des primaires présidentielles.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KYvGOgAoSDgn1qEo3MyTz/cf9423e6ec90213bc597e7b15b2d2c7e/image11-1.png" alt="" class="kg-image" width="1999" height="451" loading="lazy">
+
+	</figure>
+	<p>Le 6 mars, <a href="https://therecord.media/cisa-no-credible-threats-to-super-tuesday-voting" target="_blank" rel="noopener noreferrer">la CISA a indiqué</a> qu'aucune menace numérique crédible n'avait pesé sur le Super Tuesday, au grand soulagement de nombreux experts en sécurité. Ces commentaires ont été formulés après la <a href="https://www.bbc.com/news/technology-68483732" target="_blank" rel="noopener noreferrer">panne signalée par Meta</a>, qui a rendu Facebook, Messenger et Instagram inaccessibles à de nombreux utilisateurs aux États-Unis.</p>
+	<p>Lors du Super Tuesday, nous avons eu l'occasion de constater de visu les avantages liés à l'accès gratuit à des services de cybersécurité pour toute une série de groupes électoraux. Nous sommes heureux d'annoncer que nous n'avons constaté aucune cyberattaque majeure contre ces derniers pendant cette période. Dans ce cadre, nous souhaitons partager des informations actualisées sur les tendances que nous avons identifiées concernant les groupes électoraux que nous protégeons, afin d'identifier les types d'attaques auxquels ils sont confrontés, dans l'espoir de mieux les sécuriser en ligne.</p>
+	<div class="flex anchor relative">
+		<h3 id="athenian-project">Projet Athenian</h3>
+		<a href="https://blog.cloudflare.com/#athenian-project" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans le cadre du projet Athenian, nous protégeons plus de 400 sites web d'administrations locales et nationales dans 32 États qui tiennent des élections. Nous avons identifié 100 sites web dans les 16 États qui tiennent des élections lors du Super Tuesday et avons observé une augmentation considérable du trafic après le lundi 4 mars.</p>
+	<p>En ce qui concerne le trafic automatisé vers ces sites web, la figure ci-dessous montre que nous avons vu du trafic identifié comme du trafic lié aux bots maintenir une tendance relativement stable entre le 26 février et le 5 mars. Le qualificatif « <a href="https://www.cloudflare.com/learning/bots/what-is-bot-traffic" target="_blank" rel="noopener noreferrer">trafic lié aux bots</a> » se rapporte à n'importe quel trafic non humain destiné à un site web ou une application. Il est important de noter que tous les types de trafic lié aux bots ne sont pas forcément malveillants. Le trafic lié aux bots légitime comprend diverses activités, telles que l'indexation effectuée par les moteurs de recherche, tandis que le trafic lié aux bots malveillant est conçu pour se livrer à des activités frauduleuses, comme le spam, l'extraction de contenu à des fins d'utilisation non autorisée ou le lancement d'attaques par déni de service distribué (distributed denial-of-service, DDoS).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oXOC4mzVN1cOnbrVRh939/f51ebcd24fe633194aa349603a165f25/Untitled--4-.png" alt="" class="kg-image" width="1600" height="461" loading="lazy">
+
+	</figure>
+	<p>Au début de la journée du 5 mars, une augmentation du trafic « humain » était clairement visible, avec une hausse significative à partir de 5 h UTC-4 et une baisse vers 23 h. Ce phénomène est typique de ce que l'on observe en période d'élections, car de nombreux utilisateurs se rendent sur ces sites web pour identifier leur bureau de vote ou consulter les résultats les plus récents.</p>
+	<p>Dans le cadre du projet Athenian, Cloudflare a atténué plus de 18,9 millions de requêtes adressées aux administrations locales et nationales le 5 mars, soit à l'occasion du Super Tuesday.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56g4GQHYaQElOUgLnIRgLt/eb3130d970dc054f4ec738f813279c58/Untitled--5-.png" alt="" class="kg-image" width="1600" height="449" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-for-campaigns">Cloudflare for Campaigns</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-for-campaigns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En 2020, <a href="https://www.cloudflare.com/press-releases/2020/cloudflare-launches-cloudflare-for-campaigns-to-protect-u-s-election" target="_blank" rel="noopener noreferrer">nous avons établi un partenariat avec Defending Digital Campaigns</a>, une organisation à but non lucratif dont l'objectif est de fournir des ressources et une assistance en matière de cybersécurité pour les campagnes et les comités politiques aux États-Unis. Ce partenariat nous a permis de proposer plus de 3 millions de dollars en produits Cloudflare. Pour cette analyse, nous avons identifié 49 sites web protégés par <a href="https://www.cloudflare.com/campaigns/usa" target="_blank" rel="noopener noreferrer">Cloudflare for Campaigns</a> dans les États qui ont tenu une élection lors du Super Tuesday. Au total, nous protégeons 97 sites web de campagne et 27 sites web de partis politiques.</p>
+	<p>Le trafic global vers ces sites web est resté relativement stable pendant la deuxième moitié du mois de février et le début du mois de mars, mais il a commencé à augmenter le week-end précédant le Super Tuesday, comme le montre la figure ci-dessous. Des pics ont été observés à 23 h UTC-4 le 4 mars et à 20 h UTC-4 le 5 mars.</p>
+	<p>Nous avons remarqué que les sites web fonctionnant sous des zones Cloudflare for Campaigns connaissent un trafic lié aux bots faible et constant, bien que ce dernier ait légèrement augmenté au cours des premiers jours de mars. Toutefois, la figure ci-dessous montre que l'augmentation globale du trafic évoquée ci-dessus est due à une augmentation significative du trafic de requêtes identifiées comme issues d'utilisateurs réels (c'est-à-dire « humains »).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oMR4BDun92WDC9dBKowD0/fe1b4b3307bec32ec986e35f13403337/Untitled--6-.png" alt="" class="kg-image" width="1291" height="500" loading="lazy">
+
+	</figure>
+	<p>Les partis politiques protégés par le projet dans les États connaissant le Super Tuesday ont bénéficié d'une majorité du trafic, avec 53 % du trafic identifié comme à destination du site web de ces partis.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SEQ4DN9L7EQkER89Ew7PS/b89e8c50a24d61f00c4da19161f2b405/Untitled--7-.png" alt="" class="kg-image" width="1600" height="441" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="project-galileo">Projet Galileo</h3>
+		<a href="https://blog.cloudflare.com/#project-galileo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aux États-Unis, Cloudflare protège plus de 65 propriétés Internet liées à divers thèmes, comme le droit de vote ou la promotion d'élections libres et équitables. Le Super Tuesday s'est traduit par un pic de trafic considérable à destination de ces sites web vers 9 h UTC-4. Avec 3,22 millions de requêtes, ce pic a largement dépassé la valeur maximale précédente établie à 1,56 million le 20 février à 11 h UTC-4, soit une augmentation d'un facteur 2.</p>
+	<p>Nous avons déterminé que ce pic provenait d'un trafic induit par les utilisateurs (et non de bots) et qu'il était dû à une unique zone liée à une organisation à but non lucratif non partisane qui distribue, pour chaque État, des guides électoraux en ligne comprenant notamment des formulaires d'inscription sur les listes électorales. L'organisation est protégée par le projet Galileo depuis 2017. Le nombre de demandes a augmenté de 1 360 % entre 7 h et 9 h (UTC-4). Il s'agit là d'un exemple clair de l'importance d'un accès aux outils de cybersécurité avant un événement majeur, car les pics de trafic peuvent se révéler imprévisibles.</p>
+	<div class="flex anchor relative">
+		<h3 id="2024-and-beyond">2024 et au-delà</h3>
+		<a href="https://blog.cloudflare.com/#2024-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À l'approche du cycle électoral de 2024, Cloudflare est prête à proposer son aide aux responsables électoraux, aux groupes de défense des droits en matière de vote, aux campagnes politiques et aux parties impliquées dans les élections.</p>
+	<p>Avec une année riche en élections et étant donné l'attention mondiale portée à la sécurité de ces dernières, il est essentiel de faire appel à des professionnels chevronnés et compétents pour préserver le processus démocratique. Grâce à une collaboration continue avec les parties prenantes du domaine électoral, nous développons en permanence des stratégies visant à sécuriser efficacement l'infrastructure web et les équipes internes. Notre engagement envers la sauvegarde des ressources tout au long du processus de vote et envers la promotion de la confiance dans les institutions démocratiques à travers le monde persiste.</p>
+	<p>Nous souhaitons nous assurer que tous les groupes qui travaillent à la promotion de la démocratie dans le monde disposent des outils dont ils ont besoin pour assurer leur sécurité en ligne. Si vous travaillez dans le secteur des élections et que vous avez besoin de notre aide, n'hésitez pas à déposer votre candidature à l'adresse suivante : <a href="https://www.cloudflare.com/election-security" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/election-security</a>.</p>
+	<p>Restez à l'écoute pour plus d'actualités, d'annonces et de discussions stimulantes ! N'hésitez pas à vous rendre sur la <a href="https://cloudflare.tv/shows/security-week" target="_blank" rel="noopener noreferrer">page d'accueil de la Security Week</a>.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/ee000b663995d280ac4c3b8bed71dd59/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fee000b663995d280ac4c3b8bed71dd59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+</div>

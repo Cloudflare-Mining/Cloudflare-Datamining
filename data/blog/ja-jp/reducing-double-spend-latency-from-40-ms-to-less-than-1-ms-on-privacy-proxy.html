@@ -1,0 +1,164 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/reducing-double-spend-latency-from-40-ms-to-less-than-1-ms-on-privacy-proxy">English</a>および<a href="https://blog.cloudflare.com/zh-cn/reducing-double-spend-latency-from-40-ms-to-less-than-1-ms-on-privacy-proxy">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YfNgPROBiBht4vDzxfXiF/1cd01ce1a6a9d5dd5600073ae07e9cce/hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareが注力している分野の1つは、エンドユーザーのためにインターネットを高速化することです。その方法の一部として、特にクリティカルパス上のプロセスに注目し、スピードを落とす「大きな壁」やボトルネックを調べることが挙げられます。最近、当社のプライバシープロキシ製品に目を向けた時、改善の大きな機会を見出しました。</p>
+	<p>Cloudflareのプライバシープロキシ製品とは？これらのプロキシを使用すると、ユーザーはアクセスしているWebサイトに個人情報を公開することなく、Webを閲覧することができます。Cloudflareは、<a href="https://blog.cloudflare.com/icloud-private-relay"><u>AppleのPrivate Relay</u></a>や<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network"><u>MicrosoftのEdge Secure Network</u></a>など、プライバシープロキシのインフラストラクチャを運用しています。</p>
+	<p>あらゆる安全なインフラストラクチャと同様に、ユーザーが訪問しているWebサイトへの接続を開く前に、これらのプライバシープロキシで認証を行っていることを確認します。プライバシーを保護する方法でこれを行うために（Cloudflareがエンドユーザーに関する情報を最小限に抑えるために）、オープンインターネット標準である<a href="https://www.rfc-editor.org/rfc/rfc9578.html" target="_blank" rel="noopener noreferrer">プライバシーパス</a>を使用して、プロキシサービスに対して認証するトークンを発行しています。</p>
+	<p>ユーザーがプライバシープロキシ経由でWebサイトを訪問するたびに、リクエストのProxy-Authorizationヘッダーに含まれるプライバシーパストークンの有効性を確認します。ユーザーのトークンを暗号的に検証する前に、このトークンがすでに使われているかどうかを確認します。トークンが使われなければ、ユーザーのリクエストを通過させます。それができなければ、「二重支出」になります。アクセス制御の観点からは、二重支出は問題があることを示唆しています。プライバシーの観点からは、支出の二重元化は匿名性セットやプライバシーの特性を低下させる可能性があります。パフォーマンスの観点からは、当社のプライバシープロキシが毎秒数百万のリクエストを処理し、サイトへのアクセスを認証するのに時間がかかるため、チェックは迅速に行われる必要があります。このダブル投資のチェックの遅延を約40ミリ秒から1ミリ秒未満に低減した方法を見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-discover-the-issue">問題をどう発見したのか？</h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-discover-the-issue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.jaegertracing.io" target="_blank" rel="noopener noreferrer"><u>Jager</u></a>というトレースプラットフォームを使っています。これにより、コードがどのパスを経て、関数の実行にどれくらいの時間がかかったかを確認することができます。これらのトレースを調べたところ、約40ミリ秒の遅延が見られました。良いリードを得ることができましたが、それだけでは問題であると結論づけることはありませんでした。その理由は、トレースのごく一部しかサンプリングしていないため、ここで見たことが全体像ではないからです。より多くのデータを調べる必要がありました。サンプリングするトレースの数を増やすことはできますが、当社のシステムがトレースを処理するのにトレースが大きく重くなるのです。メトリクスは軽量なソリューションです。すべての二重支出チェックについてデータを取得するための指標を追加しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67v4incoE8gXu22EBSLnN0/3c5fbd6b44ccc25398c905889b61c05e/image4.png" alt="" class="kg-image" width="1999" height="549" loading="lazy">
+	</figure>
+	<p>このグラフの線は、世界中の最も遅いプライバシープロキシの遅延の中央値です。メトリクスデータから、WAFが予想より45ミリ秒長いと仮定して、リクエストの大部分に影響を与える問題であるという確信が得られました。しかし、このような事態は想定されていたのでしょうか？どのような数字を予想していましたか？</p>
+	<div class="flex anchor relative">
+		<h2 id="the-expected-latency">予想される遅延</h2>
+		<a href="https://blog.cloudflare.com/#the-expected-latency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>どのような時間が予想されるのかを理解するために、「二重投資チェック」の構成要素について詳しく説明します。ダブルスペンドチェックの際、プライバシーパス トークンが存在するかどうか、バックアップするデータストアに問い合わせます。私たちが使用しているデータストアは <a href="https://memcached.org" target="_blank" rel="noopener noreferrer"><u><code>memcached</code></u></a> です。世界中のサーバー上で多くの<code>memcached</code>インスタンスが動作しているので、どのサーバーに問い合わせるか？これには、<a href="https://github.com/facebook/mcrouter" target="_blank" rel="noopener noreferrer"><u><code>mcrouter</code></u></a>を使用します。どの<code>memcached</code>サーバーに問い合わせるかを考える代わりに、<code>mcrouter</code>にリクエストを与えると、mcrouterは使用する<code>memcached</code>サーバーの選択を処理します。私たちは、<code>mcrouter</code>がリクエストを処理するのに要した時間の中央値を調べました。このグラフは、サーバーごとの平均遅延を経時的に示しています。スパイクもありますが、ほとんどの場合、遅延は1ミリ秒未満です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LHxvtd813oeu1DyFh7MOA/0126ceb6212b50e8deeeffabba57e3e5/image1.png" alt="" class="kg-image" width="1032" height="468" loading="lazy">
+	</figure>
+	<p>この時点で、私たちは、二重投資チェックの遅延が、どこでも予想以上に長いものであることを確信し、根本原因を探し始めました。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-investigate-the-issue">問題をどのように調査したのか？</h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-investigate-the-issue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、この科学的手法から着想を得ました。私たちはコードを分析し、コードのセクションが遅延の原因となっている理由に関する理論を作り出し、データを使用してその理論を否定しています。残っている理論については、修正を実装し、それらが機能するかどうかをテストしました。</p>
+	<p>コードを見てみましょう。大まかに説明すると、二重支出のチェックのロジックは次のとおりです。</p>
+	<ol>
+		<li>
+			<p>接続を取得。これは次のように分類できます：</p>
+			<ol>
+				<li>
+					<p><code>memcachedバージョン</code>コマンドを送信します。これは、接続がまだデータを送信できているかどうかのヘルスチェックとして機能します。</p>
+				</li>
+				<li>
+					<p>接続がまだ良い場合は、それを取得します。それ以外の場合は、新しい接続を確立します。</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<p><code>接続でmemcached</code> getコマンドを送信します。</p>
+		</li>
+	</ol>
+	<p>上記の各ステップごとの理論を確認してみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="theory-1-health-check-takes-long">理論1：ヘルスチェックには時間がかかる</h2>
+		<a href="https://blog.cloudflare.com/#theory-1-health-check-takes-long" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ヘルスチェックは主に健全性チェックとして測定されました。バージョンコマンドはシンプルで高速に処理できるため、時間がかかることはありません。そして、私たちは自由に行動することができました。遅延の中央値は1ミリ秒未満でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6amdAWUKl3IvmGlvgwJhMP/57b6895aacf960b08ffc7d36d4569d25/image5.png" alt="" class="kg-image" width="1999" height="290" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="theory-2-waiting-to-get-a-connection">理論2：接続待機</h2>
+		<a href="https://blog.cloudflare.com/#theory-2-waiting-to-get-a-connection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>なぜ接続を得るために待つ必要があるのかを理解するために、接続の取得方法についてさらに詳しく説明します。このコードでは、接続プールを使用しています。プールは、<code>mcrouter</code>へのすぐに使える接続のセットです。プールを持つメリットは、リクエストを行うたびに接続を確立するためのオーバーヘッドを支払う必要がないことです。プールにはサイズの限界があります。私たちの制限は、1サーバーあたり20回でしたが、ここに潜在的な問題があります。毎秒5,000件のリクエストを処理し、リクエストを45ミリ秒維持するサーバーがあるとします。<a href="https://en.wikipedia.org/wiki/Little%27s_law" target="_blank" rel="noopener noreferrer"><u>小さなの法則</u></a>と呼ばれるものを使って、システム内のリクエストの平均数を推定することができます。<code>5000 x 0.045 = 225</code> です。プールサイズの制限上、一度に20接続しかできないため、一度に20のリクエストしか処理できません。つまり、205つのリクエストが待機中ということになります！二重費のチェックを実行すると、接続が得られるまで約40ミリ秒かかるかもしれません。</p>
+	<p>さまざまなサーバーのメトリクスを調査しました。1秒あたりのリクエスト数が何であれ、レイテンシーは一貫して40ミリ秒以内であり、これは理論ではありませんでした。たとえば、このグラフは、1秒あたり最大20件のリクエストを処理したサーバーのデータを示しています。経時的なヒストグラムが表示され、リクエストの大部分は40～50ミリ秒バケットに分類されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EJ7SlTzqMVLTIOTvqH1HL/7d64c441e606ecbe1823585f4ff19086/image7.png" alt="" class="kg-image" width="1999" height="330" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="theory-3-delays-in-nagles-algorithm-and-delayed-acks">理論3：Nagleのアルゴリズムの遅れとACKの遅れ</h2>
+		<a href="https://blog.cloudflare.com/#theory-3-delays-in-nagles-algorithm-and-delayed-acks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはこれまでの観察について、Geminiとチャットすることにしました。さまざまな提案がありましたが、最も興味深いのは<code>TCP_NODELY</code>が設定されているかどうかを確認することでした。もしこのオプションをコードに設定していたら、<a href="https://en.wikipedia.org/wiki/Nagle%27s_algorithm" target="_blank" rel="noopener noreferrer"><u>Nagleのアルゴリズム</u></a>と呼ばれるものを無効にすることができました。Nagleのアルゴリズム自体は問題ではありませんでしたが、別の機能や<a href="https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment" target="_blank" rel="noopener noreferrer"><u>遅延 ACK</u></a>と同時に有効にすると、遅延が生じかねませんでした。その理由を説明するために、例を見てみましょう。</p>
+	<p>グループチャットアプリを実行しているとします。通常、人々は完全な思考を入力し、1つのメッセージにまとめて送信します。ところが、「こんにちは」という言葉をひとつずつ送ってくる友人がいるのです。送信、「方法」。送信、「are」です。送信、「あなた」です。送信、実にたくさんの通知があります。Nagleのアルゴリズムはこれを防ぐことを目的としています。Nagle氏は、友人が1つの短いメッセージを送りたいなら、それは大丈夫ですが、順番に1回しかできないと言い、直後にさらに単一の単語を送信しようとすると、Nagleはその単語を下書きメッセージに保存します。メッセージの下書きが一定の長さに達すると、Nagleが送信します。しかし、メッセージの下書きがこれほど長くならない場合はどうでしょうか。これを管理するために、遅延したACKは友人がメッセージを送信するたびに40ミリ秒のタイマーを起動します。タイマーが終了する前にアプリへの入力がなくなると、メッセージがグループに送信されます。</p>
+	<p>Cloudflareが作成したコードと、私たちが依存している依存関係からのコードの両方を詳しく見てみました。<a href="https://crates.io/crates/memcache-async" target="_blank" rel="noopener noreferrer"><code>memcacheコマンドを送信できるコードを実装するために、memcache-async</code></a> クレートに依存していました。memcached <code>Version</code>コマンドを送信するためのコードを次に示します。</p>
+	<pre class="language-Rust"><code class="language-Rust">self.io.write_all(b"version\r\n").await?;
+self.io.flush().await?;</code></pre>
+	<p>珍しいことはありません。次に、get関数の内部を調べました。</p>
+	<pre class="language-Rust"><code class="language-Rust">let writer = self.io.get_mut();
+writer.write_all(b"get ").await?;
+writer.write_all(key.as_ref()).await?;
+writer.write_all(b"\r\n").await?;
+writer.flush().await?;</code></pre>
+	<p>コードでは、<code>io</code>を<code>TcpStream</code>として設定します。つまり、各<code>write_all</code>呼び出しがメッセージを送信することになります。Nagleのアルゴリズムを有効にすると、データの流れは次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Vj6xfkbnIg2gmPeLy9g9I/2b003d8a4d81782148697fc83e793c6f/Screenshot_2025-07-24_at_13.16.05.png" alt="" class="kg-image" width="1474" height="724" loading="lazy">
+	</figure>
+	<p>なるほど。3つの小さなメッセージをすべて送信しようとしましたが、「get」を送信した後、カーネルはトークンと<code>\r\n</code>をバッファに入れて待機し始めました。<code>mcrouter</code>が「get」を取得したとき、完全なコマンドを持っていなかったため、何もすることができませんでした。つまり、40ミリ秒待ちでした。次に、応答としてACKを送信します。ACKを取得し、残りのコマンドをバッファに送信しました。<code>mcrouter</code>はコマンドの残りの部分を取得し、処理し、トークンが存在するかどうかを示すレスポンスを返しました。Nagleのアルゴリズムを無効にした場合、データの流れはどのようになりますか？</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4O0s8hb64olT2PDDc5wTFL/3cfe500a1f235276502db9e608cef966/Screenshot_2025-07-24_at_13.17.11.png" alt="" class="kg-image" width="1424" height="604" loading="lazy">
+	</figure>
+	<p>3つの小さなメッセージすべてを送ることになります。<code>mcrouter</code>は完全なコマンドを持ち、すぐにレスポンスを返します。待つことは一切不要です。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-40-ms">なぜ40ミリ秒なのか？</h2>
+		<a href="https://blog.cloudflare.com/#why-40-ms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのLinuxサーバーには、遅延の許容範囲が最小限に抑えられています。以下は、これらの境界を定義するLinuxソースコードのスニペットです。</p>
+	<pre class="language-C++"><code class="language-C++">#if HZ &gt;= 100
+#define TCP_DELACK_MIN	((unsigned)(HZ/25))	/* minimal time to delay before sending an ACK */
+#define TCP_ATO_MIN	((unsigned)(HZ/25))
+#else
+#define TCP_DELACK_MIN	4U
+#define TCP_ATO_MIN	4U
+#endif</code></pre>
+	<p>コメントでは、<code>TCP_DELACK_MIN</code>は、ACKがACKを送信する前に待機する最小遅延時間であることを示しています。Cloudflareのカスタムカーネル設定を調べたところ、以下のことがわかりました。</p>
+	<pre class="language-Rust"><code class="language-Rust">CONFIG_HZ=1000</code></pre>
+	<p><code>CONIG_HZ</code>は最終的に<code>HZ</code>に伝播し、40ミリ秒の遅延をもたらします。数字の背景はここにあるのです！</p>
+	<div class="flex anchor relative">
+		<h2 id="the-fix">修正方法</h2>
+		<a href="https://blog.cloudflare.com/#the-fix" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1つのコマンドに対して1つのメッセージを送信するだけなのに、1つのコマンドに対して3つのメッセージを送信していました。Wiresharkの<code>get</code>コマンドの様子をキャプチャし、3つの個別のメッセージを送信していることを検証しました。（これはMacOS上でローカルにキャプチャしました。興味深いことに、すべてのメッセージに対してACKが送られました。）</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4B2qC70Dpeu25dTOP4V2hj/3720d8012f7d452696ca6cbe265d366e/image9.png" alt="" class="kg-image" width="1999" height="267" loading="lazy">
+	</figure>
+	<p>修正は、<code>BufWriter&lt;TcpStream&gt;</code>を使用することで行われました。これにより、<code>write_all</code>が小さなメッセージをユーザー空間のメモリバッファにバッファリングし、<code>flush</code>は<code>memcached</code>コマンド全体を1つのメッセージで送信します。Wiresharkのキャプチャは、ずっとクリーンに見えました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S6R7qAIad9pjKIfQYTWbA/c7bfe663b707ba4653977319a02e5e07/image3.png" alt="" class="kg-image" width="1999" height="174" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この修正を本番環境にデプロイした後、ダブルスペンチェック遅延の中央値があらゆる場所で予想値に低下しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kKCQFTw5wp0jEwdPcALb4/8425bcfe526c2eeb9570c7a98fc62c62/image8.png" alt="" class="kg-image" width="1999" height="411" loading="lazy">
+	</figure>
+	<p>私たちの調査は、組織的でデータ駆動型のアプローチに従いました。まず、観測可能性のツールを使って問題の規模を確認することから始めました。そのことから、テスト可能な仮説を形成し、データを使用して、それらを組織的に覆すことができました。このプロセスは最終的に、サードパーティの依存関係を利用した方法によって、Nagleのアルゴリズムと遅延したACKとの間の微妙な相互作用が実現しました。</p>
+	<p>結局は、より良いインターネットの構築を支援することが、当社の使命なのです。節約されたミリ秒ごとに、エンドユーザーがより高速で、よりシームレスに、プライベートなブラウジング体験を提供することに貢献します。私たちはこのサービスを展開できることを嬉しく思います。そして、さらなるパフォーマンス向上を追求し続けることを楽しみにしています。</p>
+</div>

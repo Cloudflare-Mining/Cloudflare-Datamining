@@ -1,0 +1,317 @@
+<div class="mb2 gray5">Lesezeit: 8&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/building-d1-a-global-database">English</a>, <a href="https://blog.cloudflare.com/zh-tw/building-d1-a-global-database">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/building-d1-a-global-database">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/building-d1-a-global-database">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/building-d1-a-global-database">한국어</a>, <a href="https://blog.cloudflare.com/es-es/building-d1-a-global-database">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/building-d1-a-global-database">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RjwMi9G4wj7Nywb50DT8B/5806eccf5daa32a6defbf63cdd3c1a7c/building-d1-a-global-database.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Entwickler und Entwicklerinnen, die Worker-Anwendungen entwickeln, konzentrieren sich auf die Erstellung ihrer Anwendungen (und nicht auf die erforderliche Infrastruktur) und profitieren von der globalen Reichweite des <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare-Netzwerks</a>. Viele Anwendungen benötigen persistente Daten, von persönlichen Projekten hin zu geschäftskritischen Workloads. Workers bietet verschiedene <a href="https://developers.cloudflare.com/workers/platform/storage-options" target="_blank" rel="noopener noreferrer">Datenbank- und Speicheroptionen</a>, die auf die Bedürfnisse der Entwickler und Entwicklerinnen zugeschnitten sind, wie Schlüssel-Werte-Datenbanken und Objektspeicher.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76hMKeBHewbCLm4XlVS4zL/92271c25576185cad1ab5e70e29ede58/image2-33.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Relationale Datenbanken sind heute das Rückgrat vieler Anwendungen. <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>, die relationale Datenbankergänzung von Cloudflare, ist jetzt allgemein verfügbar. Bei der Weiterentwicklung von der Alpha-Version Ende 2022 bis zur GA-Version im April 2024 konzentrierten wir uns darauf, Entwicklern und Entwicklerinnen die Möglichkeit zu geben, Workloads in einer Produktionsumgebung mit der Vertrautheit von relationalen Daten und SQL zu erstellen.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-d1">Was ist D1?</h3>
+		<a href="https://blog.cloudflare.com/#whats-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1 ist die integrierte, serverlose relationale Datenbank von Cloudflare. Für Worker-Anwendungen bietet D1 die Ausdruckskraft von SQL, indem es den SQL-Dialekt von SQLite nutzt, und die Integration von Entwicklertools, einschließlich objektrelationaler Mapper (ORMs) wie <a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md" target="_blank" rel="noopener noreferrer">Drizzle ORM</a>. D1 ist über <a href="https://developers.cloudflare.com/d1/build-with-d1/d1-client-api" target="_blank" rel="noopener noreferrer">Workers</a> oder über eine <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database" target="_blank" rel="noopener noreferrer">HTTP-API</a> zugänglich.</p>
+	<p>Serverless bedeutet keine Bereitstellung erforderlich, standardmäßige Notfallwiederherstellung mit <a href="https://developers.cloudflare.com/d1/reference/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a> und <a href="https://developers.cloudflare.com/d1/platform/pricing" target="_blank" rel="noopener noreferrer">nutzungsbasierte Preise</a>. D1 umfasst eine großzügige kostenlose Tarifstufe, die es Entwicklern und Entwicklerinnen ermöglicht, mit D1 zu experimentieren und diese Versuche dann in eine Produktionsumgebung zu überführen.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-make-data-global">Wie macht man Daten global?</h3>
+		<a href="https://blog.cloudflare.com/#how-to-make-data-global" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1 GA (allgemeine Verfügbarkeit) hat sich auf die Zuverlässigkeit und die Erfahrung der Entwickler und Entwicklerinnen konzentriert. Jetzt planen wir, D1 zu erweitern, um global verteilte Anwendungen besser zu unterstützen.</p>
+	<p>Im Workers-Modell ruft eine eingehende Anfrage die serverlose Ausführung im nächstgelegenen Rechenzentrum auf. Eine Worker-Anwendung kann global mit den Anfragen der Nutzer skalieren. Die Anwendungsdaten bleiben jedoch in zentralen Datenbanken gespeichert, und der globale Traffic der Nutzer muss die Hin- und Rückreise zu den Datenstandorten berücksichtigen. Eine D1-Datenbank zum Beispiel befindet sich heute an einem einzigen Ort.</p>
+	<p>Workers unterstützen <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer">Smart Placement</a>, um die Lokalisierung von Daten zu berücksichtigen, auf die häufig zugegriffen wird. Smart Placement ruft einen Worker näher an zentralisierten Backend-Diensten wie Datenbanken auf, um die Latenz zu verringern und die Anwendungsperformance zu verbessern. Wir haben uns mit der Platzierung von Workers in globalen Anwendungen befasst, müssen aber noch die Thematik der Platzierung von Daten lösen.</p>
+	<p>Die Frage ist also, wie D1, die integrierte Datenbanklösung von Cloudflare, die Datenplatzierung für globale Anwendungen besser unterstützen kann. Die Antwort: asynchrone Lesereplikation.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-asynchronous-read-replication">Was ist asynchrone Lesereplikation?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-asynchronous-read-replication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I58tQFeSOcIyqrGfv9UnB/c1bc267b8cd2eb09332ae909429aeb5b/image4-30.png" alt="" class="kg-image" width="1800" height="590" loading="lazy">
+
+	</figure>
+	<p>In einem serverbasierten Datenbankmanagementsystem wie Postgres, MySQL, SQL Server oder Oracle ist ein <i><b>Lesereplikat</b></i> ein separater Datenbankserver, der als schreibgeschützte, nahezu aktuelle Kopie des primären Datenbankservers dient. Ein Administrator erstellt ein Lesereplikat, indem er einen neuen Server aus einem Snapshot des primären Servers startet und den primären Server so konfiguriert, dass er Updates asynchron an den Replikat-Server sendet. Da die Aktualisierungen asynchron erfolgen, kann das Lesereplikat hinter dem aktuellen Status des Primärservers zurückbleiben. Die Differenz zwischen dem Primärserver und einem Replikat wird als <i><b>Verzögerung des Replikats („replica lag“)</b></i> bezeichnet. Es ist möglich, mehr als ein Lesereplikat zu haben.</p>
+	<p>Die asynchrone Lesereplikation ist eine bewährte Lösung, um die Performance von Datenbanken zu verbessern:</p>
+	<ul>
+		<li>
+			<p>Es ist möglich, den Durchsatz zu erhöhen, indem die Last auf mehrere Replikate verteilt wird.</p>
+		</li>
+		<li>
+			<p>Es ist möglich, die Abfragelatenz zu verringern, wenn sich die Replikate in der Nähe der abfragenden Nutzer befinden.</p>
+		</li>
+	</ul>
+	<p>Beachten Sie, dass einige Datenbanksysteme auch synchrone Replikation anbieten. In einem synchron replizierten System müssen Schreibvorgänge warten, bis alle Replikate den Schreibvorgang bestätigt haben. Synchron replizierte Systeme können nur so schnell laufen wie das langsamste Replikat und kommen zum Stillstand, wenn ein Replikat ausfällt. Wenn wir versuchen, die Performance auf globaler Ebene zu verbessern, sollten wir synchrone Replikation so gut wie möglich vermeiden!</p>
+	<div class="flex anchor relative">
+		<h3 id="consistency-models-read-replicas">Konsistenzmodelle &amp; Lesereplikate</h3>
+		<a href="https://blog.cloudflare.com/#consistency-models-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die meisten Datenbanksysteme bieten <a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">je nach</a> Konfiguration Read-Committed-, <a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">Snapshot-Isolation-</a> oder <a href="https://jepsen.io/consistency/models/serializable" target="_blank" rel="noopener noreferrer">Serializable</a> Konsistenzmodelle. Postgres beispielsweise ist standardmäßig auf <a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">Read-Committed eingestellt</a>, kann aber so konfiguriert werden, dass es stärkere Modi verwendet. SQLite bietet <a href="https://www.sqlite.org/draft/isolation.html" target="_blank" rel="noopener noreferrer">Snapshot-Isolation im WAL-Modus</a>. Stärkere Modi wie Snapshot-Isolation oder Serializable sind einfacher zu programmieren, da sie die zulässigen Parallelitätsszenarien des Systems und die Art der Parallelität-Rennbedingungen (Race-Conditions) einschränken, um die sich der Programmierer bzw. die Programmiererin kümmern muss.</p>
+	<p>Lesereplikate werden unabhängig voneinander aktualisiert, sodass die Inhalte der einzelnen Replikate zu jedem Zeitpunkt unterschiedlich sein können. Wenn alle Ihre Abfragen an denselben Server gehen, sei es der Primärserver oder ein Lesereplikat, sollten Ihre Ergebnisse einheitlich sein, je nachdem, welches <a href="https://jepsen.io/consistency" target="_blank" rel="noopener noreferrer">Konsistenzmodell</a> Ihrer zugrunde liegenden Datenbank konsistent sein. Wenn Sie ein Lesereplikat verwenden, sind die Ergebnisse möglicherweise nur ein wenig veraltet.</p>
+	<p>In einer serverbasierten Datenbank mit Lesereplikaten ist es wichtig, dass Sie für alle Abfragen in einer Sitzung denselben Server verwenden. Wenn Sie in derselben Sitzung zwischen verschiedenen Lesereplikaten wechseln, gefährden Sie das von Ihrer Anwendung bereitgestellte Konsistenzmodell, was gegen Ihre Annahmen über das Verhalten der Datenbank verstoßen und dazu führen kann, dass Ihre Anwendung falsche Ergebnisse liefert!</p>
+	<p><b>Beispiel</b>Beispiel: Es gibt zwei Replikate, A und B. Replikat A hinkt der primären Datenbank um 100 ms hinterher, Replikat B um 2 s. Angenommen, ein Benutzer möchte:</p>
+	<ol>
+		<li>
+			<p>Abfrage 1 ausführen1a. Etwas Datenverarbeitung basierend auf den Ergebnissen von Abfrage 1 durchführen</p>
+		</li>
+		<li>
+			<p>Abfrage 2 auf der Grundlage der Ergebnisse der Datenverarbeitung in (1a) durchführen</p>
+		</li>
+	</ol>
+	<p>Zum Zeitpunkt t=10 s geht die Abfrage 1 an Replikat A und kehrt zurück. Abfrage 1 zeigt, wie die primäre Datenbank bei t=9,9 s aussah. Angenommen, die Datenverarbeitung dauert 500 ms, sodass Abfrage 2 bei t=10,5 s an Replikat B geht. Denken Sie daran, dass Replikat B der primären Datenbank um 2 s hinterherhinkt, sodass Abfrage 2 bei t=10,5 s sieht, wie die Datenbank bei t=8,5 s aussieht. Für die Anwendung sehen die Ergebnisse von Abfrage 2 so aus, als wäre die Datenbank in der Zeit zurückgereist!</p>
+	<p>Formal handelt es sich dabei um <a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">Read-Committed</a>-Konsistenz, da Ihre Abfragen nur Committed-Daten sehen, aber es gibt keine andere Garantie – nicht einmal, dass Sie Ihre eigenen Schreibvorgänge lesen können. Read-Committed ist zwar ein gültiges Konsistenzmodell, aber es ist schwer, über alle möglichen Rennbedingungen nachzudenken, die das Read-Committed-Modell zulässt, was es schwierig macht, Anwendungen korrekt zu schreiben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2R1p29j20c7szuRmY2Sjlp/52e4982c6c45e18c4d0c18835931b016/image3-34.png" alt="" class="kg-image" width="1200" height="510" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="d1s-consistency-model-read-replicas">Das Konsistenzmodell von D1 &amp; Lesereplikate</h3>
+		<a href="https://blog.cloudflare.com/#d1s-consistency-model-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Standardmäßig bietet D1 die <a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">Snapshot-Isolation</a>, die SQLite bietet.</p>
+	<p>Die Snapshot-Isolation ist ein vertrautes Konsistenzmodell, das für die meisten Entwickler und Entwicklerinnen leicht zu handhaben ist. Wir implementieren dieses Konsistenzmodell in D1, indem wir sicherstellen, dass es höchstens eine aktive Kopie der D1-Datenbank gibt und alle HTTP-Anfragen an diese eine Datenbank weitergeleitet werden. Sicherzustellen, dass es höchstens eine aktive Kopie der D1-Datenbank gibt, ist zwar ein schwieriges Problem bei verteilten Systemen, aber wir haben es gelöst, indem wir D1 mit <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> entwickelt haben. Durable Objects garantieren globale Eindeutigkeit. Sobald wir also von Durable Objects abhängig sind, ist das Routing von HTTP-Anfragen einfach: Senden Sie sie einfach an das D1 Durable Object.</p>
+	<p>Dieser Trick funktioniert nicht, wenn Sie mehrere aktive Kopien der Datenbank haben, da es keine 100 % zuverlässige Möglichkeit gibt, eine generische eingehende HTTP-Anfrage zu betrachten und sie zu 100 % an dasselbe Replikat weiterzuleiten. Wie wir im Beispiel des vorigen Abschnitts gesehen haben, ist das „Read-Committed“-Modell leider das beste Konsistenzmodell, das wir anbieten können, wenn wir zusammenhängende Anfragen nicht zu 100 % an dasselbe Replikat weiterleiten.</p>
+	<p>Da es unmöglich ist, ein bestimmtes Replikat einheitlich zu routen, besteht ein anderer Ansatz darin, Anfragen an ein beliebiges Replikat zu routen und sicherzustellen, dass das gewählte Replikat auf Anfragen gemäß einem Konsistenzmodell antwortet, das für den Programmierer „sinnvoll“ ist. Wenn wir bereit sind, einen <a href="https://en.wikipedia.org/wiki/Lamport_timestamp" target="_blank" rel="noopener noreferrer">Lamport-Zeitstempel</a> in unsere Anfragen aufzunehmen, können wir <a href="https://jepsen.io/consistency/models/sequential" target="_blank" rel="noopener noreferrer">sequenzielle Konsistenz</a> mit jedem Replikat implementieren. Das sequenzielle Konsistenzmodell hat wichtige Eigenschaften wie <a href="https://jepsen.io/consistency/models/read-your-writes" target="_blank" rel="noopener noreferrer">Read-My-Own-Writes („Lese-meine-eigenen-Schreibvorgänge“)</a> und <a href="https://jepsen.io/consistency/models/writes-follow-reads" target="_blank" rel="noopener noreferrer">Writes-Follow-Reads („Schreibvorgänge folgen Lesevorgängen“)</a> sowie eine Gesamtreihenfolge der Schreibvorgänge. Die Gesamtreihenfolge der Schreibvorgänge bedeutet, dass bei jedem Replikat die Transaktionen in der gleichen Reihenfolge übertragen werden, was genau das Verhalten ist, das wir in einem transaktionalen System wünschen. Sequenzielle Konsistenz geht mit dem Vorbehalt einher, dass jede einzelne Entität im System beliebig veraltet sein kann, aber dieser Vorbehalt ist für uns ein Vorteil, da wir so bei der Entwicklung unserer APIs die Verzögerung der Replikate berücksichtigen können.</p>
+	<p>Der Gedanke dahinter ist, dass, wenn D1 den Anwendungen einen Lamport-Zeitstempel für jede Datenbankabfrage gibt und diese Anwendungen D1 den letzten Lamport-Zeitstempel mitteilen, den sie gesehen haben, wir jedes Replikat bestimmen lassen können, wie die Abfragen gemäß dem sequenziellen Konsistenzmodell funktionieren sollen.</p>
+	<p>Eine robuste und dennoch einfache Möglichkeit, sequenzielle Konsistenz mit Replikaten zu implementieren, ist die folgende:</p>
+	<ul>
+		<li>
+			<p>Verknüpfen Sie einen Lamport-Zeitstempel mit jeder einzelnen Anfrage an die Datenbank. Ein monoton ansteigender Commit-Token eignet sich hierfür gut.</p>
+		</li>
+		<li>
+			<p>Senden Sie alle Schreibabfragen an die primäre Datenbank, um die Gesamtreihenfolge der Schreibvorgänge zu gewährleisten.</p>
+		</li>
+		<li>
+			<p>Senden Sie Leseabfragen an ein beliebiges Replikat, aber lassen Sie das Replikat die Abfrage erst dann bearbeiten, wenn das Replikat Aktualisierungen von der primären Datenbank erhält, die nach dem Lamport-Zeitstempel in der Abfrage liegen.</p>
+		</li>
+	</ul>
+	<p>Das Schöne an dieser Implementierung ist, dass sie in dem häufigen Fall, dass ein an Lesevorgängen reicher Workload immer an dasselbe Replikat geht, schnell ist und auch dann funktioniert, wenn Anforderungen an verschiedene Replikate weitergeleitet werden.</p>
+	<div class="flex anchor relative">
+		<h3 id="sneak-preview-bringing-read-replication-to-d1-with-sessions"><i><b>Exklusive Vorschau</b></i>: Lesereplikation in D1 mit Sessions</h3>
+		<a href="https://blog.cloudflare.com/#sneak-preview-bringing-read-replication-to-d1-with-sessions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um die Lesereplikation in D1 zu ermöglichen, werden wir die D1-API um ein neues Konzept erweitern: <b>Sessions</b>. Eine Session kapselt alle Abfragen, die eine logische Sitzung für Ihre Anwendung darstellen. Eine Session könnte zum Beispiel alle Anfragen eines bestimmten Webbrowsers oder alle Anfragen einer mobilen Anwendung enthalten. Wenn Sie Sessions verwenden, nutzen Ihre Abfragen die Kopie der D1-Datenbank, die für Ihre Anfrage am sinnvollsten ist, sei es die primäre Datenbank oder ein nahegelegenes Replikat. Die Sessions-Implementierung von D1 stellt die sequenzielle Einheitlichkeit für alle Abfragen in der Session sicher.</p>
+	<p>Da die Sessions-API das Konsistenzmodell von D1 ändert, müssen sich Entwickler und Entwicklerinnen für die neue API entscheiden. Bestehende D1-API-Methoden bleiben unverändert und haben nach wie vor das gleiche Konsistenzmodell für die Snapshot-Isolation wie zuvor. Allerdings werden nur Abfragen, die mit der neuen Sessions-API durchgeführt werden, Replikate verwenden.</p>
+	<p>Hier ist ein Beispiel für die D1 Sessions-API:</p>
+	<p>Die Implementierung von Sessions in D1 verwendet Commit-Token. &nbsp;Commit-Token identifizieren eine bestimmte an die Datenbank übertragene Abfrage. &nbsp;Innerhalb einer Sitzung verwendet D1 Commit-Token, um sicherzustellen, dass die Abfragen der Reihe nach ausgeführt werden. &nbsp;Im obigen Beispiel stellt die D1-Sitzung sicher, dass die „SELECT COUNT(*)“-Abfrage <i>nach dem</i> „INSERT“ der neuen Anforderung erfolgt, <i>selbst wenn</i> wir zwischen den Wartezeiten die Replikate wechseln.</p>
+	<pre class="language-js"><code class="language-js">export default {
+  async fetch(request: Request, env: Env) {
+    // When we create a D1 Session, we can continue where we left off
+    // from a previous Session if we have that Session's last commit
+    // token.  This Worker will return the commit token back to the
+    // browser, so that it can send it back on the next request to
+    // continue the Session.
+    //
+    // If we don't have a commit token, make the first query in this
+    // session an "unconditional" query that will use the state of the
+    // database at whatever replica we land on.
+    const token = request.headers.get('x-d1-token') ?? 'first-unconditional'
+    const session = env.DB.withSession(token)
+
+
+    // Use this Session for all our Workers' routes.
+    const response = await handleRequest(request, session)
+
+
+    if (response.status === 200) {
+      // Set the token so we can continue the Session in another request.
+      response.headers.set('x-d1-token', session.latestCommitToken)
+    }
+    return response
+  }
+}
+
+
+async function handleRequest(request: Request, session: D1DatabaseSession) {
+  const { pathname } = new URL(request.url)
+
+
+  if (pathname === '/api/orders/list') {
+    // This statement is a read query, so it will execute on any
+    // replica that has a commit equal or later than `token` we used
+    // to create the Session.
+    const { results } = await session.prepare('SELECT * FROM Orders').all()
+
+
+    return Response.json(results)
+  } else if (pathname === '/api/orders/add') {
+    const order = await request.json&lt;Order&gt;()
+
+
+    // This statement is a write query, so D1 will send the query to
+    // the primary, which always has the latest commit token.
+    await session
+      .prepare('INSERT INTO Orders VALUES (?, ?, ?)')
+      .bind(order.orderName, order.customer, order.value)
+      .run()
+
+
+    // In order for the application to be correct, this SELECT
+    // statement must see the results of the INSERT statement above.
+    // The Session API keeps track of commit tokens for queries
+    // within the session and will ensure that we won't execute this
+    // query until whatever replica we're using has seen the results
+    // of the INSERT.
+    const { results } = await session
+      .prepare('SELECT COUNT(*) FROM Orders')
+      .all()
+
+
+    return Response.json(results)
+  }
+
+
+  return new Response('Not found', { status: 404 })
+}</code></pre>
+	<p>Es gibt mehrere Optionen, wie Sie eine Sitzung in einem Workers-Fetch-Handler starten können. &nbsp;<code>db.withSession(&lt;condition&gt;)</code> akzeptiert diese Argumente:</p>
+	<p><code><b>condition</b></code><b>-Argument</b></p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><b><code>condition</code> argument</b></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><b>Behavior</b></span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>&lt;commit_token&gt;</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) starts Session as of given commit token</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>first-unconditional</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) if the first query is read, read whatever current replica has and use the commit token of that read as the basis for subsequent queries.&nbsp; If the first query is a write, forward the query to the primary and use the commit token of the write as the basis for subsequent queries.</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>first-primary</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) runs first query, read or write, against the primary</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>null</code> or missing argument</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">treated like <code>first-unconditional</code>&nbsp;</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><b>Verhalten</b></p>
+	<p><code>&lt;commit_token&gt;</code></p>
+	<p>(1) startet Session ab dem angegebenen Commit-Token</p>
+	<p>(2) nachfolgende Abfragen haben sequenzielle Konsistenz</p>
+	<p><code>first-unconditional</code></p>
+	<p>(1) Lesen Sie, nachdem die erste Abfrage gelesen wurde, das aktuelle Replikat und verwenden Sie das Commit-Token dieses Lesevorgangs als Grundlage für nachfolgende Abfragen.&nbsp; Wenn die erste Abfrage ein Schreibvorgang ist, leiten Sie die Abfrage an die primäre Datenbank weiter und verwenden das Commit-Token des Schreibvorgangs als Grundlage für nachfolgende Abfragen.</p>
+	<p>(2) nachfolgende Abfragen haben sequenzielle Konsistenz</p>
+	<p><code>first-primary</code></p>
+	<p>(1) führt die erste Abfrage&nbsp;– ob Lesevorgang oder Schreibvorgang&nbsp;– gegen die primäre aus</p>
+	<p>(2) nachfolgende Abfragen haben sequenzielle Konsistenz</p>
+	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create northwind-traders
+
+# omit --remote to run on a local database for development
+npx wrangler d1 execute northwind-traders --remote --file=./schema.sql
+
+npx wrangler d1 execute northwind-traders --remote --file=./data.sql</code></pre>
+	<p><code>null</code> oder fehlendes Argument</p>
+	<pre class="language-bash"><code class="language-bash"># database schema &amp; data
+npx wrangler d1 export northwind-traders --remote --output=./database.sql
+
+# single table schema &amp; data
+npx wrangler d1 export northwind-traders --remote --table='Employee' --output=./table.sql
+
+# database schema only
+npx wrangler d1 export &lt;database_name&gt; --remote --output=./database-schema.sql --no-data=true</code></pre>
+	<p>behandelt wie <code>first-unconditional</code>&nbsp;</p>
+	<pre class="language-bash"><code class="language-bash"># To find top 10 queries by average execution time:
+npx wrangler d1 insights &lt;database_name&gt; --sort-type=avg --sort-by=time --count=10</code></pre>
+	<p>Es ist möglich, dass eine Sitzung mehrere Anfragen umfasst, indem Sie das Commit-Token der letzten Anfrage der Sitzung verwenden, um eine neue Sitzung zu starten. &nbsp;So können einzelne User Agents, wie z. B. eine Webanwendung oder eine mobile App, sicherstellen, dass alle Abfragen, die der Nutzer sieht, in ihrer Reihenfolge einheitlich sind.</p>
+	<p>Die Lesereplikation von D1 wird integriert sein, keine zusätzlichen Nutzungs- oder Speicherkosten verursachen und keine Konfiguration der Replikate erfordern. Cloudflare <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">überwacht den</a> D1-Datenverkehr einer Anwendung und erstellt automatisch Datenbankreplikate, um den Nutzer-Traffic auf mehrere Server zu verteilen, die sich in der Nähe der Nutzer befinden. Im Einklang mit unserem Serverless-Modell sollten sich D1-Entwickler und -Entwicklerinnen nicht um die Bereitstellung und Verwaltung von Replikaten kümmern müssen. Stattdessen sollten sich die Entwickler und Entwicklerinnen darauf konzentrieren, Anwendungen für die Replikation und die Kompromisse bei der Datenkonsistenz zu entwerfen.</p>
+	<p>Wir arbeiten aktiv an der globalen Lesereplikation und der Umsetzung des oben genannten Vorschlags (bitte teilen Sie Ihr Feedback im <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1-Kanal</a> auf unserem Entwickler-Discord). Bis dahin können Sie die aufregenden neuen Ergänzungen der allgemein verfügbaren Version von D1 entdecken.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dTCMeWMaQjhBd1SM8hM6O/2cbe9ec1a7a4fb0c061afe0e1c0bf666/image1-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="check-out-d1-ga">Sehen Sie sich D1 GA an</h3>
+		<a href="https://blog.cloudflare.com/#check-out-d1-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Seit der offenen Beta-Version von D1 im Oktober 2023 haben wir uns auf die Zuverlässigkeit, Skalierbarkeit und Entwicklererfahrung von D1 konzentriert, die für kritische Dienste erforderlich sind. Wir haben in mehrere neue Funktionen investiert, die es Entwicklern und Entwicklerinnen ermöglichen, Anwendungen mit D1 schneller zu erstellen und zu debuggen.</p>
+	<p><b>Größeres entwickeln mit größeren DatenbankenBuild bigger with larger databases</b>Wir haben auf die Wünsche der Entwickler und Entwicklerinnen nach größeren Datenbanken gehört. D1 unterstützt jetzt bis zu 10 GB Datenbanken, mit 50.000 Datenbanken im Workers Paid-Tarif. Mit der horizontalen Skalierung von D1 können Anwendungen nun Anwendungen mit Datenbank-pro-Geschäftseinheit modellieren. Seit der Beta-Phase verarbeiten neue D1-Datenbanken in einem bestimmten Zeitraum 40x mehr Anfragen als D1-Alpha-Datenbanken.</p>
+	<p><b>Massenhaftes Importieren &amp; Exportieren von Daten</b>Entwickler und Entwicklerinnen importieren und exportieren Daten aus verschiedenen Gründen:</p>
+	<ul>
+		<li>
+			<p>Prüfung von Datenbankmigrationen zu/von verschiedenen Datenbanksystemen</p>
+		</li>
+		<li>
+			<p>Datenkopien für lokale Entwicklung oder Tests</p>
+		</li>
+		<li>
+			<p>Manuelle Backups für individuelle Anforderungen wie Compliance</p>
+		</li>
+	</ul>
+	<p>Bisher konnten Sie SQL-Dateien gegen D1 ausführen. Jetzt verbessern wir <code>wrangler d1 execute –file=&lt;filename&gt;</code>, um sicherzustellen, dass große Importe atomare Operationen sind, die Ihre Datenbank nie in einem Zwischenzustand belassen. <code>wrangler d1 execute</code> ist jetzt auch standardmäßig auf local-first eingestellt, um Ihre entfernte Produktionsdatenbank zu schützen.</p>
+	<p>Um unsere <a href="https://github.com/cloudflare/d1-northwind/tree/main" target="_blank" rel="noopener noreferrer">Northwind Traders</a> Demo-Datenbank zu importieren, können Sie das <a href="https://github.com/cloudflare/d1-northwind/blob/main/db/schema.sql" target="_blank" rel="noopener noreferrer">Schema</a> und die <a href="https://github.com/cloudflare/d1-northwind/blob/main/db/data.sql" target="_blank" rel="noopener noreferrer">Daten</a> herunterladen und die SQL-Dateien ausführen.</p>
+	<p>D1-Datenbankdaten &amp; Schema, nur Schema oder nur Daten können mit in eine SQL-Datei exportiert werden:</p>
+	<p><b>Debuggen der Abfrageperformance</b>Es ist wichtig, dass man für in der Produktionsumgebung eingesetzte Workloads die Performance von SQL-Abfragen versteht und langsame Abfragen debuggen kann. Wir haben die experimentellen <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights" target="_blank" rel="noopener noreferrer"><code>wrangler d1 insights</code></a> hinzugefügt, um Entwicklern und Entwicklerinnen bei der Analyse von Metriken zur Abfrageperformance zu helfen, die auch über die <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics" target="_blank" rel="noopener noreferrer">GraphQL-API</a> verfügbar sind.</p>
+	<p><b>Entwicklungstools</b>Verschiedene <a href="https://developers.cloudflare.com/d1/reference/community-projects" target="_blank" rel="noopener noreferrer">Community-Entwicklungsprojekte</a> unterstützen D1. Neu hinzugekommen ist <a href="https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm" target="_blank" rel="noopener noreferrer">Prisma ORM</a> in Version 5.12.0, das nun Workers und D1 unterstützt.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Nächste Schritte</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Funktionen, die jetzt mit GA und unserem globalen Lesereplikationsdesign zur Verfügung stehen, sind nur die ersten Schritte für die Bereitstellung der SQL-Datenbank, die für Entwickleranwendungen benötigt wird. Wenn Sie D1 noch nicht verwendet haben, können Sie jetzt <a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">sofort loslegen</a>, die <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1-Entwicklerdokumentation</a> besuchen, um sich Anregungen zu holen, oder dem <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1-Kanal</a> in unserem Entwickler-Discord beitreten, um mit anderen D1-Entwicklern und -Entwicklerinnen und unserem Produktentwicklungsteam zu sprechen.</p>
+</div>

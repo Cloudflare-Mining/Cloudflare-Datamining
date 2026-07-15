@@ -1,0 +1,180 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/connect-any-react-application-to-an-mcp-server-in-three-lines-of-code">English</a>および<a href="https://blog.cloudflare.com/zh-cn/connect-any-react-application-to-an-mcp-server-in-three-lines-of-code">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LtVhVVAsSFzhekIF0nnt6/13c8e0249a24cf40bde2f6ae2d46d938/Open_sourcing_new_MCP_client_tooling.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>ワンクリックで、Cloudflareに<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>リモートモデルコンテキストプロトコル（MCP）サーバー</u></a>を<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>デプロイ</u></a>できます。信じられませんか？下のボタンをクリックしてください。 </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>これにより、最新のMCP標準をサポートするリモートMCPサーバーが利用可能になります。これが、<a href="https://blog.cloudflare.com/mcp-demo-day"><u>Atlassian、Linear、PayPalなど</u></a>の企業のサーバーを含む、数千のリモートMCPサーバーがCloudflareにデプロイされている理由です。</p>
+	<p>しかし、サーバーのデプロイは方程式の半分に過ぎません。私たちは、これらのサーバーに接続して新しいAIによるサービス統合を可能にする、リモートMCPクライアントの構築とデプロイも、同じくらい簡単にしたいと考えました。そこで、私たちはリモートMCPサーバーに接続するためのReactライブラリである <code>use-mcp</code> を構築しました。これをMCPエコシステムに貢献して、より多くの開発者がリモートMCPクライアントを構築できるようにしたのです。</p>
+	<p>本日、MCPクライアントの構築とデプロイを簡単に行える2つのツールをオープンソース化します。</p>
+	<ol>
+		<li>
+			<p><a href="https://github.com/modelcontextprotocol/use-mcp" target="_blank" rel="noopener noreferrer"><u>use-mcp</u></a> — わずか3行のコードで任意のリモートMCPサーバーに接続し、トランスポート、認証、セッション管理を自動的に処理するReactライブラリ。このライブラリを<a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer"><u>MCPエコシステム</u></a>に貢献して、より多くの開発者がリモートMCPクライアントを構築できるようになることを嬉しく思います。</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/ai/tree/main/playground/ai" target="_blank" rel="noopener noreferrer"><u>AI Playground</u></a>は、多くのLLMモデルを使用してリモートMCPサーバーと対話するCloudflareの<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AIチャットインターフェース</u></a>プラットフォームであり、最新のMCP標準をサポートしており、ご自身でデプロイできるようになりました。</p>
+		</li>
+	</ol>
+	<p>AIを活用したチャットボット、サポートエージェント、社内インターフェースのいずれを構築している場合でも、これらのツールを活用し、MCP経由でAIエージェントとアプリケーションを外部サービスに接続することができます。</p>
+	<p>導入をご希望ですか？下のボタンをクリックして、CloudflareのAI Playgroundのインスタンスをデプロイして、動作を確認してください。 </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fplayground%2Fai"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="use-mcp-a-react-library-for-building-remote-mcp-clients">use-mcp：リモートMCPクライアント構築用のReactライブラリ</h2>
+		<a href="https://blog.cloudflare.com/#use-mcp-a-react-library-for-building-remote-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/modelcontextprotocol/use-mcp" target="_blank" rel="noopener noreferrer"><u>use-mcp</u></a>は、MCPクライアント構築の複雑さをすべて抽象化する<a href="https://www.npmjs.com/package/use-mcp" target="_blank" rel="noopener noreferrer"><u>Reactライブラリ</u></a>です。<code>useMCP()</code>フックをReactアプリケーションに追加し、ユーザーが操作できるリモートMCPサーバーに接続します。</p>
+	<p>リモートMCPサーバーに接続するために追加する必要があるコードはすべて以下の通りです：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">mport { useMcp } from 'use-mcp/react'
+function MyComponent() {
+  const { state, tools, callTool } = useMcp({
+    url: 'https://mcp-server.example.com'
+  })
+  return &lt;div&gt;Your actual UI code&lt;/div&gt;
+}</code></pre>
+	<p>URLを指定するだけで、瞬時に接続できます。</p>
+	<p>舞台裏では、<code>use-mcp</code>がトランスポートプロトコル（Streamable HTTPとServer-Sent Eventsの両方）、認証フロー、セッション管理を処理します。また、信頼性が高くスケーラブルで本番環境に対応したMCPクライアントの構築を支援する機能も数多く備えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="connection-management">接続管理</h3>
+		<a href="https://blog.cloudflare.com/#connection-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワークの信頼性がユーザー体験に影響を与えるべきではありません。<code>use-mcp</code>は接続のリトライと再接続をバックオフスケジュールで管理し、ネットワークの問題が発生しているときにクライアントが接続を回復して、中断した場所から続行できるようにします。<a href="https://github.com/modelcontextprotocol/use-mcp/tree/main?tab=readme-ov-file#return-value" target="_blank" rel="noopener noreferrer"><u>フックは、リアルタイムの接続状態</u></a>（「接続中」、「準備完了」、「失敗」）を公開し、カスタム接続処理ロジックを記述することなく、ユーザーに情報を提供し続ける応答性の高いUIを構築することができます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const { state } = useMcp({ url: 'https://mcp-server.example.com' })
+
+if (state === 'connecting') {
+  return &lt;div&gt;Establishing connection...&lt;/div&gt;
+}
+if (state === 'ready') {
+  return &lt;div&gt;Connected and ready!&lt;/div&gt;
+}
+if (state === 'failed') {
+  return &lt;div&gt;Connection failed&lt;/div&gt;
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="authentication-authorization">認証と認可</h3>
+		<a href="https://blog.cloudflare.com/#authentication-authorization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くのMCPサーバーは、ツールを呼び出すために何らかの形で認証を必要とします。<code>use-mcp</code>は<a href="https://oauth.net/2.1" target="_blank" rel="noopener noreferrer"><u>OAuth 2.1</u></a>をサポートし、OAuthフロー全体を処理します。ユーザーをログインページにリダイレクトして、アクセスを許可し、OAuthプロバイダーから返されるトークンを安全に保存し、サーバーに向けたこれ以降のすべてのリクエストに使用します。このライブラリでは、ユーザーがアクセス権を取り消す、または保存された認証情報を削除する<a href="https://github.com/modelcontextprotocol/use-mcp/tree/main?tab=readme-ov-file#api-reference" target="_blank" rel="noopener noreferrer"><u>方法</u></a>も提供しています。これにより、ロジックを記述することなく、リモートMCPサーバーに安全に接続できる完全な認証システムが得られます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const { clearStorage } = useMcp({ url: 'https://mcp-server.example.com' })
+
+// Revoke access and clear stored credentials
+const handleLogout = () =&gt; {
+  clearStorage() // Removes all stored tokens, client info, and auth state
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="dynamic-tool-discovery">動的ツール検出</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-tool-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPサーバーに接続すると、<code>use-mcp</code>は公開されているツールを取得します。サーバーが新しい機能を追加した場合、アプリはコードを変更せずにそれを認識できます。各ツールは、必要な入力や機能に関する型安全なメタデータを提供するため、クライアントはユーザーの入力を自動的に検証し、適切なツールを呼び出すことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="debugging-monitoring-capabilities">デバッグと監視機能</h3>
+		<a href="https://blog.cloudflare.com/#debugging-monitoring-capabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP統合のトラブルシューティングを支援するために、<code>use-mcp</code>は、debug、info、warn、Errorレベルで構造化されたメッセージを含む<code>ログ</code>配列を公開し、それぞれにタイムスタンプを付けます。<code>デバッグ</code>オプションで詳細なロギングを有効にし、ツール呼び出し、認証フロー、接続状態の変更、エラーを追跡できます。このリアルタイムの可視性により、開発時や本番環境の問題を診断しやすくなります。</p>
+	<div class="flex anchor relative">
+		<h3 id="future-proofed-backwards-compatible">将来への備えと後方互換性</h3>
+		<a href="https://blog.cloudflare.com/#future-proofed-backwards-compatible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPは急速に進化しており、トランスポートメカニズムが最近更新され、今後の認可も変更される予定です。<code>use-mcp</code>は、Server-Sent Events（SSE）と新しいStreamable HTTPトランスポートの両方をサポートし、MCPサーバーでサポートされている場合、自動的に検出して新しいプロトコルにアップグレードします。</p>
+	<p>MCP仕様が進化し続けるにつれて、後方互換性を維持しながら、最新の標準に合わせてライブラリを更新していきます。私たちは、<code>use-mcp</code>を<a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer"><u>MCPプロジェクト</u></a>に貢献できることをうれしく思っています。これにより、より広範なコミュニティからの支援を受け、さらにはMCPプロジェクトの成長が可能になります。</p>
+	<div class="flex anchor relative">
+		<h3 id="mcp-inspector-built-with-use-mcp">CPインスペクター、use-mcpで構築</h3>
+		<a href="https://blog.cloudflare.com/#mcp-inspector-built-with-use-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>use-mcpの<a href="https://github.com/modelcontextprotocol/use-mcp/tree/main/examples" target="_blank" rel="noopener noreferrer"><u> サンプルディレクトリ</u></a> に、 use-mcp<a href="https://inspector.use-mcp.dev" target="_blank" rel="noopener noreferrer"><u> フックで構築された最小限の MCPインスペクター</u></a> が表示されます。 .任意のMCPサーバーのURLを入力して、接続をテストし、利用可能なツールを表示し、デバッグログでインタラクションを監視します。これは、独自のMCPクライアントを構築したり、MCPサーバーへの接続をデバッグするために使用できるものとして、最適な出発点となります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PmPcZicaO39x9SuRqzqSX/b6caa6c7af1d6b03f17c41771598d1b5/image1.png" alt="" class="kg-image" width="1450" height="1100" loading="lazy">
+	</figure><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fuse-mcp%2Ftree%2Fmain%2Fexamples%2Finspector"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="open-sourcing-the-ai-playground">AI Playgroundのオープンソース化</h2>
+		<a href="https://blog.cloudflare.com/#open-sourcing-the-ai-playground" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は当初、Workers AIがサポートしているさまざまなAIモデルをテストするためのチャットインターフェースをユーザーに提供するためにAI<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u> Playgroundを構築しました。</u></a>その後、MCPのサポートを追加したため、MCPサーバーに接続し、テストするためのリモートMCPクライアントとして使用できるようになりました。本日、私たちはplaygroundをオープンソース化し、MCPクライアントが組み込まれた完全なチャットインターフェースを提供します。これにより、ご自身でデプロイし、ニーズに合わせてカスタマイズすることができます。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fplayground%2Fai"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>Playgroundには、Streamable HTTPとServer-Sent Eventsの両方のトランスポートメソッド、ユーザーにサインインして権限を付与することができるOAuth認証フロー、および直接MCPサーバー接続のためのトークン認証のサポートなど、最新のMCP規格のサポートが組み込まれています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iaUzuxBZafrH1q0VYHTJf/a7585da38f75818111b3521c9a5ef4e3/image2.png" alt="" class="kg-image" width="1999" height="1448" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-the-ai-playground-works">AI Playgroundの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-the-ai-playground-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Playgroundは、Workers AI上に構築されており、Agents SDKと<code>use-mcp</code>ライブラリを組み合わせて、Cloudflareのネットワーク上で動作する大規模言語モデル（LLM）のフルカタログにアクセスできます。</p>
+	<p>AI Playgroundは、<code>use-mcp</code>ライブラリを使用して、リモートMCPサーバーへの接続を管理します。playgroundが起動すると、MCP接続システムを <code>const{tools: mcpTools} = useMcp()</code> で初期化することで、接続されたサーバーからすべてのツールにアクセスできるようになります。最初は、このリストはどのMCPサーバーにも接続されていないため空になりますが、リモートMCPサーバーへの接続が確立されると、ツールは自動的に検出され、リストに入力されます。</p>
+	<p><a href="https://github.com/cloudflare/ai/blob/af1ce8be87d6a4e6bc10bb83f7959e63b28c1c8e/playground/ai/src/McpServers.tsx#L550" target="_blank" rel="noopener noreferrer"><u>一度接続されると</u></a>、playgroundはMCPサーバーが公開するすべてのツールにすぐにアクセスできます。 <code>use-mcp</code>ライブラリは、すべてのプロトコル通信とツール検出を処理し、接続状態を維持します。MCPサーバーが認証を必要とする場合、playgroundは、<code> use-mcp</code> から<code> onMcpAuthorization</code> を使用して認証プロセスを完了する専用のコールバックページを通過するOAuthフローを処理します。</p>
+	<p>ユーザーがチャットメッセージを送信すると、playgroundは<code> use-mcp</code> フックから<code> mcpTools を取得し、直接Workers AIに渡すことで、モデルは利用可能な機能を把握し、必要に応じて呼び出すことができます。</code></p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const stream = useChat({
+  api: "/api/inference",
+  body: {
+    model: params.model,
+    tools: mcpTools, // Tools from connected MCP servers
+    max_tokens: params.max_tokens,
+    system_message: params.system_message,
+  },
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="debugging-and-monitoring">デバッグと監視</h3>
+		<a href="https://blog.cloudflare.com/#debugging-and-monitoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPサーバーへの接続を監視およびデバッグするために、プレイグラウンドにDebug Logインターフェースを追加しました。これにより、接続ステータス、認証状態、接続エラーなど、MCPサーバー接続に関するリアルタイムの情報が表示されます。</p>
+	<p>チャットの対話中は、プレイグラウンドとMCPサーバー間で交換された生のメッセージ（ツールの呼び出しとその結果を含む）がデバッグインターフェースに表示されます。これにより、MCPサーバーに送信される悪意のあるペイロード、返された生の応答を監視し、ツールの呼び出しが成功したか失敗したかを追跡することができます。これは、異なる言語モデルと統合したときにツールがどのように動作しているかを確認できるため、リモートMCPサーバーを構築する方にとって特に有用です。</p>
+	<div class="flex anchor relative">
+		<h2 id="contributing-to-the-mcp-ecosystem">MCPエコシステムへの貢献</h2>
+		<a href="https://blog.cloudflare.com/#contributing-to-the-mcp-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPがこれほど急速に進化した理由の1つは、オープンソースプロジェクトであることと、コミュニティが支えている理由の1つです。私たちは、より多くの開発者がリモートMCPクライアントを構築できるように、<code>use-mcp</code>ライブラリを<a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener noreferrer"><u>MCPエコシステム</u></a>に貢献できることを嬉しく思っています。</p>
+	<p>まずは、<a href="https://github.com/cloudflare/ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI GitHubのリポジトリ</u></a>でデプロイおよび変更可能な実例をご確認ください。これには、AI Playgroundの完全な<a href="https://github.com/cloudflare/ai/tree/main/playground/ai" target="_blank" rel="noopener noreferrer"><u>ソースコード</u></a>、異なる認証・認可プロバイダーを使用する多数のリモートMCPサーバー、<a href="https://github.com/cloudflare/ai/tree/main/demos/use-mcp-inspector" target="_blank" rel="noopener noreferrer"><u>MCPインスペクター</u></a>が含まれます。</p>
+	<p>Cloudflare MCPサーバーを<a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>公開</u></a>し、より良いものにするための貢献を歓迎します。</p>
+	<p>初めてのMCPサーバーを構築する、既存のアプリケーションにMCPを統合する、より広範なエコシステムに貢献する、といったことを行っている方について、ぜひご意見をお聞かせください。ご質問、フィードバック、コラボレーションのアイデアがございましたら、<a href="https://blog.cloudflare.com/#"><u>1800-mcp@cloudflare.com</u></a>までメールでご連絡ください。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sYYS9c45orRX6SaUw5qTx/b975c5221ab538cc8f1167b706da375f/image3.png" alt="" class="kg-image" width="1200" height="267" loading="lazy">
+	</figure>
+	<p></p>
+</div>

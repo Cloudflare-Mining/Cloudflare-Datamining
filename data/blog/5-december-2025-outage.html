@@ -1,153 +1,122 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/5-december-2025-outage">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/5-december-2025-outage">Français</a>, <a href="https://blog.cloudflare.com/de-de/5-december-2025-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/5-december-2025-outage">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/5-december-2025-outage">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/5-december-2025-outage">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/5-december-2025-outage">Português</a>, <a href="https://blog.cloudflare.com/es-la/5-december-2025-outage">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/es-es/5-december-2025-outage">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/5-december-2025-outage">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/5-december-2025-outage">Polski</a>, <a href="https://blog.cloudflare.com/nl-nl/5-december-2025-outage">Nederlands</a> and <a href="https://blog.cloudflare.com/zh-tw/5-december-2025-outage">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NoiDo8eH6E6bTJYfEqoe9/5dbf9b8cf88260554ac603c2a28ca7dd/Screenshot_2025-12-09_at_9.57.52%C3%A2__AM.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i><sup></sup></i></p>
-	<p><i><sup>Note: This post was updated to clarify the relationship of the internal WAF tool with the incident on Dec. 5.</sup></i></p>
-	<p>On December 5, 2025, at 08:47 UTC (all times in this blog are UTC), a portion of Cloudflare’s network began experiencing significant failures. The incident was resolved at 09:12 (~25 minutes total impact), when all services were fully restored.</p>
-	<p>A subset of customers were impacted, accounting for approximately 28% of all HTTP traffic served by Cloudflare. Several factors needed to combine for an individual customer to be affected as described below.</p>
-	<p>The issue was not caused, directly or indirectly, by a cyber attack on Cloudflare’s systems or malicious activity of any kind. Instead, it was triggered by changes being made to our body parsing logic while attempting to detect and mitigate an industry-wide vulnerability <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability"><u>disclosed this week</u></a> in React Server Components.</p>
-	<p>Any outage of our systems is unacceptable, and we know we have let the Internet down again following the incident on November 18. We will be publishing details next week about the work we are doing to stop these types of incidents from occurring.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-happened">What happened</h3>
-		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The graph below shows HTTP 500 errors served by our network during the incident timeframe (red line at the bottom), compared to unaffected total Cloudflare traffic (green line at the top).</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43yFyHQhKjhPoLh4yB7pQ8/c1eb08a3e056530311e6056ecac522ed/image1.png" alt="500 error codes served by Cloudflare’s network during the incident" class="kg-image" width="1999" height="955" loading="lazy">
-	</figure>
-	<p>Cloudflare's Web Application Firewall (WAF) provides customers with protection against malicious payloads, allowing them to be detected and blocked. To do this, Cloudflare’s proxy buffers HTTP request body content in memory for analysis. Before today, the buffer size was set to 128KB.</p>
-	<p>As part of our ongoing work to protect customers who use React against a critical vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a>, we started rolling out an increase to our buffer size to 1MB, the default limit allowed by Next.js applications, to make sure as many customers as possible were protected.</p>
-	<p>This first change was being rolled out using our gradual deployment system. During rollout, we noticed that our internal WAF testing tool did not support the increased buffer size. As this internal test tool was not needed at that time and had no effect on customer traffic, we made a second change to turn it off.</p>
-	<p>This second change of turning off our WAF testing tool was implemented using our global configuration system. This system does not perform gradual rollouts, but rather propagates changes within seconds to the entire fleet of servers in our network and is under review <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>following the outage we experienced on November 18</u></a>.&nbsp;</p>
-	<p>Unfortunately, in our FL1 version of our proxy, under certain circumstances, the second change of turning off our WAF rule testing tool caused an error state that resulted in 500 HTTP error codes to be served from our network.</p>
-	<p>As soon as the change propagated to our network, code execution in our FL1 proxy reached a bug in our rules module which led to the following Lua exception: </p>
-	<pre class="language-Rust"><code class="language-Rust">[lua] Failed to run module rulesets callback late_routing: /usr/local/nginx-fl/lua/modules/init.lua:314: attempt to index field 'execute' (a nil value)</code></pre>
-	<p>resulting in HTTP code 500 errors being issued.</p>
-	<p>The issue was identified shortly after the change was applied, and was reverted at 09:12, after which all traffic was served correctly.</p>
-	<p>Customers that have their web assets served by our older FL1 proxy <b>AND</b> had the Cloudflare Managed Ruleset deployed were impacted. All requests for websites in this state returned an HTTP 500 error, with the small exception of some test endpoints such as <code>/cdn-cgi/trace</code>.</p>
-	<p>Customers that did not have the configuration above applied were not impacted. Customer traffic served by our China network was also not impacted.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-runtime-error">The runtime error</h3>
-		<a href="https://blog.cloudflare.com/#the-runtime-error" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare’s rulesets system consists of sets of rules which are evaluated for each request entering our system. A rule consists of a filter, which selects some traffic, and an action which applies an effect to that traffic. Typical actions are “<code>block</code>”, “<code>log</code>”, or “<code>skip</code>”. Another type of action is “<code>execute</code>”, which is used to trigger evaluation of another ruleset.</p>
-	<p>Our internal logging system uses this feature to evaluate new rules before we make them available to the public. A top level ruleset will execute another ruleset containing test rules. It was these test rules that we were attempting to disable.</p>
-	<p>We have a killswitch subsystem as part of the rulesets system which is intended to allow a rule which is misbehaving to be disabled quickly. This killswitch system receives information from our global configuration system mentioned in the prior sections. We have used this killswitch system on a number of occasions in the past to mitigate incidents and have a well-defined Standard Operating Procedure, which was followed in this incident.</p>
-	<p>However, we have never before applied a killswitch to a rule with an action of “<code>execute</code>”. When the killswitch was applied, the code correctly skipped the evaluation of the execute action, and didn’t evaluate the sub-ruleset pointed to by it. However, an error was then encountered while processing the overall results of evaluating the ruleset:</p>
-	<pre class="language-Rust"><code class="language-Rust">if rule_result.action == "execute" then
-  rule_result.execute.results = ruleset_results[tonumber(rule_result.execute.results_index)]
-end</code></pre>
-	<p>This code expects that, if the ruleset has action=”execute”, the “rule_result.execute” object will exist. However, because the rule had been skipped, the rule_result.execute object did not exist, and Lua returned an error due to attempting to look up a value in a nil value.</p>
-	<p>This is a straightforward error in the code, which had existed undetected for many years. This type of code error is prevented by languages with strong type systems. In our replacement for this code in our new FL2 proxy, which is written in Rust, the error did not occur.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-about-the-changes-being-made-after-the-incident-on-november-18-2025">What about the changes being made after the incident on November 18, 2025?</h3>
-		<a href="https://blog.cloudflare.com/#what-about-the-changes-being-made-after-the-incident-on-november-18-2025" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We made an unrelated change that caused a similar, <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>longer availability incident</u></a> two weeks ago on November 18, 2025. In both cases, a deployment to help mitigate a security issue for our customers propagated to our entire network and led to errors for nearly all of our customer base.</p>
-	<p>We have spoken directly with hundreds of customers following that incident and shared our plans to make changes to prevent single updates from causing widespread impact like this. We believe these changes would have helped prevent the impact of today’s incident but, unfortunately, we have not finished deploying them yet.</p>
-	<p>We know it is disappointing that this work has not been completed yet. It remains our first priority across the organization. In particular, the projects outlined below should help contain the impact of these kinds of changes:</p>
-	<ul>
-		<li>
-			<p><b>Enhanced Rollouts &amp; Versioning</b>: Similar to how we slowly deploy software with strict health validation, data used for rapid threat response and general configuration needs to have the same safety and blast mitigation features. This includes health validation and quick rollback capabilities among other things.</p>
-		</li>
-		<li>
-			<p><b>Streamlined break glass capabilities:</b> Ensure that critical operations can still be achieved in the face of additional types of failures. This applies to internal services as well as all standard methods of interaction with the Cloudflare control plane used by all Cloudflare customers.</p>
-		</li>
-		<li>
-			<p><b>"Fail-Open" Error Handling: </b>As part of the resilience effort, we are replacing the incorrectly applied hard-fail logic across all critical Cloudflare data-plane components. If a configuration file is corrupt or out-of-range (e.g., exceeding feature caps), the system will log the error and default to a known-good state or pass traffic without scoring, rather than dropping requests. Some services will likely give the customer the option to fail open or closed in certain scenarios. This will include drift-prevention capabilities to ensure this is enforced continuously.</p>
-		</li>
-	</ul>
-	<p>Before the end of next week we will publish a detailed breakdown of all the resiliency projects underway, including the ones listed above. While that work is underway, we are locking down all changes to our network in order to ensure we have better mitigation and rollback systems before we begin again.</p>
-	<p>These kinds of incidents, and how closely they are clustered together, are not acceptable for a network like ours. On behalf of the team at Cloudflare we want to apologize for the impact and pain this has caused again to our customers and the Internet as a whole.</p>
-	<div class="flex anchor relative">
-		<h3 id="timeline">Timeline</h3>
-		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p><span data-portabletext-unknown="mark"><em>Note: This post was updated to clarify the relationship of the internal WAF tool with the incident on Dec. 5.</em></span></p>
+<p>On December 5, 2025, at 08:47 UTC (all times in this blog are UTC), a portion of Cloudflare’s network began experiencing significant failures. The incident was resolved at 09:12 (~25 minutes total impact), when all services were fully restored.</p>
+<p>A subset of customers were impacted, accounting for approximately 28% of all HTTP traffic served by Cloudflare. Several factors needed to combine for an individual customer to be affected as described below.</p>
+<p>The issue was not caused, directly or indirectly, by a cyber attack on Cloudflare’s systems or malicious activity of any kind. Instead, it was triggered by changes being made to our body parsing logic while attempting to detect and mitigate an industry-wide vulnerability <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability" target="_blank" rel="noopener noreferrer"><u>disclosed this week</u></a> in React Server Components.</p>
+<p>Any outage of our systems is unacceptable, and we know we have let the Internet down again following the incident on November 18. We will be publishing details next week about the work we are doing to stop these types of incidents from occurring.</p>
+<h3>What happened</h3>
+<p>The graph below shows HTTP 500 errors served by our network during the incident timeframe (red line at the bottom), compared to unaffected total Cloudflare traffic (green line at the top).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="500 error codes served by Cloudflare’s network during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 500 error codes served by Cloudflare’s network during the incident"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare's Web Application Firewall (WAF) provides customers with protection against malicious payloads, allowing them to be detected and blocked. To do this, Cloudflare’s proxy buffers HTTP request body content in memory for analysis. Before today, the buffer size was set to 128KB.</p>
+<p>As part of our ongoing work to protect customers who use React against a critical vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a>, we started rolling out an increase to our buffer size to 1MB, the default limit allowed by Next.js applications, to make sure as many customers as possible were protected.</p>
+<p>This first change was being rolled out using our gradual deployment system. During rollout, we noticed that our internal WAF testing tool did not support the increased buffer size. As this internal test tool was not needed at that time and had no effect on customer traffic, we made a second change to turn it off.</p>
+<p>This second change of turning off our WAF testing tool was implemented using our global configuration system. This system does not perform gradual rollouts, but rather propagates changes within seconds to the entire fleet of servers in our network and is under review <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>following the outage we experienced on November 18</u></a>.&nbsp;</p>
+<p>Unfortunately, in our FL1 version of our proxy, under certain circumstances, the second change of turning off our WAF rule testing tool caused an error state that resulted in 500 HTTP error codes to be served from our network.</p>
+<p>As soon as the change propagated to our network, code execution in our FL1 proxy reached a bug in our rules module which led to the following Lua exception: </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[lua] </span><span class="sk-6f42c1-ffc799">Failed</span><span class="sk-24292e-fff"> to run module rulesets callback late_routing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">usr</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">local</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">init</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">314</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> attempt to index field </span><span class="sk-032f62-99ffe4">'execute'</span><span class="sk-24292e-fff"> (a nil value)</span></span></code></pre>
+</div>
+<p>resulting in HTTP code 500 errors being issued.</p>
+<p>The issue was identified shortly after the change was applied, and was reverted at 09:12, after which all traffic was served correctly.</p>
+<p>Customers that have their web assets served by our older FL1 proxy <strong>AND</strong> had the Cloudflare Managed Ruleset deployed were impacted. All requests for websites in this state returned an HTTP 500 error, with the small exception of some test endpoints such as <code>/cdn-cgi/trace</code>.</p>
+<p>Customers that did not have the configuration above applied were not impacted. Customer traffic served by our China network was also not impacted.</p>
+<h3>The runtime error</h3>
+<p>Cloudflare’s rulesets system consists of sets of rules which are evaluated for each request entering our system. A rule consists of a filter, which selects some traffic, and an action which applies an effect to that traffic. Typical actions are “<code>block</code>”, “<code>log</code>”, or “<code>skip</code>”. Another type of action is “<code>execute</code>”, which is used to trigger evaluation of another ruleset.</p>
+<p>Our internal logging system uses this feature to evaluate new rules before we make them available to the public. A top level ruleset will execute another ruleset containing test rules. It was these test rules that we were attempting to disable.</p>
+<p>We have a killswitch subsystem as part of the rulesets system which is intended to allow a rule which is misbehaving to be disabled quickly. This killswitch system receives information from our global configuration system mentioned in the prior sections. We have used this killswitch system on a number of occasions in the past to mitigate incidents and have a well-defined Standard Operating Procedure, which was followed in this incident.</p>
+<p>However, we have never before applied a killswitch to a rule with an action of “<code>execute</code>”. When the killswitch was applied, the code correctly skipped the evaluation of the execute action, and didn’t evaluate the sub-ruleset pointed to by it. However, an error was then encountered while processing the overall results of evaluating the ruleset:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">action </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "execute"</span><span class="sk-24292e-fff"> then</span></span>
+<span class="line"><span class="sk-24292e-fff">  rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ruleset_results[</span><span class="sk-6f42c1-ffc799">tonumber</span><span class="sk-24292e-fff">(rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results_index)]</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+</div>
+<p>This code expects that, if the ruleset has action=”execute”, the “rule_result.execute” object will exist. However, because the rule had been skipped, the rule_result.execute object did not exist, and Lua returned an error due to attempting to look up a value in a nil value.</p>
+<p>This is a straightforward error in the code, which had existed undetected for many years. This type of code error is prevented by languages with strong type systems. In our replacement for this code in our new FL2 proxy, which is written in Rust, the error did not occur.</p>
+<h3>What about the changes being made after the incident on November 18, 2025?</h3>
+<p>We made an unrelated change that caused a similar, <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>longer availability incident</u></a> two weeks ago on November 18, 2025. In both cases, a deployment to help mitigate a security issue for our customers propagated to our entire network and led to errors for nearly all of our customer base.</p>
+<p>We have spoken directly with hundreds of customers following that incident and shared our plans to make changes to prevent single updates from causing widespread impact like this. We believe these changes would have helped prevent the impact of today’s incident but, unfortunately, we have not finished deploying them yet.</p>
+<p>We know it is disappointing that this work has not been completed yet. It remains our first priority across the organization. In particular, the projects outlined below should help contain the impact of these kinds of changes:</p>
+<ul>
+	<li><strong>Enhanced Rollouts &amp; Versioning</strong>: Similar to how we slowly deploy software with strict health validation, data used for rapid threat response and general configuration needs to have the same safety and blast mitigation features. This includes health validation and quick rollback capabilities among other things.</li>
+	<li><strong>Streamlined break glass capabilities:</strong> Ensure that critical operations can still be achieved in the face of additional types of failures. This applies to internal services as well as all standard methods of interaction with the Cloudflare control plane used by all Cloudflare customers.</li>
+	<li><strong>"Fail-Open" Error Handling: </strong>As part of the resilience effort, we are replacing the incorrectly applied hard-fail logic across all critical Cloudflare data-plane components. If a configuration file is corrupt or out-of-range (e.g., exceeding feature caps), the system will log the error and default to a known-good state or pass traffic without scoring, rather than dropping requests. Some services will likely give the customer the option to fail open or closed in certain scenarios. This will include drift-prevention capabilities to ensure this is enforced continuously.</li>
+</ul>
+<p>Before the end of next week we will publish a detailed breakdown of all the resiliency projects underway, including the ones listed above. While that work is underway, we are locking down all changes to our network in order to ensure we have better mitigation and rollback systems before we begin again.</p>
+<p>These kinds of incidents, and how closely they are clustered together, are not acceptable for a network like ours. On behalf of the team at Cloudflare we want to apologize for the impact and pain this has caused again to our customers and the Internet as a whole.</p>
+<h3>Timeline</h3>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
 					<p>Time (UTC)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
 					<p>Status</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
 					<p>Description</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>08:47</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>INCIDENT start</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Configuration change deployed and propagated to the network</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>08:48</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Full impact</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Change fully propagated</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>08:50</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>INCIDENT declared</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Automated alerts</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>09:11</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Change reverted</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Configuration change reverted and propagation start</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>09:12</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>INCIDENT end</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Revert fully propagated, all traffic restored</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p></p>
 </div>

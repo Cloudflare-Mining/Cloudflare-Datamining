@@ -1,0 +1,81 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/a-wild-week-in-phishing-and-what-it-means-for-you">English</a>、<a href="https://blog.cloudflare.com/zh-tw/a-wild-week-in-phishing-and-what-it-means-for-you">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/a-wild-week-in-phishing-and-what-it-means-for-you">Français</a>、<a href="https://blog.cloudflare.com/de-de/a-wild-week-in-phishing-and-what-it-means-for-you">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/a-wild-week-in-phishing-and-what-it-means-for-you">한국어</a>、<a href="https://blog.cloudflare.com/es-es/a-wild-week-in-phishing-and-what-it-means-for-you">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/a-wild-week-in-phishing-and-what-it-means-for-you">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qPKUuIGbxmn5I3oGZ7W1E/9bd8faa76cc25b6d2ef1cb81ad920ddd/2504-1-Hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>インターネットは、悪者にとって本当に良いビジネスの場です。サイバーセキュリティインシデントの90%以上はフィッシングが攻撃の根本原因であり、8月のこの週には、<a href="https://apnews.com/article/trump-campaign-hacking-iran-769d8411d9a13ef9a0e039c0b6c3b032" target="_blank" rel="noopener noreferrer">米国選挙</a>、米国、イスラエル、イランに対する<a href="https://blog.google/threat-analysis-group/iranian-backed-group-steps-up-phishing-campaigns-against-israel-us" target="_blank" rel="noopener noreferrer">地政学的紛争</a>に対するフィッシング攻撃、<a href="https://www.sec.gov/Archives/edgar/data/1609804/000095014224002170/eh240519238_8k.htm" target="_blank" rel="noopener noreferrer">6,000万ドルの企業損失</a>が報告されました。</p>
+	<p>読者の皆様は、30年もの間、メールが攻撃やリスクの主な手段として使われ続けていると聞くと、私たちがこれに対して無力だと感じてしまうかもしれません。しかし、それは悪意ある攻撃者を過大評価し、検知に注力する防御側がどのように主導権を握り、打ち勝つことができるかを見誤っていると言えるでしょう。</p>
+	<p>フィッシングは、メールだけ、もしくは特定のプロトコルを指すものでもありません。簡単に言えば、読者の皆様や私たちのような人々に、無意識のうちに損害につながるような行動をとらせようとする試みです。こうした攻撃は、会社のCEOやCFOになりすますなど、<a href="https://blog.cloudflare.com/50-most-impersonated-brands-protect-phishing">視覚的</a>に、または組織的に本物であるように偽装することで機能します。<a href="https://blog.cloudflare.com/2023-phishing-report">Cloudflareがお客様を保護する際に確認している、最も影響力のある3つの主要な攻撃ベクトル</a>は次の通りです。1. リンクのクリック（偽装リンクは脅威指標の35.6%）2. ファイルやマルウェアのダウンロード（悪意のある添付ファイルはこうした指標の1.9%）3. フィンクやファイルを伴わずに金銭や知的財産を引き出すビジネスメール詐欺（BEC）（脅威指標の0.5%）。</p>
+	<p>現在、Cloudflareでは「マルチチャネルフィッシング」と呼ばれるものが増加しています。リンクやファイルを送信し、BECアクションを引き出す他のチャネルには<a href="https://en.wikipedia.org/wiki/SMS" target="_blank" rel="noopener noreferrer">SMS</a>（テキストメッセージ）、パブリックおよびプライベートメッセージ送信アプリがあり、これらを使用してリンクを送信したり、ユーザーに情報を読ませて、行動を起こさせるといった方法がますます一般的になっています。Google Workspace、Atlassian、Microsoft Office 365などのよく使われるコラボレーションツールで、攻撃者がリンク、ファイル、BECフィッシングを仕掛けることもあります。LinkedInやXのユーザーを標的としたWebおよびソーシャルフィッシングもあります。そのため、最終的にはフィッシングを阻止する試みは、これらの様々なベクトルを検出して保護できる、十分な包括性を備えたものでなければなりません。</p>
+	<p><i>これらの技術と製品についての詳細は</i><a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><i>こちら</i></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-real-example">実際の例</h3>
+		<a href="https://blog.cloudflare.com/#a-real-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここでは、巧妙な攻撃者がマルチチャネルフィッシングをどのように実行するかの例をご紹介します。</p>
+	<p>以下は、ある役員が迷惑メールフォルダにあることに気づいたメールメッセージです。これは、当社の<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">メールセキュリティ</a>製品がこのメールに含まれる異常な内容を検知したため迷惑メールフォルダに振り分けられていますが、この役員はその内容が取り組んでいるプロジェクトに関連しているため正当なものであると考えています。会社の組織図を要求する内容が記載されています。攻撃者はこの種のメールのやりとりを続けると検出されることを知っているため、実際のGoogleフォームへのリンクを記載しています：</p>
+	<ul>
+		<li>
+			<p>役員がこのリンクをクリックすると、正規のGoogleフォームである以下の画面が表示されます。</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p>ここに組織図をアップロードする要求があり、彼らは次のことを試みます：</p>
+		</li>
+		<li>
+			<p>この役員は情報をアップロードしますが、アップロードが完了しません。ドキュメント内に「社外秘」の透かしが含まれており、<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Gateway</a>と<a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer">デジタル損失防止（DLP）</a>エンジンがこれを検出したことによりアップロードを防ぐことができたのです。</p>
+		</li>
+		<li>
+			<p>巧妙な攻撃者は、成功度を上げるために緊急性を利用します。この例では、役員がCEOに報告する期限が迫っていることを攻撃者が知っています。ドキュメントをアップロードできないため、役員は攻撃者に応答します。そこでこの攻撃者は、別の方法でアップロードするか、最悪の場合はWhatsAppで送信することを提案します。</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p>この役員は2通目のメールで指示されたWebサイトに組織図をアップロードしようとしましたが、そのサイトにマルウェアが仕込まれていることに気づきませんでした。しかし、Cloudflareの<a href="https://www.cloudflare.com/zero-trust/products/browser-isolation" target="_blank" rel="noopener noreferrer">ブラウザ分離</a>で読み込まれていたため、この役員のデバイスがマルウェアに感染することを防ぐことができました。ここで重要なのは、会社の機密文書をアップロードしようとした役員のアクションを再び防いだことです：</p>
+		</li>
+		<li>
+			<p>最後に、WhatsAppでのアップロードを試みますが、これも再び阻止します。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="ease-of-use">使いやすさ</h3>
+		<a href="https://blog.cloudflare.com/#ease-of-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セキュリティソリューションの設定と維持は、長期的な保護において非常に重要です。しかし、IT管理チームが各製品や設定を頻繁に調整し、各ユーザーのニーズを常に監視することは、チームに大きな負担がかかる作業であるため、コスト増大やリスク増加につながります。</p>
+	<p>上記の例では、わずか4つのステップを行っていたことで、この役員を保護することができました：</p>
+	<ol>
+		<li>
+			<p>保護のために、Cloudflareのデバイスエージェントをインストールし、ログインする</p>
+		</li>
+	</ol>
+	<p>わずか数回のクリックで、デバイスエージェントクライアントを持つすべてのユーザーをマルチチャネルフィッシングから保護することができ、エンドユーザーや管理者に難しい作業はありません。クライアントのインストールを許可しない企業の場合は、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer">エージェントレスの展開</a>も可能です。</p>
+	<p>2. &nbsp;セキュアWebゲートウェイを経由するすべてのユーザートラフィックに適用されるポリシーを設定する。これらのポリシーにより、フィッシングキャンペーンに関与していることが知られているサイトなど、リスクの高いサイトへのアクセスを完全にブロックすることができます。歴史の浅いドメインなど、疑わしいサイトの場合、アクセスにブラウザ分離を使用することで、ユーザーはWebサイトにアクセスできますが、インタラクションの面で制限されます。</p>
+	<p>また、この組織ではCloudflare Oneの<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Gateway</a>と<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup" target="_blank" rel="noopener noreferrer">ブラウザ分離</a>ソリューションが使用されており、無料のクラウドストレージのWebサイトはリモートの隔離された環境で読み込むように設定されているため、無料のクラウドストレージサービスに組織図をアップロードすることも、情報をコピーペーストする機能も使用することができませんでした。</p>
+	<p>また、この役員はWhatsApp上で悪意のある行為者と会話をすることはできましたが、管理者がWhatsApp上のすべてのアップロードとダウンロードをブロックするようにCloudflare OneのGatewayソリューションを設定していたため、ファイルはブロックされました。</p>
+	<p>3. &nbsp;アップロード、入力、コピーペーストを禁止すべき内容を基にDLPポリシーを設定する。</p>
+	<p>この役員は、組織がCloudflare OneのGatewayとDLPソリューションを使用しているため、Googleフォームに組織図をアップロードすることができませんでした。この保護は、Googleなどの有効なWebサイト上であっても、<a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer">Gateway</a>をすべての<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer">DLP</a>違反をブロックするように設定することで実装されます。</p>
+	<p>4. &nbsp;メールセキュリティを導入し、検出対象とするメールの種類を基に自動振り分けルールを設定する。</p>
+	<p>上記の例では、Cloudflareのメールセキュリティが受信箱を保護していたため、役員は複数件の悪意のあるメールを受信せずに済みました。受信したフィッシングメールは、メールの署名とは異なる人物になりすましていたため、迷惑メールフォルダに振り分けられました。また、役員のIT管理者が設定した<a href="https://developers.cloudflare.com/email-security/email-configuration/retract-settings" target="_blank" rel="noopener noreferrer">ワンクリックの設定</a>により、Eメールセキュリティの構成によって自動的に振り分けられました。</p>
+	<p>しかし、クラス最高の検出を備えていても、攻撃を受けている個々のユーザーについて詳しく調べる能力が重要であることは言うまでもありません。以下は、今後改善される予定のメールセキュリティ監視ダッシュボードのモックアップです。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">今後の展開は？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>フィッシングは30年前から存在し続けていますが、シームレスで包括的なソリューションで効果的に検出することが、現在においても保護を維持する唯一の方法です。</p>
+	<p>メールセキュリティだけを購入しようとしているのであれば、それだけでは不十分であることがわかります。仕事やデータはメール内だけに保存されているわけではないため、現代の従業員を保護するためには、多層防御が絶対的に必要となります。あらゆる場所に、あらゆるデバイスにあります。フィッシング対策も適切である必要があります。</p>
+	<p>複数のベンダーを組み合わせることでこれを行うことはできますが、すべてを連携させることはできません。また、マルチベンダーのアプローチはコストに加えて、通常、すでに手狭になっているITチームの調査、メンテナンス、統一性の確保にかかる負担が増加します。</p>
+	<p>Cloudflareを使い始めたばかりの方も、すでに利用が進んでいる方も、Cloudflare One製品スイートのさまざまな製品を手に取っていただくことで、フィッシング対策に総合的に役立つことがおわかりいただけると思います。特に、Cloudflareをすでに使用していて、Fortune 500企業や世界中の組織、政府機関から信頼される99.99％のメール検出を求めている方には、当社のメールセキュリティがどのように役立つかをご理解いただけると思います。</p>
+	<p>Office 365を使用している方で、現在のプロバイダーと当社の捕捉内容を比較されたい方は、今すぐ<a href="https://developers.cloudflare.com/email-security/deployment/api/setup/email-retro-scan" target="_blank" rel="noopener noreferrer">Retro Scan</a>から始めることができます。</p>
+	<p>また、当社のメールセキュリティソリューションを既にご利用の方は、当社の包括的な保護について<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+</div>

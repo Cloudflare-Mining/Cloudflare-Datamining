@@ -1,0 +1,637 @@
+<div class="mb2 gray5">14分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/internal-ai-engineering-stack">English</a>および<a href="https://blog.cloudflare.com/ko-kr/internal-ai-engineering-stack">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x6bxsDcVqrW4iKrnsQ4g8/18c1d0f3f23976c0a7420f1715d2a08f/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>過去30日間で、Cloudflareの研究開発組織の93%が、当社が独自のプラットフォーム上に構築したインフラストラクチャで稼働するAIコーディングツールを使用しています。</p>
+	<p>11か月前、当社はAIを真のエンジニアリングスタックに組み込むというプロジェクトに着手しました。エージェントがCloudflareで有用であるために必要な、内部MCPサーバー、アクセスレイヤー、AIツールを構築する必要がありました。全社のエンジニアを集め、「iMARS（社内MCPエージェント/サーバーロールアウトスクワッド）」と呼ばれるチームを編成しました。この持続的な作業の原因となったのは、CI/CD、ビルドシステム、自動化を含む社内ツールの多くを所有する開発プロダクティビティチームです。</p>
+	<p>以下は、過去30日間のエージェンティックAIの利用を把握する数値です：</p>
+	<ul>
+		<li>
+			<p>AIコーディングツールを積極的に利用している<b>社内ユーザーは3,683名</b>（全社比60%、研究開発部門比93%）、総従業員約6,100名のうち</p>
+		</li>
+		<li>
+			<p><b>4795万件</b>のAIリクエスト</p>
+		</li>
+		<li>
+			<p><b>295チーム</b>が現在、エージェンティックAIツールとコーディングアシスタントを活用しています。</p>
+		</li>
+		<li>
+			<p><b>2,018万件</b>月間AI Gatewayリクエスト</p>
+		</li>
+		<li>
+			<p><b>2,413.7億</b>トークンがAI Gatewayを経由</p>
+		</li>
+		<li>
+			<p><b>Workers AIで518億3000万トークンを処理</b></p>
+		</li>
+	</ul>
+	<p>開発者ベロシティへの影響は明らかで、マージリクエストがこの程度で前四半期比で増加したことはありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lMKwBTT3m7DDmS4BnoNhB/9002104b9c6c09cf72f4052d71e22363/BLOG-3270_2.png" alt="BLOG-3270 2" class="kg-image" width="1999" height="903" loading="lazy">
+	</figure>
+	<p>AIツールの導入が拡大するにつれて、4週間の移動平均は週あたり約5,600件から8,700件超に上昇しました。3月23日の週は10,952件と、第4四半期のベースラインほぼ2倍の数字となりました。</p>
+	<p>MCPサーバーが出発点でしたが、当社のチームはすぐにさらなる進展が必要だと気付きました。標準のコーディング方法、コードのレビュー方法、エンジニアのオンボード方法、変更が数千のリポジトリに伝達される方法などを再考する必要がありました。</p>
+	<p>この記事では、過去11か月の間に何が起こったか、そして最終的にどこに至ったのかを深く掘り下げます。今、エージェントウィークの締めくくりとして、これを公開します。当社が社内で構築したAIエンジニアリングスタックは、今週当社が出荷し強化するものと同じ製品で実行しているからです。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-architecture-at-a-glance">アーキテクチャの概要</h2>
+		<a href="https://blog.cloudflare.com/#the-architecture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エンジニア向けのツール層（<a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>、Windsurf、その他のMCP互換クライアント）には、オープンソースとサードパーティ製のコーディング支援ツールの両方が含まれます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oZJhdVNbW05lJaSnN3hds/21c5427f275ba908388333884530f455/image8.png" alt="BLOG-3270 3" class="kg-image" width="1437" height="746" loading="lazy">
+	</figure>
+	<p>各レイヤーは、使用するCloudflare製品やツールに対応します。</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>構築内容</p>
+				</th>
+				<th>
+					<p>構築の規模</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Zero Trust認証</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare Access</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>LLMルーティング、コスト追跡、BYOK、ゼロデータ保持制御を一元化</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u><b>AI Gateway</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>オープンウェイトモデルによるオンプラットフォーム推論</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u><b>Workers AI</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>MCPサーバーポータルと単一OAuth</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u><b>Workers</b></u></a> + <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u><b>Access</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI Code ReviewerとCI統合</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u><b>Workers</b></u></a> + <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u><b>AI Gateway</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>エージェント生成コードのサンドボックス化された実行（コードモード）</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/dynamic-workers"><u><b>Dynamic Workers</b></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ステートフルで長時間実行されるエージェントセッション</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u><b>エージェントSDK</b></u></a> (McpAgent, Durable Objects)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>クローン、構築、テストのための分離環境</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u><b>Sandbox SDK</b></u></a> — エージェントウィーク現在、一般利用可能</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>耐久性のある複数ステップのワークフロー</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u><b>Workflows</b></u></a> — エージェントウィーク中に10倍にスケールしました</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>16,000以上のエンティティナレッジグラフ</p>
+				</td>
+				<td>
+					<p><a href="https://backstage.io" target="_blank" rel="noopener noreferrer"><u><b>バックステージ</b></u></a> (OSS)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>これらは、社内専用のインフラストラクチャではありません。上記のすべて（Backstage以外）は出荷製品であり、その多くはエージェントウィーク中に大幅なアップデートが行われました。</p>
+	<p>3編に分けて説明します：</p>
+	<ol>
+		<li>
+			<p><b>プラットフォーム層</b> — 認証、ルーティング、推論の仕組み（AI Gateway、Workers AI、MCPポータル、コードモード）</p>
+		</li>
+		<li>
+			<p><b>ナレッジレイヤー</b> — エージェントが当社のシステムをどのように理解しているか（Backstage、AGENTS.md）</p>
+		</li>
+		<li>
+			<p><b>適用層</b> — 大規模に高品質を維持する方法（AI Code Reviewer、Engineer Codex）</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="act-1-the-platform-layer">1月：プラットフォーム層</h2>
+		<a href="https://blog.cloudflare.com/#act-1-the-platform-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="how-ai-gateway-helped-us-stay-secure-and-improve-the-developer-experience">AI Gatewayが安全の確保と開発者体験の向上に役立ったこと</h3>
+		<a href="https://blog.cloudflare.com/#how-ai-gateway-helped-us-stay-secure-and-improve-the-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1日あたり3,600人以上の内部ユーザーがAIコーディングツールを使用している場合、多くのクライアント、ユースケース、ロールにわたるアクセスと可視性を確保する必要があります。</p>
+	<p>すべては、すべての認証とゼロトラストポリシーの適用を処理する<a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare Access</b></u></a>から始まります。認証されると、すべてのLLMリクエストは<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u><b>AI Gateway</b></u></a>を経由します。これにより、プロバイダーキー、コスト追跡、データ保持ポリシーを一元管理できるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zorZ21OXIbNg7VACGzwZX/e1b35951622bab6ae7ca9fa9b8a5c844/BLOG-3270_4.png" alt="BLOG-3270 4" class="kg-image" width="992" height="516" loading="lazy">
+	</figure>
+	<p><i><sup>OpenCode AI Gatewayの概要：1日あたり68万8460万件のリクエスト、1日あたり105億7000万件のトークン、1つのエンドポイントを介して4つのプロバイダーにルーティングされています。</sup></i></p>
+	<p>AI Gatewayの分析は、毎月の使用量がモデルプロバイダー間でどのように分布しているかを示します。先月の内部リクエスト量の内訳は次の通りです。</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>プロバイダー</p>
+				</th>
+				<th>
+					<p>リクエスト/月</p>
+				</th>
+				<th>
+					<p>共有</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Frontier Labs（OpenAI、Anthropic、Google）</p>
+				</td>
+				<td>
+					<p>1,338万人</p>
+				</td>
+				<td>
+					<p>91.16%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Workers AI</p>
+				</td>
+				<td>
+					<p>130万</p>
+				</td>
+				<td>
+					<p>8.84%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>フロンティアモデルは、複雑なエージェンティックコーディング作業の大部分を処理していますが、Workers AIはすでに混在環境の重要な部分を占めており、ますますエージェンティックエンジニアリングワークロードの割合が増えています。</p>
+	<div class="flex anchor relative">
+		<h4 id="how-we-increasingly-leverage-workers-ai">Workers AIの活用方法</h4>
+		<a href="https://blog.cloudflare.com/#how-we-increasingly-leverage-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u><b>Workers AI</b></u></a>は、CloudflareのサーバーレスAI推論プラットフォームで、当社グローバルネットワーク上のGPUでオープンソースモデルを実行します。フロンティアモデルと比較して大幅なコスト改善に加え、推論がWorkers、Durable Objects、ストレージと同じネットワーク上に留まるという主な利点があります。クラウド間のホップに対処する必要はなく、これに起因する遅延やネットワークの脆弱性、追加のネットワーキング設定の管理が必要になります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WFqiZSL1RGbD2O7gOPDfR/2edc8c69fdea89fef76e600cb3ee5384/BLOG-3270_5.png" alt="BLOG-3270 5" class="kg-image" width="1822" height="1276" loading="lazy">
+	</figure>
+	<p><i><sup>先月のWorkers AI利用状況：入力トークン5147億件、出力トークン3億6100万件</sup></i></p>
+	<p><a href="https://blog.cloudflare.com/workers-ai-large-models"><u><b>Kimi K2.5</b></u></a>は、2026年3月にWorkers AI上でリリースされた、256kのコンテキストウィンドウ、ツール呼び出し、構造化出力を備えたフロンティア規模のオープンソースモデルです。<a href="https://blog.cloudflare.com/workers-ai-large-models"><u>Kimi K2.5ローンチ投稿</u></a>で述べたように、Kimiでは1日あたり70億以上のトークンを処理するセキュリティエージェントがあります。これは、中堅層の独自モデルでは、年間240万ドルと推定されます。しかし、Workers AIなら77%も安くなります。</p>
+	<p>セキュリティ以外にも、CIパイプラインでのドキュメントレビュー、何千ものリポジトリにわたるAGENTS.mdコンテキストファイルの生成、および同一ネットワークの遅延がモデルのピーク性能よりも重要な軽量な推論タスクにもWorkers AIが使用されています。</p>
+	<p>オープンソースモデルが改善され続ける中で、Workers AIが社内のワークロードの割合を増大させることが期待されます。</p>
+	<p>ひとつのプロキシWorkerを早期に経由することで、初日から単一のプロキシWorkerを経由するルーティングが可能になりました。クライアントをAI Gatewayに直接接続させることもでき、最初は簡単にセットアップできたでしょう。しかし、Workerで集約するということは、クライアント設定に触れることなく、ユーザーごとの属性、モデルカタログの管理、および権限の適用を後で追加できることを意味します。以下のブートストラップセクションで説明されている機能はすべて、単一のチョークポイントがあるので存在します。プロキシパターンは、直接接続にはないコントロールプレーンを提供し、後で追加のコーディング支援ツールを接続した場合も、同じWorkerとディスカバリーエンドポイントがそれを処理します。</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works-one-url-to-configure-everything">仕組み：1つのURLですべてを設定</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works-one-url-to-configure-everything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セットアップ全体は、1つのコマンドから始まります。</p>
+	<pre class="language-Rust"><code class="language-Rust">opencode auth login https://opencode.internal.domain
+</code></pre>
+	<p>このコマンドは、プロバイダー、モデル、MCPサーバー、エージェント、コマンド、権限を設定するチェーンをトリガーします。ユーザーは設定ファイルに触れる必要はありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sK7wVF3QbeNJ0rjLBabXh/05b9098197b7a3d084e6d860ed22b169/BLOG-3270_6.png" alt="BLOG-3270 6" class="kg-image" width="1999" height="1198" loading="lazy">
+	</figure>
+	<p><b>ステップ1：認証要件を把握します。</b>OpenCodeは、<a href="https://opencode.ai/docs/config" target="_blank" rel="noopener noreferrer"><u>設定</u></a>を<code>https://opencode.internal.domain/.well-known/opencode</code>のようなURLから取得します。</p>
+	<p>このディスカバリーエンドポイントはWorkerによって提供され、レスポンスには、OpenCodeに認証方法を指示する<code>auth</code>ブロックと、プロバイダー、MCPサーバー、エージェント、コマンド、およびデフォルトの権限を含む<code>config</code>ブロックがあります。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "auth": {
+    "command": ["cloudflared", "access", "login", "..."],
+    "env": "TOKEN"
+  },
+  "config": {
+    "provider": { "..." },
+    "mcp": { "..." },
+    "agent": { "..." },
+    "command": { "..." },
+    "permission": { "..." }
+  }
+}
+</code></pre>
+	<p><b>ステップ2：Cloudflare Access経由で認証します。</b>OpenCodeは、認証コマンドを実行し、ユーザーはCloudflare内の他のすべてのことに使用するのと同じSSOを通じて認証を行います。<code>cloudflared</code>は署名付きのJWTを返します。OpenCodeは、それをローカルに保存し、後続のすべてのプロバイダーリクエストに自動的に添付します。</p>
+	<p><b>ステップ3：設定がOpenCodeに統合されます。</b>提供される設定は、組織全体で共有されるデフォルトですが、ローカル設定が常に優先されます。ユーザーは、他のユーザーに影響を与えることなく、デフォルトモデルをオーバーライドしたり、独自のエージェントを追加したり、プロジェクトやユーザースコープの設定を調整したりすることができます。</p>
+	<p><b>プロキシWorker内。</b>Workerは、3つのことを行うシンプルなHonoアプリです。</p>
+	<ol>
+		<li>
+			<p><b>共有設定を提供します。</b>設定は、デプロイ時に構造化されたソースファイルからコンパイルされ、Workerのオリジンの{baseURL}のようなプレースホルダー値が含まれます。リクエスト時に、Workerはこれらを置き換えるため、すべてのプロバイダーリクエストはモデルプロバイダーに直接ではなく、Workerを経由してルーティングされます。各プロバイダーには、Workerが対応するAI Gatewayルートに転送するパスプレフィックス（<code>/anthropic, /openai, /google-ai-studio/v1beta, /compat</code> for Workers AI）が与えられます。</p>
+		</li>
+		<li>
+			<p><b>AI Gatewayにリクエストをプロキシします。</b>OpenCodeが<code>POST /anthropic/v1/messages</code>のようなリクエストを送信すると、WorkerはCloudflare Access JWTを検証し、転送前にヘッダーを書き換えます。
+			</p>
+			<pre class="language-Shell"><code class="language-Shell">Stripped:   authorization, cf-access-token, host
+Added:      cf-aig-authorization: Bearer &lt;API_KEY&gt;
+            cf-aig-metadata: {"userId": "&lt;anonymous-uuid&gt;"}
+</code></pre>
+			<p>リクエストはAI Gatewayに送られ、AI Gatewayは適切なプロバイダーにルーティングします。レスポンスはバッファリングせずに直接通過します。Workerがサーバー側の実際のキーを挿入するため、クライアント設定の<code>apiKey</code>フィールドは空です。ユーザーマシンにはAPIキーが存在しません。</p>
+		</li>
+		<li>
+			<p><b>モデルカタログの新鮮さを保ちます。</b>毎時Cronトリガーは、<code>models.dev</code>から現在のOpenAIモデルのリストを取得し、Workers KVにキャッシュし、ゼロデータ保持のため、すべてのモデルに<code>store: false</code>を挿入します。新規モデルは、設定の再デプロイなしに、ZDRを自動的に取得します。</p>
+		</li>
+	</ol>
+	<p><b>匿名ユーザーの追跡。</b>JWT検証後、WorkerはユーザーのメールをUUIDにマッピングし、永続ストレージとしてD1を使用し、KVを読み取りキャッシュとしてマッピングします。AI Gatewayが見るのは、<code>cf-aig-metadata</code>の匿名UUIDのみで、メールは見えません。これにより、モデルプロバイダーやGatewayログにIDを公開することなく、ユーザーごとのコスト追跡と使用状況の分析が可能になります。</p>
+	<p><b>コードとしての設定。</b>エージェントとコマンドは、YAMLフロントマッターを使用してマークダウンファイルとして作成されます。ビルドスクリプトは、OpenCode JSONスキーマに照らし合わせて検証された、単一のJSON設定にコンパイルします。新規セッションはそれぞれ自動的に最新バージョンを取得します。</p>
+	<p>全体的なアーキテクチャは、プロキシのWorker、Cloudflare Access、AI Gateway、およびすべてを自動的に設定するクライアントにアクセス可能なディスカバリーエンドポイントなど、当社の開発者向けプラットフォームを使用すれば、誰でもシンプルで簡単にデプロイすることができます。ユーザーは1つのコマンドを実行するだけで完了します。手動で設定する必要はなく、ノートパソコンのAPIキーやMCPサーバー接続を手動でセットアップする必要もありません。エージェントツールの変更や、3,000人以上のユーザーがコーディング環境で利用するものを更新するのも、<code>Wranglerデプロイ</code>するだけです。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-mcp-server-portal-one-oauth-multiple-mcp-tools">MCPサーバーポータル：1つのOAuth、複数のMCPツール</h3>
+		<a href="https://blog.cloudflare.com/#the-mcp-server-portal-one-oauth-multiple-mcp-tools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エンタープライズ規模でMCPを管理するための完全なアプローチについては、<a href="https://blog.cloudflare.com/enterprise-mcp"><u>別の記事</u></a>で説明しています。これには、<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCPサーバーポータル</u></a>、Cloudflare Access、Code Modeを組み合わせて使用する方法が含まれます。以下は、当社社内で構築したものの一例です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36gUHwTs8CzZeS03l9yno1/42953a6dc2ac944f4dbe31e3ae51570e/BLOG-3270_7.png" alt="BLOG-3270 7" class="kg-image" width="1610" height="1484" loading="lazy">
+	</figure>
+	<p>当社の内部ポータルは、13の本番MCPサーバーを集約し、Backstage、GitLab、Jira、Sentry、Elasticsearch、Prometheus、Google Workspace、社内リリースマネージャーなどの182以上のツールを公開しています。これにより、アクセスが統合され、すべてが簡素化され、1つのエンドポイントと1つのCloudflare Accessフローがすべてのツールへのアクセスを管理します。</p>
+	<p>各MCPサーバーは、同じ基盤（Agents SDKのMcpAgent、OAuth用の<a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u><b>workers-oauth-provider</b></u></a>、ID用のCloudflare Access）上に構築されています。すべてが、共有認証インフラストラクチャ、Bazelビルド、CI/CDパイプライン、およびBackstage登録用の<code>catalog-info.yaml</code>を持つ単一のモノレポジトリ内にあります。新しいサーバーの追加はたいてい、既存のサーバーをコピーして、ラップするAPIを変更することです。この仕組みとそれを支えるセキュリティアーキテクチャについては、<a href="https://blog.cloudflare.com/enterprise-mcp"><u>当社のエンタープライズMCPレファレンスアーキテクチャ</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="code-mode-at-the-portal-layer">ポータルレイヤーのコードモード</h3>
+		<a href="https://blog.cloudflare.com/#code-mode-at-the-portal-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPはAIエージェントとツールをつなぐための適切なプロトコルですが、現実的な問題があります。すべてのツール定義が、モデルが動作を始める前にコンテキストウィンドウのトークンを消費するということです。MCPサーバーやツールの数が増えるにつれて、トークンのオーバーヘッドも増加し、大規模になると、それは現実的なコストになります。<a href="https://blog.cloudflare.com/code-mode"><u>コードモード</u></a>は新たな解決策として浮上しています。すべてのツールスキーマを事前に読み込むのではなく、モデルはコードを通してツールを発見し、呼びます。</p>
+	<p>当社のGitLab MCPサーバーはもともと、34の個別ツール(<code>get_merge_request</code>、<code>list_pipelines</code>、<code>get_file_content</code>など)を公開していました。これら34個のツールスキーマは、1リクエストあたりコンテキストウィンドウのおよそ15,000トークンを消費しました。20万件のコンテキストウィンドウで、これは質問する前に使われた予算の7.5%に相当します。すべてのリクエスト、あらゆるエンジニア、毎日積み上がりました。</p>
+	<p>MCPサーバーポータルは、コードモードプロキシをサポートするようになりました。これにより、その問題をサーバーごとにではなく、集中的に解決できるようになりました。すべてのアップストリームツール定義をクライアントに公開するのではなく、ポータルはそれらを2つのポータルレベルツールに集約します。<code>portal_codemode_searchとportal_codemode_execute</code>。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jQa4HPmrOaOhUojZCJQ8q/4e81201065a50dd67c07e257b725e8b8/BLOG-3270_8.png" alt="BLOG-3270 8" class="kg-image" width="1164" height="641" loading="lazy">
+	</figure>
+	<p>ポータルレイヤーでこれを行う良い点は、きれいにスケーリングできることです。コードモードを使用しない場合、新しいMCPサーバーはすべてのリクエストにスキーマオーバーヘッドがさらに追加されます。ポータルレベルのコードモードでは、ポータルの背後にあるサーバーをさらに接続しても、クライアントに表示されるツールは2つだけです。つまり、コンテキストの肥大化を抑え、トークンコストを削減し、アーキテクチャ全体をすっきりさせることができるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="act-2-the-knowledge-layer">第2機能：知識層</h2>
+		<a href="https://blog.cloudflare.com/#act-2-the-knowledge-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="backstage-the-knowledge-graph-underneath-all-of-it">バックステージ：そのすべてを支えるナレッジグラフ</h3>
+		<a href="https://blog.cloudflare.com/#backstage-the-knowledge-graph-underneath-all-of-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>iMARSチームは、実際に有用なMCPサーバーを構築する前に、より根本的な問題を解決する必要がありました。当社のサービスとインフラストラクチャに関する構造化されたデータです。エージェントは、誰が何を所有しているか、サービスがどのように相互依存しているか、ドキュメントが存在するか、サービスが通信しているデータベースなど、コードベースの外側のコンテキストを理解する必要があります。</p>
+	<p>当社は、Spotifyが独自に構築したオープンソースの社内開発者ポータルである<a href="https://backstage.io" target="_blank" rel="noopener noreferrer"><u>Backstage</u></a>をサービスカタログとして運営しています。これはセルフホスティング型で（ちなみにCloudflare製品上ではありません）、次のようなものを追跡します。</p>
+	<ul>
+		<li>
+			<p>2,055のサービス、167のライブラリ、122のパッケージ</p>
+		</li>
+		<li>
+			<p>228 個のAPI スキーマ定義付き</p>
+		</li>
+		<li>
+			<p>45のドメインにわたる544のシステム（製品）</p>
+		</li>
+		<li>
+			<p>1,302個のデータベース、277個のClickHouseテーブル、173個のクラスター</p>
+		</li>
+		<li>
+			<p>375のチーム、6,389人のユーザー（所有権マッピングを持つ）</p>
+		</li>
+		<li>
+			<p>サービスをデータベース、Kafkaトピック、依存するクラウドリソースに接続する依存関係グラフ</p>
+		</li>
+	</ul>
+	<p>当社のBackstage MCPサーバー（13のツール）はMCPポータルより利用可能で、エージェントはコーディングセッションから離れることなく、サービスの所有者を検索し、そのサービスが依存しているものを確認し、関連するAPI仕様を見つけ、Tech Insightsスコアを取得します。</p>
+	<p>この構造化されたデータがなければ、エージェントは把握できなかった状態になってしまいます。目の前にあるコードは読むことができますが、その周辺のシステムは見えません。カタログは、個々のレポジトリをエンジニアリング組織のつながったマップに変換します。</p>
+	<div class="flex anchor relative">
+		<h3 id="agents-md-getting-thousands-of-repos-ready-for-ai">Agents.md：AI向けに数千のリポジトリを準備</h3>
+		<a href="https://blog.cloudflare.com/#agents-md-getting-thousands-of-repos-ready-for-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロールアウトの初期段階では、同じ障害モードが続いています。コーディングエージェントは、もっともらしく見える変更を作成するものの、リポジトリとしてはまだ間違っているのです。通常、問題はローカルコンテキストでした。モデルは適切なテストコマンド、チームの現在の慣行、コードベースのどの部分がオフリミットであるかを把握していませんでした。これにより、AGENTS.mdが採用されました。これは、各リポジトリの短い構造化されたファイルで、コーディングエージェントにコードベースが実際にどのように機能するかを伝え、チームがそのコンテキストを明示化するように強制します。</p>
+	<div class="flex anchor relative">
+		<h4 id="what-agents-md-looks-like">Agents.mdの形式</h4>
+		<a href="https://blog.cloudflare.com/#what-agents-md-looks-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GitLabインスタンス全体でAGENTS.mdファイルを生成するシステムを構築しました。これらのファイルはモデルのコンテキストウィンドウに直接位置するため、短く、高シグナルの状態に保つ必要がありました。典型的なファイルは次のようになります：</p>
+	<pre class="language-rust"><code class="language-rust"># AGENTS.md
+
+## Repository
+- Runtime: cloudflare workers
+- Test command: `pnpm test`
+- Lint command: `pnpm lint`
+
+## How to navigate this codebase
+- All cloudflare workers  are in src/workers/, one file per worker
+- MCP server definitions are in src/mcp/, each tool in a separate file
+- Tests mirror source: src/foo.ts -&gt; tests/foo.test.ts
+
+## Conventions
+- Testing: use Vitest with `@cloudflare/vitest-pool-workers` (Codex: RFC 021, RFC 042)
+- API patterns: Follow internal REST conventions (Codex: API-REST-01)
+
+## Boundaries
+- Do not edit generated files in `gen/`
+- Do not introduce new background jobs without updating `config/`
+
+## Dependencies
+- Depends on: auth-service, config-service
+- Depended on by: api-gateway, dashboard
+</code></pre>
+	<p></p>
+	<p>エージェントがこのファイルを読み込む際、リポジトリをゼロから推測する必要はありません。コードベースがどのように整理され、どのような規則に従うべきか、どのようなエンジニアリングコードのルールが適用されるかを把握しています。</p>
+	<div class="flex anchor relative">
+		<h4 id="how-we-generate-them-at-scale">大量に生成する方法</h4>
+		<a href="https://blog.cloudflare.com/#how-we-generate-them-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ジェネレーターパイプラインは、Backpageサービスカタログからエンティティのメタデータ（所有権、依存関係、システム関係）を抽出し、リポジトリ構造を分析して言語、ビルドシステム、テストフレームワーク、ディレクトリレイアウトを検出し、検出されたスタックを関連するエンジニアリングCodex標準にマッピングします。次に、有能なモデルが構造化された文書を生成し、システムはマージリクエストを開き、所有チームがレビューして修正できるようにします。</p>
+	<p>これまでに、約3,900件のリポジトリをこの方法で処理しました。最初のパスは、特にPolyglotリポジトリや異常なビルドセットアップでは常に完璧とは言えませんでした。しかし、このベースラインでも、エージェントにすべてをゼロから推測するよりもはるかに優れた方法でした。</p>
+	<p>最初のマージリクエストはブートストラップの問題を解決しましたが、これらのファイルを最新の状態に保つことは同じくらい重要でした。古いAGENTS.mdは、ファイルがないよりも悪いことがあります。このループはAI Code Reviewerで閉じ、リポジトリが変更された場合にAGENTS.mdの更新が必要であることを示唆することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="act-3-the-enforcement-layer">第3層：適用層</h2>
+		<a href="https://blog.cloudflare.com/#act-3-the-enforcement-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="the-ai-code-reviewer">AIコードレビュー担当者</h3>
+		<a href="https://blog.cloudflare.com/#the-ai-code-reviewer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのすべてのマージリクエストはAIコードレビューを受けます。統合は簡単です。チームはパイプラインにCIコンポーネントを1つ追加すれば、そこからすべてのMRが自動的にレビューされます。</p>
+	<p>GitLabのセルフホスト型ソリューションをCI/CDプラットフォームとして使っています。レビュー担当者は、GitLabのCIコンポーネントとして実装され、チームがパイプラインに含めます。MRがオープンまたは更新されると、CIジョブはマルチエージェントレビューコーディネーターを使用して<a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>を実行します。コーディネーターは、MRをリスクレベル（トリニアル、ライト、またはフル）で分類し、コード品質、セキュリティ、コーデックコンプライアンス、ドキュメント、パフォーマンス、リリースへの影響を、専門のレビューエージェントに委任します。各エージェントはAI Gatewayに接続してモデルにアクセスし、中央リポジトリからEngineer Codexルールをプルし、リポジトリのAGENTS.mdを読み込んでコードベースコンテキストを取得します。結果は構造化されたMRコメントとして投稿されます。</p>
+	<p>別のWorkersベースの設定サービスが、レビュー担当エージェントごとに集中管理されたモデル選択を処理するため、CIテンプレートを変更することなくモデルを移行できます。レビュープロセス自体はCIランナーで実行され、実行ごとにステートレスです。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-output-format">出力形式は</h3>
+		<a href="https://blog.cloudflare.com/#the-output-format" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CKN6frPHygTkAHBDrY3y7/e04eb00702a25627291c904fbde2e7ea/BLOG-3270_9.png" alt="BLOG-3270 9" class="kg-image" width="945" height="1999" loading="lazy">
+	</figure>
+	<p>出力フォーマットを正しく理解するのに時間を費やしたのです。レビューはカテゴリー（セキュリティ、コード品質、パフォーマンス）に分類されているため、エンジニアは大量の文書を読むのではなく、ヘッダーを確認することができます。各発見事項には、重大度レベル（重大、重要、提案、または任意の有効期限）があり、注意が必要で、情報的なものであるのかを即座に明確にすることができます。</p>
+	<p>レビュー担当者は反復を通じてコンテキストを維持します。以前のレビューラウンドでフラグを立て、それ以降に修正された場合は、同じ問題を再度提起するのではなく、そのことを認識します。また、検出結果がエンジニアリングコーデックのルールに対応する場合は、特定のルールIDが引用され、AIの提案を組織の基準への参照に変えてしまいます。</p>
+	<p>Workers AIは、レビュー担当者のトラフィックの約15%を処理します。主にドキュメントレビュータスク向けであり、Kim K2.5はフロンティアモデルのコストの数分の一で優れたパフォーマンスを発揮します。Opus 4.6やGPT 5.4のようなモデルでは、推論能力が最も重要になる、セキュリティに敏感でアーキテクチャ的に複雑なレビューを処理します。</p>
+	<p>過去30日間：</p>
+	<ul>
+		<li>
+			<p><b>100%</b> 当社の標準CIパイプライン上の全リポジトリを、AIコードレビュー担当者がカバー。</p>
+		</li>
+		<li>
+			<p>547万件のAI Gatewayリクエスト</p>
+		</li>
+		<li>
+			<p>247億個のトークンを処理</p>
+		</li>
+	</ul>
+	<p>このブログ記事と一緒に、レビュー担当者の内部アーキテクチャ（モデル間のルーティング方法、マルチエージェントオーケストレーション、当社が開発したコスト最適化戦略など）を解説する<a href="https://blog.cloudflare.com/ai-code-review"><u>詳細な技術ブログ記事</u></a>も公開します。</p>
+	<div class="flex anchor relative">
+		<h3 id="engineering-codex-engineering-standards-as-agent-skills">エンジニアリング規範：エージェントのスキルとしてのエンジニアリング基準</h3>
+		<a href="https://blog.cloudflare.com/#engineering-codex-engineering-standards-as-agent-skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>エンジニアリングコーデック</b>は、Cloudflareの新しい社内標準システムであり、私たちのコアエンジニアリング基準が組み込まれています。私たちは、複数段階のAI抽出プロセスを経て、一連のコーデックルール（「Xが必要なら、Yを使ってください。YまたはZを使用している場合は、Xを実行する必要があります。」）と、プログレッシブデプロイを使用したエージェントスキル、およびマークダウンファイル間のネストされた階層情報ディレクトリとリンクを使用する必要があります。</p>
+	<p>このスキルは、エンジニアが「Rustサービスのエラーをどう処理すべきか？」ようなプロンプトで構築する際に、ローカルで使用することが可能です。または「このTypeScriptコードを確認してコンプライアンスを確保する」Cloudflareのネットワークファイアウォールチームは、マルチエージェントコンセンサスプロセスを使用して<code>rampartd</code>を監査しました。すべての要件が「準拠」、「部分」、または「非準拠」のスコアで決定され、特定の違反の詳細と修復ステップが削減され、以前は何週間も手作業を行っていたものが、構造化された反復可能なプロセスに移行しました。</p>
+	<p>レビュー時に、AI Code Reviewerは、フィードバックで特定のCodeexルールに言及します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vXFmpfwqv1Xqo5CszCsEB/ada6417470b2b7533a12244578cbd9d0/BLOG-3270_10.png" alt="BLOG-3270 10" class="kg-image" width="1926" height="672" loading="lazy">
+	</figure>
+	<p><sup><i>AIコードレビュー：コーデックRFC違反を示す、分類された調査結果（この場合はコードコンプライアンス）を表示</i></sup></p>
+	<p>これらの記事は、いずれも単独では特に目新しいものではありません。多くの企業がサービスカタログを実行し、船のレビューボットを運用したり、エンジニアリング基準を公開したりしています。違いは回線にあります。エージェントがBackstageからコンテキストを引き出し、編集しているリポジトリのAGENTS.mdを読み込んで同じツールチェーンでCodexルールに照らしてレビューできる場合、通常、最初の草稿は出荷に十分近いものとなります。6か月前はそうではありませんでした。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-scoreboard">スコアボード</h2>
+		<a href="https://blog.cloudflare.com/#the-scoreboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この取り組みを開始してから93%の研究開発が導入されるまで、1年未満でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OtTpHobBRjorxOV2dWG8w/9b9dc80cba9741ee65e8565f63091e1a/BLOG-3270_11.png" alt="BLOG-3270 11" class="kg-image" width="1582" height="1070" loading="lazy">
+	</figure>
+	<p><b>全社導入（2026年2月5日～4月15日）：</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>指標</p>
+				</th>
+				<th>
+					<p>価値</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>アクティブユーザー</p>
+				</td>
+				<td>
+					<p><b>3,683件</b>（会社の60%）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>R&amp;Dチームの採用</p>
+				</td>
+				<td>
+					<p><b>93%</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIメッセージ</p>
+				</td>
+				<td>
+					<p><b>4795万人</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIアクティビティを持つチーム</p>
+				</td>
+				<td>
+					<p><b>295</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>OpenCodeメッセージ</p>
+				</td>
+				<td>
+					<p><b>2708万人</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Winndsurfメッセージ</p>
+				</td>
+				<td>
+					<p><b>43万4900</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>AI Gateway（過去30日、合計）：</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>指標</p>
+				</th>
+				<th>
+					<p>価値</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>リクエスト</p>
+				</td>
+				<td>
+					<p><b>2018万人</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>トークン</p>
+				</td>
+				<td>
+					<p><b>241370億</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><b>Workers AI（過去30日間）：</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>指標</p>
+				</th>
+				<th>
+					<p>価値</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>入力トークン</p>
+				</td>
+				<td>
+					<p><b>510億4700万</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>出力トークン</p>
+				</td>
+				<td>
+					<p><b>3億6,112万人</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-background-agents">新情報：バックグラウンドエージェント</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-background-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>次の社内エンジニアリングスタックの進化には、バックグラウンドエージェントが含まれます。バックグラウンドエージェントは、ローカルで利用可能な同じツール（MCPポータル、git、テストランサム）を使ってオンデマンドで起動でき、完全にクラウド上で動作するエージェントです。アーキテクチャは、Durable ObjectsとAgents SDKを使用してオーケストレーションを行い、ジョブがリポジトリのクローン、依存関係のインストール、テストの実行などの完全な開発環境を必要とする場合、サンドボックスコンテナに委任します。<a href="https://blog.cloudflare.com/sandbox-ga"><u>Sandbox SDKは</u></a>エージェントウィーク中に一般公開されました。</p>
+	<p>Agents Week中に、Agents SDKに<a href="https://blog.cloudflare.com/project-think"><u>ネイティブに組み込まれた</u></a>、長期実行エージェントは、これまで回避策が必要だった永続的なセッションの問題を解決します。SDKは、エージェントが大規模なレポジトリのクローン、完全なテストスイートの実行、障害発生時の反復、および単一セッションでMRを開くことができるよう、長期間にわたって実行するセッションを退避させることなくサポートするようになりました。</p>
+	<p>これは、コードの書き方だけでなく、コードのレビュー方法、標準の適用方法、変更を数千のリポジトリに安全に送信する方法について再考するための11か月に及ぶ取り組みです。すべてのレイヤーは、お客様が使用している同じ製品上で実行されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building">構築を開始する</h2>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agents Weekは、必要なものすべてを<a href="https://blogs.cloudflare.com/agents-week-in-review" target="_blank" rel="noopener noreferrer"><u>公開しました</u></a>。プラットフォームはこちらです。</p>
+	<pre class="language-Shell"><code class="language-Shell">npx create-cloudflare@latest --template cloudflare/agents-starter
+</code></pre>
+	<p>これにより、エージェントを開始することができます。以下の図は、成長する準備ができた場合の全体的なアーキテクチャで、最上位のツール層（チャットボット、Web UI、CLI、ブラウザ拡張機能）、中央のエージェントSDKがセッション状態とオーケストレーション、そしてCloudflareサービスを示しています下記から呼び出すことができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ebzq5neZbshbrhb5WysYY/54335791b2f731e2095fd57a4fe11cf3/image11.png" alt="BLOG-3270 12" class="kg-image" width="1079" height="658" loading="lazy">
+	</figure>
+	<p><b>ドキュメンテーション:</b> <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>エージェントSDK</u></a> · <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックスSDK</u></a> · <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> · <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> · <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> · <a href="https://developers.cloudflare.com/agents/api-reference/codemode" target="_blank" rel="noopener noreferrer"><u>コードモード</u></a> · <a href="https://blog.cloudflare.com/model-context-protocol"><u>Cloudflare上のMCP</u></a></p>
+	<p><b>Repos:</b> <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>cloudflare/agents</u></a> · <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>cloudflare/sandbox-sdk</u></a> · <a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>cloudflare/mcp-server-cloudflare</u></a> · <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>cloudflare/skills</u></a></p>
+	<p>CloudflareにおけるAIの活用方法の詳細については、<a href="https://blog.cloudflare.com/ai-code-review"><u>AIコードレビューのプロセスに関する記事</u></a>をご覧ください。そして、<a href="https://www.cloudflare.com/agents-week/updates" target="_blank" rel="noopener noreferrer"><u>エージェントウィーク中にお届けしたすべてのもの</u></a>をご覧ください。</p>
+	<p>構築されたものについてぜひお聞かせください。<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>、<a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>X</u></a>、<a href="https://bsky.app/profile/cloudflare.social" target="_blank" rel="noopener noreferrer"><u>Bluesky</u></a>で私たちを見つけてください。</p>
+	<p><i><sup>Ayush T期限、AGENTS.mdシステムとOpenCodeインフラ用のAI Gateway統合を構築した。Scott RoemeschkeはCloudflareの開発者プロダクティビティチームのエンジニアリングマネージャーであり、Rajesh BhatiaはCloudflareの生産性プラットフォーム機能を主導しています。この投稿は、Devtoolsチーム全体での共同作業であり、iMARS（社内MCPエージェント/サーバーロールアウトスクワッド）のトラッキングチームを通じて全社的なボランティアの協力を得ました。</sup></i></p>
+</div>

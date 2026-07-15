@@ -1,0 +1,67 @@
+<div class="mb2 gray5">3 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/introducing-clientless-web-isolation-beta">English</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-clientless-web-isolation-beta">日本語</a>, <a href="https://blog.cloudflare.com/th-th/introducing-clientless-web-isolation-beta">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/introducing-clientless-web-isolation-beta">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aPOea3MbesSaDXoPPzI0Q/1d6eb2df764fceb1832a910093592dd4/introducing-clientless-web-isolation-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hari ini, kami dengan senang hati mengumumkan versi beta untuk isolasi web tanpa klien Cloudflare. Jalur baru untuk Isolasi Browser yang secara alami mengintegrasikan Zero Trust Network Access (ZTNA) dengan manfaat perlindungan zero-day, phishing, dan kehilangan data dari penelusuran jarak jauh untuk pengguna di perangkat apa pun yang menjelajahi situs web, aplikasi internal, atau aplikasi SaaS apa pun. Semua tanpa perlu menginstal perangkat lunak apa pun atau mengonfigurasi sertifikat apa pun di perangkat titik akhir.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1w934JVM77qlgDdGDxLZrC/d5999a3a37dc483ce9e0d18f7d51d572/image1-38.png" alt="Introducing Clientless Web Isolation" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="secure-access-for-managed-and-unmanaged-devices"><b>Akses yang aman untuk perangkat yang dikelola dan tidak dikelola</b></h3>
+		<a href="https://blog.cloudflare.com/#secure-access-for-managed-and-unmanaged-devices" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pada awal tahun 2021, Cloudflare mengumumkan ketersediaan umum Isolasi Browser, browser jarak jauh yang cepat dan aman yang terintegrasi secara alami dengan platform Zero Trust Cloudflare. Platform ini — juga dikenal sebagai <a href="https://www.cloudflare.com/teams" target="_blank" rel="noopener noreferrer">Cloudflare for Teams</a> — menggabungkan akses Internet yang aman dengan solusi (<a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Gateway</a>) dan mengamankan akses aplikasi dengan solusi ZTNA (<a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Access</a>).</p>
+	<p>Biasanya, admin memberlakukan Isolasi Browser dengan meluncurkan klien perangkat Cloudflare di titik akhir, sehingga Cloudflare dapat berfungsi sebagai proxy Internet DNS dan HTTPS yang aman. Model ini melindungi pengguna dan aplikasi sensitif saat administrator mengelola perangkat tim mereka. Dan untuk pengguna akhir, pengalaman terasa tanpa gesekan seperti browser lokal: mereka hampir tidak menyadari bahwa sebenarnya mereka menjelajah di mesin aman yang berjalan pada pusat data Cloudflare di dekat mereka.</p>
+	<p>Integrasi Isolasi Browser dari ujung ke ujung dengan akses Internet yang aman memudahkan administrator untuk memberlakukan Isolasi Browser pada seluruh tim mereka tanpa pengguna menyadari bahwa mereka sebenarnya menjelajah di mesin yang aman pada pusat data Cloudflare terdekat. Namun, mengelola klien titik akhir dapat menambahkan biaya konfigurasi overhead untuk pengguna pada perangkat yang tidak dikelola, atau kontraktor pada perangkat yang dikelola oleh organisasi pihak ketiga.</p>
+	<p>Isolasi web tanpa klien Cloudflare menyederhanakan koneksi ke browser jarak jauh melalui hyperlink (misalnya: <i>https://</i><i>.cloudflareaccess.com/browser</i>). Setelah pengguna diautentikasi melalui <a href="https://developers.cloudflare.com/cloudflare-one/identity" target="_blank" rel="noopener noreferrer">penyedia identitas</a> yang didukung Cloudflare Access, browser pengguna akan menggunakan HTML5 untuk membuat koneksi latensi rendah ke browser jarak jauh yang dihosting di pusat data Cloudflare terdekat tanpa menginstal perangkat lunak apa pun. Tidak ada server untuk dikelola dan diskalakan, atau wilayah untuk dikonfigurasi.</p>
+	<div class="flex anchor relative">
+		<h3 id="safely-browse-high-risk-links"><b>Jelajahi tautan berisiko tinggi dengan aman</b></h3>
+		<a href="https://blog.cloudflare.com/#safely-browse-high-risk-links" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tindakan sederhana mengeklik tautan di email, atau situs web menyebabkan browser Anda mengunduh dan menjalankan muatan konten web aktif yang dapat mengeksploitasi ancaman zero-day yang tidak diketahui dan dapat membobol titik akhir.</p>
+	<p>Isolasi web tanpa klien Cloudflare dapat dimulai melalui URL awalan (misalnya, <i>https://</i><i>.cloudflareaccess.com/browser/</i><a href="https://www.example.com" target="_blank" rel="noopener noreferrer"><i>https://www.example.com</i></a>). Cukup dengan mengonfigurasi halaman pemblokiran khusus, gateway email, atau alat tiket Anda untuk mengawali tautan berisiko tinggi dengan Isolasi Browser akan secara otomatis mengirim klik berisiko tinggi ke browser jarak jauh, melindungi titik akhir dari setiap kode berbahaya yang mungkin ada pada tautan target.</p>
+	<p>Di sini, di Cloudflare, kami menggunakan produk Cloudflare untuk melindungi Cloudflare, dan pada kenyataannya, menggunakan pendekatan isolasi web tanpa klien ini untuk aktivitas investigasi keamanan kami sendiri. Dengan mengawali tautan berisiko tinggi menggunakan domain autentikasi kami, tim keamanan kami dapat menyelidiki situs web dan situs phishing yang berbahaya secara aman.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EB4k1iu2GaTd1KG67rBS8/48620be5cda9df5cdaa4726391825b84/image2-21.png" alt="Screenshot of clientless web isolation homepage" class="kg-image" width="1229" height="845" loading="lazy">
+
+	</figure>
+	<p>Tidak ada kode berisiko yang pernah mencapai perangkat karyawan, dan pada akhir penyelidikan mereka, browser jarak jauh dihentikan dan disetel ulang ke status bersih yang diketahui untuk penyelidikan berikutnya.</p>
+	<div class="flex anchor relative">
+		<h3 id="integrated-zero-trust-access-and-remote-browsing"><b>Akses Zero Trust terintegrasi dan penelusuran jarak jauh</b></h3>
+		<a href="https://blog.cloudflare.com/#integrated-zero-trust-access-and-remote-browsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Saat data perusahaan hanya diakses dari perangkat yang dikelola, di dalam jaringan yang dikontrol dan telah lama berlalu. Perusahaan yang mengandalkan kontrol postur perangkat yang ketat untuk memverifikasi bahwa akses aplikasi hanya terjadi dari perangkat yang dikelola, hanya memiliki sedikit alat untuk mendapatkan dukungan tenaga kerja kontraktor atau BYOD. Secara historis, administrator telah mengatasi masalah ini dengan menerapkan lingkungan Virtual Desktop Infrastructure (VDI) yang mahal dan intensif sumber daya.</p>
+	<p>Selain itu, dalam hal mengamankan akses aplikasi, Cloudflare Access unggul dalam menerapkan kebijakan penolakan default yang paling rendah untuk aplikasi berbasis web, tanpa perlu menginstal perangkat lunak klien apa pun pada perangkat pengguna.</p>
+	<p>Isolasi web tanpa klien Cloudflare menambah kasus penggunaan ZTNA, memungkinkan aplikasi yang dilindungi oleh <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/require-swg#build-a-gateway-rule-in-access" target="_blank" rel="noopener noreferrer">Access dan Gateway</a> untuk memanfaatkan <a href="https://docs.google.com/document/d/1YzcoC5WVxCYtVSriZW0ETeTzX9HEVxjKXdAEGeND3l8/edit" target="_blank" rel="noopener noreferrer">kontrol perlindungan data</a> Isolasi Browser seperti kontrol pencetakan lokal, clipboard, dan pembatasan unggah / unduh file untuk mencegah data sensitif ditransfer ke perangkat yang tidak dikelola.</p>
+	<p>Tautan terisolasi dapat dengan mudah ditambahkan ke <a href="https://developers.cloudflare.com/cloudflare-one/applications/app-launcher" target="_blank" rel="noopener noreferrer">peluncur aplikasi</a> Access sebagai <a href="https://developers.cloudflare.com/cloudflare-one/applications/bookmarks" target="_blank" rel="noopener noreferrer">bookmark</a> yang mengizinkan tim dan kontraktor Anda mengakses situs apa pun secara mudah dengan satu klik.</p>
+	<p>Terakhir, hanya karena browser jarak jauh mengurangi dampak pembobolan, tidak berarti browser tersebut harus memiliki akses tidak terkelola ke Internet. Semua traffic dari browser jarak jauh ke situs web target harus diamankan, diperiksa, dan dicatat oleh solusi SWG Cloudflare (Gateway) yang memastikan bahwa ancaman yang diketahui dapat difilter melalui kebijakan HTTP dan <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/antivirus-scanning" target="_blank" rel="noopener noreferrer">pemindaian anti-virus</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/375gS2PdEA2EOdu6iWgmub/45da00d54c415f12f3c63a7dbf9896f6/image3-13.png" alt="Screenshot of Access App Launcher bookmark linking to Browser Isolation" class="kg-image" width="1174" height="792" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="join-the-clientless-web-isolation-beta"><b>Bergabunglah dengan isolasi web tanpa klien versi beta</b></h3>
+		<a href="https://blog.cloudflare.com/#join-the-clientless-web-isolation-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Isolasi web tanpa klien akan tersedia sebagai kemampuan bagi pelanggan Cloudflare for Teams yang telah menambahkan Isolasi Browser ke paket mereka. Kami akan segera membuka isolasi web tanpa klien Cloudflare untuk akses versi beta. Jika Anda tertarik untuk berpartisipasi, <a href="https://www.cloudflare.com/zero-trust/lp/clientless-web-isolation-beta" target="_blank" rel="noopener noreferrer">daftar di sini</a> untuk menjadi yang pertama mendengar kabar dari kami.</p>
+	<p>Kami senang dengan penelusuran aman dan aktivitas penggunaan akses aplikasi untuk model isolasi web tanpa klien kami. Sekarang, tim dari berbagai ukuran, dapat menghadirkan konektivitas Zero Trust tanpa batas ke perangkat yang tidak dikelola di mana pun di dunia.</p>
+</div>

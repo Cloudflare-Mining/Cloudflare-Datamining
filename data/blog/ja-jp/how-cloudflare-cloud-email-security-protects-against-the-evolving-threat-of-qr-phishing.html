@@ -1,0 +1,123 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">English</a>、<a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">Français</a>、<a href="https://blog.cloudflare.com/de-de/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">한국어</a>、<a href="https://blog.cloudflare.com/es-es/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uwG64PmyCAf2wl61uSTr4/b4b3e9abbacfa0f5fe060afc5b2e03dc/how-cloudflare-cloud-email-security-protects-against-the-evolving-threat-of-qr-phishing.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>サイバー脅威が進化し続ける現在、巧妙かつ強力なフィッシングが出現しています。<a href="https://www.cloudflare.com/learning/security/what-is-quishing" target="_blank" rel="noopener noreferrer">クイッシング</a>とも呼ばれるQRフィッシングです。<a href="https://www.microsoft.com/en-us/microsoft-365-life-hacks/privacy-and-safety/brief-history-qr-codes" target="_blank" rel="noopener noreferrer">QRコードの登場 から30年</a>、特にCOVID-19（新型コロナウイルス感染症）の流行を受け、ステータスの確認やイベントの登録、さらには料理の注文の際にQRコードを利用するのが当たり前となり、QRフィッシングは猛威を振るっています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vqiqKMC9TcbN2grgE4JNX/bde05e055953c24da09e4bf4f0194324/image12-1.png" alt="How Cloudflare Cloud Email Security protects against the evolving threat of QR phishing" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>2020年以降、<a href="https://developers.cloudflare.com/email-security" target="_blank" rel="noopener noreferrer">Cloudflareのクラウドメールセキュリティソリューション（旧称Area 1）</a>は、QRフィッシング攻撃との戦いに最前線として、プロアクティブに攻撃を分析し、ユーザーの皆様の保護を強化してきました。 この投稿では、QRフィッシングのメカニズムを掘り下げ、攻撃者がQRコードを好む理由を探り、この巧妙化する脅威との戦いにCloudflareがどのように貢献できるかを紹介します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-quishing-works">QRフィッシングの仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-quishing-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>フィッシングとQRフィッシングの影響はほぼ同じです。ユーザーの資格情報やデバイスの安全性の侵害、さらには金銭的な損失につながる可能性があります。 また、攻撃者は、悪意のある添付ファイルやWebサイトを利用して、本来アクセス権がないはずのものへの不正アクセスを実行します。両者は、一般的にQRフィッシングは巧妙な標的型攻撃であり、QRコードを使用することで発見がさらに難しくなる点が異なります。</p>
+	<p>フィッシング検出エンジンは、検出のためにメール内のURLや添付ファイルなどの入力を必要としますが、QRフィッシングはこのような方法で検出されることがなく、攻撃の成功につながってしまいます。以下のサンプルAでは、フィッシングのURLがクロールされ、2回のリダイレクト後に、ログイン名とパスワードを入力させるキーロギングマルウェアを自動的に実行する悪意のあるWebサイトにランディングしました。 サンプルAの場合、検出機能は必ず作動しますが、サンプルBにはクロール対象のリンクがないので、サンプルAでは有効であった検出機能は効果がありません。</p>
+	<p>「スマートフォンでQRコードをスキャンできるのであれば、検出エンジンもQRコードを認識できるのではないか？」と疑問をもつかもしれません。答えはNO。フィッシング検出エンジンはフィッシングを捕捉するために最適化されており、QRコードを識別してスキャンするには、まったく別のエンジン、すなわちコンピュータービジョンエンジンが必要だからです。 QRコードが攻撃者に最適なツールとなる理由が見えてきませんか？</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jABZ5PmTIPdOp78Kaq5ZH/e9c93303b5187c80a31d7a41901e1f85/Screenshot-2024-04-16-at-13.33.49.png" alt="" class="kg-image" width="2000" height="1060" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-qr-codes-for-phishing">QRコードがフィッシングに使用される理由</h2>
+		<a href="https://blog.cloudflare.com/#why-qr-codes-for-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>QRコードが<a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">フィッシング攻撃</a>に多用される理由は主に3つ。1つめは、QRコードが強力な誤り訂正機能を備えていて、サイズの大小、手ぶれ、照明の影響、部分的な欠け、ゆがみなどに耐えることができます。実際、コンピュータービジョンモデルがQRコードをスキャンできても、メール、画像、メールでリンクされているWebページのどのあたりにQRコードがあるかを識別することはマシンでは非常に困難であり、QRコードが難読化されている場合はさらに難しくなります。たとえば、文字列を反転させたり、他の色や画像に重ねたり、極端に小さくすれば、コンピュータービジョンモデルにはQRコードの存在の識別すら難しくなり、ましてやスキャンすることは不可能になるでしょう。フィルターや処理の追加はどの画像でも可能ですが、何をどこに適用すればよいのかわからなければ、QRコードの難読化解除は極めてコストの高い計算問題となります。QRコードをすべて補足するのが難しいだけでなく、テキストの画像や汚れがQRコードとして識別されることで、最終的には、メールをすぐに受信できないエンドユーザーの不満と配信の遅延につながるでしょう。</p>
+	<p>このように、コンピュータービジョンモデルではQRコードの難読化の解除が難しくても、私たちの経験から、人間はこのような難読化されたQRコードに遭遇した場合、時間と手間をかければ、QRコードをスキャンできる状態にすることができる、とわかっています。画面の明度を上げたり、メールを印刷したり、コード自体のサイズを変更したりすることで、マシンから隠されていたQRコードをスキャンさせることができます。</p>
+	<p><i>信じられませんか？マシン用に難読化されたQRコードをご自身でお試しください。これらはすべて</i><a href="https://blog.cloudflare.com"><i>https://blog.cloudflare.com/</i></a>にリンクしています。</p>
+	<p><i>（</i><a href="https://www.freepik.com/free-photo/old-textured-brick-wall-background_18998169.htm#query=brick%20wall&amp;position=0&amp;from_view=keyword&amp;track=ais&amp;uuid=5fc175de-b992-4443-aad7-730f83770fbb" target="_blank" rel="noopener noreferrer"><i>ブロック壁の画像：Rawpixel.com on Freepik</i></a><i>）</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1q4lolcNSXKWznwHGZMIFh/5e43d3d517b9c7eedf5afe6a9f5b11c3/Screenshot-2024-04-16-at-13.35.32.png" alt="" class="kg-image" width="2000" height="685" loading="lazy">
+
+	</figure>
+	<p>皆さんが上のQRコードサンプルのいずれかをスキャンできれば、すなわち攻撃者が悪性アクターがQRコードを好む次の理由が証明されたということです。 QRコードの読み取りに使われるデバイスは、一般的に、セキュリティ保護が限定的な個人用デバイスで、悪用されやすい状態にあります。 セキュリティで保護された企業のデバイスの場合は、通常、ユーザーが悪意のあるリンクにアクセスした場合に警告、停止、サンドボックスを実行するためのセキュリティ対策が施されていますが、このような保護機能は個人用デバイスではネイティブに利用できません。 昨今では、企業のエグゼクティブを標的にしたカスタムQRコード攻撃も増加傾向にあり、特に懸念される問題点です。</p>
+	<p>QRコードは、暗号化された添付ファイル、よく知られているWebサイトを模倣したミラーサイト、悪意のあるコンテンツを表示する前に人間であることを証明させるなど、他の難読化技術とシームレスにレイヤー化することもできます。 この汎用性は、疑うことを知らないユーザーを欺く革新的な方法を模索しているサイバー犯罪者にとって魅力的な選択肢です。彼らは、過去には成功していたものの、セキュリティ製品によってブロックされるようになったフィッシング攻撃ベクトルにQRコードを追加するようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-protection-strategy">Cloudflareの保護戦略</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-protection-strategy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、最前線でQRフィッシング攻撃を防御します。Cloudflareは多面的なアプローチを採用し、時代遅れの階層化されたメール設定ルールに焦点を当てるのではなく、ほぼ10年分の検出データで機械学習（ML）検出モデルをトレーニングし、すべてのユーザーがすぐにソリューションを利用できるように、プロアクティブコンピュータービジョンモデルを幅広く用意しています。</p>
+	<p>QRフィッシングの検出は、1) QRコードの識別とスキャン、2) デコードされたQRコードの分析、という2つのパートに分けられます。</p>
+	<p>最初のパートは、いつ、どこで、どのようにしてコンピュータービジョンモデルを実行するかを指示する、CloudflareのQRコード検出ヒューリスティックスによって解決されます。そして、最新のライブラリとツールを活用して、QRコードの識別、処理、そして最も重要なデコードを支援します。 人間がQRコードを識別するのは比較的簡単ですが、マシンに対して（QRコードを）難読化する方法にはほぼ限りがありません。 上のサンプルは、私たちが実際に目にしたもののほんの一例です。攻撃者は、QRコードの迅速な発見・識別を困難にする新しい方法を常に模索しており、私たちはそれを追いかけるように、流行の難読化技術に対応できるツールを定期的に更新しています。</p>
+	<p>次のパート、つまりデコードされたQRコードの分析では、フィッシング攻撃に適用される処理と同じ処理、さらに追加の処理を行います。 Cloudflareには、複雑なURLを分解し、自動であるかどうかにかかわらず、リダイレクトを重ねた最終URLまで調査できるエンジンがあります。 その過程で、悪意のある添付ファイルや悪意のあるWebサイトをスキャンし、結果をログに記録して、今後の検出と相互参照できるようにします。 暗号化やパスワードで保護されたファイルやコンテンツがあれば、それらを復号および保護解除することを試みる別のエンジングループを利用します。そうすれば、難読化された悪意のあるコンテンツがあった場合にそれを特定することができます。 最も重要なのは、これらの情報のすべてとともに、QRコードの難読化を含むこの新しいデータでデータベースを継続的に更新し、これまでに文書化した方法を悪用する同様の攻撃をより適切に評価できるようにすることです。</p>
+	<p>しかし、十分にトレーニングされたフィッシング検出ツールを使用しても、ほとんどの場合、悪意のあるコンテンツはリダイレクトの繰り返しの終着点に存在します。このリダイレクトのチェーンは、自動化されたWebクローラーによる悪意のあるコンテンツはおろか、何らかの識別をも大きく妨げます。それらのリダイレクトの間に、 <a href="https://www.cloudflare.com/learning/bots/how-captchas-work" target="_blank" rel="noopener noreferrer">CAPTCHA</a>のような人間による検証を要求するハードブロックが存在する場合は、自動化されたプロセスがクロールすることは事実上不可能であり、コンテンツの分類も完全に不可能となります。あるいは、キャンペーン識別要件を備えた条件付きブロックがある場合もあります。ターゲットとされる地域の外にいる場合や、キャンペーン要件を満たさないWebブラウザやOSのバージョンが使用されている場合は、無害のWebサイトが表示されるだけですが、ターゲットは悪意のあるコンテンツにさらされる可能性があります。Cloudflareは長年にわたり、これらの検証を識別して通過するためのツールを構築してきました。そのツールを使えば、存在するかもしれない悪意のあるコンテンツを識別することができます。</p>
+	<p>しかし、これまで私たちが構築してきた技術をすべて使っても終着点にあるコンテンツに簡単に到達できない場合があります。 このようなケースにおいて、何年もの間スキャンされたリンクとそのメタデータで訓練されてきたCloudflareのリンクレピュテーション機械学習モデルは非常に価値があることが証明されており、QRコードがデコードされた後でも同じように簡単に適用できます。 ドメインメタデータ、URL構造、URLクエリ文字列、過去のデータセットなどを相関させることで、Cloudflareはユーザーを保護するための推論を行います。また、Cloudflareのプロアクティブなアプローチでは、QRコードがすぐには明らかではない場合でも、それを探す場所を教えてくれる機械学習モデルが活用されています。ドメイン、感情、コンテクスト、IPアドレス、使用履歴、送信者と受信者間の社会的パターンを精査することにより、Cloudflareは潜在的な脅威を特定し、被害が発生する前に無力化します。</p>
+	<div class="flex anchor relative">
+		<h2 id="creative-examples-and-real-world-instances">クリエイティブの例と実際の事例</h2>
+		<a href="https://blog.cloudflare.com/#creative-examples-and-real-world-instances" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、日々処理する数千のQRコードから、いくつかの興味深い傾向を見出しました。MicrosoftやDocuSignなどの大企業は、常にQRフィッシングを使ったなりすまし攻撃の対象です。これらの企業実際に正規のワークフローでもQRコードを使用しているので、ユーザーにとしては判別が難しくなり、さらにはスキャムにつながる可能性が高くなります。これは、この巧妙化する脅威に対する企業の防御強化が急務であることを示しています。</p>
+	<p>以下は、私たちが見つけた最も興味深いQRフィッシングの3つの例を、各社の実際のユースケースと比較したものです。 これらのメールで使用されているQRコードは、マスクされています。</p>
+	<div class="flex anchor relative">
+		<h3 id="microsoft-authenticator">Microsoft Authenticator</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-authenticator" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Microsoftは、遅延の可能性がある6桁のSMSコードをユーザーのスマートフォンに送信するのではなく、QRコードを使用して<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer">MFA（多要素認証）</a>をより迅速に完了してもらおうとしています。遅延の可能性の他にも、SMSを使ったMFAはSIMスワップ攻撃によって傍受されるので、QRコードを使用する方が安全だと考えられています。各自のデバイスを個別に登録しているユーザーは、右側の登録画面を見たこともあるはずです。したがって、再認証が必要というメールを受け取っても特に疑問を感じないかもしれません。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26vhSfHns8YkKs1DtB1p9n/3b39f16fb2feeab377679ad1466f5084/Screenshot-2024-04-16-at-13.37.12.png" alt="" class="kg-image" width="2000" height="706" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="docusign">DocuSign</h3>
+		<a href="https://blog.cloudflare.com/#docusign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DocuSignは、ユーザーがモバイルアプリをダウンロードしてドキュメントに簡単に署名できるように、またモバイルデバイスで写真を撮って<a href="https://support.docusign.com/s/document-item?language=en_US&amp;bundleId=ced1643229641057&amp;topicId=iww1578456547699.html&amp;_LANG=enus" target="_blank" rel="noopener noreferrer">本人確認</a>を行えるように、QRコードを使用しています。さらに、独自のQRコードスキャン機能をもつ<a href="https://support.docusign.com/s/document-item?language=en_US&amp;rsc_301=&amp;bundleId=yca1573855023892&amp;topicId=xhc1615577299246.html&amp;_LANG=enus" target="_blank" rel="noopener noreferrer">サードパーティアプリ</a>へのDocuSign機能の埋め込みもサポートしています。ネイティブのDocuSignアプリおよび非ネイティブアプリでのQRコードの使用は、頻繁にDocuSignを使用するユーザーにとっては煩雑ですが、滅多にDocuSignを使用しないユーザーにとっては特におかしなことではありません。署名リクエストではDocuSignアプリのダウンロード用QRコードは使用されていませんが、頻繁にDocuSignを使用するユーザーにとっては、ダウンロード済みアプリでリクエストを素早く開く方法のように見えるかもしれません。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/167XX59i4v1Im47dNhjxUm/adc13cc6a4aba177c1d009e18567ad30/Screenshot-2024-04-16-at-13.38.14.png" alt="" class="kg-image" width="2000" height="1051" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="microsoft-teams">Microsoft Teams</h3>
+		<a href="https://blog.cloudflare.com/#microsoft-teams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MicrosoftはTeams用のQRコードを使って、ユーザーがモバイルデバイスからチームに素早く参加できるようにしています。Teamsにはボイスメール機能がありますが、QRコードを利用されていません。 左側のメールは、右側の、2つの実際のユースケースを組み合わせた、Teamsでボイスメールを確認してほしいというリマインダーのように見えるものです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7j7KenKXtrmjJlNnHBPy2O/40cc68d61e198e8181fa4ccf6f12ecb4/Screenshot-2024-04-16-at-13.38.53.png" alt="" class="kg-image" width="2000" height="1021" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-you-can-help-prevent-quishing">QRフィッシングを回避する方法</h2>
+		<a href="https://blog.cloudflare.com/#how-you-can-help-prevent-quishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>絶え間ないQRフィッシング脅威に立ち向かわなければならない現在、個人も組織も警戒を怠らないようにすることが極めて重要です。 完璧な保護を保証できるソリューションは存在しませんが、組織全体での努力によってリスクを大幅に軽減することは可能です。Cloudflareは、QRフィッシングとの戦いにおけるコラボレーションを奨励しています。</p>
+	<p>Cloud Email Securityをすでにご利用の方は、現在の脅威を阻止し、将来の機械学習モデルの機能を強化し、よりプロアクティブな防御戦略につなげるために、CloudflareのポータルからQRフィッシングの<a href="https://developers.cloudflare.com/email-security/email-configuration/phish-submissions" target="_blank" rel="noopener noreferrer">インスタンスを送信</a>していただくようお願いします。Cloud Email Securityを利用されていない場合でも、オリジナルのQRフィッシングサンプルを<a href="https://docs.fileformat.com/email/eml" target="_blank" rel="noopener noreferrer">EML</a>形式の添付ファイルとして<a href="https://blog.cloudflare.com/#">quish@cloudflare.com</a>に送信することができます。また、メールセキュリティプロバイダーの送信プロセスを利用して、QRフィッシングベクトルを報告できることも覚えておきましょう。</p>
+	<p>QRフィッシングとの戦いは現在も続いており、継続的なイノベーションとコラボレーションが必要です。 皆様からのQRフィッシングの報告をサポートするために、私たちはCloudflareのモデルに的を絞ったフィードバックのための新しい方法を開発中です。また、QRフィッシングを含むさまざまなベクトルの追跡を容易にするために、メトリクスの透明性を高めようとしています。</p>
+</div>

@@ -1,0 +1,236 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-we-built-spectrum">English</a>、<a href="https://blog.cloudflare.com/fr-fr/how-we-built-spectrum">Français</a>、<a href="https://blog.cloudflare.com/de-de/how-we-built-spectrum">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/how-we-built-spectrum">한국어</a>、<a href="https://blog.cloudflare.com/es-es/how-we-built-spectrum">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/how-we-built-spectrum">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBc1UfFU6JKIdXFfqTLE1/4068183ffdde5483b46ed5f857b20bcd/how-we-built-spectrum.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは本日、<a href="https://blog.cloudflare.com/spectrum">Spectrumの提供を開始</a>します。Spectrumは、TCPベースのプロトコル向けのCloudflareの新たな機能で、DDoS攻撃に対する防御、ロードバランシング、およびコンテンツ高速化を実現します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gm96owfEOWttanNpmKl0l/6e45398b0d60ed2730a9d838bc47a0e4/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" class="kg-image" width="640" height="425" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank" rel="noopener noreferrer">画像</a>作者<a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans</a></p>
+	<p>Spectrumの構築を開始した直後、私たちは大きな技術的障害にぶつかりました。Spectrumでは、有効なTCPポート（1～65535）で接続を受け入れる必要があります。当社のLinuxエッジサーバーでは、「_任意の_ポート番号で着信接続を受け入れる」ことは不可能です。これはLinux固有の制限ではなく、ほとんどのオペレーティングシステムのネットワークアプリケーションの基礎である、BSDソケットAPIの特性です。実は、Spectrumを提供するために解決しなければならなかった、以下の2つの互いに関わりあう問題がありました。</p>
+	<ul>
+		<li>
+			<p>1～65535のすべてのポート番号でTCP接続を受け入れる方法</p>
+		</li>
+		<li>
+			<p>単一Linuxサーバーに、きわめて多数のIPアドレスでの接続を受け入れるよう設定する方法（当社のエニーキャスト範囲内には数千のIPアドレスが存在）</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="assigning-millions-of-ips-to-a-server"><b>サーバーへの数百万IPの割り当て</b></h3>
+		<a href="https://blog.cloudflare.com/#assigning-millions-of-ips-to-a-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、すべてのエッジサーバーがほぼ同じ設定になっています。当社の初期の頃には、ループバックネットワークインタフェースに一定の/32（および/128）IPアドレスを割り当てていました<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>。IPアドレスの単位が数十のうちは上手くいきましたが、会社の成長に伴って規模の拡張に失敗しました。</p>
+	<p>同時に<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">「AnyIP」のトリック</a>も問題になりました。AnyIPを使用すると、一定のIPアドレスから拡張し、IPプレフィックス（サブネット）全体のループバックインタフェースへの割り当てが可能になります。すでにAnyIPは広く利用されており、皆さんのコンピューターにはループバックインタフェースに127.0.0.0/8が割り当てられています。ユーザーのコンピューター側から見た場合、127.0.0.1から127.255.255.254までのすべてのIPアドレスはローカルマシンに属しています。</p>
+	<p>このトリックは、127.0.0.1/8ブロック以外にも適用可能です。192.0.2.0/24の範囲全体をローカルに割り当てたものとして扱うには、次を実行します。</p>
+	<pre class="language-bash"><code class="language-bash">ip route add local 192.0.2.0/24 dev lo</code></pre>
+	<p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
+	<pre class="language-bash"><code class="language-bash">nc -l 192.0.2.1 8080</code></pre>
+	<p>次に、これらのIPアドレスの1つでポート8080にバインドすることができます。</p>
+	<pre class="language-bash"><code class="language-bash">ip route add local 2001:db8::/64 dev lo</code></pre>
+	<p><code>nc -l 192.0.2.1 8080</code></p>
+	<p>IPv6を動作させるのは少し難しくなります。</p>
+	<pre class="language-bash"><code class="language-bash">$ ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+    inet 1.1.1.0/24 scope global lo
+       valid_lft forever preferred_lft forever
+    inet 104.16.0.0/16 scope global lo
+       valid_lft forever preferred_lft forever
+...</code></pre>
+	<p><code>ip route add local 2001:db8::/64 dev lo</code></p>
+	<p>残念ながら、これらのアタッチされたv6IPアドレスには、v4の例のようにバインドすることはできません。これを機能させるには、さらに上の権限が必要な <code>IP_FREEBIND</code> ソケットオプションを使用する必要があります。完全性を確保するためにsysctl <code>net.ipv6.ip_nonlocal_bind</code>を使う方法もありますが、ここで触れることはお勧めしません。</p>
+	<p>このAnyIPのトリックを使用すると、数百万のIPアドレスを各サーバーにローカルに割り当てることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="binding-to-all-ports"><b>すべてのポートへのバインド</b></h3>
+		<a href="https://blog.cloudflare.com/#binding-to-all-ports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2つ目の大きな問題は、任意のポート番号に対してTCPソケットを開く機能です。Linuxおよび、一般にBSDソケットAPIをサポートしている任意のシステムでは、特定のTCPポート番号へのバインドは、単一のバインドシステム呼び出しでしか行うことができません。単一操作で複数ポートへのバインドは不可能です。</p>
+	<pre class="language-bash"><code class="language-bash">/* Yes, really, this is all you need. */
+#define INET_LHTABLE_SIZE       32</code></pre>
+	<p>単純に考えると、65535のポートに、1回ずつ、65535回バインドすることになります。確かにこのような方法もあったかもしれませんが、これは次のような酷い結果につながります。</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/revenge-listening-sockets">リスニングソケットの復讐</a></p>
+		</li>
+	</ul>
+	<p>内部的には、Linuxカーネルは、正確に32バケットを使用して、ポート番号でインデックスを指定したリスニングソケットをハッシュテーブル<a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank" rel="noopener noreferrer">LHTABLE</a>に保存します。</p>
+	<p><code>/* はい、本当に、これが必要なすべてです。 */</code></p>
+	<p><code>#define INET_LHTABLE_SIZE &nbsp; &nbsp; &nbsp; 32</code></p>
+	<p>65,000のポートを開いていたら、このテーブルのルックアップには長い長い時間がかかったでしょう。ハッシュテーブルの各バケットには2,000のアイテムが入っているからです。</p>
+	<p>問題を解決するもう1つの方法は、iptablesの豊富なNAT機能の使用です。一部の特定のアドレス／ポートへの着信パケットの宛先を書き換えて、アプリケーションをそれにバインドさせることができます。</p>
+	<p>しかし、これにはiptablesのconntrackモジュールを有効にする必要があるため、この方法は採りませんでした。過去には<a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">パフォーマンスエッジケース</a>があり、conntrackは当社が被った大規模なDDoS攻撃の一部には対処できませんでした。</p>
+	<p>さらに、NATアプローチでは、宛先IPアドレス情報が失われる可能性があります。これを緩和するためにあまり知られていないSO_ORIGINAL_DSTソケットオプションもありますが、<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">あまり使いたくなるようなコードではありません</a>。</p>
+	<p>幸い、65000のポートすべてをバインドするもしくは <code>conntrack</code>を使用する以外の方法で、目標を達成する方法があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="firewall-to-the-rescue"><b>ファイアウォールで対応</b></h3>
+		<a href="https://blog.cloudflare.com/#firewall-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>先に進む前に、オペレーティングシステム上でのネットワークパケットの流れについて復習しておきましょう。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AmbKOGpP2SLYGI4dCFTvG/26b0fe28a0379e3a0203d0fcbe5b50f5/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
+
+	</figure>
+	<p>一般に、受信パケットの経路には次の2つの異なる層があります。</p>
+	<ul>
+		<li>
+			<p>IPファイアウォール</p>
+		</li>
+		<li>
+			<p>ネットワークスタック</p>
+		</li>
+	</ul>
+	<pre class="language-bash"><code class="language-bash">TPROXY
+This target is only valid in the mangle table, in the 
+PREROUTING chain and user-defined chains which are only 
+called from this chain.  It redirects the packet to a local 
+socket without changing the packet header in any way. It can
+also change the mark value which can then be used in 
+advanced routing rules. </code></pre>
+	<p>これらは概念的に異なるものです。IPファイアウォールは通常、ステートレスなソフトウェアです（ここでは、conntrackとIPフラグメントの再構築は無視します）。ファイアウォールはIPパケットを分析し、それらを受け入れるかドロップするかを決定します。注意：この層では、_アプリケーションやソケットではなく、パケットとポート番号_を話題にしています。</p>
+	<p>次に、ネットワークスタックがあります。ここには多くの状態が維持されています。ネットワークスタックの主なタスクは、受信するIPパケットを_ソケット_にディスパッチすることで、パケットはユーザー空間の_アプリケーション_によって処理されます。ネットワークスタックは、ユーザー空間と共有される抽象化を管理しています。TCPフローを再構成し、ルーティングを処理し、ローカルなIPアドレスを認識します。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-magic-dust"><b>魔法の粉</b></h3>
+		<a href="https://blog.cloudflare.com/#the-magic-dust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>出典：<a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">こちらもYouTube</a></p>
+	<p>ある時点で、TPROXY iptablesモジュールに偶然行き当たりました。<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">公式ドキュメント</a>は見落としてしまいやすいです。</p>
+	<p>カーネルには、別に、次のドキュメントもあります。</p>
+	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
+  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
+				    ip_hdrlen(skb) +
+				      __tcp_hdrlen(tcph),
+				    saddr, sport,
+				    daddr, dport,
+				    in-&gt;ifindex, 0);</code></pre>
+	<ul>
+		<li>
+			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></p>
+		</li>
+	</ul>
+	<p>考えるほど、もっと知りたくなりました。</p>
+	<p>つまり...TPROXYは実際に何を_する_のかということです。</p>
+	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="revealing-the-magic-trick"><b>魔法のトリックを明らかにする</b></h3>
+		<a href="https://blog.cloudflare.com/#revealing-the-magic-trick" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>TPROXYコードは<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">驚くほど単純</a>です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51PUlTDqve3FXm5AhGdfZt/c57a4956155d52e7c3b447d7887bce4e/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
+
+	</figure>
+	<p>声に出して読み上げます。ファイアウォールの一部であるiptablesモジュールでは、私たちはinet_lookup_listenerと呼んでいます。この機能はsrc/dst port/IP 4-tupleを使い、接続を受け入れることのできるリスニングソケットを戻します。これは、ネットワークスタックのソケットディスパッチのコア機能です。</p>
+	<p>繰り返します。ファイアウォールコードはソケットディスパッチルーチンを呼び出します。</p>
+	<pre class="language-bash"><code class="language-bash"># Set 192.0.2.0/24 to be routed locally with AnyIP.
+# Make it explicit that the source IP used for this network
+# when connecting locally should be in 127.0.0.0/8 range.
+# This is needed since otherwise the TPROXY rule would match
+# both forward and backward traffic. We want it to catch 
+# forward traffic only.
+sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
+
+# Set the magical TPROXY routing
+sudo iptables -t mangle -I PREROUTING \
+        -d 192.0.2.0/24 -p tcp \
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
+	<p>この後、<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer">TPROXYは実際にソケットディスパッチを_行います_</a>。</p>
+	<pre class="language-bash"><code class="language-bash">IP_TRANSPARENT (since Linux 2.6.24)
+Setting this boolean option enables transparent proxying on
+this socket.  This socket option allows the calling applica‐
+tion to bind to a nonlocal IP address and operate both as a
+client and a server with the foreign address as the local
+end‐point.  NOTE: this requires that routing be set up in
+a way that packets going to the foreign address are routed 
+through the TProxy box (i.e., the system hosting the 
+application that employs the IP_TRANSPARENT socket option).
+Enabling this socket option requires superuser privileges
+(the CAP_NET_ADMIN capability).
+
+TProxy redirection with the iptables TPROXY target also
+requires that this option be set on the redirected socket.</code></pre>
+	<p><code>skb-&gt;sk = sk;</code></p>
+	<pre class="language-bash"><code class="language-bash">import socket
+
+IP_TRANSPARENT = 19
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
+
+s.bind(('127.0.0.1', 1234))
+s.listen(32)
+print("[+] Bound to tcp://127.0.0.1:1234")
+while True:
+    c, (r_ip, r_port) = s.accept()
+    l_ip, l_port = c.getsockname()
+    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
+    c.send(b"hello world\n")
+    c.close()</code></pre>
+	<p>この行は、 socket <code>struct sock</code>をインバウンドパケットに割り当てて、ディスパッチを完了します。</p>
+	<pre class="language-bash"><code class="language-bash">$ nc -v 192.0.2.1 9999
+Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
+hello world</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="pulling-the-rabbit-from-the-hat"><b>帽子からウサギを取り出す</b></h3>
+		<a href="https://blog.cloudflare.com/#pulling-the-rabbit-from-the-hat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">$ sudo python3 transparent2.py
+[+] Bound to tcp://127.0.0.1:1234
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">画像</a>作者<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd</a></p>
+	<p>TPROXYで武装することで、bind-to-all-portsのトリックをきわめて容易に実行することができます。構成を次に示します。</p>
+	<p>この設定に加えて、魔法のIP_TRANSPARENTソケットオプションでTCPサーバーを起動する必要があります。次の例は、tcp://127.0.0.1:1234でリッスンする必要があります。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">IP_TRANSPARENTのマニュアルページ</a>には、次のように掲載されています。</p>
+	<p>シンプルなPythonサーバーを次に示します。</p>
+	<p>サーバーの実行後は、任意のIPアドレスからサーバーに接続できます。</p>
+	<p>最も重要なのは、サーバーは接続をレポートし、_誰もそのIPアドレスおよびポートをリッスンしていないにも関わらず、_192.0.2.1ポート9999にダイレクトされたことです。</p>
+	<p>いかがでしょう！これが、conntrackを使用せずにLinux上の任意のポートに_バインドする方法です。_</p>
+	<div class="flex anchor relative">
+		<h3 id="thats-all-folks"><b>これがすべてです</b></h3>
+		<a href="https://blog.cloudflare.com/#thats-all-folks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この記事では、元々透過的プロキシ用に設計されたものを少し違う用途で使用するための、目立たないiptablesモジュールの使用方法を説明しました。このモジュールを借りて、標準のBSDソケットAPIを使用して不可能と思われたことを実行することができ、カスタムのカーネルによるパッチを使う必要性も回避することができます。</p>
+	<p>TPROXYモジュールは非常に珍しく、Linuxのファイアウォールの文脈では基本的にLinuxのネットワークスタックが実行することを実行します。公式ドキュメントが幾分不足しており、このモジュールの本当の力を理解しているLinuxユーザーはそれほど多くないと思われます。</p>
+	<p>TPROXYにより、vanillaカーネル上で当社のSpectrum製品がスムーズに動作すると言って良いでしょう。。また、iptablesとネットワークスタックについて理解することが、いかに重要かについても覚えておくとよいでしょう。</p>
+	<hr>
+	<p><i>低レベルのソケットの作業に興味をお持ちですか？ロンドン、オースティン、サンフランシスコの</i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>世界的に有名なチーム</i></a><i>、ポーランドのワルシャワの精鋭部隊に、ぜひご参加ください。</i></p>
+	<hr>
+	<ol>
+		<li>
+			<p>IPアドレスを、appropriate rp_filterおよびBGP構成でループバックインタフェースに割り当てることで、任意のIP範囲を当社エッジサーバーで処理することができます。<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
+</div>

@@ -1,0 +1,104 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">English</a>、<a href="https://blog.cloudflare.com/zh-tw/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">Français</a>、<a href="https://blog.cloudflare.com/de-de/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/integrate-cloudflare-zero-trust-with-datadog-cloud-siem">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Cu0rknSi4Vwq1Govh3aak/a4251d1b975519df67624e3c22ab6200/integrate-cloudflare-zero-trust-with-datadog-cloud-siem.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>CloudflareのZero Trustプラットフォームを使用することで、組織に強固なセキュリティ体制の構築して浸透させることができます。このプラットフォームでは、トラフィックをフィルタリングするセキュアWebゲートウェイである「Zero Trustネットワークアクセス」から、転送中およびクラウド内のデータを保護する「クラウドアクセスセキュリティブローカー」や「データ損失保護」機能まで、様々な機能を利用することができます。お客様はCloudflareを使用することで、IT部門が管理するすべてのデバイスを検証、分離、検査することができます。当社の組み合わせ可能なインラインソリューションを利用することで、セキュリティへのシンプルなアプローチと包括的なログセットを手にすることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SCp5IxwJUMOJ6irbWPYHf/4117714bfa2e10409c307dbf48d9e7d2/image5-1.png" alt="Integrate Cloudflare Zero Trust with Datadog Cloud SIEM" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>多くのお客様から、これらのログをDatadogのクラウドSIEM製品に集約しているという報告をいただいています。Datadog Cloud SIEMは、動的なクラウドスケール環境に脅威検出機能、調査機能、自動応答機能を提供します。クラウドSIEMでは、運用ログやセキュリティログをボリュームに関係なくリアルタイムに分析し、厳選されたすぐに使える統合機能やルールを活用して脅威を検知することができます。また、あらかじめ構成されたワークフローをすぐに使えるブループリントという形で提供しており、対応や修復を自動化することもできます。また、開発者、セキュリティ、運用チームは、詳細なオブザーバビリティデータを活用して、単一の統合プラットフォームでセキュリティ調査を加速することができます。以前はCloudflare CDN用のすぐに使えるダッシュボードをDatadogで提供していました。これにより、お客様は製品の使用状況や、応答時間、HTTPステータスコード、キャッシュヒット率などのパフォーマンス指標に関する貴重な洞察を得ることができます。お客様はCloudflareの主要メトリクスを収集、可視化、アラートを発生させることができます。</p>
+	<p>本日、Cloudflare Zero Trust Integration with Datadogの一般提供を発表できることを大変嬉しく思います。この深い統合により、クラウドSIEM内にCloudflare Content Packが提供されます。これには、Zero TrustのログをDatadogに取り込み、Zero Trust環境全体にわたって大幅に向上したセキュリティ洞察を得るのに役立つ、すぐに使用できるダッシュボードと検出ルールが含まれています。</p>
+	<blockquote>
+		<p>「当社のDatadog SIEMとCloudflareの統合により、Cloudflare Zero Trustの統合全体のアクティビティに関する全体的なビューが提供されます。これにより、セキュリティチームと開発チームはCloudflare Zero Trustエコシステム内のアプリ、デバイス、ユーザーにわたる異常なアクティビティを迅速に特定して対応できるようになります。この統合により、CASB（クラウドアクセスセキュリティブローカー）の問題検出機能やありえない移動シナリオに基づいて自動的にシグナルを生成する検出ルール、異常を簡単に発見するための刷新されたダッシュボード、すぐに使えるワークフロー自動化ブループリントを通じて攻撃者の活動を迅速に抑制し、迅速に対応・修復することが可能となります」- <b>Yash Kumar</b>**、**Datadog社製品管理担当シニアディレクター</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RYHT6tKmiMbXX3IbZ0jff/f507f8781513f3913b5bb73fd044f818/image4.png" alt="" class="kg-image" width="1999" height="1343" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">使用開始手順</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="set-up-logpush-jobs-to-your-datadog-destination">宛先DatadogにLogpushジョブを設定</h3>
+		<a href="https://blog.cloudflare.com/#set-up-logpush-jobs-to-your-datadog-destination" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのダッシュボードまたはAPIを使用して、Datadogで取り込む各データセットに対してすべてのフィールドを有効にした<a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/datadog" target="_blank" rel="noopener noreferrer">Logpushジョブを作成</a>します。を行います。現在、Datadogに取り込むことができる8つのアカウントスコープのデータセット（アクセス要求、監査ログ、CASBの問題検出機能、DNS、ネットワーク、HTTPを含むゲートウェイログ、Zero Trustセッションログ）が利用可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="install-the-cloudflare-tile-in-datadog">DatadogにCloudflareタイルをインストール</h3>
+		<a href="https://blog.cloudflare.com/#install-the-cloudflare-tile-in-datadog" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Datadog ダッシュボードで、Datadog Integrationカタログ内のCloudflare Tileを探してインストールします。この段階で、Datadogのすぐに使えるログ処理<a href="https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source" target="_blank" rel="noopener noreferrer">パイプライン</a>が、Cloudflare Zero Trustログを自動的に解析し、正規化します。</p>
+	<div class="flex anchor relative">
+		<h3 id="analyze-and-correlate-your-zero-trust-logs-with-datadog-cloud-siems-out-of-the-box-content">DatadogクラウドSIEMのすぐに使えるコンテンツで、 Zero Trustのログを分析して関連付ける</h3>
+		<a href="https://blog.cloudflare.com/#analyze-and-correlate-your-zero-trust-logs-with-datadog-cloud-siems-out-of-the-box-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しく改良されたDatadogとの連携機能により、セキュリティチームはCloudflare Content Packを使用して、迅速かつ簡単にZero Trustコンポーネントを監視することができます。これには、Cloudflare Zero Trustエコシステム内のアプリケーション、デバイス、ユーザー全体のアクティビティに関する様々なウィジェットを強調表示するZero Trustセクションを備えた、すぐに使えるダッシュボードも含まれます。このセクションは全体的なビューになっており、異常の早期発見・対応に役立ちます。</p>
+	<div class="flex anchor relative">
+		<h3 id="security-detections-built-for-casb">CASB用に構築されたセキュリティ検出機能</h3>
+		<a href="https://blog.cloudflare.com/#security-detections-built-for-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ufPwaIiXySgUYcLsvXbiz/131481c545a01474ea1f26f50308ccf3/image1-2.png" alt="" class="kg-image" width="1728" height="1117" loading="lazy">
+
+	</figure>
+	<p>企業のSaaSアプリケーションの利用が増えるにつれて、保存データに対する洞察と制御がより重要になります。Cloudflare CASBの問題検出機能は、まさにそれを実現する、統合されたすべてのSaaSアプリケーションのセキュリティリスクに関する洞察を提供することができます。</p>
+	<p>この新しい統合により、DatadogはCASBで発見されたあらゆる問題を検出する、すぐに使える検出ルールを提供するようになりました。このアラートは、Microsoft 365やGoogle Workspaceなどの、統合されたSaaSアプリ内での不審な活動を示すCASBが発見したセキュリティ問題に対して、何段階かの重大度レベルでトリガーされます。以下の例は、CASBがGoogle Workspaceのドメインレコードが見つけられないアセットの問題を示しています。</p>
+	<p>この検出機能により、時間をかけずに設定ミスやセキュリティ上の問題を特定して修正することができ、セキュリティ侵害の可能性を低減します。</p>
+	<div class="flex anchor relative">
+		<h3 id="security-detections-for-impossible-travel">ありえない移動に対するセキュリティ検知</h3>
+		<a href="https://blog.cloudflare.com/#security-detections-for-impossible-travel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NlUJLmZa43B1LqkTKmdMc/75e15e8a2d66ce46093e5198a6450d94/image2.png" alt="" class="kg-image" width="1776" height="1024" loading="lazy">
+
+	</figure>
+	<p>最も一般的なセキュリティ問題の一つは、驚くほど単純な方法で現れることがあります。例えば、ある場所からログインしたように見えるユーザが、その直後に物理的にありえない遠方からログインするような場合です。Datadogの新しい検出ルールにはまさにこのシナリオに対応する、<a href="https://docs.datadoghq.com/security/default_rules/cloudflare-impossible-travel" target="_blank" rel="noopener noreferrer">あり得ない移動の検出ルール</a>があります。DatadogのクラウドSIEMは、あるユーザの連続するログ行が時速1,000kmを超える速度で500km以上移動したようなありえないものであると判断した場合、セキュリティアラートをトリガーします。管理者は、それがセキュリティ侵害であるかどうかを判断し、それに応じてアクションを取ることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56UXWQZRCjTg0y0PThuDf9/b033359bf8872fc79a8eb0015fbb8416/image3.png" alt="" class="kg-image" width="1274" height="645" loading="lazy">
+
+	</figure>
+	<p>CloudflareとDatadogのお客様は、強化されたダッシュボードと新しい検出ルールによって、自社の製品とセキュリティの状況をより包括的に把握できるようになりました。私たちはお客様にさらなる価値を提供し、ユニークな検出ルールを開発することを楽しみにしています。</p>
+	<p>Datadogをご利用のCloudflareのお客様は、<a href="https://docs.datadoghq.com/integrations/cloudflare" target="_blank" rel="noopener noreferrer">今すぐこちらから</a>新しい統合をお試しください。</p>
+</div>

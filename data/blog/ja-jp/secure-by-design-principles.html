@@ -1,0 +1,187 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/secure-by-design-principles">English</a>、<a href="https://blog.cloudflare.com/zh-tw/secure-by-design-principles">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/secure-by-design-principles">Français</a>、<a href="https://blog.cloudflare.com/de-de/secure-by-design-principles">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/secure-by-design-principles">한국어</a>、<a href="https://blog.cloudflare.com/es-es/secure-by-design-principles">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/secure-by-design-principles">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NcbHncgdDvPCbl1w1mG6A/97f1ef4fca637d50e3d780a5b40af5c4/secure-by-design-principles.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>米国サイバーセキュリティー・インフラセキュリティー庁（CISA）と17の国際的なパートナーは、「<a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">セキュア・バイ・デザイン</a>」原則に基づき、テクノロジー業界におけるベストプラクティスの形成を支援しています。この原則の目的は、ソフトウェアメーカーがセキュリティを製品開発の不可欠な要素と認識するだけでなく、デフォルトで構成された強力なセキュリティ機能を備えた製品を設計するよう奨励することです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69sko7A68LpSgodcAbWNKk/84a79ab3e02de76023c119ca4d14c132/Cloudflare-Aligns-with-CISA-Secure-by-Design-Principles--Helps-Drive-the-Shift-of-Security-Responsibilities-from-User-to-Sof.png" alt="Changing the industry with CISA’s Secure by Design principles" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>サイバーセキュリティ企業として、Cloudflare、製品セキュリティはDNAの不可欠な要素であると考えています。当社はCISAの原則を強く信じており、当社が行う仕事においてそれを守り続けていきます。当社が構築する製品やすべてのお客様にご利用いただけるサービスにセキュア・バイ・デザインの原則をCloudflareがどのように組み込んできたか、そのストーリーを共有できることを嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-do-secure-by-design-and-secure-by-default-mean">「セキュア・バイ・デザイン」と「セキュア・バイ・デフォルト」とは何ですか？</h2>
+		<a href="https://blog.cloudflare.com/#what-do-secure-by-design-and-secure-by-default-mean" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セキュア・バイ・デザインとは、セキュリティが「ボルトオン」ではなく「ベイクドイン」された製品のことです。メーカーは、事後的にセキュリティ対策に対処するのではなく、攻撃者が製品へのアクセスに成功するのを合理的に防ぐ方法で製品を構築することにより、事前にリスクを軽減するための措置を講じます。</p>
+	<p>セキュア・バイ・デフォルトとは、必要なセキュリティ設定が追加料金なしでデフォルトとして提供されるように製品が構築されていることを意味します。</p>
+	<p>CISAでは、以下に、ソフトウェア製品のセキュリティ原則を3つ概説しています：</p>
+	<ul>
+		<li>
+			<p>顧客のセキュリティ結果に責任を負う</p>
+		</li>
+		<li>
+			<p>徹底した透明性と説明責任の導入</p>
+		</li>
+		<li>
+			<p>トップからリードする</p>
+		</li>
+	</ul>
+	<p>CISAは、その<a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">文書</a>の中で、その原則を達成する方法と、メーカーが従うべきセキュリティ対策に関する包括的なガイダンスを提供しています。これらのガイドラインを遵守することは、顧客へのセキュリティ上のメリットが強化され、開発者のブランド評価を高めるだけでなく、メーカーの長期的なメンテナンスとパッチのコストも削減されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-does-it-matter">それが重要なのはなぜでしょう？</h2>
+		<a href="https://blog.cloudflare.com/#why-does-it-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>テクノロジーは紛れもなく私たちの生活において重要な役割を果たしており、数多くの日常業務を自動化しています。テクノロジーやインターネットに接続されたデバイスへの世界の依存度は、ここ数年で著しく高まってきました。主な理由としては、<a href="https://datareportal.com/reports/digital-2022-time-spent-with-connected-tech" target="_blank" rel="noopener noreferrer">Covid-19による</a>ものです。Covid-19の大流行の中、個人や企業は、物理的な交流を制限する公衆衛生の措置に従いながら、オンラインに移行しました。</p>
+	<p>インターネット接続は私たちの生活を便利にし、オンライン学習やリモートワークの機会を与えますが、同時に攻撃者がそのような行為から利益を得る機会も生み出します。適切な保護手段を講じなければ、ユーザー情報、財務記録、ログイン認証情報などの機密データがすべて漏洩し、悪意のある行為に使用される可能性があります。</p>
+	<p>システムの脆弱性は、産業や経済全体に影響を与える可能性もあります。2023年、北朝鮮のハッカーが、ソフトウェアの脆弱性を悪用して世界中の個人や企業から3億ドル以上を盗み、<a href="https://finance.yahoo.com/news/north-korea-linked-lazarus-group-130000746.html?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%222168179FD2D36545B7494CB31CA686CB%22%7D&amp;_guc_consent_skip=1708084501" target="_blank" rel="noopener noreferrer">20%以上の暗号通貨の損失が発生した原因となった</a>と疑われています。</p>
+	<p>安全でないソフトウェアを壊滅させる結果をもたらす可能性があるにもかかわらず、あまりにも多くのベンダーがセキュリティの責任を顧客まかせにしています。これは、CISAがガイドラインで浮き彫りにした事実です。顧客からの一定の配慮は期待されますが、リスクの大部分はメーカーとその製品によって処理されるべきです。それによって初めて、さらに安全で信頼できるオンライン取引が可能になるのです。「セキュア・バイ・デザイン」の原則は、このギャップを埋め、業界を変えるために不可欠です。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-support-secure-by-design-principles">Cloudflareはどのようにセキュア・バイ・デザインの原則をサポートしていますか？</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-support-secure-by-design-principles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="taking-ownership-of-customer-security-outcomes">顧客のセキュリティ結果に責任を負うこと</h3>
+		<a href="https://blog.cloudflare.com/#taking-ownership-of-customer-security-outcomes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CISAは、顧客のセキュリティ成果に責任を負うために、ソフトウェアメーカーは、アプリケーションのハードニング、アプリケーション機能、アプリケーションのデフォルト設定を含む製品のセキュリティの取り組みに投資すべきであると説明しています。Cloudflareでは、常にこれらの製品セキュリティ対策を最優先事項としており、以下にいくつかの例を共有いたします。</p>
+	<div class="flex anchor relative">
+		<h4 id="application-hardening">アプリケーションのハードニング</h4>
+		<a href="https://blog.cloudflare.com/#application-hardening" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、当社の開発者は、当社のセキュリティチームによるチェックポイントを含む、定義されたソフトウェア開発ライフサイクル（SDLC）管理プロセスに従っています。当社は、既知の脆弱性が悪用される前に積極的に対処し、_すべて_の顧客のために悪用された脆弱性を修正します。例えば、当社はメモリセーフなプログラミング言語に取り組んでおり、可能な限り使用しています。2021年には、Cloudflareは<a href="https://blog.cloudflare.com/ja-jp/new-cloudflare-waf-ja-jp">Cloudflare WAF</a>をLuaからメモリセーフなRustに書き換えました。さらに最近では、Cloudflareは、<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">自社製の新しいHTTPプロキシであるPingora</a>を導入し、メモリセーフではないC言語からメモリセーフなRustに移行しました。これら両方のプロジェクトは、技術リーダーシップチームの手厚いサポートなしには実現不可能な、非常に大規模な取り組みでした。</p>
+	<div class="flex anchor relative">
+		<h4 id="zero-trust-security">ゼロトラストセキュリティ</h4>
+		<a href="https://blog.cloudflare.com/#zero-trust-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>デフォルトで、Cloudflareの<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustセキュリティ一式のサービス</a>を使用することで、CISAの<a href="https://www.cisa.gov/zero-trust-maturity-model" target="_blank" rel="noopener noreferrer">Zero Trust成熟度モデル</a>に準拠し、Cloudflareのデータ、開発リソース、その他のサービスへの不正アクセスを防止しています。当社では、信頼の前提を最小限に抑え、セルフホスト型かクラウド型かにかかわらず、Cloudflareのリソースにアクセスしようとするすべての人とデバイスに対して厳格な本人確認を要求します。</p>
+	<p>Cloudflareでは、Zero Trustセキュリティは、今日の環境において、必須のセキュリティアーキテクチャであると考えています。サイバーセキュリティ攻撃がまん延し、ハイブリッドな職場環境が新常態となっています。今日の中小企業を保護するために、当社は最大50人のユーザーまで<a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer">Zero Trustプラン</a>を無料で提供しています。このプランは、従業員やアプリをオンラインで保護するために必要とされる重要なセキュリティ制御を提供しています。</p>
+	<div class="flex anchor relative">
+		<h4 id="application-features">アプリケーションの特徴</h4>
+		<a href="https://blog.cloudflare.com/#application-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、多くの不可欠なセキュリティツールを無料でユーザーに提供するだけでなく、初期の頃から、さらに優れたセキュリティ機能をデフォルトで提供するよう、業界全体を後押ししてきました。</p>
+	<p>2014年、Cloudflareのバースデーウィーク中、<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>を導入することで、当社はすべてのお客様に暗号化を無料にすると発表しました。そして2015年には、さらに一歩進んで、ブラウザからオリジンまでのすべてのデータの<a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">完全な暗号化</a>を無料で提供しました。今では、その他の業界も当社に追随し、デフォルトでの暗号化がインターネット・アプリケーションの標準となっています。</p>
+	<p>2017年のCloudflareの7回目のバースデーウィーク中、当社は<a href="https://blog.cloudflare.com/ja-jp/unmetered-mitigation-ja-jp">定額制DDoS軽減</a>を発表できたことを大変誇りに思います。このサービスは、攻撃中に消費された余分な帯域幅をお客様に請求することなく、大規模なDDoS攻撃を吸収・軽減します。この発表により、DDoS攻撃に対する業界標準の「サージ価格」を廃止しました。</p>
+	<p>2021年、私たちは<a href="https://blog.cloudflare.com/privacy-preserving-compromised-credential-checking">MIGP</a>("Might I Get Pwned")と呼ばれるプロトコルを発表しました。このプロトコルは、その過程で不要な情報を公開することなくユーザーが自分の認証情報が漏洩しているかどうかを確認できるようにするものです。電子メールのハッシュのプレフィックスから生成されたバケットIDを除けば、認証情報はデバイスに留まり、インターネット上に送信されることはありません（暗号化されている場合もあります）。それ以前に、認証情報チェックサービスを利用すること自体が脆弱性であることが判明し、認証情報が漏洩したかどうかをチェックしている間に機密情報を漏洩する可能性があります。</p>
+	<p>その1年後の2022年、Cloudflareは、<a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone-ja-jp">WAF（Webアプリケーションファイアウォール）マネージドルールセットをCloudflareの全プランに無料提供すること</a>を発表し、再び業界を驚かせました。<a href="https://developers.cloudflare.com/waf/glossary" target="_blank" rel="noopener noreferrer">WAF</a>は、Webアプリケーションを悪意のある攻撃から保護するサービスです。このような攻撃は、組織の規模に関係なく、インターネット全体に大きな影響を与えます。WAFを無料提供することで、インターネットをすべての利用者にとって安全な場所にしようとしています。</p>
+	<p>最後に、2023年末には、プランのレベルに関係なく、<a href="https://blog.cloudflare.com/post-quantum-to-origins">ポスト量子暗号</a>をすべての顧客が無料で利用できるようにすることで、業界をリードするお手伝いができることを嬉しく思っています。</p>
+	<div class="flex anchor relative">
+		<h4 id="application-default-settings">アプリケーションのデフォルト設定</h4>
+		<a href="https://blog.cloudflare.com/#application-default-settings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>顧客をさらに保護するために、デフォルト設定で最初から堅牢なセキュリティ体制を提供できるようにしています。ユーザーが操作に慣れたら、好みに合わせて設定を変更したり、構成したりできます。例えば、Cloudflareは、新しいCloudflareゾーンに<a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone-ja-jp">Free Cloudflareマネージドルールセット</a>を自動的にデプロイします。マネージドルールセットには、Log4jルール、Shellshockルール、非常に一般的なWordPressエクスプロイトにマッチするルールなどが含まれます。必要に応じて、顧客はルールセットを無効にしたり、トラフィックフィルタや個々のルールを設定したりできます。さらにセキュア・バイ・デフォルトのシステムを提供するために、AIを使用して既存の管理ルールのバイパスを検出し、ソフトウェアのエクスプロイトが公開される前に検出できる<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">MLで計算されたWAF Attack Score</a>も作成しました。</p>
+	<p>もう一つの例として、Cloudflareのすべてのアカウントには、デフォルトで定額制DDoS軽減サービスが付属しており、多くのインターネット上で最も一般的で取り扱いが難しい攻撃からアプリケーションを保護します。</p>
+	<p>さらにもう1つの例として、顧客が<a href="https://www.cloudflare.com/en-gb/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2ストレージ</a>を使用する場合、保存されたすべてのオブジェクトは静止時に暗号化されます。暗号化と復号化はどちらも自動的に行われ、有効にするためのユーザー設定は必要ありません。また、R2のパフォーマンスにも影響を与えません。</p>
+	<p>Cloudflareはまた、すべての顧客に堅牢な監査ログを提供しています。<a href="https://developers.cloudflare.com/fundamentals/setup/account/account-security/review-audit-logs" target="_blank" rel="noopener noreferrer">監査ログ</a>はCloudflareのアカウント内で行われた変更履歴を要約します。監査ログには、ログインのようなアカウントレベルのアクションや、ゾーン設定の変更が含まれます。監査ログはすべてのプランタイプで利用可能です。また、個人ユーザーと複数ユーザー組織の両方で取得されます。監査ログはすべてのプランレベルで18ヶ月間利用可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="embracing-radical-transparency-and-accountability">抜本的な透明性と説明責任の導入</h3>
+		<a href="https://blog.cloudflare.com/#embracing-radical-transparency-and-accountability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>抜本的な透明性と説明責任を導入するということは、安全で安心な製品を提供することに誇りを持つということです。透明性と情報の共有は、セキュリティ業界の改善と進化に欠かせない要素であり、企業が互いに学び合い、オンライン世界をさらに安全な場所にする環境を促進します。Cloudflareは、以下に概説したように複数の方法で透明性を示しています。</p>
+	<div class="flex anchor relative">
+		<h4 id="the-cloudflare-blog">Cloudflare ブログ</h4>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-blog" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com">Cloudflareブログ</a>では、当社の機能や改善に関する最新情報だけでなく、昨年検出された歴史的な<a href="https://blog.cloudflare.com/ja-jp/technical-breakdown-http2-rapid-reset-ddos-attack-ja-jp">HTTP/2 Rapid Reset攻撃</a>のような、業界全体に関連するzero-day攻撃についてもご覧いただけます。当社は透明性を持ち、<a href="https://blog.cloudflare.com/ja-jp/thanksgiving-2023-security-incident-ja-jp">感謝祭2023年のセキュリティインシデント</a>などの重要なセキュリティインシデントについて、詳細に書いています。それは、何が起こったのか、なぜ起こったのか、そして当社がそれを解決するためにとった手順についてです。Cloudflareの設立当初から、当社のサービスに影響を与えるインシデントについて、抜本的な透明性を提供することに積極的な努力をしてきました。そして、この重要な原則を当社のコア<a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">バリュー</a>の1つとして引き続き掲げています。当社が共有する情報が、他の方々のソフトウェアのプラクティスの向上に役立つことを願っています。</p>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-system-status">Cloudflareシステムステータス</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-system-status" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflareシステムステータス</a>は、CloudflareサービスのステータスについてWebサイトオーナーにお知らせするページです。サービスの現在のステータスと、それらが期待通りに動作しているかどうかについて情報を提供します。進行中のインシデントがある場合、ステータスページにはどのサービスが影響を受けたか、また問題の詳細が記載されています。また、ユーザーは、一部のサービスの可用性に影響を与える可能性のある定期メンテナンスに関する情報も確認できます。</p>
+	<div class="flex anchor relative">
+		<h4 id="technical-transparency-for-code-integrity">コードの整合性のための技術的透明性</h4>
+		<a href="https://blog.cloudflare.com/#technical-transparency-for-code-integrity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、身元とデータの整合性を透明に検証するために、技術的手段として暗号化を使用することが重要だと考えています。例えば、2022年に、当社は<a href="https://blog.cloudflare.com/ja-jp/cloudflare-verifies-code-whatsapp-web-serves-users-ja-jp">WhatsAppと提携して</a>、WhatsAppのシステムを提供しました。このシステムでは、ユーザーがWeb版のサービスにアクセスした際に、ハッシュの整合性を自動的に確認するために、<a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A14%2C%22targetId%22%3A%22135202E37AE255A706ECF9E58DB17616%22%7D" target="_blank" rel="noopener noreferrer">コード検証拡張機能</a>を有効にします。これにより、ユーザーが正しい、改ざんされていないコードを実行していることが保証されます。ユーザーの代わりに自動的に処理されるプロセスが、スケーラブルな方法で透明性を提供するのに役立っています。もしユーザーが自分でハッシュを手動で取得し、計算し、比較しなければならない場合、改ざんの検出はおそらく技術的なユーザーのほんの一部にしか行われないでしょう。</p>
+	<div class="flex anchor relative">
+		<h4 id="transparency-report-and-warrant-canaries">透明性レポートとワラントカナリア</h4>
+		<a href="https://blog.cloudflare.com/#transparency-report-and-warrant-canaries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様から信頼を獲得し維持するために不可欠なのは、法執行機関やその他の政府機関から受けた要請について透明性を確保することだと考えています。そのため、Cloudflareでは、受けた顧客情報開示要請について<a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q1INAiyBubYSlfGdUhthU/8cc0e3de0f160e2765af4f514991ef6c/Transparency-Report-H2-2022.pdf?_gl=1*1y467q5*_ga*MTEyMzg0OTg5MC4xNjc3Nzg2MDk2*_ga_SQCRB0TXZW*MTcwOTA2NTM5OS4yNDIuMS4xNzA5MDY2NjYyLjAuMC4w" target="_blank" rel="noopener noreferrer">透明性レポート</a>を公表し、半期ごとに更新しています。</p>
+	<p>Cloudflareの透明性レポートの重要な部分は、当社のワラントカナリアです。ワラントカナリアは、政府機関や法執行機関から、当社の暗号化キーや認証キー、または顧客の暗号化キーや認証キーを誰かに提供するなどの特定の行動を取っていないことや、特定の要求を受けていないことを、暗黙のうちにユーザーに知らせる手法です。これらの手段を通じて、当社は、一部のリクエストの開示を禁止する法執行機関の命令を順守しながら、ユーザーにそのデータがどれほどプライベートで安全かを知らせることができます。Cloudflareのワラントカナリアは<a href="https://www.cloudflare.com/transparency" target="_blank" rel="noopener noreferrer">こちらから</a>ご覧いただけます。</p>
+	<p>透明性レポートとワラントカナリアは、CISAのセキュア・バイ・デザインの原則では明確に言及されていませんが、当社は、テクノロジー企業がその実践について透明性を確保する上で、それらは重要であると考えています。</p>
+	<div class="flex anchor relative">
+		<h4 id="public-bug-bounties">公開バグバウンティ</h4>
+		<a href="https://blog.cloudflare.com/#public-bug-bounties" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HackerOneが主催する<a href="https://hackerone.com/cloudflare?view_policy=true" target="_blank" rel="noopener noreferrer">公開バグバウンティ</a>に参加して、Cloudflareの脆弱性を報告し、その対価として金銭的報酬を受け取ることで、当社のセキュリティ対策に貢献していただきます。</p>
+	<div class="flex anchor relative">
+		<h3 id="leading-from-the-top">トップからリードすること</h3>
+		<a href="https://blog.cloudflare.com/#leading-from-the-top" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この原則により、セキュリティはCloudflareのビジネス目標に深く根ざしています。セキュリティと品質は密接な関係にあるため、製品のデフォルトセキュリティを向上させることで、製品全体の品質も向上します。</p>
+	<p>Cloudflareでは、セキュリティに専念することは、会社の構造にも反映されています。最高セキュリティ責任者は最高経営責任者（CEO）に直接報告し、取締役会には毎回出席しています。これにより、取締役会のメンバーは、現在のサイバーセキュリティの状況について十分な情報を得ることができ、セキュリティ向上のための会社の取り組みの重要性を強調することができます。</p>
+	<p>さらに、当社のセキュリティエンジニアは主要な研究開発組織の一部であり、その業務はシステムエンジニアと同様に当社の製品に不可欠です。つまり、当社のセキュリティエンジニアがセキュリティを後付けで追加するのではなく、SDLCにセキュリティを組み込むことができるということです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-you-help">何かお手伝いできることはありますか？</h2>
+		<a href="https://blog.cloudflare.com/#how-can-you-help" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ソフトウェアメーカーであれば、CISAの「セキュア・バイ・デザイン」の原則をよく理解し、自社に実装するプランを作成することをお勧めします。</p>
+	<p>個人として、バグバウンティプログラム（<a href="https://hackerone.com/cloudflare?type=team&amp;view_policy=true" target="_blank" rel="noopener noreferrer">CloudflareのHackerOne</a>公開バウンティなど）に参加し、コミュニティでのサイバーセキュリティの意識を高めることをお勧めします。</p>
+	<p>より良いインターネットを一緒に構築しましょう。</p>
+</div>

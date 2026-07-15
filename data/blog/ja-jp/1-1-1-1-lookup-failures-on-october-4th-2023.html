@@ -1,0 +1,165 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/1-1-1-1-lookup-failures-on-october-4th-2023">English</a>、<a href="https://blog.cloudflare.com/zh-tw/1-1-1-1-lookup-failures-on-october-4th-2023">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/1-1-1-1-lookup-failures-on-october-4th-2023">Français</a>、<a href="https://blog.cloudflare.com/de-de/1-1-1-1-lookup-failures-on-october-4th-2023">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/1-1-1-1-lookup-failures-on-october-4th-2023">한국어</a>、<a href="https://blog.cloudflare.com/es-es/1-1-1-1-lookup-failures-on-october-4th-2023">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/1-1-1-1-lookup-failures-on-october-4th-2023">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LJLAQmg8BED7Fe0uRQHK/9d2b3c7710d45c4b9b1c2d9fe0a610e8/1-1-1-1-lookup-failures-on-october-4th-2023.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023年10月4日、Cloudflareで07:00～11:00 (協定世界時) にかけてDNS解決に関する障害が発生しました。一部の1.1.1.1の利用者、または1.1.1.1を使用するWarp 、Zero Trust、サードパーティDNSリゾルバなどの製品の一部の利用者が、有効なクエリに対して「SERVFAIL DNS」応答を受信した可能性があります。この度は、ご迷惑をおかけして大変申し訳ございませんでした。この障害は内部的なソフトウェアのエラーであり、攻撃によるものではありません。このブログでは、障害の経緯、発生理由、そして再発防止に対する当社の取り組みについて説明します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S774vlQ0Giaa7OrRw5WpA/429311dc4a79f8e088291906058eb206/DNS-Incident-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="background">背景</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">ドメインネームシステム（DNS）</a>の仕組みでは、すべてのドメイン名はDNSゾーン内に存在します。ゾーンには、ドメイン名とホスト名のセットの集合体が管理されています。たとえば、Cloudflareはcloudflare.comというドメイン名を管理しており、これは「cloudflare.com」ゾーンにあると言えます。トップレベルドメイン（TLD）「.com」はサードパーティが所有し、「com」ゾーンにあります。comによってcloudflare.comへのアクセス方法が示されます。すべてのTLDの上位には<a href="https://www.iana.org/domains/root/db" target="_blank" rel="noopener noreferrer">各TLDへのアクセス方法を示す</a>、<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank" rel="noopener noreferrer">ルートゾーン</a>があります。そのため、ルートゾーンは他のすべてのドメイン名を解決できるようにするために重要な存在です。DNSの他の重要な部分と同様に、<a href="https://www.iana.org/dnssec/procedures" target="_blank" rel="noopener noreferrer">ルートゾーンもDNSSECで署名</a>されており、ルートゾーン自体には暗号署名が含まれています。</p>
+	<p>ルートゾーンは<a href="https://root-servers.org" target="_blank" rel="noopener noreferrer">ルートサーバー</a>によって公開されていますが、多くのDNS運用者は一般的にルートサーバーに到達できない場合でもルートゾーンの情報を利用できるように<a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank" rel="noopener noreferrer">ルートゾーンのコピーを自動的に取得して保持</a>するようにしています。 Cloudflareの再帰DNSインフラストラクチャも解決プロセスを高速化するため、このアプローチを採用しています。ルートゾーンの新バージョンは通常1日2回公開されます。1.1.1.1では、 static_zoneと呼ばれる<a href="https://blog.cloudflare.com/ja-jp/big-pineapple-intro-ja-jp">WebAssemblyアプリ</a>がメインのDNSロジックの上で動作しており、新バージョンが公開された段階で新バージョンを提供できるようにしています。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-happened">障害発生の原因</h2>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tgd6rlFY7udR3qnaykmLu/b3256f48a8d2aa87e51de7da96bdfa4b/image2-1.png" alt="" class="kg-image" width="951" height="604" loading="lazy">
+
+	</figure>
+	<p>9月21日、ルートゾーン管理における<a href="https://blog.verisign.com/security/root-zone-zonemd" target="_blank" rel="noopener noreferrer">既知の計画済みの変更</a>の内容に、ルートゾーンに初めて、チェックサムとして機能する新たなリソースレコードタイプ「<a href="https://www.rfc-editor.org/rfc/rfc8976.html" target="_blank" rel="noopener noreferrer">ZONEMD</a>」が追加されるというものがありました。</p>
+	<p>ルートゾーンの情報は、Cloudflareのコアネットワークで動作するソフトウェアによって取得されます。その後、世界中のCloudflareのデータセンターに再配布されます。変更後も、ZONEMDレコードを含むルートゾーンは通常通り取得および配布は継続して実行されていました。しかし、そのデータを利用する1.1.1.1のリゾルバシステムに問題があり、ZONEMDレコードを解析することができませんでした。ゾーンは全体をロードして提供する必要があるため、システムがZONEMDを解析できなかったことにより、ルートゾーンの新バージョンをCloudflareのリゾルバシステムで使用することができなくなりました。Cloudflareのリゾルバインフラストラクチャをホストしているサーバーの中には、新しいルートゾーンの情報を受信できなかった場合、リクエストの都度、DNSルートサーバーに直接問い合わせるようにフェイルオーバーするものもあります。しかし、他のサーバーは、メモリキャッシュに保存されたルートゾーンの既知の動作バージョン（変更前の9月21日に引き出されたバージョン）の利用を続けました。</p>
+	<p>2023年10月4日7時（協定世界時）、9月21日バージョンのルートゾーンのDNSSECの有効期限が切れました。Cloudflareのリゾルバシステムで利用可能な新しいバージョンが無くなり、Cloudflareの一部のリゾルバシステムがDNSSECシグネチャを検証できなくなり、その結果、エラーレスポンス（SERVFAIL）を送信するようになりました。CloudflareリゾルバのSERVFAILレスポンス生成割合が12%増加する事態となりました。以下の図は、障害の進行と、ユーザーへの影響が表面化した経緯を示しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="incident-timeline-and-impact">インシデントのタイムラインと影響</h2>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XAzPsw7SXN9MWtsdfATWP/6df4fb0f70eddd8d5a7b92ae242cb0f5/image3-1.png" alt="" class="kg-image" width="1337" height="1999" loading="lazy">
+
+	</figure>
+	<p><b>9月21 日6:30（協定世界時）</b>：ルートゾーンからの最後の情報引き出しの成功<b>10月4日7:00（協定世界時）</b>：9月21日に取得したルートゾーンのDNSSEC署名が期限切れとなり、クライアントからの問い合わせに対するSERVFAIL応答が増加。<b>7:57</b>：予期せぬSERVFAILに対する最初の外部報告が入り始める。<b>06:32</b>：Cloudflare社内でインシデントが宣言される。<b>8:50</b>：オーバーライドルールを使用して、1.1.1.1が古いルートゾーンファイルを使用した応答を提供するのを防ぐ最初の試みを実施。<b>10:30</b>：1.1.1.1のルートゾーンファイルの事前読み込みを完全に停止。<b>10:32</b>：応答が正常に回復。<b>11:02</b>：インシデントをクローズ。</p>
+	<p>この下のグラフは、影響とSERVFAILエラーで返されたDNS問い合わせのパーセンテージを時系列で表したものです：</p>
+	<p>私たちは、平常時のトラフィックにおけるSERVFAILエラーの基準量（通常値）を3%程度と想定しています。この場合のSERVFAILは、DNSSECチェーンにおける正当な問題、権威サーバーへの接続の失敗、権威サーバーの応答のタイムアウト、<a href="https://blog.cloudflare.com/unwrap-the-servfail">その他多くの要因</a>によって引き起こされる可能性があります。インシデントの間、SERVFAILの量は総クエリの15%でピークに達しましたが、その影響は世界中に均等に分散されたわけではなく、アッシュバーン（バージニア州）、フランクフルト（ドイツ）、シンガポールのような大規模なデータセンターに主に集中しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Wfn8yZCTZqq1AcB8EjQ4L/fe78cafa32baa2553bdba082c61e9dca/image1-3.png" alt="" class="kg-image" width="1431" height="414" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-this-incident-happened">インシデント発生の理由</h2>
+		<a href="https://blog.cloudflare.com/#why-this-incident-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="why-parsing-the-zonemd-record-failed">ZONEMDレコードの解析に失敗した理由</h3>
+		<a href="https://blog.cloudflare.com/#why-parsing-the-zonemd-record-failed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DNSは、リソースレコードの格納にバイナリ形式を採用しています。このバイナリ形式では、リソースレコードのタイプ（TYPE）は16ビットの整数として格納されます。リソースレコードのタイプが、リソースデータ（RDATA）の解析方法を決定します。レコードタイプ「1」はAレコードであることを意味し、RDATAはIPv4アドレスとして解析されます。レコードタイプ「28」はAAAAレコードを意味し、RDATAはIPv6アドレスとして解析されます。解析が未知のリソースタイプに遭遇した場合、RDATAの解析方法を判断することができないが、RDLENGTHフィールドがRDATAフィールドの長さを示すため、解析はそれを不明なデータ要素として扱うことができます。</p>
+	<p><a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank" rel="noopener noreferrer">RFC 1035</a></p>
+	<pre class="language-bash"><code class="language-bash">                                   1  1  1  1  1  1
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                                               |
+    /                                               /
+    /                      NAME                     /
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TYPE                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                     CLASS                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TTL                      |
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                   RDLENGTH                    |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
+    /                     RDATA                     /
+    /                                               /
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</code></pre>
+	<p>static_zoneが新しいZONEMDレコードをサポートしなかった理由は、これまで私たちがルートゾーンをバイナリ形式ではなく、プレゼンテーション形式で内部配布することを選んできたためです。リソースレコードのテキスト表現をいくつか見てみると、異なるレコードの表示形式には、さらに多くのバリエーションがあることがわかります。</p>
+	<p>レコードの例（右記URLより抜粋）：<a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">https://www.internic.net/domain/root.zone</a></p>
+	<pre class="language-bash"><code class="language-bash">.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2023100400 1800 900 604800 86400
+.			86400	IN	RRSIG	SOA 8 0 86400 20231017050000 20231004040000 46780 . J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==
+.			518400	IN	NS	a.root-servers.net.
+.			86400	IN	ZONEMD	2023100400 1 241 E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</code></pre>
+	<p>未知のリソースレコードに遭遇した際の処理方法の判断は必ずしも単純なものではありません。このため、私たちがエッジで使用するルートゾーン解析用のライブラリは、解析を行わずに代わりに解析エラーを返します。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-a-stale-version-of-the-root-zone-was-used">ルートゾーンの古いバージョンが使用された理由</h3>
+		<a href="https://blog.cloudflare.com/#why-a-stale-version-of-the-root-zone-was-used" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>static_zoneアプリは、ルートゾーンをローカルに提供（<a href="https://datatracker.ietf.org/doc/html/rfc7706" target="_blank" rel="noopener noreferrer">FC 7706</a>）する目的で、ルートゾーンの読み込みと解析を行い、最新バージョンをメモリに保存します。新バージョンが公開されると、static_zoneアプリがそれを解析し、解析に成功すると旧バージョンを削除します。しかし、static_zoneアプリは解析に失敗し、新しいバージョンに切り替えることができないため、古いバージョンを延々と使用し続けることになりました。1.1.1.1サービスが最初に起動されたとき、static_zoneアプリは既存のバージョンをメモリ内に持ち合わせていません。ルートゾーンを解析しようとすると失敗するものの、ルートゾーンの古いバージョンも持ち合わせていないため、ルートサーバーに直接リクエストを問い合わせることになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-the-initial-attempt-at-disabling-static_zone-didnt-work">static_zoneを無効にする最初の試みがうまくいかなかった理由</h3>
+		<a href="https://blog.cloudflare.com/#why-the-initial-attempt-at-disabling-static_zone-didnt-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CnsfVerlBEVukAWjtcK0B/2bdf1562912f7694fe4c65f73e8a9810/image5.png" alt="" class="kg-image" width="1999" height="1417" loading="lazy">
+
+	</figure>
+	<p>当初、1.1.1.1の動作をプログラム的に変更可能な仕組みであるオーバーライドルールによってstatic_zoneアプリの無効化が試行されました。私たちが展開したルールは以下のとおりです：</p>
+	<p>このルールは、受信したリクエストに「rec_disable_static」タグを付加します。static_zoneアプリの内部でこのタグをチェックし、設定されている場合、キャッシュされた静的ルートゾーンから応答を返しません。ただし、現在のノードが自身のキャッシュから応答を見つけられない場合、<a href="https://blog.cloudflare.com/big-pineapple-intro">キャッシュパフォーマンス向上</a>のために、問い合わせが別のノードに転送されることがあります。残念ながら、他のノードに転送される問い合わせにはrec_disable_staticタグが含まれないため、最終的にアプリを完全に無効にするまで、static_zoneアプリは古い情報を返し続けることとなりました。</p>
+	<pre class="language-bash"><code class="language-bash">phase = pre-cache set-tag rec_disable_static</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-the-impact-was-partial">影響が部分的だった理由</h3>
+		<a href="https://blog.cloudflare.com/#why-the-impact-was-partial" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、カーネルアップデートなどのシステムを完全に再起動することで有効になるタスクのため、当社のサービスをホストするサーバーを定期的に順次の再起動を実施しています。今回の障害発生時、ZONEMDの変更とDNSSECの無効化の間に再起動されたリゾルバサーバインスタンスは、影響に寄与していません。もしこの2週間の間に再起動されていた場合、起動時にルートゾーンのロードに失敗し、代わりにルートサーバーにDNSクエリを送信して解決を試みることになったでしょう。加えて、リゾルバはserve-stale（<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>）と呼ばれる技法を用い、影響を抑制する目的で、アクセス数の多いレコードを、最新ではない可能性のあるキャッシュから提供し続けることになります。レコードが上流から取得されてからTTL秒数が経過すると、そのレコードは最新ではないとみなされます。これにより、完全な停止を防ぎました。影響は主に、その時間枠内に1.1.1.1サービスを再起動しなかった多数サーバーを抱える最大規模のデータセンターで発生しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">改善とフォローアップ手順</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今回のインシデントは広範囲に影響を及ぼしており、当社では当社のサービスの可用性について非常に重く受け止めております。当社はいくつかの領域における改善点の特定に至りましたが、今後も再発の原因となるその他のギャップの発見に努めてまいります。</p>
+	<p>当社が直後から取り組んでいる内容は以下のとおりです。</p>
+	<p>**可視性：**static_zoneが古いルートゾーンファイルを提供した場合に通知するアラートを追加しました。古いルートゾーンファイルが提供された場合に長期間気づかれないという事態は防がれるべき事象でした。もし私たちがこの件をもっときちんと監視し、キャッシングが存在していれば、影響はなかったでしょう。上流で行われた変更からお客様とそのユーザーをお守りすることが私たちの目標です。</p>
+	<p>**耐障害性：**内部的なルートゾーンの取得と配布方法を見直します。取得および配布のパイプラインは、新しいRRTYPEをシームレスに処理し、パイプラインの短時間の中断はエンドユーザーが気付かない程度に抑える必要があります。</p>
+	<p>**テスト：**新しいZONEMDレコードの解析における未公表の変更に関連するテストを含め、この問題に関するテストを実施しているにもかかわらず、ルートゾーンの解析に失敗した場合のテスト内容が不十分でした。そのため、カバレッジと関連するプロセスを改善していきます。</p>
+	<p>**設計：**特定の期限を過ぎたルートゾーンの古いコピーを使用すべきではありません。古いルートゾーンデータも限られた時間であれば使用し続けることは確かに可能ですが、ある時点を過ぎると、許容できない運用上のリスクが生じます。<a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank" rel="noopener noreferrer">RFC 8806「Running a Root Server Local to a Resolver（ルートサーバーをリゾルバに対してローカルで実行する）」</a>に記述されているように、キャッシュされたルートゾーンデータの有効期間をより適切に管理するための対策を講じます。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このようなインシデントを起こしてしまったことを深くお詫び申し上げます。このインシデントから学ぶべき教訓は「変更はないだろう」と思い込まないことです。現代のシステムの多くは、最終的な実行ファイルに組み込まれる長いライブラリ群の連鎖で構築されており、そのひとつひとつにバグがあったり、変更があっても更新に遅延が発生してプログラムが正しく動作しないなどと言った事象が発生することがあります。私たちは、変更によるリグレッションを適切に検出する優れたテストや、変更に対して正常に失敗するシステムやコンポーネントを用意することがいかに重要であるかを理解しています。私たちは、インターネットの最も重要なシステム（DNSやBGP）における「形式」の変更が影響を及ぼすことを常に想定する必要があることを理解しています。</p>
+	<p>社内でフォローアップすべきことはたくさんあり、私たちは現在、このようなことを二度と起こさないよう24時間体制で取り組んでいます。</p>
+</div>

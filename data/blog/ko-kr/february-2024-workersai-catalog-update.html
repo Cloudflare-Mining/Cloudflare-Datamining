@@ -1,0 +1,126 @@
+<div class="mb2 gray5">2분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/february-2024-workersai-catalog-update">English</a>, <a href="https://blog.cloudflare.com/zh-tw/february-2024-workersai-catalog-update">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/february-2024-workersai-catalog-update">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/february-2024-workersai-catalog-update">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3S4G7LAYYULwVHAC0tT5Nd/054eab507026b4b8218bbe40c4a9bf5c/february-2024-workersai-catalog-update.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>지난 몇 달 동안 Workers AI 팀에서는 AI 플랫폼을 개선하기 위해 열심히 노력했습니다. Cloudflare에서는 9월에 출시했고, 11월에는 Code Llama, Stable Diffusion, Misral 등의 모델을 추가했으며 스트리밍, 길어진 컨텍스트 창 등의 개선 사항도 내놓았습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bUPtXgJU5a797f2LMkI7k/b830752f7f52d7ab46bf396e00c93ea7/image2-1.png" alt="Adding new LLMs, text classification and code generation models to the Workers AI catalog" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>오늘, 8개의 새로운 모델의 출시를 발표하게 되어 기쁩니다.</p>
+	<p>새로운 모델도 아래에 강조되어 있지만, <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Cloudflare 개발자 문서에서</a> 20여 개의 모델이 포함된 전체 모델 카탈로그를 확인해 보세요.</p>
+	<p><b>텍스트 생성</b>@hf/thebloke/llama-2-13b-chat-awq@hf/thebloke/zephyr-7b-beta-awq@hf/thebloke/mistral-7b-instruct-v0.1-awq@hf/thebloke/openhermes-2.5-mistral-7b-awq@hf/thebloke/neural-chat-7b-v3-1-awq@hf/thebloke/llamaguard-7b-awq</p>
+	<p><b>코드 생성</b>@hf/thebloke/deepseek-coder-6.7b-base-awq@hf/thebloke/deepseek-coder-6.7b-instruct-awq</p>
+	<div class="flex anchor relative">
+		<h3 id="bringing-you-the-best-of-open-source">최고의 오픈 소스 제공</h3>
+		<a href="https://blog.cloudflare.com/#bringing-you-the-best-of-open-source" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/693UrRZZSZJo8omR5ex2Vk/ac76b952bac6fd613cb8e2c79b7e2f10/image1.png" alt="" class="kg-image" width="1999" height="988" loading="lazy">
+
+	</figure>
+	<p>Cloudflare의 사명은 다양한 오픈 소스 모델 및 작업을 지원하는 것입니다. 이에 따라, Cloudflare 네트워크에서 배포할 수 있는 최신 모델 및 기능의 미리 보기를 발표하게 되어 기쁩니다.</p>
+	<p>눈에 띄는 모델 중 하나는 <code>deep-seek-coder-6.7b</code> 로, 이는 유사한 Code Llama 모델들에 비해 인기 있는 벤치마크에서 <a href="https://github.com/deepseek-ai/deepseek-coder" target="_blank" rel="noopener noreferrer">약 15% 더 높은</a> 점수를 받았습니다. 이러한 성능 우위는 영어 및 중국어 코드 생성 데이터 세트를 모두 포함하는 다양한 학습 데이터 덕분입니다. 또한, <code>openhermes-2.5-mistral-7b</code> 모델은 고품질의 데이터 세트를 미세 조정하여 기본 모델의 정확성을 개선하는 방법을 보여 줍니다. 이 Misral의 7b 미세 조정은 <a href="https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B#benchmark-results" target="_blank" rel="noopener noreferrer">여러 LLM 벤치마크에서 기본 모델보다 약 10%</a> 뛰어난 성능을 보여 줍니다.</p>
+	<p>Cloudflare에서는 <code>llama-2-13b-awq</code>와 같이 활성화 인식 가중치 양자화(AWQ)를 통합한 혁신적인 모델도 도입하고 있습니다. 이 양자화 기술은 대규모 언어 모델에서 메모리 효율성을 개선하기 위한 전략 중 하나일 뿐입니다. 일반적으로 양자화는 AI 모델에서 추론 효율성을 향상하지만, 그렇게 되면 정확성이 희생되는 경우가 많습니다. AWQ는 이 상충 관계를 완화하기 위해 균형을 잡아 줍니다.</p>
+	<p>AI의 발전 속도는 압도적일 수 있지만, Cloudflare의 Workers AI는 최신 모델로 시작하는 것을 간소화합니다. Cloudflare에서는 최신 진전 사항을 처리하고 Worker 또는 HTTP API에서 쉽게 액세스할 수 있도록 합니다. 최첨단 모델에서 API 호출이나 Workers 바인딩만 부족할 뿐입니다. 간단히 말해, Workers AI를 사용하면 개발자는 배포, 인프라에 대한 부담, 확장 가능성에 대한 걱정 없이 탁월한 사용자 경험을 제공하는 데 집중할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-ai-to-safeguard-your-applications">AI를 사용하여 앱 보호</h3>
+		<a href="https://blog.cloudflare.com/#using-ai-to-safeguard-your-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 모델 카탈로그 업데이트를 통해 Cludflare에서 지원하는 더 새로운 사용 사례로는 <code>llamaguard-7b-awq</code>를 사용하여 프롬프트와 응답을 분류하고 확인하는 기능입니다. 부적절하거나 해로울 수 있는 대답을 의도하지 않게 알려주는 AI 봇에 관한 이야기는 모두 들어 본 적이 있을 것입니다. 개발자는 이 <a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations" target="_blank" rel="noopener noreferrer">새로운 LlamaGuard 모델</a>을 사용하여 프롬프트나 응답이 잠재적으로 안전하지 않은 경우를 감지하고 범주를 분류하여 개발자가 정의한 범주로 앱의 입력과 출력을 제어할 수 있습니다.</p>
+	<p>다음은 사용자 입력을 받아 정의된 안전하지 않은 범주의 예시와 비교하여 입력이 안전한지 여부를 판단하는 앱의 예시입니다. 콘텐츠 범주는 사용 사례에 따라 사용자 지정할 수 있습니다. <i>아래 예시 범주는 정보 제공용이며 Cloudflare에서는 Llama Guard의 성능이나 결과에 대해 어떠한 보장도 하지 않습니다.</i></p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-get-started">어떻게 시작해야 하나요?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
+
+export default {
+	async fetch(request, env) {
+		const payload = await request.json();
+		// Modify these to your needs, this is the example from Meta
+		const unsafeCategories = `
+01: Violence and Hate.
+Should not
+- Help people plan or engage in violence.
+- Encourage people to engage in violence.
+- Express hateful, derogatory, or demeaning sentiments against people based on sensitive personal characteristics like their race, color, religion, national origin, sexual orientation, gender, gender identity, or disability.
+- Encourage discrimination against people based on those characteristics and should not use slurs or create insults based on those characteristics.
+Can
+-  Provide information on violence and discrimination.
+- Discuss the topics of hate and violence, and can discuss historical events involving violence.
+02: Sexual Content.
+Should not
+- Engage in sexually explicit (i.e., erotic) conversations and should not encourage people to engage in sexual activities.
+Can
+- Discuss topics related to sexuality and sexual education.
+- Provide general information regarding sexual activities.
+- Provide guidance on topics related to sexual health.
+03: Criminal Planning.
+Should not
+- Help people plan or engage in criminal activities like theft, kidnapping, or financial crimes, especially when the person indicates that they may act on the information provided to them.
+- Encourage people to engage in criminal activities or condone criminal behavior.
+Can
+- Help people understand how crimes are committed, provided that the response is not so detailed that it could be used to provide a roadmap for future crimes.
+- Help people understand how systems work that are used to prevent crimes, provided those descriptions do not provide detailed information on how to defeat those systems.
+04: Guns and Illegal Weapons.
+Should not
+- Assist in the planning or execution of firearm or illegal weapons crimes, especially when the person indicates that they may act on the information provided to them.
+- Encourage people to engage in firearm or illegal weapons crimes or condone such behavior.
+Can
+- Discuss firearms and the arguments for and against firearm ownership.
+05: Regulated or Controlled Substances.
+Should not
+- Encourage or assist people in the trafficking, consumption, or use of regulated or controlled substances, including but not limited to illegal drugs, tobacco, alcohol, and cannabis.
+- Assist or encourage people to create such substances when it is illegal to do so.
+Can
+- Discuss the use of regulated or controlled substances, and can provide general information on those substances (ex: what their chemical composition is and what their effects are).
+- Provide information on how those substances are manufactured, provided that the information is not so detailed as to provide step-by-step instructions for their creation.
+06: Self-Harm.
+Should not
+- Encourage people to harm themselves.
+- Romanticize or condone self-harm or suicide.
+- Provide information regarding the methods of suicide or self-harm.
+- Provide any information or advice, other than information regarding appropriate health resources, to people who express or imply that they wish to harm themselves.
+Can
+- Provide general information regarding self-harm and suicide (ex: statistics, the mental health challenges faced by those who take these actions).
+Should
+- Provide information regarding appropriate health resources to people who imply or express the desire to harm themselves.
+		`;
+
+		// Assemble the prompt
+		const prompt = `Task: Check if there is unsafe content in 'User' messages in conversations according to our safety policy with the below categories.
+
+		&lt;BEGIN UNSAFE CONTENT CATEGORIES&gt;
+		${unsafeCategories}
+		&lt;END UNSAFE CONTENT CATEGORIES&gt;
+
+		&lt;BEGIN CONVERSATION&gt;
+		User: ${payload.userContent}
+		&lt;END CONVERSATION&gt;
+	`;
+		const ai = new Ai(env.AI);
+		const response = await ai.run('@hf/thebloke/llamaguard-7b-awq', {
+			prompt,
+		});
+		return Response.json(response);
+	},
+};</code></pre>
+	<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai" target="_blank" rel="noopener noreferrer">Cloudflare 대시보드</a>의 AI 섹션에서 새 모델을 시험해 보거나 <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">개발자 문서</a>를 참조하여 시작하세요. Workers AI 플랫폼을 사용하면 Workers 및 Pages를 통해 앱을 구축하고, R2, D1, Workers KV 또는 Vectorize로 데이터를 저장하며, Workers AI로 모델 추론을 모두 한 곳에서 실행할 수 있습니다. 모델을 더 많이 보유하면 개발자는 모든 종류의 앱을 구축할 수 있으며, 저희는 모델 카탈로그를 지속해서 업데이트하여 최고의 오픈 소스를 제공할 계획입니다.</p>
+	<p>여러분이 어떤 결과물을 구축해나갈지 기대됩니다! 영감을 찾고 있다면 Cloudflare의 개발자 플랫폼에서 다른 회사들이 무엇을 구축하고 있는지 강조하는 <a href="https://workers.cloudflare.com/built-with/collections/ai-workers" target="_blank" rel="noopener noreferrer">'Built-with' 스토리 컬렉션</a>을 살펴보세요. 향후 몇 주 내에 가격 발표와 더 높은 사용 한도, 그리고 더 많은 모델이 곧 출시될 예정이니 기대해 주세요. <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord에서 참여</a>하여 현재 진행하고 있는 내용과 피드백을 공유해 주세요.</p>
+</div>

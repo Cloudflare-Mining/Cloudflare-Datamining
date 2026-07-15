@@ -1,0 +1,367 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ddos-threat-report-2023-q1">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2023-q1">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2023-q1">Français</a>、<a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2023-q1">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2023-q1">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-2023-q1">Português</a>、<a href="https://blog.cloudflare.com/es-es/ddos-threat-report-2023-q1">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2023-q1">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hBf3ss9ALTAhnccIgthOT/3de1a83f02593d568fb7fb53b75872bc/ddos-threat-report-2023-q1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023年最初のDDoS脅威レポートへようこそ。DDoS攻撃（<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">分散サービス妨害攻撃</a>）は、Webサイトなどのインターネットサービスを処理しきれないほどのトラフィックで圧倒し、サービスを中断して正規のユーザーが利用できないようにすることを目的としたサイバー攻撃の一種です。本レポートでは、当社が<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">グローバルネットワーク</a>で観測したDDoS攻撃の状況について、最新の知見とトレンドをご紹介します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uWhbRkCB07IIgsu2oHrmX/9a73fb5170250a2015d20d6a15140272/image1-9.png" alt="DDoS threat report for 2023 Q1" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="kicking-off-2023-with-a-bang">2023年の幕開けから活発に行動を開始</h2>
+		<a href="https://blog.cloudflare.com/#kicking-off-2023-with-a-bang" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>脅威アクターは2023年の幕開けから活発にその行動を開始しました。年明けは、銀行、空港、<a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">ヘルスケア</a>や大学など、欧米のターゲットに対する一連のハクティビストキャンペーンが特徴的でした。主に親ロシア派のテレグラム組織グループ_Killnet_がその行動を展開し、最近では<a href="https://blog.cloudflare.com/ja-jp/ddos-attacks-on-australian-universities-ja-jp">AnonymousSudan</a>によるものが見られました。</p>
+	<p>Killnet主導、AnonymousSudan主導のサイバー攻撃が注目を浴びましたが、彼らの攻撃は斬新かつ超大型なものではありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="hyper-volumetric-attacks">超帯域幅消費型攻撃</h2>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>しかし、他の脅威アクターによる_超帯域幅消費型_のDDoS攻撃が増加し、最大のものは<a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ja-jp">1秒間に7,100万リクエスト</a>（rps）を超えるものでした。これは、Googleのこれまでの世界記録46M rpsを55%も上回っています。</p>
+	<p>KillnetとAnonymousSudanの話に戻りますが、目立った攻撃は報告されていないものの、潜在的なリスクを過小評価するべきではありません。保護されていないインターネットプロパティは、KillnetやAnonymousSudanが主導するサイバーキャンペーンによって破壊される可能性があり、実際に破壊されたこともあります。組織は、リスクを軽減するために積極的な防御策を講じる必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="business-as-usual-for-south-american-telco-targeted-by-terabit-strong-attacks-thanks-to-cloudflare">Cloudflareによりテラビット級の強力な攻撃の標的とされた南米の通信事業者が通常通り業務を行うことが可能に</h2>
+		<a href="https://blog.cloudflare.com/#business-as-usual-for-south-american-telco-targeted-by-terabit-strong-attacks-thanks-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、第1四半期に見られた大規模な攻撃としては、南米の通信事業者を狙った1.3Tbps（テラビット毎秒）のDDoS攻撃があります。攻撃はわずか1分程度のものでした。この攻撃は、DNSとUDPの攻撃トラフィックを含むマルチベクトル攻撃であり、2万人規模のMirai亜型ボットネットから発信された複数のテラビット級の攻撃な攻撃を含む、より広範なキャンペーンの一部でした。攻撃トラフィックの多くは、米国、ブラジル、日本、香港、インドから発信されたものでした。この攻撃をCloudflareのシステムが自動的に検出し、お客様のネットワークに影響を与えることなく軽減しました。</p>
+	<p>Cloudflare、1.3TbpsのMirai DDoS攻撃を自動軽減する</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Y2qOZ1k9bPz9QkRACy2sZ/5eccf827bbcb192a5d1a2ec06b11bcd8/image2-6.png" alt="" class="kg-image" width="1999" height="965" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="high-performance-botnets">高パフォーマンスボットネット</h2>
+		<a href="https://blog.cloudflare.com/#high-performance-botnets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>超帯域幅消費型攻撃攻撃は、<a href="https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot" target="_blank" rel="noopener noreferrer">Internet of Things</a>（IoT）デバイスの代わりに仮想プライベートサーバー（VPS）で構成される新世代のボットネットを活用しています。</p>
+	<p>これまで、大規模なボットネットは、スマートセキュリティカメラなどの悪用可能なIoTデバイスを利用して攻撃を仕掛けていました。各IoTデバイスのスループットは限られていますが、数十万から数百万台のデバイスを組み合わせることで、標的を妨害するのに十分なトラフィックを生成することができます。</p>
+	<p>新世代の<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer">ボットネット</a>では、使用するデバイスの数は数分の一ですが、各デバイスが大幅に強化されています。クラウドコンピューティングプロバイダーは、スタートアップや企業が性能の高いアプリケーションを作成できるように、仮想プライベートサーバーを提供しています。しかしこれには、攻撃者が最大5,000倍もの強度を持つ高_パフォーマンスのボットネット_を作成できるという欠点があります。攻撃者は、パッチが適用されていないサーバーを侵害し、漏洩したAPI認証情報を使用して管理コンソールにハッキングすることで、仮想プライベートサーバーにアクセスします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20cHerRftPJQJ0rG4doFtS/6359369665e4b017e442366df943f5df/image14.png" alt="illustrating the difference between IoT based botnet and VPS based botnets" class="kg-image" width="1501" height="1040" loading="lazy">
+
+	</figure>
+	<p>Cloudflareは、主要なクラウドコンピューティングプロバイダーと協力し、これらのVPSベースのボットネットの取り締まりを行っています。クラウドコンピューティング事業者の迅速な対応により、ボットネットのかなりの部分を無効化することができました。その後、超帯域幅消費型攻撃はまだ発生しておらず、実りあるコラボレーションの証となっています。 &nbsp;</p>
+	<p>Cloudflareは、サイバーセキュリティコミュニティと優れた協力関係を築き、大規模攻撃を検出した時点でボットネットを阻止することが可能ですが、当社はこのプロセスをさらにシンプルに、より自動化したいと考えています。</p>
+	<p>クラウドコンピューティングプロバイダー、ホスティングプロバイダー、一般サービスプロバイダーの皆様には、<a href="https://www.cloudflare.com/lp/botnet-threat-feed" target="_blank" rel="noopener noreferrer">Cloudflareの無料ボットネット脅威フィード</a>にご登録いただき、自社のネットワーク内から発生する攻撃を可視化し、ボットネットの廃絶にご協力いただきたいと思います。</p>
+	<p>ボットネットの抽象的な図示説明</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2feopGKgNAdzjRsmyoZvQK/f3a52b064ccab375bd5cc9c51acac208/image10.png" alt="abstract visualization of a botnet" class="kg-image" width="1801" height="1012" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="key-highlights-from-this-quarter">当四半期の主なハイライト</h2>
+		<a href="https://blog.cloudflare.com/#key-highlights-from-this-quarter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p>第1四半期にランサムDDoS攻撃を受けたと回答したお客様は16％で、前四半期と比較すると横ばいですが、前年同期比で60％増加しています。</p>
+		</li>
+		<li>
+			<p>ターゲットの中心となったのは、非営利団体と放送メディア業界でした。フィンランドは、攻撃トラフィックの割合で見ると、HTTP DDoS攻撃の最大の発生源であり、ネットワーク層DDoS攻撃の主な標的でもありました。イスラエルは、HTTP DDoS攻撃により、世界で最も攻撃された国のトップとなりました。</p>
+		</li>
+		<li>
+			<p>大規模な帯域幅消費型DDoS攻撃（100Gbpsを超える攻撃）は、前四半期比で6％の増加が見られました。DNSベースの攻撃が最も人気のあるベクトルとなりました。同様に、ed DDoS攻撃、DNSアンプ攻撃、GREベースのDDoS攻撃においても、SPSS-basの急増が確認されました。</p>
+		</li>
+	</ol>
+	<p><a href="https://radar.cloudflare.com/reports/ddos-2023-q1" target="_blank" rel="noopener noreferrer">インタラクティブなレポートは、Cloudflare Radar</a>でご覧いただけます。</p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-ddos-attacks">ランサムDDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くの場合、DDoS攻撃は身代金の支払いを強要するために実行されます。私たちは、Cloudflareのお客様を調査し、ターゲットがランサムノートを受け取ったDDoSイベントの比率を追跡し続けています。この数字は2022年まで着実に上昇し、現在は16％で、2022年第4四半期と同じです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MYdqgtGaD5J0QdYUmAEv4/2ef5575658610dd3d11f2a24ad7bb33f/pasted-image-0.png" alt="" class="kg-image" width="1600" height="967" loading="lazy">
+
+	</figure>
+	<p>四半期ごとに、ランサムDDoS攻撃または脅威を報告したユーザーの割合‌‌</p>
+	<p>一般的に被害者が身代金を支払うまで、ファイルをダウンロードさせたりメールのリンクをクリックするよう仕向け、コンピュータのファイルを暗号化しロックする<a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware" target="_blank" rel="noopener noreferrer">ランサムウェア</a>攻撃とは対照的に、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">ランサムDDoS攻撃</a>を使用すると攻撃者は遥かに簡単に攻撃を仕掛けることができます。ランサムDDoS攻撃は、被害者を騙して電子メールを開かせたりリンクをクリックさせたりする必要はなく、ネットワークへの侵入や企業資産のアクセスへの足掛かりを用意する必要もありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pHr2pA0XLvqjiRdMZD2E2/8d759cf2c252e7ae26cfeaf227f44463/image23.png" alt="" class="kg-image" width="1868" height="910" loading="lazy">
+
+	</figure>
+	<p>ランサムDDoS攻撃では、攻撃者は被害者のコンピュータにアクセスする必要はなく、被害者のWebサイト、DNSサーバー、その他インターネットに接続されたあらゆる種類のプロパティをダウンさせ、ユーザーが利用できないように、またはパフォーマンスが低下するように、十分に大量のトラフィックで圧倒する必要があるだけです。攻撃者は通常、これ以上の攻撃を中止するか回避することと引き換えに、ビットコインの形で身代金の支払いを要求します。</p>
+	<p>2023年1月と2023年3月は、ユーザーから報告されたランサムDDoSの活動が2番目に多い月でした。これまででランサムDDoS攻撃が最も活動的であったのは2022年11月で、中国ではブラックフライデー、感謝祭、シングルズデーが開催される月であり、脅威アクターにとって有利な月であることに違いありません。 &nbsp;</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4c3KVL175cApfuTB64WXEp/e7f3f0ad54a6b40a75d3a2598776e940/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="943" loading="lazy">
+
+	</figure>
+	<p>月ごとのランサムDDoS攻撃または脅威を報告したユーザーの割合</p>
+	<div class="flex anchor relative">
+		<h2 id="who-and-what-are-being-attacked">誰が標的で、何を攻撃しているのか？</h2>
+		<a href="https://blog.cloudflare.com/#who-and-what-are-being-attacked" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="top-targeted-countries">標的国上位</h3>
+		<a href="https://blog.cloudflare.com/#top-targeted-countries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.jpost.com/breaking-news/article-736104" target="_blank" rel="noopener noreferrer">司法改革と反対デモ</a>、あるいはウェストバンクの継続的な緊張に関連してか、第1四半期にイスラエルは、最もHTTP DDoS攻撃トラフィックの標的となった国として、米国を上回って第1位に躍り出ました。これは驚異的な数字です。Cloudflareが第1四半期に処理した全HTTPトラフィックの1%弱が、イスラエルのWebサイトを標的としたHTTP DDoS攻撃の一部でした。攻撃の対象として、イスラエルに続き、米国、カナダ、トルコが標的とされました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3foVRDFCptH7z4LR18ktlT/92eec8db9f045ce920f6bac2c5f88edd/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の標的国上位（全世界の総トラフィックに占める攻撃トラフィックの割合）</p>
+	<p>ある国への全トラフィックに占める攻撃トラフィックの割合を見ると、スロベニアとグルジアが上位を占めています。スロベニアとグルジアのWebサイトへのトラフィックのうち、約20%がHTTP DDoS攻撃でした。次いで、カリブ海の二つの島の小国、セントクリストファー・ネイビス、そしてトルコと続きます。前回のグラフではイスラエルがトップでしたが、今回は9番目に攻撃された国として、ロシアより上に位置していることがわかりました。前四半期に比べ、依然として高い水準にあります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bDLpaVgtVW7DOszQ0hV4g/8b5171e6cf0e5481bf09e3818f786430/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の標的国上位（国ごとの総トラフィックに占める攻撃トラフィックの割合）</p>
+	<p>ネットワーク層のDDoS攻撃トラフィックの総量を見ると、中国が1位となっています。ネットワーク層のDDoS攻撃トラフィックのほぼ18％が中国からのものでした。僅差で2位はシンガポールで、17%を占めました。3位はアメリカ、4位はフィンランドでした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kV7x9aPs5l4ep6nos9bFM/3e86bce86e969ff21ace7251898b0a5b/pasted-image-0--4-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>ネットワーク層のDDoS攻撃で標的国上位（全世界のDDoSトラフィックに占める攻撃トラフィックの割合）</p>
+	<p>ある国への攻撃をその国への全トラフィックで正規化すると、フィンランドが1位に躍り出ることが明らかになっています。おそらく、これはフィンランドの<a href="https://www.bbc.com/news/world-europe-65173043" target="_blank" rel="noopener noreferrer">NATO加盟への新規承認</a>によるものでしょう。フィンランドへの全トラフィックの83%近くがネットワーク層の攻撃トラフィックでした。中国が68%で続き、シンガポールが49%で再び続きました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nfqeHVuj0SoDZNBEsLpDE/1f67313c6c711789e3101f02fd3971da/pasted-image-0--5-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>ネットワーク層のDDoS攻撃の標的国上位（国ごとの全トラフィックに占める攻撃トラフィックの割合）</p>
+	<div class="flex anchor relative">
+		<h3 id="top-targeted-industries">標的業種上位</h3>
+		<a href="https://blog.cloudflare.com/#top-targeted-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>全体の帯域幅を見ると、グローバルでは、インターネット企業が最もHTTP DDoS攻撃トラフィックを受け取りました。それに、マーケティング・広告業界、コンピュータソフトウェア業界、ゲーミング／ギャンブル業界、テレコミュニケーション業界と続きます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/203AL6ywi6HVc5OuZhrLgT/81f2d58ecc741221260473a8624bf73e/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の標的業種上位（全業種のトラフィックに占める攻撃トラフィックの割合）</p>
+	<p>業種別の総トラフィックに占める攻撃トラフィックの割合では、第1四半期に最も標的となったのは非営利団体、次いで会計事務所でした。<a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">ヘルスケアへの攻撃が増加した</a>にもかかわらず、トップ10に入ることはありませんでした。また、上位には、化学、政府、エネルギー公益事業&amp;廃棄物産業がランクインしています。米国に目を向けると、米国連邦政府のウェブサイトへの全トラフィックのほぼ2％がDDoS攻撃の一部となっています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bVnziiM6JNcYlEstXR0Oy/03c365f0afab8499c0c852023f3a58b4/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の標的業種上位（業種ごとの総トラフィックに占める攻撃トラフィックの割合）</p>
+	<p>地域別では、アジア、欧州、中東でゲーミング&amp;ギャンブル産業が最も標的にされました。中南米では、銀行・金融サービス・保険（BFSI）業界が最も標的にされました。北米ではマーケティング&amp;広告、アフリカでは電気通信が最も攻撃された業界となりました。最後に、オセアニアでは、医療・ウェルネス・フィットネス業界がHTTP DDoS攻撃で最も狙われています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SS3dZ0HSHQlJ6LZMl0Ypm/f08aa670cd392351f9814c0413e00a33/image11.png" alt="" class="kg-image" width="1999" height="1317" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"></a><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer">OSIスタック</a>の下層に近いレイヤー3/4攻撃トラフィックの総量に基づくと、最も標的となった業界は、情報技術およびサービス、ゲーム/ギャンブル、電気通信でした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dzKf7eX1bV0IHc8ZlhUcg/a52113e6b10866e5a0c68ce680385b96/pasted-image-0--8-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>レイヤー3/4 DDoS攻撃の標的業種上位（全業種のDDoSトラフィックに占める攻撃トラフィックの割合）</p>
+	<p>攻撃トラフィックを業種ごとの総トラフィックと比較すると、また違った姿が見えてきます。放送メディア企業に送信されるほぼ1秒ごとのバイトが、レイヤー3/4 DDoS攻撃トラフィックでした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DWxvGYuzMgkwT5i5sSwqH/106137e0e566730735527ce42cea6d78/pasted-image-0--9--1.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>レイヤー3/4 DDoS攻撃の標的業種上位（業種ごとの総トラフィックに占める攻撃トラフィックの割合）</p>
+	<div class="flex anchor relative">
+		<h2 id="where-attacks-are-coming-from">攻撃はどこから来るのか</h2>
+		<a href="https://blog.cloudflare.com/#where-attacks-are-coming-from" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="top-source-countries">発信元上位国</h3>
+		<a href="https://blog.cloudflare.com/#top-source-countries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年第1四半期、国ごとの全トラフィックに占める攻撃トラフィックの割合では、フィンランドがHTTP DDoS攻撃の最大の発信源となりました。フィンランドと僅差で、英領ヴァージン諸島が2位となり、リビア、バルバドスと続きました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R3DKszQHsB3B05keSb5Fi/20eeefb3667b89415f52ac5559819d03/pasted-image-0--10-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の発信元上位国（国ごとの総トラフィックに占める攻撃トラフィックの割合）</p>
+	<p>絶対量では、最も多くのHTTP DDoS攻撃トラフィックが米国のIPアドレスからもたらされました。2位は中国、3位はドイツ、4位はインドネシア、5位はブラジル、6位はフィンランドでした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Ocq11lLYbiFA67Hr2jERd/6c1fb00db575d6b186c7388c2b8317f0/pasted-image-0--11-.png" alt="" class="kg-image" width="1600" height="772" loading="lazy">
+
+	</figure>
+	<p>HTTP DDoS攻撃の発信元上位国（全世界の総トラフィックに占める攻撃トラフィックの割合）</p>
+	<p>レイヤー3/4側では、ベトナムがレイヤー3/4 DDoS攻撃トラフィックの最大の発信源となりました。ベトナムのデータセンターで受信したレイヤー3/4トラフィックのほぼ3分の1が攻撃トラフィックでした。ベトナムに続いて、パラグアイ、モルドバ、ジャマイカと続きました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2s979PCVFVMxwNx5VQ7ZQr/3519aa747848f3d1c15055d9585144d3/image13-2.png" alt="" class="kg-image" width="1999" height="1085" loading="lazy">
+
+	</figure>
+	<p>レイヤー3/4 DDoS攻撃の発信元上位国（国ごとの総トラフィックに占める攻撃トラフィックの割合）</p>
+	<div class="flex anchor relative">
+		<h2 id="what-attack-types-and-sizes-we-see">どのような攻撃の種類や大きさが見られるか</h2>
+		<a href="https://blog.cloudflare.com/#what-attack-types-and-sizes-we-see" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="attack-size-and-duration">攻撃サイズと攻撃時間</h3>
+		<a href="https://blog.cloudflare.com/#attack-size-and-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様や自社のネットワークやアプリケーションに対して仕掛けられる攻撃の種類を見ると、攻撃の大半は短時間で小さく、ネットワーク層のDDoS攻撃の86%は10分以内に終了し、攻撃の91%は500Mbpsを超えることはないことが明らかになっています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1chDQJ0KmBMer4vXgpqPXi/14f55f9cf49469b7aaf167f15c13b6fb/pasted-image-0--12-.png" alt="" class="kg-image" width="1600" height="784" loading="lazy">
+
+	</figure>
+	<p>ネットワーク層DDoS攻撃＜継続時間別＞</p>
+	<p>10Gbpsを超える攻撃は50回に1回、100Gbpsを超える攻撃は1000回に1回しかありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZlSdjeI2ytqRM21IonBRo/a0482be01305b2ad3a2938b0e5200398/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="846" loading="lazy">
+
+	</figure>
+	<p>ネットワーク層のDDoS攻撃（ビットレート別）</p>
+	<p>とはいえ、大型の攻撃は徐々にその量と頻度を増しています。前四半期は、100Gbpsを超える攻撃の数量が前四半期比で67％増加しました。今期は6％と少し伸びが鈍化していますが、まだまだ伸びています。実際、以下のグラフに示されるように、大多数が該当する「小さい」バケットの攻撃を除いたすべての帯域幅消費型攻撃が増加しました。最も伸びたのは10～100Gbpsのレンジで、前四半期比89％の増加でした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q2OX4ltFPgGpGlSJisbLI/f1d2c6646f1ea168ff636610c9edff8d/pasted-image-0--14--1.png" alt="" class="kg-image" width="1600" height="846" loading="lazy">
+
+	</figure>
+	<p>ネットワーク層のDDoS攻撃規模別：四半期比の変化</p>
+	<div class="flex anchor relative">
+		<h3 id="attack-vectors">攻撃ベクトル</h3>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今期は地殻変動が見られました。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer">SYNフラッド攻撃</a>の割合が22%と2位に浮上し、DNSベースのDDoS攻撃が最も人気のある攻撃ベクトルとなりました（30%）。レイヤー3/4 DDoS攻撃のほぼ3分の1はDNSベースで、<a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer">DNSフラッド攻撃</a>または<a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer">DNSアンプリフィケーション/リフレクション攻撃</a>のいずれかでした。また、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer">UDPベースの攻撃</a>は、21%と3位になりました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vDd1cfTVgZYLdWLruafce/c64918106b7fef484ddb90f7ede49f2a/pasted-image-0--15-.png" alt="" class="kg-image" width="1600" height="772" loading="lazy">
+
+	</figure>
+	<p>DDoS攻撃ベクトル上位</p>
+	<div class="flex anchor relative">
+		<h3 id="emerging-threats">新たな脅威</h3>
+		<a href="https://blog.cloudflare.com/#emerging-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>四半期ごとに、古い、時には非常に古い攻撃ベクトルが再登場しているのを目にします。このことからわかるのは、10年前の脆弱性であっても、いまだに攻撃を仕掛けるために悪用されることがあるということです。脅威アクターは、古い手法をリサイクルして再利用しています。おそらく、組織が古い手法に対する保護機能を停止していることを期待しているのでしょう。</p>
+	<p>2023年第1四半期には、SPSSベースのDDoS攻撃、DNSアンプ攻撃、GREベースのDDoS攻撃が大流行しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cjg68wkVhs0W2IMmXiROB/e854a04f32d4c3dfaa6644035c556b11/pasted-image-0--16-.png" alt="" class="kg-image" width="1600" height="772" loading="lazy">
+
+	</figure>
+	<p>新たなDDos脅威の上位</p>
+	<div class="flex anchor relative">
+		<h3 id="spss-based-ddos-attacks-increased-by-1-565-qoq">SPSSベースのDDoS攻撃は前四半期比1,565%増加</h3>
+		<a href="https://blog.cloudflare.com/#spss-based-ddos-attacks-increased-by-1-565-qoq" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>Statistical Product and Service Solutions</i>（SPSS）は、データ管理、ビジネスインテリジェンス、犯罪捜査などのユースケース向けにIBMが開発したソフトウェアスイートです。Sentinel RMS License Managerサーバーは、IBM SPSSシステムなどのソフトウェア製品のライセンスを管理するために使用されます。2021年に、リフレクションDDoS攻撃を開始するために使用できる2つの脆弱性（<a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22713" target="_blank" rel="noopener noreferrer">CVE-2021-22713</a>および<a href="https://nvd.nist.gov/vuln/detail/CVE-2021-38153" target="_blank" rel="noopener noreferrer">CVE-2021-38153</a>）がSentinel RMS License Managerサーバーで特定されました。攻撃者は、特別に細工されたライセンスリクエストを大量にサーバーに送信し、元のリクエストよりもはるかに大きなレスポンスを生成させることができます。このレスポンスは被害者のIPアドレスに送り返され、攻撃のサイズを効果的に増幅し、被害者のネットワークをトラフィックで圧倒します。このタイプの攻撃はリフレクションDDoS攻撃と呼ばれ、IBM SPSS Statisticsなど、Sentinel RMS License Managerに依存するソフトウェア製品の可用性に重大な混乱を引き起こす可能性があります。License Managerに利用可能なパッチを適用することは、これらの脆弱性が悪用されるのを防ぎ、リフレクションDDoS攻撃から保護するために不可欠です。</p>
+	<div class="flex anchor relative">
+		<h3 id="dns-amplification-ddos-attacks-increased-by-958-qoq">DNSアンプDDoS攻撃は前四半期比958%増加</h3>
+		<a href="https://blog.cloudflare.com/#dns-amplification-ddos-attacks-increased-by-958-qoq" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer">DNSアンプ攻撃</a>は、DDoS攻撃の一種で、<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">Domain Name System（DNS）</a>インフラストラクチャの脆弱性を利用して、被害者のネットワークに向けた大量のトラフィックを生成するものです。攻撃者は、あらゆるソースからの再帰的クエリーを許可するように誤って設定されたオープンDNSリゾルバにDNSリクエストを送信し、これらのリクエストを使用して、元のクエリよりもはるかに大きな応答を生成します。攻撃者はそれに続き被害者のIPアドレスを詐称し、その結果被害者のネットワークに大きなレスポンスが送られ、トラフィックで圧倒され、サービス拒否を引き起こします。DNSアンプ攻撃を軽減するための課題は、攻撃トラフィックが正規のトラフィックと区別しにくいため、ネットワークレベルでのブロックが困難であることです。DNSアンプ攻撃を軽減するために、組織はDNSリゾルバーを適切に設定し、レート制限技術を実装し、トラフィックフィルタリングツールを使用して既知の攻撃ソースからのトラフィックをブロックするなどの措置を講じることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="gre-based-ddos-attacks-increased-by-835-qoq">GREベースのDDoS攻撃は前四半期比835％増加</h3>
+		<a href="https://blog.cloudflare.com/#gre-based-ddos-attacks-increased-by-835-qoq" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GREベースのDDoS攻撃は、<a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling" target="_blank" rel="noopener noreferrer">Generic Routing Encapsulation（GRE）プロトコル</a>を使用して、被害者のネットワークに大量のトラフィックを流すものです。攻撃者は、侵害されたホスト間で複数のGREトンネルを作成し、被害者のネットワークにトラフィックを送信します。このような攻撃は、トラフィックが被害者のネットワーク上で正規のトラフィックとして見えるため、検出やフィルタリングが困難です。また、攻撃者は送信元IPアドレスのスプーフィングを使用して、トラフィックが正規の送信元から来ているように見せかけることができるため、ネットワークレベルでのブロックが困難になります。GREベースのDDoS攻撃は、ダウンタイム、事業運営の中断、データの盗難やネットワークへの侵入の可能性など、標的となる組織に対していくつかのリスクをもたらします。これらの攻撃を軽減するには、攻撃トラフィックをその特性に基づいて検出・ブロックできる高度なトラフィックフィルタリングツールの使用や、既知の攻撃ソースからのトラフィックをブロックするレート制限やソースIPアドレスフィルタリングなどの手法が必要です。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-ddos-threat-landscape">DDoS脅威の状況</h2>
+		<a href="https://blog.cloudflare.com/#the-ddos-threat-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここ数ヶ月、様々な業界でより長く、より大きなDDoS攻撃が増加しており、特に帯域幅消費型攻撃が顕著です。非営利団体や放送メディア企業などは、上位の標的業種でした。また、DNS DDoS攻撃もますます盛んになっています。</p>
+	<p>DDoS攻撃は通常ボットによって行われるため、効果的な防御のためには自動検出と軽減が重要です。Cloudflareの自動化されたシステムは、DDoS攻撃からお客様を常に保護することで、お客様がビジネスの他の側面に集中することを可能にします。当社は、DDoS保護はあらゆる規模の組織が簡単に利用できるようにすべきであると考え、2017年から無料かつ無制限の保護を提供しています。</p>
+	<p>Cloudflareの使命は、より良いインターネット、つまりすべての人にとってより安全でより高速なインターネットの構築を支援することです。</p>
+	<p>DDoSトレンドに関するウェビナーに参加し、新たな脅威と効果的な防御戦略について、より詳しく学びましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-note-about-methodologies">方法論に関する注意点</h3>
+		<a href="https://blog.cloudflare.com/#a-note-about-methodologies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><i>ランサムDDoS攻撃のインサイトの算出方法について</i></b><i>Cloudflareのシステムはトラフィックを常時分析し、DDoS攻撃を検知すると自動的に被害軽減措置を適用するシステムです。攻撃の被害に遭われたお客様には、攻撃の性質や軽減措置の効果をよりよく理解するために、自動化されたアンケートをお願いしています。Cloudflareでは2年以上前から、攻撃を受けたお客様を対象にアンケート調査を実施しています。アンケートの質問の1つに、脅威や身代金要求メッセージを受け取ったかどうかを尋ねるものがあります。過去2年間の平均では、四半期あたり164件の回答が集まりました。本アンケートの回答は、ランサムDDoS攻撃の比率を算出するために使用されます。</i></p>
+	<p><b><i>地理的・業種的なインサイトの算出方法について</i></b><b><i>配信元の</i></b><i><b>国</b></i><i>アプリケーション層ではIPアドレスを</i><a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer"><i>スプーフィング</i></a><i>（改ざん）することができないため、攻撃元の国の把握に攻撃元のIPアドレスを使用しましたが、ネットワーク層では送信元IPアドレスのスプーフィングが可能なため、送信元の把握にIPアドレスを使用するのではなく、攻撃パケットが取り込まれたデータセンターの所在地を利用することにしました。当社がカバーする世界285か所を超える拠点により、私たちは地理的な精度を確保することが可能です。</i></p>
+	<p><b><i>標的国</i></b><i>アプリケーション層とネットワーク層の両方のDDoS攻撃について、攻撃とトラフィックをお客様の請求先国別にグループ化しています。これにより、どの国がより多くの攻撃を受けるかを把握することができます。</i></p>
+	<p><b><i>標的業種</i></b><i>アプリケーション層とネットワーク層のDDoS攻撃については、当社の顧客関係管理システムに従って、攻撃とトラフィックを顧客の業種ごとにグループ化しています。これにより、どの業種がより多くの攻撃を受けるかを把握することができます。</i></p>
+	<p><b><i>総量と割合の比較</i></b><i>ソースとターゲットの両方のインサイトについて、すべてのトラフィックと比較した攻撃トラフィックの総量を1つのデータポイントとして見ています。さらに、特定の国に向けた、または特定の国からの攻撃トラフィックの割合、または特定の業界への攻撃トラフィックの割合も見ています。これにより、特定の国や業界の「攻撃活動率」が得られ、その総トラフィックレベルで正規化されます。したがって、通常トラフィックの多い国や業界、したがって攻撃トラフィックも多いというバイアスを取り除くことが可能です。</i> &nbsp;</p>
+	<p><b><i>攻撃特性の算出方法について</i></b><i>攻撃規模、期間、攻撃ベクトル、新たな脅威を算出するために、攻撃をバケット化し、各バケットの総量に占める割合を各次元ごとに提示します。</i></p>
+	<p><b><i>一般的な免責事項および明確</i></b><b><i><b>化</b></i></b><i>攻撃の発信源や標的として「上位国」と表現した場合、必ずしもその国が国として攻撃されたわけではなく、その国を請求国としている組織が攻撃の標的になったという意味となります。同様に、ある国から発信された攻撃は、その国が攻撃を仕掛けたという意味ではなく、その国にマッピングされたIPアドレスから攻撃が行われたことを意味します。脅威アクターは、世界中にノードを持つグローバルなボットネットを運用しており、多くの場合、VPNやプロキシを使用して、真の位置を分かりにくくすることもできます。そのため、発信元の国とは、その国の中に出口ノードやボットネットのノードがその国にあることを示す可能性があります。</i></p>
+</div>

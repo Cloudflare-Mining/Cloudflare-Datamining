@@ -1,0 +1,173 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/announcing-pubsub-programmable-mqtt-messaging">English</a>、<a href="https://blog.cloudflare.com/es-es/announcing-pubsub-programmable-mqtt-messaging">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/announcing-pubsub-programmable-mqtt-messaging">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39cdBeceFzHD5BjEvZ6r0I/c4dd673d91f88a5f63b21bbb249bdc48/announcing-pubsub-programmable-mqtt-messaging.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Platform Weekを推進する根本的な疑問の1つは、「開発者が Cloudflare上でフルスタックアプリケーションを構築できるようにするにはどうすればよいか」ということです。Workersはデフォルトで分散されたアプリケーションを簡単にデプロイするためのサーバーレス環境として、<a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a>と<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>はキャッシュと調整のため、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>はゼロエグレスコストオブジェクトストアとして、開発者が新しいアプリケーションを構築したり、既存のアプリケーションをCloudflareの開発者プラットフォームに取り込んだりするために、他に何を構築する必要があるかについて議論し続けてきました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55VlABQ44OeATPuW7eZIzQ/abbe5df4ecea8e7cf8aaf70ee6221f8e/image1-26.png" alt="Announcing Pub/Sub: Programmable MQTT-based Messaging" class="kg-image" width="1920" height="1013" loading="lazy">
+
+	</figure>
+	<p>このことを念頭に置き、Cloudflare Pub/Subは、現在何千万もの既存デバイスでサポートされているユビキタスで、業界標準のMQTTプロトコルをベースに構築された_プログラマブル_メッセージバスであり、私たちはこのプライベートベータを発表できることを大変嬉しく思っています。</p>
+	<p>一言で言えば、Pub/Subでは以下のようなことが可能です。</p>
+	<ul>
+		<li>
+			<p>MQTT対応クライアント（将来的には他のクライアント向けプロトコル）からのイベント、テレメトリー、センサーデータを発行します</p>
+		</li>
+		<li>
+			<p>Cloudflare Workers を使って_ブローカーに発行され、_サブスクライバーに配信される前に、メッセージを単一の「クラウドリージョン」に転送する必要なく、メッセージをフィルタリング、集約、修正できるコードを記述ができます</p>
+		</li>
+		<li>
+			<p>Pub/Subはプログラム可能なイベントルーターとして、またR2やKVといった永続的なデータストレージへのフックとして機能し、他のクラウド上のアプリケーションやオンプレミスからイベントをプッシュします</p>
+		</li>
+		<li>
+			<p>アップデートをプッシュすることが難しく（あるいはリスクが高く！）、デバイス上でコードを実行すると材料費（CPU、メモリ）が高くなりますが、クライアントからロジックを移動させることで、レイテンシーができるだけ低く保たれます（あなたのコードは <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">すべての場所</a>で実行されます）。</p>
+		</li>
+	</ul>
+	<p>そして、私たちがまだ予測していないことが、数多くありそうです。私たちは、開発者がCloudflare Workersの上に<a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">信じられないほどのものを構築する</a>のを見てきましたが、Pub/Subのようなプログラム可能なメッセージバスの力で、彼らがどんなものを構築するのかを見ることにも興奮しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-and-what-is-mqtt">なぜMQTTなのか？そしてMQTTとは何か？</h3>
+		<a href="https://blog.cloudflare.com/#why-and-what-is-mqtt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a>を聞いたことがない人は、それが今日展開されている最も普及した「メッセージングプロトコル」の1つであることを知って驚くかもしれません。今日、接続された決済端末から自律走行車、携帯電話、さらにはビデオゲームまで、MQTTを話すデバイスは数千万台（少なくとも！）にものぼります。センサー読み取り、テレメトリー、金融取引、モバイル通知やメッセージなどはすべてMQTTの一般的な使用例で、プロトコルの柔軟性により、開発者はそれらの使用例に応じて信頼性、トピック階層、永続性などのトレードオフを行うことができます。</p>
+	<p>Cloudflare Pub/Subの基盤としてMQTTを選択したのは、Workersの基盤としてService Worker APIを選んだときや、最近発表したCommon APIプロジェクトへの参加と同様に、オープンでアクセス可能な標準の上に構築することが重要だと考えているからです。また、既存のクライアントがCloudflareのスケールとプログラマビリティの恩恵を簡単に受けられるようにし、開発者が現在慣れ親しんでいる言語で、クライアントライブラリの豊富なエコシステムを持てるようにしたいと思いました。</p>
+	<p>しかしそれ以上に、MQTTは最新の「パブリッシュ・サブスクライブ」メッセージングサービスのニーズを満たしているとも考えています。柔軟な配信保証、トランスポート暗号化のためのTLS（特注の暗号は不要！）、スケーラブルなトピック作成とサブスクリプションモデル、拡張可能なメッセージごとのメタデータがあり、そして重要なのは、明確なエラーメッセージとともに、明確に定義された仕様を提供していることです。</p>
+	<p>このことを念頭に置いて、私たちはPub/Subへのより多くの「オンランプ」をサポートするつもりです。MQTTの優れた部分の多くは、HTTPやWebSocketを介して私たちと通信することを望むクライアントから、抽象化して切り離すことが可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="building-blocks">ビルディングブロック</h3>
+		<a href="https://blog.cloudflare.com/#building-blocks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pub/Sub Brokerに発行されるすべてのメッセージに作用するコードを書くことができるとすると、実際にはどのようになるのでしょうか。</p>
+	<p>ここでは、Workerで直接Pub/Subメッセージを処理する、シンプルでわかりやすい例を示します。クライアント（この場合は決済端末）が取引データを報告しており、私たちは各地域で処理された取引数を取得し、取引量を時系列で追跡できるようにしたいのです。</p>
+	<p>具体的には、以下の通りです。</p>
+	<ol>
+		<li>
+			<p>気になるメッセージを、特定のトピックプレフィックスでフィルタリングします</p>
+		</li>
+		<li>
+			<p>特定のkey:valueペアのメッセージを、メトリックとして解析します</p>
+		</li>
+		<li>
+			<p>そのメトリックを、サーバーレスの新しい時系列分析サービスであるWorkers Analytics Engineに直接書き込んで、GraphQLで直接クエリできるようにします</p>
+		</li>
+	</ol>
+	<p>これにより、外部のメトリクスサービスを立ち上げて保守したり、別のクラウドサービスを設定したり、どのように拡張するかを考えたりする必要がなく、すべてCloudflare上で直接行うことができます。</p>
+	<p>そしてこれらのメトリクスを、使い慣れた言語であるSQLを使って直接問い合わせることができます。このクエリでは作成したメトリクスを使用して、決済デバイスで処理されたトランザクションの内訳を、マーチャントごとにグループ化して表示します（繰り返しますが、すべてCloudflareで処理されます）。</p>
+	<pre class="language-typescript"><code class="language-typescript">
+async function pubsub(
+  messages: Array&lt;PubSubMessage&gt;,
+  env: any,
+  ctx: ExecutionContext
+): Promise&lt;Array&lt;PubSubMessage&gt;&gt; {
+  
+  for (let msg of messages) {
+    // Extract a value from the payload and write it to Analytics Engine
+    // In this example, a transactionsProcessed counter that our clients are sending
+    // back to us.
+    if (msg.topic.startsWith(“/transactions/”)) {
+      // This is non-blocking, and doesn’t hold up our message
+      // processing.
+      env.TELEMETRY.writeDataPoint({
+        // We label this metric so that we can query against these labels
+        labels: [`${msg.broker}.${msg.namespace}`, msg.payload.region, msg.payload.merchantId],
+        metrics: [msg.payload.transactionsProcessed ?? 0]
+      });
+    }
+  }
+
+  // Return our messages back to the Broker
+  return messages;
+}
+
+const worker = {
+  async fetch(req: Request, env: any, ctx: ExecutionContext) {
+    // Critical: you must validate the incoming request is from your Broker
+    // In the future, Workers will be able to do this on your behalf for Workers
+    // in the same account as your Pub/Sub Broker.
+    if (await isValidBrokerRequest(req)) {
+
+      // Parse the incoming PubSub messages
+      let incomingMessages: Array&lt;PubSubMessage&gt; = await req.json();
+      
+      // Pass the message to our pubsub handler, and capture the returned
+      // messages
+      let outgoingMessages = await pubsub(incomingMessages, env, ctx);
+
+      // Re-serialize the messages and return a HTTP 200 so our Broker
+      // knows we’ve successfully handled them
+      return new Response(JSON.stringify(outgoingMessages), { status: 200 });
+    }
+
+    return new Response("not a valid Broker request", { status: 403 });
+  },
+};
+
+export default worker;</code></pre>
+	<p>Analytics Engineの呼び出しを、任意の数の例で置き換えたり増やしたりすることができます。</p>
+	<pre class="language-bash"><code class="language-bash">SELECT
+  label_2 as region,
+  label_3 as merchantId,
+  sum(metric_1) as total_transactions
+FROM TELEMETRY
+WHERE
+  metric_1 &gt; 0
+  AND timestamp &gt;= now() - 604800
+GROUP BY
+  region,
+  merchantId
+ORDER BY
+  total_transactions DESC
+LIMIT 10</code></pre>
+	<ul>
+		<li>
+			<p>メッセージ配信をブロックすることなく、特定のトピックに関するメッセージを、R2オブジェクトストレージに非同期に書き込みます（<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer">ctx.waitUntil</a>を使用）。</p>
+		</li>
+		<li>
+			<p>メッセージがサブスクライバーにプッシュされる前に、<a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">KVから入力された</a>データを使用してその場でメッセージを書き換えます</p>
+		</li>
+		<li>
+			<p>ペイロードに基づいてメッセージを集約し、Cloudflareの外部にホストされているレガシーインフラにHTTP POSTします</p>
+		</li>
+	</ul>
+	<p>Pub/Subは、データをCloudflareのネットワークに取り込み、フィルタリング、集約、変異させ、サブスクライバー（そのトピックをリッスンしているサブスクライバーが10人でも1000人でも1万人でも）にプッシュバックする方法を提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="where-are-we-headed">今後の私たち</h3>
+		<a href="https://blog.cloudflare.com/#where-are-we-headed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>よく言われるように、私たちはまだスタートしたばかりです。Pub/Subのプライベートベータは、道のりの始まりに過ぎず、私たちにはすでに取り組んでいる数多くの機能があります。</p>
+	<p>重要なのは、MQTT v5.0仕様をできるだけ多くカバーし、お客様が既存のデプロイメントを移行して「そのまま使える」ようにすることであり、それが私たちの優先事項の 1 つなのです。多数のサブスクライバー間でメッセージの負荷分散ができるようにする<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">共有サブスクリプション、</a>集約ユースケースの<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">ワイルドカードサブスクリプション</a>（単層と多層の両方）、より強力な配信保証（<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>）、追加の認証モード（特にMutual TLS）のサポートなどの便利な機能は、私たちが取り組んでいるものの一部に過ぎません。</p>
+	<p>それ以上に、Pub/Subの開発者体験を最高のものにすることに注力しており、ベータ期間中、私たちは以下のことを行います。</p>
+	<ul>
+		<li>
+			<p>開発者用CLIである<a href="https://github.com/cloudflare/wrangler2" target="_blank" rel="noopener noreferrer">wrangler2</a>で、新しい「pubsub」サブコマンドのセットをサポートし、できるだけ摩擦を少なくして使い始められるようにします。</p>
+		</li>
+		<li>
+			<p>メッセージの発信元がCloudflare以外のクライアントであるかどうかに関係なく、Workerコードから直接メッセージを発行したりトピックを購読したりできる「ネイティブ」バインディング（<a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>の操作方法と同様）を構築します。</p>
+		</li>
+		<li>
+			<p>HTTPリクエストやWebSocketなど、MQTTベースではないクライアントから発行・購読する方法をさらに検討し、既存のコードとの統合をさらに容易にします。</p>
+		</li>
+	</ul>
+	<p><a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>では、これらの機能を順次紹介していく予定です。</p>
+	<p>私たちはまた、価格設定は開発者経験の大きな部分を占めると認識しており、アクセス可能で柔軟な無料枠の確保に全力を注いでいます。開発者が実験し、プロトタイプを作成し、私たちがまだ考えつかないような問題を解決できるようにしたいと考えています。価格については、ベータ期間中に詳しくお知らせする予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">利用をはじめる</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pub/Subの利用を開始したい方は、<a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">プライベートベータにサインアップしてください</a>：来月中にアクセスできるようにする予定です。私たちは開発者からのフィードバックを収集し、メンバーがどのようなものを作り始めるか見届けることを楽しみにしています。その間、<a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">最新のPub/Sub開発者向けドキュメント</a>をご覧になり、Pub/Subがどのように機能するか、MQTTプロトコル、Cloudflare Workersとの統合方法について理解していただければと思います。</p>
+</div>

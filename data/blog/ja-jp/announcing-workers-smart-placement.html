@@ -1,0 +1,154 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/announcing-workers-smart-placement">English</a>、<a href="https://blog.cloudflare.com/zh-tw/announcing-workers-smart-placement">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/announcing-workers-smart-placement">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/announcing-workers-smart-placement">Português</a>、<a href="https://blog.cloudflare.com/es-es/announcing-workers-smart-placement">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/announcing-workers-smart-placement">Рyсский</a>、<a href="https://blog.cloudflare.com/zh-cn/announcing-workers-smart-placement">简体中文</a>でも表示されます。</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68NfZl5AwLPrk573wmR7Id/e605ccc58d1612b69beef233229ae79f/image2-14.png" alt="Smart Placement speeds up applications by moving code close to your backend — no config needed" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>Webサイトの読み込みが遅かったり、更新のためにAPIを呼び出す必要がある時にアプリが停止しているように思えたりするというフラストレーションを経験したことはないでしょうか。すぐに動作しないと、思いがさまよい始めます...</p>
+	<p>高速化の1つの方法は、リソースをできるだけユーザーに近づけることです。これは、Cloudflareがコンピューティングで行ってきたことであり、世界人口のほとんどから数ミリ秒以内で動作しています。しかし、直感に反すると思われるかもしれませんが、コンピューティングをユーザーに近づけると、実際にはアプリが遅くなることがあります。アプリがエンドユーザーの近くにないAPI、データベース、その他のリソースに接続する必要がある場合、ユーザーではなくリソースの近くでアプリを実行した方がパフォーマンスが向上する可能性があります。</p>
+	<p>本日は、あらゆるやり取りを可能な限り高速にする、 WorkersとPages FunctionsのSmart Placementを発表できることを嬉しく思います。CloudflareはSmart Placementを使用して、アプリを高速化するためにコンピューティングリソースを最適な場所に移動させることにより、サーバーレスコンピューティングをSupercloudに移行します。一番優れている点は、完全自動であることで、「リージョン」のような追加の入力は必要ありません。</p>
+	<p>Smart Placementは、WorkersとPagesのすべてのお客様にオープンベータでご利用いただけます。</p>
+	<p><a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">デモでSmart Placementの仕組みをご覧ください。</a></p><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="the-serverless-shift">サーバーレスへの移行</h2>
+		<a href="https://blog.cloudflare.com/#the-serverless-shift" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのAnycastネットワークは、<i>ユーザーの近くでリクエストを即座に</i>処理するよう構築されています。これは、開発者にとって、CloudflareのサーバーレスコンピューティングサービスであるCloudflare Workersが魅力のある理由となっています。競合他社は「リージョン」に縛られていますが、 Workersはどこでも動作します。つまり、当社にあるのは「地球」というひとつのリ－ジョンだけなのです。Workersが処理するリクエストすべては、発信元サーバーまで戻る必要なく、その場ですぐに処理できます。</p>
+	<p>このサーバーレスの概念はもともと軽量なタスクのためのものと考えられていましたが、サーバーレスコンピューティングに近年変化が見られています。発信元サーバーと自己管理型のインフラに依存する従来のアーキテクチャを補強するのではなく、置き換える形で使用されています。WorkersやPagesのユーザーでは、これらの事例がますます増えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="serverless-needs-state">サーバーレスのニーズ</h3>
+		<a href="https://blog.cloudflare.com/#serverless-needs-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サーバーレス化への移行、Workersでアプリ全体を構築することへの移行に伴い、データが必要になります。以前のアクションやイベントに関する情報を保存することで、パーソナライズされたインタラクティブなアプリを構築できます。例えば、ユーザープロファイルを作成する必要があるとします。ユーザーが離脱したページや、ユーザーがカートに入れているSKU。これらはすべて、状態を維持するためのデータポイントにマッピングされます。リレーショナルデータベース、Key-Valueストア、BLOBストレージ、APIなどのバックエンドサービスは、ステートフルなアプリを構築することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-compute-storage-a-powerful-duo">Cloudflareの強力なコンビ、コンピューティングとストレージ</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-compute-storage-a-powerful-duo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers KV、Durable Objects、D1、<a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a>など、自社のストレージ製品スイートは増え続けています。データ製品が成熟するにつれ、当社側でWorkersとのやり取りについて真剣に考えているため、お客様が考える必要はありません。例えば、場合によっては、コンピューティングをユーザーの近くに置くのではなく、ストレージを移動させることでパフォーマンスが向上する別のアプローチがあります。皆さんがDurable Objectsを使用してリアルタイムゲームを作成する場合、当社側はDurable Objectsを移動させ、すべてのユーザーの遅延を最小限に抑えることができます。</p>
+	<p>将来的な目標は、お客様がmode = "smart" に設定すると、追加の設定を必要とせずに、当社がすべてのリソースの最適な配置を評価することです。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-compute-backendservice">Cloudflareコンピューティング + ${backendService}</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-compute-backendservice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、Smart Placementの主な使用例は、アプリに外部データベースやサードパーティAPIなどのCloudflare以外のサービスを使用する場合です。</p>
+	<p>セルフホスト型サービスかマネージドサービスかにかかわらず、多くのバックエンドサービスは集中型です。つまり、データは単一の場所に保存され、管理されます。ユーザーはグローバルで、 Workersもグローバルですが、バックエンドは集中型です。</p>
+	<p>コードがバックエンドサービスに複数のリクエストを行うと、世界中を何度も往復することになり、パフォーマンスに大きな影響を与えます。一部のサービスは、パフォーマンス向上に役立つデータのレプリケーションやキャッシングを提供していますが、データの一貫性やコスト増大などのトレードオフもあります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xh0tIBnMeZp7z1mDeonqd/2d55124ff2c831d964eb36a98852a968/map.png" alt="A map of the globe illustrating global users, global workers and a centralized database. " class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Cloudflareネットワークは、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">世界の接続人口の95%から50ミリ秒以内にあります。</a>裏を返せば、私たちはお客様のバックエンドサービスにも非常に近いところにあります。</p>
+	<div class="flex anchor relative">
+		<h2 id="application-performance-is-user-experience">アプリのパフォーマンスはユーザーエクスペリエンスに直結</h2>
+		<a href="https://blog.cloudflare.com/#application-performance-is-user-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下の例を通して、コンピューティングをバックエンドサービスの近くに移動することでアプリの遅延がどのように減少するかを理解しましょう。</p>
+	<p>オーストラリアのシドニーにいるユーザーが、 Workersで実行されているアプリにアクセスしているとします。このアプリは、ユーザーのリクエストに対応するために、ドイツのフランクフルトにあるデータベースに3回の往復を行います。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EGjgjjCqADFBQGq5OXVFC/cfd95273a6e9a7afbe09ab27e3c90104/download--1--6.png" alt="" class="kg-image" width="1600" height="569" loading="lazy">
+
+	</figure>
+	<p>直感的に、Workerがデータベースと何度もやり取りを往復する時間がボトルネックになりそうだと推測できます。Workerがユーザーの近くで呼び出されるのではなく、データベースに最も近いデータセンターで呼び出される場合はどうでしょうか。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D4IOJIAlHuGYce5DqjGky/09d291252b813c1981cac9ef19cb1fd7/wAAAABJRU5ErkJggg__" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
+
+	</figure>
+	<p>テストしてみましょう。</p>
+	<p>Smart Placementを使用しない場合のWorkerのリクエスト時間を測定し、Smart Placementを有効にした場合と比較しました。どちらのテストでも、シドニーからWorkerに3,500件のリクエストを送信し、Workerはeu-central-1（フランクフルト）の<a href="https://upstash.com" target="_blank" rel="noopener noreferrer">Upstash</a>インスタンス無料利用枠まで3回往復します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54nvh0FI2RcDh1gQ9ea4Tq/6a0ca6a7ea678cd965c79b25d7b90874/image3-7.png" alt="A graph showing request duration with and without Smart Placement enabled. " class="kg-image" width="1524" height="920" loading="lazy">
+
+	</figure>
+	<p>結果は明らかです！この例では、Workerをバックエンドの近くに移動することで<b>アプリのパフォーマンスが4倍から8倍向上</b>しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="network-decisions-shouldnt-be-human-decisions">ネットワークの決定は人間の決定であるべきではない</h2>
+		<a href="https://blog.cloudflare.com/#network-decisions-shouldnt-be-human-decisions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>開発者としては、アプリを高速化するためのネットワークの決定を気にすることなく、本来の仕事であるアプリの構築に集中したいものです。</p>
+	<p>Cloudflareにはユニークな視点があります。当社のネットワークは、ユーザー、 Cloudflareデータセンター、バックエンドサーバー間の最適なパスに関するインテリジェンスを収集します。この分野では、<a href="https://blog.cloudflare.com/argo">Argo Smart Routing</a>で多くの経験があります。Smart Placementは、これらの要素を考慮し、全体的なリクエスト時間を最小限に抑えるために最適な場所にWorkerを自動的に配置します。</p>
+	<p>では、Smart Placementはどのように機能するのでしょうか。</p>
+	<p>Smart Placementは、「設定」タブまたはwrangler.tomlファイルでWorkerごとに有効化することができます。</p>
+	<pre class="language-bash"><code class="language-bash">[placement]
+mode = "smart"</code></pre>
+	<p>WorkerまたはPages FunctionでSmart Placementを有効にすると、Smart Placementアルゴリズムが、Workerが行っているフェッチリクエスト（サブリクエストとも呼ばれる）をリアルタイムで分析します。そして、これらを当社のネットワークによって集約された遅延データと比較します。Workerがバックエンドリソースに平均して複数のサブリクエストを行っていることが検出されれば、Workerは最適なデータセンターから自動的に呼び出されます。</p>
+	<p>正当な理由により、Smart Placementアルゴリズムでは考慮されていないバックエンドサービスがいくつかあります。</p>
+	<ul>
+		<li>
+			<p>グローバルに分散したサービス：Workerが通信するサービスが多くのリージョンに地理的に分散している場合、Smart Placementは適切ではありません。これらはSmart Placementの最適化から自動的に除外します。</p>
+		</li>
+		<li>
+			<p>分析サービスまたはロギングサービス：分析サービスまたはロギングサービスのリクエストがアプリのクリティカルパスにある必要はありません。コードをツール化する際にユーザーに返されるレスポンスがブロックされないように、<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a>を使用する必要があります。<code>waitUntil()</code>は、ユーザー視点のリクエスト時間に影響を与えないため、分析/ログサービスをSmart Placementの最適化から自動的に除外します。</p>
+		</li>
+	</ul>
+	<p>Smart Placementアルゴリズムで考慮されていないサービスのリストについては、当社の<a href="https://developers.cloudflare.com/workers/platform/smart-placement/#supported-backends" target="_blank" rel="noopener noreferrer">ドキュメント</a>を参照してください。</p>
+	<p>Smart Placementが開始されると、Workerに新しい「リクエスト時間」タブが表示されます。Smart Placementを有効にしないでリクエストの1%をルーティングすることで、リクエスト時間への影響を確認できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IicbhnuU143f8T6EJc9s4/2f24b79cc4b019123b1e7ed2df4cd02a/download-9.png" alt="Request duration with and without Smart Placement shown on the Workers dashboard. " class="kg-image" width="1600" height="868" loading="lazy">
+
+	</figure>
+	<p>そうです、これは本当に簡単です！</p>
+	<p><a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">デモ</a>の動画でSmart Placementをお試しください。とても楽しい動画です。詳細については、<a href="https://developers.cloudflare.com/workers/platform/smart-placement" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-smart-placement">Smart Placementの今後は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-smart-placement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まだ始まったばかりです。Smart Placementを改善する方法については、たくさんのアイデアがあります。</p>
+	<ul>
+		<li>
+			<p>アプリが複数のバックエンドを使用する場合に、最適な場所を計算するためのサポート</p>
+		</li>
+		<li>
+			<p>配置の微調整（例：Workerがパスに応じて複数のバックエンドを使用している場合。最適な配置はWorkerごとではなく、パスごとに計算される）</p>
+		</li>
+		<li>
+			<p>TCPベースの接続のサポート</p>
+		</li>
+	</ul>
+	<p>ご感想をお聞かせください。フィードバックや機能のリクエストがあれば、 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developer Discord</a>を通じてご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

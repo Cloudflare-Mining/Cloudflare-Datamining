@@ -1,0 +1,75 @@
+<div class="mb2 gray5">Lecture&nbsp;: 2 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/edm-beta">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/edm-beta">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/edm-beta">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/edm-beta">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/edm-beta">한국어</a> et en <a href="https://blog.cloudflare.com/zh-cn/edm-beta">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44r4ZzUV8ct3pnkZsfnDqC/b234c764df7812c8d83b841cb1cb1b09/edm-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les plus célèbres violations de données, celles qui tiennent les spécialistes de la sécurité éveillés la nuit, ont entraîné la fuite de millions d'enregistrements d'utilisateurs. Les entreprises ont perdu des noms, des adresses, des adresses e-mail, des numéros de sécurité sociale, des mots de passe et une multitude d'autres informations sensibles. La protection de ces données est la priorité absolue de la plupart des équipes de sécurité ; néanmoins, beaucoup d'entre elles parviennent encore difficilement à détecter ces fuites quand elles se produisent.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Eo6buEcQO3gzGxn3E38WU/75f5818a9929582e239646268739c556/image4-2.png" alt="DLP Exact Data Match beta now available" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>La suite de prévention des pertes de données de Cloudflare offre déjà la capacité d'identifier les données sensibles, telles que les numéros de carte de paiement ; en raison du volume de données transférées chaque jour, cependant, il peut être difficile de déterminer quelles transactions contiennent des données sensibles dont la diffusion constitue réellement un problème. Nous entendons des clients nous dire : « Je me fiche que l'un de mes employés utilise sa carte de paiement personnelle pour acheter quelque chose en ligne. Alertez-moi si les données des cartes de paiement de l'un de mes clients ont fuité ! »</p>
+	<p>Nous avons donc cherché à développer une méthode permettant de distinguer une carte de paiement quelconque d'une carte appartenant à un client spécifique, et nous sommes heureux d'annoncer le lancement d'Exact Data Match, la nouvelle fonctionnalité de notre solution de prévention des pertes de données. Avec Exact Data Match (EDM), les clients nous indiquent en toute sécurité quelles données ils souhaitent protéger, puis nous identifions, journalisons et bloquons la présence ou le déplacement de ces données. Par exemple, si vous nous fournissez un ensemble de numéros de cartes de paiement, nous analyserons votre trafic ou vos référentiels avec la solution DLP dans le but d'identifier uniquement ces cartes, vous permettant ainsi de créer des détections par DLP ciblées pour votre organisation.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-exact-data-match">Qu'est-ce que la fonctionnalité Exact Data Match ?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-exact-data-match" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>De nombreuses détections par la solution de prévention des pertes de données (DLP) de Cloudflare commencent par l'identification générique d'un modèle, souvent à l'aide d'une expression régulière, puis sont validées au moyen de critères supplémentaires. La validation peut reposer sur un large éventail de techniques, allant des sommes de contrôle aux modèles d'apprentissage automatique. Cependant, cette approche permet de valider que le modèle correspond à <i>une</i> carte de paiement, et non à <i>votre</i> carte de paiement.</p>
+	<p>Avec Exact Data Match, vous nous indiquez exactement les données que vous souhaitez protéger, mais nous ne disposons jamais de ces données en clair. Vous nous fournissez la liste de données de votre choix (par exemple, une liste de noms, d'adresses ou de numéros de cartes de paiement), et ces données sont hachées avant de parvenir à Cloudflare. Nous conservons les hachages et analysons votre trafic ou votre contenu à la recherche de correspondances avec ceux-ci. Lorsque nous identifions une correspondance, nous la journalisons ou la bloquons, conformément à votre politique.</p>
+	<p>L'utilisation d'une liste finie de données nous permet de réduire considérablement les faux positifs par rapport à une approche reposant sur la recherche de modèles génériques. Entre-temps, le hachage des données préserve la confidentialité de vos données. Notre objectif est de satisfaire vos besoins en matière de protection des données et de confidentialité.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-use-it">Comment l'utiliser ?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous vous offrons désormais la possibilité de transférer des ensembles de données destinés à la solution DLP, vous permettant ainsi de fournir des lots de données à utiliser pour vos détections reposant sur DLP.</p>
+	<p>Lors de la création d'un ensemble de données, indiquez un nom, une description et un fichier contenant les données à rechercher.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ypSYCeUurEhwpeB0gmxKf/3a6b64d7a28a812f52ae09291df418cb/Screenshot-2023-07-12-at-18.38.25.png" alt="" class="kg-image" width="1612" height="318" loading="lazy">
+
+	</figure>
+	<p>Lorsque vous transférez le fichier, Cloudflare effectue un hachage unidirectionnel des données, directement dans votre navigateur. Les données hachées sont ensuite transférées à Cloudflare via une API ; les données en clair ne quittent jamais votre navigateur.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wPppeLrZflpYyNhe694yt/b7406bf169a6dd12f7803953e3b7588d/image5-2.png" alt="" class="kg-image" width="1999" height="826" loading="lazy">
+
+	</figure>
+	<p>Vous pouvez consulter l'état du transfert de données dans le tableau des ensembles de données.</p>
+	<p>L'ensemble de données peut maintenant être ajouté à un profil DLP aux fins de la détection. Vous pouvez également ajouter d'autres entrées prédéfinies et personnalisées au même profil DLP.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xNNEvH9xmpR0eHVZEtwD8/d23da33f99f35ab827bdf8ef2dec5540/image1-7.png" alt="" class="kg-image" width="1999" height="408" loading="lazy">
+
+	</figure>
+	<p>Les profils DLP peuvent être utilisés <a href="https://blog.cloudflare.com/inline-dlp-ga">pour l'analyse et la protection en ligne avec Cloudflare Gateway</a>, ainsi que pour l'analyse des données au repos avec le CASB de Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dc55hQQJI9siKmqxdwFVg/76795252343e0667e2628277342ba55f/image2-6.png" alt="" class="kg-image" width="882" height="354" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="can-i-join-the-beta">Puis-je rejoindre la version bêta ?</h3>
+		<a href="https://blog.cloudflare.com/#can-i-join-the-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Exact Data Match est maintenant disponible pour tous les clients utilisateurs de DLP. Si vous n'êtes pas client de la solution DLP, mais vous souhaitez en apprendre davantage sur Cloudflare One et DLP, <a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">contactez-nous pour demander un conseil</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Et ensuite ?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les clients utilisent de nombreux formats différents pour le stockage de leurs données et disposent de nombreuses façons différentes de les contrôler. Notre objectif est d'offrir autant de flexibilité que nécessaire à votre organisation, afin de lui permettre d'atteindre ses objectifs en matière de protection des données.</p>
+</div>

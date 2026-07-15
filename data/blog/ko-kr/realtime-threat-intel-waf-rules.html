@@ -1,0 +1,113 @@
+<p><em>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</em></p>
+<p>Cloudflare의 <a href="https://blog.cloudflare.com/threat-events-platform" target="_blank" rel="noopener noreferrer"><u>위협 이벤트</u></a> 는 보안 분석가에게 글로벌 위협 환경을 살펴볼 수 있는 기회를 제공합니다. 이 플랫폼은 Cloudflare에서 매일 처리하는 엄청난 트래픽을 <a href="https://developers.cloudflare.com/api/node/resources/cloudforce_one/subresources/threat_events" target="_blank" rel="noopener noreferrer"><u>엿볼 수 있도록</u></a> 제공하므로 어떤 IP가 특정 산업을 공격하는지 또는 어떤 위협 행위자가 전 세계적으로 동향을 보이는지 실시간으로 확인할 수 있습니다. 그러나 이러한 가시성을 적극적인 완화로 전환하는 것은 수동적인 사후 대응으로만 이루어졌던 경우가 많았습니다.</p>
+<p>보안 팀은 특정 IP 주소가 특정 위협 행위자(예: <a href="https://www.cloudflare.com/en-gb/threat-intelligence/research/report/tycoon-2fa-takedown" target="_blank" rel="noopener noreferrer"><strong><u>Tycoon 2단계 인증</u></strong></a> 또는 <a href="https://www.cloudflare.com/en-gb/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-raccoono365" target="_blank" rel="noopener noreferrer"><strong><u>RaccoonO365</u></strong></a>)와 연관되어 있거나 다른 지역에서 특정 산업을 표적으로 삼는 것이 확인되었음에도 불구하고, 규칙을 수동으로 구성하지 않으면 자체 WAF 내에서 이러한 고위험 IP를 쉽게 차단할 수 없다는 반복되는 좌절에 직면해 왔습니다.&nbsp;</p>
+<p>Cloudflare의 방대한 위협 인텔리전스를 귀사의 WAF 엔진에 직접 제공하는 새로운 통합을 기쁜 마음으로 발표합니다. <strong>이제 실시간 인텔리전스 데이터를 사용하여 사전 예방적 규칙을 작성할 수 있습니다</strong>. 이는 더 많은 인텔리전스 컨텍스트를 추가함으로써 알려진 악의적인 행위자가 인프라에 접근하기 전에도 알려진 악의적인 공격자로부터 응용 프로그램을 보호할 수 있음을 의미합니다.</p>
+<p>이제 WAF는 요청의 초기 단계에 특화된 필드를 채워 다음을 기반으로 트래픽을 선별할 수 있습니다.</p>
+<ul>
+	<li><em>누가</em> 특정 위협 행위자의 이름을 매칭하여 공격하는지</li>
+	<li><em>산업 또는</em> 국가 필터를 통해 해당 IP가 표적으로 삼은 대상을 이전에 대상으로 삼은 대상을 확인</li>
+	<li><em>어떤 유형의 공격 </em>공격 유형(DDoS, WAF, 사이버 범죄 등) 및 마지막으로 관찰된 시간대별로 필터링한 풍부한 위협 컨텍스트를 사용하여</li>
+</ul>
+<h2>상시 감지</h2>
+<p>이 새로운 기능은 Cloudflare가 최근 Attack Signature Detection을 위해 도입한 동일한<a href="https://blog.cloudflare.com/attack-signature-detection" target="_blank" rel="noopener noreferrer"> <u>상시 가동 감지 프레임워크</u></a> 를 기반으로 합니다. 이 시스템은 사전 구성된 규칙 없이도 일반적인 공격 패턴을 실시간으로 식별합니다. 완화와 감지를 분리하여 위협 인텔리전스가 백그라운드에서 지속해서 실행되도록 보장하므로 조치를 취하기로 결정하기도 전에 통찰력 있는 위협 메타데이터로 HTTP 요청 분석이 풍부해집니다.</p>
+<p>"상시 가동" 모델의 주요 장점은 기존의 "로그 대 블록" 절충, 즉 로그 모드의 가시성과 차단 모드의 보호가 없다는 것입니다. 규칙이 요청을 차단하면 다른 서명자가 요청을 어떻게 평가했는지에 대한 가시성(자체 방어를 강화하는 데 도움이 될 수 있었던 인사이트)을 잃게 되기 때문입니다.</p>
+<p><a href="https://www.cloudflare.com/en-gb/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One을 구독하고</u></a> 계시다면, 이러한 인사이트가 분석에 자동으로 표시됩니다. 어떤 위협 행위자가 사이트를 공격하는지 및 이러한 IP가 주로 표적으로 하는 산업을 확인할 수 있으므로 트래픽 패턴을 확인하여 차단 "스위치를 켜기" 전에 파악할 수 있습니다.</p>
+<p>이러한 감지는 무시할 수 있는 대기 시간으로 실행되므로 성능이 번개처럼 빠르게 유지되도록 보장하며, 강력한 보안 정책을 구축하는 데 필요한 신뢰도가 높은 데이터를 제공합니다. 이번 초기 릴리스에서는 IP 기반 매칭에 중점을 두었지만, 저희는 이미 이러한 기능을 <a href="https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint" target="_blank" rel="noopener noreferrer"><u>JA3 핑거프린트</u></a> 및 도메인 기반 매칭으로 확장하는 것을 모색하고 있습니다. 이를 통해 공격자가 IP를 교체하는 경우에도 악의적 트래픽을 차단할 수 있습니다. 공격자가 페이로드에 사용하는 고유한 소프트웨어 시그니처 또는 악의적 대상 링크가 식별되어 있기 때문입니다.</p>
+<h3>새로운 WAF 필드</h3>
+<p>이를 가능하게 하기 위해 다음과 같은 특정 신호를 WAF 엔진에 직접 노출했습니다.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>필드</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>설명</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>cf.intel.ip.attacker_names</p>
+				</td>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>알려진 위협 그룹의 이름(예: CRAVENFLEA).</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>cf.intel.ip.target_industries</p>
+				</td>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>이 IP의 표적이 된 산업(예: 암호화폐, 자동차).</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>cf.intel.ip.attacker_countries</p>
+				</td>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>위협 이벤트의 출처 국가입니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>cf.intel.ip.target_countries</p>
+				</td>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>위협 이벤트의 표적이 된 국가.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>cf.intel.ip.datasets</p>
+				</td>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>데이터를 제공하는 소스 피드(예: ddos, waf).</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>규칙 표현식 예시</h3>
+<p>단일 IP 주소가 여러 위협 행위자 또는 대상 산업과 동시에 연결될 수 있으므로 이러한 필드는 배열로 표시됩니다. Cloudflare에서는 <code>any()</code> 함수와 <code>[*]</code> 와일드카드를 사용하여 해당 위협 프로필 내에 기준과 일치하는 값이 있는지 확인합니다.</p>
+<ul>
+	<li><strong>사용자의 지역을 노린 알려진 DDoS 참가자 차단: </strong><code>any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")</code></li>
+	<li><strong>금융 부문을 노리는 특정 위협 행위자로부터 보호: </strong><code>any(cf.intel.ip.target_industries[*] == "Banking &amp; Financial Services") 및 any(cf.intel.ip.attacker_names[*] == "BLACKBASTA")</code></li>
+	<li><strong>특정 고위험 출발 국가에 대한 광범위한 보호: </strong><code>any(cf.intel.ip.attacker_countries[*] == "IR")</code></li>
+</ul>
+<h2>워크플로우에서 위협 이벤트 데이터를 사용하는 방법</h2>
+<p>UI 기반 접근 방식을 선호하든 <a href="https://blog.cloudflare.com/shift-left-enterprise-scale" target="_blank" rel="noopener noreferrer"><u>코드형 인프라</u></a>를 선호하든, 이 필드는 기존 워크플로우에 통합됩니다.</p>
+<h3>WAF 규칙 빌더(API 및 Terraform)</h3>
+<p>코드형 인프라를 선호하는 팀을 위해 새로운 <code>cf.intel</code> 필드는 WAF <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>사용자 지정 규칙</u></a> 및 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer"><u>레이트 리미팅</u></a>을 위한 WAF 규칙 빌더에 완전히 통합되었습니다. 현재 사용하는 것과 동일한 구문을 사용하여 복잡한 표현식을 작성할 수 있습니다. 이는 표준 WAF 필드이므로 Cloudflare API 및 Terraform을 통해 완벽하게 지원되므로, 선택한 도메인 또는 전체 계정에 대한 위협 차단을 자동화할 수 있습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="510" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=715&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=640&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=715&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=750&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=828&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=1080&amp;h=770&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=1280&amp;h=913&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MZTXB9X1YYYR56SWA1GZ.png&amp;w=1430&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="New fields added to the WAF rule builder to allow users to choose the relevant configuration based on the threat events indicators." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="510" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="이미지 확대: New fields added to the WAF rule builder to allow users to choose the relevant configuration based on the threat events indicators."></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><span data-portabletext-unknown="mark"><em>사용자가 위협 이벤트 표시기에 따라 관련 구성을 선택할 수 있도록 새로운 필드가 WAF 규칙 빌더에 추가되었습니다.&nbsp;</em></span></p>
+<h3>보안 분석의 가시성</h3>
+<p>배포는 전투의 절반에 불과합니다. 이러한 위협 인텔리전스 필드에 의해 트리거된 모든 일치 항목은 <a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>Security Analytics</u></a>에 기록됩니다. 자신의 트래픽을 드릴다운하면 정확히 어떤 규칙이 트리거되었고 어떤 특정 지표가 일치했는지 확인할 수 있습니다. 이처럼 풍부한 로그를 통해 규칙이 트리거될 때 감사 및 사후 분석이 빨라집니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="519" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=715&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=640&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=715&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=750&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=828&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=1080&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=1280&amp;h=929&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EXRA2HSWXW64A5TBC6XM.png&amp;w=1430&amp;h=1038&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3272 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="519" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="이미지 확대: BLOG-3272 image1"></div>
+</figure>
+<p><span data-portabletext-unknown="mark"><em>위협 이벤트가 보안 분석의 표면과 일치하며, 전체 컨텍스트와 사용자 지정 보안 규칙을 생성할 수 있는 원클릭 옵션이 제공됩니다.</em></span></p>
+<h3>위협 이벤트 대시보드의 원클릭 규칙</h3>
+<p>동향을 조사하기 위해 이미 <strong>위협 인텔리전스 대시보드</strong> 를 사용하고 있다면, IP 목록을 복사하여 붙여넣을 필요가 없습니다. 특정 <em>필터(예:"지난 7일간 금융 부문을 공격한 것이 확인된 IP")를 기반으로</em> <strong>저장된 보기</strong>를 만들 수 있습니다. 한 번의 클릭으로 <a href="https://developers.cloudflare.com/security-center/changelog/#2026-05-27" target="_blank" rel="noopener noreferrer"><u>이러한 필터를 WAF 규칙으로 직접 내보낼</u></a> 수 있습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="732" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=715&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=640&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=715&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=750&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=828&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=1080&amp;h=1106&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=1280&amp;h=1310&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453A0ZPGCD2G71GCQAFC18.png&amp;w=1430&amp;h=1464&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3272 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="732" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="이미지 확대: BLOG-3272 image2"></div>
+</figure>
+<p><span data-portabletext-unknown="mark"><em>이제 사용자는 저장된 보기를 통해 저장된 보기 구성과 일치하는 WAF 규칙을 쉽게 만들 수 있습니다.&nbsp;</em></span></p>
+<h2>네트워크 전반에 걸친 글로벌 인텔리전스</h2>
+<p>가시성과 사용 편의성은 기본 엔진이 빠른 경우에만 가능합니다. 트래픽 속도를 저하하지 않고 수백만 개의 위협 지표를 처리하는 방법은 무엇일까요?</p>
+<p>이러한 위협 인텔리전스 데이터 세트는 고성능 형식으로 압축되어 전 세계의 모든 Cloudflare 데이터 센터에 배포됩니다. 요청이 네트워크에 도달하면 Cloudflare WAF는 이러한 로컬 데이터 세트에 대해 <code>O(1)</code> 일정 시간 조회를 수행합니다. 이렇게 하면 지표를 10개나 천만 개 중 검사할 때 오버헤드 대기 시간이 사실상 0으로 유지됩니다(마이크로초 단위로 측정).</p>
+<p>IP는 여러 위협 벡터와 연결될 수 있으므로 Cloudflare의 엔진은 첫 번째 매치에서 멈추지 않습니다. 해당 IP와 관련된 모든 신호 세트를 동시에 평가합니다. 이렇게 하면 "공격자 = RU" 및 "표적 산업 = 뱅킹"을 찾는 규칙이 이러한 속성의 교차점을 단일 경로로 평가하여 올바르게 트리거되므로 계산 복잡성을 증가시키지 않으면서 멀티 벡터 행위자를 최대한 보호할 수 있습니다.</p>
+<h2>시작할 준비가 되셨나요?</h2>
+<p>오늘부터 활성 상태인 <a href="https://www.cloudflare.com/en-gb/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One 구독 고객이</u></a> 이 기능을 사용할 수 있습니다.</p>
+<ul>
+	<li>고객은 Cloudforce One Essentials로 위협 이벤트의 기본 데이터 세트에 액세스하여 지표를 검색하고 위협 사냥 조사를 수행할 수 있습니다</li>
+	<li>Cloudforce One Advantage로 고객은 정보 요청을 통해 위협 인텔리전스 분석가의 맞춤형 인사이트에 액세스할 수 있습니다</li>
+	<li>Cloudflare의 가장 완벽한 패키지인 Cloudforce One Elite에는 브랜드 보호, 많은 수의 정보 요청, 모든 위협 이벤트 데이터 세트에 대한 액세스가 포함됩니다</li>
+</ul>
+<p>글로벌 인사이트를 현지 방어로 전환할 준비가 되셨나요? <a href="https://developers.cloudflare.com/security-center/cloudforce-one/#analyze-threat-events" target="_blank" rel="noopener noreferrer"><u>위협 이벤트</u></a> 또는 Cloudflare 대시보드의 <a href="https://developers.cloudflare.com/firewall/cf-dashboard" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> 섹션으로 이동하여 첫 번째 위협 인텔리전스 규칙 작성을 시작하거나, 계정 팀에 문의하여 Cloudforce One 구독에 대해 자세히 알아보세요.</p>

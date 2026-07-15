@@ -1,0 +1,150 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">English</a>, <a href="https://blog.cloudflare.com/fr-fr/dns-resolver-1-1-1-1">Français</a>, <a href="https://blog.cloudflare.com/de-de/dns-resolver-1-1-1-1">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/dns-resolver-1-1-1-1">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/dns-resolver-1-1-1-1">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qgaJIg5CKfBvs2TAbyw8o/51cd533853ce1267691d626e9796d7df/dns-resolver-1-1-1-1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La misión de Cloudflare es ayudar a construir un mejor Internet, y hoy lanzamos nuestro resolutor de DNS, <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a>: un servicio de DNS recursivo. Con esta oferta, estamos arreglando los cimientos de Internet mediante el desarrollo de un resolutor de DNS público, centrado en la privacidad, más rápido y más seguro. El resolutor de DNS, 1.1.1.1, está disponible públicamente para que todos puedan utilizarlo: es el primer servicio orientado al consumidor que ha lanzado Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V4FY9gxhQg6fqRgn5VLPt/ddc10850b07eff62665dee8fa07a8e86/1.1.1.1.svg" alt="1.1.1.1" class="kg-image" width="304" height="95" loading="lazy">
+
+	</figure>
+	<p>Estamos utilizando las siguientes direcciones IPv4 para nuestro resolutor: <b>1.1.1.1</b> y <b>1.0.0.1</b>. Fácil de recordar. APNIC ha proporcionado estas direcciones a Cloudflare para realizar una investigación conjunta y para este servicio. Puede leer más acerca de su trabajo en el <a href="https://labs.apnic.net/?p=1127" target="_blank" rel="noopener noreferrer">blog de APNIC</a>.</p>
+	<p>El resolutor de DNS, 1.1.1.1, se sirve de la <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">red</a> global Anycast de Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="background-a-quick-refresher-on-the-role-of-the-resolver-in-dns"><b>Antecedentes: Un rápido repaso sobre el papel del resolutor en DNS</b></h2>
+		<a href="https://blog.cloudflare.com/#background-a-quick-refresher-on-the-role-of-the-resolver-in-dns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestros amigos de <a href="https://dnsimple.com" target="_blank" rel="noopener noreferrer">DNSimple</a> han realizado este increíble tutorial de DNS para que cualquiera pueda sacarse las dudas sobre el <a href="https://howdns.works" target="_blank" rel="noopener noreferrer">funcionamiento de DNS</a>. Explican todo sobre los resolutores, los servidores de nombre raíz y mucho más de un modo muy informativo.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jPbSyNPUonCJ1K5iq71CF/a5cad2f0ad2e28a99314206509ad1759/dnsimple-howdns-works.png" alt="dnsimple-howdns-works" class="kg-image" width="2611" height="676" loading="lazy">
+
+	</figure>
+	<p>Al resolver un nombre de dominio, una consulta viaja de su sistema final (es decir, un navegador web) a un servicio de DNS recursivo. Si el registro de DNS no está en el caché local del servicio, el recursor consultará la jerarquía DNS autorizada para encontrar la información de la dirección IP que está buscando. El recursor es la parte que desempeña el resolutor de DNS, 1.1.1.1. ¡Tiene que ser rápido y muy seguro estos días!</p>
+	<div class="flex anchor relative">
+		<h2 id="goals-for-dns-resolver-1-1-1-1"><b>Objetivos para el resolutor de DNS, 1.1.1.1</b></h2>
+		<a href="https://blog.cloudflare.com/#goals-for-dns-resolver-1-1-1-1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestros objetivos con el resolutor público son simples: CloudFlare quiere operar el resolutor público más rápido del planeta a la vez que eleva el estándar de las protecciones de privacidad para los usuarios. Para acelerar el Internet, ya estamos construyendo centros de datos en todo el mundo para reducir la distancia (es decir, la latencia) de los usuarios al contenido. Finalmente, queremos que todos se encuentren a 10 milisegundos de por lo menos una de nuestras ubicaciones.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jl1jZyKSdjvPvyEhQxtiP/314ae80aaae5f5011df13b2a61f71459/Cloudflare_and_world-population-map.png" alt="Cloudflare_and_world-population-map" class="kg-image" width="1800" height="1008" loading="lazy">
+
+	</figure>
+	<p>Solamente en marzo, habilitamos 31 nuevos centros de datos a nivel mundial (<a href="https://blog.cloudflare.com/istanbul-not-constantinople">Estambul</a>, <a href="https://blog.cloudflare.com/reykjavik-cloudflares-northernmost-location">Reikiavik</a>, <a href="https://blog.cloudflare.com/riyadh">Riad</a>, <a href="https://blog.cloudflare.com/macau">Macao</a>, <a href="https://blog.cloudflare.com/baghdad">Bagdad</a>, <a href="https://blog.cloudflare.com/usa-expansion">Houston, Indianápolis, Montgomery, Pittsburgh, Sacramento</a>, <a href="https://blog.cloudflare.com/mexico-city">México</a>, <a href="https://blog.cloudflare.com/tel-aviv">Tel Aviv</a>, <a href="https://blog.cloudflare.com/durban-and-port-louis">Durban, Port Louis</a>, <a href="https://blog.cloudflare.com/cebu">Cebú</a>, <a href="https://blog.cloudflare.com/edinburgh">Edimburgo</a>, <a href="https://blog.cloudflare.com/riga-tallinn-vilnius">Riga, Tallin, Vilna</a>, <a href="https://blog.cloudflare.com/welcome-calgary-saskatoon-and-winnipeg">Calgary, Saskatoon, Winnipeg</a>, <a href="https://blog.cloudflare.com/more-us-data-centers">Tallahassee Jacksonville, Memphis,</a>, <a href="https://blog.cloudflare.com/bogota">Bogotá</a>, <a href="https://blog.cloudflare.com/luxembourg-chisinau">Ciudad de Luxemburgo, Chisinau</a>) y, al igual que en todas las otras ciudades en nuestra red, nuevos sitios ejecutan el Resolutor de DNS, 1.1.1.1 desde el primer día.</p>
+	<p>Nuestra red rápida y altamente distribuida se ha desarrollado para servir a cualquier protocolo y, actualmente, somos el mayor proveedor autorizado de DNS en Internet, una capacidad que han aprovechado más de 7 millones de propiedades de Internet. Además, ya proporcionamos un servicio de anycast a dos de trece de los servidores de nombres raíz. El siguiente paso lógico era proporcionar un servicio DNS recursivo más rápido para los usuarios. Nuestro recursor puede aprovechar los servidores autorizados que están coubicados con nosotros, y así obtener búsquedas más rápidas para todos los nombres de dominio.</p>
+	<p>A pesar de que DNSSEC asegura la integridad de los datos entre un resolutor y un servidor autoritativo, no protege la privacidad de la «última milla" hacia su parte. El resolutor de DNS, 1.1.1.1, admite ambos estándares emergentes de privacidad DNS: DNS-mediante-TLS, y DNS-mediante-HTTPS. Ambos proporcionan un cifrado de última milla para mantener sus consultas de DNS privadas y sin manipulaciones.</p>
+	<div class="flex anchor relative">
+		<h2 id="making-our-resolver-privacy-conscious"><b>Concientizar a nuestro resolutor sobre de la privacidad</b></h2>
+		<a href="https://blog.cloudflare.com/#making-our-resolver-privacy-conscious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Históricamente, el recursor envía el nombre del dominio completo a cualquier intermediario que encuentre en su camino al DNS raíz o autoritativo. Esto quiere decir que si va a <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/www.cloudflare.com">www.cloudflare.com</a>, el servidor raíz y el servidor .com serían consultados con el nombre de dominio completo (es decir, las partes de www, cloudflare y com), a pesar de que los servidores raíz solo tienen que redireccionar el recursivo al punto com (independiente de cualquier otra cosa en el nombre de dominio totalmente cualificado). Esta facilidad de acceso a toda esta información de navegación personal mediante DNS supone una grave brecha de privacidad para muchos. Esto se ha abordado con varios paquetes de software de resolutores, aunque no todas las soluciones se han adaptado o desplegado ampliamente.</p>
+	<p>El resolutor de DNS, 1.1.1.1, ofrece, desde el primer momento, todos los mecanismos de protección de privacidad propuestos y definidos para su uso entre el resolutor stub y el resolutor recursivo. Para aquellos que no estén familiarizados, un resolutor stub es un componente de su sistema operativo que habla con el resolutor recursivo. Solo con el uso de DNS Query Name Minimisation definido en <a href="https://tools.ietf.org/html/rfc7816" target="_blank" rel="noopener noreferrer">RFC7816</a>, el resolutor de DNS, 1.1.1.1, reduce la información que se filtra a los servidores DNS intermediarios, como la raíz y los TLD. Eso quiere decir que el resolutor de DNS, 1.1.1.1, envía solo lo suficiente del nombre para que la autoridad indique al resolutor dónde hacer la siguiente pregunta.</p>
+	<p>El resolutor de DNS, 1.1.1.1, también admite consultas TLS con privacidad habilitada en el puerto 853 (<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls" target="_blank" rel="noopener noreferrer">DNS mediante TLS</a>), para que podamos mantener las consultas ocultas de redes intrusas. Además, al ofrecer el protocolo DoH experimental (<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https" target="_blank" rel="noopener noreferrer">DNS mediante HTTPS</a>), mejoramos tanto la privacidad como un número de futuras aceleraciones para los usuarios finales, puesto que los navegadores y otras aplicaciones ahora pueden mezclar tráfico DNS y HTTPS en una sola conexión.</p>
+	<p>Con la caché negativa agresiva de DNS, como se describe en <a href="https://tools.ietf.org/html/rfc8198" target="_blank" rel="noopener noreferrer">RFC8198</a>, podemos disminuir todavía más la carga en el sistema global de DNS. Esta técnica primero intenta usar la memoria caché negativa del resolutor existente que mantiene la información negativa (o inexistente) a mano por un período de tiempo. Para zonas firmadas con DNSSEC y de los registros de NSEC en caché, el resolutor puede averiguar si el nombre solicitado NO existe sin necesidad de hacer otra consulta. Así que si escribe wwwwwww punto algo y luego wwww punto algo, la segunda consulta bien podría ser respondida con un «no» instantáneo (NXDOMAIN en el mundo DNS). La memoria caché negativa agresiva solo funciona con zonas firmadas de DNSSEC, que incluyen tanto la raíz como 1400 de los 1544 TLD firmados hoy.</p>
+	<p>Utilizamos la validación de <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNSSEC</a> cuando es posible, ya que nos permite asegurarnos de que las respuestas sean exactas y no estén manipuladas. El coste de las verificaciones de firma es bajo, y el ahorro potencial que obtenemos de la caché negativa agresiva lo compensa sobradamente. Queremos que nuestros usuarios confíen en las respuestas que proporcionamos y, por tanto, realizamos todas las comprobaciones posibles para evitar dar malas respuestas a los clientes.</p>
+	<p>Sin embargo, <a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations">DNSSEC</a> es implacable. Los errores en la configuración de DNSSEC de parte de operadores de DNS autoritativos pueden hacer irresolubles tales dominios mal configurados. Para tratar con este problema, Cloudflare configurará «Anclajes de confianza negativa» en los dominios con errores DNSSEC investigados y detectados, y los eliminará una vez que la configuración sea rectificada por operadores autoritativos. Esto limita el impacto de los dominios DNSSEC rotos al deshabilitar temporalmente la validación de DNSSEC para un determinado dominio mal configurado, lo que restaura el acceso a los consumidores finales.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-build-it"><b>¿Cómo lo desarrollamos?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-build-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Inicialmente, pensamos en desarrollar nuestro propio resolutor, pero este enfoque se rechazó debido a la complejidad y a las consideraciones de go-to-market. Entonces examinamos todos los resolutores de código abierto del mercado; de esta larga lista nos quedamos con dos o tres que serían adecuados para cubrir la mayor parte de los objetivos del proyecto. Al final, decidimos construir el sistema alrededor de <a href="https://www.knot-resolver.cz" target="_blank" rel="noopener noreferrer">Knot Resolver de CZ NIC</a>. Es un resolutor moderno que se lanzó originalmente hace aproximadamente dos años y medio. Al seleccionar Knot Resolver, también aumentamos la diversidad de software. El punto crítico fue que tenía más características principales de las que queríamos, con una arquitectura modular similar a <a href="https://openresty.org" target="_blank" rel="noopener noreferrer">OpenResty</a>. Knot Resolver se encuentra en pleno uso y desarrollo.</p>
+	<div class="flex anchor relative">
+		<h2 id="interesting-things-we-do-that-no-one-else-does"><b>Cosas interesantes que hacemos y nadie más hace</b></h2>
+		<a href="https://blog.cloudflare.com/#interesting-things-we-do-that-no-one-else-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las recientes características avanzadas que queríamos eran:</p>
+	<ul>
+		<li>
+			<p>Minimización de consulta <a href="https://tools.ietf.org/html/rfc7816" target="_blank" rel="noopener noreferrer">RFC7816</a>,</p>
+		</li>
+		<li>
+			<p>DNS-mediante-TLS (Seguridad de la capa de transporte) <a href="https://tools.ietf.org/html/rfc7858" target="_blank" rel="noopener noreferrer">RFC7858</a>,</p>
+		</li>
+		<li>
+			<p>Protocolo DNS-mediante-HTTPS <a href="https://datatracker.ietf.org/wg/doh/about" target="_blank" rel="noopener noreferrer">DoH</a>,</p>
+		</li>
+		<li>
+			<p>Respuestas negativas agresivas <a href="https://tools.ietf.org/html/rfc8198" target="_blank" rel="noopener noreferrer">RFC8198</a>,</p>
+		</li>
+	</ul>
+	<p>Pequeño aviso: el principal desarrollador original de Knot Resolver, <a href="https://blog.cloudflare.com/author/marek">Marek Vavruša</a>, ha estado trabajando en el equipo de DNS de Cloudflare durante más de dos años.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-make-our-resolver-faster"><b>Cómo hacer que nuestro resolutor sea más rápido</b></h2>
+		<a href="https://blog.cloudflare.com/#how-to-make-our-resolver-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hay muchos factores que afectan la velocidad de un resolutor. La primera y principal es: ¿puede responder desde la caché? Si puede, entonces el tiempo de respuesta es solo el tiempo de ida y vuelta para un paquete del cliente al resolutor.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4r4HfabYK6zlyJU7VIpsXb/60d4400700a3b64720866680225ad704/1.1.1.1-dns-resolver-performance.png" alt="1.1.1.1-dns-resolver-performance" class="kg-image" width="2494" height="1276" loading="lazy">
+
+	</figure>
+	<p>Cuando un resolutor necesita una respuesta de una autoridad, las cosas se vuelven un poco más complicadas. Un resolutor tiene que seguir la jerarquía DNS para resolver un nombre, lo que significa que tiene que hablar con múltiples servidores autoritativos a partir de la raíz. Por ejemplo, nuestro resolutor en Buenos Aires, Argentina, necesitará más tiempo para seguir una jerarquía DNS que nuestro resolutor en Frankfurt, Alemania, debido a su proximidad a los servidores autorizados. Para tratar con este problema, rellenamos automáticamente nuestra caché, fuera de banda, para nombres populares, que significa que cuando entra una consulta, las respuestas se pueden traer desde la caché, lo cual es mucho más rápido. En las próximas semanas, publicaremos blogs en relación con algunas de las otras cosas que estamos haciendo para mejorar y acelerar el resolutor, incluida nuestra caché rápida.</p>
+	<p>Un problema con nuestra amplia red es que la proporción de acierto de la caché es inversamente proporcional al número de nodos configurados en cada centro de datos. Si solo hubiera un nodo en un centro de datos que esté cerca suyo, podría estar seguro de que si pide dos veces la misma consulta, obtendría una respuesta de caché la segunda vez. Sin embargo, como hay cientos de nodos en cada uno de nuestros centros de datos, puede obtener una respuesta sin caché pagando el precio de latencia por cada solicitud. Una solución común es poner un equilibrador de carga de caché delante de todos sus resolutores, lo que desgraciadamente presenta un punto único de fallo. Nosotros no hacemos puntos únicos de fallo.</p>
+	<p>En lugar de depender de una caché centralizada, el resolutor de DNS, 1.1.1.1, utiliza una innovadora caché distribuida, de la que hablaremos más tarde en el blog.</p>
+	<div class="flex anchor relative">
+		<h2 id="data-policy"><b>Política de datos</b></h2>
+		<a href="https://blog.cloudflare.com/#data-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este es el trato: nunca jamás almacenamos las direcciones IP del cliente, y solo utilizamos nombres de consulta para cosas que mejoran el rendimiento del resolutor de DNS (como rellenar automáticamente todas las cachés en base a los dominios populares en una región o después de la ofuscación y la investigación de APNIC).</p>
+	<p>CloudFlare nunca almacenará información en sus registros que identifique a un usuario final, y todos los registros que recopile nuestro resolutor público se eliminarán en 24 horas. Seguiremos cumpliendo con nuestra <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy" target="_blank" rel="noopener noreferrer">política de privacidad</a> y nos aseguraremos de que los datos de los usuarios no se vendan a anunciantes ni se utilicen para captar consumidores.</p>
+	<div class="flex anchor relative">
+		<h2 id="setting-it-up"><b>La configuración</b></h2>
+		<a href="https://blog.cloudflare.com/#setting-it-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>¡Vea <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a> porque es muy simple!</p>
+	<div class="flex anchor relative">
+		<h2 id="about-those-addresses"><b>Acerca de esas direcciones</b></h2>
+		<a href="https://blog.cloudflare.com/#about-those-addresses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agradecemos a APNIC, nuestro socio, por las direcciones IPv4 1.0.0.1 y 1.1.1.1 (de las que todo el mundo reconoce que son increíblemente fáciles de recordar). Sin sus años de investigación y pruebas, sería imposible poner estas direcciones en producción. Con todo, todavía tenemos un largo camino por recorrer. Siga atento para enterarse de nuestras aventuras con esas IP en futuros blogs.</p>
+	<p>Para IPv6, hemos elegido 2606:4700:4700::1111 y 2606:4700:4700::1001 para nuestro servicio. No es tan fácil conseguir buenas direcciones de IPv6; sin embargo, hemos elegido una dirección que solo utiliza dígitos.</p>
+	<p>Pero, ¿por qué utilizar direcciones fáciles de recordar? ¿Qué tienen de especial los resolutores públicos? A pesar de que utilizamos nombres para casi todo lo que hacemos, se necesita dar ese primer paso en el proceso, y ahí es donde entran en juego estos números. Necesitamos un número ingresado en cualquier ordenador o dispositivo conectado que esté utilizando para encontrar un servicio de resolutor.</p>
+	<p>Cualquiera en internet puede utilizar el resolutor público. Para ver cómo hacerlo, visite <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a> y haga clic en <b>EMPEZAR</b>.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-announce-it-on-april-first"><b>¿Por qué anunciarlo el primero de abril?</b></h2>
+		<a href="https://blog.cloudflare.com/#why-announce-it-on-april-first" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para la mayor parte del mundo, el domingo es 01/04/2018 (en EE. UU., el día y el mes se invierten: 04/01/2018). ¿Ve el <b>4</b> y el <b>1</b>? Nosotros sí lo vimos y por eso anunciamos hoy <b>1.1.1.1</b>. ¡Cuatro unos! Si le ayuda a recordar <b>1.1.1.1</b>, ¡entonces es algo bueno!</p>
+	<p>Claro, también es el <a href="https://en.wikipedia.org/wiki/April_Fools%27_Day" target="_blank" rel="noopener noreferrer">día de los inocentes de abril</a>, y para una buena parte de la gente es un día de chistes, tonterías o bromas inofensivas. Esto no es ningún chiste, ni broma, ni tontería. ¡Esto es el resolutor de DNS, <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a> ! Sígalo en #1dot1dot1dot1</p>
+	<p>Etiquetado con <a href="https://blog.cloudflare.com/tag/dns">DNS</a>, <a href="https://blog.cloudflare.com/tag/1-1-1-1">1.1.1.1</a>, <a href="https://blog.cloudflare.com/tag/privacy">Privacidad</a>, <a href="https://blog.cloudflare.com/tag/resolver">Resolutor</a>, Noticias de productos</p>
+</div>

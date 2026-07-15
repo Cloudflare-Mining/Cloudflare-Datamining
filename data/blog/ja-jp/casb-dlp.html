@@ -1,0 +1,61 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/casb-dlp">English</a>、<a href="https://blog.cloudflare.com/zh-tw/casb-dlp">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/casb-dlp">Français</a>、<a href="https://blog.cloudflare.com/de-de/casb-dlp">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/casb-dlp">한국어</a>、<a href="https://blog.cloudflare.com/es-es/casb-dlp">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/casb-dlp">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s4kyXV1qmn4CRFLbpXLAk/570f1b4cf21aecba70786af5ee1a0401/casb-dlp.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>CloudflareのCloud Access Security Broker（CASB）は、SaaSアプリケーションの設定ミス、不正なユーザー活動、シャドーIT、その他のデータセキュリティの問題をスキャンします。発見されたセキュリティ脅威は、ITおよびセキュリティ管理者に呼び出され、タイムリーに修正されるため、長いリストのアプリケーションを延々と手作業でチェックする負担がなくなります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Wqq52bJYYraL6kGegsWIc/d2b89355122ed7b0055bf5de4cc4847b/image4-12.png" alt="How Cloudflare CASB and DLP work together to protect your data" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>しかし、Cloudflareの顧客は、設定ミスに伴うリスクを評価するために、より多くの情報を利用できるようにしてほしいと考えていることを明らかにしました。一般に公開される社内のキックオフスケジュールの日程は、一般に公開される顧客リストほど重要ではないので、顧客はそれとは異なる扱いを求めています。彼らは、機密データの漏洩箇所を特定し、漏洩やインシデント発生時の評価と修復時間を短縮することを私たちに求めました。このフィードバックにより、私たちはCloudflareが得意とする、自社製品の優れた部分を組み合わせてお客様の問題を解決するための新たな機会を認識しました。</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>ユーザーが、ネットワークを経由する機密データ以外にも同じDLPを適用する方法を提供するために、現在進行中のエキサイティングな取り組みがあります。SaaS DLPは、何百万もの組織で使用されている一般的なSaaSアプリに保存されているデータを対象としています。</p>
+	<p>これらの機能により、お客様はわずか数クリックでSaaSアプリケーションを接続し、ドキュメント、スプレッドシート、PDF、その他のアップロードファイルに保存されているPII、PCI、さらにはカスタム正規表現などの機密データをスキャンできるようになります。これにより、お客様は主要なセキュリティリスクを迅速に評価し、改善するためのシグナルを得ることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-casb">CASBを理解する</h3>
+		<a href="https://blog.cloudflare.com/#understanding-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>9月にリリースされたCloudflareのAPI CASBは、Google Workspace、Microsoft 365、その他当社がサポートするSaaSアプリケーション（本日リリースしたSalesforceやBoxを含む）のいずれであっても、セキュリティを迅速かつ容易に深く掘り下げることを可能にしました。CASBを利用することで、安全でない設定や設定ミス、不適切なファイル共有、ユーザーアクセスのリスク、ベストプラクティスが守られていないなど、組織や社員を危険にさらすSaaSのセキュリティ問題を把握することができるようになったのです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vES53c15VUuvf2jGa0tGh/7ac679bf0220f2b6ee3076ddf34fc4a5/image2.jpg" alt="" class="kg-image" width="1600" height="1000" loading="lazy">
+
+	</figure>
+	<p>「しかし、私たちが共同作業しているファイルの_中_に保存されている機密データについてはどうだろう？どのようにそれを特定できるのだろうか？」</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-dlp">DLPを理解する</h3>
+		<a href="https://blog.cloudflare.com/#understanding-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、9月にリリースされたCloudflare DLP for data in-transitは、CloudflareのSecure Web Gateway（SWG）のユーザーに、企業ネットワークへの機密情報の出入りを管理し完全にブロックする方法を提供し、悪意のある人の手に渡ることを防止します。この場合、DLPは、クレジットカード番号や社会保障番号などの機密文字列を、Google Driveに文書でアップロードしたり、Slackのメッセージで送信したりするなど、何らかの形で従業員が伝達しようとする際に、それを発見することができます。Cloudflare DLPは、HTTPリクエストが目的のアプリケーションに到達する前にブロックします。</p>
+	<p>しかし、今回もまた、前回と同じような質問や感想が寄せられました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Tioay2oFOuQnRla7yv3Ty/94d810dcd8faa75059ca4a73f445bcc9/image3-14.png" alt="" class="kg-image" width="1478" height="1174" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qDIi5N0R3koBNDcpbQQBg/f7e21759ba2778d1d9b2a87fbd125978/image1-25.png" alt="" class="kg-image" width="1688" height="1150" loading="lazy">
+
+	</figure>
+	<p>「SaaSアプリケーションのデータはどうなるのでしょうか？そこに保存された情報は、ネットワーク上で見ることはできません。」</p>
+	<div class="flex anchor relative">
+		<h3 id="casb-dlp-better-together">CASB + DLPを組み合わせることでより有効に</h3>
+		<a href="https://blog.cloudflare.com/#casb-dlp-better-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年初頭、Cloudflare Zero Trustは、お客様がSaaSアプリケーションに保存されているファイルを確認し、その中の特に機密性の高いデータを特定できるようにする新しい製品シナジーを導入する予定です。</p>
+	<p>Googleドキュメント上のクレジットカード番号はどうでしょうか？問題ありません。社会保障番号が記載されたExcelのスプレッドシートは？CASBがお知らせします。</p>
+	<p>今回の製品提携により、Cloudflareは、ITおよびセキュリティ管理者に、セキュリティの重要な領域をさらに1つ提供し、データ損失防止に関するストーリーを完結させることができるようになります。データの転送を監視するDLP、ファイル共有を監視するCASB、さらにデータの使用中を監視するリモートブラウザ分離（RBI）と電子メールを監視するArea 1があれば、使用中のデータの流出と悪用に関して、企業は安心して対処することができます。</p>
+	<p>今後も開発は続きますが、このような機能があなたのような組織でどのように使われるのか、ぜひお聞かせください。これらの製品の詳細や今後の展開にご興味がおありですか？アカウントマネージャーにお問い合わせいただくか、Cloudflareの新しいお客様の場合は<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">こちらをクリックして当社までご連絡ください</a>。</p>
+</div>

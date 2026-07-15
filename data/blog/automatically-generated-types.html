@@ -1,181 +1,137 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/automatically-generated-types">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/automatically-generated-types">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zUk6Fr2qbkwljwleRZsn2/6d7658db0459eb2cb308d53fcd8b291f/automatically-generated-types.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Historically, keeping our Rust and TypeScript type repos up to date has been hard. They were manually generated, which means they ran the risk of being inaccurate or out of date. Until recently, the workers-types repository needed to be manually updated whenever the types changed. We also used to add type information for mostly complete browser APIs. This led to confusion when people would try to use browser APIs that aren’t supported by the Workers runtime they would compile but throw errors.</p>
-	<p>That all changed this summer when Brendan Coll, whilst he was interning with us, built an automated pipeline for generating them. It runs every time we build the Workers runtime, generating types for our TypeScript and Rust repositories. Now everything is up-to-date and accurate.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-quick-overview">A quick overview</h2>
-		<a href="https://blog.cloudflare.com/#a-quick-overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every time the Workers runtime code is built, a script runs over the public APIs and generates the Rust and TypeScript types as well as a JSON file containing an <a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank" rel="noopener noreferrer">intermediate representation</a> of the static types. The types are sent to the appropriate repositories and the JSON file is uploaded as well in case people want to create their own types packages. More on that later.</p>
-	<p>This means the static types will always be accurate and up to date. It also allows projects running Workers in other, statically-typed languages to generate their own types from our intermediate representation. Here is an example PR from our Cloudflare bot. It’s detected a change in the runtime types and is updating the TypeScript files as well as the intermediate representation.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gGG9WJuWteHvOu7Gurphb/2c69778b60fc0be7b05de74620adc5ee/image2-12.png" alt="" class="kg-image" width="1999" height="1105" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="using-the-auto-generated-types">Using the auto-generated types</h2>
-		<a href="https://blog.cloudflare.com/#using-the-auto-generated-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To get started, use wrangler to generate a new TypeScript project:</p>
-	<pre class="language-sh"><code class="language-sh">$ wrangler generate my-typescript-worker https://github.com/cloudflare/worker-typescript-template</code></pre>
-	<p>If you already have a TypeScript project, you can install the latest version of <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">workers-types</a> with:</p>
-	<pre class="language-sh"><code class="language-sh">$ npm install --save-dev @cloudflare/workers-types</code></pre>
-	<p>And then add <code>@cloudflare/workers-types</code> to your project's tsconfig.json file.</p>
-	<pre class="language-json"><code class="language-json">{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "lib": ["ES2020"],
-    "types": ["@cloudflare/workers-types"]
-  }
-}</code></pre>
-	<p>After that, you should get automatic type completion in your IDE of choice.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qwl2tjaM5QenHDZi4Tat7/194c992e5b9bb9a35fbd4b94dcceb007/image3-19.png" alt="" class="kg-image" width="1999" height="524" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="how-it-works">How it works</h2>
-		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here is some example code from the Workers runtime codebase.</p>
-	<pre class="language-cpp"><code class="language-cpp">class Blob: public js::Object {
-public:
-  typedef kj::Array&lt;kj::OneOf&lt;kj::Array&lt;const byte&gt;, kj::String, js::Ref&lt;Blob&gt;&gt;&gt; Bits;
-  struct Options {
-    js::Optional&lt;kj::String&gt; type;
-    JS_STRUCT(type);
-  };
-
-  static js::Ref&lt;Blob&gt; constructor(js::Optional&lt;Bits&gt; bits, js::Optional&lt;Options&gt; options);
-  
-  int getSize();
-  js::Ref&lt;Blob&gt; slice(js::Optional&lt;int&gt; start, js::Optional&lt;int&gt; end);
-
-  JS_RESOURCE_TYPE(Blob) {
-    JS_READONLY_PROPERTY(size, getSize);
-    JS_METHOD(slice);
-  }
-};</code></pre>
-	<p>A Python script runs over this code during each build and generates an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener noreferrer">Abstract Syntax Tree</a> containing information about the function including an identifier, any argument types and any return types.</p>
-	<pre class="language-json"><code class="language-json">{
-  "name": "Blob",
-  "kind": "class",
-  "members": [
-    {
-      "name": "size",
-      "type": {
-        "name": "integer"
-      },
-      "readonly": true
-    },
-    {
-      "name": "slice",
-      "type": {
-        "params": [
-          {
-            "name": "start",
-            "type": {
-              "name": "integer",
-              "optional": true
-            }
-          },
-          {
-            "name": "end",
-            "type": {
-              "name": "integer",
-              "optional": true
-            }
-          }
-        ],
-        "returns": {
-          "name": "Blob"
-        }
-      }
-    }
-  ]
-}</code></pre>
-	<p>Finally, the <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">TypeScript types</a> repositories are automatically sent PRs with the updated types.</p>
-	<pre class="language-typescript"><code class="language-typescript">declare type BlobBits = (ArrayBuffer | string | Blob)[];
-
-interface BlobOptions {
-  type?: string;
-}
-
-declare class Blob {
-  constructor(bits?: BlobBits, options?: BlobOptions);
-  readonly size: number;
-  slice(start?: number, end?: number, type?: string): Blob;
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="overrides">Overrides</h3>
-		<a href="https://blog.cloudflare.com/#overrides" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In some cases, TypeScript supports concepts that our C++ runtime does not. Namely, generics and function overloads. In these cases, we override the generated types with partial declarations. For example, <code>DurableObjectStorage</code> makes heavy use of generics for its getter and setter functions.</p>
-	<pre class="language-bash"><code class="language-bash">declare abstract class DurableObjectStorage {
-	 get&lt;T = unknown&gt;(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise&lt;T | undefined&gt;;
-	 get&lt;T = unknown&gt;(keys: string[], options?: DurableObjectStorageOperationsGetOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
-	 
-	 list&lt;T = unknown&gt;(options?: DurableObjectStorageOperationsListOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
-	 
-	 put&lt;T&gt;(key: string, value: T, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
-	 put&lt;T&gt;(entries: Record&lt;string, T&gt;, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
-	 
-	 delete(key: string, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;boolean&gt;;
-	 delete(keys: string[], options?: DurableObjectStorageOperationsPutOptions): Promise&lt;number&gt;;
-	 
-	 transaction&lt;T&gt;(closure: (txn: DurableObjectTransaction) =&gt; Promise&lt;T&gt;): Promise&lt;T&gt;;
-	}</code></pre>
-	<p>You can also write type overrides using Markdown. <a href="https://github.com/cloudflare/workers-types/blob/master/docs/kv.md" target="_blank" rel="noopener noreferrer">Here</a> is an example of overriding types of <code>KVNamespace</code>.</p>
-	<div class="flex anchor relative">
-		<h2 id="creating-your-own-types">Creating your own types</h2>
-		<a href="https://blog.cloudflare.com/#creating-your-own-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The JSON IR (<a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank" rel="noopener noreferrer">intermediate representation</a>) has been open sourced alongside the TypeScript types and can be found <a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json" target="_blank" rel="noopener noreferrer">in this GitHub repository</a>. We’ve also open sourced the <a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json" target="_blank" rel="noopener noreferrer">type schema</a> itself, which describes the format of the IR. If you’re interested in generating Workers types for your own language, you can take the IR, which describes the declaration in a "normalized" data structure, and generate types from it.</p>
-	<p>The declarations inside <code>workers.json</code> contain the elements to derive function signatures and other elements needed for code generation such as identifiers, argument types, return types and error management. A concrete use-case would be to generate external function declarations for a language that compiles to WebAssembly, to import precisely the set of available function calls available from the Workers runtime.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare cares deeply about supporting the TypeScript and Rust ecosystems. Brendan created a tool which will ensure the type information for both languages is always up-to-date and accurate. We also are open-sourcing the type information itself in JSON format, so that anyone interested can create type data for any language they’d like!</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>Historically, keeping our Rust and TypeScript type repos up to date has been hard. They were manually generated, which means they ran the risk of being inaccurate or out of date. Until recently, the workers-types repository needed to be manually updated whenever the types changed. We also used to add type information for mostly complete browser APIs. This led to confusion when people would try to use browser APIs that aren’t supported by the Workers runtime they would compile but throw errors.</p>
+<p>That all changed this summer when Brendan Coll, whilst he was interning with us, built an automated pipeline for generating them. It runs every time we build the Workers runtime, generating types for our TypeScript and Rust repositories. Now everything is up-to-date and accurate.</p>
+<h2>A quick overview</h2>
+<p>Every time the Workers runtime code is built, a script runs over the public APIs and generates the Rust and TypeScript types as well as a JSON file containing an <a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank" rel="noopener noreferrer">intermediate representation</a> of the static types. The types are sent to the appropriate repositories and the JSON file is uploaded as well in case people want to create their own types packages. More on that later.</p>
+<p>This means the static types will always be accurate and up to date. It also allows projects running Workers in other, statically-typed languages to generate their own types from our intermediate representation. Here is an example PR from our Cloudflare bot. It’s detected a change in the runtime types and is updating the TypeScript files as well as the intermediate representation.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="395" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=715&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=715&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=750&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=828&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=1080&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=1280&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WFBA3XAG1VBNJ1ZJMGCM.png&amp;w=1430&amp;h=790&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-803 Embedded Image - eiAT6J" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="395" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-803 Embedded Image - eiAT6J"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Using the auto-generated types</h2>
+<p>To get started, use wrangler to generate a new TypeScript project:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> my-typescript-worker</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/worker-typescript-template</span></span></code></pre>
+</div>
+<p>If you already have a TypeScript project, you can install the latest version of <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">workers-types</a> with:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> @cloudflare/workers-types</span></span></code></pre>
+</div>
+<p>And then add <code>@cloudflare/workers-types</code> to your project's tsconfig.json file.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compilerOptions"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "target"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ES2020"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "module"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"CommonJS"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "lib"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"ES2020"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "types"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"@cloudflare/workers-types"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>After that, you should get automatic type completion in your IDE of choice.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="187" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=640&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=750&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=828&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=1080&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=1280&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4717SFDNPECQW7HP4W07Q2.png&amp;w=1430&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-803 Embedded Image - eudwtb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="187" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-803 Embedded Image - eudwtb"></div>
+</figure>
+<h2>How it works</h2>
+<p>Here is some example code from the Workers runtime codebase.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Blob</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">public</span><span class="sk-6f42c1-ffc799"> js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Object</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">public:</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  typedef</span><span class="sk-6f42c1-ffc799"> kj</span><span class="sk-24292e-fff">::Array</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">kj</span><span class="sk-24292e-fff">::OneOf</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">kj</span><span class="sk-24292e-fff">::Array</span><span class="sk-d73a49-a0a0a0">&lt;const</span><span class="sk-24292e-fff"> byte</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">kj</span><span class="sk-24292e-fff">::String, </span><span class="sk-6f42c1-ffc799">js</span><span class="sk-24292e-fff">::Ref</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Blob</span><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-24292e-fff"> Bits;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  struct</span><span class="sk-6f42c1-ffc799"> Options</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    js</span><span class="sk-24292e-fff">::Optional</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">kj</span><span class="sk-24292e-fff">::String</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> type;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    JS_STRUCT</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">type</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-6f42c1-ffc799"> js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Ref</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Blob</span><span class="sk-24292e-fff">&gt; </span><span class="sk-6f42c1-ffc799">constructor</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Optional</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Bits</span><span class="sk-24292e-fff">&gt; </span><span class="sk-e36209-fff">bits</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Optional</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Options</span><span class="sk-24292e-fff">&gt; </span><span class="sk-e36209-fff">options</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  int</span><span class="sk-6f42c1-ffc799"> getSize</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Ref</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Blob</span><span class="sk-24292e-fff">&gt; </span><span class="sk-6f42c1-ffc799">slice</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Optional</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">&gt; </span><span class="sk-e36209-fff">start</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">js</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Optional</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">&gt; </span><span class="sk-e36209-fff">end</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  JS_RESOURCE_TYPE</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Blob</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    JS_READONLY_PROPERTY</span><span class="sk-24292e-fff">(size, getSize);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    JS_METHOD</span><span class="sk-24292e-fff">(slice);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>A Python script runs over this code during each build and generates an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener noreferrer">Abstract Syntax Tree</a> containing information about the function including an identifier, any argument types and any return types.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Blob"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"class"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "members"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"size"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "type"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"integer"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "readonly"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"slice"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "type"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "params"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">          {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"start"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "type"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"integer"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "optional"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-24292e-fff">          },</span></span>
+<span class="line"><span class="sk-24292e-fff">          {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"end"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "type"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"integer"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "optional"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "returns"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Blob"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Finally, the <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">TypeScript types</a> repositories are automatically sent PRs with the updated types.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-d73a49-a0a0a0"> type</span><span class="sk-6f42c1-ffc799"> BlobBits</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">ArrayBuffer</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Blob</span><span class="sk-24292e-fff">)[];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> BlobOptions</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  type</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Blob</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">bits</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> BlobBits</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> BlobOptions</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  readonly</span><span class="sk-e36209-fff"> size</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  slice</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">start</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">end</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">type</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Blob</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Overrides</h3>
+<p>In some cases, TypeScript supports concepts that our C++ runtime does not. Namely, generics and function overloads. In these cases, we override the generated types with partial declarations. For example, <code>DurableObjectStorage</code> makes heavy use of generics for its getter and setter functions.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-24292e-fff"> abstract class DurableObjectStorage {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 get</span><span class="sk-24292e-fff">&lt;T </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> unknow</span><span class="sk-24292e-fff">n</span><span class="sk-032f62-99ffe4">&gt;(</span><span class="sk-6f42c1-ffc799">key:</span><span class="sk-032f62-99ffe4"> string, options?: DurableObjectStorageOperationsGetOptions):</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">T</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> undefined</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 get</span><span class="sk-24292e-fff">&lt;T </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> unknow</span><span class="sk-24292e-fff">n</span><span class="sk-032f62-99ffe4">&gt;(</span><span class="sk-6f42c1-ffc799">keys:</span><span class="sk-032f62-99ffe4"> string[], options?: DurableObjectStorageOperationsGetOptions):</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Map</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">string,</span><span class="sk-24292e-fff"> T</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	 </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 list</span><span class="sk-24292e-fff">&lt;T </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> unknow</span><span class="sk-24292e-fff">n</span><span class="sk-032f62-99ffe4">&gt;(</span><span class="sk-6f42c1-ffc799">options?:</span><span class="sk-032f62-99ffe4"> DurableObjectStorageOperationsListOptions):</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Map</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">string,</span><span class="sk-24292e-fff"> T</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	 </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 put</span><span class="sk-24292e-fff">&lt;T&gt;(key: </span><span class="sk-032f62-99ffe4">string,</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> T,</span><span class="sk-032f62-99ffe4"> options?:</span><span class="sk-032f62-99ffe4"> DurableObjectStorageOperationsPutOptions</span><span class="sk-24292e-fff">): Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">void</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 put</span><span class="sk-24292e-fff">&lt;T&gt;(entries: </span><span class="sk-032f62-99ffe4">Record</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">string,</span><span class="sk-24292e-fff"> T</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> options?:</span><span class="sk-032f62-99ffe4"> DurableObjectStorageOperationsPutOptions</span><span class="sk-24292e-fff">): Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">void</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	 </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 delete(key:</span><span class="sk-032f62-99ffe4"> string,</span><span class="sk-032f62-99ffe4"> options?:</span><span class="sk-032f62-99ffe4"> DurableObjectStorageOperationsPutOptions</span><span class="sk-24292e-fff">): Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">boolean</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 delete(keys:</span><span class="sk-032f62-99ffe4"> string[],</span><span class="sk-032f62-99ffe4"> options?:</span><span class="sk-032f62-99ffe4"> DurableObjectStorageOperationsPutOptions</span><span class="sk-24292e-fff">): Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">number</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	 </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	 transaction</span><span class="sk-24292e-fff">&lt;T&gt;(closure: (txn: </span><span class="sk-032f62-99ffe4">DurableObjectTransaction</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">T</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">): Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">T</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span></code></pre>
+</div>
+<p>You can also write type overrides using Markdown. <a href="https://github.com/cloudflare/workers-types/blob/master/docs/kv.md" target="_blank" rel="noopener noreferrer">Here</a> is an example of overriding types of <code>KVNamespace</code>.</p>
+<h2>Creating your own types</h2>
+<p>The JSON IR (<a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank" rel="noopener noreferrer">intermediate representation</a>) has been open sourced alongside the TypeScript types and can be found <a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json" target="_blank" rel="noopener noreferrer">in this GitHub repository</a>. We’ve also open sourced the <a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json" target="_blank" rel="noopener noreferrer">type schema</a> itself, which describes the format of the IR. If you’re interested in generating Workers types for your own language, you can take the IR, which describes the declaration in a "normalized" data structure, and generate types from it.</p>
+<p>The declarations inside <code>workers.json</code> contain the elements to derive function signatures and other elements needed for code generation such as identifiers, argument types, return types and error management. A concrete use-case would be to generate external function declarations for a language that compiles to WebAssembly, to import precisely the set of available function calls available from the Workers runtime.</p>
+<h2>Conclusion</h2>
+<p>Cloudflare cares deeply about supporting the TypeScript and Rust ecosystems. Brendan created a tool which will ensure the type information for both languages is always up-to-date and accurate. We also are open-sourcing the type information itself in JSON format, so that anyone interested can create type data for any language they’d like!</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k2g" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

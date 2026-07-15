@@ -1,0 +1,316 @@
+<div class="mb2 gray5">Lesezeit: 5&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">English</a>, <a href="https://blog.cloudflare.com/zh-tw/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Português</a>, <a href="https://blog.cloudflare.com/es-es/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FDTzC1VAKO8bya2ojApwa/98fa80510a4f0e4b37f8884202c55e5f/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Um zu einem sicheren Internet für Content Creator beizutragen, haben wir gerade einen brandneuen „Easy Button“ eingeführt, mit dem sich sämtliche KI-Bots blockieren lassen. Die Lösung steht allen unseren Kunden zur Verfügung, auch denen mit Free-Tarif.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D59Fq5QkC4J7Jjo5lM4Fm/fcc55b665562d321bd84f88f53f46b22/image7-1.png" alt="Declaring your AIndependence: block AI bots, scrapers and crawlers with a single click" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Weil sich <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer">generative KI</a> großer Beliebtheit erfreut, ist auch die Nachfrage nach Inhalten zum Training der entsprechenden Modelle oder zur Ausführung von Inferenzaufgaben sprunghaft gestiegen. Einige KI-Unternehmen machen ihre Web Scraping-Bots zwar eindeutig als solche kenntlich, doch das gilt bei Weitem nicht für alle. So hat Google <a href="https://www.reuters.com/technology/reddit-ai-content-licensing-deal-with-google-sources-say-2024-02-22" target="_blank" rel="noopener noreferrer">Berichten zufolge 60 Millionen US-Dollar jährlich</a> für die Lizenzierung der nutzergenerierten Inhalte von Reddit gezahlt. Die Schauspielerin Scarlett Johansson behauptet, man habe ohne ihre Zustimmung <a href="https://www.nature.com/articles/d41586-024-01578-4" target="_blank" rel="noopener noreferrer">ihre Stimme für die neue von OpenAI angebotene persönliche Assistentin benutzt</a>. Jüngst wurde zudem der Firma Perplexity <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">vorgeworfen, sich als reguläre Besucher ausgegeben zu haben</a>, um Inhalte von Websites auszulesen. Großen Mengen an Originalinhalten waren noch nie so wertvoll wie heute.</p>
+	<p>Im vergangenen Jahr hat <a href="https://blog.cloudflare.com/ai-bots">Cloudflare bekannt gegeben, dass Kunden jetzt KI-Bots, die sich gut verhalten, ganz einfach blockieren können</a>. Diese Bots befolgen <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer">robots.txt</a> und verwenden keine nicht lizenzierten Inhalte, um ihre Modelle zu trainieren oder Inferenzaufgaben für <a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">RAG</a>-Anwendungen mit Website-Daten auszuführen. Obwohl diese KI-Bots die Regeln befolgen, entscheiden sich Cloudflare-Kunden mit überwältigender Mehrheit dafür, ihnen den Zutritt zu verwehren.</p>
+	<p>Die Kunden machen damit unmissverständlich klar, dass sie nicht wollen, dass KI-Bots ihre Websites besuchen – vor allem, wenn sie es auf unehrliche Weise tun. Zur Abhilfe haben wir eine brandneue Funktion eingeführt, mit der Sie alle KI-Bots mit nur einem Klick blockieren können. Diese Option steht allen Kunden zur Verfügung, auch denen mit Free-Tarif. Zur Aktivierung klicken Sie einfach unter dem Abschnitt <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots%2Fconfigure" target="_blank" rel="noopener noreferrer">„Security“ &gt; „Bots“</a> im Cloudflare-Dashboard auf den Umschalter „AI Scrapers and Crawlers“.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aAA77Hl9OM2vtI611QcUI/0992e096262e348b451efd8be296fa27/image9.png" alt="" class="kg-image" width="1800" height="675" loading="lazy">
+
+	</figure>
+	<p>Dieses Feature wird automatisch mit neuen Fingerprints von unerwünschten Bots aktualisiert, die unserer Einschätzung nach in großem Umfang Webinhalte zum Trainieren von Modellen auslesen. Um eine möglichst genaue Vorstellung von den Aktivitäten von KI-Crawlern zu bekommen, haben wir den Traffic in unserem Netzwerk untersucht.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xD0lhy89vZb34dtIWukt1/3e0e1ed979a33d344e53d4da2a819e1e/image2.png" alt="" class="kg-image" width="1660" height="746" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ai-bot-activity-today">Die heutige KI-Bot-Aktivität</h3>
+		<a href="https://blog.cloudflare.com/#ai-bot-activity-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die folgende Grafik zeigt die gemessen an ihrem Anfragevolumen beliebtesten KI-Bots im Netzwerk von Cloudflare. Wir haben uns User Agents von gängigen KI-Crawlern angesehen und die Zahl ihrer Anfragen auf unserer Plattform für das verstrichene Jahr ermittelt:</p>
+	<p>Ein Blick auf die Anzahl der Anfragen an Cloudflare-Websites zeigt, dass <i>Bytespider</i>, <i>Amazonbot</i>, <i>ClaudeBot</i> und <i>GPTBot</i> die vier wichtigsten KI-Crawler sind. <i>Bytespider</i> wird von ByteDance betrieben, der chinesischen Inhaberin von TikTok. Berichten zufolge wird das Tool zum Sammeln von Trainingsdaten für die Large Language Models (LLM) des Unternehmens verwendet, einschließlich derjenigen, die den ChatGPT-Rivalen Doubao unterstützen. <i>Amazonbot</i> und <i>ClaudeBot</i> folgen hinsichtlich des Anfragevolumens hinter <i>Bytespider</i>. <i>Amazonbot</i> wird laut Berichten für die Indexierung von Inhalten eingesetzt, auf die Alexa zur Beantwortung von Fragen zurückgreift, und hat die zweitgrößte Zahl von Anfragen versandt. Bei <i>ClaudeBot</i>, dem Werkzeug, das zum Trainieren des Chat-Bots Claude benutzt wird, hat sich das Anfragevolumen in letzter Zeit erhöht.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13pNq4MJJB92Dcs1ghxC6k/b7e7acc7e65e9e0958eed5d4b4cb0594/image6.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
+
+	</figure>
+	<p><i>Bytespider</i> weist unter den von uns beobachteten führenden KI-Bots nicht nur die höchste Zahl von Anfragen auf, sondern steht auch in Bezug auf das Ausmaß der Crawling-Aktivitäten im Web und der Häufigkeit, mit der er blockiert wird, an erster Stelle. Knapp dahinter folgt sowohl im Hinblick auf das Crawlen als auch auf das Blockieren auf Rang zwei <i>GPTBot</i>. Das Tool wird von OpenAI verwaltet und sammelt Daten zum Training der LLM des Unternehmens, auf denen KI-gesteuerte Produkte wie ChatGPT aufbauen. In der folgenden Tabelle bezieht sich „Anteil an den Website-Aufrufen“ auf den Anteil der durch Cloudflare geschützten Websites, auf die der jeweilige KI-Bot zugegriffen hat.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Bot</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Share of Websites Accessed</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35.46%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.17%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ImagesiftBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CCBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT-User</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.84%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">omgili</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Diffbot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.08%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Claude-Web</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.04%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.01%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>KI-Bot</p>
+	<p>Anteil an den Website-Aufrufen</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m4jV8g9sQ0BLR7OIonsoB/a4c3100a34160c96aea07c4ed4bc6a8d/image3.png" alt="" class="kg-image" width="1866" height="1008" loading="lazy">
+
+	</figure>
+	<p>Bytespider</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Top N Internet properties by number of visitors seen by Cloudflare</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% accessed by AI bots</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% blocking AI bots</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">80.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">53.2%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.8%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47.99%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.92%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44.53%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.36%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38.73%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.98%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gCWVJMv9GajRT3H8BQ5EM/effb5e2b52c0bdecb99f5f4e339c8d1d/image4.png" alt="" class="kg-image" width="1259" height="509" loading="lazy">
+
+	</figure>
+	<p>40,40 %</p>
+	<p>GPTBot</p>
+	<p>35,46 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JpBRAGuQ1DOCTSFu9yHbH/9c11b569a30f68ddb1b4c197054ed1c8/image1.png" alt="" class="kg-image" width="1800" height="563" loading="lazy">
+
+	</figure>
+	<p>ClaudeBot</p>
+	<p>11,17 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y0G6D2b512V1UAgR6sooD/4cc9b659f091e84facbec66a30baafad/image5.png" alt="" class="kg-image" width="1386" height="414" loading="lazy">
+
+	</figure>
+	<p>ImagesiftBot</p>
+	<p>8,75 %</p>
+	<p>CCBot</p>
+	<p>2,14 %</p>
+	<p>ChatGPT-Nutzer</p>
+	<p>1,84 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iwX6mvdnqg3KGRN0dMHou/a7c0a39275680db58f49c9292ca180c7/image8.png" alt="" class="kg-image" width="1874" height="1583" loading="lazy">
+
+	</figure>
+	<p>omgili</p>
+	<p>0,10 %</p>
+	<p>Diffbot</p>
+	<p>0,08 %</p>
+	<p>Claude-Web</p>
+	<p>0,04 %</p>
+	<p>PerplexityBot</p>
+	<p>0,01 %</p>
+	<p>Während unsere Analyse die beliebtesten Crawler in Bezug auf das Anfragevolumen und die Anzahl der aufgerufenen Websites identifiziert hat, wissen viele Kunden wahrscheinlich nichts von den beliebteren KI-Crawlern, die ihre Internetauftritte aktiv durchforsten. Unser Radar-Team hat eine Analyse der relevantesten robots.txt-Einträge der <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">wichtigsten 10.000 Internet-Domains</a> durchgeführt, um die KI-Bots zu ermitteln, mit denen am häufigsten Aktionen ausgeführt wurden. Dann wurde untersucht, wie oft diese Bots auf Websites anzutreffen waren, die durch Cloudflare geschützt werden.</p>
+	<p>Die folgende Grafik zeigt, dass Kunden bei den nicht zugelassenen Crawlern in robots.txt am häufigsten auf <i>GPTBot, CCBot</i> und <i>Google</i> verweisen, beliebte KI-Crawler wie <i>Bytespider</i> und <i>ClaudeBot</i> aber nicht ausdrücklich ausschließen.</p>
+	<p>Da das Internet nun mit diesen KI-Bots geradezu überschwemmt wird, hat uns sehr interessiert, wie die Website-Betreiber bislang darauf reagiert haben. Im Juni haben KI-Bots auf rund 39 Prozent der führenden Million von Websites zugegriffen, die Cloudflare nutzen. Doch nur bei 2,98 Prozent dieser Internetpräsenzen wurden Maßnahmen ergriffen, um solche Anfragen zu blockieren oder sie einem Test zu unterziehen. Und je höher im Ranking (also je beliebter) eine Website ist, desto wahrscheinlicher ist es, dass sie von KI-Bots ins Visier genommen wird – und entsprechend auch, dass sie solche Anfragen blockiert.</p>
+	<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top}</p>
+	<p>Top-N-Websites nach Anzahl der von Cloudflare registrierten Besucher</p>
+	<p>Zugriff durch KI-Bots</p>
+	<p>KI-Bots werden blockiert</p>
+	<p>10</p>
+	<p>80,0 %</p>
+	<p>40,0 %</p>
+	<p>100</p>
+	<p>63,0 %</p>
+	<p>16,0 %</p>
+	<p>1.000</p>
+	<p>53,2 %</p>
+	<p>8,8 %</p>
+	<p>10.000</p>
+	<p>47,99 %</p>
+	<p>8,92 %</p>
+	<p>100.000</p>
+	<p>44,53 %</p>
+	<p>6,36 %</p>
+	<p>1.000.000</p>
+	<p>38,73 %</p>
+	<p>2,98 %</p>
+	<p>Wir beobachten, dass Website-Betreiber den Zugang zu diesen KI-Crawlern mithilfe der Datei robots.txt vollständig blockieren. Voraussetzung dafür ist allerdings, dass der Bot-Betreiber robots.txt respektiert und das Protokoll <a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer">RFC9309</a> einhält (womit sichergestellt wird, dass alle Nutzer-Varianten mit dem Produkt-Token übereinstimmen), um die Art des Bots bei dessen Besuch einer Website ehrlich kenntlich zu machen. Allerdings ist es für Bot-Betreiber ein Leichtes, User Agents zu ändern.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-find-ai-bots-pretending-to-be-real-web-browsers">So spüren wir KI-Bots auf, die sich als echte Webbrowser ausgeben</h3>
+		<a href="https://blog.cloudflare.com/#how-we-find-ai-bots-pretending-to-be-real-web-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Leider mussten wir feststellen, dass gefälschte User Agents eingesetzt werden, um Bots als echte Browser erscheinen zu lassen. Wir haben diese Aktivität über einen längeren Zeitraum verfolgt und können mit Stolz sagen, dass unser globales Machine Learning-Modell diese Aktivität immer als auf einen Bot zurückgehend erkannt hat – selbst wenn die Betreiber hinsichtlich ihres User Agents lügen.</p>
+	<p>Nehmen wir ein Beispiel für einen bestimmten Bot, bei dem <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">von anderer Seite</a> beobachtet wurde, dass dieser <a href="https://www.wired.com/story/perplexity-is-a-bullshit-machine" target="_blank" rel="noopener noreferrer">seine Aktivitäten verschleiert</a>. Wir haben eine Analyse durchgeführt, um zu sehen, welchen Score unsere Machine-Learning-Modelle dem durch diesen Bot generierten Traffic zuweisen. Wie Sie sehen können, liegen in dem folgenden Diagramm alle <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">Bot-Scores</a> deutlich unter 30. Somit gehen unsere Modelle davon aus, dass diese Aktivität von einem Bot stammt.</p>
+	<p>Das Diagramm zeigt die Bewertung der Anfragen nach <a href="https://blog.cloudflare.com/residential-proxy-bot-detection-using-machine-learning">unserem neuesten Modell</a>. Die „heißeren“ Farben bedeuten, dass mehr Anfragen unter diesen Bereich fallen. „Kühlere“ Farben zeigen an, dass das bei weniger Anfragen der Fall war. Die überwiegende Mehrheit der Anfragen ist auf die untersten beiden Bereiche entfallen, was signalisiert, dass das Cloudflare-Modell dem fragwürdigen Bot einen Score von 9 oder weniger zugewiesen hat. Die Änderungen des User Agent haben keine Auswirkungen auf den Score, da dies das allererste ist, was wir von den Bot-Betreibern erwarten.</p>
+	<p>Bei jedem Kunden, der bereits per WAF-Regel durchgesetzt hatte, dass Besucher mit einem Bot-Score unter 30 (unsere Empfehlung) einem Test unterzogen werden, wurde automatisch der gesamten KI-Bot-Traffic ohne weiteres Zutun seinerseits blockiert. Dasselbe wird für zukünftige KI-Bots gelten, die zum Verbergen ihrer Aktivitäten ähnliche Verfahren verwenden.</p>
+	<p>Wir nutzen die globalen Signale von Cloudflare zur Berechnung unseres Bot-Scores, der für KI-Bots wie den obigen anzeigt, dass wir ihn korrekt als wahrscheinlichen Bot identifizieren.</p>
+	<p>Wenn Kriminelle versuchen, eine Website in großem Umfang zu durchforsten, verwenden sie in der Regel Tools und Frameworks, die wir per Fingerprinting erfassen können. Für jeden von uns registrierten Fingerprint nutzen wir das Netzwerk von Cloudflare, das im Durchschnitt mehr als 57 Millionen Anfragen pro Sekunde verzeichnet, um zu verstehen, inwieweit wir diesem Fingerprint vertrauen sollten. Für unsere Modelle berechnen wir aus zahlreichen Signalen globale Gesamtwerte. Auf dieser Grundlage waren unsere Modelle in der Lage, Traffic von schwer fassbaren KI-Bots, wie in dem oben erwähnten Beispiel, korrekt als Bot-generiert zu kennzeichnen.</p>
+	<p>Dank dieser weltweit erfassten und gebündelten Daten können wir neue Scraping-Tools und deren Verhalten sofort erkennen, ohne den Bot manuell einem Fingerprinting zu unterziehen. Dadurch wird sichergestellt, dass Kunden immer vor den neuesten Wellen von Bot-Aktivitäten geschützt sind.</p>
+	<p>Wenn Sie einen Hinweis auf einen KI-Bot haben, der sich nicht ordnungsgemäß verhält, würden wir dem gern nachgehen. Zur Meldung solcher KI-Crawler stehen Ihnen zwei Möglichkeiten offen:</p>
+	<p>1. Enterprise-Bot-Management-Kunden können einen Bericht zu falsch-negativen <a href="https://developers.cloudflare.com/bots/concepts/feedback-loop" target="_blank" rel="noopener noreferrer">Feedback-Loops</a> über Bot-Analytics übermitteln, indem sie einfach das Traffic-Segment auswählen, bei dem sie das Fehlverhalten bemerkt haben:</p>
+	<p>2. Wir haben auch ein <a href="https://docs.google.com/forms/d/14bX0RJH_0w17_cAUiihff5b3WLKzfieDO4upRlo5wj8/edit" target="_blank" rel="noopener noreferrer">Reporting-Tool,</a> eingerichtet, mit dem jeder Cloudflare-Kunde Berichte über einen KI-Bot einreichen kann, der ohne Erlaubnis Inhalte einer Website ausliest.</p>
+	<p>Es steht zu befürchten, dass einige KI-Unternehmen, die für den Zugriff auf Inhalte Regeln umgehen wollen, sich beharrlich anpassen werden, um die Bot-Erkennung zu vermeiden. Wir werden auch künftig wachsam sein, unsere KI-Regel für Scraper und Crawler um zusätzliche Bot-Sperren ergänzen und unsere Machine-Learning-Modelle weiterentwickeln, damit sich Content Creator auch in Zukunft im Internet voll entfalten und die komplette Kontrolle darüber behalten können, zum Training welcher Modelle und zur Ausführung welcher Inferenzen ihre Inhalte genutzt werden.</p>
+</div>

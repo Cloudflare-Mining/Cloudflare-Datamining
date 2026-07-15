@@ -1,0 +1,97 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/relational-database-connectors">English</a>, <a href="https://blog.cloudflare.com/fr-fr/relational-database-connectors">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/relational-database-connectors">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/relational-database-connectors">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cY68DvcTTjvbOj71cDjaZ/4ec15a11800906faac6b47e463eb2bb5/relational-database-connectors.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Bei Cloudflare entwickeln wir die beste Computing-Plattform der Welt. Wir möchten, dass die Erstellung von Anwendungen mit Cloudflare mühe- und reibungslos funktioniert. Es reicht jedoch nicht aus, einfach nur die beste Computing-Plattform zu entwickeln; das Herzstück Ihrer Anwendungen sind die Daten, mit denen sie interagieren.</p>
+	<p></p>
+	<p>Cloudflare bietet aktuell mehrere Datenspeicherlösungen an: <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a> und <a href="https://blog.cloudflare.com/de-de/introducing-workers-durable-objects-de-de">Durable Objects</a>. Alle drei folgen den Designzielen von Cloudflare für Workers: standardmäßig global, unbeschränkt skalierbar und für Entwickler angenehm zu nutzen. Wir haben uns mit Drittanbietern von Speicherlösungen wie Fauna, MongoDB und Prisma zusammengetan, deren Datenplattformen hervorragend zu unseren Designzielen passen und die Tutorials für Datenbanken verfasst haben, von denen HTTP-Verbindungen bereits unterstützt werden.</p>
+	<p>Ein Bereich wurde bisher jedoch schmerzlich vermisst: relationale Datenbanken. Cloudflare selbst läuft auf relationalen Datenbanken, und wir sind damit nicht allein. Im April haben wir gefragt, <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer">welche Node-Librarys</a> wir unterstützen sollten, und <b>vier der fünf häufigsten Wünsche</b> bezogen sich auf Datenbanken. Anlässlich unserer Full Stack Week haben wir uns die Frage gestellt: Wie können wir relationale Datenbanken auf eine Weise unterstützen, die mit unseren Designzielen übereinstimmt?</p>
+	<p>Heute gehen wir dabei einen ersten Schritt, indem wir die Unterstützung für relationale Datenbanken – einschließlich Postgres und MySQL von Workers – bekannt geben.</p>
+	<p>Die Verbindung zu einer Datenbank ist keine einfache Aufgabe – wenn es so einfach wäre wie die Übergabe einer Verbindungszeichenfolge an einen Datenbanktreiber, hätten wir es schon längst getan. Wir mussten mehrere Hürden überwinden, um an diesen Punkt zu gelangen, und haben noch einige Herausforderungen zu meistern.</p>
+	<p>Unser Ziel mit dieser Ankündigung ist es, mit Ihnen, unseren Entwicklern, zusammenzuarbeiten, um die einzigartigen Probleme zu lösen, die beim Zugriff auf Datenbanken in Workers auftreten. Wenn Sie daran Interesse haben, füllen Sie bitte <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">dieses Formular</a> aus oder nehmen Sie <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">auf Discord</a> Kontakt mit uns auf – dies ist erst der Anfang. Wenn Sie einfach nur den Code ausprobieren möchten, verwenden Sie dieses <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">Beispiel</a>, um eine Verbindung zu Ihrer eigenen Datenbank herzustellen, oder sehen Sie sich unsere Demo an.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-are-database-connectors-so-hard-to-build">Warum sind Datenbank-Konnektoren so schwer zu entwickeln?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-database-connectors-so-hard-to-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es ist aus mehreren Gründen schwierig, serverlose Datenbankverbindungen zu unterstützen.</p>
+	<p>Datenbanken sind anspruchsvoll – sie benötigen oft TCP-Verbindungen, da sie langlebige Verbindungen zwischen einem Anwendungsserver und der Datenbank voraussetzen. Die Workers-Laufzeitumgebung unterstützt derzeit keine TCP-Verbindungen, sodass wir bisher nur HTTP-basierte Datenbanken oder Proxys unterstützen konnten.</p>
+	<p>Wie bei einer Beziehung reicht es nicht aus, eine Verbindung herzustellen. Entwickler verwenden Client-Bibliotheken für Datenbanken, um die Übermittlung von Abfragen und die Verwaltung der Antworten zu erleichtern. Da die Workers-Laufzeitumgebung nicht vollständig mit Node.js kompatibel ist, müssen wir entweder unsere eigene Datenbankbibliothek anlegen oder eine finden, die keine nicht unterstützten integrierten Bibliotheken verwendet.</p>
+	<p>Last but not least sind Datenbanken heikel. Für die Verwaltung gemeinsamer Verbindungen zwischen einem Anwendungsserver und einer Datenbank sind häufig externe Bibliotheken erforderlich, da der Aufbau dieser Verbindungen in der Regel teuer ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="moving-past-these-challenges">So überwinden wir diese Herausforderungen</h3>
+		<a href="https://blog.cloudflare.com/#moving-past-these-challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unser heutiger Ansatz bietet uns die Grundlage, um jede dieser Herausforderungen in Zukunft auf kreative Weise anzugehen.</p>
+	<p>Zunächst nutzen wir <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank" rel="noopener noreferrer">cloudflared</a>, um einen sicheren Tunnel zwischen Cloudflare und einem privaten Netzwerk innerhalb Ihrer bestehenden Infrastruktur zu schaffen. Cloudflared unterstützt bereits das Proxying von HTTP zu TCP über WebSockets. Für uns besteht die Herausforderung darin, Schnittstellen bereitzustellen, die wie die Socket-Schnittstellen aussehen, die von bestehenden Bibliotheken erwartet werden, während wir die Implementierungen so umgestalten, dass Lese- und Schreibvorgänge auf unseren Websocket umgeleitet werden. Diese Methode ist schnell und sicher, hat aber den Nachteil, dass wir nicht kontrollieren können, wohin die endgültigen Verbindungen geleitet werden. Dieses Problem werden wir bald lösen. Bis dahin ist unser Ansatz aber unerlässlich, um Latenz- und Performancedaten zu sammeln, anhand derer wir sehen können, wo wir uns noch verbessern müssen.</p>
+	<p>Als Nächstes haben wir eine Shim-Schicht erstellt, die die Socket-API einer beliebten Laufzeitumgebung anpasst, um eine direkte Verbindung zu Datenbanken über einen WebSocket herzustellen. Auf diese Weise können wir den Code im Ist-Zustand bündeln, ohne ihn abzuspalten oder anderweitig signifikante Änderungen an der Datenbankbibliothek vorzunehmen. Als Teil dieser Ankündigung haben wir ein <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">Tutorial</a> veröffentlicht, das zeigt, wie man eine Verbindung zu einer Postgres-Datenbank von seinen Workers aus herstellt und Abfragen durchführt, indem man die bestehende Cloudflare-Technologie und einen Treiber aus der wachsenden Deno-Community verwendet. Wir freuen uns auf die Zusammenarbeit mit den vorgelagerten Wartungsanbietern zum Ausbau des Supports.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vVs0KefQQxbNEt3VsNHHj/41225487a689b82c04c9ef7beb7d8ae2/unnamed-10.png" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database" class="kg-image" width="1416" height="611" loading="lazy">
+
+	</figure>
+	<p>Am meisten freut uns jedoch, dass wir mit diesem Ansatz das Verbindungspooling und den Overhead beim Verbindungsaufbau allmählich in den Griff bekommen werden. Während unsere aktuelle Tech-Demo die Einrichtung des Cloudflare-Tunnels auf Ihrer eigenen Infrastruktur erfordert, suchen wir nach Kunden, die ein Modell testen möchten, bei dem Cloudflare den Tunnel für Sie hostet.</p>
+	<div class="flex anchor relative">
+		<h3 id="where-were-going">Das steht als Nächstes auf dem Programm</h3>
+		<a href="https://blog.cloudflare.com/#where-were-going" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir fangen gerade erst an. Unser Ziel mit der heutigen Ankündigung ist es, Kunden zu finden, die neue Anwendungen entwickeln oder bestehende Anwendungen auf Workers migrieren wollen und dabei mit Daten arbeiten, die in einer relationalen Datenbank gespeichert sind.</p>
+	<p>So wie Cloudflare mit der Bereitstellung von Sicherheit, Performance und Zuverlässigkeit für Kunden-Websites begonnen hat, freuen wir uns auf eine Zukunft, in der Cloudflare Datenbankverbindungen verwaltet, die Replikation von Daten über Cloud-Anbieter hinweg handhabt und einen globalen Datenzugriff mit niedriger Latenz bietet.</p>
+	<p>Zunächst wollen wir <a href="https://blog.cloudflare.com/introducing-socket-workers">native TCP-Unterstützung in die Laufzeitumgebung integrieren</a>. Mit der nativen Unterstützung für TCP werden wir nicht nur eine bessere Unterstützung für Datenbanken bieten können, sondern außerdem die Workers-Laufzeitumgebung so erweitern, dass sie in breiterem Umfang mit Dateninfrastrukturen arbeiten kann.</p>
+	<p>Unsere Position in der Netzwerkschicht des Stacks macht die Bereitstellung von Performance, Sicherheitsvorteilen und extrem reduzierten Egress-Gebühren für globale Datenbanken zu einer möglichen Realität. Zu diesem Zweck werden wir den HTTP-zu-TCP-Proxy-Dienst, den wir gerade entwickelt haben, umfunktionieren und ihn für Entwickler als Verbindungspooling-Dienst betreiben, der in ihrem Namen Verbindungen zu ihren Datenbanken verwaltet.</p>
+	<p>Zu guter Letzt ermöglicht unser Netzwerk die Zwischenspeicherung von Daten und weltweiten Zugriff auf diese mit geringer Latenz. Sobald wir Verbindungen zu Ihren Daten haben, können wir sie im Cloudflare-Netzwerk global zugänglich machen und so grundlegend neue Architekturen für verteilte Daten schaffen.</p>
+	<div class="flex anchor relative">
+		<h3 id="take-our-connectors-for-a-spin">Testen Sie unsere Konnektoren</h3>
+		<a href="https://blog.cloudflare.com/#take-our-connectors-for-a-spin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sie möchten sich selbst ein Bild machen? Kein Problem, im Wesentlichen sind Sie nach drei Schritten startklar:</p>
+	<ol>
+		<li>
+			<p>Implementieren Sie cloudflared in Ihrer Infrastruktur.</p>
+		</li>
+		<li>
+			<p>Stellen Sie eine Datenbank bereit, die eine Verbindung zu cloudflared herstellt.</p>
+		</li>
+		<li>
+			<p>Stellen Sie einen Worker mit dem Datenbanktreiber bereit, der Abfragen stellt.</p>
+		</li>
+	</ol>
+	<p>Das Postgres-Tutorial ist <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">hier</a> verfügbar.</p>
+	<p>Wenn Sie fertig sind, wird das Ganze in etwa so aussehen:</p>
+	<p>Sind Sie auf ein Problem gestoßen? Füllen Sie <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">dieses Formular</a> aus, kontaktieren Sie uns über <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">Discord</a> oder schreiben Sie uns eine E-Mail, damit wir uns austauschen können!</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}</code></pre>
+</div>

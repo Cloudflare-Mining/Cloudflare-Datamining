@@ -1,0 +1,154 @@
+<div class="mb2 gray5">6 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/api-abuse-detection">English</a> dan <a href="https://blog.cloudflare.com/th-th/api-abuse-detection">ไทย</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vryxSGPaGaZVw9yhylxom/14c00a19591fb2c015fa75a6ce9a7023/api-abuse-detection.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>API sangat penting. Sepanjang tahun 2000-an, mereka membentuk <a href="https://blog.postman.com/intro-to-apis-history-of-apis" target="_blank" rel="noopener noreferrer">backbone layanan web populer</a>, membantu Internet menjadi lebih berguna dan dapat diakses. Di tahun 2010, API memainkan peran yang lebih besar dalam kehidupan kita, memungkinkan perangkat pribadi untuk berkomunikasi dengan dunia digital. Banyak aktivitas kita sehari-hari, seperti menggunakan layanan berbagi tumpangan dan membayar latte, bergantung pada bentuk komunikasi modern ini. Sekarang kita mendekati dunia pascapandemi di mana API akan menjadi lebih penting dari sebelumnya.</p>
+	<p></p>
+	<p>Sayangnya, seiring berkembangnya teknologi, begitu pula dengan luas permukaannya untuk disalahgunakan. API bukan pengecualian. Layanan berbagi kendara yang bersaing mungkin memantau harga satu sama lain melalui API, memicu perang harga, dan pemborosan sumber daya digital. Atau peminum kopi mungkin memanipulasi API untuk diskon latte. Beberapa perusahaan memiliki ribuan API — termasuk yang bahkan tidak mereka ketahui. Cloudflare dapat membantu menyelesaikan masalah ini.</p>
+	<p>Hari ini, kami mengumumkan akses awal ke Penemuan API dan Deteksi Penyalahgunaan API.</p>
+	<div class="flex anchor relative">
+		<h3 id="background"><b>Latar belakang</b></h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sebelum melangkah lebih jauh, penting untuk menjelaskan <i>mengapa</i> kami membutuhkan solusi untuk API. alat keamanan tradisional, termasuk <a href="https://www.cloudflare.com/rate-limiting" target="_blank" rel="noopener noreferrer">Pembatasan Tingkat</a> dan <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">Perlindungan DDoS</a>, dapat sangat berguna. Tetapi pendekatan ini tidak dibangun untuk bertindak sendiri. Kami mungkin menilai batas titik akhir API tertentu, tetapi bagaimana kami memilih ambang batas yang tepat? Akan sulit untuk melakukan ini dalam skala besar tanpa menimbulkan masalah. API mungkin akan terkena serangan terdistribusi (jatuh di bawah ambang batas), atau mungkin melihat peningkatan lalu lintas yang sah (melebihi ambang batas).</p>
+	<p>Yang lain menyarankan untuk memberlakukan <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Manajemen Bot</a> pada titik akhir API. Dalam banyak kasus, ini efektif dan menambahkan beberapa tingkat perlindungan, terutama jika API dimaksudkan untuk digunakan oleh browser (sebagai bagian dari aplikasi web). Tetapi Manajemen Bot dirancang untuk menemukan aktor jahat di antara <i>manusia</i>. Para aktor ini biasanya menggunakan otomatisasi, sedangkan manusia biasanya menggunakan browser, jadi perbedaannya agak jelas. Tetapi API menghadirkan masalah yang berbeda. API diotomatisasi, jadi solusi harus menemukan bot yang buruk di antara <i>bot lainnya</i>. Kita harus membedakan antara lalu lintas otomatis yang baik dan buruk.</p>
+	<p>Untuk memecahkan masalah API, kami harus mengembangkan tindakan <i>intent</i> — hampir seperti mewawancarai setiap permintaan untuk menentukan tujuannya. Kita harus menjawab pertanyaan-pertanyaan berikut murni berdasarkan data tidak langsung:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YhZhSWpHpXwLgmsEx4EiD/0a68497c077f8b741568d6c0b1687c3a/image1-46.png" alt="" class="kg-image" width="1642" height="634" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p>Apakah permintaan ini menggunakan API untuk tujuan penggunaan?</p>
+		</li>
+		<li>
+			<p>Apakah permintaan ini menunjukkan perilaku yang mencurigakan? Mengapa?</p>
+		</li>
+	</ul>
+	<p>Sekali lagi, sementara alat seperti Pembatasan Tingkat dapat menangani masalah biner (misalnya, "apakah IP ini melebihi 200 permintaan?"), masalah API menuntut arbiter yang lebih subjektif. Ini mengharuskan kami untuk memeriksa <i>tujuan</i> API dan menentukan batasan yang wajar berdasarkan apa yang kami temukan. Ini juga mengharuskan kami untuk menemukan sumber kebenaran dasar yang baru. Saat kami membangun Manajemen Bot, kami dapat mengonfirmasikan bahwa permintaan adalah manusia atau otomatis dengan <a href="https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning">mengeluarkan tantangan</a>. API melibatkan layanan otomatis yang tidak dapat membuktikan legitimasinya dengan menyelesaikan tantangan.</p>
+	<p>Setelah berbulan-bulan memilah-milah masalah ini, kami bersemangat untuk memberikan pandangan pertama pada solusi kami. Hal ini akan dibahas dalam beberapa bagian…</p>
+	<div class="flex anchor relative">
+		<h3 id="api-discovery"><b>Penemuan API</b></h3>
+		<a href="https://blog.cloudflare.com/#api-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sebagian pengguna kami memberi tahu kami bahwa mereka tidak dapat melacak API mereka. Bahkan sebelum kami mencoba untuk melindungi titik akhir ini, kami perlu memetakannya dan memahami area permukaan serangan. Kami menyebutnya "Penemuan API."</p>
+	<p>Proses penemuan dimulai dengan penyederhanaan. Situs web besar mungkin memiliki ribuan API, tetapi banyak panggilan yang terlihat serupa. Perhatikan dua jalur berikut:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l4AcWqZknWW9JvLWjLMV7/d93c1253b1d39a3b4d90991c6f0630e0/image6-20.png" alt="" class="kg-image" width="868" height="448" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p>api.example.com/<b>login/237</b></p>
+		</li>
+		<li>
+			<p>api.example.com/<b>login/415</b></p>
+		</li>
+	</ul>
+	<p>Dalam contoh ini, "237" dan "415" adalah pengidentifikasi pelanggan. Kedua jalur memiliki tujuan yang sama — mengizinkan pengguna untuk masuk ke akun mereka — tetapi tidak identik. Jadi kami memetakan jalur dan segera <i>memperpendeknya</i> menjadi yang berikut:</p>
+	<ul>
+		<li>
+			<p>api.example.com/<b>login/*</b></p>
+		</li>
+		<li>
+			<p>api.example.com/<b>login/*</b></p>
+		</li>
+	</ul>
+	<p>Perhatikan bagaimana kami menghapus pengidentifikasi pelanggan. Sistem kami dapat mendeteksi bagian API yang berubah, memungkinkan kami dalam mengenali kedua jalur sebagai jalur yang sama. Kami melakukan ini dengan merekam kardinalitas setiap titik akhir. Sebagai contoh, kami mungkin awalnya menemukan bahwa ada 700 string berbeda yang diamati sebagai pengganti tanda bintang. "237" dan "415" hanyalah dua dari kemungkinan tersebut. Kami kemudian menggunakan pembelajaran tanpa pengawasan untuk memilih ambang (dalam hal ini, katakanlah 30). Karena kami telah melihat lebih dari 30 varian jalur ini, kami mengenali pengidentifikasi pelanggan sebagai <i>variabel</i> dan memperpendek jalur tersebut. Proses ini disebut "normalisasi jalur.”</p>
+	<p>Penemuan API adalah blok bangunan untuk berbagai produk keamanan yang akan datang. Tetapi pada intinya, teknologinya adalah tentang menghasilkan peta API yang sederhana dan dapat dipercaya. Berikut adalah contoh kecil dari apa yang mungkin Anda temukan:</p>
+	<p>Bayangkan daftar ini diskalakan ke ratusan, atau bahkan ribuan titik akhir. Beberapa akan terlihat jelas (semoga titik akhir login diperkirakan!), tetapi yang lain bisa menjadi kejutan. Peta terakhir akan membantu mengidentifikasi variabel atau token yang direferensikan oleh setiap titik akhir.</p>
+	<pre class="language-bash"><code class="language-bash">login/&lt;customer_identifier&gt;
+auth
+account/&lt;customer_identifier&gt;
+password_reset
+logout</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="detecting-abuse-by-volume"><b>Mendeteksi Penyalahgunaan berdasarkan Volume</b></h3>
+		<a href="https://blog.cloudflare.com/#detecting-abuse-by-volume" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sekarang setelah kami menemukan API, kami dapat mulai mencari penyalahgunaan. Pendekatan pertama kami adalah menangani anomali volumetrik. Dengan kata lain, kami membuat tebakan yang cerdas tentang <i>seberapa sering</i> setiap jalur dicapai dan menetapkan beberapa ambang batas untuk mengelola penyalahgunaan. Ini adalah bentuk pembatasan tingkat adaptif.</p>
+	<p>Pertimbangkan jalur API /<b>pembaruan skor</b> untuk situs web olahraga. Anda mungkin bisa menebak apa fungsinya — ini secara rutin mengambil skor terbaru untuk sebuah pertandingan, yang mungkin terjadi beberapa kali per detik. Kami mungkin memberlakukan pembelajaran tanpa pengawasan dan menetapkan ambang batas tinggi untuk penggunaan normal. Mungkin 150 permintaan per menit untuk IP tertentu, agen pengguna, atau pengidentifikasi sesi lainnya.</p>
+	<p>Tetapi situs web olahraga yang sama dapat mengharuskan penggunanya untuk memiliki akun. Dalam hal ini, API /<b>reset kata sandi</b> terpisah bisa ada di domain yang sama. Tidak ada penggemar olahraga yang akan mereset kata sandi mereka sebanyak mereka memeriksa skor, jadi jalur ini kemungkinan akan memiliki ambang batas yang lebih rendah. Keunggulan pembelajaran tanpa pengawasan (dan bentuk deteksi penyalahgunaan kami) adalah kami dapat memetakan situs Anda, mengembangkan garis dasar terpisah untuk setiap API, dan mencoba memprediksi intent permintaan saat dibuat. Jika kami melihat 150 upaya tiba-tiba untuk mereset kata sandi, sistem kami akan segera mencurigai pengambilalihan akun.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7s6VcDHxOjW2iND3mUIyXP/b56d43a6b4a4d70a55e463f603c576b1/image7-10.png" alt="" class="kg-image" width="1595" height="704" loading="lazy">
+
+	</figure>
+	<p>Penting juga untuk memahami <i>mengapa</i> mengapa lalu lintas berubah saat itu terjadi. Misalnya, kita tidak boleh memblokir lalu lintas olahraga saat melonjak karena Final NBA. Meskipun titik akhir /<b>pembaruan skor</b> mungkin untuk sementara lebih banyak digunakan, Cloudflare akan mengenali konteks yang lebih besar dan mengubah ambang batas yang relevan. Kami hanya ingin memitigasi ketika seseorang menyalahgunakan titik akhir.</p>
+	<div class="flex anchor relative">
+		<h3 id="detecting-abuse-by-sequence"><b>Mendeteksi Penyalahgunaan berdasarkan Urutan</b></h3>
+		<a href="https://blog.cloudflare.com/#detecting-abuse-by-sequence" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tim kami sering menerapkan <a href="https://www.nytimes.com/2020/12/05/health/coronavirus-swiss-cheese-infection-mackay.html" target="_blank" rel="noopener noreferrer">Model Keju Swiss</a> untuk keamanan. Pendekatan ini telah digunakan dalam perawatan kesehatan, keamanan fisik, dan banyak industri lainnya, tetapi idenya sederhana. Setiap layer pertahanan akan memiliki beberapa lubang — tetapi menumpuk <i>pertahanan unik</i> (atau irisan keju) di samping satu sama lain guna meningkatkan keamanan secara keseluruhan.</p>
+	<p>Dalam dunia keamanan Internet, kami menyebutnya "pertahanan mendalam". API pertama kali dilindungi oleh suite keamanan Cloudflare (DDoS, dll.). Layer kedua menggunakan deteksi volumetrik (dijelaskan di atas). Tetapi layer ketiga benar-benar berbeda dengan semua yang telah kami lakukan sebelumnya: ini adalah deteksi anomali <i>sekuensial</i> . Kami berharap cara ini akan mengubah lanskap API secara dramatis..</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MrZjxJssCNdQ37LbAFNVx/77c3639aa98255aa90f2dc8a0ef29ff2/image5-33.png" alt="" class="kg-image" width="1999" height="1067" loading="lazy">
+
+	</figure>
+	<p>Begitulah cara kerjanya. Seperti biasa, kami mulai dengan menjalankan normalisasi jalur untuk menemukan himpunan status terhingga. Dalam satu pengujian, proses ini mengurangi sekitar 10.000 status menjadi hanya 60, menyederhanakan masalah API secara besar-besaran. Kemudian kami menggunakan <a href="https://brilliant.org/wiki/markov-chains" target="_blank" rel="noopener noreferrer">Rantai Markov</a> untuk membangun matriks transisi, yang merupakan peta dari semua negara dan ke mana mereka biasanya mengarah. Kami menyelesaikannya dengan menetapkan probabilitas untuk setiap transisi</p>
+	<p>Hasil akhirnya? Kami secara konseptual dapat menyatukan gerakan di sebuah situs, yang mungkin terdiri dari langkah-langkah berikut:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YWvGBNdZYEkRmZ0kNmnWV/ab540765056762c31fc3477cea5c2229/image4-39.png" alt="" class="kg-image" width="1999" height="830" loading="lazy">
+
+	</figure>
+	<ol>
+		<li>
+			<p>Permintaan dikirim ke /<b>login/*/enter</b></p>
+		</li>
+		<li>
+			<p>Lalu diarahkan ke /<b>login/*/verify</b></p>
+		</li>
+		<li>
+			<p>Akhirnya dialihkan ke /<b>login-successful</b></p>
+		</li>
+	</ol>
+	<p>Ini terlihat seperti pengguna valid yang mencoba login. Sekali lagi, kami menggunakan pembelajaran tanpa pengawasan untuk mendeteksi aliran seperti ini, tetapi pendekatan kami juga mendeteksi outlier. Dalam hal ini, kami telah menemukan bahwa 1 → 2 → 3 adalah aliran logis, tetapi bagaimana jika seseorang tiba langsung di langkah 3? Kami mungkin menandai permintaan ini sebagai anomali.</p>
+	<p>Pendekatan ini, yang sangat bergantung pada Markov Chains, cukup efisien. Pertimbangkan untuk menambahkan satu node ke rantai: jelas, rantai tersebut sendiri berskala linear. Matriks transisi, yang memetakan semua kemungkinan hubungan node, ditingkatkan secara eksponensial. Tetapi kami telah menemukan bahwa sebagian besar dari hubungan ini tidak dilakukan. Dalam praktiknya, tidak ada yang mengupayakan jalur berbelit-belit seperti logout → upload → auth. Transisi yang lebih umum, yang mungkin terlihat seperti login → update-score → logout, hanya mencakup 2% dari semua transisi dalam pengujian kami. Kami dapat menyimpan matriks secara efisien dengan mengabaikan transisi yang tidak digunakan.</p>
+	<p>Itulah rangkuman ikhtisar kami tentang deteksi anomali sekuensial. Ini adalah layer terakhir dalam Model Keju Swiss kami, dan sama seperti pendekatan volumetrik, ini menggunakan garis dasar yang kami perbarui dari waktu ke waktu.</p>
+	<div class="flex anchor relative">
+		<h3 id="other-uses"><b>Penggunaan lainnya</b></h3>
+		<a href="https://blog.cloudflare.com/#other-uses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Deteksi Penyalahgunaan API sangat serbaguna. Meskipun kami menciptakan teknologi ini untuk penggunaan API umum, ada beberapa kasus penggunaan yang perlu disorot.</p>
+	<p>Yang pertama adalah Manajemen Bot untuk aplikasi seluler. Meski solusi Manajemen Bot kami telah bekerja dengan baik untuk banyak aplikasi, Deteksi Penyalahgunaan API jauh lebih efektif. Itu karena perangkat seluler sering mengandalkan API. Sementara permintaan mereka mengikuti langkah pengguna manusia yang lambat dan disengaja, aplikasi seluler menggunakan titik akhir API dan mungkin tampak otomatis. Aplikasi ini tidak menawarkan kebebasan navigasi yang sama seperti yang dilakukan situs web. Namun kami dapat menggunakan ini untuk keuntungan kami: pengguna yang sah mengikuti urutan yang dapat diprediksi berdasarkan status sebelumnya, yang sekarang dapat kami validasi dengan Deteksi Penyalahgunaan API.</p>
+	<p>Perusahaan lain telah mengembangkan SDK seluler untuk mendekati penyalahgunaan API. Namun SDK berukuran besar, sulit untuk diintegrasikan, dan terkadang tidak efektif. Pendekatan sisi klien ini juga rentan terhadap gangguan. SDK melakukan otentikasi perangkat lunak klien, tetapi tidak mampu mendeteksi setiap perilaku penyalahgunaan yang sebenarnya. Siapa pun yang dapat mengekstrak sertifikat sisi klien dapat segera melewati perlindungan bot. Kami yakin dapat mengamankan aplikasi seluler tanpa SDK apa pun — cukup dengan memberlakukan Deteksi Penyalahgunaan API di titik akhir seluler.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2T0NUMcqvCLGh6S0qopxTa/440b1350e0d22d7ab8646979ced66127/image3-38.png" alt="" class="kg-image" width="1392" height="468" loading="lazy">
+
+	</figure>
+	<p>Selain itu, banyak titik akhir API yang penuh sesak. Tidak semua orang dapat mengidentifikasi lalu lintas API/bot "baik" mereka, yang berarti bahwa model keamanan positif mungkin tidak berfungsi. Hal ini terutama berlaku untuk perusahaan yang bekerja dengan mitra yang merotasi agen pengguna atau tidak dapat menyelaraskan sinyal mereka. Pendekatan kami benar-benar menghindari masalah ini. Kami secara otomatis membuat peta titik akhir API, mengembangkan garis dasar, dan mendeteksi penyalahgunaan.</p>
+	<div class="flex anchor relative">
+		<h3 id="early-access"><b>Akses awal</b></h3>
+		<a href="https://blog.cloudflare.com/#early-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Apakah Anda memiliki situs yang membutuhkan Deteksi Penyalahgunaan API? Apakah Anda ingin mencoba Manajemen Bot generasi berikutnya untuk aplikasi seluler Anda? Harap beri tahu kami dengan menghubungi tim akun Anda. Kami dengan gembira akan menghadirkan model beberapa bulan mendatang.</p>
+</div>

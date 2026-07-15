@@ -1,0 +1,144 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-gateway-is-generally-available">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-gateway-is-generally-available">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ai-gateway-is-generally-available">Français</a>、<a href="https://blog.cloudflare.com/de-de/ai-gateway-is-generally-available">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-gateway-is-generally-available">한국어</a>、<a href="https://blog.cloudflare.com/es-es/ai-gateway-is-generally-available">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-gateway-is-generally-available">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dIZ63ejPd9T3lR66GvbGk/b475e0d94aa62b1394b0046f5c386647/ai-gateway-is-generally-available.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは、2024年4月のDeveloper Weekで、<a href="https://blog.cloudflare.com/ja-jp/workers-ai-ga-huggingface-loras-python-support-ja-jp">Workers AI</a>の一般提供を開始したことを発表しました。そしてこのたび、AI Gatewayも一般利用が可能になったことをお知らせします。<a href="https://blog.cloudflare.com/ja-jp/announcing-ai-gateway-ja-jp">2023年9月のBirthday Week</a>でベータ版を公開して以来、Cloudflareは5億件以上のリクエストをプロキシしています。現在、本番環境でご利用いただけるよう準備を整えています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GsB2wwIevC3G2m0PGOAhz/d9eaeea0933d269b39fcda70c22881b7/image4-3.png" alt="AI Gateway is generally available: a unified interface for managing and scaling your generative AI workloads." class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>AI Gatewayは、生成AIワークロードの管理とスケーリングを行うための統合インターフェースを提供するAI運用プラットフォームです。その中核は、モデルがどこで実行されていても、サービスと推論プロバイダの間のプロキシとして機能する点にあります。ごくわずかなのコードで、パフォーマンス、セキュリティ、信頼性、可観測性に重点を置いた一連の強力な機能を利用できるようになります。AI運用の<a href="https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane" target="_blank" rel="noopener noreferrer">コントロールプレーン</a>と考えるとよいでしょう。そしてこれはほんの始まりに過ぎません。近い将来、AI Gatewayにはたくさんの素晴らしい機能が搭載され、AIワークロードをさらに活用しようと考えるあらゆる組織にとって、最適なツールとなるはずです。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-add-a-proxy-and-why-cloudflare">プロキシを追加する理由とCloudflareを使う理由</h2>
+		<a href="https://blog.cloudflare.com/#why-add-a-proxy-and-why-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6M6hDWXdRH2rZETQK4UlPe/444269e8d23056252e9e17aa08cef333/image6-1.png" alt="architecture diagram illustrating the setup of AI Gateway as a forward proxy" class="kg-image" width="1200" height="380" loading="lazy">
+
+	</figure>
+	<p>AI分野の進化は速く、毎日新たなモデル、プロバイダ、フレームワークが出現しているように思えます。この変化のスピードを考えると、特に複数のモデルやプロバイダを使用している場合、追跡は簡単ではありません。これは、AI Gatewayの公開の背後にある要因の一つです。Cloudflareは、たとえ翌日、翌々日にモデルやツールの変更があったとしても、すべてに対して一貫した唯一の制御プレーンを提供したいと考えています。</p>
+	<p>私たちは、AIアプリを構築している多くの開発者や組織と話をしましたが、一つだけはっきりしていることがあります。彼らはAI運用の可観測性、制御、ツールの向上を求めているのです。これは、モデル開発に注力するあまりにプラットフォーム機能がおろそかになるAIプロバイダの多くで欠けているものです。</p>
+	<p>AI GatewayにCloudflareを選ぶ理由については、そうですね、「しっくりくる」からです。Cloudflareは過去10年以上にわたり、最大規模のグローバルネットワークを運営し、世界中のお客様にパフォーマンス、信頼性、セキュリティを提供して、より良いインターネットの構築を支援してきました。Cloudflareは、世界中のWebサイトのほぼ20%で<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer">リバースプロキシ</a>として使用されています。Cloudflareの専門性があれば、（AI GatewayにCloudflareを選ぶのは）ごく自然な成り行きのように感じられます。ユーザーは、一つのコントロールプレーンでコードをわずかに変更して、AIアプリの可観測性、信頼性、制御を実現し、構築の作業に戻ることができます。</p>
+	<p>ここでは、OpenAI JS SDKを使用したわずかなコード変更について紹介します。他のプロバイダ、SDK、言語については、<a href="https://developers.cloudflare.com/ai-gateway/providers" target="_blank" rel="noopener noreferrer">Cloudflareのドキュメント</a>を参照してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-included-today">現在の機能</h2>
+		<a href="https://blog.cloudflare.com/#whats-included-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">import OpenAI from 'openai';
+
+const openai = new OpenAI({
+apiKey: 'my api key', // defaults to process.env["OPENAI_API_KEY"]
+	baseURL: "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_slug}/openai"
+});</code></pre>
+	<!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<p>ユーザーとの会話により、より高度な機能に移行する前に、基本的な機能に焦点を当てる必要があることが明らかになりました。現在、一般提供版で利用できる主な機能を以下に示します。今後もご期待ください。</p>
+	<p><b>分析</b>：複数のプロバイダからのメトリクスを集約。トラフィックパターンとリクエスト数、トークン、コストなどの使用状況を経時的に把握します。</p>
+	<p><b>リアルタイムログ</b>：ビルド時のリクエストやエラーに関する分析情報を提供します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gFXixQSV6rVUM9V6ew1W4/db974469f45415b7ae0f0af45c30e7f3/pasted-image-0--10-.png" alt="" class="kg-image" width="1328" height="1216" loading="lazy">
+
+	</figure>
+	<p><b>キャッシング</b>：カスタムキャッシングルールを有効にして、元のモデルプロバイダAPIをヒットするのではなく、Cloudflareのキャッシュを繰り返しのリクエストに使用することで、コストの節減と遅延の抑制につなげることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31KebDSmQfi9lW87mh3oZy/541a90575637dc860e1ef28972958ed4/image8-1.png" alt="Real-time logs from running three requests to Cohere" class="kg-image" width="810" height="212" loading="lazy">
+
+	</figure>
+	<p><b>レート制限</b>：アプリが受信するリクエスト数を制限して、アプリのスケーリングを制御し、コスト管理や不正使用防止を実現できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bZw1HaJUP48B3MbXiATpx/0e7ee230a8b1c62e782efd466177fb5f/image1-10.png" alt="Set up rules for caching requests" class="kg-image" width="1999" height="389" loading="lazy">
+
+	</figure>
+	<p><b>さまざまなプロバイダをサポート</b>：AI Gatewayは、2024年5月中旬現在、Workers AIに加えて<a href="https://x.com/CloudflareDev/status/1791204770394648901" target="_blank" rel="noopener noreferrer">GroqやCohere</a>などの広く普及している10のプロバイダをネイティブサポートしています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4icXzN7Z8VuZw17KdzKl2X/60466c7cbe3869c14aa7a7ad90c40159/image5-9.png" alt="Set up rules for rate limiting traffic" class="kg-image" width="1999" height="385" loading="lazy">
+
+	</figure>
+	<p><b>ユニバーサルエンドポイント</b>：エラーが発生した場合、別のモデルや推論プロバイダへの<a href="https://developers.cloudflare.com/ai-gateway/configuration/fallbacks" target="_blank" rel="noopener noreferrer">リクエストフォールバック</a>を定義することで、耐障害性が向上します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ORhtmLzCTOKLVrCyhyEZK/53be2a20c4d6bd7dd3cdcd2657ef6455/image2-10.png" alt="Real time logs from three LLM providers - Cohere, Groq, and OpenAI" class="kg-image" width="1134" height="932" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="whats-coming-up">今後の展開</h2>
+		<a href="https://blog.cloudflare.com/#whats-coming-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_slug} -X POST \
+  --header 'Content-Type: application/json' \
+  --data '[
+  {
+    "provider": "workers-ai",
+    "endpoint": "@cf/meta/llama-2-7b-chat-int8",
+    "headers": {
+      "Authorization": "Bearer {cloudflare_token}",
+      "Content-Type": "application/json"
+    },
+    "query": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a friendly assistant"
+        },
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  },
+  {
+    "provider": "openai",
+    "endpoint": "chat/completions",
+    "headers": {
+      "Authorization": "Bearer {open_ai_token}",
+      "Content-Type": "application/json"
+    },
+    "query": {
+      "model": "gpt-3.5-turbo",
+      "stream": true,
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  }
+]'</code></pre>
+	<!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<p>開発者からは多くのフィードバックが寄せられていて、永続ログやカスタムメタデータはすでに予定されています。これらは魔法のサービスに必要な基礎的な機能です。</p>
+	<p>しかし、少し戻ってCloudflareのビジョンを説明しましょう。Cloudflareは、個々の部分の集合体よりも全体で統一されたプラットフォームの方が、はるかに強力であると考えています。この考え方をCloudflareのAI製品に適用した場合、使いやすく、組み合わせやすく、連携して実行できるものでなければならないのです。</p>
+	<p>次のステップを想像してみましょう。最初にWorkers AIにオンボードして、最新のオープンソースモデルで推論を実行します。次に、AI Gatewayを有効にして可視性と制御性を高め、永続ログの保存を開始します。その後、推論結果のチューニングを開始します。永続ログ、プロンプト管理ツール、組み込みの評価機能を活用することになります。ここで、推論結果を改善するために分析に基づく決定を行います。データが改善されるたびに、さらなる改善を求めることになるでしょう。そこで、入力/出力にアノテーションを付けるためのフィードバックAPIを実装し、構造化されたデータセットを構築します。この時点で、ワンクリックで微調整して、即座にCloudflareのグローバルネットワークにデプロイするまであと一歩です。ログとフィードバックを収集し続けることで、微調整アダプターの再構築を継続的に行い、エンドユーザーにベストな結果を提供することができます。</p>
+	<p>現時点ではあくまで理想的な話に過ぎませんが、私たちはこのようにAI GatewayとAIスイート全体の未来を想像しています。最も基本的なセットアップから始め、徐々に高度なワークフローへの進化を<a href="https://www.cloudflare.com/ai-solution" target="_blank" rel="noopener noreferrer">CloudflareのAIプラットフォーム</a>だけ完結できるはずです。上述の未来とは全く同じにはならないかもしれませんが、私たちは、最高のAI運用ツールを提供して、AIの最高の環境となれるよう、全力を尽くします。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-do-i-get-started">開始方法</h2>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Gatewayは、現在すべてのプランでご利用いただけます。まだAI Gatewayを使用されていない方は、<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>をご覧いただき、今すぐ使用を開始しましょう。現在利用可能なAI Gatewayのコア機能は無料提供されていて、Cloudflareアカウントとわずかなコードだけで開始できます。将来的には、永続ロギングやシークレット管理などのプレミアム機能も有料で利用できるようになります。ご質問は、Cloudflareの<a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discordチャンネル</a>にお寄せください。</p>
+</div>

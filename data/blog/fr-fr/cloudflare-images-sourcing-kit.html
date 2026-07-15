@@ -1,0 +1,119 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-images-sourcing-kit">English</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-images-sourcing-kit">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-images-sourcing-kit">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-images-sourcing-kit">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-images-sourcing-kit">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jSaSYFkDk0zc82ga0mCym/bd7183d153a76ce69a90162763d75416/cloudflare-images-sourcing-kit.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Lorsque nous avons annoncé <a href="https://blog.cloudflare.com/announcing-cloudflare-images-beta">Cloudflare Images au monde entier</a>, nous proposions un moyen de stocker des images au sein du produit et d'aider les clients à s'affranchir des frais de trafic sortant encourus suite à l'utilisation de sources distantes pour leurs diffusions via Cloudflare.</p>
+	<p></p>
+	<p>Pour stocker les images sur Cloudflare, les clients peuvent les importer <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload" target="_blank" rel="noopener noreferrer">via l'interface utilisateur</a> par simple glisser-déposer ou <a href="https://developers.cloudflare.com/images/cloudflare-images/api-request" target="_blank" rel="noopener noreferrer">via l'API</a> dans les scénarios comportant un grand nombre d'objets, pour lesquels il s'avère plus judicieux d'utiliser un script pour le processus d'importation.</p>
+	<p>Afin de créer de la flexibilité quant à la manière d'importer les images, nous avons récemment inclus la possibilité de <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url" target="_blank" rel="noopener noreferrer">les importer à l'aide d'une URL</a> ou de <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/custom-id" target="_blank" rel="noopener noreferrer">définir des noms et des chemins personnalisés pour vos images</a>, afin de permettre une mise en correspondance simple entre les référentiels des clients et les objets dans Cloudflare. Il reste également possible de <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/#serving-images-from-custom-domains" target="_blank" rel="noopener noreferrer">les diffuser à partir d'un nom d'hôte personnalisé</a> afin de proposer de la flexibilité quant à la manière dont vos utilisateurs finaux voient le chemin d'accès, d'améliorer les performances de diffusion en supprimant la nécessité de passer par une négociation TLS ou d'améliorer la reconnaissance de votre marque grâce à une certaine cohérence au niveau des URL.</p>
+	<p>Pourtant, il n'existait pas de moyen simple de dire à notre produit : <i>« Des dizaines de millions d'images se trouvent dans le référentiel disponible à cette URL. Récupère-les toutes. »</i></p>
+	<p>Dans certains scénarios, nos clients disposent de compartiments (buckets) contenant des millions d'images à importer vers Cloudflare Images. Leur objectif consiste à faire migrer l'ensemble des objets vers Cloudflare en suivant un processus à usage unique. Cette solution permet d'abandonner totalement le stockage externe.</p>
+	<p>Dans un autre scénario courant, différents services au sein de grandes entreprises s'appuient sur des systèmes indépendants configurés avec différents référentiels de stockage, qu'ils alimentent tous de volumes d'importation inégaux, à des moments spécifiques. Il s'avérerait préférable que tous ces services puissent réutiliser les définitions afin de centraliser l'ensemble de ces nouvelles images dans Cloudflare et de s'assurer que le catalogue reste à jour. De même, ils pourraient également éviter de payer des frais de trafic sortant exorbitants grâce à la diffusion directe vers le public à partir de ces multiples fournisseurs de stockage.</p>
+	<p>Dans ces situations, le processus d'importation vers Cloudflare Images nécessitait une coordination logistique et des connaissances en matière de scriptage. Jusqu'à présent.</p>
+	<div class="flex anchor relative">
+		<h2 id="announcing-the-cloudflare-images-sourcing-kit"><b>Annonce du Sourcing Kit de Cloudflare Images</b></h2>
+		<a href="https://blog.cloudflare.com/#announcing-the-cloudflare-images-sourcing-kit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aujourd'hui, nous sommes heureux de partager avec vous notre Sourcing Kit (kit de sourçage), dans lequel vous pouvez définir une ou plusieurs sources contenant les objets que vous souhaitez faire migrer vers Cloudflare Images.</p>
+	<p>Mais, qu'est-ce que le sourçage exactement ? Dans divers secteurs, comme le secteur manufacturier, ce processus implique un certain nombre d'opérations, de la sélection des fournisseurs au contrôle des matières premières, en passant par la communication de rapports aux responsables des processus.</p>
+	<p>Nous avons donc emprunté cette définition et l'avons traduite en un ensemble de capacités de Cloudflare Images, qui vous permettront d'effectuer les actions suivantes :</p>
+	<ol>
+		<li>
+			<p>définir un ou plusieurs référentiels d'images à importer en masse ;</p>
+		</li>
+		<li>
+			<p>réutiliser ces sources et n'importer que les nouvelles images ;</p>
+		</li>
+		<li>
+			<p>s'assurer que seules les images réellement utilisables sont importées et non d'autres objets ou types de fichiers disponibles au sein de cette source ;</p>
+		</li>
+		<li>
+			<p>définir le chemin et le nom de fichier cibles pour les images importées ;</p>
+		</li>
+		<li>
+			<p>obtenir les journaux relatifs aux opérations d'importations de masse.</p>
+		</li>
+	</ol>
+	<p>Le nouveau kit permet de procéder à toutes ces opérations. Passons-les en revue.</p>
+	<p><b>Comment fonctionne le Sourcing Kit de Cloudflare Images ?</b></p>
+	<hr>
+	<p>Vous trouverez bientôt le Sourcing Kit au sein du tableau de bord Cloudflare, sous la rubrique Images.</p>
+	<p>Le kit vous permettra de créer une nouvelle définition de source, de consulter les définitions existantes et d'afficher l'état des dernières opérations.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SZEMoU2nrlZPvDawlEpXZ/f14ac5bdf189995fa2f5c0429811cf6e/image5-12.png" alt="the new Cloudflare Images Sourcing Kit home screen" class="kg-image" width="1999" height="948" loading="lazy">
+
+	</figure>
+	<p>En cliquant sur le bouton Créer, vous lancerez l'assistant qui vous guidera dans la première importation en masse à partir de la source que vous aurez définie :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5W4ZRJaDMUAzHpxq3j0Nkc/1401923c512b249b716ddac271ee1ff2/image2-32.png" alt="creating a source definition" class="kg-image" width="895" height="532" loading="lazy">
+
+	</figure>
+	<p>Vous devrez tout d'abord renseigner le nom de la source et l'URL permettant d'y accéder. Vous serez alors en mesure d'enregistrer les définitions et de réutiliser la source lorsque vous le souhaitez.Après avoir effectué les validations nécessaires, vous pourrez définir les règles du processus d'importation.</p>
+	<p>La première option à votre disposition autorise la définition d'un chemin de préfixe facultatif. La définition d'un préfixe permet d'identifier de manière unique les images téléchargées depuis cette source particulière, afin de différencier les images importées à partir de cette source.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5syJ0nK1aQtBS1O65s9ao7/1dad4362abe8b7eba03664816090212e/image4-19.png" alt="define a path prefix to easily identify all images imported from this source" class="kg-image" width="1966" height="393" loading="lazy">
+
+	</figure>
+	<p>La règle de dénomination en vigueur respecte déjà le nom et le chemin de l'image source. Partons donc du principe que vous devez récupérer une image de chiot :</p>
+	<p><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank" rel="noopener noreferrer">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></p>
+	<p>Si vous l'importez sans préfixe de chemin, vous trouverez l'image à l'adresse suivante :</p>
+	<p><code>[https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png](https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png)</code></p>
+	<p>À présent, vous pourriez vouloir créer un préfixe de chemin supplémentaire pour identifier la source, par exemple en mentionnant que ce compartiment provient du service Rédaction technique (Technical Writing). Dans le cas du chiot, le résultat serait le suivant :</p>
+	<p><code>[https://imagedelivery.net/&lt;AccountId&gt;/**techwriting**/folderA/puppy.png](https://imagedelivery.net/&lt;AccountId&gt;/techwriting/folderA/puppy.png)</code></p>
+	<p>Les préfixes de chemin personnalisé permettent également d'éviter les conflits de noms provenant d'autres sources.</p>
+	<p>Il arrive pourtant que les clients ne souhaitent pas s'en servir. De même, lorsque vous réutilisez une source pour importer des images, un conflit de destinations peut se produire, avec un nom de chemin et de fichier identiques.</p>
+	<p>Par défaut, nous n'écrasons pas les images existantes, mais nous vous permettons de sélectionner cette option et de réactualiser votre catalogue présent dans le pipeline de Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xRY7HGX666fWFuaKU8bgm/6f0c97e2c024965bf4129d56c57b224a/image6-12.png" alt="refreshing an images catalog or just uploading new images with one simple choice" class="kg-image" width="1444" height="238" loading="lazy">
+
+	</figure>
+	<p>Une fois ces entrées définies, il vous suffira de cliquer sur le bouton Créer et lancer la migration au bas de la page pour déclencher le processus d'importation.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/301MOQX804MipTdEAzO3Wz/367288704deb02c6a2d5eb284f214867/image10.png" alt="the final look before starting the migration process" class="kg-image" width="1999" height="1080" loading="lazy">
+
+	</figure>
+	<p>Cette action affichera la dernière page de l'assistant, qui présente l'état de la migration. Le journal de progression signale toutes les erreurs rencontrées pendant l'importation. Vous avez également la possibilité de télécharger ce dernier.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qz31zhtbNMiIAiRceslTp/7d2e1128ffd82e86cd4752157fdeaaf9/image7-6.png" alt="Images migration status" class="kg-image" width="1116" height="577" loading="lazy">
+
+	</figure>
+	<p>Vous pouvez réutiliser, modifier ou supprimer des définitions de sources si aucune opération n'est en cours. En outre, vous pouvez accéder à tout moment à l'état depuis la page d'accueil du kit et revenir au dernier rapport de migration ou au rapport de migration en cours.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13JDKst8pmw43G21YQ1yi2/7a5c8ee33a2e3ab31675a4caf97a8e4c/image3-24.png" alt="Images migration status and edit source definitions access" class="kg-image" width="1999" height="1003" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-the-cloudflare-images-sourcing-kit-works">Et ensuite ?</h2>
+		<a href="https://blog.cloudflare.com/#how-the-cloudflare-images-sourcing-kit-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La version bêta du Sourcing Kit de Cloudflare Images vous permet de définir des compartiments AWS S3 en tant que source pour les importations. Les versions suivantes prendront en charge les définitions pour d'autres référentiels courants, comme ceux des comptes Azure Storage ou Google Cloud Storage.</p>
+	<p>En outre, si nous souhaitons que l'interface utilisateur reste simple, nous prévoyons également de mettre l'ensemble des fonctions à disposition via une interface CLI : de la définition de l'URL du référentiel au lancement du processus d'importation, en passant par la récupération du rapport final.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Inscrivez-vous à la version bêta</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous publierons la version bêta de ce kit dans les semaines à venir, afin de vous permettre de sourcer vos images à importer vers Cloudflare depuis des référentiels tiers. Si vous souhaitez figurer parmi les premiers à utiliser le Sourcing Kit, inscrivez-vous à la file d'attente sur le <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages" target="_blank" rel="noopener noreferrer">tableau de bord de Cloudflare Images</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75BuXJQtfqBDv8SOx3JKzs/3b765c95ac58e7bb7a8eeade89d323ea/image1-39.png" alt="" class="kg-image" width="1824" height="978" loading="lazy">
+
+	</figure>
+</div>

@@ -1,0 +1,156 @@
+<div class="mb2 gray5">7분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/pingora-oss-smuggling-vulnerabilities">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/pingora-oss-smuggling-vulnerabilities">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dPluIaZOAGHE4hjwtaN2Z/eaa4b7f1ba1561536021e6bf49c4082b/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>2025년 12월, Cloudflare는 HTTP/1.x에 대한 신고를 접수했습니다. Pingora가 수신 프록시를 구축하는 데 사용될 때 <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer"><u>Pingora 오픈 소스</u></a> 프레임워크의 요청 밀수 취약점. 오늘 저희는 이러한 취약점이 작동하는 방식과 <a href="https://github.com/cloudflare/pingora/releases/tag/0.8.0" target="_blank" rel="noopener noreferrer"><u>Pingora 0.8.0</u></a>에서 이를 패치한 방법에 대해 논의할 것입니다.</p>
+	<p>이 취약점은 <a href="https://www.cve.org/CVERecord?id=CVE-2026-2833" target="_blank" rel="noopener noreferrer"><u>CVE-2026-2833</u></a>, <a href="https://www.cve.org/CVERecord?id=CVE-2026-2835" target="_blank" rel="noopener noreferrer"><u>CVE-2026-2835</u></a>, and <a href="https://www.cve.org/CVERecord?id=CVE-2026-2836" target="_blank" rel="noopener noreferrer"><u>CVE-2026-2836</u></a>입니다. 이러한 문제는 Rajat Raghav(xclow3n)가 저희 <a href="https://www.cloudflare.com/disclosure" target="_blank" rel="noopener noreferrer"><u>버그 바운티 프로그램</u></a>을 통해 책임감 있게 보고했습니다.</p>
+	<p><b>Cloudflare의 CDN 및 고객 트래픽은 영향을 받지 않았습니다</b>. 당사의 조사 결과입니다. <b>Cloudflare 고객은 아무런 조치도 취할 필요가 없으며 영향이 감지되지 않았습니다.</b>&nbsp;</p>
+	<p>Cloudflare 네트워크의 아키텍처로 인해 이러한 취약점은 악용될 수 없었습니다. Pingora는 Cloudflare의 CDN에서 수신 프록시로 사용되지 않았습니다.</p>
+	<p>그러나 이러한 문제는 인터넷에 노출된 독립형 Pingora 배포에 영향을 미치며 공격자를 통해 다음을 수행할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>Pingora 프록시 계층 보안 제어 우회</p>
+		</li>
+		<li>
+			<p>교차 사용자 하이재킹 공격(세션 또는 자격 증명 도용)을 위해 HTTP 요청/응답을 백엔드와 비동기화</p>
+		</li>
+		<li>
+			<p>Pingora 프록시 계층 캐시를 포이즈닝하여 공유 백엔드에서 콘텐츠 검색 중</p>
+		</li>
+	</ul>
+	<p>저희는 수정 및 강화된 <a href="https://github.com/cloudflare/pingora/releases/tag/0.8.0" target="_blank" rel="noopener noreferrer"><u>Pingora 0.8.0</u></a> 을 출시했습니다. Cloudflare 고객은 영향을 받지 않았지만, Pingora 프레임워크 사용자에게 <b>최대한 빨리 업그레이드할 것을 강력히 권고합니다.</b></p>
+	<div class="flex anchor relative">
+		<h2 id="what-was-the-vulnerability">취약점은 무엇이었나요?</h2>
+		<a href="https://blog.cloudflare.com/#what-was-the-vulnerability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>해당 보고서에서는 비동기식 공격을 일으킬 수 있는 몇 가지 HTTP/1 공격 페이로드를 설명했습니다. 이러한 요청으로 인해 프록시와 백엔드가 요청 본문의 끝점이 어디인지에 대해 의견 불일치가 발생하여 두 번째 요청이 프록시 계층 검사를 통과한 후 “밀입”될 수 있습니다. 연구원은 기본적인 Pingora 리버스 프록시가 요청 본문 길이를 잘못 해석하고 해당 요청을 Node/Express 또는 uvicorn과 같은 서버 백엔드로 전달하는 방법을 검증하기 위해 개념 증명을 제공했습니다.</p>
+	<p>보고서를 받은 즉시 Cloudflare 엔지니어링팀은 해당 기자가 확인한 바와 같이 Cloudflare CDN 자체는 취약하지 않음을 즉시 조사하여 확인했습니다. 그러나 팀은 Pingora가 공유 백엔드에 대한 수신 프록시 역할을 할 때 취약점이 존재한다는 점도 확인했습니다.</p>
+	<p>설계상 Pingora 프레임워크는 레거시 HTTP 스택을 사용하는 고객에 대해 이러한 종류의 트래픽을 허용해야 하므로 RFC를 엄격하게 준수하지 않는 에지 케이스 HTTP 요청 또는 응답을 <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/#design-decisions"><u>허용합니다</u></a>. 그러나 이러한 관대함은 Cloudflare 자체가 취약점에 노출되는 것을 방지하는 데는 한계가 있습니다.</p>
+	<p>이 경우 Pingora는 HTTP/1 스택 내 요청 본문에 대한 RFC를 준수하지 않는 해석으로 인해 이러한 비동기식 공격이 존재할 수 있었습니다. Cloudflare 내의 Pingora 배포는 수신 트래픽에 직접 노출되지 않으며, 저희는 Pingora 서비스에 도착하는 프로덕션 트래픽은 이러한 오해의 대상이 되지 않는다는 것을 발견했습니다. 따라서 이 공격은 2025년 5월에 공개된 <a href="https://blog.cloudflare.com/resolving-a-request-smuggling-vulnerability-in-pingora"><u>이전의 Pingora 밀수 취약점</u></a> 과 달리 Cloudflare 트래픽 자체에서는 악용될 수 없었습니다.</p>
+	<p>공격 페이로드가 작동한 방식을 사례별로 설명하겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="1-premature-upgrade-without-101-handshake">1. 101 핸드셰이크 없는 조기 업그레이드</h3>
+		<a href="https://blog.cloudflare.com/#1-premature-upgrade-without-101-handshake" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>첫 번째 보고서에서는 <code>Upgrade</code> 헤더 값을 포함한 요청이 백엔드가 업그레이드를 수락하기 전에 Pingora가 즉시 HTTP 연결의 후속 바이트를 통과하게 만드는 것으로 나타났습니다(<code>101 Switching Protocols</code> 반환). 따라서 공격자는 업그레이드 요청 후 두 번째 HTTP 요청을 동일한 연결에서 파이프라인핑할 수 있습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">GET / HTTP/1.1
+Host: example.com
+Upgrade: foo
+
+
+GET /admin HTTP/1.1
+Host: example.com</code></pre>
+	<p>Pingora는 초기 요청만 구문 분석한 다음 버퍼링된 나머지 바이트를 "업그레이드된" 스트림으로 처리하고 <a href="https://github.com/cloudflare/pingora/blob/ef017ceb01962063addbacdab2a4fd2700039db5/pingora-core/src/protocols/http/v1/server.rs#L797" target="_blank" rel="noopener noreferrer"><u>Upgrade 헤더로 인해</u></a> "통과" 모드에서 백엔드에 직접 전달합니다(<a href="https://github.com/cloudflare/pingora/blob/ef017ceb01962063addbacdab2a4fd2700039db5/pingora-core/src/protocols/http/v1/server.rs#L523" target="_blank" rel="noopener noreferrer"><u>응답이 수신될 때까지</u></a>).</p>
+	<p>이는 <a href="https://datatracker.ietf.org/doc/html/rfc9110#field.upgrade" target="_blank" rel="noopener noreferrer"><u>RFC 9110</u></a> 에 따른 HTTP/1.1 업그레이드 프로세스의 의도된 방식이 전혀 아닙니다. 후속 바이트는 <code>101 Switching Protocols</code> 헤더를 수신한 <i>경우에만</i> 업그레이드된 스트림의 일부로 해석되어야 하며, 대신 <code>200 OK</code> 응답을 수신한 경우에도 후속 바이트는 HTTP로 계속 해석되어야 합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IYHyGkABpNA0e09wiiGpY/4f51ea330c2d266260f6361dd9d64d79/image4.png" alt="" class="kg-image" width="1755" height="1125" loading="lazy">
+	</figure>
+	<p><i><sup>공격자가 업그레이드 요청을 보낸 다음 부분 HTTP 요청을 파이프라인으로 연결하면 비동기화 공격이 발생할 수 있습니다. Pingora는 백엔드 서버가 200으로 업그레이드를 거부하더라도 두 가지 모두를 동일한 업그레이드된 요청으로 잘못 해석합니다.</sup></i></p>
+	<p>101이 아닌 응답을 수신한 Pingora 배포에서는 부적절한 통과를 통해 두 번째 부분 HTTP 요청을 Pingora 사용자 정의 ACL 처리 또는 WAF 로직을 우회하여 업스트림으로 있는 그대로 전달할 수 있으며, 업스트림과의 연결을 오염시켜 다른 사용자의 후속 요청이 <code>/admin</code> 응답을 부적절하게 수신할 수 있도록 할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oIwatu6gaMoJHCCs95sFN/8ea94ee8f04be6f7f00474168b382180/image3.png" alt="" class="kg-image" width="1755" height="648" loading="lazy">
+	</figure>
+	<p><i><sup>공격 악의적인 페이로드 이후, Pingora와 백엔드 서버는 이제 "동기화 해제"되었습니다. 백엔드 서버는 Pingora가 전달한 나머지 부분적 /attack 요청 헤더가 완료되었다고 생각할 때까지 기다립니다. Pingora가 다른 사용자의 요청을 전달하면 백엔드 서버의 관점에서 두 헤더가 결합되므로 공격자가 다른 사용자의 응답을 포이즈닝 한 것입니다.</sup></i></p>
+	<p>그 <a href="https://github.com/cloudflare/pingora/commit/824bdeefc61e121cc8861de1b35e8e8f39026ecd" target="_blank" rel="noopener noreferrer"><u>이후로</u></a> <code>업스트림이 101 Switching Protocols</code> 로 응답한 후에만 후속 바이트의 해석을 전환하도록 Pingora를 패치 했습니다.</p>
+	<p>Cloudflare가 <b>영향을 받지 않았음</b> 을 확인한 이유는 두 가지입니다.</p>
+	<ol>
+		<li>
+			<p>수신 CDN 프록시는 이와 같이 부적절한 동작을 하지 않습니다.</p>
+		</li>
+		<li>
+			<p>Cloudflare 내부 Pingora 서비스에 대한 클라이언트는 HTTP/1 요청을 <a href="https://en.wikipedia.org/wiki/HTTP_pipelining" target="_blank" rel="noopener noreferrer"><u>파이프라인</u></a> 하려고 시도하지 않습니다. 또한 이러한 클라이언트와 직접 통신하는 Pingora 서비스는 <code>Connection: close 헤더를 삽입하여</code> <code>이러한 Upgrade</code> 요청에 대한 Keep-alive를 비활성화합니다. 이렇게 하면 동일한 연결을 통해 전송될 수 있는(그리고 이후에 몰래 전송될 수 있는) 추가 요청이 방지됩니다.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="2-http-1-0-close-delimiting-and-transfer-encoding">2. HTTP/1.0 Close-delimiting, andtransfer-encoding</h3>
+		<a href="https://blog.cloudflare.com/#2-http-1-0-close-delimiting-and-transfer-encoding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>또한 이 기자는 <i>보이는</i> 것과 같이 보다 고전적인 “CL.TE” 비동기화 유형 공격을 시연했는데, Pingora 프록시는 Content-Length를 프레이밍으로 사용하고 백엔드가 Transfer-Encoding을 프레이밍으로 사용하는 방식이었습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">GET / HTTP/1.0
+Host: example.com
+Connection: keep-alive
+Transfer-Encoding: identity, chunked
+Content-Length: 29
+
+0
+
+GET /admin HTTP/1.1
+X:
+</code></pre>
+	<p>기자의 예시에서 Pingora는 첫 번째 GET / 요청 헤더 뒤의 모든 후속 바이트를 해당 요청 본문의 일부로 처리했지만, node.js 백엔드 서버는 본문을 청크로 해석하고 길이가 0인 청크에서 끝나는 것으로 해석합니다. 실제로는 다음과 같은 몇 가지 작업이 있습니다.</p>
+	<ol>
+		<li>
+			<p>Pingora의 청크 분할 인코딩 인식은 <code>Transfer-Encoding이</code> “<a href="https://github.com/cloudflare/pingora/blob/9ac75d0356f449d26097e08bf49af14de6271727/pingora-core/src/protocols/http/v1/common.rs#L146" target="_blank" rel="noopener noreferrer"><u>청크</u></a>”되었는지만 확인하는것은 아주 맨손이었고, 하나의 인코딩 또는 <code>Transfer-Encoding</code> 헤더만 있을 수 있다고 가정했습니다. 그러나 RFC는 <code>청크</code> 분할 프레임을 적용하려면 <i>최종</i> 인코딩을 청크해야 한다고 <a href="https://datatracker.ietf.org/doc/html/rfc9112#section-6.3-2.4.1" target="_blank" rel="noopener noreferrer"><u>요구할 뿐입니다</u></a>. 따라서 RFC에 따라 이 요청에는 청크 메시지 본문이 있어야 합니다(HTTP/1.0 — 이에 대한 자세한 내용은 아래를 참조하세요).</p>
+		</li>
+		<li>
+			<p>Pingora는 <i>실제로 </i> <code>Content-Length</code> 를 사용하지도 않았습니다(Transfer-Encoding이 Content-Length를 재정의했기 때문입니다. <a href="https://datatracker.ietf.org/doc/html/rfc9112#section-6.3-2.3" target="_blank" rel="noopener noreferrer"><u>RFC에 따름</u></a>). 인식할 수 없는 Transfer-Encoding과 HTTP/1.0 버전에서는 요청 본문이 <a href="https://github.com/cloudflare/pingora/blob/ef017ceb01962063addbacdab2a4fd2700039db5/pingora-core/src/protocols/http/v1/server.rs#L817" target="_blank" rel="noopener noreferrer"><u>대신 닫힘 구분 기호로 처리되었습니다</u></a> (즉, 응답 본문의 끝은 기본 전송 연결이 닫힐 때 표시됩니다). 프레이밍 헤더가 없으면 HTTP/1.0에서도 동일한 오해가 유발됩니다. 응답 본문은 가깝게 구분할 수 있지만, 요청 본문은 <i>절대</i> 가깝게 구분할 수 없습니다. 실제로, 이러한 설명은 이제 <a href="https://datatracker.ietf.org/doc/html/rfc9112#section-6.3-4.1" target="_blank" rel="noopener noreferrer"><u>RFC 9112</u></a>에 별도의 참고 사항으로 명시되어 있습니다.</p>
+		</li>
+		<li>
+			<p>HTTP/1.0입니다. 전송 인코딩을 <a href="https://datatracker.ietf.org/doc/html/rfc9112#appendix-C.2.3-1" target="_blank" rel="noopener noreferrer"><u>정의하지 않은</u></a> 요청에 대해 RFC에서는 Transfer-Encoding을 포함하는 HTTP/1.0 요청이 “프레임에 결함이 있는 것처럼 메시지를 처리하고” 연결을 닫을 것을 <a href="https://datatracker.ietf.org/doc/html/rfc9112#section-6.1-16" target="_blank" rel="noopener noreferrer">의무</a>화하고 있습니다. nginx 및 Hyper와 같은 파서는 모호한 프레이밍을 피하기 위해 이러한 요청을 거부합니다.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jLbMNafmF96toxAPxj2Cm/8561b96a56dc0fc654476e33d0f34888/image2.png" alt="" class="kg-image" width="1755" height="1082" loading="lazy">
+	</figure>
+	<p><i><sup>공격자가 부분 HTTP 요청 헤더를 HTTP/1.0 + Transfer-Encoding 요청이 있으면, Pingora는 해당 부분 헤더를 별개의 요청이 아닌 동일한 요청의 일부로 잘못 해석합니다. 이렇게 하면 성급한 업그레이드 예시에서 설명한 것과 동일한 종류의 비동기화 공격이 가능합니다.</sup></i></p>
+	<p>이는 특히 응답 메시지 프레임과 요청 메시지 프레임 측면에서 RFC를 더 근본적으로 잘못 해석했음을 의미합니다. 이후 부적절한 <a href="https://github.com/cloudflare/pingora/commit/7f7166d62fa916b9f11b2eb8f9e3c4999e8b9023" target="_blank" rel="noopener noreferrer"><u>다중 Transfer-Encoding 파싱</u></a>을 수정하고, HTTP 요청 본문이 <a href="https://github.com/cloudflare/pingora/commit/40c3c1e9a43a86b38adeab8da7a2f6eba68b83ad" target="_blank" rel="noopener noreferrer"><u>종료된 것으로 간주되지 않도록</u></a> 요청 길이 가이드라인을 엄격하게 준수하며, <a href="https://github.com/cloudflare/pingora/commit/fc904c0d2c679be522de84729ec73f0bd344963d" target="_blank" rel="noopener noreferrer"><u>잘못된 Content-Length</u></a> 및 <a href="https://github.com/cloudflare/pingora/commit/87e2e2fb37edf9be33e3b1d04726293ae6bf2052" target="_blank" rel="noopener noreferrer"><u>HTTP/1.0 + Transfer-Encoding</u></a> 요청 메시지를 거부했습니다. Cloudflare가 추가한 보호 기능으로는 현재 HTTP 프록시 로직이 CONNECT 업그레이드 프록시 설정 목적상 CONNECT를 특별하게 처리하지 않기 때문에 기본적으로 <a href="https://github.com/cloudflare/pingora/commit/d3d2cf5ef4eca1e5d327fe282ec4b4ee474350c6" target="_blank" rel="noopener noreferrer"><u>거부하는</u></a> <a href="https://datatracker.ietf.org/doc/html/rfc9110#name-connect" target="_blank" rel="noopener noreferrer"><u>CONNECT</u></a> 요청이 포함되며, 이러한 요청에는 특별한 <a href="https://datatracker.ietf.org/doc/html/rfc9112#section-6.3-2.2" target="_blank" rel="noopener noreferrer"><u>메시지 프레임 규칙</u></a>이 있습니다. (수신 CONNECT 요청은 Cloudflare CDN에 의해 <a href="https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/#cloudflares-network" target="_blank" rel="noopener noreferrer"><u>거부됩니다</u></a>.)</p>
+	<p>내부적으로 서비스를 조사하고 계측한 결과, 잘못 해석되어 Pingora 서비스에 도착하는 요청은 발견되지 않았습니다. 우리는 CDN의 다운스트림 프록시 계층이 HTTP/1.1로만 전달하고, 유효하지 않은 Content-Length와 같은 모호한 프레이밍을 거부하며, 청크 요청에 대해 단일 <code>Transfer-Encoding: chunked</code> 헤더만 전달한다는 사실을 발견했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="3-cache-key-construction">3. 캐시 키 구성</h3>
+		<a href="https://blog.cloudflare.com/#3-cache-key-construction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>연구원은 또한 기본 <code>CacheKey</code> 생성과 관련된 다른 캐시 중독 취약점 1건을 보고했습니다. <a href="https://github.com/cloudflare/pingora/blob/ef017ceb01962063addbacdab2a4fd2700039db5/pingora-cache/src/key.rs#L218" target="_blank" rel="noopener noreferrer"><u>순진한 기본 구현</u></a>은 (호스트 헤더 또는 업스트림 서버 HTTP 체계와 같은 다른 요소 없이) URI 경로만을 고려했으며, 이는 동일한 HTTP 경로를 사용하는 여러 호스트가 서로 충돌하여 서로의 캐시에 감염될 수 있음을 의미했습니다.</p>
+	<p>이는 기본 <code>CacheKey</code> 구현을 사용하기로 선택한 알파 프록시 캐싱 기능 사용자에게 영향을 미칩니다. 이후 HTTP 스킴 + 호스트 + URI 같은 것을 사용하는 것이 많은 애플리케이션에서 합리적이지만, 사용자가 직접 캐시 키를 구성할 때는 주의하기를 원했기 때문에 해당 기본값을 <a href="https://github.com/cloudflare/pingora/commit/257b59ada28ed6cac039f67d0b71f414efa0ab6e" target="_blank" rel="noopener noreferrer"><u>제거했습니다</u></a>. 예를 들어 프록시 로직이 업스트림 요청에 따라 URI나 메서드를 조건부로 조정하는 경우 포이즈닝을 방지하기 위해 해당 로직도 캐시 키 스킴에 반영해야 합니다.</p>
+	<p>내부적으로 Cloudflare의 <a href="https://developers.cloudflare.com/cache/how-to/cache-keys" target="_blank" rel="noopener noreferrer"><u>기본 캐시 키는</u></a> 캐시 키 악성 침입을 방지하기 위해 다양한 요소를 사용하며, 이전에 제공된 기본값을 절대 사용하지 않습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendation">권장 사항</h2>
+		<a href="https://blog.cloudflare.com/#recommendation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pingora를 프록시로 사용하는 경우 최대한 빨리 <a href="https://github.com/cloudflare/pingora/releases/tag/0.8.0" target="_blank" rel="noopener noreferrer"><u>Pingora 0.8.0</u></a> 으로 업그레이드하세요.</p>
+	<p>이 취약점이 Pingora 사용자들에게 영향을 미쳤을 수 있는 부분에 대해 사과드립니다. Pingora가 Cloudflare를 넘어 핵심 인터넷 인프라로 자리를 차지함에 따라 프레임워크가 기본적으로 엄격한 RFC 준수를 사용하도록 장려하는 것이 중요하다고 생각하며 Cloudflare는 계속 이러한 노력을 기울일 것입니다. 이 프레임워크의 극소수의 사용자만 Cloudflare와 동일한 '와일드 인터넷'을 다루어야 합니다. Cloudflare의 의도는 최신 RFC 표준을 기본적으로 더 엄격하게 준수하여 Pingora 사용자의 보안을 강화하고 인터넷 전체가 모범 사례로 나아가는 것입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="disclosure-and-response-timeline">공개 및 대응 타임라인</h2>
+		<a href="https://blog.cloudflare.com/#disclosure-and-response-timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>- 2025년 12월 2일: 버그 바운티를 통해 업그레이드 기반 밀수가 보고되었습니다.</p>
+	<p>- 2026년 1월 13일: Transfer-Encoding/HTTP/1.0 구문 분석 문제가 보고됨.</p>
+	<p>- 2026-01-18: 기본 캐시 키 생성 문제가 보고됨.</p>
+	<p>- 2026년 1월 29일~2026년 2월 13일: 기자의 검증을 거친 수정 사항. 추가 RFC 규정 준수 검사를 위한 작업이 계속 진행 중입니다.</p>
+	<p>- 2026-02-25: 캐시 키 기본 제거 및 리서치 도구의 추가 RFC 검사를 확인.</p>
+	<p>- 2026년 3월 2일: Pingora 0.8.0 릴리스.</p>
+	<p>- 2026-03-04: CVE 권고 사항 게시됨.</p>
+	<div class="flex anchor relative">
+		<h2 id="acknowledgements">감사의 말</h2>
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 버그 바운티 프로그램을 통해 보고서, 자세한 복제, 수정 사항을 확인해 준 Rajat Raghav(xclow3n)에게 감사드립니다. 자세한 내용은 연구원의 <a href="https://xclow3n.github.io/post/6" target="_blank" rel="noopener noreferrer">해당 블로그 게시물</a> 을 참조하시기 바랍니다.</p>
+	<p>또한 Pingora 오픈 소스 커뮤니티의 적극적인 참여, 문제 보고서, 프레임워크에 대한 기여에 진심으로 감사드립니다. 여러분은 더 나은 인터넷을 구축하는 데 진정으로 도움이 됩니다.</p>
+</div>

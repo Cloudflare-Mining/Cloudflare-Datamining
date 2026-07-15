@@ -1,0 +1,308 @@
+<div class="mb2 gray5">Lesezeit: 12&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/exploring-internet-traffic-shifts-and-cyber-attacks-during-the-2024-us-election">English</a>, <a href="https://blog.cloudflare.com/nl-nl/exploring-internet-traffic-shifts-and-cyber-attacks-during-the-2024-us-election">Nederlands</a>, und <a href="https://blog.cloudflare.com/fr-fr/exploring-internet-traffic-shifts-and-cyber-attacks-during-the-2024-us-election">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ShDyrSfYKD5WuTu5WTveE/ec3ef8041cf7e0b942a923f07d80e096/BLOG-2618_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Bei Wahlen geht es nicht nur darum, Stimmen abzugeben. Wichtig ist auch, dass die Bürger sich registrieren lassen und auf Informationen über die Kandidaten und den Wahlprozess zugreifen können, was wiederum von der Stärke und Sicherheit des Internets abhängt. Trotz der Risiken, die von potenziellen Cyberangriffen ausgehen, die die Demokratie stören sollen, hat Cloudflare keine nennenswerten Störungen von Wahlkampf- oder behördlichen Websites durch Cyberangriffe beobachtet.</p>
+	<p>Am Dienstag, dem 5. November 2024, war <a href="https://en.wikipedia.org/wiki/2024_United_States_presidential_election" target="_blank" rel="noopener noreferrer"><u>in den Vereinigten Staaten Wahltag</u></a>. Bei dieser Wahl wurde nicht nur über den nächsten Präsidenten und Vizepräsidenten entschieden, sondern auch über den US-Senat, das Repräsentantenhaus, die Gouverneure der Bundesstaaten und die Gesetzgeber der Bundesstaaten. Die Ergebnisse bestätigen, dass der Republikaner Donald Trump die Präsidentschaftswahlen gewonnen hat.</p>
+	<p>In diesem Blog-Beitrag untersuchen wir die Online-Angriffe auf Websites im Zusammenhang mit den Wahlen&nbsp;– von denen einige bemerkenswert, aber keine störend waren&nbsp;– und wie sich die ersten Wahlergebnisse auf den Internet-Traffic in den USA sowohl auf nationaler als auch auf Ebene der Bundesstaaten ausgewirkt haben, wobei der Traffic landesweit um bis zu 15&nbsp;% gestiegen ist. Wir werden auch E-Mail-Phishing-Trends und allgemeine DNS-Daten zu Nachrichteninteresse, den Kandidaten und wahlbezogenen Aktivitäten untersuchen.</p>
+	<p>Wir haben die Wahlen des Jahres 2024 weltweit in unserem <a href="https://blog.cloudflare.com/tag/election-security"><u>Blog</u></a> und in unserem <a href="https://radar.cloudflare.com/reports/elections-2024" target="_blank" rel="noopener noreferrer"><u>Wahlbericht auf Cloudflare Radar</u></a> verfolgt und über einige der mehr als 60 nationalen Wahlen, die in diesem Jahr rund um den Globus stattfinden, berichtet. Wir von Cloudflare unterstützen viele dieser Bemühungen, um einen sicheren und vertrauenswürdigen Wahlprozess zu gewährleisten. Wir arbeiteten eng mit Wahlbeamten, Regierungsbehörden und zivilgesellschaftlichen Gruppen im ganzen Land zusammen, um sicherzustellen, dass Gruppen, die im Bereich der Wahlen tätig sind, über die nötigen Werkzeuge verfügen, um online zu bleiben.&nbsp;</p>
+	<p>Was die US-Wahlen betrifft, haben wir bereits über Trends im Zusammenhang mit der ersten <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends"><u>Debatte zwischen Biden gegen Trump</u></a>, dem <a href="https://blog.cloudflare.com/exploring-internet-traffic-during-the-2024-us-republican-national-convention"><u>versuchten Attentat auf Trump und die Republican National Convention</u></a>, der <a href="https://blog.cloudflare.com/internet-security-trends-2024-us-democratic-convention"><u>Democratic National Convention</u></a>, und der <a href="https://blog.cloudflare.com/how-the-harris-trump-us-presidential-debate-influenced-internet-traffic"><u>Präsidentschaftsdebatte zwischen Harris und Trump</u></a> berichtet.</p>
+	<p>Wichtigste Erkenntnisse:</p>
+	<ul>
+		<li>
+			<p>In den 24&nbsp;Stunden vom 31. Oktober bis zum 1. November wehrte Cloudflare automatisch mehr als 6 Milliarden HTTP-DDoS-Anfragen ab, die auf mit den US-Wahlen verbundene Websites abzielten, z.&nbsp;B. auf Websites von staatlichen und lokalen Behörden und politischen Kampagnen. Während dieses Zeitraums kam es zu keinen nennenswerten Störungen der betroffenen Websites.</p>
+		</li>
+		<li>
+			<p>Am Tag vor der Wahl erreichte der DNS-Traffic zu den Websites von Trump/Republikanern und Harris/Demokraten seinen Höhepunkt, wobei der tägliche DNS-Traffic um 59&nbsp;% beziehungsweise 4&nbsp;% anstieg.</p>
+		</li>
+		<li>
+			<p>Am Wahltag verzeichneten die Bundesstaaten des Mittleren Westens („Midwest“) im Vergleich zur Vorwoche das stärkste Traffic-Wachstum in den gesamten USA.&nbsp;</p>
+		</li>
+		<li>
+			<p>Der Internet-Traffic in den USA erreichte nach Schließung der ersten Wahllokale seinen Höhepunkt, mit einem Anstieg von 15% gegenüber der Vorwoche.&nbsp;</p>
+		</li>
+		<li>
+			<p>Auch der DNS-Traffic zu Nachrichten-, Umfrage- und Wahl-Websites verzeichnete große Traffic-Spitzen. Die Wahldienste verzeichneten kurz vor Schließung der Wahllokale einen Anstieg von 756&nbsp;% und die Nachrichtenseiten bis zum späten Abend einen Anstieg von 325&nbsp;%.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-assists-with-election-infrastructure">Wie Cloudflare bei der Wahlinfrastruktur hilft&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-assists-with-election-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tqSzKOhzUbLTgnwfP4cIU/8a433526fab8fbebf0aa3ae8633e78dc/BLOG-2618_2.png" alt="BLOG-2618 2" class="kg-image" width="1046" height="610" loading="lazy">
+	</figure>
+	<p>Cloudflare hat sich zum Ziel gesetzt, dafür zu sorgen, dass Websites, die die Demokratie fördern&nbsp;– wie Wählerregistrierungsseiten, Wahlinformationsportale, Kampagnen-Websites und Plattformen zur Ergebnisberichterstattung&nbsp;– sicher und zugänglich bleiben, insbesondere in Zeiten starken Traffics oder bei Cyberangriffen. Über unsere Impact-Programme stellen wir mehr als 800 Websites, die an der Wahlinfrastruktur arbeiten, wichtige Ressourcen für die Cybersicherheit zur Verfügung. </p>
+	<ul>
+		<li>
+			<p><a href="https://www.cloudflare.com/galileo" target="_blank" rel="noopener noreferrer"><u><b>Projekt Galileo</b></u></a><b>:</b> Das 2014 ins Leben gerufene Projekt Galileo bietet Medienorganisationen, Menschenrechtsaktivisten und gemeinnützige Organisationen auf der ganzen Welt kostenlose Dienste auf dem Niveau unseres Business-Tarifs. Wir schützen mehr als 65 Internetseiten, die sich mit Wahlen in den Vereinigten Staaten befassen und eine Reihe von Themen im Zusammenhang mit dem Wahlrecht, der Förderung freier und fairer Wahlen und der Veröffentlichung von Wahlergebnissen bearbeiten. Zu diesen Organisationen gehören <a href="https://www.cloudflare.com/case-studies/voteamerica" target="_blank" rel="noopener noreferrer"><u>Vote America</u></a>, <a href="https://www.cloudflare.com/case-studies/decision-desk-hq" target="_blank" rel="noopener noreferrer"><u>Choice Desk HQ</u></a>, <a href="https://www.cloudflare.com/case-studies/us-vote-foundation" target="_blank" rel="noopener noreferrer"><u>US Vote Foundation</u></a> und <a href="https://www.cloudflare.com/case-studies/us-vote-foundation" target="_blank" rel="noopener noreferrer"><u>Electionland</u></a>.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/athenian" target="_blank" rel="noopener noreferrer"><u><b>Projekt Athenian</b></u></a><b>: </b>Das 2017 ins Leben gerufene Projekt Athenian bietet staatlichen und lokalen Behörden, die Wahlen durchführen, kostenlose Dienste auf Enterprise-Niveau. Ziel ist es, sicherzustellen, dass die Wähler ohne Unterbrechung auf korrekte und aktuelle Informationen über Wählerregistrierung, Wahllokale und Wahlergebnisse zugreifen können. Derzeit schützen wir im Rahmen des Projekts 423 Websites in 33 Bundesstaaten.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/campaigns/usa" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare for Campaigns</b></u></a><b>:</b> Cloudflare for Campaigns wurde 2020 in Partnerschaft mit <a href="https://defendcampaigns.org" target="_blank" rel="noopener noreferrer"><u>Defending Digital Campaigns</u></a> eingeführt und bietet ein Paket von Produkten, um die wachsenden Risiken zu bekämpfen, die sich aus Cyberangriffen auf politische Kampagnen und staatliche Parteien ergeben. Wir schützen derzeit mehr als 354 Kampagnen und 34 politische Parteien auf nationaler Ebene in den Vereinigten Staaten.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Seit 2020 haben wir unsere Partnerschaften mit Wahlbeamten, Regierungsbehörden und gemeinnützigen Organisationen intensiviert, um den notwendigen Schutz zu gewährleisten. Im Laufe des Jahres 2024 haben wir mit der <a href="https://www.cisa.gov" target="_blank" rel="noopener noreferrer"><u>CISA</u></a> (Cybersecurity and Infrastructure Security Agency) und der <a href="https://www.cisa.gov/topics/partnerships-and-collaboration/joint-cyber-defense-collaborative" target="_blank" rel="noopener noreferrer"><u>Joint Cyber Defense Collaborative</u></a> zusammengearbeitet, mehr als 300 Wahlbeamte über neue Bedrohungen informiert und mehr als 50 Telefonate mit staatlichen und lokalen Behörden geführt, um die Sicherheitspraktiken zu überprüfen. Darüber hinaus boten wir Webinare zu Cyberbedrohungen für Wahlgruppen und Strategien zum Schutz der Wahlinfrastruktur an.</p>
+	<p>Mit Defending Digital Campaigns haben wir mehr als 90 Kampagnen und Parteien Wochen vor dem Wahltag an Bord geholt. In diesem Zusammenhang haben wir auch mit politischen Dienstleistern zusammengearbeitet, die die Kampagneninfrastruktur verwalten, um Einblicke in neue Bedrohungen und deren Abwehr zu geben. Im Rahmen des Projekts Galileo haben wir mehr als 60 lokale Medien- und Journalismus-Websites, die über Wahlen berichten, an Bord geholt, um sicherzustellen, dass sie zeitnah und korrekt Informationen über Wahlprozesse, Kandidatenplattformen und Wahlergebnisse bereitstellen können.</p>
+	<div class="flex anchor relative">
+		<h2 id="political-and-election-related-cyber-attacks">Politische und wahlkampfbezogene Cyberangriffe&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#political-and-election-related-cyber-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie wir in diesem Jahr bereits mehrfach gesehen haben, richten sich gezielte DDoS-Angriffe (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>Distributed Denial of Service</u></a>) um den Wahltag herum häufig gegen die Websites politischer Parteien oder Kandidaten. Online-Angriffe sind zwar häufig und nicht immer mit einer Wahl verbunden, doch in jüngster Zeit gab es DDoS-Vorfälle in <a href="https://blog.cloudflare.com/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip"><u>Frankreich</u></a>, den <a href="https://blog.cloudflare.com/dutch-political-websites-hit-by-cyber-attacks-as-eu-voting-starts"><u>Niederlanden</u></a> und <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties"><u>im Vereinigten Königreich</u></a>, bei denen es während der Wahlen um politische Parteien ging.&nbsp;</p>
+	<p>In den USA haben wir unmittelbar vor der Wahl einen ähnlichen Anstieg der Angriffe verzeichnet. Cloudflare blockierte sowohl Cyberangriffe auf Webseiten der Republikaner als auch der Demokraten, wobei diese Angriffe das Ziel hatten, die jeweiligen Webseiten lahmzulegen. Obwohl einige Angriffe ein hohes Traffic-Aufkommen hatten, blieben die angegriffenen Websites im Netz.</p>
+	<p>DDoS-Angriffe, die sich insbesondere gegen politische oder wahlkampfrelevante Internetangebote in den USA richteten, nahmen ab September deutlich zu. Die mehr als 6 Milliarden HTTP-DDoS-Anfragen, die in den ersten sechs Tagen des Novembers verzeichnet wurden, übertrafen das Volumen der gesamten Monate September und Oktober.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hYmLIj3qjBvrUxtasPJwy/e247cfbd6c546a52025bbefbfe37d503/BLOG-2618_3.png" alt="BLOG-2618 3" class="kg-image" width="1999" height="856" loading="lazy">
+	</figure>
+	<p>&nbsp;</p>
+	<p>Einige Kampagnen-Websites verursachten den größten Teil des Traffics an bösartigen HTTP-Anfragen im Rahmen von DDoS-Angriffen, wobei seit dem 1. Oktober ein deutlicher Anstieg zu verzeichnen war, verglichen mit minimalen DDoS-Aktivitäten zu Beginn des Jahres 2024.</p>
+	<p>Schauen wir uns ein paar Beispiele für konkrete DDoS-Angriffe an, da diese leichter zu verfolgen sind.</p>
+	<div class="flex anchor relative">
+		<h3 id="high-profile-campaign-website-october-29-november-6">Prominente Kampagnen-Website, 29. Oktober–6. November&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#high-profile-campaign-website-october-29-november-6" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare blockierte eine Reihe von DDoS-Angriffen auf eine prominente Wahlkampf-Website. Die Angriffe begannen am 29. Oktober mit einer vierminütigen Spitze von 345.000 Anfragen pro Sekunde. Am 31. Oktober folgten intensivere Angriffe, wobei der erste über eine Stunde dauerte und einen Spitzenwert von 213.000 Anfragen pro Sekunde erreichte. Stunden später, am 1. November, erreichte ein größerer Angriff 700.000 Anfragen pro Sekunde, gefolgt von zwei weiteren Wellen mit 311.000 und 205.000 Anfragen pro Sekunde.</p>
+	<p>Innerhalb von 16 Stunden blockierte Cloudflare zwischen dem 31. Oktober und dem 1. November mehr als 6 Milliarden bösartige HTTP-Anfragen. Weitere Angriffe erfolgten am 3. November mit Spitzenwerten von 200.000 Anfragen pro Sekunde (rps), am 4. November mit 352.000 rps, am Wahltag, dem 5. November, mit 271.000 rps gegen 14:33&nbsp;Uhr ET (11:33&nbsp;Uhr PT) und am 6. November mit 108.000 rps.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7a7BGcwhBRbIppTPwGeMEM/70a460bbb3a37db416bf991324f79773/BLOG-2618_4.png" alt="BLOG-2618 4" class="kg-image" width="1714" height="908" loading="lazy">
+	</figure>
+	<p>Unsere Daten zeigen, dass der/die Angreifer die Nutzer-Agenten nach dem Zufallsprinzip ausgewählt, Cache-Busting-Techniken (Methoden zur Umgehung von zwischengespeicherten Inhalten und zur Überlastung von Servern mit einzelnen Anfragen) angewandt und einen geodiversen Ansatz verfolgt haben.</p>
+	<p>Der DDoS-Angriff am 1. November erreichte eine maximale Bandbreite von über 16&nbsp;Gbit/s, die an Cloudflare gesendet wurde, und blieb während des Hauptangriffs, der mehr als zwei Stunden dauerte, bei über 8&nbsp;Gbit/s.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WVwTuYycGskegN4Bj6GyC/e0d0a39516f2097fa98e1c6d9771244f/BLOG-2618_5.png" alt="BLOG-2618 5" class="kg-image" width="1999" height="891" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="us-campaign-infrastructure-website-november-3">Website der US-Wahlkampfinfrastruktur, 3. November</h3>
+		<a href="https://blog.cloudflare.com/#us-campaign-infrastructure-website-november-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Angreifer weiteten ihre Angriffe über Wahlkampf-Websites hinaus auf politische Parteien und deren Infrastruktur aus und versuchten erfolglos, deren Dienste zu stören.&nbsp; Am 3. November 2024 zum Beispiel richtete sich ein DDoS-Angriff gegen die Infrastruktur im Zusammenhang mit einer großen Kampagne. Er dauerte zwei Minuten und erreichte 260.000 bösartige HTTP-Anfragen pro Sekunde.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QEogge3prSiTXFHHV9SZx/752b1ffda3d559c577c0fc8110bb00d7/BLOG-2618_7.png" alt="BLOG-2618 7" class="kg-image" width="1999" height="905" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="us-state-political-party-october-29">Politische Partei eines US-Bundesstaates, 29. Oktober</h3>
+		<a href="https://blog.cloudflare.com/#us-state-political-party-october-29" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Am 29. Oktober 2024 richtete sich ein groß angelegter DDoS-Angriff gegen die Website einer großen politischen Partei eines bestimmten US-Bundesstaates. Der Angriff dauerte über vier Stunden, von 12:00–17:29&nbsp;Uhr ET (09:00–14:29&nbsp;Uhr PT), und erreichte in der Spitze 206.000 Anfragen pro Sekunde. Insgesamt wurden an diesem Tag im Rahmen dieses DDoS Angriffs über 2 Milliarden böswillige HTTP-Anfragen blockiert.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zE45tcuR8ejFHGdNddc7L/ed8093200c0a1a571a2f8f665dc9edd6/BLOG-2618_8.png" alt="BLOG-2618 8" class="kg-image" width="1999" height="907" loading="lazy">
+	</figure>
+	<p>Die gleiche Methode, die bei dem oben erwähnten Angriff auf eine der wichtigsten Wahlkampf-Websites am 1. November verwendet wurde, kam auch in diesem Fall zum Einsatz. In diesem Fall erreichte die DDoS-Attacke einen Spitzenwert von 5,7&nbsp;Gbit/s, den der Angreifer an Cloudflare sendete, und hielt während der meisten der viereinhalbstündigen Dauer bei über 3&nbsp;Gbit/s.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v9kxcUtFVGQFwzJU6XkOp/390188c9f24fda8b89cbf020d4d89d87/BLOG-2618_9.png" alt="BLOG-2618 9" class="kg-image" width="1999" height="738" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="us-counties-as-a-target-september-13">US-Counties als Ziel, 13. September</h3>
+		<a href="https://blog.cloudflare.com/#us-counties-as-a-target-september-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Seit September sind US-amerikanische staatliche und lokale Websites, die von Cloudflare im Rahmen des Projekts Athenian geschützt werden, vermehrt DDoS-Angriffen ausgesetzt, die sich vor allem gegen bestimmte Counties richten. Seit dem 1. September wurden über 290 Millionen bösartige HTTP-Anfragen an diese Art von Websites gestellt, wobei 4&nbsp;% aller Anfragen als Bedrohung blockiert wurden. Diese Angriffe waren weniger häufig und intensiv als die auf die Infrastruktur der US-Wahlkampagnen.&nbsp;</p>
+	<p>Am 13. September 2024 richtete sich ein DDoS-Angriff von 19:29–22:32&nbsp;Uhr UTC (15:29–18:32&nbsp;Uhr ET) gegen die Website eines Counties. Er dauerte drei Stunden und erreichte einen Spitzenwert von 46.000 bösartigen HTTP-Anfragen pro Sekunde.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8S5AmvI1llskUuUiZ3JvR/6cb636695b8682170bd8e2f1f7bece7b/BLOG-2618_10.png" alt="BLOG-2618 10" class="kg-image" width="1986" height="922" loading="lazy">
+	</figure>
+	<p>Diese DDoS-Angriffsraten sind ohnehin schon beträchtlich, umso mehr, wenn wir sie mit den US-Präsidentschaftswahlen 2020 vergleichen. Im Jahr 2020 <a href="https://blog.cloudflare.com/2020-us-election-cybersecurity-analysis"><u>verzeichneten</u></a> wir eine größere Vielfalt blockierter HTTP-Anfragen, die zwischen WAF- (Web Application Firewall) und Firewall-Regeln aufgeteilt wurden, sowie DDoS-Angriffe. Auch die Zahl der blockierten Anfragen im Zusammenhang mit DDoS und WAF-Attacken war deutlich geringer: im gesamten Monat Oktober 2020 waren es fast 100 Millionen und im Wahlmonat November 2020 fast 25 Millionen. Im Gegensatz dazu haben wir allein zwischen dem 1. –6. November 2024 über 6 Milliarden bösartige HTTP-Anfragen bei DDoS-Angriffen beobachtet, die auf Kampagnen abzielten.</p>
+	<p>Wichtig ist auch, dass selbst kleinere Angriffe für Websites, die nicht gut gegen ein so hohes Traffic-Aufkommen geschützt sind, verheerende Folgen haben können. DDoS-Angriffe überwältigen nicht nur die Systeme, sondern dienen, wenn sie erfolgreich sind, auch als <a href="https://cloudflare.tv/shows/this-week-in-net/d-do-s-report-certificate-changes-qr-phishing-and-more/oZK6nra4" target="_blank" rel="noopener noreferrer"><u>Ablenkung für die IT-Teams</u></a>, während die Angreifer versuchen, andere Arten von Datenverletzungen zu begehen.</p>
+	<div class="flex anchor relative">
+		<h2 id="internet-traffic-in-the-us-grows-after-polls-closed">Der Internet-Traffic in den USA nimmt nach Schließung der Wahllokale zu</h2>
+		<a href="https://blog.cloudflare.com/#internet-traffic-in-the-us-grows-after-polls-closed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Allgemeinen führen <a href="https://blog.cloudflare.com/tag/election-security"><u>Wahltage</u></a> nicht zu drastischen Veränderungen des Internet-Traffics. Der Traffic sinkt in der Regel während der Wahlzeiten leicht, wenn auch nicht so stark wie an nationalen Feiertagen, und steigt am Abend an, wenn die Ergebnisse bekannt gegeben werden.&nbsp;</p>
+	<p>In den USA wurde am 5. November 2024 ein ähnliches Muster beobachtet, wobei der Internet-Traffic in der Nacht zunahm. Allerdings war der Traffic im Laufe des Tages in der Regel um 6&nbsp;% höher als in der Vorwoche und begann bereits um 09:15&nbsp;Uhr ET (06:15&nbsp;Uhr PT). Dies könnte auch daran liegen, dass der Wahltag in den USA anders als in anderen Ländern an einem Wochentag und nicht an einem Wochenende fällt und kein nationaler Feiertag ist. Der Internet-Traffic erreichte seinen Höhepunkt nach Schließen der ersten Wahllokale, gegen 21:15&nbsp;Uhr ET (18:15&nbsp;Uhr PT), als TV-Nachrichtensender Countdown-Uhren anzeigten. Zu diesem Zeitpunkt lag der Traffic um 15&nbsp;% höher als in der Vorwoche.</p>
+	<p><i>Hinweis: Die im nächsten Diagramm angezeigte Linie der vorherigen 7 Tage liegt aufgrund der Sommerzeitumstellung am Wochenende in den USA eine Stunde zurück. Alle Wachstumsberechnungen in diesem Beitrag berücksichtigen diese Veränderung.</i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gShhxZxAddFNz0pBRHR0s/ecb6986c4665410f55988b2045d2362c/BLOG-2618_11.png" alt="BLOG-2618 11" class="kg-image" width="1999" height="598" loading="lazy">
+	</figure>
+	<p>Der stärkste Anstieg des Traffics (im Vergleich zur Vorwoche) am Wahltag fand gegen 01:30&nbsp;Uhr ET (22:30&nbsp;Uhr PT) statt, als die <a href="https://x.com/PpollingNumbers/status/1854046880574980484" target="_blank" rel="noopener noreferrer"><u>Hochrechnungen</u></a> begannen, die Präsidentschaftswahlen für Trump zu begünstigen, und <a href="https://x.com/FoxNews/status/1854046899155660983" target="_blank" rel="noopener noreferrer"><u>Fox News</u></a> Pennsylvania zu seinen Gunsten aufforderte, wobei der Traffic im Vergleich zur Vorwoche um 32&nbsp;% gestiegen ist. Später, während der Rede von Donald Trump zwischen 02:30–02:45&nbsp;Uhr MEZ (23:30–23:45&nbsp;Uhr PT), war der Internet-Traffic um 31&nbsp;% höher als in der Vorwoche.&nbsp;</p>
+	<p>Am Wahltag erreichte der tägliche Internet-Traffic in den USA gemessen an den Anfragen den höchsten Stand im Jahr 2024 und stieg gegenüber der Vorwoche um 6&nbsp;% an.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bTq4tRaszFIMNXTLwgWPw/6aa76a2986bb474a042fc72c6188bc53/BLOG-2618_12.png" alt="BLOG-2618 12" class="kg-image" width="1999" height="526" loading="lazy">
+	</figure>
+	<p>Wie für einen typischen Wahltag zu erwarten, war auch der Anteil des Datenverkehrs von Mobilgeräten am Wahltag mit 43&nbsp;% gegenüber 42&nbsp;% in der Vorwoche leicht höher.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kKIYDj8eglPtj0zffHXOA/76c7367b1e7af4abe2f74b712834fb00/BLOG-2618_13.png" alt="BLOG-2618 13" class="kg-image" width="1772" height="764" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="state-level-traffic-growth-peaks-at-21-00-et-18-00-pt">Das Traffic-Wachstum auf Ebene des US-Bundesstaats erreicht seinen Höhepunkt um 21:00&nbsp;Uhr ET (18:00&nbsp;Uhr PT)&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#state-level-traffic-growth-peaks-at-21-00-et-18-00-pt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Veränderungen des Traffics auf Ebene des Bundesstaates am Wahltag im Vergleich zur Vorwoche liefern mehr Details als Daten auf nationaler Ebene. Die Karte unten zeigt die größten Veränderungen beim Traffic, der um 23:00&nbsp;Uhr ET (20:00&nbsp;Uhr PT) ihren Höhepunkt erreichte, nachdem die Wahllokale zu schließen begannen. Insbesondere nahm der Traffic am Wahltag landesweit und auf Ebene der Bundesstaaten zu, anders als während der zweistündigen Präsidentschaftsdebatten, die im landesweiten Fernsehen übertragen wurden.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GyyxpTCD4ADVIk21R2pOQ/03ea8617b81cd317d14afa17cdd680e1/BLOG-2618_14.png" alt="BLOG-2618 14" class="kg-image" width="1999" height="1428" loading="lazy">
+	</figure>
+	<p>Die stärksten Traffic-Zuwächse wurden in Maine (44&nbsp;%), South Dakota (44&nbsp;%) und US-Bundesstaat Kalifornien (44&nbsp;%) verzeichnet. Interessanterweise verzeichneten die zentralen Bundesstaaten einen höheren Anstieg des Internet-Traffics als die Küstenstaaten. Bevölkerungsstärkere Staaten wie Kalifornien (8&nbsp;%), Texas (19&nbsp;%), New York (22&nbsp;%) und Florida (23&nbsp;%) verzeichneten ebenfalls einen deutlichen Traffic-Anstieg.</p>
+	<p>Die sieben Swing States, die als wahlentscheidend <a href="https://www.bbc.com/news/articles/c511pyn3xw3o" target="_blank" rel="noopener noreferrer"><u>gelten</u></a>&nbsp;– Georgia, Michigan, Nevada, North Carolina, Pennsylvania und Wisconsin (Arizona wird aufgrund von Datenproblemen nicht berücksichtigt)&nbsp;– verzeichneten jeweils einen Traffic-Zuwachs zwischen 17&nbsp;% und 36&nbsp;%. Hier ist ein konzentrierterer Blick auf diese Swing States, damit Sie sie leichter einsehen können:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Bundesstaat</b></p>
+				</td>
+				<td>
+					<p><b>Traffic-Zunahme</b></p>
+				</td>
+				<td>
+					<p><b>Ortszeit (in jedem Bundesstaat)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Georgia</p>
+				</td>
+				<td>
+					<p>25&nbsp;%</p>
+				</td>
+				<td>
+					<p>21:15&nbsp;Uhr</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Michigan</p>
+				</td>
+				<td>
+					<p>34&nbsp;%</p>
+				</td>
+				<td>
+					<p>21:15&nbsp;Uhr</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nevada</p>
+				</td>
+				<td>
+					<p>17&nbsp;%</p>
+				</td>
+				<td>
+					<p>20:15 Uhr</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>North Carolina</p>
+				</td>
+				<td>
+					<p>14&nbsp;%</p>
+				</td>
+				<td>
+					<p>21:15&nbsp;Uhr</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Pennsylvania</p>
+				</td>
+				<td>
+					<p>33&nbsp;%</p>
+				</td>
+				<td>
+					<p>21:15&nbsp;Uhr</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Wisconsin</p>
+				</td>
+				<td>
+					<p>36&nbsp;%</p>
+				</td>
+				<td>
+					<p>22:15 Uhr</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="dns-trends-from-news-outlets-to-polling-services">DNS-Trends: von Nachrichtenkanälen bis zu Umfragediensten</h2>
+		<a href="https://blog.cloudflare.com/#dns-trends-from-news-outlets-to-polling-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenden wir uns nun den Domain-Trends zu, so zeigen unsere <a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> Resolver-DNS-Daten einen deutlichen Einfluss während der US-Wahlen auf die Analyse bestimmter Kategorien.</p>
+	<p>Die Analyse des DNS-Traffics für <b>US-Nachrichtenmedien</b> zeigt, dass der Traffic aus den Vereinigten Staaten direkt nach 17:00&nbsp;Uhr MEZ (18:00&nbsp;Uhr MEZ) deutlich anstieg, und zwar um etwa 15&nbsp;% im Vergleich zur Vorwoche. Der Traffic stieg im Laufe des Tages weiter an und erreichte seinen Höhepunkt zwischen 22:00–23:00 Uhr ET (19:00–20:00 Uhr PT), wobei das Traffic-Volumen bei den DNS-Anfragen um 325&nbsp;% höher war als in der Vorwoche. Auch am Mittwoch, den 6. November, um 05:00&nbsp;Uhr ET (02:00&nbsp;Uhr PT) gab es einen kurzen Anstieg um 117&nbsp;%.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eoBJOHz37gSZYFdbuapSY/c5fe40345d841ebb5ed69ed4c7f67a8a/BLOG-2618_15.png" alt="BLOG-2618 15" class="kg-image" width="1999" height="612" loading="lazy">
+	</figure>
+	<p>Wir beobachteten am Wahltag einen deutlich höheren DNS-Traffic für die Websites von <b>Wahldiensten</b>&nbsp;– also Websites von Plattformen oder Organisationen, die Umfragen durchführen und veröffentlichen&nbsp;– und erreichten seinen Höhepunkt um 13:00&nbsp;Uhr ET (10:00&nbsp;Uhr PT) mit einem Anstieg von 206&nbsp;% gegenüber der Vorwoche um 22:00&nbsp;Uhr ET (19:00&nbsp;Uhr PT), mit einem Anstieg von 756&nbsp;%. Der tägliche Traffic in dieser Kategorie stieg am Wahltag um 145&nbsp;% und am Vortag um 36&nbsp;%.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IOBseQF9hWO2vLGCUOu2A/b6f0b628b23ea1d82f1d98667706ab00/BLOG-2618_16.png" alt="BLOG-2618 16" class="kg-image" width="1999" height="613" loading="lazy">
+	</figure>
+	<p>Auch der DNS-Traffic auf Websites, die sich <b>mit den Wahlen und Wahlinformationen befassen</b>, hat um den Wahltag herum deutlich zugenommen. Der Traffic begann am Tag vor der Wahl deutlich zu steigen und erreichte am 5. November 2024 um 12:00&nbsp;Uhr ET (09:00&nbsp;Uhr PT) mit einem Anstieg von 313&nbsp;% gegenüber der Vorwoche seinen Höhepunkt. Der tägliche Traffic war am Wahltag um 139&nbsp;% und am Vortag um 68&nbsp;% höher.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gXUO3FvfuPf9QvUrJ7C7a/c2eaf29a518306b2f783ecd1847edae9/BLOG-2618_17.png" alt="BLOG-2618 17" class="kg-image" width="1999" height="603" loading="lazy">
+	</figure>
+	<p>Social-Media-Websites/-Anwendungen, insbesondere <b>Microblogging-Plattformen</b> wie X und Threads, waren am Wahltag ebenfalls betroffen. Der DNS-Traffic für diese Microblogging-Plattformen erreichte seinen Höhepunkt um 22:00&nbsp;Uhr ET (19:00&nbsp;Uhr PT), was mit den Spitzenwerten für Nachrichtenorganisationen und Meinungsforschungsdienste übereinstimmt und einen Anstieg von 91&nbsp;% im Vergleich zur Vorwoche bedeutet. In dieser Microblogging-Kategorie stieg der tägliche DNS-Traffic am Wahltag um 12&nbsp;% gegenüber der Vorwoche.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LUkx7e6abYPbqWH9vpXs1/bd9da044ebafafffa22d22fbf26e34f3/BLOG-2618_18.png" alt="BLOG-2618 18" class="kg-image" width="1999" height="606" loading="lazy">
+	</figure>
+	<p>Was die beiden primären Präsidentschaftskandidaten betrifft, so war der DNS-Traffic für ihre Websites und die Websites ihrer Parteien am Tag vor der Wahl viel höher als am Wahltag. Am 4. November 2024 stieg der tägliche DNS-Traffic auf Websites von <b>Trump und den Republikanern</b> im Vergleich zur Vorwoche um 59&nbsp;%, während der Traffic auf Websites von <b>Harris und den Demokraten</b>, die in der Vorwoche einen stärkeren Anstieg des DNS-Traffics verzeichneten, um 4&nbsp;% zunahm.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jZy22GPey40FDg3gxjBg1/a99412b55d6b032117051d6f3f1f38f3/BLOG-2618_19.png" alt="BLOG-2618 19" class="kg-image" width="1999" height="620" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sDIbWHfRmyt0vqifwl72F/4f61cf9c1d5186cde5e611ec2f9a3028/BLOG-2618_20.png" alt="BLOG-2618 20" class="kg-image" width="1999" height="612" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="candidate-related-email-phishing-trends">E-Mail-Phishing-Trends um die Kandidaten</h2>
+		<a href="https://blog.cloudflare.com/#candidate-related-email-phishing-trends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aus Sicht der Cybersicherheit ziehen trendige <a href="https://blog.cloudflare.com/paris-2024-olympics-recap"><u>Ereignisse</u></a>, Themen und Personen oft mehr E-Mails an, darunter auch bösartige, Phishing- und Spam-Nachrichten. Unsere <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends"><u>frühere</u></a> Analyse befasste sich mit E-Mail-Trends zu „Joe Biden“ und „Donald Trump“ seit Januar. In der Zwischenzeit haben wir sie aktualisiert und darin auch Kamala Harris nach dem <a href="https://blog.cloudflare.com/internet-security-trends-2024-us-democratic-convention"><u>Parteitag der Demokraten</u></a> und die <a href="https://blog.cloudflare.com/how-the-harris-trump-us-presidential-debate-influenced-internet-traffic"><u>Debatte zwischen Harris und Trump berücksichtigt</u></a>.</p>
+	<p>Vom 1. Juni bis zum 4. November 2024 verarbeitete der <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer"><u>Cloud Email Security Service von Cloudflare</u></a> über 19 Millionen E-Mails mit „Donald Trump“ oder „Kamala Harris“ in der Betreffzeile&nbsp;– 13,9 Millionen für Trump und 5,3 Millionen für Harris. Fast die Hälfte dieser E-Mails (49&nbsp;%) wurde seit September verschickt. In den letzten 10 Tagen des Wahlkampfs (seit dem 24. Oktober) wurde Harris in 800.000 E-Mail-Betreffzeilen erwähnt und Trump in 1,3 Millionen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21O0KXy0aKPf5zX8KI186y/60c89b6c9d0cedc8f2791943fc50f2ff/BLOG-2618_21.png" alt="BLOG-2618 21" class="kg-image" width="1999" height="497" loading="lazy">
+	</figure>
+	<p>Seit dem 1. Juni wurden 12&nbsp;% der E-Mails, in denen Trump erwähnt wurde, als Spam markiert, und 1,3&nbsp;% wurden als bösartig oder Phishing gekennzeichnet. Diese Rate ist seit dem 1. September gesunken: nur 3&nbsp;% wurden als Spam und 0,3&nbsp;% als bösartig markiert. Bei E-Mails, in denen Harris erwähnt wurde, waren die Raten niedriger: 0,6&nbsp;% wurden seit Juni als Spam und 0,2&nbsp;% als böswillig eingestuft, was sich seit dem 1. September leicht auf 1,2&nbsp;% Spam und 0,2&nbsp;% böswillig erhöhte. Trump wurde in den Betreffzeilen der E-Mails häufiger erwähnt als Harris und war in einem höheren Prozentsatz der Spam- und bösartigen E-Mails zu finden.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MeF2avFWsQhJiq1emyBtr/2e9f3b785c1bed52394b52f720f8c84b/BLOG-2618_22.png" alt="BLOG-2618 22" class="kg-image" width="1778" height="596" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="conclusion-keeping-track-of-elections">Fazit: Wahlen im Blick behalten</h2>
+		<a href="https://blog.cloudflare.com/#conclusion-keeping-track-of-elections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Obwohl Cloudflare einen bemerkenswerten Anstieg von DDoS-Angriffen auf politische und wahlkampfrelevante Websites beobachtete und Milliarden von böswilligen Anfragen blockierte, führten diese Angriffe aufgrund von Planung und proaktiver Verteidigung zu keinen nennenswerten Störungen. Wir teilen die <a href="https://www.cisa.gov/news-events/news/statement-cisa-director-easterly-security-2024-elections" target="_blank" rel="noopener noreferrer"><u>Ansicht</u></a> der Cybersecurity and Infrastructure Security Agency, dass „unsere Wahlinfrastruktur noch nie so sicher war“, und schließen uns deren Schlussfolgerung an: „Wir haben keine Hinweise auf böswillige Aktivitäten, die sich wesentlich auf die Sicherheit oder Integrität unserer Wahlinfrastruktur ausgewirkt haben.“ Es ist für das Funktionieren der Demokratie von entscheidender Bedeutung, dass unsere Wahlen sicher und ausfallsicher sind, und Cloudflare ist stolz darauf, dazu beigetragen zu haben.&nbsp;</p>
+	<p>Wenn Sie weitere Trends und Erkenntnisse über das Internet und insbesondere über Wahlen verfolgen möchten, können Sie <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> und insbesondere unseren neuen Bericht „<a href="https://radar.cloudflare.com/reports/elections-2024" target="_blank" rel="noopener noreferrer"><u>2024 Elections Insights</u></a>“ einsehen, der nach den jeweiligen wichtigen Wahlereignissen des Jahres stets aktualisiert wird.</p>
+</div>

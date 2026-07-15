@@ -1,0 +1,70 @@
+<div class="mb2 gray5">3 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/mantis-botnet">English</a>, <a href="https://blog.cloudflare.com/zh-tw/mantis-botnet">繁體中文</a>, <a href="https://blog.cloudflare.com/ru-ru/mantis-botnet">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/mantis-botnet">Polski</a> y <a href="https://blog.cloudflare.com/zh-cn/mantis-botnet">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EX7prnZCvxvRUIygx44R4/0a3f739ba5629771c4d0da0f0402ddfd/mantis-botnet.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En junio de 2022, informamos del mayor ataque DDoS HTTPS que hemos mitigado hasta ahora, un <a href="https://blog.cloudflare.com/es-es/26m-rps-ddos-es-es">ataque de 26 millones de solicitudes por segundo</a>, el mayor de todos los tiempos. Nuestros sistemas lo detectaron y mitigaron de manera automática, al igual que otros muchos más. Desde entonces, hemos estado siguiendo la pista de esta <a href="https://www.cloudflare.com/es-es/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer">botnet</a>, a la que hemos bautizado con el nombre de "Mantis", y sus ataques contra casi 1000 clientes de Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xaCCr2mMsZGNyU53yJFTP/528dd993a62021c29f531b7034347923/image5-7.png" alt="Mantis - the most powerful botnet to date" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Los clientes que usan el <a href="https://www.cloudflare.com/es-es/waf" target="_blank" rel="noopener noreferrer">WAF</a> y la <a href="https://www.cloudflare.com/es-es/cdn" target="_blank" rel="noopener noreferrer">CDN</a> de Cloudflare están protegidos contra los ataques DDoS HTTP, incluidos los de Mantis. Consulta la parte inferior de este blog para saber más sobre la mejor manera de proteger tus propiedades de Internet contra los ataques DDoS.</p>
+	<div class="flex anchor relative">
+		<h3 id="have-you-met-mantis">¿Conoces a Mantis?</h3>
+		<a href="https://blog.cloudflare.com/#have-you-met-mantis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Llamamos "Mantis" a la botnet que lanzó el ataque DDoS de 26 millones de solicitudes por segundo debido a su parecido con la "<a href="https://es.wikipedia.org/wiki/Stomatopoda" target="_blank" rel="noopener noreferrer">gamba Mantis</a>", pequeña, pero voraz. Las gambas Mantis, también conocidas como "boxeadoras", son muy pequeñas, su longitud es inferior a 10 cm, pero sus pinzas son tan potentes que pueden generar una onda expansiva con una fuerza de 1500 <a href="https://es.wikipedia.org/wiki/Newton_(unidad)" target="_blank" rel="noopener noreferrer">newtons</a> a velocidades de 83 km/h desde el principio. De forma parecida, la botnet Mantis opera con un pequeño ejército de aproximadamente 5000 bots, pero juntos generan una fuerza inmensa, responsable de los mayores ataques DDoS HTTP que hayamos observado.</p>
+	<p>Mantis shrimp. Source: <a href="https://en.wikipedia.org/wiki/File:OdontodactylusScyllarus2.jpg" target="_blank" rel="noopener noreferrer">Wikipedia</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1V9rattTw2PrfgiSOpcd9Q/96926bd3d66f5f94146b58be97e099a5/image7-3.png" alt="Image of the Mantis shrimp from Wikipedia" class="kg-image" width="1800" height="890" loading="lazy">
+
+	</figure>
+	<p>Gamba Mantis. <a href="https://en.wikipedia.org/wiki/File:OdontodactylusScyllarus2.jpg" target="_blank" rel="noopener noreferrer">Fuente: Wikipedia</a>.</p>
+	<p>La botnet Mantis fue capaz de generar un ataque de 26 millones de solicitudes HTTPS por segundo utilizando solo 5000 bots, repito, 26 millones de solicitudes HTTPS por segundo con solo 5000 bots. Eso supone una media de 5200 solicitudes HTTPS por bot. Generar 26 millones de solicitudes HTTP ya es un trabajo titánico sin la sobrecarga adicional de establecer una conexión segura, pero Mantis lo hizo a través de <a href="https://www.cloudflare.com/es-es/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer">HTTPS</a>. Los ataques DDoS HTTPS son más caros debido a los recursos informáticos que requieren, ya que establecer una conexión segura y encriptada <a href="https://www.cloudflare.com/es-es/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS</a> conlleva un coste muy elevado, lo que destaca y recalca la fuerza única de esta botnet.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70DLbkvVYf1WA6sJWGbkAr/4e110635a109cf8f0d02c07971f950c5/image1-5.png" alt="Graph of the 26 million requests per second DDoS attack" class="kg-image" width="1438" height="660" loading="lazy">
+
+	</figure>
+	<p>A diferencia de las botnets "tradicionales" que están formadas por <a href="https://www.cloudflare.com/es-es/learning/ddos/glossary/internet-of-things-iot" target="_blank" rel="noopener noreferrer">dispositivos IoT (Internet de las cosas)</a> como DVR, cámaras de circuito cerrado o detectores de humo, Mantis utiliza máquinas virtuales y servidores potentes pirateados. Esto significa que cada bot dispone de muchos más recursos informáticos, lo que se traduce en esta fuerza combinada para noquear a sus objetivos.</p>
+	<p>Mantis es la evolución de la botnet Meris, que se basaba en dispositivos MikroTik, pero Mantis se ha expandido para incluir una variedad de plataformas de máquinas virtuales. Además, admite la ejecución de varios proxies HTTP para lanzar ataques. El nombre de Mantis se eligió por su parecido con "Meris" para reflejar su origen, y demostrar su evolución para derrumbar a sus objetivos a gran velocidad. En las últimas semanas, Mantis ha estado especialmente activa contra casi 1000 clientes de Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cfFRnyCyBOEE0mR9PMPlE/97c703de86ec5695ab95d3440e9dd478/image4-6.png" alt="Graphic design of a botnet" class="kg-image" width="1800" height="1012" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="who-is-mantis-attacking">¿A quién ataca Mantis?</h3>
+		<a href="https://blog.cloudflare.com/#who-is-mantis-attacking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En nuestro último <a href="https://blog.cloudflare.com/es-es/ddos-attack-trends-for-2022-q1-es-es">informe sobre las tendencias de los ataques DDoS</a>, señalamos la tendencia al alza de los ataques DDoS HTTP. En el último trimestre, los ataques DDoS HTTP aumentaron un 72 % y, sin duda, Mantis ha contribuido a ese crecimiento. En el último mes, Mantis ha lanzado más de 3000 ataques DDoS HTTP contra clientes de Cloudflare.</p>
+	<p>Si echamos un vistazo a los objetivos de Mantis, podemos ver que Internet y el sector de las telecomunicaciones fueron los más afectados, con un 36 % de la cuota de ataque. El segundo principal objetivo fue el sector de la información, medios de comunicación y editorial, seguido por el sector de los videojuegos y finanzas.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2P5E37ein7mqPYTGCT02hz/18bdce16fd1826deae687ac2981bc17e/image2-7.png" alt="" class="kg-image" width="1600" height="1018" loading="lazy">
+
+	</figure>
+	<p>Si nos fijamos en la ubicación, podemos ver que más del 20 % de los ataques DDoS tuvieron como objetivo a empresas con sede en Estados Unidos, más del 15 % se dirigieron contra empresas rusas, y menos del 5 % fueron ataques contra empresas de Turquía, Francia, Polonia, Ucrania, etc.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LblhXaFqfYAkbYsd8U3YC/8ee3cfc1a48f04032c22268a8b7194e7/image6-4.png" alt="" class="kg-image" width="1840" height="1142" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-to-protect-against-mantis-and-other-ddos-attacks">Cómo protegerse contra Mantis y otros ataques DDoS</h3>
+		<a href="https://blog.cloudflare.com/#how-to-protect-against-mantis-and-other-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El <a href="https://www.cloudflare.com/es-es/ddos" target="_blank" rel="noopener noreferrer">sistema de protección DDoS automatizado</a> de Cloudflare aprovecha la huella digital dinámica para detectar y mitigar los ataques DDoS. El sistema se presenta a los clientes como el <a href="https://blog.cloudflare.com/http-ddos-managed-rules">conjunto de reglas administradas de DDoS HTTP</a>, que está habilitado y aplica acciones de mitigación por defecto, así que si no has hecho ningún cambio, no te preocupes, no tienes que hacer nada, estás protegido. También puedes revisar nuestras guías "<a href="https://support.cloudflare.com/hc/en-us/articles/200170166" target="_blank" rel="noopener noreferrer">Prácticas recomendadas: medidas preventivas de DDoS</a>" y "<a href="https://support.cloudflare.com/hc/en-us/articles/200170196-Responding-to-DDoS-attacks" target="_blank" rel="noopener noreferrer">Cómo responder a los ataques DDoS</a>" si deseas consejos y recomendaciones adicionales sobre cómo optimizar tus configuraciones de Cloudflare.Si solo utilizas <a href="https://www.cloudflare.com/es-es/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> o <a href="https://www.cloudflare.com/es-es/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a>, pero también operas con aplicaciones HTTP que no están protegidas por Cloudflare, te recomendamos que las incluyan en el <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site" target="_blank" rel="noopener noreferrer">servicio WAF/CDN de Cloudflare</a> para beneficiarte de la protección a la capa 7.</p>
+</div>

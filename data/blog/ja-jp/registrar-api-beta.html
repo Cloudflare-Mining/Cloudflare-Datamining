@@ -1,0 +1,243 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/registrar-api-beta">English</a>および<a href="https://blog.cloudflare.com/ko-kr/registrar-api-beta">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PfGp6zXziQeEqtKsh7QMc/25838361661682720a882dd04519a7d4/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>本日、Cloudflare Registrarの次の章である<b>Registrar APIのベータ版</b>を発表します。</p>
+	<p>Registrar APIは、ドメインの検索、可用性の確認、プログラムによる登録を可能にします。つまり、ドメインを購入すると、アイデアが実現し始めた瞬間に、エージェント型のワークフローから選ぶ必要がなくなるのです。</p>
+	<p>Registrar APIは、Cloudflareを使用するビルダーからの最も明確な要求の1つです。エージェントワークフローがエディター、端末、エージェント駆動型ツールに移行するにつれ、ドメイン登録は明らかに埋めなければならないギャップになりました。</p>
+	<p>7年前に<a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer"><u>Cloudflare Registrar</u></a>を立ち上げたとき、その考えはシンプルでした。ドメインは、上乗せ費用やゲーム数なしで、<a href="https://www.cloudflare.com/application-services/solutions/low-cost-domain-names" target="_blank" rel="noopener noreferrer"><u>原価で</u></a>提供される必要があります。それ以来、Cloudflare Registrarは、次のプロジェクトを構築する場所としてCloudflareを選ぶ人が増えるにつれて、世界で最も急速に成長するレジストラの1つになりました。</p>
+	<div style="position: relative; padding-top: 53.93225331369662%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/8e4b034c73d9e0a94c2070e9d1401bf6/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F8e4b034c73d9e0a94c2070e9d1401bf6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p><i><sup>AIコードエディター内のエージェントに名前のアイデアを生成させ、ドメインを検索、確認、購入するよう指示する機能です。</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="built-for-agents-and-automation">エージェントと自動化のために構築</h2>
+		<a href="https://blog.cloudflare.com/#built-for-agents-and-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Registrar APIは、エディター内、デプロイメントパイプライン、バックエンドサービス、エージェント駆動型ワークフローなど、ソフトウェアが既に構築されている場所であればどこでもうまく動作するように設計されています。</p>
+	<p>ワークフローは意図的にシンプルで、マシンに使いやすいものにしています。<code><b>検索</b></code>は候補者名を返します。リアルタイムの可用性と価格をご<code><b>確認</b></code>いただけます。<code><b>Register</b></code> は最小限のリクエストを行い、すぐに完了するか、より長い場合はポーリングされるワークフロー型のレスポンスを返します。そのため、従来のAPIクライアントやユーザーに代わって動作する<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>にも簡単に利用できます。</p>
+	<p>実際には、これはすべて、エージェントが名前を提案し、どれが実際に登録可能であることを確認し、承認のために価格を提示し、ユーザーがすでに使用しているツールを強制することなく、購入を完了することを意味します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-registrar-api">Registrar API</h2>
+		<a href="https://blog.cloudflare.com/#the-registrar-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>その核となる、このRegistrar APIの最初のリリースは、3つのことを行います：</p>
+	<ul>
+		<li>
+			<p>ドメインを<code><b>検索</b></code></p>
+		</li>
+		<li>
+			<p>可用性を<code><b>確認</b></code></p>
+		</li>
+		<li>
+			<p>ドメインを<code><b>登録</b></code></p>
+		</li>
+	</ul>
+	<p>厳選された人気のあるTLDについては、<a href="https://developers.cloudflare.com/api/resources/registrar" target="_blank" rel="noopener noreferrer"><u>Registrar API ドキュメント</u></a>をご覧ください。サポートされている場合、<a href="https://www.cloudflare.com/learning/dns/glossary/premium-domains" target="_blank" rel="noopener noreferrer"><u>プレミアムドメイン</u></a>も登録できますが、明示的な料金確認が必要です。</p>
+	<p>Registrar APIは、完全なCloudflare APIの一部です。つまり、エージェントは<a href="https://blog.cloudflare.com/code-mode-mcp"><u>Cloudflare MCP</u></a>を通じて、すでに今日からこれにアクセスできます。別の統合やカスタムツール定義は必要ありません。Cursor、Claude Code、または任意のMCP互換環境で作業するエージェントは、Cloudflare APIサーフェス全体をカバーするのと同じ<code>search()</code>および<code>execute()</code>パターンを使用して、Registrarエンドポイントを発見し、呼び出すことができます。APIが当社の仕様の一部になった瞬間から、エージェントのための準備が整ったのです。</p>
+	<p><i>実際の様子</i>：</p>
+	<p>あなたは、お気に入りのAIコードエディターで新しいプロジェクトを構築しています。スキャフォールディングの途中で、エージェントに「良い.devドメインを見つけて、ドメインを購入して登録するだけです。」</p>
+	<p>エージェントは、あなたのプロジェクトに基づいて候補者名を検索します。選んだものの可用性をリアルタイムでチェックし、価格を確認します。答えはイエス。アカウントのデフォルトの連絡先情報と支払い方法を自動的に使用して、ドメインを登録します。レスポンスを読む頃には、ドメインは登録され、プライバシーがオンになります。</p>
+	<p>3つのAPI呼び出し。わずか数秒です</p>
+	<p><i>実際のコード例</i>:</p>
+	<div class="flex anchor relative">
+		<h3 id="step-1-search-for-domain-names">ステップ1：ドメイン名を<code><b>検索</b></code></h3>
+		<a href="https://blog.cloudflare.com/#step-1-search-for-domain-names" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code><b>検索</b></code>エンドポイントを使用して、ドメイン拡張子の有無にかかわらず、ドメインクエリを送信します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async () =&gt; {
+  return cloudflare.request({
+    method: "GET",
+    path: `/accounts/${accountId}/registrar/domain-search`,
+    query: { q: "acme corp", limit: 3 },
+  });
+}</code></pre>
+
+	<pre class="language-JSON"><code class="language-JSON">{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "domains": [
+      {
+        "name": "acmecorp.com",
+        "registrable": true,
+        "tier": "standard",
+        "pricing": {
+          "currency": "USD",
+          "registration_cost": "8.57",
+          "renewal_cost": "8.57"
+        }
+      },
+      {
+        "name": "acmecorp.dev",
+        "registrable": true,
+        "tier": "standard",
+        "pricing": {
+          "currency": "USD",
+          "registration_cost": "10.11",
+          "renewal_cost": "10.11"
+        }
+      },
+      {
+        "name": "acmecorp.app",
+        "registrable": true,
+        "tier": "standard",
+        "pricing": {
+          "currency": "USD",
+          "registration_cost": "11.00",
+          "renewal_cost": "11.00"
+        }
+      }
+    ]
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="step-2-check-availability-and-pricing">ステップ2：可用性および料金を<code><b>確認</b></code>する</h3>
+		<a href="https://blog.cloudflare.com/#step-2-check-availability-and-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>検索結果は高速ですが、権威に欠けます。キャッシュされたデータに基づいており、一般的な名前については数秒で可用性が変わることがあります。レジストリに直接クエリーを<code><b>確認</b></code>する。登録する直前に電話をかけて、その価格反応を信頼できる情報源として使用すること。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async () =&gt; {
+  return cloudflare.request({
+    method: "POST",
+    path: `/accounts/${accountId}/registrar/domain-check`,
+    body: { domains: ["acmecorp.dev"] },
+  });
+}</code></pre>
+
+	<pre class="language-JSON"><code class="language-JSON">{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "domains": [
+      {
+        "name": "acmecorp.dev",
+        "registrable": true,
+        "tier": "standard",
+        "pricing": {
+          "currency": "USD",
+          "registration_cost": "10.11",
+          "renewal_cost": "10.11"
+        }
+      }
+    ]
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="step-3-register-the-domain">手順3：<code><b>ドメインを登録する</b></code></h3>
+		<a href="https://blog.cloudflare.com/#step-3-register-the-domain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>必須のフィールドはドメイン名だけです。WHOISプライバシー保護は、追加料金なしでデフォルトで有効になっています。アカウントにデフォルトの登録者連絡先がある場合、APIは自動的にそれを使用します。それ以外は、リクエストのインラインで連絡先の詳細を提供することができます。デフォルトの支払方法は自動的に使用されます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async () =&gt; {
+  return cloudflare.request({
+    method: "POST",
+    path: `/accounts/${accountId}/registrar/registrations`,
+    body: { domain_name: "acmecorp.dev" },
+  });
+}</code></pre>
+
+	<pre class="language-JSON"><code class="language-JSON">{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "domain_name": "acmecorp.dev",
+    "state": "succeeded",
+    "completed": true,
+    "created_at": "2025-10-27T10:00:00Z",
+    "updated_at": "2025-10-27T10:00:03Z",
+    "context": {
+      "registration": {
+        "domain_name": "acmecorp.dev",
+        "status": "active",
+        "created_at": "2025-10-27T10:00:00Z",
+        "expires_at": "2026-10-27T10:00:00Z",
+        "auto_renew": true,
+        "privacy_enabled": true,
+        "locked": true
+      }
+    },
+    "links": {
+      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",
+      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"
+    }
+  }
+}</code></pre>
+	<p>登録は通常、数秒以内に同期完了します。時間がかかる場合、APIは202 Accepted (受理済み) を返し、ポーリングするワークフローのURLを示します。レスポンスの形状はどちらの方法でも同じで、特別なケースは必要ありません。プレミアムドメインの場合、<code><b>Check</b></code>レスポンスはレジストリが設定した正確な価格を返し、<code><b>Register</b></code>リクエストはそれを明示的な料金確認としてそのまま返します。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-note-on-agents-and-non-refundable-purchases">エージェントと返金できない購入に関する注意事項</h3>
+		<a href="https://blog.cloudflare.com/#a-note-on-agents-and-non-refundable-purchases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントがお客様に代わってドメインを登録する場合、デフォルトの支払方法に請求されます。ドメイン登録は、一度完了すると返金することはできません。適切に設計されたエージェントフローは、登録エンドポイントを呼び出す前にユーザーにドメイン名と価格を確認する必要があります。<code><b>Check</b></code>ステップは、その確認ステップを明示的かつ明確にするために存在します。APIは、それを正しく構築するためのツールを提供します。その責任はエージェントのロジックにあります。</p>
+	<p>デフォルトでは、APIドキュメントには、登録API呼び出し中にユーザーからの許可を求めるためのエージェント向けの明示的な指示があります。<b>それでも、承認なしにドメインを購入しないエージェントフローを設計するのは人間の責任です</b>。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-cloudflare-can-do-this-differently">Cloudflareが他社と異なる理由</h2>
+		<a href="https://blog.cloudflare.com/#why-cloudflare-can-do-this-differently" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ドメインワークフローを追加する多くの開発者プラットフォームとCloudflareが異なる点は、Cloudflareがレジストラ自体を運営している点です。つまり、プロジェクトが構築・デプロイされるのと同じプラットフォームで、ドメインの検索、登録、管理が可能になるということです。上にマークアップを追加する必要はありません。</p>
+	<p>卸売価格は、Cloudflareのレジストラモデルの中核です。Cloudflareでは、レジストリが請求する料金と同じ額を請求します。ダッシュボードからドメインを登録する場合でも、APIを直接呼び出す場合でも、エージェントにその代行を依頼する場合でも当てはまります。</p>
+	<div class="flex anchor relative">
+		<h2 id="where-the-api-goes-next">APIの次のステップ</h2>
+		<a href="https://blog.cloudflare.com/#where-the-api-goes-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このベータ版は、ドメインライフサイクルの最初の重要な瞬間である、検索、チェック、登録に焦点を当てています。私たちは、ドメインが作成された瞬間だけでなく、購入された後もプログラムで管理できるように、コアレジストラ体験のより多くをカバーするためにAPIの拡張に積極的に取り組んでいます。これには、移管、更新、連絡先更新などのライフサイクルの要素が含まれます。</p>
+	<p>APIは、より広範なRegistrar-as-a-Serviceサービスへの第一歩です。そのサービスの開発は現在進行中で、今年後半のローンチを目指しています。APIの拡大に伴い、Webサイトビルダー、ホスティングプロバイダー、AI製品、その他のマルチテナントアプリケーションなどのプラットフォームは、ドメイン登録を独自のユーザー体験の一部にすることができるようになります。ユーザーは、すでに構築しているサービスやエージェント主導のワークフローから離れることなく、ドメインを検索し、購入してプロビジョニングすることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">本日構築を開始</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Registrar APIは、ビルダーが要求したから存在するのです。ベータ版として利用可能になったので、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>、<a href="https://x.com/cloudflare" target="_blank" rel="noopener noreferrer"><u>X</u></a>、または<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>で、皆さんが構築されたものを見せていただければ幸いです。
+
+		利用開始：</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/registrar/registrar-api" target="_blank" rel="noopener noreferrer"><u>Registrar API ガイド</u></a>を確認する</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/api/resources/registrar" target="_blank" rel="noopener noreferrer"><u>APIリファレンス</u></a>をご覧ください</p>
+		</li>
+	</ul>
+	<p>何かが不足している場合、ワークフローが中断している場合、またはより大きなプラットフォームのユースケースに向けて構築している場合は、当社にお知らせください。ドメインの更新や移管などに対応するため、APIの機能拡張にすばやく取り組んでいます。</p>
+	<p>皆さんがどんなものを構築されるのか、楽しみにしています。</p>
+	<p><i>Registrar APIベータ版の提供に貴重な貢献をしてくれたLucy Dryaeva氏とFred Pinto氏に感謝をお伝えします。</i></p>
+</div>

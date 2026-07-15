@@ -1,0 +1,88 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">English</a>, en <a href="https://blog.cloudflare.com/de-de/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">日本語</a> et en <a href="https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77iwaoCtPCaTit1OPSmWHU/70b5ad49e43f005568c3dc8d59711e38/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="massive-route-leak-impacts-major-parts-of-the-internet-including-cloudflare">Une fuite massive de routes a eu un impact sur de nombreuses parties d'Internet, y compris sur Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#massive-route-leak-impacts-major-parts-of-the-internet-including-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="what-happened"><b>Que s'est-il passé ?</b></h4>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aujourd'hui à 10h30 UTC, Internet a connu une sorte de mini crise cardiaque. Une petite entreprise du nord de la Pennsylvanie est devenue le chemin privilégié de nombreuses routes Internet à cause de Verizon (AS701), un important fournisseur de transit Internet. C’est un peu comme si Waze venait à diriger le trafic d’une autoroute complète vers une petite rue de quartier : de nombreux sites Web sur Cloudflare et beaucoup d’autres fournisseurs étaient indisponibles depuis une grande partie du réseau. Cet incident n'aurait jamais dû arriver, car Verizon n'aurait jamais dû transmettre ces itinéraires au reste d’Internet. Pour en comprendre les raisons, lisez la suite de cet article.</p>
+	<p>Nous avons déjà écrit un certain nombre d’articles par le passé sur ces <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">événements malheureux</a> qui sont plus fréquents qu’on ne le pense. Cette fois, les effets ont pu être observés dans le monde entier. Aujourd’hui, le problème a été aggravé par l’implication d’un produit « Optimiseur BGP » de <a href="https://www.noction.com" target="_blank" rel="noopener noreferrer">Noction</a>. Ce produit dispose d’une fonctionnalité qui permet de diviser les préfixes IP reçus en parties contributives plus petites (appelées « préfixes plus spécifiques »). Par exemple, notre propre route IPv4 104.20.0.0/20 a été transformée en 104.20.0.0/21 et 104.20.8.0/21. Imaginons par exemple qu’il existe un panneau unique acheminant le trafic de Paris vers la Normandie et que ce panneau soit remplacé par deux panneaux, l’un pour Le Havre, l’autre pour Dieppe. En divisant ces blocs IP importants en parties plus petites, un réseau dispose d’un mécanisme lui permettant de diriger le trafic à l’intérieur de son réseau, mais cette division n’aurait jamais dû être annoncée au monde entier. Le fait qu’elle l’ait été a entraîné la panne survenue aujourd’hui.</p>
+	<p>Pour expliquer ce qui s’est passé ensuite, rappelons tout d’abord brièvement le fonctionnement de la « carte » de base d’Internet. Le terme « Internet » désigne littéralement un réseau de réseaux, constitué de réseaux appelés Autonomous Systems ou systèmes autonomes (abrégé AS). Chacun de ces réseaux possède un identifiant unique, son numéro d’AS. Tous ces réseaux sont interconnectés par un protocole de routage appelé Border Gateway Protocol (BGP). Le protocole BGP réunit ces réseaux et construit la « carte » Internet qui permet au trafic de circuler, par exemple, de votre fournisseur d'accès à Internet vers un site Web populaire situé à l'autre bout du monde.</p>
+	<p>À l’aide du protocole BGP, les réseaux échangent des informations sur les itinéraires : comment y accéder quel que soit votre emplacement. Ces itinéraires peuvent être soit des itinéraires spécifiques, comme lorsque vous recherchez une ville sur votre GPS, soit des itinéraires plus généraux, comme lorsque vous demandez à votre GPS de vous orienter vers une région. C'est précisément là que le bât a blessé aujourd'hui.</p>
+	<p>Un fournisseur d'accès Internet de Pennsylvanie (<a href="https://bgp.he.net/AS33154" target="_blank" rel="noopener noreferrer">AS33154</a> - DQE Communications) utilisait un optimiseur BGP sur son réseau, ce qui signifie qu’il possédait de nombreux itinéraires plus spécifiques au sein même de son réseau. Les itinéraires spécifiques remplacent les itinéraires plus généraux (pour conserver l’analogie avec Waze, un itinéraire, par exemple, vers le Palais de l’Elysée est beaucoup plus spécifique qu'un itinéraire vers Paris).</p>
+	<p>DQE a annoncé ces itinéraires spécifiques à son client (<a href="https://bgp.he.net/AS396531" target="_blank" rel="noopener noreferrer">AS396531</a> - Allegheny Technologies Inc). Toutes ces informations de routage ont ensuite été envoyées à leur autre fournisseur de transit (<a href="https://bgp.he.net/AS701" target="_blank" rel="noopener noreferrer">AS701</a> - Verizon), qui a ensuite informé tout Internet de l’existence de tels itinéraires « optimisés ». Ces itinéraires étaient supposés « optimisés » dans la mesure où ils étaient plus précis, plus spécifiques.</p>
+	<p>La fuite aurait dû s'arrêter au niveau de Verizon. Cependant, contrairement aux bonnes pratiques définies ci-dessous, l’absence de filtrage par Verizon a créé un incident majeur, entraînant des pannes pour de nombreux services Internet, tels qu’<a href="https://twitter.com/atoonk/status/1143143943531454464" target="_blank" rel="noopener noreferrer">Amazon, Linode et Cloudflare</a>.</p>
+	<p>En d’autres termes, Verizon, Allegheny et DQE ont dû soudainement faire face à un afflux massif d’internautes tentant d’accéder à ces services via leur réseau. Aucun de ces réseaux n’était équipé de manière appropriée pour faire face à cette augmentation considérable du trafic, ce qui a entraîné une interruption du service. Même s'ils avaient disposé d’une capacité suffisante, DQE, Allegheny et Verizon n'étaient <b>pas</b> autorisés à dire qu'ils avaient le meilleur itinéraire pour Cloudflare, Amazon, Linode, etc.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pCvQ96MWTmJVVbpqquR2b/4be9ff9aceb6dccf8cd0c889d898c24f/leak2-2.png" alt="" class="kg-image" width="1600" height="939" loading="lazy">
+
+	</figure>
+	<p>Processus de fuite BGP avec un optimiseur BGP</p>
+	<p>Au cours de l'incident, nous avons observé au moment le plus critique une perte d'environ 15 % de notre trafic mondial.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65rX7ImarUptmbURA6PAw3/e8e8d45f09a411bd4ae2f31b8cc23a0d/Screenshot-2019-06-24-at-19.22.34.png" alt="" class="kg-image" width="1600" height="282" loading="lazy">
+
+	</figure>
+	<p>Niveaux de trafic chez Cloudflare au cours de l'incident.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-could-this-leak-have-been-prevented">Comment cette fuite aurait-elle pu être évitée ?</h4>
+		<a href="https://blog.cloudflare.com/#how-could-this-leak-have-been-prevented" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cette fuite aurait pu être évitée de différentes manières :</p>
+	<p>Une session BGP peut être configurée avec une limite fixe de préfixes à recevoir. En d’autres termes, un routeur peut décider de fermer une session si le nombre de préfixes dépasse le seuil. Si Verizon avait mis en place une limite de préfixes, l’incident ne se serait pas produit. La mise en place des limites fait partie des bonnes pratiques. Verizon aurait pu parfaitement définir ce type de limites. Il n’existe donc aucune raison, autre que la négligence ou la paresse, pour justifier que la société ne l'ait pas fait.</p>
+	<p>Une autre manière pour les opérateurs de réseau d’empêcher les fuites de ce type consiste à appliquer un filtrage IRR. L’IRR (Internet Routing Registry) est le registre de routage d’Internet, et les réseaux peuvent ajouter des entrées à ces bases de données distribuées. Les autres opérateurs de réseau peuvent ensuite utiliser ces enregistrements IRR pour générer des listes de préfixes spécifiques pour les sessions BGP avec leurs pairs. Si le filtrage IRR avait été utilisé, aucun des réseaux concernés n'aurait accepté les préfixes plus spécifiques défectueux. Il est pour le moins choquant que Verizon n’ait appliqué aucun de ces filtres au cours de sa session BGP avec Allegheny Technologies, alors que le filtrage IRR existe (et est bien documenté) depuis plus de 24 ans. Le filtrage IRR ne représentait pas un coût supplémentaire pour Verizon et n’aurait en aucune manière limité son service. Comme nous l’avons déjà dit, le fait que ce filtrage n’ait pas été mis en œuvre ne peut s’expliquer que par la négligence ou la paresse.</p>
+	<p>La RPKI que nous avons mise en place et déployée l’année dernière à l’échelle mondiale vise à prévenir ce type de fuite. Elle active le filtrage sur le réseau d'origine et la taille des préfixes. Les préfixes que Cloudflare annonce sont signés pour une taille maximale de 20. La RPKI indique alors que tout préfixe plus spécifique ne doit pas être accepté, quel que soit le chemin. Pour que ce mécanisme soit opérationnel, un réseau doit activer BGP Origin Validation. De nombreux fournisseurs tels que <a href="https://twitter.com/jobsnijders/status/1094976832267522048" target="_blank" rel="noopener noreferrer">AT&amp;T l'ont déjà activé</a> sur leur réseau.</p>
+	<p>Si Verizon avait utilisé la RPKI, elle se serait rendue compte que les routes annoncées n'étaient pas valides, et ces dernières auraient été automatiquement ignorées par le routeur.</p>
+	<p>Cloudflare encourage tous les opérateurs de réseau à <a href="https://blog.cloudflare.com/rpki-details">déployer la RPKI</a> dès maintenant !</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6opKKqqitidaqudxSRi9iP/1c808d3a2552e50a22ff4fe693717438/leak3-2.png" alt="" class="kg-image" width="1600" height="664" loading="lazy">
+
+	</figure>
+	<p>Prévention des fuites d'itinéraire à l'aide de l’IRR, la RPKI et les limites de préfixes</p>
+	<p>Toutes les suggestions ci-dessus sont bien résumées dans le projet MANRS (<a href="https://www.manrs.org" target="_blank" rel="noopener noreferrer">Normes d’accord mutuel sur la sécurité du routage.</a>)</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-was-resolved"><b>Résolution de l’incident</b></h4>
+		<a href="https://blog.cloudflare.com/#how-it-was-resolved" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'équipe réseau de Cloudflare a contacté les réseaux concernés, AS33154 (DQE Communications) et AS701 (Verizon). Nous avons eu quelques difficultés pour joindre l'un ou l'autre réseau, probablement en raison de l'heure de l'incident, car il était encore tôt sur la côte Est des États-Unis lorsque la fuite des routes a commencé.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xvqzVNjFcIjQenw3ima8a/0bc1ca2958b2920d390dcd5114749372/mail-1.png" alt="" class="kg-image" width="1656" height="202" loading="lazy">
+
+	</figure>
+	<p>Capture d'écran du courriel envoyé à Verizon</p>
+	<p>L’un de nos ingénieurs réseau a rapidement pris contact avec DQE Communications qui, après un certain temps, nous a mis en contact avec une personne en mesure de résoudre le problème. Nous avons travaillé avec DQE au téléphone pour qu’ils cessent de faire la promotion de ces routes « optimisées » vers Allegheny Technologies Inc. Nous les remercions pour l’aide qu’ils nous ont apportée. Après cette intervention, Internet s'est stabilisé et la situation est redevenue normale.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ltEfbM6zsVNot3T29wYQK/457f91c3c3b846c82a3e004cce6f0895/phonelog.png" alt="" class="kg-image" width="778" height="1556" loading="lazy">
+
+	</figure>
+	<p>Capture d'écran des tentatives de communication avec le service d’assistance de DQE et Verizon</p>
+	<p>Il est regrettable que nos tentatives de contact par courriel et par téléphone avec Verizon soient restées vaines, au moment de la rédaction de cet article (plus de 8 heures après l'incident), nous n'avons toujours pas eu de nouvelles et nous ne savons pas si la société a pris des mesures pour résoudre le problème.</p>
+	<p>Chez Cloudflare, nous souhaitons que de tels événements ne se produisent jamais, malheureusement, l’état actuel d’Internet fait bien peu pour que ce type d’incident ne se reproduise pas. Il est temps que l'industrie adopte une meilleure sécurité du routage grâce à des systèmes tels que la RPKI. Nous espérons que les principaux fournisseurs suivront l'exemple de Cloudflare, Amazon et AT&amp;T pour <a href="https://blog.cloudflare.com/cloudflares-rpki-toolkit">valider les itinéraires</a>. Nous nous tournons en particulier vers vous, Verizon, et nous attendons toujours votre réponse.</p>
+	<p>Bien que cet incident soit dû à des événements indépendants de notre volonté, nous sommes désolés des perturbations occasionnées. Notre équipe est profondément attachée à la qualité de notre service et quelques minutes après l’identification du problème, nous étions déjà en ligne avec des ingénieurs aux États-Unis, au Royaume-Uni, en Australie et à Singapour.</p>
+</div>

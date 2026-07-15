@@ -1,0 +1,122 @@
+<div class="mb2 gray5">8분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/how-to-build-your-own-vpn-or-the-history-of-warp">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/how-to-build-your-own-vpn-or-the-history-of-warp">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NQ735PxiKa2lse7NqfF61/9b12261ad02b05ba6d60ec8fc20eadc2/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>Linux의 네트워킹 기능은 DDoS 공격을 받은 Cloudflare에서 수십억 건의 요청을 처리하는 데 중요한 역할을 합니다. Cloudflare에서 제공하는 도구는 매우 <a href="https://blog.cloudflare.com/why-we-use-the-linux-kernels-tcp-stack"><u>귀중하고 유용하며, 전 세계</u></a> <a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world"><u>개발자들의 지속적인 관심으로 Cloudflare의 역량과 성능은 계속해서 개선되고</u></a> 있습니다.</p>
+	<p><a href="https://blog.cloudflare.com/1111-warp-better-vpn"><u>모바일 우선 성능 및 보안 앱인 WARP</u></a>를 개발했을 때 저희는 새로운 과제에 직면했습니다. Cloudflare는 에지 머신에서 모바일 클라이언트로의 임의 사용자 패킷을 안전하고 효율적으로 송신하는 방법을 알아냈습니다. 이 게시물에서는 기본적으로 Linux 네트워킹 스택으로 자체 고성능 VPN을 구축하는 첫 번째 솔루션을 살펴봅니다. 우리는 이를 기존 네트워크에 통합해야 했습니다. 이는 단순히 이를 CDN 서비스에 직접 연결하는 것이 아니라 Cloudflare 컴퓨터에서 임의의 사용자 패킷을 안전하게 송신하는 방법을 제공하는 것입니다. 이 곳에서 얻은 교훈은 새로운 <a href="https://www.cloudflare.com/en-gb/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>제품</u></a> 과 <a href="https://blog.cloudflare.com/icloud-private-relay"><u>기능</u></a> 을 개발하는 데 도움이 되었으며 그 외에도 더 많은 이상한 점을 발견하는 데 도움이 되었습니다. 먼저, 어떻게 시작했을까요?</p>
+	<div class="flex anchor relative">
+		<h2 id="a-bridge-between-two-worlds">두 세계를 잇는 다리</h2>
+		<a href="https://blog.cloudflare.com/#a-bridge-between-two-worlds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WARP의 초기 구현은 VPN을 통해 인터넷에 액세스할 수 있는 가상 사설망(VPN)과 유사했습니다. 특히 IP 패킷용 터널인 계층 3 VPN을 이용합니다.</p>
+	<p>IP 패킷은 인터넷을 구성하는 요소입니다. 인터넷을 통해 데이터를 전송하면 데이터가 작은 청크로 분할되어 패킷으로 별도로 전송되며, 각 패킷에는 대상 주소(패킷이 수신자)와 소스 주소(응답을 보낼 수신자)가 레이블로 표시됩니다. 인터넷에 연결되어 있다면 IP 주소가 있는 것입니다.</p>
+	<p>하지만 사용자에게는 <i>고유한</i> IP 주소가 없을 수도 있습니다. 모든 사람을 IPv6으로 전환하기 위해 당사를 비롯한 많은 다른 사람들이 오랫동안 노력해 왔지만 여전히 널리 사용되는 IPv4의 경우에도 이는 확실히 사실입니다. IPv4에는 가능한 주소가 40억 개에 불과하고 모두 할당되었으므로 공유해야 합니다.</p>
+	<p>집, 직장, 커피숍에서 WiFi를 사용하면 로컬 네트워크에 연결된 것입니다. 액세스 포인트 및 네트워크의 다른 장치와 통신할 수 있는 로컬 IP 주소가 장치에 할당됩니다. 그러나 이 주소는 로컬 네트워크 외부에서는 의미가 없습니다. 인터넷을 통해 전송되는 IP 패킷에는 해당 주소를 사용할 수 없습니다. 모든 로컬 IPv4 네트워크가 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank" rel="noopener noreferrer"><u>동일한 몇 가지 주소 집합</u></a>을 사용하기 때문입니다.</p>
+	<p>그렇다면 인터넷 액세스는 어떻게 작동할까요? 로컬 IPv4 네트워크는 일반적으로 네트워크 주소 변환(NAT)을 수행하는 장치인 <i>라우터</i>를 이용합니다. NAT는 근거리 통신망에서 장치에 할당된 프라이빗 IPv4 네트워크 주소를 인터넷 서비스 공급자가 제공한 공개적으로 라우팅할 수 있는 소수의 주소로 변환하는 데 사용됩니다. 라우터는 변환 표의 두 네트워크 간에 적용되는 전환을 추적합니다. 어느 한 네트워크에서 패킷을 수신하면 라우터는 변환 테이블을 참조하고 적절한 변환을 적용한 후 패킷을 상대 네트워크로 전송합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uT2VOMUn2fJ9NleofEfVB/b871de07a16714f1d05b2b3d0d547aa7/image6.png" alt="NAT를 사용하여 사설 네트워크의 장치에서 공용 인터넷까지의 연결을 연결하는 라우터의 다이어그램." class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>NAT를 사용하여 사설 네트워크의 장치에서 공용 인터넷으로 연결되는 라우터의 다이어그램</sup></p>
+	<p>인터넷 액세스를 제공하는 VPN도 LAN과 관련하여 다르지 않습니다. 유일하게 특이한 점은 VPN 사용자가 공용 인터넷을 통해 VPN 서버와 통신한다는 점입니다. 모델은 간단합니다. 사설 네트워크 IP 패킷은 VPN 서버로 주소가 지정된 공용 IP 패킷에 터널링되거나 캡슐화됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/613OhwoQSh2JHzIsBLzo8U/876446bed57eb8b70ba9ecac0d8f0c75/image5.png" alt="VPN 클라이언트와 서버 간에 캡슐화되는 HTTPS 패킷의 개략도" class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>VPN 클라이언트와 서버 간에 캡슐화되는 HTTPS 패킷의 개략도</sup></p>
+	<p>대부분의 경우 VPN 소프트웨어는 패킷의 캡슐화 및 캡슐화 해제만 처리하며 VPN에서 패킷을 보내고 받을 수 있는 가상 네트워크 장치를 제공합니다. 따라서 VPN을 원하는 대로 구성할 수 있습니다. WARP의 경우, VPN 클라이언트와 인터넷 사이의 라우터 역할을 할 서버가 필요합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="nats-how-you-do-it">NAT를 활용하여</h2>
+		<a href="https://blog.cloudflare.com/#nats-how-you-do-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare 서버를 구동하는 운영 체제인 Linux는 <a href="https://en.wikipedia.org/wiki/Netfilter" target="_blank" rel="noopener noreferrer"><u>Netfilter</u></a> 하위 시스템에서 NAT로 라우팅을 수행하도록 구성할 수 있습니다. Netfilter는 nftables 또는 iptables 규칙을 통해 구성되는 경우가 많습니다. 단일 규칙으로 "소스 NAT"가 발신 패킷의 소스 IP를 다시 쓰도록 구성합니다.</p>
+	<p><code>nft add rule IP nat postrouting oifname "eth0" IP saddr 10.0.0.0/8 snat to 198.51.100.42</code></p>
+	<p>이 규칙은 Netfilter의 NAT 기능이 다음 기준에 일치하는 모든 패킷에 대해 소스 주소 변환을 수행하도록 구성합니다.</p>
+	<ol>
+		<li>
+			<p>소스 주소는 10.0.0.0/8 사설 네트워크 서브넷입니다. 이 예에서 VPN 클라이언트가 이 서브넷의 주소를 가지고 있다고 가정해 보겠습니다.</p>
+		</li>
+		<li>
+			<p>패킷은 "eth0" 인터페이스를 통해 전송됩니다. 이 예에서는 인터페이스가 서버의 유일한 물리적 네트워크 인터페이스이므로 공용 인터넷에 대한 경로가 표시됩니다.</p>
+		</li>
+	</ol>
+	<p>이 두 가지 조건이 참인 경우, 저희는 "snat" 액션을 적용하여 VPN 클라이언트가 사용 중인 소스 IP 패킷을 예제 서버의 공용 IP 주소 198.51.100.42에 다시 씁니다. Cloudflare는 재작성 테이블에서 원래 주소와 다시 작성된 주소를 추적합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sUznAhNxIXRCdhjILq6fe/539a2ee09eb149ae9856172043a7d527/image1.png" alt="VPN 서버에서 캡슐화되지 않은 패킷이 캡슐을 풀고 다시 쓰는 개략도." class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>VPN 서버에서 캡슐화된 패킷이 캡슐을 풀고 다시 쓰는 개략도</sup></p>
+	<p><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters/configuring-nat-using-nftables" target="_blank" rel="noopener noreferrer"><u>배포본에서 nftables의 전달 방식에 따라 추가 구성이 필요할 수</u></a> 있습니다. nftables는 사용 중단된 iptables보다 더 유연하지만, 사용할 준비가 된 "묵시적" 테이블 수가 더 적습니다.</p>
+	<p>또한 기본적으로 두 개의 서로 다른 네트워크에 연결된 시스템이 자신도 모르게 두 네트워크 간에 전달되는 것을 원하지 않으므로 <a href="https://linux-audit.com/kernel/sysctl/net/net.ipv4.ip_forward" target="_blank" rel="noopener noreferrer"><u>일반적으로 IP 포워딩을 활성화해야 할 수도 있습니다</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-conntrack-is-a-conntrack-is-a-conntrack">네트워크 추적은 네트워크 추적입니다.</h2>
+		<a href="https://blog.cloudflare.com/#a-conntrack-is-a-conntrack-is-a-conntrack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>앞서 라우터가 두 네트워크 주소 간의 변환을 추적한다고 말했습니다. 위 다이어그램에서 해당 상태는 다시 쓰기 테이블에 보관됩니다.</p>
+	<p>실제로 모든 장치는 TCP 및 UDP 프로토콜, 특히 포트 번호를 사용하여 단일 IP 주소에서 여러 개의 독립적인 데이터 흐름을 지원하는 방법을 이해하는 경우에만 NAT를 유용하게 구현할 수 있습니다. NAT 장치(우리의 경우 Linux)는 각 연결에 고유한 소스 포트와 주소가 사용되도록 하고 필요한 경우 포트를 다시 할당합니다. 또한 포트 번호를 재사용하는 것이 안전한지 알아보려면 TCP 연결의 수명 주기를 이해해야 합니다. 65,536개의 가능한 포트만 있으므로 포트 재사용은 필수적입니다.</p>
+	<p>Linux Netfilter에는 상태 저장 방화벽을 구현하는 데 널리 사용되는 <i>conntrack</i> 모듈이 있습니다. 이 모듈은 스푸핑된 패킷이나 예기치 않은 패킷으로부터 서버를 보호하여 이러한 패킷이 합법적인 연결을 방해하는 것을 방지합니다. 이러한 보호는 TCP와 연결의 유효한 상태를 이해하므로 가능합니다. 이 기능은 NAT를 구현할 수 있는 완벽한 포지셔닝을 의미합니다. 실제로 모든 패킷 다시 쓰기는 conntrack에 의해 구현됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HjxbjpRIJIPygV4zMo4XL/7ff4e11334e8e64826be1f29f5e5fb17/image2.png" alt="패킷의 유효성을 검사하고 다시 쓰기 위해 conntrack에서 수행한 단계를 보여주는 다이어그램" class="kg-image" width="1360" height="726" loading="lazy">
+	</figure>
+	<p><sup>패킷의 유효성을 검사하고 다시 쓰기 위해 conntrack에서 수행한 단계를 보여주는 다이어그램</sup></p>
+	<p>상태 저장 방화벽으로서 conntrack 모듈은 확인된 모든 연결의 테이블을 유지합니다. 활성 연결을 모두 알고 있는 경우 사용하지 않는 포트에 새 연결을 다시 작성할 수 있습니다.</p>
+	<p>위의 "snat" 규칙에서 Netfilter는 rewrite 테이블에 항목을 추가하지만, 아직 패킷을 변경하지는 않습니다. nftables 내에서는 <a href="https://wiki.nftables.org/wiki-nftables/index.php/Mangling_packet_headers" target="_blank" rel="noopener noreferrer"><u>기본적인 패킷 변경만 허용됩니다</u></a>. 패킷 처리가 활성 연결에 의해 사용되지 않는 포트를 선택하고 나서야 패킷을 다시 쓰는 conntrack 모듈에 도달할 때까지 기다려야 합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qT3d8JXiTYLwQWsVOCtcQ/ff8c8adcb209f2cdc2578dc1218923ca/image4.png" alt="" class="kg-image" width="1634" height="592" loading="lazy">
+	</figure>
+	<p><sup>트래픽에 NAT를 적용할 때 netfilter 및 conntrack의 역할을 보여주는 다이어그램</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="marky-mark-and-the-firewall-bunch">Marky 마크와 방화벽 그룹</h2>
+		<a href="https://blog.cloudflare.com/#marky-mark-and-the-firewall-bunch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>conntrack의 또 다른 모드는 연결에 속하는 패킷에 영구 표시를 할당하는 것입니다. 이 표시는 nftables 규칙에서 참조하여 다양한 방화벽 정책을 구현하거나 라우팅 결정을 제어할 수 있습니다.</p>
+	<p>특정 주소(예: 게스트 네트워크에서)가 컴퓨터의 특정 서비스에 액세스하는 것을 방지하고 싶다고 가정해 보겠습니다. 해당 주소에 대한 액세스를 거부하는 각 서비스에 대해 방화벽 규칙을 추가할 수 있습니다. 하지만 차단할 주소 집합을 변경해야 하는 경우에는 모든 규칙을 적절하게 업데이트해야 합니다.</p>
+	<p>또는 하나의 규칙을 사용하여 차단하려는 주소에서 들어오는 패킷에 표시를 적용한 다음 해당 차단을 구현하는 모든 서비스 규칙에서 이 표시를 참조할 수 있습니다. 이제 주소를 변경하고자 할 때 규칙을 하나만 업데이트하여 해당 패킷 표시의 범위를 변경하면 됩니다.</p>
+	<p>라우팅 규칙은 Netfilter가 할 수 있는 만큼 많은 패킷의 속성을 결정할 수 없으므로, 이렇게 하면 라우팅 동작을 제어하는 데 가장 유용합니다. 표시를 사용하면 강력한 Netfilter 규칙에 따라 패킷을 선택할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33J5E9eds0JiGVNqOInJ0K/829d033b3ee255093ff1927c0b03f4fb/image3.png" alt="특정 패킷을 표시하여 특별한 라우팅 규칙을 적용하는 넷필터를 보여주는 다이어그램." class="kg-image" width="1808" height="488" loading="lazy">
+	</figure>
+	<p><sup>특정 패킷을 표시하여 특별한 라우팅 규칙을 적용하는 넷필터를 보여주는 다이어그램</sup></p>
+	<p>WARP 서비스를 구동하는 코드는 Cloudflare가 보안 중심 시스템 프로그래밍 언어인 Rust로 작성했습니다. <a href="https://github.com/cloudflare/boringtun" target="_blank" rel="noopener noreferrer"><u>Boringtun(우리의)</u></a> WireGuard 구현)과 <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>MASQUE를</u></a> 구현하는 데 세심한 주의를 기울였습니다. 하지만 현관문은 뚫고 들어갈 수 없다고 생각하더라도, 심층 방어를 활용하는 것은 좋은 보안 관행입니다.</p>
+	<p>한 가지 예는 클라이언트에서 보낸 IP 패킷과 네트워크의 다른 곳에서 시작된 패킷을 구분하는 것입니다. 일반적인 방법 중 하나는 WARP 트래픽에 고유한 IP 공간을 할당하고 IP 주소에 따라 구분하는 것이지만, 내부 네트워크 번호를 다시 매기기 위해 구성 변경을 적용해야 하는 경우(IPv4의 제한된 주소 공간을 기억하세요!) 더 간단한 작업을 수행할 수 있습니다.</p>
+	<p>WARP 클라이언트에서 Linux 네트워킹 스택으로 IP 패킷을 가져오기 위해 WARP는 <a href="https://blog.cloudflare.com/virtual-networking-101-understanding-tap"><u>TUN 장치</u></a> 를 사용합니다. TUN 장치는 프로그램이 IP 패킷을 보내고 받는 데 사용할 수 있는 가상 네트워크 장치의 Linux 이름입니다. TUN 장치는 이더넷 또는 Wi-Fi 어댑터 등의 다른 네트워크 장치와 유사하게 방화벽과 라우팅을 구성할 수 있습니다.</p>
+	<p>nftables를 사용하여 WARP의 TUN 장치에서 모든 패킷이 출력되도록 표시합니다. netfilter는 conntrack의 상태 테이블에 표시를 명시적으로 저장하고 들어오는 패킷에 대해 이를 검색해야 합니다. netfilter는 conntrack과 패킷 표시를 독립적으로 사용할 수 있기 때문입니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">table ip mangle {
+    chain forward {
+        type filter hook forward priority mangle; policy accept;
+        oifname "fishtun" counter ct mark set 42
+    }
+    chain prerouting {
+        type filter hook prerouting priority mangle; policy accept;
+        counter meta mark set ct mark
+    }
+}</code></pre>
+	<p>표시된 패킷을 TUN 장치로 반환하기 위한 라우팅 규칙도 추가해야 합니다.</p>
+	<p><code>ip rule add fwmark 42 table 100 priority 10
+			ip route add 0.0.0.0/0 proto static dev warp-tun table 100</code></p>
+	<p>이제 끝났습니다. WARP의 모든 연결은 명확하게 식별되며, 로컬 시작 연결 또는 네트워크의 다른 노드와 별도로 방화벽을 설정할 수 있습니다. Conntrack은 우리를 대신하여 NAT를 처리하고, 연결 표시는 WARP 클라이언트가 어떤 추적 연결을 수행했는지 알려줍니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-end">끝인가요?</h2>
+		<a href="https://blog.cloudflare.com/#the-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>첫 번째 WARP 버전에서는 Linux 네트워킹 스택의 여러 구성 요소를 결합하여 클라이언트가 임의의 인터넷 호스트에 액세스할 수 있도록 했습니다. 각 에지 서버에는 WARP 전용으로 할당된 단일 IP 주소가 있었고 잘 문서화된 표준 방법을 사용하여 NAT, 라우팅, 적절한 방화벽 규칙을 구성할 수 있었습니다.</p>
+	<p>Linux는 유연하고 구성하기 쉽지만 컴퓨터당 하나의 IPv4 주소가 필요합니다. IPv4 주소가 고갈되므로 이 접근 방식으로는 Cloudflare의 대규모 네트워크로 확장할 수 없습니다. WARP 서버를 실행하는 모든 컴퓨터에 전용 IPv4 주소를 할당하면 엄청난 주소 임대 비용이 발생합니다. 비용을 절감하려면 WARP를 실행하는 서버의 수를 제한해야 하므로 배포 시 운영 복잡성이 증가합니다.</p>
+	<p>아이디어는 있었지만 Linux가 준 쉬운 경로를 포기해야 했습니다. <a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>IP 공유가 가장 유망한 솔루션으로 보였지만</u></a>, 단일 시스템이 협소한 포트 집합으로 주소가 지정된 패킷만 수신할 수 있다면 얼마나 많이 바꾸어야 할까요? 후속 블로그 게시물에서 이 모든 것을 공개하겠지만, 이미 이 문제에 대한 해결책을 구상하고 있는 호기심 많은 문제 해결 엔지니어라면 <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>채용 중인 직무를</u></a> 살펴보고 의견을 듣고 싶습니다!</p>
+</div>

@@ -1,0 +1,143 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/managed-oauth-for-access">English</a>および<a href="https://blog.cloudflare.com/ko-kr/managed-oauth-for-access">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BOZcg3hHEjTy2YzQxKkih/94c62468f30da1924c5fee21bb9cfebf/BLOG-3146_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareには数千の内部アプリがあります。当社が構築したものもあれば、他の人が構築したソフトウェアのセルフホスト型インスタンスもあります。ほぼすべての人が利用するビジネスクリティカルなアプリから、サイドプロジェクトやプロトタイプまで、多岐にわたります。</p>
+	<p>これらのアプリはすべて<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>によって保護されています。しかし、エージェント（特にコードを書くこと以外の目的）を使い始めた時、壁に突き当たりました。ユーザーはAccessの背後にあるアプリにアクセスできましたが、エージェントはアクセスできませんでした。</p>
+	<p>Accessは、内部アプリの前に位置します。ポリシーを定義すると、Accessは未認証ユーザーをログインページに送り、認証方法を選択します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3867rU5n4IkRilnfCAvOLD/8ec5ea3c25dbd6620a8644d231893732/BLOG-3146_2.png" alt="BLOG-3146 2" class="kg-image" width="1999" height="1633" loading="lazy">
+	</figure>
+	<p><i><sup>Cloudflare Accessログインページの例</sup></i></p>
+	<p>このフローは人間にとって非常にうまく機能しました。しかし、すべてのエージェントが見えたのは、行動できないログインページへのリダイレクトでした。</p>
+	<p>エージェントが社内アプリデータにアクセスできるようにすることは非常に重要であるため、すぐに社内利用のための一時的な保護を導入しました。OpenCodeの<a href="https://opencode.ai/docs/tools/#webfetch" target="_blank" rel="noopener noreferrer"><u>Webフェッチツール</u></a>を変更して、特定のドメインに対して、<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/cli" target="_blank" rel="noopener noreferrer"><u>cloudflared</u></a> CLIをトリガーして認証フローを開き、<a href="https://www.cloudflare.com/learning/access-management/token-based-authentication" target="_blank" rel="noopener noreferrer"><u>JWT</u></a>（JSON Webトークン）を取得するようにしました。このトークンをリクエストに追加することで、内部エコシステムへの安全かつ即時のアクセスが可能になりました。</p>
+	<p>このソリューションは、当社自身のジレンマに対する一時的な解決策でしたが、本日、この回避策を廃止し、すべての人に対して、この問題を解決することとしました。現在、オープンベータ版では、すべてのAccessアプリケーションがマネージドOAuthをサポートしています。ワンクリックでAccessアプリに対して有効になり、OAuth 2.0を使用するエージェントは、認証方法（<a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC 9728</u></a>）を簡単に見つけ、ユーザーに認証フローを通過させ、承認トークン（最初のソリューションから同じJWT）を受け取ることができるようになります。</p>
+	<p>現在では、このフローは人間とエージェントの両方にとってスムーズに機能するようになりました。Cloudflare Accessには充実した<a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer"><u>無料枠</u></a>があります。新たに導入された<a href="https://blog.cloudflare.com/organizations-beta"><u>Organizationsベータ版</u></a>を基に、Cloudflareアカウント間でIDプロバイダーを間もなくブリッジできるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-managed-oauth-works">マネージドOAuthの仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-managed-oauth-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Accessで保護された社内アプリでは、ワンクリックでOAuthを有効にできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79FSFNeaDbqn9DkSyfKrtz/5f0fd06ce9e127c06474263a529ec284/BLOG-3146_3.png" alt="BLOG-3146 3" class="kg-image" width="1999" height="1426" loading="lazy">
+	</figure>
+	<p>マネージドOAuthが有効になると、Cloudflare Accessは承認サーバーとして機能します。<code>www-authenticate</code>ヘッダーを返し、認証されていないエージェントに、認証トークンを取得する方法に関する情報をどこで検索するかを指示します。これは <code>https://&lt;your-app-domain&gt;/.well-known/oauth-authorization-server</code> にあります。この指示があれば、エージェントはOAuth標準に従うだけでいいのです。</p>
+	<ol>
+		<li>
+			<p>エージェントはクライアントとして動的に自身を登録します（Dynamic Client Registration — <a href="https://datatracker.ietf.org/doc/html/rfc7591" target="_blank" rel="noopener noreferrer"><u>RFC 7591</u></a> と呼ばれるプロセス）。</p>
+		</li>
+		<li>
+			<p>エージェントは、PKCE（Proof Key for Code Exchange）認証フロー（<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="_blank" rel="noopener noreferrer"><u>RFC 7636</u></a>）を通じて人間を送信します。</p>
+		</li>
+		<li>
+			<p>人間はアクセスを承認し、ユーザーに代わって認証済みのリクエストを行うために使用できるエージェントにトークンを付与します。</p>
+		</li>
+	</ol>
+	<p>認可フローは次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LkJMuPCNX1Mu7MfEnFinH/221ba9ab7757c40d9fbc1e2746a9e56d/Untitled.png" alt="BLOG-3146 4" class="kg-image" width="3067" height="4315" loading="lazy">
+	</figure>
+	<p>この認可フローに見覚えがあるとしたら、それは<a href="https://modelcontextprotocol.io/specification" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol (MCP)</u></a>が使用しているものです。このサポートは、元々、多くのMCPサーバーへのプロキシおよびアクセス制御を行う当社の<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCPサーバーポータル</u></a>製品に組み込まれており、ポータルがOAuthサーバーとして機能できるようにしました。今回、すべてのAccessアプリでこれを実現することで、エージェントは承認を必要とするMCPサーバーだけでなく、Webページ、Webアプリ、REST APIにもアクセスできるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="mass-upgrading-your-internal-apps-to-be-agent-ready">社内アプリを大量アップグレードしてエージェント対応に</h2>
+		<a href="https://blog.cloudflare.com/#mass-upgrading-your-internal-apps-to-be-agent-ready" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントと連携するために、社内ソフトウェアのロングテールをアップグレードするのは、大変な作業です。基本的に、エージェントに対応できるようにするには、すべての内部および外部アプリが検出可能なAPI、CLI、およびMCPサーバーを持ち、多くの新しいエージェント基準を採用していることが理想的です。</p>
+	<p>AIの導入は、すべてが後付けされることを待つべきではありません。ほとんどの企業では、何年もかけて構築されたアプリの大量のバックログを抱えています。また、多くの社内「アプリ」は、エージェントがシンプルなWebサイトとして扱うとうまく機能します。社内Wikiのようなものでは、本当に必要なのは<a href="https://blog.cloudflare.com/markdown-for-agents"><u>エージェント向けMarkdown</u></a>を有効にし、マネージドOAuthを有効にするだけで、エージェントは保護されたコンテンツを読むのに必要な情報を得ることができます。</p>
+	<p>さまざまな内部アプリケーションで基本を機能させるためには、マネージドOAuthを使用しています。レガシー内部アプリの前面にAccessを設置することで、即座にエージェント対応になります。コード変更や後付けは不要です。代わりに、すぐに互換性を持つことができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="its-the-users-agent-no-service-accounts-and-tokens-needed">ユーザーのエージェントです。サービスアカウントとトークンは不要</h2>
+		<a href="https://blog.cloudflare.com/#its-the-users-agent-no-service-accounts-and-tokens-needed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントは、組織内のユーザーの代わりに行動する必要があります。私たちが見ている最大のアンチパターンの1つは、エージェントやMCPサーバーのサービスアカウントを、静的な認証情報を使用して認証する人です。これらは、単純なユースケースや迅速なプロトタイプに使われており、Cloudflare Accessはこの目的のために<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens" target="_blank" rel="noopener noreferrer"><u>サービストークン</u></a>をサポートしています。</p>
+	<p>しかし、サービスアカウントのアプローチは、きめ細かいアクセス制御や監査ログが必要な場合、すぐに限界を示します。私たちは、エージェントが実行するすべてのアクションは、それを開始した人間によるものであると簡単に帰属できる必要があり、エージェントは人間のオペレーターが行うことを許可された行動のみを実行できなければならないと考えています。サービスアカウントと静的認証情報は、属性を失う点となります。サービスアカウントを通じてすべてのアクションをロンダリングするエージェントは、<a href="https://en.wikipedia.org/wiki/Confused_deputy_problem" target="_blank" rel="noopener noreferrer"><u>confused deputy problems</u></a> の影響を受けやすく、エージェント自体から発信されたように見える監査ログが作成されます。</p>
+	<p>セキュリティと説明責任を確保するため、エージェントは、ユーザーとエージェントの関係を表現できるセキュリティプリミティブを使用する必要があります。OAuthは、サードパーティへのアクセスをリクエストし、委任するための業界標準プロトコルです。これにより、エージェントはユーザーに代わってAPIと対話する方法を提供します。ユーザーのIDに対応するトークンを使用するため、アクセス制御が正しく適用され、監査ログがエンドユーザーにアクションを正しく結びつけます。</p>
+	<div class="flex anchor relative">
+		<h2 id="standards-for-the-win-how-agents-can-and-should-adopt-rfc-9728-in-their-web-fetch-tools">成功のための基準：エージェントがWebフェッチツールにRFC 9728を採用できる、そして採用すべき</h2>
+		<a href="https://blog.cloudflare.com/#standards-for-the-win-how-agents-can-and-should-adopt-rfc-9728-in-their-web-fetch-tools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC 9728</u></a>は、エージェントが認証する場所と方法を検出できるようにするOAuth標準です。この情報がどこにあるのか、どのように構造化されているのかを標準化します。このRFCは2025年4月に公式になり、すぐにモデルコンテキストプロトコル（MCP）に採用され、現在では<a href="https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization" target="_blank" rel="noopener noreferrer"><u>MCPサーバーとクライアントの両方がサポートすることが義務付けられています</u></a>。</p>
+	<p>しかし、MCP以外では、エージェントはRFC 9728を採用する必要があります。つまり、OAuthの背後で保護されているWebページにリクエストを行うことや、通常の古いREST APIにリクエストを行うことです。</p>
+	<p>ほとんどのエージェントは、Webページに基本的なHTTPリクエストを行うためのツールを持っています。これは一般に<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool" target="_blank" rel="noopener noreferrer"><u>「Webフェッチ」ツール</u></a>と呼ばれます。これはJavaScriptで<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a> APIを使用する場合に似ており、多くの場合、レスポンスにいくつかの追加の後処理が含まれます。エージェントにURLを貼り付け、エージェントにコンテンツを検索してもらうことができるものです。</p>
+	<p>現在、ほとんどのエージェントのWebフェッチツールは、URLが返す<code>www-authenticate</code>ヘッダーに関しては何もしません。基礎となるモデルは、応答ヘッダーを調査し、独自でこれを達成することを選択するかもしれませんが、ツール自体は <code>www-authenticate</code> に従うわけではなく、<code>/.well-known/oauth-authorization-server</code> を検索し、OAuthフローでクライアントとして機能することもありません。しかし、<i>実現は可能であり</i>、<i>実現すべきだと</i>私たちは強く信じています！エージェントはすでに、リモートMCPクライアントとして機能します。</p>
+	<p>これを実証するために、<a href="https://github.com/anomalyco/opencode/pull/22096" target="_blank" rel="noopener noreferrer"><u>OpencodeのWebフェッチツールを適合させて</u></a>実際の動作を示すプルリクエスト草案を作りました。リクエストをする前に、適応されたツールはまず資格情報が既にあるかどうかをチェックします。一致する場合は、それらを使用して最初のリクエストを行います。ツールが、<code>www-authenticate</code>ヘッダーとともに401または403を返すと、サーバーのOAuthフローを通じて送信されることに同意を求めます。</p>
+	<p>OAuthフローの仕組みは次のとおりです。OAuthで保護され、RFC 9728に準拠したURLをエージェントに与えると、エージェントは認証フローを開くように人間の同意を求めます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vo4hGtVz7ovlNQslTvTal/3d2b1a861b9342842bd6297e1869aed4/BLOG-3146_5.png" alt="BLOG-3146 5" class="kg-image" width="1999" height="1488" loading="lazy">
+	</figure>
+	<p>…人間をログインページに送信：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3867rU5n4IkRilnfCAvOLD/8ec5ea3c25dbd6620a8644d231893732/BLOG-3146_2.png" alt="BLOG-3146 2" class="kg-image" width="1999" height="1633" loading="lazy">
+	</figure>
+	<p>...そして、人間がエージェントへのアクセスを許可するよう促す同意ダイアログがあります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39I0yjWXKGLNG4mhV5jEPQ/793559a5f18a04e807939b9560118ccb/BLOG-3146_6.png" alt="BLOG-3146 6" class="kg-image" width="1818" height="1644" loading="lazy">
+	</figure>
+	<p>人間がエージェントへのアクセスを許可すると、エージェントは受け取ったトークンを使用して認証済みリクエストを行います。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4e0mNkih5xtbAoQpwBrB32/701089e8ea256804890d45af08ef04ca/BLOG-3146_7.png" alt="BLOG-3146 7" class="kg-image" width="1999" height="1796" loading="lazy">
+	</figure>
+	<p>CodexからClaude Code、Gooseなど、あらゆるエージェントがこれを実装でき、Cloudflareに特化したものはありません。これはすべてOAuth標準を使用して構築されています。</p>
+	<p>このフローは強力で、RFC 9728をサポートすることで、エージェントは基本的なWebフェッチリクエスト以外にも可能になると考えています。REST APIがRFC 9728をサポートしている場合（エージェントも同様にサポートしている場合）、エージェントはそのAPIに対して認証されたリクエストを開始するために必要なものすべてを手に入れられます。REST APIが<a href="https://www.rfc-editor.org/rfc/rfc9727" target="_blank" rel="noopener noreferrer"><u>RFC 9727</u></a>をサポートしている場合、クライアントはREST APIエンドポイントのカタログを単独で検出し、追加のドキュメント、エージェントスキル、MCPサーバー、またはCLIを必要とせずにさらに多くのことを実行できます。</p>
+	<p>これらはそれぞれエージェントにとって重要な役割を果たします。Cloudflare自体は、Cloudflare API用の<a href="https://blog.cloudflare.com/code-mode-mcp"><u>MCPサーバー</u></a>（<a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>を使用して構築）、<a href="https://developers.cloudflare.com/workers/wrangler/commands" target="_blank" rel="noopener noreferrer"><u>Wrangler CLI</u></a>、<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a>、および<a href="https://x.com/CloudflareDev/status/2037336582815175122" target="_blank" rel="noopener noreferrer"><u>Plugin</u></a>を提供しています。しかし、RFC 9728をサポートすることで、これらのいずれもプリインストールされない場合でも、エージェントが進むべき明確な道筋を持てるようになります。エージェントが<a href="https://blog.cloudflare.com/dynamic-workers"><u>信頼できないコードを実行するためのサンドボックス</u></a>を持っている場合、人間がアクセスを許可されたAPIを呼び出すコードを書くだけで実行できます。当社は、Cloudflare独自のAPIについてもサポートし、エージェントがCloudflareの使用方法を理解できるように取り組んでいます。</p>
+	<div class="flex anchor relative">
+		<h2 id="coming-soon-share-one-identity-provider-idp-across-many-cloudflare-accounts">近日公開：1つのIDプロバイダー（IdP）を複数のCloudflareアカウントで共有</h2>
+		<a href="https://blog.cloudflare.com/#coming-soon-share-one-identity-provider-idp-across-many-cloudflare-accounts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、独自の内部アプリを数十の異なるCloudflareアカウントにデプロイしています。これらはすべて組織の一部です。組織とは、管理者が多くのCloudflareアカウントにわたってユーザー、構成を管理し、分析を表示するための<a href="https://blog.cloudflare.com/organizations-beta"><u>新たに導入された</u></a>方法です。多くのお客様と同じ問題を抱えていました。各CloudflareアカウントはIdPを個別に設定する必要があるため、Cloudflare Accessは当社のIDプロバイダーを使用しています。これが組織全体で一貫していることは非常に重要です。シングルサインオン（SSO）で認証することを要求するのではなく、1つのCloudflareアカウントが誤ってワンタイムPINだけでサインインできるようにすることはあってはなりません。</p>
+	<p>これを解決するために、現在、Cloudflareアカウント間でIDプロバイダーを共有できるように取り組んでおり、組織内の全アカウントで使用するために単一のプライマリIdPを指定する方法が提供されています。</p>
+	<p>1つの組織内で新しいCloudflareアカウントが作成されると、管理者は1回のクリックでプライマリIdPへのブリッジを設定できるため、1つのIDプロバイダーによってアカウント間のAccessアプリケーションを保護することができます。これにより、アカウントごとにIdPアカウントを手動で設定する必要性がなくなります。これは、多くのチームや個人がそれぞれ独自のアカウントを運用している組織にとっては大規模なプロセスではありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>企業全体で、あらゆる役割や業務機能を持つ人がエージェントを使用して社内アプリを構築しており、エージェントが社内アプリからコンテキストにアクセスできることを期待しています。<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workersプラットフォーム</u></a>と<a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>の連携を改善することで、社内ソフトウェア開発におけるこの段階的な機能の増加に対応しており、Cloudflare上で社内アプリをより簡単に構築・安全に保つことができるようになっています。</p>
+	<p>以下のような新機能が近日中に発表されます：</p>
+	<ul>
+		<li>
+			<p>Cloudflare AccessとCloudflare Workersの間のより直接的な統合。JWTを検証したり、特定のWorkerが公開されている多くのルートを記憶する必要はありません。</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/workers-sdk/pull/13126" target="_blank" rel="noopener noreferrer"><u>wrangler dev --tunnel</u></a> — 新しいものを構築し、デプロイする前に他のユーザーと共有したい場合に、ローカル開発サーバーを他のユーザーに公開する簡単な方法</p>
+		</li>
+		<li>
+			<p>Cloudflare Accessと<a href="https://blog.cloudflare.com/cf-cli-local-explorer"><u>Cloudflare API全体</u></a>用のCLIインターフェース</p>
+		</li>
+		<li>
+			<p>Agents Week 2026中のさらなる発表</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="enable-managed-oauth-for-your-internal-apps-behind-cloudflare-access">Cloudflare Accessの背後にある内部アプリのマネージドOAuthを有効化</h2>
+		<a href="https://blog.cloudflare.com/#enable-managed-oauth-for-your-internal-apps-behind-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>マネージドOAuthは、現在すべてのCloudflareのお客様に、オープンベータ版でご利用いただけます。「<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にアクセスして、Accessアプリケーションで有効にしてください。」社内アプリでも、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>上に構築されたものでも、他の場所でホストされているものでも、ご利用いただけます。また、Workers Platformでまだ内部アプリを構築していない場合、チームがゼロから本番環境にデプロイ（および保護）されるための最速の方法です。</p>
+</div>

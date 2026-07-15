@@ -1,0 +1,396 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/browser-run-for-ai-agents">English</a>および<a href="https://blog.cloudflare.com/ko-kr/browser-run-for-ai-agents">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MjIAL88ZhwvMpREBl4cqn/d62eb21ba79ba0ea11394994e676f2a9/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>AIエージェントはWebと対話する必要があります。そのためには、ブラウザが必要です。サイトの移動、ページの読み込み、フォームへの入力、データの抽出、スクリーンショット作成などの操作が必要です。想定通り機能しているかどうかを観察し、必要に応じて人間が介入できるようにする必要があるのです。そして、これらすべてを大規模に行う必要があるのです。</p>
+	<p>本日、Browser Renderingを<b>Browser Run</b>に名称変更し、<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI エージェント</u></a>にとって<i>最適な</i>ブラウザとなる主要機能をリリースします。ブラウザレンダリングという名前は、この製品の機能を完全に捉えたものではありません。Browser Runは、Cloudflareのグローバルネットワーク上で完全なブラウザセッションの実行、コードまたはAIを使ったブラウザセッションの実行、セッションの記録と再生、コンテンツを探すためにページをクロール、リアルタイムでデバッグ、そしてエージェントが必要な時に人間が介入できるようにします。</p>
+	<p>以下は新着情報になります：</p>
+	<ul>
+		<li>
+			<p><b>ライブビュー</b>：エージェントが見たものや、行っていることをリアルタイムで見ることができます。うまく機能しているかどうか、またうまく機能していない時はその理由を瞬時に知ることができます。</p>
+		</li>
+		<li>
+			<p><b>ヒューマン・イン・ザ・ループ</b>：エージェントがログインページや予期せぬエッジケースなどに遭遇した場合、失敗せずに人間に引き渡すことができます。人間が介入し、解決して、制御を取り戻します。</p>
+		</li>
+		<li>
+			<p><b>Chrome DevTools Protocol（CDP）エンドポイント</b>：Chrome DevToolsプロトコルは、エージェントがブラウザを制御する方法です。ブラウザ実行は、それを直接公開するため、エージェントはブラウザを最大限に制御でき、既存のCDPスクリプトはCloudflare上で動作します。</p>
+		</li>
+		<li>
+			<p><b>MCPクライアントサポート：</b>Claude Desktop、Cursor、OpenCodeといったAIコーディングエージェントは、リモートブラウザとしてBrowser Runを使用できるようになりました。</p>
+		</li>
+		<li>
+			<p><b>WebMCPサポート</b>：エージェントはWebを使用する人間よりも多くなります。WebMCPを使用することで、エージェントが発見および呼び出すことができるアクションをWebサイトで宣言できるため、ナビゲーションの信頼性が向上します。</p>
+		</li>
+		<li>
+			<p><b>セッションレコーディング</b>：デバッグ目的で、すべてのブラウザセッションをキャプチャします。何か問題が発生した場合、ドキュメントオブジェクトモデル変更、ユーザーインタラクション、ページナビゲーションなど、すべてが記録されます。</p>
+		</li>
+		<li>
+			<p><b>制限引き上げ</b>：同時実行ブラウザ数は30から120台まで、一度に実行できるタスクが増えます。 </p>
+		</li>
+	</ul>
+	<div style="position: relative; padding-top: 64.90384615384616%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p><i><sup>東京都中央区京橋2-2-1 京橋エドグラン26階</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="everything-an-agent-needs">エージェントに必要なすべての機能</h2>
+		<a href="https://blog.cloudflare.com/#everything-an-agent-needs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webを閲覧する際にエージェントが必要とするもの、そして各機能の位置づけについて考えてみましょう。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-u1yq {
+			background-color: #c0c0c0;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 727px">
+			<colgroup>
+				<col style="width: 226px">
+				<col style="width: 501px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-u1yq"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">エージェントに必要なもの</span></th>
+					<th class="tg-u1yq"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">Browser Run（旧ブラウザレンダリング）</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1) オンデマンドブラウザ</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareのグローバルネットワーク上のChromeブラウザ</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2)ブラウザを制御する方法</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Puppeteer、Playwright、</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CDP (new)</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">、</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MCP Client Support (new)</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">、</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WebMCP (new)</span> を使用して、ナビゲート、クリック、フォーム入力、スクリーンショットなどのアクションを実行します。</td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3) Observability</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ライブビュー（新規）</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">、</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">セッション録画（新規）</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">、および</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ダッシュボード再デザイン（新規）</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4) 人為的な介入</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Human in the Loop（新規）</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5) スケール</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クイックアクション10リクエスト/秒、</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">同時ブラウザ120台（4倍に増加）</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="1-open-a-browser">1) ブラウザを開きます。</h2>
+		<a href="https://blog.cloudflare.com/#1-open-a-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、エージェントにはブラウザが必要です。Browser Runを使用すると、エージェントはCloudflareのグローバルネットワーク上にヘッドレスなChromeインスタンスをオンデマンドで起動することができます。管理が必要なインフラストラクチャも、Chromeのバージョン保守も必要ありません。ブラウザセッションはユーザーの近くで開いて低遅延を実現し、必要に応じてスケールアップ、スケールダウンも可能です。Browser Runと<a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を組み合わせることで、Webを閲覧し、すべてを記憶し、自ら行動する長期的なエージェントを構築します。</p>
+	<div class="flex anchor relative">
+		<h2 id="2-take-actions">2) 行動を起こす</h2>
+		<a href="https://blog.cloudflare.com/#2-take-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントがブラウザを得たら、それを制御する方法が必要になります。Browser Runは、複数のアプローチをサポートしています。Chrome DevTools Protocol（CDP）とWebMCPを使用した新しい低レベルのプロトコルアクセス、既存の高レベルの自動化（<a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a>と<a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>を使用）、および単純なタスク向けの<a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a>などです。詳細を見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="chrome-devtools-protocol-cdp-endpoint">Chrome DevTools Protocol（CDP）エンドポイント</h3>
+		<a href="https://blog.cloudflare.com/#chrome-devtools-protocol-cdp-endpoint" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>Chrome DevTools Protocol（CDP）</u></a>は、ブラウザの自動化を実現するための低レベルのプロトコルです。CDPを直接公開するということは、エージェントツールと既存のCDP自動化スクリプトのエコシステムがブラウザ実行を使用できることを意味します。Chrome DevToolsを開いてページを調べると、その下ではCDPが実行されています。Puppeteer、Playwright、そしてほとんどのエージェントフレームワークはその上に構築されています。</p>
+	<p>あなたがこれまでブラウザ実行を使用してきた方法はすべて、実際にはすでにCDPを経由しています。新しくなった点は、CDPをエンドポイントとして<a href="https://developers.cloudflare.com/browser-rendering/cdp" target="_blank" rel="noopener noreferrer"><u>直接公開</u></a>することになりました。これはエージェントにとって重要です。CDPはエージェントに対してブラウザに対して可能な限りの制御を提供するためです。エージェントフレームワークはすでにCDPネイティブで動作しており、Browser Runに直接接続することも可能です。CDPは、JavaScriptデバッグなど、PuppeteerやPlaywrightでは利用できないブラウザアクションも可能にします。また、高レベルのライブラリを経由するのではなく、生のCDPメッセージを使用しているため、よりトークン効率の良いブラウザ制御のために、メッセージを直接モデルに渡すことができます。</p>
+	<p>セルフホスト型のChromeに対してすでにCDP自動化スクリプトを実行している場合は、1行の設定変更でBrowser Runに実行できます。WebSocketのURLをBrowser Runに向けて、ブラウザインフラストラクチャの管理を止めましょう。</p>
+	<pre class="language-javascript"><code class="language-javascript">// Before: connecting to self-hosted Chrome
+const browser = await puppeteer.connect({
+  browserWSEndpoint: 'ws://localhost:9222/devtools/browser'
+});
+
+// After: connecting to Browser Run
+const browser = await puppeteer.connect({
+  browserWSEndpoint: 'wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser',
+  headers: { 'Authorization': 'Bearer &lt;API_TOKEN&gt;' }
+});
+</code></pre>
+	<p>CDPエンドポイントは、ブラウザ実行もアクセスしやすくします。<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker</u></a>を書く必要なく、あらゆる言語、あらゆる環境から接続できるようになりました。（すでにWorkersを使用している場合、何も変更されません。）</p>
+	<div class="flex anchor relative">
+		<h4 id="using-browser-run-with-mcp-clients">MCPクライアントでブラウザ実行を使用する</h4>
+		<a href="https://blog.cloudflare.com/#using-browser-run-with-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Browser RunがChrome DevTools Protocol（CDP）を公開したことで、Claude Desktop、Cursor、Codex、OpenCodeを含むMCPクライアントは、Browser Runをリモートブラウザとして使用できるようになりました。Chrome DevToolsチームの<a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer"><u>chrome-devtools-mcpパッケージ</u></a>は、AIコーディングアシスタントがChrome DevToolsのフルパワーにアクセスできるようにするMCPサーバーで、信頼性の高い自動化、詳細なデバッグ、パフォーマンス分析が可能です。</p>
+	<p>以下は、Claude Desktopのブラウザ実行の設定方法の例です：</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "mcpServers": {
+    "browser-rendering": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser?keep_alive=600000",
+        "--wsHeaders={\"Authorization\":\"Bearer &lt;API_TOKEN&gt;\"}"
+      ]
+    }
+  }
+}
+</code></pre>
+	<p>その他のMCPクライアントについては、<a href="https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients" target="_blank" rel="noopener noreferrer"><u>MCPクライアントでBrowser Runを使用するためのドキュメント</u></a>を参照してください。</p>
+	<div class="flex anchor relative">
+		<h3 id="webmcp-support">WebMCP対応</h3>
+		<a href="https://blog.cloudflare.com/#webmcp-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットは人間のために構築されたため、今日AIエージェントとしてナビゲートすることは信頼できません。私たちは、人間よりも多くのエージェントがWebを利用する未来に賭けています。そのため、サイトはエージェントにとって使いやすいものである必要があります。</p>
+	<p>そのため、当社は、Chromium 146+に到達したGoogle Chromeチームの新しいブラウザAPIである<a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank" rel="noopener noreferrer"><u>WebMCP</u></a>のサポートを開始します。WebMCPを使用すると、WebサイトはAIエージェントに直接ツールを公開でき、エージェントが各ページでどのようなアクションを見つけ、呼び出すことができるかを宣言することができます。これにより、エージェントはより確実にWebをナビゲートすることができます。エージェントがサイトの使い方を考える代わりに、Webサイトは、エージェントがサイトの使い方を見つけるためにツールを公開し、</p>
+	<p>2つのAPIがこれを機能させます。</p>
+	<ul>
+		<li>
+			<p><code>navigator.modelContext</code>Webサイトがツールを登録可能にする</p>
+		</li>
+		<li>
+			<p><code>navigator.modelContextTesting</code>エージェントがそれらのツールを検出し実行できるようにし、</p>
+		</li>
+	</ul>
+	<p>現在、旅行予約サイトを訪問する代理店は、UIを見れば、UIを理解する必要があります。WebMCPを使用して、サイトは「ここにオリジン、目的、日付を取得するsearch_flightsツールがあります」と宣言します。エージェントは、遅いスクリーンショット分析クリックループを経由することなく、直接呼び出します。これにより、UIの変更に関係なく、ナビゲーションの信頼性が向上します。</p>
+	<p>ツールは事前読み込みではなく、ページ上で発見されます。これは、可能性のあるすべてのサイトにMCPサーバーをプリロードすることは現実的ではなく、コンテキストウィンドウを肥大化するWebのロングテールにとって重要です。</p>
+	<div style="position: relative; padding-top: 62.7177700348432%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/cdef25a5448e8f745c319974849a74d9/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fcdef25a5448e8f745c319974849a74d9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p><i><sup>WebMCPを使って、Chrome DevToolsコンソールでホテルの予約をする。listTools()で利用可能なツールを検出</sup></i></p>
+	<p>Chromeベータ版を実行するブラウザインスタンスを含む実験的なプールがあり、ブラウザの新機能が安定版に移行する前にテストできます。また、CLIから直接ブラウザセッションを管理できる<a href="https://developers.cloudflare.com/browser-rendering/reference/wrangler-commands" target="_blank" rel="noopener noreferrer"><u>Wranglerブラウザコマンド</u></a>もリリースしました。これにより、お客様の端末から直接ブラウザセッションを作成、管理、表示することができます。<a href="https://developers.cloudflare.com/browser-run/features/webmcp" target="_blank" rel="noopener noreferrer"><u>WebMCP対応ブラウザにアクセスする</u></a>には、以下のWranglerコマンドを使用して、実験用プールにセッションを作成します。</p>
+	<pre class="language-javascript"><code class="language-javascript">npm i -g wrangler@latest
+wrangler browser create --lab --keepAlive 300  
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="existing-ways-to-use-browser-run">Browser Runを使う既存の方法</h3>
+		<a href="https://blog.cloudflare.com/#existing-ways-to-use-browser-run" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CDPとWebMCPは新しいものですが、<a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a>、<a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>、または<a href="https://developers.cloudflare.com/browser-rendering/stagehand" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a>を使用して、Browser Runを介した完全なブラウザ自動化を行うことができます。また、<a href="https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint" target="_blank" rel="noopener noreferrer"><u>スクリーンショットの取得</u></a>、<a href="https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint" target="_blank" rel="noopener noreferrer"><u>PDFの生成</u></a>、<a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>Markdownの抽出</u></a>のような単純なタスクには、<a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>クイックアクションエンドポイント</u></a>があります。</p>
+	<div class="flex anchor relative">
+		<h4 id="crawl-endpoint-crawl-web-content">/crawl エンドポイント — クロール Web コンテンツ</h4>
+		<a href="https://blog.cloudflare.com/#crawl-endpoint-crawl-web-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、最近、1 回のAPI 呼び出しでサイト全体をクロールできる <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl エンドポイント</u></a>をリリースしました。開始URLを設定すると、ページが自動的に検出およびスクレイピングされ、希望のフォーマット（HTML、Markdown、構造化JSON）で返されます。追加のパラメータにより、クロールの深さと範囲を制御し、変更されていないページをスキップし、特定の含める、または除外するパスがあります。</p>
+	<p>当社は、意図的に/crawlを<a href="https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management" target="_blank" rel="noopener noreferrer"><u>きちんと動作するクローラー</u></a>であるように構築しました。つまり、サイト所有者の好みを尊重して、<a href="https://developers.cloudflare.com/bots/concepts/bot/signed-agents" target="_blank" rel="noopener noreferrer"><u>署名付きエージェント</u></a>であり、<a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a>を使用して暗号署名された個別のボットIDを持ち、カスタマイズ不可能な<a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#user-agent" target="_blank" rel="noopener noreferrer"><u>User-Agent</u></a>であり、robots.txtと<a href="https://www.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control</u></a>に準拠します。Cloudflareのボット対策やCAPTCHAをバイパスすることはありません。サイト所有者は、自分のコンテンツがアクセス可能かどうかを選択し、/crawlはそれを尊重します。</p>
+	<pre class="language-javascript"><code class="language-javascript"># Initiate a crawl
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+  -H 'Authorization: Bearer &lt;apiToken&gt;' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://blog.cloudflare.com/"
+  }'
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="3-observe">3) 観測</h2>
+		<a href="https://blog.cloudflare.com/#3-observe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最初の試みが上手くいくとは限りません。私たちは、自動化が失敗したとき、なぜ失敗したのかわからないというお客様から何度も耳にしました。そのため、当社は何が起こっているかを観察する複数の方法を追加しました。これにより、エージェントが見ているものをライブでも事後でも正確に把握することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="live-view">ライブビュー</h3>
+		<a href="https://blog.cloudflare.com/#live-view" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/browser-run/features/live-view" target="_blank" rel="noopener noreferrer"><u>Live View</u></a>を使用すると、エージェントのブラウザセッションをリアルタイムで監視できます。エージェントをデバッグする場合でも、長い自動化スクリプトを実行する場合でも、何が起こっているかを正確に把握できます。これには、ページ自体とドキュメントオブジェクトモデル、コンソール、ネットワークリクエストが含まれます。何か問題が発生した場合、本来のボタンが存在しない、ページで認証が必要である、CAPTCHAが表示されるなど、即座に対応することができます。</p>
+	<p>ライブビューへのアクセス方法は2つあります。コードから、検査したいブラウザの<code>session_id</code>を取得し、Chromeのレスポンスから<code>devtoolsFrontendURL</code>を開きます。または、Cloudflareダッシュボードで、「ブラウザ実行」セクションの新しい「ライブセッション」タブを開き、アクティブなセッションをクリックします。</p>
+	<div style="position: relative; padding-top: 64.98194945848375%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b4128e98965d98cddf27b36968c6ac96/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb4128e98965d98cddf27b36968c6ac96%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p><i><sup>ホテルを予約するAIエージェントのライブビュー（リアルタイムのブラウザアクティビティ）</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="session-recordings">セッション録画</h3>
+		<a href="https://blog.cloudflare.com/#session-recordings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ライブビューは使える場合は素晴らしいですが、すべてのセッションを見ることはできません。<a href="https://developers.cloudflare.com/browser-run/features/session-recording" target="_blank" rel="noopener noreferrer"><u>セッションレコーディング</u></a>は、ドキュメントオブジェクトモデルの変更、マウスとキーボードのイベント、ページナビゲーションを構造化されたJSONとしてキャプチャするため、セッション終了後にいつでも再生できます。 </p>
+	<p>ブラウザ起動時に<code>recording:true</code>を渡して、セッション記録を有効化します。セッションが終了した後、[実行]タブからCloudflareダッシュボードの録画にアクセスするか、API経由で録画を取得し、<a href="https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player" target="_blank" rel="noopener noreferrer"><u>rrweb-player</u></a>で再生することができます。次に、記録中に任意の時点でドキュメントオブジェクトモデル状態とコンソール出力を検査できる機能を追加します。 </p>
+	<div style="position: relative; padding-top: 60%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/bd2a15591735a7f7447cb5d366935161/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fbd2a15591735a7f7447cb5d366935161%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p><i><sup>Sentryショップを閲覧し、ボマージャケットをカートに追加するブラウザオートメーションのセッション記録のリプレイ </sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="dashboard-redesign">ダッシュボードリデザイン</h3>
+		<a href="https://blog.cloudflare.com/#dashboard-redesign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前は、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fbrowser-run" target="_blank" rel="noopener noreferrer"><u>Browser Runダッシュボード</u></a>にはブラウザセッションのログしか表示されませんでした。スクリーンショット、PDF、Markdown、クロールのリクエストは表示されませんでした。刷新されたダッシュボードは、それを変えます。新しい「実行」タブには、すべてのリクエストが表示されます。エンドポイントでフィルタリングし、対象URL、ステータス、期間などの詳細を表示できます。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eExar2kjoc2QSq6skzTf6/ba4ad79fa01eb060f8b14cd5afa342e5/BLOG-3221_2.png" alt="ブラウザ実行ダッシュボード「実行」タブでは、ブラウザセッションとクイックアクションを1つのリストに表示し、拡張されたクロールジョブを実行ステータスと進捗状況を表示します" class="kg-image" width="1692" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup>ブラウザ実行ダッシュボードの「実行」タブでは、ブラウザセッションとPDF、スクリーンショット、クロールなどのクイックアクションを単一画面で表示し、クロールジョブを展開して進捗状況を表示</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="4-intervene">4) 介入</h2>
+		<a href="https://blog.cloudflare.com/#4-intervene" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントは良いものですが、完璧ではありません。時には人間の介入が必要な場合もあります。Browser Runは、人間がライブブラウザセッションを制御し、自動化ができないことを処理し、セッションを継続することができるLoopワークフローをサポートしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="human-in-the-loop">ヒューマン・イン・ザ・ループ</h3>
+		<a href="https://blog.cloudflare.com/#human-in-the-loop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>自動化が壁に突き当たった場合、再起動する必要はありません。<a href="https://developers.cloudflare.com/browser-run/features/human-in-the-loop" target="_blank" rel="noopener noreferrer"><u>Human in the Loop</u></a> を使用すると、ページに直接アクセスしてクリック、入力、ナビゲート、資格情報の入力、フォーム送信などの操作が可能です。これにより、エージェントが処理できないワークフローが解放されます。</p>
+	<p>現在、アクティブなセッションのLive View URLを開くとご利用いただけます。次に、エージェントがヘルプが必要であることを知らせ、人間に通知して、問題が解決されたらエージェントに制御を戻すことができるハンドオフフローを追加します。</p>
+	<div style="position: relative; padding-top: 64.90384615384616%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p><i><sup>AIエージェントがAmazonでオレンジ色のラバランプを探し、選択肢を比較し、サインインが必要な購入手続きを人間に引き渡す</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="5-scale">5) スケール</h2>
+		<a href="https://blog.cloudflare.com/#5-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様からは、より多くの、より高速な作業ができるように、上限を引き上げるという声が寄せられています。</p>
+	<div class="flex anchor relative">
+		<h3 id="higher-limits">上限の引き上げ</h3>
+		<a href="https://blog.cloudflare.com/#higher-limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/browser-rendering/limits" target="_blank" rel="noopener noreferrer"><u>デフォルトの同時ブラウザの制限は、30から120へ4倍に</u></a>引き上げられました。すべてのセッションで、グローバルなインスタンスのプールからブラウザに瞬時にアクセスできるため、ブラウザのスピンアップを待つコールドスタートが発生することはありません。また、3月には、<a href="https://developers.cloudflare.com/changelog/post/2026-03-04-br-rest-api-limit-increase" target="_blank" rel="noopener noreferrer"><u>クイックアクションの制限</u></a>を1秒あたり10件に引き上げました。より高い制限が必要な場合は、リクエストに応じて購入できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>ヒューマンインザループハンドオフ</b>: 現在、ライブビューを通じてブラウザセッションに介入することができます。まもなく、エージェントは助けを必要とするとき、それを知らせることができるようになります。通知を組み込んで人間に介入してもらうことも可能です。</p>
+		</li>
+		<li>
+			<p><b>セッション録画の検査</b>: タイムラインをスクラブして、任意のセッションを再生できます。近日中に、ドキュメントオブジェクトモデルの状態とコンソール出力の検査もできるようになります。</p>
+		</li>
+		<li>
+			<p><b>TracesとBrowser Logs</b>：コードをインスツルメントすることなく、デバッグ情報にアクセスします。コンソールログ、ネットワークリクエスト、タイミングデータ何かが壊れれば、どこで接続しているかがわかります。</p>
+		</li>
+		<li>
+			<p><b>Workersから直接スクリーンショット、PDF、マークダウン</b>: <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API</u></a>で利用可能なのと同じシンプルなタスクが、<a href="https://developers.cloudflare.com/browser-rendering/workers-bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>でも利用できるようになります。e<code>nv.BROWSER.screenshot()</code>APIトークンは不要で、APIsは動作します。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="get-started">利用開始</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ブラウザ実行は、現在、Workers FreeおよびWorkers Paidプランの両方でご利用いただけます。本日当社が出荷したすべてのもの（ライブビュー、ヒューマンインザループ、セッション録画、より高い同時実行制限）は、すぐにご利用いただけます。</p>
+	<p>すでにBrowser Renderingを使用している場合、新しい名前と追加の機能だけがあれば、すべて同じように機能します。</p>
+	<p><a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧になり、使い始めてください。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mQq5rxfDK3oU80JCRUL7P/7842cac72f0f4170cc697011230146ab/BLOG-3221_3.png" alt="BLOG-3221 3" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<p></p>
+</div>

@@ -1,0 +1,376 @@
+<div class="mb2 gray5">13分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/agent-readiness">English</a>、<a href="https://blog.cloudflare.com/zh-tw/agent-readiness">繁體中文</a>、<a href="https://blog.cloudflare.com/it-it/agent-readiness">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/agent-readiness">한국어</a>、<a href="https://blog.cloudflare.com/es-es/agent-readiness">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/agent-readiness">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fzhmLsLUKbjVjXeUTRkmh/d303a5174fe53bf6fa2126738a0b73c0/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>ウェブは、常に新しい基準に適応しなければなりません。Webブラウザと対話できるようになり、その後、検索エンジンと対話できるようになりました。現在は、AIエージェントとの対話も必要です。</p>
+	<p>本日、サイト所有者がエージェントの認証方法、エージェントが閲覧できるコンテンツの制御方法、受信フォーマット、支払い方法などを理解し、エージェント向けにサイトを最適化できるよう支援する新しいツール<a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a>を発表いたします。また、インターネット全体の各エージェント基準の導入全般を追跡するために、<a href="https://radar.cloudflare.com/ai-insights#adoption-of-ai-agent-standards" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarに新たなデータセットを導入</u></a>しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sGg5lZjafjQ398V7hYyMv/93e112a34754e2065ffbf6445ebc4500/unnamed.png" alt="" class="kg-image" width="2048" height="1511" loading="lazy">
+	</figure>
+	<p>当社は、模範的な取り組みを目指したいと考えています。そこで同時に、最もエージェントフレンドリーなドキュメントサイトにするため、最近Cloudflareの「<a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>」を全面改訂したこともご紹介します。これにより、AIツールがより迅速かつ大幅に低コストで質問に回答できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-agent-ready-is-the-web-today">今日のWebにおけるエージェント対応状況</h2>
+		<a href="https://blog.cloudflare.com/#how-agent-ready-is-the-web-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>簡単に答えると、あまり良くありません。これは予想通りである一方で、基準が導入された場合、エージェントが現在よりもさらに効果を発揮できることを示しています。</p>
+	<p>Cloudflare Radarはこれを分析するために、インターネット上にある20万件の<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>最も多く訪問されたドメイン</u></a>を取得し、エージェントによる対応が重要ではないカテゴリ（リダイレクト、アドサーバー、トンネリングサービスなど）を除外して、AIエージェントが現実的にインタラクトする必要があると考えられる企業、パブリッシャー、プラットフォームに焦点を絞り、当社の新しいツールでスキャンしました。</p>
+	<p>その結果、多数のドメインカテゴリを対象に各基準の導入状況を測定できる新しい「AIエージェント向け基準の採用状況」チャートが、<a href="https://radar.cloudflare.com/ai-insights#adoption-of-ai-agent-standards" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar AIのインサイト</u></a>ページでご覧いただけるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Vn8SoboYs4OmY2y6aXZke/c641d63cc71e4645e3b19c4124b5e912/image3.png" alt="" class="kg-image" width="1600" height="1332" loading="lazy">
+	</figure>
+	<p>個別のチェックを確認してみると、次のような点が明らかになりました。</p>
+	<ul>
+		<li>
+			<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>はほぼ普遍的であり、78%のサイトが導入しています。しかし、その大半はAIエージェント向けではなく、従来の検索エンジンクローラー向けに書かれています。</p>
+		</li>
+		<li>
+			<p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>コンテンツシグナル</u></a>：サイトの4%がrobots.txtでAI利用の設定を宣言済みです。これは普及しつつある新しいスタンダードです。</p>
+		</li>
+		<li>
+			<p>Markdownコンテンツネゴシエーション（Accept: text/markdownでtext/markdownを配信）は、3.9%のサイトで対応しています。</p>
+		</li>
+		<li>
+			<p><a href="https://modelcontextprotocol.io/community/server-card/charter" target="_blank" rel="noopener noreferrer"><u>MCP Server Cards</u></a>や<a href="https://datatracker.ietf.org/doc/rfc9727" target="_blank" rel="noopener noreferrer"><u>APIカタログ（RFC 9727）</u></a>など、新たに登場している基準は、データセット全体で15件未満のサイトでしか見られません。新しい基準をいち早く導入し、エージェントとうまく機能させることで、他と差別化を図れるチャンスと言えるのではないでしょうか。</p>
+		</li>
+	</ul>
+	<p>このチャートは毎週更新されます。データは<a href="https://radar.cloudflare.com/explorer" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a>や<a href="https://developers.cloudflare.com/api/resources/radar" target="_blank" rel="noopener noreferrer"><u>Radar API</u></a>からもアクセスできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-an-agent-readiness-score-for-your-site">サイトのエージェント導入準備度スコアの取得</h2>
+		<a href="https://blog.cloudflare.com/#get-an-agent-readiness-score-for-your-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a> にアクセスし、サイトのURLを入力することで、ご自身のWebサイトのエージェント導入準備度スコアを取得できます。</p>
+	<p>行動につながるフィードバックを提供するスコアや監査は、以前から、新しい基準の採用を促進させるのに役立ってきました。たとえば、<a href="https://developer.chrome.com/docs/lighthouse/performance/performance-scoring" target="_blank" rel="noopener noreferrer"><u>Google Lighthouse</u></a>は、パフォーマンスとセキュリティのベストプラクティスを基準にWebサイトにスコアを付け、サイト所有者が最新のWebプラットフォーム基準を採用するように案内します。同様の手段により、サイト所有者がAIエージェントのベストプラクティスを導入できるようにすべきだと考えています。</p>
+	<p>サイトを入力すると、Cloudflareはどの基準に対応しているかを確認するためにリクエストを送信し、以下の4つの次元に基づいてスコアを提供します。</p>
+	<ul>
+		<li>
+			<p>発見可能性：<a href="https://datatracker.ietf.org/doc/html/rfc9309" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>、<a href="https://www.sitemaps.org/protocol.html" target="_blank" rel="noopener noreferrer"><u>sitemap.xml</u></a>、<a href="https://datatracker.ietf.org/doc/html/rfc8288" target="_blank" rel="noopener noreferrer"><u>Linkヘッダ（RFC 8288）</u></a></p>
+		</li>
+		<li>
+			<p>コンテンツ：<a href="https://blog.cloudflare.com/markdown-for-agents"><u>エージェント向けマークダウン</u></a></p>
+		</li>
+		<li>
+			<p>ボットアクセス制御：<a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>コンテンツシグナル</u></a>、<a href="https://developers.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>robots.txt上のAIボットルール</u></a>、<a href="https://datatracker.ietf.org/doc/draft-meunier-web-bot-auth-architecture" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a></p>
+		</li>
+		<li>
+			<p>機能：<a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a>、APIカタログ<a href="https://www.rfc-editor.org/rfc/rfc9727" target="_blank" rel="noopener noreferrer"><u>（RFC 9727）</u></a>、<a href="https://www.rfc-editor.org/rfc/rfc8414" target="_blank" rel="noopener noreferrer"><u>RFC 8414</u></a>および<a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC 9728</u></a>経由のOAuthサーバーの検出、<a href="https://modelcontextprotocol.io/community/server-card/charter" target="_blank" rel="noopener noreferrer"><u>MCPサーバーカード</u></a>、および<a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank" rel="noopener noreferrer"><u>WebMCP</u></a></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69MdHcYAZi60gVKRVP9GFM/f3521831b2ca361e12a33f6c8eb05f5b/image9.png" alt="Screenshot of results from an agent-readiness check for an example website." class="kg-image" width="1724" height="1238" loading="lazy">
+	</figure>
+	<p><i><sup>サンプルWebサイトを対象としたエージェント導入準備度チェックの結果のスクリーンショット。</sup></i></p>
+	<p>さらに、当社はサイトがエージェンティックコマーススタンダード（<a href="https://www.x402.org" target="_blank" rel="noopener noreferrer"><u>x402</u></a>、<a href="https://ucp.dev" target="_blank" rel="noopener noreferrer"><u>Universal Commerce Protocol</u></a>、<a href="https://www.agenticcommerce.dev" target="_blank" rel="noopener noreferrer"><u>Agentic Commerce Protocol</u></a>など）に対応しているかをチェックします。ただし、現在のところスコアには反映されません。</p>
+	<p>合格しなかった各チェックに対し、コーディングエージェントに渡してサポートを実装できるプロンプトを提供します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9C62LtqTLgvZGViVEh8n0/b9c01cebe9042ad4b458d4305b3db7b2/image6.png" alt="" class="kg-image" width="1814" height="1320" loading="lazy">
+	</figure>
+	<p>また、当サイトそのものも、エージェント対応可能であり、自ら実践しています。公開しているステートレスのMCPサーバー（https://isitagentready.com/.well-known/mcp.json）において、Streamable HTTP経由の<code>scan_site</code>ツールのおかげで、Webインターフェースを使うことなく、あらゆるMCP対応エージェントがプログラムでWebサイトをスキャンできます。また、チェック対象となるすべての基準に対応するスキルドキュメントを含むAgent Skillsインデックス（https://isitagentready.com/.well-known/agent-skills/index.json）も公開されており、エージェントは何を修正すべきかだけでなく、その修正方法も把握できます。</p>
+	<p>各カテゴリーのチェック項目と、その項目がエージェントにとって重要な理由を探っていきましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="discoverability">発見可能性</h3>
+		<a href="https://blog.cloudflare.com/#discoverability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>は1994年から存在し、大半のサイトに設置されています。エージェントにとって2つの目的があります。クロールルール（誰が何にアクセスできるか）を定義することと、サイトマップを指し示すことです。サイトマップとは、Webサイト上のすべてのパスを列挙したXMLファイルのことで、エージェントがすべてのリンクをクロールすることなく、すべてのコンテンツを見つけられる地図のようなものです。robots.txtは、エージェントが最初に目を付ける場所です。</p>
+	<p>サイトマップに加えて、エージェントはHTTP応答ヘッダーから直接重要なリソースを検出することもできます。特に、Link応答ヘッダー（<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>）を利用します。HTML内に埋もれているリンクとは異なり、LinkヘッダーはHTTP応答の一部であるため、エージェントがマークアップを解析することなくリソースへのリンクを見つけることができます。</p>
+	<pre class="language-Rust"><code class="language-Rust">HTTP/1.1 200 OK
+Link: &lt;/.well-known/api-catalog&gt;; rel="api-catalog"</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="content-accessibility">コンテンツアクセシビリティ</h3>
+		<a href="https://blog.cloudflare.com/#content-accessibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>自サイトにエージェントを導入することと、実際にコンテンツを読み取れるようにすることは別物です。</p>
+	<p>AIの進展スピードを考慮すると一昔前にも思える2024年9月に、Webサイトの表現を大規模言語モデル（LLM）対応させ、モデルのコンテキストウィンドウ内に収める方法として、<a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a>が提案されました。<a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a>は、サイトのルートにあるプレーンテキストファイルで、このサイトは何か、その上に何があるのか、重要なコンテンツがどこにあるのかといった構造化された読み取りリストをエージェントに提供します。クローラーがインデックスを作成するためのものではなく、LLMが読むためのサイトマップだとお考えください。</p>
+	<pre class="language-Rust"><code class="language-Rust"># My Site
+&gt; A developer platform for building on the edge.
+## Documentation
+- [Getting Started](https://example.com/docs/start.md)
+- [API Reference](https://example.com/docs/api.md)
+## Changelog
+- [Release Notes](https://example.com/changelog.md)</code></pre>
+	<p><a href="https://blog.cloudflare.com/markdown-for-agents"><u>Markdownコンテンツネゴシエーション</u></a> はさらに一歩進んでいます。エージェントが任意のページをフェッチして<code>Accept: text/markdown</code>ヘッダーを送信すると、サーバーはHTMLの代わりにクリーンなMarkdownバージョンで応答します。Markdownバージョンではトークン数が大幅に減り（ケースによっては最大80%のトークン削減を計測）、ほとんどのエージェントツールがデフォルトでコンテキストウィンドウに制限を設けているため、応答が高速化され、安価になり、最後まで読まれる可能性が高まります。</p>
+	<p>デフォルトでは、サイトが正しくMarkdownのコンテンツネゴシエーションを処理しているかのみを確認し、llms.txtについては確認しません。スキャンをカスタマイズしてllms.txtを含めることもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="bot-access-control">ボットアクセス制御</h3>
+		<a href="https://blog.cloudflare.com/#bot-access-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントがサイトをナビゲートし、コンテンツを使用できるようになった今、次の疑問は、どのボットにもそれを許可すべきかどうか、ということです。</p>
+	<p><code>robots.txt</code>は、サイトマップを提示するだけではありません。アクセスルールもここで定義します。どのクローラーを許可するか、またそれらがアクセスできる範囲を、特定のパス単位まで明確に指定できます。この慣行はすでに定着しており、今でも仕様に従ったボットがクロールを開始する前に確認する場所となっています。</p>
+	<p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>コンテンツシグナル</u></a>を使えば、より具体的に指示を出すことができます。許可またはブロックするだけでなく、AIがコンテンツに対して何ができるかを正確に宣言できます。「<code>robots.txt</code>」で「<code>Content-Signal</code>」ディレクティブを使用すると、次の3点を独立して制御できるようになります：お客様のコンテンツがAIトレーニング用に使用されるかどうか（<code>ai-train</code>）、推論やグラウンディング用のAI入力として使用されるかどうか（<code>ai-input</code>）、検索結果に表示されるかどうか（<code>search</code>）。</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: *
+Content-Signal: ai-train=no, search=yes, ai-input=yes</code></pre>
+	<p>逆に、<a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a> IETFドラフト基準では、信頼できるボットが自身を認証し、そしてボットからの要求を受信するWebサイトがボットを識別することができます。ボットはそのHTTPリクエストに署名し、受け取ったサイトはそのボットが発行しているパブリックキーを使ってその署名を検証します。</p>
+	<p>これらのパブリックキーは、<code>/.well-known/http-message-signatures-directory</code>という、よく知られたエンドポイントにあります。当社はスキャンの一環としてそこもチェックしています。</p>
+	<p>すべてのサイトにこの実装が必要というわけではありません。サイトがコンテンツを配信するだけで、他のサイトにリクエストを行わない場合は、不要です。しかし、インターネット上で他のサイトにリクエストを行う独自のエージェントを実行するサイトが増えるにつれて、これはますます重要になると予想されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="protocol-discovery">プロトコル検出</h3>
+		<a href="https://blog.cloudflare.com/#protocol-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パッシブなコンテンツ消費だけでなく、エージェントは、APIを呼び出したり、ツールを起動したり、タスクを自律的に完了したりすることで、サイトと直接やりとりすることもできます。</p>
+	<p>サービスに1つ以上のパブリックAPIがある場合、APIカタログ（<a href="https://www.rfc-editor.org/rfc/rfc9727" target="_blank" rel="noopener noreferrer"><u>RFC 9727</u></a>）により、エージェントはそれらすべてを一箇所のwell-knownフォルダで確認できるようになります。ホスト名は<code>/.well-known/api-catalog</code>です。ご自分のAPIと、それらの仕様やドキュメント、ステータスエンドポイントへのリンクをリスト化しています。エージェントがデベロッパーポータルをスクレイピングしたり、ドキュメントを読み込んだりする必要はありません。</p>
+	<p>エージェントについて語る上で、MCPは外せません。<a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol</u></a>は、AIモデルと外部データソースやツールを接続するオープン標準です。すべてのAIツールにカスタムインテグレーションを導入する代わりに、1つのMCPサーバーを構築し、互換性のある任意のエージェントが利用できるようにします。</p>
+	<p>エージェントがMCPサーバーを見つけられるよう、MCP Server Card（現在<a href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649" target="_blank" rel="noopener noreferrer"><u>ドラフト段階</u></a>の提案）を発行できます。これは<code>/.well-known/mcp/server-card.json</code>にあるJSONファイルであり、エージェントが接続する前から、サーバーが提供するツール、到達方法、および認証方法を記述しています。エージェントはこのファイルを読み込み、サーバーを利用するために必要なことをすべて把握します：</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "search-mcp-server",
+    "title": "Search MCP Server",
+    "version": "1.0.0"
+  },
+  "description": "Search across all documentation and knowledge base articles",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "/mcp"
+  },
+  "authentication": {
+    "required": false
+  },
+  "tools": [
+    {
+      "name": "search",
+      "title": "Search",
+      "description": "Search documentation by keyword or question",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" }
+        },
+        "required": ["query"]
+      }
+    }
+  ]
+}</code></pre>
+	<p>エージェントは、特定のタスクを遂行するのに役立つ<a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a>を備えている場合に、最も効果的に動作します。ただし、サイトが提供するスキルを見つけるには、どうすればよいでしょうか。これまで当社は、サイトがこの情報を<a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><u><code>.well-known/agent-skills/index.json</code></u></a>で利用できるようにすることを提案してきました。これは、利用可能なスキルとそのスキルがどこにあるかをエージェントに伝えるエンドポイントです。お気づきかもしれませんが、<code>.well-known</code>基準（<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>）は、多くの他のエージェントおよび認証規格で使われています。この基準を策定したCloudflareのMark Nottinghamをはじめ、ご尽力いただいたIETFの皆様に感謝申し上げます。</p>
+	<p>多くのサイトでは、アクセスするためにまずサインインが必要です。このため、人間がユーザーに代わってエージェントにこれらのサイトへのアクセス権を付与することは難しく、おそらく一部では、ログインセッションを含むユーザーのWebブラウザへのアクセス権をエージェントに付与するという、安全とは言えない回避策を採用しています。</p>
+	<p>ユーザーがアクセスを明示的に許可できるより良い方法があります。OAuthをサポートするサイトは、エージェントに承認サーバーの場所を伝えることができます（<a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC 9728</u></a>）。これにより、エージェントがユーザーをOAuthフローに誘導し、ユーザーがエージェントにアクセス許可することを適切に選択できるようになります。Agents Week 2026で発表した通り、<a href="https://blog.cloudflare.com/managed-oauth-for-access"><u>Cloudflare AccessはこのOAuthフローを完全にサポートしています</u></a>。また、ユーザーが保護されたURLをエージェントに提供する際に、OpenCodeのようなエージェントがこの基準を利用して、直感的に機能させる方法も紹介しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BrGE7eydNNCpEEe3PowrJ/6a2bb1e1b1e7d84d672c1f6ad2333129/image4.png" alt="" class="kg-image" width="1818" height="1644" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="commerce">コマース</h3>
+		<a href="https://blog.cloudflare.com/#commerce" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントがユーザーに代わって購入することもできますが、Web上での支払いは人間による利用を想定して設計されています。カートに追加し、クレジットカード情報を入力し、お支払いを選択する。この流れは、購入者がAIエージェントになると完全に崩れてしまいます。</p>
+	<p><a href="https://x402.org" target="_blank" rel="noopener noreferrer"><u>x402</u></a>は、1997年から仕様書に存在していたものの、広く使用されることはなかったステータスコード「HTTP 402 Payment Required」を復活させることで、プロトコルレベルでこの問題を解決します。このプロセスは非常にシンプルです。エージェントがリソースをリクエストすると、サーバーが402と支払い条件を示す機械可読なペイロードで応答し、エージェントが支払いを完了して再試行します。CloudflareはCoinbaseと提携し、インターネット決済のオープン標準としてx402の普及を推進することを使命とする<a href="https://blog.cloudflare.com/x402"><u>x402 Foundation</u></a>を設立しました。</p>
+	<p>また、<a href="https://ucp.dev" target="_blank" rel="noopener noreferrer"><u>Universal Commerce Protocol</u></a>と<a href="https://www.agenticcommerce.dev" target="_blank" rel="noopener noreferrer"><u>Agentic Commerce Protocol</u></a>という、通常人間がeコマースストアフロントやチェックアウトフローを通じて購入する製品を、エージェントが発見し購入できるように設計された、2つの新たなエージェントコマース基準も確認します。</p>
+	<div class="flex anchor relative">
+		<h2 id="integrating-agent-readiness-into-cloudflare-url-scanner">エージェント導入準備度のCloudflare URL Scannerへの統合</h2>
+		<a href="https://blog.cloudflare.com/#integrating-agent-readiness-into-cloudflare-url-scanner" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com/scan" target="_blank" rel="noopener noreferrer"><u>CloudflareのURL Scanner</u></a>を利用すれば、あらゆるURLを送信して、HTTPヘッダー、TLS証明書、DNSレコード、使用されているテクノロジー、パフォーマンスデータ、セキュリティシグナルについて詳細なレポートを取得できます。URLが内部で実際にどのような動作をしているのかを理解したいセキュリティ研究者や開発者にとって、基本的なツールです。</p>
+	<p><a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a>と同様のチェックをURL Scannerに導入し、新しくAgent Readiness（エージェント導入準備度）タブを追加しました。任意のURLをスキャンする際、従来の分析結果に加え、どの確認作業が完了しているか、サイトのレベル、スコアを向上させるための実用的なガイダンスなど、そのサイトのエージェント導入準備度レポートを全面的に確認できるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tIXif15b4nfpm6ZmS5QZM/596536ca95a10684c73003c4184d6367/image2.png" alt="" class="kg-image" width="1999" height="1145" loading="lazy">
+	</figure>
+	<p>この統合は、<a href="https://developers.cloudflare.com/api/resources/url_scanner" target="_blank" rel="noopener noreferrer"><u>URL Scanner API</u></a>を通じてプログラムでも利用可能です。スキャンにエージェント導入準備度の結果を含めるには、スキャンリクエストにagentReadinessオプションを渡します。</p>
+	<pre class="language-Shell"><code class="language-Shell">curl -X POST https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/urlscanner/v2/scan \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+    -d '{
+          "url": "https://www.example.com",
+          "options": {"agentReadiness": true}
+        }'</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="leading-by-example-upgrading-cloudflare-docs">模範を示す：Cloudflare Docsのアップグレード</h2>
+		<a href="https://blog.cloudflare.com/#leading-by-example-upgrading-cloudflare-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webのエージェント導入準備度を測定するツールを構築する中で、私たちは自社のものも順調に進めなければならないことを認識していました。当社のドキュメントは、お客様が使用するエージェントにとって簡単に理解できるものである必要があります。</p>
+	<p>上記で言及した関連コンテンツサイトの基準を当然採用しており、Cloudflareのスコアは<a href="https://isitagentready.com/developers.cloudflare.com?profile=content" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>からご確認いただけます。しかし、これで終わりではありません。Cloudflareは、<a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Developer Docs</u></a>をどのように改善し、ウェブ上で最もエージェントが使いやすいリソースにしたのかを紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="url-fallbacks-using-index-md-files"><code>index.md</code>ファイルを使用したURLフォールバック</h3>
+		<a href="https://blog.cloudflare.com/#url-fallbacks-using-index-md-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>残念なことに、<a href="https://www.checklyhq.com/blog/state-of-ai-agent-content-negotation" target="_blank" rel="noopener noreferrer"><u>2026年2月現在</u></a>、テストされた7つのエージェントのうち、既定で<code>Accept: text/markdown</code>ヘッダーを付けたコンテンツをリクエストするのは、Claude Code、OpenCode、Cursorだけです。それ以外には、シームレスなURLベースのフォールバックが必要でした。</p>
+	<p>これを行うために、ページごとにURLの相対リンク<code>/index.md</code>でMarkdown形式で個別に閲覧できるようにしています。2つのCloudflare Rulesを組み合わせることで、静的ファイルを複製することなく、動的にこれを実現しています。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/rules/transform/url-rewrite" target="_blank" rel="noopener noreferrer"><u>URL Rewrite Rule</u></a>は、<code>/index.md</code>で終わるリクエストと一致し、<code>regex_replace</code>（<code>/index.md</code>を削除）を使用して、動的にリクエストをベースパスに書き換えます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/rules/transform/request-header-modification" target="_blank" rel="noopener noreferrer"><u>Request Header Transform Rule</u></a>は、リライト<i>前</i>のオリジナルリクエストのパス (<code>raw.http.request.uri.path</code>) と一致し、自動的に<code>Accept: text/markdown</code>ヘッダーを設定します。</p>
+		</li>
+	</ul>
+	<p>この2つのルールにより、URLに「/index.md」パスを追加することで、どのページでもMarkdown形式で取得できます。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/r2/get-started/index.md" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/r2/get-started/index.md</u></a></p>
+		</li>
+	</ul>
+	<p><code>/index.md</code>のURLを<code>llms.txt</code>ファイルで指定しています。実質的には、これらの<code>/index.md</code>パスについては、クライアントがどのヘッダーを設定しても、常にマークダウンを返します。余分な構築ステップやコンテンツの重複も発生しません。</p>
+	<div class="flex anchor relative">
+		<h3 id="creating-effective-llms-txt-files-for-large-sites">大規模なサイト向けの効果的な<code>llms.txt</code>ファイル作成</h3>
+		<a href="https://blog.cloudflare.com/#creating-effective-llms-txt-files-for-large-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>llms.txt</code>は、エージェントの「本拠地」として機能し、LLMがコンテンツを見つけるためのページディレクトリを提供します。ただし、5,000ページ以上の文書を1つのファイル内に収めると、モデルのコンテキストウィンドウの許容範囲を超えてしまいます。</p>
+	<p>1つの巨大なファイルを作成するのではなく、個別の<code>llms.txt</code>ファイルをドキュメント内の<i>トップレベルディレクトリごと</i>に生成し、ルートディレクトリ<code>llms.txt</code>が単にこれらのサブディレクトリを参照するようにします。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/llms.txt</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/r2/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/r2/llms.txt</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/workers/llms.txt</u></a></p>
+		</li>
+	</ul>
+	<p>また、大規模言語モデルにとってほとんど意味のない数百ものディレクトリリスティングページを削除し、それぞれのページに豊富な説明的コンテキスト（タイトル、意味的な名前、説明）を確保しています。</p>
+	<p>たとえば、「<a href="https://developers.cloudflare.com/workers/databases" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/workers/databases/</u></a>」のようなローカライズされたディレクトリリストとしてのみ機能する約450ページを省略しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WaKjZBJbu3onfthzEIELu/42a3e31e8c71bc606b2b45d26ab4a5dd/image1.png" alt="" class="kg-image" width="1760" height="1184" loading="lazy">
+	</figure>
+	<p>これらのページはサイトマップに表示されますが、LLMにとっての情報は非常に少なくなっています。すべての子ページはすでに<code>llms.txt</code>内で個別にリンクされているので、ディレクトリページを取得しても、リンクの冗長なリストしか得られず、エージェントは実際のコンテンツを探すためにもう一度リクエストを余儀なくされます。</p>
+	<p>エージェントが効率的に操作できるように、各<code>llms.txt</code>エントリは、コンテキストを豊富に含みながらも、トークンは軽量に抑える必要があります。人間はフロントマターやフィルタリングラベルを無視するかもしれませんが、AIエージェントにとって、このメタデータは車のハンドルのようなものです。そこで、当社の製品コンテンツエクスペリエンス（PCX）チームは、ページのタイトル、説明、URL構造を改良しました。これにより、エージェントは常にどのページを正確に取得すべきかを把握できます。</p>
+	<p>弊社のルートディレクトリ<a href="https://developers.cloudflare.com/llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a>のセクションをご覧ください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OvVdBcHHItCF3xN2kMVZZ/d105546f402885da90466ff9545f66d2/image5.png" alt="" class="kg-image" width="1999" height="470" loading="lazy">
+	</figure>
+	<p>各リンクには、意味的な名前、一致するURL、価値の高い説明があります。<code>llms.txt</code>の生成に、追加の作業は一切不要でした。すべて、ドキュメントのフロントマターにすでに記載されていました。トップレベルディレクトリにあるページでも<code>llms.txt</code>ファイルの場合と同様の処理が行われます。これらすべてのコンテキストにより、エージェントは関連情報をより効率的に見つけることができるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="custom-agent-friendly-documentation-afdocs-tooling">カスタムエージェントフレンドリーなドキュメント（afdocs）ツール</h3>
+		<a href="https://blog.cloudflare.com/#custom-agent-friendly-documentation-afdocs-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>さらに、「<a href="https://github.com/agent-ecosystem/afdocs" target="_blank" rel="noopener noreferrer"><u>afdocs</u></a>」と呼ばれる新たなエージェントフレンドリーなドキュメント仕様とオープンソースプロジェクトに対して、当社のドキュメントをテストしています。「afdocs」は、コンテンツの発見やナビゲーションなどのために、チームがドキュメントサイトをテストできるようにするものです。この仕様により、独自のカスタム監査ツールを構築できました。当社のユースケースに特化した意図的なパッチをいくつか加えることで、簡単に評価できるダッシュボードを作成しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lzMVtLnGAoKtdwf43YtDx/757f52fd09bb2525fac41b634bf987ad/image10.png" alt="" class="kg-image" width="1999" height="1227" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="benchmark-results-faster-and-cheaper">ベンチマーク結果：より速く、より安価に</h3>
+		<a href="https://blog.cloudflare.com/#benchmark-results-faster-and-cheaper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェント（OpenCode経由のKimi-k2.5）に対し、他の大規模な技術ドキュメントサイトの<code>llms.txt</code>ファイルを指定し、極めて専門的で技術的な質問に回答するよう指示しました。</p>
+	<p>平均して、Cloudflareのドキュメントを参照するエージェントは、エージェント用に改良されていない平均的なサイトよりも、<b>トークン消費量が31%少なくなり</b>、正解にたどり着くまでの時間が<b>66%短縮される</b>ことがわかりました。当社の製品ディレクトリを1つのコンテキストウィンドウにまとめることで、エージェントは必要なページを特定し、単一の線形パスで取得できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="structure-leads-to-speed">構造がスピードを生み出す</h3>
+		<a href="https://blog.cloudflare.com/#structure-leads-to-speed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLM回答の正確さは、多くの場合、コンテキストウィンドウ効率の副産物として得られるものです。当社のテストにおいて、他のドキュメント群には繰り返しのパターンが観測されました。</p>
+	<ol>
+		<li>
+			<p><b>grepループ：</b>多くのドキュメントサイトには、エージェントの即時コンテキストウィンドウを超える、単一の巨大なllms.txtファイルがあります。エージェントはファイル全体を「読み取る」ことができないため、キーワードを<a href="https://en.wikipedia.org/wiki/Grep" target="_blank" rel="noopener noreferrer"><u>grep</u></a>し始めます。最初の検索で具体的な詳細が特定できない場合、エージェントは再考し、検索を洗練させ、再試行する必要があります。</p>
+		</li>
+		<li>
+			<p><b>コンテキストの狭小化と精度の低下：</b>エージェントがファイル全体を読むのではなく反復検索に頼ると、情報全体のより広いコンテキストを失います。この断片的な見方では、エージェントは手元のドキュメントを十分に理解できないことがよくあります。</p>
+		</li>
+		<li>
+			<p><b>遅延とトークンの肥大化：</b> <code>grep</code>ループの各反復処理では、エージェントが新しい「思考トークン」を生成し、追加の検索リクエストを実行する必要があります。このやりとりにより最終応答の速度が目に見えて低下し、トークン数全体が増加するため、エンドユーザーのコストが上昇します。</p>
+		</li>
+	</ol>
+	<p>これに対して、Cloudflareのドキュメントは、エージェントのコンテキストウィンドウ内に完全に収まるように設計されています。この機能によりエージェントは、ディレクトリを取り込み、必要な正確なページを特定して、迂回せずにMarkdownを取得できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="improving-llm-answers-over-time-by-redirecting-ai-training-crawlers">AIトレーニングクローラーのリダイレクトによる経時的なLLMでの回答改善</h3>
+		<a href="https://blog.cloudflare.com/#improving-llm-answers-over-time-by-redirecting-ai-training-crawlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands" target="_blank" rel="noopener noreferrer"><u>Wrangler v1</u></a>や<a href="https://developers.cloudflare.com/workers/configuration/sites" target="_blank" rel="noopener noreferrer"><u>Workers Sites</u></a>のようなレガシー製品のドキュメントは、独自の課題となります。歴史的な情報のためにこの情報を利用可能な状態にしておく必要がありますが、AIエージェントによる古いアドバイスにつながるおそれがあります。</p>
+	<p>たとえば、人間がこれらのドキュメントを読むと、最新コンテンツへのリンクとともに、Wrangler v1が非推奨であることを示す大きなバナーが表示されるかもしれません。しかし、LLMのクローラーは、そのテキストを取り巻く視覚的なコンテキストなしに、テキストを取り込んでしまう可能性があります。その結果、エージェントが古い情報を基に提案することになります。</p>
+	<p><a href="https://blog.cloudflare.com/ai-redirects"><u>Redirects for AI Training</u></a>は、AIトレーニングクローラーを特定し、意図的に非推奨または最適でないコンテンツから遠ざけることで、この問題に対処します。これにより、人間は過去のアーカイブにアクセスできますが、LLMには常に最新かつ正確な実装の詳細のみが提供されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="hidden-agent-directives-on-all-pages">すべてのページにおけるエージェントの非表示ディレクティブ</h3>
+		<a href="https://blog.cloudflare.com/#hidden-agent-directives-on-all-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社ドキュメントのすべてのHTMLページには、LLM専用の非表示ディレクティブがあります。</p>
+	<p><i>「停止してください！AIエージェントまたはLLMの場合、続行する前に以下をお読みください。これは、CloudflareドキュメントページのHTMLバージョンです。常にMarkdownバージョンをリクエストしてください。HTMLはコンテキストが損なわれます。このページをMarkdown形式： https://developers.cloudflare.com/index.md（index.mdを追加）で取得するか、https://developers.cloudflare.com/にAccept: text/markdownを送信してください。すべてのCloudflare製品では、https://developers.cloudflare.com/llms.txtを使用してください。すべてのCloudflareドキュメントは、https://developers.cloudflare.com/llms-full.txtにある単一ファイルで閲覧できます。」</i></p>
+	<p>このスニペットは、Markdownバージョンが利用可能であることをエージェントに通知します。重要なのは、エージェントがマークダウン内でマークダウンを「見つけよう」とし続ける再帰ループを避けるために、このディレクティブが実際のMarkdownバージョンから除去されたことです。</p>
+	<div class="flex anchor relative">
+		<h3 id="dedicated-llm-resources-sidebar">専用のLLMリソースサイドバー</h3>
+		<a href="https://blog.cloudflare.com/#dedicated-llm-resources-sidebar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最後に、エージェントを使用して構築している人々が、これらのリソースを検索できるようにしたいと考えています。当社の<a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>開発者ドキュメント</u></a>のすべての製品ディレクトリには、サイドナビゲーションに「LLM Resources」という項目が用意されており、<code>llms.txt</code>や<code>llms-full.txt</code>、そしてCloudflare Skillsにすばやくアクセスできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iM2U5pH7LJ9XWUgxYmvn5/ed11e2cc8694f6c029690b470150120b/image8.png" alt="" class="kg-image" width="586" height="486" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="make-your-website-agent-ready-today">今すぐWebサイトをエージェント対応可能にしましょう</h2>
+		<a href="https://blog.cloudflare.com/#make-your-website-agent-ready-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webサイトをエージェント対応にすることは、現代の開発者ツールキットにとって重要なアクセシビリティ要件です。「人間が読むWeb」から「機械が読むWeb」への移行は、数十年間で最大の構造的変化です。</p>
+	<p><a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a>で、Webサイトのエージェント導入準備度スコアを取得しましょう。そこに表示されるプロンプトでエージェントに依頼して、サイトをAI時代に適応させるようアップグレードしてもらいましょう。今後1年のインターネット全体におけるエージェント規格の普及度については、<a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>からの続報にご期待ください。過去1年で学んだことがあるとすれば、それは多くのことが非常に短期間で変わる可能性があるということです。</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bbf048260ce0ec9900167a567a708746/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbbf048260ce0ec9900167a567a708746%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>
+	</p>
+</div>

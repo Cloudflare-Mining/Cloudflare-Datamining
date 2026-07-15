@@ -1,0 +1,285 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cyber-frontier-models">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/cyber-frontier-models">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/cyber-frontier-models">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/cyber-frontier-models">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/cyber-frontier-models">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/cyber-frontier-models">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/cyber-frontier-models">Português</a>, en <a href="https://blog.cloudflare.com/es-es/cyber-frontier-models">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/cyber-frontier-models">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/cyber-frontier-models">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y625m3YXlvfZAoQZZp8vW/a0a33ce98166cab55e038eafe6b43ac8/unnamed__67_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Ces derniers mois, nous avons testé toute une gamme de LLM (Large Language Models, grands modèles linguistiques) orientés sécurité sur notre propre infrastructure. Ces LLMs nous aident à identifier les vulnérabilités potentiellement présentes au sein de nos propres systèmes afin que nous puissions les corriger, tout en nous révélant également ce que les acteurs malveillants pourront accomplir avec les derniers modèles.</p>
+	<p>Aucun de ces LLM n'a attiré plus d'attention que Mythos Preview d'Anthropic. Il y a quelques semaines, nous avons été invités à utiliser Mythos Preview dans le cadre du <a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener noreferrer"><u>projet Glasswing</u></a>. Nous l'avons bien vite fait pointer vers plus de cinquante de nos propres référentiels afin de voir ce qu'il y trouverait et de découvrir son fonctionnement. </p>
+	<p>Cet article a pour but de vous faire part de nos observations, des tâches que les modèles ont bien réalisées et de celles qu'elles n'ont pas correctement achevées, mais aussi des évolutions nécessaires de l'architecture et des processus à mettre en place autour de ces modèles pour qu'ils puissent être utilisés à plus grande échelle.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-changed-with-mythos-preview">Ce qui a changé avec Mythos Preview</h2>
+		<a href="https://blog.cloudflare.com/#what-changed-with-mythos-preview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le modèle Mythos Preview constitue une véritable avancée. Il convient de le dire clairement avant d'aborder quoi que ce soit d'autre. Nous exécutons des modèles sur notre code depuis un certain temps déjà et le passage de ce qui était possible avec les anciens modèles généralistes aux tâches effectuées aujourd'hui par Mythos Preview ne découle pas uniquement de l'affinage des modèles qui l'ont précédé.</p>
+	<p>C'est un type d'outil différent, qui effectue un travail différent. La comparaison directe avec les modèles antérieurs est donc particulièrement difficile. Plutôt que de tenter de comparer Mythos Preview aux modèles généralistes à la pointe du marché, il est plus utile de décrire ce qu'il peut réellement faire, de même que deux caractéristiques qui se sont distinguées dans les travaux que nous avons réalisés avec Mythos Preview&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Construction de chaîne d'exploitation&nbsp;:</b> une attaque réelle utilise rarement un seul bug. Elle enchaîne plusieurs petites primitives d'attaque afin de créer un exploit fonctionnel. Elle peut, par exemple, transformer un bug d'utilisation après libération en une primitive de lecture et d'écriture arbitraire, détourner le flux de contrôle et utiliser des chaînes de programmation orientée retour (ROP, Return-Oriented Programming) pour prendre le contrôle total d'un système. Mythos Preview peut prendre plusieurs de ces primitives et raisonner sur la manière de les combiner en une preuve fonctionnelle. Le raisonnement présenté tout au long du processus ressemble au travail d'un chercheur senior plutôt qu'à la sortie d'un scanner automatisé.</p>
+		</li>
+		<li>
+			<p><b>Génération de preuves&nbsp;:</b> le fait d'identifier un bug et de prouver qu'il est exploitable constitue deux éléments différents et Mythos Preview peut effectuer les deux tâches. Il rédige du code susceptible de déclencher le bug suspecté, compile ce code au sein d'un environnement d'essai et l'exécute. Si le programme produit ce que le modèle attendait, il en a désormais la preuve. S'il ne fonctionne pas, le modèle lit l'échec, ajuste son hypothèse et réessaie. Cette boucle est aussi importante que les bugs qu'elle détecte, car un défaut suspecté sans preuve concrète demeure une spéculation. Or, Mythos Preview comble cette lacune de manière autonome.</p>
+		</li>
+	</ul>
+	<p>Certains des aspects que nous décrivons ci-dessus ne sont pas entièrement uniques à Mythos Preview. Les autres modèles de pointe que nous avons soumis au même outil ont identifié un nombre raisonnable des mêmes bugs sous-jacents et, dans certains cas, ont également progressé davantage que prévu sur le plan du raisonnement. Ils ne se sont toutefois pas comportés de manière optimum à l'étape de l'assemblage des pièces du puzzle. Un modèle pouvait ainsi identifier un bug intéressant, rédiger une description réfléchie de son importance, puis s'arrêter, en laissant la chaîne réelle inachevée et la question de l'exploitabilité ouverte. Ce qui diffère avec un LLM tel que Mythos Preview, c'est que ce modèle peut désormais prendre ces bugs de faible gravité (qui resteraient traditionnellement invisibles dans un backlog) et les enchaîner de manière à produire un exploit unique de plus grande sévérité.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="model-refusals-in-legitimate-vulnerability-research">Refus des modèles dans la recherche légitime de vulnérabilités</h2>
+		<a href="https://blog.cloudflare.com/#model-refusals-in-legitimate-vulnerability-research" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le modèle Mythos Preview fourni par Anthropic dans le cadre du projet Glasswing ne disposait pas des mesures de sécurité supplémentaires présentes dans les modèles en disponibilité générale (comme Opus&nbsp;4.7 ou GPT-5.5).</p>
+	<p>Le modèle rejetait toutefois certaines requêtes de manière organique (un peu comme les cyber-capacités qui le rendent utile pour la chasse aux vulnérabilités). Le modèle dispose de ses propres garde-fous émergents qui provoquent parfois un rejet des requêtes légitimes de recherche de la sécurité. Or, comme nous l'avons constaté, ces refus organiques ne sont pas cohérents. La même tâche, cadrée différemment ou présentée dans un autre contexte, pouvait produire des résultats complètement différents, comme illustré dans les exemples ci-dessous.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5St6rLRq9wkuxwmLHZ88CV/b4eb948c917ef7f7b0028ccc8ec0aefe/image2.png" alt="" class="kg-image" width="1242" height="716" loading="lazy">
+	</figure>
+	<p><i><sup>Exemple de Mythos Preview rejetant la création d'une validation de principe fonctionnelle&nbsp;</sup></i></p>
+	<p>Le modèle a, par exemple, d'abord refusé d'accomplir une recherche de vulnérabilités pour un projet, puis accepté d'effectuer cette même recherche sur le même code après une modification de l'environnement du projet sans lien avec ce dernier. Rien dans le code analysé n'avait changé.
+
+		Dans un autre cas, le modèle a trouvé et confirmé plusieurs bugs de mémoire graves au sein d'une base de code, puis refusé de rédiger une démonstration de cet exploit. La même requête, formulée différemment, a abouti sur un résultat différent. La même requête peut ainsi produire des résultats différents lors de différentes exécutions du fait de la nature probabiliste du modèle. Des tâches sémantiquement équivalentes peuvent produire des résultats opposés selon la manière et le moment où elles sont présentées au modèle.</p>
+	<p>Ce constat revêt une importance particulière, car si les refus organiques/garde-fous du modèle sont bien réels, ils ne sont toutefois pas suffisamment cohérents pour servir de limite de sécurité complète à eux seuls. C'est précisément pour cette raison que n'importe quel modèle à la pointe du marché du cyber qui sera proposé en disponibilité générale à l'avenir devra inclure des garde-fous supplémentaires, en plus de ce comportement de base, afin de convenir à une utilisation plus large en dehors d'un contexte de recherche contrôlé, comme le projet Glasswing.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-signal-to-noise-problem">Le problème du rapport signal-bruit</h2>
+		<a href="https://blog.cloudflare.com/#the-signal-to-noise-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'un des éléments les plus difficiles de la hiérarchisation des vulnérabilités de la sécurité consiste à décider quels bugs sont réels, lesquels sont exploitables et lesquels nécessitent une correction immédiate. Il s'agissait déjà d'un problème difficile à résoudre dans le monde pré-IA. Les outils d'analyse des vulnérabilités assistés par IA et le code généré par AI ont aggravé la situation et Cloudflare a ainsi défini plusieurs étapes de post-validation pour y faire face.</p>
+	<p>Deux facteurs dominent le niveau de bruit&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Langage de programmation</b>&nbsp;: le C et le C++ vous donnent le contrôle direct de la mémoire et, grâce à cette fonctionnalité, des classes de bugs (attaques par débordement de tampon, lectures et écritures hors limites) que les langages sécurisés du point de vue de la mémoire (ou «&nbsp;memory-safe&nbsp;», comme Rust) éliminent lors de la phase de compilation. Nous avons systématiquement constaté davantage de faux positifs provenant de projets rédigés dans des langages non sécurisés pour la mémoire.</p>
+		</li>
+		<li>
+			<p><b>Biais du modèle</b>&nbsp;: un bon chercheur humain vous indiquera ce qu'il a découvert et avec quel degré de confiance. Pas les modèles. Un modèle auquel vous demanderez de trouver des bugs en trouvera, que le code en contienne ou non. Les constatations reviennent dès lors accompagnées de mots comme «&nbsp;possiblement&nbsp;», «&nbsp;potentiellement&nbsp;» ou «&nbsp;en théorie&nbsp;». Or, ces observations prudentes surpassent largement les constatations bien établies. S'il s'agit là d'un biais raisonnable pour un outil d'exploration, il s'avérerait désastreux pour une file d'attente de triage, où chaque constatation spéculative consomme de l'attention humaine et des jetons pour être rejetée. Or, ce coût est multiplié par les milliers de constatations.</p>
+		</li>
+	</ul>
+	<p>Mythos Preview représente une nette amélioration à ce niveau, notamment dans sa capacité à enchaîner des primitives, en combinant plusieurs vulnérabilités pour former une validation de principe (PoC, Proof of Concept) fonctionnelle plutôt que de les signaler de manière isolée. Une constatation accompagnée d'une PoC est une constatation sur laquelle vous pouvez agir et qui implique beaucoup moins de temps passé à se demander «&nbsp;Cette constatation est-elle même réelle&nbsp;?&nbsp;»</p>
+	<p>Nos outils sont délibérément réglés pour sur-signaler les problèmes afin de nous permettre d'en voir davantage (et de moins en manquer). Or, cette approche entraîne beaucoup plus de bruit. La qualité des résultats de Mythos Preview se révèle toutefois nettement supérieure lors de la phase de triage&nbsp;: moins de constatations floues, des étapes de reproduction plus claires et moins de travail pour prendre une décision de correction ou de rejet.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work">Pourquoi le fait de faire pointer un agent de codage générique vers un référentiel ne fonctionne pas</h2>
+		<a href="https://blog.cloudflare.com/#why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque nous avons lancé notre processus de recherche de vulnérabilités assisté par IA l'année dernière, notre instinct était des plus évidents&nbsp;: faire pointer un agent de codage générique vers un référentiel arbitraire et lui demander d'identifier des vulnérabilités. Cette approche fonctionne, dans le sens où le modèle produira des résultats, mais elle n'est pas efficace pour assurer une couverture significative d'une véritable base de code et identifier des résultats de valeur. Cet état de fait s'explique par deux raisons principales&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Contexte&nbsp;:</b> les agents de codage sont optimisés pour exécuter un flux de travail précis (p. ex. développer une fonctionnalité, corriger un bug ou rédiger un remaniement). Ils ingèrent une grande quantité de code source, tiennent une seule hypothèse à la fois et itèrent sur celle-ci. Cette structure se révèle parfaitement inadéquate en ce qui concerne la recherche de vulnérabilités, par nature étroite et parallèle. Un chercheur humain choisit un aspect spécifique à examiner et l'étudie en profondeur. Cet élément unique peut être une fonctionnalité complexe, des transitions entre différentes limites de sécurité ou une classe de vulnérabilités spécifique, comme les injections de commandes, au sein desquelles les entrées d'un acteur malveillant sont exécutées sous forme de commande shell. Ils réitèrent ensuite ce processus pour une autre fonctionnalité, une limite de sécurité ou une classe de vulnérabilité, plusieurs milliers de fois sur l'ensemble du code. Une session d'agent unique (même de sous-agents) lancée sur un référentiel de cent mille lignes peut couvrir peut-être un dixième de pour cent de la surface de manière utile avant que la fenêtre de contexte du modèle ne se remplisse et que la compaction n'intervienne, potentiellement en éliminant des constatations antérieures qui se seraient révélées importantes.</p>
+		</li>
+		<li>
+			<p><b>Débit&nbsp;:</b> un agent monoflux effectue une tâche à la fois, mais les bases de code réelles nécessitent de nombreuses hypothèses sur de nombreux composants à la fois, avec la possibilité de se déployer davantage lorsqu'un élément intéressant est identifié. Vous pouvez pousser un agent unique plus loin, mais à un certain point, vous cessez d'être limité par le modèle et commencez à être limité par la nature même de l'interaction. L'utilisation du modèle approprié directement au sein d'un agent de codage s'avère adéquate pour une investigation manuelle lorsqu'un chercheur a déjà une piste et souhaite un second avis. Il s'agit toutefois d'un mauvais outil pour atteindre une couverture élevée. Une fois ce fait accepté, nous avons cessé d'essayer de faire accomplir à Mythos Preview une tâche qui ne lui convenait pas et avons plutôt commencé à bâtir l'outil autour de celui-ci.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="what-a-harness-actually-fixes">Ce qu'un outil corrige réellement</h2>
+		<a href="https://blog.cloudflare.com/#what-a-harness-actually-fixes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Quatre leçons ont émergé de la gestion du travail à grande échelle et chacune a souligné la nécessité d'un cadre de gestion de l'exécution à l'échelle mondiale&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Un champ d'application restreint produit de meilleures constatations</b>&nbsp;: le fait de demander à un modèle de «&nbsp;trouver les vulnérabilités dans ce référentiel&nbsp;» entraîne son errance. Lui demander&nbsp;: «&nbsp;Recherche une injection de commande au sein de cette fonction spécifique, avec cette limite de confiance par-dessus. Voici le document d'architecture et la couverture précédente de cette zone&nbsp;» rapproche bien plus ce modèle du travail réel d'un chercheur.</p>
+		</li>
+		<li>
+			<p><b>L'examen contradictoire réduit le bruit&nbsp;:</b> l'ajout d'un second agent entre la constatation initiale et la file d'attente (avec une invite différente, un modèle différent et aucune capacité à générer ses propres constatations) capte une grande quantité du bruit à côté duquel le premier agent passerait s'il ne contrôlait que son propre travail. Le fait de mettre deux agents en désaccord délibéré s'avère bien plus efficace que de simplement demander à un agent de se montrer minutieux.</p>
+		</li>
+		<li>
+			<p><b>La division de la chaîne entre les agents produit un meilleur raisonnement&nbsp;:</b> les questions «&nbsp;Ce code est-il défectueux&nbsp;?&nbsp;» et «&nbsp;Un acteur malveillant peut-il réellement atteindre ce bug depuis l'extérieur du système&nbsp;?&nbsp;» sont toutes deux différentes et le modèle se révèle plus efficace à répondre à chacune d'elles lorsqu'elles sont posées de manière distincte, car chaque question est mieux ciblée que leur version combinée.</p>
+		</li>
+		<li>
+			<p><b>Les tâches étroites en parallèle surpassent un agent exhaustif&nbsp;:</b> la couverture s'améliore lorsque de nombreux agents travaillent sur des questions bien définies et que nous dédupliquons ensuite les résultats plutôt que de demander à un seul agent de se montrer exhaustif.</p>
+		</li>
+	</ul>
+	<p>Chacune de ces observations porte sur le comportement du modèle et, ensemble, décrit un aspect qui ne constitue plus une interface de discussion. Il s'agit-là d'un outil qui vous aidera à obtenir les résultats finaux. Les premières étapes de la création d'un outil sont simples, car vous pouvez demander à votre modèle de vous aider (ce que nous avons d'ailleurs fait). Nous avons utilisé Mythos Preview pour développer, adapter et améliorer nos outils d'origine afin de tirer pleinement parti de ses points forts.
+
+		L'exemple ci-dessous décrit ce à quoi ressemble ce type d'outil en pratique.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-vulnerability-discovery-harness">Notre outil d'identification des vulnérabilités</h2>
+		<a href="https://blog.cloudflare.com/#our-vulnerability-discovery-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Voici à quoi ressemble notre outil d'identification des vulnérabilités, étape par étape. Nous nous en sommes servis pour analyser le code en direct sur l'ensemble de notre environnement d'exécution, du chemin de données à l'edge, de notre pile de protocoles, de notre interface et des projets open source dont nous dépendons.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OhgJDEeyc5aq8EoF4yFJE/917c9a9d8a92d0920acb96f7d5cb66f6/image6.png" alt="" class="kg-image" width="1999" height="905" loading="lazy">
+	</figure>
+	<figure class="table table-style-block-align-left" style="width:97.66%;">
+		<table class="ck-table-resized" style="border-style:none;">
+			<colgroup>
+				<col style="width:11.55%;">
+				<col style="width:56.06%;">
+				<col style="width:32.39%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Étape</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Ses actions</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Son importance</strong></span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png" data-ckbox-resource-id="822rcAA5ctaT" width="32" height="32" alt="">
+								</picture><br>
+								Reconnaissance
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Un agent lit le référentiel de haut en bas, se déploie aux sous-agents responsables de chaque sous-système et produit un document architectural couvrant les commandes de construction, les limites de confiance, les points d'entrée et la surface d'attaque probable. Il génère également la file d'attente initiale des tâches pour l'étape suivante.&nbsp;&nbsp;</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Cette étape assure un contexte partagé à chaque agent situé en aval. Elle résout également le problème d'errance.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png" data-ckbox-resource-id="MZetX0ROffYM" width="31" height="31" alt="">
+								</picture>&nbsp;<br>
+								Traque
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Chaque tâche se présente comme une classe d'attaque associée à un indice de portée. Les traqueurs (c.-à-d. les agents qui recherchent effectivement les bugs) fonctionnent de manière simultanée, généralement une cinquantaine à la fois, chacun se déployant vers une poignée de sous-agents d'exploration. Chaque traqueur a accès à des outils permettant de compiler et d'exécuter le code d'une validation de principe au sein d'un répertoire temporaire par tâche.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">La plus grosse partie du travail s'effectue ici. Déploiement de nombreuses tâches étroites en parallèle, pas d'un agent exhaustif.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png" data-ckbox-resource-id="b0ZpxOYkUhjr" width="29" height="29" alt="">
+								</picture><br>
+								Validation
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Un agent indépendant relit le code et tente de réfuter la constatation initiale. Il utilise une invite différente et n'a pas la capacité de produire de nouvelles constatations par lui-même.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Cette étape capture une fraction significative du bruit que le traqueur ne remarquerait pas en révisant son propre travail.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png" data-ckbox-resource-id="Y31tucc41jy0" width="28" height="28" alt="">
+								</picture><br>
+								Comblement des lacunes
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Les traqueurs signalent les zones qu'ils ont touchées, mais qu'ils n'ont pas complètement couvertes. Ces secteurs sont replacés en file d'attente pour un autre passage.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Cette étape contrebalance la tendance du modèle à se diriger vers les classes d'attaque avec lesquelles il a déjà obtenu des résultats.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png" data-ckbox-resource-id="lvNRuZ_yo_es" width="28" height="28" alt="">
+								</picture><br>
+								Déduplication
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Les constatations qui partagent la même cause racine entraînent leur réduction sous un seul enregistrement.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">L'analyse des variantes est une fonctionnalité, pas un moyen de gonfler la file d'attente par des doublons.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png" data-ckbox-resource-id="_rUjvs8wRMj1" width="29" height="29" alt="">
+								</picture><br>
+								Traçage
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Pour chaque constatation confirmée au sein d'une bibliothèque partagée, un agent traceur se déploie (une instance par référentiel consommateur), utilise un index de symboles inter-référentiels et détermine si une entrée contrôlée par un acteur malveillant peut effectivement entrer en contact avec le bug depuis l'extérieur du système.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Cette étape transforme la constatation «&nbsp;Une faille est présente&nbsp;» en «&nbsp;Une vulnérabilité est accessible&nbsp;». C'est l'étape qui compte le plus.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png" data-ckbox-resource-id="ylBXj7IP-Thj" width="26" height="26" alt="">
+								</picture><br>
+								Retour d'expérience
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Les traces atteignables deviennent de nouvelles tâches de traque au sein des référentiels consommateurs dans lesquels le bug est effectivement exposé.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Cette étape ferme la boucle. Le pipeline s'améliore au fur et à mesure de son exécution.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png" data-ckbox-resource-id="pDRKY2-VeUPg" width="27" height="27" alt="">
+								</picture><br>
+								Rapport
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Un agent rédige un rapport structuré selon un schéma prédéfini, corrige toute erreur de validation selon ce même schéma et envoie le rapport à une API d'ingestion.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">La sortie se présente sous la forme de données interrogeables, pas d'un texte en prose libre.</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-this-means-for-security-teams">L'importance pour les équipes de sécurité</h2>
+		<a href="https://blog.cloudflare.com/#what-this-means-for-security-teams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La réaction la plus forte à Mythos Preview des autres responsables de la sécurité portait sur la vitesse&nbsp;: analyser plus vite, appliquer les correctifs plus rapidement, compresser le cycle de réponse. Plus d'une équipe avec laquelle nous avons parlé fonctionne désormais sous un SLA de deux heures entre la publication d'une CVE et la mise en production du correctif. La réponse instinctive est compréhensible&nbsp;: lorsque la chronologie de l'acteur malveillant se raccourcit, la chronologie de l'entreprise en défense doit également se raccourcir en conséquence. Il ne suffira pas de se montrer plus rapide et nous pensons que de nombreuses équipes sont sur le point de consacrer beaucoup de temps, d'efforts et d'argent à comprendre ce fait à leurs dépens.</p>
+	<p>L'accélération du déploiement des correctifs ne modifie pas la structure du pipeline qui les produit. Si les tests de régression demandent une journée, vous ne pouvez pas proposer un SLA de deux heures sans ignorer ce délai. De même, les bugs que vous transmettez lorsque vous sautez l'étape des tests de régression ont tendance à se révéler pires que ceux que vous essayez de corriger. Nous avons appris une version de ce principe lorsque nous avons tenté de laisser le modèle rédiger ses propres correctifs et observé certains de ces correctifs corriger le bug initial, tout en brisant discrètement un autre élément sur lequel le code dépendait.</p>
+	<p>La question la plus difficile repose sur le fait de savoir à quoi l'architecture autour d'une vulnérabilité devrait ressembler. Le principe ici consiste à compliquer l'exploitation d'une vulnérabilité plus difficile par un acteur malveillant même lorsqu'un bug existe, de sorte que l'écart entre le moment de la divulgation d'une vulnérabilité et le déploiement de son correctif importe moins. Cette approche implique la mise en place de mesures de défense qui se placent devant l'application afin d'empêcher les cybercriminels d'entrer en contact avec le bug. Elle implique aussi de concevoir l'application de manière à ce qu'une faille dans une partie du code ne puisse pas permettre à un acteur malveillant d'accéder à d'autres parties du réseau. Elle implique enfin de pouvoir déployer un correctif partout où le code est exécuté en simultané plutôt que d'attendre que les différentes équipes le déploient.&nbsp;</p>
+	<p>Nous reconnaissons également que ce sujet s'avère à double tranchant. Entre de mauvaises mains, les mêmes capacités que celles qui nous ont aidés à identifier les bugs dans notre propre code pourraient accélérer les attaques contre chaque application située sur Internet. Cloudflare se place devant des millions de ces applications et les principes architecturaux décrits ci-dessus sont exactement ceux que nos produits sont conçus pour appliquer au nom de nos clients. Nous partagerons davantage d'informations sur les implications pour nos clients dans les semaines à venir.</p>
+	<p>N'hésitez pas à nous contacter sur <a href="https://blog.cloudflare.com/#"><u>security-ai-research@cloudflare.com</u></a> si votre équipe effectue un travail similaire et souhaite comparer ses notes de recherche.</p>
+	<p><i>Nos recherches sur Mythos Preview ont été conduites au sein d'un environnement contrôlé et sur notre propre code. Chaque vulnérabilité identifiée a été triée, validée et corrigée lorsque l'opération s'avérait nécessaire dans le cadre du processus formel de gestion des vulnérabilités en vigueur chez Cloudflare.</i></p>
+	<p><i>Ce travail fut avant tout un effort d'équipe. Merci à Albert Pedersen, Craig Strubhart, Dan Jones, Irtefa Fairuz, Martin Schwarzl et Rohit Chenna Reddy pour leurs contributions à la recherche, à l'ingénierie et à l'analyse qui nous ont permis d'élaborer cet article.</i></p>
+</div>

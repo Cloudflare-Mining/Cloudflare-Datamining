@@ -1,0 +1,156 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/warp-for-desktop">English</a>, <a href="https://blog.cloudflare.com/fr-fr/warp-for-desktop">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/warp-for-desktop">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LQ8dPOtnvzYYxEnaqcN4M/f64882ea16eb721bb51ef2e189658ee2/warp-for-desktop.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Cloudflare wurde vor zehn Jahren ins Leben gerufen, um Websites und Webapplikationen vor Angriffen zu schützen und für Besucher schneller zu machen. Cloudflare-Kunden brachten ihre Websites und Webapplikationen auf unser Netzwerk, und ihre Besucher freuten sich über die höhere Geschwindigkeit. Doch diese Geschwindigkeit galt nicht für Websites und Webapplikationen außerhalb des Cloudflare-Netzwerks.</p>
+	<p>Seit einigen Jahren entwickeln wir Produkte, die zu einem schnelleren und sichereren Internet für alle beitragen können, nicht nur für die Besucher von Websites, die sich bereits in unserem Netzwerk befinden. Wir setzten beim ersten Schritt des Besuchs einer beliebigen Website an, der DNS-Abfrage, und brachten den schnellsten öffentlichen DNS-Resolver der Welt heraus: 1.1.1.1. Jeder Internetnutzer konnte jetzt die Verbindungsgeschwindigkeit zu jeder beliebigen Website verbessern, indem er einfach seinen Resolver umstellte.</p>
+	<p>Während wir das Internet für Nutzer schneller machten, konzentrierten wir uns auch darauf, ihre Daten zu schützen. Wir haben 1.1.1.1 entwickelt, um die „letzte Meile“ der Verbindungen zu beschleunigen – die Strecke vom Nutzer bis zu unserem Edge oder anderen Zielen im Internet. Im Gegensatz zu anderen Anbietern haben wir unseren Dienst nicht entwickelt, um Werbung zu verkaufen.</p>
+	<p>Letztes Jahr gingen wir einen Schritt weiter. Mit der Einführung von Cloudflare WARP haben wir die gesamte Verbindung von einem Gerät aus sowohl schneller als auch sicherer gemacht. Per Knopfdruck konnten Anwender ihr Mobilgerät über einen WireGuard-Tunnel durch ein Cloudflare-Rechenzentrum in ihrer Nähe mit dem gesamten Internet verbinden. Der Traffic zu Websites hinter Cloudflare wurde noch schneller und Nutzer konnten auch den Rest des Internets sicherer und mit höheren Geschwindigkeiten nutzen.</p>
+	<p>Anfang dieses Jahres haben wir diese Vorteile mit der Beta-Version auch für Desktops zugänglich gemacht. Heute können wir bekanntgeben, dass WARP für Desktops allgemein verfügbar ist. Jetzt ist das gesamte Internet sicherer und privater, unabhängig davon, wie Sie sich verbinden.</p>
+	<div class="flex anchor relative">
+		<h3 id="bringing-the-power-of-warp-to-security-teams-everywhere">WARP-Vorteile für alle Sicherheitsteams</h3>
+		<a href="https://blog.cloudflare.com/#bringing-the-power-of-warp-to-security-teams-everywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dank WARP wurde das Internet für alle Nutzer überall schneller und ihre Daten wurden sicherer. Doch als Unternehmen in großem Maßstab Remote-Arbeit einführten, taten sich die Sicherheitsteams schwer damit, die Sicherheitskontrollen, die sie im Büro eingerichtet hatten, auf ihre Remote-Mitarbeiter auszuweiten. Heute stellen wir alles, was für unsere WARP-Nutzer selbstverständlich geworden ist, auch Sicherheitsteams zur Verfügung. Das Release enthält auch neue Features für unser <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare-Gateway-Produkt</a>.</p>
+	<p>Mit der Cloudflare-WARP-Anwendung können Unternehmens-Desktops mit Cloudflare Gateway verbunden werden und damit von erweiterter Webfilterung profitieren. Die Gateway-Features nutzen die gleichen Performance- und Sicherheitsvorteile wie die zugrundeliegende WARP-Technologie, jetzt auch mit Sicherheitsfilterung für die Verbindung.</p>
+	<p>Damit ist es für Unternehmen ganz einfach, ihre Nutzer zu schützen, wo auch immer sie sich befinden, ohne den Netzwerk-Traffic erst über eine zentralisierte Sicherheitsgrenze zurückleiten zu müssen. Stattdessen können Unternehmen die WARP-Clientanwendung so konfigurieren, dass der Traffic von Remote-Nutzern sicher und privat über ein Cloudflare-Rechenzentrum in ihrer Nähe gesendet wird. Gateway-Administratoren wenden Richtlinien auf ausgehenden Internet-Traffic an, der über den Client geleitet wird. So schützen Unternehmen die Nutzer vor Bedrohungen aus dem Internet und verhindern gleichzeitig, dass Unternehmensdaten ihr Unternehmen verlassen.</p>
+	<div class="flex anchor relative">
+		<h3 id="privacy-security-and-speed-for-everyone">Datenschutz, Sicherheit und Geschwindigkeit für alle</h3>
+		<a href="https://blog.cloudflare.com/#privacy-security-and-speed-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mit WARP wollten wir Leuten, die nicht einmal wissen, was „VPN“ <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn" target="_blank" rel="noopener noreferrer">bedeutet</a>, auf einfache Weise vergleichbaren Schutz bieten. Für diejenigen von uns, die sich schon mit traditionellen Firmen-VPNs herumschlagen mussten, brauchten wir etwas Besseres. So entstand unsere eigene WireGuard-Implementierung namens <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust">BoringTun</a>.</p>
+	<p>Mit BoringTun verschlüsselt die WARP-Anwendung den gesamten Traffic von Ihrem Gerät und sendet ihn direkt zur Cloudflare-Edge. So wird gewährleistet, dass niemand ausspähen kann, was Sie tun. Wenn die Website, die Sie besuchen, bereits Cloudflare-Kunde ist, wird der Inhalt sofort auf Ihr Gerät gesendet. Bei WARP+ suchen wir den kürzesten Weg durch unser globales Netzwerk von Rechenzentren mit Argo Smart Routing.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OB8augc9tb7AuAD8XGPiH/b50c7c8145482aa46d975e708882f95e/image4-17.png" alt="" class="kg-image" width="1100" height="701" loading="lazy">
+
+	</figure>
+	<p>Kombiniert mit den Vorteilen von <a href="http://one.one.one.one" target="_blank" rel="noopener noreferrer">1.1.1.1</a> (dem <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank" rel="noopener noreferrer">weltweit schnellsten</a> öffentlichen DNS-Resolver) bleibt Ihr Traffic mit WARP sicher, privat und schnell. Da fast alles, was Sie im Internet tun, mit einer DNS-Anfrage beginnt, sind fast alle Ihre Internetaktivitäten schneller, wenn alle Ihre Geräte den schnellsten DNS-Server nutzen. Geschwindigkeit ist jedoch nicht alles. Auch wenn die Verbindung zwischen Ihrer Anwendung und einer Website verschlüsselt ist, galt das bisher nicht für DNS-Lookups für diese Website. Dadurch konnte jeder, sogar Ihr Internetprovider, potentiell ausspähen, was Sie im Internet machen (und diese Informationen verkaufen).</p>
+	<p>Cloudflare wird Ihre persönlichen Daten niemals ausspionieren oder verkaufen. Wenn Sie DNS-over-HTTPS oder DNS-over-TLS für unseren 1.1.1.1-Resolver verwenden, wird Ihre DNS-Anfrage über einen sicheren Kanal gesendet. Das bedeutet: Wenn Sie den 1.1.1.1-Resolver verwenden, wird – zusätzlich zu unseren Datenschutzgarantien – ein Lauscher auch Ihre DNS-Anfragen nicht sehen können. Sie müssen uns aber nicht blind vertrauen. Anfang dieses Jahres haben wir die Ergebnisse einer <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination">Datenschutzprüfung durch eine dritte Partei</a> publiziert. Wir werden uns diesen Prüfungen auch weiterhin unterziehen und wünschen uns, dass auch andere Anbieter unserem Beispiel folgen.</p>
+	<p>Wir haben uns gegenüber unseren Gateway-Kunden zu Datenschutz und Vertraulichkeit verpflichtet. Wir werden Ihre persönlichen Daten niemals an Dritte verkaufen. Während Ihr Administrator die Möglichkeit hat, den Traffic Ihres Unternehmens zu überprüfen und Regeln (wie lange die Daten aufbewahrt werden) oder spezifische Richtlinien (wohin die Daten gelangen können) zu erstellen, wird Cloudflare Ihre persönlichen Daten niemals verkaufen oder Ihre persönlichen Daten für gezielte Werbung auswerten. Ihr Datenschutz und die Kontrolle über die Daten Ihres Unternehmens liegen in Ihren Händen.</p>
+	<div class="flex anchor relative">
+		<h3 id="now-integrated-with-cloudflare-gateway">Jetzt in Cloudflare Gateway integriert</h3>
+		<a href="https://blog.cloudflare.com/#now-integrated-with-cloudflare-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Traditionell haben Unternehmen den Zugriff auf Unternehmensressourcen mit VPN-Lösungen überwacht und Geräte mit VPN-Filterregeln geschützt. Doch als das Trafficvolumen über die lokalen Server des Unternehmens zunahm und Unternehmen VPN-Server verwalten und skalieren mussten, wurden diese Verbindungen schnell zu einer Fehlerquelle (und zu einem Einfallstor für Eindringlinge). Die Endnutzer waren auch nicht zufrieden. VPN-Server waren zu Spitzenzeiten in der Regel überlastet, der Client war sperrig und Performance spielte bei der Entwicklung selten eine Rolle. Und sobald ein böswilliger Akteur sich Zugang verschaffte, konnte er auf alles zugreifen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FFPXwzDszlejtKy5SNEgd/8c39b2aa0b854ce3cae6b2946f0b4616/image3-21.png" alt="" class="kg-image" width="1100" height="533" loading="lazy">
+
+	</figure>
+	<p>VPN-Architektur‌‌</p>
+	<p>Im <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">Januar 2020</a> haben wir Cloudflare for Teams als Ersatz für dieses Modell eingeführt. Cloudflare for Teams basiert auf zwei Kernprodukten: <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>, eine Zero-Trust-Lösung, mit der Unternehmen interne (und jetzt auch <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">SaaS-</a>) Anwendungen mit der Cloudflare-Edge verbinden und Sicherheitsregeln aufstellen, um den sicheren Zugriff darauf zu gewährleisten. VPNs waren nicht mehr der zentrale Einstiegspunkt in das Unternehmen, Nutzer können von überall aus arbeiten und trotzdem Zugriff erhalten. Bei den ersten Features von <a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gateway</a> ging es darum, Nutzer mit einem DNS-Resolver und einer Richtlinien-Engine auf Enterprise-Niveau vor Bedrohungen im Internet zu schützen.</p>
+	<p>Mit der Stärke und Leistungsfähigkeit der WARP-Clients, von der heute Millionen von Anwendern auf der ganzen Welt profitieren, eröffnen sich für Sicherheitsteams sagenhafte neue Anwendungsfälle:</p>
+	<ul>
+		<li>
+			<p>Verschlüsselung des gesamten Nutzer-Traffics: Unabhängig vom Standort Ihrer Nutzer wird der gesamte Traffic von ihren Geräten mit WARP verschlüsselt und privat an den nächstgelegenen WARP-Endpunkt gesendet. Dadurch sind Ihre Nutzer und Ihre Unternehmen vor Schnüfflern geschützt. Wenn Sie bisher neben Access immer noch ein herkömmliches VPN zum Verschlüsseln des Nutzer-Traffics verwenden, ist dies nun nicht mehr erforderlich.</p>
+		</li>
+		<li>
+			<p>WARP+: Cloudflare bietet Kunden, die sich zusätzliche Geschwindigkeitsvorteile wünschen, den Premiumdienst WARP+ an. WARP+ ist jetzt in Teams enthalten. Jeder Teams-Kunde, der die Teams-Client-Anwendungen bereitstellt, erhält automatisch die Premium-Geschwindigkeitsvorteile von WARP+.</p>
+		</li>
+		<li>
+			<p>Gateway für Remote-Mitarbeiter: Bisher mussten Sie bei Gateway die IP-Adressen aller Ihrer Nutzer im Auge behalten und Richtlinien pro Standort erstellen. Dies erschwerte die Durchsetzung von Richtlinien oder den Schutz vor Malware, wenn ein Nutzer sein Gerät an einen anderen Standort brachte. Wenn der Client installiert ist, können diese Richtlinien überall durchgesetzt werden.</p>
+		</li>
+		<li>
+			<p>L7-Firewall und nutzerbasierte Richtlinien: Mit dem heute veröffentlichten <a href="https://blog.cloudflare.com/gateway-swg">Cloudflare-Gateway SWG und Secure DNS</a> kann Ihre Organisation die Geräteauthentifizierung für Ihr Teams-Konto erzwingen, sodass Sie benutzerspezifische Richtlinien erstellen und den gesamten Traffic durch die Firewall führen können.</p>
+		</li>
+		<li>
+			<p>Geräte- und Nutzerprüfung: Neben Nutzer- und Geräterichtlinien können Administratoren auch bestimmten Nutzer- und Geräte-Traffic prüfen. In Verbindung mit logpush ermöglicht dies Ihrem Unternehmen im Falle eines Verstoßes oder einer Prüfung eine detaillierte Nachverfolgung.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n6ktVdf9yYbKrxQhWOIpN/063ce1bb8bd28de3518e02a3e0877ddb/image5-10.png" alt="" class="kg-image" width="354" height="456" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="enroll-your-organization-to-use-the-warp-client-with-cloudflare-for-teams">Melden Sie Ihr Unternehmen für den WARP-Client mit Cloudflare for Teams an</h3>
+		<a href="https://blog.cloudflare.com/#enroll-your-organization-to-use-the-warp-client-with-cloudflare-for-teams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir wissen, wie schwer es sein kann, eine neue Software in einer Organisation einzuführen. Deshalb haben wir hart daran gearbeitet, die Bereitstellung unserer Produkte so einfach wie möglich zu machen. Um loszulegen, rufen Sie einfach unsere <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">Anmeldeseite</a> auf und erstellen ein Konto. Wenn Sie bereits ein aktives Konto besitzen, können Sie diesen Schritt überspringen und gleich zum <a href="https://dash.teams.cloudflare.com/onboarding" target="_blank" rel="noopener noreferrer">Dashboard für Cloudflare for Teams</a> gehen, wo Sie direkt in unseren Onboarding-Vorgang geführt werden. Nachdem Sie sich angemeldet und Ihr Team konfiguriert haben, <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway" target="_blank" rel="noopener noreferrer">richten Sie eine Gateway-Richtlinie ein</a> und wählen dann eine der drei untenstehenden Möglichkeiten zur Installation der Clients, um diese Richtlinie durchzusetzen:</p>
+	<div class="flex anchor relative">
+		<h3 id="self-install">Selbstinstallation‌‌</h3>
+		<a href="https://blog.cloudflare.com/#self-install" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In kleinen Unternehmen ohne IT-Abteilung geht die Installation am schnellsten, wenn Sie die Nutzer auffordern, den Client selbst herunterzuladen und die erforderlichen Einstellungen einzugeben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NWq76ePHRKAyzUj9pX7uL/4a4361b19b9e013a5270df1045d61acb/image1-35.png" alt="" class="kg-image" width="815" height="530" loading="lazy">
+
+	</figure>
+	<p>Einem Unternehmen manuell beitreten</p>
+	<div class="flex anchor relative">
+		<h3 id="scripted-install">Installation per Skript‌‌</h3>
+		<a href="https://blog.cloudflare.com/#scripted-install" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unsere Desktop-Installationsprogramme unterstützen schnelle Installation per Skript. Bei Windows geht das einfach mit dieser Befehlszeile:</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="&lt;insert your org&gt;" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="&lt;insert your gateway DoH domain&gt;" SUPPORT_URL=”&lt;mailto or http of your support person&gt;"</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="managed-device">Verwaltetes Gerät‌‌</h3>
+		<a href="https://blog.cloudflare.com/#managed-device" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unternehmen mit MDM-Tools wie Intune oder JAMF können WARP in einem einzigen Arbeitsgang für den gesamten Gerätepark bereitstellen. Genauso wie Sie alle anderen Geräteeinstellungen vorkonfigurieren, kann auch WARP so eingestellt werden, dass sich die Endnutzer nach der Bereitstellung des Cloudflare-WARP-Clients lediglich mit einem Klick darauf über den Identitätsanbieter Ihres Teams anmelden müssen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7004IBMmW5cUllHPDjIHDG/13e7e722b050aa8fcf90ed2bc2ecb6f9/image2-21.png" alt="" class="kg-image" width="989" height="719" loading="lazy">
+
+	</figure>
+	<p>Microsoft-Intune-Konfiguration</p>
+	<p>Eine vollständige Liste der Installationsoptionen, Pflichtfelder und Schritt-für-Schritt-Anleitungen für alle Plattformen finden Sie der <a href="https://developers.cloudflare.com/warpclient" target="_blank" rel="noopener noreferrer">Dokumentation zum WARP-Client</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-coming-next">Wie geht es weiter?</h3>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir wollen sowohl für unsere WARP-Privatnutzer als auch für Kunden von Cloudflare for Teams noch weitere Features entwickeln. Hier ein kleiner Vorgeschmack auf einige Features, auf die wir uns am meisten freuen (und die wir an dieser Stelle verraten dürfen):</p>
+	<ul>
+		<li>
+			<p>Neue Partner-Integrationen mit CrowdStrike und VMware Carbon Black (Tanium heute verfügbar) ermöglichen es Ihnen, noch umfassendere Cloudflare-Access-Richtlinien zu erstellen, die den Gerätezustand prüfen, bevor sie Nutzern die Verbindung zu Anwendungen ermöglichen.</p>
+		</li>
+		<li>
+			<p>Durch die Unterstützung von Split Tunnel können Sie oder Ihr Unternehmen Anwendungen, Standorte oder IP-Adressen angeben, die von WARP ausgeschlossen werden sollen. Dadurch können Inhalte wie Spiele, Streamingdienste oder beliebige gewünschte Anwendungen auch außerhalb der Verbindung ausgeführt werden.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="download-now">Jetzt herunterladen</h3>
+		<a href="https://blog.cloudflare.com/#download-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir freuen uns, diese Anwendungen endlich mit unseren Kunden teilen zu können. Unser besonderer Dank gilt unseren Cloudflare-MVPs, den mehr als 100.000 Beta-Nutzern der Desktop-Version und den Millionen von Nutzern der mobilen WARP-App, die dazu beigetragen haben, WARP zu dem zu machen, was es heute ist.</p>
+	<p>Sie können die Anwendungen unter <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer">https://one.one.one.one</a> gleich herunterladen.‌‌</p>
+</div>

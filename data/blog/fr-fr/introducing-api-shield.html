@@ -1,0 +1,392 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/introducing-api-shield">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/introducing-api-shield">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/introducing-api-shield">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/introducing-api-shield">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/introducing-api-shield">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/introducing-api-shield">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/introducing-api-shield">Português</a>, en <a href="https://blog.cloudflare.com/es-es/introducing-api-shield">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/introducing-api-shield">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72s4wnUJL8eJgK7H3ksOdZ/7cefd9c4f2b4ba27d363ef28d1cf96b2/introducing-api-shield.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les API sont les éléments vitaux des applications modernes connectées à Internet. Chaque milliseconde, elles envoient des requêtes à partir d'applications mobiles (passer une commande de repas à emporter, « liker » cette photo) et des instructions vers les appareils IdO (déverrouiller la portière de la voiture, démarrer un cycle de lavage, course de 5000 m terminée sur le tapis...), parmi d'innombrables autres appels..</p>
+	<p>Elles sont également la cible d'attaques généralisées visant à effectuer des actions non autorisées ou à exfiltrer des données, comme le montrent de plus en plus les données de Gartner : « d'ici 2021, 90 % des applications web présenteront une surface d'attaque plus importante sous la forme d'API exposées plutôt que sous la forme de l'interface utilisateur, contre 40 % en 2019. » Gartner a également prédit que, « d'ici 2022, les abus d'API passeront d'un vecteur d'attaque peu fréquent au vecteur d'attaque le plus fréquent, entraînant des violations de données au niveau des applications web des entreprises »[1][2]. Sur les 18 millions de requêtes par seconde qui traversent le réseau Cloudflare, 50 % sont dirigées vers des API (la majorité de ces requêtes sont bloquées car jugées malveillantes).</p>
+	<p>Pour combattre ces menaces, Cloudflare simplifie la sécurisation des API en utilisant une identité forte basée sur des certificats clients et une validation stricte reposant sur des schémas. À partir d'aujourd'hui, ces fonctionnalités sont disponibles gratuitement pour toutes les offres de notre nouvelle solution API Shield. Dès aujourd'hui, les avantages en matière de sécurité <a href="https://blog.cloudflare.com/announcing-grpc">s'étendent également aux API basées sur gRPC</a> qui utilisent des formats binaires comme des protocol buffers plutôt que JSON, et qui ont gagné en popularité auprès de notre clientèle.</p>
+	<p>Poursuivez votre lecture pour en savoir plus sur les nouvelles fonctionnalités, ou passez directement au paragraphe de démonstration afin de consulter des exemples pour commencer à configurer votre première règle API Shield.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57hU743WWPc9IuSri97hCD/c6d495ce4edcd272263e0aa4d1f86e04/image3.png" alt="" class="kg-image" width="976" height="809" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="positive-security-models-and-client-certificates">Modèles de sécurité positive et certificats clients</h3>
+		<a href="https://blog.cloudflare.com/#positive-security-models-and-client-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un modèle de « sécurité positive » est un modèle qui n'autorise que des comportements et des identités connus, rejetant tout le reste. C'est l'inverse du modèle traditionnel de « sécurité négative » appliqué par un pare-feu applicatif web (WAF) qui permet tout <i>sauf</i> les requêtes provenant d'adresses IP, ASN ou pays problématiques, ou les requêtes comportant des signatures problématiques (tentatives d'injection SQL, etc.).</p>
+	<p>L'implémentation d'un modèle de sécurité positive pour les API est le moyen le plus direct d'éliminer le bruit des attaques de credential stuffing et d'autres outils d'analyse automatisés. Par ailleurs, la première étape vers un modèle positif consiste à déployer une authentification forte telle que l'authentification mutuelle TLS, qui n'est pas vulnérable <a href="https://spycloud.com/2020-annual-credential-exposure-report" target="_blank" rel="noopener noreferrer">à la réutilisation ni au partage des mots de passe</a>.</p>
+	<p>Tout comme nous avons simplifié la délivrance des certificats de serveur en 2014 avec <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, API Shield réduit le processus d'émission de certificats clients à de simples clics sur des boutons du tableau de bord Cloudflare. Grâce à une infrastructure à clé publique (PKI)/privée entièrement hébergée, vous pouvez vous concentrer sur vos applications et fonctionnalités, plutôt que sur l'exploitation et la sécurisation de votre propre autorité de certification (CA).</p>
+	<div class="flex anchor relative">
+		<h3 id="enforcing-valid-requests-with-schema-validation">Application de requêtes valides avec validation de schéma</h3>
+		<a href="https://blog.cloudflare.com/#enforcing-valid-requests-with-schema-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3W34OWMhIbvXhFkJvqVUjc/8986a3068ebbf683c37f27542717642e/API_Shield_Mutual_TLS.png" alt="" class="kg-image" width="1244" height="859" loading="lazy">
+
+	</figure>
+	<p>Une fois que les développeurs sont sûrs que seuls des clients légitimes (avec des certificats SSL en main) se connectent à leurs API, l'étape suivante de l'implémentation d'un modèle de sécurité positive consiste à veiller à ce que ces clients envoient des requêtes valides. Il est difficile d'extraire un certificat client d'un appareil et de le réutiliser ailleurs, mais ce n'est pas impossible. Il est donc important de s'assurer que l'API est appelée comme prévu.</p>
+	<p>Les requêtes contenant des entrées superflues peuvent ne pas avoir été anticipées par le développeur de l'API et causer des problèmes si elles sont traitées directement par l'application. Elles doivent donc être abandonnées à la périphérie si possible. La validation du schéma d'API fonctionne en faisant correspondre le contenu des requêtes d'API (les paramètres de requête qui suivent l'URL et le contenu du corps de la requête POST) à un contrat ou « schéma » qui contient les règles pour ce qui est attendu. En cas d'échec de la validation, l'appel d'API est bloqué, protégeant l'origine d'une requête non valide ou d'un payload malveillant.</p>
+	<p>La validation du schéma est actuellement en version bêta fermée pour les payloads JSON, la prise en charge de gRPC/Buffer Protocol étant également sur notre feuille de route. Si vous souhaitez participer à la version bêta, veuillez envoyer une demande d'assistance avec pour objet « API Schema Validation Beta ». Une fois la version bêta terminée, nous prévoyons d'intégrer la validation de schémas à l'interface utilisateur d'API Shield.</p>
+	<div class="flex anchor relative">
+		<h3 id="demonstration">Démonstration</h3>
+		<a href="https://blog.cloudflare.com/#demonstration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7e0v45eOD6jY65spHlNYe2/37899470ffba1a8ff53c8f21295d6372/API_Shield_Schema_Protection.png" alt="" class="kg-image" width="1502" height="1312" loading="lazy">
+
+	</figure>
+	<p>Pour démontrer comment les API qui communiquent avec les appareils IdO et les applications mobiles peuvent être sécurisées, nous avons élaboré une démonstration d'API Shield avec des certificats clients et la validation de schéma.</p>
+	<p>Les températures sont capturées par un appareil IdO, représenté dans la démo par un Raspberry Pi 3 Model B+ avec un capteur de température infrarouge externe, puis transmises via une requête POST à une API protégée par Cloudflare. Les températures sont ensuite récupérées par des requêtes GET, puis affichées dans une application mobile intégrée à Swift pour iOS.</p>
+	<p>Dans les deux cas, l'API a été développée à l'aide de Cloudflare Workers® et Workers KV, mais elle peut être remplacée par n'importe quel point de terminaison accessible par Internet.</p>
+	<div class="flex anchor relative">
+		<h3 id="1-api-configuration">1. Configuration de l'API</h3>
+		<a href="https://blog.cloudflare.com/#1-api-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant de configurer l'appareil IdO et l'application mobile pour communiquer de manière sécurisée avec l'API, nous devons créer les points de terminaison API. Pour que l'exemple reste simple tout en permettant une personnalisation supplémentaire, nous avons mis en œuvre l'API en tant que Worker Cloudflare (en empruntant le code au <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">tutoriel sur la liste des choses à faire</a>).</p>
+	<p>Dans cet exemple particulier, les températures sont stockées dans Workers KV en utilisant l'adresse IP source comme clé, mais celle-ci pourrait facilement être remplacée par une <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank" rel="noopener noreferrer">valeur du certificat client</a>, par exemple le fingerprint. Le code ci-dessous enregistre une température et un horodatage dans KV lorsqu'une requête POST est effectuée, et renvoie les 5 températures les plus récentes lorsqu'une requête GET est envoyée.</p>
+	<p>Avant d'ajouter l'authentification mTLS, nous allons tester l'envoi d'une requête POST de lecture de température aléatoire :</p>
+	<pre class="language-bash"><code class="language-bash">const defaultData = { temperatures: [] }
+
+const getCache = key =&gt; TEMPERATURES.get(key)
+const setCache = (key, data) =&gt; TEMPERATURES.put(key, data)
+
+async function addTemperature(request) {
+
+    // pull previously recorded temperatures for this client
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+    let data
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        await setCache(cacheKey, JSON.stringify(defaultData))
+        data = defaultData
+    } else {
+        data = JSON.parse(cache)
+    }
+
+    // append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp)
+    try {
+        const body = await request.text()
+        const val = JSON.parse(body)
+
+        if (val.temperature &amp;&amp; val.time) {
+            data.temperatures.push(val)
+            await setCache(cacheKey, JSON.stringify(data))
+            return new Response("", { status: 201 })
+        } else {
+            return new Response("Unable to parse temperature and/or timestamp from JSON POST body", { status: 400 })
+        }
+    } catch (err) {
+        return new Response(err, { status: 500 })
+    }
+}
+
+function compareTimestamps(a,b) {
+    return -1 * (Date.parse(a.time) - Date.parse(b.time))
+}
+
+// return the 5 most recent temperature measurements
+async function getTemperatures(request) {
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        return new Response(JSON.stringify(defaultData), { status: 200, headers: { 'content-type': 'application/json' } })
+    } else {
+        data = JSON.parse(cache)
+        const retval = JSON.stringify(data.temperatures.sort(compareTimestamps).splice(0,5))
+        return new Response(retval, { status: 200, headers: { 'content-type': 'application/json' } })
+    }
+}
+
+async function handleRequest(request) {
+
+    if (request.method === 'POST') {
+        return addTemperature(request)
+    } else {
+        return getTemperatures(request)
+    }
+
+}
+
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})</code></pre>
+	<p>Voici une lecture ultérieure de cette température, ainsi que des quatre précédentes qui ont été soumises :</p>
+	<pre class="language-bash"><code class="language-bash">$ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '{printf("%.2f",$1/10.0)}')
+$ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+$ echo -e "$TEMPERATURE\n$TIMESTAMP"
+36.30
+2020-09-28T02:57:49Z
+
+$ curl -v -H "Content-Type: application/json" -d '{"temperature":'''$TEMPERATURE''', "time": "'''$TIMESTAMP'''"}' https://shield.upinatoms.com/temps 2&gt;&amp;1 | grep "&lt; HTTP/2"
+&lt; HTTP/2 201 </code></pre>
+	<p>$ curl -s <a href="https://shield.upinatoms.com/temps" target="_blank" rel="noopener noreferrer">https://shield.upinatoms.com/temps</a> | jq .</p>
+	<pre class="language-bash"><code class="language-bash">$ curl -s https://shield.upinatoms.com/temps | jq .
+[
+  {
+    "temperature": 36.3,
+    "time": "2020-09-28T02:57:49Z"
+  },
+  {
+    "temperature": 36.7,
+    "time": "2020-09-28T02:54:56Z"
+  },
+  {
+    "temperature": 36.2,
+    "time": "2020-09-28T02:33:08Z"
+  },
+    {
+    "temperature": 36.5,
+    "time": "2020-09-28T02:29:22Z"
+  },
+  {
+    "temperature": 36.9,
+    "time": "2020-09-28T02:27:19Z"
+  } 
+]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="2-client-certificate-issuance">2. Délivrance du certificat client</h3>
+		<a href="https://blog.cloudflare.com/#2-client-certificate-issuance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec notre API en main, il est temps de la verrouiller en exigeant un certificat client valide. Nous devons au préalable générer ces certificats. Pour ce faire, vous pouvez soit vous rendre dans l'onglet SSL/TLS → Client Certificates (Certificats clients) du tableau de bord Cloudflare et cliquer sur « Create Certificate » (Créer un certificat), soit automatiser le processus via des appels d'API.</p>
+	<p>Comme la plupart des développeurs d'applications scalables généreront leurs propres clés privées et CSR et demanderont leur signature via API, nous allons montrer ce processus ici. À l'aide de <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>, l'outil PKI de Cloudflare, nous allons commencer par créer un certificat bootstrap pour l'application iOS, puis nous créerons un certificat pour l'appareil IdO :</p>
+	<pre class="language-bash"><code class="language-bash">$ cat &lt;&lt;'EOF' | tee -a csr.json
+{
+    "hosts": [
+        "ios-bootstrap.devices.upinatoms.com"
+    ],
+    "CN": "ios-bootstrap.devices.upinatoms.com",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "US",
+        "L": "Austin",
+        "O": "Temperature Testers, Inc.",
+        "OU": "Tech Operations",
+        "ST": "Texas"
+    }]
+}
+EOF
+
+$ cfssl genkey csr.json | cfssljson -bare certificate
+2020/09/27 21:28:46 [INFO] generate received request
+2020/09/27 21:28:46 [INFO] received CSR
+2020/09/27 21:28:46 [INFO] generating key: rsa-2048
+2020/09/27 21:28:47 [INFO] encoded CSR
+
+$ mv certificate-key.pem ios-key.pem
+$ mv certificate.csr ios.csr
+
+// and do the same for the IoT sensor
+$ sed -i.bak 's/ios-bootstrap/sensor-001/g' csr.json
+$ cfssl genkey csr.json | cfssljson -bare certificate
+...
+$ mv certificate-key.pem sensor-key.pem
+$ mv certificate.csr sensor.csr</code></pre>
+	<p>Générez une clé privée et une CSR pour l'appareil IdO et l'application iOS</p>
+	<pre class="language-bash"><code class="language-bash">// we need to replace actual newlines in the CSR with ‘\n’ before POST’ing
+$ CSR=$(cat ios.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+// save the response so we can view it and then extract the certificate
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d “$request_body” https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates &gt; response.json
+
+$ cat response.json | jq .
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "7bf7f70c-7600-42e1-81c4-e4c0da9aa515",
+    "certificate_authority": {
+      "id": "8f5606d9-5133-4e53-b062-a2e5da51be5e",
+      "name": "Cloudflare Managed CA for account 11cbe197c050c9e422aaa103cfe30ed8"
+    },
+    "certificate": "-----BEGIN CERTIFICATE-----\nMIIEkzCCA...\n-----END CERTIFICATE-----\n",
+    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIDITCCA...\n-----END CERTIFICATE REQUEST-----\n",
+    "ski": "eb2a48a19802a705c0e8a39489a71bd586638fdf",
+    "serial_number": "133270673305904147240315902291726509220894288063",
+    "signature": "SHA256WithRSA",
+    "common_name": "ios-bootstrap.devices.upinatoms.com",
+    "organization": "Temperature Testers, Inc.",
+    "organizational_unit": "Tech Operations",
+    "country": "US",
+    "state": "Texas",
+    "location": "Austin",
+    "expires_on": "2030-09-26T02:41:00Z",
+    "issued_on": "2020-09-28T02:41:00Z",
+    "fingerprint_sha256": "84b045d498f53a59bef53358441a3957de81261211fc9b6d46b0bf5880bdaf25",
+    "validity_days": 3650
+  }
+}
+
+$ cat response.json | jq .result.certificate | perl -npe 's/\\n/\n/g; s/"//g' &gt; ios.pem
+
+// now ask that the second client certificate signing request be signed
+$ CSR=$(cat sensor.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d "$request_body" https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates | perl -npe 's/\\n/\n/g; s/"//g' &gt; sensor.pem</code></pre>
+	<p>Demandez à Cloudflare de signer les CSR avec l'autorité de certification privée émise pour votre zone</p>
+	<div class="flex anchor relative">
+		<h3 id="3-api-shield-rule-creation">3. Création d'une règle API Shield</h3>
+		<a href="https://blog.cloudflare.com/#3-api-shield-rule-creation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec les certificats en main, nous pouvons désormais configurer le point de terminaison API pour demander leur utilsation. Vous trouverez ci-dessous une démonstration de la création d'une telle règle.</p>
+	<p>Les étapes sont les suivantes : spécifier les noms d'hôtes associés à l'invite pour les certificats (par exemple, shield.upinatoms.com), puis créer la règle API Shield.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AdQIq6SE7b3EudHbkruHV/c079941c7afa73490b7701e4c09ed541/API_Shield_demo.gif" alt="" class="kg-image" width="600" height="469" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="4-iot-device-communication">4. Communication avec l'appareil IdO</h3>
+		<a href="https://blog.cloudflare.com/#4-iot-device-communication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour préparer l'appareil IdO à communiquer de manière sécurisée avec notre point de terminaison API, nous devons intégrer le certificat sur l'appareil, puis pointer notre application vers ce certificat afin qu'il puisse être utilisé lors de l'envoi de la requête POST au point de terminaison API.</p>
+	<p>Nous avons copié de manière sécurisée la clé privée et le certificat dans /etc/ssl/private/sensor-key.pem et /etc/ssl/certs/sensor.pem, puis nous avons modifié notre exemple de script pour qu'il pointe vers ces fichiers :</p>
+	<pre class="language-bash"><code class="language-bash">import requests
+import json
+from datetime import datetime
+
+def readSensor():
+
+    # Takes a reading from a temperature sensor and store it to temp_measurement 
+
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime(‘%Y-%m-%dT%H:%M:%SZ’)
+
+    measurement = {'temperature':str(36.5),'time':timestampStr}
+    return measurement
+
+def main():
+
+    print("Cloudflare API Shield [IoT device demonstration]")
+
+    temperature = readSensor()
+    payload = json.dumps(temperature)
+    
+    url = 'https://shield.upinatoms.com/temps'
+    json_headers = {'Content-Type': 'application/json'}
+    cert_file = ('/etc/ssl/certs/sensor.pem', '/etc/ssl/private/sensor-key.pem')
+    
+    r = requests.post(url, headers = json_headers, data = payload, cert = cert_file)
+    
+    print("Request body: ", r.request.body)
+    print("Response status code: %d" % r.status_code)</code></pre>
+	<p>Lorsque le script tente de se connecter à <a href="https://shield.upinatoms.com/temps" target="_blank" rel="noopener noreferrer">https://shield.upinatoms.com/temps</a>, Cloudflare demande qu'un ClientCertificate soit envoyé, et notre script envoie le contenu de sensor.pem avant de démontrer qu'il est en possession de sensor-key.pem comme requis pour mener à bien le handshake SSL/TLS.</p>
+	<p>Si nous n'envoyons pas le certificat client ou si nous tentons d'inclure des champs superflus dans la requête d'API, la validation de schéma (configuration non indiquée) échoue et la requête est rejetée :</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:52:19Z"}
+Response status code: 403</code></pre>
+	<p>Si un certificat valide est présenté et que le payload suit le schéma précédemment chargé, notre script poste à l'API des requêtes POST pour la dernière lecture de température.</p>
+	<pre class="language-bash"><code class="language-bash">Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:56:45Z"}
+Response status code: 201</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="5-mobile-application-ios-communication">5. Communication avec l'application mobile (iOS)</h3>
+		<a href="https://blog.cloudflare.com/#5-mobile-application-ios-communication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Maintenant que les requêtes de température ont été envoyées à notre point de terminaison API, il est temps de les lire en toute sécurité à partir de notre application mobile à l'aide d'un des certificats clients.</p>
+	<p>Par souci de concision, nous allons intégrer une clé et un certificat « bootstrap » sous la forme d'un fichier PKCS#12 dans le bundle de l'application. Dans un déploiement réel, ce certificat bootstrap ne devra être utilisé qu'avec les informations d'identification des utilisateurs pour s'authentifier auprès d'un point de terminaison API qui peut renvoyer un certificat d'utilisateur unique. Les utilisateurs d'entreprise voudront utiliser MDM pour distribuer des certificats afin de disposer d'options de contrôle et de persistance supplémentaires.</p>
+	<div class="flex anchor relative">
+		<h4 id="package-the-certificate-and-private-key">Packager le certificat et la clé privée</h4>
+		<a href="https://blog.cloudflare.com/#package-the-certificate-and-private-key" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant d'ajouter le certificat bootstrap et la clé privée, nous devons les combiner dans un fichier PKCS#12 binaire. Ce fichier binaire sera ensuite ajouté à notre bundle d'application iOS.</p>
+	<pre class="language-bash"><code class="language-bash">$ openssl pkcs12 -export -out bootstrap-cert.pfx -inkey ios-key.pem -in ios.pem
+Enter Export Password:
+Verifying - Enter Export Password:</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="add-the-certificate-bundle-to-your-ios-application">Ajoutez le bundle du certificat à votre application iOS</h4>
+		<a href="https://blog.cloudflare.com/#add-the-certificate-bundle-to-your-ios-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans XCode, cliquez sur File → Add Files to "[Project Name]" (Fichier → Ajouter des fichiers à « [Nom du projet] ») et sélectionnez votre fichier .pfx. Veillez à cocher « Add to target » (Ajouter à la cible) avant de confirmer.</p>
+	<div class="flex anchor relative">
+		<h4 id="modify-your-urlsession-code-to-use-the-client-certificate">Modifiez votre code URLSession pour utiliser le certificat client</h4>
+		<a href="https://blog.cloudflare.com/#modify-your-urlsession-code-to-use-the-client-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift" target="_blank" rel="noopener noreferrer">Cet article</a> présente l'utilisation d'une classe PKCS#11 et de <a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank" rel="noopener noreferrer">URLSessionDelegate</a> pour modifier votre application afin d'effectuer l'authentification mutuelle TLS lors de la connexion à une API qui le demande.</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-forward">Perspectives d'avenir</h3>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans les mois à venir, nous prévoyons d'étendre API Shield avec un certain nombre de fonctionnalités supplémentaires conçues pour protéger le trafic des API. Pour les clients qui souhaitent utiliser leur propre PKI, nous leur donnerons la possibilité d'importer leurs CA, une fonctionnalité <a href="https://developers.cloudflare.com/access/service-auth/mtls" target="_blank" rel="noopener noreferrer">disponible aujourd'hui</a> avec Cloudflare Access.</p>
+	<p>À mesure que nous recevrons des retours sur notre version bêta de validation des schémas, nous chercherons à rendre cette fonctionnalité ouverte à tous. Si vous essayez la version bêta et avez des idées à nous communiquer, nous serions ravis de les connaître.</p>
+	<p>Au-delà des certificats et de la validation des schémas, nous sommes heureux de vous proposer d'autres fonctionnalités de sécurité des API, ainsi que des analyses approfondies pour vous aider à mieux comprendre vos API. Si vous souhaitez voir certaines fonctionnalités, n'hésitez pas à nous en faire part dans les commentaires ci-dessous !</p>
+	<p><i>1 : « D'ici 2021, 90 % des applications web présenteront plus de surface d'attaque sous la forme d'API plutôt que d'interfaces utilisateur exposées, contre 40 % en 2019. » Source : Gartner, « Gartner's API Strategy Maturity Model », Saniye Alaybeyi, Mark O'Neill, 21 octobre 2019. (Abonnement à Gartner requis).</i></p>
+	<p><i>2 : « Gartner a prédit que, d'ici 2022, les abus API passeront d'un vecteur d'attaque peu fréquent au vecteur d'attaque le plus fréquent, entraînant des violations de données au niveau des applications web des entreprises. » Source : Gartner « Cool Vendors in API Strategy », Shameen Pillai, Paolo Malinverno, Mark O'Neill, Jeremy D'Hoinne, 18 mai 2020 (abonnement à Gartner requis).</i></p>
+</div>

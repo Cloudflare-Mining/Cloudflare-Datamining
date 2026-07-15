@@ -1,0 +1,473 @@
+<div class="mb2 gray5">16分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/q1-2024-internet-disruption-summary">English</a>、<a href="https://blog.cloudflare.com/zh-tw/q1-2024-internet-disruption-summary">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/q1-2024-internet-disruption-summary">Français</a>、<a href="https://blog.cloudflare.com/de-de/q1-2024-internet-disruption-summary">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/q1-2024-internet-disruption-summary">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/q1-2024-internet-disruption-summary">Português</a>、<a href="https://blog.cloudflare.com/es-es/q1-2024-internet-disruption-summary">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/q1-2024-internet-disruption-summary">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4o6fpMsB2KFJwmLZohMTJ3/ca387f75d92f195c8c132e05f2631a7f/q1-2024-internet-disruption-summary.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareのネットワークは、120カ国以上、310以上の都市で展開しており、13,000を超えるネットワークプロバイダーと相互接続することで、数百万人のお客様に幅広いサービスを提供しています。当社には広大なネットワークと顧客基盤があることでインターネットのレジリエンス（耐性·回復力）について独自の視点を得られ、インターネット中断の影響の観察が可能になります。最近リリースしたCloudflare Radarの<a href="https://developers.cloudflare.com/radar/glossary/#bgp-announcements" target="_blank" rel="noopener noreferrer">機能</a>により、今四半期は<a href="https://twitter.com/CloudflareRadar/status/1768654743742579059" target="_blank" rel="noopener noreferrer">ネットワーク</a>と<a href="https://twitter.com/CloudflareRadar/status/1773704264650543416" target="_blank" rel="noopener noreferrer">ロケーションレベル</a>の両方で、ルーティングの観点とトラフィックの観点から影響の調査を始めました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k1NK6vOkPAt8lFkq7iKEQ/3e38a7a4846ea723b9227e974d91600b/image1-21.png" alt="Q1 2024 Internet Disruption Summary" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>2024年の第1四半期は、かなりの数のインターネットの中断を見て幕を開けました。地上と海底ケーブルの両方の破損は多くの場所で問題を引き起こし、一方では進行中の地政学的紛争に関連する軍事行動により接続への影響がみられた地域がありました。パキスタンを含め、アフリカの複数の国の政府がモバイル接続に重点を置きながらインターネットの遮断を命じました。<a href="https://www.cloudflare.com/learning/ddos/glossary/anonymous-sudan" target="_blank" rel="noopener noreferrer">アノニマス·スーダン</a>として知られる悪意のある行為者が、イスラエルとバーレーンでインターネット接続を遮断したサイバー攻撃を行ったと見られることが報じられました。メンテナンスや停電によりユーザーはオフラインに陥り、トラフィックの減少が観測されました。さらに、異常性の高い展開として、RPKI、DNS、DNSSECの問題が技術的な問題となり、複数のネットワークプロバイダーにまたがる加入者の接続を中断させました。</p>
+	<p>これまでも述べてきたように、この投稿は観測された障害の概要を説明するものであり、当四半期中に発生した問題を網羅的に、あるいは完全にリストアップするものではありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="moov-africa-tchad">ケーブルの切断</h2>
+		<a href="https://blog.cloudflare.com/#moov-africa-tchad" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<h2 id="cablecuts">Cable cuts</h2><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="orange-burkina-faso">Moov Africa Tchad</h3>
+		<a href="https://blog.cloudflare.com/#orange-burkina-faso" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1月10日、<a href="https://radar.cloudflare.com/cm" target="_blank" rel="noopener noreferrer">カメルーン</a>で発生した光ファイバーケーブルの破損により、チャドの通信プロバイダーである<a href="https://radar.cloudflare.com/as327802" target="_blank" rel="noopener noreferrer">AS327802（Moov Africa Tchad/Millicom）</a>の利用者の接続が障害の範囲を広げる形で中断されました。<a href="https://www.facebook.com/moovafrica.td/posts/pfbid0kB9W5CkhVJqBq34agPWqG81yeCfLBijKYc6WiLDKLE79nPmhie4T9idZVStc8f6Xl" target="_blank" rel="noopener noreferrer">Moov Africa Tchadによるフェイスブックへの投稿</a>（翻訳版）では、「_2024_年_1_月_10_日の午後、_Chad_がインターネットにアクセスすることができるカメルーンからの光ファイバーが切断されたことにより、インターネットの機能停止が発生しスーダンからのものはしばらく利用できなくなった」とされました。このケーブル切断がカメルーンとチャドのいずれかで発生したかは不明であり、前述の<a href="https://radar.cloudflare.com/sd" target="_blank" rel="noopener noreferrer">スーダン</a>のケーブル問題は、<a href="https://blog.cloudflare.com/q4-2023-internet-disruption-summary#:~:text=of%2520Internet%2520service.-,Chad,-On">2023年第4四半期の概要記事で取り上げたもの</a>かもしれません。内陸国であるチャドは隣国との地上のインターネット接続に依存しており、<a href="https://afterfibre.nsrc.org" target="_blank" rel="noopener noreferrer">AfTerFibreケーブルマップ</a>はチャドがカメルーンとスーダンを経由する限られたケーブル経路に依存していることを示しています。</p>
+	<p>下のグラフは、1月10日の正午UTCから12時間以上障害が発生し、その障害が国レベルでも見られたことを示しています。発表されたIPv4アドレス空間の量は、中断中に<a href="https://radar.cloudflare.com/routing/as327802?dateStart=2024-01-10&amp;dateEnd=2024-01-11" target="_blank" rel="noopener noreferrer">ネットワーク</a>レベルおよび<a href="https://radar.cloudflare.com/routing/td?dateStart=2024-01-10&amp;dateEnd=2024-01-11" target="_blank" rel="noopener noreferrer">国</a>レベルで頻繁に変化したため、このファイバー切断はルーティングの面でも大きな変動をもたらしました。</p>
+	<p>また、1月11日の午前中UTCにも、2番目の深刻ではない障害が観測されました。この障害は、<a href="https://radar.cloudflare.com/routing/as327802" target="_blank" rel="noopener noreferrer">Moov Africa Tchadの上流プロバイダー</a>である<a href="https://radar.cloudflare.com/as328594" target="_blank" rel="noopener noreferrer">AS328594（SudaChad Telecom）</a>を標的としたアノニマス·スーダンによる<a href="https://crisis24.garda.com/alerts/2024/01/chad-residual-internet-service-disruptions-possible-over-coming-hours-following-hours-long-outage-across-country-jan-10" target="_blank" rel="noopener noreferrer">サイバー攻撃によるもの</a>と<a href="https://twitter.com/DarkWebDispatch/status/1745080174519923165" target="_blank" rel="noopener noreferrer">報告されています</a>。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-01-10&amp;dateEnd=2024-01-11&amp;location=td&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="mtn-nigeria">Orange Burkina Faso</h3>
+		<a href="https://blog.cloudflare.com/#mtn-nigeria" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2月15日、<a href="https://radar.cloudflare.com/as37577" target="_blank" rel="noopener noreferrer">AS37577（Orange Burkina Faso）</a>で短時間（最大30分）ではあるものの完全な大規模でのインターネット障害が発生しました。<a href="https://twitter.com/OrangeBurkina/status/1758179417065464103" target="_blank" rel="noopener noreferrer">プロバイダーがソーシャルメディアに投稿したコミュニティメッセージ</a>の翻訳によると、「インシデントはケーブル切断によるもので、特定のお客様に対するインターネットサービスの中断が原因」とのことでした。Orageは、これがより局所的な光ファイバーの切断だったのか、国全体に広がる地球上のファイバーの1つへの損害なのかを特定して発表していません。このインシデントにより、アナウンスされた自律システム番号のIPv4アドレス量が<a href="https://radar.cloudflare.com/routing/as37577?dateStart=2024-02-15&amp;dateEnd=2024-02-15" target="_blank" rel="noopener noreferrer">ゼロになり</a>、その期間中、ネットワークは完全にオフラインとなりました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-02-15&amp;dateEnd=2024-02-15&amp;location=as37577&amp;chartState=%7B%22bgpSignalsMinMax%22%3Atrue%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="digicel-haiti">MTN Nigeria</h3>
+		<a href="https://blog.cloudflare.com/#digicel-haiti" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://twitter.com/MTNNG/status/1762909655620063594" target="_blank" rel="noopener noreferrer">MTNナイジェリアはソーシャルメディアを利用し</a>、2月28日に「複数の光ファイバー切断による大規模なサービス停止が音声サービスとデータサービスに影響を与え、ネットワークへの接続に問題が発生している」ことをお客様に知らせました。<a href="https://crisis24.garda.com/alerts/2024/02/nigeria-lingering-internet-and-telecommunications-disruptions-likely-in-areas-across-country-following-nationwide-outage-feb-28" target="_blank" rel="noopener noreferrer">発表されたレポート</a>では、その影響について「国内で数百万の顧客が、特にラゴスで数時間のサービス停止の影響を受けた」と記しています。現地時間13:3020:30（12:30～19:30 UTC）までの約7時間接続が中断され、現地時間午前0時直前にプロバイダーからサービスが完全に復旧したことを示す<a href="https://twitter.com/MTNNG/status/1762972229195702692" target="_blank" rel="noopener noreferrer">フォローアップ投稿</a>が行われました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-28&amp;dateEnd=2024-02-28&amp;location=as29465&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="sky-philippines">Digicel Haiti</h3>
+		<a href="https://blog.cloudflare.com/#sky-philippines" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3月2日および3日に<a href="https://radar.cloudflare.com/as27653" target="_blank" rel="noopener noreferrer">AS27653（Digicel Haiti）</a>で16時間にわたってインターネットが混乱したのは、アリエル・アンリ首相を追放しようとして発生した<a href="https://www.reuters.com/world/americas/haitian-police-unions-plead-help-after-attack-main-prison-2024-03-03" target="_blank" rel="noopener noreferrer">暴力の結果</a>によるダブルファイバーの切断が原因でした。現地時間3月2日22:00（3月3日03:00頃）から約9時間にわたり、完全な障害が観測されました。トラフィックの回復は約2時間30分にわたり、その後3時間にわたりほぼ完全な障害に陥りました。この9時間の停止の間、ネットワークからIPv4またはIPv6アドレス空間がアナウンスされなかったため、Digicel Haitiは事実上、インターネット上から消滅しました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-03-03&amp;dateEnd=2024-03-03&amp;location=as27653&amp;chartState=%7B%22bgpSignalsMinMax%22%3Atrue%2C%22bgpSignalsIpVersionParam%22%3A%22ipv6%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="multiple-african-countries">SKY（フィリピン）</h3>
+		<a href="https://blog.cloudflare.com/#multiple-african-countries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3月18日に<a href="https://radar.cloudflare.com/ph" target="_blank" rel="noopener noreferrer">フィリピン</a>の<a href="https://radar.cloudflare.com/as23944" target="_blank" rel="noopener noreferrer">AS23944（SKY）</a>で観測された短時間のトラフィック障害は、ファイバー切断に関連している可能性が高いとみられます。<a href="https://twitter.com/CloudflareRadar/status/1769850929606512851" target="_blank" rel="noopener noreferrer">SKYがソーシャルメディアに掲載した勧告</a>では、「マリキナ、パシグ、ケゾーンシティのいくつかの地域で、_SKY_サービスは現在、光ファイバーの問題により影響を受けている」と述べ、影響のあった45の地域をリストアップしています。トラフィックは、現地時間20:00～21:00（12:00～13:00 UTC）に最も大きな影響がありましたが、完全復旧にはさらに数時間かかりました。ファイバーの切断による<a href="https://radar.cloudflare.com/routing/as23944?dateStart=2024-03-18&amp;dateEnd=2024-03-18" target="_blank" rel="noopener noreferrer">ルーティングへの影響はわずかしか見られませんでした</a>。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-18&amp;dateEnd=2024-03-18&amp;location=as23944&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="red-sea">アフリカの複数か国</h3>
+		<a href="https://blog.cloudflare.com/#red-sea" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3月14日、アフリカ西海岸で複数の海底ケーブルが破損し、西アフリカと南アフリカの複数の国でインターネット接続に影響を与えました。この被害は、水中での落石によるものと<a href="https://www.itweb.co.za/article/news-analysis-why-undersea-cables-broke-sas-public-cloud/G98Yd7LGK4pvX2PD" target="_blank" rel="noopener noreferrer">報告されており</a>、インターネット接続の中断に加え、<a href="https://web.archive.org/web/20240314144626/https://status.cloud.microsoft" target="_blank" rel="noopener noreferrer">Microsoft AzureとOffice 365クラウドサービスの可用性の問題も引き起こしました</a>。</p>
+	<p><a href="https://www.submarinecablemap.com/submarine-cable/africa-coast-to-europe-ace" target="_blank" rel="noopener noreferrer">Africa Coast to Europe（ACE）</a>、<a href="https://www.submarinecablemap.com/submarine-cable/sat-3wasc" target="_blank" rel="noopener noreferrer">Submarine Atlanctic 3/West Africa Submarine Cable（SAT-3/WASC）</a>、<a href="https://www.submarinecablemap.com/submarine-cable/west-africa-cable-system-wacs" target="_blank" rel="noopener noreferrer">West Africa Cable System（WACS）</a>、<a href="https://www.submarinecablemap.com/submarine-cable/mainone" target="_blank" rel="noopener noreferrer">MainOne</a>の<a href="https://www.internetsociety.org/resources/doc/2024/2024-west-africa-submarine-cable-outage-report" target="_blank" rel="noopener noreferrer">ケーブルがすべて破損</a>し、<a href="https://radar.cloudflare.com/bj" target="_blank" rel="noopener noreferrer">ベナン</a>、<a href="https://radar.cloudflare.com/bf" target="_blank" rel="noopener noreferrer">ブルキナファソ</a>、<a href="https://radar.cloudflare.com/cm" target="_blank" rel="noopener noreferrer">カメルーン</a>、<a href="https://radar.cloudflare.com/ci" target="_blank" rel="noopener noreferrer">コートジボワール</a>、<a href="https://radar.cloudflare.com/gm" target="_blank" rel="noopener noreferrer">ガンビア</a>、<a href="https://radar.cloudflare.com/gh" target="_blank" rel="noopener noreferrer">ガーナ</a>、<a href="https://radar.cloudflare.com/gn" target="_blank" rel="noopener noreferrer">ギニア</a>、<a href="https://radar.cloudflare.com/lr" target="_blank" rel="noopener noreferrer">リベリア</a>、<a href="https://radar.cloudflare.com/na" target="_blank" rel="noopener noreferrer">ナミビア</a>、<a href="https://radar.cloudflare.com/ne" target="_blank" rel="noopener noreferrer">ニジェール</a>、<a href="https://radar.cloudflare.com/ng" target="_blank" rel="noopener noreferrer">ナイジェリア</a>、<a href="https://radar.cloudflare.com/za" target="_blank" rel="noopener noreferrer">南アフリカ</a>、<a href="https://radar.cloudflare.com/tg" target="_blank" rel="noopener noreferrer">トーゴ</a>のアフリカ13か国に影響を与えました。</p>
+	<p><a href="https://radar.cloudflare.com/ne?dateStart=2024-03-14&amp;dateEnd=2024-03-14" target="_blank" rel="noopener noreferrer">ニジェール</a>、<a href="https://radar.cloudflare.com/traffic/gn?dateStart=2024-03-14&amp;dateEnd=2024-03-14" target="_blank" rel="noopener noreferrer">ギニア</a>、<a href="https://radar.cloudflare.com/traffic/gm?dateStart=2024-03-14&amp;dateEnd=2024-03-14" target="_blank" rel="noopener noreferrer">ガンビア</a>で比較的短時間の障害が見られ、1時間未満からおよそ2時間続きました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-14&amp;dateEnd=2024-03-14&amp;location=gm&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p>しかし、<a href="https://radar.cloudflare.com/traffic/tg?dateStart=2024-03-11&amp;dateEnd=2024-03-17" target="_blank" rel="noopener noreferrer">トーゴ</a>、<a href="https://radar.cloudflare.com/traffic/lr?dateStart=2024-03-11&amp;dateEnd=2024-03-17" target="_blank" rel="noopener noreferrer">リベリア</a>、<a href="https://radar.cloudflare.com/traffic/gh?dateStart=2024-03-11&amp;dateEnd=2024-03-31" target="_blank" rel="noopener noreferrer">ガーナ</a>などの国では障害が複数日にわたり、トラフィックが以前観測されたピークレベルに戻るまでに数週間かかりました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-11&amp;dateEnd=2024-03-31&amp;location=gh&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p>影響を受けた国の事業者は、Googleの<a href="https://www.submarinecablemap.com/submarine-cable/equiano" target="_blank" rel="noopener noreferrer">Equiano</a>海底ケーブル（トラフィックが4倍に増加したと<a href="https://www.capacitymedia.com/article/2czls1jc2s3jtornuuhvk/news/exclusive-equianos-togo-landing-station-sees-4x-increase-in-traffic" target="_blank" rel="noopener noreferrer">報告</a>されました）、<a href="https://www.moroccoworldnews.com/2024/03/361490/west-africa-internet-outage-highlights-moroccos-crucial-role-in-regional-connectivity" target="_blank" rel="noopener noreferrer">モロッコ</a>、そして<a href="https://www.submarinecablemap.com/submarine-cable/maroc-telecom-west-africa" target="_blank" rel="noopener noreferrer">Maroc Telecom West Africa</a>の海底ケーブルにトラフィックを移動することで可用性を維持しようとしました。4月6日時点で、<a href="https://www.linkedin.com/posts/philippe-devaux-218423199_08apr24-west-africa-multiple-cables-outages-activity-7183050367440441344-iyTI?utm_source=share&amp;utm_medium=member_desktop" target="_blank" rel="noopener noreferrer">SAT-3</a>ケーブルのサービスは完全に復旧し、<a href="https://www.linkedin.com/posts/philippe-devaux-218423199_wacsabrcable-sat3abrcable-activity-7187430036432408576-404i?utm_source=share&amp;utm_medium=member_desktop" target="_blank" rel="noopener noreferrer">ACE</a>の修理は4月17日に完了、<a href="https://www.linkedin.com/feed/update/urn:li:activity:7187430036432408576" target="_blank" rel="noopener noreferrer">WACS</a>および<a href="https://www.linkedin.com/posts/philippe-devaux-218423199_wacsabrcable-sat3abrcable-activity-7185980538434801664-dfa3?utm_source=share&amp;utm_medium=member_desktop" target="_blank" rel="noopener noreferrer">MainOne</a>の修理は4月28日までに完了する予定です。</p>
+	<p>さらに詳細な情報と観測結果は、当社のブログ記事<a href="https://blog.cloudflare.com/undersea-cable-failures-cause-internet-disruptions-across-africa-march-14-2024">「複数のアフリカ諸国のインターネットの中断を引き起こした海底ケーブルの障害」</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="sudan">紅海</h3>
+		<a href="https://blog.cloudflare.com/#sudan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2月24日、紅海を経由する3つの海底ケーブル、それぞれ<a href="https://www.submarinecablemap.com/submarine-cable/seacomtata-tgn-eurasia" target="_blank" rel="noopener noreferrer">Seacom/Tataケーブル</a>、<a href="https://www.submarinecablemap.com/submarine-cable/asia-africa-europe-1-aae-1" target="_blank" rel="noopener noreferrer">アジア·アフリカ·ヨーロッパ-1</a>（AAE-1）、<a href="https://www.submarinecablemap.com/submarine-cable/europe-india-gateway-eig" target="_blank" rel="noopener noreferrer">ヨーロッパ·インド·ゲートウェイ</a>（EIG）が破損しました。このケーブル破損の原因は、2月18日に弾道ミサイル攻撃を受けて破損した貨物船<a href="https://www.wired.com/story/houthi-internet-cables-ship-anchor-path" target="_blank" rel="noopener noreferrer">「Rubymar」</a>のアンカーによるものと<a href="https://www.bloomberg.com/news/articles/2024-03-06/anchor-from-houthi-sunk-ship-likely-damaged-undersea-cables" target="_blank" rel="noopener noreferrer">みられています</a>。混乱時にSeacomがケーブルの破損を確認したものの、他2本のケーブルの所有者は同様の<a href="https://www.itweb.co.za/article/seacom-confirms-cable-outage-in-red-sea/KPNG8v8NyDNM4mwD" target="_blank" rel="noopener noreferrer">確認情報</a>は公開しませんでした。</p>
+	<p>このケーブル切断は、<a href="https://radar.cloudflare.com/traffic/tz?dateStart=2024-02-22&amp;dateEnd=2024-02-28" target="_blank" rel="noopener noreferrer">タンザニア</a>、<a href="https://radar.cloudflare.com/traffic/ke?dateStart=2024-02-22&amp;dateEnd=2024-02-28" target="_blank" rel="noopener noreferrer">ケニア</a>、<a href="https://radar.cloudflare.com/traffic/ug?dateStart=2024-02-22&amp;dateEnd=2024-02-28" target="_blank" rel="noopener noreferrer">ウガンダ</a>、<a href="https://radar.cloudflare.com/traffic/mz?dateStart=2024-02-22&amp;dateEnd=2024-02-28" target="_blank" rel="noopener noreferrer">モザンビーク</a>など東アフリカの国に影響を与えたと<a href="https://www.wired.com/story/houthi-internet-cables-ship-anchor-path/#:~:text=impacted%2520countries%2520in%2520East%2520Africa" target="_blank" rel="noopener noreferrer">報告されている</a>一方、Cloudflare Radarではこれらの国でトラフィックの損失は観測されませんでした。</p><!--kg-card-begin: html-->
+	<h2 id="militaryaction">Military action</h2><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="ukraine">軍事行動</h2>
+		<a href="https://blog.cloudflare.com/#ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="gaza-strip">スーダン</h3>
+		<a href="https://blog.cloudflare.com/#gaza-strip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2月2日、Cloudflareは<a href="https://radar.cloudflare.com/as15706" target="_blank" rel="noopener noreferrer">AS15706（Sudatel）</a>と<a href="https://radar.cloudflare.com/as36972" target="_blank" rel="noopener noreferrer">AS36972（MTN Sudan）</a>でトラフィックの損失を観測し、2月7日にも<a href="https://radar.cloudflare.com/as36998" target="_blank" rel="noopener noreferrer">AS36998（Zain Sudan/SDN Mobitel）</a>で同様の損失が発生しました。MTNスーダンでの障害の内容は、「残念ながら、当社がコントロールできない状況により、すべてのサービスを中断することになりました。この中断によりご不便をおかけして申し訳ありませんが、できるだけ早くサービスを復旧させるために努めてまいります。サービスの回復についてお知らせいたします」とのプロバイダーによる<a href="https://twitter.com/MTNSudan1/status/1753528636949274956" target="_blank" rel="noopener noreferrer">ソーシャルメディアへの投稿</a>の通りとなっています。障害が発生してから数日後の2月5日、Zain Sudanは「Zain Sudanは大切な加入者にサービスを提供するため、通信とインターネットサービスの維持に常に努めており、今回の現在のネットワーク障害は、当社が制御できない状況によるものとなっています。当社では、安全性が確保され、できるだけ早くサービスが復旧するよう努めています。」と<a href="https://twitter.com/ZainSudan/status/1754487740102533170" target="_blank" rel="noopener noreferrer">ソーシャルメディア</a>に投稿（翻訳より引用）しました。Zain Sudanは、ネットワークのステータスに関する情報を一切共有しませんでした。2月4日、Digital Rights Lab - Sudanは、「「弊社の情報によれば、<a href="https://twitter.com/RSFSudan" target="_blank" rel="noopener noreferrer"><i>@RSFSudan</i></a>の武装グループが_#_スーダンのハルツームの_ISP_データセンターを占拠したことを確認しました」と<a href="https://twitter.com/drlab_sudan/status/1754134933772128326" target="_blank" rel="noopener noreferrer">ソーシャルメディア</a>に投稿しました。これらのプロバイダーで見られたインターネットの障害は、2023年4月15日以降<a href="https://www.cfr.org/global-conflict-tracker/conflict/power-struggle-sudan" target="_blank" rel="noopener noreferrer">同国内で続いている軍事衝突</a>に起因するこれらの乗っ取りに関連していた可能性が高くなっています。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-01&amp;dateEnd=2024-03-05&amp;location=as36998&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p>これらのネットワークの障害の長さは、さまざまでした。Sudatelでは2月11日にトラフィックが戻り始めました。Zain Sudanでは、「_Zain_ネットワークは徐々に再開し始めており、ご利用者の皆さまには無料で限られた時間のみご利用いただけます。_Zai_は、ネットワークの元通りの状態への復旧に向けての努力の継続を約束します」と<a href="https://twitter.com/ZainSudan/status/1764217865530376300" target="_blank" rel="noopener noreferrer">ソーシャルメディアの投稿</a>（翻訳版）で述べています。第1四半期の終わり時点で、MTNスーダンではトラフィックが復旧していませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="hotnet-internet-services-israel">ウクライナ</h3>
+		<a href="https://blog.cloudflare.com/#hotnet-internet-services-israel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TBMLgZ73lfMRAB4Jpey7d/222ffab926e47c66ce043ab3fda388b4/Mar-22---Ukraine---Kharkiv.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VQ0RIhitP3TNnn3pkVtT2/fcbd02cae5fb89c3737bf3bf0309eec4/Mar-22---Ukraine---Khmel.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4s3Twlv8ycp3hRwoTfq7Vd/244fdea99065f2ecf3072ccb2f0d7cb7/Mar-22---Ukraine---Dnipro.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LDrhWYS0DOwOYd93MRiJH/70f2cf5561ae703f40581303feb058ca/Mar-22---Ukraine---Odessa.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ej2ZJcMsl0b4pSzOJZYHI/fdd67fe3d9fb0d6caadc0cce0b2f9e17/Mar-22---Ukraine---Zap.png" alt="" class="kg-image" width="920" height="360" loading="lazy">
+
+	</figure>
+	<p>2月、ウクライナ/ロシア戦争が2年目に入りました。この間、弊社はウクライナで紛争関連の攻撃により引き起こされた多くのインターネット障害を取り上げてきました。2月22日、<a href="https://therecord.media/massive-missile-russian-barrage-internet-outages-blackouts" target="_blank" rel="noopener noreferrer">ロシアによるウクライナの重要インフラストラクチャに対する空爆</a>により、全国のエネルギー施設が損害を受け、広範な停電が発生しました。この停電は、ウクライナの複数の地域でインターネットの障害を引き起こしました。ハルキウ、ザポリージヒア、オデッサ、ドニプロペトロフスク·オブラスト、クメルニトスキー·オブラストなどで被害が見られました。最初に現地時間午前5:00（03:00 UTC）前後にトラフィックが減少し、ハルキウで68%も減少しました。一方、すべての地域でも、前週と比較して数日にわたりトラフィックレベルが低下しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="zain-bahrain">ガザ地区</h3>
+		<a href="https://blog.cloudflare.com/#zain-bahrain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/q4-2023-internet-disruption-summary">_2023_年第_4_四半期のインターネットの混乱に関する概要</a>のブログ記事で、10月、11月、12月にかけて、<a href="https://paltel.ps/en/home" target="_blank" rel="noopener noreferrer">Paltel（パレスチナの電気通信会社）</a>が固定電話、モバイル、インターネットサービスの混乱に関するソーシャルメディア投稿を複数公開していたことを<a href="https://blog.cloudflare.com/q4-2023-internet-disruption-summary#:~:text=In%2520addition%2520to%2520the%2520outages%2520illustrated%2520above">紹介しました</a>。2024年第1四半期では、<a href="https://twitter.com/Paltelco/status/1745813735627727091" target="_blank" rel="noopener noreferrer">1月12日</a>、<a href="https://twitter.com/Paltelco/status/1749464176756449631" target="_blank" rel="noopener noreferrer">1月22日</a>、<a href="https://twitter.com/QudsNen/status/1765100306353017128" target="_blank" rel="noopener noreferrer">3月5日</a>に同様の障害が観測されました。Paltelは、これらの障害がイスラエルとの戦争に関連して進行中の侵攻の原因であると考えています。</p>
+	<p>同四半期中に発生した障害は、数時間ほどから1週間以上まで様々でした。それぞれの障害は、ガザストリップ地域にあるパレスチナの4つの行政機関内でのPatelのトラフィックを示しています。ガザでは、接続が可能な状態が保てていたためトラフィックに混乱が生じたとみられる一方、Khan Yunis、Rafah、Deir al-Balahの境界では完全な障害が発生しました。</p><!--kg-card-begin: html-->
+	<figure class="table" style="width:100%;">
+		<table class="ck-table-resized" style="border:1px solid hsl(0, 0%, 30%);">
+			<colgroup>
+				<col style="width:50%;">
+				<col style="width:50%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/3awubGpVqUX91wiBfu72l8/b0f6d073446e830b304fb1e80f14d963/Jan_12-19_-_Gaza_-_Gaza.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/3awubGpVqUX91wiBfu72l8/b0f6d073446e830b304fb1e80f14d963/Jan_12-19_-_Gaza_-_Gaza.png" width="920" height="360" alt=""></a></figure>
+					</td>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/1yxGzVFOk0gVLyZtje7gnw/e188aa8a748e5fe73218cc98950a22a5/Jan_12-19_-_Gaza_-_Khan_Yunis.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/1yxGzVFOk0gVLyZtje7gnw/e188aa8a748e5fe73218cc98950a22a5/Jan_12-19_-_Gaza_-_Khan_Yunis.png" width="920" height="360" alt=""></a></figure>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/3ZCHTnNigLCapNMRp6Du9R/17600648639a68925b04ee3158f4384b/Jan_12-19_-_Gaza_-_Rafah.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/3ZCHTnNigLCapNMRp6Du9R/17600648639a68925b04ee3158f4384b/Jan_12-19_-_Gaza_-_Rafah.png" width="920" height="360" alt=""></a></figure>
+					</td>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/2dy1u4WsydG2TtEaBFmOPF/07ea2b4e3c94c3fa4afbdbc8771a1aa8/Jan_12-19_-_Gaza_-_Deir_al-Balah.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/2dy1u4WsydG2TtEaBFmOPF/07ea2b4e3c94c3fa4afbdbc8771a1aa8/Jan_12-19_-_Gaza_-_Deir_al-Balah.png" width="920" height="360" alt=""></a></figure>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure><!--kg-card-end: html-->
+	<p><b>1月12日～19日</b></p><!--kg-card-begin: html-->
+	<figure class="table" style="width:100%;">
+		<table class="ck-table-resized" style="border:1px solid hsl(0, 0%, 30%);">
+			<colgroup>
+				<col style="width:50%;">
+				<col style="width:50%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/4csFWELPuqnSc6nVcpYc5K/a250d1fd1d71cd547bb9b1100ece5a79/Jan_22-24_-_Gaza_-_Gaza.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/4csFWELPuqnSc6nVcpYc5K/a250d1fd1d71cd547bb9b1100ece5a79/Jan_22-24_-_Gaza_-_Gaza.png" width="920" height="360" alt=""></a></figure>
+					</td>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/2ogmrVWjlFTErdAmNUSGCr/1c109227deb6863c52b3e447d8b6a6c5/Jan_22-24_-_Gaza_-_Khan_Yunis.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/2ogmrVWjlFTErdAmNUSGCr/1c109227deb6863c52b3e447d8b6a6c5/Jan_22-24_-_Gaza_-_Khan_Yunis.png" width="920" height="360" alt=""></a></figure>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/2wINE0xDB1VPPf9fcG3Gcd/203de374fad17372fa68cd2c7ac5dde9/Jan_22-24_-_Gaza_-_Rafah.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/2wINE0xDB1VPPf9fcG3Gcd/203de374fad17372fa68cd2c7ac5dde9/Jan_22-24_-_Gaza_-_Rafah.png" width="920" height="360" alt=""></a></figure>
+					</td>
+					<td>
+						<figure class="image"><a href="https://images.ctfassets.net/slt3lc6tev37/3H88zS4AETXDokBSY2HwYt/d90233525244dac1cb5dbcd3c12f8869/Jan_22-24_-_Gaza_-_Deir_al-Balah.png" target="_blank" rel="noopener noreferrer"><img style="aspect-ratio:920/360;" src="https://images.ctfassets.net/slt3lc6tev37/3H88zS4AETXDokBSY2HwYt/d90233525244dac1cb5dbcd3c12f8869/Jan_22-24_-_Gaza_-_Deir_al-Balah.png" width="920" height="360" alt=""></a></figure>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/3awubGpVqUX91wiBfu72l8/b0f6d073446e830b304fb1e80f14d963/Jan_12-19_-_Gaza_-_Gaza.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html-->
+	<h2 id="cyberattacks">Cyberattacks</h2><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/1yxGzVFOk0gVLyZtje7gnw/e188aa8a748e5fe73218cc98950a22a5/Jan_12-19_-_Gaza_-_Khan_Yunis.png" target="_blank" rel="noopener noreferrer"></a></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/3ZCHTnNigLCapNMRp6Du9R/17600648639a68925b04ee3158f4384b/Jan_12-19_-_Gaza_-_Rafah.png" target="_blank" rel="noopener noreferrer"></a></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2dy1u4WsydG2TtEaBFmOPF/07ea2b4e3c94c3fa4afbdbc8771a1aa8/Jan_12-19_-_Gaza_-_Deir_al-Balah.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-02-20&amp;dateEnd=2024-02-21&amp;location=as12849&amp;chartState=%7B%22bgpSignalsMinMax%22%3Atrue%2C%22bgpSignalsIpVersionParam%22%3A%22ipv6%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p><b>1月22日～24日</b></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/4csFWELPuqnSc6nVcpYc5K/a250d1fd1d71cd547bb9b1100ece5a79/Jan_22-24_-_Gaza_-_Gaza.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-03&amp;dateEnd=2024-03-04&amp;location=as31452&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2ogmrVWjlFTErdAmNUSGCr/1c109227deb6863c52b3e447d8b6a6c5/Jan_22-24_-_Gaza_-_Khan_Yunis.png" target="_blank" rel="noopener noreferrer"></a></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2wINE0xDB1VPPf9fcG3Gcd/203de374fad17372fa68cd2c7ac5dde9/Jan_22-24_-_Gaza_-_Rafah.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-13&amp;dateEnd=2024-03-20&amp;location=as16066&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/3H88zS4AETXDokBSY2HwYt/d90233525244dac1cb5dbcd3c12f8869/Jan_22-24_-_Gaza_-_Deir_al-Balah.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html-->
+	<h2 id="governmentdirected">Government directed</h2><!--kg-card-end: html-->
+	<p><b>3月5日</b></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2LSYY7GvFKZzaOP20xAtxT/b3a0f07b45840c0e70b768dd3ba92dde/Mar_5_-_Gaza_-_Gaza.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-01-14&amp;dateEnd=2024-01-19&amp;location=as36939&amp;chartState=%7B%22bgpSignalsMinMax%22%3Atrue%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/5IdkPCB6E2f0qYWlPUPJXO/850ae051ffae3897cc6784f6cbf3c747/Mar_5_-_Gaza_-_Khan_Yunis.png" target="_blank" rel="noopener noreferrer"></a></p>
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2zBbqc4tHJynHLR2IPnKpT/dd310d2e9f523b530c9296e54f0e6354/Mar_5_-_Gaza_-_Rafah.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-05&amp;dateEnd=2024-02-07&amp;location=as37649&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p><a href="https://images.ctfassets.net/slt3lc6tev37/2f1qOwu33c6jQTM50nu0YR/8b38744eba45dd25fb86b468a681338d/Mar_5_-_Gaza_-_Deir_al-Balah.png" target="_blank" rel="noopener noreferrer"></a></p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-13&amp;dateEnd=2024-02-13&amp;location=as37649&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="multiple-networks-in-ukraine">サイバー攻撃</h2>
+		<a href="https://blog.cloudflare.com/#multiple-networks-in-ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>先に説明した、1月11日に<a href="https://radar.cloudflare.com/as327802" target="_blank" rel="noopener noreferrer">AS327802（Moov Africa Tchad / Millicom）</a>の接続に影響を与えたサイバー攻撃に加え、観測された他のいくつかのインターネット障害は、第1四半期のサイバー攻撃によって引き起こされました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-08&amp;dateEnd=2024-02-09&amp;location=as45669&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="comoros">HotNet Internet Services（イスラエル）</h3>
+		<a href="https://blog.cloudflare.com/#comoros" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アノニマス·スーダンに<a href="https://twitter.com/DailyDarkWeb/status/1760266153467760708" target="_blank" rel="noopener noreferrer">よるものと見られる</a>、<a href="https://en.wikipedia.org/wiki/Hot_(Israel)" target="_blank" rel="noopener noreferrer">イスラエルの主要な通信プロバイダー</a>である<a href="https://radar.cloudflare.com/as12849" target="_blank" rel="noopener noreferrer">AS12849（HotNetインターネットサービス）</a>に対しての攻撃が行われました。この攻撃は明らかに短時間で、現地時間2月20日の22:00～2月21日の00:00（2月20日の20:00～22:00 UTC時間）までトラフィックを中断させただけでした。短時間ではありましたが、攻撃が発生した期間中に<a href="https://radar.cloudflare.com/routing/as12849?dateStart=2024-02-20&amp;dateEnd=2024-02-21" target="_blank" rel="noopener noreferrer">HotNetが発表されたIPv4とIPv6アドレスの量</a>がゼロになったため、この攻撃はプロバイダーをオフラインにすることに成功しました。</p><!--kg-card-begin: html-->
+	<h2 id="poweroutages">Power outages</h2><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="sudatel-senegal-expresso-telecom-and-tigo-free-senegal">Zain Bahrain</h3>
+		<a href="https://blog.cloudflare.com/#sudatel-senegal-expresso-telecom-and-tigo-free-senegal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アノニマス·スーダンはまた、サイバー攻撃の標的として<a href="https://radar.cloudflare.com/as31452" target="_blank" rel="noopener noreferrer">AS31452（Zain Bahrain）</a>も標的としたと<a href="https://twitter.com/FalconFeedsio/status/1764364189492236676?s=20" target="_blank" rel="noopener noreferrer">発表しています</a>。この攻撃は、イスラエルのHotNetを標的とした攻撃よりも深刻でないように見えましたが、現地時間3月3日20:45～3月4日18:15（3月3日17:45～3月4日15:15 UTC）までトラフィックが阻害されました。<a href="https://radar.cloudflare.com/routing/as31452?dateStart=2024-03-03&amp;dateEnd=2024-03-04" target="_blank" rel="noopener noreferrer">IPアドレス空間への影響</a>は見られませんでした。Zain Bahrainは<a href="https://twitter.com/ZainBahrain/status/1764678419147538492" target="_blank" rel="noopener noreferrer">3月4日のソーシャルメディア投稿</a>で接続の障害を認め、「当社のサービスの一部をご利用いただく上で問題が発生する場合があることをご案内いたします。当社の技術チームは、こうした問題をできるだけ早く回避するために取り組んでいます。」としています。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-02-29&amp;dateEnd=2024-03-01&amp;location=tj&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="pakistan">ウクライナにおける複数のネットワーク</h3>
+		<a href="https://blog.cloudflare.com/#pakistan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-02-29&amp;dateEnd=2024-03-01&amp;location=tj&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p>3月13日、<a href="https://radar.cloudflare.com/as16066" target="_blank" rel="noopener noreferrer">AS16066（Triangulum）</a>、<a href="https://radar.cloudflare.com/as34359" target="_blank" rel="noopener noreferrer">AS34359（Link Telecom Ukraine）</a>、<a href="https://radar.cloudflare.com/as197522" target="_blank" rel="noopener noreferrer">AS197522（Kalash Information Network）</a>、<a href="https://radar.cloudflare.com/as52074" target="_blank" rel="noopener noreferrer">AS52074（Mandarun）</a>、<a href="https://radar.cloudflare.com/as29013" target="_blank" rel="noopener noreferrer">AS29013（LinkKremen）</a>など、<a href="https://therecord.media/ukraine-isps-attacks-solntsepek-sandworm-gru" target="_blank" rel="noopener noreferrer">ウクライナの多数の通信プロバイダーが攻撃の標的となりました</a>。Triangulumは最も大きな影響を受けたようで、以下に示すように、3月13日から3月20日までにトラフィックがほぼ完全に失われています。Triangulumは同社の<a href="https://www.triangulum.ua" target="_blank" rel="noopener noreferrer">Webサイト</a>に通知を掲載し、「_2024_年_3_月_13_日、ウクライナの複数のプロバイダーに対してハッカー攻撃が行われました。_2024_年_3_月_13_日_10_時_28_分、当社ネットワークで大規模な障害が発生し、その結果として電子通信サービスの提供が不可能となりました。当社従業員は、サイバー警察と国家サイバーセキュリティ調整センターの従業員とともに、あらゆるサービス範囲のできるだけ早い復旧を目指し、_24_時間体制の包括的な対策を講じています。サービスは徐々に復旧しています。完全回復には数日かかる場合があります」としました。</p>
+	<p>影響を受けたプロバイダーの他のプロバイダーでは、比較的短時間の接続障害がみられました。Mandarunでのほぼ完全な障害は約1日続きましたが、他の場所では3月13日の現地時間11:30頃（09:30 UTC）からおよそ7時間続き、現地時間3月14日午前8:00頃（06:00 UTC）に接続が通常のレベルに戻りました。</p><!--kg-card-begin: html-->
+	<h3 id="orangeespana">Orange España</h3><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="chad">政府からの指示</h2>
+		<a href="https://blog.cloudflare.com/#chad" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="tajikistan">コモロ</h3>
+		<a href="https://blog.cloudflare.com/#tajikistan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アザリ·アスーマーニ大統領の再選に対する抗議活動を受けて、<a href="https://radar.cloudflare.com/km" target="_blank" rel="noopener noreferrer">コモロ諸島当局</a>が1月17日にインターネット接続を遮断したと<a href="https://www.bbc.com/news/world-africa-68027892" target="_blank" rel="noopener noreferrer">報告されています</a>。しかし、1月17日の現地時間12:00（09:00 UTC）から1月19日現地時間17:30（14:30 UTC）にかけ、国レベルでトラフィックに何らかの障害が見られました。<a href="https://radar.cloudflare.com/as36939" target="_blank" rel="noopener noreferrer">AS36939（Comores Telecom）</a>からのトラフィックでより顕著であり、2日間にわたってほぼ完全に停止した期間がいくつかありました。Comores Telecomが限られた量のIPv4アドレススペースを発表していますが、1月17日と18日にかなりの変動があり、ゼロになることが数回ありました。</p>
+	<div class="flex anchor relative">
+		<h3 id="tanzania">Sudatel Senegal/Expresso TelecomおよびTigo/Free（セネガル）</h3>
+		<a href="https://blog.cloudflare.com/#tanzania" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-01-03&amp;dateEnd=2024-01-03&amp;location=as12479&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Announced IP Address Space" loading="lazy"></iframe><!--kg-card-end: html-->
+	<p>2月4日、<a href="https://radar.cloudflare.com/sn" target="_blank" rel="noopener noreferrer">セネガル</a>の通信·電気通信·デジタル省は、現地時間22:00（22:00 UTC）からモバイルインターネット接続の停止を<a href="https://twitter.com/samirasawlani/status/1754453336894415340" target="_blank" rel="noopener noreferrer">命じました</a>。この停止は、大統領選挙の延長をきっかけに起きた抗議活動に続いてのものでした。<a href="https://radar.cloudflare.com/as37196" target="_blank" rel="noopener noreferrer">AS37196（Sudatel Senegal/Expresso Telecom）</a>からのトラフィックは、停止が発せられた時点で大幅に低下し、現地時間2月7日07:30（07:30 UTC）頃に回復しました。<a href="https://radar.cloudflare.com/as37649" target="_blank" rel="noopener noreferrer">AS37649（Tigo/Free）</a>からのトラフィックは09:00頃に低下しました。現地時間2月5日30分（09:30 UTC）、プロバイダーは<a href="https://twitter.com/free_senegal/status/1754521065894633896" target="_blank" rel="noopener noreferrer">ソーシャルメディア経由で契約者に停止を通知</a>しました。Tigo/Freeのトラフィックは、現地時間2月7日午前0時（00:00 UTC）頃回復し、プロバイダーは再び<a href="https://twitter.com/free_senegal/status/1755188473781211523" target="_blank" rel="noopener noreferrer">ソーシャルメディアを使用して加入者にサービスの可用性を通知</a>しました。どちらのプロバイダーのIPアドレス空間にも変化は見られず、モバイルインターネット接続の停止はルーティングレベルでは行われないことを示しています。</p>
+	<p>それから1週間以上経った2月13日、セネガル政府は「オンライン上の憎悪に満ちた破壊的なメッセージの拡散」を防ぐために、モバイルインターネット接続の停止を<a href="https://intlmonitor.com/africa/internet-shutdown-in-senegal-ahead-of-protests-over-vote-delay" target="_blank" rel="noopener noreferrer">再び命じました</a>。大統領選挙の中止に反対して反対の表現を目指す活動家グループの行程が予定されていました。モバイルインターネットの遮断が最も顕著だったのはTigo/Freeで、現地時間10:15～19:45（10:15～19:45 UTC）の間に大きな障害が発生しました。</p><!--kg-card-begin: html-->
+	<h3 id="plusnetuk">Plusnet (United Kingdom)</h3><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="maxnet-ukraine">パキスタン</h3>
+		<a href="https://blog.cloudflare.com/#maxnet-ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<h3 id="russia">Russia</h3><!--kg-card-end: html-->
+	<p><a href="https://www.business-standard.com/world-news/no-govt-instructions-to-block-internet-during-polls-pakistan-telecom-body-124020800226_1.html" target="_blank" rel="noopener noreferrer">発表されたレポート</a>によると、パキスタン電気通信局PTAは、2月8日に新政府選挙を行うための世論調査に国民が出向く間、インターネットサービスは引き続き利用可能であると述べました。しかし、その日、パキスタンの有権者が投票に行った際、<a href="https://therecord.media/pakistan-cuts-internet-as-voters-head-to-polls" target="_blank" rel="noopener noreferrer">パキスタン当局は全土でモバイルインターネットアクセスを遮断</a>しました。当局は、前日に発生した暴力を受けての<a href="https://therecord.media/pakistan-cuts-internet-as-voters-head-to-polls" target="_blank" rel="noopener noreferrer">「法と命令を維持するため」の動きであるとしました</a>。遮断命令の影響は、<a href="https://radar.cloudflare.com/traffic/as59257?dateStart=2024-02-08&amp;dateEnd=2024-02-09" target="_blank" rel="noopener noreferrer">AS59257（Zong/CMPak）</a>、<a href="https://radar.cloudflare.com/traffic/as24499?dateStart=2024-02-08&amp;dateEnd=2024-02-09" target="_blank" rel="noopener noreferrer">AS24499（Telenor Pokistan）</a>、<a href="https://radar.cloudflare.com/traffic/as45669?dateStart=2024-02-08&amp;dateEnd=2024-02-09" target="_blank" rel="noopener noreferrer">AS45669（Jazz/Mobilink）</a>を含む、<a href="https://radar.cloudflare.com/pk" target="_blank" rel="noopener noreferrer">パキスタン</a>の複数のインターネットプロバイダーで見られ、07:00～20:00（02:00～15:00 UTC）まで続き、約9時間後にトラフィックが予想されるレベルに回復しました。<a href="https://pulse.internetsociety.org/blog/pakistan-elections-2024-the-unexpected-cost-of-mobile-service-disruptions" target="_blank" rel="noopener noreferrer">Internet Society's Pulseのブログ投稿</a>では、遮断によりパキスタンの国内総生産損失が1850万米ドルに達したと推定しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="at-t-united-states">チャド</h3>
+		<a href="https://blog.cloudflare.com/#at-t-united-states" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4o14ywdQmVwPQqLccSR9ov/8181788b95cf51f492820977417be76a/Jan-30---Russia---ru-DNSSEC.png" alt="" class="kg-image" width="910" height="360" loading="lazy">
+
+	</figure>
+	<p><a href="https://radar.cloudflare.com/td" target="_blank" rel="noopener noreferrer">チャド</a>では、2月28日から3月7日にかけて複数のインターネット障害が観測されました。最初の障害は2月28日の現地時間10:45に始まり、3月1日の現地時間18:00まで続きました（2月28日09:45～3月1日17:00 UTC）。3月3日、4日、7日にも、それぞれ数時間の短期間な障害が見られました。このような遮断は、同国内の<a href="https://www.aljazeera.com/news/2024/2/28/chad-announces-several-deaths-after-foiled-intelligence-office-attack" target="_blank" rel="noopener noreferrer">政治的暴力をきっかけ</a>に起きたものです。国内のネットワーク全体で集計されたIPv4アドレスの顕著な減少は、2月28日、3月3日、3月4日の遮断と重なっていましたが、3月7日に同様の減少が生じなかった理由は不明です。</p>
+	<div class="flex anchor relative">
+		<h2 id="vodafone-egypt">停電</h2>
+		<a href="https://blog.cloudflare.com/#vodafone-egypt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="ocean-wave-communication-myanmar">タジキスタン</h3>
+		<a href="https://blog.cloudflare.com/#ocean-wave-communication-myanmar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kg2gdTuPBJ1MPirymlvfG/bd816a37733a151f434d33354b9fd81b/pasted-image-0-4.png" alt="" class="kg-image" width="1600" height="696" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3drORCJTXNtO7IrJMUrjog/4dbc2cc56bdf6581205d03c7475dee16/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="512" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tTYc2dO4kHkZR4wvUlIzy/466bf1559696466e91072e4f00faa603/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="522" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BwYMWXW6hGIzZTUIVmBht/6ea7e5bd4093a3b9171b159ff19c7f47/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="519" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<h2 id="maintenance">Maintenance</h2><!--kg-card-end: html-->
+	<p><a href="https://eurasianet.org/swathes-of-tajikistan-crippled-by-unexplained-power-outage" target="_blank" rel="noopener noreferrer">発表されたレポート</a>によると、3月1日に<a href="https://radar.cloudflare.com/tj" target="_blank" rel="noopener noreferrer">タジキスタン</a>で広範な数時間の停電が発生し、これは全土が氷点下に近づく気温になるにつれ、電気空調設備による電力使用量が増加したことが原因と思われます。障害は現地時間11:00（06:00 UTC頃）に始まり、約3時間続きました。同国からのインターネットトラフィックへの影響は、以下のグラフに表れています。現地時間14:00（09:00 UTC）頃に停電が復旧したものの、インターネットトラフィックは次の日の現地時間05:00（午前0時 UTC）頃まで「期待される」レベルに戻りませんでした。</p>
+	<p>コンピューターや家庭用オフィスのルーターが遮断されるため、最も頻繁にインターネットトラフィックに最大の影響を及ぼすのは停電である中、発表された累積での同国内のIPv4アドレス空間は停電時に若干減少しており、この障害は国内のネットワークインフラストラクチャにも影響を及ぼしているようです。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-04&amp;dateEnd=2024-03-05&amp;location=as36935&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="conclusion">タンザニア</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3月4日、<a href="https://www.tanesco.co.tz" target="_blank" rel="noopener noreferrer">タンザニア電力会社（TANESCO）</a>は継続的な停電に関する<a href="https://twitter.com/tanescoyetutz/status/1764632209409949938" target="_blank" rel="noopener noreferrer">ソーシャルメディアへの通知を投稿しました。</a>この通知では、「タンザニア電力公社_TANESCO_より、国家標準送電網システムにエラーが発生し、ザンジバルを含む国の一部の地域で電力サービスが欠如していることを公表します。当社の専門家は、電力サービスが通常の状態に戻るように努力を続けています。ご不便をおかけして申し訳ありません」（翻訳）と述べられています。<a href="https://radar.cloudflare.com/tz" target="_blank" rel="noopener noreferrer">タンザニア</a>では、停電によりインターネット接続が混乱し、現地時間13:30から23:00（10:30～20:00 UTC）協定世界時にかけてトラフィックの減少が観測されました。</p><!--kg-card-begin: html--><iframe width="800" height="400" src="https://radar.cloudflare.com/embed/TrafficTrendsXY?dateStart=2024-03-11&amp;dateEnd=2024-03-12&amp;location=as136442&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - Internet traffic trends" loading="lazy"></iframe><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">技術的な問題</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="orange-espana">Orange España</h3>
+		<a href="https://blog.cloudflare.com/#orange-espana" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワーク<a href="https://www.cloudflare.com/learning/network-layer/what-is-routing" target="_blank" rel="noopener noreferrer">ルーティング</a>は、1つまたは複数のネットワーク間のパスを選択するプロセスです。インターネットでは、ルーティングは<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">ボーダーゲートウェイプロトコル（BGP）</a>に依存しています。歴史的に、BGPルーティング情報の交換はプロバイダー間の信頼に基づいていましたが、時間の経過とともに<a href="https://blog.cloudflare.com/rpki">リソースパブリックキーインフラストラクチャ（RPKI）</a>などのセキュリティメカニズムが開発され、悪意のある行為者によるシステムの悪用を防止しています。RPKIは、BGPルートアナウンスを正しい発信AS番号と関連付けるレコードに署名する暗号化方式です。ROA（ルートオリジン認証）レコードは、IPアドレスブロック内の1つまたは複数のプレフィックスへのルートを発信する<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">AS（自律システム）</a>を認証していることを確認する手段を提供します。Cloudflareは長年、RPKIの重要性やサポートについて<a href="https://blog.cloudflare.com/tag/rpki">数多くのブログ記事を公開</a>してきました。適切に実装、設定することで、RPKIとROAはルーティングセキュリティのサポートに役立ち、<a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking" target="_blank" rel="noopener noreferrer">BGPハイジャック</a>のような動作を効果的に防止します。</p>
+	<p><a href="https://www.ripe.net" target="_blank" rel="noopener noreferrer">RIPE NCC</a>（「RIPE」）は、インターネットリソースの割り当てと登録、調整活動を提供する5つの<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer">地域インターネットレジストリ（RIR）</a>の1つです。RIPEは、ヨーロッパ、中東、中央アジア地域をかばーしています。1月3日、ある悪意のあるアクターがRIPEと<a href="https://radar.cloudflare.com/as12479" target="_blank" rel="noopener noreferrer">AS12479（Orange España）</a>のアカウントセキュリティが緩いことを利用し、<a href="https://blog.benjojo.co.uk/post/rpki-signed-but-not-secure" target="_blank" rel="noopener noreferrer">公開インターネット上で見つかった資格情報を使用</a>してOrange EspañaのRIPEアカウントにログインしました。アカウントを制御すると、攻撃者は「偽の」オリジンで複数のROAを公開し、AS12479によって発信された何千ものルートを「RPKI-無効」としました。<a href="https://www.kentik.com/blog/digging-into-the-orange-espana-hack" target="_blank" rel="noopener noreferrer">その結果、RPKI-無効なルートを拒否する通信事業者は、大量のOrange EspañaのIP空間に移動されることになりました</a>。</p>
+	<p>CloudflareはRPKI検証を強制するため、RPKI無効の経路も拒否しました。デフォルトルートでいくつかのトランジットプロバイダーに向けてOrange Españaに到達し始めましたが、RPKI検証も実行するため、トラフィックはこれらのプロバイダーネットワーク内でも減少することになります。このため、Cloudflareの観点からすると、このインシデントは、現地時間16:45～19:45（14:45～17:45 UTC）の間、Orange Españaからのトラフィックの減少と、<a href="https://radar.cloudflare.com/routing/as12479?dateStart=2024-01-03&amp;dateEnd=2024-01-03" target="_blank" rel="noopener noreferrer">発表されたAS12479からのIPv4アドレス空間の顕著な現象が見られました</a>。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a649dcf6e57fc69b8a0ceaf13d96562b/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa649dcf6e57fc69b8a0ceaf13d96562b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;startTime=4s&amp;primaryColor=%23f6821f" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+	<p>Orange Españaは、<a href="https://twitter.com/orange_es/status/1742616775647265035" target="_blank" rel="noopener noreferrer">RIPEアカウントに不正にアクセスされたこと</a>をソーシャルメディア上で報じました。このインシデントの結果として、<a href="https://www.ripe.net/publications/news/mandatory-2fa-on-ripe-ncc-access-accounts" target="_blank" rel="noopener noreferrer">RIPEはログインに二要素認証（2FA）を必須化しました</a>。このインシデントのさらなる洞察として、<a href="https://www.kentik.com/blog/digging-into-the-orange-espana-hack" target="_blank" rel="noopener noreferrer">KentikのDoug Madary氏</a>と<a href="https://blog.benjojo.co.uk/post/rpki-signed-but-not-secure" target="_blank" rel="noopener noreferrer">bgp.toolsのBen Cartwright-Cox氏</a>が、詳細な分析とタイムラインを公開しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="maxnet-ukuraina">MaxNet（ウクライナ）</h3>
+		<a href="https://blog.cloudflare.com/#maxnet-ukuraina" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1月11日、<a href="https://radar.cloudflare.com/ua" target="_blank" rel="noopener noreferrer">ウクライナ</a>の<a href="https://radar.cloudflare.com/as34700" target="_blank" rel="noopener noreferrer">AS34700（MaxNet）</a>の加入者に対して9時間にわたるインターネット停止が発生しました。最初のトラフィック損失は、現地時間16:00（14:00 UTC）頃に発生し、1月12日の現地時間01:00（1月11日23:00 UTC）頃に回復しました。プロバイダーからの最初の<a href="https://www.facebook.com/maxnetua/posts/pfbid0Y3chUrPemhcBgEhFERwEWi6muqzUeoSkas4M8EgiFpwT3Jkgy5M3jUh6wknHJan2l" target="_blank" rel="noopener noreferrer">ソーシャルメディアへの投稿</a>では、「契約者のみなさまへ：電力会社の誤動作によりハブサイトの_1_つがフラッディングしたため、都市の一部の地域では部分的または完全にサービスが提供されない可能性があります。サービスの復旧に向けて最善を尽くしていますが、時間がかかります。オープン時間の詳細については、緊急作業が完了し次第、お知らせします」と障害の理由を説明しました。<a href="https://www.facebook.com/maxnetua/posts/pfbid012Nymu8ft9NPFi9fkQHrd9zGHb8un69ceECVXw72irJbBAkB3TXBRju1YqRSzSbLl" target="_blank" rel="noopener noreferrer">その後の投稿</a>で、インターネット接続が復旧したことを加入者に知らせました。<a href="https://radar.cloudflare.com/routing/as34700?dateStart=2024-01-11&amp;dateEnd=2024-01-12" target="_blank" rel="noopener noreferrer">MaxNetが発表したIPv4アドレスの量</a>も、現地時間16:00～22:00（14:00～20:00 UTC）にかけてゼロとなり、このフラッドはコアルーティングインフラストラクチャにも明白な影響を与えました。</p>
+	<div class="flex anchor relative">
+		<h3 id="plusnet-igirisu">Plusnet（イギリス）</h3>
+		<a href="https://blog.cloudflare.com/#plusnet-igirisu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1月15日に<a href="https://radar.cloudflare.com/gb" target="_blank" rel="noopener noreferrer">英国</a>の<a href="https://radar.cloudflare.com/as6871" target="_blank" rel="noopener noreferrer">AS6871（Plusnet）</a>で観測されたトラフィックの障害は、当初、プロバイダーがソーシャルメディア上の顧客の苦情に対応するための<a href="https://twitter.com/Plusnet/status/1746939378428006549" target="_blank" rel="noopener noreferrer">「大規模停止」の様相を呈していました</a>。しかし、この障害の根本的な原因は、明らかに<a href="https://www.ispreview.co.uk/index.php/2024/01/broadband-isp-plusnet-recovers-from-dns-linked-mass-outage.html" target="_blank" rel="noopener noreferrer">DNSサーバーの問題に関連している</a>ことがわかりました。加入者は、PlusnetのデフォルトのDNSリゾルバーを使用してホスト名を解決できませんでした。そのため、最終的に現地時間16:00～18:00の間の約2時間にわたり、ネットワークからのトラフィックの減少が見られることになりました。<a href="https://one.one.one.one/dns" target="_blank" rel="noopener noreferrer">Cloudflareの1.1.1.1サービス</a>など、サードパーティのDNSリゾルバーを使用するようにシステムを設定していたユーザーは、サービスの中断を経験しませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="rosia">ロシア</h3>
+		<a href="https://blog.cloudflare.com/#rosia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DNSの問題は1月中にロシアのユーザーにも影響を及ぼしましたが、英国のPlusnet加入者が経験したものとは異なる形でした。<a href="https://circleid.com/posts/20240130-dnssec-failure-causes-massive-website-outages-on-russian-internet" target="_blank" rel="noopener noreferrer">報告された</a>1月30日に発生した<a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a>の障害により、.ruドメインが数時間アクセス不能となりました。DNSSECは、既存のDNSレコードに暗号署名を追加することで、セキュアなドメインネームシステムを作成します。関連付けられた署名をチェックすることで、中間者攻撃で挿入された偽のレコードとは異なり、リクエストされたDNSレコードが権威ネームサーバーから送られたものであり途中で変更されていないことを確認できます。</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc8914#name-extended-dns-error-code-6-d" target="_blank" rel="noopener noreferrer">DNSSEC検証失敗</a>により、.ru国コードトップレベルドメインccTLDのホスト名に対するCloudflareの1.1.1.1リゾルバーへのDNSルックアップに対する<a href="https://blog.cloudflare.com/unwrap-the-servfail">SERVFAIL</a>応答が発生しました。ピーク時には、リクエストの68.4%がSERVFAILレスポンスを受信しました。.ru ccTLDの調整センターは、「グローバルDNSSECインフラストラクチャに関連する.ruゾーンに影響を与える技術的な問題」に取り組んでいることを<a href="https://t.me/fontankaspb/51445" target="_blank" rel="noopener noreferrer">明言</a>したのものの、潜在的なDNSSEC鍵のロールオーバーに伴う問題を解決することができます。.ru ccTLDは、2019年8月16日に数時間にわたって<a href="https://ianix.com/pub/dnssec-outages/20190816-ru" target="_blank" rel="noopener noreferrer">同様のDNSSEC関連の障害</a>が発生しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="at-t-amerika">AT&amp;T（アメリカ）</h3>
+		<a href="https://blog.cloudflare.com/#at-t-amerika" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2月22日午前4:00東部標準時（09:00 UTC）の直前から、米国内の複数の都市のAT&amp;T加入者において<a href="https://abcnews.go.com/US/att-outage-impacting-us-customers-company/story?id=107440297" target="_blank" rel="noopener noreferrer">モバイルサービスの中断が発生しました。</a>影響を受けた都市はアトランタ、ヒューストン、シカゴなどで、約8時間にわたって接続が中断されました。Cloudflareのデータによると、問題が始まると<a href="https://radar.cloudflare.com/as7018" target="_blank" rel="noopener noreferrer">AT&amp;T（AS7018）</a>のトラフィックが先週と比較して<a href="https://twitter.com/CloudflareRadar/status/1760694610689442114" target="_blank" rel="noopener noreferrer">シカゴで45%、ダラスで18%も減少</a>しました。</p>
+	<p><a href="https://web.archive.org/web/20240223235440/https://about.att.com/pages/network-update" target="_blank" rel="noopener noreferrer">AT&amp;Tが公開した「ネットワークアップデート」</a>では、「当社の最初のレビューに基づき、本日の障害は、サイバー攻撃ではなく、ネットワークを拡張する際に使用した誤ったプロセスのアプリケーションと実行が原因であったと考えています」としています。</p>
+	<div class="flex anchor relative">
+		<h2 id="mentenansu">メンテナンス</h2>
+		<a href="https://blog.cloudflare.com/#mentenansu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="vodafone-egypt">Vodafone Egypt</h3>
+		<a href="https://blog.cloudflare.com/#vodafone-egypt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3月5日の現地時間05:15～11:30（03:15～09:30 UTC）の間で、<a href="https://radar.cloudflare.com/as36935" target="_blank" rel="noopener noreferrer">AS36935（Vodafone Egypt）</a>の顧客のモバイルインターネット接続に障害が発生し、ネットワークからのトラフィックが<a href="https://twitter.com/CloudflareRadar/status/1764951344954122467" target="_blank" rel="noopener noreferrer">最大70%も予想を下回るレベルで減少</a>しました。プロバイダーからの<a href="https://twitter.com/VodafoneEgypt/status/1764947072376074428" target="_blank" rel="noopener noreferrer">ソーシャルメディアへの投稿</a>（翻訳）では、「今朝のアップデートにより_4G_サービスの運用において一部の地域で障害が発生していることについてお詫び申し上げます」としています。<a href="https://www.africanwirelesscomms.com/news-details?itemid=7392&amp;post=vodafone-egypt-sees-205-million-egp-fine-509046" target="_blank" rel="noopener noreferrer">4Gネットワークの障害の結果</a>、Vodafoneは影響を受けた顧客への補償が必要になり、また<a href="https://www.tra.gov.eg/en" target="_blank" rel="noopener noreferrer">エジプトの国家電気通信規制当局（NTRA）から罰金を科されました</a>。</p>
+	<div class="flex anchor relative">
+		<h3 id="ocean-wave-communication-miyanma">Ocean Wave Communication（ミャンマー）</h3>
+		<a href="https://blog.cloudflare.com/#ocean-wave-communication-miyanma" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現地時間3月12日正午（05:15 UTC）前、<a href="https://radar.cloudflare.com/mm" target="_blank" rel="noopener noreferrer">ミャンマー</a>の消費者向け光ファイバーおよびビジネスインターネットサービスプロバイダーである<a href="https://radar.cloudflare.com/as136442" target="_blank" rel="noopener noreferrer">AS136442（Ocean Wave）</a>で、トラフィックの大幅な減少が見られました。プロバイダーからのソーシャルメディアへの投稿（翻訳）では、「_Ocean Wave_をご利用のお客様は－ネットワークメンテナンスにより、インターネットがご利用いただけない、または接続が遅くなる事象が見られています」とされました。接続の障害は約7時間続き、現地時間19:00（12:15 UTC）の少し前にトラフィックが通常のレベルに戻りました。</p>
+	<div class="flex anchor relative">
+		<h2 id="matome">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#matome" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>第1四半期の注目すべき2つの海底ケーブルの破損事件は、海底ケーブル保護の重要性と、地政学的に敏感な場所を通過するもしくはその近くにあることのリスクを改めて浮き彫りにしました。イ<a href="https://blog.telegeography.com/2023-mythbusting-part-3" target="_blank" rel="noopener noreferrer">ンターネットトラフィックの伝送において海底ケーブルに依存している</a>ことを考えると、これは今後長年にわたって問題として残り続けるでしょう。</p>
+	<p>Orange Españaのインシデントは、<a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer">多要素認証</a>を使用して運用上重要なリソースを保護することの重要性も浮き彫りにしました。この件について、Cloudflareは<a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">過去に記事</a>を公開しています。RIPEのような組織は、インターネットの機能において極めて重要な舞台裏の役割を果たしており、悪意のあるアクターによるインターネット接続を広く混乱させかねない行動を防ぐため、システムを保護するためにあらゆる実用的予防措置を講じる義務があると言えます。</p>
+	<p>Cloudflare Radarのチームは常にインターネットに障害がないか監視しており、その状況を<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">Cloudflare Radar Outage Center</a>やソーシャルメディアや<a href="https://blog.cloudflare.com/tag/cloudflare-radar">blog.cloudflare.com</a>のブログ記事で共有しています。<a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a>（X）、<a href="https://cloudflare.social/@radar" target="_blank" rel="noopener noreferrer">Cloudflare.social/@radar</a>（Mastodon）、<a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer">radar.Cloudflare.com</a>（Bluesky）をソーシャルメディアでフォローしてご覧いただくか、<a href="https://blog.cloudflare.com/#">メール</a>でお問い合わせください。</p>
+</div>

@@ -1,0 +1,367 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/2023-phishing-report">English</a>, <a href="https://blog.cloudflare.com/zh-tw/2023-phishing-report">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/2023-phishing-report">Français</a>, <a href="https://blog.cloudflare.com/de-de/2023-phishing-report">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/2023-phishing-report">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/2023-phishing-report">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/2023-phishing-report">简体中文</a>.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zKdGorR5BXoIDN9iE1c2y/ef2bc7e7b92d5b73dd48caba515210bb/Introducing-Cloudflare-2023-phishing-threats-report-1.png" alt="Introducing Cloudflare's 2023 phishing threats report." class="kg-image" width="1348" height="766" loading="lazy">
+
+	</figure>
+	<p>Tras desarticular una operación de "phishing como servicio" que afectó a miles de víctimas en 43&nbsp;países, INTERPOL <a href="https://www.interpol.int/en/News-and-Events/News/2023/Notorious-phishing-platform-shut-down-arrests-in-international-police-operation" target="_blank" rel="noopener noreferrer">indicó</a>: "Puede que los ciberataques como el phishing sean de carácter virtual y no conozcan fronteras, pero su impacto en las víctimas es real y devastador". Por ejemplo, los ataques al correo electrónico corporativo (<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank" rel="noopener noreferrer">BEC</a>), un tipo de ataque sin malware que engaña a los destinatarios para que transfieran fondos, han <a href="https://www.ic3.gov/Media/Y2023/PSA230609" target="_blank" rel="noopener noreferrer">costado</a> a víctimas de todo el mundo más de 50&nbsp;000&nbsp;millones de dólares, según el FBI.</p>
+	<p>Se estima que el 90&nbsp;% de los ciberataques exitosos <a href="https://www.cisa.gov/shields-guidance-families" target="_blank" rel="noopener noreferrer">comienzan</a> con el <a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">phishing</a> por correo electrónico, una táctica que sigue siendo muy lucrativa para los atacantes. Hoy en día no se puede hacer mucho para detener los <i>intentos</i> de phishing. Sin embargo, para <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing" target="_blank" rel="noopener noreferrer">evitar que los ataques puedan llevarse a cabo <i>satisfactoriamente</i></a>, es importante comprender (y abordar de forma proactiva) las últimas tendencias en materia de phishing, incluidas las formas en que los atacantes se aprovechan hábilmente de la confianza que las víctimas depositan en remitentes de correo electrónico "conocidos". Con ese fin, Cloudflare ha publicado esta semana su primer <a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">informe sobre las amenazas de phishing</a>.</p>
+	<p>Este informe analiza las principales tendencias del phishing y las recomendaciones relacionadas, según los datos de <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">seguridad del correo electrónico</a> de mayo de 2022 a mayo de 2023. Durante ese tiempo, Cloudflare <b>procesó aproximadamente 13&nbsp;000&nbsp;millones de correos electrónicos</b>, cifra que incluye el bloqueo de aproximadamente <b>250&nbsp;millones de mensajes maliciosos</b> para evitar que llegaran a las bandejas de entrada de los clientes. El informe también se basa en una <b>encuesta encargada por Cloudflare a 316 responsables de la toma de decisiones en materia de seguridad</b> en Norteamérica, EMEA y APAC (puedes descargar ese estudio <a href="https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing" target="_blank" rel="noopener noreferrer">aquí</a>).</p>
+	<p>Consulta el informe completo para conocer nuestras tres conclusiones clave:</p>
+	<ul>
+		<li>
+			<p><b>Los atacantes utilizan los enlaces engañosos como su principal táctica de phishing</b>. Descubre cómo están mejorando la manera en que intentan llevar a sus víctimas a hacer clic y el momento en que modifican los enlaces con fines hostiles.</p>
+		</li>
+		<li>
+			<p><b>El fraude de identidad</b> adopta diversas formas (tales como los ataques al correo electrónico corporativo y la suplantación de marca), <b>y puede omitir fácilmente los estándares de autenticación del correo electrónico.</b></p>
+		</li>
+		<li>
+			<p>Los atacantes se hacen pasar por cientos de organizaciones diferentes, pero <b>principalmente suplantan la identidad de las entidades en las que confiamos</b> y necesitamos para trabajar.</p>
+		</li>
+	</ul>
+	<p>Estos son algunos factores que debes tener en cuenta al leer el informe sobre las amenazas de phishing en 2023.</p>
+	<div class="flex anchor relative">
+		<h3 id="email-threat-categorization">Clasificación de las amenazas por correo electrónico</h3>
+		<a href="https://blog.cloudflare.com/#email-threat-categorization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los atacantes suelen utilizar una combinación de <a href="https://www.cloudflare.com/learning/security/threats/social-engineering-attack" target="_blank" rel="noopener noreferrer">ingeniería social</a> y técnicas de ofuscación técnica para que sus mensajes parezcan legítimos. Por lo tanto, Cloudflare utiliza una serie de técnicas de detección avanzadas para analizar señales "confusas" (no solo el contenido visible a simple vista) a fin de identificar correos electrónicos no deseados. Esas señales incluyen:</p>
+	<ul>
+		<li>
+			<p><b>Análisis estructural</b> de encabezados, cuerpo del mensaje, imágenes, enlaces, archivos adjuntos, cargas malintencionadas y mucho más, mediante heurística y <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">modelos de aprendizaje automático</a> diseñados específicamente para las señales de phishing.</p>
+		</li>
+		<li>
+			<p><b>Análisis de sentimiento</b> para detectar cambios en patrones y comportamientos (p.&nbsp;ej., patrones de escritura y expresiones).</p>
+		</li>
+		<li>
+			<p><b>Gráficos de confianza</b> que evalúan los gráficos sociales de los socios, el historial de envíos de correos electrónicos y las posibles suplantaciones de socios.</p>
+		</li>
+	</ul>
+	<p>Nuestro <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services" target="_blank" rel="noopener noreferrer">servicio de seguridad del correo electrónico</a> también incorpora <a href="https://www.cloudflare.com/learning/security/glossary/threat-intelligence-feed" target="_blank" rel="noopener noreferrer">información sobre amenazas</a> procedente de la red global de Cloudflare, que bloquea una media de 140&nbsp;000&nbsp;millones de ciberamenazas cada día.</p>
+	<p>Estas y otras muchas señales evalúan los correos electrónicos que pueden formar parte de ataques al correo electrónico corporativo, suplantaciones o spam. Nuestro panel de control indica a los clientes las razones específicas (es decir, las "categorías" de indicadores de amenaza) de una determinada resolución de correo electrónico.</p>
+	<p>A continuación, se muestra una instantánea de los principales indicadores de amenazas de correo electrónico que observamos entre el 2 de mayo de 2022 y el 2 de mayo de 2023. Clasificamos los indicadores de amenaza en más de 30&nbsp;categorías diferentes. Durante ese periodo, los principales indicadores de amenaza fueron <b>enlaces maliciosos</b>, <b>antigüedad del dominio</b> (dominios recién registrados), <b>fraude de identidad</b>, <b>robo de credenciales</b> y <b>suplantación de marca</b>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JfZOoAKRayGTRMdjkwQOn/502f97161f6cdd8ba4614e299e5f6fc9/image4-6.png" alt="" class="kg-image" width="1999" height="1913" loading="lazy">
+
+	</figure>
+	<p>A continuación, ofrecemos una breve descripción de cada una de las categorías principales (que detallamos en mayor profundidad en el apéndice del informe).</p>
+	<p>Si se hace clic, un <b>enlace engañoso</b> abrirá el navegador web predeterminado del usuario y mostrará los datos a los que se hace referencia en el enlace, o abrirá una aplicación directamente (por ejemplo, un PDF). Dado que el texto que aparece en un enlace (es decir, hipertexto) se puede establecer arbitrariamente en HTML, los atacantes pueden hacer que una URL parezca que enlaza con un sitio legítimo cuando, en realidad, es malicioso.</p>
+	<p><b>La antigüedad del dominio</b> está relacionada con la reputación del dominio, que es la puntuación global asignada al mismo. &nbsp;Por ejemplo, los dominios que envían numerosos correos electrónicos nuevos inmediatamente después de su registro tenderán a tener una reputación peor y, por tanto, una puntuación más baja.</p>
+	<p><b>El engaño de identidad</b> se produce cuando un atacante o alguien con intenciones maliciosas envía un correo electrónico haciéndose pasar por otra persona. Los mecanismos y las tácticas para ello varían mucho. Algunas tácticas incluyen el registro de dominios que parecen similares (también conocido como suplantación de dominio), que están falsificados o utilizan trucos en los nombres que se muestran para que parezca que proceden de un dominio de confianza. Otras variaciones incluyen el envío de correos electrónicos utilizando plataformas de servicios web de alta reputación y con enmascaramiento de dominio.</p>
+	<p>Un atacante configura las herramientas de <b>robo de credenciales</b> para engañar a los usuarios y que estos proporcionen sus credenciales de inicio de sesión. Los usuarios despistados pueden introducir sus credenciales, proporcionando en última instancia a los atacantes acceso a sus cuentas.</p>
+	<p><b>La suplantación de identidad de marca</b> es una forma de engaño de identidad en la que un atacante envía un mensaje de phishing que suplanta la identidad de una empresa o marca reconocible. La suplantación de marca se lleva a cabo mediante una amplia variedad de técnicas.</p>
+	<p>Un <b>archivo adjunto</b> a un correo electrónico que, cuando se abre o ejecuta en el contexto de un ataque, incluye una llamada a la acción (p.&nbsp;ej, atrae al objetivo para que haga clic en un enlace) o realiza una serie de acciones establecidas por un atacante.</p>
+	<p>Cloudflare observa periódicamente varios indicadores de amenaza en un correo electrónico de phishing. Por ejemplo, una campaña de phishing con temática del Silicon Valley Bank (descrita en <a href="https://blog.cloudflare.com/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">este</a> blog de marzo de 2023) combinó la <i>suplantación de identidad de marca</i> con un <i>enlace engañoso</i> y un <i>archivo adjunto malicioso</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uyngezMfEcC6gf784nyV6/225bc53f509017a05329698ccea01c74/image3-5.png" alt="" class="kg-image" width="637" height="697" loading="lazy">
+
+	</figure>
+	<p>Los atacantes utilizaron la marca Silicon Valley Bank en una plantilla temática de DocuSign. El correo electrónico incluía código HTML que contiene un enlace inicial y una compleja cadena de redireccionamiento de cuatro niveles de profundidad. El archivo HTML incluido en el ataque habría enviado al destinatario a una instancia de WordPress con capacidad de redireccionamiento recursivo.</p>
+	<p>(Hablando de enlaces, los enlaces engañosos fueron la <b>categoría de amenaza n.º&nbsp;1</b>, y aparecieron en el <b>35,6&nbsp;% de nuestras detecciones</b>. Los atacantes no solo utilizan enlaces en los canales de correo electrónico. El aumento de las amenazas de phishing multicanal, que vulneran otras aplicaciones como SMS / texto, chat y redes sociales, también se aborda en el informe).</p>
+	<div class="flex anchor relative">
+		<h3 id="trusted-and-most-impersonated-brands">Marcas de confianza (y las más suplantadas)</h3>
+		<a href="https://blog.cloudflare.com/#trusted-and-most-impersonated-brands" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Silicon Valley Bank fue solo una de las <b>aproximadamente 1000&nbsp;marcas diferentes</b> que observamos que fueron suplantadas en correos electrónicos dirigidos a clientes de Cloudflare entre mayo de 2022 y mayo de 2023. (Los empleados de Cloudflare fueron blanco directo de una suplantación de identidad de la marca en el ataque de phishing "Oktapus" que la suite de productos <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a> <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">frustró</a> en julio de 2022).</p>
+	<p>Sin embargo, tal y como se detalla en el informe sobre amenazas de phishing, observamos que los atacantes por correo electrónico se hicieron pasar con mayor frecuencia (el 51,7&nbsp;% de las veces) por una de las 20 marcas mundiales más conocidas, entre las que <b>Microsoft</b> ocupaba el primer puesto.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Clasificación</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Marca suplantada</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Organización Mundial de la Salud</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SpaceX</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">T-Mobile</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Youtube</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterCard</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Notion.so</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Comcast</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Line Pay</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterClass</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Truist Financial Corp</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Louis Vuitton</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="example-of-a-microsoft-credential-harvesting-attempt">Ejemplo de intento de robo de credenciales de Microsoft</h3>
+		<a href="https://blog.cloudflare.com/#example-of-a-microsoft-credential-harvesting-attempt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A principios de este año, Cloudflare detectó y bloqueó una campaña de phishing que utilizaba la marca Microsoft para intentar recopilar credenciales a través de un sitio legítimo, pero vulnerado.</p>
+	<p>En el ejemplo de correo electrónico que aparece a continuación, no hay texto en el cuerpo del correo electrónico a pesar de su apariencia. Todo el cuerpo es una imagen JPEG que incluye un hipervínculo. Por lo tanto, si el destinatario hace clic en cualquier parte del cuerpo del correo (aunque no tenga intención de hacerlo), hará clic en el enlace.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7awKbnZvPkxboytqFmUaGl/7506202a224e5b3ee8736074d7d7e7d0/image1-16.png" alt="" class="kg-image" width="671" height="497" loading="lazy">
+
+	</figure>
+	<p>Inicialmente, el hipervínculo de esta imagen parece ser una URL benigna de Baidu: hxxp://www.baidu[.]com/link?url=-yee3T9X9U41UHUa3VV6lx1j5eX2EoI6XpZqfDgDcf-2NYQ8RVpOn5OYkDTuk8Wg#&lt;dirección del destinatario del correo electrónico codificada en base64&gt;. &nbsp;Sin embargo, si se hace clic en este enlace, el navegador del destinatario se redirigirá a un sitio que ha sido comprometido y utilizado para alojar un método de robo de credenciales.</p>
+	<p>El atacante utilizó la marca Microsoft Office 365, pero intentó eludir cualquier técnica de detección de marcas, incluida la información de la marca dentro de la imagen (es decir, no había texto sin formato ni texto HTML que se pudiera inspeccionar para identificar la marca).</p>
+	<p>Sin embargo, con el reconocimiento óptico de caracteres (OCR), Cloudflare logró identificar "Office 365" y "Microsoft" en la imagen. La tecnología OCR también nos permitió identificar el uso de señuelos de cuenta sospechosos relacionados con contraseñas.</p>
+	<p>En este ejemplo, las técnicas de los atacantes incluían:</p>
+	<ul>
+		<li>
+			<p>La inclusión de solo una imagen JPEG (imposible detectar palabras sin OCR).</p>
+		</li>
+		<li>
+			<p>La inserción de un hipervínculo en esa imagen (al hacer clic en cualquier parte del cuerpo, se haría clic en el enlace).</p>
+		</li>
+		<li>
+			<p>Un hipervínculo a una URL de Baidu (utilizado para eludir las técnicas de detección de URL basadas en la reputación).</p>
+		</li>
+		<li>
+			<p>El redireccionamiento por parte de la URL de Baidu del navegador del destinatario a un sitio de robo de credenciales (es decir, eludiría otras defensas de seguridad del correo electrónico que no son capaces de inspeccionar enlaces profundos).</p>
+		</li>
+		<li>
+			<p>El alojamiento del programa de robo de credenciales en un sitio legítimo que haya sido vulnerado por el atacante (incluso con la inspección de enlaces profundos, intentará de nuevo eludir las técnicas de detección de URL basadas en la reputación).</p>
+		</li>
+	</ul>
+	<p>Este vector de ataque aprovecha la gran reputación y autenticidad de Baidu para eludir la reputación del verdadero host / IP donde se aloja el programa de robo de credenciales.</p>
+	<p>Aunque esta campaña específica se centró en el robo de credenciales de Microsoft, a menudo vemos a los atacantes utilizar métodos similares para eludir las técnicas de detección de marcas y engañar a las víctimas para que descarguen <a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank" rel="noopener noreferrer">malware</a> y otras <a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank" rel="noopener noreferrer">cargas malintencionadas</a>.</p>
+	<p>Las técnicas de redirección de URL se suelen ver en las campañas de phishing, pero los ciberdelincuentes siguen perfeccionando su enfoque abusando cada vez más de dominios legítimos como <a href="http://baidu.com" target="_blank" rel="noopener noreferrer">baidu.com</a>, <a href="http://bing.com" target="_blank" rel="noopener noreferrer">bing.com</a>, <a href="http://goo.gl" target="_blank" rel="noopener noreferrer">goo.gl</a>, etc. Nuestras numerosas capacidades de detección nos permiten realizar una inspección de los enlaces profundos de las URL utilizando técnicas de redirección de todo tipo, incluidas aquellas que abusan de dominios legítimos.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-about-spf-dkim-and-dmarc">¿Qué pasa con SPF, DKIM y DMARC?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-spf-dkim-and-dmarc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La autenticación del correo electrónico (en concreto, los estándares <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank" rel="noopener noreferrer">SPF, DKIM y DMARC</a>) suele ser útil contra la suplantación de marcas. Estos estándares ayudan a validar los orígenes del servidor y del inquilino, protegen la integridad de los mensajes, garantizan la aplicación de políticas y mucho más.</p>
+	<p>Sin embargo, los atacantes pueden encontrar formas de eludir la autenticación para engañar a las suites de correo electrónico. De hecho observamos que <b>el 89&nbsp;% de los mensajes no deseados</b> "pasaron" las comprobaciones SPF, DKIM y/o DMARC.</p>
+	<p>Algunas limitaciones de la autenticación del correo electrónico son:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-6v43 {
+			background-color: #ffffff;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">SPF </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">(Sender Policy Framework)</span></th>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Principales ventajas:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Validación del origen del servidor (es decir, valida el origen de un mensaje)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Definición de qué servidores y servicios de correo electrónico pueden enviar mensajes en nombre del propietario de un dominio</span></th>
+			</tr>
+			<tr>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Limitaciones:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No evita la suplantación de correos electrónicos, dominios o la </span><a href="https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing"><span style="font-weight:400;font-style:normal;background-color:transparent">falsificación</span></a> de nombres de usuario<br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No valida el encabezado "De", utiliza el sobre "De" para determinar el dominio de envío</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La validación es ineficaz cuando se reenvían correos electrónicos o cuando los mensajes enviados a una lista de correo se envían a cada suscriptor </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El proceso de evaluación de SPF puede limitarse a un cierto número de </span><a href="https://www.cloudflare.com/learning/dns/what-is-dns"><span style="font-weight:400;font-style:normal;background-color:transparent">búsquedas de DNS</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"></span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No protege contra ataques que utilizan correos electrónicos "validados" con URL integradas, </span><a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload"><span style="font-weight:400;font-style:normal;background-color:transparent">cargas malintencionadas</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> o archivos adjuntos</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">DKIM </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">(Mensajes de correo identificado con claves de dominio)</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Principales ventajas:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Validación del origen del inquilino (es decir, comprueba que el propietario del dominio ha enviado / autorizado un correo electrónico mediante una firma digital)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Garantiza que el correo electrónico no se altera mientras se transfiere de un servidor a otro. Protege la integridad de los mensajes</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Limitaciones:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No evita la suplantación de identidad de correos electrónicos, dominios o la falsificación de nombres de usuario</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No protege contra los </span><a href="https://developers.cloudflare.com/magic-wan/reference/anti-replay-protection"><span style="font-weight:400;font-style:normal;background-color:transparent">ataques de repetición</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> (DKIM solo firma partes específicas de un mensaje. Los atacantes pueden añadir otros campos de encabezado a los correos electrónicos validados por DKIM y luego reenviarlos)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No protege contra los ataques que utilizan correos electrónicos “validados” con URL integradas, cargas malintencionadas o archivos adjuntos</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DMARC (Autenticación basada en dominios para mensajes, informes y conformidad)</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Principales ventajas:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aplicación de políticas e informes para SPF y DKIM</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Establece la política a seguir si un correo electrónico no pasa la autenticación SPF o DKIM (por ejemplo, rechazar / eliminar, poner en cuarentena, sin política / enviar)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La función de informes permite a los propietarios de dominios ver quién está enviando correos electrónicos en su nombre (es decir, protegerse contra la suplantación de tu propio dominio y el abuso de marca)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">Limitaciones: </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No evita la suplantación de dominio de otra marca</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No evita la suplantación de correo electrónico, dominio o la falsificación de nombres de usuario.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Los propietarios de dominios especifican a qué porcentaje de correo se aplican las políticas DMARC. Los porcentajes de aplicación inferiores al 100&nbsp;% son menos eficaces</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">No protege contra ataques que utilizan correos electrónicos «validados» con URL integradas, cargas maliciosas o archivos adjuntos.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="conclusions">Conclusiones</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las tácticas de los atacantes evolucionan constantemente. Es necesario aplicar numerosas capas de protección antes, durante y después de que los mensajes lleguen a las bandejas de entrada. Cloudflare nunca "confía" intrínsecamente en ningún tipo de comunicación por correo electrónico (ya sea interna, externa o procedente de un socio empresarial "conocido").</p>
+	<p>Del mismo modo, recomendamos que, ante todo, las organizaciones amplíen el <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">modelo de seguridad Zero Trust</a> (“no confiar nunca, verificar siempre”) no solo a la red y las aplicaciones, sino también a la bandeja de entrada del correo electrónico.</p>
+	<p>Además de <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">proteger el correo electrónico</a> con un enfoque Zero Trust, también recomendamos:</p>
+	<ul>
+		<li>
+			<p><b>Complementar el correo electrónico en la nube con varios controles de protección contra el phishing.</b> Como se señala en <a href="https://www.forrester.com/blogs/announcing-the-forrester-wave-enterprise-email-security-q2-2023" target="_blank" rel="noopener noreferrer">este</a> blog de Forrester de junio: <i>"El uso de aplicaciones de mensajería, colaboración, intercambio de archivos y software empresarial como servicio a través de numerosos dispositivos contribuye a mejorar la productividad y la experiencia de los empleados. Muchos de estos entornos se consideran "blindados", pero un solo ataque de phishing eficaz contra las credenciales de un socio de la cadena de suministro expone a tu organización a la pérdida de datos, al robo de credenciales, al fraude y a ataques de ransomware. Es vital ampliar los sistemas de protección desarrollados para la bandeja de entrada del correo electrónico a estos entornos y a los flujos de trabajo cotidianos de tus empleados".</i></p>
+		</li>
+		<li>
+			<p><b>Adoptar la autenticación multifactor resistente al phishing (</b><a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><b>MFA</b></a><b>).</b> Aunque no todas las herramientas de MFA proporcionan la misma capa de seguridad, las claves de seguridad de hardware se encuentran entre los métodos de autenticación más seguros para <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">evitar el éxito de los ataques de phishing</a>. Pueden proteger las redes incluso si los atacantes consiguen acceder a los nombres de usuario y las contraseñas.</p>
+		</li>
+		<li>
+			<p><b>Evitar que los humanos cometan errores.</b> &nbsp;Aprovecha las capacidades con las que ya cuentan tus empleados y equipos, mejorando la seguridad de las herramientas que ya utilizan y evitando que cometan errores. Por ejemplo, la tecnología de aislamiento remoto del navegador (<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">RBI</a>), cuando se integra con la <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank" rel="noopener noreferrer">seguridad del correo electrónico en la nube</a>, puede aislar automáticamente los enlaces de correo electrónico sospechosos para evitar que los usuarios se vean expuestos a contenido web potencialmente malicioso. Las entradas del teclado también se pueden desactivar en sitios web que no son de confianza, lo que protege a los usuarios de introducir accidentalmente información confidencial cuando rellenen formularios, o impide el robo de credenciales. De este modo, se proporciona una capa de defensa contra los ataques de phishing multicanal, ya que permite a los usuarios abrir enlaces de forma segura sin interrumpir su flujo de trabajo.</p>
+		</li>
+	</ul>
+	<p>Si te interesa conocer todas las conclusiones, puedes descargar el informe sobre las amenazas de phishing en 2023 <a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">aquí</a>, y consultar nuestras recomendaciones para prevenir con éxito los ataques de phishing. Y si deseas ver la seguridad del correo electrónico de Cloudflare en la práctica, puedes solicitar una evaluación gratuita del riesgo de phishing <a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank" rel="noopener noreferrer">aquí</a>.</p>
+</div>

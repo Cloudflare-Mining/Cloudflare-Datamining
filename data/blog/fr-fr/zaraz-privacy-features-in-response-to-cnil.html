@@ -1,0 +1,131 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/zaraz-privacy-features-in-response-to-cnil">English</a> et en <a href="https://blog.cloudflare.com/de-de/zaraz-privacy-features-in-response-to-cnil">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AIvakqd5xAtkMR0cqsS3v/f069717bed29d826e9fbcd9d42626933/zaraz-privacy-features-in-response-to-cnil.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La semaine dernière, l'autorité nationale française chargée de la protection des données (la Commission nationale de l'informatique et des libertés ou « CNIL ») a <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/google-analytics-et-transferts-de-donnees-comment-mettre-son-outil-de-mesure-daudience-en-conformite" target="_blank" rel="noopener noreferrer">publié des lignes directrices</a> décrivant ce qu'elle considère être un moyen conforme au RGPD de charger Google Analytics et d'autres outils de mesure d'audience web. La publication de ces lignes directrices fait suite à l'émission (par la CNIL et d'autres autorités de protection des données et à l'encontre d'entreprises utilisatrices de Google Analytics) de plusieurs avertissements stipulant qu'une telle utilisation engendrait des transferts de données vers les États-Unis sans garanties suffisantes pour les droits des utilisateurs européens. C'est donc avec plaisir que nous annonçons aujourd'hui le lancement d'un ensemble de fonctionnalités, ainsi que la publication d'un guide expliquant de manière pratique et détaillée l'implémentation de Zaraz. Nous pensons que ces outils permettront aux entreprises de continuer à utiliser Google Analytics et les technologies similaires d'une manière visant à protéger la confidentialité des données personnelles de l'utilisateur final et à empêcher leur envoi vers les États-Unis. Et, avantage non négligeable : le déploiement de ces fonctionnalités ne prend pas plus d'une minute.</p>
+	<p></p>
+	<p>Et c'est ici qu'intervient <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fzaraz" target="_blank" rel="noopener noreferrer">Cloudflare Zaraz</a></p>
+	<div class="flex anchor relative">
+		<h2 id="the-new-zaraz-privacy-features">Les nouvelles fonctionnalités de confidentialité de Zaraz</h2>
+		<a href="https://blog.cloudflare.com/#the-new-zaraz-privacy-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La nouvelle série de fonctionnalités que nous lançons aujourd'hui est conçue pour aider nos clients à renforcer la protection de la vie privée des utilisateurs finaux. À compter de ce jour, le tableau de bord de Zaraz vous permet d'appliquer les paramètres de configuration suivants :</p>
+	<ul>
+		<li>
+			<p>Suppression des paramètres de requête d'URL : une fois la fonctionnalité activée, la solution Zaraz supprimera tout paramètre contenu dans les URL collectées (par exemple UTM ou glcid) pouvant participer à la génération d'une empreinte (ou fingerprint). Elle transformera ainsi « <a href="https://example.com/?q=hello" target="_blank" rel="noopener noreferrer">https://example.com/?q=hello</a> » en « <a href="https://example.com/?q=hellp" target="_blank" rel="noopener noreferrer">https://example.com</a> ». Ce paramètre s'appliquera à l'ensemble de vos intégrations Zaraz.</p>
+		</li>
+		<li>
+			<p>Masquage de l'adresse IP d'origine : depuis quelque temps maintenant, il est <a href="https://blog.cloudflare.com/fr-fr/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz-fr-fr">tout à fait possible</a> d'utiliser Zaraz pour charger intégralement les outils du type Google Analytics côté serveur, tout en masquant les adresses IP des visiteurs aux yeux de Google et de Facebook. Cette opération empêchera ainsi l'envoi de l'adresse IP d'un visiteur vers le serveur du fournisseur d'un outil tiers. Actuellement proposée pour Google Analytics Universal, Google Analytics 4 et Facebook Pixel, cette fonctionnalité sera implémentée au fur et à mesure sur les autres intégrations Zaraz. Au lieu de masquer les adresses IP des visiteurs, vous pouvez configurer Zaraz de manière à tronquer ces adresses sur l'ensemble des outils. Jugée moins stricte, cette option est disponible sur la page des paramètres de Zaraz.</p>
+		</li>
+		<li>
+			<p>Nettoyage des « user-agent » : l'activation de cette fonction permettra à Zaraz d'éliminer les informations sensibles des « user-agent ». L'en-tête de requête User-Agent inclut des informations sur le visiteur qui accède au site, notamment son système d'exploitation, son navigateur et ses extensions. Zaraz « nettoie » cette chaîne en supprimant des éléments d'information (les numéros de version et les extensions, par exemple) pouvant participer à la génération d'une empreinte (ou fingerprint). Ce paramètre ne s'appliquera qu'aux intégrations côté serveur.</p>
+		</li>
+		<li>
+			<p>Suppression de l'information de site référent (ou « referer ») externe au site : cette fonctionnalité demande à Zaraz de masquer l'URL de site référent s'il est externe aux yeux des serveurs tiers. Si l'URL de site référent est sur le même domaine elle ne sera pas masquée, afin de conserver la précision de l'analyse et d'éviter le « fractionnement » de la session. Ce paramètre s'appliquera à l'ensemble de vos intégrations Zaraz.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-to-set-up-google-analytics-with-the-new-privacy-features">Configuration de Google Analytics avec les nouvelles fonctionnalités de confidentialité</h2>
+		<a href="https://blog.cloudflare.com/#how-to-set-up-google-analytics-with-the-new-privacy-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ksw0eBnqjNGz5uR26SHxC/75b6896b18eb8290c8c91e546d666188/image2-12.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
+
+	</figure>
+	<p>Nous avons rédigé ce guide afin de vous permettre de mettre facilement en œuvre nos nouvelles fonctionnalités lorsque vous utiliserez Google Analytics. Le guide s'appuiera sur la version Google Analytics Universal pour ses exemples, car le service Google Analytics Universal est largement utilisé par les clients de Zaraz. Vous pouvez suivre les mêmes principes pour configurer Facebook Pixel ou toute autre intégration côté serveur proposée par Zaraz.</p>
+	<div class="flex anchor relative">
+		<h3 id="step-1-install-zaraz-on-your-website">Étape 1 : installez Zaraz sur votre site web</h3>
+		<a href="https://blog.cloudflare.com/#step-1-install-zaraz-on-your-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zaraz se charge automatiquement sur chaque site web mis en proxy par Cloudflare (cloud orange). Aucune modification du code n'est nécessaire. Si votre site web n'est pas mis en proxy par Cloudflare, vous pouvez <a href="https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied" target="_blank" rel="noopener noreferrer">charger Zaraz manuellement</a> à l'aide d'un élément de code JavaScript. Si vous êtes nouveau sur Cloudflare ou si vous n'êtes pas sûr de savoir si votre site est mis en proxy par Cloudflare, vous pouvez utiliser cette <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl" target="_blank" rel="noopener noreferrer">extension Chrome</a> pour découvrir si votre site est mis en proxy ou non par Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="step-2-add-google-analytics-via-the-zaraz-dashboard">Étape 2 : ajoutez Google Analytics à l'aide du tableau de bord de Zaraz</h3>
+		<a href="https://blog.cloudflare.com/#step-2-add-google-analytics-via-the-zaraz-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tous les clients ont accès au <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fzaraz" target="_blank" rel="noopener noreferrer">tableau de bord de Zaraz</a>. Par défaut, lorsque vous ajoutez le service Google Analytics à l'aide de la bibliothèque d'outils de Zaraz, ce dernier se chargera côté serveur. Nul besoin de configurer un environnement cloud ou un serveur de proxy, Zaraz s'occupe de cette opération pour vous. Lorsque vous ajoutez un outil, Zaraz commence par se charger sur votre site web et une requête est émise par le navigateur de l'utilisateur final à destination d'un Cloudflare Worker situé sur votre propre domaine. Cloudflare Workers est notre plateforme d'Edge Computing ; le Worker visé par la requête communiquera directement avec les serveurs de Google Analytics. Aucune communication directe n'aura lieu entre le navigateur d'un utilisateur final et les serveurs de Google. Si vous souhaitez en savoir plus sur le fonctionnement de Zaraz, n'hésitez pas à consulter nos articles précédents traitant de <a href="https://blog.cloudflare.com/fr-fr/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz-fr-fr/#:~:text=Zaraz%E2%80%99s%20solution%20leverages%20Cloudflare%E2%80%99s%20global%20network%20and%20Workers%20platform">l'architecture unique de Zaraz</a> et de <a href="https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast">la manière dont nous utilisons Workers</a>. Il est important de prendre en compte que, d'après les directives de la CNIL, la « mise en proxy » de Google Analytics ne suffit pas en soi. Vous devrez prendre des mesures supplémentaires pour vous assurer de la bonne configuration de Google Analytics.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tgdFYH4bk4w5XvQ7viT82/a1297e892148566bfd799162266d237b/image5-6.png" alt="" class="kg-image" width="1999" height="911" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="step-3-configure-google-analytics-and-hide-ip-addresses">Étape 3 : configurez Google Analytics et masquez les adresses IP</h3>
+		<a href="https://blog.cloudflare.com/#step-3-configure-google-analytics-and-hide-ip-addresses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il vous suffit de saisir votre ID de suivi pour configurer Google Analytics. Vous devrez également activer l'option « Masquer l'adresse IP d'origine » sur la page des paramètres de Zaraz. Cette fonctionnalité empêchera l'outil d'envoyer l'adresse IP du visiteur à Google. Zaraz supprimera l'adresse IP du visiteur, avant qu'elle n'atteigne les serveurs de Google. Si vous souhaitez faire en sorte que Zaraz ne s'exécute qu'au sein de l'UE, renseignez-vous sur la <a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">Data Localization Suite</a> de Cloudflare.Selon vos besoins, vous pouvez bien entendu déployer des configurations plus complexes de Google Analytics, incluant diverses fonctionnalités, comme le suivi du commerce électronique, les dimensions et métriques personnalisées, les champs à définir, etc. Pour plus d'instructions, suivez <a href="https://developers.cloudflare.com/zaraz/get-started/add-tool" target="_blank" rel="noopener noreferrer">ce guide</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Sv2MQotvaO2KFv7Sor5MH/974394953bdab90fa69e449e8b956bde/image2-10.png" alt="" class="kg-image" width="1748" height="1524" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="step-4-toggle-on-zarazs-new-privacy-features">Étape 4 : activez les nouvelles fonctionnalités de confidentialité de Zaraz</h3>
+		<a href="https://blog.cloudflare.com/#step-4-toggle-on-zarazs-new-privacy-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'étape suivante consiste à activer l'ensemble des nouvelles fonctionnalités de confidentialité mentionnées plus haut. Pour ce faire, rendez-vous sur la page des paramètres de Zaraz, sous la section Privacy (Confidentialité).</p>
+	<div class="flex anchor relative">
+		<h3 id="step-5-clean-your-google-analytics-configuration">Étape 5 : nettoyez votre configuration de Google Analytics</h3>
+		<a href="https://blog.cloudflare.com/#step-5-clean-your-google-analytics-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rYqHM9LhtQOetWn9hru0f/877973b08402b4bc150ea55e1ad3312c/image2-11.png" alt="" class="kg-image" width="1999" height="709" loading="lazy">
+
+	</figure>
+	<p>À cette étape, vous devrez prendre les mesures nécessaires pour « nettoyer » votre déploiement spécifique de Google Analytics. Nous avons dressé une liste de suggestions à votre intention afin de vous aider à préserver la confidentialité des utilisateurs finaux :</p>
+	<ul>
+		<li>
+			<p>Ne mentionnez aucune information à caractère personnel (PII). Consultez les directives de la CNIL quant à l'anonymisation et déterminez comment les appliquer de votre côté. Il est probable que ce processus d'anonymisation rende l'identifiant unique particulièrement inutile pour la plupart des outils d'analyse. D'après nos recherches, les fonctionnalités telles que la vue « User-ID » de Google Analytics, par exemple, ne fonctionneront pas correctement avec ce type d'anonymisation. Le mieux dans ce type de cas serait potentiellement d'arrêter d'utiliser ces outils afin d'éviter les disparités et d'assurer la précision des analyses.</p>
+		</li>
+		<li>
+			<p>Si vous souhaitez masquer l'identifiant client (Client ID) de Google Analytics, rendez-vous sur la page des paramètres de Google Analytics, cliquez sur « Ajouter un champ » et sélectionnez « Client ID ». Pour remplacer le Client ID, vous pouvez insérer n'importe quelle chaîne en tant que valeur constante du champ. Veuillez noter que cette approche limitera vraisemblablement la capacité de Google à agréger les données et générera probablement des disparités en termes de décompte des sessions et des utilisateurs. Pourtant, nous avons observé certains clients utiliser Google Analytics pour compter le nombre d'événements et, à notre connaissance, l'opération devrait être possible avec ce paramètre.</p>
+		</li>
+		<li>
+			<p>Supprimez les identifiants intersites de votre implémentation. Il peut s'agir de divers éléments, comme l'identifiant unique de votre outil de CRM ou les paramètres de requête d'URL transmettant des identifiants afin de les partager entre différents domaines. Évitez la fonctionnalité de « <a href="https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain" target="_blank" rel="noopener noreferrer">suivi interdomaines</a> » (cross-domain tracking) également connue sous le nom de « site linking ».</p>
+		</li>
+		<li>
+			<p>Veillez bien à ne pas inclure de données personnelles dans votre configuration personnalisée, ni au sein de votre implémentation. Nous vous recommandons de passer en revue la liste des dimensions personnalisées, des paramètres/propriétés des événements, des données relatives à l'e-commerce et des propriétés utilisateurs afin de vous assurer que ces éléments ne contiennent pas de données personnelles. Si ce processus nécessite une certaine quantité de travail manuel à l'heure actuelle, nous avons une bonne nouvelle pour vous. En effet, nous sommes sur le point d'annoncer un nouvel ensemble de fonctionnalités de confidentialité, le Zaraz Data Loss Prevention (l'ensemble de mesures de prévention des pertes de données de Zaraz), qui vous aidera à effectuer automatiquement cette opération, à l'échelle souhaitée. Restez à l'écoute !</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="step-6-you-are-done">Étape 6 : vous avez terminé ! ?</h3>
+		<a href="https://blog.cloudflare.com/#step-6-you-are-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Au rang des autres éléments à prendre en considération, n'oubliez pas que la mise en œuvre des étapes décrites dans ce guide entraînera certaines limitations de votre capacité à utiliser Google Analytics. Le fait de ne pas collecter les paramètres et les référents UTM, par exemple, désactivera la possibilité de suivre les sources de trafic et les campagnes, le fait de ne pas suivre l'User ID vous empêchera d'utiliser la vue « User-ID », et ainsi de suite. Certaines entreprises trouveront ces limitations pour le moins extrêmes, mais comme pour bien d'autres aspects de la vie, tout est affaire de compromis. Nous avançons d'un pas vers un Internet plus orienté vers la confidentialité et ce n'est que le début. L'avènement de nouvelles contraintes réglementaires entraînera l'émergence de nouvelles technologies, qui donneront à leur tour naissance à de nouvelles capacités et fonctionnalités. Zaraz se fixe pour objectif d'ouvrir la voie dans ce domaine, en proposant des outils axés sur la confidentialité, capables d'assister les opérateurs de sites web et de protéger les utilisateurs finaux.</p>
+	<p>Nous vous recommandons d'en apprendre plus sur la <a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">Data Localization Suite</a> de Cloudflare et la manière dont vous pouvez <a href="https://blog.cloudflare.com/fr-fr/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz-fr-fr">utiliser Zaraz pour conserver les données d'analyse au sein de l'UE</a>.Pour conclure, nous apprécierions vivement que vous nous fassiez part de vos commentaires concernant cette annonce ou de vos desiderata en matière de nouvelles fonctionnalités. Pour ce faire, n'hésitez pas à joindre le responsable de votre compte Cloudflare ou à nous contacter directement via notre compte <a href="https://discord.gg/2TRr6nSxdd" target="_blank" rel="noopener noreferrer">Discord</a>. La confidentialité réside au cœur de tout ce que notre équipe développe. Nous adoptons toujours une approche proactive en matière de protection de la vie privée. Nous considérons en effet que le concept de confidentialité ne doit pas uniquement reposer sur le fait de répondre aux différents règlements, mais aussi sur le développement de technologies capables d'aider nos clients à mieux protéger leurs utilisateurs. Le concept est de simplifier les mesures nécessaires au respect et à la protection de la confidentialité des informations personnelles des utilisateurs. En d'autres termes, contribuer à bâtir un Internet meilleur.</p>
+	<p>.</p>
+</div>

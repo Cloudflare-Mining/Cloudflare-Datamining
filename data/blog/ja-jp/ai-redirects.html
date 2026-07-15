@@ -1,0 +1,131 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-redirects">English</a>および<a href="https://blog.cloudflare.com/ko-kr/ai-redirects">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YwYgU5uNRRur7cSZvafjZ/e87e27a74a3c5d4d39815cc0a58bfdd4/BLOG-3263_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>CloudflareのWrangler CLIは、過去6年間で複数のメジャーバージョンを公開しており、それぞれにコマンド、設定、または開発者がプラットフォームとやり取りする方法に対するいくつかの重大な変更が含まれています。積極的に維持されているオープンソースプロジェクトと同様に、古いバージョンのドキュメントも用意しています。<a href="https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy" target="_blank" rel="noopener noreferrer"><u>v1 ドキュメント</u></a> には、非推奨バナー、<a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" target="_blank" rel="noopener noreferrer"><u>noindex メタタグ</u></a>、および現在のドキュメントを指す canonical タグが含まれています。どのアドバイザリーシグナルも同じことを言っています。「このコンテンツは時代遅れです。他の場所を探してください」と。AIの学習用クローラーは、これらのシグナルを確実に尊重しません。</p>
+	<p><a href="https://developers.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control</u></a>を<a href="http://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>developers.cloudflare.com</u></a> で使用しています。そのため、<a href="https://radar.cloudflare.com/bots/directory?category=AI_CRAWLER" target="_blank" rel="noopener noreferrer"><u>AIクローラーカテゴリー</u></a>のボットは過去30日間に480万回訪問し、非推奨のコンテンツを現在のコンテンツと同じ速度で消費したことがわかります。アドバイザリーシグナルは測定可能な違いをもたらしませんでした。AIエージェントは常にライブコンテンツをフェッチするわけではないため、この影響が出ます。訓練されたモデルに基づいていますクローラーが非推奨のドキュメントを読み込むと、エージェントは古い基盤を引き継ぎます。</p>
+	<p>本日、<a href="https://developers.cloudflare.com/ai-crawl-control/reference/redirects-for-ai-training" target="_blank" rel="noopener noreferrer"><u>AIトレーニングのRedirects</u></a>を開始し、検証済みのAIトレーニングクローラーを最新のコンテンツにリダイレクトすることを強制できるようにします。既存の正規タグは、すべての有料Cloudflareプランで、1つのトグルで自動的に、検証済みAIトレーニングクローラーの<code>HTTP 301</code>リダイレクトになります。</p>
+	<p>また、ステータスコードは最終的にはWebがクローラーにポリシーを伝える方法であるため、<a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u> RadarのAI Insights</u></a> ページには、さまざまなタイプ（<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses" target="_blank" rel="noopener noreferrer"><u> 成功</u></a> （<code> 2xx</code> ）、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#redirection_messages" target="_blank" rel="noopener noreferrer"><u> リダイレクト</u></a><code> （ 3xx</code> ）、 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#client_error_responses" target="_blank" rel="noopener noreferrer"><u>クライアントエラー</u></a> （<code> 4xx</code> ）、および<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#server_error_responses" target="_blank" rel="noopener noreferrer"><u> サーバーエラー</u></a> （<code> 5xx</code><a href="https://radar.cloudflare.com/ai-insights#response-status" target="_blank" rel="noopener noreferrer"><u> ））を示すレスポンスステータスコード分析</u></a> が含まれるようになりました。これは、AIクローラーがすべてのCloudflareトラフィックで受信するステータスコードを、今日のWebがAIクローラーにどのように応答しているかを示すものとして表示します。</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-training-crawlers-face-dead-ends-today">AI学習用クローラーの限界に直面</h2>
+		<a href="https://blog.cloudflare.com/#ai-training-crawlers-face-dead-ends-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>検索エンジンにとって、<code>noindex</code>はリッチシグナルシステムとして機能しますが、ページが「これでトレーニングしないでください」と示すような同等のインラインディレクティブはありません。非推奨のページを警告バナーで公開すれば、人間は通知を読んで移動するので、機能するかもしれませんが、AIの学習に利用されるクローラーは全文を取り込み、バナーを単なる段落として扱って、警告が表示された後も何千回も返される危険性があります。可視化が可能です。</p>
+	<p>ブロッキングは独自の問題を引き起こします。クローラーが代わりに学習すべきことについてのシグナルがない、空が生成されるのです。<code>robots.txt</code>は限定的な保護を提供しますが、自動化されたトラフィックが増加するにつれて、クローラーごと、パスごと、コンテンツ更新ごとのディレクティブを維持するには、多大な手作業による維持管理が必要です。クローラーに必要なのは、「現在のコンテンツはここにあります」という具体的な指示です。</p>
+	<p><code>&lt;link rel="canonical"&gt;</code>タグは、<a href="https://www.rfc-editor.org/rfc/rfc6596" target="_blank" rel="noopener noreferrer"><u>RFC 6596</u></a>で定義されているHTML要素で、検索エンジンと自動システムに、どのURLがページの正規バージョンを表しているかを伝えます。すでに<a href="https://almanac.httparchive.org/en/2025/seo#raw-versus-rendered-canonical-tags" target="_blank" rel="noopener noreferrer"><u>Webページの65-69%</u></a>に存在しており、<a href="https://blog.cloudflare.com/emdash-wordpress"><u>EmDash</u></a>、WordPress、Contentfulなどのプラットフォームによって自動的に生成されています。そのインフラストラクチャが、コンテンツの現在のバージョンを宣言し、AIトレーニング用リダイレクトがそれを強制します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIトレーニングのリダイレクトは、Cloudflareの<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.verified_bot_category" target="_blank" rel="noopener noreferrer"><u><code>cf.verified_bot_category</code></u></a>フィールドと、既存のHTMLにある<code>&lt;link rel="canonical"&gt;</code>タグの2つの入力に基づいて動作します。<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories" target="_blank" rel="noopener noreferrer"><u>AIクローラー</u></a>カテゴリは、GPTBot、ClaudeBot、Bytespiderなど、AIモデルのトレーニングのためにクロールするボットを対象とし、AIエージェントを対象とする<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories" target="_blank" rel="noopener noreferrer"><u>AIアシスタント</u></a>および<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>カテゴリとは異なります。</p>
+	<p>検証済みのAIクローラーからリクエストが届くと、CloudflareはレスポンスのHTMLを読みます。自己参照しないcanonicalタグが存在する場合、Cloudflareはレスポンスを返す前に、正規のURLに<code>301 Moved Permanently</code>を発行します。人間のトラフィック、検索インデックス作成、その他の自動トラフィックには影響がありません。</p>
+	<p>非推奨のパスへのGPTBotリクエストの交換は以下のようなものです：</p>
+	<pre class="language-Rust"><code class="language-Rust">GET /durable-objects/api/legacy-kv-storage-api/
+
+Host: developers.cloudflare.com
+
+User-Agent: Mozilla/5.0 (compatible; GPTBot/1.1; +https://openai.com/gptbot)
+</code></pre>
+
+	<pre class="language-Rust"><code class="language-Rust">HTTP/1.1 301 Moved Permanently
+
+Location: https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="what-this-does-not-do">この機能でできないこと</h3>
+		<a href="https://blog.cloudflare.com/#what-this-does-not-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>既に取り込まれたトレーニングデータに遡って修正したり、AIクローラーボットカテゴリ外の未検証のクローラーを対象にしたりすることはありません。非推奨のページを訪問した人間やAIエージェントはリダイレクトされません。また、クロスオリジン正規化（異なるドメインの希望するURLに誘導するタグ）は、コンテンツの鮮度ではなくドメインの統合に使われることが多いため、設計上除外しています。ループを回避するために、自己参照の正規表現（それ自体のURLを指すページ上のタグ）もリダイレクトをトリガーしません。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-not-just-use-redirect-rules">リダイレクトルールを使用しない理由は？</h3>
+		<a href="https://blog.cloudflare.com/#why-not-just-use-redirect-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/rules/url-forwarding/single-redirects" target="_blank" rel="noopener noreferrer"><u>単一リダイレクトルール</u></a>は、ユーザーエージェント文字列でAIクローラーをターゲットにでき、サイトに既知の非推奨パスがほんの数個しかない場合、それで機能します。しかし、規模を拡大できません。新しい非推奨パスへのアクセスはすべてルールの変更が必要で、ユーザーエージェントは手動で追跡する必要があります。そうしなければ、キャンペーンのURLやドメインの移行に使われる可能性のある<a href="https://developers.cloudflare.com/rules/url-forwarding/#availability" target="_blank" rel="noopener noreferrer"><u>プラン制限</u></a>につながってしまいます。リダイレクトルールは、canonicalタグがすでに宣言しているものを手動で再エンコードすることもでき、コンテンツの変更に伴って同期ができなくなります。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-we-found-on-our-own-documentation-site">当社のドキュメントサイトで見つかったもの</h2>
+		<a href="https://blog.cloudflare.com/#what-we-found-on-our-own-documentation-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社の経験上、この問題は現実的なものとなっています。AI Crawl Controlは、<a href="http://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>developers.cloudflare.com</u></a>を、Cloudflareのすべてのお客様が利用できるのと同じダッシュボードを使って実行します。2026年3月、レガシーWorkersドキュメントは、OpenAIによって約46,000回、Anthropicによって3,600回、Metaによって1,700回クロールされました。</p>
+	<p>この非推奨ページのクローリングは、2026年4月に主要なAIアシスタントに「Wrangler CLIを使用してKV値を書き込むにはどうすればいいですか？」と質問したところ、「Cloudflare KVにはCloudflare KVに書き込みます。Cloudflare KVにはkv:key putコマンドを使って、Wrangler CLIを開始します。」</p>
+	<p>実際、（2026年4月現在）正しい構文は<code>wrangler kv key put</code>;コロン構文（<code>kv:key put</code>）は、Wrangler 3.60.0で廃止されました。当社のドキュメントには<a href="https://developers.cloudflare.com/kv/reference/kv-commands/#deprecations" target="_blank" rel="noopener noreferrer"><u>インライン廃止通知が記載されています</u></a>が、トレーニングパイプラインがそれらをどのように解釈するかは不明です。</p>
+	<p>そこで、developers.cloudflare.comでAIトレーニングのRedirectsを有効にし、応答を測定しました。最初の7日間、AIトレーニングクローラーによる、非自己参照のcanonicalタグを持つページへのリクエストの100%がリダイレクトされ、非推奨のコンテンツは提供されませんでした。</p>
+	<p>クローラーを現在のコンテンツにリダイレクトすることで、最終的にレガシーツールに関するAIの生成した回答が改善されると期待しています。トレーニングパイプラインの閉鎖的な性質と再クロールタイミングの変動性を考えると、これは私たちが検証を続ける仮説です。しかし、クローラーがアクセスした時点で受信するものは、すぐに改善が見られました。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-enable">有効化する方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-enable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サイトにCanonicalタグがある場合、既存のコンテンツ階層を検証済みのAIトレーニングクローラーに対して適用することが可能になります。Cloudflareの<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>検証済みボット分類</u></a>は、クローラーの識別を自動的に処理します。</p>
+	<p><b>ダッシュボードで:</b>任意のドメインで、<b>AI Crawl Control &gt; Quick Actions &gt; AIトレーニング用リダイレクト &gt; オンに切り替えます。</b></p>
+	<p>Configuration RulesとCloudflare for SaaSを使用したパス固有の制御については、<a href="https://developers.cloudflare.com/ai-crawl-control/reference/redirects-for-ai-training" target="_blank" rel="noopener noreferrer"><u>ドキュメント完全版</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-web-responds-to-ai-crawlers">AIクローラーに対するWebの応答方法</h2>
+		<a href="https://blog.cloudflare.com/#how-the-web-responds-to-ai-crawlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIトレーニング用リダイレクトは、あるステータスコード、<code>301 Moved Permanently</code> をコンテンツポリシーの実施メカニズムに変換します。しかし、<code>301</code>は、オリジンとクローラーの間のより広範な会話における1つのシグナルです。<code>200 OK</code>は、コンテンツが提供されたことを意味します。<code>403 Forbidden</code>は、アクセスがブロックされたことを意味します。<code>402 Payment Required</code>は、<a href="https://blog.cloudflare.com/introducing-ai-crawl-control/#using-http-402-to-help-publishers-license-content-to-ai-crawlers"><u>クライアントにアクセスの対価を支払う必要があることを伝えます</u></a>。まとめると、AIクローラーのトラフィック全体におけるステータスコードの分布は、Webが実際に大規模なクローラーに対してどのように応答しているかを明らかにします。</p>
+	<p>Radarの<a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u> AI Insightsページ</u></a>には、AIクローラートラフィックにおける上位のレスポンスステータスコードまたはレスポンスステータスコード<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status" target="_blank" rel="noopener noreferrer"><u>グループ</u></a> （ドロップダウンから選択可能）の分布を示すレスポンスステータスコード分析<a href="https://radar.cloudflare.com/ai-insights#response-status" target="_blank" rel="noopener noreferrer"><u>グラフが含まれるようになりました。</u></a>データは業界セットごとにフィルタリングできます。クロール目的フィルターは、Data Explorerでも適用できます。フィルタリング分析により、特定の種類のクローラーが異なる動作をするか、またはリクエストパターンと分布が業界によって異なるかを把握できます。</p>
+	<p>以下に示す一般的な例では、グラフでカバーされた期間において、リクエストの70%強が正常に処理され（<code>200</code>）、リクエストの10.1%が別のURLにリダイレクトされ（<code>301</code>、<code>302</code>）、3.7%が見つからなかったファイル（<code>404</code>）であったことがわかります。コンテンツへのアクセスはリクエストの8.3%でブロックされ、<code>403</code>レスポンスステータスコードを受信しました。グループ化すると、リクエストのほぼ74%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses" target="_blank" rel="noopener noreferrer"><u>正常なレスポンス</u></a>（<code>2xx</code>）を受信し、13.7%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#client_error_responses" target="_blank" rel="noopener noreferrer"><u>クライアントエラーレスポンス</u></a>（<code>4xx</code>）、11.3%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#redirection_messages" target="_blank" rel="noopener noreferrer"><u>リダイレクトメッセージ</u></a>（<code>3xx</code>）、1.2%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#server_error_responses" target="_blank" rel="noopener noreferrer"><u>サーバーエラーレスポンス</u></a>（<code>5xx</code>）を送信したことがわかります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zPrHtLf1BbHxQXQHTK1Qs/21a75531129332d749210d67b2c330ad/BLOG-3263_2.png" alt="BLOG-3263 2" class="kg-image" width="1600" height="878" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jPGKM051x7ZgzZSaTAo8v/e20c1e34a1128279157bc8bd1921a8fe/BLOG-3263_3.png" alt="BLOG-3263 3" class="kg-image" width="1600" height="878" loading="lazy">
+	</figure>
+	<p>この分析は、<a href="https://radar.cloudflare.com/bots/directory" target="_blank" rel="noopener noreferrer"><u>個々のボットページ</u></a>にも追加されており、クローラーの行動のこの側面についての洞察を提供します。以下に示すGPTBotの例では、グラフでカバーされた期間において、リクエストの80%強が正常に処理され（<code>200</code>）、リクエストの4.7%が別のURLにリダイレクトされ（<code>301</code>、<code>302</code>）、見つからなかったファイルはわずか2.7%でした（<code>404</code>）。6%近くがブロックされ、Cloudflareは<code>403</code>レスポンスステータスコードを返しました。グループ化すると、リクエストの83%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses" target="_blank" rel="noopener noreferrer"><u>正常なレスポンス</u></a>（2xx）、約10%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#client_error_responses" target="_blank" rel="noopener noreferrer"><u>クライアントエラーレスポンス</u></a>（<code>4xx</code>）、5.1%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#redirection_messages" target="_blank" rel="noopener noreferrer"><u>リダイレクトメッセージ</u></a>（<code>3xx</code>）、残りの2.2%が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#server_error_responses" target="_blank" rel="noopener noreferrer"><u>サーバーエラーレスポンス</u></a>（<code>5xx</code>）を受信したことがわかります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tvNsLUUCQlblPCmHolbUk/88a46b05788fa00cd5ec582d54622d4d/BLOG-3263_4.png" alt="BLOG-3263 4" class="kg-image" width="1600" height="878" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JlXMlLFpbUFKL85zP8AqK/b9014f55efc2e0203899a359632fb73c/BLOG-3263_5.png" alt="BLOG-3263 5" class="kg-image" width="1600" height="878" loading="lazy">
+	</figure>
+	<p>前述の通り、RadarのData Explorerでは、追加のフィルターを適用してデータをさらに掘り下げることができます。例えば、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;groupBy=user_agent&amp;dt=28d&amp;filters=responseStatus%253D404" target="_blank" rel="noopener noreferrer"><u>どのクローラー</u></a>が最も多くの存在しないコンテンツを要求しているか（結果として<code>404</code>応答ステータスコードが返される）、そしてその要求トラフィックが時間の経過とともにどのように変化するか、あるいはどの<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;groupBy=industry&amp;dt=28d&amp;filters=crawlPurpose%253DTraining%252CresponseStatusCategory%253DREDIRECTION" target="_blank" rel="noopener noreferrer"><u>業界</u></a>が<b>リダイレクト</b>（<code>3xx</code>）応答ステータスコードを<b>トレーニング</b>クローラーに最も多く送信しているか、そしてそのアクティビティが時間の経過とともにどのように変化するかなどを調べることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Bi7FKcZ79I4OmG7NTbadq/bb40e5397f615727c23d0d67310c869b/BLOG-3263_6.png" alt="BLOG-3263 6" class="kg-image" width="1600" height="1362" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5R1PEQIY1zW1uj4MHsj8pm/977adfff200fecbb761660d8e0fda55a/BLOG-3263_7.png" alt="BLOG-3263 7" class="kg-image" width="1600" height="1404" loading="lazy">
+	</figure>
+	<p>レスポンスステータスコードデータは、集約およびボットごとに、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/bots" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar API</u></a>からも利用可能です。</p>
+	<p><a href="https://developers.cloudflare.com/ai-crawl-control/reference/redirects-for-ai-training" target="_blank" rel="noopener noreferrer"><u>AIトレーニング用リダイレクト</u></a>により、クローラーがオリジンから受け取る内容を制御できます。また、Radarのステータスコード分析で、他のWebサイトがどのように対応しているかを確認できます。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fai" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control &gt; 概要 &gt; クイックアクション</u></a>でAIトレーニングのリダイレクトを有効にして、サイトでアドバイザリーシグナルを強制的な結果に置き換えることを今すぐ開始してください。</p>
+	<p><i>質問がある場合、または表示されている内容を共有したいですか？</i><a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><i><u>Cloudflareコミュニティ</u></i></a><i>でディスカッションに参加するか、</i><a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><i><u>Discord</u></i></a><i>で私たちを見つけてください。</i></p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/c6951044715886fa94c0f0d3c0686813/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fc6951044715886fa94c0f0d3c0686813%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

@@ -1,0 +1,139 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">English</a>、<a href="https://blog.cloudflare.com/zh-tw/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Português</a>、<a href="https://blog.cloudflare.com/es-es/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Рyсский</a>、<a href="https://blog.cloudflare.com/zh-cn/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vHrISZ0LlnUJcPsWVuRjW/606c3481ab47becf50e624a231ad9ea1/blazing-fast-development-with-full-stack-frameworks-and-cloudflare.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Web開発者の皆さん、こんにちは！<a href="https://blog.cloudflare.com/making-cloudflare-for-web">昨年、当社</a>では、Cloudflare上でのWebアプリケーションのデプロイをかなりの程度容易にする改善策を発表しました。それを受けて、Astro、Next.js、Nuxt、Qwik、Remix、SolidStart、SvelteKit、その他のCloudflareでホストされるWebアプリケーションがが大きく成長しています。本日、これらのWebフレームワークとの統合における大幅な改善が行われたことを発表します。この統合により、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a> SQLデータベース、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>オブジェクトストア、<a href="https://developers.cloudflare.com/ai" target="_blank" rel="noopener noreferrer">AI</a>モデル、<a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">Cloudflareの開発者プラットフォーム</a>のその他の強力な機能を使用する、高度なアプリケーションの開発が容易になります。</p>
+	<p>以前は、D1でWebフレームワークに対応したアプリを開発し、ローカルで実行する場合は、アプリケーションの本番ビルドを構築してから、「wrangler pages dev」を使用してローカルで実行する必要がありました。特に問題はないものの、コードの反復に数秒、大きなアプリケーションでは数十秒かかることがありました。本番ビルドを使用した反復は単に遅すぎて、<a href="https://en.wikipedia.org/wiki/Flow_(psychology)" target="_blank" rel="noopener noreferrer">フロー</a>から外れてしまいます。また、フレームワーク作成者が多大な労力を費やして入れたすべてのDX最適化を活用することができません。 これは今日、変わります！</p>
+	<p>当社の目標は、開発者がアプリをCloudflareにデプロイする際に学習して採用するワークフローの大幅変更やカスタムAPIを採用することなく、可能な限り自然な方法でWebフレームワークと統合することです。Next.js開発者、Nuxt開発者、他のフレームワークをお希望のお客様には、使い慣れた高速ローカル開発ワークフローを引き続きご使用になりつつ、アプリケーションをCloudflare上で出荷することができます。</p>
+	<p>すべてのフルスタックWebフレームワークには、フレームワークに合わせてカスタマイズされたローカル開発サーバー(devserver)が付属しています。この開発サーバーは、多くの場合、優れた開発エクスペリエンスを提供しますが、1つだけ例外があります。Cloudflareの開発プラットフォーム、特に<a href="https://www.cloudflare.com/developer-platform/products/#storage" target="_blank" rel="noopener noreferrer">ストレージソリューション</a>の重要な機能を、ネイティブにサポートしていないという点です。</p>
+	<p>そのため、つい最近まで、難しい選択を強いられました。フレームワーク固有の開発サーバーを使用してアプリケーションを開発することもできますが、Cloudflareの機能の多くにはアクセスできません。あるいは、D1やR2<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">のようなさまざまなリソースを含むCloudflareのプラットフォームをフルに活用することもできますが、フレームワーク固有の開発者ツールの使用を妥協しなければなりません。その場合、反復サイクルは遅くなり、ブラウザでコード変更の結果が表示されるまでに、数ミリ秒ではなく数秒かかるでしょう。</a>でも、今は違います！見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="lets-build-an-application">では、アプリケーションを構築しましょう</h3>
+		<a href="https://blog.cloudflare.com/#lets-build-an-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank" rel="noopener noreferrer">C3</a> — cloudflareのcreate-cloudflare CLIを使って新しいアプリケーションを作成してみましょう。どんなnpmクライアント（pnpmでも可？！？）を使うことができますが、シンプルにするために、この記事では既定のnpmクライアントにします。あとは、以下を実行するだけです。</p>
+	<p><code>$ npm create cloudflare@latest</code></p>
+	<p>アプリの名前を入力するか、ランダムに生成されたアプリを使用します。次に、「WebサイトまたはWebアプリ」のカテゴリーとお好みのフルスタックフレームワークを選びます。当社がサポートするフレームワーク：<a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>、<a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">Next.js</a>、<a href="https://nuxt.com" target="_blank" rel="noopener noreferrer">Nuxt</a>、<a href="https://qwik.dev" target="_blank" rel="noopener noreferrer">Qwik</a>、<a href="https://remix.run" target="_blank" rel="noopener noreferrer">Remix</a>、<a href="https://start.solidjs.com/getting-started/what-is-solidstart" target="_blank" rel="noopener noreferrer">SolidStart</a>、<a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">SvelteKit</a>など。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pa9natISsY3icyIUpu9Ul/cd6aa0baebe85d1b0a85eaba684d66e6/Screenshot-2024-03-28-at-7.25.10-AM.png" alt="" class="kg-image" width="1600" height="1327" loading="lazy">
+
+	</figure>
+	<p>C3は、アプリケーションのスキャピングをフレームワーク固有のCLIの最新バージョンに委任するため、フレームワークの機能やオプションを見逃すことなく、フレームワーク作成者が意図したようにアプリケーションをスキャフォールディングすることができます。C3は、Cloudflareへの統合とデプロイに必要なすべてをアプリケーションに追加するため、自分で設定する必要はありません。</p>
+	<p>アプリケーションがアップグレードされたので、いくつかのステップでデータベースに保存されている製品のリストを表示できるようにしましょう。まず、データベース用の設定を<a href="https://developers.cloudflare.com/workers/wrangler/configuration/#d1-databases" target="_blank" rel="noopener noreferrer">wrangler.toml</a>設定ファイルに追加します。</p>
+	<pre class="language-bash"><code class="language-bash">[[d1_databases]]
+binding = "DB"
+database_name = "blog-products-db"
+database_id = "XXXXXXXXXXXXXXXX"</code></pre>
+	<p>そうです！Pagesにデプロイされたフルスタックアプリでも、<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">バインドリソース</a>の設定が<a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer">wrangler.tomlファイル</a>を介して設定できるようになりました。Pagesの設定強化については、<a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">専用の発表欄</a>で詳しくお伝えします。</p>
+	<p>それでは、データベーススキーマを表す単純なschema.sqlファイルを作成してみましょう。</p>
+	<pre class="language-bash"><code class="language-bash">CREATE TABLE products(product_id INTEGER PRIMARY KEY, name TEXT, price INTEGER);
+INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Banana', 100), (3, 'Cherry', 375);</code></pre>
+	<p>そして、データベースを初期化します。</p>
+	<p><code>$ npx wrangler d1 execute blog-products-db --local --file schema.sql</code></p>
+	<p>ローカルD1データベースに変更を適用するために、<a href="https://developers.cloudflare.com/workers/wrangler/commands/#execute" target="_blank" rel="noopener noreferrer"><code>wrangler d1 execute</code></a>の<code>–local</code>フラグを使用していることにご注意ください。これは開発者サーバーが接続するデータベースです。</p>
+	<p>次に、TypeScriptを使用する場合、以下を実行することでデータベースについてTypeScriptに知らせます。</p>
+	<p><code>$ npm run build-cf-types</code></p>
+	<p>このコマンドは、C3経由で作成されたすべてのフルスタックアプリケーション用に事前設定されており、<a href="https://developers.cloudflare.com/workers/wrangler/commands/#types" target="_blank" rel="noopener noreferrer"><code>Wranglerタイプ</code></a>を実行して、設定されたすべてのバインディングを含むCloudflareの環境のインターフェースを更新します。</p>
+	<p>これで、フレームワークが提供する開発サーバーを便利なショートカットを使って起動できます。</p>
+	<p><code>$ npm run dev</code></p>
+	<p>このショートカットにより、次の<a href="https://nextjs.org/docs/app/api-reference/next-cli#development" target="_blank" rel="noopener noreferrer">dev</a>、<a href="https://nitro.unjs.io" target="_blank" rel="noopener noreferrer">nitro</a>、<a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">vite</a>のいずれかに関わらず、フレームワークの開発サーバーが起動されます。</p>
+	<p>これで、データベースにアクセスして製品をリストアップするために、フレームワーク固有のアプローチが使用できるようになりました。例えば、Appルーターを使用するNext.jsアプリケーションでは、<code>app/api/hello/route.ts</code>を次のように更新できます。</p>
+	<pre class="language-bash"><code class="language-bash">const db = getRequestContext().env.DB;
+ const productsResults = await db.prepare('SELECT * FROM products').all();
+ return Response.json(productsResults.results);</code></pre>
+	<p>また、Nuxtアプリケーションでは、<code>server/api/hello.ts</code>ファイルを作成して設定することができます。</p>
+	<pre class="language-bash"><code class="language-bash">export default defineEventHandler(async ({ context }) =&gt; {
+   const db = context.cloudflare.env.DB;
+   const productsResults = await db.prepare('SELECT * FROM products').all();
+   return productsResults.results;
+ });</code></pre>
+	<p>フレームワーク開発サーバーがポート3000で実行されていると仮定した場合は、<a href="http://localhost:3000/api/hello" target="_blank" rel="noopener noreferrer">http://localhost:3000/api/hello</a>に移動すると、どちらのフレームワークでも新しいAPIルートをテストできます。簡単にするために、APIルートを例に挙げましたが、UIを生成するルートにも同様に適用できます。</p>
+	<p>各Webフレームワークは、ルートを定義し、アプリケーション全体にリクエストに関するコンテキスト情報を渡す独自の方法を持っているため、データベース、オブジェクトストア、その他のリソースへのアクセス方法はフレームワークによって異なります。詳細は、最新フルスタックフレームワークガイドをお読みください。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site" target="_blank" rel="noopener noreferrer">Astroガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site" target="_blank" rel="noopener noreferrer">Next.jsガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site" target="_blank" rel="noopener noreferrer">Nuxtガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site" target="_blank" rel="noopener noreferrer">Qwikガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site" target="_blank" rel="noopener noreferrer">Remixガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-site" target="_blank" rel="noopener noreferrer">SolidStartガイド</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site" target="_blank" rel="noopener noreferrer">SvelteKitガイド</a></p>
+		</li>
+	</ul>
+	<p>選択したフレームワークでCloudflareのリソースにアクセスする方法を把握したら、あとはフレームワークに関して知っていることはすべて同じです。フレームワークに最適化された開発サーバーを使用して、アプリケーションをローカルに開発できます。これには、多くの場合、ホットモジュール代替（HMR）、カスタム開発ツール、強化されたデバッグサポートなどが含まれますが、Cloudflare固有のAPIと機能のメリットも享受できます。いいことだらけですね！</p>
+	<div class="flex anchor relative">
+		<h3 id="what-has-actually-changed-to-enable-these-development-workflows">こうした開発ワークフローを実現するために、実際何が変更されたのでしょうか?</h3>
+		<a href="https://blog.cloudflare.com/#what-has-actually-changed-to-enable-these-development-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>開発の遅延を減らし、カスタムフレームワーク固有の体験を維持するために、Webフレームワークとその開発サーバーが、シームレスでまったく違和感なくWranglerとminiflareと統合できるようにする必要がありました。</p>
+	<p><a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare</a>は、このパズルの重要な構成要素です。これはCloudflare固有のリソースのローカルシミュレータであり、当社のJavaScript（JS）ランタイムである<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>を搭載しています。workerdを利用すれば、CloudflareのJavaScript APIが、確実に、当社の本番環境を忠実にシミュレートし、ローカルで実行します。問題は、フレームワーク開発サーバーがアプリケーションを実行するためにすでにNode.jsに依存しているため、別のJSランタイムをMixに持ち込むと、これらの開発サーバーの構築方法に関する多くの前提が壊れてしまうことです。</p>
+	<p>しかし、当社のチームは2つのJSランタイム間のギャップを埋めるための興味深いアプローチを考案しました。これを<a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy" target="_blank" rel="noopener noreferrer">getPlatformProxy()</a> APIと呼んでいます。これは現在、Wranglerの一部であり、<a href="https://github.com/cloudflare/miniflare/pull/639" target="_blank" rel="noopener noreferrer">miniflareのマジックプロキシ</a>によって強化されています。このAPIは、すべてのバインドリソースを含む通常の<a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters" target="_blank" rel="noopener noreferrer">Workers envオブジェクト</a>と同じように動作する<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">JSプロキシオブジェクト</a>を公開します。プロキシオブジェクトにより、Node.jsから取得したコードがworkerdで実行されるJavaScriptコードを透過的に呼び出し、およびCloudflare固有のランタイムAPIにアクセスすることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MPXvdyK3eYsY3YKnOC8co/480cdd00d7a921ecb65eb738caf17ff2/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="966" loading="lazy">
+
+	</figure>
+	<p>このNode.jsとworkerdランタイム間のブリッジによって、アプリケーションをNode.jsによる開発サーバーで実行しながら、D1、R2、KV、その他のストレージソリューションのCloudflareシミュレーターに直接アクセスできるようになります。また、Node.jsスクリプトを書いて同じことをすることもできます。</p>
+	<pre class="language-bash"><code class="language-bash"> import {getPlatformProxy} from 'wrangler';
+
+
+ const {env} = getPlatformProxy();
+ console.dir(env);
+ const db = env.DB;
+
+
+ // Now let’s execute a DB query that runs in a local D1 db
+ // powered by miniflare/workerd and access the result from Node.js
+ const productsResults = await db.prepare('SELECT * FROM products').all();
+ console.log(productsResults.results);</code></pre>
+	<p><code>getPlatformProxy()</code> APIが利用可能になったので、残りの作業は、すべてのフレームワークアダプター、プラグイン、そして場合によってはフレームワーク自体を更新してこのAPIを利用できるようにすることでした。この過程においてフレームワークチームから受けたサポート、特にAstroの<a href="https://github.com/alexanderniebuhr" target="_blank" rel="noopener noreferrer">Alex</a>、Nuxtの<a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">pi0</a>、Remixの<a href="https://github.com/pcattori" target="_blank" rel="noopener noreferrer">Pedro</a>、Solidの<a href="https://github.com/ryansolid" target="_blank" rel="noopener noreferrer">Ryan</a>、Svelteの<a href="https://github.com/benmccann" target="_blank" rel="noopener noreferrer">Ben</a>と<a href="https://github.com/Rich-Harris" target="_blank" rel="noopener noreferrer">Rich</a>、そして<a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">次のページで</a>発表したプロジェクトの共同作業者、<a href="https://github.com/james-elicx" target="_blank" rel="noopener noreferrer">James Anderson</a>に感謝します。</p>
+	<div class="flex anchor relative">
+		<h3 id="future-improvements-to-development-workflows-with-vite">Viteによる開発ワークフローの今後の改善</h3>
+		<a href="https://blog.cloudflare.com/#future-improvements-to-development-workflows-with-vite" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy" target="_blank" rel="noopener noreferrer"><code>getPlatformProxy()</code></a> APIは多くのシナリオに対して優れたソリューションですが、Cloudflareにはそれ以上に優れた方法があります。Node.jsではなくJSランタイムでアプリケーション全体を実行できたなら、本番環境をさらに忠実にシミュレートし、開発者にとっての摩擦や本番環境での想定外の動作を減らすことができました。</p>
+	<p>理想的には、本番環境にデプロイするのと同じランタイムで開発するのが望ましいのですが、これはworkerdをすべてのフレームワークの開発サーバーに直接統合することで達成できますが、世の中に存在するフレームワークの数や、フレームワーク間の違いを考慮すると、決して容易なことではありません。</p>
+	<p>しかし、幸運に恵まれました。この取り組みを始めるにあたり、多くのフルスタックフレームワークで使用される人気の開発者サーバーである<a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a>がますます普及していることにすぐに気付きました。実際、Remixは<a href="https://remix.run/blog/remix-vite-stable" target="_blank" rel="noopener noreferrer">最近Viteに</a>切り替えたことも、今日のWeb開発における共通の基盤としてViteの人気を裏付けています。</p>
+	<p>もしViteが代替のJavaScriptランタイムでフルスタックアプリケーションを実行するための最高のサポートを持っていれば、Viteを使う人すべてがCloudflare開発者プラットフォームへの完全なアクセスの下に、ローカルでアプリケーションを開発できるようになります。フレームワーク固有のカスタム統合や回避策は不要です。フルスタックフレームワーク、Vite、Cloudflareの機能すべてをすべての開発者がアクセスできるのです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hj4Tb9Ex2NnwrnqZ5z6M2/e049e4300b188381259f60bc69ad054c/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="1024" loading="lazy">
+
+	</figure>
+	<p>話がうますぎると感じますか？そうかもしれません。<a href="https://github.com/vitejs/vite/pull/16089" target="_blank" rel="noopener noreferrer">Vite環境</a>提案についてViteチームと協力できることに興奮を覚えます。これにより、それを可能にすることができるからです。この提案はまだ進化中ですので、最新情報をお待ちください。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-will-you-build-today">今日は何を構築しますか？</h3>
+		<a href="https://blog.cloudflare.com/#what-will-you-build-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareが目指すのは、Web開発者にとって最高の開発プラットフォームになることです。ユーザーがすでに使い慣れているフレームワークとツールを使用して、アプリケーションを迅速かつ簡単に開発できるようにすることは、当社のストーリーの大きな部分です。単一コマンドを実行して、ぜひ、この取り組みを始めてください。</p>
+	<p><code>$ npm create cloudflare@latest</code></p>
+</div>

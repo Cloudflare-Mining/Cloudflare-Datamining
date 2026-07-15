@@ -1,0 +1,224 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/d1-open-alpha">English</a>、<a href="https://blog.cloudflare.com/es-es/d1-open-alpha">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/d1-open-alpha">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I25TgA366oQxZJ0rMj1V6/66243ee56c038530c66db1fafd70b4f6/d1-open-alpha.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2022年5月、当社はデータベースの簡素化（データベースの構築、保守、統合）を追求することを<a href="https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp">発表しました</a>。当社の目標は、最先端のパフォーマンスを備えた強力でスケーラブルなデータベースを、いかなる煩わしさもなく、実行できるようにするツールをお客様に提供することです。そして、当社は最初に、データベースの専門家だけでなく、あらゆるタイプのユーザーのデータベース開発経験を再考することを目指しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7w9UvQOVgrNbxPrz1tOWJz/611cdc1253d0c6971709f5dddacc0811/image1-48.png" alt="UPDATE Supercloud SET status = 'open alpha' WHERE product = 'D1';" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>この数カ月間、それだけを作成するために<a href="https://blog.cloudflare.com/whats-new-with-d1">取り組み</a>、一方その過程でいくつかの非常に重要な教訓を学びました。Workers上でグローバルなリレーショナルデータベース製品を構築することは、開発者プラットフォームの境界を絶対的な限界まで押し上げ、しばしばそれを超えますが、Cloudflare の私たちにとっては非常にスリリングな方法であるということが分かりました。当社の進歩は、外部からは遅いように見えるかもしれません。しかし、すべての改善、バグ修正またはストレステストは、_すべての_お客様が、世界で最も<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp">意欲的なサーバーレスアプリケーション</a>を構築するための道筋を築くのに役立つということです。</p>
+	<p>しかし、D1の生産準備をするまでの道のりは続き、まだ_完全には_完成していませんが、まずフィードバックを求めて立ち止まらなければ、それは「Cloudflare流」とは言えません。Developer Weekの精神において、<b>D1 Open Alphaを導入するのにこれ以上の好機はありません</b>！</p>
+	<p>「Open Alpha」は、私たちにとって新しい概念です。Cloudflareの様々な発表で「オープンベータ」という言葉を耳にすると思いますが、ここの多くの製品にも言えることですが、D1には全く適していませんでした。まだアクティブな開発とテストの段階にある極めて重要な部分がまだいくつかあるため、実際のアプリの構築を開始できるように、完全に形成されたD1をパブリックベータ版としてリリースする前に、趣味のアプリやサイドプロジェクトで製品の感触をつかむことができるようにしたいと考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-included-in-the-alpha">Alphaには何が含まれているのですか？</h2>
+		<a href="https://blog.cloudflare.com/#whats-included-in-the-alpha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1の舞台裏ではまだ多くのことが変化していますが、開発者としてのあなたがデータベースを初めて使う場合であっても、D1とのかかわり方について多くのことを考慮してきました。</p>
+	<div class="flex anchor relative">
+		<h3 id="using-the-d1-dashboard">D1ダッシュボードの使用</h3>
+		<a href="https://blog.cloudflare.com/#using-the-d1-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>数回クリックするだけで簡単に、ダッシュボード内からD1データベースを立ち上げ、実行することができます。D1インターフェースでは、自由にデータを作成、維持、表示できます。UIで行われた変更は、すぐにWorkerで利用できますー再デプロイは必要ありません！</p>
+	<div class="flex anchor relative">
+		<h3 id="use-wrangler">Wranglerを使う</h3>
+		<a href="https://blog.cloudflare.com/#use-wrangler" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vOzmnP9cvUYbJanSvprvl/b4a01d4edcc3dcada5a326e352b5f0e2/image2-30.png" alt="" class="kg-image" width="1999" height="736" loading="lazy">
+
+	</figure>
+	<p>もし少しやってみたいという関心があるのでしたら、Wrangler CLIを使用してデータベースを操作することもできます。データベースを作成し、手動でデータの追加を開始するか、次の2つの方法のいずれかでデータベースをブートストラップします。</p>
+	<p><b>1. SQLファイルを実行する</b></p>
+	<p>あなたの <code>.sql</code> ファイルは次のようになります。</p>
+	<pre class="language-sh"><code class="language-sh">$ wrangler d1 execute my-database-name --file ./customers.sql</code></pre>
+	<p>customers.sql</p>
+	<p><b>2. マイグレーションの作成と実行</b></p>
+	<pre class="language-sql"><code class="language-sql">DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (CustomerID INT, CompanyName TEXT, ContactName TEXT, PRIMARY KEY (`CustomerID`));
+INSERT INTO Customers (CustomerID, CompanyName, ContactName) 
+VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas Hardy'),(11, 'Bs Beverages', 'Victoria Ashworth'),(13, 'Bs Beverages', 'Random Name');</code></pre>
+	<p>マイグレーションは、データベースの変更をバージョン管理するための方法です。D1 では、<a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">マイグレーションを作成</a>し、それをデータベースに適用することができます。</p>
+	<p>マイグレーションを作成するために、以下を実行します。</p>
+	<p>これで、 <code>migrations</code> フォルダにSQLファイルが作成され、そこにクエリを追加できるようになります。その後、以下を実行することでデータベースにマイグレーションを適用します。</p>
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="access-d1-from-within-your-worker">Worker内からD1へアクセスする</h3>
+		<a href="https://blog.cloudflare.com/#access-d1-from-within-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;</code></pre>
+	<p><code>wrangler.toml</code> 設定ファイルにD1バインディングを追加することで、WorkerにD1をアタッチできます。次に、Worker内で以下のようにクエリを実行することで、D1とやりとりできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="or-access-d1-from-within-your-pages-function">または、Pages FunctionからD1へアクセスする</h3>
+		<a href="https://blog.cloudflare.com/#or-access-d1-from-within-your-pages-function" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">export default {
+ async fetch(request, env) {
+   const { pathname } = new URL(request.url);
+
+   if (pathname === "/api/beverages") {
+     const { results } = await env.DB.prepare(
+       "SELECT * FROM Customers WHERE CompanyName = ?"
+     )
+       .bind("Bs Beverages")
+       .all();
+     return Response.json(results);
+   }
+
+   return new Response("Call /api/beverages to see Bs Beverages customers");
+ },
+};</code></pre>
+	<p>今回のアルファ版では、D1は<a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>との統合もサポートしています。Pagesダッシュボード内にD1バインディングを追加し、Pages Function内にクエリを記述して、フルスタックアプリケーションを構築することができます。PagesとD1を始めるには、<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をチェックしてみてください。</p>
+	<div class="flex anchor relative">
+		<h2 id="community-built-tooling">コミュニティが構築したツール</h2>
+		<a href="https://blog.cloudflare.com/#community-built-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プライベートアルファ版の期間中、D1にある熱狂は、コミュニティのメンバーによるD1エコシステムと開発者エクスペリエンスへの貴重な貢献へとつながりました。これまでのプロジェクトの中から、特にお気に入りのものを以下にご紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="d1-orm">d1-orm</h3>
+		<a href="https://blog.cloudflare.com/#d1-orm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ORM（オブジェクトリレーショナルマッピング）とは、JavaScriptを使ってデータを問い合わせ・処理する方法です。Cloudflare Discord Community Championによって作成された<code>d1-orm</code> は、D1使用時に厳密な型付け体験を提供することを目的としています。</p>
+	<p><a href="https://docs.interactions.rest/d1-orm" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をご覧いただき、 <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank" rel="noopener noreferrer">GitHubリポジトリ</a>で問題を作成してフィードバックを提供することができます。</p>
+	<pre class="language-ts"><code class="language-ts">const users = new Model(
+    // table name, primary keys, indexes etc
+    tableDefinition,
+    // column types, default values, nullable etc
+    columnDefinitions
+)
+
+// TS helper for typed queries
+type User = Infer&lt;type of users&gt;;
+
+// ORM-style query builder
+const user = await users.First({
+    where: {
+        id: 1,
+    },
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="workers-qb">workers-qb</h3>
+		<a href="https://blog.cloudflare.com/#workers-qb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これはゼロ依存性のクエリビルダで、従来のORMよりも生のクエリを使用する利点と速度を維持しながら、シンプルな標準化されたインタフェースを提供します。ORMのような機能を提供することは意図していませんが、<code>workers-qb</code> により、コードからSQLに直接アクセスすることでデータベースとのやりとりを容易にします。</p>
+	<p>クエリビルダの詳細については、<a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+	<pre class="language-js"><code class="language-js">const qb = new D1QB(env.DB)
+
+const fetched = await qb.fetchOne({
+  tableName: 'employees',
+  fields: 'count(*) as count',
+  where: {
+    conditions: 'department = ?1',
+    params: ['HQ'],
+  },
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="d1-console">d1-console</h3>
+		<a href="https://blog.cloudflare.com/#d1-console" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>データベースを操作するたび、ターミナルで <code>wrangler d1 execute</code> コマンドを実行する代わりに、<code>d1-console</code> 内で D1を操作することができます。Discord Community Championによって作成されたもので、複数行のクエリの実行、コマンド履歴の取得、きれいにフォーマットされたテーブル出力の表示などの利点があります。</p>
+	<p>これは現在コミュニティプロジェクトですが、将来的には「D1 Console」をネイティブにサポートする予定です。今現在は、<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">こちらから</a> <code>d1-console</code> パッケージをチェックして始めてみてください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QR9Tf5DXnp3brBVvlvgJq/7f5b5083198492190dfc9f24e4fb70e0/image3-23.png" alt="" class="kg-image" width="1476" height="844" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="d1-adapter-for"><a href="https://github.com/koskimas/kysely">Kysely</a>用D1アダプター</h3>
+		<a href="https://blog.cloudflare.com/#d1-adapter-for" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Kyselyは、型安全性があり、自動補完に適したTypeScriptのSQLクエリビルダです。このアダプターを使うと、使い慣れたKyselyのインターフェースでD1とやりとりできます。</p>
+	<p><a href="https://github.com/aidenwallis/kysely-d1" target="_blank" rel="noopener noreferrer">こちら</a>からプロジェクトをチェックしてください。</p>
+	<pre class="language-ts"><code class="language-ts">// Create Kysely instance with kysely-d1
+const db = new Kysely&lt;Database&gt;({ 
+  dialect: new D1Dialect({ database: env.DB })
+});
+    
+// Read row from D1 table
+const result = await db
+  .selectFrom('kv')
+  .selectAll()
+  .where('key', '=', key)
+  .executeTakeFirst();</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="whats-still-in-testing">まだテスト段階のものは？</h2>
+		<a href="https://blog.cloudflare.com/#whats-still-in-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このAlphaリリースで無効にされた最大のものは、レプリケーションとJavaScriptトランザクションのサポートです。これらの変更は徐々に展開していきますが、現在、存在するいくつかの制限（積極的にテストに取り組んでいる）について呼びかけたいと思います：</p>
+	<p>● &nbsp; &nbsp; **データベースの場所：**各D1データベースは、単一のインスタンスのみ実行します。これは、開発者であるあなたがデータベースを作成する場所の近くで作成され、現在アクセスパターンに基づいて地域を移動することはありません。世界各地で実行しているWorkersは、結果として遅延がより高くなります。</p>
+	<p>● &nbsp; &nbsp; **並行処理制限:**高負荷時には、読み取りや書き込みクエリは、新しいレプリカの作成をトリガーするのではなく、キューに入れられることがあります。その結果、Open Alpha のパフォーマンスとスループットの特性は、最終製品を代表するものではなくなります。</p>
+	<p>● &nbsp; &nbsp; **可用性の制限:**バックアップの実行中は、DBへのアクセスをブロックします。ほとんどの場合、これは1〜2秒程度であり、バックアップ中に到着したリクエストはキューに入れられます。</p>
+	<p>また、<a href="https://developers.cloudflare.com/d1/limits-and-pricing" target="_blank" rel="noopener noreferrer">D1 Alpha Limitations</a>で、より詳細な最新リストを確認することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="request-for-feedback"><b>フィードバックのリクエスト</b></h2>
+		<a href="https://blog.cloudflare.com/#request-for-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1をご利用になりたいデータベースの種類で、当社はあらゆる種類の推測や手だてを行うことができますが、当社はユーザーではないのです–ユーザーはお客様です私たちは、あらゆる立場の開発者に、初期段階のD1技術を試してもらい、あなたの製品アプリに適したものにするために、改善点を教えてもらいたいと考えています。</p>
+	<p>体験に関する一般的なフィードバックや、Alphaの他の人々と交流するには、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>の<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank" rel="noopener noreferrer">#d1-open-alpha</a>チャンネルに参加してください。重要なお知らせや変更は、このチャンネルや<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank" rel="noopener noreferrer">毎月のコミュニティコール</a>で行う予定です。</p>
+	<p>より具体的な機能要望（どんなに奇抜なものでも）やバグの報告は、<a href="https://community.cloudflare.com/c/developers/d1" target="_blank" rel="noopener noreferrer">Cloudflareコミュニティフォーラム</a>のD1カテゴリーにスレッドを作成してください。このフォーラムは、数ヶ月先のプランを立てるための手段として維持していく予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started">追伸：募集中です。</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ご興味を持たれましたか？もしあなたが、未知の問題を解決し、スケールの大きなパワフルな製品を作るのがお好きでしたら、D1チームは採用中です。<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">募集中の職種</a>をぜひご覧ください。</p>
+</div>

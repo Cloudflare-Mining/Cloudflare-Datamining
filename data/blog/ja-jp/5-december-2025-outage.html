@@ -1,0 +1,152 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/5-december-2025-outage">English</a>、<a href="https://blog.cloudflare.com/zh-tw/5-december-2025-outage">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/5-december-2025-outage">Français</a>、<a href="https://blog.cloudflare.com/de-de/5-december-2025-outage">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/5-december-2025-outage">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/5-december-2025-outage">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/5-december-2025-outage">Português</a>、<a href="https://blog.cloudflare.com/es-la/5-december-2025-outage">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/5-december-2025-outage">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/5-december-2025-outage">Рyсский</a>、<a href="https://blog.cloudflare.com/pl-pl/5-december-2025-outage">Polski</a>、<a href="https://blog.cloudflare.com/nl-nl/5-december-2025-outage">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/5-december-2025-outage">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NoiDo8eH6E6bTJYfEqoe9/5dbf9b8cf88260554ac603c2a28ca7dd/Screenshot_2025-12-09_at_9.57.52%C3%A2__AM.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>2025年12月5日08時47分（UTC）（このブログでは時刻はすべてUTCで記載します）を起点に、Cloudflareのネットワークの一部で重大な障害が発生しました。このインシデントは09:12に解決し（影響時間は約25分）、現在はすべてのサービスが完全に復旧しています。</p>
+	<p>障害範囲は、Cloudflareが処理する全HTTPトラフィックの約28%に相当し、その結果一部のお客様に影響がありましたが、この影響は特定の条件が重なった一部のお客様に対する限定的なものでした。</p>
+	<p>今回の障害は、直接的にも間接的にもCloudflareのシステムに対するいかなるサイバー攻撃や悪意のある活動によって引き起こされたものではなく、<a href="https://blog.cloudflare.com/waf-rules-react-vulnerability"><u>今週公開された</u></a>「React Server Components」の新たな脆弱性への対応作業の一環として、Cloudflare内部の「ボディ解析（body parsing）」のロジックに変更を加えたことが直接のきっかけでした。</p>
+	<p>Cloudflareは、11月18日の障害に続き再びインターネットに障害を引き起こしてしまったことを重く受け止めています。今回の件を踏まえ、来週、このようなインシデントの発生を防ぐための当社の取り組みの詳細について発表いたします。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-happened">障害発生の原因</h3>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下のグラフは、インシデント期間中に当社のネットワークが配信したHTTP 500エラー（下の赤い線）と、影響を受けなかったCloudflareの全トラフィック（上部の緑線）を比較したものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43yFyHQhKjhPoLh4yB7pQ8/c1eb08a3e056530311e6056ecac522ed/image1.png" alt="500 error codes served by Cloudflare’s network during the incident" class="kg-image" width="1999" height="955" loading="lazy">
+	</figure>
+	<p>CloudflareのWebアプリケーションファイアウォール（WAF）は、悪意のあるペイロードを検出・遮断するため、プロキシで分析のためにHTTPのリクエストボディをメモリに読み込みます。従来、このバッファサイズは128KBでした。</p>
+	<p>今回、重大な脆弱性<a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a>からReactをご利用のお客様を保護するための継続的な作業の一環としてこのバッファサイズを1MB（Next.jsアプリケーションで許可されるデフォルト制限）へ拡大する変更作業を行っていました。本来の目的は、できるだけ多くのお客様を保護することでした。</p>
+	<p>この最初の変更は、段階的展開方式を用いたロールアウトを実施しましたが、ロールアウト中に、社内用WAFテストツールが増加したバッファサイズに対応していないことが判明しました。しかし、この時点でこの社内用テストツールは必要ではなくお客様のトラフィックに影響を与えていないことから、2回目の変更としてツールを無効化しました。</p>
+	<p>2回目の変更として行ったWAFテストツールの無効化は、当社のグローバル設定システムを使用して実施されました。このシステムは変更を段階的に展開するのではなく、数秒で全ネットワークに反映させます（<a href="https://blog.cloudflare.com/18-november-2025-outage"><u>11月18日の障害後</u></a>、見直しを行っています）。</p>
+	<p>残念ながら、この2回目のWAFテストツールを無効化するといった作業により、当社のバージョンのFL1プロキシを使用する特定の状況下において、ネットワークから500 HTTPエラーコードが返されるという事態が発生しました。</p>
+	<p>これは、変更が当社のネットワークに反映された直後、FL1プロキシ内で動作するルールモジュールのバグが誘発され、以下のLua例外が発生する結果となりました： </p>
+	<pre class="language-Rust"><code class="language-Rust">[lua] Failed to run module rulesets callback late_routing: /usr/local/nginx-fl/lua/modules/init.lua:314: attempt to index field 'execute' (a nil value)</code></pre>
+	<p>これにより、HTTPコード500エラーが返されました。</p>
+	<p>この問題は変更適用直後に特定され、09:12にロールバックを行ったところ、すべてのトラフィックが平常通り配信されるようになりました。</p>
+	<p>今回の影響範囲は、Web配信に古いFL1プロキシを利用し、<b>かつ</b>Cloudflareのマネージドルールセットがデプロイされているお客様が対象でした。この条件に該当するWebサイトに対するすべてのリクエストは、<code>/cdn-cgi/trace</code>などの一部のテストエンドポイントを除き、HTTP 500エラーが返される状態となりました。</p>
+	<p>裏を返せば、上記に当てはまらないお客様に対する影響はありませんでした。当社のチャイナネットワークを経由する顧客トラフィックも影響を受けませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-runtime-error">ランタイムエラー</h3>
+		<a href="https://blog.cloudflare.com/#the-runtime-error" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、システムに入る各リクエストを複数のルールをまとめた「ルールセット」を使用して評価しています。ルールはそれぞれ、フィルター（トラフィックを選別）と、アクション（トラフィックを処理）で構成されます。一般的なアクションは、「<code>block</code>」、「<code>log</code>」、「<code>skip</code>」ですが、「<code>execute</code>」というアクションもあり、これは別のルールセットの評価をトリガーするために使用されます。</p>
+	<p>Cloudflareの内部ログシステムはこの機能を使用して、公開前の新しいルールを評価しています。上位のルールセットが、テスト用のルールを含む別のルールセットを実行する仕組みになっており、今回私たちが無効化しようとしていたのは、そのテスト用のルールでした。</p>
+	<p>ルールセットシステムには、問題のあるルールをすぐに無効化できるようにする「キルスイッチ」サブシステムがあります。このキルスイッチシステムは、前のセクションで説明した「グローバル構成システム」から情報を受け取ります。私たちはこれまでにもインシデント対応のため、このキルスイッチを何度か使用しており、明確に定められた標準手順（SOP）に従って運用しています。今回のインシデントでも同じ手順に沿った対応を実施しました。</p>
+	<p>しかし、私たちはこれまで「<code>execute</code>」アクションを持つルールに対してキルスイッチを適用したことがありませんでした。キルスイッチが適用された場合、コードは「execute」の評価を正しくスキップしたことで、そのアクションが参照していたサブルールセットも評価しませんでした。ところが、ルールセット全体の評価結果を処理する際にエラーが発生してしまいました。</p>
+	<pre class="language-Rust"><code class="language-Rust">if rule_result.action == "execute" then
+  rule_result.execute.results = ruleset_results[tonumber(rule_result.execute.results_index)]
+end</code></pre>
+	<p>コードは「execute」アクションがある場合、「rule_result.execute」というオブジェクトが必ず存在するという前提で動いていました。しかし今回は「execute」がスキップされたため、rule_result.executeオブジェクトが存在せず、Luaはnil値を検索しようとした結果、エラーを返しました。</p>
+	<p>これはコードに長年気付かれないまま潜在していた単純なバグでした。この種のコードエラーは、強力な型システムを持つ言語であれば防ぐことができ、実際Rustで記述された新しいFL2プロキシに置き換えたところ、エラーは発生しませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-about-the-changes-being-made-after-the-incident-on-november-18-2025">2025年11月18日のインシデント発生後に進めていた改善について</h3>
+		<a href="https://blog.cloudflare.com/#what-about-the-changes-being-made-after-the-incident-on-november-18-2025" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025年11月18日に発生した別の障害で、同様の<a href="https://blog.cloudflare.com/18-november-2025-outage"><u>長時間にわたり利用できなくなるといったインシデント</u></a>を経験しています。この2つの障害に共通しているのは、セキュリティ対策のための設定変更が当社のネットワーク全体に反映され、一気に影響が拡散した点です。</p>
+	<p>11月18日のインシデントの後、私たちは多くのお客様から直接話を聞き、同様の問題を防ぐための計画を共有してきました。現在進めているこの改善が完了していれば今回のインシデントを抑えられた可能性が高いと考えられますが、残念ながら、まだ展開が完了していません。</p>
+	<p>Cloudflareはこの遅れを重く受け止め、この改善策を企業一丸となり、引き続き「最優先事項」として取り組みます。特に、以下に概説するプロジェクトは、この種の変更の影響を抑制できるものです：</p>
+	<ul>
+		<li>
+			<p><b>ロールアウトとバージョン管理の強化</b>：厳密なヘルスチェックを行いながら段階的にソフトウェアを展開するのと同様に、迅速な脅威対応や各種設定に使われるデータにも、同じ安全性と影響範囲を抑える仕組みが必要です。これには、ヘルスチェックや迅速なロールバック機能などが含まれます。</p>
+		</li>
+		<li>
+			<p><b>緊急時対応機能の合理化：</b>追加の種類の障害が発生しても、重要な操作が確実に実行できるようにすることが必要です。これは、社内のサービスだけでなく、すべてのCloudflareユーザーが利用するCloudflareのコントロールプレーンとの標準的な操作方法にも当てはまります。</p>
+		</li>
+		<li>
+			<p><b>フェイルオープン方式のエラーハンドリング：</b>耐障害性向上の取り組みの一環として、すべての重要なCloudflareデータプレーンコンポーネントにおいて、誤って適用されていたハードフェイル（即時停止）ロジックの置き換えを行っています。設定ファイルが破損しているか、範囲外である場合（例：機能上限を超えている場合）、リクエストを落とすのではなく、エラーを記録し、安全が確認された既定状態に戻すか、スコアリングせずにトラフィックを通過させます。一部のサービスでは、状況に応じてお客様がフェイルオープン（問題があっても通す）またはフェイルクローズ（問題があったら止める）かを選択できるようにする予定です。さらに設定のずれを防止する仕組み（drift prevention）も導入する予定です</p>
+		</li>
+	</ul>
+	<p>来週末までに、今回紹介した内容を含む全ての耐障害性プロジェクトの詳細を公開する予定です。その間、Cloudflareは、復旧とロールバックの仕組みが強化されるまで、新しい変更をネットワークに適用しない方針を固めています。</p>
+	<p>今回のように、短期間に大規模障害が連続して起きてしまうようなことは決して許されるものではありません。Cloudflareのチームを代表し、今回の件でお客様、そしてインターネット全体に与えた影響について、改めて深くお詫び申し上げます。</p>
+	<div class="flex anchor relative">
+		<h3 id="timeline">タイムライン</h3>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>時間 (UTC)</p>
+				</td>
+				<td>
+					<p>ステータス</p>
+				</td>
+				<td>
+					<p>説明</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>08:47</p>
+				</td>
+				<td>
+					<p>障害発生</p>
+				</td>
+				<td>
+					<p>設定変更がネットワークに適用され、配信が始まる</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>08:48</p>
+				</td>
+				<td>
+					<p>影響が最大に</p>
+				</td>
+				<td>
+					<p>設定変更がネットワーク全体に行き渡る</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>08:50</p>
+				</td>
+				<td>
+					<p>障害として正式に認識</p>
+				</td>
+				<td>
+					<p>自動アラート</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>09:11</p>
+				</td>
+				<td>
+					<p>変更を元に戻す</p>
+				</td>
+				<td>
+					<p>構成変更を元に戻し、再配信を開始</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>09:12</p>
+				</td>
+				<td>
+					<p>復旧</p>
+				</td>
+				<td>
+					<p>変更の取り消しが全ネットワークに反映され、すべてのトラフィックが正常に復旧</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+</div>

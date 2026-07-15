@@ -1,0 +1,164 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/better-testing-for-workflows">English</a>および<a href="https://blog.cloudflare.com/ko-kr/better-testing-for-workflows">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52TWD43pCgl9kJhlbOdASa/348298f3c4745465190f159d48c14851/Building_a_better_testing_experience_for_Workflows__our_durable_execution_engine_for_multi-step_applications.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、「耐久性のある実行」に関する当社の見解です。これらは、<a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer"><u>Cloudflare開発者プラットフォーム</u></a>で稼働するサーバーレスエンジンを提供し、長期実行され、障害が発生しても存続するマルチステップのアプリケーションを構築します。今年初めにWorkflowsが<a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution"><u>一般提供</u></a>されるようになったことで、開発者は、従来のステートレス機能では管理が困難または不可能だった複雑なプロセスをオーケストレーションできるようになりました。Workflowsはステート、リトライ、長時間待つことを処理するため、お客様はビジネスロジックに集中できます。</p>
+	<p>しかし、複雑なオーケストレーションでは信頼できるものにするためには、堅牢なテストが必要です。これまで、Workflowsのテストはブラックボックスプロセスでした。Workflowインスタンスが、ステータスへの<code>待機</code>を通じて完了に達したかどうかをテストできましたが、中間のステップは可視化されませんでした。このため、デバッグは非常に困難でした。支払処理ステップは成功しましたか？確認メールステップは、正しいデータを受け取りましたか？外部システムやログを調べなければ確認できませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-was-this-necessary">なぜこれが必要だったのでしょうか？</h3>
+		<a href="https://blog.cloudflare.com/#why-was-this-necessary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちも開発者として、信頼できるコードを確保する必要性を理解しています。また、Workflowsをテストするための開発者体験を改善する必要があるという明確なフィードバックも聞かれました。</p>
+	<p>テストのブラックボックスの性質は、問題の一部でした。ただし、限定的なテストの提供は高価でした。プロジェクトにワークフローを追加すると、ワークフローを直接テストしていない場合でも、テスト間の分離を保証できないため、分離されたストレージを無効にする必要がありました。分離されたストレージは、各テストが他のテストの副作用に影響されない、クリーンで予測可能な環境で実行されることを保証するための、ビテストプール機能です。無効化することによって、テスト間の状態がリークし、不安定で予測不可能な、デバッグが困難な障害につながる可能性がありました。</p>
+	<p>これにより、複雑なアプリケーションを構築する開発者にとっては難しい選択を迫られました。プロジェクトで<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、および<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>をWorkflowsとともに使用している場合、<i>プロジェクト全体</i>の分離されたテストを放棄するか、テストをスキップするかのどちらかしかありませんでした。この摩擦により、テスト体験が劣り、Workflowsの採用に至りませんでした。この問題を解決することは、単なる改善ではなく、Workflowsを、十分にテストされたCloudflareアプリケーションの一部にするための重要な<i>ステップ</i>でした。</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-isolated-testing-for-workflows">Workflowsに分離されたテストを導入</h3>
+		<a href="https://blog.cloudflare.com/#introducing-isolated-testing-for-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsの包括的で粒度の高い分離されたテストを可能にする新しいAPIを導入します。これらはすべて、Workersランタイム<code> workerd</code> でのテスト実行をサポートするテストフレームワーク、<code>vitest-pool-workers</code> によって、ローカルおよびオフラインで実行されます。これにより、ネットワーク接続に依存しない高速で信頼性の高い、安価なテストの実行が可能になります。</p>
+	<p>これらは、<code>cloudflare:test</code>モジュールを通して、<code>@cloudflare/vitest-pool-workers</code>バージョン<b>0.9.0</b>以上で利用可能です。この新しいテストモジュールでは、Workflowsを検査するための2つの主要な関数を提供します：</p>
+	<ul>
+		<li>
+			<p><code>introspectWorkflowInstance</code>：既知のインスタンスIDを使用したユニットテストに有用</p>
+		</li>
+		<li>
+			<p><code>introspectWorkflow</code>: IDが動的に生成されるのが通常の統合テストに有用です。</p>
+		</li>
+	</ul>
+	<p>実際の例を挙げながら説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-practical-example-testing-a-blog-moderation-workflow">実践的な例：ブログモデレーションワークフローのテスト</h3>
+		<a href="https://blog.cloudflare.com/#a-practical-example-testing-a-blog-moderation-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ブログをモデレートするためのシンプルなWorkflowを想像してみてください。ユーザーがコメントを送信すると、Workflowはworkers-aiにレビューを要求します。返された違反スコアに基づいて、モデレーターがコメントを承認または拒否するのを待ちます。承認されると、それは<code>step.do</code>を呼び出して外部API経由でコメントを公開します。</p>
+	<p>新しいAPIなしにこれをテストすることは不可能でしょう。ステップの結果をシミュレートし、モデレーターの承認をシミュレートする直接的な方法はありません。今、すべてをモッキングすることができます。</p>
+	<p>以下は、既知のインスタンスIDを持つ<code>introspectWorkflowInstance</code>を使用したテストコードです：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { env, introspectWorkflowInstance } from "cloudflare:test";
+
+it("should mock a an ambiguous score, approve comment and complete", async () =&gt; {
+   // CONFIG
+   await using instance = await introspectWorkflowInstance(
+       env.MODERATOR,
+       "my-workflow-instance-id-123"
+   );
+   await instance.modify(async (m) =&gt; {
+       await m.mockStepResult({ name: "AI content scan" }, { violationScore: 50 });
+       await m.mockEvent({ 
+           type: "moderation-approval", 
+           payload: { action: "approved" },
+       });
+       await m.mockStepResult({ name: "publish comment" }, { status: "published" });
+   });
+
+   await env.MODERATOR.create({ id: "my-workflow-instance-id-123" });
+   
+   // ASSERTIONS
+   expect(await instance.waitForStepResult({ name: "AI content scan" })).toEqual(
+       { violationScore: 50 }
+   );
+   expect(
+       await instance.waitForStepResult({ name: "publish comment" })
+   ).toEqual({ status: "published" });
+
+   await expect(instance.waitForStatus("complete")).resolves.not.toThrow();
+});</code></pre>
+	<p>このテストは、<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を呼び出す「AIコンテンツスキャン」や、外部のブログAPIを呼び出す「コメント公開」ステップなど、外部API呼び出しを必要とするステップの結果をモックします。</p>
+	<p>インスタンスIDが不明な場合は、ランダムに生成されたIDで1つまたは複数のWorkflowインスタンスを開始するworkerリクエストを作成しているため、<code>introspectWorkflow(env.MY_WORKFLOW)</code>を呼び出すことができます。以下は、そのシナリオのテストコードです。ここでは、Workflowインスタンスが1つだけ作成されています：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">it("workflow mock a non-violation score and be successful", async () =&gt; {
+   // CONFIG
+   await using introspector = await introspectWorkflow(env.MODERATOR);
+   await introspector.modifyAll(async (m) =&gt; {
+       await m.disableSleeps();
+       await m.mockStepResult({ name: "AI content scan" }, { violationScore: 0 });
+   });
+
+   await SELF.fetch(`https://mock-worker.local/moderate`);
+
+   const instances = introspector.get();
+   expect(instances.length).toBe(1);
+
+   // ASSERTIONS
+   const instance = instances[0];
+   expect(await instance.waitForStepResult({ name: "AI content scan"  })).toEqual({ violationScore: 0 });
+   await expect(instance.waitForStatus("complete")).resolves.not.toThrow();
+});</code></pre>
+	<p>どちらの例でも、<code>awaitを使って</code>イントロスペクターを呼び出していることに注目してください。これは、現代のJavaScriptの<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Resource_management#the_using_and_await_using_declarations" target="_blank" rel="noopener noreferrer"><u>明示的リソース管理構文</u></a>です。ここでは重要です。なぜなら、テストの終了時にイントロスペクターオブジェクトがスコープから外れると、その廃棄メソッドが自動的に呼び出されるからです。このようにして、各テストが独自の分離されたストレージで動作するようにしています。</p>
+	<p><code>変更全ての関数</code>は、インスタンスを制御するためのゲートウェイです。コールバックの中では、モダナイゼーションオブジェクトにアクセスすることができ、ステップ結果のモック化、イベント、スリープ無効化などの動作を注入することができます。</p>
+	<p>詳細なドキュメントは、<a href="https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#workflows" target="_blank" rel="noopener noreferrer"><u>Workers Cloudflare Docs</u></a>でご覧いただけます。</p>
+	<p><b>VitestをWorkflows Engineに接続した方法</b></p>
+	<p>ソリューションを理解するには、まずローカルアーキテクチャを理解する必要があります。<code>wrangler dev</code>を実行すると、WorkflowsはMiniflare（Cloudflare Workersテスト用のシミュレーター）と<code>workerd</code>によって作動します。実行中のワークフローインスタンスは、それぞれのSQLite Durable Objectによって支えられます。これを「Engine DO」と呼びます。このEngine DOは、ステップの実行、状態の永続化、インスタンスのライフサイクルの管理を担当します。ローカルの分離されたWorkersランタイム内に存在します。</p>
+	<p>一方、Vitest テストランナーは、<code>workerd</code> の外部に存在する別のNode.jsプロセスです。これが、vitest-pool-workersと呼ばれる<code>workerd</code>内でテストを実行できるVitestカスタムプールがある理由です。 Vitest-pool-workersにはRunner Workerがあり、ユーザーのwrangler.jsonファイルで指定されたすべてのものにバインディングしてテストを実行するworkerです。このworkerは、「cloudflare:test」モジュールの下でAPIsにアクセスできます。WebSocket/RPCを介したRunner Objectと呼ばれる特別なDOを介してNode.jsと通信します。</p>
+	<p>当社が考えた最初のアプローチは、テストランナーworkerを使うことでした。現在の状態では、Runner workerはwranglerファイル上で定義されたWorkflowsからWorkflowバインディングにアクセスすることができます。私たちは、Workflowの各Engine DOネームスペースをこのランナーworkerにバインドすることも検討しました。これにより、vitestpool-workersがEngine DOに直接アクセスできるようになり、Engineのメソッドを直接呼び出すことができるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ptKRqwpfvK1dxY6T5Kuin/fbf92915b2d2a95542bf6bec8addd5ad/image1.png" alt="" class="kg-image" width="1999" height="1039" loading="lazy">
+	</figure>
+	<p>有望ではありますが、このアプローチではMiniflareのコアとvitest-pool-workersに望ましくない変更が必要であり、この単一の機能にとってはプライバシーが侵害されすぎることになりました。</p>
+	<p>まず、MiniflareのDurable Objectsに新しい<i>unsafe</i>フィールドを追加する必要がありました。その唯一の目的は、当社のエンジンのサービス名を指定することで、Miniflareがデフォルトのユーザープレフィックスを適用することを防ぎ、さもなければ Durable Objects が見つからなくなるのを防ぐことです。</p>
+	<p>第二に、ビテストプールワーカーは、テストされていないものも含め、プロジェクト内のWorkflowsからすべてのエンジンDOをランサムウェアにバインドすることを強制されました。これにより、テスト環境に不要なバインディングが導入されることになり、ユーザーのテスト環境に公開されないようにするための追加のクリーンアップが必要になります。</p>
+	<p><b>ブレイクスルー</b></p>
+	<p>このソリューションは、特権付きローカル専用APIとリモートプロシージャコール（RPC）の組み合わせです。</p>
+	<p>まず、Workflowsバインディングの<i> ローカル</i> 実装に、本番環境では利用できない<code> 安全でない</code>関数のセットを追加しました。それらは、テスト環境からアクセスできる制御されたアクセスポイントとして機能し、テストランナーは、そのインスタンスIDを提供することで特定のエンジンDOのスタブリを取得することができます。</p>
+	<p>テストランナーがこのタブを取得すると、RPCを使用して、<code>WorkflowInstanceModifier</code>と呼ばれる特別な<code>RpcTarget</code>を介して、Engine DOで特定の信頼できるメソッドを呼び出します。<code>RpcTarget</code>を拡張するクラスは、オブジェクトをスタブに置き換えます。このスタブでメソッドを呼び出すと、RPCは元のオブジェクトに戻ります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AObAsJuBplii3aeqMw2bn/74b21880b09a293fef6f84de1ae1318e/image2.png" alt="" class="kg-image" width="1999" height="889" loading="lazy">
+	</figure>
+	<p>このシンプルなアプローチは、Workflows環境に限定されているため、侵害性ははるかに低く、将来的な機能変更も安全に分離することができます。</p>
+	<p><b>未知のIDを持つワークフローを省く</b></p>
+	<p>Workflowsインスタンスを作成するとき（<code>create()</code>または<code>createBatch()</code>）開発者は、特定のIDを提供するか、自動生成することができます。このIDはWorkflowインスタンスを識別し、関連するEngine DO IDを作成するために使用されます。</p>
+	<p>実装の論理的な開始点は、<code>introspectWorkflowInstance(binding, instanceID)</code>でした。インスタンスIDが事前にわかっているためです。これにより、Workflowインスタンスに関連付けられたエンジンを識別するために必要なエンジンDO IDを生成することができます。</p>
+	<p>しかし、多くの場合、アプリケーションの一部（HTTPエンドポイントなど）は、ランダムに生成されたIDでWorkflowインスタンスを作成します。インスタンスが作成されるまでIDがわからないのに、どのようにしてインスタンスを検査できるか？</p>
+	<p>その答えは、JavaScriptの強力な機能である<code>プロキシ</code>オブジェクトを使用することでした。</p>
+	<p><code>introspectWorkflow(バインディング)</code>を使用する場合、Workflowバインディングをプロキシにラップします。このプロキシは、バインディングへのすべての呼び出しを非破壊的に傍受します。具体的には、<code>.create()</code> を探します。<code>.createBatch()</code>に対応しています。テストがワークフローの作成をトリガーすると、プロキシはその呼び出しを検査します。インスタンスID（お客様が提供されたもの、またはランダムに生成したもの）をキャプチャし、そのIDにイントロスペクションをセットアップし、<code>modifyAll</code>呼び出しで定義したすべての変更を適用します。その後、オリジナルの作成呼び出しは通常通り続行されます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">env[workflow] = new Proxy(env[workflow], {
+  get(target, prop) {
+    if (prop === "create") {
+      return new Proxy(target.create, {
+        async apply(_fn, _this, [opts = {}]) {
+
+          // 1. Ensure an ID exists 
+          const optsWithId = "id" in opts ? opts : { id: crypto.randomUUID(), ...opts };
+
+          // 2. Apply test modifications before creation
+          await introspectAndModifyInstance(optsWithId.id);
+
+          // 3. Call the original 'create' method 
+          return target.create(optsWithId);
+        },
+      });
+    }
+
+    // Same logic for createBatch()
+  }
+}</code></pre>
+	<p><code>introspectWorkflow()</code>からのブロックを使用した<code>awaitが終了するか</code>、テストの終了時に<code>disposition()</code>メソッドが呼び出されると、イントロスペクターは処分され、プロキシは削除され、バインディングは元の状態のままとなります。開発者エクスペリエンスと長期的な保守性を優先する、影響の少ないアプローチです。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-with-testing-workflows">Workflowsのテストを開始する</h3>
+		<a href="https://blog.cloudflare.com/#get-started-with-testing-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsにテストを追加する準備はできましたか？利用開始の手順は次の通りです：</p>
+	<ol>
+		<li>
+			<p><b>依存関係の更新：</b><code>@cloudflare/vitest-pool-workers</code> バージョン<b>0.9.0</b>以上を使用していることを確認してください。プロジェクトで次のコマンドを実行します：<code>npm install @cloudflare/vitest-pool-workers@latest</code></p>
+		</li>
+		<li>
+			<p><b>テスト環境を構成：</b>Workersでテストするのが初めての方は、<a href="https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test" target="_blank" rel="noopener noreferrer"><u>当社のガイドに従って最初のテスト</u></a>を作成してください。</p>
+		</li>
+	</ol>
+	<p><b>テストの作成を開始：</b><code>cloudflare:test</code>から<code>introspectWorkflowInstance</code>または<code>introspectWorkflow</code>をインポートし、テストファイルにこの記事で示されるパターンを使用して、Workflowの動作をモック、コントロール、およびアサーションします。公式の<a href="https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#workflows" target="_blank" rel="noopener noreferrer"><u>APIリファレンス</u></a>も参照してください。</p>
+</div>

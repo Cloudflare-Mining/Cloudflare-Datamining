@@ -1,0 +1,89 @@
+<div class="mb2 gray5">Lecture&nbsp;: 3 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/access-and-gateway-with-scim">English</a>, en <a href="https://blog.cloudflare.com/de-de/access-and-gateway-with-scim">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/access-and-gateway-with-scim">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/access-and-gateway-with-scim">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/access-and-gateway-with-scim">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wzuMQufVST0qQ2DeqvfcN/f5a27d04ea69564425a5b63968b7d569/access-and-gateway-with-scim.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous sommes heureux d'annoncer aujourd'hui que les solutions Cloudflare Access et Gateway prennent désormais en charge le protocole System for Cross-domain Identity Management (SCIM, système de gestion des identités interdomaines). Avant de nous intéresser plus avant aux implications de cette prise en charge, marquons une pause pour revoir ensemble le protocole SCIM, ainsi que les solutions Cloudflare Access et Gateway.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y4UCjZkqF4azsX8qbM3tY/e879ee99b9444f02f87b1b9ba0af5995/image5-11.png" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt" target="_blank" rel="noopener noreferrer">Le protocole SCIM</a> permet aux entreprises de gérer les identités des utilisateurs et d'accéder aux ressources sur plusieurs systèmes et domaines. Il est souvent utilisé pour automatiser le processus de création, de mise à jour et de suppression des comptes et des autorisations utilisateur, ainsi que pour assurer la synchronisation de ces comptes et de ces autorisations sur différents systèmes.</p>
+	<p>La plupart des entreprises disposent par exemple d'un fournisseur d'identité, tel qu'Okta ou Azure Active Directory, qui stocke des informations sur ses collaborateurs, comme leur nom, leur adresse et l'intitulé de leur poste. De même, l'entreprise utilise probablement des applications cloud à des fins de collaboration. Afin d'accéder aux applications cloud, les collaborateurs doivent créer un compte et se connecter à l'aide d'un nom d'utilisateur et d'un mot de passe. Au lieu de créer et de gérer manuellement ces comptes, l'entreprise peut passer par le SCIM pour automatiser le processus. Le système sur site et l'application cloud sont tous deux configurés pour prendre en charge le SCIM.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lfFQAyAoj4oKdZhkqtyct/37735dd182557095960ce8aaaf57b307/Access-SCIM-integration.png" alt="" class="kg-image" width="1600" height="789" loading="lazy">
+
+	</figure>
+	<p>Lorsqu'un nouveau collaborateur est ajouté aux dossiers du fournisseur d'identité (ou supprimé de ces derniers), le protocole SCIM crée automatiquement un compte pour le collaborateur dans l'application cloud, à l'aide des informations provenant du système sur site. Si les informations d'un collaborateur sont mises à jour chez le fournisseur d'identité, comme lors d'un changement de poste, le SCIM actualise automatiquement les informations correspondantes dans l'application cloud. Si un collaborateur quitte l'entreprise, son compte est supprimé des deux systèmes via le SCIM.</p>
+	<p>Le protocole SCIM aide les entreprises à gérer efficacement les identités des utilisateurs et leurs accès sur plusieurs systèmes, afin de réduire le besoin d'intervention manuelle et de garantir l'exactitude et l'actualité des informations de l'utilisateur.</p>
+	<p>La solution Cloudflare Access assure un accès sécurisé à vos applications et à vos ressources internes. Elle s'intègre à votre fournisseur d'identité existant afin de mettre en place une authentification forte pour vos utilisateurs et de garantir que seuls les utilisateurs autorisés ont accès aux ressources de votre entreprise. Après l'authentification réussie d'un utilisateur via le fournisseur d'identité, Access lance une session pour cet utilisateur. Une fois la session expirée, Access redirige l'utilisateur vers le fournisseur d'identité.</p>
+	<p>En parallèle, la solution complète de passerelle web sécurisée (Secure Web Gateway, SWG) Cloudflare Gateway tire parti des mêmes configurations de fournisseur d'identité qu'Access afin de permettre aux administrateurs de concevoir des politiques d'inspection DNS, réseau et HTTP basées sur l'identité. Une fois qu'un utilisateur se connecte à l'aide du client WARP via le fournisseur d'identité, son identité est enregistrée et évaluée en fonction des éventuelles politiques créées par l'administrateur de son entreprise.</p>
+	<div class="flex anchor relative">
+		<h3 id="challenges-before-scim">Les défis avant le SCIM</h3>
+		<a href="https://blog.cloudflare.com/#challenges-before-scim" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant le SCIM, lorsqu'un utilisateur devait être déprovisionné (p. ex. s'il quittait l'entreprise, en raison d'une violation de la sécurité ou d'autres facteurs), un administrateur devait supprimer l'accès de ce dernier à la fois chez le fournisseur d'identité et dans Access. La raison en était que la session Cloudflare Zero Trust d'un utilisateur restait active jusqu'à ce qu'il tente de se connecter à nouveau via le fournisseur d'identité. Cette opération s'avérait chronophage et sujette aux erreurs. En outre, elle laissait de la place aux vulnérabilités de sécurité si l'accès d'un utilisateur n'était pas supprimé en temps opportun.</p>
+	<p>Un autre problème rencontré par Cloudflare Access et Gateway résidait dans le fait que les groupes définis chez le fournisseur d'identité devaient être saisis manuellement. De ce fait, si un groupe était modifié chez un fournisseur d'identité, un administrateur devait actualiser manuellement la valeur au sein du tableau de bord de Cloudflare Zero Trust afin de refléter la modification. Ce processus se montrait fastidieux chronophage et entraînait des incohérences si les mises à jour n'étaient pas effectuées promptement. De plus, une certaine expertise et des ressources supplémentaires étaient nécessaires pour gérer ce dernier de manière efficace.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gPO5LyeJTlK6wBCGaPvKe/51ad34a222b30ddc27ea0511819bbdd6/1_2x.png" alt="" class="kg-image" width="2000" height="784" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="scim-for-access-gateway">SCIM pour Access et Gateway</h3>
+		<a href="https://blog.cloudflare.com/#scim-for-access-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43e51HTYQXmgvlrnMXXECn/1790f7100e8a1f33319c55570ffbd3c5/pasted-image-0.png" alt="" class="kg-image" width="1158" height="533" loading="lazy">
+
+	</figure>
+	<p>Désormais, grâce à l'intégration du protocole SCIM, les solutions Access et Gateway peuvent déprovisionner automatiquement les utilisateurs après leur désactivation chez un fournisseur d'identité et synchroniser les groupes définis chez le fournisseur d'identité. Cette opération permet de garantir que seuls les utilisateurs actifs et figurant dans le groupe approprié peuvent accéder aux ressources de votre entreprise. La sécurité de votre réseau s'en trouve donc accrue.</p>
+	<p>Pour le déprovisionnement d'un utilisateur via le protocole SCIM, ce dernier reste à l'écoute des éventuels événements de désactivation d'utilisateur chez le fournisseur d'identité et révoque alors les sessions actives de cet utilisateur. Cette opération supprime immédiatement l'accès de l'utilisateur aux applications protégées par Access et à sa session ouverte via WARP pour Gateway.</p>
+	<p>En outre, l'intégration du protocole SCIM permet la synchronisation des informations relatives aux groupes définis chez le fournisseur d'identité dans les politiques d'Access et de Gateway. Cette fonctionnalité implique que tous les groupes définis chez le fournisseur d'identité sont automatiquement disponibles dans les générateurs de politiques d'Access et de Gateway. Une option permet également de forcer automatiquement un utilisateur à s'authentifier à nouveau s'il change de groupe.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1THRxHewCusYYYlA9ctsDj/3f05354ac1ee932106dd2ca8fe58b9d0/pasted-image-0--1-.png" alt="" class="kg-image" width="650" height="873" loading="lazy">
+
+	</figure>
+	<p>Par exemple, si vous souhaitiez créer une politique Access qui ne s'appliquait qu'aux utilisateurs aux adresses e-mail associées au domaine « exemple.com » et n'appartenant pas au groupe d'utilisateurs à risque, vous pourriez concevoir la politique comme décrit ci-dessous en sélectionnant simplement le groupe d'utilisateurs à risque dans un menu déroulant :</p>
+	<p>De manière similaire, si vous souhaitiez créer une politique Gateway afin de bloquer le domaine « exemple.com » et l'ensemble de ses sous-domaines pour les mêmes utilisateurs, vous pourriez concevoir la politique ci-dessous :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7d6q2DKIWv6psiD9iES762/dc03b70383e935e0198a9c3d70a2fd1b/pasted-image-0--2-.png" alt="" class="kg-image" width="1110" height="696" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Et maintenant ?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Kn8u1iqObCiaRzjs52Ii/53a43ddf65f96a894b83bc1e88524b74/pasted-image-0--3-.png" alt="" class="kg-image" width="1186" height="883" loading="lazy">
+
+	</figure>
+	<p>Pour le moment, la prise en charge du protocole SCIM est disponible chez Azure Active Directory et Okta pour les applications auto-hébergées. À l'avenir, nous prévoyons d'étendre cette prise en charge à d'autres fournisseurs d'identité, ainsi qu'à Access for SaaS.</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-now">Essayer maintenant</h3>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le protocole SCIM est désormais accessible à tous les clients Zero Trust. Il peut ainsi être utilisé pour améliorer les opérations et la sécurité en général. Essayez par vous-même le <a href="https://one.dash.cloudflare.com" target="_blank" rel="noopener noreferrer">SCIM pour Access et Gateway</a> dès aujourd'hui.</p>
+</div>

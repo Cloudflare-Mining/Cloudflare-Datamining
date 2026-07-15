@@ -1,0 +1,187 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/aspa-secure-internet">English</a>、<a href="https://blog.cloudflare.com/zh-tw/aspa-secure-internet">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/aspa-secure-internet">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/aspa-secure-internet">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzMhLvkCbegyTQUNorwM6/1a5818020a0f7b0e069cea1326fd58b9/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>インターネットトラフィックは、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>ボーダーゲートウェイプロトコル（BGP）</u></a>に依存して、ネットワーク間の転送先を見つけます。ただし、このトラフィックは、設定エラーや悪意のあるアクションによって誤った誘導を受けることがあります。トラフィックが通過するよう意図していないネットワークを通過することは、<a href="https://datatracker.ietf.org/doc/html/rfc7908" target="_blank" rel="noopener noreferrer"><u>ルートリーク</u></a>と呼ばれます。私たちは、<a href="https://blog.cloudflare.com/bgp-route-leak-venezuela"><u>ブログで</u></a>、<a href="https://blog.cloudflare.com/cloudflare-1111-incident-on-june-27-2024"><u>複数回</u></a>にわたり、<a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar"><u>BGPルートリーク</u></a>とそれがインターネットルーティングに与える影響について書いてきました。また、BGPにおけるパス検証の未来について示唆したことも何度かあります。</p>
+	<p>ネットワークコミュニティは、インターネットトラフィックの最終的な目的地を検証する点で大幅な進歩を遂げましたが、そこに到達するまでの実際の経路の安全性を確保することは、信頼性の高いインターネットを維持するための重要な課題となっています。これに対処するため、業界は、ネットワークトラフィックの経路全体を検証し、経路リークを防ぐように設計された<a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification" target="_blank" rel="noopener noreferrer"><u>ASPA（Autonomous System Provider Authorization）</u></a>と呼ばれる新しい暗号標準を採用しています。</p>
+	<p>コミュニティがこの規格の展開を追跡できるように、Cloudflare Radarは新しいASPA導入監視機能を導入しました。このビューでは、5つの<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u>地域インターネットレジストリ（RIR）</u></a>全体で、ASPA採用状況を時系列で観察し、<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>自律システム（AS）</u></a>レベルでのASPAレコードや変化を時系列で見ることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-aspa">ASPAとは？</h2>
+		<a href="https://blog.cloudflare.com/#what-is-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPAの仕組みを理解するには、現在インターネットがトラフィックの宛先をどのように保護しているかを調べると良いでしょう。</p>
+	<p>現在、ネットワークは <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure" target="_blank" rel="noopener noreferrer"><u>RPKI（リソースパブリック鍵インフラストラクチャ）</u></a> と呼ばれるセキュアなインフラストラクチャシステムを使用しており、ここ数年で <a href="https://blog.apnic.net/2026/02/20/rpkis-2025-year-in-review" target="_blank" rel="noopener noreferrer"><u>導入が大幅に増えています</u></a>。RPKIでは、ネットワークはROA（Route Origin Authorization）と呼ばれる特定の暗号レコードを発行します。ROAは検証可能なデジタルIDカードとして機能し、自律システム（AS）が特定のIPアドレスを広報することを正式に許可されていることを確認します。これは、あるネットワークが別のネットワークになりすます「オリジンハイジャック」の問題に対処するものです。</p>
+	<p><a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification" target="_blank" rel="noopener noreferrer"><u>ASPA（自律システムプロバイダー認証）</u></a>は、この基盤上に直接構築されています。ROAが<i>目的地</i>を確認するのに対し、ASPAレコードはその<i>道のり</i>を検証します。</p>
+	<p>データがインターネット上を移動する際、通過するすべてのネットワークの実行ログを保持します。BGPでは、このログは<a href="https://datatracker.ietf.org/doc/html/rfc4271#section-5.1.2" target="_blank" rel="noopener noreferrer"><u><code>AS_PATH</code></u></a>（自律システムパス）として知られています。ASPAは、ネットワークがRPKIシステム内で認定されたアップストリームプロバイダーのリストを公式に公開する方法を提供します。これにより、受信ネットワークは<code>AS_PATH</code>を見て、関連するASPAレコードをチェックし、トラフィックが承認されたネットワークチェーンを通過したことを確認できます。</p>
+	<p>ROAはトラフィックが正しい目的地に到着することを保証し、ASPAはトラフィックがそこに到達するために意図した許可されたルートを通ることを保証します。経路評価が実際にどのように機能するかを見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="route-leak-detection-with-aspa">ASPAによるルートリーク検出</h2>
+		<a href="https://blog.cloudflare.com/#route-leak-detection-with-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPAは、ルートが<i>迂回</i>であるかどうかをどのように認識するのでしょうか？インターネットの階層に依存しています。</p>
+	<p>健全なインターネットルーティングトポロジー（<a href="https://ieeexplore.ieee.org/document/6363987" target="_blank" rel="noopener noreferrer"><u>“valley-free” ルーティング</u></a>), 通常、トラフィックは特定の経路をたどります。顧客から大規模プロバイダー（大手インターネットサービスプロバイダーなど）まで「上」に移動し、必要に応じて別の大手プロバイダーにまたがり、送信先が制限されています。これは「山」の形として視覚化できます。</p>
+	<ol>
+		<li>
+			<p><b>アップランプ：</b>トラフィックは、顧客から始まり、より大規模なプロバイダー（ISP）を経由して「上」に移動します。そこで、ISPは他のISPにトラフィックをトランジットしてもらうための支払いを行います。</p>
+		</li>
+		<li>
+			<p><b>The Apex:</b> インターネットバックボーンの最上位層に到達し、単一のピアリングリンクを通過する場合があります。</p>
+		</li>
+	</ol>
+	<p><b>ダウンランプ：</b>これは、プロバイダーを経由して「下」に移動して、目的地であるお客様に到達します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VGuSHfq6GcQZUYLGmoDH3/a1486f40c16e568f32ca2fa81d58ac41/1.png" alt="" class="kg-image" width="1540" height="636" loading="lazy">
+	</figure>
+	<p><i><sup>「バレーフリー」ルーティングを視覚化する。ルートはプロバイダーにまで伝播し、必要に応じて1つのピアリングリンクを経由して顧客に伝播します。</sup></i></p>
+	<p>このモデルでは、ルートリークはバレーまたは最初の急激な上昇のようなものです。こうしたリークの1つは、トラフィックが顧客に流れ込み、その後、予期せず別のプロバイダーに<i>戻ろうとする</i>場合です。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eoaEpdIJpCCLbMnNZD5ob/7ceca2a98f2252e8161915b942bf7dbd/2.png" alt="" class="kg-image" width="1548" height="706" loading="lazy">
+	</figure>
+	<p>お客様は、2つの大規模ネットワークプロバイダー間でトラフィックをトランジットすることを意図しておらず、備えることもできないため、このような「ダウンアンドアップ」の動きは望ましくないものです。</p>
+	<div class="flex anchor relative">
+		<h4 id="how-aspa-validation-works">ASPA検証の仕組み</h4>
+		<a href="https://blog.cloudflare.com/#how-aspa-validation-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPAは、ネットワークオペレーターが暗号化された方法で<i>認定プロバイダー</i>を宣言できるようにし、受信ネットワークがASパスがこの期待される構造に従っていることを確認できるようにします。</p>
+	<p>ASPAは、ルート伝播の両端から「関係の連鎖」をチェックすることで、ASパスを検証します。</p>
+	<ul>
+		<li>
+			<p><b>アップランプのチェック：</b>チェックはオリジンから始まり、前進します。すべてのホップで、<i>"このネットワークは次のネットワークをプロバイダーとして承認したか？"</i> と尋ねます。連鎖が停止するまで続きます。</p>
+		</li>
+		<li>
+			<p><b>ダウンランプの確認：</b>BGPアップデートの送信先から逆方向に移動することで、同じことを行います。</p>
+		</li>
+	</ul>
+	<p>「Up」パスと「Down」パスが重複しているか、上部で交差する場合、そのルートは<b>有効</b>です。山型はそのまま。</p>
+	<p>しかし、2つの有効なパスが<b>一致しない</b>場合、つまり中央に承認が行われていない、または無効なギャップがある場合は、ASPAはこうしたパスに問題があると報告します。このギャップは、「バレー」またはリークを表します。</p>
+	<div class="flex anchor relative">
+		<h4 id="validation-process-example">検証プロセスの例</h4>
+		<a href="https://blog.cloudflare.com/#validation-process-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワーク（AS65539）が顧客（AS65538）から不正なルートを受信したシナリオを見てみましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kn8W6c7CaPcMLMycjS5NO/59036dc52a942870e9bb0e377f235dd4/3.png" alt="" class="kg-image" width="1122" height="890" loading="lazy">
+	</figure>
+	<p>お客様（AS65538）は、あるプロバイダー（AS65537）から受信したトラフィックを別のプロバイダー（AS65539）に「アップ」送信しようとしており、プロバイダー間のブリッジのように機能します。これは<a href="https://datatracker.ietf.org/doc/html/rfc7908#autoid-4" target="_blank" rel="noopener noreferrer"><u>典型的なルートリーク</u></a>です。次は、ASPAの検証プロセスについて説明します。</p>
+	<ol>
+		<li>
+			<p><b>Up-Ramp</b> をチェックします。元のソース (AS65536) がプロバイダーを承認します。（合格をチェック）。</p>
+		</li>
+		<li>
+			<p><b>Down-Ramp</b>をチェックします。目的地から始まって振り返ります。お客様（AS65538）が表示されています。</p>
+		</li>
+		<li>
+			<p><b>不一致：</b>アップランプはAS65537で終了し、ダウンランプは65538で終了します。2つのランプは接続されません。</p>
+		</li>
+	</ol>
+	<p>「上」パスと「下」パスが接続できないため、システムはこれをASPA <b>無効</b>としてフラグを立てます。RPKIに署名されたASPAオブジェクトがないと、どのネットワークがどのプレフィックスを誰にアドバタイズすることを許可されているかを見つけることができないため、このパスの検証を行うためにASPAが必要となります。各ASのプロバイダーネットワークのリストに署名することで、どのネットワークがラテラルまたはアップストリームにプレフィックスを伝播できるかを把握できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="aspa-against-forged-origin-hijacks">偽造されたオリジンハイジャックに対するASPA</h3>
+		<a href="https://blog.cloudflare.com/#aspa-against-forged-origin-hijacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPAは、攻撃者が実際のオリジンプレフィックスへのBGPパスを装ってアドバタイズすることにより、Route Origin Validation（ROV）をバイパスする<a href="https://www.usenix.org/conference/nsdi24/presentation/holterbach" target="_blank" rel="noopener noreferrer"><u>偽造オリジンハイジャック</u></a>に対する効果的な防御として機能します。オリジンASは正しいままですが、ハイジャッカーと被害者の関係は捏造されています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MNVRoNDzxlHDVGTP2nRPw/87485ad246baa734eef3192fd48012a8/4.png" alt="" class="kg-image" width="1402" height="862" loading="lazy">
+	</figure>
+	<p>ASPAは、被害者のネットワークが実際の認定プロバイダーを暗号的に宣言できるようにすることで、この欺瞞性を公開します。ハイジャッカーが許可リストに載っていないため、パスは無効として拒否され、悪意のあるリダイレクトを効果的に阻止します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KGtsKWBdlNFySIswRb5rD/d26b266c2dc942be9b9f6c6ec383843b/5.png" alt="" class="kg-image" width="1159" height="862" loading="lazy">
+	</figure>
+	<p>ただし、ASPAは偽造されたオリジンハイジャックから完全に保護することはできません。ASPAの検証であっても、ネットワーク上のこの種の攻撃を完全に防ぐことができないケースが少なくとも1つあります。ASPAが説明できない偽造オリジンハイジャックの例としては、プロバイダーが<i>顧客への</i>パスアドバタイズを偽造する場合があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DPYEXwSUPmWUWvsyxFJHX/b059dae85cf764fdcd5a5257f5ebc373/6.png" alt="" class="kg-image" width="1999" height="1795" loading="lazy">
+	</figure>
+	<p>基本的に、プロバイダーは、別のASとのピアリングリンクを「偽造」して、そのようなピアリングリンクが存在しない場合でも、AS_PATHの長さが短い顧客からのトラフィックを引き付けることができるのです。ASPAはプロバイダー情報に対してのみ機能し、ピアリング関係については何も知らないため、プロバイダーによるこのパス偽造を防ぐことはできません。</p>
+	<p>そのため、ASPAは偽造されたオリジンハイジャックルートを拒否する効果的な手段となり得ますが、それでも効果がない稀なケースも存在し、それらについては注目に値します。</p>
+	<div class="flex anchor relative">
+		<h2 id="creating-aspa-objects-just-a-few-clicks-away">ASPAオブジェクトの作成：わずか数クリック</h2>
+		<a href="https://blog.cloudflare.com/#creating-aspa-objects-just-a-few-clicks-away" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワーク（または自律システム）のASPAオブジェクトの作成は、現在、<a href="https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security" target="_blank" rel="noopener noreferrer"><u>RIPE</u></a>や<a href="https://www.arin.net/announcements/20260120" target="_blank" rel="noopener noreferrer"><u>ARIN</u></a>などのレジストリで簡単なプロセスになっています。必要なのは、AS番号とインターネット中継サービスを購入するプロバイダーのAS番号だけです。これらは、IPアドレスをインターネット全体に公開することを許可された、信頼できるアップストリームネットワークです。逆に、これらはインターネットの他の部分への到達方法を示す完全なマップとして機能する、完全なルーティングテーブルの送信を許可したネットワークでもあります。</p>
+	<p>簡単な例を挙げながら、ASPAオブジェクトの作成がいかに簡単かをご紹介します。</p>
+	<p>例えば、Cloudflareロンドンオフィスインターネットに使用するASであるAS203898のASPAオブジェクトを作成する必要があるとします。この記事の執筆時点で、当社ではAS8220、AS2860、AS1273の3つのインターネットプロバイダーを利用しています。つまり、これら3つのプロバイダーメンバーをリストに追加して、AS203898のASPAオブジェクトを作成することになります。</p>
+	<p>まず、RIPE <a href="https://dashboard.rpki.ripe.net/#overview" target="_blank" rel="noopener noreferrer"><u>RPKIダッシュボード</u></a>にログインし、<a href="https://dashboard.rpki.ripe.net/#aspa" target="_blank" rel="noopener noreferrer"><u>ASPA</u></a>セクションに移動します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CCFItZpP8JbYCotDGfuM3/c7ad0041ceea4f48c37ff59f416f8242/7.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>次に、ASPAオブジェクトを作成したいオブジェクトの「Create ASPA」をクリックします。そこから、そのASのプロバイダーを記入するだけです。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ABmfhRQQRbLhMat6Ug01K/3a9d73ad8ade315416c4cc6eb9073ada/8.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>非常にシンプルです。少し待つと、グローバルRPKIエコシステムにクエリが実行され、定義したプロバイダーを持つAS203898のASPAオブジェクトを見つけることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xAKD1b704fg7SMxeg867P/59ce564867565331e2d531de15dc7e87/Screenshot_2026-02-27_at_11.09.55.png" alt="" class="kg-image" width="1666" height="304" loading="lazy">
+	</figure>
+	<p>これは、現在ASPAオブジェクトの作成をサポートしている唯一の<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u>Regional Internet Registry（RIR）</u></a>である<a href="https://www.arin.net" target="_blank" rel="noopener noreferrer"><u>ARIN</u></a>にとっても同様の状況が見られます。<a href="https://account.arin.net/public/login" target="_blank" rel="noopener noreferrer"><u>ARINオンライン</u></a>にログインし、ルーティングセキュリティに移動して「RPKIの管理」をクリックします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PTCdyldcTc1Uc0iazZlg4/51ed97a8ef0d095b947f7ab2bf4b1fd3/9.png" alt="" class="kg-image" width="1966" height="748" loading="lazy">
+	</figure>
+	<p>そこから、「ASPAを作成」をクリックします。この例では、別のASNであるAS400095のオブジェクトを作成します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bLLHAeU4Eaz6RPgSPDzn9/a482b6c7ed4ef78f7346ca80c9a5ba46/10.png" alt="" class="kg-image" width="1928" height="900" loading="lazy">
+	</figure>
+	<p>これで、以上です。これで、プロバイダーAS0を使用して、AS40095のASPAオブジェクトを作成しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9yOZPpMH4olQXu2DNpJPO/cca432fd82e61c6492987b7ccedbdc57/11.png" alt="" class="kg-image" width="1966" height="972" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6emDXxMbU0BSKk5BVXUdJ6/132b9a7279b93e3ae0329dec83a9bfac/Screenshot_2026-02-27_at_11.11.31.png" alt="" class="kg-image" width="1676" height="296" loading="lazy">
+	</figure>
+	<p>「AS0」プロバイダーエントリは使用される場合が特別で、AS所有者が自分のネットワークに有効なアップストリームプロバイダーが存在し<b>ない</b>ことを証明することを意味します。定義上、トランジットのないTier-1ネットワークは、実際にピアと顧客の関係だけを持つ場合、最終的にオブジェクトに「AS0」だけでASPAに署名する必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="new-aspa-features-in-cloudflare-radar">Cloudflare Radarの新しいASPA機能</h2>
+		<a href="https://blog.cloudflare.com/#new-aspa-features-in-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>に新しいASPAデプロイメント監視機能を追加しました。新しいASPA展開ビューでは、ASPA導入の増加を経時的に検証することができ、AS登録に基づく5つの<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u>Regional Internet Registries</u></a>（RIRs）全体の傾向を可視化することができます。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FoW86CVloqBqZO7wcOiq8/f5f2973db227b8184127f76fdad64dc4/12.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>また、ASPAデータを国/地域と自律システム番号ルーティングページに直接統合しました。ユーザーは、ローカルに登録されたお客様のASNから関連するASPAレコードに基づいて、さまざまな場所でインフラストラクチャのセキュリティ対策がどのように進められているかを追跡できるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tBhOpIxc6tNOJXWPPAk4U/7c334c9ddb089eb823ce23eb49ddbdc3/13.png" alt="" class="kg-image" width="1848" height="1456" loading="lazy">
+	</figure>
+	<p>また、<a href="https://radar.cloudflare.com/routing/AS203898#connectivity" target="_blank" rel="noopener noreferrer"><u>AS203898</u></a>など、特定の自律システム（AS）にズームインすると新しい機能も得られます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nTBPD0PgzPOS0eOxpG3rW/65d9b312be2e81e4c59164c98b7b6276/14.png" alt="" class="kg-image" width="1999" height="837" loading="lazy">
+	</figure>
+	<p>ネットワークの観測されたBGPアップストリームプロバイダーがASPA認証されているかどうか、ASPAオブジェクト内のプロバイダーの全リスト、ASに関連するASPA変更のタイムラインを確認できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-road-to-better-routing-security">ルーティングセキュリティ実現への道</h2>
+		<a href="https://blog.cloudflare.com/#the-road-to-better-routing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ついに、ASPAが実現し、インターネットパス検証のための暗号化アップグレードがあります。しかし、ルートオリジン検証のためにRPKIの開始当初から関わってきた人々は、インターネット上で実際に大きな価値を提供するまでには<a href="https://manrs.org/2023/05/estimating-the-timeline-for-aspa-deployment" target="_blank" rel="noopener noreferrer"><u>長い道のりになる</u></a>ことを知っています。実際にASPAオブジェクトを使用してパスを検証するには、RPKI Relaying Party（RP）パッケージ、署名者実装、RTR（RPKI-to-Router protocol）ソフトウェア、BGP実装に変更が必要です。</p>
+	<p>ASPAの採用に加えて、運用者は<a href="https://datatracker.ietf.org/doc/rfc9234" target="_blank" rel="noopener noreferrer"><u>RFC9234</u></a>に記載されているように、BGPロールも設定する必要があります。BGPセッションに設定されるBGPロールは、将来的にルーターにASPAを実装する際に、<i>上流</i>または<i>下流</i>の<a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-24#section-6.3" target="_blank" rel="noopener noreferrer"><u>どのアルゴリズムを適用するかを決定する</u></a>のに役立ちます。つまり、BGPロールは、オペレータとして、他のASとの意図したBGP関係をこれらの近隣のASとのセッションに直接結びつける能力を与えます。ルーティングベンダーに確認して、<a href="https://datatracker.ietf.org/doc/rfc9234" target="_blank" rel="noopener noreferrer"><u>RFC9234 BGPロールとOTC</u></a>（Only-to-Customer）属性の実装をサポートしていることを確認してください。</p>
+	<p>ASPAを最大限に活用するために、すべてのお客様が各自のAS用にASPAオブジェクトを作成することをお勧めします<i>。</i>これらのASPAオブジェクトの作成と保守には、細心の注意を払う必要があります。将来的に、ネットワークはこれらのレコードを使用して無効なパスを積極的にブロックするため、正当なプロバイダーを省略すると、トラフィックがドロップされる可能性があります。しかし、このリスクの管理は、現在ネットワークがすでにルートオリジン認証（ROA）を処理している方法と異なるものはありません。ASPAは、インターネットパスの検証に必要な暗号化のアップグレードであり、ここに移行したことをうれしく思います。</p>
+</div>

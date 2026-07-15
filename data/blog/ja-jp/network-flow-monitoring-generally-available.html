@@ -1,0 +1,140 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/network-flow-monitoring-generally-available">English</a>、<a href="https://blog.cloudflare.com/zh-tw/network-flow-monitoring-generally-available">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/network-flow-monitoring-generally-available">Français</a>、<a href="https://blog.cloudflare.com/de-de/network-flow-monitoring-generally-available">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/network-flow-monitoring-generally-available">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/network-flow-monitoring-generally-available">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FOGDWd22lmLfWBySaez56/4ea20b7865a0eaff8f760821819e04b2/network-flow-monitoring-generally-available.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>ネットワークエンジニアは、DDoS攻撃の分析やその他のトラフィックの異常をトラブルシューティングする際に、ネットワークのトラフィックや運用をより適切に可視化する必要性に気づくことがよくあります。このようなエンジニアは通常、ネットワークトラフィックに関する高度なメトリックを持っていますが、問題を明確にする特定のトラフィックフローに関する重要な情報を収集するのに苦労しています。この問題を解決するために、Cloudflareは、<a href="https://www.cloudflare.com/network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer">Magic Network Monitoring</a>と呼ばれるクラウドネットワークフロー監視製品を試験的に実施しており、お客様はネットワーク全体のすべてのトラフィックをエンドツーエンドで可視化できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EZamNYbSPCC1yBqXXwaZR/d3e36168073dcc8f08b715ab7d4bbe5e/image4-4.png" alt="Network flow monitoring is GA, providing end-to-end traffic visibility" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>本日、CloudflareはMagic Network Monitoring（旧<a href="https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit">Flow Based Monitoring</a>）をすべての企業のお客様に一般提供することを発表でき、嬉しく思います。過去1年間にわたって、CloudflareのエンジニアリングチームはMagic Network Monitoringを大幅に改善しました。当社は、お客様が脅威をより迅速に特定し、脆弱性を軽減し、ネットワークをより安全にするのに役立つネットワークサービス製品を提供できることを嬉しく思っています。</p>
+	<p>Magic Network Monitoringは、Magic TransitおよびMagic WANの企業のお客様に対し、自動的に有効になります。この製品はCloudflareダッシュボードのアカウントレベルにあり、「分析とログ&gt; Magic Monitoring」に移動して開くことができます。Magic Network Monitoringのオンボーディングプロセスはセルフサービスで、アクセス権を持つすべての企業のお客様は本日より、製品の設定を開始できます。</p>
+	<p>Magic TransitまたはMagic WANをお持ちでない企業のお客様で、Magic Network Monitoringの試用に関心をお持ちのお客様は、Cloudflareのアカウントチームにリクエストを送信するか、こちらのフォームに記入して<a href="http://network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer">専門家に相談する</a>ことで、無料版（トラフィック量に多少の<a href="https://developers.cloudflare.com/magic-network-monitoring/magic-network-monitoring-free" target="_blank" rel="noopener noreferrer">制限</a>があります）にアクセスできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-magic-network-monitoring">Magic Network Monitoringとは？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-magic-network-monitoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Magic Network Monitoringはクラウドネットワークフロー監視です。<a href="https://en.wikipedia.org/wiki/Traffic_flow_(computer_networking)" target="_blank" rel="noopener noreferrer">ネットワークトラフィックフロー</a>とは、同じインターネットプロトコルとポートのセットを持つ、1つのソースと1つの宛先間のパケットストリームを指します。お客様は、トラフィックがもともとCloudflareのネットワークを通過していなくても、ルーター（またはその他のネットワークフロージェネレーター）から<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Cloudflareのエニーキャストネットワーク</a>上の一般に利用可能なエンドポイントにネットワークフローレポートを送信できます。Cloudflareはネットワークフローデータを分析し、分析ダッシュボードを介して主要なネットワークトラフィックメトリックをお客様に可視化します。これらのメトリクスには、経時的なトラフィック量（ビットまたはパケット単位）、送信元IP、宛先IP、ポート、トラフィックプロトコルおよびルーターIPが含まれます。また、お客様は<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS攻撃</a>やその他の異常なトラフィック量のアクティビティを識別するようにアラートを設定できます。</p>
+	<p>お客様のネットワークからCloudflareにフローデータを送信し、分析を行います</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CrObnYrLzKlSOjSUS8dH6/c59b39388b98ba4e7492121d5db3bacf/1-1.png" alt="" class="kg-image" width="1435" height="802" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="enterprise-ddos-attack-type-detection">企業のDDoS攻撃タイプの検出</h3>
+		<a href="https://blog.cloudflare.com/#enterprise-ddos-attack-type-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/magic-transit/on-demand" target="_blank" rel="noopener noreferrer">Magic Transit On Demand</a>（MTOD）のお客様は、Magic Network Monitoringを使用することで、トラフィックの可視性が大幅に向上します。<a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>は、オンプレミス、クラウドホスト、ハイブリッドネットワーク向けに、すべてのCloudflareデータセンターからDDoS攻撃対策およびトラフィックの高速化を提供するネットワークセキュリティソリューションです。Magic Transit On Demandのお客様は、DDoS攻撃が検出されたときにMagic Transitを有効にして保護できます。</p>
+	<p>一般的に、一部のMTODのお客様は、DDoS攻撃を迅速に識別し、適切な軽減措置を講じるためのネットワーク可視化ツールが不足していることがわかりました。現在、MTODのお客様はMagic Network Monitoringを使用してネットワークデータを分析し、DDoS攻撃が検出された場合にアラートを受信できます。</p>
+	<p>Cloudflareはお客様のネットワークフローデータからDDoS攻撃を検出します</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HcgWfT995D5YTtTjI7t0x/8f5265dc6c920df9aa4de7db814bfc71/2-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+
+	</figure>
+	<p>一度DDoS攻撃が検出されると、Magic Network Monitoringのお客様は、DDoS攻撃を軽減するために手動または自動のいずれかを選択し、Magic Transitを有効にすることができます。</p>
+	<p>DDoS攻撃対策のためにMagic Transitを有効にする</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FlxXObNPK0L8lx2sN0S6S/8a47e805c9ec45f41c1f9d3bf6d84a33/3-1.png" alt="" class="kg-image" width="1436" height="761" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="enterprise-network-monitoring">企業のネットワーク監視</h3>
+		<a href="https://blog.cloudflare.com/#enterprise-network-monitoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのMagic WANおよびCloudflare Oneのお客様もMagic Network Monitoringを使用することで利益が得られます。今日、これらのお客様はCloudflareのネットワークを介して送信されるトラフィックに対し、優れた可視性を有していますが、時には、Cloudflareを介して送信されないトラフィックは、可視性に欠けている場合があります。これにはローカルネットワーク上に残るトラフィックや、クラウド環境間で送信されるネットワークトラフィックが含まれます。Magic WANとCloudflare Oneのお客様は、Magic Network Monitoringを自社の一連の製品ソリューションに追加することで、ネットワーク上のすべてのトラフィックにわたり、エンドツーエンドのネットワークの可視性を確立できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-deep-dive-into-network-flow-and-network-traffic-sampling">ネットワークフローおよびネットワークトラフィックのサンプリングを深掘りします</h3>
+		<a href="https://blog.cloudflare.com/#a-deep-dive-into-network-flow-and-network-traffic-sampling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Magic Network Monitoringは、ネットワークフローデータを取り込み分析することで、ネットワークトラフィックの可視性がより向上します。</p>
+	<p>このプロセスは、ルーター（またはその他のネットワークフロー生成デバイス）がインバウンドおよび/またはアウトバウンドのパケットデータの<a href="https://en.wikipedia.org/wiki/Sampling_(statistics)" target="_blank" rel="noopener noreferrer">統計サンプルを</a>収集するときに開始されます。これらのサンプルは、X個のパケットごとに1個を検査して収集され、Xはルーターで設定されたサンプリングレートです。一般的なサンプリングレートは、1,000パケットごとに1から4,000パケットごとに1の範囲です。理想的なサンプリングレートは、トラフィック量、トラフィックの多様性、ルーターのハードウェアの計算能力/メモリ能力よって異なります。<a href="https://developers.cloudflare.com/magic-network-monitoring/routers/recommended-sampling-rate" target="_blank" rel="noopener noreferrer">推奨されるネットワークフローサンプリングレート</a>の詳細については、CloudflareのMNM開発者ドキュメントを参照してください。</p>
+	<p>サンプリングされたデータは、ネットワークフローデータの2つの業界標準形式（NetFlowまたはsFlow）のいずれかにパッケージ化されます。NetFlowでは、サンプリングされたパケットデータは、送信元IPまたは宛先IP、ポート、プロトコルなどのさまざまなパケットの特性によってグループ化されます。サンプリングされたパケットデータの各グループには、トラフィック量の推定値も含まれます。sFlowでは、パケットヘッダ全体が代表サンプルとして選択され、データの要約は行われません。その結果、sFlowは、より豊富なデータ形式であり、NetFlowデータよりもネットワークトラフィックに関する詳細が含まれています。NetFlowまたはsFlowデータサンプルのいずれかが収集されると、分析とアラートのためにMagic Network Monitoringに送信されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-simple-random-sampling-didnt-work-for-magic-network-monitoring">単純な無作為サンプリングがMagic Network Monitoringで機能しなかった理由</h3>
+		<a href="https://blog.cloudflare.com/#why-simple-random-sampling-didnt-work-for-magic-network-monitoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XoUWHVTlsaVD6wYjekYm6/951cff39344b3912444f239618af64c6/4-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
+
+	</figure>
+	<p>Magic Network Monitoringは1年前の早期アクセスリリースから大きな進歩を遂げてきました。特に、Cloudflareのエンジニアリングチームは、MNMのトラフィック量の推定精度向上に多大な時間を投資しました。Magic Network Monitoringの早期アクセス版では、ネットワークトラフィック量の推定値が高すぎて、期待値と一致していないとお客様から予期していなかった報告がありました。</p>
+	<p>Magic Network Monitoringは、受信したNetFlowまたはsFlowデータを独自にサンプリングするため、Cloudflare のグローバルネットワーク全体で取り込まれたデータを効果的に拡張および管理できます。MNMによって解析されたNetFlowまたはsFlowデータはすでにサンプリングされたパケットデータに基づいて構築されているため、トラフィック量の推定精度を高めることは予想以上にはるかに困難でした。これにより、製品の分析では、データサンプリングに複数の異なるレイヤーが導入されます。</p>
+	<p>Magic Network Monitoringの最初のバージョンでは、同じタイムスタンプを持つネットワークフローデータのランダムなサブセットを選択して、その時点のトラフィック量を表す<a href="https://en.wikipedia.org/wiki/Simple_random_sample" target="_blank" rel="noopener noreferrer">ランダムサンプリング</a>を使用していました。ネットワークフローデータの特徴として、いくつかのサンプルはその他のサンプルよりも重要であり、ネットワークトラフィックが大量であることです。この重要性を説明するために、<a href="https://en.wikipedia.org/wiki/Weighting" target="_blank" rel="noopener noreferrer">重み付け</a>を各サンプルに関連付けることができます。これは、サンプルが表すトラフィック量に基づいています。ネットワークフローデータの重み付けは常に正の数であり、<a href="https://en.wikipedia.org/wiki/Long_tail" target="_blank" rel="noopener noreferrer">ロングテール分布</a>に従います。このようなデータ特性により、MNMのランダムサンプリングが顧客のネットワークのトラフィック量を誤って推定してしまいました。ロングテールからの外れたデータサンプルがその時点ですべてのトラフィックの代表としてランダムに選択された場合、お客様は、トラフィック量の分析で誤ったスパイクが表示されることがあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="increasing-accuracy-with-varopt-reservoir-sampling">VarOptリザーバーサンプリングで精度を向上</h3>
+		<a href="https://blog.cloudflare.com/#increasing-accuracy-with-varopt-reservoir-sampling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Tje0Xn9GucCoNamBEyvVE/0d097130617a1c6584efa8679f91c87a/5-1.png" alt="" class="kg-image" width="1600" height="400" loading="lazy">
+
+	</figure>
+	<p>この問題を解決するために、Cloudflareエンジニアリングチームは、<a href="https://arxiv.org/pdf/0803.0473.pdf" target="_blank" rel="noopener noreferrer">VarOp</a>と呼ばれる代替の<a href="https://en.wikipedia.org/wiki/Reservoir_sampling" target="_blank" rel="noopener noreferrer">貯留層サンプリング</a>技術を実装しました。VarOptは、データストリームの長さが不明な場合にデータストリームからサンプルを収集するように設計されています（受信ネットワークフローデータを分析するのに最適なアプリケーション）。MNMのVarOptの実装では、ネットワークフローデータのサンプルで満たされた固定サイズの空のリザーバーから開始します。リザーバーがいっぱいで、新しい受信ネットワークフローデータがまだある場合、古いサンプルがリザーバーからランダムに破棄され、新しいサンプルと置き換えられます。一定数のサンプルが観察された後、リザーバー内のすべての加重サンプルにわたるトラフィック量を計算します。これが、その時点での顧客のネットワークフローの推定トラフィック量となります。最後に、リザーバーが空になり、最新のネットワークフローサンプルの次のセットでリザーバーを満たすことによって、VarOptループが再開されます。</p>
+	<p>新しいVarOptサンプリング手法により、Magic Network Monitoringのトラフィック量の推定精度が大幅に向上し、お客様の問題が解決されました。これらのサンプリングの改善により、一般提供への道が開かれ、正確なネットワークフロー分析を誰でも利用できるようになることを嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h3 id="developer-docs-and-discord-community">開発者向けドキュメントおよびDiscordコミュニティ</h3>
+		<a href="https://blog.cloudflare.com/#developer-docs-and-discord-community" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Magic Network Monitoringの詳細な<a href="https://developers.cloudflare.com/magic-network-monitoring" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>では、製品の機能を説明し、新規のお客様向けのステップバイステップの設定ガイドの概要を説明しています。Magic Network Monitoringドキュメントにお取り組みの上、開発者ドキュメントの右上隅にある[フィードバックする]ボタンをクリックして、お気軽にフィードバックをお寄せください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NYGpyTodAgtP9K8KycjGZ/fa5e290cdf3286c7efcbbe53954e1540/6-1.png" alt="" class="kg-image" width="1600" height="320" loading="lazy">
+
+	</figure>
+	<p>また、CloudflareのDiscordコミュニティに、設定問題のデバッグ、新機能のテスト、製品フィードバックの提供を中心に構築されたチャネルを作成しました。このリンクから<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Discordサーバー</a>に参加できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="free-version">無料版</h3>
+		<a href="https://blog.cloudflare.com/#free-version" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/magic-network-monitoring/magic-network-monitoring-free" target="_blank" rel="noopener noreferrer">Magic Network Monitoringの無料版</a>は、Cloudflareアカウントチームへのリクエストに応じて、すべてのEnterpriseのお客様にご利用いただけます。無料版は、Enterpriseのお客様が、Magic Transit、Magic WAN、または Cloudflare Oneを購入する前に、Magic Network Monitoringを迅速にテストおよび評価できるように設計されています。Enterpriseのお客様は、製品ドキュメントの<a href="https://developers.cloudflare.com/magic-network-monitoring/get-started" target="_blank" rel="noopener noreferrer">ステップバイステップのオンボーディングガイド</a>に従って、Magic Network Monitoringを自分ですべて設定できます。無料版には、処理できるトラフィック量に多少、<a href="https://developers.cloudflare.com/magic-network-monitoring/magic-network-monitoring-free" target="_blank" rel="noopener noreferrer">制限</a>があり、製品のドキュメントでさらに概説されています。</p>
+	<p>Magic Network Monitoringの無料版は、クローズドベータを介して、Free、Pro、およびBusinessプランのCloudflareのすべてのお客様にもご利用いただけます。<a href="https://developers.cloudflare.com/magic-network-monitoring/magic-network-monitoring-free" target="_blank" rel="noopener noreferrer">無料版のドキュメントを読み</a>、<a href="https://forms.gle/z93ghpydpKdAFZ7P9" target="_blank" rel="noopener noreferrer">このフォームに記入</a>することで、誰でも無料版へのアクセスをリクエストできます。<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">CloudflareのDiscordサーバー</a>に参加し、Magic Network Monitoring Discordチャネルでメッセージを送信する人はすべて、優先アクセスが許可されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="next-steps-that-you-can-take-today">今日から実行できる次のステップ</h3>
+		<a href="https://blog.cloudflare.com/#next-steps-that-you-can-take-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Magic Network Monitoringは一般提供されており、Magic Transitおよび Magic WANのすべてのお客様は、現在、自動的に製品へのアクセスが許可されています。Cloudflareダッシュボードのアカウントレベルに移動し、「分析とログ &gt; Magic Monitoring」を選択すると、製品に移動できます。</p>
+	<p>Magic TransitやMagic WANをお持ちでない企業のお客様で、Magic Network Monitoringを使用してトラフィックの可視性を向上させたい場合は、今すぐ<a href="http://network-services/products/magic-network-monitoring" target="_blank" rel="noopener noreferrer">MNMの専門家にご相談ください</a>。</p>
+	<p>DDoS攻撃対策にMagic TransitおよびMagic Network Monitoringを使用することに関心がある場合は、<a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transitのデモをリクエストできます</a>。Magic WANおよびMagic Network Monitoringを併用して、エンドツーエンドのネットワークトラフィックの可視性を確立したい場合は、<a href="https://www.cloudflare.com/network-services/products/magic-wan" target="_blank" rel="noopener noreferrer">Magic WANの専門家に相談してください</a>。</p>
+</div>

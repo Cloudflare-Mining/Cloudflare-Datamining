@@ -1,0 +1,330 @@
+<div class="mb2 gray5">11분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/full-stack-development-on-cloudflare-workers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/full-stack-development-on-cloudflare-workers">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/full-stack-development-on-cloudflare-workers">Français</a>, <a href="https://blog.cloudflare.com/de-de/full-stack-development-on-cloudflare-workers">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/full-stack-development-on-cloudflare-workers">日本語</a>, <a href="https://blog.cloudflare.com/es-es/full-stack-development-on-cloudflare-workers">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/full-stack-development-on-cloudflare-workers">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XxYGJI8hHbY3GQWzuM2BA/bfad24f662883f169142de42806316b3/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting"><u>2024년 9월</u></a>, 저희는 Cloudflare Workers에서 <a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>정적 자산</u></a>을 무료로 호스팅, 저장, 제공하기 위한 베타 지원을 도입했는데, 이는 이전에는 <a href="https://blog.cloudflare.com/cloudflare-pages"><u>Cloudflare Pages</u></a>에서만 가능했습니다. 클라이언트 측 JavaScript, HTML, CSS, 글꼴, 이미지 등의 자산을 호스팅할 수 있다는 것은 <b>단일 Worker</b> 내에서 전체 스택 애플리케이션을 구축하고자 하는 개발자에게는 아주 중요한 부족 사항이었습니다.&nbsp;</p>
+	<p>오늘 Cloudflare 에서 애플리케이션을 구축할 때 크게 개선된 10가지를 발표합니다. 새로 추가된 기능을 함께 사용하면 단순한 정적 사이트부터 전체 스택 애플리케이션에 이르기까지 다양한 프로젝트를 Cloudflare Workers에서 구축하고 호스팅할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>Cloudflare Workers는 이제 <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/remix" target="_blank" rel="noopener noreferrer"><u>React Router v7(Remix)</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/hono" target="_blank" rel="noopener noreferrer"><u>Hono</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/vue" target="_blank" rel="noopener noreferrer"><u>Vue.js</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nuxt" target="_blank" rel="noopener noreferrer"><u>Nuxt</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/svelte" target="_blank" rel="noopener noreferrer"><u>Svelte(SvelteKit)</u></a>에 대하여 프로덕션 준비가 된 <b>일반적으로 사용 가능한</b>(GA) 지원을 제공합니다. 또한, <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>더 많은</u></a> 프레임워크에 대한 GA 지원이 추가되어 <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/angular" target="_blank" rel="noopener noreferrer"><u>Angular</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/solid" target="_blank" rel="noopener noreferrer"><u>SolidJS</u></a>(SolidStart)가 2025년 2분기에 출시될 예정입니다. </p>
+		</li>
+		<li>
+			<p>프레임워크 없이 Workers에서 완전한 전체 스택 애플리케이션을 구축할 수 있습니다. '<a href="https://docs.google.com/document/d/1G8XQGNxAsGs15LqPw3l9MJlCZrBBZLyyOs6ydqnz6Bo/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><u>그저 Vite</u></a>'와 React를 함께 사용하고 동일한 Worker에서 백엔드 API를 구축할 수 있습니다. 예시는 저희 <a href="https://github.com/cloudflare/templates/tree/staging/vite-react-template" target="_blank" rel="noopener noreferrer"><u>Vite + React 템플릿</u></a>을 참조하세요.</p>
+		</li>
+		<li>
+			<p>2024년 9월 초기 알파 버전으로 도입된 Next.js용 어댑터 <a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>@opennextjs/cloudflare</u></a>는 현재 <a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter"><u>v1.0-beta</u></a> 버전이며, 몇 주 내에 GA가 될 예정입니다. OpenNext 어댑터의 사용자는 <a href="https://github.com/vercel/next.js/discussions/77740" target="_blank" rel="noopener noreferrer"><u>최근에 발표된 Next.js Deployments API</u></a>로 쉽게 업그레이드할 수도 있습니다. </p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-the-cloudflare-vite-plugin"><u>Cloudflare Vite 플러그인</u></a>은 이제 v1.0이며 일반 사용자가 이용할 수 있습니다. Vite 플러그인을 사용하면 Workers 런타임(<code>workerd</code>)에서 Vite의 개발 서버를 실행할 수 있으므로 <a href="https://vite.dev/guide/features.html#hot-module-replacement" target="_blank" rel="noopener noreferrer"><u>핫 모듈 교체</u></a>를 포함한 Vite의 모든 이점을 누리면서도 Workers 전용 기능(예: Durable Objects 등)을 사용할 수 있습니다.</p>
+		</li>
+		<li>
+			<p>이제 Workers에서 애플리케이션에 대한 정적 <a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u>_headers</u></a> 및 <a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a> 구성 파일을 사용할 수 있으며, 이는 이전에는 Pages에서만 사용할 수 있었습니다. 이들 파일을 사용하면 Worker 코드를 실행하지 않고도 간단한 헤더를 추가하고 리디렉션을 구성할 수 있습니다. </p>
+		</li>
+		<li>
+			<p>이제 <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-postgres" target="_blank" rel="noopener noreferrer"><u>PostgreSQL</u></a> 외에도, <a href="https://blog.cloudflare.com/building-global-mysql-apps-with-cloudflare-workers-and-hyperdrive"><u>Cloudflare Workers에서 Hyperdrive를 통해 MySQL 데이터베이스</u></a>에 연결할 수 있습니다. 기존의 Planetscale, AWS, GCP, Azure, 기타 MySQL 데이터베이스를 가져오면 Hyperdrive가 데이터베이스에 대한 연결을 풀링하고 쿼리를 캐싱하여 불필요한 왕복이 제거됩니다.</p>
+		</li>
+		<li>
+			<p><code>crypto</code>, <code>tls</code>, <code>net</code>,<code>dns </code>모듈의 API를 포함하여 Workers 런타임에서 <a href="https://blog.cloudflare.com/#node-js-compatibility"><u>더 많은 Node.js API를 사용할 수 있습니다</u></a>. 또한 Workers 요청에 대한 최대 CPU 시간을 30초에서 5분으로 늘렸습니다.</p>
+		</li>
+		<li>
+			<p>이제 <a href="https://blog.cloudflare.com/deploy-workers-applications-in-seconds"><u>Worker 애플리케이션이 포함된 GitHub 또는 GitLab의 모든 리포지토리를 가져올 수 있으며</u></a>, <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>를 통해 계정에 새 Worker로 앱을 배포할 수 있습니다. <a href="https://blog.cloudflare.com/#workers-builds"><u>또한 Workers Builds가 훨씬 더 빠르게 시작됩니다</u></a>(모든 빌드당 최대 6초).&nbsp;</p>
+		</li>
+		<li>
+			<p>이제 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>비프로덕션 분기에서 실행</u></a>되도록 Workers Builds를 설정할 수 있으며, 미리 보기 URL이 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>GitHub에 주석으로 다시 게시</u></a>됩니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/images/transform-images/bindings" target="_blank" rel="noopener noreferrer"><u>Workers의 Images 바인딩</u></a>을 일반적으로 사용할 수 있으므로 보다 유연한 프로그래밍 방식의 워크플로를 구축할 수 있습니다.&nbsp;</p>
+		</li>
+	</ul>
+	<p>이러한 개선 사항을 통해 단순한 정적 사이트와 더 복잡한 서버 측 렌더링 애플리케이션을 모두 구축할 수 있습니다. Pages와 마찬가지로 Worker 코드가 실행될 때만 요금이 부과되므로 정적 사이트를 무료로 호스팅하고 제공할 수 있습니다. 서버에서 렌더링을 수행하거나 API 를 구축하기를 원하는 경우 백엔드를 처리할 Worker를 추가하기만 하면 됩니다. 또한 애플리케이션에서 데이터를 읽거나 써야 하는 경우 <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>를 통해 기존 데이터베이스에 연결하거나 <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> 등의 스토리지 솔루션을 사용할 수 있습니다.&nbsp;</p>
+	<p>코드에 대해 자세히 알아보고 싶다면 'Cloudflare에 배포' 버튼을 클릭하여 Vite 및 React로 구축된 단일 페이지 애플리케이션을 배포할 수 있으며, Hyperdrive로 호스팅된 데이터베이스에 연결하는 옵션도 있습니다.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-postgres-fullstack-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="start-with-workers">Workers로 시작하기</h2>
+		<a href="https://blog.cloudflare.com/#start-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이전에는 Cloudflare Pages 또는 Workers 중 하나를 선택하여 구축해야 했습니다(또는 애플리케이션의 한 부분에는 Pages를 사용하고 다른 부분에는 Workers를 사용). 이는 처음부터 애플리케이션에 무엇이 필요한지 파악하고, 프로젝트가 진행되면서 잘못된 플랫폼과 아키텍처를 사용하지 않기를 바라는 것을 의미합니다. Workers는 유연한 플랫폼으로 설계되어 개발자가 필요에 따라 프로젝트를 발전시킬 수 있도록 설계되었으며, 따라서 Cloudflare에서는 여러 해에 걸쳐 <a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience"><u>Pages의 일부를 Workers에 통합하기 위해 노력</u></a>해 왔습니다.&nbsp;&nbsp;</p>
+	<p>이제 Workers 정적 자산 제공 <b>및</b> 서버 측 렌더링을 모두 지원하므로 <b>Workers로 시작</b>해야 합니다. Cloudflare Pages는 계속 지원되지만, 앞으로 Cloudflare의 모든 투자, 최적화, 기능 작업은 Workers 개선에 집중될 것입니다. Cloudflare에서는 Pages와 잘 어울리고 개선할 수 있는 부분에 대한 피드백을 바탕으로 Workers를 전체 스택 애플리케이션 구축을 위한 최고의 플랫폼으로 만드는 것을 목표로 합니다.&nbsp;</p>
+	<p>이전에는 Pages에서 애플리케이션을 구축하면 정말 쉽고 독단적인 온램프(on-ramp)를 얻을 수 있었지만 애플리케이션이 더 복잡해지면 결국 벽에 부딪히게 되었습니다. Durable Objects를 사용하여 상태를 관리하려면 완전히 별도의 Worker를 설정해야 하므로 배포가 복잡하고 오버헤드가 늘어납니다. 또한 실시간 로그로 제한되었으며, 모든 변경 사항을 한 번에만 롤아웃할 수 있었습니다.&nbsp;</p>
+	<p>Workers에서 구축하면 다른 개발자 플랫폼 서비스(<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer"><u>Email Workers</u></a> 등 포함)에 즉시 바인딩하고 단일 프로젝트에서 프런트 엔드와 백엔드를 모두 한 번의 배포로 관리할 수 있습니다. 또한 <a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>와 같은 전체 <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers 관찰 가능성</u></a> 도구 세트가 플랫폼에 내장되어 있습니다. 그리고 특정 비율의 트래픽에만 변경 사항을 롤아웃하고 싶다면 <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>Gradual Deployments</u></a>를 사용하면 됩니다.&nbsp;&nbsp;</p>
+	<p>이러한 최신 개선 사항은 Pages의 가장 좋은 부분을 Workers에 도입하기 위한 저희 목표의 일부입니다. 예를 들어, 이제 저희가 정적&nbsp; <a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u>_headers</u></a> 및 <a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a> 구성 파일을 지원하므로 프로젝트를 변경할 필요 없이 Pages(또는 다른 플랫폼)에서 기존 프로젝트를 쉽게 Workers 로 가져올 수 있습니다. 저희는 또한 <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>를 사용하여 GitHub 및 GitLab과 직접 통합해서 자동 빌드 및 배포를 제공합니다. 그리고 오늘부터 <a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>미리 보기 URL</u></a>이 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>리포지토리에 주석으로 다시 게시</u></a>되며 기능 분기 별칭 및 환경도 곧 제공될 예정입니다.&nbsp;</p>
+	<p>기존의 프로젝트를 Pages에서 Workers로 마이그레이션하는 방법을 알아보려면 <a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>마이그레이션 가이드</u></a>를 읽어보세요.&nbsp;</p>
+	<p>다음으로, Workers에서 다양한 렌더링 모드로 애플리케이션을 구축하는 방법에 대해 이야기해 보겠습니다.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="building-static-sites-spas-and-ssr-on-workers">Workers에서의 정적 사이트, SPA, SSR 구축</h2>
+		<a href="https://blog.cloudflare.com/#building-static-sites-spas-and-ssr-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>간단한 입문서로서 Workers에서 지원되는 모든 아키텍처와 렌더링 모드를 설명하겠습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>정적 사이트</b>: 정적 사이트를 방문하면 서버에서는 미리 구축된 정적 자산(HTML, CSS, JavaScript, 이미지, 글꼴)이 즉시 반환됩니다. 요청 시에는 서버에서 동적 렌더링이 일어나지 않습니다. 정적 자산은 일반적으로 빌드 시 생성되며 <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>CDN</u></a>에서 직접 제공되므로 정적 사이트를 빠르고 쉽게 캐시할 수 있습니다. 이 접근 방식은 콘텐츠가 거의 변경되지 않는 사이트에 적합합니다. </p>
+		</li>
+		<li>
+			<p><b>단일 페이지 애플리케이션(SPA)</b>: SPA를 로드하면 서버에서는 처음에 최소한의 HTML 셸과 JavaScript 번들(정적 자산으로 제공됨)을 보냅니다. 브라우저는 이 JavaScript를 다운로드한 다음 클라이언트 측에서 전체 사용자 인터페이스를 렌더링합니다. 초기 로드 후 모든 탐색은 전체 페이지 새로 고침 없이 일반적으로 클라이언트 측 라우팅 통해 이루어집니다. 이를 통해 빠르고 애플리케이션과 같은 경험이 제공됩니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>서버 측 렌더링(SSR) 애플리케이션</b>: SSR을 사용하는 사이트를 처음 방문하면 서버에서는 해당 요청에 대한 완전 렌더링된 온디맨드 HTML 페이지가 생성됩니다. 이렇게 완성된 HTML이 브라우저에 즉시 표시되므로 첫 번째 페이지가 빠르게 로드됩니다. JavaScript가 로드되면 페이지가 '<a href="https://en.wikipedia.org/wiki/Hydration_(web_development)" target="_blank" rel="noopener noreferrer"><u>상태 연결</u></a>'되어 상호 작용성이 추가됩니다. 후속 탐색은 새로운 서버 렌더링 페이지를 트리거하거나 많은 최신 프레임워크에서 SPA와 유사한 클라이언트 측 렌더링으로 전환할 수 있습니다.</p>
+		</li>
+	</ul>
+	<p>다음으로 개발 환경 설정부터 시작하여 Workers에서 이러한 종류의 애플리케이션을 구축하는 방법을 자세히 알아보겠습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="setup-build-and-dev">설정: 빌드 및 개발</h3>
+		<a href="https://blog.cloudflare.com/#setup-build-and-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>애플리케이션을 업로드하기 전에 모든 클라이언트 측 코드를 <b>정적 자산</b> 디렉터리에 번들로 묶어야 합니다. <code>wrangler dev</code>를 실행하면 Wrangler가 코드를 번들로 제공하고 빌드하지만, 저희는 이제 <a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>새로운 Vite 플러그인</u></a> 을 통해 Vite도 지원합니다. 이는 이미 Vite의 빌드 도구 및 개발 서버를 이용하고 있는 사용자에게는 훌륭한 옵션입니다. Workers 런타임을 사용하여 Vite의 개발 서버를 사용해서 개발(및 <a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a>로 테스트)을 계속할 수 있습니다.&nbsp;</p>
+	<p>Cloudflare Vite 플러그인 사용을 시작하려면 다음과 같이 실행하여 Vite와 플러그인을 사용해서 React 애플리케이션을 스캐폴딩할 수 있습니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-react-app -- --framework=react</code></pre>
+	<p>프로젝트를 열면 다음과 같은 디렉터리 구조가 표시됩니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p><code>npm run build</code>를 실행하면 <code>/dist</code>라는 새 폴더가 나타나는 것을 볼 수 있습니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── dist
+│   └── ...
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p>Vite 플러그인은 이 <code>/dist</code> 디렉터리에 프로젝트가 구축한 정적 자산(이 경우 클라이언트 측 코드, 일부 CSS 파일, 이미지가 포함됨)이 포함되어 있음을 Wrangler에게 알립니다.&nbsp;</p>
+	<p>이 단일 페이지 애플리케이션(SPA) 아키텍처가 배포되면 다음과 같은 모습이 됩니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6syBGxC8udJi8wlsqvLTXW/526d05095a953cb6d29526abfd4f4b3a/2.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>요청이 들어오면 Cloudflare에서는 경로 이름을 살펴보고 해당 경로 이름과 일치하는 모든 정적 자산을 자동으로 제공합니다. 예를 들어 정적 자산 디렉터리에 <code>blog.html</code> 파일이 포함되어 있다면 <code>example.com/blog</code> 에 대한 요청에 따라 해당 파일을 가져옵니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="static-sites">정적 사이트</h3>
+		<a href="https://blog.cloudflare.com/#static-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://docs.astro.build/en/concepts/why-astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>와 같은 정적 사이트 생성기(SSG)로 정적 사이트를 생성한 경우,<code>wrangler.jsonc</code> 파일(또는 <code>wrangler.toml</code>)을 생성하고 Cloudflare에 구축된 자산을 찾을 위치를 알려주기만 하면 됩니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">// wrangler.jsonc 
+
+{
+  "name": "my-static-site",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "directory": "./dist",
+  }
+}</code></pre>
+	<p>이 구성을 추가한 후에는 프로젝트를 빌드하고 Wrangler 배포를 실행하기만 하면 됩니다.&nbsp; 그러면 전체 사이트가 업로드되고 Workers에서 트래픽을 받을 준비가 됩니다. 배포되고 요청이 유입되기 시작하면 정적 사이트가 <a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>Cloudflare의 네트워크에서 캐시</u></a>됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaFnoUfvhzfjwv537fh5S/763524c2ed3b2beb61304576723667ea/3.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>다음과 같이 실행하여 지금 바로 Workers에서 새로운 Astro 프로젝트를 시작해 볼 수 있습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-astro-app -- --framework=astro</code></pre>
+	<p>지원되는 다른 프레임워크와 시작하는 방법은 <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>프레임워크 가이드</u></a>에서 확인할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="single-page-applications-spas">단일 페이지 애플리케이션(SPA)&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#single-page-applications-spas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>단일 페이지 애플리케이션이 있는 경우 Wrangler 구성에서 <code>단일 페이지 애플리케이션</code> 모드를 명시적으로 활성화할 수 있습니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+ "name": "example-spa-worker-hyperdrive",
+ "main": "api/index.js",
+ "compatibility_flags": ["nodejs_compat"],
+ "compatibility_date": "2025-04-01",
+ },
+ "assets": {
+   "directory": "./dist",
+   "binding": "ASSETS",
+   "not_found_handling": "single-page-application"
+ },
+ "hyperdrive": [
+   {
+     "binding": "HYPERDRIVE",
+     "id": "d9c9cfb2587f44ee9b0730baa692ffec",
+     "localConnectionString": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+   }
+ ],
+ "placement": {
+   "mode": "smart"
+ }
+}</code></pre>
+	<p>이를 활성화하면 플랫폼은 모든 탐색 요청(<code>Sec-Fetch-Mode: 탐색</code> 헤더를 포함하는 요청)이 정적 자산을 위한 것이라고 가정하고 일치하는 정적 자산을 찾을 수 없을 때마다 <code>index.html</code>을 제공합니다. 정적 자산과 일치하지 않는 비탐색 요청(예: 데이터 요청)의 경우 Cloudflare에서는 Worker 스크립트를 호출합니다. 이 설정을 통해 React로 프런트엔드를 렌더링하고, Worker를 사용하여 백엔드 작업을 처리하며, Vite를 사용하여 이 두 가지를 하나로 연결할 수 있습니다. 이는 <code>create-react-app</code>으로 구축된 이전 SPA를 포팅하는 데 좋은 옵션이며 <a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>최근에 서비스가 중단되었습니다.</u></a>&nbsp;</p>
+	<p>이 Wrangler 구성 파일에서 주목해야 할 또 다른 사항은 저희가 Hyperdrive 바인딩을 정의하고 <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>를 활성화했다는 것입니다. Hyperdrive를 사용하면 기존 데이터베이스를 사용하고 <i>또한</i> 연결 풀링을 처리할 수 있습니다. 이를 통해 Workers(고도로 분산된 서버리스 환경에서 실행됨)를 기존 데이터베이스에 직접 연결하는 오래된 문제가 해결됩니다. Workers는 설계상 영구 TCP 소켓이 없고 CPU/메모리 제한이 엄격한 경량 V8 격리에서 작동합니다. 이러한 격리는 보안 및 속도 면에서는 훌륭하지만, 열린 데이터베이스 연결을 유지하기는 어렵습니다. Hyperdrive는 Cloudflare의 네트워크와 데이터베이스 사이의 '다리' 역할을 하여 이러한 제약을 해결하고, 안정적인 연결 또는 풀을 유지 관리하는 어려운 작업을 처리하므로 Workers가 이를 재사용할 수 있습니다.&nbsp; Smart Placement를 켜서, Worker에 대한 요청이 데이터베이스에서 멀리 떨어져 있어 대기 시간이 발생하는 경우 Cloudflare에서는 데이터베이스 연결을 처리하는 Worker와 Hyperdrive '다리'를 모두 데이터베이스에 가까운 위치로 재배치하도록 선택하여 ​​왕복 시간을 단축할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="spa-example-worker-code">SPA 예시: Worker 코드</h4>
+		<a href="https://blog.cloudflare.com/#spa-example-worker-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 블로그 상단의 <a href="https://github.com/korinne/example-spa-worker" target="_blank" rel="noopener noreferrer"><u>'Cloudflare에 배포' 예시</u></a>를 살펴보겠습니다. <code>api/index.js</code>에서 자희는 Hyperdrive를 통해 호스팅된 데이터베이스에 연결하는 API(Hono 사용)를 정의했습니다.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">import { Hono } from "hono";
+import postgres from "postgres";
+import booksRouter from "./routes/books";
+import bookRelatedRouter from "./routes/book-related";
+
+const app = new Hono();
+
+// Setup SQL client middleware
+app.use("*", async (c, next) =&gt; {
+ // Create SQL client
+ const sql = postgres(c.env.HYPERDRIVE.connectionString, {
+   max: 5,
+   fetch_types: false,
+ });
+
+ c.env.SQL = sql;
+
+ // Process the request
+ await next();
+
+ // Close the SQL connection after the response is sent
+ c.executionCtx.waitUntil(sql.end());
+});
+
+app.route("/api/books", booksRouter);
+app.route("/api/books/:id/related", bookRelatedRouter);
+
+
+export default {
+ fetch: app.fetch,
+};</code></pre>
+	<p>배포된 저희 애플리케이션의 아키텍처는 다음과 같은 모습입니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<p>Smart Placement가 Worker의 위치를 데이터베이스에 더 가까운 곳에서 실행되도록 이동시키는 경우, 다음과 같은 모습일 수 있습니다.&nbsp;</p>
+	<div style="position: relative; padding-top: 46.844919786096256%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ac4737ba9a53e0d4285654e7dfeaac75/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fac4737ba9a53e0d4285654e7dfeaac75%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-rendering-ssr">서버 측 렌더링(SSR)</h3>
+		<a href="https://blog.cloudflare.com/#server-side-rendering-ssr" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>서버에서 렌더링을 처리하기를 원하는 경우를 위해 Cloudflare에서는 여러 가지 인기 있는 전체 스택 <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>프레임워크</u></a>를 지원합니다.&nbsp;</p>
+	<p>다음은 이전 예제의 버전으로, 이제 React Router v7의 서버 측 렌더링을 사용하는 것입니다.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-router-postgres-ssr-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<p><a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>OpenNext 어댑터</u></a> 또는 <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>프레임워크 가이드에 나열된 다른 프레임워크</u></a>와 함께 Next.js를 사용할 수도 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="deploy-to-workers-with-as-few-changes-as-possible">최소한의 변경으로 Workers에 배포</h2>
+		<a href="https://blog.cloudflare.com/#deploy-to-workers-with-as-few-changes-as-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="node-js-compatibility">Node.js 호환성</h3>
+		<a href="https://blog.cloudflare.com/#node-js-compatibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 Node.js API 지원도 계속 진행해 왔으며, 최근에는 <code>crypto</code>, <code>tls</code>, <code>net</code>, <code>dns</code> 모듈에 대한 지원을 추가했습니다. 이를 통해 이러한 Node.js 모듈에 의존하는 기존 애플리케이션과 라이브러리를 Workers에서 실행할 수 있습니다. 예를 들어 보겠습니다.</p>
+	<p>이전에는 <code>mongodb</code> 패키지를 사용하려고 하면 다음과 같은 오류가 발생했습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">Error: [unenv] dns.resolveTxt is not implemented yet!</code></pre>
+	<p>이 오류는 <code>mongodb</code>에서 <code>node:dns</code> 모듈을 사용하여 호스트 이름의 DNS 조회를 수행할 때 발생했습니다. 해당 문제를 피했더라도 <code>mongodb</code>에서 <code>node:tls</code>를 사용하여 데이터베이스에 안전하게 연결하려고 할 때 또 다른 오류가 발생했을 것입니다.</p>
+	<p>이제 <code>mongodb</code>를 예상대로 사용할 수 있습니다. <code>node:dns</code> 및 <code>node:tls</code>가 지원되기 때문입니다. <code>node:crypto</code> 및 <code>node:net</code>에 의존하는 라이브러리의 경우에도 마찬가지입니다.</p>
+	<p>또한, 이제 Workers에서는 <code>nodejs_compat</code> 호환성 플래그가 켜져 있고 호환성 날짜가 <code>2025-04-01</code> 이후로 설정된 경우 <a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u>process.env 개체의 환경 변수와 비밀이 노출</u></a>됩니다. 일부 라이브러리(및 개발자)는 이 개체가 변수로 채워질 것으로 가정하고 최상위 구성을 위해 이 개체에 의존합니다. 조정이 없었다면 이전에는 라이브러리가 예기치 않게 중단되었을 수 있으며 개발자는 Cloudflare Workers에서 변수를 처리하기 위해 추가 로직을 작성해야 했습니다.</p>
+	<p>이제는 Node.js에서처럼 변수에 액세스할 수 있습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const LOG_LEVEL = process.env.LOG_LEVEL || "info";</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="additional-worker-cpu-time">추가 Worker CPU 시간</h3>
+		<a href="https://blog.cloudflare.com/#additional-worker-cpu-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 또한 <a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>Worker 요청당 최대 CPU 시간</u></a>을 30초에서 5분으로 늘렸습니다. 따라서 컴퓨팅 집약적인 작업을 제한 시간 초과 없이 더 오래 실행할 수 있습니다. 새로 지원되는 <code>node:crypto</code> 모듈을 사용하여 매우 큰 파일을 해시하고 싶다고 가정해 보겠습니다. 이제 CPU 집약적인 작업에 대하여 외부 컴퓨팅에 의존하지 않고 Workers에서 이 작업을 수행할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-builds">Workers Builds&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#workers-builds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>또한, 저희가 <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>를 개선했으므로 Git 리포지토리를 Worker에 연결할 수 있어 변경 사항이 푸시될 때마다 자동으로 빌드하고 배포할 수 있습니다. Workers Builds는 <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>2024년 Builder Day</u></a>에 도입되었으며, 처음에는 리포지토리를 기존 Worker에만 연결할 수 있었습니다. 이제 리포지토리를 가져와 <a href="http://blog-2711" target="_blank" rel="noopener noreferrer"><u>즉시 새로운 Worker로 배포할 수 있으므로</u></a> 프로젝트를 가져오는 데 필요한 설정과 버튼 클릭이 줄어듭니다. 빌드 시작 대기 시간을 <b>6초</b> 단축하여 Workers Builds의 성능을 개선했습니다. 이제 평균 <b>10초</b> 내에 빌드가 시작됩니다. 또한 Smart Placement 덕분에 API 반응성이 높아져 대기 시간이 <b>7배</b> 향상되었습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>참고</b>: 2025년 4월 2일, Workers Builds는 <a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>2024 Builder Day</u></a>에 발표된 바와 같이 새로운 가격 책정 모델로 전환되었습니다. 이제 Free 요금제 사용자의 빌드 시간은 3,000분으로 제한되며, Workers Paid 구독 사용자는 무료 6,000분이 포함되고 이후에는 빌드 시간당 0.005달러가 부과되는 새로운 사용량 기반 모델을 이용할 수 있습니다. 동시 빌드를 더 잘 지원하기 위해 유료 요금제에도 6개의 동시 빌드가 제공되므로 여러 프로젝트 및 모노레포에서 작업하기가 더 쉬워집니다. 가격 책정에 대한 자세한 내용은 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing" target="_blank" rel="noopener noreferrer"><u>문서</u></a>를 참조하세요.</p>
+		</li>
+	</ul>
+	<p>Workers 빌드를 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>비프로덕션 분기에서 실행</u></a>하도록 설정할 수도 있고, 미리보기 URL은 <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>GitHub에 주석으로 다시 게시</u></a>됩니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="bind-the-images-api-to-your-worker">Images API를 Worker에 바인딩</h3>
+		<a href="https://blog.cloudflare.com/#bind-the-images-api-to-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>지난주 Cloudflare에서는 이미지 바인딩을 통해 이미지 최적화를 위해 보다 유연하고 프로그래밍 방식의 워크플로를 활성화하는 방법을 다루는 <a href="https://blog.cloudflare.com/improve-your-media-pipelines-with-the-images-binding-for-cloudflare-workers"><u>블로그 게시물</u></a>을 작성했습니다.</p>
+	<p>이전에는 Worker에서 <code>fetch()</code>를 호출하여 이미지 최적화 기능에 액세스할 수 있었습니다. 이 방법을 사용하려면 URL로 원본 이미지를 검색할 수 있어야 합니다. 그러나 사용자가 업로드한 이미지를 스토리지에 업로드하기 전에 압축하려는 경우처럼, URL에서 이미지에 액세스할 수 없는 경우가 있을 수 있습니다. Images 바인딩을 사용하면 이미지 본문에서 바이트 스트림으로 작업하여 이미지를 직접 최적화할 수 있습니다.</p>
+	<p>자세한 내용은 저희 <a href="https://developers.cloudflare.com/images/tutorials/optimize-user-uploaded-image" target="_blank" rel="noopener noreferrer"><u>R2에 이미지를 업로드하기 전에 변환하기</u></a> 가이드를 읽어보세요.</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">오늘 바로 구축 시작</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>여러분이 구축할 제품을 보게 되어 기쁩니다. 저희는 Workers에서 모든 애플리케이션을 더 쉽게 만들 수 있도록 새로운 기능과 개선 사항에 집중하고 있습니다. 이 작업의 대부분은 커뮤니티 피드백을 통해 더욱 개선되었으며, 저희는 여러분이 모두 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord에 가입</u></a>하여 토론에 참여할 것을 권장합니다.&nbsp;</p>
+	<p><b>시작하는 데 유용한 리소스:</b></p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>프레임워크 가이드</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>마이그레이션 가이드</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>정적 자산 문서</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Cloudflare Vite 플러그인 문서</u></a></p>
+		</li>
+	</ul>
+	<p></p>
+</div>

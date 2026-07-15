@@ -1,0 +1,826 @@
+<div class="mb2 gray5">Lesezeit: 41&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/pq-2025">English</a>, <a href="https://blog.cloudflare.com/ja-jp/pq-2025">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/pq-2025">한국어</a>, <a href="https://blog.cloudflare.com/nl-nl/pq-2025">Nederlands</a>, und <a href="https://blog.cloudflare.com/fr-fr/pq-2025">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43eV4y4luzdIkCKwgy2z6/62d96dd3dbac8c200da8eb3d8000e26e/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Diese Woche, in der letzten Oktoberwoche 2025, haben wir einen wichtigen Meilenstein für die Internetsicherheit erreicht: Der Großteil des von Menschen initiierten Datenverkehrs mit Cloudflare <a href="https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption" target="_blank" rel="noopener noreferrer"><u>verwendet</u></a> Post-Quanten-Verschlüsselung, wodurch die <a href="https://blog.cloudflare.com/the-quantum-menace"><u>Bedrohung</u></a> durch <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>Harvest-Now/Decrypt-Later</u></a> gemindert wird.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EUFTKSnJptvd5WDGvB9Rf/4865f75c71e43f2c261d393322d24f34/image5.png" alt="Graph showing percentage of human traffic protected by post-quantum encryption." class="kg-image" width="1250" height="550" loading="lazy">
+	</figure>
+	<p>Wir möchten diesen freudigen Moment nutzen, um ein Update zum aktuellen Stand der Migration des Internets zur Post-Quanten-Kryptographie geben – und über den langen Weg, der noch vor uns liegt. Unser letzter <a href="https://blog.cloudflare.com/pq-2024"><u>Überblick</u></a> liegt nun 21 Monate zurück, und seitdem hat sich viel getan. Vieles davon ist wie <a href="https://blog.cloudflare.com/pq-2024"><u>vorhergesagt</u></a> eingetreten: die Fertigstellung der NIST-Standards, die breite Einführung der Post-Quanten-Verschlüsselung, detailliertere Roadmaps von Regulierungsbehörden, Fortschritte beim Bau von Quantencomputern, der Bruch einiger Kryptographien (keine Sorge: nichts, was auch nur annähernd eingesetzt wird) und neue, spannende Kryptografie wurde vorgeschlagen.</p>
+	<p>Doch es gab auch einige Überraschungen: Ein großer Fortschritt in Richtung Q-Day wurde durch die Verbesserung quantenmechanischer Algorithmen erzielt, und ein neuer Quantenalgorithmus sorgte für einen ernstzunehmenden Schreckmoment. Wir werden all dies und mehr behandeln: was wir für die kommenden Jahre erwarten und was Sie heute bereits unternehmen können.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-quantum-threat">Die Gefahr durch Quantencomputer</h2>
+		<a href="https://blog.cloudflare.com/#the-quantum-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das Wichtigste zuerst: Warum ändern wir unsere Kryptografie? Es liegt an den <b>Quantencomputern</b>. <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-quantum-computing" target="_blank" rel="noopener noreferrer"><u>Diese wundersamen Geräte</u></a> beschränken sich nicht auf Nullen und Einsen, sondern nutzen vielmehr das, was die Natur tatsächlich bereithält: Quantenüberlagerung, Interferenz und Verschränkung. Dadurch sind Quantencomputer in der Lage, bestimmte sehr spezielle Berechnungen besonders effizient durchzuführen – insbesondere die Simulation der Natur selbst, was bei der Entwicklung neuer Materialien äußerst hilfreich sein wird.</p>
+	<p>Quantencomputer werden herkömmliche Computer nicht ersetzen – im Gegenteil: Bei den meisten Aufgaben, die im Alltag relevant sind, sind sie ihnen deutlich unterlegen. Man kann sie sich eher wie Grafikkarten oder Neural Engines vorstellen – spezialisierte Geräte für bestimmte Rechenaufgaben, nicht für den allgemeinen Gebrauch.</p>
+	<p>Leider sind Quantencomputer auch <a href="https://blog.cloudflare.com/the-quantum-menace"><u>besonders gut darin</u></a>, wichtige Kryptografieverfahren zu knacken, die heute noch weit verbreitet sind – etwa RSA und elliptische Kurven (ECC). Daher vollziehen wir den Übergang zur <b>Post-Quanten-Kryptografie</b>: Kryptografie, die gegen Angriffe durch Quantencomputer resistent ist. Die genauen Auswirkungen auf die verschiedenen Kryptografiearten werden wir später noch erläutern.</p>
+	<p>Derzeit sind Quantencomputer noch recht schwach: Sie sind heute schlichtweg nicht leistungsfähig genug, um reale kryptografische Schlüssel zu knacken. Das bedeutet jedoch nicht, dass wir uns noch keine Sorgen machen sollten – verschlüsselte Daten können <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>bereits jetzt abgefangen</u></a> und nach dem <b>Q-Day</b> – dem Tag, an dem Quantencomputer in der Lage sind, gängige Verschlüsselungsverfahren wie RSA-2048 zu knacken – entschlüsselt werden. Wir bezeichnen dies als „Harvest-Now-Decrypt-Later“-Angriff.</p>
+	<p>Nimmt man das Faktorisieren als Maßstab, wirken Quantencomputer wenig beeindruckend: Die größte Zahl, die bislang ohne Tricks mit einem Quantencomputer faktorisiert wurde, ist 15 – ein Rekord, der sich <a href="https://eprint.iacr.org/2025/1237.pdf" target="_blank" rel="noopener noreferrer"><u>auf vielfältig amüsante Weise</u></a> überbieten lässt. Es ist verlockend, Quantencomputer erst ernst zu nehmen, wenn sie klassische Rechner beim Faktorisieren übertreffen – doch das wäre ein großer Fehler. Selbst konservative Schätzungen sehen den Q-Day <a href="https://youtu.be/nJxENYdsB6c?si=doosb_aZRpQgo6X8&amp;t=1302" target="_blank" rel="noopener noreferrer"><u>weniger als drei Jahre</u></a> nach jenem Tag, an dem Quantencomputer beim Faktorisieren die klassischen Systeme schlagen. Wie also lässt sich der Fortschritt beobachten?</p>
+	<div class="flex anchor relative">
+		<h3 id="quantum-numerology">Quantennumerologie</h3>
+		<a href="https://blog.cloudflare.com/#quantum-numerology" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Auf dem Weg zum Q-Day sind zwei Kategorien zu berücksichtigen: Fortschritte in der Quantenhardware und algorithmische Verbesserungen der Software, die auf dieser Hardware ausgeführt wird. Wir haben in beiden Bereichen deutliche Fortschritte gesehen.</p>
+	<div class="flex anchor relative">
+		<h4 id="progress-on-quantum-hardware">Fortschritte in der Quantenhardware</h4>
+		<a href="https://blog.cloudflare.com/#progress-on-quantum-hardware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie ein Uhrwerk erscheinen jedes Jahr Meldungen über neue Quantencomputer mit einer Rekordanzahl an Qubits. Dieser Fokus auf die Zählung von Qubits ist ebenfalls recht irreführend. Zunächst einmal sind Quantencomputer analoge Maschinen, und es gibt immer ein gewisses Rauschen, das die Berechnung beeinträchtigt.</p>
+	<p>Zwischen den verschiedenen Technologien zur Realisierung von Quantencomputern bestehen erhebliche Unterschiede: <a href="https://en.wikipedia.org/wiki/Transmon" target="_blank" rel="noopener noreferrer"><u>siliziumbasierte</u></a> Quantencomputer lassen sich gut skalieren und führen Instruktionen schnell aus, leiden jedoch unter sehr starkem Qubit-Rauschen. Das macht sie jedoch nicht nutzlos – mithilfe von <a href="https://en.wikipedia.org/wiki/Quantum_error_correction" target="_blank" rel="noopener noreferrer"><u>Quanten-Fehlerkorrekturcodes</u></a> lassen sich Millionen verrauschter Silizium-Qubits in einige Tausend hochpräzise Qubits umwandeln – genug, um <a href="https://quantum-journal.org/papers/q-2021-04-15-433" target="_blank" rel="noopener noreferrer"><u>RSA zu knacken</u></a>. <a href="https://www.quantinuum.com/products-solutions/quantinuum-systems" target="_blank" rel="noopener noreferrer"><u>Ionenfallen-basierte Quantencomputer</u></a> wiederum weisen deutlich weniger Rauschen auf, sind aber schwerer zu skalieren. Bereits ein paar Hunderttausend dieser Qubits könnten ausreichen, um das Ende von RSA-2048 einzuleiten.</p>
+	<div style="position: relative; padding-top: 52.42937853107345%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/63767af9e4ed768f95acc0c267179a00/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F63767af9e4ed768f95acc0c267179a00%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p><sup>Zeitraffer zur </sup><a href="https://sam-jaques.appspot.com/quantum_landscape" target="_blank" rel="noopener noreferrer"><sup><u>Spitzenentwicklung</u></sup></a><sup> in der Quanteninformatik von 2021 bis 2025 – mit der Qubit-Anzahl auf der X-Achse und dem Rauschpegel auf der Y-Achse. Die Punkte im grauen Bereich repräsentieren verschiedene existierende Quantencomputer. Sobald dieser graue Bereich die linke rote Linie erreicht, wird es kritisch – das würde bedeuten, dass ein Quantencomputer große RSA-Schlüssel knacken kann. Zusammengestellt von </sup><a href="https://sam-jaques.appspot.com" target="_blank" rel="noopener noreferrer"><sup><u>Samuel Jaques</u></sup></a><sup> von der University of Waterloo.</sup></p>
+	<p>Die Anzahl der Qubits und das Rauschniveau geben nur einen oberflächlichen Einblick. Wesentliche Details auf Hardwareebene – wie die Qubit-Verschaltung – können entscheidend sein. Vor allem aber bildet das Diagramm nicht ab, wie gut sich die verwendete Technologie skalieren lässt.</p>
+	<p>Tatsächlich scheint der Fortschritt bei Quantencomputern auf diesen Diagrammen in den letzten zwei Jahren zu stagnieren. Für Fachleute jedoch markiert Googles <a href="https://blog.google/technology/research/google-willow-quantum-chip" target="_blank" rel="noopener noreferrer"><u>Willow-Ankündigung vom Dezember 2024</u></a> – die in der Grafik kaum auffällt – in Wirklichkeit einen <a href="https://scottaaronson.blog/?p=8525" target="_blank" rel="noopener noreferrer"><u>echten Meilenstein</u></a>: die skalierbare Umsetzung des ersten logischen Qubits im Surface Code. <a href="https://sam-jaques.appspot.com/quantum_landscape_2024" target="_blank" rel="noopener noreferrer"><u>Zitat</u></a> Sam Jaques:</p>
+	<blockquote>
+		<p>Als ich diese Ergebnisse [Willow] zum ersten Mal las, bekam ich eine Gänsehaut – „Wow, Quantencomputing ist wirklich real.“</p>
+	</blockquote>
+	<p>Zweifellos ein bedeutender Meilenstein – jedoch kein überraschender Durchbruch. Um Sam nochmals zu zitieren:</p>
+	<blockquote>
+		<p>Trotz meiner Begeisterung befinden wir uns damit ungefähr dort, wo man uns erwarten würde – vielleicht sogar etwas verspätet. Alle großen Durchbrüche, die demonstriert wurden, sind notwendige Schritte auf dem Weg zu einer 20-Millionen-Qubit-Maschine, die RSA knacken könnte. Unerwartete Durchbrüche gibt es keine. Man kann es mit dem jährlichen Anstieg der Transistordichte klassischer Chips vergleichen: beeindruckend, aber letztlich erwartbar.</p>
+	</blockquote>
+	<p>„Business as usual“ ist zugleich die Strategie: Der von Google bei Willow verfolgte Ansatz mit supraleitenden Qubits gilt seit jeher als der direkteste Weg, bei dem die Herausforderungen gezielt und mit minimalem technischem Risiko angegangen werden.</p>
+	<p>Im Gegensatz dazu verfolgt Microsoft mit seinem Fokus auf <a href="https://en.wikipedia.org/wiki/Topological_quantum_computer" target="_blank" rel="noopener noreferrer"><u>topologische Qubits</u></a> eine ganz andere Strategie. Diese Qubits wären theoretisch weitgehend rauschresistent. Sollten sie sich in großem Maßstab umsetzen lassen, wären sie herkömmlichen supraleitenden Qubits deutlich überlegen. Ob ihr Bau jedoch überhaupt möglich ist, ist nach wie vor ungeklärt. Anfang 2025 stellte Microsoft den <a href="https://scottaaronson.blog/?p=8669" target="_blank" rel="noopener noreferrer"><u>Majorana-1</u></a>-Chip vor – ein erster Ansatz, wie diese Technologie realisiert werden könnte. Allerdings unterstützt der Chip keine Berechnungen und taucht daher auch nicht in Sams früherer Vergleichsgrafik auf.</p>
+	<p>Zwischen topologischen und supraleitenden Qubits gibt es zahlreiche weitere Ansätze, die weltweit in Laboren verfolgt werden und in der Grafik auftauchen – etwa QuEra mit <a href="https://www.quera.com/neutral-atom-platform" target="_blank" rel="noopener noreferrer"><u>neutralen Atomen</u></a> und Quantinuum mit <a href="https://www.quantinuum.com/products-solutions/quantinuum-systems/system-model-h2" target="_blank" rel="noopener noreferrer"><u>Ionenfallen</u></a>.</p>
+	<p>Das größte Interesse in der Presse fanden bisher die Fortschritte auf der Hardware-Seite im Hinblick auf den Q-Day. Der größte Durchbruch der letzten zwei Jahre liegt jedoch nicht im Hardwarebereich.</p>
+	<div class="flex anchor relative">
+		<h3 id="progress-on-quantum-software">Fortschritt bei Quantensoftware</h3>
+		<a href="https://blog.cloudflare.com/#progress-on-quantum-software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="the-biggest-breakthrough-so-far-craig-gidneys-optimisations">Der bisher größte Durchbruch: Craig Gidneys Optimierungen</h4>
+		<a href="https://blog.cloudflare.com/#the-biggest-breakthrough-so-far-craig-gidneys-optimisations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir dachten, dass wir mit der Supraleitung etwa <a href="https://quantum-journal.org/papers/q-2021-04-15-433" target="_blank" rel="noopener noreferrer"><u>20 Millionen Qubits</u></a> benötigen würden, um RSA-2048 zu knacken. Tatsächlich geht es mit deutlich weniger. In einer beeindruckend umfassenden Arbeit vom Juni 2025 zeigt <a href="https://algassert.com/about.html" target="_blank" rel="noopener noreferrer"><u>Craig Gidney</u></a>, dass durch clevere Optimierungen in der Quanten-Software weniger als <a href="https://arxiv.org/pdf/2505.15917" target="_blank" rel="noopener noreferrer"><u>eine Million Qubits</u></a> ausreichen. Aus diesem Grund verschieben sich die roten Linien in Sams Diagramm – die die Grenze zum Knacken von RSA markieren – im Jahr 2025 drastisch nach links.</p>
+	<p>Um diese Leistung einzuordnen, nehmen wir einmal ganz spekulativ an, Google könne so etwas wie ein Moore’sches Gesetz aufrechterhalten und die Zahl physikalischer Qubits alle anderthalb Jahre verdoppeln. Das wäre deutlich schneller als bisher demonstriert, aber nicht völlig unrealistisch, sobald die Grundlagen geschaffen sind. Dann würde es bis 2052 dauern, um 20 Millionen Qubits zu erreichen – aber nur bis 2045 für eine Million. Craig hat Q-Day also <b>um sieben Jahre</b> nähergerückt!</p>
+	<p>Wie viel Potenzial steckt noch in Software-Optimierungen? Unter 100.000 supraleitende Qubits zu kommen, erscheint Sam als unmöglich, und er <a href="https://sam-jaques.appspot.com/quantum_landscape_2025" target="_blank" rel="noopener noreferrer"><u>geht davon aus</u></a>, dass mehr als 242.000 nötig sein werden, um RSA-2048 zu knacken. Legt man unsere frühere Schätzung zum Fortschritt von Quantencomputern zugrunde, entspräche das einem Q-Day im Jahr 2039 bzw. frühestens 2041.</p>
+	<p>Auch wenn Craigs Schätzung auf detaillierten und plausiblen Annahmen zur Architektur eines großskaligen Quantencomputers mit supraleitenden Qubits beruht, bleibt sie dennoch eine Schätzung – und sie könnte erheblich danebenliegen.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-proper-scare-chens-algorithm">Ein gehöriger Schrecken: Chens Algorithmus</h4>
+		<a href="https://blog.cloudflare.com/#a-proper-scare-chens-algorithm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Auf algorithmischer Ebene könnten nicht nur bestehende Quantenalgorithmen verbessert werden – es ist auch denkbar, dass völlig neue entdeckt werden. Im April 2024 veröffentlichte Yilei Chen <a href="https://eprint.iacr.org/2024/555" target="_blank" rel="noopener noreferrer"><u>ein Preprint</u></a>, in dem er angab, einen neuen Quantenalgorithmus für bestimmte Gitterprobleme gefunden zu haben – diese ähneln, aber entsprechen nicht exakt den Problemen, auf denen unsere Post-Quanten-Kryptografie basiert. Die Veröffentlichung sorgte für große Unruhe: Auch wenn der Algorithmus unsere heutigen Verfahren nicht direkt angreifen konnte, stellte sich die Frage – ließe sich Chens Ansatz noch verbessern? Um das einschätzen zu können, musste man verstehen, was der Algorithmus auf konzeptioneller Ebene leistet. Das war jedoch schwierig – Chens Methode ist äußerst komplex, deutlich komplexer als Shors Algorithmus, der RSA knackt. So dauerte es eine Weile, bis Fachleute erste Einschränkungen des Ansatzes <a href="https://nigelsmart.github.io/LWE.html" target="_blank" rel="noopener noreferrer"><u>erkannten</u></a> – und schließlich, nach zehn Tagen, einen grundlegenden Fehler im Algorithmus <a href="https://sam-jaques.appspot.com/static/files/555-notes.pdf" target="_blank" rel="noopener noreferrer"><u>entdeckten</u></a>: Der Ansatz funktioniert nicht. Krise abgewendet.</p>
+	<p>Was ist daraus zu schließen? Optimistisch betrachtet ist dies das übliche Geschäft in der Kryptografie – und Gitterverfahren stehen heute besser da, da sich ein möglicher Angriffsweg als Sackgasse erwiesen hat. Realistisch gesehen <i>ist</i> es jedoch ein Hinweis darauf, dass wir sehr stark auf Gitter setzen. Wie wir später sehen werden, gibt es derzeit keine wirkliche Alternative, die überall einsetzbar ist.</p>
+	<p>Befürworter der Quanten-Schlüsselverteilung (QKD) könnten nun einwenden, dass genau dieses Problem durch QKD gelöst werde – schließlich garantiere hier die Naturgesetze selbst die Sicherheit. Nun, zu dieser Aussage gehören einige Fußnoten. Vor allem aber hat bislang niemand gezeigt, wie sich QKD über Punkt-zu-Punkt-Verbindungen hinaus skalieren lässt – <a href="https://blog.cloudflare.com/you-dont-need-quantum-hardware"><u>wie wir in diesem Blogbeitrag erläutern</u></a>.</p>
+	<p>Es ist sinnvoll, über mögliche völlig neue Angriffe auf Kryptografie zu spekulieren – aber wir dürfen das Wesentliche nicht aus den Augen verlieren: Viel Kryptografie wird mit Sicherheit durch Quantencomputer geknackt werden. Q-Day kommt, die Frage ist nur: wann.</p>
+	<div class="flex anchor relative">
+		<h2 id="is-q-day-always-fifteen-years-away">Ist der Q-Day immer fünfzehn Jahre entfernt?</h2>
+		<a href="https://blog.cloudflare.com/#is-q-day-always-fifteen-years-away" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wer schon länger im Bereich Kryptografie und IT-Sicherheit tätig ist, hat wahrscheinlich in jedem der vergangenen Jahre gehört, dass „Q-Day noch X Jahre entfernt“ sei. Das kann leicht den Eindruck erwecken, Q-Day sei immer „irgendwann in der Zukunft“ – bis man solche Aussagen in den richtigen Kontext stellt.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-do-experts-think">Was denken Experten?</h3>
+		<a href="https://blog.cloudflare.com/#what-do-experts-think" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Seit 2019 führt das <a href="https://globalriskinstitute.org" target="_blank" rel="noopener noreferrer"><u>Global Risk Institute</u></a> jährlich eine Umfrage unter Experten durch, in der gefragt wird, wie wahrscheinlich es ist, dass RSA-2048 innerhalb von 5, 10, 15, 20 oder 30 Jahren geknackt wird. Dies sind die Ergebnisse <a href="https://globalriskinstitute.org/publication/2024-quantum-threat-timeline-report" target="_blank" rel="noopener noreferrer"><u>für 2024</u></a> – die Befragungen fanden vor der Veröffentlichung von Willow und Gidneys Durchbruch statt.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dx58nMhiJJd3DsQkaHwYF/84e9d8781912925d3b745f50291b00df/image6.png" alt="Global Risk Institute expert survey results from 2024 on the likelihood of a quantum computer breaking RSA-2048 within different timelines." class="kg-image" width="978" height="676" loading="lazy">
+	</figure>
+	<p><sup>Ergebnisse der Expertenumfrage des Global Risk Institute aus dem Jahr 2024 zur Wahrscheinlichkeit, dass ein Quantencomputer RSA-2048 innerhalb unterschiedlicher Zeiträume bricht.</sup></p>
+	<p>Wie die mittlere Spalte dieser Grafik zeigt, gingen deutlich über die Hälfte der befragten Experten davon aus, dass die Wahrscheinlichkeit, dass ein Quantencomputer RSA-2048 innerhalb von 15 Jahren bricht, bei mindestens ~50&nbsp;% liegt. Schauen wir uns die historischen Antworten aus den Jahren <a href="https://globalriskinstitute.org/publication/quantum-threat-timeline" target="_blank" rel="noopener noreferrer"><u>2019,</u></a> <a href="https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2020" target="_blank" rel="noopener noreferrer"><u>2020,</u></a> <a href="https://globalriskinstitute.org/publication/2021-quantum-threat-timeline-report-global-risk-institute-global-risk-institute" target="_blank" rel="noopener noreferrer"><u>2021,</u></a> <a href="https://globalriskinstitute.org/publication/2022-quantum-threat-timeline-report" target="_blank" rel="noopener noreferrer"><u>2022</u></a> und <a href="https://globalriskinstitute.org/publication/2023-quantum-threat-timeline-report" target="_blank" rel="noopener noreferrer"><u>2023</u></a> an. Im Folgenden zeigen wir die jeweilige Einschätzung zur Wahrscheinlichkeit eines Q-Days innerhalb von 15 Jahren nach dem Zeitpunkt der jeweiligen Befragung:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rMVWq9lDr49n9BmDkH2Ye/73d14f83f553becedf29dd11ce25deb1/image10.png" alt="Historical answers in the quantum threat timeline reports for the chance of Q-day within 15 years." class="kg-image" width="640" height="480" loading="lazy">
+	</figure>
+	<p><sup>Historische Angaben in den Quantum-Threat-Timeline-Berichten zur Wahrscheinlichkeit eines Q-Days innerhalb von 15 Jahren.</sup></p>
+	<p>Die Daten zeigen, dass die Antworten allmählich in Richtung größerer Gewissheit tendieren – aber geschieht das in dem Tempo, das wir erwarten würden? Mit sechs Jahren an Umfragedaten können wir untersuchen, wie konsistent die Vorhersagen über die Jahre hinweg sind: Entspricht die 15-Jahres-Prognose von 2019 der 10-Jahres-Prognose von 2024?</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cc2fWho4kYRjhJebG6Vll/12fdb65939b8e0143606d04747cfcca9/Screenshot_2025-10-28_at_12.28.49.png" alt="Historical answers in the quantum threat timeline report over the years on the date of Q-day. The x-axis is the alleged year for Q-day and the y-axis shows the fraction of interviewed experts that think it’s at least ~50% (left) or 70% (right) likely to happen then." class="kg-image" width="1280" height="500" loading="lazy">
+	</figure>
+	<p><sup>Historische Angaben in den Quantum-Threat-Timeline-Berichten zur erwarteten Q-Day-Datierung über die Jahre hinweg. Die x-Achse zeigt das jeweils angenommene Jahr des Q-Days, die y-Achse den Anteil der befragten Experten, die die Wahrscheinlichkeit dafür auf mindestens ~50&nbsp;% (links) bzw. 70&nbsp;% (rechts) schätzen.</sup></p>
+	<p>Fragt man Expertinnen und Experten, wann der Q-Day mit etwa gleichen Chancen eintreten könnte (Grafik links), geben sie über die Jahre hinweg meist dieselbe Antwort: Ja, könnte in etwa 15 Jahren sein.Drängt man jedoch auf mehr Sicherheit und fragt nach einem Eintritt mit über 70&nbsp;% Wahrscheinlichkeit (Grafik rechts), zeigen sich die Antworten über die Jahre hinweg erstaunlich konstant. Beispiel: Ein Fünftel hielt das Jahr 2034 sowohl 2019 als auch 2024 für wahrscheinlich.</p>
+	<p>Wenn Sie eine konsistente Antwort von einem Experten wollen, fragen Sie nicht, wann der Q-Day sein könnte, sondern wann er wahrscheinlich eintritt. Natürlich macht es Spaß, über den Q-Day zu spekulieren – doch die ehrliche Antwort lautet: Niemand weiß es genau. Dafür gibt es schlicht zu viele Unbekannte. Und letztlich ist das genaue Datum des Q-Days weit weniger entscheidend als die Fristen, die von Aufsichtsbehörden gesetzt werden.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-action-do-regulators-take">Welche Maßnahmen ergreifen die Aufsichtsbehörden?</h3>
+		<a href="https://blog.cloudflare.com/#what-action-do-regulators-take" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir können uns auch die Zeitpläne verschiedener Aufsichtsbehörden ansehen. Im Jahr 2022 veröffentlichte die National Security Agency (NSA) ihre <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF" target="_blank" rel="noopener noreferrer"><u>CNSA 2.0-Richtlinien</u></a>, die Fristen zwischen 2030 und 2033 für die Umstellung auf Post-Quanten-Kryptographie vorsehen. Ebenfalls im Jahr 2022 setzte die US-Bundesregierung das Ziel, <a href="http://web.archive.org/web/20240422052137/https://www.whitehouse.gov/briefing-room/statements-releases/2022/05/04/national-security-memorandum-on-promoting-united-states-leadership-in-quantum-computing-while-mitigating-risks-to-vulnerable-cryptographic-systems" target="_blank" rel="noopener noreferrer"><u>bis 2035</u></a> die vollständige Migration der Vereinigten Staaten zu erreichen. Die neue Regierung ist davon nicht abgewichen. Australien hat 2024 das Jahr 2030 als seine <a href="https://www.theregister.com/2024/12/17/australia_dropping_crypto_keys" target="_blank" rel="noopener noreferrer"><u>ehrgeizige Frist</u></a> für die Migration festgelegt. Anfang 2025 erreichte der UK NCSC den für das Vereinigte Königreich üblichen Stichtag <a href="https://www.ncsc.gov.uk/guidance/pqc-migration-timelines" target="_blank" rel="noopener noreferrer"><u>2035.</u></a> Mitte 2025 veröffentlichte die Europäische Union <a href="https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography" target="_blank" rel="noopener noreferrer"><u>ihren Fahrplan</u></a> mit den Fristen 2030 und 2035, je nach Anwendungsbereich.</p>
+	<p>Bei weitem nicht alle nationalen Regulierungsbehörden haben Zeitpläne für die Post-Quanten-Migration veröffentlicht, doch diejenigen, die es getan haben, bewegen sich meist im Zeitraum 2030 bis 2035.</p>
+	<div class="flex anchor relative">
+		<h3 id="when-is-q-day">Wann ist der Q-Day?</h3>
+		<a href="https://blog.cloudflare.com/#when-is-q-day" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wann also werden Quantencomputer zum Problem? Ob es 2034 oder 2050 ist, es wird auf jeden Fall <b>zu früh</b> sein. Der enorme Erfolg der Kryptografie über die letzten fünfzig Jahre hat sie allgegenwärtig gemacht – vom Geschirrspüler über den Herzschrittmacher bis hin zum Satelliten. Viele Systeme lassen sich problemlos im Rahmen ihres Lebenszyklus aktualisieren, doch es wird auch einen langen, aufwendigen und teuren Nachlauf geben.</p>
+	<p>Sehen wir uns nun die Migration zur Post-Quanten-Kryptographie an.</p>
+	<div class="flex anchor relative">
+		<h2 id="mitigating-the-quantum-threat-two-migrations">Die Quantenbedrohung abmildern: Zwei Migrationen</h2>
+		<a href="https://blog.cloudflare.com/#mitigating-the-quantum-threat-two-migrations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zur Priorisierung ist es entscheidend zu verstehen, dass die Umstellung auf Post-Quanten-Kryptografie je nach Art der verwendeten Kryptoverfahren – etwa zur Absicherung von Verbindungen – unterschiedlich komplex, dringlich und folgenreich ist. Tatsächlich stehen die meisten Organisationen vor zwei separaten Post-Quanten-Migrationen: <b>Schlüsselaustausch</b> und <b>Signaturen bzw. Zertifikate</b>. Lassen Sie uns dies am Beispiel einer sicheren Verbindung zu einer Website im Browser erläutern.</p>
+	<div class="flex anchor relative">
+		<h3 id="already-post-quantum-secure-symmetric-cryptography">Bereits postquantensicher: Symmetrische Kryptographie</h3>
+		<a href="https://blog.cloudflare.com/#already-post-quantum-secure-symmetric-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das kryptografische Arbeitstier einer Verbindung ist eine <b>symmetrische Chiffre</b> wie AES-GCM. Das entspricht dem klassischen Bild von Kryptografie: Beide Parteien – in diesem Fall Browser und Server – teilen sich einen geheimen Schlüssel, mit dem sie Nachrichten ver- und entschlüsseln. Ohne diesen Schlüssel kann man weder mitlesen noch etwas verändern.</p>
+	<p>Die gute Nachricht ist: Symmetrische Verschlüsselungsverfahren wie <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap"><u>AES-GCM</u></a> gelten bereits als postquanten-sicher. Ein weit verbreiteter Irrglaube ist, dass <a href="https://en.wikipedia.org/wiki/Grover%27s_algorithm" target="_blank" rel="noopener noreferrer"><u>Grovers Quantenalgorithmus</u></a> eine Verdopplung der Schlüssellänge erforderlich macht. Doch bei genauer Betrachtung des Algorithmus zeigt sich, dass er <a href="https://blog.cloudflare.com/nist-post-quantum-surprise#grover-s-algorithm"><u>nicht</u></a> <a href="https://www.youtube.com/watch?v=eB4po9Br1YY" target="_blank" rel="noopener noreferrer"><u>praxisrelevant</u></a> ist. Die Art und Weise, wie das <a href="https://www.nist.gov" target="_blank" rel="noopener noreferrer"><u>NIST</u></a>, das US-amerikanische National Institute for Standards and Technology (das die Standardisierung der Post-Quanten-Kryptographie vorangetrieben hat), seine Post-Quanten-Sicherheitsstufen definiert, ist sehr aufschlussreich. Ein Sicherheitsniveau wird dort definiert als die Schwierigkeit, ein Verfahren – egal ob mit klassischem oder Quantencomputer – zu knacken, wobei ein symmetrischer Algorithmus als Vergleich dient.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Stufe</b></p>
+				</td>
+				<td>
+					<p><b>Definition:</b> so schwer zu knacken wie&nbsp;…&nbsp;</p>
+				</td>
+				<td>
+					<p><b>Beispiel</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>Wiederherstellen des Schlüssels von <b>AES-128</b> durch erschöpfende Suche</p>
+				</td>
+				<td>
+					<p>ML-KEM-512, SLH-DSA-128s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>Um einen Konflikt in <b>SHA256</b> durch erschöpfende Suche zu finden</p>
+				</td>
+				<td>
+					<p>ML-DSA-44</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>Wiederherstellen des Schlüssels von <b>AES-192</b> durch erschöpfende Suche</p>
+				</td>
+				<td>
+					<p>ML-KEM-768, ML-DSA-65</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>Um einen Konflikt in <b>SHA384</b> durch erschöpfende Suche zu finden</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5</p>
+				</td>
+				<td>
+					<p>Zur Wiederherstellung des Schlüssels von <b>AES-256</b> durch erschöpfende Suche</p>
+				</td>
+				<td>
+					<p>ML-KEM-1024, SLH-DSA-256s, ML-DSA-87</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><sup>NIST PQC-Sicherheitsstufen: Je höher, desto schwerer zu knacken („sicherer“). Die Beispiele ML-DSA, SLH-DSA und ML-KEM werden im Folgenden behandelt.</sup></p>
+	<p>Die Empfehlung, die Schlüssellängen symmetrischer Kryptografie zu verdoppeln, beruht auf guten Absichten. In vielen Anwendungsfällen ist der Mehraufwand gering und beseitigt jedes theoretische Risiko vollständig. Symmetrische Kryptografie lässt sich kostengünstig skalieren – doppelte Schlüssellänge bedeutet in der Regel deutlich weniger als doppelte Kosten. Oberflächlich betrachtet ist es daher ein naheliegender Ratschlag.</p>
+	<p>Wenn wir auf AES-256 bestehen, erscheint es nur logisch, auch für die Public-Key-Kryptografie das NIST-PQC-Level 5 zu fordern. Das Problem dabei: Public-Key-Kryptografie skaliert nicht gut. Je nach Verfahren bedeutet der Sprung von Level 1 auf Level 5 meist mehr als eine Verdopplung des Datenvolumens und der CPU-Belastung. Wie wir noch sehen werden, ist die Einführung postquanter Signaturen bereits auf Level 1 eine Herausforderung – auf Level 5 wird sie nahezu untragbar.</p>
+	<p>Wichtiger ist jedoch, dass Organisationen nur über begrenzte Ressourcen verfügen. Wir möchten nicht, dass ein Unternehmen die Aktualisierung von AES-128 priorisiert und dabei das definitiv quantenanfällige RSA vernachlässigt.</p>
+	<div class="flex anchor relative">
+		<h3 id="first-migration-key-agreement">Erste Migration: Schlüsselvereinbarung</h3>
+		<a href="https://blog.cloudflare.com/#first-migration-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Symmetrische Verschlüsselungen allein reichen nicht aus: Woher weiß ich, welchen Schlüssel ich verwenden soll, wenn ich eine Website zum ersten Mal besuche? Der Browser kann nicht einfach einen zufälligen Schlüssel senden, da jeder, der mithört, diesen Schlüssel ebenfalls sehen würde. Man sollte meinen, dass dies unmöglich ist, aber es gibt eine ausgeklügelte mathematische Lösung, damit sich Browser und Server auf einen gemeinsamen Schlüssel einigen können. Ein solches Schema wird als <b>Schlüsselvereinbarungsmechanismus </b>bezeichnet und beim TLS-<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer"><u>Handshake</u></a> durchgeführt. Im Jahr 2024 ist fast der gesamte Datenverkehr mit <a href="https://en.wikipedia.org/wiki/Curve25519" target="_blank" rel="noopener noreferrer"><u>X25519</u></a>, einer Schlüsselvereinbarung im Diffie-Hellman-Stil, gesichert, aber seine Sicherheit wird durch <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank" rel="noopener noreferrer"><u>Shor’s Algorithmus</u></a> auf einem Quantencomputer vollständig geknackt. Somit kann jede Kommunikation, die heute mit Diffie-Hellman gesichert wird, nach ihrer Speicherung in der Zukunft von einem Quantencomputer entschlüsselt werden.</p>
+	<p>Dies macht es <b>dringend notwendig</b>, die Schlüsselvereinbarung heute zu aktualisieren. Glücklicherweise ist die Post-Quanten-Schlüsselvereinbarung relativ einfach zu implementieren, und wie wir bereits gesehen haben, ist die Hälfte der Anfragen bei Cloudflare bis Ende 2025 bereits mit einer Post-Quanten-Schlüsselvereinbarung gesichert!</p>
+	<div class="flex anchor relative">
+		<h3 id="second-migration-signatures-certificates">Zweite Migration: Signaturen/Zertifikate</h3>
+		<a href="https://blog.cloudflare.com/#second-migration-signatures-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Schlüsselvereinbarung ermöglicht eine sichere Einigung auf einen Schlüssel, aber es gibt eine große Lücke: Wir wissen nicht, <i>mit wem</i> wir uns auf den Schlüssel geeinigt haben. Wenn wir nur einen Schlüsselaustausch durchführen, kann ein Angreifer in der Mitte separate Schlüsselaustausche mit dem Browser und dem Server durchführen und alle ausgetauschten Nachrichten erneut verschlüsseln. Um dies zu verhindern, benötigen wir noch eine letzte Zutat: Authentifizierung.</p>
+	<p>Dies wird mit Hilfe von <b>Signaturen</b> erreicht. Wenn Sie eine Website besuchen, z.&nbsp;B.<a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer"><u>cloudflare.com,</u></a> legt der Webserver ein von einer <a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer"><u>Zertifizierungsstelle (Certification Authority, CA)</u></a> <b>signiertes Zertifikat</b> vor, das bestätigt, dass der öffentliche Schlüssel in diesem Zertifikat von <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer"><u>cloudflare.com</u></a> kontrolliert wird. Der Webserver signiert den Handshake und den Shared Key wiederum mit dem privaten Schlüssel, der dem öffentlichen Schlüssel im Zertifikat entspricht. So kann der Kunde sicher sein, dass er eine Schlüsselvereinbarung mit <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer"><u>cloudflare.com</u></a> abgeschlossen hat.</p>
+	<p>RSA und ECDSA sind heutzutage gängige traditionelle Signaturverfahren. Auch hier macht Shors Algorithmus kurzen Prozess mit ihnen, wodurch ein Quantenangreifer jede Signatur fälschen kann. Das bedeutet, dass ein Angreifer mit einem Quantencomputer jede Website imitieren (und <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener noreferrer"><u>MitM</u></a>) kann, für die wir Nicht-Post-Quanten-Zertifikate akzeptieren.</p>
+	<p>Dieser Angriff kann erst dann durchgeführt werden, wenn Quantencomputer in der Lage sind, RSA/ECDSA zu knacken. Dies macht die Aktualisierung der Signaturschemata für TLS scheinbar weniger dringlich, da wir nur alle vor dem Q-Day migriert haben müssen. Leider werden wir feststellen, dass die Migration zu Post-Quanten-Signaturen <b>wesentlich schwieriger</b> ist und mehr Zeit beanspruchen wird.</p>
+	<div class="flex anchor relative">
+		<h2 id="progress-timeline">Zeitachse des Fortschritts</h2>
+		<a href="https://blog.cloudflare.com/#progress-timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor wir uns mit den technischen Herausforderungen der Migration des Internets zu Post-Quanten-Kryptographie befassen, wollen wir einen Blick darauf werfen, wie wir an diesen Punkt gelangt sind und was wir in den kommenden Jahren erwarten können. Beginnen wir damit, wie die Post-Quanten-Kryptographie entstanden ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="origin-of-post-quantum-cryptography">Ursprung der Post-Quanten-Kryptografie</h3>
+		<a href="https://blog.cloudflare.com/#origin-of-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Physiker Feynman und Manin schlugen <a href="https://plato.stanford.edu/entries/qt-quantcomp" target="_blank" rel="noopener noreferrer"><u>um 1980</u></a> unabhängig voneinander Quantencomputer vor. Es dauerte weitere 14 Jahre, bis Shor <a href="https://ieeexplore.ieee.org/abstract/document/365700" target="_blank" rel="noopener noreferrer"><u>seinen Algorithmus</u></a> zum Angriff auf RSA/ECC veröffentlichte. Die meisten Post-Quanten-Kryptographieverfahren sind älter als Shors berühmter Algorithmus.</p>
+	<p>Es gibt verschiedene Zweige der Post-Quanten-Kryptographie. Die bekanntesten davon sind gitterbasierte, Hash-basierte, multivariate, codebasierte und isogeniebasierte Kryptographie. Mit Ausnahme der isogenie-basierten Kryptografie wurde keine dieser Möglichkeiten ursprünglich als Post-Quanten-Kryptografie konzipiert. Tatsächlich sind frühe codebasierte und Hash-basierte Schemata zeitgleich mit RSA entstanden, da sie in den 1970er Jahren vorgeschlagen wurden, und sie datieren die Veröffentlichung von Shors Algorithmus im Jahr 1994 deutlich vor. Das erste multivariate Schema aus dem Jahr 1988 ist zudem deutlich älter als der Shor-Algorithmus. Es ist ein schöner Zufall, dass der erfolgreichste Zweig, die gitterbasierte Kryptographie, der engste Zeitgenosse von Shor ist und im Jahr <a href="https://dl.acm.org/doi/pdf/10.1145/237814.237838" target="_blank" rel="noopener noreferrer"><u>1996</u></a> vorgeschlagen wurde. Zum Vergleich: Die heute weit verbreitete Elliptische-Kurven-Kryptografie wurde erstmals 1985 vorgeschlagen.</p>
+	<p>In den Jahren nach der Veröffentlichung des Shor-Algorithmus untersuchten Kryptographen die bestehende Kryptographie: Was ist eindeutig defekt und was könnte post-quantensicher sein? Im Jahr 2006 fand der erste jährliche <a href="https://postquantum.cr.yp.to" target="_blank" rel="noopener noreferrer"><u>Internationale Workshop zur Post-Quanten-Kryptographie</u></a> statt. Auf dieser Konferenz wurde ein Einführungstext <a href="https://www.researchgate.net/profile/Nicolas-Sendrier-2/publication/226115302_Code-Based_Cryptography/links/540d62d50cf2df04e7549388/Code-Based-Cryptography.pdf" target="_blank" rel="noopener noreferrer"><u>erstellt</u></a>, der sich gut als Einführung in das Fachgebiet eignet. Ein wichtiger Vorbehalt ist das <a href="https://eprint.iacr.org/2022/214.pdf" target="_blank" rel="noopener noreferrer"><u>Ende</u></a> des <a href="https://www.pqcrainbow.org" target="_blank" rel="noopener noreferrer"><u>Regenbogen</u></a>-Signaturschemas. Im gleichen Jahr, 2006, wurde die elliptische Schlüsselvereinbarung X25519 <a href="https://cr.yp.to/ecdh/curve25519-20060209.pdf" target="_blank" rel="noopener noreferrer"><u>vorgeschlagen</u></a>, die nun den Großteil der Internetverbindungen schützt, entweder eigenständig oder als Hybrid mit dem Post-Quantum ML-KEM-768.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="nist-completes-the-first-generation-of-pqc-standards">Das NIST schließt die erste Generation von PQC-Standards ab</h2>
+		<a href="https://blog.cloudflare.com/#nist-completes-the-first-generation-of-pqc-standards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zehn Jahre später, im Jahr 2016, schrieb das<a href="https://nist.gov" target="_blank" rel="noopener noreferrer"><u>NIST</u></a>, das National Institute of Standards and Technology der USA, einen <a href="https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/call-for-proposals-final-dec-2016.pdf" target="_blank" rel="noopener noreferrer"><u>öffentlichen Wettbewerb</u></a> zur Standardisierung der Post-Quanten-Kryptographie aus. Sie verwendeten ein ähnliches offenes Format, wie es zur Standardisierung von <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer"><u>AES</u></a> im Jahr 2001 und <a href="https://en.wikipedia.org/wiki/NIST_hash_function_competition" target="_blank" rel="noopener noreferrer"><u>SHA3</u></a> im Jahr 2012 verwendet wurde. Jeder kann sich beteiligen, indem er Vorschläge einreicht und diese bewertet. Kryptografen aus aller Welt reichten Algorithmen ein. Um die Aufmerksamkeit zu fokussieren, wurde die Liste der Einreichungen in drei Runden reduziert. Von den ursprünglich 82 Kandidaten haben es, basierend auf öffentlichem Feedback, acht in die Endrunde geschafft. Von diesen acht Schemata hat das NIST im Jahr 2022 beschlossen,zuerst <a href="https://blog.cloudflare.com/nist-post-quantum-surprise"><u>vier zu standardisieren</u></a>: ein <b>KEM </b>(Key-Encapsulation-Mechanism) und drei Signaturschemata.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Alter Name</b></p>
+				</td>
+				<td>
+					<p><b>Neuer Name</b></p>
+				</td>
+				<td>
+					<p><b>Art</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Kyber</p>
+				</td>
+				<td>
+					<p><b>ML-KEM</b> (FIPS<a href="https://csrc.nist.gov/pubs/fips/203/final" target="_blank" rel="noopener noreferrer"><u>203)</u></a> – Auf Modul-Gitter-basierter Key-Encapsulation-Mechanism-Standard</p>
+				</td>
+				<td>
+					<p>Gitterbasiert</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Dilithium</p>
+				</td>
+				<td>
+					<p><b>ML-DSA </b>(<a href="https://csrc.nist.gov/pubs/fips/204/final" target="_blank" rel="noopener noreferrer"><u>FIPS 204</u></a>)</p>
+					<p>Modul-Gitter-basierter Digital-Signature-Standard</p>
+				</td>
+				<td>
+					<p>Gitterbasiert</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SPHINCS<sup>+</sup></p>
+				</td>
+				<td>
+					<p><b>SLH-DSA</b> (<a href="https://csrc.nist.gov/pubs/fips/205/final" target="_blank" rel="noopener noreferrer"><u>FIPS 205</u></a>)</p>
+					<p>Stateless Hash-basierter Digital-Signature-Standard</p>
+				</td>
+				<td>
+					<p>Hash-basiert</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Falcon</p>
+				</td>
+				<td>
+					<p><b>FN-DSA </b>(noch nicht standardisiert)
+						FFT über NTRU-Gitter Digital-Signature-Standard</p>
+				</td>
+				<td>
+					<p>Gitterbasiert</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Die endgültigen Standards für die ersten drei wurden im August 2024 veröffentlicht. FN-DSA ist verspätet, das besprechen wir später.</p>
+	<p>ML-KEM ist derzeit der einzige standardisierte Post-Quanten-Schlüsselaustausch. Trotz gelegentlicher Herausforderungen durch größere Schlüssellängen lässt er sich größtenteils problemlos als Ersatz integrieren.</p>
+	<p>Die Situation bei den Signaturen stellt sich etwas anders dar: Es ist bezeichnend, dass das NIST sich bereits entschieden hat, drei davon zu standardisieren. Und es wird noch mehr Signaturen geben, die <a href="https://blog.cloudflare.com/another-look-at-pq-signatures"><u>in Zukunft standardisiert werden</u></a> sollen. Der Grund dafür ist, dass keine der vorgeschlagenen Signaturen auch nur annähernd ideal sind. Kurz gesagt haben sie alle viel größere Schlüssel und Signaturen als wir es gewohnt sind.</p>
+	<p>Aus sicherheitstechnischer Sicht ist SLH-DSA die konservativste Wahl, aber auch die leistungsschwächste. Für die Größen von Öffentlichen Schlüsseln und Signaturen ist FN-DSA für diese drei Bereiche optimal, aber es ist aufgrund von Gleitkommaarithmetik schwierig, Signaturen sicher zu implementieren. Aufgrund der eingeschränkten Anwendbarkeit und der komplexen Ausgestaltung von FN-DSA hat sich das NIST entschieden, sich vorrangig auf die anderen drei Schemata zu konzentrieren.</p>
+	<p>Damit ist ML-DSA die Standardauswahl. Ausführlichere Vergleiche finden Sie unten.</p>
+	<div class="flex anchor relative">
+		<h2 id="adoption-of-pqc-in-protocol-standards">Übernahme von PQC in Protokollstandards</h2>
+		<a href="https://blog.cloudflare.com/#adoption-of-pqc-in-protocol-standards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Standards des NIST allein genügen nicht. Es ist ebenso notwendig, die Verwendung der neuen Algorithmen in höherliegenden Protokollen zu standardisieren. In vielen Fällen – etwa beim Schlüsselaustausch in TLS – reicht es, den neuen Algorithmen eine Kennung zuzuweisen. In anderen Fällen, wie bei <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer"><u>DNSSEC</u></a>, ist eine genauere Ausarbeitung erforderlich. Zahlreiche Arbeitsgruppen der <a href="https://www.ietf.org" target="_blank" rel="noopener noreferrer"><u>IETF</u></a> bereiten sich seit Jahren auf die finalen NIST-Standards vor, und man erwartete, dass viele Protokollanpassungen noch 2024 abgeschlossen würden. Das war zu optimistisch: Einige sind fertig – viele jedoch noch nicht.</p>
+	<p>Beginnen wir mit den guten Nachrichten und sehen wir uns an, was getan wurde.</p>
+	<ul>
+		<li>
+			<p>Die hybride TLS-Schlüsselvereinbarung <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-ecdhe-mlkem" target="_blank" rel="noopener noreferrer"><u>X25519MLKEM768</u></a>, die X25519 mit ML-KEM-768 kombiniert (mehr dazu später), ist einsatzbereit und bereits relativ weit verbreitet. Auch andere Protokolle übernehmen ML-KEM im Hybridmodus, etwa <a href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem" target="_blank" rel="noopener noreferrer"><u>IPsec</u></a>, das in einfachen Konfigurationen bereits nutzbar ist. (Für bestimmte Szenarien gibt es noch eine <a href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention" target="_blank" rel="noopener noreferrer"><u>kleine Herausforderung</u></a>, die wir in einem späteren Blogbeitrag beleuchten werden.)Überraschend mag sein, dass die entsprechenden RFCs noch nicht veröffentlicht wurden. Für die Registrierung eines Schlüsselaustauschs in TLS oder IPsec ist jedoch kein RFC erforderlich. In beiden Fällen wird ein RFC dennoch weiterverfolgt, um Missverständnisse zu vermeiden – insbesondere, weil im Fall von TLS ein RFC Voraussetzung dafür ist, eine Methode als „empfohlen“ zu kennzeichnen.</p>
+		</li>
+		<li>
+			<p>Für Signaturen ist die Integration von ML-DSA <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates" target="_blank" rel="noopener noreferrer"><u>in X.509</u></a>-Zertifikate und <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-mldsa" target="_blank" rel="noopener noreferrer"><u>TLS</u></a> gut geeignet. Ersteres ist ein neu erstellter RFC, und Letzteres benötigt keinen.</p>
+		</li>
+	</ul>
+	<p>Nun zu den schlechten Nachrichten. Zum Zeitpunkt des Schreibens, Oktober 2025, hat die IETF noch nicht endgültig <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-pq-composite-sigs" target="_blank" rel="noopener noreferrer"><u>festgelegt</u></a>, wie hybride Zertifikate aussehen sollen – also Zertifikate, die sowohl ein Post-Quanten- als auch ein klassisches Signaturverfahren kombinieren. Aber man ist kurz davor. Wir hoffen, dass dies Anfang 2026 geklärt sein wird.</p>
+	<p>Aber wenn es nur um die Zuweisung von Kennungen geht, was ist dann die Ursache für die Verzögerung? Vor allem geht es um Wahlmöglichkeiten. Beginnen wir mit den Entscheidungen, die in ML-DSA getroffen werden mussten.</p>
+	<div class="flex anchor relative">
+		<h4 id="ml-dsa-delays-much-ado-about-prehashing-and-private-key-formats">ML-DSA-Verzögerungen: Viel Lärm um Prehashing und Formate für private Schlüssel</h4>
+		<a href="https://blog.cloudflare.com/#ml-dsa-delays-much-ado-about-prehashing-and-private-key-formats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die zwei Hauptthemen der Diskussion rund um ML-DSA-Zertifikate waren das Prehashing und das Format des privaten Schlüssels.</p>
+	<p>Beim Prehashing wird die Nachricht in einem Teil des Systems gehasht, während ein anderer Teil die endgültige Signatur erzeugt. Das ist nützlich, wenn man etwa keine großen Dateien an ein <a href="https://en.wikipedia.org/wiki/Hardware_security_module" target="_blank" rel="noopener noreferrer"><u>HSM</u></a> zum Signieren senden möchte. Frühe Entwürfe von ML-DSA unterstützten Prehashing mit SHAKE256, allerdings <a href="https://csrc.nist.gov/csrc/media/Projects/post-quantum-cryptography/documents/faq/fips204-sec6-03192025.pdf" target="_blank" rel="noopener noreferrer"><u>war</u></a> das nicht klar ersichtlich. In der finalen Version hat NIST zwei Varianten aufgenommen: reguläres ML-DSA und eine explizite Prehashing-Variante, bei der beliebige Hashfunktionen erlaubt sind. Unterschiedliche Varianten sind problematisch – Nutzer müssen sich für eine entscheiden, Software könnte nicht alle Varianten unterstützen, und auch Tests und Validierungen müssen für beide durchgeführt werden. Es ist unstrittig, dass eine einheitliche Variante wünschenswert ist – <a href="https://globalplatform.org/wp-content/uploads/2025/01/4_ML-DSA-and-ML-KEM-Landmines-1.pdf" target="_blank" rel="noopener noreferrer"><u>die Frage war</u></a><a href="https://keymaterial.net/2024/11/05/hashml-dsa-considered-harmful" target="_blank" rel="noopener noreferrer"><u> nur, welche.</u></a> Nach intensiver Diskussion wurde reguläres ML-DSA ausgewählt.</p>
+	<p>Der zweite Punkt ist das <a href="https://datatracker.ietf.org/meeting/122/materials/slides-122-pquip-the-great-private-key-war-of-25-02.pdf" target="_blank" rel="noopener noreferrer"><u>Format des privaten Schlüssels</u></a>. Aufgrund der Art und Weise, wie Kandidaten anhand von Performance-Benchmarks verglichen werden, ist es für die ursprüngliche ML-DSA-Einreichung vorteilhaft, einige Berechnungen im Privaten Schlüssel im Cache zu speichern. Das bedeutet, dass der private Schlüssel größer (mehrere Kilobyte) ist, als er sein müsste, und mehr Validierungsschritte benötigt. Es wurde vorgeschlagen, den privaten Schlüssel auf das Wesentliche zu reduzieren: nur noch ein 32-Byte-<i>Seed</i>. Für den endgültigen Standard hat sich das NIST entschieden, sowohl den Seed als auch den ursprünglichen, größeren privaten Schlüssel zuzulassen. Das ist nicht <a href="https://keymaterial.net/2025/02/19/how-not-to-format-a-private-key" target="_blank" rel="noopener noreferrer"><u>ideal:</u></a> Bleiben Sie besser bei einer der beiden Lösungen. In diesem Fall konnte die IETF keine Entscheidung treffen und fügte sogar eine dritte Option hinzu: ein Paar, bestehend aus dem Seed und dem erweiterten privaten Schlüssel. Technisch gesehen waren sich fast alle einig, dass <i>Seed</i> die bessere Wahl ist. Der Grund, warum dies nicht akzeptabel war, ist, dass einige Anbieter bereits Schlüssel erstellt hatten, für die sie den <i>Seed</i> nicht aufbewahrten. Ja, wir haben bereits ein Post-Quanten-Erbe. Es hat fast ein Jahr gedauert, um diese beiden Entscheidungen zu treffen.</p>
+	<div class="flex anchor relative">
+		<h4 id="hybrids-require-many-choices">Hybride erfordern viele Wahlmöglichkeiten.</h4>
+		<a href="https://blog.cloudflare.com/#hybrids-require-many-choices" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um ein hybrides ML-DSA-Signaturschema zu definieren, sind noch viele weitere Entscheidungen zu treffen. Mit welchem traditionellen Schema lässt sich ML-DSA kombinieren? Welche Sicherheitsstufen auf beiden Seiten? Dann müssen wir auch Entscheidungen für beide Schemata treffen: Welches Format für private Schlüssel soll verwendet werden? Welcher Hash soll für ECDSA verwendet werden? Hybride stellen ihre eigenen neuen Fragen. Erlauben wir die Wiederverwendung der Schlüssel im Hybrid, und wollen wir dadurch Stripping-Angriffe verhindern? Außerdem stellt sich die Frage nach dem Prehashing mit einer dritten Option: Prehash auf hybrider Ebene.</p>
+	<p>Der <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-pq-composite-sigs/12" target="_blank" rel="noopener noreferrer"><u>Entwurf für ML-DSA-Hybrid-Signaturen vom Oktober 2025</u></a> umfasst 18 Varianten, gegenüber <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-pq-composite-sigs/03" target="_blank" rel="noopener noreferrer"><u>26</u></a> ein Jahr zuvor. Auch hier sind sich alle einig, dass das zu viel ist, aber es war schwierig, es weiter zu reduzieren. Um Endnutzern die Auswahl zu erleichtern, wurde eine kurze Liste hinzugefügt, die mit drei Optionen begann und sich dann auf <a href="https://www.ietf.org/archive/id/draft-ietf-lamps-pq-composite-sigs-12.html#section-11.3" target="_blank" rel="noopener noreferrer"><u>sechs</u></a> Optionen erweiterte. Wir gehen davon aus, dass MLDSA44-ECDSA-P256-SHA256 im Internet breite Unterstützung und Verwendung finden wird.</p>
+	<p>Kehren wir nun zur Schlüsselvereinbarung zurück, für die die Standards festgelegt worden sind.</p>
+	<div class="flex anchor relative">
+		<h2 id="tls-stacks-get-support-for-ml-kem">TLS-Stacks unterstützen nun ML-KEM</h2>
+		<a href="https://blog.cloudflare.com/#tls-stacks-get-support-for-ml-kem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der nächste Schritt ist Software-Support. Nicht alle Ökosysteme können sich mit der gleichen Geschwindigkeit bewegen, aber wir haben bereits eine breite Akzeptanz von Post-Quanten-Schlüsselvereinbarungen festgestellt, um dem „Store-now/Decrypt-later“-Prinzip entgegenzuwirken. Aktuelle Versionen aller wichtigen Browser und viele TLS-Bibliotheken und -Plattformen, insbesondere OpenSSL, Go und aktuelle Apple-Betriebssysteme, haben X25519MLKEM768 standardmäßig aktiviert. Verschaffen Sie sich <a href="https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support" target="_blank" rel="noopener noreferrer"><u>hier</u></a> einen Überblick.</p>
+	<p>Auch bei TLS gibt es einen großen Unterschied zwischen Schlüsselaushandlung und Signaturen. Für die Schlüsselvereinbarung können Server und Client die Unterstützung für Post-Quanten-Schlüsselvereinbarungen unabhängig voneinander hinzufügen und aktivieren. Sobald TLS-Verhandlung auf beiden Seiten aktiviert ist, wird Post-Quanten-Schlüsselvereinbarung verwendet. <a href="https://blog.cloudflare.com/post-quantum-for-all#tls-anchor"><u>In diesem Blogbeitrag</u></a> gehen wir näher auf die TLS-Verhandlung ein. Wenn Ihr Produkt lediglich TLS verwendet, könnte Ihr Store-Now/Decrypt-Now-Problem durch eine einfache Softwareaktualisierung der TLS-Bibliothek behoben werden.</p>
+	<p>Post-Quanten-TLS-Zertifikate sind eher lästig. Wenn Sie nicht beide Enden kontrollieren, müssen Sie zwei Zertifikate installieren: ein Post-Quanten-Zertifikat für die neuen Clients und ein traditionelles Zertifikat für die alten Clients. Wenn Sie die automatische Ausstellung von Zertifikaten noch nicht nutzen, könnte dies ein guter Grund sein, <a href="https://letsencrypt.org/docs/client-options" target="_blank" rel="noopener noreferrer"><u>dies zu überprüfen</u></a>. TLS ermöglicht es dem Client zu signalisieren, welche Signaturschemata er unterstützt, sodass der Server ein Post-Quanten-Zertifikat nur für Clients bereitstellen kann, die diese unterstützen. Obwohl fast alle TLS-Bibliotheken die Einrichtung mehrerer Zertifikate unterstützen, gibt es diese Konfiguration leider nicht auf allen Servern. Wenn dies der Fall ist, ist in den meisten Fällen dennoch eine Konfigurationsänderung erforderlich. (Obwohl <a href="https://caddyserver.com" target="_blank" rel="noopener noreferrer"><u>caddy</u></a> das zweifellos für Sie tun wird.)</p>
+	<p>Apropos Post-Quanten-Zertifikate: Es wird einige Zeit dauern, bis Zertifizierungsstellen (ZAs) diese ausstellen können. Ihre <a href="https://csrc.nist.gov/glossary/term/hardware_security_module_hsm" target="_blank" rel="noopener noreferrer"><u>HSMs</u></a> benötigen zunächst (Hardware-)Unterstützung, die dann überprüft werden muss. Außerdem muss die Verwendung der neuen Algorithmen vom <a href="https://cabforum.org" target="_blank" rel="noopener noreferrer"><u>CA/Browser forum</u></a> genehmigt werden. Root-Programme vertreten unterschiedliche Auffassungen hinsichtlich der Zeitpläne. Gerüchten zufolge bereitet eines der Root-Programme ein Pilotprojekt vor, um Ein-Jahres-Zertifikate mit ML-DSA-87 zu akzeptieren – möglicherweise noch vor Ende 2025. Ein entsprechender Antrag im CA/Browser-Forum befindet sich <a href="https://github.com/cabforum/servercert/pull/624" target="_blank" rel="noopener noreferrer"><u>in Vorbereitung</u></a>. Chrome hingegen <a href="https://www.youtube.com/live/O_BXzJv16zQ?t=19274s" target="_blank" rel="noopener noreferrer"><u>zieht es vor</u></a>, zuerst das große Zertifikatsproblem zu beheben. Für die Vorreiter werden die Audits voraussichtlich den Engpass darstellen, da nach der Veröffentlichung der NIST-Standards zahlreiche Einreichungen erfolgen werden. Obwohl wir die ersten Post-Quanten-Zertifikate im Jahr 2026 sehen werden, ist es unwahrscheinlich, dass sie vor 2027 allgemein verfügbar oder von allen Browsern als vertrauenswürdig eingestuft werden.</p>
+	<p>Wir befinden uns in einer interessanten Übergangszeit, in der ein Großteil des Internet-Traffics durch Post-Quanten-Schlüsselvereinbarungen geschützt ist, aber noch kein einziges öffentliches Post-Quanten-Zertifikat verwendet wird.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-search-continues-for-more-schemes">Die Suche nach weiteren Schemas geht weiter.</h2>
+		<a href="https://blog.cloudflare.com/#the-search-continues-for-more-schemes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das NIST hat die Standardisierung der Post-Quanten-Kryptographie noch nicht ganz abgeschlossen. Zwei weitere Wettbewerbe laufen derzeit: <b>Runde 4</b> und die <b>Signatur-Onramp</b>.</p>
+	<div class="flex anchor relative">
+		<h3 id="round-4-winner-hqc">Gewinner der Runde 4: HQC</h3>
+		<a href="https://blog.cloudflare.com/#round-4-winner-hqc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das NIST hat bisher nur ein Post-Quanten-Schlüsselvereinbarungsverfahren standardisiert: ML-KEM. Sie hätten gerne ein zweites, ein <b>Backup KEM</b>, das nicht auf Gittern basiert, falls sich diese als schwächer als erwartet herausstellen sollten. Um diesen zu finden, wurde der ursprüngliche Wettbewerb um eine vierte Runde mit einem vierten Durchgang erweitert, um unter den Finalisten einen Backup-KEM auszuwählen. Im März 2025 wurde <a href="https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption#:~:text=NIST%20has%20chosen%20a%20new,were%20discovered%20in%20ML%2DKEM." target="_blank" rel="noopener noreferrer"><u>HQC</u></a> zur Standardisierung <a href="https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption#:~:text=NIST%20has%20chosen%20a%20new,were%20discovered%20in%20ML%2DKEM." target="_blank" rel="noopener noreferrer"><u>ausgewählt</u></a>.</p>
+	<p>HQC schneidet in jeder einzelnen Metrik deutlich schlechter ab als ML-KEM. HQC-1, die Variante mit der niedrigsten Sicherheitsstufe, benötigt 7 kB Daten im Netzwerk. Dies ist fast das Doppelte der 3 kB, die für ML-KEM-1024, der Variante mit der höchsten Sicherheitsstufe, benötigt werden. Eine ähnliche Lücke besteht bei der CPU-Performance. Auch die HQC-Skalierung verschlechtert sich mit dem Sicherheitsniveau: Während ML-KEM-1024 etwa doppelt so viel kostet wie ML-KEM-512, benötigt die höchste Sicherheitsstufe von HQC die dreifache Datenmenge (21 kB!) und mehr als die vierfache Rechenleistung.</p>
+	<p>Was ist mit der Sicherheit? Um sich gegen schrittweise verbesserte Angriffe abzusichern, hat ML-KEM-768 klare Vorteile gegenüber HQC-1: Es bietet deutlich bessere Performance und weist auf Sicherheitsstufe 3 im Vergleich zu Stufe 1 eine erhebliche Sicherheitsreserve auf. Aber was ist mit plötzlichen Durchbrüchen? Sowohl ML-KEM als auch HQC basieren auf ähnlichen algebraischen Strukturen – auf Gittern bzw. Codes – sodass ein theoretischer Durchbruch beide betreffen könnte. Auch ohne diese algebraischen Strukturen erscheinen Codes und Gitter eng verwandt. Das ist nun reine Spekulation: Ein katastrophaler Angriff auf Gitter könnte Codes verschonen – muss er aber nicht. Immerhin werden auch RSA und ECC, die deutlich unterschiedlicher sind, beide durch Quantencomputer geknackt.</p>
+	<p>Es könnte trotzdem beruhigend sein, HQC für alle Fälle in der Nähe zu haben. An dieser Stelle möchten wir eine Anekdote aus der chaotischen Woche erzählen, in der noch nicht klar war, dass Chens Quantenalgorithmus gegen Gitter fehlerhaft war. Womit sollte ML-KEM ersetzt werden, falls es betroffen wäre? HQC wurde kurz in Betracht gezogen, aber es war klar, dass eine angepasste Variante von ML-KEM weiterhin deutlich leistungsfähiger wäre.</p>
+	<p>Tritt man einen Schritt zurück, so ist die Suche nach einem <i>zweiten</i> effizienten KEM ein Luxusproblem. Wenn ich mir ein neues Post-Quanten-Verfahren wünschen dürfte, würde ich mir kein besseres KEM, sondern ein besseres Signaturschema wünschen. Mal sehen, ob mir das Glück hold ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="signatures-onramp">Signaturen-Onramp</h3>
+		<a href="https://blog.cloudflare.com/#signatures-onramp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ende 2022, nach der Ankündigung der ersten vier ausgewählten Verfahren, rief NIST einen neuen Wettbewerb ins Leben, die sogenannte <i>Signatures Onramp</i>, um <a href="https://csrc.nist.gov/projects/pqc-dig-sig" target="_blank" rel="noopener noreferrer"><u>weitere Signaturschemata</u></a> zu finden. Der Wettbewerb verfolgt zwei Ziele: Erstens soll er gegen mögliche kryptanalytische Durchbrüche bei gitterbasierter Kryptografie absichern. NIST möchte eine Signatur standardisieren, die besser als SLH-DSA ist – sowohl hinsichtlich Größe als auch Rechenaufwand – und nicht auf Gittern basiert. Zweitens sucht man nach einem Verfahren, das sich in Anwendungsfällen bewährt, in denen die bisherigen Kandidaten Schwächen zeigen – auf diese gehen wir später im Beitrag noch ausführlich ein.</p>
+	<p>Im Juli 2023 veröffentlichte NIST die <a href="https://csrc.nist.gov/news/2023/additional-pqc-digital-signature-candidates" target="_blank" rel="noopener noreferrer"><u>40 eingereichten Vorschläge</u></a> zur ersten öffentlichen Begutachtung. Die Kryptografie-Community nahm die Arbeit auf, und wie in einer ersten Runde üblich, wurden viele Verfahren innerhalb einer Woche geknackt. Bis Februar 2024 waren zehn Einreichungen vollständig kompromittiert, und mehrere weitere erheblich geschwächt. Von den verbliebenen Kandidaten wählte NIST im Oktober 2024 vierzehn Vorschläge für die zweite Runde aus.</p>
+	<p>Vor einem Jahr haben wir <a href="https://blog.cloudflare.com/another-look-at-pq-signatures"><u>einen Blogbeitrag</u></a> verfasst, der diese 14 Einreichungen ausführlich behandelt. Die Kurzfassung: Bei Post-Quanten-Signaturschemata wurden erstaunliche Fortschritte erzielt. Wir werden später kurz darauf eingehen und einige aktuelle Informationen über die Fortschritte seit dem letzten Jahr geben. Es ist erwähnenswert, dass der Auswahlprozess, ähnlich dem wichtigsten Post-Quanten-Wettbewerb, mehrere Jahre dauern wird. Es ist unwahrscheinlich, dass eines dieser On-Ramp-Signaturschemata vor 2028 standardisiert wird – falls sie nicht vorher schon kompromittiert werden. Das bedeutet, dass sie in Zukunft zwar sehr willkommen sind, wir aber nicht darauf vertrauen können, dass bessere Signaturverfahren unsere heutigen Probleme lösen werden. Wie Eric Rescorla, der Herausgeber von TLS 1.3, <a href="https://educatedguesswork.org/posts/pq-emergency" target="_blank" rel="noopener noreferrer"><u>schreibt</u></a>: „Man zieht mit den Algorithmen in den Krieg, die man hat, nicht mit denen, die man sich wünscht.“</p>
+	<p>Vor diesem Hintergrund wollen wir uns den Fortschritt der Bereitstellungen ansehen.</p>
+	<div class="flex anchor relative">
+		<h2 id="migrating-the-internet-to-post-quantum-key-agreement">Migration des Internets zur Post-Quanten-Schlüsselvereinbarung</h2>
+		<a href="https://blog.cloudflare.com/#migrating-the-internet-to-post-quantum-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nachdem wir nun einen Gesamtüberblick haben, wollen wir uns einige genaueren Details zu dem jetzt weit verbreiteten X25519MLKEM768 ansehen.</p>
+	<p>Zuerst der Post-Quanten-Bereich. ML-KEM wurde unter dem Namen <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank" rel="noopener noreferrer"><u>CRYSTALS-Kyber</u></a> eingereicht. Obwohl es sich um einen US-Standard handelt, arbeiten die Entwickler in Industrie und Hochschulen in Frankreich, der Schweiz, den Niederlanden, Belgien, Deutschland, Kanada, China und den Vereinigten Staaten. Werfen wir einen Blick auf die Performance.</p>
+	<div class="flex anchor relative">
+		<h2 id="ml-kem-versus-x25519">ML-KEM vs. X25519</h2>
+		<a href="https://blog.cloudflare.com/#ml-kem-versus-x25519" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Heutzutage verwendet die überwiegende Mehrheit der Clients die traditionelle Schlüsselvereinbarung X25519. Vergleichen wir das mit ML-KEM.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VCx6lbwzhKt4FywhRAZbk/4b7956adbb9a7690d3c3c6ce5d830fe1/Screenshot_2025-10-28_at_13.41.31.png" alt="" class="kg-image" width="1364" height="436" loading="lazy">
+	</figure>
+	<p><sup>Größe und CPU im Vergleich zwischen X25519 und ML-KEM. Die Performance variiert je nach Hardwareplattform und Implementierungsbeschränkungen erheblich und sollte nur als grober Richtwert betrachtet werden.</sup></p>
+	<p>ML-KEM-512, -768 und -1024 sollen ebenso resistent gegen (Quanten-)Angriffe wie AES-128, -192 bzw. -256 sein. Selbst auf AES-128-Ebene ist ML-KEM viel größer als X25519 und benötigt 800 + 768 = 1.568 Byte über die Leitung, während X25519 lediglich 64 Byte benötigt.</p>
+	<p>Andererseits ist selbst ML-KEM-1024 in der Regel deutlich schneller als X25519, obwohl dies stark von der jeweiligen Plattform und Implementierung abhängen kann.</p>
+	<div class="flex anchor relative">
+		<h2 id="ml-kem-768-and-x25519">ML-KEM-768 und X25519</h2>
+		<a href="https://blog.cloudflare.com/#ml-kem-768-and-x25519" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir nutzen diesen Geschwindigkeitsvorteil noch nicht. Wie viele andere Early Adopter gehen wir gerne auf Nummer sicher und setzen eine <b>hybride</b> Schlüsselvereinbarung ein, die X25519 und ML-KEM-768 <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-ecdhe-mlkem" target="_blank" rel="noopener noreferrer"><u>kombiniert</u></a>. Diese Kombination mag Sie aus zwei Gründen überraschen.</p>
+	<ol>
+		<li>
+			<p>Warum X25519 („128 Bit Sicherheit“) mit ML-KEM-768 („192 Bit Sicherheit“) kombinieren?</p>
+		</li>
+		<li>
+			<p>Warum sollte man sich mit dem nicht-postquanten X25519 befassen?</p>
+		</li>
+	</ol>
+	<p>Die scheinbare Diskrepanz des Sicherheitsniveaus ist eine Absicherung gegen Fortschritte in der Kryptoanalyse bei gitterbasierter Kryptografie. In die Sicherheit (nicht Post-Quanten) von X25519 setzt großes Vertrauen: Die Anpassung an AES-128 ist mehr als ausreichend. Obwohl wir uns heute der Sicherheit von ML-KEM-512 sicher fühlen, könnte sich die Kryptoanalyse in den kommenden Jahrzehnten verbessern. Daher möchten wir vorerst eine Reserve behalten.</p>
+	<p>Die Einbeziehung von X25519 hat zwei Gründe. Erstens besteht immer die geringe Wahrscheinlichkeit, dass ein Durchbruch alle ML-KEM-Varianten als unsicher erweist. In diesem Fall bietet X25519 weiterhin nicht-post-quantensichere Sicherheit, und unsere Post-Quanten-Migration hat die Situation nicht verschlimmert.</p>
+	<p>Wichtiger ist, dass wir uns nicht nur um Angriffe auf den Algorithmus, sondern auch auf die Implementierung kümmern. Ein bemerkenswertes Beispiel, bei dem wir einem Desaster entgangen sind, ist das von <a href="https://kyberslash.cr.yp.to" target="_blank" rel="noopener noreferrer"><u>KyberSlash</u></a>, einer Timing-Attacke, die viele Implementierungen von Kyber (einer früheren Version von ML-KEM) betraf, einschließlich <a href="https://github.com/cloudflare/circl/security/advisories/GHSA-9763-4f94-gfch" target="_blank" rel="noopener noreferrer"><u>unserer eigenen</u></a>. Glücklicherweise hat KyberSlash keinen Einfluss auf Kyber, da es in TLS verwendet wird. Ein ähnlicher Implementierungsfehler, der sich tatsächlich auf TLS auswirken würde, würde wahrscheinlich einen aktiven Angreifer erfordern. In diesem Fall wäre es wahrscheinlich, dass der Angreifer nicht versucht, Daten nach Jahrzehnten zu entschlüsseln, sondern eher, ein Cookie oder ein anderes Token zu stehlen oder eine böswillige Nutzlast einzuschleusen. Die Einbeziehung von X25519 verhindert einen solchen Angriff.</p>
+	<p>Wie gut funktionieren ML-KEM-768 und X25519 in der Praxis zusammen?</p>
+	<div class="flex anchor relative">
+		<h2 id="performance-and-protocol-ossification">Performance und Protokollverknöcherung</h2>
+		<a href="https://blog.cloudflare.com/#performance-and-protocol-ossification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="browser-experiments">Browser-Experimente</h3>
+		<a href="https://blog.cloudflare.com/#browser-experiments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Google war sich möglicher Kompatibilitäts- und Performance-Probleme bewusst und startete bereits 2016 <a href="https://security.googleblog.com/2016/07/experimenting-with-post-quantum.html" target="_blank" rel="noopener noreferrer"><u>ein erstes Experiment</u></a> mit Post-Quanten-Kryptographie, im selben Jahr, in dem das NIST seinen Wettbewerb startete. Im Jahr 2018 folgte ein zweites größeres gemeinsames Experiment von <a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-tls"><u>Cloudflare</u></a> und <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html" target="_blank" rel="noopener noreferrer"><u>Google.</u></a> Wir haben zwei verschiedene hybride Post-Quanten-Schlüsselvereinbarungen getestet: CECPQ2, eine Kombination aus dem gitterbasierten NTRU-HRSS und X25519, und CECPQ2b, eine Kombination aus dem isogenie-basierten SIKE und X25519. NTRU-HRSS ist ähnlich groß wie ML-KEM, stellt für die Client-Seite aber eine etwas höhere Rechenleistung dar. SIKE hingegen hat sehr kleine Schlüssel, ist rechenaufwendig und wurde 2022 <a href="https://eprint.iacr.org/2022/975.pdf" target="_blank" rel="noopener noreferrer"><u>vollständig kompromittiert</u></a>. In Bezug auf die TLS-Handshake-Zeiten hat X25519+NTRU-HRSS sehr gut abgeschnitten.</p>
+	<p>Leider ist bei einem kleinen, aber erheblichen Teil der Clients die Verbindung mit NTRU-HRSS unterbrochen. Der Grund: die Größe der NTRU-HRSS-Keyshares. In der Vergangenheit passte beim Erstellen einer TLS-Verbindung die erste Nachricht, die vom Client gesendet wurde, das sogenannte <i>ClientHello</i>, fast immer in ein einzelnes Netzwerkpaket. Die TLS-Spezifikation sieht ein größeres <i>ClientHello</i> vor, dies wurde jedoch bisher kaum genutzt. Die Protokollverknöcherung greift erneut, da einige Middleboxes, Load Balancer und andere Software stillschweigend davon ausgehen, dass das <i>ClientHello</i> immer in ein einzelnes Paket passt.</p>
+	<div class="flex anchor relative">
+		<h2 id="long-road-to-50">Ein langer Weg zu 50&nbsp;%</h2>
+		<a href="https://blog.cloudflare.com/#long-road-to-50" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In den darauffolgenden Jahren experimentierten wir kontinuierlich mit PQ, wechselten 2022 zu Kyber und 2024 zu ML-KEM. Chrome hat großartige Arbeit bei der Kontaktaufnahme mit Anbietern geleistet, deren Produkte <a href="https://tldr.fail" target="_blank" rel="noopener noreferrer"><u>nicht kompatibel</u></a> waren. Ohne diese Kompatibilitätsprobleme hätte Chrome die Post-Quanten-Schlüsselvereinbarung wahrscheinlich fünf Jahre früher eingeführt. Es dauerte bis März 2024, bis Chrome sich sicher genug fühlte, die Post-Quanten-Schlüsselvereinbarung standardmäßig auf Desktop-Computern zu aktivieren. Danach haben sich neben Chrome viele andere Clients und alle wichtigen Browser der standardmäßigen Aktivierung der Post-Quanten-Schlüsselvereinbarung angeschlossen. Eine unvollständige Zeitleiste:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Juli 2016</p>
+				</td>
+				<td>
+					<p>Das <a href="https://security.googleblog.com/2016/07/experimenting-with-post-quantum.html" target="_blank" rel="noopener noreferrer"><u>erste Experiment von Chrome mit PQ</u></a> (CECPQ)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Juni 2018</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment"><u>Cloudflare</u></a> / <a href="https://www.imperialviolet.org/2018/12/12/cecpq2.html" target="_blank" rel="noopener noreferrer"><u>Google</u></a>-Experiment (CECPQ2)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Oktober 2022</p>
+				</td>
+				<td>
+					<p>Cloudflare <a href="https://blog.cloudflare.com/post-quantum-for-all"><u>aktiviert</u></a> PQ standardmäßig auf der Serverseite</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>November 2023</p>
+				</td>
+				<td>
+					<p>Chrome erhöht PQ auf Desktops auf 10&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>März 2024</p>
+				</td>
+				<td>
+					<p>Chrome <a href="https://blog.chromium.org/2024/05/advancing-our-amazing-bet-on-asymmetric.html" target="_blank" rel="noopener noreferrer"><u>aktiviert</u></a> PQ standardmäßig auf dem Desktop</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>August 2024</p>
+				</td>
+				<td>
+					<p>Go <a href="https://github.com/golang/go/issues/67061" target="_blank" rel="noopener noreferrer"><u>aktiviert</u></a> PQ standardmäßig</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>November 2024</p>
+				</td>
+				<td>
+					<p>Chrome aktiviert PQ standardmäßig auf Android und Firefox auf Desktop.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>April 2025</p>
+				</td>
+				<td>
+					<p><a href="https://openssl-library.org/post/2025-04-08-openssl-35-final-release" target="_blank" rel="noopener noreferrer"><u>OpenSSL</u></a> aktiviert PQ standardmäßig</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Oktober 2025</p>
+				</td>
+				<td>
+					<p>Apple <a href="https://support.apple.com/en-us/122756" target="_blank" rel="noopener noreferrer"><u>führt</u></a> PQ standardmäßig mit der Veröffentlichung von iOS/iPadOS/macOS 26 ein.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Es ist bemerkenswert, dass eine zeitliche Verzögerung zwischen der Aktivierung von PQ in Chrome auf Desktop- und Android-Geräten besteht. Obwohl ML-KEM, wie in den Grafiken dargestellt, keine großen Auswirkungen auf die Performance hat, ist sie sicherlich nicht unerheblich, insbesondere bei den langsameren Verbindungen, die auf Mobilgeräten häufiger vorkommen, und es waren weitere Überlegungen erforderlich, um fortzufahren.</p>
+	<p>Aber jetzt sind wir endlich da angekommen: Über 50&nbsp;% (Tendenz steigend!) des menschlichen Datenverkehrs ist gegen „Store now, decrypt later“ geschützt, wodurch Post-Quanten-Schlüsselvereinbarungen zur neuen Sicherheitsgrundlage für das Web werden</p>
+	<p>Browser sind eine Seite der Medaille, was ist mit Servern?</p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-support">Serverseitige Unterstützung</h3>
+		<a href="https://blog.cloudflare.com/#server-side-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bereits 2022 haben wir die Serverseite für die Post-Quanten-Schlüsselvereinbarung für praktisch alle Kunden <a href="https://blog.cloudflare.com/post-quantum-for-all"><u>aktiviert</u></a>. Google hat dies im Jahr 2023 für die meisten seiner Server getan (mit Ausnahme von GCP). Seitdem sind viele gefolgt. Jan Schaumann hat regelmäßige Scans der Top-100.000-Domains veröffentlicht. In seinem Beitrag vom September 2025<a href="https://www.netmeister.org/blog/pqc-use-2025-09.html" target="_blank" rel="noopener noreferrer"><u>berichtet er, dass</u></a> jetzt 39&nbsp;% den PQ-Ansatz unterstützen, ein Anstieg von 28&nbsp;% innerhalb von sechs Monaten. In seiner Umfrage sehen wir nicht nur die zunehmende Unterstützung großer Serviceprovider wie Amazon, Fastly, Squarespace, Google und Microsoft, sondern auch eine Zunahme von selbst gehosteten Servern bei Hetzner und OVHcloud.</p>
+	<p>Dies ist das öffentlich zugängliche Web. Was ist mit Servern hinter einem Dienst wie Cloudflare?</p>
+	<div class="flex anchor relative">
+		<h3 id="support-at-origins">Unterstützung am Ursprungsort</h3>
+		<a href="https://blog.cloudflare.com/#support-at-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im <a href="https://blog.cloudflare.com/post-quantum-to-origins"><u>September 2023</u></a> haben wir die Unterstützung für unsere Kunden hinzugefügt, um die Post-Quanten-Schlüsselvereinbarung für Verbindungen von Cloudflare zu ihren Ursprungs-Servern zu aktivieren. Das ist Verbindung (3) im folgenden Diagramm:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dRJxj1f2otMM41sEKFoFG/d722378a6f74c4033787897334bb4e7a/image12.png" alt="Typical connection flow when a visitor requests an uncached page. " class="kg-image" width="1600" height="417" loading="lazy">
+	</figure>
+	<p><sup>Typischer Verbindungsablauf, wenn ein Besucher eine nicht zwischengespeicherte Seite anfordert.</sup></p>
+	<p>Im Jahr 2023 unterstützten nur 0,5&nbsp;% der Ursprungsserver die Post-Quanten-Schlüsselvereinbarung. Daran hat sich bis einschließlich 2024 nicht viel geändert. Dieses Jahr, im Jahr 2025, sehen wir, dass die Unterstützung mit der Einführung der Softwareunterstützung langsam zunimmt und wir jetzt bei 3,7&nbsp;% liegen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LaKKWKWTli5NETFHlQ1za/e9eb1e750a72e62bdc522207451e7085/image7.png" alt="Fraction of origins that support the post-quantum key agreement X25519MLKEM768." class="kg-image" width="1999" height="872" loading="lazy">
+	</figure>
+	<p><sup>Anteil der Ursprünge, die die Post-Quanten-Schlüsselvereinbarung X25519MLKEM768 unterstützen.</sup></p>
+	<p>3,7&nbsp;% klingt im Vergleich zu den vorherigen 50&nbsp;% bzw. 39&nbsp;% für Clients bzw. öffentliche Server wenig beeindruckend, ist aber dennoch nicht zu verachten. Die Vielfalt ist bei den Ursprüngen viel größer als bei den Kunden: Es müssen viel mehr Menschen aktiv werden, damit sich diese Zahl erhöht. Aber es ist immer noch mehr als eine siebenfache Steigerung, und vergessen wir nicht, dass wir im Jahr 2024 das Erreichen von 1,8&nbsp;% Kundensupport gefeiert haben. Für Kunden ist es nicht immer einfach, Ursprünge überhaupt zu aktualisieren. Bedeutet das, dass Sie die Post-Quanten-Sicherheit verpassen? Nein, nicht unbedingt: Sie können die Verbindung zwischen Cloudflare und Ihrem Ursprungsserver sichern, indem Sie <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> als Sidecar zu Ihrem Ursprungsserver einrichten.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bfxtdySAPtc9hn9Qroztz/8233f1fecbed214b9584af6648488587/image3.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ossification">Verknöcherung</h3>
+		<a href="https://blog.cloudflare.com/#ossification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unterstützung ist gut und schön, aber wie wir bei Browser-Experimenten gesehen haben, ist die Protokollverknöcherung ein großes Problem. Wie sieht es mit Ursprüngen aus? Nun, das kommt darauf an.</p>
+	<p>Es gibt zwei Möglichkeiten, die Post-Quanten-Schlüsselvereinbarung zu aktivieren: die schnelle Methode und die langsame, aber sicherere Methode. In beiden Fällen können sie, wenn der Ursprung kein Post-Quanten-Verfahren unterstützt, sicher auf die traditionelle Schlüsselvereinbarung zurückgreifen. Die Details erläutern wir in diesem <a href="https://blog.cloudflare.com/post-quantum-to-origins"><u>Blogbeitrag</u></a>, aber kurz gesagt: In der schnellen Variante senden wir die Post-Quanten-Schlüssel sofort, in der sichereren Variante verzögern wir dies um eine Round-Trip-Zeit mithilfe von <i>HelloRetryRequest</i>. Alle gängigen Browser nutzen die schnelle Methode.</p>
+	<p>Wir haben regelmäßig alle Ursprünge gescannt, um zu sehen, was sie unterstützen. Die gute Nachricht ist, dass alle Ursprünge die sichere, aber langsame Methode unterstützen. Die schnelle Methode schnitt nicht so gut ab, da wir festgestellt haben, dass 0,05&nbsp;% der Verbindungen abbrechen würden. Das ist zu hoch, um die schnelle Methode standardmäßig zu aktivieren. Wir haben PQ für Ursprünge standardmäßig mit der sichereren Methode für alle Nicht-Enterprise-Kunden aktiviert. Enterprise-Kunden können sich dafür entscheiden.</p>
+	<p>Wir sind jedoch erst zufrieden, wenn es schnell ist und für alle aktiviert ist. Deshalb werden wir Post-Quanten für Ursprünge mit der schnellen Methode <a href="https://blog.cloudflare.com/automatically-secure/#post-quantum-era"><u>automatisch für alle Kunden aktivieren</u></a>, wenn unsere Scans zeigen, dass dies sicher ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="internal-connections">Interne Verbindungen</h3>
+		<a href="https://blog.cloudflare.com/#internal-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bisher haben wir nur über Verbindungen zwischen Cloudflare und externen Parteien gesprochen. Es gibt auch viele interne Verbindungen innerhalb von Cloudflare (in den obigen Diagrammen mit 2 markiert). Im Jahr 2023 haben wir <a href="https://blog.cloudflare.com/post-quantum-cryptography-ga"><u>große Anstrengungen unternommen</u></a>, um unsere internen Verbindungen auf Post-Quanten-Schlüsselvereinbarung umzustellen. Im Vergleich zu allen anderen Post-Quanten-Bemühungen, denen wir nachgehen, war dies mit Abstand die größte Aufgabe: Wir haben jedes Engineering-Team im Unternehmen gebeten, seine aktuelle Arbeit zu unterbrechen, eine Bestandsaufnahme der Daten und Verbindungen vorzunehmen, die ihre Produkte sichern, und diese auf Post-Quanten-Schlüsselvereinbarungen umzustellen. In den meisten Fällen war das Upgrade einfach. Tatsächlich wurden viele Teams bereits durch Software-Updates aktualisiert. Dennoch kann es eine Weile dauern, bis man merkt, dass man schon fertig ist! Positiv ist zu vermerken, dass wir bei diesem Push keine Performance- oder Ossifizierungsprobleme festgestellt haben.</p>
+	<p>Wir haben die meisten internen Verbindungen aktualisiert, aber ein großer Rest verbleibt, an dem wir weiterhin arbeiten. Die wichtigste Verbindung, die wir im Jahr 2023 nicht aktualisieren konnten, ist die Verbindung zwischen dem WARP-Client und Cloudflare. Im September 2025 haben wir es <a href="https://blog.cloudflare.com/post-quantum-warp"><u>aufgerüstet</u></a>, indem wir von Wireguard zu QUIC gewechselt sind.</p>
+	<div class="flex anchor relative">
+		<h2 id="outlook">Ausblick</h2>
+		<a href="https://blog.cloudflare.com/#outlook" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie wir gesehen haben, war die Post-Quanten-Schlüsselvereinbarung trotz anfänglicher Schwierigkeiten mit der Protokollverknöcherung unkompliziert zu implementieren. In den allermeisten Fällen handelt es sich um ein unproblematisches Software-Update. Und mit 50&nbsp;% Bereitstellung (Tendenz steigend) ist dies die neue Sicherheitsgrundlage für das Internet.</p>
+	<p>Wenden wir uns der zweiten, schwierigeren Migration zu.</p>
+	<div class="flex anchor relative">
+		<h2 id="migrating-the-internet-to-post-quantum-signatures">Migration des Internets zu Post-Quanten-Signaturen</h2>
+		<a href="https://blog.cloudflare.com/#migrating-the-internet-to-post-quantum-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nun konzentrieren wir uns auf die Aktualisierung der im Internet verwendeten Signaturen.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-zoo-of-post-quantum-signatures">Die Vielfalt der Post-Quanten-Signaturen</h2>
+		<a href="https://blog.cloudflare.com/#the-zoo-of-post-quantum-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Letztes Jahr, im November 2024, haben wir einen <a href="https://blog.cloudflare.com/another-look-at-pq-signatures"><u>langen und tieferen Einblick</u></a> in das Feld der Post-Quanten-Signaturschemata geschrieben. Das meiste davon ist noch aktuell, aber es gab einige interessante Entwicklungen. Hier werden wir nur einige Highlights und spannende Neuerungen des letzten Jahres behandeln.</p>
+	<p>Beginnen wir mit der Bewertung der Post-Quanten-Signaturen, die heute auf dem Sicherheitsniveau von AES-128 verfügbar sind: ML-DSA-44 und die beiden Varianten von SLH-DSA. Wir verwenden ML-DSA-44 als Basis, da dieses Schema anfänglich die weitverbreitetste Anwendung finden wird. Zum Vergleich berücksichtigen wir auch die bewährten Ed25519 und RSA-2048, die heute weit verbreitet sind, sowie FN-DSA-512, das in Kürze standardisiert werden wird, und eine Auswahl von neun vielversprechenden Signaturschemata für TLS aus dem Signaturen-Onramping.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NC2lO6hXKEFOgaVgQ7ExO/a0a65ddbb24d11ad96405f19aa344f4b/Screenshot_2025-10-28_at_13.18.54.png" alt="" class="kg-image" width="1594" height="1138" loading="lazy">
+	</figure>
+	<p><sup>Vergleich verschiedener Signaturschemata auf dem Sicherheitsniveau von AES-128. Die CPU-Zeiten variieren je nach Plattform und Implementierungsbeschränkungen erheblich und sollten nur als grober Richtwert betrachtet werden. ⚠️ FN-DSA-Signaturzeit bei Verwendung schneller, aber gefährlicher Gleitkommaarithmetik – siehe Warnung unten. ⚠️ SQISign-Signierung ist nicht sicher gegen Zeit-Seitenkanalangriffe (Timing Side-Channels).</sup></p>
+	<p>Es ist sofort ersichtlich, dass keines der postquanten-sicheren Signaturschemata auch nur annähernd als Drop-in-Ersatz für Ed25519 (vergleichbar mit ECDSA P-256) infrage kommt, da die meisten Signaturen schlichtweg deutlich größer sind. Ausnahmen bilden SQISign, MAYO, SNOVA und UOV aus der Onramp-Runde – doch auch sie sind weit von einer idealen Lösung entfernt: MAYO, SNOVA und UOV haben große öffentliche Schlüssel, während SQISign enorm rechenintensiv ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="be-careful-with-fn-dsa">Seien Sie vorsichtig mit FN-DSA</h3>
+		<a href="https://blog.cloudflare.com/#be-careful-with-fn-dsa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Etwas vorausschauend: Das Beste aus dem ersten Wettbewerb scheint FN-DSA-512 zu sein. Die Signaturen und der öffentliche Schlüssel von FN-DSA-512 sind zusammen <i>nur</i> 1.563 Byte groß, bei einer einigermaßen akzeptablen Signierzeit. FN-DSA hat jedoch eine <b>Achillesferse</b> – für eine akzeptable Signier-Performance ist eine schnelle Gleitkommaarithmetik erforderlich. Ohne dies ist das Signieren etwa 20-mal langsamer. Aber Geschwindigkeit allein reicht nicht aus – die Gleitkomma-Arithmetik muss in konstanter Zeit ablaufen. Andernfalls kann der private Schlüssel von FN-DSA durch das Timing der Signaturerstellung rekonstruiert werden. Sichere Implementierungen von FN-DSA zu schreiben, hat sich als äußerst schwierig erwiesen, was FN-DSA besonders dann gefährlich macht, wenn Signaturen spontan erzeugt werden – etwa im Rahmen eines TLS-Handshakes. Wichtig ist, dass dies ausschließlich das Signieren betrifft: Die Verifikation von FN-DSA erfordert keine Gleitkomma-Arithmetik (und bei der Verifikation gibt es ohnehin keinen privaten Schlüssel, der kompromittiert werden könnte).</p>
+	<div class="flex anchor relative">
+		<h2 id="there-are-many-signatures-on-the-web">Es gibt viele Signaturen im Web.</h2>
+		<a href="https://blog.cloudflare.com/#there-are-many-signatures-on-the-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der größte Schwachpunkt bei der Migration des Internets zu Post-Quanten-Signaturen ist die große Anzahl an Signaturen selbst bei einer einzigen Verbindung. Wenn Sie diese Website zum ersten Mal besuchen, senden wir <b>fünf Signaturen und zwei öffentliche Schlüssel</b>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6frWEoCLnBEZ5qztV8XoT4/25bd315190d8914f42f282679d6f525a/image9.png" alt="" class="kg-image" width="1164" height="1268" loading="lazy">
+	</figure>
+	<p>Der Großteil dieser Signaturen entfällt auf die <b>Zertifikatskette</b>: Die CA signiert das Zwischenzertifikat, dieses wiederum das Endzertifikat, und dieses signiert schließlich das TLS-Transkript, um die Authentizität des Servers zu bestätigen. Wer mitgezählt hat: Zwei Signaturen fehlen noch.</p>
+	<p>Diese sind für die <b>SCTs</b> bestimmt, die für die <a href="https://certificate.transparency.dev/howctworks" target="_blank" rel="noopener noreferrer"><u>Transparenz der Zertifikate</u></a> erforderlich sind. Zertifikatstransparenz (Certificate Transparency, CT) ist ein wichtiger, aber weniger bekannter Bestandteil der <a href="https://smallstep.com/blog/everything-pki/#web-pki-vs-internal-pki" target="_blank" rel="noopener noreferrer"><u>Web-PKI</u></a>, dem Ökosystem, das Browserverbindungen absichert. Ziel ist es, jedes ausgestellte Zertifikat öffentlich zu protokollieren, sodass Fehlerausstellungen im Nachhinein erkannt werden können. Es ist das System, das hinter <a href="http://crt.sh" target="_blank" rel="noopener noreferrer"><u>crt.sh</u></a> und <a href="https://blog.cloudflare.com/new-regional-internet-traffic-and-certificate-transparency-insights-on-radar"><u>Cloudflare Radar</u></a> steht. CT hat seinen Wert erneut unter Beweis gestellt, indem ein abtrünniges <a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1"><u>Zertifikat für 1.1.1.1 aufgedeckt</u></a> wurde.</p>
+	<p>Certificate Transparency funktioniert, indem unabhängige Parteien <i>CT logs</i> betreiben. Vor der Ausstellung eines Zertifikats muss eine Zertifizierungsstelle dieses zuerst an mindestens zwei verschiedene CT-Protokolle übermitteln. Ein SCT ist eine Signatur eines CT-Protokolls, die als Nachweis dient, eine Art <i>Bestätigung</i>, dass das Zertifikat protokolliert wurde.</p>
+	<div class="flex anchor relative">
+		<h3 id="tailoring-signature-schemes">Maßgeschneiderte Signaturschemata</h3>
+		<a href="https://blog.cloudflare.com/#tailoring-signature-schemes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der Verwendung einer Signatur gibt es zwei Aspekte, die hervorzuheben sind: ob der <b>öffentliche Schlüssel in der Signatur enthalten ist</b> und ob die Signatur <b>online</b> oder <b>offline</b> ist.</p>
+	<p>Für die SCTs und die Signatur der Wurzel über das Intermediate wird der öffentliche Schlüssel während des Handshakes nicht übertragen. Daher eignen sich hierfür besonders Signaturschemata mit kleinen Signaturen, aber größeren öffentlichen Schlüsseln – etwa MAYO, SNOVA oder UOV. Für alle anderen Signaturen hingegen wird der öffentliche Schlüssel mitübertragen, weshalb dort vor allem die kombinierte Größe aus öffentlichem Schlüssel und Signatur entscheidend ist.</p>
+	<p>Die Handshake-Signatur ist die einzige Signatur, die online erstellt wird. Alle anderen Signaturen werden im Voraus erstellt.&nbsp; Die Handshake-Signatur wird nur einmal erstellt und verifiziert, während die anderen Signaturen typischerweise von verschiedenen Clients mehrmals verifiziert werden. Das bedeutet, dass es für die Handshake-Signatur vorteilhaft ist, die Signier- und Verifizierungszeit auszugleichen, da beide im <i>hot path</i> liegen, während es sich für die anderen Signaturen lohnt, eine bessere Verifizierungszeit auf Kosten einer langsameren Signierung zu haben. Dies ist einer der Vorteile, die RSA bis heute gegenüber elliptischen Kurvensignaturen genießt.</p>
+	<p>Das Zusammensetzen verschiedener Signaturschemata ist eine interessante Herausforderung, bringt aber auch einige Nachteile mit sich. Die Verwendung mehrerer Verfahren vergrößert die Angriffsfläche, denn eine Schwachstelle in nur einem Algorithmus oder dessen Implementierung gefährdet das gesamte System. Zudem muss das gesamte Ökosystem mehrere Algorithmen implementieren und optimieren, was einen erheblichen Aufwand bedeutet.</p>
+	<div class="flex anchor relative">
+		<h2 id="putting-it-together">Fazit und Ausblick</h2>
+		<a href="https://blog.cloudflare.com/#putting-it-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Welche sinnvollen Kombinationen sollten wir also ausprobieren?</p>
+	<div class="flex anchor relative">
+		<h3 id="with-nists-current-picks">Mit den aktuellen NIST-Empfehlungen</h3>
+		<a href="https://blog.cloudflare.com/#with-nists-current-picks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Angesichts der heute verfügbaren Entwürfe haben wir nicht viele Möglichkeiten.</p>
+	<p>Wenn wir einfach für alle Signaturen auf ML-DSA-44 umstellen, kommen 15 KB an Daten hinzu, die während des TLS-Handshakes vom Server zum Client übertragen werden müssen. Ist das viel? Wahrscheinlich. Darauf gehen wir später noch ein.</p>
+	<p>Wenn wir noch etwas warten und alles außer der Handshake-Signatur durch FN-DSA-512 ersetzen, werden nur 7 kB hinzugefügt. Das ist viel besser, aber ich muss noch einmal sagen, dass es schwierig ist, eine FP-DSA-512-Signierung sicher zu implementieren, ohne die Seitenkanäle zu stoppen. Ein weiterer Weg, sich <i>heutzutage</i> selbst ein Bein zu stellen, ist die Verwendung zustandsbehafteter Hash-basierter Signaturen – wie wir <a href="https://blog.cloudflare.com/pq-2024/#stateful-hash-based-signatures"><u>hier</u></a> erklären. Insgesamt bieten sowohl FN-DSA-512 als auch zustandsbehaftete Hash-basierte Signaturen einen klaren Leistungsvorteil gegenüber ML-DSA-44 – sind jedoch schwer sicher zu handhaben.</p>
+	<div class="flex anchor relative">
+		<h3 id="signatures-on-the-horizon">Signaturen zeichnen sich ab</h3>
+		<a href="https://blog.cloudflare.com/#signatures-on-the-horizon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es gibt einige vielversprechende neue Signaturverfahren, die beim NIST On-Ramp eingereicht wurden.</p>
+	<p>Rein von den Größen her ist SQISign I der klare Gewinner und übertrifft sogar RSA-2048. Leider ist der Rechenaufwand für die Signierung und insbesondere für die Verifizierung zu hoch. SQISign ist in Bezug auf die Implementierungssicherheit schlechter aufgestellt als FN-DSA: Die Lösung ist sehr kompliziert, und es ist unklar, wie eine Signierung in <i>konstanter Zeit</i> durchgeführt werden kann. Für Nischenanwendungen könnte SQISign nützlich sein, aber für eine allgemeine Akzeptanz müssen die Verifizierungszeiten deutlich verbessert werden, selbst wenn dies eine größere Signatur erfordert. In den letzten Jahren wurden erstaunliche Fortschritte bei der Verbesserung der Verifizierungszeit und der Vereinfachung des Algorithmus erzielt; ebenso wurde die <a href="https://eprint.iacr.org/2025/832" target="_blank" rel="noopener noreferrer"><u>Implementierungssicherheit</u></a> für (Varianten von) SQISign verbessert. Sie sind noch nicht so weit, aber die Lücke hat sich viel stärker verringert, als wir erwartet hätten. Wenn das Verbesserungstempo anhält, könnte ein zukünftiges SQISign durchaus für TLS geeignet sein.</p>
+	<p>Ein konservativer Anwärter ist <a href="https://link.springer.com/chapter/10.1007/3-540-48910-X_15" target="_blank" rel="noopener noreferrer"><u>UOV (Unbalanced Oil and Vinegar).</u></a> Es handelt sich um ein älteres, multivariates Schema mit einem großen öffentlichen Schlüssel (66,5 kB), aber kleinen Signaturen (96 Byte). Im Laufe der Jahrzehnte gab es viele Versuche, den öffentlichen UOV-Schlüsseln eine Struktur zu verleihen, um ein besseres Gleichgewicht zwischen der Größe des Öffentlichen Schlüssels und der Signatur zu erzielen. Viele dieser sogenannten <i>strukturierten multivariaten</i> Verfahren, darunter Rainbow und GeMMS, wurden leider spektakulär <a href="https://eprint.iacr.org/2022/214.pdf" target="_blank" rel="noopener noreferrer"><u>„mit einem Laptop über das Wochenende“</u></a> geknackt. MAYO und SNOVA, auf die wir gleich noch eingehen werden, sind die neuesten Versuche für strukturierte multivariate Analysen. UOV selbst ist weitgehend unbeschadet geblieben. Überraschenderweise entdeckte Lars Ran im Jahr 2025 einen völlig neuen <a href="https://eprint.iacr.org/2025/1143" target="_blank" rel="noopener noreferrer"><u>„Wedges“-Angriff</u></a> auf UOV. UOV hat keinen großen Einfluss, obwohl SNOVA und MAYO stärker betroffen sind. Bemerkenswert an diesem Angriff ist, dass er auf einer relativ einfachen Idee basiert: Es ist überraschend, dass er nicht schon früher entdeckt wurde. Um nun auf die Performance zurückzukommen: Wenn wir UOV für den Stamm und SCTs mit ML-DSA-44 für die anderen kombinieren, erhalten wir nur 10 kB – nahe an FN-DSA-512.</p>
+	<p>Nun kommen wir zum Hauptereignis:</p>
+	<div class="flex anchor relative">
+		<h3 id="the-fight-between-mayo-versus-snova">Der Kampf zwischen MAYO und SNOVA</h3>
+		<a href="https://blog.cloudflare.com/#the-fight-between-mayo-versus-snova" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Betrachtet man die heutige Liste, sehen MAYO und insbesondere SNOVA aus Performance-Gesichtspunkten großartig aus. Letztes Jahr lagen SNOVA und MAYO in Bezug auf die Performance enger beieinander, aber sie haben sich deutlich voneinander entfernt.</p>
+	<p><a href="https://pqmayo.org" target="_blank" rel="noopener noreferrer"><u>MAYO</u></a> wurde von dem Kryptografen entwickelt, der <a href="https://eprint.iacr.org/2022/214.pdf" target="_blank" rel="noopener noreferrer"><u>Rainbow</u></a> geknackt hat. Als strukturiertes multivariates Verfahren erfordert MAYO eine besonders sorgfältige Prüfung der Sicherheit – doch sofern es nicht geknackt wird, ist sein Nutzen äußerst attraktiv. MAYO ermöglicht eine fein abgestimmte Abwägung zwischen Signatur- und öffentlicher Schlüsselgröße. Für die Einreichung schlugen die Autoren zwei konkrete Varianten vor: MAYO<sub>one</sub> mit ausgewogenem Verhältnis (Signatur: 454 Byte, Public Key: 1,4 kB) und MAYO<sub>two</sub> mit kleineren Signaturen (216 Byte) und einem noch akzeptablen Public Key (4,3 kB). Die Verifizierungszeiten sind ausgezeichnet, während die Signierzeiten etwas langsamer als bei ECDSA sind, aber weitaus besser als bei RSA. Wenn wir beide Varianten auf die offensichtliche Weise kombinieren, betrachten wir lediglich 4,3 kB. Diese Zahlen sind etwas höher als im Vorjahr, da MAYO seine Parameter erneut leicht angepasst hat, um neu entdeckte Angriffe zu berücksichtigen.</p>
+	<p><a href="https://snova.pqclab.org" target="_blank" rel="noopener noreferrer"><u>SNOVA</u></a> war im Laufe des Wettbewerbs härter unter Beschuss als MAYO. Die Reaktion von SNOVA war aggressiver: Anstatt lediglich Parameter zur Anpassung zu optimieren, wurden auch größere Änderungen an den internen Systemen des Schemas vorgenommen, um die Angriffe abzuwehren und zusätzlich eine Performance zu erzielen. Wenn wir SNOVA<sub>(37,17,16,2)</sub> und SNOVA<sub>(24,5,23,4)</sub> auf die offensichtliche Weise kombinieren, erhalten wir gerade einmal erstaunliche 2,1 kB.</p>
+	<p>Wir sehen, dass sich ein Kräftemessen zwischen dem riskanten, aber viel kleineren SNOVA und dem konservativen, aber langsameren MAYO abzeichnet. Beide bieten eine sehr gute Performance, und bei beiden ist der Einsatz jetzt zu riskant. Rans neuer Wedge-Angriff ist ein Beispiel dafür, dass das Gebiet der multivariaten Kryptoanalyse immer noch Überraschungen birgt und mehr Aufmerksamkeit und Zeit benötigt. Es ist noch zu früh, um einen Gewinner zwischen SNOVA und MAYO zu bestimmen. Man lasse sie weiterhin konkurrieren. Selbst wenn sie sich als sicher erweisen sollten, wird voraussichtlich keine von beiden bis 2029 standardisiert sein. Das bedeutet, dass wir uns bei der anfänglichen Migration zur Post-Quanten-Authentifizierung nicht auf sie verlassen können.</p>
+	<p>Ist die Größe von 15 kB für ML-DSA-44 wirklich so schlimm?</p>
+	<div class="flex anchor relative">
+		<h2 id="do-we-really-care-about-the-extra-bytes">Sind uns die zusätzlichen Bytes wirklich wichtig?</h2>
+		<a href="https://blog.cloudflare.com/#do-we-really-care-about-the-extra-bytes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Durchschnitt werden etwa 18 Millionen TLS-Verbindungen pro Sekunde mit Cloudflare aufgebaut. Für ein Upgrade auf ML-DSA würden jeweils 2,1&nbsp;Tbit/s benötigt, was 0,5&nbsp;% unserer aktuellen gesamten Netzwerkkapazität entsprechen würde. Bisher kein Problem. Die Frage ist, wie sich diese zusätzlichen Bytes auf die Performance auswirken.</p>
+	<p>Für den Austausch von ML-DSA-44 werden zusätzlich 15 kB benötigt. Das ist viel im Vergleich zu einem heutigen typischen Handshake, aber wenig im Vergleich zu dem JavaScript und den Bildern, die viele Webseiten ausliefern. Der springende Punkt ist, dass die Änderung, die wir hier vornehmen müssen, jede einzelne TLS-Verbindung betrifft, unabhängig davon, ob sie für eine umfangreiche Website oder einen zeitkritischen API-Aufruf verwendet wird. Es geht also nicht nur darum, etwas länger zu warten. Wenn Sie einen lückenhaften Mobilfunkempfang haben, können diese zusätzlichen Daten den Unterschied zwischen dem Laden einer Seite und einem Verbindungs-Timeout ausmachen. (Nebenbei bemerkt, wenn wir schon über Overhead sprechen: Viele Apps führen <a href="https://thomwiggers.nl/publication/tls-on-android/tls-on-android.pdf" target="_blank" rel="noopener noreferrer"><u>erstaunlich viele TLS-Handshakes durch</u></a>.)</p>
+	<p>Genau wie bei der Schlüsselvereinbarung ist die Performance nicht unser einziges Anliegen: Wir wollen in erster Linie, dass die Verbindung überhaupt zustande kommt. Im Jahr 2021 haben <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures"><u>wir ein Experiment durchgeführt</u></a>, bei dem die Zertifikatskette künstlich vergrößert wurde, um größere Post-Quanten-Zertifikate zu simulieren. Wir fassen das Ergebnis <a href="https://blog.cloudflare.com/pq-2024/#do-we-really-care-about-the-extra-bytes"><u>hier</u></a> zusammen. Ein wichtiger Aspekt ist, dass einige Clients oder Middleboxes keine Zertifikatsketten größer als 10 KB mögen. Bei einer <a href="https://eprint.iacr.org/2018/063.pdf" target="_blank" rel="noopener noreferrer"><u>Migrationsstrategie mit einem einzigen Zertifikat</u></a> ist dies problematisch. Bei diesem Ansatz installiert der Server ein einzelnes traditionelles Zertifikat, das ein separates Post-Quanten-Zertifikat in einer sogenannten nicht kritischen Erweiterung installiert. Ein Client, der Post-Quanten-Zertifikate nicht unterstützt, ignoriert die Erweiterung. Bei diesem Ansatz führt die Installation des einzelnen Zertifikats sofort dazu, dass alle Clients mit Kompatibilitätsproblemen beeinträchtigt werden, was die Sache von vornherein zum Scheitern verurteilt. Auch auf der Performance-Seite gibt es aufgrund des anfänglichen Überlastungsfensters einen deutlichen Performanceabfall bei 10 kB.</p>
+	<p>
+	</p>
+	<p>Sind 9 KB zu viel? Die Verlangsamung der TLS-Handshake-Zeit würde etwa 15&nbsp;% betragen. Wir halten Letzteres für machbar, aber alles andere als ideal: Eine solche Verlangsamung ist spürbar, und die Leute könnten die Bereitstellung von Post-Quanten-Zertifikaten aufschieben, bis es zu spät ist.
+	</p>
+	<p>Chrome ist vorsichtiger und hat 10&nbsp;% als Ziel für die maximale Regression der TLS-Handshake-Zeit festgelegt. Sie <a href="https://dadrian.io/blog/posts/pqc-signatures-2024/#fnref:3" target="_blank" rel="noopener noreferrer"><u>berichten</u></a>, dass die Bereitstellung von Post-Quanten-Schlüsselvereinbarungen bereits zu einer Verlangsamung der TLS-Handshake-Zeit von 4&nbsp;% geführt hat, aufgrund der zusätzlichen 1,1 kB vom Server zum Client und 1,2 kB vom Client zum Server. Diese Verlangsamung ist proportional größer als die 15&nbsp;%, die wir bei 9&nbsp;kB festgestellt haben. Dies könnte jedoch an langsameren Upload- als Download-Geschwindigkeiten liegen.&nbsp;</p>
+	<p>Der Fokus auf TLS-Handshake-Zeiten stieß auf Widerstand. Ein Argument ist, dass die Sitzungswiederaufnahme das erneute Senden der Zertifikate überflüssig macht. Ein zweites Argument ist, dass die Datenmenge, die für den Besuch einer typischen Website benötigt wird, die zusätzlichen Bytes für Post-Quanten-Zertifikate in den Schatten stellt. Ein Beispiel ist diese <a href="https://www.amazon.science/publications/the-impact-of-data-heavy-post-quantum-tls-1-3-on-the-time-to-last-byte-of-real-world-connections" target="_blank" rel="noopener noreferrer"><u>Publikation aus dem Jahr 2024</u></a>, in der Amazon-Forscher die Auswirkungen großer Post-Quanten-Zertifikate auf datenlastige TLS-Verbindungen simuliert haben. Sie argumentieren, dass typische Verbindungen mehrere Anfragen und Hunderte von Kilobyte übertragen, und dass bei solchen Verbindungen die Verlangsamung des TLS-Handshake kaum ins Gewicht fällt.</p>
+	<p>Sind die Wiederaufnahme einer Sitzung und Hunderte von Kilobyte über eine Verbindung jedoch typisch? Wir möchten Ihnen mitteilen, was wir sehen. Wir konzentrieren uns auf QUIC-Verbindungen, die wahrscheinlich von Browsern oder browserähnlichen Clients initiiert werden. Von allen QUIC-Verbindungen mit Cloudflare, die mindestens eine HTTP-Anfrage übertragen, sind 27&nbsp;% <a href="https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption"><u>Wiederaufnahmen</u></a>, was bedeutet, dass Schlüsselmaterial einer früheren TLS-Verbindung wiederverwendet wird, wodurch die Übertragung von Zertifikaten vermieden wird. Die mittlere Anzahl der Bytes, die über eine wiederaufgenommene QUIC-Verbindung vom Server zum Client übertragen werden, beträgt 4,4&nbsp;kB, während der Durchschnitt bei 259&nbsp;kB liegt. Für Nicht-Wiederaufnahmen liegt der Median bei 8,1&nbsp;kB und der Durchschnitt bei 583&nbsp;kB. Dieser große Unterschied zwischen Median und Durchschnitt deutet darauf hin, dass ein kleiner Teil datenlastiger Verbindungen den Durchschnitt verfälscht. Tatsächlich übertragen nur 15,5&nbsp;% aller QUIC-Verbindungen mehr als 100 kB.</p>
+	<p>Die mittlere Zertifikatskette (mit Komprimierung) beträgt heute <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-cert-abridge-02#section-4" target="_blank" rel="noopener noreferrer"></a>3,2&nbsp;kB. Das bedeutet, dass fast 40&nbsp;% aller Daten, die bei mehr als der Hälfte der nicht fortgesetzten QUIC-Verbindungen vom Server zum Client übertragen werden, lediglich für die Zertifikate bestimmt sind. Dies verschlimmert sich mit Post-Quanten-Algorithmen noch. Für die Mehrheit der QUIC-Verbindungen würde die Verwendung von ML-DSA-44 als direkter Ersatz für klassische Signaturen die Anzahl der übertragenen Bytes über die Lebensdauer der Verbindung mehr als verdoppeln.</p>
+	<p>Es klingt durchaus problematisch, wenn der Großteil der übertragenen Daten bei einer typischen Verbindung allein auf Post-Quanten-Zertifikate entfällt. Letztlich ist das jedoch nur ein Stellvertreter für das, was wirklich zählt: den Einfluss auf für Endnutzer relevante Kennzahlen, wie z. B. das Ladeerlebnis (etwa die <a href="https://web.dev/articles/optimize-lcp" target="_blank" rel="noopener noreferrer"><u>Largest Contentful Paint</u></a>) und den Anteil der Zertifikate am monatlichen Datenvolumen. Wir werden die Auswirkungen weiter untersuchen, um ein besseres Verständnis zu erlangen.</p>
+	<div class="flex anchor relative">
+		<h2 id="way-forward-for-post-quantum-authentication">Die nächsten Schritte für die Post-Quanten-Authentifizierung</h2>
+		<a href="https://blog.cloudflare.com/#way-forward-for-post-quantum-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der Weg zur Migration des Internets hin zu Post-Quanten-Authentifizierung ist weitaus weniger klar als bei der Schlüsselaushandlung. Wenn die Performance nicht deutlich näher an die heutiger Authentifizierung heranreicht, ist zu erwarten, dass die Mehrheit postquantische Authentifizierung deaktiviert lässt. Wird die Aktivierung bis kurz vor dem Q-Day hinausgezögert, besteht das reale Risiko, dass Probleme erst erkannt werden, wenn es zu spät ist, sie zu beheben. Daher ist es unerlässlich, die Post-Quanten-Authentifizierung so leistungsfähig zu gestalten, dass sie standardmäßig aktiviert werden kann.</p>
+	<p>Wir untersuchen verschiedene Ideen, um die Anzahl der Signaturen zu reduzieren, in aufsteigender Reihenfolge des Umfangs: Auslassen von Zwischenprodukten, KEMTLS und Merkle-Tree-Zertifikate. Wir haben diese Themen <a href="https://blog.cloudflare.com/pq-2024/#reducing-number-of-signatures"><u>im vergangenen Jahr ausführlich</u></a> behandelt. Beim letzten Punkt wurden die größten Fortschritte erzielt: <a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs" target="_blank" rel="noopener noreferrer"><u>Merkle-Tree-Zertifikate</u></a> (MTC). In diesem Vorschlag werden im Normalfall alle Signaturen außer der Handshake-Signatur durch einen kurzen Merkle-Tree-Proof von &lt;800 Byte ersetzt. Dies könnte durchaus eine Post-Quanten-Authentifizierung ermöglichen, die tatsächlich schneller ist als die Verwendung herkömmlicher Zertifikate heutzutage! Zusammen mit Chrome werden wir es bis Ende des Jahres ausprobieren. Mehr dazu in <a href="https://blog.cloudflare.com/bootstrap-mtc"><u>diesem Blogpost</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="not-just-tls-authentication-and-key-agreement">Nicht nur TLS, Authentifizierung und Schlüsselaushandlung</h3>
+		<a href="https://blog.cloudflare.com/#not-just-tls-authentication-and-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Trotz seiner Länge haben wir in diesem Blogbeitrag die Migration von TLS nur am Rande behandelt. Und selbst TLS haben wir nicht vollständig behandelt, da wir <a href="https://blog.cloudflare.com/announcing-encrypted-client-hello"><u>Encrypted ClientHello</u></a> noch nicht besprochen haben (wir haben es nicht vergessen). Obwohl TLS wichtig ist, ist es nicht der einzige Schlüsselprotokoll für die Sicherheit des Internets. Wir möchten kurz einige weitere Herausforderungen erwähnen, können aber nicht näher ins Detail gehen. Eine besondere Herausforderung stellt DNSSEC dar, welches für die Sicherung der Auflösung von Domainnamen verantwortlich ist.</p>
+	<p>Obwohl Schlüsselaustausch und Signaturen die am weitesten verbreiteten kryptographischen Primitiven sind, beobachten wir seit einigen Jahren auch den Einsatz zunehmend <a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u>esoterischer Kryptographie</u></a> für fortgeschrittene Anwendungsfälle – etwa unlinkable Tokens mit <a href="https://blog.cloudflare.com/privacy-pass-standard"><u>Privacy Pass</u></a> / <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standardhttps://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard"><u>PAT</u></a>, anonyme Berechtigungsnachweise oder <a href="https://blog.cloudflare.com/inside-geo-key-manager-v2"><u>attributbasierte Verschlüsselung</u></a>, um nur einige zu nennen. Für die meisten dieser fortschrittlichen kryptografischen Schemata gibt es bisher noch keine bekannte, praktikable Post-Quanten-Alternative. Allerdings gibt es zu unserer Freude große Fortschritte bei der Anonymität von Post-Quanten-Berechtigungen.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-you-can-do-today-to-stay-safe-against-quantum-attacks">Was Sie heute tun können, um sich vor Quantenangriffen zu schützen</h2>
+		<a href="https://blog.cloudflare.com/#what-you-can-do-today-to-stay-safe-against-quantum-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zusammenfassend lässt sich sagen, dass man im Auge behalten sollte: Schlüsselvereinbarung und Zertifikate.</p>
+	<p>Wir empfehlen die Umstellung auf eine <b>Post-Quanten-Schlüsselvereinbarung</b>, um Store-Now/Decrypt-Later-Angriffe abzuwehren. Dies erfordert lediglich ein Softwareupdate auf beiden Seiten. Das bedeutet, dass Sie mit der schnellen Einführung (wir <a href="https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support" target="_blank" rel="noopener noreferrer"><u>führen eine Liste</u></a>) von X25519MLKEM768 in Software und Diensten bereits gegen Store-Now/Decrypt-Later geschützt sein könnten! Auf Cloudflare Radar können Sie <a href="https://radar.cloudflare.com/adoption-and-usage#browser-support" target="_blank" rel="noopener noreferrer"><u>überprüfen</u></a>, ob Ihr Browser X25519MLKEM768 unterstützt; wenn Sie Firefox verwenden, gibt es <a href="https://addons.mozilla.org/en-US/firefox/addon/pqspy" target="_blank" rel="noopener noreferrer"><u>eine Erweiterung</u></a>, mit der Sie die Unterstützung von Websites während Ihres Besuchs überprüfen können; Sie können <a href="https://pqscan.io" target="_blank" rel="noopener noreferrer"><u>hier</u></a> scannen, ob Ihre Website dies unterstützt; und Sie können Wireshark verwenden, um dies <a href="https://www.netmeister.org/blog/tls-hybrid-kex.html" target="_blank" rel="noopener noreferrer"><u>im Netzwerk</u></a> zu überprüfen.</p>
+	<p>Das sind nur Stichproben. Für eine ordnungsgemäße Migration müssen Sie ermitteln, wo Kryptografie eingesetzt wird. Das ist eine hohe Anforderung, da die meisten Unternehmen bereits Schwierigkeiten haben, den Überblick über ihre gesamte Software, Services und externen Anbieter zu behalten. Es wird Systeme geben, die schwer zu aktualisieren sind oder externe Abhängigkeiten aufweisen, aber in vielen Fällen ist es einfach. Tatsächlich werden Sie in vielen Fällen viel Zeit investieren, um herauszufinden, dass diese bereits erledigt sind.</p>
+	<p>Da das Herausfinden, <i>was zu tun ist</i>, den Großteil der Arbeit ausmacht, liegt es nahe, dies als ersten Meilenstein auszugliedern: zunächst eine detaillierte Bestandsaufnahme erstellen – die sogenannte <a href="https://github.com/IBM/CBOM" target="_blank" rel="noopener noreferrer"><u>Cryptographic Bill of Materials</u></a> (CBOM). Doch eine solche Bestandsaufnahme darf kein Selbstzweck werden: Wir müssen das eigentliche Ziel im Blick behalten. Die meisten Fälle sind einfach: Wenn klar ist, wie man migrieren kann, sollte man nicht zögern oder auf später verschieben, sondern direkt umsetzen. Das bedeutet nicht, dass es schnell geht – es ist ein Marathon, kein Sprint.Aber man wird überrascht sein, wie viel sich bereits mit den ersten Schritten erreichen lässt.</p>
+	<p><b>Zertifikate.</b> Zum Zeitpunkt des Verfassens dieses Blogbeitrags im Oktober 2025 stehen die endgültigen Standards für Post-Quanten-Zertifikate noch nicht fest. Hoffentlich dauert die Lösung nicht zu lange. Aber es gibt viel, was Sie jetzt tun können, um sich auf Post-Quanten-Zertifikate vorzubereiten, was Sie keinesfalls bereuen werden. Halten Sie die Software auf dem neuesten Stand. Automatisieren Sie die Ausstellung von Zertifikaten. Stellen Sie sicher, dass Sie mehrere Zertifikate installieren können.</p>
+	<p>Wenn Sie Bedenken hinsichtlich der Protokollverknöcherung haben, gibt es keinen Grund zu warten: Die finalen Post-Quanten-Standards werden sich nicht wesentlich von dem Entwurf unterscheiden. Sie können heute vorläufige Implementierungen (oder große Dummy-Zertifikate) testen.</p>
+	<p>Die Post-Quanten-Migration ist etwas Besonderes. Wenn die Kryptografie kompromittiert wird, geschieht dies normalerweise entweder plötzlich oder so allmählich, dass es eine Zeit lang leicht zu ignorieren ist. In beiden Fällen werden Migrationen letztendlich übereilt durchgeführt. Angesichts der Quantenbedrohung wissen wir mit Sicherheit, dass wir einen Großteil der Kryptographie ersetzen müssen, aber wir haben auch noch Zeit. Wir laden Sie ein, dies nicht nur als eine lästige Pflicht zu sehen, sondern als eine Chance: Wir müssen jetzt Wartungsarbeiten an vielen Systemen durchführen, die selten benutzt werden. Anstelle von reinen Hotfixes bietet sich jetzt die Gelegenheit, frühere Entscheidungen zu überdenken. </p>
+	<p>Zumindest, wenn Sie jetzt anfangen. Wir wünschen Ihnen viel Erfolg bei Ihrer Migration. Sollten Sie auf Probleme stoßen, wenden Sie sich bitte an: ask-research@cloudflare.com</p>
+</div>

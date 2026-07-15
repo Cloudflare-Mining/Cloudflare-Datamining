@@ -1,0 +1,110 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/scan-cloud-dlp-with-casb">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/scan-cloud-dlp-with-casb">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/scan-cloud-dlp-with-casb">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/scan-cloud-dlp-with-casb">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/scan-cloud-dlp-with-casb">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/scan-cloud-dlp-with-casb">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/scan-cloud-dlp-with-casb">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hZUKPoHuvfDk2w9Cdm7Hs/284b2fc5add90e2da1550bd003e1fc46/Feature_Image_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>C'est aujourd'hui que se termine la Security Week 2025 et, après une semaine riche en articles de blog sur des sujets variés, nous sommes ravis de vous présenter les dernières nouveautés concernant les produits de sécurité des données de Cloudflare.</p>
+	<p>Cette annonce nous amène à découvrir la plateforme SASE de Cloudflare, <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, utilisée par les équipes informatiques et de sécurité des entreprises pour gérer la sécurité de leurs collaborateurs, leurs applications et leurs outils tiers en un seul endroit.</p>
+	<p>À compter d'aujourd'hui, les utilisateurs de Cloudflare One peuvent désormais utiliser le produit <a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a> (Cloud Access Security Broker) pour intégrer et analyser Amazon Web Services (AWS) S3 et Google Cloud Storage, à la recherche de problèmes liés à la stratégie de sécurité et de prévention des pertes de données (DLP). <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer"><u>Créez un compte gratuit</u></a> pour en savoir plus.</p>
+	<p>En procédant à des analyses à la fois ponctuelles et continues, les utilisateurs peuvent identifier des erreurs de configuration liées à la gestion de l'identité et des accès (IAM), aux buckets et aux paramétrages d'objets, et détecter les informations sensibles telles que les numéros de sécurité sociale, les numéros de carte de crédit ou toute autre logique utilisant des expressions régulières dans les objets de stockage cloud.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloud-dlp">Solution Cloud de prévention des pertes de données (DLP)</h3>
+		<a href="https://blog.cloudflare.com/#cloud-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R1bE9TRmTdHDTg1XeLS60/8269b687ec65e70bcaee437f30d5f590/1.png" alt="" class="kg-image" width="1111" height="677" loading="lazy">
+	</figure>
+	<p>Au cours des dernières années, nos clients (principalement des équipes informatiques et de sécurité) nous ont dit combien ils appréciaient la simplicité et l'efficacité de CASB en tant que produit de sécurité SaaS. La quantité d'<a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations" target="_blank" rel="noopener noreferrer"><u>intégrations qu'il permet</u></a>, sa facilité de configuration et la rapidité avec laquelle il identifie les problèmes sur les plateformes SaaS les plus populaires, comme les fichiers partagés publiquement dans Microsoft 365 et les données sensibles exposées dans Google Workspace, ont fait de ce produit une solution incontournable pour bon nombre d'entre eux.</p>
+	<p>Cependant, tandis que nous collaborions avec nos clients, il nous est apparu de manière de plus en plus évidente que les risques liés aux données au repos non surveillées ou exposées vont bien au-delà des simples environnements SaaS. Les informations sensibles, qu'il s'agisse de propriété intellectuelle, de données clients ou d'identifiants personnels, peuvent nuire à la réputation d'une entreprise et à ses obligations envers ses clients si elles tombent dans de mauvaises mains. Pour un grand nombre de nos clients, la sécurité des données stockées chez des fournisseurs de cloud tels que comme AWS et GCP est encore plus essentielle que la sécurité des données dans leurs outils SaaS.</p>
+	<p>C'est pourquoi nous avons étendu le CASB de Cloudflare pour y inclure la fonctionnalité <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>Cloud DLP (prévention des pertes de données)</u></a>, et permettre ainsi aux utilisateurs d'analyser des objets dans des buckets Amazon S3 et Google Cloud Storage à la recherche de correspondances de données sensibles​.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TKXiAkQKxw3GFQBCuQLjX/198e4620da8239280eff669b7b62678b/2.png" alt="" class="kg-image" width="1036" height="704" loading="lazy">
+	</figure>
+	<p>Avec <a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer"><u>Cloudflare DLP</u></a>, vous pouvez faire votre choix parmi des profils de détection prédéfinis pour rechercher des types de données courants (tels que des numéros de sécurité sociale ou des numéros de carte de crédit) ou créer vos propres profils personnalisés à l'aide d'expressions régulières​. Dès qu'un objet correspondant à un profil DLP est détecté, vous pouvez en explorer les détails, comprendre le contexte du fichier, savoir qui en est propriétaire et plus encore. Ces capacités proposent les informations nécessaires pour protéger rapidement les données et prévenir leur exposition en temps réel.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cyOaQJ0ZyPO8r7LyeU6ON/30b8453888d6cb13dcb15225f875a0cd/3.png" alt="" class="kg-image" width="1999" height="1224" loading="lazy">
+	</figure>
+	<p>Comme pour toutes les intégrations de CASB, cette nouvelle fonctionnalité s'accompagne également de fonctions de gestion du niveau de sécurité, ce qui signifie que peu importe que vous utilisiez AWS ou GCP, nous vous aiderons à identifier les erreurs de configuration et autres problèmes de sécurité du cloud susceptibles de rendre vos données vulnérables​, comme les buckets qui sont accessibles au public ou pour lesquels certains des paramètres de journalisation essentiels sont désactivés, les clés d'accès nécessitant une rotation ou les utilisateurs pour lesquels il n'est pas prévu d'<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>authentification multifactorielle (MFA)</u></a>. Tout est compris.</p>
+	<div class="flex anchor relative">
+		<h3 id="simple-by-default-configurable-where-you-want-it">Simple par défaut, configurable où vous le souhaitez</h3>
+		<a href="https://blog.cloudflare.com/#simple-by-default-configurable-where-you-want-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les solutions CASB et DLP de Cloudflare sont par défaut simples à utiliser, il est donc facile de se lancer immédiatement. Elles sont également hautement configurables, vous offrant la flexibilité nécessaire pour affiner les profils d'analyse et les adapter à vos besoins spécifiques.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MLh3y7SMHnX52cjuu4pmE/b7bb67497fc21bc9d3f3f740a9b3fe52/4.png" alt="" class="kg-image" width="1999" height="1402" loading="lazy">
+	</figure>
+	<p>Vous pouvez, par exemple, définir des buckets de stockage ou des types de fichiers à analyser ou encore échantillonner uniquement un certain pourcentage des objets pour l'analyse. L'analyse s'exécute également au sein de votre environnement cloud, ainsi vos données n'ont jamais besoin de quitter votre infrastructure. Ce mode de fonctionnement garantit la sécurité de votre stockage cloud et la maîtrise de vos coûts, tout en vous permettant d'adapter la solution à des besoins propres à votre entreprise en matière de conformité et de sécurité.</p>
+	<p>Pour l'avenir, notre feuille de route comprend également l'extension de la prise en charge à d'autres environnements de stockage cloud, tels qu'Azure Blob Storage et Cloudflare R2, afin d'étendre encore notre stratégie de sécurité multicloud complète. Restez à l'écoute pour plus d'informations !</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">Fonctionnement</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dès le départ, nous savions que les fonctionnalités de DLP dans les environnements cloud ne pourraient être mises en œuvre qu'avec une conception efficace et évolutive, permettant la détection en temps réel de l'exposition de données sensibles.</p>
+	<div class="flex anchor relative">
+		<h4 id="serverless-architecture-for-streamlined-processing">Une architecture serverless pour un traitement rationalisé</h4>
+		<a href="https://blog.cloudflare.com/#serverless-architecture-for-streamlined-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dès la conception de la solution, il a été décidé de partir d'une architecture serverless pour que la découverte des données sensibles soit absolument à la fois efficace et évolutive. Voici comment cela fonctionne :</p>
+	<ul>
+		<li>
+			<p><b>Compte de calcul</b>: l'ensemble du processus s'exécute au sein d'un compte cloud appartenant à votre organisation, appelé compte de calcul. Avec une telle conception, vos données ne quittent pas votre périmètre, vous évitez ainsi les frais de trafic cloud sortant coûteux. Le compte de calcul peut être lancé en moins de 15 minutes à l'aide d'un modèle Terraform fourni.</p>
+		</li>
+		<li>
+			<p><b>Fonction de contrôleur</b>: chaque minute, une fonction de contrôleur légère et serverless de votre environnement cloud communique avec les API de Cloudflare, afin de récupérer les derniers paramètres de DLP et les derniers profils de sécurité de votre compte Cloudflare One.</p>
+		</li>
+		<li>
+			<p><b>Processus de robot d'indexation</b>: le contrôleur déclenche une tâche de découverte d'objets, qui est traitée par une deuxième fonction serverless connue sous le nom de robot d'indexation. Le robot d'indexation interroge les comptes de stockage cloud, comme AWS S3 ou Google Cloud Storage, via une API pour identifier les nouveaux objets. La solution Redis est utilisée au sein du compte de calcul pour savoir quels objets doivent encore être évalués.</p>
+		</li>
+		<li>
+			<p><b>Recherche de données sensibles</b>: les objets nouvellement découverts sont transmis via une file d'attente à une troisième fonction serverless, appelée Scanner. Cette fonction télécharge les objets et diffuse leur contenu au moteur DLP du compte de calcul, qui recherche les correspondances avec les profils DLP prédéfinis ou personnalisés.</p>
+		</li>
+		<li>
+			<p><b>Découvertes et alertes</b>: si une correspondance DLP est identifiée, les métadonnées de l'objet, telles que les détails et les informations de propriété, sont publiées dans une file d'attente. Ces données sont ingérées par un service hébergé par Cloudflare et présentées dans le tableau de bord Cloudflare sous forme de conclusions, donnant aux équipes de sécurité la visibilité nécessaire pour prendre des mesures rapides.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="scalable-and-secure-design">Conception évolutive et sécurisée</h4>
+		<a href="https://blog.cloudflare.com/#scalable-and-secure-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le pipeline DLP vous permet de garantir que vos données sensibles ne quittent jamais votre environnement cloud. Il s'agit là d'une approche privilégiant la confidentialité. Toutes les communications entre le compte de calcul et les API Cloudflare sont à l'initiative du contrôleur, ce qui signifie également qu'il n'est pas nécessaire d'effectuer une configuration supplémentaire pour autoriser le trafic d'entrée.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">Premiers pas</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour commencer, contactez l'équipe chargée de votre compte pour en savoir davantage sur cette nouvelle fonctionnalité de sécurité des données et notre feuille de route. Si vous souhaitez essayer cette solution de votre côté, vous pouvez vous connecter au tableau de bord Cloudflare One (créez un compte gratuit <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>ici</u></a> si vous n'en disposez pas) et accéder à la page CASB, afin de configurer votre première intégration.</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Regarder sur Cloudflare&nbsp;TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f51cb1a22818fc567453d3d1ccbf3207/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff51cb1a22818fc567453d3d1ccbf3207%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600&amp;startTime=9s&amp;controls=false" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

@@ -1,14 +1,9 @@
 {
-	"author": {
-		"name": "Bastien Dhiver",
-		"url": "http://blog.cloudflare.com/author/bastien/",
-		"sameAs": []
-	},
+	"author": {},
 	"headline": "A story about AF_XDP, network namespaces and a cookie",
-	"url": "http://blog.cloudflare.com/a-story-about-af-xdp-network-namespaces-and-a-cookie/",
+	"url": "https://blog.cloudflare.com/a-story-about-af-xdp-network-namespaces-and-a-cookie/",
 	"datePublished": "2022-07-18T12:56:42.000Z",
-	"dateModified": "2022-07-18T12:56:42.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2022/07/Flowtrackd-network-namespaces-fix.png",
-	"keywords": "Deep Dive, Linux",
-	"description": "A crash in a development version of flowtrackd (the daemon that powers our Advanced TCP Protection) highlighted the fact that libxdp (and specifically the AF_XDP part) was not Linux network namespace aware. This blogpost describes the debugging journey to find the bug, as well as a fix."
+	"dateModified": "2026-07-15T13:45:53.032Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW46G072TAZ42JRZW9VTV8YT.png",
+	"description": "A crash in a development version of flowtrackd (the daemon that powers our Advanced TCP Protection) highlighted that libxdp (and specifically the AF_XDP part) was not Linux network namespace aware. "
 }

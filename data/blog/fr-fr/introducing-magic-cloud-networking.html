@@ -1,0 +1,232 @@
+<div class="mb2 gray5">Lecture&nbsp;: 7 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/introducing-magic-cloud-networking">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/introducing-magic-cloud-networking">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/introducing-magic-cloud-networking">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/introducing-magic-cloud-networking">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/introducing-magic-cloud-networking">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/introducing-magic-cloud-networking">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/introducing-magic-cloud-networking">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7prf3HIZQH8iTFEpduqzWi/35e97225c6f081bb9a37cbc62e925408/introducing-magic-cloud-networking.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Aujourd'hui, nous avons le plaisir d'annoncer Magic Cloud Networking, un service renforcé par <a href="https://www.cloudflare.com/press-releases/2024/cloudflare-enters-multicloud-networking-market-unlocks-simple-secure" target="_blank" rel="noopener noreferrer">la récente acquisition par Cloudflare de l'innovante technologie de Nefeli Networks</a>. Ces nouvelles capacités de visualisation et d'automatisation des réseaux du cloud public fourniront à nos clients une connexion sécurisée, facile et fluide aux environnements de cloud public.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EE4QTE18JtBWAk0XucBb2/818464eba98f9928bbfa7bfe179780d8/image5-5.png" alt="Magic Cloud Networking simplifies security, connectivity, and management of public clouds" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Le cloud public offre aux entreprises une infrastructure informatique évolutive et à la demande, sans entraîner les frais généraux et les dépenses liés à l'exploitation de leur propre datacenter. La connectivité réseau est fondamentale pour les applications qui ont été transférées vers le cloud, mais elle s'avère difficile à gérer en l'absence d'un logiciel d'automatisation, notamment dans le cadre des déploiements de grande ampleur, englobant plusieurs comptes cloud. Magic Cloud Networking utilise des concepts familiers pour proposer une interface unique, permettant de contrôler et d'unifier les capacités réseau natives de plusieurs fournisseurs de cloud pour créer des réseaux cloud fiables, rentables et sécurisés.</p>
+	<p>L'approche de Nefeli de la connectivité réseau multi-cloud résout le problème de la construction et de l'exploitation de réseaux de bout en bout dans les clouds publics et sur plusieurs clouds publics, permettant aux entreprises de déployer en toute sécurité des applications englobant &nbsp;n'importe quelle combinaison de ressources internes et externes. L'ajout de la technologie de Nefeli permettra à nos clients de connecter et de protéger leurs utilisateurs, leurs réseaux privés et leurs applications avec une facilité jamais encore égalée.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-is-cloud-networking-difficult">Pourquoi la connectivité réseau cloud est-elle difficile ?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-cloud-networking-difficult" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Par rapport à un réseau traditionnel de datacenter de données sur site, la connectivité cloud promet la simplicité :</p>
+	<ul>
+		<li>
+			<p>Une grande partie de la complexité de la connectivité réseau physique échappe aux utilisateurs, parce que les couches physiques et Ethernet ne font pas partie du service réseau exposé par le fournisseur de cloud.</p>
+		</li>
+		<li>
+			<p>Le nombre de protocoles de plan de contrôle est réduit ; au lieu de cela, les fournisseurs de cloud proposent un <a href="https://www.cloudflare.com/learning/network-layer/what-is-sdn" target="_blank" rel="noopener noreferrer">réseau défini par logiciel (SDN)</a> simplifié, entièrement programmable via une API.</p>
+		</li>
+		<li>
+			<p>Une capacité (pouvant aller de nulle à immense) est disponible instantanément et à la demande, et la facturation est établie en fonction de l'utilisation.</p>
+		</li>
+	</ul>
+	<p>Toutefois, cette promesse n'a pas encore été pleinement tenue, et nos clients ont décrit plusieurs raisons pour lesquelles la connectivité réseau cloud est difficile :</p>
+	<ul>
+		<li>
+			<p><b>Visibilité insatisfaisante de bout en bout</b> : les outils de visibilité des réseaux cloud sont difficiles à utiliser, et même au sein des fournisseurs de cloud, des silos persistent, empêchant la surveillance et la résolution d'incident de bout en bout.</p>
+		</li>
+		<li>
+			<p><b>Plus de rapidité</b> : les approches traditionnelles de gestion informatique se heurtent à la promesse du cloud, à savoir un déploiement instantané, disponible à la demande. Les procédures ClickOps et à base d'interface de ligne de commande que connaissent les utilisateurs doivent être remplacées par l'automatisation pour répondre aux besoins des entreprises.</p>
+		</li>
+		<li>
+			<p><b>Technologie différente</b> : les architectures réseau établies dans des environnements sur site ne permettent pas une transition fluide vers un cloud public. La couche Ethernet manquante et les protocoles de plan de contrôle avancés étaient essentiels dans de nombreuses architectures réseau.</p>
+		</li>
+		<li>
+			<p><b>Nouveaux modèles de coûts</b> : les modèles de coûts dynamiques des services de cloud public, avec facturation en fonction de l'utilisation, ne sont pas compatibles avec les approches établies fondées sur des circuits à coût fixe et un amortissement sur cinq ans. L'architecture des solutions réseau est souvent conçue en fonction de contraintes financières et, par conséquent, différentes approches architecturales sont judicieuses dans le cloud.</p>
+		</li>
+		<li>
+			<p><b>Nouveaux risques pour la sécurité</b> : la sécurisation du cloud public, fondée sur une véritable approche <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> et la politique du moindre privilège, exige des processus d'exploitation matures et une automatisation, ainsi qu'une solide connaissance des politiques spécifiques au cloud et des contrôles IAM.</p>
+		</li>
+		<li>
+			<p><b>Configuration multi-fournisseurs :</b> les réseaux d'entreprise reposaient souvent sur un fournisseur unique afin de faciliter l'interopérabilité, l'efficacité opérationnelle, ainsi que le recrutement et la formation ciblés. L'exploitation d'un réseau qui s'étend au-delà d'un cloud unique, à d'autres clouds ou environnements sur site, est un scénario multi-fournisseurs.</p>
+		</li>
+	</ul>
+	<p>Nefeli a pris en compte tous ces problèmes, ainsi que les tensions entre les différentes perspectives de clients, afin de déterminer à quel niveau le problème devait être résolu.</p>
+	<div class="flex anchor relative">
+		<h2 id="trains-planes-and-automation">Trains, avions et automatisation</h2>
+		<a href="https://blog.cloudflare.com/#trains-planes-and-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Prenons l'exemple d'un système ferroviaire. Pour fonctionner efficacement, il comporte trois couches essentielles :</p>
+	<ul>
+		<li>
+			<p>les voies et les trains</p>
+		</li>
+		<li>
+			<p>les signaux électroniques</p>
+		</li>
+		<li>
+			<p>une entreprise chargée de l'exploitation du réseau et de la vente de billets.</p>
+		</li>
+	</ul>
+	<p>Un système ferroviaire comportant des voies, des trains et des signaux en bon état peut encore fonctionner en deçà de son potentiel parce que ses agents ne sont pas en mesure de répondre à la demande des voyageurs. Les voyageurs ne peuvent alors pas planifier leurs itinéraires, ni acheter des billets.</p>
+	<p>La compagnie ferroviaire élimine les goulets d'étranglement dans le déroulement du processus en simplifiant les horaires et la tarification, en fournissant aux agents des systèmes de réservation plus efficaces et en installant des distributeurs automatiques de billets. Désormais, la même infrastructure rapide et fiable comprenant les voies, les trains et les signaux peut être utilisée à son potentiel maximal.</p>
+	<div class="flex anchor relative">
+		<h3 id="solve-the-right-problem">Résoudre le bon problème</h3>
+		<a href="https://blog.cloudflare.com/#solve-the-right-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/342dyvSqIvF0hJJoCDyf0I/8e92b93f922412344fa34cbbea7a4be1/image8.png" alt="" class="kg-image" width="1198" height="270" loading="lazy">
+
+	</figure>
+	<p>Dans le domaine des réseaux, il existe un ensemble correspondant constitué de trois couches appelées <a href="https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane" target="_blank" rel="noopener noreferrer">plans de connectivité réseau</a> :</p>
+	<ul>
+		<li>
+			<p><b>Plan de données :</b> les chemins réseau qui transportent les données (sous forme de paquets) de la source à la destination.</p>
+		</li>
+		<li>
+			<p><b>Plan de contrôle :</b> le protocole et la logique qui modifient l'acheminement des paquets sur le plan de données.</p>
+		</li>
+		<li>
+			<p><b>Plan de gestion :</b> les interfaces de configuration et de surveillance du plan de données et du plan de contrôle.</p>
+		</li>
+	</ul>
+	<p>Dans les réseaux de cloud public, ces couches correspondent aux plans suivants :</p>
+	<ul>
+		<li>
+			<p><b>Plan de données du cloud :</b> les câbles et équipements sous-jacents sont exposés aux utilisateurs sous la forme du <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud" target="_blank" rel="noopener noreferrer">cloud privé virtuel (VPC, « Virtual Private Cloud »)</a> ou service de réseau virtuel (VNet) comprenant des sous-réseaux, des tables de routage, des groupes de sécurité/listes de contrôle d'accès et des services supplémentaires, tels que des services d'équilibrage de charge et des passerelles VPN.</p>
+		</li>
+		<li>
+			<p><b>Plan de contrôle du cloud :</b> à la place des protocoles distribués, le plan de contrôle du cloud est un <a href="https://www.cloudflare.com/learning/network-layer/what-is-sdn" target="_blank" rel="noopener noreferrer">réseau défini par logiciel (SDN, « Software Defined Network »)</a> qui, par exemple, programme des tables d'itinéraires statiques. (L'utilisation des protocoles traditionnels du plan de contrôle, tels que BGP pour les communications avec les réseaux externes et ARP pour les communications avec les machines virtuelles, est limitée.)</p>
+		</li>
+		<li>
+			<p><b>Plan de gestion du cloud :</b> une interface administrative, comportant une interface utilisateur et une API, qui permet à l'administrateur de configurer entièrement les plans de données et de contrôle. Il fournit également une sélection de capacités de surveillance et de journalisation qui peuvent être activées et intégrées avec des systèmes tiers.</p>
+		</li>
+	</ul>
+	<p>Comme dans l'exemple du train, la plupart des problèmes que rencontrent nos clients avec la connectivité réseau cloud se situent au niveau de la troisième couche : le plan de gestion.</p>
+	<p>Nefeli simplifie, unifie et automatise la gestion et l'exploitation des réseaux cloud.</p>
+	<div class="flex anchor relative">
+		<h3 id="avoid-cost-and-complexity">Éviter les coûts et la complexité</h3>
+		<a href="https://blog.cloudflare.com/#avoid-cost-and-complexity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nb9xcqGaRRaYIe0lvlbIs/83da6094ec1f7bc3e4a7d72a17fc511c/image2-6.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
+
+	</figure>
+	<p>Une approche courante pour résoudre les problèmes de gestion dans les réseaux cloud consiste à introduire des fonctions réseau virtualisées (VNF, « Virtual Network Function »), qui sont des <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine" target="_blank" rel="noopener noreferrer">machines virtuelles (VM)</a> qui assurent la transmission des paquets à la place des systèmes natifs du plan de données du cloud. Certaines fonctions réseau virtualisées sont des routeurs, des pare-feu ou des services d'équilibrage de charge portés depuis les équipements matériels d'un fournisseur de solutions réseau traditionnelles, tandis que d'autres sont des proxys logiciels, souvent développés sur la base de projets open source tels que NGINX ou Envoy. Dans la mesure où les fonctions réseau virtualisées imitent leurs homologues physiques, les équipes informatiques peuvent continuer à utiliser des outils de gestion familiers ; cependant, les fonctions réseau virtualisées présentent des inconvénients :</p>
+	<ul>
+		<li>
+			<p>Les machines virtuelles ne disposent pas de composants matériels réseau conçus sur mesure et, à la place, misent sur la puissance de calcul brute. Une machine virtuelle est dimensionnée en fonction de la charge maximale prévue, et fonctionne généralement 24 heures sur 24, 7 jours sur 7 et 365 jours par an. Cette approche entraîne un coût de calcul élevé, quelle que soit l'utilisation réelle.</p>
+		</li>
+		<li>
+			<p>L'approche de la haute disponibilité dépend d'une configuration réseau fragile, coûteuse et complexe.</p>
+		</li>
+		<li>
+			<p>L'insertion de services (la configuration permettant de placer une fonction réseau virtualisée dans le flux de paquets) impose souvent le recours à des chemins de paquets entraînant des frais de bande passante supplémentaires.</p>
+		</li>
+		<li>
+			<p>Les fonctions réseau virtualisées sont généralement proposées sous licence, de manière semblable à leurs homologues sur site, et s'avèrent coûteuses.</p>
+		</li>
+		<li>
+			<p>Les fonctions réseau virtualisées imposent un enfermement à l'entreprise et l'empêchent potentiellement de bénéficier des améliorations apportées aux offres natives du plan de données du cloud.</p>
+		</li>
+	</ul>
+	<p>Pour ces raisons, les entreprises se détournent des solutions basées sur les fonctions réseau virtualisées et cherchent toujours davantage à s'appuyer sur les fonctionnalités réseau natives de leurs fournisseurs de services cloud. Le réseau cloud public intégré est élastique, performant, robuste et facturé en fonction de l'utilisation, et propose des options de haute disponibilité intégrées, garanties par le contrat de niveau de service du fournisseur de cloud.</p>
+	<p>Dans notre exemple basé sur les trains, les voies et les trains fonctionnent efficacement. De même, le plan de données du réseau cloud est très performant. Modifier le plan de données pour résoudre les problèmes du plan de gestion n'est pas une approche pertinente. Pour que cette opération fonctionne à grande échelle, les entreprises ont besoin d'une solution dont le fonctionnement s'intègre aux capacités réseau natives des fournisseurs de services cloud.</p>
+	<p>Nefeli tire parti des systèmes natifs du plan de données du cloud, plutôt que des fonctions réseau virtualisées de tierces parties.</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-magic-cloud-networking">Présentation de Magic Cloud Networking</h2>
+		<a href="https://blog.cloudflare.com/#introducing-magic-cloud-networking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'équipe de Nefeli s'est jointe à Cloudflare pour intégrer la fonctionnalité de gestion des réseaux cloud à Cloudflare One. Cette fonctionnalité, appelée Magic Cloud Networking, permet aux entreprises d'utiliser le tableau de bord et l'API de Cloudflare pour gérer leurs réseaux cloud publics et se connecter à Cloudflare One.</p>
+	<div class="flex anchor relative">
+		<h3 id="end-to-end">De bout en bout</h3>
+		<a href="https://blog.cloudflare.com/#end-to-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À l'instar des compagnies ferroviaires, qui proposent exclusivement des voyages en train sur leur réseau, les fournisseurs de services cloud réunissent une connectivité et des outils réseau sur un compte cloud unique. De nombreuses grandes entreprises possèdent des centaines de comptes cloud auprès d'une multitude de fournisseurs cloud. Sur un réseau de bout en bout, cette pratique crée des silos de connectivité réseau déconnectés, qui introduisent des inefficacités et des risques opérationnels.</p>
+	<p>Imaginez que vous essayez d'organiser un voyage en train à travers l'Europe et qu'aucune compagnie ferroviaire ne dessert à la fois votre point de départ et votre destination. Vous savez qu'elles proposent toutes le même service de base : une place à bord d'un train. Cependant, votre voyage est difficile à organiser, car il nécessite de prendre plusieurs trains, exploités par différentes compagnies ferroviaires, possédant chacune des horaires et des tarifs particuliers – et tout cela, dans différentes langues !</p>
+	<p>Magic Cloud Networking se comporte comme un agent de voyage en ligne qui regroupe plusieurs options de transport, réserve plusieurs billets, facilite les modifications après réservation et fournit des informations actualisées concernant l'avancement du voyage.</p>
+	<p>Grâce au tableau de bord de Cloudflare, vous pouvez découvrir toutes vos ressources réseau, couvrant différents comptes et fournisseurs de cloud, et visualiser votre réseau de bout en bout depuis une interface unique. Une fois que Magic Cloud Networking a découvert vos réseaux, vous pouvez construire un réseau évolutif grâce à un flux de travail simple et entièrement automatisé.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4P7EhpKlEfTnU7WdPq4dt6/4de908c385b406a89c97f4dc274b3acb/image6.png" alt="" class="kg-image" width="1198" height="270" loading="lazy">
+
+	</figure>
+	<p><i>L'inventaire des ressources présente toutes les configurations dans une interface utilisateur unique et réactive.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qXuFK0Q1q96NtH0FYRNg0/3c449510b24a3f206b63b01e1799dddd/image3-8.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="taming-per-cloud-complexity">Maîtriser la complexité par cloud</h3>
+		<a href="https://blog.cloudflare.com/#taming-per-cloud-complexity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les clouds publics sont utilisés pour fournir des applications et des services. Chaque fournisseur de cloud propose une pile composable de blocs de construction modulaires (c'est-à-dire de ressources), qui reposent sur la fondation d'un compte de facturation, auxquels s'ajoutent ensuite des contrôles de sécurité. La couche fondamentale suivante, pour les applications basées sur des serveurs, est la connectivité réseau d'un cloud privé virtuel (VPC, « Virtual Private Cloud »). Les ressources supplémentaires sont construites sur la fondation du réseau VPC, jusqu'à ce que vous disposiez d'une infrastructure de calcul, de stockage et de connectivité réseau permettant d'héberger les applications et les données de l'entreprise. Même des architectures relativement simples peuvent être composées de centaines de ressources.</p>
+	<p>La difficulté est que ces ressources exposent des abstractions qui diffèrent des blocs de construction que vous utiliseriez normalement pour créer un service sur site, que les abstractions diffèrent d'un fournisseur de cloud à un autre, et enfin, qu'elles forment un réseau de dépendances comportant des règles complexes régissant la façon dont sont effectués les changements de configuration (sachant que ces règles diffèrent selon les types de ressources et les fournisseurs de cloud). Par exemple, supposons que je crée 100 machines virtuelles, puis que je les connecte à un réseau IP. Puis-je modifier le réseau IP pendant que les machines virtuelles utilisent le réseau ? La réponse est : ça dépend !</p>
+	<p>Magic Cloud Networking gère ces différences et ces complexités pour vous. La solution configure les systèmes natifs du cloud, tels que les passerelles VPN, les itinéraires et les groupes de sécurité afin de connecter en toute sécurité votre réseau VPC cloud à Cloudflare One, sans vous imposer de maîtriser les incantations du cloud permettant de créer des connexions VPN et des hubs.</p>
+	<div class="flex anchor relative">
+		<h3 id="continuous-coordinated-automation">Automatisation continue et coordonnée</h3>
+		<a href="https://blog.cloudflare.com/#continuous-coordinated-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour en revenir à notre exemple de système ferroviaire, que se passe-t-il si le personnel de maintenance détecte un dangereux problème sur les voies ferrées ? &nbsp;Il règle manuellement le signal sur un feu d'arrêt, afin d'empêcher tout train approchant en sens inverse d'emprunter la portion de voie défectueuse. Et si, par une malheureuse coïncidence, le service responsable de la planification horaire modifie l'horaire des signaux et règle les signaux à distance, annulant la mesure de sécurité prise par l'équipe de maintenance ? Il y a maintenant un problème dont personne n'est informé, et dont la cause profonde est que plusieurs autorités peuvent changer les signaux par le biais de différentes interfaces, sans aucune concertation.</p>
+	<p>Le même problème se pose sur les réseaux cloud : les modifications de la configuration peuvent être effectuées par différentes équipes, utilisant différentes interfaces d'automatisation et de configuration englobant une vaste sélection de rôles tels que la facturation, l'assistance, la sécurité, la connectivité réseau, les pare-feu, la base de données et le développement d'applications.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VNaeoX2TNwYwZsweytYSZ/40806d02108119204f638ed5f111d5d0/image1-10.png" alt="" class="kg-image" width="1198" height="270" loading="lazy">
+
+	</figure>
+	<p>Une fois votre réseau déployé, Magic Cloud Networking surveille sa configuration et son intégrité, vous permettant d'être certain que la sécurité et la connectivité que vous avez configurées hier sont toujours valides aujourd'hui. La solution suit les ressources cloud dont elle est responsable, en inversant automatiquement la dérive si elles présentent des modifications anormalement importantes, tout en vous permettant de gérer d'autres ressources telles que les compartiments de stockage et les serveurs d'application, avec d'autres outils d'automatisation. Et, à mesure que vous apportez des modifications à votre réseau, Cloudflare s'occupe de la gestion des itinéraires en injectant et en supprimant des itinéraires partout dans le monde, sur le réseau de Cloudflare et tous les réseaux de fournisseurs de cloud connectés.</p>
+	<p>Magic Cloud Networking est entièrement programmable par le biais d'une API et peut être intégré dans des suites d'outils d'automatisation existantes.</p>
+	<p><i>L'interface avertit l'utilisateur lorsque l'infrastructure du réseau cloud s'écarte de l'objectif visé</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h360ewBWWCRUjhqjrm6wF/5006f8267a880b98ccbe9bfc91cb9029/image7-1.png" alt="" class="kg-image" width="1858" height="964" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="ready-to-start-conquering-cloud-networking">Prêt à vous lancer à la conquête de la connectivité réseau cloud ?</h2>
+		<a href="https://blog.cloudflare.com/#ready-to-start-conquering-cloud-networking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous sommes ravis de présenter Magic Cloud Networking, qui constitue une nouvelle étape décisive dans la réalisation de la promesse de la <a href="https://www.cloudflare.com/connectivity-cloud" target="_blank" rel="noopener noreferrer">connectivité cloud</a>. Cette innovation représente un premier pas pour permettre aux clients d'intégrer Cloudflare avec fluidité à leurs clouds publics afin de se connecter en toute sécurité, de rester connectés en toute sécurité, d'améliorer leur flexibilité et de réaliser des économies au fur et à mesure qu'ils évoluent.</p>
+	<p>Rejoignez-nous dans cette aventure et bénéficiez d'un accès anticipé : apprenez-en davantage et inscrivez-vous <a href="https://cloudflare.com/lp/cloud-networking" target="_blank" rel="noopener noreferrer">ici</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/610Vl5u7JVsnszRAmQz0Yt/3bb2a75f47826c1c1969c1d9b0c1db8d/image4-10.png" alt="" class="kg-image" width="1197" height="394" loading="lazy">
+
+	</figure>
+</div>

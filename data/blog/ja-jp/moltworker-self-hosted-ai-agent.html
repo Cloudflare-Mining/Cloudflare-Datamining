@@ -1,0 +1,197 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/moltworker-self-hosted-ai-agent">English</a>および<a href="https://blog.cloudflare.com/ko-kr/moltworker-self-hosted-ai-agent">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ogFfJCoxbBXYOCrHG8xSF/5790f31aa4cb8222ef227b2a762a2ebc/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p><i>編集者注：2026年1月30日より、MoltbotはOpenClawに</i><a href="https://openclaw.ai/blog/introducing-openclaw" target="_blank" rel="noopener noreferrer"><i><u>名称変更されました</u></i></a><i>。</i></p>
+	<p>今週、インターネットでは、パーソナルアシスタントとして機能するように設計されたオープンソースのセルフホスト型AIエージェントである <a href="https://github.com/moltbot/moltbot" target="_blank" rel="noopener noreferrer"><u>Moltbot</u></a> （旧Clawdbot）を実行するために、<a href="https://x.com/AlexFinn/status/2015133627043270750" target="_blank" rel="noopener noreferrer"><u>Mac miniを購入する</u></a>人が殺到しました。Moltbotは、ユーザー所有のハードウェアのバックグラウンドで動作し、チャットアプリケーション、AIモデル、その他の人気のあるツールとの統合リストを持ち、リモートでの制御が可能です。Mortbotは、財務、ソーシャルメディア、一日の企画などをお手伝いします。それらすべてをお気に入りのメッセージングアプリを通じて行うことができます。</p>
+	<p>しかし、新しい専用ハードウェアを購入したくない場合はどうでしょうか？そして、もしオンラインで効率的かつ安全にMoltbotを実行できるとしたらどうでしょう。ミドルウェアWorkerである<a href="https://github.com/cloudflare/moltworker" target="_blank" rel="noopener noreferrer"><u>Moltworker</u></a>と、CloudflareのSandbox SDKおよび開発者プラットフォームのAPI上でMoltbotを実行できるようにするためのスクリプトをご紹介します。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-personal-assistant-on-cloudflare-how-does-that-work">Cloudflareのパーソナルアシスタント - その仕組みは？</h2>
+		<a href="https://blog.cloudflare.com/#a-personal-assistant-on-cloudflare-how-does-that-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workersは、Node.jsと<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>これほど互換性が高かった</u></a>ことはありません。以前は、パッケージを実行するためにAPIをモックする必要がありましたが、今ではこれらのAPIはWorkersランタイムによってネイティブにサポートされています。</p>
+	<p>これによって、Cloudflare Workers上でのツール作成方法が変わりました。<a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>を最初に実装した時、<a href="https://www.npmjs.com/package/memfs" target="_blank" rel="noopener noreferrer"><u>memfs</u></a>に依存せざるを得ませんでした。Playwrightは、Webテストと自動化のためのフレームワークで、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Rendering</u></a>上で動作します。これは、memfsがハッキングで外部依存関係があるだけでなく、公式のPlaywrightベースからの逸脱を余儀なくさせたからです。ありがたいことに、Node.js互換性が高まり、<a href="https://github.com/cloudflare/playwright/pull/62/changes" target="_blank" rel="noopener noreferrer"><u>node:fsをネイティブに</u></a>使い始めることができ、複雑さと保守性が軽減され、Playwrightの最新バージョンへのアップグレードが簡単になりました。</p>
+	<p>当社がネイティブにサポートするNode.js APIのリストは増え続けています。ブログ記事「<a href="https://blog.cloudflare.com/nodejs-workers-2025"><u>Cloudflare WorkersにおけるNode.js互換性の改善の1年</u></a>」では、当社の現状と取り組みについて概説しています。</p>
+	<p>私たちは、この進捗も測定を行っています。私たちは最近、最も人気のある1,000のNPMパッケージをインストールし、AIに解放し、Cloudflare WorkersのRalph<a href="https://ghuntley.com/ralph" target="_blank" rel="noopener noreferrer"><u> Wiggum氏で「ソフトウェアエンジニア」</u></a>スタイルを試みたところ、驚くほど良い結果が得られました。ビルドツール、CLIツール、またはブラウザ専用で適用されないパッケージを除外すると、15のパッケージだけが本当に動作しなかったのです。<b>これは1.5%です。</b></p>
+	<p>以下は、当社のNode.js APIサポートの推移を示したものです：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GhwKJq2A2wG79I3NdhhDl/e462c30daf46b1b36d3f06bff479596b/image9.png" alt="" class="kg-image" width="1802" height="1194" loading="lazy">
+	</figure>
+	<p>npmパッケージのサポートに関する社内実験の結果をまとめたページを<a href="https://worksonworkers.southpolesteve.workers.dev" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>にまとめましたので、ご確認ください。</p>
+	<p>コードのほとんどはコンテナで実行されるため、MoltbotはWorkers Node.js互換性を必ずしも必要としませんが、当社がネイティブAPIを使用してこれほど多くのパッケージをサポートしていることを強調することは重要だと考えました。これは、新しいAIエージェントアプリケーションをゼロから始める際、ユーザーにより近いWorkersで実際に多くのロジックを実行できるためです。</p>
+	<p>この話のもう1つの重要な部分は、開発者プラットフォームの<a href="https://developers.cloudflare.com/directory/?product-group=Developer+platform" target="_blank" rel="noopener noreferrer"><u>製品とAPI</u></a>のリストが増えて、誰もがあらゆる種類のアプリケーション、最も複雑で要求の<a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">厳しいアプリケーションもCloudflare上で構築および実行できる</a>までになったことです。また、いったん起動すれば、当社の開発者プラットフォーム上で稼働するすべてのアプリケーションが、安全でスケーラブルなグローバルネットワークの恩恵を受けます。</p>
+	<p>これらの製品やサービスは、当社が開始するのに必要な要素を提供してくれました。まず、<a href="https://sandbox.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>サンドボックス</u></a>が登場しました。これは、信頼できないコードを隔離された環境で安全に実行できるもので、サービスを実行する場所を提供します。次に、プログラムによりコントロールし、ヘッドレスな<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ブラウザインスタンス</u></a>とやり取りできるようになりました。そして最後に、オブジェクトを永続的に保存できる<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>です。これらのビルディングブロックを利用できれば、Moltbotの適応作業を開始することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-adapted-moltbot-to-run-on-us">Moltbotを当社上で稼働させるために適応させた方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-adapted-moltbot-to-run-on-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Moltbot on Workers（Moltworker）は、APIルーターとして機能するエントリーポイントWorkerと、当社のAPIと分離された環境の間のプロキシを組み合わせたもので、両方ともCloudflare Accessによって保護されています。また、管理UIを提供し、標準的なMoltbot Gatewayランタイムとその統合が実行されているSandboxコンテナに接続し、永続ストレージにはR2を使っています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OD2oHgy5ilHpQO2GJvcLU/836a55b67a626d2cd378a654ad47901d/newdiagram.png" alt="" class="kg-image" width="1163" height="393" loading="lazy">
+	</figure>
+	<p><sup>Mortworkerの大まかなアーキテクチャ図。</sup></p>
+	<p>さらに掘り下げてみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-gateway">AI Gateway</h3>
+		<a href="https://blog.cloudflare.com/#ai-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare AI Gatewayは、AIアプリケーションと一般的な<a href="https://developers.cloudflare.com/ai-gateway/usage/providers" target="_blank" rel="noopener noreferrer"><u>AIプロバイダー</u></a>との間のプロキシとして機能し、通過するリクエストに関する一元的な可視性と制御をお客様に提供します。</p>
+	<p>最近、<a href="https://developers.cloudflare.com/changelog/2025-08-25-secrets-store-ai-gateway" target="_blank" rel="noopener noreferrer"><u>Bring Your Own Key (BYOK)</u></a> のサポートを発表しました。BYOKでは、すべてのリクエストでプロバイダーの秘密情報をプレーンテキストで渡す代わりに、お客様の秘密情報を一元的に管理し、ゲートウェイ設定で利用できます。</p>
+	<p>AIプロバイダーの秘密をエンドツーエンドで管理する必要がないさらに良い方法は、<a href="https://developers.cloudflare.com/ai-gateway/features/unified-billing" target="_blank" rel="noopener noreferrer"><u>Unified Billing</u></a>を使用することです。この場合、アカウントにクレジットを追加して、サポートされているプロバイダーのいずれかでAI Gatewayを直接使用すると、Cloudflareに請求され、Cloudflareはお客様のアカウントからクレジットを減算します。</p>
+	<p>MoltbotがAI Gatewayを使用できるようにするには、まず新しいゲートウェイインスタンスを作成して、Anthropicプロバイダーを有効にし、次にClaudeキーを追加するか、Unified Billingを使用するためのクレジットを購入し、続いてANTHROPIC_Base_URLを設定するだけです。環境変数を追加することで、MoltbotがAI Gatewayエンドポイントを使用できるようにします。これだけで、コード変更は必要ありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cMWRXgHR0mFLc5kp74nYk/a47fa09bdbb6acb3deb60fb16537945d/image11.png" alt="" class="kg-image" width="1999" height="930" loading="lazy">
+	</figure>
+	<p>MoltbotがAI Gatewayを使い始めると、コストが完全に可視化され、AIエージェントがAIプロバイダーをどのように使用しているかを理解するのに役立つログや分析にアクセスできるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GOrNdgtdwMcU4bE8oLE19/6bc29bcac643125f5332a8ffba9d1322/image1.png" alt="" class="kg-image" width="1994" height="1430" loading="lazy">
+	</figure>
+	<p>Anthropicは1つの選択肢であることに注意してください。Moltbotは<a href="https://www.molt.bot/integrations" target="_blank" rel="noopener noreferrer"><u>他の</u></a>AIプロバイダーをサポートしており、<a href="https://developers.cloudflare.com/ai-gateway/usage/providers" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>も同様です。AI Gatewayを使用する利点は、任意のプロバイダーからより優れたモデルが登場した場合、AIエージェント設定のキーを交換して再デプロイする必要がなく、ゲートウェイ設定でモデルを切り替えるだけで済むという点です。さらに、モデルやプロバイダーの<a href="https://developers.cloudflare.com/ai-gateway/configuration/fallbacks" target="_blank" rel="noopener noreferrer"><u>フォールバック</u></a>を指定して、リクエストの失敗を処理して信頼性を確保することもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="sandboxes">サンドボックス</h3>
+		<a href="https://blog.cloudflare.com/#sandboxes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>昨年、私たちはAIエージェントが信頼できないコードを隔離された環境で安全に実行するためのニーズの高まりを予想し、<a href="https://developers.cloudflare.com/changelog/2025-06-24-announcing-sandboxes" target="_blank" rel="noopener noreferrer"><u>発表</u></a>した<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックスSDK</u></a>。このSDKは、<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>上に構築されていますが、コマンドの実行、ファイルの管理、バックグラウンドプロセスの実行、サービスの公開など、Workersアプリケーションからすべて実行できるシンプルなAPIを提供します。</p>
+	<p>つまり、Sandbox SDKは、低レベルのコンテナAPIを扱う代わりに、安全なコード実行のための開発者に使いやすいAPIを提供し、コンテナのライフサイクル、ネットワーキング、ファイルシステム、プロセス管理の複雑さを処理し、お客様は次の作業に集中できます。わずか数行のTypeScriptでアプリケーションロジックを構築できます。以下にその例を示します：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { getSandbox } from '@cloudflare/sandbox';
+export { Sandbox } from '@cloudflare/sandbox';
+
+export default {
+  async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+    // Create a project structure
+    await sandbox.mkdir('/workspace/project/src', { recursive: true });
+
+    // Check node version
+    const version = await sandbox.exec('node -v');
+
+    // Run some python code
+    const ctx = await sandbox.createCodeContext({ language: 'python' });
+    await sandbox.runCode('import math; radius = 5', { context: ctx });
+    const result = await sandbox.runCode('math.pi * radius ** 2', { context: ctx });
+
+    return Response.json({ version, result });
+  }
+};</code></pre>
+	<p>これはMoltbotにとってグローブのようなものです。ローカルのMacミニでDockerを実行する代わりに、コンテナ上でDockerを実行し、Sandbox SDKを使用して隔離された環境にコマンドを発行し、エントリポイントWorkerにコールバックを使用することで、2つのシステム間の双方向の通信チャネルを確立します。</p>
+	<div class="flex anchor relative">
+		<h3 id="r2-for-persistent-storage">永続ストレージ用のR2</h3>
+		<a href="https://blog.cloudflare.com/#r2-for-persistent-storage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ローカルコンピューターやVPSで実行することの良い点は、無料で永続的なストレージを利用できることです。しかし、コンテナは本質的に<a href="https://developers.cloudflare.com/containers/platform-details/architecture" target="_blank" rel="noopener noreferrer"><u>一過性</u></a>のものであり、その中で生成されたデータは削除されると失われます。心配はいりません。Sandbox SDKは、sandbox.mountBucket()これを使用して、コンテナ起動時にR2バケットをファイルシステムパーティションとして自動的にビルドすることができます。</p>
+	<p>コンテナのライフサイクルを保証するローカルディレクトリが持てたら、Moltbotはそれを使ってセッションメモリファイル、会話、その他永続化するのに必要なアセットを保存できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="browser-rendering-for-browser-automation">ブラウザレンダリングによるブラウザ自動化</h3>
+		<a href="https://blog.cloudflare.com/#browser-rendering-for-browser-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIエージェントは、あまり構造化されていないWebの閲覧に大きく依存しています。Moltbotは、専用のChromiumインスタンスを使って、アクションの実行、Webの移動、フォームへの入力、スナップショットの作成、Webブラウザを必要とするタスクの処理を行います。もちろん、SandboxでもChromiumを実行できますが、代わりにAPIを簡略化して使用できるとしたらどうでしょう？</p>
+	<p>Cloudflareの<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ブラウザレンダリング</u></a>を使用すると、エッジネットワークで大量に実行されるヘッドレスブラウザインスタンスをプログラムで制御し、インタラクションすることができます。当社は<a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a>、<a href="https://developers.cloudflare.com/browser-rendering/stagehand" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a>、<a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>やその他の人気パッケージをサポートし、開発者が最小限のコード変更でオンボードできるようにします。AI向けに<a href="https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp" target="_blank" rel="noopener noreferrer"><u>MCP</u></a>もサポートしています。</p>
+	<p>Browser RenderingをMoltbotで動作させるために、2つのことを行います。</p>
+	<ul>
+		<li>
+			<p>まず、SandboxコンテナからMoltbot Workerにシン<a href="https://github.com/cloudflare/moltworker/blob/main/src/routes/cdp.ts" target="_blank" rel="noopener noreferrer"><u>CDPプロキシ</u></a>（<a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>CDP</u></a>はChromiumベースのブラウザの計測を可能にするプロトコル）を作成し、Puppeteer APIsを使ってBrowser Renderingに戻します。</p>
+		</li>
+		<li>
+			<p>そして、サンドボックスが起動する時に、ランタイムに<a href="https://github.com/cloudflare/moltworker/pull/20" target="_blank" rel="noopener noreferrer"><u>ブラウザレンダリングスキル</u></a>を挿入します。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZvQa7vS1T9Mm3nywqarQZ/9dec3d8d06870ee575a519440d34c499/image12.png" alt="" class="kg-image" width="766" height="228" loading="lazy">
+	</figure>
+	<p>Mortbotランタイムの観点から見ると、ローカルCDPポートに接続してブラウザタスクを実行できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-access-for-authentication-policies">認証ポリシーのためのゼロトラストアクセス</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-access-for-authentication-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>次に、APIと管理UIを不正アクセスから保護したいと考えています。ゼロから認証を行うのは難しく、通常、再発明したり、対処しなければならないような話です。Zero Trust Accessは、エンドポイントに対して特定のポリシーとログイン方法を定義することで、アプリケーションを非常に簡単に保護します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MDXXjbMs4PViN3kp9iFBY/a3095f07c986594d0c07d0276dbf22cc/image3.png" alt="" class="kg-image" width="1920" height="1400" loading="lazy">
+	</figure>
+	<p><sup>MoltworkerアプリケーションのZero Trust Access Login方法の設定。</sup></p>
+	<p>エンドポイントが保護されると、Cloudflareはお客様の認証を行い、お客様のオリジンエンドポイントへのすべてのリクエストに<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token" target="_blank" rel="noopener noreferrer"><u>JWTトークン</u></a>を自動的に含めます。次に、<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json" target="_blank" rel="noopener noreferrer"><u>そのJWTを検証</u></a>して、リクエストがAccessからであり、悪意のあるサードパーティからではないことを確認できます。</p>
+	<p>AI Gatewayと同様に、すべてのAPIがAccessの背後にある場合、ユーザーが誰であるか、Moltbotインスタンスをどのように使っているかについて、優れた結果が得られます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BV4eqxKPXTiq18vvVpmZh/e034b7e7ea637a00c73c2ebe4d1400aa/image8.png" alt="" class="kg-image" width="1902" height="1296" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="moltworker-in-action">Mortworkerの動作</h2>
+		<a href="https://blog.cloudflare.com/#moltworker-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>デモタイムWorkers上で当社のMoltbotインスタンスを操作できるSlackインスタンスを立ち上げました。それを使って実現した楽しいことをいくつかご紹介します。</p>
+	<p>Cloudflareは悪いニュースは嫌いです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FxN935AgINZ8953WSswKB/e52d3eb268aa0732c5e6aa64a8e2adba/image6.png" alt="" class="kg-image" width="1594" height="796" loading="lazy">
+	</figure>
+	<p>ここでは、MoltbotにGoogle Mapを使用してロンドンのCloudflareとリスボンのCloudflare間の最短ルートを見つけるように依頼し、Slackチャネルのスクリーンショットを作成するチャットセッションを紹介します。ブラウザレンダリングを使用した一連のステップを経て、Googleマップを移動しますが、かなりうまく機能します。２回目に尋ねたときのMoltbotのメモリの動作についても見てみましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1phWt3cVUwxe9tvCYpuAW3/97f456094ede6ca8fb55bf0dddf65d5b/image10.png" alt="" class="kg-image" width="1999" height="1367" loading="lazy">
+	</figure>
+	<p>今日はアジア地区の食べ物が大好きです。Moltbotにお手伝いしてもらいましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nJY7GOCopGnMy4IY7KMcf/0d57794df524780c3f4b27e65c968e19/image5.png" alt="" class="kg-image" width="1972" height="800" loading="lazy">
+	</figure>
+	<p>私たちは目で消費します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BzB9pqJhuevRbOSJloeG0/23c2905f0c12c1e7f104aa28fcc1f595/image7.png" alt="" class="kg-image" width="1910" height="1098" loading="lazy">
+	</figure>
+	<p>さらに創造力を発揮して、Moltbotに開発者向けドキュメントを閲覧する動画を作成するよう依頼してみましょう。ご覧のように、ffmpegをダウンロードして実行すると、ブラウザでキャプチャしたフレームから動画を生成します。</p>
+	<div style="position: relative; padding-top: 67.79661016949152%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/1ba3a87d34cc8909abcabbdc0d9f64a7/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F1ba3a87d34cc8909abcabbdc0d9f64a7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="run-your-own-moltworker">独自のMoltworkerを運用する</h2>
+		<a href="https://blog.cloudflare.com/#run-your-own-moltworker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社はこの実装をオープンソース化し、<a href="https://github.com/cloudflare/moltworker" target="_blank" rel="noopener noreferrer"> <u>https://github.com/cloudflare/moltworker</u></a>で利用できるようにしました。ですので、今すぐWorkers上に独自のMoltbotをデプロイして実行できます。</p>
+	<p>必要なセットアップ手順は<a href="https://github.com/cloudflare/moltworker/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a>に記載されています。Sandbox Containersを利用するにはCloudflareアカウントと<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>Workersの有料プラン</u></a>が必要ですが、それ以外の製品は完全無料（<a href="https://developers.cloudflare.com/ai-gateway/reference/pricing" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>など）か、十分な<a href="https://developers.cloudflare.com/r2/pricing/#free-tier" target="_blank" rel="noopener noreferrer"><u>無料枠</u></a>が用意されているため、一定の範囲内で手軽に始めることができます。</p>
+	<p><b>なお、Moltworkerは概念実証であり、Cloudflareの製品ではありません</b>。AIエージェントや教師なしコードを効率的かつ安全に実行し、グローバルネットワークを活用しながら、優れた可観測性を得ることができる、弊社の<a href="https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to-devplat" target="_blank" rel="noopener noreferrer">開発者プラットフォーム</a>の最も魅力的な機能のいくつかをご紹介します。</p>
+	<p><a href="https://github.com/cloudflare/moltworker" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>リポジトリへ自由に貢献したり、フォークしたりして、サポートのために、しばらくの間監視することにします。また、Cloudflareのスキルを並行して、アップストリームへの貢献も検討しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この実験を楽しんでいただき、AIアプリケーションとエージェントを実行するのにCloudflareが最適であるとご確信いただけましたら、幸いです。私たちは、将来を予測し、最初のエージェントを<a href="https://developers.cloudflare.com/agents/guides/slack-agent" target="_blank" rel="noopener noreferrer"><u>わずか</u></a>で構築できる<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>、コンテナのライフサイクルの複雑さに煩わされることなく隔離された環境で任意のコードを実行できる<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックス</u></a>、Cloudflare のマネージド ベクトルベース検索サービスである<a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>などの機能をリリースするためにたゆまぬ努力を続けてきました。</p>
+	<p>Cloudflareは現在、推論、ストレージAPI、データベース、ステートフルワークフローのための耐久性のある実行、組み込みのAI機能など、AI開発のための完全なツールキットを提供しています。これらのビルディングブロックを組み合わせることで、最も要求の厳しいAIアプリケーションでさえ、グローバルエッジネットワーク上で構築し、運用することが可能になります。</p>
+	<p>AIに興奮しており、Cloudflareの次世代製品やAPIの構築に役立ちたい方は、当社で<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>募集しています</u></a>。</p>
+</div>

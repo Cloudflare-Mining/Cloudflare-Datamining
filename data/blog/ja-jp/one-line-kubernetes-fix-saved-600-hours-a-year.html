@@ -1,0 +1,86 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/one-line-kubernetes-fix-saved-600-hours-a-year">English</a>および<a href="https://blog.cloudflare.com/ko-kr/one-line-kubernetes-fix-saved-600-hours-a-year">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75Lx3wkH3K18X5nhVmQ9lC/a0377ee61613db2c9c08983d56be622f/unnamed__48_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Terraformの変更を計画し適用するために使用するツールであるAtlantisを、再起動するたびに回復を待つのに30分もかかり、Atlantisが管理するリポジトリについては、プランも適用もインフラの変更もありません。認証情報のローテーションとオンボーディングのために月に約100回の再起動が必要となり、その結果、毎月<b>50時間以上のエンジニアリング作業が中断され</b>、そのたびにオンコールエンジニアが呼び出されていました。</p>
+	<p>これは最終的には、Atlantisが使用する永続的な量が何百万ものファイルに増えたため、人知れずボトルネックになったKubernetesの安全なデフォルトが原因でした。それを追跡し、１行の変更で修正した方法がこちらです。</p>
+	<div class="flex anchor relative">
+		<h3 id="mysteriously-slow-restarts">不思議に遅い再起動</h3>
+		<a href="https://blog.cloudflare.com/#mysteriously-slow-restarts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、計画と適用を処理する<a href="https://www.runatlantis.io" target="_blank" rel="noopener noreferrer"><u>Atlantis</u></a>を使用して、GitLabのマージリクエスト（MR）で数十のTerraformプロジェクトを管理しています。1人のMRだけが一度にプロジェクトを変更できるように、ロックを強制します。</p>
+	<p>Kubernetes上でシングルトンのStatefulSetとして実行され、Kubernetes PersistentVolume（PV）に依存してディスク上のリポジトリの状態を追跡します。Terraformプロジェクトのオンボードまたはオフボードが必要になったり、Terraformで使用される認証情報が更新されたりする場合、その変更を取り込むためにAtlantisを再起動する必要があります。このプロセスには30分かかることがあります。</p>
+	<p>再起動の遅さは、最近、Atlantisが使用する永続ストレージのイノードが不足した時点で顕著になり、ボリュームを調整するために再起動を余儀なくされました。Inodeはディスク上の各ファイルおよびディレクトリエントリによって消費され、ファイルシステムに使用できる数はファイルシステムの作成時に渡されるパラメータによって決定されます。Kubernetesプラットフォームによって提供されるCeph永続ストレージの実装は、<code>mkfs</code>にフラグを渡す方法を公開していないため、デフォルト値に従うしかありません。ファイルシステムの拡張が利用可能なイノードを増やす唯一の方法であり、PVを再起動するには、Podの再起動が必要です。</p>
+	<p>先ほど、アラート期間の延長についてお話しましたが、それは問題を隠蔽するだけで、実際の問題への対応が遅れてしまいます。そこで、なぜ時間がかかるのか、正確に調査することにしました。</p>
+	<div class="flex anchor relative">
+		<h3 id="bad-behavior">不適切な動作</h3>
+		<a href="https://blog.cloudflare.com/#bad-behavior" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>使用するシークレットの変更を適用するためにAtlantisのローリングリスタートを依頼された際、我々は<code>kubectl rollout restart statefulset atlantis</code>を実行しました。これにより、既存のAtlantisポッドは正常に終了し、新しいポッドが起動します。新しいポッドはすぐに表示されますが、実際に見てみると：</p>
+	<pre class="language-Shell"><code class="language-Shell">$ kubectl get pod atlantis-0
+atlantis-0                                                        0/1     
+Init:0/1     0             30m
+</code></pre>
+	<p>...それでは、何が実現するのでしょうか？当然、最初にチェックするのは、そのポッドのイベントです。これは開始コンテナが実行されるのを待っているので、ポッドイベントがその理由を明らかにするのでしょうか？</p>
+	<pre class="language-Shell"><code class="language-Shell">$ kubectl events --for=pod/atlantis-0
+LAST SEEN   TYPE      REASON                   OBJECT                   MESSAGE
+30m         Normal    Killing                  Pod/atlantis-0   Stopping container atlantis-server
+30m        Normal    Scheduled                Pod/atlantis-0   Successfully assigned atlantis/atlantis-0 to 36com1167.cfops.net
+22s         Normal    Pulling                  Pod/atlantis-0   Pulling image "oci.example.com/git-sync/master:v4.1.0"
+22s         Normal    Pulled                   Pod/atlantis-0   Successfully pulled image "oci.example.com/git-sync/master:v4.1.0" in 632ms (632ms including waiting). Image size: 58518579 bytes.</code></pre>
+	<p>一見正常に見えますが、ポッドのスケジュール設定から実際にinitコンテナの画像を取得するまでの時間がどれだけかかるのでしょうか？残念ながら、Kubernetes自体から取得しなければならないデータは、これだけでした。しかし、実際にポッドを実行するのに時間がかかるのはなぜかを知る<i>必要</i>がありました。</p>
+	<div class="flex anchor relative">
+		<h3 id="going-deeper">深層学習</h3>
+		<a href="https://blog.cloudflare.com/#going-deeper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Kubernetesでは、各ノードで実行される<code>kubelet</code>と呼ばれるコンポーネントが、ポッドの作成の調整、永続的なボリュームの実装など、その他多くのことを担当します。Kubernetesチームに在籍していた頃から、<code>kubelet</code>がsystemdサービスとして実行されるので、そのログがKibanaで利用できるはずだとわかっています。ポッドがスケジュールされているため、関心のあるホスト名がわかっており、<code>kubelet</code>からのログメッセージには関連するオブジェクトが含まれているため、<code>atlantis</code>をフィルタリングして、興味のあるログメッセージに絞り込むことができます。</p>
+	<p>ポッドがスケジュールされた直後にAtlantis PVが搭載されているのがわかりました。また、すべてのシークレットボリュームが問題なく増加することも確認されました。しかし、ログにはまだ大きな未説明のギャップがありました。Cloudflareの調査結果：</p>
+	<pre class="language-Rust"><code class="language-Rust">[operation_generator.go:664] "MountVolume.MountDevice succeeded for volume \"pvc-94b75052-8d70-4c67-993a-9238613f3b99\" (UniqueName: \"kubernetes.io/csi/rook-ceph-nvme.rbd.csi.ceph.com^0001-000e-rook-ceph-nvme-0000000000000002-a6163184-670f-422b-a135-a1246dba4695\") pod \"atlantis-0\" (UID: \"83089f13-2d9b-46ed-a4d3-cba885f9f48a\") device mount path \"/state/var/lib/kubelet/plugins/kubernetes.io/csi/rook-ceph-nvme.rbd.csi.ceph.com/d42dcb508f87fa241a49c4f589c03d80de2f720a87e36932aedc4c07840e2dfc/globalmount\"" pod="atlantis/atlantis-0"
+[pod_workers.go:1298] "Error syncing pod, skipping" err="unmounted volumes=[atlantis-storage], unattached volumes=[], failed to process volumes=[]: context deadline exceeded" pod="atlantis/atlantis-0" podUID="83089f13-2d9b-46ed-a4d3-cba885f9f48a"
+[util.go:30] "No sandbox for pod can be found. Need to start a new one" pod="atlantis/atlantis-0"</code></pre>
+	<p>最後の2つのメッセージは、最終的にポッドが実際に正しく起動するのが確認されるまで、数回ループしました。</p>
+	<p>そのため、<code>kubelet</code>は、ポッドは移動準備はできていると考えていますが、まだスタートしていず、何かがタイムアウトしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-missing-piece">欠けている部分</h3>
+		<a href="https://blog.cloudflare.com/#the-missing-piece" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ポッドにある最下位レベルのログでは、何が起こっているのかを示すものではありませんでした。他に注目すべきものは？さて、ハングアップ前の最後のメッセージは、ノードに実装されたPVです。通常、PVに問題が増大している場合（例：他のノードに実装されているため）、それはイベントとして浮上します。しかし、ここではまだ何かが起こっており、掘り下げる必要があるのはPV自体だけです。そこで、Kibanaに接続すると、PV名がユニークなため、検索条件として十分</p>
+	<pre class="language-Rust"><code class="language-Rust">[volume_linux.go:49] Setting volume ownership for /state/var/lib/kubelet/pods/83089f13-2d9b-46ed-a4d3-cba885f9f48a/volumes/kubernetes.io~csi/pvc-94b75052-8d70-4c67-993a-9238613f3b99/mount and fsGroup set. If the volume has a lot of files then setting volume ownership could be slow, see https://github.com/kubernetes/kubernetes/issues/69699</code></pre>
+	<p>当初、私はイノードが不足すると言ったのを覚えていますか？つまり、このPVには<i>多くの</i>ファイルがあるのです。PVがマウントされている場合、<code>kubelet</code>は<code>chgrp -R</code>を実行して、このファイルシステム全体のすべてのファイルとフォルダのグループを再帰的に変更します。移行に時間がかかるのも不思議ではありません。これは高速ストレージですら大量のエントリーを作成することです！</p>
+	<p>ポッドの<code>spec.securityContextfsGroup: 1</code>が含まれており、GID 1の下で実行されているプロセスが、ボリューム上のファイルにアクセスできるようにしています。Atlantisは非ルートユーザーとして実行されるため、この設定がないとPVの読み取りや書き込み許可が得られません。Kubernetesはこれを実施する方法として、PV全体に対して<i>マウントされるたびに</i>再帰的に所有権を更新しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-fix">修正プログラム</h3>
+		<a href="https://blog.cloudflare.com/#the-fix" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これを修正するのは、途方もない作業でした。バージョン1.20以降、Kubernetesは<code>pod.spec.securityContext</code>の追加フィールドをサポートしています。<code>fsGroupChangePolicy</code>というものです。このフィールドのデフォルトは<code>Always</code>で、これがまさにここでの動作となります。別のオプションとして、<code>OnRootMismatch</code>という、PVのルートディレクトリに正しい権限がない場合にのみ権限を変更する機能があります。PV上でファイルがどのように作成されるかを正確に把握していない場合は、<code>fsGroupChangePolicy</code>: <code>OnRootMismatch</code>を設定しないでください。PV内の何もグループを変更してはいけませんことを確認し、そのフィールドを次のように設定しました： </p>
+	<pre class="language-Rust"><code class="language-Rust">spec:
+  template:
+    spec:
+      securityContext:
+        fsGroupChangePolicy: OnRootMismatch</code></pre>
+	<p>現在は、Atlantisの再起動に約30秒かかるようになり、開始時の30分から短縮しています。</p>
+	<p>Kubernetesのデフォルト設定は、小容量なら問題ありませんが、データが増えるにつれてボトルネックになる可能性があります。当社では、<code>fsGroupChangePolicy</code>に対するこの1行の変更によって、毎月50時間近くの滞っていたエンジニアリング時間を取り戻すことができました。当社のチームはこの時間をインフラストラクチャの変更が通過するのを待ち、オンコールエンジニアが誤報に対応していたのです。これは、デプロイよりも診断に時間がかかった修正から、年間約600時間が生産的な作業に戻ったことに相当します。</p>
+	<p>Kubernetesの安全なデフォルトは、小規模で単純なワークロード向けに設計されています。しかし、業務が成長するにつれ、これらは徐々にボトルネックとなる可能性があります。大量の永続的ボリュームのあるワークロードを実行している場合は、このような再帰的な権限変更が静かに再起動時間を食っているかどうかを確認する価値があります。<code>securityContext</code>設定、特に<code>fsGroup</code>と<code>fsGroupChangePolicy</code>を監査します。<code>OnRootMismatch</code>はv1.20から利用可能です。</p>
+	<p>すべての修正が現実的または複雑なものではありません。そして、通常、「なぜシステムがこのように動作するのか？」を考えてみましょう。</p>
+	<p>インフラストラクチャの問題を大規模にデバッグすることに関心があるなら、<a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><u>当社は募集しています</u></a>。<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>または<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>に参加して、情報交換しましょう。</p>
+</div>

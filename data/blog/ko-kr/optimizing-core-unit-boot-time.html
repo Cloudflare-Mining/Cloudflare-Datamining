@@ -1,0 +1,180 @@
+<div class="mb2 gray5">7분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/optimizing-core-unit-boot-time">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/optimizing-core-unit-boot-time">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n94QcCCOGvQqPtXolDQPT/8b336838a0cba9e7e485221fbf9d4c0c/BLOG-3108_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare의 코어는 제어판, 청구, 분석을 실행하는 중앙 집중식 데이터 센터로, 사용자 트래픽을 처리하는 전 세계적으로 분산된 에지와는 다릅니다. 코어 서버는 베어메탈이므로 재부팅하는 동안 문제가 발생하면 그 결과는 빠르게 확산될 수 있습니다.&nbsp; </p>
+	<p>부팅 시퀀스는 하드웨어를 초기화하고 운영 체제에 제어권을 넘겨주는 최신 펌웨어 표준인 <a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer"><u>UEFI</u></a>에 의해 조율됩니다. 이 핸드오프의 작은 특징들이 엄청난 결과를 초래할 수 있습니다.</p>
+	<p>일부 핵심 서버가 일상적인 펌웨어 업데이트 후 온라인 상태로 돌아오는 데 몇 분이 걸렸지만, 이전처럼 몇 <i>분이 걸렸습니다.</i> 회사 전체에 하루 동안 진행해야 하는 롤아웃이 며칠 동안 지연되어 갔습니다. 새로운 노드가 첫 번째 부팅 시 최대 제한 시간 초과 문제에 직면했습니다. 유지 관리 기간이 늘어났습니다. 업그레이드를 자동으로 처리해야 하기 때문에 엔지니어링 팀이 돌봐야 했습니다.&nbsp;</p>
+	<p>이 현상은 장기간 전원이 꺼진 노드를 온라인 상태로 전환하면서 드러났습니다. 이 노드의 펌웨어는 최신 상태가 아니었으며, 문제를 해결하려면 여러 번 업데이트해야 했습니다. 여기에 일부 Cloudflare 위치의 서버에서 사용하는 부팅 프로토콜에 대한 최근 업데이트가 더해지면, 영향을 받은 노드에서의 부팅 시간은 믿을 수 없을 만큼 많아졌습니다.</p>
+	<p>Cloudflare가 모든 사용 가능한 네트워크 부팅 인터페이스를 통해 펌웨어 문제와 과도한 선형 검색의 원인을 추적하고, 총 부팅 및 업그레이드 시간을 몇 시간에서 몇 분으로 단축했는지에 대한 이야기입니다. 그 과정에서 UEFI 내부, 벤더별 특이 사항, 궁극적으로 문제를 해결한 자동화 전략에 대해 배운 내용을 공유할 예정입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-network-boot-interface">네트워크 부팅 인터페이스</h3>
+		<a href="https://blog.cloudflare.com/#the-network-boot-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크 부팅 인터페이스를 사용하면 서버가 로컬 스토리지가 아닌 네트워크를 통해 운영 체제를 부팅할 수 있습니다. 이는 특히 전 세계에 분산된 제품군에서 다양한 워크로드를 처리하는 장비의 가동 방식을 중앙 집중식으로 자동화하고 확장 가능하게 제어하는 데 매우 중요합니다. Cloudflare 서버는 서로 다른 환경에 위치하고 서로 다른 용도로 사용되므로 특정 네트워크 부팅 인터페이스에 대한 요구 사항이 다릅니다. 두 가지 주요 인터페이스는 <a href="https://en.wikipedia.org/wiki/Preboot_Execution_Environment" target="_blank" rel="noopener noreferrer"><u>Preboot Execution Environment (PXE)</u></a> 및 Unified Extensible Firmware Interface(<a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer"><u>UEFI</u></a>) HTTPS 부팅입니다.&nbsp;</p>
+	<p>재부팅 과정에서 서버는 다양한 자동화의 이유로 일반적으로 PXE를 거칩니다. Cloudflare는 HTTP 및 HTTPS와 같은 최신 프로토콜을 지원하는 오픈 소스 네트워크 부팅 펌웨어인 <a href="https://ipxe.org" target="_blank" rel="noopener noreferrer"><u>오픈 소스 iPXE</u></a>를 사용합니다. 이를 통해 컴퓨터는 웹 서버, 클라우드, 기업 스토리지 네트워크에서 바로 훨씬 빠른 속도와 안정성으로 운영 체제를 부팅할 수 있습니다.</p>
+	<p>조직의 경우, iPXE는 부팅 프로세스를 프로그래밍 가능한 워크플로우로 전환합니다. Cloudflare One은 IT 팀이 특정 하드웨어 구성을 기반으로 서버를 프로비저닝하거나 안전한 디스크 없는 워크스테이션을 관리하는 등 복잡한 배포를 자동화할 수 있는 고급 스크립팅 기능을 제공합니다.&nbsp;</p>
+	<p>일부 하드웨어는 HTTPS 기반 UEFI 네트워크 부팅을 지원하여 컴퓨터의 마더보드 펌웨어가 기본적으로 운영 체제 파일을 안전하게 다운로드할 수 있도록 합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-linear-search">선형 탐색</h3>
+		<a href="https://blog.cloudflare.com/#the-linear-search" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>우리의 이야기는 운명적인 펌웨어 업데이트와 함께 시작됩니다. 업데이트 이후 첫 번째 신고가 저희 내부 채널을 통해 들어왔습니다. 서버가 다시 온라인으로 전환되고 있지 않다는 신고가 들어왔습니다. 모니터링 대시보드에서는 컴퓨터가 예상보다 훨씬 오랫동안 OS 이전 상태에서 멈춘 것으로 나타났습니다. 우리가 처음 의심했던 것은 펌웨어의 퇴행이었습니다. 업데이트 자체로 인해 부팅 프로세스를 방해하는 버그가 발생했을 수도 있습니다.</p>
+	<p>이를 배제하기 위해 우리는 영향을 받은 머신에서 직렬 콘솔을 가동하고 실시간으로 부팅 주기를 관찰했습니다. 펌웨어 POST(Power On 셀프 테스트)가 정상적으로 완료되었고 하드웨어 초기화가 정상으로 나타났습니다. 하지만 이내 서버가 네트워크 부팅 단계에 도달하여 OS 이미지를 다운시키는 대신, 서버는 대기 상태에 놓여 있었습니다. 그리고 기다림.&nbsp;</p>
+	<p>콘솔 출력을 통해 다음과 같은 내용을 알 수 있었습니다. 시스템이 IPv4 HTTPS 네트워크 부팅을 시도하다가 몇 분 후에 제한 시간이 초과되고, IPv4 iPXE를 다시 시도하고, 다시 시간 초과가 발생하고, 두 가지를 모두 반복하면서 마침내 실제로 성공할 수 있는 IPv6 HTTPS 부팅 인터페이스에 도달했습니다.</p>
+	<p>네트워크 부팅 시도가 실패할 때마다, 약 5분 동안 제한 시간 초과 응답을 기다립니다. 올바른 인터페이스에 도달하기 전에 네 번의 시도를 스태킹하는 바람에 단일 부팅 주기는 약 20분을 낭비했습니다. 정기적으로 재부팅하는 것은 고통스러운 일입니다. 펌웨어 업그레이드 자동화의 경우, 구성 요소당 하나씩 순차적으로 여러 번 재부팅해야 하는 경우, 20분의 페널티는 서버당 거의 4시간의 유휴 대기 시간에 해당했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x6QmYn2eTSTq2sncxLGKy/4b7dcbe2ed23feec5382f59ec6e271fc/image__8_.png" alt="BLOG-3108 2" class="kg-image" width="1414" height="2010" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="no-searching-games-declare-my-boot-interface">검색 게임 불필요: 부팅 인터페이스 선언</h2>
+		<a href="https://blog.cloudflare.com/#no-searching-games-declare-my-boot-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>부팅 시퀀스를 추적하고 제한 시간 초과 패턴을 분리해내고 나면, 근본 원인이 명확해졌습니다. 서버가 맹목적으로 사용 가능한 네트워크 부팅 인터페이스를 하나씩 검색하면서 각 오류가 발생하기를 기다렸다가 계속 진행하고 있었기 때문입니다. 해결 방법은 추측에 의존하는 것을 완전히 없애는 것이었습니다. 올바른 부팅 인터페이스를 미리 선언하면 시스템이 응답하지 않는 인터페이스로 시간을 낭비하지 않아도 됩니다. </p>
+	<p>하지만 이를 실천에 옮기는 일은 쉽지 않았습니다. 이어서 설명하겠지만, 해결하면서 부팅 자동화 워크플로 순서, 변경할 수 없도록 차단되었던 설정, 네트워크 인터페이스 카드 벤더와의 다양한 문자열 형식 등 장애물에 부딪혔습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="our-boot-automation-workflow">Cloudflare의 부팅 자동화 워크플로우</h3>
+		<a href="https://blog.cloudflare.com/#our-boot-automation-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 부팅 자동화 과정은 펌웨어 초기화, 사전 부팅, 커널 스타트업 등 크게 세 단계로 진행됩니다. 전원이 켜진 후 UEFI 펌웨어는 하드웨어 및 주변 기기 초기화와 PXE 사전 부팅 환경을 수행합니다. 프리부팅은 네트워크 카드를 설정하고 커널을 킥스타트하는 부트로더라는 작은 프로그램을 실행합니다. 이 PXE 단계에서는 다양한 네트워크 인터페이스가 올바른지 확인됩니다. 처음 부팅할 때 펌웨어 업그레이드가 Cloudflare의 부팅 자동화 워크플로에 포함되어 있습니다.&nbsp;</p>
+	<p>그리고 각 펌웨어 업그레이드에는 재부팅(및 그에 수반되는 네트워크 부팅 시도 시퀀스)이 필요하므로 총 부팅 시간이 4시간에 가까워지는 상황이 발생했습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XEkzNs5WJ5UXkJ1x14NXu/c537b305c9e041b472ffc26f2de7de84/BLOG-3108_3.png" alt="BLOG-3108 3" class="kg-image" width="994" height="1999" loading="lazy">
+	</figure>
+	<p>각 하드웨어/사용 사례에 대해 부팅 전 PXE 단계에서 네트워크 부팅 인터페이스 순서를 조기에 선언하는 자동화 시퀀스를 재구성하여 총 시간을 약 1시간 단축할 수 있었습니다. 각 펌웨어 업그레이드를 프로빙하는 데 20분을 소비해야 합니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aKbpHVBioqskgN3yWErNa/0ea2f3959b122476e77eeeee0b56d0b8/BLOG-3108_4.png" alt="BLOG-3108 4" class="kg-image" width="1094" height="1999" loading="lazy">
+	</figure>
+	<p>네트워크 부팅 인터페이스 순서를 선언하는 데는 두 가지 제약이 있었습니다.</p>
+	<ol>
+		<li>
+			<p>레거시 지원: 부팅 순서 지정은 이전 UEFI 버전에서 지원되지 않습니다</p>
+		</li>
+		<li>
+			<p>지속성: UEFI 펌웨어 업그레이드 후 구성 설정이 재설정되는 경우가 많습니다</p>
+		</li>
+	</ol>
+	<p>이러한 엣지 케이스를 해결하기 위해 저희는 상태 유효성 검사 단계를 구현했습니다. 이제 펌웨어 자동화가 변경 후 구성을 검증합니다. 설정이 수정된 것을 감지하면 구성을 다시 적용하고 재부팅을 트리거합니다.</p>
+	<p>첫 번째 부팅은 약간 더 오래 걸릴 수 있지만, 이러한 변경으로 향후 모든 스타트업에 필요한 시간이 후속 부팅당 약 20분에서 1분 미만으로 크게 줄어듭니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="setting-the-boot-order-disabled-by-the-vendor">벤더가 부팅 순서를 비활성화하도록 설정</h3>
+		<a href="https://blog.cloudflare.com/#setting-the-boot-order-disabled-by-the-vendor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크 부팅 설정의 내부 데이터 구조는 지연 로드된 EFI_IFR_EF3 데이터 구조입니다. 이는 GUI 콜백을 통해 명시적으로 액세스할 때까지 데이터가 인스턴스화되지 않음을 의미합니다.</p>
+	<pre class="language-C++"><code class="language-C++">typedef struct _EFI_IFR_REF3 {
+  EFI_IFR_OP_HEADER          Header;
+  EFI_IFR_QUESTION_HEADER    Question;
+  EFI_QUESTION_ID            QuestionId;
+  EFI_GUID                   FormSetId;
+} EFI_IFR_REF3;
+</code></pre>
+	<p>이는 <a href="https://en.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer"><u>BIOS</u></a> 부팅 시간을 단축하는 표준 업계 관행이지만, "네트워크 부팅 인터페이스"가 프로그래밍 방식 스캔에서 보이지 않도록 합니다. 구조가 아직 '로드'되지 않았으므로 자동화가 우선순위를 감지하지 못했습니다.</p>
+	<p>저희는 벤더와 협력하여 고정된 "부팅 순서 모듈" 내에서 특정 토큰을 활성화했습니다. 따라서 부팅 시퀀스 중에 수동 GUI 상호작용 없이 네트워크 부팅 인터페이스를 강제로 검색할 수 있습니다.</p>
+	<p>장비 제조업체의 UEFI에는 변경할 수 없는 설정, <code><b>우선 순위 Httpv4 Httpv6 Pxev4 Pxev6 강제 적용</b></code>, 이 있어 부팅 순서를 변경할 수 없었습니다.</p>
+	<p>이를 위해서는 부팅 순서를 설정할 때 벤더의 새 바이오스 버전과 디버그 세션이 필요했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="different-strings-from-different-network-interface-card-vendors">다른 네트워크 인터페이스 카드 벤더의 다른 문자열</h3>
+		<a href="https://blog.cloudflare.com/#different-strings-from-different-network-interface-card-vendors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크 인터페이스 카드(NIC) 벤더에 따라 문자열이 다르므로 iPXE를 통해 부팅 순서를 구성할 때 불일치가 발생할 수 있습니다.</p>
+	<p>예시:</p>
+	<p><code>UEFI: HTTPS IPv4 Ethernet Network Adapter XXX-XXX-Y for OCP 3.0 P1
+			UEFI: HTTPS IPv4 Network Adapter - 50:00:E6:8F:4F:32 P1</code></p>
+	<p>이 문제를 해결하기 위해 저희는 CfHIIConfig_App 도구에 전체 문자열을 가져오지 않고도 구성을 설정할 수 있는 추가 기능을 구현해야 했습니다.</p>
+	<p><code>.*HTTP.*IPv4.*P1</code></p>
+	<p>그런 다음 구성이 허용된 구성 문자열과 매칭되어 올바른 부팅 순서가 선택됩니다. Cloudflare는 현재 UEFI 벤더와 협력하여 관련 정보(예: 프로토콜, 전송 유형, 포트 번호, 물리적 슬롯 인덱스)를 제거하고 MAC 주소 등의 제품 세부 정보를 삭제합니다. 필요한 경우 네트워크 인터페이스 카드에 내장된 중요 제품 세부 정보에서 제품 세부 정보를 읽을 수 있습니다. 이렇게 하면 구성 드리프트와 와일드카드 사용이 모두 제거됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="inability-to-check-the-config-via-ipxe">iPXE를 통해 구성을 확인할 수 없음&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#inability-to-check-the-config-via-ipxe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>iPXE는 이 변수를 HEX로 읽기 때문에 문자열 출력을 16진수로 읽어야 합니다. 네트워크 부팅 설정이 수정되었는지 확인하고 부팅 시간을 줄이기 위해(설정하기 전에 변수를 인쇄할 필요가 없도록) 구성 변경 여부를 나타내는 부울 플래그인 <code>uefi-same-hex</code>를 구현했습니다.</p>
+	<p>이를 통해 먼저 비교를 위해 <code style="color: green;">show</code>를 실행한 다음, 구성이 원하는 상태가 아닐 경우 <code style="color: green;">set </code>을 실행하는 대신 단일 <code style="color: green;">set</code> 명령을 실행할 수 있었습니다.</p>
+
+	<pre class="language-Shell"><code class="language-Shell"># construct path to read the update variable
+set buffer-var-guid 91468514-75bc-4bb5-8f33-91efff9e9b1f
+set var-upd-path efivar/CfHIIVarUpd-${buffer-var-guid}
+
+#Run the config change command
+imgexec &lt;signed CF UEFI configuration App&gt; set ${uefi-setting}=${uefi-value}
+
+#Compare the update variable with the expected value if it has changed.
+#If it has changed, set the local variable to reboot the system
+iseq ${uefi-same-hex} ${${var-upd-path}} || set has-changed ${uefi-diff-hex}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="the-result-a-more-dynamic-system">결과: 더욱 역동적인 시스템</h3>
+		<a href="https://blog.cloudflare.com/#the-result-a-more-dynamic-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 네트워크 부팅 시퀀스에서 추측을 제거함으로써 4시간이나 걸렸던 시간을 3분으로 단축했습니다. 그 결과, 시스템 변경 사항이 동적이고 수동으로 수행되는 바이오스 상호작용이 필요하지 않습니다. 단일 바이오스 펌웨어 이미지는 모든 SKU에 서비스를 제공하며, 기존 릴리스 파이프라인을 통해 구성 업데이트가 대규모로 배포되며, 전체 워크플로우는 iPXE에서 작동합니다. </p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>메트릭</b></p>
+				</th>
+				<th>
+					<p><b>변경을 주문하기 전</b></p>
+				</th>
+				<th>
+					<p><b>변경 주문 후</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>펌웨어 업그레이드 자동화</b></p>
+				</td>
+				<td>
+					<p>약 4시간</p>
+				</td>
+				<td>
+					<p>3분</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>후속 단일 부팅</b></p>
+				</td>
+				<td>
+					<p>약 20분</p>
+				</td>
+				<td>
+					<p>1분 미만</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>UEFI의 내부를 깊이 파고들고, 프로그래밍 방식의 부팅 순서 제어와 같은 기능을 활용하기 위해 우리의 OEM 벤더와 긴밀하게 협력하며, 확장 가능한 자동화를 구축하기 위한 iPXE와 같은 오픈 소스 도구를 활용하지 않았다면 불가능했을 것입니다.</p>
+	<p>Cloudflare OpenBMC 팀은 매일매일 Cloudflare의 핵심 제품군 전체에 걸쳐 부팅 프로세스를 알아보고, 실험하며, 최적화하고 있습니다. 베어메탈 인프라를 관리하고 있으며 느린 서버 부팅 시간으로 어려움을 겪고 있다면 이 게시물을 통해 네트워크 부팅 시퀀스에서 불필요한 지연을 파악하고 제거할 수 있는 실용적인 프레임워크가 되었기를 바랍니다. iPXE 및 네트워크 부팅 자동화에 대해 자세히 알아보려면 <a href="https://ipxe.org" target="_blank" rel="noopener noreferrer"><u>여기를</u></a> 확인하세요!</p>
+</div>

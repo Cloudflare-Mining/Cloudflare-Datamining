@@ -1,0 +1,425 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/miniflare">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IwJgJJv2xtJSggJEtxXAW/79af3fd051e4692ea9af1002cf3a3cf9/miniflare.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2021年7月、私はWorkers向けの遊び心を持ちフル機能を備えた完全ローカルシミュレータであるMiniflare 1.0を、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Workers Discordサーバ</a>上に立ち上げました。<a href="https://github.com/gja/cloudflare-worker-local/pull/57" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a>プロジェクトへのプルリクエストとして始まったものが今ではCloudflareの公式プロジェクトとなり、Workersのエコシステムの中核となって<a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>に統合されています。本日、次のメジャーバージョンである、よりモジュール化された、軽量で正確なMiniflare 2.0のリリースを発表できることを嬉しく思います。?</p>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="background-why-miniflare-was-created">背景：Miniflareが作られた理由</h2>
+		<a href="https://blog.cloudflare.com/#background-why-miniflare-was-created" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2020年末頃に、私は初めてとなるWorkersアプリの制作を始めました。最初は、当時<a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost">最新のリリースである <code>wrangler dev</code></a>を使用していましたが、これは変更が反映されるまでに数秒かかることがわかりました。Workersのランタイム上で動作していることを考えると十分凄いことではありますが、私はフロントエンドの開発に<a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a>を使用していたので、開発者体験の大幅な高速化が可能であることを知っていました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aIIQnDFxercxfK9GYesIQ/1eadb8649cdc019daee1dad6acf05d2a/image3-7.png" alt="image3-7" class="kg-image" width="1999" height="750" loading="lazy">
+
+	</figure>
+	<p>その後、ローカルのWorkersシミュレータである<a href="https://github.com/gja/cloudflare-worker-local" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a>と<a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer"><code>cloudworker</code></a>に目を付けましたが、Workers Sitesのような新しい機能はサポートされていませんでした。私は、開発者体験に焦点を当てて、既存のプロジェクトで✨ <i>が動作す</i> る魔法のようなシミュレータを求めていましたが、Miniflare 1.0についての世間の反応を見ると、それは私だけではなかったようです。</p>
+	<p>Miniflare 1.0は、瞬時のリロード、ソースマップのサポート（どこでエラーが発生したかがわかる）、すっきりとしたログ（<code>{ unknown object }</code>や大量の JSON スタックトレースはもはや不要）、エラーの原因を強調する美しいエラーページ、<a href="https://miniflare.dev/developing/debugger" target="_blank" rel="noopener noreferrer">ステップスルーデバッガのサポート</a>などを実現していました。</p>
+	<p>「幼児語」で動作する可愛らしいエラーページ</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KeKH4ewXNY0saCTIUa0pK/5f34f2c536ccccdf72752a4253ae4b9b/image2-81.png" alt="image2-81" class="kg-image" width="1999" height="1031" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="the-next-iteration-whats-new-in-version-2">次のイテレーション：バージョン2での新機能</h2>
+		<a href="https://blog.cloudflare.com/#the-next-iteration-whats-new-in-version-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MmJ7lqEBt90UQrBLC1Zxm/9a87a210a98b64b21f5a975129a4d830/image5-5.png" alt="image5-5" class="kg-image" width="361" height="305" loading="lazy">
+
+	</figure>
+	<p>7月にMiniflare1.0がリリースされてから比較的短い期間で、プラットフォームとしてのWorkersは劇的に向上しました。Durable Objectsは明示的なトランザクションなしで一貫性を確保するための<a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three">入・出力ゲート</a>を持ち、Workersは開発者が後方互換性のない修正を選択できる<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">互換性のある日付</a>を持ち、お客様は<a href="https://blog.cloudflare.com/workers-javascript-modules">JavaScriptモジュール</a>を使用してワーカーを制作できるようになりました。</p>
+	<p>Miniflare 2はこれらの機能をすべてサポートし、3つの主要な設計目標に基づいて完全に再設計されています。</p>
+	<ol>
+		<li>
+			<p><b>モジュール式：</b> Miniflare 2では、Workersのコンポーネント（KV、Durable Objectsなど）を個別のパッケージ（<code>@miniflare/kv</code>、<code>@miniflare/durable-objects</code>など）に分割し、テスト用に単独でインポートできるようにしています。これにより、<a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2 Storage</a>のような、リリースされていない新機能のサポートを追加することも容易になります。</p>
+		</li>
+		<li>
+			<p><b>軽量：</b> Miniflare 1には<a href="http://npm.anvaka.com/#/view/2d/miniflare/1.4.1" target="_blank" rel="noopener noreferrer">122個のサードパーティ製パッケージ</a>が含まれており、インストールサイズは合計<code>88.3MB</code>でした。Miniflare 2は、Node.js 16に含まれる機能を活用することで、これを<b>23個のパッケージと、</b><code><b>6MB</b></code> のサイズにまで削減しています。</p>
+		</li>
+		<li>
+			<p><b>正確さ：</b> Miniflare 2では、実際のWorkerのランタイムの癖やスローイングエラーを再現しているので、デプロイする前に破損の予兆を知ることができます。もちろん<code>wrangler dev</code>は、実際のデータを使って実際のエッジ環境で実行されているため、常に最も正確なプレビューとなりますが、Miniflare 2は本当に近いものとなっています。</p>
+		</li>
+	</ol>
+	<p>また、新しい<a href="https://miniflare.dev/developing/live-reload" target="_blank" rel="noopener noreferrer">live-reload機能</a>と、Jestによるテストのfirst-classのサポートが追加され、開発者体験がさらに楽しいものになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-local-development">ローカル開発を始めるにあたって</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-local-development" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 45.565217391304344%;"><iframe src="https://iframe.videodelivery.net/3c37cfa72152fef7e44de922f84b0920?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F3c37cfa72152fef7e44de922f84b0920%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23e97f07" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<p>冒頭で述べたように、Miniflare 2.0は現在<a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>に統合されているため、完全ローカルのWorker開発サーバーを起動するには<code>npx wrangler@beta dev --local</code>を、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp">Cloudflare Pages Functions</a>サーバーを起動するには<code>npx wrangler@beta pages dev</code>を実行するだけです。<a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.jsの最新リリース</a>がインストールされていることを確認してください。</p>
+	<p>しかし、Wrangler 1を使用している場合や、お使いのローカル環境をカスタマイズしたい場合は、Miniflare をスタンドアロンでインストールすることができます。もしお客様が<code>wrangler.toml</code>ファイルを持つ既存のWorkerをお持ちであれば、<code>npx miniflare --live-reload</code>を実行するだけでライブリロード型の開発サーバーを起動することができます。Miniflareは、KV名前空間やDurable Objectバインディングのような設定を<code>wrangler.toml</code>ファイルから、そしてsecretsを<code>.env</code>ファイルから自動的に読み込みます。</p>
+	<p>Miniflareは高度な設定が可能です。たとえば、再起動の間KVデータを持続させたい場合は、<code>--kv-persist</code>フラグを含めます。複数のWorkersの実行や HTTPS サーバーの起動など、さらに多くのオプションを利用する場合、<a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare docs</a>を参照いただくか、<code>npx miniflare --help</code>を実行してください。</p>
+	<p><code>scheduled</code>状態のイベントハンドラがあれば、お使いのブラウザで<code>http://localhost:8787/cdn-cgi/mf/scheduled</code>にアクセスすることで、手動でトリガすることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="testing-for-workers-with-jest">JestによるWorkerのテスト</h2>
+		<a href="https://blog.cloudflare.com/#testing-for-workers-with-jest" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://jestjs.io" target="_blank" rel="noopener noreferrer">Jest</a>は、最も人気のあるJavaScriptテストフレームワークの1つであるため、ファーストクラスのサポートを追加することは理にかなっています。Miniflare 2.0には、<a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer">WorkersのランタイムAPI</a>にアクセスできる<a href="https://jestjs.io/docs/configuration#testenvironment-string" target="_blank" rel="noopener noreferrer">カスタムテスト環境</a>が含まれています。</p>
+	<p>例えば、JavaScriptモジュールを使って書かれた次のようなWorkerがあり、各URLの訪問回数をWorkers KVに格納しているとします。</p>
+	<blockquote>
+		<p>余談ですが、Workers KVは最終的に一貫性を保つ仕組みであるためカウンター用には設計されていません。実際のWorkersではDurable Objectを使うべきです。ここでは簡単な例を紹介します。</p>
+	</blockquote>
+	<p>...単体テストでは、次のように書くことができます：</p>
+	<pre class="language-js"><code class="language-js">// src/index.mjs
+export async function increment(namespace, key) {
+  // Get the current count from KV
+  const currentValue = await namespace.get(key);
+  // Increment the count, defaulting it to 0
+  const newValue = parseInt(currentValue ?? "0") + 1;
+  // Store and return the new count
+  await namespace.put(key, newValue.toString());
+  return newValue;
+}
+
+export default {
+  async fetch(request, env, ctx) {
+    // Use the pathname for a key
+    const url = new URL(request.url);
+    const key = url.pathname;
+    // Increment the key
+    const value = await increment(env.COUNTER_NAMESPACE, key);
+    // Return the new incremented count
+    return new Response(`count for ${key} is now ${value}`);
+  },
+};</code></pre>
+
+	<pre class="language-toml"><code class="language-toml"># wrangler.toml
+kv_namespaces = [
+  { binding = "COUNTER_NAMESPACE", id = "..." }
+]
+
+[build.upload]
+format = "modules"
+dist = "src"
+main = "./index.mjs"</code></pre>
+	<p>...実行には以下を使用しています。</p>
+	<pre class="language-js"><code class="language-js">// test/index.spec.mjs
+import worker, { increment } from "../src/index.mjs";
+
+// When using `format = "modules"`, bindings are included in the `env` parameter,
+// which we don't have access to in tests. Miniflare therefore provides a custom
+// global method to access these.
+const { COUNTER_NAMESPACE } = getMiniflareBindings();
+
+test("should increment the count", async () =&gt; {
+  // Seed the KV namespace
+  await COUNTER_NAMESPACE.put("a", "3");
+
+  // Perform the increment
+  const newValue = await increment(COUNTER_NAMESPACE, "a");
+  const storedValue = await COUNTER_NAMESPACE.get("a");
+
+  // Check the return value of increment
+  expect(newValue).toBe(4);
+  // Check increment had the side effect of updating KV
+  expect(storedValue).toBe("4");
+});
+
+test("should return new count", async () =&gt; {
+  // Note we're using Worker APIs in our test, without importing anything extra
+  const request = new Request("http://localhost/a");
+  const response = await worker.fetch(request, { COUNTER_NAMESPACE });
+
+  // Each test gets its own isolated storage environment, so the changes to "a"
+  // are *undone* automatically. This means at the start of this test, "a"
+  // wasn't in COUNTER_NAMESPACE, so it defaulted to 0, and the count is now 1.
+  expect(await response.text()).toBe("count for /a is now 1");
+});</code></pre>
+
+	<pre class="language-js"><code class="language-js">// jest.config.js
+const { defaults } = require("jest-config");
+
+module.exports = {
+  testEnvironment: "miniflare", // ✨
+  // Tell Jest to look for tests in .mjs files too
+  testMatch: [
+    "**/__tests__/**/*.?(m)[jt]s?(x)",
+    "**/?(*.)+(spec|test).?(m)[tj]s?(x)",
+  ],
+  moduleFileExtensions: ["mjs", ...defaults.moduleFileExtensions],
+};</code></pre>
+	<p>カスタムテスト環境と分離ストレージの詳細については<a href="https://miniflare.dev/testing/jest" target="_blank" rel="noopener noreferrer">Miniflare docs</a>、またはTypeScriptとDurableObjectsを使用した<a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest" target="_blank" rel="noopener noreferrer">こちらのサンプルプロジェクト</a>を参照してください。</p>
+	<pre class="language-shell"><code class="language-shell"># Install dependencies
+$ npm install -D jest jest-environment-miniflare
+# Run tests with experimental ES modules support
+$ NODE_OPTIONS=--experimental-vm-modules npx jest</code></pre>
+	<p>Jestをお使いではありませんか？Miniflareでは、vanilla Node.jsやその他のテストフレームワークを使って独自の統合テストを書くことができます。AVAを使用した例については、<a href="https://miniflare.dev/testing/ava" target="_blank" rel="noopener noreferrer">Miniflareのドキュメント</a>または<a href="https://github.com/mrbbot/miniflare-esbuild-ava" target="_blank" rel="noopener noreferrer">こちらのリポジトリ</a>を参照してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-miniflare-works">Miniflareの仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-miniflare-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>それでは、Miniflareの興味深い機能について詳しく見ていきましょう。</p>
+	<p>Miniflareは、ChromeのV8 JavaScriptエンジン上に構築されたJavaScriptランタイムであるNode.jsを利用しています。V8はCloudflare Workersランタイムを強化するのと同じエンジンですが、NodeとWorkersはその上に異なるランタイムAPIを実装しています。NodeのAPIは、ユーザーに表示されないようにし、WorkersのAPIを注入するために、<a href="https://nodejs.org/api/vm.html" target="_blank" rel="noopener noreferrer">MiniflareはNode.jsの<code>vm</code>モジュール</a>を使用しています。これにより、カスタムV8コンテキストで任意のコードを実行できます。</p>
+	<p>Workersのコア部分は、<code>Request</code>と<code>Response</code>のクラスです。MiniflareはこれらをNodeチームがNodeに<code>fetch</code>を導入するために書いたプロジェクトである<a href="https://github.com/nodejs/undici" target="_blank" rel="noopener noreferrer"><code>undici</code></a>から取得しています。また、service workers用にNode 15 で追加された<code>addEventListener</code>と<code>EventTarget</code> API を使ってイベントをディスパッチする方法も必要です。</p>
+	<p>それらがあれば、私たちは <i>小規模の</i>-miniflareを作ることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="plugins">プラグイン</h3>
+		<a href="https://blog.cloudflare.com/#plugins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">import vm from "vm";
+import { Request, Response } from "undici";
+
+// An instance of this class will become the global scope of our Worker,
+// extending EventTarget for addEventListener and dispatchEvent
+class ServiceWorkerGlobalScope extends EventTarget {
+  constructor() {
+    super();
+
+    // Add Worker runtime APIs
+    this.Request = Request;
+    this.Response = Response;
+
+    // Make sure this is bound correctly when EventTarget methods are called
+    this.addEventListener = this.addEventListener.bind(this);
+    this.removeEventListener = this.removeEventListener.bind(this);
+    this.dispatchEvent = this.dispatchEvent.bind(this);
+  }
+}
+
+// An instance of this class will be passed as the event parameter to "fetch"
+// event listeners
+class FetchEvent extends Event {
+  constructor(type, init) {
+    super(type);
+    this.request = init.request;
+  }
+
+  respondWith(response) {
+    this.response = response;
+  }
+}
+
+// Create a V8 context to run user code in
+const globalScope = new ServiceWorkerGlobalScope();
+const context = vm.createContext(globalScope);
+
+// Example user worker code, this could be loaded from the file system
+const workerCode = `
+addEventListener("fetch", (event) =&gt; {
+  event.respondWith(new Response("Hello mini-miniflare!"));
+})
+`;
+const script = new vm.Script(workerCode);
+
+// Run the user's code, registering the "fetch" event listener
+script.runInContext(context);
+
+// Create an example request, this could come from an incoming HTTP request
+const request = new Request("http://localhost:8787/");
+const event = new FetchEvent("fetch", { request });
+
+// Dispatch the event and log the response
+globalScope.dispatchEvent(event);
+console.log(await event.response.text()); // Hello mini-miniflare!</code></pre>
+	<p>Miniflare monorepoの依存関係グラフ。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qYQfyfQqHPj6BmnflgsJV/ff80edc724c00d644bd40a0765bd1f19/image1-108.png" alt="image1-108" class="kg-image" width="1653" height="443" loading="lazy">
+
+	</figure>
+	<p>WorkersのランタイムAPIはたくさんあるため、上記のようにすべてを手作業で追加・設定するのは面倒です。そこでMiniflare 2では、各パッケージがグローバルやバインディングをエクスポートして、サンドボックスに含めることができるプラグインシステムを採用しました。オプションには、それらのタイプ、CLIフラグ、それらがWrangler設定ファイル内のどこにあるかを説明する注釈があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="durable-objects">Durable Objects</h3>
+		<a href="https://blog.cloudflare.com/#durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-ts"><code class="language-ts">@Option({
+  // Define type for runtime validation of the CLI flag
+  type: OptionType.ARRAY,
+  // Use --kv instead of auto-generated --kv-namespace for the CLI flag
+  name: "kv",
+  // Define -k as an alias
+  alias: "k",
+  // Displayed in --help
+  description: "KV namespace to bind",
+  // Where to find this option in wrangler.toml
+  fromWrangler: (config) =&gt; config.kv_namespaces?.map(({ binding }) =&gt; binding),
+})
+kvNamespaces?: string[];</code></pre>
+	<p>入出力ゲートが追加される以前は、通常<code>transaction()</code>メソッドを使用して一貫性を確保する必要がありました。</p>
+	<p>Miniflareではこれを<a href="https://dl.acm.org/doi/10.1145/319566.319567" target="_blank" rel="noopener noreferrer">optimistic-concurrency control (OCC)</a>を使って実装しています。しかし、入出力ゲートが利用できるようになったため、新しく書かれたDurable Objectのコードをシミュレーションする際の競合状態を回避するために、Miniflare 2ではそれらを実装する必要がありました。</p>
+	<pre class="language-js"><code class="language-js">async function incrementCount() {
+  let value;
+  await this.storage.transaction(async (txn) =&gt; {
+    value = await txn.get("count");
+    await txn.put("count", value + 1);
+  });
+  return value;
+}</code></pre>
+	<p><a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/#part1inputgates">ゲート発表時のブログ記事</a>の説明より：</p>
+	<blockquote>
+		<p><b>入力ゲート：</b> ストレージ操作の実行中は、ストレージ完了イベント以外のイベントをオブジェクトに配信してはなりません。その他のイベントは、オブジェクトがJavaScriptコードを実行しなくなり、ストレージ操作の待ちがなくなるまで待機状態にされます。私たちはこれらのイベントが「入力ゲート」が開くのを待っている状態と表現します。</p>
+	</blockquote>
+	<p>...入力ゲートには2つのメソッドが必要であることがわかります。1つはストレージの動作中にゲートを閉じるもので、1つは入力ゲートが開くまで待つものです：</p>
+	<p>各Durable Objectには、それぞれに対する<code>InputGate</code>があります。ストレージの実装では<code>runWithClosed</code>を呼び出して、ストレージ操作が完了するまで他のイベントを待機させます。</p>
+	<pre class="language-ts"><code class="language-ts">class InputGate {
+  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
+    // 1. Close the input gate
+    // 2. Run the closure and store the result
+    // 3. Open the input gate
+    // 4. Return the result
+  }
+
+  async waitForOpen(): Promise&lt;void&gt; {
+    // 1. Check if the input gate is open
+    // 2. If it is, return
+    // 3. Otherwise, wait until it is
+  }
+}</code></pre>
+	<p>...次に、別のイベントを配信する準備ができたら、<code>waitForOpen</code>を呼び出します：</p>
+	<pre class="language-ts"><code class="language-ts">class DurableObjectStorage {
+  async get&lt;Value&gt;(key: string): Promise&lt;Value | undefined&gt; {
+    return this.inputGate.runWithClosed(() =&gt; {
+      // Get key from storage
+    });
+  }
+}</code></pre>
+	<p>ここで問題に気づいたかもしれません。<code>inputGate</code>は<code>fetch</code>内のどこから来るのでしょうか？Worker全体とそのすべてのDurable Objectに対して1つのグローバルスコープしかないため、Durable Objectの<code>InputGate</code>ごとに<code>fetch</code>を行うことはできません。また、それを必要とするすべての関数に別のパラメーターとして渡すようにユーザーに求めることはできません。潜在的に_<code>async</code>_ 関数間で自動的に渡されるコンテキストの中にそれを格納する何らかの方法が必要です。このために、我々は、 <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer"><code>AsyncLocalStorage</code> クラス</a>を含む、もう一つのあまり知られてNodeモジュール<a href="https://nodejs.org/api/async_context.html" target="_blank" rel="noopener noreferrer"><code>async_hooks</code></a>を使用することができます ：</p>
+	<pre class="language-js"><code class="language-js">import { fetch as baseFetch } from "undici";
+
+async function fetch(input, init) {
+  const response = await baseFetch(input, init);
+  await inputGate.waitForOpen();
+  return response;
+}</code></pre>
+	<p>また、Durable Objectsには、<code>blockConcurrencyWhile(closure)</code>メソッドも含まれており、<code>closure</code>が完了するまでイベントを待機させます。これはまさに<code>runWithClosed()</code>のメソッドです。</p>
+	<pre class="language-ts"><code class="language-ts">import { AsyncLocalStorage } from "async_hooks";
+
+const inputGateStorage = new AsyncLocalStorage&lt;InputGate&gt;();
+
+const inputGate = new InputGate();
+await inputGateStorage.run(inputGate, async () =&gt; {
+  // This closure will run in an async context with inputGate
+  await fetch("https://example.com");
+});
+
+async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response&gt; {
+  const response = await baseFetch(input, init);
+  // Get the input gate in the current async context
+  const inputGate = inputGateStorage.getStore();
+  await inputGate.waitForOpen();
+  return response;
+}</code></pre>
+	<p>しかし、今あるものには問題があります。次のようなコードを考えてみましょう。</p>
+	<pre class="language-ts"><code class="language-ts">class DurableObjectState {
+  // ...
+
+  blockConcurrencyWhile&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
+    return this.inputGate.runWithClosed(closure);
+  }
+}</code></pre>
+	<p><code>blockConcurrencyWhile</code>は入力ゲートを閉じますが、<code>fetch</code>は入力ゲートが開くまで戻らないためデッドロック状態です！この問題を解決するには<code>InputGate</code>を入れ子にする必要があります。</p>
+	<pre class="language-js"><code class="language-js">export class CounterObject {
+  constructor(state: DurableObjectState) {
+    state.blockConcurrencyWhile(async () =&gt; {
+      const res = await fetch("https://example.com");
+      this.data = await res.text();
+    });
+  }
+}</code></pre>
+	<p>現在、<code>blockConcurrencyWhile</code>の外側の入力ゲートが閉じられるので、Durable Objectへのフェッチは待機状態にされますが、closureの内側の入力ゲートは開かれるので、<code>fetch</code>は戻ることができます。</p>
+	<pre class="language-ts"><code class="language-ts">class InputGate {
+  constructor(private parent?: InputGate) {}
+
+  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
+    // 1. Close the input gate, *and any parents*
+    // 2. *Create a new child input gate with this as its parent*
+    const childInputGate = new InputGate(this);
+    // 3. Run the closure, *under the child input gate's context*
+    // 4. Open the input gate, *and any parents*
+    // 5. Return the result
+  }
+}</code></pre>
+	<p>ここではいくつかの詳細を説明していますが、<a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts" target="_blank" rel="noopener noreferrer">ゲートの実装</a>で追加の構文やコメントをチェックすることができます。?</p>
+	<div class="flex anchor relative">
+		<h3 id="htmlrewriter">HTMLRewriter</h3>
+		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>HTMLRewriter</code>はHTMLストリームを解析・変換するための新しいクラスです。edge Workers のランタイムでは、Rustライブラリ<a href="https://github.com/cloudflare/lol-html" target="_blank" rel="noopener noreferrer">lol-html</a>へのCバインディングによって動作しています。幸運なことに、 <a href="https://blog.cloudflare.com/author/ivan-nikulin">Ivan Nikulin</a>氏 がこのために<a href="https://github.com/cloudflare/lol-html/issues/38" target="_blank" rel="noopener noreferrer">WebAssembly bindings</a>バインディングを構築したので、Node.jsで同じライブラリを使用することができます。</p>
+	<p>しかし、これらには書き換え時に外部リソースにアクセスできるasyncハンドラのサポートが欠けていました。</p>
+	<p>The WebAssembly bindings Rust code includes something like:</p>
+	<pre class="language-js"><code class="language-js">class UserElementHandler {
+  async element(node) {
+    const response = await fetch("/user");
+    // ...
+  }
+}</code></pre>
+	<p>ここで重要なのは、Rustの<code>move |...| { ... }</code>クロージャは同期的ですが、ハンドラは非同期的にできることです。これは非<code>async</code>関数で<code>Promise</code>を<code>await</code>しようとするようなものです。</p>
+	<pre class="language-rust"><code class="language-rust">macro_rules! make_handler {
+  ($handler:ident, $JsArgType:ident, $this:ident) =&gt; {
+    move |arg: &amp;mut _| {
+      // `js_arg` here is the `node` parameter from above
+      let js_arg = JsValue::from(arg);
+      // $handler here is the `element` method from above
+      match $handler.call1(&amp;$this, &amp;js_arg) {
+        Ok(res) =&gt; {
+          // Check if this is an async handler
+          if let Some(promise) = res.dyn_ref::&lt;JsPromise&gt;() {
+            await_promise(promise);
+          }
+          Ok(())
+        }
+        Err(e) =&gt; ...,
+      }
+    }
+  };
+}</code></pre>
+	<p>これを解決するために、 WebAssemblyモジュールを扱うためのツールのセットである <a href="https://github.com/WebAssembly/binaryen" target="_blank" rel="noopener noreferrer">Binaryen</a>の<a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp" target="_blank" rel="noopener noreferrer">Asyncify</a>機能を使用します。<code>await_promise</code>を呼び出すたびに、Asyncify は現在の WebAssembly スタックを一時的なストレージに展開します。そして、JavaScriptで、<code>Promise</code>を<code>await</code>します。最後に、一時ストレージからスタックを前の状態に巻き戻し、中断したところから書き換えを続けます。</p>
+	<p>完全な実装は、 <a href="https://github.com/mrbbot/html-rewriter-wasm" target="_blank" rel="noopener noreferrer"><code>html-rewriter-wasm</code> パッケージ</a>にあります。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-future-of-miniflare">Miniflareの今後について</h2>
+		<a href="https://blog.cloudflare.com/#the-future-of-miniflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yhaL0yMZ6KwV2oKVvZEgd/92d6c0add7832053ea38f97c3ecf9bb8/image4-4.png" alt="image4-4" class="kg-image" width="849" height="755" loading="lazy">
+
+	</figure>
+	<p>前述の通り、Miniflareはwrangler 2.0に含まれるようになりました。ぜひお試しいただき、ご意見をお聞かせください。</p>
+	<p>このような素晴らしいプラットフォームと支援してくれるコミュニティを構築してくれたCloudflareのWorkersチームの皆さんに感謝したいと思います。Miniflareに貢献してくださった方、問題を提起してくれた方、提案をしてくださった方、Discordサーバーで質問してくれた方へも感謝をお伝えします。</p>
+	<p>これで本来のWorkersプロジェクトを終わらせることができるかもしれません...?</p>
+</div>

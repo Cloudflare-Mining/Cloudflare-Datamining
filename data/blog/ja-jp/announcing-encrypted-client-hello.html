@@ -1,0 +1,61 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/announcing-encrypted-client-hello">English</a>、<a href="https://blog.cloudflare.com/zh-tw/announcing-encrypted-client-hello">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/announcing-encrypted-client-hello">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/announcing-encrypted-client-hello">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PuksTn93smbZyr2DhM0NO/d71cddf3921a4af2236c09349849301d/announcing-encrypted-client-hello.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、インターネット上のすべての人のプライバシーを向上させるための貢献を発表できることを嬉しく思います。ユーザーがどのWebサイトを閲覧しているかをネットワークが盗み見ることを防ぐために<a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni" target="_blank" rel="noopener noreferrer">提案された新しい標準</a>である「Encrypted Client Hello」が、現在すべてのCloudflareプランで利用可能になりました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tab7Qbtn2MGjXuTbcAsux/c40ac1cfda644402d4022573129a588b/image2-29.png" alt="Encrypted Client Hello - the last puzzle piece to privacy" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
+	<p>Encrypted Client Hello（ECH）は<a href="https://www.cloudflare.com/learning/ssl/what-is-encrypted-sni" target="_blank" rel="noopener noreferrer">ESNI</a>の後継で、TLSハンドシェイクのネゴシエーションに使用されるServer Name Indication（SNI）を隠蔽します。つまり、ユーザがECHを有効にしたCloudflare上のWebサイトにアクセスした場合、ユーザ、Cloudflare、Webサイトの所有者以外は、どのWebサイトにアクセスしたかを特定することができません。Cloudflareはすべての人のプライバシーを強く支持しており、この技術を実用化できる可能性を嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h3 id="browsing-the-internet-and-your-privacy">インターネットの閲覧とプライバシー</h3>
+		<a href="https://blog.cloudflare.com/#browsing-the-internet-and-your-privacy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webサイトにアクセスするたびに、ブラウザはWebサーバーにリクエストを送信します。Webサーバーからコンテンツが返信され、ブラウザでWebサイトの読み込みが開始されます。インターネットの黎明期には、これは「平文」で行われ、その情報はブラウザは誰もが読める状態で、閲覧元の企業ネットワーク、インターネット接続を提供しているインターネットサービスプロバイダー、WebサイトをホストしているWebサーバーに到達するまでにリクエストが通過するネットワーク上を流れていました。閲覧者とWebサーバーの間にあるネットワークでトラフィックを見ることができれば閲覧者の行動のすべてが把握されてしまうため、プライバシー擁護者たちは「平文」でどれだけの情報が見られるかを長い間懸念してきました。銀行送金を開始する場合、ネットワークの中間に位置する人であれば誰でも送金先と送金額を見ることができてしまいます。</p>
+	<p>では、どうすればこのデータをよりプライベートにできるのでしょうか？盗聴を防ぐために、<a href="https://www.cloudflare.com/learning/ssl/what-is-ssl" target="_blank" rel="noopener noreferrer">SSL</a>や後の<a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS</a>という形で暗号化が導入されました。これらは、ユーザーのプライバシーを守るだけでなく、ユーザーが見たりアップロードしたりしたコンテンツをネットワークの中間に位置する者が改ざんできないようにする素晴らしいプロトコルです。しかし、暗号化はここまでしかできません。</p>
+	<p>実際のコンテンツ（訪問中のWebサイトの特定のページや、アップロードした情報）は暗号化され、ネットワークの中間に位置する者から保護することはできますが、ユーザーの行動を知るための方法は残されています。例えば、DNSリクエストと<a href="https://www.cloudflare.com/learning/ssl/what-is-sni" target="_blank" rel="noopener noreferrer">SNI</a>を見ることでユーザーが訪問しているWebサイトのアドレス（IP）を特定して利用状況を追跡することができます。</p>
+	<p>まずは<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a>から見ていきましょう。Webサイトにアクセスする都度、オペレーティングシステムは接続先のIPアドレスを知る必要があります。これはDNSリクエストによって行われます。DNSはデフォルトでは暗号化されていないため、どのWebサイトのものを問い合わせたかを誰でも見ることができます。このリクエストをネットワークの中間に位置する者から保護するため、2019年にCloudflareは2019年に<a href="https://blog.cloudflare.com/dns-encryption-explained">DNS over HTTPS</a>（DoH）を導入しました。さらに一歩進み、2020年には、CloudflareでさえユーザーがどのWebサイトについて問い合わせたかを見ることができないようにする<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS over HTTPS</a>を導入しました。</p>
+	<p>これにより、ネットワークの中間に位置する者に残された、ユーザーが訪問するWebサイトを知るための暗号化されていないビットはSNIのみとなります。DNSクエリを実行した後でブラウザが最初に行うことの1つは<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">TLSハンドシェイク</a>の実行です。このハンドシェイクは、使用する暗号方式、使用するTLSバージョン、Webサーバーの身元を確認するために使用する証明書など、いくつかのステップで構成されます。このハンドシェイクの一部として、ブラウザは訪問しようとしているサーバー（Webサイト）の名前を提示します。</p>
+	<p>この時点のセッションはまだ暗号化されておらず、サーバは使用する証明書を認識していないため、ブラウザはこの情報を平文で送信する必要があります。SNIを平文で送信するということは、インターネットの中間に位置する者は誰でも、接続のための最初のパケットをチェックするだけで、ユーザーがアクセスしようとしているWebサイトを知ることができるということになります。</p>
+	<p>これは、これまでのTLSとDoHの努力に関わらず、依然としてユーザーがどのWebサイトを訪問しているのかを本当の意味で秘匿化できていないことを意味します。本日、私たちはECHという最後のピースを埋めることでこのパズルを完成させます。ECHでは、ブラウザはCloudflareとTLSハンドシェイクを行いますが、お客様に固有のホスト名は使用しません。つまり、インターネットの中間に位置する者は、ユーザーがCloudflare上のWebサイトの_どこか_を訪問していることまでを知ることはできても、どのWebサイトかまでを特定することはできません。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74acW9qWQyuJFltzJagc2S/5693f381e386d44283121cdd9dd65106/pasted-image-0--8--2.png" alt="" class="kg-image" width="1574" height="1321" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-does-ech-work">ECHの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-does-ech-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ECHの仕組みを説明するには、まずTLSハンドシェイクの実行手順を理解する必要があります。TLSハンドシェイクは、使用する暗号化方式、TLSバージョン、アクセスしようとするサーバー（SNI）をクライアントが伝える<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">ClientHello</a>パートから始まります。</p>
+	<p>ECHでは、ClientHelloメッセージは、内向けと外向けの2つのメッセージに分割されます。外向けのものには、使用する暗号やTLSのバージョンなど、機密性のない情報が含まれています。「外向けのSNI」も含まれています。内向けの部分は暗号化されており、こちらには「内向けのSNI」が含まれています。</p>
+	<p>外向けのSNIは一般的な名前（この場合、ユーザーがCloudflare上のアクセスしようとする暗号化されたWebサイト）を表します。私たちは、すべてのWebサイトがCloudflareで共有するSNIとしてcloudflare-ech.comを選択しました。Cloudflareはそのドメインを管理しているため、そのサーバ名のTLSハンドシェイクのネゴシエートに使用する証明書はCloudflareが保有します。</p>
+	<p>内向けのSNIには、ユーザーがアクセスしようとしている実際のサーバー名が記載されます。これは公開鍵を使用して暗号化されており、Cloudflareだけが読み取ることができます。ハンドシェイクが完了すると、TLS経由で読み込まれる他のWebサイトと同じように、通常通りWebページが読み込まれます。</p>
+	<p>ユーザーがどのWebサイトを訪問しているかを確認しようとするインターネットの中間に位置する者が見える情報は、通常のTLSハンドシェイクのみで、CloudflareでECHが有効になっているWebサイトを訪問する際のサーバー名は全て同じになります。どのTLSハンドシェイクも同じように、実際のサイトとは異なるWebサイト「Cloudflare-ech.com」を読み込もうとしているように見えます。私たちの取り組みは、訪問するWebサイトをインターネットの中間に位置する者に知られたくないユーザーのプライバシーを保護するという最後のピースを埋めることに成功しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MOw4dKZFQbisxTiD3PIrD/6b173801a10ece203e82d8bf3ed28c0b/pasted-image-0-8.png" alt="" class="kg-image" width="1574" height="1437" loading="lazy">
+
+	</figure>
+	<p>ECH技術の詳細については、<a href="https://blog.cloudflare.com/encrypted-client-hello">紹介ブログ</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-privacy">プライバシーの未来</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-privacy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、これがインターネット上のプライバシーにとって何を意味するのか、興味深く感じています。<a href="https://chromestatus.com/feature/6196703843581952" target="_blank" rel="noopener noreferrer">Google Chrome</a>や<a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/uv7PNrHUagA/m/BNA4G8fOAAAJ" target="_blank" rel="noopener noreferrer">Firefox</a>のようなブラウザは、すでにECHのサポートを強化し始めています。Webサイト運営者であり、インターネットの中間に位置する者にユーザーの行動を知られたくない方は、今すぐCloudflareでECHを有効にしてください。私たちは既にすべての無料範囲のお客様のECHを有効にしています。既存の有料のお客様であれば、Cloudflareのダッシュボードにアクセスして、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fssl-tls%2Fedge-certificates" target="_blank" rel="noopener noreferrer">この機能を適用</a>してください。今後数週間のうちに、ご契約いただいたすべての方にこの機能を有効にする予定です。</p>
+	<p>将来的には、他の企業も私たちの取り組みを追随し、誰もがよりプライベートなインターネットを利用できるようになることを願っています。ECHを提供するプロバイダーが増えれば増えるほど、インターネット上でユーザーの活動を傍受することは困難になります。それどころか、プライバシー問題を永久に解決できるかもしれません。</p>
+	<p>ECHの詳細、仕組み、有効にする方法については、<a href="https://developers.cloudflare.com/ssl/edge-certificates/ech" target="_blank" rel="noopener noreferrer">ECHの開発者向けドキュメント</a>をご覧ください。</p>
+</div>

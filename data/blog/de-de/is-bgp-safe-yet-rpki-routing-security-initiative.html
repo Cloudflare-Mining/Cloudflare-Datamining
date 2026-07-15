@@ -1,0 +1,68 @@
+<div class="mb2 gray5">Lesezeit: 3&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/is-bgp-safe-yet-rpki-routing-security-initiative">English</a>, <a href="https://blog.cloudflare.com/fr-fr/is-bgp-safe-yet-rpki-routing-security-initiative">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/is-bgp-safe-yet-rpki-routing-security-initiative">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/is-bgp-safe-yet-rpki-routing-security-initiative">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xKVoR7JG9V1r387JR1U5q/bcf911163aabc1a21efb521d52f6dcdc/is-bgp-safe-yet-rpki-routing-security-initiative.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>BGP-Lecks und BGP-Hijacking werden schon viel zu lange als unvermeidlicher Bestandteil des Internets hingenommen. Wir haben uns auf den Schutz auf den oberen Layer wie TLS und DNSSEC verlassen, um eine ungestörte Zustellung von Paketen zu gewährleisten. Doch ein Hijack auf der Route führt oft dazu, dass die IP-Adresse nicht erreicht werden kann. Was wiederum dazu führt, dass das Internet ausfällt.</p>
+	<p>Das Internet ist zu wichtig, als dass dieses bekannte Problem noch länger fortbestehen darf. Netzwerke müssen endlich verhindern, dass Lecks und Hijacks etwas bewirken. Es ist Zeit für ein sicheres BGP. Schluss mit Ausreden.</p>
+	<p>Das Border Gateway Protocol (BGP), ein Protokoll zum Austausch von Routen, existiert seit den 1980er Jahren. Im Laufe der Jahre wurde es um neue Sicherheitsfeatures erweitert. Die wichtigste Sicherheitsfeature war die Resource Public Key Infrastructure (RPKI), ein Sicherheitsrahmen für das Routing. Wir haben uns mit dem Thema in <a href="https://blog.cloudflare.com/tag/rpki">ein paar Blog-Einträgen</a> Mitte 2018 befasst.</p>
+	<p>Heute glauben IT-Experten, dass RPKI reif genug für einen weit verbreiteten Einsatz ist. Es existiert ein ausreichendes Ökosystem von <a href="https://github.com/cloudflare/gortr" target="_blank" rel="noopener noreferrer">Software</a> und <a href="https://rpki.cloudflare.com" target="_blank" rel="noopener noreferrer">Tools</a>, darunter auch Tools, die wir entwickelt und offen zugänglich gemacht haben. Wir haben die Origin Validation auf allen unseren BGP-Sitzungen mit unseren Peers vollständig bereitgestellt und unsere Präfixe signiert.</p>
+	<p>Das Internet kann jedoch nur sicher werden, wenn auch die großen Netzbetreiber <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/ndss2017_06A-3_Gilad_paper.pdf" target="_blank" rel="noopener noreferrer">RPKI bereitstellen</a>. Diese Netzwerke laufen Gefahr, ein Leck oder einen Hijack sehr weit zu verbreiten. Es ist also von entscheidender Bedeutung, dass sie sich daran beteiligen, BGP-Probleme auszumerzen, ob ungewollt oder absichtlich.</p>
+	<p>Viele Netzbetreiber, darunter AT&amp;T und Telia, leisteten 2019 Pionierarbeit bei der weltweiten Bereitstellung von RPKI. Im Jahr 2020 folgten Cogent und NTT. Hunderte von Netzwerken aller Größenordnungen haben in den letzten Jahren gewaltige Arbeit geleistet, aber es besteht weiterhin viel Nachholbedarf.</p>
+	<p>Beobachten wir Kunden-Cones der Netzwerke, die RPKI bereitgestellt haben, stellen wir fest, dass etwa 50 % des Internets besser vor Route-Lecks geschützt sind. Das ist großartig, aber es reicht noch lange nicht aus.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Uh9D7PVerLfXQ68eqAnlh/ae920ca803b130eae81550f7c36a3c7c/isbgpsafeyet.png" alt="" class="kg-image" width="456" height="110" loading="lazy">
+
+	</figure>
+	<p>Heute veröffentlichen wir <a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">isBGPSafeYet.com</a>, eine Website zur Verfolgung der Bereitstellung und Filterung ungültiger Routen durch die großen Netzwerke.</p>
+	<p>Wir hoffen, dass die Seite der Community helfen wird. Wir werden die Informationen auf der Website crowdsourcen; der Quellcode ist auf <a href="https://github.com/cloudflare/isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">GitHub</a> verfügbar. Wir freuen uns über jegliche Anregungen und Beiträge!</p>
+	<p>Wir gehen davon aus, dass diese Initiative das RPKI für jedermann zugänglicher machen und letztlich die Auswirkungen von Route-Lecks verringern wird. Teilen Sie die Nachricht mit Ihren Internetprovider (ISP), Hosting-Providern und Transitnetzwerken, um für mehr Sicherheit im Internet zu sorgen.</p>
+	<p>Um die Bereitstellung zu überwachen und zu testen, geben wir zwei schlechte Präfixe aus unseren über 200 Rechenzentren und über die über 233 Internet Exchange Points (IXPs) bekannt:</p>
+	<ul>
+		<li>
+			<p>103.21.244.0/24</p>
+		</li>
+		<li>
+			<p>2606:4700:7000::/48</p>
+		</li>
+	</ul>
+	<p>Diese beiden Präfixe sollten als <i>ungültig</i> betrachtet und nicht von Ihrem Provider geroutet werden, wenn RPKI in seinem Netzwerk implementiert ist. Auf diese Weise lässt sich leicht demonstrieren, wie weit eine schlechte Route reichen kann; und es lässt sich leicht testen, ob RPKI in der Praxis funktioniert.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76jlyQka8osAb5vX9EuzKf/6709edfcecc29419cca07da0748ed3de/Screen-Shot-2020-04-16-at-6.36.48-PM.png" alt="" class="kg-image" width="644" height="359" loading="lazy">
+
+	</figure>
+	<p><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%252F24" target="_blank" rel="noopener noreferrer">Eine Route Origin Authorization für 103.21.244.0/24 auf rpki.cloudflare.com</a></p>
+	<p>Im Test, den Sie auf <a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">isBGPSafeYet.com</a> durchführen können, wird Ihr Browser versuchen, zwei Seiten abzurufen: Die erste Seite, valid.rpki.cloudflare.com, befindet sich hinter einem RPKI-gültigen Präfix und die zweite, invalid.rpki.cloudflare.com, hinter dem RPKI-ungültigen Präfix.</p>
+	<p>Der Test hat zwei Ergebnisse:</p>
+	<ul>
+		<li>
+			<p>Wenn beide Seiten korrekt abgerufen wurden, hat Ihr ISP die ungültige Route akzeptiert. Also implementiert er kein RPKI.</p>
+		</li>
+		<li>
+			<p>Wenn nur valid.rpki.cloudflare.com abgerufen wurde, implementiert Ihr ISP RPKI. Sie sind also weniger anfällig für Route-Lecks.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ihoJvfZjpxRs6GGJ2cZL6/90dcb2481e75ce40c4800c3e99ae9fc4/blogpost2-01.png" alt="diagram showing a simple test of RPKI invalid reachability" class="kg-image" width="2026" height="930" loading="lazy">
+
+	</figure>
+	<p>Ein einfacher Test, der zeigt, ob RPKI-ungültige Routen akzeptiert werden</p>
+	<p>Wir werden Tests mit diesen Präfixen durchführen, um die Verteilung zu überprüfen. <a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank" rel="noopener noreferrer">Traceroutes</a> und Statusprüfungen haben uns in der Vergangenheit geholfen, die Bereitstellung zu visualisieren.</p>
+	<p>Ein einfacher Indikator ist die Anzahl der Netzwerke, die die akzeptierte Route an ihre Peers und Collectors senden:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wdk01mSlPLv5TVHzuyDHp/4b56692fa0b12154d860023723290c9d/invalid-prefixes-reachability.png" alt="RIPE" class="kg-image" width="619" height="140" loading="lazy">
+
+	</figure>
+	<p>Routing-Status des Online Route Collection-Tools <a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0" target="_blank" rel="noopener noreferrer">RIPE Stat</a></p>
+	<p>Im Dezember 2019 veröffentlichten wir eine <a href="https://xkcd.com/195" target="_blank" rel="noopener noreferrer">Hilbert-Kurven</a>-Karte des IPv4-Adressraums. Jedes Pixel stellt ein /20-Präfix dar. Wenn ein Punkt gelb ist, reagierte das Präfix nur auf die Statusprüfung aus einem RPKI-gültigen IP-Raum. Wenn das Pixel blau ist, antwortete das Präfix sowohl auf Statusprüfungen aus einem RPKI-gültigen als auch aus einem RPKI-ungültigen IP-Raum.</p>
+	<p>Nochmals zusammengefasst: Die gelben Bereiche stellen IP-Räume hinter Netzwerken dar, die RPKI-ungültige Präfixe fallen lassen. Das Internet ist erst dann sicher, wenn aus Blau Gelb wird.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tiSr4Gzbk0qrtdGfMgIw/9be9478693140ad1132542148afe02ce/blogpost-hilbert-01.png" alt="" class="kg-image" width="2134" height="2134" loading="lazy">
+
+	</figure>
+	<p>Hilbert-Kurven-Karte des IP-Adressraums hinter Netzwerken, die RPKI-ungültige Präfixe filtern</p>
+	<p>Nicht zuletzt danken wir jedem Netzwerk, das RPKI bereits implementiert hat, sowie allen Entwicklern, die zu den Codebasen der Validator-Software beigetragen haben. Die letzten zwei Jahre haben gezeigt, dass das Internet tatsächlich sicherer werden kann, und wir freuen uns auf den Tag, an dem Route-Lecks und Hijacks der Vergangenheit angehören werden.</p>
+</div>

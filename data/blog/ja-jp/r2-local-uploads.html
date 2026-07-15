@@ -1,0 +1,171 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/r2-local-uploads">English</a>および<a href="https://blog.cloudflare.com/ko-kr/r2-local-uploads">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xbuULrA13KEW66xYIlb5w/c50bf8a39f05302246f0cf00f782179b/image8.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、R2の<b>ローカルアップロード</b>の<b>オープンベータ版</b>を開始します。<a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>ローカルアップロード</u></a>を有効にすると、オブジェクトデータはまずクライアントに近いストレージ場所に自動的に書き込まれ、その後、バケットがある場所に非同期でコピーされます。データにはすぐにアクセスでき、<a href="https://developers.cloudflare.com/r2/reference/consistency" target="_blank" rel="noopener noreferrer"><u>強力な一貫性</u></a>が維持されます。アップロードが高速化し、データはグローバルに感じられます。</p>
+	<p>多くのアプリケーションでは、パフォーマンスはグローバルである必要があります。たとえば、さまざまな地域からメディアコンテンツをアップロードするユーザーや、世界中からログやテレメトリを送信するデバイスです。しかし、データはどこかに存在しなければなりません。つまり、遠方からのアップロードはバケットに到達するために全距離を移動しなければなりません。 </p>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>は、Cloudflareのグローバルネットワーク上に構築された<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>オブジェクトストレージ</u></a>です。すぐに使える状態で、オブジェクトデータをグローバルに自動的にキャッシュし、どこからでも高速読み取りが可能です。同時に、強整合性を維持し、<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer"><u>エグレス料金</u></a>はゼロです。これは、S3 API、Workersバインディング、通常のHTTPのいずれを使用していても、舞台裏で発生します。そして、ローカルアップロードによって、世界中どこからでも高速の読み込みと書き込みができるようになりました。</p>
+	<p><a href="https://local-uploads.r2-demo.workers.dev" target="_blank" rel="noopener noreferrer"><u>このデモでは</u></a>、ローカルアップロードの利点を詳しくご紹介しています。</p>
+	<p>試されますか？バケット設定の下にある<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>で、または既存のバケットで単一のWranglerコマンドを使用して、ローカルアップロードを有効化します。</p>
+	<pre class="language-Shell"><code class="language-Shell">npx wrangler r2 bucket local-uploads enable [BUCKET]</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="75-lower-total-request-duration-for-global-uploads">グローバルアップロードの総リクエスト時間を75%短縮</h2>
+		<a href="https://blog.cloudflare.com/#75-lower-total-request-duration-for-global-uploads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>ローカルアップロード</u></a>は、アップロード要求（つまりputObject、アップロード部など）をより高速化できるようになりました。お客様とのプライベートベータテストと総合ベンチマークの両方で、バケットとは異なる地域でアップロードリクエストが行われた場合、TTLB（Time To Last Byte）が最大75%短縮されることが確認されました。これらの結果では、TTLBは、R2がアップロード要求を受信した時点から、R2が200レスポンスを返すまでの時間を測定しています。</p>
+	<p>総合テストでは、合成ワークロードを使用してリージョンをまたがるアップロードワークフローをシミュレートすることで、ローカルアップロードの影響を測定しました。西北米にテストクライアントをデプロイし、アジア太平洋地域の<a href="https://developers.cloudflare.com/r2/reference/data-location" target="_blank" rel="noopener noreferrer"><u>ロケーションヒント</u></a>でR2バケットを設定しました。クライアントは30分以上、1秒あたり約20回のPutObjectリクエストを行い、5MBのオブジェクトをアップロードしました。 </p>
+	<p>次のグラフでは、これらのリクエストのp50（または中央値）のTTLBメトリクスを比較し、アップロードリクエスト時間の違いを示しています。最初にローカルアップロードを使用しない場合（TTLBは約2秒）、次にローカルアップロードを有効にした場合（TTLBは約500ミリ秒）です。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uvSdPwflyjHohwLQvOKsu/4b82637a5ac29ceee0fc37e04ab0107f/image1.png" alt="" class="kg-image" width="1506" height="596" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-the-distance-problem">仕組み：距離の問題</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-the-distance-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Local Uploadsがアップロードリクエストをどのように改善できるかを理解するために、まず<a href="https://developers.cloudflare.com/r2/how-r2-works" target="_blank" rel="noopener noreferrer"><u>R2の仕組み</u></a>を見てみましょう。R2のアーキテクチャは、以下のような複数のコンポーネントで構成されています。</p>
+	<ul>
+		<li>
+			<p><b>R2 Gateway Worker: </b>R2 Gateway Worker：認証とルーティングロジックを処理するすべてのAPIリクエストのエントリポイント。<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を介して、Cloudflareのグローバルネットワーク全体にデプロイされます。</p>
+		</li>
+		<li>
+			<p><b>Durable Object Metadata Service: </b><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>上に構築された分散型レイヤーで、オブジェクトのメタデータ（例：オブジェクトキー、チェックサムなど）を悪用した攻撃に対処します。</p>
+		</li>
+		<li>
+			<p><b>分散型ストレージインフラストラクチャ：</b>暗号化されたオブジェクトデータを永続的に保存する基盤となるインフラストラクチャ。</p>
+		</li>
+	</ul>
+	<p>ローカルアップロードを使用しない場合、オブジェクトをバケットにアップロードすると次のようになります。リクエストは、最初にユーザーに近いR2 Gatewayによって受信され、そこで認証されます。そして、クライアントがオブジェクトデータのバイトをストリーミングすると、データは暗号化され、バケットが配置されているリージョンのストレージインフラストラクチャに書き込まれます。これが完了すると、Gatewayはメタデータサービスに連絡して、オブジェクトのメタデータを公開し、コミットされた後に成功レスポンスをクライアントに返します。</p>
+	<p>クライアントとバケットが別々の地域にある場合、リクエストが移動する距離が長くなると、オブジェクトデータのバイトをアップロードするプロセスに、より多くの変動が生じる可能性があります。これにより、アップロードに時間がかかったり、信頼性が低下したりする可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6toAZ6JSHPv2jgntdyCOvr/704f6837d2705f18a0e5b8554994cb7a/image9.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><sup>アップロードを有効にせず、東北米からローカル東欧のバケットにアップロードするクライアント。</sup></p>
+	<p>現在、ローカルアップロードを有効にしてバケットへのアップロードリクエストを行うと、次の2つのケースが処理されます。</p>
+	<ol>
+		<li>
+			<p>クライアントとバケットのリージョンは<b>同じ</b>リージョンにあります</p>
+		</li>
+		<li>
+			<p>クライアントリージョンとバケットリージョンが<b>異なる</b>リージョン</p>
+		</li>
+	</ol>
+	<p>1つ目のケースでは、R2は通常のフローに従い、オブジェクトデータがバケットのストレージインフラストラクチャに書き込まれます。2番目のケースでは、R2はクライアントリージョンにあるストレージインフラストラクチャに書き込みを行いますが、同時にオブジェクトのメタデータをバケットのリージョンに公開します。</p>
+	<p>重要なのは、最初の書き込みが完了した後、オブジェクトにすぐにアクセスできることです。これは、レプリケーションプロセス全体を通じてアクセス可能な状態です。オブジェクトが読み取られる前に、バックグラウンドのレプリケーションが終了するのを<b>待つ</b><b>必要はありません</b>。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33oUAdlGF8cWOeQhha6Ocy/68537e503f1ec8d1dd080db363f97dc3/image3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><sup>ローカルアップロードを有効にして、東ヨーロッパから東ヨーロッパのバケットにアップロードするクライアント。</sup></p>
+	<p>これは、非管轄地域の制限付きバケット用であり、ローカルアップロードは、管轄地域の制限があるバケット（例：EU、FedRAMPなど）有効化。</p>
+	<div class="flex anchor relative">
+		<h2 id="when-to-use-local-uploads">ローカルアップロードを使用するタイミング</h2>
+		<a href="https://blog.cloudflare.com/#when-to-use-local-uploads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ローカルアップロードは、バケットがある場所とは異なる地域から発信される大量のアップロードリクエストを受信するワークロード向けに構築されています。この機能は、次のような場合に最適です：</p>
+	<ul>
+		<li>
+			<p>ユーザーは世界中に分散している</p>
+		</li>
+		<li>
+			<p>アップロードのパフォーマンスと信頼性は、アプリケーションに極めて重要です</p>
+		</li>
+		<li>
+			<p>バケットのプライマリロケーションを変更せず、書き込みパフォーマンスを最適化したい</p>
+		</li>
+	</ul>
+	<p>読み取りや書き込みリクエストが開始された場所の地理的分布を把握するには、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にアクセスし、R2バケットのメトリクスページに移動して、リクエスト分布（リージョン別）グラフを確認してください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SJ9UYY3RADryXmnT0J3Vq/9b26c948e925a705387a64c24a1dd7e3/image7.png" alt="" class="kg-image" width="1999" height="1107" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-local-uploads">ローカルアップロードの構築方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-local-uploads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ローカルアップロードでは、オブジェクトデータはクライアントの近くに書き込まれ、バックグラウンドでバケットのリージョンにコピーされます。このコピージョブをレプリケーションタスクと呼びます。</p>
+	<p>このようなレプリケーションタスクを考えると、非同期処理コンポーネントが必要でしたが、これは<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>にとって最適なユースケースとなる傾向があります。キューを使用すると、レプリケーションタスクの処理速度を制御でき、<a href="https://developers.cloudflare.com/queues/configuration/batching-retries" target="_blank" rel="noopener noreferrer"><u>リトライ</u></a>や<a href="https://developers.cloudflare.com/queues/configuration/dead-letter-queues" target="_blank" rel="noopener noreferrer"><u>デッドレターキュー</u></a>などの組み込みの障害処理機能が提供されます。この場合、R2はストレージリージョンごとに複数のキューにレプリケーションタスクをシャーディングします。</p>
+	<div class="flex anchor relative">
+		<h3 id="publishing-metadata-and-scheduling-replication">メタデータの公開とレプリケーションのスケジュール設定</h3>
+		<a href="https://blog.cloudflare.com/#publishing-metadata-and-scheduling-replication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ローカルアップロードを有効にし、オブジェクトのメタデータを公開する際、以下の3つの操作をアトミックに実行します。</p>
+	<ol>
+		<li>
+			<p>オブジェクトのメタデータを保存する</p>
+		</li>
+		<li>
+			<p>まだ実行する必要があるレプリケーションを追跡する、保留中のレプリカキーを作成します</p>
+		</li>
+		<li>
+			<p>タイムスタンプでキー設定したレプリケーションタスクマーカーを作成します。これは、タスクがキューに送信されるタイミングを制御します</p>
+		</li>
+	</ol>
+	<p>保留中レプリケーションキーには、レプリケーションタスクの数、読み取り元のソースの場所、書き込み先の場所、レプリケーションのモードと優先度、レプリケーションが成功した後にソースを削除するべきかどうかなど、レプリケーションプランの全情報が含まれています。</p>
+	<p>これにより、オブジェクトのデータの移動方法に柔軟性が得られます。例えば、地理的に長い距離を移動してデータを移動すると、コストがかかります。すべてのレプリカを並行して処理することで、すべてのレプリカをできるだけ高速に移動させることもできますが、これを実行すると、より多くのコストが発生し、ネットワークインフラストラクチャに負荷が集中します。代わりに、まずターゲットバケットリージョンにレプリカを1つ作成し、このローカルコピーを使用してバケットリージョン内に追加のレプリカを作成することで、リージョンを越えたデータ移動の数を最小限に抑えます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rCuA2zXR4ltZJsiNDBHd7/ae388f13ea27922158b27f429080c69c/image6.png" alt="" class="kg-image" width="1744" height="818" loading="lazy">
+	</figure>
+	<p>バックグラウンドプロセスは、レプリケーションタスクマークを定期的にスキャンし、宛先ストレージリージョンに関連付けられているキューの1つに送信します。インジケーターは、キューへの少なくとも1回の配信を保証します。エンキューに失敗した場合やプロセスがクラッシュした場合、インジケーターは存続し、タスクは次のスキャンで再試行されます。これにより、異なる時間にレプリケーションを処理し、有効なタスクのみをキューに入れることができます。レプリケーションタスクがキューに届くと、処理する準備ができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5G4STZSp67TnKhehzCqFMv/445a0c74ba7f4bc5dd3de04eb7aa1257/image4.png" alt="" class="kg-image" width="1744" height="600" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="asynchronous-replication-pull-model">非同期レプリケーション：プルモデル</h3>
+		<a href="https://blog.cloudflare.com/#asynchronous-replication-pull-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>キューコンシューマーに対しては、中央で集約されたポーリングサービスがリージョンキューからタスクを消費し、実行のためにGateway Workerにディスパッチするプルモデルを選びました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2p6SHkqO1tT7wxdhPJCFCr/86f219af85e332813ede2eb95a3810d8/image2.png" alt="" class="kg-image" width="1744" height="996" loading="lazy">
+	</figure>
+	<p>仕組みは次のとおりです。</p>
+	<ol>
+		<li>
+			<p>ポーリングサービスはリージョンキューからプル： コンシューマーサービスは、レプリケーションタスクのためにリージョンキューをポーリングします。次に、移動させるデータの量に基づいて、統一されたバッチサイズを作成するために、タスクをバッチ処理します。</p>
+		</li>
+		<li>
+			<p>Gateway Workerへのポーリングサービスディスパッチ：コンシューマーサービスは、Gateway Workerにレプリケーションジョブを送信します。</p>
+		</li>
+		<li>
+			<p>Gateway Workerがレプリケーションを実行：Workerはソースロケーションからオブジェクトデータを読み取り、宛先に書き込み、Durable Object内のメタデータを更新し、必要に応じてソースロケーションをガベージコレクションを指定します。</p>
+		</li>
+		<li>
+			<p>Gateway Workerは結果を報告：完了すると、workerは結果をポーラーに返し、タスクがキューに完了または失敗したことを認識します。</p>
+		</li>
+	</ol>
+	<p>このプルモデル的アプローチを使用することで、レプリケーションプロセスが安定し、効率的になるようにします。このサービスは、リアルタイムのシステムの健全性に基づいてペースを動的に調整することができ、データがどの地域でも安全に複製されることを保証します。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">ぜひお試しください</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ローカルアップロードは、オープンベータ版で利用可能になりました。ローカルアップロードを有効にするための<b>追加費用はかかりません</b>。この機能を有効にして作成されたアップロードリクエストには、ローカルアップロードなしで行われたアップロードリクエストと同じく、標準的な<a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>クラスA操作コスト</u></a>がかかります。</p>
+	<p>開始するには、バケット設定の下にある<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にアクセスして、ローカルアップロードカードを探して有効にするか、Wranglerを使って次のコマンドを実行するだけでバケットのローカルアップロードを有効にします。</p>
+	<pre class="language-Shell"><code class="language-Shell">npx wrangler r2 bucket local-uploads enable [BUCKET]</code></pre>
+	<p>バケットでローカルアップロードを有効にするのはシームレスです。既存のアップロードは期待通りに完了し、トラフィックを中断することはありません。</p>
+	<p>詳細については、<a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>ローカルアップロードのドキュメント</u></a>を参照してください。ご質問がある場合やフィードバックを共有したい場合は、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>開発者Discord</u></a>のディスカッションにご参加ください。</p>
+</div>

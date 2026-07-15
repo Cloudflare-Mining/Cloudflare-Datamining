@@ -1,0 +1,294 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/artifacts-git-for-agents-beta">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/artifacts-git-for-agents-beta">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/artifacts-git-for-agents-beta">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/artifacts-git-for-agents-beta">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/artifacts-git-for-agents-beta">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/artifacts-git-for-agents-beta">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/es-es/artifacts-git-for-agents-beta">Español</a> et en <a href="https://blog.cloudflare.com/zh-ha-ns-cn/artifacts-git-for-agents-beta"></a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZ163MhASDRQW86DQm86r/2e89a01820f1b0a87af22d18208f470c/BLOG-3269_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les agents ont changé la manière dont nous envisageons le contrôle des sources, les systèmes de fichiers et la persistance des états. Les développeurs et les agents génèrent plus de code que jamais (il devrait être écrit au cours des cinq prochaines années plus de code que dans toute l’histoire de la programmation), ce qui a entraîné un changement d’ordre de grandeur dans l’échelle des systèmes nécessaires pour répondre à cette demande. À cet égard, les plateformes de contrôle des sources connaissent des difficultés particulièrement graves&nbsp;: elles ont été conçues pour répondre aux besoins des humains, et pas à un volume multiplié par 10 et produit par des agents qui ne dorment jamais et peuvent, sans se fatiguer, travailler sur plusieurs sujets à la fois.</p>
+	<p>Nous pensons qu’il est nécessaire de disposer d’une nouvelle primitive&nbsp;: un système de fichiers distribué et versionné, conçu avant tout pour les agents, et capable de servir les types d’applications développés aujourd’hui.</p>
+	<p>C’est ce que nous appelons Artifacts&nbsp;: un système de fichiers versionné qui parle le Git. Vous pouvez créer par programmation des référentiels, en même temps que vos agents, sandbox, Workers ou tout autre paradigme de calcul, et vous y connecter depuis n’importe quel client Git standard.</p>
+	<p>Souhaitez-vous prévoir un référentiel pour chaque session d’agent&nbsp;? Artifacts peut le faire. Chaque instance de sandbox&nbsp;? Également Artifacts. Souhaitez-vous créer 10&nbsp;000 reprises logicielles à partir d’un point de départ connu pour être fiable&nbsp;? Vous l’avez deviné&nbsp;: toujours Artifacts. Artifacts expose une API REST et une API Workers native pour créer des référentiels, générer des identifiants et procéder à dse validations pour les environnements auxquels un client Git n’est pas adapté (c’est-à-dire dans n’importe quelle fonction serverless).</p>
+	<p>Artifacts est disponible en version bêta privée pour tous les développeurs ayant souscrit à l’offre Workers payante, et nous avons l’intention de le proposer en version bêta publique au début du mois de mai.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Create a repo
+const repo = await env.AGENT_REPOS.create(name)
+// Pass back the token &amp; remote to your agent
+return { repo.remote, repo.token }</code></pre>
+
+	<pre class="language-Shell"><code class="language-Shell"># Clone it and use it like any regular git remote
+$ git clone https://x:${TOKEN}@123def456abc.artifacts.cloudflare.net/git/repo-13194.git
+</code></pre>
+	<p>Et voilà&nbsp;! Un simple référentiel, prêt à l’emploi, créé à la volée, avec lequel n’importe quel client Git peut interagir.</p>
+	<p>Et si vous voulez amorcer un référentiel Artifacts à partir d’un référentiel git existant afin que votre agent puisse y travailler de manière indépendante et effectuer des modifications indépendantes, vous pouvez le faire également avec .import():</p>
+	<pre class="language-Typescript"><code class="language-Typescript">interface Env {
+  ARTIFACTS: Artifacts
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    // Import from GitHub
+    const { remote, token } = await env.ARTIFACTS.import({
+      source: {
+        url: "https://github.com/cloudflare/workers-sdk",
+        branch: "main",
+      },
+      target: {
+        name: "workers-sdk",
+      },
+    })
+
+    // Get a handle to the imported repo
+    const repo = await env.ARTIFACTS.get("workers-sdk")
+
+    // Fork to an isolated, read-only copy
+    const fork = await repo.fork("workers-sdk-review", {
+      readOnly: true,
+    })
+
+    return Response.json({ remote: fork.remote, token: fork.token })
+  },
+}</code></pre>
+	<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Consultez la documentation</u></a> pour vous lancer, ou si vous souhaitez comprendre comment Artifacts est utilisé, comment il a été conçu et comment il fonctionne en coulisses&nbsp;: poursuivez la lecture.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-git-whats-a-versioned-file-system">Pourquoi Git&nbsp;? Qu’est-ce qu’un système de fichiers versionné&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#why-git-whats-a-versioned-file-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents connaissent Git. Il est profondément inscrit dans les données d’entraînement de la plupart des modèles. Le scénario idéal <i>et </i>les cas particuliers sont bien connus des agents, et les modèles optimisés en fonction du code (ou les harnais) sont particulièrement efficaces dans l’utilisation de Git.</p>
+	<p>Par ailleurs, le modèle de données de Git convient non seulement au contrôle des sources, mais aussi à <i>toute situation</i> pour laquelle vous vous avez besoin de suivre l’état, remonter dans le temps et conserver pendant longtemps de grandes quantités de petites données. Code, configuration, invites de session et historique de l’agent&nbsp;: tous ces éléments (les «&nbsp;objets&nbsp;») que vous souhaitez souvent stocker sous forme de petits fragments (les «&nbsp;validations&nbsp;») afin de pouvoir y revenir ou les rétablir («&nbsp;historique&nbsp;»).&nbsp;</p>
+	<p>Nous aurions pu inventer un protocole entièrement nouveau, sur mesure... mais se pose alors le problème du démarrage (bootstrap). Les modèles d’IA ne le connaissent pas, vous devez donc répartir les compétences, ou une interface de ligne de commande (CLI), ou encore espérer que les utilisateurs sont connectés à vos documents MCP... tout cela ajoute des contraintes.
+
+		Et si nous pouvions nous contenter de fournir aux agents une URL Git distante HTTPS authentifiée et sécurisée, et les faire fonctionner comme s’il s’agissait d’un référentiel Git&nbsp;? Il s’avère que la solution fonctionne plutôt bien. Et pour les clients ne parlant pas le Git — tels qu’un Cloudflare Worker, une fonction Lambda ou une application Node.js — nous proposons une API REST et (bientôt) des SDK spécifiques à chaque langage. Ces clients peuvent également utiliser <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>, mais dans de nombreux cas, une API TypeScript plus simple peut réduire la surface d’API nécessaire.</p>
+	<div class="flex anchor relative">
+		<h3 id="not-just-for-source-control">Pas uniquement pour le contrôle des sources</h3>
+		<a href="https://blog.cloudflare.com/#not-just-for-source-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous pourriez avoir l’impression que l’API Git d’Artifacts ne sert qu’au contrôle de version, mais il s’avère que l’API Git et le modèle de données constituent un moyen puissant de conserver un état persistant, d’une manière qui vous permette de procéder à des reprises logicielles, de remonter dans le temps et de différencier les états pour <i>n’importe quelle</i> donnée.</p>
+	<p>Au sein de Cloudflare, nous utilisons la solution Artifacts pour nos agents internes&nbsp;: en maintenant automatiquement l’état actuel du système de fichiers <i>et</i> l’historique de session au sein d’un référentiel Artifacts par session. Cela nous permet de&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Consolider l’état de la sandbox sans avoir à provisionner (et conserver) le stockage par blocs.</p>
+		</li>
+		<li>
+			<p>Partager les sessions avec d’autres utilisateurs et leur permettre de remonter dans le temps à la fois dans l’état de la session (invite) <i>et</i> dans l’état du fichier, indépendamment du fait que des validations aient été effectuées dans le référentiel « réel » (contrôle de la source).</p>
+		</li>
+		<li>
+			<p>Et le meilleur pour la fin&nbsp;: <i>dupliquer</i> une session à partir de n’importe quel point, et laisser notre équipe partager des sessions avec un collègue et lui permettre de la reprendre. Vous déboguez quelque chose et vous voulez un autre avis&nbsp;? Envoyer une URL et la dupliquer. Vous voulez améliorer une API&nbsp;? Demandez à un collègue de la dupliquer et de reprendre là où vous vous êtes arrêté.</p>
+		</li>
+	</ul>
+	<p>Nous avons également parlé à des équipes qui souhaitent utiliser Artifacts dans des cas où le protocole Git n’est pas du tout obligatoire, mais où la sémantique (restauration, clonage, comparaison des différences) <i>l’est</i>. Vous stockez les configurations personnalisées par client dans le cadre de votre produit et vous souhaitez bénéficier de la possibilité de les restaurer&nbsp;? Les artefacts peuvent en être une bonne représentation.</p>
+	<p>Nous sommes impatients de voir les équipes explorer les scénarios d’utilisation hors Git autour d’Artifacts, autant que ceux liés à Git.</p>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">Sous le capot</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Artifacts est construit à partir de Durable Objects. La capacité de créer des millions (ou des dizaines de millions) d’instances de calcul isolé et avec état est inhérente au fonctionnement actuel de Durable Objects&nbsp;; c’est exactement ce dont nous avions besoin pour prendre en charge des millions de référentiels Git par espace de noms.</p>
+	<p>La Major League Baseball (pour la diffusion en direct des matchs), les tableaux blancs de Confluence et notre propre <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK Agents</u></a> utilisent des Durable Objects en coulisses à une échelle significative ; nous développons donc cette solution sur une primitive que nous avons en production depuis un certain temps.</p>
+	<p>Ce dont nous avions besoin, toutefois, était une mise en œuvre de Git pouvant être exécutée sur Cloudflare Workers. Elle devait être petite, aussi complète que possible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>) et efficace. Nous en avons donc créé une dans <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>, et nous l’avons compilée dans Wasm.</p>
+	<p>Pourquoi avons-nous utilisé Zig&nbsp;? Trois raisons&nbsp;:</p>
+	<ol>
+		<li>
+			<p>&nbsp;L’ensemble du moteur de protocoles git est écrit en Zig pur (pas de libc), compilé dans un fichier binaire WASM d’environ 100&nbsp;Ko (avec de l’espace pour l’optimisation&nbsp;!). Il met en œuvre SHA-1, la compression/décompression zlib, l’encodage/décodage delta, l’analyse des paquets et le protocole git smart HTTP complet, le tout, de A à Z, sans aucune dépendance externe autre que la bibliothèque standard.</p>
+		</li>
+		<li>
+			<p>&nbsp;Zig nous permet de contrôler manuellement l’allocation de mémoire, ce qui est important dans les environnements limités tels que Durable Objects. Le système de génération Zig nous permet de partager facilement du code entre le runtime de WASM (WebAssembly) (production) et les versions natives (tests avec libgit2 pour vérification de l’exactitude).</p>
+		</li>
+		<li>
+			<p>Le module WASM communique avec l’hôte JS par l’intermédiaire d’une interface légère de rappel&nbsp;: 11&nbsp;fonctions importées par l’hôte pour les opérations de stockage (host_get_object, host_put_object, etc.) et une pour la diffusion en sortie (host_emit_bytes). Le côté WASM peut être entièrement testé en environnement isolé.</p>
+		</li>
+	</ol>
+	<p>En arrière-plan, Artifacts utilise également R2 (pour les instantanés) et KV (pour le suivi des jetons d’authentification)&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35SxJbQfntIscpotc0GBt8/48ae11213d7483c9b488321baacf78e7/BLOG-3269_2.png" alt="BLOG-3269 2" class="kg-image" width="1800" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup><code>Fonctionnement d’Artifacts (Workers, Durable Objects et WebAssembly)</code></sup></i></p>
+	<p>Un Worker agit comme le front-end, gérant l’authentification et l’autorisation, les indicateurs clés (erreurs, latence) et recherchant chaque référentiel Artifacts (Durable Object) à la volée.&nbsp;</p>
+	<p>Ces initiatives comprennent plus spécifiquement les mesures suivantes&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Les fichiers sont stockés dans la base de données SQLite de l’Objet durable sous-jacent.</p>
+			<ul>
+				<li>
+					<p>Le stockage Durable Object ne peut pas dépasser 2&nbsp;Mo de lignes&nbsp;: les objets Git volumineux sont donc fragmentés et stockés sur plusieurs lignes.</p>
+				</li>
+				<li>
+					<p>Nous utilisons l’API sync KV (state.storage.kv)&nbsp; qui dans son fonctionnement interne repose sur SQLite.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>&nbsp;Les DO (Durable Objects) ont des limites de mémoire d’environ 128&nbsp;Mo&nbsp;: cela signifie que nous pouvons en générer des dizaines de millions (ils sont rapides et légers), mais nous devons respecter ces limites.</p>
+			<ul>
+				<li>
+					<p>Nous utilisons intensivement la diffusion en continu pour les chemins de récupération et d’envoi, et renvoyons directement un `ReadableStream&lt;Uint8Array&gt;` construit à partir des fragments de sortie WASM bruts.</p>
+				</li>
+				<li>
+					<p>Nous évitons de calculer nos propres deltas git ; au lieu de cela, les deltas bruts et les hachages de base sont conservés parallèlement à l’objet résolu. Lors d’une récupération, si le client demandeur possède déjà l’objet de base, Zig émet le delta au lieu de l’objet complet, ce qui permet d’économiser de la bande passante <i>et</i> de la mémoire.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Prise en charge de la version&nbsp;v1 et&nbsp;v2 du protocole Git.</p>
+			<ul>
+				<li>
+					<p>Nous prenons en charge des fonctionnalités telles que ls-refs, des clones peu profonds (deepen, deepen-since, deepen-relative) et la récupération incrémentielle avec négociation have/want.</p>
+				</li>
+				<li>
+					<p>Nous disposons d’une suite de tests complète, avec des tests de conformité sur des clients git et des tests de vérification sur un serveur libgit2 conçu pour valider la prise en charge des protocoles.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>Par ailleurs, nous proposons la prise en charge native des <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes git</u></a>. La solution Artifacts est conçue pour être orientée agent, et les notes permettent aux agents d’ajouter des notes (métadonnées) aux objets Git. Cela comprend les invites, l’attribution d’agent et d’autres métadonnées qui peuvent être lues/écrites depuis le référentiel sans muter les objets eux-mêmes.</p>
+	<div class="flex anchor relative">
+		<h2 id="big-repos-big-problems-meet-artifactfs">À gros référentiels, gros problèmes&nbsp;? Découvrez ArtifactFS&nbsp;!</h2>
+		<a href="https://blog.cloudflare.com/#big-repos-big-problems-meet-artifactfs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La plupart des référentiels ne sont pas très volumineux et Git est <a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>conçu pour être extrêmement efficace</u></a> en matière de stockage&nbsp;: la plupart des référentiels sont clonés en quelques secondes seulement, au maximum, et ce phénomène est dominé par le temps de configuration du réseau, l’authentification et le <a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>calcul de la somme de contrôle</u></a>. Dans la plupart des scénarios d’agent ou de sandbox, c’est possible&nbsp;: il suffit de cloner le référentiel au démarrage de la sandbox et de commencer à travailler.</p>
+	<p>Mais qu’en est-il d’un référentiel de plusieurs Go ou d’un référentiel contenant des millions d’objets&nbsp;? Comment cloner rapidement ce référentiel, sans bloquer la capacité de l’agent à travailler pendant quelques minutes et à consommer beaucoup de puissance de calcul&nbsp;?</p>
+	<p>Le clone d’un framework web populaire (à un volume de 2,4&nbsp;Go et avec un long historique&nbsp;!) prend près de 2&nbsp;minutes. Un clone peu profond est plus rapide, mais pas suffisant pour atteindre un chiffre de quelques secondes, et nous ne voulons pas toujours ignorer l’historique (les agents trouvent cela utile).</p>
+	<p>Pouvons-nous réduire les référentiels volumineux à environ 10 à 15&nbsp;secondes pour que notre agent puisse se mettre au travail&nbsp;? Eh bien, oui&nbsp;: en suivant quelques conseils&nbsp;!</p>
+	<p>Dans le cadre du lancement d’Artifacts, <a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>nous proposons ArtifactFS en open source</u></a>, un pilote de système de fichiers conçu pour monter des référentiels Git volumineux aussi rapidement que possible, en chargeant le contenu des fichiers à la volée, au lieu de bloquer lors du clone initial. Il est idéal pour les agents, les sandbox, les conteneurs et les autres scénarios d’utilisation dans lesquels le temps de démarrage est très important. Si vous pouvez réduire d’environ 90 à 100&nbsp;secondes le temps de démarrage de votre sandbox pour chaque grand dépôt, et que vous exécutez 10&nbsp;000 de ces tâches par mois&nbsp;: cela représente 2&nbsp;778 heures de sandbox économisées.</p>
+	<p>Vous pouvez envisager ArtifactFS comme un «&nbsp;clone Git, mais asynchrone&nbsp;»&nbsp;:</p>
+	<ul>
+		<li>
+			<p>ArtifactFS exécute un clone sans blobs d’un référentiel Git&nbsp;: il récupère l’arborescence de fichiers et les références, mais pas le contenu des fichiers. Il peut accomplir cette tâche lors du démarrage de la sandbox, ce qui permet ensuite à votre harnais d’agent de se mettre au travail.</p>
+		</li>
+		<li>
+			<p>En arrière-plan, il commence à hydrater (télécharger) le contenu des fichiers simultanément par l’intermédiaire d’un démon léger.</p>
+		</li>
+		<li>
+			<p>Il donne la priorité aux fichiers sur lesquels les agents veulent généralement travailler en premier&nbsp;: les manifestes de packages (<code>package.json, go.mod</code>), les fichiers de configuration et le code, en dépriorisant les blobs binaires (images, exécutables et autres fichiers non texte) chaque fois que possible, afin que les agents puissent parcourir l’arborescence de fichiers pendant que les fichiers eux-mêmes sont hydratés.</p>
+		</li>
+		<li>
+			<p>Si un fichier n’est pas complètement hydraté lorsque l’agent essaie de le lire, la lecture sera bloquée jusqu’à ce qu’il soit hydraté.</p>
+		</li>
+	</ul>
+	<p>Le système de fichiers ne tente pas de «&nbsp;synchroniser&nbsp;» les fichiers avec le référentiel distant&nbsp;: avec des milliers ou des millions d’objets, l’opération est généralement très lente, et comme il s’agit de Git, nous n’avons pas besoin de le faire. Votre agent a simplement besoin de valider et envoyer (push), comme il le ferait avec n’importe quel référentiel. Aucune nouvelle API à apprendre.</p>
+	<p>Qui plus est, ArtifactFS fonctionne avec n’importe quel Git distant, pas seulement avec nos propres Artifacts. Si vous clonez des référentiels volumineux issus de GitHub, de GitLab ou d’une infrastructure Git auto-hébergée, vous pouvez toujours utiliser ArtifactFS.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-coming">À quoi s’attendre&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#whats-coming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le lancement d’aujourd’hui ne concerne qu’une version bêta, et nous travaillons déjà sur un certain nombre de fonctionnalités que vous découvrirez au cours des prochaines semaines&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Élargissement des <a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>indicateurs disponibles</u></a> que nous exposons. Aujourd’hui, nous fournissons des mesures correspondant au nombre d’opérations clés par espace de noms, référentiel et octets stockés par référentiel, de sorte que la gestion de millions d’Artifacts n’est pas fastidieuse.</p>
+		</li>
+		<li>
+			<p>Prise en charge des <a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>abonnements aux événements</u></a> pour les événements au niveau du référentiel, afin de nous permettre d’émettre des événements sur les envois, extractions, clones et reprises logicielles vers n’importe quel référentiel au sein d’un espace de noms. Ce mode de fonctionnement vous permettra également de consommer des événements, d’écrire des webhooks et d’utiliser ces événements pour notifier les utilisateurs finaux, gérer les événements de cycle de vie au sein de vos produits ou exécuter des tâches de post-envoi (comme l’intégration continue/la livraison continue (CI/CD).</p>
+		</li>
+		<li>
+			<p>SDK clients natifs TypeScript, Go et Python pour interagir avec l’API Artifacts</p>
+		</li>
+		<li>
+			<p>API de recherche au niveau du référentiel et à l’échelle de l’espace de noms, par exemple «&nbsp;chercher tous les référentiels associés à un fichier <code>package.json</code>&nbsp;».&nbsp;</p>
+		</li>
+	</ul>
+	<p>Nous prévoyons également une API pour <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>, qui vous permettra d’exécuter des tâches d’intégration continue/de livraison continue (CI/CD) sur n’importe quel flux de travail piloté par un agent.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-will-it-cost-me">Combien cela va-t-il me coûter&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#what-will-it-cost-me" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous n’en sommes encore qu’aux débuts avec Artifacts, mais nous souhaitons que notre tarification soit efficace à l’échelle agentique&nbsp;: elle doit être rentable pour des millions de référentiels, les référentiels inutilisés (ou rarement utilisés) ne doivent pas constituer un frein, et notre tarification doit correspondre à la nature massivement mono-locataire des agents.</p>
+	<p>Vous ne devriez pas non plus avoir à vous demander si un référentiel va être utilisé ou non, s’il fait chaud ou froid ou si un agent va le réveiller. Nous vous facturerons le stockage que vous consommez et les opérations (p. ex. clonages, envois, reprises logicielles et extractions) pour chaque dépôt.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p></p>
+				</th>
+				<th>
+					<p><b>USD/unité</b></p>
+				</th>
+				<th>
+					<p><b>Inclus</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Opérations</b></p>
+				</td>
+				<td>
+					<p>0,15&nbsp;USD par 1&nbsp;000&nbsp;opérations</p>
+				</td>
+				<td>
+					<p>10&nbsp;000 premières incluses (par mois)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Stockage</b></p>
+				</td>
+				<td>
+					<p>0,50 USD/Go/mois</p>
+				</td>
+				<td>
+					<p>1 Go inclus.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Les référentiels volumineux et très fréquentés coûteront plus cher que les référentiels plus petits et moins souvent utilisés, que vous en ayez 1&nbsp;000, 100&nbsp;000 ou 10&nbsp;millions.</p>
+	<p>Nous ajouterons également Artifacts à l’offre gratuite Workers (dans certaines limites équitables) au fur et à mesure de la progression de la version bêta, et nous fournirons des mises à jour tout au long de la version bêta en cas de modification de la tarification et avant la facturation de toute utilisation.</p>
+	<div class="flex anchor relative">
+		<h2 id="where-do-i-start">Où puis-je commencer ?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#where-do-i-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xLMMKCN1HNGWbkSyq0tDZ/2a8d49383957804f3ce204783e11ae80/BLOG-3269_3.png" alt="BLOG-3269 3" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p>Artifacts est lancé en version bêta privée, et nous prévoyons une version bêta publique pour le début du mois de mai (2026, pour être précis&nbsp;!). Nous allons intégrer les clients progressivement au cours des prochaines semaines, et <a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>vous pouvez manifester directement votre intérêt pour la bêta privée</u></a>.</p>
+	<p>En attendant, vous pouvez en apprendre davantage sur «&nbsp;Artifacts&nbsp;» en&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Lisant le <a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>guide de démarrage</u></a> dans les docs.</p>
+		</li>
+		<li>
+			<p>Accédant au tableau de bord de Cloudflare (Build &gt; Storage &amp; Databases &gt; Artifacts)</p>
+		</li>
+		<li>
+			<p>Consultant les exemples de l’<a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>API REST</u></a></p>
+		</li>
+		<li>
+			<p>En savoir plus sur <a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>le fonctionnement d’Artifacts dans les coulisses</u></a></p>
+		</li>
+	</ul>
+	<p>Suivez <a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>le journal des modifications</u></a> pour suivre la version bêta dans sa progression.</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Regarder sur Cloudflare&nbsp;TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

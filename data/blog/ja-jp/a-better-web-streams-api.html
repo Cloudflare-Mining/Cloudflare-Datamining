@@ -1,0 +1,1072 @@
+<div class="mb2 gray5">24分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/a-better-web-streams-api">English</a>および<a href="https://blog.cloudflare.com/ko-kr/a-better-web-streams-api">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qjBI2UpJXcpCqgAY4SJkH/9e6489cd148e2c74d1bdd25dd08e6db5/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>ストリームでデータを処理することは、アプリケーションを構築する方法の基本です。あらゆる場所でストリーミングを機能させるために、<a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer"><u>WHATWG Streams Standard</u></a>（非公式には「Webストリーム」として知られる）は、ブラウザとサーバー間で動作する共通のAPIを確立するように設計されました。ブラウザに出荷され、Cloudflare Workers、Node.js、Deno、Bunそして、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a>のようなAPIの基盤となりました。これは大仕事で、設計した人たちは、当時できていた制約とツールで難題を解決していました。</p>
+	<p>しかし、長年Webストリームを構築し、Node.jsとCloudflare Workersの両方で実装し、お客様とランタイムの本番環境の問題をデバッグし、開発者があまりにも多くのよくある落とし穴を通過できるようにしてきた結果、標準的なAPIには多くのリスクがあると確信するようになりました。段階的な改善だけでは簡単に修正できない基本的なユーザビリティとパフォーマンスの問題を解決することができます。問題はバグではなく、それらは、10年前なら理にかなっていたかもしれない設計上の判断の結果ですが、現在のJavaScript開発者のコードの書き方とは一致しません。</p>
+	<p>この記事では、Webストリームの基本的な問題をいくつか探り、JavaScriptの言語プリミティブに関連して構築された代替アプローチを紹介して、もっと良いものになることを実証します。</p>
+	<p>ベンチマークでは、この代替手段は、Webストリームよりも2倍から<i>120倍</i>速く、私がテストしたすべてのランタイム（Cloudflare Workers、Node.jsなど）で実行できます。Deno、Bun、主要ブラウザなど）に対応しています。この改善は、賢い最適化によるものではなく、最新のJavaScript言語機能をより効果的に活用する、根本的に異なる設計の選択によるものです。私は、前の仕事を否定するためにここにいます。それでは、次に展開するものについてお話しましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="where-were-coming-from">どのような場所から来ているのか</h2>
+		<a href="https://blog.cloudflare.com/#where-were-coming-from" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Streams Standardは、2014年から2016年にかけて「低レベルのI/Oプリミティブに効率的にマッピングするデータストリームを作成、構成、消費するためのAPI」を提供するという野心的な目標を掲げて開発されました。Webストリーム以前は、Webプラットフォームはストリーミングデータを処理する標準的な方法を持ち合わせていませんでした。</p>
+	<p>Node.jsは、ブラウザでも動作するように移植された当時、すでに独自の<a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener noreferrer"><u>ストリーミングAPI</u></a>を持っていましたが、WHATWGはWebブラウザのニーズのみを考慮するという憲章があるため、出発点としてそれを使用しないことを選択しました。サーバー側のランタイムがWebストリームを採用したのはその後、Cloudflare WorkersとDenoがそれぞれ第一級のWebストリームサポートで登場し、クロスランタイム互換性が優先されるようになった後です。</p>
+	<p>Webストリームの設計は、JavaScriptの非同期反復に進化するものです。<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of" target="_blank" rel="noopener noreferrer"><u><code>for await...of</code></u></a>構文は、Streams Standardが最初に最終化されてから2年後の<a href="https://262.ecma-international.org/9.0" target="_blank" rel="noopener noreferrer"><u>ES2018</u></a>まで出現しませんでした。このタイミングは、APIが最初に、JavaScriptで非同期シーケンスを消費するための逸脱的な方法となるものを利用できないことを意味します。代わりに、Specは独自のリーダー/ライターの獲得モデルを導入し、その決定はAPIのあらゆる側面に影響を与えました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X0niHShBlgF4LlpWYB7eC/f0bbf35f12ecc98a3888e6e3835acf3a/1.png" alt="" class="kg-image" width="1042" height="421" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="excessive-ceremony-for-common-operations">通常業務のための過剰なセレモニー</h4>
+		<a href="https://blog.cloudflare.com/#excessive-ceremony-for-common-operations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ストリームでの最も一般的なタスクは、完了までを読み取ることです。Webストリームでは次のようになります：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// First, we acquire a reader that gives an exclusive lock
+// on the stream...
+const reader = stream.getReader();
+const chunks = [];
+try {
+  // Second, we repeatedly call read and await on the returned
+  // promise to either yield a chunk of data or indicate we're
+  // done.
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+} finally {
+  // Finally, we release the lock on the stream
+  reader.releaseLock();
+}</code></pre>
+	<p>このパターンは、ストリーミング固有のものだと思うかもしれません。しかし、そうではありません。リーダーの取得、ロック管理、<code>{ value, done }</code>プロトコルはすべて設計上の選択肢に過ぎず、要件ではありません。これらは、Webストリーム仕様がいつ、どのように書かれたかを示す人工知能です。非同期反復は、時間の経過とともに到着するシーケンスを処理するために正確に存在しますが、Streamの仕様が書かれた時点では、非同期反復はまだ存在していませんでした。ここでの複雑さは、純粋なAPIのオーバーヘッドであり、根本的な必要性ではありません。</p>
+	<p>Webストリームが<code>for await...of</code>をサポートするようになったので、代替アプローチを検討してください。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const chunks = [];
+for await (const chunk of stream) {
+  chunks.push(chunk);
+}</code></pre>
+	<p>定型文がはるかに少ないという点では優れていますが、すべてを解決するわけではありません。非同期イテレーションは、想定外のAPIに後付けされ、その結果を示しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（独自のバッファの使用）</u></a>読み取りのような機能は、イテレーションを通じてアクセスできません。リーダー、ロック、コントローラーなど、根本にある複雑さは依然あり、隠れているだけです。何か問題が発生した場合、またはAPIの追加機能が必要になる場合、開発者は元のAPIの雑草に戻り、なぜストリームが「ロック」されているのか、なぜ<code>releaseLock()</code>が期待していたことをしなかったのかを理解しようとしたり、制御できないコードのボトルネックを探し出したりすることになります。</p>
+	<div class="flex anchor relative">
+		<h4 id="the-locking-problem">ロックの問題</h4>
+		<a href="https://blog.cloudflare.com/#the-locking-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webストリームは、ロックモデルを使用して、複数のコンシューマーが読み取りをインターリーブするのを防ぎます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader" target="_blank" rel="noopener noreferrer"><u><code>getReader()</code></u></a>を呼び出すと、ストリームはロックされます。ロックされている間、ストリームから直接読み込むことや、パイプを通すこと、またはキャンセルすることさえできません。唯一できるのは、実際にリーダーを保持しているコードだけです。</p>
+	<p>これは、簡単に間違っているのを知るまでは、理にかなっています。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function peekFirstChunk(stream) {
+  const reader = stream.getReader();
+  const { value } = await reader.read();
+  // Oops — forgot to call reader.releaseLock()
+  // And the reader is no longer available when we return
+  return value;
+}
+
+const first = await peekFirstChunk(stream);
+// TypeError: Cannot obtain lock — stream is permanently locked
+for await (const chunk of stream) { /* never runs */ }</code></pre>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><u><code>releaseLock()</code></u></a>を忘れるとストリームは恒久的に中断されます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><u><code>locked</code></u></a>プロパティは、ストリームがロックされていることを示しますが、なぜ、誰が、ロックがまだ使用可能かどうかは示しません。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>パイプ処理</u></a>は内部的にロックを取得し、パイプの操作中、明らかではない方法でストリームを使用できないようにします。</p>
+	<p>また、読み取り保留中のロックを解除することに関する意味も長年不明瞭でした。read()を呼び出したのが待っていず、releaseLock()を呼び出した場合、どうなるのでしょうか？この仕様は、最近、ロックリリース時に保留中読み取りをキャンセルするように明確化されましたが、実装にはさまざまなものがあり、以前の特定されていない動作に依存したコードは壊れる可能性があります。</p>
+	<p>とはいえ、ロックイン自体は悪ではないという認識は重要です。実際、アプリケーションが適切かつ順番にデータを消費または生成するようにするための重要な目的を担っています。主な課題は、<code>getReader()</code>や<code>releaseLock()</code>などのAPIを使用して手動で実装されたものです。自動ロックと非同期反復可能読者の登場により、ユーザーの観点からロック対応が遥かに容易になりました。</p>
+	<p>実装者にとっては、ロックモデルはかなりの量の自明でない内部帳簿管理を追加します。すべての操作はロック状態を確認し、リーダーを追跡する必要があり、ロック、キャンセル、エラー状態間の相互作用によって、すべて正しく処理しなければならないエッジケースのマトリックスが作成されます。</p>
+	<div class="flex anchor relative">
+		<h4 id="byob-complexity-without-payoff">BYOB：メリットのない複雑さ</h4>
+		<a href="https://blog.cloudflare.com/#byob-complexity-without-payoff" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（Bring Your Own Buffer）</u></a>の読み取りは、開発者がストリームから読み取るときにメモリバッファを再利用できるように設計されており、高スループットシナリオ向けの重要な最適化です。アイデアは健全です。各チャンクに新しいバッファを割り当てるのではなく、独自のバッファを提供し、ストリームがそれを入力するのです。</p>
+	<p>実際には、（そしてもちろん、常に例外があります）、BYOBは測定可能な利益を得るために使用されることはほとんどありません。APIは、デフォルトの読み取りよりもはるかに複雑で、別のリーダータイプ（<code>ReadableStreamBYOBReader</code>）と他の特殊なクラス（例：<code>ReadableStreamBYOBRequest</code>)、バッファライフサイクルの慎重な管理、および<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers" target="_blank" rel="noopener noreferrer"><u><code>ArrayBuffer</code></u><u>分離</u></a>の意味の理解が必要です。BYOB読み取りにバッファを渡すと、バッファはデプロイされ、ストリームに転送され、潜在的に異なるメモリ上で別のビューを取り戻すことができます。この移転ベースのモデルは、エラーが発生しやすく、混乱を招くこともあります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const reader = stream.getReader({ mode: 'byob' });
+const buffer = new ArrayBuffer(1024);
+let view = new Uint8Array(buffer);
+
+const result = await reader.read(view);
+// 'view' should now be detached and unusable
+// (it isn't always in every impl)
+// result.value is a NEW view, possibly over different memory
+view = result.value; // Must reassign</code></pre>
+	<p>また、BYOBは非同期イテレーションやTransformStreamsでは使用できないため、ゼロコピーでの読み取りを望む開発者は手動のリーダーループに戻されます。</p>
+	<p>実装者にとって、BYOBはかなり複雑さを増します。ストリームは、保留中のBYOBリクエストを追跡し、部分的なフィルを処理し、バッファ分離を正しく管理し、BYOBリーダーと基盤となるソースの間で調整する必要があります。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>読み取り可能なバイトストリームのWebプラットフォームテスト</u></a>には、BYOBエッジケース専用のテストファイルが含まれます。デタッチされたバッファ、不正なビュー、エンキュー後の応答順序などです。</p>
+	<p>BYOBはユーザーと実装者の両方にとって複雑になるものの、実際にはほとんど採用されていません。ほとんどの開発者は、デフォルトの読み取りにこだわって、割り当てのオーバーヘッドを受け入れます。</p>
+	<p>カスタムReadableStreamインスタンスのほとんどのユーザーランド実装では、デフォルトとBYOBの両方の読み取りサポートを単一ストリームで正しく実装するために必要なすべてのセレモニーを気にすることはありません。それには十分な理由があるのです。正確な情報を得るのは難しく、時間のかかるコードのほとんどはデフォルトの読み取りパスに頼らざるを得ません。以下の例は、「正しい」実装によって必要とされるものを示しています。これは、規模が大きく、複雑で、エラーが発生しやすく、一般的な開発者が本当に対処しなければならないレベルの複雑さではありません。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">new ReadableStream({
+    type: 'bytes',
+    
+    async pull(controller: ReadableByteStreamController) {      
+      if (offset &gt;= totalBytes) {
+        controller.close();
+        return;
+      }
+      
+      // Check for BYOB request FIRST
+      const byobRequest = controller.byobRequest;
+      
+      if (byobRequest) {
+        // === BYOB PATH ===
+        // Consumer provided a buffer - we MUST fill it (or part of it)
+        const view = byobRequest.view!;
+        const bytesAvailable = totalBytes - offset;
+        const bytesToWrite = Math.min(view.byteLength, bytesAvailable);
+        
+        // Create a view into the consumer's buffer and fill it
+        // not critical but safer when bytesToWrite != view.byteLength
+        const dest = new Uint8Array(
+          view.buffer,
+          view.byteOffset,
+          bytesToWrite
+        );
+        
+        // Fill with sequential bytes (our "data source")
+        // Can be any thing here that writes into the view
+        for (let i = 0; i &lt; bytesToWrite; i++) {
+          dest[i] = (offset + i) &amp; 0xFF;
+        }
+        
+        offset += bytesToWrite;
+        
+        // Signal how many bytes we wrote
+        byobRequest.respond(bytesToWrite);
+        
+      } else {
+        // === DEFAULT READER PATH ===
+        // No BYOB request - allocate and enqueue a chunk
+        const bytesAvailable = totalBytes - offset;
+        const chunkSize = Math.min(1024, bytesAvailable);
+        
+        const chunk = new Uint8Array(chunkSize);
+        for (let i = 0; i &lt; chunkSize; i++) {
+          chunk[i] = (offset + i) &amp; 0xFF;
+        }
+        
+        offset += chunkSize;
+        controller.enqueue(chunk);
+      }
+    },
+    
+    cancel(reason) {
+      console.log('Stream canceled:', reason);
+    }
+  });</code></pre>
+	<p>ホストランタイムが、例えばフェッチ<code>Response</code>の<code>body</code>として、ランタイム自体からバイト指向のReadableStreamを提供する場合、ランタイム自体がBYOB読み取りの最適化された実装を提供する方がはるかに簡単であるものの、それらは依然としてデフォルトとBYOBの両方の読み取りパターンを処理できる必要があり、その要件はかなりの複雑さをもたらします。</p>
+	<div class="flex anchor relative">
+		<h4 id="backpressure-good-in-theory-broken-in-practice">バックプレッシャー：理論的には良いが、実際には壊れる</h4>
+		<a href="https://blog.cloudflare.com/#backpressure-good-in-theory-broken-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Backpressure（バックプレッシャー）は、動作の遅いコンシューマーが速いプロデューサーの減速を知らせる機能で、Webストリームの第一級のコンセプトです。理論的には、です。実際のところ、このモデルには重大な欠陥がいくつかあります。</p>
+	<p>プライマリシグナルは、コントローラーの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/desiredSize" target="_blank" rel="noopener noreferrer"><u><code>desiredSize</code></u></a>です。ポジティブ（データが必要）、Zero（容量大容量）、ネガティブ（容量超過）、Null（クローズ済み）です。プロデューサーは、この値をチェックし、プラスでない場合はエンキューを停止することになっています。ただし、これを強制するものはありません：<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/enqueue" target="_blank" rel="noopener noreferrer"><u><code>controller.enqueue()</code></u></a>望まれるリターゲットサイズの場合でも常に成功します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">new ReadableStream({
+  start(controller) {
+    // Nothing stops you from doing this
+    while (true) {
+      controller.enqueue(generateData()); // desiredSize: -999999
+    }
+  }
+});</code></pre>
+	<p>Streamの実装は、バックプレッシャーを無視できます。また、一部の仕様定義された機能は、バックプレッシャーを明示的に破壊します。例えば、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><u><code>tee()</code></u></a>は、1つのストリームから2つの分岐を作成します。一方のブランチの読み取り速度が他のブランチより速い場合、データは内部バッファに制限なく蓄積されます。速いコンシューマーは、遅いコンシューマーが追いつく間に無限のメモリ増加を引き起こす可能性があります。これを設定する方法も、遅いブランチをキャンセルする以外にオプトアウトする方法もありません。</p>
+	<p>Webストリームは、<code>highWaterMark</code>オプションとカスタマイズ可能なサイズ計算の形で、バックプレッシャーの動作を調整するための明確なメカニズムを提供しますが、これらは<code>desiredSize</code>と同様に無視されやすく、多くのアプリケーションはこれらに注意を払うことができません。</p>
+	<p><code>WritableStream</code>側にも同じ問題が存在します。<code>WritableStream</code>には<code>高い透かし</code>と<code>目標のサイズ</code>があります。データの生産者が注意を払うべきですが、できないことが多いという<code>writer.ready</code>という約束があります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const writable = getWritableStreamSomehow();
+const writer = writable.getWriter();
+
+// Producers are supposed to wait for the writer.ready
+// It is a promise that, when resolves, indicates that
+// the writables internal backpressure is cleared and
+// it is ok to write more data
+await writer.ready;
+await writer.write(...);</code></pre>
+	<p>実装者にとっては、バックプレッシャーは保証はせずに複雑さを増大させます。Queue Consumerのサイズを追跡し、<code>望ましいサイズ</code>を計算し、適切なタイミングで<code>pull()</code>を呼び出す機械はすべて正しく実装されなければなりません。しかし、これらのシグナルは助言であるため、すべての機能が、バックプレッシャーが解決できるはずの問題を実際に防ぐことはできません。</p>
+	<div class="flex anchor relative">
+		<h4 id="the-hidden-cost-of-promises">約束の隠れたコスト</h4>
+		<a href="https://blog.cloudflare.com/#the-hidden-cost-of-promises" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webストリーム仕様では、多数のポイントでプロミスを作成する必要があり、多くの場合ホットパス上にあり、ユーザーに見えないことも少なくありません。各 <code>read()</code>の呼び出しはPromiseを返すだけではありません。内部的には、実装はキュー管理、<code>pull()</code>調整、およびバックプレッシャーシグナリングのために追加のPromiseを作成します。</p>
+	<p>このオーバーヘッドは、バッファ管理、完了、バックプレッシャー信号の約束に依存するので、義務付けられています。実装に特化したものもありますが、仕様に書かれている通りであれば避けられません。高頻度のストリーミング（動画フレーム、ネットワークパケット、リアルタイムデータ）では、このオーバーヘッドが相当なものになります。</p>
+	<p>問題はパイプラインでさらに悪化します。各<code>TransformStream</code>は、ソースとシンクの間にプロミスの仕組みをさらに一層追加します。仕様は同期の高速パスを定義しないため、データがすぐに利用可能であっても、約束された機械が実行されます。</p>
+	<p>実装者にとっては、この約束重視の設計が最適化の機会を制約します。この仕様では、特定の約束解決の順序付けが義務付けられているため、微妙なコンプライアンス違反のリスクを冒すことなく、バッチ操作や不要な非同期境界のスキップすることは困難です。実装者が行う隠れた内部最適化はたくさんありますが、それらを正しく行うことは複雑で困難な場合があります。</p>
+	<p>このブログ記事を書いている間に、VercelのMalte Ublが、VercelがNode.jsのパフォーマンス改善に関して行っているいくつかの調査について説明する独自の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>ブログ記事</u></a>を公開しました。Webストリームの実装。その投稿では、Webストリームの実装すべてが直面する、以下の基本的なパフォーマンス最適化の問題について考察しています。</p>
+	<blockquote>
+		<p>「または PipeTo()を検討してください。各チャンクは、読み取り、書き込み、バックプレッシャー、繰り返しという、完全なPromiseチェーンを通過していきます。読み取りごとに{value, done}の結果オブジェクトが割り当てられます。エラーの伝播によって追加のPromiseブランチが作成されます。</p>
+		<p>これらは、どれも間違いではありません。これらの保証は、ストリームがセキュリティ境界を越えるブラウザでは、キャンセルセマンティクスは相手に乗じるすきを与えず、パイプの両端を制御できないブラウザでは重要です。しかし、サーバー上で、React Server Componentsを1KBのチャンクで3回変換すると、コストが蓄積されます。</p>
+		<p>ネイティブのWebStream PipeThoughをベンチマークしたのは、1KBのチャンクに対して630MB/sです。同じパススルー変換で最大7,900 MB/sのNode.js Pipeline()。これは12倍のギャップであり、その差はほぼすべてPromiseとオブジェクト割り当てのオーバーヘッドです。」
+			- Malte Ubl, <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster</u></a></p>
+	</blockquote>
+	<p>研究の一環として、Node.jsの一連の改善提案をまとめましたWebストリームの実装により、特定のコードパスの約束を排除することで、最大10倍もの高速化を実現できます。これは、有用ではありますが、大きなオーバーヘッドを追加することを証明するものです。Node.jsのコアメンテナーの1人として、MalteとVercelの人々が改善提案を実現するお手伝いができることを楽しみにしています。</p>
+	<p>Cloudflare Workersに最近行った更新では、内部のデータパイプラインにも同様の変更を加えて、特定のアプリケーションシナリオで作成されるJavaScript約束の数を最大200倍減らしました。その結果、これらのアプリケーションのパフォーマンスは、数桁向上します。</p>
+	<div class="flex anchor relative">
+		<h3 id="real-world-failures">現実世界の障害</h3>
+		<a href="https://blog.cloudflare.com/#real-world-failures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="exhausting-resources-with-unconsumed-bodies">未消費の本体によるリソースの枯渇</h4>
+		<a href="https://blog.cloudflare.com/#exhausting-resources-with-unconsumed-bodies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>fetch()</code>がレスポンスを返す場合、本文は<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/body" target="_blank" rel="noopener noreferrer"><u><code>ReadableStream</code></u></a>です。ステータスだけを確認し、本文を消費またはキャンセルしない場合はどうなりますか？その答えは実装によって異なりますが、一般的な結果はリソースの漏洩です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function checkEndpoint(url) {
+  const response = await fetch(url);
+  return response.ok; // Body is never consumed or cancelled
+}
+
+// In a loop, this can exhaust connection pools
+for (const url of urls) {
+  await checkEndpoint(url);
+}</code></pre>
+	<p>このパターンは、<a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a>（Node.jsに組み込まれた<code>fetch()</code>実装）を使用するNode.jsアプリケーションで接続プールを枯渇させる原因となっていました。同様の問題が他のランタイムでも発生しています。ストリームは基盤となる接続への参照を保持するため、明示的な消費またはキャンセルを行わなければ、接続はガベージコレクションまで続く可能性があります。</p>
+	<p>問題は、暗黙的にStreamブランチを作成するAPIによってさらに悪化しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><u><code>Request.clone()</code></u></a>と<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><u><code>Response.clone()</code></u></a>ボディストリーム上で暗黙の<code>tee()</code>を実行します。これは見落としがちな詳細です。ロギングまたはリトライのロジックをクローンするコードは、無意識のうちに独立した消費を必要とする支社的なストリームを作成し、リソース管理の負担を増大させる可能性があります。</p>
+	<p>確かに、こうしたタイプの問題<i>は</i>実装のバグです。接続リークは間違いなく、undici氏が自身の実装で修正する必要があるものでしたが、仕様の複雑さにより、この種の問題に対処することは容易ではありません。</p>
+	<blockquote>
+		<p>「Node.jsのfetch()実装でストリームをクローニングするのは、見た目よりも難しいのです。リクエストまたはレスポンスの本文をクローンする際は、tee()を呼びます。これは、1つのストリームを2つのブランチに分割し、両方を消費する必要があります。あるコンシューマーが他のコンシューマーよりも読み取りが速い場合、データバッファは低速なブランチを待ちます。両方のブランチを適切に消費しないと、基盤となる接続がリークされます。1つのソースを共有する2人の読者の間で調整が必要なため、誤って元のリクエストを壊したり、接続プールを使い果たすことがよくあります。これは単純なAPI呼び出しですが、複雑な基盤となる仕組みを持つため正しく理解するのは難しいです。」- Mateo Collina、博士- Platformmatic共同創設者兼CTO、Node.js技術運営委員会委員長</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h4 id="falling-headlong-off-the-tee-memory-cliff">メモリの最前線を越える</h4>
+		<a href="https://blog.cloudflare.com/#falling-headlong-off-the-tee-memory-cliff" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><u><code>tee()</code></u></a>は、ストリームを2つの分岐に分割します。一見簡単ですが、この実装にはバッファリングが必要です。あるブランチが他のブランチより速く読み込まれた場合、遅いブランチが追いつくまでデータはどこかに保持される必要があります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const [forHash, forStorage] = response.body.tee();
+
+// Hash computation is fast
+const hash = await computeHash(forHash);
+
+// Storage write is slow — meanwhile, the entire stream
+// may be buffered in memory waiting for this branch
+await writeToStorage(forStorage);</code></pre>
+	<p>仕様では、<code>tee()</code> のバッファ制限を義務付けていません。公平に言えば、この仕様は、仕様の観測可能な規範的要件が満たされる限り、実装が<code>tee()</code>やその他のAPIの実際の内部メカニズムを、適切と考える方法で実装することを許可しています。しかし、実装がStreamの仕様で記述された特定の方法で<code>tee()</code>を実装することを選択した場合、<code>tee()</code>には回避が困難な組み込み型のメモリ管理の問題が生じます。</p>
+	<p>実装部門は、これに対処するための独自の戦略を策定する必要がありました。Firefoxは当初リンクリスト方式を使っており、消費率の差に比例してO<code>(n)</code>メモリ増加が発生しました。Cloudflare Workersでは、バックプレッシャーが最速ではなく、最も遅いコンシューマーによって示される共有バッファモデルを実装することを選択しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cl4vqYfaHaVXiHjLSXv0a/03a0b9fe4c9c0594e181ffee43b63998/2.png" alt="" class="kg-image" width="782" height="531" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="transform-backpressure-gaps">バックプレッシャーのギャップを変革</h4>
+		<a href="https://blog.cloudflare.com/#transform-backpressure-gaps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>TransformStream</code> は、処理ロジックを介した <code>読み取り可能/書き込み可能</code> なペアを作成します。<code>transform()</code> 関数は、読み取り時ではなく、<i>書き込み時</i>に実行されます。変換の処理は、利用者の準備ができているかどうかに関係なく、データが到着すると迅速に行われます。これにより、コンシューマーが遅いときに不要な作業が発生し、両側間のバックプレッシャーシグナリングにはギャップがあり、負荷の無制限なバッファリングが発生する可能性があります。仕様では、変換されるデータのプロデューサーが、変換の書き込み可能な側にある <code>writer.ready</code> シグナルに注意を払っていることが想定されますが、多くの場合、生産者はそれを無視してしまいます。</p>
+	<p>変換の <code>transform() </code>操作が同期的で、常に出力をすぐにキューに入れる場合、ダウンストリームのコンシューマーが遅くても、書き込み可能側にバックプレッシャーを返すことはありません。これは、多くの開発者が完全に見落とす仕様設計の結果です。ユーザーが1人につき、通常現時点でアクティブなストリームパイプラインの数も少数であるブラウザでは、このタイプのフットガンは何の影響もありませんが、ランタイム時のサーバー側またはエッジのパフォーマンスに大きな影響を与えます同時に数千のリクエストに対応する高速な遅延が発生します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const fastTransform = new TransformStream({
+  transform(chunk, controller) {
+    // Synchronously enqueue — this never applies backpressure
+    // Even if the readable side's buffer is full, this succeeds
+    controller.enqueue(processChunk(chunk));
+  }
+});
+
+// Pipe a fast source through the transform to a slow sink
+fastSource
+  .pipeThrough(fastTransform)
+  .pipeTo(slowSink);  // Buffer grows without bound</code></pre>
+	<p>TransformStreamsは、コントローラーのバックプレッシャーをチェックし、それをライターに伝えるために、約束を使用します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const fastTransform = new TransformStream({
+  async transform(chunk, controller) {
+    if (controller.desiredSize &lt;= 0) {
+      // Wait on the backpressure to clear somehow
+    }
+
+    controller.enqueue(processChunk(chunk));
+  }
+});</code></pre>
+	<p>しかし、ここでの難しさとして、<code>TransformStreamDefaultController</code>には Writers のような ready promise メカニズムがありません。そのため、<code>TransformStream</code>の実装では、<code>controller.desiredSize</code>が再び正の値になる時期を定期的にチェックするためのポーリングメカニズムを実装する必要があります。</p>
+	<p>パイプラインでは、問題がさらに悪化します。複数の変換（解析、変換、シリアル化など）を連鎖させる場合、各<code>TransformStream</code>には独自の内部読み取り可能および書き込み可能なバッファがあります。実装者が仕様に厳密に従う場合、データはプッシュ指向の方法でこれらのバッファを通過します。ソースはAの変換をプッシュし、Bの変換をプッシュし、Cの変換をプッシュし、それぞれが最終的なコンシューマーが転送する前に、中間バッファにデータを蓄積します削除し始めました3つの変換を使用して、6つの内部バッファを同時に満たすことができます。</p>
+	<p>Stream APIを使用する開発者は、ソース、変換、および書き込み可能な宛先を作成する際に、<code>highWaterMark</code>のようなオプションを使用することを覚えておくことが期待されていますが、多くの場合、忘れてしまったり、単に無視することを選択したりします。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">source
+  .pipeThrough(parse)      // buffers filling...
+  .pipeThrough(transform)  // more buffers filling...
+  .pipeThrough(serialize)  // even more buffers...
+  .pipeTo(destination);    // consumer hasn't started yet</code></pre>
+	<p>実装では、ID変換を崩壊させたり、観測できないパスを短縮したり、バッファ割り当てを遅らせたり、JavaScriptをまったく実行しないネイティブコードに戻るなどして、変換パイプラインを最適化する方法が見つかりました。Deno、Bun、Cloudflare Workersはすべて、オーバーヘッドの多くを排除するのに役立つ「ネイティブパス」最適化の実装に成功しています。Vercelの最近の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a>研究は、Node.jsの同様の最適化に取り組んでいます。しかし、最適化自体もかなりの複雑さを増し、TransformStreamが用いる本質的なプッシュ指向モデルから完全に脱却することはできません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64FcAUPYrTvOSYOPoT2FkR/cc91e0d32dd47320e8ac9d6f431a2fda/3.png" alt="" class="kg-image" width="922" height="481" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="gc-thrashing-in-server-side-rendering">サーバーサイドレンダリングにおけるGCフラッシング</h4>
+		<a href="https://blog.cloudflare.com/#gc-thrashing-in-server-side-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Streamのサーバーサイドレンダリング（SSR）は、特に厄介なケースです。典型的なSSRストリームは何千もの小さなHTMLフラグメントをレンダリングし、それぞれがStreamの機械を通過する可能性があります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Each component enqueues a small chunk
+function renderComponent(controller) {
+  controller.enqueue(encoder.encode(`&lt;div&gt;${content}&lt;/div&gt;`));
+}
+
+// Hundreds of components = hundreds of enqueue calls
+// Each one triggers promise machinery internally
+for (const component of components) {
+  renderComponent(controller);  // Promises created, objects allocated
+}</code></pre>
+	<p>すべてのフラグメントは、<code>read()</code>呼び出し用に作成されたプロミス、バックプレッシャー調整のプロミス、中間バッファ割り当て、および<code>{ value, done } </code>結果オブジェクトを意味します。これらのほとんどは、ほぼ即座にガベージになります。</p>
+	<p>負荷がかかると、スループットを破壊する可能性のあるGC圧力が生じます。JavaScriptエンジンは、有益な作業をする代わりに、短期間のオブジェクトを収集するのに多大な時間を費やしてしまいます。GCが中断リクエスト処理を一時停止すると、遅延は予測不可能になります。私がSSRのワークロードでは、ガベージコレクションがリクエストあたりの総CPU時間のかなりの部分（最大50％を超える）を占めていることが分かりました。その時間を、実際にコンテンツのレンダリングに費やすことができます。</p>
+	<p>皮肉なことに、ストリーミングSSRはコンテンツを段階的に送信することでパフォーマンスを向上させるはずです。しかし、Streamを作成する機械のオーバーヘッドが、特に小さなコンポーネントを持つページでは、その改善効果を損なう可能性があります。開発者は、レスポンス全体をバッファリングする方が、Webストリームを介してストリーミングするよりも実際には高速であり、目的を完全に損なうことに気づくことがあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-optimization-treadmill">最適化の自転車操業</h3>
+		<a href="https://blog.cloudflare.com/#the-optimization-treadmill" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>使用可能なパフォーマンスを実現するために、主要なランタイムはすべて、Webストリームの非標準の内部最適化に依存してきました。Node.js、Deno、Bun、Cloudflare Workersはすべて、独自の回避策を開発しています。これは、機械の多くが観測されず、ショートカットされる可能性がある、システムレベルのI/Oに接続されたストリームに特に当てはまります。</p>
+	<p>こうした最適化の機会を見つけるだけでも、大仕事になる可能性があります。どの動作が観察可能で、どの動作を安全に回避できるのかを特定するには、エンドツーエンドで仕様を理解する必要があります。それでも、ある最適化が実際に仕様に準拠しているかどうかは不明であることが多いです。実装者は、互換性を損なうことなく、どの意味論を緩和できるかを判断する必要があります。これにより、ランタイムチームには、許容可能なパフォーマンスを達成するために、仕様の専門家になるという大きなプレッシャーがかかります。</p>
+	<p>こうした最適化は実装が難しく、エラーが発生しやすく、ランタイム間の動作が不整合になります。Bunの「<a href="https://bun.sh/docs/api/streams#direct-readablestream" target="_blank" rel="noopener noreferrer"><u>Direct Streams</u></a>」最適化は、意図的かつ観察可能な非標準的なアプローチを採用しており、仕様の多くのメカニズムを完全にバイパスしています。Cloudflare Workersの<a href="https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream" target="_blank" rel="noopener noreferrer"><u><code>IdentityTransformStream</code></u></a>は、パススルー変換の高速処理を提供しますが、Workers固有であり、<code>TransformStream</code>の標準ではない動作を実装しています。それぞれのランタイムには独自のトリックがあり、非標準ソリューションに偏りがちです。たいていの場合、それが高速化する唯一の方法だからです。</p>
+	<p>この断片化はポータビリティを損ないます。あるランタイムではうまく動作するコードが、「標準的な」APIsを使用している場合でも、別のランタイムでは動作が異なる（または低質になる）場合があります。ランタイム実装者にとって複雑な負担は相当なものであり、微妙な動作の違いは、クロスランタイムコードを書こうとする開発者、特に多くのランタイム環境で効率的に実行できなければならないフレームワークを維持する開発者にとって摩擦が生じます。</p>
+	<p>また、多くの最適化は、ユーザーコードに観測されない仕様の一部でのみ可能であることを強調する必要があります。代替手段、Bun「Direct Streams」のような代替手段は、仕様で定義された観測可能な動作から意図的に逸脱させることです。つまり、最適化が「不完全」に感じられることが多いということです。あるシナリオによっては動作するが、他のシナリオでは動作しない、あるランタイムでは動作するが、他のシナリオでは動作しないなどです。そのような場合があるたびに、Webストリームのアプローチ全体の持続不可能な複雑さが増大します。これが原因で、ほとんどのランタイム実装者は、準拠テストに合格したとしても、Streamの実装のさらなる改善に大規模な労力を費やすことはほとんどありません。</p>
+	<p>実装者は、こうした複雑な手順を踏む必要はありません。妥当なパフォーマンスを実現するために、仕様の意味を緩和する、またはバイパスする必要があることに気づいたなら、それは仕様自体に何かが間違っているという兆候です。適切に設計されたストリーミングAPIはデフォルトで効率的であるべきであり、各ランタイムが独自のエスケープハッシュを作成する必要はありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-compliance-burden">コンプライアンスの負担</h3>
+		<a href="https://blog.cloudflare.com/#the-compliance-burden" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>複雑な仕様では、複雑なエッジケースが生まれます。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams" target="_blank" rel="noopener noreferrer"><u>StreamのWebプラットフォームテスト</u></a>は70以上のテストファイルにまたがっており、包括的なテストは良いことですが、テストする必要があるものが何であるかを示しています。</p>
+	<p>実装が通過しなければならない、不明瞭なテストのいくつかを考えてみましょう。</p>
+	<ul>
+		<li>
+			<p>プロトタイプ汚染防御：1つのテストが<code>Object.prototype.</code>thenにパッチを適用し、Promiseの解決をインターセプトします。その後、<code>pipeTo()</code>および<code>tee()</code>操作がプロトタイプチェーンを介して内部値を漏洩しないことを検証します。これは、仕様の約束が多い内部機能が攻撃対象領域を作成するためにのみ存在するセキュリティプロパティをテストします。</p>
+		</li>
+		<li>
+			<p>WebAssemblyメモリの拒否：BYOB読み取りは、WebAssemblyメモリに支えられたArrayBuffersを明示的に拒否しなければなりません。WebAssemblyメモリは、通常のバッファのように見えますが、転送できません。このエッジケースは、Specのバッファ分離モデルによって存在します。より単純なAPIでは処理する必要がないのです。</p>
+		</li>
+		<li>
+			<p>ステートマシンの競合によるクラッシュ回帰：<code>byobRequest.respond()</code>の呼び出しを特定のテストで確認します<code>enqueue()</code>の後、ランタイムがクラッシュしない。このシーケンスにより、内部ステートマシンに競合が発生します。<code>enqueue()</code>は保留中の読み取りを実行し、<code>byobRequest</code>を無効化する必要がありますが、実装は開発者が複雑なAPIを正しく使用していない可能性が非常に高いため、メモリを破損するのではなく、その後の<code>respond()</code>を適切に処理する必要があります。</p>
+		</li>
+	</ul>
+	<p>これらは、テスト作成者が完全に協力して考案したシナリオではありません。それらは仕様の設計の結果であり、現実世界のバグを反映しています。</p>
+	<p>ランタイムの実装者にとって、WPTスイートを通過することは、ほとんどのアプリケーションコードが遭遇することのない複雑なエッジケースを処理することを意味します。テストは、ハッピーなパスだけでなく、リーダー、ライター、コントローラー、キュー、戦略、そしてそれらすべてを接続する約束機械間の相互作用の完全なマトリックスをエンコードします。</p>
+	<p>よりシンプルなAPIは、概念が少なく、概念間の相互作用が少なく、適切なエッジケースが少なく、その結果、実装が実際に一貫して動作するという確信が高まります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-takeaway">要点</h3>
+		<a href="https://blog.cloudflare.com/#the-takeaway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webストリームは、ユーザーにとっても実装者にとっても複雑なものです。仕様の問題はバグではありません。設計どおりにAPIを使用することで実現されます。漸進的改善だけで修正できる問題ではありません。これらは、基本的な設計の選択の結果です。物事を改善するためには、異なる基盤が必要です。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-better-streams-api-is-possible">より良いStream APIであることを可能に</h2>
+		<a href="https://blog.cloudflare.com/#a-better-streams-api-is-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>異なるランタイムでWebストリームの仕様を複数回実装し、問題点を直接確認した後、今日の第一原理から設計した場合のより良い代替ストリーミングAPIはどのようなものになるかを検討するタイミングだと決めました。</p>
+	<p>以下は概念実証です。完成した標準ではなく、プロダクションレディで利用可能なライブラリでもありません。必ずしも新しい何かの具体的提案でもありませんが、Webストリームの問題がストリーミングに固有のものではないことを示す議論の出発点です。 ;特定の設計上の選択の結果であり、違った方法で選択することも可能です。このAPIが正しい答えかどうかよりも、それがストリーミングプリミティブから実際に必要なものについての生産的な会話につながるかどうかより重要です。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-stream">ストリームとは？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API設計について掘り下げる前に、ストリームとは何か？を考えてみましょう。</p>
+	<p>本質的には、ストリームは時間とともに到着するデータのシーケンスです。すべてを一度に行うことはできません。利用可能になるにつれて、徐々に処理していきます。</p>
+	<p>Unixパイプは、おそらくこのアイディアを最も純粋に表現したものです。</p>
+	<pre class="language-Shell"><code class="language-Shell">cat access.log | grep "error" | sort | uniq -c</code></pre>
+	<p>
+		データは左から右に流れます。各ステージは入力を読み取り、作業を行い、出力を書き込みます。パイプリーダーの取得も、コントローラーロックの管理も必要ありません。下流段階が遅いと、当然ながら上流段階も遅くなります。バックプレッシャーはモデル内で暗黙的であり、学習する（または無視する）ための別個のメカニズムではありません。</p>
+	<p>JavaScriptでは、「時間とともに到着する一連のモノ」の自然なプリミティブはすでに言語にあります：非同期反復可能です。<code>for await...of</code>で消費します。反復を中止することで、消費を停止します。</p>
+	<p>これは、新しいAPIが維持しようとしている直感です。ストリームは反復のように感じられなければなりません。なぜなら、それこそが反復するものだからです。Webストリーム（リーダー、ライター、コントローラー、ロック、キューイング戦略）の複雑さは、この基本的なシンプルさを不明瞭にします。より優れたAPIは、単純なケースをシンプルにし、本当に必要な場合にのみ複雑さを増す必要があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AUAA4bitbTOVSQg7Pd7fv/0856b44d78899dcffc4493f4146fb64f/4.png" alt="" class="kg-image" width="892" height="626" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="design-principles">設計の原則</h3>
+		<a href="https://blog.cloudflare.com/#design-principles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私は、異なる原則に基づいて概念実証の代替案を作成しました。</p>
+	<div class="flex anchor relative">
+		<h4 id="streams-are-iterables">Streamは反復可能です。</h4>
+		<a href="https://blog.cloudflare.com/#streams-are-iterables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>隠れた内部状態を持つカスタム<code>ReadableStream</code>クラスはありません。読み取り可能なストリームは、単に <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols" target="_blank" rel="noopener noreferrer"><u><code>AsyncIterable&lt;Uint8Array[]&gt;</code></u></a> です。<code>for await...of</code>で消費します。リーダーの取得も、ロックの管理も必要ありません。</p>
+	<div class="flex anchor relative">
+		<h4 id="pull-through-transforms">プルスルー変換</h4>
+		<a href="https://blog.cloudflare.com/#pull-through-transforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>変換はコンシューマーがプルするまで実行されません。評価も隠れたバッファリングもありません。データは、ソースからコンシューマーへオンデマンドで流れ、変換を経てコンシューマーへ送信されます。反復を停止すると、処理は停止します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bEXBTEOHBMnCRKGA7odt5/cf51074cce3bb8b2ec1b5158c7560b68/5.png" alt="" class="kg-image" width="721" height="546" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="explicit-backpressure">明示的なバックプレッシャー</h4>
+		<a href="https://blog.cloudflare.com/#explicit-backpressure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>バックプレッシャーはデフォルトで厳格です。バッファが満杯になると、書き込みは静かに蓄積されるのではなく、拒否されます。スペースが利用可能になるまでブロック、最も古い削除、最新の削除など、代替ポリシーを設定できますが、明示的に選択する必要があります。静かなメモリ増加はもうありません。</p>
+	<div class="flex anchor relative">
+		<h4 id="batched-chunks">バッチ処理されたチャンク</h4>
+		<a href="https://blog.cloudflare.com/#batched-chunks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>反復ごとに1つのチャンクを生成するのではなく、ストリームは<code>Uint8Array[]:</code> チャンクの配列を生成します。これにより、複数のチャンクにわたる非同期オーバーヘッドが合理化され、ホットパスでの約束の作成とマイクロタスクの遅延が低減されます。</p>
+	<div class="flex anchor relative">
+		<h4 id="bytes-only">バイトのみ</h4>
+		<a href="https://blog.cloudflare.com/#bytes-only" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APIはバイト（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array" target="_blank" rel="noopener noreferrer"><u><code>Uint8Array</code></u></a>）のみを処理します。文字列は自動的にUTF-8にエンコードされます。「バリューストリーム」と「バイトストリーム」の対比はありません。任意のJavaScript値をストリーミングするには、async iterablesを直接使用してください。APIは<code>Uint8Array</code>を使用しますが、チャンクは不透明なものとして扱われます。部分的な消費も、BYOBパターンも、ストリーミング機械自体内でのバイトレベルの操作もありません。チャンクが入り、チャンクが出てくると、変換で明示的に変更しない限り、変更は一切されません。</p>
+	<div class="flex anchor relative">
+		<h4 id="synchronous-fast-paths-matter">同期の高速パスが重要</h4>
+		<a href="https://blog.cloudflare.com/#synchronous-fast-paths-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APIは、同期されたデータソースが必要であり、一般的であることを認識します。非同期スケジューリングが提供される唯一のオプションであるという理由だけで、アプリケーションは非同期スケジューリングのパフォーマンス上のコストを常に受け入れる必要はありません。同時に、同期処理と非同期処理の混在は危険です。同期パスは常に選択肢であり、常に明示的である必要があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-new-api-in-action">新しいAPIの動作</h3>
+		<a href="https://blog.cloudflare.com/#the-new-api-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="creating-and-consuming-streams">ストリームの作成と利用</h4>
+		<a href="https://blog.cloudflare.com/#creating-and-consuming-streams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webストリームでは、単純な生産者/消費者のペアを作成するには、<code>TransformStream</code>、手動でのエンコーディング、そして慎重なロック管理が必要です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const { readable, writable } = new TransformStream();
+const enc = new TextEncoder();
+const writer = writable.getWriter();
+await writer.write(enc.encode("Hello, World!"));
+await writer.close();
+writer.releaseLock();
+
+const dec = new TextDecoder();
+let text = '';
+for await (const chunk of readable) {
+  text += dec.decode(chunk, { stream: true });
+}
+text += dec.decode();</code></pre>
+	<p>この比較的クリーンなバージョンでも、<code>TransformStream</code>、手動の<code>TextEncoder</code>と<code>TextDecoder</code>、および明示的なロックのリリースが必要です。</p>
+	<p>以下は、新しいAPIに対応するものです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Stream } from 'new-streams';
+
+// Create a push stream
+const { writer, readable } = Stream.push();
+
+// Write data — backpressure is enforced
+await writer.write("Hello, World!");
+await writer.end();
+
+// Consume as text
+const text = await Stream.text(readable);</code></pre>
+	<p>読み取り可能は、単に非同期の反復可能です。ストリーム全体を収集してデコードする<code>Stream.text()</code>など、任意の関数に渡すことができます。</p>
+	<p>ライターにはシンプルなインターフェースがあります: バッチ書き込み用の <code>write()、writev()</code>、完了を通知する <code>end()</code>、エラー用の <code>abort()</code>。これが本質的にこれだけです。</p>
+	<p>writerは具体的なクラスではありません。<code>write()</code>、<code>end()</code>、および<code>abort()</code>を実装するオブジェクトはどれでもライターになれるため、既存のAPIを適応させたり、サブクラス化せずに特殊な実装を作成したりすることが容易になります。<code>start()</code>、<code>write()</code>、<code>close()</code>、<code>abort()</code>コールバックなど、ライフサイクルと状態がバインドされている<code>WritableStream</code>に依存しないコントローラーを介して調整する必要がある複雑な<code>UnderlyingSink</code>プロトコルはありません。</p>
+	<p>以下は、書かれたすべてのデータを収集する単純なメモリ内ライターです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// A minimal writer implementation — just an object with methods
+function createBufferWriter() {
+  const chunks = [];
+  let totalBytes = 0;
+  let closed = false;
+
+  const addChunk = (chunk) =&gt; {
+    chunks.push(chunk);
+    totalBytes += chunk.byteLength;
+  };
+
+  return {
+    get desiredSize() { return closed ? null : 1; },
+
+    // Async variants
+    write(chunk) { addChunk(chunk); },
+    writev(batch) { for (const c of batch) addChunk(c); },
+    end() { closed = true; return totalBytes; },
+    abort(reason) { closed = true; chunks.length = 0; },
+
+    // Sync variants return boolean (true = accepted)
+    writeSync(chunk) { addChunk(chunk); return true; },
+    writevSync(batch) { for (const c of batch) addChunk(c); return true; },
+    endSync() { closed = true; return totalBytes; },
+    abortSync(reason) { closed = true; chunks.length = 0; return true; },
+
+    getChunks() { return chunks; }
+  };
+}
+
+// Use it
+const writer = createBufferWriter();
+await Stream.pipeTo(source, writer);
+const allData = writer.getChunks();</code></pre>
+	<p>拡張すべきベースクラスも、実装すべき抽象メソッドも、調整すべきコントローラーもありません。正しい形のオブジェクトというだけです。</p>
+	<div class="flex anchor relative">
+		<h4 id="pull-through-transforms">プルスルー変換</h4>
+		<a href="https://blog.cloudflare.com/#pull-through-transforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいAPI設計では、変換はデータが消費されるまでいかなる作業も実行してはいけません。これが基本原則です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Nothing executes until iteration begins
+const output = Stream.pull(source, compress, encrypt);
+
+// Transforms execute as we iterate
+for await (const chunks of output) {
+  for (const chunk of chunks) {
+    process(chunk);
+  }
+}</code></pre>
+	<p><code>Stream.pull()</code>は、レイジーパイプラインを作成します。<code>圧縮</code>と<code>暗号化</code>の変換は、出力の反復を始めるまで実行されません。各イテレーションでは、オンデマンドでパイプラインを介してデータがプルされます。</p>
+	<p>これは、パイプがセットアップされるとすぐに、ソースから変換にデータを積極的にポンピングし始めるWebストリームの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><u><code>pipeThrough()</code></u></a>とは根本的に異なります。プルセマンティックスは、処理が行われるタイミングを制御し、イテレーションを停止すると処理を停止することを意味します。</p>
+	<p>変換はステートレスにもステートフルにもできます。ステートレス変換は、チャンクを取得し、変換されたチャンクを返す関数です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateless transform — a pure function
+// Receives chunks or null (flush signal)
+const toUpperCase = (chunks) =&gt; {
+  if (chunks === null) return null; // End of stream
+  return chunks.map(chunk =&gt; {
+    const str = new TextDecoder().decode(chunk);
+    return new TextEncoder().encode(str.toUpperCase());
+  });
+};
+
+// Use it directly
+const output = Stream.pull(source, toUpperCase);</code></pre>
+	<p>ステートフル変換は、呼び出し間で状態を維持するメンバー関数を持つ単純なオブジェクトです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateful transform — a generator that wraps the source
+function createLineParser() {
+  // Helper to concatenate Uint8Arrays
+  const concat = (...arrays) =&gt; {
+    const result = new Uint8Array(arrays.reduce((n, a) =&gt; n + a.length, 0));
+    let offset = 0;
+    for (const arr of arrays) { result.set(arr, offset); offset += arr.length; }
+    return result;
+  };
+
+  return {
+    async *transform(source) {
+      let pending = new Uint8Array(0);
+      
+      for await (const chunks of source) {
+        if (chunks === null) {
+          // Flush: yield any remaining data
+          if (pending.length &gt; 0) yield [pending];
+          continue;
+        }
+        
+        // Concatenate pending data with new chunks
+        const combined = concat(pending, ...chunks);
+        const lines = [];
+        let start = 0;
+
+        for (let i = 0; i &lt; combined.length; i++) {
+          if (combined[i] === 0x0a) { // newline
+            lines.push(combined.slice(start, i));
+            start = i + 1;
+          }
+        }
+
+        pending = combined.slice(start);
+        if (lines.length &gt; 0) yield lines;
+      }
+    }
+  };
+}
+
+const output = Stream.pull(source, createLineParser());</code></pre>
+	<p>Abort時にクリーンアップが必要な変換には、Abortハンドラーを追加します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateful transform with resource cleanup
+function createGzipCompressor() {
+  // Hypothetical compression API...
+  const deflate = new Deflater({ gzip: true });
+
+  return {
+    async *transform(source) {
+      for await (const chunks of source) {
+        if (chunks === null) {
+          // Flush: finalize compression
+          deflate.push(new Uint8Array(0), true);
+          if (deflate.result) yield [deflate.result];
+        } else {
+          for (const chunk of chunks) {
+            deflate.push(chunk, false);
+            if (deflate.result) yield [deflate.result];
+          }
+        }
+      }
+    },
+    abort(reason) {
+      // Clean up compressor resources on error/cancellation
+    }
+  };
+}</code></pre>
+	<p>実装者にとって、<code>start()</code>、<code>transform()</code>、<code>flush()</code> メソッドとコントローラーの調整が、独自の隠れたステートマシンとバッファリングメカニズムを持つ <code>TransformStream</code> クラスに渡される Transformer プロトコルはありません。変換は単なる関数または単純なオブジェクト：実装とテストははるかに簡単です。</p>
+	<div class="flex anchor relative">
+		<h4 id="explicit-backpressure-policies">明示的なバックプレッシャーポリシー</h4>
+		<a href="https://blog.cloudflare.com/#explicit-backpressure-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>区切られたバッファがいっぱいになり、プロデューサーがさらに書き込みたい場合、できることはいくつかあります。</p>
+	<ol>
+		<li>
+			<p>書き込みを拒否：それ以上のデータの受け入れを拒否</p>
+		</li>
+		<li>
+			<p>待機：スペースが利用可能になるまでブロック</p>
+		</li>
+		<li>
+			<p>古いデータを破棄：すでにバッファリングされているものを退避させ、スペースを作る</p>
+		</li>
+		<li>
+			<p>新しいデータを破棄：受信データをドロップする</p>
+		</li>
+	</ol>
+	<p>これで、以上です。その他のレスポンスは、これらのバリエーション（「バッファのサイズを変更する」など、実際には選択を遅延させているだけ）、または一般的なストリーミングプリミティブに属さないドメイン固有のロジックのいずれかです。現在、Webストリームは現在、デフォルトで常に「待機」を選択します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68339c8QsvNmb7JcZ2lSDO/e52a86a9b8f52b52eb9328d5ee58f23a/6.png" alt="" class="kg-image" width="621" height="586" loading="lazy">
+	</figure>
+	<p>新しいAPIでは、これら4つのいずれかを明示的に選択することになります。</p>
+	<ul>
+		<li>
+			<p><code>strict</code>（デフォルト）：バッファがフルで、保留中の書き込みが多すぎる場合、書き込みを拒否します。プロデューサーがバックプレッシャーを無視する「消火活動的」パターンを捕捉します。</p>
+		</li>
+		<li>
+			<p><code>block</code>: バッファスペースが利用可能になるまで書き込みを待ちます。プロデューサーが適切に書き込みを待つと信頼できる場合に使います。</p>
+		</li>
+		<li>
+			<p><code>drop-oldest</code>: 最も古いバッファリングデータを削除し、スペースを空けます。古くなったデータが価値を失うライブフィードに有用。</p>
+		</li>
+		<li>
+			<p><code>drop-newest</code>: 満杯時に受信データを破棄します。圧倒されることなく処理したい場合に有用です。</p>
+		</li>
+	</ul>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const { writer, readable } = Stream.push({
+  highWaterMark: 10,
+  backpressure: 'strict' // or 'block', 'drop-oldest', 'drop-newest'
+});</code></pre>
+	<p>プロデューサーの協力を期待することはもうありません。選択したポリシーによって、バッファが満杯になったときに何が起こるかが決定されます。</p>
+	<p>プロデューサーの書き込みがコンシューマーの読み取りより速い場合の、各ポリシーの動作は次のようになります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// strict: Catches fire-and-forget writes that ignore backpressure
+const strict = Stream.push({ highWaterMark: 2, backpressure: 'strict' });
+strict.writer.write(chunk1);  // ok (not awaited)
+strict.writer.write(chunk2);  // ok (fills slots buffer)
+strict.writer.write(chunk3);  // ok (queued in pending)
+strict.writer.write(chunk4);  // ok (pending buffer fills)
+strict.writer.write(chunk5);  // throws! too many pending writes
+
+// block: Wait for space (unbounded pending queue)
+const blocking = Stream.push({ highWaterMark: 2, backpressure: 'block' });
+await blocking.writer.write(chunk1);  // ok
+await blocking.writer.write(chunk2);  // ok
+await blocking.writer.write(chunk3);  // waits until consumer reads
+await blocking.writer.write(chunk4);  // waits until consumer reads
+await blocking.writer.write(chunk5);  // waits until consumer reads
+
+// drop-oldest: Discard old data to make room
+const dropOld = Stream.push({ highWaterMark: 2, backpressure: 'drop-oldest' });
+await dropOld.writer.write(chunk1);  // ok
+await dropOld.writer.write(chunk2);  // ok
+await dropOld.writer.write(chunk3);  // ok, chunk1 discarded
+
+// drop-newest: Discard incoming data when full
+const dropNew = Stream.push({ highWaterMark: 2, backpressure: 'drop-newest' });
+await dropNew.writer.write(chunk1);  // ok
+await dropNew.writer.write(chunk2);  // ok
+await dropNew.writer.write(chunk3);  // silently dropped</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="explicit-multi-consumer-patterns">マルチコンシューマーのパターンを顕著に</h4>
+		<a href="https://blog.cloudflare.com/#explicit-multi-consumer-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Share with explicit buffer management
+const shared = Stream.share(source, {
+  highWaterMark: 100,
+  backpressure: 'strict'
+});
+
+const consumer1 = shared.pull();
+const consumer2 = shared.pull(decompress);</code></pre>
+	<p>隠れた制限のないバッファを持つ<code>tee()</code>の代わりに、明示的なマルチコンシューマープリミティブが得られます。<code>Stream.share()</code>はプルベースです。コンシューマーは共有ソースからプルし、バッファ制限とバックプレッシャーポリシーを事前に設定します。</p>
+	<p>また、プッシュベースのマルチコンシューマーシナリオ用の<code>Stream.broadcast()</code>もあります。どちらも、コンシューマーが異なる速度で動作する場合にどうなるかについて考えなければなりません。なぜなら、それは隠れるべき問題ではない現実的な懸念だからです。</p>
+	<div class="flex anchor relative">
+		<h4 id="sync-async-separation">同期/非同期の分離</h4>
+		<a href="https://blog.cloudflare.com/#sync-async-separation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのストリーミングワークロードにI/Oが含まれるわけではありません。ソースがメモリ内にあり、変換が純粋な関数である場合、非同期機械学習はオーバーヘッドを追加します。あなたは、メリットがない「待機」の調整に対してお金を払っているのです。</p>
+	<p>新しいAPIには、完全なパラレル同期バージョンがあります。<code>Stream.pullSync()</code>、<code>Stream.bytesSync()</code>、<code>Stream.textSync()</code>などがあります。ソースと変換がすべて同期されている場合、単一の約束なしでパイプライン全体を処理できます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Async — when source or transforms may be asynchronous
+const textAsync = await Stream.text(source);
+
+// Sync — when all components are synchronous
+const textSync = Stream.textSync(source);</code></pre>
+	<p>以下は、圧縮、変換、消費を含む完全な同期パイプラインで、非同期オーバーヘッドがゼロです：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Synchronous source from in-memory data
+const source = Stream.fromSync([inputBuffer]);
+
+// Synchronous transforms
+const compressed = Stream.pullSync(source, zlibCompressSync);
+const encrypted = Stream.pullSync(compressed, aesEncryptSync);
+
+// Synchronous consumption — no promises, no event loop trips
+const result = Stream.bytesSync(encrypted);</code></pre>
+	<p>パイプライン全体が単一のコールスタックで実行されます。約束は作成されず、マイクロタスクキュースケジューリングも発生せず、短時間の非同期処理マシンによるGC圧力も発生しません。解析、圧縮、またはメモリ内データの変換など、CPUに依存するワークロードの場合、これは同等のWebストリームコードよりも大幅に高速化できます。これにより、すべてのコンポーネントが同期である場合でも、非同期境界が強制されます。</p>
+	<p>Webストリームには同期経路がありません。たとえソースにデータの準備ができていて、変換が純粋な関数だとしても、すべての操作でプロミスの作成とマイクロタスクのスケジューリングに対する支払いが発生します。Promisは、待ち時間が実際的に必要な場合に素晴らしいのですが、必ずしも待ち時間が必要ではありません。新しいAPIを使用すると、必要なときに同期ランドの状態に維持することができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="bridging-the-gap-between-this-and-web-streams">情報とWebストリームのギャップを埋める</h4>
+		<a href="https://blog.cloudflare.com/#bridging-the-gap-between-this-and-web-streams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>非同期イテレータベースのアプローチは、この代替アプローチとWebストリームの間に自然な橋渡しを提供します。ReadableStreamからこの新しいアプローチにアクセスする場合、ReadableStreamがバイトを生成するように設定されている場合、入力としてreadableを渡すだけで、期待通りに機能します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const readable = getWebReadableStreamSomehow();
+const input = Stream.pull(readable, transform1, transform2);
+for await (const chunks of input) {
+  // process chunks
+}</code></pre>
+	<p>別のアプローチではチャンクのバッチが発生するため、ReadableStreamに適応する場合、もう少し作業が必要になりますが、適応層は簡単です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function* adapt(input) {
+  for await (const chunks of input) {
+    for (const chunk of chunks) {
+      yield chunk;
+    }
+  }
+}
+
+const input = Stream.pull(source, transform1, transform2);
+const readable = ReadableStream.from(adapt(input));</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="how-this-addresses-the-real-world-failures-from-earlier">現実世界における従来からの障害への対処方法</h4>
+		<a href="https://blog.cloudflare.com/#how-this-addresses-the-real-world-failures-from-earlier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>消費されていない本文：プルセマンティックスは、反復するまで何も起こらないことを意味します。隠れたリソースの保持安全もありません。ストリームを消費しなければ、接続が開いたままにするバックグラウンドマシンはありません。</p>
+		</li>
+		<li>
+			<p>The <code>tee()</code> メモリの崖: <code>Stream.share()</code>明示的なバッファ設定が必要です<code>高いWA型</code>とBackpressureのポリシーを事前に選択すれば、コンシューマーが異なる速度で実行するときに静かな無限の成長はなくなります。</p>
+		</li>
+		<li>
+			<p>バックプレッシャーギャップを変革：プルスルー変換をオンデマンドで実行します。データが中間バッファを経由することはありません。消費者がプルした場合にのみ流れます。反復を止め、処理を止めます。</p>
+		</li>
+		<li>
+			<p>SSRでのGCスラッシング: バッチ処理されたチャンク（<code>Uint8Array[]</code>）は、非同期のオーバーヘッドを軽減します。<code>Stream.pullSync()</code> 経由でパイプラインを同期させるCPUを必要とするワークロードへの割り当てを完全に排除します。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="performance">パフォーマンス</h3>
+		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>設計の選択はパフォーマンスに影響を与えます。以下は、この代替手段の参照実装のベンチマークで、Webストリーム（Node.js v24.x、Apple M1 Pro、平均10回以上実行）：</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>シナリオ</b></p>
+				</td>
+				<td>
+					<p><b>代替</b></p>
+				</td>
+				<td>
+					<p><b>Webストリーム</b></p>
+				</td>
+				<td>
+					<p><b>差異</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>小さいチャンク（1KB × 5000）</p>
+				</td>
+				<td>
+					<p>約13 GB/秒</p>
+				</td>
+				<td>
+					<p>～4 GB/秒</p>
+				</td>
+				<td>
+					<p>最大3倍の高速化</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>小さなチャンク（100B × 10000）</p>
+				</td>
+				<td>
+					<p>～4 GB/秒</p>
+				</td>
+				<td>
+					<p>～450 MB/秒</p>
+				</td>
+				<td>
+					<p>最大8倍の速さ</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>非同期反復（8KB × 1000)</p>
+				</td>
+				<td>
+					<p>～530 GB/秒</p>
+				</td>
+				<td>
+					<p>最大35GB/秒</p>
+				</td>
+				<td>
+					<p>最大15倍の速さ</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>連鎖した3倍の変換（8KB x 500)</p>
+				</td>
+				<td>
+					<p>～275GB/秒</p>
+				</td>
+				<td>
+					<p>最大3 GB/秒</p>
+				</td>
+				<td>
+					<p><b>最大80～90倍の高速化</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>高頻度（64B × 20000）</p>
+				</td>
+				<td>
+					<p>～7.5 GB/秒</p>
+				</td>
+				<td>
+					<p>～280 MB/秒</p>
+				</td>
+				<td>
+					<p>最大25倍の高速化</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>連鎖した変換の結果は特に驚くべきものです。プルスルーセマンティックスは、Webストリームパイプラインを悩ませる中間バッファリングを排除します。各<code>TransformStream</code>が内部バッファを急速に満たす代わりに、データはオンデマンドでコンシューマーからソースへ流れます。</p>
+	<p>まず、Node.jsは、Webストリーム実装のパフォーマンスを完全に最適化するために、まだ大した労力を費やしていません。ホットパスを最適化するための小さな努力によって、Node.jsのパフォーマンス結果には大きな改善の余地があるでしょう。とはいえ、DenoとBunでベンチマークを実行すると、Webストリーム実装のどちらよりも、この代替イテレータベースのアプローチによる大幅なパフォーマンスの向上が示されています。</p>
+	<p>ブラウザベンチマーク（Chrome/Blink、3回の実行平均値）でも、一貫した向上が見られます。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>シナリオ</b></p>
+				</td>
+				<td>
+					<p><b>代替</b></p>
+				</td>
+				<td>
+					<p><b>Webストリーム</b></p>
+				</td>
+				<td>
+					<p><b>差異</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3KBチャンクをプッシュ</p>
+				</td>
+				<td>
+					<p>最大135,000オペレーション/秒</p>
+				</td>
+				<td>
+					<p>最大2万4,000運用/秒</p>
+				</td>
+				<td>
+					<p>最大5～6倍の高速化</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>100KBのチャンクをプッシュ</p>
+				</td>
+				<td>
+					<p>最大2万4,000運用/秒</p>
+				</td>
+				<td>
+					<p>3,000オペレーション/秒</p>
+				</td>
+				<td>
+					<p>最大7～8倍の高速化</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3つの変換連鎖</p>
+				</td>
+				<td>
+					<p>最大4,600万オペレーション/秒</p>
+				</td>
+				<td>
+					<p>最大880オペレーション/秒</p>
+				</td>
+				<td>
+					<p>～5倍の高速化</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5つの変換チェーン</p>
+				</td>
+				<td>
+					<p>最大2,400万オペレーション/秒</p>
+				</td>
+				<td>
+					<p>約550オペレーション/秒</p>
+				</td>
+				<td>
+					<p>最大4倍の速さ</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>bytes()消費</p>
+				</td>
+				<td>
+					<p>最大7万3,000件の運用/秒</p>
+				</td>
+				<td>
+					<p>最大11,000オペレーション/秒</p>
+				</td>
+				<td>
+					<p>最大6～7倍の高速化</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>非同期反復</p>
+				</td>
+				<td>
+					<p>最大110万運用/秒</p>
+				</td>
+				<td>
+					<p>1万オペレーション/秒</p>
+				</td>
+				<td>
+					<p><b>最大40～100倍の高速化</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>これらのベンチマークは、制御されたシナリオでのスループットを測定します。実際のパフォーマンスは、特定のユースケースによって異なります。Node.jsとブラウザの向上の違いは、環境ごとにWebストリームに対して異なる最適化経路を反映しています。</p>
+	<p>これらのベンチマークは、新しいAPIの純粋なTypeScript/JavaScript実装と、各ランタイムのWebストリームのネイティブ（JavaScript/C++/Rust）実装を比較していることに注意する必要があります。新しいAPIのリファレンス実装には、パフォーマンスの最適化機能がありませんでした。利益はすべて設計から得られます。ネイティブ実装では、さらなる改善が見られる可能性が高いでしょう。</p>
+	<p>この利点は、基本的な設計の選択肢がどのように組み合わされているかを示しています。バッチ処理は、非同期オーバーヘッドを合理化し、プルセマンティクスが中間バッファリングを排除し、データがすぐに利用可能であれば実装が同期の高速パスを使用できるようになるというメリットです。</p>
+	<blockquote>
+		<p>「私たちは、ノードストリームのパフォーマンスと一貫性を改善するために何度も行ってきましたが、ゼロから始めることには、独特の強みがあります。新しいストリームのアプローチは、従来型のお荷物になることなく、最新のランタイムの現実を取り入れ、よりシンプルで、パフォーマンスが高く、より一貫性のあるストリームモデルへの扉を開くことができるのです。」
+			- Robert Nagy、Node.js TSCメンバー兼Node.js Streamsコントリビューター</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>対話のきっかけとしてこれを公開します。何が正しかったのでしょうか？見逃していたものは？このモデルに合わないユースケースはありますか？このアプローチの移行経路はどのようなものになりますか？Webストリームの苦痛を感じた開発者からのフィードバックを集め、より良いAPIとはどのようなものになるべきかについて意見を集めることを目的としています。</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-yourself">ご自身で試してみてください</h3>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この代替アプローチの参照実装は現在利用可能で、<a href="https://github.com/jasnell/new-streams" target="_blank" rel="noopener noreferrer"><u>https://github.com/jasnell/new-streams</u></a>でご覧いただけます。</p>
+	<ul>
+		<li>
+			<p>APIリファレンス：<a href="https://github.com/jasnell/new-streams/blob/main/API.md" target="_blank" rel="noopener noreferrer"><u>API.md</u></a>に完全なドキュメントがあります</p>
+		</li>
+		<li>
+			<p>例：<a href="https://github.com/jasnell/new-streams/tree/main/samples" target="_blank" rel="noopener noreferrer"><u>サンプルディレクトリ</u></a>には、共通パターンの動作するコードがあります</p>
+		</li>
+	</ul>
+	<p>問題、議論、プルリクエストを歓迎します。私が取り上げていないWebストリームの問題に遭遇したり、このアプローチにギャップがある場合は、ぜひご連絡ください。しかし、ここでも「この新しいオブジェクトを全部使いましょう！」という考え方ではありません。 Webストリームの現状を超えて、第一の原則へと戻る議論を開始することです。</p>
+	<p>Webストリームは、他に何もない時にWebプラットフォームにストリーミングを持ち込むという野心的なプロジェクトでした。非同期イテレーション前、何年もの制作経験がエッジケースを明らかにする前、2014年当時の制約を考えると、設計者は合理的な選択をしました。</p>
+	<p>以来、私たちは多くのことを学びました。JavaScriptは進化を遂げました。現在設計されているストリーミングAPIは、よりシンプルで、より言語に合わせたものであり、バックプレッシャーやマルチコンシューマーの動作など、重要なことをより明確に示すことができます。</p>
+	<p>より良いStream APIが必要です。では、その使用例についてお話しましょう。</p>
+</div>

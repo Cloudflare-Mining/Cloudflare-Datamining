@@ -1,0 +1,112 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/replicate-joins-cloudflare">English</a>、<a href="https://blog.cloudflare.com/fr-fr/replicate-joins-cloudflare">Français</a>、<a href="https://blog.cloudflare.com/de-de/replicate-joins-cloudflare">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/replicate-joins-cloudflare">한국어</a>、<a href="https://blog.cloudflare.com/es-la/replicate-joins-cloudflare">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/nl-nl/replicate-joins-cloudflare">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-tw/replicate-joins-cloudflare">繁體中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D5M72O0Dl0m6ndTklDea3/ef6f18f53a1a1170381e4f29134f2e89/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>本日のビッグニュース：AIモデル実行のための最先端プラットフォームであるReplicateがCloudflareに加わります。</p>
+	<p>Replicateと最初に話したのは、鮮やかなカラーパレットへの情熱だけでなく、多くの共通点があったからです。Cloudflare Workers開発者プラットフォームにおける当社の使命は、フルスタックアプリケーションの構築とデプロイを可能な限り容易にすることです。一方、Replicateも同様の目標を掲げており、AIモデルのデプロイを1行のコードを書くのと同じくらい簡単にすることを目指しています。そして、ReplicateプラットフォームをCloudflareに直接統合することで、さらに共に素晴らしいものを構築できると確信しました。</p>
+	<p>このニュースをお伝えできることを嬉しく思います。お客様にとってどのような意味を持つのか、さらに楽しみです。Cloudflareに導入されたReplicateのツールによって、当社の開発者プラットフォームは、あらゆるAIやエージェント型のワークフローを構築、展開するためのインターネット上で最高の場所であり続けるでしょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-does-this-mean-for-you">これはどういうことなのでしょうか</h2>
+		<a href="https://blog.cloudflare.com/#what-does-this-mean-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIの将来についてさらに議論する前に、ReplicateとCloudflareのユーザーが最も関心のある質問にお答えしたいと思います。つまり：&nbsp;</p>
+	<p><b>既存のReplicateユーザー：</b>APIとワークフローは中断されることなく、引き続きご利用いただけます。まもなく、Cloudflareグローバルネットワークの、強化されたパフォーマンスと信頼性から益を受けるでしょう。</p>
+	<p><b>既存のWorkers AIユーザー：モデルカタログの大幅な拡充、およびWorkers</b> AI上でファインチューニングやカスタムモデルを直接実行できる新機能にご期待ください。</p>
+	<p>さて、共に未来を歩むことにこれほど期待している理由に話を戻しましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-ai-revolution-was-not-televised-but-it-started-with-open-source">テレビでは放映されなかったAI革命ですが、オープンソースから始まりました</h2>
+		<a href="https://blog.cloudflare.com/#the-ai-revolution-was-not-televised-but-it-started-with-open-source" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIがAIとなる前は「機械学習」として何十年もの間、<i>あらゆる</i>会話の対象として知られていました。それは専門的で、学術的と言ってもよい分野でした。進展は着実に進んでいますが、サイロ化されており、資金力のある大規模な研究研究所内でブレークスルーが起きています。モデルはモノリシック、データはプロプライエタリでしたからツールはほとんどの開発者がアクセスできませんでした。研究者や企業が論文だけでなくモデルの重みやコードを公開し始め、現代のインターネットを構築したオープンソースコラボレーションの文化が機械学習と融合したとき、すべてが変わりました。</p>
+	<p>これにより、目覚ましいイノベーションが爆発的に拡大したのです。ここ数年の変化の速さには目覚ましいものがあります。18か月前（あるいはつい数日前だったように感じられることもありますが）に最新であったものが、今では標準となっています。この加速は生成AIにおいて最も顕著です。&nbsp;</p>
+	<p>不格好に実施され、ぼやけた技術から、写真のように思える技術の画像生成まで、瞬時に完了するほどでした。Stable Diffusionのようなオープンソースモデルは、開発者の創造性をすぐに解放し、しかもそれはほんの始まりにすぎません。現在Replicateのモデルカタログを見ると、あらゆる種類の画像モデルが数千も存在し、それぞれが以前のモデルを反復していることがわかります。&nbsp;</p>
+	<p>これは画像モデルに限らず、動画、音声、言語モデルなどでも同様に発生しました。</p>
+	<p>しかし、この信じられないほどのコミュニティ主導の進歩が、大きな現実的な課題を生み出しています。これらのモデルを、実際にどのように<i>実行</i>するのでしょうか？新しいモデルはそれぞれ異なる依存関係を持ち、特定のGPUハードウェア（および十分な量）と、拡張のための複雑なサービスインフラストラクチャを必要とします。開発者は、実際のアプリケーションを構築するよりも、CUDAドライバーやrequirements.txtファイルとの格闘に多くの時間を費やしていることに気づきました。</p>
+	<p>これこそが、まさにReplicateが解決した問題です。同社は、その複雑さをすべて排除し（オープンソースツール<a href="https://github.com/replicate/cog" target="_blank" rel="noopener noreferrer"><u>Cog</u></a>を使用して、モデルを標準的な再構築可能なコンテナにパッケージ化）、どんな開発者やデータサイエンティストでもシンプルなAPI呼び出しで、最も複雑なオープンソースモデルでさえ実行できるようにしました。&nbsp;</p>
+	<p>現在、Replicateのカタログには、50,000を超えるオープンソースモデルと、微調整されたモデルが含まれています。オープンソースは多くの可能性を切り開きましたが、Replicateのツールセットはそれを超えて、開発者が1か所から必要なモデルにアクセスできるようにします。1か所からからですよ。マーケットプレイスでは、GPT-5やClaude Sonnetなどの主要な独自モデルに、同じ統合APIを通じてシームレスにアクセスできます。</p>
+	<p>注目すべき点は、Replicateが単に推論サービスを構築しただけでなく、<b>コミュニティ</b>を築き上げたことです。多くのイノベーションは、他者の活動から刺激を受け、それを基に改良を重ね、より良いものを創出することで生まれます。Replicateは、開発者がパブリックプレイグラウンドで最新モデルを見つけ、共有し、微調整し、試すための、決定的な拠点となっています。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="stronger-together-the-ai-catalog-meets-the-ai-cloud">連携強化：AIカタログとAIクラウドの統合</h2>
+		<a href="https://blog.cloudflare.com/#stronger-together-the-ai-catalog-meets-the-ai-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>再びWorkers Platformのミッションについて：私たちの目標は一貫して、開発者がインフラストラクチャに煩わされることなく、フルスタックアプリケーションを構築できるようにすることです。そして、それは変わっていませんが、AIによってアプリケーションの要件が変わりました。</p>
+	<p>開発者が構築しているアプリケーションの種類は変化しています。3年前には、エージェントを構築したり、AI生成による起動動画を作成する開発者はいませんでした。今日はいます。その結果、お客様がクラウドや<b>AIクラウド</b>に必要なもの、期待するものが変わりました。</p>
+	<p>開発者のニーズに応えるため、Cloudflareはユーザーに近いエッジで推論を実行するように設計されたAIクラウドの基礎となる柱を構築してきました。これは単なる製品ではなく、スタック全体のこと</p>
+	<ul>
+		<li>
+			<p><b>Workers AI：</b>Cloudflareのグローバルネットワーク上でサーバーレスGPU推論。</p>
+		</li>
+		<li>
+			<p><b>AI Gateway：</b>AI APIのキャッシング、レート制限、監視を行うためのコントロールプレーン。</p>
+		</li>
+		<li>
+			<p><b>データスタック：</b>Vectorize（当社のベクターデータベース）とR2（モデルおよびデータストレージ用）を含む。</p>
+		</li>
+		<li>
+			<p><b>オーケストレーション：</b> AI Search (旧Autorag)、エージェント、Workflowsなどのツールを使用して、複雑な複数ステップのアプリケーションを構築。</p>
+		</li>
+		<li>
+			<p><b>Foundation：</b> すべてが、Workers、Durable Objects、およびその他のスタックでなる当社のコア開発者プラットフォーム上に構築。</p>
+		</li>
+	</ul>
+	<p>すべての開発者がアプリケーションをスケールアップできるよう支援してきたように、Replicateも同様の使命を担っています。AIモデルのデプロイを、コードのデプロイと同じくらい簡単にすることを目指しています。ここで、すべてがまとまったのです。Replicateは、業界最大規模で最も活気のある<b>モデルカタログと開発者コミュニティ</b>を提供しています。Cloudflareは、非常に高性能な<b>グローバルネットワークとサーバーレス推論プラットフォーム</b>を提供しています。手を組んで、高速、高信頼性かつ手頃な価格の推論プラットフォーム上で実行可能な、最も包括的モデル群と最高の体験という両方の利点を提供できるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="our-shared-vision">共通ビジョン</h2>
+		<a href="https://blog.cloudflare.com/#our-shared-vision" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="for-the-community-the-hub-for-ai-exploration">コミュニティに対して：AI研究ハブ</h3>
+		<a href="https://blog.cloudflare.com/#for-the-community-the-hub-for-ai-exploration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モデルの共有、ファインチューニングの公開、スターの収集、およびプレイグラウンドでの実験は、Replicateコミュニティの中核となるものです。AIの発見と実験のための最高の場として、このプラットフォームへの投資と成長を継続し、<b>Cloudflareのグローバルネットワーク</b>によってさらに強化され、すべての人々にとってより高速で応答性の高い体験を実現します。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-inference-one-platform-all-models">推論の未来：すべてのモデルを単一のプラットフォームで</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-inference-one-platform-all-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちのビジョンは、両方のプラットフォームから最高のものを結集することです。Replicateのカタログ全体（50,000以上のモデルとファインチューニングを含む）をWorkers AIで利用できるようにします。これにより、Replicateの柔軟な環境でモデルを実行するか、Cloudflareのサーバーレスプラットフォームで実行するかという、究極の選択肢が提供されます。</p>
+	<p>しかし、カタログを拡大しているだけではありません。Replicateの深い専門知識を活かした、Workers AIへの微調整機能の導入を発表できることを大変嬉しく思います。また、Workers AIはこれまで以上に柔軟になります。まもなく、<b>お客様独自のカスタムモデル</b>を当社のネットワークに導入できるようになります。Replicateの専門知識を<b>Cog</b>で活用することにより、このプロセスをシームレスかつ再現性が高く、簡単なものにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-ai-cloud-more-than-just-inference">AIクラウド：推論を超えて</h3>
+		<a href="https://blog.cloudflare.com/#the-ai-cloud-more-than-just-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モデルの実行は、パズルの一部分にすぎません。AIをアプリケーション全体に接続すると、真の魔法が生まれます。Replicateの膨大なカタログがCloudflareの開発者プラットフォーム全体と深く統合された場合に、何が構築できるか想像してみてください。モデルを実行して、結果を<b> R2</b> や<b> Vectorize</b> に直接保存、<b> Worker</b> や<b>Queue</b>から推論をトリガー、 <b>Durable Objects</b> を使用してAIエージェントの状態を管理、<b>WebRTC</b>とWebSocketsでリアルタイムの生成UI構築が実現するのです。</p>
+	<p>これらすべてを管理するために、統合推論プラットフォームを<b>AI Gateway</b>と深く統合し、Cloudflare、Replicate、その他のプロバイダーで実行されているかどうかにかかわらず、<i>すべて</i>のモデルに関する観測可能性、プロンプト管理、A/Bテスト、コスト分析を一元的に管理できるようにします。</p>
+	<div class="flex anchor relative">
+		<h2 id="welcome-to-the-team">チームへようこそ！</h2>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この度、ReplicateチームをCloudflareにお迎えできることを大変嬉しく思います。開発者コミュニティへの情熱とAIエコシステムに関する専門知識において卓越した存在となっています。AIの未来を共に構築できることを楽しみにしております。</p>
+</div>

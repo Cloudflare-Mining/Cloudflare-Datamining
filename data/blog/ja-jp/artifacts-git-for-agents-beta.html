@@ -1,0 +1,294 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta">English</a>、<a href="https://blog.cloudflare.com/zh-tw/artifacts-git-for-agents-beta">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/artifacts-git-for-agents-beta">Français</a>、<a href="https://blog.cloudflare.com/de-de/artifacts-git-for-agents-beta">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/artifacts-git-for-agents-beta">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/artifacts-git-for-agents-beta">한국어</a>、<a href="https://blog.cloudflare.com/es-la/artifacts-git-for-agents-beta">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/artifacts-git-for-agents-beta">Español</a>、<a href="https://blog.cloudflare.com/zh-ha-ns-cn/artifacts-git-for-agents-beta"></a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZ163MhASDRQW86DQm86r/2e89a01820f1b0a87af22d18208f470c/BLOG-3269_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>エージェントは、ソース管理、ファイルシステム、状態の永続化に関する考え方を一変させてきました。開発者やエージェントはかつてないほどのコードを生成しています。今後5年間に書かれるコードは、プログラミングの歴史全体で書かれた量を超えると予想されており、この需要に応えるために必要なシステムの規模は桁違いに変化するでしょう。ここで特に苦戦しているのが、ソース管理プラットフォームです。これらは人間のニーズを満たすために構築されたものです。そのため、眠ることなく一度で複数の問題に取り組み、疲れ知らずのエージェントがもたらす10倍ものボリューム変化に対応するようには構築されていないのです。</p>
+	<p>私たちは新しいプリミティブの必要性を考えています。すなわち、何よりもエージェントのために構築され、現在構築されているタイプのアプリケーションに対応できる、分散型のバージョン管理ファイルシステムです。</p>
+	<p>私たちはこれをアーティファクトと呼んでいます。Gitを使用するバージョン管理ファイルシステムです。エージェント、サンドボックス、Workers、その他のあらゆるコンピューティングパラダイムと並行して、プログラムでリポジトリを作成し、通常のGitクライアントから接続することができます。</p>
+	<p>すべてのエージェントセッションにリポジトリを付与したいですか？アーティファクトなら可能です。すべてのサンドボックスインスタンスに？それもアーティファクトです。既知の正当な開始点から10,000のフォークを作成したいですか？ご想像の通り、それもアーティファクトです。アーティファクトは、REST APIとネイティブのWorkers APIを公開しており、Gitクライアントが適切ではない環境（つまり、あらゆるサーバーレス機能内など）向けに、リポジトリの作成、認証情報の生成、コミットを可能にします。</p>
+	<p>アーティファクトは有料Workersプランをご利用の開発者向けにプライベートベータ版として利用可能であり、5月初旬までにパブリックベータ版の公開を目指しています。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Create a repo
+const repo = await env.AGENT_REPOS.create(name)
+// Pass back the token &amp; remote to your agent
+return { repo.remote, repo.token }</code></pre>
+
+	<pre class="language-Shell"><code class="language-Shell"># Clone it and use it like any regular git remote
+$ git clone https://x:${TOKEN}@123def456abc.artifacts.cloudflare.net/git/repo-13194.git
+</code></pre>
+	<p>以上です。即座で作成されたすぐに使えるリポジトリ。それはどのGitクライアントでも操作可能です。</p>
+	<p>また、既存のGitリポジトリからアーティファクトリポジトリをブートストラップし、エージェントが独立して作業でき、独立した変更をプッシュできるようにしたい場合でも、.import()を使用すれば可能です。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">interface Env {
+  ARTIFACTS: Artifacts
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    // Import from GitHub
+    const { remote, token } = await env.ARTIFACTS.import({
+      source: {
+        url: "https://github.com/cloudflare/workers-sdk",
+        branch: "main",
+      },
+      target: {
+        name: "workers-sdk",
+      },
+    })
+
+    // Get a handle to the imported repo
+    const repo = await env.ARTIFACTS.get("workers-sdk")
+
+    // Fork to an isolated, read-only copy
+    const fork = await repo.fork("workers-sdk-review", {
+      readOnly: true,
+    })
+
+    return Response.json({ remote: fork.remote, token: fork.token })
+  },
+}</code></pre>
+	<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご確認</u></a>の上、利用を開始してください。アーティファクトの使用方法、構築方法、内部の仕組みについて理解したい場合は、以下を読み進めてください。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-git-whats-a-versioned-file-system">なぜGit？バージョン管理されたファイルシステムとは？</h2>
+		<a href="https://blog.cloudflare.com/#why-git-whats-a-versioned-file-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントはGitを知っています。ほとんどのモデルの学習データに入っています。ハッピーパス<i>と</i>エッジケースはエージェントによく知られていますが、コード最適化モデル（および／またはハーネス）は特にGitの使用に適しています。</p>
+	<p>さらに、Gitのデータモデルはソース制御に適しているだけでなく、状態やタイムトラベルを追跡し、大量の小規模データを保持する必要がある<i>あらゆるもの</i>に適しています。コードや設定、セッションプロンプト、エージェント履歴。これらはすべて、小さなチャンク（「コミット」）で保存し、元に戻したり、履歴としてロールバックしたりできるもの（「オブジェクト」）です。</p>
+	<p>まったく新しいカスタムプロトコルを発明することも可能だったのですが…それではブートストラップの問題が生じます。AIモデルはそのことを知らないため、スキルやCLIを配布するか、ユーザーがドキュメントMCPに接続されることを期待するしかありません…これらはすべて摩擦を生じさせます。
+
+		認証済みのセキュアなHTTPS GitリモートURLをエージェントに提供し、Gitリポジトリであるかのように動作させることができたらどうでしょうか？かなりうまく機能することが分かりました。また、Cloudflare Worker、Lambda関数、Node.jsアプリなど、Gitを使用しないクライアント向けに、REST APIと（近日中に）言語固有のSDKを公開しました。これらのクライアントは、<a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>同型-Git</u></a>を使用することもできますが、多くの場合、よりシンプルなTypeScript APIの方が、必要なAPIサーフェスを減らすことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="not-just-for-source-control">ソースコントロールだけにとどまらない</h3>
+		<a href="https://blog.cloudflare.com/#not-just-for-source-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>人工的なGit APIは、ソースコントロールのためだけのものだと思われるかもしれません。しかし、Git APIとデータモデルは、<i>あらゆる</i>データのフォークやタイムトラベル、状態を区別できる方法で状態を保持する強力な方法であることが判明しました.</p>
+	<p>Cloudflare内では、内部エージェントのためにアーティファクトを活用しています。ファイルシステムの現圢の状態<i>と</i>セッション履歴をセッションごとのアーティファクトリポジトリへ自動的に永続化します。これにより以下が可能になります。</p>
+	<ul>
+		<li>
+			<p>ブロックストレージのプロビジョニング（および維持）を必要とせず、サンドボックスの状態を永続化します。</p>
+		</li>
+		<li>
+			<p>他のユーザーとセッションを共有し、「実際の」リポジトリ（ソース管理）へのコミットの有無に関係なく、セッション（プロンプト）状態<i>と</i>ファイル状態の両方を過去にさかのぼることができるようにします。</p>
+		</li>
+		<li>
+			<p>何よりすばらしいのは、任意のポイントからセッションを<i>フォーク</i>し、チームが共同Workerとセッションを共有し、その続きを同僚に引き継いでもらうことができます。何かをデバッグして、別の視点からの意見も必要ですか？URLを送信してフォークしてください。APIについて議論したいですか？同僚にフォークしてもらい、中断した箇所から作業を再開してもらいましょう。</p>
+		</li>
+	</ul>
+	<p>私たちはさらに、Gitプロトコルはまったく要件でなくとも、セマンティックス（差し戻し、クローニング、差分）が要件で<i>ある</i>場合にアーティファクトを活用したいというチームとも話をしました。製品の一部として顧客ごとの設定を保存し、ロールバック機能を必要としていますか？アーティファクトはこれを表現できる好例です。</p>
+	<p>Gitに重点を置いたユースケースと同様、Git以外の用途でアーティファクトを検討しているチームが他にもあることを、とても楽しみにしています。</p>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">機器の中身</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アーティファクトはDurable Objects上に構築されています。ステートフルで分離されたコンピューティングのインスタンスを数百万（または数千万）以上作成できる能力は、現在のDurable Objectsの動作に固有のものであり、それはまさに、1つのネームスペースにつき数百万のGitリポジトリをサポートするために必要でした。</p>
+	<p>メジャーリーグベースボール（ライブゲームのファンアウト用）や、Confluence Whiteboards、当社の<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>は、内部でDurable Objectsを大規模に使用しています。それにより、当社はこれを以前から本番環境で使用しているプリミティブに基づいて構築しています。</p>
+	<p>しかし必要だったのは、Cloudflare Workers上で実行できるGitの実装でした。小規模かつ可能な限り完全で、拡張可能（<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>メモ</u></a>、<a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>）、そして効率的である必要がありました。そこで、<a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>で構築し、Wasmにコンパイルしました。</p>
+	<p>なぜZigを使用？3つの理由：</p>
+	<ol>
+		<li>
+			<p>&nbsp;Gitプロトコルエンジン全体は純粋なZigで書かれており（libcなし）、約100KBのWASMバイナリにコンパイルされています（最適化の余地あり！）。SHA-1、zlib inflate/deflate、deltaエンコーディング/デコーディング、パックパーシング、完全なgitスマートHTTPプロトコルを、すべてゼロから実装しており、標準ライブラリ以外の外部依存関係は一切ありません。</p>
+		</li>
+		<li>
+			<p>Zigを使用すると、メモリ割り当てを手動で制御できます。このことは、Durable Objectsのような制約ある環境において重要です。Zigビルドシステムにより、WASMランタイム（本番設定）とネイティブビルド（libgit2を用いた正確性検証テスト）間でコードを簡単に共有することができます。</p>
+		</li>
+		<li>
+			<p>WASMモジュールは、軽量なコールバックインターフェイスを介してJSホストと通信します。具体的には、ストレージ操作用のホストインポート関数が11個（host_get_object、host_put_objectなど）、ストリーミング出力用の関数が1個（host_emit_bytes）です。WASM側は、分離して完全にテスト可能です。</p>
+		</li>
+	</ol>
+	<p>内部で、アーティファクトはR2（スナップショット用）とKV（認証トークンの追跡用）も使用します：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35SxJbQfntIscpotc0GBt8/48ae11213d7483c9b488321baacf78e7/BLOG-3269_2.png" alt="BLOG-3269 2" class="kg-image" width="1800" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup><code>Artifactsの仕組み（Workers、Durable Objects、WebAssembly）</code></sup></i></p>
+	<p>Workerはフロントエンドとして機能し、認証&amp;認可、主要なメトリクス（エラー、遅延）を処理し、各アーティファクトリポジトリ（Durable Object）をその場で検索します。</p>
+	<p>特に：</p>
+	<ul>
+		<li>
+			<p>ファイルは、基盤となるDurable ObjectのSQLiteデータベースに保存されます。</p>
+			<ul>
+				<li>
+					<p>Durable Objectストレージの最大行サイズは2MB。そのため、大規模なGitオブジェクトはチャンクに分割され、複数行にわたって保存されます。</p>
+				</li>
+				<li>
+					<p>同期KV API（state.storage.kv）を使用。内部ではSQLiteによって支えられています。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>DOには最大128MBのメモリ制限があります。これにより、（高速かつ軽量な）最新アプリケーションを生成することが可能ですが、その限界内で動作しなければなりません。</p>
+			<ul>
+				<li>
+					<p>フェッチパスとプッシュパスの両方でストリーミングを多用し、未加工のWASM出力チャンクから構築された `ReadableStream&lt;Uint8Array&gt;` を直接返しています。</p>
+				</li>
+				<li>
+					<p>独自のGitデルタを計算することを避け、その代わりに未加工のデルタとベースハッシュは解決されたオブジェクトと並行して保持されます。フェッチにおいて、リクエストしたクライアントがすでにベースオブジェクトを持っている場合、Zigは完全なオブジェクトではなくデルタを出力するため、帯域幅<i>と</i>メモリを節約できます。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>gitプロトコルのv1とv2の両方をサポートします。</p>
+			<ul>
+				<li>
+					<p>ls-refs、シャロ―クローン（deepen、deep-since、deep-relative）、have/wantネゴシエーションを使用したインクリメント的フェッチなどの機能をサポートしています。</p>
+				</li>
+				<li>
+					<p>当社には、gitクライアントに対する準拠テストと、プロトコルサポートを検証する目的で設計されたlibgit2サーバーに対する検証テストを含む広範なテストスイートがあります。</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>さらに、<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>をネイティブでサポートしています。アーティファクトはエージェントファーストであるように設計されており、メモにより、エージェントはGitオブジェクトにメモ（メタデータ）を追加することができます。これには、オブジェクト自体を変更することなく、リポジトリから読み取り/書き込みができるプロンプトやエージェント属性、その他のメタデータが含まれます。</p>
+	<div class="flex anchor relative">
+		<h2 id="big-repos-big-problems-meet-artifactfs">大きなレポジトリ、大きな問題？それではArtifactFSをぜひ。</h2>
+		<a href="https://blog.cloudflare.com/#big-repos-big-problems-meet-artifactfs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどのリポジトリはそれほど大きくなく、Gitはストレージ面で<a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>非常に効率的であるよう設計されて</u></a>います。すなわち、ほとんどのリポジトリはクローンにせいぜい数秒しかかからず、ネットワークのセットアップ時間、認証、<a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>チェックサム処理</u></a>に占められています。これは、ほとんどのエージェントやサンドボックスのシナリオで実用的です。サンドボックスが開始して動作する際、リポジトリをクローンするだけで済みます。</p>
+	<p>しかし、マルチGBのリポジトリや、数百万のオブジェクトを含むリポジトリはどうでしょう？エージェントの数分間の動作を妨げず、コンピューティングを消費することなく、そのリポジトリを迅速にクローンするにはどうすればよいでしょうか？</p>
+	<p>人気あるWebフレームワーク（2.4GBで、長い歴史を持ちます！）は、クローン化に2分近くかかります。シャロ―クローンはより高速ですが、1桁秒にまで短縮できるほどではなく、履歴を省略したくない場合もあります（エージェントにとってそれは有用だからです）。</p>
+	<p>エージェントが動作するように、大きなレポジトリを10～15秒にまで短縮することは可能でしょうか？ええ、可能です。いくつか工夫すればですが。</p>
+	<p>アーティファクト登場の一環として、<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>ArtifactFSはオープンソース化します</u></a>。これは大きなGitレポジトリをできるだけ即時にスキャンするように設計されており、最初のクローンでブロックするのではなく、その場でファイルコンテンツをハイライトするよう設計されています。エージェントやサンドボックス、コンテナ、その他起動時間が重視されるユースケースに最適です。大規模なリポジトリごとにサンドボックスの起動時間を90～100秒短縮でき、月に10,000件のサンドボックスジョブを実行する場合、2,778時間のサンドボックス時間を節約することができます。</p>
+	<p>ArtifactFSは、「非同期のGitクローン」と考えることができます。</p>
+	<ul>
+		<li>
+			<p>ArtifactFSは、gitリポジトリのコンテンツを含まないクローンを作成します。ファイルツリーと参照は取得しますが、ファイルコンテンツは取得しません。サンドボックス起動時に実行でき、それによりエージェントハーネスが作業を開始できるようになります。</p>
+		</li>
+		<li>
+			<p>バックグラウンドでは軽量なデーモンを介して、ファイルコンテンツのハイドレーション（ダウンロード）を同時に開始します。</p>
+		</li>
+		<li>
+			<p>エージェントが通常最初に操作したいファイル、つまりパッケージマニフェスト（<code>package.json、go.mod</code>）、設定ファイル、コードを優先し、可能な限りバイナリブロブ（画像、実行可能ファイル、その他の非テキストファイル）の優先順位を下げます。それにより、ファイル自体が読み込まれるにつれてエージェントがファイルツリーをスキャンできるようにします。</p>
+		</li>
+		<li>
+			<p>エージェントがファイルを読み取ろうとした際、それが完全にハイドレートされていない場合、ハイドレート完了まで読み取りはブロックされます。</p>
+		</li>
+	</ul>
+	<p>ファイルシステムは、ファイルをリモートリポジトリに「同期」しようとはしません。何千、何百万ものオブジェクトがある場合、通常非常に時間がかかります。ここで話しているのはGitについてですので、同期の必要はありません。エージェントは、他のリポジトリと同様、コミットしてプッシュするだけです。新しいAPIを学ぶ必要はありません。</p>
+	<p>重要なのは、ArtifactFSが当社のアーティファクトだけでなく、あらゆるGitリモートと連携できることです。GitHub、GitLab、セルフホスト型Gitインフラストラクチャから大規模なリポジトリをクローンする場合でも、ArtifactFSを使用できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-coming">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-coming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日のリリースはベータ版のみです。しかし、すでに多くの機能に取り組んでおり、今後数週間のうちに提供を開始する予定です。</p>
+	<ul>
+		<li>
+			<p>公開予定の<a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>利用可能なメトリクス</u></a>を拡張中です。現在、ネームスペースごとの主要な操作数やリポジトリ、リポジトリごとの保存バイト数のメトリクスを提供しています。これにより、数百万ものアーティファクト管理が容易になります。</p>
+		</li>
+		<li>
+			<p>リポジトリレベルのイベント向け<a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>イベントサブスクリプション</u></a>をサポート。これにより、プッシュ、プル、クローン、フォークのイベントをネームスペース内の任意のリポジトリへ出力できます。さらに、イベントの消費、Webhookの書き込み、それらのイベントを使ったエンドユーザーへの通知、製品内のライフサイクルイベントの駆動、ポストプッシュジョブ（CI/CDなど）の実行も可能です。</p>
+		</li>
+		<li>
+			<p>アーティファクトAPIと対話するためのネイティブなTypeScript、Go、PythonクライアントSDK</p>
+		</li>
+		<li>
+			<p>リポジトリレベルの検索APIやネームスペース全体の検索API。たとえば、「<code>package.json</code>ファイルを持つすべてのリポジトリを探す」など。&nbsp;</p>
+		</li>
+	</ul>
+	<p>また、<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>向けAPIも計画しており、エージェント主導のワークフローでCI/CDジョブも実行できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-will-it-cost-me">そのコストは？</h2>
+		<a href="https://blog.cloudflare.com/#what-will-it-cost-me" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アーティファクト導入はまだ初期段階ですが、エージェント規模で機能する価格設定を検討中です。リポジトリが数百万あっても、コスト効率がよくあるべきで、未使用（あるいはほとんど使用されない）のリポジトリが足かせになるべきではありません。さらに価格設定は、エージェントの持つ大規模なシングルテナントの性質と一致している必要があるると考えています。</p>
+	<p>また、リポジトリが使用されるかどうか、ホットかコールドか、そして/またはエージェントがそれを起動しようとしているかどうかを考える必要はありません。消費されたストレージと操作（例：クローン、フォーク、プッシュ＆プルなど）に対して課金されます。</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p></p>
+				</th>
+				<th>
+					<p><b>$/単位</b></p>
+				</th>
+				<th>
+					<p><b>含む</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>操作</b></p>
+				</td>
+				<td>
+					<p>1,000回の操作につき$0.15</p>
+				</td>
+				<td>
+					<p>最初の1万件込み（1か月あたり）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ストレージ</b></p>
+				</td>
+				<td>
+					<p>$0.50/GB-月</p>
+				</td>
+				<td>
+					<p>最初の1GB込み。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>規模が大きく活発なリポジトリは、規模が小さく利用頻度の低いリポジトリよりもコストがかかるでしょう。それは1,000個、10万個、または1000万個であっても同じです。</p>
+	<p>ベータ版の進捗に合わせて、あーていファクトをWorkers Freeプラン（公正な制限あり）にも提供する予定です。この価格設定が変更された場合、料金の請求が行われる前に、ベータ期間中、随時情報を更新しお知らせします。</p>
+	<div class="flex anchor relative">
+		<h2 id="where-do-i-start">何から始めるべき？&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#where-do-i-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xLMMKCN1HNGWbkSyq0tDZ/2a8d49383957804f3ce204783e11ae80/BLOG-3269_3.png" alt="BLOG-3269 3" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p>アーティファクトは現在プライベートベータ版として公開されています。5月初旬（念のため申し上げますが2026年です！）には、パブリックベータ版の準備が完了する予定です。お客様には今後数週間かけて徐々にご利用いただけるようにする予定です。直接、<a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>プライベートベータ版への関心をご登録いただくことも可能です</u></a>。</p>
+	<p>また、アーティファクトについて詳しくは、以下をご覧ください。</p>
+	<ul>
+		<li>
+			<p>ドキュメントの<a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>利用開始ガイド</u></a>を読む。</p>
+		</li>
+		<li>
+			<p>Cloudflareダッシュボード（構築 &gt; ストレージとデータベース &gt; アーティファクト）に移動する</p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API例</u></a>に目を通す</p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>アーティファクトの内部機能</u></a>について詳しく知る</p>
+		</li>
+	</ul>
+	<p><a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>Changelog</u></a>をフォローして、ベータ版の進捗を追跡してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

@@ -1,0 +1,53 @@
+<div class="mb2 gray5">3 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/project-fair-shot">English</a>, <a href="https://blog.cloudflare.com/zh-tw/project-fair-shot">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/project-fair-shot">Français</a>, <a href="https://blog.cloudflare.com/de-de/project-fair-shot">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/project-fair-shot">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/project-fair-shot">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/project-fair-shot">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/project-fair-shot">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/project-fair-shot">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HPQ9SIZyrrI99Z2wTNsBY/f0b9e3ee15c485ea16f7a063b5d993f4/project-fair-shot.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Gobiernos y organizaciones médicas de todo el mundo están luchando contra uno de los retos logísticos más difíciles de la historia: distribuir de forma equitativa y eficiente la vacuna contra la COVID-19. Los retos que tenemos por delante incluyen el proceso de comunicar quién tiene derecho a recibir la vacuna, registrar las citas de los candidatos, garantizar que estos se presentan a sus citas, transportar la vacuna en las condiciones de manipulación exigidas, garantizar que hay personal capacitado para administrar la vacuna y, por último, repetir todo el proceso, ya que la mayoría de las vacunas requieren dos dosis.</p>
+	<p>Cloudflare no puede ayudar con el grueso del problema, pero descubrimos un aspecto clave que podíamos facilitar: garantizar que los sitios web de registro no se bloqueen por sobrecarga cuando se empiecen a programar las citas para las vacunas. El proyecto Fair Shot ofrece el nuevo servicio Sala de espera de Cloudflare de forma gratuito a gobiernos, municipios, hospitales, farmacias o cualquier otra organización responsable de la distribución de las vacunas contra la COVID-19. Está disponible para las organizaciones de todo el mundo que cumplan las condiciones necesarias y seguirá siendo gratuito al menos hasta el 1 de julio de 2021 si la demanda de citas para la vacuna sigue siendo superior a la oferta.</p>
+	<div class="flex anchor relative">
+		<h3 id="crashing-registration-websites">Caída de los sitios web de registro</h3>
+		<a href="https://blog.cloudflare.com/#crashing-registration-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El problema de los sitios web de registro de programación de vacunas que se bloquean cuando están sometidos a sobrecarga no es teórico, es un problema recurrente cuando las organizaciones intentan programar la administración de la vacuna. Cloudflare fue consciente de esta problemática el fin de semana pasado. La mujer de uno de los miembros de nuestro equipo directivo estaba intentando registrar a sus padres para que les administraran la vacuna. Cumplían todos los requisitos y el municipio donde vivían tenía previsto abrir las citas a mediodía.</p>
+	<p>Cuando llegó la hora de abrir el sitio, se bloqueó inmediatamente. Ni los hackers ni la actividad maliciosa tuvieron nada que ver. Fue simplemente que muchas personas estaban tratando de acceder al sitio a la vez. "¿Por qué Cloudflare no desarrolla un servicio que organice la cola de espera de forma ordenada para que estos sitios web no se saturen?", le preguntó a su marido.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-virtual-waiting-room">Una sala de espera virtual</h3>
+		<a href="https://blog.cloudflare.com/#a-virtual-waiting-room" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Resulta que ya estábamos trabajando en esa función, pero no para este caso de uso. El problema de distribuir equitativamente algo cuando la demanda es superior a la oferta se plantea con varios de nuestros clientes. Ya sea la venta de entradas para un concierto muy popular, la compra del último modelo de zapatillas deportivas o el acceso a las excursiones de los parques nacionales más populares, el reto de garantizar que todas las personas aspiren a las mismas oportunidades no es fácil.</p>
+	<p>La solución es abrir el registro para adquirir el artículo limitado antes de la venta real. Cualquiera que visite el sitio con antelación puede ponerse en espera. Justo antes de la apertura de la venta, la cola de espera puede reordenarse de forma aleatoria (y justa). A continuación, se puede dejar entrar a la gente por orden según la nueva posición asignada aleatoriamente en cada caso, permitiendo el acceso solo del número de personas que el servidor del sitio puede manejar.</p>
+	<p>En Cloudflare, estamos desarrollando para nuestros clientes esta función llamada Sala de espera. (Puedes obtener <a href="https://blog.cloudflare.com/cloudflare-waiting-room">más información sobre los detalles técnicos de la función Sala de espera en esta publicación de Brian Batraski</a> que ayudó a su desarrollo). Es una tecnología avanzada porque puede ser utilizada en cualquier sitio de registro web existente sin necesidad de cambios de código o instalación de hardware. Basta con implementar Cloudflare mediante un simple cambio de DNS y luego configurar la función Sala de espera para garantizar que cualquier sitio de comercio electrónico, por escasos que sean sus recursos, pueda satisfacer la demanda.</p>
+	<div class="flex anchor relative">
+		<h3 id="recognizing-a-critical-need-moving-up-the-launch">Detectamos una necesidad crítica; adelantamos el lanzamiento</h3>
+		<a href="https://blog.cloudflare.com/#recognizing-a-critical-need-moving-up-the-launch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Teníamos previsto el lanzamiento en febrero. Sin embargo, cuando vimos el bloqueo de los sitios de registro de vacunación y la frustración de las personas que podían recibir la vacuna, nos dimos cuenta de que teníamos que adelantar el lanzamiento y ofrecer el servicio de forma gratuito a las organizaciones que luchan por distribuir la vacuna de forma equitativa. Así nació el proyecto Fair Shot.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uLLKSoVvU8DUWVz01jPSS/86836f828b64ad2b022e2e189d045887/Project-fair-shot-icon.png" alt="" class="kg-image" width="446" height="218" loading="lazy">
+
+	</figure>
+	<p>Las organismos gubernamentales, municipales, hospitales, farmacias, clínicas y cualquier otra organización encargada de la programación de citas para distribuir la vacuna pueden solicitar el proyecto Fair Shot a través del siguiente enlace: <a href="https://projectfairshot.org" target="_blank" rel="noopener noreferrer">projectfairshot.org</a></p>
+	<div class="flex anchor relative">
+		<h3 id="giving-front-line-organizations-the-technical-resources-they-need">Dotamos a las organizaciones de primera línea de los recursos técnicos necesarios</h3>
+		<a href="https://blog.cloudflare.com/#giving-front-line-organizations-the-technical-resources-they-need" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El servicio será gratuito para las organizaciones cualificadas al menos hasta el 1 de julio de 2021 si la demanda de citas para la vacuna sigue superando a la oferta. No somos expertos en el almacenamiento en frío para fines médicos y me da escalofríos ver las agujas, así que no podemos aportar nada a muchos de los retos logísticos que plantea la distribución de la vacuna. Sin embargo, al descubrir que podíamos apoyar este aspecto, nuestro equipo sabía que teníamos que hacer todo lo posible para ayudar.</p>
+	<p>Los superhéroes de esta crisis son los profesionales sanitarios que están atendiendo a los enfermos y los científicos que han inventado tan rápidamente estas vacunas milagrosas. Estamos orgullosos del papel que ha desempeñado Cloudflare para garantizar el buen funcionamiento de Internet cuando el mundo más lo necesitaba. El proyecto Fair Shot es una forma más de cumplir con nuestra misión de mejorar Internet.</p>
+</div>

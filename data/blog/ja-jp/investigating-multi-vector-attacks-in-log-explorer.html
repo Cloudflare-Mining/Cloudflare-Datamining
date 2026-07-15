@@ -1,0 +1,460 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/investigating-multi-vector-attacks-in-log-explorer">English</a>および<a href="https://blog.cloudflare.com/ko-kr/investigating-multi-vector-attacks-in-log-explorer">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n4ravvON3si9kIH6GXZsE/acaa36cacdd361c362e44d5597858aea/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>サイバーセキュリティの世界では、単一のデータポイントがすべてになることはほとんどありません。最新の攻撃者は、玄関を玄関を開けるだけではありません。 APIを探り、ネットワークを「ノイズ」であふれさせてチームの注意をそらし、盗んだ資格情報を使ってアプリケーションやサーバーをすり抜けようとします。</p>
+	<p>こうしたマルチベクトル型攻撃を阻止するには、全体像が必要です。Cloudflare Log Explorerを使用してセキュリティフォレンジックを行うと、14の新しいデータセットを統合し、CloudflareのアプリケーションサービスとCloudflare One製品ポートフォリオの全体をカバーする360度の可視性が得られます。セキュリティアナリストは、アプリケーション層のHTTPリクエスト、ネットワーク層のDDoSおよびファイアウォールログ、Zero Trustアクセスイベントのテレメトリを相関させることで、平均検出時間（MTTD）を大幅に短縮し、高度な多層攻撃を効果的に明らかにすることができます。</p>
+	<p>以下では、Log Explorerがセキュリティチームに、迅速で詳細なフォレンジックのための究極の環境を提供する方法について詳しく解説します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-flight-recorder-for-your-entire-stack">スタック全体を守るフライトクロック</h2>
+		<a href="https://blog.cloudflare.com/#the-flight-recorder-for-your-entire-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現代のデジタル環境では、複数の攻撃ベクトルを使用する敵から防御するために、深く関連付けられたテレメトリが必要です。未加工ログは、アプリケーションの「フライト従量課金」のような役割を果たし、すべてのインタラクション、攻撃の試み、パフォーマンスのボトルネックを捕捉します。また、Cloudflareはユーザーとサーバーの間のエッジに位置しているため、こうしたイベントはすべて、リクエストがインフラストラクチャに到達する前に記録されます。</p>
+	<p>Cloudflare Log Explorerは、これらのログを統一されたインターフェースに集約し、迅速に調査できるようにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="log-types-supported">サポートされているログタイプ</h3>
+		<a href="https://blog.cloudflare.com/#log-types-supported" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="zone-scoped-logs">ゾーンスコープ付きログ</h4>
+		<a href="https://blog.cloudflare.com/#zone-scoped-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>焦点：Webサイトトラフィック、セキュリティイベント、エッジパフォーマンス</i></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>HTTPリスクエスト数</b></p>
+				</td>
+				<td>
+					<p>最も包括的なデータセットとして、すべてのアプリケーション層トラフィックの「プライマリレコード」として機能し、セッションアクティビティ、悪用の試行、ボットパターンの再構築を可能にします。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ファイアウォールイベント</b></p>
+				</td>
+				<td>
+					<p>ブロックされた、またはチャレンジが必要な脅威の重要な証拠を提供するため、アナリストは攻撃を傍受した特定のWAFルール、IPレピュテーション、またはカスタムフィルターを特定することができます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DNSログ</b></p>
+				</td>
+				<td>
+					<p>権威エッジで解決されたすべてのクエリを追跡することで、キャッシュポイズニングの試み、ドメインハイジャック、インフラストラクチャレベルの偵察を特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>NEL（ネットワークエラーログ）レポート</b></p>
+				</td>
+				<td>
+					<p>クライアント側のブラウザエラーを追跡することで、協調的なアプリケーション層 DDoS攻撃と正当なネットワーク接続の問題を区別します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Spectrumイベント</b></p>
+				</td>
+				<td>
+					<p>非Webアプリケーションの場合、これらのログはL4トラフィック（TCP/UDP）を可視化し、SSH、RDP、またはカスタムゲーミングトラフィックなどのプロトコルに対する異常や総当たりパスワード攻撃を特定するのに役立ちます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Page Shield</b></p>
+				</td>
+				<td>
+					<p>JavaScript、アウトバウンド接続など、サイトのクライアントサイド環境への不正変更を追跡し、監査します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Zaraz イベント</b></p>
+				</td>
+				<td>
+					<p>サードパーティのツールや追跡者がユーザーデータとどのようにやり取りしているかを調査します。これは、プライバシーコンプライアンスの監査や無許可のスクリプトの動作の検出に不可欠です。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h4 id="account-scoped-logs">アカウントスコープ指定ログ</h4>
+		<a href="https://blog.cloudflare.com/#account-scoped-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>焦点：内部セキュリティ、Zero Trust、管理変更、ネットワークアクティビティ</i></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>アクセスリクエスト</b></p>
+				</td>
+				<td>
+					<p>IDベースの認証イベントを追跡して、どのユーザーが特定の内部アプリケーションにアクセスしたか、そしてそれらの試みが承認されるかどうかを判断します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>監査ログ</b></p>
+				</td>
+				<td>
+					<p>Cloudflareダッシュボード内の設定変更の証跡を提供し、無許可の管理アクションや変更を特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>CASBの発見事項</b></p>
+				</td>
+				<td>
+					<p>SaaSアプリケーション（Google DriveやMicrosoft 365など）内のセキュリティ設定ミスやデータリスクを特定し、不正なデータ漏洩を防止します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Magic Transit / IPSecログ</b></p>
+				</td>
+				<td>
+					<p>ネットワークエンジニアが、トンネルの健全性の確認やBGPルーティング変更の表示など、ネットワークレベル（L3）の監視を行うのに役立ちます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ブラウザ分離ログ</b></p>
+				</td>
+				<td>
+					<p>信頼できないサイトでのデータ漏洩を防ぐため、分離されたブラウザセッションの<i>内部</i>でユーザーアクション（コピー＆ペースト、印刷、ファイルのアップロードなど）を追跡する</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>デバイスポスチャー結果</b></p>
+				</td>
+				<td>
+					<p>ネットワークに接続したデバイスのセキュリティの健全性とコンプライアンスステータスを詳細に確認し、侵害されたエンドポイントや非準拠のエンドポイントを特定するのに役立ちます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DEXアプリケーションテスト</b></p>
+				</td>
+				<td>
+					<p>ユーザーの視点からアプリケーションパフォーマンスを監視することで、セキュリティ関連の障害と通常的なパフォーマンス低下を区別することができます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DEXデバイス状態イベント</b></p>
+				</td>
+				<td>
+					<p>ユーザーデバイスの物理的な状態に関するテレメトリを提供し、ハードウェアまたはOSレベルの異常と潜在的なセキュリティインシデントを関連付けるのに役立ちます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>DNSファイアウォールログ</b></p>
+				</td>
+				<td>
+					<p>DNSファイアウォールを介してフィルタリングされたDNSクエリを追跡し、既知の悪意のあるドメインまたはコマンド＆コントロール（C2）サーバーとの通信を特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Email Securityアラート</b></p>
+				</td>
+				<td>
+					<p>ゲートウェイで検出された悪意あるメール活動やフィッシング試行をログに記録し、メールベースの侵入ベクトルの送信元を追跡します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Gateway DNS</b></p>
+				</td>
+				<td>
+					<p>ネットワーク上のユーザーが行ったすべてのDNSクエリを監視し、シャドーIT、マルウェアコールバック、ドメイン生成アルゴリズム（DGA）を特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ゲートウェイHTTP</b></p>
+				</td>
+				<td>
+					<p>暗号化されたWebトラフィックと暗号化されていないWebトラフィックを完全に可視化し、隠れた悪意のあるペイロードや悪意のあるファイルのダウンロード、SaaSの不正使用を検出します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ゲートウェイネットワーク</b></p>
+				</td>
+				<td>
+					<p>L3/L4ネットワークトラフィック（非HTTP）を追跡し、不正なポートの使用、プロトコルの異常、ネットワーク内のラテラルムーブメントを特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>IPSecログ</b></p>
+				</td>
+				<td>
+					<p>暗号化されたサイト間トンネルのステータスとトラフィックを監視し、安全なネットワーク接続の完全性と可用性を確保します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Magic IDS検出</b></p>
+				</td>
+				<td>
+					<p>侵入検知シグネチャとの一致を表面化し、調査者に既知のエクスプロイトパターンやネットワークを通過するマルウェアの動作を警告します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ネットワーク分析ログ</b></p>
+				</td>
+				<td>
+					<p>パケットレベルのデータをハイレベルで可視化し、帯域幅消費型DDoS攻撃や特定のインフラストラクチャを標的とした異常なトラフィックスパイクを特定します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>シンクホールHTTPログ</b></p>
+				</td>
+				<td>
+					<p>「シンクホール化」されたIPアドレスに向けられたトラフィックをキャプチャし、どの内部デバイスが既知のボットネットインフラストラクチャと通信しようとしているかを確認します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARP設定変更</b></p>
+				</td>
+				<td>
+					<p>エンドユーザーデバイスのWARPクライアント設定の変更を追跡し、セキュリティエージェントが改ざんされたり、無効化されていないことを確認します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARPのトグル変更</b></p>
+				</td>
+				<td>
+					<p>具体的には、ユーザーが安全な接続を有効または無効にしたときのログを記録し、デバイスが保護されていない期間を特定するのに役立ちます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Zero Trustネットワークセッションログ</b></p>
+				</td>
+				<td>
+					<p>認証されたユーザーセッションの期間とステータスを記録し、保護された境界内でのユーザーアクセスの全ライフサイクルをマッピングします。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="log-explorer-can-identify-malicious-activity-at-every-stage">Log Explorerは、各段階で悪意のあるアクティビティを特定できます</h2>
+		<a href="https://blog.cloudflare.com/#log-explorer-can-identify-malicious-activity-at-every-stage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>HTTPリクエスト</b>、<b>ファイアウォールイベント</b>、<b>DNSログ</b>でアプリケーション層を詳細に可視化し、トラフィックがどのように公開プロパティに到達しているかを正確に把握します。<b>アクセス要求</b>、<b>Gatewayログ</b>、および<b>監査ログ</b>で内部的な移動を追跡します。認証情報が侵害された場合、その行き先を確認できます。<b>Magic IDS</b>と<b>ネットワーク分析のログ</b>を使用して、帯域幅消費型攻撃やプライベートネットワーク内の「East-West」ラテラルムーブメントを特定します。</p>
+	<div class="flex anchor relative">
+		<h3 id="identify-the-reconnaissance">偵察を識別</h3>
+		<a href="https://blog.cloudflare.com/#identify-the-reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃者は、スキャナーやその他のツールを使用して、侵入口、隠れたディレクトリ、またはソフトウェアの脆弱性を探します。これを特定するには、Log Explorer を使用して、単一の IP からの 401、403、または 404 の<code> EdgeResponseStatus コード、または機密パス (例: http_requests) のリクエストをクエリできます。/.env</code>, <code>/.git</code>, <code>/wp-admin</code>)。</p>
+	<p>さらに、<code>magic_ids_detections</code> ログも、ネットワーク層でのスキャンを特定するために使用することができます。これらのログは、ネットワークを標的とする脅威をパケットレベルで可視化します。標準的なHTTPログとは異なり、これらのログは、ネットワーク層およびトランスポート層（IP、TCP、UDP）における<b>シグネチャベースの検出</b>に重点を置いています。単一の<code>SourceIP</code>が短時間の時間枠で幅広い<code>DestinationPort</code>値にわたる複数のユニーク検出をトリガーするケースを検出するクエリー。Magic IDS署名は、特にNmapスキャンやSYNステルススキャンなどのアクティビティにフラグを立てることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="check-for-diversions">迂回の確認</h3>
+		<a href="https://blog.cloudflare.com/#check-for-diversions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃者は偵察を行っている間も、同時にネットワークフラッドを仕掛けてこれを偽装しようとするかもしれません。<code>network_analytics_logs</code> にピボットして、ボリューメトリック攻撃が煙幕として使用されているかどうかを確認します。</p>
+	<div class="flex anchor relative">
+		<h3 id="identify-the-approach">アプローチを識別する</h3>
+		<a href="https://blog.cloudflare.com/#identify-the-approach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃者が潜在的な脆弱性を特定すると、武器を作り始めます。攻撃者は、悪意のあるペイロード（SQLインジェクションや大きなファイル、破損したファイルのアップロードなど）を使用して脆弱性を確認するよう求められます。<code>http_requests</code>や<code>fw_events</code>を確認して、トリガーされたCloudflare検出ツールを特定します。Cloudflareは、これらのデータセットのセキュリティシグナルをログに記録し、<code>WAFAttackScore</code>、<code>WAFSQLiAttackScore</code>、<code>FraudAttack</code>、<code>ContentScanJobResults</code>などのフィールドを使って、悪意のあるペイロードを持つリクエストを容易に識別します。これらのフィールドを十分に理解するには、<a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests" target="_blank" rel="noopener noreferrer"><u>当社のドキュメント</u></a>をご覧ください。<code>fw_events</code>ログは、<code>action</code>、<code>source</code>、および<code>ruleID</code>フィールドを調べることで、これらのリクエストがCloudflareの防御を通過したかどうかを判断するために使用できます。Cloudflareのマネージドルールは、デフォルトでこれらの悪意のあるペイロードの多くをブロックします。アプリケーションセキュリティの概要を確認して、アプリケーションが保護されているかどうかを確認します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zpFguYrnbOPwyASGQCqZK/63f398acce2226e453a5eea1cc749241/image3.png" alt="現在のゾーンでマネージドルールが有効になっていない場合、セキュリティの概要に表示されるマネージドルールインサイトを表示する" class="kg-image" width="1117" height="124" loading="lazy">
+	</figure>
+	<p><i><sup>現在のゾーンでマネージドルールが有効になっていない場合、セキュリティの概要に表示されるマネージドルールインサイトを表示する</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="audit-the-identity">IDを監査する</h3>
+		<a href="https://blog.cloudflare.com/#audit-the-identity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>その不審なIPはログインに成功したのでしょうか？<code>ClientIP</code>を使用して<code>access_requests</code>を検索します。機密性の高い内部アプリに対して"<code>決定：許可</code>"と表示されれば、アカウントが侵害されていることがわかります。</p>
+	<div class="flex anchor relative">
+		<h3 id="stop-the-leak-data-exfiltration">漏洩（データ流出）を阻止する</h3>
+		<a href="https://blog.cloudflare.com/#stop-the-leak-data-exfiltration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃者は、DNSトンネリングを使用して、機密データ（パスワードやSSHキーなど）をDNSクエリにエンコードすることにより、ファイアウォールを回避することがあります。<code>google.com</code>のような通常のリクエストではなく、ログにはエンコードされた長い文字列が表示されます。フィールドを調べて、独自で長い、高エントロピーのサブドメインに対する異常に多いクエリを探しましょう: <code>QueryName</code>: <a href="http://h3ldo293js92.example.com" target="_blank" rel="noopener noreferrer"><u><code>h3ldo293js92.example.com</code></u></a> のような文字列を探します。<code>QueryType</code>: 悪意のあるペイロードの転送に<code>TXT</code>、<code>CNAME</code>、または<code>NULL</code>レコードを使用することが多く、<code>ClientIP</code>: 単一の内部ホストが数千の固有リクエストを生成しているかどうかを識別します。</p>
+	<p>さらに、攻撃者は、非標準のプロトコル内に機密データを隠したり、一般的なプロトコル（DNSやICMPなど）を使用して標準的なファイアウォールをバイパスすることで、機密データを漏えいさせようとすることがあります。<code>magic_ids_detections</code>ログをクエリして、<code>SignatureMessage</code>の「ICMPトンネリング」や「DNSトンネリング」など、プロトコルの異常にフラグを立てるシグネチャを探して、これを見つけてください。</p>
+	<p>ゼロデイ脆弱性を調査する場合でも、高度なボットネットを追跡する場合でも、必要なデータがすぐ利用できるようになっています。</p>
+	<div class="flex anchor relative">
+		<h2 id="correlate-across-datasets">データセット間の相関分析</h2>
+		<a href="https://blog.cloudflare.com/#correlate-across-datasets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>複数の同時検索を切り替えて、複数のデータセットにわたる悪意のあるアクティビティを調査します。Log Explorerでは、新しいタブ機能で複数のクエリーを同時に操作できるようになりました。タブを切り替えてデータセットをクエリしたり、クエリ結果を介してフィルタリングしてクエリを調整したりすることもできます。</p>
+	<div style="position: relative; padding-top: 45.348837209302324%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fdce57563737015fcb27147c4b44ac70/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffdce57563737015fcb27147c4b44ac70%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>複数のCloudflareログソースのデータを相関させると、分離して表示すると良性に見える高度な複数段階の攻撃を検出することができます。このデータセット横断的な分析により、偵察から流出まで、攻撃の連鎖の全体像を把握できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="session-hijacking-token-theft">セッションハイジャック（トークンの盗難）</h3>
+		<a href="https://blog.cloudflare.com/#session-hijacking-token-theft" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>シナリオ:</b> ユーザーがCloudflare Accessを介して認証しますが、後続のHTTP_requestトラフィックはボットのように見えます。</p>
+	<p><b>ステップ1：</b> <code>http_requests</code>内の高リスクセッションを特定します。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT RayID, ClientIP, ClientRequestUserAgent, BotScore
+FROM http_requests
+WHERE date = '2026-02-22' 
+  AND BotScore &lt; 20 
+LIMIT 100</code></pre>
+	<p><b>ステップ2：</b> <code>RayID</code>をコピーし、<code>access_requests</code>を検索して、その不審なボットアクティビティに関連付けられているユーザーアカウントを確認します。</p>
+	<pre class="language-SQL"><code class="language-SQL">
+SELECT Email, IPAddress, Allowed
+FROM access_requests
+WHERE date = '2026-02-22' 
+  AND RayID = 'INSERT_RAY_ID_HERE'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="post-phishing-c2-beaconing">フィッシング後C2ビーコン</h3>
+		<a href="https://blog.cloudflare.com/#post-phishing-c2-beaconing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>シナリオ：</b>従業員がフィッシングメールのリンクをクリックした結果、ワークステーションが侵害されました。このワークステーションは、既知の悪意のあるドメインに対してDNSクエリーを送信し、その後すぐにIDSアラートをトリガーします。</p>
+	<p><b>ステップ1：</b> email_security_alertsの違反を調べて、フィッシング攻撃を見つけます。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT Timestamp, Threatcategories, To, Alertreason
+FROM email_security_alerts
+WHERE date = '2026-02-22' 
+  AND Threatcategories LIKE 'phishing'</code></pre>
+	<p><b>ステップ2：</b>アクセスログを使用して、ユーザーのメール（To）をIPアドレスと関連付けます。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT Email, IPAddress
+FROM access_requests
+WHERE date = '2026-02-22' </code></pre>
+	<p><b>ステップ3：</b> <code>gateway_dns</code>ログで、特定の悪意のあるドメインにクエリを実行している内部IPを見つけます。</p>
+	<pre class="language-SQL"><code class="language-SQL">
+SELECT SrcIP, QueryName, DstIP, 
+FROM gateway_dns
+WHERE date = '2026-02-22' 
+  AND SrcIP = 'INSERT_IP_FROM_PREVIOUS_QUERY'
+  AND QueryName LIKE '%malicious_domain_name%'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="lateral-movement-access-network-probing">ラテラルムーブメント（Access → ネットワークプロービング）</h3>
+		<a href="https://blog.cloudflare.com/#lateral-movement-access-network-probing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>シナリオ：</b>ユーザーはZero Trust経由でログインし、内部ネットワークをスキャンしようとします。</p>
+	<p><b>ステップ1:</b> <code></code>access_requestsの予期しない場所からのログインが成功した場所をaccess_requestsで検索します。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT IPAddress, Email, Country
+FROM access_requests
+WHERE date = '2026-02-22' 
+  AND Allowed = true 
+  AND Country != 'US' -- Replace with your HQ country</code></pre>
+	<p><b>ステップ2：</b>その<code>IPアドレス</code>が<code>magic_ids_detections</code>でネットワークレベルの署名をトリガーしているかどうかを確認します。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT SignatureMessage, DestinationIP, Protocol
+FROM magic_ids_detections
+WHERE date = '2026-02-22' 
+  AND SourceIP = 'INSERT_IP_ADDRESS_HERE'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="opening-doors-for-more-data">より多くのデータへの扉を開く</h3>
+		<a href="https://blog.cloudflare.com/#opening-doors-for-more-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Log Explorerは、最初から拡張性を念頭に設計されています。すべてのデータセットスキーマは、JSONデータの構造とタイプを記述するための広く採用されている標準であるJSONスキーマを使用して定義されます。この設計上の決定により、HTTPリクエストとファイアウォールイベントを超えて、Cloudflareの幅広いテレメトリに容易に拡張できるようになりました。初期のデータセットを支えていたのと同じスキーマ駆動型のアプローチは、Zero Trustログ、ネットワーク分析、メールセキュリティアラート、そしてその間のあらゆる機能に対応するために、自然に拡張することができました。</p>
+	<p>さらに重要なのは、この標準化により、Cloudflareのネイティブのテレメトリを超えたデータ取り込みが可能になることです。当社の取り込みパイプラインはハードコードされていないスキーマ駆動型であるため、JSON形式で表現できるどのような構造化データでも受け付けることができます。これは、ハイブリッド環境を管理するセキュリティチームにとって、Log Explorerは最終的には単一の管理画面として機能し、Cloudflareのエッジテレメトリとサードパーティソースからのログを相関させ、すべて同じSQLインターフェースを介してクエリーを可能にすることを意味します。本日のリリースは、Cloudflareの製品ポートフォリオを網羅することに焦点を当てていますが、アーキテクチャ上の基盤は、お客様がカスタムスキーマで独自のデータソースを持ち込める将来に向けたものです。</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-data-faster-response-architectural-upgrades">より迅速なデータ、より迅速なレスポンス：アーキテクチャのアップグレード</h3>
+		<a href="https://blog.cloudflare.com/#faster-data-faster-response-architectural-upgrades" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>マルチベクトル型攻撃を効果的に調査するには、タイミングがすべてです。ログの可用性が数分遅れるだけでも、事前予防的な防御と事後対応型の被害制御の違いにつながる可能性があります。</p>
+	<p>そこで、取り込みを最適化して、速度と耐障害性を向上させました。取り込みパスの一部でコンカレンシーを高めることで、「うるさい隣人」問題を引き起こす可能性のあるボトルネックを排除し、あるクライアントのデータ急増が別のクライアントの可視性を低下させないようにしました。このアーキテクチャ作業により、P99の取り込み遅延が約55%、P50は25%短縮され、エッジのイベントがSQLクエリに利用できるようになるまでの時間を短縮することができました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41M2eWP0BwrQFSZW4GzZbV/7a6139354abb561aba17e77d83beb17a/image4.png" alt="アーキテクチャのアップグレード後の取り込み遅延の減少を示すGrafanaグラフ" class="kg-image" width="1999" height="882" loading="lazy">
+	</figure>
+	<p><i><sup>アーキテクチャのアップグレード後の取り込み遅延の減少を示すGrafanaグラフ</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="follow-along-for-more-updates">最新情報をフォローしましょう</h2>
+		<a href="https://blog.cloudflare.com/#follow-along-for-more-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは始まりにすぎません。当社は、カスタム定義スケジュールでこれらの検出クエリを実行する機能など、Log Explorerエクスペリエンスをさらに向上させるために、さらに強力な機能の開発に積極的に取り組んでいます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JIOu9PXDwVAVcmbgq456q/1eace4b5d38bb705e82442a4ee8045dc/Scheduled_Queries_List.png" alt="" class="kg-image" width="4536" height="2739" loading="lazy">
+	</figure>
+	<p><i><sup>今後のLog Explorerのスケジュールされたクエリー機能の設計モックアップ</sup></i></p>
+	<p><a href="https://blog.cloudflare.com"><u>ブログの配信登録</u></a>を行い、<a href="https://developers.cloudflare.com/changelog/product/log-explorer" target="_blank" rel="noopener noreferrer"><u>変更ログ</u></a>でLog Explorerのさらなる更新情報にまもなくご注目ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-access-to-log-explorer">Log Explorerへのアクセスを取得</h2>
+		<a href="https://blog.cloudflare.com/#get-access-to-log-explorer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Log Explorerにアクセスするには、ダッシュから直接セルフサービスを購入するか、契約顧客の場合は<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>コンサルテーション</u></a>をご依頼いただくか、アカウントマネージャーにご連絡ください。詳細は<a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>をご覧ください。</p>
+</div>

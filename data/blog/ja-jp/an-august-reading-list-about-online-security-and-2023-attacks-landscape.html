@@ -1,0 +1,371 @@
+<div class="mb2 gray5">13分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/an-august-reading-list-about-online-security-and-2023-attacks-landscape">English</a>、<a href="https://blog.cloudflare.com/zh-tw/an-august-reading-list-about-online-security-and-2023-attacks-landscape">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/an-august-reading-list-about-online-security-and-2023-attacks-landscape">Français</a>、<a href="https://blog.cloudflare.com/de-de/an-august-reading-list-about-online-security-and-2023-attacks-landscape">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/an-august-reading-list-about-online-security-and-2023-attacks-landscape">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/an-august-reading-list-about-online-security-and-2023-attacks-landscape">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/727GQi8enlZixKC7n0wypx/23548f50d60f2275041309a93333040c/an-august-reading-list-about-online-security-and-2023-attacks-landscape.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023年現在、サイバーセキュリティは、サイバー攻撃に巻き込まれることやその被害に遭うことを避けたい人々にとって、ほとんどのケースで必要不可欠なものであり続けています。攻撃はより巧妙化し、<a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">ウクライナ</a>を含む紛争（オンラインとオフラインの同時進行で）も続いています。各国政府はサイバーへの警戒を強め、重要なインフラ（医療や教育など）を中心に戦略をまとめています。かつてないほどのオンライン上のリスクを抱えるこの時代に、インターネット利用者は2023年7月には過去最大となる50億人を超え、これは世界総人口<a href="https://population.un.org/dataportal/data/indicators/49/locations/900/start/1950/end/2100/line/linetimeplotsingle" target="_blank" rel="noopener noreferrer">80億人</a>の<a href="https://datareportal.com/reports/digital-2023-july-global-statshot" target="_blank" rel="noopener noreferrer">64.5％</a>に相当します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aNzvtLI3LV7ChtfG0YMXf/de9ec3ca711ba9a8196a42cda8e1b159/image1-18.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>ここでは、2023年のCloudflareのこれまでのブログで議論してきた攻撃とオンラインセキュリティ全般に関連する内容を、オススメする8月の読み物リストと共に紹介します。<a href="https://blog.cloudflare.com/tag/ai">AI</a>サービスの安全性を含む新しいトレンド、製品、取り組み、パートナーシップから、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ja-jp">ブロックされた記録的なサイバー攻撃</a>まで。これに関して、最近当社はAIハブ（<a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.cloudflare.com</a>）を立ち上げました。</p>
+	<p>Cloudflareは年間を通じて、お客様が<a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">攻撃を受けている間</a>もオンボーディングを続けており、動員数が1億6200万人にまで達した<a href="https://blog.cloudflare.com/how-cloudflare-scaled-and-protected-eurovision-2023-voting">2023年のユーロビジョン・ソング・コンテストのオンライン投票システム</a>を担当するonce.net社を含む他の多くのユーザーを保護してきました。</p>
+	<p>当社のグローバルネットワーク（通称<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp">スーパークラウドは</a>）により私たちは独自の視点をを持つことができます。Cloudflareの持つ大規模な環境もセキュリティ強化に寄与しており、最近の<a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>攻撃スコアリングシステムのような機械学習を活用した予防的サービスにより、<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">攻撃が知られる前に</a>、あるいは<a href="https://blog.cloudflare.com/waf-content-scanning">マルウェア</a>なる前に攻撃を阻止することができます。</p>
+	<p>当社は最近、世界<a href="https://blog.cloudflare.com/ja-jp/cloudflare-connected-in-over-300-cities-ja-jp">100か国以上、300以上の都市</a>で事業を展開し、12,000以上のネットワークと相互接続していることを公表し、現在もその規模を拡大し続けています。私たちはオンライン上のWebサイトの約20％と、数百万人のインターネットプロパティにサービスを提供しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="attacks-increasing-a-readiness-and-trust-game">攻撃は増加しています。覚悟と信頼のゲーム</h2>
+		<a href="https://blog.cloudflare.com/#attacks-increasing-a-readiness-and-trust-game" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、いくつかの背景について説明します。攻撃には様々な種類がありますが、総じて言えることとして、攻撃は増加しています。2023年第2四半期、Cloudflareは、1日平均<b>1400億</b>件ものサイバー脅威をブロックしました。<a href="https://blog.cloudflare.com/ja-jp/2022-attacks-an-august-reading-list-to-go-shields-up-ja-jp">同様のブログ記事</a>を書いた 1年前は1240億件で、前年比13％増となりました。攻撃者は手を緩めることなく、より洗練された攻撃を増加させており、教育や医療分野などが標的にされています。</p>
+	<p>機械学習のような人工知能（AI）は新しいものではありませんが、2023年にはトレンドに入っており、特定の機能はより一般的に利用できるようになっています。そのため、<a href="https://www.reuters.com/technology/ai-being-used-hacking-misinfo-top-canadian-cyber-official-says-2023-07-20" target="_blank" rel="noopener noreferrer">詐欺手口の質</a>が向上するだけでなく、<a href="https://www.wired.com/story/artificial-intelligence-hacking-bruce-schneier" target="_blank" rel="noopener noreferrer">AIハッカー</a>に対する懸念さえも生まれています。</p>
+	<p>今年も各国政府は報告書や警告を継続的に発表しています。2022年、米サイバーセキュリティ・社会基盤安全保障庁（CISA）は、ロシアのウクライナ侵攻を受けて「<a href="https://www.cisa.gov/shields-up" target="_blank" rel="noopener noreferrer">シールド・アップ</a>」構想を策定しています。2023年3月、バイデン・ハリス政権はインターネットの安全確保を目的とした「<a href="https://www.whitehouse.gov/wp-content/uploads/2023/03/National-Cybersecurity-Strategy-2023.pdf" target="_blank" rel="noopener noreferrer">国家サイバーセキュリティ戦略</a>」を公表しています。</p>
+	<p><a href="https://www.gov.uk/government/publications/national-cyber-strategy-2022/national-cyber-security-strategy-2022" target="_blank" rel="noopener noreferrer">英国のサイバー戦略</a>が2022年末に発表され、今年3 月には特に国民保健サービス（NHS）をサイバー攻撃から守るための<a href="https://www.gov.uk/government/news/government-sets-out-strategy-to-protect-nhs-from-cyber-attacks" target="_blank" rel="noopener noreferrer">戦略</a>が発表され、5月には<a href="https://www.infosecurity-magazine.com/news/uk-military-security-by-design" target="_blank" rel="noopener noreferrer">英国国防省も同様の戦略を導入</a>しました。ドイツでは新しい<a href="https://www.auswaertiges-amt.de/en/aussenpolitik/digital-strategy/2551972" target="_blank" rel="noopener noreferrer">デジタル戦略</a>が2022年から存在していますが、<a href="https://www.auswaertiges-amt.de/en/aussenpolitik/themen/-/2601730" target="_blank" rel="noopener noreferrer">セキュリティ戦略</a>が6月に発表されました。同様のシナリオは、<a href="https://www.mofa.go.jp/fp/nsp/page1we_000081.html" target="_blank" rel="noopener noreferrer">日本</a>や<a href="https://www.homeaffairs.gov.au/about-us/our-portfolios/cyber-security/strategy/2023-2030-australian-cyber-security-strategy" target="_blank" rel="noopener noreferrer">オーストラリア</a>など他の国々でも見られます。</p>
+	<p>ですが、ここではより一般的な国に関する攻撃に加え、政策や信頼のサイバーセキュリティに関連する読み物も紹介します：</p>
+	<div class="flex anchor relative">
+		<h3 id="one-year-of-war-in-ukraine-internet-trends-attacks-and-resilience">ウクライナ戦争の1年：インターネットのトレンド、攻撃、耐障害性（<a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#one-year-of-war-in-ukraine-internet-trends-attacks-and-resilience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このブログ <a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">記事では</a>、ヨーロッパの戦争中におけるインターネットに関する洞察を報告するとともに、3段階にわたり攻防が繰り広げられたこの戦争の中で数々の障害が発生したにもかかわらず、ウクライナのインターネットがどのようにして耐障害性を発揮し続けているかについて論じています。</p>
+	<p>2022年3月上旬のウクライナにおけるアプリケーション層サイバー攻撃が戦前と比較して<a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">1,300％増</a>となった。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u3okH81n3Jot9rjymcUbJ/0db8d140be0740ffba8c2168f92e1bb7/image4-7.png" alt="One year of war in Ukraine: Internet trends, attacks, and resilience." class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-white-houses-national-cybersecurity-strategy-asks-the-private-sector-to-step-up-to-fight-cyber-attacks-cloudflare-is-ready">ホワイトハウスは国家サイバーセキュリティ戦略で、民間セクターにサイバー攻撃との戦いに乗り出すよう求めています。Cloudflareにはその準備があります（<a href="https://blog.cloudflare.com/the-white-houses-national-cybersecurity-strategy-asks-the-private-sector-to-step-up-to-fight-cyber-attacks-cloudflare-is-ready">✍</a>️）</h3>
+		<a href="https://blog.cloudflare.com/#the-white-houses-national-cybersecurity-strategy-asks-the-private-sector-to-step-up-to-fight-cyber-attacks-cloudflare-is-ready" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ホワイトハウスは2023年3月、インターネットをオープン、フリー、グローバル、相互運用性、信頼性、安全性の高いものに維持・拡張することを目的とした国家サイバーセキュリティ戦略を発表しました。Cloudflareはこの戦略と切望されていた政策イニシアチブを歓迎し、重要なインフラの防衛に大きな役割を果たすZero Trustの必要性を強調しました。同月、<a href="https://blog.cloudflare.com/cloudflare-commitment-to-the-2023-summit-for-democracy">Cloudflareは2023年民主主義サミットへのコミットメントを発表</a>しました。また、これらのイニシアチブに関連してCloudflareは、2022年3月には独自の<a href="https://blog.cloudflare.com/announcing-critical-infrastructure-defense">重要インフラ防衛プロジェクト</a>（CIDP）、2022年12月には<a href="https://blog.cloudflare.com/ja-jp/project-safekeeping-ja-jp">Project Safekeeping</a>を開始し、オーストラリア、日本、ドイツ、ポルトガル、英国の特定の適格な機関に対してZero Trustソリューションを提供しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="secure-by-default-recommendations-from-the-cisas-newest-guide-and-how-cloudflare-follows-these-principles-to-keep-you-secure">デフォルトで安全：CISAの最新ガイドからの推奨事項と、Cloudflareがどのようにこれらの原則に従ってお客様の安全を確保しているか（<a href="https://blog.cloudflare.com/secure-by-default-understanding-new-cisa-guide">✍</a>️）</h3>
+		<a href="https://blog.cloudflare.com/#secure-by-default-recommendations-from-the-cisas-newest-guide-and-how-cloudflare-follows-these-principles-to-keep-you-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/secure-by-default-understanding-new-cisa-guide">この</a>2023年4月の投稿では、複数の国際機関（米国、英国、オーストラリア、カナダ、ドイツ、オランダ、ニュージーランド）が共同で執筆した<a href="https://www.cisa.gov/sites/default/files/2023-04/principles_approaches_for_security-by-design-default_508_0.pdf" target="_blank" rel="noopener noreferrer">最近発表されたガイド</a>の焦点であった「デフォルトで安全」の態勢と勧告についてレビューしています。端的に言えば、あらゆる種類のツール、機械学習、デフォルトで安全な設計アプローチ、そしていくつかの原則を使うことが非常に重要となります。</p>
+	<div class="flex anchor relative">
+		<h3 id="nine-years-of-project-galileo-and-how-the-last-year-has-changed-it-project-galileo-report">プロジェクト・ガリレオの9年間とこの1年の変化（<a href="https://blog.cloudflare.com/nine-years-of-project-galileo-and-how-the-last-year-has-changed-it">✍</a>️）+ プロジェクト・ガリレオ・レポート （<a href="https://radar.cloudflare.com/reports/project-galileo-9th-anniv">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#nine-years-of-project-galileo-and-how-the-last-year-has-changed-it-project-galileo-report" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年6月の<a href="https://www.cloudflare.com/galileo" target="_blank" rel="noopener noreferrer">プロジェクト・ガリレオ</a>9周年では、手頃な価格で使用できるサイバーセキュリティ・ツールを提供し、最も脆弱とされるコミュニティの保護から得た教訓を共有することに焦点が当てられました。また、プロジェクト・ガリレオの<a href="https://www.cloudflare.com/project-galileo-case-studies/?cf_target_id=1D3DEA8242B8DDE138D5C8B53C65A067" target="_blank" rel="noopener noreferrer">導入事例</a>や、プロジェクト・ガリレオが<a href="https://www.cloudflare.com/case-studies/dream-girl-foundation" target="_blank" rel="noopener noreferrer">教育・健康</a>、<a href="https://www.cloudflare.com/case-studies/muzeon" target="_blank" rel="noopener noreferrer">文化</a>、<a href="https://www.cloudflare.com/case-studies/veterans-brotherhood" target="_blank" rel="noopener noreferrer">退役軍人</a>サービス、<a href="https://www.cloudflare.com/case-studies/internet-archive" target="_blank" rel="noopener noreferrer">インターネットアーカイブ</a>、<a href="https://www.cloudflare.com/case-studies/sin-embargo" target="_blank" rel="noopener noreferrer">調査報道</a>などの分野に、どのような変化をもたらしたかも紹介しています。<a href="https://radar.cloudflare.com/reports/project-galileo-9th-anniv" target="_blank" rel="noopener noreferrer">Cloudflare Radar Project Galileo</a>のレポートも公開しており、その中には注目すべきポイントがいくつかあります：</p>
+	<ul>
+		<li>
+			<p>Cloudflareは、2022年7月1日から2023年5月5日までの間にプロジェクトGalileo保護対象組織への攻撃200億件を軽減。過去10か月を平均すると1日あたり約6,770万件のサイバー攻撃を軽減。</p>
+		</li>
+		<li>
+			<p>LGBTQ+の組織において、過去10か月間で1日平均79万件の攻撃（その大半が<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS</a>攻撃に分類される）の緩和を確認。</p>
+		</li>
+		<li>
+			<p>市民社会団体を標的にした攻撃は概して増加。ある団体を狙った攻撃を分析したところ、リクエスト量は毎秒66.7万件にも上った。この時期の前後に、この団体へのアクセスはほとんどなかった。</p>
+		</li>
+		<li>
+			<p>ウクライナでは、緊急対応や災害救援を提供する団体へのトラフィックが急増し、10か月間にわたる同国への爆撃と重なっている。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="project-cybersafe-schools-bringing-security-tools-for-free-to-small-k-12-school-districts-in-the-us">Project Cybersafe Schools：米国の小規模な幼稚園から高校まで（K-12）の学区に無料のセキュリティツールを提供（<a href="https://blog.cloudflare.com/project-cybersafe-schools">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#project-cybersafe-schools-bringing-security-tools-for-free-to-small-k-12-school-districts-in-the-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは2023年8月より、小規模な幼稚園から高校まで（K-12）の公立学区を対象としたイニシアチブである<a href="https://www.cloudflare.com/lp/cybersafe-schools" target="_blank" rel="noopener noreferrer">Project Cybersafe Schools</a>を導入しています。8月7日にホワイトハウスで開催されたBack to School Safely：<a href="https://www.whitehouse.gov/briefing-room/statements-releases/2023/08/07/biden-harris-administration-launches-new-efforts-to-strengthen-americas-k-12-schools-cybersecurity" target="_blank" rel="noopener noreferrer">K-12 Cybersecurity Summit</a>の一環として発表されたProject Cybersafe Schoolsは、対象となるK-12公立学区を<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>のサイバーセキュリティソリューションパッケージで、_無償_かつ_無期限_でサポートするものです。2023年第2四半期、Cloudflareは米国の教育セクターを標的としたサイバー脅威を1日平均7000万件ブロックしており、DDoS攻撃は前四半期比で47%増となっています。</p>
+	<p>プライバシーに関する懸念はオンラインセキュリティとも密接に関係しています。このトピックについては今年初め、<a href="https://blog.cloudflare.com/investing-in-security-to-protect-data-privacy">データプライバシーを保護するためのセキュリティ</a>への投資に関連してさらに詳しく説明しています。また、Cloudflareは新しいEUにおけるクラウド行動規範のプライバシー検証も<a href="https://blog.cloudflare.com/cloudflare-official-gdpr-code-of-conduct">達成</a>しています。</p>
+	<p>記録的なDDoS攻撃の様子（毎秒<a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ja-jp">7,100万リクエスト</a>超）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PZvxmDRt4KAHlsn8cvb0A/da6b90441479e91b548b0bb979806191/image2-12.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="1-ddos-attacks-solutions">1. DDoS攻撃 &amp; ソリューション</h2>
+		<a href="https://blog.cloudflare.com/#1-ddos-attacks-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="ddos-threat-report-for-2023-q2">2023年第2四半期DDoS脅威レポート（<a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2023-q2-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#ddos-threat-report-for-2023-q2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS攻撃</a>（分散型サービス妨害）は新しいものではありませんが、依然として攻撃者が使用する主要なツールの1 つになっています。2023年第2四半期、CloudflareはDDoS攻撃の高度化がかつてないほどエスカレートしていることを確認しており、当レポートでは、この現象について掘り下げています。親ロシア派のハクティビストであるREvil、Killnet、Anonymous Sudanが手を組んで西側のサイトを攻撃しています。Mitelの脆弱性を悪用した攻撃は532％急増し、暗号資産への攻撃は600％急増しました。また、より広範に見ると、3時間を超える攻撃は前四半期比で103%増となっています。</p>
+	<p><a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2023-q2-ja-jp">この</a>ブログ記事と対応する<a href="https://radar.cloudflare.com/reports/ddos-2023-q2" target="_blank" rel="noopener noreferrer">Cloudflare Radarレポート</a>では、これらの傾向の一部を明らかにしています。一方、<a href="https://radar.cloudflare.com/reports/ddos-2023-q1" target="_blank" rel="noopener noreferrer">2023年第1四半期DDoS脅威レポート</a>にあるように、仮想専用サーバー（VPS）で構成される新世代のボットネットを活用した超帯域幅消費型攻撃の急増が観察されました。</p>
+	<div class="flex anchor relative">
+		<h3 id="killnet-and-anonymoussudan-ddos-attack-australian-university-websites-and-threaten-more-attacks-heres-what-to-do-about-it">KillnetとAnonymousSudanのDDoS攻撃がオーストラリアの大学Webサイトを攻撃し、さらなる攻撃の恐れがあります。何をすべきかは、こちら（<a href="https://blog.cloudflare.com/ja-jp/ddos-attacks-on-australian-universities-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#killnet-and-anonymoussudan-ddos-attack-australian-university-websites-and-threaten-more-attacks-heres-what-to-do-about-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年3月下旬、Cloudflareはオーストラリアの大学のWebサイトを標的としたHTTP DDoS攻撃を観測しました。親ロシア派ハッカーグループKillnetとその関連団体AnonymousSudanが公に標的としたいくつかの団体のうち、大学は、最初の標的でした。この記事では、こうした組織的グループによる標的型攻撃の傾向だけでなく、具体的な推奨事項も示しています。</p>
+	<p>1 月には、<a href="https://blog.cloudflare.com/cyberattacks-on-holocaust-educational-websites-increased-in-2022">ホロコーストに関する教育Webサイト</a>（Cloudflareのプロジェクト・ガリレオが保護）に対するサイバー攻撃が増加したという同様の事例が見られました。</p>
+	<div class="flex anchor relative">
+		<h3 id="uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">標的型DDoS攻撃を受ける医療機関が急増（<a href="https://blog.cloudflare.com/ja-jp/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年2月初旬、Cloudflareを含む他の情報源は、Killnetを名乗る親ロシア派のハクティビストグループに標的とされる医療機関が増加していることを確認しました。このような攻撃から身を守るために、私たちの助けを求める組織が増加しました。Cloudflareによってすでに保護されている医療機関では、HTTP DDoS攻撃が緩和されました。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Cloudflareが1秒あたり7,100万件のリクエストを送信する記録的なDDoS攻撃を軽減（<a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また2月上旬には、Cloudflareは数十件（うち1件は記録的なものになりました）の超帯域幅消費型（DDoS）攻撃を検知、緩和しています。攻撃の大部分はピーク時に概算5,000万～7,000万リクエスト/秒（rps）で、最大で71Mrpsを超えるものもありました。これは、報告されたHTTP DDoS攻撃の中では過去最大のもので、2022年6月に報告された46Mrpsの記録を54%以上上回ったことになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="slp-a-new-ddos-amplification-vector-in-the-wild">SLP：野生の新しいDDoS増幅ベクター（<a href="https://blog.cloudflare.com/slp-new-ddos-amplification-vector">✍</a>️）</h3>
+		<a href="https://blog.cloudflare.com/#slp-a-new-ddos-amplification-vector-in-the-wild" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年4月のこのブログ記事では、SLPプロトコル（<a href="https://en.wikipedia.org/wiki/Service_Location_Protocol" target="_blank" rel="noopener noreferrer">サービスロケーションプロトコル</a>）を利用した新型の反射型DDoS攻撃（アンプ攻撃）ベクトルの発見に関する研究者らの発表内容について説明しています。SLPベースのDDoS攻撃も増加すると予想されますが、当社の<a href="https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp">自動化されたDDoS攻撃対策システム</a>はCloudflareのお客様を安全に保ちます。</p>
+	<p>さらに今年4月には、新しく<a href="https://blog.cloudflare.com/network-analytics-v2-announcement">改良されたネットワーク分析ダッシュボード</a>が導入され、セキュリティ専門家にDDoS攻撃とトラフィックの状況についての洞察を提供しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="2-application-level-attacks-waf">2. アプリケーションレベルの攻撃 &amp; WAF</h2>
+		<a href="https://blog.cloudflare.com/#2-application-level-attacks-waf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="the-state-of-application-security-in-2023">2023年アプリケーションセキュリティの状況（<a href="https://blog.cloudflare.com/ja-jp/application-security-2023-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#the-state-of-application-security-in-2023" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは2年連続で<a href="https://blog.cloudflare.com/ja-jp/application-security-2023-ja-jp">アプリケーション・セキュリティ・レポート</a>を発表しています。Cloudflareはこの1年で上位100万サイトの中で最もよく使用されるWebサーバーベンダー（現在、市場シェアは22％）へと成長しました（<a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html" target="_blank" rel="noopener noreferrer">Netcraft</a>調べ）。いくつかのハイライトを以下に示します：</p>
+	<ul>
+		<li>
+			<p>1日あたりHTTPリクエスト（Cloudflareネットワークによってプロキシされる）の平均6%を軽減。昨年比で2ポイント低下。</p>
+		</li>
+		<li>
+			<p>軽減されたトラフィック全体うちDDoSに関するものは50%以上を占め、依然としてレイヤ7（アプリケーション層）の軽減されたHTTPリクエストの最大の要因となっている。</p>
+		</li>
+		<li>
+			<p>しかし、Cloudflare WAF（<a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">Webアプリケーションファイアウォール</a>）による軽減件数は前年比で大幅増となっており、現在では軽減されたリクエストの約41%を占めている。</p>
+		</li>
+		<li>
+			<p>HTTP異常（例：不正なメソッド名、ヘッダー内のNULLバイト文字など）は、WAFが最も頻繁に緩和するアプリケーション層の攻撃ベクトルとなっている。</p>
+		</li>
+		<li>
+			<p>HTTPトラフィックの30％が自動化されたもの（ボットトラフィック）である。動的（キャッシュ不可）なトラフィックの55%はAPI関連である。世界のAPIトラフィックの65%はブラウザによって生成されている。</p>
+		</li>
+		<li>
+			<p>未検証のボットHTTPトラフィックの16％が軽減される。</p>
+		</li>
+		<li>
+			<p>HTTP異常は、<a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a> （データ駆動型アプリを攻撃するために使用されるコードインジェクション技法）を上回り、APIエンドポイント上で最も一般的な攻撃ベクトルとなっている。ブルートフォースによるアカウント乗っ取り攻撃が増加。また、Microsoft Exchangeに対する攻撃件数はWordPressを上回る。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-can-help-stop-malware-before-it-reaches-your-app">Cloudflareが、アプリに到達する前にマルウェアを阻止する方法（<a href="https://blog.cloudflare.com/waf-content-scanning">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-can-help-stop-malware-before-it-reaches-your-app" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年4月、私たちは当社のWebアプリケーションファイアウォール（WAF）と統合されたコンテンツスキャンエンジンを提供しました。これは、エンドユーザーによってアップロードされる悪意のあるファイルが、そもそもオリジンサーバーに到達することを防ぐもので、アプリケーションセキュリティチームの負担を軽減します。2022年9月以降、<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">Cloudflare WAFはよりスマートになり</a>、攻撃が知られる前に防ぐことができるようになりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="announcing-waf-attack-score-lite-and-security-analytics-for-business-customers">Businessプランのお客様向けにWAF Attack Score LiteとSecurity Analyticsを発表（<a href="https://blog.cloudflare.com/waf-attack-score-for-business-plan">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#announcing-waf-attack-score-lite-and-security-analytics-for-business-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年3月、私たちは当社の機械学習で<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">強化されたWAFとセキュリティ分析ビュー</a>をBusinessプランのお客様に提供し、攻撃が判明する前に検出して阻止できるようになったことを<a href="https://blog.cloudflare.com/waf-attack-score-for-business-plan">発表</a>しました。一言で言うと「早期発見 + 強力な緩和 = より安全なインターネット」と表現できます。または：</p>
+	<div class="flex anchor relative">
+		<h2 id="3-phishing-area-1-and-zero-trust">3. フィッシング（Area 1およびZero Trust）</h2>
+		<a href="https://blog.cloudflare.com/#3-phishing-area-1-and-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-python"><code class="language-python">early_detection = True
+powerful_mitigation = True
+safer_internet = early_detection and powerful_mitigation</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22VmDewiUvzDtIX0ZJ5bbn/7a638b27aea1488ca219ae738b9cc294/image5-6.png" alt="Email Link Isolation: your safety net for the latest phishing attacks" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>組織に侵入する主な手段は依然として<a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">フィッシング</a>が利用されています。<a href="https://www.cisa.gov/stopransomware/general-information" target="_blank" rel="noopener noreferrer">CISAに</a>よると、サイバー攻撃の90％はフィッシングから始まっているとされています。FBIが発行する<a href="https://www.ic3.gov" target="_blank" rel="noopener noreferrer">インターネット犯罪報告書</a>の<a href="https://www.ic3.gov/Media/PDF/AnnualReport/2022_IC3Report.pdf" target="_blank" rel="noopener noreferrer">最近</a>のものでは、フィッシングがインターネット犯罪のトップ5の1位に君臨し続けています。報告されたフィッシング犯罪件数および被害額は2018年から1038%増となっており、2022年には300,497件に達するまでになっています。また、<a href="https://www.ic3.gov/Media/Y2022/PSA220504" target="_blank" rel="noopener noreferrer">FBI</a>は<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank" rel="noopener noreferrer">ビジネスメール詐欺</a>を組織が直面する430億ドルの問題として言及し、<a href="https://www.ic3.gov/Media/PDF/AnnualReport/2022_IC3Report.pdf" target="_blank" rel="noopener noreferrer">2022</a>年には苦情が2021年と比較して127%増となり、関連損失は33億1,000万ドルに達するまでになっています。</p>
+	<p>2022年、Cloudflare Area 1は23億通の迷惑メッセージをお客様の受信トレイから排除しました。今年、この数字は簡単に上回ることが予測されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-cloudflares-2023-phishing-threats-report">「Cloudflareの2023年フィッシング脅威レポート」のご紹介（<a href="https://blog.cloudflare.com/ja-jp/2023-phishing-report-ja-jp">✍</a>️）</h3>
+		<a href="https://blog.cloudflare.com/#introducing-cloudflares-2023-phishing-threats-report" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年8月、Cloudflareは初の<a href="https://blog.cloudflare.com/ja-jp/2023-phishing-report-ja-jp">フィッシング脅威レポート</a>を発行しました。レポートの全文は<a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">こちら</a>で公開しています。このレポートは、2022年5月から2023年5月までのメールセキュリティデータを基に、主要なフィッシングの傾向の調査結果とそれに関する推奨事項を掲載したものになっています。</p>
+	<p>レポートでは、欺瞞的なリンクを使用する攻撃者がフィッシング手口の第1位となった理由、クリックさせる方法やリンク先を武器化するタイミングの進化の内容などを取り上げています。また、個人情報の詐取は複数の形態（ビジネスメール詐欺（BEC）や企業・ブランド偽装を含む）の手口で行われること、標準的なメール認証は簡単にバイパスできることなども取り上げています。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-area-1-earns-soc-2-report">Cloudflare Area 1がSOC 2レポートを取得（<a href="https://blog.cloudflare.com/area-1-earns-soc-2-report">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-area-1-earns-soc-2-report" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1年以上前、CloudflareはArea 1 Securityを<a href="https://blog.cloudflare.com/ja-jp/why-we-are-acquiring-area-1-ja-jp">買収</a>し、それに伴い、<a href="https://www.cloudflare.com/en-gb/zero-trust-hub" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trustプラットフォーム</a>にユーザーの受信トレイに攻撃が到達する前に攻撃を特定しブロックするクラウドネイティブな<a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud" target="_blank" rel="noopener noreferrer">メールセキュリティ</a>サービスを追加しました。今年、私たちは、お客様が当社に送信する機密情報の安全性を保証する最善の方法の1つである<a href="https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/serviceorganization-smanagement" target="_blank" rel="noopener noreferrer">SOC 2 Type IIレポート</a>を取得しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="email-link-isolation-your-safety-net-for-the-latest-phishing-attacks">メールリンク分離：最新のフィッシング攻撃に対するセーフティネット（<a href="https://blog.cloudflare.com/ja-jp/area1-eli-ga-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#email-link-isolation-your-safety-net-for-the-latest-phishing-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/tag/cio-week">CIO Week</a>中の1月、私たちはすべてのお客様に「メールリンク分離」をご利用いただけるようにしました。メールリンク分離は、受信トレイに届く不審なリンクや、ユーザーが誤ってクリックしてしまう可能性のあるリンクに対するセーフティネットです。この保護機能が追加されたことで、<a href="https://www.cloudflare.com/products/zero-trust/email-security" target="_blank" rel="noopener noreferrer">Cloudflare Area 1</a>はマルウェアやフィッシング攻撃などから保護する最も包括的なメールセキュリティソリューションとなりました。また、Cloudflareらしく、ワンクリックによる導入が可能です。</p>
+	<p>さらに、同じ週から、Cloudflareは企業のメール向けに<a href="https://blog.cloudflare.com/ja-jp/dlp-area1-to-protect-data-in-email-ja-jp">Area 1 Email Securityとデータ損失防止（DLP）</a>の機能を統合した完全なデータ保護を提供しました。また、<a href="https://blog.cloudflare.com/knowbe4-emailsecurity-integration">フィッシング攻撃を回避するためのリアルタイムのセキュリティコーチングを組織に提供するKnowBe4との提携も実現しています。</a></p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-stay-safe-from-phishing">フィッシングから身を守るには（<a href="https://blog.cloudflare.com/ja-jp/stay-safe-phishing-attacks-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#how-to-stay-safe-from-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>フィッシング攻撃は、人々を騙すためにあらゆる手法を仕掛けてきます。<a href="https://blog.cloudflare.com/ja-jp/stay-safe-phishing-attacks-ja-jp">この</a>高度な「フィッシング」ガイドでは、メールが最も一般的であることは間違いありませんが、その他存在する様々なタイプについても説明し、これらの詐欺に巻き込まれる前に気付くための注意すべきポイントを提供しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="top-50-most-impersonated-brands-in-phishing-attacks-and-new-tools-you-can-use-to-protect-your-employees-from-them">最もフィッシング攻撃されやすいブランド上位50件と、フィッシングから社員を守るために使える新しいツール（<a href="https://blog.cloudflare.com/ja-jp/50-most-impersonated-brands-protect-phishing-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#top-50-most-impersonated-brands-in-phishing-attacks-and-new-tools-you-can-use-to-protect-your-employees-from-them" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/ja-jp/50-most-impersonated-brands-protect-phishing-ja-jp">ここ</a>では、ほぼすべてのセキュリティチームが常に直面している最も困難な課題の1つである、フィッシング攻撃の検知、ブロック、リスク軽減について説明しています。 3月の<a href="https://blog.cloudflare.com/tag/security-week">Security Week</a>では、フィッシング攻撃で最もなりすまされているブランドのトップ50（ネタバレ注意：AT&amp;T Inc.、PayPal、Microsoftがランクイン）を発表しています。</p>
+	<p>さらに、いわゆる「紛らわしい」ドメインを自動的に識別してブロックするフィッシング対策の利用をCloudflare Oneのお客様に拡大することも発表しました。<a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>は企業の既存環境に統合するカスタマイズ可能なZero TrustのNetwork as a Serviceを提供する製品スイートです。すでに述べたような使いやすさと、オンライン利用の不安を取り除くように設計されています。Cloudflare Oneと物理的なセキュリティキーの使用により、昨年夏に<a href="https://blog.cloudflare.com/ja-jp/2022-07-sms-phishing-attacks-ja-jp">Cloudflareの従業員を標的とした巧妙な</a>「Oktapus」フィッシング攻撃を阻止しました。</p>
+	<p>Zero Trustについては、「<a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4R2Wyj1ERPecMhbycOiPj8/c30f3e8502a04c6626e98072c48d4d7b/Zero_Trust_Roadmap_for_High-Risk_Organizations.pdf" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust：高リスク組織のためのロードマップ</a>」と題した最近のPDFガイドも合わせてご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="4-ai-malware-ransomware-other-risks">4. AI／マルウェア／ランサムウェア &amp; その他のリスク</h2>
+		<a href="https://blog.cloudflare.com/#4-ai-malware-ransomware-other-risks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lrCgf6J1UTCuibMo1ciaZ/32ee445ad7f038a8372860b1965ecac0/image3-6.png" alt="Every request, every microsecond: scalable machine learning at Cloudflare" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>私たちは過去数年にわたり、脅威を調査する<a href="https://blog.cloudflare.com/ja-jp/security-center-investigate-ja-jp">Cloudflareのセキュリティセンター</a>の役割や、2022年と2021年の「<a href="https://blog.cloudflare.com/targeted-ransomware-attack">標的型ランサムウェア攻撃の解剖</a>」、「<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company">フォーチュン・グローバル500社を狙ったランサム型DDoS 攻撃</a>」のようにさまざまなタイプのリスクの関連性を示してきました。しかし、2023年の進む先には新たなリスクが待ち受けています。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-secure-generative-ai-applications">生成AIアプリケーションを安全に保つ方法（<a href="https://blog.cloudflare.com/secure-generative-ai-applications">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#how-to-secure-generative-ai-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>画期的なテクノロジーは相応の課題をもたらします。Cloudflareは世界最大級のAIアプリを保護した経験があり、この<a href="https://blog.cloudflare.com/secure-generative-ai-applications">ブログ記事では</a>生成AIアプリを保護するためのヒントとベストプラクティスを紹介しています。消費者向けアプリの成功は、本質的に基盤となるAIシステムを何百万人ものユーザーにさらすことになり、潜在的な攻撃対象領域が大幅に増加します。</p>
+	<div class="flex anchor relative">
+		<h3 id="using-the-power-of-cloudflares-global-network-to-detect-malicious-domains-using-machine-learning">Cloudflareのグローバルネットワークの力を活用し、機械学習を用いて悪意のあるドメインを検出する（<a href="https://blog.cloudflare.com/threat-detection-machine-learning-models">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#using-the-power-of-cloudflares-global-network-to-detect-malicious-domains-using-machine-learning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/threat-detection-machine-learning-models">ここ</a>では、大混乱を引き起こす前に脅威を防ぐという目的を念頭にCloudflareが最近開発した機械学習やその他の高度な分析技術を活用した独自のモデルについて説明します。これは、インターネットの電話帳として知られるドメインネームシステム（<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a>）を利用したセキュリティ脅威を検出します。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">Silicon Valley銀行のお客様を狙う巧妙な詐欺師やフィッシャーの手口とは？（<a href="https://blog.cloudflare.com/ja-jp/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>信頼関係を侵害し、無防備な被害者を騙すために、脅威行為者は最新のニュースをネタとして多用します。今年初めの<a href="https://en.wikipedia.org/wiki/Collapse_of_Silicon_Valley_Bank" target="_blank" rel="noopener noreferrer">シリコンバレー銀行</a>に関するニュースは、SVBを誘い文句にした日和見的なフィッシングキャンペーンに注意し、警戒する必要がある最新の出来事の1つでした。当時、<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudforce-one-threat-operations-and-threat-research-ja-jp">Cloudforce One</a>（Cloudflareの脅威オペレーション・調査チーム）は、SVBのデジタル・プレゼンスに焦点を当てたブランド監視を大幅に強化しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-can-help-stop-malware-before-it-reaches-your-app">Cloudflareが、アプリに到達する前にマルウェアを阻止する方法（<a href="https://blog.cloudflare.com/waf-content-scanning">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-can-help-stop-malware-before-it-reaches-your-app" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年4月、Cloudflareは当社のWebアプリケーションファイアウォール（WAF）と統合されたコンテンツスキャンエンジンの<a href="https://blog.cloudflare.com/waf-content-scanning">提供を開始</a>しました。これは、エンドユーザーによってアップロードされる悪意のあるファイルが、そもそもオリジンサーバーに到達することを防ぐもので、アプリケーションセキュリティチームの負担を軽減するツールです。</p>
+	<div class="flex anchor relative">
+		<h3 id="analyze-any-url-safely-using-the-cloudflare-radar-url-scanner">Cloudflare Radar URL Scannerを使って、どんなURLでも安全に分析する（<a href="https://blog.cloudflare.com/radar-url-scanner-early-access">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#analyze-any-url-safely-using-the-cloudflare-radar-url-scanner" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>は、インターネットの状況を把握できる当社の無料プラットフォームです。<a href="https://blog.cloudflare.com/radar-url-scanner-early-access">3月</a>には、誰でも安全にURLを分析することができる<a href="https://radar.cloudflare.com/scan" target="_blank" rel="noopener noreferrer">URLスキャナ</a>を発表しました。作成されるレポートには、フィッシングスキャンを含む無数の技術的詳細が記されます。多くのユーザーがセキュリティ上の理由から使用していますが、ある一定のユーザーはWebページの裏側を探るために使用しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="unmasking-the-top-exploited-vulnerabilities-of-2022">2022年に最も悪用された脆弱性を明らかに（<a href="https://blog.cloudflare.com/ja-jp/unmasking-the-top-exploited-vulnerabilities-of-2022-ja-jp">✍️</a>）</h3>
+		<a href="https://blog.cloudflare.com/#unmasking-the-top-exploited-vulnerabilities-of-2022" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最後に、この<a href="https://blog.cloudflare.com/ja-jp/unmasking-the-top-exploited-vulnerabilities-of-2022-ja-jp">ブログ記事</a>では2023年8月より、サイバーセキュリティ・社会基盤安全保障庁（CISA）による<a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-215a" target="_blank" rel="noopener noreferrer">最も一般的に悪用される脆弱性</a>に焦点を当てています。Cloudflareがインターネットの大部分に対するリバースプロキシとしてのの役割を担っていることを踏まえ、CISAが言及した共通脆弱性識別子（CVE）がインターネット上でどのように悪用されているか、これまでに得られた知見を詳しく掘り下げます。</p>
+	<p>Google Analytics 4、Facebook CAPI、TikTokなどのサードパーティ製ツールを読み込みながら、Webサイトをよりセキュアに（かつ高速に）する方法について知りたい方は、当社の<a href="https://developers.cloudflare.com/zaraz" target="_blank" rel="noopener noreferrer">Cloudflare Zaraz</a>ソリューション（<a href="https://blog.cloudflare.com/ja-jp/cloudflare-zaraz-steps-up-general-availability-and-new-pricing-ja-jp">2023年7月に一般提供を開始</a>）をご利用ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="wrap-up">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#wrap-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<blockquote>
+		<p><b><i>「インターネットは当初、現在のような状況を想定して構築されたものではありませんでした。」</i></b></p>
+	</blockquote>
+	<p>これは<a href="https://www.sec.gov/Archives/edgar/data/1477333/000119312519222176/d735023ds1.htm" target="_blank" rel="noopener noreferrer">CloudflareのS-1文書</a>のあるセクションの冒頭部分です。また、私たちのブログでは、この驚くべき実験であるネットワークのネットワークが、いかに現在の私たちの日常生活や仕事で果たす役割を想定して設計されていなかったかを示すための<a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">参考</a>として何度か利用しています。誰もが攻撃や脅威、脆弱性の標的になり得る時代において、セキュリティ、パフォーマンス、プライバシーは極めて重要です。AIは攻撃を軽減するのに役立つ一方で、攻撃者の戦術をより複雑なものにもします。</p>
+	<p>このことを念頭に置いて、この2023年の読み物リストの提案／オンライン攻撃ガイドでもお伝えしたように、有害な攻撃による被害を防ぐことを優先することは、依然として最適な戦略です。うまくいけば、あなたの会社に対する攻撃のいくつかが気づかれずに済んだり、被害から免れたり、セキュリティダッシュボードで共有できる興味深いストーリーに変わるかもしれません。</p>
+	<p>具体的な事例についてさらに知りたい方は、<a href="https://www.cloudflare.com/case-studies" target="_blank" rel="noopener noreferrer">ハブ</a>の中のケーススタディを探ることで、<a href="https://www.cloudflare.com/case-studies/sage" target="_blank" rel="noopener noreferrer">Sage</a>のようなテクノロジー企業から、<a href="https://www.cloudflare.com/case-studies/state-of-arizona" target="_blank" rel="noopener noreferrer">アリゾナ州</a>、<a href="https://www.cloudflare.com/case-studies/republic-of-estonian-information-security-authority" target="_blank" rel="noopener noreferrer">エストニア国家情報システム庁</a>、さらにはサイバーセキュリティニュースメディアの<a href="https://www.cloudflare.com/case-studies/cybernews" target="_blank" rel="noopener noreferrer">Cybernews</a>まで、さまざまな機関のセキュリティ関連の記事を見つけることができます。</p>
+	<p>また、私たちはプライベートでセキュアなインターネットの未来についても考えており、2022年3月に<a href="https://blog.cloudflare.com/ja-jp/post-quantum-for-all-ja-jp">Cloudflareがすべてのお客様に対してポスト量子暗号のサポートを可能にした</a>ことは特筆すべきことでしょう。量子コンピュータの脅威に対して安全であるように設計されたポスト量子暗号についてのトピックは非常に興味深いものとなっているため是非<a href="https://blog.cloudflare.com/tag/post-quantum">お読みいただく</a>ことをお勧めしますが、量子暗号に対する知識の無い方も、保護がすでにここにあることを知っていただくだけでも良いことです。</p>
+	<p>前述のいくつかのセキュリティ機能を試したい方は、<a href="https://www.cloudflare.com/securitycenter" target="_blank" rel="noopener noreferrer">Cloudflare Security Center</a>（Freeプランを含む）から始めることをお勧めします。同様に、セルフサービスで利用できる<a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer">Zero Trustのエコシステム</a>（または当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASE</a> -Secure Access Service Edge- である<a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>）から始めることもお勧めします（こちらもFreeプランを含む）。このベンダー非依存型の<a href="https://zerotrustroadmap.org" target="_blank" rel="noopener noreferrer">ロードマップ</a>は、Zero Trustアーキテクチャの一般的な利点を示しており、これまで見てきたような<a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/4R2Wyj1ERPecMhbycOiPj8/c30f3e8502a04c6626e98072c48d4d7b/Zero_Trust_Roadmap_for_High-Risk_Organizations.pdf" target="_blank" rel="noopener noreferrer">高リスクの組織</a>に焦点を当てたものもあります。</p>
+	<p>用心すること。<a href="https://support.cloudflare.com/hc/en-us/sections/360007347692-Attack-Preparation-and-Response" target="_blank" rel="noopener noreferrer">準備すること</a>。安全であること。</p>
+</div>

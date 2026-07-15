@@ -1,0 +1,361 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/security-week-2025-wrap-up">English</a>、<a href="https://blog.cloudflare.com/zh-tw/security-week-2025-wrap-up">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/security-week-2025-wrap-up">Français</a>、<a href="https://blog.cloudflare.com/de-de/security-week-2025-wrap-up">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/security-week-2025-wrap-up">한국어</a>、<a href="https://blog.cloudflare.com/es-es/security-week-2025-wrap-up">Español</a>、<a href="https://blog.cloudflare.com/nl-nl/security-week-2025-wrap-up">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/security-week-2025-wrap-up">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LWMCSaHWRPT0B2SuQaBqz/9152e8ed8ce6e4f77c3911cc9362c0a3/unnamed.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareでの再度のSecurity Weekにお付き合いいただき、ありがとうございます。弊社は、インターネットをより安全なものにし、新たな脅威という課題に対処するためにチームが行っている仕事を大変誇りに思っています。今週の<a href="https://blog.cloudflare.com/welcome-to-security-week-2025"><u>最初の投稿</u></a>で、CISOのGrant Bourzikasが述べたように、セキュリティチームはますます複雑化する環境に直面しています。ベンダーの乱立、AI技術の急速な発展、そして拡大し続ける保護すべき領域など、課題は多岐にわたります。</p>
+	<p>私たちはこうした新しい課題に対応するため継続的に取り組んでいますが、私たちの考えを共有し、インターネットコミュニティと意見を交わすことができるSecurity WeekのようなInnovation Weeksは非常に貴重です。Cloudflareでは、より良いインターネットの構築を<i>支援</i>することをミッションとしています。私たちは、量子スーパーコンピューターの出現からインターネットを保護し、不正なAIスクレイピングからコンテンツ制作者の生活を守り、最新のインターネットの脅威に対する意識を高め、侵害されたパスワードの再利用を減らすための新しい方法を見つけるのを支援したいと考えています。これらの課題を解決するには、多くの方々の協力が必要です。SNSで意見を寄せてくださった方、<a href="https://github.com/cloudflare" target="_blank" rel="noopener noreferrer"><u>オープンソースリポジトリ</u></a>に貢献してくださった方、<a href="https://www.cloudflare.com/partners/technology-partners" target="_blank" rel="noopener noreferrer"><u>技術パートナープログラム</u></a>を通じて協力してくださった方々に心から感謝します。皆様からの協力が、私たちにとって何よりの力となります。</p>
+	<p>今週発表した内容のまとめは、以下をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-make-the-internet-safer">インターネットの安全性向上に貢献</h3>
+		<a href="https://blog.cloudflare.com/#helping-make-the-internet-safer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>タイトル</b></p>
+				</td>
+				<td>
+					<p><b>抜粋</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/post-quantum-zero-trust"><u>従来の暗号化技術が脅威にさらされています。Cloudflare Zero Trustでポスト量子暗号にアップグレードしましょう</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareのゼロトラストプラットフォームをトンネリングすることで、量子コンピュータによる脅威から企業ネットワークトラフィックを保護できるようになりました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/how-cloudflare-is-using-automation-to-tackle-phishing"><u>Cloudflareは、どのようにして自動化技術でフィッシングに立ち向かうか？</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは、脅威インテリジェンスと当社の開発者向けプラットフォームを活用し、フィッシング被害の報告を自動化しています。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/advancing-account-security-as-part-of-cloudflare-commitment-to-cisa-secure-by-design-pledge"><u>Cloudflareは、CISAの「セキュア・バイ・デザイン」誓約に基づき、アカウントセキュリティの強化に取り組んでいます</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは、多要素認証（MFA）の普及において大きな前進を遂げました。AppleとGoogleのソーシャルログインの追加により、ユーザーはより簡単かつ安全にアクセスできるようになりました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/email-security-now-available-for-free-for-political-parties-and-campaigns"><u>Cloudflare for Campaignsで、政治団体や政治運動向けのメールセキュリティを無料で利用できるようになりました</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare for Campaignsに「Email Security」が含まれるようになりました。これにより、政治キャンペーンに活用されるメールシステムの保護が一層強化されます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/enhanced-security-and-simplified-controls-with-automated-botnet-protection"><u>自動ボットネット対策、暗号スイートの選択、URLスキャナの強化により、セキュリティの強化と制御の簡素化を実現</u></a></p>
+				</td>
+				<td>
+					<p>セキュリティの強化と制御の簡素化を実現。Cloudflareは今回のSecurity Weekで、自動ボットネット対策、柔軟な暗号スイート、強化されたURLスキャナを発表します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/password-reuse-rampant-half-user-logins-compromised"><u>横行するパスワードの使い回し：ユーザーログインの約半数が侵害されています</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareによって保護されているWebサイトで実施されたログイン試行のほぼ半分が、漏洩した認証情報を使用したものでした。パスワードの使い回しは、大規模な自動化されたボット攻撃が発生する原因となります。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="threat-research-from-the-network-that-sees-the-most-threats">最も多くの脅威を観測するネットワークによる脅威調査&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#threat-research-from-the-network-that-sees-the-most-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>タイトル</b></p>
+				</td>
+				<td>
+					<p><b>抜粋</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/threat-events-platform"><u>Cloudforce One脅威イベントプラットフォームで、より詳しい脅威アクターの活動内容を提供します</u></a></p>
+				</td>
+				<td>
+					<p>新しい脅威イベントプラットフォームでリアルタイムインサイトを得ましょう。このツールは、攻撃の先手を打ち、重要な資産を保護するための実用的なインテリジェンスを提供して、サイバーセキュリティの防御力を強化します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-security-posture-management"><u>Cloudflareで企業の予測型セキュリティ体勢を1つのプラットフォームで管理</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは、あらゆる環境のSaaSやWebアプリケーションの保護を支援する、統合セキュリティ体勢管理のための単一プラットフォームを提供します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/monitoring-and-forensics"><u>Cloudflareは、Log Explorerとカスタムダッシュボードでネイティブな監視と犯罪捜査を可能にします。</u></a></p>
+				</td>
+				<td>
+					<p>Zero Trustデータセットと、疑わしい、または異常なアクティビティについて重要なメトリクスを監視できるカスタムダッシュボードを使用できるようになりました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/upgraded-turnstile-analytics-enable-deeper-insights-faster-investigations"><u>新しいTurnstile Analyticsの導入：訪問者のトラフィック、ボットの挙動パターン、トラフィックの異常、攻撃の属性に関する洞察を得ることができます。</u></a></p>
+				</td>
+				<td>
+					<p>新しいTurnstile Analyticsの導入：訪問者のトラフィック、ボットの挙動パターン、トラフィックの異常、攻撃の属性に関する洞察を得ることができます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-radar-ddos-leaked-credentials-bots"><u>Cloudflare Radarのセキュリティインサイトを拡張し、新しいDDoS、漏洩した資格情報、ボットのデータセットを追加</u></a></p>
+				</td>
+				<td>
+					<p>Security Week 2025では、Cloudflare Radarに新しいDDoS関連のグラフ、漏洩した資格情報のトレンドに関する新しいインサイト、そして新しいボットページを追加します。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="securing-models-and-guarding-against-ai-threats">モデルの安全性を確保し、AIの脅威から保護する&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#securing-models-and-guarding-against-ai-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>タイトル</b></p>
+				</td>
+				<td>
+					<p><b>抜粋</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-for-ai-supporting-ai-adoption-at-scale-with-a-security-first-approach"><u>Cloudflare for AI：セキュリティ重視のアプローチで、大規模なAI導入を支援</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare for AIを利用することで、開発者、セキュリティチーム、コンテンツ制作者は、Cloudflareのネットワークとツールのポートフォリオを活用して、AIアプリケーションのセキュリティ確保、監視、弾力性のある安全な利用を実現することができます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer"><u>悪意のあるJavaScriptの意図を解明し、Web閲覧をより安全にするためのAIの訓練方法</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareが、データの前処理から大規模な推論まで、グラフニューラルネットワークを使用して悪意のあるJavaScriptの意図を解明するAIモデルの開発方法について、詳細をご覧ください。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/an-early-look-at-cryptographic-watermarks-for-ai-generated-content"><u>AI生成コンテンツの暗号化ウォーターマーク技術（早期紹介）</u></a></p>
+				</td>
+				<td>
+					<p>私たちはモデルのパフォーマンスに影響を与えることなく、AIコンテンツを区別できるようにする、有望な新しいアプローチを紹介します。私たちは、パフォーマンスに影響を与えることなくAIコンテンツを区別するための、新しいアプローチをとっています。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-labyrinth"><u>Cloudflareは生成系AIを用いて、AIクローラーや、クロールディレクティブを遵守しないその他のボットを低速化、混乱させ、徒労に終わらせます。その方法を紹介します。</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは生成系AIを用いて、AIクローラーや、クロールディレクティブを遵守しないその他のボットを低速化、混乱させ、徒労に終わらせます。その方法を紹介します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai"><u>CloudflareのFirewall for AIで、公開されているAIアプリケーションのセキュリティをコントロール</u></a></p>
+				</td>
+				<td>
+					<p>Firewall for AIはCloudflare WAFとシームレスに統合し、LLM（大規模言語モデル）を活用した公開アプリケーションを発見して保護します。今すぐベータ版に参加して、生成AIのセキュリティのコントロールを手に入れましょう</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/bots-heuristics"><u>新しい高精度ヒューリスティックスで、ボット管理の柔軟性と可視性を向上</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareのルールセットエンジンに新しいヒューリスティクスフレームワークを組み込み統合することで、より柔軟にルールを作成し、新しいリリースを素早く展開できるようになりました</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="simplifying-security">セキュリティの簡素化</h3>
+		<a href="https://blog.cloudflare.com/#simplifying-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>タイトル</b></p>
+				</td>
+				<td>
+					<p><b>抜粋</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/introducing-ai-agent"><u>複雑な設定を簡素化するCloudflareのAIエージェント「Cloudy」の紹介</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare初のAIエージェント「Cloudy」は、Cloudflare管理者が現在直面している複雑な設定を理解しやすくします。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/new-application-security-experience"><u>新しい統合ダッシュボード体験でアプリケーションセキュリティをシンプルに</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareのダッシュボードに新たなアプリケーションセキュリティ機能を追加。ユースケース別に整理された刷新されたUIで、お客様は簡単に目的のアカウントに移動して保護できるようになります</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/improved-support-for-private-applications-and-reusable-access-policies-with-cloudflare-access"><u>Cloudflare Accessで、プライベートアプリケーションと再利用可能なアクセスポリシーのサポートを改善</u></a></p>
+				</td>
+				<td>
+					<p>プライベートホスト名とIPアドレス定義済みのアプリケーションのサポート、および再利用可能なアクセスポリシーの展開を発表します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/aegis-deep-dive"><u>Cloudflare Aegisで許可リスト管理の簡素化とオリジンへのアクセスを制限</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare Aegisは、ゼロトラスト環境でのオリジンアクセス用の専用のエグレスIPを提供します。現在、BYOIPと顧客向けの設定が可能であり、今後AegisのIPアドレス利用状況の可視化機能も追加予定です。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/https-only-for-cloudflare-apis-shutting-the-door-on-cleartext-traffic"><u>CloudflareのAPIをHTTPSのみに：平文のトラフィックを遮断</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare APIのHTTPポートを完全に閉じ、平文のトラフィックを遮断します。これにより、サーバー側で接続を拒否する前に、クライアントが意図せずに秘密のAPIキーを平文で漏洩してしまうリスクを防止することができます。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2025"><u>ForresterがCloudflareを2025年の最新レポートでwebアプリケーションファイアウォールソリューション部門のリーダーに指定</u></a></p>
+				</td>
+				<td>
+					<p>Forrester ResearchはCloudflareを、2025年第1四半期の『Forrester Wave™：Web Application Firewalls Solutions』レポートでリーダーとして認定しました。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="data-security-everywhere-all-the-time">常にあらゆる場所でデータを保護&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#data-security-everywhere-all-the-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>タイトル</b></p>
+				</td>
+				<td>
+					<p><b>抜粋</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/scan-cloud-dlp-with-casb"><u>Cloudflare OneでAWSとGCP内の機密データや設定ミスを検出</u></a></p>
+				</td>
+				<td>
+					<p>CloudflareのCASBでクラウドストレージを連携させてスキャンを実行し、機密データや設定ミスを検出しましょう。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/browser-based-rdp"><u>リスクのないRDP：Cloudflareが提供する、セキュアに協力会社がアクセスできるブラウザベースのソリューション</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは、クライアントを必要としないブラウザベースのリモートデスクトッププロトコル（RDP）のサポートを開始します。VPNやRDPクライアントを必要としないセキュアなリモートのWindowsサーバーアクセスを可能にし、請負業者の利用やBYODセキュリティ強化をサポートします。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/improving-data-loss-prevention-accuracy-with-ai-context-analysis"><u>AIを活用したコンテキスト分析でデータ損失防止の精度を向上</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareのデータ損失防止（DLP）は、Cloudflareの開発者プラットフォーム上に構築された自己改善型のAIを活用したアルゴリズムを使用し、AIのコンテキスト分析により検出精度を向上させることで、誤検知を減らしています。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/enhance-data-protection-in-microsoft-outlook-with-cloudflare-ones-new-dlp"><u>Cloudflare Oneの新機能「DLP Assist」で、Microsoft Outlookのデータ保護を強化</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare Oneの新機能「DLP Assist」により、Microsoft Outlook内の機密データ保護がさらに簡単になりました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/lattice-crypto-primer"><u>ポスト量子に備える：格子暗号の入門ガイド</u></a></p>
+				</td>
+				<td>
+					<p>この記事は、ポスト量子（PQ）暗号への移行の中心となる「格子」と呼ばれる数学の入門ガイドです。格子を使った暗号化や認証の方法を、基礎からわかりやすく解説します。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/irap-protected-assessment"><u>Cloudflareは「IRAP PROTECTED」レベルの評価を取得し、世界の公共部門への取り組みをさらに強化しました。</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflareは現在、「IRAP PROTECTED」レベルの評価を受けており、当社の製品とサービスはオーストラリアの公共セクターで利用されています。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="tune-in-to-the-latest-on-cloudflare-tv">Cloudflare TVの最新情報を視聴する</h2>
+		<a href="https://blog.cloudflare.com/#tune-in-to-the-latest-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Security Weekで発表した内容をさらに詳しく知りたい方は、<a href="https://www.cloudflare.com/security-week-2025/cloudflare-tv" target="_blank" rel="noopener noreferrer"><u>CFTVの特集コーナー</u></a>をご覧ください。チームが最新のアップデートについて詳しく解説しています。</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b57f1311e48f026f53a654a85e5d8750/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb57f1311e48f026f53a654a85e5d8750%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D5s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="see-you-for-our-next-innovation-week">次回のInnovation Weekでお会いしましょう</h2>
+		<a href="https://blog.cloudflare.com/#see-you-for-our-next-innovation-week" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Security Weekのブログ記事を読んでいただいた方、SNSで関与していただいた方に、この場を借りて感謝をお伝えします。次回のInnovation Weekである<a href="https://www.cloudflare.com/developer-week-2024/updates" target="_blank" rel="noopener noreferrer"><u>Developer Week</u></a>は4月に開催されますので、ぜひご参加ください。またお会いできるのを楽しみにしております。</p>
+</div>

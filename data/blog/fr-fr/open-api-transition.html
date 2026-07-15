@@ -1,0 +1,166 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/open-api-transition">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/open-api-transition">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/open-api-transition">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/open-api-transition">日本語</a>, en <a href="https://blog.cloudflare.com/pt-br/open-api-transition">Português</a>, en <a href="https://blog.cloudflare.com/es-es/open-api-transition">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/open-api-transition">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FuAazBSpZEHniHykC4sh8/c7638133206d63a51c5e8873994b6066/open-api-transition.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous annonçons aujourd'hui la mise en disponibilité générale des <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer">schémas OpenAPI pour l'API Cloudflare</a>. Ils sont publiés via GitHub et seront mis à jour régulièrement à mesure de l'ajout et de la mise à jour d'API par Cloudflare. OpenAPI est la norme largement adoptée pour la définition des API dans un format lisible par la machine. Avec les schémas OpenAPI il est possible de connecter notre API à un grand nombre d'outils qui accélèrent le développement aussi bien pour nous que pour nos clients. En interne, il nous sera plus facile d'entretenir et mettre à jour nos API. Avant de passer en revue ces avantages, commençons par les principes de base.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yxy5Dmp3sT7mMhoPFwyMs/43ad3be6028c91ab4cee6ce72eea508e/image1-44.png" alt="The Cloudflare API now uses OpenAPI schemas" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-is-openapi">Qu'est-ce qu'OpenAPI ?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-openapi" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une grande partie d'Internet repose sur des API (Interfaces de programmation d'application) ou les propose en tant que services aux clients du monde entier. C'est ce qui permet aux ordinateurs de communiquer entre eux de manière normalisée. OpenAPI est une norme largement adoptée pour définir les API. Grâce à elle, les autres machines peuvent analyser en toute fiabilité ces définitions et les utiliser de manière utile. Le <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">produit API Shield</a> de Cloudflare utilise des schémas OpenAPI comme méthode de validation de schéma afin de garantir que seules des requêtes d'API bien formées sont envoyées à vos serveurs d'origine.</p>
+	<p>Cloudflare elle-même compte une API qui pour nos clients fait office d'interface avec nos produits de sécurité et de performances situés ailleurs dans Internet. Comment définir nos nouvelles API ? Auparavant nous utilisions une norme appelée <a href="https://github.com/json-schema-org/json-hyperschema-spec" target="_blank" rel="noopener noreferrer">JSON Hyper-Schema</a>. Elle nous a été bien utile, mais avec le temps nous avons souhaité adopter davantage d'outils qui pouvaient à la fois être avantageux pour nous en interne et faciliter la vie de nos clients. La communauté OpenAPI a été florissante au cours des quelques dernières années, elle nous a ouvert de nombreuses possibilités, nous en discuterons, qui étaient disponibles lorsque nous utilisions JSON Hyper-Schema. Désormais nous utilisons OpenAPI.</p>
+	<p>Vous pouvez en découvrir plus concernant OpenAPI <a href="https://oai.github.io/Documentation/start-here.html" target="_blank" rel="noopener noreferrer">ici</a>. Le fait de disposer d'une norme ouverte et bien comprise pour définir nos API permet d'utiliser des outils et des infrastructures partagés qui peuvent lire les définitions de ces normes. Examinons quelques exemples.</p>
+	<div class="flex anchor relative">
+		<h2 id="uses-of-cloudflares-openapi-schemas">Utilisations des schémas OpenAPI de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#uses-of-cloudflares-openapi-schemas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La plupart des clients n'auront pas besoin d'utiliser directement les schémas pour en observer la valeur. Le premier système qui tire profit des schémas OpenAPI est celui de nos <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">nouveaux documents sur les API</a> qui ont été <a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">annoncés hier</a>. Maintenant que nous disposons de schémas OpenAPI, nous profitons de l'outil open source <a href="https://stoplight.io/open-source/elements" target="_blank" rel="noopener noreferrer">Stoplight Elements</a> pour la génération de ce nouveau site de documentation. Nous avons ainsi été en mesure de laisser tomber notre site qui était assemblé de manière personnalisée et difficile à entretenir. De plus, de nombreux ingénieurs chez Cloudflare connaissaient bien OpenAPI, nous gagnons ainsi des équipes capables d'écrire de nouveaux schémas plus rapidement et moins susceptibles de commettre des erreurs en utilisant une norme que les équipes comprennent lorsqu'elles définissent de nouvelles API.</p>
+	<p>Il existe toutefois des moyens de profiter directement de ces schémas. La communauté OpenAPI dispose d'un grand nombre d'outils qui n'exigent qu'un ensemble de schémas pour pouvoir être utilisés. La simulation d'API et la génération de bibliothèques en sont deux exemples.</p>
+	<div class="flex anchor relative">
+		<h3 id="mocking-cloudflares-api">Simulation d'API de Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#mocking-cloudflares-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Imaginons que vous ayez du code qui appelle une API de Cloudflare et que vous souhaitiez exécuter facilement des tests unitaires en local ou des tests d'intégration dans votre pipeline CI/CD. Certes vous pourriez vous contenter d'appeler l'API cloudflare pour chaque exécution, mais il se peut que vous ne vouliez pas procéder ainsi pour plusieurs raisons. D'abord, il se peut que la fréquence à laquelle vous voulez exécuter ces tests rende la gestion de la création et de la désinstallation des ressources très compliquée. Qui plus est, ces nombreux tests n'ont pas forcément pour objectif de valider une logique dans Cloudflare, mais plutôt le comportement de votre propre système. Dans ce cas, la simulation d'API de Cloudflare est la solution idéale car vous êtes assuré de ne pas aller à l'encontre des modalités du contrat d'API de Cloudflare, et vous n'avez pas à vous préoccuper des spécificités de la gestion des ressources réelles. De plus, vous pouvez simuler différents scénarios, tels qu'une limitation du débit ou la réception de 500 erreurs. Vous pouvez ainsi tester votre code en vue de circonstances généralement rares mais qui pourraient engendrer des conséquences graves.</p>
+	<p>À titre d'exemple, <a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking" target="_blank" rel="noopener noreferrer">Stoplight Prism</a> pourrait être utilisé pour simuler l'API de Cloudflare à des fins de test. Avec une copie locale des schémas d'API de Cloudflare, vous pouvez exécuter la commande suivante pour démarrer une simulation de serveur local :</p>
+	<p>Vous pouvez ensuite envoyer des requêtes au serveur simulé afin de vérifier que la manière dont vous utilisez l'API de Cloudflare ne provoque aucune violation de contrat d'API localement :</p>
+	<pre class="language-bash"><code class="language-bash">$ docker run --init --rm \
+  -v /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml \
+  -p 4010:4010 stoplight/prism:4 \
+  mock -h 0.0.0.0 /tmp/openapi.yaml</code></pre>
+	<p>Cela se traduit par un développement plus rapide et des tests exécutés plus rapidement, tandis que les problèmes concernant le contrat d'API sont repérés de manière précoce, avant la fusion et le déploiement.</p>
+	<pre class="language-bash"><code class="language-bash">$ curl -sX PUT localhost:4010/zones/f00/activation_check \
+  -Hx-auth-email:foo@bar.com -Hx-auth-key:foobarbaz | jq
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "023e105f4ecef8ad9ca31a8372d0c353"
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="library-generation">Génération de bibliothèques</h3>
+		<a href="https://blog.cloudflare.com/#library-generation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare possède des bibliothèques dans de nombreux langages de programmation tels que <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank" rel="noopener noreferrer">Terraform</a> et <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>, mais il existe des langages de programmation que nous ne prenons pas en charge. Heureusement, en ayant recours à un outil tel que <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank" rel="noopener noreferrer">openapi generator</a>, vous pouvez charger des schémas d'API de Cloudflare et générer une bibliothèque avec une large game de langages à utiliser dans votre code pour communiquer avec l'API de Cloudflare. Par exemple, vous pouvez générer une bibliothèque Java à l'aide des commandes suivantes :</p>
+	<p>Ensuite, commencez à utiliser ce client dans votre code Java pour communiquer avec l'API de Cloudflare.</p>
+	<pre class="language-bash"><code class="language-bash">git clone https://github.com/openapitools/openapi-generator
+cd openapi-generator
+mvn clean package
+java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
+   -i https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml \
+   -g java \
+   -o /var/tmp/java_api_client</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-transitioned-to-openapi">Comment Cloudflare est passé à OpenAPI</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-transitioned-to-openapi" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comme il a été mentionné précédemment, avant, nous utilisions JSON Hyper-Schema pour définir nos API. Nous avons environ 600 points de terminaison qui ont été définis dans les schémas. Voici un fragment de ce à quoi ressemble un point de terminaison dans JSON Hyper-Schema :</p>
+	<p>Observons ce même point de terminaison dans OpenAPI :</p>
+	<pre class="language-json"><code class="language-json">{
+      "title": "List Zones",
+      "description": "List, search, sort, and filter your zones.",
+      "rel": "collection",
+      "href": "zones",
+      "method": "GET",
+      "schema": {
+        "$ref": "definitions/zone.json#/definitions/collection_query"
+      },
+      "targetSchema": {
+        "$ref": "#/definitions/response_collection"
+      },
+      "cfOwnership": "www",
+      "cfPlanAvailability": {
+        "free": true,
+        "pro": true,
+        "business": true,
+        "enterprise": true
+      },
+      "cfPermissionsRequired": {
+        "enum": [
+          "#zone:read"
+        ]
+      }
+    }</code></pre>
+	<p>Comme vous pouvez le voir, les deux sont en apparence assez semblables et, en grande majorité, les informations contenues dans chacune des méthodes sont les mêmes à savoir une description, et des définitions de requête et de réponse (bien que celles-ci soient intégrées dans un lien $refs). Ce n'est pas dans le changement de la manière de définir les schémas eux-mêmes que se trouve l'intérêt à migrer de l'un vers l'autre, mais dans ce que nous pouvons faire avec ces schémas. De nombreux outils permettent d'analyser les schémas OpenAPI alors qu'ils sont beaucoup moins nombreux à le permettre pour JSON Hyper-Schema.</p>
+	<pre class="language-bash"><code class="language-bash">/zones:
+    get:
+      description: List, search, sort, and filter your zones.
+      operationId: zone-list-zones
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/components-schemas-response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Zones response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/components-schemas-response_collection'
+          description: List Zones response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Zones
+      tags:
+      - Zone
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true</code></pre>
+	<p>Si l'API Cloudflare n'était formée que de cette API, il serait facile de se contenter de convertir le JSON Hyper-Schema en schéma OpenAPI à la main et de s'arrêter là. Cependant, lorsqu'il s'agit de le faire 600 fois de suite, la tâche aurait été considérable. N'oublions pas que les équipes ajoutent constamment de nouveaux points de terminaison, le rythme était donc impossible à tenir. Par ailleurs, nos documents API existants utilisaient l'hyper-schéma JSON existant, ce qui signifiait que nous devions maintenir les deux schémas à jour pendant toute période de transition. Il devait exister un meilleur moyen.</p>
+	<div class="flex anchor relative">
+		<h3 id="auto-conversion">Conversion automatique</h3>
+		<a href="https://blog.cloudflare.com/#auto-conversion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>JSON Hyper-Schema et OpenAPI étant tous deux des normes, il devait être possible de prendre un fichier dans un format et de le convertir dans l'autre, n'est-ce pas ? Heureusement, la réponse est oui ! Nous avons créé un outil qui prend tout ce qui existe en JSON Hyper-Schema et en produit des schémas OpenAPI entièrement conformes. Bien sûr, cela ne s'est pas fait en un jour, mais grâce aux outils OpenAPI existants, nous avons pu améliorer de manière itérative le convertisseur automatique et exécuter les outils de validation OpenAPI sur les schémas de sortie pour voir quels problèmes l'outil de conversion continuait de rencontrer.</p>
+	<p>Après de nombreuses itérations et améliorations apportées à l'outil de conversion, nous avons finalement obtenu des schémas Open API Spec totalement conformes, générés automatiquement à partir de notre JSON Hyper-Schema existant. Tandis que nous étions en train de créer cet outil, les équipes ont continué d'ajouter et de mettre à jour les schémas existants et notre équipe de contenu produit a également mis à jour le texte dans les schémas pour faciliter l'utilisation de nos documents d'API. Ce processus présente l'avantage de ne pas nous obliger à ralentir quoi que ce soit dans notre activité dans la mesure où tout ce qui était modifié dans les anciens schémas se reflétait automatiquement dans les nouveaux schémas !</p>
+	<p>Une fois l'outil prêt, il nous a fallu décider à quel moment et de quelle manière nous allions arrêter d'apporter des modifications aux JSON Hyper-Schemas et faire migrer toutes les équipes vers les schémas OpenAPI. Les (désormais anciens) documents API étaient notre principale préoccupation dans la mesure où ils ne comprenaient que JSON Hyper-Schema. Grâce à l'aide de nos équipe Expérience des développeurs et Contenu de produit, nous avons pu lancer les nouvelles documentations sur les API aujourd'hui et nous pouvons officiellement passer à OpenAPI aujourd'hui également !</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Et ensuite ?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Maintenant que nous sommes entièrement passés à OpenAPI, d'autres nouvelles opportunités se présentent à nous. En interne, nous allons étudier les outils que nous pouvons adopter pour alléger les efforts de chaque équipe et accélérer le développement d'API. Nous envisageons notamment la possibilité de créer automatiquement des schémas OpenAPI à partir de notations de code. Sur le plan externe, nous disposons désormais des outils de base nécessaires pour commencer à explorer la manière de générer automatiquement et de prendre en charge davantage de bibliothèques de langages de programmation que les clients pourront utiliser. Nous sommes également impatients de voir ce que vous pourrez faire de ces schémas, par conséquent si vous avez des idées ou que vous parvenez à quelque chose de chouette, n'hésitez pas à nous en faire part !</p>
+</div>

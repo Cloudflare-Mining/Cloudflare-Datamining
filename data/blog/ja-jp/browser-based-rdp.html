@@ -1,0 +1,234 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/browser-based-rdp">English</a>および<a href="https://blog.cloudflare.com/zh-cn/browser-based-rdp">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tAU6bDy8dl7yw6ZfAo7rD/6fd219daec1ebd50cf8d0d3692cee6d1/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/intro-access-for-infrastructure-ssh"><u>短時間のSSHアクセス</u></a>は、2024年10月にCloudflareの<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>SASE</u></a>プラットフォームで初登場しました。<a href="https://blog.cloudflare.com/cloudflare-acquires-bastionzero"><u>BastionZeroの買収</u></a>で得た知識を活用した短時間SSHアクセスによって、ゼロトラスト制御をLinuxサーバーの前に適用することができます。しかし、それはほんの始まりに過ぎませんでした。長い間要望されてきた機能である、<a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol" target="_blank" rel="noopener noreferrer"><u>リモートデスクトッププロトコル（RDP）</u></a>のクライアントレスなブラウザベースのサポートを発表できることを嬉しく思います。Cloudflareの最新のプロキシアーキテクチャ上に構築されたRDPプロキシは、セキュアかつ高パフォーマンスで、何よりセットアップ、保守、使用が簡単なソリューションです。</p>
+	<div class="flex anchor relative">
+		<h3 id="security-challenges-of-rdp">RDPのセキュリティ上の課題</h3>
+		<a href="https://blog.cloudflare.com/#security-challenges-of-rdp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/rdp" target="_blank" rel="noopener noreferrer"><u>リモートデスクトッププロトコル（RDP）</u></a>は1998年に誕生し、<a href="https://news.microsoft.com/1998/06/16/microsoft-releases-windows-nt-server-4-0-terminal-server-edition" target="_blank" rel="noopener noreferrer"><u>Windows NT 4.0 Terminal Server Edition</u></a>で初めて提供されました。そのWindowsバージョンを聞いたことがないとしたら、それは、以来16の主要なWindowsリリースが行われているからです。それにもかかわらず、今でも数千の企業がWindowsサーバーへのリモートアクセスにRDPを使用しています。RDPは、リモートWindowsサーバー上のインタラクションをエミュレートするために、立て続けに撮られた画面キャプチャをグラフィカルユーザーインターフェースを使って表示するという、少し奇妙なプロトコルです。（ここでは、描画コマンド、ビットマップ更新、動画ストリームなど、画面キャプチャ以外にも多くのことが起こっています。先ほども言いましたが、これは少し奇妙です）。RDPはこの複雑さのため計算負荷が高くなる可能性があり、従来のVPNで高パフォーマンスを実現する上での課題となっています。</p>
+	<p>RDPはその奇妙さもさることながら、初期の脆弱性のせいでセキュリティ業界では<a href="https://www.cloudflare.com/learning/access-management/rdp-security-risks" target="_blank" rel="noopener noreferrer"><u>悪評</u></a>がありました。主な問題は、脆弱なユーザーサインイン認証情報と無制限のポートアクセスの2つです。Windowsサーバーは一般にパスワードで保護されていますが、パスワードはセキュリティが不十分なものが多く、しかも複数アカウントで共有されている場合があります。そのため、RDPサーバーは、ブルートフォース攻撃（総当たり攻撃）やクレデンシャルスタッフィング攻撃に対して無防備になります。</p>
+	<p>これまで、悪質なアクターがRDPのデフォルトポートである3389を悪用してオンパス攻撃を仕掛けてきました。発見された最も深刻なRDP脆弱性の1つがBlueKeepです。正式には<a href="https://nvd.nist.gov/vuln/detail/CVE-2019-0708" target="_blank" rel="noopener noreferrer"><i>CVE-2019-0708</i></a>として知られる脆弱性で、これを悪用すれば、リクエストが特定のフォーマットに準拠し、RDPを実行しているポートに送信される限り、認証なしでリモートコード実行（RCE）できます。さらに悪いことにBlueKeepはワーマブルで、ユーザーの操作なしにネットワーク内の他のマシンに広がります。悪質アクターはRDPを侵害して不正にアクセスできるため、攻撃者はネットワーク内を水平移動して、権限を昇格させ、マルウェアをインストールすることができます。RDPは、Ryuk、Conti、DoppelPaymerなどのランサムウェアのデプロイにも使用されており、「Ransomware Delivery Protocol」というニックネームが付けられています。</p>
+	<p>これはRDPの登場以来見つかった脆弱性の一部に過ぎませんが、RDPが駄目と言っているわけではありません。幸いなことに、Windowsの新バージョン、CVEパッチ、パスワード衛生管理の改善、特権アクセスに関する意識の高揚により、多くの企業で攻撃対象領域が縮小しています。しかし、これほど多くのWindowsサーバーがセキュリティで保護されているにもかかわらず、オンライン上には未だにパッチ未適用のシステムや設定が不十分なシステムが数え切れないほどあり、ランサムウェアやボットネットの格好の標的になっています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-need-for-a-browser-based-rdp-solution">ブラウザベースのRDPソリューションの必要性</h3>
+		<a href="https://blog.cloudflare.com/#the-need-for-a-browser-based-rdp-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セキュリティ上のリスクはあるものの、RDPは多くの企業にとって依然不可欠で、特に分散型ワークフォースやサードパーティ請負業者を使う場合は欠かせません。RDPは、ユーザーのマシンよりも多いCPU/GPUリソースを備えた高パワーのWindowsサーバーを必要とする計算集約型タスクで力を発揮します。セキュリティ重視の企業では、RDPのおかげで、Windowsサーバーにアクセスしているのが誰か、セッション中にどのようなアクションがとられているかについて、より優れた可視性を得ることができます。</p>
+	<p>企業のデバイスを請負業者に支給するのは高コストで面倒なため、多くの企業が私物デバイス持ち込み（BYOD）の方針を採用しています。そうなると、企業は請負業者に、任務遂行に必要な企業リソースを備えたWindowsサーバーへのRDP接続の手段を提供する必要があります。</p>
+	<p>従来のRDPはユーザーデバイスにクライアントソフトウェアをインストールする必要があるため、私物マシンや非管理デバイスを使用する請負業者（または従業員）にとって適切なソリューションとはいえません。Cloudflareのお客様はこれまで、ブラウザベースのRDPアクセスを有効にするために、<a href="https://guacamole.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Guacamole</u></a>や<a href="https://devolutions.net/gateway" target="_blank" rel="noopener noreferrer"><u>Devolutions Gateway</u></a>などのセルフホスト型サードパーティツールを使わざるを得ませんでした。これにより、運用上の問題がいくつか発生しました：</p>
+	<ul>
+		<li>
+			<p><b>インフラストラクチャの複雑さ：</b> RDPゲートウェイのデプロイと保守で、運用オーバーヘッドが増大します。</p>
+		</li>
+		<li>
+			<p><b>保守の負担：</b> 商用ツールやオープンソースツールは頻繁なアップデートやパッチ適用が必要な場合があり、カスタムフォークが必要になる場合もあります。</p>
+		</li>
+		<li>
+			<p><b>コンプライアンスの課題：</b> サードパーティソフトウェアは、特に規制対象業界では追加のセキュリティ監査とリスク管理評価が必要です。</p>
+		</li>
+		<li>
+			<p><b>悪い意味の冗長性：</b> お客様がCloudflareを頼られるのは、インフラストラクチャの保守を簡素化したいからであり、<i>さらなる複雑化は望まれません</i>。</p>
+		</li>
+	</ul>
+	<p>Cloudflareではお客様の声を大切にしています。Cloudflareは、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer"><u>ゼロトラストネットワークアクセス（ZTNA）</u></a>サービスに組み込んだ最新セキュリティ制御を活用する高性能RDPプロキシをアーキテクチャ化しました。当社は、業界でよく言う「セキュリティとパフォーマンスのトレードオフ」は時代遅れの考え方だと感じています。適切な基盤となるネットワークアーキテクチャを使用することで、RDPの最も悪名高い問題を軽減することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-browser-based-rdp-with-access">AccessでブラウザベースのRDPを導入</h3>
+		<a href="https://blog.cloudflare.com/#introducing-browser-based-rdp-with-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ブラウザベースのRDPソリューションは<a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>の最新製品で、<a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/browser-rendering" target="_blank" rel="noopener noreferrer"><u>SSHやVNCといった既存のクライアントレスサービス</u></a>と共に、VPNやRDPクライアントなしでWindowsサーバーへのセキュアなリモートアクセスを実現します。Cloudflareのグローバルネットワーク内にネイティブに構築されているため、追加のインフラストラクチャは必要ありません。</p>
+	<p>当社のブラウザベースのRDPアクセスは、セルフホスト型のAccessアプリケーションの力と<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target" target="_blank" rel="noopener noreferrer">ターゲット</a>の柔軟性の高さを組み合わせており、<a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/infrastructure-apps" target="_blank" rel="noopener noreferrer"><u>Access for Infrastructure</u></a>で提供されます。管理者は以下を強制適用できます：</p>
+	<ul>
+		<li>
+			<p><b>認証：</b> SSO、MFA、デバイスポスチャーによって、内部RDPリソースにアクセスするユーザーの認証方法を制御します。</p>
+		</li>
+		<li>
+			<p><b>認可：</b> ポリシーベースのアクセス制御によって、誰が、どのターゲットに、いつアクセスできるかを決定します。</p>
+		</li>
+		<li>
+			<p><b>監査：</b> セキュリティ侵害が発生した場合、規制コンプライアンスと可視性をサポートするためにアクセスログを提供します。</p>
+		</li>
+	</ul>
+	<p>ユーザーが必要とするのはWebブラウザだけで、ネイティブのRDPクライアントは必要ありません！RDPサーバーには、当社のアプリコネクタ<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>を介して、既存のAccessのお客様と共通のデプロイメントモデルを使用してアクセスします。特定のRDPサーバーにアクセスするためにユーザーデバイスをプロビジョニングする必要がなく、最小限のセットアップでこの新機能を導入できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vAxzxVY1RXc0batsTEdfn/23322d79ac68cfa0da698bdb2113db2c/unnamed__4_.png" alt="" class="kg-image" width="1600" height="822" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works">仕組み</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h5 id="the-client">クライアント</h5>
+		<a href="https://blog.cloudflare.com/#the-client" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの実装では、ブラウザ上で動作する高性能RDPクライアント<a href="https://github.com/Devolutions/IronRDP" target="_blank" rel="noopener noreferrer"><u>IronRDP</u></a>を利用します。IronRDPが選ばれた理由は、効率的で応答性の高い最新のRDPクライアント実装だからです。JavaベースのApache GuacamoleもRDPクライアント実装でよく使われますが、それとは異なり、IronRDPはRustで構築され、Cloudflareの開発エコシステムと非常にうまく統合します。</p>
+	<p>適切なツールを選択することの効果は多大ですが、ブラウザでRDPセッションを円滑に進めるには、いくつかの課題があります。実用的な観点から言えば、ブラウザはRDPメッセージを送信することができません。RDPは、レイヤー4伝送制御プロトコル（TCP）に直接依存して通信します。ブラウザは基本プロトコルとしてTCPを使用できますが、未加工のTCPソケット上でアプリが直接プロトコルサポートを構築できるようなAPIは公開しません。</p>
+	<p>もう1つの課題はセキュリティ関連です。ユーザー名とパスワードを使ったRDPネイティブの認証メカニズムは、ゼロトラスト時代の認証としては至らない点が多いのです。</p>
+	<p>これら両方の課題に取り組むため、IronRDPクライアントはRDPセッションをWebSocket接続にカプセル化します。レイヤー4TCPトラフィックをHTTPSでラップすることにより、クライアントはネイティブブラウザAPIを使用してCloudflareのRDPプロキシと通信することができます。また、Cloudflare AccessがID認識型ポリシーを使用してセッション全体を保護することも可能になります。Cloudflare Accessの認証JSON Webトークン（JWT）をCookie経由でWebSocket接続に添付することにより、RDPセッションのすべてのサービス間ホップが認証済みユーザーからのものであることを検証します。</p>
+	<p>ここで、セキュリティとパフォーマンスの最適化方法について簡単に説明しましょう。従来のクライアントベースのRDPトラフィックでは、クライアントとサーバーがTLS接続をネゴシエートして、セッションの保護と検証を行います。しかし、ブラウザからCloudflareへのWebSocket接続は既にTLSで保護されているため、IronRDPのRDCleanPathプロトコル拡張によって、この2番目のトラフィックのカプセル化を排除します。こうして重複をなくすことで、セッションハンドシェイク時の不要なパフォーマンス低下と複雑化を回避できます。</p>
+	<div class="flex anchor relative">
+		<h5 id="the-server">サーバー</h5>
+		<a href="https://blog.cloudflare.com/#the-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>IronRDPクライアントは、専用WebSocketプロキシへのWebSocket接続を開始します。このプロキシはクライアントの認証、WebSocket接続の終了、Cloudflareのインフラストラクチャの深部へトンネル伝送されたRDPトラフィックのプロキシによる接続円滑化の役割を担っています。このWebSocketプロキシの構築方法を決めることは一見単純な作業のように見えますが、実は開発プロセスの中で最も難しい決断でした。</p>
+	<p>最初に提案したのは、当社ネットワーク内のすべてのサーバーで稼働する新サービスの開発でした。実現は可能でしたが、新サービスの運用には少なからず保守の負担が伴い、最終的にはオーバーヘッドが付加価値を上回るとの判定に至りました。次の提案は、Cloudflareの最も古いサービスの1つであり、毎秒数千万のHTTPリクエストを処理する<a href="https://blog.cloudflare.com/upgrading-one-of-the-oldest-components-in-cloudflare-software-stack"><u>フロントライン（FL）</u></a>に新サービスを組み込むことでした。このアプローチを取れば、新しいIPアドレスを公開する必要を回避でき、チームは既存のスキャフォールディングを活用して迅速に作業できたでしょう。ただ、最初は有望に見えたこのアプローチも結局却下されました。FLには多大な投資が行われており、状況が流動的な中で構築することをチームが望まなかったからです。</p>
+	<p>そしてついに、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を使ってプロキシサービスを実装するというソリューションを見つけました！幸い、Workersは大量のリクエストに応じて自動的にスケールするため、新サービスの構築を選択すれば必要であろう準備作業の一部が不要になります。率直に言って、このアプローチはWorkersとCloudflareの内部サービスとの通信方法について不明瞭な点がいくつかあったため、当初は好まれませんでしたが、Workersチームのサポートにより前進の道筋が見つかりました。</p>
+	<p>WebSocketプロキシWorkerから、トンネルされたRDP接続が、Cloudflare Zero Trustのオンランプとオフランプの間のトラフィックルーティングを担当するApolloサービスへ送られます。Apolloはこうした複雑さを一元化し、抽象化して、他のサービスがアプリケーション固有の機能に集中できるようにします。Apolloは、ターゲットのCloudflare Tunnelに最も近いCloudflareコロケーションセンターを選定し、そのコロケーションセンターで実行されている同一のApolloインスタンスへの接続を確立します。次に、エグレスするApolloインスタンスがCloudflare Tunnelへの最終的な接続を促します。Cloudflareのグローバルネットワークを使って、イングレスのコロケーションセンターとターゲットのCloudflare Tunnel間の距離を移動することで、ネットワークの混乱と輻輳を管理することができます。</p>
+	<p>ApolloはRDPサーバーに接続し、イングレスとエグレスの接続を<a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework"><u>Oxy</u></a>-teamsに渡します。Oxy-teamsは、RDPトラフィックの検査とプロキシを担当するサービスです。WebクライアントがRDPサーバーに対して認証する際のパススルーとして機能（トラフィックの接続を厳密に有効化）します。当初のリリースでは、ユーザー名とパスワードの入力を必要とするチャレンジ応答型認証プロトコルである<a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/ntlm-overview" target="_blank" rel="noopener noreferrer"><u>NT LAN Manager（NTLM）</u></a>認証を使用しています。クライアントがサーバーで認証されると、Oxy-teamsは後続のすべてのRDPトラフィックをプロキシすることができます。</p>
+	<p>ホップ数が多いように聞こえるかもしれませんが、当社はネットワーク内のすべてのサーバーですべてのサービスを実行しています。信じられないかもしれませんが、この複雑な過程を1台のサーバーで処理し、通信にUNIXドメインソケットを使用することで、パフォーマンスへの影響も最小限に抑えています。これらのサーバーのいずれかが過負荷になった場合、ネットワーク障害が発生した場合、またはハードウェアに問題が生じた場合、負荷はCloudflareのL4ロードバランサー<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><u>Unimog</u></a>によって自動的に隣のサーバーに移動します。</p>
+	<div class="flex anchor relative">
+		<h4 id="putting-it-all-together">すべてを一体化</h4>
+		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>ユーザーによる開始：</b> ユーザーがCloudflareの<a href="https://developers.cloudflare.com/cloudflare-one/applications/app-launcher" target="_blank" rel="noopener noreferrer"><u>アプリランチャー</u></a>からRDPサーバーを選択します（あるいは直接URL経由でアクセスします）。各RDPサーバーは、 Cloudflareによって保護されたパブリックホスト名に関連付けられます。</p>
+		</li>
+		<li>
+			<p><b>イングレス：</b> このリクエストは、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Cloudflareのネットワーク</u></a>内の最寄りのデータセンターで受信されます。</p>
+		</li>
+		<li>
+			<p><b>認証：</b> Cloudflare Accessは、リクエストに有効なJWTが含まれていることを確認し、セッションを認証します。このトークンは、ユーザーが指定されたドメインを通じて選択されたRDPサーバーにアクセスすることを認められていることを証明します。</p>
+		</li>
+		<li>
+			<p><b>Webクライアント配信：</b> <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>はIronRDP Webクライアントをユーザーのブラウザに配信します。</p>
+		</li>
+		<li>
+			<p><b>セキュアトンネリング：</b> クライアントは、TLSで保護されたWebSocketを介して、ユーザーのブラウザからのRDPトラフィックを別のCloudflare Workerへトンネリングします。</p>
+		</li>
+		<li>
+			<p><b>トラフィックルーティング：</b> IronRDP接続を受信したWorkerはWebSocket接続を終了し、<a href="https://blog.cloudflare.com/extending-local-traffic-management-load-balancing-to-layer-4-with-spectrum/#how-we-enabled-spectrum-to-support-private-networks"><u>Apollo</u></a>への接続を開始します。そこから、ApolloはRDPサーバーへの接続を作成します。</p>
+		</li>
+		<li>
+			<p><b>認証リレー：</b> 接続が確立されると、ApolloはWebクライアントとRDPサーバーの間でRDP認証メッセージを中継します。</p>
+		</li>
+		<li>
+			<p><b>接続確立：</b> 認証が成功すると、CloudflareはWebブラウザとRDPサーバーの間のRDPプロキシとして機能し、フリーフローのトラフィックでユーザーをRDPサーバーへ接続します。</p>
+		</li>
+		<li>
+			<p><b>ポリシー適用：</b> CloudflareのセキュアWebゲートウェイである<a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework"><u>Oxy</u></a>-teamsは、レイヤー4ポリシーとRDPトラフィックのログ記録を適用します。 </p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wWryOYY69cHw5cDmQHAqi/cb40a492b1e194cd572018eb4a5792ba/3.png" alt="" class="kg-image" width="1999" height="1329" loading="lazy">
+	</figure>
+	<p>このアーキテクチャの主なメリット：</p>
+	<ul>
+		<li>
+			<p><b>追加ソフトウェア不要：</b> ブラウザからWindowsサーバーに直接アクセスできます。</p>
+		</li>
+		<li>
+			<p><b>低遅延：</b> Cloudflareのグローバルネットワークは、パフォーマンスのオーバーヘッドを最小限に抑えます。</p>
+		</li>
+		<li>
+			<p><b>セキュリティ強化：</b> RDPアクセスはAccessポリシーによって保護され、ラテラルムーブメントを防止します。</p>
+		</li>
+		<li>
+			<p><b>統合されたロギングと監視：</b> 管理者は、RDPトラフィックを観察し、制御することができます。</p>
+		</li>
+	</ul>
+	<p>Cloudflareのプロキシ機能の詳細については、プロキシのフレームワークを説明した<a href="https://blog.cloudflare.com/introducing-oxy"><u>関連ブログ記事</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="selective-modern-rdp-authentication">選択的な最新RDP認証</h3>
+		<a href="https://blog.cloudflare.com/#selective-modern-rdp-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのブラウザベースのRDPソリューションは、最新のRDP認証メカニズムのみをサポートし、セキュアなアクセスのためのベストプラクティスを適用します。当社のアーキテクチャでは、安全でないパスワードベースの認証やRC4暗号化など、旧バージョンのRDP標準に従った古いセキュリティ機能や脆弱なレガシーセキュリティ機能を使用したRDPトラフィックが、お客様のエンドポイントに決して到達できないようにします。</p>
+	<p>Cloudflareは、以下の原則に基づいてセキュアなセッションネゴシエーションをサポートしています：</p>
+	<ol>
+		<li>
+			<p>トランスポートセキュリティのためのTLSベースのWebSocket接続。</p>
+		</li>
+		<li>
+			<p>シングルサインオン（SSO）、多要素認証（MFA）、動的認証を適用するきめ細かなポリシー。</p>
+		</li>
+		<li>
+			<p>SAML（Security Assertion Markup Language）やOIDC（OpenID Connect）によるエンタープライズIDプロバイダーの統合。</p>
+		</li>
+	</ol>
+	<p>Cloudflareのネットワークを経由するRDPセッションはすべて暗号化され、認証されます。</p>
+	<div class="flex anchor relative">
+		<h4 id="whats-next">今後の展開は？</h4>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは、当社のブラウザベースRDPソリューションの始まりに過ぎません。Cloudflareでは、引き続き注力すべき分野をいくつか既に特定しています：</p>
+	<ul>
+		<li>
+			<p><b>管理者のための可視性と制御性の強化：</b> RDPトラフィックはCloudflare Workersとプロキシサービスを経由するため、ブラウザベースのRDPを拡張しセッションの監視も含まれるようにします。また、パフォーマンスを損なうことなく不正なデータ流出を防ぐため、ファイル転送やクリップボード使用などのアクションを制限するといったデータ損失防止（DLP）サポートも評価しています。</p>
+		</li>
+		<li>
+			<p><b>高度な認証：</b> 長期間有効な認証情報はもはや過去のものです。将来的には、ブラウザベースのRDPのイテレーションにパスワードレス機能を含め、エンドユーザーがパスワードを記憶する必要も、管理者がパスワードを管理する必要もなくします。そのために、クライアント証明書認証、パスキーとスマートカード、Accessを介したサードパーティ認証プロバイダーとの統合などの方法を評価しています。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h5 id="compliance-and-fedramp-high-certification">コンプライアンスとFedRAMP Hight認証</h5>
+		<a href="https://blog.cloudflare.com/#compliance-and-fedramp-high-certification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>企業および政府機関向けのFedRAMP HighサービスにブラウザベースのRDPを含める予定です。これは、<a href="https://blog.cloudflare.com/cloudflares-commitment-to-advancing-public-sector-security-worldwide"><u>2月初旬に発表</u></a>した優先度の高い取り組みです。「High（ハイ）」認証を取得すれば、当社のソリューションが以下について最高基準を満たしていると確認されたことになります：</p>
+	<ul>
+		<li>
+			<p><b>データ保護</b></p>
+		</li>
+		<li>
+			<p><b>IDとアクセス管理</b></p>
+		</li>
+		<li>
+			<p><b>継続的な監視</b></p>
+		</li>
+		<li>
+			<p><b>インシデント対応</b></p>
+		</li>
+	</ul>
+	<p>FedRAMP Highの準拠を目指す取り組みは、連邦政府、ヘルスケア、金融などのセクターのように機密性の高い環境の保護に対するCloudflareのコミットメントを示すものです。</p>
+	<p>Cloudflareは、こだわりをもって最新かつセキュアなRDP実装を実施することにより、セキュリティとコンプライアンスの重要義務を負う組織のニーズに応じて、セキュアでスケーラブルでコンプライアンス要件に適合したソリューションを提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">今すぐ始めましょう</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、ZTNAのための極めて包括的なソリューションを提供することに尽力しています。このソリューションには現在、ブラウザベースのRDPを介した、Windowsサーバーのような機密性の高いインフラへの特権アクセスも含まれています。CloudflareのブラウザベースのRDPソリューションはクローズドベータ版で、毎週、新しいお客様をオンボードしています。<a href="http://www.cloudflare.com/lp/browser-based-rdp-beta" target="_blank" rel="noopener noreferrer"><u>こちらからアクセスをリクエスト</u></a>して、この魅力的な新機能をお試しください。</p>
+	<p>また、Cloudflareが機密性の高いインフラへの特権アクセスをどのように保護しているかを、<a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/infrastructure-apps" target="_blank" rel="noopener noreferrer"><u>Access for Infrastructure</u></a>のドキュメントでご確認ください。Access for Infrastructureは現在、ユーザー50人未満のチームは<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer"><u>無料</u></a>で、既に従量課金プランおよび契約プランをご利用のお客様はAccessまたはZero Trustのサブスクリプションを通じて追加料金なしでお使いいただけます。当社は今後も、BastionZeroのテクノロジーをCloudflareのAccess for Infrastructureサービスにネイティブに再構築していきますので、ご期待ください！</p>
+</div>

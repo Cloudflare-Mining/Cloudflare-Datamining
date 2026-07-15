@@ -1,0 +1,306 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/80-percent-lower-cloud-cost-how-baselime-moved-from-aws-to-cloudflare">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zbKwujxs7AurcoYvCxViK/d607265ac330f801474fd0032096554a/image8.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h2 id="introduction">はじめに</h2>
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年4月に<a href="https://blog.cloudflare.com/cloudflare-acquires-baselime-expands-observability-capabilities"><u>BaselimeがCloudflareの傘下に加わった</u></a>とき、当社のアーキテクチャには数百のAWS Lambda関数、数十のデータベース、そして大量のキューが溢れていました。複雑さが足かせとなり、クラウドのコストは急速に増大していました。現在、当社はCloudflare上に<a href="https://baselime.io" target="_blank" rel="noopener noreferrer"><u>Baselime</u></a>と<a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Observability</u></a>を構築しており、クラウドコンピューティング料金を80%以上節約できる見込みです。Cloudflareの想定コストは、スタンドアロンサービスであるBaselimeに対するもので、<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>Workers有料プラン</u></a>に基づいて算出されています。大幅なコスト削減を実現しただけでなく、アーキテクチャを簡素化し、全体的な遅延、スケーラビリティ、信頼性を向上させました。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>コスト（日あたり）</b></p>
+				</td>
+				<td>
+					<p><b>移行前（AWS）</b></p>
+				</td>
+				<td>
+					<p><b>移行後（Cloudflare）</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>コンピューティング</p>
+				</td>
+				<td>
+					<p>$650 - AWS Lambda</p>
+				</td>
+				<td>
+					<p>$25 - Cloudflare Workers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CDN</p>
+				</td>
+				<td>
+					<p>$140 - Cloudfront</p>
+				</td>
+				<td>
+					<p>$0 - 無料</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>データストリームと分析データベース</p>
+				</td>
+				<td>
+					<p>$1,150 - Kinesis Data Stream + EC2</p>
+				</td>
+				<td>
+					<p>$300 - Workers Analytics Engine</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>合計（日あたり）</p>
+				</td>
+				<td>
+					<p>$1,940</p>
+				</td>
+				<td>
+					<p>$325</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>全体（年あたり）</b></p>
+				</td>
+				<td>
+					<p><b>$708,100</b></p>
+				</td>
+				<td>
+					<p><b>$118,625</b>（83%のコスト削減）</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i><sub>表1：AWSとWorkersのコスト比較（米ドル）</sub></i></p>
+	<p>Cloudflareの傘下となった際、すぐに利用量が急増し、発表後1週間のうちに、毎日10億件以上のイベントを処理することとなり、アクティブユーザー数は3倍に増えました。</p>
+	<p>プラットフォームが拡大するにつれて、スケーラビリティ、信頼性、コストに関する新たな考慮事項とともに、リアルタイムでの可観測性を管理するという課題も深刻化の一途をたどりました。これを受け、Cloudflare開発者プラットフォーム上でBaselimeを再構築した結果、運用上のオーバーヘッドを削減しながら、迅速にイノベーションを実現することができました。</p>
+	<div class="flex anchor relative">
+		<h2 id="initial-architecture-all-on-aws">初期アーキテクチャ — すべてAWS上</h2>
+		<a href="https://blog.cloudflare.com/#initial-architecture-all-on-aws" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のアーキテクチャは当初、すべてAmazon Web Services（AWS）上に構築されていました。ここでは、毎日数百億件のイベントの取り込み、処理、保存に対応するデータパイプラインに焦点を当てて説明します。</p>
+	<p>このパイプラインは、AWS Lambda、Cloudfront、Kinesis、EC2、DynamoDB、ECS、ElastiCache上に構築されていました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ruQuVe7kcd31FOS91nstS/9d422e751e0d2d3a90d603e6adcd5c48/image1.png" alt="" class="kg-image" width="1999" height="1167" loading="lazy">
+	</figure>
+	<p><i><sup>図1：初期データパイプラインアーキテクチャ</sup></i></p>
+	<p>主な要素は次の通りです。</p>
+	<ul>
+		<li>
+			<p><b>データレセプター</b>：OpenTelemetry、Cloudflare Logpush、CloudWatch、Vercelなどの複数のソースからのテレメトリデータを受信します。データの検証、認証、そして各ソースからのデータの共通内部フォーマットへの変換についても対応します。データレセプターは、データソースに応じて、AWS Lambda（関数URLとCloudfrontを使用）またはECS Fargateのいずれかにデプロイされました。</p>
+		</li>
+		<li>
+			<p><b>Kinesis Data Stream</b>：データレセプターからのデータを、次のステップであるデータ処理に向けて転送します。</p>
+		</li>
+		<li>
+			<p><b>プロセッサー</b>：ストレージ用データの拡充と変換に対応する単一のAWS Lambda関数。この関数は、リアルタイムのエラー追跡とログのパターン検出も実行していました。</p>
+		</li>
+		<li>
+			<p><b>ClickHouseクラスター</b>：すべてのテレメトリデータは最終的にインデックス化され、EC2のセルフホスト型ClickHouseクラスタに保存されました。</p>
+		</li>
+	</ul>
+	<p>これらの主な要素に加え、エラー処理、再試行、メタデータの保存に対応するため、既存スタックではFirehose、S3バケット、SQS、DynamoDB、RDSとのオーケストレーションも必要でした。</p>
+	<p>このアーキテクチャは、はじめのうちはうまく機能していましたが、より多くのお客様に対応するためにソリューションを拡張するにつれ、大きな問題が生じるようになりました。</p>
+	<p>データレセプターとKinesis Data Stream間のインターフェースでの再試行処理は複雑で、Firehose、S3バケット、SQS、別のLambda関数の導入とオーケストレーションを必要としました。</p>
+	<p>セルフホスト型のClickHouseでも、コストをコントロールしながらも増大するユーザーベースに対応するために、継続的に容量を計画し、設定を更新しなければならないため、重大な課題が大規模で生じることとなりました。</p>
+	<p>また、ワークロードの増大に伴い、特にAWS Lambda、Kinesis、EC2において、予測不可能な勢いでコストが増大し始めました。Cloudfront（Lambda関数URLの前に付加するカスタムドメインのために必要）やDynamoDBなどでも、AWS Lambda、Kinesis、EC2と比較するとそれほど明白ではないものの、コストが増大していました。具体的には、AWS LambdaのI/O操作に費やす時間が特に高コストでした。データレセプターからClickHouseクラスターまで、すべてのステップでデータを次の段階に移すには、ネットワークリクエストが完了するのを待つ必要があり、Lambda関数のウォールタイムの70%以上を占めていました。</p>
+	<p>一言で言えば、私たちは常にアラートに悩まされ、イノベーションのペースは遅く、コストは制御不能に陥っていました。</p>
+	<p>さらに、このソリューション全体は単一のAWSリージョン（eu-west-1）に展開されていました。その結果、ヨーロッパ大陸以外の開発者がBaselimeにログやトレースを送信する際には長い遅延が発生しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="modern-architecture-transitioning-to-cloudflare">最新アーキテクチャ — Cloudflareへの移行</h2>
+		<a href="https://blog.cloudflare.com/#modern-architecture-transitioning-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/en-gb/developer-platform/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare開発者プラットフォーム</u></a>への移行により、コスト、簡素さ、俊敏性に妥協することなく、極めて高速かつグローバルに分散され、高いスケーラビリティを備えたアーキテクチャを実現するにはどうすればよいかを改めて考えることができました。この新しいアーキテクチャは、Cloudflareのプリミティブ上に構築されています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16ndcTUS2vAg6TM4djTGUH/0e187d50ae466c275839c6aac91e5249/image5.png" alt="" class="kg-image" width="1999" height="1266" loading="lazy">
+	</figure>
+	<p><i><sup>図2：最新データパイプラインアーキテクチャ</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-workers-the-core-of-baselime">Cloudflare Workers：Baselimeの中核</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-workers-the-core-of-baselime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>は今や、私たちが行うすべての中核となっています。すべてのデータレセプターとプロセッサはWorkers内で実行されます。Workersはコールドスタート時間を最小限に抑え、デフォルトでグローバルにデプロイされます。そのため、開発者がBaselimeにイベントを送信する際も、遅延は常に短いものです。</p>
+	<p>さらに、パイプラインのステップ間のデータ転送には<a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JavaScriptネイティブのRPC</u></a>を多用しています。低遅延で軽量であり、コンポーネント間の通信を簡素化します。これにより、別々のコンポーネントが完全に別々のアプリケーションとしてではなく、同じプロセス内の関数のように機能するため、アーキテクチャがさらに簡素化されます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+  async fetch(request: Request, env: Bindings, ctx: ExecutionContext): Promise&lt;Response&gt; {
+      try {
+        const { err, apiKey } = auth(request);
+        if (err) return err;
+
+        const data = {
+          workspaceId: apiKey.workspaceId,
+          environmentId: apiKey.environmentId,
+          events: request.body
+        };
+        await env.PROCESSOR.ingest(data);
+
+        return success({ message: "Request Accepted" }, 202);
+      } catch (error) {
+        return failure({ message: "Internal Error" });
+      }
+  },
+};</code></pre>
+	<p><i><sup>コードブロック1：JavaScriptネイティブRPCを使ってプロセッサを実行する簡素化されたデータレセプター。</sup></i></p>
+	<p>Workersは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer"><u>Rate Limitingバインディング</u></a>も公開しているため、サービスにレート制限を自動的に追加できるようになりました。これまでは、DynamoDBとElastiCacheを組み合わせて自分たちで構成する必要がありました。</p>
+	<p>さらに、Worker呼び出し内で<code>ctx.waitUntil</code>を多用して、リクエスト/レスポンスパスの外にデータ変換をオフロードしています。これにより、開発者がデータレセプターに送信する呼び出しの遅延がさらに短縮されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="durable-objects-stateful-data-processing">Durable Objects：ステートフルなデータ処理</h3>
+		<a href="https://blog.cloudflare.com/#durable-objects-stateful-data-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/en-gb/developer-platform/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>は、サーバーレス環境でステートフルなアプリケーションを構築できるようにする、Cloudflare開発者プラットフォーム内にある独自のサービスです。当社では、リアルタイムのエラー追跡とログのパターン検出の両方のために、データパイプラインでDurable Objectsを使用しています。</p>
+	<p>例えば、リアルタイムでエラーを追跡するために、私たちは新しいタイプのエラーごとにDurable Objectを作成します。そしてこのDurable Objectが、エラーの頻度、お客様に通知するタイミング、およびエラーの通知チャネルを追跡する役割を担います。<b>このような単一ビルディングブロックでの実装により、ElastiCache、Kinesis、複数のLambda関数がRDSデータベースを高頻度のエラーによる過負荷から保護するためにオーケストレーションを行う必要がなくなります。</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14SC0ackxCGiRxAr8DY1Vs/c5729735296552013765c298af802b38/image4.png" alt="" class="kg-image" width="1784" height="952" loading="lazy">
+	</figure>
+	<p><i><sup>図3：リアルタイムエラー検出アーキテクチャの比較</sup></i></p>
+	<p>Durable Objectsを使用すると、データパイプライン内の状態管理の一貫性と同時実行性を正確に制御することができます。</p>
+	<p>データパイプラインに加えて、当社ではDurable Objectsをアラートに使用しています。以前のアーキテクチャでは、EventBridge Scheduler、SQS、DynamoDB、複数のAWS Lambda関数をオーケストレーションする必要がありましたが、Durable Objectsでは、すべて<code>alarm</code>ハンドラ内で処理されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-analytics-engine-high-cardinality-analytics-at-scale">Workers Analytics Engine：大規模な高カーディナリティ分析</h3>
+		<a href="https://blog.cloudflare.com/#workers-analytics-engine-high-cardinality-analytics-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社独自のClickHouseクラスタの管理は技術的に興味深いものの困難であり、開発者は最高の可観測性をもって作業にあたることはできませんでした。今回の移行により、サーバーインスタンスの管理に時間を費やす必要がなくなり、私たちは製品をよりよいものにするために多くの時間を割けるようになりました。</p>
+	<p><a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer"><u>Workers Analytics Engine</u></a>により、スケーラブルな高カーディナリティ分析データベースに同期的にイベントを書き込むことができます。データベースは、Workers Analytics Engineを支える技術と同じ技術の上に構築しました。また高カーディナリティに加え、高次元性をネイティブに有効にするために、Workers Analytics Engineに内部変更を加えました。</p>
+	<p>さらに、Workers Analytics Engineと当社のソリューションは<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics"><u>CloudflareのABR分析</u></a>を活用しています。ABRはAdaptive Bit Rateの略で、テレメトリデータを異なる解像度（100％～0.0001％）で複数のテーブルに保存することができます。0.0001%のデータを含むテーブルに対してクエリを実行する場合、すべてのデータを持つテーブルよりもはるかに高速になります。ただし、精度がトレードオフとなります。そのため、システムにクエリが送信されると、Workers Analytics Engineはクエリを実行するのに最も適切なテーブルを動的に選択し、クエリ時間と精度の両方を最適化します。ユーザーは、データセットのサイズやクエリの所要時間に関係なく、最適なクエリ時間で最も正確な結果を得られます。常にすべてのデータセットに対してクエリを実行していた旧システムと比較して、新しいシステムは全ユーザーベースとユースケースで高速なクエリを提供できるようになりました<i>。</i></p>
+	<p>これらのコアサービス（Workers、Durable Objects、Workers Analytics Engine）に加えて、新しいアーキテクチャはCloudflare開発者プラットフォームのその他のビルディングブロックを活用しています。具体的には、非同期メッセージ、サービスの分離、イベント駆動型アーキテクチャを可能にする<a href="https://www.cloudflare.com/en-gb/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>、トランザクションデータ（クエリ、アラート、ダッシュボード、構成など）のメインデータベースである<a href="https://www.cloudflare.com/en-gb/developer-platform/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>、迅速な分散型ストレージを実現する<a href="https://www.cloudflare.com/en-gb/developer-platform/workers-kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>、そして当社のすべてのAPI用の<a href="https://hono.dev" target="_blank" rel="noopener noreferrer"><u>Hono</u></a>などです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-migrate">移行の方法</h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-migrate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Baselimeはイベント駆動型アーキテクチャに基づいており、すべてのユーザーアクションがイベントをトリガーします。つまり、ユーザーの作成、ダッシュボードの編集、その他のアクションの実行など、すべてのユーザーアクションがイベントとして記録され、システムの残りの部分に出力されるという原則に基づいて動作します。そのため、Cloudflareへの移行には、アップタイムとデータの一貫性を損なうことなく、イベント駆動型アーキテクチャを移行することが含まれました。以前はAWS EventBridgeとSQSで稼働していましたが、Cloudflare Queuesに完全に移行しました。</p>
+	<p>その際、<a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener noreferrer"><u>ストラングラーフィグパターン</u></a>に従い、ソリューションをAWSからCloudflareに段階的に移行していきました。システムの中断を最小限に抑えながら、システムの特定の部分を新しいサービスに徐々に置き換えていく方式です。プロセスの初期段階で、移行中のすべてのトランザクションイベント処理のバックボーンとして機能する中央のCloudflare Queueを作成しました。新規ユーザーの登録であろうとダッシュボードの編集であろうと、すべてのイベントがこのQueueに集約されました。そこから、イベントは動的にルーティングされ、各イベントはアプリケーションの関連する部分に動的にルーティングされます。ユーザーアクションはD1とKVに同期され、移行中もAWSとCloudflareの両方ですべてのユーザーアクションがミラーリングされます。</p>
+	<p>この同期メカニズムにより、一貫性を維持し、ユーザーがBaselimeを操作する中でデータが失われることは一切ありませんでした。</p>
+	<p>以下は、イベントがどのように処理されるかを示した例です。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+  async queue(batch, env) {
+    for (const message of batch.messages) {
+      try {
+        const event = message.body;
+        switch (event.type) {
+          case "WORKSPACE_CREATED":
+            await workspaceHandler.create(env, event.data);
+            break;
+          case "QUERY_CREATED":
+            await queryHandler.create(env, event.data);
+            break;
+          case "QUERY_DELETED":
+            await queryHandler.remove(env, event.data);
+            break;
+          case "DASHBOARD_CREATED":
+            await dashboardHandler.create(env, event.data);
+            break;
+          //
+          // Many more events...
+          //
+          default:
+            logger.info("Matched no events", { type: event.type });
+        }
+        message.ack();
+      } catch (e) {
+        if (message.attempts &lt; 3) {
+          message.retry({ delaySeconds: Math.ceil(30 ** message.attempts / 10), });
+        } else {
+          logger.error("Failed handling event - No more retrys", { event: message.body, attempts: message.attempts }, e);
+        }
+      }
+    }
+  },
+} satisfies ExportedHandler&lt;Env, InternalEvent&gt;;</code></pre>
+	<p><i><sup>コードブロック2：簡素化された、移行中の内部イベント処理</sup></i></p>
+	<p>当社は、データパイプラインをAWSからCloudflareに、アウトサイドイン方式で移行しました。データレセプターから始め、段階的にデータプロセッサとClickHouseクラスタを新しいアーキテクチャに移行しました。テレメトリデータ（ログ、メトリクス、トレース、ワイドイベントなど）は、ClickHouse（AWS内）とWorkers Analytics Engineの両方に、保持期間は30日間で同時に書き込みました。</p>
+	<p>最後のステップは、これまでAWS LambdaとECSコンテナでホストされていたすべてのエンドポイントを、Cloudflare Workersに書き換えることでした。これらのWorkersの準備ができたら、既存のLambda関数ではなくWorkersを参照するようにDNSレコードを切り替えるだけです。</p>
+	<p>複雑な作業にもかかわらず、データパイプラインからすべてのAPIエンドポイントの書き換えまで、移行プロセス全体は、3人のエンジニアからなるチームが3か月足らずで完了できました。</p>
+	<div class="flex anchor relative">
+		<h2 id="we-ended-up-saving-over-80-on-our-cloud-bill">最終的にクラウド料金を80%以上削減</h2>
+		<a href="https://blog.cloudflare.com/#we-ended-up-saving-over-80-on-our-cloud-bill" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="savings-on-the-data-receptors">データレセプター関連コストの削減</h3>
+		<a href="https://blog.cloudflare.com/#savings-on-the-data-receptors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年6月上旬にデータレセプターをAWSからCloudflareに切り替えた後、AWS Lambdaのコストが85%以上削減されました。これらのコストは主に、データレセプターが同じリージョン内にあるKinesis Data Streamにデータを送信するのに費やしたI/O時間によって発生していました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6P34XkcxEhqR6cjWAGnZaL/54025f08f4642649b7ae53fbaa3775b4/image3.png" alt="" class="kg-image" width="1954" height="1208" loading="lazy">
+	</figure>
+	<p><i><sup>図4：Baselimeの1日あたりのAWS Lambdaコスト[注：データのギャップは、クラウドアカウントの親組織が変更された際にAWS Cost Explorerでデータ損失が発生したことによります。]</sup></i></p>
+	<p>さらに、Cloudfrontを使用して、データレセプターを参照するカスタムドメインを有効にしていました。データレセプターをCloudflareに移行した後、Cloudfrontは必要なくなりました。それに応じて、Cloudfrontの費用は0ドルまで削減されました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vj3JUrE580W749VX8JMBj/c82477d00fe33fba1ffd8658ef0a1229/image2.png" alt="" class="kg-image" width="1880" height="1164" loading="lazy">
+	</figure>
+	<p><i><sup>図5：Baselimeの1日あたりのCloudfrontコスト[注：データのギャップは、クラウドアカウントの親組織が変更された際にAWS Cost Explorerでデータ損失が発生したことによります。]</sup></i></p>
+	<p>私たちがCloudflareを利用していた場合、Cloudflare Workersの費用は、1日あたり25ドルほどになると推定されます。これはAWSでの1日あたり790ドルと比較して、95%以上のコスト削減となります。このような削減は主に、Workersの価格設定モデルによってもたらされます。WorkersはCPU時間に対して課金し、レセプターは主にデータを移動するだけで、コスト増大の主な原因はI/Oバウンドであったためです。</p>
+	<div class="flex anchor relative">
+		<h3 id="savings-on-the-clickhouse-cluster">ClickHouseクラスタ関連コストの削減</h3>
+		<a href="https://blog.cloudflare.com/#savings-on-the-clickhouse-cluster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セルフホスト型のClickHouseからWorkers Analytics Engineへの切り替えによるコストへの影響を評価するには、EC2インスタンスだけでなく、ディスクスペース、ネットワーキング、Kinesis Data Streamのコストも考慮する必要があります。</p>
+	<p>当社は8月下旬にこの切り替えを完了し、KiKinesis Data StreamとすべてのEC2関連コストの両方で95%以上のコスト削減を実現しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hpbfmwC5vEjDXeSIC2XIr/d103e813848926f224efe6e22e0717ce/image9.png" alt="" class="kg-image" width="1764" height="1092" loading="lazy">
+	</figure>
+	<p><i><sup>図6：Baselimeの1日あたりのKinesis Data Streamコスト[注：データのギャップは、クラウドアカウントの親組織が変更された際にAWS Cost Explorerでデータ損失が発生したことによります。]</sup></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aBU0TVUoRTC5GAo3HkS0N/eebb0559ad8d32b56e20f1e5c6121c6f/image6.png" alt="" class="kg-image" width="1810" height="1118" loading="lazy">
+	</figure>
+	<p><i><sup>図7：Baselimeの1日あたりのEC2コスト[注：データのギャップは、クラウドアカウントの親組織が変更された際にAWS Cost Explorerでデータ損失が発生したことによります。]</sup></i></p>
+	<p>私たちがCloudflareを利用していた場合、Workers Analytics Engineの費用は1日あたり300ドルほどになると推定されます。これはAWSでの1日あたり1150ドルと比較して、70%以上のコスト削減となります。</p>
+	<p>Cloudflareに移行することで、大幅なコスト削減を実現できただけでなく、パフォーマンスも全体的に改善しました。Cloudflareのネットワーク全体でユーザーにより近い場所でリアルタイムのイベント取り込みが行われるようになり、ユーザーへの応答はより迅速になりました。ユーザーがデータをクエリする際の応答も、ClickHouseを大規模に運用するCloudflareの深い専門知識のおかげで、はるかに迅速になっています。</p>
+	<p>最も重要なのは、スループットやスケールの制限に縛られなくなったことです。当社は2024年9月26日に<a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>をリリースしました。現在、当社のシステムは、速度や信頼性を犠牲にすることなく、以前よりもはるかに多くのイベントを処理できるようになりました。</p>
+	<p>実現されたコスト削減はそれだけで素晴らしいものであり、それらのシステムの総所有コストは含まれません。プラットフォームがより多くのことを管理してくれるようになったため、システムとコードベースを大幅に簡素化できました。アラートが減り、インフラストラクチャの監視に費やす時間が減り、製品改善に集中できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareへのBaselimeの移行は、当社がプラットフォームを構築してスケーリングする方法を変革しました。Workers、Durable Objects、Workers Analytics Engine、その他のサービスを活用することで、当社は完全にサーバーレスでグローバルに分散したシステムを稼働することができ、さらにはコスト効率と俊敏性を向上させることができました。運用オーバーヘッドが大幅に削減され、イテレーションが迅速になり、ユーザーにより優れた可観測性ツールを提供できるようになりました。</p>
+	<p><a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>があれば、今すぐにでもCloudflare Workersの監視に着手できます。今後については、リアルタイムのエラー追跡、アラート通知、高カーディナリティや次元性イベントに対するクエリビルダーなど、Cloudflareダッシュボードで直接提供する予定の機能について胸躍らせています。2025年初頭までにすべてリリースできる予定です。</p>
+</div>

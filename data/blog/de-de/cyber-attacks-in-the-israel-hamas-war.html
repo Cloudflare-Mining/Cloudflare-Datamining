@@ -1,0 +1,130 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">English</a>, <a href="https://blog.cloudflare.com/ar-ar/cyber-attacks-in-the-israel-hamas-war">العربية</a>, <a href="https://blog.cloudflare.com/nl-nl/cyber-attacks-in-the-israel-hamas-war">Nederlands</a>, <a href="https://blog.cloudflare.com/he-il/cyber-attacks-in-the-israel-hamas-war">עברית</a>, und <a href="https://blog.cloudflare.com/fr-fr/cyber-attacks-in-the-israel-hamas-war">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sRo5MR1W9zYFYxGZhCTwo/31e8b8732c3cf079b8cde740c4cf781c/cyber-attacks-in-the-israel-hamas-war.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Am 7. Oktober 2023 um 6:30 Uhr Ortszeit hat die Hamas Städte in Israel angegriffen und Tausende Raketen auf dicht besiedelte Gebiete im Süden und Zentrum des Landes abgefeuert, darunter Tel Aviv und Jerusalem. Dadurch wurde Luftalarm ausgelöst, um der Zivilbevölkerung die Chance zu geben, sich in Sicherheit zu bringen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hPpyyUgUESidx85xM0vwS/b9caf55d788a9ea08a485760f94484b9/image11-1.png" alt="Cyber attacks in the Israel-Hamas war" class="kg-image" width="1800" height="1014" loading="lazy">
+
+	</figure>
+	<p>Rund zwölf Minuten später wurden DDoS-Angriffe gegen Websites, auf denen Zivilisten wichtige Informationen und Warnungen zu Raketenangriffen finden, von Cloudflare-Systemen automatisch erkannt und abgewehrt. Der erste dieser Cyberangriffe gipfelte bei 100.000 Anfragen pro Sekunde und dauerte zehn Minuten. 45 Minuten später kam es zu einem zweiten, deutlich größeren Angriff, der seinen Höhepunkt bei 1 Millionen Anfragen pro Sekunde erreichteund sich über sechs Minuten erstreckte. In den nächsten Stunden verzeichneten diese Websites weitere kleinere DDoS-Attacken.</p>
+	<p>DDoS-Angriffe auf israelische Websites mit Informationen und Warnmeldungen zu Raketenangriffen für Zivilisten</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5T9nPeyiDM1nkxIzzsXRtD/c9fbbff0ae332fc16d2fe9bc2592338c/image9.png" alt="DDoS attacks against Israeli websites that provide civilians information and alerts on rocket attacks" class="kg-image" width="1999" height="805" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="not-just-ddos-attacks">Mehr als DDoS-Angriffe</h3>
+		<a href="https://blog.cloudflare.com/#not-just-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zahlreiche israelische Websites und Mobilgeräte-Apps wurden von diversen pro-palästinensischen Hacktivisten-Gruppen ins Visier genommen. Eine von ihnen, AnonGhost, hat laut <a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas" target="_blank" rel="noopener noreferrer">Cybernews</a> eine Schwachstelle in der App „Red Alert: Israel“ ausgenutzt, die israelische Zivilisten vor bevorstehenden Raketeneinschlägen warnt. Die Sicherheitslücke erlaubte es den Angreifern, Anfragen abzufangen, Server und API offenzulegen und falsche Warnmeldungen an einige Nutzer der App zu senden. Dazu gehörte eine Nachricht, dass eine <a href="https://www.bitdefender.co.uk/blog/hotforsecurity/hacktivists-send-fake-nuclear-attack-warning-via-israeli-red-alert-app" target="_blank" rel="noopener noreferrer">Atombombe im Anflug</a> sei. AnonGhost behauptet auch, mehrere weitere solcher Apps zur Warnung vor Raketenangriffen angegriffen zu haben.</p>
+	<p>Am 14. Oktober haben wir die Ergebnisse einer Untersuchung unseres Bedrohungseinsatzteams <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> öffentlich gemacht. Dabei wurden bösartige Anwendungen für Android-Mobilgeräte identifiziert, die sich als die legitime „RedAlert – Rocket Alerts“-App ausgegeben hatten. Sie verschafften sich Zugang zu sensiblen Nutzerdaten wie deren Handy-Kontaktlisten, SMS-Nachrichten, Anruflisten, installierten Anwendungen, Informationen zu dem Mobiltelefon selbst und zur SIM-Karte. Technische Einzelheiten zu unserer Untersuchung finden Sie <a href="https://blog.cloudflare.com/malicious-redalert-rocket-alerts-application-targets-israeli-phone-calls-sms-and-user-information">hier</a>.</p>
+	<p>Screenshot der Fake-Website, die zu schädlichen Mobilgeräte-Apps weitergeleitet hat</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Kg7GPzXQFxZ9SdCs32vLW/974a879ec6252d7103f7a26cdddbd912/image10.png" alt="Screenshot of the malicious site linking to malicious mobile apps" class="kg-image" width="1600" height="1334" loading="lazy">
+
+	</figure>
+	<p>Cloudflare hat außerdem eine israelische Website identifiziert, die von AnonGhost teilweise verunstaltet wurde. Der Seitenbetreiber hat Cloudflare bislang nicht genutzt, wir haben der betreffenden Organisation aber unsere Unterstützung angeboten.</p>
+	<p>Parole „Tod allen Juden“ auf einer von AnonGhost gehackten und verunstalteten Website</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1F8LCkvQVy1UfmnJRYjnfT/0960e99927d0e76f20cb2552d2243707/image1-7.png" alt="“Death to all Jews” in a part of a website that was hacked and defaced by AnonGhost" class="kg-image" width="1999" height="1192" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="continued-ddos-bombardment">DDoS-Angriffe werden beständig fortgesetzt</h3>
+		<a href="https://blog.cloudflare.com/#continued-ddos-bombardment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In den Tagen nach dem Angriff vom 7. Oktober standen auch israelische Websites durch DDoS-Attacken stark unter Beschuss. Wir haben vielen von ihnen dabei geholfen, sich zu schützen.</p>
+	<p>HTTP-DDoS-Angriffe auf israelische Websites, die Cloudflare nutzen</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lycz9VOEUzaHsy2NaePa5/c33b76468cc3efba8ed141934adb4bac/pasted-image-0--7-.png" alt="HTTP DDoS attacks against Israeli websites using Cloudflare" class="kg-image" width="1600" height="864" loading="lazy">
+
+	</figure>
+	<p>Seit dem Angriff vom 7. Oktober 2023 sind vor allem Internetauftritte von Zeitungen und anderen Medien zum Ziel von DDoS-Angriffen geworden: Auf diese entfielen 56 % aller Attacken auf israelische Websites. Die gleichen Tendenzen waren bereits beim Überfall Russlands auf die Ukraine zu beobachten: Auch damals waren Websites ukrainischer Medien und Rundfunkanstalten als Angriffsziel ausgesprochen beliebt. Es hat sich gezeigt, dass mit physischen Kampfhandlungen oft Cyberangriffe auf Websites einhergehen, von denen Zivilisten lebenswichtige Informationen beziehen.</p>
+	<p>Der am zweithäufigsten angegriffene Sektor in Israel war die Softwarebranche. Fast 34 % aller DDoS-Attacken richteten sich gegen Unternehmen aus diesem Segment. An dritter Stelle folgen Banken, Finanzdienstleister und Versicherungen. Websites von Behörden wurden am vierthäufigsten Ziel von Angriffen.</p>
+	<p>Am stärksten von HTTP-DDoS-Angriffen betroffene Wirtschaftszweige in Israel</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FRvEJoNnw3qEgW32epI50/9e1332d2c1da54e22dbcafab6ec4ede6/pasted-image-0.png" alt="Top Israeli industries targeted by HTTP DDoS attacks" class="kg-image" width="1600" height="853" loading="lazy">
+
+	</figure>
+	<p>Es ist auch erkennbar, dass Websites von Zeitungen und anderen Medien in Israel direkt nach dem Angriff vom 7. Oktober ins Fadenkreuz geraten sind.</p>
+	<p>HTTP-DDoS-Angriffe auf israelische Websites, die Cloudflare nutzen, nach Branche</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c1zBhgtBTLzcvUHZP700N/9a8e47ecc5c725e7ddd75a01c6b8e308/pasted-image-0--1-.png" alt="HTTP DDoS attacks against Israeli websites using Cloudflare by industry" class="kg-image" width="1600" height="820" loading="lazy">
+
+	</figure>
+	<p>Seit dem 1. Oktober 2023 wurden von Cloudflare mehr als 5 Milliarden HTTP-Anfragen, die Teil von DDoS-Angriffen waren, automatisch erkannt und abgewehrt. Vor dem 7. Oktober wurden dabei so gut wie keine HTTP-DDoS-Angriffsanfragen an israelische Websites verzeichnet, die Cloudflare nutzen.</p>
+	<p>Am Tag des Überfalls der Hamas erhöhte sich jedoch der Anteil des DDoS-Angriffs-Traffics am Datenverkehr. Fast jede hundertste Anfrage an israelische Websites, die Cloudflare einsetzen, war Teil einer HTTP-DDoS-Attacke. Am 8. Oktober vervierfachte sich diese Zahl.</p>
+	<p>DDoS-Anteil an sämtlichen Anfragen an israelische Websites, die Cloudflare nutzen</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IpDQo3fmSaSxChpOjuueC/4dd8aa2ce801bf9957e68de2557ae746/pasted-image-0--2-.png" alt="Percentage of DDoS requests out of all requests towards Israeli websites using Cloudflare" class="kg-image" width="1600" height="961" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="cyber-attacks-against-palestinian-websites">Cyberangriffe auf palästinensische Websites</h3>
+		<a href="https://blog.cloudflare.com/#cyber-attacks-against-palestinian-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ab dem 1. Oktober wurden über 454 Millionen an palästinensische Websites, die Cloudflare verwenden, gerichtete HTTP-DDoS-Angriffsanfragen von Cloudflare automatisch erkannt und abgewehrt. Das ist nur knapp ein Zehntel der Menge an Angriffsanfragen, die sich an von Cloudflare geschützte israelische Websites gerichtet haben. Allerdings entspricht dieser Wert einem größeren Anteil am gesamten für palästinensische Websites, die Cloudflare nutzen, bestimmten Traffic.</p>
+	<p>In den Tagen vor dem Hamas-Angriff haben wir keine DDoS-Attacken auf palästinensische Websites verzeichnet, die Cloudflare einsetzen. Das hat sich am 7. Oktober geändert: An diesem Tag waren über 46 % des gesamten an palästinensische Websites, die Cloudflare verwenden, gerichteten Datenverkehrs Teil von HTTP-DDoS-Attacken.</p>
+	<p>Dieser Anteil stieg dann am 9. Oktober auf fast 60 % an. Von zehn HTTP-Anfragen, die für palästinensische, Cloudflare einsetzende Websites bestimmt waren, gingen jeweils knapp sechs auf DDoS-Angriffe zurück.</p>
+	<p>DDoS-Anteil an sämtlichen Anfragen an palästinensische Websites, die Cloudflare nutzen</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FkzbFNIWGQUCcBTgqFwcs/57093f7c528e7f5ce1b51d5362324fba/pasted-image-0--3-.png" alt="Percentage of DDoS requests out of all requests towards Palestinian websites using Cloudflare" class="kg-image" width="1600" height="997" loading="lazy">
+
+	</figure>
+	<p>Diese Angriffe lassen sich auch an den Spitzen ablesen, die in der folgenden Grafik nach dem Überfall der Hamas auftreten.</p>
+	<p>HTTP-DDoS-Angriffe auf palästinensische Websites, die Cloudflare nutzen</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29mYQeyKRvU9rIfMUQV4bl/c30752bae7e014c370582e81acb093c2/pasted-image-0--4-.png" alt="HTTP DDoS attacks against Palestinian websites using Cloudflare" class="kg-image" width="1600" height="864" loading="lazy">
+
+	</figure>
+	<p>Drei palästinensische Branchen wurden in den letzten Wochen angegriffen. Die absolute Mehrheit der HTTP-DDoS-Attacken (knapp 76 %) zielte auf Websites von Banken ab. Auf Rang zwei folgte der Internetsektor, der 24 % aller DDoS-Attacken auf sich zog. Ein weiterer, kleiner Teil richtete sich gegen Websites aus dem Bereich Medienproduktion.</p>
+	<p>HTTP-DDoS-Angriffe auf palästinensische Websites, die Cloudflare nutzen, nach Branche</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XrX9Uu8Gl5RyDkbA7JTTS/8041903f4aaef7e89f81b2bc6b8869d0/pasted-image-0--5-.png" alt="HTTP DDoS attacks against Palestinian websites using Cloudflare by industry" class="kg-image" width="1600" height="843" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-applications-and-preventing-ddos-attacks">Anwendungen schützen und DDoS-Angriffe verhindern</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-applications-and-preventing-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie uns die letzten Jahre gelehrt haben, werden militärische Auseinandersetzungen immer von Cyberangriffen begleitet. Wir haben deshalb einige <a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks" target="_blank" rel="noopener noreferrer">Empfehlungen</a> zur Optimierung Ihrer DDoS-Angriffsabwehr zusammengestellt. Sie können auch der detaillierten Anleitung unserer automatischen Assistenten folgen, um <a href="https://developers.cloudflare.com/learning-paths/application-security" target="_blank" rel="noopener noreferrer">Ihre Anwendungen zu schützen</a> und <a href="https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks" target="_blank" rel="noopener noreferrer">DDoS-Angriffe zu verhindern</a>.</p>
+	<p>Im Radar-Dashboard haben Sie die Möglichkeit, sich die Erkenntnisse und Trends genauer anzusehen, die sich aus dem Traffic und den Cyberangriffen in <a href="https://radar.cloudflare.com/il?dateRange=28d" target="_blank" rel="noopener noreferrer">Israel</a> und <a href="https://radar.cloudflare.com/ps?dateRange=28d" target="_blank" rel="noopener noreferrer">Palästina</a> ableiten lassen. In einem weiteren Blogbeitrag erfahren Sie mehr über <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-israel-and-palestine-following-the-october-2023-attacks">Trends bezüglich Internet-Datenverkehr und Cyberattacken</a> nach dem Angriff vom 7. Oktober.</p>
+	<p><i><b>Sie werden angegriffen oder benötigen zusätzlichen Schutz?</b></i> <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer"><i><b>Klicken Sie hier, um Hilfe zu erhalten</b></i></a><i><b>.</b></i></p>
+	<p><i><b>Zum Schutz vor bösartigen Mobilgeräte-Apps </b></i><a href="https://1.1.1.1/family" target="_blank" rel="noopener noreferrer"><i><b>hier klicken</b></i></a></p>
+	<div class="flex anchor relative">
+		<h3 id="a-note-about-our-methodologies">Ein Hinweis zu unserer Methodik</h3>
+		<a href="https://blog.cloudflare.com/#a-note-about-our-methodologies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir gewinnen unsere Erkenntnisse aus dem Datenverkehr und den Angriffen, die wir bei Websites verzeichnen, die Cloudflare nutzen – sofern keine anderen Angaben gemacht oder auf eine externe Quelle verwiesen wird. Weitere Informationen zu unserer Methodik finden Sie <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#quarterly-ddos-threat-reports" target="_blank" rel="noopener noreferrer">hier</a>.</p>
+</div>

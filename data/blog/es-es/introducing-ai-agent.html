@@ -1,0 +1,126 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/introducing-ai-agent">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-ai-agent">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-ai-agent">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-ai-agent">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-ai-agent">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-ai-agent">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/introducing-ai-agent">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xorIrMANoEkjSDTPof0Zz/435411092defa3c7b10fd49035879891/BLOG-2692_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>¡Es un gran día aquí en Cloudflare! No solo es la Security Week, sino que hoy marca el primer paso de Cloudflare hacia un área de funcionalidad completamente nueva, cuyo objetivo es mejorar la forma en que nuestros usuarios interactúan con todos nuestros productos y obtienen valor de ellos.</p>
+	<p>Estamos encantados de compartir una primera aproximación a cómo estamos integrando las funciones de IA en la gestión de los productos de Cloudflare que ya conoces y valoras. ¿Nuestra primera misión? Centrarnos en la seguridad y optimizar la experiencia de gestión de reglas y políticas. El objetivo es automatizar la tediosa tarea de revisar y contextualizar manualmente las reglas personalizadas en el WAF de Cloudflare, y las políticas de Gateway en Cloudflare One, para que puedas comprender al instante qué hace cada política, cuáles son sus vulnerabilidades y qué debes hacer para corregirlas.</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-cloudy-cloudflares-first-ai-agent">¡Conoce Cloudy, el primer agente de IA de Cloudflare!</h3>
+		<a href="https://blog.cloudflare.com/#meet-cloudy-cloudflares-first-ai-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestro primer paso hacia una experiencia de producto totalmente habilitada para la IA es la introducción de <i>Cloudy</i>, la primera versión de los agentes de IA de Cloudflare, una funcionalidad similar a un asistente diseñada para ayudar a los usuarios a comprender y mejorar rápidamente sus configuraciones de Cloudflare en varias áreas del conjunto de productos. Empezarás a ver la funcionalidad de Cloudy perfectamente integrada en dos productos de Cloudflare en el panel de control, de los que hablaremos a continuación.</p>
+	<p>Aunque el nombre, <i>Cloudy</i>, pueda sonar divertido y desenfadado, nuestros objetivos son más serios: llevar Cloudy y la funcionalidad basada en la IA a todos los rincones de Cloudflare, y optimizar la forma en que nuestros usuarios operan y gestionan sus productos favoritos de Cloudflare. Empecemos con dos lugares donde Cloudy ya está disponible para todos los clientes que utilizan los productos WAF y Gateway.</p>
+	<div class="flex anchor relative">
+		<h3 id="waf-custom-rules">Reglas personalizadas del WAF</h3>
+		<a href="https://blog.cloudflare.com/#waf-custom-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Empecemos con una descripción general basada en la IA de las <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>reglas personalizadas del WAF</u></a>. Para aquellos que no estén familiarizados con el firewall de aplicaciones web (WAF) de Cloudflare, este ayuda a proteger las aplicaciones web contra ataques como la inyección de código SQL, el scripting entre sitios (XSS) y otras vulnerabilidades.&nbsp;</p>
+	<p>Una función específica del WAF es la capacidad de crear reglas personalizadas del WAF. Estas permiten a los usuarios personalizar las políticas de seguridad para bloquear, desafiar o permitir el tráfico en función de atributos o criterios de seguridad específicos.</p>
+	<p>Sin embargo, para los clientes que tienen docenas o incluso cientos de reglas implementadas en su organización, puede ser difícil garantizar una visión clara de su postura de seguridad. Las configuraciones de reglas evolucionan con el tiempo, a menudo gestionadas por distintos miembros del equipo, lo que genera posibles ineficiencias y vulnerabilidades de seguridad. ¿Podría haber otro problema mejor que resolver para Cloudy?</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zcFRfhRWGQWhoza9TolDu/25e1357540db32e59150609e6eddd1e0/BLOG-2692_2.png" alt="BLOG-2692 2" class="kg-image" width="1999" height="1774" loading="lazy">
+	</figure>
+	<p>Con la tecnología de <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, hoy compartiremos cómo Cloudy te ayudará a revisar tus reglas personalizadas del WAF y te proporcionaremos un resumen de lo que está configurado en ellas. Cloudy también te ayudará a identificar y resolver problemas tales como:</p>
+	<ul>
+		<li>
+			<p><b>Identificar reglas redundantes</b>: identifica cuándo varias reglas realizan la misma función, o utilizan campos similares, ayudándote a optimizar tu configuración.</p>
+		</li>
+		<li>
+			<p><b>Optimización del orden de ejecución</b>: detecta los casos en los que el orden de las reglas afecta a la funcionalidad, como cuando una regla de terminación (acción de bloqueo/desafío) impide la ejecución de reglas posteriores.</p>
+		</li>
+		<li>
+			<p><b>Análisis de reglas en conflicto</b>: detecta cuándo las reglas se contrarrestan entre sí, como cuando una regla bloquea el tráfico que otra regla está diseñada para permitir o registrar.</p>
+		</li>
+		<li>
+			<p><b>Identificar reglas desactivas</b>: destaca las reglas de seguridad potencialmente importantes que tienen un estado desactivado, lo que ayuda a garantizar que las protecciones críticas no han quedado accidentalmente inactivas.</p>
+		</li>
+	</ul>
+	<p>Cloudy no solo resumirá tus reglas. También analizará las relaciones e interacciones entre las reglas para proporcionar recomendaciones prácticas. Para los equipos de seguridad que gestionan conjuntos complejos de reglas personalizadas, esto significa dedicar menos tiempo a auditar las configuraciones y más confianza en la cobertura de seguridad.</p>
+	<p>Disponibles para todos los usuarios, nos complace mostrar cómo los agentes de IA de Cloudflare pueden mejorar la facilidad de uso de nuestros productos, empezando por las reglas personalizadas del WAF. Pero esto es solo el principio.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-one-firewall-policies">Políticas de Cloudflare One Firewall</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-one-firewall-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CXHQVlO3GGqwp6DGyOklJ/3068c434c4a303cf22c328c302947fcb/BLOG-2692_3.png" alt="BLOG-2692 3" class="kg-image" width="766" height="783" loading="lazy">
+	</figure>
+	<p>También hemos añadido Cloudy a <a href="https://www.cloudflare.com/static/e9ea5dfaa69c554cc1cbaa7f3e441acf/Cloudflare_One_at_a_glance.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, nuestra plataforma SASE, donde las empresas gestionan la seguridad de sus empleados y herramientas desde un único panel de control.</p>
+	<p>En <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>, nuestra solución de puerta de enlace web segura, los clientes pueden configurar políticas para gestionar cómo los empleados hacen su trabajo en Internet. Estas políticas de Gateway pueden bloquear el acceso a sitios maliciosos, evitar violaciones de pérdida de datos y controlar el acceso de los usuarios, entre otras cosas.</p>
+	<p>Pero al igual que las reglas personalizadas del WAF, las configuraciones de las políticas de Gateway pueden complicarse en exceso y atascarse con el tiempo, con antiguas políticas olvidadas que hacen quién sabe qué. Selectores y operadores con funcionamientos contradictorios entre ellos. Algunos bloquean el tráfico, otros lo permiten. Políticas que incluyen varios grupos de usuarios, pero excluyen a empleados específicos. Incluso hemos visto políticas que bloquean cientos de URL en un solo paso. En resumen, la gestión de años de políticas de Gateway puede resultar abrumadora.</p>
+	<p>Entonces, ¿por qué no hacer que Cloudy resuma las políticas de Gateway de manera que su propósito sea claro y conciso?</p>
+	<p>Disponible para todos los usuarios de Cloudflare Gateway (crea una cuenta gratuita de Cloudflare One <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>), ahora Cloudy proporcionará un breve resumen de cualquier política de Gateway que consultes. Ahora es más fácil que nunca comprender claramente cada política de un vistazo, lo que permite a los administradores detectar configuraciones erróneas, controles redundantes u otras áreas de mejora, y avanzar con confianza.</p>
+	<div class="flex anchor relative">
+		<h3 id="built-on-workers-ai">Basado en Workers AI</h3>
+		<a href="https://blog.cloudflare.com/#built-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La clave de nuestra nueva funcionalidad es <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers AI</u></a> (sí, ¡la misma versión que utiliza todo el mundo!) que aprovecha los modelos avanzados de lenguaje de gran tamaño (LLM) para procesar grandes cantidades de información; en este caso, datos de políticas y reglas. Tradicionalmente, revisar y contextualizar manualmente configuraciones complejas es una tarea abrumadora para cualquier equipo de seguridad. Con Workers AI, automatizamos ese proceso, convirtiendo los datos de configuración sin procesar en resúmenes claros y coherentes y en recomendaciones prácticas.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works"><b>Cómo funciona</b></h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers AI ingiere las configuraciones de políticas y de reglas de tu configuración de Cloudflare y las combina con una instrucción de LLM específicamente diseñada. Utilizamos los mismos <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>modelos LLM disponibles públicamente</u></a> que ofrecemos a nuestros clientes, y luego enriquecemos la instrucción con datos adicionales para darle el contexto. Para esta tarea específica de analizar y resumir los datos de políticas y de reglas, proporcionamos al LLM:</p>
+	<ul>
+		<li>
+			<p><b>Datos de políticas y reglas</b>: son los propios datos primarios, incluida la configuración actual de las políticas/reglas que queremos que Cloudy resuma y para las que queremos que nos ofrezca sugerencias.</p>
+		</li>
+		<li>
+			<p><b>Documentación sobre las capacidades del producto:</b> proporcionamos al modelo detalles técnicos adicionales sobre las configuraciones de políticas y de reglas que son posibles con cada producto, para que el modelo sepa qué tipo de recomendaciones están dentro de sus límites.</p>
+		</li>
+		<li>
+			<p><b>Conjuntos de datos enriquecidos</b>: cuando las reglas personalizadas del WAF o las políticas de Gateway de Cloudflare One aprovechan otras "listas" (p. ej., una regla del WAF que hace referencia a varios países, una política de Gateway que aprovecha una categoría de contenido específica), los elementos de la lista seleccionados deben convertirse primero de un ID a una redacción de texto sin formato para que el LLM pueda interpretar qué valores de política/regla se están utilizando realmente.</p>
+		</li>
+		<li>
+			<p><b>Instrucciones de salida</b>: especificamos al modelo en qué formato nos gustaría recibir la salida. En este caso, utilizamos JSON para facilitar el manejo.</p>
+		</li>
+		<li>
+			<p><b>Aclaraciones adicionales</b>: por último, indicamos explícitamente al LLM que esté seguro de su resultado, priorizando ese aspecto sobre cualquier otro. Esto nos ayuda a garantizar que ninguna alucinación llegue al resultado final.</p>
+		</li>
+	</ul>
+	<p>Al automatizar el análisis de tus reglas personalizadas del WAF y tus políticas de Gateway, Cloudflare Workers AI no solo te ahorra tiempo, sino que también mejora la seguridad al reducir el riesgo de error humano. Obtienes información clara y práctica que te permite optimizar tus configuraciones, detectar rápidamente las anomalías y mantener una postura de seguridad eficaz, todo ello sin necesidad de revisiones manuales que requieran mucho trabajo.</p>
+	<div class="flex anchor relative">
+		<h4 id="whats-next-for-cloudy">¿Cuál será el próximo avance de Cloudy?</h4>
+		<a href="https://blog.cloudflare.com/#whats-next-for-cloudy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ya están disponibles las vistas previas beta de Cloudy para todos los clientes de Cloudflare. Pero esto es solo el principio de lo que prevemos para la funcionalidad basada en la IA en todo nuestro conjunto de productos.</p>
+	<p>Durante lo que queda de 2025, tenemos previsto implementar funciones adicionales de agentes de IA en otras áreas de Cloudflare. Estas nuevas funciones no solo ayudarán a los clientes a gestionar la seguridad de forma más eficiente, sino que también proporcionarán recomendaciones inteligentes para optimizar el rendimiento, agilizar las operaciones y mejorar la experiencia del usuario.</p>
+	<p>Cuando conozcas Cloudy y pruebes estas nuevas funciones de IA, nos encantaría conocer tu opinión. Envíanos tus comentarios a <a href="https://blog.cloudflare.com/#"><u>cloudyfeedback@cloudflare.com</u></a>, o publica tus opiniones en X, LinkedIn o Mastodon con la etiqueta #SecurityWeek. Tus comentarios nos ayudarán a definir nuestra hoja de ruta para mejorar la IA, y a ofrecer a nuestros usuarios herramientas más inteligentes y eficientes que nos ayuden a todos a mejorar la seguridad.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gGseiyO6pbddpdSVQ5wfJ/ae1d0d5a2f8ec01f571de7a85b655370/BLOG-2692_4.png" alt="BLOG-2692 4" class="kg-image" width="1999" height="347" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Ver en Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a17f6d8c6e2bd7401e443b67ed780120/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa17f6d8c6e2bd7401e443b67ed780120%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

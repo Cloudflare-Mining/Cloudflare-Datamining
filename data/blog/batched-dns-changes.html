@@ -1,697 +1,655 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7N1J9zFI9ab89A5h1Ea3iG/4fd1422795d2a75986d81e65f5e96d43/BLOG-2495_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Customers that use Cloudflare to manage their DNS often need to create a whole batch of records, enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records" target="_blank" rel="noopener noreferrer"><u>proxying</u></a> on many records, update many records to point to a new target at the same time, or even delete all of their records. Historically, customers had to resort to bespoke scripts to make these changes, which came with their own set of issues. In response to customer demand, we are excited to announce support for batched API calls to the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS records API</u></a> starting today. This lets customers make large changes to their zones much more efficiently than before. Whether sending a POST, PUT, PATCH or DELETE, users can now execute these four different <a href="https://en.wikipedia.org/wiki/HTTP#Request_methods" target="_blank" rel="noopener noreferrer"><u>HTTP methods</u></a>, and multiple HTTP requests all at the same time.</p>
-	<div class="flex anchor relative">
-		<h2 id="efficient-zone-management-matters">Efficient zone management matters</h2>
-		<a href="https://blog.cloudflare.com/#efficient-zone-management-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records" target="_blank" rel="noopener noreferrer"><u>DNS records</u></a> are an essential part of most web applications and websites, and they serve many different purposes. The most common use case for a DNS record is to have a hostname point to an <a href="https://en.wikipedia.org/wiki/IPv4" target="_blank" rel="noopener noreferrer"><u>IPv4</u></a> address, this is called an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-a-record" target="_blank" rel="noopener noreferrer"><u>A record</u></a>:</p>
-	<p><b>example.com</b> 59 IN A <b>198.51.100.0</b></p>
-	<p><b>blog.example.com</b> 59 IN A <b>198.51.100.1</b></p>
-	<p><b>ask.example.com</b> 59 IN A <b>198.51.100.2</b></p>
-	<p>In its most simple form, this enables Internet users to connect to websites without needing to memorize their IP address.&nbsp;</p>
-	<p>Often, our customers need to be able to do things like create a whole batch of records, or enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records" target="_blank" rel="noopener noreferrer"><u>proxying</u></a> on many records, or update many records to point to a new target at the same time, or even delete all of their records. Unfortunately, for most of these cases, we were asking customers to write their own custom scripts or programs to do these tasks for them, a number of which are open sourced and whose content has not been checked by us. These scripts are often used to avoid needing to repeatedly make the same API calls manually. This takes time, not only for the development of the scripts, but also to simply execute all the API calls, not to mention it can leave the zone in a bad state if some changes fail while others succeed.</p>
-	<div class="flex anchor relative">
-		<h2 id="introducing-batch">Introducing /batch</h2>
-		<a href="https://blog.cloudflare.com/#introducing-batch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Starting today, everyone with a <a href="https://developers.cloudflare.com/dns/zone-setups" target="_blank" rel="noopener noreferrer"><u>Cloudflare zone</u></a> will have access to this endpoint, with free tier customers getting access to 200 changes in one batch, and paid plans getting access to 3,500 changes in one batch. We have successfully tested up to 100,000 changes in one call. The API is simple, expecting a POST request to be made to the <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records" target="_blank" rel="noopener noreferrer"><u>new API endpoint</u></a> /dns_records/batch, which passes in a JSON object in the body in the format:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">{
-    deletes:[]Record
-    patches:[]Record
-    puts:[]Record
-    posts:[]Record
-}
-</code></pre>
-	<p>Each list of records []Record will follow the same requirements as the regular API, except that the record ID on deletes, patches, and puts will be required within the Record object itself. Here is a simple example:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">{
-    "deletes": [
-        {
-            "id": "143004ef463b464a504bde5a5be9f94a"
-        },
-        {
-            "id": "165e9ef6f325460c9ca0eca6170a7a23"
-        }
-    ],
-    "patches": [
-        {
-            "id": "16ac0161141a4e62a79c50e0341de5c6",
-            "content": "192.0.2.45"
-        },
-        {
-            "id": "6c929ea329514731bcd8384dd05e3a55",
-            "name": "update.example.com",
-            "proxied": true
-        }
-    ],
-    "puts": [
-        {
-            "id": "ee93eec55e9e45f4ae3cb6941ffd6064",
-            "content": "192.0.2.50",
-            "name": "no-change.example.com",
-            "proxied": false,
-            "ttl:": 1
-        },
-        {
-            "id": "eab237b5a67e41319159660bc6cfd80b",
-            "content": "192.0.2.45",
-            "name": "no-change.example.com",
-            "proxied": false,
-            "ttl:": 3000
-        }
-    ],
-    "posts": [
-        {
-            "name": "@",
-            "type": "A",
-            "content": "192.0.2.45",
-            "proxied": false,
-            "ttl": 3000
-        },
-        {
-            "name": "a.example.com",
-            "type": "A",
-            "content": "192.0.2.45",
-            "proxied": true
-        }
-    ]
-}</code></pre>
-	<p>Our API will then parse this and execute these calls in the following order:&nbsp;</p>
-	<ol>
-		<li>
-			<p>deletes</p>
-		</li>
-		<li>
-			<p>patches</p>
-		</li>
-		<li>
-			<p>puts</p>
-		</li>
-		<li>
-			<p>posts</p>
-		</li>
-	</ol>
-	<p>Each of these respective lists will be executed in the order given. This ordering system is important because it removes the need for our clients to worry about conflicts, such as if they need to create a CNAME on the same hostname as a to-be-deleted A record, which is not allowed in <a href="https://datatracker.ietf.org/doc/html/rfc1912#section-2.4" target="_blank" rel="noopener noreferrer"><u>RFC 1912</u></a>. In the event that any of these individual actions fail, the entire API call will fail and return the first error it sees. The batch request will also be executed inside a single database <a href="https://en.wikipedia.org/wiki/Database_transaction" target="_blank" rel="noopener noreferrer"><u>transaction</u></a>, which will roll back in the event of failure.</p>
-	<p>After the batch request has been successfully executed in our database, we then propagate the changes to our edge via <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed KV store. Each of the individual record changes inside the batch request is treated as a single key-value pair, and database transactions are not supported. As such, <b>we cannot guarantee that the propagation to our edge servers will be atomic</b>. For example, if replacing a <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare" target="_blank" rel="noopener noreferrer"><u>delegation</u></a> with an A record, some resolvers may see the <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-ns-record" target="_blank" rel="noopener noreferrer"><u>NS</u></a> record removed before the A record is added.&nbsp;</p>
-	<p>The response will follow the same format as the request. Patches and puts that result in no changes will be placed at the end of their respective lists.</p>
-	<p>We are also introducing some new changes to the Cloudflare dashboard, allowing users to select multiple records and subsequently:</p>
-	<ol>
-		<li>
-			<p>Delete all selected records</p>
-		</li>
-		<li>
-			<p>Change the proxy status of all selected records</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZU7nvMlcH2L51IqJrS1zC/db7ac600e503a72bb0c25679d63394e7/BLOG-2495_2.png" alt="BLOG-2495 2" class="kg-image" width="1999" height="1241" loading="lazy">
-	</figure>
-	<p>We plan to continue improving the dashboard to support more batch actions based on your feedback.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-journey">The journey</h2>
-		<a href="https://blog.cloudflare.com/#the-journey" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Although at the surface, this batch endpoint may seem like a fairly simple change, behind the scenes it is the culmination of a multi-year, multi-team effort. Over the past several years, we have been working hard to improve the DNS pipeline that takes our customers' records and pushes them to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. As part of this effort, we have been improving our <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS Records API</u></a> to reduce the overall latency. The DNS Records API is Cloudflare's most used API externally, serving twice as many requests as any other API at peak. In addition, the DNS Records API supports over 20 internal services, many of which touch very important areas such as DNSSEC, TLS, Email, Tunnels, Workers, Spectrum, and R2 storage. Therefore, it was important to build something that scales.&nbsp;</p>
-	<p>To improve API performance, we first needed to understand the complexities of the entire stack. At Cloudflare, we use <a href="https://www.jaegertracing.io" target="_blank" rel="noopener noreferrer"><u>Jaeger tracing</u></a> to debug our systems. It gives us granular insights into a sample of requests that are coming into our APIs. When looking at API request latency, the <a href="https://www.jaegertracing.io/docs/1.23/architecture/#span" target="_blank" rel="noopener noreferrer"><u>span</u></a> that stood out was the time spent on each individual database lookup. The latency here can vary anywhere from ~1ms to ~5ms.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61f3sKGUs9oWMPT9P4au6R/a91d8291b626f4bab3ac1c69adf62a5d/BLOG-2495_3.png" alt="BLOG-2495 3" class="kg-image" width="1074" height="104" loading="lazy">
-	</figure>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3L3OaTb9cTKKKcIjCm1RLq/86ffd63116988025fd52105e316c5b5a/BLOG-2495_4.png" alt="BLOG-2495 4" class="kg-image" width="1090" height="108" loading="lazy">
-	</figure>
-	<p><sub><i>Jaeger trace showing variable database latency</i></sub></p>
-	<p>Given this variability in database query latency, we wanted to understand exactly what was going on within each DNS Records API request. When we first started on this journey, the breakdown of database lookups for each action was as follows:</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Action</b></p>
+<p>Customers that use Cloudflare to manage their DNS often need to create a whole batch of records, enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records" target="_blank" rel="noopener noreferrer"><u>proxying</u></a> on many records, update many records to point to a new target at the same time, or even delete all of their records. Historically, customers had to resort to bespoke scripts to make these changes, which came with their own set of issues. In response to customer demand, we are excited to announce support for batched API calls to the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS records API</u></a> starting today. This lets customers make large changes to their zones much more efficiently than before. Whether sending a POST, PUT, PATCH or DELETE, users can now execute these four different <a href="https://en.wikipedia.org/wiki/HTTP#Request_methods" target="_blank" rel="noopener noreferrer"><u>HTTP methods</u></a>, and multiple HTTP requests all at the same time.</p>
+<h2>Efficient zone management matters</h2>
+<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records" target="_blank" rel="noopener noreferrer"><u>DNS records</u></a> are an essential part of most web applications and websites, and they serve many different purposes. The most common use case for a DNS record is to have a hostname point to an <a href="https://en.wikipedia.org/wiki/IPv4" target="_blank" rel="noopener noreferrer"><u>IPv4</u></a> address, this is called an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-a-record" target="_blank" rel="noopener noreferrer"><u>A record</u></a>:</p>
+<p><strong>example.com</strong> 59 IN A <strong>198.51.100.0</strong></p>
+<p><strong>blog.example.com</strong> 59 IN A <strong>198.51.100.1</strong></p>
+<p><strong>ask.example.com</strong> 59 IN A <strong>198.51.100.2</strong></p>
+<p>In its most simple form, this enables Internet users to connect to websites without needing to memorize their IP address.&nbsp;</p>
+<p>Often, our customers need to be able to do things like create a whole batch of records, or enable <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records" target="_blank" rel="noopener noreferrer"><u>proxying</u></a> on many records, or update many records to point to a new target at the same time, or even delete all of their records. Unfortunately, for most of these cases, we were asking customers to write their own custom scripts or programs to do these tasks for them, a number of which are open sourced and whose content has not been checked by us. These scripts are often used to avoid needing to repeatedly make the same API calls manually. This takes time, not only for the development of the scripts, but also to simply execute all the API calls, not to mention it can leave the zone in a bad state if some changes fail while others succeed.</p>
+<h2>Introducing /batch</h2>
+<p>Starting today, everyone with a <a href="https://developers.cloudflare.com/dns/zone-setups" target="_blank" rel="noopener noreferrer"><u>Cloudflare zone</u></a> will have access to this endpoint, with free tier customers getting access to 200 changes in one batch, and paid plans getting access to 3,500 changes in one batch. We have successfully tested up to 100,000 changes in one call. The API is simple, expecting a POST request to be made to the <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records" target="_blank" rel="noopener noreferrer"><u>new API endpoint</u></a> /dns_records/batch, which passes in a JSON object in the body in the format:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    deletes</span><span class="sk-24292e-fff">:[]Record</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    patches</span><span class="sk-24292e-fff">:[]Record</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">:[]Record</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    posts</span><span class="sk-24292e-fff">:[]Record</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Each list of records []Record will follow the same requirements as the regular API, except that the record ID on deletes, patches, and puts will be required within the Record object itself. Here is a simple example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "deletes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"143004ef463b464a504bde5a5be9f94a"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"165e9ef6f325460c9ca0eca6170a7a23"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "patches"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"16ac0161141a4e62a79c50e0341de5c6"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"192.0.2.45"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"6c929ea329514731bcd8384dd05e3a55"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"update.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "puts"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ee93eec55e9e45f4ae3cb6941ffd6064"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"192.0.2.50"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"no-change.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "ttl:"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"eab237b5a67e41319159660bc6cfd80b"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"192.0.2.45"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"no-change.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "ttl:"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">3000</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "posts"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"@"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"A"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"192.0.2.45"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "ttl"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">3000</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"a.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"A"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"192.0.2.45"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Our API will then parse this and execute these calls in the following order:&nbsp;</p>
+<ol>
+	<li>deletes</li>
+	<li>patches</li>
+	<li>puts</li>
+	<li>posts</li>
+</ol>
+<p>Each of these respective lists will be executed in the order given. This ordering system is important because it removes the need for our clients to worry about conflicts, such as if they need to create a CNAME on the same hostname as a to-be-deleted A record, which is not allowed in <a href="https://datatracker.ietf.org/doc/html/rfc1912#section-2.4" target="_blank" rel="noopener noreferrer"><u>RFC 1912</u></a>. In the event that any of these individual actions fail, the entire API call will fail and return the first error it sees. The batch request will also be executed inside a single database <a href="https://en.wikipedia.org/wiki/Database_transaction" target="_blank" rel="noopener noreferrer"><u>transaction</u></a>, which will roll back in the event of failure.</p>
+<p>After the batch request has been successfully executed in our database, we then propagate the changes to our edge via <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale" target="_blank" rel="noopener noreferrer"><u>Quicksilver</u></a>, our distributed KV store. Each of the individual record changes inside the batch request is treated as a single key-value pair, and database transactions are not supported. As such, <strong>we cannot guarantee that the propagation to our edge servers will be atomic</strong>. For example, if replacing a <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare" target="_blank" rel="noopener noreferrer"><u>delegation</u></a> with an A record, some resolvers may see the <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-ns-record" target="_blank" rel="noopener noreferrer"><u>NS</u></a> record removed before the A record is added.&nbsp;</p>
+<p>The response will follow the same format as the request. Patches and puts that result in no changes will be placed at the end of their respective lists.</p>
+<p>We are also introducing some new changes to the Cloudflare dashboard, allowing users to select multiple records and subsequently:</p>
+<ol>
+	<li>Delete all selected records</li>
+	<li>Change the proxy status of all selected records</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="444" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=750&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=828&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=1080&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=1280&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NB65Z3XT885WB92FTGVW.png&amp;w=1430&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2495 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="444" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2495 2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We plan to continue improving the dashboard to support more batch actions based on your feedback.</p>
+<h2>The journey</h2>
+<p>Although at the surface, this batch endpoint may seem like a fairly simple change, behind the scenes it is the culmination of a multi-year, multi-team effort. Over the past several years, we have been working hard to improve the DNS pipeline that takes our customers' records and pushes them to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale" target="_blank" rel="noopener noreferrer"><u>Quicksilver</u></a>, our distributed database. As part of this effort, we have been improving our <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-list-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS Records API</u></a> to reduce the overall latency. The DNS Records API is Cloudflare's most used API externally, serving twice as many requests as any other API at peak. In addition, the DNS Records API supports over 20 internal services, many of which touch very important areas such as DNSSEC, TLS, Email, Tunnels, Workers, Spectrum, and R2 storage. Therefore, it was important to build something that scales.&nbsp;</p>
+<p>To improve API performance, we first needed to understand the complexities of the entire stack. At Cloudflare, we use <a href="https://www.jaegertracing.io" target="_blank" rel="noopener noreferrer"><u>Jaeger tracing</u></a> to debug our systems. It gives us granular insights into a sample of requests that are coming into our APIs. When looking at API request latency, the <a href="https://www.jaegertracing.io/docs/1.23/architecture/#span" target="_blank" rel="noopener noreferrer"><u>span</u></a> that stood out was the time spent on each individual database lookup. The latency here can vary anywhere from ~1ms to ~5ms.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="69" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=715&amp;h=69&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=640&amp;h=62&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=715&amp;h=69&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=750&amp;h=72&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=828&amp;h=80&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=1080&amp;h=104&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=1280&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VSKV63VKPX8N2DGHNWXR.png&amp;w=1430&amp;h=138&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2495 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="69" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2495 3"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="71" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=715&amp;h=71&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=640&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=715&amp;h=71&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=750&amp;h=74&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=828&amp;h=82&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=1080&amp;h=107&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=1280&amp;h=127&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YMVCNE7ED7DJVRV3T69G.png&amp;w=1430&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2495 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="71" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2495 4"></div>
+</figure>
+<p><span data-portabletext-unknown="mark"><em>Jaeger trace showing variable database latency</em></span></p>
+<p>Given this variability in database query latency, we wanted to understand exactly what was going on within each DNS Records API request. When we first started on this journey, the breakdown of database lookups for each action was as follows:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Action</p>
 				</th>
-				<th>
-					<p><b>Database Queries</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Database Queries</p>
 				</th>
-				<th>
-					<p><b>Reason</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Reason</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>POST</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to write and one to read the new record.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PUT</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to collect, one to write, and one to read back the new record.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PATCH</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to collect, one to write, and one to read back the new record.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>DELETE</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to read and one to delete.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>The reason we needed to read the newly created records on POST, PUT, and PATCH was because the record contains information filled in by the database which we cannot infer in the API.&nbsp;</p>
-	<p>Let’s imagine that a customer needed to edit 1,000 records. If each database lookup took 3ms to complete, that was 3ms * 3 lookups * 1,000 records = 9 seconds spent on database queries alone, not taking into account the round trip time to and from our API or any other processing latency. It’s clear that we needed to reduce the number of overall queries and ideally minimize per query latency variation. Let’s tackle the variation in latency first.</p>
-	<p>Each of these calls is not a simple INSERT, UPDATE, or DELETE, because we have functions wrapping these database calls for sanitization purposes. In order to understand the variable latency, we enlisted the help of <a href="https://www.postgresql.org/docs/current/auto-explain.html" target="_blank" rel="noopener noreferrer"><u>PostgreSQL’s “auto_explain”</u></a>. This module gives a breakdown of execution times for each statement without needing to EXPLAIN each one by hand. We used the following settings:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2myvmIREh2Q9yl30HbRus/29f085d40ba7dde34e9a46c27e3c6ba2/BLOG-2495_5.png" alt="BLOG-2495 5" class="kg-image" width="660" height="412" loading="lazy">
-	</figure>
-	<p>A handful of queries showed durations like the one below, which took an order of magnitude longer than other queries.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/557xg66x8OiHM6pcAG4svk/56157cd0e5b6d7fd47f0152798598729/BLOG-2495_6.png" alt="BLOG-2495 6" class="kg-image" width="1908" height="104" loading="lazy">
-	</figure>
-	<p>We noticed that in several locations we were doing queries like:</p>
-	<p><code>IF (EXISTS (SELECT id FROM table WHERE row_hash = __new_row_hash))</code></p>
-	<p>If you are trying to insert into very large zones, such queries could mean even longer database query times, potentially explaining the discrepancy between 1ms and 5ms in our tracing images above. Upon further investigation, we already had a unique index on that exact hash. <a href="https://www.postgresql.org/docs/current/indexes-unique.html" target="_blank" rel="noopener noreferrer"><u>Unique indexes</u></a> in PostgreSQL enforce the uniqueness of one or more column values, which means we can safely remove those existence checks without risk of inserting duplicate rows.</p>
-	<p>The next task was to introduce database batching into our DNS Records API. In any API, external calls such as SQL queries are going to add substantial latency to the request. Database batching allows the DNS Records API to execute multiple SQL queries within one single network call, subsequently lowering the number of database round trips our system needs to make.&nbsp;</p>
-	<p>According to the table above, each database write also corresponded to a read after it had completed the query. This was needed to collect information like creation/modification timestamps and new IDs. To improve this, we tweaked our database functions to now return the newly created DNS record itself, removing a full round trip to the database. Here is the updated table:</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Action</b></p>
+</div>
+<p>The reason we needed to read the newly created records on POST, PUT, and PATCH was because the record contains information filled in by the database which we cannot infer in the API.&nbsp;</p>
+<p>Let’s imagine that a customer needed to edit 1,000 records. If each database lookup took 3ms to complete, that was 3ms * 3 lookups * 1,000 records = 9 seconds spent on database queries alone, not taking into account the round trip time to and from our API or any other processing latency. It’s clear that we needed to reduce the number of overall queries and ideally minimize per query latency variation. Let’s tackle the variation in latency first.</p>
+<p>Each of these calls is not a simple INSERT, UPDATE, or DELETE, because we have functions wrapping these database calls for sanitization purposes. In order to understand the variable latency, we enlisted the help of <a href="https://www.postgresql.org/docs/current/auto-explain.html" target="_blank" rel="noopener noreferrer"><u>PostgreSQL’s “auto_explain”</u></a>. This module gives a breakdown of execution times for each statement without needing to EXPLAIN each one by hand. We used the following settings:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="660" height="412" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=660&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=660&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 660w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=750&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=828&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=1080&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=1280&amp;h=799&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HZ0W6EDMAWHATTCADWVT.png&amp;w=1320&amp;h=824&amp;f=webp&amp;fit=cover&amp;position=center 1320w" alt="BLOG-2495 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 660px) 660px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="660" height="412" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2495 5"></div>
+</figure>
+<p>A handful of queries showed durations like the one below, which took an order of magnitude longer than other queries.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="39" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=715&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=640&amp;h=35&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=715&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=750&amp;h=41&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=828&amp;h=45&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=1080&amp;h=59&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=1280&amp;h=70&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476BRMJ91PZTXTTEA15N4W.png&amp;w=1430&amp;h=78&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2495 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="39" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2495 6"></div>
+</figure>
+<p>We noticed that in several locations we were doing queries like:</p>
+<p><code>IF (EXISTS (SELECT id FROM table WHERE row_hash = __new_row_hash))</code></p>
+<p>If you are trying to insert into very large zones, such queries could mean even longer database query times, potentially explaining the discrepancy between 1ms and 5ms in our tracing images above. Upon further investigation, we already had a unique index on that exact hash. <a href="https://www.postgresql.org/docs/current/indexes-unique.html" target="_blank" rel="noopener noreferrer"><u>Unique indexes</u></a> in PostgreSQL enforce the uniqueness of one or more column values, which means we can safely remove those existence checks without risk of inserting duplicate rows.</p>
+<p>The next task was to introduce database batching into our DNS Records API. In any API, external calls such as SQL queries are going to add substantial latency to the request. Database batching allows the DNS Records API to execute multiple SQL queries within one single network call, subsequently lowering the number of database round trips our system needs to make.&nbsp;</p>
+<p>According to the table above, each database write also corresponded to a read after it had completed the query. This was needed to collect information like creation/modification timestamps and new IDs. To improve this, we tweaked our database functions to now return the newly created DNS record itself, removing a full round trip to the database. Here is the updated table:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Action</p>
 				</th>
-				<th>
-					<p><b>Database Queries</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Database Queries</p>
 				</th>
-				<th>
-					<p><b>Reason</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Reason</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>POST</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to write</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PUT</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to read, one to write.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PATCH</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to read, one to write.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>DELETE</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>One to read, one to delete.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>We have room for improvement here, however we cannot easily reduce this further due to some restrictions around auditing and other sanitization logic.</p>
-	<p><b>Results:</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Action</b></p>
+</div>
+<p>We have room for improvement here, however we cannot easily reduce this further due to some restrictions around auditing and other sanitization logic.</p>
+<p><strong>Results:</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Action</p>
 				</th>
-				<th>
-					<p><b>Average database time before</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Average database time before</p>
 				</th>
-				<th>
-					<p><b>Average database time after</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Average database time after</p>
 				</th>
-				<th>
-					<p><b>Percentage Decrease</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Percentage Decrease</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>POST</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.38ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.967ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>71.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PUT</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>4.47ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.31ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>48.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PATCH</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>4.41ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.24ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>49.3%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>DELETE</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.21ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.21ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>These are some pretty good improvements! Not only did we reduce the API latency, we also reduced the database query load, benefiting other systems as well.</p>
-	<div class="flex anchor relative">
-		<h2 id="werent-we-talking-about-batching">Weren’t we talking about batching?</h2>
-		<a href="https://blog.cloudflare.com/#werent-we-talking-about-batching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>I previously mentioned that the /batch endpoint is fully atomic, making use of a single database transaction. However, a single transaction may still require multiple database network calls, and from the table above, that can add up to a significant amount of time when dealing with large batches. To optimize this, we are making use of <a href="https://pkg.go.dev/github.com/jackc/pgx/v4#Batch" target="_blank" rel="noopener noreferrer"><u>pgx/batch</u></a>, a Golang object that allows us to write and subsequently read multiple queries in a single network call. Here is a high level of how the batch endpoint works:</p>
-	<ol>
-		<li>
-			<p>Collect all the records for the PUTs, PATCHes and DELETEs.</p>
-		</li>
-		<li>
-			<p>Apply any per record differences as requested by the PATCHes and PUTs.</p>
-		</li>
-		<li>
-			<p>Format the batch SQL query to include each of the actions.</p>
-		</li>
-		<li>
-			<p>Execute the batch SQL query in the database.</p>
-		</li>
-		<li>
-			<p>Parse each database response and return any errors if needed.</p>
-		</li>
-		<li>
-			<p>Audit each change.</p>
-		</li>
-	</ol>
-	<p>This takes at most only two database calls per batch. One to fetch, and one to write/delete. If the batch contains only POSTs, this will be further reduced to a single database call. Given all of this, we should expect to see a significant improvement in latency when making multiple changes, which we do when observing how these various endpoints perform:&nbsp;</p>
-	<p><i>Note: Each of these queries was run from multiple locations around the world and the median of the response times are shown here. The server responding to queries is located in Portland, Oregon, United States. Latencies are subject to change depending on geographical location.</i></p>
-	<p><b>Create only:</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p>
-					</p>
+</div>
+<p>These are some pretty good improvements! Not only did we reduce the API latency, we also reduced the database query load, benefiting other systems as well.</p>
+<h2>Weren’t we talking about batching?</h2>
+<p>I previously mentioned that the /batch endpoint is fully atomic, making use of a single database transaction. However, a single transaction may still require multiple database network calls, and from the table above, that can add up to a significant amount of time when dealing with large batches. To optimize this, we are making use of <a href="https://pkg.go.dev/github.com/jackc/pgx/v4#Batch" target="_blank" rel="noopener noreferrer"><u>pgx/batch</u></a>, a Golang object that allows us to write and subsequently read multiple queries in a single network call. Here is a high level of how the batch endpoint works:</p>
+<ol>
+	<li>Collect all the records for the PUTs, PATCHes and DELETEs.</li>
+	<li>Apply any per record differences as requested by the PATCHes and PUTs.</li>
+	<li>Format the batch SQL query to include each of the actions.</li>
+	<li>Execute the batch SQL query in the database.</li>
+	<li>Parse each database response and return any errors if needed.</li>
+	<li>Audit each change.</li>
+</ol>
+<p>This takes at most only two database calls per batch. One to fetch, and one to write/delete. If the batch contains only POSTs, this will be further reduced to a single database call. Given all of this, we should expect to see a significant improvement in latency when making multiple changes, which we do when observing how these various endpoints perform:&nbsp;</p>
+<p><em>Note: Each of these queries was run from multiple locations around the world and the median of the response times are shown here. The server responding to queries is located in Portland, Oregon, United States. Latencies are subject to change depending on geographical location.</em></p>
+<p><strong>Create only:</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p><br></p>
 				</th>
-				<th>
-					<p><b>10 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10 Records</p>
 				</th>
-				<th>
-					<p><b>100 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>100 Records</p>
 				</th>
-				<th>
-					<p><b>1,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>1,000 Records</p>
 				</th>
-				<th>
-					<p><b>10,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10,000 Records</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Regular API</b></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Regular API</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.55s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>74.23s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>757.32s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7,877.14s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - Without database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - Without database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.85s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.47s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>4.32s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>16.58s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - with database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - with database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.67s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.21s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.09s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>10.33s</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><b>Delete only:</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p>
-					</p>
+</div>
+<p><strong>Delete only:</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p><br></p>
 				</th>
-				<th>
-					<p><b>10 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10 Records</p>
 				</th>
-				<th>
-					<p><b>100 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>100 Records</p>
 				</th>
-				<th>
-					<p><b>1,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>1,000 Records</p>
 				</th>
-				<th>
-					<p><b>10,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10,000 Records</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Regular API</b></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Regular API</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.28s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>67.35s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>658.11s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7,471.30s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - without database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - without database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.79s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.32s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.18s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>17.49s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - with database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - with database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.66s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.78s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.68s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.73s</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><b>Create/Update/Delete:</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p>
-					</p>
+</div>
+<p><strong>Create/Update/Delete:</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p><br></p>
 				</th>
-				<th>
-					<p><b>10 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10 Records</p>
 				</th>
-				<th>
-					<p><b>100 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>100 Records</p>
 				</th>
-				<th>
-					<p><b>1,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>1,000 Records</p>
 				</th>
-				<th>
-					<p><b>10,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10,000 Records</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Regular API</b></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Regular API</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.11s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>72.41s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>715.36s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7,298.17s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - without database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - without database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.79s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.36s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.05s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>18.27s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - with database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - with database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.74s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.06s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.17s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>8.48s</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><b>Overall Average:</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p>
-					</p>
+</div>
+<p><strong>Overall Average:</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p><br></p>
 				</th>
-				<th>
-					<p><b>10 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10 Records</p>
 				</th>
-				<th>
-					<p><b>100 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>100 Records</p>
 				</th>
-				<th>
-					<p><b>1,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>1,000 Records</p>
 				</th>
-				<th>
-					<p><b>10,000 Records</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>10,000 Records</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Regular API</b></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Regular API</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.31s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>71.33s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>710.26s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7,548.87s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - without database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - without database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.81s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.38s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.51s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>17.44s</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Batch API - with database batching</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Batch API - with database batching</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.69s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.02s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.31s</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>8.85s</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>We can see that on average, the new batching API is significantly faster than the regular API trying to do the same actions, and it’s also nearly twice as fast as the batching API without batched database calls. We can see that at 10,000 records, the batching API is a staggering 850x faster than the regular API. As mentioned above, these numbers are likely to change for a number of different reasons, but it’s clear that making several round trips to and from the API adds substantial latency, regardless of the region.</p>
-	<div class="flex anchor relative">
-		<h2 id="batch-overload">Batch overload</h2>
-		<a href="https://blog.cloudflare.com/#batch-overload" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Making our API faster is awesome, but we don’t operate in an isolated environment. Each of these records needs to be processed and pushed to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>, our distributed database. If we have customers creating tens of thousands of records every 10 seconds, we need to be able to handle this downstream so that we don’t overwhelm our system. In a May 2022 blog post titled <a href="https://blog.cloudflare.com/dns-build-improvement"><i><u>How we improved DNS record build speed by more than 4,000x</u></i></a>, I noted<i> </i>that:</p>
-	<blockquote>
-		<p><i>We plan to introduce a batching system that will collect record changes into groups to minimize the number of queries we make to our database and Quicksilver.</i></p>
-	</blockquote>
-	<p>This task has since been completed, and our propagation pipeline is now able to batch thousands of record changes into a single database query which can then be published to Quicksilver in order to be propagated to our global network.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="next-steps">Next steps</h2>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have a couple more improvements we may want to bring into the API. We also intend to improve the UI to bring more usability improvements to the dashboard to more easily manage zones. <a href="https://research.rallyuxr.com/cloudflare/lp/cm0zu2ma7017j1al98l1m8a7n?channel=share&amp;studyId=cm0zu2ma4017h1al9byak79iw" target="_blank" rel="noopener noreferrer"><u>We would love to hear your feedback</u></a>, so please let us know what you think and if you have any suggestions for improvements.</p>
-	<p>For more details on how to use the new /batch API endpoint, head over to our <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> and <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records" target="_blank" rel="noopener noreferrer"><u>API reference</u></a>.</p>
 </div>
+<p>We can see that on average, the new batching API is significantly faster than the regular API trying to do the same actions, and it’s also nearly twice as fast as the batching API without batched database calls. We can see that at 10,000 records, the batching API is a staggering 850x faster than the regular API. As mentioned above, these numbers are likely to change for a number of different reasons, but it’s clear that making several round trips to and from the API adds substantial latency, regardless of the region.</p>
+<h2>Batch overload</h2>
+<p>Making our API faster is awesome, but we don’t operate in an isolated environment. Each of these records needs to be processed and pushed to <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale" target="_blank" rel="noopener noreferrer"><u>Quicksilver</u></a>, our distributed database. If we have customers creating tens of thousands of records every 10 seconds, we need to be able to handle this downstream so that we don’t overwhelm our system. In a May 2022 blog post titled <a href="https://blog.cloudflare.com/dns-build-improvement" target="_blank" rel="noopener noreferrer"><em><u>How we improved DNS record build speed by more than 4,000x</u></em></a>, I noted<em> </em>that:</p>
+<blockquote><em>We plan to introduce a batching system that will collect record changes into groups to minimize the number of queries we make to our database and Quicksilver.</em></blockquote>
+<p>This task has since been completed, and our propagation pipeline is now able to batch thousands of record changes into a single database query which can then be published to Quicksilver in order to be propagated to our global network.&nbsp;</p>
+<h2>Next steps</h2>
+<p>We have a couple more improvements we may want to bring into the API. We also intend to improve the UI to bring more usability improvements to the dashboard to more easily manage zones. <a href="https://research.rallyuxr.com/cloudflare/lp/cm0zu2ma7017j1al98l1m8a7n?channel=share&amp;studyId=cm0zu2ma4017h1al9byak79iw" target="_blank" rel="noopener noreferrer"><u>We would love to hear your feedback</u></a>, so please let us know what you think and if you have any suggestions for improvements.</p>
+<p>For more details on how to use the new /batch API endpoint, head over to our <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> and <a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-batch-dns-records" target="_blank" rel="noopener noreferrer"><u>API reference</u></a>.</p>

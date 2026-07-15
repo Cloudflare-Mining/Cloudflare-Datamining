@@ -1,0 +1,111 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/using-cloudflare-registrar">English</a>, en <a href="https://blog.cloudflare.com/de-de/using-cloudflare-registrar">Deutsch</a>, en <a href="https://blog.cloudflare.com/es-es/using-cloudflare-registrar">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/using-cloudflare-registrar">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZadufKuGsfnpHkUJOJcXv/1ed64965c7e8f2283d3d423c9478765e/using-cloudflare-registrar.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Chaque site Web, quelle que soit sa taille, est né d'une idée, suivie rapidement par l'enregistrement de son nom de domaine. La plupart des bureaux d'enregistrement offrent des promotions pour l'enregistrement initial de votre domaine, puis augmentent graduellement le tarif à chaque renouvellement. Par contre, ce qu'ils ne disent pas aux clients, c'est que le prix qu'ils paient au registre pour votre inscription est fixé par le registre. Nous avons parfois constaté que certains bureaux d'enregistrement facturent huit fois le prix de gros pour le renouvellement d'un nom de domaine.</p>
+	<p>Aujourd'hui, nous lançons Cloudflare Registrar, le premier bureau d'enregistrement de nom de domaine auquel vous pouvez faire confiance les yeux fermés. <b>Cloudflare Registrar ne vous facturera jamais plus que ce que nous payons au registre pour votre domaine.</b> Pas de majoration ni de frais non prévus. Depuis huit ans, Cloudflare conçoit des produits qui rendent le Web plus rapide et plus sûr. Le moment est venu pour nous d'intervenir là où commence votre voyage sur Internet, c'est-à-dire votre domaine.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-quick-introduction-to-domain-registration"><b>Brève explication concernant l'enregistrement d'un nom de domaine</b></h3>
+		<a href="https://blog.cloudflare.com/#a-quick-introduction-to-domain-registration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque vous enregistrez un nom de domaine, vous devenez le propriétaire, ou le titulaire, de ce nom de domaine pour une période déterminée. Une fois le domaine enregistré, vous pouvez créer un registre de référence qui indique au monde entier les serveurs de noms de votre domaine. Le système de noms de domaine, ou <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a>, utilise ces serveurs de noms pour diriger le trafic vers l'adresse IP de votre serveur.</p>
+	<p>Lorsque vous placez votre site derrière Cloudflare, vous <a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare" target="_blank" rel="noopener noreferrer">remplacez</a> vos serveurs de noms de votre registre par ceux que nous fournissons. Dès que nous devenons responsables de vos DNS de référence, nous pouvons vous faire bénéficier de fonctionnalités qui rendront votre site plus rapide et plus sûr.</p>
+	<p>Votre registre conserve les enregistrements de référence de vos serveurs de noms. Chaque nom de domaine de premier niveau (TLD) dispose d'un registre unique où sont consignés ces enregistrements. Par exemple, .com est un TLD. Verisign est le registre exclusif du TLD .com. En tant que registre du TLD, Verisign stocke les coordonnées et les serveurs de noms pour chaque domaine en .com dans le monde. En tant que titulaire d'un domaine, vous pouvez indiquer au registre de votre domaine quels serveurs de noms les DNS doivent utiliser.</p>
+	<p>À quoi servent les bureaux d'enregistrement dans tout ça ? Les bureaux d'enregistrement de domaine indiquent au registre de ce TLD que vous êtes propriétaire d'un domaine et lui communiquent les modifications ultérieures de celui-ci. Les registres comptent sur les bureaux d'enregistrement pour n'accepter que les changements apportés par le titulaire du domaine et pour transmettre ces informations avec précision afin que le registre puisse mettre à jour ses dossiers. Bien qu'il y ait un registre pour chaque TLD, des centaines de bureaux d'enregistrement sont en mesure d'enregistrer un domaine.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eG8yxNGEuLJA7xU8q1nqH/e603b75812e179875dc6ab86c1fc9252/Domain-Registry-Process.png" alt="" class="kg-image" width="1268" height="660" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-about-transferring-domains"><b>Qu’en est-il du transfert de domaines ?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-about-transferring-domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les transferts de domaine indiquent à votre registre qu'un autre bureau d'enregistrement peut désormais établir ces enregistrements officiels pour vous. La relation est basée sur la confiance. Les registres ne font confiance qu'à un seul bureau d'enregistrement pour effectuer des changements en votre nom à tout moment.</p>
+	<p>Le transfert d'un domaine à un nouveau bureau d'enregistrement informe le registre qu'il doit plutôt faire confiance à ce nouveau bureau d'enregistrement pour modifier les informations. Le processus nécessite quelques démarches à la fois chez votre nouveau bureau d'enregistrement et chez celui que vous quittez. Chaque bureau d'enregistrement traite les transferts un peu différemment, mais ils suivent en général un modèle basé sur les règles établies par l'ICANN, l'organisation responsable de la régulation de l'enregistrement des noms de domaines.</p>
+	<div class="flex anchor relative">
+		<h4 id="1-tell-your-new-registrar-that-you-want-to-start-a-transfer"><b>1. Indiquez à votre nouveau bureau d'enregistrement que vous souhaitez lancer un transfert</b></h4>
+		<a href="https://blog.cloudflare.com/#1-tell-your-new-registrar-that-you-want-to-start-a-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour transférer un domaine, vous devez commencer par choisir votre nouveau bureau d'enregistrement. Vous commencerez par indiquer le domaine que vous souhaitez transférer. Le nouveau bureau d'enregistrement examinera les paramètres de votre domaine pour voir s'il peut être transféré.</p>
+	<p>Si vous avez enregistré ou transféré votre domaine depuis moins de 60 jours, vous ne pouvez pas encore le transférer. Votre nouveau bureau d'enregistrement vérifiera également si votre domaine est verrouillé chez votre ancien bureau d'enregistrement.</p>
+	<div class="flex anchor relative">
+		<h4 id="2-unlock-your-domain-at-the-old-registrar"><b>2. Débloquez votre domaine chez l'ancien bureau d'enregistrement</b></h4>
+		<a href="https://blog.cloudflare.com/#2-unlock-your-domain-at-the-old-registrar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les bureaux d'enregistrement ont un dispositif de protection léger pour empêcher les utilisateurs non autorisés de procéder à des transferts de domaines : REGISTRAR-LOCK. Il est également connu sous le nom de DOMAIN-LOCK. Lorsqu'il est activé, le verrouillage empêche les autres bureaux d'enregistrement de tenter un transfert.</p>
+	<p>Seul le titulaire peut activer ou désactiver ce verrouillage, en général via l'interface d'administration du bureau d'enregistrement. Pour procéder à un transfert, vous devrez désactiver ce dispositif de verrouillage s'il est activé.</p>
+	<div class="flex anchor relative">
+		<h4 id="3-grab-your-authorization-code"><b>3. Saisissez votre code d’autorisation</b></h4>
+		<a href="https://blog.cloudflare.com/#3-grab-your-authorization-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ensuite, votre nouveau bureau d'enregistrement doit confirmer auprès de votre ancien bureau d'enregistrement l'autorisation du processus de transfert. Pour ce faire, votre ancien bureau d'enregistrement vous fournira un code d'autorisation. Vous devrez le communiquer à votre nouveau bureau d'enregistrement, qui l'utilisera pour confirmer l'authenticité du transfert.</p>
+	<p>Une fois les étapes ci-dessus complétées, votre nouveau bureau d'enregistrement pourra procéder au transfert. L'ICANN stipule que tout transfert doit également prolonger la date d'expiration de votre nom de domaine d'au moins un an. Cette période est d'un an à compter de la date d'expiration en cours, et non d'un an à compter de la date du transfert. Par exemple, si vous transférez un nom de domaine le 10 octobre 2018, mais qu'il doit expirer le 10 mars 2019, la nouvelle date d'expiration sera le 10 mars 2020.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71oJV4qZPNxci7ER9rHkdK/27774ce74735ebd0d342f69b3234ec5c/registrar-hidden-fees_2x-2.png" alt="" class="kg-image" width="1736" height="1428" loading="lazy">
+
+	</figure>
+	<p>Tout comme pour l'enregistrement de noms de domaines, le prix du renouvellement est fixé par le registre. Certains bureaux d'enregistrement facturent les renouvellements jusqu'à 30 fois le prix facturé lors de l'enregistrement.</p>
+	<div class="flex anchor relative">
+		<h3 id="domain-registration-without-markup"><b>Enregistrement de noms de domaines sans majoration tarifaire</b></h3>
+		<a href="https://blog.cloudflare.com/#domain-registration-without-markup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>De nombreux bureaux d'enregistrement prospèrent en augmentant les tarifs de renouvellement ou en ajoutant des frais pour des services dont vous pouvez bénéficier gratuitement. Pourtant, aucun bureau d'enregistrement ne propose une meilleure méthode pour se connecter à un registre. Ils se conforment tous à une norme établie il y a vingt ans. Si une entreprise n'est pas en mesure de proposer des services sans équivalent, vous ne devriez pas avoir à payer plus cher que le prix du marché pour ces services. Cloudflare Registrar ne vous facturera que ce que les registres nous facturent. Dans un marché fondé sur la vente incitative et l'appât par le leurre, nous offrons un service d'enregistrement de domaine au prix de gros.</p>
+	<p>Plus de dix millions de sites font confiance à Cloudflare pour leur exécution et leur sécurité. La majorité d'entre eux utilisent nos services gratuits. Nous ne vous demandons rien pour ajouter <a href="https://blog.cloudflare.com/introducing-universal-dnssec">DNSSEC</a> et <a href="https://blog.cloudflare.com/introducing-universal-ssl">SLL</a> à votre site. Lorsque nous démocratisons les fonctions qui facilitent le fonctionnement d'Internet, nous pouvons réduire davantage les coûts et améliorer le niveau de service pour tous les utilisateurs. La vente de domaines au prix de gros permet de lutter contre certaines entreprises qui font le contraire et qui cherchent par tous les moyens à vous faire payer plus cher pour des fonctionnalités de base.</p>
+	<p>La diffusion des coordonnées du déclarant, via le service WHOIS, peut générer des montagnes de spam sur vos adresses personnelles. Cloudflare Registrar offrira gratuitement la rédaction de données personnelles sur WHOIS, en conformité avec les <a href="https://www.icann.org/resources/pages/gtld-registration-data-specs-en" target="_blank" rel="noopener noreferrer">directives</a> actuelles de l'ICANN. Il n'est pas juste de vous faire payer un surplus pour le respect de votre vie privée.</p>
+	<p>Vous pouvez consulter la liste des TLD pris en charge par Cloudflare Registrar <a href="https://www.cloudflare.com/tld-policies" target="_blank" rel="noopener noreferrer">ici</a>. Nous nous employons à l'agrandir.</p>
+	<div class="flex anchor relative">
+		<h3 id="early-access-program"><b>Programme d'accès anticipé</b></h3>
+		<a href="https://blog.cloudflare.com/#early-access-program" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous déploierons l'accès à Cloudflare Registrar par étapes, en fonction de facteurs tels que votre ancienneté en tant que client Cloudflare. Pour prendre place dans la file d'attente, inscrivez-vous à l'accès anticipé <a href="https://dash.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">ici</a>. Nous vous indiquerons votre position et vous préviendrons lorsque vous pourrez commencer à transférer des domaines.</p>
+	<p>Vous voulez y avoir accès encore plus tôt ? Nous vous invitons à faire un <a href="https://dash.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">don</a> à Girls Who Code, un organisme à but non lucratif qui œuvre à réduire les inégalités entre les sexes dans l'industrie technologique. En faisant un don via le lien d'accès anticipé ci-dessus, vous pouvez soutenir leur mission et avoir accès plus tôt à Cloudflare Registrar.</p><!--kg-card-begin: html-->
+	<p></p>
+	<center><a href="https://dash.cloudflare.com/domains" class="btn btn-success">Sign up for Early Access!</a></center>
+	<p></p><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="whats-next"><b>Que se passera-t-il ensuite ?</b></h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Veillez à réserver votre place dans la file d'attente, puis cliquez sur ce <a href="https://dash.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">lien</a>. Vous recevrez une invitation à débuter par e-mail. Nous vous avertirons lorsque le moment sera venu de rejoindre le premier bureau d'enregistrement auquel vous pourrez faire confiance les yeux fermés.</p>
+	<p>Au début, vous pourrez transférer les domaines qui sont actifs dans votre compte Cloudflare. Vous voulez transférer tous vos domaines ? Ajoutez-les dès maintenant à Cloudflare.</p>
+	<p><a href="https://blog.cloudflare.com/subscribe"><i>Abonnez-vous à notre blog</i></a> <a href="https://dash.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><i>pour recevoir quotidiennement des informations concernant toutes nos annonces de la Semaine d'anniversaire.</i></a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Rh06IkgemLRvgVd66p9Kl/4c873dc6fea3f0ac70f9bb4feb6a6fbb/Cloudflare-Birthday-Week-10.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+
+	</figure>
+</div>

@@ -1,0 +1,126 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-ai-agent">English</a>、<a href="https://blog.cloudflare.com/zh-tw/introducing-ai-agent">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/introducing-ai-agent">Français</a>、<a href="https://blog.cloudflare.com/de-de/introducing-ai-agent">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/introducing-ai-agent">한국어</a>、<a href="https://blog.cloudflare.com/es-es/introducing-ai-agent">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-ai-agent">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xorIrMANoEkjSDTPof0Zz/435411092defa3c7b10fd49035879891/BLOG-2692_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareにとって特別な日がやってきました！今日はSecurity Weekであるだけでなく、Cloudflareがまったく新しい機能領域に踏み出す重要な日でもあります。この新機能とは、ユーザーがCloudflareの製品をより便利に活用し、その価値を最大限に引き出せるようにすることを目的としたものです。</p>
+	<p>今回は、現在皆さんにお使いいただいているCloudflare製品の管理にAI機能を組み込む取り組みの第一歩をご紹介します。最初のミッションは、セキュリティの強化とルールおよびポリシー管理の簡素化です。具体的には、従来は手作業で行っていたCloudflare WAFのカスタムルールやCloudflare OneのGatewayのポリシーの確認やコンテキストを合わせる作業を自動化し、各ポリシーの内容、問題点、改善の方法などを瞬時に把握できるようにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-cloudy-cloudflares-first-ai-agent">Cloudflareの初のAIエージェント、「Cloudy」の紹介</h3>
+		<a href="https://blog.cloudflare.com/#meet-cloudy-cloudflares-first-ai-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、完全にAIに対応した製品体験を目指し、その第一歩としてCloudflareで初となるAIエージェント「<i>Cloudy</i>」を導入しました。Cloudyは、ユーザーがさまざまな機能分野にまたがる製品スイートのCloudflareの設定を簡単に理解し、最適化するためのアシスタントのような役割を果たします。まず初めに、ダッシュボードで確認できるように、2つの製品Cloudflare WAFとCloudflare OneのGatewayに「Cloudy」を組み込みました。この点については、後ほど説明します。</p>
+	<p>「<i>Cloudy</i>」という名前は軽快で親しみやすい響きですが、私たちの目指すゴールは真剣で、Cloudflareの隅々にまでCloudyとAI搭載の機能を組み込み、ユーザーが現在利用しているCloudflare製品の運用・管理を最適化することです。さっそく、WAFとGatewayで稼働する「Cloudy」について紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="waf-custom-rules">WAFカスタムルール</h3>
+		<a href="https://blog.cloudflare.com/#waf-custom-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、<a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>WAFにおけるカスタムルール</u></a>のAI活用について概説します。WAFをあまりご存じでない方に説明すると、CloudflareのWAF（Webアプリケーションファイアウォール）は、SQLインジェクションやクロスサイトスクリプティング（XSS）などの脆弱性を突いた攻撃からWebアプリケーションを保護するのに役立ちます。&nbsp;</p>
+	<p>WAFでは、カスタムルールを作成して、特定の属性やセキュリティ基準に基づいてトラフィックをブロック、チャレンジ、または許可するなどのセキュリティポリシーを設定することができます。</p>
+	<p>しかし、組織全体で数十、場合によっては数百のルールを展開しているお客様にとっては、自組織のセキュリティ体勢を明確に理解して維持することは困難です。運用年数とともにルールの追加・変更が繰り返され、多くの場合複数メンバーが関わることから管理が複雑になり、セキュリティホールが生じることもあります。「Cloudy」はこうした問題を解決します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zcFRfhRWGQWhoza9TolDu/25e1357540db32e59150609e6eddd1e0/BLOG-2692_2.png" alt="BLOG-2692 2" class="kg-image" width="1999" height="1774" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を活用して、「Cloudy」がWAFのカスタムルールを確認し、設定内容の概要を提供します。これは、次のような問題の特定と解決に役立ちます。</p>
+	<ul>
+		<li>
+			<p><b>冗長ルールの検出</b>：同じ条件で動作しているルールを特定し、設定の簡素化に繋げます。</p>
+		</li>
+		<li>
+			<p><b>実行順序の最適化</b>：終了ルール（ブロック/チャレンジアクション）があるルールの影響で、後続のルールが実行されないケースを検出します。</p>
+		</li>
+		<li>
+			<p><b>競合するルールの分析</b>：あるルールが許可するトラフィックを、別のルールではブロックしている場合など、ルールが互いに対抗する場合を検出します。</p>
+		</li>
+		<li>
+			<p><b>無効化されているルールを検出</b>：重要なセキュリティルールが無効化されている場合、それを強調表示することで危険を知らせます。</p>
+		</li>
+	</ul>
+	<p>Cloudyは、単にルールを要約するだけでなく、ルール同士の関係性を分析し、具体的な改善策を提案します。これにより、複雑化したカスタムルール一式を管理するセキュリティチームは、短時間で設定を監査し、より確実に必要なセキュリティを網羅することができます。</p>
+	<p>この機能はすべてのCloudflareユーザーが利用可能で、CloudflareのAIエージェントはWAFカスタムルールをはじめ、当社製品の運用・管理を劇的に向上させます。しかし、これは始まりにすぎません。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-one-firewall-policies">Cloudflare Oneのファイアウォールポリシー</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-one-firewall-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CXHQVlO3GGqwp6DGyOklJ/3068c434c4a303cf22c328c302947fcb/BLOG-2692_3.png" alt="BLOG-2692 3" class="kg-image" width="766" height="783" loading="lazy">
+	</figure>
+	<p>Cloudflare Oneにも「<a href="https://www.cloudflare.com/static/e9ea5dfaa69c554cc1cbaa7f3e441acf/Cloudflare_One_at_a_glance.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudy</u></a>」が追加されています。Cloudflare Oneは、単一のダッシュボードから従業員とツールのセキュリティを管理するSASEプラットフォームです。</p>
+	<p>当社のセキュアWebゲートウェイである<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>では、従業員がインターネットを利用する際のポリシーを設定できます。これにより、悪意のあるサイトへのアクセスをブロックしたり、データ流出を防止したり、ユーザーアクセスを制御することが可能です。</p>
+	<p>しかし、WAFのカスタムルールと同様に、Gatewayポリシーの設定も古く誰も説明できないようなポリシーが存在するなど、時間とともに複雑化しがちです。複数の条件やオペレーターが絡み合い、設定が分かりにくい、あるポリシーがブロックしているトラフィックを、別のポリシーが許可、所属別のユーザーグループを作成しているにもかかわらず特定の従業員を切り分けたポリシーが存在するなど管理を複雑化する問題が存在し、過去には、1つのステップで数百ものURLをブロックするポリシーを目にすることもありました。多くの場合、ゲートウェイポリシーは長年管理し続ける中で複雑化します。</p>
+	<p>そこで「Cloudy」がGatewayポリシーを簡潔に要約する機能を提供します。</p>
+	<p>すべてのCloudflare Gatewayユーザーが利用可能（<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でCloudflare Oneの無料アカウントを作成）で、CloudyによるGatewayポリシーの簡単な要約を確認できるようになりました。これにより、各ポリシーの内容を一目で把握しやすくなり、管理者は設定ミスや不要なルール、改善点をすぐに見つけて対策することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="built-on-workers-ai">Workers AIで構築</h3>
+		<a href="https://blog.cloudflare.com/#built-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この新機能の核となるのは、高度な大規模言語モデル（LLM）を活用して膨大な量の情報を処理する<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers AI</u></a>です（皆さんが使用しているもの同じバージョンです！）。今回はポリシーとルールの情報を分析します。いままで、複雑な設定を手作業で確認し、内容を調整することは、誰にとっても気が遠くなるような作業でした。Workers AIはこのプロセスを自動化し、設定内容を一貫したわかりやすい要約と具体的な改善提案に変換します。</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works"><b>仕組み</b></h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers AIは、お客様のCloudflare環境のポリシーやルールの設定を取り込み、それを専用のLLM（大規模言語モデル）のプロンプトと組み合わせて活用します。お客様にも提供している<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>一般公開されたLLMモデル</u></a>を使用し、コンテキストを提供するためにいくつかの追加データでプロンプトをさらに強化します。この仕組みを使って、ポリシーやルールのデータを分析・要約するために、モデルに次の情報を提供します：</p>
+	<ul>
+		<li>
+			<p><b>ポリシー＆ルールデータ</b>：現在のポリシーやルールの設定内容を含む主要データそのもので、Cloudyはこれをもとに要約し、改善点を提案します。</p>
+		</li>
+		<li>
+			<p><b>製品の機能に関するドキュメント：</b>各製品で可能なポリシー/ルールの設定に関する追加の技術的な詳細情報をモデルに提供することで、その範囲内でどのような推奨事項があるかを把握することができます。</p>
+		</li>
+		<li>
+			<p><b>高品質にしたデータセット</b>：WAFカスタムルールまたはCF1 Gatewayポリシーが他の「リスト」（複数の国を指定するWAFルール、特定のコンテンツカテゴリーを指定したGatewayポリシーなど）を利用している場合、LLMモデルが正しく解釈できるように、それらのIDを人が読めるテキストに変換します。</p>
+		</li>
+		<li>
+			<p><b>出力フォーマットの指定</b>：出力を扱いやすくするため、JSON形式で提供するようモデルに指示します。</p>
+		</li>
+		<li>
+			<p><b>追加の指示</b>：モデルの出力が正確であることを最優先するよう指示し、最終出力のハルシネーションを防ぎます。</p>
+		</li>
+	</ul>
+	<p>Cloudflare Workers AIは、WAFカスタムルールとGatewayポリシーの分析を自動化することで、時間を節約するだけでなく、人的ミスのリスクを低減することでセキュリティを強化します。明確で実用的なインサイトを得ることができ、設定の合理化、異常の迅速な発見、強力なセキュリティ体勢の維持を可能にします。労力のかかる手作業による確認を排除します。</p>
+	<div class="flex anchor relative">
+		<h4 id="whats-next-for-cloudy">Cloudyの次なる展開</h4>
+		<a href="https://blog.cloudflare.com/#whats-next-for-cloudy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudyのベータ版は、現在すべてのCloudflareユーザーが利用できます。しかし、これは当社の製品スイート全体でAIを搭載した機能を実現するという当社の目標の、ほんの始まりに過ぎません。</p>
+	<p>2025年の間に、CloudflareのさまざまなサービスにAIエージェントの機能をさらに展開していく予定です。これにより、セキュリティ管理をより効率的にするだけでなく、パフォーマンスの最適化や業務の効率化、ユーザーエクスペリエンスの向上につながるインテリジェントな提案も行えるようになります。</p>
+	<p>実際にCloudyをお試しいただき、これらの新しいAI機能について、是非ご意見をお聞かせください。<a href="https://blog.cloudflare.com/#"><u>cloudyfeedback@cloudflare.com</u></a>までフィードバックを送信するか、X、LinkedIn、Mastodonにハッシュタグ「#SecurityWeek」を付けてご投稿ください。皆さまの声をもとに、AIを強化し、より便利でスマートなツールを開発し、セキュリティを強化していきます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gGseiyO6pbddpdSVQ5wfJ/ae1d0d5a2f8ec01f571de7a85b655370/BLOG-2692_4.png" alt="BLOG-2692 4" class="kg-image" width="1999" height="347" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a17f6d8c6e2bd7401e443b67ed780120/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa17f6d8c6e2bd7401e443b67ed780120%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

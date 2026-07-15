@@ -1,0 +1,468 @@
+<div class="mb2 gray5">Lesezeit: 10&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-service-outage-june-12-2025">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-service-outage-june-12-2025">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-service-outage-june-12-2025">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-service-outage-june-12-2025">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-service-outage-june-12-2025">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/cloudflare-service-outage-june-12-2025">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-cn/cloudflare-service-outage-june-12-2025">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CvsaXPEHDPXb5sf0jWB1a/4e152d7ff5e4ccaa8d9d4ee09636e539/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Am 12. Juni 2025 ist es bei Cloudflare zum einem schwerwiegenden Ausfall gekommen, von dem ein großer Teil unserer wichtigsten Dienste betroffen war – darunter Workers KV, WARP, Access, Gateway, Images, Stream, Workers AI, Turnstile und Challenges, AutoRAG, Zaraz und Teile unseres Dashboards.</p>
+	<p>Der Ausfall erstreckte sich über zwei Stunden und 28 Minuten und betraf alle Cloudflare-Kunden weltweit, die die betroffenen Dienste nutzten. Ursache war ein Fehler in der zugrundeliegenden Speicherinfrastruktur, die von unserem Dienst Workers KV verwendet wird. Es handelt sich um eine kritische Abhängigkeit vieler Cloudflare-Produkte, die von den betroffenen Diensten für die Konfiguration, Authentifizierung und Bereitstellung von Assets benötigt wird. Ein Teil dieser Infrastruktur wird von einem externen Cloud-Provider unterstützt, der an diesem Tag einen Ausfall verzeichnet hat, was die Verfügbarkeit unseres KV-Dienstes unmittelbar beeinträchtigt hat.</p>
+	<p>Wir möchten uns für diesen Ausfall entschuldigen, der einem Versäumnis unsererseits geschuldet ist. Die unmittelbare Ursache (bzw. der Auslöser) geht zwar auf einen Drittanbieter zurück, doch letztlich sind wir für die von uns gewählten Abhängigkeiten und die Art ihrer Integration verantwortlich.</p>
+	<p>Der Ausfall war nicht die Folge eines Angriffs oder eines anderen Sicherheitsvorfalls und es sind dabei keine Daten verloren gegangen. Die Cloudflare-Produkte Magic Transit und Magic WAN, DNS, Cache, Proxy, WAF und verwandte Dienste waren von diesem Vorfall nicht direkt betroffen.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-was-impacted">Wo gab es Beeinträchtigungen?</h2>
+		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In der Regel beruhen die Cloudflare-Dienste auf Grundbausteinen unserer eigenen Plattform, weshalb viele unserer Produkte den Workers KV-Service nutzen.&nbsp;</p>
+	<p>Die folgende Tabelle zeigt die betroffenen Dienste, einschließlich der Auswirkungen auf die Nutzer, der Betriebsstörungen und des verzeichneten Anstiegs der Fehlerquoten:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Produkt / Dienst</b></p>
+				</th>
+				<th>
+					<p><b>Auswirkung</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Workers KV</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Bei Workers KV sind 90,22 Prozent der Anfragen fehlgeschlagen: Jedes Schlüssel/Wert-Paar, das sich nicht im Cache befand und zum Abruf des Werts von den Ursprungs-Speicher-Backends von Workers KV erforderlich war, hatte das Fehlschlagen einer Anfrage mit dem Antwortcode 503 oder 500 zur Folge.&nbsp;</p>
+					<p>Die restlichen Anfragen wurden entweder erfolgreich aus dem Zwischenspeicher von Workers KV beantwortet (Statuscode 200 und 404) oder es kam zu einer Fehlerausgabe innerhalb unserer erwarteten Parameter und/oder unseres Fehlerkontingents.</p>
+					<p>Auf die in Workers KV gespeicherten Daten hatte der Vorfall keine Auswirkungen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Access</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Access speichert mithilfe von Workers KV Anwendungs- und Richtlinienkonfigurationen sowie Informationen zur Nutzeridentität.</p>
+					<p>Während des Vorfalls sind die identitätsbasierten Logins für alle Anwendungsarten zu 100 Prozent fehlgeschlagen. Das galt für On-Premise-, SaaS- und Infrastruktur-Applikationen. Informationen zur Nutzeridentität waren während dieses Zwischenfalls für andere Dienste wie WARP und Gateway nicht verfügbar. Access ist so aufgebaut, dass sich die Lösung im Fehlerfall schließt, wenn die Richtlinienkonfiguration oder die Identität eines Nutzers nicht abgerufen werden kann.&nbsp;</p>
+					<p>Bei aktiven Infrastruktur-Anwendungs-SSH-Sitzungen mit aktivierter Befehlsprotokollierung wurden aufgrund einer Abhängigkeit von Workers KV Protokolle nicht gespeichert.&nbsp;</p>
+					<p>Der SCIM (System for Cross Domain Identity)-Dienst von Access war ebenfalls betroffen, da er zur Speicherung von Nutzerdaten auf Workers KV und Durable Objects (die von KV abhängig sind) angewiesen ist. Während des Zwischenfalls wurden Nutzeridentitäten aufgrund des Scheiterns von Workers KV-Updates nicht aktualisiert. Dies zog eine 500-Fehlermeldung an Identitätsanbieter nach sich. Einige Provider verlangen möglicherweise eine manuelle Neusynchronisierung. Bei den meisten Kunden dürfte der Dienst aufgrund der Wiederholungslogik des Identitätsanbieters aber mit Wiederherstellung des SCIM-Service von Access direkt wiederhergestellt worden sein.</p>
+					<p>Auf Dienstauthentifizierung basierende Logins (z. B. Service-Token, Mutual TLS und IP-basierte Richtlinien) und Umgehungsrichtlinien waren nicht betroffen. Während des fraglichen Zeitraums sind keine Bearbeitungen oder Änderungen an den Access-Richtlinien verloren gegangen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Gateway</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Der Vorfall hatte keine Auswirkungen auf die meisten Gateway DNS-Abfragen, einschließlich derer über IPv4, IPv6, DNS über TLS (DoT) sowie DNS über HTTPS (DoH).</p>
+					<p>Allerdings gab es zwei Ausnahmen:</p>
+					<p>DoH-Abfragen mit identitätsbasierten Regeln sind fehlgeschlagen, weil Gateway die erforderlichen Identitätsinformationen der Nutzer nicht abrufen konnte.</p>
+					<p>Authentifiziertes DoH funktionierte für einige Nutzer nicht mehr richtig. Nutzer mit aktiven Sitzungen und gültigen Authentifizierungs-Token waren nicht betroffen. Diejenigen, die neue Sitzungen starten oder Authentifizierungs-Token erneuern mussten, konnten dies jedoch nicht tun.</p>
+					<p>Nutzer des Gateway-Proxys, von Egress und der TLS-Entschlüsselung waren nicht in der Lage, eine Verbindung herzustellen, sich zu registrieren, den Proxy zu nutzen oder den Datenverkehr zu protokollieren.</p>
+					<p>Das lag daran, dass wir Workers KV zum Abruf aktueller Informationen zu Identität und Gerätestatus nutzen. Jede dieser Aktionen erfordert einen Aufruf an Workers KV. Ist dieser Dienst nicht verfügbar, ist die Gateway-Lösung so konzipiert, dass sie schließt. Auf diese Weise soll verhindert werden, dass der Datenverkehr die vom Kunden konfigurierten Regeln umgeht.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>WARP</b></p>
+					<p>
+
+
+					</p>
+				</td>
+				<td>
+					<p>Der WARP-Client war wegen grundlegender Abhängigkeiten von Access und Workers KV betroffen. Beide Dienste werden für die Registrierung und Authentifizierung von Geräten benötigt. Infolgedessen konnten sich während des Zwischenfalls keine neuen Clients verbinden oder anmelden.</p>
+					<p>Bestehende WARP-Client-Nutzersitzungen, die über den Gateway-Proxy geleitet wurden, verzeichneten Störungen, weil Gateway die erforderlichen Richtlinienbewertungen nicht durchführen konnte.</p>
+					<p>Zusätzlich funktionierte aufgrund eines Fehlers bei der zugrundeliegenden Abhängigkeit – Workers KV – die WARP-Notfallabschaltung nicht.</p>
+					<p>Consumer WARP verzeichnete ähnliche punktuelle Auswirkungen wie die Zero Trust-Version.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Dashboard</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Dashboard-Logins und die meisten bestehenden Dashboard-Sitzungen funktionierten nicht. Der Grund dafür war ein Ausfall von Turnstile, DO, KV und Access. Die konkreten Ursachen für fehlgeschlagene Logins waren:</p>
+					<p>Bei Standard-Logins (Nutzer/Passwort): Nichtverfügbarkeit von Turnstile</p>
+					<p>Bei Anmeldung mit Google (OIDC): Problem mit einer KV-Abhängigkeit</p>
+					<p>Bei SSO-Logins: Vollständige Abhängigkeit von Access</p>
+					<p>Die Cloudflare v4-API war von dem Vorfall nicht betroffen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Challenges und Turnstile</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Die Challenge-Plattform, auf der Cloudflare Challenges und Turnstile beruhen, verzeichnete während des Vorfallszeitraums aufgrund ihrer Abhängigkeit von Workers KV und Durable Objects eine hohe Zahl von Fehlern und Timeouts bei Siteverify-API-Anfragen.</p>
+					<p>Wir haben Kill Switches eingerichtet, damit diese Aufrufe bei Zwischenfällen und Ausfällen wie diesem deaktiviert werden können. Diese Kill Switches wurden von uns als Abwehrmaßnahme aktiviert, damit die Nutzer nicht am Fortfahren gehindert werden. Bemerkenswerterweise konnte die Siteverify-API von Turnstile (die ausgegebene Tokens validiert) während der Aktivierung dieser Kill Switches gültige Token mehrfach einlösen. Dadurch wurden potenziell Angriffe ermöglicht, im Rahmen derer ein böswilliger Akteur versuchen könnte, ein zuvor gültiges Token zur Umgehung zu verwenden.&nbsp;</p>
+					<p>Die Fähigkeit von Turnstile, Bots zu erkennen, wurde nicht beeinträchtigt. Ein Bot wäre beim Versuch, eine Aufgabe zu lösen, trotzdem gescheitert. Somit hätte er auch keinen Token erhalten.&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Browserisolierung</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Bestehende Browserisolierungssitzungen über linkbasierte Isolierung wurden aufgrund der Abhängigkeit von Gateway bei der Richtlinienbewertung beeinträchtigt.</p>
+					<p>Neue linkbasierte Browserisolierungssitzungen konnten wegen einer Abhängigkeit von Cloudflare Access nicht gestartet werden. Alle von Gateway initiierten Isolierungssitzungen sind aufgrund ihrer Gateway-Abhängigkeit fehlgeschlagen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Images</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Uploads bei Cloudflare Images waren während des Vorfallzeitraums beeinträchtigt. Auf dem Höhepunkt des Zwischenfalls betrug die Fehlerquote 100 Prozent.&nbsp;</p>
+					<p>Bei der Bildübertragung sank die Erfolgsquote insgesamt auf etwa 97 Prozent. Bildumwandlungen wurden nicht signifikant beeinträchtigt und Polish verzeichnete keine Beeinträchtigungen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Stream</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Die Fehlerquote von Stream hat während des Vorfallzeitraums 90 Prozent betragen, da Video-Playlists nicht bereitgestellt werden konnten. Stream Live verzeichnete eine Fehlerquote von 100 Prozent.</p>
+					<p>Video-Uploads waren nicht betroffen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Realtime</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Der Realtime TURN (Traversal Using Relays around NAT)-Dienst verwendet KV und war stark betroffen. Während des Zwischenfalls lag die Fehlerquote bei nahezu 100 Prozent.</p>
+					<p>Der Realtime-SFU (Selective Forwarding Unit)-Dienst konnte keine neuen Sitzungen aufbauen, auch wenn bestehende Verbindungen aufrechterhalten wurden. Dies führte zu einer Reduzierung des normalen Datenverkehrs auf 20 Prozent während des Zwischenfalls.&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Workers AI</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Alle Inferenzanfragen an Workers AI sind während der gesamten Dauer des Vorfalls fehlgeschlagen. Workers AI ist für die globale Verteilung von Konfigurations- und Routing-Informationen für KI-Anfragen auf Workers KV angewiesen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Assets von Pages und Workers</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Statische Assets, die von Cloudflare Pages bereitgestellt werden, und Workers-Assets (wie HTML, JavaScript, CSS, Bilder usw.), werden in Workers KV abgelegt, zwischengespeichert und bei Bedarf abgerufen. Bei Workers-Assets ist die Fehlerquote während dieses Zeitraums im Durchschnitt um etwa 0,06 Prozent aller Anfragen gestiegen.&nbsp;</p>
+					<p>Während des Vorfalls erreichte die Fehlerquote von Pages einen Höchststand von etwa 100 Prozent und kein Pages-Build konnte abgeschlossen werden.&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>AutoRAG</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>AutoRAG stützt sich sowohl für die Konvertierung von Dokumenten als auch für die Erzeugung von Vektoreinbettungen während der Indizierung auf Workers AI-Modelle und für Abfragen und Suchen auf LLM-Modelle. Während des Vorfalls stand AutoRAG aufgrund der Abhängigkeit von Workers AI nicht zur Verfügung.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Durable Objects</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>SQLite-gestützte Durable Objects nutzen dieselbe zugrundeliegende Speicherinfrastruktur wie Workers KV. Die durchschnittliche Fehlerquote erreichte während des Zwischenfalls einen Spitzenwert von 22 Prozent und sank auf 2 Prozent, als sich die Dienste zu erholen begannen.</p>
+					<p>Namespaces für Durable Objects, die die herkömmliche Schlüssel/Werte-Speicherung verwenden, waren nicht betroffen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>D1</b></p>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>D1-Datenbanken greifen auf dieselbe zugrundeliegende Speicherinfrastruktur wie Workers KV und Durable Objects zurück.</p>
+					<p>Die durchschnittliche Fehlerquote erreichte ähnlich wie bei Durable Objects während des Vorfalls einen Höchstwert von 22 Prozent und sank auf 2 Prozent, als die Erholung einsetzte.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Queues und Ereignisbenachrichtigungen</b></p>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Die Vorgänge für Queues-Nachrichten, einschließlich Pushing und Consuming, waren während des Zwischenfalls nicht verfügbar.</p>
+					<p>Queues nutzt KV, um jede Warteschlange den zugrundeliegenden Durable Objects zuzuordnen, die Nachrichten enthalten, die sich in einer Warteschlange befinden.</p>
+					<p>Ereignisbenachrichtigungen nutzen Queues als zugrundeliegenden Übermittlungsmechanismus.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>AI Gateway</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>AI Gateway beruht auf Workers und verwendet Workers KV für Client-basierte und interne Konfigurationen. Während des Vorfalls erreichte die Fehlerquote bei AI Gateway einen Höchststand von 97 Prozent der Anfragen, bis es bei den Abhängigkeiten wieder zu einer Normalisierung kam.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>CDN</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Die Infrastruktur für das automatisierte Traffic-Management war einsatzbereit, funktionierte während des Zeitraums der Auswirkungen aber nur eingeschränkt. Insbesondere nahmen die Registrierungsanfragen von Zero Trust-Clients infolge des Ausfalls erheblich zu.</p>
+					<p>Der Anstieg der Anfragen führte zu zusätzlicher Belastung an mehreren Cloudflare-Standorten. Das automatisierte Traffic-Management reagierte darauf, indem es eingehenden CDN-Datenverkehr an nahegelegene Standorte umleitete, um die Auswirkungen für die Kunden abzufedern. Ein Teil des Traffics wurde jedoch nicht wie erwartet umgeleitet und wird deshalb nun untersucht. Von diesem Problem betroffene CDN-Anfragen würden eine erhöhte Latenz, HTTP 499-Fehler und/oder HTTP 503-Fehler verzeichnen. Betroffen waren unter anderem die Cloudflare-Service-Gebiete São Paulo, Philadelphia, Atlanta und Raleigh.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Workers / Workers for Plattforms</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Workers und Workers for Platforms greifen für Uploads auf einen externen Dienst zurück. Während des Vorfalls wurde bei der Fehlerquote für Workers ein allgemeiner Spitzenwert von etwa 2 Prozent der gesamten Anfragen registriert. Bei Workers for Platforms stieg die Gesamtfehlerquote im gleichen Zeitraum auf einen Spitzenwert von etwa 10 Prozent aller Anfragen.&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Workers-Builds (CI/CD)
+							&nbsp;</b></p>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Ab 18:03 Uhr UTC (20:03 Uhr MESZ) konnten Workers-Builds wegen des Ausfalls von Access keine neuen Quellcode-Verwaltungs-Push-Ereignisse mehr empfangen.</p>
+					<p>100 Prozent der neuen Workers-Builds sind während des Zwischenfalls fehlgeschlagen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Browser-Rendering</b></p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>Das Browser-Rendering hängt von der Browserisolierung für die Infrastruktur der Browserinstanz ab.</p>
+					<p>Anfragen sowohl an die REST-API als auch über die Workers-Browser-Bindung waren während der Zeit des Vorfalls zu 100 Prozent betroffen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Zaraz</b></p>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>100 Prozent der Anfragen waren während des Zwischenfalls betroffen. Zaraz nutzt bei der Verarbeitung von Nutzer-Traffic Workers KV-Konfigurationen für Websites. Aufgrund derselben Abhängigkeit scheiterten in diesem Zeitraum Versuche, Aktualisierungen der Zaraz-Konfigurationen zu speichern. Aus unserer Überwachung wissen wir aber, dass davon nur ein einziger Nutzer betroffen war.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="background">Hintergrund</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers KV ist als ein von uns so genannter „Coreless“-Dienst konzipiert. Das bedeutet, dass es keinen Single Point of Failure geben sollte, da der Dienst an jedem unserer Standorte weltweit unabhängig läuft. Allerdings greift Workers KV heute auf einen zentralen Datenspeicher zurück, um einen allgemeingültigen Datenbestand als Referenz (Single Source of Truth) bereitzustellen. Ein Ausfall dieses Speichers führte zu einem vollständigen Ausfall der Lese- und Schreibvorgänge auf die KV-Namespaces, die von allen Diensten bei Cloudflare verwendet werden.</p>
+	<p>Workers KV wird derzeit auf eine deutlich widerstandsfähigere Infrastruktur für den zentralen Speicher umgestellt. Leider hat der aktuelle Vorfall eine Lücke bei der Abdeckung zutage befördert. Workers KV hat einen Speicheranbieter entfernt, während wir das KV-Backend neu gestaltet haben (was die Migration zu Cloudflare R2 umfasste), um (durch die ursprüngliche Datensynchronisationsarchitektur verursachte) Probleme mit der Datenkonsistenz zu vermeiden und die Unterstützung der Datenresidenz-Anforderungen zu verbessern.</p>
+	<p>Einer unserer Grundsätze lautet, Cloudflare-Dienste so weit wie möglich auf unserer eigenen Plattform zu entwickeln. Workers KV bildet da keine Ausnahme. Viele unserer internen und externen Dienste stützen sich stark auf Workers KV. Unter normalen Umständen hilft uns das dabei, robustere Services bereitzustellen, damit Serviceteams nicht versuchen müssen, ihre eigenen Speicherdienste zu erstellen. Im vorliegenden Fall hat jedoch ein Dominoeffekt die Auswirkungen des Ausfalls von Workers KV verschärft und den Radius des Schadens erheblich vergrößert.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="incident-timeline-and-impact">Zeitlicher Ablauf und Auswirkungen des Vorfalls</h2>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Zeitleiste zu dem Vorfall, die sich über die anfänglichen Auswirkungen, die Untersuchung, die Ermittlung der Grundursache und die Abhilfemaßnahmen erstreckt, ist unten ausführlich dargestellt.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CBPPVgr3GroJP2EcD3yvB/6073457ce6263e7e05f6eb3d796ddd48/BLOG-2847_2.png" alt="BLOG-2847 2" class="kg-image" width="1686" height="794" loading="lazy">
+	</figure>
+	<p><i><sub>Fehlerquoten von Workers KV zur Speicherinfrastruktur. 91 Prozent der Anfragen an KV sind während des Vorfalls fehlgeschlagen.</sub></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sGFmSsNHD9yXwJ9Ea5jov/78349be4318cb738cdd72643e69f7bdb/BLOG-2847_1.png" alt="BLOG-2847 1" class="kg-image" width="978" height="501" loading="lazy">
+	</figure>
+	<p><i><sub>Cloudflare Access-Anteil erfolgreicher Anfragen. Cloudflare Access greift direkt auf Workers KV zurück und ist ein guter Indikator, um die Verfügbarkeit von Workers KV über einen gewissen Zeitraum zu messen.</sub></i></p>
+	<p>Alle Zeitangaben beziehen sich auf die Koordinierte Weltzeit (Universal Time Coordinated – UTC).</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Zeit</b></p>
+				</th>
+				<th>
+					<p><b>Ereignis</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 17:52 Uhr</p>
+				</td>
+				<td>
+					<p><b>BEGINN DES VORFALLS
+						</b>Das Cloudflare WARP-Team bemerkt, dass die Registrierung neuer Geräte fehlschlägt. Es beginnt, diese Fehler zu untersuchen, und meldet einen Vorfall.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 18:05 Uhr</p>
+				</td>
+				<td>
+					<p>Wegen der schnellen Steigerung der Fehlerquote erhält das Cloudflare Access-Team eine Warnmeldung.</p>
+					<p>Die Service-Level-Ziele unterschreiten für mehrere Dienste die Vorgaben, weshalb Warnmeldungen an die betroffenen Teams geschickt werden.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 18:06 Uhr</p>
+				</td>
+				<td>
+					<p>Mehrere dienstspezifische Vorfälle werden zu einem einzigen Vorfall zusammengefasst, nachdem wir eine gemeinsame Ursache (Nichtverfügbarkeit von Workers KV) identifiziert haben. Die Priorität des Vorfalls wird auf P1 hochgestuft.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 18:21 Uhr</p>
+				</td>
+				<td>
+					<p>Die Priorität des Vorfalls wird von P1 auf P0 hochgestuft, weil der Schweregrad der Auswirkungen deutlich geworden ist.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 18:43 Uhr</p>
+				</td>
+				<td>
+					<p>Cloudflare Access beginnt, Optionen zur Beseitigung der Abhängigkeit von Workers KV zu prüfen, indem mit dem Workers KV-Entwicklungsteam zu einem anderen unterstützenden Datenspeicher migriert wird. Es handelt sich dabei um eine proaktive Maßnahme für den Fall, dass der Ausfall der Speicherinfrastruktur länger anhält.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 19:09 Uhr</p>
+				</td>
+				<td>
+					<p>Zero Trust-Gateway beginnt, die Abhängigkeiten von Workers KV zu beseitigen, indem Identitäts- oder Gerätestatus-bezogene Regeln auf kontrollierte Weise aufgehoben werden.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 19:32 Uhr</p>
+				</td>
+				<td>
+					<p>Access und Device Posture erzwingen das Ablehnen von Identitäts- und Gerätestatus-Anfragen, um die Beanspruchung von Workers KV zu reduzieren, bis der externe Dienst wieder online ist.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 19:45 Uhr</p>
+				</td>
+				<td>
+					<p>Cloudflare-Teams arbeiten weiterhin daran, eine Workers KV-Version mit einen alternativen Begleit-Datenspeicher bereitzustellen und kritische Dienste dazu zu bringen, Konfigurationsdaten in diesem Speicher abzulegen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 20:23 Uhr</p>
+				</td>
+				<td>
+					<p>Mit der Wiederherstellung der Speicherinfrastruktur beginnen die Dienste, wieder normal zu funktionieren. Weil die Services noch dabei sind, die Zwischenspeicher neu zu befüllen, verzeichnen wir weiterhin eine nicht zu vernachlässigende Fehlerquote und einen infrastrukturell bedingt beschränkten Durchsatz.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 20:25 Uhr</p>
+				</td>
+				<td>
+					<p>Access und Device Posture nehmen Aufrufe an Workers KV erneut auf, da der externe Dienst wieder funktioniert.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12.06.2025, 20:28 Uhr</p>
+				</td>
+				<td>
+					<p><b>ENDE DER AUSWIRKUNGEN&nbsp;
+						</b>Service-Level-Ziele kehren auf das Niveau zurück, das sie vor dem Zwischenfall verzeichnet hatten. Cloudflare-Mitarbeitende überwachen weiterhin die Systeme, um sicherzustellen, dass die Dienste während der Erholung der abhängigen Systeme keine Beeinträchtigungen verzeichnen.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p><b>ENDE DES VORFALLS
+						</b>Das Cloudflare-Team registriert, dass alle betroffenen Dienste wieder normal funktionieren. Warnmeldungen zu Service-Level-Zielen werden aufgehoben.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">Abhilfe- und Folgemaßnahmen</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir ergreifen sofortige Maßnahmen, um die Ausfallsicherheit von Diensten zu erhöhen, die von Workers KV und unserer Speicherinfrastruktur abhängen. Dies umfasst bestehende planmäßige Maßnahmen, die infolge dieses Vorfalls vorgezogen werden.</p>
+	<p>Dazu zählen unter anderem Bemühungen, einzelne Abhängigkeiten von Speicherinfrastrukturen zu beseitigen, die wir nicht besitzen, damit wir künftig kritische Dienste (wie Access, Gateway und WARP) leichter wiederherstellen können.&nbsp;</p>
+	<p>Konkret bedeutet das:</p>
+	<ul>
+		<li>
+			<p>(Aktiv in Bearbeitung): Wir ziehen unsere Bemühen vor, die Redundanz innerhalb der Workers KV-Speicherinfrastruktur zu erhöhen und die Abhängigkeit von einzelnen Anbietern zu beseitigen. Während des Vorfalls haben wir für den Fall, dass er länger andauert, mit der Umstellung kritischer KV-Namespaces auf unsere eigene Infrastruktur und dem Auffüllen dieser Namespaces begonnen. </p>
+		</li>
+		<li>
+			<p>(Aktiv in Bearbeitung): Kurzfristige Maßnahmen zur Begrenzung des Schadensradius für einzelne Produkte, die von diesem Vorfall betroffen waren. Ziel ist es, dass jedes Produkt besser gegen Ausfälle geschützt ist, die durch einen Single Point of Failure verursacht werden – einschließlich Abhängigkeiten von Drittanbietern.</p>
+		</li>
+		<li>
+			<p>(Aktiv in Bearbeitung): Implementierung von Werkzeugen, mit denen sich Namespaces bei Vorfällen in der Speicherinfrastruktur schrittweise wieder aktivieren lassen. So können wir die Verfügbarkeit wichtiger Abhängigkeiten wie Access und WARP sicherstellen, ohne beim Auffüllen der Zwischenspeicher einen Denial-of-Service gegenüber unserer eigenen Infrastruktur zu riskieren.</p>
+		</li>
+	</ul>
+	<p>Diese Auflistung erhebt keinen Anspruch auf Vollständigkeit. Unsere Teams überprüfen kontinuierlich Designentscheidungen und bewerten die Infrastrukturanpassungen, die wir sowohl kurzfristig (unmittelbar) als auch langfristig vornehmen müssen, um derartige Vorfälle in Zukunft zu vermeiden.</p>
+	<p>Es war ein schwerwiegender Ausfall und uns ist bewusst, dass große und kleinere Unternehmen, Organisationen und Institutionen für den Schutz und/oder den Betrieb ihrer Websites, Anwendungen sowie ihrer Zero Trust- und Netzwerkinfrastruktur auf uns angewiesen sind.&nbsp; Wir möchten uns ausdrücklich für die entstandenen Unannehmlichkeiten entschuldigen und versichern, dass wir daran arbeiten, die Ausfallsicherheit unserer Dienste zu erhöhen.&nbsp;</p>
+</div>

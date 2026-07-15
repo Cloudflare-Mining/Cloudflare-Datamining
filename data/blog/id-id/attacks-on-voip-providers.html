@@ -1,0 +1,120 @@
+<div class="mb2 gray5">5 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/attacks-on-voip-providers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/attacks-on-voip-providers">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/attacks-on-voip-providers">Français</a>, <a href="https://blog.cloudflare.com/de-de/attacks-on-voip-providers">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/attacks-on-voip-providers">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/attacks-on-voip-providers">한국어</a>, <a href="https://blog.cloudflare.com/es-es/attacks-on-voip-providers">Español</a>, <a href="https://blog.cloudflare.com/vi-vn/attacks-on-voip-providers">Tiếng Việt</a>, <a href="https://blog.cloudflare.com/th-th/attacks-on-voip-providers">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/attacks-on-voip-providers">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TA4pgLFsPf07U0zpJ0fMo/c9770e9adc9608218caafa963db58085/attacks-on-voip-providers.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Selama sebulan terakhir, beberapa penyedia Voice over Internet Protocol (VoIP) telah menjadi target serangan <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a> (DDoS) dari entitas yang mengaku sebagai <a href="https://en.wikipedia.org/wiki/REvil" target="_blank" rel="noopener noreferrer">REvil</a>. Serangan multi-vektor ini mengombinasikan kedua serangan L7 yang menargetkan situs web HTTP yang sangat penting dan titik akhir API, serta serangan L3/4 yang menargetkan infrastruktur server VoIP. Dalam beberapa kasus, berbagai serangan ini mengakibatkan dampak signifikan pada layanan dan situs web VoIP /ketersediaan API.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5scnckYKmaLjLhcqAKlM2z/0cdff1ded9d8716758ebd4c5f000c624/image-2-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
+
+	</figure>
+	<p>Jaringan Cloudflare mampu secara efektif melindungi dan mempercepat infrastruktur suara dan video karena jangkauan global kami, rangkaian penyaringan traffic yang canggih, dan perspektif unik pada pola serangan dan kecerdasan ancaman.</p>
+	<p>Jika Anda atau organisasi Anda telah menjadi target serangan DDoS, serangan tebusan, dan/atau upaya pemerasan, segera cari bantuan untuk melindungi properti Internet Anda. Kami merekomendasikan untuk tidak membayar uang tebusan, dan segera <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">melaporkan ke institusi penegak hukum setempat</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="voice-and-video-emojis-conferences-cat-memes-and-remote-classrooms-over-ip">Suara (dan video, emoji, konferensi, meme kucing, dan ruang kelas jarak jauh) melalui IP</h3>
+		<a href="https://blog.cloudflare.com/#voice-and-video-emojis-conferences-cat-memes-and-remote-classrooms-over-ip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Voice over IP (VoIP) adalah istilah yang digunakan untuk menggambarkan sekelompok teknologi yang memungkinkan komunikasi multimedia melalui Internet. Teknologi ini memungkinkan panggilan FaceTime dengan teman-teman Anda, pelajaran kelas virtual melalui Zoom, dan bahkan panggilan "biasa" <a href="https://en.wikipedia.org/wiki/Voice_over_LTE" target="_blank" rel="noopener noreferrer">yang dilakukan dari ponsel Anda</a>.</p>
+	<p>Prinsip-prinsip di balik VoIP mirip dengan panggilan digital tradisional melalui jaringan yang dialihkan sirkuit. Perbedaan utamanya adalah media yang dikodekan, misalnya, suara atau video, dipartisi menjadi beberapa unit kecil bit yang ditransfer melalui Internet sebagai muatan paket IP sesuai dengan protokol media yang ditentukan secara khusus.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Rq1Fpa8Yk3Nk6JjTMTzD/60e01d58150e99d9a48302efcb258181/fBF3R0cMoiiEcrbpmZOCBTNJj2hyTWnxNDcKQGJFragPFf1vf-9sIlPrYOYtHo4r3pJqTqCiVJCG6bSb0vQ4-EcsUJRpwd2tacBhHsHAXN5TMv8CUQKxeXibq4dB.png" alt="Child on a video conference all" class="kg-image" width="1100" height="619" loading="lazy">
+
+	</figure>
+	<p>“Pengalihan paket” data suara ini, dibandingkan dengan “pengalihan sirkuit” tradisional, menghasilkan penggunaan sumber daya jaringan yang jauh lebih efisien. Akibatnya, panggilan melalui VoIP bisa jauh lebih hemat biaya daripada panggilan yang dilakukan melalui POTS ("layanan telepon lama biasa"). Beralih ke VoIP dapat <a href="https://telzio.com/blog/cost-benefits-switching-voip-service/#:~:text=Companies%20can%20reduce%20monthly%20telecom%20costs%20by%20over%2050%25%20by%20switching%20to%20VoIP." target="_blank" rel="noopener noreferrer">mengurangi biaya telekomunikasi</a> untuk bisnis sebesar lebih dari 50%, jadi tidak mengherankan bahwa satu dari tiga bisnis telah <a href="https://hostingtribunal.com/blog/voip-stats/#:~:text=61%25%20of%20businesses%20switch%20to%20a%20VoIP%20system" target="_blank" rel="noopener noreferrer">mengadopsi teknologi VoIP</a>. VoIP itu fleksibel, terukur, dan sangat berguna untuk menyatukan orang dari jarak jauh selama pandemi.</p>
+	<p>Protokol utama di balik sebagian besar panggilan VoIP banyak diadopsi oleh <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank" rel="noopener noreferrer">Session Initiation Protocol</a> (SIP). SIP awalnya didefinisikan dalam <a href="https://datatracker.ietf.org/doc/html/rfc2543" target="_blank" rel="noopener noreferrer">RFC-2543</a> (1999) dan dirancang untuk berfungsi sebagai protokol yang fleksibel dan modular untuk memulai panggilan (“sesi”), baik suara atau video, atau dua pihak atau multipihak.</p>
+	<div class="flex anchor relative">
+		<h3 id="speed-is-key-for-voip"><b>Kecepatan adalah kunci untuk VoIP</b></h3>
+		<a href="https://blog.cloudflare.com/#speed-is-key-for-voip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Komunikasi waktu riil antara orang-orang harus terasa alami, cepat, dan responsif. Oleh karena itu, salah satu fitur terpenting dari layanan VoIP yang baik adalah kecepatan. Pengguna merasakannya dengan pengalaman audio yang terdengar alami dan video definisi tinggi, tanpa lag atau stutter. Persepsi pengguna tentang kualitas panggilan biasanya diukur dan dilacak dengan cermat menggunakan metrik seperti <a href="https://en.wikipedia.org/wiki/Perceptual_Evaluation_of_Speech_Quality" target="_blank" rel="noopener noreferrer">Perceptual Evaluation of Speech Quality</a> dan <a href="https://en.wikipedia.org/wiki/Mean_opinion_score" target="_blank" rel="noopener noreferrer">Mean Opinion Scores</a>. Sementara SIP dan protokol VoIP lainnya dapat diimplementasikan dengan menggunakan <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP</a> atau <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a> sebagai protokol yang mendasarinya, UDP biasanya dipilih karena lebih cepat bagi router dan server untuk memprosesnya.</p>
+	<p>UDP adalah protokol yang tidak dapat diandalkan, stateless, dan tidak memiliki jaminan Quality of Service (QoS). Artinya, router dan server biasanya menggunakan lebih sedikit memori dan daya komputasi untuk memproses paket UDP dan karenanya dapat memproses lebih banyak paket per detik. Memproses paket lebih cepat menghasilkan perakitan lebih cepat dari muatan paket (media yang dikodekan), dan karenanya kualitas panggilan yang lebih baik.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AmGmFZIFpA4s42yh86k9z/47d171fcc57bc62e711e79efc423c979/pasted-image-0--1-.png" alt="" class="kg-image" width="1638" height="1044" loading="lazy">
+
+	</figure>
+	<p>Dengan pedoman <i>lebih cepat lebih baik</i>, server VoIP akan berusaha memproses paket secepat mungkin dengan basis pertama-datang-pertama-dilayani. Karena UDP itu stateless, ia tidak mengetahui paket mana yang termasuk dalam panggilan yang ada dan yang mencoba untuk memulai panggilan baru. Detail tersebut ada di header SIP dalam bentuk permintaan dan respons yang tidak diproses hingga lebih jauh ke tumpukan jaringan.</p>
+	<p>Ketika kecepatan paket per detik meningkat melebihi kapasitas router atau server, pedoman <i>lebih cepat lebih baik</i> berubah menjadi kerugian. Sementara sistem yang dialihkan sirkuit tradisional akan menolak koneksi baru ketika kapasitasnya tercapai dan berusaha untuk mempertahankan koneksi yang ada tanpa gangguan, server VoIP, dalam perlombaannya untuk memproses paket sebanyak mungkin, tidak akan mampu menangani semua paket atau semua panggilan ketika kapasitasnya terlampaui. Hal ini menyebabkan latensi dan gangguan untuk panggilan yang sedang berlangsung, dan upaya yang gagal untuk membuat atau menerima panggilan baru.</p>
+	<p>Tanpa perlindungan yang tepat, perlombaan untuk pengalaman panggilan yang luar biasa dapat berisiko keamanan yang dipelajari penyerang untuk dimanfaatkan.</p>
+	<div class="flex anchor relative">
+		<h3 id="ddosing-voip-servers">Server VoIP DDoSing</h3>
+		<a href="https://blog.cloudflare.com/#ddosing-voip-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Penyerang dapat memanfaatkan UDP dan protokol SIP untuk menembus server VoIP yang tidak terlindungi dengan paket UDP yang dibuat khusus. Salah satu cara penyerang menembus server VoIP adalah dengan berpura-pura memulai panggilan. Setiap kali permintaan inisiasi panggilan berbahaya dikirim ke korban, server mereka menggunakan daya komputasi dan memori untuk mengautentikasi permintaan tersebut. Jika penyerang dapat menghasilkan inisiasi panggilan yang cukup, mereka dapat menembus server korban dan mencegahnya memproses panggilan yang sah. Ini adalah teknik DDoS klasik yang diterapkan pada SIP.</p>
+	<p>Variasi pada teknik ini adalah serangan refleksi SIP. Seperti teknik sebelumnya, permintaan inisiasi panggilan berbahaya juga digunakan. Namun, dalam variasi ini, penyerang tidak mengirimkan traffic berbahaya ke korban secara langsung. Sebaliknya, penyerang mengirimnya ke ribuan server SIP secara acak tanpa disadari di seluruh Internet, dan mereka memalsukan sumber traffic berbahaya untuk menjadi sumber korban yang dituju. Itu menyebabkan ribuan server SIP mulai mengirim balasan yang tidak diminta kepada korban, yang kemudian harus menggunakan sumber daya komputasi untuk membedakan apakah itu sah. Ini juga dapat membuat server korban kekurangan sumber daya yang diperlukan untuk memproses panggilan yang sah, yang mengakibatkan penolakan layanan secara luas bagi pengguna. Tanpa perlindungan yang tepat, layanan VoIP bisa sangat rentan terhadap serangan DDoS.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44Gt0qiZEnPizgMU0Tm4qF/398c2973aae58df7060167d794bd296e/image-3-1.png" alt="Illustration of a DDoS attack preventing access to legitimate clients" class="kg-image" width="746" height="452" loading="lazy">
+
+	</figure>
+	<p>Grafik di bawah ini menunjukkan serangan UDP DDoS multi-vektor baru-baru ini yang menargetkan infrastruktur VoIP yang dilindungi oleh layanan <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> dari Cloudflare. Serangan memuncak tepat di atas 70 Gbps dan 16 juta paket per detik. Meskipun ini bukan serangan terbesar yang pernah kami lihat, serangan sebesar ini dapat berdampak besar pada infrastruktur yang tidak terlindungi. Serangan khusus ini berlangsung 10 jam lebih sedikit dan secara otomatis terdeteksi dan dimitigasi.</p>
+	<p>Di bawah ini adalah dua grafik tambahan dari serangan serupa yang terlihat minggu lalu terhadap infrastruktur SIP. Pada bagan pertama kita melihat banyak protokol yang digunakan untuk meluncurkan serangan, dengan sebagian besar traffic berasal dari refleksi DNS (palsu) dan amplifikasi umum dan vektor refleksi lainnya. Serangan ini mencapai lebih dari 130 Gbps dan 17,4 juta pps.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/783B5mU5tkeQh3WCy6sZZw/3646fc97616f8cdcb79a33a10383f77d/1.png" alt="Graph of a 70 Gbps DDoS attack against a VoIP provider" class="kg-image" width="2048" height="834" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="protecting-voip-services-without-sacrificing-performance">Melindungi layanan VoIP tanpa mengorbankan kinerja</h3>
+		<a href="https://blog.cloudflare.com/#protecting-voip-services-without-sacrificing-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Nkjw09j6s8NeJz2iUJ0F8/f53003ab380dbdf93e89ad659d87c865/2.png" alt="" class="kg-image" width="1706" height="834" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Lt858PFam9TDqQCXZa60A/afe2971a7febc08ae82eb3161e339290/3.png" alt="Graph of a 130 Gbps DDoS attack against a different VoIP provider" class="kg-image" width="1706" height="842" loading="lazy">
+
+	</figure>
+	<p>Salah satu faktor terpenting untuk memberikan layanan VoIP yang berkualitas adalah kecepatan. Semakin rendah latensi, semakin baik. Layanan <a href="https://www.cloudflare.com/de-de/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> dari Cloudflare dapat membantu melindungi infrastruktur VoIP penting tanpa memengaruhi latensi dan kualitas panggilan.</p>
+	<p>Arsitektur Anycast dari Cloudflare, ditambah dengan ukuran dan skala jaringan kami, meminimalkan dan bahkan dapat meningkatkan latensi untuk traffic yang dirutekan melalui Cloudflare versus Internet publik. Lihat <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">pos terbaru</a> kami dari Cloudflare’s Speed Week untuk detail lebih lanjut tentang cara kerjanya, termasuk hasil pengujian yang menunjukkan peningkatan kinerja rata-rata sebesar 36% di seluruh dunia untuk jaringan pelanggan riil menggunakan Magic Transit.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZSrIvKNLTyiYElhv7Ydp/8b18d4e784c5ec1f3cf94ab14a3aebf8/4.png" alt="Diagram of Cloudflare Magic Transit routing" class="kg-image" width="2048" height="910" loading="lazy">
+
+	</figure>
+	<p>Selanjutnya, setiap paket yang diserap di pusat data Cloudflare dianalisis untuk serangan DDoS menggunakan beberapa lapisan deteksi di luar jalur untuk menghindari latensi. Setelah serangan terdeteksi, tepi menghasilkan sidik jari waktu riil yang cocok dengan karakteristik paket serangan. Sidik jari kemudian dicocokkan di eXpress Data Path (XDP) kernel Linux untuk segera menjatuhkan paket serangan pada kecepatan kabel tanpa menimbulkan kerusakan kolateral pada paket yang sah. Kami juga baru-baru ini memberlakukan aturan mitigasi khusus tambahan untuk memeriksa traffic UDP untuk menentukan apakah itu traffic SIP yang valid.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/654f4KI1t80kWgpSp9CzAh/99c1d83370a21d9f1213df79163d7c81/5.png" alt="World map of Cloudflare locations" class="kg-image" width="1134" height="642" loading="lazy">
+
+	</figure>
+	<p>Deteksi dan mitigasi dilakukan secara mandiri dalam setiap server tepi Cloudflare — tidak ada “scrubbing center” dengan kapasitas terbatas dan cakupan penerapan terbatas dalam persamaan. Selain itu, kecerdasan ancaman secara otomatis dibagikan ke seluruh jaringan kami secara waktu riil untuk 'mengajarkan' server tepi lain tentang serangan tersebut.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BOr4wRSTZL3RGXjSTooLk/947d19c3f66ff3a213fa139c21377460/6.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+
+	</figure>
+	<p>Deteksi tepi juga sepenuhnya dapat dikonfigurasi. Pelanggan Cloudflare <a href="https://www.cloudflare.com/de-de/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> dapat menggunakan <a href="https://developers.cloudflare.com/waf/ddos-l34-mitigation" target="_blank" rel="noopener noreferrer">L3/4 DDoS Managed Ruleset</a> untuk menyetel dan mengoptimalkan pengaturan perlindungan DDoS mereka, dan juga membuat aturan firewall tingkat paket khusus (termasuk inspeksi paket mendalam) menggunakan <a href="https://developers.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a> untuk menerapkan model keamanan positif.</p>
+	<div class="flex anchor relative">
+		<h3 id="bringing-people-together-remotely"><b>Menyatukan orang, dari jarak jauh</b></h3>
+		<a href="https://blog.cloudflare.com/#bringing-people-together-remotely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Misi Cloudflare adalah membantu membangun Internet yang lebih baik. Sebagian besar dari misi itu adalah memastikan bahwa orang-orang di seluruh dunia dapat berkomunikasi dengan teman, keluarga, dan kolega mereka tanpa gangguan — terutama selama masa COVID ini. Jaringan kami diposisikan secara unik untuk membantu menjaga dunia tetap terhubung, baik itu dengan <a href="https://blog.cloudflare.com/announcing-our-real-time-communications-platform">membantu pengembang membangun sistem komunikasi waktu riil</a> atau dengan membuat penyedia VoIP tetap online.</p>
+	<p>Kecepatan jaringan kami dan teknologi perlindungan DDoS otonom kami yang selalu aktif membantu penyedia VoIP untuk terus melayani pelanggan mereka tanpa mengorbankan kinerja atau harus menyerah pada pemeras DDoS yang meminta tebusan.</p>
+	<p>Bicaralah dengan spesialis Cloudflare untuk <a href="https://www.cloudflare.com/lp/voip-ddos-protection" target="_blank" rel="noopener noreferrer">mempelajari lebih lanjut</a>.</p>
+	<p><b>Diserang?</b> Hubungi <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">hotline</a> kami dan segera beritahu kami.</p>
+</div>

@@ -1,0 +1,125 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall">English</a>、<a href="https://blog.cloudflare.com/id-id/programmable-packet-filtering-with-magic-firewall">Indonesia</a>、<a href="https://blog.cloudflare.com/th-th/programmable-packet-filtering-with-magic-firewall">ไทย</a>、<a href="https://blog.cloudflare.com/zh-cn/programmable-packet-filtering-with-magic-firewall">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1U99UaYpmCzqDcU58GDq6V/7a573a5f1adedb529338c39b2b62fd95/programmable-packet-filtering-with-magic-firewall.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>クラウドフレアは、日々巧妙な攻撃から積極的にサービスを守っています。Magic Transitのユーザーの場合、DDoS保護対策が攻撃を検知してドロップする一方で、<a href="https://www.cloudflare.com/ja-jp/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a>によってパケットレベルのカスタムルールが可能なため、お客様はハードウェアファイアウォール機器を廃止してCloudflareのネットワークで悪意のあるトラフィックをブロックできるようになります。<a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank" rel="noopener noreferrer">Session Initiation Protocol</a>(SIP) などのプロトコルを標的とした攻撃が示すように、VoIPに<a href="https://blog.cloudflare.com/ja-jp/attacks-on-voip-providers-ja-jp">対する攻撃</a>の種類は最近のDDos攻撃やリフレクター攻撃として進化し続けています。このような攻撃に対抗するためには、従来のファイアウォールでは不可能なパケットフィルタリングの限界に挑戦する必要があります。私たちは、クラス最高の技術を取り入れ、それらを新しい方法で組み合わせることで、Magic Firewallを最も巧妙な攻撃にも耐えることができる、非常に高速で完全にプログラム可能なファイアウォールに変身させることができました。</p>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="magical-walls-of-fire"><b>マジカルウォール・オブ・ファイヤー</b></h3>
+		<a href="https://blog.cloudflare.com/#magical-walls-of-fire" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/ja-jp/introducing-magic-firewall-ja-jp">Magic Firewall</a>は、Linuxのnftablesをベースに構築された分散型ステートレスパケットファイアウォールです。世界中のCloudflareデータセンターにあるすべてのサーバーで稼働しています。分離と柔軟性を提供するため、各お客様のnftablesルールはLinuxネットワークの名前空間内で構成されます。</p>
+	<p>この図は、Magic Firewallを組み込んだ <a href="https://blog.cloudflare.com/ja-jp/magic-transit-network-functions-ja-jp">Magic Transit</a>を使用した場合のパケットの一例を示しています。まず、パケットはサーバーに入り、DDoS防御が適用され、攻撃を可能な限り早期にドロップします。次に、パケットはお客様専用のネットワークネームスペースにルーティングされ、nftablesのルールがパケットに適用されます。この後、パケットはGREトンネルを経由して元の場所にルートバックされます。Magic Firewallのユーザーは、柔軟な<a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">Wirefilter構文</a>を使用して<a href="https://developers.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">シングルAPI</a>からファイアウォール文を構築することができます。さらに、ルールはCloudflareダッシュボードから、使いやすいUIのドラッグ＆ドロップ要素を使用して設定することができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IjaJVGQWr5ssJPteOj4DR/2a0a310c33b86840a752386253f555b9/image1-20.png" alt="This diagram shows how packets are processed by Magic Firewall on a Cloudflare server." class="kg-image" width="1379" height="718" loading="lazy">
+
+	</figure>
+	<p>Magic Firewallは、様々なパケットパラメータにマッチする非常に強力な構文を提供しますが、nftablesが提供するマッチにも制限されます。多くのユースケースではこれで十分すぎるほどなのですが、私たちが望む高度なパケット解析やコンテンツマッチングを実装するには十分な柔軟性を備えているとは言えません。私たちはもっと大きな力を必要としていました。</p>
+	<div class="flex anchor relative">
+		<h3 id="hello-ebpf-meet-nftables"><b>eBPFの皆さん、こんにちは！Nftablesです。</b></h3>
+		<a href="https://blog.cloudflare.com/#hello-ebpf-meet-nftables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Linux のネットワークにさらなるパワーを求める場合、Extended Berkeley Packet Filter ( <a href="https://ebpf.io" target="_blank" rel="noopener noreferrer">eBPF</a> &nbsp;) は当然の選択と言えます。eBPFでは、カーネル内で実行されるパケット処理プログラム _を挿入でき、_カーネル内実行の速度と、使い慣れたプログラミングパラダイムによる柔軟性を提供します。Cloudflareは<a href="https://blog.cloudflare.com/tag/ebpf">eBPF が大好きで</a>、このテクノロジーは当社の多くの製品を実現する上で大きな変革をもたらしています。私たちがeBPFを使ってMagic Firewallのnftablesの使い方を拡張する方法を見つけたのも当然のことと言えます。つまり、テーブルの中でeBPFプログラムを使ってマッチングし、ルールとして連鎖させることができるようになるのです。こうすることで、既存のインフラとコードを維持したまま、さらに拡張することができます。私たちはケーキを持ちながら、さらにそれを食べることができるのです。</p>
+	<p>もしnftablesがeBPFをネイティブに活用できれば、この話はもっと短くなるはずですが、残念ながら、私たちは探求を続けなければなりませんでした。探索を始めるにあたって、iptablesがeBPFと統合されていることは知っています。例えば、次のコマンドでパケットをドロップするためにiptablesと固定されたeBPFプログラムを使用することができます。</p>
+	<p>このヒントのおかげで、正しい道に進むことができました。Iptablesは <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank" rel="noopener noreferrer">xt_bpf</a>拡張を使用して、eBPFプログラムでマッチングします。この拡張機能はBPF_PROG_TYPE_SOCKET_FILTER eBPFプログラムタイプを使用し、ソケットバッファからパケット情報をロードして、コードに基づいた値を返すことができます。</p>
+	<pre class="language-bash"><code class="language-bash">iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP</code></pre>
+	<p>iptablesがeBPFを使えることが分かっているのだから、それを使えばいいのでは？Magic Firewallは現在 nftablesを利用していますが、これは構文の柔軟性とプログラム可能なインターフェイスのため、私たちのユースケースには最適な選択です。したがって、xt_bpf拡張をnftablesで使用する方法を見つける必要があります。</p>
+	<p>この<a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank" rel="noopener noreferrer">図</a>は、iptables、nftables、カーネル間の関係を説明するのに役立ちます。nftables APIはiptablesとnftの両方のユーザー空間プログラムで使用でき、 xtablesのマッチ（xt_bpf を含む）と通常のnftablesのマッチの両方を設定できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EnxwNmNsjU68l44Mf0M3J/8d5f3b9cfc9f74f1d398c2955925e0c0/image2-13.png" alt="" class="kg-image" width="882" height="661" loading="lazy">
+
+	</figure>
+	<p>つまり、正しいAPIコール（netlink/netfilterメッセージ）があれば、nftablesルール内にxt_bpfマッチを埋め込むことができるのです。これを行うには、どのnetfilterメッセージを送信する必要があるかを理解する必要があります。straceやWiresharkなどのツールを使い、特に<a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank" rel="noopener noreferrer">ソース</a>を使って、テーブルとチェーンを指定してeBPFルールを追加できるメッセージを作成することができました。</p>
+	<p>eBPFマッチを追加するためのnetlink/netfilterメッセージの構造は、上記の例のようになるはずです。もちろん、このメッセージは適切に埋め込まれ、一致したときの評決などの条件付きステップを含む必要があります。次のステップは、下の例のように `ebpf_bytes` の形式をデコードすることでした。</p>
+	<pre class="language-bash"><code class="language-bash">NFTA_RULE_TABLE table
+NFTA_RULE_CHAIN chain
+NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
+	NFTA_LIST_ELEM | NLA_F_NESTED
+	NFTA_EXPR_NAME "match"
+		NLA_F_NESTED | NFTA_EXPR_DATA
+		NFTA_MATCH_NAME "bpf"
+		NFTA_MATCH_REV 1
+		NFTA_MATCH_INFO ebpf_bytes	</code></pre>
+	<p>バイトのフォーマットは、<a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a>のカーネルヘッダー定義にあります。上記のコード例は、構造体の関連部分を示しています。</p>
+	<pre class="language-bash"><code class="language-bash"> struct xt_bpf_info_v1 {
+	__u16 mode;
+	__u16 bpf_program_num_elem;
+	__s32 fd;
+	union {
+		struct sock_filter bpf_program[XT_BPF_MAX_NUM_INSTR];
+		char path[XT_BPF_PATH_MAX];
+	};
+};</code></pre>
+	<p>xt_bpfモジュールは生のバイトコードと、ピン留めされたebpfプログラムへのパスの両方をサポートしています。後者のモードは、ebpfプログラムをnftablesと結合するために使用した手法です。</p>
+	<p>この情報をもとに、ネットリンクメッセージを作成し、関連するデータフィールドを適切にシリアライズするコードを作成することができました。このアプローチは最初のステップに過ぎません。私たちは、カスタムのネットフィルタメッセージを送る代わりに、これを適切なツールに取り入れることも検討しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="just-add-ebpf"><b>eBPFを追加するだけ</b></h3>
+		<a href="https://blog.cloudflare.com/#just-add-ebpf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>あとは、eBPFのプログラムを組み立てて、既存のnftablesのテーブルとチェーンにロードする必要がありました。eBPFを使い始めるのは少し難しいかもしれません。どのプログラムタイプを使えばいいのか？eBPFのプログラムをどのようにコンパイルし、ロードすればよいのか？私たちは、このプロセスを、いくつかの調査と研究によって開始しました。</p>
+	<p>まず、試しにサンプルプログラムを構築してみました。</p>
+	<p>ご紹介したのは、ペイロードの末尾にマジック文字列を持つパケットのみを受け付けるeBPFプログラムの一例です。これは、検索を開始する場所を見つけるために、パケットの全長をチェックする必要があります。わかりやすくするために、この例ではエラーチェックとヘッダーを省略しています。</p>
+	<pre class="language-bash"><code class="language-bash">SEC("socket")
+int filter(struct __sk_buff *skb) {
+  /* get header */
+  struct iphdr iph;
+  if (bpf_skb_load_bytes(skb, 0, &amp;iph, sizeof(iph))) {
+    return BPF_DROP;
+  }
+
+  /* read last 5 bytes in payload of udp */
+  __u16 pkt_len = bswap_16(iph.tot_len);
+  char data[5];
+  if (bpf_skb_load_bytes(skb, pkt_len - sizeof(data), &amp;data, sizeof(data))) {
+    return BPF_DROP;
+  }
+
+  /* only packets with the magic word at the end of the payload are allowed */
+  const char SECRET_TOKEN[5] = "xyzzy";
+  for (int i = 0; i &lt; sizeof(SECRET_TOKEN); i++) {
+    if (SECRET_TOKEN[i] != data[i]) {
+      return BPF_DROP;
+    }
+  }
+
+  return BPF_OK;
+}</code></pre>
+	<p>プログラムができたら、次はそれを我々のツールに統合することでした。プログラムをロードするために、BCCやlibbpfなどいくつかの技術を試し、カスタムのローダーも作りました。最終的には、 <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">ciliumのebpfライブラリ</a>を使うことにしました。私たちは制御プレーンのプログラムにGolangを使っており、このライブラリによってeBPFプログラムの生成、埋め込み、読み込みが簡単にできるからです。</p>
+	<p>プログラムをコンパイルしてピン留めすれば、netlinkコマンドを使ってnftablesにマッチを追加することができます。ルールセットをリストアップすると、マッチが存在することがわかります。これは信じられないことです。Magic Firewallのルールセット内に高度なマッチングを提供するカスタムCプログラムをデプロイできるようになったのです!</p>
+	<pre class="language-bash"><code class="language-bash"># nft list ruleset
+table ip mfw {
+	chain input {
+		#match bpf pinned /sys/fs/bpf/mfw/match drop
+	}
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="more-magic"><b>その他のマジック</b></h3>
+		<a href="https://blog.cloudflare.com/#more-magic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>eBPFをツールキットに加えることで、Magic Firewallはあなたのネットワークを悪者から守るための、より柔軟で強力な方法となります。パケットをより深く調べ、nftablesだけでは実現できないような複雑なマッチングロジックを実装することができるようになりました。私たちのファイアウォールはすべてのCloudflareサーバー上でソフトウェアとして動作しているため、迅速に反復して機能を更新することができます。</p>
+	<p>このプロジェクトの成果のひとつが、現在ベータ版として公開されているSIPプロテクションです。これはまだ始まりに過ぎません。現在、プロトコルの検証、高度なフィールドマッチング、ペイロードの調査、さらに大規模なIPリストのセットのサポートにeBPFを使用することを検討しています。</p>
+	<p>こちらもぜひご協力をお願いします。他の使用例やアイデアがある場合は、担当のアカウントチームに相談してください。この技術に興味を持たれた方は、ぜひ <a href="https://www.cloudflare.com/ja-jp/careers" target="_blank" rel="noopener noreferrer">私たちのチームに参加してください</a> &nbsp;!</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1467870195343634433" target="_blank" rel="noopener noreferrer"><b>Twitterでつぶやく</b></a><a href="https://news.ycombinator.com/item?id=29459826" target="_blank" rel="noopener noreferrer"><b>Hacker Newsで話し合う</b></a><a href="https://reddit.com/r/CloudFlare/comments/ra8cno/how_we_used_ebpf_to_build_programmable_packet" target="_blank" rel="noopener noreferrer"><b>Redditで話し合う</b></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/cio-week">CIO Week</a> <a href="https://blog.cloudflare.com/tag/magic-firewall">Magic Firewall</a> <a href="https://blog.cloudflare.com/tag/magic-transit">Magic Transit</a> <a href="https://blog.cloudflare.com/tag/security">セキュリティ</a> <a href="https://blog.cloudflare.com/tag/voip">VoIP</a></p>
+	<p>Twitterでフォロー</p>
+	<p>Chris J Arges |<a href="https://twitter.com/@ChrisArges" target="_blank" rel="noopener noreferrer">@ChrisArges</a></p>
+	<p>Cloudflare |<a href="https://twitter.com/Cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare</a></p>
+</div>

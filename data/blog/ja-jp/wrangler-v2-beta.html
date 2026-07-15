@@ -1,0 +1,68 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/wrangler-v2-beta">English</a>および<a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/841Z7O2Ph2V5Scda9xs0g/e09ddffe7d693c6bf93302788dd2ff72/wrangler-v2-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>開発者の仕事の多くは、一貫性と可用性、正しさとスピードなど、トレードオフの関係にあります。技術的には様々なトレードオフがあるでしょうが、開発者としては絶対にしてはいけないことがあると考えています。</p>
+	<p></p>
+	<p>その1つが、使いやすい開発環境です。新しい開発者をチームに迎え入れる場合でも、単に開発期間を短縮したい場合でも、どんなに小さなことでもスピードとシンプルさのために最適化されていることが重要です。</p>
+	<p>そのため、私たちはCloudflare Workers向けの第2世代の開発者ツールを発表することになりました。このツールは、すぐに使えて非常に高速で、ローカルマシン上でWorkersを実行することもできる、新しい開発者エクスペリエンスです。（やりました！）</p>
+	<p>すでに既存のツールに慣れ親しんでいる方には、wrangler CLIだけでなく、次のメジャーリリースであるwrangler 2.0の話です。この新しい体験を少しご覧いただきますので、お付き合いください。</p>
+	<div class="flex anchor relative">
+		<h3 id="no-config-no-problem">コンフィグ無し？問題なし</h3>
+		<a href="https://blog.cloudflare.com/#no-config-no-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workerは、より簡単に使い始めることができます。ワーカーを実行するために必要なのは、1つのJavaScriptファイルだけで、設定は必要ありません。また、名前を決める必要もありません。</p>
+	<p><code>wrangler dev &lt;filename&gt;</code>を実行すれば、コードは自動的にバンドルされ、開発環境にデプロイされます。すると、ローカルホストプロキシを使ってその環境へHTTPリクエストを送ることができます。これが実際の様子です。</p>
+	<div class="flex anchor relative">
+		<h3 id="live-debugging-just-like-that">ライブデバッグもこんなに簡単</h3>
+		<a href="https://blog.cloudflare.com/#live-debugging-just-like-that" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>さて、Workerのデバッグ機能が一新されました。簡単なコマンドでリモートデバッグ機能にアクセスします。これは、Chromeで「Inspect」をクリックしたときに使われるものと同じで、ログ、例外、リクエストをインタラクティブに表示します。Workerがローカルで動作しているように感じられますが、実際にはCloudflareのネットワーク上で動作しています。</p>
+	<p>「ただ動く」デバッガー、そして変更を自動検出するデバッガーは、ただコードを書こうとしているときに、大きな違いをもたらします。さらに、デバッグ作業をより簡単にするために、さまざまな改良が加えられています。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<ul>
+		<li>
+			<p>キーバインドによるショートカットで、機能の切り替えやウィンドウの表示を素早く行うことができます。</p>
+		</li>
+		<li>
+			<p>静的資産を自動的に提供するための「--public 」をサポート。</p>
+		</li>
+		<li>
+			<p>より高速で信頼性の高いファイルウォッチング。</p>
+		</li>
+	</ul>
+	<p>デバッグセッションを開始するには、`wrangler dev ` を実行し、次に「D」キーバインドを押します。</p>
+	<div class="flex anchor relative">
+		<h3 id="local-mode-flip-a-switch">ローカルモード？スイッチを切り換えるだけ</h3>
+		<a href="https://blog.cloudflare.com/#local-mode-flip-a-switch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>**新しいデバッグ環境のもう一つの特徴は、ローカルマシン上でWorkerを実行する「ローカルモード」に切り替えられることです。**実際、キーバインドショートカット1つで「ネットワーク」と「ローカル」のモード切り換えが簡単にできます。</p>
+	<p>どういった仕組みなのでしょうか。Cloudflareは最近、Node.jsでWorkerをローカルにエミュレートするプロジェクト<a href="https://github.com/cloudflare/miniflare" target="_blank" rel="noopener noreferrer">Miniflare</a>（<a href="https://twitter.com/_mrbbot" target="_blank" rel="noopener noreferrer">Brendan Coll</a>が作成）がCloudflare公式になったことを発表しました。Miniflareは、WorkersをNode.jsでローカルにエミュレートするプロジェクトで、単体テストやインターネット接続せずにWorkersをデバッグしたい場合に最適です。これをローカルの開発エクスペリエンスに直接統合したことにより、ネットワークとローカルホストの両方の利点を楽しむことができるようになりました。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="let-us-know-what-you-think">ご感想をお聞かせください</h3>
+		<a href="https://blog.cloudflare.com/#let-us-know-what-you-think" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サーバーレスはシンプルであるべきです。Cloudflareでは、Workersの開発環境の改善ができたことを本当に嬉しく思います。これからもさらに多くのことを計画しています。</p>
+	<p>wrangler 2.0はまだ開発中ですが、“npm install wrangler@beta”を実行するか<a href="https://github.com/cloudflare/wrangler2" target="_blank" rel="noopener noreferrer">リポジトリ</a>にアクセスしてベータ版をお試しいただけます。すでにwranglerを使って既存のアプリケーションをデプロイしている場合は、2.0のリリースが正式に発表されるまで、wrangler 1.0を使い続けることをお勧めします。wrangler 1.0 の開発とメンテナンスは、2.0 の後方互換性が完了するまで継続します。</p>
+	<p>これからプロジェクトを始める方や、新しいエクスペリエンスを試してみたい方は、ぜひご意見をお聞かせください。wrangler 2.0で足りないもの、見たいものを教えてください。機能リクエストを作成したり、<a href="https://github.com/cloudflare/wrangler2" target="_blank" rel="noopener noreferrer">リポジトリ</a>でディスカッションを始めることができます。（2.0のベータテストが終了後は、既存のwranglerリポジトリと合体させます。）</p>
+	<p>開発者の皆様に感謝します。皆様が今後開発されるものを楽しみにしています。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

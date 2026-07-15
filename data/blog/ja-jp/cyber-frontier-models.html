@@ -1,0 +1,285 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cyber-frontier-models">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cyber-frontier-models">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/cyber-frontier-models">Français</a>、<a href="https://blog.cloudflare.com/de-de/cyber-frontier-models">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/cyber-frontier-models">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/cyber-frontier-models">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/cyber-frontier-models">Português</a>、<a href="https://blog.cloudflare.com/es-es/cyber-frontier-models">Español</a>、<a href="https://blog.cloudflare.com/nl-nl/cyber-frontier-models">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/cyber-frontier-models">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y625m3YXlvfZAoQZZp8vW/a0a33ce98166cab55e038eafe6b43ac8/unnamed__67_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>ここ数か月間、自社のインフラストラクチャでセキュリティに特化したさまざまなLLMのテストを行ってきました。これらのLLMは、自社システム内の潜在的な脆弱性を特定するのに役立つため、私たちはその脆弱性を修正できます。また、最新のモデルを使用して攻撃者が何を仕掛けてくる可能性があるかを明らかにしてくれます。</p>
+	<p>これらのLLMの中で、Anthropic社のMythos Previewほど注目を集めたものはありません。数週間前、<a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener noreferrer"><u>Project Glasswing</u></a>の一環として、当社はMythos Previewの利用に招待されました。私たちはすぐに、50個以上の自社リポジトリに向けてこれを試し、何を見つけ、どのように機能するかを確認しました。 </p>
+	<p>本記事では、観測した内容、このモデルがうまく機能した点やそうでない点、およびこのモデルを大規模に活用するためにアーキテクチャやプロセスをどのように変更する必要があるかを共有します。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-changed-with-mythos-preview">Mythos Previewで何が変わったのか</h2>
+		<a href="https://blog.cloudflare.com/#what-changed-with-mythos-preview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mythos Previewは真の進歩であり、他の何よりも先に述べておく価値があります。私たちはしばらくの間、当社のコードに対してモデルを実行してきましたが、従来の汎用フロンティアモデルで可能だったことから、今日Mythos Previewが実現していることへの飛躍は、単なる改良にとどまりません。</p>
+	<p>異なる種類のツールが、異なる種類の作業を行うため、以前のモデルと完全に同一条件で比較をすることは困難です。したがって、汎用のフロンティアモデルと比較しようとするよりも、Mythos Previewが実際に何ができるのかを説明する方が有用です。以下に、Mythos Previewを用いた作業全体にわたって際立った特徴を2つ紹介します。</p>
+	<ul>
+		<li>
+			<p><b>エクスプロイトチェーンの構築 -</b> 実際の攻撃において、バグを1つだけ使うことは稀です。いくつかの小さな攻撃プリミティブを組み合わせて、実用的なエクスプロイトを構築します。たとえば、use-after-freeバグを任意の読み書きプリミティブに変え、制御フローを乗っ取り、Return-Oriented Programming（ROP）チェーンを使ってシステムを完全に掌握することができます。Mythos Previewでこれらのプリミティブをいくつか取り上げ、どのようにそれらを組み合わせて実用的な証明を構築するかを推論できます。その過程で示される推論は、自動スキャナーの出力というよりも、上級研究員の業績のように見えます。</p>
+		</li>
+		<li>
+			<p><b>証明生成 -</b> バグを見つけることと、それが利用可能であることを証明することは異なる作業であり、Mythos Previewはその両方が可能です。疑わしいバグを引き起こすコードを記述し、それを一時環境でコンパイルして実行します。プログラムがモデルの期待通りに動作すれば、それが証明となります。もしそうでない場合、モデルは失敗を読み取り、仮説を調整して再試行します。疑わしい欠陥は実用的な証明がなければ推測に過ぎないため、ループは見つけたバグと同じくらい重要です。そして、Mythos Previewはそのギャップを自ら埋めます。</p>
+		</li>
+	</ul>
+	<p>上記で説明した内容の一部は、Mythos Preview特有のものではありません。他のフロンティアモデルを同じハーネスを使って実行したところ、同様の根本的なバグを数多く発見し、一部のケースでは、我々の予想以上に推論の面でも進展を見せました。及ばなかった点は、ピースをつなぎ合わせる段階でした。モデルは注目すべきバグを特定し、その重要性を丁寧に説明してから止め、実際のチェーンを未完成のままにし、利用可能性の問題を未解決のままにします。Mythos Previewによる変更点は、（従来であればバックログに埋もれていた）軽微なバグをモデルが抽出し、それらを連鎖させて単一の、より重大なエクスプロイトへと発展させられるようになったことです。</p>
+	<div class="flex anchor relative">
+		<h2 id="model-refusals-in-legitimate-vulnerability-research">正当な脆弱性研究におけるモデルの拒否</h2>
+		<a href="https://blog.cloudflare.com/#model-refusals-in-legitimate-vulnerability-research" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Project Glasswingの一環として、Anthropicによって提供されたMythos Previewモデルは、一般に利用可能なモデル（Opus 4.7やGPT-5.5など）に存在する追加の安全策を持っていませんでした。</p>
+	<p>それにもかかわらず、モデルは特定のリクエストには自然に反発します。脆弱性の発見に役立つサイバー能力と同様に、モデルには独自の創発的なガードレールがあり、ときには正当なセキュリティ研究のリクエストに対して反発を引き起こすことがあるのです。しかし、私たちが観測したように、これらの自発的な拒否は一貫しておらず、同じタスクでも、枠組みを変えたり別の文脈で示したりすると、まったく異なる結果をもたらすことがあります。以下に一例を示します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5St6rLRq9wkuxwmLHZ88CV/b4eb948c917ef7f7b0028ccc8ec0aefe/image2.png" alt="" class="kg-image" width="1242" height="716" loading="lazy">
+	</figure>
+	<p><i><sup>Mythos Previewが実用的な概念実証の構築を遅らせる事例</sup></i></p>
+	<p>たとえば、モデルは当初、プロジェクトの脆弱性調査を拒否しましたが、その後、プロジェクトの環境に無関係な変更があった後に、同じコードに対して同じ調査を行うことに同意しました。なお、解析対象のコードには何も変更がありませんでした。
+
+		別のケースでは、モデルがコードベースでいくつかの重大なメモリバグを発見し確認しましたが、実証用のエクスプロイトを書くことを拒否しました。同じリクエストでも、枠組みを変えると、異なる回答が得られました。同じリクエストであっても、モデルの確率的な性質により、実行ごとに異なる結果が生成されることがあります。意味的に同等のタスクでも、モデルへの提示の方法やタイミングによって、反対の結果を生むことがあります。</p>
+	<p>これは重要なことです。なぜなら、モデルの自主的な拒否やガードレールは存在するものの、単独で完全な安全境界として機能するには一貫性が不十分だからです。まさにこの理由から、将来一般提供されるいかなる有能なサイバーフロンティアモデルも、Project Glasswingのような制御された研究のコンテキストを超えて広範囲に使用するのに相応しくなるように、この基準的な挙動に加えて追加の安全策を含めなければなりません。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-signal-to-noise-problem">信号対ノイズ問題</h2>
+		<a href="https://blog.cloudflare.com/#the-signal-to-noise-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セキュリティ脆弱性の対応で最も難しい部分の一つは、どのバグが実際に存在し、どれが悪用可能で、どれを今すぐ修正する必要があるのかを決定することです。これはAI以前の世界でも難しい問題でした。AIの脆弱性スキャナーとAI生成コードにより、状況は悪化していますが、Cloudflareではそれを対処するための複数の検証後ステージを構築しました。</p>
+	<p>ノイズ率に影響を与える主な要因は2つあります。</p>
+	<ul>
+		<li>
+			<p><b>プログラミング言語</b> - CおよびC++ではメモリを直接制御できる反面、Rustなどのメモリ安全言語ではコンパイル時に排除されるようなバッファオーバーフロー、境界外の読み書きなどのバグ種も発生させます。メモリ安全でない言語で書かれたプロジェクトからは、常により多くの誤検知が見られました。</p>
+		</li>
+		<li>
+			<p><b>モデルバイアス</b> - 優れた人間の研究者は、どのような結果が得られ、そしてどの程度信頼できるかを説明します。モデルは違います。モデルにバグを見つけるように指示すると、コードにバグがあるかどうかに関わらず、バグを見つけます。調査結果は「おそらく」「潜在的に」「理論上可能」などの表現で修飾されて戻ってきますが、そうした根拠が不確かな結果は、確固たる結果よりはるかに上回っています。探索ツールとしては合理的なバイアスです。しかし、トリアージキューにとっては致命的なバイアスです。トリアージキューでは、バグ排除のために不確かな結果すべてに対して人的リソースとトークンを費やし、そのコストが数千件もの結果にわたって累積するからです。</p>
+		</li>
+	</ul>
+	<p>Mythos Previewは、これらの点において大幅な改善を示しています。特に、プリミティブの連鎖機能、つまり複数の脆弱性を単独で報告するのではなく、実際に機能する概念実証に組み合わせる能力において顕著です。PoCを伴う調査結果は、実行可能なものであり、「これは本当に問題なのか？」と問い続ける時間を大幅に短縮します。</p>
+	<p>弊社のハーネスは、意図的に過剰検知するよう調整されています。このため、より多くのものが見える（見逃すことも少なくなる）一方で、ノイズも増加します。しかし、トリアージの時点で、Mythos Previewの出力は明らかに高品質です。調査結果の曖昧さが少なく、再現手順が明確で、バグ修正または排除の決定に至るまでの作業が少なくて済みます。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work">なぜ汎用的なコーディングエージェントをリポジトリに向けるだけではうまくいかないのか</h2>
+		<a href="https://blog.cloudflare.com/#why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>昨年、AI支援を活用した脆弱性研究を開始した際、私たちは素直に、汎用的なコーディングエージェントを任意のリポジトリに指向し、脆弱性を発見するよう指示しました。この方法はモデルが所見を生成するという意味では機能しますが、実際のコードベースを十分にカバーし、有用な所見を特定するには不十分です。これには主に2つの理由があります。</p>
+	<ul>
+		<li>
+			<p><b>コンテキスト -</b> コーディングエージェントは、機能の構築、バグの修正、リファクタリングといった、特定の作業に専念するよう調整されています。エージェントは大量のソースコードを取り込み、一度に1つの仮説を保持し、それに対して反復します。それは、脆弱性研究にとってまさに不適切な形です。脆弱性研究は本質的に範囲が狭く、並行して行われるものです。人間の研究者は特定の対象を選び、それを徹底的に調査します。その特定の対象とは、単一の複雑な機能、セキュリティ境界を越える移行、またはコマンドインジェクションのような特定の脆弱性クラス（攻撃者の入力がシェルコマンドとして実行されてしまうもの）を指す場合があります。そして、異なる機能やセキュリティ境界、脆弱性クラスに対して、コードベース全体で何千回も同じことを繰り返します。10万行のリポジトリに対して（サブエージェントを含む場合でも）単一のエージェントセッションを実行すると、モデルのコンテキストウィンドウが満杯になり、コンパクションが開始されるまでに、有用な形でカバーできるのは表面の0.1％程度にとどまります。その結果、重要だったはずの初期の調査結果が破棄されてしまうおそれがあります。</p>
+		</li>
+		<li>
+			<p><b>スループット -</b> 単一ストリームのエージェントは一度に1つの処理しか行いませんが、実際のコードベースでは、多くのコンポーネントに対して同時に多くの仮説が必要であり、注目すべきものが見つかった際に、さらに調査範囲を広げる能力が求められます。単一のエージェントをさらに酷使することは可能ですが、ある時点でモデルの制約ではなく、相互作用そのものの構造による制約を受けるようになります。モデルをコーディングエージェントに直接使用することは、研究者がすでに手がかりを持ち、別の視点を求める際の手動調査に適していることがわかりました。しかし、高いカバレッジを達成するためのツールとしては不適です。この結果を受け、私たちはMythos Previewを間違った用途で使おうとするのをやめ、代わりにそれを中心にハーネスを構築し始めました。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="what-a-harness-actually-fixes">ハーネスが実際に解決するもの</h2>
+		<a href="https://blog.cloudflare.com/#what-a-harness-actually-fixes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大規模に作業を実行する中で、4つの教訓が浮かび上がりました。それぞれが、全体の実行を管理するハーネスの必要性を示しています。</p>
+	<ul>
+		<li>
+			<p><b>範囲を狭めることがより良い結果をもたらす -</b> モデルに「このリポジトリの脆弱性を見つけてください」と指示すると、迷走します。「この特定の関数でのコマンドインジェクションを、その上流にある信頼境界線を考慮して探してください。こちらが設計文書で、こちらが当該領域に関する以前のカバレッジです」と指示することで、実際の研究者が行うことにより近い動作をさせることが可能です。</p>
+		</li>
+		<li>
+			<p><b>敵対的レビューはノイズを減らす -</b> 初期の結果とキューの間に、別のプロンプトとモデルを使用し、自身の調査結果を生成する機能を持たない第2のエージェントを追加することで、最初のエージェントが自身の作業を確認するだけでは見逃す多くのノイズをキャッチします。2つのエージェントで意図的に意見を対立させることは、単に1つのエージェントに注意するよう指示するよりも遥かに効果的であることがわかりました。</p>
+		</li>
+		<li>
+			<p><b>エージェント間でチェーンを分割することで、より優れた推論が得られる -</b> 「このコードにバグがあるのか？」と「攻撃者がシステム外部から実際にこのバグに到達できるのか？」と尋ねることは、2つの異なる質問であり、個別に尋ねることで、それぞれの質問に対してモデルの精度が向上します。なぜなら、個々の質問は統合された質問よりも狭義になるからです。</p>
+		</li>
+		<li>
+			<p><b>複数の狭義なタスクを並行して進めることで、1つの包括的なエージェントに勝る -</b> 1つのエージェントに包括的な回答を求めるよりも、多くのエージェントが範囲を絞った質問に取り組み、その後に重複を排除することでカバレッジが向上します。</p>
+		</li>
+	</ul>
+	<p>それぞれの知見はモデルの挙動に関するものであり、それらを組み合わせると、それはもはやチャットインターフェースではない何かを説明しています。それは最終結果を達成するのを支援するハーネスです。ハーネスを構築する最初のステップは簡単です。モデルに手助けを頼むことができ、私たちもそうしました。私たちは、Mythos Previewを活用して、その強みを発揮できるようにオリジナルのハーネスを構築し、調整し、改善しました。
+
+		実際にハーネスがどのようなものか、その例を以下に説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="our-vulnerability-discovery-harness">当社の脆弱性発見ハーネス</h2>
+		<a href="https://blog.cloudflare.com/#our-vulnerability-discovery-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>各段階における当社の脆弱性発見ハーネスの構成を以下に示します。これを使用して、当社のランタイム、エッジデータパス、プロトコルスタック、コントロールプレーン、および依存しているオープンソースプロジェクト全体でライブコードをスキャンしました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OhgJDEeyc5aq8EoF4yFJE/917c9a9d8a92d0920acb96f7d5cb66f6/image6.png" alt="" class="kg-image" width="1999" height="905" loading="lazy">
+	</figure>
+	<figure class="table table-style-block-align-left" style="width:97.66%;">
+		<table class="ck-table-resized" style="border-style:none;">
+			<colgroup>
+				<col style="width:11.55%;">
+				<col style="width:56.06%;">
+				<col style="width:32.39%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>段階</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>できること</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>なぜ重要なのか</strong></span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png" data-ckbox-resource-id="822rcAA5ctaT" width="32" height="32" alt="">
+								</picture><br>
+								調査
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">エージェントはリポジトリを上から下まで読み取り、各サブシステムを担当するサブエージェントに分散し、ビルドコマンド、信頼境界線、エントリーポイント、および攻撃対象領域を網羅する設計文書を作成します。また、次の段階に向けたタスクの初期キューを生成します。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">あらゆる下流エージェントに共有コンテキストを提供します。迷走している問題を解決します。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png" data-ckbox-resource-id="MZetX0ROffYM" width="31" height="31" alt="">
+								</picture>&nbsp;<br>
+								探索
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">各タスクには、範囲のヒントが付いた1つの攻撃クラスが含まれます。ハンター（実際にバグを探すエージェント）が同時に動作し、通常は約50体が一度に作動し、それぞれが少数の探索サブエージェントに分散します。各ハンターは、タスクごとのスクラッチディレクトリで概念実証コードをコンパイルして実行するためのツールを利用できます。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">ここでほとんどの作業が行われます。1つの包括的なエージェントではなく、多くの限定されたタスクを並行して行います。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png" data-ckbox-resource-id="b0ZpxOYkUhjr" width="29" height="29" alt="">
+								</picture><br>
+								検証
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">独立したエージェントがコードを再確認し、元の調査結果が誤りであることを証明しようとします。これは異なるプロンプトを使用し、自身で新たにバグを発見する能力はありません。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">ハンター自身の作業を見直す際に捕捉できないノイズのうち、有意な部分を捉えます。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png" data-ckbox-resource-id="Y31tucc41jy0" width="28" height="28" alt="">
+								</picture><br>
+								穴埋め
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">ハンターは、立ち入ったものの、十分探索しなかった領域にフラグを立てます。これらの領域は再度キューに入れられ、もう一度処理されます。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">モデルがこれまでに成功を収めた攻撃クラスへと偏る傾向を抑制します。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png" data-ckbox-resource-id="lvNRuZ_yo_es" width="28" height="28" alt="">
+								</picture><br>
+								重複排除
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">同じ根本原因を共有する結果は1つの記録に統合されます。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">バリアント分析は機能の1つであり、重複した内容でキューを膨らませる方法ではありません。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png" data-ckbox-resource-id="_rUjvs8wRMj1" width="29" height="29" alt="">
+								</picture><br>
+								トレース
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">共有ライブラリで確認された各問題について、トレーサーエージェントは分散し（各消費者リポジトリごとに1つのインスタンス）、クロスリポジトリシンボルインデックスを使用して、攻撃者が制御する入力がシステム外部からバグに実際に到達するかどうかを判断します。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">「欠陥があります」を「到達可能な脆弱性があります」に変えます。これは最も重要な段階です。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png" data-ckbox-resource-id="ylBXj7IP-Thj" width="26" height="26" alt="">
+								</picture><br>
+								フィードバック
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">到達可能なトレースは、バグが実際に露呈している消費者リポジトリ内で新たな探索タスクになります。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">ループを閉じます。パイプラインは稼働するにつれて改善されます。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png" data-ckbox-resource-id="pDRKY2-VeUPg" width="27" height="27" alt="">
+								</picture><br>
+								レポート
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">エージェントは、事前に定義されたスキーマに基づいて構造化されたレポートを作成し、そのスキーマに対する検証エラーを修正した後、そのレポートをインジェストAPIに送信します。</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">出力は、自由形式ではなく、検索可能なデータです。</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-this-means-for-security-teams">セキュリティチームにとって、これは何を意味するのか</h2>
+		<a href="https://blog.cloudflare.com/#what-this-means-for-security-teams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mythos Previewに対する他のセキュリティリーダーからの最も大きな反応は、速度に関するものでした。すなわち、スキャンをより早く行い、パッチをより迅速に適用し、応答サイクルを圧縮することです。お話を伺った複数のチームが現在、CVEの公開から本番環境へのパッチ適用までを2時間以内とするSLAに基づいて運用しています。攻撃者のタイムラインが短縮されると、防御側のタイムラインもそれに合わせて短縮しなければならないと感じてしまうのは当然です。一方で、スピードアップするだけでは十分ではないことを、多くのチームが痛感するのに多大な時間、労力、資金を費やすことになると私たちは考えています。</p>
+	<p>パッチを迅速に適用しても、パッチを作成するプロセスの形が変わるわけではありません。回帰テストに1日かかる場合、それを省略しないかぎり2時間のSLAを達成することはできません。そして、回帰テストを省略することで発生するバグは、パッチ適用しようとしていたバグよりも悪化する傾向があります。モデルに自らのパッチを書かせてみた際、そのうちのいくつかは元のバグを修正したものの、コードが依存していた別の部分をひそかに壊してしまうパッチも観測され、この一端を学びました。</p>
+	<p>さらに難しい問題は、脆弱性を取り巻くアーキテクチャをどのように設計すべきかということです。たとえバグが存在する場合でも攻撃者による悪用を困難にすることで、脆弱性が公開されてから修正されるまでの間隔がそれほど重要でなくなるようにすることが原則です。つまり、アプリケーションの前に配置され、バグに到達するのを防ぐ防御策を指します。これは、コードの一部に欠陥があっても、攻撃者が他の部分にアクセスできないようにアプリケーションを設計することを意味します。さらに、個々のチームが展開を待たずに、コードが実行されているすべての場所で同時に修正を適用できることを意味します。</p>
+	<p>このテーマには一長一短があることも認識しています。自社のコードのバグを見つけるのに役立ったのと同じ能力が誤った手に渡れば、インターネット上のすべてのアプリケーションに対する攻撃を加速させるおそれがあります。Cloudflareは、数百万件ものアプリケーションの前面に位置しており、上述のアーキテクチャの原則を顧客に代わって適用するように当社の製品は構築されています。今後数週間のうちに、これがお客様にとってどのような意味を持つのか、さらに詳しく紹介していきます。</p>
+	<p>もし、貴社のチームが同様の作業を行っており、意見交換をご希望される場合は、<a href="https://blog.cloudflare.com/#"><u>security-ai-research@cloudflare.com</u></a>までご連絡ください。</p>
+	<p><i>Mythos Previewを用いた当社の研究は、自社のコードに対して管理された環境内で実施されました。この作業で表面化したあらゆる脆弱性は、Cloudflareの正式な脆弱性管理プロセスに基づき、優先順位付け、検証、そして必要とされる箇所で対策が講じられました。</i></p>
+	<p><i>この仕事はチーム一丸となって成し遂げたものです。このブログ記事に関する研究、エンジニアリング、分析に貢献してくださったAlbert Pedersen、Craig Strubhart、Dan Jones、Irtefa Fairuz、Martin Schwarzl、Rohit Chenna Reddyに感謝いたします。</i></p>
+</div>

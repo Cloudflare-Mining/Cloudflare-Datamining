@@ -1,0 +1,116 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/ai-security-for-apps-ga">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ai-security-for-apps-ga">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ai-security-for-apps-ga">Français</a>, <a href="https://blog.cloudflare.com/de-de/ai-security-for-apps-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ai-security-for-apps-ga">日本語</a>, <a href="https://blog.cloudflare.com/es-es/ai-security-for-apps-ga">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/ai-security-for-apps-ga">Рyсский</a>, <a href="https://blog.cloudflare.com/nl-nl/ai-security-for-apps-ga">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/ai-security-for-apps-ga">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/663Prk0UZJS4eRloD2XayY/bba0c4840520eb72d5539d1235768d34/BLOG-3128_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>Cloudflare의 <a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>AI Security for Apps</u></a> 는 AI 기반 애플리케이션에 대한 위협을 감지하고 완화합니다. 오늘, 정식 출시를 발표합니다.</p>
+	<p>맞춤형 주제 감지 등 새로운 기능을 제공하며, Free, Pro, Business 요금제 고객을 포함한 모든 Cloudflare 고객에게 AI 엔드포인트 검색을 무료로 제공하여 인터넷에서 AI가 배포된 위치를 모두에게 제공합니다 -대면 앱.</p>
+	<p>Cloudflare가 클라우드 고객에게 <a href="https://www.cloudflare.com/learning/ai/what-is-ai-security" target="_blank" rel="noopener noreferrer">AI 보안</a> 을 제공하기 위해 선택한 IBM과의 협력 확대를 또한 발표합니다. 또한 우리는 Wiz와 협력하여 공통 고객에게 <a href="https://www.cloudflare.com/ai-security" target="_blank" rel="noopener noreferrer">AI 보안 상태에 대한 통합된 관점</a>을 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-kind-of-attack-surface">새로운 종류의 공격면</h2>
+		<a href="https://blog.cloudflare.com/#a-new-kind-of-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>기존 웹 애플리케이션에서는 은행 잔고 확인, 이체 등의 업무가 정의되어 있습니다. 결정론적 규칙을 작성하여 이러한 상호 작용을 보호할 수 있습니다.&nbsp;</p>
+	<p>AI 기반 애플리케이션과 에이전트는 다릅니다. 자연어를 받아들이고 예측할 수 없는 응답을 생성합니다. 입력과 출력이 확률적이므로 허용하거나 거부할 고정된 작업 집합이 없습니다. 공격자는 대규모 언어 모델을 조작하여 무단으로 조치를 취하거나 중요한 데이터를 유출할 수 있습니다. 프롬프트 삽입, 민감한 정보 공개, 무제한 리소스 소비는 <a href="https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms" target="_blank" rel="noopener noreferrer"><u>LLM 애플리케이션용 OWASP Top 10</u></a>에 기록된 위험 중 일부에 불과합니다.</p>
+	<p>이러한 위험은 AI 앱이 에이전트가 되면서 심화됩니다. AI가 도구 호출(환불 처리, 계정 수정, 할인 제공 또는 고객 데이터 액세스)에 액세스하면 악의적인 프롬프트 하나가 즉각적인 보안 사고가 됩니다.</p>
+	<p>고객이 현재 어떤 상황인지 Cloudflare에 알려줍니다. "뉴폴드 디지털의 대부분 팀은 자체적인 생성형 AI 보호 조치를 마련하고 있지만, 모두가 너무 빠르게 혁신하고 있기 때문에 결국에는 필연적으로 일부 격차가 발생할 것입니다."라고 블루호스트, 호스트게이터, 도메인닷컴을 운영하는 뉴폴드 디지털의 수석 시스템 설계자인 릭 라딩거는 말합니다. </p>
+	<div class="flex anchor relative">
+		<h2 id="what-ai-security-for-apps-does">앱용 AI 보안이 하는 일</h2>
+		<a href="https://blog.cloudflare.com/#what-ai-security-for-apps-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare는 이를 해결하기 위해 앱용 AI 보안을 구축했습니다. 타사 모델을 사용하든 자체 모델을 호스팅하든 Cloudflare의 <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer"><u>역방향 프록시</u></a>의 일부로 AI 기반 응용 프로그램 앞에 위치합니다. 이 테스트에서는 (1) 웹 자산 전반에서 AI 기반 애플리케이션을 찾고, (2) 해당 엔드포인트에 대한 악의적이거나 정책을 벗어난 동작을 감지하며, (3) 친숙한 WAF 규칙 빌더를 통해 위협을 완화하는 데 도움이 됩니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xpmckBUupzELjYOSx5bAF/cace1ab2ed2dd54d8d7a7ff60587ef65/BLOG-3128_2.png" alt="BLOG-3128 2" class="kg-image" width="1999" height="650" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="discovery-now-free-for-everyone">탐색 — 이제 모두에게 무료</h3>
+		<a href="https://blog.cloudflare.com/#discovery-now-free-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLM 기반 애플리케이션을 보호하려면 먼저 어디에서 사용되고 있는지 알아야 합니다. 우리는 보안 팀에서 특히 LLM 시장이 진화하고 개발자가 모델과 공급자를 교체함에 따라 애플리케이션 전반에 걸친 AI 배포를 완벽하게 파악하지 못한다는 이야기를 자주 듣습니다.&nbsp;</p>
+	<p>AI Security for Apps는 웹 자산의 호스팅 위치 또는 모델에 관계없이 LLM 기반 엔드포인트를 자동으로 식별합니다. 오늘부터 이 기능이 Free, Pro, Business 요금제를 포함한 모든 Cloudflare 고객에게 무료로 제공됩니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dBKhU5VNbzAePDAnaHkTK/3f6a569e495e03c3e2afca4d6183e02d/image4.png" alt="BLOG-3128 3" class="kg-image" width="1999" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup><code>cf-llm</code></sup></i><i><sup>으로 레이블이 지정된 2개의 예시 엔드포인트를 보여주는 Cloudflare의 웹 자산 대시보드 페이지</sup></i></p>
+	<p>이러한 엔드포인트를 자동으로 검색하려면 <code>/chat/completions</code>와 같은 일반적인 경로 패턴을 매칭하는 것 이상의 것이 필요합니다. 제품 검색, 자산 가치 평가 도구, 추천 엔진 등을 예로 들면, 많은 AI 기반 애플리케이션에는 채팅 인터페이스가 없습니다. Cloudflare는 <a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#discovering-llm-powered-applications"><u>엔드포인트가</u></a> 아니라 엔드포인트를 작동시키는 방식을 고려하는 감지 시스템을 구축했습니다. AI 기반 엔드포인트를 자신 있게 식별하려면 <a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements" target="_blank" rel="noopener noreferrer"><u>충분한 유효 트래픽</u></a> 이 필요합니다.</p>
+	<p>검색된 AI 기반 엔드포인트는 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets" target="_blank" rel="noopener noreferrer"><u>보안 → 웹 자산</u></a> 아래에 표시되며, <code>cf-llm</code>으로 레이블이 지정됩니다. Free 요금제 고객의 경우, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets%2Fdiscovery" target="_blank" rel="noopener noreferrer"><u>검색 페이지</u></a>로 처음 이동하면 엔드포인트 검색이 시작됩니다. 유료 요금제 고객은 반복적으로 백그라운드에서 자동으로 검색합니다. AI 기반 엔드포인트가 발견된 경우, 즉시 검토할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="detection">감지</h3>
+		<a href="https://blog.cloudflare.com/#detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Apps 감지는 AI 기반 엔드포인트로 향하는 트래픽에 대해 <a href="https://developers.cloudflare.com/waf/detections" target="_blank" rel="noopener noreferrer"><u>상시 가동 접근 방식</u></a> 을 따릅니다. 각 프롬프트는 프롬프트 삽입, 개인 식별 정보 노출, 민감하거나 유해한 주제에 대해 여러 감지 모듈을 통해 실행됩니다. 프롬프트의 악의적 여부에 관계없이 결과는 메타데이터로 첨부되므로 사용자 지정 WAF 규칙에서 사용하여 정책을 시행할 수 있습니다. 저희는 약 <a href="https://w3techs.com/technologies/history_overview/proxy/all" target="_blank" rel="noopener noreferrer"><u>20%의 웹</u></a>에서 트래픽을 확인하는 저희의 전역 네트워크를 활용하여 수백만 개의 사이트에서 새로운 공격 패턴이 귀하의 사이트에 도달하기 전에 식별하는 방법을 지속적으로 모색하고 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oGjcaUL5L9zlAkz8lSmXv/4354a9555135e19de5c93d3d113e6790/BLOG-3128_4.png" alt="BLOG-3128 4" class="kg-image" width="1922" height="444" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-topics-detection">GA의 새로운 기능: 사용자 지정 주제 감지</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-topics-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 제품에는 프롬프트 삽입, <a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#detecting-prompts-designed-to-leak-pii"><u>개인 식별 정보 추출</u></a>, <a href="https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai"><u>유해한 주제</u></a> 등 일반적인 위협에 대한 감지 기능이 기본 제공됩니다. 하지만 모든 기업마다 금지된 콘텐츠에 대한 자체적인 정의가 있습니다. 금융 서비스 회사에서는 특정 증권에 대한 논의를 감지해야 할 수 있습니다. 의료 회사에서는 환자 데이터와 관련된 대화에 플래그를 지정해야 할 수 있습니다. 소매업체는 고객이 경쟁사 제품에 대해 언제 문의하는지 알고 싶어할 수 있습니다.</p>
+	<p>새로운 사용자 정의 주제 기능으로 이러한 카테고리를 정의할 수 있습니다. 사용자가 주제를 지정하면 Cloudflare가 프롬프트를 검사하고, 사용자가 결정하는 방식을 무엇이든 기록, 차단, 처리하는 데 사용할 수 있는 관련성 점수를 출력합니다. 저희 목표는 사용자의 사용 사례에 맞게 유연하게 확장할 수 있는 도구를 구축하는 것입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WzPhy11ZmUXDGZjft4sY1/7ebfafaf2114eaba83a829694837fc2c/image1.png" alt="BLOG-3128 5" class="kg-image" width="1946" height="819" loading="lazy">
+	</figure>
+	<p><i><sup>앱을 위한 AI 보안의 프롬프트 관련성 점수</sup></i></p>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-prompt-extraction">GA의 신기능: 사용자 지정 프롬프트 추출</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-prompt-extraction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>애플리케이션용 AI 보안은 안전하지 않은 프롬프트가 인프라에 도달하기 전에 가드레일을 시행합니다. 탐지를 정확하게 실행하고 실시간 보호를 제공하려면, 먼저 요청 악의적인 페이로드 내에서 프롬프트를 식별해야 합니다. 프롬프트는 요청 본문의 어느 곳에나 있을 수 있으며 LLM 공급자는 API를 다르게 구성합니다. OpenAI 및 대부분의 공급자는 <code>$.messages[*].content</code> 를 사용합니다. 채팅입니다. Anthropic의 배치 API는 <code>$.requests[*].params.messages[*].content</code> 내부에 프롬프트를 중첩합니다. 사용자 지정 자산 평가 도구는 <code>$.property_description</code>을 사용할 수 있습니다.</p>
+	<p>Cloudflare는 즉시 OpenAI, Anthropic, Google Gemini, Mistral, Cohere, xAI, DeepSeek 등에서 사용하는 표준 형식을 지원합니다. 알려진 패턴을 일치시킬 수 없는 경우 Cloudflare에서는 기본 보안 상태를 적용하고 전체 요청 본문에 대해 감지를 실행합니다. 페이로드에 민감하지만 AI 모델에 직접 전달되지 않는 필드가 포함된 경우, 이는 오탐을 유발할 수 있습니다. 예를 들어 실제 프롬프트와 함께 <code>$.customer_name</code> 필드가 불필요하게 PII 감지를 트리거할 수 있습니다.</p>
+	<p>곧 자체 JSONPath 표현식을 정의하여 프롬프트를 찾을 위치를 정확히 알려줄 수 있습니다. 이렇게 하면 긍정 오류가 줄어들고 더 정확한 감지가 가능해집니다. 또한 시간이 지남에 따라 애플리케이션 구조에 자동으로 적응하는 프롬프트 학습 기능을 구축하고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="mitigation">완화</h3>
+		<a href="https://blog.cloudflare.com/#mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>위협이 식별되어 점수가 매겨지면, 나머지 애플리케이션 보안에 이미 사용하고 있는 WAF 규칙 엔진을 이용해 차단, 기록, 사용자 지정 대응 등을 수행할 수 있습니다. Cloudflare 공유 플랫폼의 장점은 AI 관련 신호를 WAF에서 사용할 수 있는 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference" target="_blank" rel="noopener noreferrer"><u>수백 개의 필드</u></a> 로 표현되는 요청에 대해 우리가 알고 있는 모든 것과 결합할 수 있다는 것입니다. 프롬프트 삽입 시도는 의심스럽습니다. IP가 프롬프트 삽입을 시도하여 로그인 페이지를 조사하고, 이전 공격과 관련된 브라우저 지문을 사용하고, 봇넷을 순환하면서 이야기가 이루어집니다. AI 계층만 볼 수 있는 포인트 솔루션은 이러한 연결할 수 없습니다.</p>
+	<p>이 통합 보안 계층은 Newfold Digital에서 AI 엔드포인트를 발견하고, 레이블을 지정하고, 보호하기 위해 꼭 필요한 요소입니다. Radinger는 다음과 같이 이야기합니다. "모든 프로젝트에서 장애 방지 기능으로 활용하기를 기대합니다."</p>
+	<div class="flex anchor relative">
+		<h2 id="growing-ecosystem">성장하는 생태계</h2>
+		<a href="https://blog.cloudflare.com/#growing-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 보안용 AI 애플리케이션은 IBM Cloud와의 통합을 포함하여 성장하는 Cloudflare의 생태계에서도 사용할 수 있습니다. 최종 사용자는 <a href="https://www.ibm.com/products/cloud-internet-services" target="_blank" rel="noopener noreferrer"><u>IBM 클라우드 인터넷 서비스(CIS)</u></a>를 통해 이미 고급 애플리케이션 보안 솔루션을 조달하고 IBM 클라우드 계정을 통해 직접 관리하고 있습니다.&nbsp;</p>
+	<p>또한, Cloudflare는 Wiz와 협력하여 애플리케이션 AI 보안을 Wiz AI Security와 연결하여, 상호 고객에게 클라우드의 모델 및 에이전트 검색부터 에지의 애플리케이션 계층 가드레일까지 AI 보안 상태에 대한 통합된 관점을 제공할 계획입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">시작 방법</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>앱용 AI 보안이 이제 Cloudflare의 Enterprise 고객에게 제공됩니다. 시작하려면 계정 팀에 문의하거나 <a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>셀프 가이드 투어</u></a>를 통해 제품 작동 방식을 확인하세요.</p>
+	<p>Free, Pro 또는 Business 요금제 사용자는 지금 바로 AI 엔드포인트 검색을 사용할 수 있습니다. 대시보드에 로그인하고 <b>보안 → 웹 자산</b> 으로 이동하여 식별한 엔드포인트를 확인합니다. 계속 주목해 주세요. Cloudflare에서는 곧 모든 요금제의 고객이 애플리케이션용 AI 보안의 모든 기능을 이용할 수 있도록 할 계획입니다.</p>
+	<p>구성 세부 정보는 <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>문서</u></a>를 참조하세요.</p>
+</div>

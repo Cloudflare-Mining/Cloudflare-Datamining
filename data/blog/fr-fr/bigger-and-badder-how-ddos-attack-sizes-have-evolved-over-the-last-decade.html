@@ -1,0 +1,217 @@
+<div class="mb2 gray5">Lecture&nbsp;: 8 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bQ0JLodUvkk9U1KGc2O9Y/7b530b9993e2b71f202fe93bd9c7a99e/BLOG-2616_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les cyberattaques par <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>déni de service distribué</u></a> (Distributed Denial of Service, DDoS) visent à submerger et à perturber les services en ligne afin de les rendre inaccessibles aux utilisateurs. Elles inondent le système cible sous un flot excessif de requêtes en tirant parti d'un réseau d'appareils distribués afin d'épuiser sa bande passante ou ses ressources informatiques jusqu'à la défaillance. Ces attaques peuvent se révéler très efficaces contre les sites non protégés et relativement peu coûteuses pour les acteurs malveillants. Bien qu'il s'agisse d'un des types d'attaques les plus anciens, les attaques DDoS demeurent une menace constante, qui cible souvent les services, les infrastructures et les sites web essentiels bien connus ou présentant un trafic élevé. Cloudflare a atténué plus de 14,5&nbsp;millions d'attaques DDoS depuis le début de l'année&nbsp;2024, soit une moyenne de 2&nbsp;200&nbsp;attaques DDoS par heure. (Notre <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3"><u>rapport sur les menaces DDoS au troisième trimestre&nbsp;2024</u></a> contient des statistiques supplémentaires sur le sujet.)</p>
+	<p>Si nous examinons les indicateurs associés aux attaques de grande ampleur atténuées ces dix dernières années, le graphique montre-t-il une augmentation régulière sous la forme d'une courbe exponentielle qui ne cesse de devenir plus prononcée (notamment ces dernières années) ou se rapproche-t-il d'un modèle de croissance linéaire&nbsp;? Nous avons découvert que cette croissance n'était pas linéaire, mais plutôt exponentielle. La courbe dépend ainsi de l'indicateur étudié.</p>
+	<p>Pourquoi cette question est-elle intéressante&nbsp;? C'est très simple. La réponse à cette question fournit des informations précieuses sur l'évolution des stratégies des acteurs malveillants, la sophistication de leurs outils et la préparation des mécanismes de défense.&nbsp;</p>
+	<p>Pour prendre un exemple, le fait qu'une courbe du nombre de requêtes par seconde (r/s) présente un profil ascendant suggère que les acteurs malveillants ont apporté des modifications de leur côté, ici un élément qui leur permet de générer des volumes de requêtes plus importants. Cette information nous incite à enquêter davantage et à examiner d'autres données afin de déterminer si de nouvelles évolutions sont en train de se produire.</p>
+	<p>Lors de l'un de ces épisodes, par exemple, nous avons ainsi constaté, après examen de la source du trafic, une transition de l'espace d'adressage IP des abonnés/entreprises (qui suggère l'utilisation d'appareils IdO) vers l'espace d'adressage IP du fournisseur de cloud (qui suggère donc l'utilisation de VM, ou machines virtuelles). Nous avons compris que nous étions en présence d'une évolution concernant le type et les capacités des appareils utilisés par les pirates.&nbsp;</p>
+	<p>Autre exemple&nbsp;: le nombre record de requêtes par seconde observé lorsque l'attaque <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>HTTP/2 Rapid Reset</u></a> est survenue suggérait l'emploi d'une nouvelle technique par les acteurs malveillants. Cette découverte nous a incités à enquêter rapidement sur les processus en cours d'exécution et, par là-même, à adapter nos défenses.</p>
+	<div class="flex anchor relative">
+		<h2 id="defining-individual-attacks">Définition d'une attaque individuelle</h2>
+		<a href="https://blog.cloudflare.com/#defining-individual-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La délimitation d'une attaque particulière dans le temps s'avère étonnamment floue. L'analyse d'une attaque peut tout d'abord aboutir à des observations incohérentes sur différentes couches du <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"><u>modèle OSI.</u></a> L'empreinte observée sur l'ensemble de ces différentes couches peut décrire des situations différentes pour la même attaque. Certaines variables examinées conjointement, toutefois, peuvent nous permettre de créer une empreinte numérique et de regrouper un ensemble d'événements, en établissant que ces derniers font partie de la même attaque. En voici quelques exemples&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Constatons-nous que le ou les mêmes <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer"><u>vecteurs d'attaque</u></a> sont utilisés dans cet ensemble d'événements&nbsp;?</p>
+		</li>
+		<li>
+			<p>Les événements d'attaque se concentrent-ils tous sur la ou les mêmes cibles&nbsp;?</p>
+		</li>
+		<li>
+			<p>Les contenus malveillants liés aux événements partagent-ils la même signature&nbsp;? (Contenus malveillants ou types de requêtes spécifiques à certains types d'attaques ou de botnets, comme Mirai, susceptibles d'utiliser des en-têtes de requête HTTP ou des structures de paquet distinctes.)</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attack-sizes">Ampleur des attaques DDoS&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attack-sizes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Marquons une pause avant de nous intéresser plus avant à l'analyse de la croissance des attaques DDoS au cours ces dix dernières années et examinons les indicateurs généralement utilisés pour les mesurer&nbsp;: requêtes par seconde (r/s), paquets par seconde (p/s) et bits par seconde (b/s). Chaque indicateur retranscrit un aspect différent de l'échelle et de l'incidence d'une attaque.</p>
+	<ul>
+		<li>
+			<p><b>Requêtes par seconde (r/s)</b>&nbsp;: cet indicateur mesure le nombre de requêtes HTTP (ou d'un protocole similaire) effectuées chaque seconde. Ce chiffre s'avère particulièrement pertinent dans le cas d'attaques sur la couche applicative (couche&nbsp;7), dont l'objectif consiste à <b>submerger une application ou un service spécifique en surchargeant sa capacité de traitement des requêtes</b>. Il est utile pour mesurer les attaques qui ciblent des serveurs web, des API ou des applications, car il reflète le volume de requêtes et pas uniquement le transfert de données brutes.</p>
+		</li>
+		<li>
+			<p><b>Paquets par seconde (p/s)&nbsp;:</b> cette valeur représente le nombre de paquets individuels envoyés à la cible par seconde, indépendamment de leur taille. Cet indicateur se révèle essentiel pour les attaques visant la couche réseau (couches&nbsp;3 et 4), dont l'objectif consiste à <b>surcharger l'infrastructure réseau en excédant sa capacité de traitement des paquets</b>. Les mesures p/s sont utiles dans le cas des attaques volumétriques, car elles permettent d'identifier une quantité de paquets susceptible d'avoir une incidence sur les routeurs, les commutateurs ou les pare-feu.</p>
+		</li>
+		<li>
+			<p><b>Bits par seconde (b/s)&nbsp;:</b> ce chiffre mesure la quantité totale de données transférées par seconde et s'avère particulièrement utile pour évaluer les attaques au niveau de la couche réseau qui tentent de saturer la bande passante de la cible ou de son fournisseur en amont. La valeur b/s est largement utilisée pour mesurer les attaques sur les couches&nbsp;3 et 4, comme les floods UDP, c'est-à-dire d'attaques destinées à encombrer la bande passante du réseau. Cet indicateur est souvent mis en évidence dans le cas d'attaques DDoS, car des valeurs b/s élevées (souvent mesurées en gigabits ou térabits) signalent une <b>saturation de la bande passante</b>, soit l'objectif courant des campagnes DDoS de grande ampleur.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="evolution-of-ddos-attack-sizes-over-the-last-decade">Évolution de l'ampleur des attaques DDoS au cours de la dernière décennie</h2>
+		<a href="https://blog.cloudflare.com/#evolution-of-ddos-attack-sizes-over-the-last-decade" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comment l'ampleur des attaques DDoS a-t-elle évolué au cours de la dernière décennie&nbsp;? Nous constatons que les attaques DDoS sont devenues plus volumineuses et plus puissantes sur cette période, en présentant chaque année un potentiel toujours supérieur d'entraîner davantage de perturbations.&nbsp;</p>
+	<p>L'examen des indicateurs associés aux attaques de grande ampleur observées ces dix dernières années montre-t-il une augmentation régulière sous la forme d'une courbe exponentielle qui ne cesse de s'accentuer (notamment ces dernières années) ou cette courbe se rapproche-t-elle d'une croissance linéaire&nbsp;? Nous avons constaté que cette dernière était exponentielle, alors examinons les détails des raisons pour lesquelles nous sommes arrivés à cette conclusion.</p>
+	<p>Pour cette analyse, nous avons utilisé des <a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><u>attaques observées par Google entre 2010 et 2022</u></a> à titre de base de référence (figure&nbsp;1), que nous avons étendue à l'aide des attaques observées par Cloudflare en 2023 et 2024 (figure&nbsp;2).&nbsp;</p>
+	<p>En remontant le temps au début des années&nbsp;2010, nous remarquons que les attaques les plus volumineuses se mesuraient en gigabits par seconde (Gb/s), tandis qu'aujourd'hui, toutes ces dernières se chiffrent en térabits par seconde (Tb/s). Les quantités de requêtes par seconde (r/s) et de bits par seconde (b/s) sont également considérablement plus élevées à l'heure actuelle, comme nous le verrons plus loin.</p>
+	<p>Les données historiques de Google présentées ci-dessous dans la figure&nbsp;1 montrent une tendance croissante du nombre de requêtes par seconde lors des attaques DDoS observées entre 2010 et 2022, avec un pic à 6&nbsp;millions de requêtes par seconde (Mr/s) en&nbsp;2020. Cette augmentation révèle une escalade significative du volume des attaques au cours de la décennie.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OLkt2rSuO6OBGH8H1k1o6/d63d32df3f56eab0fe105a00dec45e03/BLOG-2616_2.png" alt="BLOG-2616 2" class="kg-image" width="1800" height="905" loading="lazy">
+	</figure>
+	<p><sup><i>Figure&nbsp;1</i></sup><sup>.</sup><sup><i> Les attaques DDoS les plus volumineuses connues, 2010–2022. (</i></sup><a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><i><sup>Source&nbsp;: Google</sup></i></a><sup><i>)</i></sup><sup>&nbsp;</sup></p>
+	<p>La figure&nbsp;2 (ci-dessous) présente une vue des tendances observées pour les différents indicateurs. L'escalade observée dans les statistiques de Google est également visible dans les données de Cloudflare concernant l'observation des attaques DDoS de grande ampleur atténuées en 2023 et 2024, qui ont culminé à 201&nbsp;Mr/s (courbe verte) en septembre&nbsp;2024. Le nombre de paquets par seconde (p/s) présente une légère croissance exponentielle au fil du temps (courbe bleue). Passé de 230&nbsp;Mp/s en&nbsp;2015 à 2&nbsp;100&nbsp;Mp/s en&nbsp;2024, ce chiffre suggère que les acteurs malveillants parviennent de plus en plus à produire un débit plus élevé. Sur le plan des bits par seconde (b/s), la tendance se révèle là aussi exponentielle, avec une courbe croissante plus prononcée (en rouge), en évoluant d'une attaque culminant à 309&nbsp;Gb/s en&nbsp;2013 à une attaque chiffrée à 5,6&nbsp;Tb/s (5&nbsp;600&nbsp;Gb/s) en&nbsp;2024.&nbsp;</p>
+	<p>Les attaques représentées par ces indicateurs ont connu des taux de croissance importants au cours de la dernière décennie&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Le nombre de bits par seconde a augmenté d'un facteur&nbsp;20 entre&nbsp;2013 et 2024.</p>
+		</li>
+		<li>
+			<p>Le nombre de paquets par seconde a été multiplié par 10 entre 2015 et 2024.</p>
+		</li>
+		<li>
+			<p>Le nombre de requêtes par seconde a été multiplié par&nbsp;70 entre&nbsp;2014 et 2024.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38ps28b6t40SAtoQxMp0z1/90d59911b3bcf8b55cf7ac36d56f8a5b/BLOG-2616_3.png" alt="BLOG-2616 3" class="kg-image" width="1986" height="991" loading="lazy">
+	</figure>
+	<p><i><sup>Figure&nbsp;2. Données de la figure&nbsp;1 étendues à l'aide des attaques de grande ampleur observées par Cloudflare en&nbsp;2023 et 2024.</sup></i></p>
+	<p>Les articles de blog figurant dans le tableau&nbsp;1 présentent en détail certaines des attaques que nous avons observées entre&nbsp;2021 et 2024.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Mois</b></p>
+				</td>
+				<td>
+					<p><b>Taille de l'attaque</b></p>
+				</td>
+				<td>
+					<p><b>Article de blog</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Août&nbsp;2021</p>
+				</td>
+				<td>
+					<p>17,2&nbsp;Mr/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported"><i><u>Cloudflare déjoue la plus vaste attaque DDoS jamais signalée, avec 17,2&nbsp;millions de requêtes par seconde</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Avril&nbsp;2022</p>
+				</td>
+				<td>
+					<p>15&nbsp;Mr/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/15m-rps-ddos-attack"><i><u>Cloudflare bloque une attaque DDoS HTTPS culminant à 15&nbsp;millions de r/s</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>JUIN 2022</p>
+				</td>
+				<td>
+					<p>26&nbsp;Mr/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/26m-rps-ddos"><i><u>Cloudflare atténue une attaque DDoS de 26&nbsp;millions de requêtes par seconde</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Février&nbsp;2023</p>
+				</td>
+				<td>
+					<p>71&nbsp;Mr/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack"><i><u>Cloudflare atténue une attaque DDoS record de 71&nbsp;millions de requêtes par seconde</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Septembre&nbsp;2024</p>
+				</td>
+				<td>
+					<p>3,8&nbsp;Tb/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack"><i><u>Comment Cloudflare a atténué automatiquement une attaque DDoS de 3,8&nbsp;Tb/s, le nouveau record mondial</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Octobre&nbsp;2024</p>
+				</td>
+				<td>
+					<p>4,2&nbsp;Tb/s</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3"><i><u>4,2&nbsp;Tb/s de paquets malveillants et bien d'autres informations&nbsp;: le rapport de Cloudflare sur les attaques DDoS au troisième trimestre</u></i></a><i>&nbsp;</i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Octobre&nbsp;2024</p>
+				</td>
+				<td>
+					<p>5,6&nbsp;Tb/s</p>
+				</td>
+				<td>
+					<p><a href="https://x.com/Cloudflare/status/1851589717885649320" target="_blank" rel="noopener noreferrer"><u>Une attaque de 5,6&nbsp;Tb/s</u></a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><sup><b>Tableau&nbsp;1.</b></sup><sup> Les attaques DDoS notables observées par Cloudflare entre&nbsp;2021 et 2024.</sup></p>
+	<p>Vous trouverez également une vue d'ensemble d'autres attaques DDoS de grande ampleur survenues au cours de la dernière décennie, notamment<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211"><u> l'attaque par abus Memcached de&nbsp;2018</u></a> et les <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>attaques HTTP/2 «&nbsp;Rapid Reset&nbsp;» de&nbsp;2023</u></a>, <a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>dans le Centre d'apprentissage Cloudflare</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="attack-duration-as-a-metric">La durée des attaques en tant qu'indicateur</h2>
+		<a href="https://blog.cloudflare.com/#attack-duration-as-a-metric" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La durée n'est pas un indicateur efficace pour caractériser l'agressivité d'une attaque, car il est difficile d'établir la durée d'une attaque ou d'une campagne unique, en raison de leur nature intermittente, de la possibilité qu'une multitude de vecteurs d'attaque soient utilisés en même temps ou de la manière dont les différentes couches de défense se sont activées au fil du temps.&nbsp;</p>
+	<p>Les schémas d'attaque peuvent varier considérablement. Certains culminent en un unique pic de grande ampleur, tandis que d'autres se présentent sous la forme de plusieurs pics étroitement regroupés ou d'une charge constante, maintenue sur une période donnée, aux côtés d'autres caractéristiques plus ou moins changeantes.</p>
+	<div class="flex anchor relative">
+		<h2 id="trend-in-types-of-devices-used-to-create-attacks">Les tendances des types d'appareils utilisés pour lancer des attaques</h2>
+		<a href="https://blog.cloudflare.com/#trend-in-types-of-devices-used-to-create-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les attaques DDoS abandonnent de plus en plus les botnets basés sur l'IdO pour des botnets plus puissants, basés sur des machines virtuelles (VM, Virtual Machines). Cette évolution est principalement due à l'augmentation des capacités de calcul et de débit des machines virtuelles hébergées dans le cloud, qui permettent aux acteurs malveillants de lancer des attaques de grande ampleur avec beaucoup moins d'appareils.&nbsp;</p>
+	<p>Plusieurs facteurs facilitent ce changement&nbsp;: les botnets VM peuvent être plus faciles à mettre en place que les botnets IdO, car ils ne nécessitent pas nécessairement d'infection généralisée par un logiciel malveillant. En effet, les acteurs malveillants peuvent les déployer sur l'infrastructure d'un fournisseur de cloud de manière anonyme à l'aide d'informations de paiement dérobées lors de violations de données ou <a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart"><u>d'attaques Magecart.</u></a></p>
+	<p>Cette tendance souligne l'évolution des tactiques de protection contre les attaques DDoS, tandis que les acteurs malveillants exploitent à la fois la puissance de traitement des machines virtuelles et l'accès anonymisé aux ressources du cloud afin de créer des botnets plus petits et plus efficaces, capables de lancer des attaques à grande échelle, sans les complexités liées à l'infection et à la gestion de flottes d'appareils IdO.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-help-protect-against-ddos-attacks">Comment Cloudflare vous aide-t-elle à vous protéger contre les attaques DDoS&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-help-protect-against-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le cloud de connectivité Cloudflare, bâti sur notre vaste réseau mondial Anycast, joue un rôle crucial dans les défenses contre les attaques DDoS, en tirant parti de fonctionnalités automatisées en matière de détection, de répartition du trafic et de réponse rapide. Découvrez comment Cloudflare renforce la protection contre les attaques DDoS&nbsp;:</p>
+	<p><b>Détection et atténuation des attaques automatisées</b>&nbsp;: la protection anti-DDoS de Cloudflare repose fortement sur l'automatisation, en utilisant des algorithmes d'apprentissage automatique (Machine Learning, ML) pour identifier les modèles de trafic suspects en temps réel. Grâce à <a href="https://blog.cloudflare.com/training-a-million-models-per-day-to-save-customers-of-all-sizes-from-ddos"><u>l'automatisation du processus de détection</u></a>, Cloudflare peut rapidement identifier et bloquer les attaques DDoS, sans intervention manuelle. Cet aspect se révèle essentiel dans le cas d'attaques à volume élevé, susceptibles de submerger les intervenants humains.</p>
+	<p><b>Répartition du trafic mondial avec adresse IP Anycast</b>&nbsp;: le réseau Cloudflare s'étend à plus de 330&nbsp;villes à travers le monde et le trafic lié aux attaques DDoS est réparti sur nos nombreux datacenters. <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>L'adressage IP</u></a> nous permet de répartir le trafic sur ce réseau mondial. Ce principe de distribution étendu contribue à absorber et à atténuer les attaques de grande ampleur, car le trafic hostile n'est pas dirigé vers un point unique. Ce procédé permet ainsi de réduire la pression sur les serveurs et les réseaux individuels.&nbsp;</p>
+	<p><b>Défense par couches</b>&nbsp;: le cloud de connectivité Cloudflare assure une défense superposée sur plusieurs couches, notamment la couche réseau (couche&nbsp;3), la couche de transport (couche&nbsp;4) et la couche applicative (couche&nbsp;7). Cette approche par couches permet de mettre en place des stratégies de défense sur mesure en fonction du type d'attaque afin de garantir une atténuation efficace des attaques multicouches, même complexes. Vous trouverez davantage d'informations sur la protection contre les attaques DDoS visant les couches&nbsp;3, 4 et 7 dans <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>notre documentation sur la protection anti-DDoS</u></a>.</p>
+	<p><b>Atténuation illimitée des attaques DDoS</b>&nbsp;: pionnière de cette approche depuis&nbsp;2017 afin de garantir la sécurité sur Internet, Cloudflare propose une <a href="https://blog.cloudflare.com/unmetered-mitigation"><u>protection illimitée contre les attaques DDoS</u></a>, qui permet à nos clients de se protéger sans se soucier des limitations en matière de bande passante ou de coûts lors des attaques. Cette approche permet de s'assurer que les entreprises puissent bénéficier d'une protection anti-DDoS, indépendamment de leur taille ou de leur budget.</p>
+	<p>L'infrastructure cloud distribuée et la technologie avancée de Cloudflare nous permettent de détecter, d'absorber et d'atténuer les attaques DDoS d'une manière à la fois évolutive et réactive, d'éviter les épisodes d'interruption et de préserver la fiabilité des services afin de proposer une solution performante pour faire face à l'intensité et à la fréquence croissantes des attaques DDoS par rapport aux options traditionnelles.</p>
+	<p>Une protection contre les attaques DDoS s'avère essentielle pour les entreprises de toutes tailles. Si les attaques sont bien lancées par des humains, elles restent néanmoins conduites par des bots. Une défense efficace nécessite ainsi des outils automatisés pour contrer ces menaces soutenues par des bots. Les processus de détection et d'atténuation en temps réel doivent être aussi automatisés que possible, car le fait de s'en remettre uniquement à l'intervention humaine constitue un désavantage pour les équipes chargées de la défense. En effet, les acteurs malveillants s'adaptent aux nouvelles barrières et peuvent modifier les vecteurs d'attaque, le comportement du trafic, les signatures du contenu malveillant, etc., afin de donner naissance à un scénario imprévu, susceptible de rendre certaines configurations manuelles inutiles. Les systèmes automatisés de Cloudflare identifient et bloquent en permanence les attaques DDoS pour le compte de ses clients afin de leur assurer une protection sur mesure, répondant à leurs besoins individuels.</p>
+	<p>Nous nous sommes donné pour mission de contribuer à bâtir un Internet meilleur et la résilience face aux menaces DDoS en fait partie.</p>
+	<p>Vous trouverez davantage d'informations sur la protection contre les attaques DDoS de Cloudflare dans notre <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>documentation technique</u></a> publique.</p>
+</div>

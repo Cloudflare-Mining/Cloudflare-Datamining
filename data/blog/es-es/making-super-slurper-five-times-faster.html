@@ -1,0 +1,207 @@
+<div class="mb2 gray5">8 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/making-super-slurper-five-times-faster">English</a>, <a href="https://blog.cloudflare.com/zh-tw/making-super-slurper-five-times-faster">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/making-super-slurper-five-times-faster">Français</a>, <a href="https://blog.cloudflare.com/de-de/making-super-slurper-five-times-faster">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/making-super-slurper-five-times-faster">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/making-super-slurper-five-times-faster">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/making-super-slurper-five-times-faster">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IUEyoRTrUQ9O1wJzOyPQ3/1c1633d8685719af94afc3dd732533fa/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer"><u>Super Slurper</u></a> es la herramienta de migración de datos de Cloudflare diseñada para facilitar las transferencias de datos a gran escala entre los proveedores de almacenamiento de objetos en la nube y <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>. Desde su lanzamiento, miles de desarrolladores han utilizado Super Slurper para mover petabytes de datos de AWS S3, Google Cloud Storage y <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper/#supported-cloud-storage-providers" target="_blank" rel="noopener noreferrer"><u>otros servicios compatibles con S3</u></a> a R2.</p>
+	<p>Pero comprendimos que podíamos hacerlo aún más rápido. Hemos rediseñado integralmente Super Slurper utilizando nuestra plataforma para desarrolladores (basándonos en nuestras soluciones <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> y <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>) y hemos multiplicado por cinco la velocidad de transferencia. En esta publicación, analizaremos la arquitectura original, los cuellos de botella identificados relacionados con el rendimiento, cómo los resolvimos y el impacto real de estas mejoras.</p>
+	<div class="flex anchor relative">
+		<h2 id="initial-architecture-and-performance-bottlenecks">Arquitectura inicial y cuellos de botella relacionados con el rendimiento</h2>
+		<a href="https://blog.cloudflare.com/#initial-architecture-and-performance-bottlenecks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En un principio, Super Slurper compartía su arquitectura con <a href="https://developers.cloudflare.com/images/upload-images/sourcing-kit" target="_blank" rel="noopener noreferrer"><u>SourcingKit</u></a>, una herramienta creada para la importación masiva de imágenes desde AWS S3 a <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Cloudflare Images</u></a>. SourcingKit se implementaba en Kubernetes y se ejecutaba junto con el servicio <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>. Cuando empezamos a desarrollar Super Slurper, lo dividimos en su propio espacio de nombres Kubernetes e introdujimos algunas API nuevas para facilitar su uso en el caso del almacenamiento de objetos. Esta configuración funcionaba bien y ayudó a miles de desarrolladores a trasladar los datos a R2.</p>
+	<p>Sin embargo, no estaba exenta de desafíos. SourcingKit no estaba diseñado para gestionar el volumen necesario en el caso de las transferencias a gran escala, de varios petabytes. SourcingKit, y por extensión Super Slurper, operaban en clústeres de Kubernetes ubicados en uno de nuestros centros de datos principales. Esto significaba que tenía que compartir recursos informáticos y ancho de banda con el plano de control, los análisis y otros servicios de Cloudflare. A medida que aumentaba el número de migraciones, resultaba evidente que estas limitaciones de los recursos eran un cuello de botella.</p>
+	<p>Para un servicio que transfiere datos entre proveedores de almacenamiento de objetos, el trabajo es sencillo: enumerar los objetos del origen, copiarlos en el destino, y así repetidamente. Así es exactamente como funcionaba en un principio Super Slurper. Enumerábamos los objetos del bucket de origen, enviábamos esa lista a una cola basada en Postgres (<code>pg_queue</code>), y luego realizábamos la extracción de esta cola a un ritmo constante para copiar los objetos. Dada la escala de las migraciones de almacenamiento de objetos, el uso de ancho de banda inevitablemente iba a ser alto. Esto dificultaba la escalabilidad.</p>
+	<p>Para resolver las limitaciones de ancho de banda que suponía operar únicamente en nuestro centro de datos principal, incorporamos <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> en nuestra arquitectura. En lugar de encargarnos de la copia de datos en nuestro centro de datos principal, empezamos a llamar a un Worker para que hiciera la copia propiamente dicha:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EgtILMnu88y3VzUvYLlPl/479e2f99a62155f7bd8047f98a2a9cd2/1_.png" alt="" class="kg-image" width="1284" height="894" loading="lazy">
+	</figure>
+	<p>Conforme crecía el uso de Super Slurper, también lo hacía nuestro consumo de recursos de Kubernetes. Durante las transferencias de datos, se dedicaba una cantidad significativa de tiempo a la espera de la E/S de la red o el almacenamiento, no a tareas con un gran uso de los recursos informáticos. Por lo tanto, no necesitábamos más memoria o más CPU, sino más simultaneidad.</p>
+	<p>Para satisfacer la demanda, seguimos aumentando el número de réplicas. Pero al final nos topamos con un obstáculo. Al ejecutar decenas de pods cuando queríamos un volumen mucho mayor, nos encontrábamos con desafíos relacionados con la escalabilidad.</p>
+	<p>Decidimos replantear todo el enfoque desde los principios básicos, en lugar de basarnos en la arquitectura que habíamos heredado. En aproximadamente una semana, desarrollamos una prueba de concepto aproximada utilizando <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> y <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>. Enumeramos los objetos del bucket de origen, los enviamos a una cola y luego consumimos los mensajes de la cola para iniciar las transferencias. Esto parece muy similar a lo que hacíamos en la implementación original, pero trabajar en nuestra plataforma para desarrolladores nos permitió escalar automáticamente a un volumen mucho mayor que antes.</p>
+	<ul>
+		<li>
+			<p><b>Cloudflare Queues</b>: permite transferencias asíncronas de objetos y escala automáticamente según el número de objetos de la migración.</p>
+		</li>
+		<li>
+			<p><b>Cloudflare Workers</b>: ejecuta tareas informáticas ligeras sin la sobrecarga de Kubernetes y optimiza la ubicación global donde se ejecutará cada parte del proceso para reducir la latencia y mejorar el rendimiento.</p>
+		</li>
+		<li>
+			<p><b>Durable Objects (DO) con el soporte de SQLite</b>: funciona como una base de datos totalmente distribuida, eliminando las limitaciones de una única instancia de PostgreSQL.</p>
+		</li>
+		<li>
+			<p><b>Hyperdrive</b>: proporciona acceso rápido a los datos históricos de los trabajos desde la base de datos PostgreSQL original, manteniéndola como un almacén de archivo.</p>
+		</li>
+	</ul>
+	<p>Realizamos algunas pruebas y descubrimos que nuestra prueba de concepto era más lenta que la implementación original en el caso de las transferencias pequeñas (de algunos centenares de objetos). Sin embargo, igualaba y a la larga superaba el rendimiento de la implementación original al escalar las transferencias a millones de objetos. Esa fue la señal que necesitábamos para dedicar el tiempo necesario para llevar nuestra prueba de concepto a producción.</p>
+	<p>Eliminamos las soluciones temporales de nuestra prueba de concepto, mejoramos la estabilidad y encontramos nuevas formas de escalar las transferencias para aumentar aún más la simultaneidad. Tras algunas iteraciones, logramos un resultado con el que estábamos satisfechos.</p>
+	<div class="flex anchor relative">
+		<h2 id="new-architecture-workers-queues-and-durable-objects">Nueva arquitectura: Workers, Queues y Durable Objects</h2>
+		<a href="https://blog.cloudflare.com/#new-architecture-workers-queues-and-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="processing-layer-managing-the-flow-of-migration">Capa de proceso: gestión del flujo de migración</h4>
+		<a href="https://blog.cloudflare.com/#processing-layer-managing-the-flow-of-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ieLgJoWErEYEEa90QaXLC/81470021a99486a974753301d2d2f809/2.png" alt="" class="kg-image" width="1999" height="703" loading="lazy">
+	</figure>
+	<p>Nuestra capa de proceso consta de <b>colas, consumidores y Workers</b>. El proceso es el siguiente:</p>
+	<div class="flex anchor relative">
+		<h4 id="kicking-off-a-migration">Inicio de una migración</h4>
+		<a href="https://blog.cloudflare.com/#kicking-off-a-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando un cliente inicia una migración, esta comienza con una solicitud que se envía a nuestro <b>API Worker</b>. Este Worker toma los detalles de la migración, los almacena en la base de datos y añade un mensaje a la <b>cola de lista</b> para iniciar el proceso.</p>
+	<div class="flex anchor relative">
+		<h4 id="listing-source-bucket-objects">Enumerar los objetos del bucket de origen</h4>
+		<a href="https://blog.cloudflare.com/#listing-source-bucket-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El <b>consumidor de la cola de lista</b> es donde las cosas empiezan a mejorar. Extrae mensajes de la cola, recupera listas de objetos del bucket de origen, aplica los filtros necesarios y almacena los metadatos importantes en la base de datos. A continuación, crea nuevas tareas poniendo en cola los mensajes de transferencia de objetos en la <b>cola de transferencia</b>.</p>
+	<p>Inmediatamente ponemos en cola nuevos lotes de trabajo, maximizando la simultaneidad. Un mecanismo de limitación integrado evita que añadamos más mensajes a nuestras colas en caso de errores inesperados, como la caída de sistemas dependientes. Esto nos ayuda a garantizar la estabilidad y evita la sobrecarga durante las interrupciones.</p>
+	<div class="flex anchor relative">
+		<h4 id="efficient-object-transfers">Transferencias eficientes de objetos</h4>
+		<a href="https://blog.cloudflare.com/#efficient-object-transfers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los Workers <b>consumidores de la cola de transferencia</b> extraen de la cola los mensajes de la transferencia de objetos y garantizan que cada objeto se procese solo una vez, bloqueando la clave del objeto en la base de datos. Cuando finaliza la transferencia, el objeto se desbloquea. En el caso de objetos más grandes, los dividimos en fragmentos manejables y los transferimos como cargas de varias partes.</p>
+	<div class="flex anchor relative">
+		<h4 id="handling-failures-gracefully">Gestión eficaz de los errores</h4>
+		<a href="https://blog.cloudflare.com/#handling-failures-gracefully" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En cualquier sistema distribuido, los errores son inevitables, y teníamos que asegurarnos de tener esto en cuenta. Implementamos reintentos automáticos en caso de errores transitorios, para evitar la interrupción del flujo de la migración debido a un problema. Pero si los reintentos no resuelven el problema, el mensaje pasa a la <b>cola de mensajes fallidos (DLQ)</b>, donde se registra para su posterior revisión y resolución.</p>
+	<div class="flex anchor relative">
+		<h4 id="job-completion-lifecycle-management">Finalización de trabajos y gestión del ciclo de vida</h4>
+		<a href="https://blog.cloudflare.com/#job-completion-lifecycle-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Una vez que se han enumerado todos los objetos y que las transferencias están en curso, el <b>consumidor de la cola del ciclo de vida</b> lo supervisa todo. Controla las transferencias en curso, asegurándose de que ningún objeto quede atrás. Cuando se completan todas las transferencias, el trabajo se marca como finalizado y el proceso de migración concluye.</p>
+	<div class="flex anchor relative">
+		<h3 id="database-layer-durable-storage-legacy-data-retrieval">Capa de base de datos: almacenamiento duradero y recuperación de los datos heredados</h3>
+		<a href="https://blog.cloudflare.com/#database-layer-durable-storage-legacy-data-retrieval" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OhENQndBrRkVLNmWQ4mWP/815173a64ec1943b7b626b02247d4887/3.png" alt="" class="kg-image" width="1999" height="1339" loading="lazy">
+	</figure>
+	<p>Cuando desarrollamos nuestra nueva arquitectura, sabíamos que necesitábamos una solución eficaz que gestionara conjuntos de datos masivos y al mismo tiempo garantizara la recuperación de los datos históricos de los trabajos. Ahí es donde entra en juego nuestra combinación de <b>Durable Objects (DO)</b> e <b>Hyperdrive</b>.</p>
+	<div class="flex anchor relative">
+		<h4 id="durable-objects">Durable Objects</h4>
+		<a href="https://blog.cloudflare.com/#durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Asignamos a cada cuenta un Durable Object dedicado para el seguimiento de los trabajos de migración. El <b>DO de cada trabajo</b> almacena detalles esenciales, como los nombres de los buckets, las opciones de usuario y el estado del trabajo. Esto garantiza una buena organización y una gestión fácil. Para admitir migraciones grandes, también hemos añadido un <b>DO de lotes</b> que gestiona todos los objetos en cola de la transferencia, almacenando su estado de transferencia, las claves de objeto y los metadatos adicionales.</p>
+	<p>A medida que las migraciones se escalaban a <b>miles de millones de objetos</b>, tuvimos que ser creativos con el almacenamiento. Implementamos una estrategia de fragmentación para distribuir las cargas de solicitudes, evitando cuellos de botella y sorteando el límite de almacenamiento de <b>10&nbsp;GB de SQLite DO</b>. A medida que se transfieren los objetos, limpiamos sus detalles, optimizando el espacio de almacenamiento durante el proceso. ¡Es sorprendente la cantidad de almacenamiento que pueden requerir mil millones de claves de objeto!</p>
+	<div class="flex anchor relative">
+		<h4 id="hyperdrive">Hyperdrive</h4>
+		<a href="https://blog.cloudflare.com/#hyperdrive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Puesto que estábamos reconstruyendo un sistema con un historial de años de migraciones, necesitábamos una forma de preservar y acceder a todos los detalles de las migraciones anteriores. Hyperdrive sirve de puente a nuestros sistemas heredados, lo que permite una recuperación eficaz de los datos históricos de los trabajos desde nuestra base de datos central <b>PostgreSQL</b>. No es solo un mecanismo de recuperación de datos, sino un archivo para escenarios de migración complejos.</p>
+	<div class="flex anchor relative">
+		<h2 id="results-super-slurper-now-transfers-data-to-r2-up-to-5x-faster">Resultados: Super Slurper transfiere ahora los datos a R2 hasta 5 veces más rápido</h2>
+		<a href="https://blog.cloudflare.com/#results-super-slurper-now-transfers-data-to-r2-up-to-5x-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Entonces, después de todo eso, ¿realmente hemos logrado nuestro objetivo de acelerar las transferencias?</p>
+	<p>Ejecutamos una migración de prueba de 75&nbsp;000&nbsp;objetos de AWS S3 a R2. Con la implementación original, la transferencia tardaba 15&nbsp;minutos y 30&nbsp;segundos. Tras nuestras mejoras de rendimiento, la misma migración se completó en solo 3&nbsp;minutos y 25&nbsp;segundos.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57Pmt9tVNGYWvmRQQyvYE9/43443656bc81743485c3bb0f7d65b134/4.png" alt="" class="kg-image" width="1003" height="505" loading="lazy">
+	</figure>
+	<p>Cuando las migraciones de producción empezaron a utilizar el nuevo servicio en febrero, en algunos casos observamos mejoras aún mayores, sobre todo relacionadas con la distribución de los tamaños de los objetos. Super Slurper existe desde hace <a href="https://blog.cloudflare.com/r2-super-slurper-ga"><u>unos dos años</u></a>. Sin embargo, la mejora del rendimiento le ha permitido mover muchos más datos: el 35&nbsp;% de todos los objetos copiados por Super Slurper corresponde solo a los últimos dos meses.</p>
+	<div class="flex anchor relative">
+		<h2 id="challenges">Desafíos</h2>
+		<a href="https://blog.cloudflare.com/#challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Uno de los mayores desafíos a los que nos enfrentamos con la nueva arquitectura fue la gestión de los mensajes duplicados. Se podían generar duplicados en un par de escenarios:</p>
+	<ul>
+		<li>
+			<p>Queues proporciona una entrega al menos una vez, lo que significa que los consumidores pueden recibir el mismo mensaje más de una vez para garantizar la entrega.</p>
+		</li>
+		<li>
+			<p>Los errores y los reintentos también podrían crear aparentes duplicados. Por ejemplo, si una solicitud a un Durable Object falla después de que el objeto ya se haya transferido, el reintento podría volver a procesar el mismo objeto.</p>
+		</li>
+	</ul>
+	<p>Si no se gestiona correctamente, el mismo objeto podría transferirse varias veces. Para resolver este problema, implementamos varias estrategias para garantizar que cada objeto se contabilizara con precisión y solo se transfiriera una vez:</p>
+	<ol>
+		<li>
+			<p>Dado que la enumeración es secuencial (p. ej., para obtener el segundo objeto de la lista, necesitas el token de continuación del primer objeto), asignamos un ID de secuencia a cada operación de enumeración. Esto nos permite detectar elementos duplicados de la lista y evitar el inicio simultáneo de varios procesos. Esto es especialmente útil porque no esperamos a que se completen las operaciones de la base de datos y de la cola para listar el siguiente lote. Si el segundo elemento de la lista falla, podemos volver a intentarlo, y si el tercer elemento ya se ha iniciado, podemos evitar los reintentos innecesarios.</p>
+		</li>
+		<li>
+			<p>Cuando comienza la transferencia de un objeto, este se bloquea, lo que impide que se realicen transferencias paralelas del mismo objeto. Una vez transferido con éxito, el objeto se desbloquea eliminando su clave de la base de datos. Si más tarde vuelve a aparecer un mensaje para ese objeto, podemos asumir con seguridad que si la clave ya no existe significa que ya se ha transferido.</p>
+		</li>
+		<li>
+			<p>Dependemos de las transacciones de la base de datos para garantizar la precisión de nuestro recuento. Si un objeto no se desbloquea, su recuento no cambia. Del mismo modo, si no se puede añadir una clave de objeto a la base de datos, el recuento no se actualiza y se volverá a intentar la operación más tarde.</p>
+		</li>
+		<li>
+			<p>Como última medida de seguridad, comprobamos si el objeto ya existe en el bucket de destino y si se ha publicado después del inicio de nuestra migración. Si es así, asumimos que nuestro proceso (u otro) lo ha transferido y lo omitimos de forma segura.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17zkULEDjrPDlG6mNIpomw/5c95bde32595daf0684a558729ee055a/5.png" alt="" class="kg-image" width="1200" height="383" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-super-slurper">¿Cuál será el próximo avance de Super Slurper?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-super-slurper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Siempre estamos explorando cómo mejorar la velocidad, la escalabilidad y la facilidad de uso de Super Slurper. Esto es solo el principio.</p>
+	<ul>
+		<li>
+			<p>Recientemente hemos lanzado la capacidad de migrar desde cualquier <a href="https://developers.cloudflare.com/changelog/2025-02-24-r2-super-slurper-s3-compatible-support" target="_blank" rel="noopener noreferrer"><u>proveedor de almacenamiento compatible con S3</u></a>.</p>
+		</li>
+		<li>
+			<p>Actualmente, las migraciones de datos siguen estando limitadas a 3&nbsp;migraciones simultáneas por cuenta, pero queremos aumentar ese límite. Esto permitirá que los prefijos de objetos se dividan en migraciones independientes y se ejecuten en paralelo, lo que aumentará enormemente la velocidad de migración de un bucket. Si quieres más información sobre Super Slurper y sobre cómo migrar datos del almacenamiento de objetos existente a R2, consulta nuestra <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer"><u>documentación</u></a>.</p>
+		</li>
+	</ul>
+	<p>P.D.: Como parte de esta actualización, hemos simplificado mucho la interacción con la API, por lo que ahora las migraciones se pueden <a href="https://developers.cloudflare.com/api/resources/r2/subresources/super_slurper" target="_blank" rel="noopener noreferrer"><u>gestionar mediante programación</u></a>.</p>
+</div>

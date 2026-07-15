@@ -1,0 +1,648 @@
+<div class="mb2 gray5">Lecture&nbsp;: 10 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">English</a>, en <a href="https://blog.cloudflare.com/es-es/paris-2024-summer-olympics-impacted-internet-traffic">Español</a> et en <a href="https://blog.cloudflare.com/de-de/paris-2024-summer-olympics-impacted-internet-traffic">Deutsch</a>.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CiBP3qp9ZohZ6IkVrRQlr/22ef0981735e700746d23fffb5f7c915/1.png" alt="1" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p>Les <a href="https://en.wikipedia.org/wiki/2024_Summer_Olympics" target="_blank" rel="noopener noreferrer">Jeux olympiques d'été de Paris 2024</a>, organisés sur le thème « <i>Ouvrons grand les Jeux</i> », ont débuté le vendredi 26 juillet 2024 et se dérouleront jusqu'au dimanche 11 août. Au total, 10 714 athlètes originaires de 204 nations, parmi lesquels des équipes individuelles et des équipes de réfugiés, participeront à 329 épreuves dans 32 disciplines sportives. Cet article de blog se concentre sur la cérémonie d'ouverture et les premiers jours de l'événement et examinera l'impact associé sur le trafic Internet, en particulier en France, la popularité des sites web olympiques par pays et l'augmentation du volume d'e-mails indésirables et malveillants liés aux Jeux olympiques.</p>
+	<p>Cloudflare est présente dans le monde entier et, pour soutenir ses millions de clients, dispose de datacenters présents dans plus de 320 villes, qui lui permettent de disposer d'une vue d'ensemble des événements affectant l'Internet. Cette capacité s'avère utile pour améliorer la sécurité, la confidentialité, l'efficacité et la rapidité, mais également pour observer les perturbations d'Internet et les tendances du trafic.</p>
+	<p>Nous suivons de près l'événement par l'intermédiaire de notre <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">rapport consacré aux Jeux olympiques de 2024 publié sur Cloudflare Radar</a>, et nous proposerons des mises à jour concernant les tendances importantes d'Internet à mesure de leur évolution.</p>
+	<div class="flex anchor relative">
+		<h3 id="an-opening-ceremony-to-remember">Une cérémonie d'ouverture mémorable</h3>
+		<a href="https://blog.cloudflare.com/#an-opening-ceremony-to-remember" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour la première fois dans l'histoire des Jeux olympiques modernes, la cérémonie d'ouverture s'est déroulée hors d'un stade ; elle a duré près de quatre heures et a eu un impact manifeste sur le trafic Internet en France. L'engagement de la nation était évident pendant la diffusion télévisée, entraînant des baisses de trafic perceptibles, semblables à celles observées <a href="https://blog.cloudflare.com/euro-2024s-impact-on-internet-traffic-a-closer-look-at-finalists-spain-and-england">lors de l'Euro 2024</a>. Nous avons constaté que les événements bénéficiant d'une diffusion télévisée nationale s'accompagnent généralement de baisses du trafic Internet.</p>
+	<p>Les Jeux olympiques sont plus de que de simples événements sportifs ; ils sont emplis d'instants inspirants et d'histoires qui captivent l'attention du monde entier en temps réel, et donnent naissance à des histoires qui perdurent. D'importantes baisses de trafic ont été observées pendant la cérémonie, au moment des performances de Céline Dion et Lady Gaga, de l'allumage de la vasque des Jeux olympiques et de l'interprétation par Juliette Armanet du morceau « Imagine » de John Lennon. Voici une analyse des cinq principales baisses de trafic par rapport à la semaine précédente survenues pendant la cérémonie, avec une liste détaillée des événements qui se déroulaient à ces moments. Nos données fournissent des informations avec une granularité de 15 minutes.</p>
+	<div class="flex anchor relative">
+		<h3 id="moments-of-the-ceremony-by-traffic-drop">Moments de la cérémonie par baisse de trafic</h3>
+		<a href="https://blog.cloudflare.com/#moments-of-the-ceremony-by-traffic-drop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>Heure de la baisse&nbsp;(UTC)</p>
+				</td>
+				<td>
+					<p><b>% de baisse</b></p>
+				</td>
+				<td>
+					<p><b>Événements à ce moment</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>No. 1</p>
+				</td>
+				<td>
+					<p>Env. 21h15</p>
+				</td>
+				<td>
+					<p>-20 %</p>
+				</td>
+				<td>
+					<p>La vasque des Jeux olympiques est allumée et s'envole dans le ciel de Paris, emportée par une montgolfière&nbsp;; Céline Dion chante une sérénade à Paris depuis la Tour Eiffel.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>No. 2</p>
+				</td>
+				<td>
+					<p>Env. 17h45</p>
+				</td>
+				<td>
+					<p>-17 %</p>
+				</td>
+				<td>
+					<p>Lady Gaga interprète le classique français «&nbsp;Mon truc en plumes&nbsp;» de Zizi Jeanmaire.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>No. 3</p>
+				</td>
+				<td>
+					<p>Env. 19h45</p>
+				</td>
+				<td>
+					<p>-16.9 %</p>
+				</td>
+				<td>
+					<p>Le bateau Team USA s'élance sur le fleuve, suivi de Team France&nbsp;– le dernier bateau en route vers la Tour Eiffel.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>No. 4</p>
+				</td>
+				<td>
+					<p>Env. 20h15</p>
+				</td>
+				<td>
+					<p>-16.9 %</p>
+				</td>
+				<td>
+					<p>Dionysos interprète la chanson «&nbsp;Naked&nbsp;» (Philippe Katerine)&nbsp;; le morceau «&nbsp;Imagine&nbsp;» de John&nbsp;Lennon est interprété depuis le milieu de la Seine par Juliette&nbsp;Armanet ; un cheval métallique galope sur le fleuve.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>No. 5</p>
+				</td>
+				<td>
+					<p>Env. 18h00</p>
+				</td>
+				<td>
+					<p>-16.7 %</p>
+				</td>
+				<td>
+					<p>Tandis que les bateaux poursuivent leur navigation sur la Seine, près de 80&nbsp;artistes du Moulin Rouge exécutent la célèbre danse de cabaret française, le cancan.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Lors de la cérémonie d'ouverture du 26 juillet, entre 17h30 et 21h20 UTC, le trafic en France a été sensiblement inférieur à celui observé la semaine précédente, avec des baisses comprises entre 15 % et 20 %. Cependant, les baisses ont été moins importantes à certains moments. À 19h30 UTC, par exemple, le trafic n'a chuté que de 4 % pendant la parade des bateaux des athlètes sur la Seine. Immédiatement après l'événement, à 21h45 UTC, le trafic a augmenté, atteignant des niveaux 8 % supérieurs à ceux de la semaine précédente.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jPW2UvCb66a7e2aeSnXxR/80a5f6e11522787f16ab8fbf7e4bcac0/2.png" alt="2" class="kg-image" width="1999" height="640" loading="lazy">
+	</figure>
+	<p>La cérémonie d'ouverture a également entraîné une part de trafic mobile plus élevée que d'habitude en France. À 20h45 UTC, tandis que la cérémonie touchait à sa fin, la part mobile du trafic Internet était de 61 %, contre 57 % la semaine précédente.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6113ZXiQpMELJGiCfyQ37K/ca508cf3864514426d92c9734ebb79c1/3.png" alt="3" class="kg-image" width="1999" height="725" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="parisians-leaving-town-before-the-olympics">Les Parisiens ont quitté la ville avant les Jeux olympiques</h3>
+		<a href="https://blog.cloudflare.com/#parisians-leaving-town-before-the-olympics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En raison des Jeux olympiques, de nombreux Parisiens <a href="https://www.barrons.com/articles/where-are-parisians-going-during-the-olympics-281b7676" target="_blank" rel="noopener noreferrer">ont quitté la ville</a>, soit pour partir en vacances, soit pour se rendre dans des endroits plus calmes, tandis que les visiteurs affluaient pour assister à l'événement. Nos données indiquent que deux régions françaises, l'Île-de-France (où se trouve Paris) et le Grand Est (à l'est de Paris), ont connu les baisses de trafic les plus importantes. Le graphique ci-dessous illustre le trafic quotidien vers ces régions, avec une baisse perceptible pendant le week-end précédant les Jeux olympiques en Île-de-France.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vRCUb6WDR3mgPMu7nOC8i/56202de6f064c4230a6e383584f81ad7/4.png" alt="4" class="kg-image" width="1999" height="504" loading="lazy">
+	</figure>
+	<p>L'analyse du pourcentage de variation du trafic de requêtes par rapport à la semaine précédente révèle que l'Île-de-France a connu les baisses les plus importantes pendant la première semaine de juillet (du 1er au 7 juillet), avec une diminution de 15 %, et la semaine précédant le début des Jeux olympiques, avec une diminution de 8 %. Il est intéressant de noter que le pourcentage du trafic n'a pas varié pendant la semaine des Jeux olympiques (du 22 au 28 juillet) ; c'est également la semaine durant laquelle la plupart des touristes venus assister aux Jeux olympiques ont commencé à arriver.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4q4PHY473B331F8VmsiLEF/50295705360d40980d7b3a3831de2afd/5.png" alt="5" class="kg-image" width="1999" height="513" loading="lazy">
+	</figure>
+	<p>La part quotidienne du trafic d'appareils mobiles en provenance de France révèle également des changements dans les modèles habituels ; des augmentations sont particulièrement perceptibles après le week-end du 30 juin, indiquant les vacances et l'utilisation de l'Internet à des fins de divertissement. La part maximale de trafic d'appareils mobiles a été observée pendant le premier week-end des Jeux olympiques, atteignant 53 % le 26 juillet, jour de la cérémonie d'ouverture – un volume supérieur à celui observé tous les vendredis précédents depuis le mois de juin. Le dimanche 28 juillet, le trafic d'appareils mobiles a atteint 58 %, soit le niveau le plus élevé depuis juin.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28XkXwMdDy7AAWPwV86b8J/dfbe55f4165a866600a2fdfa776d538f/6.png" alt="6" class="kg-image" width="1844" height="607" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="impact-to-internet-traffic-outside-of-france">Impact sur le trafic Internet hors de France</h3>
+		<a href="https://blog.cloudflare.com/#impact-to-internet-traffic-outside-of-france" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À l'échelle mondiale, les variations du trafic Internet ont été moins prononcées qu'en France. Cependant, le 26 juillet, jour de la cérémonie d'ouverture, une baisse mondiale notable a été observée pendant l'événement. Cette baisse a été particulièrement évidente pendant deux moments essentiels soulignés plus haut : pendant les interprétations de chansons à 20h15 UTC, le trafic a chuté de 3 % par rapport à la semaine précédente, puis il a chuté de 2 % à 21h15 UTC, tandis que la cérémonie touchait à sa fin.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rYB8UfWJmCc2ueB8kcODl/ee9aa6ed78b016fd9cebf1f031099682/7.png" alt="7" class="kg-image" width="1999" height="646" loading="lazy">
+	</figure>
+	<p>Si nous élargissons notre champ de vision à d'autres pays, d'importantes chutes du trafic étaient clairement visibles pendant certains moments de la cérémonie d'ouverture. Voici une liste récapitulative de 30 pays sélectionnés en fonction du nombre de médailles remportées lors des Jeux olympiques d'été.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Pays</b></p>
+				</td>
+				<td>
+					<p><b>Baisse du trafic (en %)</b></p>
+				</td>
+				<td>
+					<p><b>Heure de la baisse (UTC)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>États-Unis</p>
+				</td>
+				<td>
+					<p>-4 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Grande-Bretagne</p>
+				</td>
+				<td>
+					<p>-8 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>France</p>
+				</td>
+				<td>
+					<p>-20 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Allemagne</p>
+				</td>
+				<td>
+					<p>-4 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Chine</p>
+				</td>
+				<td>
+					<p>-4 %</p>
+				</td>
+				<td>
+					<p>21h00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Italie</p>
+				</td>
+				<td>
+					<p>-11 %</p>
+				</td>
+				<td>
+					<p>18h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Australie</p>
+				</td>
+				<td>
+					<p>-2 %</p>
+				</td>
+				<td>
+					<p>20h00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Hongrie</p>
+				</td>
+				<td>
+					<p>-5 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Suède</p>
+				</td>
+				<td>
+					<p>-4 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Japon</p>
+				</td>
+				<td>
+					<p>-12 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Russie</p>
+				</td>
+				<td>
+					<p>-7 %</p>
+				</td>
+				<td>
+					<p>19h45</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Canada</p>
+				</td>
+				<td>
+					<p>-3 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Pays-Bas</p>
+				</td>
+				<td>
+					<p>-6 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Roumanie</p>
+				</td>
+				<td>
+					<p>-12 %</p>
+				</td>
+				<td>
+					<p>20h00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Finlande</p>
+				</td>
+				<td>
+					<p>-12 %</p>
+				</td>
+				<td>
+					<p>17h30</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Pologne</p>
+				</td>
+				<td>
+					<p>-5 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Corée du Sud</p>
+				</td>
+				<td>
+					<p>-4 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cuba</p>
+				</td>
+				<td>
+					<p>-3 %</p>
+				</td>
+				<td>
+					<p>19h00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bulgarie</p>
+				</td>
+				<td>
+					<p>-6 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Suisse</p>
+				</td>
+				<td>
+					<p>-10 %</p>
+				</td>
+				<td>
+					<p>18h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Danemark</p>
+				</td>
+				<td>
+					<p>-2 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Espagne</p>
+				</td>
+				<td>
+					<p>-8 %</p>
+				</td>
+				<td>
+					<p>18h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Norvège</p>
+				</td>
+				<td>
+					<p>-2 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Belgique</p>
+				</td>
+				<td>
+					<p>-5 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Brésil</p>
+				</td>
+				<td>
+					<p>-3 %</p>
+				</td>
+				<td>
+					<p>18h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>République tchèque</p>
+				</td>
+				<td>
+					<p>-10 %</p>
+				</td>
+				<td>
+					<p>18h00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Slovaquie</p>
+				</td>
+				<td>
+					<p>-11 %</p>
+				</td>
+				<td>
+					<p>20h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ukraine</p>
+				</td>
+				<td>
+					<p>-2 %</p>
+				</td>
+				<td>
+					<p>20h45</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nouvelle-Zélande</p>
+				</td>
+				<td>
+					<p>-9 %</p>
+				</td>
+				<td>
+					<p>21h15</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Grèce</p>
+				</td>
+				<td>
+					<p>-11 %</p>
+				</td>
+				<td>
+					<p>18h00</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Par ailleurs, la carte du monde ci-dessous met en évidence les pays dans lesquels des fluctuations remarquables du trafic Internet ont été observées pendant la cérémonie d'ouverture.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xuE0PslAlP4mLSxcs0vc6/602ef3123ea83972d7271d3758f36648/8.png" alt="8" class="kg-image" width="1999" height="1179" loading="lazy">
+	</figure>
+	<p><i>(Source : Cloudflare ; créé avec Datawrapper)</i></p>
+	<p>En dehors de l'Europe, les pays ayant enregistré les baisses les plus importantes étaient la Nouvelle-Zélande (-9 %), l'Ouzbékistan (-12 %), l'Argentine (-13 %) et la Mongolie (-20 %), qui ont tous connu des baisses plus importantes que celles observées en Europe.</p>
+	<div class="flex anchor relative">
+		<h3 id="significant-moments-at-the-games-from-simone-biles-to-olympic-records">Les moments forts des Jeux olympiques : de Simone Biles aux records olympiques</h3>
+		<a href="https://blog.cloudflare.com/#significant-moments-at-the-games-from-simone-biles-to-olympic-records" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous trouverez ci-dessous une présentation mettant en évidence les événements olympiques spécifiques qui ont affecté le trafic Internet depuis la première journée complète de compétition, le samedi 27 juillet 2024.</p>
+	<p><b>États-Unis</b> : la compétition de gymnastique artistique à laquelle participait Simone Biles, quadruple médaillée d'or olympique, a eu un impact plus important sur le trafic Internet américain que la cérémonie d'ouverture. Du 26 au 28 juillet, c'est pendant les épreuves disputées par Simone Biles que le trafic Internet a le plus fortement chuté. À 10h00 UTC, pendant sa prestation à la poutre, le trafic était déjà inférieur de 4 % à celui de la semaine précédente, puis il a chuté de 6 % à 10h45 UTC pendant les exercices au sol et au saut de cheval.</p>
+	<p><b>France</b> : la médaille d'or du nageur français Léon Marchand et <a href="https://x.com/nytimes/status/1817641073994256735" target="_blank" rel="noopener noreferrer">le record olympique</a> établi lors de l'épreuve du 400 mètres quatre nages individuel masculin, le 28 juillet, ont eu l'impact le plus considérable dans le pays organisateur de l'événement. Pendant cette épreuve, le trafic a chuté de 17 % à 18h30 UTC. Toutefois, comme nous l'avons noté plus haut, la cérémonie d'ouverture a entraîné une baisse plus importante du trafic.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46kATNlDmsf1XvlkVGPdM2/efd7a58db634cb7f64b462d8b178d3f4/9.png" alt="9" class="kg-image" width="1999" height="557" loading="lazy">
+	</figure>
+	<p><b>Australie</b> : lors de la victoire de Mollie O'Callagan pendant l'épreuve du 200 mètres nage libre, le 29 juillet vers 20h00 UTC, le trafic Internet australien a été inférieur de 5 % à celui observé la semaine précédente. Ce chiffre était supérieur à celui observé pendant la cérémonie d'ouverture, qui a entraîné une baisse de 2 %.</p>
+	<p><b>Corée du Sud</b> : la médaille d'or remportée par l'équipe féminine coréenne de tir à l'arc le 28 juillet à 15h30 UTC a entraîné une baisse du trafic de 8 %, soit la baisse la plus importante observée dans le pays entre le 26 et le 29 juillet.</p>
+	<p><b>Brésil</b> : le 27 juillet vers 19h30 UTC, le trafic au Brésil a baissé de 15 % par rapport à la semaine précédente, surpassant l'impact de la cérémonie d'ouverture. Cette baisse s'est produite tandis que les nageurs brésiliens Guilherme Costa et Maria Fernanda Costa disputaient les épreuves masculine et féminine du 400 mètres nage libre.</p>
+	<div class="flex anchor relative">
+		<h3 id="dns-trends-to-official-olympic-websites-by-country">Tendances du trafic DNS vers les sites officiels des Jeux olympiques par pays</h3>
+		<a href="https://blog.cloudflare.com/#dns-trends-to-official-olympic-websites-by-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le 22 juillet, avant le début des Jeux olympiques, nous avons <a href="https://blog.cloudflare.com/countdown-to-paris-2024-france-leads-in-olympic-web-interest">publié un rapport</a> sur l'augmentation de l'intérêt pour les sites web officiels des Jeux olympiques, sur la base des données de requêtes reçues par notre résolveur DNS <a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a>. Nous avons constaté la domination de la France, avec 24 % du trafic DNS acheminé vers les sites officiels des Jeux olympiques, suivie du Royaume-Uni (20 %) et des États-Unis (17 %). Toutefois, la situation a changé au début des Jeux olympiques, et les États-Unis ont pris la tête.</p>
+	<p>Lors de la première journée complète de compétition, le 27 juillet, les États-Unis étaient en tête, avec 16 % de l'ensemble du trafic de requêtes DNS vers les sites officiels des Jeux olympiques ; ce changement révèle une plus grande répartition de l'intérêt entre les pays pendant l'événement. Une version dynamique de la carte ci-dessous est disponible dans notre <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">rapport sur les Jeux olympiques de Paris 2024</a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59uVt1kbMAZTOagybdXbgY/1d340a17a52dba49d1c458c2607d10e4/10.png" alt="10" class="kg-image" width="1999" height="1154" loading="lazy">
+	</figure>
+	<p>Voici les 10 premiers pays présentant les plus importantes parts de trafic de requêtes DNS vers les sites des Jeux olympiques pendant la première journée complète de compétition, le 27 juillet (pourcentages arrondis) :</p>
+	<ol>
+		<li>
+			<p>États-Unis : 16 %</p>
+		</li>
+		<li>
+			<p>Allemagne : 12 %</p>
+		</li>
+		<li>
+			<p>France : 9 %</p>
+		</li>
+		<li>
+			<p>Vietnam : 9 %</p>
+		</li>
+		<li>
+			<p>Brésil : 5 %</p>
+		</li>
+		<li>
+			<p>Australie : 5 %</p>
+		</li>
+		<li>
+			<p>Royaume-Uni : 4 %</p>
+		</li>
+		<li>
+			<p>Pays-Bas : 4 %</p>
+		</li>
+		<li>
+			<p>Canada : 3 %</p>
+		</li>
+		<li>
+			<p>Afrique du Sud : 2 %</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="growth-in-interest-as-the-olympics-drew-closer">Un intérêt grandissant à l'approche des Jeux olympiques</h3>
+		<a href="https://blog.cloudflare.com/#growth-in-interest-as-the-olympics-drew-closer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le trafic quotidien mondial de requêtes DNS vers les sites web officiels des Jeux olympiques a commencé à grimper pour atteindre les niveaux les plus élevés observés depuis le début de l'année à partir du 23 juillet, affichant une croissance constante. Il a atteint son maximum le 28 juillet, la deuxième journée complète d'événements, affichant une augmentation de 509 % par rapport à la semaine précédente. Le jour de la cérémonie d'ouverture, le trafic était déjà supérieur de 110 % au trafic observé la semaine précédente.</p>
+	<p>Parmi les pics spécifiques à certains pays, citons les États-Unis, où le trafic vers les sites des Jeux olympiques a bondi de 719 % le 28 juillet, coïncidant avec le premier jour de compétition de Simone Biles. En France, le trafic a atteint son volume maximum le même jour, avec une augmentation de 391 %, tandis qu'en Allemagne, il a connu une augmentation vertigineuse de 2 300 % le 27 juillet.</p>
+	<p>Le classement changeant du trafic DNS vers les sites des Jeux olympiques par pays révèle qu'à partir du 19 juillet, les États-Unis ont dépassé la France. Par ailleurs, l'Allemagne s'est hissée à la deuxième place le 27 juillet, première journée complète de compétition, tandis que l'Australie s'est hissée à la quatrième place le 28 juillet et que le Canada a atteint son volume maximum le 28 juillet également.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hvJt3mpx2yIDMpCK9ITnL/f9ec940e0a6d7f3dfa7596e2b37eba07/11.png" alt="11" class="kg-image" width="1999" height="732" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="railway-attacks-on-opening-ceremony-day-cause-surge-in-traffic">Les attaques lancées contre l'infrastructure ferroviaire le jour de la cérémonie d'ouverture entraînent une augmentation du trafic</h3>
+		<a href="https://blog.cloudflare.com/#railway-attacks-on-opening-ceremony-day-cause-surge-in-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La journée de la cérémonie d'ouverture, le 26 juillet, a également été perturbée par <a href="https://en.wikipedia.org/wiki/2024_France_railway_arson_attacks" target="_blank" rel="noopener noreferrer">des incendies criminels sur l'infrastructure ferroviaire</a> de la France, <a href="https://www.theguardian.com/sport/article/2024/jul/26/vandals-target-french-rail-network-olympics-opening-ceremony" target="_blank" rel="noopener noreferrer">qui ont affecté</a> les 800 000 voyageurs du réseau ferroviaire à grande vitesse français. À 10h00 UTC, les sites web des services de transports publics, notamment ceux des services du réseau ferroviaire à grande vitesse, ont connu une forte augmentation du trafic DNS. Le trafic a augmenté de 2 000 % par rapport à la semaine précédente, tandis que les utilisateurs accédaient aux sites web pour consulter les actualités.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VQoauax2hXAnBhvYNtAgt/36f069c878b0ae76e205a9050738e463/12.png" alt="12" class="kg-image" width="1500" height="638" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ddos-attacks-always-around">Attaques DDoS : toujours présentes</h3>
+		<a href="https://blog.cloudflare.com/#ddos-attacks-always-around" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comme nous l'avons observé lors des <a href="https://blog.cloudflare.com/tag/election-security">élections</a> en 2024 (et notamment lors des <a href="https://blog.cloudflare.com/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts">élections françaises</a>), les partis politiques ne sont pas les seules cibles des attaques DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a>, déni de service distribué) lors d'événements importants. Bien que nous n'ayons pas constaté de flux coordonné d'attaques DDoS de grande ampleur ciblant des services potentiellement utilisés pendant les Jeux olympiques en France, nous avons observé quelques incidents.</p>
+	<p>Le 29 juillet 2024, un site web fréquemment consulté du gouvernement français a été la cible d'une attaque DDoS qui a duré neuf minutes et a atteint un pic de 207 000 requêtes par seconde à 20h34 UTC.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vuNjigeYMPmT9yPIoZv8r/b937f2c6162c51b903cb387cfb7a069a/13.png" alt="13" class="kg-image" width="1996" height="928" loading="lazy">
+	</figure>
+	<p>Avant le début des Jeux olympiques, un site web national de transport a également été la cible d'une attaque DDoS de moindre ampleur, qui n'a duré que quelques minutes et a atteint un pic de 10 000 requêtes par seconde le 21 juillet à 10h20 UTC.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BTiio6bHujSTa2wF3PRHu/7adafe614213a89dcc272cafb33af74e/14.png" alt="14" class="kg-image" width="1999" height="921" loading="lazy">
+	</figure>
+	<p>Comme nous l'avons souligné dans notre <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q2">rapport sur les attaques DDoS au deuxième trimestre</a>, la plupart des attaques DDoS ont été de courte durée, comme l'illustrent les deux attaques évoquées ci-dessus. Par ailleurs, 81 % des attaques DDoS HTTP culminent à moins de 50 000 requêtes par seconde (r/s), et 7 % seulement atteignent entre 100 000 et 250 000 r/s. Si une attaque de 10 000 requêtes par seconde peut paraître mineure pour Cloudflare, elle peut être dévastatrice pour les sites web qui ne sont pas équipés pour gérer des niveaux de trafic aussi importants.</p>
+	<div class="flex anchor relative">
+		<h3 id="olympics-and-paris-2024-emails-on-the-rise">Augmentation des volumes d'e-mails « Jeux olympiques » et « Paris 2024 »</h3>
+		<a href="https://blog.cloudflare.com/#olympics-and-paris-2024-emails-on-the-rise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D'un autre point de vue lié à la cybersécurité, les événements majeurs attirent souvent les tentatives de phishing et les e-mails indésirables, et les Jeux olympiques ne dérogent pas à la règle. Entre janvier 2024 et fin juillet, le service <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">Cloud Email Security de Cloudflare</a> a traité plus d'un million d'e-mails dont l'objet contenait les termes « Jeux olympiques » ou « Paris 2024 ». Pendant la semaine du 22 au 28 juillet, qui coïncide avec les premiers jours des Jeux olympiques, nous avons constaté une augmentation de 304 % du volume de ces e-mails par rapport à la semaine précédente, ainsi qu'une stupéfiante augmentation de 3 111 % par rapport à la semaine la plus chargée de janvier.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TGRfpcQU8GKDWqooC5yR9/26d64c8e47ab73b15f5c7ae05d98bf20/15.png" alt="15" class="kg-image" width="1954" height="668" loading="lazy">
+	</figure>
+	<p>Les e-mails indésirables représentaient, quant à eux, 1,5 % de tous les e-mails dont l'objet contenait les termes « Jeux olympiques » ou « Paris 2024 », tandis que les e-mails malveillants représentaient 0,1 % de la totalité de ces e-mails depuis janvier 2024. Cela signifie que sur un échantillon de 1 000 e-mails, environ 15 e-mails seraient indésirables et 1 serait malveillant. Le volume maximum d'e-mails malveillants liés aux Jeux olympiques a été observé la semaine du 6 mai, avec 0,6 % d'e-mails classés comme malveillants. Bien qu'une baisse ait été observée après ce pic, les volumes ont légèrement augmenté en juillet, atteignant 0,4 % le 8 juillet. Malgré l'augmentation du volume pendant la semaine du 22 juillet, seuls 0,05 % des e-mails étaient malveillants.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jMHbikIFNolrJXaLa9YcT/734418210b3c2a86291374d493cf62d4/16.png" alt="16" class="kg-image" width="1999" height="672" loading="lazy">
+	</figure>
+	<p>La même semaine, lorsque les Jeux olympiques ont débuté, le nombre d'e-mails indésirables a également augmenté pour atteindre plus de 2 %, soit le taux le plus élevé depuis le pic de 7 % observé la semaine du 24 juin.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OTQnTrsaO0BEqpApAgdfA/454e4d38afad2d32449bd2cc94f5a9cb/17.png" alt="17" class="kg-image" width="1944" height="658" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les Jeux olympiques de Paris 2024 ont débuté le 26 juillet, avec un impact manifeste sur le trafic Internet dans différents pays, notamment en France, pays hôte de l'événement. Les baisses considérables du trafic pendant les moments essentiels de la cérémonie d'ouverture ainsi que les pics observés en réaction aux grands événements soulignent la corrélation permanente entre les événements du monde réel et les interactions des humains avec le monde en ligne. Peu d'événements attirent l'accent sur la diffusion télévisuelle, plutôt que sur l'Internet.</p>
+	<p>Nous avons également observé l'augmentation de l'intérêt pour les sites web officiels des Jeux olympiques, avec une nette augmentation du trafic DNS après le début de l'événement dans différents pays, les États-Unis remportant finalement la médaille d'or.</p>
+	<p>Suite au <a href="https://www.theregister.com/2024/07/29/french_fiber_cables_cut" target="_blank" rel="noopener noreferrer">sabotage de câbles de fibre optique en France</a> le 29 juillet 2024, nous n'avons pas observé de perturbations notables du trafic Internet en France ou dans des villes françaises pendant cette journée.</p>
+	<p>Tandis que les Jeux olympiques se poursuivent, nous publierons un <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">rapport consacré aux Jeux olympiques de Paris 2024 sur Cloudflare Radar</a> et le mettrons à jour à mesure que de nouvelles tendances Internet liées à l'événement apparaîtront.</p>
+</div>

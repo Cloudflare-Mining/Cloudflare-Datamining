@@ -1,0 +1,144 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">English</a>、<a href="https://blog.cloudflare.com/de-de/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Deutsch</a>、<a href="https://blog.cloudflare.com/pt-br/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Português</a>、<a href="https://blog.cloudflare.com/es-es/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Español</a>、<a href="https://blog.cloudflare.com/fr-fr/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Français</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v0rxJFwTsKDuZFONyKnjO/b2daaae62679ef5c376f57206cede013/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>プロジェクトGalileo8周年にあたり、このプロジェクトで保護される団体が経験したサイバー攻撃のタイプをご覧いただきたいと思います。多くの団体が新たな困難に次々と見舞われた一年でしたが、当社では、それらの脆弱者グループに対する攻撃の分析が、標的になりやすい分野で活動する人々のより良い保護方法を研究者や市民社会、標的団体が考える際の手掛かりになればと考えています。</p>
+	<p></p>
+	<p>このブログでは、紛争開始後に急増したDDoS攻撃など、ウクライナの団体に対する攻撃に焦点を当てたいと思います。関連するRadarダッシュボードで、人権団体、報道機関、コミュニティ主導の非営利団体など幅広い分野のプロジェクトGalileo参加者に対する攻撃を詳しく見ていきます。</p>
+	<p>完全版レポートをお読みになりたい方は、プロジェクトGalileo<a href="https://radar.cloudflare.com/notebooks/project-galileo-8th-anniv" target="_blank" rel="noopener noreferrer">8周年Radarダッシュボード</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-the-data">データを理解する</h3>
+		<a href="https://blog.cloudflare.com/#understanding-the-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>このダッシュボードでは、2021年7月1日から2022年5月5日の間に、世界各地のプロジェクト保護対象1900団体から集められたデータを分析しました。</p>
+		</li>
+		<li>
+			<p>DDoS攻撃は、当社でレイヤー7（アプリケーション増）DDoS攻撃の一環と判定したトラフィックとして分類しています。そのような攻撃ではたいてい、サイトを過負荷にしてオフライン状態に陥れるという悪意を以て大量のリクエストが送りつけられます。当社は、攻撃に関わるリクエストをブロックして、正当なリクエストがサイトに届き、サイトがオンライン状態を保つようにします。</p>
+		</li>
+		<li>
+			<p>Webアプリケーションファイアウォール（WAF）で軽減されたトラフィックとは、悪意ありと判定されてCloudflareのファイアウォールでブロックされたトラフィックです。当社はプロジェクトGalileoでBusinessレベルのサービスを無償提供しており、WAFは、団体のオンラインアプリに無許可でアクセスしようと脆弱性を悪用する試みの軽減に役立つ有用なツールです。</p>
+		</li>
+		<li>
+			<p>プロジェクトGalileoの対象トラフィックや対象ドメインの変化を表すグラフでは、2021年7月の最初の2週間の1日平均トラフィック（リクエスト件数）をベースラインとして使用しています。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="highlights-of-past-year">昨年の要点</h3>
+		<a href="https://blog.cloudflare.com/#highlights-of-past-year" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>サイバー攻撃は増え続け、2021年7月から2022年5月までに180億件近くの攻撃がありました。ここ9か月のサイバー攻撃は1日平均5790万件近くに上り、前年から10%近く増加しています。</p>
+		</li>
+		<li>
+			<p>4月の1件の大規模攻撃では、ウクライナの団体を標的とし軽減されたDDoSトラフィックが、全トラフィックの90%にも上りました。</p>
+		</li>
+		<li>
+			<p>ウクライナで戦争が始まった後の2022年3月、プロジェクトへの参加申し込みが177%急増しました。</p>
+		</li>
+		<li>
+			<p>欧米の報道機関やメディア団体のトラフィックは、昨年最高150%増大しました。</p>
+		</li>
+		<li>
+			<p>人権団体と報道機関に対しては、幅広い低度サイバー攻撃がありました。WAFで軽減したリクエストの40%までもが、HTTP異常と分類されました。WAFルールタイプの中でも最大で、保護されていない団体には打撃となりかねない攻撃タイプですが、Cloudflareが自動的にブロックしています。</p>
+		</li>
+		<li>
+			<p>2021年7月から2022年5月まで、欧州を本拠とする団体は、プロジェクトの全対象地域から発されるリクエストトラフィックの半分から3分の2を一貫して占めていました。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="global-coverage-of-project-galileo">プロジェクトGalileoのグローバルなカバレッジ</h3>
+		<a href="https://blog.cloudflare.com/#global-coverage-of-project-galileo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="protecting-organizations-in-ukraine">ウクライナの団体を保護</h3>
+		<a href="https://blog.cloudflare.com/#protecting-organizations-in-ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6a5N96gvTpU6dVRfTDMkCe/d4f1adf014261e8925de285c28888f5f/image8-1.png" alt="" class="kg-image" width="1202" height="721" loading="lazy">
+
+	</figure>
+	<p>ウクライナで戦争が始まり、支援を求める団体からのプロジェクトGalileo参加申し込みが増えました。多くはDDoS攻撃を受けている最中の申し込みでしたが、ロシアの侵攻が続く中で情報を得ようとするウクライナ国内の人々からのトラフィックが大量に発生しているサイトもありました。ウクライナの団体からのトラフィックは開戦当初は概ね横ばいでしたが、それ以降の増大は、主として報道機関やメディアのトラフィックでした。</p>
+	<p>戦争前は、Webアプリケーションファイアウォール（WAF）で軽減されるトラフィックはわずかでしたが、それらはコミュニティ形成・社会福祉団体（難民への直接支援を提供する団体、ウクライナの人々を支援する寄付プラットフォームを提供する団体など）のトラフィックでした。ところが、戦争が始まってからは、報道機関がWAFで軽減されたトラフィックの大半を占め、3月13日にはトラフィックの69%に上るなど、トラフィックスパイクが頻発しています。WAFで軽減されるリクエストが増えたのは2月下旬からで、以降の攻撃は過半数がSQLインジェクション（SQLi）と分類されています。WAFで軽減された人権団体へのトラフィックは3月中旬に増え、トラフィックの5～10%を占めるまでになりました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MJB5df7Sgq28XjlnQlcvU/49ba43114b3b264c09f56172c3685cd4/image2-3.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>ウクライナの団体へのDDoSトラフィックの軽減は3月中旬から5月に集中し、トラフィックに占める割合が急上昇しています。最初のうちはスパイクは20%前後でしたが、下降する前に急上昇しています。4月19日の攻撃は、その日のトラフィックの90%以上を占めました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cU3TAMCTR2FcIwr4z54xj/ac9b384723b5caab4c1b41c72d94b76c/image7.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>開戦以来、保護対象団体からのトラフィックの増加率は、カテゴリーによってばらつきがあります。医療機関では、3月下旬から4月下旬にかけてトラフィックがベースラインの20～30倍に増えました。攻撃トラフィックの急増を除けば、報道機関からのトラフィックはベースラインのだいたい3～4倍でした。他のカテゴリーでは、概ね3倍以下になっています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Gxk6rfMtYjNwI0TYVYtE4/ee0830115902c2b6547983d20c890e98/image1-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Webアプリケーションファイアウォール（WAF）で軽減されたトラフィックでは、最も適用頻度が高かったルールはHTTP異常で、リクエストの92%に該当しました。Webコンテンツのリクエスト（HTTPリクエスト）には所定の構成、ヘッダー一式、関連する値があります。ヘッダーがない、リクエスト方法がサポートされていない、非標準のポートを使用している、文字のエンコーディングが無効などの異常を含む異形リクエストを送る攻撃者もいます。そのようなリクエストは「HTTP異常」と分類されます。そうした異常なリクエストは低度の攻撃に関わる場合が多く、CloudflareのWAFで自動的にブロックされます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZPFe2bg7opl9Zp3pr9RJt/6fe7f5ffc00495c648c57b843cf6fa4b/image9-2.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>戦争が続く中、当社は引き続きウクライナと隣国の団体をオンボードして保護を提供し、情報へのアクセスを保証します。ウクライナで攻撃に晒されている団体はすべて、<a href="https://www.cloudflare.com/ja-jp/galileo" target="_blank" rel="noopener noreferrer">www.cloudflare.com/ja-jp/galileo</a>からプロジェクトGalileoによる無償保護を申し込むことができ、当社で早急に評価と承認を行います。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wDZ8vz4PInZXzaQ6V0D3U/0f655566875eb2b35f63b8aaf5f6e4e3/image5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="attack-methods-based-on-region">攻撃手口：地域別</h3>
+		<a href="https://blog.cloudflare.com/#attack-methods-based-on-region" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>北米・中南米、アジア太平洋、欧州、アフリカ・中東で軽減されたリクエストは、全地域で28%と最も多かったのが「HTTP異常」で、20%がSQLインジェクション攻撃、13%近くが特定の<a href="https://www.cve.org" target="_blank" rel="noopener noreferrer">共通脆弱性識別子（CVE）</a>の悪用でした。CVEは、一般公開されているサイバーセキュリティ上の脆弱性です。Cloudflareは新たな脆弱性を監視し、ユーザーを保護するために<a href="https://blog.cloudflare.com/ja-jp">追加ルールセット</a>が必要なものを速やかに判定します。脆弱性によっては高度な攻撃を受ける可能性があり、深刻度に応じて識別と応答をセキュリティのプロに任せざるを得ない場合があります。</p>
+	<p>前回の<a href="https://radar.cloudflare.com/notebooks/project-galileo-7th-anniv" target="_blank" rel="noopener noreferrer">レポート</a>でも同様の攻撃トレンドが見られ、SQLインジェクションとHTTP異常（ユーザーエージェント異常と分類）が、軽減されたリクエストの大部分を占めていました。</p>
+	<div class="flex anchor relative">
+		<h3 id="attacks-methods-by-on-organization-type">攻撃手口：団体タイプ別</h3>
+		<a href="https://blog.cloudflare.com/#attacks-methods-by-on-organization-type" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aviyXs6IEHSNqreidvxyz/8a9e19b01dbeb1e60225ac09e8dd09dd/image4-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>当社はプロジェクトGalileoで多様な団体を保護しています。このダッシュボードでは、対象団体を「コミュニティ形成・社会福祉」、「教育」、「環境・災害救援」、「人権」、「ジャーナリズム」の6グループに分類しています。これらのグループに対する脅威を理解しやすいように、Webアプリケーションファイアウォールで軽減された攻撃のタイプを細かく分けました。軽減されたトラフィックの大部分は、HTTP異常とSQLインジェクション（SQLi）によるものです。</p>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a>は、SQLデータベースのデータの改ざんや取得を狙った攻撃手法です。攻撃者は、特殊なSQLステートメントをフォームフィールドに挿入し、データベースからのデータ取得、データベース内のデータ改ざん、機密データの破壊、その他の操作を可能にするコマンドを実行しようとします。</p>
+	<p>8周年Radarダッシュボードについて詳しくは、プロジェクトGalileo保護下のさまざまな団体への攻撃に関して当社が観察したトレンドの <a href="https://radar.cloudflare.com/notebooks/project-galileo-8th-anniv" target="_blank" rel="noopener noreferrer">完全版レポート</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8IVDuDgZp4BUUyOFYxBlt/ef630c4b46b30975716a2c373edab554/image6-1.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+</div>

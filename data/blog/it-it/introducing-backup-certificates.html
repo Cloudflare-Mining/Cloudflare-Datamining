@@ -1,0 +1,108 @@
+<div class="mb2 gray5">Lettura di 6 min</div>
+<div class="mt4">Questo post è disponibile anche in <a href="https://blog.cloudflare.com/introducing-backup-certificates">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-backup-certificates">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-backup-certificates">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-backup-certificates">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-backup-certificates">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-backup-certificates">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-backup-certificates">Español</a> e <a href="https://blog.cloudflare.com/zh-cn/introducing-backup-certificates">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6djGjj3fQCnOKkld3O6Ff3/93ca87919c7e37dfc4ee078a86fb553e/introducing-backup-certificates.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>In Cloudflare, siamo orgogliosi di offrire a ogni cliente la possibilità di fornire gratuitamente un certificato TLS per la propria applicazione Internet. Oggi siamo responsabili della gestione del ciclo di vita dei certificati per quasi 45 milioni di certificati dall'emissione alla distribuzione fino al rinnovo. Mentre costruiamo la piattaforma più resiliente e robusta, vogliamo che sia "a prova di futuro" e resistente agli eventi che non possiamo prevedere.</p>
+	<p>Gli eventi che ci portano a riemettere certificati per i nostri clienti, come compromissioni chiave, vulnerabilità e revoche di massa richiedono un'azione immediata. In caso contrario, i clienti possono essere lasciati non protetti o offline. Quando si verifica uno di questi eventi, vogliamo essere pronti a mitigare l'impatto immediatamente. Ma in che modo?</p>
+	<p>Avendo un certificato di backup pronto per la distribuzione, con una chiave privata diversa ed emesso da un'autorità di certificazione diversa rispetto al certificato primario che serviamo.</p>
+	<div class="flex anchor relative">
+		<h2 id="events-that-lead-to-certificate-re-issuance"><b>Eventi che portano a una nuova emissione del certificato</b></h2>
+		<a href="https://blog.cloudflare.com/#events-that-lead-to-certificate-re-issuance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BPFZ0ih533y6PbZlPio6y/4cbeebb8958714b88a4415392053dcfb/image1-header-1.png" alt="" class="kg-image" width="512" height="288" loading="lazy">
+
+	</figure>
+	<p>Cloudflare emette nuovamente i certificati ogni giorno in un processo che è detto appunto rinnovo dei certificati. Poiché i certificati hanno una data di scadenza, quando Cloudflare rileva che un certificato sta per scadere, avviamo un nuovo ordine di rinnovo del certificato. In questo modo, alla scadenza del certificato, abbiamo già un certificato aggiornato distribuito e pronto per l'uso per la terminazione TLS.</p>
+	<p>Sfortunatamente, non tutti i rinnovi dei certificati vengono avviati entro la data di scadenza. A volte, eventi imprevedibili come compromissioni delle chiavi possono portare al rinnovo dei certificati. Questo perché è necessario emettere una nuova chiave e quindi anche un certificato corrispondente.</p>
+	<div class="flex anchor relative">
+		<h3 id="key-compromises"><b>Compromissioni delle chiavi</b></h3>
+		<a href="https://blog.cloudflare.com/#key-compromises" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La compromissione di una chiave si verifica quando una persona o un sistema non autorizzato ottiene la chiave privata utilizzata per crittografare e decrittografare le informazioni segrete: il peggior incubo del team di sicurezza. Tali compromissioni possono essere il risultato di una vulnerabilità, come Heartbleed, in cui un bug in un sistema può causare la perdita della chiave privata. Possono anche essere il risultato di azioni dannose, come un dipendente sleale e disonesto che accede a informazioni non autorizzate. In caso di compromissione di una chiave, è fondamentale che (1) vengano emesse immediatamente nuove chiavi private, (2) vengano distribuiti nuovi certificati e (3) vengano revocati i vecchi certificati.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-heartbleed-vulnerability"><b>La vulnerabilità Heartbleed</b></h3>
+		<a href="https://blog.cloudflare.com/#the-heartbleed-vulnerability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nel 2014 è stata individuata la <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">vulnerabilità Heartbleed</a>, che consentiva agli autori di attacchi di estrarre la chiave privata del certificato TLS per qualsiasi server che eseguiva la versione interessata di OpenSSL, una popolare libreria di crittografia. Abbiamo <a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">applicato una patch al bug</a> e poi, per precauzione, abbiamo riemesso rapidamente chiavi private e certificati TLS appartenenti a tutti i nostri clienti, anche se nessuna delle nostre chiavi era trapelata. La capacità di Cloudflare di agire rapidamente ha protetto i dati dei nostri clienti dall'esposizione.</p>
+	<p>Heartbleed è stato un campanello d'allarme. A quel tempo, la scala di Cloudflare era di una magnitudine inferiore. Una vulnerabilità simile su scala odierna richiederebbe settimane, non ore, per emettere nuovamente i certificati di tutti i nostri clienti.</p>
+	<p>Ora, con i certificati di backup, non dobbiamo preoccuparci di avviare una riemissione di massa in un breve lasso di tempo. Al contrario, i clienti avranno già un certificato che saremo in grado di distribuire istantaneamente. Non solo, il certificato di backup verrà anche avvolto con una chiave diversa rispetto al certificato primario, impedendo che venga influenzato da una compromissione della chiave.</p>
+	<p>Le compromissioni delle chiavi sono uno dei motivi principali per cui i certificati devono essere riemessi su larga scala ma anche altri eventi possono richiedere la riemissione, comprese le revoche di massa da parte delle autorità di certificazione.</p>
+	<div class="flex anchor relative">
+		<h3 id="mass-revocations-from-cas"><b>Revoche di massa dalle CA</b></h3>
+		<a href="https://blog.cloudflare.com/#mass-revocations-from-cas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oggi il Certificate Authority/Browser Forum (CA/B Forum) è l'organo governativo che stabilisce le regole e gli standard per i certificati. Uno dei <a href="https://cabforum.org/wp-content/uploads/CA-Browser-Forum-BR-1.8.1.pdf" target="_blank" rel="noopener noreferrer">requisiti di base</a> stabiliti dal CA/B Forum afferma che le autorità di certificazione sono tenute a revocare i certificati le cui chiavi rischiano di essere compromesse entro 24 ore. Per problemi meno immediati, come l'uso improprio del certificato o la violazione della politica di certificazione di una CA, i certificati devono essere revocati entro <a href="https://cabforum.org/2018/09/14/ballot-sc6-revocation-timeline-extension" target="_blank" rel="noopener noreferrer">cinque giorni</a>. In entrambi i casi, i certificati saranno revocati dalla CA in breve tempo e ne sarà richiesta la riemissione immediata.</p>
+	<p>Sebbene le revoche di massa non siano comunemente avviate dalle CA, negli ultimi anni si sono verificati alcuni casi. Recentemente, Let’s Encrypt ha dovuto <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1751984#c20" target="_blank" rel="noopener noreferrer">revocare</a> circa 2,7 milioni di certificati quando hanno riscontrato una non conformità nell'implementazione di un problema legato alla convalida del controllo del dominio. In questo caso, i clienti Cloudflare non sono stati interessati.</p>
+	<p>In un altro caso, una delle autorità di certificazione che utilizziamo ha scoperto che <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1714628" target="_blank" rel="noopener noreferrer">stavano rinnovando certificati in base a token di convalida</a> che non erano conformi agli standard di CA/B Forum. Ciò ha indotto una revoca di massa, con un impatto su circa cinquemila domini gestiti da Cloudflare. Abbiamo collaborato con i nostri clienti e la CA per emettere nuovi certificati prima della revoca, con un impatto minimo.</p>
+	<p>Sappiamo che gli errori accadono e siamo stati abbastanza fortunati che quando questi problemi sono emersi, i nostri team di ingegneri sono stati in grado di mitigare rapidamente il tutto in modo che nessun cliente venisse colpito. Ma non è sufficiente: i nostri sistemi devono essere a prova di futuro e dobbiamo essere certi che una revoca di 45 milioni di certificati non abbia alcun impatto sui nostri clienti. Con i certificati di backup, saremo pronti per una riemissione di massa, indipendentemente dalla portata.</p>
+	<p>Per essere resilienti alle revoche di massa avviate dalle nostre CA, emetteremo ogni certificato di backup da una CA diversa dal certificato primario. Ciò aggiungerà un livello di protezione se una delle nostre CA dovrà invocare una revoca di massa, operazione che, una volta avviata, è una bomba a orologeria.</p>
+	<div class="flex anchor relative">
+		<h2 id="challenges-when-renewing-certificates">Problemi legati al rinnovo dei certificati</h2>
+		<a href="https://blog.cloudflare.com/#challenges-when-renewing-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="scale-with-great-power-comes-great-responsibility">Scala: con un grande potere si ha una grande responsabilità</h3>
+		<a href="https://blog.cloudflare.com/#scale-with-great-power-comes-great-responsibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Quando la vulnerabilità Heartbleed è stata scoperta, abbiamo dovuto emettere nuovamente circa 100.000 certificati. In quel momento, non è stato un vero problema per Cloudflare. Oggi siamo invece responsabili di dieci milioni di certificati. Anche se i nostri sistemi sono in grado di gestire questa scala, ci affidiamo comunque ai nostri partner di autorità di certificazione. In caso di emergenza, non vogliamo affidarci a sistemi che non siamo in grado di controllare. Ecco perché è importante per noi emettere i certificati in anticipo, in modo che durante un disastro, tutto ciò di cui dobbiamo preoccuparci è la distribuzione dei certificati di backup.</p>
+	<div class="flex anchor relative">
+		<h3 id="manual-intervention-for-completing-dcv"><b>Intervento manuale per il completamento della convalida del controllo del dominio</b></h3>
+		<a href="https://blog.cloudflare.com/#manual-intervention-for-completing-dcv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un altro problema che deriva dalla riemissione dei certificati è la convalida del controllo del dominio (DCV). Questa convalida è un controllo utilizzato per convalidare la proprietà di un dominio prima che un'autorità di certificazione possa emettere un certificato per esso. Quando i clienti di registrano con Cloudflare, possono delegare Cloudflare come loro provider DNS oppure possono decidere di utilizzare Cloudflare come proxy mantenendo il loro attuale provider DNS.</p>
+	<p>Se Cloudflare funge da provider DNS per un dominio, possiamo aggiungere record di convalida di controllo del dominio (Domain Control Validation, DCV) per conto del nostro cliente. Ciò semplifica notevolmente il processo di emissione e rinnovo del certificato.</p>
+	<p>I domini che non utilizzano Cloudflare come loro provider DNS, detti <i>zone parziali</i>, devono fare affidamento su altri metodi per completare la convalida. Quando quei domini inviano il loro traffico tramite proxy, possiamo completare la convalida HTTP per loro conto, servendo il token di convalida HTTP dal nostro perimetro. Tuttavia, i clienti che desiderano che il loro certificato sia emesso prima del proxy del loro traffico devono completare manualmente la convalida. Nel caso in cui Cloudflare debba riemettere migliaia o milioni di certificati, ma non possa completare la convalida di controllo del dominio per conto del cliente, sarà necessario un intervento manuale. Sebbene il completamento della DCV non sia un compito arduo, non possiamo fare affidamento sui nostri clienti in caso di emergenza, quando si ha un breve lasso di tempo, con rischi elevati.</p>
+	<p>È qui che entrano in gioco i certificati di backup. D'ora in poi, ogni emissione di certificato attiverà due ordini: uno per un certificato dalla CA primaria e uno per il certificato di backup. Quando saremo in grado di completare la DCV per conto del cliente, lo faremo per entrambe le CA.</p>
+	<p>Oggi emettiamo certificati di backup solo per i domini che utilizzano Cloudflare come provider DNS autorevole. In futuro, ordineremo certificati di backup per zone parziali. Ciò significa che per i certificati di backup per i quali non siamo in grado di completare la DCV, forniremo ai clienti i record DCV corrispondenti per ottenere l'emissione del certificato.</p>
+	<div class="flex anchor relative">
+		<h2 id="backup-certificates-deployment-plan"><b>Piano di distribuzione dei certificati di backup</b></h2>
+		<a href="https://blog.cloudflare.com/#backup-certificates-deployment-plan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Siamo lieti di annunciare che Cloudflare ha iniziato la distribuzione dei certificati di backup su ordini di <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" target="_blank" rel="noopener noreferrer">Universal Certificate</a> per i clienti con piano Free che utilizzano Cloudflare come provider DNS autorevole. Abbiamo lentamente aumentato il numero di ordini di certificati di backup e nelle prossime settimane ci aspettiamo che ogni nuovo ordine di pacchetti di certificati universali avviato su un account Free, Pro o Biz includa un certificato di backup, avvolto con una chiave diversa ed emesso da una CA diversa dal certificato primario.</p>
+	<p>A fine aprile inizieremo ad emettere certificati di backup per i nostri clienti Enterprise. Se sei un cliente Enterprise e hai domande sui certificati di backup, contatta il tuo account team.</p>
+	<div class="flex anchor relative">
+		<h2 id="next-up-backup-certificates-for-all"><b>Successivo: certificati di backup per tutti</b></h2>
+		<a href="https://blog.cloudflare.com/#next-up-backup-certificates-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oggi, i <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" target="_blank" rel="noopener noreferrer">certificati universali</a> costituiscono il 72% del certificati nella nostra struttura. Ma vogliamo una copertura completa, ecco perché il nostro team continuerà a creare la nostra struttura di certificati di backup per supportare i certificati avanzati e SSL per i certificati SaaS. In futuro, emetteremo anche certificati di backup per i certificati che i nostri clienti caricano da soli, in modo che possano avere un backup su cui poter fare affidamento.</p>
+	<p>Inoltre, continueremo a migliorare la nostra struttura per rendere istantanea la distribuzione dei certificati di backup, lasciando i nostri clienti al sicuro e online in caso di emergenza.In Cloudflare, la nostra missione è aiutare a costruire un Internet migliore. Con i certificati di backup, aiutiamo a creare un Internet sicuro e affidabile, pronto per qualsiasi disastro. Sei interessato ad aiutarci? <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">Cerchiamo personale</a>.</p>
+</div>

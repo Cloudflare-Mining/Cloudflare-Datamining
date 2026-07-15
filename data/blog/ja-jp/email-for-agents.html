@@ -1,0 +1,206 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/email-for-agents">English</a>および<a href="https://blog.cloudflare.com/ko-kr/email-for-agents">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Qf637mptxRY4oxcvZhPi2/310c6583742e2b812a77e09c27340f70/BLOG-3210_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>メールは世界で最もアクセスしやすいインターフェースです。経路はユビキタスです。カスタムチャットアプリケーションは不要で、各チャンネルごとにカスタムSDKも必要ありません。誰もがすでにメールアドレスを持っています。つまり、誰でもすでにアプリケーションやエージェントを操作できるのです。エージェントは誰とでも対話できます。</p>
+	<p>アプリケーション構築の際、すでにメールに依存したサインアップ、通知、請求書を使っていると思います。ますます、このチャンネルを必要とするのはアプリケーションロジックだけではありません。エージェントも同様です。プライベートベータ版の期間中、私たちはまさにこれを構築している開発者たちと話をしました。カスタマーサポートエージェント、請求書処理パイプライン、アカウント確認フロー、マルチエージェントワークフローなどです。すべてをメール上に構築パターンは明らかです。メールはエージェントにとってコアインターフェースになりつつあり、開発者にはそれに特化したインフラが必要です。</p>
+	<p>Cloudflare Email Serviceはまさにその手段です。<b>Email Routing</b>を使用すると、アプリケーションやエージェントへメールを受信できます。<b>Email Sending</b>を使用すると、メールに返信したり、アウトバウンドを送信して、エージェントの作業が完了したらユーザーに通知することができます。また、開発者プラットフォームの残りの部分を使用すると、完全なメールクライアントと<a href="https://blog.cloudflare.com/project-think"><u>エージェントSDK</u></a>をonEmailフックとしてネイティブ機能で構築できます。</p>
+	<p>本日、Agents Weekの一環として、Cloudflare Email Serviceが<b>パブリックベータ版</b>となり、あらゆるアプリケーションとあらゆるエージェントからのメール送信が可能になります。また、メールネイティブエージェントを構築するためのツールキットも完成しています。</p>
+	<ul>
+		<li>
+			<p>WorkersとエージェントSDKから利用可能なEmail Sendingバインディング</p>
+		</li>
+		<li>
+			<p>新しいメールMCPサーバー</p>
+		</li>
+		<li>
+			<p>Wrangler CLIメールコマンド</p>
+		</li>
+		<li>
+			<p>コーディングエージェントのスキル</p>
+		</li>
+		<li>
+			<p>オープンソースのエージェント型受信箱リファレンスアプリ</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="email-sending-now-in-public-beta">Email Sending：パブリックベータ版</h2>
+		<a href="https://blog.cloudflare.com/#email-sending-now-in-public-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Email Sendingは本日、プライベートベータ版から<b>パブリックベータ版</b>に卒業します。ネイティブのWorkersバインディングで、Workersから直接トランザクションメールを送信できるようになりました。APIキーやシークレット管理は不要です。</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+  async fetch(request, env, ctx) {
+    await env.EMAIL.send({
+      to: "user@example.com",
+      from: "notifications@your-domain.com",
+      subject: "Your order has shipped",
+      text: "Your order #1234 has shipped and is on its way."
+    });
+    return new Response("Email sent");
+  },
+};
+</code></pre>
+	<p>あるいは、REST APIとTypeScript、Python、Go SDKを使用して、任意のプラットフォーム、任意の言語から送信することもできます。</p>
+	<pre class="language-javascript"><code class="language-javascript">curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email-service/send" \
+   --header "Authorization: Bearer &lt;API_TOKEN&gt;" \
+   --header "Content-Type: application/json" \
+   --data '{
+     "to": "user@example.com",
+     "from": "notifications@your-domain.com",
+     "subject": "Your order has shipped",
+     "text": "Your order #1234 has shipped and is on its way."
+   }'
+</code></pre>
+	<p>実際に受信箱に届くメールの送信は、通常、SPF、DKIM、DMARCレコードとのやりとりを意味します。ドメインをEmail Serviceに追加すると、すべて自動的に設定されます。メールは認証され、スパムとしてフラグ付けされることはありません。また、Email ServiceはCloudflareのネットワーク上に構築されたグローバルサービスであるため、メールは世界中どこにいても低遅延で配信されます。</p>
+	<p>何年にもわたり無料で提供されてきた<a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a>と組み合わせることで、単一のプラットフォームで完全な双方向メールを実現できます。メールの受信、Worker内での処理、返信まで、Cloudflareを離れることはありません。</p>
+	<p>For the full deep dive on Email Sending, <a href="https://blog.cloudflare.com/email-service"><u>バースデーウィークの発表をご参照ください</u></a>。この記事の残りの部分では、エージェント向けのメールサービスの可能性について説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="agents-sdk-your-agent-is-email-native">Agents SDK：エージェントはメールネイティブ</h2>
+		<a href="https://blog.cloudflare.com/#agents-sdk-your-agent-is-email-native" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare上にエージェントを構築するためのAgents SDKには、受信メールを受信し処理するための第一級の<a href="https://developers.cloudflare.com/agents/api-reference/agents-api" target="_blank" rel="noopener noreferrer"><u>onEmail hook</u></a>がすでに備えられています。しかし、これまでは、エージェントは同期的に返信したり、Cloudflareアカウントのメンバーにメールを送信したりすることしかできませんでした。</p>
+	<p>Email Sendingでは、その制約はありません。これは、チャットボットとエージェントの違いです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aGV0BVpbrj3ql5TubPMXx/b85351f13c5fae93a27d11e20a5fc11e/BLOG-3210_2.png" alt="BLOG-3210 2" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><i><sup>メールエージェントはメッセージを受信し、プラットフォーム全体の作業を調整し、非同期に応答します。</sup></i></p>
+	<p>チャットボットは即座に応答するか、まったく応答しません。エージェントは、自分のタイムラインに沿って考え、行動し、コミュニケーションを行います。Email Sendingにより、エージェントはメッセージを受信し、データ処理に1時間を費やし、他の3つのシステムをチェックし、完全な回答を返信することができます。フォローアップのスケジュールを設定することができます。エッジケースを検出すると、エスカレートすることができます。独立して動作することができます。言い換えれば、質問に答えるだけでなく、実際に働くことができるのです。</p>
+	<p>サポートエージェントが受信、持続、返信の全パイプラインでどのような形になるかを次に示します。</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Agent, routeAgentEmail } from "agents";
+import { createAddressBasedEmailResolver, type AgentEmail } from "agents/email";
+import PostalMime from "postal-mime";
+
+export class SupportAgent extends Agent {
+  async onEmail(email: AgentEmail) {
+    const raw = await email.getRaw();
+    const parsed = await PostalMime.parse(raw);
+
+   // Persist in agent state
+    this.setState({
+      ...this.state,
+      ticket: { from: email.from, subject: parsed.subject, body: parsed.text, messageId: parsed.messageId },
+    });
+
+    // Kick off long running background agent task 
+    // Or place a message on a Queue to be handled by another Worker
+
+    // Reply here or in other Worker handler, like a Queue handler
+    await this.sendEmail({
+      binding: this.env.EMAIL,
+      fromName: "Support Agent",
+      from: "support@yourdomain.com",
+      to: this.state.ticket.from,
+      inReplyTo: this.state.ticket.messageId,
+      subject: `Re: ${this.state.ticket.subject}`,
+      text: `Thanks for reaching out. We received your message about "${this.state.ticket.subject}" and will follow up shortly.`
+    });
+  }
+}
+
+export default {
+  async email(message, env) {
+    await routeAgentEmail(message, env, {
+      resolver: createAddressBasedEmailResolver("SupportAgent"),
+    });
+  },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>Agents SDKのメール機能を初めて使う方のために、内部で何が起こっているかを以下に説明してください。</p>
+	<p><b>各エージェントは、単一のドメインから独自のIDを取得します。</b>アドレスベースのリゾルバーは、support@yourdomain.comを「support」エージェントインスタンスに、sales@yourdomain.comを「sales」インスタンスに、といったようにルーティングします。別々の受信箱をプロビジョニングする必要はありません。ルーティングはアドレスに組み込まれているためです。サブアドレス指定（NotificationAgent+user123@yourdomain.com）を使用して、異なるエージェントネームスペースやインスタンスにルーティングすることもできます。</p>
+	<p><b>状態はメール間で続く。</b>エージェントはDurable Objectsによって支えられているため、this.setState()を呼び出すことで、エージェントはセッション間の会話履歴、連絡先情報、コンテキストを記憶することになります。受信トレイはエージェントのメモリとなり、別のデータベースやベクトルストアを必要としません。</p>
+	<p><b>セキュアな返信ルーティング機能を搭載。</b>エージェントがメールを送信し、返信があった場合、HMAC-SHA256でルーティングヘッダーに署名することができ、返信が元のメッセージを送信した正確なエージェントインスタンスに戻るようになります。これにより、攻撃者はヘッダーを偽造して、メールを任意のエージェントインスタンスにルーティングできます。これは、「エージェント向けメール」ソリューションのほとんどが対応していないセキュリティ上の懸念です。</p>
+	<p>これは、チームがゼロから構築している完全なメールエージェントパイプラインです。メールの受信、解析、分類、状態の保持、非同期ワークフローの開始、返信やエスカレーションなどを行うことができ、すべてが単一のエージェントクラス内で、Cloudflareのネットワーク上でグローバルにデプロイされます。</p>
+	<div class="flex anchor relative">
+		<h2 id="email-tooling-for-your-agents-mcp-server-wrangler-cli-and-skills">エージェント用メールツール：MCPサーバー、Wrangler CLI、スキル</h2>
+		<a href="https://blog.cloudflare.com/#email-tooling-for-your-agents-mcp-server-wrangler-cli-and-skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>メールサービスは、Cloudflare上で動作するエージェントだけのものではありません。Claude Code、Cursor、Copilotのようなコーディングエージェントがローカルまたはリモート環境で実行される場合も、コンテナや外部クラウドで実行される本番エージェントであっても、エージェントはあらゆる場所で実行されます。それらのユーザーはすべて、それらの環境からメールを送信する必要があります。実行場所を問わず、あらゆるエージェントがEmail Serviceをアクセスできるようにする3つの統合機能をリリースします。</p>
+	<p>メールは、<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCPサーバー</u></a>を通じて利用できるようになりました。これは、エージェントがCloudflare API全体にアクセスできるようにするのと同じ<a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>対応サーバーです。このMCPサーバーにより、エージェントはメールエンドポイントを検出して呼び出すことでメールを送信し、設定することができます。簡単なプロンプトでメールを送信できます。</p>
+	<pre class="language-unset"><code class="language-unset">"Send me a notification email at hello@example.com from my staging domain when the build completes"</code></pre>
+	<p>コンピューター上またはbashアクセスのあるサンドボックス上で実行されているエージェントの場合、Wrangler CLIは、<a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>のブログ記事で説明したMCPコンテキストウィンドウの問題を解決します。ツール定義は、エージェントが1つのメッセージを処理し始める前に、何万ものトークンを消費する可能性があります。Wranglerでは、エージェントはコンテキストオーバーヘッドがほぼゼロで開始され、「--help」コマンドによってオンデマンドの機能を発見します。エージェントがWrangler経由でメールを送信する方法は、次のとおりです。</p>
+	<pre class="language-javascript"><code class="language-javascript">wrangler email send \
+  --to "teammate@example.com" \
+  --from "agent@your-domain.com" \
+  --subject "Build completed" \
+  --text "The build passed. Deployed to staging."
+</code></pre>
+	<p>エージェントにCloudflare MCPを提供する場合も、Wrangler CLIを提供する場合も、エージェントはプロンプトだけでお客様に代わってメールを送信できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="skills">スキル</h3>
+		<a href="https://blog.cloudflare.com/#skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Serviceスキル</u></a>を公開しています。エージェントに完全なガイダンスを提供します。Workersバインディングの設定、REST APIまたはSDKを使用したメールの送信、Email Routing設定による受信メールの処理、Agents SDKを使用した構築、Wrangler CLIやMCPによるメール管理などです。また、配信到達性のベストプラクティスや、スパムではなく受信箱に届く良質な取引メールの作成方法も取り上げています。貴社のプロジェクトに追加すれば、コーディングエージェントにはCloudflare上で本番環境対応のメールを作成するのに必要なすべての機能が備わっています。</p>
+	<div class="flex anchor relative">
+		<h2 id="open-sourcing-tools-for-email-agents">メールエージェント用のオープンソースツール</h2>
+		<a href="https://blog.cloudflare.com/#open-sourcing-tools-for-email-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プライベートベータ版では、メールエージェントについても実験を行いました。メールをレビューし、エージェントの行動を確認するために、ヒューマンインザループ要素を維持したいことが多いことは明らかでした。そのためには、エージェント自動化機能が組み込まれた完全機能のメールクライアントを持つことが最善の方法となります。</p>
+	<p>そこで当社は、完全な対話スレッド、メールのレンダリング、メールと添付ファイルの受信と保存、メールへの自動返信機能を備えたリファレンスアプリケーションである、<a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>Agentic Inbox</u></a>: を開発しました。専用のMCPサーバーが組み込まれているため、外部エージェントがエージェントの受信トレイから送信する前に、レビュー用のメールを下書きすることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PgrSXLUD5kgA2SFOhksCS/75f85353cf710842420ed806be31b6f6/BLOG-3210_3.png" alt="BLOG-3210 3" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>インバウンド用Email Routing、アウトバウンド用Email Sending、分類用のWorkers AI、添付ファイル用のR2、ステートフルなエージェントロジックのためのAgents SDKを使用した、完全なメールアプリケーションの構築方法に関するリファレンスアプリケーションとして、<a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>Agentic Inboxをオープンソース化</u></a>します。今すぐデプロイして、ボタンをクリックするだけで、完全な受信箱、メールクライアント、メールエージェントを取得することができます。</p>
+	<p>当社は、メールエージェントのツールを構成可能かつ再利用可能にしたいと考えています。各チームが同じ受信分類／応答パイプラインを再構築するのではなく、このリファレンスアプリケーションから始めてください。フォークして拡張し、お客様のワークフローに合わせた独自のメールエージェントの出発点としてご利用ください。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagentic-inbox"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out-today">今すぐお試しください</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>メールは世界で最も重要なワークフローが存在する場所ですが、エージェントにとっては、しばしば到達しにくいチャネルです。<b>Email Sending</b>がパブリックベータ版になったことで、Cloudflare Email Serviceは双方向通信のための完全なプラットフォームとなり、受信トレイはエージェントにとって一流のインターフェースとなります。</p>
+	<p>受信トレイ内の顧客に対応するサポートエージェントを構築する場合でも、チームの最新情報をリアルタイムで更新するバックグラウンドプロセスなど、エージェントはグローバル規模でシームレスな通信を実現できます。受信トレイはもはやサイロではありません。エージェントが役に立つ場所が増えました。</p>
+	<ul>
+		<li>
+			<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Femail-service%2Fsending" target="_blank" rel="noopener noreferrer"><u>CloudflareダッシュボードでEmail Sending</u></a>を試す</p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/email-service" target="_blank" rel="noopener noreferrer"><u>Email Serviceのドキュメント</u></a>を読む</p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/agents/api-reference/email" target="_blank" rel="noopener noreferrer"><u>Agents SDKメールドキュメント</u></a>を参照してください。&nbsp;</p>
+		</li>
+		<li>
+			<p>Check out the <a href="http://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>Email Service MCPサーバー</u></a>と<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>スキル</u></a>を確認する</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>オープンソースのリファレンスアプリをデプロイ</u></a></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YaSov283la8ajbi0Sbprq/9108f26b499fd976470a79ee74034e59/BLOG-3210_5.png" alt="BLOG-3210 5" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/c1e1f9cc19044e109f08fb18993199af/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fc1e1f9cc19044e109f08fb18993199af%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

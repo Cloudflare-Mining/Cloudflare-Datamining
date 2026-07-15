@@ -1,0 +1,95 @@
+<div class="mb2 gray5">4 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/introducing-flan-scan">English</a>, <a href="https://blog.cloudflare.com/de-de/introducing-flan-scan">Deutsch</a> y <a href="https://blog.cloudflare.com/fr-fr/introducing-flan-scan">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wDMUxdgYWjO7WTYMDaaIu/ac548664143a73f61265bd978769775a/introducing-flan-scan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Hoy, nos complace presentar <a href="https://github.com/cloudflare/flan" target="_blank" rel="noopener noreferrer">Flan Scan</a> de código abierto, el escáner ligero para detectar vulnerabilidades en la red de Cloudflare. Flan Scan es una cápsula delgada que envuelve<a href="https://nmap.org" target="_blank" rel="noopener noreferrer">Nmap</a> y convierte esta popular herramienta de código abierto en un escáner para detectar vulnerabilidades con la ventaja adicional de una fácil implementación.</p>
+	<p>Creamos Flan Scan tras dos intentos fallidos con escáneres “estándar de la industria” para nuestros escaneos obligatorios. Hace poco más de un año, pagábamos a un importante proveedor por su escáner hasta que nos dimos cuenta de que era uno de nuestros mayores costos de seguridad y de que muchas de sus funciones no eran relevantes para nuestra configuración. Quedó claro que no recibíamos un servicio que nos convenía por el precio que pagábamos. Poco después, comenzamos a usar un escáner de código abierto y asumimos la tarea de administrar su compleja configuración. Eso dificultó la implementación de nuestra flota completa de más de 190 centros de datos.</p>
+	<p>Teníamos un plazo límite al final del tercer trimestre para completar un análisis interno de nuestros requisitos de cumplimiento, pero no contábamos con una herramienta que pudiera satisfacer nuestras necesidades. Debido a nuestra experiencia con los escáneres existentes, decidimos crear uno propio que funcionara para nuestra configuración. Para diseñar Flan Scan, trabajamos en estrecha colaboración con nuestros auditores para comprender los requisitos de una herramienta de este tipo. Necesitábamos un escáner que pudiera detectar de manera precisa los servicios en nuestra red y luego buscar esos servicios en una base de datos de <a href="https://cve.mitre.org" target="_blank" rel="noopener noreferrer">CVE</a> para detectar vulnerabilidades que fueran relevantes para nuestros servicios. Además, a diferencia de otros escáneres que habíamos probado, nuestra herramienta tenía que ser fácil de implementar en toda nuestra red.</p>
+	<p>Elegimos Nmap como escáner base porque, a diferencia de otros escáneres de red que sacrifican precisión por velocidad, este prioriza la detección de servicios, y de esta manera reduce los falsos positivos. También nos gustó Nmap por el Nmap Scripting Engine (NSE), que permite que los scripts se ejecuten en los resultados del análisis. Detectamos que el<a href="https://github.com/vulnersCom/nmap-vulners" target="_blank" rel="noopener noreferrer">script “vulners”</a>, disponible en NSE, trazó un esquema de los servicios detectados para vulnerabilidades y exposiciones comunes (CVE) relevantes de una base de datos, que era exactamente lo que necesitábamos.</p>
+	<p>El siguiente paso fue facilitar la implementación del escáner y garantizar que generara resultados procesables y valiosos. Hemos añadido tres características a Flan Scan que contribuyeron a que Nmap sea un escáner fácil de usar e implementar en una red grande.</p>
+	<ul>
+		<li>
+			<p><b>Implementación y configuración fáciles</b>: para crear un escáner ligero con una configuración sencilla, optamos por ejecutar Flan Scan en el interior de un contenedor Docker. Como consecuencia, Flan Scan se puede crear e insertar en un registro Docker y mantiene la flexibilidad para configurarse durante la ejecución. Flan Scan también incluye archivos de configuración e implementación de ejemplo de Kubernetes con algunos marcadores de posición para poder levantarlos y escanearlos rápidamente.</p>
+		</li>
+		<li>
+			<p><b>Envío de resultados a la nube</b>: Flan Scan incorpora soporte para enviar resultados a un bucket de almacenamiento en la nube de Google o en un bucket de S3. Todo lo que necesitas hacer es establecer algunas variables de entorno y Flan Scan hará el resto. Esto permite ejecutar varios análisis en una red grande y recopilar los resultados en una ubicación central para su procesamiento.</p>
+		</li>
+		<li>
+			<p><b>Informes procesables</b>: Flan Scan genera informes procesables a partir del resultado de Nmap para que puedas identificar rápidamente los servicios vulnerables de tu red, las vulnerabilidades y exposiciones comunes (CVE) aplicables, las direcciones IP y los puertos donde se encontraron estos servicios. Los informes resultan útiles para los ingenieros que hacen un seguimiento de los resultados del análisis y para los auditores que buscan pruebas de los análisis de cumplimiento.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://downloads.ctfassets.net/zkvhlag99gkb/2P4YSEYrC1ofUi7vKitDR4/284e76df1c2b00c24e40bc495962595d/New_report_gif.gif" alt="" class="kg-image" width="1046" height="918" loading="lazy">
+
+	</figure>
+	<p>Ejecución de prueba de Flan Scan de principio a fin.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-has-flan-scan-improved-cloudflares-network-security"><b>¿Cómo ha mejorado Flan Scan la seguridad de red de Cloudflare?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-has-flan-scan-improved-cloudflares-network-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hacia fines del tercer trimestre, no solo habíamos completado nuestros escaneos de cumplimiento, sino que también usamos Flan Scan para mejorar de forma tangible la seguridad de nuestra red. En Cloudflare, anclamos la versión de software de algunos servicios en marcha porque nos permite priorizar las actualizaciones considerando el costo operativo de la actualización en comparación con las mejoras de la última versión. Los resultados de Flan Scan revelaron que nuestros nodos FreeIPA, que se utilizaban para administrar usuarios y hosts de Linux, estaban ejecutando una versión obsoleta de Apache con varias vulnerabilidades de gravedad media. Como consecuencia, priorizamos su actualización. Flan Scan también detectó una instancia vulnerable de un remanente de PostgreSQL de un panel de control de rendimiento que ya no existe.</p>
+	<p>Flan Scan forma parte de una iniciativa mayor para ampliar nuestro programa de gestión de vulnerabilidades. Recientemente implementamos <a href="https://osquery.io" target="_blank" rel="noopener noreferrer">osquery</a> en toda nuestra red para hacer el seguimiento de vulnerabilidades en función del host. Al complementar los hallazgos de osquery con los escaneos de red de Flan Scan, estamos trabajando para lograr una visibilidad total de los servicios que se ejecutan en nuestro perímetro y sus vulnerabilidades. Con dos rastreadores de vulnerabilidades, decidimos crear una herramienta para gestionar la creciente cantidad de causas de vulnerabilidad. Nuestra herramienta envía alertas de nuevas vulnerabilidades, filtra los falsos positivos y hace un seguimiento de las vulnerabilidades que se solucionaron. La valiosa información de seguridad que obtiene Flan Scan fue un impulso importante para crear esta herramienta de rastreo de vulnerabilidades.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-flan-scan-work"><b>¿Cómo funciona Flan Scan?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-does-flan-scan-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kAAc3ohubexEKfI60A0nS/9101e8229e320c6b53771ad09ab87e0e/FLan-scan-diagram_3x.png" alt="" class="kg-image" width="2000" height="1243" loading="lazy">
+
+	</figure>
+	<p>El primer paso de Flan Scan es ejecutar un análisis de Nmap con detección de servicio. El escaneo de Nmap predeterminado de Flan Scan ejecuta los siguientes análisis:</p>
+	<ol>
+		<li>
+			<p><b>Escaneo de ping ICMP</b> (protocolo de mensajes de control de Internet): Nmap determina cuál de las direcciones IP proporcionadas está en línea.</p>
+		</li>
+		<li>
+			<p><b>Escaneo de SYN</b>: Nmap analiza los 1000 puertos más comunes de las direcciones IP que respondieron al ping ICMP. Nmap marca los puertos como abiertos, cerrados o filtrados.</p>
+		</li>
+		<li>
+			<p><b>Escaneo de detección de servicio</b>: para detectar qué servicios se ejecutan en puertos abiertos, Nmap establece la comunicación de TCP (protocolo de control de transmisión) y los escaneos de <a href="https://en.wikipedia.org/wiki/Banner_grabbing" target="_blank" rel="noopener noreferrer">captura de banners</a>.</p>
+		</li>
+	</ol>
+	<p>También son posibles otros tipos de escaneos como el de UDP (protocolo de datagrama de usuario) y de las direcciones IPv6, con Nmap. Flan Scan permite a los usuarios ejecutar estas y otras características extendidas de Nmap al pasar indicadores Nmap en tiempo de ejecución.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jGqNtdhSePb0Iz3JEUCZF/c04a4b36066b7e083be64c5306df5eb4/Screen-Shot-2019-11-11-at-2.15.01-PM.png" alt="" class="kg-image" width="1334" height="520" loading="lazy">
+
+	</figure>
+	<p>Ejemplo de resultado de Nmap</p>
+	<p>Flan Scan agrega la etiqueta del script “vulners” en su comando Nmap predeterminado para incluir en los resultados una lista de vulnerabilidades aplicables a los servicios detectados. El script vulners funciona mediante llamadas API a un servicio ejecutado por <a href="https://vulners.com" target="_blank" rel="noopener noreferrer">vulners.com</a>, que arroja las vulnerabilidades conocidas para el servicio determinado.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/476YY2nBlzz4hMVJVfQ98h/f5bf27b240590dfb5ce700258875aa5b/Screen-Shot-2019-11-11-at-2.28.58-PM.png" alt="" class="kg-image" width="1336" height="1406" loading="lazy">
+
+	</figure>
+	<p>Ejemplo de resultado de Nmap con script Vulners</p>
+	<p>El siguiente paso de Flan Scan usa un script Python para convertir el XML estructurado del resultado de Nmap en un informe procesable. Los informes del escáner que utilizamos antes, enumeraban cada una de las direcciones IP escaneadas y presentan las vulnerabilidades correspondientes a esa ubicación. Como teníamos varias direcciones IP que ejecutaban el mismo servicio, el informe repetiría la misma lista de vulnerabilidades en cada una de estas direcciones IP. Esto significaba un desplazamiento hacia adelante y hacia atrás en documentos de cientos de páginas para obtener una lista de todas las direcciones IP con las mismas vulnerabilidades. &nbsp;Los resultados eran imposibles de asimilar.</p>
+	<p>Los resultados de Flan Scans se organizaron en torno a los servicios. El informe enumera todos los servicios vulnerables con una lista debajo de cada una de las vulnerabilidades relevantes y todas las direcciones IP que ejecutan este servicio. Esta estructura permite que el informe sea más corto y procesable, ya que los servicios que deben corregirse se pueden identificar claramente. Los informes de Flan Scan se hicieron con <a href="https://www.latex-project.org" target="_blank" rel="noopener noreferrer">LaTeX</a>, porque ¿a quién no le gustan los informes con buen formato que se pueden generar con un script? El archivo LaTeX sin procesar que emite Flan Scan se puede convertir a un prolijo PDF mediante el uso de herramientas como pdf2latex o TeXShop.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VR5TpcOccduNyZWRNYN8A/b13b1da0c38657eb8244cd396061799a/Screen-Shot-2019-11-18-at-4.51.06-PM.png" alt="" class="kg-image" width="1768" height="964" loading="lazy">
+
+	</figure>
+	<p>Ejemplo de informe de Flan Scan</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next"><b>¿Qué sigue?</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La misión de Cloudflare es ayudar a crear una mejor Internet para todos, no solo para los gigantes de Internet que pueden acceder a herramientas costosas. Queremos que Flan Scan sea de código abierto, porque creemos que una seguridad de red sólida no debería ser algo tan costoso.</p>
+	<p>Se puede empezar a ejecutar un escaneo de vulnerabilidades en la red en minutos con solo seguir las instrucciones del archivo<a href="https://github.com/cloudflare/flan" target="_blank" rel="noopener noreferrer">README</a>. Agradecemos los aportes y las sugerencias de la comunidad.</p>
+</div>

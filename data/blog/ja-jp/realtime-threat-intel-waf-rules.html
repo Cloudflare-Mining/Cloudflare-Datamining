@@ -1,0 +1,193 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/realtime-threat-intel-waf-rules">English</a>および<a href="https://blog.cloudflare.com/ko-kr/realtime-threat-intel-waf-rules">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57XP3hJXdkVhcpPInoKLIX/df82b5b2aae51d03cc2f51d134cf39cc/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareの<a href="https://blog.cloudflare.com/threat-events-platform"><u>Threat Events</u></a>は、セキュリティアナリストが世界の脅威の状況を知るためのウィンドウを提供します。このプラットフォームでは、Cloudflareが毎日処理する膨大なトラフィックを<a href="https://developers.cloudflare.com/api/node/resources/cloudforce_one/subresources/threat_events" target="_blank" rel="noopener noreferrer"><u>のぞき見でき</u></a>、どのIPが特定の業界を攻撃しているか、どの脅威アクターが世界的な傾向を示しているかをリアルタイムで把握できます。しかし、その可視性をアクティブな軽減策に変換するのは、多くの場合、手作業による事後対応型のプロセスでした。</p>
+	<p>セキュリティチームは、繰り返しフラストレーションに直面してきました。特定のIPアドレスが特定の脅威アクター（<a href="https://www.cloudflare.com/en-gb/threat-intelligence/research/report/tycoon-2fa-takedown" target="_blank" rel="noopener noreferrer"><u><b>Tycoon二要素認証</b></u></a>や<a href="https://www.cloudflare.com/en-gb/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-raccoono365" target="_blank" rel="noopener noreferrer"><u><b>RaccoonO365</b></u></a>など）に関連していること、あるいは他の地域で特定の業界を標的にしていることがわかっていたにもかかわらず、ルールを手動で設定しない限り、自社のWAF内でこれらの高リスクIPを簡単に自動的にブロックできなかったのです。</p>
+	<p>Cloudflareの膨大な脅威インテリジェンスをWAFエンジンに直接取り入れる新たな統合を発表でき、大変嬉しく思います。<b>ライブインテリジェンスデータを使って、先制的なルールを書くことができるようになりました</b>。つまり、インテリジェンスコンテキストを追加して、既知の悪意あるアクターがインフラに侵入する前に、アプリケーションを保護できるということです。</p>
+	<p>リクエストの初期段階で専用フィールドを入力することで、WAFは次に基づいてトラフィックをスクリーニングできるようになりました。</p>
+	<ul>
+		<li>
+			<p>特定の脅威アクター名をマッチングして<i>攻撃しているのが誰か</i></p>
+		</li>
+		<li>
+			<p>業界または国をフィルタリングし、そのIPが過去にターゲットにされた実績を確認するために、<i>誰をターゲットにしているか</i></p>
+		</li>
+		<li>
+			<p><i>どのような種類の攻撃</i>が、強化された脅威コンテキストを使用し、攻撃タイプ（DDoS、WAF、サイバー犯罪など）と最後に確認された時間枠でフィルタリングされましたか</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="always-on-detection">常時稼働の検出</h2>
+		<a href="https://blog.cloudflare.com/#always-on-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この新しい機能は、最近攻撃シグネチャ検出のために導入したものと同じ<a href="https://blog.cloudflare.com/attack-signature-detection"> <u>常時稼働型の検出フレームワーク</u></a>に基づいて構築されています。同システムは、事前設定されたルールを必要とせず、一般的な攻撃パターンをリアルタイムで特定するシステムです。検出と軽減を分離することで、脅威インテリジェンスがバックグラウンドで常に実行され、アクションを決定する前に、洞察に満ちた脅威メタデータでHTTPリクエスト分析を強化します。</p>
+	<p>「常時接続」モデルの主な利点は、従来の「ログとブロック」のトレードオフがないことです。ログモードでは可視性を確保し、ブロックモードでは保護することもできます。それは、ルールによってリクエストがブロックされてしまうと、他の署名がそのリクエストをどのように評価したかを知るための可視性が失われるためです。あなたの防御の強化に役立った可能性のある洞察が得られるからです。</p>
+	<p><a href="https://www.cloudflare.com/en-gb/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce Oneのサブスクリプション</u></a>をお持ちの場合、これらのインサイトは自動的に分析に表示されます。どの脅威アクターがサイトを攻撃しているか、どの業界のIPを通常ターゲットにしているかを表示できるため、「スイッチをオン」にしてブロックする前にトラフィックパターンを確認できます。</p>
+	<p>これらの検出は無視できる遅延で実行され、パフォーマンスの超高速性を維持しながら、堅牢なセキュリティポリシーの構築に必要な信頼性の高いデータを提供します。この初期リリースはIPベースのマッチングに焦点を当てていますが、これらの機能を<a href="https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint" target="_blank" rel="noopener noreferrer"><u>JA3フィンガープリント</u></a>やドメインベースのマッチングに拡張することをすでに検討しています。これにより、攻撃者が悪意のあるペイロードで使用する固有のソフトウェアシグネチャや悪意のある宛先リンクを特定することで、攻撃者がIPをローテーションしている場合でも、悪意のあるトラフィックをブロックすることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="new-waf-fields">新しいWAFフィールド</h3>
+		<a href="https://blog.cloudflare.com/#new-waf-fields" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これを可能にするために、以下の具体的なシグナルをWAFエンジンに直接公開しました。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>フィールド</b></p>
+				</td>
+				<td>
+					<p><b>説明</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf.intel.ip.attacker_names</p>
+				</td>
+				<td>
+					<p>既知の脅威グループの名前（例：<code>CRAVENFLEA</code>）。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf.intel.ip.target_industries</p>
+				</td>
+				<td>
+					<p>このIPが対象とする業界（例：<code>暗号資産</code>、<code>自動車</code>）。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf.intel.ip.attacker_countries</p>
+				</td>
+				<td>
+					<p>脅威イベントの発生元の国。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf.intel.ip.target_countries</p>
+				</td>
+				<td>
+					<p>脅威イベントの標的となった国。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cf.intel.ip.datasets</p>
+				</td>
+				<td>
+					<p>データを提供するソースフィード（例：<code>ddos</code>、<code>waf</code>）。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="example-rule-expressions">ルール表現の例</h3>
+		<a href="https://blog.cloudflare.com/#example-rule-expressions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>単一のIPアドレスが複数の脅威主体や標的業界に同時に関連付けられる可能性があるため、これらのフィールドは配列として表されます。<code>any()</code>関数と<code>[*]</code>ワイルドカードを使用して、その脅威プロファイル内の値が基準に一致するかどうかを確認します。</p>
+	<ul>
+		<li>
+			<p><b>地域を標的とする既知のDDoS参加者をブロック：</b><code>any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")</code></p>
+		</li>
+		<li>
+			<p><b>金融セクターを標的とした特定の脅威アクターから保護: </b><code>any(cf.intel.ip.target_industries[*] == "Banking &amp; Financial Services") and any(cf.intel.ip.attacker_names[*] == "BLACKBASTA")</code></p>
+		</li>
+		<li>
+			<p><b>特定の高リスク配信元国に対する広範な保護：</b><code>any(cf.intel.ip.attacker_countries[*] == "IR")</code></p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-to-use-threat-events-data-in-your-workflows">ワークフローでの脅威イベントデータの利用方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-use-threat-events-data-in-your-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>UI駆動型のアプローチを希望する場合も、<a href="https://blog.cloudflare.com/shift-left-enterprise-scale"><u>コードとしてのインフラストラクチャ</u></a>を希望する場合も、これらのフィールドは既存のワークフローに統合されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-waf-rule-builder-api-terraform">WAFルールビルダー（API &amp; Terraform）</h3>
+		<a href="https://blog.cloudflare.com/#the-waf-rule-builder-api-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Infrastructure as Codeを好むチームのために、新しい<code>cf.intel</code>フィールドは、WAF <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>カスタムルール</u></a>と<a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer"><u>レート制限</u></a>のWAFルールビルダーに完全に統合されています。現在お使いになっているのと同じ構文を使って、複雑な表現を書くことができます。これらは標準的なWAFフィールドであるため、Cloudflare APIとTerraformを介して完全にサポートされており、選択したドメインやアカウント全体で脅威ブロックを自動化することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YQOp7XzNrFIHE1HSNhz6b/06d1565243b2902df5a5b294e3e80709/BLOG-3272_image3.png" alt="WAFルールビルダーに新しいフィールドが追加され、ユーザーが脅威イベントインジケーターに基づいて適切な設定を選択できるようになりました。" class="kg-image" width="1928" height="1376" loading="lazy">
+	</figure>
+	<p><i><sup>WAFルールビルダーに新しいフィールドが追加され、ユーザーが脅威イベントインジケータに基づいて適切な設定を選択できるようになりました。</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="visibility-in-security-analytics">セキュリティ分析の可視性</h3>
+		<a href="https://blog.cloudflare.com/#visibility-in-security-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>デプロイはこの戦いの半分にすぎません。これらの脅威インテリジェンスフィールドによってトリガーされたすべての一致が、<a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>セキュリティ分析</u></a>に記録されます。トラフィックを掘り下げることで、どのルールがトリガーされ、どのインジケーターが一致したかを正確に確認できます。これらの強化されたログにより、ルールがトリガーされた場合の監査と事後分析が迅速に可能になります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eXh1MgDAROkPZpXwvAaXl/0f124fe79995f213b63f6152e9dd8050/BLOG-3272_image1.png" alt="BLOG-3272 image1" class="kg-image" width="1999" height="1451" loading="lazy">
+	</figure>
+	<p><i><sup>セキュリティ分析では、脅威イベントが一致する攻撃が表示されます。完全なコンテキストとワンクリックでカスタムセキュリティルールを作成できるオプションも用意されています。</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="one-click-rule-from-the-threat-events-dashboard">脅威イベントダッシュボードからワンクリックルール</h3>
+		<a href="https://blog.cloudflare.com/#one-click-rule-from-the-threat-events-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すでに<b>脅威インテリジェンスダッシュボード</b>を使用して傾向を調査している場合は、IPリストをコピーして貼り付ける必要はありません。<i>「過去7日間に金融セクターの攻撃が確認されたIP」など</i>、特定のフィルターに基づいて<b>保存ビュー</b>を作成できます。ワンクリックで、<a href="https://developers.cloudflare.com/security-center/changelog/#2026-05-27" target="_blank" rel="noopener noreferrer"><u>これらのフィルターをエクスポート</u></a>してWAFルールに直接追加できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AOxzgPOUpk5gRrL3VfEB/5160a9fe57808483770fdb1e9979e312/BLOG-3272_-2.png" alt="BLOG-3272 image2" class="kg-image" width="1152" height="1180" loading="lazy">
+	</figure>
+	<p><i><sup>保存されたビューでは、保存されたビューの設定と一致するWAFルールを簡単に作成できるようになりました。</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="global-intelligence-across-our-network">当社のネットワーク全体のグローバルインテリジェンス</h2>
+		<a href="https://blog.cloudflare.com/#global-intelligence-across-our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>可視性と使いやすさは、基盤となるエンジンが高速になって初めて可能になります。トラフィックを減速させることなく、数百万もの脅威指標を処理するにはどうすればよいでしょうか？</p>
+	<p>これらの脅威インテリジェンスデータセットは高性能形式に圧縮され、世界中のCloudflareデータセンターに配信されます。リクエストが当社のネットワークに到達すると、Cloudflare WAFは、これらのローカルデータセットに対して<code>O(1)</code>常時ルックアップを実行します。これにより、10の指標と照合する場合も、1,000万の指標に対してチェックする場合も、遅延オーバーヘッドは事実上ゼロ（マイクロ秒単位で測定）のままであることが保証されます。</p>
+	<p>1つのIPは複数の脅威ベクトルに関連付けられているため、当社のエンジンは最初の一致だけで停止することはありません。IPに関連付けられたすべてのシグナルのセットを同時に評価します。これにより、「攻撃者 = RU」と「標的業界 = 銀行」を探すルールが、これらの属性の交点を1つのパスで評価することで正しくトリガーされ、計算の複雑さを増すことなく、マルチベクトル型アクターに対する最大のカバーを提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="ready-to-get-started">導入をご希望ですか？</h2>
+		<a href="https://blog.cloudflare.com/#ready-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この機能は、アクティブな<a href="https://www.cloudflare.com/en-gb/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce Oneサブスクリプション</u></a>をご利用のお客様に本日よりお使いいただけます。</p>
+	<ul>
+		<li>
+			<p>「Cloudforce One Essentials」を使用することで、顧客は脅威イベントのデフォルトのデータセットにアクセスし、指標を検索し、脅威ハンティング調査を行うことができます</p>
+		</li>
+		<li>
+			<p>Cloudforce One Advantageにより、お客様は情報提供リクエストを通じて脅威インテリジェンスアナリストのカスタムインサイトにアクセスできます</p>
+		</li>
+		<li>
+			<p>Cloudforce One Eliteは、当社で最も充実したパッケージであり、ブランド保護、多数の情報リクエスト、すべての脅威イベントデータセットへのアクセスが含まれています。</p>
+		</li>
+	</ul>
+	<p>グローバルなインサイトをローカル防御に変える準備はできましたか？<a href="https://developers.cloudflare.com/security-center/cloudforce-one/#analyze-threat-events" target="_blank" rel="noopener noreferrer"><u>脅威イベント</u></a>またはCloudflareダッシュボードの<a href="https://developers.cloudflare.com/firewall/cf-dashboard" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>セクションにアクセスして、最初の脅威インテリジェンスルールの作成を開始するか、Cloudforce Oneのサブスクリプションの詳細については、アカウントチームにお問い合わせください。</p>
+</div>

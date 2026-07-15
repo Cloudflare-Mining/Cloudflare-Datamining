@@ -1,0 +1,62 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network">English</a>、<a href="https://blog.cloudflare.com/fr-fr/cloudflare-now-powering-microsoft-edge-secure-network">Français</a>、<a href="https://blog.cloudflare.com/de-de/cloudflare-now-powering-microsoft-edge-secure-network">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-now-powering-microsoft-edge-secure-network">한국어</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-now-powering-microsoft-edge-secure-network">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-now-powering-microsoft-edge-secure-network">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dkRGn5TBMUjPIwNZb7yDq/66b2d05bb34d62a9df78e2c2e2c5734e/cloudflare-now-powering-microsoft-edge-secure-network.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Webサイト全体のユーザーのアクティビティを追跡するサードパーティのCookieから、IPアドレスと閲覧データに基づく高度なターゲティング広告まで、今日のインターネット閲覧エクスペリエンスは内密であるべきなのに、それほど内密ではないことはよく知られています。 Cloudflareでは、誰もが執拗な追跡や詮索の目から解放されてインターネットを閲覧できるべきだと考えています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FhPoKR9MPEZo0pbUSvp9L/7306503100e3ca940237488c05e2be14/image1-35.png" alt="Cloudflare is now powering Microsoft Edge Secure Network" class="kg-image" width="1800" height="1014" loading="lazy">
+
+	</figure>
+	<p>そのため、Microsoft Edgeと提携し、ブラウザで高速かつ安全なVPNを提供できるようになったことを発表でき、嬉しく思います。新しいものをインストールしたり、複雑な概念を理解したりしなくても、最新のネットワークレベルのプライバシーを手に入れることができます。EdgeセキュアネットワークVPNは、ほとんどの市場で、Microsoft Edgeの最新コンシューマーバージョンを利用でき、5GBのデータが自動的に付属します。_[Microsoft Edgeの設定とさらに（…）&gt;ブラウザーの基本]<i>に移動し、</i>[VPNを無料で入手]_をクリックしてこの機能を有効にするだけです。詳細については、Microsoftの<a href="https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn?form=MT00D8" target="_blank" rel="noopener noreferrer">Edgeセキュアネットワークページを</a>参照してください。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-privacy-proxy-platform-isnt-your-typical-vpn">Cloudflareのプライバシープロキシプラットフォームは典型的なVPNではありません</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-privacy-proxy-platform-isnt-your-typical-vpn" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一歩下がってみる：VPNは、デバイスを離れるインターネットトラフィックが、プロバイダー–（この場合はCloudflare）が運営する中間サーバーを介してトンネリングされる方法です！これを可能にする重要な要素は数多くありますが、その中には、トンネルの確立方法とトラフィックがトンネルを通って流れる方法を定義するVPNプロトコルがあります。次のプロトコルについて聞いたことがあるかもしれません：たとえば、Wireguard、IPsec、およびOpenVPNです。そして、私たちはこれらに精通しているわけではありませんが、（CloudflareのWireGuard実装は現在<a href="https://blog.cloudflare.com/1111-warp-better-vpn">1.1.1.1+WARP</a>を使用する何百万ものデバイスで使用されています）–プライバシープロキシプラットフォームは、インターネットプライバシーの次のフロンティアを推進し、Cloudflareのコアバリューの1つであるオープンなインターネット標準を採用する手段だと、私たちは考えています。</p>
+	<p>プライバシープロキシプラットフォームは、HTTP CONNECT（<a href="http://placeholder" target="_blank" rel="noopener noreferrer">HTTP標準</a>で定義されているメソッド）を実装しており、トンネルを確立し、そのトンネルを介して信頼性の高い順序付けられたバイトストリームを送信することにより、トラフィックをプロキシします。このプロキシする方法（およびその歴史）の詳細については、<a href="https://blog.cloudflare.com/a-primer-on-proxies">プロキシ入門</a>をご覧ください。</p>
+	<p>また、Cloudflareのプライバシー指向のインフラストラクチャのうち、すでに大規模にデプロイされているその他の部分も活用しています。リクエストはまず、DNSに<a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer">1.1.1.1</a>を利用し、クライアント認証には、<a href="https://datatracker.ietf.org/wg/privacypass/about" target="_blank" rel="noopener noreferrer">Privacy Pass</a>に基づくトークンプロキシを使用し、<a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">Geo-エグレス</a>を使用して、ユーザーの正確な場所を公開することなく正確なエグレスIPアドレスを選択します。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらのコンポーネントの詳細を見てみましょう。このブログの目的として、ユーザーがインターネット（携帯電話、タブレット、またはコンピューター）の閲覧に使用しているデバイスを_クライアント_と呼び、アクセスしようとしているWebサイトを_オリジンサイト_と呼びます。</p>
+	<p>プライバシープロキシプラットフォームには3つのメイン部分があります。</p>
+	<ol>
+		<li>
+			<p><b>トークンプロキシ</b>：これは、あなたが正規のMicrosoftアカウントを持つEdgeセキュアネットワークのユーザーであるかどうかをチェックするサービスです。</p>
+		</li>
+		<li>
+			<p><b>プライバシーAPI</b>：上記に基づいて、CloudflareのプライバシーAPIは、クライアントがプロキシ自体への認証に使用する認証トークンを発行します。</p>
+		</li>
+		<li>
+			<p><b>プライバシープロキシ</b>：これは、Cloudflareのネットワーク上で実行されるHTTP CONNECTベースのプロキシサービスです。このサービスは、クライアントが有効な認証トークンを提示しているかをチェックし、提示している場合、暗号化されたHTTPリクエストをオリジンサイトにプロキシします。また、使用する有効なエグレスIPアドレスを選択する責任があります。</p>
+		</li>
+	</ol>
+	<p>Edgeセキュアネットワークの保護がオンになっている場合–たとえば、ユーザーがコーヒーショップでオープンWi-Fiネットワークに接続した際に、プロキシは自動的にクライアントにトークンを認証するよう促します。クライアントがトークンを持っている場合は、それを提示します。持っていない場合は、トークンプロキシを利用して、認証者と発行者の協力を得て新しいプールを作成します。認証者はクライアントとMicrosoftアカウントの有効性をチェックし、代わりに、発行者はそのクライアントのトークンを発行します。このダンスは<a href="https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol">プライバシーパスプロトコル</a>に基づいています。重要なことは、これにより、Cloudflareは、Microsoftユーザーから個人情報を収集または保存することなく、クライアントが本人であることを検証できることです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ct0FCenirtxHz2Hg5ZjLK/c6fa499c3ab95ba3cd1abbf7cb11b1a4/image2-24.png" alt="" class="kg-image" width="1600" height="897" loading="lazy">
+
+	</figure>
+	<p>クライアントが有効なトークンをプロキシサーバーに提示すると、プライバシープロキシはクライアントのジオロケーションのハッシュに基づき有効なエグレスIPアドレスを選択します。次に、DNSレコード（CloudflareのDNSリゾルバー<a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a>が提供）を使用して、オリジンWebサイトへの暗号化されたセッションを開きます。そこからは非常に簡単です。ユーザーがそのサイトの閲覧し続けると、その接続を介してさらなるリクエストが送信され、ブラウザを停止または閉じると、その接続も閉じます。</p>
+	<p>Cloudflareは毎秒数百万のリクエストをプロキシするため、プロキシの運用面の多くは<a href="https://blog.cloudflare.com/introducing-oxy">Oxy</a>によって管理されます。Oxyは、テレメトリ、グレースフルリスタートからストリームの多重化やIPフォールバック、認証<a href="https://blog.cloudflare.com/oxy-extensibility">フック</a>まで、あらゆるものを処理するプロキシフレームワークです。</p>
+	<div class="flex anchor relative">
+		<h3 id="low-last-mile-latency-and-geolocation-parity-thanks-to-cloudflares-network">Cloudflareのネットワークによる低ラストマイル遅延およびジオロケーションの均等性</h3>
+		<a href="https://blog.cloudflare.com/#low-last-mile-latency-and-geolocation-parity-thanks-to-cloudflares-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのプライバシープロキシ実装は、プライバシーを犠牲にすることなくユーザーエクスペリエンスを最大化します。Edgeセキュアネットワークを有効にすると、ユーザーは地理的に位置する場所に関連した検索結果や閲覧結果を取得できます。Cloudflareでは、これをピザテストと呼んでいます。ユーザーは当社のプライバシープロキシ製品のいずれかを使用でき、なおかつ「<i>近くのピザ店</i>」の結果を取得できるようになっています。これは、ユーザーの場所に対応するIPアドレスを持つCloudflareデータセンターを常に経由し、エグレスすることで実現します。–<a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">1.1.1.1+WARP</a>でこれを行った方法については、詳しく説明しています。</p>
+	<p>数十、場合によっては数百のサーバーを持つ一般的なVPN事業者とは異なり、Cloudflareは、<a href="http://cloudflare.com/network" target="_blank" rel="noopener noreferrer">300以上の都市</a>にデータセンターを設置するなど、はるかに大きなフットプリントを保有しています。当社のネットワークはエニーキャストの「あらゆるサービスをどこでも」がアプローチであるため、当社の各データセンターは、Edgeセキュアネットワーククライアントからのトラフィックを受け入れることができます。このことは、Edgeユーザーが地理的に非常に近いCloudflareデータセンターを自動的に検出して接続し、ラストマイルの遅延を最小限に抑えることを意味します。最後に、Cloudflareは、CDNも運用しているため、すでにCloudflare上にあるWebサイトには「ホットパス」が与えられ、読み込みが速くなります。</p>
+	<p>私たちCloudflareは、オープンなインターネットにより多くのプライバシーオプションを提供できるよう常に努力しており、よりプライベートで安全なブラウジングをEdgeユーザーに提供できることを嬉しく思います。詳細については、<a href="https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn" target="_blank" rel="noopener noreferrer">MicrosoftのEdgeセキュアネットワークページ</a>または、<a href="https://support.microsoft.com/en-us/topic/use-the-microsoft-edge-secure-network-to-protect-your-browsing-885472e2-7847-4d89-befb-c80d3dda6318" target="_blank" rel="noopener noreferrer">Microsoftのサポートページ</a>にアクセスしてください。このようなプライバシー保護プロキシの使用に関心のあるパートナーの方は、<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer">こちらのフォーム</a>にご記入ください。</p>
+</div>

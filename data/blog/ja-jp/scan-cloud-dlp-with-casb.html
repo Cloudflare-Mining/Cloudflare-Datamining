@@ -1,0 +1,110 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/scan-cloud-dlp-with-casb">English</a>、<a href="https://blog.cloudflare.com/zh-tw/scan-cloud-dlp-with-casb">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/scan-cloud-dlp-with-casb">Français</a>、<a href="https://blog.cloudflare.com/de-de/scan-cloud-dlp-with-casb">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/scan-cloud-dlp-with-casb">한국어</a>、<a href="https://blog.cloudflare.com/es-es/scan-cloud-dlp-with-casb">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/scan-cloud-dlp-with-casb">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hZUKPoHuvfDk2w9Cdm7Hs/284b2fc5add90e2da1550bd003e1fc46/Feature_Image_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日は、Security Week 2025の最終日です。この1週間、多くのセキュリティ関連のブログ記事をお届けしましたが、最後にCloudflareのデータセキュリティ機能の最新情報をお伝えします。</p>
+	<p>最後の発表は、CloudflareのSASEプラットフォーム「<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>」に関するものです。Cloudflare Oneは、企業のセキュリティ・ITチームが自社の従業員やアプリケーション、サードパーティツールのセキュリティを一元管理できるサービスです。</p>
+	<p>本日より、Cloudflare Oneのユーザーは<a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>（クラウドアクセスセキュリティブローカー）製品が強化され、Amazon web Services（AWS）S3およびGoogle Cloud Storageと連携して、動態（設定ミス）やデータ損失防止（DLP）関連のセキュリティ問題をスキャンすることが可能になりました。<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer"><u>無料アカウントを作成</u></a>して、お試しください。</p>
+	<p>スキャンは即時（ポイントインタイム）と継続的の両方で実行できます。スキャンではIDとアクセス管理（IAM）、バケット、オブジェクトの設定ミスを特定したり、クラウドストレージオブジェクト内の社会保障番号やクレジットカード番号、正規表現を使用したその他のパターンなどの機密情報を検出することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloud-dlp">クラウドDLP</h3>
+		<a href="https://blog.cloudflare.com/#cloud-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R1bE9TRmTdHDTg1XeLS60/8269b687ec65e70bcaee437f30d5f590/1.png" alt="" class="kg-image" width="1111" height="677" loading="lazy">
+	</figure>
+	<p>ここ数年、多くの企業のIT・セキュリティチームから、「CASBはシンプルで使いやすく、SaaS環境のセキュリティ強化に役立つ」と高い評価をいただいております。<a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations" target="_blank" rel="noopener noreferrer"><u>サポートする連携の数</u></a>、セットアップの容易さ、Microsoft 365で公に共有されたファイルやGoogle Workspaceで公開された機密データなど、一般的なSaaSプラットフォーム間の重大な問題を迅速に特定できることから、多くのユーザーに支持されています。</p>
+	<p>しかし、お客様との対話の中で「このような監視・調査（保存されているデータのリスク）が必要なのはSaaS環境だけではない」という声をいただきました。機密情報は、知的財産、顧客データ、個人を特定する情報のいずれであっても、悪意のある人の手に渡った場合、組織の評判の低下や顧客への補償など、大きな打撃となります。多くのお客様は、SaaSツールのデータのセキュリティ以上にAWSやGCPなどのクラウドプロバイダーに保存されるデータのセキュリティを重視されています。</p>
+	<p>そこで今回、Cloudflare CASBを拡張して<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>クラウドDLP （データ損失防止）</u></a>機能を追加し、Amazon S3バケットとGoogle Cloud Storage内のオブジェクトをスキャンして機密データを検出できるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TKXiAkQKxw3GFQBCuQLjX/198e4620da8239280eff669b7b62678b/2.png" alt="" class="kg-image" width="1036" height="704" loading="lazy">
+	</figure>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer"><u>Cloudflare DLP</u></a>ではこの検索を、一般的なデータタイプ（社会保障番号やクレジットカード番号など）を検索する事前構築された検出プロファイルから選択することも、正規表現を使用して作成した独自のカスタムプロファイルから行うこともできます。検出されたDLPプロファイルに一致するオブジェクトは、ファイルの内容や所有者などの詳細をすぐに確認し、データの保護を迅速に行い、リアルタイムで流出を防ぐことができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cyOaQJ0ZyPO8r7LyeU6ON/30b8453888d6cb13dcb15225f875a0cd/3.png" alt="" class="kg-image" width="1999" height="1224" loading="lazy">
+	</figure>
+	<p>他のCASB統合と同様に、この新機能にもポスチャ管理機能が含まれています。AWSでもGCPでも、データを危険にさらす可能性のある設定ミスや、その他のクラウドセキュリティの問題（一般に公開されている、重要なログ記録が無効になっている、アクセスキーの更新が必要、<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>多要素認証（MFA）</u></a>が設定されていないユーザーなど）を特定します。これらの機能はすべて標準で利用可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="simple-by-default-configurable-where-you-want-it">シンプルな使いやすさと柔軟なカスタマイズ</h3>
+		<a href="https://blog.cloudflare.com/#simple-by-default-configurable-where-you-want-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのCASBとDLPは、初期設定のままでも簡単に使えるため、すぐに導入できます。しかし、高度な設定も可能であり、お客様固有のニーズに合わせてスキャンプロファイルを微調整することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MLh3y7SMHnX52cjuu4pmE/b7bb67497fc21bc9d3f3f740a9b3fe52/4.png" alt="" class="kg-image" width="1999" height="1402" loading="lazy">
+	</figure>
+	<p>たとえば、スキャンするストレージバケットやファイルタイプを指定したり、オブジェクトの一部だけをサンプリングして分析することもできます。また、スキャン処理はお客様のクラウド環境内で実行されるため、データが外部に送信されることはありません。これにより、クラウドストレージのセキュリティを確保してコストを管理しながら、企業固有のコンプライアンスおよびセキュリティ要件に合わせてソリューションを調整することができます。</p>
+	<p>当社のロードマップには、サポートをAzure Blob StorageやCloudflare R2などの追加のクラウドストレージ環境に拡張すること含まれており、当社の包括的なマルチクラウドセキュリティ戦略をさらに発展させていきます。詳細については、続報をお待ちください！</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は当初より、クラウド環境全体でDLP機能を提供するには、機密データの暴露をリアルタイムで検知できる効率的でスケーラブルな設計が必要であることを認識していました。</p>
+	<div class="flex anchor relative">
+		<h4 id="serverless-architecture-for-streamlined-processing">サーバーレスアーキテクチャで効率的な処理を実現</h4>
+		<a href="https://blog.cloudflare.com/#serverless-architecture-for-streamlined-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>機密データの検出を効率的かつスケーラブルに行うため、設計の初期段階でサーバーレスアーキテクチャを採用することを決定しました。仕組みは次のとおりです。</p>
+	<ul>
+		<li>
+			<p><b>コンピュートアカウント</b>：全ての処理は、「コンピュートアカウント」と呼ばれる組織が所有するクラウドアカウント内で実行されます。この設計により、データは境界内に留まり、高価なクラウドエグレス料金を回避できます。コンピュートアカウントは、Terraformテンプレートを使えば15分以内でセットアップできます。</p>
+		</li>
+		<li>
+			<p><b>コントローラー機能</b>：毎分、お客様のクラウド環境の軽量サーバーレスコントローラー機能がCloudflareのAPIと通信し、Cloudflare Oneアカウントから最新のDLP設定とセキュリティプロファイルを取得します。</p>
+		</li>
+		<li>
+			<p><b>クローラープロセス</b>：コントローラーは、クローラーと呼ばれる2番目のサーバーレス関数によって処理されるオブジェクト検出タスクをトリガーします。クローラーはAPI経由でAWS S3やGoogle Cloud Storageなどのクラウドストレージアカウントにクエリを実行し、新しいオブジェクトを識別します。さらに、コンピュートアカウント内でRedisを使用して、まだ評価されていないオブジェクトを追跡します。</p>
+		</li>
+		<li>
+			<p><b>機密データのスキャン</b>：新たに検出されたオブジェクトは、キューを通じてスキャナーと呼ばれる第3番目のサーバーレス関数に送信されます。この関数は、オブジェクトをダウンロードし、その内容をコンピュートアカウントのDLPエンジンにストリーミングします。DLPエンジンは、事前定義またはカスタムのDLPプロファイルとの一致をスキャンします。</p>
+		</li>
+		<li>
+			<p><b>検出結果の生成とアラート</b>：DLPのスキャンで機密データが見つかると、そのオブジェクトの詳細情報（コンテキストや所有者情報など）が記録され、キューに送信されます。このデータは、Cloudflareのホスティングサービスによって取り込まれ、Cloudflareダッシュボード上でセキュリティチームが確認できるようになり、迅速に対策を講じることができるようになります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="scalable-and-secure-design">スケーラブルでセキュアな設計</h4>
+		<a href="https://blog.cloudflare.com/#scalable-and-secure-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このDLPの仕組みはプライバシー最優先のアプローチであり、機密データがお客様のクラウド環境外に出ることはありません。コンピュートアカウントとCloudflareのAPI間の通信はすべて、コントローラーによって開始されます。つまり、イングレストラフィックを許可するために追加の設定を行う必要はありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">使用開始手順</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この新しいデータセキュリティ機能やロードマップについて詳しく知りたい場合は、担当のアカウントチームにお問い合わせください。ご自身で試してみたい方は、Cloudflare Oneダッシュボードにログインし（アカウントをお持ちでない場合は<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>から作成）、CASBページに移動して最初の連携を設定してください。</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f51cb1a22818fc567453d3d1ccbf3207/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff51cb1a22818fc567453d3d1ccbf3207%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600&amp;startTime=9s&amp;controls=false" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

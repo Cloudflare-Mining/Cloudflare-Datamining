@@ -1,0 +1,394 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-tracing-now-in-open-beta">English</a>および<a href="https://blog.cloudflare.com/ko-kr/workers-tracing-now-in-open-beta">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c8q4MrxQTvfxNCQ7aFIgU/9a694941242bc824117e9f9f11cb848c/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Workerの速度が低下したり、エラーが発生し始めた場合、根本原因を特定するために何時間もかけてログ分析と試行錯誤のデバッグを必要とするべきではありません。アプリケーションのリクエストフローの各ステップで何が起こっているかを明確に可視化する必要があります。これは、Workersを使っている開発者から大量に寄せられているフィードバックであり、本日、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>のトレースのオープンベータを発表できることを嬉しく思います。次のことが可能になります。</p>
+	<ul>
+		<li>
+			<p><b>Workersプラットフォーム上のアプリケーションに自動インスツルメンテーションを導入: </b>手動セットアップ、複雑なインスツルメンテーション、コード変更は不要です。設定不要で機能します。</p>
+		</li>
+		<li>
+			<p><b>Cloudflareダッシュボードでトレースを調査・調査：</b>トレースは処理され、Workers Observabilityダッシュボードで既存ログと共に利用できます。</p>
+		</li>
+		<li>
+			<p><b>ログとトレースをOpenTelemetry互換プロバイダーにエクスポート:</b> OpenTelemetryトレース（および相関ログ）を、選択した可観測性プロバイダーに送信します。</p>
+		</li>
+	</ul>
+	<p>2024年、当社はクラウドプラットフォームで最高のファーストパーティ<a href="https://www.cloudflare.com/developer-platform/products/workers-observability" target="_blank" rel="noopener noreferrer"><u>可観測性</u></a>を<a href="https://blog.cloudflare.com/cloudflare-acquires-baselime-expands-observability-capabilities"><u>構築することに着手しました</u></a>。Workerのパフォーマンスに関するより優れたインサイトを提供するために、新しいメトリクスダッシュボードをリリースしました。<a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>は、Workersのログを自動的に取り込み保存するため、あらゆるディメンションにわたるデータを調査するための<a href="https://developers.cloudflare.com/workers/observability/query-builder" target="_blank" rel="noopener noreferrer"><u>クエリビルダー</u></a>、そしてリアルタイムでログをストリーミングするための<a href="https://developers.cloudflare.com/workers/observability/logs/real-time-logs" target="_blank" rel="noopener noreferrer"><u>リアルタイムログ</u></a>をリリースしました。高度なフィルタリング機能によるものです。今日から、自動<b>トレース</b>を有効にすることで、Workersアプリケーションをさらに深く理解できるようになります！</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-workers-tracing">Workers Tracingとは？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-workers-tracing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WorkersがOpenTelemetryに準拠したスニペットをトレースして出力し、Workerが実行するすべての操作に関する詳細なメタデータとタイミング情報を表示します。パフォーマンスのボトルネックを特定し、エラーを解決し、WorkerがWorkersプラットフォーム上の他のサービスとどのように相互作用しているかを理解するのに役立ちます。次のような質問に回答できるようになりました：</p>
+	<ul>
+		<li>
+			<p>アプリケーションの速度を低下させているのは、どの呼び出しですか？</p>
+		</li>
+		<li>
+			<p>データベースへのクエリで最も時間がかかるのは？</p>
+		</li>
+		<li>
+			<p>あるリクエストがエラーにつながるようなことはありますか？</p>
+		</li>
+	</ul>
+	<p>Tracingは、さまざまな操作を通じた各呼び出しの行程を可視化するものです。各操作はスポークとしてキャプチャされ、何が起こったか、どれだけの時間がかかったかを示す時間帯のセグメントです。子スパンは、親スペルの中にネストされ、サブ操作や依存関係を表示し、呼び出しの実行フローを階層的なビューで表示します。各範囲には、デバッグやフィルタリングイベントの詳細を提供するコンテキストメタデータや属性を含めることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4F7l3WSJ2hY0eu6kX47Rdp/c7c3934e9abbbb1f01ec979941d35b54/unnamed.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="full-automatic-instrumentation-no-code-changes">完全な自動実装、コード変更なし</h3>
+		<a href="https://blog.cloudflare.com/#full-automatic-instrumentation-no-code-changes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前は、アプリケーションのインストゥルメントには、<a href="https://opentelemetry.io/docs/specs" target="_blank" rel="noopener noreferrer"><u>OpenTelemetry仕様</u></a>、複数の<a href="https://opentelemetry.io/docs/concepts/instrumentation/libraries" target="_blank" rel="noopener noreferrer"><u>OTelライブラリ</u></a>、およびそれらの相互関係を理解する必要がありました。実装は面倒で、アプリケーションのロジックを難読化するインストルメンテーションコードでコードベースが肥大化しました。</p>
+	<p>トレースの設定には通常、サードパーティのSDKとの統合、すべてのデータベース呼び出しとAPI呼び出しをインストルメンテーションコードでラップし、単一のトレースを見る前に複雑な設定ファイルをデバッグするための時間がかかりました。この実装オーバーヘッドにより、観測可能性が後付けされがちで、問題が発生した時に本番環境で完全な可視性が得られません。</p>
+	<p>Workers Tracingが魔法をよく使うのは、<b>完全自動化です。セットアップもコード変更も、時間を浪費することもありません</b>。WorkersのすべてのI/O操作を自動的に計測するというアプローチをとりました。Workersのランタイムであるworkerdとの深い統合により、Workersのすべての呼び出しを<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>通じて</u></a>データフローの全範囲を把握できるようにしたのです。</p>
+	<p>アプリケーションロジックに集中している。計測はCloudflareが担当します。</p>
+	<div class="flex anchor relative">
+		<h4 id="what-you-can-trace-today">現在追跡できるもの</h4>
+		<a href="https://blog.cloudflare.com/#what-you-can-trace-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日対象となる業務は次のとおりです：</p>
+	<ul>
+		<li>
+			<p><b>Binding calls:</b> 様々な<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workerバインディング</u></a>との相互作用。KVの読み書き、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2オブジェクトストレージ</a>操作、Durable Objectの呼び出し、その他多くのバインディング呼び出しが自動的にトレースされます。これにより、Workerが他のサービスをどのように使用しているかを完全に可視化できます。</p>
+		</li>
+		<li>
+			<p><b>フェッチコール：</b>すべてのアウトバウンドHTTPリクエストは自動的に計測され、タイミング、ステータスコード、リクエストのメタデータを取得します。これにより、アプリケーションのパフォーマンスに影響を与えている外部依存関係を迅速に特定できます。</p>
+		</li>
+		<li>
+			<p><b>ハンドラーコール:</b> <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch" target="_blank" rel="noopener noreferrer"><u>フェッチハンドラー</u></a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled" target="_blank" rel="noopener noreferrer"><u>スケジュールされたハンドラー</u></a>、<a href="https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer" target="_blank" rel="noopener noreferrer"><u>キューハンドラー</u></a>など、外部入力を受信して処理できるWorkerのメソッド。これにより、Workerがどのように呼び出されているかのパフォーマンスを可視化できます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="automatic-attributes-on-every-span">すべての範囲の自動属性</h4>
+		<a href="https://blog.cloudflare.com/#automatic-attributes-on-every-span" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社の自動インストルメンテーションは、各操作をスプリットとして捕捉します。たとえば、R2バインディングコール（<code>get</code>または<code>put</code>操作など）によって生成されるスパンには、操作タイプ、エラー（該当する場合）、オブジェクトキー、および期間など、利用可能な属性が自動的に含まれます。これらの詳細な属性は、すべての詳細を手動でログに記録することなく、アプリケーションに関する正確な質問に答えるために必要なコンテキストを提供します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6n5j0AdsgouMuHacgrTW9Q/60e4f73dd66a591ee666d6acdbaafc03/unnamed2.png" alt="" class="kg-image" width="1600" height="598" loading="lazy">
+	</figure>
+	<p>今後も、範囲により詳細な属性を追加し、複数のWorkersや外部サービス全体で呼び出しを追跡する機能を追加していく予定です。当社の<a href="http://developers.cloudflare.com/workers/observability/traces/spans-and-attributes" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>には、測定対象範囲とその属性の完全なリストが含まれています。</p>
+	<div class="flex anchor relative">
+		<h3 id="investigate-traces-in-the-workers-dashboard">Workersダッシュボードでトレースを調査する</h3>
+		<a href="https://blog.cloudflare.com/#investigate-traces-in-the-workers-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのダッシュボードで、<a href="http://developers.cloudflare.com/workers/observability/traces" target="_blank" rel="noopener noreferrer"><u>特定のWorkerアプリ内のトレースを簡単に表示でき</u></a>、アプリのパフォーマンスを即座に可視化することができます。ご希望の時間枠内のすべてのトレースイベントのリストと、各呼び出しの期間や使用可能な属性を含む各呼び出しのトレースを視覚化することができます。また、アカウント上のすべてのWorkersからクエリーを実行すると、複数のアプリで発生している問題を特定することができます。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HU4vktx7zr3aflWK9cdsl/73dcd1f1f9702faa65430fec9c9da8c5/unnamed_3.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<p>Workersアプリケーションでトレースの表示を開始するには、以下の設定を行います：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5e7hIAgVnjxvZSshwBTpXf/a0571af6e43be414c85e25dba106848c/1.png" alt="" class="kg-image" width="1360" height="584" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="export-traces-to-opentelemetry-compatible-providers">OpenTelemetry互換プロバイダーにトレースをエクスポート</h3>
+		<a href="https://blog.cloudflare.com/#export-traces-to-opentelemetry-compatible-providers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>しかし、一部の開発チームが、<b>すでに使用しているツール</b>内で他のテレメトリデータと共存する必要があるWorkersがあることを認識しています。そこで今回、トレースエクスポートも追加し、お客様のチームが既存の可観測性スタックでデータを送信、可視化、クエリできるようにします！本日より、<a href="https://www.honeycomb.io" target="_blank" rel="noopener noreferrer"><u>Honeycomb</u></a>、<a href="https://grafana.com" target="_blank" rel="noopener noreferrer"><u>Grafana</u></a>、<a href="https://sentry.io/welcome" target="_blank" rel="noopener noreferrer"><u>Sentry</u></a> などのプロバイダー、または<a href="http://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#available-opentelemetry-destinations" target="_blank" rel="noopener noreferrer"><u>利用可能なエンドポイントを持つその他の OpenTelemetry プロトコル（OTLP）プロバイダー</u></a>に直接トレースをエクスポートできるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GdiHZEL1bIpGn5BRhbyyT/0fbb6610a488f5f2c44f78ba3ecaf576/Export_traces_to_OpenTelemetry_compatible_providers_.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="correlated-logs-and-traces">相関ログとトレース</h4>
+		<a href="https://blog.cloudflare.com/#correlated-logs-and-traces" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、同じトレースIDを共有するOTLP形式のログのエクスポートもサポートしており、サードパーティのプラットフォームがログエントリーと対応するトレースを自動的に関連付けることができます。これにより、スプリットと関連するログメッセージ間を簡単に移動できます。</p>
+	<div class="flex anchor relative">
+		<h4 id="set-up-your-destination-enable-exports-and-go">宛先を設定し、エクスポートを有効にして、Go!</h4>
+		<a href="https://blog.cloudflare.com/#set-up-your-destination-enable-exports-and-go" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>選択した宛先にイベントを送信するには、まず、CloudflareダッシュボードでOTLPエンドポイントの送信先を設定します。すべての宛先について、カスタム名を指定し、APIキーやアプリ設定を含めたカスタムヘッダーを設定することができます。</p>
+	<p>宛先を設定したら（例：<code>Honeycomb-tracing</code> ）にアクセスし、<code>wrangler.jsonc</code> で以下を設定し、デプロイします：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xUbPsz307PvkZ6i15iUKe/452efaad0afdbeb2722f42726d0a849b/3.png" alt="" class="kg-image" width="1360" height="628" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="coming-up-for-workers-observability">Workersの可観測性が登場</h3>
+		<a href="https://blog.cloudflare.com/#coming-up-for-workers-observability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは、ご希望のテレメトリーデータをご希望の場所で取得するためのワークフローとツールを提供するWorkersの始まりに過ぎません。ダッシュボードでのネイティブトレースと、他のタイプのテレメトリのサードパーティへのエクスポートのサポートを改善しています。今後数か月以内に、以下を発表します。</p>
+	<ul>
+		<li>
+			<p><b>より多くのスパンと属性のサポート: </b>Workersプラットフォームのあらゆる部分に、さらに自動トレースを追加しています。最初の目的は、リクエスト内のすべての操作の期間を可視化することですが、詳細な属性を追加することもしたいと考えています。不足している点についてのフィードバックは、ここで非常に貴重です。</p>
+		</li>
+		<li>
+			<p><b>トレースコンテキストの伝達</b>：<i><b>分散型</b></i>アプリケーションを構築する場合、トレースがすべてのサービス（Cloudflare外のサービスも含む）に接続していることを確認し、自動的に範囲をリンクしてエンドツーエンドの完全な可視性を実現することが重要です。たとえば、Workersからのトレースは、親サービスからネストすることができ、その逆も同様です。完全に実装すると、自動トレースコンテキストの伝達は<a href="https://www.w3.org/TR/trace-context" target="_blank" rel="noopener noreferrer"><u>W3C基準</u></a>に準拠し、既存のツールとサービスとの互換性を確保します。</p>
+		</li>
+		<li>
+			<p><b>カスタム範囲と属性のサポート</b>：自動インストルメンテーションにより、Workersプラットフォーム内で何が起こっているかを可視化できますが、お客様独自のアプリケーションロジックも可視化する必要があることを私たちは知っています。そのため、お客様にも独自の範囲を手動で追加できるようにします。</p>
+		</li>
+		<li>
+			<p><b>メトリクスのエクスポート機能</b>：現在、Workersダッシュボード内でメトリクス、ログ、トレースを監視・表示できるようになりました。インフラストラクチャメトリクス（リクエスト量、エラー率、実行時間など）とカスタムアプリケーションメトリクスの両方を、お好みの可観測性プロバイダーにエクスポートできるようになったことは、最後にお伝えしたいと思います。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-you-can-expect-from-tracing-pricing">料金の追跡から期待できること</h3>
+		<a href="https://blog.cloudflare.com/#what-you-can-expect-from-tracing-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、ベータ版の開始にあたって、Cloudflareダッシュボードでトレースを表示することも、サードパーティプロバイダーにトレースをエクスポートすることも無料です。<b>2026年1月15日</b>に、トレースとログイベントには以下の料金が請求されます：</p>
+	<p><b>CloudflareダッシュボードでWorkersのトレースを表示する</b></p>
+	<p>Cloudflareダッシュボードでトレースを表示するには、<a href="https://www.cloudflare.com/plans/developer-platform" target="_blank" rel="noopener noreferrer"><u>Workers Freeおよび有料プラン</u></a>を以下の価格設定で表示できます。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ymeg {
+			background-color: #0B5394;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-0lax"></th>
+					<th class="tg-ymeg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Workers 無料</span></th>
+					<th class="tg-ymeg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Workers 有料</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">含まれるボリューム </span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1日あたり20万件のイベント</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,000万イベント/月 </span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">追加イベント </span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">無回答</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100万ログあたり0.60ドル </span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">保管 </span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3日 </span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7日 </span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p><b>トレースとログのエクスポート</b></p>
+	<p>サードパーティのOTLP互換先にトレースをエクスポートするには、<b>Workers有料</b>サブスクリプションが必要です。価格設定は、以下の含むスパンまたはログイベントに基づいています：</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0snp {
+			background-color: #F90;
+			color: #FFF;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-5lae {
+			background-color: #FFF;
+			color: #383838;
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-c6q4"></th>
+					<th class="tg-0snp"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Workers 無料</span></th>
+					<th class="tg-0snp"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Workers 有料</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">イベント </span></td>
+					<td class="tg-c6q4" rowspan="2"><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用不可</span></td>
+					<td class="tg-5lae"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#383838;background-color:#FFF">1,000万件/月 </span></td>
+				</tr>
+				<tr>
+					<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">追加イベント </span></td>
+					<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100万件のバッチイベントにつき0.05ドル</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="enable-tracing-today">今すぐトレースを有効化</h3>
+		<a href="https://blog.cloudflare.com/#enable-tracing-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workersアプリケーションのトレースを始めませんか？</p>
+	<ul>
+		<li>
+			<p><a href="http://developers.cloudflare.com/workers/observability/traces" target="_blank" rel="noopener noreferrer"><u><b>ドキュメント</b></u></a>を<b>ご覧ください：</b>セットアップの方法、現在の制限、今後の詳細についてご確認ください。</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/workers-sdk/discussions/11062" target="_blank" rel="noopener noreferrer"><b>GitHubディスカッション</b></a>に<b>ご参加ください：</b>お客様のフィードバックは、自動インストルメンテーション、ダッシュボードの追跡、OpenTelemetryのエクスポートフローに関するベータ期間中、非常に貴重なものになります。GitHubディスカッションに移動して問題を提起したり、機能リクエストを送信したりして、私たちにご連絡ください！</p>
+		</li>
+	</ul>
+	<p></p>
+</div>

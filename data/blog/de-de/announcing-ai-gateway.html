@@ -1,0 +1,120 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/announcing-ai-gateway">English</a>, <a href="https://blog.cloudflare.com/fr-fr/announcing-ai-gateway">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-ai-gateway">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/announcing-ai-gateway">한국어</a>, <a href="https://blog.cloudflare.com/es-es/announcing-ai-gateway">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/announcing-ai-gateway">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4z8Ah8DuOTlpAYK5RC4nMf/25480f6f6ae53c8de957b992f9f6f4ef/announcing-ai-gateway.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Wir freuen uns, Ihnen heute die Beta-Version von <b>AI Gateway</b> vorzustellen – dem Portal, das Ihre KI-Anwendungen besser beobachtbar, zuverlässiger und skalierbarer macht.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KExrqxBeL4yGLYsMeeZ2j/26e12b714f8653f8132aeaf14c0a1e78/image4-10.png" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" class="kg-image" width="1801" height="1014" loading="lazy">
+
+	</figure>
+	<p>AI Gateway befindet sich zwischen Ihrer Anwendung und den KI-APIs, an die Ihre Anwendung Anfragen stellt (wie z. B. OpenAI). Dadurch können wir Antworten cachen, Anfragen begrenzen und wiederholen und Analytics bereitstellen, um Sie bei der Überwachung und dem Tracking der Nutzung zu unterstützen. AI Gateway kümmert sich um die Dinge, die fast alle KI-Anwendungen benötigen, und spart Ihnen Entwicklungszeit, damit Sie sich auf Ihre eigentliche Arbeit konzentrieren können.</p>
+	<div class="flex anchor relative">
+		<h3 id="connecting-your-app-to-ai-gateway">Ihre App mit AI Gateway verbinden</h3>
+		<a href="https://blog.cloudflare.com/#connecting-your-app-to-ai-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Für den Einstieg in das AI Gateway von Cloudflare genügt eine einzige Codezeile. Sie müssen lediglich die URL in Ihren API-Aufrufen durch Ihren individuellen AI Gateway-Endpunkt ersetzen. Bei OpenAI definieren Sie beispielsweise Ihre baseURL als <code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code> anstelle von <code>"https://api.openai.com/v1"</code> – und das war’s. Sie können Ihre Token in Ihrer Code-Umgebung aufbewahren, und wir protokollieren die Anfrage durch AI Gateway, bevor wir sie mit Ihrem Token an die endgültige API weiterleiten.</p>
+	<p>Wir unterstützen derzeit Provider wie OpenAI, Hugging Face und Replicate und werden in Zukunft weitere hinzufügen. Wir unterstützen alle verschiedenen Endpunkte innerhalb der Provider und auch Response Streaming, sodass alles direkt ab der Konfiguration von Gateway funktionieren sollte. Der spezielle Endpunkt für diese Provider ermöglicht Ihnen, Ihre Apps mit AI Gateway zu verbinden, indem Sie eine einzige Codezeile ändern, ohne Ihre ursprüngliche Nutzlaststruktur zu verändern.</p>
+	<pre class="language-javascript"><code class="language-javascript">// configuring AI gateway with the dedicated OpenAI endpoint
+
+const openai = new OpenAI({
+&nbsp; apiKey: env.OPENAI_API_KEY,
+&nbsp; baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai",
+});</code></pre>
+	<p>Wir haben auch einen universellen Endpunkt, den Sie verwenden können, wenn Sie sich mehr Flexibilität bei Ihren Anfragen wünschen. Mit dem universellen Endpunkt haben Sie die Möglichkeit, Fallback-Modelle zu definieren und Wiederholungsanfragen zu verarbeiten. Nehmen wir beispielsweise an, es wurde eine Anfrage an OpenAI GPT-3 gestellt, aber die API war offline. Mit dem universellen Endpunkt können Sie Hugging Face GPT-2 als Fallback-Modell definieren und das Gateway kann diese Anfrage dann automatisch an Hugging Face senden. Dieses Feature hilft, die Ausfallsicherheit Ihrer App zu verbessern, wenn Sie ungewöhnliche Fehler feststellen, Durchsatzbegrenzungen erhalten oder wenn eine Rechnung zu teuer wird und Sie auf andere Modelle ausweichen möchten. Mit dem universellen Endpunkt müssen Sie lediglich Ihre Nutzlast anpassen, um den Provider und den Endpunkt anzugeben, damit wir die Anfragen für Sie richtig routen können. Weitere Einzelheiten zum Schema des universellen Endpunkts finden Sie in der Beispielanfrage unten und in der <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">Dokumentation</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="gaining-visibility-into-your-apps-usage">Gewinnen Sie Einblick in die Nutzung Ihrer Apps</h3>
+		<a href="https://blog.cloudflare.com/#gaining-visibility-into-your-apps-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
+
+curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
+&nbsp; --header 'Content-Type: application/json' \
+&nbsp; --data '[
+&nbsp; {
+&nbsp; &nbsp; "provider": "openai",
+&nbsp; &nbsp; "endpoint": "chat/completions",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $OPENAI_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "model": "gpt-3.5-turbo",
+&nbsp; &nbsp; &nbsp; "stream": true,
+&nbsp; &nbsp; &nbsp; "messages": [
+&nbsp; &nbsp; &nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "role": "user",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "content": "What is Cloudflare?"
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; &nbsp; ]
+&nbsp; &nbsp; }
+&nbsp; },
+&nbsp; {
+&nbsp; &nbsp; "provider": "huggingface",
+&nbsp; &nbsp; "endpoint": "gpt2",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $HF_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"
+&nbsp; &nbsp; }
+&nbsp; },
+]'</code></pre>
+	<p>Jetzt, da Ihre App mit Cloudflare verbunden ist, können wir Ihnen helfen, Analytics-Daten zu sammeln und Einblicke und Kontrolle über den Traffic in Ihren Apps zu erhalten. Unabhängig davon, welches Modell oder welche Infrastruktur Sie im Backend verwenden, können wir Ihnen helfen, Anfragen zu protokollieren und Daten zu analysieren, darunter auch die Anzahl der Anfragen, die Anzahl der Nutzenden, die Kosten für den Betrieb der App und die Dauer der Anfragen. Obwohl dies grundlegende Analytics sind, die Modell-Provider eigentlich offenlegen sollten, ist es überraschend schwierig, mit den herkömmlichen Modell-Providern Einblick in diese Metriken zu erhalten. AI Gateway geht noch einen Schritt weiter und ermöglicht die Aggregation von Analytics über mehrere Provider hinweg.</p>
+	<div class="flex anchor relative">
+		<h3 id="controlling-how-your-app-scales">Kontrolle über die Skalierung Ihrer Apps</h3>
+		<a href="https://blog.cloudflare.com/#controlling-how-your-app-scales" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yPlnJxKwRTlaUEeU9qvpg/706604d295c464f7d1608df10311e1d4/image3-24.png" alt="" class="kg-image" width="1999" height="1418" loading="lazy">
+
+	</figure>
+	<p>Einer der häufigsten Kritikpunkte ist der hohe Preis für die Entwicklung und den Betrieb von KI-Apps. Jeder API-Aufruf kann unvorhersehbar teuer werden und die Kosten können schnell in die Höhe schießen. Das hält Entwicklungsteams davon ab, ihre Apps auf das volle Potenzial zu skalieren. Bei der rasanten Entwicklung der Branche wollen Sie nicht durch Ihre Skalierung ausgebremst werden und auf der Strecke bleiben – und genau hier helfen Caching und Durchsatzbegrenzung. Wir ermöglichen es Entwicklern und Entwicklerinnen, ihre API-Aufrufe zu cachen, sodass neue Anfragen aus unserem Cache und nicht aus der ursprünglichen API bedient werden können. Das macht sie günstiger und schneller. Die <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">Durchsatzbegrenzung</a> kann auch zur Kostenkontrolle beitragen, indem sie die Anzahl der Anfragen drosselt und übermäßige oder verdächtige Aktivitäten verhindert. Entwicklungsteams können flexibel Regeln für das Caching und die Durchsatzbegrenzung festlegen, sodass Apps in dem gewünschten, nachhaltigen Tempo skaliert werden können.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-workers-ai-platform">Die Workers AI-Plattform</h3>
+		<a href="https://blog.cloudflare.com/#the-workers-ai-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EgZOiCNWYJkkqeEjkV9Ew/cad537af80e68a5eac2b1f6c8cc977d0/image1-20.png" alt="" class="kg-image" width="1999" height="1308" loading="lazy">
+
+	</figure>
+	<p>AI Gateway lässt sich perfekt mit unseren neuen Produkten <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> und <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">Vectorize</a> kombinieren, sodass Sie Full-Stack-KI-Anwendungen innerhalb des Workers-Ökosystems erstellen können. Von der Bereitstellung von Anwendungen mit Workers, der Ausführung von Modellinferenz an der Edge mit Workers AI, der Speicherung von Vektoreinbettungen mit Vectorize bis hin zum Einblick in Ihre Anwendungen mit AI Gateway – die Workers-Plattform ist Ihre zentrale Anlaufstelle, um KI-Anwendungen zum Leben zu erwecken. Wie Sie AI Gateway mit Workers AI oder den verschiedenen Providern nutzen können, erfahren Sie in der <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">Dokumentation</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-up-the-enterprise-use-case">Der nächste Schritt: der Anwendungsfall für Unternehmen</h3>
+		<a href="https://blog.cloudflare.com/#next-up-the-enterprise-use-case" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir stellen AI Gateway v1 mit einigen essenziellen Funktionen bereit, aber wir planen, das Produkt zu erweitern, um auch fortgeschrittenere Anwendungsfälle abzudecken: Nutzungswarnungen, Schutz vor Jailbreak, dynamisches Modellrouting mit A/B-Testing und erweiterte Cache Rules. Was uns jedoch wirklich begeistert, sind die weiteren Möglichkeiten, wie Sie AI Gateway einsetzen können...</p>
+	<p>In Zukunft wollen wir AI Gateway zu einem Produkt entwickeln, das Unternehmen dabei hilft, zu überwachen und zu beobachten, wie ihre Nutzenden oder Mitarbeitenden KI nutzen. So können Sie auf Knopfdruck alle Anfragen innerhalb Ihres Netzwerks an Provider (wie OpenAI) zuerst über Cloudflare laufen lassen. Dadurch können Sie die Anfragen der Nutzenden protokollieren, Zugriffsrichtlinien anwenden sowie Durchsatzbegrenzungen und Strategien zum <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">Schutz vor Datenverlust (Data Loss Prevention; DLP)</a> aktivieren. Hier ein eindrucksvolles Beispiel: Wenn jemand aus Ihrem Team versehentlich einen API-Schlüssel in ChatGPT einfügt, kann AI Gateway so konfiguriert werden, dass es die ausgehende Anfrage sieht und den API-Schlüssel unkenntlich macht oder die Anfrage ganz blockiert, sodass sie OpenAI oder andere Endanbieter gar nicht erst erreichen kann. Wir können auch verdächtige Anfragen protokollieren und Alarm schlagen, damit Firmen proaktiv bestimmte Arten von Aktivitäten untersuchen und kontrollieren können. AI Gateway wird so zu einem wirklich leistungsstarken Werkzeug für Unternehmen, die zwar von dem Effizienzpotenzial der KI begeistert sind, aber zögern, der KI zu vertrauen, wenn Datenschutz und Nutzungsfehler wirklich kritische Bedrohungen darstellen. Wir hoffen, dass AI Gateway diese Bedenken zerstreuen kann und die Einführung von KI-Tools für Unternehmen viel einfacher macht.</p>
+	<p>Ganz gleich, ob Sie selbst Anwendungen entwickeln oder ein Unternehmen sind, das wissen will, wie die Beschäftigten KI nutzen – wir hoffen, dass AI Gateway Ihnen dabei helfen kann, die Vorgänge in Ihren Apps zu entmystifizieren. Denn wenn Sie erst einmal verstehen, wie Ihre Nutzenden KI verwenden, können Sie entscheiden, wie sie die Technologie tatsächlich einsetzen wollen. Einige dieser Features befinden sich noch in der Entwicklung, aber wir hoffen, dass dies die Leistungsfähigkeit von AI Gateway und unsere Vision für die Zukunft verdeutlicht.</p>
+	<p>Wir bei Cloudflare leben und atmen Innovation (wie Sie an unseren Ankündigungen zur Birthday Week unschwer erkennen können!) und das Innovationstempo in Sachen KI ist unglaublich. Wir sind begeistert, dass wir Menschen nicht nur helfen können, Apps zu entwickeln und zu nutzen, sondern auch die Einführung und Entwicklung von KI mit mehr Kontrolle und Transparenz zu <i>beschleunigen</i>. Wir können es kaum erwarten von Ihren Projekten zu hören – gehen Sie zum Cloudflare Dashboard, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral" target="_blank" rel="noopener noreferrer">testen Sie AI Gateway</a>) und erzählen Sie uns, was Sie davon halten!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HQSDDrg5pgwRfiz2kAOXP/dca3745aa7d061a0b37d36de6537cf65/image2-17.png" alt="" class="kg-image" width="1800" height="588" loading="lazy">
+
+	</figure>
+</div>

@@ -1,0 +1,165 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/load-balancing-monitor-groups-multi-service-health-checks-for-resilient">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5W4mLp1Ewmsvf9tMCczV0I/61931b58ec409e3c7d70738bfa5f8bbc/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>最近のアプリケーションは、モノモノではありません。複雑で分散したシステムであり、可用性は複数の独立したコンポーネントが連携して動作することに依存しています。Webサーバーは実行していても、データベースへの接続がダウンしていたり認証サービスが応答していなければ、アプリケーション全体が不健全です。単一のヘルスチェックに依存するということは、「チェックエンジン」ライトがオンになっていないのを知りながら、タイアの1つがリークしていることを知らないようなものです。エンジンが順調に機能していることは素晴らしいことですが、おそらく遠くまで運転しているわけではないでしょう。</p>
+	<p>アプリケーションが複雑になるにつれ、「健全である」という定義も複雑になっています。大小さまざまなお客様から、トラフィックを受けられるエンドポイントを検討するためには、複数のサービスを検証する必要があるという声が寄せられています。たとえば、基盤となる<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer"><u>APIゲートウェイ</u></a>が健全であり、特定の「/login」サービスが応答していることを確認してから、そこにユーザーをルーティングする必要がある場合があります。これまでは、これらのチェックを集約するために、カスタムの合成サービスを構築する必要があり、運用のオーバーヘッドが増え、新たな障害点になる可能性がありました。</p>
+	<p>本日は、<a href="https://www.cloudflare.com/application-services/products/load-balancing" target="_blank" rel="noopener noreferrer"><u>Cloudflare Load Balancing</u></a>の監視グループをご紹介します。この機能により、高度なマルチサービスの正常性評価をプラットフォーム上で直接作成する新しい方法が提供されます。監視グループを使用すると、複数の正常性監視を1つの論理エンティティにまとめ、どのコンポーネントが重要であるかを定義し、集約された正常性スコアを使用して、よりインテリジェントで耐障害性の高いフェイルオーバーの決定を行うことができます。</p>
+	<p>Enterpriseプランのお客様向けにAPI経由で利用可能なこの新機能は、カスタムヘルス集約サービスの必要性をなくし、アプリケーションの真の可用性をより正確に把握することができます。近い将来、この機能はEnterpriseプランだけでなく、すべてのLoad Balancingユーザーのダッシュボードで<a href="https://blog.cloudflare.com/enterprise-grade-features-for-all"><u>利用できるようになります</u></a>。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-monitor-groups-work"><b>モニターグループの仕組み</b></h2>
+		<a href="https://blog.cloudflare.com/#how-monitor-groups-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モニターグループは、モニターのスーパーセットとして機能します。モニターを作成したら、それらを1つのユニット、モニターグループにまとめることができます。モニターグループをエンドポイントプールに関連させると、そのプール内の各エンドポイントの正常性は、グループ内で有効化されたすべてのモニターの結果を集計して判断されます。これらの設定は、モニターグループの「メンバー」配列内で定義することで、集合の正常性の決定方法をきめ細かく制御することができます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Structure for a single monitor within a group
+{
+  "description": "Test Monitor Group",
+  "members": [
+    {
+      "monitor_id": "string",
+      "enabled": true,
+      "monitoring_only": false,
+      "must_be_healthy": true
+    },
+    {
+      "monitor_id": "string",
+      "enabled": true,
+      "monitoring_only": false,
+      "must_be_healthy": true
+    }
+  ]
+}</code></pre>
+	<p>各プロパティの機能は以下の通りです。</p>
+	<ul>
+		<li>
+			<p><b>重要モニター (must_be_healthy):</b> モニターを重要として指定することができます。この設定では、モニターがエンドポイントに対するヘルスチェックに失敗した場合、そのエンドポイントは即座に不健全とマークされます。これにより、グループ内の他のモニターのステータスに関係なく、重要なサービスの決定的なオーバーライドが可能になります。</p>
+		</li>
+		<li>
+			<p><b>観測プローブ（監視のみ）：</b>プールの健全性ステータスやトラフィックステアリングに影響を与えることなく、アラートやデータを受信するために、モニターを「監視のみ」とマークします。これは、本番トラフィックに影響を与えることなく、新しいチェックをテストしたり、重要でない依存関係を観察するのに最適です。</p>
+		</li>
+		<li>
+			<p><b>クォータに基づく正常性：</b>重要なモニターで障害が発生していない場合、エンドポイントの正常性は、他のすべてのアクティブなモニターの値によって判断されます。割り当てられたモニターの50%以上が不健全と報告した場合にのみ、エンドポイントがグローバルに不健全と判断されます。このシステムは、単一の重要でないモニターによる一時的な障害が原因で、エンドポイントが不健全と不健全と判定されることを防ぎます。</p>
+		</li>
+	</ul>
+	<p>1つのグループに最大5つのモニターを追加できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hvlMcDKMyuWsoULCvmqVE/294be4478ce1b0e4c64b1ac0d37b1039/image2.png" alt="" class="kg-image" width="1060" height="612" loading="lazy">
+
+	</figure>
+	<p><sup>3つのヘルスモニター（HTTP、TCP、データベース）を1つのモニターグループに結合した図。このグループは、3台の配信元サーバーの健全性を評価するCloudflare Load Balancingプールに利用されます。</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="a-globally-distributed-perspective"><b>グローバルに分散した視点</b></h2>
+		<a href="https://blog.cloudflare.com/#a-globally-distributed-perspective" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Monitor Groupsの力は、Cloudflareのグローバルネットワークの規模によって増幅されています。ヘルスチェックは、一握りの静的な場所から実行されるわけではありません。<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>世界300都市以上</u></a>に広がるデータセンターから実行するように設定することができます。すべてのデータセンターで同時に監視を設定できます（「All Datacenters」モード）。当社では、ほとんどのアプリケーションで、より的を絞ったアプローチをお勧めしています。北米西部や東ヨーロッパなど、いくつかの異なる<a href="https://developers.cloudflare.com/load-balancing/reference/region-mapping-api" target="_blank" rel="noopener noreferrer"><u>地域</u></a>を選択したり、「すべての地域」設定を使用したりすることで、アプリケーションの健全性をグローバルな視点で見ることができ、配信元に送信される健全性監視トラフィックの量を減らすことができます。これにより、アプリケーションの健全性に関する分散型コンセンサスが形成され、局地的なネットワーク問題が誤検知のトリガーとなり、不要なグローバルフェイルオーバーを引き起こすことを防ぎます。アプリケーションの健全性は、単一の視点ではなく、グローバルな視点で決まります。</p>
+	<p>この同じ原理により、モニターグループと組み合わせて使用すると、ダイナミックステアリングがさらに向上します。監視グループの遅延は、単一のRTT測定値だけではありません。お客様が定義したすべての重要なサービスのすべてのポイントオブプレゼンスから平均化された総合的なパフォーマンススコアです。つまり、ロードバランサーは、アプリケーションのパフォーマンスをグローバルに認識した真の理解に基づいて、トラフィックを誘導するということです。</p>
+	<p>動的ステアリングとモニターグループを使用しているロードバランサーの場合、ステアリングの決定に使用される遅延は、グループ内のアクティブな非監視専用メンバーすべての平均<a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer"><u>ラウンドトリップタイム（RTT）</u></a>として計算されるようになりました。これにより、より安定した代表的なパフォーマンス指標が得られます。動的ステアリングは、単一のサービスの遅延に依存するのではなく、すべての重要なコンポーネントの集合的なパフォーマンスに基づいて決定を下すことができるようになり、全体的に最もパフォーマンスの高いエンドポイントにトラフィックが送信されるようにします。</p>
+	<div class="flex anchor relative">
+		<h2 id="health-aggregation-in-action"><b>動作中の健全性の集約</b></h2>
+		<a href="https://blog.cloudflare.com/#health-aggregation-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>例を通して、Cloudflareが監視グループからの正常性信号を集約し、単一のエンドポイントの全体的な正常性を判断する方法を見てみましょう。このシナリオでは、アプリケーションには、公開されている/健全性エンドポイント、特定のTCPポートで動作する別のサービス、そしてデータベースの依存性の3つを確認する必要があります。プライバシーとセキュリティは最も重要であるため、データベースをパブリックインターネットに公開することなく監視するためには、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>を使用してCloudflareに安全に接続し、ヘルスチェックが安全に到達できるようにします。</p>
+	<div class="flex anchor relative">
+		<h4 id="setup"><b>セットアップ</b></h4>
+		<a href="https://blog.cloudflare.com/#setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>グループ内のヘルスモニター：</b></p>
+			<ul>
+				<li>
+					<p>HTTP チェック for /health (must_be_healthy: true)</p>
+				</li>
+				<li>
+					<p>TCP ポート3000接続性チェック（must_be_healthy: false）</p>
+				</li>
+				<li>
+					<p>データベースの健全性のDBチェック(mus_be_healthy: false)</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>ヘルスチェックの地域：</b></p>
+			<ul>
+				<li>
+					<p>北米西部（データセンター3か所）</p>
+				</li>
+				<li>
+					<p>北米東部（データセンター3か所）</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p><b>量子閾値:</b> チェックするデータセンターの50%以上がUPと報告した場合、エンドポイントは健全であると見なされます。</p>
+		</li>
+	</ul>
+	<p>まず、Cloudflareは個々のデータセンターの視点から健全性を判断します。重要なモニターが失敗した場合、そのデータセンターの結果は決定的に<b>ダウン</b>します。それ以外の場合、結果は残りのモニターの大半のステータスに基づいて決まります。</p>
+	<p>当社の6つのデータセンターから得た結果を以下に示します：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1v7II5mrHi6D4RAVccukRY/a5bf378bbf92183fab4cc9ecda7b6be0/image1.png" alt="" class="kg-image" width="1400" height="604" loading="lazy">
+	</figure>
+	<p>[画像の説明：2つの地域にまたがる6つのデータセンターからのヘルスチェックの結果を示す表。重要なHTTPモニターが失敗したため、6つのデータセンターのうち1つが「down」ステータスを報告しました。他の5つは、重要なモニターが通過し、残りのモニターの大部分が正常であったため、「UP」をレポートしました。]</p>
+	<p>最後に、6つのチェックデータセンターすべての結果を組み合わせて、エンドポイントの最終的なグローバル正常性状態を決定します。</p>
+	<ul>
+		<li>
+			<p><b>グローバル結果:</b> 6つのデータセンターのうち5つ（83%）が、エンドポイントを<b>UP</b>と報告します。</p>
+		</li>
+		<li>
+			<p>結論：83%はクローラーの閾値の50%を上回っているため、エンドポイントは世界的に健全と見なされ、トラフィックを受信し続けることになります。</p>
+		</li>
+	</ul>
+	<p>この多層のクォータシステムは、優れたレジリエンスを提供し、フェイルオーバーの決定が包括的かつ地理的に分散されたコンセンサスに基づいて行われるようにします。</p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-monitor-groups"><b>モニターグループの利用開始</b></h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-monitor-groups" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>監視グループは、Enterprise Cloudflare Load Balancingのサブスクリプションをご利用のすべてのお客様を対象に、API経由でご利用いただけるようになりました。また、近い将来、セルフサービスのお客様にもご利用いただけるようになる予定です。今すぐアプリケーションでより高度なヘルスチェックの構築を始めるには、<a href="https://developers.cloudflare.com/load-balancing/monitors/monitor-groups" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>をご覧ください。&nbsp;</p>
+	<p>モニターグループを作成するには、新しい<a href="https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitor_groups/methods/create" target="_blank" rel="noopener noreferrer"><u>/load_balancers/monitor_groups</u></a>エンドポイントへのPOSTリクエストを使用します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">POST accounts/{account_id}/load_balancers/monitor_groups
+{
+  "description": "Monitor group for checkout service",
+  "members": [
+    {
+      "monitor_id": "string",
+      "must_be_healthy": true,
+	"enabled": true
+    },
+    {
+      "monitor_id": "string",
+      "monitoring_only": false,
+	"enabled": true
+    }
+  ]
+}</code></pre>
+	<p>作成すると、プールオブジェクトのmonitor_groupフィールドでそのグループのIDを参照することで、そのグループをプールにアタッチできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next"><b>今後の展開</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは今後も、内部と外部の両方のアプリケーションのトラフィック管理を簡素化するシームレスなプラットフォーム体験の構築を目指します。今後、監視グループはまもなくすべてのユーザーのダッシュボードに登場します！当社は、お客様が最も複雑なアプリケーションを管理するために必要なきめ細かな制御を提供するために、より柔軟な<a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>ロールベースのアクセス制御</u></a>、さらに高度な負荷ベースの負荷分散機能にも取り組んでいます。</p>
+</div>

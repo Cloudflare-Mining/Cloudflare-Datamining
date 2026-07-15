@@ -1,0 +1,259 @@
+<div class="mb2 gray5">12분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/q4-2024-internet-disruption-summary">English</a>, <a href="https://blog.cloudflare.com/zh-tw/q4-2024-internet-disruption-summary">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/q4-2024-internet-disruption-summary">Français</a>, <a href="https://blog.cloudflare.com/de-de/q4-2024-internet-disruption-summary">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/q4-2024-internet-disruption-summary">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/q4-2024-internet-disruption-summary">Português</a>, <a href="https://blog.cloudflare.com/es-es/q4-2024-internet-disruption-summary">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/q4-2024-internet-disruption-summary">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/q4-2024-internet-disruption-summary">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nAPZ30WtbMvVwVYI0jopg/f9a655b71fd7f9fcb92e218fd95fef67/image33.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare의 네트워크는 120여 개국의 330여 개 도시에서 운영되며, 13,000여 네트워크 공급자와 상호 연결되어 수많은 고객에게 광범위한 서비스를 제공합니다. Cloudflare는 폭넓은 네트워크와 고객 기반 덕분에 인터넷 복원력에 대한 고유한 관점을 확보하고 있으며, 이로 인해 인터넷 중단이 지역 및 국가 차원뿐만 아니라 네트워크 수준에도 미치는 영향을 관찰할 수 있습니다.</p>
+	<p>이전에도 언급했듯이, 이 게시물은 Cloudflare가 발견하고 확인한 인터넷 장애를 간략하게 요약하기 위한 것으로, 해당 분기에 발생한 모든 문제를 완전히 다룬 것은 아닙니다. 보다 상세한 트래픽 이상 감지 목록은 <a href="https://radar.cloudflare.com/outage-center#traffic-anomalies" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 중단 센터</u></a>에서 찾아볼 수 있습니다.</p>
+	<p>3분기에는 시험 부정행위를 방지하기 위한 목적을 포함하여, <a href="https://blog.cloudflare.com/q3-2024-internet-disruption-summary/#government-directed"><u>정부가 주도한 다수의 인터넷 셧다운</u></a> 사례를 다뤘습니다. 그러나 4분기에는 시위와 관련된 단 한 건의 <a href="https://blog.cloudflare.com/#government-directed"><u>정부 주도 셧다운</u></a> 사례만 관찰되었습니다. 아프리카 2개국에서는 지상파 <a href="https://blog.cloudflare.com/#cable-cuts"><u>케이블 손상</u></a>으로 인해 인터넷 연결이 중단되었습니다. 이전에 여러 번 목격된 바와 같이, 예기치 않은 <a href="https://blog.cloudflare.com/#power-outages"><u>정전</u></a>과 <a href="https://blog.cloudflare.com/#military-action"><u>군사 행동</u></a>으로 인한 순환 정전(rolling power outages) 모두 인터넷 중단을 일으켰습니다. <a href="https://blog.cloudflare.com/#natural-disasters"><u>거센 폭풍과 지진</u></a>으로 인해 피해를 입은 국가에서도 예상대로 인터넷이 중단되었습니다. 유럽 인터넷 서비스 공급자 두 곳에서는 <a href="https://blog.cloudflare.com/#maintenance"><u>유지보수</u></a> 작업 중 예상치 못한 문제로 인해 서비스가 중단되었습니다. 한편, 미국 여러 주의 Verizon 고객들은 <a href="https://blog.cloudflare.com/#unknown"><u>명확한 원인을 알 수 없는</u></a> 인터넷 중단을 잠시 경험했습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="cable-cuts">케이블 손상</h2>
+		<a href="https://blog.cloudflare.com/#cable-cuts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="rwanda">르완다</h3>
+		<a href="https://blog.cloudflare.com/#rwanda" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>10월 1일, 르완다의 현지 이동통신사 <a href="https://radar.cloudflare.com/as36890" target="_blank" rel="noopener noreferrer"><u>MTN Rwanda(AS36890)</u></a>는 <a href="https://radar.cloudflare.com/tz" target="_blank" rel="noopener noreferrer"><u>탄자니아</u></a>와 <a href="https://radar.cloudflare.com/ug" target="_blank" rel="noopener noreferrer"><u>우간다</u></a>에서 발생한 이중 광섬유 손상으로 인해 인터넷 연결 품질에 영향을 미칠 수 있다고 가입자들에게 경고하는 내용의 <a href="https://x.com/MTNRwanda/status/1841092339625865329" target="_blank" rel="noopener noreferrer"><u>게시물을 X에 게시</u></a>했습니다. 이러한 광섬유 손상으로 인해 인터넷 트래픽은 현지 시각으로 12:45(10:45 UTC) 이후 급격히 감소하기 시작했으며, 13:15~13:30(11:15~11:30 UTC)에는 완전히 중단되었습니다. 그 이후 트래픽은 빠르게 회복되기 시작하여, 현지 시각 19:00(17:00 UTC)경에는 예상 수준으로 복구되었습니다. 몇 시간 후, MTN Rwanda는 모든 서비스가 정상적으로 복구되었다는 내용을 담은 <a href="https://x.com/MTNRwanda/status/1841201775493464174" target="_blank" rel="noopener noreferrer"><u>후속 게시물을 게시</u></a>했습니다.</p>
+	<p><a href="https://afterfibre.nsrc.org" target="_blank" rel="noopener noreferrer"><u>아프리카 해저 및 지상 광섬유 케이블(AfTerFibre) 지도</u></a>를 보면, 탄자니아와 우간다의 북쪽과 남쪽 네트워크 연결 외에도 서쪽의 <a href="https://radar.cloudflare.com/cd" target="_blank" rel="noopener noreferrer"><u>콩고민주공화국(DRC)</u></a>을 통한 네트워크 연결도 가능한 것으로 보입니다. 그러나 <a href="https://radar.cloudflare.com/routing/as36890#connectivity" target="_blank" rel="noopener noreferrer"><u>MTN Rwanda의 업스트림 공급자 및/또는 피어</u></a>가 DRC 기반 네트워크를 통해 트래픽을 라우팅하지 않았을 가능성이 있으며, 이는 광섬유 손상이 동시에 일어났을 때 DRC를 백업 경로로 사용할 수 없었음을 의미합니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-01&amp;dateEnd=2024-10-01&amp;location=as36890&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h3 id="niger">니제르</h3>
+		<a href="https://blog.cloudflare.com/#niger" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>11월 30일, 현지 이동통신사인 <a href="https://radar.cloudflare.com/as37531" target="_blank" rel="noopener noreferrer"><u>Airtel Niger(AS37531)</u></a>는 X에 인터넷 서비스 중단에 대해 <a href="https://x.com/airtelniger/status/1862936319824888015" target="_blank" rel="noopener noreferrer"><u>사과하는 일련의 메시지를 게시</u></a>했습니다. 이 메시지에서는 (번역) “<i>실제로, 니아메-도소(Niamey-Dosso) 및 니아메-발레야라(Niamey-Balleyara) 구간의 국가 광섬유망이 동시에 중단되면서, 통제 불가능하게도 Airtel Niger의 인터넷 서비스가 전국적으로 완전히 중단되었습니다.</i>” 이러한 동시 광섬유 손상으로 인해 11월 29일 현지 시각 17:30(UTC 16:30)부터 11월 30일 현지 시각 19:45(UTC 18:45)까지 사실상 완전한 서비스 중단이 발생했습니다.</p>
+	<p>인터넷 중단이 해결된 후에야 메시지가 게시된 것은 다소 이례적인 일로 보입니다. Airtel Niger 자체에 백업 연결이 없어 인터넷 연결이 복구될 때까지 소식을 게시하지 못했을 가능성이 있습니다. 또는 X의 첫 번째 게시물이 <i>[COMMUNIQUÉ IMPORTANT📢]</i>”(“<i>[중요 공지 📢 ]</i>”)로 시작한다는 점을 고려할 때, 경고와 사과 메시지는 Airtel의 웹 사이트와 같은 보다 공식적인 채널을 통해 적시에 전달되었을 가능성도 있습니다. 즉, X의 메시지는 인터넷 서비스가 복구된 이후 올린 후속 조치일 수 있습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-29&amp;dateEnd=2024-11-30&amp;location=as37531&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="power-outages">정전</h2>
+		<a href="https://blog.cloudflare.com/#power-outages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="cuba">쿠바&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#cuba" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>한 국가의 전력 인프라가 불안정하면 자주 대규모 정전이 일어나고, 결국 인터넷 연결 중단에도 영향을 미치게 됩니다. 10월 18일 <a href="https://radar.cloudflare.com/cu" target="_blank" rel="noopener noreferrer"><u>쿠바</u></a>에서도 이러한 일이 발생했습니다. <a href="https://x.com/EnergiaMinasCub/status/1847315612738978114" target="_blank" rel="noopener noreferrer"><u>쿠바 에너지광업부(Ministry of Energy and Mines of Cuba)가 X에 게시한 글</u></a>에 따르면 (번역) “<i>안토니오 기테라스(CTE Antonio Guiteras) 발전소의 갑작스러운 가동 중단으로 오늘 오전 11시 국가 전력 시스템이 완전히 마비되었습니다. Unión Eléctrica(쿠바 전력청)이 복구 작업을 진행 중입니다.</i>” 이 정전으로 인해 쿠바 내 인터넷 트래픽이 몇 분 만에 절반 이상 급감(15:15 UTC)했습니다. 연결 중단은 약 3일 반 동안 지속되었으며, 10월 21일 현지 시각 23:00(10월 22일 03:00 UTC)경에 정상 수준으로 복구되었습니다.</p>
+	<p>쿠바 에너지광업부는 10월 19일과 20일에 전국적인 전력 복구를 위해 진행 중인 작업에 관한 상황 소식을 여러 차례 게시했습니다. 그리고 <a href="https://x.com/OSDE_UNE/status/1848812241979916598" target="_blank" rel="noopener noreferrer"><u>10월 22일 마지막 X 게시물</u></a>에서는 정전이 종료되었음을 알리며 (번역) “<i>오후 2시 44분에 국가 전력 시스템이 동기화되었습니다.</i>”라고 발표했습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-17&amp;dateEnd=2024-10-23&amp;location=cu&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<p>그러나 몇 주 후, 또다시 전력 문제가 쿠바의 인터넷 연결에 영향을 미쳤습니다. 11월 6일, <a href="https://x.com/OSDE_UNE/status/1854252013212844461" target="_blank" rel="noopener noreferrer"><u>쿠바 전력청(Unión Eléctrica)은 X에 다음과 같은 글을 게시</u></a>했습니다. (번역) “<i>14시 48분. 강력한 허리케인 라파엘(Rafael)로 인한 강풍으로 국가 전력 시스템이 차단되었습니다. 비상 대응 프로토콜이 적용됩니다.</i>” 이 게시물의 타이밍은 쿠바의 인터넷 트래픽이 현지 시각 14:30(19:30 UTC)경 급격히 감소한 시점과 일치합니다. 허리케인 라파엘이 섬을 지나간 후 며칠 동안 쿠바 전력청은 전력 복구 진행 상황에 대한 소식을 여러 차례 게시했습니다. 인터넷 트래픽은 11월 9일 현지 시각 13:00(18:00 UTC)경 예상 수준으로 복구된 것으로 나타났지만, 전력 서비스가 완전히 복구되기까지는 며칠이 더 소요되었습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-04&amp;dateEnd=2024-11-10&amp;location=cu&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<p>12월 4일, 쿠바에서는 불과 몇 달 만에 세 번째로 전국적인 정전 사태가 발생했습니다. 이날 새벽, <a href="https://x.com/EnergiaMinasCub/status/1864220455139168538" target="_blank" rel="noopener noreferrer"><u>에너지광업부는 X에 다음과 같은 글을 게시</u></a>했습니다. (번역) “<i>오늘 새벽 2시 8분, 안토니오 기테라스(Antonio Guiteras) 화력발전소가 가동을 멈추면서 인해 전력 시스템(SEN)이 차단되었습니다.</i>” 이 발전소의 고장으로 인한 전력 손실로 쿠바의 인터넷 트래픽이 크게 감소했으며, 현지 시각 02:15(07:15 UTC) 직전에는 지난주 대비 약 60% 감소했습니다. 트래픽은 거의 하루 만인 현지 시각 00:30(UTC 05:30)경에 예상 수준으로 복구되었습니다. 이 시점은 모든 설비가 동기화되어 전력 서비스 복구를 알린 <a href="https://x.com/EnergiaMinasCub/status/1864542875255541780" target="_blank" rel="noopener noreferrer"><u>에너지광업부의 후속 X 게시물</u></a>과 일치합니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-01&amp;dateEnd=2024-12-07&amp;location=cu&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h3 id="guadeloupe">과들루프</h3>
+		<a href="https://blog.cloudflare.com/#guadeloupe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>10월 25일 <a href="https://www.theguardian.com/world/2024/oct/25/guadeloupe-power-outage-strike" target="_blank" rel="noopener noreferrer"><u>The Guardian에 실린 한 기사</u></a>에 따르면, <i>프랑스 카리브해 섬 </i><a href="https://radar.cloudflare.com/gp" target="_blank" rel="noopener noreferrer"><i><u>과들루프</u></i></a><i>에서는 파업 중인 노동자들이 지역 발전소를 점거하면서 전력 공급이 완전히 중단되었다.</i>”는 소식을 전했습니다. 기사는 노동자들이 발전소의 제어실로 향해 “<i>모든 엔진을 긴급 정지했다</i>”고 언급했습니다. 이 “긴급 셧다운”으로 인해 정전이 발생하면서, 현지 시각 08:30(UTC 12:30) 기준으로 지난주 대비 트래픽이 거의 70% 감소했습니다. 당초 “<a href="https://www.lemonde.fr/en/international/article/2024/10/25/guadeloupe-suffers-power-outage-blamed-on-striking-staff_6730504_4.html" target="_blank" rel="noopener noreferrer"><u>정전 피해를 입은 230,000가구의 전력 공급이 현지 시각 15:00(19:00 UTC)에 복구될 것으로 예상되었으나</u></a>”, 인터넷 트래픽이 10월 26일 현지 시각 22:00(10월 27일 02:00 UTC)경에야 정상 수준으로 돌아온 것으로 보아 실제 복구는 예상보다 훨씬 더 오래 걸린 것으로 보입니다. 10월 26일 현지 시각 11:00(15:00 UTC)에 <a href="https://www.guadeloupe.gouv.fr/Actualites/Communiques-et-dossiers-de-presse/Conflit-EDF-PEI-Point-de-situation-a-11h" target="_blank" rel="noopener noreferrer"><u>정부가 발표한 보도 자료</u></a>에서는 복구 작업에 대한 소식을 제공하며 (번역) “<i>160,000명 사용자의 전력이 복구되었습니다. 전력 공급이 중단된 70,000명의 고객에 대한 서비스 복구가 아직 진행 중이며, 주말까지 정상화될 것으로 예상됩니다.</i>”라고 밝혔습니다. 또한 (번역) “<i>Orange 가입자의 76%가 네트워크 연결을 다시 확보했습니다. 1,800가구는 여전히 인터넷이 연결되지 않은 상태입니다.</i>”라고 덧붙였습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-24&amp;dateEnd=2024-10-27&amp;location=gp&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - traffic.requests.title" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h3 id="kenya">케냐</h3>
+		<a href="https://blog.cloudflare.com/#kenya" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024년 <a href="https://blog.cloudflare.com/q2-2024-internet-disruption-summary/#kenya"><u>2분기</u></a>와 <a href="https://blog.cloudflare.com/q3-2024-internet-disruption-summary/#kenya"><u>3분기</u></a><a href="https://radar.cloudflare.com/ke" target="_blank" rel="noopener noreferrer"><u>케냐</u></a>에서는 정전으로 인해 여러 차례 인터넷 중단이 발생했습니다. 4분기에도 유사한 사건이 발생했습니다. 12월 18일 현지 시각 01:28(12월 17일 22:28 UTC), <a href="https://x.com/KenyaPower_Care/status/1869153351436468632" target="_blank" rel="noopener noreferrer"><u>케냐 전력(Kenya Power)은 X 게시물</u></a>에 포함된 “고객 알림”을 통해 다음과 같이 발표했습니다. “<i>현재 서부 및 북부 리프트(Western and North Rift) 지역 일부를 제외한 전국 대부분에 영향을 미치는 광범위한 정전이 발생하고 있습니다.</i>” 이 정전으로 인해 12월 18일 현지 시각 자정 (12월 17일 21:00 UTC) 직후부터 케냐의 인터넷 트래픽이 70% 이상 감소했습니다. 12월 18일 현지 시각 07:35(UTC 04:35)에 <a href="https://x.com/KenyaPower_Care/status/1869243286667628702" target="_blank" rel="noopener noreferrer"><u>케냐 전력이 X에 게시한 소식</u></a>에 따르면, 영향을 받은 모든 지역에 전력이 복구되었습니다. 이 시점에는 케냐의 인터넷 트래픽도 거의 정상 수준으로 회복되었습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-17&amp;dateEnd=2024-12-18&amp;location=ke&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="natural-disasters">자연재해</h2>
+		<a href="https://blog.cloudflare.com/#natural-disasters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="united-states-florida">미국 플로리다</h3>
+		<a href="https://blog.cloudflare.com/#united-states-florida" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>10월 9일 현지 시각 20:30(UTC 10월 10일 00:30), <a href="https://www.weather.gov/mlb/HurricaneMilton_Impacts" target="_blank" rel="noopener noreferrer"><u>허리케인 밀턴(Milton)이 플로리다에</u></a> 3등급 폭풍으로 상륙했습니다. 밀턴으로 인한 피해는 홍수, 쓰러진 나무 및 전선, 주택과 사업체의 파손 등 광범위하게 발생했습니다. 폭풍으로 인한 정전 및 기타 인프라 피해와 피해 지역 주민들의 대피로 인해 주 전역에서 인터넷 장애가 두드러졌습니다. 아래 그래프에서 볼 수 있듯이 Milton이 도착한 후 10월 10일의 최대 트래픽 수준은 전날보다 약 40% 낮았습니다. 이후 며칠 동안 복구 및 복원 작업이 시작되고 대피했던 주민들이 집, 학교, 직장으로 돌아오면서 플로리다주의 인터넷 트래픽도 점차 증가하기 시작했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KVUA87OvUlomBVrbylU8w/793b65193655ffef980c9341c1476668/Oct_9_-_United_States_-_Florida.png" alt="BLOG-2654 IMG 1 Oct 9 - United States - Florida" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<p>이러한 점진적인 복구는 지도에서도 확인할 수 있습니다. 이 지도는 10월 10일, 11일, 14일 현지 시각 09:00(13:00 UTC)에 촬영된 것으로, 전주 동일 시간 대비 <a href="https://x.com/CloudflareRadar/status/1845903842355101827" target="_blank" rel="noopener noreferrer"><u>인터넷 트래픽이 50% 이상 감소</u></a>한 도시들을 보여줍니다. 10월 10일에는 <a href="https://x.com/CloudflareRadar/status/1844444286911381980" target="_blank" rel="noopener noreferrer"><u>70여 개의 도시</u></a>에서 트래픽이 크게 감소했으나, 10월 14일에는 10여 개 도시에서만 트래픽이 감소한 것으로 나타났습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rqveKTtJ60LW8rLBizxeD/ea62aec5653bc46622fbabb922e61c88/Florida_-_three_maps.jpeg" alt="BLOG-2654 IMG 2  Florida - three maps" class="kg-image" width="3956" height="1158" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="mayotte">마요트</h3>
+		<a href="https://blog.cloudflare.com/#mayotte" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>12월 14일, 사이클론 치도(Chido)가 인도양에 위치한 프랑스령 <a href="https://radar.cloudflare.com/yt" target="_blank" rel="noopener noreferrer"><u>마요트</u></a>에 막대한 피해를 입혔습니다. 전력, 수도, 통신 인프라뿐만 아니라 주택과 공공 시설까지 <a href="https://reliefweb.int/report/mozambique/cyclone-chido-has-devastated-mayotte-and-mozambique" target="_blank" rel="noopener noreferrer"><u>모두 손상</u></a>되었습니다. 이로 인해 30여 명이 <a href="https://www.reuters.com/business/environment/french-officials-raise-mayotte-death-toll-39-after-storm-chido-2024-12-24" target="_blank" rel="noopener noreferrer"><u>사망</u></a>하고, 수천 명이 부상을 입었습니다. 이러한 광범위한 피해가 발생하면서 예상대로 마요트의 인터넷 트래픽도 영향을 받았습니다. 치도는 12월 14일 새벽 마요트에 <a href="https://reliefweb.int/attachments/f852498a-d8a7-42c2-a447-ceff1d24ddeb/20241219_ACAPS_Briefing_note_Mayotte_Impact_of_Tropical_Cyclone_Chido.pdf" target="_blank" rel="noopener noreferrer"><u>상륙</u></a>했으며, 현지 시각 09:00(06:00 UTC)경에 트래픽이 급격히 감소하면서 거의 완전한 인터넷 중단이 발생했습니다. 이후 한 주 동안 인터넷 트래픽은 매우 느린 속도로 증가했으며, 일일 패턴이 다시 나타나기 시작하면서 월말까지 최대 트래픽 수준이 점진적으로 증가하는 추세를 보였습니다. 2025년 1월 셋째 주 기준으로 마요트의 인터넷 트래픽은 계속 느리게 증가하고 있지만, 사이클론 치도 발생 이전 수준에는 훨씬 미치지 못하는 상황입니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-11&amp;dateEnd=2024-12-31&amp;location=yt&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - traffic.requests.title" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h3 id="vanuatu">바누아투</h3>
+		<a href="https://blog.cloudflare.com/#vanuatu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>12월 17일 현지 시각 17:46(01:47 UTC)에 <a href="https://radar.cloudflare.com/vu" target="_blank" rel="noopener noreferrer"><u>바누아투</u></a>의 포트빌라(Port-Vila) 서북서쪽 24km 지점에서 <a href="https://earthquake.usgs.gov/earthquakes/eventpage/us7000nzf3/executive" target="_blank" rel="noopener noreferrer"><u>규모 7.3의 지진</u></a>이 발생했습니다. 지진 발생 직후 바누아투의 인터넷 트래픽은 급격히 감소했으며, 전주 대비 90% 가까이 떨어졌습니다. IPv4 주소 공간의 급격한 감소도 관찰되었는데, 이는 지진 피해로 인해 핵심 네트워크 공급자의 인프라가 중단되었을 가능성을 시사합니다. 복구는 더딘 속도로 진행되었으며, 12월 26일 현지 시각 23:00(12:00 UTC)경에야 인터넷 트래픽이 정상 수준으로 회복되었습니다.</p>
+	<p><a href="https://maritime-executive.com/editorials/vanuatu-illustrates-risks-of-thin-subsea-cable-infrastructure" target="_blank" rel="noopener noreferrer"><u>The Maritime Executive 웹 사이트에 게시된 사설</u></a>에서는, 현재 바누아투가 국제 인터넷 연결을 위해 <a href="https://radar.cloudflare.com/fj" target="_blank" rel="noopener noreferrer"><u>피지(Fiji)</u></a>와 연결되는 <a href="https://www.submarinecablemap.com/submarine-cable/interchange-cable-network-1-icn1" target="_blank" rel="noopener noreferrer"><u>해저 케이블인 Interchange Cable Network 1(ICN1)</u></a>에 의존하고 있다고 강조합니다. 사설에서는 “<i>육양국(Cable Landing Station)에서 발생한 화재로 일시적으로 전력 공급이 중단되어 인터넷 트래픽이 차단되었습니다. 연결은 10일 후에 복구되었습니다…</i>” 육앙국의 전력 공급 중단 해결 시점은 바누아투의 트래픽이 정상 수준으로 복구된 시점과 대략 일치하며, 이는 지진 이후 바누아투에서 관찰된 인터넷 트래픽 감소의 주요 원인이 해당 화재 사고였음을 시사합니다. 한편, Starlink의 위성 인터넷 서비스가 일부 보조 인터넷 연결 수단 역할을 제공하며, 10월 7일 바누아투에서의 <a href="https://x.com/Starlink/status/1843395755547209765" target="_blank" rel="noopener noreferrer"><u>서비스 개시</u></a>를 발표한 바 있습니다. 바누아투와 <a href="https://radar.cloudflare.com/nc" target="_blank" rel="noopener noreferrer"><u>뉴칼레도니아(New Caledonia)</u></a>를 연결하는 <a href="https://www.submarinecablemap.com/submarine-cable/tamtam" target="_blank" rel="noopener noreferrer"><u>TAMTAM 해저 케이블</u></a>은 2026년 서비스 준비가 완료될 예정이며, 이 케이블이 가동되면 인터넷 연결에 추가적인 중복성을 제공할 전망입니다.&nbsp;</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-15&amp;dateEnd=2024-12-28&amp;location=vu&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-12-15&amp;dateEnd=2024-12-28&amp;location=vu&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - routing.timeseries.title" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="government-directed">정부 규제</h2>
+		<a href="https://blog.cloudflare.com/#government-directed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="mozambique">모잠비크</h3>
+		<a href="https://blog.cloudflare.com/#mozambique" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>10월 25일, <a href="https://radar.cloudflare.com/mz" target="_blank" rel="noopener noreferrer"><u>모잠비크</u></a>에서는 여당 프렐리모(Frelimo)의 재선에 반대하는 시위가 폭력적으로 변하면서 <a href="https://www.enca.com/news-top-stories/internet-blackout-hits-mozambique-capital-after-election-protests" target="_blank" rel="noopener noreferrer"><u>여러 통신사들의 모바일 인터넷 연결이 중단</u></a>되었습니다. 현지 시각 13:00(11:00 UTC)경부터 <a href="https://radar.cloudflare.com/as30619" target="_blank" rel="noopener noreferrer"><u>AS30619(Telecomunicacoes de Mocambique)</u></a>, <a href="https://radar.cloudflare.com/as37342" target="_blank" rel="noopener noreferrer"><u>AS37342(Movitel)</u></a>,<a href="https://radar.cloudflare.com/as37223" target="_blank" rel="noopener noreferrer"><u>AS37223(Vodacom)</u></a>에서 트래픽이 크게 감소했습니다. Vodacom과 Movitel은 거의 즉시 완전한 중단 상태에 빠졌으며, Telecomunicacoes de Mocambique의 경우 일부 트래픽이 유지되다가 10월 26일 현지 시각 02:00(00:00 UTC) 직전에 완전히 중단되었습니다. 연결은 10월 26일 아침 현지 시각 08:00(06:00 UTC)경에 복구되었습니다. 그러나 연결이 복구된 후에도 일부 소셜 미디어 플랫폼과 메시징 애플리케이션은 <a href="https://www.hrw.org/news/2024/11/06/mozambique-post-election-internet-restrictions-hinder-rights" target="_blank" rel="noopener noreferrer"><u>여전히 사용할 수 없는 상태였습니다</u></a>.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-25&amp;dateEnd=2024-10-26&amp;location=as30619&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-25&amp;dateEnd=2024-10-26&amp;location=as37342&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-10-25&amp;dateEnd=2024-10-26&amp;location=as37223&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<p>불과 약 일주일 후인 11월 3일, 이 모바일 네트워크의 가입자들은 또다시 인터넷 셧다운을 경험했습니다. 현지 시각 20:30(18:30 UTC)경에는 각 네트워크의 트래픽이 크게 감소했으며, 약 12시간 동안 인터넷 연결이 중단된 후 11월 4일 아침 현지 시각 08:00(06:00 UTC)경에 복구되었습니다. 11월 4일부터 5일까지, 11월 6일부터 7일까지 세 곳의 네트워크 모두에서 유사한 인터넷 셧다운(“인터넷 통금”)이 발생했으며, 11월 7일부터 8일까지는 Movitel과 Vodacom에서만 관찰되었습니다. 한 <a href="https://aimnews.org/2024/11/11/internet-shutdown-to-prevent-destruction-of-country" target="_blank" rel="noopener noreferrer"><u>보고서</u></a>에 따르면, 모잠비크의 교통통신부 장관은 “‘국가의 파괴를 방지하기 위해’ 인터넷 접근이 제한되었다고 인정”했지만, 영향을 받은 서비스 공급자에게로 책임을 전가하며 서비스 오용이 발견될 경우 “국민의 안정과 복지”를 보호하기 위한 “시민적 책임”의 일환으로 서비스를 중단할 수 있다"고 주장했습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-02&amp;dateEnd=2024-11-08&amp;location=as30619&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-02&amp;dateEnd=2024-11-08&amp;location=as37342&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-02&amp;dateEnd=2024-11-08&amp;location=as37223&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="military-action">군사행동</h2>
+		<a href="https://blog.cloudflare.com/#military-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="syria">시리아</h3>
+		<a href="https://blog.cloudflare.com/#syria" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>11월 9일 <a href="https://radar.cloudflare.com/sy" target="_blank" rel="noopener noreferrer"><u>시리아</u></a>에서 관찰된 인터넷 중단은 그날 새벽에 발생한 것으로 보고된 <a href="https://www.reuters.com/world/middle-east/israeli-aggression-injures-syrian-soldiers-near-aleppo-state-media-says-2024-11-08" target="_blank" rel="noopener noreferrer"><u>알레포(Aleppo)와 이들리브(Idlib) 근교의 이스라엘 공습</u></a>으로 인한 피해 때문일 가능성이 있습니다. 현지 시각 04:00(01:00 UTC)경 시리아의 인터넷 트래픽이 약 80% 감소했으며, 이 시점에 시리아에서 발표된 IP 주소 공간도 크게 감소했습니다. 약 4시간 동안 중단이 지속되었으며, 현지 시각 08:00(05:00 UTC)에 트래픽과 IP 주소 공간이 예상 수준으로 회복되었습니다.&nbsp;</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-08&amp;dateEnd=2024-11-09&amp;location=sy&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-11-08&amp;dateEnd=2024-11-09&amp;location=sy&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - routing.timeseries.title" loading="lazy"></iframe>
+	<p>도시별 인터넷 트래픽을 내부적으로 분석한 결과 알레포에서도 비슷한 중단이 발생했으며, 이는 공습으로 인한 사고였을 가능성이 있음을 시사합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mINSvpkYHgWfw2fmmUQ73/655b6509cff44bcdb627fc319b301198/Nov_9_-_Syria_-_Aleppo.png" alt="BLOG-2654 Nov 9 - Syria - Aleppo" class="kg-image" width="1030" height="360" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ukraine">우크라이나</h3>
+		<a href="https://blog.cloudflare.com/#ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1월 17일, <a href="https://radar.cloudflare.com/ua" target="_blank" rel="noopener noreferrer"><u>우크라이나</u></a>의 <a href="https://www.reuters.com/world/europe/ukraine-brings-back-long-rolling-power-cuts-after-major-russian-strike-2024-11-18" target="_blank" rel="noopener noreferrer"><u>전력 인프라를 겨냥한</u></a> 러시아의 미사일 공격으로 인해 전국 여러 지역에서 순환 정전이 발생했습니다. 거의 3년째 이어지고 있는 분쟁에서 여러 차례 목격된 바와 같이, 이러한 정전은 서비스 공급자의 인프라와 가입자의 연결 모두에 영향을 미치며 인터넷 트래픽 중단을 초래했습니다.</p>
+	<p>11월 17일 현지 시각 07:30(05:30 UTC)부터 11월 23일 현지 시각 02:00(00:00 UTC) 사이에는 오데사(Odessa), 자포리자(Zaporizhzhia), 미콜라이우(Mykolaiv), 수미(Sumy)에서 <a href="https://x.com/CloudflareRadar/status/1858512061816275381" target="_blank" rel="noopener noreferrer"><u>지난주 대비 인터넷 트래픽이 감소한 것이 확인</u></a>되었습니다. 11월 17일에는 오데사의 트래픽이 전주 대비 약 50% 감소했고, 11월 18일에는 다른 지역의 트래픽이 20% 이상 감소했습니다. 오데사의 트래픽은 11월 21일까지 대부분 복구되었지만, <a href="https://x.com/CloudflareRadar/status/1859693864539558225" target="_blank" rel="noopener noreferrer"><u>다른 지역은 복구하는 데 며칠이 더 소요</u></a>되었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4df2zIvFEYuEzlxCOsheVq/929deb1bb59fa7424499489910df1660/Nov_17_-_Ukraine_-_Odessa_-_compare.png" alt="BLOG-2654 Nov 17 - Ukraine - Mykolaiv - compare" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ifIBz0P1A5CJJE5jzXCEb/9bed04debd6d2b2bb477a09bf33be572/Nov_17_-_Ukraine_-_Mykolaiv_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OP5J1JrocK1gEM8RV8Ejk/55cbe2ef4d5f58665e5a3e8a45930d28/Nov_17_-_Ukraine_-_Sumy_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ul0rncfaLHonLFaO1PAza/171a02e635370bf4ef83d83272309351/Nov_17_-_Ukraine_-_Zaporizhzhia_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<p>비슷한 공격이 불과 며칠 후에 다시 발생했습니다. <a href="https://www.politico.eu/article/ukraine-power-shutdowns-russia-massive-attack-energy-grid-volodymyr-zelenskyy-vladimir-putin-border-eu" target="_blank" rel="noopener noreferrer"><u>러시아의 추가 공습이 다시 우크라이나의 전력 인프라를 목표</u></a>로 이루어졌습니다. 또다시 우크라이나 당국은 긴급 정전을 실시했고, 이는 전국 여러 지역의 인터넷 트래픽에 영향을 미쳤습니다. 11월 28일 현지 시각 07:00경(05:00 UTC)부터 헤르손주(Kherson Oblast), 미콜라이우(Mykolaiv), 테르노필주(Ternopil Oblast), 리우네(Rivna), 리비우(Lviv)에서 전주 대비 <a href="https://x.com/CloudflareRadar/status/1862210312625152034" target="_blank" rel="noopener noreferrer"><u>트래픽이 최대 65%까지 감소한 것이 관찰</u></a>되었습니다. 트래픽은 이후 며칠 동안 더 낮게 유지되었지만, 12월 1일까지는 대체로 복구된 것으로 보입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MdWZ5jx2HNvMb98N1OSUv/b2241380e2c8f41bad84c1bfc9d97e26/Nov_28_-_Ukraine_-_Kherson_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BT5MUbigIKPn23Qrro81i/aaaaca0a3ec7281efb726b3fd2ee47b6/Nov_28_-_Ukraine_-_Mykolaiv_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SFzcNP5FgPxQ20T5HH1UD/9bc3da6e9be2465e9df62bb47dc8e1be/Nov_28_-_Ukraine_-_Ternopil_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6i7si8ch823gPYhcvrANJe/08cf403779b09f7d451da06c61d137d3/Nov_28_-_Ukraine_-_Rivne_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jcZqZeL0hDEgb7jTVNaMW/5de359cf61ba96763b6416b835790722/Nov_28_-_Ukraine_-_LVIV_-_compare.png" alt="" class="kg-image" width="1040" height="360" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="maintenance">유지 관리</h2>
+		<a href="https://blog.cloudflare.com/#maintenance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="switzerland-salt-mobile">스위스, Salt Mobile</h3>
+		<a href="https://blog.cloudflare.com/#switzerland-salt-mobile" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>아래 이미지에서 볼 수 있듯이, 스위스 통신사 <a href="https://radar.cloudflare.com/as15796" target="_blank" rel="noopener noreferrer"><u>Salt Mobile(AS15796)</u></a>의 홈페이지가 대체된 것으로 보아 유지보수 작업으로 인해 12월 3일 새벽 네트워크가 완전히 오프라인 상태가 된 것으로 나타났습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UcFvHDUtaPnmtKKVi0SaM/f02396634bef3dee5579428956189ebc/Dec_2_-_Switzerland_-_Salt_Mobile_-splash_-_border.jpg" alt="" class="kg-image" width="1002" height="428" loading="lazy">
+	</figure>
+	<p>이 중단은 현지 시각 01:25부터 04:20(00:25 ~ 03:20 UTC)까지 거의 3시간 동안 지속되었으며, 이 기간에 관찰된 트래픽은 0에 가까웠습니다.&nbsp;</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-02&amp;dateEnd=2024-12-03&amp;location=as15796&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h3 id="greenland-tusass-a-s">그린란드, Tusass A/S</h3>
+		<a href="https://blog.cloudflare.com/#greenland-tusass-a-s" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>12월 10일, <a href="https://www.tusass.gl/en/press/article/?id=139" target="_blank" rel="noopener noreferrer"><u>Tusass A/S는 소식을 발표</u></a><a href="https://radar.cloudflare.com/as8818" target="_blank" rel="noopener noreferrer"><u>(AS8818, 구 TeleGreenland)</u></a>하여 해당 통신사가 현지 시각 02:30부터 05:15(04:30 ~ 07:15 UTC) 사이에 완전한 인터넷 중단이 발생한 이유를 설명했습니다. 게시물에 따르면, <i>어젯밤 02:00부터 06:00까지 캐나다 연결망에 대한 예방적 유지보수가 예정되어 있었는데, 덴마크와의 연결에서도 결함이 발생하면서 전국적으로 인터넷 연결이 중단되었습니다. 다행히 덴마크 연결망의 결함은 육지에서 발생했기 때문에 복구하기 수월했습니다.</i>” 아래 그래프에서 확인할 수 있듯이, 중단 기간에는 네트워크 트래픽이 0으로 떨어졌으며, IPv6 주소 공간은 전혀 발표되지 않았고, IPv4 주소 공간 역시 94% 감소한 것으로 나타났습니다.</p>
+	<p><a href="https://www.submarinecablemap.com" target="_blank" rel="noopener noreferrer"><u>TeleGeography의 해저 케이블 지도(Submarine Cable Map)</u></a>에 따르면, <a href="https://www.submarinecablemap.com/submarine-cable/greenland-connect" target="_blank" rel="noopener noreferrer"><u>Greenland Connect</u></a> 케이블 시스템은 <a href="https://radar.cloudflare.com/gl" target="_blank" rel="noopener noreferrer"><u>그린란드</u></a>를 <a href="https://radar.cloudflare.com/ca" target="_blank" rel="noopener noreferrer"><u>캐나다</u></a>의 뉴펀들랜드(Newfoundland)와 연결합니다. <a href="https://radar.cloudflare.com/dk" target="_blank" rel="noopener noreferrer"><u>덴마크</u></a>와의 연결 결함은 Greenland Connect 케이블 시스템의 그린란드-<a href="https://radar.cloudflare.com/is" target="_blank" rel="noopener noreferrer"><u>아이슬란드</u></a> 구간에서 발생했을 가능성이 있으며, 아이슬란드-덴마크 연결은 <a href="https://www.submarinecablemap.com/submarine-cable/danice" target="_blank" rel="noopener noreferrer"><u>DANICE</u></a> 해저 케이블을 통해 이루어집니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-12-09&amp;dateEnd=2024-12-10&amp;location=as8818&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - HTTP 트래픽" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-12-10&amp;dateEnd=2024-12-10&amp;location=as8818&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv6%22%2C%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - routing.timeseries.title" loading="lazy"></iframe><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/BgpRoutesTimeseriesXY?dateStart=2024-12-10&amp;dateEnd=2024-12-10&amp;location=as8818&amp;chartState=%7B%22bgpSignalsMinMax%22%3Afalse%2C%22bgpSignalsIpVersionParam%22%3A%22ipv4%22%2C%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - routing.timeseries.title" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="unknown">알 수 없음</h2>
+		<a href="https://blog.cloudflare.com/#unknown" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="united-states-verizon">미국, Verizon</h3>
+		<a href="https://blog.cloudflare.com/#united-states-verizon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>11월 12일 새벽, 일부 Verizon의 Fios 인터넷 서비스 가입자들이 인터넷 연결 중단을 경험했습니다. <a href="https://puck.nether.net/pipermail/outages/2024-November/015342.html" target="_blank" rel="noopener noreferrer"><u>Outages 메일링 리스트</u></a>에 게시된 글에 따르면, 12:28am(EST)에 여러 주에 걸친 대규모 Verizon Fios 인터넷 중단이 시작되어 버지니아, 워싱턴 DC, 메릴랜드, 뉴저지 및 펜실베이니아 동부 일부 지역에 영향을 미쳤습니다. Verizon이 Fios 서비스에 사용하는 자율 시스템인 <a href="https://radar.cloudflare.com/as701" target="_blank" rel="noopener noreferrer"><u>AS701</u></a>의 트래픽은 동부 표준시 기준 00:30(05:30 UTC)경 약 30% 감소했습니다. 주 단위로는 펜실베이니아, 델라웨어, 메릴랜드, 워싱턴 DC에서 AS701의 트래픽이 50-70% 감소했습니다.</p>
+	<p>Outages 메일링 리스트의 후속 게시물에서는 이번 인터넷 중단이 EST 기준 3:23am(08:23 UTC)에 전 지역에서 해결되었다고 밝혔습니다. 중단이 종료된 지 거의 6시간 후, <a href="https://x.com/VerizonSupport/status/1856334754888438158" target="_blank" rel="noopener noreferrer"><u>Verizon 지원팀은 X에 문제를 인정하는 게시물</u></a>을 올려 “<i>오늘 새벽 네트워크 문제로 인해 북동부 지역 일부 Verizon Fios 고객의 서비스가 잠시 중단되었습니다. 문제를 확인한 즉시 엔지니어링 팀이 신속하게 서비스를 복구했습니다.</i>”라고 전했습니다. 그러나 Verizon 측은 서비스 중단의 근본적인 원인에 대해서는 어떠한 정보도 제공하지 않았습니다.</p><iframe width="800" height="450" src="https://radar.cloudflare.com/embed/HttpTrafficXY?dateStart=2024-11-12&amp;dateEnd=2024-11-12&amp;location=as701&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - traffic.requests.title" loading="lazy"></iframe>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">결론</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>위에서 다룬 장애 및 중단 사례 외에도, 11월 17일과 18일에 발생한 발트해(Baltic Sea) 해저 케이블 손상 사고는 <a href="https://blog.cloudflare.com/resilient-internet-connectivity-baltic-cable-cuts"><u>인터넷 연결의 높은 복원력</u></a> 덕분에 최소한의 피해가 발생했습니다. 이 사고가 <a href="https://www.datacenterdynamics.com/en/news/baltic-subsea-cable-damage-was-accidental-not-sabotage-us-and-european-officials" target="_blank" rel="noopener noreferrer"><u>우발적이든 의도적인 방해 행위</u></a> 였든, 해저 케이블 인프라의 보안과 복원력은 계속해서 <a href="https://www.datacenterdynamics.com/en/news/nato-launches-baltic-sentry-for-subsea-cable-security" target="_blank" rel="noopener noreferrer"><u>중요한 주제</u></a>로 남아 있습니다. 지상 케이블 인프라와 기타 핵심 인터넷 인프라의 보안 및 복원력 또한 폭풍, 지진, 군사 행동, 정전으로부터의 신속한 복구를 위해 최우선으로 고려해야 합니다.</p>
+	<p>Cloudflare Radar 팀은 지속적으로 인터넷 중단을 모니터링하고 <a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 중단 센터</u></a>, 소셜 미디어, <a href="https://blog.cloudflare.com/tag/cloudflare-radar"><u>blog.cloudflare.com</u></a>의 게시물을 통해 관찰한 내용을 공유하고 있습니다. 소셜 미디어에서 <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a>(X), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a>(Mastodon), <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a>(Bluesky)에서 Cloudflare를 팔로우하거나 <a href="https://blog.cloudflare.com/#"><u>이메일</u></a>을 통해 문의해 주세요.</p>
+</div>

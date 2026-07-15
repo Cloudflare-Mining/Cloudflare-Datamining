@@ -1,0 +1,133 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/gateway-swg">English</a>、<a href="https://blog.cloudflare.com/fr-fr/gateway-swg">Français</a>、<a href="https://blog.cloudflare.com/de-de/gateway-swg">Deutsch</a>、<a href="https://blog.cloudflare.com/zh-cn/gateway-swg">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k1C003vKaHTVkDER8PYo2/cbdf6c9afb2e4bbe68d97aabb558ebb5/gateway-swg.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">2020年1月</a> 、当社はCloudflare for Teamsをローンチしました。これは、パフォーマンスを犠牲にすることなく、企業とその従業員をグローバルに保護するための新しい方法です。Cloudflare for Teamsは、2つのコア製品―Cloudflare AccessとCloudflare Gatewayを中心に据えています。</p>
+	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">2020年3月</a>、Cloudflareは世界最速のDNSリゾルバーを搭載したセキュアなDNSフィルタリングソリューションであるCloudflare Gatewayの最初の機能の提供を開始しました。GatewayのDNSフィルタリング機能は、マルウェア、フィッシング、ランサムウェアなどの脅威に関連する潜在的に有害な宛先へのDNSクエリをブロックすることで、ユーザーの安全性を保ちます。企業はオフィスでルーターの設定を変更し、約5分でチーム全体を安全に保つことができます。</p>
+	<p>このローンチ後すぐに、企業全体がオフィスを離れ始めました。急場しのぎで自宅オフィスからでリモートワークを開始したユーザーも、この数か月間でリモートワークが永続的なものに変わりました。ユーザーとデータの保護は、単一のオフィスレベルの設定から、数百または数千か所におよぶユーザーとデバイスの管理に移行しています。</p>
+	<p>インターネット上のセキュリティ脅威も進化しています。過去6か月間でフィッシングキャンペーンとマルウェア攻撃が増加しました。このような種類の攻撃を検出するには、DNSクエリーよりもさらに詳細な調査が必要です。</p>
+	<p>本日、Cloudflare Gatewayで、これらの新しい課題を解決する 2 つの機能を発表できることをうれしく思います。まず、 &nbsp;<a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare GatewayはCloudflare WARP デスクトップクライアントと統合しました</a> 。WARPは、最新の効率的なVPNプロトコルであるWireGuardを中心に構築しました。WireGuardは、従来のVPNプロトコルよりもはるかに効率的で柔軟性があります。</p>
+	<p>第二に、Cloudflare GatewayはSecure Web Gatewayとなり、L7フィルタリングを実行して、トラフィックを検査し、表面下に隠れている脅威がないかを調べます。当社のDNSフィルタリングや1.1.1.1リゾルバーと同様に、この両機能は、Cloudflare WARPを世界中の数百万人ものユーザーに提供することで学んだすべての機能を備えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-the-distributed-workforce">分散した従業員を守る</h3>
+		<a href="https://blog.cloudflare.com/#securing-the-distributed-workforce" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のお客様の大部分は分散した従業員で、企業のオフィスで働く人と在宅ワークをする人とに別れています。（コロナ禍による）パンデミックのため、これから先もこのような労働環境が続くと思われます。</p>
+	<p>ユーザーが既知の固定された場所に配置されていないという事実（例外的にリモートワーカーは許可されている）は、今現在でも十分に過労なITスタッフに、次のような課題を課すことになります。</p>
+	<ol>
+		<li>
+			<p>VPN は、内部アプリケーションへのリモートアクセスを提供する「オール·オア·ナッシング」のアプローチです。これについては、Cloudflare Accessと内部アプリケーション（<a href="https://blog.cloudflare.com/cloudflare-access-for-saas">現在のSaaSアプリケーション</a>）を保護する当社のセキュリティへのゼロトラストアプローチの際にも言及しました。</p>
+		</li>
+		<li>
+			<p>VPNは遅くて高価です。ただし、一元化されたセキュリティ境界へのトラフィックのバックホールは、企業のコンテンツとセキュリティポリシーにローミングユーザーを保護させる主要なアプローチとなっています。Cloudflare Gatewayは、当社のお客様のためにこの問題に取り組むべく、作成されました。</p>
+		</li>
+	</ol>
+	<p>今日まで、Cloudflare GatewayはDNSフィルタリングを通じてお客様にセキュリティを提供してきました。これにより、アプリケーションに依存しないレベルのセキュリティとコンテンツ制御が提供されますが、お客様には次のようないくつかの課題が残されています。</p>
+	<ol>
+		<li>
+			<p>お客様は、DNS クエリーを Gatewayに送信するすべての場所の送信元 IP アドレスを登録する必要があります。これにより、ポリシー適用のために、企業のトラフィックを識別することができます。これはとても面倒な作業で、ましてや、数百のロケーションを持つ大企業ともなると、とても手に負えません。</p>
+		</li>
+		<li>
+			<p>DNSポリシーは比較的粗雑で、ドメインごとにオール·オア·ナッシングのアプローチを使用して実施されます。例えば企業側には、クラウドストレージプロバイダーへのアクセスを許可し、その一方で既知の悪意のあるURL からの有害なファイルのダウンロードをブロックするという機能はありません。</p>
+		</li>
+		<li>
+			<p>IP アドレスを登録する企業では、多くのユーザー間でパブリック IP アドレスを共有するために、ネットワークアドレス変換 (NAT) トラフィックを頻繁に使用します。これにより、個々のユーザーレベルで DNS アクティビティログの可視性が失われます。そのため、IT セキュリティ管理者には、悪意のあるドメインがブロックされていることがわかりますが、新たにフォレンジックツールを活用して、侵害された可能性のあるデバイスを追跡する必要があります。</p>
+		</li>
+	</ol>
+	<p>今日から、Cloudflare GatewayがセキュアなDNSフィルタリングソリューションを超える機能の提供を開始します。これは、Cloudflare for Teams クライアントとクラウドL7ファイアウォールを組み合わせることで実現しました。お客様は一元化されたセキュリティ境界にある別のハードウェアアプライアンスの代わりに、Cloudflare エッジから直接エンタープライズレベルのセキュリティをユーザーに提供できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="protecting-users-and-preventing-corporate-data-loss">ユーザーを保護し、企業データの漏えいを防止する</h3>
+		<a href="https://blog.cloudflare.com/#protecting-users-and-preventing-corporate-data-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DNSフィルタリングは、インターネット通信のためのすべてのアプリケーションで活用されるため、システム全体やネットワーク全体にわたって基本的な水準のセキュリティを提供するものです。それでも、アプリケーション固有の保護により、悪意のあるトラフィックとして分類するべきかどうか、きめ細やかなポリシー適用と可視化が可能です。</p>
+	<p>本日、お客様がセキュリティポリシーとコンテンツポリシーを HTTP トラフィックに適用できる、L7 ファイアウォールを追加することで、DNS フィルタリングを通じて提供する保護を拡張できることをうれしく思います。これにより、HTTP セッション内のきめ細かな制御とポリシー適用の可視性を通して、ユーザーを保護するための優れたツールが管理者に提供されます。同じくらい重要なことですが、データが存在する場所をより詳細に制御できるようになりました。ポリシーを構築することにより、お客様は、ファイルの種類、リクエストがファイルのアップロードまたはダウンロードのいずれであったか、または宛先が企業の承認済みクラウドストレージプロバイダーであるかどうかを考慮しつつ、リクエストを許可またはブロックするかどうかを指定することができます。</p>
+	<p>企業は、Cloudflare for TeamsクライアントでCloudflareに接続することで、ユーザーの居場所を問わずインターネットトラフィックを保護します。このクライアントは、ユーザーに最も近いCloudflareデータセンターへの高速で安全な接続を提供し、グローバルに接続している数百万人のユーザーが接続しているものと同じCloudflare WARPアプリケーションを利用しています。クライアントが内部では同じWARPアプリケーションを使用するため、企業はパフォーマンスを犠牲にすることなく、セキュリティを提供するために、大規模にテストされていることを確認できます。Cloudflare WARPは、Cloudflareエッジへの接続にWireGuardを活用することで、ネットワークパフォーマンスを最適化します。</p>
+	<p>その結果、企業ユーザーには、一元化されたセキュリティ境界へのネットワークトラフィックのバックホールを必要とせず、場所も問わない、安全でパフォーマンスが保たれた接続が提供されます。Cloudflare for TeamsクライアントでCloudflare Gatewayに接続することで、企業ユーザーは、すべての送信インターネットトラフィックに適用されるフィルタリングポリシーによって保護され、インターネットをナビゲートしながらユーザーを保護し、企業データの損失を防止します。</p>
+	<p>Cloudflare Gateway では、次のようなさまざまな基準に基づいて HTTP トラフィックフィルタリングがサポートされるようになりました。</p>
+	<p>基準</p>
+	<p>例</p>
+	<p>URL, path, and/or query string</p>
+	<p><a href="https://www.myurl.com/path?query=" target="_blank" rel="noopener noreferrer">https://www.myurl.com/path?query</a></p>
+	<p>HTTP method</p>
+	<p>GET, POST, etc.</p>
+	<p>HTTP response code</p>
+	<p>500</p>
+	<p>File type and file name</p>
+	<p>myfilename.zip</p>
+	<p>MIME type</p>
+	<p>application/zip</p>
+	<p>URL security or content category</p>
+	<p>Malware, phishing, adult themes</p><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<p>DNS フィルタリングポリシーを補完するために、IT管理者は L7 ファイアウォールルールを作成してHTTPトラフィックに詳細なポリシーを適用できるようになりました。</p>
+	<p>たとえば、管理者は、ユーザーがRedditの有用な部分に移動できるようにしたいが、望ましくないサブレディットはブロックできます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ArFEuCCcc77PX9cMvTpaR/e5e5e7fc42ce8e89cd01a1bf8c0b3b56/image2-12.png" alt="" class="kg-image" width="1999" height="879" loading="lazy">
+
+	</figure>
+	<p>または、データ損失を防ぐために、管理者はユーザーが一般的なクラウドストレージプロバイダーからコンテンツを受信できるが、企業のデバイスから選択したファイルタイプをアップロードできないようにするルールを作成できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iKIRnSd2A6ehkzBhJWhhf/ce59d24f46a23138a298e3448742f7b5/image6-7.png" alt="" class="kg-image" width="1999" height="1243" loading="lazy">
+
+	</figure>
+	<p>別の管理者は、Zipファイルのダウンロードによって悪意のあるファイルが秘密裏に持ち込まれるのを防止するため、圧縮ファイルの種類のダウンロードをブロックするようにルールを設定することもできます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mCROB1jq2CKam8tFz8ghi/79a00a382f860f263c62abe1dad3fb19/image5-6.png" alt="" class="kg-image" width="1999" height="908" loading="lazy">
+
+	</figure>
+	<p>DNS フィルタリングカテゴリを使用して内部ユーザーを保護した場合、管理者は完全な URL の分類に基づいてセキュリティ脅威をブロックすることができます。マルウェアペイロードはクラウドストレージから頻繁に配布されます。DNS フィルタリングでは、管理者は特定のストレージプロバイダーのドメイン全体へのアクセスを許可するか拒否するかを選択する必要があります。URLフィルタリングにより、管理者はマルウェアのペイロードが存在する正確なURLのリクエストをフィルタリングできるため、お客様は選択したストレージプロバイダーの実用性を引き続き活用できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rvW866zgYx5m9k9KybSCT/8b15d21f1aa664f51e419fce53652e80/image7-4.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
+
+	</figure>
+	<p>そして、これらはすべてCloudflare for Teamsクライアントで利用可能なため、ローミングクライアントを持つオフィスを離れた従業員は、最も近いCloudflareデータセンターへの安全な接続を介して、どこにいてもこの保護を受けることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5DZZ6DSVRQcNTHA4QVvb1X/c9d29b26ca1e590c68f002794a53334a/image4-7.png" alt="" class="kg-image" width="1638" height="286" loading="lazy">
+
+	</figure>
+	<p>HTTPトラフィックを検査してインターネットを閲覧するときにチームを保護できるようになったことは喜ばしいことですが、HTTP以外のトラフィックについてはどうですか？今年後半には、Gloudflare Gatewayを拡張し、クラウドL4ファイアウォールでIP、ポート、プロトコルフィルタリングのサポートを追加する予定です。これにより、管理者は、アウトバウンド SSH を許可するルールや、HTTP検査のために非標準ポートに到着した HTTPトラフィックを L7 ファイアウォールに送信するかどうかを決定するルールなど、すべてのインターネット経由トラフィックにルールを適用できます。</p>
+	<p>Cloudflare Gatewayを起動すると、管理者は企業内の全ユーザーに対してDNSとHTTPトラフィックをフィルタリングするポリシーを作成できます。これにより、セキュリティの優れたベースラインが作成されます。ただし、実際には例外があります。コンテンツやセキュリティポリシーの適用に対するワンサイズアプローチは、すべてのユーザーの特定のニーズに合致することはほとんどありません。</p>
+	<p>この問題に対処するために、当社では、Cloudflare Accessをお客様の既存IDプロバイダーと統合することにより、ユーザーとグループのIDに基づくルールのサポートに取り組んでいます。これにより、管理者は、きめ細やかなルールを作成して、ユーザーの環境を上手く使うことができます。</p>
+	<ul>
+		<li>
+			<p>たとえば、すべてのユーザーに対して、ソーシャルメディアへのアクセスを拒否します。ただし、マーケティング担当のJohn Doeが職務を果たすために必要な場合は、こうしたサイトへのアクセスを許可します。</p>
+		</li>
+		<li>
+			<p>Jane Doeは、Cloudflare Gateway、または特定の<a href="https://blog.cloudflare.com/tanium-cloudflare-teams">デバイスポスチャ</a>を介して特定のSaaS アプリケーションに接続することだけが許可されます。</p>
+		</li>
+	</ul>
+	<p>IDに基づくポリシーの適用とログの可視性の必要性は、ユーザーが固定された既知の職場にいないという現実から生じたものです。Cloudflare for Teamsクライアントを使って、ユーザーがどこにいても、IDを統合し、ユーザーを保護することで、そのニーズを満たしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">次は何を？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大抵の人は情報技術やセキュリティの細部に対処するために、ビジネスをはじめるわけではありません。世に出したいと願う、ビジョンや製品、サービスがあり、当社はこうした人たちが本来取り組もうとしていたことに十分力を注げるよう支援したいと考えています。大規模でハイレベルな企業にはつきものの、高度なセキュリティツールの実装に伴う難しい部分を取り除く支援をし、チーム規模に関係なく、どのようなチームでもセキュリティツールを利用できるようにしたいと考えています。</p>
+	<p>Cloudflare for TeamsクライアントとL7ファイアウォールの両方のローンチにより、ウイルス対策スキャン、CASB、リモートブラウザ隔離などの統合機能を備えた高度なSecure Web Gatewayの基盤がすべてCloudflareエッジで実行されます。当社のチームが構築した未来の姿を少しでもご紹介できることを嬉しく思います。Cloudflareは始まったばかりです。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-now">今すぐ始める</h3>
+		<a href="https://blog.cloudflare.com/#get-started-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの新機能はすべて、今すぐご利用いただけます。L7 ファイアウォールは、Gateway スタンドアロン、Teams Standard、Teams Enterprise プランで利用できます。<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">Gateway アカウントにサインアップし、</a>オンボーディングの指示に従って開始できます。</p>
+	<p><a href="https://blog.cloudflare.com/tag/zero-trust">ゼロトラスト</a> <a href="https://blog.cloudflare.com/tag/zero-trust-week">ゼロトラストウィーク</a> <a href="https://blog.cloudflare.com/tag/1-1-1-1">1.1.1.1</a> <a href="https://blog.cloudflare.com/tag/product-news">製品ニュース</a> <a href="https://blog.cloudflare.com/tag/warp">WARP</a></p>
+</div>

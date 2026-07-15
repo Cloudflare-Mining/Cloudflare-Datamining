@@ -1,0 +1,105 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-virtual-private-cloud">English</a>、<a href="https://blog.cloudflare.com/zh-tw/workers-virtual-private-cloud">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/workers-virtual-private-cloud">Français</a>、<a href="https://blog.cloudflare.com/de-de/workers-virtual-private-cloud">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/workers-virtual-private-cloud">한국어</a>、<a href="https://blog.cloudflare.com/es-la/workers-virtual-private-cloud">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/nl-nl/workers-virtual-private-cloud">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/workers-virtual-private-cloud">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ti4FU3p0A1MAb952wmvLM/4ec35b8225cd34fe614fb58173343d52/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日は、複数のクラウドにまたがるアプリをより簡単に構築できる新機能「Workers VPC（仮想プライベートクラウド）」のプレビューをご紹介します。&nbsp;</p>
+	<p>Workers VPC は、<a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud" target="_blank" rel="noopener noreferrer"><u>従来の仮想プライベートクラウド（VPC）</u></a>を、特定のクラウドリージョンに依存しないネットワークとコンピューティング環境に合わせて現代的に再構築したものです。さらに、Workers VPC Private Linksで補完し、クラウド間での構築を容易にしています。この2つの機能により、<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>に以下の新しい能力が加わります：</p>
+	<ol>
+		<li>
+			<p>Cloudflare上アプリのリソースを独立した環境にまとめます。Workers VPC内にあるリソース同士だけが通信できるようになり、アプリ間の通信を安全に分離できます（「Workers VPC」）。</p>
+		</li>
+		<li>
+			<p>Workers VPCを既存のパブリック/プライベート上のクラウドのVPCと接続します。これにより、まるで1つのVPC内にあるかのように、双方向に通信できます（「Workers VPC Private Link」）。</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3b8ZShcyU8OvMSKi9Ku9fW/70c1ee1a3f10242551dd32438d0bcfba/1.png" alt="" class="kg-image" width="1999" height="1150" loading="lazy">
+	</figure>
+	<p><i><sup>Workers VPCとWorkers VPC Private Linkを使うことで、Cloudflareと外部クラウド間の双方向接続を可能にします</sup></i></p>
+	<p>外部VPCにリンクすると、Workers VPCは基盤となるリソースに直接アドレス指定できるようになるため、アプリケーション開発者は、ネットワーク層を意識することなく、アプリケーション層に集中した開発が可能になります。これは「クラウドをまたいで使える一つのVPC」のようなもので、サービス同士が自動でお互いを認識できる機能も最初から備わっています。</p>
+	<p>私たちは現在、Cloudflareの既存のプライベートネットワーク機能を土台として、このWorkers VPCを開発中で、2025年後半の提供を予定しています。私たちはこの製品のプレビュー版を早期に共有し、皆様からのご意見・ご要望を伺いたいと考えています。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="building-private-cross-cloud-apps-is-hard">複数のプライベートクラウド間でのアプリの構築は難しい&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#building-private-cross-cloud-apps-is-hard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最近、Cloudflare Workersを選ぶ開発者が増加しており、リッチでステートフルなアプリケーションが構築されています。Workersの<a href="https://blog.cloudflare.com/introducing-cloudflare-workers"><u>元々の想定使用範囲</u></a>をはるかに超えて、システム全体を近代化し、より多くのビジネスロジックを移行するための基盤として使われています。Workersを選択されたお客様からは、外部データベースにアクセスするリアルタイムコラボレーションアプリケーション、セキュリティで保護されたAPIを使用する大規模なアプリケーション、可能な限りエンドユーザーに近いエージェントにビジネスロジックを公開するモデルコンテキストプロトコル（MCP）サーバーなど、さまざまな用途に使われています。</p>
+	<p>そして今、外部クラウドに最後に立ちはだかる壁はVPC（仮想プライベートクラウド）です。VPCはセキュリティ面で安心をもたらしますが、正直言って、Workersのようなモダンなプラットフォームでアプリを構築する場合は、かなりの足かせになります。これは暗黙的にレガシーVPCを使うように仕向け、ユーザーのデータやアプリの<a href="https://blog.cloudflare.com/tag/connectivity-cloud"><u>囲い込み</u></a>し、ロックインさせることによるものです。&nbsp;</p>
+	<p>お客様からは「VPCが障壁になっている」という声を何度も聞きました。しかし、企業ポリシー上、VPCが義務付けられているのには十分な理由があるのも事実です。したがって、Workersからプライベートリソースにアクセスするには、1) 安全なアクセスを提供するために認証を実行する新しいパブリックAPIを作成するか、2) アクセスしたいリソースごとにCloudflare TunnelsとZero Trustを設定して拡張するかの、どちらかの方法を取る必要があります。これは構築を始める前に、かなりの複雑な手順を課すことになります。</p>
+	<p>当社ではWorkers上ですべてを構築できるよう、ストレージとコンピューティングのオプションをご利用いただけますが、アプリケーションやデータを一晩で移動できないことも理解しています。しかし、少なくとも<b>現在</b>において、お客様が既存のプライベートAPIとデータベースを使用して最新のアプリケーション、AIエージェント、リアルタイムのグローバルアプリケーションを構築するために、<b>自由</b>にWorkersを選択できるべきだと考えています。それがWorkers VPCを立ち上げた理由です。</p>
+	<p>私たちは、VPCを中心に構築することの難しさを身をもって知ってきました。2024年には、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>で<a href="https://blog.cloudflare.com/elephants-in-tunnels-how-hyperdrive-connects-to-databases-inside-your-vpc-networks"><u>プライベートデータベースのサポート</u></a>を発表しました。これにより、Cloudflare Workersから外部のVPC内にあるデータベースへ、Cloudflare Tunnelを使って接続できるようになりました。ポイントツーポイントの接続方式としては、非常にうまく機能しています。ただし、このソリューションには限界があり、外部クラウド内のリソースごとにCloudflare Tunnelを管理とスケーリングを行わなければならず、大規模で複雑なアーキテクチャには向いていないという課題があります。&nbsp;</p>
+	<p>私たちは、Workersを使ってシステムを近代化していく中でも、外部クラウドのリソースに簡単かつスケーラブルにアクセスできる、非常にシンプルな仕組みを提供したいと考えています。そして、これまでに培ってきたMagic WANやMagic Cloud Networkingの開発経験を活かして、それを可能にします。</p>
+	<p>そのため、Workers VPCでVPCをグローバルに展開します。また、Workers VPC Private Linksを使って従来のプライベートネットワークに接続できるようにします。これは、「安全で、グローバルで、複数クラウドに対応したアプリを、自由にWorkersで構築できる世界」を本気で目指した結果です。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="global-cross-cloud-apps-need-a-global-vpc">グローバルなクロスクラウドアプリにはグローバルなVPCが必要</h2>
+		<a href="https://blog.cloudflare.com/#global-cross-cloud-apps-need-a-global-vpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のプライベートネットワークの構築には多くの手間がかかり、複雑な階層構造が絡み、専任チームによる管理が必要です。特に当初のポイントツーポイントネットワークの想定を超えて成長したアーキテクチャの管理は複雑です。そのため、私たちは当社のプラットフォーム上で隔離された環境を簡単に構築できる仕組みが必要であると考えました。</p>
+	<p>Workers VPCは、その名の通り「仮想プライベートクラウド（Virtual Private Cloud）」です。これは、Workersと開発者プラットロームのリソース（<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>、<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>など）を、セキュアに相互接続できる専用の環境を構築する機能です。Cloudflareアカウント内の他のリソースは、これらにアクセスできません。VPCを使うと、特定のアプリに関連付けたリソースのセットを指定でき、アプリ同士でリソースが共有されないようにすることができます。</p>
+	<p>Workers VPCは、従来のVPCをCloudflare開発者プラットフォーム向けに再設計したものです。主な違いは、その仕組みにあります。一般的なVPCが地域ごとのIPベースで構築されているのに対し、Workers VPCはグローバル規模で構築され、Cloudflareネットワークは、そのすべてのデータセンターでリソースの分離を実行します。&nbsp;</p>
+	<p>また、既存のネットワークとシームレスに連携できるネットワーキング機能があり、お客様が信頼しているネットワークから決して離れないクロスクラウドアプリを構築することができます。それがWorkers VPC Private Linksです。&nbsp;</p>
+	<p>Workers VPC Private LinksはIPsecトンネルまたは<a href="https://blog.cloudflare.com/cloudflare-network-interconnect"><u>Cloudflare Network Interconnect</u></a>を使って、AWS PrivateLinkなどと同様に、Workers VPCと外部クラウドのVPCを接続する機能です。Private Linkが確立されると、Cloudflare側と外部クラウド側のリソース同士が、あたかも1つのネットワークであるかのように通信できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TXRsaIO3a9tFFWo3LZJqq/adc1d2d54baf595bad661ff9ed035640/2.png" alt="" class="kg-image" width="1106" height="636" loading="lazy">
+	</figure>
+	<p><i><sup>Workers VPC Private Linkは、IPsecトンネルやCloudflare Network Interconnect用のゲートウェイを自動で用意し、CloudflareのリソースへルーティングできるようにDNSの設定も行います。</sup></i></p>
+	<p>これを可能にするために、Workers VPCとPrivate Linkが連携し、外部クラウド内のリソースを自動で用意・管理します。これにより、両方のネットワーク間の接続が確立され、双方向ルーティングを可能にするために必要なリソースが設定されます。また、自分たちでリソースのプロビジョニングを行いたいチームのために、Workers VPC Private Linkは外部クラウドリソースをプロビジョニングするためのTerraformスクリプトも自動で提供します。</p>
+	<p>接続が確立されると、Workers VPCは外部VPC内のリソースを自動的に検出し、それぞれに固有のIDを付けた「バインディング」として利用可能になります。Workers VPCリソースバインディングを通して行われたリクエストは、外部VPCに自動的にルーティングされます。ホスト名でアクセスするリソースを使用している場合、そこでDNS解決が行われ、目的のリソースにルーティングされます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TvQBKtKVxy9MC0buyE07x/57d03cf1c0be765b582318e53e6d6a8e/3.png" alt="" class="kg-image" width="1999" height="1166" loading="lazy">
+	</figure>
+	<p>例えば、Cloudflare Workersから外部VPC内のプライベートAPIへの接続は、名前付きのWorkers VPCリソースへのバインディングでfetch()を呼び出すだけです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await env.WORKERS_VPC_RESOURCE.fetch("/api/users/342");</code></pre>
+	<p>逆に、外部VPCからCloudflareのリソースにアクセスする場合は（Workers VPC Private Linkによって、外部クラウド内のプライベートDNSに設定されている）標準化されたURLを指定するだけです。例えば外部VPC内のAPIからR2オブジェクトにアクセスする場合、指定されたURLにリクエストを送信します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const response = await fetch("https://&lt;account_id&gt;.r2.cloudflarestorage.com.cloudflare-workers-vpc.com");</code></pre>
+	<p>さらに嬉しいのは、Workers VPCは当社の既存のプラットフォーム上に構築されているため、当社のネットワーキング機能とルーティング機能をフルに活用することで、エグレス料金を削減しながら、グローバルアプリの構築が可能な点です。</p>
+	<p>第一に、Workers VPC Private Linkは<a href="https://developers.cloudflare.com/network-interconnect" target="_blank" rel="noopener noreferrer"><u>Cloudflare Network Interconnect</u></a>を接続方式としてサポートしているため、外部クラウドからの通信にかかるエグレス料金を割引価格で利用でき、帯域コストを削減できます。第二に、Workers VPCは本質的にグローバルであるため、Workersとリソースを必要な場所に配置して、最適なパフォーマンスを実現することができます。たとえば、Workersの<a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>機能を使えば、Workersを外部の地域VPCに最も近い地域に自動的に配置して、アプリのパフォーマンスを最大化することができます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="an-end-to-end-connectivity-cloud">エンドツーエンドのコネクティビティクラウド</h2>
+		<a href="https://blog.cloudflare.com/#an-end-to-end-connectivity-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers VPCを使えば、今まで外部クラウドに閉じ込められていた多くのワークロードを、パブリックインターネットにさらすことなくCloudflare Workers上で安全に扱えるようになります。以下は、実際にユーザーから「Workers VPCで実現したい」と寄せられたアプリケーションの例です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52a04nrfXOe7FSVTAJzEn5/20747efd37dcd3e21f2d752ce4a6cdd8/4.png" alt="" class="kg-image" width="1106" height="636" loading="lazy">
+	</figure>
+	<p><i><sup>外部VPCのプライベートデータベースとコンテナにアクセスする、WorkersとDurable Objectsに構築されたリアルタイムキャンバスアプリケーションのアーキテクチャの例</sup></i></p>
+	<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>でアプリケーションの新しい機能を構築しようとしているとします。さらに、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>を使ってリアルタイムの共同編集機能も加えたいとします。また、ライブ動画処理のためにFFmpegにアクセスする必要があるため、<a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Containers</u></a>も一緒に使用しています。それぞれのシナリオで、既存の従来のデータベースに状態の更新を保持したり、既存のAPIにアクセスする方法が必要になります。</p>
+	<p>以前は、WorkersとDurable Objectsから更新操作を処理するために専用APIを用意する必要がありましたが、Workers VPCを使えば既存のデータベースへ直接アクセスして更新することが可能です。&nbsp;</p>
+	<p><a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol（MCP）</u></a>サーバーを構築する場合も同じです。<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>Workers上にMCPサーバーを構築している場合</u></a>、特にスピード重視で開発を進めたい場合は、パブリックAPIとしてすぐに利用できない特定の機能を使いたいことがあります。Workers VPCを使えば、プライベートなAPIやデータベースを活用して、外部のMCPサーバー内に新しい機能を直接組み込むことができ、迅速かつセキュアにリリースできます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3B4uuJCwP6RdFugEMjDLsq/65c01455b7903884384390ec344a6f57/5.png" alt="" class="kg-image" width="1106" height="636" loading="lazy">
+	</figure>
+	<p><i><sup>R2、D1、KVからデータにアクセスする外部クラウドリソースのアーキテクチャの例</sup></i></p>
+	<p>多くの開発チームが、Cloudflareの開発者プラットフォーム上にますます多くのデータを格納しています。たとえば、AIの学習データを<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>にデータを置いて低エグレスコストを実現したり、アプリケーションデータを<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>に保存して水平シャーディングで拡張性を確保したり、設定情報を<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>に保存してグローバルにミリ秒単位での高速読み取りを実現しています。&nbsp;</p>
+	<p>次に、外部クラウド上のコンピュート環境からR2にある学習データを使って、LLM（大規模言語モデル）の学習やファインチューニングを行いたいとします。ユーザーデータにアクセスするため、セキュリティチームの提示する要件から、プライベートネットワーク経由である必要があります。同様に、特定の管理業務や分析処理のために、パブリックネットワークを介さずにD1およびKVのユーザーデータや設定データにアクセスする必要があります。Workers VPCを使えば、外部VPCからCloudflareリソースに対して直接かつプライベートなネットワーク経由でのアクセスが可能になります。自動設定されたプライベートDNSから分かりやすいホスト名で簡単にアクセスできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AF32up4fVJsS9NoI11GRl/bdc8741dcae296c8b3f9ab34c823b520/6.png" alt="" class="kg-image" width="1999" height="1150" loading="lazy">
+	</figure>
+	<p>最後に、<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>の例を見てみましょう。何といっても今は<a href="https://blog.cloudflare.com/welcome-to-developer-week-2025"><u>Developer Week 2025</u></a>です！このAIエージェントは、Workers上に構築されており、検索拡張生成（RAG）を使用して、コンテキストウィンドウを最小化しながら、生成されたテキストの結果を改善します。&nbsp;</p>
+	<p>あなたは外部クラウドで<a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer"><u>PostgreSQL</u></a>と<a href="https://www.elastic.co/elasticsearch" target="_blank" rel="noopener noreferrer"><u>Elasticsearch</u></a>を使用しています。理由はそこにデータがあることと<a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer"><u>pgvector</u></a>を気に入っているからです。開発のスピードを重視してWorkersを使うことにしましたが、当然ながらデータベースにもアクセスする必要があります。ところが、そのデータベースはプライベートネットワーク内にあり、インターネット経由ではアクセスできません。&nbsp;</p>
+	<p>新しいHyperdriveとCloudflare Tunnelをコンテナでプロビジョニングすることもできますが、既にWorkers VPCが設定・リンクされている環境であれば、Workersまたは<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>のいずれかを使用してデータベースに直接アクセスすることができます。&nbsp;</p>
+	<p>また、外部クラウドに新しいドキュメントが追加されたときに、自動でワークフローを開始して、新規ドキュメントの処理、チャンク化、エンベッディングの取得、結果としてアプリケーションの状態を更新しながら、ワークフローのステータスをエンドユーザーにリアルタイムで更新したい場合などを例に挙げます。&nbsp;</p>
+	<p>その場合、外部クラウドのサーバーレス関数から<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>を起動することで対処できます。Workflowは、オブジェクトストレージの新しいドキュメントを取得し、必要に応じて処理し、Postgres内のベクトルストアを処理および更新するために、任意の埋め込みプロバイダー（Workers AIまたは他のプロバイダーを使用）を使用して、アプリケーションの状態を更新します。&nbsp;</p>
+	<p>これらは、Workers VPCが登場した初日から実現可能なワークロードの一例に過ぎません。お客様が今後構築されるものを楽しみにしています。また、グローバルなVPCを実現するために協力していけることを楽しみにしています。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-era-for-virtual-private-clouds">仮想プライベートクラウドの新時代</h2>
+		<a href="https://blog.cloudflare.com/#a-new-era-for-virtual-private-clouds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers VPCによって、より多くをCloudflare Workers上で構築できるようになることをとても楽しみにしています。お客様のプライベートネットワーク内のAPIやデータベースに安全にアクセスできるようになることで、Workers上で構築可能なものの可能性が大きく広がると私たちは考えています。Workers VPCを使えば、今までアクセスできなかったプライベートリソースに接続できるようになり、より高速で高性能なアプリをすばやく開発・リリースできるようになります。もちろん、<a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Containers</u></a>がWorkers VPCとネイティブに統合できるようにすることも予定されています。</p>
+	<p>現在、当社では、これまでに大規模なネットワーク接続で培ってきた基盤（ネットワークプリミティブやオンランプ）を活かして、Workers VPCの開発を進めています。2025年後半には、早期プレビュー版の提供を目指しています。</p>
+	<p>まずは、「Workersから外部クラウドへの接続」にフォーカスし、プライベートAPIやデータベースへのアクセスが必要なレガシーアプリをWorkersで近代化できるようにします。その後、双方向通信や複数のWorkers VPCネットワークの構成にも対応していく予定です。レガシークラウドにワークロードが縛られておりWorkers VPCのビジョンに関心がある方は、<a href="https://www.cloudflare.com/workers-virtual-private-cloud-signup" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>からその旨をご連絡ください。</p>
+</div>

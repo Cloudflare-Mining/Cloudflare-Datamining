@@ -1,0 +1,468 @@
+<div class="mb2 gray5">Lecture&nbsp;: 11 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q2">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2022-q2">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/ddos-attack-trends-for-2022-q2">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/ddos-attack-trends-for-2022-q2">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/ddos-attack-trends-for-2022-q2">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/ddos-attack-trends-for-2022-q2">Português</a>, en <a href="https://blog.cloudflare.com/es-es/ddos-attack-trends-for-2022-q2">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2022-q2">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mzmUIi60MjBkgClG4HzoJ/b9d009db9415582a053b35238e053586/ddos-attack-trends-for-2022-q2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Bienvenue dans notre rapport consacré aux attaques DDoS survenues lors du deuxième trimestre 2022. Ce document présente des tendances et des statistiques relatives au panorama des menaces DDoS, telles qu'observées sur le réseau mondial de Cloudflare. Une version interactive de ce rapport est également disponible sur <a href="https://radar.cloudflare.com/notebooks/ddos-2022-q2" target="_blank" rel="noopener noreferrer">Radar</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PwTj2tCMoggQJjwZmRV1N/584391a0244ab593eed0d7843af68b62/image22-2.png" alt="DDoS attack trends for 2022 Q2" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Au cours du deuxième trimestre, nous avons observé certaines des plus vastes attaques jamais enregistrées, notamment une <a href="https://blog.cloudflare.com/fr-fr/26m-rps-ddos-fr-fr">attaque DDoS HTTPS de 26 millions de requêtes par seconde</a>, automatiquement détectée et atténuée par nos soins. Nous avons également constaté la poursuite des attaques contre l'Ukraine et la Russie, de même que l'émergence d'une nouvelle campagne d'<a href="https://www.cloudflare.com/fr-fr/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS avec demande de rançon</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-highlights">Points clés</h2>
+		<a href="https://blog.cloudflare.com/#the-highlights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="ukrainian-and-russian-internet">Le réseau Internet russe et ukrainien</h3>
+		<a href="https://blog.cloudflare.com/#ukrainian-and-russian-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>La guerre au sol s'accompagne d'attaques ciblant la diffusion des informations.</p>
+		</li>
+		<li>
+			<p>Les entreprises du secteur audiovisuel ukrainien ont été les plus visées par les attaques DDoS au deuxième trimestre. Pour tout dire, les cinq secteurs les plus attaqués se situent tous dans le domaine des médias en ligne/Internet, de la publication et de l'audiovisuel.</p>
+		</li>
+		<li>
+			<p>À l'inverse, en Russie, les médias en ligne reculent de secteur le plus attaqué à la troisième place. Les entreprises du secteur de la banque, des assurances et des services financiers (BFSI, Banking, Financial Services and Insurance) russe se sont frayées un chemin vers la première place et ont été les plus attaquées au deuxième trimestre. Près de 45 % de l'ensemble des attaques DDoS sur la couche applicative ont ainsi visé le secteur des BFSI. Les entreprises russes du secteur des cryptomonnaies décrochent la deuxième place.</p>
+		</li>
+	</ul>
+	<p>En savoir plus sur <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">les mesures prises par Cloudflare pour maintenir la circulation des informations de l'Internet ouvert vers la Russie et empêcher les attaques de sortir de ce dernier</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="ransom-ddos-attacks">Attaques DDoS avec demande de rançon</h3>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Nous avons observé une nouvelle vague d'<a href="https://www.cloudflare.com/fr-fr/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS avec demande de rançon</a> provenant d'entités se revendiquant du groupe Fancy Lazarus.</p>
+		</li>
+		<li>
+			<p>En juin 2022, les attaques DDoS avec demande de rançon ont atteint leur point culminant de l'année jusqu'ici : une personne interrogée sur cinq parmi celles qui affirment avoir subi une attaque DDoS ont signalé avoir fait les frais d'une attaque DDoS ou d'autres menaces accompagnées d'une demande de rançon</p>
+		</li>
+		<li>
+			<p>Au total, le pourcentage d'attaques DDoS avec demande de rançon a augmenté de 11 % au deuxième trimestre, par rapport au trimestre précédent.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks">Attaques DDoS sur la couche applicative</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>En 2022, les attaques DDoS sur la couche applicative ont augmenté de 72 % par rapport à l'année précédente.</p>
+		</li>
+		<li>
+			<p>Les entreprises établies aux États-Unis ont été les plus touchées, suivies par celles situées à Chypre, à Hong Kong et en Chine. Les attaques visant les entreprises basées à Chypre ont augmenté de 166 % par rapport au trimestre précédent.</p>
+		</li>
+		<li>
+			<p>Le secteur de l'aéronautique et de l'aérospatiale a été le plus visé au deuxième trimestre, suivi par les secteurs de l'Internet, des BFSI (banque, assurances et services financiers) et le secteur des jeux/jeux de hasard, qui se place en quatrième position</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks">Attaques DDoS sur la couche réseau</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>En 2022, les attaques DDoS sur la couche réseau ont augmenté de 109 % par rapport à l'année précédente. Les attaques de 100 Gb/s et plus ont augmenté de 8 % par rapport au trimestre précédent et les attaques d'une durée supérieure à 3 heures de 12 % sur la même période.</p>
+		</li>
+		<li>
+			<p>Les secteurs les plus touchés ont été ceux des télécommunications, des jeux/jeux de hasard, ainsi que celui des services et technologies de l'information.</p>
+		</li>
+		<li>
+			<p>Les entreprises situées aux États-Unis ont été les plus visées, suivies par celles basées en Chine, à Singapour et en Allemagne.</p>
+		</li>
+	</ul>
+	<p>Ce rapport concerne les attaques DDoS automatiquement détectées et atténuées par les systèmes de protection contre les attaques DDoS de Cloudflare. Pour en apprendre plus sur leur fonctionnement, consultez cet <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">article de blog détaillé</a>.</p>
+	<p><b>Remarque concernant la manière dont nous mesurons les attaques DDoS observées sur notre réseau</b></p>
+	<p>Pour analyser les tendances en matière d'attaques, nous calculons le taux d'« activité DDoS », qui correspond au pourcentage de trafic hostile par rapport au trafic total (hostile et légitime) observé sur notre réseau mondial, dans un emplacement spécifique ou au sein d'une catégorie spécifique (p. ex. le secteur ou le pays de facturation). La mesure de ces pourcentages nous permet de normaliser les points de données et d'éviter les biais résultant de l'utilisation de chiffres absolus (par exemple, envers un datacenter Cloudflare qui reçoit un trafic plus important et connaît donc plus d'attaques).</p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-attacks">Attaques avec demande de rançon</h2>
+		<a href="https://blog.cloudflare.com/#ransom-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nos systèmes analysent le trafic en permanence et déploient des mesures d'atténuation de manière automatique lorsque des attaques DDoS sont détectées. Nous invitons chaque client ayant subi une attaque DDoS à répondre à une enquête automatisée afin de nous aider à mieux comprendre la nature de l'attaque et le degré de réussite de l'atténuation.</p>
+	<p>Depuis plus de deux ans désormais, Cloudflare interroge les clients victimes d'attaques. Nous leur demandons notamment s'ils ont reçu des menaces ou une demande de rançon exigeant un paiement en échange de la promesse d'arrêter l'attaque DDoS en cours ou de ne pas lancer d'attaque DDoS.</p>
+	<p>Le nombre de personnes interrogées ayant signalé des demandes de rançon ou des menaces accompagnées d'une demande de rançon au deuxième trimestre a augmenté de 11 % par rapport à l'année et au trimestre précédents. Au cours du trimestre, nous avons atténué des attaques DDoS avec demande de rançon lancées par des entités prétendant appartenir au groupe de menaces persistantes avancées (Advanced Persistent Threat, APT) « Fancy Lazarus ». La campagne se concentre sur les institutions financières et les entreprises du secteur des cryptomonnaies.</p>
+	<p><b>Le pourcentage de personnes ayant signalé avoir fait l'objet d'une attaque DDoS avec demande de rançon ou avoir reçu des menaces en préambule à une attaque.</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LekSaUnzoF3WKmsKWhnHu/81c93d5ab9c4cf77e5c39dab99f86729/image15-1.png" alt="Graph of ransom DDoS attacks by quarter" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>L'analyse plus approfondie du deuxième trimestre montre qu'au mois de juin, une personne interrogée sur cinq a signalé avoir été menacée ou avoir fait les frais d'une attaque DDoS avec demande de rançon, une proportion qui fait du mois de juin le mois affichant le taux le plus élevé de signalements en la matière de l'année 2022, avec un niveau inégalé depuis décembre 2021.</p>
+	<div class="flex anchor relative">
+		<h2 id="application-layer-ddos-attacks">Attaques DDoS sur la couche applicative</h2>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2eTKJ7CS0gEfyXbA3EUnJd/f4c1063607dca66844d4505e8fc8cb5e/image6-1.png" alt="Graph of ransom DDoS attacks by month" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.cloudflare.com/fr-fr/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer">Les attaques DDoS sur la couche applicative</a> (et plus spécifiquement les attaques DDoS HTTP) cherchent généralement à perturber le fonctionnement d'un serveur web en le rendant incapable de traiter les requêtes des utilisateurs légitimes. Si un serveur se trouve bombardé par plus de requêtes qu'il ne peut en gérer, il abandonne les requêtes légitimes et peut même finir dans certains cas par s'arrêter totalement, en entraînant ainsi une dégradation des performances ou une défaillance pour les utilisateurs légitimes.</p>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-month">Attaques DDoS sur la couche applicative, répartition mensuelle</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-month" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2obOKJucCHHwfzjfSp15GA/4428ac204839e8c690f6e95c2262844b/image3-2.png" alt="A diagram of a DDoS attack denying service to legitimate users" class="kg-image" width="1701" height="900" loading="lazy">
+
+	</figure>
+	<p><b><b>Au deuxième trimestre, les attaques DDoS sur la couche applicative ont augmenté de 72 % par rapport à l'année précédente.</b></b></p>
+	<p>Au total, le volume d'attaques DDoS sur la couche applicative observé lors du deuxième trimestre a augmenté de 72 % par rapport à l'année précédente, mais a diminué de 5 % par rapport au trimestre précédent. Le mois de mai s'est avéré le plus actif du trimestre. Près de 41 % de l'ensemble des attaques DDoS sur la couche applicative ont eu lieu en mai, tandis que le mois de juin a connu le plus petit nombre d'attaques (28 %).</p>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-industry">Attaques DDoS sur la couche applicative, répartition par secteur</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-industry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qwd7buXAUhojmsIB3rOpU/852c9dfcd973cfe85c845ebee1da80ec/image20-1.png" alt="Graph of the yearly distribution of application-layer DDoS attacks by month in the past 12 months" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p><b><b>Les attaques visant le secteur de l'aéronautique et de l'aérospatiale ont augmenté de 493 % par rapport au trimestre précédent</b></b>**.**</p>
+	<p>Le secteur de l'aéronautique et de l'aérospatiale s'est révélé le plus visé par les attaques DDoS sur la couche applicative au deuxième trimestre. Il est suivi par celui d'Internet, de la banque, des assurances et des services financiers (BFSI), ainsi que par le secteur des jeux/jeux de hasard, qui se positionne à la quatrième place.</p>
+	<div class="flex anchor relative">
+		<h3 id="ukraine-and-russia-cyberspace">Le cyberespace russe et ukrainien</h3>
+		<a href="https://blog.cloudflare.com/#ukraine-and-russia-cyberspace" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PKfB1M18FZ4GwzL59sqlM/4056f449d4c6f24de7abaae3f10386c3/image9-2.png" alt="Graph of the distribution of HTTP DDoS attacks by industry in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Les entreprises du secteur des médias et de la publication sont les plus visées en Ukraine.</b></b></p>
+	<p>Tandis que la guerre en Ukraine continue au sol, dans les airs et sur l'eau, elle se poursuit également dans le cyberespace. Les entités qui s'en prennent aux entreprises ukrainiennes semblent essayer de bâillonner l'information. Les cinq secteurs les plus attaqués en Ukraine se situent tous dans le domaine de l'audiovisuel, d'Internet, des médias en ligne et de la publication. Ces derniers totalisent près de 80 % de l'ensemble des attaques DDoS sévissant sur le territoire.</p>
+	<p>Dans le camp opposé (côté russe donc), ce sont les entreprises du secteur de la banque, des assurances et des services financiers (BFSI) qui ont connu le plus d'attaques. Près de 45 % de l'ensemble des attaques DDoS ont ainsi visé le secteur des BFSI. Le deuxième secteur le plus touché a été celui des cryptomonnaies, suivi du secteur des médias en ligne.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hYnRS2MRBsydLh7HZ260z/5f66de712a1c4bf81a56bd51e7454aae/image1-2.png" alt="Graph of the distribution of HTTP DDoS attacks on Ukrainian industries by source country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>On constate que les attaques font preuve d'une forte distribution géographique dans les deux camps belligérants, un fait qui indique ainsi l'utilisation de botnets répartis sur l'ensemble du monde.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SuLnGNWkX83CMCh4Knqnj/13a11650cd2ec01eacd1cfc83527100a/image10.png" alt="Graph of the distribution of HTTP DDoS attacks on Russian industries by source country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-source-country">Attaques DDoS sur la couche applicative, répartition par pays d'origine</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-source-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b><b>Les attaques provenant de Chine ont diminué de 78 % au deuxième trimestre et les attaques issues des États-Unis de 43 %.</b></b></p>
+	<p>Pour connaître l'origine des attaques HTTP, nous examinons la géolocalisation de l'adresse IP source du client à l'initiative des requêtes composant l'attaque HTTP. Contrairement aux attaques sur la couche réseau, les adresses IP ne peuvent pas être <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">usurpées</a> lors d'une attaque HTTP. Un pourcentage d'activité DDoS élevé dans un pays donné n'indique pas que ce dernier constitue la source des attaques, mais révèle plutôt la présence de botnets au sein de ce dernier.</p>
+	<p>Pour le deuxième trimestre consécutif, les États-Unis maintiennent leur première place en tant que source principale des attaques DDoS HTTP. La Chine détient la deuxième place après les États-Unis, tandis que l'Inde et l'Allemagne se placent respectivement en troisième et quatrième position. Même si les États-Unis ont conservé la première place, les attaques originaires de ce pays ont diminué de 48 % par rapport au trimestre précédent, tandis que les attaques issues d'autres régions sont en hausse. Les attaques en provenance d'Inde ont ainsi augmenté de 87 %, les attaques originaires d'Allemagne de 33 % et les attaques lancées depuis le Brésil de 67 %.</p>
+	<div class="flex anchor relative">
+		<h3 id="application-layer-ddos-attacks-by-target-country">Attaques DDoS sur la couche applicative, répartition par pays cible</h3>
+		<a href="https://blog.cloudflare.com/#application-layer-ddos-attacks-by-target-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vk1N76Ouhfo9PnAmbGtrV/f8d860feae2044d2dcb515b1c8003072/image16-1.png" alt="Graph of the distribution of HTTP DDoS attacks by source country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Afin d'identifier les pays ciblés par le plus grand nombre d'attaques DDoS HTTP, nous décomposons l'activité des attaques DDoS en fonction du pays de facturation de nos clients et la représentons sous forme de pourcentage de l'ensemble des attaques DDoS.</p>
+	<p>Les attaques DDoS HTTP visant des entreprises situées aux États-Unis ont augmenté de 67 % par rapport au trimestre précédent. Ce chiffre replace ainsi les États-Unis à la première position en tant que source principale des attaques sur la couche applicative. Les attaques visant des entreprises chinoises ont baissé de 80 % par rapport au trimestre précédent, faisant ainsi chuter le pays de la première à la quatrième place. Les attaques sur les entreprises chypriotes ont connu une augmentation de 167 % et positionnent ainsi le pays à la deuxième place des pays les plus attaqués au deuxième trimestre. Après Chypre viennent ensuite Hong Kong, la Chine et les Pays-Bas.</p>
+	<div class="flex anchor relative">
+		<h2 id="network-layer-ddos-attacks">Attaques DDoS sur la couche réseau</h2>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FYRI0hCsXZZ4TVkyNNod2/c1d84b0c119f51d9adb18a96b4795b1e/image8-1.png" alt="Graph of the distribution of HTTP DDoS attacks by target country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Si les attaques au niveau de la couche applicative prennent pour cible l'application (la couche 7 du <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer">modèle OSI</a>) exécutant le service auquel les utilisateurs finaux tentent d'accéder (HTTP/S dans notre cas), les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/layer-3-ddos-attacks" target="_blank" rel="noopener noreferrer">attaques sur la couche réseau</a> cherchent à surcharger l'infrastructure réseau (comme les routeurs et les serveurs internes), ainsi que la liaison Internet elle-même.</p>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-month">Attaques DDoS sur la couche réseau, répartition mensuelle</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-month" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/G9kSKRT459XrlobrASHLn/8f20afceb5d535d67c712185ea20948e/image23-1.png" alt="" class="kg-image" width="1701" height="900" loading="lazy">
+
+	</figure>
+	<p><b><b>Au deuxième trimestre, les attaques DDoS sur la couche réseau ont augmenté de 109 % par rapport à l'année précédente. De même, les attaques volumétriques de 100 Gb/s et plus ont augmenté de 8 % par rapport au trimestre précédent</b></b> </p>
+	<p>Le nombre total d'attaques DDoS sur la couche réseau observé lors du deuxième trimestre a augmenté de 109 % par rapport à l'année précédente et de 15 % par rapport au trimestre précédent. Le mois de juin s'est révélé le plus actif du trimestre, avec près de 36 % des attaques.</p>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-industry">Attaques DDoS sur la couche réseau, répartition par secteur</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-industry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63wvQwZOAcqCfuGWLIC4d7/7667284bf69186e8be1da375083ceceb/image12.png" alt="Graph of the yearly distribution of network-layer DDoS attacks by month in the past 12 months" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p><b><b>Au deuxième trimestre, les attaques sur les entreprises de télécommunications ont augmenté de 66 % par rapport au trimestre précédent.</b></b></p>
+	<p>Pour le deuxième trimestre consécutif, le secteur des télécommunications a été le plus touché par les attaques DDoS sur la couche réseau. Les attaques sur les entreprises de télécommunications ont ainsi augmenté de 66 % par rapport au trimestre précédent. Le secteur des jeux arrive en deuxième place, suivi par celui des services et technologies de l'information.</p>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-target-country">Attaques DDoS sur la couche réseau, répartition par pays cible</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-target-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AqUyyBbet85BZ804EmvXa/7afedf5fa21fe7782a7445e04f877fca/image2-2.png" alt="Graph of the distribution of network-layer DDoS attack bytes by industry in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Les attaques sur les réseaux situés aux États-Unis ont augmenté de 95 % par rapport au trimestre précédent.</b></b></p>
+	<p>Les États-Unis demeurent le pays le plus attaqué au deuxième trimestre, suivis par la Chine, Singapour et l'Allemagne.</p>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-ingress-country">Attaques DDoS sur la couche réseau, répartition par pays source de trafic entrant</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-ingress-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48CEVlhmbUEAVjFtztOrAa/bca783442c0a7570ed38ae94a19c2101/image17-1.png" alt="Graph of the distribution of network-layer DDoS attack bytes by target country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Lors du deuxième trimestre, près d'un tiers du trafic observé par Cloudflare en Palestine et d'un quart du trafic circulant en Azerbaïdjan faisait partie d'une attaque DDoS sur la couche réseau</b></b>**.**</p>
+	<p>Lorsque nous essayons de comprendre d'où les attaques DDoS sur la couche réseau proviennent, nous ne pouvons utiliser la même méthode que celle que nous employons pour l'analyse des attaques sur la couche applicative. Le lancement d'une attaque DDoS sur la couche applicative nécessite <a href="https://www.cloudflare.com/fr-fr/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">la réussite de certaines négociations</a> entre le client et le serveur afin d'établir une connexion HTTP/S. Pour qu'une négociation puisse réussir, les attaques ne peuvent pas <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">usurper</a> leur adresse IP source. Si l'auteur de l'attaque peut tirer parti de botnets, de services de proxy et d'autres méthodes de dissimulation de son identité, l'emplacement de l'adresse IP source du client à l'origine de l'attaque représente avec suffisamment de précision la source des attaques DDoS sur la couche applicative.</p>
+	<p>D'un autre côté, le lancement d'attaques DDoS sur la couche réseau ne nécessite, dans la plupart des cas, aucune négociation. Les acteurs malveillants peuvent tout à fait <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">usurper</a> l'adresse IP source pour dissimuler la source de l'attaque et introduire un caractère aléatoire dans les propriétés de cette dernière. Le blocage des attaques par les systèmes de protection contre les attaques DDoS simples s'en trouve donc plus difficile. Par conséquent, si nous cherchons à déterminer le pays d'origine en nous fondant sur une adresse IP source usurpée, le résultat aboutira sur un pays usurpé.</p>
+	<p>C'est pour cette raison que lorsque nous analysons les sources des attaques DDoS sur la couche réseau, nous classons le trafic en fonction de l'emplacement des datacenters Cloudflare dans lequel le trafic a été ingéré et non de l'adresse IP (potentiellement) usurpée pour déterminer de quel endroit les attaques proviennent. Nous sommes en mesure de garantir la précision géographique de notre rapport dans la mesure où nous possédons des datacenters répartis dans <a href="https://www.cloudflare.com/fr-fr/network" target="_blank" rel="noopener noreferrer">plus de 270 villes</a> à travers le monde. Toutefois, cette méthode n'est pas précise à 100 %, car le trafic peut faire l'objet d'une redirection (backhauling) et d'un routage via divers fournisseurs d'accès Internet et pays pour des raisons variables, qui vont de la réduction des coûts à la gestion des encombrements et des défaillances.</p>
+	<p>La Palestine passe de la seconde à la première place en tant que point d'implantation Cloudflare affichant le plus haut pourcentage d'attaques DDoS sur la couche réseau. L'Azerbaïdjan, la Corée du Sud et l'Angola lui emboîtent le pas.</p>
+	<p>Pour visualiser toutes les régions et tous les pays, consultez la <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank" rel="noopener noreferrer">carte interactive</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eLWg6GnqkwtT8se0EXZU2/c980e216deae547593d69bf478feb855/image21-1.png" alt="Graph of the distribution of network-layer DDoS attacks by source country in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/g7HPkqNU8zeuSzWnBmZdH/7d7efc3c21c4360765249627ab06cd52/image7-1.png" alt="Map of the distribution of network-layer DDoS attacks by source country in 2022 Q2" class="kg-image" width="1000" height="800" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="attack-vectors">Vecteurs d'attaque</h3>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Les attaques DNS ont augmenté au deuxième trimestre, pour devenir le deuxième vecteur d'attaque le plus fréquent.</b></p>
+	<p>Le terme « vecteur d'attaque » désigne la méthode utilisée par le pirate pour lancer son attaque DDoS, c'est-à-dire le protocole IP, les attributs de paquets (comme les indicateurs TCP) et la méthode de saturation, parmi bien d'autres critères.</p>
+	<p>Lors du deuxième trimestre, 53 % de l'ensemble des attaques sur la couche réseau se composaient d'attaques de type <a href="https://www.cloudflare.com/fr-fr/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer">SYN flood</a>. Les SYN floods demeurent ainsi le vecteur d'attaque le plus populaire. Elles s'en prennent à la requête de connexion initiale de la négociation <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP</a> avec état. Les serveurs ne disposent d'aucun contexte sur la connexion TCP pendant cette requête, car la connexion est en cours de création. Laissés sans protection, les serveurs peuvent ainsi éprouver des difficultés à atténuer un flood de requêtes de connexion initiale. Cette situation peut faciliter la consommation des ressources non protégées d'un serveur par un acteur malveillant.</p>
+	<p>Après les SYN floods viennent les attaques visant l'architecture DNS, les RST floods (qui s'attaquent eux aussi au processus de connexion TCP) et les attaques génériques via UDP.</p>
+	<div class="flex anchor relative">
+		<h3 id="emerging-threats">Menaces émergentes</h3>
+		<a href="https://blog.cloudflare.com/#emerging-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AKhwoAGSHqlrQLHjecZAZ/fb6f4f110b1f2da4a62f3354ed396aa0/image13-1.png" alt="Graph of the top network-layer DDoS attack vectors in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Les attaques lancées via CHARGEN, Ubiquiti et Memcached sont entrées au palmarès des principales menaces émergentes au deuxième trimestre.</b></b></p>
+	<p>L'identification des principaux vecteurs d'attaque permet aux entreprises de mieux comprendre le panorama des menaces. Cette opération peut également les aider à améliorer leur stratégie de sécurité afin de se protéger contre ces menaces. De même, si les nouvelles menaces émergentes ne constituent pas encore une partie substantielle des attaques, en apprendre plus à leur sujet peut contribuer à les atténuer avant qu'elles ne deviennent une force avec laquelle compter. &nbsp;</p>
+	<p>Au deuxième trimestre, les principales menaces émergentes comprenant les attaques par amplification abusant du protocole Character Generator (CHARGEN), les attaques par amplification réfléchissant le trafic destiné aux appareils Ubiquiti exposés et la tristement célèbre attaque Memcached.</p>
+	<div class="flex anchor relative">
+		<h3 id="abusing-the-chargen-protocol-to-launch-amplification-attacks">Abuser du protocole CHARGEN pour lancer des attaques par amplification</h3>
+		<a href="https://blog.cloudflare.com/#abusing-the-chargen-protocol-to-launch-amplification-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60X75WXzKulAjLCdpDS55b/5cc5c20179acc847f8f96e991e032264/image5-2.png" alt="Graph of the top emerging network-layer DDoS attack threats in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Au deuxième trimestre, les attaques par amplification abusant du protocole CHARGEN ont augmenté de 378 % par rapport au trimestre précédent.</b></b></p>
+	<p>Initialement défini au sein de la <a href="https://datatracker.ietf.org/doc/html/rfc864" target="_blank" rel="noopener noreferrer">RFC 864</a> (1983), le protocole Character Generator (CHARGEN) constitue un service de la <a href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet" target="_blank" rel="noopener noreferrer">suite de protocoles Internet</a>. Il permet d'effectuer exactement ce que son nom indique, à savoir, générer des caractères de manière arbitraire et les envoyer en continu au client jusqu'à ce que ce dernier mette fin à la connexion. Développé à l'origine à des fins de tests et de débogage, il est rarement utilisé de nos jours, en raison de la facilité avec laquelle les attaques par amplification/réflexion peuvent en abuser.</p>
+	<p>Un acteur malveillant peut <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">usurper</a> l'adresse IP source de sa victime et tromper les serveurs de soutien implantés dans le monde entier afin qu'ils dirigent un flux de caractères arbitraires « en retour » vers les serveurs de la victime. Ce type d'attaque est désigné sous le nom d'attaque par amplification/réflexion. En présence d'un nombre suffisant de flux CHARGEN, les serveurs de la victime laissés sans protection se verraient submergés et incapables de faire face au trafic légitime. Cette situation entraînerait ainsi un événement de déni de service.</p>
+	<div class="flex anchor relative">
+		<h3 id="amplification-attacks-exploiting-the-ubiquiti-discovery-protocol">Attaques par amplification exploitant le protocole de découverte Ubiquiti</h3>
+		<a href="https://blog.cloudflare.com/#amplification-attacks-exploiting-the-ubiquiti-discovery-protocol" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Au deuxième trimestre, les attaques lancées via Ubiquiti ont augmenté de 327 % par rapport au trimestre précédent.</b></p>
+	<p><a href="https://www.ui.com" target="_blank" rel="noopener noreferrer">Ubiquiti</a> est une entreprise basée aux États-Unis. Elle fournit des services réseau et des appareils IdO (Internet des objets) aux consommateurs et aux entreprises. Les appareils Ubiquiti peuvent être identifiés sur un réseau à l'aide du <a href="https://help.ui.com/hc/en-us/articles/204976244-EdgeRouter-Ubiquiti-Device-Discovery" target="_blank" rel="noopener noreferrer">protocole de découverte Ubiquiti</a>, via le port UDP/TCP 10001.</p>
+	<p>Tout comme avec le vecteur d'attaque CHARGEN, les acteurs malveillants peuvent, là aussi, usurper l'adresse IP source afin qu'elle corresponde à l'adresse IP de la victime et ainsi affecter toutes les adresses IP dont le port 10001 est ouvert. Ces adresses répondent alors à la victime, qui se retrouve submergée une fois le volume suffisant atteint.</p>
+	<div class="flex anchor relative">
+		<h3 id="memcached-ddos-attacks">Attaque DDoS memcached</h3>
+		<a href="https://blog.cloudflare.com/#memcached-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Au deuxième trimestre, les attaques DDoS Memcached ont augmenté de 287 % par rapport au trimestre précédent.</b></p>
+	<p><a href="https://www.cloudflare.com/fr-fr/learning/ddos/memcached-ddos-attack" target="_blank" rel="noopener noreferrer">Memcached</a> est un système de mise en cache de base de données conçu pour accélérer les sites web et les réseaux. Comme pour CHARGEN et Ubiquiti, les serveurs Memcached prenant en charge UDP peuvent être utilisés de manière abusive afin de lancer des attaques DDoS par amplification/réflexion. Dans ce cas précis, le pirate demande du contenu au système de mise en cache et usurpe l'adresse IP de la victime afin de l'utiliser en tant qu'IP source dans les paquets UDP. La victime est alors submergée sous les réponses Memcache, qui peuvent être amplifiées d'un facteur pouvant atteindre × 51 200.</p>
+	<div class="flex anchor relative">
+		<h2 id="network-layer-ddos-attacks-by-attack-rate">Attaques DDoS sur la couche réseau, répartition par débit d'attaque</h2>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-attack-rate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Les attaques volumétriques supérieures à 100 Gb/s ont augmenté de 8 % par rapport au trimestre précédent.</b></p>
+	<p>Il existe diverses manières de mesurer la taille d'une attaque DDoS sur la couche 3/4. L'une d'entre elles s'attache à son volume de trafic, mesuré en débit binaire (plus exactement, en térabits ou en gigabits par seconde). Une autre s'intéresse au nombre de paquets transmis, mesuré en termes de débit de paquets (plus spécifiquement, en millions de paquets par seconde).</p>
+	<p>Les attaques à haut débit binaire tentent de provoquer un événement de déni de service en encombrant la liaison Internet, tandis que les attaques à débit de paquets élevé essaient de surcharger les serveurs, les routeurs et les autres équipements physiques en ligne. Ces appareils consacrent une certaine quantité de mémoire et de puissance de calcul au traitement de chaque paquet. Par conséquent, lorsqu'il se trouve bombardé sous une multitude de paquets, l'appareil peut venir à manquer de ressources de traitement. Les paquets sont alors « abandonnés », c'est-à-dire que l'appareil se déclare incapable de les traiter. Pour les utilisateurs, ce constat se traduit par un événement de déni de service.</p>
+	<div class="flex anchor relative">
+		<h3 id="distribution-by-packet-rate">Répartition par débit de paquets</h3>
+		<a href="https://blog.cloudflare.com/#distribution-by-packet-rate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La majeure partie des attaques DDoS sur la couche réseau demeurent sous le seuil des 50 000 paquets par seconde. Si ce chiffre de 50 000 paquets par seconde se situe plutôt au bas de l'échelle du point de vue de Cloudflare, une telle attaque reste tout à fait capable d'abattre les propriétés Internet sans protection et d'entraîner des encombrements, même sur une connexion Gigabit Ethernet standard.</p>
+	<p>L'examen des changements au niveau de la taille des attaques nous permet de constater que les attaques volumineuses en termes de paquets (supérieures à 50 000 p/s) ont diminué au deuxième trimestre, entraînant ainsi une augmentation de 4 % des attaques de petite taille.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5edVFCX1vigbfc2CfCDz6g/a2284f3bcb556fbae9d9ff3cdecdd265/image4-1.png" alt="Graph of the distribution of network-layer DDoS attacks by packet rate in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="distribution-by-bitrate">Répartition en fonction du débit binaire</h3>
+		<a href="https://blog.cloudflare.com/#distribution-by-bitrate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/152vteTszixrwCKNzrszuw/b7a271ee46ad011fa917c228781086b1/image11-1.png" alt="Graph of the change in the distribution of network-layer DDoS attacks by packet rate quarter over quarter for 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Au deuxième trimestre, la majorité des attaques DDoS sur la couche réseau sont restées sous le seuil des 500 Mb/s. S'il s'agit là aussi d'une goutte d'eau <a href="https://www.cloudflare.com/fr-fr/network" target="_blank" rel="noopener noreferrer">à l'échelle de Cloudflare</a>, ces attaques demeurent capables de forcer très rapidement la mise hors ligne des propriétés Internet de moindre capacité laissées sans protection ou, au minimum, d'entraîner des encombrements, même sur une connexion Gigabit Ethernet standard.</p>
+	<p>Il est intéressant de noter que les attaques de grande capacité (entre 500 Mb/s et 100 Gb/s) ont diminué de 20 à 40 % par rapport au trimestre précédent, mais que les attaques volumétriques supérieures à 100 Gb/s ont augmenté de 8 %.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lUj3pmi7Ch0uSG5ZCuURH/a83742d4796e39b27d1f9e8b84efba97/image18-1.png" alt="Graph of the distribution of network-layer DDoS attacks by bit rate in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-by-duration">Attaques DDoS sur la couche réseau, répartition par durée</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-by-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aCjsSBcyiqdAXY6ZDamo9/e50f145f845f57b7b72657bd4a010fa1/image24-1.png" alt="Graph of the change in the distribution of network-layer DDoS attacks by bit rate quarter over quarter for 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b><b>Les attaques d'une durée supérieure à 3 heures ont augmenté de 9 % au deuxième trimestre.</b></b></p>
+	<p>Nous mesurons la durée d'une attaque en enregistrant la différence entre l'instant auquel nos systèmes la détectent pour la première fois en tant qu'attaque et le dernier paquet porteur de cette signature d'attaque que nous observons en direction de cette cible spécifique.</p>
+	<p>Au cours du deuxième trimestre, 52 % des attaques DDoS sur la couche réseau ont duré moins de dix minutes. Les 40 % suivants ont duré entre 10 et 20 minutes. Les 8 % restants regroupent les attaques d'une durée comprise entre 20 minutes et plus de 3 heures.</p>
+	<p>L'un des éléments importants à garder à l'esprit repose sur le fait que si une attaque ne dure que quelques minutes, ses répercussions en cas de réussite peuvent durer bien plus longtemps que la période d'attaque initiale. Les membres des équipes informatiques qui répondent à une attaque réussie peuvent tout à fait passer des heures, voire des jours, à restaurer les services.</p>
+	<p>Si la plupart des attaques se révèlent en effet de courte durée, nous pouvons constater une augmentation de plus de 15 % des attaques comprises entre 20 et 60 minutes, ainsi qu'une augmentation de 12 % des attaques de plus de trois heures.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3emu9oLw9gcXbz5AZWAZtM/1014ae5d075f95cd7871755745a8d11c/image19-2.png" alt="Graph of the distribution of network-layer DDoS attacks by duration in 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Les attaques de courte durée peuvent facilement passer inaperçues, notamment les attaques en rafale, qui bombardent une cible d'un nombre important de paquets, d'octets ou de requêtes en l'espace de quelques secondes. Dans ce cas précis, les services de protection contre les attaques DDoS qui reposent sur l'atténuation manuelle en fonction d'une analyse de sécurité n'ont aucune chance d'atténuer l'attaque à temps. Ils ne peuvent qu'en tirer des enseignements lors de l'analyse post-attaque, avant de déployer une nouvelle règle permettant de filtrer les empreintes numériques de l'attaque et d'espérer la repérer la prochaine fois. Dans le même esprit, l'utilisation d'un service « à la demande » (dans lequel l'équipe de sécurité redirige le trafic vers un fournisseur de services pendant l'attaque) se révèle également inefficace, car l'attaque sera déjà terminée avant la redirection du trafic vers le fournisseur de services anti-DDoS à la demande.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hSf9t1KjaWIMXy4roHCla/060fbfb13ec4ca106e7b0eb302d9b2bc/image14-1.png" alt="Graph of the change in the distribution of network-layer DDoS attacks by duration quarter over quarter for 2022 Q2" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Nous recommandons aux entreprises d'avoir recours à des services de protection contre les attaques DDoS automatisés et actifs en permanence, capables d'analyser le trafic et de relever les empreintes numériques suffisamment vite pour bloquer les attaques de courte durée.</p>
+	<div class="flex anchor relative">
+		<h2 id="summary">Résumé</h2>
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare s'est donné pour mission de construire un Internet meilleur, c'est-à-dire un Internet plus sécurisé, plus rapide et plus fiable pour chacun, même en cas d'attaques DDoS. Dans le cadre de notre mission, nous proposons gratuitement à tous nos clients une protection contre les attaques DDoS <a href="https://blog.cloudflare.com/unmetered-mitigation">illimitée et sans surcoût lié à l'utilisation</a>, et ce depuis 2017. Au fil des ans, il est devenu de plus en plus facile pour les pirates de lancer des attaques DDoS. Toutefois, malgré la simplicité de mise en œuvre de ces dernières, nous souhaitons nous assurer qu'il soit tout aussi facile et gratuit pour les entreprises de toutes les tailles de se protéger contre les attaques DDoS de tous types.</p>
+	<p>Vous n'utilisez pas encore Cloudflare ? <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Commencez dès maintenant</a> à protéger vos sites web avec nos offres gratuite et Pro ou <a href="https://www.cloudflare.com/fr-fr/magic-transit" target="_blank" rel="noopener noreferrer">contactez-nous</a> pour bénéficier d'une protection contre les attaques DDoS complète sur l'ensemble de votre réseau grâce à Magic Transit.</p>
+</div>

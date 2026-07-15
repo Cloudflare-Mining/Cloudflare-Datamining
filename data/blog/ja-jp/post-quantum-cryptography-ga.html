@@ -1,0 +1,303 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/post-quantum-cryptography-ga">English</a>、<a href="https://blog.cloudflare.com/zh-tw/post-quantum-cryptography-ga">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/post-quantum-cryptography-ga">Français</a>、<a href="https://blog.cloudflare.com/de-de/post-quantum-cryptography-ga">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/post-quantum-cryptography-ga">한국어</a>、<a href="https://blog.cloudflare.com/es-es/post-quantum-cryptography-ga">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/post-quantum-cryptography-ga">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TzLh4ygDBBzeVYRkK2w8l/db4a57cc57dde6aad2f233cd0c83b4ee/post-quantum-cryptography-ga.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>過去12か月間、当社はインターネット上の暗号化の新しいベースラインであるポスト量子暗号について議論してきました。昨年のバースデーウィークの間、<a href="https://blog.cloudflare.com/post-quantum-for-all">Kyberのベータ版がテスト用に利用可能である</a>こと、そして<a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a>がポスト量子暗号を使用して、有効にできることを発表しました。今年初め、当社は、この基礎的なテクノロジーを<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">誰もが永久に無料</a>で利用できるべきだというスタンスを明確にしました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CftKQnuBYwGI69XmAFsVq/d0577dd4455257096f07d478ddaf5bdd/image2-28.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>今日、当社は6年を経てマイルストーンを達成し、<a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31件</a>の<a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">ブログ記事</a>を作成中です。以下に、より詳細に説明されているように、お客様、サービス、および内部システムへのポスト量子暗号サポートの<a href="https://blog.cloudflare.com/post-quantum-to-origins">一般提供</a>のロールアウトを開始しています。これには、オリジン接続用の<a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a>、1.1.1.1、R2、Argo Smart Routing、Snippetsなどの製品が含まれます。</p>
+	<p>これはインターネットのマイルストーンです。量子コンピュータが今日の暗号を破るのに十分な規模を持つかは、まだ分かりませんが、今すぐポスト量子暗号にアップグレードするメリットは明らかです。Cloudflare、Google、Mozilla、米国国立標準技術研究所、インターネットエンジニアリングタスクフォース、および多数の学術機関による進歩により、<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">高速接続と、将来も保証される</a>セキュリティはすべて今日可能になっています</p>
+	<p>一般提供とはどういう意味ですか？2022年10月<a href="https://blog.cloudflare.com/post-quantum-for-all">当社は_X25519+Kyberを_</a>Cloudflareを介して提供される<a href="https://blog.cloudflare.com/post-quantum-for-all">すべてのWebサイトとAPIに対し、ベータ版として</a>有効にしました。しかし、タンゴを踊るには二人必要です。ブラウザがポスト量子暗号もサポートしている場合にのみ、接続が保護されます。2023年8月から、<a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank" rel="noopener noreferrer">Chrome</a>はデフォルトで_X25519+Kyber_を徐々に有効にします。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oRJ1q0ib6rCSfgBJPJyuU/8e2847b56b058eb6267d1b9303a74883/image1-40.png" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " class="kg-image" width="1999" height="522" loading="lazy">
+
+	</figure>
+	<p>ユーザーのリクエストは、Cloudflareのネットワークを介してルーティングされます（2）。当社はこれらの内部接続の多くをポスト量子暗号を使用するようにアップグレードしており、2024年末までにすべての内部接続のアップグレードが完了する予定です。これにより、最終リンクとして、当社と_配信元サーバー_間の接続（3）が残ります。</p>
+	<p>_配信元サーバー_や<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>のフェッチを含む利用に対し、<b>ほとんどのインバウンドおよびアウトバウンド接続向けX25519+Kyberのサポートを使用の一般提供としてロールアウトしていることを</b>お知らせできて嬉しく思います。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Plan</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Support for post-quantum outbound connections</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Started roll-out. Aiming for 100% by the end of the October.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro and business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aiming for 100% by the end of year.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roll-out begins February 2024. 100% by March 2024.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>プラン</p>
+	<p>ポスト量子アウトバウンド接続のサポート</p>
+	<p>Free</p>
+	<p>ロールアウトを開始。 10月末までに100％を目指す。</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API Gateway</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Automatic Platform Optimization</td>
+			</tr>
+			<tr>
+				<td>Automatic Signed Exchange</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Egress</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rulesets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Custom Error Pages</td>
+			</tr>
+			<tr>
+				<td>Flow Based Monitoring</td>
+			</tr>
+			<tr>
+				<td>Health checks</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Network Error Logging</td>
+			</tr>
+			<tr>
+				<td>Project Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 Storage</td>
+			</tr>
+			<tr>
+				<td>Request Tracer</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed on Cloudflare Dash</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>WAF, Managed Rules</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>ProプランおよびBusinessプラン</p>
+	<p>年末までに100％を目指す。</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare DNS</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Logging</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Bot Management</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Enterprise</p>
+	<p>ロールアウト開始は2024年2月。 2024年3月までに100%。</p>
+	<p>Enterpriseのお客様には、今後6ヶ月にわたり、ロールアウトの準備に役立つ追加情報を定期的にお送りする予定です。Pro、Business、Enterpriseをご利用のお客様は、ロールアウトをスキップして、現在ご利用のゾーン内でオプトインすることも、<a href="https://blog.cloudflare.com/post-quantum-to-origins">コンパニオンブログ記事で</a>説明されているAPIを使用して事前にオプトアウトすることもできます。2024年2月にEnterprise向けにロールアウトする前に、ダッシュボードにオプトアウト用のトグルを追加する予定です。</p>
+	<p>今すぐ始めたいという方は、<a href="https://blog.cloudflare.com/post-quantum-to-origins">技術的な詳細を記載したブログをチェックし、APIを介したポスト量子暗号サポートを有効にしてください</a>！</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-included-and-what-is-next">何が含まれ、次に何があるのでしょうか？</h3>
+		<a href="https://blog.cloudflare.com/#whats-included-and-what-is-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この規模のアップグレードでは、まず最もよく使用される製品に焦点を当て、次に外側に拡張しエッジケースを把握したいと考えました。 このプロセスにより、このロールアウトには以下の製品とシステムを含めることになりました。</p>
+	<p>1.1.1.1</p>
+	<p>AMP</p>
+	<p>API Gateway</p>
+	<p>Argo Smart Routing</p>
+	<p>Auto Minify</p>
+	<p>プラットフォームの自動最適化</p>
+	<p>Automatic Signed Exchanges</p>
+	<p>Cloudflareエグレス</p>
+	<p>Cloudflare Images</p>
+	<p>Cloudflareルールセット</p>
+	<p>Cloudflare Snippets</p>
+	<p>Cloudflare Tunnel</p>
+	<p>カスタムエラーページ</p>
+	<p>フローベースのモニタリング</p>
+	<p>ヘルスチェック</p>
+	<p>ヘルメス</p>
+	<p>ホストヘッドチェッカー</p>
+	<p>Magic Firewall</p>
+	<p>Magic Network Monitoring</p>
+	<p>ネットワークエラーログ</p>
+	<p>プロジェクトフレーム</p>
+	<p>クイックシルバー</p>
+	<p>R2ストレージ</p>
+	<p>リクエストトレーサー</p>
+	<p>Rocket Loader</p>
+	<p>Cloudflare Dashの速度</p>
+	<p>SSL/TLS</p>
+	<p>Traffic Manager（トラフィックマネージャー）</p>
+	<p>WAF、管理ルール</p>
+	<p>Waiting Room</p>
+	<p>Web Analytics</p>
+	<p>ご利用の製品またはサービスがここに記載されていない場合は、まだポスト量子暗号の展開を開始していません。当社は、Zero Trust製品を含むすべての製品とサービスにポスト量子暗号を展開することに積極的に取り組んでいます。 すべてのシステムでポスト量子暗号のサポートが完了するまで、どの製品にポスト量子暗号をロールアウトしたか、次にロールアウトする製品、まだ、近々予定の製品を網羅する更新ブログをイノベーションウィークごとに公開する予定です。</p>
+	<p>ポスト量子暗号サポートを導入しようと取り組んでいる製品はまもなくです。</p>
+	<p>Cloudflare Gateway</p>
+	<p>Cloudflare DNS</p>
+	<p>Cloudflareロードバランサー</p>
+	<p>Cloudflare Access</p>
+	<p>Always Online</p>
+	<p>Zaraz</p>
+	<p>ログ</p>
+	<p>D1</p>
+	<p>Cloudflare Workers</p>
+	<p>Cloudflare WARP</p>
+	<p>ボット管理</p>
+	<div class="flex anchor relative">
+		<h3 id="why-now">なぜ、今なのでしょうか？</h3>
+		<a href="https://blog.cloudflare.com/#why-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今年初めにお知らせしたように、ポスト量子暗号は、それをサポートできるすべてのCloudflare製品とサービスの中に無料で含まれます。最高の暗号化技術は誰もがアクセスできる必要があり、プライバシーと人権を世界的にサポートするのに役立ちます。</p>
+	<p>3月に<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">述べた</a>ように：</p>
+	<p><i>「かつては実験的なフロンティアだったものが、現代社会の根底にある構造へと変わりました。これは、電力システム、病院、空港、銀行などの最も重要なインフラストラクチャで実行されます。私たちは最も貴重なメモリをそれに託しています。私たちは機密をそれに託しています。インターネットが、デフォルトでプライベートである必要があるのはそのためです。デフォルトで安全である必要があります。」</i></p>
+	<p>ポスト量子暗号に関する私たちの研究は、従来の暗号を破ることができる量子コンピューターが西暦2000年のバグと同様の問題を引き起こすという論文によって推進されています。将来的には、ユーザー、企業、さらには国家に壊滅的な結果をもたらす可能性のある問題が発生することは、わかっています。今回の違いは、計算パラダイムのこの破壊がいつどのように発生するかがわからないことです。 さらに悪いことに、今日捕捉されたトラフィックは将来解読される可能性があります。この脅威に備えるために、今日から準備をする必要があります。</p>
+	<p>当社は、ポスト量子暗号を皆さんのシステムに導入することを楽しみにしています。ポスト量子暗号の導入とサードパーティのクライアント/サーバーサポートの最新情報をフォローするには、<a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a>をチェックして、このブログに注目してください。</p>
+	<p>1当社は、ポスト量子鍵合意に関して、NISの選択であるKyberの<a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank" rel="noopener noreferrer">暫定版</a>を使用しています。Kyberはまだ完成していません。最終基準は、2024年にML-KEMという名前で公開される予定であり、X25519Kyber768Draft00のサポートを廃止しつつ、速やかに採用する予定です。</p>
+</div>

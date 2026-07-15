@@ -1,0 +1,52 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma">English</a>および<a href="https://blog.cloudflare.com/zh-cn/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43uiGtvLrH282cB1cduWJD/120d8f617363a4d3fe12ac428f419848/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>この1年、私たちは共通のテーマを耳にしました。それは、開発者がより多くのアプリケーションをWorkers上で構築したいということです。ビルトインのグローバルデプロイメント機能と驚くべきスケーラビリティ、JavaScriptの柔軟性を備えた当社のグローバルプラットフォームで構築されるアプリケーションが増えています。</p>
+	<p>そのためには、開発者がデータにアクセスする必要があります。Workersのデータに関する戦略は、3つの部分から構成されています。</p>
+	<ul>
+		<li>
+			<p>1つ目は、Workers KVやDurable Objectsのような、無限のスケールを想定したファーストパーティのソリューションを提供すること。</p>
+		</li>
+		<li>
+			<p>2つ目は、HTTPで接続するさまざまなNoSQLデータベースをサポートし、<a href="https://blog.cloudflare.com/ja-jp/relational-database-connectors-ja-jp">TCPデータベースコネクタ</a>を使用して、現在すでに存在するデータへの接続を構築し始めること。</p>
+		</li>
+		<li>
+			<p>3つ目は、ベストオブブリードのデータ企業と提携して、彼らの能力をWorkersプラットフォームに導入すること。</p>
+		</li>
+	</ul>
+	<p>本日、既存のパートナーであるFaunaとMacrometaに加えて、Cloudflare WorkersがPrismaとMongoDB Atlasのサポートを追加したことをお知らせします。Prismaの最新のORMは、Prismaクライアントを介してPostgres、SQLサーバー、MySQLをサポートしており、MongoDBは当社のユーザーから最も求められているインテグレーション機能の上位にランクされています。</p>
+	<p>両クライアントは、それぞれのオーサーであるMongoDB用<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank" rel="noopener noreferrer">Realm</a>とPrisma用<a href="https://github.com/prisma/prisma" target="_blank" rel="noopener noreferrer">Prisma</a>から入手できます。Workersにインポートすることで、すぐに使用を開始できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-great-about-mongodb">MongoDBの魅力とは？</h3>
+		<a href="https://blog.cloudflare.com/#whats-great-about-mongodb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MongoDBは開発者からの評判が高いデータベースです。ドキュメントモデルを採用しているので簡単に使い始めることができ、トランザクションとスケールアウト分散システムアーキテクチャにより、アプリケーションに合わせて拡張することができます。</p>
+	<p>MongoDBは、堅牢なクエリ言語であるMQLをWorkersプラットフォームの開発者に提供し、データベース内での豊富な集計をサポートしています。MongoDBのサポートは、Realm SDKを介して提供されます。Realm SDKは、MongoDB Atlasと直接統合されており、MongoDBを最も簡単に実行することができます。</p>
+	<p>MongoDB Atlasにはグローバルクラスターも含まれており、低遅延で地域分散型MongoDBデータベースを作成してWorkersをバックアップするのに最適です。</p>
+	<p>MongoDBと共同で、MongoDBの<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank" rel="noopener noreferrer">ブログ</a> で再生できるデモアプリケーションを作成しました。ご覧になって、ご不明な点がありましたらご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-great-about-prisma">Prismaの魅力とは？</h3>
+		<a href="https://blog.cloudflare.com/#whats-great-about-prisma" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Prismaは、データベース内のエントリをコード内のオブジェクトに変換するORM（オブジェクト・リレーショナル・マッパー）です。Prismaは、型安全性、スキーマ移行、クエリの最適化、コードとデータベース間の実際のインタラクションを処理します。Workersがエッジコンピューティングを実現するように、Prismaはデータベースの管理を非常にシンプルにします。</p>
+	<p>Prismaは現在、Postgres、MySQL、SQLサーバー、SQLite、MongoDBをサポートしています。これらのデータベースは、あらゆるクラウドプロバイダー上に既存することができ、またHeroku上でオンデマンドで起動することもできます。</p>
+	<p>Prismaは、 &nbsp;<a href="https://www.prisma.io/docs/concepts/components/prisma-data-platform#prisma-data-proxy" target="_blank" rel="noopener noreferrer">Prisma Data Proxy</a> を介してWorkersと統合します。プロキシをセットアップした後、WorkersスクリプトにPrismaクライアントをインポートし、スキーマを定義することで、サポートされているデータベースの使用を開始することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">次は何が起きるでしょう？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MacrometaやFaunaとの既存のパートナーシップに加えて、MongoDBとPrismaのインテグレーションをWorkersの成長するライブラリに追加できることを嬉しく思います。Workersで使用したいデータプラットフォームをお持ちの方は、<a href="https://blog.cloudflare.com/#">当社までご連絡ください</a>。当社が実現させます！</p>
+</div>

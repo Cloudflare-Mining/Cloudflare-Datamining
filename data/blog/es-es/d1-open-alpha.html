@@ -1,0 +1,224 @@
+<div class="mb2 gray5">4 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/d1-open-alpha">English</a>, <a href="https://blog.cloudflare.com/ja-jp/d1-open-alpha">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/d1-open-alpha">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I25TgA366oQxZJ0rMj1V6/66243ee56c038530c66db1fafd70b4f6/d1-open-alpha.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En mayo, <a href="https://blog.cloudflare.com/es-es/introducing-d1-es-es">anunciamos</a> nuestro empeño de simplificar las bases de datos: su creación, mantenimiento e integración. Nuestro objetivo es proporcionarte las herramientas necesarias para ejecutar sin problemas una base de datos potente, escalable y con un rendimiento insuperable. Y nos propusimos reinventar la experiencia de desarrollo de bases de datos para cualquier tipo de usuario, no solo para los expertos en bases de datos.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7w9UvQOVgrNbxPrz1tOWJz/611cdc1253d0c6971709f5dddacc0811/image1-48.png" alt="UPDATE Supercloud SET status = 'open alpha' WHERE product = 'D1';" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Durante los últimos dos meses, hemos <a href="https://blog.cloudflare.com/whats-new-with-d1">estado trabajando</a> en ello, mientras aprendíamos importantes lecciones en el proceso. Resulta que desarrollar un producto de bases de datos relacionales sobre Workers lleva a la plataforma para desarrolladores al límite absoluto, y a menudo incluso lo supera. Esto nos parece totalmente sensacional. Significa que aunque nuestros avances puedan parecer lentos vistos desde fuera, cada mejora, arreglo de error o prueba de esfuerzo ayuda a trazar el camino para que <i>todos</i> nuestros clientes desarrollen las <a href="https://blog.cloudflare.com/es-es/welcome-to-the-supercloud-and-developer-week-2022-es-es">aplicaciones sin servidor más ambiciosas</a> del mundo.</p>
+	<p>Sin embargo, no seríamos fieles a nuestro estilo si siguiéramos avanzando en la preparación de D1 para producción sin detenernos primero para conocer tu opinión, aunque D1 no esté <i>realmente</i> terminado aún. La Semana del desarrollador <b>es el marco perfecto para presentar la versión alpha abierta de D1.</b></p>
+	<p>Una versión “alpha abierta” es un concepto nuevo para nosotros. Probablemente has oído el término "beta abierta" en distintos anuncios en Cloudflare, y aunque resulta adecuado para muchos de nuestros productos, no acababa de encajar para D1. Algunos componentes esenciales aún se encuentran en la fase de desarrollo y pruebas. Así, antes de que lancemos D1 en su forma completa como una versión beta pública para que lo empieces a utilizar para desarrollar tus aplicaciones en el mundo real, queremos asegurarnos de que todo el mundo puede empezar a hacerse una idea del producto en sus aplicaciones creadas como pasatiempo o sus proyectos secundarios.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-included-in-the-alpha"><b>¿Qué incluye la versión alpha?</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-included-in-the-alpha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aunque aún se están realizando internamente muchos cambios en D1, hemos reflexionado mucho acerca de cómo tú, como desarrollador, interactúas con el producto, incluso si las bases de datos son algo nuevo para ti.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-the-d1-dashboard"><b>Utilización del panel de control de D1</b></h3>
+		<a href="https://blog.cloudflare.com/#using-the-d1-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En solo unos clics tendrás tu base de datos D1 funcionando, directamente desde tu panel de control. &nbsp;En nuestra interfaz de D1, puedes crear, mantener y visualizar tu base de datos como desees. Los cambios realizados en la interfaz de usuario están disponibles al instante en Worker, sin necesidad de una nueva implementación.</p>
+	<div class="flex anchor relative">
+		<h3 id="use-wrangler"><b>Utiliza Wrangler</b></h3>
+		<a href="https://blog.cloudflare.com/#use-wrangler" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vOzmnP9cvUYbJanSvprvl/b4a01d4edcc3dcada5a326e352b5f0e2/image2-30.png" alt="" class="kg-image" width="1999" height="736" loading="lazy">
+
+	</figure>
+	<p>Si deseas ponerte manos a la obra, también puedes trabajar con tu base de datos utilizando nuestra CLI de Wrangler. &nbsp;Crea tu base de datos y empieza a añadir tus datos manualmente o arráncala de una de estas dos formas:</p>
+	<p><b>1. &nbsp;Ejecuta un archivo SQL</b></p>
+	<p>donde tu archivo<code>.sql</code> será similar a:</p>
+	<pre class="language-sh"><code class="language-sh">$ wrangler d1 execute my-database-name --file ./customers.sql</code></pre>
+	<p>customers.sql</p>
+	<p><b>2. Crea y ejecuta migraciones</b></p>
+	<pre class="language-sql"><code class="language-sql">DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (CustomerID INT, CompanyName TEXT, ContactName TEXT, PRIMARY KEY (`CustomerID`));
+INSERT INTO Customers (CustomerID, CompanyName, ContactName) 
+VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas Hardy'),(11, 'Bs Beverages', 'Victoria Ashworth'),(13, 'Bs Beverages', 'Random Name');</code></pre>
+	<p>Las migraciones son una forma de crear versiones de los cambios de tu base de datos. Con D1, puedes <a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">crear una migración</a> y, a continuación, aplicarla a tu base de datos.</p>
+	<p>Para crear la migración, ejecuta:</p>
+	<p>Esto creará un archivo SQL en una carpeta <code>migrations</code> donde podrás añadir tus consultas. A continuación, aplica las migraciones a tu base de datos ejecutando:</p>
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="access-d1-from-within-your-worker"><b>Accede a D1 desde Worker</b></h3>
+		<a href="https://blog.cloudflare.com/#access-d1-from-within-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-sh"><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;</code></pre>
+	<p>Puedes conectar D1 a Worker añadiendo el enlace a D1 en tu archivo de configuración <code>wrangler.toml</code>. A continuación, interactúa con D1 ejecutando las consultas desde Worker, de la forma siguiente:</p>
+	<div class="flex anchor relative">
+		<h3 id="or-access-d1-from-within-your-pages-function"><b>O bien accede a D1 desde Pages Function</b></h3>
+		<a href="https://blog.cloudflare.com/#or-access-d1-from-within-your-pages-function" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">export default {
+ async fetch(request, env) {
+   const { pathname } = new URL(request.url);
+
+   if (pathname === "/api/beverages") {
+     const { results } = await env.DB.prepare(
+       "SELECT * FROM Customers WHERE CompanyName = ?"
+     )
+       .bind("Bs Beverages")
+       .all();
+     return Response.json(results);
+   }
+
+   return new Response("Call /api/beverages to see Bs Beverages customers");
+ },
+};</code></pre>
+	<p>En esta versión alpha, D1 también admite la integración con <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>. Puedes añadir un enlace a D1 en el panel de control de Pages y escribir tus consultas en Pages Function para crear una aplicación full-stack. Consulta <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">toda la documentación</a> para empezar a utilizar Pages y D1.</p>
+	<div class="flex anchor relative">
+		<h2 id="community-built-tooling"><b>Herramientas creadas en la comunidad</b></h2>
+		<a href="https://blog.cloudflare.com/#community-built-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Durante el periodo de nuestra versión alpha privada, el interés que despertó D1 entre los miembros de la comunidad generó valiosas contribuciones al ecosistema de D1 y a la experiencia de los desarrolladores. A continuación te mostramos algunos de nuestros proyectos favoritos hasta la fecha:</p>
+	<div class="flex anchor relative">
+		<h3 id="d1-orm"><b>D1-ORM</b></h3>
+		<a href="https://blog.cloudflare.com/#d1-orm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un mapeo objeto-relacional (ORM) te permite consultar y manipular datos utilizando JavaScript. Creado por un representante de la comunidad Discord de Cloudflare, el objetivo de <code>d1-orm</code> &nbsp;es proporcionar una experiencia rigurosamente tipificada del uso de D1:</p>
+	<p>Puedes consultar <a href="https://docs.interactions.rest/d1-orm" target="_blank" rel="noopener noreferrer">toda la documentación</a> y proporcionar tu opinión creando un tema en el <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank" rel="noopener noreferrer">repositorio de GitHub</a>.</p>
+	<pre class="language-ts"><code class="language-ts">const users = new Model(
+    // table name, primary keys, indexes etc
+    tableDefinition,
+    // column types, default values, nullable etc
+    columnDefinitions
+)
+
+// TS helper for typed queries
+type User = Infer&lt;type of users&gt;;
+
+// ORM-style query builder
+const user = await users.First({
+    where: {
+        id: 1,
+    },
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="workers-qb">workers-qb</h3>
+		<a href="https://blog.cloudflare.com/#workers-qb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Se trata de un creador de consultas sin dependencias que proporciona una interfaz sencilla y estandarizada al mismo tiempo que mantiene las ventajas y la rapidez del uso de las consultas sin formato mediante un ORM tradicional. Aunque no está pensado para proporcionar una funcionalidad igual a ORM, <code>workers-qb</code> facilita la interacción con la base de datos desde el código para el acceso directo a SQL:</p>
+	<p>Puedes obtener más información sobre el creador de consultas <a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">aquí</a>.</p>
+	<pre class="language-js"><code class="language-js">const qb = new D1QB(env.DB)
+
+const fetched = await qb.fetchOne({
+  tableName: 'employees',
+  fields: 'count(*) as count',
+  where: {
+    conditions: 'department = ?1',
+    params: ['HQ'],
+  },
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="d1-console"><b>d1-console</b></h3>
+		<a href="https://blog.cloudflare.com/#d1-console" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En lugar de ejecutar el comando <code>wrangler d1 execute</code> en tu terminal cada vez que deseas interactuar con la base de datos, puedes interactuar con D1 desde <code>d1-console</code>. Creado por un representante de la comunidad Discord, ofrece la ventaja de ejecutar consultas de varias líneas, obtener el historial de comandos y mostrar el resultado en forma de tabla.</p>
+	<p>Aunque actualmente es un proyecto de la comunidad, tenemos previsto admitir de forma nativa una “Consola de D1” más adelante. Por ahora, empieza echando un vistazo al paquete <code>d1-console</code> en el siguiente <a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">enlace</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QR9Tf5DXnp3brBVvlvgJq/7f5b5083198492190dfc9f24e4fb70e0/image3-23.png" alt="" class="kg-image" width="1476" height="844" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="d1-adapter-for"><b>Adaptador de D1 para</b> <a href="https://github.com/koskimas/kysely"><b>Kysely</b></a></h3>
+		<a href="https://blog.cloudflare.com/#d1-adapter-for" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Kysely es un creador de consultas SQL typescript con autocompletado y seguridad de tipos. Con este adaptador, puedes interactuar con D1 con la conocida interfaz de Kysely:</p>
+	<p>Echa un vistazo al proyecto <a href="https://github.com/aidenwallis/kysely-d1" target="_blank" rel="noopener noreferrer">aquí</a>.</p>
+	<pre class="language-ts"><code class="language-ts">// Create Kysely instance with kysely-d1
+const db = new Kysely&lt;Database&gt;({ 
+  dialect: new D1Dialect({ database: env.DB })
+});
+    
+// Read row from D1 table
+const result = await db
+  .selectFrom('kv')
+  .selectAll()
+  .where('key', '=', key)
+  .executeTakeFirst();</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="whats-still-in-testing"><b>¿Qué está aún en pruebas?</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-still-in-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los componentes más grandes que hemos desactivado para esta versión alpha son la réplica y la compatibilidad con las transacciones JavaScript. Mientras llevamos a cabo la implementación gradual de estos cambios, queremos destacar algunas limitaciones actuales en las que estamos trabajando activamente en las pruebas:</p>
+	<p>● &nbsp; &nbsp; &nbsp;<b>Ubicación de la base de datos:</b> cada base de datos D1 ejecuta solo una única instancia. Se crea donde tú, como desarrollador, creas la base de datos, y no cambia de región en función de los patrones de acceso. Como resultado, la latencia para Workers en ejecución en cualquier otra parte del mundo será mayor.</p>
+	<p>● &nbsp; &nbsp; &nbsp;<b>Limitaciones de simultaneidad:</b> en condiciones de mucha carga, es posible que las consultas de lectura y escritura se pongan en cola en lugar de activar la creación de nuevas réplicas. Como resultado, las características de rendimiento y ejecución de la versión alfa abierta no serán representativas del producto final.</p>
+	<p>● &nbsp; &nbsp; &nbsp;<b>Limitaciones de disponibilidad:</b> cuando haya copias de seguridad en ejecución, estas bloquearán el acceso a la base de datos. En la mayoría de los casos, esto durará apenas uno o dos segundos, durante los que las solicitudes que lleguen se pondrán en cola.</p>
+	<p>También puedes consultar una lista más detallada y actualizada sobre las <a href="https://developers.cloudflare.com/d1/limits-and-pricing" target="_blank" rel="noopener noreferrer">Limitaciones de la versión alpha de D1</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="request-for-feedback"><b>Solicitud de comentarios</b></h2>
+		<a href="https://blog.cloudflare.com/#request-for-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Podemos hacer todo tipo de conjeturas y apuestas sobre para qué tipo de bases de datos deseas utilizar D1, pero nosotros no somos los usuarios, tú sí. Queremos que desarrolladores con experiencias diversas puedan acceder a una vista previa de la tecnología D1 en su fase inicial, y que nos digan dónde debemos realizar mejoras para que sea adecuado para tus aplicaciones de producción.</p>
+	<p>Para proporcionar comentarios generales sobre tu experiencia e interactuar con otros compañeros que tengan la versión alpha, únete a nuestro canal <a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank" rel="noopener noreferrer">#d1-open-alpha</a> en <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord para desarrolladores de Cloudflare</a>. Tenemos previsto realizar los anuncios importantes y presentar las novedades en este canal así como en nuestras <a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank" rel="noopener noreferrer">llamadas mensuales de la comunidad</a>.</p>
+	<p>Para realizar solicitudes de funciones más específicas (no importa lo descabelladas que sean) y comunicar errores, crea un hilo aquí en el <a href="https://community.cloudflare.com/c/developers/d1" target="_blank" rel="noopener noreferrer">foro de la comunidad de Cloudflare</a>, en la categoría de D1. Mantendremos este foro como un método de planificación de los próximos meses.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started"><b>P.S. ¡Trabaja con nosotros!</b></h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>¿Te interesa? Si te gusta resolver problemas indefinidos y desarrollar potentes productos a escala, ¡trabaja en el equipo de D1! Echa un vistazo a los <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">puestos disponibles</a>.</p>
+</div>

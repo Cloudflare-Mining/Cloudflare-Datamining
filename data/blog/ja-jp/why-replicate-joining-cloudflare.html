@@ -1,0 +1,17 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/why-replicate-joining-cloudflare">English</a>および<a href="https://blog.cloudflare.com/ko-kr/why-replicate-joining-cloudflare">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lZ2Fxzql7vr2UiHIQxpEk/cd805ef6e6f83d5d7e7eb0b0bcadda36/BLOG-3088_Meta_Card.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>本日より、Replicateは正式にCloudflareの一部となったことをお知らせします。</p>
+	<p>2019年にReplicateを設立したとき、OpenAIはGPT-2をオープンソース化したばかりで、機械学習コミュニティ以外ではAIに大きな注目を持っている人はほとんどいませんでした。現場にいる私たちにとっては、何か大きな事態が起こっているように感じられました。学術機関の研究所では、画期的なモデルが作られていましたが、それを実行するためには、研究所から大量のコートが必要でした。</p>
+	<p>当社は、研究モデルを開発者の手に届けることを使命としました。研究者が思いもよらないような製品に、プログラマーがそれらのモデルを創造的に最も柔軟に柔軟に対応してほしいと考えました。</p>
+	<p>当社では、これはツールの問題として取り組みました。HerokuのようなツールがWebサーバーを管理せずにWebサイトを実行できるようにしたように、私たちはバックプロパゲーションを理解したり、CUDAエラーに対処する必要なくモデルを実行するためのツールを作りたいと考えました。</p>
+	<p>私たちが最初に構築したツールは、<a href="https://github.com/replicate/cog" target="_blank" rel="noopener noreferrer"><u>Cog</u></a>という機械学習モデル用の標準パッケージ形式です。その後、Cogモデルをクラウド上のAPIエンドポイントとして実行するためのプラットフォームとして、<a href="https://replicate.com" target="_blank" rel="noopener noreferrer"><u>Replicate</u></a>を構築しました。低レベルの機械学習と、推論を大規模に実行するために必要な複雑なGPUクラスター管理の両方を排除しました。</p>
+	<p>結果的に、このタイミングがぴったりだったのです。2022年に<a href="https://replicate.com/stability-ai/stable-diffusion" target="_blank" rel="noopener noreferrer"><u>Stable Diffusion</u></a>がリリースされたとき、当社はこれらのモデルの実行に対する開発者の巨大な関心に対処できる成熟したインフラストラクチャを持っていました。Replicateで構築された素晴らしいアプリや製品の多くは、特定のユースケースを解決するために、スムーズなUIでパッケージ化された単一のモデルを実行するアプリでした。</p>
+	<p>それ以来、<a href="https://www.latent.space/p/ai-engineer" target="_blank" rel="noopener noreferrer"><i><u>AIエンジニアリング</u></i></a>は本格的なものになりました。AIアプリはもはや、モデルを実行するだけのものではありません。最新のAIスタックには、モデル推論だけでなく、マイクロサービス、コンテンツ配信、オブジェクトストレージ、キャッシング、データベース、テレメトリなどがあります。弊社のお客様の多くは、Replicateモデルが複数のプラットフォームにまたがる上位システムの一部である複雑な異機種スタックを構築しています。</p>
+	<p><i>これがCloudflareと組むべき理由です</i>。Replicateには、モデルを実行するためのツールとプリミティブがあります。Cloudflareには、最高のネットワーク、Workers、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a>、Durable Objects、およびAIフルスタックの構築に必要なその他すべてのプリミティブがあります。</p>
+	<p>AIスタックは完全にネットワーク上に存在します。モデルはデータセンターのGPUで実行され、ベクトルデータベースを呼び出す、BLOBストレージからオブジェクトを取得する、MCPサーバーを呼び出すなどの小さなクラウド関数によって接着されています。<a href="https://blog.cloudflare.com/the-network-is-the-computer"><u>「ネットワークはコンピュータである」</u></a>はかつてないほど素晴らしいことです。</p>
+	<p>Cloudflareでは、創業以来夢に思いてきたAIインフラレイヤーの構築が可能になります。エッジでの高速なモデルの実行、Workersの瞬時起動でのモデルパイプラインの実行、WebRTCを使用したモデルの入出力のストリーム化などが可能になります。</p>
+	<p>Replicateで構築してきたものを誇りに思っています。私たちは初の生成AIサービスプラットフォームであり、ピアリングのほとんどが採用している抽象化と設計パターンを定義しました。Cloudflareは、Cloudflareの製品を中心としたビルダーや研究者の素晴らしいコミュニティを形成してきました。</p>
+</div>

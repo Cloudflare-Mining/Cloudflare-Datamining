@@ -1,0 +1,111 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-fonts-enhancing-website-privacy-speed">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-fonts-enhancing-website-privacy-speed">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-fonts-enhancing-website-privacy-speed">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-fonts-enhancing-website-privacy-speed">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SxOfWQ8TEt7LrSDUMPoAk/6bdb7fc55b934bd5c36ffefc68a20625/cloudflare-fonts-enhancing-website-privacy-speed.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare Fontsをご紹介できることを嬉しく思います！今後数週間のうちに、Google Fontsを使用しているサイトは、ボタンをクリックするだけで、Googleからではなく、サイトの独自ドメインから簡単にフォントを読み込むことができるようになります。これにより、Googleのサードパーティサーバーからフォントを読み込む必要がなくなるためプライバシーが向上するとともに、フォントをエンドユーザーの近くに置くことでDNSルックアップや<a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS接続</a>にかかる時間を短縮することで、サイトのパフォーマンスが向上します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5USergrSDpcFLIbQLpj4Bx/4c6bcb1404446355f566a207da90eecf/image3-14.png" alt="Cloudflare Fonts: enhancing website font privacy and speed" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>現在Google Fontsを使用しているサイトは、Cloudflare Fontsに移行することにより、フォントを自己管理する必要が無くなりますが、このために複雑なコードを変更する必要はありません。また、プロセス全体の合理化と簡素化を実現します。</p>
+	<div class="flex anchor relative">
+		<h3 id="fonts-and-privacy">フォントとプライバシー</h3>
+		<a href="https://blog.cloudflare.com/#fonts-and-privacy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Googleから<a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">フォント</a>を読み込むと、WebサイトはGoogleのサーバーとのデータ交換を開始します。これは、訪問者のブラウザがGoogleに直接リクエストを送信することを意味します。その結果、IPアドレス、ユーザーエージェント（書式化されたブラウザとオペレーティングシステムに関する記述）、リファラー（Googleフォントが表示されるページ）、各IPがGoogleにリクエストする頻度など、さまざまなデータがGoogle側に蓄積される可能性があります。<a href="https://policies.google.com/technologies/retention?hl=en-US" target="_blank" rel="noopener noreferrer">Google</a>は、このデータをターゲット広告に使用したり、クッキーを設定したりすることはないと述べていますが、エンドユーザーの個人データを不必要に共有することを防ぐことができれば、プライバシー保護につながります。</p>
+	<p>Cloudflare Fontsでは、自分のドメインから直接フォントを提供します。つまり、Googleのようなサードパーティのドメインにフォント要求が送信されることはありません。これは、過去に一部のプライバシー規制当局が<a href="https://www.theregister.com/2022/01/31/website_fine_google_fonts_gdpr" target="_blank" rel="noopener noreferrer">問題</a>視したことがあります。当社のプライバシー重視のアプローチにより、エンドユーザーのIPアドレスやその他のデータが別のドメインに送信されないことはありません。すべての情報はお客様のドメイン内に保持されます。さらに、Cloudflare FontsはGoogleなどのサードパーティサーバーへのデータ送信を排除するため、潜在的な<a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">データ・ローカライゼーション要求</a>に準拠する能力を高めることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-google-font-delivery-through-cloudflare">Cloudflareを利用したGoogle Font配信の高速化</h3>
+		<a href="https://blog.cloudflare.com/#faster-google-font-delivery-through-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これまで、Cloudflare Fontsでプライバシーを向上できることを確認してきました。もう一つの側面であるCloudflare Fontsによる<a href="https://www.cloudflare.com/learning/performance/speed-up-a-website" target="_blank" rel="noopener noreferrer">パフォーマンスの向上</a>について見ていきましょう。</p>
+	<p>そのためには、まずGoogle FontsがWebサイトのパフォーマンスにどのように影響するかを詳しく調べる必要があります。その後、Cloudflare Fontsがどのようにこれらのパフォーマンスの課題に対処し、是正しているかについて説明します。</p>
+	<p><a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a>は、Webサイトの所有者にWebサイトで使用できる多様なロイヤリティフリーのフォントを提供する素晴らしいリソースです。組み込みたいフォントが決まったら、自分のサイトにHTMLのスニペットを追加するだけと、実装がとても簡単です。次に、スタイルを追加して、これらのフォントをページのさまざまな部分に適用します。</p>
+	<p>しかし、この使いやすさの反面、パフォーマンスにはデメリットが伴います。</p>
+	<pre class="language-html"><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet"&gt;
+&lt;style&gt;
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1 {
+    font-family: 'Roboto Slab', serif;
+  }
+&lt;/style&gt;</code></pre>
+	<p>Webページの読み込むと、ブラウザはHTMLの解析が始まるとすぐにCSSファイルを取得します。次に、ブラウザがページのレンダリングを開始し、さまざまなテキストセクションでフォントの必要性を認識すると、必要なフォントファイルを要求します。</p>
+	<p>ここでパフォーマンスの問題が発生します。Google Fontsは2つのドメインシステムを採用し、CSSをドメイン「fonts.googleapis.com」に置き、フォントファイルを「fonts.gstatic.com」という別のドメインに置いています。</p>
+	<p>この分離により、リソース要求ごとに少なくとも4回のサードパーティサーバへのラウンドトリップが発生します。これらのラウンドトリップは、<a href="https://www.cloudflare.com/learning/dns/glossary/reverse-dns" target="_blank" rel="noopener noreferrer">DNSルックアップ</a>、ソケット接続の確立、<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">TLSネゴシエーション</a>（HTTPSの場合）、そして実際のリソースリクエストのための最後のラウンドトリップです。最終的に、Googleサーバーからブラウザにフォントを取得するには、8回のラウンドトリップが必要です。</p>
+	<p>ユーザーはこれを見ることができます。Google Fontsを使用している場合、[ネットワーク] タブを開いて、これらのGoogleドメインをフィルタすることができます。</p>
+	<p>余分にかかるDNSリクエストとTLS接続がWebサイト体験に与える影響を視覚的に確認することができます。例えば、私のWordPressサイトでは、テーマの一部としてGoogle Fontsをネイティブで使用しているため、～150ms余分にかかります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6takKzyxbtqTtdIuU9utYg/ff5954918c62e80d0477ad57e89fc947/pasted-image-0-3.png" alt="" class="kg-image" width="1600" height="367" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="fast-fonts">高速なフォント</h3>
+		<a href="https://blog.cloudflare.com/#fast-fonts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QUqTuUzaTJBg7MF7xjTAX/66e67fb48f236a27b97848099406d6b9/pasted-image-0--1--3.png" alt="" class="kg-image" width="1600" height="566" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Fontsは、ラウンドトリップの回数を8回から1回に減らすことで、このプロセスを合理化しています。CSSやフォントの提供にサードパーティのサーバーが関与しないため、2セットのDNSルックアップ、ソケット接続、サードパーティへのTLSネゴシエーションが不要になりました。唯一のラウンドトリップは、HTMLがホストされているのと同じドメインから直接フォントファイルを提供することです。このアプローチには、フォントを他のページリソースと同じ<a href="https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/#http2" target="_blank" rel="noopener noreferrer">HTTP/2</a>または<a href="https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/#http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>接続で送信できるため、<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">適切な優先順位付け</a>の恩恵を受け、帯域幅の競合を防ぐことができるといった更なる利点も含みます。</p>
+	<p>鋭い方は、「<i>確かにラウンドトリップは2回ですが、CSSリクエストは？</i>」と指摘する方もいるでしょう。Cloudflare Fontsでは、CSSリクエストを分ける必要性も無くしたため、フォント自体を取得する1回のラウンドトリップだけで済みます。</p>
+	<p>フォントリクエストのホームルーティングとCSSリクエストの両方を無くすため、Cloudflareのグローバルネットワークを通過する際にHTMLを書き換えます。CSSレスポンスが埋め込まれ、フォントのURL変換が埋め込まれたCSS内で実行されます。</p>
+	<p>この変換より、フォントのURLはHTMLコンテンツと同じドメインに置き換えられます。修正されたレスポンスは、Cloudflareのキャッシングインフラストラクチャをシームレスに通過し、自動的にキャッシュされ、パフォーマンスが大幅に向上します。キャッシュミスが発生した場合、<a href="https://fontsource.org" target="_blank" rel="noopener noreferrer">Fontsource</a>と<a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">NPM</a>を使用してこれらのフォントを読み込んでCloudflareインフラストラクチャ内にキャッシュします。このアプローチにより、Googleのインフラストラクチャに不用意にデータが公開されることがなくなり、パフォーマンスと<a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy" target="_blank" rel="noopener noreferrer">データプライバシー</a>の両方が維持されます。</p>
+	<p>Cloudflare Fontsを有効にすると、[ネットワーク] タブ内で、フォントファイルが<code>/cf-fonts</code>パスから自分のホスト名から読み込まれ、<code>cf-cache-status: HIT</code>で示されるように、ユーザーに最も近いCloudflareのキャッシュから提供されるようになったことを確認することができます。</p>
+	<p>さらに、ブラウザのタイミングセクションでは、余分なホスト名のDNSルックアップやTLS接続の確立が不要になったことがわかります。これは、コンテンツが自分のホスト名から提供され、ブラウザがすでにDNS応答をキャッシュし、TLS接続が開いているためです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ChFfq4QVnM2vd1orK4QGb/2be3188dbf296453fd2f6cb00b812b0c/pasted-image-0--2--2.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
+
+	</figure>
+	<p>最後に、Cloudflare Fontsの実際のパフォーマンス上の利点をご覧ください。テキストを表示するだけの単純なページでCloudflare Fontsを有効にする前に、<a href="https://developers.cloudflare.com/speed/speed-test/run-speed-test" target="_blank" rel="noopener noreferrer">Google Lighthouse</a>の合成テストを実施しました。最初のコンテンツ要素がページに表示されるまでの時間を表す<a href="https://www.cloudflare.com/learning/performance/how-dcl-and-fcp-affect-seo" target="_blank" rel="noopener noreferrer">First Contentful Paint（FCP）</a>は、Google fontsのテストでは0.9秒と測定されました。Cloudflare Fontsの有効後、このFCPは0.3秒に短縮され、Lighthouseの全体的なパフォーマンススコアは100点満点中98点から100点満点に向上しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UriVTiW5L6OjCUkkTYNp9/7dbf897131f46dcf0042822baa61547f/pasted-image-0--3--3.png" alt="" class="kg-image" width="1600" height="486" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="making-cloudflare-fonts-fast-with-rofl">ROFLによるCloudflare Fontsの高速化</h3>
+		<a href="https://blog.cloudflare.com/#making-cloudflare-fonts-fast-with-rofl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1k4uqNrLxNX6ibT49BFuDT/f8d59a6e5b03d5be792dd0b2cf6bbfe5/image6-1.png" alt="" class="kg-image" width="1507" height="980" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Fontsをこのパフォーマンスにするためには、レスポンスがCloudflareのネットワークを流れる際に、HTMLを高速に変更する必要がありました。これは、Cloudflareの最新の技術の1つを活用することで可能になりました。</p>
+	<p>今年の初めに、HTMLコンテンツを動的に変更する上で重要な役割を果たした、Cloudflareの最も古いコンポーネントの1つの書き換えを完了しました。しかし、<a href="https://blog.cloudflare.com/rust-nginx-module">このブログ記事</a>で説明されているように、古いソリューションに代わる、Cloudflareの増え続ける負荷に対応できる新しいメモリセーフなソリューションが必要でした。</p>
+	<p>この<a href="https://blog.cloudflare.com/rust-nginx-module">ROFL</a>（Response Overseer for FL）と名付けられた新しいモジュールは、<a href="https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation" target="_blank" rel="noopener noreferrer">Email Obfuscation</a>、<a href="https://developers.cloudflare.com/speed/optimization/content/rocket-loader" target="_blank" rel="noopener noreferrer">Rocket Loader</a>、<a href="https://developers.cloudflare.com/speed/optimization/content/auto-minify" target="_blank" rel="noopener noreferrer">HTML圧縮</a>など、HTMLストリームを書き換える必要があるさまざまなCloudflare製品に対応しています。</p>
+	<p>ROFLはすべてRustで開発されました。この決定は、Rustのメモリの安全性、パフォーマンス、セキュリティによって推進されたものです。Rustのメモリ安全性機能は、毎秒数百万という膨大な量のリクエストを処理する一方で、メモリリークから確実に保護するために不可欠です。Rustはコンパイラ型言語の性質から、特定のハードウェア構成に合わせてコードをきめ細かく最適化でき、インタプリタ型言語と比較して大幅なパフォーマンスの向上を実現することができます。</p>
+	<p>ROFLはCloudflare Fontsの開発への道を開きました。ROFLのパフォーマンスにより、HTMLをリアルタイムで書き換え、Google Fontsのリンクを、素早く安全かつ効率的に変更することができます。その速度は、HTMLファイルを処理することによって生じる遅延を軽減し、Webサイトのパフォーマンスを向上させるのに役立ちます。</p>
+	<div class="flex anchor relative">
+		<h3 id="unlock-the-power-of-cloudflare-fonts">Cloudflare Fontsのパワーを解き放ちましょう！🚀</h3>
+		<a href="https://blog.cloudflare.com/#unlock-the-power-of-cloudflare-fonts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今年10月、Cloudflare FontsはCloudflareをご利用のすべてのお客様にご利用いただけるようになります。Google Fontsを使用している場合、サイトの<a href="https://blog.cloudflare.com/tag/privacy">プライバシー</a>と速度を大幅に向上させることができます。この機能を有効にすることで、ユーザーのプライバシーを保護しながら、Webサイトのパフォーマンスをシームレスに向上させることができます。</p>
+</div>

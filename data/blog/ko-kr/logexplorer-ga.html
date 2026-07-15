@@ -1,0 +1,199 @@
+<div class="mb2 gray5">9분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/logexplorer-ga">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/logexplorer-ga">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6h2B011ckwl7D8iGBIi1eg/cac1584b7d961e984f8cee6bbf26d104/BLOG-2838_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>관찰 가능성 및 포렌식 기능을 Cloudflare 대시보드에 직접 가져오도록 설계된 강력한 신제품인 <a href="http://cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>를 누구나 이용할 수 있게 되었음을 발표하게 되어 기쁩니다. Cloudflare의 방대한 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>전역 네트워크</u></a>를 기반으로 구축된 Log Explorer는 Cloudflare 플랫폼의 고유한 위치를 활용하여 환경에 대한 포괄적이고 상황에 맞는 보기를 제공합니다.</p>
+	<p>보안팀과 개발자는 Cloudflare를 이용하여 실시간으로 위협을 감지하고 완화하며 애플리케이션 성능을 최적화할 수 있습니다. 지난 몇 년 동안 사용자들은 데이터를 타사 로그 분석과 보안 정보 및 이벤트 관리(SIEM) 도구에 전달할 필요 없이 보안 사고를 조사하거나 애플리케이션 성능 문제를 해결하기 위해 전체 컨텍스트가 포함된 추가 원격 측정 기능을 제공해줄 것을 요청했습니다. 데이터를 외부로 전송하면, 피할 수 있는 비용 외에도 복잡한 설정, 중요한 데이터에 대한 액세스 지연, 신속한 대응을 어렵게 하는 컨텍스트 부족 등의 단점이 생깁니다.&nbsp;</p>
+	<p>지난 한 해 동안 Log Explorer를 미리 체험한 수백 명의 고객은 다음과 같은 이점이 있다고 밝혔습니다.&nbsp;</p>
+	<blockquote>
+		<p><i>“기다리지 않아도 되고 외부 도구를 사용할 필요도 없이 모든 컨텍스트를 갖춘 Log Explorer에서 WAF 로그(방화벽 이벤트)를 즉시 사용할 수 있게 되면서 방화벽 규칙을 관리하는 방식이 완전히 바뀌었습니다. 문제가 발견되면 클릭 한 번으로 규칙을 조정하고 그 효과를 즉시 확인할 수 있습니다. 긍정 오류를 더 빠르게, 더 저렴하게, 더 효과적으로 튜닝할 수 있게 되었습니다.”&nbsp;</i></p>
+	</blockquote>
+	<blockquote>
+		<p><i>“저희는 Cloudflare 로그를 SIEM으로 수집하기 위해 Logpush를 사용하고 있지만, 개발팀에서 로그를 분석해야 할 때는 </i><i><b>Log Explorer</b></i><i>를 활용하는 것이 더 효과적일 수 있습니다 . SIEM을 사용하면 개발팀에서 자체 쿼리를 작성하고 콘솔을 조작하여 필요한 로그를 확인하기가 어렵습니다. 반면에 Cloudflare의 Log Explorer를 사용하면 개발팀에서 훨씬 </i><i><b>쉽게</b></i><i> 로그를 보고 필요한 정보를 직접 검색할 수 있습니다.”</i></p>
+	</blockquote>
+	<p>Log Explorer를 사용하면 고객은 Cloudflare 플랫폼 내에서 사용 가능한 모든 컨텍스트와 함께 Cloudflare 로그에 액세스할 수 있습니다. 고객은 외부 도구에 비해 다음과 같은 이점을 누릴 수 있습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>비용 및 복잡성 감소:</b> 외부 도구에서 몇 테라바이트에 달하는 로그 데이터를 전달, 저장, 분석하는 것과 관련된 비용과 운영 오버헤드가 크게 줄어듭니다.</p>
+		</li>
+		<li>
+			<p><b>더 빠른 감지 및 분류:</b> Cloudflare 네이티브 로그에 직접 액세스하므로 중요한 보안 인사이트를 지연시키는 번거로운 데이터 파이프라인과 수집 지연이 제거됩니다.</p>
+		</li>
+		<li>
+			<p><b>전체 컨텍스트를 통한 신속한 조사:</b> Cloudflare의 독보적인 컨텍스트 데이터로 사고를 조사하여 "정확히 무슨 일이 일어났는가?" 그리고 "어떻게 그 일이 일어났는가?"에 대한 분석과 이해가 빨라집니다.</p>
+		</li>
+		<li>
+			<p><b>최소화된 복구 시간:</b> Cloudflare 플랫폼을 통한 직접 완화 기능으로 조사에서 조치로 원활하게 전환됩니다.</p>
+		</li>
+	</ul>
+	<p>Log Explorer는 셀프 서비스 또는 Enterprise 플랜 고객을 위한 추가 기능 제품으로 제공됩니다. 계속 읽으면서 Log Explorer의 각 기능이 문제를 더 빠르게 감지하고 진단하는 데 어떻게 도움이 되는지 알아보세요.</p>
+	<div class="flex anchor relative">
+		<h3 id="monitor-security-and-performance-issues-with-custom-dashboards">사용자 지정 대시보드로 보안 및 성능 문제 모니터링</h3>
+		<a href="https://blog.cloudflare.com/#monitor-security-and-performance-issues-with-custom-dashboards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자 지정 대시보드를 이용하면 환경에서 비정상적이거나 예기치 않은 활동을 모니터링하는 데 필요한 특정 메트릭을 정의할 수 있습니다.</p>
+	<p>자연어를 사용하여 차트를 만들 수 있으므로 쉽게 시작할 수 있습니다. 자연어 인터페이스가 차트 생성/편집 환경에 통합되어 있으므로 생성하려는 차트를 자신만의 언어로 표현할 수 있습니다. <a href="https://blog.cloudflare.com/security-analytics-ai-assistant"><u>Security Week 2024 동안에 발표된 AI 비서</u></a>와 유사하게, 프롬프트로 언어를 적절한 차트 구성으로 번역한 다음 신규 또는 기존 사용자 지정 대시보드에 추가할 수 있습니다.</p>
+	<p>예를 들어, 대시보드를 만들어 사용자 환경에서 발생하는 원격 코드 실행(RCE) 공격의 존재를 모니터링할 수 있습니다. RCE 공격은 공격자가 사용자 환경의 컴퓨터를 손상시키고 명령을 실행할 수 있는 공격입니다. 좋은 소식은 RCE를 Cloudflare WAF에서 감지할 수 있다는 점입니다.&nbsp; 아래 대시보드 예시에서는 RCE 공격을 감시할 수 있을 뿐만 아니라 악의적 콘텐츠 업로드, 소스 IP 주소, JA3/JA4 핑거프린트 등의 다른 보안 이벤트와 RCE 공격의 상관 관계도 확인할 수 있습니다. 이러한 시나리오는 사용자 환경에서 하나 이상의 시스템이 손상되어 맬웨어를 확산하는 데 사용되고 있음을 의미할 수 있으며, 이는 확실히 아주 위험한 사고입니다!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UWOHhIaIFiBTtnohdvbAx/40eeac0b52bc278d0687f7d48cd875fd/BLOG-2838_2.png" alt="A custom dashboard for correlating Remote Code Execution (RCE) activity with source IP, ASN and infected scan results." class="kg-image" width="1999" height="1153" loading="lazy">
+	</figure>
+	<p>안정성 엔지니어는 오류 모니터링을 위한 대시보드를 만들고자 할 수 있습니다. 해당 엔지니어는 자연어 프롬프트를 사용하여 '시간에 따른 HTTP 상태 코드 범위 비교'와 같은 쿼리를 입력할 수 있습니다. 그런 다음 AI 모델이 가장 적절한 시각화를 결정하고 차트 구조를 구성합니다.</p>
+	<p>사용자 지정 대시보드를 처음부터 만들 수도 있지만, 전문가가 큐레이션한 대시보드 템플릿을 사용하여 보안 및 성능 모니터링을 바로 시작할 수도 있습니다.&nbsp;</p>
+	<p>사용 가능한 템플릿은 다음과 같습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>봇 모니터링:</b> 웹 사이트에 액세스하는 자동화된 트래픽 식별</p>
+		</li>
+		<li>
+			<p><b>API 보안:</b> 애플리케이션 내 API 엔드포인트의 데이터 전송 및 예외를 모니터링</p>
+		</li>
+		<li>
+			<p><b>API 성능:</b> 오류율과 함께 애플리케이션의 API 엔드포인트에 대한 타이밍 데이터 확인</p>
+		</li>
+		<li>
+			<p><b>계정 탈취: </b>로그인 시도, 유출된 자격 증명 사용을 보고, 계정 탈취 공격을 식별</p>
+		</li>
+		<li>
+			<p><b>성능 모니터링:</b> 원본 서버에서 느린 호스트와 경로를 식별하고 시간 경과에 따른 <a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be">첫 번째 바이트 시간(TTFB)</a> 메트릭 확인</p>
+		</li>
+		<li>
+			<p><b>보안 모니터링:</b> 상위 호스트 및 경로 전반의 공격 분포를 모니터링하고, DDoS 트래픽과 원본 응답 시간의 상관 관계를 분석하여 DDoS 공격의 영향을 파악합니다.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PO726Rhjol9khGOdMMnQJ/55462052782974b0fc5b0c885e42e41b/BLOG-2838_3.png" alt="The security monitoring template captures attack distribution and a breakdown of top statistics." class="kg-image" width="1999" height="1373" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="investigate-and-troubleshoot-issues-with-log-search">로그 검색 문제 조사 및 해결&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#investigate-and-troubleshoot-issues-with-log-search" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이전 섹션의 예시를 계속 사용하여, RCE 문제를 통해 일부 컴퓨터가 손상되었음을 진단하는 데 성공한 후 분석가는 로그 검색으로 전환하여 공격자가 다른 내부 시스템에 액세스하여 손상시킬 수 있었는지 여부를 조사할 수 있습니다. 이를 위해 분석가는 아래 스크린샷과 같이 사용자 지정 대시보드의 손상된 IP 주소와 같은 컨텍스트를 사용하여 Zero Trust 서비스의 로그를 검색할 수 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iPrTc1ZtLU4ZxQWojvmje/d09bb0bf25bd17cea1d2f955371d991e/BLOG-2838_4.png" alt="Log search in Zero Trust access logs." class="kg-image" width="1999" height="812" loading="lazy">
+	</figure>
+	<p>로그 검색은 간소화된 경험이며, 데이터 유형 인식 검색 필터 또는 보다 강력한 쿼리를 위해 사용자 지정 SQL 인터페이스로 전환하는 기능이 포함됩니다. 로그 검색은 <a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>공개 API</u></a>를 통해서도 사용할 수 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AytV9wASU5kUuThnhl0CQ/de8c9f4b829e1ccfebdb33bd9522ae5b/BLOG-2838_5.png" alt="Log search with filters generates a SQL query executed by the system." class="kg-image" width="1999" height="812" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="save-time-and-collaborate-with-saved-queries">저장된 쿼리로 시간 절약 및 협업</h3>
+		<a href="https://blog.cloudflare.com/#save-time-and-collaborate-with-saved-queries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 로그 검색에 내장된 쿼리를 저장하여 반복 사용할 수 있으며 해당 쿼리에 계정의 다른 Log Explorer 사용자가 액세스할 수 있습니다. 따라서 문제를 함께 조사하는 것이 그 어느 때보다 쉬워집니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ouInu3nk7iZnAcJAs39F8/cc7ca6a61d19d3d9c1371ad2ca87e913/BLOG-2838_6.png" alt="Log Search Saved Queries side panel showing saved and recent queries." class="kg-image" width="1999" height="1586" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="monitor-proactively-with-custom-alerting-coming-soon">사용자 지정 알림으로 선제적 모니터링(출시 예정)</h3>
+		<a href="https://blog.cloudflare.com/#monitor-proactively-with-custom-alerting-coming-soon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자 지정 알림을 통해 비즈니스에 중요한 지표를 선제적으로 모니터링할 수 있도록 사용자 지정 알림 정책을 구성할 수 있습니다.&nbsp;</p>
+	<p>로그 검색에서 시작하여 쿼리를 정의하고 테스트합니다. 여기에서 일정 간격과 알림 정책을 저장하고 구성할 수 있습니다. 쿼리는 사용자가 정의한 일정에 따라 자동으로 실행됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="tracking-error-rate-for-a-custom-hostname">사용자 지정 호스트 이름의 추적 오류율</h4>
+		<a href="https://blog.cloudflare.com/#tracking-error-rate-for-a-custom-hostname" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>특정 호스트의 오류율을 모니터링하려면 이 로그 검색 쿼리를 사용하여 시간 간격당 오류율을 계산할 수 있습니다.</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT SUBSTRING(EdgeStartTimeStamp, 1, 14) || '00:00' AS time_interval,
+       COUNT() AS total_requests,
+       COUNT(CASE WHEN EdgeResponseStatus &gt;= 500 THEN 1 ELSE NULL END) AS error_requests,
+       COUNT(CASE WHEN EdgeResponseStatus &gt;= 500 THEN 1 ELSE NULL END) * 100.0 / COUNT() AS error_rate_percentage
+ FROM http_requests
+WHERE EdgeStartTimestamp &gt;= '2025-06-09T20:56:58Z'
+  AND EdgeStartTimestamp &lt;= '2025-06-10T21:26:58Z'
+  AND ClientRequestHost = 'customhostname.com'
+GROUP BY time_interval
+ORDER BY time_interval ASC;
+</code></pre>
+	<p>위 쿼리를 실행하면 다음과 같은 결과가 반환됩니다. 쿼리 결과의 맨 오른쪽 열에서 전체 오류율 백분율을 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5v8SNmHt4OJrLSkiM2EKtJ/182c7f5709eef1fbb9e93c5423fc1bae/BLOG-2838_7.png" alt="Log search results for a SQL query authored by a user." class="kg-image" width="1999" height="693" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="proactively-detect-malware">맬웨어 사전 감지</h4>
+		<a href="https://blog.cloudflare.com/#proactively-detect-malware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer">Cloudflare 안전한 웹 게이트웨이</a>의 로그를 모니터링하여 환경에 존재하는 맬웨어를 식별할 수 있습니다. 예를 들어, <a href="https://www.broadcom.com/support/security-center/protection-bulletin/new-katz-stealer-malware-as-a-service-compromises-web-browsers" target="_blank" rel="noopener noreferrer"><u>Katz Stealer</u></a>는 자격 증명을 훔치기 위해 설계된 서비스형 맬웨어입니다. Katz Stealer 맬웨어에 감염되었을 수 있는 컴퓨터를 식별하기 위해 사내 사용자의 DNS 쿼리와 HTTP 요청을 모니터링할 수 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jgBTCWYpnWoNrFh8xe6ki/306e644ec3753976315c16c9d1560eec/BLOG-2838_8.png" alt="Log Search query of Gateway HTTP logs filtered on url field containing katz" class="kg-image" width="1999" height="585" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jFwBxsk8rfD3VLAYkG2iA/ebd2ebcd95d12b40978f22bf1bc7be39/BLOG-2838_9.png" alt="Log Search query of Gateway DNS logs filtered on the queryname field containing katz" class="kg-image" width="1999" height="585" loading="lazy">
+	</figure>
+	<p>또한 사용자 지정 알림을 사용하여 웹후크 또는 PagerDuty를 통해 알림을 받도록 알림 정책을 구성할 수도 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="maintain-audit-compliance-with-flexible-retention-coming-soon">유연한 보존 기능으로 감사 및 규제 준수 유지(출시 예정)</h3>
+		<a href="https://blog.cloudflare.com/#maintain-audit-compliance-with-flexible-retention-coming-soon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>유연한 보존 기능으로 로그를 저장할 정확한 기간을 설정할 수 있으므로 특정 규제 준수 및 감사 요구 사항을 쉽게 충족할 수 있습니다. 다른 공급자는 아카이빙 또는 핫 및 콜드 스토리지를 필요로 하므로 이전 로그를 쿼리하기가 어렵습니다. Log Explorer는 R2 스토리지 계층 위에 구축되었으므로 과거 로그도 현재 로그처럼 쉽게 쿼리할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-log-explorer-to-run-at-cloudflare-scale">Cloudflare 규모에서 실행되도록 Log Explorer를 구축한 방법</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-log-explorer-to-run-at-cloudflare-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 Log Explorer를 통해 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a> 위에 확장 가능한 로그 스토리지 플랫폼을 구축했으며, 이를 통해 익숙한 SQL 쿼리를 사용하여 Cloudflare 로그를 효율적으로 검색할 수 있습니다. 이 섹션에서는 이 작업을 수행한 방법과 그 과정에서 일부 기술적 문제를 해결한 방법을 살펴보겠습니다.
+
+		Log Explorer는 수집기, 압축기, 쿼리어의 세 가지 요소로 구성됩니다. 수집기는 Cloudflare의 데이터 파이프라인에서 R2로 로그를 작성하는 역할을 합니다. 압축기는 저장소 파일을 최적화하여 보다 효율적으로 쿼리할 수 있도록 합니다. 쿼리어는 R2에서 일치하는 로그를 가져오고, 변환하며, 집계하여 사용자의 SQL 쿼리를 실행합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qEH0futV2are5GnT6vjta/e50c0ec4bbb1cacada117d31b71502e2/BLOG-2838_10.png" alt="Diagram of Log Explorer showing data flowing through Cloudflare network and Log Explorer services to R2." class="kg-image" width="1999" height="945" loading="lazy">
+	</figure>
+	<p>수집하는 동안 Log Explorer는 각 로그 레코드 배치를 R2의 Parquet 파일에 씁니다. <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>은 오픈 소스 열 저장 파일 형식으로, 저희에게는 당연한 선택이었습니다. 파일 전체에 걸쳐 각 열의 최솟값과 최댓값과 같은 메타데이터를 내장하여 쿼리어가 쿼리를 처리하는 데 필요한 데이터를 빠르게 찾을 수 있도록 하는 등 효율적인 데이터 저장 및 검색에 최적화되어 있습니다.</p>
+	<p>Log Explorer는 Cloudflare D1과 마찬가지로 고객별로 로그를 저장하므로 귀사의 데이터가 다른 고객의 데이터와 섞이지 않습니다. 2025년 3분기에는 고객별 로그를 통해 자체 보존 정책을 생성하고 데이터를 저장할 지역을 유연하게 결정할 수 있게 됩니다.
+
+		그렇다면 로그를 쿼리할 때 Log Explorer는 Parquet 파일을 어떻게 찾을까요? Log Explorer는 <a href="https://databricks.com/wp-content/uploads/2020/08/p975-armbrust.pdf" target="_blank" rel="noopener noreferrer"><u>Delta Lake</u></a> 오픈 테이블 형식을 활용하여 R2 개체 스토리지의 최상위에 데이터베이스 테이블 추상화를 제공합니다. Delta Lake의 테이블은 Parquet 형식의 데이터 파일을 트랜잭션 로그와 페어링합니다. 트랜잭션 로그는 테이블에 대한 데이터 파일의 모든 추가, 제거, 수정을 기록하며 R2의 데이터 파일 바로 옆에 저장됩니다.</p>
+	<p><a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer"><u>HTTP 요청</u></a>, <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/gateway_dns" target="_blank" rel="noopener noreferrer"><u>Gateway DNS</u></a> 등의 특정 로그 데이터 세트에 대한 SQL 쿼리가 주어지면 Log Explorer는 먼저 R2에서 해당하는 Delta 테이블의 트랜잭션 로그를 로드해야 합니다. 사용자가 로그를 쿼리할 때마다 전체 테이블 기록을 읽을 필요가 없도록 트랜잭션 로그를 주기적으로 검사합니다.</p>
+	<p>트랜잭션 로그에는 테이블에 대한 Parquet 파일이 나열되는 것 외에도 각 Parquet 파일에 대한 열별 최소/최대 통계가 포함됩니다. 이렇게 하면 Log Explorer가 사용자 쿼리를 충족할 수 있는 파일만 R2에서 가져오면 된다는 이점이 있습니다. 마지막으로 쿼리어는 각 Parquet 파일에 포함된 최소/최대 통계를 사용하여 파일에서 가져올 행 그룹을 결정합니다.</p>
+	<p>Log Explorer는 Rust로 작성된 빠르고 확장 가능한 쿼리 엔진인 <a href="https://arrow.apache.org/datafusion" target="_blank" rel="noopener noreferrer"><u>Apache DataFusion</u></a>과 Delta Lake 프로토콜의 커뮤니티 중심 Rust 구현인 <a href="https://github.com/delta-io/delta-rs" target="_blank" rel="noopener noreferrer"><u>delta-rs</u></a>를 사용하여 SQL 쿼리를 처리합니다. 다른 이들의 성과를 활용하면서, 저희 팀에서는 Cloudflare 규모에서 로그 검색을 제공하기 위해 몇 가지 고유한 문제를 해결해야 했습니다.</p>
+	<p>Log Explorer는 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>125개 국가의 330여 개 도시에 걸쳐 있는</u></a> Cloudflare의 방대한 전역 네트워크에서 로그를 수집합니다. Log Explorer가 서버의 로그를 바로 R2에 기록한다면, 그 스토리지는 수많은 작은 파일로 빠르게 분할되어 로그 쿼리 비용이 엄청나게 비쌀 것입니다.</p>
+	<p>이러한 분할을 피하기 위한 Log Explorer의 전략은 세 가지입니다. 첫째, 에지에서 로그를 수집하고 일괄 처리하여 궁극적으로 <a href="https://blog.cloudflare.com/cloudflare-incident-on-november-14-2024-resulting-in-lost-logs"><u>Buftee</u></a>라는 내부 시스템에서 각 로그 스트림을 버퍼링하는 Cloudflare의 데이터 파이프라인을 활용합니다. 둘째, Buftee에서 수집된 로그 일괄 처리가 트랜잭션 로그에 즉시 커밋되지 않습니다. 대신 Log Explorer는 중간 영역에서 여러 배치에 대한 커밋을 스테이징하고 이러한 커밋이 트랜잭션 로그에 작성되기 전에 '스쿼시'합니다. 셋째, 로그 배치가 커밋되면 압축이라는 프로세스가 백그라운드에서 로그 일괄 처리를 더 큰 파일로 병합합니다.</p>
+	<p>Delta Lake의 오픈 소스 구현으로 즉시 압축이 제공되지만, 워크로드에 사용할 때 곧 문제가 발생했습니다. 스톡 압축은 파일 크기를 역순으로 정렬하고 크기 S의 빈을 탐욕스럽게 채워서 데이터 파일을 원하는 대상 크기 S로 병합합니다. 이 프로세스는 타임스탬프와 관계없이 로그를 병합함으로써 수집된 배치를 병합된 파일에 무작위로 분산시켜 데이터 지역성이 파괴되었습니다. 압축에도 불구하고 사용자가 특정 시간 프레임을 쿼리하면 여전히 R2에서 수백 또는 수천 개의 파일을 가져오게 됩니다.</p>
+	<p>이러한 이유로 저희는 앞서 언급한 최소/최대 통계를 활용하여 최소 로그 타임스탬프 순서로 수집된 배치를 병합하는 사용자 지정 압축 알고리즘을 작성했습니다. 이 알고리즘 덕분에 병합된 파일 간의 중복 수가 두 자릿수까지 줄었습니다. 그 결과, 이전에는 1분 이상 걸리던 일부 대규모 쿼리를 단 몇 초 만에 완료하는 등 쿼리 성능이 크게 향상되는 것을 확인했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="follow-along-for-more-updates">팔로우하여 더 많은 업데이트를 받아보세요</h3>
+		<a href="https://blog.cloudflare.com/#follow-along-for-more-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 시작일 뿐입니다! 저희는 Log Explorer 사용 경험을 더욱 개선하기 위해 더 강력한 기능을 적극적으로 개발하고 있습니다. <a href="https://blog.cloudflare.com"><u>블로그를 구독</u></a>하고 <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>변경 로그</u></a>에서 관찰 가능성 및 포렌식 제품에 대한 더 많은 업데이트를 조만간 확인하세요.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-access-to-log-explorer">Log Explorer에 액세스</h3>
+		<a href="https://blog.cloudflare.com/#get-access-to-log-explorer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Log Explorer를 시작하려면 <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer">여기에서 가입</a>하거나 계정 관리자에게 문의하세요. Cloudflare의 <a href="https://developers.cloudflare.com/logs/log-explorer" target="_blank" rel="noopener noreferrer"><u>개발자 문서</u></a>에서 자세한 내용을 읽어볼 수도 있습니다.</p>
+</div>

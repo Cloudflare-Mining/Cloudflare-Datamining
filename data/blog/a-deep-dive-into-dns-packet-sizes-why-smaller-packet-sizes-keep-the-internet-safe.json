@@ -1,16 +1,9 @@
 {
-	"author": {
-		"name": "Dani Grant",
-		"url": "http://blog.cloudflare.com/author/dani/",
-		"sameAs": [
-			"https://twitter.com/thedanigrant"
-		]
-	},
+	"author": {},
 	"headline": "A Deep Dive Into DNS Packet Sizes: Why Smaller Packet Sizes Keep The Internet Safe",
-	"url": "http://blog.cloudflare.com/a-deep-dive-into-dns-packet-sizes-why-smaller-packet-sizes-keep-the-internet-safe/",
+	"url": "https://blog.cloudflare.com/a-deep-dive-into-dns-packet-sizes-why-smaller-packet-sizes-keep-the-internet-safe/",
 	"datePublished": "2016-03-04T18:02:35.000Z",
-	"dateModified": "2023-10-27T20:45:32.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2018/08/7654121138_8f2e988436_z.jpg",
-	"keywords": "DNSSEC, Elliptic Curves, Attacks, DNS, Reliability, DDoS",
+	"dateModified": "2026-07-15T12:54:58.430Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48P5RT47G01MYTRGT9BPXR.jpg",
 	"description": "One way that attackers DDoS websites is by repeatedly doing DNS lookups that have small queries, but large answers. The attackers spoof their IP address so that the DNS answers are sent to the server they are attacking, this is called a reflection attack."
 }

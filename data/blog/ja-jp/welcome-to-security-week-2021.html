@@ -1,0 +1,91 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/welcome-to-security-week-2021">English</a>、<a href="https://blog.cloudflare.com/zh-tw/welcome-to-security-week-2021">繁體中文</a>、<a href="https://blog.cloudflare.com/id-id/welcome-to-security-week-2021">Indonesia</a>、<a href="https://blog.cloudflare.com/th-th/welcome-to-security-week-2021">ไทย</a>、<a href="https://blog.cloudflare.com/zh-cn/welcome-to-security-week-2021">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7f2wOehvDquB3BbdqE57Py/77cdd24817de46a18e7b0c3009368aa8/welcome-to-security-week-2021.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日から2021年のCloudflareセキュリティウィークがはじまります。Cloudflareのすべてのイノベーションウィークと同様に、新製品を次から次へと発表していきます。ベータ版の製品を一般公開し、お客様に、また導入事例を通じて、より良いインターネット構築を支援するという当社の使命を果たすためにネットワークを使用する方法について説明していきます。</p>
+	<p></p>
+	<p>Cloudflareを創業して間もない頃、私は「セキュリティ企業」であるという肩書きに抵抗がありました。それはCloudflareの可能性を制限するように感じられたからです。私たちはまず、インターネットの根本的なバグを修正することに着手しました。インターネットは当初、現代の姿とは違う目的で構築されました。それを修正するために、Cloudflareが始まりました。より安全にすることはもちろんのこと、インターネットをより高速にし、その信頼性を高め、効率化したいと考えていました。</p>
+	<p>しかし、Cloudflareがやっていることの多くはセキュリティについてです。Cloudflare製品の約半分は、セキュリティ関連です。インターネットの最も深刻な欠陥のいくつかは、インターネットの創業当初からセキュリティを設計に組み込まなかったことであるため、これは理にかなっています。</p>
+	<div class="flex anchor relative">
+		<h3 id="security-the-internets-afterthought">セキュリティ：インターネットが後から思いついたこと</h3>
+		<a href="https://blog.cloudflare.com/#security-the-internets-afterthought" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのCTOであるJohn Graham-Cummingが、今や私たちの生活に欠かせなくなったインターネットが、必要とされるセキュリティを備えて設計されなかった事について、興味深い話をします。Tim Berners-Lee氏は、Webに関する当初の提案で、「ハイパーテキストの認証システムとアカウンティングシステムはおそらく非常に洗練された設計が可能だが、ここでは提案されていない」と、書いています。その通りで、Webは秘密よりも情報交換を優先するように設計されたのです。</p>
+	<p>インターネットが利用する基盤プロトコルもセキュリティ上の懸念を含みませんでした。BGP（ネットワークを繋ぎ合わせるプロトコル）は、その仕様文書（RFC）で、特にこれに言及し、「セキュリティの問題については、このメモでは説明しません。」と記しています。恐ろしいことに、「セキュリティ」という言葉は、DNSのRFCにはまったく登場しません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qzbPw0iSrNRUBGJuY195C/f74c967c003db7b27caf189a18245bab/image6-6.png" alt="" class="kg-image" width="1999" height="795" loading="lazy">
+
+	</figure>
+	<p>始まった当初と同じようにインターネットが学術的な科学プロジェクトとして残っていれば、それらすべてはそれでもよかったのでしょう。しかし、インターネットの重要性を考えると、現在はあらゆるレベルでセキュリティを「設計に組み込む」ことが重要です。過去10年以上にわたり、Cloudflareの製品ロードマップの多くが、インターネットに必要なセキュリティを設計し、実装してきました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FzGagxNbLE3BZc4U1lLmb/170933722455b8be6bb668ac1ed7b4b1/image2-20.png" alt="" class="kg-image" width="1999" height="372" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-historical-roadmap-reverse-engineering-in-security">Cloudflareの歴史的ロードマップ：セキュリティのリバースエンジニアリング</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-historical-roadmap-reverse-engineering-in-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのWebトラフィックを無料で暗号化し、DNSを暗号化し、すべてのBGPルートに署名するように取り組み、SNIを暗号化し、リスクになるDDoS攻撃を排除し、ネットワークソフトウェアの脆弱性を自動的にパッチし、ネットワークにアクセス管理を追加してきました。当社の使命は、より良いインターネットの構築を支援することですが、その大部分は根本的に安全なインターネットの構築を支援するものです。</p>
+	<p>そして今週は、インターネットセキュリティの観点から根本的に壊れているものを取り上げ、修正する方法をさらに発表します。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-week-of-foundational-security-announcements">1週間の基本的なセキュリティに関するお知らせ</h3>
+		<a href="https://blog.cloudflare.com/#a-week-of-foundational-security-announcements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JbPc9ZPbuowLlcMrgdZsp/89f345d1fb10f62c18e3dfdff965121a/image1-27.png" alt="" class="kg-image" width="1614" height="869" loading="lazy">
+
+	</figure>
+	<p>月曜日は、MPLSから始めます。MPLSは、多くの企業がネットワークを稼働させるために使用している基本的なネットワークテクノロジーです。しかし、MPLSは高価で実装が遅い上に、管理が大変なので、デフォルトではセキュリティの役割を果たしません。スノーデンがリークしたNSA文書では、Googleのネットワークについて「SSLは追加され、ここで削除されました」という記述の横に、スマイルマークが書き込まれていたことを思い出してください。このスマイルマークは基本的にMPLSのセキュリティモデルの欠陥でした。月曜日、当社はこれを修正すると同時に、MPLSをより高速で安価に利用できるようにします。</p>
+	<p>火曜日は、ブラウザについて取り上げます。考えてみると、ブラウザはCISO（最高情報セキュリティ責任者）スタッフにとって、悪夢のようなものです。ランダムコードは自動的にダウンロードされ、アクセスするすべてのWebページでローカルに実行されます。以前、リモートブラウザの分離がこの問題の解決策であることについて、お話しました。火曜日は、リモートブラウザ分離をみなさまに公開し、Gateway製品にもさらに機能を追加して、同様の根本的な問題に取り組みます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36aoElYXdHv7AOTYjJLaEW/9a7cc4582ccc705499b7aaf6feb89ee7/image4-19.png" alt="" class="kg-image" width="538" height="404" loading="lazy">
+
+	</figure>
+	<p>水曜日は、セキュリティベンダーが投資していない重要な分野について、新たに見ていきます。SaaSアプリケーションがデフォルトで提供する権限とコントロールに不満を感じた経験はありますか？アプリケーションのAPIが意図したより多くのデータを漏えいすることについて心配になったことはありますか？セキュリティでは常に攻撃者を閉め出すことだけではなく、データを確実に保つことも重要です。Cloudflareでは、お客様がこれらの普遍的な課題を解決できるよう支援するために投資しています。</p>
+	<p>木曜日は、最新のインターネットとWebが持つ複雑さに対処するお手伝いをします。インターネット自体はネットワークの集まりです。そして現代のWebページは、コンテンツとアプリケーションの集まりです。残念ながら、その丈夫さは、「鎖はその一番弱い輪（リンク）と同じだけの強さでしかない」という古い格言は、オンラインにもあてはまります。木曜日に、ネットワークレベルからWebページの個々のコードまで、サードパーティでトラブルの兆候を監視するツールセットを発表します。</p>
+	<p>金曜日は、以前は最大規模のお客様にのみ提供されていた自動ボットから保護する技術の一部を、より多くのユーザーに提供します。同時に、これまでボット攻撃から保護することが困難であったAPIを特定し、保護するためのツールも追加する予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="partnerships-and-practicality">パートナーシップと実用性</h3>
+		<a href="https://blog.cloudflare.com/#partnerships-and-practicality" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>「支える」という言葉を当社の使命の表現に入れている理由があります。より良い、安全なインターネットは単独では構築できないからです。また、当社ではネットワークハードウェアは販売しません。お客様がデータを保存し、アプリケーションを実行するコアデータセンターを、当社では所有しません。ID管理やエンドポイントセキュリティなどに造詣が深い専門企業も存在します。ですから、1週間を通して、当社では隣接するエリアのリーディング企業と数多くのパートナーシップを発表します。これにより、各社のお客様は安全で高速、信頼性の高いグローバルネットワークに関する完全なソリューションを構築することができます。</p>
+	<p>セキュリティ企業として形容されたくなかった理由の1つは、セキュリティ業界が恐怖、不確実性、疑念に基づいて製品を販売する傾向があるためです。今週は、この形勢を逆転したかったのです。ハッカーと言えば、パーカーを着て指なし手袋をはめた怖い人たちのイメージですが、そうではなく、注目度の高い最新のハッキングを紹介し、お客様が自衛のために当社製品だけでなく、他社製品を使用する方法についてもお話します。</p>
+	<p><a href="https://cloudflare.tv/live" target="_blank" rel="noopener noreferrer">CloudflareTV</a>では、1週間を通して、我々が尊敬するセキュリティの専門家とお話するとともに、発表する製品を支えるプロダクトマネージャーやエンジニアへのインタビューを行います。 <a href="https://cloudflare.tv/schedule" target="_blank" rel="noopener noreferrer">スケジュールを掲載</a>していますので、ライブで視聴して質問することもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-week-is-not-enough">1週間では足りません</h3>
+		<a href="https://blog.cloudflare.com/#a-week-is-not-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NRuqmE6arYJPKQOe5sysr/4fac96829f76b70fa37a3749a2e1f113/image5-21.png" alt="" class="kg-image" width="1180" height="344" loading="lazy">
+
+	</figure>
+	<p>すべてをカバーするには程遠いでしょう。発表する新製品や機能がとてもたくさんあるため、セキュリティトゥーウィークスと宣言してもよいくらいです。ですから、発表が週末を超えて翌週まで続いても驚かないでください。</p>
+	<p>サイバーセキュリティ関連のニュースは暗いものが多い印象ですが、Cloudflareは極めて楽観的です。より安全なネットワークを構築することは可能です。インターネットの根本的な欠陥は修正することができます。Cloudflareでは10年以上、続けていることです。そして今週、もう1つ大きな飛躍を遂げることができることをとても楽しみにしています。</p>
+	<p><a href="https://www.cloudflare.com/ja-jp/security-week" target="_blank" rel="noopener noreferrer">Cloudflareセキュリティウィーク</a>をお楽しみください！</p>
+</div>

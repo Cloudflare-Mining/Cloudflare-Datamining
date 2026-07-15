@@ -1,0 +1,234 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">English</a>, <a href="https://blog.cloudflare.com/zh-tw/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">Français</a>, <a href="https://blog.cloudflare.com/de-de/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">日本語</a>, <a href="https://blog.cloudflare.com/es-es/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ih6FFoOVX6GtgR7ZnmP20/136e933b69062f65c3d940fb6f880511/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="browser-rendering-api-is-now-available-to-all-paid-workers-customers-with-improved-session-management">이제 모든 유료 Workers 고객이 향상된 세션 관리 기능을 갖춘 브라우저 렌더링 API를 사용할 수 있습니다</h3>
+		<a href="https://blog.cloudflare.com/#browser-rendering-api-is-now-available-to-all-paid-workers-customers-with-improved-session-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kiBNiPfz0fqooxige54uO/378848632e2d4633c9f41678f1cff82c/Workers-for-Platforms-now-available-for-PAYGO.png" alt="Browser Rendering API GA, rolling out Cloudflare Snippets, SWR, and bringing Workers for Platforms to our PAYGO plans" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>2023년 5월, Cloudflare에서는 <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer">브라우저 렌더링 API</a>의 오픈 베타 프로그램을 <a href="https://blog.cloudflare.com/browser-rendering-open-beta">발표</a>했습니다. 브라우저 렌더링을 통해 개발자는 헤드리스 브라우저 인스턴스를 프로그래밍 방식으로 제어하고 상호 작용하며 앱과 제품에 대한 자동화 흐름을 만들 수 있습니다.</p>
+	<p>동시에 브라우저 렌더링과 함께 작동하는 <a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer" target="_blank" rel="noopener noreferrer">Puppeteer 라이브러리</a> 버전도 출시했습니다. 이를 통해 개발자는 Cloudflare Workers에서 익숙한 API를 사용하여 페이지의 스크린샷을 찍거나 자동 소프트웨어 테스트와 같은 모든 종류의 워크플로우를 생성할 수 있습니다.</p>
+	<p>오늘 저희는 브라우저 렌더링 기능을 한 단계 더 발전시켜 베타 버전 기간을 끝내고 모든 유료 Workers 요금제에서 사용할 수 있도록 했습니다. 또한, 오픈 베타 커뮤니티에서 오랫동안 논의되어 온 새로운 기능인 세션 관리 기능을 도입하여 API를 개선하고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="session-management">세션 관리</h3>
+		<a href="https://blog.cloudflare.com/#session-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>세션 관리를 통해 개발자는 이전에 열었던 브라우저를 Worker의 스크립트 전체에 걸쳐 재사용할 수 있습니다. 브라우저 세션을 재사용하면 모든 요청과 모든 작업에 대해 새 브라우저를 인스턴스화할 필요가 없으므로 성능이 크게 향상되고 비용이 절감된다는 장점이 있습니다.</p>
+	<p>이전에는 브라우저 인스턴스를 유지하여 재사용하려면 Durable Objects를 사용하여 복잡한 코드를 구현해야 했습니다. 이제 브라우저를 백그라운드에서 계속 실행하고 실행 중인 모든 세션, 활동 기록, 활성 제한에 액세스할 수 있는 새로운 <a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer/#session-management" target="_blank" rel="noopener noreferrer">세션 관리 방법</a>으로 Puppeteer API를 확장하여 이 과정을 간소화했습니다.</p>
+	<p>활성 세션을 나열하는 방법은 다음과 같습니다.</p>
+	<p>개발자 문서에 <a href="https://developers.cloudflare.com/browser-rendering/get-started/reuse-sessions/#4-code" target="_blank" rel="noopener noreferrer">세션 관리 사용 방법</a>에 대한 Worker 스크립트 예제를 추가했습니다.</p>
+	<pre class="language-js"><code class="language-js">const sessions = await puppeteer.sessions(env.RENDERING);
+console.log(sessions);
+[
+   {
+      "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
+      "connectionStartTime": 1711621704607,
+      "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+      "startTime": 1711621703708
+   },
+   {
+      "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
+      "startTime": 1711621703808
+   }
+]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="analytics-and-logs">분석 및 로그</h3>
+		<a href="https://blog.cloudflare.com/#analytics-and-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>관찰 가능성은 모든 Cloudflare 제품에서 필수적인 부분입니다. 계정의 Worker &amp; Cloudflare Pages 섹션 아래 대시보드에서 브라우저 렌더링 사용량에 대한 자세한 분석 및 로그를 확인할 수 있습니다.</p>
+	<p>이제 유료 Workers 요금제를 사용하는 모든 고객이 브라우저 렌더링을 사용할 수 있습니다. 이 기간 동안 각 계정은 분당 두 개의 새 브라우저 및 두 개의 동시 브라우저를 무료로 실행할 수 있도록 <a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">제한</a>됩니다. 시작하려면 저희 <a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer">개발자 페이지</a>를 확인하세요.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jlU3vFhUa0fXCF7lKYq73/9e63676a0dc7bc54da3ab4cf5efd85dd/image4-10.png" alt="" class="kg-image" width="1999" height="1004" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="we-are-rolling-out-access-to-cloudflare-snippets">Cloudflare Snippets에 대한 액세스를 출시합니다</h3>
+		<a href="https://blog.cloudflare.com/#we-are-rolling-out-access-to-cloudflare-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>강력하고 프로그래밍이 가능하며 무료로 제공되는 Snippets는 Cloudflare에서 복잡한 HTTP 요청 및 응답 수정을 수행할 수 있는 최고의 방법입니다. 과거에는 Rules 제품을 사용하여 달성하기에는 너무 앞서 갔던 기능이 이제 Snippets를 사용하면 가능합니다. Developer Week 2022 동안 처음 <a href="https://blog.cloudflare.com/snippets-announcement">발표된</a> 이후, 간단한 JavaScript 코드를 작성하여 바로 사용 가능한 Rules 기능을 확장하겠다는 약속 때문에 지금 커뮤니티에서는 기대감이 커지고 있습니다.</p>
+	<p>2024년 첫 3개월 동안에만 Snippets를 통한 트래픽이 1월 초 초당 평균 2,200 건에서 3월에는 17,000 건 이상으로 7배 이상 증가했습니다.</p>
+	<p>그러나 제한을 풀고 수백만 명의 Cloudflare 사용자가 가장 예상치 못한 방식으로 Snippets를 테스트(및 잠재적으로 중단)하도록 허용하는 대신, 저희는 새로 출시된 Workers를 위한 <a href="https://blog.cloudflare.com/workers-production-safety">Gradual Rollouts</a>와 마찬가지로 속도를 조절하고 단계적 롤아웃을 선택하려 합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XCqU9QOeEcg9KoaOShf4x/94bba253b62bf832126baf20b18f5cb4/image2-14.png" alt="" class="kg-image" width="1999" height="882" loading="lazy">
+
+	</figure>
+	<p>앞으로 몇 주 이내에 Cloudflare 사용자의 5%가 대시보드의 영역 수준 메뉴의 규칙 탭 아래에서 "Snippets"를 보기 시작할 것입니다. 귀하가 처음 5%에 속한다면, 헤더의 날짜를 동적으로 변경하거나 'math.random' 기능을 활용하는 A/B 테스트와 같은 <a href="https://blog.cloudflare.com/cloudflare-snippets-alpha#what-can-you-build-with-cloudflare-snippets">고급 사용 사례</a>에서도 Snippets가 얼마나 빠르고 강력한지 시험해 보세요. Snippets를 어떤 용도로 사용하든 한 가지 명심할 것은 아직 알파 버전이므로 아직 프로덕션 트래픽에는 Snippets를 사용하지 마세요.</p>
+	<p>그때까지 Cloudflare 대시보드의 새로운 Snippets 탭을 주시하고, <a href="https://developers.cloudflare.com/rules/snippets" target="_blank" rel="noopener noreferrer">개발자 문서</a>에서 Snippets가 얼마나 강력하고 유연한지 자세히 알아보세요.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45mBS7TWL4BL6skGoXRDn3/a99f87e1d885e457b1bb35af5773fdb2/Screenshot-2024-04-04-at-6.12.42-PM.png" alt="" class="kg-image" width="1188" height="638" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon-asynchronous-revalidation-with-stale-while-revalidate">곧 출시 예정: stale-while-revalidate를 사용하는 비동기 재검증</h3>
+		<a href="https://blog.cloudflare.com/#coming-soon-asynchronous-revalidation-with-stale-while-revalidate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>고객이 가장 많이 요청한 기능 중 하나는 stale-while-revalidate(SWR) 캐시 지시어를 사용한 비동기 재검증 기능으로, 2024년 하반기에 이 기능을 제공할 예정입니다. 이 기능은 성능과 메모리 안전을 최우선으로 고려하여 Rust를 사용해서 구축 중인 새로운 CDN 아키텍처의 일부로 설계해서 제공할 예정입니다.</p>
+	<p>현재, 클라이언트가 웹 페이지나 이미지 등의 리소스를 요청하면 Cloudflare에서는 해당 리소스가 캐시 상태인지 확인하고 사용 가능한 경우 캐시 사본을 제공합니다. 파일이 캐시에 없거나 만료되어 부실한 경우, Cloudflare에서는 원본 서버에 연결하여 파일의 새 버전을 확인한 후 이 새 버전을 최종 사용자에게 전달합니다. 이처럼 기다리는 시간 때문에 이러한 요청에 대기 시간이 추가되고 성능에 영향이 미칩니다.</p>
+	<p>Stale-while-revalidate는 만료되었거나 오래된 버전의 자산을 최종 사용자에게 제공하는 동시에 Cloudflare에서 원본을 확인하여 더 최신 버전의 리소스를 사용할 수 있는지 확인하는 캐시 지시어입니다. 업데이트된 버전이 있는 경우 원본에서는 이를 Cloudflare로 전달하며 그 과정에서 캐시를 업데이트합니다. 이 메커니즘을 통해 클라이언트는 캐시로부터 신속하게 응답을 수신하는 동시에 항상 최신 콘텐츠에 액세스할 수 있습니다. Stale-while-revalidate는 유효기간 만료 후 콘텐츠의 효율적인 제공과 최신성 보장 간의 균형을 유지하여 성능을 개선하고 사용자 경험을 원활하게 합니다.</p>
+	<p>베타 테스터로 참여하여 재미있게 '캐시'하고 싶은 고객은 <a href="https://forms.gle/EEFDtB97sLG5G5Ui9" target="_blank" rel="noopener noreferrer">여기</a>에서 등록할 수 있습니다. 기능 테스트가 준비되면 알려드리겠습니다!</p>
+	<div class="flex anchor relative">
+		<h3 id="coming-on-april-16-2024-workers-for-platforms-for-our-pay-as-you-go-plan">2024년 4월 16일 출시: Workers for Platforms 종량제 요금제</h3>
+		<a href="https://blog.cloudflare.com/#coming-on-april-16-2024-workers-for-platforms-for-our-pay-as-you-go-plan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘, 4월 16일부터 모든 개발자가 Workers for Platforms를새로운 $25 종량제 요금제로 이용할 수 있게 된다는 기쁜 소식을 알려드립니다!</p>
+	<p>Workers for Platforms는 개인화 및 사용자 지정 기능을 제품에 직접 포함할 수 있는 기능을 제공하여 소프트웨어를 구축하는 방식을 바꾸고 있습니다. Workers for Platforms를 사용하면 귀사에서 사용자를 대신하여 사용자 지정 코드를 배포하거나 사용자가 직접 자신의 코드를 플랫폼에 배포하도록 할 수 있으며, 귀사나 사용자가 인프라를 관리할 필요가 없습니다. 이번 Developer Week에 발표된 모든 흥미로운 발표와 함께 플랫폼용 Workers를 사용할 수 있습니다. Workers for Platforms는 Developer Week와 함께 제공되는 모든<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">바인딩</a>을 지원하며 Workers(<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> 등), <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer">Python Workers</a>를 지원합니다.</p>
+	<p>대기업부터 스타트업에 이르기까지 다양한 고객이 Workers for Platforms에서 구축한 사례는 다음과 같습니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://www.shopify.com/plus/solutions/headless-commerce" target="_blank" rel="noopener noreferrer">Shopify Oxygen</a>은 Remix 기반 전자 상거래 프레임워크인 Hydrogen을 위한 호스팅 플랫폼으로, Workers for Platforms를 기반으로 구축되었습니다! Hydrogen/Oxygen 조합을 통해 Shopify 판매자는 일반적인 상점 템플릿의 제약 없이 구매자 경험을 관리할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><a href="https://grafbase.com" target="_blank" rel="noopener noreferrer">Grafbase</a>는 개발자가 하나의 엔드포인트에서 비즈니스 전반의 데이터 소스를 통합하는 서버리스 GraphQL API를 만들 수 있는 데이터 플랫폼입니다. Grafbase에서는 Workers for Platforms를 사용하여 개발자에게 JavaScript/TypeScript 또는 WASM으로 작성된 자체 코드를 배포할 수 있는 제어 기능과 유연성을 제공합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://www.triplit.dev" target="_blank" rel="noopener noreferrer">Triplit</a>는 서버와 브라우저 간에 데이터를 실시간으로 동기화하는 오픈소스 데이터베이스이며, 덕분에 사용자는 관계형 쿼리, 스키마 관리, 서버 측 스토리지 등의 기능이 내장된 대기 시간이 짧은 실시간 앱을 구축할 수 있습니다. 쿼리 및 동기화 엔진은 Durable Objects를 기반으로 구축되었으며, Workers for Platforms를 사용하여 고객이 Triplit DB 인스턴스와 함께 사용자 정의 JavaScript를 패키징할 수 있도록 하고 있습니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="tools-for-observability-and-platform-level-controls">관찰 가능성 및 플랫폼 수준 제어를 위한 도구</h3>
+		<a href="https://blog.cloudflare.com/#tools-for-observability-and-platform-level-controls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers for Platforms를 이용하면 플랫폼에 Workers를 배포하는 것만 가능한 것은 아닙니다. 저희는 사용자의 Workers 에 대한 관찰 가능성 및 제어 기능을 확보하는 것이 얼마나 중요한지도 잘 알고 있습니다. Cloudflare에는 이에 도움이 되는 몇 가지 솔루션이 있습니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/custom-limits" target="_blank" rel="noopener noreferrer">사용자 지정 제한</a>: 사용자의 Workers에서 CPU 시간 또는 하위 요청 한도를 설정합니다. Cloudflare에서 비용을 제어하거나 고유한 가격 및 패키징 모델을 구성하기 위해 한도를 설정하는 데 사용할 수 있습니다. 예를 들어 플랫폼에서 freemium(기본 서비스 무료 + 추가 서비스 유료) 모델을 운영하는 경우 무료 티어를 사용하는 고객의 CPU 시간 제한을 낮출 수 있습니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a>: Tail Workers 이벤트에는 Worker, console.log() 메시지에 대한 메타데이터가 포함되어 있으며, 처리되지 않은 예외를 캡처합니다. Tail Workers는 개발자에게 실시간 로깅을 제공하므로 오류를 모니터링하고 실시간으로 문제를 해결하는 데 사용할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/outbound-workers" target="_blank" rel="noopener noreferrer">Outbound Workers</a>: 사용자의 &nbsp;Workers로부터의 모든 발신 요청에 대한 가시성을 확보합니다. Outbound Workers는 사용자 Workers와 Workers의 fetch() 요청 사이에 위치하므로, 요청이 인터넷으로 전송되기 전에 요청에 대한 전체 가시성을 확보할 수 있습니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="pricing">요금제</h3>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 취미 개발자, 1인 개발자, 인디 개발자에게 합리적인 가격으로 Workers for Platforms를 제공하기를 원했습니다. Workers for Platforms는 새로운 $25 종량제 요금제의 일부이며, 다음과 같은 내용이 포함되어 있습니다.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Included Amounts</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Requests</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20 million requests/month </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.30 per additional million</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU time</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">60 million CPU milliseconds/month</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.02 per additional million CPU milliseconds</span></td>
+			</tr>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Scripts</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1000 scripts</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0.02 per additional script/month</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>포함된 금액</p>
+	<p>요청</p>
+	<p>2,000만 건의 요청/월+이후 백만당 $0.30</p>
+	<p>CPU 시간</p>
+	<p>6천만 CPU 밀리초/월+이후 백만 CPU 밀리초당 $0.02</p>
+	<p>스크립트</p>
+	<p>1000개의 스크립트+이후 스크립트당 $0.02/월</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-for-platforms-will-be-available-to-purchase-on-april-16-2024">Workers for Platforms는 2024년 4월 16일에 구매할 수 있습니다!</h3>
+		<a href="https://blog.cloudflare.com/#workers-for-platforms-will-be-available-to-purchase-on-april-16-2024" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers for Platforms는 2024년 4월 16일부터 Cloudflare 대시보드의 Workers for Platforms 탭에서 구매할 수 있습니다.</p>
+	<p>Workers for Platforms에 관한 자세한 내용은 당사의 <a href="https://github.com/cloudflare/workers-for-platforms-example" target="_blank" rel="noopener noreferrer">스타터 프로젝트</a> 및 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">개발자 문서</a>를 확인하세요.</p>
+</div>

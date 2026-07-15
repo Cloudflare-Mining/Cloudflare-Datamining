@@ -1,0 +1,217 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">English</a>、<a href="https://blog.cloudflare.com/zh-tw/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Français</a>、<a href="https://blog.cloudflare.com/de-de/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">한국어</a>、<a href="https://blog.cloudflare.com/es-es/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Español</a>、<a href="https://blog.cloudflare.com/nl-nl/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/bigger-and-badder-how-ddos-attack-sizes-have-evolved-over-the-last-decade">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bQ0JLodUvkk9U1KGc2O9Y/7b530b9993e2b71f202fe93bd9c7a99e/BLOG-2616_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>分散サービス妨害DDoS攻撃</u></a>（DDoS）は、オンラインサービスを過負荷状態にして混乱させ、ユーザーがアクセスできないようにすることを目的としたサイバー攻撃です。DDoS攻撃は、分散したデバイスのネットワークを活用することにより、ターゲットシステムに過剰なリクエストを送り付けて帯域幅を消費したり、コンピューティングリソースを使い果たさせて障害に追い込みます。こうした攻撃は、保護されていないサイトに対しては非常に効果的であり、攻撃者は比較的安価に仕掛けることができます。DDoS攻撃は最も古い攻撃タイプの1つであるにもかかわらず、一定の脅威を及ぼし続けています。よく知られており、トラフィック量が多いWebサイト、サービス、重要なインフラストラクチャを標的とすることが多いようです。Cloudflareでは、2024年の初めから1,450万件以上のDDoS攻撃を軽減してきました。これは、1時間あたり平均2,200件のDDoS攻撃数に相当します。（弊社がまとめた<a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3"><u>2024年第3四半期のDDoS脅威レポート</u></a>では、関連する詳細統計情報をまとめています）。</p>
+	<p>過去10年間に軽減してきた大規模攻撃に関連する指標を見てみると、グラフからは特にここ数年で顕著に急上昇し続け指数関数的な増加を示しているのか、それとも直線的な増加に近いのかが分かります。増加は直線的ではなく、指数関数的であり、その曲線の度合いは弊社で注目している指標に依存することがわかりました。</p>
+	<p>この質問が興味深い理由は、シンプルです。その答えからは、攻撃者の戦略の進化、ツールの洗練度、防御メカニズムの成熟度に関する貴重な洞察が得られます。&nbsp;</p>
+	<p>例えば、1秒あたりのリクエスト数（rps）の上昇曲線は、攻撃者がより多くのリクエストを生成できるように攻撃者側で何かを変更していることを示唆しています。この洞察からは、より多くの調査を行い、他のデータを見て未知のことが起こっていないかどうかを確かめる行動につながります。</p>
+	<p>例えば、ある瞬間、トラフィックのソースを調べたところ、加入者/企業のIPアドレス空間（IoTと見られる）からクラウドプロバイダーのIPアドレス空間（VMと見られる）への変化が見られ、攻撃者が使用するデバイスのタイプと機能の変化が確認できました。&nbsp;</p>
+	<p>別の例として、<a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>HTTP/2 Rapid Reset</u></a>攻撃が発生したとき、その時点で見られた1秒あたりのリクエスト数が記録的な規模に上り、攻撃者が新しいテクニックを使っていることが示唆されたため、実行された内容を迅速に調査し、防御策を適応する必要がありました。</p>
+	<div class="flex anchor relative">
+		<h2 id="defining-individual-attacks">個々の攻撃の定義</h2>
+		<a href="https://blog.cloudflare.com/#defining-individual-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>個々の攻撃を時間で区切るのは、驚くことに、不明瞭なものとなります。まず、攻撃分析では、<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"><u>OSIモデル</u></a>の異なる層での所見における一貫性が得られない可能性があります。これらの異なるレイヤーすべてで見られるフットプリントは、同じ攻撃に対して異なるシナリオを導き出す可能性があります。しかし、組み合わせてフィンガープリントとし、一連のイベントをグループ化することで、同じ個別の攻撃の一部であることを確認できる変数がいくつかあります。例としては、以下のようなものがあります：&nbsp;</p>
+	<ul>
+		<li>
+			<p>この一連のイベントで同じ<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer"><u>攻撃ベクトル</u></a>が使われているでしょうか。</p>
+		</li>
+		<li>
+			<p>すべての攻撃イベントが同じターゲットに焦点を当てているでしょうか。</p>
+		</li>
+		<li>
+			<p>イベントのペイロードは同じ署名を共有しているでしょうか。Miraiを例に、特定のタイプの攻撃またはボットネットに固有の特定のデータペイロードまたはリクエストタイプは、特徴的なHTTPリクエストヘッダーやパケット構造を使用する場合があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attack-sizes">DDoS攻撃のサイズ&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attack-sizes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>過去10年間にわたるDDoS攻撃の増加の分析に入る前に、一度前工程に戻って、攻撃の測定によく使用される指標1秒あたりのリクエスト数（rps）、1秒あたりのパケット数（pps）、1秒当たりのビット数毎秒（bps）を見てみましょう。それぞれの指標は、攻撃の規模と影響の異なる側面を捉えているからです。</p>
+	<ul>
+		<li>
+			<p><b>1秒あたりのリクエスト数（rps）：</b>毎秒ごとに行われたHTTPまたは類似のプロトコルリクエスト数を測定します。この指標は、<b>リクエスト処理に過負荷をかけることで特定のアプリケーションまたはサービスを圧倒する</b>ことを目的とするアプリケーション層（レイヤー7）に特に該当しており、エンドポイント未加工のデータ転送だけでなく、リクエストの量も反映するため、Webサーバー、APIアプリケーションへの攻撃を計測するのに役立ちます。</p>
+		</li>
+		<li>
+			<p><b>1秒あたりのパケット数（pps）</b>：サイズに関係なく、1秒あたりに標的に送信される個別パケット数を表します。この指標は、<b>パケット処理能力を超えてネットワークインフラを圧倒する</b>ことを目的とするネットワーク層（レイヤー3と4）にとって重要です。ppsの測定値は、ルーター、スイッチ、ファイアウォールに影響を与える可能性のあるパケット量を特定するため、帯域幅消費型攻撃に役立ちます。</p>
+		</li>
+		<li>
+			<p><b>ビット/秒（bps）</b>：毎秒転送される総データ量を測定し、標的やその上流プロバイダーの帯域幅を飽和させることを目的としたネットワーク層攻撃の評価に特に役立ちます。bpsは、攻撃がネットワーク帯域幅を塞ぐことを意図するUDPフラッドなど、レイヤー3および4攻撃の測定に広く使用されます。この指標は、bps値（ギガビットまたはテラビットで測定される）の高さ（大規模なDDoS攻撃で多くの場合目標とされる）が<b>帯域幅の飽和</b>状態を示すため、DDoS攻撃でよく取り上げられます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="evolution-of-ddos-attack-sizes-over-the-last-decade">過去10年のDDoS攻撃規模の進化</h2>
+		<a href="https://blog.cloudflare.com/#evolution-of-ddos-attack-sizes-over-the-last-decade" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>では、DDoS攻撃の規模は過去10年でどのように変化したのでしょうか。この期間中、DDoS攻撃は規模と強度を増し、もたらされる混乱の規模が年々大きくなる可能性があります。&nbsp;</p>
+	<p>過去10年間に見られた大規模な攻撃に関連する指標を見てみると、特にここ数年で、指数関数的な曲線が常に増加し続けているように見えるのか、それとも直線的な増加に近いのかがわかります。ここでは、指数関数的であることがわかりました。では、この結果に至った理由を詳細に見てみましょう。</p>
+	<p>この分析では、<a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><u>2010年から2022年までにGoogleが確認した攻撃</u></a>をベースライン（図1）とし、Cloudflareが2023年と2024年に確認した攻撃（図2）で情報を拡張しています。&nbsp;</p>
+	<p>遡ると、2010年代初頭、最大の攻撃はギガビット/秒（Gbps）スケールで測定されていましたが、現在ではテラビット/秒（Tbps）スケールで測定されています。後述するように、1秒あたりのリクエスト数（rps）と1秒あたりのビット数（bps）も、最近は大幅に高くなっています。</p>
+	<p>下の図1に示したGoogleの過去のデータは、2010年から2022年の間に観察されたDDoS攻撃における1秒あたりのリクエスト数が増加傾向にあり、2020年には1秒あたり600万リクエスト（Mrps）に達していることを示しています。この増加は、10年間を通じて攻撃量が大幅に増加していることを示しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OLkt2rSuO6OBGH8H1k1o6/d63d32df3f56eab0fe105a00dec45e03/BLOG-2616_2.png" alt="BLOG-2616 2" class="kg-image" width="1800" height="905" loading="lazy">
+	</figure>
+	<p><sup><i>図1</i></sup><sup>.</sup><sup><i> 2010年2022年に発生した最大規模のDDoS攻撃。</i></sup><a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><i><sup>出典：Google</sup></i></a><sup><i></i></sup><sup>&nbsp;</sup></p>
+	<p>図2（以下）は、さまざまな指標に見られる傾向を示しています。Googleの統計で見られる増加は、2023年から2024年に観測された大規模なDDoS攻撃に関するCloudflareのデータにも表れており、2024年9月には201Mrp（緑線）に達しています。1秒あたりのパケット数（pps）は、経時的にわずかに指数関数的に増加し、2015年の230 Mppsから2024年の2,100 Mppsまで上昇し、攻撃者がより高いスループットを実現していることを示唆しています。1秒あたりのビット数（bps）でも、この傾向は指数関数的で、2013年の309 Gbps攻撃から2024年の5.6 Tbps（5,600 Gbps）攻撃まで、より急な上向き曲線（赤線）で構築されています。&nbsp;</p>
+	<p>ここ10年ほどで、これらの指標の要因となる攻撃が大幅に増加しています：</p>
+	<ul>
+		<li>
+			<p>2013年～2024年までに1秒あたりのビット数が20倍に増加</p>
+		</li>
+		<li>
+			<p>2015年～2024年で1秒当たりのパケット数が10倍に増加</p>
+		</li>
+		<li>
+			<p>2014年～2024年までに1秒あたりのリクエスト数が70倍に増加</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38ps28b6t40SAtoQxMp0z1/90d59911b3bcf8b55cf7ac36d56f8a5b/BLOG-2616_3.png" alt="BLOG-2616 3" class="kg-image" width="1986" height="991" loading="lazy">
+	</figure>
+	<p><i><sup>図2. 2023年と2024年にCloudflareが観測した大規模な攻撃のデータで図1を補強。</sup></i></p>
+	<p>表1に記載のブログ記事では、2021年～2024年に観測された攻撃のいくつかを詳説しています。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>月</b></p>
+				</td>
+				<td>
+					<p><b>攻撃規模</b></p>
+				</td>
+				<td>
+					<p><b>ブログ記事</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2021年8月</p>
+				</td>
+				<td>
+					<p>17.2 Mrps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported"><i><u>Cloudflareが1720万 RPS（記録上最大規模）のDDoS攻撃を防御</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2022年4月</p>
+				</td>
+				<td>
+					<p>15 Mrps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/15m-rps-ddos-attack"><i><u>Cloudflareが1500万rpsのHTTPS DDoS攻撃をブロック</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2022年6月</p>
+				</td>
+				<td>
+					<p>2,600万rps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/26m-rps-ddos"><i><u>Cloudflareが1秒あたり2600万件のリクエストを送信するDDoS攻撃を軽減</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2023年2月</p>
+				</td>
+				<td>
+					<p>71 Mrps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack"><i><u>Cloudflareが1秒あたり7,100万件のリクエストを送信する記録的なDDoS攻撃を軽減</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024年9月</p>
+				</td>
+				<td>
+					<p>3.8 Tbps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack"><i><u>Cloudflareが世界記録となる3.8 TbpsのDDoS攻撃をどのように自動軽減したか</u></i></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024年10月</p>
+				</td>
+				<td>
+					<p>4.2 Tbps</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3"><i><u>4.2 Tbpsの悪性パケットとそれを超えるパケット：Cloudflareの第3四半期DDoSレポート</u></i></a><i>&nbsp;</i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2024年10月</p>
+				</td>
+				<td>
+					<p>5.6 Tbps</p>
+				</td>
+				<td>
+					<p><a href="https://x.com/Cloudflare/status/1851589717885649320" target="_blank" rel="noopener noreferrer"><u>5.6 Tbpsの攻撃</u></a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><sup><b>表1.</b></sup><sup> 2021年～2024年の間にCloudflareで観測された顕著なDDoS攻撃。</sup></p>
+	<p><a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211"><u>2018年のMemcached不正使用</u></a>、<a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>2023年のHTTP/2「Rapid Reset」攻撃</u></a>など、過去10年間に発生した他の重要な大量DDoS攻撃の概要は、<a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>Cloudflareラーニングセンター</u></a>でご覧いただけます。</p>
+	<div class="flex anchor relative">
+		<h2 id="attack-duration-as-a-metric">指標としての攻撃期間</h2>
+		<a href="https://blog.cloudflare.com/#attack-duration-as-a-metric" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>その断続的な性質、同時に複数の攻撃ベクトルが用いられている可能性、または異なる防御層が経時的にトリガーされる在り方などにより、1度の攻撃の期間を特定するのは困難なため、攻撃の継続時間は有効な指標とはなり得ません。&nbsp;</p>
+	<p>攻撃パターンは大きく異なり、突出的に行われるからなるものもあれば、複数の緊密にグループ化された突出や、長期間にわたって継続的な負荷が維持されるなど、様々な変化する特性を特徴としています。</p>
+	<div class="flex anchor relative">
+		<h2 id="trend-in-types-of-devices-used-to-create-attacks">攻撃の仕掛けに使われたデバイスタイプの傾向</h2>
+		<a href="https://blog.cloudflare.com/#trend-in-types-of-devices-used-to-create-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DDoS攻撃は、IoTベースのボットネットからより強力なVMベースのボットネットへの移行がますます進んでいます。この変化は主に、クラウドホスト型の仮想マシンの高い計算能力とスループット能力によるもので、攻撃者は遥かに少ないデバイスで大規模な攻撃を仕掛けることができるようになっています。&nbsp;</p>
+	<p>VMボットネットは、IoTボットネットよりも簡単に構築できます。攻撃者は、データ漏洩や<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart"><u>Magecart攻撃</u></a>から盗んだ決済情報を使ってクラウドプロバイダーのインフラストラクチャ上に匿名でデプロイできるため、マルウェアの広範な感染を必要とするわけではありません。</p>
+	<p>この傾向は、DDoS攻撃の手口が進化していることを示しています。つまり、攻撃者がVMの処理能力とクラウドリソースへの匿名アクセスの両方の悪用、より小規模で効率的なボットネットの悪用、そしてIoT端末群の感染と管理に関連する複雑性なしに大規模な攻撃を仕掛けることができるようになっているのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-help-protect-against-ddos-attacks">CloudflareはDDoS攻撃からの保護にどのように役立つか</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-help-protect-against-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの広大なエニーキャストグローバルネットワーク上に構築されたCloudflareのコネクティビティクラウドは、自動検出、トラフィック分散、迅速な応答機能を活用することで、DDoS攻撃からの防御において重要な役割を果たします。DDoS攻撃対策の強化は、次のように行われます：</p>
+	<p><b>攻撃の自動検出と軽減</b>：CloudflareのDDoS攻撃対策は自動化に大きく依存しており、機械学習アルゴリズムを使って疑わしいトラフィックパターンをリアルタイムで特定します。Cloudflareは、<a href="https://blog.cloudflare.com/training-a-million-models-per-day-to-save-customers-of-all-sizes-from-ddos"><u>検出プロセスを自動化する</u></a>ことで、手動での介入を必要とすることなく、DDoS攻撃を迅速に認識してブロックすることができます。これは、人間の対応者を圧倒するような大量の攻撃では非常に重要になります。</p>
+	<p><b>IPエニーキャストによるグローバルなトラフィック分散</b>：Cloudflareのネットワークは世界330都市以上に広がっており、DDoSトラフィックは複数のデータセンターに分散されます。<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>IPエニーキャスト</u></a>によって、このグローバルネットワーク全体にトラフィックを分散できます。この広範な分散が、大規模攻撃の吸収と軽減に役立ちます。攻撃トラフィックは1つの地点に向けられるので、個々のサーバーやネットワークにかかる負担を軽減できます。&nbsp;</p>
+	<p><b>階層型の防御</b>：Cloudflareのコネクティビティクラウドは、ネットワーク（第3層）、トランスポート（第4層）、アプリケーション（第7層）を含む、複数の層にわたる防御を提供します。この多層防御のアプローチによって、攻撃のタイプに応じてカスタマイズされた防御戦略が可能になり、複雑な多層攻撃も効果的に軽減できます。レイヤー3、4、7でのDDoS対策の詳細は、<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>DDoS攻撃対策に関するドキュメント</u></a>をご覧ください。</p>
+	<p><b>定額制のDDoS軽減</b>：インターネットセキュリティの確保のために2017年からこのアプローチを開拓してきたCloudflareは、<a href="https://blog.cloudflare.com/unmetered-mitigation"><u>定額制のDDoS攻撃対策</u></a>を提供しています。つまり、お客様は帯域幅やコストの制限を気にせずに攻撃を心配することなく保護されることになります。このアプローチにより、企業の規模や予算に関係なく、堅牢なDDoS攻撃対策のメリットを受けることができます。</p>
+	<p>Cloudflareの分散型クラウドインフラストラクチャと高度なテクノロジーにより、DDoS攻撃を検出、吸収、軽減できます。スケーラブルで応答性が高く、ダウンタイムを回避し、サービスの信頼性を維持できる、そして従来型の選択肢と比べ強度と頻度の高まりがみられるDDoS攻撃に対応する堅牢なソリューションを提供しています。</p>
+	<p>DDoS攻撃からの保護は、あらゆる規模の組織にとって不可欠です。この攻撃は人間が仕掛けるものの、実行はボットによって行われるため、効果的な防御にはボット主導の脅威に対抗する自動化ツールが必要です。リアルタイムの検出と軽減は、可能な限り自動化する必要があります。なぜなら、攻撃者が新しいバリアに適応し、攻撃ベクトル、トラフィックの動き、ペイロードの署名などを変更し、予測不可能なシナリオを作成する可能性があり、防御者が不利となり一部の手動設定が役に立たなくなる可能性があるからです。Cloudflareの自動化されたシステムは、お客様に代わってDDoS攻撃を継続的に特定してブロックし、個々のニーズに合わせた保護を実現します。</p>
+	<p>当社の使命は、より良いインターネットの構築を支援することであり、DDoS脅威の前でレジリエンスを提供することがその使命の達成の一部となっています。</p>
+	<p>CloudflareのDDoS攻撃保護の詳細については、公開している<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>技術文書</u></a>をご覧ください。</p>
+</div>

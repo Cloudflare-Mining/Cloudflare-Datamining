@@ -1,0 +1,223 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/mesh">English</a>、<a href="https://blog.cloudflare.com/zh-tw/mesh">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/mesh">Français</a>、<a href="https://blog.cloudflare.com/de-de/mesh">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/mesh">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/mesh">한국어</a>、<a href="https://blog.cloudflare.com/es-la/mesh">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/mesh">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/mesh">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dyrjyTkHrya7wNTkXOYZy/785fa3450c08e430f544dc049a72f779/BLOG-3215_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>AIエージェントの登場によって、プライベートネットワークへのアクセスの考え方は大きく変わりました。コーディングエージェントは、ステージングデータベースへのクエリの実行権限を要求し、本番エージェントは、社内APIの呼び出し権限を要求します。さらに、パーソナルAIアシスタントは、ホームネットワーク上で稼働しているサービスへのアクセス権限を要求します。クライアントは人間やサービスだけに留まらず、<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>も加わります。エージェントは自律的に動作し、セキュリティを維持する必要があるインフラに対して明示的に承認していないリクエストを行います。</p>
+	<p>しかし、これには、エージェントがプライベートなリソースにアクセスする必要があるのに対し、そのためのツールは人間向けに設計されていて自律的なソフトウェアには適しないという、共通の問題があります。VPNは対話的なログインを要求し、SSHトンネルは手動設定が必要です。サービスを公開するのはセキュリティリスクがあります。また、これらの方法では、接続後にエージェントが実際に何をしているのか可視化できません。</p>
+	<p>本日は、プライベートネットワーク同士を接続し、エージェントに安全なアクセスを提供する<b>Cloudflare Meshを発表</b>します。また、Meshは<a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer"><u>Cloudflare開発者プラットフォーム</u></a>と統合されており、これにより<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、およびAgents SDKで構築されたエージェントがプライベートインフラストラクチャに直接アクセスできるようになります。</p>
+	<p><a href="https://www.cloudflare.com/sase" target="_blank" rel="noopener noreferrer"><u>Cloudflare OneのSASEおよびZero Trustスイート</u></a>をご利用の場合は、すでにMeshをご利用いただけます。エージェント主体のワークロードを保護するために、新しい技術パラダイムは必要ありません。必要なのは、その時代に対応して設計されたSASEであり、それがCloudflare Oneです。Cloudflare Meshは、よりシンプルなセットアップを実現する新しい体験で、これまで使い慣れた接続手段であるWARP Connector<i>（現在はCloudflare Meshノード）</i>とWARP Client<i>（現在はCloudflare One Client）</i>を活用します。これらを組み合わせることで、人間・開発者・エージェントのトラフィックを扱うプライベートネットワークを構築できます。Meshは既存のCloudflare One環境に直接統合され、既存のGatewayポリシー、Accessルール、デバイスポスチャチェックがそのまま適用されます。</p>
+	<p>もし開発者として、エージェントやサービス、チームのためのプライベートネットワークをすぐに使いたい場合、Meshから始めるのが最適です。数分でセットアップし、ネットワークを接続し、トラフィックを保護できます。さらにMeshは<a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>上で動作するため、必要に応じて高度な機能（きめ細やかなトラフィック制御を行う<a href="https://www.cloudflare.com/sase/products/gateway" target="_blank" rel="noopener noreferrer"><u>Gateway</u></a>ネットワーク、DNS、HTTPポリシー、SSHおよびRDPセッション管理のための<a href="https://www.cloudflare.com/sase/use-cases/infrastructure-access" target="_blank" rel="noopener noreferrer"><u>Access for Infrastructure</u></a>、安全なWebアクセスを実現する<a href="https://www.cloudflare.com/sase/products/browser-isolation" target="_blank" rel="noopener noreferrer"><u>ブラウザ分離</u></a>、機密データがネットワークから漏洩するのを防ぐ<a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>DLP</u></a>、SaaSセキュリティのための<a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>など）へと拡張できます。そのため、最初から完璧な計画を立てる必要ななく、必要な時に労力をかけて移行することもありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="new-agentic-workflows">新しい新しいエージェント主体のワークフロー</h2>
+		<a href="https://blog.cloudflare.com/#new-agentic-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のプライベートネットワーキングは、サーバーへのSSH接続、データベースへのクエリ、社内APIへのアクセスなどのように、クライアントとリソースを接続するものでした。変わったのは「誰がクライアントなのか」です。1年前であれば開発者やサービスでしたが、現在ではエージェントがその中心になりつつあります。</p>
+	<p>これは理論上の話ではありません。実際のエコシステムを見れば明らかです。ツールへのアクセスを提供する<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>MCP（Model Context Protocol）サーバー</u></a>の急増、プライベートリポジトリやデータベースを読み取る必要があるコーディングエージェント、自宅のハードウェア上で動く個人アシスタントなど、いずれもエージェントが必要なリソースにアクセスできることを前提としています。しかし、それらのリソースがプライベートネットワーク内に隔離されている場合、エージェントはアクセスできずに行き詰まります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12RTZcOBkkKwmaRe5VYn9k/e1b00401bee274a7643a4dfd4139e2df/BLOG-3215_2.png" alt="BLOG-3215 2" class="kg-image" width="1999" height="1345" loading="lazy">
+	</figure>
+	<p>これにより、現在セキュリティで保護することが難しい3つのワークフローが発生します：</p>
+	<ol>
+		<li>
+			<p>モバイルデバイスからパーソナルエージェントにアクセスする：例えば、自宅のMac miniでOpenClawを動かしており、スマートフォンやカフェのノートPC、職場のマシンからアクセスしたいとします。しかし、パスワード付きであってもインターネットに公開するのは脆弱性を露呈するリスクがあります。そのエージェントはシェル、ファイルシステム、そして自宅ネットワークへのアクセス権を持っているため、設定を誤ると誰でもアクセスできてしまう可能性があります。</p>
+		</li>
+		<li>
+			<p>コーディングエージェントにステージング環境へのアクセスを許可する：手元のノートPCでClaude CodeやCursor、Codexを使い、デプロイ状況の確認やステージングデータベースの分析、社内オブジェクトストアの読み取りをさせたいとします。しかし、これらのサービスはプライベートなクラウドVPC内に存在するため、インターネットに公開するか、ノートパソコン全体をVPCにトンネリングしない限りアクセスできません。</p>
+		</li>
+		<li>
+			<p>デプロイ済みエージェントをプライベートサービスに接続する：Cloudflare Workers上で<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用してエージェントを組み込んだアプリを開発している場合、それらのエージェントは社内APIの呼び出しやデータベースへのクエリなど、インターネットに公開されていないサービスにアクセスする必要があります。その際には、権限を限定し、監査ログを取り、認証情報の漏洩を防ぎながらプライベートアクセスを実現する必要があります。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-mesh-one-private-network-for-users-nodes-and-agents">Cloudflare Mesh：ユーザー、ノード、エージェントをつなぐ単一のプライベートネットワーク</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-mesh-one-private-network-for-users-nodes-and-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Meshは、開発者にとって使いやすいプライベートネットワーキングの仕組みです。単一の軽量コネクタ、単一のバイナリで、個人用デバイス、リモートサーバー、ユーザーエンドポイントのすべてを接続します。パターンごとに別のツールをインストールする必要はありません。ネットワークに1つコネクタを置くだけで、あらゆるアクセスパターンに対応できます。</p>
+	<p>いったん接続すると、プライベートネットワーク内のデバイスは、330都市以上に広がるCloudflareのグローバルネットワークを経由してプライベートIPを介して相互通信することができ、ネットワークの信頼性と制御が向上します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ENfLb0kr1Zesh7PnuCvDK/830afd93d49b658023a9ece55e0e505b/BLOG-3215_3.gif" alt="BLOG-3215 3" class="kg-image" width="1800" height="761" loading="lazy">
+	</figure>
+	<p>Meshを使用することで、単一のソリューションで前述のすべてのエージェントシナリオを解決できるようになります。</p>
+	<ul>
+		<li>
+			<p>スマートフォンに<b>Cloudflare One Client（iOS版）</b>を入れることで、Meshのプライベートネットワーク経由で自宅のMac mini上で動くOpenClawに、安全に接続できます。</p>
+		</li>
+		<li>
+			<p>ノートPCに<b>Cloudflare One Client（macOS版）</b>を入れることでプライベートネットワークに接続できるようになり、コーディングエージェントがステージングベースやAPIに到達して、クエリを実行できるようになります。</p>
+		</li>
+		<li>
+			<p>Linuxサーバー上の<b>Meshノード</b>を使用すると、外部クラウド内のVPC同士を接続し、エージェントが外部プライベートネットワーク内のリソースやMCPにアクセスできるようになります。</p>
+		</li>
+	</ul>
+	<p>Meshは<a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client" target="_blank" rel="noopener noreferrer"><u>Cloudflare One Client</u></a>をベースにしているため、すべての接続にCloudflare Oneのセキュリティ機能がそのまま適用されます。GatewayポリシーはMeshのトラフィックに適用され、デバイスポスチャチェックによって接続デバイスの安全性が確認されます。さらにDNSフィルタリングによって不審な不審なルックアップも検知されます。追加の設定なしで、人間向けのトラフィックと同じポリシーでエージェントのトラフィックも保護できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="choosing-between-mesh-and-tunnel">MeshとTunnelの使い分け</h2>
+		<a href="https://blog.cloudflare.com/#choosing-between-mesh-and-tunnel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meshの登場により、「TunnelではなくMeshを使うべき場面はいつか？」という疑問が出てくるかもしれません。どちらも外部ネットワークをCloudflareに安全に接続する仕組みですが、用途が異なります。<a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>は、Cloudflareがエッジから特定のプライベートサービス（例えば、Webサーバーやデータベース）へのトラフィックをプロキシする、単方向トラフィックに適しています。</p>
+	<p>一方、Cloudflare Meshは完全な双方向の多対多ネットワークを提供します。Mesh内のすべてのデバイスやノードは、プライベートIPを使って相互にアクセスできます。ネットワーク内で実行されているアプリケーションまたはエージェントは、それぞれのリソースごとにTunnelを用意しなくても、Mesh上の他のリソースを発見してアクセスできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="using-the-power-of-cloudflares-network">Cloudflareのネットワークの力を活用する</h2>
+		<a href="https://blog.cloudflare.com/#using-the-power-of-cloudflares-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Meshは、メッシュネットワークのメリット（耐障害性、高い拡張性、低遅延、高いパフォーマンス）を提供しつつ、すべての通信をCloudflare経由でルーティングすることで、Meshネットワークの主要な課題であるNATトラバーサル（NAT越え）を解決します。</p>
+	<p>インターネットの大半はNAT（Network Address Translation）の背後にあります。NATは、複数のデバイスが1つのグローバルIPアドレスを共有できる仕組みで、外部と内部のアドレスを変換して通信を成立させる仕組みです。2つのデバイスがNATの背後にある場合、直接接続ができず、中継サーバー（リレー）を経由する必要が出てきます。リレーの拠点が限られていると、多くのトラフィックがそこを通ることになり、遅延や信頼性の低下に繋がります。また、自前でリレーサーバーを構築することも可能ですが、そのために追加のインフラを管理する負担が発生します。</p>
+	<p>Cloudflare Meshは他と差別化するアプローチを採用しています：すべてのMeshトラフィックは、インターネット最大級のWebサイトのトラフィックを支えるのと同じインフラストラクチャである、Cloudflareのグローバルネットワークを経由します。地域をまたぐマルチクラウドトラフィックにおいて、これは一般的なインターネット経路よりも安定して高速です。Cloudflareのエッジ自体が通信経路となるため、性能が落ちるフォールバック経路も存在しません。</p>
+	<p>また、Cloudflare経由でルーティングされることで、すべてのパケットがCloudflareのセキュリティ基盤を通過します。これがCloudflare One上にMeshを構築する大きな利点です。セキュリティを後から追加する必要はなく、最初から組み込まれています。さらに、このグローバル基盤を活用することで、以下の機能が初日から提供されます。</p>
+	<p><b>50ノードと50ユーザーまで無料：</b>すべてのCloudflareアカウントに含まれ、チーム全体とステージング環境全体を単一のプライベートネットワーク上で利用できます。</p>
+	<p><b>グローバルエッジルーティング：</b>330以上の都市に展開された最適化されたバックボーンを利用できます。小数拠点のリレーサーバーに依存する必要も、性能が落ちるフォールバック経路もありません。</p>
+	<p><b>初日から使えるセキュリティ制御：</b>MeshはCloudflare One上で動作します。Gatewayポリシー、DNSフィルタリング、DLP、トラフィック検査、デバイスポスチャチェックなどを同じプラットフォームで利用できます。まずはシンプルなプライベート接続から始め、必要に応じてGatewayでトラフィックをフィルタリングしたり、Access for InfrastructureでSSHやRDPのセッション制御を行ったり、DLPで機密データの流出を防ぐことができます。すべての機能がトグルボタン1つでオン/オフを切り替えられます。</p>
+	<p><b>高可用性：</b>高可用性を有効にしたMeshノードを作成し、アクティブ/パッシブモードで同じトークンを使用して複数のコネクタを起動します。同じIPルートをアドバタイズするため、1つがダウンしても、トラフィックは自動的にフェールオーバーされます。</p>
+	<div class="flex anchor relative">
+		<h2 id="integrated-with-the-developer-platform-with-workers-vpc">Workers VPCで開発者プラットフォームと統合</h2>
+		<a href="https://blog.cloudflare.com/#integrated-with-the-developer-platform-with-workers-vpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meshは、外部クラウドにまたがるエージェントとリソースを接続しますが、Agents SDKを使用してWorkers上に構築されたエージェントからも接続できる必要があります。これを可能にするため、<a href="https://blog.cloudflare.com/workers-vpc-open-beta"><u>Workers VPC</u></a>を拡張し、Meshネットワーク全体をWorkersとDurable Objectsから利用できるようにしました。</p>
+	<p>これにより、WorkersからCloudflare Meshネットワークへ接続でき、単一のbindingの<code>fetch()</code>呼び出しでネットワーク全体にアクセス可能になります。これはWorkers VPCの既存のCloudflare Tunnelサポートを補完するもので、ネットワークを保護する方法において、より多くの選択肢を提供します。さらに、<code>wrangler.jsonc</code>ファイルで、接続したいネットワーク全体を指定できるようになりました。Meshネットワークにバインドするには、アカウントのMeshネットワークを指す予約キーワード<code>cf1:network</code>を使用します。</p>
+	<pre class="language-Shell"><code class="language-Shell">"vpc_networks": [
+  { "binding": "MESH", "network_id": "cf1:network", "remote": true },
+  { "binding": "AWS_VPC", "tunnel_id": "350fd307-...", "remote": true }
+]
+</code></pre>
+	<p>その後、Workerまたはエージェントのコード内でこの接続を使用することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    // Reach any internal host on your Mesh, no pre-registration required
+    const apiResponse = await env.MESH.fetch("http://10.0.1.50/api/data");
+
+    // Internal hostname resolved via tunnel's private DNS resolver
+    const dbResponse = await env.AWS_VPC.fetch("http://internal-db.corp.local:5432");
+
+    return new Response(await apiResponse.text());
+  },
+};
+</code></pre>
+	<p>開発者プラットフォームをMeshネットワークに接続することで、プライベートデータベース、社内API、MCPにセキュアにアクセスできるWorkersを構築でき、アプリにエージェント機能を提供するクロスクラウドエージェントやMCPを構築することができます。さらに、エージェントがシステム全体を横断的に監視し、ログを突き合わせてリアルタイムで最適化を提案するといった使い方も可能になります。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-all-fits-together">すべてが適合する仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-all-fits-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Mesh、Workers VPC、Agents SDKを組み合わせることで、Cloudflareと外部クラウドの両方にまたがる、エージェント向けの統一されたプライベートネットワークが実現します。接続と実行環境を一体化することで、エージェントは世界中どこにあるリソースにも安全にアクセスできるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tYFghWEN1H3jIwV0Kejc9/04dcaedda5692a9726a7081d19bc413c/BLOG-3215_4.png" alt="BLOG-3215 4" class="kg-image" width="1999" height="1345" loading="lazy">
+	</figure>
+	<p><b>Meshノード</b>は、サーバーやVM、コンテナに相当します。これらはCloudflare One Clientのヘッドレス版を実行し、Mesh用のIPアドレスを持ちます。サービス同士はプライベートIPを使い、Cloudflareのエッジを経由して双方向に通信します。</p>
+	<p><b>デバイス</b>は、ノートPCやスマートフォンです。Cloudflare One Clientを実行し、Meshノードへ直接接続できます。SSH接続、データベースへのクエリ、API呼び出しなどをすべてプライベートIPで行えます。ローカルのコーディングエージェントも、この接続を利用してプライベートリソースにアクセスします。</p>
+	<p><b>Workers上のエージェント</b>は、Workers VPCのNetwork bindingを通じてプライベートサービスにアクセスします。ネットワーク単位でアクセス権が制御され、MCPによって利用可能な操作が制限されます。ネットワークが「どこにアクセスできるか」を制御し、MCPサーバーが「何ができるか」を制御します。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現行バージョンのMeshは、安全で統合された接続の基盤を提供します。しかし、エージェント主体のワークフローが複雑になるにつれて、単なる接続性を超え、より直感的に管理でき、かつ「誰（または何）が通信しているか」を細かく把握できるネットワークが求められます。そこで、今年中に以下の機能を開発予定です。</p>
+	<div class="flex anchor relative">
+		<h4 id="hostname-routing">ホスト名ベースのルーティング</h4>
+		<a href="https://blog.cloudflare.com/#hostname-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今夏、Cloudflare Tunnelで提供している<a href="https://blog.cloudflare.com/tunnel-hostname-routing"><u>ホスト名ルーティング</u></a>をMeshにも拡張します。これにより、<code>wiki.local</code>や<code>api.staging.internal</code>といったプライベートホスト名でトラフィックを受け付けられるようになります。IPアドレスの管理や名前解決を意識する必要はありません。IPではなく名前でサービスにルーティングできます。動的IPやオートスケーリング、短命なコンテナを使う環境では、ルーティング管理の手間を大幅に減らすことができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="mesh-dns">Mesh DNS</h4>
+		<a href="https://blog.cloudflare.com/#mesh-dns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在は、<code>ssh 100.64.0.5</code>のようにMesh IPでノードにアクセスしますが、皆さんが期待するのは、<code>postgres-staging</code>、<code>api-prod</code>、<code>nikitas-openclaw</code>のように名前でアクセスできることでしょう。</p>
+	<p>今年後半にはMesh DNSを提供予定で、Meshに参加したすべてのノードやデバイスに自動でルーティング可能な内部ホスト名が割り当てられます。DNSの設定や手動登録は不要です。例えば、<code>postgres-staging</code>という名前のノードを追加すると、Mesh上のどのデバイスからでも<code>postgres-staging.mesh</code>で正しいMesh IPに解決されます。</p>
+	<p>ホスト名ルーティングと組み合わせることで、IPアドレスを意識したり管理したりせずに <code>ssh postgres-staging.mesh</code>やcurl<code> http://api-prod.mesh:3000/health</code>のようにアクセスできるようになります。</p>
+	<div class="flex anchor relative">
+		<h4 id="identity-aware-routing">アイデンティティベースのルーティング</h4>
+		<a href="https://blog.cloudflare.com/#identity-aware-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、MeshノードはCloudflareエッジに対して認証されますが、ネットワーク上では同一の識別として扱われます。一方、デバイスはCloudflare Oneクライアントを介してユーザーIDで認証されますが、ノードにはGatewayポリシーが区別できる個別のルーティング可能なIDがまだ実装されていません。</p>
+	<p>それを変えたいと思います。MeshのIDベースのルーティングで、各ノード、各デバイス、最終的には各エージェントに固有のIDを持たせ、それに基づいてポリシーを適用できるようにします。IPアドレスではなく、「誰が」「何が」接続しているかでルールを定義できるようになります。</p>
+	<p>これはエージェントにとって最も重要です。現在、Workers上で実行しているエージェントがVPC binding経由でツールを呼び出すと、ターゲットサービスはWorkerからのリクエストであることは確認できますが、どのエージェントが呼び出しているのか、誰が承認者なのか、どのスコープが許可されているのかはわかりません。Mesh側では、ノートPC上のローカルコーディングエージェントがステージング用のサービスに到達すると、Gatewayはデバイスのアイデンティティを認識しますが、エージェントのアイデンティティは認識しません。</p>
+	<p>現在、当社はエージェント自身がネットワーク上でアイデンティティを持つ仕組みの実現に取り組んでいます：</p>
+	<ul>
+		<li>
+			<p>Principal / Sponsor：操作を許可した人（例：プラットフォームチームのNikita）</p>
+		</li>
+		<li>
+			<p>Agent：実行するAI（例：デプロイ支援エージェント、セッション#abc123）</p>
+		</li>
+		<li>
+			<p>Scope：エージェントに許可された操作範囲（例：デプロイの参照のみ、ロールバック実行など）</p>
+		</li>
+	</ul>
+	<p>これにより、「Nikitaのエージェントからの読み取りは許可するが、書き込みは本人のみ」といったポリシーを書けるようになります。エージェントのトラフィックを人間のトラフィックと分離して制御でき、Nikitaに影響を与えることなく、エージェントのネットワークアクセスだけを取り消すことができます。</p>
+	<p>基盤はすでに整っています。Meshノードはノードごとのトークンでプロビジョニングされ、デバイスはユーザー単位のアイデンティティで認証され、Workers VPC bindingsはサービスごとのアクセスをスコープとします。欠けている部分は、これらのアイデンティティをポリシー層に表示して、Gatewayがそれらに基づいてルーティングとアクセスに関する決定を行えるようにすることです。私たちは、それを構築しています。</p>
+	<div class="flex anchor relative">
+		<h4 id="mesh-in-containers">コンテナ環境でのMesh</h4>
+		<a href="https://blog.cloudflare.com/#mesh-in-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、MeshノードはVMや物理サーバー上で動作しますが、現代のインフラはコンテナ（Kubernetesポッド、Docker Composeスタック、一過性のCI/CDランナーなど）で実行されることが増えています。当社は現在、任意のコンテナ環境にMeshノードを追加できるMeshのDockerイメージを開発中です。</p>
+	<p>これにより、Docker ComposeにMeshのサイドカーを追加するだけで、スタック内のすべてのサービスにプライベートネットワーク接続を提供できます。たとえばステージング環境のコンテナから、本番VPC内のデータベースへMesh経由でアクセスする、といったことが可能になります。どちらのサービスも公開エンドポイントを持つ必要はありません。 </p>
+	<p>また、ビルドやテスト中にプライベートインフラストラクチャにアクセスできるCI/CDパイプラインにも有用です。GitHub ActionsのランナーがMeshコンテナを起動してネットワークに参加し、ステージング環境に対して統合テストを実行し、終了後に破棄するといった使い方ができます。VPN認証情報を管理する必要も、トンネルを維持する必要もありません。コンテナが終了すればノードも消失します。</p>
+	<p>MeshのDockerイメージは、、今年後半に提供される予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started">利用開始</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アイデンティティやルーティング機能は今後も進化していきますが、安全で統一されたネットワークの基盤はすでに利用可能です。クラウドの橋渡しとエージェントの保護を、わずか数分で始められます。</p>
+	<p><b>Cloudflare Meshを始める</b>：<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmesh" target="_blank" rel="noopener noreferrer"><u>Cloudflare ダッシュボード</u></a>のNetworking &gt; Meshに移動します。最大50ノード、50ユーザーまで無料です。</p>
+	<p><b>Agents SDKとWorkers VPCを使用してエージェントを構築する：</b>Agents SDK（`npm i agents`）をインストールし、<a href="https://developers.cloudflare.com/workers-vpc/get-started" target="_blank" rel="noopener noreferrer"><u>Workers VPCクイックスタート</u></a>に従い、プライベートバックエンドアクセスを持つ<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>リモートMCPサーバー</u></a>を構築します。</p>
+	<p><b>すでにCloudflare Oneをご利用されている方</b>であれば、既存の構成のままMeshを利用いただけます。Gatewayポリシー、デバイスポスチャチェック、Accessルールは自動的にMeshの通信にも適用されます。最初のノードを追加するには、<a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh" target="_blank" rel="noopener noreferrer"><u>Meshのドキュメント</u></a>を参照してください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KMBRDqq5wBjdLHyhM3LNW/98064f81453b6ff29d0bf4b86cfc251a/image1.png" alt="" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/dc3d6d5c1da851359c1271c23c26c8be/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fdc3d6d5c1da851359c1271c23c26c8be%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

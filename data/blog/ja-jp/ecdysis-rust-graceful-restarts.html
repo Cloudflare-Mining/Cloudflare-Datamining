@@ -1,0 +1,237 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ecdysis-rust-graceful-restarts">English</a>および<a href="https://blog.cloudflare.com/ko-kr/ecdysis-rust-graceful-restarts">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GZbsdWhlh3zoh77Q5bkEA/73ee329a6f7604c2473fbba2a2e86747/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<blockquote>
+		<p>ecdysis | <i>ˈekdəsəs</i> |</p>
+		<p>noun</p>
+		<p> 古い表請求書を移行したり、虫組やを見るような説明行為を移行するために、外請求ケースに移行することです。 </p>
+	</blockquote>
+	<p>1つの接続も中断させることなく、世界中で1秒あたり数百万のリクエストを処理するネットワークサービスをアップグレードするにはどうすればよいでしょうか？</p>
+	<p>この大きな課題に対するCloudflareのソリューションの1つが、長年にわたり<a href="https://github.com/cloudflare/ecdysis" target="_blank" rel="noopener noreferrer"><u><b>ecdysis</b></u></a>です。これは、ライブ接続がドロップされず、新しい接続が拒否されないグレースフルプロセスリスタートを実装するRustライブラリです。</p>
+	<p>先月、<b>私たちはECサイトをオープンソース化し</b>、誰でも利用できるようにしました。Cloudflareで5年間本番運用されているecdysisは、当社の重要なRustインフラストラクチャ全体でダウンタイムゼロのアップグレードを可能にし、Cloudflareの<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>グローバルネットワーク</u></a>全体で、再起動のたびに数百万のリクエストを節約することで、その有効性を実証しました。</p>
+	<p>こうしたアップグレードを正しく行うことの重要性は、特にCloudflareのネットワークの規模では、強調することの難しさです。当社のサービスの多くは、トラフィックルーティング、<a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer"><u>TLSライフサイクル管理</u></a>、ファイアウォールルールの適用など、重要なタスクを実行し、継続的に稼働しなければなりません。それらのサービスの1つが一時的にもダウンすれば、壊滅的な影響を受ける可能性があります。接続の切断やリクエストの失敗は、すぐに顧客のパフォーマンス低下とビジネスへの影響につながります。</p>
+	<p>これらのサービスの更新が必要になった場合、セキュリティパッチの適用を待つことはできません。バグ修正にはデプロイが必要で、新機能をロールアウトする必要があります。</p>
+	<p>古いプロセスが停止するのを待ってから新しいプロセスを起動する必要がありますが、これにより、接続が拒否され、リクエストがドロップされる時間枠ができます。単一の場所で毎秒数千のリクエストを処理するサービスが、数百のデータセンター全体で処理されるリクエスト数を掛け合わせると、簡単な再起動で世界中で何百万ものリクエストが失敗します。</p>
+	<p>問題を掘り下げ、ECdysisが私たちにとってどのようにソリューションとなったか、そして貴社にも役立つかもしれません。 </p>
+	<p><b>リンク</b>: <a href="https://github.com/cloudflare/ecdysis" target="_blank" rel="noopener noreferrer">GitHub</a> <b>|</b> <a href="https://crates.io/crates/ecdysis" target="_blank" rel="noopener noreferrer">crates.io</a> <b>|</b> <a href="https://docs.rs/ecdysis" target="_blank" rel="noopener noreferrer">docs.rs</a></p>
+	<div class="flex anchor relative">
+		<h3 id="why-graceful-restarts-are-hard">グレースフルリスタートが難しい理由</h3>
+		<a href="https://blog.cloudflare.com/#why-graceful-restarts-are-hard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前述したように、サービスを再起動する際の単純なアプローチは、古いプロセスを止めて新しいプロセスを開始することです。これは、リアルタイム要求を処理しないシンプルなサービスであれば問題なく機能しますが、ライブ接続を処理するネットワークサービスでは、このアプローチには重大な制限があります。</p>
+	<p>まず、単純なアプローチでは、着信接続を待機するプロセスが作成されます。古いプロセスが停止すると、リッスンソケットを閉じ、OSは <code>ECONNREFUSED</code> との新しい接続を即座に拒否します。新しいプロセスがすぐに開始されたとしても、ミリ秒か数秒かにかかわらず、接続を受け入れないギャップが常にあります。1秒あたり数千のリクエストを処理するサービスでは、100ミリ秒のギャップでさえ、何百もの接続が切断されることを意味します。</p>
+	<p>第二に、古いプロセスを停止すると、すでに確立された接続がすべて消失します。大きなファイルをアップロードしたり、動画をストリーミングしたりするクライアントが突然切断されます。WebSocketsやgRPCストリームのような長期間の接続は、運用の途中で終了します。クライアントから見れば、サービスは失われただけです。</p>
+	<p>古いプロセスをシャットダウンする前に新しいプロセスをバインディングすると、これは解決するように見えますが、さらなる問題も引き起こします。カーネルは通常、1つのプロセスのみを1つのアドレス:ポートの組み合わせにバインドできますが、<a href="https://man7.org/linux/man-pages/man7/socket.7.html" target="_blank" rel="noopener noreferrer"><u>SO_REUSEPORTソケットオプション</u></a>では複数のバインドが可能です。しかし、これはプロセスの移行中に問題が発生するため、グレースフルリスタートには適していません。</p>
+	<p><code>SO_REUSEPORT</code>を使用すると、カーネルは各プロセスに対して個別のリッスンソケットを作成し、<a href="https://lwn.net/Articles/542629" target="_blank" rel="noopener noreferrer"><u>これらのソケット間で新しい接続を負荷分散します</u></a>。接続の最初の<code>SYN</code>パケットが受信されると、カーネルはそれをリッスンプロセスの1つに割り当てます。最初のハンドシェイクが完了すると、接続はプロセスが受け入れるまでプロセスの<code>accept()</code>キューにあります。その後、プロセスがこの接続を受け入れる前に終了すると、オーファン、カーネルによって終了されます。GitHubのエンジニアリングチームは、<a href="https://github.blog/2020-10-07-glb-director-zero-downtime-load-balancer-updates" target="_blank" rel="noopener noreferrer"><u>GLB Directorロードバランサーを構築する際に</u></a>、この問題を広範囲に文書化しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-ecdysis-works">Edysisの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-ecdysis-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Equinixのデザインと構築に着手した際、私たちはライブラリの4つの主要目標を特定しました。</p>
+	<ol>
+		<li>
+			<p><b>古いコードはアップグレード後に完全にシャットダウンできます</b>。</p>
+		</li>
+		<li>
+			<p><b>新しいプロセスには、初期化の猶予期間があります</b>。</p>
+		</li>
+		<li>
+			<p><b>初期化中に新しいコードがクラッシュしても許容されます</b>。実行中のサービスに影響を与えるべきではありません。</p>
+		</li>
+		<li>
+			<p><b>カスケード障害を回避するために、一度のアップグレードだけが</b>並行で実行されます。</p>
+		</li>
+	</ol>
+	<p>ecdysisは、初期の頃からグレースフルアップグレードをサポートしてきたNGINXが開拓したアプローチに従って、これらの要件を満たしています。アプローチは簡単です。</p>
+	<ol>
+		<li>
+			<p>親プロセスは新しい子プロセスを <code>fork()</code> します。</p>
+		</li>
+		<li>
+			<p>子プロセスは、<code>execve()</code> を使用して、コードの新しいバージョンに置き換わります。</p>
+		</li>
+		<li>
+			<p>子プロセスは、親と共有される名前付きパイプを介してソケットファイル記述子を引き継ぎます。</p>
+		</li>
+		<li>
+			<p>親プロセスは、子プロセスが準備完了を知らせるのを待ち、シャットダウンします。</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QK8GY1s30C8RUovBQnqbD/525094478911eda96c7877a10753159f/image3.png" alt="" class="kg-image" width="695" height="750" loading="lazy">
+	</figure>
+	<p>重要なのは、移行中もソケットがオープンのままであることです。子プロセスは、名前付きパイプを介して共有されるファイル記述子として、親から待機中のソケットを引き継ぎます。子のプロセスの初期化中、両方のプロセスが同じ基盤となるカーネルデータ構造を共有するため、親は新規および既存の接続を引き続き受け入れて処理します。子が初期化を完了すると、親に通知し、接続の受け入れを開始します。この準備完了通知を受け取ると、親はリッスンソケットのコピーを即座にクローズし、既存の接続のみの処理を続けます。</p>
+	<p>このプロセスにより、子供に安全な初期化期間を提供しながら、適用範囲のギャップを排除します。親と子が同時に接続を受け入れることがあります。これは意図的なものであり、親によって受け入れられた接続は、枯渇プロセスの一環として完了するまで単純に処理されます。</p>
+	<p>このモデルは、必要な衝突安全性も提供します。子プロセスが初期化中に失敗した場合（例えば、設定エラーが原因で）は、単に終了するだけです。親が待機を停止したことはないため、接続が切断されることはなく、問題が修正されればアップグレードを再度試行することができます。</p>
+	<p>ecdysisは、<a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"><u>Tokio</u></a>と<code>systemd</code>統合による非同期プログラミングの一流のサポートを通じて、フォークモデルを実装します。</p>
+	<ul>
+		<li>
+			<p><b>Tokioの統合</b>：Tokioのネイティブ非同期ストリームラッパー。引き出されたソケットは、グルーコードを追加することなくリスナーになります。同期サービスの場合、ecdysisは非同期ランタイム要件なしの操作をサポートします。</p>
+		</li>
+		<li>
+			<p><b>systemd-notify サポート</b>: <code>systemd_notify</code> 機能を有効にすると、ecdysis は systemd のプロセスライフサイクル通知と自動的に統合されます。サービスユニットファイルで<code>Type=notify-reload</code>を設定すると、systemdがアップグレードを正しく追跡できるようになります。</p>
+		</li>
+		<li>
+			<p><b>systemd named sockets</b>: <code>systemd_sockets</code>機能によって、ecdysisはsystemdでアクティブ化されたソケットを管理することができます。サービスはソケットでアクティブ化し、グレースフルリスタートを同時にサポートできます。</p>
+		</li>
+	</ul>
+	<p>プラットフォームの注意：ecdysisは、ソケットの継承とプロセス管理のためにUnix固有のsyscallに依存しています。Windowsでは動作しません。これは、フォーク手法の基本的な制限です。</p>
+	<div class="flex anchor relative">
+		<h3 id="security-considerations">セキュリティの考慮事項</h3>
+		<a href="https://blog.cloudflare.com/#security-considerations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>グレースフルリスタートには、セキュリティ上の考慮事項があります。フォークモデルでは、2つのプロセス世代が共存する短いウィンドウが作成されます。両方が同じリッスンソケットと潜在的に機密性のあるファイル記述子にアクセスできます。</p>
+	<p>ecdysisは、設計を通じてこれらの懸念に対処しています。</p>
+	<p><b>Fork-then-exec</b>: ecdysisは、<code>fork()</code>の後に<code>execve()</code>が続く従来のUnixパターンに従います。これにより、子プロセスは、新しいアドレス空間、新しいコード、およびメモリを引き継ぎない状態で開始されます。明示的に渡されたファイル記述子のみが境界を越えます。</p>
+	<p><b>明示的な引き継ぎ</b>：リッスンソケットと通信パイプのみが引き継がれます。その他のファイル記述子は、<code>CLOEXEC</code>フラグを介してクローズされます。これにより、機密性の高いアドレスの偶発的な漏洩を防ぐことができます。</p>
+	<p><b>seccompの互換性</b>: seccompフィルタを使用するサービスは、<code>fork()</code>と<code>execve()</code>を許可しなければなりません。グレースフルリスタートにはシステムコールが必要なため、ブロックすることはできません。</p>
+	<p>ほとんどのネットワークサービスでは、こうしたトレードオフは許容されます。フォーク実行モデルのセキュリティはよく理解されており、NGINXやApacheなどのソフトウェアで数十年にわたって実地テストが行われています。</p>
+	<div class="flex anchor relative">
+		<h3 id="code-example">コード例</h3>
+		<a href="https://blog.cloudflare.com/#code-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>実際の例を見てみましょう。以下は、グレースフルリスタートをサポートする簡略化されたTCPエコーサーバーです。</p>
+	<pre class="language-Rust"><code class="language-Rust">use ecdysis::tokio_ecdysis::{SignalKind, StopOnShutdown, TokioEcdysisBuilder};
+use tokio::{net::TcpStream, task::JoinSet};
+use futures::StreamExt;
+use std::net::SocketAddr;
+
+#[tokio::main]
+async fn main() {
+    // Create the ecdysis builder
+    let mut ecdysis_builder = TokioEcdysisBuilder::new(
+        SignalKind::hangup()  // Trigger upgrade/reload on SIGHUP
+    ).unwrap();
+
+    // Trigger stop on SIGUSR1
+    ecdysis_builder
+        .stop_on_signal(SignalKind::user_defined1())
+        .unwrap();
+
+    // Create listening socket - will be inherited by children
+    let addr: SocketAddr = "0.0.0.0:8080".parse().unwrap();
+    let stream = ecdysis_builder
+        .build_listen_tcp(StopOnShutdown::Yes, addr, |builder, addr| {
+            builder.set_reuse_address(true)?;
+            builder.bind(&amp;addr.into())?;
+            builder.listen(128)?;
+            Ok(builder.into())
+        })
+        .unwrap();
+
+    // Spawn task to handle connections
+    let server_handle = tokio::spawn(async move {
+        let mut stream = stream;
+        let mut set = JoinSet::new();
+        while let Some(Ok(socket)) = stream.next().await {
+            set.spawn(handle_connection(socket));
+        }
+        set.join_all().await;
+    });
+
+    // Signal readiness and wait for shutdown
+    let (_ecdysis, shutdown_fut) = ecdysis_builder.ready().unwrap();
+    let shutdown_reason = shutdown_fut.await;
+
+    log::info!("Shutting down: {:?}", shutdown_reason);
+
+    // Gracefully drain connections
+    server_handle.await.unwrap();
+}
+
+async fn handle_connection(mut socket: TcpStream) {
+    // Echo connection logic here
+}</code></pre>
+	<p>主要ポイント：</p>
+	<ol>
+		<li>
+			<p><code><b>build_listen_tcp</b></code>は、子プロセスに引き継がれるリスナーを作成します。</p>
+		</li>
+		<li>
+			<p><code><b>ready()</b></code> は、初期化が完了し、安全に終了できることを親プロセスに通知します。</p>
+		</li>
+		<li>
+			<p><code><b>shutdown_fut.await</b></code> は、アップグレードまたは停止が要求されるまでブロックします。この未来は、アップグレード/リロードが正常に実行された、またはシャットダウンシグナルを受信したために、プロセスをシャットダウンする必要がある場合にのみ発生します。</p>
+		</li>
+	</ol>
+	<p>このプロセスに<code>SIGHUP</code>を送信すると、ecdysisは次のような動作をします。</p>
+	<p><i>…親プロセス上：</i></p>
+	<ul>
+		<li>
+			<p>バイナリの新しいインスタンスをフォークして実行します。</p>
+		</li>
+		<li>
+			<p>リッスンソケットを子に渡します。</p>
+		</li>
+		<li>
+			<p>子が<code>ready()</code>を呼び出すのを待ちます。</p>
+		</li>
+		<li>
+			<p>既存の接続を実行し、その後、出口を出します。</p>
+		</li>
+	</ul>
+	<p><i>...子プロセス上：</i></p>
+	<ul>
+		<li>
+			<p>親と同じ実行フローに従って自身を初期化しますが、ecdysisが所有するソケットは継承され、子にバインドされません。</p>
+		</li>
+		<li>
+			<p><code>ready()</code>を呼び出して、親に準備完了を知らせます。</p>
+		</li>
+		<li>
+			<p>シャットダウンまたはアップグレードシグナル待ちのブロック。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="production-at-scale">大規模な本番環境</h3>
+		<a href="https://blog.cloudflare.com/#production-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ECdysisはCloudflareで2021年から稼働しています。120か国以上、330以上のデータセンターにデプロイされた重要なRustのインフラストラクチャサービスを支えています。これらのサービスは、1日あたり数十億件のリクエストを処理し、セキュリティパッチ、機能リリース、設定変更のための頻繁な更新を必要としています。</p>
+	<p>Ecdysisを使用して再起動を行うたびに、単純なStop/Startサイクルではドロップされる可能性がある何十万ものリクエストが保存されます。グローバルフットプリント全体で、これは何百万もの接続の維持とお客様のための信頼性の向上につながります。</p>
+	<div class="flex anchor relative">
+		<h3 id="ecdysis-vs-alternatives">ECサイトとその代わり</h3>
+		<a href="https://blog.cloudflare.com/#ecdysis-vs-alternatives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>いくつかのエコシステム用のグレースフルリスタートライブラリが存在します。適切なツールを選択するためには、ECサイトを使用するタイミングと代替ツールを理解することが重要です。</p>
+	<p><a href="https://github.com/cloudflare/tableflip" target="_blank" rel="noopener noreferrer"><u><b>tableflip</b></u></a> は、ecdysisの着想元となった当社のGoライブラリです。Goサービスと同じフォークとインジェクションモデルを実装しています。Goが必要なら、tableflipをお勧めします！</p>
+	<p><a href="https://github.com/cloudflare/shellflip" target="_blank" rel="noopener noreferrer"><u><b>shellflip</b></u></a> は、CloudflareのRustベースのプロキシであるOxy用に特別に設計された、Cloudflareの他のRustグレースフルリスタートライブラリです。Shellflipは、システム化と時発生を想定し、親と子の間で任意のアプリケーション状態を転送することに焦点を当てています。これは、複雑なステートフルサービスや、独自のソケットを開くことさえできない積極的なサンドボックスを適用したいサービスに優れていますが、より単純なケースではオーバーヘッドが追加されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="start-building">構築を開始する</h3>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ecdysisは、Rustのエコシステムに5年間にわたる本番ハードウェアとしてのグレースフルリスタート機能を提供します。これは、Cloudflareのグローバルネットワーク全体の何百万もの接続を保護しているのと同じ技術で、現在オープンソース化され、誰でも利用できるようになっています。</p>
+	<p>完全なドキュメントは、<a href="https://docs.rs/ecdysis" target="_blank" rel="noopener noreferrer"><u>docs.rs/ecdysis</u></a>でご覧いただけます。API参照、一般的なユースケースの例、<code>systemd</code>との統合手順など。</p>
+	<p>リポジトリの<a href="https://github.com/cloudflare/ecdysis/tree/main/examples" target="_blank" rel="noopener noreferrer"><u>サンプルディレクトリ</u></a>には、TCPリスナー、Unixソケットリスナー、およびsystemd統合を示す動作コードが含まれています。</p>
+	<p>このライブラリは、Argo Smart Routing &amp; Orpheusチームによって積極的に保守されており、Cloudflare全体のチームの貢献も受けています。<a href="https://github.com/cloudflare/ecdysis" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>での貢献、バグ報告、機能リクエストを歓迎します。</p>
+	<p>高性能プロキシを構築する場合でも、長期間維持されるAPIサーバーでも、稼働率が重要なネットワークサービスであっても、ECdysisはダウンタイムゼロの運用基盤を提供できます。</p>
+	<p>構築を開始する:<a href="https://github.com/cloudflare/ecdysis" target="_blank" rel="noopener noreferrer"> <u>github.com/cloudflare/ecdysis</u></a></p>
+</div>

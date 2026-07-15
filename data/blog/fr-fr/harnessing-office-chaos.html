@@ -1,0 +1,255 @@
+<div class="mb2 gray5">Lecture&nbsp;: 12 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/harnessing-office-chaos">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/harnessing-office-chaos">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/harnessing-office-chaos">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/harnessing-office-chaos">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/harnessing-office-chaos">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/harnessing-office-chaos">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/harnessing-office-chaos">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n5sZWsglzWeRBJsUc5Wuc/d3b9becd94ec6c28c377eb1a145733f1/harnessing-office-chaos.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Dans le livre pour enfants, <a href="https://en.wikipedia.org/wiki/The_Snail_and_the_Whale" target="_blank" rel="noopener noreferrer">La baleine et l'escargote</a>, cette dernière revient chez elle après une aventure inattendue au bout du monde pour entendre tous ses proches déclarer « Comme le temps a passé ! » et « Comme tu as grandi ! ». Quatre ans se sont écoulés depuis la dernière fois où nous avons écrit sur LavaRand et, pendant ce temps, le récit décrivant la manière dont Cloudflare s'appuie sur des sources d'entropie physiques afin de renforcer la sécurité d'Internet a poursuivi son chemin pour devenir une source d'intérêt pour de nombreuses personnes. Ce qui n'était initialement qu'un exemple unique de source d'entropie physique (les lampes à lave) s'est depuis développé et diversifié. Les lignes qui suivent ont pour objectif de vous informer sur l'histoire de LavaRand. Cet article de blog traite des nouvelles sources de « chaos » ajoutées à LavaRand et de la manière dont vous pouvez utiliser ce chaos maîtrisé dans votre prochaine application. Nous aborderons comment l'aléatoire public peut ouvrir de nouveaux scénarios d'aléatoire publiquement digne de confiance (imaginez ne plus avoir à prendre les adeptes du « tirage aléatoire » au mot lorsqu'ils affirment que le résultat n'est manipulé en aucune façon. Enfin, nous discuterons du chiffrement temporisé (<i>timelock</i>), qui constitue un moyen de s'assurer qu'un message ne puisse être déchiffré avant un moment choisi de l'avenir.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VAXGAjHjvvY5IAEG63gPu/4c199f8bb127b03fe613ab8dc6c0016f/image12-1.png" alt="Harnessing chaos in Cloudflare offices" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="lavarand-origins"><b><b>Origines de LavaRand</b></b></h2>
+		<a href="https://blog.cloudflare.com/#lavarand-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'entropie issue de notre mur de lampes à lave de San Francisco joue depuis longtemps un rôle dans le caractère aléatoire qui sécurise les connexions établies via Cloudflare.</p>
+	<p>Lampes à lave avec cire flottante</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XdIuQkEWKat2c9YanaCY0/aa873b127b5eea8cea19982f3552ccc2/image11-3.png" alt="Lava lamps with flowing wax." class="kg-image" width="1612" height="381" loading="lazy">
+
+	</figure>
+	<p>Les serveurs de Cloudflare traitent collectivement plus de 55 millions de requêtes HTTP par seconde, dont la <a href="https://radar.cloudflare.com/adoption-and-usage#http-vs-https" target="_blank" rel="noopener noreferrer">vaste majorité sont sécurisées à l'aide du protocole TLS</a> afin d'assurer leur authenticité et leur confidentialité. Dans les faits, les protocoles cryptographiques tels que le TLS nécessitent une source sous-jacente d'aléatoire sécurisé, faute de quoi les garanties de sécurité s'effondrent.</p>
+	<p>L'aléatoire sécurisé utilisé en cryptographie doit être impossible à distinguer, sur le plan informatique, du « véritable » aléatoire. Pour cela, il doit à la fois réussir les <a href="https://en.wikipedia.org/wiki/Randomness_test" target="_blank" rel="noopener noreferrer">tests d'aléatoire statistique</a> et le résultat doit être imprévisible pour tout adversaire limité par le calcul, quelle que soit la quantité de résultats précédents déjà observés par cet adversaire. Le moyen classique d'y parvenir consiste à prendre une « graine » et à l'introduire dans un <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>générateur de nombres pseudo-aléatoires sécurisé de manière cryptographique</i></a> (Cryptographically Secure Pseudorandom Number Generator, CSPRNG) capable de produire un flux pratiquement infini d'octets imprévisibles sur demande. Les propriétés d'un CSPRNG garantissent que tous les résultats obtenus sont virtuellement impossibles à distinguer des résultats réellement aléatoires pour quiconque ne connaît pas son état interne. Toutefois, l'ensemble du processus dépend de l'existence d'une graine aléatoire sécurisée au départ. N'hésitez pas à vous référer à <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">ce blog</a> pour plus de détails sur l'aléatoire véritable par rapport au pseudo-aléatoire et à <a href="https://blog.cloudflare.com/why-randomness-matters">ce blog</a> pour découvrir d'excellents exemples de ce qui peut mal tourner avec une graine aléatoire non sécurisée.</p>
+	<p>Pendant de nombreuses années, les serveurs de Cloudflare se sont appuyés sur des sources locales d'entropie (comme le moment précis de l'arrivée des paquets ou des événements clavier) pour alimenter leurs pools d'entropie. S'il n'y a aucune raison de penser que les sources locales d'entropie sur ces serveurs pourraient ne pas être sûres ou pourraient être facilement compromises, nous souhaitions néanmoins nous prémunir contre cette éventualité. Notre solution consistait à mettre en place un système permettant à nos serveurs de rafraîchir périodiquement leurs pools d'entropie à l'aide d'éléments aléatoires véritables issus d'une source externe.</p>
+	<p>L'idée nous amène ainsi à LavaRand. Depuis bien longtemps, « LavaRand » est le nom donné aux <a href="https://fr.wikipedia.org/wiki/Lavarand" target="_blank" rel="noopener noreferrer">systèmes utilisés pour la génération d'éléments aléatoires</a> (en premier lieu par Silicon Graphics en 1997). Cloudflare a <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">lancé son instanciation d'un système LavaRand</a> en 2017. Ce système recueille l'entropie issue du mur de lampes à lave situé dans notre bureau de San Francisco et la met à notre disposition via une API interne. Nos serveurs interrogent ensuite périodiquement cette API afin de récupérer des données aléatoires fraîches de LavaRand et de les incorporer à leurs pools d'entropie. Vous pouvez considérer les contributions de LavaRand comme un assaisonnement ajouté au mélange des pools d'entropie ! (Pour plus de détails techniques, consultez notre <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">article de blog précédent</a>).</p>
+	<p>Les lampes à lave situées dans les bureaux de Cloudflare à San Francisco</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IPp9Lizp0pL83clLWGGNa/19d397787b5a5adbb337f581d9639fce/image10.jpg" alt="Lava lamps in Cloudflare’s San Francisco office." class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="adding-to-the-office-chaos">Ajouter du chaos dans les bureaux</h2>
+		<a href="https://blog.cloudflare.com/#adding-to-the-office-chaos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Depuis des années, les lampes à lave de notre bureau de San Francisco fonctionnent sans relâche afin d'assurer une source d'entropie fraîche à nos systèmes, mais elles ont maintenant des frères et sœurs à travers le monde pour les aider dans leur tâche ! La variété des sources d'entropie trouvées dans nos bureaux et issues de ces derniers a suivi Cloudflare dans sa croissance. <a href="https://blog.cloudflare.com/cloudflare-top-100-most-loved-workplaces-in-2022">L'équipe Places de Cloudflare travaille dur</a> pour s'assurer que nos bureaux reflètent les divers aspects de nos valeurs et de notre culture. Plusieurs de nos agences les plus importantes comprennent des installations de systèmes physiques d'entropie et ce sont ces installations que nous nous sommes efforcés d'incorporer à LavaRand au fil du temps. L'attrait tangible et passionnant de ces systèmes réside dans le fait qu'ils reposent sur des mécanismes physiques que nous considérons intuitivement comme aléatoires. Les boules de « lave » flottant au sein des lampes à lave (les amas réchauffés remontent, tandis que les amas plus froids retombent) attirent notre attention, tout comme d'autres systèmes dynamiques imprévisibles (et souvent magnifiques) captent notre intérêt.</p>
+	<div class="flex anchor relative">
+		<h2 id="londons-unpredictable-pendulums">Les pendules imprévisibles de Londres</h2>
+		<a href="https://blog.cloudflare.com/#londons-unpredictable-pendulums" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les visiteurs de notre bureau de Londres peuvent voir un mur de pendules doubles dont les magnifiques oscillations constituent une autre source d'entropie pour LavaRand et pour le pool d'aléatoire dans lequel puisent les serveurs de Cloudflare.</p>
+	<p>Gros plan sur les pendules doubles exposés dans les bureaux de Cloudflare à Londres</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjgKso6GgfvLX74LEyYsE/7688dcdd10f3f3219f0c569724cb42ab/image8.jpg" alt="Close-up of double pendulum display in Cloudflare’s London office." class="kg-image" width="512" height="341" loading="lazy">
+
+	</figure>
+	<p>Pour un œil non averti, les ombres des supports du pendule et celles projetées par les bras rotatifs sur le mur du fond peuvent sembler chaotiques. Si c'est bien le cas, cette installation devrait être considérée comme une grande réussite ! Les différentes conditions d'éclairage et ces ombres portées ajoutent au chaos capturé par cette source d'entropie.</p>
+	<p><i>Exposition de pendules doubles dans les bureaux londoniens de Cloudflare avec des conditions de luminosité changeantes</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JWrKSqoaPJQC2VSbHygj/e87c2936282e55730a1db4af7d4f7e7f/Screenshot-2024-03-08-at-13.13.12.png" alt="Double pendulum display in Cloudflare’s London office with changing light conditions." class="kg-image" width="1616" height="408" loading="lazy">
+
+	</figure>
+	<p>En effet, même si ces bras se limitent à un mouvement en deux dimensions, la trajectoire qu'ils dessinent est étonnamment variée et on peut démontrer son caractère <a href="https://fr.wikipedia.org/wiki/Pendule_double" target="_blank" rel="noopener noreferrer">mathématiquement chaotique</a>. Même en laissant de côté la résistance de l'air, la température et l'environnement, et en supposant que la mutation est totalement déterministe, le mouvement qui en résulte s'avère difficile à prédire sur le long terme. Le système en lui-même est particulièrement sensible aux conditions initiales. Associé à un comportement déterministe, cet état initial (c.-à-d. la manière dont il est mis en mouvement) produit une trajectoire unique qui se poursuit jusqu'à ce que le pendule s'immobilise et que le système soit à nouveau mis en mouvement par un collaborateur de Cloudflare à Londres.</p>
+	<div class="flex anchor relative">
+		<h3 id="austins-mesmerizing-mobiles"><b>Les mobiles hypnotiques d'Austin</b></h3>
+		<a href="https://blog.cloudflare.com/#austins-mesmerizing-mobiles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les nouveaux bureaux de Cloudflare à Austin, au Texas, ont récemment fêté leur première année d'ouverture. Cette agence apporte sa propre contribution à l'entropie physique : une installation de mobiles arc-en-ciel translucides suspendue au-dessus de l'entrée du bureau de Cloudflare, dans le centre-ville d'Austin. En tournoyant sur eux-mêmes, ces derniers reflètent ainsi l'évolution de la lumière et projettent des motifs colorés sur les murs de l'enceinte. Cette installation mêlant les mobiles suspendus et leurs ombres est très sensible à l'environnement physique, qui comprend l'ouverture et la fermeture des portes, les changements de température liés au chauffage, à la ventilation et à la climatisation, de même que la lumière ambiante. La scène fascinante et changeante produite par ce système chaotique est capturée périodiquement et introduite dans le flux d'éléments aléatoires de LavaRand.</p>
+	<p>Installation de mobiles arc-en-ciel suspendus dans les bureaux de Cloudflare à Austin</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mfXP2V8pX0C0CoheE369Q/83fe1b4bdba232b8c8c722bc49987bfe/Screenshot-2024-03-08-at-13.14.22.png" alt="Hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1594" height="1568" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="mixing-new-sources-into-lavarand"><b>Intégrer de nouvelles sources à LavaRand</b></h2>
+		<a href="https://blog.cloudflare.com/#mixing-new-sources-into-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons intégré les nouvelles sources de chaos de nos bureaux au système LavaRand (toujours appelé LavaRand bien qu'il comprenne désormais bien plus que des lampes à lave) de la même manière que les lampes à lave existantes, que nous avons précédemment <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">décrites en détail</a>.</p>
+	<p>Pour résumer, à intervalles réguliers, une caméra capture une image de l'état actuel de l'installation aléatoire. Le système sous-jacent étant véritablement aléatoire, l'image produite recèle un véritable caractère aléatoire. Même les ombres et les conditions d'éclairage évolutives jouent un rôle dans la production d'un résultat unique et imprévisible ! Nous devons également partager un autre secret : à un niveau fondamental, les capteurs d'images du monde réel constituent souvent une source de bruit suffisante pour que même les images prises sans avoir retiré le bouchon de l'objectif puissent fonctionner comme source d'entropie ! Nous considérons ce bruit comme un ajout fortuit au magnifique mouvement chaotique de ces installations.</p>
+	<p>Gros plan sur les mobiles arc-en-ciel suspendus dans les bureaux de Cloudflare à Austin</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zrgpZA2xosqvTzU6dk8V/6e1f061640192f7de4585d7f2959f4a7/Screenshot-2024-03-08-at-13.16.23.png" alt="Close-up of hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1624" height="786" loading="lazy">
+
+	</figure>
+	<p>Une fois que nous disposons d'une image fixe qui capture l'état de l'installation aléatoire à un moment donné, nous calculons une représentation compacte (un hachage) de l'image afin d'obtenir un résultat de taille fixe d'octets réellement aléatoires.</p>
+	<p>Processus de conversion des installations d'entropie physique en chaînes d'octets aléatoires</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VjuWFkK83t3EkTjPxYGc6/2ddc9da8c2553a8a1dbb04513de6acbd/image4-26.png" alt="Process of converting physical entropy displays into random byte strings." class="kg-image" width="1491" height="400" loading="lazy">
+
+	</figure>
+	<p>Les octets aléatoires sont ensuite utilisés comme entrée (avec la graine précédente et des éléments aléatoires issus des sources d'entropie locales du système) au sein d'une <i>fonction de dérivation de clé</i> (Key Derivation Function, KDF) afin de calculer une nouvelle graine aléatoire, introduite ensuite dans un <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>générateur de nombres pseudo-aléatoires sécurisé de manière cryptographique</i></a> (CSPRNG) capable de produire un flux pratiquement infini d'octets imprévisibles à la demande. Les propriétés d'un CSPRNG garantissent que tous les résultats obtenus sont virtuellement impossibles à distinguer des résultats réellement aléatoires pour quiconque ne connaît pas son état interne. LavaRand expose ensuite ce flux d'éléments aléatoires via une API interne simple au sein de laquelle le client peut demander de nouveaux éléments aléatoires.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-use-lavarand">Comment puis-je utiliser LavaRand ?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">seed = KDF(new image || previous seed || system randomness)
+rng = CSPRNG(seed)
+…
+rand1 = rng.random()
+rand2 = rng.random()</code></pre>
+	<p>Les applications utilisent généralement les éléments aléatoires sécurisés sous l'une des deux variantes suivantes : privée et publique.</p>
+	<p><b>L'aléatoire privé</b> est utilisé pour générer des mots de passe, des clés cryptographiques, des identifiants utilisateur et d'autres valeurs destinées à rester secrètes pour toujours. Comme nous l'avons <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">décrit précédemment</a>, nos serveurs demandent périodiquement à LavaRand de nouveaux éléments aléatoires privés afin de mettre à jour leurs pools d'entropie. De ce fait, l'aléatoire de LavaRand est essentiellement accessible au monde extérieur ! Un moyen facile pour les développeurs d'accéder à l'aléatoire privé de LavaRand consiste à utiliser la <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#methods" target="_blank" rel="noopener noreferrer">fonction getRandomValues de l'API Web Crypto</a> depuis un Cloudflare Worker ou d'utiliser un aléatoire déjà préconstruit, comme <a href="https://csprng.xyz" target="_blank" rel="noopener noreferrer">csprng.xyz</a> (<a href="https://github.com/ejcx/csprng.xyz" target="_blank" rel="noopener noreferrer">source</a>).</p>
+	<p><b>L'aléatoire public</b> se compose de valeurs aléatoires imprévisibles et impartiales, accessibles à tous une fois qu'elles sont publiées. C'est d'ailleurs pour cette raison qu'elles <b><i>ne doivent pas être utilisées pour générer des clés cryptographiques</i></b>. Les numéros gagnants de la loterie et le tirage à pile ou face au début d'un événement sportif sont de bons exemples de valeurs aléatoires publiques. L'utilisation d'une pièce à deux faces <i>ne constituerait pas</i> une source d'entropie impartiale et imprévisible, et aurait des répercussions considérables sur le monde des paris sportifs.</p>
+	<p>En plus d'être imprévisible et impartial, il est également souhaitable que l'aléatoire public soit <i>digne de confiance</i>, de sorte que les consommateurs d'aléatoire soient assurés que les valeurs ont été produites fidèlement. Peu de personnes achèteraient des billets de loterie s'ils pensaient que le billet gagnant allait être choisi de manière injuste ! En effet, il existe des cas connus de délit d'initiés dans lesquels des agents corrompus ont détourné l'aléatoire public à des fins d'enrichissement personnel, comme cet <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank" rel="noopener noreferrer">employé d'une loterie d'État</a> qui a coopté le générateur de nombres aléatoires de la loterie afin de permettre à ses amis et à sa famille de gagner des millions de dollars.</p>
+	<p>L'un des problèmes fondamentaux de l'aléatoire public repose sur la nécessité de faire confiance à l'autorité qui produit les résultats aléatoires. Le fait de faire confiance à une autorité bien connue comme le <a href="https://beacon.nist.gov/home" target="_blank" rel="noopener noreferrer">NIST</a> peut suffire pour de nombreuses applications, mais pourrait s'avérer problématique pour d'autres (en particulier pour les applications dans lesquelles la décentralisation est importante).</p>
+	<div class="flex anchor relative">
+		<h2 id="drand-distributed-and-verifiable-public-randomness"><b>drand : aléatoire public distribué et vérifiable</b></h2>
+		<a href="https://blog.cloudflare.com/#drand-distributed-and-verifiable-public-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour aider à résoudre ce problème de confiance, Cloudflare s'est associée en 2019 à sept autres organisations indépendantes et géographiquement réparties pour former la <a href="https://blog.cloudflare.com/league-of-entropy">League of Entropy</a> (la Ligue de l'Entropie) afin de lancer une balise aléatoire publique reposant sur le protocole <a href="https://blog.cloudflare.com/inside-the-entropy">drand</a> (prononcé di-rand). Chaque organisation apporte sa propre source unique d'aléatoire au pool d'entropie commun utilisé pour ensemencer le réseau drand, Cloudflare apportant l'aléatoire de LavaRand, bien entendu !</p>
+	<p>Si la League of Entropy a fait ses débuts sous forme de réseau expérimental, conseillée et soutenue dans ses efforts par l'équipe drand de <a href="https://protocol.ai" target="_blank" rel="noopener noreferrer">Protocol Labs</a>, elle est depuis devenue un service Internet fondamental fiable et prêt à la production sur lequel s'appuient diverses applications allant du <a href="https://spec.filecoin.io/libraries/drand" target="_blank" rel="noopener noreferrer">stockage de fichiers distribués</a> aux <a href="https://twitter.com/etherplay/status/1734875536608882799" target="_blank" rel="noopener noreferrer">jeux vidéo en ligne</a>, en passant par les <a href="https://medium.com/tierion/tierion-joins-the-league-of-entropy-replaces-nist-randomness-beacon-with-drand-in-chainpoint-9f3c32f0cd9b" target="_blank" rel="noopener noreferrer">preuves horodatées</a> et le <a href="https://drand.love/docs/timelock-encryption" target="_blank" rel="noopener noreferrer">chiffrement temporisé</a> (dont nous discutons plus bas). La League of Entropy s'est également développée et 18 organisations réparties sur quatre continents participent aujourd'hui au réseau drand.</p>
+	<p>Les balises drand de la League of Entropy (chacune fonctionnant sous des paramètres différents, comme la fréquence de production des valeurs aléatoires et <i>le chaînage</i> ou non des éléments aléatoires — nous y reviendrons plus loin) possèdent deux propriétés importantes qui contribuent à leur fiabilité : elles sont <i>décentralisées</i> et <i>vérifiables</i>. La décentralisation garantit qu'un ou deux acteurs malveillants ne peuvent pas détourner ni biaiser la balise d'aléatoire, tandis que la vérifiabilité permet à quiconque de s'assurer que les valeurs aléatoires sont produites conformément au protocole drand et avec le concours d'un nombre minimal (le seuil) de participants au réseau drand (au moins la moitié, mais généralement plus). Ainsi, la confiance et la fiabilité du réseau drand continuent d'augmenter avec chaque nouveau membre.</p>
+	<p>Nous vous présentons ci-dessous un bref aperçu de la manière dont drand obtient ces propriétés en s'appuyant sur la génération de clés distribuées et les signatures de seuil. N'hésitez pas à consulter notre <a href="https://blog.cloudflare.com/inside-the-entropy">article de blog précédent</a> et certains des <a href="https://drand.love/blog" target="_blank" rel="noopener noreferrer">excellents articles</a> de l'équipe drand si vous souhaitez des informations plus approfondies sur le fonctionnement du réseau.</p>
+	<div class="flex anchor relative">
+		<h3 id="distributed-key-generation-and-threshold-signatures">Génération de clés distribuées et signatures de seuil</h3>
+		<a href="https://blog.cloudflare.com/#distributed-key-generation-and-threshold-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lors de l'installation initiale d'une balise drand, les nœuds du réseau exécutent un protocole de génération de clés distribuées (Distributed Key Generation, DKG) basé sur le <a href="https://en.wikipedia.org/wiki/Distributed_key_generation" target="_blank" rel="noopener noreferrer">schéma d'engagement de Pedersen</a>, dont le résultat est que chaque nœud détient une « part » (une paire de clés) d'une clé de groupe distribuée, qui demeure fixe pendant toute la durée de vie de la balise. Pour que la clé secrète du groupe puisse être utilisée à des fins utiles, comme la signature d'un message, un nombre minimum de nœuds dans le réseau (le seuil, par exemple 7 nœuds sur 9) doit participer à l'élaboration d'une <a href="https://fr.wikipedia.org/wiki/Signature_de_Boneh-Lynn-Shacham" target="_blank" rel="noopener noreferrer">signature de seuil BLS</a>. Vous trouverez ci-dessous les informations relatives au groupe pour la balise <a href="https://drand.love/blog/2023/10/16/quicknet-is-live" target="_blank" rel="noopener noreferrer">quicknet</a> située sur le réseau principal drand de la League of Entropy :</p>
+	<p>(La valeur hexadécimale 52db9b… comprise dans l'URL ci-dessus est le hachage de la configuration de la balise. Rendez-vous sur <a href="https://drand.cloudflare.com/chains" target="_blank" rel="noopener noreferrer">https://drand.cloudflare.com/chains</a> pour une liste de toutes les balises prises en charge par les nœuds de notre réseau principal drand).</p>
+	<pre class="language-curl"><code class="language-curl">curl -s https://drand.cloudflare.com/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/info | jq
+{
+  "public_key": "83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a",
+  "period": 3,
+  "genesis_time": 1692803367,
+  "hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+  "groupHash": "f477d5c89f21a17c863a7f937c6a6d15859414d2be09cd448d4279af331c5d3e",
+  "schemeID": "bls-unchained-g1-rfc9380",
+  "metadata": {
+    "beaconID": "quicknet"
+  }
+}</code></pre>
+	<p>Les nœuds du réseau sont configurés pour travailler ensemble de manière périodique (toutes les 3 secondes pour le quicknet) afin de produire une signature sur un message convenu, comme le numéro du tour en cours et la signature du tour précédent (voir ci-dessous). Chaque nœud utilise sa part de la clé de groupe afin de produire une signature partielle du message pour le tour en cours et la diffuse aux autres nœuds du réseau. Lorsqu'un nœud dispose d'un nombre suffisant de signatures partielles, il peut les regrouper pour produire une signature de groupe pour le tour donné.</p>
+	<p>La signature de groupe pour un tour <i>est</i> l'élément aléatoire (dans le résultat ci-dessus, la valeur aléatoire est simplement le hachage sha256 de la signature, pour les applications qui préfèrent un résultat plus court et de taille fixe). La signature est imprévisible à l'avance tant qu'un nombre suffisant (au moins une majorité, mais le nombre peut être configuré pour être plus élevé) de nœuds du réseau drand sont honnêtes et ne jouent pas de connivence. De même, n'importe qui peut valider la signature pour un tour donné en utilisant la clé publique de groupe de la balise. Nous recommandons aux développeurs d'utiliser les <a href="https://drand.love/developer/clients" target="_blank" rel="noopener noreferrer">bibliothèques</a> client drand ou la <a href="https://drand.love/developer/drand-client" target="_blank" rel="noopener noreferrer">CLI</a> pour effectuer une vérification sur chaque valeur obtenue de la balise.</p>
+	<pre class="language-curl"><code class="language-curl">curl -s https://drand.cloudflare.com/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/13335 | jq
+{
+  "round": 13335,
+  "randomness": "f4eb2e59448d155b1bc34337f2a4160ac5005429644ba61134779a8b8c6087b6",
+  "signature": "a38ab268d58c04ce2d22b8317e4b66ecda5fa8841c7215bf7733af8dbaed6c5e7d8d60b77817294a64b891f719bc1b40"
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="chained-vs-unchained-randomness"><b>Éléments aléatoires chaînés ou non chaînés</b></h3>
+		<a href="https://blog.cloudflare.com/#chained-vs-unchained-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque la League of Entropy a lancé sa première génération de balises drand en 2019, le message de tour sur lequel la signature du groupe était calculée incluait la signature du tour précédent. Cette opération crée une chaîne de tours aléatoires jusqu'au premier tour de « genèse ». L'aléatoire chaîné offre des propriétés intéressantes pour les balises d'aléatoire à source unique et fait partie des exigences de la spécification du <a href="https://csrc.nist.gov/projects/interoperable-randomness-beacons" target="_blank" rel="noopener noreferrer">NIST concernant les balises d'aléatoire publiques interopérables</a>.</p>
+	<p>Toutefois, en 2022, l'équipe drand a introduit la notion d'<a href="https://drand.love/blog/2022/02/21/multi-frequency-support-and-timelock-encryption-capabilities/#unchained-randomness-timed-encryption" target="_blank" rel="noopener noreferrer">https://drand.love/blog/2022/02/21/multi-frequency-support-and-timelock-encryption-capabilities/ - unchained-randomness-timed-encryptionaléatoire non chaîné</a>, dans laquelle le message à signer est <i>prévisible</i> et ne dépend d'aucun élément aléatoire des tours précédents. L'équipe a montré que cette approche propose les mêmes garanties de sécurité que l'aléatoire chaîné pour le réseau drand (les deux requièrent un seuil honnête de nœuds). Lorsque l'aléatoire non chaîné est mis en œuvre dans le <a href="https://drand.love/blog/2023/10/16/quicknet-is-live" target="_blank" rel="noopener noreferrer">quicknet</a>, le message à signer ne comporte simplement que le numéro de tour.</p>
+	<p>L'aléatoire non chaîné offre de puissantes propriétés et améliorations au niveau de l'ergonomie. En termes de facilité d'utilisation, un consommateur de balise d'aléatoire n'a pas besoin de reconstruire la chaîne complète d'éléments aléatoires jusqu'au tour de genèse pour valider intégralement un tour particulier. Les seules informations nécessaires sont le numéro du tour en cours et la clé publique du groupe. Le client bénéficie ainsi d'une plus grande souplesse, puisqu'il peut choisir la fréquence à laquelle il consomme des tours d'aléatoire sans avoir à suivre en permanence la chaîne d'éléments aléatoires.</p>
+	<pre class="language-bash"><code class="language-bash"># chained randomness
+signature = group_sign(round || previous_signature)
+
+# unchained randomness
+signature = group_sign(round)</code></pre>
+	<p>Comme les messages à signer sont connus à l'avance (puisqu'ils indiquent simplement le numéro du tour), l'aléatoire non chaîné permet également d'accéder à une nouvelle propriété particulièrement puissante : le chiffrement temporisé (<i>timelock</i>).</p>
+	<p>Pendules doubles rotatifs</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PVw1hyLALNYG3p20U2f2D/eeac0fd2fe805cabc1b75055cc0b0076/image7-7.png" alt="Rotating double pendulums." class="kg-image" width="1999" height="381" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="timelock-encryption">Chiffrement temporisé</h2>
+		<a href="https://blog.cloudflare.com/#timelock-encryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le chiffrement temporisé (ou « à déclenchement temporisé ») est une méthode permettant de chiffrer un message de telle sorte qu'il ne puisse être déchiffré qu'après un certain laps de temps. Deux approches de base du chiffrement temporisé ont été décrites par <a href="https://dspace.mit.edu/bitstream/handle/1721.1/149822/MIT-LCS-TR-684.pdf" target="_blank" rel="noopener noreferrer">Rivest, Shamir et Wagner</a>.</p>
+	<p>Le déploiement de la cryptographie à déclenchement temporisé peut s'effectuer selon deux approches naturelles :</p>
+	<p>- Utiliser des « problèmes temporisés », c'est-à-dire des problèmes de calcul qui ne peuvent être résolus sans faire fonctionner un ordinateur en permanence pendant au moins un certain temps.</p>
+	<p>- Faire appel à des agents de confiance qui s'engagent à ne pas révéler certaines informations avant une date précise.</p>
+	<p>L'utilisation d'agents de confiance pose le problème évident de s'assurer que les agents sont bien « dignes de confiance ». Nous pouvons suivre diverses approches relatives au partage des secrets pour atténuer ce problème.</p>
+	<p>Le réseau drand est un groupe d'agents indépendants utilisant le partage de secrets à des fins de fiabilité. De même le principe d'avoir « certaines informations » qui ne doivent pas être révélées avant une date spécifiée ressemble beaucoup à la génération d'aléatoire par tour ! Dans le paragraphe suivant, nous allons décrire de quelle manière le chiffrement temporisé peut être mis en œuvre sur un réseau drand à l'aide de l'aléatoire non chaîné, avant de terminer par une démonstration pratique. Nous ne nous attarderons pas sur les groupes bilinéaires et la cryptographie basée sur les paires qui rendent le tout possible aussi, si vous êtes intéressés, nous vous encourageons à lire l'article <a href="https://eprint.iacr.org/2023/189" target="_blank" rel="noopener noreferrer">tlock: Practical Timelock chiffrement from Threshold BLS</a> (tlock : le chiffrement temporisé en pratique grâce aux seuils BLS) par Nicolas Gailly, Kelsey Melissaris et Yolan Romailler.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-timelock-your-secrets"><b>Intégrer un déclenchement temporisé à vos secrets</b></h3>
+		<a href="https://blog.cloudflare.com/#how-to-timelock-your-secrets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Commencez par identifier le tour d'aléatoire qui, une fois révélé, permettra de déchiffrer votre message chiffré par <i>timelock</i>. Comme les réseaux drand produisent de l'aléatoire à intervalles fixes, une observation importante consiste à remarquer que chaque tour au sein d'une balise drand est étroitement lié à un horodatage spécifique (modulo de petits délais pour que le réseau produise effectivement la balise). Cet horodatage peut être facilement calculé en prenant l'horodatage de la genèse de la balise et en lui ajoutant ensuite le nombre de tours, multiplié par la période de la balise.</p>
+	<p>Une fois que vous vous êtes décidé sur le tour, les propriétés des groupes bilinéaires vous permettent de chiffrer votre message à un certain tour à l'aide de la clé publique du groupe de la balise drand.</p>
+	<p>Une fois que les nœuds du réseau drand ont travaillé ensemble afin de dériver l'élément aléatoire du tour (en réalité, il s'agit simplement de la signature du numéro de tour utilisant la clé secrète du groupe de la balise), <i>n'importe qui</i> peut déchiffrer le texte (c'est là qu'intervient la magie des groupes bilinéaires).</p>
+	<pre class="language-bash"><code class="language-bash">ciphertext = EncryptToRound(msg, round, beacon_public_key)</code></pre>
+	<p>Concrètement, le message temporisé est en fait la clé secrète d'un système symétrique. Nous chiffrons donc le message à l'aide d'une clé symétrique et chiffrons cette clé à l'aide d'une clé temporelle, afin de permettre le déchiffrage futur du message.</p>
+	<pre class="language-bash"><code class="language-bash">random = Randomness(round)
+message = Decrypt(ciphertext,random)</code></pre>
+	<p>Pour une démonstration pratique du chiffrement temporisé, nous utiliserons un outil que l'un de nos techniciens a développé à partir de Cloudflare Workers. Le <a href="https://github.com/thibmeu/tlock-worker" target="_blank" rel="noopener noreferrer">code source</a> est accessible au public si vous souhaitez examiner son fonctionnement plus en détail.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Et ensuite ?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-python"><code class="language-python"># 1. Create a file
+echo "A message from the past to the future..." &gt; original.txt
+
+# 2. Get the drand round 1 minute into the future (20 rounds) 
+BEACON="52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971"
+ROUND=$(curl "https://drand.cloudflare.com/$BEACON/public/latest" | jq ".round+20")
+
+# 3. Encrypt and require that round number
+curl -X POST --data-binary @original.txt --output encrypted.pem https://tlock-worker.crypto-team.workers.dev/encrypt/$ROUND
+
+# 4. Try to decrypt it (and only succeed 20 rounds x 3s later)
+curl -X POST --data-binary @encrypted.pem --fail --show-error https://tlock-worker.crypto-team.workers.dev/decrypt</code></pre>
+	<p>Nous espérons que vous avez pris autant de plaisir que nous à revisiter l'histoire de LavaRand et que nous vous aurons donné envie de visiter l'un des bureaux de Cloudflare à l'avenir et de contempler nos installations génératrices d'aléatoire de visu. Nous espérons également que nous vous aurons donné envie d'utiliser l'aléatoire public vérifiable et le chiffrement temporisé de drand dans votre prochain projet.</p>
+	<p>Le chaos est exigé par le chiffrement qui sécurise Internet. Chez Cloudflare, LavaRand continuera à transformer la beauté chaotique de notre monde physique en un flux aléatoire (même après l'ajout de nouvelles sources) afin de nous permettre de lui trouver de nouvelles utilisations que nous, explorateurs (tout comme cette escargote), n'avons pas encore imaginées.</p>
+	<p>Elle regarda le ciel, la mer, la terre, les vagues, les grottes et le sable doré. Elle regarda encore et encore, émerveillée par l'ensemble du monde, et dit à la baleine : « Je me sens si petite ».</p>
+	<p>Un escargot sur une baleine</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aUx8oEz7t6W649nYlAmzD/f4658fe8a6b467804f2e6c21c9dec2cb/image1-30.png" alt="A snail on a whale." class="kg-image" width="1999" height="381" loading="lazy">
+
+	</figure>
+	<p>Restez à l'écoute pour plus d'actualités, d'annonces et de discussions stimulantes ! N'hésitez pas à vous rendre sur la <a href="https://cloudflare.tv/shows/security-week" target="_blank" rel="noopener noreferrer">page d'accueil de la Security Week</a>.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/52095915c232273e4d91f11ab6ae4004/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F52095915c232273e4d91f11ab6ae4004%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+</div>

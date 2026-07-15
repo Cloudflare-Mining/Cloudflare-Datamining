@@ -1,0 +1,237 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-warp-connector-paving-the-path-to-any-to-any-connectivity-2">English</a>、<a href="https://blog.cloudflare.com/zh-tw/introducing-warp-connector-paving-the-path-to-any-to-any-connectivity-2">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/introducing-warp-connector-paving-the-path-to-any-to-any-connectivity-2">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-warp-connector-paving-the-path-to-any-to-any-connectivity-2">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5dQOyRek8tA2iSz1uDFUv9/d2f8b3a6374ad7456eb0b84cfe9b2b77/introducing-warp-connector-paving-the-path-to-any-to-any-connectivity-2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>企業セキュリティの進化し続ける分野において、<a href="https://www.cloudflare.com/ciso" target="_blank" rel="noopener noreferrer">CISO</a>とCIOは、パフォーマンスの優れたAny-to-Any接続を実現するために、新しい企業ネットワークの構築と古い企業ネットワークの維持にたゆまぬ努力を続けなければなりません。ネットワークアーキテクトのチームにとって、ニーズの変化に対応するために自社の環境を調査することは、仕事の半分を占めています。もう一方は、既存の環境にシームレスに統合する新しい革新的なソリューションを発見することです。安全で柔軟なインフラを求めて絶えず構築と強化を行うサイクルは、CloudflareのSASEサービスであるCloudflare Oneのために構築されたものなのです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EJrRp1522sGWgJ2FbWds2/6df257860be57516553e791ef6c28917/image3-30.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Oneは、お客様やアナリストからのフィードバックに基づいて徐々に進化してきました。当社は本日、Cloudflare WARP Connectorの一般公開を発表します。この新ツールは、既存のネットワークインフラに破壊的な変更を加えることなく、双方向、サイト間、メッシュ状の接続の安全性をさらに容易にします。</p>
+	<div class="flex anchor relative">
+		<h2 id="bridging-a-gap-in-cloudflares-zero-trust-story">CloudflareのZero Trust事例のギャップを埋める</h2>
+		<a href="https://blog.cloudflare.com/#bridging-a-gap-in-cloudflares-zero-trust-story" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのアプローチは、ネットワーク接続のための万能ソリューションは存在しないことを認識し、常に幅広い製品を提供することに注力してきました。当社のビジョンはシンプルで、Any-to-Any接続を、あなたが望む方法でご利用いただくことです。</p>
+	<p>WARP Connector以前は、インフラをCloudflareに接続する最も簡単な方法の1つは、ローカルHTTPサーバー、Kubernetesクラスタによって提供されるWebサービス、プライベートネットワークセグメントなどいずれも、<a href="https://www.cloudflare.com/products/tunnel" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>アプリコネクタである<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><i>cloudflared</i></a>を経由するものでした。多くの場合、これはすばらしく機能しますが、時間の経過とともに、cloudflaredの基盤となるアーキテクチャに基づいてサポートできないユースケースのロングテールが表面化するようになりました。これには、顧客がVoIP電話を利用し、ユーザーのソフトフォンへの発信接続を確立するSIPサーバーが必要になったり、CI/CDパイプラインの各段階について関連するステークホルダーに通知を送信するCI/CDサーバーが必要になったりする状況が含まれます。このブログ記事の後半では、これらのユースケースについて詳しく説明します。</p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer">OSI参照モデル</a>のレイヤー4にある_clouflared_プロキシとして、その設計は、オリジンサービスへのリクエストをプロキシするために特別に最適化されたものであり、オリジンサービスからのリクエストを処理するアクティブなリスナーとなるようには設計されていませんでした。この設計上のトレードオフは、cloudflaredがアプリサーバーにプロキシするすべてのリクエストを、ソースNATを使って行う必要があることを意味します。このセットアップは、お客様がオリジナルサービスの前にcloudflaredをデプロイするために、ルーティングテーブルを更新する必要がない場合に便利です。しかし、これは同時に、リクエスト送信するクライアントの真のソースIPを見ることができなくなることを意味します。これは、ネットワークファイアウォールがすべてのネットワークトラフィックをログに記録する場合には重要です。なぜなら、すべてのリクエストのソースIPが_cloudflaredの_IPアドレスになり、お客様が真のソースを把握できなくなるためです。</p>
+	<div class="flex anchor relative">
+		<h2 id="build-or-borrow">構築するか、借用するか</h2>
+		<a href="https://blog.cloudflare.com/#build-or-borrow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nMu5Ecf8e72QaIbf6eyiI/2e3bc3445611bd6cf0a6fa1fee96e0af/image6-10.png" alt="" class="kg-image" width="1826" height="1000" loading="lazy">
+
+	</figure>
+	<p>この問題を解決するために、私たちは2つの潜在的なソリューションを特定しました。これは、新しいコネクタを構築することでゼロから始める方法と、cloudflaredまたはWarpのような既存のコネクタから借用する方法です。</p>
+	<p>次の表は、2つのアプローチのトレードオフを概説したものです。</p>
+	<p>機能</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;table-layout:fixed;width:468pt">
+		<colgroup>
+			<col>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Features</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Build in </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">cloudflared</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Borrow from WARP&nbsp;</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Bidirectional traffic flows</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">As described in the earlier section, limitations of Layer 4 proxying.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">This does proxying at&nbsp;</span></p>
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Layer 3, because of which it can act as default gateway for that subnet, enabling it to support traffic flows from both directions.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">User experience</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">For Cloudflare One customers, they have to work with two distinct products (cloudflared and WARP) to connect their services and users.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">For Cloudflare One customers, they just have to get familiar with a single product to connect their users as well as their networks.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Site-to-site connectivity between branches, data centers (on-premise and cloud) and headquarters.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Not recommended</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">For sites where running&nbsp; agents on each device is not feasible, this could easily connect the sites to users running WARP clients in other sites/branches/data centers. This would work seamlessly where the underlying tunnels are all the same.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Visibility into true source IP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">It does source NATting.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Since it acts as the default gateway, it preserves the true source IP address for any traffic flow.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">High availability</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Inherently reliable by </span><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/deploy-cloudflared-replicas" style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">design </span></a><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">and supports replicas for failover scenarios.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Reliability specifications are very different for a default gateway use case vs endpoint device agent. Hence, there is opportunity to innovate here.&nbsp;</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>cloudflaredで構築</p>
+	<p>Warpから借用&nbsp;</p>
+	<p>双方向のトラフィックフロー</p>
+	<p>前のセクションで説明したように、レイヤー4のプロキシは制限されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WD2pig7ka0aWKGTL8EBJ0/91cedc19d8eda4f402b336e8219c958e/image2-31.png" alt="" class="kg-image" width="1256" height="674" loading="lazy">
+
+	</figure>
+	<p>プロキシの場所&nbsp;</p>
+	<p>レイヤー3になります。そのサブネットのデフォルトゲートウェイとして動作し、両方向からのトラフィックフローをサポートすることができます。</p>
+	<p>ユーザーエクスペリエンス</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aRUqSm8U71JrJlAjpaR85/097753cc28df73f7d5719633343b18ca/image5-18.png" alt="" class="kg-image" width="1938" height="696" loading="lazy">
+
+	</figure>
+	<p>Cloudflare Oneのお客様の場合、2つの異なる製品（cloudflaredとWarp）を操作してサービスとユーザーを接続する必要があります。</p>
+	<p>Cloudflare Oneのお客様の場合、ネットワークとユーザーを接続する1つの製品に慣れるだけで済みます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Yolk1Mb2eQqmkibRapZzU/2748774f23b3df87d395a11b5d6c8281/image4-29.png" alt="" class="kg-image" width="1842" height="1026" loading="lazy">
+
+	</figure>
+	<p>支店、データセンター（オンプレミスおよびクラウド）、本社間のサイト間接続</p>
+	<p>推奨されません</p>
+	<p>各デバイスでエージェントを実行することが現実的ではないサイトの場合、他のサイト/支店/データセンターでWarpクライアントを実行しているユーザーに簡単にサイトを接続させることができます。これは、基盤となるトンネルがすべて同じであれば、シームレスに機能します。</p>
+	<p>真のソースIPの可視化</p>
+	<p>ソースNATを使用。</p>
+	<p>デフォルトのゲートウェイとして機能するため、どのようなトラフィックフローに対しても真のソースIPアドレスを保持します。</p>
+	<p>高い可用性</p>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/deploy-cloudflared-replicas" target="_blank" rel="noopener noreferrer">設計</a>上、本質的に信頼でき、フェイルオーバーの際のレプリカをサポートします。</p>
+	<p>信頼性の仕様は、デフォルトゲートウェイのユースケースとエンドポイントデバイスエージェントでは大きく異なります。したがって、ここにイノベーションの機会があるのです。&nbsp;</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/454aKuxMVd93ZAmtubFPl/ba84f1e86a2c1b0ebaaa7e6e36f29199/image1-32.png" alt="" class="kg-image" width="1999" height="411" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="introducing-warp-connector">WARP Connectorの導入</h2>
+		<a href="https://blog.cloudflare.com/#introducing-warp-connector" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、WARP Connectorの導入により、サーバーから開始される（SIP/VoIP）フロー、そして支社、本社、クラウドプラットフォームをつなぐサイト間接続、Warp-to-Warpによるメッシュ状ネットワークを利用でき、新たな<a href="https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/#connecting-networks" target="_blank" rel="noopener noreferrer">可能性</a>が開かれました。内部的には、この新しいコネクターはWarpクライアントの拡張機能であり、ネットワーク内のあらゆるサブネットの仮想ルーターとして機能し、Cloudflareを介してトラフィックをオン/オフランプすることができます。</p>
+	<p>Warp上で構築することで、IPトラフィックをルーティングする目的で物理インターフェース（NIC）を論理的に細分化するために、ホスト上に仮想ネットワークインターフェースを作成するという設計を活用することができました。これにより、ホストとCloudflareエッジ間で維持されたWireGuard/<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque">MASQUE</a>トンネルを介して双方向のトラフィックを送信することができます。このアーキテクチャのおかげで、お客様はクライアントの真のソースIPを可視化できるという付加価値も得ることができます。</p>
+	<p>WARP Connectorは、追加のルーティング変更なしにデフォルトのゲートウェイに簡単に導入できます。あるいは、WARP Connector経由でルーティングする必要のある特定のCIDRに対して静的ルートを設定することができます。また、この静的ルートは、デフォルトゲートウェイまたはそのサブネット内のすべてのホストで設定することもできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="private-network-use-cases">プライベートネットワークのユースケース</h2>
+		<a href="https://blog.cloudflare.com/#private-network-use-cases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここでは、お客様が新しいコネクターを導入したいと思われる理由をいくつか説明します。ただし、このソリューションは、Microsoftのシステムセンターコンフィギュレーションマネージャー（SCCM）、Active Directoryサーバーの更新、VoIPおよびSIPトラフィック、複雑なCI/CDパイプライン相互作用のある開発者ワークフローなど、多数のサービスをサポートできることを覚えておいてください。また、このコネクターは、cloudflaredおよびMagic WANと一緒に実行でき、Cloudflareグローバルネットワークへのスタンドアロンのリモートアクセスおよびサイト間コネクターとしても使用できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="softphone-and-voip-servers">ソフトフォンとVoIPサーバー</h3>
+		<a href="https://blog.cloudflare.com/#softphone-and-voip-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーがVoIPソフトウェアサービスを介して音声通話やビデオ通話を確立する場合、通常、プライベートネットワーク内のSIPサーバーが、エンドユーザーの最後の既知のIPアドレスを使用して接続をブローカーします。しかし、トラフィックがパス上のどこかにプロキシされた場合、参加者は音声信号またはデータ信号を部分的にしか受信できないことが多くあります。「WARP Connector」を使用することで、お客様はこれらのサービスにきめ細かいポリシーを適用して、安全なアクセスを実現し、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustフレームワーク</a>内でVoIPインフラを強化できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-access-to-ci-cd-pipeline">CI/CDパイプラインへのアクセス保護</h3>
+		<a href="https://blog.cloudflare.com/#securing-access-to-ci-cd-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>組織のDevOpsエコシステムは一般的に多くの部分から構築されていますが、JenkinsやTeamcityなどのCI/CDサーバーはすべての開発アクティビティの中核となります。そのため、CI/CDサーバーの保護が重要です。WARP ConnectorとWarpクライアントを使用することで、組織はCI/CDパイプライン全体の安全性を確保し、また簡単に合理化することができます。</p>
+	<p>Kubernetesアプリ用の典型的なCI/CDパイプラインを見てみましょう。環境は、上の図のように設定されており、開発者およびQAのノートパソコンにWarpクライアントがあり、WARP Connectorは異なるネットワーク上のCI/CDサーバーとステージングサーバーを安全に接続しています。</p>
+	<ol>
+		<li>
+			<p>通常、CI/CDパイプラインは、開発者がコード変更をコミットし、CI/CDサーバー上でWebフックを呼び出したときにトリガーされます。</p>
+		</li>
+		<li>
+			<p>イメージが構築されたら、コードをデプロイします。これは通常、テスト、ステージング、本番という段階で行われます。</p>
+		</li>
+		<li>
+			<p>テスト/ステージング環境でイメージの準備ができたら、開発者とQAエンジニアに通知が送信されます。</p>
+		</li>
+		<li>
+			<p>QAエンジニアは、CI/CDサーバーからWebフック経由で通知を受け取り、監視とトラブルシューティングのワークフローを開始します。</p>
+		</li>
+	</ol>
+	<p>WARP Connectorを利用することで、お客様はエコシステムをプライベートにし、一般に公開しないことで、開発者をDevOpsエコシステム内のツールに簡単に接続させることができます。DevOpsエコシステムがCloudflareに安全に接続されれば、CI/CDパイプラインへのアクセスを保護するために、きめ細かいセキュリティポリシーを簡単に適用できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="true-source-ip-address-preservation">真のソースIPアドレスの保持</h3>
+		<a href="https://blog.cloudflare.com/#true-source-ip-address-preservation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Microsoft ADサーバーや非Webアプリサーバーを運用している組織は、監査やポリシーアプリのために真のソースIPアドレスを特定する必要があることがよくあります。これらの要件が存在する場合、WARP Connectorはこれを簡素化し、NAT境界を追加しないソリューションを提供します。これは、不健全なソースIPアドレス<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">のレート制限</a>境界内のACLベースのポリシー、エンドユーザーからの追加診断の収集などに役立ちます。</p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started-with-warp-connector">WARP Connectorの利用を開始</h2>
+		<a href="https://blog.cloudflare.com/#getting-started-with-warp-connector" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このローンチの一環として、Cloudflare Oneダッシュボードにいくつかの変更を加え、異なるネットワークオン/オフランプオプションをより際立たせています。本日より、ダッシュボードに新しい「ネットワーク」タブが表示されます。これが、Cloudflare Tunnel UIの新しいホームになります。</p>
+	<p>また、「Tunnel」の横に、新しい「Route」タブを導入しています。このページは、お客様の仮想ネットワーク、Cloudflare Tunnel、およびそれらに関連付けられたルートの組織図を表示します。この新しいページは、ネットワーク設定に関する次のようなお客様の質問に答えます。たとえば、「どのCloudflare Tunnelに私のホスト192.168.1.2へのルートがありますか？」」、「CIDR 192.168.2.1/28のルートが存在する場合、どうすればアクセスできますか？」、「自分の環境で重複しているCIDRは何ですか？そしてそれらが属するVNETは何ですか？」などです。これは、接続性問題のトラブルシューティングにCloudflareダッシュボードを使用する、非常に複雑な企業ネットワークを保有するお客様にとって、非常に有益です。</p>
+	<p>WARP Connectorの利用は簡単です。現在Linuxホストにデプロイ可能で、ユーザーは「Tunnelの作成」を選択し、cloudflaredとWarpのいずれかを選択して、ダッシュボードから直接デプロイできます。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#set-up-warp-connector" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>に従って、いくつかの簡単なステップで導入を開始してください。近い将来、WARP Connectorを導入できるより多くのプラットフォームのサポートを追加する予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プライベートベータ版をご利用のすべてのお客様、貴重なフィードバックをいただきどうもありがとうございます。今後、Cloudflareがこの先の数四半期で直面している課題は、デプロイメントの簡素化、cloudflaredのそれを反映させること、そして、冗長性とフェイルオーバーメカニズムを通じた高可用性の強化です。</p>
+	<p>私たちはCloudflare Oneプラットフォームの革新と強化に向けて努力を続けていきますので、今後のアップデートにご期待ください。お客様がWARP Connectorを活用して、接続性とセキュリティ環境を変革する様子が見られることを楽しみにしています。</p>
+</div>

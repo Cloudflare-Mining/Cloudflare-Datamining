@@ -1,0 +1,107 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/connecting-to-production-the-architecture-of-remote-bindings">English</a>および<a href="https://blog.cloudflare.com/ko-kr/connecting-to-production-the-architecture-of-remote-bindings">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k95HiCzbJnpoKpclcERPx/20286896d457bbbbcb23b6a46ca8405c/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>リモートバインディングは、ローカルでシミュレートされたリソース<i>ではなく</i>、Cloudflareアカウント上にデプロイされたリソースに接続するバインディングです。当社は最近、<a href="https://blog.cloudflare.com/cloudflare-developer-platform-keeps-getting-better-faster-and-more-powerful/#connect-to-production-services-and-resources-from-local-development-with-remote-bindings-now-ga"><u>リモートバインディングが一般に利用可能になった</u></a>ことを発表しました。</p>
+	<p>このリリースにより、ローカルマシンでWorkerコードを実行しながら、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2バケット</u></a>や<a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"><u>D1データベース</u></a>などのデプロイされたリソースに接続できるようになりました。つまり、反復ごとにデプロイするオーバーヘッドをかけずに、実際のデータやサービスに対してローカルコードの変更をテストできるのです。</p>
+	<p>このブログ記事では、当社がどのようにしてシームレスなローカル開発体験を実現したかについて、技術的な詳細を掘り下げます。</p>
+	<div class="flex anchor relative">
+		<h3 id="developing-on-the-workers-platform">Workersプラットフォームでの開発</h3>
+		<a href="https://blog.cloudflare.com/#developing-on-the-workers-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workersプラットフォーム</u></a>の重要な部分は、何かをテストしたいたびにコードをデプロイすることなく、ローカルにコードを開発できる能力です。しかし、これをサポートする方法は、数年にわたって大きく変化しました。</p>
+	<p>リモートモードで<code>wrangler</code>開発を始めることから始めました。これは、コードに変更を加えるたびにCloudflareのネットワーク上で実行されるWorkerのプレビューバージョンをデプロイして接続することで機能し、開発時にテストすることができます。ただし、リモートモードは完璧ではありません。複雑で保守が難しいのです。イテレーション速度が遅い、デバッグ接続が不安定、マルチWorkerシナリオのサポートがないなど、開発者体験には多くのものが含まれています。</p>
+	<p>これらの問題などをきっかけに、Workersの完全ローカル開発環境への多額の投資が動機となりました。2023年半ばにリリースされたこの開発環境は、<a href="https://blog.cloudflare.com/wrangler3"><u>wrangler開発のデフォルト体験になりました</u></a>。それ以来、当社はCloudflare Viteプラグイン、<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>、<a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Cloudflare Viteプラグイン</u></a>（<a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>@cloudflare/vitest-pool-workers</u></a>とともに）と<a href="https://developers.cloudflare.com/workers/testing/miniflare" target="_blank" rel="noopener noreferrer"><u>Miniflare</u></a>を使って、ローカル開発エクスペリエンスに膨大な努力を費やしてきました。</p>
+	<p>それでも、元のリモートモードは、フラグ <code>wrangler dev --remote</code> を介してアクセス可能なままでした。リモートモードを使用すると、完全にローカルな体験とここ数年にわたって行ってきた改善がバイパスされてしまいます。では、なぜいまだに使われているのでしょうか？Cloudflareのユニークな特徴は、ローカルで開発しながら、リモートリソースへのバインディングです。ローカルモードを使用してWorkerをローカルに開発する場合、すべての<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>バインディング</u></a>がローカルの（最初は空の）データを使用してローカルでシミュレートされます。これは、テストデータを使用してアプリのロジックを反復処理するのに最適ですが、チーム全体でリソースを共有したい、実際のデータに関連したバグを再現したい、または実際のリソースを使用して本番環境でアプリが動作することを確認したい場合など、不十分です。 .</p>
+	<p>そこで、当社は好機だと考えました。リモートモードの優れた部分（つまり、リモートリソースへのアクセスなど）を<code>wrangler dev</code>に知らせるための単一のフローがあり、ローカル開発の進歩をユーザーにロックアウトすることなく、多くのユースケースを可能にします。そして、それが私たちの取り組みです。</p>
+	<p>Wrangler v4.37.0現在、バインディングがリモートリソースを使用するか、ローカルリソースを使用するか、バインディングごとに<code>選択</code>できるようになりました。リモートオプションを指定するだけです。これを再度強調することが重要です。<code>remote: true!</code> を追加するだけで済みます。API キーや認証情報の複雑な管理は必要ありません。すべては、Wrangler の既存の Oauth 接続を使用して Cloudflare API に機能します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+  "name": "my-worker",
+  "compatibility_date": "2025-01-01",
+  "kv_namespaces": [{
+    "binding": "KV",
+    "id": "my-kv-id",
+  },{
+    "binding": "KV_2",
+    "id": "other-kv-id",
+    "remote": true
+  }],
+  "r2_buckets": [{
+    "bucket_name": "my-r2-name",
+    "binding": "R2"
+  }]
+}</code></pre>
+	<p>鋭い方は、ローカル開発者からリモートリソースにアクセスして、すでにいくつかのバインディングが機能していることに気づいているかもしれません。最も顕著なのは、<a href="https://developers.cloudflare.com/workers-ai/configuration/bindings" target="_blank" rel="noopener noreferrer"><u>AIバインディング</u></a>が、一般的なリモートバインディングソリューションがどのようなものかを示す先駆者でした。Workers AIで使用できるすべての異なるモデルをサポートする真のローカル体験は現実的ではなく、AIモデルの膨大な事前ダウンロードが必要だからです。</p>
+	<p>Workers内のさまざまな製品がリモートバインディングに似たものを必要としていることに気づくと（たとえば、ImagesとHyperdriveなど）、異なるソリューションの寄せ集めのようなものになりました。現在、すべてのバインディングタイプに対して機能する、単一のリモートバインディングソリューションに統合されています。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-it">構築方法</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、本番用のWorkersコードを変更することなく、開発者が本当に簡単にリモートリソースにアクセスできるようにしたかったのです。そこで、Workerで使用する時点でリモートリソースからデータを取得するというソリューションを使いました。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const value = await env.KV.get("some-key")</code></pre>
+	<p><i><sup>上記のコードスニペットは、env.KV </sup></i><a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs" target="_blank" rel="noopener noreferrer"><i><sup><u>KVネームスペース</u></sup></i></a><i><sup>の「some-key」値にアクセスすることを示しています。これは、ローカルでは利用できず、ネットワーク経由で取得する必要があります。</sup></i></p>
+	<p>では、それが私たちの望む要件だとしたら、どのようにして関係を構築するのでしょうか？例えば、Workerで<code>env.KV.put(「key」、「value」</code>）を呼び出すユーザーから、実際にリモートKVストアに保存するにはどうすればいいでしょうか。明らかな解決策は、<a href="https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update" target="_blank" rel="noopener noreferrer"><u>Cloudflare API</u></a>を使うことかもしれませんでした。ローカルにEnv全体をAPI呼び出しを行うスタブオブジェクトで置き換え、<code>env.KV.put()</code>をPUT <code>http:///accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}</code>に変換することもできました。</p>
+	<p>これは、KV、R2、D1など、成熟したHTTP APIを持つバインディングではうまく機能したでしょうが、実装と保守がかなり複雑なソリューションになったでしょう。バインディングAPIサーフェス全体を複製し、バインディング上で可能なすべての操作を同等のAPI呼び出しに変換しなければならなかったでしょう。さらに、バインディング操作の中には同等のAPI呼び出しがないため、この戦略ではサポートできません。</p>
+	<p>むしろ、すぐに使えるAPIがあったことに気づきました。私たちがプロダクションで使っているのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-bindings-work-under-the-hood-in-production">本番環境におけるバインディングの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-bindings-work-under-the-hood-in-production" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workersプラットフォームのほとんどのバインディングは、本質的に<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>サービスバインディング</u></a>に集約されます。サービスバインディングは、2つのWorkers間のリンクであり、HTTPまたは<a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JSRPC</u></a>（JSRPCについては後ほど説明します）経由で通信できます。</p>
+	<p>例えば、KVバインディングは、認可されたWorkerとプラットフォームWorkerの間のサービスバインディングとして実装され、HTTPの話となります。KVバインディング用のJS APIはWorkersランタイムに実装されており、<code>env.KV.get()</code>のようなコールをKVサービスを実装するWorkerへのHTTPコールに変換します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PwugWAyVPMq086BKt9cjh/cfea7dbb50b9b2983bd21fcb7b80334d/image2.png" alt="" class="kg-image" width="927" height="388" loading="lazy">
+	</figure>
+	<p><i><sup>本番環境におけるKVバインディングの仕組みを示す簡略モデルを示す図</sup></i></p>
+	<p><code>env.KV.get()</code>呼び出しを翻訳するランタイムと、KVサービスを実装するWorkerの間に、自然な非同期ネットワーク境界があることに気づくかもしれません。そして、その自然なネットワーク境界を利用して、リモートバインディングを実装できることに気づきました。<i>本番環境</i> ランタイムが <code>env.KV.get()</code> を HTTP 呼び出しに変換する代わりに、<i>ローカル</i> ランタイム (<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>) が <code>env.KV.get()</code> を HTTP 呼び出しに変換し、本番環境ランタイムをバイパスして KV サービスに直接送信することができます。Cloudflareはこれを実現したのです！</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JNPZ2MM5IZ4TSXfN0qywV/804b7997d115405bc3f4d335cb21e626/image3.png" alt="" class="kg-image" width="974" height="402" loading="lazy">
+	</figure>
+	<p><i><sup>単一のKVバインディングでローカルで実行されるworkerを示す図。リモートプロキシサーバーに通信する1つのリモートプロキシクライアントがあり、そのクライアントがリモートKVと通信する</sup></i></p>
+	<p>上の図は、リモートKVバインディングで実行されているローカルWorkerを示しています。ローカルKVシミュレーションではなく、リモートプロキシクライアントによって処理されるようになりました。次に、このWorkerは、実際のリモートKVリソースに接続されたリモートプロキシサーバーと通信し、最終的にローカルWorkerはリモートKVデータとシームレスに通信できます。</p>
+	<p>各バインディングは、リモートプロキシクライアント（すべて同じリモートプロキシサーバーに接続されている）またはローカルシミュレーションによって独立して処理でき、図のように、一部のバインディングはローカルでシミュレートされ、他のバインディングは実際のリモートリソースに接続する、非常に動的なワークフローが可能になります。下の例にあるものです：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yUYvFjpxGv7GcC12l7zr1/a7d46f33869448e1f3f13540d741ff40/image1.png" alt="" class="kg-image" width="707" height="360" loading="lazy">
+	</figure>
+	<p><i><sup>上の図と設定は、2つのローカル（KVとR2）、1つのリモート（KV_2）という3つの異なるリソースにバインドされたWorker（お客様のコンピューター上で実行）を示しています。</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="how-jsrpc-fits-in">JSRPC との関係</h3>
+		<a href="https://blog.cloudflare.com/#how-jsrpc-fits-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記のセクションでは、HTTP接続（KVやR2など）に支えられたバインディングについて説明していますが、最新のバインディングは<a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JSRPC</u></a>を使用しています。つまり、ローカルで実行している<code>workerd</code>が本番ランタイムインスタンスにJSRPCを通信するための方法が必要だったのです。</p>
+	<p>その時、幸運なことに、<a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library"><u>Cap'n Webのブログ</u></a>で詳述するように、これを可能にするための並行プロジェクトが進行していました。ローカル<code>workerd</code>インスタンスとリモートランタイムインスタンス間の接続を<a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>Cap'n Webを使ってwebsocketで通信する</u></a>ことで、これを統合し、JSRPCに支えられたバインディングが機能するようにしました。これには、<a href="https://developers.cloudflare.com/images/transform-images/transform-via-workers" target="_blank" rel="noopener noreferrer"><u>画像</u></a>のような新しいバインディングや、独自のWorkersへのJSRPCサービスバインディングが含まれます。</p>
+	<div class="flex anchor relative">
+		<h3 id="remote-bindings-with-vite-vitest-and-the-javascript-ecosystem">Vite、Vite、JavaScriptエコシステムとのリモートバインディング</h3>
+		<a href="https://blog.cloudflare.com/#remote-bindings-with-vite-vitest-and-the-javascript-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このエキサイティングな新機能を<code>Wrangler開発</code>だけに限定したくありませんでした。Cloudflare Viteプラグインとvitest-pool-workersパッケージでサポートし、JavaScriptエコシステムの他の潜在的なツールやユースケースにも恩恵を受けられるようにしたいと考えました。</p>
+	<p>これを実現するために、wranglerパッケージは<code>startRemoteProxySession</code>などのユーティリティをエクスポートし、<code>wrangler開発</code>を活用しないツールもリモートバインディングをサポートできるようになりました。<a href="https://developers.cloudflare.com/workers/development-testing/#remote-bindings" target="_blank" rel="noopener noreferrer"><u>公式のリモートバインディングドキュメント</u></a>に詳細を記載しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-try-this-out">試用方法</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-try-this-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>Wrangler開発</code>を使うだけ！Wrangler v4.37.0（<code>@cloudflare/vite-plugin</code> v1.13.0、<code>@cloudflare/vitest-pool-workers</code> v0.9.0）より、リモートバインディングはすべてのプロジェクトで利用可能で、バインディングごとに追加することで有効にすることができます。<code>remote: true</code>は、<a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer"><u>Wrangler設定ファイル</u></a>のバインディング定義に当てはまります。</p>
+</div>

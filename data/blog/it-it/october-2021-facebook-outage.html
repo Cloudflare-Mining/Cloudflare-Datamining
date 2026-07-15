@@ -1,0 +1,175 @@
+<div class="mb2 gray5">Lettura di 5 min</div>
+<div class="mt4">Questo post è disponibile anche in <a href="https://blog.cloudflare.com/october-2021-facebook-outage">English</a>, <a href="https://blog.cloudflare.com/zh-tw/october-2021-facebook-outage">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/october-2021-facebook-outage">Français</a>, <a href="https://blog.cloudflare.com/de-de/october-2021-facebook-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/october-2021-facebook-outage">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/october-2021-facebook-outage">Português</a>, <a href="https://blog.cloudflare.com/es-es/october-2021-facebook-outage">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/october-2021-facebook-outage">Рyсский</a> e <a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7y9jJTgSukF7V3DIHZyBPK/2387ab2641e6b8c0da2402279321b0f7/october-2021-facebook-outage.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>“Facebook non può essere down, vero?”, abbiamo pensato per un secondo.</p>
+	<p></p>
+	<p>Oggi alle 15:51 UTC, abbiamo aperto un incidente interno intitolato "Ricerca DNS di Facebook che restituisce SERVFAIL" perché eravamo preoccupati che qualcosa non andasse con il nostro resolver DNS <a href="https://developers.cloudflare.com/warp-client" target="_blank" rel="noopener noreferrer">1.1.1.1</a>. Ma mentre stavamo per postare sulla nostra pagina di <a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">stato pubblico</a> ci siamo resi conto che stava succedendo qualcos'altro di più serio.</p>
+	<p>I social media sono rapidamente andati a fuoco, riportando ciò che anche i nostri ingegneri hanno rapidamente confermato. Facebook e i suoi servizi affiliati WhatsApp e Instagram erano, infatti, tutti down. La risoluzione dei loro nomi DNS è stata interrotta e gli IP della loro infrastruttura erano improvvisamente irraggiungibili. È stato come se qualcuno avesse "tirato i cavi" dai datacenter tutti in una volta e li avesse disconnessi da Internet.</p>
+	<p>Non è stato un problema DNS in sé, ma il mancato DNS è stato il primo sintomo che abbiamo visto di un'interruzione più ampia delle attività di Facebook.</p>
+	<p>Com'è stato possibile?</p>
+	<div class="flex anchor relative">
+		<h3 id="update-from-facebook">Aggiornamento da Facebook</h3>
+		<a href="https://blog.cloudflare.com/#update-from-facebook" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Facebook ha appena <a href="https://engineering.fb.com/2021/10/04/networking-traffic/outage" target="_blank" rel="noopener noreferrer">pubblicato un post sul blog</a> fornendo dettagli di cosa è successo internamente. Dal di fuori, abbiamo visto i problemi BGP e DNS descritti in questo post, ma in realtà il problema è iniziato con una modifica della configurazione che ha interessato l'intera dorsale interna. Ciò è precipitato su Facebook e altre proprietà che sono scomparse e il personale interno a Facebook ha avuto difficoltà a far ripartire il servizio.</p>
+	<p>Facebook ha pubblicato <a href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details" target="_blank" rel="noopener noreferrer">un ulteriore post</a> con molti più dettagli su quello che è successo. Puoi leggere quel post per sapere cosa è successo all'interno e questo post per quello che si è visto da fuori.</p>
+	<p>Consideriamo cosa abbiamo visto da fuori.</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-bgp">BGP</h3>
+		<a href="https://blog.cloudflare.com/#meet-bgp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/it-it/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a> sta per Border Gateway Protocol ed è un meccanismo per scambiare informazioni di routing tra sistemi autonomi (AS) su Internet. I grandi router che fanno funzionare Internet hanno enormi elenchi costantemente aggiornati dei possibili percorsi che possono essere utilizzati per consegnare ogni pacchetto di rete alle loro destinazioni finali. Senza BGP, i router Internet non saprebbero cosa fare e Internet non funzionerebbe.</p>
+	<p>Internet è letteralmente una rete di reti, tutte tenute insieme da BGP. BGP consente a una rete (ad esempio Facebook) di pubblicizzare la propria presenza ad altre reti che formano l'Internet. Mentre scriviamo Facebook non sta pubblicizzando la sua presenza, gli ISP e altre reti non riescono a trovare la rete di Facebook e quindi non è disponibile.</p>
+	<p>Ogni singola rete ha un proprio ASN (Autonomous System Number), ovvero un numero sistema autonomo. Un sistema autonomo (AS, Autonomous System) è una singola rete con una con una politica di routing interna unificata. Un AS può originare prefissi (che controllano un gruppo di indirizzi IP), così come prefissi di transito (che sanno come raggiungere gruppi specifici di indirizzi IP).</p>
+	<p>L'ASN di Cloudflare è <a href="https://www.peeringdb.com/asn/13335" target="_blank" rel="noopener noreferrer">AS13335</a>. Ogni ASN ha bisogno di annunciare le sue route di prefisso a Internet utilizzando BGP altrimenti nessuno saprà come collegarsi e dove trovarci.</p>
+	<p>Il nostro <a href="https://www.cloudflare.com/it-it/learning" target="_blank" rel="noopener noreferrer">Centro di apprendimento</a> sa cosa sono <a href="https://www.cloudflare.com/it-it/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a> e gli <a href="https://www.cloudflare.com/it-it/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">ASN</a> e come funzionano.</p>
+	<p>In questo diagramma semplificato, sono riportati sei sistemi autonomi su Internet e due possibili route che un pacchetto può utilizzare per andare dall'inizio alla fine. AS1 → AS2 → AS3 è il percorso più rapido mentre AS1 → AS6 → AS5 → AS4 → AS3 è il più lento, ma può essere utilizzato in caso di errore del primo.</p>
+	<p>Alle 15:58 UTC abbiamo notato che Facebook aveva smesso di annunciare i percorsi ai suoi prefissi DNS. Ciò ha fatto sì che, almeno, i server DNS di Facebook non fossero disponibili. Per questo motivo, il resolver DNS 1.1.1.1 di Cloudflare non è stato più in grado di rispondere alle domande che richiedevano l'indirizzo IP di facebook.com.</p>
+	<p>Nel frattempo, altri indirizzi IP di Facebook sono rimasti instradati ma non sono stati particolarmente utili poiché senza DNS Facebook e i relativi servizi non erano effettivamente disponibili:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32OFXCXQN61ABya2ei1YR2/b8dc0f86b97079926dd6de75533f0912/image5-10.png" alt="" class="kg-image" width="1500" height="698" loading="lazy">
+
+	</figure>
+	<p>Teniamo traccia di tutti gli aggiornamenti e gli annunci BGP che vediamo nella nostra rete globale. Su scala, i dati che raccogliamo ci danno una visione di come Internet è connesso e dove il traffico deve fluire da e verso ogni parte del pianeta.</p>
+	<pre class="language-bash"><code class="language-bash">route-views&gt;show ip bgp 185.89.218.0/23
+% Network not in table
+route-views&gt;
+
+route-views&gt;show ip bgp 129.134.30.0/23
+% Network not in table
+route-views&gt;</code></pre>
+	<p>Un messaggio BGP UPDATE informa un router di eventuali modifiche apportate a un annuncio di prefisso o rimuove completamente il prefisso. Possiamo vederlo chiaramente nel numero di aggiornamenti che abbiamo ricevuto da Facebook durante il controllo del nostro database BGP delle serie temporali. Normalmente questo grafico è abbastanza silenzioso: Facebook non apporta molte modifiche alla sua rete minuto per minuto.</p>
+	<pre class="language-bash"><code class="language-bash">route-views&gt;show ip bgp 129.134.30.0   
+BGP routing table entry for 129.134.0.0/17, version 1025798334
+Paths: (24 available, best #14, table default)
+  Not advertised to any peer
+  Refresh Epoch 2
+  3303 6453 32934
+    217.192.89.50 from 217.192.89.50 (138.187.128.158)
+      Origin IGP, localpref 100, valid, external
+      Community: 3303:1004 3303:1006 3303:3075 6453:3000 6453:3400 6453:3402
+      path 7FE1408ED9C8 RPKI State not found
+      rx pathid: 0, tx pathid: 0
+  Refresh Epoch 1
+route-views&gt;</code></pre>
+	<p>Ma intorno alle 15:40 UTC abbiamo visto un picco di modifiche al routing da Facebook. Ed è qui che sono iniziati i problemi.</p>
+	<p>Se dividiamo questa vista per annunci di route e ritiri, abbiamo un'idea ancora migliore di quello che è successo. Le route sono state ritirate, i server DNS di Facebook sono andati offline e un minuto dopo che si è verificato il problema, gli ingegneri di Cloudflare erano in una stanza chiedendosi perché 1.1.1.1 non riuscisse a risolvere facebook.com e preoccupandosi che fosse in qualche modo un guasto con i nostri sistemi.</p>
+	<p>Con quei ritiri, Facebook e i suoi siti si erano effettivamente disconnessi da Internet.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5y7pAAyjmIsSJXessKptMg/0f842af9af2a9c2550ff64f43ea7c365/image4-11.png" alt="" class="kg-image" width="1500" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="dns-gets-affected">DNS interessato</h3>
+		<a href="https://blog.cloudflare.com/#dns-gets-affected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71IU6JSuaRY843UulhFiKW/cb6d58af732594976beb1a78c0f8d308/image3-9.png" alt="" class="kg-image" width="1999" height="258" loading="lazy">
+
+	</figure>
+	<p>Come diretta conseguenza, i resolver DNS di tutto il mondo hanno smesso di risolvere i loro nomi di dominio.</p>
+	<p>Questo accade perché il DNS, come molti altri sistemi su Internet, ha anche il suo meccanismo di routing. Quando qualcuno digita l'URL <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a> nel browser, il resolver DNS, responsabile della traduzione dei nomi di dominio in indirizzi IP effettivi a cui connettersi, verifica innanzitutto se ha qualcosa nella sua cache e lo utilizza. In caso contrario, tenta di ottenere la risposta dai server dei nomi di dominio, in genere ospitati dall'entità che lo possiede.</p>
+	<p>Se i server dei nomi non sono raggiungibili o non rispondono per altri motivi, viene restituito un SERVFAIL e il browser invia un errore all'utente.</p>
+	<pre class="language-bash"><code class="language-bash">➜  ~ dig @1.1.1.1 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @1.1.1.1 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+➜  ~ dig @8.8.8.8 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @8.8.8.8 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A</code></pre>
+	<p>Di nuovo, il nostro centro di apprendimento fornisce una <a href="https://www.cloudflare.com/it-it/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">buona spiegazione</a> di come funziona DNS.</p>
+	<p>A causa dell'interruzione da parte di Facebook dell'annuncio dei percorsi del prefisso DNS tramite BGP, i resolver DNS nostri e di tutti gli altri non avevano modo di connettersi ai loro server dei nomi. Di conseguenza, 1.1.1.1, 8.8.8.8 e tutti gli altri principali resolver DNS pubblici hanno iniziato a emettere (e a memorizzare nella cache) risposte SERVFAIL.</p>
+	<p>Ma non è tutto. A questo punto entrano in gioco il comportamento umano e la logica applicativa, che provocano un altro effetto esponenziale. Segue uno tsunami di traffico DNS aggiuntivo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aYyNe0TkIR47XpI3RjaN4/179f32b67057dc440e1ad3af2a0061e2/image8-8.png" alt="" class="kg-image" width="1500" height="374" loading="lazy">
+
+	</figure>
+	<p>Ciò è accaduto in parte perché le app non accettano un errore per una risposta e iniziano a riprovare, a volte in modo aggressivo, e in parte perché anche gli utenti finali non accettano un errore per una risposta e iniziano a ricaricare le pagine o a terminare e riavviare le loro app, a volte anche in modo aggressivo.</p>
+	<p>Questo è l'aumento del traffico (in numero di richieste) che abbiamo visto il 1.1.1.1:</p>
+	<p>Quindi ora, poiché Facebook e i suoi siti sono così grandi, abbiamo risolutori DNS in tutto il mondo che gestiscono 30 volte più query del solito e potenzialmente causano problemi di latenza e timeout su altre piattaforme.</p>
+	<p>Fortunatamente, 1.1.1.1 è stato progettato in modo da essere Gratuito, Privato, Rapido (come il monitor DNS <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank" rel="noopener noreferrer">DNSPerf</a> indipendente può attestare) e scalabile, e siamo stati in grado di continuare a fornire assistenza ai nostri utenti con un impatto minimo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JgzupnGlQqx0cZjijoRfb/bce5744c0d0a655e77c9b72f9d297496/image6-9.png" alt="" class="kg-image" width="1500" height="410" loading="lazy">
+
+	</figure>
+	<p>La stragrande maggioranza delle nostre richieste DNS ha continuato a risolversi in meno di 10 ms. Allo stesso tempo, una frazione minima dei percentili p95 e p99 ha visto un aumento dei tempi di risposta, probabilmente a causa dei TTL scaduti che hanno dovuto ricorrere ai server dei nomi di Facebook e al timeout. Il limite di timeout DNS di 10 secondi è ben noto agli ingegneri.</p>
+	<div class="flex anchor relative">
+		<h3 id="impacting-other-services">Impatto sugli altri servizi</h3>
+		<a href="https://blog.cloudflare.com/#impacting-other-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le persone cercano alternative e vogliono saperne di più o discutere di cosa sta succedendo. Quando Facebook è diventato irraggiungibile, abbiamo iniziato a vedere un aumento delle query DNS su Twitter, Signal e altre piattaforme di messaggistica e social media.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HcKMYPFQWk5QlVyMY4dxH/c51ddb3df72b0baec1a0ff99b1a208fc/image2-11.png" alt="" class="kg-image" width="1500" height="765" loading="lazy">
+
+	</figure>
+	<p>Possiamo anche vedere un altro effetto collaterale di questa irraggiungibilità nel nostro traffico WARP da e verso l'ASN 32934 di Facebook interessato. Questo grafico mostra come il traffico è cambiato dalle 15:45 UTC alle 16:45 UTC rispetto a tre ore prima in ogni paese. In tutto il mondo il traffico WARP da e verso la rete di Facebook è semplicemente scomparso.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-internet">Internet</h3>
+		<a href="https://blog.cloudflare.com/#the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LNsXe0n3q2kZgSwbiTgD8/ddc52a824634bf383fc2aaf8fbadc25e/image1-12.png" alt="" class="kg-image" width="1080" height="360" loading="lazy">
+
+	</figure>
+	<p>Gli eventi di oggi ci ricordano dolcemente che Internet è un sistema molto complesso e interdipendente di milioni di sistemi e protocolli che lavorano insieme. La fiducia, la standardizzazione e la cooperazione tra le entità sono al centro del suo funzionamento per quasi cinque miliardi di utenti attivi in tutto il mondo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pe57CevhAkyCi0MYDHurW/fc424989247ad4faa11f3b4c64781502/image7-6.png" alt="" class="kg-image" width="1999" height="1002" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="update">Aggiorna</h3>
+		<a href="https://blog.cloudflare.com/#update" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Intorno alle 21:00 UTC abbiamo visto una rinnovata attività BGP dalla rete di Facebook che ha raggiunto il picco alle 21:17 UTC.</p>
+	<p>Questo grafico mostra la disponibilità del nome DNS "facebook.com" sul resolver DNS 1.1.1.1 di Cloudflare. Ha smesso di essere disponibile intorno alle 15:50 UTC ed è tornato alle 21:20 UTC.</p>
+	<p>Indubbiamente i servizi Facebook, WhatsApp e Instagram avevano bisogno di più tempo per tornare online, ma alle 21:28 UTC Facebook sembrava essere ricollegato a Internet globale e il DNS funzionava di nuovo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47HV9JWOs1yaUtXV1g269v/1effede60e4dc9e1eab042bb1fc1b4fe/unnamed-3-3.png" alt="" class="kg-image" width="1500" height="285" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5y4sNviiduLRAipw6I6UHs/770e842b223754d4aa61fffe3ee8d7c6/unnamed-4.png" alt="" class="kg-image" width="1500" height="384" loading="lazy">
+
+	</figure>
+</div>

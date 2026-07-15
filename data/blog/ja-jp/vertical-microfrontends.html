@@ -1,0 +1,202 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/vertical-microfrontends">English</a>および<a href="https://blog.cloudflare.com/ko-kr/vertical-microfrontends">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3LGvFjshhIGn4Qfcfmx2eu/28d86446d5f5b0a2d45fdba8f5d6d991/BLOG-3015_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><i>午前6時55分に更新されました。PT</i></p>
+	<p>本日は、垂直マイクロフロントエンド（VMFE）用の新しいWorkerテンプレートをご紹介します。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe" target="_blank" rel="noopener noreferrer"><u>このテンプレート</u></a>を使用すると、複数の独立した<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を単一のドメインにマッピングできます。これにより、チームは完全に独立した環境でマーケティング、ドキュメント、ダッシュボードを個別に提供しながら、ユーザーには単一のシームレスなアプリケーションを提供できます。</p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>ほとんどのマイクロフロントエンドアーキテクチャは「水平」型です。つまり、1つのページの異なる<i>部分</i>が異なるサービスから取得されるということです。垂直マイクロフロントエンドは、URLパスごとにアプリケーションを分割することで、異なるアプローチを採用しています。このモデルでは、「/blog」パスを所有するチームは、コンポーネント<i>だけを</i>所有するだけでなく、フレームワーク、ライブラリ選択、CI/CDなど、そのルートの垂直スタック全体を所有しています。パスのスタック全体、またはパスのセットを所有することで、チームは自分たちの仕事の真の所有権を持ち、自信を持って出荷することができます。</p>
+	<p>チームは成長に伴い、さまざまなフレームワークが様々なユースケースに対応するという問題に直面します。例えば、マーケティングWebサイトはAstroではより効果的に活用でき、ダッシュボードはReactでより優れたものになるかもしれません。あるいは、多くのチームが集合体としてリリースするモノリシックなコードベースがあるとします。複数のチームによる新しい機能を追加する更新は、単一のチームが後退を導入したために、フラストレーションで元に戻されることがあります。技術的な実装の詳細をユーザーから隠し、チームが完全な自律性とドメインの制御を使用して、統一されたユーザーエクスペリエンスを開発できるようにする方法とは？</p>
+	<p>その答えは、垂直マイクロフロントエンドです。開発者の問題点をどのように解決するかについて掘り下げてみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-are-vertical-microfrontends">垂直マイクロフロントエンドとは？</h2>
+		<a href="https://blog.cloudflare.com/#what-are-vertical-microfrontends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>垂直マイクロフロントエンドとは、単一の独立したチームが、ユーザーインターフェースから<a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CDパイプライン</a>まで、アプリケーションの機能全体を所有するアーキテクチャパターンです。これらのスライスはドメイン上のパスによって定義され、個々のWorkersを特定のパスに関連付けることができます。</p>
+	<pre class="language-Rust"><code class="language-Rust">/      = Marketing
+/docs  = Documentation
+/blog  = Blog
+/dash  = Dashboard</code></pre>
+	<p>さらに一歩進んで、ダッシュボードなど、より詳細なサブパスWorkerの関連付けに焦点を当てることもできます。ダッシュボード内では、URLパスに深さを追加することで、さまざまな機能や製品をセグメント化できる（例：<code>/dash/product-a</code>)など）と2つの製品間を移動することは、2つのまったく異なるコードベースを意味する可能性があります。</p>
+	<p>垂直マイクロフロントエンドでは、次のようなことも可能になります。</p>
+	<pre class="language-Rust"><code class="language-Rust">/dash/product-a  = WorkerA
+/dash/product-b  = WorkerB</code></pre>
+	<p>上記のパスはそれぞれ独自のフロントエンドプロジェクトであり、共有コードは一切ありません。<code>product-a</code>と<code>product-b</code>のルートは、独自のフレームワーク、ライブラリ、CI/CDパイプラインが定義され、独自のチームが所有する別々にデプロイされたフロントエンドアプリケーションにマッピングされます。最後に。</p>
+	<p>エンドツーエンドで独自のコードを所有できるようになりました。しかし今、私たちはこうした個別のプロジェクトをつなぎ合わせる方法を見つけ、さらには、統一された体験であるかのように感じさせる方法を見つける必要があります。</p>
+	<p>Cloudflareでも、多くのチームが独自の製品を所有しているため、私たち自身がこの痛点を経験することになります。チームは、自分たちが管理できない変更がユーザー体験に影響を与えるという事実に対処しなければなりません。</p>
+	<p>現在、社内ではダッシュボードについても同様の戦略を用いています。ユーザーがコアダッシュボードからZero Trust製品に移動すると、実際にはまったく別個の2つのプロジェクトであり、ユーザーはパス<code>/:accountId/one</code>によってそのプロジェクトにルーティングされるだけです。</p>
+	<div class="flex anchor relative">
+		<h2 id="visually-unified-experiences">視覚的に統合された体験</h2>
+		<a href="https://blog.cloudflare.com/#visually-unified-experiences" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの個々のプロジェクトをつなぎ合わせ、統合された体験のように感じさせることは、考えるほど難しくありません。CSSのマジックを数行しか必要としないからです。当社が<i>絶対的に避けたい</i>ことは、実装の詳細や社内決定をユーザーに漏洩することです。もし、このユーザーエクスペリエンスを1つのまとまりのあるフロントエンドのように感じさせることができなければ、ユーザーに対して重大な不当行為を行ってしまうことになります。</p>
+	<p>この巧妙な手口を使用するために、ビュー移行とドキュメントのプリロードがどのように機能するかを理解するために、少し移動してみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="view-transitions">移行を表示</h3>
+		<a href="https://blog.cloudflare.com/#view-transitions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エンドユーザーにスムーズに感じてもらいながら、2つの異なるページをシームレスに移動したい場合、<a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>ビュートランジション</u></a>が非常に便利です。次のページが表示されるまで保持する特定の<a href="https://www.w3schools.com/jsref/dom_obj_all.asp" target="_blank" rel="noopener noreferrer"><u>ドキュメントオブジェクトモデル要素</u></a>を定義し、変更の処理方法を定義することで、マルチページアプリケーション用の極めて強力なアルゴリズム発表ツールを実現します。</p>
+	<p>しかし、さまざまな垂直マイクロフロントエンドを異なると感じさせることは許容以上である場合があるかもしれません。例えば、マーケティングWebサイト、ドキュメント、ダッシュボードが、それぞれ独自に定義されているかもしれません。ユーザーは、これら3つの部分間を移動する際に、これら3つすべてが統一感を持っていると感じることはありません。しかし…ダッシュボード（例：<code>/dash/product-a</code> &amp; <code>/dash/product-b</code>)、ユーザーは<b>決して</b>それらが2つの異なるリポジトリ/ワーカー/プロジェクトであることを知るべきではありません。</p>
+	<p>では、話は十分にして、仕事に取り掛かりましょう。2つの別々のプロジェクトをユーザーに1つであるかのように感じさせるのは、手間がかからないことだと述べましたが、もし<a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>CSS View Transitions</u></a>についてまだ聞いたことがないなら、きっと驚くでしょう。</p>
+	<p>シングルページアプリ（SPA）とマルチページアプリ（MPA）の異なるビュー間で、あたかも1つのビューであるかのように感じさせることができるとお伝えしたら、どうなるでしょうか？ビュー遷移を追加する前に、2つの異なるWorkersが所有するページ間を移動すると、次のページ全体のレンダリングが開始されるまで、数百ミリ秒間、インタースティシャルの読み込み状態はブラウザの真っ白な画面となります。ページはまとまりのあるものではなく、もちろん単一ページのアプリケーションのようにも感じられません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vw1Am7gYUQPtmFFCRcsu1/774b881dff7ce1c26db88f30623dfc13/image3.png" alt="" class="kg-image" width="1999" height="877" loading="lazy">
+	</figure>
+	<p><sup>各サイト間の複数のナビゲーション要素として表示されます。</sup></p>
+	<p>真っ白なページではなく、要素を際立たせたい場合は、CSS View Transitionを定義することで実現できます。以下のコードは、現在のドキュメントページに、ビュー遷移イベントが発生しようとしているときに、<code>ナビ</code>ゲーションドキュメントオブジェクトモデル要素を画面上に表示し続けるよう指示しています。そして、既存ページと宛先ページの間に何らかのデルタが存在する場合は、<code>簡単な移行</code>でアニメーションを作成します。</p>
+	<p>突然、2つの異なるWorkersが1つのように感じられます。</p>
+	<pre class="language-CSS"><code class="language-CSS">@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+  nav { view-transition-name: navigation; }
+}</code></pre>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4h6Eh5LSX4552QJDvV1l7o/a5a43ee0e6e011bca58ecc2d74902744/image1.png" alt="" class="kg-image" width="1999" height="877" loading="lazy">
+	</figure>
+	<p><sup>3つの異なるサイト間の単一のナビゲーション要素として表示されます。</sup></p>
+	<div class="flex anchor relative">
+		<h3 id="preloading">プリロード</h3>
+		<a href="https://blog.cloudflare.com/#preloading" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2つのページ間の推移を<i>シームレスに見せ</i>、クライアントサイドのSPAと同じくらい瞬時に<i>感じられる</i>ようにしたいと考えています。現在、FirefoxとSafariは<a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API" target="_blank" rel="noopener noreferrer"><u>Speculation Rules</u></a>をサポートしていませんが、Chrome/Edge/Operaは、より新しい概念であるSpeculation Rulesをサポートしています。推測ルールAPIは、特にドキュメントURLの将来のナビゲーションのパフォーマンスを向上させるように設計されており、複数ページのアプリケーションを1ページのアプリケーションのように感じさせることができます。</p>
+	<p>コード例としては、特定フォーマットのスクリプトルールを定義する必要があるのは、サポートするブラウザに、当社のWebアプリケーションに接続されている他のバーティカルスライス（何らかの共有ナビゲーションでリンクされている可能性が高い）をプリフェッチする方法を指示することです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">&lt;script type="speculationrules"&gt;
+  {
+    "prefetch": [
+      {
+        "urls": ["https://product-a.com", "https://product-b.com"],
+        "requires": ["anonymous-client-ip-when-cross-origin"],
+        "referrer_policy": "no-referrer"
+      }
+    ]
+  }
+&lt;/script&gt;</code></pre>
+	<p>そうすることで、アプリケーションは他のマイクロフロントエンドをプリフェッチし、メモリ内キャッシュに保持するため、これらのページに移動する場合は、ほぼ瞬時に移動できるようになります。</p>
+	<p>明確に識別できる垂直切断（マーケティング、ドキュメント、ダッシュボード）には必要でないかもしれません。ユーザーはそれらの間のわずかな負荷を想定するからです。ただし、特定の可視的エクスペリエンス（例：サインアップページ内など）です。</p>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noopener noreferrer"><u>View Transitions</u></a>と<a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API" target="_blank" rel="noopener noreferrer"><u>Speculation Rules</u></a>の間では、まったく異なるコードリポジトリを結び付けて、1つのページアプリケーションから提供されるように感じることができます。可能性が高いでしょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="zero-config-request-routing">ゼロ設定リクエストルーティング</h2>
+		<a href="https://blog.cloudflare.com/#zero-config-request-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>そこで、複数のアプリケーションをホストする仕組みと、リクエストが流れるにつれてそれらをつなぎ合わせる方法が必要になります。1つのCloudflare Workerを「ルーター」として定義することで、（エッジにある）1つの論理ポイントがネットワークリクエストを処理し、そのURLパスを担当するバーティカルマイクロフロントエンドに転送することができます。さらに、1つのドメインをそのルーターWorkerにマッピングできて、残りのルーターは「そのまま」機能します。</p>
+	<div class="flex anchor relative">
+		<h3 id="service-bindings">サービスバインディング</h3>
+		<a href="https://blog.cloudflare.com/#service-bindings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workerの<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>サービスバインディング</u></a>をまだ体験していない方は、ぜひ一度お試しください。 </p>
+	<p>サービスバインディングによって、公開されているURLを経由することなく、あるWorkerが別のWorkerを呼び出すことができます。サービスバインディングにより、Worker AはWorker B上でメソッドを呼び出すこと、あるいはWorker AからWorkerにリクエストを転送することができます。さらに詳しく説明すると、ルーター Workerは、定義された各垂直マイクロフロントエンドWorkerを呼び出すことができます（例：マーケティング、ドキュメント、ダッシュボードなど）を作成し、それぞれがCloudflare Workersであったと仮定します。</p>
+	<p>なぜこれが重要なのですか？これはまさに、これらの縦積みを「つなぎ合わせる」メカニズムです。次のセクションでは、リクエストルーティングがどのようにトラフィックのスプリットを処理しているかについて説明します。しかし、これらのマイクロフロントエンドをそれぞれ定義するには、ルーター WorkerのWrangler定義を更新し、どのフロントエンドを呼び出すことができるかを把握する必要があります。
+	</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "router",
+  "main": "./src/router.js",
+  "services": [
+    {
+      "binding": "HOME",
+      "service": "worker_marketing"
+    },
+    {
+      "binding": "DOCS",
+      "service": "worker_docs"
+    },
+    {
+      "binding": "DASH",
+      "service": "worker_dash"
+    },
+  ]
+}</code></pre>
+	<p>上記のサンプル定義は、ルーター Workerで定義されており、3つの追加のWorkers（マーケティング、ドキュメント、ダッシュボード）へのリクエストを許可することを示しています。許可許可は非常に簡単ですが、リクエストのルーティングとネットワークレスポンスのHTML書き換えに関する、より複雑なロジックをご紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="request-routing">リクエストルーティング</h3>
+		<a href="https://blog.cloudflare.com/#request-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>必要に応じて呼び出すことができる他のさまざまなWorkersについての知識があると、今度はネットワークリクエストをどこに転送するかを知るためのロジックを整備する必要があります。Router Workerはバニティドメインに割り当てられるので、受信リクエストは全てネットワークエッジに最初に到達します。そして、リクエストを処理するWorkerを決定し、その結果であるレスポンスを管理します。</p>
+	<p>最初のステップは、URLパスを関連するWorkersにマッピングすることです。特定のリクエストURLを受け取った場合、どこに転送する必要があるかを知る必要があります。これはルールを定義することによって行われます。ワイルドカードルート、動的パス、パラメーター制約をサポートしていますが、基本的な部分（リテラルパスプレフィックス）に焦点を当てながら、その点をより明確に説明します。</p>
+	<p>この例では、3つのマイクロフロントエンドがあります。</p>
+	<pre class="language-Rust"><code class="language-Rust">/      = Marketing
+/docs  = Documentation
+/dash  = Dashboard</code></pre>
+	<p>上記の各パスは、実際のWorkerにマッピングする必要があります（上記のセクションのサービスに関するWrangler定義を参照）。ルーター Workerでは、次のデータで追加の変数を定義し、どのパスがどのサービスバインディングにマッピングされるべきかを知ることができます。これで、リクエストが来たときにユーザーをどこにルーティングすればよいのかがわかるようになりました。ROUTESという名前でWrangler変数を定義し、以下の内容を記述します。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "routes":[
+    {"binding": "HOME", "path": "/"},
+    {"binding": "DOCS", "path": "/docs"},
+    {"binding": "DASH", "path": "/dash"}
+  ]
+}</code></pre>
+	<p>Webサイトパス<code>/docs/installation</code>を訪問するユーザーを想像してみましょう。内部では、リクエストは最初にルーター Workerに到達し、WorkerはどのURLパスがどの個々のWorkersにマッピングされるかを理解します。<code>/docs</code>パスプレフィックスが<code>DOCS</code>サービスバインディングにマッピングされ、Wranglerファイルを参照することで<code>worker_docs</code>プロジェクトを示しています。Cloudflareのルーター Workerは、<code>/docs</code>が垂直マイクロフロントエンドルートとして定義されていることを認識しているため、パスから<code>/docs</code>プレフィックスを削除し、リクエストを<code>worker_docs</code> Workerに転送してリクエストを処理し、最終的に、得られたレスポンスを返します。</p>
+	<p>ところが、なぜ<code>/docs</code>パスをドロップするのでしょうか？これは、ルーター Worker経由でWorkerにアクセスしたときに、ルーター Workerの外部から呼び出された<i>かのように</i>リクエストを処理するために、URLをクリーンアップするために行われた、詳細な実装の選択です。他のCloudflare Workerと同様に、<code>worker_docs</code>サービスには、アクセスできる独自のURLがある場合があります。当社は、そのサービスURLを独立して動作させたいと考えました。新しいRouter Workerに接続されている場合、自動的にプレフィックスの削除が処理されるため、サービスは独自に定義されたURLから、またはRouter Workerを通じてアクセスすることができます。どちらの場所も問題ありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="htmlrewriter">HTMLRewriter</h3>
+		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>URLパス（例：<code>/docs</code> または <code>/dash</code>）を使用することで、リクエストを簡単に転送することができますが、当社のレスポンスに、パスコンポーネントを介してリバースプロキシされているとは知らないHTMLが含まれている場合、問題が発生します。</p>
+	<p>例えば、当社のドキュメントWebサイトのレスポンスに、<code>&lt;img src="./logo.png" /&gt;</code>のような画像タグがあるとします。ユーザーが<code>https://website.com/docs/</code>でこのページを訪問している場合、<code>logo.png</code>ファイルの読み込みは失敗する可能性が高くなります。これは、<code>/docs</code>パスがルーターWorkerによってのみ人工的に定義されているためです。</p>
+	<p>ルーター Worker経由でサービスにアクセスする時だけ、返されるブラウザレスポンスが有効なアセットを参照するように、絶対パスのHTML書き換えを行う必要があります。実際には、リクエストがルーター Workerを通過すると、そのリクエストは正しいService Bindingに渡され、そこからレスポンスを受け取ります。クライアントに返す前に、ドキュメントオブジェクトモデルを書き換える機会があるため、絶対パスが表示される場合は、プロキシされたパスでプリペンドします。以前は、HTMLが<code>&lt;img src="./logo.png" /&gt;</code>で画像タグを返していましたが、今ではクライアントブラウザに戻る前に修正して、<code>&lt;img src="./docs/logo.png" /&gt;</code>にしています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10jKx6qt2YcarpDyEsFNYV/3b0f11f56e3c9b2deef59934cf8efa7f/image2.png" alt="" class="kg-image" width="1338" height="674" loading="lazy">
+	</figure>
+	<p>CSSのビュー移行とドキュメントのプリロードのマジックに少し戻りましょう。もちろん、そのコードを手動でプロジェクトに配置して動作させることもできますが、このルーターWorkerは、<a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter" target="_blank" rel="noopener noreferrer"><u>HTMLRewriter</u></a>を使用することで、そのロジックを<i>自動的</i>に処理してくれます。</p>
+	<p>ルーターワーカーの<code>ROUTES</code>変数で、ルートレベルで<code>smoothTransitions</code>を<code>true</code>に設定すると、CSSトランジションビューのコードが自動的に追加されます。さらに、ルート内で<code>preload</code>キーを<code>true</code>に設定すると、そのルートのスクリプトコード投機ルールも自動的に追加されます。</p>
+	<p>以下は、両方の動作例です。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "smoothTransitions":true, 
+  "routes":[
+    {"binding": "APP1", "path": "/app1", "preload": true},
+    {"binding": "APP2", "path": "/app2", "preload": true}
+  ]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="get-started">利用を開始する</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今すぐ垂直マイクロフロントエンドテンプレートで構築を始めましょう。</p>
+	<p>Cloudflareダッシュボードの<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%3Ftype%3Dvmfe" target="_blank" rel="noopener noreferrer"><u>こちらからディープリンク</u></a>にアクセスするか、「Workers &amp; Pages」に移動して「アプリケーションを作成」ボタンをクリックしてください。そこから、「テンプレートの選択」、「マイクロフロントエンドの作成」をクリックすると、セットアップの設定を開始できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1teTcTNHzQH3yCvbTz3xyU/8f9a4b2ef3ec1c6ed13cbdc51d6b13c5/image5.png" alt="" class="kg-image" width="1999" height="1569" loading="lazy">
+	</figure>
+	<p>
+		既存のWorkersをマッピングしてView Transitionを有効にする方法については、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご確認ください。お客様がどのような複雑なマルチチームアプリケーションをエッジで構築されるのか、楽しみにしています。</p>
+</div>

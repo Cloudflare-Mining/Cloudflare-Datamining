@@ -1,0 +1,154 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place">English</a>, <a href="https://blog.cloudflare.com/es-es/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ppsVyLEow650DOeqCyU86/a25c3f839cb77491b04db614da97f222/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir freuen uns, heute eine leistungsstarke und flexible neue Möglichkeit ankündigen zu können, Cloudflare-Kennzahlen und -Protokolle auszuwerten. Denn jetzt gibt es dafür eine API, die dem Industriestandard, der <a href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL-Spezifikation</a>, entspricht. Mit unserer neuen GraphQL Analytics API erreichen Sie alle Performance-, Sicherheits- und Zuverlässigkeitsdaten von einem Endpunkt aus, und Sie können genau das auswählen, was Sie brauchen, egal ob Kennzahlen für eine Domain oder mehrere Kennzahlen, die über alle Ihre Domains aggregiert wurden. Sie können Fragen stellen wie <i>„Wie viele Bytes wurden für diese drei Domains aus dem Cache zurückgegeben?“</i> Oder: <i>„Wie viele Anfragen gab es für alle Domains in meinem Konto?“</i> Oder sogar: <i>„Wie hat sich die Änderung meiner Firewall-Regel vor einer Stunde auf die Antworten ausgewirkt, die meine Nutzer bekamen?“</i></p>
+	<p>Für den GraphQL-Standard gibt es außerdem zahlreiche <a href="https://graphql.org/community" target="_blank" rel="noopener noreferrer">Community-Ressourcen</a> von umfangreicher Dokumentation bis hin zu Front-End-Clients. Das erleichtert den Einstieg in einfache Abfragen und ermöglicht schnelle Fortschritte bis hin zu eigenen anspruchsvollen Analyse-Dashboards.</p>
+	<div class="flex anchor relative">
+		<h3 id="from-many-apis"><b>Von vielen APIs …</b></h3>
+		<a href="https://blog.cloudflare.com/#from-many-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Informationen zu liefern, war schon immer ein zentraler Bestandteil des Angebots von Cloudflare. Schließlich setzen Sie mit wichtigen Teilen Ihrer Infrastruktur auf Cloudflare. Im Gegenzug müssen wir Ihnen die Daten liefern, die Sie brauchen, um Ihre Website, Ihre App oder Ihren Dienst zu verwalten und zu überwachen sowie Probleme zu beheben. Im Laufe der Zeit haben wir mehrere APIs für wichtige Daten entwickelt, darunter auch solche, die Informationen über den Traffic Ihrer Domain, DNS-Abfragen und Firewall Events bereitstellen. Solange wir nur wenige Produkte hatten, war diese API-Vielfalt akzeptabel. Aber als immer mehr Produkte und Analysen hinzukamen, stießen wir auf Schwierigkeiten. Wir konnten nicht erwarten, dass Anwender jedes Mal, wenn sie mit einem neuen Produkt beginnen, eine neue Analytics-API übernehmen. Tatsächlich gab es bei Kunden und Partnern, die mehrere unserer Produkte nutzen, bereits Verwirrung durch die verschiedenen APIs.</p>
+	<p>Die API-Vielfalt hatte auch Auswirkungen darauf, wie schnell wir innerhalb des Cloudflare-Dashboards neue Analysen entwickeln konnten, denn unsere Nutzer greifen für Datenexploration lieber auf das Dashboard zurück als auf unsere APIs. Bei jeder Entwicklung eines neuen Produkts mussten die zuständigen Teams eine entsprechende Analytics-API implementieren, und unser Entwicklungsteam für Benutzeroberflächen musste dann lernen, wie man diese API verwendet. Dieser Prozess konnte für jeden neuen Satz Analytics-Dashboards mehrere Monate dauern.</p>
+	<div class="flex anchor relative">
+		<h3 id="to-one"><b>… zu einer</b></h3>
+		<a href="https://blog.cloudflare.com/#to-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mit unserer neuen GraphQL Analytics API sind diese Probleme gelöst, denn sie bietet Zugriff auf sämtliche Cloudflare Analytics. Sie stellt eine standardmäßige, flexible Syntax zur genauen Beschreibung der benötigten Daten bereit und bietet vorhersagbare, übereinstimmende Antworten. Damit ist sie ein ideales Werkzeug für:</p>
+	<ol>
+		<li>
+			<p>Datenexploration. Sie können sich das so vorstellen, als würden Sie ein eigenes virtuelles Data Warehouse abfragen, das mit Kennzahlen und Protokollen zu Performance, Sicherheit und Zuverlässigkeit Ihrer Internetwebsite gefüllt ist.</p>
+		</li>
+		<li>
+			<p>Entwicklung toller Dashboards mit flexiblen Filter-, Sortier- und Recherchemöglichkeiten. Bei der Entwicklung solcher Dashboards müsste man normalerweise Tausende von Dollar für ein spezielles Analytics-Werkzeug ausgeben. Sie erhalten sie als Bestandteil unseres Produkts und können sie mit der API für eigene Zwecke anpassen.</p>
+		</li>
+	</ol>
+	<p>In einem parallelen Beitrag, der ebenfalls heute veröffentlicht wurde, erklärt mein Kollege Nick, wie man Dashboards mit der GraphQL Analytics API entwickelt. Deshalb konzentriere ich mich hier auf Beispiele für Datenexploration mit dieser API. Für die Abfragen verwende ich <a href="https://electronjs.org/apps/graphiql" target="_blank" rel="noopener noreferrer"><i>GraphiQL</i></a>, ein beliebtes Open-Source-Abfragetool, das die GraphQL-Fähigkeiten gut ausnutzt.</p>
+	<div class="flex anchor relative">
+		<h3 id="introspection-what-data-is-available"><b>Introspektion: welche Daten sind verfügbar?</b></h3>
+		<a href="https://blog.cloudflare.com/#introspection-what-data-is-available" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die erste Frage, die Sie vielleicht stellen: Wenn die GraphQL Analytics API Zugriff auf so viele Daten bietet, wie kann ich herausfinden, was genau verfügbar ist und wie ich es abfragen kann? Mit GraphQL ist das ganz einfach, denn es bietet eine „Introspektion“ an. Das heißt, Sie können die API selbst danach abfragen, welche Datensätze verfügbar sind, welche Felder es gibt und welchen Typ diese haben sowie welche Operationen Sie ausführen können. <i>GraphiQL</i> nutzt diese Funktionalität zur Bereitstellung eines „Dokumentations-Explorers“, für automatische Abfragevervollständigung und für Syntaxvalidierung. So kann ich z. B. alle Datensätze sehen, die für eine Zone (Domain) verfügbar sind:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v9HqDr6UGaifduopecAMw/6f89f52d3ca080c7385710598bd8b26e/image1.gif" alt="" class="kg-image" width="640" height="283" loading="lazy">
+
+	</figure>
+	<p>Wenn ich eine Abfrage schreibe und mich für Daten zu Firewall Events interessiere, hilft mir die automatische Vervollständigung, schnell die relevanten Datensätze und Felder zu finden:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RSkIKlSwBMy7BVZWPWp0q/c605fa07bb8997758e2e84cbb47406f9/image6.gif" alt="" class="kg-image" width="640" height="181" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="querying-examples-of-questions-you-can-ask"><b>Abfragen: Beispiele für mögliche Fragestellungen</b></h3>
+		<a href="https://blog.cloudflare.com/#querying-examples-of-questions-you-can-ask" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Angenommen, Sie haben eine wichtige Produktankündigung gemacht und rechnen mit einem Anstieg der Anfragen an Ihren Blog, Ihre Anwendung und mehrere andere Zonen (Domains) innerhalb Ihres Kontos. Ob dieser Anstieg tatsächlich eintritt, können Sie überprüfen. Dazu fragen Sie die aggregierten Anfragen innerhalb Ihres Kontos in den 30 Minuten nach Ihrer Ankündigung ab, aufgeschlüsselt nach Minute:</p>
+	<pre class="language-json"><code class="language-json">{
+ viewer { 
+   accounts (filter: {accountTag: $accountTag}) {
+     httpRequests1mGroups(limit: 30, filter: {datetime_geq: "2019-09-16T20:00:00Z", datetime_lt: "2019-09-16T20:30:00Z"}, orderBy: [datetimeMinute_ASC]) {
+	  dimensions {
+		datetimeMinute
+	  }
+	  sum {
+		requests
+	  }
+	}
+   }
+ }
+}</code></pre>
+	<p>Hier der erste Teil der Antwort. Er zeigt die Anfragen für Ihr Konto minutenweise:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hsWUNy86iymsBlbiOfjL5/054c2bce4d1fef4090e56f264fee7aec/Screen-Shot-2019-09-17-at-2.21.41-PM.png" alt="" class="kg-image" width="1120" height="756" loading="lazy">
+
+	</figure>
+	<p>Nehmen wir nun an, Sie möchten den Traffic der letzten Stunde auf Ihrem Blog mit dem auf Ihrer Marketing-Website vergleichen. Das können Sie innerhalb einer einzigen Abfrage tun. Dazu fragen Sie die Anzahl der Anfragen an jede Zone ab:</p>
+	<pre class="language-json"><code class="language-json">{
+ viewer {
+   zones(filter: {zoneTag_in: [$zoneTag1, $zoneTag2]}) {
+     httpRequests1hGroups(limit: 2, filter: {datetime_geq: "2019-09-16T20:00:00Z",
+datetime_lt: "2019-09-16T21:00:00Z"}) {
+       sum {
+         requests
+       }
+     }
+   }
+ }
+}</code></pre>
+	<p>Hier die Antwort:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1piQ5uNUOVcsX3AqEADplu/08f469a6a92b8df8a2e59e523aa497b0/Screen-Shot-2019-12-11-at-4.04.37-PM.png" alt="" class="kg-image" width="2000" height="1270" loading="lazy">
+
+	</figure>
+	<p>Nehmen wir nun schließlich an, dass Sie eine Zunahme bei Fehler-Antworten feststellen. Könnte dies mit einem Angriff zu tun haben? Sie können sich die Fehlercodes und Firewall Events der letzten 15 Minuten ansehen, z. B.:</p>
+	<pre class="language-json"><code class="language-json">{
+ viewer {
+   zones(filter: {zoneTag: $zoneTag}) {
+     httpRequests1mGroups (limit: 100,
+filter: {datetime_geq: "2019-09-16T21:00:00Z",
+datetime_lt: "2019-09-16T21:15:00Z"}) {
+       sum {
+         responseStatusMap {
+           edgeResponseStatus
+           requests
+         }
+       }
+     }
+    firewallEventsAdaptiveGroups (limit: 100,
+filter: {datetime_geq: "2019-09-16T21:00:00Z",
+datetime_lt: "2019-09-16T21:15:00Z"}) {
+       dimensions {
+         action
+       }
+       count
+     }
+    }
+  }
+}</code></pre>
+	<p>Beachten Sie, dass wir in dieser Abfrage mehrere Datensätze gleichzeitig betrachten, denn wir benutzen einen gemeinsamen Zonenbezeichner, um sie zu „verknüpfen“. Hier die Ergebnisse:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7G5to39LSIQSOtv9KgIzIL/78f15ef423f901c4e027ef7cb67cddd8/Screen-Shot-2019-12-11-at-4.28.28-PM.png" alt="" class="kg-image" width="776" height="1310" loading="lazy">
+
+	</figure>
+	<p>Wenn wir beide Datensätze parallel untersuchen, können wir eine Korrelation erkennen: 31 Anfragen wurden von der Firewall „entfernt“ oder blockiert, was genau der Anzahl der „403“-Antworten entspricht. Die 403-Antworten waren also das Ergebnis von Firewall-Maßnahmen.</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-today"><b>Gleich ausprobieren</b></h3>
+		<a href="https://blog.cloudflare.com/#try-it-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Weitere Informationen zur GraphQL Analytics API und einen guten Einstieg in die Exploration Ihrer Cloudflare-Daten bekommen Sie im Abschnitt „Erste Schritte“ in unserer <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started" target="_blank" rel="noopener noreferrer">Entwicklerdokumentation</a>. Dort finden Sie auch Details zu den aktuellen Datensätzen und verfügbaren Zeiträumen. Wir werden im Laufe der Zeit weitere Datensätze hinzufügen, Sie sollten sich also mit der Introspektionsfunktion immer über den neuesten Stand informieren.</p>
+	<p>Um Platz für die neue API zu schaffen, gilt die Zone Analytics API nun als veraltet und wird zum 31. Mai 2020 eingestellt. Die Daten, die Zone Analytics liefert, sind auch über die GraphQL Analytics API verfügbar. Wenn Sie die API derzeit direkt aufrufen, lesen Sie bitte in unserem <a href="https://developers.cloudflare.com/analytics/migration-guides/zone-analytics" target="_blank" rel="noopener noreferrer">Migrationsleitfaden</a> nach, wie die API-Aufrufe geändert werden müssen. Wenn Sie Ihre Analytics über das Cloudflare-Dashboard oder unsere <a href="https://docs.datadoghq.com/integrations/cloudflare" target="_blank" rel="noopener noreferrer">Datadog-Integration</a> erhalten, müssen Sie nichts unternehmen.</p>
+	<div class="flex anchor relative">
+		<h3 id="one-more-thing"><b>Da wäre noch etwas …</b></h3>
+		<a href="https://blog.cloudflare.com/#one-more-thing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie es als nützlich empfinden, so wie in den obigen API-Beispielen Analytics für alle Domains innerhalb Ihres Kontos zu aggregieren, haben wir noch etwas für Sie: ein brandneues <a href="https://dash.cloudflare.com/?account=analytics" target="_blank" rel="noopener noreferrer">Analytics-Dashboard</a> (in der Betaphase), das dieselben Informationen liefert. Wenn Ihr Konto viele Zonen besitzt, kann man das Dashboard gut zur Zusammenfassung von Kennzahlen wie Anfragen, Bandbreite, Cache-Rate und Fehlerrate nutzen. Probieren Sie es aus und teilen Sie uns über den Feedback-Link über dem neuen Dashboard mit, wie Sie es finden.</p>
+</div>

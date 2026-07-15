@@ -1,0 +1,322 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/ai-agents-and-innovation-with-launchpad-cohort5">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/ai-agents-and-innovation-with-launchpad-cohort5">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/ai-agents-and-innovation-with-launchpad-cohort5">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/ai-agents-and-innovation-with-launchpad-cohort5">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/ai-agents-and-innovation-with-launchpad-cohort5">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/ai-agents-and-innovation-with-launchpad-cohort5">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/ai-agents-and-innovation-with-launchpad-cohort5">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JG0Ivl7nNauncjGGypQjn/d786f5d9adb8ec7ebc2e8e3de55312fb/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Un accès rapide à une infrastructure flexible et à des outils&nbsp;IA innovants permet aux start-ups de déployer rapidement et efficacement des applications prêtes pour la production. Cloudflare joue un rôle déterminant dans d'innombrables applications, en permettant aux fondateurs d'entreprises et aux équipes d'ingénieurs de développer, d'étendre et d'accélérer leurs innovations avec facilité, en s'exonérant du fardeau que représentent les frais techniques. Et, le cas échéant, les initiatives telles que notre <a href="http://www.cloudflare.com/forstartups" target="_blank" rel="noopener noreferrer"><u>programme pour start-ups</u></a> et <a href="http://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer"><u>Workers Launchpad</u></a> proposent les outils et les ressources permettant de soutenir encore davantage ces projets ambitieux.</p>
+	<p>Cloudflare a récemment annoncé les <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u><b>agents&nbsp;IA</b></u></a>, permettant aux développeurs de tirer parti de Cloudflare pour déployer des agents capables d'exécuter des tâches autonomes. Nous avons déjà observé de formidables exemples de start-ups qui utilisent Cloudflare comme plateforme de choix pour investir dans le développement de leur infrastructure d'agents. Poursuivez votre lecture pour découvrir comment quelques start-ups émergentes conçoivent leurs plateformes d'agents&nbsp;IA sur Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="lamatic-ai-built-a-scalable-ai-agent-platform-using-workers-for-platform">Lamatic AI a développé une plateforme d'agents IA évolutive avec Workers for Platform</h2>
+		<a href="https://blog.cloudflare.com/#lamatic-ai-built-a-scalable-ai-agent-platform-using-workers-for-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fondée en&nbsp;2023, Lamatic.ai permet aux start-ups développant des solutions SaaS d'intégrer avec fluidité des agents&nbsp;IA intelligents à leurs produits. Lamatic.ai simplifie le déploiement des agents&nbsp;IA en proposant un cycle de vie entièrement géré, priorisant l'évolutivité et la sécurité. Les fournisseurs de solutions SaaS s'appuient sur Lamatic pour transférer leurs flux de travail&nbsp;IA vers de nouvelles plateformes via un générateur visuel sans codage, avec l'objectif de réduire la dette technique et d'accélérer le déploiement de leurs produits. Conçue pour offrir une disponibilité élevée, de l'évolutivité et une faible latence, l'architecture de Lamatic permet aux développeurs de créer des applications pilotées par IA qui restent performantes, même en présence d'une charge intense. Après avoir rapidement acquis un grand nombre d'utilisateurs sur Product&nbsp;Hunt, Lamatic a identifié un véritable intérêt pour la résolution des problèmes complexes à l'aide d'agents&nbsp;IA, et l'équipe a compris qu'elle devait développer une solution priorisant l'évolutivité et les performances.</p>
+	<p>Cloudflare joue un rôle déterminant en soutenant la croissance de Lamatic. Conçue avec Cloudflare <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u><b>Workers</b></u></a><b>, </b>Lamatic garantit le traitement des requêtes à proximité des utilisateurs finaux, minimisant ainsi la latence, tout en soulageant les serveurs centralisés de la charge de calcul. En quelques mois seulement, Lamatic.ai a évolué efficacement pour atteindre plus de trois millions de requêtes serverless par mois, soutenant l'activité de plus de 1&nbsp;000&nbsp;clients&nbsp;– et la plateforme est gérée par une équipe agile constituée de trois personnes.&nbsp;</p>
+	<p>Les clients conçoivent leurs flux d'agent dans un générateur visuel sans codage, qui génère une configuration YAML interopérable. Les informations d'identification sensibles, telles que les clés API et les jetons d'accès aux modèles, sont chiffrées et stockées de manière sécurisée dans Workers&nbsp;KV. Cette démarche assure qu'elles ne sont déchiffrées qu'au moment de l'exécution, afin de renforcer la sécurité. Toutes les configurations YAML sont ensuite compilées dans un bundle JavaScript compatible avec Workers. Lorsqu'un projet est déployé, Lamatic orchestre les composants essentiels, tels que les tâches de synchronisation liées aux opérations ETL sur données planifiées et les webhooks entrants, afin de gérer les flux de travail déclenchés par des événements via <b>Cloudflare </b><a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u><b>Queues</b></u></a>. Une fois déployé, le projet est pleinement opérationnel sous forme d'instance Cloudflare Workers, avec un point de terminaison d'API exposé, permettant aux clients d'intégrer des fonctions d'automatisation pilotées par IA directement dans leurs applications, avec des difficultés minimales.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YUQpvrLjYaee5RJq4TRW3/8d2db69af7607b038855a0f4f1e27dc6/1.png" alt="" class="kg-image" width="1738" height="1043" loading="lazy">
+	</figure>
+	<p>Pour faire évoluer sa plateforme, Lamatic.ai a bâti son architecture en isolant la logique serverless et IA individuellement, pour chaque client. Plutôt que de regrouper les requêtes dans un cluster centralisé, Lamatic.ai répartit les charges de travail sur l'ensemble du réseau mondial de Cloudflare, assurant ainsi que chaque client et chaque point de terminaison sont servis par l'instance Workers correspondante, exécutant la logique dédiée. Ce modèle de déploiement par client, reposant sur <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u><b>Workers for Platforms</b></u></a>, permet à Lamatic.ai de déployer des fonctions serverless spécifiques aux clients à grande échelle, tout en réduisant les frais techniques liés à l'intégration de clients supplémentaires. Chaque client bénéficie d'une instance Workers dédiée, dont les limites de requêtes et de débit sont définies en fonction du niveau de l'abonnement.&nbsp;</p>
+	<p>Au-delà du traitement des requêtes, Lamatic utilise <b>Cloudflare </b><a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u><b>Workers&nbsp;KV</b></u></a> comme magasin de configurations distribué, afin d'assurer un niveau élevé de disponibilité et de sécurité. Toutes les valeurs sont chiffrées au repos avec <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode" target="_blank" rel="noopener noreferrer"><u>AES-256-GCM</u></a> et sont déchiffrées uniquement pendant l'exécution, garantissant ainsi la sécurité des opérations, ainsi qu'une faible latence. Les jetons et les identifiants utilisateur sont chiffrés et stockés dans la base de données et dans&nbsp;KV.&nbsp;</p>
+	<p>Afin d'améliorer encore les performances, Cloudflare <b>Queues</b> joue un rôle essentiel dans l'orchestration de l'achèvement des tâches. Lamatic utilise Queues pour alléger le travail lié aux requêtes de Workers et gérer les tâches telles que les webhooks et la coordination des processus distribués, deux aspects essentiels pour préserver la cohérence et la fiabilité du système dans son ensemble. Tandis que Workers traite les requêtes de synchronisation au point d'exécution, le traitement des tâches plus longues est assuré via Queues. Par exemple, pendant une synchronisation ETL planifiée, les nouveaux enregistrements de données générés sont stockés sous forme de file d'attente de messages sur Cloudflare <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer"><u><b>Pub/Sub</b></u></a>. Un consommateur Workers collecte ces messages et transmet un appel d'API au pod via la file d'attente de Workers. L'instance Workers du consommateur consomme davantage de messages au fur et à mesure que le traitement de chaque file d'attente se termine.</p>
+	<p>Un autre exemple de mise en œuvre optimale de cette configuration est la gestion des flux de travail&nbsp;IA. De nombreux flux de travail&nbsp;IA impliquent la transmission de requêtes simultanées à plusieurs sources de données, tandis que Queues rationalise le traitement des données et transmet efficacement les informations aux flux de travail <a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer"><u>RAG&nbsp;(Retrieval-Augmented Generation)</u></a> des clients. Cette approche permet de compenser les pics de charge de travail, de réduire les goulets d'étranglement et de garantir que les agents&nbsp;IA peuvent agréger et traiter les données de manière fiable, sans délai.</p>
+	<p>Par ailleurs, Lamatic.ai propose aux clients d'utiliser différents fournisseurs d'inférence de support sur sa plateforme, parmi lesquels <b>Workers&nbsp;AI</b>. Les clients peuvent choisir d'exécuter l'un des nombreux modèles open source hébergés sur Workers&nbsp;AI en fonction de leur scénario d'utilisation (chatbot, génération d'images, voix, etc.). Ensemble, ces couches permettent de résoudre les défis liés à l'évolutivité des agents&nbsp;IA en traitant d'importants volumes de données, en maintenant des réponses à faible latence et en garantissant une sécurité robuste. En développant son réseau d'infrastructure sur Cloudflare, Lamatic.ai a créé une plateforme résiliente et performante, capable de satisfaire aux exigences rigoureuses des applications&nbsp;IA modernes. Elle constitue ainsi un choix idéal pour les start-ups intégrant des fonctionnalités pilotées par&nbsp;IA à leurs produits.</p>
+	<div class="flex anchor relative">
+		<h2 id="skyward-ai-automates-compliance-using-ai-agents-with-durable-objects-and-agents">Skyward AI automatise la conformité en associant des agents&nbsp;IA avec Durable Objects et <code>agents</code></h2>
+		<a href="https://blog.cloudflare.com/#skyward-ai-automates-compliance-using-ai-agents-with-durable-objects-and-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Skyward AI transforme les opérations de conformité en tirant parti des capacités de traitement serverless de Cloudflare pour développer des agents de conformité pilotés par IA permettant de rationaliser les tâches essentielles, telles que la collecte de preuves, l'analyse des risques en temps réel et la mise à jour des politiques. Les équipes responsables de la conformité dans les secteurs des technologies financières, de la chaîne d'approvisionnement et d'autres secteurs fortement réglementés font appel à ces agents&nbsp;IA pour extraire et organiser les preuves, fournir des recommandations en temps réel et orchestrer automatiquement les mises à jour des politiques et des procédures. En gérant l'analyse documentaire, la surveillance des risques et l'application des politiques, ces agents&nbsp;IA réduisent le risque d'erreur humaine, tout en permettant aux professionnels de la conformité de se concentrer sur des tâches à valeur élevée.</p>
+	<p>Skyward a développé une plateforme d'agents&nbsp;IA reposant sur une approche principalement serverless, évitant ainsi les contraintes liées à l'informatique cloud centralisée. Pour atteindre cet objectif, l'entreprise tire parti de la plateforme pour développeurs de Cloudflare afin de créer et de gérer une infrastructure hautement réactive et évolutive. Des instances <b>Workers</b> traitent les requêtes entrantes, telles que les données de messagerie, les contrôles de conformité ou les mesures d'authentification, puis les acheminent efficacement dans différentes zones géographiques. Dans un premier temps, Skyward a bâti son infrastructure d'agents&nbsp;IA avec <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u><b>Durable Objects</b></u></a>, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u><b>Workflows</b></u></a> et le code RPC JavaScript-native pour la coordination de l'IA. Cependant, l'entreprise a récemment adopté la <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>nouvelle infrastructure d'agents&nbsp;IA de Cloudflare</u></a>. Dans la mesure où <code>agents</code> fournit un cadre pour la création et l'orchestration d'agents&nbsp;IA, la migration a permis à Skyward de s'abstraire de la nécessité de gérer manuellement Durable Objects, réduisant ainsi considérablement le temps consacré à la gestion de ces outils. Bien que ce lancement soit assez récent, la transition a permis de simplifier la manière dont les agents communiquent. Cependant, elle a également permis de conserver les avantages liés à la conception originale des agents, notamment la confidentialité des données, l'isolement et la gestion de la concurrence. Cette approche permet également à l'entreprise de fournir des commentaires et des réponses en temps réel aux utilisateurs finaux.</p>
+	<p>Skyward optimise l'automatisation de la conformité en temps réel en atteignant des temps de réponse inférieurs à 100&nbsp;ms pour les requêtes d'agents&nbsp;IA. Les charges de travail sont structurées de manière à minimiser les allers-retours réseau inutiles, tandis qu'une approche reposant sur un moteur de synchronisation précharge et transmet proactivement les données aux clients, proposant ainsi une expérience utilisateur particulièrement réactive. Pour le traitement en proxy de l'inférence&nbsp;IA, Skyward utilise <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u><b>AI&nbsp;Gateway</b></u></a> pour fournir une observabilité de l'utilisation, des performances et des coûts avec une multitude de fournisseurs, améliorant ainsi son efficacité opérationnelle pilotée par&nbsp;IA. L'utilisation de la plateforme pour développeurs serverless de Cloudflare a permis à Skyward de simplifier son architecture, tout en proposant une disponibilité mondiale. L'entreprise évite ainsi la nécessité de déployer des clusters Kubernetes ou des mécanismes de verrouillage complexes. L'équipe s'exonère également de la charge liée à la gestion des déploiements régionaux, puisque la prise en charge multi-régionale de Cloudflare garantit des performances constantes dans le monde entier, sans engendrer de complexité opérationnelle supplémentaire.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IW8Nh4NECUH897s3OEETe/6e3823712b3fceca699c068605aa9092/2.png" alt="" class="kg-image" width="1371" height="551" loading="lazy">
+	</figure>
+	<p>La gestion des états est une composante essentielle de l'exécution des flux de travail agentiques. Chaque session de gestion de la conformité s'exécute dans une instance <b>Durable Objects</b> dédiée, qui conserve les données pertinentes à proximité de la couche d'exécution. Cette configuration minimise les allers-retours vers la base de données et garantit que les tâches telles que les contrôles Anti-Money Laundering&nbsp;(AML), la validation Know Your Business&nbsp;(KYB) et le traitement documentaire restent efficaces. Une fois la session de conformité terminée, le système résume et stocke les informations pertinentes dans Postgres et <b>R2</b>, optimisant ainsi l'utilisation de la mémoire sans nécessiter d'infrastructure cloud persistante.</p>
+	<p>Pour équilibrer les opérations à faible latence avec le stockage à long terme, Skyward emploie une stratégie de gestion des données multicouche. En s'appuyant sur <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u><b>Hyperdrive</b></u></a>, l'équipe de Skyward a pu réduire de près de 50&nbsp;% la latence des requêtes, permettant ainsi aux équipes responsables de la conformité de recevoir un retour d'informations immédiat. Au cœur de l'entreprise, l'objectif de Skyward est de proposer une plateforme «&nbsp;rationalisée pour les équipes responsables de la conformité&nbsp;». L'équipe affirme qu'une boucle de collecte d'informations rapide permet de s'assurer que les clients finaux disposent des données et des réponses nécessaires pour agir. Qu'il s'agisse d'un agent unique ou de centaines d'agents exécutant des tâches en parallèle, Hyperdrive garantit que les requêtes de base de données pour les ressources telles que les documentations d'entreprise volumineuses (c'est-à-dire les réglementations, les politiques, les procédures ou les documents internes), les graphiques complexes de connaissances réglementaires et les informations contextuelles à la demande pour les flux de travail conversationnels sont toutes aussi performantes que possible.</p>
+	<p><b>Durable Objects</b> facilite l'état de la session en temps réel, assurant ainsi le bon fonctionnement des agents&nbsp;IA, sans nécessiter de mécanismes de verrouillage complexes. Pour les documents plus volumineux relatifs à la conformité, tels que les documents&nbsp;PDF juridiques et les données archivées, Cloudflare&nbsp;<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u><b>R2</b></u></a> propose un stockage à long terme, assurant que seules les informations fréquemment consultées restent disponibles. Cette approche permet d'améliorer les performances, tout en préservant l'efficacité et la rentabilité de la gestion du stockage.</p>
+	<p>La sécurité et l'évolutivité restent des priorités pour les applications&nbsp;IA dédiées à la conformité. Skyward applique des contrôles d'accès stricts, garantissant que seuls les utilisateurs autorisés peuvent accéder aux environnements de développement et de production. Chaque session d'IA conserve un journal vérifiable des principaux événements, des actions de l'utilisateur et des approbations, encourageant ainsi la capacité d'exporter ces informations à des fins de conformité et de respect des exigences légales. Dans la mesure où chaque agent est déployé dans sa propre instance et dispose de sa propre base de données, Skyward garantit un enregistrement détaillé de chaque utilisateur, chaque interaction avec l'agent et chaque exigence relative aux audits. En outre, la capacité de déployer et développer dans le monde entier qu'offre le réseau de Cloudflare a permis à Skyward de préserver la cohérence et les performances de ses opérations dans de nombreuses régions, sans alourdir l'infrastructure.</p>
+	<p>À l'avenir, Skyward prévoit d'améliorer encore la réactivité des agents&nbsp;IA en exécutant certains modèles directement sur <b>Cloudflare Workers&nbsp;AI</b>, réduisant ainsi la dépendance vis-à-vis de fournisseurs d'inférence externes. L'équipe prévoit d'approfondir l'intégration de <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u><b>Workers for Platforms</b></u></a> dans le but de mieux isoler les données clients et les flux de travail, et ainsi, d'offrir aux utilisateurs finaux un meilleur contrôle sur l'automatisation de leur conformité. Tandis que Cloudflare continue de développer ses capacités en matière d'IA, Skyward cherche à repousser les limites des solutions&nbsp;IA distribuées de gestion de la conformité, en améliorant l'automatisation, l'évolutivité et la sécurité de la conformité réglementaire.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-on-cloudflare">Développer sur Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#building-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous nous sommes inspirés de la manière dont des start-ups telles que Lamatic&nbsp;AI et Skyward&nbsp;AI développent leurs plateformes d'agents&nbsp;IA sur Cloudflare. Ce type d'innovation est la raison pour laquelle nous sommes fiers de voir tant de start-ups se fier à Cloudflare pour bénéficier d'une infrastructure évolutive, fiable et efficace.&nbsp;</p>
+	<p>Nous sommes également ravis d'annoncer que les solutions de Lamatic&nbsp;AI et Skyward&nbsp;AI ont été invitées à rejoindre la promotion Workers Launchpad nº&nbsp;5 de Cloudflare. À propos de Workers Launchpad, quelques mois se sont écoulés depuis notre dernière mise à jour, alors, jetons un coup d'œil à l'actualité de la solution.</p>
+	<div class="flex anchor relative">
+		<h2 id="thank-you-to-workers-launchpad-cohort-4-and-a-warm-welcome-to-cohort-5">Merci à la promotion Workers Launchpad nº&nbsp;4 et bienvenue à la promotion nº&nbsp;5</h2>
+		<a href="https://blog.cloudflare.com/#thank-you-to-workers-launchpad-cohort-4-and-a-warm-welcome-to-cohort-5" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52soEAD02j2yywLaDkz7Jv/76bad474948e946fccf845bcda5ed801/3.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p>L'équipe Workers Launchpad a été époustouflée par les projets présentés par les clients sur la plateforme pour développeurs. Les membres de la promotion nº&nbsp;4 ont proposé une présentation à l'occasion de notre événement biannuel <a href="https://cloudflare.tv/shows/workers-launchpad-demo-day/workers-launchpad-demo-day-cohort-4/QgLLnBg1" target="_blank" rel="noopener noreferrer"><u>Demo Day</u></a>. Nous avons demandé à nos clients de nous présenter ce qu'ils créent dans une multitude de secteurs, notamment (bien entendu) l'IA/l'apprentissage automatique, les outils de développement, la conception&nbsp;3D, l'infrastructure cloud, les technologies publicitaires, les médias et bien d'autres. Il est incroyablement encourageant de découvrir les solutions que conçoivent ces entreprises incroyables sur le réseau Cloudflare, et nous sommes impatients de poursuivre notre partenariat avec elles tout au long de leur parcours de start-up.</p>
+	<p>Après l'événement Demo Day de la promotion Workers Launchpad nº&nbsp;4, nous avons constaté un afflux sans précédent de candidatures provenant de start-ups du monde entier, impatientes de rejoindre la promotion nº&nbsp;5. Cette nouvelle vague de fondateurs repousse les limites du possible en développant des solutions dans des domaines tels que les agents&nbsp;IA, les outils de développement, les serveurs&nbsp;MCP, les médias et bien d'autres encore. À chaque nouvelle promotion, nous sommes continuellement inspirés par le talent des équipes fondatrices, les idées audacieuses auxquelles donnent vie et les problèmes réels qu'elles entreprennent de résoudre grâce à la technologie.</p>
+	<p>Aidez-nous à offrir beaucoup d'appréciation et un accueil chaleureux les participants de la promotion n°&nbsp;5&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RIIq1qTdmBeqeJS7ZoOKh/d65f0cf2c1bb66bdc2f5658b41ad8112/4.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
+	</figure>
+	<p>Nous sommes impatients de vous en apprendre davantage sur ce que réalisera la promotion n°&nbsp;5. Assurez-vous de suivre <a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>@CloudflareDev</u></a> sur&nbsp;X et rejoignez notre <a href="https://discord.com/invite/cloudflaredev?cf_target_id=4874A68FFE682C2DFA5CB8063B4025ED" target="_blank" rel="noopener noreferrer"><u>serveur Discord pour développeurs</u></a> pour découvrir toutes les informations concernant les promotions.</p>
+	<p>Si vous développez votre application sur notre plateforme pour développeurs, nous serions ravis de découvrir de quelle manière Cloudflare soutient votre parcours. N'hésitez pas à <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIZmgY5ste4LZi-hNaJzbXHBbeD2DHWe8R2xxp0wKO0byRYA/viewform" target="_blank" rel="noopener noreferrer"><u>nous en apprendre davantage</u></a> sur la solution que vous développez, et notre équipe ne manquera pas d'examiner votre candidature. Et si vous êtes une start-up et vous souhaitez rejoindre Workers Launchpad, n'hésitez pas à <a href="https://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer"><u>vous inscrire pour rejoindre la promotion n°&nbsp;6</u></a>&nbsp;: les candidatures sont maintenant ouvertes&nbsp;!</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Entreprise</b></p>
+				</td>
+				<td>
+					<p><b>À propos</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://www.acemate.ai" target="_blank" rel="noopener noreferrer"><b>Acemate</b></a></p>
+				</td>
+				<td>
+					<p>Une plateforme d'apprentissage IA destinée aux étudiants et enseignants de la filière universitaire</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.centillion.ai" target="_blank" rel="noopener noreferrer"><b>Centillion AI</b></a></p>
+				</td>
+				<td>
+					<p>Développement d'un serveur MCP pour la vérification de l'identité et la prévention de la fraude</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.ductize.com" target="_blank" rel="noopener noreferrer"><b>Ductize</b></a></p>
+				</td>
+				<td>
+					<p>Basculez votre service en production et lancez votre site web avec des paiements intégrés en 30&nbsp;minutes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.firmly.ai" target="_blank" rel="noopener noreferrer"><b>Firmly</b></a></p>
+				</td>
+				<td>
+					<p>Une plateforme de commerce agentique permettant aux consommateurs d'effectuer leurs achats à l'instant où ils en ont envie</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.heartspace.ai" target="_blank" rel="noopener noreferrer"><b>Heartspace</b></a></p>
+				</td>
+				<td>
+					<p>Diffusez des communications de qualité à la demande&nbsp;: payez pour le placement, pas pour des représentants</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.lamatic.ai" target="_blank" rel="noopener noreferrer"><b>Lamatic</b></a></p>
+				</td>
+				<td>
+					<p>Middleware IA géré et IDE permettant l'intégration rapide et fiable de fonctionnalités d'IA</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://lu.ma" target="_blank" rel="noopener noreferrer"><b>Lu.ma</b></a></p>
+				</td>
+				<td>
+					<p>Application facilitant l'organisation d'événements sensationnels</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.manticore.ai" target="_blank" rel="noopener noreferrer"><b>Manticore</b></a></p>
+				</td>
+				<td>
+					<p>Tests de pénétration pilotés par IA&nbsp;: identifiez, corrigez et revérifiez à la demande</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://mc2.fi" target="_blank" rel="noopener noreferrer"><b>MC</b></a><a href="https://mc2finance.com/about-mc-" target="_blank" rel="noopener noreferrer">²</a><a href="http://mc2.fi" target="_blank" rel="noopener noreferrer"><b> Finance</b></a></p>
+				</td>
+				<td>
+					<p>Crowdsourcez des stratégies DeFi et répertoriez-les en tant qu'ETF</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://muppet.dev" target="_blank" rel="noopener noreferrer"><b>Muppet</b></a></p>
+				</td>
+				<td>
+					<p>Plateforme de développement et de gestion à grande échelle de serveurs MCP</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.navatech.ai" target="_blank" rel="noopener noreferrer"><b>Navatech</b></a></p>
+				</td>
+				<td>
+					<p>Éliminer les obstacles au langage, à l'accès et aux modalités pour le personnel en première ligne</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://v0.era.new" target="_blank" rel="noopener noreferrer"><b>New Era</b></a></p>
+				</td>
+				<td>
+					<p>Rédiger de superbes e-mails à l'aide du langage naturel</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.newharbor.co" target="_blank" rel="noopener noreferrer"><b>New Harbor</b></a></p>
+				</td>
+				<td>
+					<p>Une cybersécurité simple, conviviale et tout-en-un pour les entreprises</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://nexartis.com" target="_blank" rel="noopener noreferrer"><b>Nexartis</b></a></p>
+				</td>
+				<td>
+					<p>Ouvrez de nouvelles voies à la gestion des droits, protégez la propriété intellectuelle et monétisez correctement les contributions individuelles</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.notika.ai" target="_blank" rel="noopener noreferrer"><b>Notika AI</b></a></p>
+				</td>
+				<td>
+					<p>Ajoutez des notifications transactionnelles à votre application en quelques minutes, sans faire appel à un ingénieur</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.periculum.io" target="_blank" rel="noopener noreferrer"><b>Periculum</b></a></p>
+				</td>
+				<td>
+					<p>Fournisseur de solutions IA proposant des solutions logicielles d'analyse des données aux entreprises actives sur des marchés mal desservis</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://pressbox.studio" target="_blank" rel="noopener noreferrer"><b>Pressbox</b></a></p>
+				</td>
+				<td>
+					<p>Personnalisation de contenus multimodale, pilotée par IA, pour les organisations sportives et médiatiques</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.prompteus.com" target="_blank" rel="noopener noreferrer"><b>Prompteus</b></a></p>
+				</td>
+				<td>
+					<p>Gardes-fous, journalisation et réduction des coûts pour les intégrations d'IA</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://remixlabs.com" target="_blank" rel="noopener noreferrer"><b>Remix Labs</b></a></p>
+				</td>
+				<td>
+					<p>Encouragez un engagement numérique de nouvelle génération avec des expériences reposant sur des applications agentiques</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.skyward.ai" target="_blank" rel="noopener noreferrer"><b>Skyward</b></a></p>
+				</td>
+				<td>
+					<p>L'espace de travail IA-native pour les équipes responsables de la conformité</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.usesonora.com" target="_blank" rel="noopener noreferrer"><b>Sonora</b></a></p>
+				</td>
+				<td>
+					<p>Une plateforme AI-native d'informations sur les clients qui synthétise les commentaires des clients et propose des informations exploitables sur l'ensemble des canaux de communication</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://ssojet.com" target="_blank" rel="noopener noreferrer"><b>SSOJet</b></a></p>
+				</td>
+				<td>
+					<p>Une solution SSO pour entreprises intelligente et performante, tout simplement</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://syrenn.co" target="_blank" rel="noopener noreferrer"><b>Syrenn</b></a></p>
+				</td>
+				<td>
+					<p>Plateforme IA de coaching en ventes externes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://testdriver.ai" target="_blank" rel="noopener noreferrer"><b>Testdriver</b></a></p>
+				</td>
+				<td>
+					<p>Étendez la couverture des tests grâce aux Computer-Using Agents&nbsp;(CUA)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.toddle.dev" target="_blank" rel="noopener noreferrer"><b>Toddle</b></a></p>
+				</td>
+				<td>
+					<p>Moteur de développement web permettant aux équipes produit de créer de superbes applications web interactives</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Toolhouse</b></p>
+				</td>
+				<td>
+					<p>Plateforme permettant à n'importe quel développeur de concevoir des agents&nbsp;IA et des flux de travail avec une formidable expérience de développement</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://www.unravo.org" target="_blank" rel="noopener noreferrer"><b>Unravo</b></a></p>
+				</td>
+				<td>
+					<p>Agentic, la plateforme exhaustive, pilotée par IA, de recherche sur les entreprises</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://wittify.ai" target="_blank" rel="noopener noreferrer"><b>Wittify.ai</b></a></p>
+				</td>
+				<td>
+					<p>IA conversationnelle avancée en langue arabe pour les activités d'engagement client</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="http://actualize.zerosumdefense.io" target="_blank" rel="noopener noreferrer"><b>Zero Sum Defense</b></a></p>
+				</td>
+				<td>
+					<p>La liberté numérique grâce à des mesures de sécurité et de confidentialité sur mesure</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40boL9159chHNCBcqOccse/96aae4b197042500da8a78b172db0cf0/5.png" alt="" class="kg-image" width="1800" height="465" loading="lazy">
+	</figure>
+	<p></p>
+</div>

@@ -1,0 +1,290 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/sandbox-ga">English</a>, <a href="https://blog.cloudflare.com/zh-tw/sandbox-ga">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/sandbox-ga">Français</a>, <a href="https://blog.cloudflare.com/it-it/sandbox-ga">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/sandbox-ga">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/sandbox-ga">한국어</a>, <a href="https://blog.cloudflare.com/es-la/sandbox-ga">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/es-es/sandbox-ga">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/sandbox-ga">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QxQLnc8Ysak3MyDb9orcq/9c3cb7cb9878f990da2be844fe8464ae/BLOG-3264_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Als wir <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> im Juni letzten Jahres auf den Markt brachten, war die Prämisse einfach: <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>KI-Agents</u></a> müssen Code entwickeln und ausführen, und sie müssen dies an einem sicheren Ort tun.</p>
+	<p>Wenn sich ein Agent wie ein Entwickler verhält, bedeutet dies, Repositories zu klonen, Code in vielen Sprachen zu erstellen, Entwicklungsserver auszuführen usw. Um diese Aufgaben effektiv zu erledigen, benötigen er oft einen leistungsfähigen Computer (und wenn nicht, kann er <a href="https://blog.cloudflare.com/dynamic-workers"><u>zu etwas Leichtem greifen</u></a>!).</p>
+	<p>Viele Entwickler kombinieren Lösungen mit Hilfe von VMs oder bestehenden Container-Lösungen, aber es gibt noch viele schwierige Probleme zu lösen:</p>
+	<ul>
+		<li>
+			<p><b>Lastspitzen –</b> Da jede Sitzung eine eigene Sandbox benötigt, müssen Sie oft viele Sandboxes schnell hochfahren, möchten jedoch nicht für ungenutzte Rechenleistung im Standby-Modus bezahlen.</p>
+		</li>
+		<li>
+			<p><b>Schnelle Wiederherstellung des Zustands</b> – Jede Sitzung sollte schnell starten und schnell neu starten, um den vorherigen Zustand wiederherzustellen.</p>
+		</li>
+		<li>
+			<p><b>Sicherheit</b> – Agents müssen sicher auf Dienste zugreifen, ihnen können aber keine Zugangsdaten anvertraut werden.</p>
+		</li>
+		<li>
+			<p><b>Steuerung</b> – Es muss einfach sein, den Lebenszyklus der Sandbox programmatisch zu steuern, Befehle auszuführen, Dateien zu verwalten und mehr.</p>
+		</li>
+		<li>
+			<p><b>Ergonomie</b> – Sie müssen sowohl Menschen als auch Agents eine einfache Schnittstelle zur Verfügung stellen, um die üblichen Vorgänge auszuführen.</p>
+		</li>
+	</ul>
+	<p>Wir haben uns die Zeit genommen, diese Probleme zu lösen, damit Sie sich nicht darum kümmern müssen. Seit unserer ersten Einführung haben wir Sandboxes zu einem noch besseren Ort für die Ausführung von Agents in großem Umfang gemacht. Wir haben mit unseren ersten Partnern wie Figma zusammengearbeitet, die Agents in Containern mit <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a> betreiben:</p>
+	<blockquote>
+		<p><i>„Figma Make wurde entwickelt, um Entwicklern und Herstellern mit unterschiedlichem Hintergrund zu helfen, schneller von der Idee in die Produktion zu gelangen. Um dieses Ziel zu erreichen, benötigten wir eine Infrastrukturlösung, die zuverlässige, hoch skalierbare Sandboxes bereitstellen konnte, in denen wir nicht vertrauenswürdigen, von Agents und Nutzern erstellten Code ausführen konnten. Cloudflare Containers ist diese Lösung.“</i></p>
+		<p><i>– </i><i><b>Alex Mullans</b></i><i>, KI- und Entwicklerplattformen bei Figma</i></p>
+	</blockquote>
+	<p>Wir möchten Sandboxes für noch mehr Unternehmen verfügbar machen. Deshalb freuen wir uns, heute anzukündigen, dass <b>Sandboxes und Cloudflare Containers jetzt allgemein verfügbar sind.</b></p>
+	<p>Werfen wir einen Blick auf einige der jüngsten Änderungen an den Sandboxes:</p>
+	<ul>
+		<li>
+			<p><b>Mit Secure Credential Injection </b>können Sie authentifizierte Aufrufe tätigen, ohne dass der Agent jemals Zugriff auf Anmeldedaten hat&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>PTY-Unterstützung</b> gibt Ihnen und Ihrem Agents ein echtes Terminal</p>
+		</li>
+		<li>
+			<p><b>Persistente Code-Interpreter</b> geben Ihrem Agent einen Ort, an dem er zustandsbehaftete Python, JavaScript und TypeScript standardmäßig ausführen kann</p>
+		</li>
+		<li>
+			<p><b>Hintergrundprozesse und Live-Vorschau-URLs</b> bieten eine einfache Möglichkeit, mit Entwicklungsservern zu interagieren und laufende Änderungen zu überprüfen</p>
+		</li>
+		<li>
+			<p><b>Die Überwachung durch das Dateisystem</b> verbessert die Geschwindigkeit der Iteration, wenn Agents Änderungen vornehmen.</p>
+		</li>
+		<li>
+			<p><b>Snapshots</b> ermöglichen es Ihnen, die Programmiersitzung eines Agents schnell wiederherzustellen</p>
+		</li>
+		<li>
+			<p><b>Höhere Obergrenzen und Active CPU Pricing</b> erlauben es Ihnen, eine ganze Reihe von Agents in großem Maßstab einzusetzen, ohne für ungenutzte CPU-Zyklen zu zahlen</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="sandboxes-101">Sandboxes: Grundlagen</h2>
+		<a href="https://blog.cloudflare.com/#sandboxes-101" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor wir uns mit einigen der jüngsten Änderungen befassen, wollen wir kurz die Grundlagen betrachten.</p>
+	<p>Eine Cloudflare-Sandbox ist eine persistente, isolierte Umgebung, die von <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>Cloudflare-Containern</u></a> unterstützt wird. Sie fragen nach einem Namen für eine Sandbox. Wenn sie läuft, erhalten Sie sie. Wenn nicht, beginnt sie. Wenn sie untätig ist, versetzt sie sich automatisch in den Ruhezustand und wird aktiv, wenn sie eine Anfrage erhält. Mit Methoden wie <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> und <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>mehr</u></a> ist es einfach, programmatisch mit der Sandbox zu interagieren.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { getSandbox } from "@cloudflare/sandbox";
+export { Sandbox } from "@cloudflare/sandbox";
+
+export default {
+  async fetch(request: Request, env: Env) {
+    // Ask for a sandbox by name. It starts on demand.
+    const sandbox = getSandbox(env.Sandbox, "agent-session-47");
+
+    // Clone a repository into it.
+    await sandbox.gitCheckout("https://github.com/org/repo", {
+      targetDir: "/workspace",
+      depth: 1,
+    });
+
+    // Run the test suite. Stream output back in real time.
+    return sandbox.exec("npm", ["test"], { stream: true });
+  },
+};
+</code></pre>
+	<p>Solange Sie dieselbe ID angeben, können nachfolgende Anfragen von überall auf der Welt an dieselbe Sandbox gelangen.</p>
+	<div class="flex anchor relative">
+		<h2 id="secure-credential-injection">Sichere Injektion von Anmeldedaten</h2>
+		<a href="https://blog.cloudflare.com/#secure-credential-injection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eines der größten Probleme bei Agents-Workloads ist die Authentifizierung. Für den Zugriff auf private Dienste benötigen Sie oft Agents, aber Sie können ihnen nicht vollständig mit unverschlüsselten Anmeldedaten vertrauen.&nbsp;</p>
+	<p>Sandboxes lösen dieses Problem, indem sie Anmeldeinformationen auf der Netzwerkebene über einen programmierbaren Egress-Proxy einspeisen. Das bedeutet, dass Sandbox-Agents niemals Zugriff auf die Anmeldedaten haben und Sie die Authentifizierungslogik vollständig nach Ihrem Ermessen anpassen können:</p>
+	<pre class="language-javascript"><code class="language-javascript">class OpenCodeInABox extends Sandbox {
+  static outboundByHost = {
+    "my-internal-vcs.dev": (request, env, ctx) =&gt; {
+      const headersWithAuth = new Headers(request.headers);
+      headersWithAuth.set("x-auth-token", env.SECRET);
+      return fetch(request, { headers: headersWithAuth });
+    }
+  }
+}
+</code></pre>
+	<p>Einen tieferen Einblick in diese Funktionsweise&nbsp;– einschließlich identitätsbasierter Injektion von Anmeldedaten, dynamischer Änderung von Regeln und Integration mit <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers-Bindungen</u></a>&nbsp;– finden Sie in unserem aktuellen Blogbeitrag zur <a href="https://blog.cloudflare.com/sandbox-auth"><u>Sandbox-Authentifizierung</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-real-terminal-not-a-simulation">Ein echtes Terminal, keine Simulation</h2>
+		<a href="https://blog.cloudflare.com/#a-real-terminal-not-a-simulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Frühe Agentssysteme modellierten den Shell-Zugriff oft als eine Anfrage-Antwort-Schleife: einen Befehl ausführen, auf die Ausgabe warten, das Transkript wieder in die Prompts einfügen, wiederholen. Es funktioniert, entspricht aber nicht der tatsächlichen Arbeitsweise von Entwicklern in einem Terminal.&nbsp;</p>
+	<p>Menschen führen etwas aus, sehen zu, wie der Output gestreamt wird, unterbrechen ihn, stellen die Verbindung später wieder her und machen weiter. Auch die Agents profitieren von dieser Feedbackschleife.</p>
+	<p>Im Februar haben wir die PTY-Unterstützung eingeführt. Eine Pseudo-Terminal-Sitzung in einer Sandbox, die über WebSocket als Proxy geleitet wird und mit <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a> kompatibel ist.</p>
+	<p>Rufen Sie einfach <code>sandbox.terminal</code> auf, um das Backend bereitzustellen:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Worker: upgrade a WebSocket connection into a live terminal session
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+    if (url.pathname === "/terminal") {
+      const sandbox = getSandbox(env.Sandbox, "my-session");
+      return sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+    return new Response("Not found", { status: 404 });
+  },
+};
+
+</code></pre>
+	<p>Und verwenden Sie <code>xterm addon</code>, um es vom Client aus aufzurufen:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Browser: connect xterm.js to the sandbox shell
+import { Terminal } from "xterm";
+import { SandboxAddon } from "@cloudflare/sandbox/xterm";
+
+const term = new Terminal();
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ origin }) =&gt; `${origin}/terminal`,
+});
+
+term.loadAddon(addon);
+term.open(document.getElementById("terminal-container")!);
+addon.connect({ sandboxId: "my-session" });
+</code></pre>
+	<p>Dadurch können Agents und Entwickler eine vollständige PTY nutzen, um diese Sitzungen live zu debuggen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bgyxh8kg3MPfij2v1XXLE/9cff50318ad306b20c3346c3bd3554d9/BLOG-3264_2.gif" alt="BLOG-3264 2" class="kg-image" width="1120" height="382" loading="lazy">
+	</figure>
+	<p>Jede Terminalsitzung erhält ihre eigene isolierte Shell, ihr eigenes Arbeitsverzeichnis, ihre eigene Umgebung. Öffnen Sie so viele, wie Sie benötigen, genau wie auf Ihrem eigenen Rechner. Die Ausgabe wird serverseitig gepuffert, sodass bei der Wiederherstellung der Verbindung das wiederholt wird, was Sie verpasst haben.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-code-interpreter-that-remembers">Ein Code-Interpreter mit Gedächtnis</h2>
+		<a href="https://blog.cloudflare.com/#a-code-interpreter-that-remembers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Für Datenanalyse, Skripterstellung und explorative Workflows bieten wir auch eine Abstraktion auf höherer Ebene: einen persistenten Codeausführungskontext.</p>
+	<p>Das Schlüsselwort lautet „persistent“. Viele Code-Interpreter-Implementierungen führen jedes Snippet isoliert aus, sodass der Zustand zwischen den Aufrufen verschwindet. Sie können eine Variable nicht in einem Schritt setzen und im nächsten lesen.</p>
+	<p>Sandboxes ermöglichen es Ihnen, „Kontexte“ zu erstellen, die den Zustand beibehalten. Variablen und Importe bleiben über Aufrufe hinweg genauso bestehen wie in einem Jupyter Notebook:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Create a Python context. State persists for its lifetime.
+const ctx = await sandbox.createCodeContext({ language: "python" });
+
+// First execution: load data
+await sandbox.runCode(`
+  import pandas as pd
+  df = pd.read_csv('/workspace/sales.csv')
+  df['margin'] = (df['revenue'] - df['cost']) / df['revenue']
+`, { context: ctx });
+
+// Second execution: df is still there
+const result = await sandbox.runCode(`
+  df.groupby('region')['margin'].mean().sort_values(ascending=False)
+`, { context: ctx, onStdout: (line) =&gt; console.log(line.text) });
+
+// result contains matplotlib charts, structured json output, and Pandas tables in HTML
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="start-a-server-get-a-url-ship-it">Server starten. URL abrufen. Ausliefern.</h2>
+		<a href="https://blog.cloudflare.com/#start-a-server-get-a-url-ship-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agents sind nützlicher, wenn sie etwas erstellen und es dem Nutzer sofort zeigen können. Sandboxes unterstützen Hintergrundprozesse, Bereitschaftsprüfungen und <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>Vorschau-URLs</u></a>. Damit kann ein Agent einen Entwicklungsserver starten und einen Live-Link teilen, ohne die Konversation zu verlassen.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Start a dev server as a background process
+const server = await sandbox.startProcess("npm run dev", {
+  cwd: "/workspace",
+});
+
+// Wait until the server is actually ready — don't just sleep and hope
+await server.waitForLog(/Local:.*localhost:(\d+)/);
+
+// Expose the running service with a public URL
+const { url } = await sandbox.exposePort(3000);
+
+// url is a live public URL the agent can share with the user
+console.log(`Preview: ${url}`);
+</code></pre>
+	<p>Mit <i><code>waitForPort()</code></i> und <i><code>waitForLog()</code></i> können Agents ihre Arbeit auf der Grundlage echter Signale des laufenden Programms statt mit Rateversuchen sequenzieren. Das ist deutlich eleganter als die übliche Alternative&nbsp;– meist irgendeine Variante von <code>sleep(2000)</code>, gefolgt von blindem Vertrauen.</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-the-file-system-and-react-immediately">Dateisystem beobachten und sofort reagieren</h2>
+		<a href="https://blog.cloudflare.com/#watch-the-file-system-and-react-immediately" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Moderne Entwicklungsabläufe sind ereignisgesteuert: Datei speichern, Build erneut ausführen. Konfiguration ändern, Server neu starten. Test anpassen, Suite erneut ausführen.</p>
+	<p>Wir haben <i>sandbox.watch()</i> im März veröffentlicht. Sie gibt einen SSE-Stream zurück, der von nativem <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a> unterstützt wird, dem Kernel-Mechanismus, den Linux für Dateisystemereignisse verwendet.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { parseSSEStream, type FileWatchSSEEvent } from '@cloudflare/sandbox';
+
+const stream = await sandbox.watch('/workspace/src', {
+  recursive: true,
+  include: ['*.ts', '*.tsx']
+});
+
+for await (const event of parseSSEStream&lt;FileWatchSSEEvent&gt;(stream)) {
+  if (event.type === 'modify' &amp;&amp; event.path.endsWith('.ts')) {
+    await sandbox.exec('npx tsc --noEmit', { cwd: '/workspace' });
+  }
+}
+</code></pre>
+	<p>Dies ist eine dieser Primitiven, die unauffällig das ändern, was Agents tun können. Ein Agent, der das Dateisystem in Echtzeit beobachten kann, kann an denselben Feedbackschleifen teilnehmen wie ein menschlicher Entwickler.</p>
+	<div class="flex anchor relative">
+		<h2 id="waking-up-quickly-with-snapshots">Schnelles Aufwachen mit Snapshots</h2>
+		<a href="https://blog.cloudflare.com/#waking-up-quickly-with-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stellen Sie sich einen (menschlichen) Entwickler vor, der an seinem Laptop arbeitet. Er <code>klont ein Repo</code>, führt <code>npm install</code> aus, schreibt Code, pusht einen PR und schließt dann seinen Laptop, während er auf das Code-Review warten. Wenn es an der Zeit ist, die Arbeit wieder aufzunehmen, öffnen er einfach den Laptop wieder und macht dort weiter, wo er aufgehört haben.</p>
+	<p>Wenn ein Agent diesen Arbeitsablauf auf einer einfachen Containerplattform replizieren möchte, stoßen Sie auf ein Problem. Wie können Sie dort schnell weitermachen, wo Sie aufgehört haben? Sie könnten eine Sandbox am Laufen halten, zahlen Sie dann aber für ungenutzte Rechenleistung. Sie könnten neu mit dem Container-Image beginnen, müssen dann aber auf eine lange <code>Git-Clone</code> und <code>npm-Installation</code> warten.</p>
+	<p>Unsere Antwort sind Snapshots, die in den kommenden Wochen eingeführt werden.</p>
+	<p>Ein Snapshot speichert den vollständigen Festplattenstatus eines Containers, die Betriebssystemkonfiguration, installierte Abhängigkeiten, geänderte Dateien, Datendateien und mehr. Dann können Sie alles später schnell wiederherstellen.</p>
+	<p>Sie können eine Sandbox so konfigurieren, dass beim Wechsel in den Ruhezustand automatisch eine Momentaufnahme erstellt wird.</p>
+	<pre class="language-javascript"><code class="language-javascript">class AgentDevEnvironment extends Sandbox {
+  sleepAfter = "5m";
+  persistAcrossSessions = {type: "disk"}; // you can also specify individual directories
+}
+</code></pre>
+	<p>Sie können auch programmgesteuert einen Snapshot erstellen und manuell wiederherstellen. Dies ist nützlich für die Checkpoint-Arbeit oder das Forken von Sitzungen. Wenn Sie beispielsweise vier Instanzen eines Agents parallel ausführen wollten, können Sie problemlos vier Sandboxes aus demselben Zustand starten.</p>
+	<pre class="language-javascript"><code class="language-javascript">class AgentDevEnvironment extends Sandbox {}
+
+async forkDevEnvironment(baseId, numberOfForks) {
+  const baseInstance = await getSandbox(baseId);
+  const snapshotId = await baseInstance.snapshot();
+
+  const forks = Array.from({ length: numberOfForks }, async (_, i) =&gt; {
+    const newInstance = await getSandbox(`${baseId}-fork-${i}`);
+    return newInstance.start({ snapshot: snapshotId });
+  });
+
+  await Promise.all(forks);
+}
+</code></pre>
+	<p>Snapshots werden in <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> innerhalb Ihres Kontos gespeichert, was Ihnen Dauerhaftigkeit und Standortunabhängigkeit bietet. Das <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>Tiered Caching</u></a>-System von R2 ermöglicht eine schnelle Wiederherstellung in der gesamten Region: auf der Erde.</p>
+	<p>In zukünftigen Versionen wird auch der Live-Speicherstatus erfasst, so dass laufende Prozesse genau an der Stelle fortgesetzt werden können, an der sie unterbrochen wurden. Ein Terminal und ein Editor werden genau in dem Zustand wieder geöffnet, in dem sie sich beim letzten Schließen befanden.</p>
+	<p>Wenn Sie den Sitzungsstatus wiederherstellen möchten, bevor die Snapshots live gehen, können Sie noch heute die <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><u><code>Sicherungs- und Wiederherstellungsmethoden</code></u></a> verwenden. Diese speichern ebenfalls Verzeichnisse mit R2 und stellen sie wieder her, sind aber nicht so leistungsfähig wie echte Snapshots auf VM-Ebene. Sie können dennoch erhebliche Geschwindigkeitsvorteile gegenüber dem einfachen Neuerstellen des Sitzungszustands bringen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzVucBiNvxOh3NFn0ukxj/3b8e6cd9a5ca241b6c6a7c8556c0a529/BLOG-3264_3.gif" alt="BLOG-3264 3" class="kg-image" width="1493" height="393" loading="lazy">
+	</figure>
+	<p><i><sup>Das Booten einer Sandbox, das Klonen von „axios“ und die Installation von npm dauert 30&nbsp;Sekunden. Die Wiederherstellung aus einem Backup dauert zwei Sekunden.</sup></i></p>
+	<p>Bleiben Sie dran&nbsp;– die offizielle Snapshot-Version kommt bald.</p>
+	<div class="flex anchor relative">
+		<h2 id="higher-limits-and-active-cpu-pricing">Höhere Obergrenzen und aktive CPU-Preisgestaltung</h2>
+		<a href="https://blog.cloudflare.com/#higher-limits-and-active-cpu-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Seit unserem ersten Start haben wir die Kapazität stetig erhöht. Nutzer unseres Standardplans können jetzt 15.000 gleichzeitige Instanzen des „Lite“-Instanztyps, 6.000 Instanzen des Basic-Modells und über 1.000 gleichzeitige größere Instanzen ausführen. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Wenden Sie sich gerne an uns</u></a>, um noch mehr Instanzen auszuführen!</p>
+	<p>Außerdem haben wir unser Preismodell angepasst, um den Einsatz in großem Maßstab kosteneffizienter zu gestalten. Sandboxes berechnen jetzt <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>nur noch die aktiv genutzten CPU-Zyklen</u></a>. Das bedeutet, dass Sie nicht für ungenutzte CPU-Zyklen zahlen, während Ihr Agent auf die Antwort eines LLMs wartet.</p>
+	<div class="flex anchor relative">
+		<h2 id="this-is-what-a-computer-looks-like">So sieht ein Computer aus&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#this-is-what-a-computer-looks-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vor neun Monaten haben wir eine Sandbox veröffentlicht, die Befehle ausführen und auf ein Dateisystem zugreifen kann. Das reichte aus, um das Konzept zu beweisen.</p>
+	<p>Was wir jetzt haben, ist grundlegend anders. Eine Sandbox ist heute eine vollständige Entwicklungsumgebung: ein Terminal, mit dem Sie einen Browser verbinden können, ein Code-Interpreter mit persistentem Zustand, Hintergrundprozesse mit Live-Vorschau-URLs, ein Dateisystem, das Änderungsereignisse in Echtzeit ausgibt, Egress-Proxys für eine sichere Credential Injection und ein Snapshot-Mechanismus, der Warmstarts nahezu sofort ermöglicht.&nbsp;</p>
+	<p>Darauf aufbauend ergibt sich ein überzeugendes Muster: Agents, die echte Entwicklungsarbeit leisten. Ein Repo klonen, installieren, die Tests ausführen, die Fehler lesen, den Code bearbeiten, die Tests erneut ausführen. Die Art von enger Feedbackschleife, die menschliche Entwickler effektiv macht – jetzt steht sie auch dem Agenten zur Verfügung.</p>
+	<p>Wir sind bei Version 0.8.9 des SDK. Legen Sie noch heute los:</p>
+	<p><code>npm i @cloudflare/sandbox@latest</code></p>
+</div>

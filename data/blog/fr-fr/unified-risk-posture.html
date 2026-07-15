@@ -1,0 +1,256 @@
+<div class="mb2 gray5">Lecture&nbsp;: 8 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/unified-risk-posture">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/unified-risk-posture">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/unified-risk-posture">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/unified-risk-posture">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/unified-risk-posture">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/unified-risk-posture">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/unified-risk-posture">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5a2emFGRunuw95JweORPOj/2da348ffffb0ed4e26d3230f8127f644/unified-risk-posture.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La gestion du niveau de risque (c'est-à-dire la manière dont votre entreprise évalue, hiérarchise et atténue les risques) n'a jamais été aussi simple. Toutefois, avec la croissance rapide des <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface" target="_blank" rel="noopener noreferrer">surfaces d'attaque</a>, cette tâche est devenue de plus en plus complexe et inefficace. (Une étude mondiale a <a href="https://securityintelligence.com/articles/socs-spend-32-percent-day-incidents-pose-no-threat" target="_blank" rel="noopener noreferrer">révélé</a> que les membres de l'équipe SOC consacrent, en moyenne, un tiers de leur journée de travail à des incidents qui ne présentent aucune menace).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12txl9X9aO1mdmmdNUBM9U/9544e21096e2c3233982efa99acd984b/image5.png" alt="Introducing Cloudflare for Unified Risk Posture" class="kg-image" width="1999" height="1172" loading="lazy">
+
+	</figure>
+	<p>Mais que diriez-vous si vous pouviez <b>atténuer les risques</b> au prix de <b>moins d'efforts</b> et avec moins <b>de bruit</b> ?</p>
+	<p>Cette publication explore la manière dont Cloudflare peut aider ses clients à y parvenir, grâce à une nouvelle suite faisant converger les fonctionnalités de nos catalogues de solutions de sécurité <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASE</a> (Secure Access Services Edge, service d'accès sécurisé en périphérie) et <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">WAAP</a> (Web Application And API, protection des applications web et des API). Nous allons vous expliquer :</p>
+	<ul>
+		<li>
+			<p>Pourquoi cette approche vous permet de protéger une plus grande partie de votre surface d'attaque, tout en réduisant les efforts en matière de SecOps.</p>
+		</li>
+		<li>
+			<p>Trois scénarios d'utilisation clés, dont l'application de la sécurité Zero Trust dans le cadre de notre partenariat élargi avec CrowdStrike.</p>
+		</li>
+		<li>
+			<p>Les autres nouveaux projets, basés sur ces fonctionnalités, que nous sommes en train d'étudier.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-for-unified-risk-posture">Cloudflare for Unified Risk Posture</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-for-unified-risk-posture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous annonçons aujourd'hui le lancement de <a href="https://www.cloudflare.com/cybersecurity-risk-management" target="_blank" rel="noopener noreferrer"><b>Cloudflare for Unified Risk Posture</b></a>, une nouvelle suite de fonctionnalités de gestion des risques liés à la cybersécurité conçue pour aider les entreprises à <b>appliquer automatiquement et dynamiquement leur stratégie en matière de risques</b> à l'ensemble de leur surface d'attaque en pleine expansion. Une plateforme unifiée permet aujourd'hui aux entreprises :</p>
+	<ul>
+		<li>
+			<p><b>D'évaluer les risques pour l'ensemble de leurs utilisateurs et de leurs applications :</b> Cloudflare évalue le risque posé par les utilisateurs à l'aide de modèles <a href="https://www.cloudflare.com/learning/security/what-is-ueba" target="_blank" rel="noopener noreferrer">UEBA</a> (User Entity and Behavior Analytics, analyse des entités et du comportement des utilisateurs) et les risques pour les applications, les API et les sites à l'aide de modèles de détection des contenus malveillants, des menaces zero-day et des bot.</p>
+		</li>
+		<li>
+			<p><b>D'échanger des indicateurs de risque avec des partenaires d'exception :</b> Cloudflare ingère les scores de risque issus des meilleurs partenaires d'<a href="https://www.cloudflare.com/learning/security/glossary/endpoint-security" target="_blank" rel="noopener noreferrer">EPP</a> (Endpoint Protection, protection des points de terminaison) et d'<a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank" rel="noopener noreferrer">IDP</a> (Identity Provider, fournisseurs d'identité), avant de transmettre vos données télémétriques à vos plateformes <a href="https://www.cloudflare.com/learning/security/what-is-siem" target="_blank" rel="noopener noreferrer">SIEM</a> (Security Information and Event Management, gestion des événements et des informations de sécurité) et XDR (Extended Detection and Response, fonctionnalités de détection et de réponse étendues) afin d'enrichir vos analyses, le tout via des intégrations uniques à notre API unifiée.</p>
+		</li>
+		<li>
+			<p><b>D'appliquer des mesures de contrôle des risques automatisées à grande échelle :</b> en s'appuyant sur ces scores de risque dynamiques propriétaires et tiers, Cloudflare applique des mesures de contrôle des risques cohérentes aux utilisateurs et aux applications, partout dans le monde.</p>
+		</li>
+	</ul>
+	<p><b>Figure 1 : schéma de la suite Unified Risk Posture</b></p>
+	<p>Comme nous l'avons mentionné plus haut, cette suite fait converger les fonctionnalités issues de nos catalogues de sécurité SASE et WAAP sur notre réseau mondial. Les clients peuvent désormais tirer parti de fonctionnalités de gestion des risques intégrées, proposées dans le cadre de ces catalogues existants.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WLbotRM1RL1VFQwZbNZ8y/8bf5d12d3ed85dba51448b4fad75b4e9/image3.png" alt="" class="kg-image" width="1128" height="547" loading="lazy">
+
+	</figure>
+	<p>Ce lancement s'appuie sur nos efforts progressifs visant à étendre la visibilité et les mesures de contrôle propriétaires à des intégrations tierces afin de permettre aux entreprises de s'adapter plus facilement à l'évolution des risques. Prenons un exemple. Dans le cadre de la <a href="https://www.cloudflare.com/security-week" target="_blank" rel="noopener noreferrer">Security Week</a> 2024, nous avons annoncé la mise en disponibilité générale d'un <a href="https://blog.cloudflare.com/cf1-user-risk-score">système de notation des risques liés aux comportements des utilisateurs</a> et la disponibilité en version bêta d'un <a href="https://blog.cloudflare.com/fr-fr/security-analytics-ai-assistant-fr-fr">assistant soutenu par IA</a>, conçu pour vous aider à analyser les risques visant vos applications. Lors d'une <a href="https://blog.cloudflare.com/cloudflare-email-security-now-works-with-crowdstrike-falcon-logscale">récente intégration à l'automne 2023</a>, nous avons annoncé que nos clients utilisateurs de solutions de sécurité du courrier électronique cloud pouvaient ingérer et afficher les menaces détectées par nos outils dans le tableau du SIEM de nouvelle génération, CrowdStrike Falcon®.</p>
+	<p>Afin de mieux gérer votre stratégie en matière de risques, vous pourrez tirer avantage des nouvelles fonctionnalités et intégrations de Cloudflare, notamment :</p>
+	<ul>
+		<li>
+			<p>Une nouvelle intégration permettant de transmettre les données de la plateforme Zero Trust et les journaux e-mail de Cloudflare au SIEM de nouvelle génération CrowdStrike Falcon <i>(fonctionnalité déjà disponible).</i></p>
+		</li>
+		<li>
+			<p>Une nouvelle intégration permettant de transmettre le score de risque utilisateur de Cloudflare à Okta afin d'appliquer des politiques d'accès <i>(prochainement, vers la fin du deuxième trimestre 2024).</i></p>
+		</li>
+		<li>
+			<p>De nouveaux modèles UEBA propriétaires, incluant notamment les scores de risque utilisateur basés sur la vérification du niveau de sécurité des appareils <i>(prochainement, vers la fin du deuxième trimestre 2024).</i></p>
+		</li>
+	</ul>
+	<p>L'unification des étapes d'évaluation, d'échange et d'application de la gestion des risques sur la plateforme de Cloudflare permet d'aider les responsables de la sécurité à atténuer les risques, au prix d'efforts moindres. En tant que fournisseur de cybersécurité protégeant à la fois les infrastructures publiques et les infrastructures internes, Cloudflare jouit d'une position unique pour protéger de larges pans de votre surface d'attaque croissante. L'association d'un score de risque dynamique, d'intégrations flexibles et d'une application automatisée permet d'obtenir deux résultats opérationnels principaux :</p>
+	<ol>
+		<li>
+			<p><b>Réduction des efforts au sein des SecOps</b> grâce à une réduction du processus de création manuelle politiques et à une plus grande agilité lors de la réponse aux incidents. Cette approche se traduit par une baisse du nombre de clics nécessaires pour élaborer des politiques, une augmentation de l'automatisation des flux de travail, ainsi qu'une réduction des temps moyens de détection (MTTD) et des temps moyens de réponse (MTTR).</p>
+		</li>
+		<li>
+			<p><b>Réduction du cyber-risque</b> grâce à une visibilité et à des mesures de contrôle couvrant les utilisateurs et les applications. Cette approche se traduit par une diminution du nombre d'incidents critiques et une augmentation du nombre de menaces bloquées automatiquement.</p>
+		</li>
+	</ol>
+	<p>Plusieurs clients, comme <a href="https://www.indeed.com/about" target="_blank" rel="noopener noreferrer">Indeed</a>, le premier site consacré à l'emploi du monde, constatent déjà ces effets résultant de leur partenariat avec Cloudflare :</p>
+	<blockquote>
+		<p>« Cloudflare nous aide à atténuer plus efficacement les risques au prix d'efforts moindres et simplifie la manière dont nous déployons le Zero Trust sur l'ensemble de l'entreprise. »— <b>Anthony Moisant</b>, SVP, Chief Information Officer et Chief Security Officer, <b>Indeed</b></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="problem-too-many-risks-across-too-much-attack-surface">Problématique : des risques trop nombreux sur une surface d'attaque trop importante</h2>
+		<a href="https://blog.cloudflare.com/#problem-too-many-risks-across-too-much-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La gestion du niveau de risque est un défi intrinsèquement vaste, couvrant les menaces internes et les menaces externes sur l'ensemble des vecteurs d'attaque. Vous trouverez ci-dessous un échantillon des facteurs de risque suivis par les RSSI et leurs équipes de sécurité sur les trois dimensions du quotidien : les utilisateurs, les applications et les données.</p>
+	<ul>
+		<li>
+			<p><b>Risques envers les utilisateurs :</b> phishing, ingénierie sociale, logiciels malveillants, rançongiciels, accès à distance, menaces internes, compromission des accès physiques, risques visant les tiers/la chaîne d'approvisionnement, appareils mobiles/BYOD.</p>
+		</li>
+		<li>
+			<p><b>Risques envers les applications :</b> déni de service, exploitations zero-day, injection SQL, Cross-Site Scripting (injection de scripts intersites), exécution de code à distance, bourrage d'identifiants (Credential Stuffing), usurpation de compte, utilisation d'informatique fantôme (Shadow IT), abus d'API.</p>
+		</li>
+		<li>
+			<p><b>Risques envers les données :</b> perte/exposition de données, vol/violation de données, violation de la confidentialité, violation de la conformité, falsification de données.</p>
+		</li>
+	</ul>
+	<p>Des solutions dédiées ont vu le jour afin de verrouiller certains de ces risques spécifiques et leurs vecteurs d'attaque spécifiques. Toutefois, au fil du temps, les entreprises ont accumulé de nombreux services, assortis d'une capacité limitée à communiquer entre eux et à se doter d'une vision plus globale des risques. La télémétrie granulaire générée par chaque outil a conduit à une surcharge d'informations pour les membres des équipes de sécurité, aujourd'hui plus sollicitées que jamais. Les plateformes SIEM et XDR jouent un rôle essentiel dans l'agrégation de données relatives aux risques sur l'ensemble des environnements et l'atténuation des menaces basées sur l'analyse. Toutefois, ces outils exigent toujours du temps, des ressources et une certaine expertise pour fonctionner efficacement. Toutes ces difficultés ont empiré avec l'expansion rapide des surfaces d'attaque, lorsque les entreprises ont commencé à adopter de plus en plus le travail hybride, à développer de nouvelles applications numériques et, plus récemment, à expérimenter l'IA.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-helps-manage-risk-posture">Comment Cloudflare contribue à la gestion de la stratégie en matière de risques</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-helps-manage-risk-posture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour vous aider à reprendre le contrôle et à vous défaire de cette complexité, la suite Cloudflare for Unified Risk Posture propose une plateforme unique permettant d'évaluer les risques, d'échanger des indicateurs et d'appliquer des mesures de contrôle dynamiques à l'ensemble des environnements informatiques et partout dans le monde, tout en complétant les outils de sécurité sur lesquels votre entreprise se repose déjà.</p>
+	<p>Si les risques spécifiques que Cloudflare peut atténuer sont variés (et comprennent, entre autres, tous ceux qui figurent dans les exemples ci-dessus), les trois scénarios d'utilisation suivants représentent l'ensemble de nos fonctionnalités, dont vous pouvez commencer à tirer parti dès aujourd'hui.</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-1-enforce-zero-trust-with-cloudflare-crowdstrike">Scénario d'utilisation 1 : appliquer la sécurité Zero Trust avec Cloudflare et CrowdStrike</h3>
+		<a href="https://blog.cloudflare.com/#use-case-1-enforce-zero-trust-with-cloudflare-crowdstrike" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ce premier scénario d'utilisation met en lumière la flexibilité avec laquelle Cloudflare s'intègre à votre écosystème de sécurité actuel afin de faciliter l'adoption des <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">bonnes pratiques en matière de Zero Trust</a>.</p>
+	<p>Cloudflare intègre et ingère les signaux de sécurité issus des meilleurs partenaires d'<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/service-providers" target="_blank" rel="noopener noreferrer">EPP</a> et d'<a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration" target="_blank" rel="noopener noreferrer">IDP</a> afin de contrôler l'identité et le niveau de sécurité des appareils pour chaque requête d'accès, quelle que soit la destination. Vous pouvez même intégrer plusieurs fournisseurs à la fois afin d'appliquer des politiques différentes dans des contextes différents. Par exemple, grâce à l'intégration à CrowdStrike Falcon®, nos clients communs peuvent <a href="https://blog.cloudflare.com/fr-fr/cloudflare-crowdstrike-partnership-fr-fr">appliquer des politiques basées sur le score Falcon ZTA</a> (Zero Trust Assessment, évaluation Zero Trust), qui assure une évaluation du niveau de sécurité en temps réel sur l'ensemble des points de terminaison d'une entreprise, indépendamment de la position géographique, du réseau ou de l'utilisateur. En outre, les clients peuvent ensuite <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer">transmettre les journaux d'activité</a> générés par Cloudflare (notamment l'ensemble des requêtes d'accès) aux <a href="https://developers.cloudflare.com/fundamentals/reference/partners" target="_blank" rel="noopener noreferrer">fournisseurs de stockage cloud ou d'analyse</a> de leur choix.</p>
+	<p>Nous <a href="https://www.cloudflare.com/press-releases/2024/cloudflare-announces-unified-risk-posture-to-provide-comprehensive-and" target="_blank" rel="noopener noreferrer">annonçons</a> aujourd'hui l'extension de notre partenariat avec CrowdStrike en vue d'une nouvelle intégration permettant aux entreprises de transmettre leurs journaux au SIEM de nouvelle génération Falcon à des fins de l'analyse et d'investigation. Le SIEM de nouvelle génération Falcon unifie les données propriétaires et tierces, les informations natives sur les menaces, l'IA et l'automatisation des flux de travail afin de soutenir la transformation SOC et d'assurer une meilleure protection contre les menaces. L'intégration de la plateforme Cloudflare Zero Trust et des journaux d'e-mails au SIEM de nouvelle génération Falcon permet à nos clients communs d'identifier et d'analyser les risques liés à la connectivité Zero Trust et au courrier électronique, avant de croiser les données avec d'autres sources de journaux afin d'identifier les menaces dissimulées.</p>
+	<blockquote>
+		<p>« Falcon, le SIEM nouvelle génération de CrowdStrike, assure des performances jusqu'à 150 fois plus rapides en matière de recherche par rapport aux SIEM d'ancienne génération et aux produits qui se positionnent comme une alternative aux SIEM. Nos données télémétriques révolutionnaires, associées aux robustes fonctionnalités Zero Trust de Cloudflare, cimentent un partenariat sans précédent. Ensemble, nous faisons converger deux des éléments les plus essentiels du puzzle que constitue la gestion des risques et auquel les entreprises de toutes les tailles doivent s'attaquer pour lutter contre les menaces croissantes d'aujourd'hui. »— <b>Daniel Bernard</b>, Chief Business Officer chez <b>CrowdStrike</b></p>
+	</blockquote>
+	<p>Vous trouverez ci-dessous un exemple de flux de travail illustrant la manière dont Cloudflare et CrowdStrike agissent de concert pour appliquer des politiques Zero Trust et atténuer les risques émergents. Les plateformes Cloudflare et CrowdStrike se complètent l'une l'autre en échangeant des données sur l'activité et les risques, avant d'appliquer des politiques et des mesures correctives basées sur les risques.</p>
+	<p><b>Figure 2 : appliquer le Zero Trust avec Cloudflare et CrowdStrike</b></p>
+	<p>Phase&nbsp;1&nbsp;: investigations automatisées</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sKCifQqdVmtJO1K7BIGP5/9536d135c30aad7f2367bb96dd84031c/image4.png" alt="" class="kg-image" width="958" height="396" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="307">
+			<col width="307">
+			<col width="282">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 1: Automated investigation</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 2: Zero Trust enforcement</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 3: Remediation</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cloudflare and CrowdStrike help an organization detect that a user is compromised.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In this example, Cloudflare has recently blocked web browsing to risky websites and phishing emails, serving as the first line of defense. Those logs are then sent to CrowdStrike Falcon Next-Gen SIEM, which alerts your organization’s analyst about suspicious activity.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">At the same time, CrowdStrike Falcon Insight XDR automatically scans that user’s device and detects that it is infected. As a result, the Falcon ZTA score reflecting the device’s health is lowered.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">This org has set up device posture checks via Cloudflare’s </span><a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Zero Trust Network Access</span></a><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> (ZTNA), only allowing access when the Falcon ZTA risk score is above a specific threshold they have defined.&nbsp;</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Our ZTNA denies the user’s next request to access an application because the Falcon ZTA score falls below that threshold.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Because of this failed device posture check, Cloudflare increases the risk score for that user, which places them in a group with more restrictive controls.&nbsp;</span></p><br><br><br>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In parallel, CrowdStrike’s Next-GenSIEM has continued to analyze the specific user’s activity and broader risks throughout the organization’s environment. Using machine learning models, CrowdStrike surfaces top risks and proposes solutions for each risk to your analyst.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The analyst can then review and select remediation tactics — for example, quarantining the user’s device — to further reduce risk throughout the organization.&nbsp;</span></p><br>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Phase&nbsp;2&nbsp;: mise en œuvre du Zero Trust</p>
+	<p>Phase&nbsp;3&nbsp;: déploiement de mesures correctives</p>
+	<p>Cloudflare et CrowdStrike aident une entreprise à identifier qu'un utilisateur a été compromis.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68uD20AuCjTQwmC5lLzE1U/cb4a75aaa0af26941d404555dbb6d9f8/image1.png" alt="" class="kg-image" width="1999" height="1148" loading="lazy">
+
+	</figure>
+	<p>Dans cet exemple, Cloudflare a récemment bloqué les e-mails de phishing et la navigation sur les sites web à risque, afin de constituer ainsi la première ligne de défense. Ces journaux sont ensuite transmis au SIEM de nouvelle génération CrowdStrike Falcon, qui alerte l'analyste de votre entreprise des activités suspectes.</p>
+	<p>Parallèlement, la plateforme CrowdStrike Falcon Insight XDR analyse automatiquement l'appareil de l'utilisateur et détecte s'il est infecté. En conséquence, le score Falcon ZTA reflétant l'intégrité de l'appareil est abaissé.</p>
+	<p>Cette entreprise a mis en place des mesures de contrôle du niveau de sécurité des appareils par le biais de la plateforme d'<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">accès réseau Zero Trust</a> (ZTNA) de Cloudflare, afin d'autoriser l'accès uniquement lorsque le score de risque Falcon ZTA est supérieur à un seuil spécifique défini par l'entreprise.&nbsp;</p>
+	<p>Notre plateforme ZTNA rejette la requête d'accès à une application émise ensuite par l'utilisateur, car le score Falcon ZTA est inférieur à ce seuil.</p>
+	<p>Du fait de l'échec de la vérification du niveau de sécurité des appareils, Cloudflare augmente le score de risque pour cet utilisateur, qui se retrouve placé dans un groupe aux mesures de contrôle plus restrictives.&nbsp;</p>
+	<p>En parallèle, le SIEM nouvelle génération de CrowdStrike a continué à analyser l'activité de cet utilisateur spécifique et les risques plus larges qu'il fait courir à l'entreprise sur l'ensemble de son environnement. En s'appuyant sur des modèles d'apprentissage automatique, CrowdStrike fait apparaître les principaux risques et propose à vos analystes des solutions pour chacun d'eux.</p>
+	<p>L'analyste peut alors examiner et sélectionner des mesures correctives (par exemple, mettre en quarantaine l'appareil de l'utilisateur) afin de réduire encore davantage les risques pesant sur l'ensemble de l'entreprise.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-2-protect-apps-apis-websites">Scénario d'utilisation 2 : protéger les applications, les API et les sites web</h3>
+		<a href="https://blog.cloudflare.com/#use-case-2-protect-apps-apis-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le scénario d'utilisation suivant se concentre sur la protection des applications, des API et des sites web contre les acteurs malveillants et les bots. De nombreux clients adoptent Cloudflare en premier lieu dans le cadre de ce scénario, mais peuvent ne pas avoir conscience des algorithmes d'évaluation des risques qui sous-tendent leur protection.</p>
+	<p><b>Figure 3 : protéger vos applications, vos API et vos sites grâce à des informations sur les menaces soutenues par l'apprentissage automatique</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DA2cbnXZDIx3sGMXGvwfJ/b8cf1f547ec36cbc1e976d554ecf05b5/image2.jpg" alt="" class="kg-image" width="958" height="321" loading="lazy">
+
+	</figure>
+	<p>Les <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">services pour applications</a> de Cloudflare détectent et atténuent les contenus et les bots malveillants à l'aide de modèles de risque soutenus par l'<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">apprentissage automatique</a> (Machine Learning) comme les suivants :</p>
+	<ul>
+		<li>
+			<p>Notre <a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer"><b><b><b>WAF Attack Score</b></b></b></a>, qui détermine si une requête contient une exploitation de vulnérabilité zero-day, ou les risques courants inscrits au Top 10 de l'OWASP, comme l'<a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer">injection SQL</a>, le <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank" rel="noopener noreferrer">Cross-Site Scripting</a> (injection de scripts intersites) ou un contenu malveillant d'<a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution" target="_blank" rel="noopener noreferrer">exécution de code à distance</a>.</p>
+		</li>
+		<li>
+			<p>Notre <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer"><b><b><b>score de bot</b></b></b></a>, qui évalue la probabilité qu'une requête provienne d'un bot.</p>
+		</li>
+		<li>
+			<p>Notre <a href="https://developers.cloudflare.com/page-shield/how-it-works/malicious-script-detection" target="_blank" rel="noopener noreferrer"><b>classificateur de scripts malveillants</b></a><b>,</b> qui examine les dangers que représentent les scripts de navigateur pour les visiteurs de votre site web.</p>
+		</li>
+	</ul>
+	<p>Ces modèles de risque sont en grande partie nourris des données télémétriques du réseau mondial de Cloudflare, utilisé comme proxy inverse par <a href="https://www.cloudflare.com/what-is-cloudflare" target="_blank" rel="noopener noreferrer">près de 20 % de l'ensemble des sites web du monde</a> et reçoit environ 3 000 milliards de requêtes DNS chaque jour. Cette visibilité unique en temps réel est à l'origine de nos informations sur les menaces et nous permet même de <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">détecter et d'atténuer les vulnérabilités zero-day avant les autres</a>.</p>
+	<p>Cloudflare utilise également l'apprentissage automatique pour <a href="https://blog.cloudflare.com/fr-fr/ml-api-discovery-and-schema-learning-fr-fr">identifier les nouveaux points de terminaison et les schémas</a> d'API sans intervention préalable du client. Cette fonctionnalité aide les entreprises à identifier les API non authentifiées et à dresser une carte de leur <a href="https://www.cloudflare.com/2024-api-security-management-report/#:~:text=APIs%20%E2%80%94%20the%20programmable%20interfaces%20comprising,throughout%20the%20API%2Dcentric%20world." target="_blank" rel="noopener noreferrer">surface d'attaque croissante</a> avant d'appliquer des mesures de protection.</p>
+	<p>Contrairement à celles d'autres fournisseurs, l'architecture réseau de Cloudflare permet le partage de modèles d'évaluation des risques et de mesures de contrôle de la sécurité des infrastructures accessibles au public et internes, et ce sur l'ensemble de nos services. Les entreprises peuvent donc appliquer des mesures de protection contre l'exploitation des vulnérabilités des applications, les attaques DDoS et les bots en amont de leurs applications internes, comme les serveurs Jira et Confluence auto-hébergés, afin de leur permettre de se protéger contre les menaces émergentes, voire zero-day.</p>
+	<p>Les entreprises peuvent examiner les erreurs de configuration, les vulnérabilités et les potentiels risques de fuites de données présentant une incidence sur la posture de risque de leurs applications, de leurs API et de leurs sites web dans le <a href="https://www.cloudflare.com/application-services/products/securitycenter" target="_blank" rel="noopener noreferrer">centre de sécurité Cloudflare</a>. Nous développons actuellement cette vue centralisée de la gestion du niveau de risque en intégrant des alertes et des informations à l'ensemble de notre catalogue de produits de sécurité. Pour tout dire, nous avons <a href="https://blog.cloudflare.com/fr-fr/security-insights-quick-ciso-view-fr-fr">récemment annoncé des mises à jour</a> conçues pour mettre en évidence les lacunes dans la manière dont votre entreprise a déployé ses services Cloudflare.</p>
+	<p>Enfin, nous facilitons également la tâche des entreprises cherchant à enquêter directement sur les événements de sécurité et avons <a href="https://blog.cloudflare.com/fr-fr/log-explorer-fr-fr">récemment annoncé la disponibilité de la version bêta de Log Explorer</a>. Avec cette version bêta, les équipes de sécurité peuvent visualiser l'ensemble de leur trafic HTTP au même endroit grâce à des fonctionnalités de recherche, des tableaux de bord d'analyse et des filtres intégrés. Ces capacités peuvent aider nos clients à surveiller davantage de facteurs de risque au sein de la plateforme Cloudflare par rapport à l'exportation vers des outils tiers.</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-3-protect-sensitive-data-with-ueba">Scénario d'utilisation 3 : protéger les données sensibles grâce à l'UEBA</h3>
+		<a href="https://blog.cloudflare.com/#use-case-3-protect-sensitive-data-with-ueba" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ce troisième scénario d'utilisation résume une approche courante proposée par de nombreux clients pour tirer parti de nos <a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score" target="_blank" rel="noopener noreferrer">scores de risque utilisateur/UEBA</a> afin de prévenir les fuites et l'utilisation incorrecte de données sensibles :</p>
+	<p><b>Figure 4 : protéger vos applications, vos API et vos sites à l'aide d'informations sur les menaces soutenues par l'apprentissage automatique</b></p>
+	<ul>
+		<li>
+			<p><b>Phase 1 :</b> dans cet exemple, l'équipe de sécurité a déjà configuré les politiques de <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">DLP</a> (Data Loss Prevention, prévention des pertes de données) pour détecter et bloquer le trafic contenant des données sensibles. Ces politiques empêchent les tentatives répétées par un utilisateur d'importer du <a href="https://blog.cloudflare.com/dlp-ocr-sourcecode">code source</a> au sein d'un référentiel GitHub public.</p>
+		</li>
+		<li>
+			<p><b>Phase 2</b> : comme cet utilisateur a maintenant violé un grand nombre de politiques DLP en peu de temps, Cloudflare attribue un risque élevé à cet utilisateur suspect, indépendamment du fait que ce dernier ait été animé d'une intention malveillante ou bienveillante lors de ces importations de données. L'équipe de sécurité peut désormais enquêter davantage sur cet utilisateur spécifique, notamment en examinant l'ensemble de son activité récente enregistrée dans les journaux.</p>
+		</li>
+		<li>
+			<p><b>Phase 3</b> : les administrateurs peuvent ensuite définir des règles ZTNA ou même d'<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">isolement de navigateur</a> pour bloquer ou isoler l'accès à une application contenant d'autres données sensibles pour cet utilisateur spécifique ou un groupe d'utilisateurs à haut risque.</p>
+		</li>
+	</ul>
+	<p>Dans l'ensemble, ce flux de travail met en évidence la manière dont les mesures de contrôle du niveau de sécurité de Cloudflare s'adaptent aux comportements suspects, de l'évaluation à l'application des mesures.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started-with-unified-risk-posture-management">Bien se lancer dans la gestion unifiée du niveau de risque</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started-with-unified-risk-posture-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les scénarios d'utilisation ci-dessus reflètent la manière dont nos clients unifient la gestion des risques avec Cloudflare. Les conversations avec nos clients ont dégagé quelques thématiques expliquant pourquoi ils ont confiance en notre vision pour les aider à gérer les risques sur l'ensemble de leur surface d'attaque croissante :</p>
+	<ul>
+		<li>
+			<p>La <b>simplicité de notre plateforme unifiée</b> : nous regroupons le SASE, ainsi que la notation et les mesures de contrôle des risques WAAP pour les utilisateurs et les applications. En outre, grâce à une API unique à l'ensemble des services Cloudflare, les entreprises peuvent automatiser et personnaliser facilement leurs flux de travail à l'aide d'outils d'infrastructure en tant que code, comme <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Terraform</a>.</p>
+		</li>
+		<li>
+			<p>La <b>flexibilité de nos intégrations :</b> nous échangeons des signaux de risque avec les fournisseurs EPP, IDP, XDR et SIEM que vous utilisez déjà, afin de vous permettre d'accomplir davantage avec vos outils et vos données. En outre, grâce aux intégrations uniques applicables à l'ensemble de nos services, vous pouvez étendre les mesures de contrôle à tous vos environnements informatiques avec agilité.</p>
+		</li>
+		<li>
+			<p>L'<b>échelle de notre réseau mondial</b> : nos clients peuvent exécuter chaque service de sécurité dans n'importe quel emplacement de notre réseau, qui couvre plus de 320 emplacements et comporte plus de 13 000 interconnexions. L'inspection en une seule passe et l'application des politiques en matière de risque sont ainsi toujours rapides, cohérentes et résilientes, et s'effectuent à proximité de vos utilisateurs et de vos applications.</p>
+		</li>
+	</ul>
+	<p>Si vous souhaitez découvrir de quelle manière Cloudflare peut vous aider à gérer vos risques, <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">demandez une consultation dès aujourd'hui</a>. Ou, si vous assistez à la conférence RSAC 2024, n'hésitez pas à <a href="https://www.cloudflare.com/rsa-conference-2024" target="_blank" rel="noopener noreferrer">participer à l'un de nos événements en présentiel</a>.</p>
+	<p>Pour continuer à en apprendre davantage sur la manière dont Cloudflare peut vous aider à évaluer les risques, échanger des indicateurs de risque et appliquer des mesures de contrôle des risques, <a href="https://www.cloudflare.com/cybersecurity-risk-management" target="_blank" rel="noopener noreferrer">consultez d'autres ressources sur notre site web</a>.</p>
+</div>

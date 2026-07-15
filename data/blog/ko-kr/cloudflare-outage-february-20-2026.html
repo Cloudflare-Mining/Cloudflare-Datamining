@@ -1,0 +1,409 @@
+<div class="mb2 gray5">9분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/cloudflare-outage-february-20-2026">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-outage-february-20-2026">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-outage-february-20-2026">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-outage-february-20-2026">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9f2k63fiixI2YXDgsnbGq/4d156aa83c47ff6cecf3bd5c747126ef/unnamed__1_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2026년 2월 20일 17:48 UTC에 Cloudflare는 서비스 장애를 겪었습니다. Cloudflare의 Bring Your Own IP(BYOIP) 서비스를 사용하는 일부 고객의 인터넷 경로가 Border Gateway Protocol(BGP)을 통해 철회되면서 문제가 발생했습니다.</p>
+	<p>이번 문제는 직간접적으로 사이버 공격이나 어떠한 종류의 악의적인 활동으로 인해 발생한 것이 아닙니다. 이 문제는 Cloudflare에서 BYOIP 파이프라인을 통해 온보딩된 IP 주소 관리 방식이 변경되면서 발생했습니다. 이 변경으로 인해 Cloudflare는 고객 프리픽스를 의도치 않게 철회하게 되었습니다.</p>
+	<p>일부 BYOIP 고객의 경우, 이로 인해 인터넷에서 해당 서비스와 애플리케이션에 접근할 수 없게 되었으며, BYOIP를 사용하는 Cloudflare 배포 전반에서 제한 시간 초과와 연결 실패가 발생했습니다. Cloudflare의 재귀 DNS 확인자(1.1.1.1) 웹사이트에서도 403 오류가 발생했습니다. 이번 장애의 총 지속 시간은 6시간 7분이었으며, 대부분의 시간은 변경 이전 상태로 프리픽스 구성을 복구하는 데 소요되었습니다.</p>
+	<p>Cloudflare 엔지니어들은 장애를 인지한 직후 해당 변경 사항을 되돌렸으며, 그 시점부터 프리픽스 철회가 중단되었습니다. 그러나 엔지니어들이 변경 사항을 되돌리기 전에 약 1,100개의 BYOIP 프리픽스가 Cloudflare 네트워크에서 철회되었습니다. 일부 고객은 Cloudflare 대시보드를 사용하여 IP 주소를 다시 광고함으로써 자체 서비스를 복구할 수 있었습니다. 모든 프리픽스 구성을 복구하면서 이번 장애를 해결했습니다.</p>
+	<p>고객 여러분께 끼친 영향에 대해 정말 죄송하게 생각합니다. Cloudflare가 고객을 실망시켰다는 사실을 잘 알고 있습니다. 이 게시물은 정확히 무슨 일이 일어났고 어떤 시스템과 프로세스가 오류를 겪었는지에 대한 심층적인 이야기입니다. 또한, 이와 같은 장애가 재발하지 않도록 Cloudflare에서 취하고 있는 조치에 대해서도 간략히 설명해 드리겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-the-outage-impact-customers">이번 장애는 고객에게 어떤 영향을 미쳤을까요?</h2>
+		<a href="https://blog.cloudflare.com/#how-did-the-outage-impact-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 그래프는 사고 발생 동안 Cloudflare가 BGP 이웃에게 광고한 프리픽스 수를 보여줍니다. 광고되지 않은 프리픽스는 인터넷에서 도달할 수 없었기 때문에, 이는 고객 영향도와 직접적으로 연관됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QnazHN20Gcf3vLH5r95Cd/c8f42e90f266dd3daeaa308945507024/BLOG-3193_2.png" alt="" class="kg-image" width="1970" height="1570" loading="lazy">
+	</figure>
+	<p>이 피어에게 광고된 전체 6,500개의 프리픽스 중 4,306개는 BYOIP 프리픽스였습니다. 이러한 BYOIP 프리픽스는 모든 피어에게 광고되며, 당사가 전 세계적으로 광고하는 모든 BYOIP 프리픽스를 의미합니다.&nbsp; </p>
+	<p>사고 발생 동안 전체 6,500개 프리픽스 중 1,100개가 17:56부터 18:46 UTC까지 철회되었습니다. 총 4,306개의 BYOIP 프리픽스 중 25%가 의도치 않게 철회되었습니다. 당사는 one.one.one.one에서 발생한 영향을 감지하고, 더 많은 프리픽스에 영향이 확산되기 전에 문제를 유발한 변경 사항을 되돌릴 수 있었습니다. 19:19 UTC에 당사는 고객이 Cloudflare 대시보드에서 자신의 프리픽스를 다시 광고함으로써 이번 사고를 자체적으로 복구할 수 있다는 안내를 공지했습니다.</p>
+	<p>Cloudflare는 약 20:20 UTC경 광고 변경 사항의 상당 부분을 되돌릴 수 있었으며, 그 결과 800개의 프리픽스가 복구되었습니다. 그러나 약 300개의 프리픽스는 소프트웨어 버그로 인해 해당 프리픽스의 서비스 구성 설정이 에지에서 제거되었기 때문에, 대시보드를 통해 복구할 수 없었습니다. 이 프리픽스들은 23:03 UTC에 Cloudflare 엔지니어들이 수동으로 복구했습니다.&nbsp;</p>
+	<p>이번 사고는 모든 BYOIP 고객에게 영향을 미치지 않았습니다. 해당 구성 변경이 모든 BYOIP 고객에게 동시에 적용된 것이 아니라, 순차적으로 적용되었기 때문입니다. 구성 변경이 영향을 유발하는 것으로 확인되자, 모든 고객에게 영향이 확산되기 전에 해당 변경은 되돌려졌습니다.&nbsp;</p>
+	<p>영향을 받은 BYOIP 고객은 먼저 <a href="https://blog.cloudflare.com/going-bgp-zombie-hunting"><u>BGP 경로 사냥</u></a>이라고 불리는 현상을 경험했습니다. 이 상태에서는 최종 사용자 연결이 목적지 IP로 향하는 경로를 찾기 위해 여러 네트워크를 경유하게 됩니다. 이러한 동작은 이미 열려 있는 연결의 제한 시간이 초과되어 실패할 때까지 지속됩니다. 해당 프리픽스가 어느 한 곳에서라도 다시 광고되기 전까지는, 고객은 이러한 장애 상태를 계속 경험하게 됩니다. 이와 같은 실패 시까지 반복되는 시나리오는 인터넷에 광고하기 위해 BYOIP를 사용하는 모든 제품에 영향을 미쳤습니다. 또한 Cloudflare의 재귀 DNS 확인자 웹사이트인 one.one.one.one에 접속한 방문자는 HTTP 403 오류와 “Edge IP Restricted” 오류 메시지를 확인하게 되었습니다. DNS over HTTPS를 비롯하여 1.1.1.1 공용 확인자를 통한 DNS 확인은 영향을 받지 않았습니다. 영향을 받은 자세한 서비스 정보는 아래에 나와 있습니다.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 702px">
+			<colgroup>
+				<col style="width: 251px">
+				<col style="width: 451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">서비스/제품</span></th>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">영향 설명</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">핵심 CDN 및 보안 서비스</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">트래픽이 Cloudflare로 유입되지 않았으며, 해당 주소 범위로 광고된 웹사이트에 접속하려던 사용자가 연결 실패를 경험</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Spectrum</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BYOIP를 사용하는 Spectrum 애플리케이션의 트래픽이 Cloudflare로 유입되지 않아 프록시 처리에 실패</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">전용 송신</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BYOIP를 활용한 Gateway 전용 송신을 사용하거나, BYOIP 기반 전용 IP를 CDN 송신에 활용한 고객이 목적지로 트래픽 전송 실패</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transit</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transit으로 보호되는 애플리케이션에 접속하려던 최종 사용자는 해당 경로가 인터넷에 광고되지 않았기 때문에 연결 제한 시간 초과 및 실패 경험</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>또한 일부 고객은 Cloudflare 대시보드에서 프리픽스를 비활성화했다가 다시 활성화하는 방식으로도 서비스를 복구하지 못했습니다. 엔지니어들이 해당 고객의 서비스 복구를 위해 프리픽스를 재광고하기 시작하면서, 이들 고객은 자신의 IP 주소가 광고되고 있음에도 불구하고 지연 시간이 증가하거나 연결 실패를 경험했을 수 있습니다. 이는 당사 소프트웨어의 문제로 인해 일부 사용자의 주소 지정 설정이 에지 서버에서 제거되었기 때문이며, 해당 상태를 다시 에지로 전파해야 했기 때문입니다.&nbsp;</p>
+	<p>이제 당사의 주소 지정 시스템에서 정확히 무엇이 문제였는지 살펴보겠습니다. 이를 이해하기 위해, 먼저 Cloudflare에서 고객 IP 주소에 대한 단일 진실 공급원 역할을 하는 Addressing API에 대해 간략히 설명하겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-addressing-api">Cloudflare의 Addressing API</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-addressing-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Addressing API는 Cloudflare 네트워크에 존재하는 주소에 대한 권위 있는 데이터 세트입니다. 해당 데이터 세트에 대한 모든 변경 사항은 즉시 Cloudflare의 글로벌 네트워크에 반영됩니다. 당사는 <a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>Code Orange: Fail Small</u></a>의 일환으로 이러한 시스템의 변경 사항 배포 방식을 개선하는 과정에 있습니다. 현재 고객은 외부에 공개된 API를 통해 자신의 IP 주소를 구성할 수 있으며, 이는 일련의 데이터베이스를 설정하여 변경 사항을 Cloudflare의 에지로 전파하는 운영 워크플로를 트리거합니다. 이는 Addressing API에 대한 변경 사항이 즉시 Cloudflare 에지로 전파된다는 의미입니다.</p>
+	<p>Cloudflare에서 IP 주소를 광고하고 구성하는 과정에는 여러 단계가 포함됩니다.</p>
+	<ul>
+		<li>
+			<p>고객은 Addressing API 또는 BGP Control을 통해 IP 주소의 광고 또는 철회에 대해 Cloudflare에 신호를 전달합니다.</p>
+		</li>
+		<li>
+			<p>Addressing API는 프리픽스 광고를 변경하도록 각 머신에 지시합니다.</p>
+		</li>
+		<li>
+			<p>충분한 수의 머신이 프리픽스 업데이트 알림을 수신하면, 라우터에서 BGP가 업데이트됩니다.</p>
+		</li>
+		<li>
+			<p>마지막으로, 고객은 <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>서비스 바인딩</u></a>을 통해 Cloudflare 제품이 BYOIP 주소를 사용하도록 구성할 수 있으며, 이를 통해 해당 주소 범위가 각 제품에 할당됩니다.</p>
+		</li>
+	</ul>
+	<p>Addressing API를 통해 주소의 광고 또는 철회와 관련된 대부분의 프로세스를 자동화할 수 있지만, 일부 프로세스는 여전히 수동 작업이 필요합니다. 이러한 수동 프로세스는 프로덕션 환경과 매우 밀접하게 연결되어 있기 때문에 위험성이 존재합니다. <a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>Code Orange: Fail Small</u></a>의 일환으로, 개선 목표 중 하나는 Addressing API에서 수행되던 수동 작업을 제거하고 이를 안전한 워크플로로 대체하는 것이었습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-the-incident-occur">이 사고는 어떻게 발생했을까요?</h2>
+		<a href="https://blog.cloudflare.com/#how-did-the-incident-occur" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>문제가 발생한 구체적인 구성 항목은, 현재는 수동으로 처리되고 있는 일반적인 고객 요청인 Cloudflare의 BYOIP 서비스에서 프리픽스를 제거하는 작업을 자동화하려는 수정이었습니다. 이 수동 프로세스를 제거하는 작업은 Code Orange: Fail Small의 일환으로, 모든 변경 사항을 안전하고 자동화되며 상태 점검을 거치는 배포 방식으로 전환하기 위한 노력의 일부였습니다. BYOIP 프리픽스와 관련된 객체 목록이 방대할 수 있기 때문에, 이 기능은 정기적으로 실행되는 하위 작업의 일부로 구현되었습니다. 해당 하위 작업은 제거되어야 할 BYOIP 프리픽스를 확인한 뒤 이를 삭제하는 것입니다. 안타깝게도, 이 정기 정리 하위 작업은 버그가 있는 상태로 API를 조회했습니다.</p>
+	<p>정리 하위 작업의 API 쿼리는 다음과 같습니다.</p>
+	<pre class="language-javascript"><code class="language-javascript"> resp, err := d.doRequest(ctx, http.MethodGet, `/v1/prefixes?pending_delete`, nil)
+</code></pre>
+	<p>다음은 API 구현의 관련 부분입니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">	if v := req.URL.Query().Get("pending_delete"); v != "" {
+		// ignore other behavior and fetch pending objects from the ip_prefixes_deleted table
+		prefixes, err := c.RO().IPPrefixes().FetchPrefixesPendingDeletion(ctx)
+		if err != nil {
+			api.RenderError(ctx, w, ErrInternalError)
+			return
+		}
+
+		api.Render(ctx, w, http.StatusOK, renderIPPrefixAPIResponse(prefixes, nil))
+		return
+	}
+</code></pre>
+	<p>클라이언트가 pending_delete에 값을 전달하지 않았기 때문에, 여기서 Query().Get(“pending_delete”)의 결과는 빈 문자열(“”)이 됩니다. 이로 인해 API 서버는 삭제 대상 프리픽스만이 아니라 모든 BYOIP 프리픽스를 요청한 것으로 해석하게 됩니다. 시스템은 이를 반환된 모든 프리픽스가 삭제 대기열에 추가된 것으로 해석했습니다. 새로 도입된 하위 작업은 그 영향이 감지될 때까지 모든 BYOIP 프리픽스와 이와 연관된 종속 객체(예: <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>서비스 바인딩</u></a>)를 체계적으로 삭제하기 시작했습니다. 이후 한 엔지니어가 해당 하위 작업을 식별하고 이를 중단했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing">Cloudflare가 스테이징 환경이나 테스트에서 버그를 포착하지 못한 이유는 무엇일까요?</h3>
+		<a href="https://blog.cloudflare.com/#why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>당사의 스테이징 환경은 프로덕션 환경과 최대한 동일한 데이터를 포함하도록 구성되어 있지만, 이번 사례에서는 충분하지 않았으며 실제 동작을 시뮬레이션하기 위해 사용한 모의 데이터 역시 충분하지 않았습니다. </p>
+	<p>또한 해당 기능에 대한 테스트는 존재했지만, 이번 시나리오에 대한 테스트 프로세스와 환경의 커버리지는 불완전했습니다. 초기 테스트와 코드 리뷰는 BYOIP 셀프서비스 API 흐름에 중점을 두었으며, 해당 검증은 성공적으로 완료되었습니다. 엔지니어들은 고객이 실제로 수행했을 절차를 정확히 테스트하는 데에는 성공했지만, 태스크 러너 서비스가 명시적인 입력 없이 사용자 데이터에 대한 변경을 독립적으로 실행하는 시나리오는 테스트 범위에 포함되지 않았습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-was-recovery-not-immediate">복구가 즉시 이루어지지 않은 이유는 무엇일까요?</h3>
+		<a href="https://blog.cloudflare.com/#why-was-recovery-not-immediate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>영향을 받은 BYOIP 프리픽스가 모두 동일한 방식으로 영향을 받은 것은 아니었으며, 그로 인해 보다 집중적인 데이터 복구 절차가 필요했습니다. Code Orange: Fail Small의 일환으로, 당사는 운영 상태 스냅샷을 상태 점검을 거치는 배포 방식으로 안전하게 롤아웃할 수 있는 시스템을 구축하고 있습니다. 예기치 않은 동작을 유발하는 변경 사항이 배포되는 경우에도, 이를 검증된 정상 상태로 매우 신속하게 롤백할 수 있습니다. 그러나 해당 시스템은 현재 프로덕션 상태가 아닙니다.</p>
+	<p>이번 사고 동안 BYOIP 프리픽스는 서로 다른 영향 상태에 놓여 있었으며, 각 상태에 따라 서로 다른 조치가 필요했습니다.</p>
+	<ul>
+		<li>
+			<p>대부분의 영향 고객은 프리픽스가 철회된 상태에 그쳤습니다. 이 구성 상태에 있던 고객은 대시보드에서 광고 설정을 비활성화했다가 다시 활성화함으로써 서비스를 복구할 수 있었습니다.&nbsp;</p>
+		</li>
+		<li>
+			<p>일부 고객은 프리픽스가 철회되었고, 일부 서비스 바인딩이 제거되었습니다. 이들 고객은 부분적인 복구 상태에 있었으며, 일부 프리픽스는 토글하여 복구할 수 있었지만 다른 프리픽스는 복구할 수 없었습니다.</p>
+		</li>
+		<li>
+			<p>일부 고객은 프리픽스가 철회되었고, 모든 서비스 바인딩이 제거되었습니다. 이들 고객은 해당 프리픽스에 <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>서비스</u></a>(Magic Transit, Spectrum, CDN)가 바인딩되어 있지 않았기 때문에, 대시보드에서 프리픽스를 토글할 수 없었습니다. 이들 고객은 복구에 가장 오랜 시간이 소요되었습니다. 해당 고객들의 서비스 바인딩을 Cloudflare 에지의 모든 머신에 다시 적용하기 위해 글로벌 구성 업데이트를 시작해야 했기 때문입니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="how-does-this-incident-relate-to-code-orange-fail-small">이 사고는 Code Orange: Fail Small과 어떤 관련이 있을까요?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-this-incident-relate-to-code-orange-fail-small" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이번 사고가 발생했을 당시 적용 중이던 변경 사항은 Code Orange: Fail Small 이니셔티브의 일환이었습니다. 이 이니셔티브는 Cloudflare의 코드 및 구성의 복원력을 강화하는 것을 목표로 합니다. <a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>Code Orange: Fail Small</u></a> 이니셔티브를 간략히 설명하면, 해당 작업은 세 가지 범주로 나눌 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>네트워크에 전파되는 모든 구성 변경 사항에 대해 제어된 롤아웃 적용. 이는 현재 소프트웨어 바이너리 릴리스와 동일하게 적용됩니다.</p>
+		</li>
+		<li>
+			<p>내부 “브레이크 글래스” 절차를 변경하고 모든 순환 종속성을 제거. 이는 당사와 고객이 사고 발생 시 신속하게 조치를 취하고 문제 없이 모든 시스템에 액세스할 수 있도록 하기 위한 것입니다.</p>
+		</li>
+		<li>
+			<p>네트워크 트래픽을 처리하는 모든 시스템의 장애 모드를 검토, 개선, 테스트. 이는 예기치 않은 오류 상태를 포함한 모든 조건에서 명확하게 정의된 동작이 보이는지 확인하기 위한 것입니다.</p>
+		</li>
+	</ul>
+	<p>이번에 배포를 시도한 변경 사항은 첫 번째 범주에 해당합니다. 위험한 수동 변경을 안전하고 자동화된 구성 업데이트로 전환하고, 이를 상태 점검을 거치는 방식으로 배포함으로써 서비스의 신뢰성을 향상시키는 것을 목표로 합니다.</p>
+	<p>Addressing API의 구성 변경 지원을 강화하기 위한 핵심 작업은 이미 진행 중이었으며, 단계적 테스트 중재와 보다 정교한 정확성 검증을 포함하고 있었습니다. 이러한 작업은 이번에 배포된 변경 사항과 병행하여 진행되고 있었습니다. 사고 발생 이전에 예방 조치가 완전히 배포되지는 않았지만, 관련 팀은 해당 시스템을 적극적으로 개선하고 있는 상태였습니다. Code Orange: Fail Small의 원칙에 따라, 프로덕션 환경에 적용되는 모든 변경 사항에 대해 통제된 롤아웃을 의무화하고 있으며, 엔지니어링 팀은 스택의 모든 계층을 면밀히 점검하여 잠재적 문제를 식별하고 수정하고 있습니다. 이번 장애가 전 세계적인 중단으로 확대되지는 않았지만, 영향 범위와 파급 효과는 용인하기 어려운 수준이었으며, 이는 네트워크 변경 사항이 가능한 한 점진적으로 적용되도록 신뢰를 재확립할 때까지 Code Orange: Fail Small을 최우선 과제로 유지해야 함을 다시 한 번 분명히 했습니다. 이제 이러한 시스템 개선 사항에 대해 보다 구체적으로 설명하겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">복원 및 후속 조치</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="api-schema-standardization">API 스키마 표준화</h3>
+		<a href="https://blog.cloudflare.com/#api-schema-standardization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이번 사고의 원인 중 하나는 pending_delete 플래그가 문자열로 해석되었다는 점입니다. 이로 인해 클라이언트와 서버 모두 해당 플래그의 값을 일관되게 판단하기 어려웠습니다. 당사는 API 스키마를 개선하여 보다 엄격한 표준화를 적용할 예정입니다. 이를 통해 테스트 과정과 시스템 전반에서 API 호출이 올바르게 구성되었는지 여부를 훨씬 명확하게 검증할 수 있도록 할 것입니다. 이 작업은 모든 조건에서 명확하게 정의된 동작을 보장하는 것을 목표로 하는 Code Orange의 세 번째 워크스트림에 해당합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="better-separation-between-operational-and-configured-state">운영 상태와 구성 상태 간의 보다 명확한 분리</h3>
+		<a href="https://blog.cloudflare.com/#better-separation-between-operational-and-configured-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>현재 고객은 주소 지정 스키마에 대한 변경을 수행하면, 해당 변경 사항은 권위 있는 데이터베이스에 저장되며, 이 데이터베이스는 운영 작업에도 동일하게 사용됩니다. 이로 인해 수동 롤백 과정이 더욱 복잡해집니다. 엔지니어는 의도된 상태와 실제 상태를 비교해 정합성을 판단하기보다는, 데이터베이스 스냅샷에 의존해야 하기 때문입니다. 당사는 롤백 메커니즘과 데이터베이스 구성을 재설계하여 변경 사항을 신속하게 되돌릴 수 있는 명확하고 간편한 경로를 마련하고, 고객 구성과 프로덕션 환경 사이에 여러 계층을 도입할 수 있도록 할 예정입니다. </p>
+	<p>당사는 데이터베이스에서 읽어 프로덕션에 적용하는 데이터를 스냅샷으로 생성하고, 이를 다른 모든 프로덕션 변경 사항과 동일한 방식으로 배포할 예정입니다. 그리고 이 배포 과정은 상태 지표에 의해 중재되며, 이상 징후가 감지될 경우 자동으로 배포를 중단할 수 있도록 설계됩니다. 이는 향후 데이터베이스가 잘못된 상태로 변경되는 문제가 발생하더라도, 개별 고객 또는 전체 고객을 정상적으로 작동하던 이전 버전으로 거의 즉시 되돌릴 수 있음을 의미합니다.</p>
+	<p>이 방식은 장애 발생 시 고객이 API를 통해 직접 업데이트를 수행하는 기능을 일시적으로 제한할 수 있습니다. 그러나 그 대신 데이터베이스를 수정하는 동안에도 고객 트래픽은 계속 처리할 수 있게 되어, 해당 시간 동안 서비스가 중단되는 상황을 방지할 수 있습니다. 이 작업은 Code Orange의 첫 번째 및 두 번째 워크스트림과 맞닿아 있습니다. 즉, 신속한 롤백을 가능하게 하고, 구성 변경을 안전하며 상태 지표에 의해 중재되는 방식으로 배포하는 것을 목표로 합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="better-arbitrate-large-withdrawal-actions">대규모 철회 작업에 대한 보다 정교한 통제</h3>
+		<a href="https://blog.cloudflare.com/#better-arbitrate-large-withdrawal-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>당사는 BGP 프리픽스를 급격하게 철회하거나 삭제하는 등 변경이 지나치게 빠르거나 광범위하게 발생하는 상황을 감지하고, 이러한 징후가 감지되면 스냅샷 배포를 자동으로 중단할 수 있도록 모니터링을 강화할 계획입니다. 이는 일종의 서킷 브레이커 역할을 하여 데이터베이스를 조작하는 프로세스가 통제를 벗어날 경우, 이번 사고에서 확인된 것과 같은 대규모 파급 효과가 발생하지 않도록 사전에 차단합니다.</p>
+	<p>또한 당사는 고객이 운영 중인 서비스가 정상적으로 동작하는지를 직접 모니터링하는 작업도 진행하고 있는데, 이러한 신호 역시 서킷 브레이커를 작동시키는 기준으로 활용하여, 잠재적으로 위험한 변경 사항이 적용되기 전에 자동으로 중단시키고, 충분한 조사와 검증을 거친 후에만 재개할 수 있도록 할 계획입니다. 이 작업은 변경 사항의 안전한 배포를 포함하는 첫 번째 코드 오렌지 작업 흐름과 일치합니다.</p>
+	<p>다음은 해당 변경 사항의 배포와 복구 조치를 포함한 사건 경과 타임라인입니다. </p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 803px">
+			<colgroup>
+				<col style="width: 151px">
+				<col style="width: 201px">
+				<col style="width: 451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">시간(UT</span><span style="font-style:normal;text-decoration:none;color:#000">C</span><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">)</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">상태</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">설명</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-05 21:53</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">코드가 시스템에 병합됨</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">손상된 하위 프로세스가 코드 베이스에 병합됨</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 17:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">코드가 시스템에 배포됨</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">손상된 하위 프로세스가 포함된 Address API 릴리스가 완료됨</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 17:56</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">영향 시작</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">오류가 있는 하위 프로세스의 실행이 시작. 프리픽스 광고 업데이트가 전파되기 시작하면서 프리픽스가 철회되기 시작 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 영향 시작 – </span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:13</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare가 대응을 시작함</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">one.one.one.one 장애에 대해 Cloudflare가 대응을 시작</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:18</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">내부 사고가 공식 선언됨</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 엔지니어가 계속해서 영향을 조사</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:21</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Addressing API 팀이 호출됨</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Addressing API 담당 엔지니어링 팀이 참여하여 디버깅 시작</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">문제 파악</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">한 엔지니어가 오류가 있는 하위 프로세스를 종료하고 정기 실행을 비활성화, 복구 작업 시작</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:11</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">완화 시작</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 엔지니어들이 철회된 프리픽스의 서비스 가능 상태를 복구하기 시작했으며, 동시에 다른 팀은 삭제된 프리픽스에 대한 복구 작업에 집중</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:19</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">일부 프리픽스 완화</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">고객이 서비스를 복구하기 위해 대시보드를 통해 자신의 프리픽스를 다시 광고하기 시작 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 영향 완화 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:44</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">계속되는 추가 완화</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">엔지니어가 제거된 프리픽스에 대한 데이터베이스 복구 방법 시작</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 20:30</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">최종 완화 프로세스 시작</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">엔지니어들이 기존 서비스 바인딩이 유지된 상태에서 철회되었던 프리픽스를 복구하는 릴리스를 완료하는 한편, 삭제된 프리픽스에 대한 복구 작업은 계속 진행 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 영향 완화 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 21:08</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">구성 업데이트 배포</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">엔지니어링 팀이 자체 조치나 이전 복구 작업으로 해결되지 않은 프리픽스를 복구하기 위해 글로벌 머신 구성 롤아웃을 시작 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 영향 완화 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 23:03</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">구성 업데이트 완료</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">남아 있던 프리픽스를 복구하기 위한 글로벌 머신 구성 배포 완료 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 영향 종료 –</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>이번 사고로 인해 고객 여러분께 제공하는 서비스와 더 나아가 인터넷 전반에 영향을 미친 점에 대해 깊이 사과드립니다. 당사는 변화에 강한 복원력을 갖춘 네트워크를 제공하는 것을 목표로 하고 있으나, 이번에는 그 약속을 지키지 못했습니다. 현재 안정성을 한층 강화하고 동일한 문제가 재발하지 않도록 필요한 개선 작업을 적극적으로 진행하고 있습니다.</p>
+</div>

@@ -1,0 +1,308 @@
+{
+	"footerBlurb": "Nous protégeons des <a target='_blank' href='https://www.cloudflare.com/network-services/' rel='noreferrer'>réseaux d'entreprise entiers</a>, aidons nos clients à <a target='_blank' href='https://workers.cloudflare.com/' rel='noreferrer'>développer efficacement des applications à l'échelle d'Internet</a>, accélérons tous les <a target='_blank' href='https://www.cloudflare.com/performance/accelerate-internet-applications/' rel='noreferrer'>sites web ou applications Internet</a>, <a target='_blank' href='https://www.cloudflare.com/ddos/' rel='noreferrer'>repoussons les attaques DDoS</a>, <a target='_blank' href='https://www.cloudflare.com/application-security/' rel='noreferrer'>tenons les pirates informatiques à distance</a> et pouvons vous accompagner dans <a target='_blank' href='https://www.cloudflare.com/products/zero-trust/' rel='noreferrer'>votre parcours d'adoption de l'architecture Zero Trust</a>.<br/><br/>Accédez à <a target='_blank' href='https://one.one.one.one/' rel='noreferrer'>1.1.1.1</a> depuis n'importe quel appareil pour commencer à utiliser notre application gratuite, qui rend votre navigation Internet plus rapide et plus sûre.<br/><br/>Pour en apprendre davantage sur notre mission, à savoir contribuer à bâtir un Internet meilleur, <a target='_blank' href='https://www.cloudflare.com/learning/what-is-cloudflare/' rel='noreferrer'>cliquez ici</a>. Si vous cherchez de nouvelles perspectives professionnelles, consultez <a target='_blank' href='http://www.cloudflare.com/careers' rel='noreferrer'>nos postes vacants</a>.",
+	"initialReadingTime": "2",
+	"locale": "fr-fr",
+	"localesAvailable": [
+		"en-us",
+		"zh-cn",
+		"zh-tw",
+		"de-de",
+		"ja-jp",
+		"ko-kr",
+		"es-es"
+	],
+	"post": {
+		"authors": [
+			{
+				"name": "Nikita Cano",
+				"slug": "nikita",
+				"bio": "Product Manager, Rules and Insights (Configuration Rules, Compression Rules, Page Rules, Redirect Rules, Origin Rules, Snippets, Trace, Traffic Sequence, Transform Rules, URL Normalization, etc.)",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hGB1W3bIJaibV4F7Qe0L8/56f554eeae28828297135a54eacc3065/nikita.jpeg",
+				"location": "London, United Kingdom",
+				"website": "https://nikitacano.com",
+				"twitter": null,
+				"facebook": null,
+				"publiclyIndex": true
+			},
+			{
+				"name": "Korinne Alpers",
+				"slug": "korinne-alpers",
+				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cfasTtVaoOsISarcB9F4Z/1686863c1bbd4dc0b74c7229cfcee42c/Korinne_Alpers.jpg",
+				"publiclyIndex": true
+			}
+		],
+		"excerpt": "Systèmes centraux propulsés par Rust, mises à jour post-quantiques, accès développeur pour étudiants, intégration PlanetScale, partenariats open source, programme de stages plus ambitieux que jamais.",
+		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4o7ZlislB0NhFCy354yVhT/0a15a12961fbd507899843b2e6111b37/unnamed__37_.png",
+		"featured": false,
+		"html": "<p>Il y a quinze ans, Cloudflare était créée avec pour mission de contribuer à bâtir un Internet meilleur. Depuis, Internet a évolué, tout comme ce dont il a besoin de la part d&#39;équipes comme la nôtre.  Dans la <a href=\"https://blog.cloudflare.com/cloudflare-2025-annual-founders-letter/\"><u>Lettre des fondateurs</u></a> de cette année, Matthew et Michelle évoquent du rôle que nous avons joué dans l&#39;évolution d&#39;Internet, depuis notre contribution à l&#39;intensification du chiffrement qui est passé de 10 % à 95 % du trafic Internet jusqu&#39;aux défis plus récents liés par exemple à la manière dont les personnes consomment du contenu. </p><p>Chaque année, nous consacrons la Semaine anniversaire au lancement de produits et de fonctionnalités dont nous pensons qu&#39;Internet a besoin à ce moment précis et dans un avenir proche. <a href=\"https://blog.cloudflare.com/tag/birthday-week/\"></a> <a href=\"https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa/\"></a> <a href=\"https://blog.cloudflare.com/introducing-universal-ssl/\"></a> <a href=\"https://blog.cloudflare.com/introducing-cloudflare-workers/\"></a> <a href=\"https://blog.cloudflare.com/unmetered-mitigation/\"></a> <a href=\"https://blog.cloudflare.com/introducing-cloudflare-radar/\"></a> <a href=\"https://blog.cloudflare.com/introducing-r2-object-storage/\"></a> <a href=\"https://blog.cloudflare.com/post-quantum-tunnel/\"></a> <a href=\"https://blog.cloudflare.com/best-place-region-earth-inference/\"></a> <a href=\"https://blog.cloudflare.com/announcing-encrypted-client-hello/\"><u>Les Semaines anniversaire précédentes ont été l&#39;occasion du lancement de la passerelle IPv6 en 2011, de Universal SSL en 2014, de Cloudflare Workers et de la protection illimitée contre les attaques DDoS en 2017, de Cloudflare Radar en 2020, du stockage d&#39;objets R2 sans frais de trafic sortant en 2021 et des mises à niveau post-quantiques pour Cloudflare Tunnel en 2022, Workers AI et Encrypted Client Hello en 2023.</u></a> Et ce ne sont que quelques exemples de lancements.</p><p>Les thèmes abordés cette année ont principalement porté sur la préparation d&#39;Internet à un nouveau modèle de monétisation qui favorise la publication de contenus de qualité, crée davantage d&#39;opportunités pour développer une communauté tant au sein de Cloudflare qu&#39;à l&#39;extérieur, et englobe des missions pérennes telles que la mise à disposition de fonctionnalités supplémentaires pour tous et l&#39;amélioration constante de la vitesse et de la sécurité de notre offre.</p><p>Nous avons commercialisé beaucoup de nouveautés cette année. Si vous êtes passés à côté des dizaines d&#39;articles de blog qui les présentaient, voici un aperçu de tout ce que nous avons annoncé pendant la Semaine anniversaire 2025. </p><p><b>Lundi 22 septembre</b></p><table><tr><td><p><b>Quoi</b></p></td><td><p><b>En quelques mots…</b></p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/cloudflare-1111-intern-program/\"><u><b>Contribuer à bâtir l&#39;avenir : Cloudflare annonce son objectif de recruter 1 111 stagiaires en 2026</b></u></a></p></td><td><p>Pour investir dans la prochaine génération de concepteurs, nous avons annoncé notre programme de stage le plus ambitieux à ce jour, avec pour objectif de recruter 1 111 stagiaires en 2026.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/supporting-the-future-of-the-open-web/\"><u><b>Soutenir l&#39;avenir du web ouvert : Cloudflare parraine Ladybird et Omarchy</b></u></a></p></td><td><p>Pour soutenir un Internet diversifié et ouvert, nous parrainons désormais Ladybird (un navigateur indépendant) et Omarchy (une distribution et un environnement de développement Linux open source ).</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/new-hubs-for-startups/\"><u><b>Venez développer avec nous : les nouveaux hubs de Cloudflare pour les start-up</b></u></a></p></td><td><p>Nous ouvrons les portes de nos bureaux dans quatre grandes villes (San Francisco, Austin, Londres et Lisbonne) comme des hubs gratuits pour les start-ups afin désireuses de collaborer et d&#39;entrer en connexion avec la communauté des concepteurs.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/ai-crawl-control-for-project-galileo/\"><u><b>Offre d&#39;accès gratuit aux services de développement de Cloudflare pour les organisations à but non lucratif et de la société civile</b></u></a></p></td><td><p>Nous avons élargi notre programme Cloudflare for Startups aux organisations à but non lucratif et d&#39;intérêt public, en offrant des crédits gratuits pour nos outils de développement.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/workers-for-students/\"><u><b>Présentation de l&#39;offre d&#39;accès gratuit pour étudiants aux fonctionnalités de développement de Cloudflare</b></u></a></p></td><td><p>Nous décidons que le coût ne doit plus être un obstacle pour la prochaine génération et offrons gratuitement aux étudiants disposant d&#39;une adresse .edu 12 mois d’accès gratuit à nos fonctionnalités de plateforme de développement payantes.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/capnweb-javascript-rpc-library/\"><u><b>Cap&#39;n Web : un nouveau système RPC pour navigateurs et serveurs web</b></u></a></p></td><td><p>Nous avons ouvert en code libre Cap&#39;n Web, un nouveau protocole RPC natif JavaScript qui simplifie la communication puissante et sans schéma pour les applications web.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/workers-launchpad-006/\"><u><b>Retour sur Workers Launchpad et bienvenue à la promotion n° 6</b></u></a></p></td><td><p>Nous avons annoncé la 6e promotion de Workers Launchpad, notre programme d&#39;accélération pour les start-ups développant sur Cloudflare.</p></td></tr></table><p><b>Mardi 23 septembre</b></p><table><tr><td><p><b>Quoi</b></p></td><td><p><b>En quelques mots…</b></p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/per-customer-bot-defenses/\"><u><b>Développement de moyens de défense uniques et personnalisés pour chaque client contre les menaces avancées liées aux bots à l&#39;ère de l&#39;IA</b></u></a></p></td><td><p>Nouveau système de détection des anomalies qui utilise l&#39;apprentissage automatique entraîné sur chaque zone pour construire des défenses contre les attaques de bots pilotées par l&#39;IA. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/cloudflare-astro-tanstack/\"><u><b>Les raisons pour lesquelles Cloudflare, Netlify et Webflow unissent leurs forces afin de soutenir les outils open source</b></u></a></p></td><td><p>Pour soutenir le web ouvert, nous avons uni nos forces avec Webflow pour parrainer Astro, et avec Netlify pour parrainer TanStack.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/x402/\"><u><b>Lancement de la Fondation x402 en collaboration avec Coinbase et prise en charge des transactions x402</b></u></a></p></td><td><p>Nous nous associons à Coinbase pour créer la x402 Foundation, et encourageons l&#39;adoption du <a href=\"https://github.com/coinbase/x402?cf_target_id=4D4A124640BFF471F5B56706F9A86B34\" target=\"_blank\" rel=\"noopener noreferrer\"><u>protocole x402</u></a> afin de permettre aux clients et aux services d&#39;échanger de la valeur sur le web en utilisant un langage commun</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/ai-crawl-control-for-project-galileo/\"><u><b>Contribuer à la protection des journalistes et de l&#39;actualité locale contre les robots d&#39;indexation IA avec le projet Galileo</b></u></a></p></td><td><p>Nous étendons nos services gratuits de gestion des bots et d&#39;AI Crawl Control aux journalistes et aux organes de presse par l&#39;intermédiaire du projet Galileo.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/confidence-score-rubric/\"><u><b>Cloudflare Confidence Scorecards : rendre l&#39;IA plus sûre pour Internet</b></u></a></p></td><td><p>Évaluation automatisée des outils d&#39;IA et SaaS, ce qui aide les organisations à adopter l&#39;IA sans compromettre la sécurité.</p></td></tr></table><p><b>Mercredi 24 septembre</b></p><table><tr><td><p><b>Quoi</b></p></td><td><p><b>En quelques mots…</b></p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/automatically-secure/\"><u><b>Sécurisation automatique : comment nous avons mis à niveau 6 000 000 de domaines par défaut</b></u></a></p></td><td><p>Notre système SSL/TLS automatique a mis à niveau plus de 6 millions de domaines vers des modes de chiffrement plus sécurisés par défaut et activera bientôt automatiquement les connexions post-quantiques.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/content-signals-policy/\"><u><b>Donner le choix aux utilisateurs grâce à la nouvelle politique sur les signaux de contenu lancée par Cloudflare</b></u></a></p></td><td><p>La politique sur les signaux de contenu est une nouvelle norme pour robots.txt qui permet aux créateurs d&#39;exprimer clairement leurs préférences sur la façon dont l&#39;IA peut utiliser leur contenu.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/building-a-better-internet-with-responsible-ai-bot-principles/\"><u><b>Afin de bâtir un Internet meilleur à l&#39;ère de l&#39;IA, nous avons besoin de principes responsables pour régir les bots IA</b></u></a></p></td><td><p>Proposition d&#39;un ensemble de principes responsables pour les bots d’IA afin d’entamer un dialogue sur la transparence et le respect des préférences des créateurs de contenu.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/saas-to-saas-security/\"><u><b>Sécuriser les données au sein des applications SaaS vers SaaS</b></u></a></p></td><td><p>De nouveaux outils de sécurité permettent aux entreprises d&#39;avoir une visibilité et un contrôle sur les données circulant entre les applications SaaS.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/post-quantum-warp/\"><u><b>Sécuriser les systèmes aujourd&#39;hui en prévision de l&#39;avenir quantique : le client WARP prend désormais en charge le chiffrement post-quantique</b></u></a></p></td><td><p>Le client WARP de Cloudflare prend désormais en charge la cryptographie post-quantique qui permet un chiffrement résistant aux attaques quantiques pour le trafic. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/a-simpler-path-to-a-safer-internet-an-update-to-our-csam-scanning-tool/\"><u><b>Un chemin plus simple vers un Internet plus sécurisé : mise à jour de notre outil d&#39;analyse CSAM</b></u></a></p></td><td><p>Nous avons facilité l&#39;adoption de notre outil d&#39;analyse CSAM en supprimant la nécessité de créer et de fournir des identifiants uniques, ce qui nous permet d&#39;aider davantage de propriétaires de sites à protéger leurs plateformes.</p></td></tr></table><p>\n<b>Jeudi 25 septembre</b></p><table><tr><td><p><b>Quoi</b></p></td><td><p><b>En quelques mots…</b></p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/enterprise-grade-features-for-all/\"><u><b>Chaque fonctionnalité Cloudflare, disponible pour tous</b></u></a></p></td><td><p>Nous rendons chaque fonctionnalité de Cloudflare, à commencer par l&#39;authentification unique (SSO), disponible à l&#39;achat pour toutes les offres. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/cloudflare-developer-platform-keeps-getting-better-faster-and-more-powerful/\"><u><b>La plateforme de développement Cloudflare devient toujours plus performante, plus rapide et plus puissante</b></u></a></p></td><td><p>Mises à jour dans Workers et au-delà pour une plateforme de développement plus puissante avec par exemple la prise en charge d&#39;images de conteneurs plus grandes et plus simultanées, la prise en charge de modèles externes d&#39;OpenAI et d&#39;Anthropic dans AI Search (anciennement AutoRAG), et plus encore. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/planetscale-postgres-workers/\"><u><b>S&#39;associer pour accélérer le full-stack : déployez des bases de données PlanetScale directement depuis Workers</b></u></a></p></td><td><p>Vous pouvez désormais connecter directement Cloudflare Workers aux bases de données PlanetScale, avec des connexions automatiquement optimisées par Hyperdrive.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/cloudflare-data-platform/\"><u><b>Annonce de Cloudflare Data Platform</b></u></a></p></td><td><p>Une solution complète pour l&#39;ingestion, le stockage et l&#39;interrogation des tables de données analytiques à l&#39;aide de normes ouvertes telles qu&#39;Apache Iceberg. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/r2-sql-deep-dive/\"><u><b>R2 SQL : une analyse approfondie de notre nouveau moteur de requêtes distribuées</b></u></a></p></td><td><p>Une analyse technique approfondie de R2 SQL, un moteur de requêtes serverless pour des ensembles de données à l&#39;échelle du pétaoctet dans R2.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/safe-in-the-sandbox-security-hardening-for-cloudflare-workers/\"><u><b>En sécurité dans le sandbox : renforcement de la sécurité pour Cloudflare Workers</b></u></a></p></td><td><p>Une analyse approfondie de la manière dont nous avons renforcé l&#39;environnement d&#39;exécution de Workers avec de nouvelles mesures de sécurité en profondeur, y compris des modules sandbox V8 et des clés de protection de la mémoire assistées par matériel.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/sovereign-ai-and-choice/\"><u><b>Faites vos choix : la voie vers la souveraineté en matière d&#39;IA</b></u></a></p></td><td><p>Pour promouvoir la souveraineté de l&#39;IA, nous avons intégré à notre plateforme Workers AI des modèles open source développés localement en Inde, au Japon et en Asie du Sud-Est.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/email-service/\"><u><b>Annonce de la bêta privée de la solution Cloudflare Email Service</b></u></a></p></td><td><p>Nous avons annoncé la version bêta privée du service de messagerie Cloudflare Email Service qui permet aux développeurs d&#39;envoyer et de recevoir des e-mails transactionnels de manière fiable directement depuis Cloudflare Workers.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/nodejs-workers-2025/\"><u><b>Une année d&#39;amélioration de la compatibilité Node.js au sein de la plateforme Cloudflare Workers</b></u></a></p></td><td><p>Des centaines de nouvelles API Node.js sont désormais disponibles afin de faciliter l&#39;exécution du code Node.js existant sur notre plateforme. </p></td></tr></table><p><b>Vendredi 23 septembre</b></p><table><tr><td><p><b>Quoi</b></p></td><td><p><b>En quelques mots…</b></p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/20-percent-internet-upgrade\"><u><b>Cloudflare vient de gagner en rapidité et en sécurité grâce à Rust</b></u></a></p></td><td><p>Nous avons réorganisé notre proxy principal avec une nouvelle architecture modulaire basée sur Rust ; cela nous permet de réduire le temps de réponse médian de 10 ms pour des millions d&#39;utilisateurs. </p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com//introducing-observatory-and-smart-shield/\"><u><b>Présentation d&#39;Observatory et de Smart Shield</b></u></a></p></td><td><p>De nouveaux outils de surveillance dans le tableau de bord Cloudflare qui fournissent des recommandations permettant d&#39;agir et des correctifs en un clic pour les problèmes de performances.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/monitoring-as-sets-and-why-they-matter/\"><u><b>Surveiller les AS-SET et l&#39;importance de ces derniers</b></u></a></p></td><td><p>Cloudflare Radar inclut désormais des données du registre de routage Internet (IRR) ce qui permet aux opérateurs de réseau de surveiller les ensembles AS (AS-SET) afin d&#39;éviter les fuites de routage.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/an-ai-index-for-all-our-customers\"><u><b>Un index IA pour l&#39;ensemble de nos clients</b></u></a></p></td><td><p>Nous avons annoncé la version bêta privée d&#39;AI Index, un nouveau service qui crée un index de recherche optimisé par l&#39;IA pour votre domaine, que vous contrôlez et pouvez monétiser.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/new-regional-internet-traffic-and-certificate-transparency-insights-on-radar/\"><u><b>Lancement de nouvelles informations régionales sur le trafic Internet et la transparence des certificats dans Cloudflare Radar</b></u></a></p></td><td><p>Informations sur le trafic infranational et tableaux de bord de transparence des certificats pour la surveillance TLS.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer/\"><u><b>Éliminer les démarrages à froid 2 : diviser pour mieux régner</b></u></a></p></td><td><p>Nous avons réduit les démarrages à froid des Workers par 10 en mettant en œuvre un nouveau système de « sharding des Workers », qui achemine les requêtes vers des Workers déjà chargés.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/network-performance-update-birthday-week-2025/\"><u><b>Mise à jour concernant les performances réseau : Semaine anniversaire 2025</b></u></a></p></td><td><p>Le graphique du temps de connexion TCP (Trimean) montre que nous avons le temps de connexion TCP le plus rapide pour 40 % des FAI mesurés et le plus rapide parmi les principaux réseaux.</p></td></tr><tr><td><p><a href=\"https://blog.cloudflare.com/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data/\"><u><b>Comment Cloudflare utilise les données de performances pour faire accélérer encore le réseau mondial qui est déjà le plus rapide au monde</b></u></a></p></td><td><p>Nous utilisons les vastes données de performances de notre réseau pour affiner les algorithmes de contrôle de la congestion et améliorons ainsi la vitesse de 10 % en moyenne pour le trafic QUIC.\n</p></td></tr></table>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"come-build-with-us\">Venez créer avec nous\t!</h3>\n      <a href=\"#come-build-with-us\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Contribuer à bâtir un Internet meilleur ne se limite pas à la technologie. À l&#39;instar des annonces concernant les stagiaires ou la collaboration dans nos bureaux, la communauté des personnes qui contribuent à construire un Internet meilleur est essentielle pour son avenir. Cette semaine, nous avons lancé notre ensemble d&#39;initiatives le plus ambitieux à ce jour pour soutenir les bâtisseurs, les fondateurs et les étudiants qui façonnent l&#39;avenir.</p><p>Pour les fondateurs et les start-ups, nous sommes ravis d&#39;accueillir la <b>6e promotion</b> du <b>Workers Launchpad</b>, notre programme d&#39;accélération qui offre aux entreprises en phase de démarrage les ressources nécessaires pour se développer. Toutefois, nous allons encore plus loin. Nous ouvrons nos portes, littéralement, en lançant <b>de nouveaux hubs physiques pour les start-ups</b> dans nos bureaux de San Francisco, Austin, Londres et Lisbonne. Ces espaces offriront un accès à du mentorat, à des ressources et à une communauté d&#39;autres créateurs.</p><p>Nous investissons également dans la nouvelle génération de talents. Nous avons annoncé <b>l&#39;accès gratuit à la plateforme de développement de Cloudflare pour tous les étudiants</b>, leur offrant par là même les outils pour apprendre et expérimenter sans limites. Pour faciliter la transition de la salle de classe à l&#39;industrie, nous avons également annoncé notre objectif de recruter <b>1 111 stagiaires en 2026</b>, notre plus grand engagement à ce jour pour encourager les futurs leaders technologiques.</p><p>Et parce qu&#39;un Internet meilleur concerne tout le monde, nous étendons notre soutien aux <b>organisations à but non lucratif et d&#39;intérêt public</b>, en leur offrant un accès gratuit à nos outils de développement de qualité professionnelle, afin qu&#39;elles puissent se concentrer sur leurs missions.</p><p>Que vous soyez un fondateur avec une grande idée, un étudiant qui commence à peine, ou une équipe travaillant pour une cause en laquelle vous croyez, nous voulons vous aider à réussir.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"until-next-year\">À l&#39;année prochaine !</h3>\n      <a href=\"#until-next-year\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Merci à nos clients, notre communauté et aux millions de développeurs qui nous font confiance pour les aider à construire, sécuriser et accélérer l&#39;Internet. Votre curiosité et vos retours stimulent notre innovation.</p><p>Ces 15 années ont été incroyables. Et, encore une fois, ce n&#39;est qu&#39;un début !</p>",
+		"id": "4k1NhJtljIsH7GOkpHg1Ei",
+		"localeList": {
+			"name": "LOC: 15 years of helping build a better Internet: a look back at Birthday Week 2025",
+			"enUS": "English for Locale",
+			"zhCN": "Translated for Locale",
+			"zhHansCN": "No Page for Locale",
+			"zhTW": "Translated for Locale",
+			"frFR": "Translated for Locale",
+			"deDE": "Translated for Locale",
+			"itIT": "No Page for Locale",
+			"jaJP": "Translated for Locale",
+			"koKR": "Translated for Locale",
+			"ptBR": "No Page for Locale",
+			"esLA": "No Page for Locale",
+			"esES": "Translated for Locale",
+			"enAU": "No Page for Locale",
+			"enCA": "No Page for Locale",
+			"enIN": "No Page for Locale",
+			"enGB": "No Page for Locale",
+			"idID": "No Page for Locale",
+			"ruRU": "No Page for Locale",
+			"svSE": "No Page for Locale",
+			"viVN": "No Page for Locale",
+			"plPL": "No Page for Locale",
+			"arAR": "No Page for Locale",
+			"nlNL": "No Page for Locale",
+			"thTH": "No Page for Locale",
+			"trTR": "No Page for Locale",
+			"heIL": "No Page for Locale",
+			"lvLV": "No Page for Locale",
+			"etEE": "No Page for Locale",
+			"ltLT": "No Page for Locale"
+		},
+		"meta_description": "Cloudflare vient de fêter ses 15 ans ! La Semaine anniversaire 2025 a célébré l'innovation à grande échelle : systèmes centraux propulsés par Rust, mises à niveau post-quantiques, accès pour les développeurs étudiants, intégration avec PlanetScale, partenariats open source, et notre plus grand programme de stages à ce jour : 1 111 stagiaires en 2026.",
+		"metadata": {
+			"title": "15 ans d'aide à la construction d'un Internet meilleur : retour sur la semaine anniversaire 2025",
+			"description": "Cloudflare vient de fêter ses 15 ans ! La Semaine anniversaire 2025 a célébré l'innovation à grande échelle : systèmes centraux propulsés par Rust, mises à niveau post-quantiques, accès pour les développeurs étudiants, intégration avec PlanetScale, partenariats open source, et notre plus grand programme de stages à ce jour : 1 111 stagiaires en 2026.",
+			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zbjXPDrTva3PsfI0LXpH0/1be8467639262d3c946ae07e846d4c85/15_years_of_helping_build_a_better_Internet-_a_look_back_at_Birthday_Week_2025-OG.png"
+		},
+		"primary_author": {},
+		"publicly_index": true,
+		"published_at": "2025-09-29T14:00+00:00",
+		"slug": "birthday-week-2025-wrap-up",
+		"tags": [
+			{
+				"id": "1Cv5JjXzKWKEA10JdYbXu1",
+				"name": "Semaine anniversaire",
+				"slug": "birthday-week"
+			},
+			{
+				"id": "V86khSc459Yi1AhTlvtY7",
+				"name": "Partenaires",
+				"slug": "partners"
+			},
+			{
+				"id": "3JAY3z7p7An94s6ScuSQPf",
+				"name": "Plateforme pour développeurs",
+				"slug": "developer-platform"
+			},
+			{
+				"id": "5Ol0Sw9kBTwIstJ84njaO7",
+				"name": "Workers Launchpad",
+				"slug": "workers-launchpad"
+			},
+			{
+				"id": "4gN0ARax0fHxjtZL07THOe",
+				"name": "Performances",
+				"slug": "performance"
+			},
+			{
+				"id": "6Mp7ouACN2rT3YjL1xaXJx",
+				"name": "Sécurité",
+				"slug": "security"
+			},
+			{
+				"id": "5RrjSR5vIOJAfRdT8966hf",
+				"name": "Cache",
+				"slug": "cache"
+			},
+			{
+				"id": "1OAcGRrbAS8T2hKb2tqB7N",
+				"name": "Rapidité",
+				"slug": "speed"
+			},
+			{
+				"id": "4HIPcb68qM0e26fIxyfzwQ",
+				"name": "Développeurs",
+				"slug": "developers"
+			},
+			{
+				"id": "6Foe3R8of95cWVnQwe5Toi",
+				"name": "IA",
+				"slug": "ai"
+			},
+			{
+				"id": "2FQK880QI5lKEUCjVHBber",
+				"name": "1.1.1.1",
+				"slug": "1-1-1-1"
+			},
+			{
+				"id": "urEf9QllkDeGxTu3ysdlo",
+				"name": "Sécurité des applications",
+				"slug": "application-security"
+			},
+			{
+				"id": "36Dg2NwTgUHhrlE0FRpSdJ",
+				"name": "Services pour applications",
+				"slug": "application-services"
+			},
+			{
+				"id": "4l3WDYLk6bXCyaRc9pRzXa",
+				"name": "Bots",
+				"slug": "bots"
+			},
+			{
+				"id": "3aRZvV7ApVpkYKGhnNQH4w",
+				"name": "CDN (FR)",
+				"slug": "cdn"
+			},
+			{
+				"id": "5tk59ZFOQlw6hnNzbDnhZJ",
+				"name": "Cloudflare for Startups",
+				"slug": "cloudflare-for-startups"
+			},
+			{
+				"id": "4Z2oveL0P0AeqGa5lL4Vo1",
+				"name": "Cloudflare One",
+				"slug": "cloudflare-one"
+			},
+			{
+				"id": "3QNaVNNpUXrfZYUGDJkXwA",
+				"name": "Cloudflare Zero Trust",
+				"slug": "cloudflare-zero-trust"
+			},
+			{
+				"id": "6hbkItfupogJP3aRDAq6v8",
+				"name": "Cloudflare Workers",
+				"slug": "workers"
+			}
+		],
+		"title": "15 années d'aide à la construction d'un Internet meilleur : retour sur la semaine anniversaire 2025",
+		"updated_at": "2026-02-25T19:25:04.497Z",
+		"url": "https://blog.cloudflare.com/birthday-week-2025-wrap-up"
+	},
+	"translations": {
+		"posts.by": "Par",
+		"footer.gdpr": "RGPD",
+		"lang_blurb1": "Cet article est également disponible en {lang1}.",
+		"lang_blurb2": "Cet article est également disponible en {lang1} et en {lang2}.",
+		"lang_blurb3": "Cet article est également disponible en {lang1}, en {lang2} et en {lang3}.",
+		"footer.press": "Presse",
+		"header.title": "Le blog Cloudflare",
+		"search.clear": "Effacer",
+		"search.filter": "Filtres",
+		"search.source": "Source",
+		"footer.careers": "Emploi",
+		"footer.company": "Entreprise",
+		"footer.support": "Support",
+		"footer.the_net": "theNet",
+		"search.filters": "Filtres",
+		"footer.our_team": "Notre équipe",
+		"footer.webinars": "Webinaires",
+		"page.more_posts": "Autres publications",
+		"posts.time_read": "Lecture : {time} min.",
+		"search.language": "Langue",
+		"footer.community": "Communauté",
+		"footer.resources": "Ressources",
+		"footer.solutions": "Solutions",
+		"footer.trademark": "Marque commerciale",
+		"header.subscribe": "S'abonner",
+		"footer.compliance": "Conformité",
+		"footer.free_plans": "Offre gratuite",
+		"footer.impact_ESG": "Impact/ESG",
+		"posts.follow_on_X": "Suivez-nous sur X",
+		"footer.help_center": "Centre d'aide",
+		"footer.network_map": "Carte du réseau",
+		"header.please_wait": "Veuillez patienter",
+		"page.related_posts": "Publications associées",
+		"search.result_stat": "Résultats <strong>{search_range}</strong> sur <strong>{search_total}</strong> pour <strong>{search_keyword}</strong>",
+		"footer.case_studies": "Études de cas",
+		"footer.connect_2024": "Connect 2024",
+		"footer.terms_of_use": "Conditions d'utilisation",
+		"footer.white_papers": "Livres blancs",
+		"footer.cloudflare_tv": "Cloudflare TV",
+		"footer.community_hub": "Portail de la communauté",
+		"footer.compare_plans": "Comparer les offres",
+		"footer.contact_sales": "Contacter le service commercial",
+		"header.contact_sales": "Contacter le service commercial",
+		"header.email_address": "Adresse e-mail",
+		"page.error.not_found": "Page introuvable",
+		"footer.developer_docs": "Documents pour développeurs",
+		"footer.privacy_policy": "Politique de confidentialité",
+		"footer.request_a_demo": "Demander une démo",
+		"page.continue_reading": "Continuer à lire",
+		"footer.analysts_report": "Rapports d'analyse",
+		"footer.for_enterprises": "Pour les entreprises",
+		"footer.getting_started": "Prise en main",
+		"footer.learning_center": "Centre d'apprentissage",
+		"footer.project_galileo": "Projet Galileo",
+		"pagination.newer_posts": "Publications récentes",
+		"pagination.older_posts": "Anciennes publications",
+		"posts.social_buttons.x": "Discuter sur X",
+		"search.icon_aria_label": "Recherche",
+		"search.source_location": "Source/Emplacement",
+		"footer.about_cloudflare": "À propos de Cloudflare",
+		"footer.athenian_project": "Projet Athenian",
+		"footer.become_a_partner": "Devenir partenaire",
+		"footer.cloudflare_radar": "Cloudflare Radar",
+		"footer.network_services": "Services réseau",
+		"footer.trust_and_safety": "Fiabilité et sécurité",
+		"header.get_started_free": "Premiers pas avec l'offre gratuite",
+		"page.search.placeholder": "Rechercher dans Cloudflare",
+		"footer.cloudflare_status": "État des systèmes de Cloudflare",
+		"footer.cookie_preference": "Préférences relatives aux cookies",
+		"header.valid_email_error": "Veuillez saisir une adresse e-mail valide.",
+		"search.result_stat_empty": "Résultats <strong>{search_range}</strong> sur <strong>{search_total}</strong>",
+		"footer.connectivity_cloud": "Cloud de connectivité",
+		"footer.developer_services": "Services pour développeurs",
+		"footer.investor_relations": "Relations avec les investisseurs",
+		"page.not_found.error_code": "Code d'erreur : 404",
+		"search.autocomplete_title": "Insérez une requête. Appuyez sur Entrée pour envoyer",
+		"footer.logos_and_press_kit": "Logos et dossier de presse",
+		"footer.application_services": "Services pour applications",
+		"footer.get_a_recommendation": "Bénéficiez d'une recommandation",
+		"posts.social_buttons.reddit": "Discuter sur Reddit",
+		"footer.sse_and_sase_services": "Services SSE et SASE",
+		"page.not_found.outdated_link": "Vous avez peut-être suivi un lien obsolète ou saisi l'adresse de manière incorrecte.",
+		"footer.report_security_issues": "Signaler des problèmes de sécurité",
+		"page.error.error_message_page": "Nous sommes désolés. Impossible de trouver la page que vous cherchez.",
+		"header.subscribe_notifications": "Abonnez-vous pour recevoir des notifications sur les nouveaux articles :",
+		"footer.cloudflare_for_campaigns": "Cloudflare for Campaigns",
+		"header.subscription_confimation": "Abonnement confirmé. Nous vous remercions pour votre abonnement !",
+		"posts.social_buttons.hackernews": "Discuter sur Hacker News",
+		"footer.diversity_equity_inclusion": "Diversité, équité et inclusion",
+		"footer.critical_infrastructure_defense_project": "Critical Infrastructure Defense Project",
+		"loadingAriaLabel": "Chargement",
+		"errorPrefix": "Erreur :",
+		"missingApiUrlError": "Attribut api-url requis. Veuillez renseigner une URL d'API valide.",
+		"placeholder": "Recherche…",
+		"searchButtonLabel": "Recherche",
+		"emptyStateTitle": "Commencez votre recherche",
+		"emptyStateDescription": "Saisissez un élément à rechercher pour afficher les résultats",
+		"searchInputAriaLabel": "Recherche de la saisie",
+		"searchResultsAriaLabel": "Résultat de la recherche",
+		"modalEmptyStateDescription": "Commencez à saisir des informations pour lancer une recherche",
+		"noResultsTitle": "Aucun résultat trouvé",
+		"noResultsDescription": "Aucun résultat trouvé pour « {query} »",
+		"modalNoResultsTitle": "Aucun résultat trouvé",
+		"modalNoResultsDescription": "Aucun résultat pour « {query} »",
+		"modalResultsCount": "{n} résultat",
+		"modalResultsCountPlural": "{n} résultats",
+		"modalResultsCountZero": "0 résultat",
+		"modalResultsCountError": "Erreur",
+		"seeMoreResults": "Afficher davantage de résultats",
+		"navigateHint": "Naviguer",
+		"selectHint": "Sélectionner",
+		"closeHint": "Fermer",
+		"loadingMessages": [
+			"Recherche en cours…",
+			"Analyse des résultats…",
+			"Consultation de la base de connaissances…",
+			"Recherche des meilleures correspondances…",
+			"Examen des données en cours…",
+			"Nous y sommes presque…",
+			"Inspection en profondeur…",
+			"Établissements des liens…",
+			"Exploration des pages…",
+			"Recherche de réponses…"
+		]
+	}
+}

@@ -1,625 +1,507 @@
-<div class="mb2 gray5">13 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kWxLsVFdGzjBupfpntU5p/37ba3fc63cde29a196ff6996f69ff1e5/binary-ast.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="javascript-cold-starts">JavaScript Cold starts</h3>
-		<a href="https://blog.cloudflare.com/#javascript-cold-starts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://www.cloudflare.com/application-services/products" target="_blank" rel="noopener noreferrer">performance of applications</a> on the web platform is becoming increasingly bottle necked by the startup (load) time. Large amounts of JavaScript code are required to create rich web experiences that we’ve become used to. When we look at the total size of JavaScript requested on mobile devices from <a href="https://httparchive.org/reports/state-of-javascript#bytesJs" target="_blank" rel="noopener noreferrer">HTTPArchive</a>, we see that an average page loads 350KB of JavaScript, while 10% of pages go over the 1MB threshold. The rise of more complex applications can push these numbers even higher.</p>
-	<p>While caching helps, popular websites regularly release new code, which makes cold start (first load) times particularly important. With browsers moving to separate caches for different domains to <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html" target="_blank" rel="noopener noreferrer">prevent cross-site leaks</a>, the importance of cold starts is growing even for popular subresources served from CDNs, as they can no longer be safely shared.</p>
-	<p>Usually, when talking about the cold start performance, the primary factor considered is a raw download speed. However, on modern interactive pages one of the other big contributors to cold starts is JavaScript parsing time. This might seem surprising at first, but makes sense - before starting to execute the code, the engine has to first parse the fetched JavaScript, make sure it doesn’t contain any syntax errors and then compile it to the initial bytecode. As networks become faster, parsing and compilation of JavaScript could become the dominant factor.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CNQyY1zmsuXVJTSwcPTWp/29c4b25ac370568c9946dfb03be196b4/desktop-without-BinJS.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7u0b1HDtALk80vk2bAnizO/b633b495ee777e1107a2a34fe62ad6d5/LowEnd-device-without-BinJS.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
-
-	</figure>
-	<p>The device capability (CPU or memory performance) is the most important factor in the variance of JavaScript parsing times and correspondingly the time to application start. A 1MB JavaScript file <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization" target="_blank" rel="noopener noreferrer">will take an order</a> of a 100 ms to parse on a modern desktop or high-end mobile device but can take over a second on an average phone &nbsp;(Moto G4).</p>
-	<p><a href="https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4" target="_blank" rel="noopener noreferrer">A more detailed post</a> on the overall cost of parsing, compiling and execution of JavaScript shows how the JavaScript boot time can vary on different mobile devices. For example, in the case of <a href="https://news.google.com" target="_blank" rel="noopener noreferrer">news.google.com</a>, it can range from 4s on a Pixel 2 to 28s on a low-end device.</p>
-	<p>While engines continuously improve raw parsing performance, with V8 in particular <a href="https://twitter.com/mathias/status/1125096214641254400" target="_blank" rel="noopener noreferrer">doubling it</a> over the past year, as well as moving more things off the main thread, parsers still have to do lots of potentially unnecessary work that consumes memory, battery and might delay the processing of the useful resources.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-binaryast-proposal">The “BinaryAST” Proposal</h3>
-		<a href="https://blog.cloudflare.com/#the-binaryast-proposal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is where BinaryAST comes in. BinaryAST is a new over-the-wire format for JavaScript proposed and actively developed by Mozilla that aims to speed up parsing while keeping the semantics of the original JavaScript intact. It does so by using an efficient binary representation for code and data structures, as well as by storing and providing extra information to guide the parser ahead of time.</p>
-	<p>The name comes from the fact that the format stores the JavaScript source as an AST encoded into a binary file. The specification lives at <a href="https://tc39.github.io/proposal-binary-ast" target="_blank" rel="noopener noreferrer">tc39.github.io/proposal-binary-ast</a> and is being worked on by engineers from Mozilla, Facebook, Bloomberg and Cloudflare.</p>
-	<blockquote>
-		<p>“Making sure that web applications start quickly is one of the most important, but also one of the most challenging parts of web development. We know that BinaryAST can radically reduce startup time, but we need to collect real-world data to demonstrate its impact. Cloudflare's work on enabling use of BinaryAST with Cloudflare Workers is an important step towards gathering this data at scale.”</p>
-		<p>Till Schneidereit, Senior Engineering Manager, Developer TechnologiesMozilla</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="parsing-javascript">Parsing JavaScript</h3>
-		<a href="https://blog.cloudflare.com/#parsing-javascript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For regular JavaScript code to execute in a browser the source is parsed into an intermediate representation known as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener noreferrer">AST</a> that describes the syntactic structure of the code. This representation can then be compiled into a byte code or a native machine code for execution.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DIWPcDgNpOEH6BhW3GrO5/487a787830d0b3fb4017a72a1135aaba/without-binAST.png" alt="" class="kg-image" width="2857" height="778" loading="lazy">
-
-	</figure>
-	<p>A simple example of adding two numbers can be represented in an AST as:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EIAsDST7S6TpVAT8F4WFU/c0d3acf3dc8971dbd3607f95329d37ce/orpmdqtF-udYY2MUOSzd8gJdsSxdABJMSubMUMfTtI47GMBNFYayHWBZH3gKf70ElJPGXBkDvIQOCmcJbGvrbsD4YKDxa8bsonVFpVOJxMZC6w0noCDH82pCMyjq.jpg" alt="" class="kg-image" width="1026" height="488" loading="lazy">
-
-	</figure>
-	<p>Parsing JavaScript is not an easy task; no matter which optimisations you apply, it still requires reading the entire text file char by char, while tracking extra context for syntactic analysis.</p>
-	<p>The goal of the BinaryAST is to reduce the complexity and the amount of work the browser parser has to do overall by providing additional information and context by the time and place where the parser needs it.</p>
-	<p>To execute JavaScript delivered as BinaryAST the only steps required are:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eomG3q2K9lSST6Hzsxq2R/870db1cfa20c98105a04ee4dc222e313/With-BinAST.png" alt="" class="kg-image" width="2857" height="818" loading="lazy">
-
-	</figure>
-	<p>Another benefit of BinaryAST is that it makes possible to only parse the critical code necessary for start-up, completely skipping over the unused bits. This can dramatically improve the initial loading time.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b2b1rL6qXh2czmgHxaxR3/06b3936abfb6b8c4b94068349d4ed131/desktop-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="588" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3h7xWlH4bIj2DEcG9EXKSO/fd214ce71f10e2591e82d5dbc2b32af9/desktop-with-BinJS.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QU4tWZEOZIhC534xVp9Bs/a69c99362a2881857e3a2689f0394961/LowEnd-device-without-BinJS-1.png" alt="" class="kg-image" width="2000" height="546" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/x0v3uvopVvmibsIJVBTXJ/5500ef41ad596746da51c2e5c6c2aabb/LowEnd-device-with-BinJS-1.png" alt="" class="kg-image" width="2000" height="602" loading="lazy">
-
-	</figure>
-	<p>This post will now describe some of the challenges of parsing JavaScript in more detail, explain how the proposed format addressed them, and how we made it possible to run its encoder in Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="hoisting">Hoisting</h3>
-		<a href="https://blog.cloudflare.com/#hoisting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>JavaScript relies on hoisting for all declarations - variables, functions, classes. Hoisting is a property of the language that allows you to declare items after the point they’re syntactically used.</p>
-	<p>Let's take the following example:</p>
-	<pre class="language-javascript"><code class="language-javascript">function f() {
-	return g();
-}
-
-function g() {
-	return 42;
-}</code></pre>
-	<p>Here, when the parser is looking at the body of <code>f</code>, it doesn’t know yet what <code>g</code> is referring to - it could be an already existing global function or something declared further in the same file - so it can’t finalise parsing of the original function and start the actual compilation.</p>
-	<p>BinaryAST fixes this by storing all the scope information and making it available upfront before the actual expressions.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gfo2bgKDwFzYt4UDUAEbn/f91e9b797c2e5c8b16546e4d8fa79d73/global-scope_2x-1.png" alt="" class="kg-image" width="3368" height="1522" loading="lazy">
-
-	</figure>
-	<p>As shown by the difference between the initial AST and the enhanced AST in a JSON representation:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73zazZkCUkmjWppTBdWMIq/00cb51447f344a037eb44cefcbc89e87/1T5U7zKHwc_PuZ7heYpDuQ5HMTQpFiqO-wmz6Vncm7ycWNe65Xvm3PvlFKAtj89vqesgymqj-H9_6-kohc6TLrRkyLwJ5PNIAEOIZSypZpQGAFWFpAIHjsAhLegG.png" alt="" class="kg-image" width="1459" height="601" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="lazy-parsing">Lazy parsing</h3>
-		<a href="https://blog.cloudflare.com/#lazy-parsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One common technique used by modern engines to improve parsing times is lazy parsing. It utilises the fact that lots of websites include more JavaScript than they actually need, especially for the start-up.</p>
-	<p>Working around this involves a set of heuristics that try to guess when any given function body in the code can be safely skipped by the parser initially and delayed for later. A common example of such heuristic is immediately running the full parser for any function that is wrapped into parentheses:</p>
-	<pre class="language-javascript"><code class="language-javascript">(function(...</code></pre>
-	<p>Such prefix usually indicates that a following function is going to be an IIFE (immediately-invoked function expression), and so the parser can assume that it will be compiled and executed ASAP, and wouldn’t benefit from being skipped over and delayed for later.</p>
-	<pre class="language-javascript"><code class="language-javascript">(function() {
-	…
-})();</code></pre>
-	<p>These heuristics significantly improve the performance of the initial parsing and cold starts, but they’re not completely reliable or trivial to implement.</p>
-	<p>One of the reasons is the same as in the previous section - even with lazy parsing, you still need to read the contents, analyse them and store an additional scope information for the declarations.</p>
-	<p>Another reason is that the JavaScript specification requires reporting any syntax errors immediately during load time, and not when the code is actually executed. A class of these errors, called early errors, is checking for mistakes like usage of the reserved words in invalid contexts, strict mode violations, variable name clashes and more. All of these checks require not only lexing JavaScript source, but also tracking extra state even during the lazy parsing.</p>
-	<p>Having to do such extra work means you need to be careful about marking functions as lazy too eagerly, especially if they actually end up being executed during the page load. Otherwise, you’re making cold start costs even worse, as now every function that is erroneously marked as lazy, needs to be parsed twice - once by the lazy parser and then again by the full one.</p>
-	<p>Because BinaryAST is meant to be an output format of other tools such as Babel, TypeScript and bundlers such as Webpack, the browser parser can rely on the JavaScript being already analysed and verified by the initial parser. This allows it to skip function bodies completely, making lazy parsing essentially free.</p>
-	<p>It reduces the cost of a completely unused code - while including it is still a problem in terms of the network bandwidth (don’t do this!), at least it’s not affecting parsing times any more. These benefits apply equally to the code that is used later in the page lifecycle (for example, invoked in response to user actions), but is not required during the startup.</p>
-	<p>Last but not the least important benefit of such approach is that BinaryAST encodes lazy annotations as part of the format, giving tools and developers direct and full control over the heuristics. For example, a tool targeting the Web platform or a framework CLI can use its domain-specific knowledge to mark some event handlers as lazy or eager depending on the context and the event type.</p>
-	<div class="flex anchor relative">
-		<h3 id="avoiding-ambiguity-in-parsing">Avoiding ambiguity in parsing</h3>
-		<a href="https://blog.cloudflare.com/#avoiding-ambiguity-in-parsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Using a text format for a programming language is great for readability and debugging, but it's not the most efficient representation for parsing and execution.</p>
-	<p>For example, parsing low-level types like numbers, booleans and even strings from text requires extra analysis and computation, which is unnecessary when you can just store and read them as native binary-encoded values in the first place and read directly on the other side.</p>
-	<p>Another problem is an ambiguity in the grammar itself. It was already an issue in the ES5 world, but could usually be resolved with some extra bookkeeping based on the previously seen tokens. However, in ES6+ there are productions that can be ambiguous all the way through until they’re parsed completely.</p>
-	<p>For example, a token sequence like:</p>
-	<pre class="language-javascript"><code class="language-javascript">(a, {b: c, d}, [e = 1])...</code></pre>
-	<p>can start either a parenthesized comma expression with nested object and array literals and an assignment:</p>
-	<pre class="language-javascript"><code class="language-javascript">(a, {b: c, d}, [e = 1]); // it was an expression</code></pre>
-	<p>or a parameter list of an arrow expression function with nested object and array patterns and a default value:</p>
-	<pre class="language-javascript"><code class="language-javascript">(a, {b: c, d}, [e = 1]) =&gt; … // it was a parameter list</code></pre>
-	<p>Both representations are perfectly valid, but have completely different semantics, and you can’t know which one you’re dealing with until you see the final token.</p>
-	<p>To work around this, parsers usually have to either backtrack, which can easily get exponentially slow, or to parse contents into intermediate node types that are capable of holding both expressions and patterns, with following conversion. The latter approach preserves linear performance, but makes the implementation more complicated and requires preserving more state.</p>
-	<p>In the BinaryAST format this issue doesn't exist in the first place because the parser sees the type of each node before it even starts parsing its contents.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-implementation">Cloudflare Implementation</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Currently, the format is still in flux, but the very first version of the client-side implementation was released under a flag in Firefox Nightly several months ago. Keep in mind this is only an initial unoptimised prototype, and there are already several experiments changing the format to provide improvements to both size and parsing performance.</p>
-	<p>On the producer side, the reference implementation lives at <a href="https://github.com/binast/binjs-ref" target="_blank" rel="noopener noreferrer">github.com/binast/binjs-ref</a>. Our goal was to take this reference implementation and consider how we would deploy it at Cloudflare scale.</p>
-	<p>If you dig into the codebase, you will notice that it currently consists of two parts.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hO4rh3KiWnZt9MSyLXmqU/2755ce821df08853758c8e8e34cc7b35/cf-implementation.png" alt="" class="kg-image" width="3167" height="787" loading="lazy">
-
-	</figure>
-	<p>One is the encoder itself, which is responsible for taking a parsed AST, annotating it with scope and other relevant information, and writing out the result in one of the currently supported formats. This part is written in Rust and is fully native.</p>
-	<p>Another part is what produces that initial AST - the parser. Interestingly, unlike the encoder, it's implemented in JavaScript.</p>
-	<p>Unfortunately, there is currently no battle-tested native JavaScript parser with an open API, let alone implemented in Rust. There have been a few attempts, but, given the complexity of JavaScript grammar, it’s better to wait a bit and make sure they’re well-tested before incorporating it into the production encoder.</p>
-	<p>On the other hand, over the last few years the JavaScript ecosystem grew to extensively rely on developer tools implemented in JavaScript itself. In particular, this gave a push to rigorous parser development and testing. There are several JavaScript parser implementations that have been proven to work on thousands of real-world projects.</p>
-	<p>With that in mind, it makes sense that the BinaryAST implementation chose to use one of them - in particular, <a href="https://shift-ast.org" target="_blank" rel="noopener noreferrer">Shift</a> - and integrated it with the Rust encoder, instead of attempting to use a native parser.</p>
-	<div class="flex anchor relative">
-		<h3 id="connecting-rust-and-javascript">Connecting Rust and JavaScript</h3>
-		<a href="https://blog.cloudflare.com/#connecting-rust-and-javascript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Integration is where things get interesting.</p>
-	<p>Rust is a native language that can compile to an executable binary, but JavaScript requires a separate engine to be executed. To connect them, we need some way to transfer data between the two without sharing the memory.</p>
-	<p>Initially, the reference implementation generated JavaScript code with an embedded input on the fly, passed it to Node.js and then read the output when the process had finished. That code contained a call to the Shift parser with an inlined input string and produced the AST back in a JSON format.</p>
-	<p>This doesn’t scale well when parsing lots of JavaScript files, so the first thing we did is transformed the Node.js side into a long-living daemon. Now Rust could spawn a required Node.js process just once and keep passing inputs into it and getting responses back as individual messages.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rCs07kw5ldmfRx8zpvgHM/d1f258228fb9e1e6e7e4a57bdf4e47a2/Connecting-rust-java_2x.png" alt="" class="kg-image" width="2560" height="668" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="running-in-the-cloud">Running in the cloud</h3>
-		<a href="https://blog.cloudflare.com/#running-in-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While the Node.js solution worked fairly well after these optimisations, shipping both a Node.js instance and a native bundle to production requires some effort. It's also potentially risky and requires manual sandboxing of both processes to make sure we don’t accidentally start executing malicious code.</p>
-	<p>On the other hand, the only thing we needed from Node.js is the ability to run the JavaScript parser code. And we already have an isolated JavaScript engine running in the cloud - <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>! By additionally compiling the native Rust encoder to Wasm (which is quite easy with the native toolchain and <a href="https://rustwasm.github.io/docs/wasm-bindgen" target="_blank" rel="noopener noreferrer">wasm-bindgen</a>), we can even run both parts of the code in the same process, making cold starts and communication much faster than in a previous model.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dMlhjj8rPxs3pjUScdbFJ/59d8373896f17b68c628416ddfa15741/V8-isolate-01_2x.png" alt="" class="kg-image" width="2560" height="1460" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="optimising-data-transfer">Optimising data transfer</h3>
-		<a href="https://blog.cloudflare.com/#optimising-data-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The next logical step is to reduce the overhead of data transfer. JSON worked fine for communication between separate processes, but with a single process we should be able to retrieve the required bits directly from the JavaScript-based AST.</p>
-	<p>To attempt this, first, we needed to move away from the direct JSON usage to something more generic that would allow us to support various import formats. The Rust ecosystem already has an amazing serialisation framework for that - <a href="https://serde.rs" target="_blank" rel="noopener noreferrer">Serde</a>.</p>
-	<p>Aside from allowing us to be more flexible in regard to the inputs, rewriting to Serde helped an existing native use case too. Now, instead of parsing JSON into an intermediate representation and then walking through it, all the native typed AST structures can be deserialized directly from the stdout pipe of the Node.js process in a streaming manner. This significantly improved both the CPU usage and memory pressure.</p>
-	<p>But there is one more thing we can do: instead of serializing and deserializing from an intermediate format (let alone, a text format like JSON), we should be able to operate [almost] directly on JavaScript values, saving memory and repetitive work.</p>
-	<p>How is this possible? wasm-bindgen provides a type called <code>JsValue</code> that stores a handle to an arbitrary value on the JavaScript side. This handle internally contains an index into a predefined array.</p>
-	<p>Each time a JavaScript value is passed to the Rust side as a result of a function call or a property access, it’s stored in this array and an index is sent to Rust. The next time Rust wants to do something with that value, it passes the index back and the JavaScript side retrieves the original value from the array and performs the required operation.</p>
-	<p>By reusing this mechanism, we could implement a Serde deserializer that requests only the required values from the JS side and immediately converts them to their native representation. It’s now open-sourced under <a href="https://github.com/cloudflare/serde-wasm-bindgen" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/serde-wasm-bindgen</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KCuxugOCOU8NjfZopkygl/3933c96b0b558b48bd90bcc368f20c7b/V8-isolate-01-copy_2x.png" alt="" class="kg-image" width="2560" height="1332" loading="lazy">
-
-	</figure>
-	<p>At first, we got a much worse performance out of this due to the overhead of more frequent calls between 1) Wasm and JavaScript - SpiderMonkey has improved these recently, but other engines still lag behind and 2) JavaScript and C++, which also can’t be optimised well in most engines.</p>
-	<p>The JavaScript ↔ C++ overhead comes from the usage of <code>TextEncoder</code> to pass strings between JavaScript and Wasm in wasm-bindgen, and, indeed, it showed up as the highest in the benchmark profiles. This wasn’t surprising - after all, strings can appear not only in the value payloads, but also in property names, which have to be serialized and sent between JavaScript and Wasm over and over when using a generic JSON-like structure.</p>
-	<p>Luckily, because our deserializer doesn’t have to be compatible with JSON any more, we can use our knowledge of Rust types and cache all the serialized property names as JavaScript value handles just once, and then keep reusing them for further property accesses.</p>
-	<p>This, combined with some changes to wasm-bindgen which we have up streamed, allows our deserializer to be up to 3.5x faster in benchmarks than the original Serde support in wasm-bindgen, while saving ~33% off the resulting code size. Note that for string-heavy data structures it might still be slower than the current JSON-based integration, but situation is expected to improve over time when <a href="https://github.com/WebAssembly/reference-types" target="_blank" rel="noopener noreferrer">reference types</a> proposal lands natively in Wasm.</p>
-	<p>After implementing and integrating this deserializer, we used the <a href="https://github.com/wasm-tool/wasm-pack-plugin" target="_blank" rel="noopener noreferrer">wasm-pack plugin for Webpack</a> to build a Worker with both Rust and JavaScript parts combined and shipped it to some test zones.</p>
-	<div class="flex anchor relative">
-		<h3 id="show-me-the-numbers">Show me the numbers</h3>
-		<a href="https://blog.cloudflare.com/#show-me-the-numbers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Keep in mind that this proposal is in very early stages, and current benchmarks and demos are not representative of the final outcome (which should improve numbers much further).</p>
-	<p>As mentioned earlier, BinaryAST can mark functions that should be parsed lazily ahead of time. By using different levels of lazification in the encoder (<a href="https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43</a>) and running tests against some popular JavaScript libraries, we found following speed-ups.</p>
-	<div class="flex anchor relative">
-		<h4 id="level-0-no-functions-are-lazified">Level 0 (no functions are lazified)</h4>
-		<a href="https://blog.cloudflare.com/#level-0-no-functions-are-lazified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With lazy parsing disabled in both parsers we got a raw parsing speed improvement of between 3 and 10%.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Name</b></p>
-				</td>
-				<td>
-					<p><b>Source size (kb)</b></p>
-				</td>
-				<td>
-					<p><b>JavaScript Parse time (average ms)</b></p>
-				</td>
-				<td>
-					<p><b>BinaryAST parse time (average ms)</b></p>
-				</td>
-				<td>
-					<p><b>Diff (%)</b></p>
-				</td>
+<h3>JavaScript Cold starts</h3>
+<p>The <a href="https://www.cloudflare.com/application-services/products" target="_blank" rel="noopener noreferrer">performance of applications</a> on the web platform is becoming increasingly bottle necked by the startup (load) time. Large amounts of JavaScript code are required to create rich web experiences that we’ve become used to. When we look at the total size of JavaScript requested on mobile devices from <a href="https://httparchive.org/reports/state-of-javascript#bytesJs" target="_blank" rel="noopener noreferrer">HTTPArchive</a>, we see that an average page loads 350KB of JavaScript, while 10% of pages go over the 1MB threshold. The rise of more complex applications can push these numbers even higher.</p>
+<p>While caching helps, popular websites regularly release new code, which makes cold start (first load) times particularly important. With browsers moving to separate caches for different domains to <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html" target="_blank" rel="noopener noreferrer">prevent cross-site leaks</a>, the importance of cold starts is growing even for popular subresources served from CDNs, as they can no longer be safely shared.</p>
+<p>Usually, when talking about the cold start performance, the primary factor considered is a raw download speed. However, on modern interactive pages one of the other big contributors to cold starts is JavaScript parsing time. This might seem surprising at first, but makes sense - before starting to execute the code, the engine has to first parse the fetched JavaScript, make sure it doesn’t contain any syntax errors and then compile it to the initial bytecode. As networks become faster, parsing and compilation of JavaScript could become the dominant factor.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="210" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=640&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=750&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=828&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1080&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1280&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1430&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - 5HOI9M" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="210" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - 5HOI9M"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="195" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=640&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=750&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=828&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1080&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1280&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1430&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - xJMrP3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="195" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - xJMrP3"></div>
+</figure>
+<p>The device capability (CPU or memory performance) is the most important factor in the variance of JavaScript parsing times and correspondingly the time to application start. A 1MB JavaScript file <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization" target="_blank" rel="noopener noreferrer">will take an order</a> of a 100 ms to parse on a modern desktop or high-end mobile device but can take over a second on an average phone &nbsp;(Moto G4).</p>
+<p><a href="https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4" target="_blank" rel="noopener noreferrer">A more detailed post</a> on the overall cost of parsing, compiling and execution of JavaScript shows how the JavaScript boot time can vary on different mobile devices. For example, in the case of <a href="https://news.google.com" target="_blank" rel="noopener noreferrer">news.google.com</a>, it can range from 4s on a Pixel 2 to 28s on a low-end device.</p>
+<p>While engines continuously improve raw parsing performance, with V8 in particular <a href="https://twitter.com/mathias/status/1125096214641254400" target="_blank" rel="noopener noreferrer">doubling it</a> over the past year, as well as moving more things off the main thread, parsers still have to do lots of potentially unnecessary work that consumes memory, battery and might delay the processing of the useful resources.</p>
+<h3>The “BinaryAST” Proposal</h3>
+<p>This is where BinaryAST comes in. BinaryAST is a new over-the-wire format for JavaScript proposed and actively developed by Mozilla that aims to speed up parsing while keeping the semantics of the original JavaScript intact. It does so by using an efficient binary representation for code and data structures, as well as by storing and providing extra information to guide the parser ahead of time.</p>
+<p>The name comes from the fact that the format stores the JavaScript source as an AST encoded into a binary file. The specification lives at <a href="https://tc39.github.io/proposal-binary-ast" target="_blank" rel="noopener noreferrer">tc39.github.io/proposal-binary-ast</a> and is being worked on by engineers from Mozilla, Facebook, Bloomberg and Cloudflare.</p>
+<blockquote>
+	<p>“Making sure that web applications start quickly is one of the most important, but also one of the most challenging parts of web development. We know that BinaryAST can radically reduce startup time, but we need to collect real-world data to demonstrate its impact. Cloudflare's work on enabling use of BinaryAST with Cloudflare Workers is an important step towards gathering this data at scale.”</p>
+	<p>Till Schneidereit, Senior Engineering Manager, Developer TechnologiesMozilla</p>
+</blockquote>
+<h3>Parsing JavaScript</h3>
+<p>For regular JavaScript code to execute in a browser the source is parsed into an intermediate representation known as an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener noreferrer">AST</a> that describes the syntactic structure of the code. This representation can then be compiled into a byte code or a native machine code for execution.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="195" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=640&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=750&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=828&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=1080&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=1280&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXNFVQ0ZGX4QTFBDBE92.png&amp;w=1430&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - g9W5Ed" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="195" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - g9W5Ed"></div>
+</figure>
+<p>A simple example of adding two numbers can be represented in an AST as:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K12TSEK47YK23W5NC4EX.jpg&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - 97x7F7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - 97x7F7"></div>
+</figure>
+<p>Parsing JavaScript is not an easy task; no matter which optimisations you apply, it still requires reading the entire text file char by char, while tracking extra context for syntactic analysis.</p>
+<p>The goal of the BinaryAST is to reduce the complexity and the amount of work the browser parser has to do overall by providing additional information and context by the time and place where the parser needs it.</p>
+<p>To execute JavaScript delivered as BinaryAST the only steps required are:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="205" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=715&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=640&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=715&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=750&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=828&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=1080&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=1280&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PEK2ESM777BC09PDF98.png&amp;w=1430&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - 5JiyBW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="205" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - 5JiyBW"></div>
+</figure>
+<p>Another benefit of BinaryAST is that it makes possible to only parse the critical code necessary for start-up, completely skipping over the unused bits. This can dramatically improve the initial loading time.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="210" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=640&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=750&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=828&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1080&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1280&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NYZ80R46585X8KVR0PXJ.png&amp;w=1430&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - 5HOI9M" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="210" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - 5HOI9M"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="215" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=750&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=828&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=1080&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=1280&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46730V38E3CAGWC2D4DDVD.png&amp;w=1430&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - YxRhDV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="215" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - YxRhDV"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="195" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=640&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=715&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=750&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=828&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1080&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1280&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EHYNZM316BXEB294PMNE.png&amp;w=1430&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - xJMrP3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="195" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - xJMrP3"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="215" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=750&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=828&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=1080&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=1280&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N7JRYG1VJASY6C30SS3Q.png&amp;w=1430&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - bD8Fi6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="215" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - bD8Fi6"></div>
+</figure>
+<p>This post will now describe some of the challenges of parsing JavaScript in more detail, explain how the proposed format addressed them, and how we made it possible to run its encoder in Workers.</p>
+<h3>Hoisting</h3>
+<p>JavaScript relies on hoisting for all declarations - variables, functions, classes. Hoisting is a property of the language that allows you to declare items after the point they’re syntactically used.</p>
+<p>Let's take the following example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> f</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-6f42c1-ffc799"> g</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> g</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Here, when the parser is looking at the body of <code>f</code>, it doesn’t know yet what <code>g</code> is referring to - it could be an already existing global function or something declared further in the same file - so it can’t finalise parsing of the original function and start the actual compilation.</p>
+<p>BinaryAST fixes this by storing all the scope information and making it available upfront before the actual expressions.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="323" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=715&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=640&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=715&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=750&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=828&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=1080&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=1280&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DYP0M7GYJFBQAC5TGEAQ.png&amp;w=1430&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - XZnR4n" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="323" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - XZnR4n"></div>
+</figure>
+<p>As shown by the difference between the initial AST and the enhanced AST in a JSON representation:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="295" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=715&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=640&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=715&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=750&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=828&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=1080&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=1280&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZNJAS6GZQAHT924XC0S.png&amp;w=1430&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - kY4Y2B" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="295" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - kY4Y2B"></div>
+</figure>
+<h3>Lazy parsing</h3>
+<p>One common technique used by modern engines to improve parsing times is lazy parsing. It utilises the fact that lots of websites include more JavaScript than they actually need, especially for the start-up.</p>
+<p>Working around this involves a set of heuristics that try to guess when any given function body in the code can be safely skipped by the parser initially and delayed for later. A common example of such heuristic is immediately running the full parser for any function that is wrapped into parentheses:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">(...</span></span></code></pre>
+</div>
+<p>Such prefix usually indicates that a following function is going to be an IIFE (immediately-invoked function expression), and so the parser can assume that it will be compiled and executed ASAP, and wouldn’t benefit from being skipped over and delayed for later.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">	…</span></span>
+<span class="line"><span class="sk-24292e-fff">})();</span></span></code></pre>
+</div>
+<p>These heuristics significantly improve the performance of the initial parsing and cold starts, but they’re not completely reliable or trivial to implement.</p>
+<p>One of the reasons is the same as in the previous section - even with lazy parsing, you still need to read the contents, analyse them and store an additional scope information for the declarations.</p>
+<p>Another reason is that the JavaScript specification requires reporting any syntax errors immediately during load time, and not when the code is actually executed. A class of these errors, called early errors, is checking for mistakes like usage of the reserved words in invalid contexts, strict mode violations, variable name clashes and more. All of these checks require not only lexing JavaScript source, but also tracking extra state even during the lazy parsing.</p>
+<p>Having to do such extra work means you need to be careful about marking functions as lazy too eagerly, especially if they actually end up being executed during the page load. Otherwise, you’re making cold start costs even worse, as now every function that is erroneously marked as lazy, needs to be parsed twice - once by the lazy parser and then again by the full one.</p>
+<p>Because BinaryAST is meant to be an output format of other tools such as Babel, TypeScript and bundlers such as Webpack, the browser parser can rely on the JavaScript being already analysed and verified by the initial parser. This allows it to skip function bodies completely, making lazy parsing essentially free.</p>
+<p>It reduces the cost of a completely unused code - while including it is still a problem in terms of the network bandwidth (don’t do this!), at least it’s not affecting parsing times any more. These benefits apply equally to the code that is used later in the page lifecycle (for example, invoked in response to user actions), but is not required during the startup.</p>
+<p>Last but not the least important benefit of such approach is that BinaryAST encodes lazy annotations as part of the format, giving tools and developers direct and full control over the heuristics. For example, a tool targeting the Web platform or a framework CLI can use its domain-specific knowledge to mark some event handlers as lazy or eager depending on the context and the event type.</p>
+<h3>Avoiding ambiguity in parsing</h3>
+<p>Using a text format for a programming language is great for readability and debugging, but it's not the most efficient representation for parsing and execution.</p>
+<p>For example, parsing low-level types like numbers, booleans and even strings from text requires extra analysis and computation, which is unnecessary when you can just store and read them as native binary-encoded values in the first place and read directly on the other side.</p>
+<p>Another problem is an ambiguity in the grammar itself. It was already an issue in the ES5 world, but could usually be resolved with some extra bookkeeping based on the previously seen tokens. However, in ES6+ there are productions that can be ambiguous all the way through until they’re parsed completely.</p>
+<p>For example, a token sequence like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">...</span></span></code></pre>
+</div>
+<p>can start either a parenthesized comma expression with nested object and array literals and an assignment:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]); </span><span class="sk-6a737d-8b8b8b94">// it was an expression</span></span></code></pre>
+</div>
+<p>or a parameter list of an arrow expression function with nested object and array patterns and a default value:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, {</span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">d</span><span class="sk-24292e-fff">}, [</span><span class="sk-e36209-fff">e</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> … </span><span class="sk-6a737d-8b8b8b94">// it was a parameter list</span></span></code></pre>
+</div>
+<p>Both representations are perfectly valid, but have completely different semantics, and you can’t know which one you’re dealing with until you see the final token.</p>
+<p>To work around this, parsers usually have to either backtrack, which can easily get exponentially slow, or to parse contents into intermediate node types that are capable of holding both expressions and patterns, with following conversion. The latter approach preserves linear performance, but makes the implementation more complicated and requires preserving more state.</p>
+<p>In the BinaryAST format this issue doesn't exist in the first place because the parser sees the type of each node before it even starts parsing its contents.</p>
+<h3>Cloudflare Implementation</h3>
+<p>Currently, the format is still in flux, but the very first version of the client-side implementation was released under a flag in Firefox Nightly several months ago. Keep in mind this is only an initial unoptimised prototype, and there are already several experiments changing the format to provide improvements to both size and parsing performance.</p>
+<p>On the producer side, the reference implementation lives at <a href="https://github.com/binast/binjs-ref" target="_blank" rel="noopener noreferrer">github.com/binast/binjs-ref</a>. Our goal was to take this reference implementation and consider how we would deploy it at Cloudflare scale.</p>
+<p>If you dig into the codebase, you will notice that it currently consists of two parts.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="178" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=715&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=640&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=715&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=750&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=828&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=1080&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=1280&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R4DMBX1FRVG0R6NVGP2G.png&amp;w=1430&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - IqxHXO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="178" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - IqxHXO"></div>
+</figure>
+<p>One is the encoder itself, which is responsible for taking a parsed AST, annotating it with scope and other relevant information, and writing out the result in one of the currently supported formats. This part is written in Rust and is fully native.</p>
+<p>Another part is what produces that initial AST - the parser. Interestingly, unlike the encoder, it's implemented in JavaScript.</p>
+<p>Unfortunately, there is currently no battle-tested native JavaScript parser with an open API, let alone implemented in Rust. There have been a few attempts, but, given the complexity of JavaScript grammar, it’s better to wait a bit and make sure they’re well-tested before incorporating it into the production encoder.</p>
+<p>On the other hand, over the last few years the JavaScript ecosystem grew to extensively rely on developer tools implemented in JavaScript itself. In particular, this gave a push to rigorous parser development and testing. There are several JavaScript parser implementations that have been proven to work on thousands of real-world projects.</p>
+<p>With that in mind, it makes sense that the BinaryAST implementation chose to use one of them - in particular, <a href="https://shift-ast.org" target="_blank" rel="noopener noreferrer">Shift</a> - and integrated it with the Rust encoder, instead of attempting to use a native parser.</p>
+<h3>Connecting Rust and JavaScript</h3>
+<p>Integration is where things get interesting.</p>
+<p>Rust is a native language that can compile to an executable binary, but JavaScript requires a separate engine to be executed. To connect them, we need some way to transfer data between the two without sharing the memory.</p>
+<p>Initially, the reference implementation generated JavaScript code with an embedded input on the fly, passed it to Node.js and then read the output when the process had finished. That code contained a call to the Shift parser with an inlined input string and produced the AST back in a JSON format.</p>
+<p>This doesn’t scale well when parsing lots of JavaScript files, so the first thing we did is transformed the Node.js side into a long-living daemon. Now Rust could spawn a required Node.js process just once and keep passing inputs into it and getting responses back as individual messages.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="187" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=640&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=750&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=828&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=1080&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=1280&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AWYWK3GF3FKCZW6TSYB5.png&amp;w=1430&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - iIbevJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="187" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - iIbevJ"></div>
+</figure>
+<h3>Running in the cloud</h3>
+<p>While the Node.js solution worked fairly well after these optimisations, shipping both a Node.js instance and a native bundle to production requires some effort. It's also potentially risky and requires manual sandboxing of both processes to make sure we don’t accidentally start executing malicious code.</p>
+<p>On the other hand, the only thing we needed from Node.js is the ability to run the JavaScript parser code. And we already have an isolated JavaScript engine running in the cloud - <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>! By additionally compiling the native Rust encoder to Wasm (which is quite easy with the native toolchain and <a href="https://rustwasm.github.io/docs/wasm-bindgen" target="_blank" rel="noopener noreferrer">wasm-bindgen</a>), we can even run both parts of the code in the same process, making cold starts and communication much faster than in a previous model.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="408" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=640&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=750&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=828&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=1080&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=1280&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VBNA7HCMZY0JET8ZBNDM.png&amp;w=1430&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - IFWU6e" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="408" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - IFWU6e"></div>
+</figure>
+<h3>Optimising data transfer</h3>
+<p>The next logical step is to reduce the overhead of data transfer. JSON worked fine for communication between separate processes, but with a single process we should be able to retrieve the required bits directly from the JavaScript-based AST.</p>
+<p>To attempt this, first, we needed to move away from the direct JSON usage to something more generic that would allow us to support various import formats. The Rust ecosystem already has an amazing serialisation framework for that - <a href="https://serde.rs" target="_blank" rel="noopener noreferrer">Serde</a>.</p>
+<p>Aside from allowing us to be more flexible in regard to the inputs, rewriting to Serde helped an existing native use case too. Now, instead of parsing JSON into an intermediate representation and then walking through it, all the native typed AST structures can be deserialized directly from the stdout pipe of the Node.js process in a streaming manner. This significantly improved both the CPU usage and memory pressure.</p>
+<p>But there is one more thing we can do: instead of serializing and deserializing from an intermediate format (let alone, a text format like JSON), we should be able to operate [almost] directly on JavaScript values, saving memory and repetitive work.</p>
+<p>How is this possible? wasm-bindgen provides a type called <code>JsValue</code> that stores a handle to an arbitrary value on the JavaScript side. This handle internally contains an index into a predefined array.</p>
+<p>Each time a JavaScript value is passed to the Rust side as a result of a function call or a property access, it’s stored in this array and an index is sent to Rust. The next time Rust wants to do something with that value, it passes the index back and the JavaScript side retrieves the original value from the array and performs the required operation.</p>
+<p>By reusing this mechanism, we could implement a Serde deserializer that requests only the required values from the JS side and immediately converts them to their native representation. It’s now open-sourced under <a href="https://github.com/cloudflare/serde-wasm-bindgen" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/serde-wasm-bindgen</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="372" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=640&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=750&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=828&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=1080&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=1280&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45719YDH5WS6H822B56WXE.png&amp;w=1430&amp;h=744&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - SiWSR2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="372" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - SiWSR2"></div>
+</figure>
+<p>At first, we got a much worse performance out of this due to the overhead of more frequent calls between 1) Wasm and JavaScript - SpiderMonkey has improved these recently, but other engines still lag behind and 2) JavaScript and C++, which also can’t be optimised well in most engines.</p>
+<p>The JavaScript ↔ C++ overhead comes from the usage of <code>TextEncoder</code> to pass strings between JavaScript and Wasm in wasm-bindgen, and, indeed, it showed up as the highest in the benchmark profiles. This wasn’t surprising - after all, strings can appear not only in the value payloads, but also in property names, which have to be serialized and sent between JavaScript and Wasm over and over when using a generic JSON-like structure.</p>
+<p>Luckily, because our deserializer doesn’t have to be compatible with JSON any more, we can use our knowledge of Rust types and cache all the serialized property names as JavaScript value handles just once, and then keep reusing them for further property accesses.</p>
+<p>This, combined with some changes to wasm-bindgen which we have up streamed, allows our deserializer to be up to 3.5x faster in benchmarks than the original Serde support in wasm-bindgen, while saving ~33% off the resulting code size. Note that for string-heavy data structures it might still be slower than the current JSON-based integration, but situation is expected to improve over time when <a href="https://github.com/WebAssembly/reference-types" target="_blank" rel="noopener noreferrer">reference types</a> proposal lands natively in Wasm.</p>
+<p>After implementing and integrating this deserializer, we used the <a href="https://github.com/wasm-tool/wasm-pack-plugin" target="_blank" rel="noopener noreferrer">wasm-pack plugin for Webpack</a> to build a Worker with both Rust and JavaScript parts combined and shipped it to some test zones.</p>
+<h3>Show me the numbers</h3>
+<p>Keep in mind that this proposal is in very early stages, and current benchmarks and demos are not representative of the final outcome (which should improve numbers much further).</p>
+<p>As mentioned earlier, BinaryAST can mark functions that should be parsed lazily ahead of time. By using different levels of lazification in the encoder (<a href="https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43</a>) and running tests against some popular JavaScript libraries, we found following speed-ups.</p>
+<h4>Level 0 (no functions are lazified)</h4>
+<p>With lazy parsing disabled in both parsers we got a raw parsing speed improvement of between 3 and 10%.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Name</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Source size (kb)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>JavaScript Parse time (average ms)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>BinaryAST parse time (average ms)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Diff (%)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>React</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>20</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.403</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.385</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-4.56</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>D3 (v5)</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>240</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>11.178</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>10.525</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-6.018</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Angular</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>180</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>6.985</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>6.331</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-9.822</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Babel</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>780</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>21.255</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>20.599</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-3.135</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Backbone</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>32</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.775</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.699</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-10.312</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>wabtjs</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1720</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>64.836</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>59.556</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-8.489</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Fuzzball (1.2)</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>72</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3.165</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.768</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-13.383</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h4 id="level-3-functions-up-to-3-levels-deep-are-lazified">Level 3 (functions up to 3 levels deep are lazified)</h4>
-		<a href="https://blog.cloudflare.com/#level-3-functions-up-to-3-levels-deep-are-lazified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>But with the lazification set to skip nested functions of up to 3 levels we see much more dramatic improvements in parsing time between 90 and 97%. As mentioned earlier in the post, BinaryAST makes lazy parsing essentially free by completely skipping over the marked functions.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Name</b></p>
-				</td>
-				<td>
-					<p><b>Source size (kb)</b></p>
-				</td>
-				<td>
-					<p><b>Parse time (average ms)</b></p>
-				</td>
-				<td>
-					<p><b>BinaryAST parse time (average ms)</b></p>
-				</td>
-				<td>
-					<p><b>Diff (%)</b></p>
-				</td>
+</div>
+<h4>Level 3 (functions up to 3 levels deep are lazified)</h4>
+<p>But with the lazification set to skip nested functions of up to 3 levels we see much more dramatic improvements in parsing time between 90 and 97%. As mentioned earlier in the post, BinaryAST makes lazy parsing essentially free by completely skipping over the marked functions.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Name</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Source size (kb)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Parse time (average ms)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>BinaryAST parse time (average ms)</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Diff (%)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>React</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>20</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.407</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.032</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-92.138</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>D3 (v5)</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>240</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>11.623</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.224</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-98.073</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Angular</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>180</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.093</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.680</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-90.413</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Babel</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>780</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>21.100</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.895</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-95.758</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Backbone</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>32</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.898</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.045</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-94.989</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>wabtjs</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1720</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>59.802</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.601</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-97.323</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Fuzzball (1.2)</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>72</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.937</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>0.089</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>-96.970</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>All the numbers are from manual tests on a Linux x64 Intel i7 with 16Gb of ram.</p>
-	<p>While these synthetic benchmarks are impressive, they are not representative of real-world scenarios. Normally you will use at least some of the loaded JavaScript during the startup. To check this scenario, we decided to test some realistic pages and demos on desktop and mobile Firefox and found speed-ups in page loads too.</p>
-	<p>For a sample application (<a href="https://github.com/cloudflare/binjs-demo" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/binjs-demo</a>, <a href="https://serve-binjs.that-test.site" target="_blank" rel="noopener noreferrer">https://serve-binjs.that-test.site/</a>) which weighed in at around 1.2 MB of JavaScript we got the following numbers for initial script execution:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Device</b></p>
-				</td>
-				<td>
-					<p><b>JavaScript</b></p>
-				</td>
-				<td>
-					<p><b>BinaryAST</b></p>
-				</td>
+</div>
+<p>All the numbers are from manual tests on a Linux x64 Intel i7 with 16Gb of ram.</p>
+<p>While these synthetic benchmarks are impressive, they are not representative of real-world scenarios. Normally you will use at least some of the loaded JavaScript during the startup. To check this scenario, we decided to test some realistic pages and demos on desktop and mobile Firefox and found speed-ups in page loads too.</p>
+<p>For a sample application (<a href="https://github.com/cloudflare/binjs-demo" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/binjs-demo</a>, <a href="https://serve-binjs.that-test.site" target="_blank" rel="noopener noreferrer">https://serve-binjs.that-test.site/</a>) which weighed in at around 1.2 MB of JavaScript we got the following numbers for initial script execution:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Device</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>JavaScript</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>BinaryAST</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Desktop</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>338ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>314ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Mobile (HTC One M8)</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2019ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1455ms</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Here is a video that will give you an idea of the improvement as seen by a user on mobile Firefox (in this case showing the entire page startup time):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EpLne9c9yziJOCzYLUAe6/e2e1f52cece43d6557d4728a17463a2e/binast.gif" alt="" class="kg-image" width="1200" height="1080" loading="lazy">
-
-	</figure>
-	<p>Next step is to start gathering data on real-world websites, while improving the underlying format.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-i-test-binaryast-on-my-website">How do I test BinaryAST on my website?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-i-test-binaryast-on-my-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve open-sourced our Worker so that it could be installed on any Cloudflare zone: <a href="https://github.com/binast/binjs-ref/tree/cf-wasm" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref/tree/cf-wasm</a>.</p>
-	<p>One thing to be currently wary of is that, even though the result gets stored in the cache, the initial encoding is still an expensive process, and might easily hit CPU limits on any non-trivial JavaScript files and fall back to the un-encoded variant. We are working to improve this situation by releasing BinaryAST encoder as a separate feature with more relaxed limits in the following few days.</p>
-	<p>Meanwhile, if you want to play with BinaryAST on larger real-world scripts, an alternative option is to use a static <code>binjs_encode</code> tool from <a href="https://github.com/binast/binjs-ref" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref</a> to pre-encode JavaScript files ahead of time. Then, you can use a Worker from <a href="https://github.com/cloudflare/binast-cf-worker" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/binast-cf-worker</a> to serve the resulting BinaryAST assets when supported and requested by the browser.</p>
-	<p>On the client side, you’ll currently need to download <a href="https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly" target="_blank" rel="noopener noreferrer">Firefox Nightly</a>, go to <code>about:config</code> and enable unrestricted BinaryAST support via the following options:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HbSv4S41klPC6XblrjxEd/cb9d147f349a29cd84e9d6127327efb2/sFlcLvgSb04T7bAtR8cF7Blnkn7pvQhswCjynrLIpUDtVBBnY0VVg3Bu5v1CCWG_dvjHcGXUvMyJpGr2Nf4wag1Kd381l1OQbZpQmFZmvNq15vsieMC4m5ShEZU8.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
-
-	</figure>
-	<p>Now, when opening a website with either of the Workers installed, Firefox will get BinaryAST instead of JavaScript automatically.</p>
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The amount of JavaScript in modern apps is presenting performance challenges for all consumers. Engine vendors are experimenting with different ways to improve the situation - some are focusing on raw decoding performance, some on parallelizing operations to reduce overall latency, some are researching new optimised formats for data representation, and some are inventing and improving protocols for the network delivery.</p>
-	<p>No matter which one it is, we all have a shared goal of making the Web better and faster. On Cloudflare's side, we're always excited about collaborating with all the vendors and combining various approaches to make that goal closer with every step.</p>
 </div>
+<p>Here is a video that will give you an idea of the improvement as seen by a user on mobile Firefox (in this case showing the entire page startup time):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="644" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=715&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=640&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=715&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=750&amp;h=676&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=828&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=1080&amp;h=973&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=1280&amp;h=1153&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480T1W5N23CG2STRA34JKD.gif&amp;w=1430&amp;h=1288&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - lp8hQu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="644" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - lp8hQu"></div>
+</figure>
+<p>Next step is to start gathering data on real-world websites, while improving the underlying format.</p>
+<h3>How do I test BinaryAST on my website?</h3>
+<p>We’ve open-sourced our Worker so that it could be installed on any Cloudflare zone: <a href="https://github.com/binast/binjs-ref/tree/cf-wasm" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref/tree/cf-wasm</a>.</p>
+<p>One thing to be currently wary of is that, even though the result gets stored in the cache, the initial encoding is still an expensive process, and might easily hit CPU limits on any non-trivial JavaScript files and fall back to the un-encoded variant. We are working to improve this situation by releasing BinaryAST encoder as a separate feature with more relaxed limits in the following few days.</p>
+<p>Meanwhile, if you want to play with BinaryAST on larger real-world scripts, an alternative option is to use a static <code>binjs_encode</code> tool from <a href="https://github.com/binast/binjs-ref" target="_blank" rel="noopener noreferrer">https://github.com/binast/binjs-ref</a> to pre-encode JavaScript files ahead of time. Then, you can use a Worker from <a href="https://github.com/cloudflare/binast-cf-worker" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/binast-cf-worker</a> to serve the resulting BinaryAST assets when supported and requested by the browser.</p>
+<p>On the client side, you’ll currently need to download <a href="https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly" target="_blank" rel="noopener noreferrer">Firefox Nightly</a>, go to <code>about:config</code> and enable unrestricted BinaryAST support via the following options:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481V61QMJ26GG2ZD2AHMFE.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Faster script loading with BinaryAST? Embedded Image - 1wjmZz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Faster script loading with BinaryAST? Embedded Image - 1wjmZz"></div>
+</figure>
+<p>Now, when opening a website with either of the Workers installed, Firefox will get BinaryAST instead of JavaScript automatically.</p>
+<h3>Summary</h3>
+<p>The amount of JavaScript in modern apps is presenting performance challenges for all consumers. Engine vendors are experimenting with different ways to improve the situation - some are focusing on raw decoding performance, some on parallelizing operations to reduce overall latency, some are researching new optimised formats for data representation, and some are inventing and improving protocols for the network delivery.</p>
+<p>No matter which one it is, we all have a shared goal of making the Web better and faster. On Cloudflare's side, we're always excited about collaborating with all the vendors and combining various approaches to make that goal closer with every step.</p>

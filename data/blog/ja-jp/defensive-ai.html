@@ -1,0 +1,114 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/defensive-ai">English</a>、<a href="https://blog.cloudflare.com/zh-tw/defensive-ai">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/defensive-ai">Français</a>、<a href="https://blog.cloudflare.com/de-de/defensive-ai">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/defensive-ai">한국어</a>、<a href="https://blog.cloudflare.com/es-es/defensive-ai">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/defensive-ai">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cGQnUOTUp1BCqaYHFNgaw/1705aacd22c679bd24509a42dd876ace/defensive-ai.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>生成AIは、詩や脚本、そして画像を生成する能力を持ち、世界中の想像力をかきたてています。このツールは人間の生産性を向上させる目的で活用もできる一方、悪意のある行為者が高度な攻撃に使用もできます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xVD4cmhSUcJddNAFw2AJc/6fb1537ad293d5d4eee9059aae0eec9b/Personalized-defensive-AI.png" alt="The rise of Defensive AI: Cloudflare’s framework for defending against next-gen threats" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>フィッシング攻撃やソーシャルエンジニアリングは、攻撃者が新た登場した強力なツールを利用し信頼性のあるコンテンツを生成したり、あたかも実在する人物のように人間とやり取りをしたりすることもあり、手口がより巧妙になっています。攻撃者は、AIを使って高度なツールを構築し、社外秘データの盗難やユーザーアカウントの乗っ取りを目的に、特定のサイトの攻撃をたくらみます。</p>
+	<p>新たに生まれたこうした課題から身を守るためには、より洗練された新しいセキュリティツールが必要になります。Cloudflareでは、弊社セキュリティ・ソリューションの有効性を向上させる方法を考える際、「Defensive AI」フレームワークを活用しています。Defensive AIでは、Cloudflareの膨大なネットワークから生成されるデータが鍵となります。その内容は、ネットワーク全体にわたる一般的なデータから個々のお客様のトラフィックに特化したデータまで、さまざまです。</p>
+	<p>Cloudflareでは、アプリケーション・セキュリティから電子メールセキュリティ、Zero Trustプラットフォームに至るまで、あらゆるセキュリティ分野でAIを活用し保護レベルを高めています。これには、APIや電子メールのセキュリティのために顧客ごとにカスタマイズされた保護を作成したり、弊社の膨大な攻撃関連データを使用してモデルを訓練し、まだ発見されていないアプリケーション攻撃を検出したりすることが含まれます。</p>
+	<p>以下のセクションでは、AIを活用した攻撃に対するセキュリティを確保する、AIを活用した最新世代のセキュリティ製品の設計事例を紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="protecting-apis-with-anomaly-detection">異常検知によるAPIの保護</h3>
+		<a href="https://blog.cloudflare.com/#protecting-apis-with-anomaly-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APIは、Cloudflareネットワーク全体の<a href="https://blog.cloudflare.com/2024-api-security-report">ダイナミックトラフィックの57%</a>（2021年の52%から増加）を占めていることからも、現代のWebで多用されていると言えます。APIは新しい技術ではないものの、APIのセキュリティ確保に関しては従来のウェブアプリのセキュリティ確保とは異なります。APIは設計上プログラムによるアクセスが容易であり、その人気も高まっているため、詐欺師や脅威アクターはAPIを標的とするようになりました。セキュリティチームは今、この脅威の高まりに対抗しなければなりません。重要なことは、APIはそれぞれ、その目的と用途において通常特定の目的に限っているため、APIのセキュリティ確保には膨大な時間がかかる点は捨て置けません。</p>
+	<p>Cloudflareは、アプリケーションへの損害、アカウントの乗っ取り、データの流出を目的とした攻撃からAPIを保護するため、<a href="https://blog.cloudflare.com/api-gateway">API Gateway</a>向けにAnomaly Detectionを開発したことを発表しています。API Gatewayは、ホスティングされたAPI、およびAPIとインターフェースするすべてのデバイスの間に保護レイヤーを提供し、APIの管理に必要な可視化、制御、セキュリティツールを提供するものです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ojHc36uSFsnCBr870kK38/f4b7df6df5c60ffb087255ffb442e5e3/Screenshot-2024-03-01-at-1.39.29-PM.png" alt="" class="kg-image" width="1050" height="490" loading="lazy">
+
+	</figure>
+	<p>API Anomaly Detection（異常検知）は、API Gateway製品スイートにおけるMLを利用した新機能であり、<a href="https://blog.cloudflare.com/api-sequence-analytics">Sequence Analytics（シーケンス分析）</a>の後継製品です。APIを大規模に保護するために、Anomaly DetectionはクライアントのAPI呼び出しシーケンスを分析することで、アプリケーションのビジネスロジックを学習します。そして、そのアプリケーションで予想されるリクエストのシーケンスがどのようなものであるかのモデルを構築します。その結果得られたトラフィックモデルを用い、期待されるクライアントの動作から逸脱した攻撃を特定します。その結果、API GatewayはAPI<a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">Sequence Mitigation（シーケンス不正軽減）</a>機能を用い、学習したアプリケーションの意図するビジネスロジックのモデルを実行し、攻撃を阻止できます。</p>
+	<p>API Anomaly Detectionはまだ開発中であるものの、API Gatewayをご利用のお客様は<a href="https://www.cloudflare.com/lp/api-anomaly-detection" target="_blank" rel="noopener noreferrer">こちら</a>よりAPI Anomaly Detectionのベータ版に登録できます。現時点では、<a href="https://developers.cloudflare.com/api-shield/security" target="_blank" rel="noopener noreferrer">ドキュメント</a>を確認しSequence AnalyticsとSequence Mitigationのご利用を始めていただけます。Enterprise、API Gatewayを購入されていないお客様は、Cloudflare Dashboardから<a href="http://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">トライアルをセルフで始める</a>か、アカウントマネージャーにお問い合わせください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/edeVw346MG6dZbjaDt97L/263e9c18c51f5320ce6e0c1d9ab957df/Screenshot-2024-03-01-at-2.01.25-PM-1.png" alt="" class="kg-image" width="1091" height="686" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="identifying-unknown-application-vulnerabilities">未知のアプリケーションの脆弱性の特定</h3>
+		<a href="https://blog.cloudflare.com/#identifying-unknown-application-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIがセキュリティを向上させるもう1つの分野に、弊社<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Webアプリファイアウォール（WAF）</a>があります。Cloudflareでは、毎秒平均5,500万件のHTTPリクエストを処理しており、さまざまなアプリケーションを標的とした世界中の攻撃や乱用に対する比類なき可視性を備えています。</p>
+	<p>WAFには、新しい脆弱性や誤検知に対する保護を追加することが大きな課題の1つとなっています。WAFは、Webアプリに向けられた攻撃を識別するために設計されたルールが集まって構成されています。脆弱性は新たに日々発見されており、Cloudflareではセキュリティアナリストのチームが脆弱性が発見された際に新しいルールを作成しています。しかし、手動でルールを作成するには時間がかかり、通常は数時間かかります。さらに、攻撃者が既存のルールを回避できる可能性のある既存の攻撃ペイロードを絶えず進化させ、変異させていることも問題の1つとなっています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oTIWUwe5Em3tD4ACksp6b/0036dcdf5af715f4095ffb14ae9b3769/Screenshot-2024-03-01-at-1.41.23-PM.png" alt="" class="kg-image" width="855" height="368" loading="lazy">
+
+	</figure>
+	<p>そのため、Cloudflareは長年にわたり、常に最新の攻撃から学習する機械学習モデルを活用し、手動でルールを作成することなく脅威軽減策を導入してきました。例えば、当社の<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">WAF Attack Score</a>ソリューションにその実例を見ることができます。WAF Attack Scoreは、Cloudflareネットワーク上で特定された攻撃トラフィックに基づいて学習されたMLモデルに基づいています。その結果得られた分類基準により、既存の攻撃のバリエーションや回避を特定するだけでなく、<a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">新他に現れた未知の攻撃</a>への保護を拡張できます。最近、Attack Scoreは<a href="https://blog.cloudflare.com/waf-attack-score-for-business-plan">すべてのEnterpriseおよびBusinessプランでご利用可能となりました</a>。</p>
+	<p><i>AIを使ってHTTPリクエストを悪意のある可能性に基づいて分類するAttack Score</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Jw91tB0o7lKhsgzvbqPV/748a7365c126ba03e2382b3eff988c37/Screenshot-2024-03-01-at-18.16.22.png" alt="" class="kg-image" width="1288" height="496" loading="lazy">
+
+	</figure>
+	<p>セキュリティアナリストによる対応は不可欠であるものの、AIと急速に進化する攻撃ペイロードの時代において強固なセキュリティ態勢を構築するには、新しい脅威ごとにルールを作成する、人間のオペレーターに依存しないソリューションが必要になります。Attack Scoreと従来のシグネチャベースのルールの組み合わせは、人間が行うタスクにおいてインテリジェント・システムによるどのような支援が可能かを示す一例です。Attack Scoreでは、新しい悪意のあるペイロードを識別し、アナリストがルールを最適化するためにこれを用いることができます。これにより、WAFの全体的な保護とレスポンスタイムを向上させるポジティブなフィードバックループが強化されます。</p>
+	<p>長期的には、顧客固有のトラフィックの特性を考慮するようAIモデルを適応させ、正常かつ良性のトラフィックからの逸脱をより適切に識別できるようにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="using-ai-to-fight-phishing">フィッシング対策にAIを活用</h3>
+		<a href="https://blog.cloudflare.com/#using-ai-to-fight-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アメリカ合衆国サイバーセキュリティ・社会基盤安全保障庁（<a href="https://www.cisa.gov/stopransomware/general-information" target="_blank" rel="noopener noreferrer">CISA</a>）の報告では、サイバー攻撃の90%はフィッシングから始まるとされており、Cloudflare Email Securityは<a href="https://radar.cloudflare.com/year-in-review/2023#malicious-emails" target="_blank" rel="noopener noreferrer">年のメールの2.6%を悪意のあるもの</a>メールとしてマークしています。AIによって強化された攻撃の台頭により、従来のメールセキュリティプロバイダーは時代遅れとなりつつあります。</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/email-security" target="_blank" rel="noopener noreferrer">Email Security</a>は、あらゆる脅威ベクトルにおいてフィッシング攻撃を阻止するクラウドネイティブなサービスです。Cloudflare Email Security製品は、ジェネレーティブAIなどのトレンドが進化し続ける中でも、AIモデルによってお客様を守り続けています。Cloudflare当社のAIモデルは、フィッシング攻撃のあらゆる部分を分析し、エンドユーザーにもたらされるリスクを判断します。当社のAIモデルの中には、顧客ごとにパーソナライズされたものも、全体的に訓練されたものもあります。Cloudflareではプライバシーを最優先しているため、当社のツールでは個人を特定できない情報のみがトレーニングに使用されます。2023年、<a href="https://blog.cloudflare.com/de/2023-phishing-report">Cloudflareは約130億通のメール</a>を処理し、34億通のメールをブロックしており、メールセキュリティ製品ではAIモデルの学習に使用できる豊富なデータセットが得られています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27B73JPLutOrg6shC9gZnh/3e49607d69ce330333204c3d061d9fa5/Screenshot-2024-03-01-at-1.41.30-PM.png" alt="" class="kg-image" width="1016" height="475" loading="lazy">
+
+	</figure>
+	<p>弊社ポートフォリオの一部として、Honeycomb（ハニカム）とLabyrinth（ラビリンス）の2つの検出があります。</p>
+	<ul>
+		<li>
+			<p>_ハニカム_は、メール送信者ドメインレピュテーションモデルです（特許取得済み）。このサービスは、誰がメッセージを送信しているかのグラフを構築し、リスクを判断するモデルを構築します。モデルは特定の顧客のトラフィックパターンに基づいて訓練されているため、良好なトラフィックがどのように見えるかがすべての顧客に応じて訓練されたAIモデルが実現しています。</p>
+		</li>
+		<li>
+			<p>_Labyrinth_では、お客様ごとにML（機械学習）を用いた保護を行っています。詐欺師は、弊社クライアントの中から実在するパートナー企業からのメールを偽装しようとします。Labyrinthでは、各クライアントの既知および正当なメール送信者の統計リストを収集できます。そして、メールが検証されていないドメインから送信されているもののメール自体に記載されているドメインがリファレンス/検証済ドメインである場合、なりすましの試みを検出できます。</p>
+		</li>
+	</ul>
+	<p>AIは当社のメールセキュリティ製品の中核であり、製品内でAIを活用する方法を常に改善しています。AI強化型フィッシング攻撃を阻止するための当社のAIモデルの詳細をお知りになりたい場合、<a href="https://blog.cloudflare.com/dispelling-the-generative-ai-fear-how-cloudflare-secures-inboxes-against-ai-enhanced-phishing">こちら</a>のブログ記事をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-security-protected-and-powered-by-ai">Zero Trust AIが守るセキュリティ</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-security-protected-and-powered-by-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>により、ネットワーク境界の内外を問わず、すべての人とデバイスに対して厳格な本人確認を実施することで、管理者にはITインフラへのアクセスを保護するツールがもたらされます。</p>
+	<p>頻繁な検証によって生じる摩擦を減らしながら、厳格なアクセス制御を実施することが大きな課題のひとつとなっています。既存のソリューションは、インフラ内でのリスクの進化を追跡するためにログデータを分析するITチームにも、プレッシャーを与えています。膨大なデータから希少な攻撃を見つけ出すには、大規模なチームと多額の予算が必要になります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qpOOjCeP6yqWtYrSgJdCu/4693906c9faf833a57db45672472f23d/Cloudflare-One-User-Risk-Scores_b.png" alt="" class="kg-image" width="1600" height="617" loading="lazy">
+
+	</figure>
+	<p>Cloudflareは、行動ベースのユーザー・リスク・スコアリングを導入することで、このプロセスを簡素化しています。AIを活用してリアルタイムのデータを分析し、組織への危害につながる可能性のあるユーザーの行動やシグナルの異常を特定します。これにより、ユーザーの行動に基づいてセキュリティ態勢を調整する方法が管理者に提案・推奨されます。</p>
+	<p>Zero Trustユーザー・リスク・スコアリングは、組織、システム、およびデータにリスクをもたらす可能性のあるユーザーのアクティビティや行動を検出し、関係するユーザーに低、中、または高のスコアを割り当てます。このアプローチは、ユーザーおよびエンティティの行動分析（UEBA）と呼ばれることもあり、担当チームはこれに基づきアカウント侵害の可能性、企業ポリシー違反、その他の危険な活動を検出し、修復できます。</p>
+	<p>弊社がリリースする最初のコンテキスト動作は「あり得ない移動（impossible travel）」であり、ユーザーがその期間に移動し得ない2つの場所でユーザーの認証情報が使用されているか否かの識別に役立ちます。これらのリスクスコアは将来さらに拡張され、1日の使用時間帯パターンやアクセス・パターンなどのコンテキスト情報に基づいてパーソナライズされた行動リスクを強調し、異常な行動にフラグを立てられます。すべてのトラフィックは貴社のSWGを経由してプロキシされるため、社内のリポジトリのようにアクセスされるリソースにも拡張できます。</p>
+	<p>Securitey Week期間中、皆さまの期待に応える発表があります。詳しくは、<a href="https://blog.cloudflare.com/cf1-user-risk-score">こちらのブログ</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">まとめ</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アプリケーションや電子メールのセキュリティからネットワークセキュリティ、そしてZero Trustに至るまで、攻撃者が新しいテクノロジーを活用し、より効果的に目標を達成しようとしている様子が目の当たりにされています。ここ数年、Cloudflareの複数の製品チームとエンジニアリングチームは、不正行為のより優れた特定および保護の強化のため、インテリジェントなシステムを採用してきました。</p>
+	<p>ジェネレーティブAIの流行に加え、デジタル資産の攻撃からの保護、および悪質な行為者の阻止において、AIはすでに極めて重要な役割を担っています。</p>
+</div>

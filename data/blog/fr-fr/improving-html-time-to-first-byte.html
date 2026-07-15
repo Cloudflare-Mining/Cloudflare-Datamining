@@ -1,0 +1,129 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">English</a>, en <a href="https://blog.cloudflare.com/de-de/improving-html-time-to-first-byte">Deutsch</a> et en <a href="https://blog.cloudflare.com/zh-cn/improving-html-time-to-first-byte">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ceYP69KY1Ios4gGTdayyi/2c3be9ae84adc028d1c0c37cf5c36331/improving-html-time-to-first-byte.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Le délai de réception du premier octet (« Time to First Byte », ou « TTFB ») d'un site désigne le temps écoulé entre le moment où l'utilisateur commence à naviguer et celui où commence à arriver le code HTML de la page qu'il demande. Le TTFB trop lent est le fléau de mon existence depuis plus de dix ans que j'utilise</p>
+	<blockquote>
+		<p>Looking at a recent test data set (~100k pages):</p>
+		<p>20% TTFB &gt; 3s80% start render &gt; 5s (10% &gt; 10s)500 pages were &gt; 15MB</p>
+		<p>So much slow to fix</p>
+		<p>— Patrick Meenan (@patmeenan) <a href="https://twitter.com/patmeenan/status/763372155052494852?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">August 10, 2016</a></p>
+	</blockquote>
+	<p>Si le TTFB figure parmi les quelques éléments d'évaluation sur lesquels se base WebpPageTest pour noter un site, c'est qu'il y a une bonne raison. Et s'il est le premier d'entre eux, c'est également pour une bonne raison.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iHQ0NllN5RpGlBfhbLVlf/8c2533c93b2b31493ffb242d9eb3d39c/grades.png" alt="WebPageTest optimization grades." class="kg-image" width="421" height="109" loading="lazy">
+
+	</figure>
+	<p>Si le délai de réception du premier octet est long, <b>TOUS</b> les autres indicateurs seront ralentis. Fait rare : en l'améliorant, on peut prédire quelles seront les répercussions sur tous les autres indicateurs. Chaque milliseconde d'amélioration du TTFB se traduit directement par une milliseconde de réduction pour tous les autres indicateurs (c'est-à-dire que le premier arrière-plan apparaîtra 500 ms plus vite si le TTFB est raccourci de 500 ms). Cela dit, ce n'est pas parce que le TTFB est rapide que tout est rapide, mais l'inverse est vrai. Je dirais qu'environ 50 % de toutes les demandes d'aide relatives aux résultats de WebPageTest proviennent de webmasters confrontés à un TTFB trop lent.</p>
+	<p>Le TTFB peut contenir de nombreux éléments, parmi lesquels les redirections, le DNS, la configuration de la connexion, la négociation SSL et le temps de réponse réel du serveur. La plupart d'entre eux peuvent être corrigés relativement facilement en utilisant un service comme Cloudflare, mais le temps de réponse du serveur pour le HTML lui-même est souvent le plus gros problème et le plus difficile à résoudre.</p>
+	<p>Le diagramme en cascade ci-dessous montre le temps de réponse du serveur sous la forme d'une barre bleu clair à la première requête. Lorsqu'il est lent, cela ne se voit que trop bien. Dans des conditions optimales, le temps de réponse du serveur ne serait pas plus long que la barre orange représentant la connexion au socket qui le précède immédiatement.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1d4Qf5SYp9fq9xwMqDz0X7/c8c271c1bd0b9067a8b5dd38fe7272cb/waterfall.png" alt="Waterfall diagram showing a 3 second TTFB." class="kg-image" width="930" height="488" loading="lazy">
+
+	</figure>
+	<p>Plus de trois secondes pour que le serveur réponde.</p>
+	<p>La lenteur des temps de réponse d'origine peut être due à une multitude de problèmes allant de la configuration du serveur, de la charge du système, des bases de données back-end et des systèmes auxquels il parle, au code applicatif lui-même. Pour enrayer les problèmes de performances à la racine, les équipes d'ingénieurs <a href="https://en.wikipedia.org/wiki/DevOps" target="_blank" rel="noopener noreferrer">DevOps</a> travaillent généralement avec des <a href="https://en.wikipedia.org/wiki/Application_performance_management" target="_blank" rel="noopener noreferrer">outils de gestion des performances des applications</a> pour repérer les éléments les plus lents de l'application et les améliorer.</p>
+	<p>Une grande partie des administrateurs de sites avec lesquels j'ai travaillé n'ont pas les ressources ou l'expertise nécessaires pour mener ce genre d'enquête. Dans la plupart des cas, ils ont payé un spécialiste pour le développement de leur site, ou l'ont développé eux-mêmes sur WordPress et l'hébergent sur un service d'hébergement bon marché. En général, les solutions d'hébergement sont conçues pour gérer autant de sites que possible, pas nécessairement pour obtenir des performances optimales.</p>
+	<div class="flex anchor relative">
+		<h3 id="edge-caching-of-html"><b>Mise en cache périphérique du HTML</b></h3>
+		<a href="https://blog.cloudflare.com/#edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le fait est que la plupart des contenus HTML ne sont pas vraiment dynamiques. Ils doivent pouvoir changer relativement rapidement lorsque le site est mis à jour, mais, pour une grande partie du Web, le contenu reste statique pendant des mois ou des années.</p>
+	<p>Dans certains cas particuliers, comme lorsqu'un utilisateur est connecté (administrateur ou autre), le contenu doit être différent, mais la grande majorité des visites sont effectuées par des utilisateurs anonymes. Si le HTML peut être mis en cache et transmis directement à partir de la périphérie, les gains de performance peuvent être substantiels (plus de 3 secondes plus rapides sur tous les indicateurs).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/R2m58YwFuerJYN12M3hUB/37d378173e889283fea9dc67877a2258/waterfall-fast.png" alt="Waterfall diagram showing a fast TTFB." class="kg-image" width="930" height="471" loading="lazy">
+
+	</figure>
+	<p>Un temps de réponse du serveur beaucoup plus rapide.</p>
+	<p>Il existe des douzaines de plugins pour WordPress permettant de mettre en cache le contenu à l'origine, mais ils nécessitent une configuration (où mettre les pages en cache) et les performances dépendent toujours fortement des performances du service d'hébergement lui-même. Le fait de déplacer le cache de contenu un peu plus vers la périphérie réduit la complexité, élimine le temps supplémentaire nécessaire pour revenir à l'origine et exclut complètement du calcul les performances du service d'hébergement. Il peut également réduire considérablement la charge pesant sur les systèmes d'hébergement en supprimant la totalité du trafic anonyme.</p>
+	<p>Cloudflare prend en charge la <a href="https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce" target="_blank" rel="noopener noreferrer">mise en cache HTML statique</a>, et les clients professionnels et les entreprises peuvent permettre aux utilisateurs connectés d'ignorer le cache en activant le « contournement du cache des cookies ». Cette fonctionnalité interagit avec le <a href="https://wordpress.org/plugins/cloudflare" target="_blank" rel="noopener noreferrer">plugin Cloudflare pour WordPress</a> afin que le cache puisse être effacé chaque fois que le contenu est mis à jour. Il existe également plusieurs autres plugins de mise en cache qui s'intègrent avec différents RDC, mais dans tous les cas, ils doivent être configurés avec des clés API pour RDC et les implémentations sont spécifiques à chaque RDC.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-config-edge-caching-of-html"><b>Mise en cache périphérique du HTML sans configuration</b></h3>
+		<a href="https://blog.cloudflare.com/#zero-config-edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour une adoption massive, nous devons faire en sorte que la mise en cache du HTML se fasse automatiquement (ou le plus automatiquement possible). Pour cela, nous avons besoin d'un moyen de communiquer entre une origine (comme un site WordPress) et un cache périphérique (comme les nœuds périphériques de Cloudflare) pour gérer un cache distant pouvant être purgé facilement.</p>
+	<p>L’origine doit être capable de :</p>
+	<ul>
+		<li>
+			<p>savoir quand un cache périphérique compatible se trouve devant elle ;</p>
+		</li>
+		<li>
+			<p>préciser le contenu qui doit être mis en cache et pour quels visiteurs (c'est-à-dire ceux sans cookie de connexion) ;</p>
+		</li>
+		<li>
+			<p>purger le contenu du cache lorsqu'il a changé (au niveau de toutes les zones périphériques).</p>
+		</li>
+	</ul>
+	<p>Au lieu de demander à l'origine de s'intégrer avec une API pour purger les modifications et de nécessiter une configuration manuelle pour savoir quoi mettre en cache et quand nous pouvons tout accomplir en utilisant des en-têtes HTTP sur les requêtes qui font des allers-retours entre la périphérie et l'origine :</p>
+	<p>1 - Un en-tête HTTP est ajouté aux requêtes allant de la périphérie à l'origine pour annoncer la présence d'un cache périphérique et des fonctionnalités qu'il peut prendre en charge :</p>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: supports=cache|purgeall|bypass-cookies</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tfQw4SOOYyLEH9A5vh2r4/3649c6ed8e6bbdb820c177578918df50/get.png" alt="Fetch from origin." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<p><code>x-HTML-Edge-Cache: supports=cache|purgeall|bypass-cookies</code></p>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: cache,bypass-cookies=wp-|wordpress</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HwyqHZHGiPJ2j0gWUfJ53/5180629ff2eb00c82d818d5a2b586185/get-response.png" alt="Response with cache instructions." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<p>2 - Lorsque l'origine répond avec une page pouvant être mise en cache, elle ajoute un en-tête HTTP à la réponse pour indiquer qu'elle doit être mise en cache et préciser toute consigne concernant les situations où la version en cache ne doit pas être utilisée (pour permettre aux utilisateurs connectés d'éviter la mise en cache) :</p>
+	<p><code>x-HTML-Edge-Cache: cache,bypass-cookies=wp-|wordpress</code></p>
+	<pre class="language-bash"><code class="language-bash">x-HTML-Edge-Cache: purgeall</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NILAqCLxBNnIwqCTjsouk/f5c48495f50802834141c14439bcaa64/update.png" alt="Content Update." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50w7jP4OiHH0qUlhpDZ5cq/8fb6d2b42e2520cd56a9f3a12fc0b553/update-response.png" alt="Response with purge command." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<p>Dans ce cas, le HTML sera mis en cache, mais toutes les requêtes dont les cookies ont un nom commençant par « wordpress » ou « wp- », car le nom du cookie contournera le cache et ira à l'origine.</p>
+	<p>3 - Lorsqu'une requête modifie le contenu du site (mise à jour d'un message, modification d'un thème, ajout d'un commentaire), l'origine ajoute un en-tête de réponse HTTP indiquant que le cache doit être purgé :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bp0DE4i5Kk8CvfGirSeF/4dc1163e293679930e6e2459c4d1769e/cached.png" alt="Served from edge cache." class="kg-image" width="960" height="290" loading="lazy">
+
+	</figure>
+	<p><code>x-HTML-Edge-Cache: purgeall</code></p>
+	<p>Seul point délicat : la purge doit purger le cache de TOUTES les zones périphériques, et pas seulement de la zone par laquelle est passée la requête.</p>
+	<p>4 - Lorsqu'une nouvelle requête de HTML se trouvant dans le cache périphérique est reçue, les cookies de requête sont vérifiés par rapport aux critères de réponse en cache. Si les cookies ne sont pas présents, la version en cache est envoyée ; dans le cas contraire, la requête est transmise à l'origine.</p>
+	<p>Grâce à cette interface de commande et de contrôle simple reposant sur des en-têtes, plus besoin d'une origine pour communiquer avec une API ou d'une configuration spécifique. Cela rend également la logique sur l'origine beaucoup plus facile à implémenter, car il n'y a pas de configuration (ou d'UI) et pas de nécessité de requêtes sortantes vers une API propre à un fournisseur. Le <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php" target="_blank" rel="noopener noreferrer">plugin WordPress en exemple</a> compte moins de 50 lignes de code, dont la grande majorité consiste à connecter des rappels pour tous les événements qui modifient le contenu.</p>
+	<div class="flex anchor relative">
+		<h3 id="start-caching-today-with-wordpress-and-workers"><b>Commencez à utiliser la mise en cache dès aujourd'hui avec WordPress et Workers</b></h3>
+		<a href="https://blog.cloudflare.com/#start-caching-today-with-wordpress-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'une des choses que j'aime le plus avec Workers, c'est que vous obtenez une zone périphérique totalement programmable qui vous permet de tester vos idées et d'appliquer votre propre logique. J’ai créé un <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html" target="_blank" rel="noopener noreferrer">script Worker</a> qui implémente le protocole basé sur les en-têtes et la mise en cache dans les zones périphériques de Cloudflare, et un <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/edge-cache-html/WordPress%20Plugin" target="_blank" rel="noopener noreferrer">plugin WordPress</a> qui implémente la logique de l’origine pour WordPress.</p>
+	<p>Le seul problème avec le Worker a été de trouver un moyen de purger tous les éléments du cache. Les caches Worker sont propres à chaque zone périphérique et ne disposent pas d'une interface permettant d'effectuer des opérations au niveau global. Il est possible de le faire en utilisant l'API Cloudflare pour purger le cache global, mais la purge de tout le cache, y compris des scripts et des images, est un peu lourde et nécessite une certaine configuration. Si vous connaissez précisément les URL qui seront modifiées par un changement de contenu, la meilleure solution serait probablement de procéder à une purge ciblée via l'API uniquement pour ces URL.</p>
+	<p>Avec le nouveau <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">magasin de données Workers KV</a>, nous pouvons purger la cache d'une autre manière. Le script Worker utilise un schéma de gestion des versions pour le cache qui attribue un numéro de version à chaque URL (par exemple, <a href="http://www.example.com/?cf_edge_cache_ver=32" target="_blank" rel="noopener noreferrer">http://www.example.com/?cf_edge_cache_ver=32</a>). L'URL modifiée n'est utilisée que localement par le worker comme clé pour les réponses mises en cache, et le numéro de version actuel est stocké dans KV, un magasin de données global. Lorsque le cache est purgé, le numéro de version passe au suivant, ce qui modifie l'URL pour toutes les ressources. Les anciennes écritures seront retirées du cache, car elles ne seront plus accessibles. Il est nécessaire de configurer un peu KV pour pouvoir utiliser le worker, mais on peut espérer que cela devienne automatique à l'avenir.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-next"><b>Et ensuite ?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Je pense que le Web aurait grand intérêt à normaliser un moyen de communication entre les caches périphériques et les origines pour que le contenu dynamique puisse être mis en cache. Cela inciterait les systèmes de gestion de contenu à intégrer la prise en charge directement dans les plates-formes et à fournir une interface standard qui pourrait être utilisée par différents fournisseurs (et même pour les caches périphériques locaux dans les équilibreurs de charge ou d'autres proxies inverses). Après avoir effectué d'autres tests avec différents types de sites, je pense proposer le concept au <a href="https://httpwg.org" target="_blank" rel="noopener noreferrer">groupe de travail HTTP de l'IETF</a> pour voir si nous pouvons nous mettre d'accord sur une norme officielle en matière d'en-têtes de contrôle (en utilisant différents noms). Si vous avez des idées concernant son fonctionnement ou les fonctionnalités dont vous auriez besoin, je serais ravi de les connaître (comme la purge d'URL spécifiques, la modification du contenu selon le type d'appareil ou la zone géographique, son extension à tous types de contenus, etc).</p>
+</div>

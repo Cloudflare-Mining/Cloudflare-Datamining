@@ -1,0 +1,154 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/markdown-for-agents">English</a>、<a href="https://blog.cloudflare.com/zh-tw/markdown-for-agents">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/markdown-for-agents">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/markdown-for-agents">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rzmAhLxuiqzCffB9yZrdf/91858defbc03196c5f074a26117248f9/BLOG-3162_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>オンラインのコンテンツや企業の発見方法は、急速に変化しています。過去には、トラフィックは従来の検索エンジンから発信され、SEOが誰が最初に見つかるかを決定しました。現在、人間向けに構築された非構造化Webの中で構造化されたデータを要求するAIクローラーやエージェントからのトラフィックが増加しています。</p>
+	<p>企業として常に先手を打つためには、今こそ人間の訪問者やSEO最適化の従来の常識として考えているのではなく、エージェントを第一級の市民として扱い始める時です。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-markdown-is-important">マークダウンが重要な理由</h2>
+		<a href="https://blog.cloudflare.com/#why-markdown-is-important" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>生のHTMLをAIに送り込むことは、中の文字ではなくパッケージを読むための言葉で料金を支払うようなものです。Markdownのページ上の単純な<code>## About Us</code>は、およそ3トークンのコストがかかります。そのHTML版 – <code>&lt;h2 class="section-title" id="about"&gt;About Us&lt;/h2&gt;</code> – は12～15トークンを消費します。これは、すべての実際のウェブページを膨らませ、意味的な価値がまったくない<code>&lt;div&gt;</code>ラッパー、ナビゲーションバー、スクリプトタグを考慮に入れる前の話です。</p>
+	<p>今お読みいただいているこのブログ記事は、HTMLで16,180トークン、Markdownに変換する際に3,150トークンを必要とします。<b>これはトークンの使用量を80％削減することです</b>。</p>
+	<p><a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener noreferrer"><u>Markdown</u></a>は、エージェントとAIシステム全体にとって、あっという間に<i>共通語</i>になりました。このフォーマットの明示的な構造は、AIによる処理に適しており、最終的にはトークンの無駄を最小限に抑えつつ、より良い結果をもたらします。</p>
+	<p>問題は、WebはMarkdownではなくHTMLでできており、ページの重みが年月と共に<a href="https://almanac.httparchive.org/en/2025/page-weight#page-weight-over-time" target="_blank" rel="noopener noreferrer"><u>着実に増え</u></a>、ページを解析するのが難しくなっているという点です。エージェントの目標は、不要な要素をすべてフィルタリングし、関連するコンテンツをスキャンすることです。</p>
+	<p>HTMLからMarkdownへの変換は、今やAIパイプラインでよく行われるステップです。しかし、このプロセスは理想的なものとは程遠いものです。計算の無駄になったり、コストや処理の複雑さが増すこともありますし、何よりも、コンテンツ制作者が最初に自分のコンテンツの利用を意図したわけではない可能性があるからです。</p>
+	<p>AIエージェントが意図分析やドキュメント変換の複雑さを回避し、代わりにソースから直接構造化されたマークダウンを受け取ることができるとしたら？</p>
+	<div class="flex anchor relative">
+		<h2 id="convert-html-to-markdown-automatically">HTMLをマークダウンに自動変換</h2>
+		<a href="https://blog.cloudflare.com/#convert-html-to-markdown-automatically" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのネットワークは、<a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>有効化されたゾーン</u></a>で<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation" target="_blank" rel="noopener noreferrer"><u>コンテンツネゴシエーション</u></a>ヘッダーを使用して、ソースでのリアルタイムのコンテンツ変換をサポートするようになりました。AIシステムがCloudflareを使用し、Markdown for Agentsが有効になっているWebサイトからページをリクエストする際、リクエストでテキスト/Markdownの希望を表明できるようになりました。当社のネットワークは、可能な限り、その場で自動的かつ効率的にHTMLをMarkdownに変換します。</p>
+	<p>仕組みは次の通りです。エージェントのMarkdownが有効になっているゾーンから任意のページのMarkdownバージョンを取得するには、クライアントは、<b>Accept</b>ネゴシエーションヘッダーに<code>text/markdown</code>をオプションの1つとして追加する必要があります。Cloudflareはこれを検出し、オリジンからオリジナルのHTMLバージョンを取得し、クライアントに提供する前にマークダウンに変換します。</p>
+	<p>以下は、開発者向けドキュメントからページをリクエストする、Accept交渉ヘッダーを含むcurlの例です。</p>
+	<pre class="language-typescript"><code class="language-typescript">curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \
+  -H "Accept: text/markdown"
+</code></pre>
+	<p>また、Workersを使用してAIエージェントを作成する場合は、TypeScriptを使用することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">const r = await fetch(
+  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
+  {
+    headers: {
+      Accept: "text/markdown, text/html",
+    },
+  },
+);
+const tokenCount = r.headers.get("x-markdown-tokens");
+const markdown = await r.text();
+</code></pre>
+	<p>Claude CodeやOpenCodeなど、現在最も人気のあるコーディングエージェントのいくつかは、コンテンツへのリクエストとともにこれらの受け入れヘッダーを送信しています。これで、このリクエストに対するレスポンスはマークダウン形式で構成されます。とてもシンプルです。</p>
+	<pre class="language-typescript"><code class="language-typescript">HTTP/2 200
+date: Wed, 11 Feb 2026 11:44:48 GMT
+content-type: text/markdown; charset=utf-8
+content-length: 2899
+vary: accept
+x-markdown-tokens: 725
+content-signal: ai-train=yes, search=yes, ai-input=yes
+
+---
+title: Markdown for Agents · Cloudflare Agents docs
+---
+
+## What is Markdown for Agents
+
+The ability to parse and convert HTML to Markdown has become foundational for AI.
+...
+</code></pre>
+	<p>変換済みレスポンスには、Markdown文書の推定トークン数を示す <code>x-markdown-tokens</code> ヘッダーが含まれることに注意してください。この値は、例えばコンテキストウィンドウのサイズを計算したり、チャンク化戦略を決定するために使用できます。</p>
+	<p>以下は、その仕組みを図示したものです：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Zw1Q5kBBqTrouN1362H5I/3080d74a2a971be1f1e7e0ba79611998/BLOG-3162_2.png" alt="BLOG-3162 2" class="kg-image" width="1035" height="423" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="content-signals-policy">コンテンツシグナルポリシー</h3>
+		<a href="https://blog.cloudflare.com/#content-signals-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前回のバースデーウィーク中に、CloudflareはContent Signalsを<a href="https://blog.cloudflare.com/content-signals-policy"><u>発表しました</u></a>。これは、誰もがアクセスされた後の自分のコンテンツの利用方法に対する意向を表明できる<a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>フレームワーク</u></a>です。</p>
+	<p>Markdownを返すとき、エージェントまたはAIクローラーがコンテンツを使用していることを確認する必要があります。そのため、エージェントのMarkdown変換されたレスポンスには、AIトレーニング、検索結果、AI入力（エージェントによる使用を含む）にコンテンツを使用できることを示す<code>Content-Signal: ai-train=yes, search=yes, ai-input=yes</code>ヘッダーシグナリングが含まれます。Markdown for Agentsは、将来的にカスタムコンテンツシグナルポリシーを定義するオプションを提供する予定です。</p>
+	<p>このフレームワークの詳細については、専用の<a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>コンテンツシグナル</u></a>ページをご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-with-the-cloudflare-blog-developer-documentation">Cloudflareのブログと開発者向けドキュメントで、お試しください</h3>
+		<a href="https://blog.cloudflare.com/#try-it-with-the-cloudflare-blog-developer-documentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、<a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>と<a href="https://blog.cloudflare.com"><u>ブログ</u></a>でこの機能を有効にし、すべてのAIクローラーとエージェントがHTMLではなくマークダウンを使用して当社のコンテンツを消費するよう招待しました。</p>
+	<p>このブログを<code>Accept: text/markdown</code>とともにリクエストして、今すぐお試しください。</p>
+	<pre class="language-typescript"><code class="language-typescript">curl https://blog.cloudflare.com/markdown-for-agents/ \
+  -H "Accept: text/markdown"</code></pre>
+	<p>結果：</p>
+	<pre class="language-typescript"><code class="language-typescript">---
+description: The way content is discovered online is shifting, from traditional search engines to AI agents that need structured data from a Web built for humans. It’s time to consider not just human visitors, but start to treat agents as first-class citizens. Markdown for Agents automatically converts any HTML page requested from our network to markdown.
+title: Introducing Markdown for Agents
+image: https://blog.cloudflare.com/images/markdown-for-agents.png
+---
+
+# Introducing Markdown for Agents
+
+The way content and businesses are discovered online is changing rapidly. In the past, traffic originated from traditional search engines and SEO determined who got found first. Now the traffic is increasingly coming from AI crawlers and agents that demand structured data within the often-unstructured Web that was built for humans.
+
+...</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="other-ways-to-convert-to-markdown">Markdownに変換する他の方法</h3>
+		<a href="https://blog.cloudflare.com/#other-ways-to-convert-to-markdown" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare外部から任意のドキュメント変換を必要とするAIシステムを構築する場合、またはMarkdown for Agentsがコンテンツソースから利用できない場合、当社はアプリケーション用にドキュメントをMarkdownに変換する他の方法を提供しています。</p>
+	<ul>
+		<li>
+			<p>Workers AI <a href="https://developers.cloudflare.com/workers-ai/features/markdown-conversion" target="_blank" rel="noopener noreferrer"><u>AI.toMarkdown()</u></a> は、HTMLだけでなく複数のドキュメントタイプや要約もサポートしています。</p>
+		</li>
+		<li>
+			<p>ブラウザレンダリング <a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>/markdown</u></a> REST APIは、動的なページやアプリケーションを変換する前に実際のブラウザでレンダリングする必要がある場合、Markdown変換をサポートします。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="tracking-markdown-usage">Markdownの利用状況を追跡する</h2>
+		<a href="https://blog.cloudflare.com/#tracking-markdown-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIシステムのWeb閲覧方法の変化を予測して、Cloudflare RadarにはAIボットとクローラートラフィックに関するコンテンツタイプのインサイトが、世界中の<a href="https://radar.cloudflare.com/ai-insights#content-type" target="_blank" rel="noopener noreferrer"><u>AI Insights</u></a>ページと<a href="https://radar.cloudflare.com/bots/directory/gptbot" target="_blank" rel="noopener noreferrer"><u>個々のボット</u></a>情報ページに掲載されています。</p>
+	<p>新しい<code>content_type</code>ディメンションとフィルターは、AIエージェントとクローラーに返されたコンテンツタイプの分布を、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types" target="_blank" rel="noopener noreferrer"><u>MIMEタイプ</u></a>カテゴリーごとにグループ化して示します。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vQzvzHsTLPXGhoQK0Xbr5/183129a8947990bc4ee5bb5ca7ba71b5/BLOG-3162_3.png" alt="BLOG-3162 3" class="kg-image" width="1600" height="920" loading="lazy">
+	</figure>
+	<p>また、特定のエージェントやクローラーでフィルタリングされたMarkdownのリクエストも表示できます。OAI-Searchbot（OpenAIがChatGPTの検索に使用するクローラー）にマークダウンを返すリクエストは以下の通りです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ah99DWLxnYjadW6xJhAXg/afef4a29ae504d4fe69df4f9823dd103/BLOG-3162_4.png" alt="BLOG-3162 4" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>この新しいデータにより、AIボット、クローラー、エージェントがWebコンテンツをどのように消費しているかの進化を追跡することができます。いつものように、Radar上のすべてのものは、<a href="https://developers.cloudflare.com/api/resources/radar" target="_blank" rel="noopener noreferrer"><u>パブリックAPI</u></a>と<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;groupBy=content_type&amp;filters=userAgent%253DGPTBot&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>データエクスプローラー</u></a>を介して自由にアクセスできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="start-using-today">今すぐ使い始める</h2>
+		<a href="https://blog.cloudflare.com/#start-using-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様のゾーンでMarkdown for Agentsを有効にするには、Cloudflareの<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>ダッシュボード</u></a>にログインし、アカウントを選択し、ゾーンを選択し、クイックアクションを探して、Markdown for Agentsボタンを切り替えて有効にします。この機能は、Proプラン、Businessプラン、Enterpriseプランのベータ版、SaaSのお客様向けSSLでお使いいただけます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UqzmHrNa1UdCCI6eXIfmn/3da0ff51dd94219d8af87c172d83fc72/BLOG-3162_5.png" alt="BLOG-3162 5" class="kg-image" width="1999" height="1047" loading="lazy">
+	</figure>
+	<p>エージェント向けマークダウンの詳細については、弊社の<a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>をご覧ください。この機能の改良と強化を続けて行きたいと考えているため、お客様からのフィードバックをお待ちしています。AIクローラーやエージェントが進化する中で、Webの非構造化性質をどのようにナビゲートし、適応しているのかが気になるところです。</p>
+</div>

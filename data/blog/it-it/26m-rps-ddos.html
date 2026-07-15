@@ -1,0 +1,57 @@
+<div class="mb2 gray5">Lettura di 3 min</div>
+<div class="mt4">Questo post è disponibile anche in <a href="https://blog.cloudflare.com/26m-rps-ddos">English</a>, <a href="https://blog.cloudflare.com/zh-tw/26m-rps-ddos">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/26m-rps-ddos">Français</a>, <a href="https://blog.cloudflare.com/de-de/26m-rps-ddos">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/26m-rps-ddos">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/26m-rps-ddos">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/26m-rps-ddos">Português</a>, <a href="https://blog.cloudflare.com/es-es/26m-rps-ddos">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/26m-rps-ddos">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/26m-rps-ddos">Polski</a> e <a href="https://blog.cloudflare.com/zh-cn/26m-rps-ddos">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tIo7Rn2tIuxK5w9xHo38K/6c6ff738b56ecea63d58d76c0be4605e/26m-rps-ddos.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><b><i>Aggiornamento dal 24 giugno 2022</i></b><i>: Abbiamo nominato la botnet che ha lanciato l'attacco DDoS da 26 milioni di richieste al secondo "</i><b><i>Mantis</i></b><i>" (Mantide) poiché assomiglia al</i> <a href="https://en.wikipedia.org/wiki/Mantis_shrimp" target="_blank" rel="noopener noreferrer"><i>gambero mantide</i></a><i>, piccolo ma estremamente insidioso. Mantis è stato particolarmente attivo nell'ultima settimana, prendendo di mira le proprietà Internet VoIP e Criptovaluta con attacchi HTTP DDoS fino a 9 milioni di richieste al secondo.</i></p>
+	<p>La scorsa settimana, Cloudflare ha rilevato e mitigato automaticamente un <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">attacco DDoS</a> da 26 milioni di richieste al secondo, il più grande attacco DDoS HTTPS mai registrato.</p>
+	<p>L'attacco ha preso di mira il sito Web di un cliente che utilizzava il piano gratuito di Cloudflare. Simile al precedente <a href="https://blog.cloudflare.com/15m-rps-ddos-attack">attacco da 15 milioni di richieste al secondo</a>, anche questo attacco ha avuto origine principalmente dai provider di servizi cloud rispetto ai provider di servizi Internet residenziali, indicando l'uso di macchine virtuali dirottate e server potenti per generare l'attacco, al contrario di dispositivi Internet of Things (IoT) molto più deboli.</p>
+	<div class="flex anchor relative">
+		<h3 id="record-breaking-attacks">Attacchi da record</h3>
+		<a href="https://blog.cloudflare.com/#record-breaking-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NOKvQqeXwENOCj0UOeRAI/04fbae8288e3f3f43130d34fa1b3e66f/image1-7.png" alt="Graph of the 26 million request per second DDoS attack" class="kg-image" width="1438" height="660" loading="lazy">
+
+	</figure>
+	<p>Nell'ultimo anno, abbiamo assistito a un attacco da record dopo l'altro. Nell'agosto 2021, abbiamo rilevato un <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">attacco DDoS HTTP da 17,2 milioni di richieste al secondo</a> e più recentemente, ad aprile, un <a href="https://blog.cloudflare.com/15m-rps-ddos-attack">attacco DDoS HTTPS da 15 milioni di richieste al secondo</a>. Tutti sono stati rilevati e mitigati automaticamente dal nostro <a href="https://blog.cloudflare.com/http-ddos-managed-rules">set di regole gestite su DDoS HTTP</a>, alimentato dal nostro <a href="https://blog.cloudflare.com/it-it/deep-dive-cloudflare-autonomous-edge-ddos-protection-it-it">sistema di protezione da attacchi DDoS edge autonomo</a>.</p>
+	<p>L'attacco DDoS da 26 milioni di richieste al secondo ha avuto origine da una piccola ma potente botnet di 5.067 dispositivi. In media, ogni nodo ha generato circa 5.200 richieste al secondo al picco. Per contrastare le dimensioni di questa botnet, abbiamo monitorato un'altra botnet molto più grande ma meno potente di oltre 730.000 dispositivi. Quest'ultima, la più grande botnet, non è stata in grado di generare più di un milione di richieste al secondo, ovvero circa 1,3 richieste al secondo in media per dispositivo. In parole povere, questa botnet era, in media, 4.000 volte più forte grazie al suo utilizzo di macchine virtuali e server.</p>
+	<p>Inoltre, vale la pena notare che questo attacco era su <a href="https://www.cloudflare.com/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer">HTTPS</a>: gli attacchi DDoS HTTPS sono più costosi in termini di risorse computazionali richieste a causa del costo più elevato per stabilire una connessione di crittografia <a href="https://www.cloudflare.com/it-it/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS</a> sicura. Pertanto, costa di più all'aggressore lanciare l'attacco e alla vittima mitigarlo. In passato abbiamo assistito ad attacchi molto grandi su HTTP (non crittografato), ma questo attacco si distingue per le risorse richieste sulla sua scala.</p>
+	<p>In meno di 30 secondi, questa botnet ha generato oltre 212 milioni di richieste HTTPS da oltre 1.500 reti in 121 paesi. I primi paesi sono stati l'Indonesia, gli Stati Uniti, il Brasile e la Russia. Quasi il 3% degli attacchi è arrivato attraverso i nodi Tor.</p>
+	<p>Le principali reti di origine erano la francese OVH (Autonomous System Number 16276), l'indonesiana Telkomnet (ASN 7713), la statunitense iboss (ASN 137922) e la libica Ajeel (ASN 37284).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RSu52jA2eDtgH45ptbUIM/634d8cc9c991825d4962ec0c89528837/image3-9.png" alt="Chart of the top source countries of the attack" class="kg-image" width="1600" height="989" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-ddos-threat-landscape">Il panorama delle minacce di attacco DDoS</h3>
+		<a href="https://blog.cloudflare.com/#the-ddos-threat-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11wUFtITwfTlMcGO6mf7RX/ebae8a2ff45ba6ac2b932d11795745a0/image3-8.png" alt="Chart of the top source networks of the attack" class="kg-image" width="1654" height="1022" loading="lazy">
+
+	</figure>
+	<p>È importante comprendere il panorama degli attacchi quando si pensa alla protezione DDoS. Consultando il nostro recente <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q1">report sulle tendenze DDoS</a>, possiamo vedere che la maggior parte degli attacchi sono piccoli, ad es. vandalismo informatico. Tuttavia, anche piccoli attacchi possono avere un grave impatto sulle proprietà Internet non protette. D'altra parte, gli attacchi di grandi dimensioni stanno crescendo in dimensioni e frequenza, ma rimangono brevi e rapidi. Gli aggressori concentrano il potere della loro botnet per cercare di provocare il caos con un singolo colpo rapido, cercando di evitare il rilevamento.</p>
+	<p>Gli attacchi DDoS potrebbero essere avviati da esseri umani, ma sono generati da macchine. Nel tempo necessario agli umani per rispondere all'attacco, questo potrebbe già essere finito. E anche se l'attacco è stato rapido, gli eventi di malfunzionamento della rete e delle applicazioni possono estendersi a lungo dopo che l'attacco è terminato, con un costo in termini di entrate e reputazione. Per questo motivo, si consiglia di proteggere le proprie proprietà Internet con un servizio di protezione automatizzato sempre attivo che non faccia affidamento sugli esseri umani per rilevare e mitigare gli attacchi.</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">Costruire un Internet migliore</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In Cloudflare, tutto ciò che facciamo è guidato dalla nostra missione di aiutare a costruire un Internet migliore. La visione del team DDoS deriva da questa missione: il nostro obiettivo è rendere l'impatto degli attacchi DDoS un ricordo del passato. Il livello di protezione offerto è <a href="https://blog.cloudflare.com/it-it/unmetered-mitigation-it-it">illimitato</a> e non è collegato alla dimensione dell'attacco, al numero di attacchi o alla loro durata. Questo è particolarmente importante in questi giorni perché, come abbiamo visto di recente, gli attacchi stanno diventando <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q1">più grandi e più frequenti</a>.</p>
+	<p>Non utilizzi ancora Cloudflare? <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Inizia subito</a> con i nostri piani Free e Pro per proteggere il tuo sito Web oppure <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">contattaci</a> per una protezione da attacchi DDoS completa per l'intera rete con Magic Transit.</p>
+</div>

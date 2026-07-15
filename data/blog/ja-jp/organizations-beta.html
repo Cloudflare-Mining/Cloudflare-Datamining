@@ -1,0 +1,133 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/organizations-beta">English</a>および<a href="https://blog.cloudflare.com/ko-kr/organizations-beta">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tUVLhGgBuShsti3zdnlGN/b82097c27d34a0f839c135a663f443ce/BLOG-3245image5.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareは、小規模なお客様にも使いやすいように設計されていますが、大企業のニーズを満たす拡張性があることも重要です。小規模な顧客が単独または小規模チームで作業することもあるかもしれませんが、大企業では数千人のユーザーがCloudflareの開発者、セキュリティ、ネットワーキング機能を活用していることも少なくありません。これらのユーザーは複数のチームや業務機能を表すため、複雑さが増す可能性があります。</p>
+	<p>Enterpriseプランのお客様は、多くの場合、複数の<a href="https://developers.cloudflare.com/fundamentals/account/create-account" target="_blank" rel="noopener noreferrer"><u>Cloudflareアカウント</u></a>を使用してチームをセグメント化します（より多くの自律性と役割の分離を可能にします）が、これにより、管理者が制御を断片化して、新たな問題が発生する可能性があります。</p>
+	<p>そこで本日、新しいOrganizations機能（ベータ版）を開始します。これは、管理者が多くのCloudflareアカウントにわたってユーザーと設定を管理し、分析を表示できる、一括管理できる場所を提供するものです。</p>
+	<div class="flex anchor relative">
+		<h2 id="principle-of-least-privilege">最小権限の原則</h2>
+		<a href="https://blog.cloudflare.com/#principle-of-least-privilege" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最小特権の原則は、企業が複数のアカウントを使用する背景にある推進要因の1つです。Cloudflareのロールベースのアクセス制御（RBAC）システムは、多くのリソースに対して<a href="https://developers.cloudflare.com/changelog/post/2025-10-01-fine-grained-permissioning-beta" target="_blank" rel="noopener noreferrer"><u>きめ細かなアクセス許可</u></a>を提供するようになりましたが、すべてのリソースを1つずつ列挙するのは面倒な場合があります。企業は複数のアカウントを使用しているため、各チームのリソースはそのチームのみで管理されています。これにより、アカウント内での有機的成長が可能になります。必要に応じて新しいリソースを追加でき、管理権限を大幅に集中させることはありません。</p>
+	<p>複数のアカウントは、組織内のほとんどのユーザーの権限を制限するのに適していますが、管理者にとっては管理が複雑になります。管理者はすべてのアカウントに追加され、レポートやポリシー設定などのタスクを処理するには適切な権限を持つ必要があるためです。この状況は、他の管理者が削除できる可能性があるため、脆弱です。</p>
+	<div class="flex anchor relative">
+		<h2 id="organizations">団体</h2>
+		<a href="https://blog.cloudflare.com/#organizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/fundamentals/organizations" target="_blank" rel="noopener noreferrer"><u>Cloudflare Organizationsは</u></a>、これらのシナリオを念頭に置いて設計されています。組織は、管理者がアカウントの集合を一緒に管理できるように、階層に新しい層を追加します。組織は、Cloudflareのパートナーエコシステムのニーズをサポートするために構築された<a href="https://developers.cloudflare.com/tenant" target="_blank" rel="noopener noreferrer"><u>Tenant</u></a>システムの上に構築されています。これは、当社が企業を念頭に置いて構築した多くの新機能の強力な基盤となっています。</p>
+	<div class="flex anchor relative">
+		<h3 id="features">機能</h3>
+		<a href="https://blog.cloudflare.com/#features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="account-list">アカウントリスト</h4>
+		<a href="https://blog.cloudflare.com/#account-list" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アカウントリストは組織の中核をなすものです。これは、組織にオンボードされているすべてのアカウントのフラットリストです。「組織スーパーアドミニストレーター」は、組織レベルで管理される新しいユーザー役割です。この役割を持つユーザーは、アカウントのスーパーアドミニストレーターである限り、リストにアカウントを追加することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LThxKEAFT6H3Tb8YypZUj/53baf77029a6da59b9cc2fd13be04f5d/BLOG-3245image2.png" alt="BLOG-3245image2" class="kg-image" width="1999" height="772" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="org-super-administrators">組織スーパーアドミニストレーター</h4>
+		<a href="https://blog.cloudflare.com/#org-super-administrators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>組織のスーパーアドミニストレーターは、組織内のすべてのアカウントに対するスーパーアドミニストレーターの権限を持ちます。どの子アカウントのメンバーシップも必要とせず、アカウントレベルのUIにも表示されません。組織スーパーアドミニストレーターは、年間を通じて組織レイヤーで追加されることが予想される多くの役割の最初のものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2z7czWidmYeFay9jx6Gv4W/b1ebea039f5dc1e64c7dea9e30d4aa59/BLOG-3245image6.png" alt="BLOG-3245image6" class="kg-image" width="1999" height="947" loading="lazy">
+	</figure>
+	<p>この機能は、従来のコードパスを削除し、すべての認証チェックを当社の<a href="https://blog.cloudflare.com/domain-scoped-roles-ga"><u>ドメインスコープ指定ロールシステム</u></a>に統合するために組織内で実行した大規模な<a href="https://github.com/resources/articles/innersource" target="_blank" rel="noopener noreferrer"><u>インナーソース開発</u></a>プロジェクトの集大成です。約13万3000行の新しいコードを追加し、これをサポートするために約32,000行の古いコードを削除しました。これは、許可システムにとって最大の変更の1つです。この根本的改善により、組織レベルでもアカウントレベルでも、将来的に追加役割の付与が容易になります。また、これまで何千ものアカウントにアクセスするユーザーに苦労されていた/accountsや/zonesなどの列挙呼び出しにおける権限のチェック方法について、パフォーマンスを27%改善しました。</p>
+	<div class="flex anchor relative">
+		<h4 id="analytics">Analytics</h4>
+		<a href="https://blog.cloudflare.com/#analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>組織のスーパー管理者は、すべてのアカウントとゾーンからのHTTPトラフィックに関する分析を備えたロールアップダッシュボードを表示できます。HTTPトラフィック分析は、今年中に提供される予定の多くの分析ダッシュボードのうちの最初のものであり、今後さらに多くの製品にこの機能を追加していく予定です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GMhq9wMeoU95gawztpCXB/5cdba02f65008df0dc0a1327c9e242b9/BLOG-3245image4.png" alt="BLOG-3245image4" class="kg-image" width="1490" height="957" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="shared-configurations">共有設定</h4>
+		<a href="https://blog.cloudflare.com/#shared-configurations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>組織全体で共有されたポリシーを管理することで、1つのチームがWAF（Webアプリケーションファイアウォール）やGatewayポリシーなどの機能を一元的に管理できます。組織のスーパーアドミニストレーターは、1つのアカウントから組織内の他のアカウントへポリシーセットを共有できるようになります。つまり、これらの設定を管理する権限を持つソースアカウントのユーザーは、ポリシーセットを更新できます。そのため、セキュリティアナリストは、組織管理者や組織内の他のアカウントの管理者でなくても、企業全体のWAFルールを一元的に更新できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2S3NWXMyP6vl5EyeYC79qB/205c49f2e829509b7e7ea19fe6e1ef34/BLOG-3245image1.png" alt="BLOG-3245image1" class="kg-image" width="1749" height="580" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="roadmap">ロードマップ</h2>
+		<a href="https://blog.cloudflare.com/#roadmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Organizationsの初回導入は企業のお客様のみに限定しておりますが、今後数か月以内にすべてのお客様に拡大し、従量課金プランのお客様から開始する予定です。私たちは、これをパートナーエコシステムにも拡大することに取り組んでいきますが、その前に、いくつかの特別なシナリオに対処する必要があります。</p>
+	<p>この分野のロードマップは他にも多くあります。近日公開予定の機能については、<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>変更履歴</u></a>にご注目ください。</p>
+	<ul>
+		<li data-list-item-id="ec991f38eb02d498cc5d065da4375a4ea" dir="ltr" aria-level="1">
+			組織レベルの監査ログ
+		</li>
+		<li data-list-item-id="ea6e536ae873857ef5ff7ceca654eb540" dir="ltr" aria-level="1">
+			組織レベルの請求レポート
+		</li>
+		<li data-list-item-id="e6939460e2bc2568074acebe2aad9fd94" dir="ltr" aria-level="1">
+			より多くの組織レベルの分析レポート
+		</li>
+		<li data-list-item-id="e1fec7544bd2be67814899a9c62ada80c" dir="ltr" aria-level="1">
+			追加の組織ユーザーの役割
+		</li>
+		<li data-list-item-id="e4153b498f78c230867f60df754b2d267" dir="ltr" aria-level="1">
+			セルフサーブアカウント作成
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="a-security-first-rollout">セキュリティ最優先のロールアウト</h2>
+		<a href="https://blog.cloudflare.com/#a-security-first-rollout" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>企業のお客様向けに、今後数日間にわたってパブリックベータ版を展開します。Organizationsを導入する際の当社独自の主要要件は、どのユーザーの権限も昇格させず、お客様がそれぞれに1つの組織のみを作成することです。これらの要件を満たすために、私たちはバックフィルメントを行わず、代わりに組織を作成することを選択せず、セルフサービスの招待プロセスを使用しています。</p>
+	<p>あなたが企業アカウントのスーパーアドミニストレーターで、他の誰も会社の組織を作成していない場合、Cloudflareダッシュボードに組織を作成するための招待が表示されます。組織を作成した後、そのアカウントのスーパー管理者である場合は、組織にアカウントを追加できます。</p>
+	<p>社内の他のユーザーがすでに組織を主張している場合、そのユーザーを組織スーパー管理者として招待して、アカウントを組織に追加できるようにするか、アカウントのスーパーアドミニストレーターとして招待して、そのユーザーがアカウントを組織に追加する必要があります。このプロセスにより、スーパーアドミニストレーターが承認に関与していないCloudflareアカウントに対するアクセス権限を、いかなるユーザーも取得することはありません。Cloudflareサポートは、お客様に代わって設定を変更することはありません。そのため、他の管理者と協力して、Organizationsの社内ロールアウトを完了する予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started">利用開始</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>企業アカウントのスーパーアドミニストレーターである場合は、会社の組織名を今すぐ請求してください。Organizationsの使用に追加料金はかかりません。使用開始方法の詳細は、ダッシュボードの新しい「組織」タブ、または<a href="https://developers.cloudflare.com/fundamentals/organizations" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>をご覧ください。</p>
+	<p>Enterpriseプランでないお客様は、<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>変更履歴</u></a>で、組織がご利用のプランで利用可能になる時期に関する詳細をご確認いただけます。また、当社の企業向けサービスの詳細については、<a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer"><u>企業セールスチーム</u></a>が本日からご利用を開始できます。</p>
+</div>

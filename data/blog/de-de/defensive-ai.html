@@ -1,0 +1,114 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/defensive-ai">English</a>, <a href="https://blog.cloudflare.com/zh-tw/defensive-ai">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/defensive-ai">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/defensive-ai">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/defensive-ai">한국어</a>, <a href="https://blog.cloudflare.com/es-es/defensive-ai">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/defensive-ai">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cGQnUOTUp1BCqaYHFNgaw/1705aacd22c679bd24509a42dd876ace/defensive-ai.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Generative KI hat die Fantasie der Menschen in aller Welt beflügelt; schließlich kann sie Gedichte, Drehbücher oder Bilder produzieren. Diese Tools können die menschliche Produktivität für positive, schöpferische Zwecke drastisch steigern, aber sie können auch von böswilligen Akteuren eingesetzt werden, um ausgeklügelte Angriffe auszuführen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xVD4cmhSUcJddNAFw2AJc/6fb1537ad293d5d4eee9059aae0eec9b/Personalized-defensive-AI.png" alt="The rise of Defensive AI: Cloudflare’s framework for defending against next-gen threats" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Wir beobachten, dass Phishing-Angriffe und Social Engineering immer raffinierter werden, da die Angreifer auf leistungsstarke neue Tools zurückgreifen, um glaubwürdige Inhalte zu erzeugen oder mit Menschen zu interagieren, als ob es sich um eine echte Person handeln würde. Angreifer können KI für die Entwicklung von spezialisierten Tools nutzen, die für Angriffe auf bestimmte Websites entwickelt wurden, um geschützte Daten zu sammeln und Nutzerkonten zu übernehmen.</p>
+	<p>Um sich vor diesen neuen Herausforderungen zu schützen, brauchen wir neue und ausgefeiltere Sicherheitstools: So entstand Defensive AI. Defensive AI ist das Framework, das Cloudflare verwendet, wenn wir darüber nachdenken, wie intelligente Systeme die Effektivität unserer Sicherheitslösungen verbessern können. Der Schlüssel zu Defensive AI sind die Daten, die das riesige Netzwerk von Cloudflare generiert, sei es allgemein über unser gesamtes Netzwerk oder spezifisch für den Traffic einzelner Kunden.</p>
+	<p>Bei Cloudflare nutzen wir KI, um das Schutzniveau in allen Sicherheitsbereichen zu erhöhen, von der Anwendungssicherheit über die E-Mail-Sicherheit bis hin zu unserer Zero Trust-Plattform. Dazu gehört die Erstellung eines maßgeschneiderten Schutzes für jeden Kunden für API- oder E-Mail-Sicherheit oder die Verwendung unserer riesigen Menge an Angriffsdaten, um Modelle zu trainieren, die bislang noch unentdeckte Anwendungsangriffe erkennen können.</p>
+	<p>In den folgenden Abschnitten werden wir anhand von Beispielen erläutern, wie wir die neueste Generation von Sicherheitsprodukten entwickelt haben, die KI zum Schutz vor KI-gestützten Angriffen einsetzen.</p>
+	<div class="flex anchor relative">
+		<h3 id="protecting-apis-with-anomaly-detection">APIs durch Erkennung von Anomalien schützen</h3>
+		<a href="https://blog.cloudflare.com/#protecting-apis-with-anomaly-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APIs sind die treibende Kraft des modernen Webs. Sie machen <a href="https://blog.cloudflare.com/de-de/2024-api-security-report-de-de">57 % des dynamischen Traffics</a> im Cloudflare-Netzwerk aus, gegenüber 52 % im Jahr 2021. APIs sind zwar keine neue Technologie, aber ihr Schutz unterscheidet sich von dem einer herkömmlichen Webanwendung. Da APIs von Haus aus einen einfachen programmatischen Zugang bieten und immer beliebter werden, haben sich Betrüger und Bedrohungsakteure mittlerweile auf APIs spezialisiert. Sicherheitsteams müssen dieser zunehmenden Bedrohung nun begegnen. Wichtig ist, dass jede API in der Regel in ihrem Zweck und ihrer Nutzung einzigartig ist, weshalb der Schutz von APIs unangemessen viel Zeit in Anspruch nehmen kann.</p>
+	<p>Cloudflare kündigt die Entwicklung von API Anomaly Detection für <a href="https://blog.cloudflare.com/de-de/api-gateway-de-de">API Gateway</a> an, um APIs vor Angriffen zu schützen, die darauf abzielen, Anwendungen zu beeinträchtigen, Konten zu übernehmen oder Daten zu exfiltrieren. API Gateway bietet eine Schutzebene zwischen Ihren gehosteten APIs und jedem Gerät, das eine Schnittstelle zu ihnen bildet, und gibt Ihnen die Übersicht, Kontrolle und Sicherheitstools, die Sie für die Verwaltung Ihrer APIs benötigen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ojHc36uSFsnCBr870kK38/f4b7df6df5c60ffb087255ffb442e5e3/Screenshot-2024-03-01-at-1.39.29-PM.png" alt="" class="kg-image" width="1050" height="490" loading="lazy">
+
+	</figure>
+	<p>API Anomaly Detection ist eine kommende, ML-gestützte Funktion in unserer API Gateway-Produktsuite und ein natürlicher Nachfolger von <a href="https://blog.cloudflare.com/de-de/api-sequence-analytics-de-de">Sequence Analytics</a>. Um APIs in großem Umfang zu schützen, lernt API Anomaly Detection die Geschäftslogik einer Anwendung durch die Analyse von Client-API-Anfrage-Sequenzen. Anschließend wird ein Modell erstellt, wie eine Sequenz von erwarteten Anfragen für diese Anwendung aussieht. Das daraus resultierende Traffic-Modell wird verwendet, um Angriffe zu identifizieren, die vom erwarteten Client-Verhalten abweichen. Infolgedessen kann API Gateway mit seiner <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">Sequence Mitigation</a>-Funktionalität das gelernte Modell der beabsichtigten Geschäftslogik der Anwendung durchsetzen und Angriffe abwehren.</p>
+	<p>Wir befinden aktuell noch dabei, API Anomaly Detection zu entwickeln. API Gateway-Kunden können sich <a href="https://www.cloudflare.com/lp/api-anomaly-detection" target="_blank" rel="noopener noreferrer">hier</a> für die Beta-Version von API Anomaly Detection anmelden. Kunden können heute bereits die ersten Schritte mit Sequence Analytics und Sequence Mitigation setzen, indem sie sich die <a href="https://developers.cloudflare.com/api-shield/security" target="_blank" rel="noopener noreferrer">Dokumente</a> ansehen. Enterprise-Kunden, die API Gateway noch nicht erworben haben, können im Cloudflare-Dashboard <a href="http://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">selbst eine Testversion starten</a> oder sich für weitere Informationen an ihren Kundenbetreuer wenden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/edeVw346MG6dZbjaDt97L/263e9c18c51f5320ce6e0c1d9ab957df/Screenshot-2024-03-01-at-2.01.25-PM-1.png" alt="" class="kg-image" width="1091" height="686" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="identifying-unknown-application-vulnerabilities">Identifizierung unbekannter Schwachstellen in Anwendungen</h3>
+		<a href="https://blog.cloudflare.com/#identifying-unknown-application-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ein weiterer Bereich, in dem KI die Sicherheit verbessert, ist unsere <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a>. Cloudflare verarbeitet im Durchschnitt 55 Millionen HTTP-Anfragen pro Sekunde und hat einen beispiellosen Einblick in Angriffe und Exploits auf der ganzen Welt, die eine Vielzahl von Anwendungen ins Visier nehmen.</p>
+	<p>Eine der großen Herausforderungen bei der WAF ist das Hinzufügen von Schutzmaßnahmen für neue Schwachstellen und Fehlalarme. Eine WAF ist eine Sammlung von Regeln zur Erkennung von Angriffen auf Webanwendungen. Täglich werden neue Schwachstellen entdeckt und bei Cloudflare haben wir ein Team von Sicherheitsanalysten, die neue Regeln erstellen, sobald Sicherheitslücken bekannt werden. Die manuelle Erstellung von Regeln nimmt jedoch Zeit in Anspruch – in der Regel Stunden – sodass Anwendungen potenziell angreifbar sind, bis ein entsprechender Schutzmechanismus eingerichtet ist. Ein weiteres Problem ist, dass die Angreifer ständig neue und veränderte Angriffs-Payloads entwickeln, mit denen die bestehenden Regeln umgangen werden können.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oTIWUwe5Em3tD4ACksp6b/0036dcdf5af715f4095ffb14ae9b3769/Screenshot-2024-03-01-at-1.41.23-PM.png" alt="" class="kg-image" width="855" height="368" loading="lazy">
+
+	</figure>
+	<p>Darum setzt Cloudflare seit Jahren Machine-Learning-Modelle ein, die ständig aus den neuesten Angriffen lernen und Abhilfemaßnahmen bereitstellen, ohne dass manuelle Regeln erstellt werden müssen. Dies zeigt sich zum Beispiel in unserer <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">WAF Attack Score</a>-Lösung. WAF Attack Score basiert auf einem ML-Modell, das anhand des im Cloudflare-Netzwerk identifizierten Angriffstraffics trainiert wurde. Der daraus resultierende Klassifikator ermöglicht es uns, Variationen und Umgehungsversuche bestehender Angriffe zu erkennen und den Schutz auf <a href="https://blog.cloudflare.com/de-de/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability-de-de">neue und unentdeckte Angriffe</a> auszuweiten. Kürzlich haben wir Attack Score <a href="https://blog.cloudflare.com/waf-attack-score-for-business-plan">für alle Enterprise- und Business-Tarife verfügbar</a> gemacht.</p>
+	<p><i>Attack Score verwendet KI, um jede HTTP-Anfrage nach der Wahrscheinlichkeit zu klassifizieren, dass sie bösartig ist.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Jw91tB0o7lKhsgzvbqPV/748a7365c126ba03e2382b3eff988c37/Screenshot-2024-03-01-at-18.16.22.png" alt="" class="kg-image" width="1288" height="496" loading="lazy">
+
+	</figure>
+	<p>Der Beitrag von Sicherheitsanalysten ist zwar unverzichtbar, aber im Zeitalter der KI und der sich schnell entwickelnden Payloads erfordert ein zuverlässiger Sicherheitsschutz Lösungen, die sich nicht darauf verlassen, dass menschliche Agenten Regeln für jede neue Bedrohung schreiben. Die Kombination von Attack Score mit traditionellen signaturbasierten Regeln ist ein Beispiel dafür, wie intelligente Systeme die von Menschen ausgeführten Aufgaben unterstützen können. Attack Score identifiziert neue bösartige Payloads, die von Analysten zur Optimierung von Regeln verwendet werden können, die wiederum bessere Trainingsdaten für unsere KI-Modelle liefern. Dies führt zu einer verstärkenden positiven Rückkopplungsschleife, die den allgemeinen Schutz und die Reaktionszeit unserer WAF verbessert.</p>
+	<p>Langfristig werden wir das KI-Modell so anpassen, dass es kundenspezifische Traffic-Merkmale berücksichtigt, um Abweichungen vom normalen und harmlosen Traffic besser zu erkennen.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-ai-to-fight-phishing">Mit KI gegen Phishing</h3>
+		<a href="https://blog.cloudflare.com/#using-ai-to-fight-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>E-Mails sind einer der effektivsten Vektoren, die von böswilligen Akteuren genutzt werden. Die US Cybersecurity and Infrastructure Security Agency (<a href="https://www.cisa.gov/stopransomware/general-information" target="_blank" rel="noopener noreferrer">CISA</a>) berichtet, dass 90 % der Cyberangriffe mit Phishing beginnen und Cloudflare Email Security <a href="https://radar.cloudflare.com/year-in-review/2023#malicious-emails" target="_blank" rel="noopener noreferrer">2,6 % der E-Mails des Jahres 2023 als bösartig einstuft</a>. Die Zunahme von KI-gestützten Angriffen macht herkömmliche E-Mail-Sicherheitsanbieter obsolet, da Bedrohungsakteure jetzt Phishing-E-Mails erstellen können, die glaubwürdiger sind als je zuvor und nur wenige oder gar keine sprachlichen Fehler enthalten.</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/email-security" target="_blank" rel="noopener noreferrer">Email Security</a> ist ein Cloud-nativer Service, der Phishing-Angriffe über alle Bedrohungsvektoren hinweg stoppt. Das E-Mail-Sicherheitsprodukt von Cloudflare schützt Kunden weiterhin mit seinen KI-Modellen, auch wenn sich Trends wie die generative KI weiterentwickeln. Die Modelle von Cloudflare analysieren alle Teile eines Phishing-Angriffs, um das Risiko für den Nutzenden zu bestimmen. Einige unserer KI-Modelle werden für jeden Kunden personalisiert, während andere ganzheitlich trainiert werden. Der Datenschutz steht bei Cloudflare an erster Stelle, daher werden nur nicht persönlich identifizierbare Informationen von unseren Tools für das Training verwendet. 2023 <a href="https://blog.cloudflare.com/de-de/2023-phishing-report-de-de">verarbeitete Cloudflare ca. 13 Mrd.</a> E-Mails und blockierte 3,4 Mrd., was dem E-Mail-Sicherheitsprodukt einen reichhaltigen Datensatz liefert, der zum Trainieren von KI-Modellen verwendet werden kann.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27B73JPLutOrg6shC9gZnh/3e49607d69ce330333204c3d061d9fa5/Screenshot-2024-03-01-at-1.41.30-PM.png" alt="" class="kg-image" width="1016" height="475" loading="lazy">
+
+	</figure>
+	<p>Zwei Erkennungen, die zu unserem Portfolio gehören, sind Honeycomb und Labyrinth.</p>
+	<ul>
+		<li>
+			<p><i>Honeycomb</i> ist ein patentiertes Reputationsmodell für E-Mail-Absender-Domains. Dieser Service erstellt einen Graphen der Absender von Nachrichten und erstellt ein Modell, um das Risiko zu bestimmen. Die Modelle werden auf die spezifischen Traffic-Muster der Kunden trainiert, sodass jeder Kunde über KI-Modelle verfügt, die darauf trainiert sind, wie sein guter Traffic aussieht.</p>
+		</li>
+		<li>
+			<p><i>Labyrinth</i> verwendet ML zum Schutz auf Kundenbasis. Akteure versuchen, E-Mails von gültigen Partnerunternehmen unserer Kunden zu fälschen. &nbsp;Wir können für jeden unserer Kunden eine Liste mit Statistiken über bekannte und gute E-Mail-Absender erstellen. Wir können dann die Versuche der Fälschung erkennen, wenn die E-Mail von einer nicht verifizierten Domain gesendet wird, die in der E-Mail genannte Domain jedoch eine verifizierte Referenzdomain ist.</p>
+		</li>
+	</ul>
+	<p>KI bleibt das Herzstück unseres E-Mail-Sicherheitsprodukts, und wir verbessern ständig die Art und Weise, wie wir sie in unserem Produkt einsetzen. Wenn Sie mehr darüber erfahren möchten, wie wir unsere KI-Modelle einsetzen, um KI-gestützte Phishing-Angriffe zu stoppen, lesen Sie unseren Blogbeitrag <a href="https://blog.cloudflare.com/dispelling-the-generative-ai-fear-how-cloudflare-secures-inboxes-against-ai-enhanced-phishing">hier</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-security-protected-and-powered-by-ai">Zero-Trust-Sicherheit, geschützt und unterstützt durch KI</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-security-protected-and-powered-by-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> stellt Administratoren die Tools zur Verfügung, mit denen sie den Zugriff auf ihre IT-Infrastruktur schützen können, indem sie eine strenge Identitätsprüfung für jede Person und jedes Gerät durchsetzen, unabhängig davon, ob sie sich innerhalb oder außerhalb des Netzwerkperimeters befinden.</p>
+	<p>Eine der großen Herausforderungen besteht darin, eine strenge Zugriffskontrolle durchzusetzen und gleichzeitig die Reibungsverluste durch häufige Verifizierungen zu verringern. Bestehende Lösungen setzen auch die IT-Teams unter Druck, die Protokolldaten analysieren müssen, um die Entwicklung der Risiken innerhalb ihrer Infrastruktur im Auge zu behalten. Um seltene Angriffe zu finden, müssen riesige Datenmengen durchforstet werden, was große Teams und beträchtliche Budgets erfordert.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qpOOjCeP6yqWtYrSgJdCu/4693906c9faf833a57db45672472f23d/Cloudflare-One-User-Risk-Scores_b.png" alt="" class="kg-image" width="1600" height="617" loading="lazy">
+
+	</figure>
+	<p>Cloudflare vereinfacht diesen Prozess durch die Einführung einer verhaltensbasierten Risikobewertung für Nutzende. Mithilfe von KI analysieren wir Echtzeitdaten, um Anomalien im Verhalten der Nutzenden und Signale zu erkennen, die dem Unternehmen schaden könnten. Dadurch erhalten Administratoren Empfehlungen, wie sie die Sicherheitsmaßnahmen auf der Grundlage des Verhaltens der Nutzenden anpassen können.</p>
+	<p>Die Zero Trust-Nutzerrisikobewertung erkennt Benutzeraktivitäten und -verhaltensweisen, die ein Risiko für Ihr Unternehmen, Ihre Systeme und Ihre Daten darstellen könnten, und weist dem betreffenden Nutzenden eine Bewertung von „Niedrig“, „Mittel“ oder „Hoch“ zu. Dieser Ansatz wird manchmal auch als User and Entity Behavior Analysis (UEBA) bezeichnet und ermöglicht es Teams, mögliche Kompromittierungen von Konten, Verstöße gegen Unternehmensrichtlinien und andere riskante Aktivitäten zu erkennen und zu beheben.</p>
+	<p>Das erste kontextabhängige Verhalten, das wir einführen, ist eine „unmögliche Reise“. Es hilft zu erkennen, ob die Anmeldeinformationen eines Nutzenden an zwei Orten verwendet werden, die der Nutzende in diesem Zeitraum nicht hätte bereisen können. Diese Risikobewertungen können in Zukunft noch erweitert werden, um personalisierte Verhaltensrisiken auf der Grundlage von kontextuellen Informationen, wie z. B. Tageszeit und Zugriffsmuster, hervorzuheben und anomales Verhalten zu kennzeichnen. Da der gesamte Traffic durch Ihre SWG geleitet wird, kann dies auch auf Ressourcen ausgeweitet werden, auf die zugegriffen wird, wie z. B. auf ein internes Firmen-Repository.</p>
+	<p>Wir haben einen spannenden Launch in der Security Week. <a href="https://blog.cloudflare.com/cf1-user-risk-score">Lesen Sie diesen Blog-Beitrag, um mehr zu erfahren</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Fazit</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Von Anwendungs- und E-Mail-Sicherheit bis hin zu Netzwerksicherheit und Zero Trust – wir beobachten, dass Angreifer neue Technologien nutzen, um ihre Ziele effektiver zu erreichen. In den letzten Jahren haben mehrere Produkt- und Entwicklungsteams von Cloudflare intelligente Systeme eingeführt, um missbräuchliche Verwendung besser zu erkennen und den Schutz zu erhöhen.</p>
+	<p>Neben dem Hype um generative KI ist künstliche Intelligenz bereits ein entscheidender Bestandteil der Art und Weise, wie wir digitale Assets vor Angriffen schützen und wie wir böse Akteure abschrecken können.</p>
+</div>

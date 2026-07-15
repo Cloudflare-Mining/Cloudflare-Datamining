@@ -1,0 +1,729 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/project-think">English</a>、<a href="https://blog.cloudflare.com/zh-tw/project-think">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/project-think">Français</a>、<a href="https://blog.cloudflare.com/de-de/project-think">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/project-think">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/project-think">한국어</a>、<a href="https://blog.cloudflare.com/es-la/project-think">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/project-think">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/project-think">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/588DgUbUQdYUlsmPN7HEvx/ee336b5fcff4d4841d8eece608e2c7c4/BLOG-3200_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>本日は、次世代の<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>であるProject Thinkをご紹介します。Project Thinkは、長期間実行されるエージェント（耐久性のある実行、サブエージェント、サンドボックス化されたコード実行、永続セッション）を構築するための新しいプリミティブセット（耐久性のある実行、サブエージェント、サンドボックス化されたコード実行、永続セッション）と、それらすべてを1つに接続する指定されたベースクラスです。プリミティブを使用してまさに必要なものを構築し、ベースクラスを使用して迅速に開始できます。</p>
+	<p>今年初め、私たちのAIに対する考え方を変える事態が起こりました。<a href="https://github.com/badlogic/pi-mono" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>、<a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>、<a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a>、<a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer"><u>Codex</u></a>のようなツールは、シンプルでありながら強力なアイディアを証明しました。LLMにファイルを読み、コードを書き、実行し、学習したことを記憶する能力を持たせると、開発者ツールというよりは汎用アシスタントのようなものが得られます。</p>
+	<p>このコーディングエージェントはもはやコードを書くだけではありません。多くのユーザーは、カレンダーの管理、データセットの分析、購入の交渉、納税、ビジネスワークフロー全体の自動化などに使用しています。パターンは常に同じです。エージェントはコンテキストを読み取り、それについて理由を調べ、アクションを実行するためのコードを書き、結果を観察し、反復を行います。コードは、動作の普遍的な媒体です。</p>
+	<p>当社のチームは、これらのコーディングエージェントを毎日使用しています。そして、同じ壁に取り組み続けました。</p>
+	<ul>
+		<li>
+			<p><b>ノートパソコンか高価なVPSで動作するだけで、</b>デバイス間の共有、コラボレーション、引き渡しは一切ありません。</p>
+		</li>
+		<li>
+			<p><b>アイドル中は高価です</b>: エージェントが機能していても働いていなくても、月額定額料金がかかります。チームや会社に合わせた拡張なら、すぐに膨れ上がります。</p>
+		</li>
+		<li>
+			<p>依存関係のインストール、アップデートの管理、IDとシークレットの設定など、<b>管理と手動セットアップが必要です</b>。</p>
+		</li>
+	</ul>
+	<p>そして、より深刻な構造的な問題があります。従来のアプリケーションは1つのインスタンスから多くのユーザーに配信されます。「Agents Weekへようこそ」の投稿で述べたように、<a href="https://blog.cloudflare.com/welcome-to-agents-week"><u>エージェントは1対1です</u></a>。各エージェントは固有のインスタンスであり、1人のユーザーにサービスを提供し、1つのタスクを実行します。レストランには、大量の料理を提供するために最適化されたメニューとキッチンがあります。エージェントは、専属料理人に似ていて、毎回、異なる食材、技術、ツールを使用します。</p>
+	<p>これにより、スケーリングの数学のあり方が根本的に変わります。1億人のナレッジワーカーがそれぞれエージェンティックアシスタントを使用する場合、控えめな同時実行数でも、何千万もの同時セッションに対応できる容量が必要になります。現在のコンテナごとのコストでは、持続不可能です。異なる基盤が必要なのです。</p>
+	<p>それが私たちが構築してきたのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-project-think">Project Thinkの紹介</h2>
+		<a href="https://blog.cloudflare.com/#introducing-project-think" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Project Thinkは、Agents SDKの新しいプリミティブのセットを出荷します。</p>
+	<ul>
+		<li>
+			<p><b>ファイバーによる耐久性のある実行</b>：クラッシュからの復旧、チェックポイントの作成、自動キープアライブ</p>
+		</li>
+		<li>
+			<p><b>サブエージェント</b>：独自のSQLiteと型付けRPCを持つ分離された子エージェント</p>
+		</li>
+		<li>
+			<p><b>永続セッション</b>：ツリー構造化メッセージ、フォーク、コンパクション、フルテキスト検索</p>
+		</li>
+		<li>
+			<p><b>サンドボックス化されたコード実行</b>：Dynamic Workers、コードモード、ランタイムnpm解決</p>
+		</li>
+		<li>
+			<p><b>実行ラダー</b>：ワークスペース、分離、npm、ブラウザ、サンドボックス</p>
+		</li>
+		<li>
+			<p><b>自己作成型拡張機能</b>：エージェントが実行時に独自のツールを作成する</p>
+		</li>
+	</ul>
+	<p>これらはそれぞれ、エージェントベースクラスで直接使用できます。プリミティブを使用してまさに必要なものを構築するか、Thinkベースクラスを使用して、迅速に始められます。それぞれの内容を見ていきましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="long-running-agents">長期間実行されているエージェント</h2>
+		<a href="https://blog.cloudflare.com/#long-running-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在も存在するエージェントは、一過性のものです。それらは1つのセッションのために実行され、単一のプロセスやデバイスに結びつき、その後、消えてしまいます。ノートパソコンがスリープすると終了するコーディングエージェント、それはツールです。持続性のあるエージェント、オンデマンドで起動し、中断後の作業を継続し、ローカルランタイムに依存せず状態を続行できるものは、インフラストラクチャのように見え始めます。そして、エージェントのスケーリングモデルを完全に変えます。</p>
+	<p>Agents SDKは、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>を基盤としており、すべてのエージェントにID、永続的な状態、およびメッセージを認識する能力を提供します。これが<a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank" rel="noopener noreferrer"><u>アクターモデル</u></a>です。各エージェントは、独自のSQLiteデータベースを持つアドレス可能なエンティティです。ハイバネーション時の消費量はゼロです。何かが起きると（HTTPリクエスト、WebSocketメッセージ、スケジュールされた警告、受信メールなど）、プラットフォームはエージェントを起動し、状態をロードして、イベントを引き渡します。エージェントは作業を行うと、スリープ状態に戻ります。</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>VM/コンテナ</b></p>
+				</th>
+				<th>
+					<p><b>Durable Objects</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>アイドルコスト</b></p>
+				</td>
+				<td>
+					<p>常にフルコンピューティングコスト</p>
+				</td>
+				<td>
+					<p>ゼロ（ハイバネーション）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>スケーリング</b></p>
+				</td>
+				<td>
+					<p>容量のプロビジョニングと管理</p>
+				</td>
+				<td>
+					<p>エージェントごとの自動</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>状態</b></p>
+				</td>
+				<td>
+					<p>外部データベースが必要</p>
+				</td>
+				<td>
+					<p>内蔵SQLite</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>復旧</b></p>
+				</td>
+				<td>
+					<p>構築（プロセスマネージャー、ヘルスチェック）</p>
+				</td>
+				<td>
+					<p>プラットフォームを再起動、状態は存続</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>アイデンティティ/ルーティング</b></p>
+				</td>
+				<td>
+					<p>構築はお客様による（ロードバランサー、他方のセッションなど）</p>
+				</td>
+				<td>
+					<p>組み込み型（名前 → エージェント）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>10,000のエージェント、それぞれアクティブ率1%</b></p>
+				</td>
+				<td>
+					<p>常時稼働インスタンス 10,000件</p>
+				</td>
+				<td>
+					<p>約100件のアクティブな攻撃</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>これにより、エージェントを大規模に実行することの経済状態が変化します。「パワーユーザーごとに1つの高価なエージェント」ではなく、「顧客ごとに1つのエージェント」、「タスクごとに1つのエージェント」、または「メールスレッドごとに1つのエージェント」を構築することができます。新しいエージェントを生成するためのわずかなコストは、事実上ゼロです。</p>
+	<div class="flex anchor relative">
+		<h3 id="surviving-crashes-durable-execution-with-fibers">クラッシュの耐久性確保：ファイバーによる耐久性のある実行</h3>
+		<a href="https://blog.cloudflare.com/#surviving-crashes-durable-execution-with-fibers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLMの呼び出しにかかる時間は30秒です。複数ターンのエージェントループは、はるかに長い間実行されることがあります。このウィンドウのどの時点でも、実行環境は消失する可能性があります。デプロイ、プラットフォームの再起動、リソース制限などです。モデルプロバイダーへのアップストリーム接続は永続的に切断され、メモリ内の状態は失われ、接続されたクライアントは説明なしにストリームが停止したことを見ることができます。</p>
+	<p><a href="https://developers.cloudflare.com/agents/api-reference/durable-execution" target="_blank" rel="noopener noreferrer"><u><code>runFiber()</code></u></a> がこれを解決します。Fiberは耐久性のある関数呼び出しです。実行が開始される前にSQLiteに登録され、<code>stash()</code>を介して任意の時点でチェックポイント可能で、<code>onFiberRecovered</code>を介して再起動時に回復できます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+
+export class ResearchAgent extends Agent {
+  async startResearch(topic: string) {
+    void this.runFiber("research", async (ctx) =&gt; {
+      const findings = [];
+
+      for (let i = 0; i &lt; 10; i++) {
+        const result = await this.callLLM(`Research step ${i}: ${topic}`);
+        findings.push(result);
+
+        // Checkpoint: if evicted, we resume from here
+        ctx.stash({ findings, step: i, topic });
+
+        this.broadcast({ type: "progress", step: i });
+      }
+
+      return { findings };
+    });
+  }
+
+  async onFiberRecovered(ctx) {
+    if (ctx.name === "research" &amp;&amp; ctx.snapshot) {
+      const { topic } = ctx.snapshot;
+      await this.startResearch(topic);
+    }
+  }
+}
+</code></pre>
+	<p>SDKはファイバーの実行中、自動的にエージェントを有効にします。特別な設定は必要ありません。分単位で測定される作業時間については、keepAlive() / keepAliveWhile()がアクティブな作業中の退去を防止します。より長い操作（CIパイプライン、設計レビュー、動画生成）の場合、エージェントは作業を開始し、ジョブIDを保持し、ハイバネーションし、コールバック時に起動します。</p>
+	<div class="flex anchor relative">
+		<h3 id="delegating-work-sub-agents-via-facets">作業の委任：Facetsを介したサブエージェント</h3>
+		<a href="https://blog.cloudflare.com/#delegating-work-sub-agents-via-facets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>単一のエージェントがすべてを行うべきではありません。<a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>サブエージェント</u></a>は、<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Facets</u></a>を介して親と併置された子Durable Objectsであり、それぞれが独自の分離されたSQLiteと実行コンテキストを持ちます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+
+export class ResearchAgent extends Agent {
+  async search(query: string) { /* ... */ }
+}
+
+export class ReviewAgent extends Agent {
+  async analyze(query: string) { /* ... */ }
+}
+
+export class Orchestrator extends Agent {
+  async handleTask(task: string) {
+    const researcher = await this.subAgent(ResearchAgent, "research");
+    const reviewer = await this.subAgent(ReviewAgent, "review");
+
+    const [research, review] = await Promise.all([
+      researcher.search(task),
+      reviewer.analyze(task)
+    ]);
+
+    return this.synthesize(research, review);
+  }
+}
+</code></pre>
+	<p>サブエージェントは、ストレージレベルで分離されます。それぞれが独自のSQLiteデータベースを取得しますが、それらの間でデータが暗黙的に共有されることはありません。これは、サブエージェントRPC遅延が関数呼び出しであるランタイムによって実行されます。TypeScriptはコンパイル時に誤用を検出します。</p>
+	<div class="flex anchor relative">
+		<h3 id="conversations-that-persist-the-session-api">続く会話：セッションAPI</h3>
+		<a href="https://blog.cloudflare.com/#conversations-that-persist-the-session-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>数日または数週間にわたって稼働するエージェントの場合、通常のフラットなメッセージリスト以上のメッセージが必要です。実験的な<a href="https://developers.cloudflare.com/agents/api-reference/sessions" target="_blank" rel="noopener noreferrer"><u>セッションAPI</u></a>は、これを明示的にモデル化しています。Agentベースクラスで利用可能。会話はツリーとして保存されます。各メッセージにはparent_IDがあります。これにより、フォーク（元のパスを失うことなく代替手段を探る）、非破壊的圧縮（古いメッセージを削除するのではなく要約する）、および<a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener noreferrer"><u>FTS5</u></a>を介した会話履歴のフルテキスト検索が可能になります。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+import { Session, SessionManager } from "agents/experimental/memory/session";
+
+export class MyAgent extends Agent {
+  sessions = SessionManager.create(this);
+
+  async onStart() {
+    const session = this.sessions.create("main");
+    const history = session.getHistory();
+    const forked = this.sessions.fork(session.id, messageId, "alternative-approach");
+  }
+}
+</code></pre>
+	<p>セッションは<code>Agent</code>で直接使用でき、<code>Think</code>ベースクラスが構築するストレージレイヤーです。</p>
+	<div class="flex anchor relative">
+		<h2 id="from-tool-calls-to-code-execution">ツール呼び出しからコード実行まで</h2>
+		<a href="https://blog.cloudflare.com/#from-tool-calls-to-code-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のツール呼び出しは、扱いにくい形をしています。モデルはツールを呼び出し、コンテキストウィンドウで結果を引き出し、別のツールを呼び出し、元に戻すという動作をします。ツールの対象領域が拡大すれば、これは高価かつ使い勝手の悪いものになります。100ファイルは、モデルを介した100回のラウンドトリップを意味します。</p>
+	<p>しかし、<a href="https://blog.cloudflare.com/code-mode"><u>モデルはツールを呼び出すゲームよりも、システムを使用するためのコードを書く方が得意です</u></a>。これは、<a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>@cloudflare/codemode</u></a>の背後にあるインサイトです。一連のツール呼び出しの代わりに、LLMはタスク全体を処理する単一のプログラムを書きます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// The LLM writes this. It runs in a sandboxed Dynamic Worker.
+const files = await tools.find({ pattern: "**/*.ts" });
+const results = [];
+for (const file of files) {
+  const content = await tools.read({ path: file });
+  if (content.includes("TODO")) {
+    results.push({ file, todos: content.match(/\/\/ TODO:.*/g) });
+  }
+}
+return results;
+</code></pre>
+	<p>モデルとの100回の往復の代わりに、単一のプログラムを実行するだけでよいのです。これにより、使用されるトークンが少なく、実行が速く、結果が改善されます。<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare API MCPサーバー</u></a>は、これを大規模に実証しています。当社が公開するツールは<code>search()</code>と<code>execute()</code>の2つのみで、これらは約1,000トークンを消費します。これは、エンドポイントごとに単純なツールを使用した場合の約117万トークンとは対照的です。これは99.9%の削減です。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-missing-primitive-safe-sandboxes">欠けているプリミティブ：安全なサンドボックス</h3>
+		<a href="https://blog.cloudflare.com/#the-missing-primitive-safe-sandboxes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モデルがユーザーに代わってコードを書く必要があると仮定すると、問題はそのコードがどこで実行されるか、ということになります。最終的には、製品チームがそれをロードマップの項目に変換した後ではありません。現在、このユーザーは、このシステムに対して、厳密に定義された権限でアクセスが可能です。</p>
+	<p><a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a>がそのサンドボックスです。数メガバイトのメモリを使用して、実行時に数ミリ秒でスピンアップされます。これは、コンテナより約100倍速く、最大100倍のメモリ効率があります。リクエストごとに新しいものを開始し、コードのスニペットを実行して、破棄することができます。</p>
+	<p>設計における重要な選択は能力モデルです。汎用マシンから始めてそれを制約するのではなく、Dynamic Workersは、アンビエント権限がほとんどない状態から始まり（<code>globalOutbound: null</code>、ネットワークアクセスなし）、開発者はバインディングを通じて、リソースごとに明示的に機能を付与します。「過剰な行為を防ぐにはどうすればいいか？」を考え始めるのです。 「私たちは、具体的に何をできるようにしたいのか？」</p>
+	<p>これはエージェントインフラストラクチャに正しい質問です。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-execution-ladder">実行展開ラダー</h3>
+		<a href="https://blog.cloudflare.com/#the-execution-ladder" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この能力モデルは、当然ながら、エージェントが必要に応じて段階的に利用する、<b>実行ラダー</b>であるコンピューティング環境の多様化につながります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yokfTVcg8frH4snf7c4sp/2306d721650b4956b28e2198f7cf915d/BLOG-3200_2.png" alt="BLOG-3200 2" class="kg-image" width="1288" height="1202" loading="lazy">
+	</figure>
+	<p><b>階層0</b>はWorkspace、SQLiteとR2に支えられた耐久性のある仮想ファイルシステムです。読み取り、書き込み、編集、検索、グループ化、差分。提供<a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/shell</code></u></a>。</p>
+	<p><b>Tier 1</b>はDynamic Workerで、ネットワークにアクセスできないサンドボックス化された分離環境で実行されるLLM生成のJavaScriptがこれに該当します。提供<a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>.</p>
+	<p><b>階層2</b>はnpmを追加します。<a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a>は、レジストリからパッケージを取得し、esbuildとバンドルし、結果をDynamic Workerに読み込みます。エージェントは <code>import { z } from "zod"</code> と記述し、すべて動作します。</p>
+	<p><b>階層3</b>は、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare Browser Run</u></a>を介したヘッドレスブラウザです。ナビゲート、クリック、抽出、スクリーンショット。サービスがMCPまたはAPI経由でエージェントをまだサポートしていない場合に有用です。</p>
+	<p><b>Tier 4</b> は、ツールチェーン、リポジトリ、依存関係が設定された <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> です。<code>git clone、npm test、cargo build</code> は、ワークスペースと双方向で同期されます。</p>
+	<p>重要な設計原則: <b>エージェントはTier 0単独でも有用であるべきで、各階層は付加的なものとなる。</b>ユーザーは、必要に応じて機能を追加することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="building-blocks-not-a-framework">フレームワークではなく、ビルディングブロック</h3>
+		<a href="https://blog.cloudflare.com/#building-blocks-not-a-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらのプリミティブはすべて、スタンドアロンパッケージとして利用可能です。<a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a>、<a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>、<a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a>、および<a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/shell</code></u></a>（ツールを備えた永続ファイルシステム）はすべて、Agentベースクラスで直接使用できます。これらを組み合わせることで、エージェントに作業領域、コード実行、ランタイムパッケージ解決を提供することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-platform">プラットフォームは</h2>
+		<a href="https://blog.cloudflare.com/#the-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下は、Cloudflareでエージェントを構築するための全スタックです：</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>機能</b></p>
+				</th>
+				<th>
+					<p><b>できること</b></p>
+				</th>
+				<th>
+					<p><b>稼働する企業</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>エージェントごとの分離</p>
+				</td>
+				<td>
+					<p>エージェントごとに異なる世界</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> (DOs)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>アイドル中はコストがゼロ</p>
+				</td>
+				<td>
+					<p>エージェントが起動するまで0ドル</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>DOハイバネーション</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>永続的な状態</p>
+				</td>
+				<td>
+					<p>クエリ可能なトランザクションストレージ</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage" target="_blank" rel="noopener noreferrer"><u>DO SQLite</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>耐久性のあるファイルシステム</p>
+				</td>
+				<td>
+					<p>再起動後有効なファイル</p>
+				</td>
+				<td>
+					<p>ワークスペース (SQLite + <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>サンドボックス化されたコード実行</p>
+				</td>
+				<td>
+					<p>LLMで生成されたコードを安全に実行</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a> + <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ランタイムの依存関係</p>
+				</td>
+				<td>
+					<p><code>import * fromact</code></p>
+				</td>
+				<td>
+					<p><a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Web自動化</p>
+				</td>
+				<td>
+					<p>フォームの閲覧、移動、入力</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>OSへのフルアクセス</p>
+				</td>
+				<td>
+					<p>git、コンパイラ、テストランナ</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandbox</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>スケジュールされた実行</p>
+				</td>
+				<td>
+					<p>事後対応だけでなく、事前予防的でもある</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>DOアラート+ファイバー</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>リアルタイムストリーミング</p>
+				</td>
+				<td>
+					<p>任意のクライアントへトークンバイトークン</p>
+				</td>
+				<td>
+					<p>WebSockets</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>外部ツール</p>
+				</td>
+				<td>
+					<p>任意のツールサーバーに接続</p>
+				</td>
+				<td>
+					<p>MCP</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>エージェントの調整</p>
+				</td>
+				<td>
+					<p>エージェント間の型付きRPC</p>
+				</td>
+				<td>
+					<p>サブエージェント（<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>ファセット</u></a>）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>モデルアクセス</p>
+				</td>
+				<td>
+					<p>LLMと接続してエージェントを稼働</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> + <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>（またはご自身のモデルを持ち込む）</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>これらは、それぞれが重要な要素です。これらが合わさって、まったく新しいものを形成します。それは、今ローカルのマシン上で実行しているAIエージェントと同じ能力のAIエージェントを、誰でも構築、デプロイ、実行できるプラットフォームです。ただし、<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>サーバーレス</u></a>で、耐久性があり、設計上安全です。 </p>
+	<div class="flex anchor relative">
+		<h2 id="the-think-base-class">Thinkベースクラス</h2>
+		<a href="https://blog.cloudflare.com/#the-think-base-class" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プリミティブを見てきたので、次はこれらをすべてつなぎ合わせた場合に起こることを示しています。</p>
+	<p><code>Think</code>は、独自の規約を持つハーネスであり、エージェントループ、メッセージの永続化、ストリーミング、ツール実行、ストリーム再開、拡張機能など、チャットライフサイクル全体を処理します。エージェントの独自性に重点を置いています。</p>
+	<p>最小のサブクラスは次のようになります：</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.5"
+    );
+  }
+}
+</code></pre>
+	<p>事実上、ストリーミング、パーシスタンス、中断/キャンセル、エラー処理、再開可能なストリーム、組み込みのワークスペースファイルシステムを備えた作業用チャットエージェントが必要なのはこれだけです。<code>npx wrangler deploy</code> でデプロイする。</p>
+	<p>考えることができるようになるのです。制御を強化する必要がある時は、注目するものをオーバーライドすることができます。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>オーバーライド</b></p>
+				</td>
+				<td>
+					<p><b>目的</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getModel()</code></p>
+				</td>
+				<td>
+					<p>使用する<code>言語モデル</code>を返す</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getSystemPrompt()</code></p>
+				</td>
+				<td>
+					<p>システムプロンプト</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getTools()</code></p>
+				</td>
+				<td>
+					<p>エージェンティックループ向けのAI SDK互換<code>ToolSet</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>maxSteps</code></p>
+				</td>
+				<td>
+					<p>1ターンあたりの最大ツール呼び出し回数</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>ConfigurationSession()</code></p>
+				</td>
+				<td>
+					<p>コンテキストブロック、圧縮、検索、スキル</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>内部では、Thinkはすべてのターンで完全なエージェントループを実行します。コンテキスト（基本指示 + ツール説明 + スキル + メモリ + 会話履歴）を組み立て、<code>streamText</code>を呼び出し、ツールコールを実行し（コンテキストの肥大化を防ぐための出力切り捨て）、結果を追加し、モデルが完了するかステップ制限に達するまでループします。すべてのメッセージは、各ターンの処理後に残ります。</p>
+	<div class="flex anchor relative">
+		<h3 id="lifecycle-hooks">ライフサイクルフック</h3>
+		<a href="https://blog.cloudflare.com/#lifecycle-hooks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パイプライン全体を所有する必要はなく、チャットターンの各段階でフックを提供できると考えてください。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">beforeTurn()
+  → streamText()
+    → beforeToolCall()
+    → afterToolCall()
+  → onStepFinish()
+→ onChatResponse()
+</code></pre>
+	<p>フォローアップターンを低コストのモデルに切り替え、使用できるツールを制限し、ターンごとにクライアントサイドのコンテキストで渡します。また、分析へのすべてのツール呼び出しをログに記録し、モデルが完了した後、<code>onChatMessage</code> を置き換えることなく、フォローアップターンを自動的に再度トリガーします。</p>
+	<div class="flex anchor relative">
+		<h3 id="persistent-memory-and-long-conversations">永続的なメモリと長い会話</h3>
+		<a href="https://blog.cloudflare.com/#persistent-memory-and-long-conversations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Thinkは、<a href="https://developers.cloudflare.com/agents/api-reference/sessions/?cf_target_id=E7A3D837FA7DC4C7DDA822B3DE0F831B" target="_blank" rel="noopener noreferrer"><u>セッションAPI</u></a>をストレージレイヤーとして利用しており、ブランチングが組み込まれたツリー構造のメッセージを提供します。</p>
+	<p>さらに、<b>コンテキストブロック</b>を通じて永続的なメモリを追加します。これらは、モデルが時間の経過とともに読み取り、更新できるシステムプロンプトの構造化されたセクションであり、ハイバネーション後も存続します<b>。</b>モデルは「MEMORY（重大な事実、更新にはset_contextを使用）[42%、462/1100トークン]」を見て、積極的に記憶することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">configureSession(session: Session) {
+  return session
+    .withContext("soul", {
+      provider: { get: async () =&gt; "You are a helpful coding assistant." }
+    })
+    .withContext("memory", {
+      description: "Important facts learned during conversation.",
+      maxTokens: 2000
+    })
+    .withCachedPrompt();
+}
+</code></pre>
+	<p>セッションは柔軟です。エージェントごとに複数の会話を実行し、元の内容を失うことなく、別の方向へフォークすることができます。<b> </b></p>
+	<p>コンテキストが拡大するにつれて、Thinkは非破壊的な圧縮で限界に対応します。古いメッセージは削除されずに要約されますが、全履歴はSQLiteに保存されます。<b> </b></p>
+	<p>検索機能も組み込まれています。FTS5を使用すると、セッション内、またはすべてのセッションの会話履歴をクエリできます。エージェントは、<code>search_context</code>ツールを使用して、自身の過去を検索することもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-full-execution-ladder-wired-in">完全実行ラダーが組み込まれている</h3>
+		<a href="https://blog.cloudflare.com/#the-full-execution-ladder-wired-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>実行ラダー全体を統合して、一つの<code>getTools()</code>を返すと考えてください。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Think } from "@cloudflare/think";
+import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
+import { createExecuteTool } from "@cloudflare/think/tools/execute";
+import { createBrowserTools } from "@cloudflare/think/tools/browser";
+import { createSandboxTools } from "@cloudflare/think/tools/sandbox";
+import { createExtensionTools } from "@cloudflare/think/tools/extensions";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  extensionLoader = this.env.LOADER;
+
+  getModel() {
+    /* ... */
+  }
+
+  getTools() {
+    return {
+      execute: createExecuteTool({
+        tools: createWorkspaceTools(this.workspace),
+        loader: this.env.LOADER
+      }),
+      ...createBrowserTools(this.env.BROWSER),
+      ...createSandboxTools(this.env.SANDBOX), // configured per-agent: toolchains, repos, snapshots
+      ...createExtensionTools({ manager: this.extensionManager! }),
+      ...this.extensionManager!.getTools()
+    };
+  }
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="self-authored-extensions">自己承認型の拡張機能</h3>
+		<a href="https://blog.cloudflare.com/#self-authored-extensions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Thinkは、コードの実行をさらに一歩進めます。エージェントは独自の拡張を記述することができます。つまり、Dynamic Workersで実行され、ネットワークアクセスやワークスペース操作の許可を宣言するTypeScriptプログラムです。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "name": "github",
+  "description": "GitHub integration: PRs, issues, repos",
+  "tools": ["create_pr", "list_issues", "review_pr"],
+  "permissions": {
+    "network": ["api.github.com"],
+    "workspace": "read-write"
+  }
+}
+</code></pre>
+	<p>Think's <code>ExtensionManager</code> は、拡張機能（オプションで <code>@cloudflare/worker-bundler</code> を介したnpm依存関係を含む）をバンドルし、Dynamic Workerにロードして、新しいツールを登録します。拡張機能はDOストレージに永続的で、ハイバネーションにも耐え得ます。次にユーザーがプルリクエストについて尋ねたとき、エージェントは30秒前には存在しなかった<code>github_create_pr</code>ツールを持っています。</p>
+	<p>これは、時間の経過とともにエージェントを本当に有用にしていく、自己改善型のループのようなものです。微調整やRLHFではなく、コードを通して行われるのです。エージェントは、サンドボックス化され、監査可能で取り消し可能なTypeScriptで、新しい機能を自分で書くことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="sub-agent-rpc">サブエージェントRPC</h3>
+		<a href="https://blog.cloudflare.com/#sub-agent-rpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Thinkもサブエージェントとして機能し、親からRPCを介して<code>chat()</code>経由で呼び出され、コールバックを介してイベントをストリーミングします。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const researcher = await this.subAgent(ResearchSession, "research");
+const result = await researcher.chat(`Research this: ${task}`, streamRelay);
+</code></pre>
+	<p>児童はそれぞれ独自の会話ツリー、メモリ、ツール、モデルを取得します。親は詳細を知る必要はありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">利用開始</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Project Thinkは実験的なものです。APIサーフェスは安定していますが、今後数日および数週間で進化し続けるでしょう。独自のバックグラウンドエージェントインフラストラクチャの構築にすでに社内で使用しており、早期に共有することで、あなたが私たちと一緒に構築できるようにします。</p>
+	<pre class="language-Shell"><code class="language-Shell">npm install @cloudflare/think agents ai @cloudflare/shell zod workers-ai-provider</code></pre>
+
+	<pre class="language-Typescript"><code class="language-Typescript">// src/server.ts
+import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+import { routeAgentRequest } from "agents";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.5"
+    );
+  }
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  }
+} satisfies ExportedHandler&lt;Env&gt;;
+</code></pre>
+
+	<pre class="language-Typescript"><code class="language-Typescript">// src/client.tsx
+import { useAgent } from "agents/react";
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+
+function Chat() {
+  const agent = useAgent({ agent: "MyAgent" });
+  const { messages, sendMessage, status } = useAgentChat({ agent });
+  // Render your chat UI
+}
+</code></pre>
+	<p>Thinkは<code>@cloudflare/ai-chat</code>と同じWebSocketプロトコルを使用しているため、既存のUIコンポーネントはすぐに動作します。<a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><u><code>AIChatAgent</code></u></a>を基に構築した場合でも、クライアントコードは変更されません。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-third-wave">第3の波</h2>
+		<a href="https://blog.cloudflare.com/#the-third-wave" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIエージェントには3つの波があります：</p>
+	<p><b>第1の波はチャットボットでした。</b>ステートレスで、リアクティブで脆弱なものでした。会話のすべてがゼロから始まり、メモリもツールも行動もありません。そのため、質問に答えるために有用でしたが、質問への回答だけに限定されていました。</p>
+	<p><b>第2の波は、コーディングエージェントを使用したものでした。</b>これらは、Pi、Claude Code、OpenClaw、Codeexのようなステートフルでツール使用の、はるかに能力の高いツールです。これらのエージェントは、コードベースを読み取り、コードを書き、実行し、反復することができます。この結果、適切なツール付きのLLMは汎用マシンであるが、1人のユーザー向けのノートパソコン上で動作し、耐久性は保証されないことが証明されました。</p>
+	<p><b>そして今、インフラとしてのエージェントという第3の波が突入しています。</b>耐久性、分散性、構造的に安全性、そしてサーバーレス。これらは、インターネット上で実行され、障害に指定され、アイドル状態ではコストは一切かかりず、動作ではなくアーキテクチャを通じてセキュリティを強化するエージェントです。開発者が任意の数のユーザーのために構築およびデプロイできるエージェント。</p>
+	<p>これは、私たちが賭けている方向性です。</p>
+	<p>Agents SDKはすでに数千の本番エージェントを支えています。Project Thinkとそれが導入するプリミティブによって、不足しているピースを追加し、エージェントの能力を劇的に向上させます。永続的なワークスペース、サンドボックス化されたコード実行、耐久性のある長期実行タスク、構造的セキュリティ、サブエージェントの調整、自己認証などです。契約が必要です。</p>
+	<p>本日、プレビューとして公開されます。当社はお客様と共に構築しています。お客様（とコーディングエージェント）がそれを使ってどんなものを作るのか、楽しみにしています。</p>
+	<hr>
+	<p><i><sup>ThinkはCloudflare Agents SDKの一部です（@cloudflare/think）。この記事で説明している機能はプレビュー版です。フィードバックを取り入れることで、APIが変更される可能性があります。</sup></i><a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><i><sup><u>ドキュメント</u></sup></i></a><i><sup>と</sup></i><a href="https://github.com/cloudflare/agents/tree/main/examples/assistant" target="_blank" rel="noopener noreferrer"><i><sup><u>例</u></sup></i></a><i><sup>を確認して開始してください。</sup></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/161Wz7Tf8Cpzn2u2cBCH3V/37633c016734590005edd280732e89b9/BLOG-3200_3.png" alt="BLOG-3200 3" class="kg-image" width="1200" height="295" loading="lazy">
+	</figure>
+	<p></p>
+</div>

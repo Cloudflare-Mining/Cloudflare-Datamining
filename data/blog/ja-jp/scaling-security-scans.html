@@ -1,0 +1,225 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/scaling-security-scans">English</a>および<a href="https://blog.cloudflare.com/ko-kr/scaling-security-scans">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7g46WTMpW8UkkHGXYts1YV/72afda6ca01ff1e9a9bd751c9e293da5/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><a href="https://developers.cloudflare.com/security/security-insights" target="_blank" rel="noopener noreferrer"><u>セキュリティインサイト</u></a>は、すべてのCloudflareアカウントに対して実用的なセキュリティ推奨事項を提供します。これらの洞察を検出するために、すべてのアカウント、ゾーン、DNSレコードの定期スキャンを実施し、潜在的なセキュリティリスクや設定ミスを探します。
+	</p>
+	<p>しかし、2つの重要な問題が浮上しています。第一に、スキャンの頻度が低すぎました。スキャンは1～2週間に一度しか実行されていなかったため、新たに発生したセキュリティリスクは検出されないままとなる可能性があったのです。第二に、多くのFreeプランアカウントで自動スキャンがオプトインされており、多くのアカウントがまったくスキャンされていません。</p>
+	<p>スキャンの頻度が低い、または存在しないリスクが高まっています。自動化された攻撃が加速するにつれ、セキュリティの設定ミスを発見するためのウィンドウは縮小していきます。<i>すべて</i>のお客様についてこうした問題を発見することは、すべての人のためのより良いインターネットを構築するという当社の目的からみても重要なことです。</p>
+	<p>スキャン頻度を増やし、すべてのアカウントの自動スキャンを有効にするには、スキャンスループットを平均で約10倍、つまり毎秒10回から1秒あたり100回に増加させる必要があると計算しました。しかし、当社のシステムはすでに、その負荷に悩まされていました。数百万のイベントが処理待ちのバックログを満杯になっていたのです。 APIが頻繁にタイムアウトしていました。プロセスはクラッシュしていました。システムを修正し、<i>拡張できるようにする</i>必要がありました。</p>
+	<p>これは、Security Insightsのスキャンスループットを10倍以上に向上させ、数百万のお客様に対するセキュリティインサイトを提供し、すべてのお客様に対するスキャン頻度を2倍にした方法についてです。この改善をどのように実現したかについて、以下で説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-scan-for-security-insights">セキュリティインサイトのスキャン方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-scan-for-security-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大まかに説明すると、Cloudflareの自動セキュリティスキャンはスケジューラによってトリガーされます。アカウントまたはゾーンがスキャンの対象になると、スケジューラは<a href="https://blog.cloudflare.com/using-apache-kafka-to-process-1-trillion-messages"><u>Apache Kafka</u></a>（オープンソースの分散型イベントストリーミングプラットフォーム）にメッセージ（またはメッセージ）を公開します。これらのメッセージは、特定のアセットや設定をスキャンする専用のGoマイクロサービスなど、多くのチェッカーに向けられます。</p>
+	<p>すべてのメッセージに対し、各チェッカーはその結果（検出したセキュリティインサイト）を内部APIに送信し、APIはこれらをPostgresデータベースに永続化します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vJ2DRjdopX1LgymReyped/dbb20abb364acdd4904aba746d7921a6/BLOG-3307_image2.jpg" alt="BLOG-3307 画像2" class="kg-image" width="1229" height="1999" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="making-it-scale">スケーリングする</h2>
+		<a href="https://blog.cloudflare.com/#making-it-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="scaling-kafka">Kafkaのスケーリング</h3>
+		<a href="https://blog.cloudflare.com/#scaling-kafka" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Apache Kafkaは厳密には<i>キュー</i>ではありません。分割されたイベントストリームです（最近になって<a href="https://www.confluent.io/blog/kafka-queue-semantics-share-consumer-ga" target="_blank" rel="noopener noreferrer"><u>キューのセマンティクス</u></a>も獲得しましたが）。パーティション内では、メッセージは順番に消費され、<i>処理され</i>なければなりません。これは、メッセージが順番に消費される可能性がありますが、順不同で処理される一般的なキューとは異なります。したがって、<i>コンシューマーグループ</i>内では、パーティションごとに1つのアクティブコンシューマーのみを持つことができます。</p>
+	<p>これは、当社にとって以下の2つの結果をもたらします。</p>
+	<ul>
+		<li>
+			<p>処理が遅いメッセージは、コンシューマーが次のメッセージに移ることを妨げます。</p>
+		</li>
+		<li>
+			<p>各チェッカーには、パーティションの数だけのコンシューマーを持つことができます（各チェッカーには独自のコンシューマーグループがあります）</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ml4yjhq4PIuDDNFPfCyKA/e22911321b38e48cd9dabc7fe33dba8c/unnamed.jpg" alt="BLOG-3307 image1" class="kg-image" width="2048" height="1675" loading="lazy">
+	</figure>
+	<p>パーティションをさらに追加することで、スケーリングを試みることもできました。しかし、これは他の多くのサービスと共有するKafkaブローカー自体のリソースの使用量が増加することになります。これは、最初にコードとアーキテクチャの改善を目的とした、最後の手段として確保しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-parallel-processing">並列処理の導入</h3>
+		<a href="https://blog.cloudflare.com/#introducing-parallel-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>メッセージを順番に消費するしかありませんが、複数のメッセージを一度に消費することを防ぐものはありません。</p>
+	<p>メッセージを<i>バッチ</i>で消費するようにチェッカーを変更し、各メッセージを個別のゴルーチンで処理しました。その代償として、プロセスの途中でプロセスがクラッシュした場合、やり直す作業が増え、メモリ使用量がわずかに増加することになります。当社では、どちらも許容できる範囲でした。</p>
+	<div class="flex anchor relative">
+		<h3 id="avoiding-head-of-line-blocking">ヘッドオブラインブロッキングの回避</h3>
+		<a href="https://blog.cloudflare.com/#avoiding-head-of-line-blocking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一部のチェッカーによって処理されるメッセージの中には、他のメッセージよりも処理に時間がかかるものがあります。たとえば、あるアカウント/ゾーンが、別のアカウント/ゾーンよりもはるかに多くのアセットを持つことがあります。最悪の場合、これらのメッセージは、数秒または数ミリ秒の平均的な処理と比較して、数分から数時間かかることがあります。</p>
+	<p>当社が選択したのは、非常にシンプルなアプローチで、消費者グループとチェッカーを「低速レーン」と「高速レーン」の2つに分けました。メッセージの処理が遅いか、速いかを迅速に判断できます。「高速レーン」チェッカーが遅いメッセージを遭遇した場合、それをスキップします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jdSAU8FpBOHMIeWFUoWTP/a77806cbdf564dbe32be617135e8e2e9/BLOG-3307_image9.jpg" alt="BLOG-3307 image9" class="kg-image" width="1999" height="889" loading="lazy">
+	</figure>
+	<p>これにより問題が解決されました。遅いメッセージは専用のリソースと時間を確保することができ、最小限の遅延で処理され、速いメッセージは通常の高速ペースで進めることができました。</p>
+	<div class="flex anchor relative">
+		<h2 id="optimizing-our-database-queries">データベースクエリの最適化</h2>
+		<a href="https://blog.cloudflare.com/#optimizing-our-database-queries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社が見つけたインサイトはすべて、Postgresデータベースに書き込まれます。これは、チェッカーがインサイトのリストを使用して呼び出す単一のAPIエンドポイントによって処理されます。実装は次のようになりました：</p>
+	<pre class="language-Go"><code class="language-Go">for _, issue := range issues {
+	_, err = tx.Exec(ctx, `INSERT INTO table ... VALUES ($1, $2, ...) ON CONFLICT DO UPDATE ...`, ...)
+	if err != nil {
+		return err
+	}
+}</code></pre>
+	<p>情報通の読者であれば、このコードは大量のインサイトの場合、インサイトごとにデータベースとの往復を行うことに気づくでしょう。観測された最大規模は50万で、これは1回のAPI呼び出しで500万回のラウンドトリップ、クエリ、トランザクションを行ったことに相当します。</p>
+	<p>私たちは当初、Postgresにおける一括挿入の絶対的基準であるCOPYを一時テーブルに転送することを試みました。しかし、この方法ではPostgresシステムのテーブルが肥大化していることが判明しました。</p>
+	<p>当社は、ハイブリッド型のアプローチにたどり着きました。</p>
+	<ul>
+		<li>
+			<p>問題数が閾値を下回った場合はUNUNESTを使用</p>
+		</li>
+		<li>
+			<p>問題数がこの閾値を超えた場合はCOPYを使用</p>
+		</li>
+	</ul>
+	<p>これにより、膨大なインサイトのための比較的高速な挿入（秒）と、小さなインサイトのセットに対するより高速な挿入（ミリ秒）の両方の長所が得られました。</p>
+	<div class="flex anchor relative">
+		<h2 id="investigating-our-api-timeouts">APIタイムアウトの調査</h2>
+		<a href="https://blog.cloudflare.com/#investigating-our-api-timeouts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スケーリングを試みた際、内部APIにおけるいくつかの奇妙な動作に気付きました。</p>
+	<ul>
+		<li>
+			<p>大量のリクエストがクライアント側のタイムアウトをトリガーしていた</p>
+		</li>
+		<li>
+			<p>多くのチェッカーが、処理時間の20～90%を単一のAPI呼び出しに費やしていました</p>
+		</li>
+		<li>
+			<p>大量のスキャンをトリガーすると、スループットが高くなり始め、\n低下する</p>
+		</li>
+	</ul>
+	<p>これらの問題はすべて同じ根本原因がありました：<b>遅延</b>。</p>
+	<p>当社のプライマリデータベースは、オレゴン州ポートランドにあります。しかし、当社のAPIはポートランドとアムステルダムの両方でアクティブに実行されていました。光速であっても、ポートランドとアムステルダムの間の往復遅延は50ミリ秒です。</p>
+	<p>この遅延の結果、アムステルダムのAPIインスタンスからのデータベースクエリーに大幅な時間がかかり、クライアント側の接続プールからの接続が開いた状態が保たれるようになりました。APIに大量のリクエストを送信すると、接続プールはすぐに使い果たされる可能性があり、無料の接続を待機するタイムアウトが発生しました。当社の平均API呼び出しはポートランドでは10ミリ秒で完了しますが、アムステルダムではほぼ3秒でした。</p>
+	<p>しかし、なぜメッセージスループットが低下するのでしょうか？各チェッカープロセスは、消費するKafkaストリームのパーティションのセットを割り当てられます。当社のAPIは負荷分散されています。プロセスの存続時間を通じて接続を開いておくので、一部のプロセスはAmsterdam APIに接続し、あるプロセスはポートランドAPIに接続しました。ポートランドにリンクされたパーティションはすぐに処理されましたが、アムステルダムに向かうプロセスで消費されたものは遅れていました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BDdHHlIGPZBTjFRR85tNk/f484c397ed3708395affb6c9f1d68294/BLOG-3307_image7.png" alt="BLOG-3307 image7" class="kg-image" width="1954" height="894" loading="lazy">
+	</figure>
+	<p><i><sup>Kafkaラグ（単一のコンシューマーグループ内での処理待ちのメッセージ数）を分割します。この場合、30のパーティションがあることに注意してください。正確に15のパーティションが遅れているのがわかります（3月10日03:00頃より遅くゼロに到達するか、ゼロに近づいている行）。これは、ロードバランサーがAPIエンドポイント間でトラフィックを均等に分割するためです。</sup></i></p>
+	<p>これは簡単な修正でした。APIを<a href="https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#active---passive-failover" target="_blank" rel="noopener noreferrer"><u>アクティブ-パッシブ</u></a>に切り替え、アクティブAPIがプライマリデータベースに従うようにしました。遅延の問題は一夜にして解決しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="rethinking-the-scheduler">スケジューラーの再考</h2>
+		<a href="https://blog.cloudflare.com/#rethinking-the-scheduler" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Kafkaを拡張したのです。データベースクエリーを最適化しました。APIを修正したのです。しかし、まだ問題がありました。スキャンが時間内にほぼ均等に分散されることを確認する必要があるのです。Kafkaトピックは、時間ベースの保持ポリシーを使用しているため、すべてのスキャンを同時にキューに入れることはできませんでした。スキャンはKafkaに蓄積され、最終的に処理される前に削除されます。</p>
+	<p>スケジューラーは、スキャンを均一に配布するのが得意ではありませんでした。一度に起動されるスキャンの数は、急増し、予測不可能でした。1週間を通してある時点で、何十万ものスキャンが数分以内に相互トリガーされるのです。何が起こっていたのでしょうか？</p>
+	<p>スケジューラは、固定された繰り返し期間でスキャンをトリガーします。擬似コードでは、スケジューラは次のようになります：</p>
+	<pre class="language-Rust"><code class="language-Rust">Loop forever:
+    Find accounts where last_scheduled_at + scanning frequency &lt;= now
+    For each account:
+        Trigger scan for account
+        Trigger scan for all zones in the account
+        Update last_scheduled_at = now</code></pre>
+	<p>last_scheduled_atがデータベース内の多くのアカウントと類似しており、これが不均一な原因になっていたことにすぐ気付きました。</p>
+	<p>しかし、完全に均等な分布であっても、スキャン頻度を増やすと、この問題はさらに悪化したでしょう。たとえば、スキャン頻度を15日ごとから7日ごとに変更した場合、53%のアカウントが突然スキャンの対象になることを意味します。</p>
+	<p>このロジックにはさらに問題がありました。アカウントによっては、非常に多くのゾーンを持つものもあります。これらのアカウントがスケジュールされた時は、すべてのゾーンのスキャンが連鎖的に行われました。このため、Kafkaパーティションが飽和状態になり、はるかに小さなアカウントのスキャンに遅れが生じていました。</p>
+	<p>こうした問題を解決するために、当社は3つの重要な変更を行いました。</p>
+	<ul>
+		<li>
+			<p>アカウントから独立してゾーンをスケジュール：各ゾーンは、独自のlast_scheduled_atフィールドを取得します。</p>
+		</li>
+		<li>
+			<p>既存のアカウントとゾーンについて、最後の_scheduled_at時刻をランダム化します。</p>
+		</li>
+		<li>
+			<p>スキャンスケジュールに、適応型レート制限を導入。</p>
+		</li>
+	</ul>
+	<p>ゾーンを個別にスケジュールすることは、大規模なアカウントの問題を解決する明らかな方法でした。last_scheduled_at時間をランダム化することで（そして、このプロセス中にスキャンが遅延しないことを確認する）、データベースに存在する不均一な状態を修正することができました。</p>
+	<p>適応型レート制限は少し興味深いものです。レート制限を使用することで、スキャン頻度を変更した場合のスキャンの急増の問題を解決できます。たとえば、スキャン頻度を7日ごとに増やしたい場合、5,000万件のアカウントがある場合、レート制限を最大83スキャン/秒に設定することで、7日間に均等に分散させることができます。</p>
+	<p>しかし、さらに1,000万件のアカウントを追加した場合はどうでしょうか？そして、このレート制限により、これらすべてのアカウントをスキャンするのに<i>8日</i>かかります。ここで、<i>適応</i>部分が活躍します。レート制限は、アカウントとゾーンの総数、およびスキャン頻度に基づいて、30分ごとに非同期的に再計算されます。これにより、何千、何百万ものアカウントやゾーンをオンボードできても、オンボードでスキャンを継続することができます。</p>
+	<pre class="language-Go"><code class="language-Go">func computeRate(free, pro, biz, ent int64) rate.Limit {
+   r := float64(free)/freeScanInterval.Seconds() +
+      float64(pro)/proScanInterval.Seconds() +
+      float64(biz)/bizScanInterval.Seconds() +
+      float64(ent)/entScanInterval.Seconds()
+
+
+   // Guard against zero counts. We always want to schedule at least one scan per second.
+   if r &lt; 1 {
+      r = 1
+   }
+
+
+   // Increase rate limit beyond the 'perfect' value, to have a buffer in case of any downtime
+   // or spikes in load.
+   r *= rateLimitBufferFactor
+
+
+   return rate.Limit(r)
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="where-we-stand-today">現在の状況</h2>
+		<a href="https://blog.cloudflare.com/#where-we-stand-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oPTkpvD7RduPU29VMMdyw/bdbe895a975b7c8184d6031fabe153ed/BLOG-3307_image8.png" alt="BLOG-3307 image8" class="kg-image" width="1964" height="890" loading="lazy">
+	</figure>
+	<p><i><sup>これらの修正により、チェッカーあたり7日間移動する平均スループットが、時間の経過とともに10倍以上増加しました。</sup></i></p>
+	<p>今回の改善前は、1秒あたり約10回のスキャンを実行していました。目標とするスループットの1秒あたり100スキャンとのギャップは大きいように感じられました。私たちは、この問題にさらに多くのリソースを投入することや、Kafkaのトピックにさらに多くのパーティションを分割すること、つまりアーキテクチャ全体を放棄することについて議論しました。</p>
+	<p>しかし、当社の修正プログラムは違いをもたらしました。現在、Security Insightsは、ピーク時のスケジュール時に1秒あたり120回以上のスキャンを維持しており、当社の10倍の改善目標を上回っています。内部APIはタイムアウトしなくなり、Kafkaラグのメトリクスもずっと健全になりました。こうしたスケーラビリティの改善により、<i>すべて</i>の無料アカウントとゾーンの自動スキャンを有効にし、すべてのお客様のスキャン頻度を高めることができました。</p>
+	<ul>
+		<li>
+			<p>Free：7日ごと</p>
+		</li>
+		<li>
+			<p>ProプランおよびBusinessプラン：3日ごと</p>
+		</li>
+		<li>
+			<p>Enterprise：毎日</p>
+		</li>
+	</ul>
+	<p>システムの安定性が向上したことで、これまで制約があった新機能の構築に自信が持てました。きめ細かなオンデマンドスキャンを実行する機能を追加しました。Cloudflareアカウント、ゾーン、インサイト、またはインサイトタイプを手動で再スキャンできるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZRp56v6QZiTEnNtf6d1Am/27a58f22fb2db0c482664076638386cc/BLOG-3307_image3.png" alt="BLOG-3307 image3" class="kg-image" width="1436" height="958" loading="lazy">
+	</figure>
+	<p><i><sup>Cloudflareダッシュボードの</sup></i><a href="https://blog.cloudflare.com/security-overview-dashboard"><i><sup><u>セキュリティ概要ページ</u></sup></i></a><i><sup>から、詳細なオンデマンドスキャンを開始します</sup></i></p>
+	<p>私たちが学んだ教訓は、何かを廃棄する前に、既存のシステムを深く理解することが重要であるということです。コード、SQLクエリ、ログ、メトリクス（<i>特に</i>メトリクス）を精査することで、ポッドやパーティションを追加するだけで容量を増やすことができました。私たちの仮定を疑い、奇妙に見えるメトリクスを調べ、簡単な近道（APIクライアント側のタイムアウトを増やすなど）を拒否することで、より安定した耐障害性の高いシステムを構築しました。</p>
+	<p>問題により多くのリソースを投入することが<i>時には</i>解決策になるかもしれませんが、Cloudflareでは、エンジニアリングが問題を解決する方法だと考えています。</p>
+	<p>セキュリティインサイトのスキャンは、すべてのCloudflareプランでデフォルトで有効になっています。今すぐ<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にログインして、セキュリティインサイトを確認し、管理しましょう。</p>
+</div>

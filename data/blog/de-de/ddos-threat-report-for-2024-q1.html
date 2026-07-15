@@ -1,0 +1,404 @@
+<div class="mb2 gray5">Lesezeit: 9&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q1">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q1">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q1">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q1">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q1">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q1">Português</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2024-q1">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q1">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eaLQHo5IuMHmtFsxHqYJ5/594a1cbf97d405dccd0a978bef479ba1/ddos-threat-report-for-2024-q1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Willkommen zur 17. Ausgabe des Cloudflare-Berichts zur DDoS-Bedrohungslandschaft. Diese Ausgabe befasst sich mit der DDoS-Bedrohungslandschaft sowie mit wichtigen Erkenntnissen, die aus den Entwicklungen im Cloudflare-Netzwerk im ersten Quartal 2024 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">gewonnen wurden.</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CRUEQXjRjK9JCmDScvOe9/202241692c52e9b98d7c4609ae6a90b5/image13.png" alt="DDoS threat report for 2024 Q1" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-ddos-attack">Was ist ein DDoS-Angriff?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zunächst aber ein kurzer Rückblick. Ein DDoS-Angriff, kurz für <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service-Angriff</a>, ist eine Art von Cyberangriff, der darauf abzielt, Internet wie Websites oder mobile Apps lahmzulegen, zu stören und sie für Nutzer unerreichbar zu machen. DDoS-Angriffe werden in der Regel durchgeführt, indem der Server des Opfers mit mehr Traffic überflutet wird, als er bewältigen kann.</p>
+	<p>Wenn Sie mehr über DDoS-Angriffe und andere Arten von Angriffen erfahren möchten, besuchen Sie unser <a href="https://www.cloudflare.com/learning" target="_blank" rel="noopener noreferrer">Lernzentrum</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="accessing-previous-reports">Frühere Berichte abrufen</h3>
+		<a href="https://blog.cloudflare.com/#accessing-previous-reports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir möchten Sie daran erinnern, dass Sie auf dem Cloudflare-Blog auf <a href="https://blog.cloudflare.com/tag/ddos-reports">frühere Ausgaben des Berichts zur DDoS-Bedrohungslandschaft</a> zugreifen können. Sie sind auch in unserem interaktiven Hub, <a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, verfügbar. Auf Radar finden Sie globalen Internet Traffic, Angriffe und technologische Trends und Erkenntnisse, mit Drill-Down- und Filterfunktionen, sodass Sie bestimmte Länder, Branchen und Netzwerke näher betrachten können. Es gibt auch eine <a href="https://developers.cloudflare.com/radar" target="_blank" rel="noopener noreferrer">kostenlose API</a>, die es Forschern, Datendetektiven und anderen Web-Enthusiasten ermöglicht, Internet-Trends auf dem ganzen Globus zu untersuchen.</p>
+	<p>Nähere Informationen darüber, wie wir diesen Bericht erstellen bzw. vorbereiten, erfahren Sie in der Beschreibung unserer <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank" rel="noopener noreferrer">Methodologien</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="2024-q1-key-insights">Wichtigste Erkenntnisse aus dem Q1 2024</h3>
+		<a href="https://blog.cloudflare.com/#2024-q1-key-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wichtige Erkenntnisse aus dem ersten Quartal 2024 sind u.a.:</p>
+	<ul>
+		<li>
+			<p>2024 begann mit einem Paukenschlag. Die Verteidigungssysteme von Cloudflare wehrten im ersten Quartal automatisch 4,5 Millionen DDoS-Angriffe ab – ein Anstieg von 50 % im Vergleich zum Vorjahr.</p>
+		</li>
+		<li>
+			<p>DNS-basierte DDoS-Angriffe haben im Vergleich zum Vorjahr um 80 % zugelegt und sind nach wie vor der wichtigste Angriffsvektor.</p>
+		</li>
+		<li>
+			<p>Die DDoS-Angriffe auf Schweden stiegen nach der Aufnahme des Landes in das NATO-Bündnis um 466 % an, was das Muster widerspiegelte, das während des NATO-Beitritts Finnlands im Jahr 2023 zu beobachten war.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="starting-2024-with-a-bang">2024 beginnt mit einem Paukenschlag</h3>
+		<a href="https://blog.cloudflare.com/#starting-2024-with-a-bang" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben gerade das erste Quartal 2024 abgeschlossen, und unsere automatisierten Abwehrmaßnahmen haben bereits 4,5 Millionen DDoS-Angriffe abgewehrt – eine Menge, die 32 % aller DDoS-Angriffe entspricht, die wir im Jahr 2023 abgewehrt haben.</p>
+	<p>Aufschlüsselung nach Angriffsarten: HTTP-DDoS-Attacken stiegen um 93 % im Jahresvergleich und 51 % im Quartalsvergleich. DDoS-Angriffe auf der Netzwerkebene, auch bekannt als L3/4-DDoS-Angriffe, stiegen um 28 % gegenüber dem Vorjahr und 5 % gegenüber dem Vorquartal.</p>
+	<p>Q1 2024: Cloudflare hat 4,5 Millionen DDoS-Angriffe abgewehrt</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QB3mXk7ACemlQBJcY05Wk/ecb4b32b415ac29a3c5fe673af3520da/image1-15.png" alt="" class="kg-image" width="1630" height="1232" loading="lazy">
+
+	</figure>
+	<p>Wenn wir die kombinierte Zahl von HTTP-DDoS-Angriffen und L3/4-DDoS-Angriffen vergleichen, sehen wir, dass die Zahl im ersten Quartal 2024 insgesamt um 50 % im Jahres- und 18 % im Quartalsvergleich gestiegen ist.</p>
+	<p>Aufschlüsselung der DDoS-Angriffe nach Jahr und Quartal</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3B6aKU9fQb6RGzcJYQmjVv/e8a91d10307dc429c47ca413cf134774/pasted-image-0--7--1.png" alt="DDoS attacks by year and quarter" class="kg-image" width="1600" height="942" loading="lazy">
+
+	</figure>
+	<p>Insgesamt haben unsere Systeme im ersten Quartal 10,5 Billionen HTTP-DDoS-Angriffe abgewehrt. Außerdem bekämpften unsere Systeme mehr als 59 Petabyte an DDoS-Angriffs-Traffic allein auf Netzwerkschicht.</p>
+	<p>Unter diesen DDoS-Angriffen auf der Netzwerkebene überschritten viele die Rate von 1 Terabit pro Sekunde und zwar fast wöchentlich. Der bisher größte von uns im Jahr 2024 abgewehrte Angriff ging von einer Mirai-Variante des Botnetzes aus. Dieser Angriff erreichte 2 Tbit/s und richtete sich gegen einen asiatischen Hosting-Provider, der durch <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Cloudflare Magic Transit</a> geschützt wurde. Die Systeme von Cloudflare haben den Angriff automatisch erkannt und abgewehrt.</p>
+	<p>Das <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer">Mirai-Botnetz</a>, das für seine massiven DDoS-Angriffe berüchtigt ist, bestand hauptsächlich aus infizierten IoT-Geräten. 2016 legte es den Internetzugang in den USA lahm, indem es DNS-Dienstanbieter angriff. Fast acht Jahre später sind Mirai-Angriffe immer noch sehr häufig. Vier von 100 HTTP-DDoS-Angriffen und zwei von 100 L3/4-DDoS-Angriffen werden von einer Mirai-Variante des Botnets gestartet. Wir sprechen deshalb von einer „Variante“, weil der Mirai-Quellcode veröffentlicht wurde und es im Laufe der Jahre viele Abwandlungen des Originals gegeben hat.</p>
+	<p>Mirai-Botnet nimmt asiatischen Hosting-Provider mit einem DDoS-Angriff mit 2 Tbit/s ins Visier</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QN1Ndrb3e0EEiVNPu1chA/1c3a61ed355fd74c008955659d696661/pasted-image-0-3.png" alt="Mirai botnet targets Asian hosting provider with 2 Tbps DDoS attack" class="kg-image" width="1600" height="938" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="dns-attacks-surge-by-80">DNS-Angriffe steigen um 80 %</h3>
+		<a href="https://blog.cloudflare.com/#dns-attacks-surge-by-80" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im März 2024 haben wir eines unserer neuesten DDoS-Abwehrsysteme eingeführt, <a href="https://blog.cloudflare.com/advanced-dns-protection">Advanced DNS Protection</a>. Dieses System ergänzt unsere bestehenden Systeme und ist zum Schutz vor den raffiniertesten DNS-basierten DDoS-Angriffen konzipiert.</p>
+	<p>Wir haben uns nicht aus heiterem Himmel entschieden, in dieses neue System zu investieren. DNS-basierte DDoS-Angriffe haben sich zum wichtigsten Angriffsvektor entwickelt und ihr Anteil an allen Angriffen auf der Netzwerkebene nimmt weiter zu. Im ersten Quartal 2024 stieg der Anteil der DNS-basierten DDoS-Angriffe im Vergleich zum Vorjahr um 80 % auf etwa 54 %.</p>
+	<p>DNS-basierte DDoS-Angriffe nach Jahr und Quartal</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eeimQquFTBhNCOKeGTcoe/d1ccde4a4468aa1a73ee7fb5711014ba/pasted-image-0--1--1.png" alt="DNS-based DDoS attacks by year and quarter" class="kg-image" width="1600" height="948" loading="lazy">
+
+	</figure>
+	<p>Trotz des Anstiegs der DNS-Angriffe und aufgrund des allgemeinen Anstiegs aller Arten von DDoS-Angriffen bleibt der Anteil der einzelnen Angriffsarten bemerkenswerterweise derselbe wie in unserem vorherigen Bericht für das letzte Quartal 2023. HTTP-DDoS-Angriffe machen nach wie vor 37 % aller DDoS-Angriffe aus, DNS-DDoS-Angriffe 33 % und die restlichen 30 % entfallen auf alle anderen Arten von L3/4-Angriffen, wie <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer">SYN-Flood</a> und <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer">UDP-Floods</a>.</p>
+	<p>Verteilung der Angriffsarten</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lUZwA2pBOVNWP9nW5541d/c4460eeac1d3b5a40e84dbb1fb6cf89f/pasted-image-0--2-.png" alt="Attack type distribution" class="kg-image" width="1600" height="535" loading="lazy">
+
+	</figure>
+	<p>Tatsächlich waren SYN-Floods der zweithäufigste Layer 3/4-Angriff. Der dritte Angriffstyp waren RST Floods, eine weitere Art von TCP-basiertem DDoS-Angriff. UDP-Floods belegten mit einem Anteil von 6 % den vierten Platz.</p>
+	<p>Top-Angriffsvektoren</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mQ0isNVD7dWQbtnq5DITg/0fb241b6fd61d552d3a579323e37f38b/pasted-image-0--3-.png" alt="Top attack vectors" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>Bei der Analyse der häufigsten Angriffsvektoren untersuchen wir auch die Angriffsvektoren, die das größte Wachstum verzeichneten, es aber nicht unbedingt in die Top-Ten-Liste geschafft haben. Unter den am stärksten wachsenden Angriffsvektoren (neue Bedrohungen) verzeichnete Jenkins-Flood das größte Wachstum von über 826 % gegenüber dem Vorquartal.</p>
+	<p>Jenkins-Flood ist ein DDoS-Angriff, der Schwachstellen im <a href="https://www.jenkins.io" target="_blank" rel="noopener noreferrer">Jenkins-Automatisierungsserver</a> ausnutzt, insbesondere durch UDP-Multicast/Broadcast- und DNS-Multicast-Dienste. Angreifer können kleine, speziell gestaltete Anfragen an einen öffentlich zugänglichen UDP-Port auf Jenkins-Servern senden, sodass sie mit unverhältnismäßig großen Datenmengen antworten müssen. Das kann das Traffic-Volumen stark erhöhen, das Netzwerk des Angriffsziels überlasten und zu einer Serviceunterbrechung führen. Jenkins hat diese Sicherheitslücke (<a href="https://smartermsp.com/cybersecurity-threat-advisory-0013-20-jenkins-udp-ddos-attack-cve-2020-2100" target="_blank" rel="noopener noreferrer">CVE-2020-2100</a>) geschlossen, indem diese Dienste in späteren Versionen standardmäßig deaktiviert wurden. Doch wie wir auch vier Jahre später feststellen können, wird diese Schwachstelle im öffentlichen Internet auch weiterhin für DDoS-Angriffe missbraucht.</p>
+	<p>Der Angriffsvektor verzeichnete im Quartalsvergleich das größte Wachstum</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HZBbtghkPLvvRnFaTAw9d/f1030dfaed7500861fdbc83b1c4d02ab/pasted-image-0--4-.png" alt="Attack vectors that experienced the largest growth QoQ" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="http-2-continuation-flood">HTTP/2 Continuation Flood</h3>
+		<a href="https://blog.cloudflare.com/#http-2-continuation-flood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ein weiterer Angriffsvektor, der es wert ist, diskutiert zu werden, ist die HTTP/2 Continuation Flood. Dieser Angriffsvektor wird durch eine Sicherheitslücke ermöglicht, die <a href="https://nowotarski.info/http2-continuation-flood-technical-details" target="_blank" rel="noopener noreferrer">vom Forscher Bartek Nowotarski am 3. April 2024 entdeckt und öffentlich gemacht</a> wurde.</p>
+	<p>Die HTTP/2 Continuation Flood-Schwachstelle betrifft HTTP/2-Protokollimplementierungen, die HEADERS und mehrere CONTINUATION-Frames unsachgemäß behandeln. Der Bedrohungsakteur sendet eine Folge von CONTINUATION-Frames ohne das END_HEADERS-Flag, was zu potenziellen Serverproblemen führt, wie z. B. Abstürzen, wenn der Speicher voll ist oder die CPU erschöpft ist. HTTP/2 Continuation Flood ermöglicht es sogar einem einzelnen Rechner, Websites und APIs, die HTTP/2 verwenden, zu stören. Die zusätzliche Herausforderung besteht darin, dass sie nur schwer entdeckt werden können, da keine Anfragen in HTTP-Zugriffsprotokollen sichtbar sind.</p>
+	<p>Diese Sicherheitslücke stellt eine potenziell schwerwiegende Bedrohung dar, die schädlicher ist als die bisher bekannten.</p>
+	<p><a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack">HTTP/2 Rapid Reset</a>, der zu einer der größten HTTP/2 DDoS-Angriffskampagnen der Geschichte führte. Während dieser Kampagne zielten Tausende von hyper-volumetrischen DDoS-Angriffen auf Cloudflare. Die Angriffe umfassten mehrere Millionen Anfragen pro Sekunde. Die durchschnittliche Angriffsrate in dieser Kampagne, die von Cloudflare aufgezeichnet wurde, betrug 30 Millionen Anfragen pro Sekunde. Ungefähr 89 Attacken erreichten Höchstwerte von mehr als 100 Millionen Anfragen pro Sekunde und der größte von uns verzeichnete Angriff brachte es auf 201 Millionen. Weitere Informationen finden Sie in unserem <a href="https://blog.cloudflare.com/ddos-threat-report-2023-q3">Bericht zur DDoS-Bedrohungslandschaft im dritten Quartal 2023</a>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72mnC1iNyKm6RX3UAwsVG4/5d66586e5833ce492bd2cbfb1eb538eb/pasted-image-0--2--1.png" alt="HTTP/2 Rapid Reset campaign of hyper-volumetric DDoS attacks in 2023 Q3" class="kg-image" width="1600" height="515" loading="lazy">
+
+	</figure>
+	<p>HTTP/2 Rapid Reset-Kampagne mit hypervolumetrischen DDoS-Angriffen im dritten Quartal 2023</p>
+	<p>Das Netzwerk von Cloudflare, seine HTTP/2-Implementierung und Kunden, die unsere <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">WAF</a>/<a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank" rel="noopener noreferrer">CDN</a>-Dienste nutzen, sind von dieser Schwachstelle nicht betroffen. Darüber hinaus sind uns derzeit keine Bedrohungsakteure bekannt, die diese Sicherheitslücke in der Praxis ausnutzen.</p>
+	<p>Den verschiedenen Implementierungen von HTTP/2, die von dieser Sicherheitslücke betroffen sind, wurden mehrere CVEs zugewiesen. Ein von Christopher Cullen von der Carnegie Mellon University veröffentlichter <a href="https://kb.cert.org/vuls/id/421644" target="_blank" rel="noopener noreferrer">CERT-Alarm</a>, über den <a href="https://www.bleepingcomputer.com/news/security/new-http-2-dos-attack-can-crash-web-servers-with-a-single-connection" target="_blank" rel="noopener noreferrer">Bleeping Computer</a> berichtet hat, listet die verschiedenen CVEs auf:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 100%">
+		<colgroup>
+			<col style="width: 240px">
+			<col style="width: 140px">
+			<col style="width: 420px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Affected service </span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Details</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js HTTP/2 server</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-27983</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sending a few HTTP/2 frames can cause a race condition and memory leak, leading to a potential denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Envoy's oghttp codec</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-27919</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Not resetting a request when header map limits are exceeded can cause unlimited memory consumption which can potentially lead to a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tempesta FW</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-2758</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Its rate limits are not entirely effective against empty CONTINUATION frames flood, potentially leading to a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">amphp/http</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-2653</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">It collects CONTINUATION frames in an unbounded buffer, risking an out of memory (OOM) crash if the header size limit is exceeded, potentially resulting in a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Go's net/http and net/http2 packages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2023-45288</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows an attacker to send an arbitrarily large set of headers, causing excessive CPU consumption, potentially leading to a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nghttp2 library</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-28182</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Involves an implementation using nghttp2 library, which continues to receive CONTINUATION frames, potentially leading to a denial of service event without proper stream reset callback.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apache Httpd</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-27316</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A flood of CONTINUATION frames without the END_HEADERS flag set can be sent, resulting in the improper termination of requests, potentially leading to a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apache Traffic Server</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-31309</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">HTTP/2 CONTINUATION floods can cause excessive resource consumption on the server, potentially leading to a denial of service event.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Envoy versions 1.29.2 or earlier</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE-2024-30255</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Consumption of significant server resources can lead to CPU exhaustion during a flood of CONTINUATION frames, which can potentially lead to a denial of service event.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>Betroffener Dienst</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ntlfFKUUah6DeHSlwJSq6/f488dbd9e68e2822a16c448aa55d0c12/Top-Attacked-Industry-by-Region-Q1-2024.png" alt="Top attacked industries by HTTP DDoS attacks, by region" class="kg-image" width="1600" height="1335" loading="lazy">
+
+	</figure>
+	<p>CVE</p>
+	<p>Details</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LNYVB8cgZhctz3H84y4is/c952e53b1475adcebaac1df63fd71352/pasted-image-0--5-.png" alt="Top attacked industries by HTTP DDoS attacks" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>Node.js HTTP/2-Server</p>
+	<p>CVE-2024-27983</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61FwNZ9kUUqXnHpcSmVRaC/479e12abb25cd38a3d302bb28efa51dc/pasted-image-0--6--1.png" alt="Top attacked industries by L3/4 DDoS attacks" class="kg-image" width="1600" height="895" loading="lazy">
+
+	</figure>
+	<p>Das Senden weniger HTTP/2-Frames kann zu einem Wettlauf mit einem Speicherleck und einem Denial of Service-Ereignis führen.</p>
+	<p>Der oghttp-Codec von Envoy</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I2FKWUobGjuyukeip0K5U/6f62640b53a76e3807743ed0b1865d03/pasted-image-0--8--1.png" alt="Top attacked industries by HTTP DDoS attacks (normalized)" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>CVE-2024-27919</p>
+	<p>Wenn eine Anfrage nicht zurückgesetzt wird, wenn die Grenzen der Header-Maps überschritten werden, kann dies zu einem unbegrenzten Speicherverbrauch führen, wodurch möglicherweise ein Denial-of-Service-Ereignis ausgelöst werden kann.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KNGEFTvu7T1NQj3nO9Jqo/28d249aa64cd6d23789ce5b6ba738642/pasted-image-0--9--1.png" alt="Top attacked industries by L3/4 DDoS attacks (normalized)" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>Empesta FW</p>
+	<p>CVE-2024-2758</p>
+	<p>Seine Durchsatzbegrenzungen sind nicht vollständig wirksam gegen eine Flut leerer CONTINUATION-Frames, was zu einem Denial-of-Service-Ereignis führen kann.</p>
+	<p>amphp/http</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wQLyRJrrtx54hGXPY2HHC/d6e9119a6d8996713f2f4d1befad518e/pasted-image-0--10-.png" alt="The top sources of HTTP DDoS attacks" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>CVE-2024-2653</p>
+	<p>Er sammelt CONTINUATION-Frames in einem unbegrenzten Puffer, wobei das Risiko eines Out-of-Memory-Absturzes (loom) besteht, wenn die Obergrenze der Header-Größe überschritten wird, was möglicherweise zu einem Denial-of-Service-Ereignis führt.</p>
+	<p>Die net/http- und net/http2-Pakete von Go</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vggccrQzkQy6yNuHMQboq/c4de452c39e00a1d38f4c1d7a114c585/pasted-image-0--11-.png" alt="The top sources of L3/4 DDoS attacks" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>CVE-2023-45288</p>
+	<p>Ermöglicht es einem Angreifer, einen beliebig großen Satz von Headern zu senden, was zu einer übermäßigen CPU-Belastung und möglicherweise zu einem Denial-of-Service-Ereignis führen kann.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dYeSLU5tTKxZmMoqkF8y5/ac6ff10b445c97be9a1a5e07374b0643/pasted-image-0--12-.png" alt="The top sources of HTTP DDoS attacks (normalized)" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>nghttp2-Bibliothek</p>
+	<p>CVE-2024-28182</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qpyO1vBpvAjoCe50RnZGT/2e6001062ff51ecc9f5bb2bb30e9cf6f/pasted-image-0--13-.png" alt="The top sources of L3/4 DDoS attacks (normalized)" class="kg-image" width="1600" height="974" loading="lazy">
+
+	</figure>
+	<p>Eine Implementierung, die die nghttp2-Bibliothek verwendet, empfängt weiterhin CONTINUATION-Frames, was zu einem Denial-of-Service-Ereignis ohne ordnungsgemäßen Stream-Reset-Callback führen kann.</p>
+	<p>Apache httpdpd</p>
+	<p>CVE-2024-27316</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cGyvb0ljLm8wOQTzLHYfV/b3650336a30e2bafb717e42fc5255098/pasted-image-0--14-.png" alt="Top attacked countries and regions by HTTP DDoS attacks" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>Eine Flut von CONTINUATION-Frames ohne gesetztes END_HEADERS-Flag kann gesendet werden, was zur unsachgemäßen Beendigung von Anfragen und möglicherweise zu einem Denial-of-Service-Ereignis führt.</p>
+	<p>Apache Traffic-Server</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6if6kI4aS8Kph16cSCEWjf/20be20d9cfe02034bf123003042dfbbb/pasted-image-0--15-.png" alt="Top attacked countries and regions by HTTP DDoS attacks (normalized)" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>CVE-2024-31309</p>
+	<p>HTTP/2 CONTINUATION-Floods können zu einem übermäßigen Ressourcenverbrauch auf dem Server führen, was möglicherweise zu einem Denial-of-Service-Ereignis führt.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Nzw0zyRFnxer3C1SQmeHI/ae2081521fd12b399c9776a5a54748c4/pasted-image-0--16-.png" alt="Top attacked countries and regions by L3/4 DDoS attacks" class="kg-image" width="1600" height="897" loading="lazy">
+
+	</figure>
+	<p>Envoy-Versionen 1.29.2 oder früher</p>
+	<p>CVE-2024-30255</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sUX9I80bmFLo0vrTNRiDu/4a96fd8283f2a5156ff02cd95fcdbda5/pasted-image-0--17-.png" alt="Top attacked countries and regions by L3/4 DDoS attacks (normalized)" class="kg-image" width="1600" height="903" loading="lazy">
+
+	</figure>
+	<p>Der Verbrauch erheblicher Serverressourcen kann während einer Flut von CONTINUATION-Frames zur Erschöpfung der CPU und damit möglicherweise zu einem Denial-of-Service-Ereignis führen.</p>
+	<div class="flex anchor relative">
+		<h3 id="top-attacked-industries">Die am häufigsten angegriffenen Branchen</h3>
+		<a href="https://blog.cloudflare.com/#top-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der Analyse der Angriffsstatistiken verwenden wir <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-industry" target="_blank" rel="noopener noreferrer">die Branche unserer Kunden,</a> die in unseren Systemen gespeichert ist, um die am meisten angegriffenen Branchen zu ermitteln. Im ersten Quartal 2024 war die Marketing- und Werbebranche die am häufigsten von HTTP-DDoS-Angriffen betroffene Branche in Nordamerika. In Afrika und Europa wurde die Branche Informationstechnologie und Internet am häufigsten angegriffen. Im Nahen Osten war die am meisten angegriffene Branche die Softwarebranche. In Asien wurde die Glücksspielbranche am häufigsten angegriffen. In Südamerika war es der Bereich Banken, Finanzdienstleistungen und Versicherungen (BFSI). Zu guter Letzt war in Ozeanien die Telekommunikationsindustrie am häufigsten von DDoS-Angriffen betroffen.</p>
+	<p>Am stärksten von HTTP-DDoS-Angriffen betroffene Branchen, nach Region</p>
+	<p>Weltweit stand die Gaming- und Glücksspielbranche am stärksten im Visier von HTTP-DDoS-Angriffen. Etwas mehr als sieben von 100 DDoS-Anfragen, die Cloudflare abwehrte, zielten auf die <a href="https://www.cloudflare.com/gaming" target="_blank" rel="noopener noreferrer">Glücksspielbranche</a> ab. An zweiter Stelle steht die Internet- und IT-Branche und an dritter Stelle das Marketing und die Werbung.</p>
+	<p>Am häufigsten von HTTP-DDoS-Angriffen betroffene Branchen</p>
+	<p>Mit einem Anteil von 75 % aller DDoS-Angriffsbytes auf der Netzwerkebene stand die Internet- und IT-Branche am stärksten im Visier von DDoS-Angriffen auf der Netzwerkebene. Eine mögliche Erklärung für diesen hohen Anteil ist, dass Internet- und IT-Firmen als Super-Aggregatoren von Angriffen fungieren und DDoS-Angriffe abbekommen, die in Wirklichkeit auf ihre Endkunden abzielen. Die nächsten drei Prozent entfielen auf die Telekommunikationsbranche, die Branche <a href="https://www.cloudflare.com/financial-services" target="_blank" rel="noopener noreferrer">Banken, Finanzdienstleistungen und Versicherungen (BFSI)</a>, die Glücksspielindustrie und die Softwarebranche.</p>
+	<p>Am häufigsten von L3/4-DDoS-Angriffen betroffene Branchen</p>
+	<p>Normalisiert man die Daten, indem man den Angriffs-Traffic durch den gesamten Traffic für eine bestimmte Branche dividiert, ergibt sich ein völlig anderes Bild. Bei den HTTP-Angriffen waren Anwaltskanzleien und juristische Dienstleistungen die am meisten angegriffene Branche, da über 40 % ihres Traffics aus HTTP-DDoS-Angriffen bestand. An zweiter Stelle lag die Biotechnologie-Branche mit einem Anteil von 20 % am HTTP-DDoS-Angriffs-Traffic. An dritter Stelle standen <a href="https://www.cloudflare.com/galileo" target="_blank" rel="noopener noreferrer">gemeinnützige Organisationen</a> mit einem Anteil von HTTP-DDoS-Angriffen von 13 %. An vierter Stelle steht die Luft- und Raumfahrtindustrie, gefolgt von Transport, Großhandel, <a href="https://www.cloudflare.com/public-sector" target="_blank" rel="noopener noreferrer">Regierungsbeziehungen</a>, Spielraum, Film, öffentliche Politik sowie Erwachsenenunterhaltung.</p>
+	<p>Am häufigsten von HTTP-DDoS-Angriffen betroffene Branchen (normalisiert)</p>
+	<p>Was die Netzwerkschicht angeht, so blieben Internet und IT bei Normalisierung die am stärksten von DDoS-Angriffen auf Layer 3 und 4 betroffene Branche, da fast ein Drittel ihres Traffics auf Angriffe entfällt. An zweiter Stelle stand die Textilbranche mit einem Angriffsanteil von 4 %. An dritter Stelle steht das Bauingenieurwesen, gefolgt vom Bankwesen, Finanzdienstleistungen und Versicherungen (BFSI), Militär, Bauwesen, medizinische Geräte, Verteidigung und Raumfahrt, Gaming und Glücksspiel und der Einzelhandel (soweit die Top 10).</p>
+	<p>Am häufigsten von DDoS-Angriffen auf Layer 3/4 betroffene Branchen (normalisiert)</p>
+	<div class="flex anchor relative">
+		<h3 id="largest-sources-of-ddos-attacks">Wichtigste Ursprungsländer von DDoS-Angriffen</h3>
+		<a href="https://blog.cloudflare.com/#largest-sources-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der Analyse der <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#source-country" target="_blank" rel="noopener noreferrer">Quellen von HTTP-DDoS-Angriffen</a> schauen wir uns die Ursprungs-IP-Adresse an, um den Ursprungsort dieser Angriffe zu bestimmen. Ein Land bzw. eine Region, aus dem bzw. der viele Angriffe kommen, deutet darauf hin, dass es höchstwahrscheinlich viele Botnet-Knoten hinter <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn" target="_blank" rel="noopener noreferrer">Virtual Private Network (VPN)</a> oder Proxy-Endpunkten gibt, die Angreifer nutzen, um ihre Herkunft zu verschleiern.</p>
+	<p>Im ersten Quartal 2024 waren die Vereinigten Staaten die größte Quelle für HTTP-DDoS-Angriffs-Traffic, da ein Fünftel aller DDoS-Angriffsanfragen von US-amerikanischen IP-Adressen ausging. An zweiter Stelle steht China, gefolgt von Deutschland, Indonesien, Brasilien, Russland, Iran, Singapur, Indien und Argentinien.</p>
+	<p>Die wichtigsten Ursprungsländer für HTTP-DDoS-Angriffe</p>
+	<p>Auf der Netzwerkebene können die Quell-IP-Adressen <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer">gefälscht</a> werden. Anstatt sich also auf IP-Adressen zu verlassen, um die Quelle zu verstehen, <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#source-country" target="_blank" rel="noopener noreferrer">verwenden wir den Standort unserer Rechenzentren,</a> bei denen der Angriffs-Traffic eingegangen ist. Dank der guten globalen Abdeckung von Cloudflare in über 310 Städten auf der ganzen Welt können wir eine geografische Genauigkeit erreichen.</p>
+	<p>Anhand des Standorts unserer Rechenzentren können wir erkennen, dass im ersten Quartal 2024 über 40 % des Traffics für L3/4-DDoS-Angriffe in unseren US-Rechenzentren abgewickelt wurden, was die USA zur größten Quelle für L3/4-Angriffe macht. Weit dahinter, an zweiter Stelle, liegt Deutschland mit 6 %, gefolgt von Brasilien, Singapur, Russland, Südkorea, Hongkong, Großbritannien, den Niederlanden und Japan.</p>
+	<p>Die wichtigsten Ursprungsländer von L3/4-DDoS-Angriffen</p>
+	<p>Wenn Sie die Daten normalisieren, indem Sie den angegriffenen Traffic durch den gesamten Traffic in ein bestimmtes Land oder eine bestimmte Region teilen, erhalten wir ein völlig anderes Bild. Fast ein Drittel des von Gibraltar ausgehenden HTTP-Traffics war DDoS-Angriffs-Traffic und damit die größte Quelle. An zweiter Stelle steht St. Helena, gefolgt von den Britischen Jungferninseln, Libyen, Paraguay, Mayotte, Äquatorialguinea, Argentinien und Angola.</p>
+	<p>Die wichtigsten Quellen für HTTP-DDoS-Angriffe (normalisiert)</p>
+	<p>Zurück zur Netzwerkebene, normalisiert, sehen die Dinge auch etwas anders aus. Fast 89 % des Traffics in unseren Rechenzentren in Simbabwe waren L3/4 DDoS-Angriffe. In Paraguay waren es über 56 %, gefolgt von der Mongolei mit einem Anteil von fast 35 %. Weitere Top-Standorte waren Moldawien, die Demokratische Republik Kongo, Ecuador, Dschibuti, Aserbaidschan, Haiti und die Dominikanische Republik.</p>
+	<p>Die wichtigsten Ursprungsländer von L3/4-DDoS-Angriffen (normalisiert)</p>
+	<div class="flex anchor relative">
+		<h3 id="most-attacked-locations">Am häufigsten angegriffene Standorte</h3>
+		<a href="https://blog.cloudflare.com/#most-attacked-locations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der Analyse von DDoS-Angriffen gegen unsere Kunden verwenden wir deren <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-country" target="_blank" rel="noopener noreferrer">Rechnungsland</a>, um das angegriffene Land (oder die angegriffene Region) zu bestimmen. Im ersten Quartal 2024 waren die USA am häufigsten von HTTP-DDoS-Angriffen betroffen. Ungefähr eine von zehn DDoS-Anfragen, die Cloudflare abwehrte, zielte auf die USA ab. An zweiter Stelle steht China, gefolgt von Kanada, Vietnam, Indonesien, Singapur, Hongkong, Taiwan, Zypern und Deutschland.</p>
+	<p>Am häufigsten von HTTP-DDoS-Angriffen angegriffene Länder und Regionen</p>
+	<p>Wenn Sie die Daten normalisieren, indem Sie den Angriffs-Traffic durch den gesamten Traffic in ein bestimmtes Land oder eine bestimmte Region teilen, ändert sich die Liste drastisch. Mehr als 63 % des HTTP-Traffics nach Nicaragua waren DDoS-Angriffs-Traffic, womit Nicaragua der am meisten angegriffene Standort war. An zweiter Stelle steht Albanien, gefolgt von Jordanien, Guinea, San Marino, Georgien, Indonesien, Kambodscha, Bangladesch und Afghanistan.</p>
+	<p>Am häufigsten von HTTP-DDoS-Angriffen betroffene Länder und Regionen (normalisiert)</p>
+	<p>Was die Netzwerkschicht angeht, war China das Land mit den meisten Angriffen, denn 39 % aller DDoS-Bytes, die Cloudflare im ersten Quartal 2024 abwehrte, richteten sich gegen chinesische Kunden von Cloudflare. Hongkong kam auf den zweiten Platz, gefolgt von Taiwan, den Vereinigten Staaten und Brasilien.</p>
+	<p>Am häufigsten von L3/4-DDoS-Angriffen betroffene Länder und Regionen</p>
+	<p>Zurück zur Netzwerkebene: Normalisiert man die Werte, so ist Hongkong der Standort mit den meisten Zielgruppen. L3/4 DDoS-Angriffs-Traffic machte über 78 % des gesamten nach Hongkong gehenden Traffics aus. An zweiter Stelle steht China mit einem DDoS-Anteil von 75 %, gefolgt von Kasachstan, Thailand, St. Vincent und die Grenadinen, Norwegen, Taiwan, der Türkei, Singapur und Brasilien.</p>
+	<p>Am häufigsten von L3/4-DDoS-Angriffen betroffene Länder und Regionen (normalisiert)</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-is-here-to-help-no-matter-the-attack-type-size-or-duration">Cloudflare hilft Ihnen – unabhängig von der Art, Größe oder Dauer des Angriffs</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-is-here-to-help-no-matter-the-attack-type-size-or-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare hat es sich zur Aufgabe gemacht, ein besseres Internet zu schaffen. Und ein besseres Internet ist eines, das für alle sicherer, schneller und zuverlässiger ist. Da vier von 10 HTTP-DDoS-Angriffen länger als 10 Minuten dauern und etwa drei von 10 Angriffen länger als eine Stunde andauern, stellt dies eine große Herausforderung dar. Doch egal, ob ein Angriff mehr als 100.000 Anfragen pro Sekunde umfasst, wie es bei einem von 10 Angriffen der Fall ist, oder ob er eine Million Anfragen pro Sekunde übersteigt – eine Seltenheit, die nur bei vier von 1.000 Angriffen vorkommt – die Verteidigungsmaßnahmen von Cloudflare bleiben undurchdringlich.</p>
+	<p>Seit der Einführung des <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS-Schutzes ohne Volumensbegrenzung</a> 2017, hat Cloudflare sein Versprechen, allen Unternehmen <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS-Schutz</a> der Enterprise-Klasse kostenlos zur Verfügung zu stellen, konsequent eingelöst und sichergestellt, dass unsere fortschrittliche Technologie und robuste Netzwerkarchitektur nicht nur Angriffe abwehrt, sondern auch die Performance ohne Kompromisse erhält.</p>
+</div>

@@ -1,137 +1,83 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZnZN9EKKVVyTeYN0ykztJ/a390bcf876f0e72d0fda7012f7e062bb/add-watermarks-to-your-cloudflare-stream-video-uploads.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream “<i>can you put this watermark image to the top right of my video?</i>” to customers with more detailed asks such as “<i>can you put this watermark image in a way it doesn’t take up more than 10% of the original video and with 20% opacity?”</i> All that and more is now available at no additional cost through the Watermarks API.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-is-cloudflare-stream">What is Cloudflare Stream?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-cloudflare-stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Stream provides out-of-the-box video infrastructure so developers can bring their app ideas to market faster. While building a video streaming app, developers must ask themselves questions like</p>
-	<ul>
-		<li>
-			<p>“<i>Where do we store the videos affordably?</i>”</p>
-		</li>
-		<li>
-			<p>“<i>How do we encode the videos to support users with varying Internet speeds?</i>”</p>
-		</li>
-		<li>
-			<p>“<i>How do we maintain our video pipeline in the long term?”</i></p>
-		</li>
-	</ul>
-	<p>Cloudflare Stream is a single product that handles video encoding, storage, delivery and presentation (with the Stream Player.) Stream lets developers launch their ideas faster while having the confidence the video infrastructure will scale with their app’s growth.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-the-watermark-api-works">How the Watermark API works</h2>
-		<a href="https://blog.cloudflare.com/#how-the-watermark-api-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API:</p>
-	<ul>
-		<li>
-			<p>A new <b>/stream/watermarks</b> endpoint that lets you create watermark profiles and returns a uid, a unique identifier for each watermark profile</p>
-		</li>
-		<li>
-			<p>Support for a <b>watermark</b> object containing the <b>uid</b> of the watermark profile that can be passed at the time of upload</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="step-1-creating-a-watermark-profile">Step 1: Creating a Watermark Profile</h3>
-		<a href="https://blog.cloudflare.com/#step-1-creating-a-watermark-profile" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A watermark profile describes the nature of the watermark, including the image to use as a watermark and properties such as its positioning, padding and scale.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gC4TBzYR8k50DMEMwCAvB/d89c30b075f05bb80adf697fc6450f18/image3-5.png" alt="" class="kg-image" width="600" height="286" loading="lazy">
-
-	</figure>
-	<p>In this example, we are going to create a watermark profile that places the Cloudflare logo to the lower left of the video:</p>
-	<pre class="language-bash"><code class="language-bash">curl --request POST \
-  --url https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/watermarks \
-  --header 'content-type: application/json' \
-  --header 'x-auth-email: $CLOUDFLARE_EMAIL \
-  --header 'x-auth-key: $CLOUDFLARE_KEY \
-  --data '{
-  "url": "https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-icon.png",
-  "name": "Cloudflare Icon",
-  "opacity": 0.5,
-  "padding": 0.05,
-  "scale": 0.1,
-  "position": "lowerLeft"
-}'</code></pre>
-	<p>The response contains information about the watermark profile, including a <b>uid</b> that we will use in the next step</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "result": {
-    "uid": "a85d289c2e3f82701103620d16cd2408",
-    "size": 9165,
-    "height": 504,
-    "width": 600,
-    "created": "2020-09-03T20:43:56.337486Z",
-    "downloadedFrom": "REDACTED_VIDEO_URL",
-    "name": "Cloudflare Icon",
-    "opacity": 0.5,
-    "padding": 0.05,
-    "scale": 0.1,
-    "position": "lowerLeft"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="step-2-apply-the-watermark">Step 2: Apply the Watermark</h3>
-		<a href="https://blog.cloudflare.com/#step-2-apply-the-watermark" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6z0eJjFKqSUiIVkmA5jjfz/219c6ba9b833701f4eaea33ce9c7eb17/image1-2.png" alt="" class="kg-image" width="1092" height="614" loading="lazy">
-
-	</figure>
-	<p>We are going to upload the commercial and request Stream to add the logo from the previous step as a watermark:</p>
-	<pre class="language-bash"><code class="language-bash">curl --request POST \
-  --url https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/copy \
-  --header 'content-type: application/json' \
-  --header 'x-auth-email: $EMAIL \
-  --header 'x-auth-key: $AUTH_KEY' \
-  --data '{
-  "url": "https://storage.googleapis.com/zaid-test/Watermarks%20Demo/The%20Internet%20was%20BuiltForThis.mp4",
-  "watermark": {
-    "uid": "a85d289c2e3f82701103620d16cd2408"
-  }
-}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="step-3-your-video-now-with-a-watermark">Step 3: Your video, now with a watermark!</h3>
-		<a href="https://blog.cloudflare.com/#step-3-your-video-now-with-a-watermark" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You’re done! You can watch the video with a watermark:</p><!--kg-card-begin: html--><br><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What’s next</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks" target="_blank" rel="noopener noreferrer">Watermark API docs</a> covering different use cases.</p>
-	<p>In future iterations, we plan to add support for animated watermarks. Additionally, we want to add Watermark support to the Stream Dashboard so you have a UI to manage and add watermarks.</p>
+<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream “<em>can you put this watermark image to the top right of my video?</em>” to customers with more detailed asks such as “<em>can you put this watermark image in a way it doesn’t take up more than 10% of the original video and with 20% opacity?”</em> All that and more is now available at no additional cost through the Watermarks API.</p>
+<h2>What is Cloudflare Stream?</h2>
+<p>Cloudflare Stream provides out-of-the-box video infrastructure so developers can bring their app ideas to market faster. While building a video streaming app, developers must ask themselves questions like</p>
+<ul>
+	<li>“<em>Where do we store the videos affordably?</em>”</li>
+	<li>“<em>How do we encode the videos to support users with varying Internet speeds?</em>”</li>
+	<li>“<em>How do we maintain our video pipeline in the long term?”</em></li>
+</ul>
+<p>Cloudflare Stream is a single product that handles video encoding, storage, delivery and presentation (with the Stream Player.) Stream lets developers launch their ideas faster while having the confidence the video infrastructure will scale with their app’s growth.</p>
+<h2>How the Watermark API works</h2>
+<p>The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API:</p>
+<ul>
+	<li>A new <strong>/stream/watermarks</strong> endpoint that lets you create watermark profiles and returns a uid, a unique identifier for each watermark profile</li>
+	<li>Support for a <strong>watermark</strong> object containing the <strong>uid</strong> of the watermark profile that can be passed at the time of upload</li>
+</ul>
+<h3>Step 1: Creating a Watermark Profile</h3>
+<p>A watermark profile describes the nature of the watermark, including the image to use as a watermark and properties such as its positioning, padding and scale.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="600" height="286" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=600&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=600&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 600w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=640&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=750&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=828&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=1080&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QNZ0ACXE1JD6HJ8204KD.png&amp;w=1200&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1200w" alt="Add Watermarks to your Cloudflare Stream Video Uploads Embedded Image - aTrtb5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 600px) 600px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="600" height="286" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Add Watermarks to your Cloudflare Stream Video Uploads Embedded Image - aTrtb5"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In this example, we are going to create a watermark profile that places the Cloudflare logo to the lower left of the video:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> --request</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/stream/watermarks</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'content-type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'x-auth-email: $CLOUDFLARE_EMAIL \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  --header 'x-auth-key:</span><span class="sk-24292e-fff"> $CLOUDFLARE_KEY </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "url": "https://storage.googleapis.com/zaid-test/Watermarks%20Demo/cf-icon.png",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "name": "Cloudflare Icon",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "opacity": 0.5,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "padding": 0.05,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "scale": 0.1,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "position": "lowerLeft"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
 </div>
+<p>The response contains information about the watermark profile, including a <strong>uid</strong> that we will use in the next step</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "uid"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "a85d289c2e3f82701103620d16cd2408",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "size"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 9165,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "height"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 504,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "width"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 600,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "created"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2020-09-03T20:43:56.337486Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "downloadedFrom"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "REDACTED_VIDEO_URL",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Cloudflare Icon",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "opacity"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 0.5,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "padding"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 0.05,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "scale"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 0.1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "position"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "lowerLeft"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Step 2: Apply the Watermark</h3>
+<p>We’ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H3NR3NB36SDB5K0QT45R.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Add Watermarks to your Cloudflare Stream Video Uploads Embedded Image - 3uJ5Kz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Add Watermarks to your Cloudflare Stream Video Uploads Embedded Image - 3uJ5Kz"></div>
+</figure>
+<p>We are going to upload the commercial and request Stream to add the logo from the previous step as a watermark:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> --request</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/stream/copy</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'content-type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'x-auth-email: $EMAIL \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  --header 'x-auth-key:</span><span class="sk-24292e-fff"> $AUTH_KEY</span><span class="sk-032f62-99ffe4">' \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  --data '{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://storage.googleapis.com/zaid-test/Watermarks%20Demo/The%20Internet%20was%20BuiltForThis.mp4",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "watermark"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "uid"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "a85d289c2e3f82701103620d16cd2408"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}'</span></span></code></pre>
+</div>
+<h3>Step 3: Your video, now with a watermark!</h3>
+<p>You’re done! You can watch the video with a watermark:</p>
+<div id="html-block-k1r" class="html-block"><br></div>
+<h2>What’s next</h2>
+<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks" target="_blank" rel="noopener noreferrer">Watermark API docs</a> covering different use cases.</p>
+<p>In future iterations, we plan to add support for animated watermarks. Additionally, we want to add Watermark support to the Stream Dashboard so you have a UI to manage and add watermarks.</p>

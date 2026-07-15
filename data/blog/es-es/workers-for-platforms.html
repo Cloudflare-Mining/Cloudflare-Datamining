@@ -1,0 +1,183 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/workers-for-platforms">English</a>, <a href="https://blog.cloudflare.com/fr-fr/workers-for-platforms">Français</a>, <a href="https://blog.cloudflare.com/de-de/workers-for-platforms">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-for-platforms">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/workers-for-platforms">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6liztOov5xmCEigA3FBxwb/54fc67ed418595069dfdc60186c65655/workers-for-platforms.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Como empresa, tanto si trabajas en una <i>startup</i> como si perteneces a la lista Fortune 500, tu prioridad es hacer que tus clientes estén contentos y tengan éxito con tu producto. Sin embargo, para ellos, el éxito y la felicidad puede depender, a veces, solo de una función.</p>
+	<p></p>
+	<p>"<i>Si pudieras personalizar X, podríamos utilizar tu producto"</i> (candidato potencial de tus soluciones).<i>"Si nos dejas hacer Y, multiplicaremos por diez el uso de tu producto"</i> (tu cliente más estratégico).</p>
+	<p>Quieres que tu producto haga de todo para todos, pero tu equipo de ingeniería solo puede seguir el ritmo hasta cierto punto? ¿qué se puede hacer?</p>
+	<p>Hoy anunciamos Workers para plataformas, nuestro conjunto de herramientas para ayudar a que cualquier producto sea programable, y que permite a nuestros clientes ofrecer valor a sus usuarios y desarrolladores de forma instantánea.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-more-programmable-interface"><b>Una interfaz más programable</b></h2>
+		<a href="https://blog.cloudflare.com/#a-more-programmable-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Una forma de dar a tus clientes la capacidad de interactuar con tu producto mediante programación es proporcionándoles las API. Esta es una de las razones por las que las API son tan prolíficas hoy en día. Permitir que el código (ya sea el tuyo propio o el de terceros) se relacione con tus aplicaciones es poco menos que revolucionario.</p>
+	<p>Sin embargo, sigue habiendo un problema. Aunque las API pueden dar a los desarrolladores la capacidad de interactuar con tu aplicación mediante programación, en última instancia los desarrolladores siempre están limitados por las abstracciones que les expone la API. Tú, como propietario de la aplicación, tienes que haber previsto cómo utilizaría el cliente tu producto, y luego haber desarrollado la API para dar respuesta al caso de uso. Si hay algo que he aprendido como responsable de producto, es que es casi imposible predecir cómo utilizarán los clientes un producto. También he aprendido que incluso con abundantes recursos de ingeniería, es prácticamente imposible desarrollar toda la funcionalidad necesaria para mantener contentos a dichos clientes.</p>
+	<p>Sin embargo, hay otra forma.</p>
+	<p>Las funciones, a diferencia de las API, proporcionan las primitivas de más bajo nivel (en lugar de abstracciones sobre ellas). Esto permite que el desarrollador defina el comportamiento adecuado a partir de ahí, e incluso puede definir sus propias API por encima.</p>
+	<p>En este sentido, las funciones y las API son en realidad complementarias entre sí. Incluso puedes optar por llamar a otra API directamente desde tu función. Por ejemplo, si estás gestionando un evento en un sistema de mensajería, podrías implementar tu propia función para enviar un correo electrónico llamando a una API de correo electrónico, o crear una incidencia en tu sistema de incidencias, etc.</p>
+	<p>Esta es la razón por la que estamos tan entusiasmados con Workers para plataformas. Es una herramienta que permite exponer una forma directa para que los desarrolladores de tus clientes aporten su propia lógica a cualquier aplicación. Creemos que va a desencadenar una ola de innovación dirigida por el cliente sobre las empresas que la adopten, y tiene el potencial de ser tan impactante para el desarrollo de aplicaciones en la web como lo ha sido la API.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-better-experience-for-developers"><b>Mejor experiencia para los desarrolladores</b></h2>
+		<a href="https://blog.cloudflare.com/#a-better-experience-for-developers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mientras que Workers para plataformas expone un paradigma más eficaz para hacer que el producto sea programable, también se traduce en mejores experiencias para ti y tu desarrollador.</p>
+	<p>Hoy en día, como desarrollador, antes de que puedas empezar a utilizar las API o los webhooks, hay una lista de tareas tediosas con las que tienes que lidiar. En primer lugar, tienes que establecer algún lugar donde alojar tu código, ya sea un servidor (o una función sin servidor), y exponerlo a través de un punto final externo para poder hacerlo. Tienes que gestionar las operaciones, los tokens personalizados, tienes que averiguar el nuevo esquema de autenticación, todo ello antes de empezar. Luego tienes que mantener ese servicio, y garantizar su funcionamiento para asegurarte de que los eventos se procesan siempre correctamente.</p>
+	<p>Con las funciones integradas directamente en los productos que utilizas, puedes <i>empezar a escribir el código</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cMmVDyn9JeB7YExynaLUG/7b07d87d868c630f9aaacf027235f616/image3-6.png" alt="" class="kg-image" width="1999" height="961" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-hasnt-this-model-been-embraced-until-now"><b>¿Por qué no se ha adoptado este modelo hasta ahora?</b></h2>
+		<a href="https://blog.cloudflare.com/#why-hasnt-this-model-been-embraced-until-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47rMDpKoKsLR9r63MT0Yuu/e82ef46b8331fe346d0ee0d56fc8898d/image1-14.png" alt="" class="kg-image" width="1876" height="1092" loading="lazy">
+
+	</figure>
+	<p>Permitir a los desarrolladores programar el funcionamiento de los eventos parece obvio, pero no significa que sea fácil.</p>
+	<p>En Cloudflare, nos encontramos con este mismo problema hace cinco años. Estábamos incorporando clientes cada vez más importantes a nuestra red, cada uno de los cuales necesitaba dictar el destino de una solicitud a su manera. Mientras que Page Rules ofrecía una forma de modificar el comportamiento por URL, los clientes querían controlar el comportamiento en función de las cookies, los encabezados, la geolocalización y mucho más.</p>
+	<p>Nos dimos cuenta de que nuestro equipo de ingenieros no podía atender todas las solicitudes, así que decidimos permitir a los clientes adaptar nuestro producto a sus propias necesidades.</p>
+	<p>Para abordar este problema, buscamos una solución que cumpliera los dos requisitos siguientes:</p>
+	<ol>
+		<li>
+			<p>Rendimiento: es inaceptable que una CDN, que debe acelerar tu sitio, añada latencia. ¿Cómo podemos hacer que sea tan rápido que ni siquiera notes que está ahí?</p>
+		</li>
+		<li>
+			<p>Seguridad: ¿cómo ejecutamos de forma segura un código que no es de confianza?</p>
+		</li>
+	</ol>
+	<p>Aunque estos requisitos son especialmente críticos cuando ofreces soluciones de rendimiento y seguridad, resolver estos retos es fundamental cuando permites a tus clientes programar tu producto. Si la función se debe ejecutar en la ruta crítica hacia tu usuario, añadir latencia es igualmente inaceptable. Y, por supuesto, nadie quiere que se produzcan fugas de seguridad solo para que sus usuarios puedan programar.</p>
+	<p>Crear un entorno multiinquilino realmente rápido y seguro no es baladí.</p>
+	<p>Cuando evaluamos nuestras opciones para resolver este problema, primero recurrimos a las tecnologías que existían para resolverlo en el servidor. Las funciones sin servidor ya existían en su momento, pero estaban impulsadas por contenedores que introducían el arranque en frío, lo que era, bueno, imposible. Así que <a href="https://blog.cloudflare.com/cloudflare-workers-open-source">recurrimos al navegador</a>, o específicamente a Chrome, con su motor V8, y decidimos adoptar el mismo enfoque y ejecutarlo en nuestros servidores.</p>
+	<p>Y aunque el planteamiento parece sencillo (y tal vez, en retrospectiva, obvio, como suelen parecer estas cosas), gestionar una gran plataforma de desarrollo multiinquilino a escala no es trivial. Si una parte del propósito de posibilitar a los clientes que programen tu producto es permitir a los equipos de ingeniería que dediquen más tiempo a la creación de nuevas funciones, el esfuerzo que supone mantener y escalar una plataforma de desarrollo de este tipo puede frustrar esta finalidad.</p>
+	<p>De lo que nos dimos cuenta hace poco fue de que no éramos los únicos que intentábamos resolver este problema.</p>
+	<p>Empresas como Shopify, que están desarrollando su escaparate programable de nueva generación, Oxygen, estaban intentando dar respuesta al mismo problema. Querían permitir a sus clientes ejecutar escaparates personalizados, y ser capaces de ofrecer el mejor rendimiento posible, al tiempo que mantenían un entorno seguro y multiusuario.</p>
+	<blockquote>
+		<p>"Shopify es la infraestructura de comercio de Internet que usan millones de comerciantes", afirma Zach Koch, director de producto, escaparates personalizados, en Shopify. "Al asociarnos con Cloudflare, podemos dar a los desarrolladores las herramientas que necesitan para crear escaparates únicos y eficientes. Estamos encantados de trabajar con Cloudflare para mitigar algunas de las complejidades de la creación de experiencias comerciales, como la escalabilidad y la disponibilidad global, para que los desarrolladores puedan centrarse en lo que diferencia a su marca".</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="how-can-you-build-your-next-platform-on-workers-for-platforms"><b>¿Cómo puedes desarrollar tu próxima plataforma en Workers para plataformas?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-can-you-build-your-next-platform-on-workers-for-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Trabajar con plataformas como Shopify para ayudarles a satisfacer las necesidades de sus desarrolladores, nos ayudó a darnos cuenta de otra cosa. La experiencia del desarrollador no es única. Es decir, mientras nosotros creamos nuestra plataforma para un amplio conjunto de desarrolladores, los desarrolladores de comercio electrónico pueden tener un conjunto de necesidades mucho más especializado, que se resuelve mejor con una experiencia de desarrollador a medida. Y, aunque la tecnología subyacente es la misma, hacer de las plataformas sus experiencias utilizando los mismos conceptos de alto nivel que necesitan nuestros clientes directos no tiene sentido.</p>
+	<p>Como nadie conoce a tus clientes mejor que tú, queremos que tú, el proveedor de la plataforma, diseñes la mejor experiencia para tus usuarios. Workers para plataformas expone un nuevo conjunto de herramientas y API que se integran directamente en el flujo de implementación que quieras diseñar (¿has visto lo que hemos hecho?).</p>
+	<div class="flex anchor relative">
+		<h3 id="tags-api-to-manage-your-functions-at-scale"><b>Etiquetas API para gestionar tus funciones a escala</b></h3>
+		<a href="https://blog.cloudflare.com/#tags-api-to-manage-your-functions-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Con nuestras API, siempre que un desarrollador quiera implementar un script en tu plataforma, puedes llamar a nuestras API para implementar un nuevo Worker en segundo plano. A diferencia de nuestra oferta tradicional de Workers, Workers para plataformas se ha diseñado para su uso a escala, para gestionar cientos de miles a millones de Cloudflare Workers.</p>
+	<p>Dependiendo de cómo gestiones tus servicios de implementación, o los usuarios, ahora también ofrecemos la opción de utilizar etiquetas para gestionar agrupaciones de scripts. Por ejemplo, si un usuario elimina su cuenta, y quieres asegurarte de que se limpian todos sus Workers. Con las etiquetas, ahora puedes añadir cualquier etiqueta arbitraria (como el Id. de usuario) por script, para permitir acciones masivas.</p>
+	<div class="flex anchor relative">
+		<h3 id="trace-workers"><b>Workers de rastreo</b></h3>
+		<a href="https://blog.cloudflare.com/#trace-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando el río suena agua lleva, y donde hay código, pues también hay errores. Cuando das a los desarrolladores las herramientas para escribir e implementar el código, también debes darles los medios para depurarlo.</p>
+	<p>Workers de rastreo es una herramienta que te permite recabar cualquier información sobre una solicitud que haya sido gestionada por un Worker, incluido cualquier registro o excepción, y pasarla a tu cliente. Un Worker de rastreo es un Worker que recibirá información sobre la ejecución de otros Workers, y puede reenviarla a un destino de tu elección, permitiendo casos de uso como el registro en directo o el almacenamiento a largo plazo.</p>
+	<p>A continuación, puedes ver un Worker de rastreo sencillo que envía sus datos de rastreo a un punto final HTTP:</p>
+	<p>Te mostramos un ejemplo de cómo podrían ser los datos de event.traces:</p>
+	<pre class="language-js"><code class="language-js">addEventListener("trace", event =&gt; {
+  event.waitUntil(fetch("http://example.com/trace", {
+    method: "POST",
+    body: JSON.stringify(event.traces),
+  }))
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="chaining-multiple-workers-together-using-dynamic-dispatch"><b>Encadenamiento de varios Workers mediante el envío dinámico</b></h3>
+		<a href="https://blog.cloudflare.com/#chaining-multiple-workers-together-using-dynamic-dispatch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">[
+  {
+    "scriptName": "Example script",
+    "outcome": "exception",
+    "eventTimestamp": 1587058642005,
+    "event": {
+      "request": {
+        "url": "https://example.com/some/requested/url",
+        "method": "GET",
+        "headers": [
+          "cf-ray": "57d55f210d7b95f3",
+          "x-custom-header-name": "my-header-value"
+        ],
+        "cf": {
+          "colo": "SJC"
+        }
+      },
+    },
+    "logs": [
+      {
+        "message": ["string passed to console.log()"],
+        "level": "log",
+        "timestamp": 1587058642005
+      }
+    ],
+    "exceptions": [
+      {
+        "name": "Error",
+        "message": "Threw a sample exception",
+        "timestamp": 1587058642005
+      }
+    ]
+  }
+]</code></pre>
+	<p>De nuestra experiencia con algunos de nuestros primeros clientes, otra necesidad de la que fuimos conscientes con frecuencia era la posibilidad de ejecutar tu propio código, antes de ejecutar el código de tu cliente. Tal vez quieras ejecutar una capa de autenticación, corregir la entrada o la salida, o incluso proporcionar información útil a posteriori (como los Id. de usuario o de cuenta).</p>
+	<p>Para ello puedes querer mantener tu propio Worker. Sin embargo, cuando termine de ejecutarse, querrás poder llamar al siguiente Worker, con el código de tu <i>cliente</i>.</p>
+	<p>Ejemplo:</p>
+	<p><b>Dominios personalizados, ¡y mucho más!</b></p>
+	<pre class="language-js"><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
+let response = await user_worker.fetch(request);</code></pre>
+	<p>Las funciones anteriores son solo las nuevas funciones de Workers que hemos habilitado para nuestros clientes esta semana, pero nuestro objetivo es proporcionar todas las herramientas que necesitas para desarrollar tu plataforma. Por ejemplo, puedes utilizar Workers para plataformas con <a href="https://developers.cloudflare.com/ssl/ssl-for-saas" target="_blank" rel="noopener noreferrer">Cloudflare para SaaS para crear dominios personalizados</a>. (Y sigue atento si quieres saber a qué nos referimos con ¡y mucho más!).</p>
+	<div class="flex anchor relative">
+		<h2 id="custom-domains-and-more"><b>¿Cómo puedo acceder?</b></h2>
+		<a href="https://blog.cloudflare.com/#custom-domains-and-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Como ocurre con cualquier producto nuevo que lanzamos, no cabe duda de que tenemos mucho que aprender de nuestros clientes y de sus casos de uso. Como queremos apoyarte y queremos garantizar tu éxito, si te interesa, nos encantaría conocerte a ti y tu caso de uso, y ayudarte a configurar todas las herramientas que necesitas. Para empezar, te pedimos que <a href="https://www.cloudflare.com/lp/workers-for-platforms" target="_blank" rel="noopener noreferrer">rellenes nuestro formulario</a>, y nos pondremos en contacto contigo.</p>
+	<p>Mientras tanto, te invitamos a consultar nuestros documentos para desarrolladores o a saludar en Discord.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-do-i-get-access"><b>Es solo el principio</b></h2>
+		<a href="https://blog.cloudflare.com/#how-do-i-get-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nosotros mismos nos enfrentamos a este problema hace cinco años. Necesitábamos dar a nuestros clientes la capacidad de aumentar nuestras soluciones de una forma que les resultara útil, así que lo hicimos cuando lanzamos Cloudflare Workers. Permitir que nuestros clientes programen nuestra red global para satisfacer sus necesidades nos ha permitido dar soporte a más clientes en nuestra plataforma de desarrollo, al tiempo que permite a nuestro equipo de ingeniería centrarse en convertir las personalizaciones más solicitadas en funciones.</p>
+	<p>Estamos deseando ver tanto lo que tus desarrolladores crean en tu plataforma (y creemos que tú mismo te sorprenderás con los casos de uso que se les ocurren a los desarrolladores y que ni tú mismo podrías imaginar) como lo que tu equipo de ingeniería es capaz de solucionar en paralelo.</p>
+</div>

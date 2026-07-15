@@ -1,0 +1,67 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-clientless-web-isolation-beta">English</a>、<a href="https://blog.cloudflare.com/id-id/introducing-clientless-web-isolation-beta">Indonesia</a>、<a href="https://blog.cloudflare.com/th-th/introducing-clientless-web-isolation-beta">ไทย</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-clientless-web-isolation-beta">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aPOea3MbesSaDXoPPzI0Q/1d6eb2df764fceb1832a910093592dd4/introducing-clientless-web-isolation-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、CloudflareのクライアントレスWeb分離のベータ版を発表いたします。これはブラウザの分離の新しいオンランプで、Zero Trust Network Access（ZTNA）とゼロデイ、フィッシング、データ損失防止をネイティブに統合し、あらゆるデバイスであらゆるWebサイト、社内アプリ、SaaSアプリケーションを閲覧するユーザーに対してリモートブラウジングの利点を提供します。エンドポイントデバイスにソフトウェアをインストールしたり、証明書を設定したりする必要はありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1w934JVM77qlgDdGDxLZrC/d5999a3a37dc483ce9e0d18f7d51d572/image1-38.png" alt="Introducing Clientless Web Isolation" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="secure-access-for-managed-and-unmanaged-devices"><b>マネージドおよびアンマネージドデバイスのための安全なアクセス</b></h3>
+		<a href="https://blog.cloudflare.com/#secure-access-for-managed-and-unmanaged-devices" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2021年初頭、Cloudflareは、CloudflareのZero Trustプラットフォームとネイティブに統合された高速で安全なリモートブラウザであるブラウザの分離の一般提供を発表しました。このプラットフォームは、 <a href="https://www.cloudflare.com/ja-jp/teams" target="_blank" rel="noopener noreferrer">Cloudflare for Teams</a>とも呼ばれ、当社のSecure Web Gatewayソリューション（ <a href="https://www.cloudflare.com/ja-jp/teams/gateway" target="_blank" rel="noopener noreferrer">ゲートウェイ</a> ）と、ZTNAソリューション（ <a href="https://www.cloudflare.com/ja-jp/teams/access" target="_blank" rel="noopener noreferrer">アクセス</a>）による安全なインターネットアクセスとの結合を実現しています。</p>
+	<p>通常、管理者はCloudflareのデバイスクライアントをエンドポイントにデプロイし、Cloudflareが安全なDNSおよびHTTPSインターネットプロキシとして機能するように、ブラウザの分離を導入します。このモデルは、管理者がチームのデバイスを管理する際に、ユーザーと機密性の高いアプリケーションを保護します。また、エンドユーザーにとっては、ローカルブラウザのような摩擦のない体験となり、実際に近くのCloudflareデータセンターで稼働している安全なマシンでブラウジングしていることをほとんど意識することはないでしょう。</p>
+	<p>ブラウザの分離と安全なインターネットアクセスのエンドツーエンドの統合により、管理者は、ユーザーが近くのCloudflareデータセンターにある安全なマシンで実際に閲覧していることを意識せずに、チーム全体にブラウザの分離を簡単にデプロイすることができます。しかし、エンドポイントクライアントの管理は、アンマネージドデバイスのユーザーや、サードパーティーの組織が管理するデバイスの契約者にとって、設定のオーバーヘッドを追加する可能性があります。</p>
+	<p>CloudflareのクライアントレスWeb分離は、ハイパーリンクを通じてリモートブラウザへの接続を効率化します（例： <i>https://</i><i>.cloudflareaccess.com/browser</i> ）。Cloudflare Accessがサポートする<a href="https://developers.cloudflare.com/cloudflare-one/identity" target="_blank" rel="noopener noreferrer">IDプロバイダー</a>を通してユーザーが認証されると、ユーザーのブラウザはHTML5を使用して、ソフトウェアをインストールせずに近くのCloudflareデータセンターでホストされるリモートブラウザへの低遅延接続を確立します。管理・拡張するサーバーも、設定する地域もありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="safely-browse-high-risk-links"><b>リスクの高いリンクを安全に閲覧する</b></h3>
+		<a href="https://blog.cloudflare.com/#safely-browse-high-risk-links" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>電子メールやWebサイトのリンクをクリックするだけで、未知のゼロデイ脅威を悪用し、エンドポイントのを侵害する可能性のあるアクティブなWebコンテンツのペイロードをブラウザにダウンロードし、実行させることができます。</p>
+	<p>CloudflareのクライアントレスWeb分離は、プレフィックス付きURL（例： <i>https://</i><i>.cloudflareaccess.com/browser/</i><a href="https://www.example.com" target="_blank" rel="noopener noreferrer"><i>https://www.example.com</i></a>）を通じて開始することが可能です。カスタムブロックページ、メールゲートウェイ、発券ツールに、リスクの高いリンクの前にブラウザの分離を設定するだけで、リスクの高いクリックを自動的にリモートブラウザに送り、ターゲットリンクに存在する可能性がある悪意のあるコードからエンドポイントを保護します。</p>
+	<p>ここCloudflareでは、Cloudflareを保護するためにCloudflareの製品を使用しており、実際、このクライアントレスWeb分離アプローチを私たち自身のセキュリティ調査活動にも使用しています。リスクの高いリンクの前に認証ドメインを付けることで、当社のセキュリティチームは、潜在的に悪意のあるWebサイトやフィッシングサイトを安全に調査することができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EB4k1iu2GaTd1KG67rBS8/48620be5cda9df5cdaa4726391825b84/image2-21.png" alt="Screenshot of clientless web isolation homepage" class="kg-image" width="1229" height="845" loading="lazy">
+
+	</figure>
+	<p>危険なコードが従業員の端末に到達することなく、調査が終了すると、リモートブラウザは終了し、次の調査のために既知のクリーンな状態にリセットされます。</p>
+	<div class="flex anchor relative">
+		<h3 id="integrated-zero-trust-access-and-remote-browsing"><b>Zero Trustアクセスとリモートブラウジングを統合</b></h3>
+		<a href="https://blog.cloudflare.com/#integrated-zero-trust-access-and-remote-browsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>企業のデータには管理されたネットワーク内のマネージドデバイスからのみアクセスできる時代はとうの昔に過ぎ去りました。アプリケーションアクセスがマネージドデバイスからのみ行われることを確認するための厳格なデバイスポスチュア制御に依存している企業には、請負業者やBYODワークフォースをサポートするためのツールがほとんどありませんでした。これまで管理者は、コストとリソースのかかる仮想デスクトップインフラ（VDI）環境を導入することで、この問題に対処してきました。</p>
+	<p>さらに、アプリケーションへのアクセスを保護する場合、Cloudflare Accessは、ユーザーデバイスにクライアントソフトウェアをインストールすることなく、Webベースのアプリケーションに最小特権とデフォルト拒否のポリシーを適用することに優れています。</p>
+	<p>CloudflareのクライアントレスWeb分離はZTNAのユースケースを増強し、ローカル印刷コントロール、クリップボード、ファイルアップロード/ダウンロード制限など、<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/require-swg#build-a-gateway-rule-in-access" target="_blank" rel="noopener noreferrer">Accessおよびゲートウェイ</a>で保護されたアプリケーションがブラウザの分離<a href="https://docs.google.com/document/d/1YzcoC5WVxCYtVSriZW0ETeTzX9HEVxjKXdAEGeND3l8/edit" target="_blank" rel="noopener noreferrer">データ保護コントロール</a>を利用して、アンマネージドデバイスに機密データが転送されないようにしす。</p>
+	<p>隔離されたリンクは、アクセス &nbsp;<a href="https://developers.cloudflare.com/cloudflare-one/applications/app-launcher" target="_blank" rel="noopener noreferrer">アプリランチャー</a>に <a href="https://developers.cloudflare.com/cloudflare-one/applications/bookmarks" target="_blank" rel="noopener noreferrer">ブックマーク</a>として簡単に追加できるため、チームや契約社員がワンクリックで簡単にどのサイトにもアクセスできるようにすることができます。</p>
+	<p>最後に、リモートブラウザが侵害の影響を軽減するからといって、インターネットへのアクセスが管理されないままでよいというわけではありません。リモートブラウザからターゲットWebサイトへのすべてのトラフィックは、CloudflareのSWGソリューション（ゲートウェイ）によって保護、検査、記録され、HTTPポリシーと <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/antivirus-scanning" target="_blank" rel="noopener noreferrer">アンチウイルススキャン</a>によって既知の脅威がフィルタリングされるようにします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/375gS2PdEA2EOdu6iWgmub/45da00d54c415f12f3c63a7dbf9896f6/image3-13.png" alt="Screenshot of Access App Launcher bookmark linking to Browser Isolation" class="kg-image" width="1174" height="792" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="join-the-clientless-web-isolation-beta"><b>クライアントレスWeb分離のベータ版に参加</b></h3>
+		<a href="https://blog.cloudflare.com/#join-the-clientless-web-isolation-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>クライアントレスなWeb分離は、Cloudflare for Teamsの加入者で、ブラウザの分離をプランに追加している場合に、機能として利用できるようになります。近日中にCloudflareのクライアントレスWeb分離機能のベータ版へのアクセスを開始する予定です。参加にご興味のある方は、<a href="https://www.cloudflare.com/ja-jp/zero-trust/lp/clientless-web-isolation-beta" target="_blank" rel="noopener noreferrer">こちらからサインアップしてください</a>。お知らせをいち早くお届けします。</p>
+	<p>私たちは、クライアントレスWeb分離モデルによる安全なブラウジングとアプリケーションアクセスのユースケースに興奮しています。現在、あらゆる規模のチームが、世界のどこにいても、アンマネージドデバイスにシームレスなZero Trust接続を提供できるようになりました。</p>
+</div>

@@ -1,0 +1,202 @@
+<div class="mb2 gray5">Lesezeit: 7&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/workers-ai-ga-huggingface-loras-python-support">English</a>, <a href="https://blog.cloudflare.com/zh-tw/workers-ai-ga-huggingface-loras-python-support">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/workers-ai-ga-huggingface-loras-python-support">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-ai-ga-huggingface-loras-python-support">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/workers-ai-ga-huggingface-loras-python-support">한국어</a>, <a href="https://blog.cloudflare.com/es-es/workers-ai-ga-huggingface-loras-python-support">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/workers-ai-ga-huggingface-loras-python-support">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oSuLqesmvrY3h7svtxYIH/0607762bb92437135418e8cc71662dec/workers-ai-ga-huggingface-loras-python-support.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Willkommen zum KI-Tag unserer Developer Week 2024! In diesem Blogbeitrag geben wir einen Überblick über unsere neuen KI-Produkte und diesbezüglichen Pläne. Dazu gehören die allgemeine Verfügbarkeit von Workers AI mit optimierter Preisgestaltung, ein Update der GPU-Hardware, eine Erweiterung unserer Partnerschaft mit Hugging Face, eine Feinabstimmung der Inferenz im Bring Your Own LoRA-Modell, Python-Unterstüzung bei Workern, eine Erhöhung der Anbieterzahl in AI Gateway und Metadatenfilterung bei Vectorize.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YNXJ4s4e47U7MvddTlpz8/3a53be280a5e373b589eba37bc4740d0/Cities-with-GPUs-momentum-update.png" alt="Leveling up Workers AI: general availability and more new capabilities" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="workers-ai-ga">Allgemeine Verfügbarkeit von Workers AI</h2>
+		<a href="https://blog.cloudflare.com/#workers-ai-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir geben bekannt, dass unsere Inferenzplattform Workers AI ab sofort allgemein verfügbar ist. Nach einer mehrmonatigen Open Beta-Phase haben wir die Zuverlässigkeit und Performance des Diensts optimiert, die Tarife veröffentlicht und viele weitere Modelle in unseren Katalog aufgenommen.</p>
+	<div class="flex anchor relative">
+		<h4 id="improved-performance-reliability">Höhere Performance und größere Zuverlässigkeit</h4>
+		<a href="https://blog.cloudflare.com/#improved-performance-reliability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben uns das Ziel gesetzt, KI-Inferenz mit Workers AI so zuverlässig und benutzerfreundlich zu gestalten wie das übrige Cloudflare-Netzwerk. Dazu haben wir die in Workers AI integrierte Lastverteilung optimiert. Anfragen können nun an mehr GPU in einer größeren Zahl von Städten weitergeleitet werden und jeder dieser Standorte kennt die gesamte verfügbare KI-Inferenzkapazität. Würde die Anfrage in der aktuellen Stadt in einer Warteschlange landen, kann sie stattdessen an einen anderen Standort weitergeleitet werden, sodass bei hohem Trafficaufkommen schneller Ergebnisse ausgegeben werden können. Außerdem haben wir das Limit der Durchsatzbegrenzung für alle unsere Modelle angehoben – für die meisten LLM liegt die Obergrenze jetzt bei 300 Anfragen pro Minute, gegenüber 50 Anfragen pro Minute in der Beta-Phase. Bei kleineren Modellen beträgt das Limit 1500–3000 Anfragen pro Minute. In der <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank" rel="noopener noreferrer">Entwickler-Dokumentation finden Sie die Limits für die Durchsatzbegrenzung</a> der verschiedenen Modelle.</p>
+	<div class="flex anchor relative">
+		<h4 id="lowering-costs-on-popular-models">Beliebte Modelle werden günstiger</h4>
+		<a href="https://blog.cloudflare.com/#lowering-costs-on-popular-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Abgesehen von der allgemeinen Verfügbarkeit von Workers AI haben wir Anfang des Monats einen <a href="https://ai.cloudflare.com/#pricing-calculator" target="_blank" rel="noopener noreferrer">Preisrechnerhttps://ai.cloudflare.com/ - pricing-calculator</a> für unsere zehn Nicht-Beta-Modelle veröffentlicht. Wir wollten Workers AI zu einer der erschwinglichsten und am besten zugänglichen <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">Inferenz</a>-Lösungen machen. Deshalb haben wir unsere Modelle auf Erschwinglichkeit hin optimiert. So ist Llama 2 jetzt mehr als siebenmal billiger und Mistral 7B mehr als vierzehnmal günstiger im Betrieb als von uns am 1. März <a href="https://developers.cloudflare.com/workers-ai/platform/pricing" target="_blank" rel="noopener noreferrer">angegeben</a>. Wir wollen auch in Zukunft die beste Plattform für KI-Inferenz sein und werden unseren Kunden weiterhin Optimierungen anbieten, wann immer dies möglich ist.</p>
+	<p>Zur Erinnerung: Seit dem 1. April sind unsere Nicht-Beta-Modelle von Workers AI kostenpflichtig. Die Beta-Modelle sind aber weiterhin kostenlos und unbegrenzt. Wir bieten allen Kunden 10.000 <a href="https://blog.cloudflare.com/workers-ai#:~:text=may%20be%20wondering%20%E2%80%94-,what%E2%80%99s%20a%20neuron">Neuronen</a> pro Tag gratis an. Workers Free-Kunden, die innerhalb von 24 Stunden 10.000 Neuronen verwenden, haben damit ihr Kontingent erschöpft. Für Kunden, die eine kostenpflichtige Workers-Version verwenden, fällt bei Erreichung dieser Grenze eine Nutzungsgebühr von 0,011 US-Dollar für jeweils 1.000 zusätzliche Neuronen an. Die aktuelle Preisgestaltung können Sie der <a href="https://developers.cloudflare.com/workers-ai/platform/pricing" target="_blank" rel="noopener noreferrer">entsprechenden Entwickler-Dokumentation für Workers AI</a> entnehmen.</p>
+	<div class="flex anchor relative">
+		<h4 id="new-dashboard-and-playground">Neues Dashboard und neuer Experimentierbereich</h4>
+		<a href="https://blog.cloudflare.com/#new-dashboard-and-playground" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zu guter Letzt haben wir das <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai" target="_blank" rel="noopener noreferrer">Dashboard von Workers AI</a> und unseren <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer">AI-Experimentierbereich</a> überarbeitet. Im Workers AI-Bereich des Dashboards von Cloudflare werden jetzt Nutzungsanalysen für alle Modelle angezeigt. Dazu zählen auch Neuronenberechnungen, anhand derer sich die Kosten besser vorhersagen lassen. Mit dem KI-Experimentierbereich können verschiedene Modelle schnell getestet und miteinander verglichen werden. Außerdem lassen sich damit Prompts und Parameter konfigurieren. Wir hoffen, dass diese neuen Tools Entwicklern die Arbeit auf Workers AI erleichtern. Probieren Sie sie doch einfach einmal aus!</p>
+	<div class="flex anchor relative">
+		<h3 id="run-inference-on-gpus-in-over-150-cities-around-the-world">Ausführung von Inferenzaufgaben auf GPU in über 150 Städten weltweit</h3>
+		<a href="https://blog.cloudflare.com/#run-inference-on-gpus-in-over-150-cities-around-the-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uSiHo9pV21DreFiLpUfPX/5aa5c8a2448da881a0872e3f550c39a2/image3-3.png" alt="" class="kg-image" width="1999" height="1233" loading="lazy">
+
+	</figure>
+	<p>Als wir im September 2023 Workers AI vorgestellt haben, war unser Folgeziel, in unseren Rechenzentren auf der ganzen Welt GPU einzusetzen. Bis Ende 2024 wollen wir fast überall GPU mit Inferenzfunktion verwenden, was uns zu der cloudbasierten KI-Inferenzplattform mit der größten Verteilung macht. Aktuell verfügen Standorte in mehr als 150 Städten über GPU und im Lauf des Jahres werden noch weitere Städte hinzukommen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qyZ48xVu70u80swQKPUau/1e85ea2b833139d277d5769d5a8c8c66/image5-2.png" alt="" class="kg-image" width="1999" height="500" loading="lazy">
+
+	</figure>
+	<p>Unsere nächste Generation von Compute-Servern mit GPU kommt im zweiten Quartal 2024 auf den Markt. Sie bietet eine höhere Performance, Energieeffizienz und Zuverlässigkeit als Vorgänger-Generationen. In einem <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor">Blogbeitrag vom Dezember 2023</a> haben wir einen Ausblick auf das Design unserer Compute-Server der 12. Generation gegeben. Weitere Details werden folgen. In Bezug auf die 12. Generation und zukünftige Hardware-Einführungen wollen wir als Nächstes Unterstützung für größere Machine Learning-Modelle und Feinabstimmung (Fine-Tuning) auf unserer Plattform anbieten. Dadurch werden wir einen höheren Durchsatz bei der Inferenz, eine geringe Latenz und eine größere Verfügbarkeit für Produktiv-Workloads erreichen und die Unterstützung auf neue Kategorien von Workloads wie Fine-Tuning ausweiten.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/451IgQCfz2j10xM8kXhZy0/67632b1b5f52e3387aa387e43c804324/image7-1.png" alt="" class="kg-image" width="1800" height="1098" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="hugging-face-partnership">Partnerschaft mit Hugging Face</h3>
+		<a href="https://blog.cloudflare.com/#hugging-face-partnership" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir freuen uns außerdem über die Fortsetzung unserer Partnerschaft mit Hugging Face, weil wir damit unserem Prinzip treu bleiben, unseren Kunden das Beste aus dem Bereich Open-Source anzubieten. Sie können sich jetzt einige der beliebtesten Modelle auf Hugging Face ansehen. Wenn das von Ihnen gewünschte Modell auf unserer Plattform verfügbar ist, brauchen Sie es nur anzuklicken, um es auf Workers AI auszuführen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ATIA1mxaeqHYE31cztdjg/33717b0fd20244f3089cf5d4c8a9c13f/image2-2.png" alt="" class="kg-image" width="1999" height="551" loading="lazy">
+
+	</figure>
+	<p>Darüber hinaus haben wir im Rahmen unserer Kooperation mit Hugging Face vier weitere Modelle in unsere Plattform aufgenommen. Damit können Sie nun auf das neue <a href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2" target="_blank" rel="noopener noreferrer">Mistral 7B v0.2</a>-Modell mit verbesserten Kontextfenstern, die feinjustierte Version von Mistral 7B von <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B" target="_blank" rel="noopener noreferrer">Hermes 2 Pro der Firma Nous Research</a>, <a href="https://huggingface.co/google/gemma-7b-it" target="_blank" rel="noopener noreferrer">Gemma 7B von Google</a> und die fein abgestimmte <a href="https://huggingface.co/Nexusflow/Starling-LM-7B-beta" target="_blank" rel="noopener noreferrer">Starling-LM-7B-Betaversion</a> von OpenChat zugreifen. Derzeit stehen für Serverless-GPU-Inferenz auf der Workers AI-Plattform von Cloudflare 14 Modelle zur Verfügung, die wir alle gemeinsam mit Hugging Face ausgewählt haben. Weitere werden bald folgen. Diese Modelle werden alle mit der Technologie von Hugging Face und einem <a href="https://github.com/huggingface/text-generation-inference" target="_blank" rel="noopener noreferrer">TGI</a>-Backend bereitgestellt. Wir arbeiten bei der Kuratierung, Optimierung und Bereitstellung dieser Modelle eng mit dem Team von Hugging Face zusammen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3geQJnlHZhMktG1eoEWYKE/36c76ee43eca9443b4e2e9c6d3e1df7e/image6-1.png" alt="" class="kg-image" width="1999" height="726" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p><i>„Wir freuen uns, gemeinsam mit Cloudflare auf eine bessere Zugänglichkeit von KI für Entwicklerinnen und Entwickler hinzuarbeiten. Die beliebtesten frei zugänglichen Modelle mit einer Serverless-API nutzen zu können, die auf ein globales GPU-Netz zurückgreifen kann, ist ein fantastisches Angebot für die Hugging Face-Community. Ich bin schon gespannt, was diese damit alles erschaffen wird.“</i>‑ Julien Chaumond, Mitgründer und CTO von Hugging Face</p>
+	</blockquote>
+	<p>Sie finden alle von Workers AI unterstützen, frei verfügbaren Modelle in dieser <a href="https://huggingface.co/collections/Cloudflare/hf-curated-models-available-on-workers-ai-66036e7ad5064318b3e45db6" target="_blank" rel="noopener noreferrer">Hugging Face-Sammlung</a>. Die Schaltfläche „Deploy to Cloudflare Workers AI“ befindet sich oben auf jeder Modellkarte. Mehr erfahren Sie in diesem <a href="http://huggingface.co/blog/cloudflare-workers-ai" target="_blank" rel="noopener noreferrer">Blogbeitrag</a> von Hugging Face. Hilfreich für den Einstieg ist auch unsere <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">Entwickler-Dokumentation</a>. Sie vermissen ein bestimmtes Modell auf Workers AI? Dann lassen Sie es uns bei <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a> wissen.</p>
+	<div class="flex anchor relative">
+		<h3 id="supporting-fine-tuned-inference-byo-loras">Unterstützung feinjustierter Inferenz mit BYO LoRA</h3>
+		<a href="https://blog.cloudflare.com/#supporting-fine-tuned-inference-byo-loras" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eine der am häufigsten geforderten Funktionen für Workers AI ist eine feinjustierte Inferenz. Mit Bring Your Own (BYO) Low Rank Adaptation (LoRA) sind wir diesem Ziel jetzt einen Schritt nähergekommen. Mithilfe der beliebten <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">Low Rank Adaptation</a>-Methode haben Forscher herausgefunden, wie sich <i>einige</i> Parameter eines Modells an die jeweilige Aufgabe anpassen lassen, anstatt – wie bei einem vollständigen Fine-Tuning eines Modells – <i>alle</i> Modellparameter neu schreiben zu müssen. Somit erhält man feinjustierte Ergebnisse ohne den für eine vollständige Feinjustierung erforderlichen Rechenaufwand.</p>
+	<p>Ab sofort unterstützt Workers AI trainierte LoRA. Die LoRA-Anpassung wird während der Laufzeit auf ein Basismodell angewandt, wodurch die Ausführung von Inferenzaufgaben fein abgestimmt werden kann – und das mit der Geschwindigkeit eines Modells, das einem vollständigen Fine-Tuning unterzogen wurde, aber zu einem Bruchteil von dessen Kosten und Größe. Zu gegebener Zeit wollen wir Feinabstimmung und vollständig feinjustierte Modelle direkt auf unserer Plattform unterstützen. LoRa bringt uns diesem Ziel einen Schritt näher.</p>
+	<p>„BYO LoRA“ befindet sich für die Modelle Gemma 2B und 7B, Llama 2 7B und Mistral 7B seit heute in der Open Beta-Phase. Verfügbar sind in diesem Rahmen LoRA-Adapter mit einer Größe von bis zu 100 MB und einem maximalen Rang von 8 sowie insgesamt bis zu 30 LoRA pro Konto. Wie immer sind Workers AI und unsere neue „BYO LoRA“-Funktion unter Einhaltung unserer <a href="https://www.cloudflare.com/service-specific-terms-developer-platform/#developer-platform-terms" target="_blank" rel="noopener noreferrer">Nutzungsbedingungen</a> zu verwenden. Dies beinhaltet auch alle in den Lizenzbedingungen der einzelnen Modelle festgelegten modellspezifischen Nutzungsbeschränkungen.</p>
+	<pre class="language-js"><code class="language-js">const response = await ai.run(
+  "@cf/mistralai/mistral-7b-instruct-v0.2-lora", //the model supporting LoRAs
+  {
+      messages: [{"role": "user", "content": "Hello world"],
+      raw: true, //skip applying the default chat template
+      lora: "00000000-0000-0000-0000-000000000", //the finetune id OR name 
+  }
+);</code></pre>
+	<p>Beim Einstieg hilft Ihnen dieser <a href="https://blog.cloudflare.com/fine-tuned-inference-with-loras">technisch vertiefende Blogbeitrag</a> und die <a href="https://developers.cloudflare.com/workers-ai/fine-tunes" target="_blank" rel="noopener noreferrer">Entwickler-Dokumentation</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="write-workers-in-python">Programmierung von Workern in Python</h3>
+		<a href="https://blog.cloudflare.com/#write-workers-in-python" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python ist die nach JavaScript beliebteste Programmiersprache der Welt und die Sprache der Wahl für das Entwickeln von KI-Anwendungen. Ab heute können Sie in der Open Beta-Version <a href="https://ggu-python.cloudflare-docs-7ou.pages.dev/workers/languages/python" target="_blank" rel="noopener noreferrer">Cloudflare-Worker in Python programmieren</a>. Python-Worker unterstützen alle Ressourcen-<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">Bindungen</a> an Cloudflare, einschließlich <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>, <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a> und <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>.</p>
+	<p><a href="https://ggu-python.cloudflare-docs-7ou.pages.dev/workers/languages/python/packages/langchain" target="_blank" rel="noopener noreferrer">LangChain</a> ist das populärste Framework für die Erstellung LLM-gesteuerter Anwendungen, und so wie <a href="https://blog.cloudflare.com/langchain-and-cloudflare">Workers AI mit langchain-js funktioniert</a>, so funktioniert die <a href="https://python.langchain.com/docs/get_started/introduction" target="_blank" rel="noopener noreferrer">Python LangChain-Bibliothek</a> mit Python-Workern, ebenso wie <a href="https://ggu-python.cloudflare-docs-7ou.pages.dev/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">andere Python-Pakete</a> wie FastAPI.</p>
+	<p>In Python programmierte Worker sind ebenso unkompliziert wie solche, die in JavaScript geschrieben sind:</p>
+	<p>Zur Konfigurierung wird einfach auf eine .py-Datei in Ihrer <code>wrangler.toml</code>-Datei verwiesen:</p>
+	<pre class="language-js"><code class="language-js">from js import Response
+
+async def on_fetch(request, env):
+    return Response.new("Hello world!")</code></pre>
+	<p>Weitere Toolchain- oder Vorkompilierungsschritte sind nicht erforderlich. Die <a href="https://pyodide.org/en/stable" target="_blank" rel="noopener noreferrer">Pyodide</a>-Python-Ausführungsumgebung wird Ihnen direkt von der Workers-Laufzeitumgebung zur Verfügung gestellt, wobei die Funktionsweise die von in JavaScript programmierten Workern widerspiegelt.</p>
+	<pre class="language-js"><code class="language-js">name = "hello-world-python-worker"
+main = "src/entry.py"
+compatibility_date = "2024-03-18"
+compatibility_flags = ["python_workers"]</code></pre>
+	<p>Wenn Sie noch tiefer in die Materie einsteigen und erfahren möchten, wie Python-Worker im Hintergrund arbeiten, werfen Sie doch einfach einen Blick in unsere <a href="https://ggu-python.cloudflare-docs-7ou.pages.dev/workers/languages/python" target="_blank" rel="noopener noreferrer">Dokumentation</a> und lesen Sie unseren <a href="https://blog.cloudflare.com/python-workers">begleitenden Blogbeitrag</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-gateway-now-supports-anthropic-azure-aws-bedrock-google-vertex-and-perplexity">Unterstützung von Anthropic, Azure, AWS Bedrock, Google Vertex und Perplexity bei AI Gateway</h2>
+		<a href="https://blog.cloudflare.com/#ai-gateway-now-supports-anthropic-azure-aws-bedrock-google-vertex-and-perplexity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/announcing-ai-gateway">AI Gateway</a> hilft Entwicklern unter anderem mit Analysen, Zwischenspeicherung und Durchsatzbegrenzung dabei, ihre KI-Anwendungen besser zu steuern und zu beobachten. Wir integrieren kontinuierlich neue Anbieter in das Produkt. Die neuesten sind Anthropic, Google Vertex und Perplexity, wie wir heute bekannt geben können. Im Dezember 2023 haben wir in aller Stille die Unterstützung von Azure und Amazon Bedrock eingeführt, sodass die beliebtesten Anbieter nun von AI Gateway unterstützt werden, was auch Workers AI selbst umfasst.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YaNMed9Aw4YjhbZk75SGI/a53b499b743e36ad2635357118e6623f/image4-2.png" alt="" class="kg-image" width="1999" height="653" loading="lazy">
+
+	</figure>
+	<p>Werfen Sie doch einen Blick in unsere <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">Entwickler-Dokumentation</a>, um mit AI Gateway loszulegen.</p>
+	<div class="flex anchor relative">
+		<h4 id="coming-soon-persistent-logs">Dauerhafte Protokolle demnächst verfügbar</h4>
+		<a href="https://blog.cloudflare.com/#coming-soon-persistent-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im zweiten Quartal 2024 werden wir dauerhafte Protokolle einführen, was es Ihnen erlauben wird, Ihre Protokolle (einschließlich Prompts und Antworten) in den Objektspeicher zu verschieben. Hinzu kommen außerdem benutzerdefinierte Metadaten, damit Sie Anfragen mit Nutzer-ID oder anderen Identifikatoren versehen können, und die Verwaltung sensibler Daten (Secrets) für den sicheren Umgang mit den API-Schlüsseln Ihrer Anwendung.</p>
+	<p>Wir möchten, dass Sie Ihre KI-Anwendung über AI Gateway steuern können und Ihre Entwickler in der Lage sind, damit Anfragen dynamisch zu bewerten und an verschiedene Modelle und Anbieter weiterzuleiten. Mit unseren dauerhaften Protokollen sollen Entwickler die Möglichkeit haben, ihre protokollierten Daten mit einem einzigen Klick zur Feinabstimmung von Modellen einzusetzen. Letzten Endes sollen die Aufgabe des Fine-Tuning und das feinjustierte Modell direkt auf unserer Plattform Workers AI ausgeführt werden können. AI Gateway ist nur eines von zahlreichen Produkten in unserem KI-Toolkit, aber wir sind begeistert von den Arbeitsabläufen und Anwendungsfällen, die mit unserer Plattform arbeitenden Entwicklern damit offenstehen. Wir hoffen, dass es Ihnen genauso geht.</p>
+	<div class="flex anchor relative">
+		<h3 id="vectorize-metadata-filtering-and-future-ga-of-million-vector-indexes">Filterung von Vectorize-Metadaten und künftige allgemeine Verfügbarkeit von Millionen Vektorindizes</h3>
+		<a href="https://blog.cloudflare.com/#vectorize-metadata-filtering-and-future-ga-of-million-vector-indexes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vectorize ist eine weitere Komponente unseres Toolkits für KI-Anwendungen und befindet sich seit September 2023 in der Open Beta-Phase. Die Lösung ermöglicht es Entwicklern, zur Unterstützung von Anwendungsfällen wie der Ähnlichkeitssuche oder Empfehlungen Einbettungen (Vektoren), wie sie etwa von <a href="https://developers.cloudflare.com/workers-ai/models/#text-embeddings" target="_blank" rel="noopener noreferrer">Texteinbettungsmodellen</a> von Workers AI generiert werden, zu speichern und nach dem Treffer mit der größten Übereinstimmung zu suchen. Die von Modellen ausgegebenen Ergebnisse geraten ohne eine Vektordatenbank in Vergessenheit und können nicht ohne zusätzliche Kosten für die erneute Ausführung eines Modells abgerufen werden.</p>
+	<p>Seit Einführung der Open Beta-Version von Vectorize haben wir diese um eine <a href="https://developers.cloudflare.com/vectorize/reference/metadata-filtering" target="_blank" rel="noopener noreferrer">Metadaten-Filterung</a> erweitert. Dank dieser Funktion können Entwickler die Vektorsuche mit der Filterung nach beliebigen Metadaten kombinieren, was eine höhere Abfragekomplexität bei KI-Anwendungen erlaubt. Aktuell arbeiten wir daran, Vectorize allgemein verfügbar zu machen. Wir streben eine Einführung im Juni 2024 mit Unterstützung mehrerer Millionen von Vektor-Indizes an.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-most-comprehensive-developer-platform-to-build-ai-applications">Die umfassendste Entwicklerplattform zur Erstellung von KI-Anwendungen</h3>
+		<a href="https://blog.cloudflare.com/#the-most-comprehensive-developer-platform-to-build-ai-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">// Insert vectors with metadata
+const vectors: Array&lt;VectorizeVector&gt; = [
+  {
+    id: "1",
+    values: [32.4, 74.1, 3.2],
+    metadata: { url: "/products/sku/13913913", streaming_platform: "netflix" }
+  },
+  {
+    id: "2",
+    values: [15.1, 19.2, 15.8],
+    metadata: { url: "/products/sku/10148191", streaming_platform: "hbo" }
+  },
+...
+];
+let upserted = await env.YOUR_INDEX.upsert(vectors);
+
+// Query with metadata filtering
+let metadataMatches = await env.YOUR_INDEX.query(&lt;queryVector&gt;, { filter: { streaming_platform: "netflix" }} )</code></pre>
+	<p>Wir sind wir der Meinung, dass alle Entwickler Full-Stack-Anwendungen, einschließlich KI-gestützter Funktionen, schnell erschaffen und bereitstellen können sollten. Durch die allgemeine Verfügbarkeit von Workers AI, die Python-Unterstützung bei Workern, die Verfügbarkeit von AI Gateway und Vectorize sowie unsere Partnerschaft mit Hugging Face haben wir die Möglichkeiten für die Entwicklung von Produkten mithilfe von KI auf unserer Plattform erweitert. Wir hoffen, dass Sie davon genauso angetan sind wie wir! Werfen Sie für Ihre ersten Schritte doch einfach einen Blick in unsere <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Entwickler-Dokumentation</a>. Sie können <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">uns auch gern wissen lassen</a>, woran Sie arbeiten.</p>
+</div>

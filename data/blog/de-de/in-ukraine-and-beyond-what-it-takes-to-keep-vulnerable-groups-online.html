@@ -1,0 +1,144 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">English</a>, <a href="https://blog.cloudflare.com/ja-jp/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Português</a>, <a href="https://blog.cloudflare.com/es-es/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v0rxJFwTsKDuZFONyKnjO/b2daaae62679ef5c376f57206cede013/in-ukraine-and-beyond-what-it-takes-to-keep-vulnerable-groups-online.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Wir feiern den achten Jahrestag des Projekts „Galileo“. Aus diesem Anlass möchten wir einen Einblick in die Art von Cyberangriffen geben, denen die im Rahmen des Projekts geschützten Organisationen ausgesetzt waren. Wir befinden uns in einem Jahr voller Herausforderungen für so viele Menschen. Wir hoffen, dass die Analyse der Angriffe auf diese gefährdeten Gruppen Forschern, der Zivilgesellschaft und den Zielorganisationen Aufschluss darüber gibt, wie sie diejenigen, die in diesen Bereichen arbeiten, besser schützen können.</p>
+	<p></p>
+	<p>In diesem Blogbeitrag möchten wir uns auf die Angriffe konzentrieren, die wir gegen Organisationen in der Ukraine beobachtet haben, einschließlich der deutlichen Zunahme von DDoS-Angriffen nach Beginn des Konflikts. Im zugehörigen Radar-Dashboard untersuchen wir die Angriffstrends gegen Teilnehmer am Projekt „Galileo“ in einer Reihe von Bereichen wie Menschenrechte, Journalismus und gemeinnützige Organisationen.</p>
+	<p>Den vollständigen Bericht finden Sie im <a href="https://radar.cloudflare.com/notebooks/project-galileo-8th-anniv" target="_blank" rel="noopener noreferrer">„8th Anniversary Radar Dashboard</a> von Projekt „Galileo“.</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-the-data">Die Daten richtig interpretieren</h3>
+		<a href="https://blog.cloudflare.com/#understanding-the-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Für dieses Dashboard haben wir Daten vom 1. Juli 2021 bis zum 5. Mai 2022 von 1.900 Organisationen aus der ganzen Welt analysiert, die im Rahmen des Projekts geschützt sind.</p>
+		</li>
+		<li>
+			<p>Bei DDoS-Angriffen klassifizieren wir dies als Datenverkehr, den wir als Teil eines DDoS-Angriffs der Schicht 7 (Anwendungsschicht) eingestuft haben. Bei solchen Angriffen handelt es sich oft um böswillige Fluten von Anfragen, die darauf abzielen, eine Website zu überwältigen, um sie zum Ausfall zu bringen. Wir blockieren die mit dem Angriff verbundenen Anfragen und stellen so sicher, dass legitime Anfragen die Website erreichen und dass sie online bleibt.</p>
+		</li>
+		<li>
+			<p>Bei Datenverkehr, der von der Web Application Firewall abgeschwächt wurde, handelt es sich um Datenverkehr, der als bösartig eingestuft und von der Firewall von Cloudflare blockiert wurde. Wir bieten im Rahmen von Projekt „Galileo“ kostenlose Services auf Business-Ebene an. Unsere WAF ist eines der wertvollen Tools, die Versuche abwehren, Schwachstellen auszunutzen, um sich unbefugten Zugang zu den Online-Anwendungen eines Unternehmens zu verschaffen.</p>
+		</li>
+		<li>
+			<p>Für die Diagramme, die die Veränderungen des Datenverkehrs oder der Domains im Rahmen des Projekts „Galileo“ darstellen, verwenden wir den durchschnittlichen täglichen Traffic (Anzahl der Anfragen) der ersten beiden Wochen des Monats Juli 2021 als Basiswert.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="highlights-of-past-year">Highlights des vergangenen Jahres</h3>
+		<a href="https://blog.cloudflare.com/#highlights-of-past-year" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Die Zahl der Cyberangriffe nimmt weiter zu, mit fast 18 Milliarden Angriffen zwischen Juli 2021 und Mai 2022. Dies entspricht einem Durchschnitt von fast 57,9 Millionen Cyberangriffen pro Tag in den letzten neun Monaten, ein Anstieg von fast 10 % im Vergleich zum letzten Jahr.</p>
+		</li>
+		<li>
+			<p>Während eines Großangriffs im April erreichte der neutralisierte DDoS-Traffic, der Organisationen ansteuerte, einen Anteil von bis zu 90 % am gesamten Datenverkehr.</p>
+		</li>
+		<li>
+			<p>Nach Beginn des Krieges in der Ukraine stiegen die Anträge für das Projekt im März 2022 um 177 %.</p>
+		</li>
+		<li>
+			<p>Journalisten und Medienorganisationen in Europa und Nord- und Südamerika verzeichneten im letzten Jahr einen Anstieg des Datenverkehrs um 150 %.</p>
+		</li>
+		<li>
+			<p>Wir beobachten eine Reihe von einfachen Cyberangriffen auf Organisationen, die im Bereich der Menschenrechte und des Journalismus tätig sind. Bis zu 40 % der von der WAF abgeschwächten Anfragen wurden als HTTP-Anomalien eingestuft. Das ist der größte Anteil aller WAF-Regelarten, eine Art von Angriffen, die für ungeschützte Unternehmen schädlich sein können, aber von Cloudflare automatisch blockiert werden.</p>
+		</li>
+		<li>
+			<p>Von Juli 2021 bis Mai 2022 entfiel die Hälfte bis zwei Drittel des Anfrageaufkommens aller im Rahmen des Projekts erfassten Regionen auf Unternehmen mit Sitz in Europa.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="global-coverage-of-project-galileo">Globaler Schutz im Rahmen des Projekt „Galileo“</h3>
+		<a href="https://blog.cloudflare.com/#global-coverage-of-project-galileo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="protecting-organizations-in-ukraine">Schutz von Organisationen in der Ukraine</h3>
+		<a href="https://blog.cloudflare.com/#protecting-organizations-in-ukraine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6a5N96gvTpU6dVRfTDMkCe/d4f1adf014261e8925de285c28888f5f/image8-1.png" alt="" class="kg-image" width="1202" height="721" loading="lazy">
+
+	</figure>
+	<p>Als der Krieg in der Ukraine begann, verzeichneten wir einen Anstieg der Anträge auf Teilnahme an Projekt „Galileo“ von Organisationen, die unsere Hilfe suchten. Gegen viele von ihnen lief tatsächlich gerade ein DDoS-Angriff. Doch wir beobachteten auch, dass manche dieser Websites große Mengen legitimen Traffic verzeichneten. Dieser wurde von Menschen in der Ukraine generiert, die versuchten, während der Invasion Zugang zu Informationen zu erhalten. Während der Traffic von Organisationen in der Ukraine vor Beginn des Krieges weitgehend stagnierte, wurde der Traffic-Zuwachs seither vor allem von Organisationen getragen, die im Bereich Journalismus und Medien tätig sind.</p>
+	<p>Vor dem Krieg waren Organisationen, die im Bereich Community Building/Sozialwesen tätig sind, wie z. &nbsp;B. solche, die Flüchtlingen direkte Hilfe leisten oder Spendenplattformen zur Unterstützung der Menschen in der Ukraine bereitstellen, für den geringen Datenverkehr verantwortlich, der von der Web Application Firewall (WAF) abgewehrt wurde. Nach Beginn des Krieges verzeichneten jedoch journalistische Organisationen den meisten WAF-geschützten Datenverkehr, mit häufigen Traffic-Spitzen, darunter eine am 13. März, die 69 % des Datenverkehrs ausmachte. Während dieses Zeitraums erhöhter WAF-geprüfter Anfragen, die Ende Februar begann, wurde die Mehrheit der Angriffe als SQLi klassifiziert. Der von der WAF abgewehrte Traffic für Menschenrechtsorganisationen stieg Mitte März auf 5-10 % des Datenverkehrs an.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MJB5df7Sgq28XjlnQlcvU/49ba43114b3b264c09f56172c3685cd4/image2-3.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>Der für Organisationen in der Ukraine abgewehrte DDoS-Traffic konzentrierte sich auf den Zeitraum von Mitte März bis Mai, wobei der prozentuale Anteil dieses Traffics rapide anstieg. Die ersten Spitzen lagen im Bereich von 20 %, wuchsen aber schnell an, bevor sie wieder zurückgingen, einschließlich eines Angriffs am 19. April, der über 90 % des Datenverkehrs an diesem Tag ausmachte.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cU3TAMCTR2FcIwr4z54xj/ac9b384723b5caab4c1b41c72d94b76c/image7.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Seit Beginn des Krieges weicht das Wachstum des Datenverkehrs von geschützten Organisationen in den verschiedenen Kategorien stark ab. Zwischen Ende März und Ende April stieg der Traffic bei den Gesundheitsorganisationen um das 20-30-fache gegenüber dem Ausgangswert. Abgesehen von den Angriffsspitzen war der Datenverkehr von Journalismus-Organisationen in der Regel um das 3-4-Fache höher als der Ausgangswert. Das Wachstum in den anderen Kategorien lag im Allgemeinen unter dem Dreifachen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Gxk6rfMtYjNwI0TYVYtE4/ee0830115902c2b6547983d20c890e98/image1-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Beim Datenverkehr, der von der Web Application Firewall (WAF) abgeschwächt wurde, war die am häufigsten angewandte Regel HTTP Anomaly, die mit 92 % der Anfragen verbunden war. Anfragen für Webinhalte (HTTP-Anfragen) haben eine erwartete Struktur, eine Reihe von Header und damit verbundene Werte. Einige Angreifer senden fehlerhafte Anfragen, einschließlich Anomalien wie fehlende Header, nicht unterstützte Anfragemethoden, die Verwendung nicht standardisierter Ports oder ungültige Zeichenkodierung. Diese Anfragen werden als „HTTP-Anomalien“ eingestuft. Diese anomalen Anfragen werden häufig mit einfachen Angriffen in Verbindung gebracht und werden automatisch von der WAF von Cloudflare blockiert.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZPFe2bg7opl9Zp3pr9RJt/6fe7f5ffc00495c648c57b843cf6fa4b/image9-2.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>Aufgrund des andauernden Krieges werden wir weiterhin Organisationen in der Ukraine und den Nachbarländern aufnehmen und ihnen Schutz bieten, um den Zugang zu Informationen zu gewährleisten. Alle ukrainischen Organisationen, die angegriffen werden, können unter <a href="https://www.cloudflare.com/de-de/galileo" target="_blank" rel="noopener noreferrer">www.cloudflare.com/de-de/galileo</a> kostenlosen Schutz im Rahmen des Projekts „Galileo“ beantragen, und wir werden ihre Prüfung und Genehmigung priorisieren.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wDZ8vz4PInZXzaQ6V0D3U/0f655566875eb2b35f63b8aaf5f6e4e3/image5.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="attack-methods-based-on-region">Angriffsmethoden aufgeschlüsselt nach Regionen</h3>
+		<a href="https://blog.cloudflare.com/#attack-methods-based-on-region" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In den Regionen Nord- und Südamerika, Asien-Pazifik, Europa und Afrika/Naher Osten wurde der größte Anteil (28 %) der abgewehrten Anfragen als „HTTP-Anomalie“ eingestuft, wobei 20 % der abgewehrten Anfragen als SQL-Injection-Versuche und fast 13 % als Versuche, bestimmte <a href="https://www.cve.org" target="_blank" rel="noopener noreferrer">CVEs</a> auszunutzen, gekennzeichnet wurden. CVEs sind öffentlich bekannt gegebene Sicherheitslücken im Cyberspace. Cloudflare überwacht neue Schwachstellen und bestimmt schnell, welche <a href="https://blog.cloudflare.com/tag/vulnerabilities">zusätzliche Regelsätze</a> zum Schutz unserer Nutzer erforderlich sind. Je nach Schwachstelle kann es sich um ausgeklügelte Angriffe handeln, die jedoch von der Schwere, der Identifizierung und der Reaktion der Sicherheitsexperten abhängen.</p>
+	<p>In unserem vorherigen <a href="https://radar.cloudflare.com/notebooks/project-galileo-7th-anniv" target="_blank" rel="noopener noreferrer">Bericht</a> haben wir ähnliche Angriffstendenzen beobachtet, wobei SQLi-Injection und HTTP-Anomalien, die als User-Agent-Anomalien klassifiziert werden, einen großen Teil der abgewehrten Anfragen ausmachten.</p>
+	<div class="flex anchor relative">
+		<h3 id="attacks-methods-by-on-organization-type">Angriffsmethoden nach Organisationsart</h3>
+		<a href="https://blog.cloudflare.com/#attacks-methods-by-on-organization-type" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aviyXs6IEHSNqreidvxyz/8a9e19b01dbeb1e60225ac09e8dd09dd/image4-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Wir schützen eine Reihe von Organisationen im Rahmen des Projekt „Galileo“. Für dieses Dashboard haben wir sie in sechs Gruppen eingeteilt: Community Building/Sozialwesen, Bildung, Umwelt/Katastrophenhilfe, Menschenrechte und Journalismus. Um die Bedrohungen für diese Gruppen besser zu verstehen, haben wir die Arten von Angriffen aufgeschlüsselt, die wir gesehen haben und die von der Web Application Firewall abgewehrt wurden. Ein Großteil des abgewehrten Datenverkehrs stammt von HTTP-Anomalien und SQLi (SQL-Injection).</p>
+	<p><a href="https://www.cloudflare.com/de-de/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a> ist eine Angriffstechnik, die darauf abzielt, Daten aus SQL-Datenbanken zu verändern oder abzurufen. Durch das Einfügen spezieller SQL-Anweisungen in ein Formularfeld versuchen Angreifer, Befehle auszuführen, die den Abruf von Daten aus der Datenbank, die Änderung von Daten innerhalb der Datenbank, die Zerstörung sensibler Daten oder andere manipulative Verhaltensweisen ermöglichen.</p>
+	<p>Erfahren Sie mehr über das „8th Anniversary Radar Dashboard“ und lesen Sie den <a href="https://radar.cloudflare.com/notebooks/project-galileo-8th-anniv" target="_blank" rel="noopener noreferrer">vollständigen Bericht</a> zu den von uns registrierten Trends bei Angriffen auf diverse Organisationen, die von Projekt „Galileo“ geschützt werden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8IVDuDgZp4BUUyOFYxBlt/ef630c4b46b30975716a2c373edab554/image6-1.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+</div>

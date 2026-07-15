@@ -1,0 +1,241 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/mcp-demo-day">English</a>、<a href="https://blog.cloudflare.com/zh-tw/mcp-demo-day">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/mcp-demo-day">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/mcp-demo-day">Português</a>、<a href="https://blog.cloudflare.com/es-es/mcp-demo-day">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/mcp-demo-day">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ihviGbGnxy0mMdYBWCwHN/37261f191c7eecb914cc693e9a8fd1fe/BLOG-2811_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、Anthropic、Asana、Atlassian、Block、Intercom、Linear、PayPal、Sentry、Stripe、Webflowと提携し、まったく新しい「リモートMCPサーバー群」を提供開始します。これらはすべてCloudflare上に構築されており、<a href="https://claude.ai" target="_blank" rel="noopener noreferrer"><u>Claude</u></a>ユーザーはチャット画面から離れることなく、プロジェクト管理、請求書作成、データベース検索、フルスタックアプリのデプロイまで行えるようになります。&nbsp;</p>
+	<p>11月に<a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>Anthropicが「Model Context Protocol（MCP）」を発表</u></a>して以来、大きな注目を集めており、ほぼ毎日のように新しいMCPサーバーが公開されています。&nbsp;その理由は明確で、MCPは「AIエージェント」の実用化に欠けていた重要な要素であり、AIエージェントがツールと連携してアクションを実行したり、追加のコンテキストを取得するための仕組みを提供しています。</p>
+	<p>これまでは、MCPサーバーを利用するにはローカル環境にインストールする必要がありましたが、本日、<a href="http://anthropic.com/news/integrations" target="_blank" rel="noopener noreferrer"><u>Anthropic社が「Integrations」を発表</u></a>したことにより、MCPサーバーはWebサイトのようにURLを入力するだけで使えるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FLvAIrlxVcKPZNRG5Qhwj/f252d4de66f45e1f06bb94d76e1bf4c1/BLOG-2811_2.png" alt="BLOG-2811 2" class="kg-image" width="1860" height="1999" loading="lazy">
+	</figure>
+	<p>Cloudflareはこれまで、お客様のエンジニアリングチームがMCPのプロトコルの複雑さではなく、自社のサービスに必要なMCPツールの開発に集中できるようにするために、<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>リモートMCPサーバーの開発を簡素化するツールの構築</u></a>に注力してきました。Cloudflare上でリモートMCPサーバーをデプロイするのがどれくらい簡単かと聞かれれば、その答えは「たったワンクリック」で最新のMCP標準に対応したすぐに使えるMCPサーバーがデプロイされます。&nbsp;</p>
+	<p>これは言葉で伝えるよりも、是非その便利さを実際に体験してみてください！すでに多くの業界リーダーたちが、Cloudflare上でMCPサーバーを構築し、AIによる新しい体験をユーザーに届けています。あなたも同じように「Cloudflareにデプロイする」をクリックするだけで始められます。&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>これらの企業が、どのようにしてユーザーに新しい機能を提供しているのか、そしてどんなことができるようになったのかを、ぜひこの先の記事でご覧ください。または、5月1日（本日）午前10:00（太平洋標準時）の<a href="https://demo-day.mcp.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>デモ・デー</u></a>にご参加ください。&nbsp;</p>
+	<p>なお、本日より<a href="https://blog.cloudflare.com/thirteen-new-mcp-servers-from-cloudflare"><u>CloudflareのリモートMCPサーバー</u></a>をお客様向けに公開し、構築を通じて得た知見も共有していきます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="mcp-powering-the-next-generation-of-applications">MCP：次世代アプリケーションを支える力</h2>
+		<a href="https://blog.cloudflare.com/#mcp-powering-the-next-generation-of-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>かつては、お店や不動産業者、サービス提供者がWebサイトを持っているのは当たり前ではありませんでした。しかしインターネットが普及し、多くの人が接続できるようになると、それが標準になりました。</p>
+	<p>そして今、私たちはそれと似た変化の真っ只中にいます。すべてのWeb利用者がAIツールにアクセスでき、さまざまな作業をAIに頼る時代へと移行しています。たとえば開発者なら、コードを書くときにまず最初に使うのはClaudeのようなAIツールかもしれません。そして、Claudeがコードを書くのを手伝ってくれるなら、そのままデプロイまで手伝ってくれるのが自然だと感じるでしょう。</p>
+	<p>開発者でなくても同じです。たとえばClaudeがレシピを考える手助けをしてくれたなら、そのレシピに必要な食材の注文も手伝って欲しいと考えるでしょう。&nbsp;</p>
+	<p>リモートMCPを使えば、こうしたことがすべて可能になります。そして、一早くWeb上にビジネスを展開した企業が先行者利益を手にしたように、MCPを活用していち早く構築した企業にも、同じようなチャンスがあるでしょう。&nbsp;</p>
+	<p>ユーザーが製品の価値をより早く体験できるほど、アップグレードして製品を長く使ってもらえる可能性も高まります。MCPを介してサービスをエージェントに接続することで、ユーザーは「これが欲しい」と伝えるだけで、あとはエージェントが処理し、納得のいく結果を提供してくれます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="making-your-service-ai-first-with-mcp">MCPでサービスを「AIファースト」に</h2>
+		<a href="https://blog.cloudflare.com/#making-your-service-ai-first-with-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPを導入した企業は、その効果をすぐに実感できます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="lower-the-barrier-to-entry">利用のハードルを下げる</h3>
+		<a href="https://blog.cloudflare.com/#lower-the-barrier-to-entry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのユーザーがダッシュボードの使い方を学んだり、製品ドキュメントを読む時間があるとは限りません。MCPを使えば、その必要はありません。ユーザーは「欲しい結果」を伝えるだけで、あとはAIエージェントが教えてくれます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="create-personalized-experiences">パーソナライズされた体験を作成</h3>
+		<a href="https://blog.cloudflare.com/#create-personalized-experiences" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPはユーザーのリクエストやその時のやりとりを記録できるため、次回以降の操作がその人の使い方や好みに合わせて調整されます。これにより、どのように製品を使用しているかなどのユーザーごとの情報に基づいて、よりパーソナライズされた適切な体験を提供することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="drive-upgrades-naturally">自然に上位プランへ誘導</h3>
+		<a href="https://blog.cloudflare.com/#drive-upgrades-naturally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>機能の比較表を使用する以上に、AIエージェントは「上位プランの方が<i>その人の</i>望む結果を手に入れられる」旨の説明をすることができます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="ship-new-features-and-integrations">新機能や連携機能を素早く提供</h3>
+		<a href="https://blog.cloudflare.com/#ship-new-features-and-integrations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべての連携機能を自社で作りこむ必要はありません。MCPを通じてツールを公開すれば、ユーザーはお客様の製品を他のスタックと自由につなげられるようになります。エージェントは異なるサービス間のツールを組み合わせて使えるため、すべてのサードパーティサービスを直接サポートする必要なく連携を可能にします。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-build-mcp-on-cloudflare">CloudflareでMCPを構築する理由&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-build-mcp-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPの登場以来、私たちは、開発者が<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>リモートMCPサーバーを簡単に構築・デプロイ</u></a>できる方法を<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>共有</u></a>してきました。プロトコルの複雑性を取り除き、認証やトランスポートの処理を代行したり、使われていない間は自動的に<a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u>「スリープ」</u></a>状態になるようにして、無駄なコストを抑える機能などを提供するなど、<a href="https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects"><u>完全なステートフルなMCPサーバーを（デフォルトで）サポート</u></a>しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rTqqs8gSYef4uIiS1aSqz/5147063aff613078af22e5b5b5b55570/BLOG-2811_3.png" alt="BLOG-2811 3" class="kg-image" width="1788" height="932" loading="lazy">
+	</figure>
+	<p>私たちは、定期的に更新プログラムを出荷し続け、MCP標準の<a href="https://modelcontextprotocol.io/specification/2025-03-26" target="_blank" rel="noopener noreferrer"><u>最新の変更</u></a>の<a href="https://blog.cloudflare.com/streamable-http-mcp-servers-python"><u>サポートを追加</u></a>し、本番環境への導入をより簡単にする取り組みを進めています。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/transport" target="_blank" rel="noopener noreferrer"><u><b>新しいStreamable HTTPトランスポートに対応</b></u></a><b>：</b>MCPサーバーが、SSEに加え、最新のStreamable HTTPトランスポートを使用できるようになり、最新の標準に対応できるようになりました。AI Playgroundと<a href="https://www.npmjs.com/package/mcp-remote" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a>プロキシも更新し、リモートMCPクライアントを提供して、新しいトランスポートを簡単にテストできるようになりました。</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/ai/tree/main/demos/python-workers-mcp" target="_blank" rel="noopener noreferrer"><u><b>PythonでのMCPサーバー開発が可能に</b></u></a><b>：</b>これまでのJavaScript/TypeScriptに加え、Pythonを使用してCloudflare上にMCPサーバーを構築できるようになりました。&nbsp;</p>
+		</li>
+		<li>
+			<p><b>ドキュメントやテンプレート、デプロイ手順を強化：</b><a href="https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless" target="_blank" rel="noopener noreferrer"><u>新しいクイックスタートテンプレート</u></a>を追加し、新しいトランスポート方式に対応した<a href="https://developers.cloudflare.com/agents/model-context-protocol/transport" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>も充実させました。私たちが得た知見を元に、MCPサーバーを構築するための<a href="https://developers.cloudflare.com/agents/model-context-protocol/#best-practices" target="_blank" rel="noopener noreferrer"><u>ベストプラクティス</u></a>も共有しています。&nbsp;</p>
+		</li>
+	</ul>
+	<p>ですが、これは言葉で伝えるよりも、実際に当社のお客様が構築したものを見ていただくのが一番です。加えて、それらの企業がMCPの構築にCloudflareを選択した理由についてもご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="remote-mcp-servers-you-can-connect-to-today">現在接続可能なリモートMCPサーバー</h2>
+		<a href="https://blog.cloudflare.com/#remote-mcp-servers-you-can-connect-to-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="asana">Asana</h3>
+		<a href="https://blog.cloudflare.com/#asana" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在の仕事は、さまざまなアプリやサービスを行き来しながら行います。AsanaはMCPに投資することで、ユーザーがどこにいても、エージェントを通じて他のツールや作業の流れを相互に連携させた運用を実現しています。ユーザーはMCP対応クライアントを使用して、Asanaの「Work Graph（ワークグラフ）」に自然言葉で指示を出し、プロジェクトの最新情報の取得、タスクの検索、プロジェクトの管理、コメントの送信、期限の更新などを行うことができます。</p>
+	<p>ユーザーは、さまざまな作業をスムーズにつなげて整理できるようになります。たとえば、他のアプリで作成したプロジェクト計画や会議のメモを、そのままAsanaのタスクとして割り当てたり、AsanaのタスクをMCP対応の開発環境（IDE）に取り込んだりすることができます。こうした柔軟性により、複数のシステムを行き来するような作業も、これまで以上にスムーズかつ迅速、そして自然にこなせるようになります。</p>
+	<p>Asanaは、自社のMCPサーバーを迅速に立ち上げるためにCloudflareのツールを活用し、この急速に進化する分野でも安定して素早く構築できるようにしました。</p>
+	<p><i>「Asanaでは、チームが容易に作業の調整を行えるようにすることに常に重点を置いています。MCPによって、私たちのWork GraphとClaude.aiのようなAIツールが直接つながり、AIが本当の「チームの一員」のように機能できるようになります。この連携機能では、自然言語による指示を構造化された作業に変換します。会議メモからプロジェクトを作成したり、AIが最新情報を取得して提示したりすることも可能になります。Cloudflareのインフラストラクチャ上に構築したことで、素早くデプロイすることができ、認証やスケーリングの心配をせず、ユーザー体験の向上に集中できました。」– Prashant Pandey氏、Asana社最高技術責任者（CTO）</i></p>
+	<p>AsanaのMCPサーバーの詳細は、<a href="https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="atlassian">Atlassian</h3>
+		<a href="https://blog.cloudflare.com/#atlassian" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、JiraやConfluence Cloudのユーザーは、<a href="http://atlassian.com/platform/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>AtlassianのリモートMCP</u></a>サーバー（ベータ版）を通じて、AnthropicのClaudeアプリから自分のデータに安全にアクセスできるようになりました。また、Cloudflareのインフラ上でホストされているため、データを安全に、許可された境界内に保ちながら、作業の要約、課題やページの作成、複数のステップを含む操作などを行えます。</p>
+	<p>ユーザーは、Claudeを使用して、どこででもJiraとConfluenceの情報にアクセスすることができます：</p>
+	<ul>
+		<li>
+			<p>Jiraの作業内容やConfluenceのページを要約する</p>
+		</li>
+		<li>
+			<p>Claudeから直接、Jiraの課題やConfluenceのページを作成する</p>
+		</li>
+		<li>
+			<p>課題やページをまとめて一括で作成するなど、複数の操作を一度に行う</p>
+		</li>
+		<li>
+			<p>Claudeがアクセスできる複数の情報源を活用して、Jiraの作業内容を補完する</p>
+		</li>
+		<li>
+			<p>そのほか多くのことが可能です！</p>
+		</li>
+	</ul>
+	<p><i>「AIは一律のツールではなく、チームごとの『やるべき仕事』に深く組み込まれるべきです。だからこそ、私たちはMCPに投資しています。チームが普段働いているさらに多くの場所でAIを使えるようになることにとても期待しています。Cloudflareインフラストラクチャでホストすることで、この強力な連携をお客様により早く提供し、企業データの安全性を確保しながら、JiraとConfluenceを使用してこれまで以上に多くのことを行えるようになります。Cloudflareは、OAuthからすぐに使えるリモートMCPを提供してくれるため、安全かつスケーラブルな環境をすぐに構築することができました。」— Taroon Mandhana氏、Atlassian社製品エンジニアリング部門責任者</i></p>
+	<p>AtlassianのMCPサーバーの詳細は、<a href="https://www.atlassian.com/blog/announcements/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="intercom">Intercom</h3>
+		<a href="https://blog.cloudflare.com/#intercom" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Intercomでは、AIのもたらす変化がますますはっきりと見えるようになってきました。IntercomのAIエージェント「Fin」は、すでにAnthropicをはじめとする大手企業のカスタマーサポートでの会話の50%以上を自動で解決しています。MCPを使えば、AIを社内ツールやシステムに組み込むことがこれまで以上に簡単になり、より大きなビジネス価値を実現できます。</p>
+	<p>例えば、お客様との会話には、製品の使われ方や体験についての貴重なインサイトが含まれていますが、これらの情報の多くはサポートプラットフォーム内に留められています。IntercomのMCPサーバーを使えば、組織内の誰もが、AIツールを使用してこのようなお客様から得られた豊富な情報にアクセスできるようになります。例えば、エンジニアは、CursorやClaude CodeなどのツールでIntercomに蓄積された会話履歴やユーザーデータを活用し、問題の原因分析や解決をより効率よく行うことができます。</p>
+	<p><i>「MCPの勢いは本当にすごいです。「Claude.ai」のようなアシスタントや「Fin」のようなエージェントを、簡単に社内システムに接続し、実際の作業を完了させることができるのです。Cloudflareのツールキットは、その動きをさらに加速させています。明確なドキュメント、目的に合わせたツール、開発者向けのプラットフォームが揃っているため、Intercomはアイデア段階から本番運用までをわずか1日で、Intercom MCPサーバーを簡単に立ち上げることができました。私たちはお客様に対して、Cloudflareを活用して自社のMCPサーバーを構築・運用することを推奨していきます。これにより、社内システムを「Fin」や他のクライアントと安全かつ安定して接続できるようになります。—&nbsp;Jordan Neill氏、Intercom社エンジニアリング担当SVP</i></p>
+	<div class="flex anchor relative">
+		<h3 id="linear">Linear</h3>
+		<a href="https://blog.cloudflare.com/#linear" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LinearのMCPサーバーを使うと、ユーザーは自分の課題や製品開発の状況に関する情報を、必要なときにAIアシスタントに直接取り込むことができます。たとえば、Claudeで製品仕様を練り直したり、Cursorでバグ修正に協力したり、メールからその場で課題を作成したりといった使い方が可能です。&nbsp;</p>
+	<p><i>当社はMCPをCloudflare上に構築することで、この動きの速い分野に対応できるフレームワークや、エッジでの柔軟で高速なコンピューティングといった恩恵を受けています。MCPを使うことで、Linearの課題管理や開発フローを、選択したAIツールに直接取り込むことができ、チームが別のツールに切り替える必要がなくなり、開発に集中できます。当社の目標はシンプルです。Claudeで仕様を詰めたり、Cursorでバグ対応をしたり、会話から課題を見つけるなど、開発者や製品チームがすでに作業している場所での作業にアクセスできるようにすることです。このシームレスな連携によって、当社のお客様は作業を円滑に進め、優れた製品の開発に集中できるようになります」— Tom Moor氏、Linear社USエンジニアリング部門責任者</i></p>
+	<p>LinearのMCPサーバーの詳細は、<a href="https://linear.app/docs/mcp" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="paypal">PayPal</h3>
+		<a href="https://blog.cloudflare.com/#paypal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>「MCPは、これからのソフトウェア開発の新しいかたちです。Cloudflare上に構築されたPayPalのリモートMCPサーバーを使えば、開発者は自然な言葉でAIエージェントに指示を出し、PayPalのさまざまなコマース機能とスムーズに連携できるようになります。在庫管理、支払い処理、配送状況の確認、返金対応など、AIエージェントがMCP経由でこれらの機能にアクセスして商取引に関する業務を自律的にこなし、最適化することができます。これは商取引業にとって革新的な展開であり、しかも素晴らしいことに開発者は今日からでもCloudflare上のMCPサーバーとの連携を始めることができます。」- Prakhar Mehrotra氏、PayPal社AI担当SVP</i></p>
+	<p>PayPalのMCPサーバーの詳細は、<a href="https://developer.paypal.com/tools/mcp-server" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="sentry">Sentry</h3>
+		<a href="https://blog.cloudflare.com/#sentry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>SentryのMCPサーバーを使えば、開発者はIDE（統合開発環境）やClaudeのようなAIアシスタントから、Sentryの情報に直接アクセスして、プロジェクト全体や特定ファイルに関するエラーや課題を確認できます。</p>
+	<p>また、開発者はMCPを使用して、「プロジェクトの作成」、「セットアップ情報の取得」、「プロジェクトや組織に関する情報の照会」を行い、その情報を使用してSentry用のアプリケーションをスムーズに設定することができます。今後は、SentryのAIエージェント「Seer」から根本原因の分析や解決策の情報を取り込めるようにしたり、トレースや例外処理などSentry機能の実装作業も簡素化できるよう取り組んでいきます。&nbsp;</p>
+	<p>このMCPをCloudflare上にホストすることで、ローカル環境でのスケーリングや認証といった煩雑さを回避し、SentryのOAuth設定もそのまま利用できます。Durable Objectを活用することでMCP内に状態を維持でき、非ローカル環境でも安定した動作が実現できます。&nbsp;</p>
+	<p><i>「Sentryはこれまでも、開発者が本番環境で安定してアプリを運用できるよう支援してきました。そして今後のAI時代において、その重要性はますます高まります。MCPのような仕組みを使えば、開発者はAIモデルやデータソースを自分たちのスタックにつなぐことができます。私たちがMCPをCloudflare上に構築することを選んだのは、ソフトウェア開発をもっと簡単にしたいという共通のビジョンがあるからです。私たちは共に、開発チームが次世代のAIエージェントを安全に構築、運用できるようにすることに力を注いでいます。こうした連携を通じて複雑な動作をデバッグすることはますます重要になっており、Sentryは問題を素早く特定し解決するために欠かせない可視性を提供します。MCPはこの重要なSentryの情報を開発者の作業の流れに直接組み込むことで、チームが常に信頼性の高いアプリケーションを構築・リリースできるよう支援します。」—&nbsp;David Cramer氏、Sentry社最高製品責任者（CPO）兼共同創業者</i></p>
+	<p>SentryのMCPサーバーの詳細は、<a href="https://docs.sentry.io/product/sentry-mcp" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="block">Block&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#block" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Squareの<a href="https://developer.squareup.com/us/en" target="_blank" rel="noopener noreferrer"><u>API</u></a>は、販売者による支払いの受領、注文の作成と追跡、在庫管理、顧客の整理などを支援する包括的なツールセットです。今では、専用のSquare MCPサーバーを使うことで、販売者はAIエージェントの支援を求め、SquareのAPIリソースとエンドポイントのスイート全体でビジネスを構築できます。Claudeや<a href="https://block.github.io/goose" target="_blank" rel="noopener noreferrer"><u>codename goose</u></a>のようなAIエージェントと統合することで、売り手はSquareの機能を十分に活用する洗練されたカスタマイズされたユースケースを、より低い技術的障壁で作り上げることができます。</p>
+	<p>BlockのMCPサーバーの詳細は、<a href="https://developer.squareup.com/docs/mcp" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="stripe">Stripe</h3>
+		<a href="https://blog.cloudflare.com/#stripe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>「MCPは、新たなAIインターフェースとして注目されています。近い将来、MCPは、人や企業、あるいはコードがサービスを見つけて利用する際の標準的な手段、場合によっては唯一の手段になるかもしれません。</i><a href="https://docs.stripe.com/agents" target="_blank" rel="noopener noreferrer"><i><u>Stripeのエージェントツールキット</u></i></a><i>とCloudflareのエージェントSDKを使用することで、開発者はわずか数行のコードでMCPを収益化できるようになります。」— Jeff Weinstein氏、Stripe社プロダクトリード</i></p>
+	<div class="flex anchor relative">
+		<h3 id="webflow">Webflow</h3>
+		<a href="https://blog.cloudflare.com/#webflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebflowのMCPサーバーは、CMSの管理、SEOの監査と改善、コンテンツのローカライゼーション、サイトの公開などをサポートしています。これにより、ユーザーはAIエージェントを通じて、自分のWebサイトを直接管理・改善できるようになります。&nbsp;</p>
+	<p><i>「私たちは、MCPをWebflowと対話するための新しいインターフェースと捉えており、すべての人に開発の力を届けるという当社のミッションにも合致しています。MCPは単にAPIの見た目が変わったものではなく、サポートするアクション（Webサイトの公開、CMSコレクションの作成、コンテンツの更新など）の観点から考えています。MCPを使えば、そうしたアクションを、見つけやすく、安全で、状況に応じた形で提供できるようになります。細かいAPIの操作や複雑な仕組みを自分で組み合わせることなく、AIと人間が協力して自然に作業できるような、新しいワークフローが可能になります。Cloudflareは、こうした未来を支えるための最新のWebインフラストラクチャを構築するために必要な信頼性、パフォーマンス、開発者ツールを提供してくれます。CloudflareのリモートMCPサーバーのサポートは成熟しており、よく統合されています。また、認証と耐久性に対するCloudflareのアプローチは、これらのサービスの規模とセキュリティに関する当社の考え方と一致しています。」—&nbsp;Utkarsh Sengar氏、Webflow社エンジニアリング担当VP</i></p>
+	<p>WebflowのMCPサーバーの詳細は、<a href="https://mcp.webflow.com" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご確認ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">今すぐ構築を始めましょう&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様のサービスに向けたリモートMCPサーバーを構築したい場合、当社のドキュメントをご覧ください。下のチュートリアルをご覧いただくことも、下のボタンからすぐに使えるスターター用のリモートMCPサーバーを本番環境にデプロイすることもできます。リモートMCPサーバーがデプロイされると、<a href="https://claude.ai" target="_blank" rel="noopener noreferrer"><u>Claude</u></a>、Cloudflareの<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AIプレイグラウンド</u></a>、または任意のリモートMCPクライアントから使用することができます。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p></p>
+	<p>さらに、2つのMCPテンプレートからMCPサーバーを構築する方法をご紹介する、<a href="https://youtu.be/Pjc8cC8zVRY" target="_blank" rel="noopener noreferrer"><u>新しいYouTube動画</u></a>を公開しました。</p>
+	<p>ご質問またはご意見がございましたら、<a href="https://blog.cloudflare.com/#"><u>1800-mcp@cloudflare.com</u></a>までメールでご連絡ください。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WNNRZBcgfCv5xVM3MNYwI/39ebfda250c4524ebce323511bffc72e/BLOG-2811_4.png" alt="BLOG-2811 4" class="kg-image" width="1200" height="267" loading="lazy">
+	</figure>
+	<p></p>
+</div>

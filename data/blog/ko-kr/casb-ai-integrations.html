@@ -1,0 +1,133 @@
+<div class="mb2 gray5">4분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/casb-ai-integrations">English</a>, <a href="https://blog.cloudflare.com/fr-fr/casb-ai-integrations">Français</a>, <a href="https://blog.cloudflare.com/de-de/casb-ai-integrations">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-ai-integrations">日本語</a>, <a href="https://blog.cloudflare.com/es-es/casb-ai-integrations">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/casb-ai-integrations">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-tw/casb-ai-integrations">繁體中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17jgL6LTm3bmYYzS8kAHtX/711a8621064f76ade67964cbc5da5b73/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>오늘부터 <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>보안 액세스 서비스 에지(SASE)</u></a> 플랫폼을 사용하는 모든 사용자는 API 기반 <a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>클라우드 액세스 보안 브로커(CASB)</u></a>를 사용하여 생성형 AI(GenAI) 도구의 보안 태세를 평가할 수 있습니다. 구체적으로는 OpenAI의 <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><u>ChatGPT</u></a>, Anthropic의 <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer"><u>Claude</u></a>, Google의 <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer"><u>Gemini</u></a>가 있습니다. 조직에서는 생성형 AI 계정을 연결하고 몇 분 이내에 구성 오류, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>데이터 손실 방지(DLP)</u></a> 일치, 데이터 노출 및 공유, 규제 준수 위험 등을 감지할 수 있으며 이 모든 것이 사용자 장치에 번거로운 소프트웨어를 설치하지 않고도 가능합니다.</p>
+	<p>기업에서의 <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>생성형 AI</u></a> 도입이 폭증하면서 IT 팀과 보안팀에서는 이러한 강력한 도구와 더불어 새롭게 떠오르는 <a href="https://www.cloudflare.com/the-net/generative-ai-zero-trust" target="_blank" rel="noopener noreferrer"><u>&nbsp;보안 및 규제 준수 문제</u></a>에 서둘러 대처해야 합니다. 이처럼 빠르게 변화하는 환경에서 IT 팀과 보안 팀에서는 기업 네트워크와 데이터의 보안 및 개인정보를 보호하면서 AI 채택에 도움이 되는 도구를 필요로 합니다.&nbsp;</p>
+	<p>Cloudflare의 API CASB와 인라인 CASB는 함께 작동하여 조직에서 AI 도구를 안전하게 채택할 수 있도록 지원합니다. API CASB 통합을 통해 ChatGPT, Claude, Gemini 등의 인기 있는 AI 도구 내부의 미사용 데이터와 보안 태세에 대한 대역 외 가시성이 제공됩니다. 동시에 Cloudflare Gateway를 통해 <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>인라인 프롬프트 제어</u></a> 및 <a href="https://blog.cloudflare.com/shadow-AI-analytics"><u>섀도우 AI</u></a> 식별이 가능해집니다. Cloudflare Gateway는 이러한 AI 공급자에게 전달되는 트래픽에 정책과 DLP를 적용합니다. 이들 기능을 함께 사용하면 조직에서 생성형 AI 사용을 보호하기 위한 통합 제어판이 제공됩니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-new">새 소식</h3>
+		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ChatGPT, Claude, Gemini는 이제 모두 <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank" rel="noopener noreferrer"><u>Cloudflare의 API CASB</u></a>에서 지원하는 통합에서 활성화되었습니다. Cloudflare One 사용자는 모두 이러한 통합을 이용할 수 있고, 계정 소유자는 자신의 GenAI 테넌트를 쉽게 연결할 수 있으며, CASB는 여러 도메인에 걸쳐 보안 문제를 스캔합니다.</p>
+	<ul>
+		<li>
+			<p><b>에이전트 없는 연결:</b> 에이전트 없는 API 기반 통합을 통해 ChatGPT, Claude, Gemini를 연결하여 상태 및 데이터 위험을 검사합니다. 엔드포인트 소프트웨어를 설치할 필요가 없습니다.</p>
+		</li>
+		<li>
+			<p><b>상태 관리:</b> 데이터 노출이나 오용으로 이어질 수 있는 안전하지 않은 설정과 잘못된 구성을 감지합니다.</p>
+		</li>
+		<li>
+			<p><b>DLP 감지:</b> 채팅 첨부 파일에서 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>중요한 데이터</u></a>가 업로드된 위치를 식별합니다(프롬프트가 곧 제공됨).</p>
+		</li>
+		<li>
+			<p><b>생성형 AI별 인사이트:</b> 특정 AI 공급자 도구 세트의 고유한 기능과 관련된 위험을 파악합니다.</p>
+		</li>
+	</ul>
+	<p>이제 관리자는 다음과 같은 질문에 답할 수 있습니다. 우리 직원은 ChatGPT에서 무엇을 하고 있나요? Claude에는 어떤 데이터가 업로드되어 사용되고 있나요? Google Workspace에 Gemini가 올바로 구성되어 있나요?</p>
+	<p>이제 각 통합에 대해 자세히 살펴보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="openai-chatgpt">OpenAI ChatGPT</h3>
+		<a href="https://blog.cloudflare.com/#openai-chatgpt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dO0h3q9modcmRPAQeiCOH/d8d54f5233e0026a63569b53cbb8d9a6/image2.png" alt="" class="kg-image" width="1999" height="1753" loading="lazy">
+	</figure>
+	<p>Cloudflare의 CASB와 OpenAI의 ChatGPT가 통합되면 다음과 같은 여러 유형의 인사이트를 검색할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p><b>기능 활성화</b>: <a href="https://platform.openai.com/docs/actions/introduction" target="_blank" rel="noopener noreferrer"><u>작업</u></a>, <a href="https://platform.openai.com/docs/guides/tools-code-interpreter" target="_blank" rel="noopener noreferrer"><u>코드 실행</u></a>, <a href="https://help.openai.com/en/articles/9237897-chatgpt-search" target="_blank" rel="noopener noreferrer"><u>웹 액세스</u></a> 등 ChatGPT의 기능 세트 관련 기능이 강조됩니다.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>외부 노출: </b>공개적으로 공유되거나 <a href="https://openai.com/index/introducing-the-gpt-store" target="_blank" rel="noopener noreferrer"><u>GPT Store</u></a>에 등록된 GPT와 같이 테넌트를 넘어 공유된 채팅 및 GPT를 찾아 빠르게 분류할 수 있도록 다시 소유자와 연결합니다.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>비밀, 키, 초대</b>: 교체되지 않거나 크리덴셜 위생을 유지하는 데 더 이상 사용되지 않는 API 키를 식별합니다. 권한이 초과된 초대 또는 오래된 초대를 식별합니다.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>중요한 콘텐츠(DLP를 통해)</b>: 업로드된 채팅 첨부파일의 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer"><u>DLP 프로필</u></a> 일치 항목을 통해 민감한 데이터(예: 자격 증명 및 비밀, 재무/건강 정보, 소스 코드 등)를 감지하여 맞춤형 대응이 가능하도록 합니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="anthropic-claude">Anthropic Claude</h3>
+		<a href="https://blog.cloudflare.com/#anthropic-claude" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 Claude의 경우 다음과 같은 대역 외 감지를 제공할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p><b>비밀, 키, 초대:</b> 고위험 초대와 자격 드리프트를 일찍 파악하여 최소 권한 액세스 제어가 엄격하게 유지됩니다. 사용되지 않은 API 키와 순환 간극이 잊혀진 열린 도어로 바뀌기 전에 이를 발견합니다.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>중요한 콘텐츠(DLP를 통해)</b>: 업로드된 파일에서 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank" rel="noopener noreferrer"><u>중요한 데이터</u></a>를 모니터링하여 조직에서 규제 준수를 유지하면서 Claude를 안전하게 사용하도록 지원합니다. 보안팀에서는 이러한 정보를 CASB 스캔만큼 빠르게 획득하여 중요한 데이터에 생산적이고 안전하게 Claude를 사용하는 데 필요한 가시성을 제공합니다.</p>
+		</li>
+	</ul>
+	<p>Anthropic에서는 Claude의 API 역량과 기능을 지속해서 확장하고 있으며, Cloudflare에서는 새로운 기능이 출시되는 대로 그에 맞춘 보안 감지 기능을 추가할 예정입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="google-gemini">Google Gemini</h3>
+		<a href="https://blog.cloudflare.com/#google-gemini" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 Google Gemini에 대한 감지는 Google Workspace에 대한 API CASB 통합의 일부로 나타납니다.</p>
+	<ul>
+		<li>
+			<p><b>ID 및 MFA</b>: MFA 없이 제미니 사용자와 관리자를 식별하므로 이들이 주요 손상 대상이 됩니다. IT 관리자가 회사 데이터를 처리하기 위해 매일 Gemini에 의존하지만, 해당 관리자의 Google Workspace 계정에 다단계 인증이 없다고 상상해 보세요. 하나의 피싱 이메일이 성공하면 공격자에게 권한이 부여되어 Gemini 및 더 넓은 Google Workspace 환경에 대한 액세스 권한이 노출될 수 있으며, 그에 따라 사소한 실수가 조직 전반의 침해로 바뀔 수 있습니다.&nbsp;</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>라이선스 위생</b>: 제미니 또는 <a href="https://support.google.com/a/answer/16345165" target="_blank" rel="noopener noreferrer"><u>AI Ultra</u></a> 라이선스를 아직 보유하고 있는 정지된 계정에 플래그를 지정하여 비용과 노출을 줄입니다. AI Ultra 사용자는 웹 브라우저에서 동시에 최대 10개의 작업을 자동화할 수 있는 자율 에이전트 역할을 하는 연구 프로토타입인 <a href="https://deepmind.google/models/project-mariner" target="_blank" rel="noopener noreferrer"><u>Project Mariner</u></a>와 같은 더 강력하고 위험한 기능에 액세스할 수 있습니다. 공격자는 AI Ultra 사용자를 손상시켜 더 많은 피해를 입힐 수 있으므로, Cloudflare에서는 이 점을 감지 세트에 포함합니다.</p>
+		</li>
+	</ul>
+	<p>Gemini 통합은 Google에서 OpenAI 또는 Anthropic과 제품과 API를 다르게 구성했기 때문에 범위가 더 좁습니다. 조직의 경우 Gemini는 <a href="https://workspace.google.com" target="_blank" rel="noopener noreferrer"><u>Google Workspace</u></a> 애드온으로 제공됩니다. 기업에서는 Gemini Enterprise 또는 AI Ultra 등 추가 라이선스를 통해 Gmail, 문서, 스프레드시트, 기타 Google Workspace 앱에서 Gemini 기능을 사용할 수 있습니다. Gemini는 아직 이러한 API 엔드포인트를 제공하지 않으므로 CASB 감지는 공개 공유 또는 사용자 지정 어시스턴트 게시와 같은 상태 문제보다는 ID, MFA, 라이선스 위생에 중점을 둡니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-genai-posture-management">생성형 AI 상태 관리의 미래</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-genai-posture-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>다른 수많은 조직과 마찬가지로 Cloudflare도 생성형 AI를 도입하고 있으며, 이러한 환경을 지금보다 훨씬 더 안전하게 만들기 위한 동일한 여정을 진행하고 있습니다. Cloudflare의 관리 적용 범위를 고객에게 확장하여, 고객이 생성형 AI를 통해 지속해서 혁신할 수 있게 되어 기쁩니다. 하지만 앞으로 GenAI 공급자들이 보안, 규제 준수, 데이터 프라이버시를 플랫폼의 더욱 중요한 원칙으로 삼기 위해 구체적인 조치를 취하는 것을 볼 수 있어 고무적입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="secure-genai-beyond-the-reach-of-inline-controls">인라인 제어의 범위를 넘어서서 생성형 AI 보호</h3>
+		<a href="https://blog.cloudflare.com/#secure-genai-beyond-the-reach-of-inline-controls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>생성형 AI를 채택하면 새로운 보안 요구 사항이 생겨납니다. Cloudflare CASB는 이러한 도구 전반에 걸쳐 대역 외 가시성을 제공하여 인라인 제어를 바탕으로 인사이트를 제시합니다. 상태, 액세스, 데이터를 제어하여 조직에서는 생성형 AI를 자신 있게 그리고 안전하게 수용할 수 있습니다.</p>
+	<p><b>시작 방법:</b></p>
+	<ul>
+		<li>
+			<p><b>기존 Cloudflare One 고객의 경우:</b> 지금 바로 계정 관리자에게 문의하거나 대시보드에서 직접 통합을 활성화하세요.</p>
+		</li>
+		<li>
+			<p><b>Cloudflare One을 처음 사용하시나요?</b> <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>지금 가입하시면</u></a> 무료로 50개의 시트가 제공되므로 Gen AI를 안전하게 바로 사용하실 수 있습니다. 대규모 배포의 경우 <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>Cloudflare 전문가와의 상담</u></a>을 요청하세요.</p>
+		</li>
+	</ul>
+	<p>다른 새로운 기능을 미리 보고 저희 로드맵 형성을 돕고 싶으시면 Cloudflare의 AI 보안을 위한 <a href="https://www.cloudflare.com/lp/ai-security-user-research-program-2025" target="_blank" rel="noopener noreferrer"><u>저희 사용자 연구 프로그램에 관심을 표현</u></a>해 주세요. </p>
+</div>

@@ -1,0 +1,60 @@
+<div class="mb2 gray5">3 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/how-to-connect-your-offices-to-cloudflare-using-sd-wan">English</a>, <a href="https://blog.cloudflare.com/ja-jp/how-to-connect-your-offices-to-cloudflare-using-sd-wan">日本語</a>, <a href="https://blog.cloudflare.com/th-th/how-to-connect-your-offices-to-cloudflare-using-sd-wan">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/how-to-connect-your-offices-to-cloudflare-using-sd-wan">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7c7SJO8oiVbwEV0Gn3mqDP/bd5d7e6f270b91b0caa45d1f6448e04f/how-to-connect-your-offices-to-cloudflare-using-sd-wan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Banyak kantor akan segera dibuka kembali dan, seperti dua tahun lalu ketika peralihan ke pekerjaan jarak jauh membawa perubahan paradigma bagi tim TI dan jaringan, kembalinya ke kantor akan membawa tantangannya sendiri. Dua tahun lalu, Chief Information Officers menghadapi latihan kebakaran mendadak yang mengerahkan tenaga kerja jarak jauh hampir dalam semalam. Saat perusahaan mulai bereksperimen dengan model kerja hybrid, tim TI menghadapi masalah baru. Mereka tidak hanya membuka kembali cabang yang ada dan berpotensi mengaktifkan cabang baru guna mengerahkan distribusi tenaga kerja yang lebih fleksibel, tetapi juga memastikan pengguna memiliki pengalaman yang konsisten di mana pun mereka terhubung. Semua ini terjadi dengan tetap menjaga visibilitas dan keamanan di seluruh jaringan perusahaan yang semakin kompleks dan sulit dipelihara.</p>
+	<p></p>
+	<p>Beberapa perusahaan telah mengadopsi teknologi SD-WAN untuk membantu memecahkan masalah ini. SD-WAN, atau jaringan area luas yang ditentukan perangkat lunak, adalah cara fleksibel untuk menghubungkan cabang dan kantor pusat perusahaan secara bersama-sama dengan menggunakan perangkat lunak sebagai dasar ke berbagai platform perangkat keras. Menerapkan SD-WAN dapat membuat hidup tim TI dan jaringan lebih sederhana dengan mengonsolidasikan tugas manajemen dan mengabstraksikan kompleksitas konfigurasi router. Platform SD-WAN sering kali menyertakan “orchestrator” pusat yang menyimpan informasi tentang lokasi yang terhubung.</p>
+	<div class="flex anchor relative">
+		<h3 id="sd-wan-as-management-overlay-for-your-corporate-network"><b>SD-WAN sebagai Dasar Manajemen untuk Jaringan Perusahaan Anda</b></h3>
+		<a href="https://blog.cloudflare.com/#sd-wan-as-management-overlay-for-your-corporate-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Secara tradisional, tim jaringan menghubungkan cabang ke jaringan perusahaan melalui arsitektur yang kompleks dan saling berhubungan, yang melibatkan ketergantungan perangkat keras dan perangkat lunak tertentu dan terkadang bahkan tautan khusus atau sewaan antar lokasi. Setup ini mahal dan rumit, untuk memulai dan membuat pengaktifan cabang baru dan yang sudah ada akan mengakibatkan proses yang lambat. Cloudflare One dibangun di atas jaringan Anycast global kami yang berkinerja dan tangguh, memungkinkan pelanggan untuk memanfaatkan jaringan global kami di 250+ kota sebagai tulang punggung perusahaan Anda. Ini berarti yang perlu Anda lakukan hanyalah menghubungkan infrastruktur Anda ke jaringan Anycast global Cloudflare dari lokasi mana pun yang Anda inginkan, dan Anda langsung terhubung ke semua lokasi lain. Sederhana.</p>
+	<p>Gambar 1. Tulang Punggung Perusahaan Baru</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dM55ENR9XXsmCi9ctiFUf/8d8013250911903ceb25fad897b3651e/image3-6.png" alt="Figure 1. The New Corporate Backbone" class="kg-image" width="607" height="516" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="but-how-exactly-do-you-connect-your-offices-to-cloudflares-global-network"><b>Tetapi bagaimana secara tepat Anda menghubungkan kantor Anda ke jaringan global Cloudflare?</b></h3>
+		<a href="https://blog.cloudflare.com/#but-how-exactly-do-you-connect-your-offices-to-cloudflares-global-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Saat ini, pendekatan yang lebih modern adalah menggunakan SD-WAN untuk mengonfigurasi jaringan Anda dan menghubungkannya ke jaringan Cloudflare, memanfaatkannya sebagai tulang punggung perusahaan yang baru. Pendekatan ini cepat dan mudah! Kami menggunakan protokol tunneling standar industri dengan cara yang inovatif, yang dapat Anda pelajari lebih lanjut dari <a href="https://blog.cloudflare.com/anycast-ipsec">blog Anycast IPsec</a>.</p>
+	<p>Untuk tutorial terperinci, lihat dokumen pengembang untuk <a href="https://developers.cloudflare.com/magic-wan/tutorials/secure-web-gateway" target="_blank" rel="noopener noreferrer">Menghubungkan ke Secure Web Gateway dengan Magic WAN</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="keeping-things-performant-secure"><b>Menjaga segala sesuatunya Tetap Berkinerja &amp; Aman</b></h3>
+		<a href="https://blog.cloudflare.com/#keeping-things-performant-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Di masa lalu, organisasi harus memanfaatkan leased line dan MPLS untuk menyatukan jaringan mereka. Ini adalah jalur dan tautan khusus untuk menyediakan koneksi yang stabil dan berkinerja baik untuk traffic perusahaan.</p>
+	<p>Saat menggunakan jaringan Cloudflare sebagai tulang punggung, Anda tidak mengorbankan kinerja tetapi malah mendapat manfaat dari <a href="https://blog.cloudflare.com/argo-v2">WAN yang dioptimalkan secara global</a> <i>tanpa</i> biaya yang mahal atau manajemen overhead MPLS dan leased line. Ini berarti kinerja dan keandalan setidaknya setara dengan, jika tidak lebih baik dari, koneksi Anda yang ada.</p>
+	<p>Meskipun konektivitas berkinerja hanya sebagian dari cerita, jaringan yang mendasarinya, apa pun itu, tetap harus aman. Traffic melalui jaringan Cloudflare selalu aman; ujung ke ujung untuk traffic, cabang, dan pengguna Anda baik di kantor maupun jarak jauh. Traffic dienkripsi dan dapat disaring di seluruh jaringan untuk Secure Web Gateway yang lengkap dan firewall Zero Trust.</p>
+	<p>Gambar 2. Jaringan Cloudflare Zero Trust</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L2on2DxItTGyVOfuaxoUl/e11cd5e19e250a1765aa2bd26acb3d1c/unnamed-3.png" alt="Figure 2. Cloudflare Zero Trust Networking" class="kg-image" width="1211" height="753" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="easier-management-greater-flexibility"><b>Manajemen yang Lebih Mudah &amp; Fleksibilitas yang Lebih Besar</b></h3>
+		<a href="https://blog.cloudflare.com/#easier-management-greater-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Menggunakan protokol tunneling standar berarti Anda tidak hanya dapat menggunakan produk SD-WAN, tetapi Anda juga dapat menggunakan router atau perangkat apa pun yang memiliki dukungan protokol tunneling (GRE &amp; IPsec) untuk terhubung. Jika Anda sedang menjalani transformasi SD-WAN, atau memiliki banyak platform sebagai akibat dari merger dan akuisisi, atau jika Anda hanya ingin menjalankan kantor kecil dengan cepat, kami siap membantu Anda!</p>
+	<p>Dan dengan semua yang terhubung ke Cloudflare, Anda sekarang memiliki bidang kontrol pusat untuk semua traffic Anda, tidak hanya antar situs tetapi juga traffic ke dan dari Internet.</p>
+	<p>Untuk membuat segalanya lebih mudah, kami berkolaborasi dengan mitra SD-WAN seperti Aruba Networks, VMware VeloCloud, Infovista, dan lainnya untuk mempermudah peningkatan traffic dari platform SD-WAN mereka hanya dengan beberapa klik. Nantikan pembaruan di masa mendatang.</p>
+</div>

@@ -1,0 +1,109 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/inline-dlp-ga">English</a>、<a href="https://blog.cloudflare.com/fr-fr/inline-dlp-ga">Français</a>、<a href="https://blog.cloudflare.com/de-de/inline-dlp-ga">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/inline-dlp-ga">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HBqV9rfR02JvgaaeJlSkX/ec47d1d207b905e4a3ed91364cb9524c/inline-dlp-ga.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>7月、Zero Trustの最新製品である Data Loss Prevention（DLP）のベータ版へのアクセスを<a href="https://blog.cloudflare.com/inline-data-loss-prevention">発表</a>しました。そして本日、DLPが一般提供開始したことを発表できることを嬉しく思います。これにより、すべてのお客様が、企業ネットワークに出入りする機密データを可視化し、管理することができるようになりました。ご興味のある方は、この記事の最後をご覧ください。</p>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-dlp">DLPとは？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Data Loss Prevention（データ損失防止）は、最大の課題の1つである機密データの特定と保護の解決に役立ちます。クラウドへの移行により、機密情報の追跡と管理はこれまで以上に困難になっています。従業員は、膨大な量のデータを操作するために、増え続けるツールの一覧を使用しています。その一方で、ITおよびセキュリティ管理者は、機密データにアクセス権を与えるべき人物、そのデータの保存方法、そのデータが許可された移動先の特定に困難を極めています。</p>
+	<p>Data Loss Prevention（データ損失防止）を使用すると、キーワードやパターンなどの特性を基にデータを保護することができます。トラフィックが企業インフラストラクチャに出入りする際に、機密データの指標がないかトラフィックが検査されます。指標が見つかった場合、トラフィックはお客様のルールに基づいて許可またはブロックされます。</p>
+	<p>DLPの最も一般的な用途は個人を特定できる情報（PII）の保護ですが、多くのお客様の関心は知的財産、ソースコード、企業の財務情報、その他ビジネスに不可欠な情報の保護にあります。適切なデータの使用方法として、誰がデータを使用したか、データがどこに送信されたか、データがどのように保存されているかなどを含めることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-dlp-see-my-corporate-traffic">DLPは企業のトラフィックをどのように確認するのか？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-dlp-see-my-corporate-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DLPは、Cloudflare Oneの一部であり、ユーザーと企業リソースをつなぐZero TrustのNetwork as a Serviceのプラットフォームです。Cloudflare Oneでは、データセンター、オフィス、リモートユーザーからのトラフィックをCloudflareネットワーク経由で実行します。これは、IDやデバイスポスチャ―の検証、マルウェアやフィッシングから保護するための企業内トラフィックのフィルタリング、SaaSアプリケーションの設定の確認、従業員がより安全にネットサーフィンできるようにするブラウザの分離など、トラフィックを保護するさまざまな機会を提供します。これらはすべて、当社のグローバルネットワーク上のパフォーマンスとして実行され、単一のコントロールプレーンで管理されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">その仕組みは？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69LEhrzNB3qO19DcQSDxIC/b8c83b53d142ab6bd27f083c13b8290e/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>DLPは、Cloudflare OneのHTTPフィルタリング機能を利用しています。トラフィックがネットワークを通過する際、HTTP要求の情報を基にルールを適用し、トラフィックをルーティングすることができます。ドメイン、URL、アプリケーション、HTTPメソッドなど、フィルタリングに使用できるオプションは多岐にわたります。これらのオプションを使用して、DLPで検査するトラフィックをセグメント化することができます。</p>
+	<p>DLPが適用されると、関連するHTTP要求が解凍、デコードされ、正規表現により一致がないかがスキャンされます。数値の正規表現の一致は、チェックサム計算や<a href="https://en.wikipedia.org/wiki/Luhn_algorithm" target="_blank" rel="noopener noreferrer">Luhnアルゴリズム</a>など、可能な限りアルゴリズムを使用して検証されます。ただし、米国の社会保障番号など、一部の数値検出はアルゴリズム検証に準拠していません。</p>
+	<p>検出によって機密データが特定された場合、お客様のルールセットに従ってデータ転送を許可またはブロックすることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-use-it">使用方法は？</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>では、これが実際にどのように実行されるのか、詳しく見ていきましょう。Zero TrustダッシュボードでDLPを使用するには、ゲートウェイの下にある[DLP Profiles]（DLPプロファイル）タブに移動します。</p>
+	<p>保護するデータのタイプを決定します。現在、クレジットカード番号と米国の社会保障番号を検出していますが、今後はDLP検出のための強力なライブラリの拡充を予定しています。私たちが考える次のステップは、カスタマイズ性と、より多くの国際的な識別子や財務記録番号などを検出できる事前定義を追加していくことであり、これはまもなく達成する予定です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EQnaB7V1Akwzwysxv4XyF/c9c42b926e2d5ef38ef1f33b6d029b2b/image2-14.png" alt="" class="kg-image" width="1238" height="468" loading="lazy">
+
+	</figure>
+	<p>決定したら、[Configure]（構成）を選択して、検出を有効にします。</p>
+	<p>使用する検出を有効にします。前述のように、これらのカード番号の検出は正規表現を使用したLuhnアルゴリズムで検証されます。カード番号の数値を検出したり、「American Express」などのカードの名称と一致する文字列を検出することができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ohWjYF6CSnHW9c3clXCg9/5fcb59d40da56942b5610bf04a1e9a01/image6-2.png" alt="" class="kg-image" width="1990" height="668" loading="lazy">
+
+	</figure>
+	<p>次に、選択したトラフィックのゲートウェイ<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies" target="_blank" rel="noopener noreferrer">HTTPポリシー</a>に検出を適用します。ここでは、GoogleドライブのトラフィックにDLPを適用しています。このポリシーにより、Google Driveへのアップロードとダウンロードに米国の社会保障番号が含まれるものはブロックされます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eUqmagXBJcZiQ6N8DASD6/be655b80c0b59bb6657395dea5259d6a/image3-10.png" alt="" class="kg-image" width="1962" height="1392" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="holistic-data-protection-with-cloudflare-zero-trust">Cloudflare Zero Trustを使用した総合的なデータ保護</h3>
+		<a href="https://blog.cloudflare.com/#holistic-data-protection-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5es1X7XImRbyrAgxm7jaOW/525a16426f263bb04ecb850aac80f8c3/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
+
+	</figure>
+	<p>HTTPトラフィックに機密データが含まれていないかどうかをDLPで検査することは、企業がデータ流出のリスクを低減し、規制コンプライアンスを強化し、全体的なデータガバナンスを向上させるための重要な方法の 1 つです。</p>
+	<p>DLPの実装は、データ保護に対するより包括的なアプローチへの一歩に過ぎません。</p>
+	<p>そのため、当社の<a href="https://www.cloudflare.com/ja-jp/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust</a>プラットフォームでは、あらゆるデバイスのあらゆるユーザーがデータにアクセスしてやり取りする方法を、単一の管理インターフェースからより包括的に制御できるようにしています。</p>
+	<ul>
+		<li>
+			<p>転送中のデータを保護するために、管理者は<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">Zero Trust Network Access（ZTNA）</a>サービスでIDを意識したきめ細かいアクセスポリシーを適用したり、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">インラインセキュアウェブゲートウェイ（SWG）</a>でアプリケーションごとに企業のテナント管理を適用することが可能です。</p>
+		</li>
+		<li>
+			<p>当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">リモートブラウザ分離（RBI）</a>サービスは、ローカルデバイスへのデータのダウンロード、コピー／ペースト、印刷などのユーザーがブラウザ内で使用するデータの操作方法を制御することができます。</p>
+		</li>
+		<li>
+			<p>保存データについては、<a href="https://blog.cloudflare.com/casb-ga">本日より一般提供の開始を発表</a>した、APIベースのクラウド・アクセス・セキュリティ・ブローカー（CASB）が、データ漏洩につながるSaaSアプリケーションの設定ミスがあるかどうかを検出します。</p>
+		</li>
+	</ul>
+	<p>DLPサービスは、これらのZTNA、SWG、CASBなどのセキュリティサービスとシームレスに動作するように設計されています。DLPの機能を深めていく中で、このプラットフォームのアプローチは、お客様のニーズに柔軟に対応するための独自の内容です。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-access-to-data-loss-prevention">Data Loss Prevention（データ損失防止）にアクセスする</h3>
+		<a href="https://blog.cloudflare.com/#get-access-to-data-loss-prevention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DLPにアクセスするには、<a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">コンサルタント</a>を利用するか、アカウントマネージャーまでお問合せください。</p>
+</div>

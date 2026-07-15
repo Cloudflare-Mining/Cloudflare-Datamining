@@ -1,0 +1,300 @@
+<div class="mb2 gray5">Lecture&nbsp;: 10 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/automatically-generating-cloudflares-terraform-provider">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/automatically-generating-cloudflares-terraform-provider">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/automatically-generating-cloudflares-terraform-provider">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/automatically-generating-cloudflares-terraform-provider">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/automatically-generating-cloudflares-terraform-provider">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/automatically-generating-cloudflares-terraform-provider">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zh37HN3XlMPz8Imlc1pkQ/c93812e87ed5454947b29df8f6aa0671/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En novembre&nbsp;2022, nous avons annoncé la transition de <a href="https://blog.cloudflare.com/open-api-transition"><u>l'API Cloudflare vers les schémas OpenAPI</u></a>. À l'époque, nous avions un objectif audacieux&nbsp;: faire des schémas OpenAPI la source unique d'informations fiables pour notre écosystème de SDK et notre documentation de référence. Au cours de la Developer Week&nbsp;2024, nous avons confirmé cet objectif, avec <a href="https://blog.cloudflare.com/workers-production-safety"><u>l'annonce de la génération automatique de nos bibliothèques de SDK</u></a> à partir de ces schémas OpenAPI. Aujourd'hui, nous sommes heureux d'annoncer les nouveaux composants de l'écosystème qui bénéficient désormais de la génération automatique&nbsp;: le fournisseur Terraform et la documentation de référence de l'API.</p>
+	<p>Désormais, dès qu'une fonctionnalité ou un attribut nouveaux seront ajoutés à nos produits et documentés par l'équipe, vous pourrez voir de quelle manière ils sont censés être utilisés au sein de notre écosystème de SDK <i>et</i> les utiliser immédiatement. Plus de retards, et plus de lacunes dans la couverture des points de terminaison d'API.&nbsp;</p>
+	<p>Vous trouverez le nouveau site de documentation à l'adresse <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/api-next/</u></a>, et vous pouvez tester la version d'évaluation préliminaire du fournisseur Terraform en <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/5.0.0-alpha1/docs" target="_blank" rel="noopener noreferrer"><u>installant&nbsp;5.0.0-alpha1</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-terraform">Pourquoi Terraform&nbsp;?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour tous ceux qui ne connaissent pas <a href="https://www.terraform.io" target="_blank" rel="noopener noreferrer"><u>Terraform</u></a>, il s'agit d'un outil assurant la gestion de votre infrastructure en tant que code, de la même manière que vous gérez le code de votre application. Nombre de nos clients (grands et petits) s'appuient sur Terraform pour bénéficier de l'orchestration indépendante de la technologie de leur infrastructure. Dans l'envers du décor, Terraforme est fondamentalement un client HTTP avec une gestion intégrée du cycle de vie&nbsp;; cela signifie que le logiciel utilise nos API documentées publiquement selon une approche comprenant la création, la lecture, la mise à jour et la suppression sur l'ensemble de la durée de vie de la ressource.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="keeping-terraform-updated-the-old-way">Gérer la mise à jour de Terraform&nbsp;– à l'ancienne</h2>
+		<a href="https://blog.cloudflare.com/#keeping-terraform-updated-the-old-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Historiquement, Cloudflare assurait manuellement la maintenance d'un fournisseur Terraform. Toutefois, puisque les rouages internes du fournisseur nécessitent une façon de faire bien particulière, la responsabilité de la maintenance et du support incombait à une poignée de personnes seulement. Les équipes de maintenance ont toujours eu des difficultés à suivre le rythme des changements, en raison de l'importante charge cognitive que nécessite la livraison de la moindre modification du fournisseur. Tout modification du fournisseur par une équipe nécessitait au moins trois requêtes d'extraction (voire quatre, si l'on ajoutait le support de <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer"><u>cf-terraforming</u></a>).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6spvs4QAkY7BXLNfABDSQs/838f9b224838cd174376eb413cce7848/image6.png" alt="" class="kg-image" width="1318" height="898" loading="lazy">
+	</figure>
+	<p>Même lorsque les quatre requêtes d'extraction étaient finalisées, cela n'offrait aucune garantie concernant la couverture de l'ensemble des attributs disponibles. Des détails infimes, mais importants étaient donc susceptibles d'être omis et, par conséquent, de ne pas être exposés aux clients, ce qui s'avérait frustrant lors d'une tentative de configuration d'une ressource.</p>
+	<p>Pour y remédier, notre fournisseur Terraform devait s'appuyer sur les mêmes schémas OpenAPI que ceux dont <a href="https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline"><u>bénéficiait déjà le reste de notre écosystème de SDK</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="updating-terraform-automatically">Mettre Terraform à jour automatiquement</h2>
+		<a href="https://blog.cloudflare.com/#updating-terraform-automatically" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Terraform se distingue de nos SDK par sa capacité à gérer le cycle de vie des ressources. Cette capacité entraîne une nouvelle série de problèmes liés aux valeurs connues et à la gestion des différences entre les charges utiles des requêtes et des réponses. Comparons les deux approches différentes de la création d'un nouvel enregistrement DNS et de sa récupération.</p>
+	<p>Avec notre SDK Go&nbsp;:</p>
+	<pre class="language-GOLANG"><code class="language-GOLANG">// Create the new record
+record, _ := client.DNS.Records.New(context.TODO(), dns.RecordNewParams{
+	ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+	Record: dns.RecordParam{
+		Name:    cloudflare.String("@"),
+		Type:    cloudflare.String("CNAME"),
+        Content: cloudflare.String("example.com"),
+	},
+})
+
+
+// Wasteful fetch, but shows the point
+client.DNS.Records.Get(
+	context.Background(),
+	record.ID,
+	dns.RecordGetParams{
+		ZoneID: cloudflare.String("023e105f4ecef8ad9ca31a8372d0c353"),
+	},
+)
+</code></pre>
+	<p>
+		Et avec Terraform&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">resource "cloudflare_dns_record" "example" {
+  zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+  name    = "@"
+  content = "example.com"
+  type    = "CNAME"
+}</code></pre>
+	<p>De prime abord, l'approche de Terraform paraît plus simple (et vous auriez raison de croire que c'est le cas). La complexité des connaissances qu'exigent la création d'une nouvelle ressource et la gestion des modifications est gérée à votre place. Cependant, le problème est le suivant&nbsp;: pour que Terraform puisse proposer cette abstraction et cette garantie de données, toutes les valeurs doivent être connues au moment de l'application. Cela signifie que même si vous n'utilisez pas la valeur traitée en proxy, Terraform doit connaître la valeur requise afin de l'enregistrer dans le fichier d'état et de gérer cet attribut à l'avenir. L'erreur ci-dessous est celle qu'observent régulièrement les opérateurs Terraform&nbsp;; elle est renvoyée par les fournisseurs lorsque la valeur n'est pas connue au moment de l'application.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">Error: Provider produced inconsistent result after apply
+
+When applying changes to example_thing.foo, provider "provider[\"registry.terraform.io/example/example\"]"
+produced an unexpected new value: .foo: was null, but now cty.StringVal("").</code></pre>
+	<p>Lorsque vous utilisez les SDK, en revanche, si vous n'avez pas besoin d'un champ, il vous suffit de l'omettre&nbsp;; vous n'aurez jamais à vous préoccuper de gérer des valeurs connues.</p>
+	<p>Remédier à ce problème pour nos schémas OpenAPI n'a pas été une mince affaire. Depuis l'introduction de la prise en charge de la génération de Terraform, la qualité de nos schémas s'est considérablement améliorée. Maintenant, nous désignons explicitement toutes les valeurs par défaut présentes, les propriétés de réponse variables basées sur la charge utile de la requête ainsi que les éventuels attributs calculés côté serveur. Tout ceci permet de proposer une meilleure expérience à toutes les personnes qui interagissent avec nos API.</p>
+	<div class="flex anchor relative">
+		<h3 id="making-the-jump-from-terraform-plugin-sdk-to-terraform-plugin-framework">Passer de terraform-plugin-sdk à terraform-plugin-framework</h3>
+		<a href="https://blog.cloudflare.com/#making-the-jump-from-terraform-plugin-sdk-to-terraform-plugin-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour développer un fournisseur Terraform et exposer les ressources ou les sources de données aux opérateurs, vous avez besoin de deux choses essentielles&nbsp;: un serveur fournisseur et un fournisseur.</p>
+	<p>Le serveur fournisseur se charge d'exposer un <a href="https://github.com/hashicorp/terraform/blob/main/docs/plugin-protocol/README.md" target="_blank" rel="noopener noreferrer"><u>serveur gRPC</u></a> utilisé par le cœur Terraform (via l'interface de ligne de commande) pour communiquer lors de la gestion des ressources ou de la lecture des sources de données issues de la configuration fournie par l'opérateur.</p>
+	<p>Le fournisseur est responsable de l'enveloppement des ressources et des sources de données, de la communication avec les services à distance et de la gestion du fichier d'état. À cette fin, vous pouvez soit vous fier au plugin <a href="https://github.com/hashicorp/terraform-plugin-sdk" target="_blank" rel="noopener noreferrer"><u>terraform-plugin-sdk</u></a> (communément appelé SDKv2) ou au framework <a href="https://github.com/hashicorp/terraform-plugin-framework" target="_blank" rel="noopener noreferrer"><u>terraform-plugin-framework</u></a>, qui inclut l'ensemble des interfaces et des méthodes fournies par Terraform afin de gérer correctement les rouages internes de la solution. La décision concernant le choix du plugin utilisé dépend de l'âge de votre fournisseur. SDKv2 existe depuis plus longtemps et est plébiscité par la plupart des fournisseurs de Terraform. En raison de son ancienneté et de sa complexité, toutefois, il comporte de nombreux problèmes fondamentaux non résolus, qui doivent rester en l'état afin de faciliter la rétrocompatibilité pour les développeurs qui l'utilisent. Le framework <code>terraform-plugin-framework</code> est la nouvelle version&nbsp;; et bien qu'elle n'offre pas l'étendue des fonctionnalités de SDKv2, elle propose une approche plus semblable à Go de la création de fournisseurs et corrige un grand nombre des bugs sous-jacents présents dans SDKv2.</p>
+	<p><i>(Pour une comparaison plus approfondie entre SDKv2 et le framework, vous pouvez consulter un </i><a href="https://www.youtube.com/watch?v=4P69E44mJGo" target="_blank" rel="noopener noreferrer"><i><u>échange entre moi-même et John Bristowe d'Octopus Deploy</u></i></a><i>.)</i></p>
+	<p>Le fournisseur Cloudflare Terraform a été majoritairement développé avec SDKv2. Au début de&nbsp;2023, toutefois, nous avons <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/2170" target="_blank" rel="noopener noreferrer"><u>relevé le défi du multiplex</u></a>, et nous proposons désormais les deux plugins dans notre fournisseur. Pour comprendre pourquoi cette démarche était nécessaire, nous devons vous donner quelques explications concernant SDKv2. La structure de SDKv2 n'est pas vraiment propice à la représentation cohérente et fiable de valeurs nulles ou «&nbsp;non définies&nbsp;». Vous pouvez utiliser la fonction expérimentale <a href="https://pkg.go.dev/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema#ResourceData.GetRawConfig" target="_blank" rel="noopener noreferrer"><u>ResourceData.GetRawConfig</u></a> pour vérifier si une valeur est définie (set), nulle (null) ou inconnue (unknown) dans la configuration, mais sa réécriture sous forme de valeur nulle n'est pas vraiment prise en charge.</p>
+	<p>Nous avons pris conscience pour la première fois de cette problématique lorsque Edge Rules Engine (Rulesets) a commencé l'intégration de nouveaux services qui devaient prendre en charge des réponses d'API contenant des valeurs booléennes dans un état non défini (ou manquant), <code>true</code> ou <code>false</code>, chacune avec un raisonnement et une finalité propres. Bien qu'il ne s'agisse pas d'un modèle d'API conventionnel chez Cloudflare, il s'agit d'une approche valide, et nous devrions pouvoir nous en accommoder. Toutefois, comme nous l'avons indiqué ci-dessus, ce n'était pas le cas du fournisseur SDKv2. En effet, lorsqu'une valeur n'est pas présente dans la réponse ou lue dans l'état, elle reçoit une valeur zéro compatible avec Go pour l'état par défaut. Cette situation s'est traduite par l'impossibilité d'annuler l'état de valeurs après qu'elles aient été écrites dans l'état sous forme de false (et inversement).</p>
+	<p>La seule solution que nous avons ici pour garantir l'utilisation fiable des trois états de ces valeurs booléennes consiste à migrer vers le framework terraform-plugin-framework, qui propose la <a href="https://github.com/hashicorp/terraform-plugin-framework/blob/main/types/bool_value.go" target="_blank" rel="noopener noreferrer"><u>mise en œuvre correcte de la fonction de réécriture des valeurs non définies</u></a>.</p>
+	<p>Lorsque nous avons commencé à ajouter des fonctionnalités supplémentaires dans l'ancien fournisseur avec terraform-plugin-framework, il est devenu manifeste que l'expérience des développeurs était meilleure. Nous avons donc <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/2871" target="_blank" rel="noopener noreferrer"><u>ajouté un ratchet</u></a> afin d'empêcher l'utilisation de SDKv2 à l'avenir&nbsp;; ainsi, nous pourrions devancer les utilisateurs qui, à leur insu, se préparaient à se heurter à ce problème.</p>
+	<p>Lorsque nous avons pris la décision de générer automatiquement le fournisseur Terraform, il nous a paru logique d'intégrer également toutes les ressources&nbsp;; l'ensemble reposerait ainsi sur <code>terraform-plugin-framework</code> et nous pourrions, une fois pour toutes, reléguer au passé les problèmes liés à SDKv2. Cette démarche a compliqué le déroulement de la migration, car l'amélioration des mécanismes internes a nécessité la modification de composants majeurs tels que le schéma et les <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank" rel="noopener noreferrer"><u>opérations CRUD</u></a>, avec lesquels nous devions nous familiariser. Cependant, l'investissement en valait la peine, car cette migration nous a permis de pérenniser les fondations du fournisseur, et nous sommes désormais moins souvent contraints d'accepter des compromis affectant l'expérience dans Terraform en raison de mécanismes internes hérités et défaillants.</p>
+	<div class="flex anchor relative">
+		<h3 id="iteratively-finding-bugs">Recherche itérative de bugs&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#iteratively-finding-bugs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'un des défis les plus courants concernant les pipelines de génération de code est qu'à moins de disposer d'outils existants pour mettre en œuvre votre nouvelle fonctionnalité, il est difficile de savoir si elle est opérationnelle ou s'il est raisonnable de l'utiliser. Bien entendu, vous pouvez également générer vos tests afin d'évaluer la nouvelle fonctionnalité dans la pratique&nbsp;; toutefois, si un bug est présent dans le pipeline, il est très probable que vous ne le perceviez pas comme un bug, car vous générerez des assertions de test démontrant que le bug est un comportement attendu.&nbsp;</p>
+	<p>L'une des boucles de collecte d'informations essentielles dont nous disposons est la suite existante de tests d'acceptation. Toutes les ressources incluses au fournisseur existant comportaient un mélange de tests de régression et de tests de fonctionnalité. Cerise sur le gâteau, dans la mesure où la suite de tests crée et gère des ressources réelles, il était très facile de déterminer si le résultat était une implémentation fonctionnelle ou non&nbsp;: il suffisait d'examiner le trafic HTTP afin de déterminer si les appels d'API étaient acceptés par les points de terminaison distants. Pour finaliser la transposition de la suite de tests, il nous a suffi de copier l'ensemble des tests existants et de rechercher d'éventuelles différences d'assertion de type (par exemple, une liste transposée en liste imbriquée unique) avant de lancer une exécution test afin de déterminer si la ressource fonctionnait correctement.&nbsp;</p>
+	<p>Si le pipeline de schémas centralisé a considérablement amélioré la qualité de vie des développeurs en permettant la propagation presque instantanée des correctifs de schémas à l'ensemble de l'écosystème, il n'a pas pu nous aider à résoudre le problème le plus important, à savoir l'identification de bugs dissimulant d'autres bugs. Ce processus demandait du temps, car lorsque vous résolvez un problème dans Terraform, il existe trois emplacements dans lesquels vous pouvez rencontrer une erreur&nbsp;:</p>
+	<ol>
+		<li>
+			<p>Avant d'effectuer un appel d'API, Terraform met en œuvre une validation de schéma logique et, si le programme rencontre des erreurs de validation, il s'arrête immédiatement.</p>
+		</li>
+		<li>
+			<p>Si un appel d'API échoue, le programme s'arrête à l'opération CRUD et renvoie les diagnostics, en s'arrêtant immédiatement.</p>
+		</li>
+		<li>
+			<p>Après l'exécution de l'opération CRUD, Terraform met en œuvre des contrôles afin d'assurer que toutes les valeurs sont connues.&nbsp;</p>
+		</li>
+	</ol>
+	<p>Par conséquent, si nous nous heurtions à un bug à l'étape&nbsp;1 et nous corrigions ce bug, rien ne garantissait que nous n'allions pas découvrir deux autres bugs&nbsp;– et nous n'avions aucun moyen de le savoir. Par ailleurs, si nous découvrions un bug à l'étape&nbsp;2 et publiions un correctif, cela ne nous permettrait pas pour autant d'identifier, lors de la série de tests suivante, un bug à l'étape&nbsp;1.</p>
+	<p>
+	</p>
+	<p>Il n'existe ici aucune solution miracle&nbsp;; notre approche consistait donc plutôt à identifier des modèles de problèmes dans les comportements des schémas et à appliquer les règles de l'outil CI lint au sein des schémas OpenAPI avant qu'ils n'atteignent le pipeline de génération de code. L'adoption de cette approche a permis de progressivement réduire le nombre de bugs aux étapes&nbsp;1 et&nbsp;2, jusqu'à ce que les problèmes se limitent, en grande partie, à la gestion du type à l'étape&nbsp;3.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-more-reusable-approach-to-model-and-struct-conversion">Une approche plus réutilisable de la conversion de modèles et de structures&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#a-more-reusable-approach-to-model-and-struct-conversion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans les opérations CRUD du fournisseur Terraform, il est assez courant de voir du code standard semblable à l'exemple suivant&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">var plan ThingModel
+diags := req.Plan.Get(ctx, &amp;plan)
+resp.Diagnostics.Append(diags...)
+if resp.Diagnostics.HasError() {
+	return
+}
+
+out, err := r.client.UpdateThingModel(ctx, client.ThingModelRequest{
+	AttrA: plan.AttrA.ValueString(),
+	AttrB: plan.AttrB.ValueString(),
+	AttrC: plan.AttrC.ValueString(),
+})
+if err != nil {
+	resp.Diagnostics.AddError(
+		"Error updating project Thing",
+		"Could not update Thing, unexpected error: "+err.Error(),
+	)
+	return
+}
+
+result := convertResponseToThingModel(out)
+tflog.Info(ctx, "created thing", map[string]interface{}{
+	"attr_a": result.AttrA.ValueString(),
+	"attr_b": result.AttrB.ValueString(),
+	"attr_c": result.AttrC.ValueString(),
+})
+
+diags = resp.State.Set(ctx, result)
+resp.Diagnostics.Append(diags...)
+if resp.Diagnostics.HasError() {
+	return
+}</code></pre>
+	<p>À un niveau élevé&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Nous récupérons les mises à jour proposées (appelées «&nbsp;plan&nbsp;») avec <code>req.Plan.Get()</code></p>
+		</li>
+		<li>
+			<p>Exécuter l'appel d'API de mise à jour avec les nouvelles valeurs</p>
+		</li>
+		<li>
+			<p>Manipuler les données depuis un type Go dans un modèle Terraform (<code>convertResponseToThingModel</code>)</p>
+		</li>
+		<li>
+			<p>Définir l'état en appelant <code>resp.State.Set()</code></p>
+		</li>
+	</ul>
+	<p>Au départ, cela ne semble pas trop problématique. Toutefois, l'étape&nbsp;3, lors de laquelle nous manipulons le type Go afin de l'intégrer au modèle Terraform, devient rapidement fastidieuse, sujette à erreurs et complexe, car toutes les ressources doivent suivre cette procédure pour effectuer la permutation entre le type et les modèles Terraform associés.</p>
+	<p>Pour éviter de générer du code d'une complexité superflue, nous avons apporté l'amélioration suivante à notre fournisseur&nbsp;: toutes les méthodes CRUD utilisent des méthodes unifiées <code>apijson.Marshal, apijson.Unmarshal</code>, et <code>apijson.UnmarshalComputed</code> permettant de résoudre ce problème en centralisant la logique de conversion et de traitement en fonction des balises struct.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">var data *ThingModel
+
+resp.Diagnostics.Append(req.Plan.Get(ctx, &amp;data)...)
+if resp.Diagnostics.HasError() {
+	return
+}
+
+dataBytes, err := apijson.Marshal(data)
+if err != nil {
+	resp.Diagnostics.AddError("failed to serialize http request", err.Error())
+	return
+}
+res := new(http.Response)
+env := ThingResultEnvelope{*data}
+_, err = r.client.Thing.Update(
+	// ...
+)
+if err != nil {
+	resp.Diagnostics.AddError("failed to make http request", err.Error())
+	return
+}
+
+bytes, _ := io.ReadAll(res.Body)
+err = apijson.UnmarshalComputed(bytes, &amp;env)
+if err != nil {
+	resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
+	return
+}
+data = &amp;env.Result
+
+resp.Diagnostics.Append(resp.State.Set(ctx, &amp;data)...)</code></pre>
+	<p>Au lieu de devoir générer des centaines d'instances de méthodes de convertisseur de type en modèle, nous pouvons, à la place, décorer le modèle Terraform avec les balises correctes et gérer le marshaling des données de manière cohérente. Il s'agit d'une modification mineure du code qui, à long terme, rend la génération plus réutilisable et plus lisible. Cette approche offre également l'avantage de faciliter considérablement la correction des bugs. En effet, lorsque vous avez identifié un bug avec un type de champ particulier, la correction de ce bug dans l'interface unifiée entraîne également sa correction pour d'autres événements que vous n'avez peut-être pas encore identifiés.</p>
+	<div class="flex anchor relative">
+		<h2 id="but-wait-theres-more-docs">Mais attendez, ce n'est pas fini... documentation à l'appui&nbsp;!</h2>
+		<a href="https://blog.cloudflare.com/#but-wait-theres-more-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour compléter notre utilisation des schémas OpenAPI, nous renforçons l'intégration du SDK avec notre <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>nouveau site de documentation de l'API</u></a>. Ce site utilise le même pipeline dans lequel nous avons investi ces deux dernières années, tout en résolvant certaines problématiques courantes liées à l'utilisation.</p>
+	<div class="flex anchor relative">
+		<h3 id="sdk-aware">Sensibilité au SDK&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#sdk-aware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si vous avez déjà consulté notre site de documentation de l'API, vous savez que nous y proposons des exemples d'interactions avec l'API via des outils de ligne de commande tels que cURL. C'est un excellent point de départ&nbsp;; toutefois, si vous utilisez l'une des bibliothèques du SDK, une certaine gymnastique mentale est nécessaire pour convertir la bibliothèque vers la méthode ou la définition de type que vous souhaitez utiliser. Maintenant que nous utilisons le même pipeline pour générer les SDK <b>et</b> la documentation, nous résolvons ce problème en fournissant des exemples dans toutes les bibliothèques que vous <i>pouvez</i> utiliser&nbsp;– pas uniquement curl.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SNCehksc30kXXQvVKYC47/a3a6071be64d006a2da9b2e615d143ae/image2.png" alt="" class="kg-image" width="1528" height="334" loading="lazy">
+
+	</figure>
+	<p><i>Exemple utilisant cURL pour récupérer toutes les zones.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50PeyK8oOLb51mCLF4ikds/764db96a24232b611ec88d5ff8f8844f/image4.png" alt="" class="kg-image" width="1534" height="658" loading="lazy">
+
+	</figure>
+	<p><i>Exemple utilisant la bibliothèque Typescript pour récupérer toutes les zones.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rQn6OY3R1yi5iot1oxti4/09cf62ea46ede21d1541b5012497efdb/image5.png" alt="" class="kg-image" width="1534" height="568" loading="lazy">
+
+	</figure>
+	<p><i>Exemple utilisant la bibliothèque Python pour récupérer toutes les zones.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Na9y9ta3fLBMEAvJK4uaH/41ecf061a5a088f4bdb313d70b173a9a/image7.png" alt="" class="kg-image" width="1530" height="974" loading="lazy">
+
+	</figure>
+	<p><i>Exemple utilisant la bibliothèque Go pour récupérer toutes les zones.</i></p>
+	<p>Avec cette amélioration, nous mémorisons également la sélection du langage&nbsp;; aussi, si vous avez choisi d'afficher la documentation avec notre bibliothèque Typescript, puis vous continuez à cliquer, nous continuerons à vous présenter des exemples utilisant Typescript jusqu'à ce que vous changiez de bibliothèque.</p>
+	<p>Mieux encore, lorsque nous introduisons de nouveaux attributs sur des points de terminaison existants ou nous ajoutons des langages au SDK, ce site de documentation est automatiquement synchronisé avec le pipeline. La mise à jour de l'ensemble de la documentation ne demande désormais plus un effort démesuré.</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-and-more-efficient-rendering">Un rendu plus rapide et plus efficace</h3>
+		<a href="https://blog.cloudflare.com/#faster-and-more-efficient-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un problème auquel nous avons toujours été confrontés est le nombre considérable de points de terminaison d'API et la manière de les représenter. À ce jour, nous avons 1&nbsp;330&nbsp;points de terminaison&nbsp;– et, pour chacun d'entre eux, nous avons une charge utile de requête, une charge utile de réponse et une multitude de types associés. Pour restituer un tel volume d'informations, les solutions que nous avons utilisées par le passé nous ont imposé d'accepter des compromis pour assurer la fonctionnalité de certaines parties de la représentation.</p>
+	<p>Cette nouvelle itération du site de documentation de l'API résout ce problème de différentes façons&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Elle est mise en œuvre sous la forme d'une application React moderne, associant une expérience interactive côté client à des contenus statiques pré-rendus, ce qui permet d'obtenir un chargement initial et une navigation rapides. (Oui, cela fonctionne, même sans JavaScript&nbsp;!) </p>
+		</li>
+		<li>
+			<p>Le site récupère les données sous-jacentes progressivement, au fur et à mesure que vous parcourez la documentation.</p>
+		</li>
+	</ul>
+	<p>En résolvant ce problème fondamental, nous avons ouvert la possibilité d'apporter d'autres améliorations prévues au site de documentation et à l'écosystème du SDK&nbsp;; ceci nous permettra d'améliorer l'expérience utilisateur, toutefois, sans accepter de compromis, comme nous avons dû le faire par le passé.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="permissions">Autorisations</h3>
+		<a href="https://blog.cloudflare.com/#permissions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les autorisations minimales requises pour les points de terminaison de l'API représentent l'une des réintégrations de fonctionnalités les plus fréquemment demandées pour le site de documentation. L'une des précédentes itérations du site de documentation proposait cette fonctionnalité. Cependant, à l'insu de la plupart des personnes qui l'utilisaient, les valeurs étaient gérées manuellement et se révélaient régulièrement incorrectes, ce qui entraînait l'ouverture de tickets d'assistance et générait de la frustration pour les utilisateurs.&nbsp;</p>
+	<p>
+	</p>
+	<p>Dans le système de gestion des identités et des accès de Cloudflare, répondre à la question «&nbsp;de quoi ai-je besoin pour accéder à ce point de point de terminaison&nbsp;?&nbsp;» n'est pas une tâche aisée. En effet, dans le flux normal d'une requête adressée au plan de contrôle, deux systèmes différents sont nécessaires pour fournir des parties de la question pouvant ensuite être réunies pour apporter une réponse complète. Comme nous ne pouvions pas initialement automatiser cet aspect dans le cadre du pipeline OpenAPI, nous avons choisi de le laisser de côté, au lieu d'accepter que son fonctionnement soit incorrect, sans aucun moyen de le vérifier.&nbsp;</p>
+	<p>
+	</p>
+	<p>Aujourd'hui, nous sommes ravis d'annoncer le retour des autorisations pour les points de terminaison&nbsp;! Nous avons développé de nouveaux outils qui résument la réponse, et nous pouvons intégrer cette approche dans notre pipeline de génération de code et transmettre automatiquement ces informations à tous les points de terminaison. À l'instar du reste de la plateforme de génération de code, ces outils ont pour finalité de permettre aux équipes de maintenance de détenir et gérer des schémas de qualité, qu'elles peuvent réutiliser en offrant un ajout de valeur, sans nécessiter davantage de travail de leur part.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/641gSS5MLQpCvEANYXcVK6/447cf0b873ecb60fdbbc415df0424363/image3.png" alt="" class="kg-image" width="1534" height="360" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="stop-waiting-for-updates">N'attendez plus les mises à jour</h2>
+		<a href="https://blog.cloudflare.com/#stop-waiting-for-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec ces annonces, nous mettons un terme à l'attente de mises à jour au sein de l'écosystème du SDK. Ces nouvelles améliorations nous permettent de rationaliser la capacité des nouveaux attributs et des points de terminaison dès l'instant où les équipes les documentent. Alors, qu'attendez-vous&nbsp;? Découvrez dès aujourd'hui le <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/5.0.0-alpha1/docs" target="_blank" rel="noopener noreferrer"><u>fournisseur Terraform</u></a> et le <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>site de documentation de l'API</u></a>.</p>
+</div>

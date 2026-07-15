@@ -1,151 +1,94 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tSKyfZqzwOvbaNyEIX6Vb/83eaa071211214a1a92d775cb35d0de6/automated-origin-ca-for-kubernetes.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In 2016, we launched the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a>, a certificate authority optimized for making it easy to secure the connection between Cloudflare and an origin server. Running our own CA has allowed us to support fast issuance and renewal, simple and effective revocation, and wildcard certificates for our users.</p>
-	<p>Out of the box, managing <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">TLS certificates</a> and keys within Kubernetes can be challenging and error prone. The secret resources have to be constructed correctly, as components expect secrets with specific fields. Some forms of domain verification require manually rotating secrets to pass. Once you're successful, don't forget to renew before the certificate expires!</p>
-	<p><a href="https://cert-manager.io" target="_blank" rel="noopener noreferrer">cert-manager</a> is a project to fill this operational gap, providing Kubernetes resources that <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer">manage the lifecycle of a certificate.</a> Today we're releasing <a href="https://github.com/cloudflare/origin-ca-issuer" target="_blank" rel="noopener noreferrer">origin-ca-issuer</a>, an extension to cert-manager integrating with Cloudflare Origin CA to easily create and renew certificates for your account's domains.</p>
-	<div class="flex anchor relative">
-		<h2 id="origin-ca-integration">Origin CA Integration</h2>
-		<a href="https://blog.cloudflare.com/#origin-ca-integration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="creating-an-issuer">Creating an Issuer</h3>
-		<a href="https://blog.cloudflare.com/#creating-an-issuer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After installing cert-manager and origin-ca-issuer, you can create an OriginIssuer resource. This resource creates a binding between cert-manager and the Cloudflare API for an account. Different issuers may be connected to different Cloudflare accounts in the same Kubernetes cluster.</p>
-	<pre class="language-bash"><code class="language-bash">apiVersion: cert-manager.k8s.cloudflare.com/v1
-kind: OriginIssuer
-metadata:
-  name: prod-issuer
-  namespace: default
-spec:
-  signatureType: OriginECC
-  auth:
-    serviceKeyRef:
-      name: service-key
-      key: key
-      ```</code></pre>
-	<p>This creates a new OriginIssuer named "prod-issuer" that issues certificates using ECDSA signatures, and the secret "service-key" in the same namespace is used to authenticate to the Cloudflare API.</p>
-	<div class="flex anchor relative">
-		<h3 id="signing-an-origin-ca-certificate">Signing an Origin CA Certificate</h3>
-		<a href="https://blog.cloudflare.com/#signing-an-origin-ca-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After creating an OriginIssuer, we can now create a Certificate with cert-manager. This defines the domains, including wildcards, that the certificate should be issued for, how long the certificate should be valid, and when cert-manager should renew the certificate.</p>
-	<pre class="language-bash"><code class="language-bash">apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: example-com
-  namespace: default
-spec:
-  # The secret name where cert-manager
-  # should store the signed certificate.
-  secretName: example-com-tls
-  dnsNames:
-    - example.com
-  # Duration of the certificate.
-  duration: 168h
-  # Renew a day before the certificate expiration.
-  renewBefore: 24h
-  # Reference the Origin CA Issuer you created above,
-  # which must be in the same namespace.
-  issuerRef:
-    group: cert-manager.k8s.cloudflare.com
-    kind: OriginIssuer
-    name: prod-issuer
-</code></pre>
-	<p>Once created, cert-manager begins managing the lifecycle of this certificate, including creating the key material, crafting a certificate signature request (CSR), and constructing a certificate request that will be processed by the origin-ca-issuer.</p>
-	<p>When signed by the Cloudflare API, the certificate will be made available, along with the private key, in the Kubernetes secret specified within the secretName field. You'll be able to use this certificate on servers proxied behind Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="extra-ingress-support">Extra: Ingress Support</h3>
-		<a href="https://blog.cloudflare.com/#extra-ingress-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you're using an Ingress controller, you can use cert-manager's <a href="https://cert-manager.io/docs/usage/ingress" target="_blank" rel="noopener noreferrer">Ingress support</a> to automatically manage Certificate resources based on your Ingress resource.</p>
-	<pre class="language-bash"><code class="language-bash">apiVersion: networking/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/issuer: prod-issuer
-    cert-manager.io/issuer-kind: OriginIssuer
-    cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
-  name: example
-  namespace: default
-spec:
-  rules:
-    - host: example.com
-      http:
-        paths:
-          - backend:
-              serviceName: examplesvc
-              servicePort: 80
-            path: /
-  tls:
-    # specifying a host in the TLS section will tell cert-manager 
-    # what DNS SANs should be on the created certificate.
-    - hosts:
-        - example.com
-      # cert-manager will create this secret
-      secretName: example-tls
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="building-an-external-cert-manager-issuer">Building an External cert-manager Issuer</h2>
-		<a href="https://blog.cloudflare.com/#building-an-external-cert-manager-issuer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>An external cert-manager issuer is a specialized Kubernetes controller. There's no direct communication between cert-manager and external issuers at all; this means that you can use any existing tools and best practices for developing controllers to develop an external issuer.</p>
-	<p>We've decided to use the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime" target="_blank" rel="noopener noreferrer">controller-runtime</a> project to build origin-ca-issuer, running two reconciliation controllers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MASdtZ7CMaW8JO3SCgb5t/4956cb2ac00a920a9901605adf1e9f68/image1-4.png" alt="" class="kg-image" width="1638" height="792" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="originissuer-controller">OriginIssuer Controller</h3>
-		<a href="https://blog.cloudflare.com/#originissuer-controller" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The OriginIssuer controller watches for creation and modification of OriginIssuer custom resources. The controllers create a Cloudflare API client using the details and credentials referenced. This client API instance will later be used to sign certificates through the API. The controller will periodically retry to create an API client; once it is successful, it updates the OriginIssuer's status to be ready.</p>
-	<div class="flex anchor relative">
-		<h3 id="certificaterequest-controller">CertificateRequest Controller</h3>
-		<a href="https://blog.cloudflare.com/#certificaterequest-controller" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The CertificateRequest controller watches for the creation and modification of cert-manager's CertificateRequest resources. These resources are created automatically by cert-manager as needed during a certificate's lifecycle.</p>
-	<p>The controller looks for Certificate Requests that reference a known OriginIssuer, this reference is copied by cert-manager from the origin Certificate resource, and ignores all resources that do not match. The controller then verifies the OriginIssuer is in the ready state, before transforming the certificate request into an API request using the previously created clients.</p>
-	<p>On a successful response, the signed certificate is added to the certificate request, and which cert-manager will use to create or update the secret resource. On an unsuccessful request, the controller will periodically retry.</p>
-	<div class="flex anchor relative">
-		<h2 id="learn-more">Learn More</h2>
-		<a href="https://blog.cloudflare.com/#learn-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Up-to-date documentation and complete installation instructions can be found in our <a href="https://github.com/cloudflare/origin-ca-issuer" target="_blank" rel="noopener noreferrer">GitHub repository</a>. Feedback and contributions are greatly appreciated. If you're interested in Kubernetes at Cloudflare, including building controllers like these, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">we're hiring</a>.</p>
+<p>In 2016, we launched the <a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin">Cloudflare Origin CA</a>, a certificate authority optimized for making it easy to secure the connection between Cloudflare and an origin server. Running our own CA has allowed us to support fast issuance and renewal, simple and effective revocation, and wildcard certificates for our users.</p>
+<p>Out of the box, managing <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">TLS certificates</a> and keys within Kubernetes can be challenging and error prone. The secret resources have to be constructed correctly, as components expect secrets with specific fields. Some forms of domain verification require manually rotating secrets to pass. Once you're successful, don't forget to renew before the certificate expires!</p>
+<p><a href="https://cert-manager.io" target="_blank" rel="noopener noreferrer">cert-manager</a> is a project to fill this operational gap, providing Kubernetes resources that <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer">manage the lifecycle of a certificate.</a> Today we're releasing <a href="https://github.com/cloudflare/origin-ca-issuer" target="_blank" rel="noopener noreferrer">origin-ca-issuer</a>, an extension to cert-manager integrating with Cloudflare Origin CA to easily create and renew certificates for your account's domains.</p>
+<h2>Origin CA Integration</h2>
+<h3>Creating an Issuer</h3>
+<p>After installing cert-manager and origin-ca-issuer, you can create an OriginIssuer resource. This resource creates a binding between cert-manager and the Cloudflare API for an account. Different issuers may be connected to different Cloudflare accounts in the same Kubernetes cluster.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> cert-manager.k8s.cloudflare.com/v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> OriginIssuer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> prod-issuer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> default</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  signatureType:</span><span class="sk-032f62-99ffe4"> OriginECC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  auth:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    serviceKeyRef:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      name:</span><span class="sk-032f62-99ffe4"> service-key</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      key:</span><span class="sk-032f62-99ffe4"> key</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      ```</span></span></code></pre>
 </div>
+<p>This creates a new OriginIssuer named "prod-issuer" that issues certificates using ECDSA signatures, and the secret "service-key" in the same namespace is used to authenticate to the Cloudflare API.</p>
+<h3>Signing an Origin CA Certificate</h3>
+<p>After creating an OriginIssuer, we can now create a Certificate with cert-manager. This defines the domains, including wildcards, that the certificate should be issued for, how long the certificate should be valid, and when cert-manager should renew the certificate.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> cert-manager.io/v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> Certificate</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> example-com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> default</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">spec:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # The secret name where cert-manager</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # should store the signed certificate.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  secretName:</span><span class="sk-032f62-99ffe4"> example-com-tls</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  dnsNames:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # Duration of the certificate.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  duration:</span><span class="sk-032f62-99ffe4"> 168h</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # Renew a day before the certificate expiration.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  renewBefore:</span><span class="sk-032f62-99ffe4"> 24h</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # Reference the Origin CA Issuer you created above,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # which must be in the same namespace.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  issuerRef:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    group:</span><span class="sk-032f62-99ffe4"> cert-manager.k8s.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    kind:</span><span class="sk-032f62-99ffe4"> OriginIssuer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    name:</span><span class="sk-032f62-99ffe4"> prod-issuer</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Once created, cert-manager begins managing the lifecycle of this certificate, including creating the key material, crafting a certificate signature request (CSR), and constructing a certificate request that will be processed by the origin-ca-issuer.</p>
+<p>When signed by the Cloudflare API, the certificate will be made available, along with the private key, in the Kubernetes secret specified within the secretName field. You'll be able to use this certificate on servers proxied behind Cloudflare.</p>
+<h3>Extra: Ingress Support</h3>
+<p>If you're using an Ingress controller, you can use cert-manager's <a href="https://cert-manager.io/docs/usage/ingress" target="_blank" rel="noopener noreferrer">Ingress support</a> to automatically manage Certificate resources based on your Ingress resource.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> networking/v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> Ingress</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  annotations:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cert-manager.io/issuer:</span><span class="sk-032f62-99ffe4"> prod-issuer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cert-manager.io/issuer-kind:</span><span class="sk-032f62-99ffe4"> OriginIssuer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cert-manager.io/issuer-group:</span><span class="sk-032f62-99ffe4"> cert-manager.k8s.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> default</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rules:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> host:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      http:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        paths:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          -</span><span class="sk-032f62-99ffe4"> backend:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              serviceName:</span><span class="sk-032f62-99ffe4"> examplesvc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              servicePort:</span><span class="sk-005cc5-ffc799"> 80</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            path:</span><span class="sk-032f62-99ffe4"> /</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tls:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # specifying a host in the TLS section will tell cert-manager </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # what DNS SANs should be on the created certificate.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> hosts:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      # cert-manager will create this secret</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      secretName:</span><span class="sk-032f62-99ffe4"> example-tls</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>Building an External cert-manager Issuer</h2>
+<p>An external cert-manager issuer is a specialized Kubernetes controller. There's no direct communication between cert-manager and external issuers at all; this means that you can use any existing tools and best practices for developing controllers to develop an external issuer.</p>
+<p>We've decided to use the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime" target="_blank" rel="noopener noreferrer">controller-runtime</a> project to build origin-ca-issuer, running two reconciliation controllers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="346" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=640&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=750&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=828&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=1080&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=1280&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498CT9WJM1F4F3CSD8YYN9.png&amp;w=1430&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Automated Origin CA for Kubernetes Embedded Image - 3E7QOO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="346" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Automated Origin CA for Kubernetes Embedded Image - 3E7QOO"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>OriginIssuer Controller</h3>
+<p>The OriginIssuer controller watches for creation and modification of OriginIssuer custom resources. The controllers create a Cloudflare API client using the details and credentials referenced. This client API instance will later be used to sign certificates through the API. The controller will periodically retry to create an API client; once it is successful, it updates the OriginIssuer's status to be ready.</p>
+<h3>CertificateRequest Controller</h3>
+<p>The CertificateRequest controller watches for the creation and modification of cert-manager's CertificateRequest resources. These resources are created automatically by cert-manager as needed during a certificate's lifecycle.</p>
+<p>The controller looks for Certificate Requests that reference a known OriginIssuer, this reference is copied by cert-manager from the origin Certificate resource, and ignores all resources that do not match. The controller then verifies the OriginIssuer is in the ready state, before transforming the certificate request into an API request using the previously created clients.</p>
+<p>On a successful response, the signed certificate is added to the certificate request, and which cert-manager will use to create or update the secret resource. On an unsuccessful request, the controller will periodically retry.</p>
+<h2>Learn More</h2>
+<p>Up-to-date documentation and complete installation instructions can be found in our <a href="https://github.com/cloudflare/origin-ca-issuer" target="_blank" rel="noopener noreferrer">GitHub repository</a>. Feedback and contributions are greatly appreciated. If you're interested in Kubernetes at Cloudflare, including building controllers like these, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">we're hiring</a>.</p>

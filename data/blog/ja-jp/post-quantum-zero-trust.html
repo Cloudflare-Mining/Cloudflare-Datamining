@@ -1,0 +1,205 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/post-quantum-zero-trust">English</a>、<a href="https://blog.cloudflare.com/zh-tw/post-quantum-zero-trust">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/post-quantum-zero-trust">Français</a>、<a href="https://blog.cloudflare.com/de-de/post-quantum-zero-trust">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/post-quantum-zero-trust">한국어</a>、<a href="https://blog.cloudflare.com/es-la/post-quantum-zero-trust">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/id-id/post-quantum-zero-trust">Indonesia</a>、<a href="https://blog.cloudflare.com/nl-nl/post-quantum-zero-trust">Nederlands</a>、<a href="https://blog.cloudflare.com/th-th/post-quantum-zero-trust">ไทย</a>、<a href="https://blog.cloudflare.com/zh-cn/post-quantum-zero-trust">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I5sCnFfQVw5LTrvzZ7OFR/fd1503e5374a06cb413495136a319573/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>量子コンピュータは現在も活発に開発が進められており、いずれ最終的には、現代の通信の安全を支える暗号技術を破る能力を持つようになると考えられています。最近の量子コンピューティングの<a href="https://blog.google/technology/research/google-willow-quantum-chip" target="_blank" rel="noopener noreferrer"><u>進歩</u></a>によって、従来の暗号技術がこうした攻撃に対して脆弱であることが浮き彫りになりました。2017年以降、Cloudflareは量子コンピュータによる攻撃に耐えうる<a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer"><u>ポスト量子暗号</u></a>の開発、標準化、実装の<a href="https://blog.cloudflare.com/tag/post-quantum"><u>最前線に立ってきました</u></a>。&nbsp;</p>
+	<p>Cloudflareの使命はシンプルです。それは、すべてのお客様が量子安全性を確保するための明確な道筋を持てるようにすることです。Cloudflareはこの問題の緊急性を認識しており、暗号アルゴリズムのアップグレードという複雑なプロセスを当社が管理することで、お客様がそれを心配する必要がないように取り組んでいます。口先だけではありません。<a href="https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption" target="_blank" rel="noopener noreferrer"><u>現在、Cloudflareに到達するボット以外のHTTPSトラフィックの35%以上は、ポスト量子暗号で保護されています。</u></a>&nbsp;</p>
+	<p><a href="https://www.nist.gov" target="_blank" rel="noopener noreferrer"><u>アメリカ国立標準技術研究所（NIST）</u></a>も、この移行の緊急性を認識しています。2024年11月15日、NISTは、<a href="https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8547.ipd.pdf" target="_blank" rel="noopener noreferrer"><u>画期的な発表</u></a>を行い、現在インターネットのあらゆる部分を支えている従来の暗号アルゴリズムである<a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer"><u>RSA</u></a>と<a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>ECC（elliptic curve cryptography）</u></a>を段階的に廃止するタイムラインを設定しました。NISTの発表によると、これらのアルゴリズムは2030年までに廃止され、2035年までに完全に禁止される予定です。</p>
+	<p>Cloudflareは、2035年どころか2030年まで待つつもりもありません。当社は、プライバシーは基本的な人権であり、高度な暗号化技術は<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free"><u>誰もが妥協することなく利用できる</u></a>べきだと考えています。ポスト量子セキュリティに追加費用を支払う必要はありません。そのため、<a href="https://blog.cloudflare.com/pq-2024"><u>現在Cloudflareによって保護されたWebサイト</u></a>にアクセスするWeb訪問者は、<a href="https://blog.chromium.org/2024/05/advancing-our-amazing-bet-on-asymmetric.html" target="_blank" rel="noopener noreferrer"><u>Chrome、Edge、</u></a><a href="https://www.mozilla.org/en-US/firefox/135.0/releasenotes" target="_blank" rel="noopener noreferrer"><u>Firefox</u></a>などの主要ブラウザを使用している限り、すでにポスト量子暗号による恩恵を受けています（また、Radarのデータによると、<a href="https://radar.cloudflare.com/explorer?dataSet=http&amp;groupBy=post_quantum&amp;filters=botClass%253DLikely_Human%252Cos%253DiOS" target="_blank" rel="noopener noreferrer"><u>（モバイル版）Safariのトラフィックのごく一部</u></a>もポスト量子暗号を利用し始めていることが確認されています。）。現在、Cloudflareを経由する人間によるWebトラフィックの3分の1以上がこの強化されたセキュリティを享受しており、今後より多くのブラウザやクライアントがポスト量子暗号をサポートすることで、この割合はさらに増加する見込みです。&nbsp;</p>
+	<p>人間のWebトラフィックを保護するためには大きな進歩が見られましたが、すべてのアプリケーションがWebアプリケーションというわけではありません。企業には（Webアプリケーション以外にも）さまざまな内部アプリケーションがあり、それらはまだポスト量子暗号をサポートしていません。&nbsp;&nbsp;</p>
+	<p>では、企業はどのようにして機密性の高い社内ネットワークのトラフィックをポスト量子暗号に対応させるべきでしょうか？</p>
+	<p>そこで、本日の発表につながります。Cloudflareは、ゼロトラストプラットフォームのエンドツーエンドの量子対応に向けた最初のフェーズを発表します<b>。</b>これにより、お客様は企業ネットワークのトラフィックをポスト量子暗号で保護できるようになります。<b>企業はCloudflareのゼロトラストプラットフォームを経由して社内ネットワークのトラフィックをトンネリングすることで、個々のアプリケーション、システム、ネットワーク接続を個別にアップグレードする手間をかけることなく、量子コンピュータによる攻撃から保護することができます。</b>&nbsp;</p>
+	<p>具体的には、組織は当社のゼロトラストプラットフォームを活用し、エンドユーザーのデバイス（WebブラウザまたはCloudflareの<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>WARPデバイスクライアント</u></a>経由）から<a href="https://blog.cloudflare.com/post-quantum-tunnel"><u>Cloudflare Tunnel</u></a>に接続されたセキュアアプリケーションへ通信をルーティングすることで、エンドツーエンドの量子安全性を確保できます。これに該当するユースケースは以下のとおりです。&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Cloudflareのクライアントレス</b><a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u><b>Access</b></u></a><b>：</b>当社のクライアントレスゼロトラストネットワークアクセス（ZTNA）ソリューションは、Webブラウザを介した企業アプリケーションへのすべてのHTTPSリクエストに対し、ユーザーの識別情報とデバイスコンテキストを検証します。現在、クライアントレスAccessには、エンドツーエンドでポスト量子暗号による保護が適用されています。</p>
+		</li>
+		<li>
+			<p><b>Cloudflareの</b><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u><b>WARPデバイスクライアント</b></u></a><b>：</b>2025年半ばまでに、WARPデバイスクライアントを使用するお客様は、ポスト量子暗号で保護された接続を介してすべてのトラフィック（プロトコルに関係なく）をトンネリングする予定です。WARPクライアントは、企業デバイスのトラフィックをCloudflareのグローバルネットワークへプライベートにルーティングすることで保護し、Gatewayが高度なWebフィルタリングを適用し、Accessがセキュアなアプリケーションアクセスを制御するポリシーを強制します。&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Cloudflare </b><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies" target="_blank" rel="noopener noreferrer"><u><b>Gateway</b></u></a>：CloudflareのSecure Web Gateway（SWG）は、脅威や不正な通信をブロックするためにTLSトラフィックを検査およびフィルタリングするように設計されており、ポスト量子暗号を使用するTLSをサポートしています。&nbsp;</p>
+		</li>
+	</ul>
+	<p>この記事の残りのセクションでは、量子コンピューティングがもたらす脅威と、ポスト量子暗号に移行する際に組織が直面する課題について説明します。また、当社のゼロトラストプラットフォームがどのようにポスト量子暗号をサポートしているかについての技術的な詳細、および将来の計画についてもご紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-transition-to-post-quantum-cryptography-and-why-now">なぜポスト量子暗号に移行するのか、そしてなぜ今なのか？&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#why-transition-to-post-quantum-cryptography-and-why-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ポスト量子暗号を今採用すべき主な理由は、以下の2つです。</p>
+	<div class="flex anchor relative">
+		<h4 id="1-the-challenge-of-deprecating-cryptography">1.暗号技術の廃止に伴う課題</h4>
+		<a href="https://blog.cloudflare.com/#1-the-challenge-of-deprecating-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>過去の事例からも明らかなように、既存システムで使用されている暗号アルゴリズムを更新または廃止することは非常に困難です。たとえば、MD5ハッシュ関数は<a href="https://iacr.org/archive/eurocrypt2005/34940019/34940019.pdf" target="_blank" rel="noopener noreferrer"><u>2004年に安全ではないと判断され</u></a>、長らく非推奨とされてきましたが、2024年になってもRADIUSエンタープライズ認証プロトコルで使用されていました。2024年7月、Cloudflareは、MD5への依存を悪用した<a href="https://blog.cloudflare.com/radius-udp-vulnerable-md5-attack"><u>RADIUSへの攻撃</u></a>を明らかにする調査に貢献しました。この例は、レガシーシステムの更新の大きな課題、つまり、<a href="https://en.wikipedia.org/wiki/Cryptographic_agility" target="_blank" rel="noopener noreferrer"><i><u>暗号の俊敏性</u></i></a>を実現することの難しさをを浮き彫りにしています。ポスト量子暗号への移行時も同様の課題が発生するため、今から対応を始めるのが理にかなっています。</p>
+	<div class="flex anchor relative">
+		<h4 id="2-the-harvest-now-decrypt-later-threat">2.「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃の脅威</h4>
+		<a href="https://blog.cloudflare.com/#2-the-harvest-now-decrypt-later-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、量子コンピューターは従来の暗号を解読するのに十分な量子ビットを欠いていますが、攻撃者は暗号化された通信を収集・保存したり、データセットを盗んだりして、量子技術が成熟したら復号化することを狙っています。現在の暗号化されたデータが10年～15年後には厄介になる可能性があるのであれば、ポスト量子時代に向けた準備は不可欠です。そこで、当社はすでに世界中の最先端の銀行、インターネットサービスプロバイダー（ISP）、政府機関と協力し、量子安全性への移行を支援しています。</p>
+	<p>米国政府はすでにこれらのリスクへの対策に取り組んでいます。2025年1月16日、ホワイトハウスは米国のサイバーセキュリティにおけるイノベーションの強化と促進に関する<a href="https://www.federalregister.gov/documents/2025/01/17/2025-01470/strengthening-and-promoting-innovation-in-the-nations-cybersecurity" target="_blank" rel="noopener noreferrer"><u>大統領令14144号</u></a>を発令しました。この命令では、政府機関に対し「<i>ポスト量子暗号（PQC）をサポートする製品が広く利用可能なカテゴリのリストを定期的に更新することを求め... リストに追加された製品カテゴリについては、90日以内に、そのカテゴリの製品の調達要件にPQCのサポートを含める措置を取ることが義務付けられています</i>」</p>
+	<p>Cloudflareでは、<a href="https://blog.cloudflare.com/tag/post-quantum"><u>2017年から</u></a>ポスト量子暗号の<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment"><u>研究</u></a>、<a href="https://blog.cloudflare.com/securing-the-post-quantum-world"><u>開発</u></a>、<a href="https://www.ietf.org/archive/id/draft-kwiatkowski-tls-ecdhe-mlkem-02.html" target="_blank" rel="noopener noreferrer"><u>標準化</u></a>に取り組んできました。当社の戦略はシンプルです。</p>
+	<p><b>Cloudflareの量子安全な接続を通じてトラフィックをトンネル化することで、「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃から即座に保護し、すべての暗号ライブラリを自力で更新する負担を軽減することができます。</b></p>
+	<p>Cloudflareにおけるポスト量子暗号への移行の様子を詳しく見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-two-phase-migration-to-post-quantum-cryptography">ポスト量子暗号への2段階の移行</h3>
+		<a href="https://blog.cloudflare.com/#a-two-phase-migration-to-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、<a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer"><u>TLS（Transport Layer Security）1.3</u></a>プロトコルをポスト量子暗号に移行することに大きな重点を置いています。&nbsp;TLSは主にWebアプリケーションの通信を保護するものですが、メール、メッセージ、<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>VPN接続</u></a>、<a href="https://www.cloudflare.com/learning/dns/dns-over-tls" target="_blank" rel="noopener noreferrer"><u>DNS</u></a>、その他多くのプロトコルの保護にも広く使用されています。&nbsp;このため、TLSはポスト量子暗号に移行する際に注目すべき理想的なプロトコルと言えます。</p>
+	<p>移行には、TLS 1.3の2つの重要なコンポーネント、<a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer"><u>証明書で使用されるデジタル署名</u></a>、<a href="https://blog.cloudflare.com/post-quantum-key-encapsulation"><u>鍵合意メカニズム</u></a>の更新が含まれます。鍵合意については大幅な進歩が見られましたが、ポスト量子デジタル署名への移行はまだ初期段階です。</p>
+	<div class="flex anchor relative">
+		<h4 id="phase-1-migrating-key-agreement">フェーズ1：鍵合意の移行</h4>
+		<a href="https://blog.cloudflare.com/#phase-1-migrating-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>鍵合意プロトコルにより、2者間通信の保護と暗号化に使用できる共有の秘密鍵を安全に確立することができます。現在、多くのベンダーがTLS 1.3のポスト量子鍵交換プロトコルとして<a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a>（Module-lattice based Key-Encapsulation Mechanism Standard）への移行を進めています。鍵合意の移行を優先する理由は主に2つあります。</p>
+	<ul>
+		<li>
+			<p><b>パフォーマンス：</b>ML-KEMは、短時間のネットワーク接続であっても、TLS 1.3プロトコルで優れたパフォーマンス<a href="https://blog.cloudflare.com/pq-2024"><u>を発揮します</u></a>。</p>
+		</li>
+		<li>
+			<p><b>セキュリティ</b>：従来の暗号化は、「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃に対して脆弱です。この脅威モデルでは、敵は暗号化された通信を現在傍受して保存し、その後（将来的に）量子コンピューターを用いて秘密鍵を導き出し、通信を侵害します。2025年3月現在、Cloudflareネットワークに到達している人間のWebトラフィックの3分の1以上が、ハイブリッドML-KEM鍵交換を備えたTLS 1.3によって、これらの攻撃から保護されています。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Tgfy0HYHA5MM6JjaNP2Z1/b601d2938be3c52decf1f3cec7313c6e/image6.png" alt="" class="kg-image" width="1866" height="518" loading="lazy">
+	</figure>
+	<p><i><sup>2024年3月1日から2025年3月1日まで</sup></i><a href="https://radar.cloudflare.com/adoption-and-usage?dateRange=52w" target="_blank" rel="noopener noreferrer"><i><sup><u>Cloudflare Radar</u></sup></i></a><i><sup>で観測された人間のHTTPSリクエストトラフィックのポスト量子暗号化の割合（2025年3月13日取得）。</sup></i></p>
+	<p>Webサイトアクセス時にChromeブラウザがML-KEMを鍵合意に使用しているか確認する方法：まず、<a href="https://developer.chrome.com/docs/devtools/inspect-mode#:~:text=Open%20DevTools,The%20element's%20margin%2C%20in%20pixels." target="_blank" rel="noopener noreferrer"><u>ページを検証</u></a>し、<a href="https://developer.chrome.com/docs/devtools/security" target="_blank" rel="noopener noreferrer"><u>「セキュリティ」タブ</u></a>を開きます。次に、<a href="https://www.ietf.org/archive/id/draft-kwiatkowski-tls-ecdhe-mlkem-02.html" target="_blank" rel="noopener noreferrer"><u>「X25519MLKEM768」</u></a>という表示があるか確認します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EoD5jFMXJeWFeRtG9w6Uy/85aa13123d64f21ea93313f674d4378f/image1.png" alt="" class="kg-image" width="1388" height="814" loading="lazy">
+	</figure>
+	<p>これは、ブラウザが鍵合意プロトコルML-KEMを従来の<a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>ECC（elliptic curve cryptography）</u></a>と<i>組み合わせて</i>曲線<a href="https://en.wikipedia.org/wiki/Curve25519" target="_blank" rel="noopener noreferrer"><u>X25519</u></a>上で使用していることを示しています。これは、実証済みの従来の暗号（<a href="https://en.wikipedia.org/wiki/Curve25519" target="_blank" rel="noopener noreferrer"><u>X25519</u></a>）の保護と、新しいポスト量子鍵合意（<a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a>）の保護を提供します。</p>
+	<div class="flex anchor relative">
+		<h4 id="phase-2-migrating-digital-signatures">フェーズ2：デジタル署名の移行</h4>
+		<a href="https://blog.cloudflare.com/#phase-2-migrating-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer"><u>デジタル署名はTLS証明書で使用され</u></a>、接続の真正性を検証する役割を果たします。これにより、クライアントは実際にサーバーと通信していることを確認でき、サーバーを装った攻撃者と誤って通信することを防ぎます。&nbsp;</p>
+	<p>しかし、ポスト量子デジタル署名は、現在の署名に比べて大幅にサイズが大きく、処理速度も遅くなります。このパフォーマンスへの影響により、特に短期間のTLS接続では採用が遅れています。&nbsp;</p>
+	<p>幸いなことに、「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃を防ぐためにポスト量子署名は必要ありません。むしろ、量子コンピュータを用いてTLS接続をリアルタイムで改ざんする攻撃に対抗するために使用されます。現在のところ、量子コンピュータがこのような攻撃を実行できる段階には至っていないため、デジタル署名の移行は優先度が低くなっています。</p>
+	<p>それにもかかわらず、CloudflareはTLS証明書向けのポスト量子署名の標準化に<a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/07" target="_blank" rel="noopener noreferrer"><u>積極的に関与</u></a>しています。長期間維持されるTLS接続での導入実験や、パフォーマンスを犠牲にせずにポスト量子認証を実現する<a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs" target="_blank" rel="noopener noreferrer"><u>新たなアプローチ</u></a>の研究を進めています。私たちの目標は、量子コンピュータがリアルタイムでTLS接続を攻撃できるようになる前に、ポスト量子デジタル署名が広範に利用できるようにすることです。</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-zero-trust-pqc-future-proofing-security">Cloudflare Zero Trust + PQC：将来を見据えたセキュリティ</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-zero-trust-pqc-future-proofing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareゼロトラストプラットフォームは、従来の企業向けセキュリティ境界をCloudflareのグローバルネットワークに置き換え、世界中のチームがインターネットや企業リソースへより速く安全にアクセスできるようにします。そして本日、Cloudflareのゼロトラストプラットフォームが、量子コンピュータによる脅威からお客様のデータを保護しながら、インターネット上を安全に転送できることを発表できることを嬉しく思います。&nbsp;量子対応の第一段階として、当社のゼロトラストプラットフォームは、以下の3つの主要な量子安全性ユースケースをサポートしています。</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-clientless-access">量子安全なクライアントレスアクセス</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-clientless-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer"><u>クライアントレス</u></a>の<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>は、組織のインターネットトラフィックを量子コンピュータによる脅威から保護し、内部のWebアプリケーションがまだポスト量子暗号へ移行していなくても安全なアクセスを提供します（「クライアントレスアクセス」とは、ユーザーのデバイスに専用のクライアントアプリケーションをインストールすることなく、ネットワークリソースにアクセスする方法です。代わりに、ユーザーはWebブラウザを介して接続し、情報にアクセスします）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mKiboLMsIEuNt1MaXlWsy/dad0956066e97db69401757b18e8ce5f/image4.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
+	</figure>
+	<p>現在の動作概要：</p>
+	<ul>
+		<li>
+			<p><b>ブラウザ経由のPQ接続：</b>（図のラベル(1)）
+				ユーザーのWebブラウザがポスト量子鍵合意をサポートしている限り、デバイスからCloudflareのネットワークへの接続は、ポスト量子鍵合意を使用するTLS 1.3を介して保護されます。</p>
+		</li>
+		<li>
+			<p><b>Cloudflareのグローバルネットワーク内のPQ：</b>（図中のラベル(2)）：
+				ユーザーと配信元サーバーが地理的に離れている場合、ユーザーのトラフィックはCloudflareのグローバルネットワーク内のある地域（例：フランクフルト）で受信され、別の地域（例：サンフランシスコ）で送信されます。&nbsp;このトラフィックがCloudflareのデータセンター間を移動する際、すべてのネットワークホップはTLS 1.3のポスト量子鍵合意によって保護されます。<b>&nbsp;</b></p>
+		</li>
+		<li>
+			<p><b>PQ Cloudflare Tunnel：</b>（図中のラベル(3)）
+				お客様は、自社のデータセンターまたはパブリッククラウド（企業のWebアプリケーションがホストされている場所）からCloudflareのネットワークへと、Cloudflare Tunnelを確立します。このトンネルは、ポスト量子鍵合意を使用してTLS 1.3を使用して保護され、「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃から保護されています。</p>
+		</li>
+	</ul>
+	<p>クライアントレスAccessは、企業のHTTPSアプリケーションへのアクセスに関して、<b>エンドツーエンド</b>の量子的安全性を提供します。この場合、企業のWebアプリケーションのセキュリティをアップグレードする必要はありません。</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement">CloudflareのWARP Client-to-Tunnel構成による量子安全なZero Trust（VPNの代替として）</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025年半ばまでに、組織はHTTPSだけでなく、<b>あらゆるプロトコル</b>をCloudflareのゼロトラストプラットフォームを通じてトンネリングし、ポスト量子暗号を適用することで、エンドユーザーのデバイスから企業のオフィス、データセンター、またはクラウド環境へとインターネット上を移動するトラフィックを量子安全に保護できるようになります。</p>
+	<p>Cloudflareのゼロトラストプラットフォームは、従来のVPNの代替として理想的で、最新の認証・認可ポリシーを持つ<a href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noopener noreferrer"><u>ゼロトラストアーキテクチャ</u></a>を実現します。&nbsp;Cloudflareのゼロトラストプラットフォームでは、WARP Client-to-Tunnel構成が広く利用されています。この構成では、組織がエンドユーザーのデバイスにCloudflareの<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>WARPデバイスクライアント</u></a>を導入し、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>を使用して企業のオフィス、クラウド、またはデータセンター環境へ接続します。&nbsp;&nbsp;&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xovIIyVOO32xrXBs0ZFcf/110928926b86f12777f16518b1313875/image3.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
+	</figure>
+	<p>&nbsp;詳細は以下の通りです。&nbsp;&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>WARPクライアント経由のPQ接続（2025年半ばで予定）：</b>（図中のラベル(1)）
+				WARPクライアントは、<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>MASQUEプロトコル</u></a>を使用して、デバイスからCloudflareのグローバルネットワークに接続します。当社は、ポスト量子鍵合意を備えたTLS 1.3とこのMASQUE接続の確立のサポートを追加する作業を進めており、2025年半ばを予定しています。&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Cloudflareのグローバルネットワーク内のPQ：</b>（図中のラベル(2)）
+				Cloudflareのグローバルネットワーク内でデータセンター間を移動するトラフィックは、すべてTLS 1.3のポスト量子鍵合意によってすでに保護されています。</p>
+		</li>
+		<li>
+			<p><b>PQ Cloudflare Tunnel：</b>（図中のラベル(3)）
+				前述の通り、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>はすでにポスト量子鍵合意をサポートしています。&nbsp;</p>
+		</li>
+	</ul>
+	<p>WARPクライアントのポスト量子対応が完了すれば、顧客はトラフィックを量子安全なトンネル内にカプセル化し、「Harvest Now, Decrypt Later（今収集して後で解読する）」攻撃のリスクを効果的に軽減することができます。この導入により、ネットワークやアプリケーションを個別にアップグレードする手間をかけずに、&nbsp;HTTPSだけでなく、あらゆるプロトコルを保護できる包括的なセキュリティが実現します。</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications">量子安全なSWG（サードパーティWebアプリケーションへのアクセス用のエンドツーエンドPQC）</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies" target="_blank" rel="noopener noreferrer"><u>Secure Web Gateway</u></a>（SWG）は、TLSトラフィックを傍受し、検査することで、公開インターネット上の第三者Webサイトへのアクセスを保護するために使用されます。&nbsp;</p>
+	<p>Cloudflare Gatewayは、HTTPSトラフィックのための量子的に安全なSWGです。検査対象のサードパーティWebサイトがポスト量子鍵合意をサポートしている限り、CloudflareのSWGもポスト量子鍵合意をサポートします。この対応は、Cloudflareのネットワークへの接続手段（オンランプ）が何であれ有効です。（たとえば、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer"><u>Webブラウザ</u></a>、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>WARPデバイスクライアント</u></a>、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector" target="_blank" rel="noopener noreferrer"><u>WARP Connector</u></a>、<a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer"><u>Magic WAN</u></a>など）。必要なのは、ポスト量子鍵合意をサポートするブラウザを使用することだけです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vnkEFkvKbhSAxp33GmRk7/c58d00a14767a03b2422af1c48a53ba9/image5.png" alt="" class="kg-image" width="1488" height="700" loading="lazy">
+	</figure>
+	<p>Cloudflare GatewayのHTTPS SWG機能は、以下のような2つのポスト量子TLS接続を必要とします。</p>
+	<ul>
+		<li>
+			<p><b>ブラウザ経由のPQ接続：</b>（図中のラベル(1)）
+				TLS接続は、ユーザーのブラウザから、TLS検査を実行するCloudflareのネットワーク内のデータセンターに開始されます。ユーザーのWebブラウザがポスト量子鍵合意をサポートしている限り、この接続はポスト量子鍵合意を使用するTLS 1.3によって保護されます。&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>配信元サーバーへのPQ接続：</b>（図中のラベル(2)）
+				TLS接続は、Cloudflareのネットワーク内のデータセンターから配信元サーバーへ開始されます。通常、配信元サーバーはサードパーティによって制御されます。CloudflareのSWGからの接続は、サードパーティの配信元サーバーもすでにポスト量子鍵合意をサポートしている限り、ポスト量子鍵合意をサポートしています。&nbsp;これは、<a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer"><u>https://pq.cloudflareresearch.com/</u></a>をサードパーティの配信元サーバーとして使用することで、今すぐテストできます。&nbsp;</p>
+		</li>
+	</ul>
+	<p>まとめると、CloudflareのSWGは、今日すでに量子対応している、または将来量子対応するサードパーティWebサイトへの安全なアクセスをサポートできるようになっています。また、ユーザーのトラフィックがCloudflareのグローバルネットワークに流入する際のオンランプの種類に関係なく、この量子安全な保護が適用されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way">ポスト量子の未来：Cloudflareのゼロトラストプラットフォームが業界をリードする</h3>
+		<a href="https://blog.cloudflare.com/#the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新たに台頭する量子コンピュータの脅威からお客様を守ることは、単なる優先事項ではなく、私たちの責務です。2017年以来、Cloudflareは製品エコシステム全体にわたってリサーチ、標準化、戦略的実装を通じてポスト量子暗号を開拓してきました。</p>
+	<p><b>今日が重要なマイルストーン：</b>ゼロトラストプラットフォームにおける量子安全な保護の第一段階を迎えました。量子安全なクライアントレスAccessとSecure Web Gatewayはすぐに利用可能で、WARP Client-to-Tunnelネットワーク構成は2025年半ばまでに予定されています。私たちは、ポスト量子暗号技術の最前線を押し広げながら、継続的なイノベーションを通じて、お客様の組織が将来の脅威に先んじることを保証します。&nbsp;暗号アルゴリズムの移行（クリプトアジリティ）に関する心配はCloudflareにお任せください。</p>
+	<p>Cloudflareの組み込みのクリプトアジリティがどのようにお客様のビジネスを将来にわたって保護できるのか、詳しくは<a href="http://cloudflare.com/pqc" target="_blank" rel="noopener noreferrer"><u>ポスト量子暗号</u></a>Webページをご覧ください。 </p>
+</div>

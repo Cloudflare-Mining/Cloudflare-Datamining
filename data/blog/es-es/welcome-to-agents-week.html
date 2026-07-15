@@ -1,0 +1,151 @@
+<div class="mb2 gray5">8 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/welcome-to-agents-week">English</a>, <a href="https://blog.cloudflare.com/zh-tw/welcome-to-agents-week">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/welcome-to-agents-week">Français</a>, <a href="https://blog.cloudflare.com/de-de/welcome-to-agents-week">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/welcome-to-agents-week">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/welcome-to-agents-week">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/welcome-to-agents-week">한국어</a>, <a href="https://blog.cloudflare.com/es-la/welcome-to-agents-week">Español (Latinoamérica)</a> y <a href="https://blog.cloudflare.com/zh-cn/welcome-to-agents-week">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FZ3OkhaKLE5pZppX0kDMo/0e97d8a296da63fba03ab7bf36b67af9/BLOG-3238_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La misión de Cloudflare siempre ha sido ayudar a mejorar Internet. A veces, eso significa desarrollar para Internet tal y como es en la actualidad. A veces significa desarrollar para Internet tal y como será en breve.&nbsp;</p>
+	<p>Hoy damos el pistoletazo de salida a la Agents Week, dedicada a desarrollar Internet para lo que viene.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-internet-wasnt-built-for-the-age-of-ai-neither-was-the-cloud">Internet no se diseñó para la era de la IA. La nube tampoco.</h2>
+		<a href="https://blog.cloudflare.com/#the-internet-wasnt-built-for-the-age-of-ai-neither-was-the-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La nube, tal y como la conocemos, fue producto del último gran cambio de paradigma tecnológico: los teléfonos inteligentes.</p>
+	<p>Cuando los teléfonos inteligentes pusieron Internet al alcance de todos, no solo añadieron usuarios, sino que cambiaron la naturaleza de lo que significaba estar en línea. Siempre conectado, siempre esperando una respuesta instantánea. Se multiplicó el número de usuarios que las aplicaciones debían gestionar, y la infraestructura que las sustentaba tenía que evolucionar.</p>
+	<p>El enfoque que adoptó el sector era sencillo: más usuarios, más copias de su aplicación. A medida que las aplicaciones crecían en complejidad, los equipos las dividían en componentes más pequeños (microservicios) para que cada equipo pudiera controlar su propio destino. Pero el principio básico seguía siendo el mismo: un número limitado de aplicaciones, cada una de las cuales prestaba servicio a muchos usuarios. Si querías escalabilidad, debías aumentar el número de copias.</p>
+	<p>Kubernetes y los contenedores se convirtieron en la solución por defecto. Facilitaban la implementación de las instancias, el equilibrio de carga y la eliminación de lo que ya no necesitabas. Con este modelo de uno a muchos, una única instancia podía dar servicio a muchos usuarios. Incluso si alcanzabas miles de millones usuarios, el número de recursos que tenías que gestionar seguía siendo limitado.</p>
+	<p>Con los agentes, este modelo deja de ser válido.</p>
+	<div class="flex anchor relative">
+		<h2 id="one-user-one-agent-one-task">Un usuario, un agente, una tarea</h2>
+		<a href="https://blog.cloudflare.com/#one-user-one-agent-one-task" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A diferencia de todas las aplicaciones anteriores, los agentes ofrecen un modelo uno a uno. Cada agente es una instancia exclusiva. Da servicio a un usuario, ejecuta una tarea. Mientras que una aplicación tradicional sigue la misma ruta de ejecución independientemente de quien la utilice, un agente requiere su propio entorno de ejecución: uno en el que el LLM dicta la ruta del código, invoca herramientas de forma dinámica, ajusta su enfoque y persiste hasta que la tarea se ha completado.</p>
+	<p>La diferencia entre los agentes y las aplicaciones anteriores es similar a la diferencia entre un chef personal y un restaurante. Este tiene un menú (un conjunto fijo de opciones) y una cocina optimizada para elaborarlas en gran cantidad. Así son la mayoría de las aplicaciones actuales. En cambio, un agente es más como un chef personal que pregunta: ¿qué quieres comer?. Es posible que necesite ingredientes, utensilios o técnicas completamente diferentes cada vez. No puedes dirigir un servicio de chef personal con la misma configuración de cocina que usarías para un restaurante.</p>
+	<p>Durante el último año, hemos visto un gran auge de los agentes, con los agentes de programación a la vanguardia (como era de esperar, ya que los desarrolladores suelen ser los usuarios que primero deciden adoptar las nuevas tecnologías). Hoy en día, la forma de trabajar de la mayoría de los agentes de programación consiste en implementar un contenedor para proporcionar al LLM lo que necesita: un sistema de archivos, git, bash y la capacidad de ejecutar binarios arbitrarios.</p>
+	<p>Pero los agentes de programación son solo el principio. Gracias a herramientas como Claude Cowork, los agentes ya están al alcance de usuarios menos técnicos. Cuando los agentes pasan de los desarrolladores a las manos de todos los usuarios en general (asistentes administrativos, analistas de investigación, representantes de atención al cliente, planificadores personales), los cálculos para la escalabilidad se complican.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-math-on-scaling-agents-to-the-masses">Los cálculos para ampliar los agentes al público en general</h2>
+		<a href="https://blog.cloudflare.com/#the-math-on-scaling-agents-to-the-masses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si los más de 100&nbsp;millones de profesionales del conocimiento de EE.&nbsp;UU. utilizaran cada uno un asistente agéntico con una simultaneidad de aproximadamente el 15&nbsp;%, necesitarías capacidad para unos 24&nbsp;millones de sesiones simultáneas. Con 25-50 usuarios por CPU, eso equivale a entre 500&nbsp;000 y 1&nbsp;millón de CPU de servidor, solo para EE. UU., con un agente por persona.</p>
+	<p>Ahora imagina a cada persona ejecutando varios agentes en paralelo. Ahora imagina el resto del mundo, con más de mil millones de profesionales del conocimiento. No es que nos falten algunos recursos informáticos, sino que estamos a años luz de lo que necesitamos.</p>
+	<p>Por lo tanto, ¿cómo superamos esa deficiencia?</p>
+	<div class="flex anchor relative">
+		<h2 id="infrastructure-built-for-agents">Una infraestructura diseñada para los agentes</h2>
+		<a href="https://blog.cloudflare.com/#infrastructure-built-for-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hace ocho años, lanzamos <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, el principio de nuestra plataforma para desarrolladores, y una apuesta por la informática sin contenedores y sin servidor. En ese momento, la motivación era práctica: necesitábamos procesos ligeros sin arranques en frío para los clientes que dependían de la velocidad de Cloudflare. Workers, basado en aislamientos de V8 en lugar de contenedores, resultó ser muchísimo más eficiente, con un inicio más rápido, una ejecución más barata y adecuado de forma nativa para el patrón "activar, ejecutar, eliminar".</p>
+	<p>Lo que no anticipamos fue lo bien que este modelo se adaptaría a la era de los agentes.</p>
+	<p>Siguiendo con el símil de la cocina, los contenedores proporcionan a cada agente una cocina comercial completa, con electrodomésticos fijos, neveras industriales y todo el equipamiento (lo necesite o no el agente), mientras que los aislamientos proporcionan al chef personal exactamente el espacio de encimera, el fogón y el cuchillo que necesita para cada comida específica. El aprovisionamiento requiere apenas milisegundos. Y se limpia tan pronto como se sirve el plato.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UM1NukO0Ho4lQAYk5CoU8/30e1376c4fe61e86204a0de92ae4612b/BLOG-3238_2.png" alt="BLOG-3238 2" class="kg-image" width="1999" height="1228" loading="lazy">
+	</figure>
+	<p>En un mundo en el que ya no necesitamos admitir miles de aplicaciones de larga duración, sino miles de millones de entornos de ejecución efímeros y con una sola función, los aislamientos son la primitiva adecuada.&nbsp;</p>
+	<p>Cada uno de ellos se inicia en milisegundos. Cada uno de ellos está en un espacio aislado. Y puedes ejecutar muchos más en el mismo hardware que con los contenedores.</p>
+	<p>Hace solo unas semanas, llevamos esto más lejos con la <a href="https://blog.cloudflare.com/dynamic-workers"><u>versión beta abierta de Dynamic Workers</u></a>: entornos de ejecución implementados en tiempo de ejecución y bajo demanda. Un aislamiento se inicia en unos milisegundos y utiliza apenas unos megabytes de memoria. Es aproximadamente 100&nbsp;veces más rápido y hasta 100&nbsp;veces más eficiente en términos de memoria que un contenedor.&nbsp;</p>
+	<p>Puedes iniciar un aislamiento nuevo para cada solicitud, ejecutar un fragmento de código y desecharlo, a una escala de millones por segundo.</p>
+	<p>Para que los agentes dejen de estar solo en manos de los primeros usuarios y lleguen a todo el mundo, es necesario que también sean asequibles. La ejecución de cada agente en su propio contenedor es tan costosa que hoy en día las herramientas agénticas están básicamente restringidas a los asistentes de programación para ingenieros que pueden permitirse dicho coste. <b>Los aislamientos, gracias a su ejecución mucho más eficiente, son lo que permite que el coste económico por unidad sea viable a la escala que requieren los agentes.</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6iiD7zACxMNEDdvJWM6zbo/2261c320f3be3cd2fa6ef34593a1ee09/BLOG-3238_3.png" alt="BLOG-3238 3" class="kg-image" width="1999" height="840" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="the-horseless-carriage-phase">La fase del "carruaje sin caballos"</h2>
+		<a href="https://blog.cloudflare.com/#the-horseless-carriage-phase" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aunque es fundamental crear una base sólida para el futuro, todavía no hemos llegado a ese punto. Cada cambio de paradigma tiene un periodo en el que intentamos que lo nuevo funcione dentro del modelo anterior. Los primeros coches se denominaban "carruajes sin caballos". Los primeros sitios web eran folletos digitales. Las primeras aplicaciones móviles eran interfaces de usuario de escritorio reducidas. Con los agentes, ahora estamos en esa fase.</p>
+	<p>Puedes verlo en todas partes.&nbsp;</p>
+	<p>Proporcionamos a los agentes navegadores sin interfaz gráfica para navegar por sitios web diseñados para visitantes humanos, cuando lo que necesitan son protocolos estructurados como MCP para identificar e invocar los servicios directamente.&nbsp;</p>
+	<p>Muchos de los primeros servidores MCP son envoltorios ligeros de las API REST existentes (las mismas operaciones CRUD, un nuevo protocolo) cuando los LLM son en realidad mucho mejores con la escritura de código que con la invocación secuencial de herramientas.&nbsp;</p>
+	<p>Utilizamos los desafíos CAPTCHA y la huella digital de comportamiento para verificar lo que está en el otro extremo de una solicitud, cuando cada vez más ese algo es un agente que actúa en nombre de alguien, y la pregunta correcta no es "¿eres humano?" sino "¿qué agente eres, quién te ha autorizado y qué puedes hacer?"</p>
+	<p>Implementamos contenedores completos para agentes que solo necesitan hacer algunas llamadas API y devolver un resultado.</p>
+	<p>Estos son solo algunos ejemplos, pero nada de esto debería sorprendernos. Es una característica de las transiciones.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-for-both">Diseñar para integrar el hoy y el mañana</h2>
+		<a href="https://blog.cloudflare.com/#building-for-both" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Internet siempre se encuentra en algún lugar entre dos eras. IPv6 es objetivamente mejor que IPv4, pero si se elimina la compatibilidad con IPv4 la mitad de Internet dejaría de funcionar. HTTP/2 y HTTP/3 coexisten. TLS 1.2 aún no ha cedido el paso por completo a TLS 1.3. La tecnología mejor existe, la tecnología anterior persiste, y el cometido de la infraestructura es unir ambas.</p>
+	<p>Cloudflare siempre se ha dedicado a facilitar estas transiciones. En el caso de la adopción de los agentes sucede lo mismo.</p>
+	<p>Los agentes de codificación realmente necesitan contenedores: un sistema de archivos, git, bash, la ejecución binaria arbitraria. Eso no va a desaparecer. Esta semana, nuestros entornos de espacio aislado basados en contenedores pasarán a estar disponibles de forma general, porque nos hemos comprometido a mejorarlos. Vamos a ir más allá con la representación del navegador para los agentes, porque habrá una larga lista de servicios que aún no admiten MCP, y los agentes seguirán necesitando interactuar con ellos. No se trata de soluciones provisionales; son parte de una plataforma completa.</p>
+	<p>Pero también estamos desarrollando los próximos avances: los aislamientos, los protocolos y los modelos de identidad que los agentes realmente necesitan. Nuestra tarea es asegurarnos de que no tengas que elegir entre lo que funciona hoy y lo que será mejor para el mañana.</p>
+	<div class="flex anchor relative">
+		<h2 id="security-in-the-model-not-around-it">La seguridad está en el modelo, no en torno a él</h2>
+		<a href="https://blog.cloudflare.com/#security-in-the-model-not-around-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si los agentes van a encargarse de nuestras tareas profesionales y personales (leer nuestro correo electrónico, operar con nuestro código, interactuar con nuestros servicios financieros), la seguridad tiene que estar integrada en el modelo de ejecución, no superpuesta a posteriori.</p>
+	<p>Los CISO han sido los primeros en afrontar este desafío. El aumento de productividad que supone poner los agentes a disposición de todos los usuarios es irrefutable. Sin embargo, hoy en día la mayoría de las implementaciones de agentes están plagadas de riesgos: inyección de instrucciones, exfiltración de datos, acceso no autorizado a las API, uso de herramientas opacas, etc.&nbsp;</p>
+	<p>El agente de vibe-coding de un desarrollador necesita acceso a los repositorios y los canales de implementación. El agente del servicio de atención al cliente de una empresa necesita acceder a las API internas y a los datos de los usuarios. En ambos casos, hoy en día proteger el entorno significa integrar credenciales, políticas de red y controles de acceso que nunca se diseñaron para el software autónomo.</p>
+	<p>Cloudflare ha estado desarrollando dos plataformas en paralelo: nuestra plataforma para desarrolladores, para las personas que crean aplicaciones, y nuestra plataforma Zero Trust, para las organizaciones que necesitan proteger el acceso. Durante un tiempo, estas plataformas dieron servicio a públicos distintos.&nbsp;</p>
+	<p>Sin embargo, las preguntas "¿cómo creo este agente?" y "¿cómo garantizo su seguridad?" constituyen cada vez más la misma pregunta. Combinamos estas plataformas para que todo este entorno se adecue de forma nativa a la ejecución de los agentes, y no sea una superposición añadida a posteriori.</p>
+	<div class="flex anchor relative">
+		<h2 id="agents-that-follow-the-rules">Agentes conformes con las reglas</h2>
+		<a href="https://blog.cloudflare.com/#agents-that-follow-the-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Otra dimensión de la era de los agentes va más allá de la informática y la seguridad: la economía y la gobernanza.</p>
+	<p>Cuando los agentes interactúan con Internet en nuestro nombre (leen artículos, utilizan las API, acceden a servicios), tiene que haber una forma de que las personas y las organizaciones que han creado ese contenido y ejecutan esos servicios puedan establecer sus condiciones y ser retribuidas. Hoy en día, el modelo económico de la web centraliza su atención en los usuarios humanos: anuncios, muros de pago, suscripciones.&nbsp;</p>
+	<p>No se presta atención a los agentes (bueno, no <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer"><u>ese tipo de atención</u></a>). No ven anuncios. No hacen clic en los banners de cookies.</p>
+	<p>Si queremos una Internet en la que los agentes puedan operar libremente <i>y</i> en la que los editores, los creadores de contenido y los proveedores de servicios reciban una compensación justa, necesitamos una nueva infraestructura. Estamos desarrollando herramientas que facilitan a los editores y a los propietarios de contenido la definición y la aplicación de políticas que dicten cómo los agentes pueden interactuar con su contenido.</p>
+	<p>Mejorar Internet siempre ha significado asegurarse de que funciona para todos, no solo para las personas que desarrollan la tecnología, sino para las personas cuyo trabajo y creatividad hacen que valga la pena utilizar Internet. En la era de los agentes, eso no ha cambiado. De hecho, es más importante.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-platform-for-developers-and-agents">La plataforma para desarrolladores y agentes</h2>
+		<a href="https://blog.cloudflare.com/#the-platform-for-developers-and-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestra visión de la plataforma para desarrolladores siempre ha sido proporcionar una plataforma integral que simplemente funcione: desde la experimentación a la escalabilidad a millones de usuarios, pasando por el MVP. Sin embargo, proporcionar las primitivas es solo parte de la ecuación. Una buena plataforma también tiene que considerar cómo funciona todo en conjunto y cómo se integra en tu flujo de desarrollo.</p>
+	<p>Esa tarea está evolucionando. Solía centrarse exclusivamente en la experiencia de los desarrolladores, facilitando a los usuarios humanos la creación, las pruebas y el lanzamiento. Cada vez más, también se trata de ayudar a los agentes a ayudar a los humanos, y de hacer que la plataforma funcione no solo para las personas que crean los agentes, sino para los propios agentes. ¿Puede un agente encontrar las prácticas recomendadas más recientes? ¿Con qué facilidad puede identificar e invocar las herramientas y las CLI que necesita? ¿Con qué facilidad puede pasar de la escritura del código a su implementación?</p>
+	<p>Esta semana, presentamos avances en ambas dimensiones para que Cloudflare sea mejor tanto para los usuarios que desarrollan en nuestra red como para los agentes que se ejecutan en ella.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-for-the-future-is-a-team-sport">Construir para el futuro es un deporte de equipo</h2>
+		<a href="https://blog.cloudflare.com/#building-for-the-future-is-a-team-sport" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Construir para el futuro no es algo que podamos hacer solos. Cada transición importante de Internet (de HTTP/1.1 a HTTP/2 y HTTP/3, de TLS 1.2 a TLS 1.3) ha obligado al sector a la convergencia de estándares compartidos. En el caso de la adopción de los agentes, esto no será distinto.</p>
+	<p>Cloudflare tiene un largo historial de contribuir y ayudar a fomentar los estándares que hacen que Internet funcione. Llevamos más de una década <a href="https://blog.cloudflare.com/tag/ietf"><u>muy involucrados en el IETF</u></a>, ayudando a desarrollar e implementar protocolos como QUIC, TLS 1.3 y Encrypted Client Hello. Fuimos miembros fundadores de WinterTC, el comité técnico de la ECMA para la interoperabilidad del tiempo de ejecución de JavaScript. Abrimos el entorno de ejecución de Workers porque creemos que la base debería ser abierta.</p>
+	<p>Aplicamos el mismo enfoque a la era de los agentes. Nos complace formar parte de la Fundación Linux y de la AAIF, y de ayudar a respaldar y promover estándares como MCP, que serán fundamentales para el futuro de los agentes. Desde que Anthropic presentó MCP, hemos trabajado estrechamente con ellos para desarrollar la infraestructura de los servidores MCP remotos, hemos abierto nuestras propias implementaciones y hemos invertido para lograr la viabilidad del protocolo a gran escala.&nbsp;</p>
+	<p>El año pasado, junto con Coinbase, <a href="https://blog.cloudflare.com/x402"><u>cofundamos X402 Foundation</u></a>, un estándar abierto y neutro que reactiva el código de estado HTTP 402, inactivo desde hace mucho tiempo, para ofrecer a los agentes una forma nativa de pagar por los servicios y el contenido que consumen.&nbsp;</p>
+	<p>Los servicios de identidad del agente, autorización, pago, seguridad: todos ellos necesitan estándares abiertos que ninguna empresa puede definir por sí sola.</p>
+	<div class="flex anchor relative">
+		<h2 id="stay-tuned">¡No te pierdas las novedades!</h2>
+		<a href="https://blog.cloudflare.com/#stay-tuned" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Esta semana, haremos anuncios en todas las dimensiones de la pila de agentes: la informática, la conectividad, la seguridad, la identidad, la economía y la experiencia de los desarrolladores.</p>
+	<p>Internet no se creó pensando en la IA. La nube no se creó para los agentes. Sin embargo, el objetivo de Cloudflare siempre ha sido ayudar a mejorar Internet, y el significado de "mejorar" cambia con cada nueva era. Estamos en la era de los agentes. Esta semana, <a href="https://blog.cloudflare.com"><u>síguenos</u></a> y te mostraremos lo que estamos desarrollando para ella.</p>
+</div>

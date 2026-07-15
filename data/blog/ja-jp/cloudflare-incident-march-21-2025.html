@@ -1,0 +1,344 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-incident-march-21-2025">English</a>および<a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-march-21-2025">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zVzYYX4Zs6rRox4hJO4wJ/c64947208676753e532135f9393df5c5/BLOG-2793_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2025年3月21日に、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2オブジェクトストレージ</u></a>を含む複数のCloudflareサービスで、1時間7分にわたってエラー率上昇が見られました（21:38 UTCに開始、22:45 UTCに終了）。このインシデントウィンドウでは、世界全体でR2への書き込み操作が100%失敗し、読み込み操作は約35%が失敗しました。このインシデントはR2から始まりましたが、<a href="https://www.cloudflare.com/developer-platform/products/cache-reserve" target="_blank" rel="noopener noreferrer"><u>Cache Reserve</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>、<a href="https://developers.cloudflare.com/logs/edge-log-delivery" target="_blank" rel="noopener noreferrer"><u>Log Delivery</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream" target="_blank" rel="noopener noreferrer"><u>Stream</u></a>、<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>など、他のCloudflareサービスにも影響を及ぼしました。</p>
+	<p>R2 Gatewayサービス（R2のAPIフロントエンド）が当社ストレージインフラストラクチャでの認証に使用する認証情報をローテーションしている間に、R2のエンジニアリングチームが誤って新しい認証情報（IDとキーペア）を、サービスの本番インスタンスではなく開発インスタンスにデプロイしてしまいました。（キーローテーションプロセスの一環として）古い認証情報が当社のストレージインフラストラクチャから削除された時、本番用のR2 Gatewayサービスは新しい認証情報にアクセスできませんでした。この最終的な結果として、R2のGatewayサービスはストレージバックエンドで認証不可能となりました。このインシデントで発生したデータの損失や破損はありませんでした。未了のアップロードやミューテーションは、成功のHTTPステータスコードを返したものは続けられました。</p>
+	<p>根本的な原因を特定し、本番用のR2 Gatewayサービスに新しい認証情報をデプロイしていないことに気づいた後は、更新後の認証情報をデプロイし、サービスの可用性を回復しました。</p>
+	<p>このインシデントは人為的なミスによって発生し、想定より長く続きました。Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを、当社が適切に可視化できていなかったためです。</p>
+	<p>このインシデントによりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。当社では高水準の維持を心掛けており、今回のような事態は許容されるものではありません。このブログ記事では、インシデントの影響、いつ何が起こったのか、この障害（および類似の障害）を二度と起こさないようにするために当社が講じている措置を正確に説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-was-impacted">何に影響が出たか？</h2>
+		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>プライマリインシデントのウィンドウは21:38 UTCから22:45 UTCでした。</b></p>
+	<p>次の表では、R2と、R2に依存するかR2と対話するCloudflareサービスへの具体的な影響について詳しく説明します：</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-fymr {
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-fymr"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000;background-color:transparent">製品/サービス</span></th>
+					<th class="tg-0pky"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">影響</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare R2をご利用のすべてのお客様が、プライマリインシデントウィンドウでエラー率上昇を経験しました。具体的には：</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* オブジェクトの書き込み操作のエラー率は100%でした。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* オブジェクトの読み取りは、グローバルで約35%のエラー率でした。このウィンドウにおける個々のお客様のエラー率は、アクセスパターンによって異なります。カスタムドメインでパブリックアセットにアクセスするお客様では、キャッシュされたオブジェクトの読み取りに影響がなかったため、エラー率は抑えられました。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* メタデータのみの操作（例：ヘッド操作やリスト操作）は影響を受けませんでした。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のストレージサブシステム内では、データの損失やデータの完全性へのリスクはありませんでした。このインシデントは、R2のAPIフロントエンドと当社のストレージインフラストラクチャの間で発生した一時的な認証の問題だけでした。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">請求に関する問い合わせ</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Billingは、R2を使用してお客様へのインボイスを保存しています。プライマリインシデントウィンドウでは、お客様がCloudflareの過去のインボイスのダウンロードやアクセスを試みると、エラーが発生する場合がありました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache Reserve</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache Reserveのお客様では、このインシデントウィンドウでオリジンへのリクエストが増加しました。これはR2の読み取りの失敗率が上がったためで、その間にCache Reserveで利用できないアセットの取得をオリジンにリクエストする件数が増えました。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache Reserveを使うサイトに対するユーザー向けのアセット要求リクエストは、キャッシュミスがオリジンにフェイルオーバーしたため、故障は観測されませんでした。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">メールセキュリティ</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Email Securityは、顧客向けのメトリクスをR2に依存しています。プライマリインシデントウィンドウでは、顧客向けメトリクスが更新されませんでした。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Images</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">プライマリインシデントウィンドウでは、すべて（100%）のアップロードが失敗しました。保存された画像の配信成功率は約25%に低下しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Key Transparency Auditor</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2の書き込みや読み取りに依存していたために、プライマリインシデントウィンドウではすべて（100%）の操作が失敗しました。インシデントが解決すると、サービスはすぐに通常の運用に戻りました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Log Delivery</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">プライマリインシデントウィンドウではログ（LogpushとLogpullの）の配信が遅れ、ログ処理に大幅な遅延（最大70分）が発生しました。インシデント解決後はすべてのログが配信されました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">プライマリインシデントウィンドウでは、すべて（100%）のアップロードが失敗しました。 Streamの動画セグメント配信の成功率は94%でした。実際の影響はさまざまでしょうが、視聴者は約1分ごとに動画が停止するのを経験したかもしれません。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream Liveはオブジェクトの書き込みに依存するため、プライマリインシデントウィンドウではダウンしていました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vectorize</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">このインシデントウィンドウでは、Vectorizeインデックスに対するクエリーや操作も影響を受けました。Vectorizeは永続ストレージをR2に依存しているため、Vectorizeをご利用のお客様ではインシデントウィンドウに、インデックスのクエリで読み取りエラー率が上がり、インサートとアップサートの操作はことごとく（100％）失敗しました。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="incident-timeline">インシデントのタイムライン</h2>
+		<a href="https://blog.cloudflare.com/#incident-timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>参照されるタイムスタンプはすべて協定世界時（UTC）です。</b></p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 762px">
+			<colgroup>
+				<col style="width: 185.88889px">
+				<col style="width: 575.88889px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-0lax"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">イベント</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 19:49 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームが、認証情報のローテーションプロセスを開始しました。ストレージインフラストラクチャ用の新しい認証情報セット（IDとキーペア）が作成されました。認証情報変更中のダウンタイムを回避するため、古い認証情報は維持しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 20:19 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">更新後の本番シークレットを設定（</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">wrangler secret put</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">）し、</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">wrangler deploy</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コマンドを実行して、更新後の新しい認証情報を使ってR2 Gatewayサービスをデプロイしました。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">注：その後、両方のwranglerコマンドで</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">--env</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パラメータをうっかり省略していたことがわかります。そのため、認証情報は</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">デフォルト</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">環境（</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">本番</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">環境ではなく）に割り当てられたWorkerにデプロイされました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 20:20 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"></span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">デフォルト</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">環境に割り当てられたR2 GatewayサービスWorkerはこの時点で、更新後のストレージインフラストラクチャ用認証情報を使用しています。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">注：このWorkerは間違いで、</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">本番</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">環境を明示的に設定しておくべきでした。しかし、当社はこの時、認証情報が正しい本番Workerで更新されたという誤った認識をもっていました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 20:37 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">古い認証情報をストレージインフラストラクチャから削除し、認証情報のローテーションプロセスを完了しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 21:38 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響開始 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2の可用性メトリクスにサービス低下の兆候が表れ始めます。古い認証情報の削除がストレージインフラへ伝わるまでに伝播遅延があるため、R2の可用性メトリクスへの影響は徐々に表れ、一見して明らかなものではありませんでした。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 21:45 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のグローバル可用性アラートがトリガーされます（エラー予算の消費率の2%を表示）。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームは、影響を理解するために運用ダッシュボードやログを調べ始めました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 21:50 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">内部インシデントが宣言されました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 21:51 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームは、読み取り操作と書き込み操作の両方でR2の可用性メトリクスが徐々にではあるが一貫して低下していることを確認します。メタデータだけを対象とする操作（ヘッド操作やリスト操作など）には影響はありませんでした。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">可用性メトリクスが徐々に低下していたため、R2のエンジニアリングチームは、ストレージインフラストラクチャにおける新しい認証情報の伝播で回帰が起こっている可能性を疑いました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:05 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パブリックインシデントステータスページが公開されました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:15 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームは、ストレージインフラストラクチャ用の新しい認証情報セット（IDとキーペア）を作成し、強制再伝播を試みました。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">運用ダッシュボードとログを引き続き監視しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:20 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">可用性メトリクスの改善は見られませんでした。他の根本原因がある可能性を引き続き調査しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:30 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームは、R2 GatewayサービスWorkerに新しい認証情報セット（IDとキーペア）をデプロイしました。これは、ゲートウェイサービスにプッシュした認証情報に問題があるかどうかを検証するためのものでした。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"></span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">デプロイ</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">と</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">シークレットプット</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">のコマンドで環境パラメーターが省略されていることに変わりはなかったため、デプロイ先は依然として誤った非本番Workerでした。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:36 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 根本原因の特定 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2のエンジニアリングチームは本番Workerのリリース履歴を確認し、認証情報が非本番Workerにデプロイされていることが判明しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:45 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響終了 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">正しい本番Workerに認証情報をデプロイしました。R2の可用性が回復しました。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025年3月21日 - 22:54 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">このインシデントは解決済みと判断されました。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="analysis">分析</h2>
+		<a href="https://blog.cloudflare.com/#analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>R2のアーキテクチャは主に3つの部分で構成されています。本番用R2 Gateway Worker（S3 API、REST API、Workers APIからのリクエストを処理）、メタデータサービス、ストレージインフラストラクチャ（暗号化されたオブジェクトデータを格納）です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1G9gfdEE4RIuMIUeNz42RN/25d1b4cca187a4a24c600a43ba51fb71/BLOG-2793_2.png" alt="BLOG-2793 2" class="kg-image" width="1840" height="1000" loading="lazy">
+	</figure>
+	<p>R2 Gateway Workerは、分散ストレージインフラストラクチャでセキュアに認証を行うのに認証情報（IDとキーペア）を使用します。当社では、ベストプラクティスのセキュリティ対策として、これらの認証情報を定期的にローテーションしています。</p>
+	<p>キーローテーションのプロセスには、おおまかには以下のステップが含まれます：</p>
+	<ol>
+		<li>
+			<p>ストレージインフラストラクチャ用の新しい認証情報セット（IDとキーペア）を作成します。この時点では、認証情報変更中のダウンタイムを回避するために、古い認証情報を維持します。</p>
+		</li>
+		<li>
+			<p><code>wrangler secret put</code>コマンドを使用して、本番R2 Gateway Workerの新しい認証情報シークレットを設定します。</p>
+		</li>
+		<li>
+			<p><code>wrangler deploy</code>コマンドを使用して、更新後の新しい認証情報ID を、本番R2 Gateway Workerで環境変数として設定します。この時点から、Gateway Workerは新しいストレージの認証情報を使用し始めます。</p>
+		</li>
+		<li>
+			<p>ストレージインフラストラクチャから古い認証情報を削除し、認証情報のローテーションプロセスを完了します。</p>
+		</li>
+		<li>
+			<p>運用ダッシュボードやログを監視して、変更を確認します。</p>
+		</li>
+	</ol>
+	<p>R2のエンジニアリングチームは<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><u>Workers環境</u></a>を使用して、R2 Gateway Workerの本番環境と開発環境を隔離します。それぞれの環境は、別々に分離されたCloudflare Workerを別々の環境変数とシークレットで定義します。</p>
+	<p>重要なのは、もし--envコマンドラインパラメータが含まれていなければ、<code>wrangler secret put</code>コマンドと<code>wrangler deploy</code>コマンドの両方がデフォルト環境をデフォルトにしてしまうということです。今回の場合は、人為的なミスで--envパラメータをうっかり省略し、新しいストレージ認証情報を間違ったWorker（<code></code>本番環境ではなくデフォルト環境<code></code>）にデプロイしてしまいました。ストレージの認証情報を本番R2 Gateway Workerに正しくデプロイするには、<code>--env product</code>を指定する必要があります。</p>
+	<p>上記のステップ4でストレージインフラストラクチャから古い認証情報を削除するアクションを実行したところ、認証エラーが発生しました。本番R2 Gateway Workerの認証情報が古いままだったからです。このエラーが最終的に可用性低下を引き起こしました。</p>
+	<p>古い認証情報の削除がストレージインフラへ伝播するまでに遅延があったため、R2の可用性メトリクスの低下は徐々に進行し、すぐには明確になりませんでした。最初の問題発見が遅れたのはこのためです。古い認証情報セットを更新した後、可用性メトリクスに頼るのではなく、R2 GatewayサービスがR2のストレージインフラストラクチャの認証にどのトークンを使用しているかを明示的に検証するべきでした。</p>
+	<p>全体的に見て、読み取りについては、ストレージの前に配置された中間キャッシュがリクエストに対応し続けたおかげで、可用性への影響はかなり抑えられました。</p>
+	<div class="flex anchor relative">
+		<h2 id="resolution">解決方法</h2>
+		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>根本的な原因を特定した後は、本番R2 Gateway Workerに新しい認証情報をデプロイし、迅速にインシデントを解決することができました。R2の可用性は即時に回復しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="next-steps">次のステップ</h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このインシデントは人為的ミスによって発生し、R2 Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを適切に可視化していなかったために、予想以上に長引きました。</p>
+	<p>この故障（や類似の故障）が二度と起こらないよう、当社は直ちに再発防止策を講じました：</p>
+	<ul>
+		<li>
+			<p>R2 Gateway Workerがストレージインフラストラクチャの認証に使用する認証情報IDのサフィックスを含むログ用タグを追加しました。この変更により、どの認証情報が使用されているかを明示的に確認することができます。</p>
+		</li>
+		<li>
+			<p>上記の対策に関連する内部プロセスとして、新しいトークンIDのサフィックスがストレージインフラストラクチャのログと一致することを、古いトークンを削除する前に明示的に確認するよう義務付けています。</p>
+		</li>
+		<li>
+			<p>人為的ミスの可能性がある手動のwranglerコマンド入力に依存するのではなく、ホットフィックスのリリースツールによってキーローテーションを行うように義務付けています。当社のホットフィックスリリースデプロイツールは、環境設定を明示的に強制するほか、他の安全性チェックも含まれています。</p>
+		</li>
+		<li>
+			<p>このプロセスでは、次の段階へ進む前に少なくとも2人の人間が変更の検証に関与することが暗黙の基準でしたが、関連するSOP（標準的業務手順書）を更新してこれを明示化しました。</p>
+		</li>
+		<li>
+			<p><b>作業中</b>：エンドポイントを監視する既存のクローズドループヘルスチェックシステムを新しいキーのテストにも拡張し、アラートプラットフォームを通じてステータス報告を自動化し、Gateway Workerをリリースする前にグローバルな伝播を確認します。</p>
+		</li>
+		<li>
+			<p><b>作業中</b>：分散ストレージエンドポイントで今後問題が発生した場合のトリアージを迅速化するため、可観測性プラットフォームを更新し、キャッシュをバイパスするアップストリームの成功率のビューを含めることで、理由は何であれリクエスト処理の問題が発生していることが明確にわかるようにします。</p>
+		</li>
+	</ul>
+	<p>上のリストはすべてを網羅しているわけではありません。上記の項目を進めていく中で、システム、制御、プロセスの他の改善点が見つかる可能性があります。当社は、通常の改善業務はもちろん、新たに見つかった改善点にも取り組んで、R2の耐障害性を高めていきます。上述した一連の変更により、この故障と関連する認証情報ローテーション故障モードの再発を防止できると確信しています。繰り返しになりますが、この件によりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。</p>
+</div>

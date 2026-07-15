@@ -1,0 +1,139 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">English</a>, <a href="https://blog.cloudflare.com/zh-tw/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Português</a>, <a href="https://blog.cloudflare.com/es-es/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Рyсский</a> 및 <a href="https://blog.cloudflare.com/zh-cn/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vHrISZ0LlnUJcPsWVuRjW/606c3481ab47becf50e624a231ad9ea1/blazing-fast-development-with-full-stack-frameworks-and-cloudflare.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>웹 개발자 여러분, 안녕하세요! <a href="https://blog.cloudflare.com/making-cloudflare-for-web">작년에는</a> Cloudflare에 웹 애플리케이션을 훨씬 쉽게 배포할 수 있게 해주는 다양한 개선 사항을 출시했으며, 그에 따라 Cloudflare에서 호스팅되는 Astro, Next.js, Nuxt, Qwik, Remix, SolidStart, SvelteKit, 기타 웹 애플리케이션이 크게 성장하는 것을 확인했습니다. 오늘 저희는 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a> SQL 데이터베이스, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a> 개체 저장소, <a href="https://developers.cloudflare.com/ai" target="_blank" rel="noopener noreferrer">AI</a> 모델, 기타 <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">Cloudflare 개발자 플랫폼</a>의 강력한 기능을 사용하는 정교한 애플리케이션을 더욱 쉽게 개발할 수 있게 해주는 이러한 웹 프레임워크와의 통합에 대한 주요 개선 사항을 발표합니다.</p>
+	<p>과거에는 D1으로 웹 프레임워크로 구동되는 애플리케이션을 개발하고 로컬에서 실행하려면 애플리케이션의 프로덕션 빌드를 구축한 다음 `wrangler pages dev`를 사용해 로컬에서 실행해야 했습니다. 이 방법으로 코드를 1회 반복하는 데는 몇 초, 대형 애플리케이션의 경우 수십 초가 걸렸습니다. 프로덕션 빌드를 사용하여 반복하는 것은 너무 느리고, <a href="https://en.wikipedia.org/wiki/Flow_(psychology)" target="_blank" rel="noopener noreferrer">흐름</a>에서 벗어나게 되며, 프레임워크 작성자가 많은 노력을 기울여 개발한 모든 DX 최적화의 이점을 활용할 수 없습니다. 이제는 이러한 상황이 변화하고 있습니다!</p>
+	<p>당사의 목표는 개발자가 Cloudflare에 애플리케이션을 배포할 때 중요한 워크플로우 변경이나 사용자 지정 API를 배우고 채택할 필요 없이 가장 자연스러운 방식으로 웹 프레임워크와 통합하는 것입니다. 여러분이 Next.js 개발자든, Nuxt 개발자이든, 다른 프레임워크를 선호하든, 여러분은 이제 익숙하고 빠른 로컬 개발 워크플로우를 계속 사용하고 Cloudflare에서 애플리케이션을 제공할 수 있습니다.</p>
+	<p>모든 전체 스택 웹 프레임워크는 프레임워크에 맞춤화된 로컬 개발 서버(개발 서버)가 함께 제공되기 때문에 뛰어난 개발 경험을 제공하는 경우가 많지만, Cloudflare 개발 플랫폼의 일부 중요한 기능을 기본적으로 지원하지 않습니다. 특히 Cloudflare의 <a href="https://www.cloudflare.com/developer-platform/products/#storage" target="_blank" rel="noopener noreferrer">스토리지 솔루션</a>의 경우에 그렇습니다.</p>
+	<p>그래서 여러분은 최근까지 어려운 선택을 해야 했습니다. 여러분은 프레임워크별 개발 서버를 사용하여 애플리케이션을 개발할 수는 있지만, Cloudflare의 여러 기능에는 액세스하지 않을 수 있습니다. 아니면 D1 또는 R2와 같은 다양한 리소스를 포함하는 Cloudflare의 플랫폼을 최대한 활용할 수있지만, <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">프레임워크별 개발자 도구 사용을 포기해야 할 수도 있습니다. 이 경우 반복 주기가 느려지고 브라우저에서 코드 변경 결과를 확인하는 데 밀리초가 아닌 몇 초가 걸릴 것입니다.</a> 하지만 이제는 그렇지 않습니다! 함께 살펴보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="lets-build-an-application">애플리케이션을 구축해 보죠</h3>
+		<a href="https://blog.cloudflare.com/#lets-build-an-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>create-cloudflare CLI <a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank" rel="noopener noreferrer">C3</a> 를 사용하여 새 애플리케이션을 만들어 보겠습니다. 어떤 npm 클라이언트든 사용할 수 있지만(pnpm any?!?), 이 게시물에서는 간단하게 하기 위해 기본 npm 클라이언트를 사용하겠습니다. 시작하기 위해 다음을 실행합니다.</p>
+	<p><code>$ npm create cloudflare@latest</code></p>
+	<p>애플리케이션의 이름을 제공하거나 무작위로 생성된 이름을 사용합니다. 그런 다음 '웹 사이트 또는 웹 애플리케이션' 범주를 선택하고 원하는 전체 스택 프레임워크를 선택합니다. 저희는 <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">, Next.js</a>, <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer">Nuxt</a>, <a href="https://qwik.dev" target="_blank" rel="noopener noreferrer">Qwik</a>, <a href="https://remix.run" target="_blank" rel="noopener noreferrer">Remix</a>, <a href="https://start.solidjs.com/getting-started/what-is-solidstart" target="_blank" rel="noopener noreferrer">SolidStart</a>, <a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">SvelteKit</a> 등 많은 것을 지원합니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pa9natISsY3icyIUpu9Ul/cd6aa0baebe85d1b0a85eaba684d66e6/Screenshot-2024-03-28-at-7.25.10-AM.png" alt="" class="kg-image" width="1600" height="1327" loading="lazy">
+
+	</figure>
+	<p>C3는 애플리케이션 스캐폴딩을 프레임워크별 CLI의 최신 버전에 위임하므로 프레임워크 기능 또는 옵션을 하나도 놓치지 않고 프레임워크 작성자가 의도한 대로 애플리케이션을 스캐폴딩할 수 있습니다. 그런 다음 C3는 통합하고 Cloudflare에 배포하는 데 필요한 모든 것을 애플리케이션에 추가하므로 직접 구성할 필요가 없습니다.</p>
+	<p>애플리케이션을 스캐폴딩한 상태에서, 몇 단계만 거치면 데이터베이스에 저장된 제품 목록을 표시할 수 있도록 해 보겠습니다. 먼저 데이터베이스 구성을 <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#d1-databases" target="_blank" rel="noopener noreferrer">wrangler.toml</a> 구성 파일에 추가합니다.</p>
+	<pre class="language-bash"><code class="language-bash">[[d1_databases]]
+binding = "DB"
+database_name = "blog-products-db"
+database_id = "XXXXXXXXXXXXXXXX"</code></pre>
+	<p>예, 바로 그렇게요! 이제 Pages에 배포된 전체 스택 애플리케이션에 대해서도 <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer">wrangler.toml 파일</a>을 통해 <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">바인딩된 리소스</a>를 구성할 수 있습니다. Pages의 구성 개선 사항에 대해서는 <a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">별도의 발표</a>를 통해 더 자세히 알려 드리겠습니다.</p>
+	<p>이제 데이터베이스 스키마를 나타내는 간단한 schema.SQL 파일을 만들어 보겠습니다.</p>
+	<pre class="language-bash"><code class="language-bash">CREATE TABLE products(product_id INTEGER PRIMARY KEY, name TEXT, price INTEGER);
+INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Banana', 100), (3, 'Cherry', 375);</code></pre>
+	<p>그리고 데이터베이스를 초기화합니다.</p>
+	<p><code>$ npx wrangler d1 implement blog-products-db --local --file schema.SQL</code></p>
+	<p>로컬 D1 데이터베이스에 변경 사항을 적용하기 위해 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#execute" target="_blank" rel="noopener noreferrer"><code>wrangler d1 실행</code></a>의 <code>–local</code> 플래그를 사용했음을 알 수 있습니다. 이는 개발 서버가 연결될 데이터베이스입니다.</p>
+	<p>다음으로, TypeScript를 사용하는 경우 다음을 실행하여 데이터베이스를 TypeScript에 알려줍니다.</p>
+	<p><code>$ npm Run build-cf-types</code></p>
+	<p>이 명령은 C3를 통해 생성된 모든 전체 스택 애플리케이션에 대해 사전 구성되어 있으며 구성된 모든 바인딩을 포함하는 Cloudflare 환경의 인터페이스를 업데이트하기 위해 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#types" target="_blank" rel="noopener noreferrer"><code>Wrangler 유형</code></a>을 실행합니다.</p>
+	<p>이제 프레임워크에서 제공하는 개발 서버를 간편한 단축키를 통해 시작할 수 있습니다.</p>
+	<p><code>$ npm run dev</code></p>
+	<p>이 단축키는 <a href="https://nextjs.org/docs/app/api-reference/next-cli#development" target="_blank" rel="noopener noreferrer">next dev</a>, <a href="https://nitro.unjs.io" target="_blank" rel="noopener noreferrer">nitro</a>, <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">vite</a> 중 어떤 것을 사용하든 프레임워크의 개발 서버를 시작합니다.</p>
+	<p>이제 데이터베이스에 액세스하고 제품을 나열하기 위해 프레임워크별 접근 방식을 사용할 수 있습니다. 예를 들어 애플리케이션 라우터를 사용하는 Next.js 애플리케이션에서 다음을 사용하여 <code>app/api/hello/route.ts</code>를 업데이트할 수 있습니다.</p>
+	<pre class="language-bash"><code class="language-bash">const db = getRequestContext().env.DB;
+ const productsResults = await db.prepare('SELECT * FROM products').all();
+ return Response.json(productsResults.results);</code></pre>
+	<p>또는 Nuxt 애플리케이션에서 <code>server/api/hello.ts</code> 파일을 생성하고 이 파일을 다음과 같이 채울 수 있습니다.</p>
+	<pre class="language-bash"><code class="language-bash">export default defineEventHandler(async ({ context }) =&gt; {
+   const db = context.cloudflare.env.DB;
+   const productsResults = await db.prepare('SELECT * FROM products').all();
+   return productsResults.results;
+ });</code></pre>
+	<p>프레임워크 개발 서버가 포트 3000에서 실행 중이라고 가정하면, <a href="http://localhost:3000/api/hello" target="_blank" rel="noopener noreferrer">http://localhost:3000/api/hello</a>로 이동해 어느 프레임워크에서도 새 API 경로를 테스트할 수 있습니다. 이 예시에서는 단순화를 위해 API 경로를 선택했지만, 이는 모든 UI 생성 경로에도 동일하게 적용됩니다.</p>
+	<p>웹 프레임워크마다 경로를 정의하고 요청에 대한 컨텍스트 정보를 애플리케이션 전체에 전달하는 방법이 있기 때문에 데이터베이스, 개체 저장소, 기타 리소스에 액세스하는 방법은 사용하는 프레임워크에 따라 달라집니다. Cloudflare에서 업데이트한 전체 스택 프레임워크 가이드를 읽고 자세한 내용을 알아볼 수 있습니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site" target="_blank" rel="noopener noreferrer">Astro 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site" target="_blank" rel="noopener noreferrer">Next.js 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site" target="_blank" rel="noopener noreferrer">Nuxt 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site" target="_blank" rel="noopener noreferrer">Qwik 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site" target="_blank" rel="noopener noreferrer">Remix 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-site" target="_blank" rel="noopener noreferrer">SolidStart 가이드</a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site" target="_blank" rel="noopener noreferrer">SvelteKit 가이드</a></p>
+		</li>
+	</ul>
+	<p>선택한 프레임워크에서 Cloudflare의 리소스에 액세스하는 방법을 알았으므로 이제 프레임워크에 대해 알고 있는 다른 모든 내용은 동일하게 유지됩니다. 이제 프레임워크에 최적화된 개발 서버를 사용하여 로컬에서 애플리케이션을 개발할 수 있습니다. 이 서버에는 핫 모듈 교체(HMR), 사용자 지정 개발 도구, 향상된 디버깅 지원 등이 포함되며, 아울러 Cloudflare 전용 API와 기능의 이점도 누릴 수 있습니다. 윈윈!</p>
+	<div class="flex anchor relative">
+		<h3 id="what-has-actually-changed-to-enable-these-development-workflows">개발 워크플로우를 지원하기 위해 실제로 무엇이 바뀌었을까요?</h3>
+		<a href="https://blog.cloudflare.com/#what-has-actually-changed-to-enable-these-development-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>개발 대기 시간을 줄이고 사용자 지정 프레임워크별 경험을 유지하기 위해 저희는 웹 프레임워크와 개발 서버가 Wrangler 및 miniflare와 거의 보이지 않는 방식으로 원활하게 통합되도록 해야 했습니다.</p>
+	<p><a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare</a>는 이 퍼즐의 핵심 구성 요소입니다. 이는 Cloudflare 전용 리소스를 위한 저희 로컬 시뮬레이션 도구로, 저희 JavaScript(JS) 런타임인 <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>에 의해 구동됩니다. workerd에 의존함으로써 저희는 Cloudflare의 JavaScript API가 프로덕션 환경을 충실하게 시뮬레이션하는 방식으로 로컬에서 실행되도록 보장합니다. 문제는 프레임워크 개발 서버가 이미 Node.js를 사용하여 애플리케이션을 실행하고 있다는 점이며, 따라서 다른 JS 런타임을 도입하면 이러한 개발 서버의 아키텍처 방식에 대한 많은 가정이 무너진다는 것입니다.</p>
+	<p>하지만 저희 팀에서는 이 두 가지 JS 런타임 간의 격차를 해소할 수 있는 흥미로운 접근 방식을 생각해냈습니다. 우리는 이를 <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy" target="_blank" rel="noopener noreferrer">getPlatformProxy()</a> API 라고 부르며, 이 API는 이제 Wrangler의 일부이며 <a href="https://github.com/cloudflare/miniflare/pull/639" target="_blank" rel="noopener noreferrer">miniflare의 Magic 프록시</a>에 의해 강력하게 지원됩니다. 이 API는 바인딩된 모든 리소스를 포함하는 일반적인 <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters" target="_blank" rel="noopener noreferrer">Workers 환경 개체</a>처럼 작동하는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">JS 프록시 개체</a>를 노출합니다. 프록시 개체를 사용하면 Node.js의 코드가 workerd에서 실행 중인 JavaScript 코드를 투명하게 호출할 수 있을 뿐만 아니라 Cloudflare 전용 런타임 API에 액세스할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MPXvdyK3eYsY3YKnOC8co/480cdd00d7a921ecb65eb738caf17ff2/pasted-image-0--6-.png" alt="" class="kg-image" width="1600" height="966" loading="lazy">
+
+	</figure>
+	<p>Node.js와 workerd 런타임 사이에 있는 이 브리지 덕분에 애플리케이션은 Node.js로 구동되는 개발 서버에서 실행되면서도 D1, R2, KV용 Cloudflare 및 기타 스토리지 솔루션용 Cloudflare 편집기에 직접 액세스할 수 있습니다. 또는 Node.js 스크립트를 작성하여 동일한 작업을 수행할 수도 있습니다.</p>
+	<pre class="language-bash"><code class="language-bash"> import {getPlatformProxy} from 'wrangler';
+
+
+ const {env} = getPlatformProxy();
+ console.dir(env);
+ const db = env.DB;
+
+
+ // Now let’s execute a DB query that runs in a local D1 db
+ // powered by miniflare/workerd and access the result from Node.js
+ const productsResults = await db.prepare('SELECT * FROM products').all();
+ console.log(productsResults.results);</code></pre>
+	<p><code>getPlatformProxy()</code> API 사용할 수 있게 된 이후 나머지 작업은 이 API 를 사용하도록 모든 프레임워크 어답터, 플러그인, 경우에 따라 프레임워크 자체를 업데이트하는 것이었습니다. 이 여정을 진행하면서 프레임워크 팀으로부터 받은 지원 , 특히 Astro의 <a href="https://github.com/alexanderniebuhr" target="_blank" rel="noopener noreferrer">Alex</a>, Nuxt의 <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">Pi0</a>, Remix의 <a href="https://github.com/pcattori" target="_blank" rel="noopener noreferrer">Pedro</a>, Solid의 <a href="https://github.com/ryansolid" target="_blank" rel="noopener noreferrer">Ryan</a>, Svelte의 <a href="https://github.com/benmccann" target="_blank" rel="noopener noreferrer">Ben</a>과 <a href="https://github.com/Rich-Harris" target="_blank" rel="noopener noreferrer">Rich</a>, 그리고 <a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">next-on-pages</a> 프로젝트의 협업자인 <a href="https://github.com/james-elicx" target="_blank" rel="noopener noreferrer">James Anderson</a>으로부터 받은 지원에 감사드립니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="future-improvements-to-development-workflows-with-vite">Vite를 사용한 개발 워크플로우의 향후 개선 사항</h3>
+		<a href="https://blog.cloudflare.com/#future-improvements-to-development-workflows-with-vite" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy" target="_blank" rel="noopener noreferrer"><code>getPlatformProxy()</code></a> API도 다양한 시나리오에 좋은 솔루션이지만, 저희는 더 좋은 결과를 낼 수 있습니다. Node.js가 아닌 JS 런타임에서 전체 애플리케이션을 실행할 수 있다면 프로덕션 환경을 더욱 충실하게 시뮬레이션하고 개발자와의 마찰과 프로덕션의 예기치 못한 상황을 줄일 수 있습니다.</p>
+	<p>이상적인 세계라면 저희는 귀하가 프로덕션에 배포하는 것과 동일한 런타임에 대해 개발하기를 원하며, 이는 모든 프레임워크의 개발 서버에 workerd를 직접 통합해야만 달성할 수 있습니다. 이는 많은 프레임워크와 프레임워크 간의 차이점을 고려할 때 간단한 업적이 아닙니다.</p>
+	<p>하지만 저희에게는 약간의 운이 따랐습니다. 이러한 노력을 시작하면서, 저희는 많은 전체 스택 프레임워크에서 사용하는 인기 있는 개발 서버인 <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a>가 점점 더 많이 채택되고 있다는 것을 일찍 인식했습니다. 실제로 Remix에서는 <a href="https://remix.run/blog/remix-vite-stable" target="_blank" rel="noopener noreferrer">최근 Vite</a>로 전환하면서 Vite가 오늘날 웹 개발을 위한 일반적인 기반으로 널리 사용되고 있음을 확인시켜 주었습니다.</p>
+	<p>Vite에서 대체 JavaScript 런타임에서 전체 스택 애플리케이션을 실행하기 위한 최고의 지원을 제공한다면, Vite를 사용하는 모든 사람이 Cloudflare 개발자 플랫폼에 완벽하게 액세스하여 로컬에서 애플리케이션을 개발할 수 있을 것입니다. 더 이상 프레임워크에 따른 맞춤형 통합이나 해결 방법이 필요 없을 것입니다. 모든 개발자가 전체 스택 프레임워크, Vite, Cloudflare의 모든 기능에 액세스할 수 있을 것입니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hj4Tb9Ex2NnwrnqZ5z6M2/e049e4300b188381259f60bc69ad054c/pasted-image-0--7-.png" alt="" class="kg-image" width="1600" height="1024" loading="lazy">
+
+	</figure>
+	<p>믿기 어려울 정도로 좋은 말처럼 들리나요? 그럴 수도 있죠. Cloudflare에서는 이를 가능하게 할 수 있는 <a href="https://github.com/vitejs/vite/pull/16089" target="_blank" rel="noopener noreferrer">Vite 환경</a> 제안과 관련하여 Vite 팀과 협력하게 되어 매우 기쁘게 생각합니다. 이 제안은 계속 진전되고 있으니 최신 소식을 지켜봐 주세요.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-will-you-build-today">귀하는 요즘 무엇을 구축할 예정인가요?</h3>
+		<a href="https://blog.cloudflare.com/#what-will-you-build-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 Cloudflare를 웹 개발자를 위한 최고의 개발 플랫폼으로 만드는 것을 목표로 합니다. 귀사에서 이미 친숙한 프레임워크와 도구를 사용하여 귀사의 애플리케이션을 빠르고 쉽게 개발하도록 지원하는 것이 저희 사업의 중요한 부분입니다. 하나의 명령만을 실행하여 Cloudflare와 함께하는 여정을 시작하세요.</p>
+	<p><code>$ npm create cloudflare@latest</code></p>
+</div>

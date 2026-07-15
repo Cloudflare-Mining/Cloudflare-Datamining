@@ -1,0 +1,143 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/pingora-open-source">English</a>, <a href="https://blog.cloudflare.com/zh-tw/pingora-open-source">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/pingora-open-source">Français</a>, <a href="https://blog.cloudflare.com/de-de/pingora-open-source">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/pingora-open-source">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/pingora-open-source">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/pingora-open-source">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/pingora-open-source">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/f24aeLVQUjlbXRxDzdWm9/dc66227c33b56143feba15c9f3da26c9/pingora-open-source.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hoy estamos orgullosos de lanzar Pingora de código abierto, el marco Rust que hemos estado utilizando para desarrollar los servicios que impulsan una parte significativa del tráfico en Cloudflare. Pingora se <a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer">ofrece</a> bajo la <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">licencia Apache versión 2.0</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aQBSJRQlM3b1ZRdvJycqY/72f9bd908abc139faba41716074d69d5/Rock-crab-pingora-open-source-mascot.png" alt="Open sourcing Pingora: our Rust framework for building programmable network services" class="kg-image" width="2000" height="548" loading="lazy">
+
+	</figure>
+	<p>Como mencionamos en <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">nuestra publicación anterior del blog</a>, Pingora es un marco multiproceso asíncrono de Rust que nos ayuda a construir servicios de proxy HTTP. Desde nuestra última publicación del blog, Pingora ha gestionado casi un cuatrillón de solicitudes de Internet en nuestra red global.</p>
+	<p>Publicamos Pingora en código abierto para ayudar a mejorar Internet y su seguridad más allá de nuestra propia infraestructura. Queremos proporcionar herramientas, ideas e inspiración a nuestros clientes, nuestros usuarios y a otras personas para que creen su propia infraestructura de Internet utilizando un marco seguro para la memoria. Disponer de un marco de este tipo es crucial dada la creciente concienciación sobre la importancia de la seguridad de la memoria en todo el <a href="https://www.theregister.com/2022/09/20/rust_microsoft_c" target="_blank" rel="noopener noreferrer">sector</a> y en el seno del <a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report" target="_blank" rel="noopener noreferrer">gobierno de Estados Unidos</a>. Con este objetivo común, colaboramos con <a href="https://www.memorysafety.org/blog/introducing-river" target="_blank" rel="noopener noreferrer">Internet Security Research Group (ISRG)</a> en el marco de su <a href="https://www.abetterinternet.org" target="_blank" rel="noopener noreferrer">proyecto Prossimo</a> para ayudar a hacer avanzar la adopción de Pingora en la infraestructura más crítica de Internet.</p>
+	<p>En nuestra <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">publicación anterior del blog</a>, comentamos por qué y cómo desarrollamos Pingora. En esta, hablaremos de por qué y cómo podrías utilizar Pingora.</p>
+	<p>Pingora ofrece elementos esenciales no solo para los proxies, sino también para los clientes y los servidores. Junto con estos componentes, también proporcionamos algunas bibliotecas de utilidades que implementan lógica común, como el <a href="https://blog.cloudflare.com/how-pingora-keeps-count">recuento de eventos</a>, la gestión de errores y el almacenamiento en caché.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-in-the-box">Qué ofrece la solución</h3>
+		<a href="https://blog.cloudflare.com/#whats-in-the-box" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pingora proporciona bibliotecas y API para desarrollar servicios sobre HTTP/1 y HTTP/2, TLS o simplemente TCP/UDP. Como proxy, admite HTTP/1 y HTTP/2 de extremo a extremo, gRPC y redireccionamiento de websockets mediante proxy. (La compatibilidad con HTTP/3 está en la hoja de ruta). También incluye estrategias personalizables de equilibrio de carga y de conmutación por error. En cuanto a la conformidad y la seguridad, es compatible con las bibliotecas OpenSSL y BoringSSL habitualmente utilizadas, que cumplen la normativa FIPS y ofrecen <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">criptografía poscuántica</a>.</p>
+	<p>Además de estas funciones, Pingora ofrece filtros y devoluciones de llamada para permitir a sus usuarios personalizar por completo cómo el servicio debe procesar, transformar y reenviar las solicitudes. Estas API resultan especialmente familiares para los usuarios de OpenResty y NGINX, ya que muchas se relacionan intuitivamente con las devoluciones de llamada "*_by_lua" de OpenResty.</p>
+	<p>Desde el punto de vista operativo, Pingora proporciona reinicios sin tiempo de inactividad para actualizarse sin interrumpir ni una sola solicitud entrante. Syslog, Prometheus, Sentry, OpenTelemetry y otras herramientas de observabilidad imprescindibles también se integran fácilmente con Pingora.</p>
+	<div class="flex anchor relative">
+		<h3 id="who-can-benefit-from-pingora">Quién puede beneficiarse de Pingora</h3>
+		<a href="https://blog.cloudflare.com/#who-can-benefit-from-pingora" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Deberías considerar Pingora si:</p>
+	<p><b>La seguridad es tu máxima prioridad:</b> Pingora es una alternativa más segura en cuanto a memoria para los servicios escritos en C/C++. Aunque algunos podrían aducir acerca de la seguridad de la memoria en los lenguajes de programación, nuestra experiencia práctica indica que somos mucho menos propensos a cometer errores de codificación que provoquen problemas de seguridad de la memoria. Además, puesto que dedicamos menos tiempo a resolver estos problemas, somos más productivos implementando nuevas funciones.</p>
+	<p><b>Tu servicio depende del rendimiento:</b> Pingora es una solución rápida y eficiente. Como explicamos en nuestra publicación anterior del blog, hemos ahorrado muchos recursos de CPU y memoria gracias a la arquitectura multiproceso de Pingora. El ahorro de tiempo y de recursos podría resultar interesante en el caso de cargas de trabajo para las que el coste o la velocidad del sistema (o ambos) sean importantes.</p>
+	<p><b>Tu servicio requiere una gran personalización:</b> las API que proporciona el marco de proxy de Pingora son muy programables. Para los usuarios que deseen crear una puerta de enlace o un equilibrador de carga personalizados y avanzados, Pingora ofrece formas eficaces pero sencillas de implementarlo. Proporcionamos ejemplos en la siguiente sección.</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-build-a-load-balancer">Desarrollemos un equilibrador de carga</h2>
+		<a href="https://blog.cloudflare.com/#lets-build-a-load-balancer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Exploremos la API programable de Pingora desarrollando un equilibrador de carga sencillo. El equilibrador de carga seleccionará entre <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a> y <a href="https://1.0.0.1" target="_blank" rel="noopener noreferrer">https://1.0.0.1/</a> para que sea un proceso ascendente round-robin.</p>
+	<p>En primer lugar, crearemos un proxy HTTP en blanco.</p>
+	<p>Cualquier objeto que implemente el rasgo <code>ProxyHttp</code> (similar al concepto de una interfaz en C++ o Java) es un proxy HTTP. El único método necesario es <code>upstream_peer()</code>, al que se llama para cada solicitud. Esta función debe devolver un <code>HttpPeer</code> que contenga la dirección IP de origen a la que conectarse y cómo conectarse.</p>
+	<pre class="language-bash"><code class="language-bash">pub struct LB();
+
+#[async_trait]
+impl ProxyHttp for LB {
+    async fn upstream_peer(...) -&gt; Result&lt;Box&lt;HttpPeer&gt;&gt; {
+        todo!()
+    }
+}</code></pre>
+	<p>A continuación, implementemos la selección round robin. El marco de Pingora ya proporciona al <code>LoadBalancer</code> algoritmos de selección comunes, como round robin y hash, así que vamos a utilizarlo. Si el caso de uso requiere una lógica de selección de servidor más sofisticada o personalizada, los usuarios pueden simplemente implementarla ellos mismos en esta función.</p>
+	<p>Como nos estamos conectando a un servidor HTTPS, también es necesario configurar la SNI. Si es necesario, los certificados, los tiempos de espera y otras opciones de conexión también se pueden configurar aquí en el objeto HttpPeer.</p>
+	<pre class="language-bash"><code class="language-bash">pub struct LB(Arc&lt;LoadBalancer&lt;RoundRobin&gt;&gt;);
+
+#[async_trait]
+impl ProxyHttp for LB {
+    async fn upstream_peer(...) -&gt; Result&lt;Box&lt;HttpPeer&gt;&gt; {
+        let upstream = self.0
+            .select(b"", 256) // hash doesn't matter for round robin
+            .unwrap();
+
+        // Set SNI to one.one.one.one
+        let peer = Box::new(HttpPeer::new(upstream, true, "one.one.one.one".to_string()));
+        Ok(peer)
+    }
+}</code></pre>
+	<p>Por último, pongamos el servicio en práctica. En este ejemplo, codificamos las direcciones IP del servidor de origen. En las cargas de trabajo reales, las direcciones IP del servidor de origen también se pueden descubrir dinámicamente al llamar a <code>upstream_peer()</code> o en segundo plano. Una vez creado el servicio, simplemente le indicamos al servicio LB que esté a la escucha de 127.0.0.1:6188. Al final hemos creamos un servidor de Pingora, y el servidor será el proceso que ejecute el servicio de equilibrio de carga.</p>
+	<p>Probémoslo:</p>
+	<pre class="language-bash"><code class="language-bash">fn main() {
+    let mut upstreams = LoadBalancer::try_from_iter(["1.1.1.1:443", "1.0.0.1:443"]).unwrap();
+
+    let mut lb = pingora_proxy::http_proxy_service(&amp;my_server.configuration, LB(upstreams));
+    lb.add_tcp("127.0.0.1:6188");
+
+    let mut my_server = Server::new(None).unwrap();
+    my_server.add_service(lb);
+    my_server.run_forever();
+}</code></pre>
+	<p>Podemos ver que el proxy funciona, pero el servidor de origen nos rechaza con un error 403. Esto se debe a que nuestro servicio simplemente redirecciona el encabezado del host, 127.0.0.1:6188, establecido por curl, lo que no le gusta al servidor de origen. ¿Cómo hacemos que el proxy corrija eso? Para ello, podemos simplemente añadir otro filtro llamado <code>upstream_request_filter</code>. Este filtro se ejecuta en cada solicitud después de que se conecte el servidor de origen y antes de que se envíe cualquier solicitud HTTP. Podemos añadir, eliminar o cambiar los encabezados de solicitud http en este filtro.</p>
+	<pre class="language-bash"><code class="language-bash">curl 127.0.0.1:6188 -svo /dev/null
+&gt; GET / HTTP/1.1
+&gt; Host: 127.0.0.1:6188
+&gt; User-Agent: curl/7.88.1
+&gt; Accept: */*
+&gt; 
+&lt; HTTP/1.1 403 Forbidden</code></pre>
+	<p>Intentémoslo de nuevo:</p>
+	<pre class="language-bash"><code class="language-bash">async fn upstream_request_filter(…, upstream_request: &amp;mut RequestHeader, …) -&gt; Result&lt;()&gt; {
+    upstream_request.insert_header("Host", "one.one.one.one")
+}</code></pre>
+	<p>¡Esta vez funciona! Encontrarás el ejemplo completo <a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">aquí</a>.</p>
+	<pre class="language-bash"><code class="language-bash">curl 127.0.0.1:6188 -svo /dev/null
+&lt; HTTP/1.1 200 OK</code></pre>
+	<p>A continuación se muestra un diagrama muy sencillo de cómo fluye esta solicitud a través de la devolución de llamada y el filtro que utilizamos en este ejemplo. El marco de proxy de Pingora actualmente proporciona <a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">más filtros</a> y devoluciones de llamada en distintas etapas de una solicitud para permitir a los usuarios modificar, rechazar, enrutar y/o registrar la solicitud (y la respuesta).</p>
+	<p>En segundo plano, el marco de proxy de Pingora se encarga de la agrupación de conexiones, los protocolos de enlace TLS, la lectura, la escritura, el análisis de las solicitudes y otras tareas habituales del proxy para que los usuarios puedan centrarse en la lógica que les interesa.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WvHfhONcYEEL4kPRwGzKp/f2456d177e727063a49265eea831b8af/Flow_Diagram.png" alt="" class="kg-image" width="710" height="213" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="open-source-present-and-future">Código abierto, presente y futuro</h2>
+		<a href="https://blog.cloudflare.com/#open-source-present-and-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pingora es una biblioteca y un conjunto de herramientas, no un binario ejecutable. En otras palabras, Pingora es el motor que impulsa un coche, no el coche en sí. Aunque Pingora está lista para producción para su uso en el sector, entendemos que mucha gente quiere un servicio web listo para usar con todo incluido, con opciones de configuración que apenas requieran código o que no lo requieran. Desarrollar esa aplicación sobre Pingora será el objetivo de nuestra colaboración con ISRG para ampliar el alcance de Pingora. No te pierdas las próximas novedades sobre ese proyecto.</p>
+	<p>Otras advertencias a tener en cuenta:</p>
+	<ul>
+		<li>
+			<p><b>Hoy en día, la estabilidad de las API no está garantizada.</b> Aunque intentaremos minimizar la frecuencia con la que realicemos cambios importantes, nos reservamos el derecho de añadir, eliminar o cambiar componentes como los filtros de solicitudes y respuestas a medida que evolucione la biblioteca, especialmente durante este periodo previo a la versión 1.0.</p>
+		</li>
+		<li>
+			<p><b>La compatibilidad con sistemas operativos no basados en Unix no está actualmente en la hoja de ruta.</b> No tenemos planes inmediatos para ofrecer compatibilidad con estos sistemas, aunque esto podría cambiar en el futuro.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-to-contribute">Cómo contribuir</h2>
+		<a href="https://blog.cloudflare.com/#how-to-contribute" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>No dudes en plantear informes de errores, problemas de la documentación o solicitudes de funciones en nuestro <a href="https://github.com/cloudflare/pingora/issues" target="_blank" rel="noopener noreferrer">rastreador de problemas</a> de GitHub. Antes de abrir una solicitud de extracción, te recomendamos encarecidamente que eches un vistazo a nuestra <a href="https://github.com/cloudflare/pingora/blob/main/.github/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">guía de contribuciones</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusión</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En esta publicación, hemos anunciado la publicación del código abierto de nuestro marco Pingora. Demostramos que las entidades y la infraestructura de Internet pueden beneficiarse de la seguridad, el rendimiento y la personalización de Pingora. También demostramos lo fácil que es utilizar Pingora y lo personalizable que es.</p>
+	<p>Tanto si desarrollas servicios web de producción como si experimentas con tecnologías de red, esperamos que Pindora te resulte útil. Ha sido un largo recorrido, pero compartir este proyecto con la comunidad de código abierto ha sido nuestro objetivo desde el principio. Nos gustaría dar las gracias a la comunidad de Rust, ya que Pingora se ha desarrollado con muchos paquetes Rust de código abierto que nos han sido de gran utilidad. Migrar a una red de Internet segura para la memoria puede parecer un camino imposible, pero esperamos que te unas a nosotros.</p>
+</div>

@@ -1,0 +1,57 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/26m-rps-ddos">English</a>、<a href="https://blog.cloudflare.com/zh-tw/26m-rps-ddos">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/26m-rps-ddos">Français</a>、<a href="https://blog.cloudflare.com/de-de/26m-rps-ddos">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/26m-rps-ddos">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/26m-rps-ddos">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/26m-rps-ddos">Português</a>、<a href="https://blog.cloudflare.com/es-es/26m-rps-ddos">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/26m-rps-ddos">Рyсский</a>、<a href="https://blog.cloudflare.com/pl-pl/26m-rps-ddos">Polski</a>、<a href="https://blog.cloudflare.com/zh-cn/26m-rps-ddos">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tIo7Rn2tIuxK5w9xHo38K/6c6ff738b56ecea63d58d76c0be4605e/26m-rps-ddos.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>**2022年6月24日から更新：**1秒あたり2600万件のリクエストを放ったDDoS攻撃を「Mantis」と命名しました。これは小さくても極めてパワーのある</i><a href="https://en.wikipedia.org/wiki/Mantis_shrimp" target="_blank" rel="noopener noreferrer"><i>シャコなどの海洋生物</i></a><i>にちなんでいます。</i><b><i>Mantis</i></b><i>はこの1週間活発な動きを見せており、1秒あたり900万件ものリクエストを発するHTTP DDoS攻撃で、VoIPや暗号通貨のインターネットプロパティを狙い撃ちにしました。</i></p>
+	<p>先週、Cloudflareでは1秒あたり2600万件ものリクエストを発する<a href="https://www.cloudflare.com/ja-jp/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS攻撃</a>を自動的に検出し、軽減しました。この攻撃は史上最大級のHTTPS DDoS攻撃です。</p>
+	<p>今回、攻撃者はCloudflareのFreeプランを使用するお客様のWebサイトを標的にしました。前回の<a href="https://blog.cloudflare.com/15m-rps-ddos-attack">1秒あたり1500万件のリクエストを送信した攻撃</a>と同様に、今回の攻撃もほとんどが、一般向けのインターネットサービスプロバイダーではなく、クラウドサービスプロバイダーを起点としていました。この状況から、仮想マシンと強力なサーバーが乗っ取られ、攻撃に悪用されたことになります。つまり、各段に性能の劣るモノのインターネット（IoT）デバイスを悪用した攻撃とは一線を画すわけです。</p>
+	<div class="flex anchor relative">
+		<h3 id="record-breaking-attacks">記録的な攻撃</h3>
+		<a href="https://blog.cloudflare.com/#record-breaking-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NOKvQqeXwENOCj0UOeRAI/04fbae8288e3f3f43130d34fa1b3e66f/image1-7.png" alt="Graph of the 26 million request per second DDoS attack" class="kg-image" width="1438" height="660" loading="lazy">
+
+	</figure>
+	<p>この1年間、Cloudflareでは、記録破りの攻撃が次々に発生するのを目の当たりにしてきました。2021年8月には、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp">1秒あたり1720万件のHTTP DDoS攻撃</a>が発生、またこの4月には<a href="https://blog.cloudflare.com/15m-rps-ddos-attack">1秒当たり1500万件のリクエストを発するHTTPS DDoS攻撃</a>が発生しました。攻撃のすべてがCloudflareの<a href="https://blog.cloudflare.com/http-ddos-managed-rules">HTTP DDoSマネージドルールセット</a>により自動的に検出、軽減されました。このルールセットでは、<a href="https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp">自律型エッジDDoS保護システム</a>を活用しています。</p>
+	<p>毎秒2600万件のDDoS攻撃では、5,067個のデバイスからなる小規模ながら強力なボットネットが発生源でした。ピーク時には、各ノードが平均して毎秒およそ5,200件のリクエストを発しました。このボットネットのサイズを比較するため、73万台超のデバイスからなるサイズとしては各段に大きいものの、威力の低いボットネットを追跡してきました。後者の大型ボットネットが発信できたリクエストは、1秒あたり100万件を下回りました。つまり、デバイスあたり毎秒約1.3件のリクエストを発したことになります。この値を比べてみると、仮想マシンとサーバーが使用されていたことから、件のボットネットは平均で4,000倍も強力であることになります。</p>
+	<p>さらに、注目すべきことには、この攻撃が<a href="https://www.cloudflare.com/ja-jp/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer">HTTPS</a>を介して行われたことです。この種の攻撃ではセキュアな<a href="https://www.cloudflare.com/ja-jp/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS</a>により暗号化された接続を確立するコストが高くなることから、HTTPS DDoS攻撃の方が、必要なコンピューティングコストの観点でより高額になります。そのため、攻撃を行う攻撃者側でも、それを軽減する被害者側でもコストが上がります。過去に（暗号化されていない）HTTPの大規模な攻撃を見てきましたが、この攻撃は、その規模で必要になるリソースという点で際立っていました。</p>
+	<p>このボットネットはわずか30秒未満で、12か国、1,500件ものネットワークを通じて、2億1200万件を超えるHTTPSリクエストを生成しました。送信数が最も多かったのはインドネシア、米国、ブラジル、そしてロシアです。攻撃のおよそ3%がTorノードを介して行われました。</p>
+	<p>ソースネットワークの上位は、フランスを拠点とするOVH（AS番号（ASN）16276）、Indonesian Telkomnet（ASN 7713）、米国を拠点とするiboss（ASN 137922）、Libyan Ajeel（ASN 37284）でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RSu52jA2eDtgH45ptbUIM/634d8cc9c991825d4962ec0c89528837/image3-9.png" alt="Chart of the top source countries of the attack" class="kg-image" width="1600" height="989" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-ddos-threat-landscape">DDoS脅威の状況</h3>
+		<a href="https://blog.cloudflare.com/#the-ddos-threat-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11wUFtITwfTlMcGO6mf7RX/ebae8a2ff45ba6ac2b932d11795745a0/image3-8.png" alt="Chart of the top source networks of the attack" class="kg-image" width="1654" height="1022" loading="lazy">
+
+	</figure>
+	<p>DDoS攻撃対策について考えるとき、攻撃の状況を理解することが重要です。最近の<a href="https://blog.cloudflare.com/ja-jp/ddos-attack-trends-for-2022-q1-ja-jp">DDoSトレンドレポート</a>を見ると、「サイバーバンダリズム」と呼ばれる攻撃など、ほとんどの攻撃は小規模です。ところが、小規模な攻撃でさえ、保護されていないインターネットプロパティに深刻な影響を及ぼす可能性があります。一方、大規模な攻撃は、大型化し頻度も増しているものの、持続期間は短く、瞬時に行われる傾向にあります。要するに、攻撃者は検出を避けるために、自身のボットネットのパワーを集中させ、目にもとまらぬノックアウトの一撃を繰り出すことで、大混乱を引き起こそうとしています。</p>
+	<p>DDoS攻撃を始めるのは人間ですが、攻撃そのものを実行しているのは機械です。そうした攻撃に対し、人が対応できる時代は終わったと認識するべきでしょう。そして、攻撃持続時間は短くても、攻撃後のネットワークとアプリケーションの障害が長引けば、企業の収益や評判に甚大な爪痕を残します。このような理由から、攻撃の検出や軽減に人の手を必要としない常時オンの自動化保護サービスでインターネットプロパティを保護することをおすすめします。</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">より良いインターネットの構築を支援</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareにおいてあらゆる行動の指針となるのは、より良いインターネットの構築をサポートするという私たちの使命です。DDoSチームのビジョンは、ここから生まれたもので、DDoS攻撃の影響を過去のものにすることがその目標といえます。私たちの提供する保護の水準は、<a href="https://blog.cloudflare.com/unmetered-mitigation">定額無制限</a>、すなわち、攻撃の規模や回数、持続期間などの縛りは一切ありません。昨今の攻撃が<a href="https://blog.cloudflare.com/ja-jp/ddos-attack-trends-for-2022-q1-ja-jp">より大規模かつ頻繁になっている</a>ことからも、定額無制限は大変重要といえます。</p>
+	<p>まだCloudflareをお使いでない方は、当社のFreeまたはProプランを使用したWebサイトの保護を<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">今すぐ始める</a>か、Magic Transitを使用したネットワーク全体の包括的なDDos攻撃対策に関して<a href="https://www.cloudflare.com/ja-jp/magic-transit" target="_blank" rel="noopener noreferrer">お問い合わせ</a>ください。</p>
+</div>

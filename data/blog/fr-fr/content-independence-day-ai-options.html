@@ -1,0 +1,277 @@
+<div class="mb2 gray5">Lecture&nbsp;: 10 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/content-independence-day-ai-options">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/content-independence-day-ai-options">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/content-independence-day-ai-options">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/content-independence-day-ai-options">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/content-independence-day-ai-options">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/content-independence-day-ai-options">Português</a>, en <a href="https://blog.cloudflare.com/es-la/content-independence-day-ai-options">Español (Latinoamérica)</a> et en <a href="https://blog.cloudflare.com/zh-cn/content-independence-day-ai-options">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Owe9fGYhGjNZ0ub1RMjwA/592d137ed29bb83239b752351a1b11b0/BLOG-3337_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Il y a un an, nous déclarions la première <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>Journée de l'indépendance du contenu</u></a> et donnions aux propriétaires de sites web les moyens de reprendre le contrôle de leur contenu. L'accord tacite qui avait tenu 30&nbsp;ans entre les bots d'exploration et les propriétaires de sites web (nous vous indexons et vous recevez du trafic référent) n'était plus vrai. En s'emparant de tous les contenus, tout en ne renvoyant rien, l'IA représentait une menace existentielle pour les propriétaires de sites web. C'est pourquoi nous avons lancé l'option «&nbsp;Bloquer les bots IA&nbsp;» d'un simple clic, ainsi qu'un <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>marché du paiement à l'exploration</u></a>.</p>
+	<p>La situation a beaucoup évolué en un an. En juillet dernier, les discussions autour des «&nbsp;bots IA&nbsp;» se concentraient sur le blocage de l'entraînement des IA sans compensation et pointaient vers une situation perdant-gagnant où le contenu était utilisé pour l'entraînement des modèles sans retour de valeur pour le propriétaire du site web. Un désir pour davantage de nuance a toutefois émergé&nbsp;: les propriétaires de contenu souhaitent toujours pouvoir protéger leur contenu et devraient être rémunérés pour le contenu original sur lequel ils travaillent dur, que ce soit pour le créer, l'organiser ou le partager. Nous savons également que le verrouillage du contenu ne constitue pas une solution universelle. Les propriétaires de sites web souhaitent en effet disposer de davantage d'options que de simplement «&nbsp;bloquer tout le trafic automatisé, à chaque fois&nbsp;».</p>
+	<p>Si vous gérez un petit site, le problème ne réside pas <i>uniquement</i> dans le fait que quelqu'un pourrait entraîner ses modèles sur votre contenu, c'est que personne ne peut vous trouver en premier lieu. Vous devez donc conclure un pacte faustien&nbsp;: soit apparaître dans les recherches et laisser l'IA s'entraîner sur votre contenu, soit risquer de perdre en visibilité. Cette situation avantage injustement les fournisseurs de recherche en place s'ils utilisent les mêmes bots pour la recherche et l'entraînement. Cet avantage injuste incite ainsi les nouveaux acteurs à se montrer évasifs lorsqu'ils tentent de réduire leur écart concurrentiel.</p>
+	<div class="flex anchor relative">
+		<h3 id="now-ai-can-be-anything">L'IA peut désormais être tout</h3>
+		<a href="https://blog.cloudflare.com/#now-ai-can-be-anything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'IA peut être présente dans n'importe quel type de ressource aujourd'hui. La recherche Google est passée de l'utilisation d'un outil de tri des réponses assisté par IA à celui du déploiement d'un <a href="https://blog.google/products-and-platforms/products/search/search-io-2026" target="_blank" rel="noopener noreferrer"><u>moteur de réponse complet</u></a> qui répond directement à votre question sur la page des résultats. Or, le cas Google n'est pas unique&nbsp;: c'est dans cette direction que s'oriente l'avenir de l'activité de «&nbsp;recherche&nbsp;».</p>
+	<p>Nous pourrions débattre du seuil permettant de déterminer ce qui qualifie un bot comme «&nbsp;lié à l'IA&nbsp;» aujourd'hui, pour finalement découvrir que la norme aura changé demain. Ainsi, plutôt que de définir un bot principalement comme «&nbsp;lié à l'IA&nbsp;» ou non, notre approche actualisée de la classification posera des questions plus profondes sur le comportement des bots ou des agents&nbsp;: quelles actions effectuent-ils sur mon site&nbsp;? Que stockent-ils&nbsp;? Et comment vont-ils repartager mon contenu&nbsp;?</p>
+	<div class="flex anchor relative">
+		<h3 id="a-pragmatic-taxonomy">Une taxonomie pragmatique</h3>
+		<a href="https://blog.cloudflare.com/#a-pragmatic-taxonomy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons besoin d'une vision plus nuancée pour répondre à ces questions&nbsp;: une taxonomie pragmatique qui s'aligne avec les scénarios d'utilisation de l'IA qui intéressent nos clients. Nous élargissons donc la discussion au-delà de l'entraînement de l'IA pour nous concentrer sur trois scénarios d'utilisation de l'IA que nous souhaitons permettre à tous nos clients de traiter&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Recherche&nbsp;:</b> tout comportement qui collecte ou indexe votre contenu afin de pouvoir répondre ultérieurement à des questions le concernant. L'essentiel à saisir ici est que l'activité de recherche construit une base de données de votre site de manière proactive afin de pouvoir ensuite répondre aux requêtes. Les propriétaires de sites doivent s'attendre à recevoir du trafic référent ou à bénéficier d'une autre compensation équitable en conséquence.</p>
+		</li>
+		<li>
+			<p><b>Agent&nbsp;: </b>un comportement automatisé qui agit (généralement en temps réel) pour le compte d'une personne afin d'immédiatement réaliser une tâche. Cette catégorie inclut les bots de récupération de chat (p. ex., ChatGPT-User) et les agents d'utilisation de navigateur (p. ex., Gemini ou Claude sur Chrome). L'élément clé ici est que l'agent visite votre application web pour accomplir une tâche et qu'un utilisateur humain attend souvent à l'autre bout.</p>
+		</li>
+		<li>
+			<p><b>Entraînement</b>&nbsp;: un bot d'exploration qui utilise votre contenu pour entraîner ou affiner un modèle. L'idée clé ici est que vos données sont absorbées de manière permanente au sein de l'architecture sous-jacente de l'IA afin d'améliorer ses capacités.</p>
+		</li>
+	</ul>
+	<p>De nombreux bots d'exploration populaires sur le web appartiennent à l'une des classes ci-dessus. Certains entrent même dans plusieurs catégories. Nous classifions de nombreux autres comportements au-delà des trois mentionnés ci-dessus, notamment la vérification des publicités, la récupération de flux et les transactions agentiques (nous reviendrons sur ce cas plus bas). Or, nous considérons qu'il devrait être simple pour tous les propriétaires de sites web de gérer l'accès à leur contenu pour ces trois scénarios d'utilisation axés sur l'IA. Nous pensons que les exploitants de bots devraient distinguer leurs bots d'exploration, car cette opération permet de générer davantage de transparence pour les propriétaires de sites web. Ces derniers peuvent ensuite mieux comprendre pour quelles raisons un bot donné se rend sur son site et dès lors mieux gérer l'accès qu'ils accordent à ce bot d'exploration. Nous encourageons fortement les entreprises à diviser leur processus d'automatisation en trois bots d'exploration distincts si ce dernier a pour tâche de construire des index de <b>recherche</b>, d'agir comme un <b>agent</b> et de collecter des données pour <b>entraîner</b> les modèles.</p>
+	<p>Nous souhaitons mettre en place un système de classification évolutif et représentatif de l'univers du trafic automatisé vers lequel il tend. Suivre les objectifs d'un bot n'est pas nouveau, mais notre nouvelle taxonomie inclut quelques mises à jour qui représentent mieux l'état actuel du trafic des bots. Nous souhaitons plus particulièrement reconnaître que les bots qui présentent plusieurs finalités doivent être suivis pour l'ensemble de ces dernières, et non pour une seule.</p>
+	<div class="flex anchor relative">
+		<h3 id="new-options-to-manage-ai-traffic">Nouvelles options de gestion du trafic lié à l'IA</h3>
+		<a href="https://blog.cloudflare.com/#new-options-to-manage-ai-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Nous souhaitons offrir davantage d'options de gestion des différents types de trafic IA à </b><b><i>tous</i></b><b> les propriétaires de sites web sur le réseau Cloudflare.</b></p>
+	<p>Le préréglage géré pour «&nbsp;Bloquer les bots IA&nbsp;» que nous avons annoncé par le passé incluait les bots à but unique qui exploraient les données à des fins d'entraînement des modèles, comme indiqué ci-dessous&nbsp;:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XlnMWyLXLpLgWLP7hgRGP/d01b9b60c513a7904558fdc674fb74b3/BLOG-3337_2.png" alt="BLOG-3337 2" class="kg-image" width="852" height="612" loading="lazy">
+	</figure>
+	<p><i><sup>Capture d'écran du paramètre existant de gestion du trafic lié aux bots IA le 1er&nbsp;juillet&nbsp;2025.</sup></i></p>
+	<p>L'IA n'est toutefois pas toujours utilisée de la même manière et nous souhaitons que nos clients disposent des mesures de contrôle dont ils ont besoin. Nous lançons donc la possibilité de <b>gérer le trafic IA en fonction de </b><i><b>trois</b></i><b> scénarios d'utilisation majeurs&nbsp;: la recherche (Search), les agents (Agents) et l'entraînement (Training)</b>. Grâce à ces nouvelles options, nos clients peuvent affiner la gestion du trafic lié aux bots, notamment les utilisateurs de notre offre gratuite.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ffejfK0AQNX7vPro0cwhK/7cc9eafa05975001fa2f614a725aeb7f/BLOG-3337_3.png" alt="BLOG-3337 3" class="kg-image" width="1999" height="1209" loading="lazy">
+	</figure>
+	<p><i><sup>Capture d'écran des nouvelles options de gestion du trafic lié aux bots IA le 1er&nbsp;juillet&nbsp;2026.</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="setting-new-defaults">Définir de nouveaux paramètres par défaut</h3>
+		<a href="https://blog.cloudflare.com/#setting-new-defaults" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Le 15&nbsp;septembre&nbsp;2026, nous définirons de nouveaux paramètres par défaut</b> <b>pour chacune de ces trois classifications.</b> Pour tous les nouveaux domaines qui intègrent le réseau Cloudflare, les catégories <b>Entraînement</b> et <b>Agent</b> seront bloquées par défaut <b>sur les pages qui affichent des publicités, </b>tandis que la classe <b>Recherche</b> restera autorisée par défaut.&nbsp;</p>
+	<p>Une publicité est un signal qu'un propriétaire de site web a mis en place dans l'intention qu'un utilisateur accède à une page et voie la publicité, c'est-à-dire un élément monétisable conçu pour soutenir l'entreprise. Nous considérons donc l'attention humaine comme la finalité ultime sur ces pages et écartons les bots qui pourraient empêcher l'établissement de cette attention (c'est-à-dire les bots d'entraînement et les bots agents). D'autre part, la recherche constitue le comportement qui attire le plus naturellement les visiteurs et nous pensons qu'il va dans l'intérêt de la plupart des propriétaires de sites d'autoriser ce type d'activité.</p>
+	<p>Autre changement qui s'appliquera le 15&nbsp;septembre&nbsp;: les bots d'exploration polyvalents (notamment ceux qui combinent recherche et entraînement) seront autorisés/bloqués en vertu de <i>l'ensemble</i> de leurs comportements, conformément à notre appel à davantage de transparence pour les propriétaires de sites web. Comme l'application des paramètres par défaut s'effectuera en fonction des règles les plus restrictives, les bots polyvalents (p. ex. Googlebot, Applebot et BingBot) seront bloqués par les clients qui ont choisi de bloquer l'activité d'entraînement (soit par l'intermédiaire des nouvelles options de <a href="https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots" target="_blank" rel="noopener noreferrer"><u>gestion du trafic lié à IA</u></a>, soit par le biais du service existant de blocage des bots IA).</p>
+	<p>Bien entendu, le choix du client demeure primordial&nbsp;: si un propriétaire de site web souhaite se désinscrire de ces nouvelles configurations par défaut, il peut <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>facilement le mentionner dans ses paramètres de sécurité</u></a> à tout moment avant le 15&nbsp;septembre. Il confirmera dès lors qu'il ne souhaite <i>aucun changement</i> s'appliquer aux bots d'entraînement qui explorent également le contenu à des fins de recherche. Nous continuerons également à informer les clients de la modification à venir des paramètres par défaut à l'approche du 15&nbsp;septembre afin de nous assurer que les clients qui souhaitent choisir des paramètres différents de ceux par défaut puissent le faire.</p>
+	<div class="flex anchor relative">
+		<h3 id="botbase-a-new-visibility-plane-for-enterprise-customers">BotBase&nbsp;: un nouveau plan de visibilité pour les clients Enterprise</h3>
+		<a href="https://blog.cloudflare.com/#botbase-a-new-visibility-plane-for-enterprise-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous nous réjouissons également de lancer une mise à jour majeure de la visibilité sous forme d'une nouvelle fonctionnalité de niveau Enterprise pour la gestion des bots. Plus le répertoire de bots suivis par Cloudflare s'est élargi, plus le désir de gérer ces bots en fonction de groupes logiques et de comprendre plus en détail un bot particulier a également augmenté.&nbsp;</p>
+	<p>Nous vous présentons dès lors <a href="https://developers.cloudflare.com/bots/botbase" target="_blank" rel="noopener noreferrer"><u><b>BotBase</b></u></a>,notre nouvelle base de données qui répertorie l'ensemble des bots connus, y compris les bots et les agents vérifiés. Cette base de données assure une vue d'ensemble complète et consultable sur l'intégralité de notre répertoire de bots, directement sur le tableau de bord Cloudflare. Nous nous attaquons à la <i>visibilité</i> en premier lieu, mais nous étendrons BotBase plus tard cette année afin de vous proposer un centre de contrôle direct du contenu automatisé connu sur votre site web.</p>
+	<p>Grâce à cette nouvelle vue, les clients de niveau Enterprise de notre solution Bot Management peuvent consulter le catalogue complet de tous les bots/agents vérifiés et leur classification dans cette taxonomie mise à jour. Ils bénéficient dès lors d'une visibilité que nous n'avons jamais affichée de manière dynamique sur le tableau de bord Cloudflare auparavant. Les clients qui souhaitent cibler un bot spécifique avec précision peuvent aussi facilement filtrer l'ensemble du trafic issu de ce bot, et copier l'ID de détection à utiliser dans les règles de sécurité. Toutes ces fonctions sont désormais disponibles sur une page dédiée, elle-même accessible par l'intermédiaire de la <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%2Fbot-traffic%2Fbot-base" target="_blank" rel="noopener noreferrer"><u>carte de configuration de la solution Bot Management</u></a>.&nbsp;</p>
+	<p>En développant BotBase, nous souhaitions prendre en compte toutes les informations permettant de produire des informations puissantes et évolutives d'un bot à l'autre. L'un de ces éléments constitue une pierre angulaire de notre taxonomie mise à jour, <b>basée sur ce qu'un bot peut faire sur votre site, c'est-à-dire son comportement.</b> Nous distinguons ces différentes classes comme indiqué ci-dessous et chaque bot est classé selon un ou plusieurs de ces comportements.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Classe du bot</b></p>
+				</td>
+				<td>
+					<p><b>Comportements et usages</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i><b>Recherche</b></i></p>
+				</td>
+				<td>
+					<p><i><b>Exploration à des fins d'analyse de votre site afin d'aider ce dernier à apparaître dans les résultats des moteurs de recherche</b></i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i><b>Agent</b></i></p>
+				</td>
+				<td>
+					<p><i><b>Agents dirigés par l'utilisateur visitant une page pour le compte d'un humain</b></i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><i><b>Formation</b></i></p>
+				</td>
+				<td>
+					<p><i><b>Exploration à des fins d'entraînement ou d'affinage des modèles</b></i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Transaction</p>
+				</td>
+				<td>
+					<p>Actions de paiement effectuées pour le compte des utilisateurs</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Collecte de données</p>
+				</td>
+				<td>
+					<p>Inclut l'extraction des prix, la collecte d'informations sur la concurrence et les analyses tierces</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Tests de sécurité</p>
+				</td>
+				<td>
+					<p>Inclut la recherche de vulnérabilités et les tests de pénétration</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Référencement</p>
+				</td>
+				<td>
+					<p>Exploration à des fins de SEO, d'audit de site et de vérification de l'accessibilité</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vérification des publicités</p>
+				</td>
+				<td>
+					<p>Vérification de la position des annonces, détection de la fraude publicitaire</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Aperçu pour les liens/réseaux sociaux</p>
+				</td>
+				<td>
+					<p>Aperçus des liens pour les plateformes de réseaux sociaux et les applications de messagerie</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Extraction de flux</p>
+				</td>
+				<td>
+					<p>Inclut les lecteurs RSS, les agrégateurs de podcasts et les bots de flux d'actualités</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Surveillance et opérations</p>
+				</td>
+				<td>
+					<p>Inclut la surveillance de la disponibilité, les webhooks et les contrôles d'intégrité</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i><sup>Les lignes en gras et en italique indiquent les nouvelles options configurables disponibles pour l'ensemble de nos clients.</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-a-crawler-use-my-content">Comment un bot d'exploration utilise-t-il mon contenu&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-a-crawler-use-my-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un autre élément d'information dont nous avons entendu dire par nos clients qu'il était important pour eux est l'utilisation du contenu par un bot<b>, c'est-à-dire ce qu'un bot peut conserver et repartager après avoir exploré votre contenu.</b> Pour aborder cette question, nous développons des capacités conçues pour que les clients de notre service Bot Management puissent sélectionner et bloquer ce qu'ils souhaitent en fonction de «&nbsp;l'utilisation du contenu&nbsp;». Ce paramètre peut être défini selon trois niveaux, du moins permissif au plus permissif&nbsp;:</p>
+	<ul>
+		<li>
+			<p><code>immediate</code> (immédiate)&nbsp;: interaction, mais sans stockage ni réutilisation</p>
+		</li>
+		<li>
+			<p><code>reference</code> (référence, par défaut)&nbsp;: indexation, créations d'extraits et de liens retour</p>
+		</li>
+		<li>
+			<p><code>full</code> (complète)&nbsp;: synthèse et reproduction</p>
+		</li>
+	</ul>
+	<p>Ces valeurs peuvent être combinées aux classes de bots pour exprimer des règles plus nuancées, comme «&nbsp;autoriser tous les bots utilisés à des fins de <b>recherche</b>, de <b>SEO</b> et de <b>vérification des publicités</b>, mais uniquement jusqu'au niveau d'utilisation <code>référence</code>.&nbsp;» Cette possibilité permet aux propriétaires de sites web de prendre des décisions par groupes homogènes plutôt que de gérer les règles bot par bot<b>.</b></p>
+	<p>Pour aller plus loin dans ce sens, nous testons un nouveau signal (<code>use</code>) à partir d'aujourd'hui. Ce dernier étend les <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>signaux de contenu</u></a> (Content Signals) et réside dans votre fichier robots.txt. Cet ajout étend les trois champs de la première version des signaux de contenu par un quatrième champ facultatif qui exprime la même préférence que ci-dessus&nbsp;:</p>
+	<ul>
+		<li>
+			<p><code>use=immediate</code></p>
+		</li>
+		<li>
+			<p><code>use=reference</code></p>
+		</li>
+		<li>
+			<p><code>use=full</code></p>
+		</li>
+	</ul>
+	<p>Comme pour tous les autres éléments listés dans le fichier robots.txt, les valeurs de contenu signalent la <i>préférence</i> du propriétaire du site web plutôt que de procéder directement au blocage. Nous ajoutons aujourd'hui la prise en charge de cette extension&nbsp;: tous les clients qui ont déjà activé le fichier géré robots.txt (qui précise ci-dessous que l'exploration est autorisée pour la recherche, mais pas pour l'entraînement) verront désormais la préférence supplémentaire <code>use=reference</code> ajoutée à leur fichier robots.txt.</p>
+	<pre class="language-javascript"><code class="language-javascript"># Cloudflare Managed content with original Content Signals
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no
+Allow: /</code></pre>
+	<p><i><sup>Le contenu du fichier robots.txt géré par Cloudflare, avec les valeurs originales des signaux de contenu. </sup></i></p>
+	<pre class="language-Typescript"><code class="language-Typescript"># Cloudflare Managed content with the new content-use signal
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no,use=reference
+Allow: /</code></pre>
+	<p><i><sup>Le contenu du fichier robots.txt géré par Cloudflare avec le paramètre ajouté.</sup></i></p>
+	<p>Nous commençons aussi à suivre l'utilisation du contenu pour chaque bot dans BotBase. Le bot perdra le statut «&nbsp;Vérifié&nbsp;» lorsque nous découvrons qu'il abuse de ces signaux, ce qui entraînera son interdiction. Les bots qui reproduisent intégralement le contenu ne peuvent pas avoir le statut Vérifié à l'heure actuelle.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-does-it-mean-for-a-bot-to-be-verified">Qu'est-ce que le statut Vérifié signifie pour un bot&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#what-does-it-mean-for-a-bot-to-be-verified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En ce qui concerne le statut «&nbsp;Vérifié&nbsp;», la définition de la <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>vérification</u></a> est mise à jour pour refléter les prochains changements comparés aux critères par défaut Autoriser et Bloquer. Auparavant, <i>tous</i> les bots vérifiés étaient autorisés par défaut. Cette situation était reflétée dans notre offre de base <a href="https://developers.cloudflare.com/bots/get-started/bot-fight-mode" target="_blank" rel="noopener noreferrer"><u>Bot Fight Mode</u></a> afin de bloquer le trafic automatisé indésirable et dans nos modèles de règles pour les clients Enterprise du service Bot Management.&nbsp;</p>
+	<p>À compter d'aujourd'hui, nous ajustons ce mode de fonctionnement afin d'ajouter de la nuance&nbsp;: les bots non vérifiés demeurent par défaut bloqués, mais nous ne considérons plus les bots vérifiés comme «&nbsp;autorisés par défaut&nbsp;». L'étiquette «&nbsp;Vérifié&nbsp;» permet désormais à un bot d'être autorisé en fonction de sa catégorie pertinente, c'est-à-dire que la <i>catégorie autorisée</i> (p. ex., autoriser l'activité Recherche) déterminera quels bots sont autorisés à accéder à un site web.</p>
+	<p>Pour équilibrer ce changement, nous ouvrons le processus visant à permettre à un bot d'obtenir le statut Vérifié et le rendons également plus transparent. Pour «&nbsp;vérifier&nbsp;» un bot, l'entité qui exploite ce dernier doit démontrer deux choses&nbsp;: que le bot se présente de manière honnête <i>et</i> qu'il n'abuse pas de l'accès que cette honnêteté lui confère. Enfin, nous développons actuellement des outils de gestion pour faciliter la tâche aux exploitants de bots et leur permettre d'assurer une représentation précise au sein du système de classification Cloudflare (à annoncer prochainement).&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QMZhQvcXGxpLnazN2qwgW/d00f7e8176e8471fa94725379737259b/BLOG-3337_4.png" alt="BLOG-3337 4" class="kg-image" width="1999" height="1080" loading="lazy">
+	</figure>
+	<p><i><sup>Une capture d'écran de la plateforme à venir, conçue directement pour les exploitants de bots qui font partie ou souhaitent faire partie de BotBase, la nouvelle génération de l'annuaire des bots Cloudflare.</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="experimenting-with-transitive-trust">Expérimenter la confiance transitive</h3>
+		<a href="https://blog.cloudflare.com/#experimenting-with-transitive-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Autre élément de l'équation&nbsp;: le bot (ou l'agent) à votre porte n'est de plus en plus souvent pas géré par l'entreprise qui l'a développé. Une plateforme comme la Cloudflare Developer Platform exécute des automatisations pour des milliers d'exploitants différents en même temps, qui vont des entreprises aux développeurs dont vous n'avez jamais entendu parler. Vous pouvez faire confiance à Stripe, mais vous n'avez pas nécessairement à faire confiance à tous les utilisateurs qui ont intégré les outils Stripe à un projet personnel (weekend project).</p>
+	<p>Nous considérons le scénario «&nbsp;propriétaire de site → entreprise détentrice du bot → utilisateur final&nbsp;» comme une question de <b>confiance transitive</b> et proposons d'utiliser l'en-tête Forwarded (Transféré) existant, tel que défini dans la <a href="https://www.rfc-editor.org/info/rfc7239" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;7239</u></a>. Cet en-tête accompagne la requête et permet aux «&nbsp;composants proxy de divulguer des informations perdues dans le processus de mise en proxy&nbsp;».&nbsp;</p>
+	<p>Il se révèle similaire à ce qu'effectue l'en-tête <code>X-Forwarded-For</code> pour les adresses IP ou l'en-tête <code>X-Forwarded-Host</code> pour préserver l'en-tête Host original. Ainsi, lorsque le propriétaire d'un site web déclare «&nbsp;Autoriser cet exploitant&nbsp;», la préférence restera en place, que l'entité exploitante vienne directement à vous ou par l'intermédiaire de trois couches d'intermédiaires de confiance. Vous trouverez davantage de détails dans <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>notre documentation</u></a>, avec un bref exemple de présentation du format ci-dessous.</p>
+	<p><code>Forwarded: for="openai"</code></p>
+	<p>En ajoutant l'extension comportant le paramètre «&nbsp;content-use&nbsp;» dont nous avons discuté ci-dessus, l'ajout de l'en-tête précisant la manière dont l'entité exploitante indique qu'elle utilisera le contenu auquel elle accède ressemblerait à ce qui suit&nbsp;:</p>
+	<p><code>Forwarded: for="openai";use="reference"</code></p>
+	<p>Cette approche aligne également le modèle incitatif que nous souhaitons encourager. Le fait de perdre le statut «&nbsp;de confiance&nbsp;» sur plus de 20&nbsp;% des domaines web situés derrière Cloudflare constitue un puissant moyen de dissuasion. La confiance devient une qualité qui peut vous accompagner et que vous pouvez perdre.</p>
+	<p>Toutefois, à l'heure où le <a href="https://blog.cloudflare.com/past-bots-and-humans"><u>trafic lié aux bots se mêle au trafic d'origine humaine</u></a>, il est possible que ce système de confiance transitive ne s'étende pas au-delà des utilisateurs qui peuvent se permettre d'être identifiables. Les mesures que nous proposons aujourd'hui aident à instaurer cette confiance, mais elles ne conviendront pas toujours à l'ensemble du web. Les petites sources de trafic <a href="https://blog.cloudflare.com/internet-privacy"><u>ont besoin de confidentialité</u></a>, et les entreprises qui souhaitent préserver leurs engagements en matière de respect de la vie privée doivent avoir la possibilité d'explorer des éléments constitutifs équitables pour l'avenir d'un Internet agentique, comme <a href="https://blog.cloudflare.com/private-rate-limiting"><u>le contrôle du volume des requêtes</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="set-your-terms-today">Fixez vos conditions dès aujourd'hui</h3>
+		<a href="https://blog.cloudflare.com/#set-your-terms-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il s'agit là de petits changements qui vont dans la même direction&nbsp;: permettre aux propriétaires de sites d'obtenir davantage de contrôle sur qui utilise leur contenu et de quelle manière. Nous pensons que les nouveaux paramètres par défaut dont nous avons discuté aujourd'hui et que nous allons bientôt mettre en œuvre encouragent la transparence et reflètent davantage la direction que prend le monde.</p>
+	<p>Bien entendu, les fluctuations d'Internet continueront de survenir sous nos yeux et nous devrons nous adapter constamment. Mais la direction générale ne changera pas, car il s'agit toujours de celle avec laquelle Cloudflare a commencé&nbsp;: un écosystème web bâti autour de la confiance. Un écosystème au sein duquel les créateurs peuvent décider de la manière dont leurs créations sont utilisées et dans lequel faire preuve d'honnêteté sur ses intentions permet de disposer de davantage d'accès, pas d'un accès réduit.</p>
+	<p>Ces nouvelles options de gestion du trafic lié à l'IA sont désormais disponibles et peuvent être configurées par tous les clients existants dans leurs <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>paramètres de zone</u></a>. Votre site n'est pas encore sur Cloudflare&nbsp;? <a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>Souscrivez à notre offre gratuite</u></a> et définissez les mesures de contrôle du trafic que vous souhaitez dès aujourd'hui.</p>
+	<p>Bonne Journée de l'indépendance du contenu.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbGT0BkPYbCvRni7qscHD/b6c935d685738b14a16493b73fb0e650/BLOG-3337_5.png" alt="BLOG-3337 5" class="kg-image" width="1999" height="500" loading="lazy">
+	</figure>
+	<p></p>
+</div>

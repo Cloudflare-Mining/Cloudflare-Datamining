@@ -1,0 +1,85 @@
+<div class="mb2 gray5">Lesezeit: 2&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/supercharging-firewall-events-for-self-serve">English</a>, <a href="https://blog.cloudflare.com/fr-fr/supercharging-firewall-events-for-self-serve">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/supercharging-firewall-events-for-self-serve">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/supercharging-firewall-events-for-self-serve">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AG5dfPUOAhHuw1oqKbMV0/00cb8efac637feaeb2770eb88e96b506/supercharging-firewall-events-for-self-serve.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ich freue mich sehr, heute das Release unseres Firewall-Ereignisprotokolls in einer komplett überarbeiteten Fassung für Kunden mit kostenlosem, Pro- oder Business-Tarif bekannt geben zu können. Sie finden das neue Firewall Events jetzt in Ihrem Dashboard – Sie müssen nichts weiter dafür tun.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/141jSRK1fTPux3n04DH7ud/0dcd81e892295258abd387fcfa4fbb61/image1-6.png" alt="" class="kg-image" width="1999" height="1315" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="no-more-modals"><b>Keine modalen Fenster mehr!</b></h2>
+		<a href="https://blog.cloudflare.com/#no-more-modals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Modale Fenster sind lästig, deshalb haben wir sie abgeschafft. Die Abläufe sind dadurch viel flüssiger. Wenn Sie Genaueres zu einem Ereignis wissen möchten, klicken Sie einfach irgendwo auf die Zeile in der Ereignisliste.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VRogojtxjTNxa5Xjo5UBK/6611c2560fd3b102c69f33a42a3de1f2/image4-3.png" alt="" class="kg-image" width="1999" height="866" loading="lazy">
+
+	</figure>
+	<p>In der erweiterten Ansicht finden Sie alle notwendigen Informationen zur Erkennung und Diagnose von Firewall-Problemen sowie weitere Angaben zu möglichen Bedrohungen für Ihre Anwendung.</p>
+	<div class="flex anchor relative">
+		<h2 id="additional-matches-per-event"><b>Weitere Übereinstimmungen pro Ereignis</b></h2>
+		<a href="https://blog.cloudflare.com/#additional-matches-per-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare bietet verschiedene Firewall-Funktionen, mit denen unsere Kunden ihre Sicherheit noch detaillierter steuern können. Durch diese Steuermöglichkeiten wird es etwas komplizierter, herauszufinden, warum eine Anfrage von der Firewall aufgehalten wurde. Um das zu klären, haben wir unten einen Zähler „Weitere Übereinstimmungen“ eingebaut. Dort können Sie sehen, ob für dieselbe Anfrage mehrere Dienste oder Regeln ausgelöst wurden. Wenn Sie auf die Zahl klicken, wird eine Liste mit allen Regeln und Diensten und den entsprechenden Aktionen eingeblendet.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fqalGyuTVZGq4sEX8Dtl8/cf7278c59f4e83c748083ffadc512a9c/image5.png" alt="" class="kg-image" width="1999" height="1440" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="search-for-any-field-within-a-firewall-event"><b>Suche nach einem beliebigen Feld in einem Firewall-Ereignis</b></h2>
+		<a href="https://blog.cloudflare.com/#search-for-any-field-within-a-firewall-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dieser Punkt gefällt mir an unserem neuen Firewall-Ereignisprotokoll besonders. Von vielen Kunden haben wir gehört, dass es schwierig für sie ist, bestimmte Ereignisse zu lokalisieren. Dabei helfen nun unsere neuen Suchfunktionen. Es gibt jetzt Filter und Freitextsuche für jedes sichtbare Feld eines Firewall-Ereignisses!</p>
+	<p>Angenommen, Sie möchten alle Anfragen finden, die von einem bestimmten ISP oder aus einem bestimmten Land stammen und bei denen Ihre Firewall-Regeln eine JavaScript-Challenge ausgegeben haben. In der Benutzeroberfläche gibt es hierfür zwei verschiedene Möglichkeiten.</p>
+	<p>Erstens können Sie in der Detailansicht einen <i>einschließenden</i> oder <i>ausschließenden</i> Filter für diesen Feldwert erstellen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xIXJmuiiwnn8xlida4IaN/0af3214cc4f4b70b265f7d84a541a1a8/image6.gif" alt="" class="kg-image" width="1024" height="898" loading="lazy">
+
+	</figure>
+	<p>Zweitens können Sie mit der Schaltfläche „+ Filter hinzufügen“ oben einen Freitextfilter erstellen oder ein bereits gefiltertes Feld bearbeiten:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xg5KWxcCmxUCyRrNsw6dp/9e43274178c59c966ce32dfad233cdd0/image2.gif" alt="" class="kg-image" width="1030" height="484" loading="lazy">
+
+	</figure>
+	<p>Wie oben dargestellt, können wir, wenn die verwalteten Regeln unserer WAF nur im Protokoll aktiviert sind, alle Regeln sehen, die ausgelöst worden wären, wenn dies ein echter Angriff gewesen wäre. So können Sie sich vergewissern, dass Ihre Konfiguration wie erwartet funktioniert.</p>
+	<div class="flex anchor relative">
+		<h2 id="scoping-your-search-to-a-specific-date-and-time"><b>Ihre Suche auf ein bestimmtes Datum und eine bestimmte Uhrzeit einschränken</b></h2>
+		<a href="https://blog.cloudflare.com/#scoping-your-search-to-a-specific-date-and-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In unserem alten Firewall-Ereignisprotokoll mussten die Anwender viele Seiten durchforsten, um Ereignisse eines bestimmten Datums zu finden. Als letzte wichtige Änderung haben wir deshalb die Möglichkeit geschaffen, ein Zeitfenster auszuwählen, um Ereignisse in einem Zeitintervall in den letzten zwei Wochen aufzurufen. Im Zeitauswahlfenster können Kunden mit kostenlosen und Pro-Tarifen ein 24-Stunden-Zeitfenster einstellen, unsere Business-Kunden können bis zu 72 Stunden sehen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tHEAR3fymBerYnU86FSsk/4424d791d85ecaede8c05cb639c1c326/image3.gif" alt="" class="kg-image" width="1012" height="709" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="we-want-your-feedback"><b>Wir möchten Ihr Feedback!</b></h2>
+		<a href="https://blog.cloudflare.com/#we-want-your-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir brauchen Ihre Hilfe! Bitte schreiben Sie uns Ihre Meinung in unseren <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Community-Foren</a> oder erstellen Sie bei Problemen ein Support-Ticket. Ihr Feedback ist für unseren Produktverbesserungsprozess von entscheidender Bedeutung, und wir freuen uns schon auf Ihren Beitrag.</p>
+</div>

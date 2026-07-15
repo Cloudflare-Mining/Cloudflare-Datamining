@@ -1,0 +1,524 @@
+<div class="mb2 gray5">12 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/response-to-salesloft-drift-incident">English</a>, <a href="https://blog.cloudflare.com/zh-tw/response-to-salesloft-drift-incident">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/response-to-salesloft-drift-incident">Français</a>, <a href="https://blog.cloudflare.com/de-de/response-to-salesloft-drift-incident">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/response-to-salesloft-drift-incident">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/response-to-salesloft-drift-incident">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/response-to-salesloft-drift-incident">Português</a>, <a href="https://blog.cloudflare.com/ar-ar/response-to-salesloft-drift-incident">العربية</a> y <a href="https://blog.cloudflare.com/zh-cn/response-to-salesloft-drift-incident">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rKtvEmWU565hWMRaBS4jk/baef0b50ebd25cc46e121452accade1d/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>La semana pasada, Cloudflare fue notificado de que nosotros (y nuestros clientes) estamos afectados por la brecha de seguridad de Salesloft Drift. Debido a esta vulnerabilidad, alguien ajeno a Cloudflare obtuvo acceso a nuestra instancia de Salesforce, que utilizamos para la atención al cliente y la gestión de casos de clientes internos, y algunos de los datos que contiene. La mayor parte de esta información es información de contacto del cliente y datos básicos del caso de soporte, pero algunas interacciones de soporte al cliente pueden revelar información sobre la configuración del cliente y podrían contener información sensible como tokens de acceso. Dado que los datos de casos de soporte de Salesforce contienen la información de los tickets de soporte con Cloudflare, cualquier información que un cliente haya compartido con Cloudflare en nuestro sistema de soporte —incluidos registros, tokens o contraseñas— debe considerarse comprometida, y le recomendamos encarecidamente que rote cualquier credencial que haya compartido con nosotros a través de este canal. </p>
+	<p>Como parte de nuestra respuesta a este incidente, realizamos nuestra propia búsqueda en los datos comprometidos para encontrar tokens o contraseñas y hallamos 104 tokens de API de Cloudflare. No hemos identificado ninguna actividad sospechosa asociada con esos tokens, pero todos ellos se han rotado por precaución extrema. Cloudflare ha informado de manera directa a todos los clientes cuyos datos fueron comprometidos en este ataque.</p>
+	<p>Ningún servicio ni infraestructura de Cloudflare se vio comprometida como resultado de esta violación.</p>
+	<p>Somos responsables de la elección de las herramientas que utilizamos como soporte de nuestro negocio. Esta violación ha decepcionado a nuestros clientes. Por eso, pedimos sinceras disculpas. El resto de este blog proporciona una cronología detallada e información exhaustiva sobre cómo investigamos este incidente.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-salesloft-drift-breach">La filtración de Salesloft Drift</h2>
+		<a href="https://blog.cloudflare.com/#the-salesloft-drift-breach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La semana pasada, Cloudflare detectó actividad sospechosa en nuestro entorno de Salesforce y descubrió que nosotros, junto con cientos de otras empresas, nos habíamos convertido en el objetivo de un atacante que logró exfiltrar con éxito los campos de texto de los casos de soporte de la instancia de Salesforce. Nuestro equipo de seguridad comenzó una investigación de forma inmediata, cortó el acceso del atacante y tomó una serie de medidas, que se detallan a continuación, para asegurar nuestro entorno. Estamos escribiendo este blog para brindar detalles de lo que sucedió, cómo respondimos y cómo protegerse de este incidente para ayudar a nuestros clientes y a otros a comprender este incidente.</p>
+	<p>Cloudflare utiliza Salesforce para llevar un registro de quiénes son nuestros clientes y cómo utilizan nuestros servicios, y lo empleamos como herramienta de soporte para interactuar con ellos. Un detalle importante que se debe entender como parte de este incidente es que el atacante solo accedió a los datos en los “casos” de Salesforce, que pueden crearse cuando los miembros de los equipos de ventas y soporte de Cloudflare necesitan comentar entre sí de forma interna para brindar soporte a nuestros clientes; también se crean cuando los clientes interactúan con el soporte de Cloudflare. Salesforce tenía una integración con el bot de chat Salesloft Drift, que Cloudflare utilizó para brindar a cualquier persona que visitara nuestro sitio web una forma de contactarnos.</p>
+	<p>Como <a href="https://trust.salesloft.com/?uid=Drift%2FSalesforce+Security+Update" target="_blank" rel="noopener noreferrer"><u>anunció</u></a> Salesloft, un ciberdelincuente ha vulnerado sus sistemas. Como parte de la violación, el atacante pudo obtener credenciales OAuth asociadas con la integración de Salesforce del agente de chat de Salesloft Drift para exfiltrar datos de las instancias de Salesforce de los clientes de Salesloft. Nuestra investigación reveló que esto era parte de un sofisticado ataque a la cadena de suministro dirigido a integraciones de terceros entre empresas, y afectó a cientos de organizaciones a nivel mundial que eran clientes de Salesloft. <a href="https://www.cloudflare.com/en-au/application-services/products/cloudforceone" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a>—el equipo de inteligencia e investigación de amenazas de Cloudflare— ha clasificado al ciberdelincuente de amenazas avanzadas como <b>GRUB1</b>. Divulgaciones adicionales del <a href="https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift" target="_blank" rel="noopener noreferrer"><u>grupo de información sobre amenazas de Google</u> </a>alineadas con la actividad que observamos en nuestro entorno.</p>
+	<p>Nuestra investigación mostró que el atacante comprometió y exfiltró datos de nuestro usuario de Salesforce entre el 12 y el 17 de agosto de 2025, tras el reconocimiento inicial observado el 9 de agosto de 2025. Un análisis detallado confirmó que la exposición se limitó a los objetos de caso de Salesforce, que consisten principalmente en tickets de soporte al cliente y sus datos asociados dentro de nuestro entorno de Salesforce. Estos objetos de caso contienen información de contacto del cliente relacionada con el caso de soporte, el asunto del caso y el cuerpo de la correspondencia del caso, pero <i>no</i> archivos adjuntos a los casos. Cloudflare no solicita ni requiere a los clientes que compartan datos confidenciales, credenciales o claves API en casos de soporte. Sin embargo, en algunos escenarios de resolución de problemas, los clientes pueden pegar claves, registros u otra información sensible en los campos de texto del caso. Toda la información que se compartió a través de este canal ahora debe considerarse comprometida.</p>
+	<p>Creemos que este incidente no fue un hecho aislado, sino que el atacante pretendía recolectar credenciales e información de clientes para futuros ataques. Dado que cientos de organizaciones se vieron afectadas por este compromiso de Drift, sospechamos que el atacante utilizará esta información para lanzar ataques dirigidos contra clientes de las organizaciones afectadas.&nbsp;</p>
+	<p>Esta publicación proporciona una cronología del ataque, detalla nuestra respuesta y ofrece recomendaciones de seguridad para ayudar a otras organizaciones a mitigar amenazas similares.</p>
+	<p><i>A lo largo de esta publicación del blog, todas las fechas y horas están en UTC.</i></p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-response-and-remediation">Respuesta y solución de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-response-and-remediation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando Salesforce y Salesloft nos notificaron el 23 de agosto de 2025 que la integración de Drift en varias organizaciones había sido atacada, incluida Cloudflare, iniciamos de inmediato una respuesta a incidentes de seguridad en toda la empresa. Activamos equipos interdisciplinarios, reunimos a expertos de Seguridad, TI, Producto, Legal, Comunicaciones y liderazgo empresarial bajo una única estructura de comando de incidentes unificada.</p>
+	<p>Establecimos cuatro flujos de trabajo prioritarios claros con el objetivo de proteger a nuestros clientes y a Cloudflare:</p>
+	<ol>
+		<li>
+			<p><b>Contención inmediata de amenazas:</b> Cortamos el acceso de todos los atacantes al deshabilitar la integración comprometida de Drift, realizamos análisis forenses para comprender el alcance del compromiso y eliminamos la amenaza activa de nuestro entorno.</p>
+		</li>
+		<li>
+			<p><b>Asegurar nuestro ecosistema de terceros</b>: Desconectamos de inmediato todas las integraciones de terceros de Salesforce. Emitimos nuevas claves secretas para todos los servicios e implementamos un nuevo proceso para rotarlas semanalmente.</p>
+		</li>
+		<li>
+			<p><b>Proteger la integridad de nuestros sistemas más amplios</b>: ampliamos la rotación de credenciales a todos nuestros servicios de Internet y cuentas de terceros como medida de precaución para evitar que el atacante use datos comprometidos para acceder a otros sistemas de Cloudflare.</p>
+		</li>
+		<li>
+			<p><b>Análisis de impacto en el cliente:</b> Analizamos los datos de nuestros objetos de casos de Salesforce para identificar si los clientes podrían estar comprometidos y para asegurarnos de que recibieran una comunicación oportuna y precisa sobre una posible exposición.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="attack-timeline-cloudflare-response">Cronología del ataque y respuesta de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#attack-timeline-cloudflare-response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestra investigación forense reconstruyó las actividades del atacante contra Cloudflare, que ocurrieron entre el 9 y el 17 de agosto de 2025. El siguiente es un resumen cronológico de las acciones del atacante, incluido el reconocimiento inicial antes del compromiso inicial.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-9-2025-first-signs-of-reconnaissance">9 de agosto de 2025: Primeros indicios de reconocimiento</h3>
+		<a href="https://blog.cloudflare.com/#august-9-2025-first-signs-of-reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A las <b>11:51</b>, GRUB1 intentó validar un token de API emitido por Cloudflare para la API de Salesforce. El atacante utilizó Trufflehog (un popular escáner de datos confidenciales de código abierto) como su User-Agent y envió una solicitud de verificación a <code>client/v4/user/tokens/verify</code>. La solicitud falló con un <code>404 Not Found</code>, lo que confirma que el token no es válido. El origen de este token de API no está claro; podría haberse obtenido de varias fuentes, incluidos otros clientes de Drift que GRUB1 pudo haber atacado antes de Cloudflare.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="august-12-2025-initial-compromise-of-cloudflare">12 de agosto de 2025: compromiso inicial de Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#august-12-2025-initial-compromise-of-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A las <b>22:14</b>, GRUB1 obtuvo acceso al tenant de Salesforce de Cloudflare utilizando una credencial robada empleada por la integración de Salesloft. Con esta credencial, GRUB1 inició sesión desde la dirección IP <code>44[.]215[.]108[.]109</code> e hizo una solicitud GET a <code>/services/data/v58.0/sobjects/</code> Punto final de la API. Esta acción parecía enumerar todos los objetos en nuestro entorno de Salesforce, proporcionando al atacante una visión general de alto nivel de los datos almacenados allí.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-13-2025-expanding-reconnaissance">13 de agosto de 2025: Expansión del reconocimiento</h3>
+		<a href="https://blog.cloudflare.com/#august-13-2025-expanding-reconnaissance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un día después de la brecha inicial, el atacante GRUB1 lanzó un ataque posterior desde la misma dirección IP, <code>44[.]215[.]108[.]109</code>. A partir de las <b>19:33</b>, el ciberdelincuente robó datos de clientes de los objetos de caso de Salesforce. Primero, volvieron a ejecutar una enumeración de objetos para confirmar la estructura de datos; luego, recuperaron inmediatamente el esquema de los objetos de caso utilizando el punto final <code>/sobjects/Case/describe/</code>. A esto le siguió una consulta amplia de Salesforce que enumeró campos del objeto de caso de Salesforce.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-14-2025-understanding-our-salesforce-environment">14 de agosto de 2025: Comprendiendo nuestro entorno de Salesforce</h3>
+		<a href="https://blog.cloudflare.com/#august-14-2025-understanding-our-salesforce-environment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El atacante GRUB1 dedicó horas a realizar un reconocimiento exhaustivo del inquilino de Salesforce de Cloudflare desde la dirección IP <code>44[.]215[.]108[.]109</code>. Parece que su objetivo era desarrollar una comprensión de nuestro entorno. Durante varias horas, ejecutaron una serie de <a href="https://blog.cloudflare.com/#detailed-event-timeline">consultas dirigidas</a>:</p>
+	<ul>
+		<li>
+			<p><b>00:17 - </b>Midieron la extensión del usuario mediante el conteo de cuentas, contactos y usuarios;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>04:34 - </b>Análisis de flujos de trabajo de casos consultando CaseTeamMemberHistory; y&nbsp;</p>
+		</li>
+		<li>
+			<p><b>11:09 - </b>Confirmaron que estaban en un entorno de producción al identificar el objeto de la Organización.&nbsp;</p>
+		</li>
+	</ul>
+	<p>El atacante completó su reconocimiento con consultas adicionales para entender cómo opera nuestro sistema de soporte al cliente, incluyendo cómo los miembros del equipo manejan diferentes tipos de casos, cómo se asignan y escalan los casos, y cómo funcionan nuestros procesos de soporte. Luego, consultaron el punto final /limits/ para conocer los umbrales operativos de la API. Las consultas ejecutadas por GRUB1 les proporcionaron información sobre su nivel de acceso, el tamaño de los objetos de caso y los límites precisos de la API que debían respetar para evitar Detecciones en nuestro entorno de Salesforce.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-16-2025-preparing-for-the-operation">16 de agosto de 2025: Preparándose para la operación</h3>
+		<a href="https://blog.cloudflare.com/#august-16-2025-preparing-for-the-operation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tras el reconocimiento del 14 de agosto de 2025, no observamos tráfico ni inicios de sesión exitosos del atacante GRUB1 durante casi 48 horas.&nbsp;&nbsp;</p>
+	<p>Regresaron el 16 de agosto de 2025. A las <b>19:26</b>, GRUB1 volvió a iniciar sesión en el usuario de Salesforce de Cloudflare desde la dirección IP <code>44[.]215[.]108[.]109</code> y, a las <b>19:28</b>, ejecutó una única consulta final: <code>SELECT COUNT() FROM Case</code>. Esta acción sirvió como un "ensayo general" final para verificar el tamaño exacto del conjunto de datos que estaban a punto de robar, marcando el final definitivo de la fase de reconocimiento y preparando el escenario para el ataque principal.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="august-17-2025-final-exfiltration-and-coverup">17 de agosto de 2025: Exfiltración final y encubrimiento</h3>
+		<a href="https://blog.cloudflare.com/#august-17-2025-final-exfiltration-and-coverup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GRUB1 inició la fase de exfiltración de datos al cambiar a una nueva infraestructura, iniciando sesión a las <b>11:11:23</b> desde la dirección IP <code>208[.]68[.]36[.]90</code>. Después de realizar una última comprobación del tamaño del objeto de caso, lanzaron un trabajo de Salesforce Bulk API 2.0 a las <b>11:11:56</b>. En poco más de tres minutos, exfiltraron con éxito un conjunto de datos que contenía el texto de los casos de soporte, pero no ningún archivo adjunto ni documento, en nuestra instancia de Salesforce. A las <b>11:15:42</b>, GRUB1 intentó borrar el rastro eliminando el trabajo de la API. Aunque esta acción ocultó la evidencia principal, nuestro equipo logró reconstruir el ataque a partir de los registros residuales.&nbsp;</p>
+	<p>No observamos más actividad de este atacante después del 17 de agosto de 2025.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-20-2025-vendor-action-ahead-of-notification">20 de agosto de 2025: acción del proveedor antes de la notificación</h3>
+		<a href="https://blog.cloudflare.com/#august-20-2025-vendor-action-ahead-of-notification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Salesloft revocó las conexiones de Drift a Salesforce en toda su base de clientes y publicó un aviso en su sitio web. En ese momento, Cloudflare aún no había sido notificado y no teníamos indicios de que esta acción del proveedor pudiera estar relacionada con nuestro entorno.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-23-2025-salesforce-and-salesloft-notifications-to-cloudflare">23 de agosto de 2025: notificaciones de Salesforce y Salesloft a Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#august-23-2025-salesforce-and-salesloft-notifications-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestra respuesta a este incidente comenzó cuando Salesforce y Salesloft nos notificaron sobre una actividad inusual relacionada con Drift.&nbsp; Implementamos rápidamente los pasos de contención recomendados por los proveedores y los involucramos para recopilar información.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="august-25-2025-cloudflare-initiates-response-activity">25 de agosto de 2025: Cloudflare inicia la actividad de respuesta</h3>
+		<a href="https://blog.cloudflare.com/#august-25-2025-cloudflare-initiates-response-activity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para el 25 de agosto, habíamos recibido información adicional sobre el incidente y habíamos escalado nuestra respuesta más allá de los pasos iniciales de contención recomendados por el proveedor. Iniciamos nuestra propia investigación exhaustiva y un esfuerzo de remediación.</p>
+	<p>Nuestra primera prioridad fue quitar el acceso de GRUB1 en la fuente. Deshabilitamos la cuenta de usuario de Drift, revocamos su ID de cliente y sus datos confidenciales, y eliminamos por completo todo el software de Salesloft y las extensiones de navegador de los sistemas de Cloudflare. Esta eliminación integral mitigó el riesgo de que el atacante reutilizara los tokens comprometidos, recuperara el acceso a través de sesiones obsoletas o aprovechara las extensiones de software para mantener la persistencia.
+
+		Ademas, ampliamos nuestra revisión de seguridad para incluir todos los servicios de terceros conectados a nuestro entorno de Salesforce, rotando las credenciales como medida de precaución para prevenir cualquier posible movimiento lateral por parte del atacante.&nbsp;</p>
+	<p>Dado que utilizamos Salesforce como nuestra herramienta principal para gestionar los datos de soporte al cliente, existía el riesgo de que los clientes hayan enviado las contraseñas u otros datos confidenciales en sus solicitudes de servicio al cliente. Necesitábamos comprender qué información sensible tenía ahora el atacante.&nbsp;</p>
+	<p>Nos enfocamos de inmediato en saber si alguno de esos datos podría haberse utilizado para comprometer las cuentas, los sistemas o la infraestructura de nuestros clientes. Examinamos los datos obtenidos por el atacante para ver si contenían credenciales expuestas, ya que los casos incluyen campos de texto de formato libre donde los clientes pueden enviar tokens de la API de Cloudflare, claves o registros a nuestro equipo de soporte. Nuestros equipos desarrollaron herramientas de escaneo personalizadas utilizando técnicas de expresiones regulares, entropía y coincidencia de patrones para detectar posibles datos confidenciales de Cloudflare a escala.&nbsp;</p>
+	<p>Nuestra investigación confirmó que la exposición se limitó estrictamente al texto de formato libre en los objetos de caso de Salesforce, no a los archivos adjuntos ni a otros archivos. Los equipos de ventas y soporte utilizan los casos para comunicarse internamente sobre problemas de atención al cliente y para comunicarse directamente con los clientes. Como resultado, estos objetos de caso contenían datos exclusivamente de texto que consistían en:</p>
+	<ul>
+		<li>
+			<p>El asunto del caso de Salesforce</p>
+		</li>
+		<li>
+			<p>El cuerpo del caso (texto de formato libre que puede incluir cualquier correspondencia, incluidas claves, datos confidenciales, etc., si el cliente la proporciona a Cloudflare)</p>
+		</li>
+		<li>
+			<p>La información de contacto del cliente (por ejemplo, nombre de la empresa, correo electrónico del solicitante, número de teléfono, nombre de dominio de la empresa y el país de la empresa)</p>
+		</li>
+	</ul>
+	<p>Esta conclusión fue validada a través de revisiones exhaustivas de las integraciones, la actividad de autenticación, la telemetría de los puntos finales y los registros de red.</p>
+	<div class="flex anchor relative">
+		<h3 id="august-26-29-2025-scaling-the-response-and-proactive-measures">26–29 de agosto de 2025: Escalamiento de la respuesta y medidas proactivas</h3>
+		<a href="https://blog.cloudflare.com/#august-26-29-2025-scaling-the-response-and-proactive-measures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aunque las credenciales principales de Salesforce y Salesloft ya se habían rotado, nuestro siguiente paso fue terminar y restablecer de manera segura nuestras integraciones de terceros. Comenzamos a reincorporar cuidadosamente los servicios finalizados, asegurándonos de que cada uno fuera provisto de nuevas claves y estuviera sujeto a controles de seguridad más estrictos.</p>
+	<p>Mientras tanto, nuestros equipos continuaron analizando los datos que fueron exfiltrados. Con base en el análisis, clasificamos y validamos las posibles exposiciones, y operamos bajo el principio de que se examinaba cualquier dato que pudiera haber sido expuesto. Esto nos permitió tomar medidas directas al rotar los tokens emitidos por la plataforma de Cloudflare inmediatamente luego de su identificación: en total, se rotaron 104 tokens. No se ha identificado actividad sospechosa alguna relacionada con esos tokens.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="september-2-2025-customers-notified">2 de septiembre de 2025: notificación a los clientes<b>&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#september-2-2025-customers-notified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Según el análisis detallado de Cloudflare, todos los clientes afectados fueron notificados formalmente por correo electrónico y mediante avisos en nuestro panel de control con información sobre el incidente y los pasos recomendados a seguir.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-all-organizations">Recomendaciones para todas las organizaciones</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-all-organizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este incidente resalta la necesidad imperiosa de incrementar la vigilancia en la protección de aplicaciones SaaS y otras integraciones de terceros. Los datos comprometidos de cientos de empresas que fueron objetivo de este ataque podrían ser utilizados para lanzar ataques adicionales. Recomendamos encarecidamente a todas las organizaciones que adopten las siguientes medidas de seguridad:</p>
+	<ul>
+		<li>
+			<p><b>Desconectar Salesloft y sus aplicaciones:</b> desconecta inmediatamente todas las conexiones de Salesloft de tu entorno de Salesforce y desinstala cualquier software relacionado o extensiones de navegador.</p>
+		</li>
+		<li>
+			<p><b>Rotar credenciales:</b> restablece las credenciales para todas las aplicaciones e integraciones de terceros conectadas a tu instancia de Salesforce. Rota cualquier credencial que se haya compartido previamente en un caso de soporte con Cloudflare. Basado en el alcance y la intención de este ataque, también recomendamos rotar todas las credenciales de terceros en su entorno, así como cualquier credencial que pueda haber sido incluida en un caso de soporte con cualquier otro proveedor.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Implementar la rotación frecuente de credenciales:</b> establece un programa regular de rotación para todas las claves API y otros datos confidenciales utilizados en tus integraciones para reducir la ventana de exposición.</p>
+		</li>
+		<li>
+			<p><b>Revisar los datos de los casos de soporte: </b>revisa todos los datos de los casos de soporte al cliente con tus proveedores externos para identificar qué información confidencial puede haber estado expuesta. Busca casos que contengan credenciales, claves API, detalles de configuración u otros datos sensibles que los clientes puedan haber compartido. Para los clientes de Cloudflare específicamente: pueden acceder a su historial de casos de soporte a través del panel de Cloudflare en Soporte &gt; Soporte técnico &gt; Mis actividades, donde pueden filtrar los casos o utilizar la opción "Descargar casos" para realizar una revisión exhaustiva.</p>
+		</li>
+		<li>
+			<p><b>Realizar un análisis forense:</b> <b>&nbsp;</b>revisa los registros de acceso y los permisos de todas las integraciones de terceros, analiza <a href="https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift" target="_blank" rel="noopener noreferrer"><u>la información pública</u></a> asociada con el incidente de Drift y realiza una revisión de seguridad de tu entorno según corresponda.</p>
+		</li>
+		<li>
+			<p><b>Aplicar el principio de privilegio mínimo:</b> audita todas las aplicaciones de terceros para asegurar que operen con el nivel mínimo de acceso necesario para su función y verifica que las cuentas de administrador no se utilicen para los proveedores. Además, aplica controles estrictos como restricciones de dirección IP y vinculación de sesión en todas las conexiones de terceros y B2B (empresa a empresa).</p>
+		</li>
+		<li>
+			<p><b>Mejorar la supervisión y los controles:</b> implementa una supervisión mejorada para detectar anomalías, como grandes exportaciones de datos o inicios de sesión desde ubicaciones desconocidas. Aunque capturar registros de terceros a terceros puede ser complicado, es crucial que estos registros sean parte de los equipos de operaciones de seguridad.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="indicators-of-compromise">Indicadores del riesgo</h2>
+		<a href="https://blog.cloudflare.com/#indicators-of-compromise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A continuación, se presentan los indicadores de compromiso (IOC) que observamos en GRUB1. Las estamos publicando para que otras organizaciones, y especialmente aquellas que puedan haber sido afectadas por la filtración de Salesloft, puedan buscar en sus registros para confirmar que el mismo atacante no accedió a sus sistemas o a los de terceros.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Indicadores</b></p>
+				</th>
+				<th>
+					<p><b>Tipo</b></p>
+				</th>
+				<th>
+					<p><b>Descripción</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>208[.]68[.]36[.]90</p>
+				</td>
+				<td>
+					<p>IPV4</p>
+				</td>
+				<td>
+					<p>Infraestructura basada en DigitalOcean&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>44[.]215[.]108[.]109</p>
+				</td>
+				<td>
+					<p>IPV4</p>
+				</td>
+				<td>
+					<p>Infraestructura basada en AWS&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>TruffleHog</p>
+				</td>
+				<td>
+					<p>Agente de usuario</p>
+				</td>
+				<td>
+					<p>Herramienta de código abierto para escanear datos confidenciales</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Salesforce-Multi-Org-Fetcher/1.0</p>
+				</td>
+				<td>
+					<p>Agente de usuario</p>
+				</td>
+				<td>
+					<p>Cadena de agente de usuario vinculada a herramientas maliciosas</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Salesforce-CLI/1.0</p>
+				</td>
+				<td>
+					<p>Agente de usuario</p>
+				</td>
+				<td>
+					<p>Interfaz de la línea de comandos (CLI) de Salesforce</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Python-requests/2.32.4</p>
+				</td>
+				<td>
+					<p>Agente de usuario</p>
+				</td>
+				<td>
+					<p>El agente de usuario puede indicar un script personalizado&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Python/3.11 aiohttp/3.12.15</p>
+				</td>
+				<td>
+					<p>Agente de usuario</p>
+				</td>
+				<td>
+					<p>Agente de usuario que podría permitir múltiples llamadas API en paralelo</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Conclusión</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Somos responsables de las herramientas que seleccionamos y cuando esas herramientas son comprometidas por ciberdelincuentes sofisticados, asumimos las consecuencias. Nuestro equipo respondió al aviso, y nuestra investigación confirmó que el impacto se limitó estrictamente a los datos en los objetos de caso de Salesforce, sin comprometer otros sistemas o infraestructuras de Cloudflare.</p>
+	<p>Dicho esto, consideramos que el riesgo de <i>cualquier</i> dato es inaceptable. Nuestros clientes confían en Cloudflare para proteger sus datos, su infraestructura y su seguridad. A su vez, algunas veces depositamos nuestra confianza en herramientas de terceros que deben ser monitoreadas y cuidadosamente delimitadas en cuanto a lo que pueden acceder. Somos responsables de esto. Les fallamos a nuestros clientes. Por esto, pedimos sinceras disculpas.</p>
+	<p>A medida que las herramientas de terceros se integran cada vez más con los datos corporativos internos en toda la industria, debemos abordar cada nueva herramienta con un escrutinio minucioso. Este incidente afectó a cientos de organizaciones a través de un único punto de integración, y destacó los riesgos interconectados en el panorama tecnológico actual. Nos comprometemos a desarrollar nuevas capacidades que nos ayuden a nosotros y a nuestros clientes a defendernos de tales ataques en el futuro. Mantente atento/a a los anuncios durante la Semana aniversario de Cloudflare a finales de este mes.</p>
+	<p>También nos comprometemos a compartir información sobre amenazas e investigación con la comunidad de seguridad en general. En las próximas semanas, nuestro equipo de Cloudforce One publicará un blog detallado analizando las tácticas de GRUB1 para apoyar a la comunidad en general en la defensa contra campañas similares.</p>
+	<div class="flex anchor relative">
+		<h2 id="detailed-event-timeline">Cronograma detallado del evento</h2>
+		<a href="https://blog.cloudflare.com/#detailed-event-timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La siguiente tabla proporciona una vista detallada y cronológica de las acciones específicas de GRUB1 durante el incidente.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Fecha y Hora (UTC)</b></p>
+				</th>
+				<th>
+					<p><b>Descripción del evento</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>9 de agosto de 2025, 11:51:13</b></p>
+				</td>
+				<td>
+					<p>GRUB1 observó que aprovechaba Trufflehog e intentaba verificar un token con un usuario de cliente de Cloudflare: <code>client/v4/user/tokens/verify</code>, y recibió un error 404 desde <code>44[.]215[.]108[.]109</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>12 de agosto de 2025 22:14:08</b></p>
+				</td>
+				<td>
+					<p>GRUB1 inició sesión en el usuario Salesforce de Cloudflare desde <code>44[.]215[.]108[.]109</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>12 de agosto de 2025 22:14:09</b></p>
+				</td>
+				<td>
+					<p>GRUB1 envió una solicitud <code>GET</code> para obtener una lista de objetos en el usuario de Salesforce de Cloudflare: <code>/services/data/v58.0/sobjects/</code>.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>13 de agosto de 2025 19:33:02</b></p>
+				</td>
+				<td>
+					<p>GRUB1 inició sesión en el usuario Salesforce de Cloudflare desde <code>44[.]215[.]108[.]109</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>13 de agosto de 2025 19:33:03</b></p>
+				</td>
+				<td>
+					<p>GRUB1 envió una solicitud <code>GET</code> para obtener una lista de objetos en el inquilino de Salesforce de Cloudflare: <code>/services/data/v58.0/sobjects/</code>.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>13 de agosto de 2025 19:33:07 y 19:33:09</b></p>
+				</td>
+				<td>
+					<p>GRUB1 envió una solicitud <code>GET</code> para obtener información de metadatos para el caso en el usuario de Salesforce de Cloudflare: <code>/services/data/v58.0/sobjects/Case/describe/</code>.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>13 de agosto de 2025 19:33:11</b></p>
+				</td>
+				<td>
+					<p>GRUB1 observó por primera vez la ejecución de una consulta de Salesforce: una consulta general contra el objeto de caso desde <code>44[.]215[.]108[.]109</code>. Esto produjo una de las primeras y más grandes respuestas de datos, consistente con el reconocimiento mediante la recuperación masiva de registros.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 0:17:40</b></p>
+				</td>
+				<td>
+					<p>GRUB1 enumera los objetos disponibles y cuenta los objetos <code>“Cuenta”</code>, <code>“Contacto”</code> y <code>“Usuario”</code>.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 00:17:47</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección Account en el usuario de Salesforce de Cloudflare: <code>«SELECT COUNT() FROM Account»</code> en el usuario de Salesforce de Cloudflare</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 00:17:51</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección Contact en el usuario de Salesforce de Cloudflare: consulta <code>“SELECT COUNT() FROM Contact”</code> en el usuario de Salesforce de Cloudflare</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 00:18:00</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección User en el usuario de Salesforce de Cloudflare: consulta <code>“SELECT COUNT() FROM User”</code> en el tenant de Salesforce de Cloudflare</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 04:34:39</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó "CaseTeamMemberHistory" en el usuario de Salesforce de Cloudflare: <code>“SELECT Id, IsDeleted, Name, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, LastViewedDate, LastReferencedDate, Case__c FROM CaseTeamMemberHistory__c LIMIT 5000”</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 11:09:14</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección Organization en el usuario de Salesforce de Cloudflare: <code>“SELECT Id, Name, OrganizationType, InstanceName, IsSandbox FROM Organization LIMIT 1”</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 11:09:21</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección User en el usuario de Salesforce de Cloudflare: <code>“SELECT Id, Username, Email, FirstName, LastName, Name, Title, CompanyName, Department, Division, Phone, MobilePhone, IsActive, LastLoginDate, CreatedDate, LastModifiedDate, TimeZoneSidKey, LocaleSidKey, LanguageLocaleKey, EmailEncodingKey FROM User WHERE IsActive = :x ORDER BY LastLoginDate DESC NULLS LAST LIMIT 20”</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>14 de agosto de 2025 11:09:22</b></p>
+				</td>
+				<td>
+					<p>GRUB1 envió una solicitud <code>GET</code> en LimitSnapshot en el usuario de Salesforce de Cloudflare: <code>/services/data/v58.0/limits/</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>16 de agosto de 2025 19:26:37</b></p>
+				</td>
+				<td>
+					<p>GRUB1 inició sesión en el usuario de Salesforce de Cloudflare desde&nbsp; <code>44[.]215[.]108[.]109</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>16 de agosto de 2025 19:28:08</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección Cases en el usuario de Salesforce de Cloudflare: <code>SELECT COUNT() FROM</code> Case</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>17 de agosto de 2025 11:11:23</b></p>
+				</td>
+				<td>
+					<p>GRUB1 inició sesión en el usuario de Salesforce de Cloudflare desde <code>208[.]68[.]36[.]90</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>17 de agosto de 2025 11:11:55</b></p>
+				</td>
+				<td>
+					<p>GRUB1 consultó la sección Case en el usuario de Salesforce de Cloudflare: <code>SELECT COUNT() FROM </code>Case</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>17 de agosto de 2025 11:11:56 a 11:15:18</b></p>
+				</td>
+				<td>
+					<p>GRUB1 aprovechó Salesforce BulkAPI 2.0 de <code>208[.]68[.]36[.]90</code> para <b>ejecutar</b> un trabajo para exfiltrar el objeto Cases&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>17 de agosto de 2025 11:15:42</b></p>
+				</td>
+				<td>
+					<p>GRUB1 aprovechó Salesforce Bulk API 2.0 desde <code>208[.]68[.]36[.]90</code> para<b> eliminar </b>el trabajo ejecutado recientemente utilizado para exfiltrar el objeto <i>C</i>ases</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+</div>

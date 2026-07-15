@@ -1,0 +1,76 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-acquires-bastionzero">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-acquires-bastionzero">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-acquires-bastionzero">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-bastionzero">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30yvQCsZWvzikwePL2FhOP/2bb42593f7b6334d92c7856f7ec71f36/cloudflare-acquires-bastionzero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Zero Trustインフラアクセスプラットフォームの<a href="https://www.bastionzero.com" target="_blank" rel="noopener noreferrer">BastionZero</a>がCloudflareに加わったことを<a href="https://www.cloudflare.com/press-releases/2024/cloudflare-acquires-bastionzero-to-add-zero-trust-infrastructure-access" target="_blank" rel="noopener noreferrer">発表でき、</a>嬉しく思います。この買収により、サーバー、Kubernetesクラスタ、データベースなどのインフラへのネイティブアクセス管理機能が備わり、当社のZero Trustネットワークアクセス（ZTNA）のフローが拡張されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2E6zva5okgz900pNPFVvAq/c02581e741bbbb4efbf9c4d7014c5a13/fVdKbi95022g-2kobkGUO3seClXae9aVb70mIrk6ysHISomy-fTXGFtHrbJUOicul9IHXrb_6CIae0kUjguj8zJ5nrBbVTjDOgDvCEDEgGExgoRUBeEEXkMqolaz.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>セキュリティチームは、しばしばアプリとインターネットアクセスを優先します。なぜならアプリとインターネットアクセスは、ユーザーが企業のリソースとやり取りしたり、外部の脅威がネットワークに侵入したりする主要なベクトルであるからです。アプリは通常、組織のデジタルフットプリントの中で最も可視性が高くアクセスしやすい部分であるため、しばしばサイバー攻撃の標的になります。シングルサインオン（SSO）や多要素認証（MFA）のような方法でアプリケーションアクセスを保護すれば、ユーザーセキュリティを即座に具体的に改善できます。</p>
+	<p>しかし、インフラへのアクセスも同様に重要であり、多くのチームはサーバー、データベース、Kubernetesクラスターなどのインフラを保護するために、依然として<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security" target="_blank" rel="noopener noreferrer">「城と堀」</a>スタイルのネットワーク制御とローカルリソース許可に依存しています。これは、数百または数千のターゲットにわたりセキュリティ管理が断片化されるため、困難でリスクを伴います。悪意のあるアクターが、膨大な量のアプリを一度にダウンさせたり、機密データを盗んだりする方法として、インフラリソースを標的にすることがますます増えています。Cloudflareでは、ユーザーベースおよびデバイスベースのポリシーと多要素認証によって、Cloudflare OneのZero Trustネットワークアクセスを拡張し、インフラをネイティブに保護できることを大変嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h2 id="application-vs-infrastructure-access">アプリ対インフラへのアクセス</h2>
+		<a href="https://blog.cloudflare.com/#application-vs-infrastructure-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>通常、アプリケーションへのアクセスでは、Webベースまたはクライアントサーバアプリケーションとのやりとりが伴います。多くの場合、これらのアプリケーションは、シングルサインオン（SSO）などの最新の認証メカニズムをサポートし、ユーザー認証を効率化して、セキュリティを強化します。SSOは、IDプロバイダー（IdP）との統合により、シームレスで安全なログイン体験を提供し、パスワード疲れやクレデンシャル窃取のリスクを低減します。</p>
+	<p>一方、インフラへのアクセスには、サーバー、データベース、ネットワーク機器など、より広範で多様なシステムが関係しています。多くの場合、これらのシステムは、管理アクセスのためにSSH（Secure Shell）、RDP（Remote Desktop Protocol）、Kubectl（Kubernetes）などのプロトコルに依存します。これらのプロトコルの性質は、インフラへのアクセスの保護をより困難にし、さらなる複雑さを生み出します。</p>
+	<ul>
+		<li>
+			<p><b>SSH認証</b>：SSHはLinuxおよびUnixベースのシステムにアクセスするための基本的なツールです。SSHアクセスは通常、パブリックキー認証によって容易になります。この認証を通じてユーザーは、ターゲットシステムが受け入れられるように設定されたパブリックキー/プライベートキーペアを発行されます。これらのキーは信頼できるユーザーに配布し、頻繁にローテーションし、漏洩がないか監視する必要があります。キーが誤って漏洩した場合、SSHアクセス可能なリソースに対する直接の制御を、悪用者に許可してしまう可能性があります。</p>
+		</li>
+		<li>
+			<p><b>RDP認証</b>：RDPは、Windowsベースのシステムへのリモートアクセスに広く使用されています。RDPは、パスワードベースや証明書ベースなど、さまざまな認証方法をサポートしてはいるものの、頻繁に総当たりパスワード攻撃やクレデンシャルスタッフィング攻撃の標的になります。</p>
+		</li>
+		<li>
+			<p><b>Kubernetesの認証</b>：Kubernetesは、コンテナオーケストレーションプラットフォームとして、認証に関する独自の課題があります。Kubernetesクラスタへのアクセスでは、ロール、サービスアカウント、kubeconfigファイルをユーザー証明書とともに管理する必要があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="infrastructure-access-with-cloudflare-one-today">今日におけるCloudflare Oneでのインフラアクセス</h2>
+		<a href="https://blog.cloudflare.com/#infrastructure-access-with-cloudflare-one-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Oneは、従来のVPNよりも優れたアプローチで、インフラリソースの<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">Zero Trustネットワークアクセス</a>（ZTNA）を促進します。管理者は、ユーザーが特定のIPアドレス、ホスト名、ポートの組み合わせにアクセスできるかどうかを指示する、ID、デバイス、およびネットワーク認識ポリシーのセットを定義できます。これにより、「IDプロバイダーグループ「developers」のユーザーだけが、当社の企業ネットワークのポート22（デフォルトSSHポート）を介してリソースにアクセスできる」のようなポリシーを作成でき、基本的なファイアウォールポリシーを持つVPNよりもはるかに細かく制御できるのです。</p>
+	<p>ただし、このアプローチには、企業のインフラがどのようにプロビジョニングおよび管理されるかに関する一連の前提に基づいているため、依然として限界があります。インフラリソースが、想定されるネットワーク構造の外で設定されている場合、例えば、非標準ポートを介したSSHは許可されますが、すべてのネットワークレベルの制御はバイパスされる可能性があります。これにより、そのリソースを保護するのは特定のプロトコルのネイティブ認証保護だけになり、SSHキーやデータベース認証情報の漏洩が、より広範なシステム停止や侵害につながる可能性があります。</p>
+	<p>多くの組織は、追加の多層防御戦略として、要塞ホストモデルや複雑な特権アクセス管理（PAM）ソリューションのような、より複雑なネットワーク構造を活用します。しかし、これはITセキュリティチームにとってコストと管理オーバーヘッドがかなり増大することにつながり、最小特権アクセスに関連する問題を複雑化することもあります。要塞ホストやPAMソリューションのようなツールは、ポリシーが拡大、変更、または企業のセキュリティスタンスから逸脱するために、時間の経過とともに最小特権を喪失していきます。これは、機密性の高いインフラへのアクセスを誤って保持することにつながります。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-bastionzero-fits-in">BastionZeroとの適合性</h2>
+		<a href="https://blog.cloudflare.com/#how-bastionzero-fits-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>長年にわたり、Cloudflareはあらゆる規模の組織が簡単かつ迅速にVPNを置き換えられるようにすることを目標に掲げてきましたが、BastionZeroは、CloudflareのVPN代替ソリューションの範囲をアプリとネットワーク以外にも拡大し、Zero Trust制御をインフラリソースに拡張する際と同じレベルのシンプルさを提供します。これにより、セキュリティチームはハイブリッドIT環境の管理の多くを一元化し、標準的なZero Trustプラクティスを使用してDevOpsチームの生産性と安全性を維持することができます。CloudflareとBastionZeroは協力して、企業がVPNだけでなく、要塞ホストや、SSH、Kubernetes、またはデータベースキー管理システム、さらに、冗長なPAMソリューションを置き換えることを支援します。</p>
+	<p>BastionZeroは、SSH、RDP、Kubernetes、データベースサーバーなどの主要なインフラアクセスプロトコルとターゲットへのネイティブ統合を提供し、ネットワークレベルの制御に依存することなく、ターゲットリソースが特定のユーザーの接続を受け入れるように設定されていることを保証します。これにより管理者は、IPアドレスやポートではなく、リソースやターゲットという観点から考えることができるのです。さらに、BastionZeroは、OpenID Connect（OIDC）で暗号化キーにIDをバインドするオープンソースライブラリである<a href="https://github.com/openpubkey/openpubkey" target="_blank" rel="noopener noreferrer">OpenPubkey</a>上に構築されています。OpenPubkeyを使用することで、インフラへのアクセス許可にSSOを使用できるようになります。BastionZeroは複数の信頼ルートを使用して、お客様のSSOが、重要なサーバーやその他のインフラストラクチャの単一の侵害点にならないようにするのです。</p>
+	<p>BastionZeroによってCloudflareのSASEプラットフォームに追加される機能：</p>
+	<ul>
+		<li>
+			<p>新しい一過性の分散型アプローチにより、クレデンシャル管理を最新化する摩擦のないインフラ特権アクセス管理（PAM）機能（例：SSHキー、kubeconfigファイル、データベースパスワード）を使い、<b>長期間キー/クレデンシャルを排除します</b>。</p>
+		</li>
+		<li>
+			<p><b>DevOpsに基づくSSH接続の安全性を確保するためのアプローチ</b>で、最小権限アクセスのサポート、セッションの記録、コンプライアンス要件のサポートに必要な可視性の向上のために、すべてのコマンドをログに記録します。チームは、ジャストインタイムアクセスポリシーを定義し、ワークフローを自動化できるため、IPアドレスやネットワークではなく、自動検出されたターゲットに基づいて運用できます。</p>
+		</li>
+		<li>
+			<p><b>クライアントレスRDP</b>により、ユーザーのデバイスにクライアントをインストールすることなく、デスクトップ環境へのアクセスをサポートします。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-bastionzero">BastionZeroの次なる展開</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-bastionzero" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BastionZeroチームは、インフラアクセス制御をCloudflare Oneに直接統合することに注力します。今年の第3および第4四半期中に、Cloudflare Oneを通じてZero Trustインフラアクセスを容易にする新機能を多数発表する予定です。今年提供される機能はすべて、ユーザー50人未満である組織向けのCloudflare Oneの無料利用枠に含まれます。誰もが世界クラスのセキュリティ制御にアクセスできるようにすべき、とClourflareは考えています。</p>
+	<p>当社は、インフラアクセスに関して希望する機能について、フィードバックを提供してくれる初期ベータテスターおよびチームを探しています。さらに詳しい説明をご希望の方は、<a href="http://cloudflare.com/lp/infrastructure-access" target="_blank" rel="noopener noreferrer">こちら</a>からサインアップしてください。</p>
+</div>

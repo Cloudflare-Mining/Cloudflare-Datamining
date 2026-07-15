@@ -1,0 +1,103 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/ai-side-channel-attack-mitigated">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/ai-side-channel-attack-mitigated">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/ai-side-channel-attack-mitigated">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/ai-side-channel-attack-mitigated">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/ai-side-channel-attack-mitigated">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/ai-side-channel-attack-mitigated">Português</a>, en <a href="https://blog.cloudflare.com/es-es/ai-side-channel-attack-mitigated">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/ai-side-channel-attack-mitigated">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JSNy1RBfkYuXFXI331Y0G/09190108c844a05bc1d7dcb23f494573/ai-side-channel-attack-mitigated.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Depuis la découverte de <a href="https://en.wikipedia.org/wiki/CRIME" target="_blank" rel="noopener noreferrer">CRIME</a>, <a href="https://breachattack.com" target="_blank" rel="noopener noreferrer">BREACH</a>, <a href="https://media.blackhat.com/eu-13/briefings/Beery/bh-eu-13-a-perfect-crime-beery-wp.pdf" target="_blank" rel="noopener noreferrer">TIME</a>, <a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack" target="_blank" rel="noopener noreferrer">LUCKY-13</a>, etc., les attaques par canal auxiliaire basées sur la longueur ont été considérées comme concrètes. Même si les paquets étaient chiffrés, les acteurs malveillants ont pu déduire des informations concernant le texte en clair sous-jacent en analysant les métadonnées telles que la longueur ou les informations temporelles des paquets.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5do9zHtgVCZfCILMjoXAmV/0f7e2e3b4bdb298d7fd8c0a97d3b2a19/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" alt="Mitigating a token-length side-channel attack in our AI products" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Cloudflare a récemment été contactée par un groupe de chercheurs de l'<a href="https://cris.bgu.ac.il/en" target="_blank" rel="noopener noreferrer">Université Ben Gourion du Néguev</a>, qui a rédigé un article intitulé « <a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf" target="_blank" rel="noopener noreferrer">What Was Your Prompt? A Remote Keylogging Attack on AI Assistants</a> », dans lequel il décrit « un nouveau canal auxiliaire pouvant être utilisé pour lire les réponses chiffrées provenant d'assistants IA via le web ».</p>
+	<p>Les équipes de Workers AI et AI Gateway ont travaillé en étroite collaboration avec ces chercheurs en sécurité dans le cadre de notre <a href="https://blog.cloudflare.com/cloudflare-bug-bounty-program">programme public de primes aux bugs</a>, et ont découvert et intégralement corrigé une vulnérabilité affectant les fournisseurs de LLM (grands modèles de langage). Vous pouvez consulter le document de recherche détaillé <a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf" target="_blank" rel="noopener noreferrer">ici</a>.</p>
+	<p>Depuis que nous avons été informés de cette vulnérabilité, nous avons mis en œuvre une mesure d'atténuation afin de contribuer à sécuriser l'ensemble des clients Workers AI et AI Gateway. Selon les résultats de notre évaluation, les clients de Workers AI et AI Gateway n'en ont pas été victimes.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-the-side-channel-attack-work">Comment se déroule une attaque par canal auxiliaire ?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-the-side-channel-attack-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans la publication, les auteurs décrivent une méthode permettant d'intercepter le flux d'une session de discussion avec un fournisseur de LLM, d'utiliser les en-têtes de paquets réseau afin de déduire la longueur de chaque jeton, d'en extraire et d'en segmenter la séquence, puis d'utiliser leurs propres LLM dédiés pour déduire la réponse.</p>
+	<p>Les deux exigences principales déterminant le succès d'une attaque sont un client de chat basé sur l'IA exécuté en mode <b>streaming</b> (diffusion en continu) et un acteur malveillant capable de capturer le trafic réseau entre le client et le service de chat basé sur l'IA. En mode streaming, les jetons du LLM sont émis séquentiellement, introduisant un canal auxiliaire de la longueur du jeton. Des acteurs malveillants peuvent espionner des paquets via des réseaux publics ou sur le réseau d'un FAI.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EeuXpPSqqvqIZKZUFPKEY/951a777d273caf172933639d9f5d6f12/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
+
+	</figure>
+	<p>Voici un exemple de requête vulnérable à une attaque par canal auxiliaire :</p>
+	<p>Utilisons <a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer">Wireshark</a> pour inspecter les paquets réseau de la session de chat du LLM pendant la diffusion en continu :</p>
+	<pre class="language-bash"><code class="language-bash">curl -X POST \
+https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8 \
+  -H "Authorization: Bearer &lt;Token&gt;" \
+  -d '{"stream":true,"prompt":"tell me something about portugal"}'</code></pre>
+	<p>La longueur du premier paquet est 95 ; il correspond au jeton « Port », dont la longueur est de 4. La longueur du deuxième paquet est de 93 ; il correspond au jeton « ug », dont la longueur est de 2, et ainsi de suite. En supprimant l'enveloppe de jeton probable de la longueur du paquet réseau, il est facile de déduire le nombre de jetons transmis, ainsi que leur séquence et leur longueur individuelle, en interceptant simplement les données réseau chiffrées.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sII07hkJGaVXBKlWoBoEW/a1c3be395e0bee3ec5ed690947737d51/media.png" alt="" class="kg-image" width="1600" height="770" loading="lazy">
+
+	</figure>
+	<p>Puisque l'acteur malveillant a besoin de connaître la séquence de la longueur de jeton individuelle, cette vulnérabilité affecte uniquement les modèles de génération de texte utilisant la diffusion en continu. Cela signifie que les fournisseurs d'inférence IA qui utilisent la diffusion en continu (c'est-à-dire le moyen le plus courant d'interagir avec les LLM), comme Workers AI, sont potentiellement vulnérables.</p>
+	<p>Cette méthode nécessite que l'acteur malveillant se trouve sur le même réseau ou qu'il soit en mesure d'observer le trafic de communication, et sa précision dépend de la connaissance du style d'écriture du LLM cible. Dans des conditions idéales, les chercheurs affirment que leur système « peut reconstruire 29 % des réponses d'un assistant IA et déduire avec succès le sujet à partir de 55 % de ces réponses ». Il est également important de noter que, contrairement à d'autres attaques par canal auxiliaire, dans ce cas, l'acteur malveillant n'a aucun moyen d'évaluer sa prédiction par rapport à « la réalité du terrain ». Cela signifie que nous avons autant de chances d'obtenir une phrase avec une précision quasi-parfaite que d'obtenir une phrase dans laquelle les seuls éléments correspondants sont des conjonctions.</p>
+	<div class="flex anchor relative">
+		<h3 id="mitigating-llm-side-channel-attacks">Atténuation des attaques par canal auxiliaire contre les LLM</h3>
+		<a href="https://blog.cloudflare.com/#mitigating-llm-side-channel-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Puisque ce type d'attaque repose sur la longueur du jeton déduit du paquet, il peut être tout aussi facilement atténué en dissimulant la taille du jeton. Les chercheurs ont suggéré quelques stratégies pour atténuer ces attaques par canal auxiliaire, dont l'une est la plus simple : le remplissage des réponses avec du bruit de longueur aléatoire, afin de masquer la longueur du jeton et ainsi, empêcher que les réponses puissent être déduites du paquet. Bien que nous ayons immédiatement ajouté la solution d'atténuation à notre produit d'inférence, Workers AI, nous voulions aider les clients à sécuriser leurs LLM, quel que soit l'endroit où ils les exécutent, en l'ajoutant à notre solution AI Gateway.</p>
+	<p>À compter d'aujourd'hui, tous les utilisateurs de Workers AI et d'AI Gateway sont automatiquement protégés contre cette attaque par canal auxiliaire.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-we-did">Ce que nous avons fait</h3>
+		<a href="https://blog.cloudflare.com/#what-we-did" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque nous avons eu connaissance de ce travail de recherche et de la manière dont l'exploitation de cette technique pourrait potentiellement affecter nos produits d'IA, nous avons fait ce que nous faisons toujours dans des situations comme celle-ci : nous avons réuni une équipe d'ingénieurs système, d'ingénieurs en sécurité et de responsables produits et nous avons commencé à examiner les stratégies d'atténuation des risques et les étapes suivantes. Nous avons également organisé une conférence avec les chercheurs, qui ont eu l'amabilité de participer, de nous présenter leurs conclusions et de répondre aux questions de nos équipes.</p>
+	<p>L'équipe de recherche a fourni un notebook de test, que nous avons pu utiliser pour valider les résultats de l'attaque. Nous avons pu reproduire les résultats associés aux exemples contenus dans le notebook ; toutefois, nous avons constaté que lors de nos tests, la précision variait considérablement lorsque nous utilisions différents LLM et différentes réponses aux commandes. Néanmoins, l'article a du mérite, et les risques ne sont pas négligeables.</p>
+	<p>Nous avons décidé d'intégrer la première suggestion d'atténuation contenue dans le document : l'inclusion d'informations de remplissage aléatoires à chaque message, afin de masquer la longueur réelle des jetons dans le flux, ce qui compliquera les tentatives de déduction d'informations reposant uniquement sur la taille des paquets réseau.</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-ai-our-inference-product-is-now-protected">Workers AI, notre produit d'inférence, est désormais protégé</h3>
+		<a href="https://blog.cloudflare.com/#workers-ai-our-inference-product-is-now-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Grâce à notre produit d'inférence en tant que service, n'importe qui peut utiliser la plateforme <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> et exécuter des appels d'API vers nos modèles IA pris en charge. Cela signifie que nous supervisons les requêtes d'inférence transmises aux modèles et depuis ceux-ci. À ce titre, nous avons la responsabilité de veiller à ce que le service soit sécurisé et protégé contre les vulnérabilités potentielles. Nous avons immédiatement déployé un correctif dès que nous avons été informés de cette étude, et tous les clients utilisateurs de Workers AI sont désormais automatiquement protégés contre cette attaque par canal auxiliaire. En dehors des tests éthiques réalisés par les chercheurs, nous n'avons observé aucune attaque malveillante exploitant cette vulnérabilité.</p>
+	<p>Notre solution pour Workers AI est une variante de la stratégie d'atténuation suggérée dans le document de recherche. Puisque nous diffusons en continu des objets JSON, plutôt que le jeton brut, au lieu de remplir le jeton avec des caractères d'espaces blancs, nous avons ajouté une nouvelle propriété, « p » (comme « padding », c'est-à-dire « remplissage »), qui a une valeur de chaîne de longueur aléatoire variable.</p>
+	<p>Exemple de réponse en continu utilisant la syntaxe <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" target="_blank" rel="noopener noreferrer">SSE</a> :</p>
+	<p>Cette approche présente l'avantage qu'aucune modification du SDK ou du code client n'est requise, que les modifications sont invisibles pour les utilisateurs finaux et qu'aucune action n'est nécessaire de la part de nos clients. En ajoutant une longueur de variable aléatoire aux objets JSON, nous introduisons la même variation au niveau du réseau, et l'acteur malveillant perd essentiellement le signal d'entrée requis. Les clients peuvent continuer à utiliser Workers AI comme ils le font habituellement, tout en bénéficiant de cette protection.</p>
+	<pre class="language-js"><code class="language-js">data: {"response":"portugal","p":"abcdefghijklmnopqrstuvwxyz0123456789a"}
+data: {"response":" is","p":"abcdefghij"}
+data: {"response":" a","p":"abcdefghijklmnopqrstuvwxyz012"}
+data: {"response":" southern","p":"ab"}
+data: {"response":" European","p":"abcdefgh"}
+data: {"response":" country","p":"abcdefghijklmno"}
+data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="one-step-further-ai-gateway-protects-users-of-any-inference-provider">Un pas de plus : AI Gateway protège les utilisateurs de tous les fournisseurs d'inférence</h3>
+		<a href="https://blog.cloudflare.com/#one-step-further-ai-gateway-protects-users-of-any-inference-provider" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons ajouté une protection à notre produit d'inférence IA, mais nous disposons également d'un produit qui transmet en proxy les requêtes adressées à n'importe quel fournisseur : <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">AI Gateway</a>. AI Gateway se comporte comme un proxy entre un utilisateur et les fournisseurs d'inférence pris en charge, aidant ainsi les développeurs à améliorer le contrôle, les performances et l'observabilité de leurs applications IA. Conformément à notre mission visant à bâtir un Internet meilleur, nous voulions rapidement déployer un correctif qui aiderait tous nos clients utilisant des IA de génération de texte, indépendamment de leur fournisseur ou de la présence de mesures d'atténuation permettant de prévenir cette attaque. À cette fin, nous avons mis en œuvre une solution similaire, permettant d'ajouter un bruit aléatoire de longueur variable à toutes les réponses diffusées en continu traitées en proxy par l'intermédiaire d'AI Gateway.</p>
+	<p>Nos clients utilisateurs d'AI Gateway sont désormais automatiquement protégés contre cette attaque par canal auxiliaire, même si les fournisseurs d'inférence en amont n'ont pas encore atténué la vulnérabilité. Si vous n'êtes pas sûr que votre fournisseur d'inférence ait encore corrigé cette vulnérabilité, utilisez AI Gateway pour transmettre vos requêtes en proxy et vous assurer d'être protégé.</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Conclusion</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Chez Cloudflare, notre mission est de contribuer à construire un Internet meilleur ; nous nous préoccupons donc de tous les citoyens d'Internet, quelle que soit leur pile technologique. Nous sommes fiers de pouvoir améliorer la sécurité de nos produits basés sur l'IA avec fluidité, sans nécessiter d'action de la part de nos clients.</p>
+	<p>Nous sommes reconnaissants aux chercheurs qui ont découvert cette vulnérabilité et se sont montrés très coopératifs en nous aidant à mieux comprendre le problème. Si vous êtes un chercheur en sécurité et vous souhaitez nous aider à rendre nos produits plus sûrs, consultez notre programme de primes aux bugs à l'adresse <a href="http://hackerone.com/cloudflare" target="_blank" rel="noopener noreferrer">hackerone.com/cloudflare</a>.</p>
+</div>

@@ -1,0 +1,330 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/full-stack-development-on-cloudflare-workers">English</a>、<a href="https://blog.cloudflare.com/zh-tw/full-stack-development-on-cloudflare-workers">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/full-stack-development-on-cloudflare-workers">Français</a>、<a href="https://blog.cloudflare.com/de-de/full-stack-development-on-cloudflare-workers">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/full-stack-development-on-cloudflare-workers">한국어</a>、<a href="https://blog.cloudflare.com/es-es/full-stack-development-on-cloudflare-workers">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/full-stack-development-on-cloudflare-workers">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XxYGJI8hHbY3GQWzuM2BA/bfad24f662883f169142de42806316b3/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting"><u>2024年9月</u></a>、当社は<a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>静的アセット</u></a>をホスト、保存、配信するためのベータサポートをCloudflare Workersで無料で利用できるようにしました。以前は<a href="https://blog.cloudflare.com/cloudflare-pages"><u>Cloudflare Pages</u></a>でのみ利用可能だったものです。静的アセット（クライアントサイドのJavaScript、HTML、CSS、フォント、画像）をホストする能力は、それまでのWorkersに欠けていて、<b>単一Worker</b>内でフルスタックアプリケーションを構築したい開発者が待ち望んでいた重要なサービスです。</p>
+	<p>本日、Cloudflareでのアプリ構築における10の大きな改善点を発表します。これらの新しい追加機能により、シンプルな静的サイトからフルスタックアプリケーションまで、すべてをCloudflare Workers上で構築し、ホストすることができます：</p>
+	<ul>
+		<li>
+			<p>Cloudflare Workersは現在、本番環境用に<b>一般公開</b>されたGA版として、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/remix" target="_blank" rel="noopener noreferrer"><u>React Router v7（Remix）</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/hono" target="_blank" rel="noopener noreferrer"><u>Hono</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/vue" target="_blank" rel="noopener noreferrer"><u>Vue.js</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nuxt" target="_blank" rel="noopener noreferrer"><u>Nuxt</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/svelte" target="_blank" rel="noopener noreferrer"><u>Svelte（SvelteKit）</u></a><a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"></a>などのサポートを提供しており、2025年第2四半期には<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/angular" target="_blank" rel="noopener noreferrer"><u>Angular</u></a>、<a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/solid" target="_blank" rel="noopener noreferrer"><u>SolidJS</u></a>（SolidStart）のGAサポートも提供を始めます。 </p>
+		</li>
+		<li>
+			<p>フレームワークなしでWorkers上で完全なフルスタックアプリを構築することができます。「<a href="https://docs.google.com/document/d/1G8XQGNxAsGs15LqPw3l9MJlCZrBBZLyyOs6ydqnz6Bo/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><u>Vite」とReactを一緒に使い、同じWorkerでバックエンドAPIを構築できるのです。</u></a><a href="https://github.com/cloudflare/templates/tree/staging/vite-react-template" target="_blank" rel="noopener noreferrer"><u>Vite + Reactのテンプレート</u></a>例をご覧ください。</p>
+		</li>
+		<li>
+			<p>2024年9月に初期アルファ版として導入されたNext.js用アダプター（<a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>@opennextjs/cloudflare</u></a>）は、現在<a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter"><u>v1.0-beta</u></a>であり、今後数週間でGAになる予定です。OpenNextアダプターをご利用の方も、最近発表された<a href="https://github.com/vercel/next.js/discussions/77740" target="_blank" rel="noopener noreferrer"><u>Next.js Deployments API</u></a>へ簡単にアップグレードできるようになります。 </p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-the-cloudflare-vite-plugin"><u>Cloudflare Viteプラグイン</u></a>がv1.0になり、一般公開されています。Viteプラグインを使用すれば、Workersランタイム（<code>workerd</code>）内でViteの開発サーバーを動作させることができます。つまり、<a href="https://vite.dev/guide/features.html#hot-module-replacement" target="_blank" rel="noopener noreferrer"><u>Hot Module Replacement</u></a>を含むViteのメリットがすべて得られ、さらにWorkersだけの機能（Durable Objectsなど）も使えるのです。</p>
+		</li>
+		<li>
+			<p>Workers上のアプリケーションに<a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u> _headers</u></a>と<a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a>の静的設定ファイルを使用できるようになりました。これまではPagesでしかできなかったことです。これらのファイルを使用すると、Workerコードを実行することなく、単純なヘッダーを追加してリダイレクトを設定することができます。 </p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-postgres" target="_blank" rel="noopener noreferrer"><u>PostgreSQL</u></a>に加えて、<a href="https://blog.cloudflare.com/building-global-mysql-apps-with-cloudflare-workers-and-hyperdrive"><u>Cloudflare WorkersからHyperdriveを介して、MySQL</u></a>データベースにも接続できるようになりました。既存のPlanetscale、AWS、GCP、Azure、その他のMySQLデータベースを持ち込むと、Hyperdriveがデータベースへの接続をプーリングし、クエリをキャッシュすることによって不要なラウンドトリップを排除します。</p>
+		</li>
+		<li>
+			<p>Workersランタイムで<a href="https://blog.cloudflare.com/#node-js-compatibility"><u>利用可能なNode.js APIが増え</u></a>、<code>crypto</code>、<code>tls</code>、<code>net</code>、<code>dns</code>といったモジュールのAPIも使えます。また、Workersのリクエストの最大CPU時間を30秒から5分に延ばしました。</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/deploy-workers-applications-in-seconds"><u>Workerアプリケーション</u></a>を含むGitHubやGitLabから任意のリポジトリを持ち込めるようになっており、<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>がアカウントの新しいWorkerとしてアプリをデプロイする処理を行います。<a href="https://blog.cloudflare.com/#workers-builds"><u>Workers Buildsの起動も速くなっています</u></a>（ビルドごとに最大6秒の高速化）。</p>
+		</li>
+		<li>
+			<p>Workers Buildsは<a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>非本番環境ブランチ</u></a>で実行する設定が可能になり、プレビューURLが<a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>コメントとしてGitHubに投稿</u></a>されます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/images/transform-images/bindings" target="_blank" rel="noopener noreferrer"><u>WorkersへのImagesバインディング</u></a>が一般公開されており、より柔軟でプログラマティックなワークフローを構築することができます。</p>
+		</li>
+	</ul>
+	<p>これらの改善により、シンプルな静的サイトも、より複雑なサーバーサイドレンダリングアプリケーションも構築できます。Pagesと同様に、Workerコードを実行したときのみ課金されます。つまり、静的サイトのホスティングや配信は無料でできます。サーバー上でレンダリングを行いたい場合や、APIを構築する必要がある時は、バックエンドを扱うWorkerを追加するだけです。アプリでデータの読み取りや書き込みが必要な時は、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>で既存のデータベースに接続するか、当社のストレージソリューションである<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>のいずれかを使うことができます。</p>
+	<p>すぐコードに取り掛かりたい場合は、下の「Cloudflareへデプロイ」ボタンをクリックすることで、ViteとReactで構築されたシングルページアプリケーションをデプロイできます。Hyperdriveでホストされているデータベースに接続するというオプションもあります。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-postgres-fullstack-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="start-with-workers">Workersで始める</h2>
+		<a href="https://blog.cloudflare.com/#start-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前は、Cloudflare Pagesで構築するかWorkersで構築するか（あるいは、アプリの一部にPagesを使用し、別の部分にはWorkersするか）をはじめに選択する必要がありました。これは、アプリに何が必要かを最初から理解し、プロジェクトが進化しても間違ったプラットフォームやアーキテクチャに縛られる事態にならないことを願うということです。Workersは柔軟なプラットフォームであるように設計されており、開発者が必要に応じてプロジェクトを進化させられるようになっています。そこで当社は、数年にわたって<a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience"><u>Pagesの諸機能をWorkersに取り込む</u></a>作業に取り組んできました。</p>
+	<p><b>Workersが静的アセットの配信と</b>サーバーサイドレンダリングの両方をサポートするようになったので、<b>Workersから始める</b>のがよいでしょう。Cloudflare Pagesは引き続きサポートしますが、今後の投資、最適化、機能開発の作業はすべてWorkersの改善に向けられます。当社は、Pagesでうまくいった点や改善点について皆様からいただいたフィードバックを基に、Workersを最高のフルスタックアプリ構築プラットフォームにすることを目指しています。</p>
+	<p>以前は、Pagesでアプリを構築する際、こだわりがうかがえるオンランプが本当に使いやすかったのですが、アプリケーションが複雑になると終いには壁に突き当たるということがよくありました。Durable Objectsで状態を管理したい場合は、そのためにまったく別のWorkerを設定する必要があり、デプロイメントが複雑になって、オーバーヘッドもかさみました。また、リアルタイムログしかなく、変更を一度にロールアウトよりほかありませんでした。</p>
+	<p>Workersで構築すれば、他のどの開発者プラットフォームサービス（<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer"><u>Email Workersなど）へもすぐにバインドでき、単一のプロジェクトでフロントエンドとバックエンドの両方を管理することができます。すべて一回のデプロイメントで行えます。</u></a>さらに、<a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workersの可観測性ツール</u></a>一式（<a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>など）がプラットフォームに組み込まれています。トラフィックの特定の割合だけに変更をロールアウトしたければ、<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>Gradual Deployments</u></a>でできます。</p>
+	<p>こうした最新の改善は、Pagesの優れた部分をWorkersに取り込むという目標の一部です。例えば、静的な<a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u>_headers</u></a>と<a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a>の設定ファイルがサポート対象になったため、Pages（または別のプラットフォーム）から既存プロジェクトをWorkersへ簡単に移動できます。プロジェクトを変更する必要はありません。また、GitHubやGitLabを<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>と直接統合し、ビルドとデプロイメントを自動化します。そして本日より、<a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>プレビューURL</u></a>が<a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>コメントとしてリポジトリに投稿されるようになりました</u></a>。機能ブランチのエイリアスと環境は近日公開予定です。</p>
+	<p>既存のプロジェクトをPagesからWorkersに移行する方法については、<a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>移行ガイド</u></a>をご覧ください。</p>
+	<p>次に、Workersで異なるレンダリングモードでアプリケーションを構築する方法についてお話します。</p>
+	<div class="flex anchor relative">
+		<h2 id="building-static-sites-spas-and-ssr-on-workers">Workersで静的サイト、SPA、SSRを構築</h2>
+		<a href="https://blog.cloudflare.com/#building-static-sites-spas-and-ssr-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まずはじめに、Workersでサポートされているすべてのアーキテクチャとレンダリングモードを簡単に説明します：</p>
+	<ul>
+		<li>
+			<p><b>静的サイト</b>：静的サイトにアクセスすると、サーバーは事前に構築された静的アセット（HTML、CSS、JavaScript、画像、フォントなど）をすぐに返します。リクエスト時にサーバーで動的レンダリングが行われることはありません。静的アセットは通常ビルド時に生成され、<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>CDN</u></a>から直接配信されるため、静的サイトは高速で簡単にキャッシュ可能になります。このアプローチは、コンテンツの変更がほとんどないサイトに適しています。 </p>
+		</li>
+		<li>
+			<p><b>シングルページアプリケーション（SPA）</b>：SPAを読み込むと、サーバーは最初に最小限のHTMLシェルとJavaScriptバンドル（静的アセットとして配信）を送信します。ブラウザがこのJavaScriptをダウンロードし、続いてユーザーインターフェース全体をクライアントサイドでレンダリングします。最初の読み込みの後は、すべてのナビゲーションが通常クライアントサイドルーティングで、ページ全体を更新することなく行われます。これにより、高速でアプリのような使用感が実現します。</p>
+		</li>
+		<li>
+			<p><b>サーバーサイドレンダリング（SSR）アプリケーション</b>：SSRを使っているサイトを初めて訪問した時に、サーバーはそのリクエストに応じてフルレンダリングのHTMLページをオンデマンドで生成します。ブラウザはこの完全なHTMLを即座に表示するため、最初のページの読み込みが速くなります。読み込みが終わると、JavaScriptがページの「<a href="https://en.wikipedia.org/wiki/Hydration_(web_development)" target="_blank" rel="noopener noreferrer"><u>ハイドレーション</u></a>」を行い、インタラクティブ性を付与します。その後のナビゲーションは、新しいサーバーレンダリングページをトリガーするか、多くの最新フレームワークではSPAに似たクライアントサイドレンダリングに移行します。</p>
+		</li>
+	</ul>
+	<p>次に、Workersでこの種のアプリケーションを構築する方法について掘り下げます。まず開発環境の準備から説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="setup-build-and-dev">セットアップ：buildとdev</h3>
+		<a href="https://blog.cloudflare.com/#setup-build-and-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アプリケーションをアップロードする前に、クライアントサイドのコードをすべて<b>静的アセット</b>のディレクトリにバンドルする必要があります。<code>wrangler dev</code>を実行するとWranglerがコードをバンドルしてビルドしますが、今は<a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>新しいViteプラグイン</u></a>でViteもサポートされています。Viteプラグインは、既にViteのビルドツールと開発サーバーを使用している方に最適なオプションです。Viteの開発サーバーを使用して、引き続き開発（および<a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a>によるテスト）を行うことができます。すべてWorkersランタイムを使用します。</p>
+	<p>Cloudflare Viteプラグインの使用を開始する際は、以下の実行により、Viteと当社のプラグインを使用してReactアプリケーションをスキャフォールディングします。</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-react-app -- --framework=react</code></pre>
+	<p>プロジェクトを開くと、次のようなディレクトリ構造が表示されるはずです：</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p><code>npm run build</code>を実行すると、<code>/dist</code>という名前の新しいフォルダが表示されます。</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── dist
+│   └── ...
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p>Viteプラグインは、そのプロジェクトでビルドされた静的アセット（この場合はクライアントサイドコード、いくつかのCSSファイル、画像など）がこの<code>/dist</code>ディレクトリに含まれていることを、Wranglerに知らせます。</p>
+	<p>このシングルページアプリケーション（SPA）アーキテクチャは、デプロイすると以下のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6syBGxC8udJi8wlsqvLTXW/526d05095a953cb6d29526abfd4f4b3a/2.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>リクエストが来ると、Cloudflareはパス名を見て、そのパス名に一致する静的アセットを自動的に配信します。例えば、静的アセットディレクトリに<code>blog.html</code>ファイルが含まれていれば、<code>example.com/blog</code>のリクエストはそのファイルを取得します。</p>
+	<div class="flex anchor relative">
+		<h3 id="static-sites">静的サイト</h3>
+		<a href="https://blog.cloudflare.com/#static-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://docs.astro.build/en/concepts/why-astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>のような静的サイトジェネレーター（SSG）で作成された静的サイトがある場合、必要なのは<code>wrangler.jsonc</code>ファイル（または<code>wrangler.toml</code>）を作成して、構築したアセットがどこにあるかをCloudflareに知らせることだけです：</p>
+	<pre class="language-Rust"><code class="language-Rust">// wrangler.jsonc 
+
+{
+  "name": "my-static-site",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "directory": "./dist",
+  }
+}</code></pre>
+	<p>その設定を追加したら、あとはプロジェクトを構築してwrangler deployを実行するだけです。そうするとサイト全体がアップロードされ、Workers上でトラフィックを処理する準備が整います。デプロイして、リクエストが入り始めると、静的サイトは<a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>Cloudflareのネットワーク全体にキャッシュ</u></a>されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaFnoUfvhzfjwv537fh5S/763524c2ed3b2beb61304576723667ea/3.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>以下を実行することで、Workersで新しいAstroプロジェクトを今すぐ始めることができます：</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-astro-app -- --framework=astro</code></pre>
+	<p>サポートされている他のフレームワークと使用開始方法については、<a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>フレームワークガイド</u></a>でご覧いただけます。</p>
+	<div class="flex anchor relative">
+		<h3 id="single-page-applications-spas">シングルページアプリケーション（SPA）</h3>
+		<a href="https://blog.cloudflare.com/#single-page-applications-spas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>シングルページアプリケーションの場合は、Wranglerの設定で<code>シングルページアプリケーション</code>モードを明示的に有効化します：</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+ "name": "example-spa-worker-hyperdrive",
+ "main": "api/index.js",
+ "compatibility_flags": ["nodejs_compat"],
+ "compatibility_date": "2025-04-01",
+ },
+ "assets": {
+   "directory": "./dist",
+   "binding": "ASSETS",
+   "not_found_handling": "single-page-application"
+ },
+ "hyperdrive": [
+   {
+     "binding": "HYPERDRIVE",
+     "id": "d9c9cfb2587f44ee9b0730baa692ffec",
+     "localConnectionString": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+   }
+ ],
+ "placement": {
+   "mode": "smart"
+ }
+}</code></pre>
+	<p>これを有効にすることで、プラットフォームが、ナビゲーションリクエスト（<code>Sec-Fetch-Mode: navigate</code>ヘッダーを含むリクエスト）はすべて静的アセットを意図したものであると想定し、一致する静的アセットが見つからない時はいつでも<code>index.html</code>を返します。静的アセットと一致しない非ナビゲーションリクエスト（データ要求など）の場合は、CloudflareがWorkerスクリプトを呼び出します。このセットアップによって、Reactでフロントエンドをレンダリングし、Workerでバックエンドの操作を処理し、Viteでこの2つをつなぎ合わせることができます。これは、<code>create-react-app</code>で構築された古いSPA（<a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>最近廃止</u></a>）のポーティングに最適なオプションです。</p>
+	<p>このWrangler設定ファイルに関してもう一つ注記すべき点は、Hyperdriveバインディングを定義して<a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>を有効にしていることです。Hyperdriveは既存のデータベースの使用を可能にし<i></i>、接続プーリングを処理します。これで、Workers（高度に分散されたサーバーレス環境で稼働）を従来型のデータベースに直接接続するという長年の課題が解決します。設計上、Workersは軽量のV8 Isolateで動作します。永続的なTCPソケットはなく、CPU/メモリには厳しい制限があります。この分離はセキュリティと速度の面ではいいのですが、データベース接続をオープンな状態に保持することが困難になります。Hyperdriveは、Cloudflareのネットワークとお客様のデータベースの間の「橋」として機能し、こういった制約に対処しています。安定した接続やプールの維持という重い作業を引き受けて、Workersで再利用できるようにしているのです。また、Smart Placementをオンにすることで、Workerへのリクエストの送信元がデータベースから遠い場合（遠ければ遅延が発生します）は、データベース接続を扱うWorkerとHyperdriveの「ブリッジ」の両方をデータベースの近くへ移すことをCloudflareが選択し、ラウンドトリップタイムを短縮できるようにしています。</p>
+	<div class="flex anchor relative">
+		<h4 id="spa-example-worker-code">SPAの例：Workerコード</h4>
+		<a href="https://blog.cloudflare.com/#spa-example-worker-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このブログで最初に見た<a href="https://github.com/korinne/example-spa-worker" target="_blank" rel="noopener noreferrer"><u>「Cloudflareへデプロイ」</u></a>の例を見てみましょう。<code>api/index.js</code>で、Hyperdriveを経由してホストデータベースに接続するAPIを（Honoを使用して）定義しました。</p>
+	<pre class="language-Rust"><code class="language-Rust">import { Hono } from "hono";
+import postgres from "postgres";
+import booksRouter from "./routes/books";
+import bookRelatedRouter from "./routes/book-related";
+
+const app = new Hono();
+
+// Setup SQL client middleware
+app.use("*", async (c, next) =&gt; {
+ // Create SQL client
+ const sql = postgres(c.env.HYPERDRIVE.connectionString, {
+   max: 5,
+   fetch_types: false,
+ });
+
+ c.env.SQL = sql;
+
+ // Process the request
+ await next();
+
+ // Close the SQL connection after the response is sent
+ c.executionCtx.waitUntil(sql.end());
+});
+
+app.route("/api/books", booksRouter);
+app.route("/api/books/:id/related", bookRelatedRouter);
+
+
+export default {
+ fetch: app.fetch,
+};</code></pre>
+	<p>デプロイすると、アプリのアーキテクチャは次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<p>Smart PlacementがWorkerをデータベースの近くに移すると、こんな感じになります：</p>
+	<div style="position: relative; padding-top: 46.844919786096256%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ac4737ba9a53e0d4285654e7dfeaac75/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fac4737ba9a53e0d4285654e7dfeaac75%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-rendering-ssr">サーバーサイドレンダリング（SSR）</h3>
+		<a href="https://blog.cloudflare.com/#server-side-rendering-ssr" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サーバー上でレンダリングを処理したいなら、当社は多くの一般的な <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>フルスタックフレームワーク</u></a>をサポートしています。</p>
+	<p>以下は先ほどの例の別バージョンで、React Router v7のサーバーサイドレンダリングを使用しています：</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-router-postgres-ssr-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>また、Next.jsを<a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>OpenNextアダプタ</u></a>や<a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>フレームワークガイドに記載されている他のフレームワーク</u></a>で使用することもできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="deploy-to-workers-with-as-few-changes-as-possible">できる限り少ない変更でWorkersにデプロイする</h2>
+		<a href="https://blog.cloudflare.com/#deploy-to-workers-with-as-few-changes-as-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="node-js-compatibility">Node.js互換性</h3>
+		<a href="https://blog.cloudflare.com/#node-js-compatibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Node.js APIのサポートも引き続き進めており、最近<code>crypto</code>、<code>tls</code>、<code>net</code>、<code>dns</code>のモジュールのサポートが追加されています。これにより、これらのNode.jsモジュールに依存する既存のアプリケーションやライブラリを、Workersで実行できるようになりました。例を見てみましょう：</p>
+	<p>以前は、<code>mongodb</code>パッケージを使用しようとすると、次のエラーが発生しました：</p>
+	<pre class="language-Rust"><code class="language-Rust">Error: [unenv] dns.resolveTxt is not implemented yet!</code></pre>
+	<p>この問題は、<code>mongodb</code>が<code>node:dns</code>モジュールを使用してホスト名のDNSルックアップを行った時に発生しました。この問題を回避しても、<code>mongodb</code>が<code>node:tls</code>を使用してデータベースにセキュアに接続しようとした時に、別のエラーが発生したでしょう。</p>
+	<p>現在、<code>mongodb</code>は期待通り使えます。<code>node:dns</code>と<code>node:tls</code>がサポートされているからです。<code>node:crypto</code>と<code>node:net</code>に依存するライブラリについても、同じことが言えます。</p>
+	<p>また、Workersは、<a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u>process.envオブジェクトの環境変数と機密情報を表示</u></a>するようになっています。<code>nodejs_compat</code>互換性フラグがオンになっていて、互換性の日付が<code>2025-04-01</code>以降に設定されている場合です。一部のライブラリ（および開発者）はこのオブジェクトに変数が入力されることを想定して、それをトップレベルの設定に使っています。微調整せずにいれば、ライブラリが不意に壊れ、開発者はCloudflare Workersで変数を処理するための追加ロジックを作成しなければならなかったかもしれません。</p>
+	<p>現在は、Node.jsにアクセスするのと同じように変数にアクセスできるようになりました。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const LOG_LEVEL = process.env.LOG_LEVEL || "info";</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="additional-worker-cpu-time">WorkerのCPU処理時間を延長</h3>
+		<a href="https://blog.cloudflare.com/#additional-worker-cpu-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>WorkerリクエストあたりのCPU時間の上限を引き上げ</u></a>、30秒から5分にしました。これにより、計算負荷の高い操作をより長い時間、タイムアウトなしで実行できます。例えば、新しくサポートされた<code>node:crypto</code>モジュールを使用して非常に大きなファイルをハッシュする場合、CPU負荷の高い操作を外部のコンピューティングに依存せず、Workersで行うことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-builds">Workers Builds</h3>
+		<a href="https://blog.cloudflare.com/#workers-builds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>も改善しました。GitリポジトリをWorkerに接続できるため、変更をプッシュするたびにビルドとデプロイが自動でできます。<a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>Workers Builds</u></a>はBuilder Day 2024で発表されましたが、当初はリポジトリを既存のWorkerに接続することしかできませんでした。今では、リポジトリを持ち込んで新しい<a href="http://blog-2711" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>としてすぐにデプロイできるので、プロジェクトの移行に必要なセットアップやボタンクリックの量を減らすことができます。Workers Buildsのビルドの起動遅延を<b>6秒</b>短縮して、パフォーマンスを改善しました。現在は平均<b>10秒</b>以内に起動します。APIの応答性も上がり、Smart Placementのおかげで遅延は<b>7分の1</b>に短縮されています。</p>
+	<ul>
+		<li>
+			<p><b>注</b>：<a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>Builder Day 2024</u></a>中に発表した通り、2025年4月2日からWorkers Buildsは新しい料金体系モデルに移行しました。Freeプランユーザーのビルド時間は3,000分が上限となり、Workers有料サブスクリプションユーザーには、「6,000分の無料枠が含まれ、それ以降はビルド1分あたり0.005ドル」という新しい従量課金モデルが適用されます。また、同時ビルドのサポート強化として、有料プランに同時ビルド6回を含めました。複数のプロジェクトやMonorepoでの作業が容易になります。料金の詳細は<a href="https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>でご確認ください。</p>
+		</li>
+	</ul>
+	<p>また、Workers Buildsを<a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>非本番ブランチで実行</u></a>するように設定することもできます。プレビューURLが<a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>コメントとしてGitHubに投稿</u></a>されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="bind-the-images-api-to-your-worker">Images APIをWorkerにバインド</h3>
+		<a href="https://blog.cloudflare.com/#bind-the-images-api-to-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは先週、Imagesのバインディングによって柔軟でプログラマティックな画像最適化のワークフローがどう実現するかについて、<a href="https://blog.cloudflare.com/improve-your-media-pipelines-with-the-images-binding-for-cloudflare-workers"><u>ブログ記事</u></a>を書きました。</p>
+	<p>これまでは、Workerで<code>fetch()</code>を呼び出すことで画像最適化機能にアクセスできました。この方法では、オリジナルの画像がURLで取得可能である必要があります。しかし、場合によってはURLからアクセスできない画像もあります。例えば、ユーザーがアップロードした画像を圧縮してからストレージにアップロードしたい場合などです。Imagesのバインディング機能を使うと、画像のボディをバイトストリームとして操作することで、画像を直接最適化できます。</p>
+	<p>詳しくは、<a href="https://developers.cloudflare.com/images/tutorials/optimize-user-uploaded-image" target="_blank" rel="noopener noreferrer"><u>R2にアップロードする前に画像を変換</u></a>するためのCloudflareガイドをご参照ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">本日構築を開始</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>皆さんが何を構築されるのか楽しみです。当社は引き続き、Workersでのアプリケーション作成をより簡単にするための新機能や改善に注力します。そうした取り組みは、コミュニティからのフィードバックを反映してさらに改善されます。皆さんもぜひ<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discordに参加</u></a>して、議論に参加していただければ嬉しいです。</p>
+	<p><b>開始するための有用なリソース：</b></p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>フレームワークガイド</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>移行ガイド</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>静的アセットドキュメント</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Cloudflare Viteプラグインドキュメント</u></a></p>
+		</li>
+	</ul>
+	<p></p>
+</div>

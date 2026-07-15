@@ -1,0 +1,159 @@
+<div class="mb2 gray5">Lesezeit: 5&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-cloudflare-radar">English</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-cloudflare-radar">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-radar">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-radar">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Q5o5E6UZ7QFelqUqVEQhR/ac4b3c4c644659a7f461f40fec8e9dea/introducing-cloudflare-radar.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Der Mond bestimmt Ebbe und Flut, doch die Sonne bestimmt das Auf und Ab der Internetnutzung. Überall auf der Welt kommt die Nutzung während der Nacht zur Ruhe und steigt am Morgen an. Die Internetnutzung folgt auch den von Menschen geschaffenen Mustern. So fiel sie, als Menschen für das medizinische Personal im Kampf gegen COVID-19 applaudierten oder als sie ihre Aktivitäten unterbrachen, um die Ansprachen ihrer Staatsoberhäupter zu hören. Genauso sinkt die Internetnutzung aus religiösen Gründen.</p>
+	<p></p>
+	<p>Während Menschen ihre Spuren im Internet hinterlassen, hinterlassen automatisierte Systeme ebenfalls Spuren. Diese Systeme können nützliche Arbeit verrichten (z. B. Suchmaschinen-Datenbanken aufbauen) und sie können Schaden anrichten (z. B. Inhalte scrapen oder Websites und Webapplikationen angreifen).</p>
+	<p>Die Internetnutzung (und die Angriffe) nehmen ständig zu. Zoomen Sie in einen beliebigen Tag hinein und Sie sehen die vertraute Welle, die den Tag und die Nacht im Internet widerspiegelt. Zoomen Sie heraus und Sie erkennen die Wochenenden, während derer die Internetnutzung oft etwas nachlässt. Zoomen Sie noch weiter heraus und Sie sehen die gelegentlichen Schwankungen durch Feiertage. Zoomen Sie noch weiter heraus und Sie sehen, wie die Internetnutzung insgesamt unaufhaltsam zunimmt.</p>
+	<p>Und Angriffe wachsen nicht einfach nur mit, sie verändern sich auch. Angreifer entwickeln neue Techniken, während alte Techniken Dauerbrenner bleiben. Die DDoS-Aktivität setzt sich Tag und Nacht fort und wandert von einem Opfer zum anderen. Automatisierte Scan-Tools suchen nach Schwachstellen in allem, buchstäblich allem, was mit dem Internet verbunden ist.</p>
+	<p>Manchmal fällt das Internet in einem Land aus, vielleicht weil irgendwo unter dem Meer ein Kabel gebrochen ist oder durch Behördeneingriffe. Auch das ist etwas, das wir verfolgen und messen.</p>
+	<p>All diese Aktivitäten, gute und böswillige, zeigen sich in den Trends und Details, die wir bei Cloudflare verfolgen, um unseren Service zu verbessern und unsere Kunden zu schützen. Bis jetzt waren diese Erkenntnisse nur intern bei Cloudflare verfügbar, aber heute starten wir einen neuen Dienst namens <a href="http://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, der die Muster des Internets sichtbar macht.</p>
+	<p>Jede Sekunde verarbeitet Cloudflare durchschnittlich 18 Millionen HTTP-Anfragen und 6 Millionen DNS-Anfragen. Mit 1 Milliarde eindeutiger IP-Adressen, die an das Netzwerk von Cloudflare angeschlossen sind, haben wir eine der repräsentativsten Sichten auf den Internet-Traffic weltweit.</p>
+	<p>Und durch das Blockieren von 72 Milliarden Cyber-Bedrohungen pro Tag hat Cloudflare auch eine einzigartige Position beim Verstehen und Abwehren von Internet-Bedrohungen.</p>
+	<p>Unser Ziel ist es, den Aufbau eines besseren Internets zu unterstützen. Dazu werden wir basierend auf den gesammelten Daten Erkenntnisse, Bedrohungen und Trends veröffentlichen. Wir möchten jedem helfen zu verstehen, was im Internet geschieht: aus Sicherheits-, Performance- und Nutzungsperspektive. Jeder sollte einfach auf den Dienst zugreifen und die Antworten auf seine Fragen finden können.</p>
+	<p>Heute bringen wir drei Schlüsselkomponenten heraus: Radar Internet Insights, Radar Domain Insights und Radar IP Insights.</p>
+	<div class="flex anchor relative">
+		<h3 id="radar-internet-insights">Radar Internet Insights</h3>
+		<a href="https://blog.cloudflare.com/#radar-internet-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ganz oben bei Cloudflare Radar zeigen wir die neuesten Nachrichten über Ereignisse, die sich derzeit im Internet abspielen. Dazu gehören Neuigkeiten zur Einführung neuer Technologien, Browser oder Betriebssysteme. Außerdem halten wir alle Nutzer über interessante Ereignisse rund um die Entwicklungen im Internet-Traffic auf dem Laufenden. Dabei kann es sich um Traffic-Muster handeln, die in bestimmten Ländern zu beobachten sind, oder um Muster im Zusammenhang mit Ereignissen wie der COVID-19-Pandemie.</p>
+	<p>Melden Sie sich für <a href="http://radar.cloudflare.com/#alert-signup" target="_blank" rel="noopener noreferrer">Radar-Benachrichtigungen</a> an, um immer auf dem neuesten Stand zu bleiben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79Idg4AHiSbILJbJjukWeT/87eef7cc9e39b56e97bde0a59d02e6d8/Screenshot-2020-09-30-at-13.05.43-1.png" alt="" class="kg-image" width="2000" height="175" loading="lazy">
+
+	</figure>
+	<p>Unterhalb des Nachrichtenbereichs finden Nutzer Trenddaten, die schnell aktualisiert werden. Diese können alle weltweit oder nach Ländern betrachtet werden. Die Daten sind für mehrere Zeiträume verfügbar: letzte Stunde, letzte 24 Stunden, letzte 7 Tage. Wir werden demnächst den 30-Tage-Zeitrahmen zur Verfügung stellen, um bei der Untersuchung längerfristiger Trends behilflich zu sein.</p>
+	<div class="flex anchor relative">
+		<h3 id="change-in-internet-traffic">Veränderungen im Internet-Traffic</h3>
+		<a href="https://blog.cloudflare.com/#change-in-internet-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sie können bestimmte Länder genauer untersuchen. Cloudflare Radar zeigt Ihnen die Veränderungen des gesamten Internet-Traffics, die unser Netzwerk für dieses Land verzeichnet hat. Auf der rechten Seite blenden wir außerdem eine Infobox mit einer Momentaufnahme interessanter Datenpunkte ein.</p>
+	<div class="flex anchor relative">
+		<h3 id="most-popular-and-trending-domains">Beliebteste und angesagteste Domains</h3>
+		<a href="https://blog.cloudflare.com/#most-popular-and-trending-domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2F2NBHKFIB5satnpWt76C9/0e122279e58feb92200bfd5d8af510ea/image4-14.png" alt="" class="kg-image" width="1999" height="934" loading="lazy">
+
+	</figure>
+	<p>Wir haben einen Algorithmus, der weltweit und für einzelne Länder berechnet, welche Domains am beliebtesten sind und seit kurzem im Trend liegen (d. h. eine große Veränderung in der Popularität erfahren haben). Dienste mit mehreren Domains und Subdomains werden zur besseren Vergleichbarkeit aggregiert. Wir zeigen hier den relativen Rang der Domains auf und können große Veränderungen in der Rangfolge hervorheben, um neue Trends aufzuzeigen, sobald sie sich abzeichnen.</p>
+	<p>Der Trenddomain-Bereich befindet sich noch in der Beta-Phase, denn wir trainieren unseren Algorithmus noch darauf, die nächsten großen Trends optimal zu erkennen, sobald sie sich abzeichnen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GmRZrAqBZJgDQVI0O0aB/23c941e07e8b54e0a822d335d92f9d3d/Screenshot-2020-09-30-at-13.09.16.png" alt="" class="kg-image" width="2446" height="614" loading="lazy">
+
+	</figure>
+	<p>Es gibt auch eine Suchleiste, mit der man nach einer bestimmten Domain oder IP-Adresse suchen kann, um detaillierte Informationen über diese zu erhalten. Weitere Informationen dazu finden Sie unten.</p>
+	<div class="flex anchor relative">
+		<h3 id="attack-activity">Angriffs-Aktivitäten</h3>
+		<a href="https://blog.cloudflare.com/#attack-activity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der Bereich zu Angriffsaktivitäten enthält Informationen über verschiedene Arten von Cyberangriffen, die von Cloudflare beobachtet wurden. Zunächst zeigen wir die Angriffe, die durch unsere DoS-Abwehrsysteme auf Layer 3 und 4 bekämpft wurden. Wir zeigen sowohl das verwendete Angriffsprotokoll als auch die Veränderung des Angriffsvolumens über den gewählten Zeitraum.</p>
+	<p>Zweitens zeigen wir Layer-7-Bedrohungsinformationen basierend auf Anfragen, die wir blockiert haben. Layer-7-Anfragen werden durch eine Vielzahl von Systemen blockiert (z. B. unsere WAF, unser Layer-7-DDoS-Abwehrsystem und unsere vom Kunden konfigurierbare Firewall). Wir zeigen das für die Blockierung verantwortliche System sowie die Veränderung von gesperrten Anfragen während des gewählten Zeitrahmens.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oEH4EORTBg3NPgzN2WQpC/2b93f9bfdff17b60ee0ad0eaaca28083/image3-16.png" alt="" class="kg-image" width="1999" height="487" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="technology-trends">Technologie-Trends</h3>
+		<a href="https://blog.cloudflare.com/#technology-trends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3R1gyiADaQJlqoyburimEr/70ccf25fdfe7463f244225f29bf477e2/image5-9.png" alt="" class="kg-image" width="1999" height="522" loading="lazy">
+
+	</figure>
+	<p>Basierend auf unseren Analytics zu HTTP-Anfragen können wir Trends über eine Vielzahl von Datenpunkten zeigen. Dazu gehört die Verteilung des Traffics von Mobilgeräten im Vergleich zu Desktops oder der Prozentsatz des Traffics, der als Bot-Traffic erkannt wird. Wir befassen uns auch mit längerfristigen Trends wie der Nutzung von HTTPS oder dem Anteil von IPv6.</p>
+	<p>Im unteren Abschnitt wird angezeigt, welche Browser weltweit und in einem ausgewählten Land am beliebtesten sind. In diesem Beispiel haben wir Vietnam ausgewählt. Sie können sehen, dass über 6 % der Nutzer den lokalen Browser Cốc Cốc verwenden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QLECuE6vyJQf6LobfmMHt/7689c0299ab45d9fdab794b29ddf7ac0/Screenshot-2020-09-30-at-13.10.36.png" alt="" class="kg-image" width="2000" height="782" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="radar-domain-insights">Radar Domain Insights</h3>
+		<a href="https://blog.cloudflare.com/#radar-domain-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j1vL5TGK1XlK6hN7lYi1T/e6e19dbad16c8d7bce119f780a34856e/image6-7.png" alt="" class="kg-image" width="1999" height="510" loading="lazy">
+
+	</figure>
+	<p>Wir geben Nutzern die Möglichkeit, eine einzelne Domain genauer zu analysieren. Sie können sich das globale Ranking sowie Sicherheitsinformationen ansehen. So kann jeder Nutzer potenzielle Bedrohungen und Risiken erkennen.</p>
+	<p>Um Domains oder Hostnamen in Radar nachzuschlagen, geben Sie diese auf der Radar-Homepage zu Internet Insights in das Suchfeld bei den Top-Domains ein.</p>
+	<p>Angenommen, Sie suchen nach cloudflare.com. Sie werden zu einer domainspezifischen Seite mit Informationen über cloudflare.com geführt.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56UTSgYfXQdjQkNTAXr8X8/60b8113b88fac416d1d87d81631e2cd5/Screenshot-2020-09-30-at-13.11.19.png" alt="" class="kg-image" width="2000" height="200" loading="lazy">
+
+	</figure>
+	<p>Oben bieten wir einen Überblick über die Konfiguration der Domain mit Domain Badges. Von hier aus können Sie auf einen Blick erkennen, welche Technologien die Domain verwendet. Für cloudflare.com können Sie sehen, dass TLS, IPv6, DNSSEC und eSNI unterstützt werden. Es gibt auch einen Hinweis auf das Alter der Domain (seit der Registrierung) und ihre weltweite Popularität.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xHjUJ3abc8x7bNJpKMpbU/87bbb6d35039f8221ce7f566523c5fde/image12-1.png" alt="" class="kg-image" width="1944" height="588" loading="lazy">
+
+	</figure>
+	<p>Unten finden Sie die Inhaltskategorien der Domain. Wenn Sie eine Domain finden, die sich in der falschen Kategorie befindet, geben Sie uns bitte über unser <a href="https://radar.cloudflare.com/categorization-feedback" target="_blank" rel="noopener noreferrer">Feedback zur Domain-Kategorisierung</a> Bescheid.</p>
+	<p>Anhand unserer Domain-Ranking-Formel zeigen wir auch globale Popularitätstrends. Bei Domains für ein globales Publikum gibt es außerdem eine Karte mit Informationen über die Popularität nach Ländern.</p>
+	<div class="flex anchor relative">
+		<h3 id="radar-ip-insights">Radar IP Insights</h3>
+		<a href="https://blog.cloudflare.com/#radar-ip-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Onr2WegTg5HRfaMDrjluy/af28f825f0ed51d5cf97f37eca6c41d3/Screenshot-2020-09-30-at-13.12.58.png" alt="" class="kg-image" width="2046" height="1654" loading="lazy">
+
+	</figure>
+	<p>Für eine einzelne IP-Adresse (anstelle einer Domain) zeigen wir verschiedene Informationen an. Um eine IP-Adresse nachzuschlagen, fügen Sie diese einfach in die Suchleiste innerhalb der Top-Domains in den Radar Internet Insights ein. Zum schnellen Nachschlagen Ihrer eigenen IP rufen Sie einfach <a href="http://radar.cloudflare.com/me" target="_blank" rel="noopener noreferrer">radar.cloudflare.com/me</a> auf.</p>
+	<p>Für IPs zeigen wir das Netzwerk (ASN) und geografische Informationen an. Für Ihre eigene IP zeigen wir auch detailliertere Standortinformationen und laden Sie dazu ein, die Geschwindigkeit Ihrer Internetverbindung mit <a href="http://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">speed.cloudflare.com</a> zu überprüfen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pOX8JAUsG6ARg59oKRWUq/07b295d2c62ec9b5d2c31905dc7ebae7/image11-3.png" alt="" class="kg-image" width="1999" height="550" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Nächste Schritte</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei Cloudflares Vorhaben, Wissen über das Internet leichter zugänglich zu machen, ist das aktuelle Produkt erst der Anfang. In den nächsten Wochen und Monaten werden wir weitere Datenpunkte und die Funktionalität des 30-Tage-Zeitrahmens hinzufügen. &nbsp;Außerdem können Nutzer die Diagramme dann nicht nur nach Ländern, sondern auch nach Kategorisierungen (z. B. nach Branchen) filtern.</p>
+	<p>Updates folgen, halten Sie sich also auf dem Laufenden.</p>
+</div>

@@ -1,0 +1,338 @@
+<div class="mb2 gray5">12 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/18-november-2025-outage">English</a>, <a href="https://blog.cloudflare.com/zh-tw/18-november-2025-outage">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/18-november-2025-outage">Français</a>, <a href="https://blog.cloudflare.com/de-de/18-november-2025-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/18-november-2025-outage">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/18-november-2025-outage">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/18-november-2025-outage">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/18-november-2025-outage">Português</a>, <a href="https://blog.cloudflare.com/es-es/18-november-2025-outage">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/18-november-2025-outage">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/18-november-2025-outage">Polski</a>, <a href="https://blog.cloudflare.com/nl-nl/18-november-2025-outage">Nederlands</a> y <a href="https://blog.cloudflare.com/zh-cn/18-november-2025-outage">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9f2k63fiixI2YXDgsnbGq/4d156aa83c47ff6cecf3bd5c747126ef/unnamed__1_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>El 18 de noviembre de 2025 a las 11:20 UTC (todas las horas de este blog corresponden a UTC), la red de Cloudflare comenzó a tener fallas importantes en la distribución del tráfico de red principal. Los usuarios de Internet que intentaban entrar en los sitios de nuestros clientes veían una página de error que señalaba una falla en la red de Cloudflare. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ony9XsTIteX8DNEFJDddJ/7da2edd5abca755e9088002a0f5d1758/BLOG-3079_2.png" alt="HTTP error page displayed during the incident" class="kg-image" width="1258" height="854" loading="lazy">
+	</figure>
+	<p><b>El problema no fue causado, ni directa ni indirectamente, por un ciberataque o una actividad maliciosa de ningún tipo.</b> El incidente se desencadenó por una modificación en los permisos de uno de nuestros sistemas de bases de datos, lo que ocasionó que se generaran múltiples registros en un “archivo de características” usado por nuestro sistema de gestión de bots. A su vez, ese archivo de características duplicó su tamaño. El archivo de características, que resultó más grande de lo previsto, se distribuyó después a todas las máquinas de nuestra red.</p>
+	<p>El software que se ejecuta en estas máquinas para dirigir el tráfico a través de nuestra red lee este archivo de características para mantener nuestro sistema de gestión de bots actualizado con las amenazas en constante evolución. El software imponía un límite al tamaño del archivo de características, que resultó menor que el tamaño duplicado del archivo. Eso hizo que el software fallara.</p>
+	<p>Al principio sospechamos equivocadamente que los síntomas se debían a un ataque DDoS masivo, pero luego identificamos el problema real y logramos detener la propagación del archivo de características sobredimensionado, sustituyéndolo por una versión anterior.El tráfico principal fluía con normalidad en gran medida a las 14:30. En las horas posteriores nos dedicamos a reducir la sobrecarga en distintas áreas de nuestra red, mientras el tráfico regresaba rápidamente.A las 17:06, todos los sistemas de Cloudflare funcionaban con normalidad.</p>
+	<p>Lamentamos las consecuencias que esto tuvo para nuestros clientes y para la comunidad de Internet en general.Dada la importancia de Cloudflare en el ecosistema de Internet, cualquier interrupción de nuestros sistemas es inaceptable. Que nuestra red no haya podido enrutar tráfico durante un período es algo que afecta profundamente a cada integrante de nuestro equipo. Reconocemos que hoy te hemos decepcionado.</p>
+	<p>Esta publicación ofrece una explicación detallada de lo que sucedió y de los sistemas y procesos que fallaron. Este es apenas el inicio —aunque no el final— de las medidas que pensamos implementar para evitar que una interrupción como esta se repita.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-outage">La interrupción</h2>
+		<a href="https://blog.cloudflare.com/#the-outage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El siguiente gráfico muestra el volumen de errores HTTP 5xx que se produjeron en la red de Cloudflare. Normalmente, este debería ser muy bajo, y lo fue hasta el comienzo de la interrupción. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GdZcWhEqNjwOmLcsKOXT0/fca7e6970d422d04c81b2baafb988cbe/BLOG-3079_3.png" alt="Volume of HTTP 5xx requests served by the Cloudflare network" class="kg-image" width="1507" height="733" loading="lazy">
+	</figure>
+	<p>El volumen anterior a las 11:20 es la línea de referencia esperada de errores 5xx observados en nuestra red. El pico y las fluctuaciones posteriores muestran que nuestro sistema está fallando debido a la carga del archivo de características incorrecto. Lo notable es que nuestro sistema se recuperaba durante un período. Fue un comportamiento muy inusual para un error interno.</p>
+	<p>La explicación era que el archivo se generaba cada cinco minutos mediante una consulta que se ejecutaba en un clúster de base de datos ClickHouse, que se actualizaba gradualmente para mejorar la gestión de permisos. Los datos erróneos solo se generaban si la consulta se ejecutaba en una parte del clúster que se había actualizado. Como consecuencia, cada cinco minutos existía la posibilidad de que se generara un conjunto de archivos de configuración, ya sea bueno o malo, y que se propagara rápidamente por la red.</p>
+	<p>Esta fluctuación generó confusión sobre lo que estaba sucediendo, ya que el sistema completo se recuperaba y luego volvía a fallar, debido a la distribución intermitente de archivos de configuración correctos e incorrectos en nuestra red. Inicialmente, esto nos llevó a creer que podría deberse a un ataque. Finalmente, cada nodo de ClickHouse generó el archivo de configuración incorrecto y la fluctuación se estabilizó en un estado de error.</p>
+	<p>Los errores continuaron hasta que se identificó y resolvió el problema subyacente a partir de las 14:30. Para resolver el problema, detuvimos la generación y la propagación del archivo de características erróneo e insertamos manualmente un archivo válido en la cola de distribución. Y luego, forzamos un reinicio de nuestro proxy central.</p>
+	<p>La cola larga restante en el gráfico anterior corresponde a nuestro equipo reiniciando los servicios restantes que habían entrado en un estado incorrecto, con el volumen de códigos de error 5xx que volvió a la normalidad a las 17:06.</p>
+	<p>Los siguientes servicios se vieron afectados:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Servicio / Producto</b></p>
+				</th>
+				<th>
+					<p><b>Descripción del impacto</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Servicios básicos de CDN y seguridad</p>
+				</td>
+				<td>
+					<p>Códigos de estado HTTP 5xx. La captura de pantalla en la parte superior de esta publicación muestra la página de error común que veían los usuarios.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Turnstile</p>
+				</td>
+				<td>
+					<p>No se podía cargar Turnstile.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Workers KV</p>
+				</td>
+				<td>
+					<p>Workers KV registró un aumento considerable de errores HTTP 5xx porque las solicitudes a su puerta de enlace principal fallaron al producirse un error en el proxy central.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Panel de control</p>
+				</td>
+				<td>
+					<p>Si bien el panel funcionaba en gran medida, la mayoría de los usuarios no pudo acceder porque Turnstile no estaba disponible en la página de inicio de sesión.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Seguridad del correo electrónico</p>
+				</td>
+				<td>
+					<p>Si bien el procesamiento y la distribución del correo electrónico no se vieron afectados, observamos una pérdida temporal de acceso a una fuente de reputación de IP. Esto redujo la eficacia de la detección de spam e impidió que se activaran algunas alertas sobre dominios nuevos, sin consecuencias críticas para los clientes. También observamos fallas en algunas acciones de movimiento automático. Todos los mensajes afectados han sido revisados y corregidos.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Access</p>
+				</td>
+				<td>
+					<p>Las fallas de autenticación fueron generalizadas para la mayoría de los usuarios, desde que comenzó el incidente hasta que se aplicó la reversión a las 13:05. Las sesiones de Access que ya estaban activas continuaron funcionando sin problemas.</p>
+					<p>
+					</p>
+					<p>Cada intento de autenticación fallido mostraba una página de error, por lo tanto, ningún usuario pudo acceder a la aplicación mientras duró la falla.Los inicios de sesión exitosos durante este período se registraron correctamente durante este incidente.&nbsp;</p>
+					<p>
+					</p>
+					<p>Cualquier actualización de configuración de Access que se intentara en ese momento habría fallado por completo o se habría propagado muy lentamente. Todas las actualizaciones de configuración se han recuperado.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Además de generar errores HTTP 5xx, notamos que las respuestas de nuestra CDN se volvieron mucho más lentas durante el período de impacto.La causa fue que nuestros sistemas de depuración y monitoreo consumieron mucho CPU, ya que agregan automáticamente información extra para entender mejor los errores que no se detectan.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-processes-requests-and-how-this-went-wrong-today">Cómo Cloudflare procesa las solicitudes y por qué se produjo la falla de hoy</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-processes-requests-and-how-this-went-wrong-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cada solicitud a Cloudflare sigue una ruta bien definida a través de nuestra red. Podría provenir de un navegador que carga una página web, una aplicación móvil que llama a una API o tráfico automatizado de otro servicio. Las solicitudes se procesan primero en nuestra capa HTTP y TLS, después pasan al sistema de proxy central (denominado FL o “Frontline”) y finalmente a Pingora, que busca en la caché o trae los datos del servidor de origen si hace falta.</p>
+	<p>Anteriormente compartimos más detalles sobre cómo funciona el proxy central <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>aquí</u></a>.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qlWXM3gh4SaYYvsGc7mFV/99294b22963bb414435044323aed7706/BLOG-3079_4.png" alt="Diagram of our reverse proxy architecture" class="kg-image" width="1999" height="846" loading="lazy">
+	</figure>
+	<p>Cuando una solicitud pasa por el proxy central, se activan los distintos servicios de seguridad y rendimiento de nuestra red. El proxy aplica la configuración personalizada de cada cliente, que incluye desde reglas de seguridad WAF y protección DDoS hasta el enrutamiento del tráfico hacia Developer Platform y R2.Esto se logra mediante un conjunto de módulos específicos del dominio que aplican las reglas de configuración y políticas al tráfico que pasa por nuestro proxy.</p>
+	<p>Uno de esos módulos, gestión de bots, fue la causa de la interrupción de hoy.&nbsp;</p>
+	<p>La <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>gestión de bots</u></a> de Cloudflare incluye, entre otros sistemas, un modelo de aprendizaje automático que utilizamos para generar puntuaciones de bots para cada solicitud que pasa por nuestra red. Nuestros clientes utilizan las puntuaciones de bots para controlar qué bots tienen autorización para acceder o no a sus sitios.</p>
+	<p>El modelo toma como entrada un archivo de configuración de "características". En este contexto, una característica es un rasgo individual que el modelo de aprendizaje automático utiliza para determinar si la solicitud se automatizó o no. El archivo de configuración de características es un conjunto de características individuales.</p>
+	<p>Este archivo de características se actualiza cada pocos minutos y se publica en toda nuestra red, lo que nos permite reaccionar a las variaciones en los flujos de tráfico en Internet. Nos permite reaccionar a nuevos tipos de bots y ataques de bots. Por lo tanto, es fundamental que se implemente de forma frecuente y rápida, ya que los ciberdelincuentes cambian sus tácticas con rapidez.</p>
+	<p>Un cambio en la forma en que ClickHouse ejecuta las consultas (explicado más adelante), que genera este archivo, hizo que se produjera una gran cantidad de filas de “características” duplicadas.Esto modificó el tamaño del archivo de configuración de funciones de tamaño fijo anterior, lo que provocó que el módulo de bots desencadenara un error.</p>
+	<p>Como consecuencia, el sistema proxy central que gestiona el procesamiento del tráfico de nuestros clientes generó códigos de error HTTP 5xx para todo el tráfico que dependía del módulo de bots. Esto también afectó a Workers KV y a Access, que dependen del proxy central.</p>
+	<p>Independientemente de este incidente, estábamos y actualmente estamos migrando el tráfico de nuestros clientes a una nueva versión de nuestro servicio proxy, conocido internamente como <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>FL2</u></a>. Ambas versiones se vieron afectadas por el problema, aunque el impacto observado fue diferente.</p>
+	<p>Los clientes implementados en el nuevo motor proxy FL2 observaron errores HTTP 5xx. Los clientes de nuestro anterior motor proxy, conocido como FL, no observaron errores, pero las puntuaciones de bots no se generaban correctamente, lo que hacía que todo el tráfico recibiera una puntuación de bot de cero. Los clientes que tenían reglas implementadas para bloquear bots habrían experimentado una gran cantidad de falsos positivos. Los clientes que no utilizaban nuestra puntuación de bot en sus reglas no experimentaron ningún impacto.</p>
+	<p>Otro síntoma que observamos que nos confundió y nos hizo pensar que podría haber sido un ataque fue que la página de estado de Cloudflare dejó de funcionar. La página de estado está alojada completamente fuera de la infraestructura de Cloudflare, y no depende de esta.Si bien resultó ser una coincidencia, esto hizo que algunos miembros del equipo que diagnosticaban el problema creyeran que un ciberdelincuente podría estar atacando tanto nuestros sistemas como nuestra página de estado. Los visitantes de la página de estado en ese momento recibieron un mensaje de error:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LwbB5fv7vdoNRWWDGN7ia/dad8cef76eee1305e0216d74a813612b/BLOG-3079_5.png" alt="Error on the Cloudflare status page" class="kg-image" width="1999" height="478" loading="lazy">
+	</figure>
+	<p>En la sala de chat de incidentes internos, nos preocupaba que esto pudiera ser la continuación de la reciente <a href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/defending-the-cloud-azure-neutralized-a-record-breaking-15-tbps-ddos-attack/4470422" target="_blank" rel="noopener noreferrer"><u>ola de ataques DDoS</u></a> de gran volumen contra <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos"><u>Aisuru</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ph13HSsOGC0KYRfoeZmSy/46522e46ed0132d2ea551aef4c71a5d6/BLOG-3079_6.png" alt="Internal chat screenshot" class="kg-image" width="1188" height="278" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-query-behaviour-change">El cambio en el comportamiento de la consulta</h3>
+		<a href="https://blog.cloudflare.com/#the-query-behaviour-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Se mencionó anteriormente que un cambio en el comportamiento de la consulta subyacente hizo que el archivo de características tuviera una gran cantidad de filas duplicadas. El sistema de base de datos en cuestión utiliza el software ClickHouse.</p>
+	<p>Para contextualizar, es útil saber cómo funcionan las consultas distribuidas de ClickHouse. Un clúster de ClickHouse se compone de muchos fragmentos. Para acceder a los datos de todos los fragmentos, usamos lo que se conoce como tablas distribuidas (con tecnología del motor de tablas <code>Distributed</code>) en una base de datos que se llama <code>default</code>. El motor Distributed consulta las tablas subyacentes en una base de datos <code>r0</code>. Las tablas subyacentes son el lugar donde se almacenan los datos en cada fragmento de un clúster de ClickHouse.</p>
+	<p>Las consultas a las tablas distribuidas se ejecutan mediante una cuenta de sistema compartida. Para reforzar la seguridad y confiabilidad de las consultas distribuidas, estamos trabajando para que se ejecuten directamente con las cuentas de usuario originales.</p>
+	<p>Hasta hoy, los usuarios de ClickHouse solo veían las tablas de la base de datos <code>default</code> cuando consultaban los metadatos de las tablas en los sistemas de ClickHouse, como <code>system.tables</code> o <code>system.columns</code>.</p>
+	<p>Como los usuarios ya tienen acceso implícito a las tablas subyacentes en <code>r0</code>, hicimos un cambio a las 11:05 para explicitar este acceso, de modo que los usuarios también puedan ver los metadatos de estas tablas. Al asegurarse de que todas las subconsultas distribuidas se ejecuten con el usuario inicial, los límites de consulta y las concesiones de acceso se pueden evaluar de forma más precisa, evitando que una subconsulta incorrecta de un usuario afecte a otros.</p>
+	<p>El cambio explicado anteriormente hizo que todos los usuarios accedieran a metadatos precisos sobre las tablas a las que tienen acceso. Lamentablemente, antes se pensaba que la lista de columnas que devolvía una consulta como esta solo incluiría la base de datos "<code>default</code>":</p>
+	<p><code>SELECT
+			name,
+			type
+			FROM system.columns
+			WHERE
+			table = 'http_requests_features'
+			order by name;</code></p>
+	<p>Observa que la consulta no filtra por el nombre de la base de datos. Con la implementación gradual de las concesiones explícitas a los usuarios de un determinado clúster de ClickHouse, después del cambio realizado a las 11:05, la consulta anterior comenzó a devolver “duplicados” de columnas porque estas correspondían a tablas subyacentes almacenadas en la base de datos r0.</p>
+	<p>Lamentablemente, este fue el tipo de consulta que usó la lógica de generación de archivos de la función de gestión de bots para elaborar cada "característica" de entrada para el archivo mencionado al principio de esta sección.&nbsp;</p>
+	<p>La consulta anterior devolvería una tabla de columnas como la que se muestra (ejemplo simplificado).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZIC5X8vMM7ifbJc0vxgLD/49dd33e7267bdb03b265ee0acccf381d/Screenshot_2025-11-18_at_2.51.24%C3%A2__PM.png" alt="Example of code block" class="kg-image" width="548" height="121" loading="lazy">
+	</figure>
+	<p>Sin embargo, como parte de los permisos adicionales que se concedieron al usuario, la respuesta ahora contenía todos los metadatos del esquema <code>r0</code>, lo que efectivamente duplicó con creces las filas en la respuesta, afectando en última instancia el número de filas (es decir, características) en el archivo de salida final.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="memory-preallocation">Preasignación de memoria</h3>
+		<a href="https://blog.cloudflare.com/#memory-preallocation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cada módulo que funciona en nuestro servicio de proxy cuenta con límites diseñados para impedir que la memoria se consuma sin control y para reservar memoria de forma anticipada, mejorando así el rendimiento. En este caso específico, el sistema de gestión de bots tiene un límite en la cantidad de características de aprendizaje automático que se pueden usar en tiempo de ejecución. Actualmente, ese límite está establecido en 200, muy por encima de nuestro uso actual de unas 60 características. Una vez más, el límite existe porque, por motivos de rendimiento, preasignamos memoria para las características.</p>
+	<p>Cuando el archivo defectuoso con más de 200 características se propagó a nuestros servidores, se alcanzó este límite, lo que provocó un error grave en el sistema. A continuación, se muestra el código FL2 Rust que hace la comprobación y fue el origen del error no controlado:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/640fjk9dawDk7f0wJ8Jm5S/668bcf1f574ae9e896671d9eee50da1b/BLOG-3079_7.png" alt="code that generated the error" class="kg-image" width="1472" height="456" loading="lazy">
+	</figure>
+	<p>Esto causó el siguiente fallo crítico, lo que derivó en un error 5xx:</p>
+	<p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p>
+	<div class="flex anchor relative">
+		<h3 id="other-impact-during-the-incident">Otro impacto durante el incidente</h3>
+		<a href="https://blog.cloudflare.com/#other-impact-during-the-incident" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Otros sistemas que dependen de nuestro proxy central se vieron afectados durante el incidente. Esto incluyó Workers KV y Cloudflare Access. El equipo pudo disminuir el impacto en estos sistemas a las 13:04, al aplicar un parche en Workers KV que permitió saltar el proxy central. Después de eso, todos los sistemas que dependen de Workers KV (incluido Access) registraron menos errores.&nbsp;</p>
+	<p>El panel de Cloudflare también resultó afectado porque internamente se utiliza Workers KV y porque Cloudflare Turnstile forma parte del proceso de inicio de sesión.</p>
+	<p>Turnstile se vio afectado por la interrupción, y como consecuencia los clientes sin una sesión activa en el panel no pudieron acceder.Esto se manifestó como una disponibilidad reducida durante dos periodos: de 11:30 a 13:10 y de 14:40 a 15:30, como se observa en el siguiente gráfico.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nB2ZlYyXiGTNngsVotyjN/479a0f9273c160c63925be87592be023/BLOG-3079_8.png" alt="availability of Cloudflare internal APIs during the incident" class="kg-image" width="1999" height="674" loading="lazy">
+	</figure>
+	<p>El primer período, de 11:30 a 13:10, se debió al impacto en Workers KV, servicio del que dependen ciertas funciones del sistema de control y del panel. Esto se restauró a las 13:10, cuando Workers KV evitó el sistema proxy central.
+
+		El segundo período de impacto en el panel ocurrió después de restaurar los datos de configuración de la función. Una acumulación de intentos de inicio de sesión comenzó a saturar el panel. Esta acumulación, junto con los intentos de reintento, generó una latencia elevada, lo que redujo la disponibilidad del panel. La ampliación de la concurrencia en el plano de control permitió recuperar la disponibilidad hacia las 15:30.</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">Pasos de seguimiento y corrección</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Con los sistemas de nuevo activos y funcionando correctamente, ya iniciamos tareas para hacerlos más resistentes frente a fallas similares en el futuro. En particular, nosotros:</p>
+	<ul>
+		<li>
+			<p>Estamos fortaleciendo el procesamiento de archivos de configuración creados por Cloudflare, tal como hacemos con los datos generados por los usuarios</p>
+		</li>
+		<li>
+			<p>Estamos habilitando más interruptores de desactivación globales para características</p>
+		</li>
+		<li>
+			<p>Estamos evitando que los volcados de memoria u otros informes de errores sobrecarguen los recursos del sistema</p>
+		</li>
+		<li>
+			<p>Estamos revisando los modos de fallas para las condiciones de error en todos los módulos proxy centrales</p>
+		</li>
+	</ul>
+	<p>Hoy ha sido la peor interrupción de Cloudflare <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019"><u>desde 2019</u></a>. Hemos tenido interrupciones que han hecho que nuestro <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage"><u>panel de control</u></a> quedara inaccesible. Algunas de ellas han hecho que las <a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025"><u>características más nuevas</u></a> no estuvieran disponibles durante un tiempo. Sin embargo, en los últimos seis años o más, no hemos vuelto a sufrir una interrupción que detuviera la mayoría del tráfico esencial en nuestra red.</p>
+	<p>Una interrupción como la de hoy es inaceptable. Hemos diseñado nuestros sistemas para que soporten fallas y aseguren que el tráfico nunca se detenga.Las interrupciones que hemos tenido en el pasado siempre han sido el motor para desarrollar sistemas más sólidos y resilientes.</p>
+	<p>En nombre de todo el equipo de Cloudflare, quisiera disculparme por las molestias que causamos hoy en Internet. </p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>Hora (UTC)</p>
+				</th>
+				<th>
+					<p>Estado</p>
+				</th>
+				<th>
+					<p>Descripción</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>11:05</p>
+				</td>
+				<td>
+					<p>Normal.</p>
+				</td>
+				<td>
+					<p>Se implementó el cambio de control de acceso a la base de datos.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11:28</p>
+				</td>
+				<td>
+					<p>Comienza el impacto.</p>
+				</td>
+				<td>
+					<p>La implementación llega a los entornos de los clientes. Se observan los primeros errores en el tráfico HTTP del cliente.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11:32-13:05</p>
+				</td>
+				<td>
+					<p>El equipo investigó los niveles elevados de tráfico y los errores en el servicio de Workers KV.</p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>El primer síntoma fue una disminución en la velocidad de respuesta de Workers KV, que afectó a otros servicios de Cloudflare.</p>
+					<p>
+					</p>
+					<p>Se implementaron acciones de mitigación, como la manipulación del tráfico y la restricción de cuentas, para restablecer el servicio Workers KV a su nivel operativo habitual.</p>
+					<p>
+					</p>
+					<p>La primera prueba automatizada detectó el problema a las 11:31 y la investigación manual se inició a las 11:32. La llamada de incidente se creó a las 11:35.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13:05</p>
+				</td>
+				<td>
+					<p>Se implementó la omisión de Workers KV y Cloudflare Access y el impacto se redujo.</p>
+				</td>
+				<td>
+					<p>Durante la investigación aplicamos derivaciones internas en Workers KV y Cloudflare Access, lo que hizo que volvieran a una versión previa de nuestro proxy central.Aunque el problema también se presentaba en versiones anteriores de nuestro proxy, el impacto era menor, como se describe a continuación.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13:37</p>
+				</td>
+				<td>
+					<p>Se revirtió el archivo de configuración de gestión de bots a una versión anterior que funcionaba correctamente.</p>
+				</td>
+				<td>
+					<p>Estábamos seguros de que el archivo de configuración de la gestión de bots había desencadenado el incidente. Los equipos desarrollaron múltiples flujos de trabajo para reparar el servicio, destacando como el más ágil la recuperación de una versión anterior del archivo.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:24</p>
+				</td>
+				<td>
+					<p>Se detuvo la creación y la propagación de nuevos archivos de configuración de gestión de bots.</p>
+				</td>
+				<td>
+					<p>Identificamos que el módulo de gestión de bots era el origen de los errores 500 y que esto se debió a un archivo de configuración defectuoso. Suspendimos la instalación automática de nuevos archivos de configuración de gestión de bots.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:24</p>
+				</td>
+				<td>
+					<p>Prueba de archivo nuevo completada.</p>
+				</td>
+				<td>
+					<p>Se logró una recuperación satisfactoria con la versión anterior del archivo de configuración y luego se priorizó acelerar la solución a nivel global.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:30</p>
+				</td>
+				<td>
+					<p>Impacto principal resuelto.Los servicios impactados en cascada empezaron a registrar menos errores.</p>
+				</td>
+				<td>
+					<p>Se implementó a nivel global un archivo de configuración válido de gestión de bots, y la mayoría de los servicios volvieron a funcionar con normalidad.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>17:06</p>
+				</td>
+				<td>
+					<p>Todos los servicios se han resuelto. Termina el impacto.</p>
+				</td>
+				<td>
+					<p>Todos los servicios afectados se reiniciaron y las operaciones quedaron totalmente restablecidas.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+</div>

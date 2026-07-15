@@ -1,0 +1,271 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/background-removal">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7b207xuAFGx41WVvfDgOvs/398a1e15ff3b454ebd8c927979135733/BLOG-2928_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>先週、<a href="https://blog.cloudflare.com/ai-face-cropping-for-images"><u>Imagesの顔トリミング</u></a>について書きました。これは、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>でオープンソースの顔検出モデルを実行して、人の画像を大量に自動的にトリミングするものです。</p>
+	<p>AIワークロードのデプロイが極めて複雑であるのは、それほど昔のことではありません。これまで、リアルタイム推論には専用の（そして高コストの）ハードウェアが必要であり、デプロイのための標準的な抽象化が必ずしもあったわけではありませんでした。当社はまた、この追加のオーバーヘッドなしに、（当社を含む）開発者がAI機能を提供できるように、必ずしもWorkers AIを導入しているわけではありません。</p>
+	<p>AIを疑わしく思う方も、歓迎する人も、AIが爆発的に進歩しているのを見たことがある方も多いのではないでしょうか。ベンチマークを破る新しい計算モデルが毎週、発表されます。今や、かなり高い精度が期待されています。より重要な差別化要因とは、モデルが製品のインフラ内にどれだけ適合するか、開発者がその予測をどのように使用しているかです。</p>
+	<p>今週は、<a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#segment" target="_blank" rel="noopener noreferrer">Imagesの背景除去</a>をご紹介します。この機能は、Workers AI上で二値画像セグメンテーションモデルを実行し、画像内の主体を背景から分離するものです。モデルのテストでは、効率性と精度を確保するために、制御された意図的なアプローチを採用しました。</p>
+	<p>背景除去の開発のために、当社がさまざまな画像セグメンテーションモデルを評価した方法を紹介します。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-primer-on-image-segmentation">画像セグメンテーション入門</h2>
+		<a href="https://blog.cloudflare.com/#a-primer-on-image-segmentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コンピュータビジョンにおける画像セグメンテーションとは、画像を意味のある部分に分割するプロセスです。</p>
+	<p>セグメンテーションモデルは、各ピクセルを特定のカテゴリーに割り当てるマスクを生成します。この点は、すべてのピクセルを分類するのではなく、関心のある領域をマークする検出モデルとは異なります。<a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#gravity" target="_blank" rel="noopener noreferrer"><u>顔クロップ</u></a>を通知するような顔検出モデルは、顔があると考える場所に基づいて境界ボックスを描画します。（ご興味がおありでしたら、<a href="https://blog.cloudflare.com/ai-face-cropping-for-images/#from-pixels-to-people"><u>顔のトリミングに関する投稿</u></a>で、これらの境界ボックスを使用してクロップやズームの操作をどのように実行しているかをご説明しています。）</p>
+	<p>SaaSオブジェクト検出は、画像の最も際立っている部分を強調するセグメンテーションの一種です。ほとんどの顕著な検出モデルは、最も顕著な（または顕著な）ピクセルを「前線」として分類し、その他のすべてのピクセルを「背景」として分類するバイナリマスクを作成します。それに対して、マルチクラスマスクはより広範なコンテキストを考慮し、各ピクセルを「犬」や「チェア」のようにいくつかの可能なクラスのいずれかとしてラベル付けします。これらのマルチクラスマスクは、コンテンツ分析モデルの基礎となるものであり、どのピクセルが特定のオブジェクトやオブジェクトの種類に属するかを区別します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qV2QVZYEdqdigCTuqBuHu/cf4873dddf3b30503aac6643ded1a5ab/image3.png" alt="" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<p><sub>この私の犬の写真では、検出モデルが境界ボックスに犬が含まれることを予測します。セグメンテーションモデルは、あるピクセルが犬に属することを予測しますが、他のすべてのピクセルはそうではありません。</sub></p>
+	<p>このユースケースでは、各ピクセルが前背景（関心のあるオブジェクト）または背景のいずれかにどれだけ強く属するかを予測する、ソフトサリエンシーマスクを生成できるモデルが必要でした。つまり、各ピクセルには0～255の尺度が割り当てられ、0は完全に透明で、255は完全に不透明です。ほとんどの背景のピクセルは、0（またはその近く）にラベルが付けられます。前続のピクセルは、既知性の度合いに応じて不透明度が異なる場合があります。</p>
+	<p>原則的に、バックグラウンド除去機能は、幅広いコンテキストにわたって正確に予測することができなければなりません。たとえば、eコマースや小売ベンダーは、すべての商品を統一された白の背景に表示したいと考えます。クリエイティブや画像編集アプリケーションでは、開発者はユーザーが人やアバターの画像などのアップロードされたコンテンツからステッカーや切り抜きを作成できるようにしたいと考えています。</p>
+	<p>私たちの研究では、主に次の4つの画像セグメンテーションモデルに焦点を当てました：</p>
+	<ul>
+		<li>
+			<p><a href="https://arxiv.org/abs/2005.09007" target="_blank" rel="noopener noreferrer"><u><b>U</b></u><u><b><sup>2</sup></b></u><u><b>-Net (U Square Net)</b></u></a> : 10,553個の画像の最大のエッジデータセット（<a href="https://saliencydetection.net/duts" target="_blank" rel="noopener noreferrer"><u>DUST-TR</u></a>）でトレーニングを行い、水平方向に反転させ、合計21,106個のトレーニング画像に到達しました。</p>
+		</li>
+		<li>
+			<p><a href="https://arxiv.org/abs/2203.03041" target="_blank" rel="noopener noreferrer"><u><b>IS-Net（Intermediate Supervision Network）</b></u></a>：U2-Netの著者による新しい2ステップのアプローチ。このモデルは、ノイズ交じりの画像の境界を生成します。</p>
+		</li>
+		<li>
+			<p><a href="https://arxiv.org/abs/2401.03407" target="_blank" rel="noopener noreferrer"><u><b>BiRefNet（Bilateral Reference Network）</b></u></a>：細部が全体像と一致することをチェックすることで、複雑で高解像度の画像を正確にセグメント化するように特別に設計されています。</p>
+		</li>
+		<li>
+			<p><a href="https://arxiv.org/abs/2304.02643" target="_blank" rel="noopener noreferrer"><u><b>SAM（Segment Anything Model）</b></u></a>：Metaによって開発され、プロンプトと入力ポイントを提供することでセグメンテーションが可能です。</p>
+		</li>
+	</ul>
+	<p>情報の規模が異なることで、計算モデルは画像の全体的な視野を構築することができます。グローバルコンテキストでは、オブジェクトの全体的な形やピクセルの領域が画像全体とどのように関連するかを考慮し、ローカルコンテキストはエッジ、角、テキストなどの細部を追跡します。ローカルコンテキストが木とその単語に焦点を当てると、グローバルコンテキストは森全体を表します。</p>
+	<p><a href="https://github.com/xuebinqin/U-2-Net" target="_blank" rel="noopener noreferrer"><u>U</u><u><sup>2</sup></u><u>-Net</u></a>は、マルチスケールのアプローチで情報を抽出します。異なるズームレベルで画像を分析し、1つのステップでその予測を組み合わせます。このモデルは、グローバルとローカルのコンテキストを同時に分析するため、さまざまなサイズのオブジェクトを持つ複数のオブジェクトを持つimagesに適しています。</p>
+	<p><a href="https://github.com/xuebinqin/DIS" target="_blank" rel="noopener noreferrer"><u>IS-Net</u></a>は、中間監視と呼ばれる新しい2ステップの戦略を導入しています。まず、モデルは前背景を背景から分離し、関心のあるオブジェクトに属する可能性が高い潜在的な領域を特定します。他のすべてのピクセルは背景としてラベル付けされます。次に、ハイライトされたオブジェクトの境界を微調整し、最終的なピクセルレベルのマスクを生成します。</p>
+	<p>セグメンテーションは、強調された関心のあるオブジェクトのみに焦点が当てられ、最終的なマスクに背景ピクセルを誤って含める可能性が少なくなるため、最初の背景の抑制により、より洗練された正確なエッジが得られます。このモデルは、背景がごちゃごちゃした複雑なimagesを扱う場合に特に優れています。</p>
+	<p>どちらのモデルも、拡張するために単一方向に予測を出力します。U<sup>2</sup>-Netは、グローバルとローカルコンテキストを1つのパスで解釈し、Is-Netはグローバルコンテキストから始まり、ローカルコンテキストに焦点を当てます。</p>
+	<p>対照的に、<a href="https://github.com/ZhengPeng7/BiRefNet" target="_blank" rel="noopener noreferrer"><u>BiRefNet</u></a>は複数のパスで予測を改良し、コンテキスト方向とどちらにも動きます。Is-Netのように、最初に顕著オブジェクトを大まかに強調するマップを作成し、その後詳細をトレースします。しかし、BiRefNetは、グローバルからローカルコンテキストへ移行し、その後、ローカルコンテキストからグローバルへと戻します。つまり、オブジェクトのエッジを洗練させた後、アウトプットを大きなスケールのビューにフィードバックするのです。こうすることで、モデルは、小規模なスケールの詳細がより大きな画像構造と一致していることを確認し、高解像度のimagesでより高い精度を提供できます。</p>
+	<p>U<sup>2</sup>-Net、IS-Net、BiRefNetはすべてがサリエンシー検出モデルで、前障害のピクセルと背景のピクセルを区別するマスクを生成します。しかし、<a href="https://github.com/facebookresearch/segment-anything" target="_blank" rel="noopener noreferrer"><u>SAM</u></a>はより拡張可能で一般的なものになるように設計されています。主な目的は、オブジェクトだけでなく、指定されたインプットに基づいて、あらゆるオブジェクトをセグメント化することです。つまり、このモデルは、画像の主な焦点でなくても、画像内のさまざまなオブジェクトにラベルを付けるマルチクラスのマスクを作成するためにも使用できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-measure-segmentation-accuracy">セグメンテーションの精度の測定方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-measure-segmentation-accuracy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどの優れたデータセットでは、オブジェクトの実際の位置は、ground-truth領域として知られています。これらの地域は通常、各画像で関心のあるオブジェクトを手作業でトレースする人間のアノテーションによって定義されます。これは、モデルの予測を評価するための信頼できる参照情報となります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wAV8lQcsZHosKoFyEIce1/495b3d70960027b795ec1a62f2d46a59/BLOG-2928_3.png" alt="予測された領域と、真偽の領域、つまりオブジェクトの真の境界を比較したテストです。" class="kg-image" width="1600" height="895" loading="lazy">
+	</figure>
+	<p><sub>写真提供：</sub><a href="https://www.linkedin.com/in/fang-allen" target="_blank" rel="noopener noreferrer"><u><sub>Allen Fang</sub></u></a></p>
+	<p>各モデルは、予測領域（前続ピクセルがあると思われる場所）を出力し、これを真偽領域（前続ピクセルが実際にある場所）と比較することができます。</p>
+	<p>モデルのセグメンテーションの精度は、対向送信数、サイコロの係数、ピクセル精度などの一般的なメトリクスに基づいて評価されます。各スコアは、予測された領域と真偽の領域の一致を定量化するために、わずかに異なるアプローチを採用しています（以下の式では、それぞれ「P」と「G」）。</p>
+	<div class="flex anchor relative">
+		<h3 id="intersection-over-union">Union（連合）のインターコネクト</h3>
+		<a href="https://blog.cloudflare.com/#intersection-over-union" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>連合組合（IoU）は、ジャカードインデックスとも呼ばれ、予測領域が真のオブジェクトとどの程度一致しているかを測定します。つまり、予測マスクと真偽マスクの両方で共有される前実装ピクセルの数をカウントします。数学的には、IoUは次のように記述されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zVQSLlKaFuVUQrDcAlf0Y/4254010745caf0d207d8f8e8181f4c9c/BLOG-2928_4.png" alt="BLOG-2928 4" class="kg-image" width="1600" height="448" loading="lazy">
+	</figure>
+	<p><sub>ジャカード式</sub></p>
+	<p>この式は、予測領域と真値領域が重なるピクセルの交差部分（P∩G）を、いずれかの領域に属するピクセルの総面積である和集合（P∪G）で割るものである。ただし、重なり合うピクセルは1回のみカウントする。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KFLB15btpCQuKuTqakBjp/91e78ec6d565e3723c5d76b3a65a441d/unnamed__23_.png" alt="BLOG-2928 5" class="kg-image" width="1600" height="895" loading="lazy">
+	</figure>
+	<p>IoUは0から1の間のスコアを生成します。値が高いほど、予測領域と真偽領域の重複が近いことを示します。稀なケースですが、完全に一致している場合は1がスコアとなりますが、重複する領域が小さいとスコアが0に近づきます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oe82x3rPo8XoNnwG3KBRy/22f591adb6ab27b3ad05f91b13eddff7/BLOG-2928_6.png" alt="BLOG-2928 6" class="kg-image" width="1600" height="448" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="dice-coefficient">サイコロの目</h3>
+		<a href="https://blog.cloudflare.com/#dice-coefficient" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sørensen–Diceインデックスとも呼ばれるダイス係数は、同様にモデルの予測が現実とどの程度一致するかを比較しますが、IoUスコアよりもはるかに寛容です。領域のサイズが異なる場合でも、予測された前リンクと実際のフィンガープリントは、より多くの共有ピクセルに重み付けされます。数学的には、サイコロの係数は次のように書かれます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UiJUJrjagwkmQNvdkiPC3/e17eaa8f22f57114a91f1e58fc3a76fb/BLOG-2928_7.png" alt="BLOG-2928 7" class="kg-image" width="1600" height="448" loading="lazy">
+	</figure>
+	<p><sub>Sørensen–Dice向上式</sub></p>
+	<p>この式は、予測された領域と真偽の領域（P+G）の両方の画素の合計を2倍に割り、重複するピクセルを2回カウントします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vcFBAoRJ9wpyAt8m4Sn7x/8b1962de717701ff348e90ec8b86286e/BLOG-2928_8.png" alt="BLOG-2928 8" class="kg-image" width="1600" height="895" loading="lazy">
+	</figure>
+	<p>IoUと同様に、サイコロの係数も0から1の間の値を生成し、1に近づくに伴い、より正確な一致を示します。</p>
+	<div class="flex anchor relative">
+		<h3 id="pixel-accuracy">ピクセル精度</h3>
+		<a href="https://blog.cloudflare.com/#pixel-accuracy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ピクセル精度とは、前障害または背景として正しくラベル付けされたピクセルの割合を測定します。数学的には、ピクセル精度は次のように記述されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40HkiVe1a2i1dSguDk1TxO/990e49cd4d40a4eaa29078948bc9d7e8/unnamed__24_.png" alt="" class="kg-image" width="1600" height="448" loading="lazy">
+	</figure>
+	<p><sub>ピクセル精度の計算式</sub></p>
+	<p>この式は、正しく予測されたピクセルの数を、画像のピクセルの総数で割ります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GX83EmXBSLhGlHvGFLqnn/f65fbd110f4b1d201f7585723ced0f34/image10.png" alt="BLOG-2928 10" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<p>正しく予測されたピクセルの総領域は、真偽領域に正確に一致する前Cloudと背景のピクセルの合計です。</p>
+	<p>正しく予測された前地は、予測された領域と真偽偽装領域（PeG）の交点です。予測領域の逆数（P'、または1–P）は、モデルが背景として識別するピクセルを表します。 ground-truth領域の逆領域（G'または1–G）は、背景の実際の境界を表します。これら2つの反転した領域が重複する場合 (P'∩G'、または (1–P)∩(1–G)）、この交点が正しく予測された背景になります。</p>
+	<div class="flex anchor relative">
+		<h2 id="interpreting-the-metrics">指標の解釈</h2>
+		<a href="https://blog.cloudflare.com/#interpreting-the-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>IoUは、3つの指標の中で最も保守的なセグメンテーション精度の測定値です。予測された前線に余分な背景ピクセルを含めるなど、小さなミスはスコアを顕著に低下させます。この指標は、自動運転システムなど、正確な境界が必要なアプリケーションに最も価値があります。</p>
+	<p>一方、ダイスの係数は重複するピクセルをより多く報酬し、その後、同じ予測に対してIoUのスコアよりも高くなる傾向があります。モデル評価では、この指標は、ミスを罰するよりもオブジェクトを捕捉することが重要な場合、IoUよりも好まれます。たとえば、医療画像では、真陽性を見逃すリスクは、誤検知にフラグを立てることの不便さを大幅に上回ります。</p>
+	<p>背景除去の文脈では、ピクセル精度よりもIoUスコアとダイス係数に偏っています。特に、背景ピクセルがピクセルの大部分を占める画像を処理する場合は、ピクセル精度が誤解を招く可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K8TWmRLdJNIza43UoXhD8/c9a42ed7074ce975afd8f7e783db5849/BLOG-2928_11.png" alt="BLOG-2928 11" class="kg-image" width="1999" height="560" loading="lazy">
+	</figure>
+	<p>例えば、背景900個のピクセルと、前続のピクセル数が100である画像があるとします。前のある5つのピクセル（全前消費ピクセルの5%）だけを正しく予測するモデルは、ピクセル精度が欺瞞的に高スコアとなります。直感的に、このモデルはパフォーマンスが低いと言えるでしょう。しかし、900の背景ピクセルすべてが正しく予測されたと仮定すると、オブジェクトはほぼ完全に見逃されているにもかかわらず、モデルは90.5%のピクセル精度を維持しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="pixels-predictions-and-patterns">ピクセル、予測、パターン</h2>
+		<a href="https://blog.cloudflare.com/#pixels-predictions-and-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Images APIに最も適したモデルを決めるために、すべての関連モデルを単一のインターフェースにまとめたオープンソースの<a href="https://github.com/danielgatis/rembg" target="_blank" rel="noopener noreferrer"><u>rembg</u></a>ライブラリを使用して、一連のテストを実施しました。</p>
+	<p>各モデルには、前世界と背景のピクセルをラベル付けするために、予測マスクを出力するタスクが与えられました。2つのサリエンシーデータセットからimagesを抽出しました。<a href="https://huggingface.co/datasets/schirrmacher/humans" target="_blank" rel="noopener noreferrer"><u><b>人間</b></u></a>には、さまざまな画質の色、服、ヘアスタイルを持つ人のimagesが7,000以上含まれており、<a href="https://xuebinqin.github.io/dis/index.html#overview" target="_blank" rel="noopener noreferrer"><u><b>DIS5K</b></u></a>（バージョン1.5）はさまざまなオブジェクトやシナリオにまたがっています。モデルに特定のセグメンテーションのタイプ（例：服、人間など）を生成し、一般化モデルと各バリアントについてテストを繰り返しました。</p>
+	<p>私たちの実験は、すでに顔検出モデルを実行している環境と同様に、現実的なハードウェア制約を反映させるために、23GBのVRAMを使用するGPUで実行されました。また、94GB VRAMを備えたより大きなGPUインスタンスで同じテストを再現しました。追加のコンピューティングが利用可能な場合の潜在的な速度向上をベンチマークするための上限の参照点として機能します。Cloudflareは通常、より計算量の多い<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>AIワークロード</u></a>のために大きなGPUを確保しています。私たちはこれらのテストは、本番環境としてよりも比較のための調査として見られました。</p>
+	<p>分析を進める中で、主要な傾向が明らかになりました。</p>
+	<p>小さなGPUでは、U<sup>2</sup>-Net（176 MB）やIs-Net（179 MB）のような軽量モデルで推論時間が一般的に高速になりました。両方のデータセットの平均速度は、U<sup>2</sup>-Netが307ミリ秒、Is-Netが351ミリ秒でした。反対に、BiRefNet（973 MB）の出力時間が顕著に遅く、2つの一般化されたバリアントで平均821ミリ秒でした。</p>
+	<p>BiRefNetは、より大きなGPU上で2.4倍の速さで動作し、平均推論時間を351ミリ秒に短縮しました。これは、サイズが大きいにもかかわらず、他のモデルと同レベルです。対照的に、軽量モデルでは、追加のコンピューティングによる顕著な速度向上は見られませんでした。このことから、ハードウェア構成のスケーリングは、主として重たいモデルにメリットがあることが考えられます。<a href="https://blog.cloudflare.com/background-removal/#appendix-1-inference-time-in-milliseconds">補足1</a>（「ミリ秒単位の推論時間」）では、モデルとGPUインスタンスの速度を比較しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55Tk0RjbvoffPVQT85UJQe/ca1f2280768495f3be52425e642fdd25/BLOG-2928_12.png" alt="BLOG-2928 12" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<p>また、2つのサリエンシーデータセットのモデルのパフォーマンスを比較したところ、異なるパターンが観察されました。最も顕著なのは、人物の画像が単一の主体で比較的均一な傾向があるHumansデータセット上で、すべてのモデルがより速く実行されたことです。これとは対照的に、DIS5Kデータセットには、より複雑なimagesが含まれます。つまり、より多くのオブジェクト、ごちゃごちゃした背景、または規模が異なる複数のオブジェクトがあるimagesです。</p>
+	<p>予測が遅いと、視覚的な複雑さと、画像の重要な部分を識別するために必要な計算との間に関係があることが示唆されます。つまり、単純でよく分離されたオブジェクトを持つデータセットはより迅速に分析できる一方、複雑な状況では正確なマスクを生成するためにより多くの計算を必要とします。</p>
+	<p>同様に、複雑さは効率性と同様に正確性も低下させます。今回のテストでは、すべてのモデルで「人間」データセットの方が高いセグメンテーション精度を実証しました。<a href="https://blog.cloudflare.com/background-removal/#appendix-2-measures-of-model-accuracy">補足2</a>（「モデルの正確性の測定」）では、両方のデータセットにおけるセグメンテーション精度の結果を示しています。</p>
+	<p>特殊なバリアントは、一般化された対応策と比べて、精度がわずかに高いものでした。しかし、広範な実用的アプリケーションでは、すべての入力に対して特殊なモデルを選択することは現実的ではありません。少なくとも、当社の初期ベータ版ではなおさらです。事前の分類が不要で正確な予測を生成できる汎用モデルを採用しました。このため、当社はSAMを除外しました。SAMは意図したユースケースには強力なものですが、追加の入力で動作するように設計されています。自動セグメンテーションタスクでは、テストしたモデルの中で精度スコアが低く（そして推論時間が大幅に長い）、</p>
+	<p>BiRefNetのバリアントはすべて、ほかのモデルと比べて高い精度の記事でした。一般化されたバリアント (<code>-general</code>と<code>-dis</code> ) は、<code>-portrayt</code>のような特殊なバリアントと同じくらい正確でした。特に、<code>birefnet-general</code>バリアントは、両方のデータセットの平均で0.87とDice係数が0.92と高いIoUスコアを達成しました。</p>
+	<p>対照的に、一般化されたU<sup>2</sup>-Netモデルは、Humansデータセットで高い精度の精度を示し、IoUスコアは0.89、ダイス係数は0.94に達しましたが、DIS5KデータセットではIoUスコアが0.39と低く、ダイス係数が0.52と低い結果となりました。両者のデータセットで、IoUスコアの平均0.82、ダイス係数が0.89と、<code>isnet-general-use</code>モデルはかなり優れたパフォーマンスを発揮しました。</p>
+	<p>モデルが画像のグローバルとローカルの両方の文脈を解釈できるかどうかを観測しました。一部のシナリオでは、U<sup>2</sup>-NetとIs-Netモデルは画像の全体像を把握できましたが、細部のエッジを正確に追跡することができませんでした。私たちは、各モデルが自転車のホイールをどれだけ適切に分離できるかを測定するために1つのテストを設計しました。多様性を追求し、内側と外側の両方の背景にimagesを含めました。スコアの低いモデルは、ホイールを取り巻く領域に正しくラベリングを行いながら、細いスポーク間のピクセルに苦労し、これらの背景ピクセルを含めた予測マスクを作成しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mzRTqXhZRk0GuzwuIRu4p/b251aa4f3dbeecc11dbba931623607e5/BLOG-2928_13.png" alt="BLOG-2928 13" class="kg-image" width="1999" height="597" loading="lazy">
+	</figure>
+	<p><sub>写真提供：</sub><a href="https://unsplash.com/photos/person-near-bike-p6OU_gENRL0" target="_blank" rel="noopener noreferrer"><u><sub>Yomex Owo on Unsplash</sub></u></a></p>
+	<p>他のシナリオでは、モデルは逆の制限を示しました。つまり、エッジが正常なマスクを作成しましたが、画像の焦点を識別できなかったのです。私たちは、黒色のジムの床を背景にしたグレーのTシャツの写真を使って、別のテストを実施しました。一般化されたU<sup>2</sup>-NetとIs-Netモデルの両方が、ロゴのみを顕著なオブジェクトとしてラベル付けし、シャツの他の部分を完全に省略したマスクを作成しました。</p>
+	<p>一方、BiRefNetモデルは両方のテストタイプで高い精度を実現しました。そのアーキテクチャは双方向に情報を渡し、ピクセルレベルの詳細をより大きなインターフェースから通知することができます（その逆も同様）。実際には、これは、BiRefNetが、より広いオブジェクトにどのように適合するかを解釈することを意味します。ベータ版では、バックグラウンド除去の決定を駆動するためにBiRefNetモデルを使うことを選びました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/741GSfhMn8MPykb6NkWUJV/1ef5006aea8f67a4faeec73862d97ced/BLOG-2928_14.png" alt="BLOG-2928 14" class="kg-image" width="1999" height="649" loading="lazy">
+	</figure>
+	<p><sub>スコアの低いモデルとは異なり、BiRefNetモデルは、シャツ全体が画像の真の主体であることを理解していました。</sub></p>
+	<div class="flex anchor relative">
+		<h2 id="applying-background-removal-with-the-images-api">Images APIを使用して背景除去を適用する</h2>
+		<a href="https://blog.cloudflare.com/#applying-background-removal-with-the-images-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Images APIは、<a href="https://developers.cloudflare.com/images/upload-images" target="_blank" rel="noopener noreferrer"><u>ホスト</u></a>画像と<a href="https://developers.cloudflare.com/images/transform-images" target="_blank" rel="noopener noreferrer"><u>リモート</u></a><a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#segment" target="_blank" rel="noopener noreferrer">画像の自動背景削除</a>をサポートするようになりました。この機能は、<a href="https://developers.cloudflare.com/images/pricing" target="_blank" rel="noopener noreferrer"><u>FreeプランとPaidプラン</u></a>のすべてのCloudflareユーザーにオープンベータでご利用いただけます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iglNDllwEMvg6ygDvTRNc/a354422efd166cb3b48ee10995e78aa4/unnamed__25_.png" alt="BLOG-2928 15" class="kg-image" width="1600" height="895" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/images/transform-images/transform-via-url" target="_blank" rel="noopener noreferrer"><u>特別にフォーマットされたImages</u></a> URLや<a href="https://developers.cloudflare.com/images/transform-images/transform-via-workers" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>を介して画像を最適化する際に<code>セグメント</code>パラメーターを使用します。Cloudflareは、画像の主体を分離し、背景を透明なピクセルに変換します。下のTransformations URLに示されているように、<a href="https://developers.cloudflare.com/images/transform-images/transform-via-url" target="_blank" rel="noopener noreferrer"><u>他の最適化操作</u></a>と組み合わせることもできます。</p>
+	<pre class="language-Rust"><code class="language-Rust">example.com/cdn-cgi/image/gravity=face,zoom=0.5,segment=foreground,background=white/image.png</code></pre>
+	<p>このリクエストは次のことを行います：</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#gravity" target="_blank" rel="noopener noreferrer"><u>検出された顔</u></a>に向けて画像をトリミングします。</p>
+		</li>
+		<li>
+			<p>画像の被写体を分離し、背景を透明なピクセルに置き換えます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#background" target="_blank" rel="noopener noreferrer"><u>透明なピクセル</u></a>をソリッドホワイトカラー（<code>#FFFFFF</code>）で埋めます。</p>
+		</li>
+	</ul>
+	<p><a href="https://developers.cloudflare.com/images/transform-images/bindings" target="_blank" rel="noopener noreferrer"><u>また、Images APIをWorkerにバインドして</u></a>プログラムによるワークフローを構築することもでき、それにより、画像の最適化方法をより細かく制御することができます。この仕組みを示すために、私は<a href="https://studio.yaydeanna.workers.dev" target="_blank" rel="noopener noreferrer"><u>Images</u></a>と<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>ですべて構築された、カットアウトやオーバーレイを作成するためのシンプルな画像編集アプリを作成しました。これは、<a href="https://studio.yaydeanna.workers.dev/?order=0%2C1%2C2&amp;i0=icecream&amp;vertEdge0=bottom&amp;vertVal0=0&amp;horEdge0=left&amp;h0=400&amp;bg0=1&amp;i1=pete&amp;vertEdge1=top&amp;horEdge1=left&amp;h1=700&amp;bg1=1&amp;i2=iceland&amp;vertEdge2=top&amp;horEdge2=left" target="_blank" rel="noopener noreferrer"><u>以下のような</u></a>imagesを作成するために使用できます。ここでは、背景除去を適用して、犬とアイスクリームコーンを分離し、風景画像にオーバーレイします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Z6t9ov1t3fbbQojbYbGDh/961cef0f06780bfd8c088772a7add796/image11.png" alt="BLOG-2928 16" class="kg-image" width="1600" height="959" loading="lazy">
+	</figure>
+	<p><a href="https://www.pexels.com/@guyjoben" target="_blank" rel="noopener noreferrer"><u><sub>写真：Guy Hurst</sub></u></a><sub>（ランドスケープ）、</sub><a href="https://www.pexels.com/@oskar-gackowski-2150870625" target="_blank" rel="noopener noreferrer"><u><sub>Oskar Gackowski</sub></u></a><sub>（アイスクリーム氏）、私（犬）</sub></p>
+	<p>以下は、workerでimagesをオーバーレイするために使えるスニペットです。</p>
+	<pre class="language-Javascript"><code class="language-Javascript">export default {
+  async fetch(request,env) {
+    const baseURL = "{image-url}";
+    const overlayURL = "{image-url}";
+    
+    // Fetch responses from image URLs
+    const [base, overlay] = await Promise.all([fetch(baseURL),fetch(overlayURL)]);
+
+    return (
+      await env.IMAGES
+        .input(base.body)
+        .draw(
+          env.IMAGES.input(overlay.body)
+            .transform({segment: "foreground"}), // Optimize the overlay image
+            {top: 0} // Position the overlay
+        )
+        .output({format:"image/webp"})
+    ).response();
+  }
+};</code></pre>
+	<p>背景除去は、開発者がインタラクティブで想像力に満ちた製品を構築できるようにするための継続的な取り組みの新たな一歩となります。これらの機能は反復的なプロセスであり、今後もアプローチをさらに洗練させていきます。私たちの進捗状況をお客様と共有できるのを楽しみにしています。</p>
+	<p>背景除去の適用については、当社の<a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/#segment" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="appendix-1-inference-time-in-milliseconds">補足1：推論時間（ミリ秒）</h3>
+		<a href="https://blog.cloudflare.com/#appendix-1-inference-time-in-milliseconds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="23-gb-vram-gpu">23 GB VRAM GPU</h4>
+		<a href="https://blog.cloudflare.com/#23-gb-vram-gpu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2e97UAIgglJ3kP3ozm8lZT/6a44de14aa5179071eb7bbb3c8f31feb/BLOG-2928_17.png" alt="BLOG-2928 17" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="94-gb-vram-gpu">94 GB VRAM GPU</h4>
+		<a href="https://blog.cloudflare.com/#94-gb-vram-gpu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2viOyCtbzsloUAvY8kXPJV/378feb50a1dd822d7c848133fbac6a3f/BLOG-2928_18.png" alt="BLOG-2928 18" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="appendix-2-measures-of-model-accuracy">補足2：モデルの精度の測定値</h3>
+		<a href="https://blog.cloudflare.com/#appendix-2-measures-of-model-accuracy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G9hwnFrlT4eF2isWyaEjk/d3418df56dff686c27f46d96fc86c37f/BLOG-2928_19.png" alt="BLOG-2928 19" class="kg-image" width="1999" height="1118" loading="lazy">
+	</figure>
+	<p></p>
+</div>

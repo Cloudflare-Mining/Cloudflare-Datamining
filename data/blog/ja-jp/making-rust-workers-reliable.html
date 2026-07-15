@@ -1,0 +1,231 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/making-rust-workers-reliable">English</a>、<a href="https://blog.cloudflare.com/zh-tw/making-rust-workers-reliable">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/making-rust-workers-reliable">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/making-rust-workers-reliable">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70pEJXxOuOCZAEfLQjG6K2/b01c89a64c2f3dd941ae90c858c6824b/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust Workers</u></a>は、RustをWebAssemblyにコンパイルすることでCloudflare Workersプラットフォーム上で動作しますが、私たちが発見したように、WebAssemblyにはいくつかの課題があります。パニックや予期せぬ中断が発生した場合、ランタイムが未定義の状態になることがあります。Rust Workersのユーザーにとって、パニックは従来から重大なことであり、インスタンスを汚染し、場合によってはWorkerを一定期間停止させる可能性さえありました。</p>
+	<p>これらの問題を検出して軽減することはできましたが、Rust Workerが予期せず失敗し、他のリクエストが失敗する可能性はわずかに残りました。Workerで処理されていないRustが1つのリクエストに影響を与えると、より広範な障害に発展して、同じ接続リクエストに影響を与えるか、あるいは新しい着信リクエストに影響を与え続ける可能性があります。この根本的な原因は、Rust Workersが依存するRustからJavaScriptへのバインディングを生成するコアプロジェクトwasm-bindgenと、組み込みの復旧セマンティックスの欠如でした。</p>
+	<p>この記事では、Rust Workersの最新バージョンが、この中断によるサンドボックスポイズニングを解決する包括的なWasmエラーリカバリをどのように処理するかをご紹介します。この成果は、<a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org" target="_blank" rel="noopener noreferrer"><u>昨年</u></a>発足したwasm-bindgen組織内での共同作業の一環として、<a href="https://github.com/wasm-bindgen/wasm-bindgen" target="_blank" rel="noopener noreferrer"><u>wasm-bindgen</u></a>に還元されました。まず、<code>panic=unwind</code>サポートにより、単一の失敗したリクエストが他のリクエストに悪影響を及ぼすことがないようにし、次に、Wasm上のRustコードが中断後に再実行されないことを保証するアボートリカバリーメカニズムを備えています。 </p>
+	<div class="flex anchor relative">
+		<h2 id="initial-recovery-mitigations">復旧時の初期緩和策</h2>
+		<a href="https://blog.cloudflare.com/#initial-recovery-mitigations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この分野における信頼性に対処するための最初の試みは、本番Rust WorkersでのRustパニックや中断によって引き起こされる障害を把握し、封じ込めることに焦点を当てました。Cloudflareでは、Worker内の障害状態を追跡し、後続のリクエストを処理する前にアプリケーション全体の再初期化をトリガーするカスタムRustパニックハンドラーを導入しました。JavaScript側では、これは、プロキシベースの間接費を使用して、RustとJavaScriptの呼び出し境界をラップし、すべてのエントリポイントが一貫してカプセル化されるようにする必要がありました。また、障害発生後にWebAssemblyモジュールを正しく再初期化するために、生成されたバインディングに的を絞った変更を行いました。</p>
+	<p>このアプローチはカスタムJavaScriptロジックに依存していましたが、信頼できる復旧が可能であることを実証し、実際に見られる永続的な障害モードを排除することができました。このソリューションは、バージョン0.6から開始するすべてのWorkersユーザーにデフォルトで出荷され、次のセクションで説明するより一般的なアップストリーム型の中断復旧メカニズムの基礎を築きました。</p>
+	<div class="flex anchor relative">
+		<h2 id="implementing-panic-unwind-with-webassembly-exception-handling">WebAssembly Exception Handlingを使用した<code>pananc=unwind</code>の実装</h2>
+		<a href="https://blog.cloudflare.com/#implementing-panic-unwind-with-webassembly-exception-handling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記の中断リカバリメカニズムは、Workerが障害に耐えられることを保証しますが、それはアプリケーション全体を再初期化することで実現されます。ステートレスなリクエストハンドラであれば、これで問題ありません。しかし、Durable Objectsのように、メモリに意味のある状態を保持するワークロードにとっては、再初期化はその状態を完全に失うことを意味します。1つのリクエストの1つのパニックが、他の同時リクエストで使用されているメモリ内の状態を消去する可能性があります。</p>
+	<p>ほとんどのネイティブRust環境では、パニックが解消されるため、デストラクチャが実行され、プログラムは状態を失うことなく回復することができます。WebAssemblyでは、従来は全く異なるものでした。<code>wasm32-unknown-unknown</code>経由で Wasm にコンパイルされた Rust は、デフォルトで<code>panic=abort</code>となるため、そのため、Rust Worker 内でパニックが発生すると、<code>unreachable</code>命令によって突然トラップが発生し、<code>WebAssembly.RuntimeError</code>と共にWasm から JS へ戻ります。</p>
+	<p>インスタンスの状態を破棄せずにパニックから回復するには、2023年にエンジンで広くサポートされるようになったWebAssembly 例外処理提案によって可能になったwasm-bindgenの<code>panic=unwind</code>サポートが<code>wasm32-unknown-unknown</code>に必要でした。</p>
+	<p>まず、<code>RUSTFLAGS='-Cpanic=unwind' cargo build -Zbuild-std</code>でコンパイルします。これにより、アンワインドをサポートする標準ライブラリが再構築され、適切なパニックアンワインドでコードが生成されます。たとえば：</p>
+	<pre class="language-Rust"><code class="language-Rust">struct HasDropA;
+struct HasDropB;
+extern "C" {
+    fn imported_func();
+}
+
+fn some_func() {
+    let a = HasDropA;
+    let b = HasDropB;
+    imported_func();
+}</code></pre>
+	<p>WebAssemblyをコンパイルします：</p>
+	<pre class="language-Rust"><code class="language-Rust">try
+  call &lt;imported_func&gt;
+catch_all
+  call &lt;drop_b&gt;
+  call &lt;drop_a&gt;
+  rethrow
+end
+call &lt;drop_b&gt;
+call &lt;drop_a&gt;</code></pre>
+	<p>これにより、<code>imported_func()</code> がパニックに陥っても、デストラクタは引き続き実行されます。同様に、<code>std::panic::catch_unwind(|| some_func())</code> は次のようにコンパイルされます。</p>
+	<pre class="language-Rust"><code class="language-Rust">try
+  call &lt;some_func&gt;
+  ;; set result to Ok(return value)
+catch
+  try
+    call &lt;std::panicking::catch_unwind::cleanup&gt;
+    ;; set result to Err(panic payload)
+  catch_all
+    call &lt;core::panicking::cannot_unwind&gt;
+    unreachable
+  end
+end</code></pre>
+	<p>エンドツーエンドで機能させるには、wasm-bindgenツールチェーンにいくつかの変更を必要としました。WebAssemblyパーサーWalrusは、try/catch指示の処理方法を持っていなかったので、サポートを追加しました。また、記述子インタープリターにも、例外処理ブロックを含むコードを評価する方法を教育する必要がありました。その時点で、完全なアプリケーションは<code>panic=unwind</code>で構築することができます。</p>
+	<p>最後のステップは、wasm-bindgenによって生成されたエクスポートを修正し、Rust-JavaScriptの境界でパニックをキャッチして、JavaScript <code>PanicError</code> 例外として表面化させることでした。微妙な点に、Rustは<code>extern "C"</code>関数を使って解凍するときに外部の例外をキャッチして中断するため、エクスポートは<code>extern "C-unwind"</code>とマークして、境界を越えた解除を明示的に許可する必要があります。未来のために、パニックが<code>PanicError</code>でJavaScript<code>プロミス</code>を拒否します。</p>
+	<p>Closuresは、<code>panic=unwind</code>で構築された場合のみ<code>UnwindSafe</code>をチェックする新しい<code>MaybeUnwindSafe</code>トレイトによって、アンウィンドの安全性が適切にチェックされるように特別な注意が必要でした。しかし、これにより問題がすぐに浮き彫りになりました。多くのクロージャは、解除された後も残る参照を捕捉するため、本質的に安全でない参照をリクエストすることができるのです。ユーザーがコンパイラを満足させるためだけに、<code>AssertUnwindSafe</code> でクロージャーを誤ってラップするよう奨励される状況を回避するために、<code>Closure::new_aborting</code> バリアントを追加しました。これは、アンワインドの安全性が保証できない場合に、アンワインドする代わりにパニックで終了するものです。</p>
+	<p>パニック解除有効化：</p>
+	<ul>
+		<li>
+			<p>エクスポートされたRust関数のパニックはWasm-bindgenで捕捉されます。</p>
+		</li>
+		<li>
+			<p>JavaScriptに対するパニック領域。PanicError 例外</p>
+		</li>
+		<li>
+			<p>非同期エクスポートは、PanicErrorを使用して、返された約束を拒否します</p>
+		</li>
+		<li>
+			<p>Rustデストラクチャが正しく動作する</p>
+		</li>
+		<li>
+			<p>WebAssemblyインスタンスは有効で再利用可能なまま</p>
+		</li>
+	</ul>
+	<p>このアプローチの詳細とwasm-bindgenでの使用方法については、<a href="https://wasm-bindgen.github.io/wasm-bindgen/reference/catch-unwind.html" target="_blank" rel="noopener noreferrer"><u>Wasm Bindgen: Catching Panics</u></a>の最新ガイドページで取り上げられています。</p>
+	<div class="flex anchor relative">
+		<h2 id="abort-recovery">リカバリーを中断</h2>
+		<a href="https://blog.cloudflare.com/#abort-recovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>panic=unwind</code>をサポートしても、中断は依然として発生します。メモリ不足エラーは、よくある原因の一つです。ボットは解除できないため、ステートが回復できる可能性はまったくありませんが、少なくとも将来の操作のためにボットを検出して回復し、無効なステートが後続のリクエストをエラーにすることを回避することができます。</p>
+	<p>パニックに戻るサポートにより、リカバリーを中断する新しい問題が生じました。Wasmからエラーを受け取った場合、それが<code>extern “C-unwind”</code>外部エラーによるものなのか、それとも本物のAbortなのかはわかりません。WebAssemblyでは、Abortは様々な形を取ることができます。</p>
+	<p>これを技術的に解決する選択肢は2つありました。確実に中断されるすべてのエラーをマークするか、確実に解除されるすべてのエラーをマークするかのどちらかです。どちらも実現できましたが、私たちは後者を選択しました。既に私たちの海外例外処理は、生のWATレベル（WebAssemblyテキストフォーマット）の例外処理命令を直接使用していたため、外部例外の例外タグを実装することで、アンウィンド安全でない例外と区別する方が簡単であることがわかりました。</p>
+	<p>WebAssemblyの例外処理におけるこの<code>Exception.Tag</code>機能のおかげで、回復可能なエラーと回復不可能なエラーを明確に区別できるようになり、新しいアボートハンドラーとアボート再入可能ガードの両方を統合することができました。
+
+		新しいAbortフック、<code>set_on_abort</code>を初期化時に使用し、プラットフォーム埋め込みのニーズに応じて回復するハンドラをアタッチできます。</p>
+	<p>無効な実行状態を回避するには、パニックと中断処理の強化が重要です。WebAssemblyを使用すると、コールスタックが深く相互作用し、WasmがJavaScriptを呼び出すことができ、JavaScriptが任意の深さでWasmに再侵入することができますが、これとともに複数のタスクを同じインスタンスで機能させることができます。以前は、1つのタスクやネストされたスタックで発生した中断が、JSを通じて上位のスタックを無効化することが保証されず、未定義の動作につながる可能性がありました。実行モデルを保証できるように注意を払う必要があり、この分野での貢献は継続的に続いています。</p>
+	<p>中断は決して理想的ではなく、障害発生時の再初期化は絶対に最悪のシナリオですが、最終防御線としてクリティカルエラーリカバリーを実装することで、実行の正確性を確保し、将来の操作を成功させることができます。無効な状態は持続しないため、単一の障害が複数の障害につながることはありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="extension-abort-reinitialization-for-wasm-bindgen-libraries">拡張：wasm-bindgenライブラリの再初期化を中断する</h2>
+		<a href="https://blog.cloudflare.com/#extension-abort-reinitialization-for-wasm-bindgen-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これに取り組んでいるうちに、これはwasm-bindgenで構築されたJSが使用するライブラリに共通する問題であり、回復を実行できるようにABORTハンドラーを付加することで恩恵を受けることがわかりました。</p>
+	<p>しかし、WasmをESモジュールとして構築して直接インポートする場合（例：import<code> { func }from 'wasm-dep'</code> ）、Wasm abortの復旧メカニズムは明確ではなく、すでにリンクされた<code>func()</code>を呼び出します。学習したと思いました。</p>
+	<p>厳密にはRust Workersのユースケースではありませんが、CloudflareのチームはRustに支えられたWasmライブラリの依存関係を実行する、JSベースのWorkersユーザーもサポートしています。この問題を同時に解決できれば、Cloudflare WorkersプラットフォームでのWasmの使用にも間接的に利益をもたらす可能性があります。</p>
+	<p>Wasmライブラリユースケースの自動中断リカバリをサポートするために、wasm-bindgen、<code>--reset-state-function</code>に実験的な再初期化メカニズムのサポートを追加しました。これにより、Rustアプリケーションが、生成されたバインディングのコンシューマーがそれらを再インポートまたは作成する必要なく、次の呼び出しのために内部のWasmインスタンスを初期の状態にリセットすることを効果的にリクエストできる関数が公開されます。古いインスタンスのクラスインスタンスは、ハンドリングがオーファンになると破棄されますが、その後、新しいクラスを構築することができます。Wasmライブラリを使用したJSアプリケーションはエラーになりますが、ブリッキングされていません。</p>
+	<p>この機能の技術的な詳細とwasm-bindgenでの使用方法については、新しいwasm-bindgenガイドのセクション<a href="https://wasm-bindgen.github.io/wasm-bindgen/reference/handling-aborts.html" target="_blank" rel="noopener noreferrer"><u>Wasm Bindgen: Handling Aborts</u></a>で説明されています。</p>
+	<div class="flex anchor relative">
+		<h2 id="maturing-the-rust-wasm-exception-handling-ecosystem">Rust Wasm例外処理エコシステムの成熟</h2>
+		<a href="https://blog.cloudflare.com/#maturing-the-rust-wasm-exception-handling-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この取り組みのアップストリームの貢献は、wasm-bindgenプロジェクトだけにとどまりませんでした。<code>panwind=unwind</code>を使用したWasmの構築には、実験的な夜間のRustターゲットが必要です。そのため、当社はRustのWasmのWebAssembly Exception処理のサポートを発展させ、安定したRustに移行することにも取り組んできました。</p>
+	<p>WebAssemblyの例外処理の仕様策定過程において、最終段階での仕様変更により、2つのバリエーションが生まれました。それは、<a href="https://github.com/WebAssembly/exception-handling/blob/main/proposals/exception-handling/legacy/Exceptions.md" target="_blank" rel="noopener noreferrer"><u>従来の例外処理</u></a>と、最終的に採用された最新の<a href="https://github.com/WebAssembly/exception-handling/blob/main/proposals/exception-handling/Exceptions.md" target="_blank" rel="noopener noreferrer"><u>「exnref」を用いた例外処理</u></a>です。現在も、RustのWebAssemblyターゲットは依然としてレガシーバリアントのコードをデフォルトで生成しています。従来の例外処理は広くサポートされていますが、現在は非推奨となっています。</p>
+	<p>最新のWebAssembly例外処理は、以下のJSプラットフォームリリースにてサポートされています:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>ランタイム</b></p>
+				</td>
+				<td>
+					<p><b>バージョン</b></p>
+				</td>
+				<td>
+					<p><b>リリース日</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>v8</p>
+				</td>
+				<td>
+					<p>13.8.1</p>
+				</td>
+				<td>
+					<p>2025年4月28日</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>workerd</p>
+				</td>
+				<td>
+					<p>v1.20250620.0</p>
+				</td>
+				<td>
+					<p>2025年6月19日</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Chrome</p>
+				</td>
+				<td>
+					<p>138</p>
+				</td>
+				<td>
+					<p>2025年6月28日</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Firefox</p>
+				</td>
+				<td>
+					<p>131</p>
+				</td>
+				<td>
+					<p>2024年10月1日</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Safari</p>
+				</td>
+				<td>
+					<p>18.4</p>
+				</td>
+				<td>
+					<p>2025年3月31日</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Node.js</p>
+				</td>
+				<td>
+					<p>25.0.0</p>
+				</td>
+				<td>
+					<p>2025年10月15日</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>サポートマトリックスを調査していたところ、最大の懸念はNode.js 24 LTSのリリーススケジュールでした。これにより、エコシステム全体は2028年4月まで従来のWebAssembly例外処理から抜け出せません。</p>
+	<p>この矛盾を発見したことで、最新の例外処理をNode.js 24リリースにバックポートし、Node.js 22リリースラインでこのターゲットのサポートを確実にするために必要な修正をバックポートすることができました。これにより、最新の例外処理提案が来年のデフォルトのターゲットになるはずです。</p>
+	<p>今後数ヶ月の間に、安定した<code>panic=unwind</code>と最新の例外処理への移行を、エンドユーザーに可能な限り見えないようにする作業を進めます。</p>
+	<p>エコシステムへのこのような長期的な投資には時間がかかりますが、Rust WebAssemblyコミュニティ全体のより強力な基盤を構築するのに役立ちます。こうして改善に貢献できることを嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h2 id="using-panic-unwind-in-rust-workers">Rust Workersでパニック・アンワンドを使用する</h2>
+		<a href="https://blog.cloudflare.com/#using-panic-unwind-in-rust-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rust Workersのバージョン0.8.0より、新しい<code>--panic-unwind</code>フラグが利用可能になり、<a href="https://github.com/cloudflare/workers-rs?tab=readme-ov-file#panic-recovery-with---panic-unwind" target="_blank" rel="noopener noreferrer"><u>こちらの指示</u></a>に従ってビルドコマンドに追加できます。</p>
+	<p>このフラグにより、パニックは完全に回復することができ、ボットリカバリーは新しいボット分類とリカバリーフックメカニズムを使用します。より安定したRust Workersの環境を実現するため、アップグレードして試してみることを強くお勧めします。また、今後のリリースでは<code>panic=unwind</code>をデフォルト設定にする予定です。<code>panic=abort</code> を引き続き使用するユーザーは、0.6.0 からの以前のカスタムリカバリーラッパー処理を引き続き利用できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="committing-to-rust-workers-stability">Rust Workersの安定性確保への取り組み</h2>
+		<a href="https://blog.cloudflare.com/#committing-to-rust-workers-stability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この作業は、Rust Workersの安定版リリースに向けた継続的な取り組みの一部です。Wasmプラットフォーム基盤のこれらの急激なエッジを根本から解決し、それが理にかなっているエコシステムに貢献することで、当社のプラットフォームだけでなく、Rust、JS、Wasmのエコシステム全体のより強固な基盤を構築します。</p>
+	<p>Rust Workersについては今後、数多くの改善を計画しており、まもなくこれらの追加機能に関する最新情報をお伝えする予定です。これには、先月、当チームのGuy Bedfordが<a href="https://www.youtube.com/watch?v=zlSJY8Qv5XI" target="_blank" rel="noopener noreferrer"><u>Wasm.ioでの「Rust &amp; JS Interoperability」</u></a>という講演で概要を紹介した、wasm-bindgenのジェネリクスや自動bindgenなども含まれます。</p>
+	<p><b>#rust‑on‑workers</b>の<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Cloudflare Discord</u></a>でお会いしましょう。また、フィードバックや議論、特に<a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer"><u>workers-rs</u></a>と<a href="https://github.com/wasm-bindgen/wasm-bindgen" target="_blank" rel="noopener noreferrer"><u>wasm-bindgen</u></a>のGitHubプロジェクトへの新しいコントリビューターも歓迎します。</p>
+</div>

@@ -1,53 +1,32 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/browser-run-for-ai-agents">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/browser-run-for-ai-agents">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MjIAL88ZhwvMpREBl4cqn/d62eb21ba79ba0ea11394994e676f2a9/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>AI agents need to interact with the web. To do that, they need a browser. They need to navigate sites, read pages, fill forms, extract data, and take screenshots. They need to observe whether things are working as expected, with a way for their humans to step in if needed. And they need to do all of this at scale.</p>
-	<p>Today, we’re renaming Browser Rendering to <b>Browser Run</b>, and shipping key features that make it <i>the</i> browser for <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI agents</u></a>. The name Browser Rendering never fully captured what the product does. Browser Run lets you run full browser sessions on Cloudflare's global network, drive them with code or AI, record and replay sessions, crawl pages for content, debug in real time, and let humans intervene when your agent needs help.&nbsp;</p>
-	<p>Here’s what’s new:</p>
-	<ul>
-		<li>
-			<p><b>Live View</b>: see what your agent sees and is doing, in real time. Know instantly if things are working, and when they’re not, see exactly why.</p>
-		</li>
-		<li>
-			<p><b>Human in the Loop</b>: when your agent hits a snag like a login page or unexpected edge case, it can hand off to a human instead of failing. The human steps in, resolves, then hands back control.</p>
-		</li>
-		<li>
-			<p><b>Chrome DevTools Protocol (CDP) Endpoint</b>: the Chrome DevTools Protocol is how agents control browsers. Browser Run now exposes it directly, so agents get maximum control over the browser and existing CDP scripts work on Cloudflare.</p>
-		</li>
-		<li>
-			<p><b>MCP Client Support:</b> AI coding agents like Claude Desktop, Cursor, and OpenCode can now use Browser Run as their remote browser.</p>
-		</li>
-		<li>
-			<p><b>WebMCP Support</b>: agents will outnumber humans using the web. WebMCP allows websites to declare what actions are available for agents to discover and call, making navigation more reliable.</p>
-		</li>
-		<li>
-			<p><b>Session Recordings</b>: capture every browser session for debugging purposes. When something goes wrong, you have the full recording with DOM changes, user interactions, and page navigation.</p>
-		</li>
-		<li>
-			<p><b>Higher limits</b>: run more tasks at once with 120 concurrent browsers, up from 30.&nbsp; </p>
-		</li>
-	</ul>
-	<div style="position: relative; padding-top: 64.90384615384616%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+<p>AI agents need to interact with the web. To do that, they need a browser. They need to navigate sites, read pages, fill forms, extract data, and take screenshots. They need to observe whether things are working as expected, with a way for their humans to step in if needed. And they need to do all of this at scale.</p>
+<p>Today, we’re renaming Browser Rendering to <strong>Browser Run</strong>, and shipping key features that make it <em>the</em> browser for <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI agents</u></a>. The name Browser Rendering never fully captured what the product does. Browser Run lets you run full browser sessions on Cloudflare's global network, drive them with code or AI, record and replay sessions, crawl pages for content, debug in real time, and let humans intervene when your agent needs help.&nbsp;</p>
+<p>Here’s what’s new:</p>
+<ul>
+	<li><strong>Live View</strong>: see what your agent sees and is doing, in real time. Know instantly if things are working, and when they’re not, see exactly why.</li>
+	<li><strong>Human in the Loop</strong>: when your agent hits a snag like a login page or unexpected edge case, it can hand off to a human instead of failing. The human steps in, resolves, then hands back control.</li>
+	<li><strong>Chrome DevTools Protocol (CDP) Endpoint</strong>: the Chrome DevTools Protocol is how agents control browsers. Browser Run now exposes it directly, so agents get maximum control over the browser and existing CDP scripts work on Cloudflare.</li>
+	<li><strong>MCP Client Support:</strong> AI coding agents like Claude Desktop, Cursor, and OpenCode can now use Browser Run as their remote browser.</li>
+	<li><strong>WebMCP Support</strong>: agents will outnumber humans using the web. WebMCP allows websites to declare what actions are available for agents to discover and call, making navigation more reliable.</li>
+	<li><strong>Session Recordings</strong>: capture every browser session for debugging purposes. When something goes wrong, you have the full recording with DOM changes, user interactions, and page navigation.</li>
+	<li><strong>Higher limits</strong>: run more tasks at once with 120 concurrent browsers, up from 30.&nbsp; </li>
+</ul>
+<div id="html-block-ky" class="html-block">
+	<div style="padding-top:64.90384615384616%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
 	</div>
-	<p><sup><i>An AI agent searching Google Hotels for up to date pricing for stays in Kyoto</i></sup></p>
-	<div class="flex anchor relative">
-		<h2 id="everything-an-agent-needs">Everything an agent needs</h2>
-		<a href="https://blog.cloudflare.com/#everything-an-agent-needs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s think about what agents need when browsing the web and how each feature fits in:</p>
-	<style type="text/css">
-		.tg {
+</div>
+<p><span data-portabletext-unknown="mark"><em>An AI agent searching Google Hotels for up to date pricing for stays in Kyoto</em></span></p>
+<h2>Everything an agent needs</h2>
+<p>Let’s think about what agents need when browsing the web and how each feature fits in:</p>
+<div id="html-block-k15" class="html-block">
+	<style>
+		#html-block-k15 .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		.tg td {
+		#html-block-k15 .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -58,7 +37,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k15 .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -70,45 +49,29 @@
 			word-break: normal;
 		}
 
-		.tg .tg-1wig {
+		#html-block-k15 .tg .tg-1wig {
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-u1yq {
+		#html-block-k15 .tg .tg-u1yq {
 			background-color: #c0c0c0;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k15 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
-
-		@media screen and (max-width: 767px) {
-			.tg {
-				width: auto !important;
-			}
-
-			.tg col {
-				width: auto !important;
-			}
-
-			.tg-wrap {
-				overflow-x: auto;
-				-webkit-overflow-scrolling: touch;
-				margin: auto 0px;
-			}
-		}
 	</style>
 	<div class="tg-wrap">
-		<table class="tg" style="undefined;table-layout: fixed; width: 727px">
+		<table class="tg">
 			<colgroup>
-				<col style="width: 226px">
-				<col style="width: 501px">
+				<col style="width:226px">
+				<col style="width:501px">
 			</colgroup>
 			<thead>
 				<tr>
@@ -140,256 +103,139 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="flex anchor relative">
-		<h2 id="1-open-a-browser">1) Open a browser</h2>
-		<a href="https://blog.cloudflare.com/#1-open-a-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, an agent needs a browser. With Browser Run, agents can spin up a headless Chrome instance on Cloudflare’s global network, on demand. No infrastructure to manage, no Chrome versions to maintain. Browser sessions open near users for low latency, and scale up and down as needed. Pair Browser Run with the <a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> to build long-running agents that browse the web, remember everything, and act on their own.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="2-take-actions">2) Take actions</h2>
-		<a href="https://blog.cloudflare.com/#2-take-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once your agent has a browser, it needs ways to control it. Browser Run supports multiple approaches: new low-level protocol access with the Chrome DevTools Protocol (CDP) and WebMCP, in addition to existing higher-level automation using <a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a> and <a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>, and <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a> for simple tasks. Let’s look at the details.</p>
-	<div class="flex anchor relative">
-		<h3 id="chrome-devtools-protocol-cdp-endpoint">Chrome DevTools Protocol (CDP) endpoint</h3>
-		<a href="https://blog.cloudflare.com/#chrome-devtools-protocol-cdp-endpoint" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>Chrome DevTools Protocol (CDP)</u></a> is the low-level protocol that powers browser automation. Exposing CDP directly means the growing ecosystem of agent tools and existing CDP automation scripts can use Browser Run. When you open Chrome DevTools and inspect a page, CDP is what's running underneath. Puppeteer, Playwright, and most agent frameworks are built on top of it.</p>
-	<p>Every way that you have been using Browser Run has actually been through CDP already. What’s new is that we're now <a href="https://developers.cloudflare.com/browser-rendering/cdp" target="_blank" rel="noopener noreferrer"><u>exposing CDP directly</u></a> as an endpoint. This matters for agents because CDP gives agents the most control possible over the browser. Agent frameworks already speak CDP natively, and can now connect to Browser Run directly. CDP also unlocks browser actions that aren't available through Puppeteer or Playwright, like JavaScript debugging. And because you're working with raw CDP messages instead of going through higher-level libraries, you can pass messages directly to models for more token-efficient browser control.</p>
-	<p>If you already have CDP automation scripts running against self-hosted Chrome, they work on Browser Run with a one-line config change. Point your WebSocket URL at Browser Run and stop managing your own browser infrastructure.</p>
-	<pre class="language-javascript"><code class="language-javascript">// Before: connecting to self-hosted Chrome
-const browser = await puppeteer.connect({
-  browserWSEndpoint: 'ws://localhost:9222/devtools/browser'
-});
-
-// After: connecting to Browser Run
-const browser = await puppeteer.connect({
-  browserWSEndpoint: 'wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser',
-  headers: { 'Authorization': 'Bearer &lt;API_TOKEN&gt;' }
-});
-</code></pre>
-	<p>The CDP endpoint also makes Browser Run more accessible. You can now connect from any language, any environment, without needing to write a <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker</u></a>. (If you're already using Workers, nothing changes.)</p>
-	<div class="flex anchor relative">
-		<h4 id="using-browser-run-with-mcp-clients">Using Browser Run with MCP Clients</h4>
-		<a href="https://blog.cloudflare.com/#using-browser-run-with-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that Browser Run exposes the Chrome DevTools Protocol (CDP), MCP clients including Claude Desktop, Cursor, Codex, and OpenCode can use Browser Run as their remote browser. The <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer"><u>chrome-devtools-mcp package</u></a> from the Chrome DevTools team is an MCP server that gives your AI coding assistant access to the full power of Chrome DevTools for reliable automation, in-depth debugging, and performance analysis.</p>
-	<p>Here’s an example of how to configure Browser Run for Claude Desktop:</p>
-	<pre class="language-javascript"><code class="language-javascript">{
-  "mcpServers": {
-    "browser-rendering": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser?keep_alive=600000",
-        "--wsHeaders={\"Authorization\":\"Bearer &lt;API_TOKEN&gt;\"}"
-      ]
-    }
-  }
-}
-</code></pre>
-	<p>For other MCP clients, see <a href="https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients" target="_blank" rel="noopener noreferrer"><u>documentation for using Browser Run with MCP clients</u></a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="webmcp-support">WebMCP support</h3>
-		<a href="https://blog.cloudflare.com/#webmcp-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Internet was built for humans, so navigating as an AI agent today is unreliable. We’re betting on a future where more agents use the web than humans. In that world, sites need to be agent-friendly.</p>
-	<p>That’s why we’re launching support for <a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank" rel="noopener noreferrer"><u>WebMCP</u></a>, a new browser API from the Google Chrome team that landed in Chromium 146+. WebMCP lets websites expose tools directly to AI agents, declaring what actions are available for agents to discover and call on each page. This helps agents navigate the web more reliably. Instead of agents needing to figure out how to use a site, websites can expose their tools for agents to discover and call</p>
-	<p>Two APIs make this work:</p>
-	<ul>
-		<li>
-			<p><code>navigator.modelContext</code> allows websites to register their tools</p>
-		</li>
-		<li>
-			<p><code>navigator.modelContextTesting</code> allows agents to discover and execute those tools</p>
-		</li>
-	</ul>
-	<p>Today, an agent visiting a travel booking site has to figure out the UI by looking at it. With WebMCP, the site declares “here’s a search_flights tool that takes an origin, destination, and date.” The agent calls it directly, without having to loop through slow screenshot-analyze-click loops. This makes navigation more reliable regardless of potential changes to the UI.</p>
-	<p>Tools are discovered on the page rather than preloaded. This matters for the long tail of the web, where preloading an MCP server for every possible site is not feasible and would bloat the context window.&nbsp;</p>
-	<div style="position: relative; padding-top: 62.7177700348432%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/cdef25a5448e8f745c319974849a74d9/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fcdef25a5448e8f745c319974849a74d9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p><sup><i>Using WebMCP to book a hotel through the Chrome DevTools console, discovering available tools with listTools()</i></sup></p>
-	<p>We have an experimental pool with browser instances running Chrome beta so you can test emerging browser features before they reach stable Chrome. We also just shipped <a href="https://developers.cloudflare.com/browser-rendering/reference/wrangler-commands" target="_blank" rel="noopener noreferrer"><u>Wrangler browser commands</u></a> that let you manage browser sessions directly from the CLI, letting you create, manage, and view browser sessions directly from your terminal. To <a href="https://developers.cloudflare.com/browser-run/features/webmcp" target="_blank" rel="noopener noreferrer"><u>access WebMCP-enabled browsers</u></a>, use the following Wrangler command to create a session in the experimental pool:</p>
-	<pre class="language-javascript"><code class="language-javascript">npm i -g wrangler@latest
-wrangler browser create --lab --keepAlive 300  
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="existing-ways-to-use-browser-run">Existing ways to use Browser Run</h3>
-		<a href="https://blog.cloudflare.com/#existing-ways-to-use-browser-run" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While CDP and WebMCP are new, you could already use <a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a>, <a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>, or <a href="https://developers.cloudflare.com/browser-rendering/stagehand" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a> for full browser automation through Browser Run. And for simple tasks like <a href="https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint" target="_blank" rel="noopener noreferrer"><u>capturing screenshots</u></a>, <a href="https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint" target="_blank" rel="noopener noreferrer"><u>generating PDFs</u></a>, and <a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>extracting markdown</u></a>, there are the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Action endpoints</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h4 id="crawl-endpoint-crawl-web-content">/crawl endpoint — crawl web content</h4>
-		<a href="https://blog.cloudflare.com/#crawl-endpoint-crawl-web-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We also recently shipped a <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint</u></a> that lets you crawl entire sites with a single API call. Give it a starting URL and pages are automatically discovered and scraped, then returned in your preferred format (HTML, Markdown, and structured JSON), with additional parameters to control crawl depth and scope, skip pages that haven’t changed, and specify certain paths to include or exclude.&nbsp;</p>
-	<p>We intentionally built /crawl to be a <a href="https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management" target="_blank" rel="noopener noreferrer"><u>well-behaved crawler</u></a>. That means it respects site owner’s preferences out of the box, is a <a href="https://developers.cloudflare.com/bots/concepts/bot/signed-agents" target="_blank" rel="noopener noreferrer"><u>signed agent</u></a> with a distinct bot ID that is cryptographically signed using <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a>, a non-customizable <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#user-agent" target="_blank" rel="noopener noreferrer"><u>User-Agent</u></a>, and follows robots.txt and <a href="https://www.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control</u></a>. It does not bypass Cloudflare’s bot protections or CAPTCHAs. Site owners choose whether their content is accessible and /crawl respects it.&nbsp;</p>
-	<pre class="language-javascript"><code class="language-javascript"># Initiate a crawl
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-  -H 'Authorization: Bearer &lt;apiToken&gt;' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "url": "https://blog.cloudflare.com/"
-  }'
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="3-observe">3) Observe</h2>
-		<a href="https://blog.cloudflare.com/#3-observe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Things don’t always go right the first try. We kept hearing from customers that when their automations failed, they had no idea why. That’s why we’ve added multiple ways to observe what’s happening, so you can see exactly what your agent sees, both live and after the fact.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="live-view">Live View</h3>
-		<a href="https://blog.cloudflare.com/#live-view" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://developers.cloudflare.com/browser-run/features/live-view" target="_blank" rel="noopener noreferrer"><u>Live View</u></a> lets you watch your agent’s browser session in real time. Whether you’re debugging an agent or running a long automation script, you see exactly what’s happening as it happens. This includes the page itself, as well as the DOM, console, and network requests. When something goes wrong — the expected button isn't there, the page needs authentication, or a CAPTCHA appears — you can catch it immediately.</p>
-	<p>There are two ways to access Live View. From code, obtain the <code>session_id</code> of the browser you want to inspect and open the <code>devtoolsFrontendURL</code> from the response in Chrome. Or from the Cloudflare dashboard, open the new Live Sessions tab in the Browser Run section and click into any active session.</p>
-	<div style="position: relative; padding-top: 64.98194945848375%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b4128e98965d98cddf27b36968c6ac96/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb4128e98965d98cddf27b36968c6ac96%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p><sup><i>Live View of an AI agent booking a hotel, showing real-time browser activity</i></sup></p>
-	<div class="flex anchor relative">
-		<h3 id="session-recordings">Session Recordings</h3>
-		<a href="https://blog.cloudflare.com/#session-recordings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Live View is great when you’re available, but you can’t watch every session. <a href="https://developers.cloudflare.com/browser-run/features/session-recording" target="_blank" rel="noopener noreferrer"><u>Session Recordings</u></a> captures DOM changes, mouse and keyboard events, and page navigation as structured JSON so you can replay any session after it ends. </p>
-	<p>Enable Session Recordings by passing <code>recording:true</code> when launching a browser. After the session closes, you can access the recording in the Cloudflare dashboard from the Runs tab or retrieve recordings via API and replay them with the <a href="https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player" target="_blank" rel="noopener noreferrer"><u>rrweb-player</u></a>. Next, we’re adding the ability to inspect DOM state and console output at any point during the recording.&nbsp; </p>
-	<div style="position: relative; padding-top: 60%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/bd2a15591735a7f7447cb5d366935161/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fbd2a15591735a7f7447cb5d366935161%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p><sup><i>Session recording replay of a browser automation browsing the Sentry Shop and adding a bomber jacket to the cart </i></sup></p>
-	<div class="flex anchor relative">
-		<h3 id="dashboard-redesign">Dashboard Redesign</h3>
-		<a href="https://blog.cloudflare.com/#dashboard-redesign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Previously, the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fbrowser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run dashboard</u></a> only showed logs from browser sessions. Requests for screenshots, PDFs, markdown, and crawls were not visible. The redesigned dashboard changes that. The new Runs tab shows every request. You can filter by endpoint and view details including target URLs, status, and duration.&nbsp; </p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eExar2kjoc2QSq6skzTf6/ba4ad79fa01eb060f8b14cd5afa342e5/BLOG-3221_2.png" alt="Browser Run dashboard Runs tab with browser sessions and quick actions visible in one list, and an expanded crawl job showing running status and progress" class="kg-image" width="1692" height="1000" loading="lazy">
-	</figure>
-	<p><sup><i>The Browser Run dashboard Runs tab showing browser sessions and quick actions like PDF, Screenshot, and Crawl in a single view, with a crawl job expanded to show its progress</i></sup></p>
-	<div class="flex anchor relative">
-		<h2 id="4-intervene">4) Intervene</h2>
-		<a href="https://blog.cloudflare.com/#4-intervene" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Agents are good, but they’re not perfect. Sometimes they need their human to step in. Browser Run supports Human in the Loop workflows where a human can take control of a live browser session, handle what the automation cannot, then let the session continue.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="human-in-the-loop">Human in the Loop</h3>
-		<a href="https://blog.cloudflare.com/#human-in-the-loop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When automation hits a wall, you don't have to restart. With <a href="https://developers.cloudflare.com/browser-run/features/human-in-the-loop" target="_blank" rel="noopener noreferrer"><u>Human in the Loop</u></a>, you can step in and interact with the page directly to click, type, navigate, enter credentials, or submit forms. This unlocks workflows that agents cannot handle.</p>
-	<p>Today, you can step in by opening the Live View URL for any active session. Next, we’re adding a handoff flow where the agent can signal that it needs help, notify a human to step in, then hand control back to the agent once the issue is resolved.</p>
-	<div style="position: relative; padding-top: 64.90384615384616%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p><sup><i>An AI agent searching Amazon for an orange lava lamp, comparing options, and handing off to a human when sign-in is required to complete the purchase</i></sup></p>
-	<div class="flex anchor relative">
-		<h2 id="5-scale">5) Scale</h2>
-		<a href="https://blog.cloudflare.com/#5-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Customers have asked us to raise limits so that they can do more, faster.</p>
-	<div class="flex anchor relative">
-		<h3 id="higher-limits">Higher limits</h3>
-		<a href="https://blog.cloudflare.com/#higher-limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We've quadrupled the <a href="https://developers.cloudflare.com/browser-rendering/limits" target="_blank" rel="noopener noreferrer"><u>default concurrent browser limit from 30 to 120</u></a>. Every session gives you instant access to a browser from a global pool of warm instances, so there's no cold start waiting for a browser to spin up. In March, we also <a href="https://developers.cloudflare.com/changelog/post/2026-03-04-br-rest-api-limit-increase" target="_blank" rel="noopener noreferrer"><u>increased limits for Quick Actions</u></a> to 10 requests per second. If you need higher limits, they're available by request.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What's next</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><b>Human in the Loop Handoff</b>: today you can intervene in a browser session through Live View. Soon, the agent will be able to signal when it needs help, so you can build in notifications to alert a human to step in.</p>
-		</li>
-		<li>
-			<p><b>Session Recordings Inspection</b>: you can already scrub through the timeline and replay any session. Soon, you’ll be able to inspect DOM state and console output as well.</p>
-		</li>
-		<li>
-			<p><b>Traces and Browser Logs</b>: access debugging information without instrumenting your code. Console logs, network requests, timing data. If something broke, you'll know where.</p>
-		</li>
-		<li>
-			<p><b>Screenshot, PDF, and markdown directly from Workers</b>: the same simple tasks available through the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API</u></a> are coming to <a href="https://developers.cloudflare.com/browser-rendering/workers-bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>. e<code>nv.BROWSER.screenshot()</code> just works, with no API tokens needed.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="get-started">Get started</h2>
-		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Browser Run is available today on both the Workers Free and Workers Paid plans. Everything we shipped today — Live View, Human in the Loop, Session Recordings, and higher concurrency limits — is ready to use.&nbsp;</p>
-	<p>If you were already using Browser Rendering, everything works the same, just with a new name and more features.&nbsp;&nbsp;</p>
-	<p>Check out the <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> to get started. </p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mQq5rxfDK3oU80JCRUL7P/7842cac72f0f4170cc697011230146ab/BLOG-3221_3.png" alt="BLOG-3221 3" class="kg-image" width="1999" height="491" loading="lazy">
-	</figure>
-	<p></p>
 </div>
+<h2>1) Open a browser</h2>
+<p>First, an agent needs a browser. With Browser Run, agents can spin up a headless Chrome instance on Cloudflare’s global network, on demand. No infrastructure to manage, no Chrome versions to maintain. Browser sessions open near users for low latency, and scale up and down as needed. Pair Browser Run with the <a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> to build long-running agents that browse the web, remember everything, and act on their own.&nbsp;</p>
+<h2>2) Take actions</h2>
+<p>Once your agent has a browser, it needs ways to control it. Browser Run supports multiple approaches: new low-level protocol access with the Chrome DevTools Protocol (CDP) and WebMCP, in addition to existing higher-level automation using <a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a> and <a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>, and <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a> for simple tasks. Let’s look at the details.</p>
+<h3>Chrome DevTools Protocol (CDP) endpoint</h3>
+<p>The <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>Chrome DevTools Protocol (CDP)</u></a> is the low-level protocol that powers browser automation. Exposing CDP directly means the growing ecosystem of agent tools and existing CDP automation scripts can use Browser Run. When you open Chrome DevTools and inspect a page, CDP is what's running underneath. Puppeteer, Playwright, and most agent frameworks are built on top of it.</p>
+<p>Every way that you have been using Browser Run has actually been through CDP already. What’s new is that we're now <a href="https://developers.cloudflare.com/browser-rendering/cdp" target="_blank" rel="noopener noreferrer"><u>exposing CDP directly</u></a> as an endpoint. This matters for agents because CDP gives agents the most control possible over the browser. Agent frameworks already speak CDP natively, and can now connect to Browser Run directly. CDP also unlocks browser actions that aren't available through Puppeteer or Playwright, like JavaScript debugging. And because you're working with raw CDP messages instead of going through higher-level libraries, you can pass messages directly to models for more token-efficient browser control.</p>
+<p>If you already have CDP automation scripts running against self-hosted Chrome, they work on Browser Run with a one-line config change. Point your WebSocket URL at Browser Run and stop managing your own browser infrastructure.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Before: connecting to self-hosted Chrome</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> browser</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  browserWSEndpoint: </span><span class="sk-032f62-99ffe4">'ws://localhost:9222/devtools/browser'</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// After: connecting to Browser Run</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> browser</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  browserWSEndpoint: </span><span class="sk-032f62-99ffe4">'wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  headers: { </span><span class="sk-032f62-99ffe4">'Authorization'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'Bearer &lt;API_TOKEN&gt;'</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The CDP endpoint also makes Browser Run more accessible. You can now connect from any language, any environment, without needing to write a <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker</u></a>. (If you're already using Workers, nothing changes.)</p>
+<h4>Using Browser Run with MCP Clients</h4>
+<p>Now that Browser Run exposes the Chrome DevTools Protocol (CDP), MCP clients including Claude Desktop, Cursor, Codex, and OpenCode can use Browser Run as their remote browser. The <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer"><u>chrome-devtools-mcp package</u></a> from the Chrome DevTools team is an MCP server that gives your AI coding assistant access to the full power of Chrome DevTools for reliable automation, in-depth debugging, and performance analysis.</p>
+<p>Here’s an example of how to configure Browser Run for Claude Desktop:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "mcpServers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "browser-rendering"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "command"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"npx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "args"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "-y"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "chrome-devtools-mcp@latest"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/browser-rendering/devtools/browser?keep_alive=600000"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "--wsHeaders={</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">Authorization</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">Bearer &lt;API_TOKEN&gt;</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>For other MCP clients, see <a href="https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients" target="_blank" rel="noopener noreferrer"><u>documentation for using Browser Run with MCP clients</u></a>.</p>
+<h3>WebMCP support</h3>
+<p>The Internet was built for humans, so navigating as an AI agent today is unreliable. We’re betting on a future where more agents use the web than humans. In that world, sites need to be agent-friendly.</p>
+<p>That’s why we’re launching support for <a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank" rel="noopener noreferrer"><u>WebMCP</u></a>, a new browser API from the Google Chrome team that landed in Chromium 146+. WebMCP lets websites expose tools directly to AI agents, declaring what actions are available for agents to discover and call on each page. This helps agents navigate the web more reliably. Instead of agents needing to figure out how to use a site, websites can expose their tools for agents to discover and call</p>
+<p>Two APIs make this work:</p>
+<ul>
+	<li><code>navigator.modelContext</code> allows websites to register their tools</li>
+	<li><code>navigator.modelContextTesting</code> allows agents to discover and execute those tools</li>
+</ul>
+<p>Today, an agent visiting a travel booking site has to figure out the UI by looking at it. With WebMCP, the site declares “here’s a search_flights tool that takes an origin, destination, and date.” The agent calls it directly, without having to loop through slow screenshot-analyze-click loops. This makes navigation more reliable regardless of potential changes to the UI.</p>
+<p>Tools are discovered on the page rather than preloaded. This matters for the long tail of the web, where preloading an MCP server for every possible site is not feasible and would bloat the context window.&nbsp;</p>
+<div id="html-block-k3a" class="html-block">
+	<div style="padding-top:62.7177700348432%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/cdef25a5448e8f745c319974849a74d9/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fcdef25a5448e8f745c319974849a74d9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p><span data-portabletext-unknown="mark"><em>Using WebMCP to book a hotel through the Chrome DevTools console, discovering available tools with listTools()</em></span></p>
+<p>We have an experimental pool with browser instances running Chrome beta so you can test emerging browser features before they reach stable Chrome. We also just shipped <a href="https://developers.cloudflare.com/browser-rendering/reference/wrangler-commands" target="_blank" rel="noopener noreferrer"><u>Wrangler browser commands</u></a> that let you manage browser sessions directly from the CLI, letting you create, manage, and view browser sessions directly from your terminal. To <a href="https://developers.cloudflare.com/browser-run/features/webmcp" target="_blank" rel="noopener noreferrer"><u>access WebMCP-enabled browsers</u></a>, use the following Wrangler command to create a session in the experimental pool:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm i </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">g wrangler@latest</span></span>
+<span class="line"><span class="sk-24292e-fff">wrangler browser create </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">lab </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">keepAlive </span><span class="sk-005cc5-ffc799">300</span><span class="sk-24292e-fff">  </span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>Existing ways to use Browser Run</h3>
+<p>While CDP and WebMCP are new, you could already use <a href="https://developers.cloudflare.com/browser-rendering/puppeteer" target="_blank" rel="noopener noreferrer"><u>Puppeteer</u></a>, <a href="https://developers.cloudflare.com/browser-rendering/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a>, or <a href="https://developers.cloudflare.com/browser-rendering/stagehand" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a> for full browser automation through Browser Run. And for simple tasks like <a href="https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint" target="_blank" rel="noopener noreferrer"><u>capturing screenshots</u></a>, <a href="https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint" target="_blank" rel="noopener noreferrer"><u>generating PDFs</u></a>, and <a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>extracting markdown</u></a>, there are the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Action endpoints</u></a>.&nbsp;</p>
+<h4>/crawl endpoint — crawl web content</h4>
+<p>We also recently shipped a <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint</u></a> that lets you crawl entire sites with a single API call. Give it a starting URL and pages are automatically discovered and scraped, then returned in your preferred format (HTML, Markdown, and structured JSON), with additional parameters to control crawl depth and scope, skip pages that haven’t changed, and specify certain paths to include or exclude.&nbsp;</p>
+<p>We intentionally built /crawl to be a <a href="https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management" target="_blank" rel="noopener noreferrer"><u>well-behaved crawler</u></a>. That means it respects site owner’s preferences out of the box, is a <a href="https://developers.cloudflare.com/bots/concepts/bot/signed-agents" target="_blank" rel="noopener noreferrer"><u>signed agent</u></a> with a distinct bot ID that is cryptographically signed using <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a>, a non-customizable <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#user-agent" target="_blank" rel="noopener noreferrer"><u>User-Agent</u></a>, and follows robots.txt and <a href="https://www.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control</u></a>. It does not bypass Cloudflare’s bot protections or CAPTCHAs. Site owners choose whether their content is accessible and /crawl respects it.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Initiate a crawl</span></span>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> 'Authorization: Bearer &lt;apiToken&gt;'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://blog.cloudflare.com/"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span><span class="sk-032f62-99ffe4">'</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>3) Observe</h2>
+<p>Things don’t always go right the first try. We kept hearing from customers that when their automations failed, they had no idea why. That’s why we’ve added multiple ways to observe what’s happening, so you can see exactly what your agent sees, both live and after the fact.&nbsp;</p>
+<h3>Live View</h3>
+<p><a href="https://developers.cloudflare.com/browser-run/features/live-view" target="_blank" rel="noopener noreferrer"><u>Live View</u></a> lets you watch your agent’s browser session in real time. Whether you’re debugging an agent or running a long automation script, you see exactly what’s happening as it happens. This includes the page itself, as well as the DOM, console, and network requests. When something goes wrong — the expected button isn't there, the page needs authentication, or a CAPTCHA appears — you can catch it immediately.</p>
+<p>There are two ways to access Live View. From code, obtain the <code>session_id</code> of the browser you want to inspect and open the <code>devtoolsFrontendURL</code> from the response in Chrome. Or from the Cloudflare dashboard, open the new Live Sessions tab in the Browser Run section and click into any active session.</p>
+<div id="html-block-k5h" class="html-block">
+	<div style="padding-top:64.98194945848375%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b4128e98965d98cddf27b36968c6ac96/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb4128e98965d98cddf27b36968c6ac96%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p><span data-portabletext-unknown="mark"><em>Live View of an AI agent booking a hotel, showing real-time browser activity</em></span></p>
+<h3>Session Recordings</h3>
+<p>Live View is great when you’re available, but you can’t watch every session. <a href="https://developers.cloudflare.com/browser-run/features/session-recording" target="_blank" rel="noopener noreferrer"><u>Session Recordings</u></a> captures DOM changes, mouse and keyboard events, and page navigation as structured JSON so you can replay any session after it ends. </p>
+<p>Enable Session Recordings by passing <code>recording:true</code> when launching a browser. After the session closes, you can access the recording in the Cloudflare dashboard from the Runs tab or retrieve recordings via API and replay them with the <a href="https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player" target="_blank" rel="noopener noreferrer"><u>rrweb-player</u></a>. Next, we’re adding the ability to inspect DOM state and console output at any point during the recording.&nbsp; </p>
+<div id="html-block-k5y" class="html-block">
+	<div style="padding-top:60%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/bd2a15591735a7f7447cb5d366935161/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fbd2a15591735a7f7447cb5d366935161%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p><span data-portabletext-unknown="mark"><em>Session recording replay of a browser automation browsing the Sentry Shop and adding a bomber jacket to the cart </em></span></p>
+<h3>Dashboard Redesign</h3>
+<p>Previously, the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fbrowser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run dashboard</u></a> only showed logs from browser sessions. Requests for screenshots, PDFs, markdown, and crawls were not visible. The redesigned dashboard changes that. The new Runs tab shows every request. You can filter by endpoint and view details including target URLs, status, and duration.&nbsp; </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="423" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=640&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=750&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=828&amp;h=490&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=1080&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=1280&amp;h=757&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VNY5QAP1BB2EQ9TRZ6KY.png&amp;w=1430&amp;h=846&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Browser Run dashboard Runs tab with browser sessions and quick actions visible in one list, and an expanded crawl job showing running status and progress" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="423" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Browser Run dashboard Runs tab with browser sessions and quick actions visible in one list, and an expanded crawl job showing running status and progress"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><span data-portabletext-unknown="mark"><em>The Browser Run dashboard Runs tab showing browser sessions and quick actions like PDF, Screenshot, and Crawl in a single view, with a crawl job expanded to show its progress</em></span></p>
+<h2>4) Intervene</h2>
+<p>Agents are good, but they’re not perfect. Sometimes they need their human to step in. Browser Run supports Human in the Loop workflows where a human can take control of a live browser session, handle what the automation cannot, then let the session continue.&nbsp;</p>
+<h3>Human in the Loop</h3>
+<p>When automation hits a wall, you don't have to restart. With <a href="https://developers.cloudflare.com/browser-run/features/human-in-the-loop" target="_blank" rel="noopener noreferrer"><u>Human in the Loop</u></a>, you can step in and interact with the page directly to click, type, navigate, enter credentials, or submit forms. This unlocks workflows that agents cannot handle.</p>
+<p>Today, you can step in by opening the Live View URL for any active session. Next, we’re adding a handoff flow where the agent can signal that it needs help, notify a human to step in, then hand control back to the agent once the issue is resolved.</p>
+<div id="html-block-k6o" class="html-block">
+	<div style="padding-top:64.90384615384616%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/62be480d0c807c7e44af32035e78044f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F62be480d0c807c7e44af32035e78044f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p><span data-portabletext-unknown="mark"><em>An AI agent searching Amazon for an orange lava lamp, comparing options, and handing off to a human when sign-in is required to complete the purchase</em></span></p>
+<h2>5) Scale</h2>
+<p>Customers have asked us to raise limits so that they can do more, faster.</p>
+<h3>Higher limits</h3>
+<p>We've quadrupled the <a href="https://developers.cloudflare.com/browser-rendering/limits" target="_blank" rel="noopener noreferrer"><u>default concurrent browser limit from 30 to 120</u></a>. Every session gives you instant access to a browser from a global pool of warm instances, so there's no cold start waiting for a browser to spin up. In March, we also <a href="https://developers.cloudflare.com/changelog/post/2026-03-04-br-rest-api-limit-increase" target="_blank" rel="noopener noreferrer"><u>increased limits for Quick Actions</u></a> to 10 requests per second. If you need higher limits, they're available by request.</p>
+<h2>What's next</h2>
+<ul>
+	<li><strong>Human in the Loop Handoff</strong>: today you can intervene in a browser session through Live View. Soon, the agent will be able to signal when it needs help, so you can build in notifications to alert a human to step in.</li>
+	<li><strong>Session Recordings Inspection</strong>: you can already scrub through the timeline and replay any session. Soon, you’ll be able to inspect DOM state and console output as well.</li>
+	<li><strong>Traces and Browser Logs</strong>: access debugging information without instrumenting your code. Console logs, network requests, timing data. If something broke, you'll know where.</li>
+	<li><strong>Screenshot, PDF, and markdown directly from Workers</strong>: the same simple tasks available through the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API</u></a> are coming to <a href="https://developers.cloudflare.com/browser-rendering/workers-bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>. e<code>nv.BROWSER.screenshot()</code> just works, with no API tokens needed.</li>
+</ul>
+<h2>Get started</h2>
+<p>Browser Run is available today on both the Workers Free and Workers Paid plans. Everything we shipped today — Live View, Human in the Loop, Session Recordings, and higher concurrency limits — is ready to use.&nbsp;</p>
+<p>If you were already using Browser Rendering, everything works the same, just with a new name and more features.&nbsp;&nbsp;</p>
+<p>Check out the <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> to get started. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CB69F1E77SA81TPKK4Y6.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3221 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3221 3"></div>
+</figure>

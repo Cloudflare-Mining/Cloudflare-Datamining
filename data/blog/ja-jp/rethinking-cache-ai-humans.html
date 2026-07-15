@@ -1,0 +1,180 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/rethinking-cache-ai-humans">English</a>および<a href="https://blog.cloudflare.com/ko-kr/rethinking-cache-ai-humans">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fJVJreBqUhXxIavyRmph/e1946fb684eca0d832621a267fe19937/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareのデータによると、当社のネットワーク全体のトラフィックの32%は、<a href="https://radar.cloudflare.com/traffic" target="_blank" rel="noopener noreferrer"><u>自動化されたトラフィック</u></a>から発信されています。これには、検索エンジンクローラー、稼働時間チェッカー、広告ネットワークが含まれます。また、最近では、Webを調べてナレッジベースに関連データを追加し、<a href="https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag" target="_blank" rel="noopener noreferrer"><u>検索拡張生成</u></a>（RAG）を使用して応答を生成するAIアシスタントも含まれます。典型的な人間の行動とは異なり、<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>、クローラー、スクレイパーの自動化された行動は、リクエストに応答するサーバーに対して攻撃的に見える場合があります。</p>
+	<p>たとえば、AIボットは大量のリクエストを頻繁に発行し、多くの場合並行してそのような対応を行います。人気ページに焦点を当てるのではなく、サイト全体で訪問者がほとんどないコンテンツや関連性が緩いコンテンツに、多くの場合、Webサイトの完全なスキャンを連続して実行することがあります。例えば、応答を生成するAIアシスタントが、画像、文書、知識記事などの無関係な情報源を取得することがあります。</p>
+	<p>Cloudflareはすでに、コンテンツへの自動アクセスを<a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>制御および制限</u></a>することを簡単にしていますが、多くのサイトはAIトラフィックに対応<i>したい</i>と考えています。例えば、アプリケーション開発者は、基本的なAIモデルにおいて開発者ドキュメントが最新であることを保証したい、eコマースサイトは、商品情報がLLM検索結果の一部であることを確認したい、あるいはパブリッシャーは、<a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>クロールごとに課金</u></a>などのメカニズムを通じてコンテンツの対価を得たいと考えるかもしれません。</p>
+	<p>そこで、Webサイト運営者は、「AIクローラー」に合わせるか、人間のトラフィックに合わせるかという二分構築に直面します。両者が大きく異なるトラフィックパターンを示すため、現在のキャッシュアーキテクチャは、リソースを節約するために1つのアプローチを選択することを余儀なくされます。</p>
+	<p>この記事では、AIトラフィックがストレージキャッシュにどのように影響するかを探り、この影響を軽減することに関連するいくつかの課題について説明し、コミュニティがAI時代にCDNキャッシュを適応することを検討するための方法を提案します。</p>
+	<p>この研究は、<a href="https://ethz.ch/en.html" target="_blank" rel="noopener noreferrer"><u>ETH Zurich</u></a>の研究者チームとの共同作業です。この成果の完全版は、2025年<a href="https://acmsocc.org/2025/index.html" target="_blank" rel="noopener noreferrer"><u>Symposium on クラウドコンピューティング</u></a> で、Zhangなどによる「<a href="https://dl.acm.org/doi/10.1145/3772052.3772255" target="_blank" rel="noopener noreferrer"><u>AI時代に向けたWebキャッシュデザインの再考</u></a>」として発表されました。</p>
+	<div class="flex anchor relative">
+		<h3 id="caching">キャッシング&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>では、<a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer"><u>キャッシング</u></a>について簡単におさらいしましょう。ユーザーが自分のデバイスでコンテンツを要求すると、通常、ユーザーに最も近いCloudflareデータセンターに送信されます。リクエストが到着すると、有効なキャッシュコピーがあるかどうかを確認します。そうすれば、即座にコンテンツを提供できるため、迅速な対応が可能になり、ユーザーも満足します。コンテンツがキャッシュから読み取れない場合（「キャッシュミス」）、データセンターは<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server" target="_blank" rel="noopener noreferrer"><u>配信元サーバー</u></a>に連絡して新しいコピーを取得し、有効期限が切れるか、他のデータによって追い出されるまでキャッシュに保存します。</p>
+	<p>キャッシュに適切な要素を保持することは、キャッシュミスを減らし、優れたユーザーエクスペリエンスを提供するために極めて重要ですが、人間のトラフィックにとって「正しい」ことは、AIクローラーにとって正しいことと大きく異なる場合があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-traffic-at-cloudflare">CloudflareにおけるAIトラフィック</h3>
+		<a href="https://blog.cloudflare.com/#ai-traffic-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここでは、自己識別型AIボットトラフィックの80%を占める、最も活発なAIボットタイプとして浮上したAIクローラートラフィックに焦点を当てます<a href="https://blog.cloudflare.com/crawlers-click-ai-bots-training"><u>最近の分析</u></a>。AIクローラーは、質問への回答やページの要約など、リアルタイムのAIサービスをサポートするためのコンテンツを取得します。また、<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>などのモデルの大規模なトレーニングデータセットを構築するためにデータを収集することもできます。</p>
+	<p><a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>のデータによると、単一目的のAIボットトラフィックの大半はトレーニング用で、検索がはるかに2位でした。（Cloudflareで見られるAIクローラートラフィックの詳細については、<a href="https://blog.cloudflare.com/ai-crawler-traffic-by-purpose-and-industry"><u>こちらのブログ記事</u></a>をご覧ください）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WQUiQ36rvMb8rNKruwdLd/1e9003057720b68829c6df3337a840ec/image2.png" alt="" class="kg-image" width="1600" height="1188" loading="lazy">
+	</figure>
+	<p>検索クロールとトレーニングクロールはどちらも、多数の順次、ロングテールアクセスを通じてキャッシュに影響を与えますが、トレーニングトラフィックには、ユニークURL比率の高さ、コンテンツの多様性、クローリングの非効率性などの特性があり、キャッシュにさらに影響を与えます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-ai-traffic-differ-from-other-traffic-for-a-cdn">AIトラフィックは、CDNに対する他のトラフィックとどのように異なるか？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-ai-traffic-differ-from-other-traffic-for-a-cdn" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIクローラーのトラフィックには、「URLの固有率の高さ」、「コンテンツの多様性」、「クローリングの効率の悪さ」という3つの主な特徴があります。</p>
+	<p>毎月大規模なWebクロールを行う<a href="https://commoncrawl.org" target="_blank" rel="noopener noreferrer"><u>Common Crawl</u></a>の<a href="https://commoncrawl.github.io/cc-crawl-statistics/plots/crawlsize" target="_blank" rel="noopener noreferrer"><u>パブリッククロール統計</u></a>によると、ページの90%以上がユニークなコンテンツであることがわかっています。異なるAIクローラーは、<a href="https://blog.cloudflare.com/ai-bots"><u>異なるコンテンツタイプ</u></a>もターゲットとしています。例えば、技術文書に特化したものもあれば、ソースコード、メディア、ブログ記事に焦点を当てたものもあります。最後に、AIクローラーは必ずしも最適なクローリング経路をたどるとは限りません。一般的なAIクローラーからの取得のかなりの部分が404エラーまたはリダイレクトにつながりますが、<a href="https://dl.acm.org/doi/abs/10.1145/3772052.3772255" target="_blank" rel="noopener noreferrer"><u>これは多くの場合、URLの処理が不十分であることが原因です</u></a>。これらの無効なリクエストの割合は、クローラーがライブの有意義なコンテンツをどの程度ターゲットにしているかによって変わってきます。また、AIクローラーは通常、人間のユーザーと同じようにブラウザ側のキャッシングやセッション管理を行いません。AIクローラーは複数の独立したインスタンスを起動できますが、セッションを共有しないため、すべてのインスタンスが同じコンテンツを要求した場合でも、それぞれがCDNにとって新しい訪問者として表示される場合があります。</p>
+	<p>単一のAIクローラーでも、一般的な人間のユーザーよりもWebサイトを深く掘り下げ、<a href="https://dl.acm.org/doi/epdf/10.1145/3772052.3772255" target="_blank" rel="noopener noreferrer"><u>幅広いコンテンツを調査できる可能性があります。</u></a>Wikipediaの利用状況データによると、<b>かつては「ロングテール」と考えられていたページやほとんどアクセスされないページが頻繁にリクエストされるようになり、CDNのキャッシュ内でのコンテンツ人気分布が変化しています。</b>実際、AIエージェントは検索結果を絞り込むために反復的にループし、同じコンテンツを何度もスクレイピングしている可能性があります。この反復ループによって、コンテンツの再利用性が低く、カバレッジが広いことを示すために、これをモデル化しました。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yH1QLIGCU3mJGXID27Cik/3ba56ff02865b7b141743815d0909be0/image1.png" alt="" class="kg-image" width="1999" height="1194" loading="lazy">
+	</figure>
+	<p>AIエージェントの動作をモデル化すると、反復ループで検索結果を絞り込み（検索拡張生成の一般的なパターン）、<b>ユニークアクセス率</b>（上の赤列）、通常は70～100%に維持されることがわかります。つまり、各ループは、エージェントの<b>精度</b>が向上する一方で（ここでは青い線で示されている）、以前表示されたページに再アクセスするのではなく、常に新しい独自のコンテンツを取得しています。</p>
+	<p><b>ロングテールアセットへのこの繰り返しアクセスにより、人間のトラフィックが頼るキャッシュが最適化されます。そのため、クローラートラフィックの増加に伴って、既存のプリフェッチや従来のキャッシュ無効化戦略の効果が下がる可能性があります。</b></p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-ai-traffic-impact-cache">AIトラフィックがキャッシュに与える影響は？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-ai-traffic-impact-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>CDN</u></a>にとって、キャッシュミスは、要求されたコンテンツを取得するために、配信元サーバーにアクセスする必要があることを意味します。キャッシュミスは、地元の図書館に本がなく、図書館間ローンチから本を入手するために待たなければならないようなものだと考えてください。最終的には書籍が入手できますが、思ったより時間がかかります。また、その本をローカルに在庫切れにするのは良いアイディアであることを、図書館に知らせることもできます。</p>
+	<p>AIクローラーは、ロングテール再利用を伴う広範で予測不可能なアクセスパターンの結果として、キャッシュミス率を大幅に上昇させます。また、<a href="https://blog.cloudflare.com/introducing-speed-brain"><u>キャッシュ投機</u></a>やプリフェッチなど、キャッシュヒット率を向上させる典型的な方法の多くは、大幅に効果が低下しています。</p>
+	<p>以下の最初のグラフは、特定されたAIクローラーを使用した場合と使用しない場合のCloudflareのCDNの単一ノードのキャッシュヒット率の違いを示しています。<a href="https://radar.cloudflare.com/bots/directory?category=AI_CRAWLER&amp;kind=all" target="_blank" rel="noopener noreferrer"><u>特定されたAIクローラー</u></a>。クローラーの影響は比較的限定的ですが、AIクローラーのトラフィックの追加により、ヒット率が明らかに低下しています。Cloudflareでは、「Least Recently Used（最後に使われてからの経過時間が最も長いもの）」（LRU）と呼ばれるアルゴリズムでキャッシュを管理しています。つまり、ストレージスペースが満杯になった時に、最もリクエストの少ないコンテンツを最初にキャッシュから削除し、より人気の高いコンテンツのためのスペースを作ることができるのです。ヒット率の低下は、LRUがAIクローラーの繰り返しスキャン動作に苦慮していることを示唆しています。</p>
+	<p>下の図は、この期間のAIのキャッシュミスを示しています。それらのキャッシュミスはそれぞれオリジンへのリクエストを表しており、応答時間が遅くなり、オリジンでエグレスコストと負荷が増大します。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rsbyos9tv8wzbbXJTrAYh/522b3fed76ce69bb96eb9aaff51ea1b1/image3.png" alt="" class="kg-image" width="1189" height="990" loading="lazy">
+	</figure>
+	<p>AIボットトラフィックの急増は、現実世界に影響を与えています。論文に掲載された次の表は、いくつかの大規模Webサイトへの影響を示しています。各例は、情報元レポートにリンクしています。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>システム</b></p>
+				</td>
+				<td>
+					<p><b>報告されたAIトラフィックの動作</b></p>
+				</td>
+				<td>
+					<p><b>報告された影響</b></p>
+				</td>
+				<td>
+					<p><b>報告された軽減策</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer"><u>Wikipedia</u></a></p>
+				</td>
+				<td>
+					<p>モデルのトレーニングのための一括画像スクレイピング<a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects" target="_blank" rel="noopener noreferrer"><sup><u>1</u></sup></a></p>
+				</td>
+				<td>
+					<p><a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects" target="_blank" rel="noopener noreferrer"><sup><u>50%急増マルチメディア帯域幅使用量1</u></sup></a></p>
+				</td>
+				<td>
+					<p>クローラートラフィックのブロック<a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects" target="_blank" rel="noopener noreferrer"><sup><u>1</u></sup></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://sourcehut.org" target="_blank" rel="noopener noreferrer"><u>SourceHut</u></a></p>
+				</td>
+				<td>
+					<p>コードリポジトリをスクレイピングするLLMクローラー<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms" target="_blank" rel="noopener noreferrer"><sup><u>3</u></sup></a></p>
+				</td>
+				<td>
+					<p>サービスの不安定性と速度低下<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms" target="_blank" rel="noopener noreferrer"><sup><u>3</u></sup></a></p>
+				</td>
+				<td>
+					<p>クローラートラフィックのブロック<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://status.sr.ht/issues/2025-03-17-git.sr.ht-llms" target="_blank" rel="noopener noreferrer"><sup><u>3</u></sup></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://about.readthedocs.com" target="_blank" rel="noopener noreferrer"><u>ドキュメントを読む</u></a></p>
+				</td>
+				<td>
+					<p>AIクローラーは1日に数百回の大規模なファイルをダウンロード<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>、</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse" target="_blank" rel="noopener noreferrer"><sup><u>4</u></sup></a></p>
+				</td>
+				<td>
+					<p>帯域幅の大幅な増加<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse" target="_blank" rel="noopener noreferrer"><sup><u>4</u></sup></a></p>
+				</td>
+				<td>
+					<p>クローラートラフィックを一時的にブロックし、IPベースのレート制限を実行し、CDNを再構成してキャッシングを改善した<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>、</sup><a href="https://about.readthedocs.com/blog/2024/07/ai-crawlers-abuse" target="_blank" rel="noopener noreferrer"><sup><u>4</u></sup></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://www.fedoraproject.org" target="_blank" rel="noopener noreferrer"><u>Fedora</u></a></p>
+				</td>
+				<td>
+					<p>AIスクレイパーはパッケージミラーを再帰的にクロールします<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>、</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back" target="_blank" rel="noopener noreferrer"><sup><u>5</u></sup></a><sup>、</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025" target="_blank" rel="noopener noreferrer"><sup><u>6</u></sup></a></p>
+				</td>
+				<td>
+					<p>人間のユーザーに対して遅い応答<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back" target="_blank" rel="noopener noreferrer"><sup><u>5</u></sup></a><sup>,</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025" target="_blank" rel="noopener noreferrer"><sup><u>6</u></sup></a></p>
+				</td>
+				<td>
+					<p>既知のボット送信元からのトラフィックを地理的にブロックし、複数のサブネットや国をブロック<a href="https://incidentdatabase.ai/cite/1001" target="_blank" rel="noopener noreferrer"><sup><u>2</u></sup></a><sup>,</sup><a href="https://cryptodamus.io/en/articles/news/ai-web-scrapers-attacking-open-source-here-s-how-to-fight-back" target="_blank" rel="noopener noreferrer"><sup><u>5</u></sup></a><sup>,</sup><a href="https://www.scrye.com/blogs/nirik/posts/2025/03/15/mid-march-infra-bits-2025" target="_blank" rel="noopener noreferrer"><sup><u>6</u></sup></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://diasporafoundation.org" target="_blank" rel="noopener noreferrer"><u>Diaspora</u></a></p>
+				</td>
+				<td>
+					<p>robots.txtを尊重しない積極的なスクレイピング<a href="https://diaspo.it/posts/2594" target="_blank" rel="noopener noreferrer"><sup><u>7</u></sup></a></p>
+				</td>
+				<td>
+					<p>人間ユーザーへの応答の遅さとダウンタイム<a href="https://diaspo.it/posts/2594" target="_blank" rel="noopener noreferrer"><sup><u>7</u></sup></a></p>
+				</td>
+				<td>
+					<p>ブロックされたクローラートラフィックとレート制限が追加された<a href="https://diaspo.it/posts/2594" target="_blank" rel="noopener noreferrer"><sup><u>7</u></sup></a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>影響は深刻で、Wikimediaでは大量の画像スクレイピングが原因で、マルチメディア帯域幅の使用量が50%も急増しました。Fedoraは大きなソフトウェアパッケージをホストしており、Diasporaのソーシャルネットワークは人間のユーザーにとって重たい負荷と低パフォーマンスに悩まされていました。その他にも、AIボットが大きなファイルを繰り返しダウンロードすることによる帯域幅の増加や速度低下が注目されています。クローラートラフィックをブロックすることで影響の一部を軽減することができますが、よりスマートなキャッシュアーキテクチャは、サイト運営者は人間のユーザーの応答時間を維持しながら、AIクローラーにサービスを提供できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-aware-caching">AI認識型キャッシング</h3>
+		<a href="https://blog.cloudflare.com/#ai-aware-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIクローラーは、<a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag" target="_blank" rel="noopener noreferrer"><u>検索拡張生成（RAG）</u></a>やリアルタイム要約などのライブアプリケーションを強化するため、遅延は問題になります。そのため、これらのリクエストは、大容量と中程度の応答時間のバランスを取ることができるキャッシュにルーティングされる必要があります。こうしたキャッシュは新鮮性を保つ必要がありますが、人間向けのキャッシュよりもわずかに高いアクセス遅延を許容します。</p>
+	<p>AIクローラーは、トレーニングセットの作成や大規模なコンテンツ収集ジョブの実行にも使用されます。こうしたワークロードは大幅に高い遅延を許容することができ、時間に影響されません。そのため、リクエストは、到達までに時間がかかる深いキャッシュ階層（たとえば、オリジン側のSSDキャッシュなど）から提供されたり、キューベースの許可やレートリミッターを使用してバックエンドの過負荷を防ぐために遅延を提供することもできます。これにより、インフラストラクチャが負荷を受けているとき、インタラクティブな人間やAIのユースケースに影響を与えることなく、大量のスクレイピングを遅らせることもできます。</p>
+	<p>Cloudflareの<a href="https://blog.cloudflare.com/an-ai-index-for-all-our-customers"><u>AI Index</u></a>や<a href="https://blog.cloudflare.com/markdown-for-agents"><u>Markdown for Agents</u></a>のような既存のプロジェクトにより、Webサイト運営者は、既知のAIエージェントやボットにWebサイトの簡略化または縮小バージョンを提示することができます。AIトラフィックがCDNキャッシュに与える影響を軽減するために、より多くのことを計画しており、あらゆる人にとってのキャッシュパフォーマンスの向上につながっています。ETH Zhourichの共同作業者とともに、2つの補完的なアプローチを試しています。1つ目は、AI認識型キャッシングアルゴリズムによるトラフィックフィルタリングであり、次に、AIクローラーのトラフィックをキャッシュに吸い上げて、AIクローラーと人間のトラフィックの両方のパフォーマンスを向上させる、まったく新しいキャッシュレイヤーを追加することを検討します。</p>
+	<p>キャッシュ代替アルゴリズムには、LRU（「Least Recently Used（最近最も使われなかった）」、LFU（「Least Recently Used（最近最も使われなかった）」）、FIFO（First-In, First-Out）など、さまざまな種類があります。新しい要素を追加する必要があり、キャッシュがいっぱいになった場合、キャッシュから要素を退避させることを選択することもできます。LRUは、単純さ、低オーバーヘッド、一般的な状況に対する有効性のバランスが最も優れていることが多く、広く使用されています。しかし、人間とAIボットトラフィックが混在する場合、当社の初期実験によると、キャッシュ代替アルゴリズムを別のものに選択すること、特に<a href="https://cachemon.github.io/SIEVE-website" target="_blank" rel="noopener noreferrer"><u>SEIVE</u></a>または<a href="https://s3fifo.com" target="_blank" rel="noopener noreferrer"><u>S3FIFO</u></a>を使用することで、AIの干渉の有無にかかわらず、人間のトラフィックが同じヒット率を達成できることが示されています。また、より直接的なワークロード認識型で機械学習に基づくキャッシュアルゴリズムを開発し、より高速で安価なキャッシュを実現するために、キャッシュ応答をリアルタイムでカスタマイズすることも実験的に取り組んでいます。</p>
+	<p>長期的には、AIトラフィック用のキャッシュレイヤーを分離することが最善の方法になると予想しています。人間のトラフィックとAIのトラフィックを、ネットワークの異なるレイヤーにデプロイされた異なる層にルーティングするキャッシュアーキテクチャを想像してみてください。人間のトラフィックは、応答性と<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer"><u>キャッシュヒット率</u></a>を優先するCDN PoPにあるエッジキャッシュから引き続き提供されます。AIトラフィックの場合、キャッシュ処理はタスクタイプによって異なる場合があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="this-is-just-the-beginning">これは、始まりにすぎません</h3>
+		<a href="https://blog.cloudflare.com/#this-is-just-the-beginning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIボットトラフィックがクラウドインフラストラクチャに与える影響は、今後数年で増大する一方です。この新しいワークロードに対応し、より良いインターネットの構築に貢献するために、世界中のCDNに与える影響をより的確に把握するとともに、大胆な新しいキャッシュポリシーとアーキテクチャが必要です。</p>
+	<p>Cloudflareはすでに、ここで提起した問題を解決しつつあります。Cloudflareは、AI認識型キャッシングを使用して、高いボットトラフィックを経験するお客様の帯域幅コストを削減し、<a href="https://www.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>AI Crawl Control</u></a>と<a href="https://www.cloudflare.com/paypercrawl-signup" target="_blank" rel="noopener noreferrer"><u>クロールごとに課金</u></a>ツールを使用することで、お客様が誰がプログラム的にコンテンツにアクセスするかをより適切に制御できるようにします。</p>
+	<p>この分野の調査はまだ始まったばかりです。新しいMLベースのキャッシングアルゴリズムの構築や、これらの新しいキャッシュアーキテクチャの設計にご興味のある方は、インターンシップにご応募ください！2026年夏と秋に、AIとシステムの交点におけるこのようなエキサイティングな問題に取り組むため、<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Early+Talent" target="_blank" rel="noopener noreferrer"><u>インターンシップの募集</u></a>を行っています。 </p>
+</div>

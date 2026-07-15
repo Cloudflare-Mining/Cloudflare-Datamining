@@ -1,0 +1,569 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/voice-agents">English</a>および<a href="https://blog.cloudflare.com/ko-kr/voice-agents">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3x9iEaw0deSu8ginBdFOYW/1cbc8507103c305cab2ec348eb773e79/BLOG-3198_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>私たちの多くにとって、AIエージェントの初めての体験は、チャットボックスに入力することでした。また、日常的にエージェントを使用している人にとっては、詳細なプロンプトやマークダウンファイルを作成してガイドするのが得意になっています。</p>
+	<p>しかし、エージェントが最も有用な瞬間は、必ずしもテキスト優先であるとは限りません。通勤中、公開セッションがいくつかある中、エージェントに自然に話を聞いてもらい、やり取りを続けたい場合などです。</p>
+	<p>エージェントに音声を追加する際、そのエージェントを別の音声フレームワークに移動する必要はありません。本日、私たちは<a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>向けの実験的な音声パイプラインをリリースします。</p>
+	<p><code>@cloudflare/voice</code>を使用すると、すでに使用しているのと同じエージェントアーキテクチャにリアルタイムの音声を追加できます。音声は、Agents SDKがすでに提供しているのと同じツール、持続性、WebSocket接続モデルで、同じDurable Objectに対話するための別の方法になります。</p>
+	<p><code>@cloudflare/voice</code>は、Agents SDKの実験的なパッケージであり、以下を提供します：</p>
+	<ul>
+		<li>
+			<p>完全会話型音声エージェント用の<code>Voice(Agent)</code></p>
+		</li>
+		<li>
+			<p>指示や音声検索など、音声からテキストへの変換のみのユースケースには、<code>VoiceInput(Agent)</code>を使用</p>
+		</li>
+		<li>
+			<p><code>VoiceAgent</code>とReactアプリの<code>VoiceInput</code>フックを使用</p>
+		</li>
+		<li>
+			<p>フレームワークに依存しないクライアント向けの<code>VoiceClient</code></p>
+		</li>
+		<li>
+			<p>組み込み型の<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>プロバイダーにより、外部APIキーなしで始められます。</p>
+			<ul>
+				<li>
+					<p><a href="https://developers.cloudflare.com/workers-ai/models/flux" target="_blank" rel="noopener noreferrer"><u>Deepgram Flux</u></a>を使用した継続的なSTT</p>
+				</li>
+				<li>
+					<p><a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>Deepgram Nova 3</u></a>を使用した継続的なSTT</p>
+				</li>
+				<li>
+					<p><a href="https://developers.cloudflare.com/workers-ai/models/aura-1" target="_blank" rel="noopener noreferrer"><u>Deepgram Aura</u></a>を使用した音声合成</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>つまり、同じAgentクラス、Durable Objectインスタンス、同じSQLiteによる会話履歴を維持しながら、単一のWebSocket接続でリアルタイムに対話できるエージェントを構築できるということです。</p>
+	<p>重要なこととして、私たちはこれを固定されたデフォルトスタックよりも大きくしたいと考えています。<code>@cloudflare/voice</code>のプロバイダーインタフェースは意図的に小さく、音声、電話、トランスポートのプロバイダーが私たちと一緒に構築できるようにすることで、開発者が単一の音声アーキテクチャに縛られるのではなく、ユースケースに合わせて適切なコンポーネントを組み合わせることができるようにします。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-with-voice">音声で始めましょう</h2>
+		<a href="https://blog.cloudflare.com/#get-started-with-voice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agents SDKにおける音声エージェントの最小限のサーバー側パターンは次のとおりです。</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Agent, routeAgentRequest } from "agents";
+import {
+  withVoice,
+  WorkersAIFluxSTT,
+  WorkersAITTS,
+  type VoiceTurnContext
+} from "@cloudflare/voice";
+
+const VoiceAgent = withVoice(Agent);
+
+export class MyAgent extends VoiceAgent&lt;Env&gt; {
+  transcriber = new WorkersAIFluxSTT(this.env.AI);
+  tts = new WorkersAITTS(this.env.AI);
+
+  async onTurn(transcript: string, context: VoiceTurnContext) {
+    return `You said: ${transcript}`;
+  }
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  }
+} satisfies ExportedHandler&lt;Env&gt;;
+
+</code></pre>
+	<p>これがサーバー全体です。継続的な文字起こし、音声合成プロバイダーを追加し、<code>onTurn()</code>を実装します。
+
+		クライアント側は、Reactフックで接続することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { useVoiceAgent } from "@cloudflare/voice/react";
+
+function App() {
+  const {
+    status,
+    transcript,
+    interimTranscript,
+    startCall,
+    endCall,
+    toggleMute
+  } = useVoiceAgent({ agent: "my-agent" });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Status: {status}&lt;/p&gt;
+      {interimTranscript &amp;&amp; &lt;p&gt;&lt;em&gt;{interimTranscript}&lt;/em&gt;&lt;/p&gt;}
+      &lt;ul&gt;
+        {transcript.map((msg, i) =&gt; (
+          &lt;li key={i}&gt;
+            &lt;strong&gt;{msg.role}:&lt;/strong&gt; {msg.text}
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+      &lt;button onClick={startCall}&gt;Start Call&lt;/button&gt;
+      &lt;button onClick={endCall}&gt;End Call&lt;/button&gt;
+      &lt;button onClick={toggleMute}&gt;Mute / Unmute&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+	<p>Reactを使用していない場合は、<code>VoiceClient</code>を<code>@cloudflare/voice/client</code>から直接使用することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-voice-pipeline-works">音声パイプラインの仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-the-voice-pipeline-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用すると、すべてのエージェントは<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a>です。これは、独自の<a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"><u>SQLiteデータベース</u></a>、<a href="https://developers.cloudflare.com/agents/api-reference/websockets" target="_blank" rel="noopener noreferrer"><u>WebSocket接続</u></a>、およびアプリケーションロジックを備えたステートフルでアドレス可能なサーバーインスタンスです。音声パイプラインは、このモデルを置き換えるのではなく、拡張するものです。</p>
+	<p>大まかに説明すると、フローは次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IBi8TsQiJ18Um47zpqAIr/d284d47a8653c35bc7c027438a5a7a2c/unnamed__55_.png" alt="BLOG-3198 2" class="kg-image" width="2048" height="938" loading="lazy">
+	</figure>
+	<p>パイプラインの詳細を、順を追って説明します： </p>
+	<ol>
+		<li>
+			<p><b>音声トランスポート： </b>ブラウザはマイクの音声をキャプチャし、エージェントが既に使用しているのと同じWebSocket接続を介して16 kHzのモノPCMをストリーミングします。 </p>
+		</li>
+		<li>
+			<p><b>STTセッションセットアップ：</b>通話が開始されると、エージェントは通話時間中、継続的な文字起こしセッションを作成します。</p>
+		</li>
+		<li>
+			<p><b>STT入力: </b>そのセッションに継続的に音声をストリーミングします。</p>
+		</li>
+		<li>
+			<p><b>STTターン検出： </b>音声・テキストモデル自体がユーザーの発語終了時期を判断し、そのターンの安定したトランスクリプトを出力します。</p>
+		</li>
+		<li>
+			<p><b>LLM/アプリケーションロジック：</b>音声パイプラインは、その文字起こしを<code>onTurn(</code>)メソッドに渡します。 </p>
+		</li>
+		<li>
+			<p><b>TTS出力: </b>応答は音声に合成され、クライアントに返送されます。<code>onTurn()</code>がストリームを返すと、パイプラインが文単位でチャンク化し、文の準備が整い次第、音声の送信を開始します。</p>
+		</li>
+		<li>
+			<p><b>永続性： </b>ユーザーとエージェントのメッセージはSQLiteに永続化されるため、会話履歴は再接続やデプロイメント後も維持されます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="why-voice-should-grow-with-the-rest-of-your-agent">エージェントの他の部分とともに音声を拡張すべき理由</h2>
+		<a href="https://blog.cloudflare.com/#why-voice-should-grow-with-the-rest-of-your-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くのボイスフレームワークは、音声入力、文字起こし、モデル応答、音声出力といった、音声のループ自体に焦点を当てています。これらは重要なプリミティブですが、エージェントにとっては音声だけではありません。</p>
+	<p>本番環境で稼働するリアルエージェントは成長する状態、スケジューリング、永続性、ツール、ワークフロー、テレフォニー、そしてチャネル間でこれらすべての一貫性を維持する方法が必要です。エージェントが複雑化すると、音声は単独の機能ではなくなり、大きなシステムの一部となります。</p>
+	<p>私たちは、その前提からAIエージェントSDKに音声を取り入れたいと考えました。別個のスタックとしてボイスを構築するのではなく、同じDurable Objectベースのエージェントプラットフォーム上に構築しました。そのため、後でアプリケーションを再構築することなく、必要な残りのプリミティブを取り込むことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="voice-and-text-share-the-same-state">音声とテキストが同じ状態を共有</h3>
+		<a href="https://blog.cloudflare.com/#voice-and-text-share-the-same-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーは入力から始めて、音声に切り替えて、テキストに戻るかもしれません。Agents SDKを使用すると、これらはすべて同じエージェントへの異なるインプットに過ぎません。SQLiteにも同じ会話履歴があり、同じツールが利用可能です。これにより、すっきりとしたメンタルモデルと、はるかにシンプルなアプリケーションアーキテクチャの両方が得られます。</p>
+	<div class="flex anchor relative">
+		<h2 id="lower-latency-comes-from">遅延の低減の効果は...</h2>
+		<a href="https://blog.cloudflare.com/#lower-latency-comes-from" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="a-shorter-network-path">より短いネットワークパスで</h3>
+		<a href="https://blog.cloudflare.com/#a-shorter-network-path" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>音声体験はすぐに良し悪しを感じます。ユーザーが話すのを止めたら、システムは会話を感じさせるために十分な速さで文字起こし、考え、話し始める必要があります。</p>
+	<p>音声遅延の多くは、純粋なモデル時間ではありません。さまざまな場所のさまざまなサービス間で音声やテキストが行き来するためのコストです。音声はSTTに送信され、文字起こしはLLMに送信され、応答はTTSモデルに送信される必要があります。そして、それぞれの引き渡しがネットワークのオーバーヘッドを追加します。</p>
+	<p>Agents SDKの音声パイプラインを使用すると、エージェントはCloudflareのネットワーク上で実行され、内蔵プロバイダーはWorkers AIバインディングを使用します。それにより、パイプラインが緊密になり、自社でつなぎ合わせる必要があるインフラの量が減ります。</p>
+	<div class="flex anchor relative">
+		<h3 id="built-in-streaming">内蔵のストリーミング</h3>
+		<a href="https://blog.cloudflare.com/#built-in-streaming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最初の文章をすばやく話すと、音声エージェントとの対話はより自然に感じられます（Time-to-First Audioとも呼ばれます）。<code>onTurn()</code>がストリームを返すと、パイプラインはそれをセンテンスに分割し、センテンスが完了すると合成を開始します。つまり、ユーザーは、残りの応答がまだ生成されている間にも、応答の最初を聞くことができるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-more-realistic-backend">より現実的なバックエンド</h2>
+		<a href="https://blog.cloudflare.com/#a-more-realistic-backend" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下は、LLMレスポンスをストリーミングし、文章ごとに伝え始める完全な例です：</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent, routeAgentRequest } from "agents";
+import {
+  withVoice,
+  WorkersAIFluxSTT,
+  WorkersAITTS,
+  type VoiceTurnContext
+} from "@cloudflare/voice";
+import { streamText } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+
+const VoiceAgent = withVoice(Agent);
+
+export class MyAgent extends VoiceAgent&lt;Env&gt; {
+  transcriber = new WorkersAIFluxSTT(this.env.AI);
+  tts = new WorkersAITTS(this.env.AI);
+
+  async onTurn(transcript: string, context: VoiceTurnContext) {
+    const ai = createWorkersAI({ binding: this.env.AI });
+
+    const result = streamText({
+      model: ai("@cf/cloudflare/gpt-oss-20b"),
+      system: "You are a helpful voice assistant. Be concise.",
+      messages: [
+        ...context.messages.map((m) =&gt; ({
+          role: m.role as "user" | "assistant",
+          content: m.content
+        })),
+        { role: "user" as const, content: transcript }
+      ],
+      abortSignal: context.signal
+    });
+
+    return result.textStream;
+  }
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  }
+} satisfies ExportedHandler&lt;Env&gt;;
+</code></pre>
+	<p><code>Context.messages</code>は、SQLiteでサポートされる最近の会話履歴を提供し、<code>context.signal</code>は、ユーザーが中断した場合にLLM呼び出しをパイプラインに中断させます。</p>
+	<div class="flex anchor relative">
+		<h2 id="voice-as-an-input-withvoiceinput">入力としての音声：<code>withVoiceInput</code></h2>
+		<a href="https://blog.cloudflare.com/#voice-as-an-input-withvoiceinput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべての音声インターフェースが音声を返す必要はありません。時には、口頭、文字起こし、音声検索が必要になることもあります。このようなユースケースでは、<code>withVoiceInput</code> を使用できます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent, type Connection } from "agents";
+import { withVoiceInput, WorkersAINova3STT } from "@cloudflare/voice";
+
+const InputAgent = withVoiceInput(Agent);
+
+export class DictationAgent extends InputAgent&lt;Env&gt; {
+  transcriber = new WorkersAINova3STT(this.env.AI);
+
+  onTranscript(text: string, _connection: Connection) {
+    console.log("User said:", text);
+  }
+}
+</code></pre>
+	<p>クライアント側では、<code>useVoiceInput</code> を使用すると、文字起こしを中心とした軽量インターフェースが提供されます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { useVoiceInput } from "@cloudflare/voice/react";
+
+const { transcript, interimTranscript, isListening, start, stop, clear } =
+  useVoiceInput({ agent: "DictationAgent" });
+</code></pre>
+	<p>これは、音声が入力手段であり、完全な会話ループが必要でない場合に便利です。</p>
+	<div class="flex anchor relative">
+		<h2 id="voice-and-text-on-the-same-connection">音声とテキストを同じ接続で</h2>
+		<a href="https://blog.cloudflare.com/#voice-and-text-on-the-same-connection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>同じクライアントが <code>sendText("What's the weather?")</code> を呼び出すことができます。これはSTTをバイパスし、テキストを <code>onTurn()</code> に直接送信します。アクティブコール中に、応答を音声でテキストとして表示することができます。通話以外は、テキストのみでも可能です。</p>
+	<p>これにより、実装を異なるコードパスに分割することなく、真のマルチモーダルエージェントが得られます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-else-can-you-build">他に構築可能なものとは？</h2>
+		<a href="https://blog.cloudflare.com/#what-else-can-you-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>音声エージェントはあくまでエージェントであることに変わりはありません。通常のAgents SDKの機能はすべて適用されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="tools-and-scheduling">ツールとスケジュール作成</h3>
+		<a href="https://blog.cloudflare.com/#tools-and-scheduling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セッションが開始されると、通話者に挨拶することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent, type Connection } from "agents";
+import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
+
+const VoiceAgent = withVoice(Agent);
+
+export class MyAgent extends VoiceAgent&lt;Env&gt; {
+  transcriber = new WorkersAIFluxSTT(this.env.AI);
+  tts = new WorkersAITTS(this.env.AI);
+
+  async onTurn(transcript: string) {
+    return `You said: ${transcript}`;
+  }
+
+  async onCallStart(connection: Connection) {
+    await this.speak(connection, "Hi! How can I help you today?");
+  }
+}
+</code></pre>
+	<p>音声によるリマインダーをスケジュールし、他のエージェントと同じようにLLMにツールを公開することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+import {
+  withVoice,
+  WorkersAIFluxSTT,
+  WorkersAITTS,
+  type VoiceTurnContext
+} from "@cloudflare/voice";
+import { streamText, tool } from "ai";
+import { createWorkersAI } from "workers-ai-provider";
+import { z } from "zod";
+
+const VoiceAgent = withVoice(Agent);
+
+export class MyAgent extends VoiceAgent&lt;Env&gt; {
+  transcriber = new WorkersAIFluxSTT(this.env.AI);
+  tts = new WorkersAITTS(this.env.AI);
+
+  async speakReminder(payload: { message: string }) {
+    await this.speakAll(`Reminder: ${payload.message}`);
+  }
+
+  async onTurn(transcript: string, context: VoiceTurnContext) {
+    const ai = createWorkersAI({ binding: this.env.AI });
+
+    const result = streamText({
+      model: ai("@cf/cloudflare/gpt-oss-20b"),
+      messages: [
+        ...context.messages.map((m) =&gt; ({
+          role: m.role as "user" | "assistant",
+          content: m.content
+        })),
+        { role: "user" as const, content: transcript }
+      ],
+      tools: {
+        set_reminder: tool({
+          description: "Set a spoken reminder after a delay",
+          inputSchema: z.object({
+            message: z.string(),
+            delay_seconds: z.number()
+          }),
+          execute: async ({ message, delay_seconds }) =&gt; {
+            await this.schedule(delay_seconds, "speakReminder", { message });
+            return { confirmed: true };
+          }
+        })
+      },
+      abortSignal: context.signal
+    });
+
+    return result.textStream;
+  }
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="runtime-model-switching">ランタイムモデルの切り替え</h3>
+		<a href="https://blog.cloudflare.com/#runtime-model-switching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、音声パイプラインでは、接続ごとに動的に文字起こしモデルを選択することもできます。</p>
+	<p>例えば、会話型ターン取得にはFluxを、より精度の高い予測にはNova 3を好むことがあります。<code>createTranscriber()</code>をオーバーライドすることで、実行時に切り替えることができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent, type Connection } from "agents";
+import {
+  withVoice,
+  WorkersAIFluxSTT,
+  WorkersAINova3STT,
+  WorkersAITTS,
+  type Transcriber
+} from "@cloudflare/voice";
+
+export class MyAgent extends VoiceAgent&lt;Env&gt; {
+  tts = new WorkersAITTS(this.env.AI);
+
+  createTranscriber(connection: Connection): Transcriber {
+    const url = new URL(connection.url ?? "http://localhost");
+    const model = url.searchParams.get("model");
+    if (model === "nova-3") {
+      return new WorkersAINova3STT(this.env.AI);
+    }
+    return new WorkersAIFluxSTT(this.env.AI);
+  }
+}
+</code></pre>
+	<p>クライアント側では、フックを介してクエリーパラメータを渡すことができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const voiceAgent = useVoiceAgent({
+  agent: "my-voice-agent",
+  query: { model: "nova-3" }
+});
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="pipeline-hooks">パイプラインフック</h2>
+		<a href="https://blog.cloudflare.com/#pipeline-hooks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、各ステージ間でデータを傍受することもできます。</p>
+	<ul>
+		<li>
+			<p><code>afterTranscribe(文字起こし、接続)</code></p>
+		</li>
+		<li>
+			<p><code>beforeSynthesize(text, connection)</code></p>
+		</li>
+		<li>
+			<p><code>afterSynthesize(オーディオ、テキスト、接続)</code></p>
+		</li>
+	</ul>
+	<p>これらのフックは、コンテンツのフィルタリング、テキストの正規化、言語固有のTransformations、カスタムロギングなどに便利です。</p>
+	<div class="flex anchor relative">
+		<h2 id="telephone-and-transport-options">電話とトランスポートのオプション</h2>
+		<a href="https://blog.cloudflare.com/#telephone-and-transport-options" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>デフォルトでは、音声パイプラインは、1対1の音声エージェントのための最も簡単なパスとして、単一のWebSocket接続を使用します。しかし、それが唯一の選択肢ではありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="phone-calls-via-twilio">Twilio経由の電話</h3>
+		<a href="https://blog.cloudflare.com/#phone-calls-via-twilio" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Twilioアダプタを使用して、同じエージェントに通話を接続することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { TwilioAdapter } from "@cloudflare/voice-twilio";
+
+export default {
+  async fetch(request: Request, env: Env) {
+    if (new URL(request.url).pathname === "/twilio") {
+      return TwilioAdapter.handleRequest(request, env, "MyAgent");
+    }
+
+    return (
+      (await routeAgentRequest(request, env)) ??
+      new Response("Not found", { status: 404 })
+    );
+  }
+};
+</code></pre>
+	<p>これにより、同じエージェントがWeb音声、テキスト入力、電話通話を処理することができます。</p>
+	<p>1つ注意すべき点は、デフォルトのWorkers AI TTSプロバイダーはMP3を返しますが、Twilioは8スムーズの音声を期待しています。本番環境のテレフォニーでは、PCMやMulawを直接出力するTTSプロバイダーを使いたい。</p>
+	<div class="flex anchor relative">
+		<h3 id="webrtc">WebRTC</h3>
+		<a href="https://blog.cloudflare.com/#webrtc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>難しいネットワーク条件に適したトランスポートが必要な場合や、複数の参加者を含むトランスポートが必要な場合は、音声パッケージにSFUユーティリティが含まれ、カスタムトランスポートをサポートすることもできます。現在、デフォルトモデルはWebSocketネイティブですが、<a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>グローバルSFUインフラストラクチャ</u></a>に接続するためのアダプターも開発する予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="build-with-us">Cloudflareで構築する</h2>
+		<a href="https://blog.cloudflare.com/#build-with-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>音声パイプラインは設計上、プロバイダーに依存しません。</p>
+	<p>内部では、各ステージは小さなインターフェイスによって定義されます。トランスクリプトは継続的なセッションを開き、到着した音声フレームを受け入れますが、TTSプロバイダーはテキストを取得して音声を返します。プロバイダーが音声出力をストリーミングできる場合、パイプラインはそれも使用できます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">interface Transcriber {
+  createSession(options?: TranscriberSessionOptions): TranscriberSession;
+}
+
+interface TranscriberSession {
+  feed(chunk: ArrayBuffer): void;
+  close(): void;
+}
+
+interface TTSProvider {
+  synthesize(text: string, signal?: AbortSignal): Promise&lt;ArrayBuffer | null&gt;;
+}
+</code></pre>
+	<p>Agents SDKの音声サポートが、モデルとトランスポートの1つの固定された組み合わせだけで動作するのは望みませんでした。私たちは、デフォルトのパスをシンプルにしつつ、エコシステムが成長するにつれて、他のプロバイダーを簡単にプラグインできるようにしたかったのです。</p>
+	<p>ビルトインのプロバイダーはWorkers AIを使用しているため、外部のAPIキーなしで始められます。</p>
+	<ul>
+		<li>
+			<p>会話型ストリーミングSTT用<code>WorkersAIFlowxSTT</code></p>
+		</li>
+		<li>
+			<p>ディレクションスタイルストリーミングSTT用の<code>WorkersAINnova3STT</code></p>
+		</li>
+		<li>
+			<p>音声合成向け<code>WorkersAITTS</code></p>
+		</li>
+	</ul>
+	<p>しかし、より大きな目標は相互運用性です。音声サービスや音声サービスを維持している場合、これらのインターフェースは十分に小さく、SDKの残りの内部を理解する必要はありません。STTプロバイダーが音声のストリーミングを受け入れて、音声の境界を検出できれば、トランスクリプトインターフェースを満たすことができます。TTSプロバイダーが音声出力をストリーミング可能であれば、さらに良いでしょう。</p>
+	<p>以下との相互運用性の実現に取り組みたいと考えています：</p>
+	<ul>
+		<li>
+			<p>AssemblyAI、Rev.ai、SpeechmaticsなどのSTTプロバイダーや、リアルタイムの文字起こしAPIを持つあらゆるサービス</p>
+		</li>
+		<li>
+			<p>PlayHT、LMNT、Cartesia、Coqui、Amazon Polly、Google Cloud TTSなどのTTSプロバイダー</p>
+		</li>
+		<li>
+			<p>Vonage、Telnyx、Bandwidthなどのプラットフォーム用テレフォそれらのアダプター</p>
+		</li>
+		<li>
+			<p>WebRTCデータチャンネル、SFUブリッジ、その他の音声トランスポート層のトランスポート実装</p>
+		</li>
+	</ul>
+	<p>また、個々のプロバイダーを超えたコラボレーションにも関心を持っています。</p>
+	<ul>
+		<li>
+			<p>STT、LLM、TTSを組み合わせた遅延ベンチマーキング</p>
+		</li>
+		<li>
+			<p>非英語のボイスエージェント向けの多言語サポートとより良いドキュメント</p>
+		</li>
+		<li>
+			<p>アクセシビリティの作業、特にマルチモーダルインターフェースや音声障害に関するものです</p>
+		</li>
+	</ul>
+	<p>音声インフラを構築していて、第一級の統合を確認したい場合は、<a href="https://github.com/cloudflare/agents/pulls" target="_blank" rel="noopener noreferrer"><u>PRを開く</u></a>か、ご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">今すぐお試しください！</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ボイスパイプラインは、実験的なパッケージとしてご利用いただけます。</p>
+	<pre class="language-Shell"><code class="language-Shell">npm create cloudflare@latest -- --template cloudflare/agents-starter
+</code></pre>
+	<p><code>@cloudflare/voice</code>を追加し、エージェントにトランスクライバーとTTSプロバイダーを提供し、デプロイして会話を始めましょう。<a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>APIリファレンス</u></a>も読むことができます。 </p>
+	<p>何か興味深いものを構築された方は、<a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>github.com/cloudflare/agents</u></a>でissueまたはPRを立ててください。ボイスには別のスタックを必要とすべきではなく、最高の音声エージェントは他のすべてのものと同じ耐久性のあるアプリケーションモデル上に構築されるものだと考えています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SLeHwqXY0ehOUsy5Nzzq2/c16244f45b8411f8817b9a21b45ed4b8/BLOG-3198_3.png" alt="BLOG-3198 3" class="kg-image" width="1999" height="384" loading="lazy">
+	</figure>
+	<p></p>
+</div>

@@ -1,0 +1,106 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/zero-day-rapid-reset-http2-record-breaking-ddos-attack">English</a>, <a href="https://blog.cloudflare.com/zh-tw/zero-day-rapid-reset-http2-record-breaking-ddos-attack">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/zero-day-rapid-reset-http2-record-breaking-ddos-attack">Français</a>, <a href="https://blog.cloudflare.com/de-de/zero-day-rapid-reset-http2-record-breaking-ddos-attack">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/zero-day-rapid-reset-http2-record-breaking-ddos-attack">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/zero-day-rapid-reset-http2-record-breaking-ddos-attack">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/zero-day-rapid-reset-http2-record-breaking-ddos-attack">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fol1oqXx3pHnZvbOC0fM/94b496ce17cbcae123e01090a12a81e1/zero-day-rapid-reset-http2-record-breaking-ddos-attack.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hoy temprano, Cloudflare, Google y Amazon AWS, divulgaron la existencia de una nueva vulnerabilidad zero-day que se conoce como ataque “HTTP/2 Rapid Reset”. Este ataque aprovecha un punto débil en el protocolo HTTP/2 para generar enormes ataques hipervolumétricos por denegación de servicio distribuido (DDoS). Cloudflare ha mitigado un aluvión de estos ataques en los últimos meses, incluso uno tres veces más grande <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">que cualquier ataque anterior que hayamos observado</a>, que superó las 201 millones de solicitudes por segundo (rps). Desde fines de agosto de 2023, Cloudflare ha mitigado otros más de 1100 ataques con más de 10 millones de rps — y 184 ataques fueron de una magnitud mayor a nuestro récord de ataques DDoS previos de 71 millones de rps.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZiKpisozgw41RMD8tyuhu/006388958a618bffa6609ad532da5b91/Screenshot-2023-10-09-at-10.41.56-PM.png" alt="" class="kg-image" width="1150" height="612" loading="lazy">
+
+	</figure>
+	<p><i>¿Estás siendo blanco de un ataque o necesitas mayor protección? </i><a href="https://www.cloudflare.com/h2" target="_blank" rel="noopener noreferrer"><i>Si necesitas ayuda, haz clic aquí</i></a><i>.</i></p><!--kg-card-begin: html-->
+	<center><em><small>Under attack or need additional protection? <a href="https://www.cloudflare.com/h2">Click here to get help</a>.</small></em></center><br><!--kg-card-end: html-->
+	<p>Este zero-day brindó a los ciberdelincuentes una nueva herramienta fundamental en su navaja suiza de vulnerabilidades para aprovecharse de sus víctimas y atacarlas a una magnitud que nunca habíamos visto. Si bien a veces estos ataques son complejos y difíciles de combatir, brindaron a Cloudflare la oportunidad de desarrollar tecnología con el propósito de mitigar los efectos de la vulnerabilidad zero-day.</p>
+	<p>Si utilizas Cloudflare para la mitigación de HTTP DDoS, estás protegido. A continuación, incluimos más información sobre esta vulnerabilidad, recursos y recomendaciones sobre lo que puedes hacer para protegerte.</p>
+	<div class="flex anchor relative">
+		<h3 id="deconstructing-the-attack-what-every-cso-needs-to-know">Deconstrucción del ataque: qué deben saber los directores de seguridad (CSO)</h3>
+		<a href="https://blog.cloudflare.com/#deconstructing-the-attack-what-every-cso-needs-to-know" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A fines de agosto de 2023, nuestro equipo de Cloudflare advirtió una nueva vulnerabilidad zero-day desarrollada por un ciberdelincuente desconocido que aprovecha los puntos débiles del protocolo HTTP/2 — un protocolo fundamental para que funcionen Internet y todos los sitios web. Este nuevo ataque de la vulnerabilidad zero-day, conocido como Rapid Reset, aprovecha la función de cancelación de flujo de HTTP/2 al enviar una solicitud y cancelarla de inmediato, y haciéndolo una y otro vez. &nbsp;</p>
+	<p>Al automatizar este simple patrón “solicitar, cancelar, solicitar, cancelar” a escala, los ciberdelincuentes pueden generar una denegación de servicio y provocar la caída de cualquier servidor o aplicación ejecutando la implementación estándar de HTTP/2. Además, un aspecto fundamental que se debe tener en cuenta con respecto a este ataque sin precedentes es que utilizó un botnet de tamaño mediano, de aproximadamente 20 000 máquinas. Cloudflare periódicamente detecta botnets que son órdenes de magnitud mayores que esto — que incluye cientos de miles e incluso millones de máquinas. Que un botnet relativamente pequeño genere un volumen tan grande de solicitudes, con la posibilidad de inhabilitar casi todos los servidores o aplicaciones que admiten HTTP/2, indica lo amenazante que resulta esta vulnerabilidad para las redes que no están protegidas.</p>
+	<p>Los ciberdelincuetes utilizaron botnets en tándem con la vulnerabilidad HTTP/2 para amplificar las solicitudes a un ritmo que nunca habíamos visto antes. A raíz de esto, nuestro equipo de Cloudflare sufrió una inestabilidad intermitente en el perímetro. Si bien nuestros sistemas pudieron mitigar la abrumadora mayoría de ataques entrantes, el volumen sobrecargó algunos componentes de nuestra red, y afectó el rendimiento de una pequeña cantidad de clientes con errores 4xx y 5xx intermitentes — los cuales fueron resueltos en su totalidad.</p>
+	<p>Una vez que mitigamos con éxito estos problemas y detuvimos los potenciales ataques a todos los clientes, nuestro equipo lanzó de inmediato un proceso de divulgación responsable. Iniciamos conversaciones con nuestros pares de la industria para analizar de qué manera podíamos trabajar juntos para proteger el gran porcentaje de Internet que depende de nuestra red antes de divulgar esta vulnerabilidad al público en general.</p>
+	<p>Cubrimos la información técnica del ataque de manera más detallada en la publicación de un blog por separado: <a href="https://cfl.re/rapid-reset-breakdown" target="_blank" rel="noopener noreferrer">HTTP/2 Rapid Reset: deconstrucción de un ataque sin precedentes</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-is-cloudflare-and-the-industry-thwarting-this-attack">¿Cómo Cloudflare y la industria están combatiendo este ataque?</h3>
+		<a href="https://blog.cloudflare.com/#how-is-cloudflare-and-the-industry-thwarting-this-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>No existe algo como una "divulgación perfecta". Combatir ataques y responder a los incidentes que surgen exige que las organizaciones y los equipos de seguridad asuman que siempre existe la posibilidad de una filtración — porque siempre habrá otro zero-day, y siempre surgen nuevas técnicas y nuevos ciberdelincuentes, y nuevas técnicas y ataques que nunca antes se habían registrado.</p>
+	<p>Esta idea de que siempre existe la posibilidad de potenciales ataques es la clave para compartir información y asegurar de que en instancias como esta Internet seguirá siendo segura. Mientras Cloudflare estaba sufriendo y mitigando estos ataques, también trabajábamos con socios de la industria para garantizar que todo el sector pudiera resistir este ataque. &nbsp;</p>
+	<p>Durante el proceso de mitigación de este ataque, nuestro equipo de Cloudflare desarrolló una nueva tecnología para detener estos ataques DDoS y mejorar nuestras propias mitigaciones tanto para este como para otros ataques de escala masiva. Estas iniciativas han aumentado de manera significativa nuestra resiliencia y nuestras capacidades de mitigación general. Si estás usando Cloudflare, estamos seguros de que estás protegido.</p>
+	<p>Nuestro equipo también alertó a los socios de software del servidor web que está desarrollando parches para garantizar que esta vulnerabilidad no sea aprovechada — revisa sus sitios web para obtener más información.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Ud1AqrVrYtnC11Bu0pwCh/eac88347347a8dc9420d6d13285f1d28/Zero-Day-protection-4.png" alt="" class="kg-image" width="1600" height="416" loading="lazy">
+
+	</figure>
+	<p>Las divulgaciones nunca ocurren una única vez. La esencia de Cloudflare es garantizar un mejor servicio de Internet, que proviene de hechos como estos. Cuando tenemos la oportunidad de trabajar con nuestros socios de la industria y con los gobiernos para garantizar que no se extienda el impacto en Internet, estamos haciendo lo que nos corresponde para mejorar la resiliencia informática de cada organización, independientemente de la magnitud o la verticalidad.</p>
+	<p>Para comprender mejor las tácticas de mitigación y los próximos pasos sobre el parcheado, <a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank" rel="noopener noreferrer">inscríbete en nuestro seminario web</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-are-the-origins-of-the-http-2-rapid-reset-and-these-record-breaking-attacks-on-cloudflare">¿Cuáles son los orígenes de HTTP/2 Rapid Reset y estos ataques sin precedentes sobre Cloudflare?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-the-origins-of-the-http-2-rapid-reset-and-these-record-breaking-attacks-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Puede parecer extraño que Cloudflare haya sido una de las primeras empresas que vieron estos ataques. ¿Por qué los ciberdelincuentes atacarían a una empresa que tiene una de las defensas más sólidas del mundo contra los ataques DDoS? &nbsp;</p>
+	<p>La realidad es que Cloudflare suele ver los ataques antes de que se dirijan a objetivos más vulnerables. Los ciberdelincuentes necesitan desarrollar y probar sus herramientas antes de implementarlas en toda la red. A los ciberdelincuentes que utilizan métodos de ataques sin precedentes les puede resultar sumamente difícil probar y entender la magnitud y la efectividad de estos, porque no tienen la infraestructura para absorber los ataques que están lanzando. Debido a la transparencia que compartimos sobre nuestro rendimiento en la red y las mediciones de los ataques que podrían recopilar de nuestros gráficos públicos sobre rendimiento, este ciberdelincuente probablemente estaba usándonos como objetivo para comprender las capacidades del ataque.</p>
+	<p>Pero esa prueba, y la capacidad para ver el ataque en una fase temprana, nos ayuda a desarrollar mitigaciones para el ataque que benefician tanto a nuestros clientes como a la industria en general.</p>
+	<div class="flex anchor relative">
+		<h3 id="from-cso-to-cso-what-should-you-do">De director de seguridad a director de seguridad: ¿Qué deberías hacer?</h3>
+		<a href="https://blog.cloudflare.com/#from-cso-to-cso-what-should-you-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hace más de 20 años que soy director de seguridad, y he recibido incontables divulgaciones y anuncios como este. Pero independientemente de si se trataba de <a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns">Log4J</a>, <a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data">Solarwinds</a>, <a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware" target="_blank" rel="noopener noreferrer">EternalBlue</a> <a href="https://www.cloudflare.com/learning/security/ransomware/petya-notpetya-ransomware" target="_blank" rel="noopener noreferrer">WannaCry/NotPetya</a>, <a href="https://blog.cloudflare.com/heartbleed-revisited">Heartbleed</a> o <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a>, todos estos incidentes de seguridad tenían aspectos en común. Una tremenda explosión que se multiplica en todo el mundo y crea la ocasión para interrumpir por completo cualquiera de las organizaciones que he dirigido — independientemente de la industria o de la magnitud.</p>
+	<p>Muchos de estos fueron ataques o vulnerabilidades que podríamos haber no controlado. Pero independientemente de si el problema surgió de algo que estaba bajo mi control o no, lo que ha distinguido las iniciativas exitosas que he dirigido de las que no estaban a nuestro favor fue la capacidad para responder cuando vulnerabilidades zero-day y ataques como este son identificados. &nbsp; &nbsp;</p>
+	<p>Si bien desearía poder decir que Rapid Reset puede ser diferente esta vez, no lo es. Esta vez, apelo a todos los directores de seguridad — independientemente de si han visto los incidentes de seguridad que yo he visto durante décadas o si se trata de alguien en su primer día en el trabajo — para garantizar que estén protegidos y respalden a sus equipos de respuesta de incidentes informáticos.</p>
+	<p>Hemos mantenido la información reservada hasta hoy para dar a todos los proveedores de seguridad la oportunidad de reaccionar. Sin embargo, en algún punto, tenemos la responsabilidad de hacer públicas las amenazas zero-day como esta. Hoy es ese día. Esto significa que después de hoy, los ciberdelincuentes estarán muy al tanto de la vulnerabilidad HTTP/2; e inevitablemente se convertirá en algo simple para aprovechar y lanzar la carrera entre defensores y atacantes — crear parches primero frente a aprovechar primero. Las organizaciones deberían suponer que los sistemas serán probados y tomar medidas preventivas para garantizar la protección.</p>
+	<p>Para mí, esto es algo parecido a una vulnerabilidad como Log4J, debido a la cantidad de variantes que están surgiendo diariamente, y seguiremos obteniendo resultados en las semanas, meses y años venideros. A medida que investigadores y ciberdelincuentes experimenten con esta vulnerabilidad, podemos descubrir diferentes variantes con ciclos de aprovechamiento aún más cortos que contienen aún más atajos avanzados. &nbsp;</p>
+	<p>Y al igual que con Log4J, gestionar incidentes como este no es tan simple como “ejecutar el parche y listo”. Debes convertir la gestión del incidente, el parcheo y la evolución de las protecciones de seguridad en procesos constantes — porque los parches para cada variante de una vulnerabilidad reducen el riesgo, pero no lo eliminan.</p>
+	<p>No quiero ser alarmista, pero voy a ser directo: esto es algo que se debe tomar muy en serio. Esto se debe tratar como un incidente completamente activo para garantizar que no ocurra nada en sus organizaciones.</p>
+	<div class="flex anchor relative">
+		<h3 id="recommendations-for-a-new-standard-of-change">Recomendaciones para un nuevo estándar de cambio</h3>
+		<a href="https://blog.cloudflare.com/#recommendations-for-a-new-standard-of-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si bien ningún evento de seguridad es idéntico al siguiente, se pueden aprender lecciones. A los directores de seguridad, les sugiero implementar de inmediato mis recomendaciones. No solo en esta instancia, sino también para el futuro:</p>
+	<ul>
+		<li>
+			<p>Comprender su conectividad externa y la conectividad externa de la red de sus socios para solucionar los sistemas conectados a Internet con las siguientes mitigaciones.</p>
+		</li>
+		<li>
+			<p>Comprender su protección de seguridad actual y las capacidades que tienen que proteger, detectar un ataque y responder a este, y solucionar de inmediato los problemas que tienen en la red.</p>
+		</li>
+		<li>
+			<p>Garantizar que su protección DDoS esté fuera de sus centro de datos, porque si el tráfico llega a sus centros de datos, resultará difícil mitigar el ataque DDoS.</p>
+		</li>
+		<li>
+			<p>Garantizar que tienen protección contra DDoS para aplicaciones (capa 7) y garantizar que tienen firewall para aplicaciones web. Además, como práctica recomendada, garantizar que tienen protección DDoS total para DNS y firewalls para el tráfico de red (capa 3) y API</p>
+		</li>
+		<li>
+			<p>Garantizar que el servidor web y los parches del sistema operativo están implementados en todos los servidores web conectados a Internet. Además, garantizar que toda la automatización como las estructuras e imágenes Terraform estén completamente parcheadas para que las versiones anteriores de servidores web no se implementen sobre las imágenes seguras por accidente.</p>
+		</li>
+		<li>
+			<p>Como último recurso, consideren desactivar HTTP/2 y HTTP/3 (probablemente también vulnerable) para mitigar la amenaza. Esto solo debe hacerse como último recurso, porque habrá problemas significativos de rendimiento si bajan de nivel a HTTP/1.1</p>
+		</li>
+		<li>
+			<p>Consideren un proveedor secundario de DDoS L7 en la nube en el perímetro para lograr resiliencia.</p>
+		</li>
+	</ul>
+	<p>La misión de Cloudflare es ayudar a mejorar el servicio de Internet para todos. Si te preocupa el estado actual de tu protección DDoS, nos complace ofrecerte de manera gratuita nuestras capacidades y resiliencia para DDoS para que puedas mitigar los intentos de un ataque DDoS. Sabemos la tensión por la que estás atravesando, ya que hemos estado luchando contra estos ataques durante los últimos 30 días y hemos hecho que nuestros sistemas, los mejores en su tipo, sean aún mejores.</p>
+	<p>Si necesitas más información, <a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank" rel="noopener noreferrer">mira nuestro seminario web</a> con los detalles de zero-day y cómo responder. <a href="https://www.cloudflare.com/h2" target="_blank" rel="noopener noreferrer">Comunícate con nosotros</a> si no estás seguro si estás protegido o quieres saber cómo estarlo. También tenemos más información técnica del ataque con más detalles en la publicación de otro blog: <a href="https://cfl.re/rapid-reset-breakdown" target="_blank" rel="noopener noreferrer">HTTP/2 Rapid Reset: deconstrucción de un ataque sin precedentes</a>. Por último, si estás siendo objetivo del ataque o necesitas protección inmediata, comunícate con tu representante local de Cloudflare o visita <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/under-attack-hotline/</a>.</p>
+</div>

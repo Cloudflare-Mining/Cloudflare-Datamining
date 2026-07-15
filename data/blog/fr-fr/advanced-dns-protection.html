@@ -1,0 +1,182 @@
+<div class="mb2 gray5">Lecture&nbsp;: 8 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/advanced-dns-protection">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/advanced-dns-protection">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/advanced-dns-protection">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/advanced-dns-protection">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/advanced-dns-protection">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/advanced-dns-protection">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/advanced-dns-protection">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62AFeM2Vt5oZEWV3lP2ETi/0310cca680e228f3111ac59ddc4ad140/advanced-dns-protection.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous sommes heureux de vous présenter le système <a href="https://developers.cloudflare.com/ddos-protection/dns-protection" target="_blank" rel="noopener noreferrer">Advanced DNS Protection</a>, un robuste mécanisme de défense conçu pour protéger les entreprises contre les <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS DNS</a> les plus sophistiquées. Ce système a été développé pour proposer une sécurité de premier plan et garantir que votre infrastructure numérique reste résiliente face à l'évolution des menaces.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45qkI4SFbrq6NaNxYF5TJ/93dce3635461f42d02cafdb034b82bcd/image10-5.png" alt="Advanced DNS Protection: mitigating sophisticated DNS DDoS attacks" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Nos systèmes existants parviennent à détecter et à atténuer les attaques DDoS contre le DNS « simples », mais connaissent des difficultés avec les attaques plus complexes. Le système Advanced DNS Protection est capable de combler cette lacune en tirant parti de nouvelles techniques que nous vous présenterons dans cet article de blog.</p>
+	<p>La solution Advanced DNS Protection est actuellement en version bêta et disponible à tous les clients <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>, sans frais supplémentaires. Poursuivez votre lecture pour en savoir plus sur les attaques DDoS basées sur le DNS, sur le fonctionnement du nouveau système et sur les nouvelles fonctionnalités attendues à l'avenir.</p>
+	<p><a href="https://www.cloudflare.com/lp/advanced-dns-protection" target="_blank" rel="noopener noreferrer">Manifestez votre intérêt et inscrivez-vous</a> pour en savoir plus sur la manière dont nous pouvons vous aider à faire en sorte que votre serveur DNS reste protégé, disponible et performant.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-third-of-all-ddos-attacks-target-dns-servers">Un tiers de l'ensemble des attaques DDoS visent les serveurs DNS</h2>
+		<a href="https://blog.cloudflare.com/#a-third-of-all-ddos-attacks-target-dns-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Les attaques par déni de service distribué</a> (Distributed Denial of Service, DDoS) constituent un type de cyberattaque cherchant à perturber les sites web et les autres services en ligne ou à provoquer leur arrêt. Une attaque DDoS parvenant à mettre un site web hors ligne peut entraîner des dégâts considérables, tant en termes de pertes de revenus que d'atteintes à la réputation.</p>
+	<p>Répartition des types d'attaques DDoS en 2023</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RNb2mpBnPswRBx7ye9HYG/7b07417272b43a163aa57d69fad50f0c/image5-13.png" alt="Distribution of DDoS attack types for 2023" class="kg-image" width="945" height="314" loading="lazy">
+
+	</figure>
+	<p>L'un des moyens les plus courants de perturber et de mettre hors service un site web consiste à inonder ses serveurs sous un trafic supérieur à ce qu'ils peuvent supporter. C'est ce qu'on appelle une attaque par <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer">flood HTTP</a> (attaque par inondation HTTP). Ce type d'attaque DDoS cible <i>directement</i> le site web avec un grand nombre de <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">requêtes HTTP</a>. D'après notre <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2023-q4-fr-fr">dernier rapport sur les tendances DDoS</a>, en 2023, nos systèmes ont atténué automatiquement 5,2 millions d'attaques DDoS HTTP, soit 37 % de l'ensemble des attaques DDoS.</p>
+	<p>Schéma d'une attaque par flood HTTP</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WcaqGR3VhSaPbTOrbjIVJ/7d3ce83439c2b064b57436de14846a3c/image11-2.png" alt="Diagram of an HTTP flood attack" class="kg-image" width="1999" height="1061" loading="lazy">
+
+	</figure>
+	<p>Il existe cependant un autre moyen de mettre les sites web hors service : les cibler <i>indirectement</i>. Ainsi, au lieu d'inonder les serveurs web du site, l'acteur malveillant inonde les serveurs DNS. Si les serveurs DNS sont submergés sous un nombre de requêtes supérieur à leur capacité, la traduction du nom d'hôte en adresse IP échoue et le site web subit une panne indirecte, car les serveurs DNS ne peuvent pas répondre aux requêtes légitimes.</p>
+	<p>Un exemple notable est <a href="https://en.wikipedia.org/wiki/DDoS_attacks_on_Dyn" target="_blank" rel="noopener noreferrer">l'attaque qui a visé Dyn</a>, un fournisseur de DNS, en octobre 2016. Cette attaque DDoS dévastatrice, lancée par le tristement célèbre <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer">botnet Mirai</a>, a provoqué des interruptions sur plusieurs sites importants (comme Airbnb, Netflix et Amazon) et il a fallu à Dyn une journée entière pour rétablir ses services. Or, cette période particulièrement longue pour une interruption de service peut avoir un impact significatif sur la réputation et les revenus.</p>
+	<p>Plus de sept ans plus tard, les attaques Mirai et les attaques DNS sont toujours incroyablement courantes. En 2023, les attaques DNS constituaient le deuxième type d'attaque le plus fréquent, avec une part de 33 % de l'ensemble des attaques DDoS (4,6 millions d'attaques). Les attaques lancées par des botnets basés sur une variante de Mirai ont été le cinquième type le plus courant d'attaque DDoS contre la couche réseau, en totalisant 3 % de l'ensemble des attaques DDoS sur cette dernière.</p>
+	<p>Schéma d'une attaque par flood de requêtes DNS</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kZe6dABMA0r3nX1lE8rzJ/24540fe5470cbf6757cd6b1f0459a844/image2-22.png" alt="Diagram of a DNS query flood attack" class="kg-image" width="1999" height="1061" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-are-sophisticated-dns-based-ddos-attacks">Qu'est-ce qu'une attaque DDoS sophistiquée basée sur le DNS ?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-sophisticated-dns-based-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les attaques DDoS basées sur le DNS peuvent être plus facilement atténuées lorsque chaque requête s'appuie sur un schéma récurrent. C'est ce qu'on appelle « l'empreinte numérique d'une attaque ». Les systèmes d'atténuation basés sur l'empreinte numérique peuvent identifier ces schémas, puis déployer une règle d'atténuation qui filtre chirurgicalement le trafic hostile sans affecter le trafic légitime.</p>
+	<p>Prenons l'exemple d'un acteur malveillant adressant un flot de requêtes DNS à sa cible. Dans cet exemple, le pirate n'a randomisé que l'adresse IP source. Tous les autres champs de la requête sont restés identiques. Le système d'atténuation a détecté le modèle (le port source est le port 1024 et le domaine interrogé est « <code>example.com</code> ») et générera une règle d'atténuation éphémère pour filtrer ces requêtes.</p>
+	<p>Schéma simplifié du concept d'empreinte numérique d'une attaque</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lAewEZWMPO4Du0g14y97V/e1c663aaecfdefbf92867d180d08c89e/pasted-image-0-3.png" alt="A simplified diagram of the attack fingerprinting concept" class="kg-image" width="1110" height="720" loading="lazy">
+
+	</figure>
+	<p>Certaines attaques DDoS basées sur le DNS se révèlent toutefois beaucoup plus sophistiquées et randomisées, sans schéma d'attaque apparent. En l'absence d'un modèle cohérent sur lequel se verrouiller, il devient pratiquement impossible d'atténuer une attaque à l'aide d'un système d'atténuation basé sur l'empreinte numérique. En outre, même si un schéma d'attaque peut être détecté au sein d'une attaque hautement randomisée, ce dernier sera probablement tellement générique qu'il atténuera par erreur le trafic légitime de l'utilisateur et/ou ne détectera pas l'ensemble de l'attaque.</p>
+	<p>Dans cet exemple, l'acteur malveillant a également randomisé le domaine interrogé dans son attaque par flood de requêtes DNS. Simultanément, un client (ou serveur) légitime interroge « <code>example.com</code> ». Un numéro de port aléatoire lui a été attribué, qui s'est avéré être le port 1024. Le système d'atténuation a détecté un modèle (le port source est le port 1024 et le domaine interrogé est « <code>example.com</code> ») qui n'a pris en compte que la partie de l'attaque correspondant à l'empreinte numérique. Le système d'atténuation n'a pas détecté la partie de l'attaque qui interrogeait d'autres noms d'hôtes. Enfin, le système d'atténuation a détecté par erreur le trafic légitime qui semblait similaire au trafic hostile.</p>
+	<p>Schéma simplifié d'une attaque par flood DNS randomisée</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FK69kOH3wNkIxqZ9GolXV/0ca6c600de43c646efd46a17fa070a36/pasted-image-0--1-.png" alt="A simplified diagram of a randomized DNS flood attack" class="kg-image" width="1152" height="1008" loading="lazy">
+
+	</figure>
+	<p>Il ne s'agit là que d'un exemple très simple de la manière dont l'empreinte numérique peut échouer à bloquer les attaques DDoS randomisées. Ce problème est amplifié lorsque les acteurs malveillants « blanchissent » leur trafic hostile par l'intermédiaire de résolveurs DNS publics réputés (un résolveur DNS, également connu sous le nom de serveur DNS récursif, est un <a href="https://www.cloudflare.com/learning/dns/dns-server-types" target="_blank" rel="noopener noreferrer">type de serveur DNS</a> chargé de rechercher l'adresse IP d'un site web auprès de plusieurs autres serveurs DNS). C'est ce que l'on appelle une attaque par blanchiment de DNS (DNS Laundering).</p>
+	<p>Schéma du processus de résolution DNS</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tWhCkfhKqdiT1Tp4oXX7c/161b1bfcaa7be90301de140ffc15a97a/DNS-Resolution.png" alt="Diagram of the DNS resolution process" class="kg-image" width="1600" height="1090" loading="lazy">
+
+	</figure>
+	<p>Lors d'une attaque par blanchiment de DNS, l'acteur malveillant adresse des requêtes aux sous-domaines d'un domaine réel géré par le serveur DNS de référence de la victime. Le préfixe qui définit le sous-domaine est randomisé et n'est jamais utilisé plus d'une fois. Du fait de cette randomisation, les serveurs DNS récursifs ne disposeront jamais d'une réponse en cache et devront dès lors transférer la requête au serveur DNS de référence de la victime. Ce dernier est alors bombardé d'un nombre colossal de requêtes jusqu'à ce qu'il ne puisse plus traiter les requêtes légitimes, voire qu'il s'effondre.</p>
+	<p>Schéma d'une attaque par blanchiment de DNS</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qWoBkWf5pQ3vKwXd2VGdI/1abd687392cb0b0106a154b4fb5842d8/DNS-Laundering-attack.png" alt="Diagram of a DNS Laundering attack" class="kg-image" width="1600" height="877" loading="lazy">
+
+	</figure>
+	<p>La complexité des attaques DDoS DNS sophistiquées réside dans leur nature paradoxale : s'il est relativement facile de les détecter, il est nettement plus difficile de les atténuer efficacement. Cette difficulté provient du fait que le serveur DNS de référence ne peut pas simplement bloquer les requêtes des serveurs DNS récursifs, car ces derniers envoient également des requêtes légitimes. En outre, le serveur DNS de référence n'est pas en mesure de filtrer les requêtes visant le domaine ciblé, car il s'agit d'un domaine légitime qui doit rester accessible.</p>
+	<div class="flex anchor relative">
+		<h2 id="mitigating-sophisticated-dns-based-ddos-attacks-with-the-advanced-dns-protection-system">Atténuation des attaques DDoS sophistiquées basées sur le DNS à l'aide du système Advanced DNS Protection</h2>
+		<a href="https://blog.cloudflare.com/#mitigating-sophisticated-dns-based-ddos-attacks-with-the-advanced-dns-protection-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'essor des attaques DDoS DNS sophistiquées nous a incités à développer une nouvelle solution capable de mieux protéger nos clients et de combler les lacunes des approches plus traditionnelles basées sur les empreintes numériques. Cette solution est devenue le système <a href="https://developers.cloudflare.com/ddos-protection/dns-protection" target="_blank" rel="noopener noreferrer">Advanced DNS Protection</a>. À l'instar du système <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection" target="_blank" rel="noopener noreferrer">Advanced TCP Protection</a>, il s'agit d'un système défini par logiciel développé par nos soins et soutenu par notre plateforme d'atténuation avec état, <i>flowtrackd</i> (flow tracking daemon).</p>
+	<p>Le système Advanced DNS Protection complète notre <a href="https://developers.cloudflare.com/ddos-protection/#features" target="_blank" rel="noopener noreferrer">suite existante de systèmes de défense DDoS</a>. Suivant la même approche que nos autres systèmes de défense DDoS, le système Advanced DNS Protection constitue également un système distribué, dont une instance fonctionne sur chaque serveur Cloudflare à travers le monde. Une fois le système lancé, chaque instance peut détecter et atténuer les attaques de manière autonome, sans nécessiter de régulation centralisée. La détection et l'atténuation sont instantanées (zéro seconde). Chaque instance communique également avec d'autres instances situées sur d'autres serveurs d'un datacenter. Elles <i>échangent</i> et partagent des informations sur les menaces afin de mettre en place des mesures d'atténuation complètes au sein de chaque datacenter.</p>
+	<p>Captures d'écran du tableau de bord Cloudflare montrant une attaque DDoS DNS atténuée par le système Advanced DNS Protection</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73SgEYC7uAHd38YkYhOCV1/ee2c4024d83ac999f943703df1a6623b/pasted-image-0--2-.png" alt="Screenshots from the Cloudflare dashboard showcasing a DNS-based DDoS attack that was mitigated by the Advanced DNS Protection system " class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Utilisés ensemble, nos systèmes basés sur les empreintes numériques (les <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">ensembles de règles gérées de protection contre les attaques DDoS</a>) et nos systèmes d'atténuation avec état fournissent une robuste stratégie de défense multicouche permettant de se défendre contre les attaques DDoS basées sur le DNS les plus sophistiquées et les plus randomisées. De même, le fait que le système soit personnalisable permet aux clients de Cloudflare de l'adapter à leurs besoins. Consultez notre <a href="https://developers.cloudflare.com/ddos-protection/dns-protection" target="_blank" rel="noopener noreferrer">documentation</a> pour plus d'informations sur les options de configuration.</p>
+	<p>Schéma de la protection contre les attaques DDoS Cloudflare</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Rb1rVLujDQK61hPgDvNuP/1ad93b101600e061c2217ae870b8592e/Cloudflare-DDoS-Protection---system-overview.png" alt="Diagram of Cloudflare’s DDoS protection systems" class="kg-image" width="1600" height="1355" loading="lazy">
+
+	</figure>
+	<p>Nous avons également ajouté de nouveaux points de données orientés DNS afin d'aider les clients à mieux comprendre leurs schémas de trafic DNS et les attaques qu'ils subissent. Ces nouveaux points de données sont disponibles au sein du nouvel onglet « Protection DNS » du <a href="https://developers.cloudflare.com/analytics/network-analytics" target="_blank" rel="noopener noreferrer">tableau de bord de Cloudflare Network Analytics</a>. Le nouvel onglet fournit des informations sur les requêtes DNS acceptées et rejetées, ainsi que sur les caractéristiques de ces requêtes, notamment le nom de domaine interrogé et le type d'enregistrement. Vous pouvez également procéder à des analyses en utilisant l'<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">API GraphQL de Cloudflare</a> et en exportant les journaux dans vos propres tableaux de bord de surveillance via <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs" target="_blank" rel="noopener noreferrer">Logpush</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="dns-queries-discerning-good-from-bad">Requêtes DNS : distinguer les bonnes requêtes des mauvaises</h2>
+		<a href="https://blog.cloudflare.com/#dns-queries-discerning-good-from-bad" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour nous protéger contre les attaques DDoS sophistiquées et hautement randomisées basées sur le DNS, nous devions mieux déterminer quelles requêtes DNS sont susceptibles d'être légitimes pour nos clients. Il n'est toutefois pas évident de déduire ce qui est légitime et ce qui est susceptible de faire partie d'une attaque en se basant uniquement sur le nom de la requête. Nous ne pouvons pas nous fier uniquement aux mécanismes de détection basés sur les empreintes numériques, car des requêtes apparemment aléatoires, comme abc123.example.com, peuvent s'avérer légitimes. L'inverse est également vrai : une requête pour mailserver.example.com peut paraître légitime, mais finir par ne pas être adressée à un sous-domaine véritablement possédé par un client.</p>
+	<p>Pour aggraver la situation, <a href="https://developers.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>, notre service d'atténuation basé sur le routage de paquets en couche 3, utilise le retour direct serveur (Direct Server Return, DSR). Nous ne pouvons donc pas voir les réponses du serveur d'origine du DNS susceptibles de nous indiquer quelles requêtes sont en fin de compte légitimes.</p>
+	<p>Schéma du fonctionnement de Magic Transit avec retour direct serveur (DSR)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vjGjv8o2n6LJbU1dEmuqd/3333e3811d9af05d7705cd3e286edfaf/pasted-image-0--3-.png" alt="Diagram of Magic Transit with Direct Server Return (DSR)" class="kg-image" width="1600" height="878" loading="lazy">
+
+	</figure>
+	<p>Nous avons décidé que le meilleur moyen de lutter contre ces attaques était de construire un modèle de données des requêtes DNS attendues de chaque client, sur la base d'un enregistrement historique construit par nos soins. Avec ce modèle à disposition, nous pouvons déterminer avec un plus haut degré de confiance quelles requêtes sont susceptibles d'être légitimes et abandonner celles que nous pensons ne pas l'être, afin de protéger le serveur DNS de notre client.</p>
+	<p>Il s'agit là de la base du système Advanced DNS Protection. Ce dernier inspecte chaque requête DNS envoyée à nos clients Magic Transit, avant de les transmettre ou de les rejeter en fonction du modèle de données et des paramètres individuels de chaque client.</p>
+	<p>Pour ce faire, chaque serveur de notre réseau mondial envoie en permanence certaines données relatives au DNS, comme le type de requête (par exemple, enregistrement A) et les domaines interrogés (mais pas la source de la requête) à notre datacenter principal, où nous calculons périodiquement le profil de trafic des requêtes DNS pour chaque client. Ces profils sont ensuite distribués au sein de notre réseau mondial, où nous les consultons afin de nous aider à déterminer avec davantage de confiance et de précision quelles requêtes sont bonnes et lesquelles sont mauvaises. Nous abandonnons les mauvaises requêtes et transmettons les bonnes, en tenant compte de la tolérance du client à l'égard des requêtes DNS inattendues, conformément à sa configuration.</p>
+	<div class="flex anchor relative">
+		<h2 id="solving-the-technical-challenges-that-emerged-when-designing-the-advanced-dns-protection-system">Résoudre les problèmes techniques apparus lors de la conception du système Advanced DNS Protection</h2>
+		<a href="https://blog.cloudflare.com/#solving-the-technical-challenges-that-emerged-when-designing-the-advanced-dns-protection-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En développant ce système, nous avons été confrontés à plusieurs défis techniques spécifiques :</p>
+	<div class="flex anchor relative">
+		<h3 id="data-processing">Traitement des données</h3>
+		<a href="https://blog.cloudflare.com/#data-processing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous traitons des dizaines de millions de requêtes DNS par jour sur notre réseau mondial pour le compte de nos clients Magic Transit (sans compter la suite d'autres produits DNS de Cloudflare) et utilisons les données relatives au DNS mentionnées ci-dessus pour établir des profils personnalisés concernant le trafic de requêtes. L'analyse de ce type de données nécessite un traitement minutieux de nos pipelines de données. Lors de l'élaboration de ces profils de trafic, nous utilisons des technologies d'échantillonnage à l'écriture et de débit adaptatif lors de l'écriture et de la lecture des données nécessaires (respectivement) afin de nous assurer que nous capturons les données avec suffisamment de précision, tout en protégeant notre infrastructure de données, mais aussi de garantir que nous supprimons bien les informations susceptibles d'avoir un impact sur la confidentialité des utilisateurs finaux.</p>
+	<div class="flex anchor relative">
+		<h3 id="compact-representation-of-query-data">Représentation compacte des données des requêtes</h3>
+		<a href="https://blog.cloudflare.com/#compact-representation-of-query-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Certains de nos clients reçoivent des dizaines de millions de requêtes DNS par jour. Le coût du stockage et de la distribution de cette quantité de données sous un format non compressé serait prohibitif. Pour résoudre ce problème, nous avons décidé d'utiliser un <a href="https://en.wikipedia.org/wiki/Counting_Bloom_filter" target="_blank" rel="noopener noreferrer"><i>filtre de Bloom avec compteur</i></a> pour le profil de trafic de chaque client. Il s'agit d'une structure de données probabiliste qui nous permet de stocker et de distribuer succinctement le profil DNS de chaque client, puis de l'interroger efficacement au moment du traitement du paquet.</p>
+	<div class="flex anchor relative">
+		<h3 id="data-distribution">Distribution des données</h3>
+		<a href="https://blog.cloudflare.com/#data-distribution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous devons périodiquement recalculer et redistribuer le profil de trafic DNS de chaque client entre nos datacenters et chaque serveur de notre flotte. Nous avons utilisé notre propre <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">service de stockage R2</a> pour nous simplifier grandement cette tâche. En plus des Regional Hints (conseils régionaux) et des domaines personnalisés, nous avons activé la mise en cache et n'avons utilisé qu'une poignée de compartiments R2. Chaque fois que nous devons mettre à jour la vue globale des modèles de données des clients sur l'ensemble de notre flotte périphérique, 98 % des bits transférés sont diffusés à partir de la mémoire cache.</p>
+	<div class="flex anchor relative">
+		<h3 id="built-in-tolerance">Tolérance intégrée</h3>
+		<a href="https://blog.cloudflare.com/#built-in-tolerance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque de nouveaux noms de domaine sont mis en service, nos modèles de données n'en sont pas immédiatement conscients, car aucune requête portant sur ces noms n'a jamais été observée auparavant. C'est pourquoi (et pour d'autres raisons de faux positifs potentiels) nous devons intégrer un certain degré de tolérance au système, afin de permettre l'accès aux requêtes potentiellement légitimes. Pour ce faire, nous nous appuyons sur des <a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank" rel="noopener noreferrer">algorithmes de type Token Bucket</a>. Les clients peuvent configurer la taille des Token Buckets (seaux à jetons) en modifiant le niveau de sensibilité du système Advanced DNS Protection. Plus la sensibilité est faible, plus le Token Bucket est grand, et vice-versa. Un Token Bucket de plus grande taille assure une plus grande tolérance aux requêtes DNS inattendues et aux requêtes DNS attendues qui s'écartent du profil, tandis qu'un niveau de sensibilité élevé se traduit par un Token Bucket plus petit et une approche plus stricte.</p>
+	<div class="flex anchor relative">
+		<h2 id="leveraging-cloudflares-global-software-defined-network">Tirer parti du réseau mondial défini par logiciel de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#leveraging-cloudflares-global-software-defined-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En fin de compte, il s'agit là d'un type de défi que Cloudflare sait parfaitement relever. Nos clients nous font confiance pour gérer leur trafic et s'assurer que leurs propriétés Internet demeurent protégées, disponibles et performantes. Et nous prenons cette confiance très au sérieux.</p>
+	<p>Le système Advanced DNS Protection tire parti de notre infrastructure mondiale et de nos capacités de traitement des données, ainsi que de nos structures de données et de nos algorithmes intelligents, pour protéger nos clients.</p>
+	<p>Si vous n'êtes pas encore client Cloudflare, n'hésitez pas à nous <a href="https://www.cloudflare.com/lp/advanced-dns-protection" target="_blank" rel="noopener noreferrer">contacter</a> si vous souhaitez protéger votre serveur DNS. Les clients Cloudflare actuels peuvent activer les nouveaux systèmes en contactant l'équipe chargée de leur compte ou le support Cloudflare.</p>
+</div>

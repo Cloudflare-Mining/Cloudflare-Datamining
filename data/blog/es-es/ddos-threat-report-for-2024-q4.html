@@ -1,0 +1,335 @@
+<div class="mb2 gray5">12 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q4">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q4">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q4">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q4">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q4">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q4">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q4">Português</a>, <a href="https://blog.cloudflare.com/id-id/ddos-threat-report-for-2024-q4">Indonesia</a>, <a href="https://blog.cloudflare.com/sv-se/ddos-threat-report-for-2024-q4">Svenska</a>, <a href="https://blog.cloudflare.com/nl-nl/ddos-threat-report-for-2024-q4">Nederlands</a> y <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q4">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6guiqnKfcklw6BYnwasnf2/194151e6f9a2b428cc71d29c1a7414c6/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Te damos la bienvenida a la 20.ª&nbsp;edición del informe de Cloudflare sobre las amenazas DDoS, cuando se cumplen cinco años desde nuestro primer informe en 2020.</p>
+	<p>Este informe, que se publica cada trimestre, ofrece un análisis exhaustivo de la evolución del panorama de amenazas de los <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>ataques de denegación de servicio distribuido (DDoS)</u></a> basado en los datos de la <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>red de Cloudflare</u></a>. En esta edición, nos centramos en el cuarto trimestre de 2024 y analizamos el año en su conjunto.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-unique-vantage-point">Posición estratégica exclusiva de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-unique-vantage-point" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando publicamos nuestro <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020"><u>primer informe</u></a>, la capacidad de la red global de Cloudflare era de 35&nbsp;terabits por segundo (Tb/s). Desde entonces, la capacidad de nuestra red ha crecido un 817&nbsp;%, hasta los 321&nbsp;Tb/s. También hemos ampliado significativamente nuestra presencia global en un 65&nbsp;%, pasando de 200&nbsp;ciudades a principios de 2020 a 330&nbsp;ciudades a finales de 2024.</p>
+	<p>Con esta red masiva, ahora servimos y protegemos casi el <a href="https://w3techs.com/technologies/overview/proxy" target="_blank" rel="noopener noreferrer"><u>20&nbsp;% de todos los sitios web</u></a> y unas 18&nbsp;000&nbsp; <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-subnet" target="_blank" rel="noopener noreferrer"><u>redes IP</u></a> exclusivas de clientes de Cloudflare. Esta amplia infraestructura y base de clientes nos pone en una posición única para proporcionar perspectivas clave y tendencias que benefician a la comunidad de Internet en general.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-ddos-insights">Perspectivas clave sobre los ataques DDoS</h2>
+		<a href="https://blog.cloudflare.com/#key-ddos-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>En 2024, los sistemas autónomos de protección contra DDoS de Cloudflare bloquearon alrededor de 21,3&nbsp;millones de ataques DDoS, lo que representa un aumento del 53&nbsp;% en comparación con 2023. En 2024, Cloudflare bloqueó un promedio de 4870&nbsp;ataques DDoS cada hora.</p>
+		</li>
+		<li>
+			<p>En el cuarto trimestre, más de 420&nbsp;de esos ataques fueron hipervolumétricos, y superaron los 1000&nbsp;millones de paquetes por segundo (pps) y 1&nbsp;Tb/s. Además, la cantidad de ataques que superaron 1&nbsp;Tb/s creció un asombroso 1885&nbsp;% respecto al trimestre anterior.</p>
+		</li>
+		<li>
+			<p>Durante la semana de Halloween de 2024, los sistemas de protección contra DDoS de Cloudflare detectaron y bloquearon con éxito y de forma autónoma un ataque DDoS de 5,6&nbsp;terabits por segundo (Tb/s), el mayor ataque jamás registrado.</p>
+		</li>
+	</ul>
+	<p><i>Para obtener más información sobre los ataques DDoS y otros tipos de ciberamenazas, visita nuestro </i><a href="https://www.cloudflare.com/learning" target="_blank" rel="noopener noreferrer"><i><u>Centro de aprendizaje</u></i></a><i>, accede a </i><a href="https://blog.cloudflare.com/tag/ddos-reports"><i><u>informes anteriores sobre las amenazas DDoS</u></i></a><i> en el blog de Cloudflare o visita nuestro centro interactivo, </i><a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank" rel="noopener noreferrer"><i><u>Cloudflare Radar</u></i></a><i>. También hay una </i><a href="https://developers.cloudflare.com/radar" target="_blank" rel="noopener noreferrer"><i><u>API gratuita</u></i></a><i> para aquellos interesados en investigar estas y otras tendencias de Internet. Asimismo, puedes obtener más información sobre las </i><a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank" rel="noopener noreferrer"><i><u>metodologías</u></i></a><i> utilizadas en la preparación de estos informes.</i></p>
+	<div class="flex anchor relative">
+		<h2 id="anatomy-of-a-ddos-attack">Anatomía de un ataque DDoS</h2>
+		<a href="https://blog.cloudflare.com/#anatomy-of-a-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Solo en el cuarto trimestre de 2024, Cloudflare mitigó 6,9&nbsp;millones de ataques DDoS. Esto representa un aumento del 16&nbsp;% en términos intertrimestrales y del 83&nbsp;% en términos interanuales.</p>
+	<p>De los ataques DDoS del cuarto trimestre de 2024, 49&nbsp;% (3,4&nbsp;millones) fueron ataques DDoS <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>a las capas 3 </u></a><a href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer" target="_blank" rel="noopener noreferrer"><u>y 4</u></a> y el 51
+		% (3,5&nbsp;millones) fueron ataques DDoS HTTP.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33qc2yEBIE4Tmq6ke3dOIY/398216db2fb03e6093f55dac35394568/image13.png" alt="image13" class="kg-image" width="1587" height="720" loading="lazy">
+	</figure>
+	<p><i><sup>Distribución de 6,9&nbsp;millones de ataques DDoS: 4º&nbsp;trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="http-ddos-attacks">Ataques DDoS HTTP</h2>
+		<a href="https://blog.cloudflare.com/#http-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La mayoría de los ataques DDoS HTTP (73&nbsp;%) los lanzaron <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer">botnets</a> conocidas. La rapidez de la detección y el bloqueo de estos ataques fue posible gracias a que operamos una red masiva y observamos muchos tipos de ataques y botnets. A su vez, esto permite a nuestros ingenieros e investigadores de seguridad elaborar heurísticas para aumentar la eficacia de la mitigación contra estos ataques.</p>
+	<p>Un 11&nbsp;% adicional de los ataques DDoS HTTP detectados suplantaban un navegador legítimo. Otro 10&nbsp;% fueron ataques que contenían atributos HTTP sospechosos o inusuales. El 8&nbsp;% restante, "Otros", fueron <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>inundaciones HTTP</u></a> genéricas, ataques volumétricos de <i>cache busting</i> (ignorar caché) y ataques volumétricos contra puntos finales de inicio de sesión.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27nsCB9HReu48XtiJKufwg/cb8814d1cc390e4cd1ffea9316fd589e/image19.png" alt="image19" class="kg-image" width="1236" height="720" loading="lazy">
+	</figure>
+	<p><i><sup>Principales vectores de ataque DDoS HTTP: 4º trimestre de 2024</sup></i></p>
+	<p>Estos <a href="https://www.cloudflare.com/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer">vectores de ataque</a>, o grupos de ataque, no son necesariamente excluyentes. Por ejemplo, las botnets conocidas también se hacen pasar por navegadores y tienen atributos HTTP sospechosos, pero este desglose es nuestro intento de categorizar los ataques DDoS HTTP de forma significativa.</p>
+	<div class="flex anchor relative">
+		<h3 id="top-user-agents">Principales agentes de usuario</h3>
+		<a href="https://blog.cloudflare.com/#top-user-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el momento de la publicación de este informe, la versión estable actual de Chrome para Windows, Mac, iOS y Android es la 132, según las <a href="https://chromereleases.googleblog.com" target="_blank" rel="noopener noreferrer"><u>notas de la versión</u></a> de Google. Sin embargo, parece que los ciberdelincuentes aún no están al día, ya que 13&nbsp;de los principales agentes de usuario que aparecen con más frecuencia en los ataques DDoS son versiones de Chrome entre la 118 y la 129.</p>
+	<p>El mayor porcentaje de solicitudes DDoS del total de solicitudes (99,9&nbsp;%) corresponde al agente de usuario HITV_ST_PLATFORM, por lo que es el agente de usuario utilizado casi exclusivamente en los ataques DDoS. En otras palabras, si ves tráfico procedente del agente de usuario HITV_ST_PLATFORM, la probabilidad de que sea tráfico legítimo es del 0,1&nbsp;%.</p>
+	<p>Los ciberdelincuentes suelen evitar el uso de agentes de usuario poco comunes, y prefieren los más habituales, como Chrome, para que se integren con el tráfico normal. La presencia del agente de usuario HITV_ST_PLATFORM, que está asociado con los televisores inteligentes y los decodificadores, sugiere que los dispositivos implicados en determinados ciberataques son televisores inteligentes o decodificadores en riesgo. Esta observación destaca la importancia de proteger todos los dispositivos conectados a Internet, incluidos los televisores inteligentes y los decodificadores, para evitar su explotación en ciberataques.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uUCjjPdGu63u7OmgRE6Yw/4b15c1e88cfe86ae0bc5824346908b24/image18.png" alt="image18" class="kg-image" width="1274" height="737" loading="lazy">
+	</figure>
+	<p><i><sup>Principales agentes de usuario objeto de abuso en ataques DDoS: 4º trimestre de 2024</sup></i></p>
+	<p>El agente de usuario <a href="https://github.com/benoitc/hackney" target="_blank" rel="noopener noreferrer"><u>hackney</u></a> ocupa el segundo lugar, con el 93&nbsp;% de las solicitudes que contenían este agente de usuario como parte de un ataque DDoS. Si encuentras tráfico procedente del agente de usuario hackney, hay un 7&nbsp;% de posibilidades de que sea tráfico legítimo. Hackney es una biblioteca de cliente HTTP para Erlang, que se utiliza para realizar solicitudes HTTP y es popular en los ecosistemas Erlang/Elixir.</p>
+	<p>Otros agentes de usuario que se utilizaron en los ataques DDoS son <a href="https://www.utorrent.com" target="_blank" rel="noopener noreferrer"><u>uTorrent</u></a>, que está asociado a un popular cliente BitTorrent para la descarga de archivos. <a href="https://pkg.go.dev/net/http" target="_blank" rel="noopener noreferrer"><u>Go-http-client</u></a> y <a href="https://github.com/valyala/fasthttp" target="_blank" rel="noopener noreferrer"><u>fasthttp</u></a> también se utilizaron con frecuencia en los ataques DDoS. El primero es el cliente HTTP predeterminado en la biblioteca estándar de Go y el segundo es una alternativa de alto rendimiento. fasthttp se utiliza para crear aplicaciones web rápidas, pero a menudo también es objeto de ataques DDoS y de apropiación web.</p>
+	<div class="flex anchor relative">
+		<h2 id="http-attributes-commonly-used-in-ddos-attacks">Atributos HTTP utilizados habitualmente en los ataques DDoS</h2>
+		<a href="https://blog.cloudflare.com/#http-attributes-commonly-used-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="http-methods">Métodos HTTP</h3>
+		<a href="https://blog.cloudflare.com/#http-methods" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer"><u>métodos HTTP</u></a> (también llamados verbos HTTP) definen la acción que se va a realizar en un recurso en un servidor. Forman parte del protocolo HTTP y permiten la comunicación entre los clientes (como los navegadores) y los servidores.</p>
+	<p>El método GET es el más utilizado. Casi el 70&nbsp;% de las solicitudes HTTP legítimas utilizaron el método GET. En segundo lugar se encuentra el método POST, con un porcentaje del 27&nbsp;%.</p>
+	<p>Con los ataques DDoS vemos un panorama diferente. Casi el 14&nbsp;% de las solicitudes HTTP que utilizaron el método HEAD formaban parte de un ataque DDoS, a pesar de que apenas estaba presente en las solicitudes HTTP legítimas (0,75&nbsp;% de todas las solicitudes). El método DELETE ocupa el segundo lugar, con un uso de aproximadamente el 7&nbsp;% para ataques DDoS.</p>
+	<p>Destaca la desproporción entre los métodos que se suelen observar en los ataques DDoS y su presencia en el tráfico legítimo. Los administradores de seguridad pueden utilizar esta información para optimizar su postura de seguridad en función de los encabezados siguientes.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fD5aUHaIkRMUNPZJI0LKW/d5856e7ce13cb7d1e28727401b885b1a/image10.png" alt="image10" class="kg-image" width="1286" height="739" loading="lazy">
+	</figure>
+	<p><i><sup>Distribución de los métodos HTTP en los ataques DDoS y el tráfico legítimo: cuarto trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="http-paths">Rutas HTTP</h3>
+		<a href="https://blog.cloudflare.com/#http-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Una ruta HTTP describe un recurso de servidor específico. Junto con el método HTTP, el servidor realizará la acción en el recurso.</p>
+	<p>Por ejemplo, GET <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/ddos-protection/</u></a> indicará al servidor que recupere el contenido del recurso /ddos-protection/.</p>
+	<p>Los ataques DDoS suelen tener como objetivo la raíz del sitio web ("/"), pero en otros casos pueden ir dirigidos a rutas específicas. En el cuarto trimestre de 2024, el 98&nbsp;% de las solicitudes HTTP dirigidas a la ruta /wp-admin/ formaban parte de ataques DDoS. La ruta /wp-admin/ es el <a href="https://wordpress.com/support/dashboard" target="_blank" rel="noopener noreferrer"><u>panel de control del administrador por defecto para los sitios web de WordPress</u></a>.</p>
+	<p>Evidentemente, muchas rutas son exclusivas del sitio web específico, pero en el gráfico siguiente proporcionamos las principales rutas <i>genéricas</i> que sufrieron más ataques. Los administradores de seguridad pueden utilizar estos datos para reforzar su protección en estos puntos finales, según corresponda.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I9SweJVs4sLYjgHy469NN/b7d0e76648b0ec26af32143a45dc1dd6/image21.png" alt="image21" class="kg-image" width="1275" height="750" loading="lazy">
+	</figure>
+	<p>&nbsp;<i><sup>Principales rutas HTTP objeto de ataques DDoS HTTP: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="http-vs-https">HTTP vs. HTTPS</h2>
+		<a href="https://blog.cloudflare.com/#http-vs-https" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el cuarto trimestre, casi el 94&nbsp;% del tráfico legítimo fue <a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer"><u>HTTPS</u></a>. Solo el 6&nbsp;% era HTTP de texto sin encriptar. En cuanto al tráfico de ataques DDoS, alrededor del 92&nbsp;% de las solicitudes de ataques DDoS HTTP se realizaron a través de HTTPS y casi el 8&nbsp;% a través de HTTP de texto sin encriptar.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1grfbkXvzjh8nXJYtrhiJP/8ff46ac59d296fcad89475f2bc242184/unnamed__2_.png" alt="image20" class="kg-image" width="1600" height="1001" loading="lazy">
+	</figure>
+	<p><i><sup>HTTP vs. HTTPS en tráfico legítimo y ataques DDoS: 4º&nbsp;trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="layer-3-layer-4-ddos-attacks">Ataques DDoS a las capas 3 y 4</h2>
+		<a href="https://blog.cloudflare.com/#layer-3-layer-4-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los tres principales vectores de ataque a las capas 3 y 4 (capa de red) más comunes fueron la <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>inundación SYN</u></a> (38&nbsp;%), <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>los ataques de inundación DNS</u></a> (16&nbsp;%) y las <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>inundaciones UDP</u></a> (14&nbsp;%).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hXTXtKe2kVD9fjw26aIN8/7bbd5ef01b04a3bba28232cdcf876c3a/image1.png" alt="image1" class="kg-image" width="1924" height="1104" loading="lazy">
+	</figure>
+	<p><i><sup>Principales vectores de ataque DDoS a las capas 3 y 4: 4º&nbsp;trimestre de 2024</sup></i></p>
+	<p>Otro vector de ataque común, o mejor dicho, tipo de botnet, es <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>Mirai</u></a>. Los ataques Mirai representaron el 6 % de todos los ataques DDoS a la capa de red, un aumento intertrimestral del 131&nbsp;%. En el cuarto trimestre de 2024, una variante de la botnet Mirai fue responsable del mayor ataque DDoS registrado, pero lo analizaremos en más detalle en la <a href="https://blog.cloudflare.com/#the-largest-ddos-attack-on-record"><u>siguiente sección</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="emerging-attack-vectors">Vectores de ataque emergentes</h2>
+		<a href="https://blog.cloudflare.com/#emerging-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Antes de pasar a la siguiente sección, vale la pena analizar el crecimiento de los vectores de ataque adicionales observado este trimestre.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Hz074MxtzzdG4uvCM8P93/af6c86b023160f66acf0fe209386acf7/image8.png" alt="image8" class="kg-image" width="1924" height="1088" loading="lazy">
+	</figure>
+	<p><i><sup>Principales amenazas emergentes: cuarto trimestre de 2024</sup></i></p>
+	<p>El mayor crecimiento corresponde a los <a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataques DDoS basados en Memcached</u></a>, con un aumento del 314&nbsp;% respecto al trimestre anterior. <a href="https://memcached.org" target="_blank" rel="noopener noreferrer"><u>Memcached</u></a> es un sistema de almacenamiento en caché de bases de datos para acelerar sitios web y redes. Se puede abusar de los servidores Memcached compatibles con <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a> para lanzar ataques DDoS de amplificación o reflexión. En este caso, el atacante solicitaría contenido al sistema de almacenamiento en caché y suplantaría la dirección IP de la víctima como la dirección IP de origen en los paquetes UDP. La víctima se verá inundada con las respuestas de Memcache, que pueden ser hasta 51&nbsp;200&nbsp;veces mayores que la solicitud inicial.</p>
+	<p>Los ataques DDoS contra BitTorrent también han aumentado un 304&nbsp;% este trimestre. El <a href="https://en.wikipedia.org/wiki/BitTorrent" target="_blank" rel="noopener noreferrer"><u>protocolo BitTorrent</u></a> es un protocolo de comunicación que se utiliza para el uso compartido de archivos punto a punto. Para ayudar a los clientes de BitTorrent a encontrar y descargar los archivos de forma eficiente, estos pueden utilizar los <a href="https://en.wikipedia.org/wiki/BitTorrent_tracker" target="_blank" rel="noopener noreferrer"><u>trackers de BitTorrent</u></a> o las <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank" rel="noopener noreferrer"><u>tablas de hash distribuidas (DHT)</u></a> para identificar los pares que están <a href="https://en.wikipedia.org/wiki/Glossary_of_BitTorrent_terms#Seed_/_seeding" target="_blank" rel="noopener noreferrer"><u>propagando</u></a> el archivo que desean. Se puede abusar de este concepto para lanzar ataques DDoS. Un ciberdelincuente puede <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer"><u>suplantar</u></a> la dirección IP de la víctima para que parezca una dirección IP de propagador en los sistemas de trackers y DHT. Los clientes pueden entonces solicitar los archivos de esas direcciones IP. Si hay un número suficiente de clientes que solicitan el archivo, la víctima se puede ver inundada con más tráfico del que puede asumir.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-largest-ddos-attack-on-record">El mayor ataque DDoS registrado</h2>
+		<a href="https://blog.cloudflare.com/#the-largest-ddos-attack-on-record" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El 29 de octubre, un <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataque DDoS UDP</u></a> de 5,6&nbsp;Tb/s lanzado por una variante de la botnet Mirai tuvo como objetivo a un cliente de <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a>, un proveedor de acceso a Internet de Asia oriental. El ataque duró solo 80&nbsp;segundos y se originó en más de 13&nbsp;000&nbsp;dispositivos <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot" target="_blank" rel="noopener noreferrer"><u>IoT</u></a>. La detección y la mitigación fueron totalmente autónomas gracias a los sistemas de defensa distribuida de Cloudflare. No requirió intervención humana, no activó ninguna alerta ni causó ninguna degradación del rendimiento. Los sistemas funcionaron según lo previsto.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/kx3Uj4y4G4KZ6yNritxg4/d47e8f1b51a630bce28e8b036a4e7b64/image16.png" alt="image16" class="kg-image" width="1288" height="614" loading="lazy">
+	</figure>
+	<p><i><sup>Las soluciones autónomas de protección contra DDoS de Cloudflare mitigan un ataque DDoS de Mirai de 5,6&nbsp;Tb/s sin intervención humana</sup></i></p>
+	<p>Aunque el número total de direcciones IP de origen únicas fue de unas 13&nbsp;000, el promedio de direcciones IP de origen únicas por segundo fue de 5500. También observamos un número similar de puertos de origen únicos por segundo. En el gráfico siguiente, cada línea representa una de las 13&nbsp;000&nbsp;direcciones IP de origen distintas y, como se muestra, cada una contribuyó con menos de 8&nbsp;Gb/s por segundo. La contribución media de cada dirección IP por segundo fue de alrededor de 1 Gb/s (aproximadamente el 0,012&nbsp;% de 5,6&nbsp;Tb/s).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2biclYyny81QnJxQpP3PcF/8e1ec9c4b227043b1bd05914c1f543b1/image14.png" alt="image14" class="kg-image" width="1211" height="508" loading="lazy">
+	</figure>
+	<p><i><sup>Las 13&nbsp;000&nbsp;direcciones IP de origen que lanzaron el ataque DDoS de 5,6&nbsp;Tb/s</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="hyper-volumetric-ddos-attacks">Ataques DDoS HTTP hipervolumétricos</h2>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el tercer trimestre de 2024, empezamos a observar un aumento de los ataques DDoS hipervolumétricos a la capa de red. En el cuarto trimestre de 2024, la cantidad de ataques que superaron 1&nbsp;Tb/s aumentó un 1885&nbsp;% respecto al trimestre anterior, y los ataques que superaron los 100&nbsp;millones de pps (paquetes por segundo) aumentaron un 175&nbsp;% en el mismo periodo. El 16&nbsp;% de los ataques que superaron los 100&nbsp;millones de paquetes por segundo también superaron los 1000&nbsp;millones de pps.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3L3X48ztfIeGRVe3Su009z/b6798328b8926b33ea78b0617ee3aad5/image6.png" alt="image6" class="kg-image" width="1239" height="494" loading="lazy">
+	</figure>
+	<p><i><sup>Distribución de los ataques DDoS hipervolumétricos a las capas 3 y 4: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-size">Tamaño del ataque</h2>
+		<a href="https://blog.cloudflare.com/#attack-size" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La mayoría de los ataques DDoS HTTP (63&nbsp;%) no superaron las 50&nbsp;000&nbsp;solicitudes por segundo. En el otro extremo del espectro, el 3&nbsp;% de los ataques DDoS HTTP superaron los 100&nbsp;millones de solicitudes por segundo.</p>
+	<p>Del mismo modo, la mayoría de los ataques DDoS a la capa de red también son pequeños. El 93&nbsp;% no superó los 500&nbsp;Mb/s y el 87&nbsp;% no superó los 50&nbsp;000 paquetes por segundo.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25TQ7mayQOrr3ZpG1yLADa/ce08756eec2fbb2b213aad1668d59b4f/unnamed.png" alt="image22" class="kg-image" width="1600" height="905" loading="lazy">
+	</figure>
+	<p><i><sup>Cambio intertrimestral en el tamaño de los ataques por velocidad de paquetes: 4º trimestre de 2024</sup></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eNqV8gIxZgukwropBeyvs/23f128993b6573a3acb6e2a33306813d/unnamed__1_.png" alt="image3" class="kg-image" width="1600" height="918" loading="lazy">
+	</figure>
+	<p><i><sup>Cambio intertrimestral en el tamaño de los ataques por velocidad de bits: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-duration">Duración del ataque</h2>
+		<a href="https://blog.cloudflare.com/#attack-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La mayoría de los ataques DDoS HTTP (72&nbsp;%) finalizan en menos de diez minutos. Aproximadamente el 22&nbsp;% de los ataques DDoS HTTP duran más de una hora, y el 11&nbsp;% duran más de 24&nbsp;horas.</p>
+	<p>Del mismo modo, el 91&nbsp;% de los ataques DDoS a la capa de red también finalizan en menos de diez minutos. Solo el 2&nbsp;% dura más de una hora.</p>
+	<p>En general, se ha producido una disminución intertrimestral significativa en la duración de los ataques DDoS. Debido a la brevedad de la mayoría de los ataques, en la mayoría de los casos no es factible que un humano responda a una alerta, analice el tráfico y aplique la mitigación. La corta duración de los ataques subraya la necesidad de un <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">servicio de protección contra DDoS en línea, siempre activo y automatizado</a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Yfb7JGpZ2GTXR2HYK5pAS/55a1dbf4eec229e7154cf223d542e3bf/unnamed__3_.png" alt="image11" class="kg-image" width="1600" height="906" loading="lazy">
+	</figure>
+	<p><i><sup>Cambio intertrimestral en la duración de los ataques: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-sources">Orígenes de los ataques</h2>
+		<a href="https://blog.cloudflare.com/#attack-sources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el último trimestre de 2024, Indonesia siguió siendo el <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#source-country" target="_blank" rel="noopener noreferrer"><u>principal origen de ataques DDoS</u></a> en todo el mundo por segundo trimestre consecutivo. Para entender de dónde proceden los ataques, cartografiamos las direcciones IP de origen que lanzan los ataques DDoS HTTP, ya que no se pueden suplantar, y para los ataques DDoS a las capas 3 y 4 utilizamos la ubicación de nuestros centros de datos donde se ingirieron los paquetes de ataques DDoS. Esto nos permite superar la capacidad de suplantación que es posible en las capas 3 y 4. Podemos lograr la precisión geográfica gracias a nuestra extensa red que abarca más de 330&nbsp;ciudades en todo el mundo.</p>
+	<p>Hong Kong ocupa el segundo lugar, tras haber subido cinco posiciones respecto al trimestre anterior. Singapur avanzó tres puestos, quedando en tercer lugar.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Z7DgqDBlKbd3eDRv7ZVmL/49aabaee6301a3c93bb40851e645dd42/image2.png" alt="image2" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<p><i><sup>Los 10 mayores orígenes de ataques DDoS: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="top-source-networks">Principales redes de origen</h3>
+		<a href="https://blog.cloudflare.com/#top-source-networks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>sistema autónomo</u></a> (AS) es una red grande o un grupo de redes que tiene una política de enrutamiento unificada. Cada ordenador o dispositivo que se conecta a Internet está conectado a un AS. Para saber cuál es tu AS, visita <a href="https://radar.cloudflare.com/ip" target="_blank" rel="noopener noreferrer">https://radar.cloudflare.com/ip</a>.</p>
+	<p>Al observar el origen de los ataques DDoS, específicamente los ataques DDoS HTTP, vemos algunos sistemas autónomos que destacan.</p>
+	<p>El AS del que vimos que procedía la mayor cantidad de tráfico de ataques DDoS HTTP en el cuarto trimestre de 2024 fue <a href="https://radar.cloudflare.com/security-and-attacks/as24940" target="_blank" rel="noopener noreferrer"><u>Hetzner (AS24940)</u></a>, ubicado en Alemania. Casi el 5&nbsp;% de todas las solicitudes DDoS HTTP se originaron en la red de Hetzer, es decir, 5 de cada 100&nbsp;solicitudes DDoS HTTP que Cloudflare bloqueó se originaron en Hetzner.</p>
+	<p>En segundo lugar tenemos <a href="https://radar.cloudflare.com/security-and-attacks/as14061" target="_blank" rel="noopener noreferrer"><u>Digital Ocean (AS14061)</u></a>, de Estados Unidos, seguido de <a href="https://radar.cloudflare.com/security-and-attacks/as16276" target="_blank" rel="noopener noreferrer"><u>OVH (AS16276)</u></a> de Francia, en tercer lugar.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pQUunzZ0ioH48lTOJOLVe/8dc42b7904b0f0b838f117ce5f35a35a/image12.png" alt="image12" class="kg-image" width="1920" height="1082" loading="lazy">
+	</figure>
+	<p><i><sup>Las 10 mayores redes de origen de ataques DDoS: 4º trimestre de 2024</sup></i></p>
+	<p>Para muchos operadores de red como los mencionados anteriormente, puede ser difícil identificar a los actores maliciosos que abusan de su infraestructura para lanzar ataques. Para ayudar a los operadores de red y a los proveedores de servicios a tomar medidas efectivas contra los abusos, proporcionamos una <b>fuente gratuita</b><a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>de información sobre amenazas de botnets DDoS</u></a> que proporciona a los propietarios de ASN una lista de sus direcciones IP que hemos visto participar en ataques DDoS.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="top-threat-actors">Principales responsables de los ataques</h2>
+		<a href="https://blog.cloudflare.com/#top-threat-actors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La mayoría de los clientes de Cloudflare encuestados que fueron víctimas de ataques DDoS declararon que no sabían quién los había atacado. Los que sí lo sabían señalaron a sus competidores como los principales responsables de los ataques (40&nbsp;%). Otro 17&nbsp;% indicaron que un ciberdelincuente de estado-nación o financiado por estados estaba detrás del ataque, y un porcentaje similar declararon que un usuario o cliente insatisfecho era el responsable del ataque.</p>
+	<p>Otro 14&nbsp;% afirmaron que un extorsionador estaba detrás de los ataques. El 7&nbsp;% explicaron que se trataba de un ataque DDoS autoinfligido, el 2&nbsp;% establecieron el hacktivismo como la causa del ataque, y otro 2&nbsp;% afirmaron que los ataques los lanzaron antiguos empleados.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gThccj4k75gfFoGBn301W/403bd5cf3984611490e7d90f3435f3c1/image15.png" alt="image15" class="kg-image" width="1344" height="738" loading="lazy">
+	</figure>
+	<p><i><sup>Principales responsables de los ataques: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-ddos-attacks">Ataques DDoS de rescate</h2>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el último trimestre de 2024, como habíamos previsto, observamos un aumento de los <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataques DDoS de rescate</u></a>. Este incremento era previsible, dado que el cuarto trimestre es el mejor momento para los ciberdelincuentes, debido al aumento de las compras en línea, los planes de viajes y las actividades navideñas. La caída de estos servicios durante los picos de tráfico puede afectar significativamente a los ingresos de las organizaciones y causar interrupciones en el mundo real, como retrasos y cancelaciones de vuelos.</p>
+	<p>En el cuarto trimestre, el 12&nbsp;% de los clientes de Cloudflare que fueron objetivos de ataques DDoS declararon haber recibido amenazas o extorsiones para pagar un rescate. Esto representa un aumento del 78&nbsp;% en relación con el trimestre anterior y del 25&nbsp;% interanual en comparación con el cuarto trimestre de 2023.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BV3NoLbxwzO0ShVyCwQ97/7ccb684195b6efef0db209aefffff476/image17.png" alt="image17" class="kg-image" width="1286" height="729" loading="lazy">
+	</figure>
+	<p><i><sup>Ataques DDoS de rescate registrados por trimestre: 2024</sup></i></p>
+	<p>Si analizamos globalmente el año 2024, Cloudflare recibió el mayor número de informes de ataques DDoS de rescate en mayo. En el cuarto trimestre, podemos ver el aumento gradual a partir de octubre (10&nbsp;%), noviembre (13&nbsp;%) y diciembre (14&nbsp;%), el máximo en siete meses.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EllNHd6iUWkQ6Z481gLss/a20b10f96d4f7a649dfa23beceebad8e/image9.png" alt="image9" class="kg-image" width="1310" height="723" loading="lazy">
+	</figure>
+	<p><i><sup>Ataques DDoS de rescate registrados por mes: 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="target-of-attacks">Objetivo de los ataques</h2>
+		<a href="https://blog.cloudflare.com/#target-of-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el cuarto trimestre de 2024, China mantuvo su posición como el <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-country" target="_blank" rel="noopener noreferrer"><u>país más afectado</u></a> por los ataques. Para comprender qué países son objeto de más ataques, agrupamos los ataques DDoS por el país de facturación de nuestros clientes.&nbsp;</p>
+	<p>Filipinas aparece por primera vez como el segundo país más afectado entre las primeras 10&nbsp;posiciones. Taiwán sube al tercer puesto, escalando siete posiciones respecto al trimestre anterior.</p>
+	<p>En el siguiente mapa, puedes ver las 10&nbsp;ubicaciones más afectadas por los ataques y cómo ha cambiado su posición en la clasificación respecto al trimestre anterior.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TosbZ02NmNGbgpwkskUNs/6f96885b4de89c34403551a03a01e634/image5.png" alt="image5" class="kg-image" width="1999" height="1445" loading="lazy">
+	</figure>
+	<p><i><sup>Las 10 ubicaciones más afectadas por ataques DDoS: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="most-attacked-industries">Sectores más afectados</h2>
+		<a href="https://blog.cloudflare.com/#most-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el cuarto trimestre de 2024, el sector de las <i>telecomunicaciones y los proveedores y operadores de servicios</i> pasa del tercer lugar (en el trimestre anterior) al primer lugar como el <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-industry" target="_blank" rel="noopener noreferrer"><u>sector más afectado por los ataques</u></a>. Para comprender qué sectores son objeto de más ataques, agrupamos los ataques DDoS por el sector de nuestros clientes. El sector de <i>Internet</i> ocupa el segundo lugar, seguido del sector de <i>marketing y publicidad</i> en tercer lugar.</p>
+	<p>El sector de los <i>servicios bancarios y financieros</i> desciende siete posiciones, del primer puesto en el tercer trimestre de 2024 al octavo en el cuarto trimestre.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/444JREdNrmb6yePqqfGI4B/a268a1d3d3cd1dd7d9e076ffcf5b06c5/image7.png" alt="image7" class="kg-image" width="1999" height="1183" loading="lazy">
+	</figure>
+	<p><i><sup>Los 10 sectores más afectados por ataques DDoS: 4º trimestre de 2024</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="our-commitment-to-unmetered-ddos-protection">Nuestro compromiso con la protección contra DDoS ilimitada</h2>
+		<a href="https://blog.cloudflare.com/#our-commitment-to-unmetered-ddos-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el cuarto trimestre de 2024 se produjo un aumento de los ataques DDoS hipervolumétricos a las capas 3 y 4, el mayor de ellos sin precedentes, con un pico de 5,6&nbsp;Tb/s. Este incremento del tamaño de los ataques deja obsoletos los servicios de protección contra DDoS en la nube de capacidad limitada o los dispositivos DDoS locales.</p>
+	<p>El uso cada vez mayor de potentes botnets, impulsado por factores geopolíticos, ha ampliado el abanico de objetivos vulnerables. El aumento de los ataques DDoS de rescate también preocupa cada vez más.</p>
+	<p>Demasiadas organizaciones solo implementan la protección contra DDoS después de sufrir un ataque. Nuestras observaciones muestran que las organizaciones con estrategias de seguridad proactivas son más resilientes. En Cloudflare, invertimos en defensas automatizadas y en una cartera de soluciones de seguridad integral para ofrecer protección proactiva contra las amenazas actuales y emergentes.</p>
+	<p>Con nuestra red de 321&nbsp;Tb/s que abarca 330&nbsp;ciudades en todo el mundo, seguimos comprometidos a ofrecer <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">protección contra DDoS ilimitada y de tarifa plana</a>, independientemente del tamaño, la duración y la cantidad de los ataques.</p>
+</div>

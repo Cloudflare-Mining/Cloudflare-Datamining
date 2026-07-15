@@ -1,0 +1,367 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-realtime-voice-ai">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TmkqTftswQVhsBxOIWb8Q/132ec3fc627309adb9d5838a548956b1/image5.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>AIとのやり取りの方法は根本的に変化しています。ChatGPTのようなテキストベースのインターフェースは何が可能かを示してくれましたが、対話するという点では、まだ始まりに過ぎません。人間はテキストだけでなく、話すこともします。私たちは物事を表示し、リアルタイムで中断し、明らかにします。このような自然な対話パターンをアプリケーションにもたらすのが、Voice AIです。</p>
+	<p>本日、Cloudflareのグローバルネットワーク上で、リアルタイムの音声対応AIアプリケーションの構築をこれまで以上に簡単にする新機能を発表できることを嬉しく思います。これらの新機能は、次世代の対話型AIエクスペリエンスを構築する開発者のための完全なプラットフォームを作成したり、複数のプラットフォーム間で実行されるより高度なAIエージェントのビルディングブロックとして機能することもできます。</p>
+	<p>弊社では以下をローンチします：</p>
+	<ul>
+		<li>
+			<p><b>Cloudflare Realtime Agents</b> - エッジで音声AIパイプラインを調整するためのランタイム</p>
+		</li>
+		<li>
+			<p><b>WorkersでPCMとして生のWebRTC音声をパイプライン</b> - AIモデルや、すでに構築された複雑なメディアパイプラインにWebRTC音声を直接接続できるようになります</p>
+		</li>
+		<li>
+			<p><b>Workers AI WebSocket対応</b> - PipeCatのsmart-turn-v2などのモデルを使用したリアルタイムAI推論</p>
+		</li>
+		<li>
+			<p><b>Workers AIでDeepgram</b> - 世界330都市以上で音声テキスト変換と音声合成</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="why-realtime-ai-matters-now">今、リアルタイムAIが重要である理由</h2>
+		<a href="https://blog.cloudflare.com/#why-realtime-ai-matters-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、音声AIアプリケーションの構築は難しいです。複雑な音声パイプラインを管理し、中断に対応し、自然な会話に十分な遅延を実現する一方で、音声入力、言語モデル、音声合成</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a2D2mbrkDnb0tRo5466DN/8a4643e52a5f23b6948f1d15671140ac/image4.jpg" alt="" class="kg-image" width="1999" height="594" loading="lazy">
+	</figure>
+	<p>本番環境の音声AIの構築には、複雑な技術の構成が必要です。低遅延の音声認識、文脈を理解し中断に対応できるインテリジェントな言語モデル、自然な音声の音声合成が必要です。そしてこれらすべてを800ミリ秒以内に行う必要があります。これは、会話が停滞するのではなく、自然に感じられる閾値です。遅延に対する予算は許されません。ミリ秒単位でのカウント：マイク入力では40ミリ秒、文字起こしでは300ミリ秒、LLM推論では400ミリ秒、文章音声では150ミリ秒です。インフラストラクチャの選択が不適切であったり、サーバーが遠い場合は、遅延により満足のいくエクスペリエンスがイライラするものです。</p>
+	<p>そのために、私たちはリアルタイムAIツールを構築しています。リアルタイム音声AIを静的Webサイトと同じくらい簡単にデプロイできるようにしたいのです。また、対話型AIが実験的なデモ技術から、グローバルに拡張可能な本番環境対応システムへと移行する重要な転換点でもあります。すでにリアルタイムAIエコシステムの開発者の方には、Cloudflareが構築した330か所以上のデータセンターを活用することで、遅延を最小化するための最適なビルディングブロックを構築したいと考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-cloudflare-realtime-agents">Cloudflare Realtime Agentsの紹介</h2>
+		<a href="https://blog.cloudflare.com/#introducing-cloudflare-realtime-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Realtime Agentsは、当社のグローバルネットワーク上で稼働する音声AIパイプラインを、可能な限りユーザーに近いところで調整するためのシンプルなランタイムです。複雑なインフラストラクチャを自社で管理するのではなく、優れた会話体験の構築に集中できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QcKOdouzGYP8DecqqSzM8/022a33e9b7bcbcbd0461fa83df39b1ba/image1.png" alt="" class="kg-image" width="1458" height="1218" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーが音声AIアプリケーションに接続すると、次のようになります：</p>
+	<ol>
+		<li>
+			<p><b>WebRTC接続</b> - ユーザーのデバイスからの音声ストリームは、Cloudflare RealtimeKitモバイルまたはWeb SDKを使用して、WebRTC経由で最も近いCloudflareの場所に送信されます</p>
+		</li>
+		<li>
+			<p><b>AIパイプラインオーケストレーション</b> - 事前設定されたパイプラインが音声テキストからテキストへ → LLM → 音声であるように実行、中断検出とターンテイクのサポートあり</p>
+		</li>
+		<li>
+			<p><b>設定したランタイムオプション/コールバック/ツールを実行</b></p>
+		</li>
+		<li>
+			<p><b>応答配信</b> - 生成された音声ストリームを最小限の遅延でユーザーに返します</p>
+		</li>
+	</ol>
+	<p>魔法は、これを組み立て可能な構成要素として設計したことにあります。厳格なパイプラインに縛られることはありません。データフローの設定、操作の追加、AIエージェントの動作の正確な制御が可能です。</p>
+	<p>例えば、上の図の<code>MyTextHandler</code>関数を見てみましょう。これは、テキストを取り込んでテキストを返す関数で、音声からテキストへの検出後、テキストから音声への変換の前に挿入されます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">class MyTextHandler extends TextComponent {
+	env: Env;
+
+	constructor(env: Env) {
+		super();
+		this.env = env;
+	}
+
+	async onTranscript(text: string) {
+		const { response } = await this.env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+			prompt: "You are a wikipedia bot, answer the user query:" + text,
+		});
+		this.speak(response!);
+	}
+}</code></pre>
+	<p>エージェントは、RealtimeAgentを拡張したJavaScriptクラスであり、さまざまなテキストから音声、音声からテキスト、テキストからテキスト、さらには音声から音声へのTransformationsで構成されるパイプラインを初期化することができます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export class MyAgent extends RealtimeAgent&lt;Env&gt; {
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+	}
+
+	async init(agentId: string ,meetingId: string, authToken: string, workerUrl: string, accountId: string, apiToken: string) {
+		// Construct your text processor for generating responses to text
+		const textHandler = new MyTextHandler(this.env);
+		// Construct a Meeting object to join the RTK meeting
+		const transport = new RealtimeKitTransport(meetingId, authToken, [
+			{
+				media_kind: 'audio',
+				stream_kind: 'microphone',
+			},
+		]);
+		const { meeting } = transport;
+
+		// Construct a pipeline to take in meeting audio, transcribe it using
+		// Deepgram, and pass our generated responses through ElevenLabs to
+		// be spoken in the meeting
+		await this.initPipeline(
+			[transport, new DeepgramSTT(this.env.DEEPGRAM_API_KEY), textHandler, new ElevenLabsTTS(this.env.ELEVENLABS_API_KEY), transport],
+			agentId,
+			workerUrl,
+			accountId,
+			apiToken,
+		);
+
+		// The RTK meeting object is accessible to us, so we can register handlers
+		// on various events like participant joins/leaves, chat, etc.
+		// This is optional
+		meeting.participants.joined.on('participantJoined', (participant) =&gt; {
+			textHandler.speak(`Participant Joined ${participant.name}`);
+		});
+		meeting.participants.joined.on('participantLeft', (participant) =&gt; {
+			textHandler.speak(`Participant Left ${participant.name}`);
+		});
+
+		// Make sure to actually join the meeting after registering all handlers
+		await meeting.rtkMeeting.join();
+	}
+
+	async deinit() {
+		// Add any other cleanup logic required
+		await this.deinitPipeline();
+	}
+}</code></pre>
+	<p><a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>開発者ドキュメント</u></a>で例を完全にご覧になり、ご自身のRealtimeエージェントを実行してみてください。ダッシュボード上の<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Frealtime%2Fagents" target="_blank" rel="noopener noreferrer"><u>リアルタイムエージェント</u></a>を表示します。</p>
+	<div class="flex anchor relative">
+		<h3 id="built-for-flexibility">柔軟性を追求</h3>
+		<a href="https://blog.cloudflare.com/#built-for-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リアルタイムエージェントの強みはその柔軟性です。</p>
+	<ul>
+		<li>
+			<p><b>多くのAIプロバイダーオプション</b> - Workers AI、OpenAI、Anthropic、またはAI Gatewayを通じてあらゆるプロバイダーでモデルを使用</p>
+		</li>
+		<li>
+			<p><b>複数の入出力モード</b> - 音声やテキストを受け付け、音声やテキストで応答</p>
+		</li>
+		<li>
+			<p><b>ステートフルな調整</b> - 複雑な状態を自力で管理することなく、会話全体のコンテキストを維持</p>
+		</li>
+		<li>
+			<p><b>スピードと柔軟性</b> - <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>RealtimeKit</u></a>を使ってWebRTCセッションとUIを管理し、開発を加速するか、標準WebRTCクライアントか未加工のWebSocketsを使って直接接続することも可能です。</p>
+		</li>
+		<li>
+			<p><b>Cloudflare Agents SDK</b>と<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>統合</u></a></p>
+		</li>
+	</ul>
+	<p>本日から始まるオープンベータでは、Cloudflare Realtime Agentsランタイムを無料で利用でき、さまざまなAIモデルに連携します：</p>
+	<ul>
+		<li>
+			<p>音声と音声：ElevenLabsやDeepgramなどのプラットフォームとの統合。</p>
+		</li>
+		<li>
+			<p>LLM推論：Cloudflare Workers AIやAI Gatewayを通じて大規模な言語モデルを使用したり、OpenAI、Gemini、Grok、Claudeなどのサードパーティモデルに接続したり、独自のカスタムモデルを使用したりすることができる柔軟なオプションです。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="pipe-raw-webrtc-audio-as-pcm-in-workers">WorkersでPCMとして生のWebRTC音声をパイプ</h2>
+		<a href="https://blog.cloudflare.com/#pipe-raw-webrtc-audio-as-pcm-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リアルタイムエージェント以上のアプリケーションで最も柔軟性を必要とする開発者のために、生のWebRTCの音声パイプラインをWorkersに直接公開します。</p>
+	<p>WorkersのWebRTC音声は、CloudflareのRealtime SFUを活用することで機能します。Realtime SFUは、OpusコーデックのWebRTC音声をPCMに変換し、指定されたエンドポイントにストリーミングします。つまり、Workersを使って以下を実装できるのです：</p>
+	<ul>
+		<li>
+			<p><b>ライブ文字起こし</b> - ビデオ通話の音声を文字起こしサービスに直接ストリーミングします。</p>
+		</li>
+		<li>
+			<p><b>カスタムAIパイプライン</b> - 複雑なインフラストラクチャを構築せずにAIモデルに音声を送信</p>
+		</li>
+		<li>
+			<p><b>録画と処理</b> - オーディオストリームをリアルタイムで保存、監査、分析します。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2b15xG5EfUiNYLtH8cNRTh/116f1e195cada59a61874c74ee499159/image2.png" alt="" class="kg-image" width="1736" height="692" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="websockets-vs-webrtc-for-voice-ai">音声AIにおけるWebSocketsとWebRTCの比較</h3>
+		<a href="https://blog.cloudflare.com/#websockets-vs-webrtc-for-voice-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebSocketsとWebRTCはAIサービスの音声を処理できますが、異なる状況で最適に機能します。WebSocketsはサーバー間の通信に最適で、超高速の応答が必要でない時でも問題なく機能するため、テストや実験に最適です。しかし、ユーザーが遅延の少ないリアルタイム会話を必要とするアプリを構築する場合は、WebRTCの方が良い選択肢です。</p>
+	<p>WebRTCには、ライブ音声ストリーミングに優れた利点がいくつかあります。TCPの代わりにUDPを使用することで、パケットの損失による音声の遅延を防止し、ストリーム全体を妨害します（<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u>ヘッドオブラインブロッキング</u></a>については、このブログでよく説明します）。WebRTCのOps音声コーデックは、ネットワーク状況に自動的に調整し、パケットロスに柔軟に対応できます。WebRTCにはエコーキャンセルやノイズ低減などの組み込み機能も含まれています。WebSocketではこれらを別途構築する必要がありますが、</p>
+	<p>この機能を使うと、クライアントからサーバーへの通信にWebRTCを使い、Cloudflareを使って、サーバー間通信やバックエンド処理のために使い慣れたWebSocketに変換することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-power-of-workers-webrtc">Workers + WebRTCの力</h3>
+		<a href="https://blog.cloudflare.com/#the-power-of-workers-webrtc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebRTCの音声がWebSocketsに変換されると、PCMの音声が元のサンプルレートで取得され、そこからCloudflareの開発者プラットフォーム内外であらゆるタスクを実行することができます。</p>
+	<ul>
+		<li>
+			<p>音声をリサンプリングしてさまざまなAIプロバイダーに送信</p>
+		</li>
+		<li>
+			<p>WebAssemblyベースの音声処理を実行</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Alarms</u></a>、その他のWorkersプリミティブを使って複雑なアプリケーションを構築する</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Workers Containers</u></a>でコンテナ化された処理パイプラインをデプロイ</p>
+		</li>
+	</ul>
+	<p>WebSocketは双方向で動作するため、WebSocketに送り返されたデータはRealtime SFU上でWebRTCトラックとして利用可能になり、WebRTC内で利用できるようになるのです。</p>
+	<p>このセットアップを説明するために、ElevenLabs APIを使用したテキスト音声合成の簡単な<a href="https://github.com/cloudflare/realtime-examples/tree/main/tts-ws" target="_blank" rel="noopener noreferrer"><u>WebRTCアプリケーションデモ</u></a>を作成しました。</p>
+	<p>利用開始の方法については、<a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>Realtime SFUの開発者ドキュメント</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="realtime-ai-inference-with-websockets">WebSocketsでリアルタイムAI推論</h2>
+		<a href="https://blog.cloudflare.com/#realtime-ai-inference-with-websockets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebSocketsは、低遅延の双方向プリミティブであり、開発者ツールでユビキタスなサポートを備えており、特にサーバー間通信でサポートされているため、リアルタイムAIパイプラインのバックボーンを提供することができます。HTTPはチャットやバッチ推論などの多くのユースケースに最適ですが、リアルタイム音声AIがAI推論サーバーと通信する場合は、持続的で低遅延の接続が必要です。リアルタイムAIワークロードをサポートするため、Workers AIでは一部のモデルでWebSocket接続をサポートしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="launching-with-pipecat-smartturn-v2">PipeCat SmartTurn V2でローンチ</h3>
+		<a href="https://blog.cloudflare.com/#launching-with-pipecat-smartturn-v2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebSocketをサポートする最初のモデルは、PipeCatの<a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>Smart-turn-v2</u></a>ターン検出モデルです。これは、自然な会話に不可欠なコンポーネントです。ターン検出モデルは、発表者が会話を終了し、AIが応答するのが適切かどうかを判断します。ここを正しく理解することが、常に中断するAIと、自然に会話ができるAIとの違いです。</p>
+	<p>以下は、Workers AIで動作するSmart-turn-v2を呼び出す方法の例です。</p>
+	<pre class="language-Python"><code class="language-Python">"""
+Cloudflare AI WebSocket Inference - With PipeCat's smart-turn-v2
+"""
+
+import asyncio
+import websockets
+import json
+import numpy as np
+
+# Configuration
+ACCOUNT_ID = "your-account-id"
+API_TOKEN = "your-api-token"
+MODEL = "@cf/pipecat-ai/smart-turn-v2"
+
+# WebSocket endpoint
+WEBSOCKET_URL = f"wss://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}?dtype=uint8"
+
+async def run_inference(audio_data: bytes) -&gt; dict:
+    async with websockets.connect(
+        WEBSOCKET_URL,
+        additional_headers={
+            "Authorization": f"Bearer {API_TOKEN}"
+        }
+    ) as websocket:
+        await websocket.send(audio_data)
+        
+        response = await websocket.recv()
+        result = json.loads(response)
+        
+        # Response format: {'is_complete': True, 'probability': 0.87}
+        return result
+
+def generate_test_audio():    
+    noise = np.random.normal(128, 20, 8192).astype(np.uint8)
+    noise = np.clip(noise, 0, 255) 
+    
+    return noise
+
+async def demonstrate_inference():
+    # Generate test audio
+    noise = generate_test_audio()
+    
+    try:
+        print("\nTesting noise...")
+        noise_result = await run_inference(noise.tobytes())
+        print(f"Noise result: {noise_result}")
+        
+    except Exception as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(demonstrate_inference())</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="deepgram-in-workers-ai">Workers AIのDeepgram</h2>
+		<a href="https://blog.cloudflare.com/#deepgram-in-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>水曜日、私たちはDeepgramの音声からテキスト、およびテキストから音声へのモデルが、世界中のCloudflareロケーションで動作するWorkers AIで利用可能になることを発表しました。つまり：</p>
+	<ul>
+		<li>
+			<p><b>遅延の低減</b> - 音声認識は、Workersと同じネットワーク内で実行しているユーザーに近いエッジで行われます。</p>
+		</li>
+		<li>
+			<p><b>Cloudflareネットワークから離れることなくWebRTCの音声処理</b>ができる</p>
+		</li>
+		<li>
+			<p>Workers<b> AIを通じて直接利用可能な最先端の音声MLモデル強力で高機能な高速音声モデル</b></p>
+		</li>
+		<li>
+			<p><b>グローバル規模</b> - 330都市以上でCloudflareのグローバルネットワークを自動的に活用</p>
+		</li>
+	</ul>
+	<p>Deepgramは、音声AIアプリの一般的な選択肢です。Cloudflareプラットフォーム上に音声AIシステムを構築することで、強力なモデルと最も遅延が少ないインフラを利用でき、お客様のアプリケーションに自然で応答性の高いエクスペリエンスを提供することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="interested-in-other-realtime-ai-models-running-on-cloudflare">Cloudflareで稼働する他のリアルタイムAIモデルにご関心をお持ちですか？</h3>
+		<a href="https://blog.cloudflare.com/#interested-in-other-realtime-ai-models-running-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リアルタイムアプリケーションのためのAIモデルを開発しているなら、Cloudflareのネットワーク上で実行したいです。独自のモデルをお持ちの方、オープンソースモデルで大規模に超低遅延の推論を必要とする方は、当社までご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-today">今すぐ始めましょう</h2>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの機能はすべて、現在利用可能です：</p>
+	<ul>
+		<li>
+			<p><b>Cloudflare Realtime Agents</b> - <a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>ベータ版でテストを開始</u></a></p>
+		</li>
+		<li>
+			<p><b>WorkersのPCMとしてのWebRTC音声</b> - <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>ドキュメントを読み</u></a>、アプリケーションと統合</p>
+		</li>
+		<li>
+			<p><b>Workers AI WebSocket対応</b> - PipeCatの<a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>Smart-turn-v2</u></a>モデルをお試しください</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/workers-ai-partner-models"><u><b>Workers AIでのDeepgram</b></u></a> - <a href="https://developers.cloudflare.com/workers-ai/models/aura-1" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/aura-1</u></a>および<a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/nova-3</u></a>で利用可能です</p>
+		</li>
+	</ul>
+	<p>これを開発したエンジニアの頭脳を取り出したいですか？ラスベガスのCloudflare Connectで、技術詳細や質疑応答のライブデモを実施しますので、ぜひご参加ください。<a href="https://events.cloudflare.com/connect/2025" target="_blank" rel="noopener noreferrer"><u>詳細なスケジュールを確認し、登録してください。</u></a></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wpPvADZYXKpbuqXcJWGfn/0c93500141d1f8dd443c04e5e3d69155/image3.png" alt="" class="kg-image" width="1199" height="230" loading="lazy">
+	</figure>
+	<p>
+	</p>
+</div>

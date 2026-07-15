@@ -1,0 +1,221 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/traffic-anomalies-notifications-radar">English</a>、<a href="https://blog.cloudflare.com/zh-tw/traffic-anomalies-notifications-radar">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/traffic-anomalies-notifications-radar">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/traffic-anomalies-notifications-radar">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69vtEJcpdgrHFBKLA17Y0u/1f6c31f4c7fb874b1664eba90f3c5833/traffic-anomalies-notifications-radar.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">Cloudflare Radar Outage Center（CROC）</a>は、Cloudflareのトラフィックデータに表示される障害や遮断を含むインターネットの混乱に関する最新情報をコミュニティに提供する方法として、2022年バースデーウィークで発表されました。このエントリの中には、現地の通信プロバイダや市民団体によってソーシャルメディアに投稿された情報を元にしているものもありますが、社内のトラフィック異常検出・警告ツールを基にしたものもあります。今回、私たちはCloudflare Radarにこのアラートフィードを追加しました。これは国やネットワークレベルのトラフィック異常の検出時にCROCに表示します。また、このフィードは<a href="https://developers.cloudflare.com/api/operations/radar-get-traffic-anomalies" target="_blank" rel="noopener noreferrer">API</a>経由でも利用可能です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64RU7fXZM4tF0ZKhlNAqcY/36a614227aeb00168ea9e08681f2638b/image13-3.png" alt="Traffic anomalies and notifications with Cloudflare Radar" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>この新機能の構築に加え、最近<a href="https://radar.cloudflare.com/routing" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>で発表した<a href="https://blog.cloudflare.com/ja-jp/route-leak-detection-with-cloudflare-radar-ja-jp">ルートリーク</a>や<a href="https://blog.cloudflare.com/bgp-hijack-detection">ルートハイジャック</a>に関する洞察を基に、新しいRadar通知機能の提供を開始します。これにより、トラフィックの異常、確認されたインターネット障害、ルートリーク、ルートハイジャックに関する通知を購読できるようになります。<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボード</a>の既存の通知機能を使用して、ユーザーは国または自律システムに対する通知を設定し、関連するイベントが発生したときに通知を受け取ることができます。通知は電子メールまたはWebhook経由で送信され、利用可能な配信方法は<a href="https://developers.cloudflare.com/notifications" target="_blank" rel="noopener noreferrer">プランレベルによって異なります</a>。</p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-anomalies">トラフィック異常</h3>
+		<a href="https://blog.cloudflare.com/#traffic-anomalies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットのトラフィックは一般的にかなり規則的なパターンをたどり、日々のトラフィック量の山と谷はほぼ同じ形になります。しかし、週末はトラフィックの形状は平日と類似しているように見えますが、その量は一般的に異なります。同様に、祝祭日や国家的なイベントも、人々の行動が変化してオフラインで過ごす時間が増えたり、人々がそのイベントに関する情報や報道をインターネット上に求めることにより、トラフィックの形状や量が「平日」とは大きく異なることがあります。こうしたトラフィックの変化はニュース（<a href="https://blog.cloudflare.com/how-the-coronation-of-king-charles-iii-affected-internet-traffic">チャールズ3世の戴冠式</a>、<a href="https://blog.cloudflare.com/easter-passover-ramadan-internet-trends-2023">復活祭／過越祭／ラマダン</a>、<a href="https://blog.cloudflare.com/how-the-brazilian-presidential-elections-affected-internet-traffic">ブラジル大統領選挙</a>）になることがあり、Cloudflareの過去のブログ記事でもいくつか取り上げています。</p>
+	<p>しかし、当社の<a href="https://blog.cloudflare.com/tag/outage">ブログ記事</a>をお読みいただいたり、ソーシャルメディアで<a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>をフォローしていただいている皆様もご存知の通り、懸念すべきはトラフィックの急激な低下です。一部は悪天候や地震などの自然災害によるインフラ損傷の結果であり、事実上避けられないものですが、これらの事象がインターネット接続に与える影響をタイムリーに把握することは、通信の観点から非常に重要です。また、権威主義的な政府がモバイルインターネット接続の遮断を命じたり、全国的にすべてのインターネット接続が遮断された場合にも、トラフィックは減少します。インターネットの遮断は、しばしば外部との通信を制御する手段として使用されるため、このようなタイプの異常なトラフィック低下に関するタイムリーな洞察は、人権の観点から非常に重要です。</p>
+	<p>ここ数か月間、Cloudflare Radarチームは社内ツールを使用してトラフィックの異常を特定し、専用のチャットスペースにフォローアップのためのアラートを投稿してきました。この社内ツールを支える当社のトラフィック解析と異常検知の方法論に関する技術的な詳細は、関連ブログ記事「<a href="https://blog.cloudflare.com/detecting-internet-outages"><i>Gone Offline: Detecting Internet Outages</i></a>」で詳しく説明しています。</p>
+	<p>このような内部トラフィックの異常アラートの多くが、最終的に障害センターのエントリやCloudflare Radarソーシャルメディアに投稿されることになります。現在、私たちは<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">Cloudflare Radar障害センター</a>を拡張し、これらの異常の特定と同時に情報を公開しています。下図に示すように、新たな「<b>トラフィック異常</b>」の表には、異常の種類（場所または自律システム番号）、異常が検出されたエンティティ（国/地域名または自律システム）、開始時間、継続時間、検証ステータス、および「Actions」リンクが存在し、関連するエンティティのトラフィックページで異常を確認したり、通知を購読することができます。(検出された異常を手動で確認した結果、その異常が複数のCloudflareトラフィックデータセットに存在すること、および/またはGeorgia Techの<a href="https://ioda.live" target="_blank" rel="noopener noreferrer">IODA</a>プラットフォームなどのサードパーティデータセットで確認できることが判明した場合、検証済みとしてマークします。未検出の異常は、誤検知やNetflowsの収集上の問題である可能性もありますが、私たちはこの是正に努めています）。</p>
+	<p>この表を新たに追加したことの他に、<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">Cloudflare Radar障害センター</a>のマップを更新し、異常が検出された場所をハイライトするとともに、マップのすぐ下にある新しいタイムラインに、より広範な時間的な状況を配置しました。異常はマップ上にオレンジ色の円で表示され、右上のトグルで非表示にすることができます。二重線の丸は複数国の集計値が表示され、その領域を拡大すると、最終的に集計の内訳となる各国に関連する異常の数が表示されます。タイムラインの特定のドットにカーソルを合わせると、そのドットに関連する障害や異常に関する情報が表示されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4avPigfW9GjhqKlH4U9XI2/35b3761b52b9046ed4fa03c6b68db4c1/pasted-image-0-6.png" alt="" class="kg-image" width="1165" height="492" loading="lazy">
+
+	</figure>
+	<p>2022年9月に障害センターとAPIを立ち上げて以来、インターネット障害情報は<a href="https://developers.cloudflare.com/api/operations/radar-get-annotations-outages" target="_blank" rel="noopener noreferrer">Radar API</a>を通じて取得できるようになりました。トラフィックの異常は、<a href="https://developers.cloudflare.com/api/operations/radar-get-traffic-anomalies" target="_blank" rel="noopener noreferrer">Radar APIエンドポイント</a>からも利用できるようになりました。トラフィック異常に関するAPI呼び出しとレスポンスの例を以下に示します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fqllfaS5B100bVx1f58w0/d1c4f33c47d8d9271f4c3cf77d0688a3/pasted-image-0--1--6.png" alt="" class="kg-image" width="1164" height="817" loading="lazy">
+
+	</figure>
+	<p><b>呼び出しの例：</b></p>
+	<p><b>応答例：</b></p>
+	<pre class="language-bash"><code class="language-bash">curl --request GET \ --url https://api.cloudflare.com/client/v4/radar/traffic_anomalies \ --header 'Content-Type: application/json' \ --header 'X-Auth-Email: '</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="notifications-overview">通知の概要</h3>
+		<a href="https://blog.cloudflare.com/#notifications-overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">{
+  "result": {
+    "trafficAnomalies": [
+      {
+        "asnDetails": {
+          "asn": "189",
+          "locations": {
+            "code": "US",
+            "name": "United States"
+          },
+          "name": "LUMEN-LEGACY-L3-PARTITION"
+        },
+        "endDate": "2023-08-03T23:15:00Z",
+        "locationDetails": {
+          "code": "US",
+          "name": "United States"
+        },
+        "startDate": "2023-08-02T23:15:00Z",
+        "status": "UNVERIFIED",
+        "type": "LOCATION",
+        "uuid": "55a57f33-8bc0-4984-b4df-fdaff72df39d",
+        "visibleInDataSources": [
+          "string"
+        ]
+      }
+    ]
+  },
+  "success": true
+}</code></pre>
+	<p>トラフィックの低下やルーティングの問題など、インターネットの「イベント」に関するタイムリーな知識は、複数の人が関心を持つ可能性があります。カスタマーサービスやヘルプデスクの担当者は、この情報を元に、顧客や利用者から受けたアプリケーションのパフォーマンスや可用性に関する不満の内容を調査することができます。同様に、ネットワーク管理者は、この情報を利用することで、自身が管理するネットワークの外のインターネットの状況をよりよく理解することができます。また、市民社会組織は、紛争や不安定な地域におけるコミュニケーションの維持と人権の保護を目的とした行動計画に情報を提供するために、この情報を利用することができます。本日より利用可能となった新しい通知機能により、国または自律システム単位の確認されたトラフィック異常、インターネット障害、ルートリーク、ルートハイジャックに関する通知を受け取ることができます。以下のセクションでは、通知の購読と設定方法、各種通知に含まれる情報について説明します。</p>
+	<div class="flex anchor relative">
+		<h4 id="subscribing-to-notifications">通知の購読</h4>
+		<a href="https://blog.cloudflare.com/#subscribing-to-notifications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>通知を購読および設定するには、<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボード</a>にログインする必要があります。Cloudflareサービスの購入は必要ありません。アカウントの設定には認証済みのEメールアドレスが必要です（ログイン不要での利用を考えていましたが、ログインすることでCloudflareの既存の通知エンジンを利用することができ、Radar専用の別の通知エンジンを構築する時間とリソースを削減するため、ログインを必要としました）。まだCloudflareアカウントをお持ちでない場合、<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">https://dash.cloudflare.com/sign-up</a>にアクセスしてアカウントを作成してください。ユーザー名と一意の強力なパスワードを入力して「サインアップ」をクリックし、認証メールの指示に従ってアカウントを有効にします。（アカウントを有効にしたら、追加のセキュリティ対策として<a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication" target="_blank" rel="noopener noreferrer">二要素認証（2FA）</a>を有効にすることをお勧めします）。</p>
+	<p>アカウントを設定して有効にすると、通知を作成・設定することができるようになります。最初に、Cloudflare Radarの[トラフィック]、[ルーティング]、[障害センター]セクションで通知（メガホン）アイコンを探します。このアイコンが表示されていれば、そのメトリックで通知を利用することができます。国または自律システム番号（ASN）で絞り込んだトラフィックまたはルーティングページにいる場合、通知の購読もそのエンティティで絞り込まれます。</p>
+	<p><b>Cloudflare Radarの[トラフィック]、[ルーティング]、[障害センター]セクションでこのアイコンを探して通知の設定を開始します。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pthIoKtBxP566BiMTmIo7/f59c76a18de0f8d3f4f3ce8f020edbfb/image3-23.png" alt="" class="kg-image" width="1999" height="367" loading="lazy">
+
+	</figure>
+	<p><b>[障害センター]で、インターネット障害テーブルのエントリの「アクション」列にあるアイコンをクリックして、関連する場所や自律システム番号（ASN）の通知を購読します。確認されたすべてのインターネット障害に関する通知を購読する場合、テーブルの説明の横にあるアイコンをクリックします。</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BzESdUYejnGYbyOELT3xb/2f71cc74d0f760efe24ead5ef5aef5d9/pasted-image-0--2--4.png" alt="" class="kg-image" width="1154" height="264" loading="lazy">
+
+	</figure>
+	<p><b>[障害センター]で、トラフィック異常テーブルのエントリの「アクション」列にあるアイコンをクリックして、関連するエンティティに関する通知を購読します。すべてのトラフィックの異常に関する通知を購読する場合、テーブルの説明の横にある[購読]アイコンをクリックします。</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JzDVk3W9GXmFs1EEMpI1y/64d825564b01ced81010d08c8f8b7e30/pasted-image-0--3--6.png" alt="" class="kg-image" width="1153" height="201" loading="lazy">
+
+	</figure>
+	<p><b>国または自律システム番号（ASN）のトラフィックページで、トラフィック傾向グラフの説明の横にある[購読]アイコンをクリックして、選択した国または自律システム番号（ASN）に影響するトラフィック異常またはインターネット障害に関する通知を購読します。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/USbTwPiy87LABK9yzvdAD/1bd91ad4a70fc53a1a2c7f51a400800d/pasted-image-0--4--2.png" alt="" class="kg-image" width="567" height="93" loading="lazy">
+
+	</figure>
+	<p><b>国または自国律システム番号のルーティングページで、説明の横にあるアイコンをクリックして、選択した国または自国律システム番号に関するルートリークまたはオリジンハイジャックの通知を購読します。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uXs607M5vob0cRMFuyPrG/638d601eecfdc6b89b90770e9482584f/pasted-image-0--5--2.png" alt="" class="kg-image" width="744" height="92" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/266gINGnVLwOGMcogtGoql/4ad8994d134b1a71365d07a50fb725d1/pasted-image-0--6--1.png" alt="" class="kg-image" width="652" height="82" loading="lazy">
+
+	</figure>
+	<p><b>ルーティングページのルートリークまたはオリジンハイジャックテーブルで、テーブルエントリのアイコンをクリックして、参照された国や自律システム番号（ASN）のルートリークまたはオリジンハイジャックに関する通知を購読します。</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LXt4HacyxqtpJbgj6sQ6T/b8ec62dbc5a9447ed37ace2844ceabed/pasted-image-0--7--1.png" alt="" class="kg-image" width="1198" height="134" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SWPlKRV9xUQxyXsfqbDBj/b4f0253d65e3aec230b3f5ce7e126b1d/pasted-image-0--8--1.png" alt="" class="kg-image" width="1197" height="187" loading="lazy">
+
+	</figure>
+	<p>通知アイコンをクリックすると、Cloudflareのログイン画面が表示されます。ユーザー名とパスワード（必要に応じて二要素認証コードも）を入力してログインすると、Radarの参照元ページから渡された重要な情報（関連する場所やASNなど）があらかじめ入力された[通知の追加]ページが表示されます。（すでにCloudflareにログインしている場合、Radar上の通知アイコンをクリックすると、直接[通知の追加]ページに移動します）。このページでは、通知に名前を付けたり、任意の説明を追加したり、必要に応じてロケーションや自律システム番号（ASN）のフィルタ内容を調整することができます。通知を送信するメールアドレスを入力するか、（アカウントでWebhookを有効にしている場合）確立されたWebhookの送信先を選択します。</p>
+	<p>「保存」をクリックすると、そのアカウントの[通知の概要]ページに通知が追加されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WoiB73UcjTrzvt3KMeOgm/2146fb68b612f8d82897e8dfd46f66c3/pasted-image-0--9--1.png" alt="" class="kg-image" width="1384" height="1546" loading="lazy">
+
+	</figure>
+	<p>また、Radar a Radarページのリンクから始めることなく、Cloudflare内で直接通知を作成および設定することもできます。これを行うには、Cloudflareにログインし、左側のナビゲーションバーから「通知」を選択します。通知ページ（下図）が表示されます。「追加」ボタンをクリックして新しい通知を追加します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2g3sIazFDddiBRi12oMzYr/00100d832d84fc0d54379341ee575692/pasted-image-0--10--1.png" alt="" class="kg-image" width="1384" height="1008" loading="lazy">
+
+	</figure>
+	<p>次のページで、通知を使用できるCloudflare製品のリストから「Radar」を検索して選択します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mw4IUl2YxYOXQdM3pfcrU/0d4979bf37b64a2ffe29ad1e084b3afc/pasted-image-0--11--1.png" alt="" class="kg-image" width="1384" height="1005" loading="lazy">
+
+	</figure>
+	<p>続く「通知の追加」ページでは、通知を一から作成・設定することができます。イベントのタイプは「通知対象」フィールドで、ロケーションとASNはそれぞれ「フィルタ条件（オプション）」フィールドで検索して選択することができます。フィルターが選択されていない場合、選択されたタイプの<b>すべて</b>のイベントに対して通知が送信されます。通知を送信する1つ以上のメールアドレスを追加するか、利用可能な場合はWebhookターゲットを選択して「保存」をクリックしてアカウントに設定された通知リストに追加します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dq1Kt2F5XIJlV3X1r6Jyw/beb22e11b950f73130eec41c8b612350/pasted-image-0--12--1.png" alt="" class="kg-image" width="1384" height="1005" loading="lazy">
+
+	</figure>
+	<p>習熟した方であれば、<a href="https://developers.cloudflare.com/api/operations/notification-policies-create-a-notification-policy" target="_blank" rel="noopener noreferrer">Cloudflare API通知ポリシーエンドポイント</a>を通じて通知を作成・設定することもできますが、このブログ記事ではその手順についての説明は省略します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bbIKwireM6CKWHJS92IvU/2770fd9d6c355c3e9e1c7010528e8053/pasted-image-0--13-.png" alt="" class="kg-image" width="1384" height="1431" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="notification-messages">通知メッセージ</h4>
+		<a href="https://blog.cloudflare.com/#notification-messages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>様々なタイプのイベントに対する通知メールメッセージの例を以下に示します。各イベントには、イベントの種類、影響を受けるエンティティ、開始時間などの重要な情報が含まれており、イベントの種類に応じてその他の関連情報も含まれます。各メールには、複数のメールクライアントに対応できるよう、テキスト形式とHTML形式の両方があります。（最終的な本番用のメールは、下記のものとは多少異なる場合があります）。</p>
+	<p><b>インターネット障害通知メールには、影響を受けたエンティティに関する情報、障害の原因の説明、開始時刻、範囲（利用可能な場合）、障害の種類（全国、ネットワーク、地域、またはプラットフォーム）、およびRadarトラフィックグラフで障害を表示するためのリンクが記載されています。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4m9llI9iUghxk9WNmeXs5c/9c03b0fa19da713b02d05e3828d8e338/pasted-image-0--14-.png" alt="" class="kg-image" width="1600" height="999" loading="lazy">
+
+	</figure>
+	<p><b>トラフィック異常通知メールには、影響を受けたエンティティに関する情報と開始時刻、およびRadarトラフィックグラフで異常を表示するためのリンクが記載されています。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ojcoXp3rsEhPY5QvrzmLu/ae551c2efb6a8dc2424c8b5f6b8a1e13/pasted-image-0--15-.png" alt="" class="kg-image" width="1600" height="754" loading="lazy">
+
+	</figure>
+	<p><b>BGPハイジャック通知メールには、ハイジャックに関する情報と被害者のASN、影響を受けたIPアドレスのプレフィックス、漏れたルートを含むBGPメッセージ（アナウンスメント）の数、ハイジャックをアナウンスするピアリングの数、検出タイミング、イベントが真のハイジャックであることの確信度、関連するタグ、Radarでハイジャックイベントの詳細を表示するためのリンクが記載されています。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4odkGwBAyUklNM3EpEYjlD/a808cd14489ebba0eb9ca463bfce3e2c/pasted-image-0--16-.png" alt="" class="kg-image" width="1600" height="1185" loading="lazy">
+
+	</figure>
+	<p><b>BGPルートリーク通知メールには、リークしたルートの学習元AS、ルートをリークしたAS、リークしたルートを受信して伝播したAS、影響を受けたプレフィックス数、影響を受けた配信元ASの数、BGPルートコレクタピアリングの数、検出タイミング、Radarでルートリークイベントの詳細を表示するためのリンクが記載されています。</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xjHBbXtCiOKWEhgS4bfpU/b3ab59dc514a70dfdeaae820e10fbb44/pasted-image-0--17-.png" alt="" class="kg-image" width="1600" height="1002" loading="lazy">
+
+	</figure>
+	<p>Webhookに通知を送信している場合、それらの通知をSlackのようなツールに統合することができます。例えば、<a href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener noreferrer">SlackのAPIドキュメント</a>の指示に従って簡単な統合を数分で作成すると、以下のようなメッセージが表示されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">まとめ</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uMXY1xUfZdoyX2u1J5xWO/87ccc9c307304e78a698c9dfb060cc2a/pasted-image-0--18-.png" alt="" class="kg-image" width="640" height="196" loading="lazy">
+
+	</figure>
+	<p>Cloudflareのインターネットに対する独自の視点は、トラフィックの予期せぬ低下や潜在的に問題のあるルーティングイベントをほぼリアルタイムで洞察します。この1年間、私たちはこのような洞察を皆さんと共有してきましたが、新しい「イベント」があるかどうかを知るには、Cloudflare Radarにアクセスする必要がありました。通知機能の開始により、関心のある最新のイベント情報を自動的にお届けできるようになりました。</p>
+	<p>Cloudflare Radarにアクセスして、<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">トラフィック異常</a>、<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">確認されたインターネット障害</a>、<a href="https://radar.cloudflare.com/routing" target="_blank" rel="noopener noreferrer">BGPルートリーク</a>、<a href="https://radar.cloudflare.com/routing" target="_blank" rel="noopener noreferrer">BGPオリジンハイジャック</a>について公開されている情報をご確認ください。Radarの関連するグラフや表で通知アイコンを探し、ワークフローに従って通知を設定し、購読してください。（まだ<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare</a>アカウントをお持ちでない場合、登録が必要です）。私たちは通知機能の改善に取り組んでいます。<a href="https://blog.cloudflare.com/#">ご要望がありましたら是非お知らせください</a>。また、Radarの通知をご自身のツール/ワークフロー/組織にどのように統合したかについてもお知らせください。</p>
+	<p><a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a>（Twitter）、<a href="https://cloudflare.social/@radar" target="_blank" rel="noopener noreferrer">Cloudflare.social/@radar</a>（Mastodon）、<a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer">radar.Cloudflare.com</a>（Bluesky）などのソーシャルメディアでCloudflare Radarをフォローしてください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bnvOiFBE4NEjULFappDQN/9f9df4b7ee7c5f74ac242e00d77344cc/Announcement.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
+
+	</figure>
+</div>

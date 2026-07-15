@@ -1,0 +1,243 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/x402">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/x402">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/x402">Deutsch</a>, en <a href="https://blog.cloudflare.com/es-es/x402">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/x402">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/x402">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Zjk0TAPKTlNEQAwweFbdj/10645ba80dd41247793298fc44c25a6c/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare s'associe à Coinbase pour lancer x402&nbsp;Foundation. Cette fondation aura pour mission d'encourager l'adoption du <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer">protocole&nbsp;x402</a>, un cadre mis à jour qui permet aux clients et aux services d'échanger de la valeur sur le web à l'aide d'un langage commun. En complément du partenariat annoncé ce jour, nous déployons un ensemble de fonctionnalités permettant aux développeurs d'utiliser x402 dans le <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>SDK&nbsp;Agents</u></a> et dans nos <a href="https://developers.cloudflare.com/agents/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>intégrations&nbsp;MCP</u></a>, ainsi que de proposer un nouveau schéma de paiement différé.</p>
+	<div class="flex anchor relative">
+		<h3 id="payments-in-the-age-of-agents">Les paiements à l'ère des agents</h3>
+		<a href="https://blog.cloudflare.com/#payments-in-the-age-of-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D'un point de vue historique, les paiements sur le web ont été conçus pour les humains. Nous parcourons le site web d'un revendeur, nous indiquons notre intention en ajoutant des articles à un panier, puis nous confirmons notre intention d'acheter en saisissant les informations de notre carte de paiement avant de cliquer sur «&nbsp;Payer&nbsp;». Mais que faire si vous souhaitez permettre des transactions directes entre différents services numériques&nbsp;? Nous avons besoin de protocoles pour permettre les transactions de machine à machine.&nbsp;</p>
+	<p>Chaque jour, les sites hébergés sur Cloudflare envoient plus d'un milliard de codes de réponse HTTP&nbsp;402 à des bots et des robots d'indexation qui tentent d'accéder à leurs contenus et leurs boutiques d'e-commerce. Ce code de réponse est accompagné d'un message simple&nbsp;: «&nbsp;Payment Required&nbsp;» (paiement nécessaire).</p>
+	<p>Pourtant, ces codes&nbsp;402 restent trop souvent sans réponse, notamment en raison d'un manque de standardisation.&nbsp;En l'absence de spécification concernant le formatage et le traitement de ces codes de réponse, les créateurs de contenu, les éditeurs et les exploitants de sites web ne disposent pas d'outils adéquats pour transmettre leurs demandes de paiement. x402 peut fournir aux développeurs un protocole clair et ouvert, permettant aux sites web et aux agents automatisés de négocier les paiements dans le monde entier.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="a-primer-on-x402">Une introduction à x402</h3>
+		<a href="https://blog.cloudflare.com/#a-primer-on-x402" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Coinbase a élaboré le flux de transactions x402, décrit ci-dessous, pour permettre aux machines de payer directement des ressources via HTTP&nbsp;:</p>
+	<ol>
+		<li>
+			<p>Un client tente d'accéder à une ressource protégée par x402.&nbsp;</p>
+		</li>
+		<li>
+			<p>Le serveur répond en renvoyant le code d'état&nbsp;402, «&nbsp;Payment Required&nbsp;». Le corps de la réponse contient des instructions de paiement, notamment le montant du paiement et le destinataire.</p>
+		</li>
+		<li>
+			<p>Le client demande la ressource protégée par x402 avec l'en-tête d'autorisation de paiement.</p>
+		</li>
+		<li>
+			<p>Le facilitateur de paiement vérifie les données de paiement du client, puis règle la transaction.</p>
+		</li>
+		<li>
+			<p>Le serveur répond en renvoyant la ressource demandée dans la réponse, ainsi que l'en-tête de réponse de paiement confirmant le résultat du paiement.&nbsp;</p>
+		</li>
+	</ol>
+	<p>Ce flux crée un accès programmatique aux ressources disponibles sur l'ensemble d'Internet. Les clients et serveurs capables d'interpréter le protocole&nbsp;x402 peuvent effectuer des transactions, sans qu'il soit nécessaire de disposer de comptes, d'abonnements ou de clés&nbsp;API.</p>
+	<p>x402 peut être utilisé pour la monétisation de scénarios d'utilisation traditionnels, mais permet également de monétiser une nouvelle classe de scénarios d'utilisation, par exemple&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Un assistant capable d'acheter des accessoires pour votre costume d'Halloween auprès de plusieurs marchands.</p>
+		</li>
+		<li>
+			<p>Un agent&nbsp;IA effectuant des paiements par session de rendu de navigateur, au lieu de souscrire un abonnement mensuel payant.</p>
+		</li>
+		<li>
+			<p>Un robot de trading en bourse autonome qui effectue des micropaiements pour accéder à un flux de données en temps réel de haute qualité, facilitant la prise de décisions.</p>
+		</li>
+	</ul>
+	<p>Les futures versions de x402 pourraient être agnostiques des infrastructures de paiement et accepter les cartes de paiement et les comptes bancaires, en plus des stablecoins.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-pay-per-crawl-proposing-the-x402-deferred-payment-scheme">Paiement à l'exploration de Cloudflare&nbsp;: proposition du schéma de paiement différé&nbsp;x402&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-pay-per-crawl-proposing-the-x402-deferred-payment-scheme" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents et les robots d'indexation nécessitent souvent deux fonctions importantes qui existent déjà dans une grande partie de l'infrastructure financière actuelle&nbsp;: le règlement différé, permettant de prendre en compte les litiges, et un paiement unique et agrégé, permettant de simplifier leur comptabilité. Par exemple, les robots d'indexation participant à notre <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>version bêta privée du paiement à l'exploration</u></a> peuvent facilement indexer un grand nombre de pages, générer des journaux d'audit, puis être facturés d'un montant unique via une carte de paiement ou un compte bancaire associé, à la fin de chaque journée.&nbsp;</p>
+	<p>Pour prendre en compte ces types de scénarios de paiement, nous proposons un nouveau schéma de paiement différé pour le protocole&nbsp;x402.&nbsp;Ce nouveau schéma est spécifiquement conçu pour les paiements agentiques qui ne nécessitent pas de règlement immédiat et peuvent être gérés à l'aide de méthodes de paiement traditionnelles ou de stablecoins. En proposant cet ajout, nous contribuons à assurer que tout serveur conforme peut, si nécessaire, découpler la négociation cryptographique du règlement de paiement lui-même, offrant ainsi aux agents et aux serveurs la possibilité d'utiliser des accords de licence, des règlements par lots ou des abonnements préalablement négociés.</p>
+	<p>Nous introduirons ce nouveau système de paiement différé pour le paiement à l'exploration à mesure que nous développerons et ferons évoluer la version bêta privée.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="the-handshake-explained">Explication de la négociation</h4>
+		<a href="https://blog.cloudflare.com/#the-handshake-explained" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Voici notre proposition initiale pour la négociation, qui pourrait être publiée dans la prochaine version majeure de&nbsp;x402&nbsp;:</p>
+	<div class="flex anchor relative">
+		<h5 id="1-the-servers-offer">1. L'offre du serveur</h5>
+		<a href="https://blog.cloudflare.com/#1-the-servers-offer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aujourd'hui, un client non authentifié ou non autorisé tente d'accéder à une ressource et reçoit une réponse <code>402, «&nbsp;Payment Required&nbsp;»</code>. Le serveur fournit des données d'engagement de paiement que le client peut utiliser pour créer une nouvelle requête. Cette réponse est une offre lisible par machine, et notre proposition inclut un nouveau schéma <b>différé</b>.</p>
+	<pre class="language-Rust"><code class="language-Rust">HTTP/1.1 402 Payment Required
+Content-Type: application/json
+
+{
+  "accepts": [
+    {
+      "scheme": "deferred",
+      "network": "example-network-provider",
+      "resource": "https://example.com/page",
+      "...": "...",
+      "extras": {
+        "id": "abc123",
+        "termsUrl": "https://example.com/terms"
+      },
+    }
+  ]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h5 id="2-the-clients-signed-commitment">2. L'engagement signé du client</h5>
+		<a href="https://blog.cloudflare.com/#2-the-clients-signed-commitment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ensuite, le client renvoie la requête avec des données signées contenant son engagement de paiement. Le schéma <b>différé</b> utilise HTTP Message Signatures, où une <a href="https://datatracker.ietf.org/doc/html/rfc7517?cf_target_id=D4770F028006FD3F2FEE26B65F35A502" target="_blank" rel="noopener noreferrer"><u>clé publique au format&nbsp;JWK</u></a> est disponible dans un répertoire hébergé. L'en-tête <code>Signature-Input</code> explique clairement quelles parties de la requête sont incluses dans la <code>Signature</code> pour servir de preuve cryptographique de l'intention du client, vérifiable par le prestataire de services sans transaction on-chain.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">GET /path/to/resource HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 Chrome/113.0.0 MyBotCrawler/1.1
+Payment:
+    scheme="deferred",
+    network="example-network-provider",
+    id="abc123"
+Signature-Agent: signer.example.com
+Signature-Input:
+    sig=("payment" "signature-agent");
+    created=1700000000;
+    expires=1700011111;
+    keyid="ba3e64==";
+    tag="web-bot-auth"
+Signature: sig=abc==</code></pre>
+
+	<div class="flex anchor relative">
+		<h5 id="3-successful-response">3. Réponse réussie</h5>
+		<a href="https://blog.cloudflare.com/#3-successful-response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le serveur de ressources valide la signature et renvoie le contenu avec un en-tête de confirmation. Le serveur est chargé d'attribuer le paiement au compte associé à la <b>signature de message HTTP</b>, de vérifier l'identité du client, puis de transmettre le contenu. Dans ce scénario, aucune blockchain n'est associée aux paiements.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">HTTP/1.1 200 OK
+Content-Type: text/html
+Payment-Response:
+    scheme="deferred",
+    network="example-network-provider",
+    id="abc123",
+    timestamp=1730872968</code></pre>
+
+	<div class="flex anchor relative">
+		<h5 id="4-payment-settlement">4. Règlement du paiement</h5>
+		<a href="https://blog.cloudflare.com/#4-payment-settlement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le serveur peut désormais traiter le règlement de manière flexible. L'identifiant validé issu de la négociation sert de référence pour la transaction. Cette approche propose un modèle d'utilisation flexible, sans frais supplémentaires par requête, permettant au serveur de regrouper les paiements sur la base d'un abonnement, sur une base quotidienne ou même par lot. Elle permet ainsi d'obtenir un cadre flexible, permettant l'établissement immédiat de la confiance cryptographique, tandis que le règlement financier peut utiliser des infrastructures de paiement traditionnelles ou des stablecoins.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-mcp-servers-agents-sdk-and-x402-payments">Serveurs MCP de Cloudflare, SDK&nbsp;Agents et paiements&nbsp;x402</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-mcp-servers-agents-sdk-and-x402-payments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'exécution de code est ce qui permet à une convention ouverte d'évoluer de la théorie à l'utilité véritable, puis de devenir une norme reconnue. Les agents développés avec le <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>SDK&nbsp;Agents</u></a> de Cloudflare peuvent désormais payer les ressources avec x402, et les serveurs&nbsp;MCP peuvent exposer les outils à payer via&nbsp;x402. Pour illustrer ce fonctionnement, nous avons créé le <a href="https://playground.x402.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>bac à sable x402</u></a>, une démo en direct utilisant&nbsp;x402. Le bac à sable x402 est piloté par le <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK&nbsp;Agents</u></a> et a accès aux outils provenant des <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>serveurs&nbsp;MCP</u></a> déployés sur Cloudflare.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Hhey00HlGPmIO76xbR0qi/0bfd542c222bc6ae8bacb71345dc49d3/image1.png" alt="" class="kg-image" width="1999" height="1017" loading="lazy">
+	</figure>
+	<p>Lorsque vous ouvrez le bac à sable x402, un nouveau wallet est créé et financé en USDC Testnet sur un <a href="https://docs.base.org/learn/deployment-to-testnet/test-networks" target="_blank" rel="noopener noreferrer"><u>testnet de la blockchain Base</u></a>. L'agent, développé avec le SDK&nbsp;Agents, a accès à un serveur&nbsp;MCP proposant des outils, aussi bien gratuits que payants.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpAgent } from "agents/mcp";
+import { withX402 } from "agents/x402";
+
+export class PayMCP extends McpAgent {
+  server = withX402(
+    new McpServer({ name: "PayMCP", version: "1.0.0" }),
+    X402_CONFIG
+  );
+
+  async init() {
+    // Paid tool
+    this.server.paidTool(
+      "square",
+      "Squares a number",
+      0.01, // Tool price
+      {
+        a: z.number()
+      },
+      {},
+      async ({ number }) =&gt; {
+        return { content: [{ type: "text", text: String(a ** 2) }] };
+      }
+    );
+
+    // Free tool
+    this.server.tool(
+      "add-two-numbers",
+      "Adds two numbers",
+      {
+        a: z.number(),
+        b: z.number(),
+      },
+      async ({ a, b }) =&gt; {
+        return { content: [{ type: 'text', text: String(a + b) }] };
+      }
+    );
+  }
+}</code></pre>
+	<p>Lorsque l'agent tente d'utiliser un outil payant, le serveur&nbsp;MCP répond par un code&nbsp;402, «&nbsp;Payment Required&nbsp;». L'agent est capable d'interpréter les instructions de paiement et d'inviter l'utilisateur à confirmer s'il souhaite poursuivre à la transaction. La création d'un client compatible x402 nécessite un simple wrapper sur l'appel de l'outil&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Agent } from "agents";
+import { withX402Client } from "agents/x402";
+
+export class MyAgent extends Agent {
+  // Your Agent definitions...
+
+  async onToolCall() {
+
+    // Build the x402 client
+    const x402Client = withX402Client(
+      myMcpClient,
+      { network: "base-sepolia", account: this.account }
+    );
+
+    // The first parameter becomes the confirmation callback.
+    // We can set it to `null` if we want the agent to pay automatically.
+    const res = await x402Client.callTool(
+      this.onPaymentRequired,
+      {
+        name: toolName,
+        arguments: toolArgs
+    });
+  }
+}</code></pre>
+	<p>Cet agent de test retire les fonds du wallet, puis transmet les données de paiement au serveur&nbsp;MCP, qui règle la transaction. Les transactions peuvent être configurées pour être exécutées avec ou sans confirmation humaine, vous permettant ainsi de concevoir l'interface la mieux adaptée à votre application.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Et ensuite&nbsp;?&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous pouvez vous lancer dès aujourd'hui en utilisant le <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>SDK&nbsp;Agents</u></a> ou en déployant votre propre <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>serveur&nbsp;MCP</u></a>.</p>
+	<p>Nous continuerons à travailler en étroite collaboration avec Coinbase pour développer x402&nbsp;Foundation. Restez à l'écoute pour découvrir très prochainement de nouvelles annonces présentant les spécificités de la structure.</p>
+	<p>Nous croyons en la valeur des protocoles ouverts et interopérables&nbsp;; c'est pourquoi nous vous encourageons tous à <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer"><u>contribuer directement au protocole&nbsp;x402</u></a>. Pour contacter l'équipe de Cloudflare qui travaille sur x402, envoyez-nous un message à l'adresse <a href="https://blog.cloudflare.com/#"><u>x402@cloudflare.com</u></a>.</p>
+</div>

@@ -1,0 +1,308 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/sandbox-auth">English</a>および<a href="https://blog.cloudflare.com/ko-kr/sandbox-auth">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kCgJwzOCo7hraawrdxbI9/49ae9dd1a791a60859c9c2beacdf9870/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</p>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>AI大規模言語モデル</u></a>やOpenCode、Claude Codeのような活用がますます能力を高めるにつれて、チャットメッセージ、Kanbanの更新、<a href="https://www.cloudflare.com/learning/ai/ai-vibe-coding" target="_blank" rel="noopener noreferrer"><u>バイブコーディング</u></a>UI、ターミナルセッション、GitHubのコメントなどに応答してサンドボックスエージェントを起動するユーザーが増えています。</p>
+	<p>サンドボックスは、単純なコンテナを超えた重要なステップです。それは、いくつかのことを可能にします。</p>
+	<ul>
+		<li>
+			<p><b>セキュリティ</b>：信頼できないエンドユーザー（または不正なLLM）は、サンドボックスで実行される可能性があり、ホストマシンやそれに沿って実行されている他のサンドボックスを侵害することはありません。これは従来、(<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>常にそうとは限りませんが</u></a>) マイクロVMで実現されます。</p>
+		</li>
+		<li>
+			<p><b>スピード</b>：エンドユーザーは、新しいサンドボックスをすばやく選択し、以前使用したサンドボックスから状態をすぐに復元できる必要があります<i>。</i></p>
+		</li>
+		<li>
+			<p><b>制御</b>：<i>信頼できる</i>プラットフォームは、サンドボックスの<i>信頼できない</i>ドメイン内でアクションを実行できる必要があります。これは、サンドボックスにファイルをインストールしたり、アクセスするリクエストを制御したり、特定のコマンドを実行したりすることを意味します。</p>
+		</li>
+	</ul>
+	<p>本日、<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>サンドボックス</u></a>およびすべての<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>への、もう一つの重要な制御コンポーネントであるOutbound Workersを追加できることを嬉しく思います。これらは、プログラム可能なエグレスプロキシで、サンドボックスを実行するユーザーがさまざまなサービスに簡単に接続し、<a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer"><u>可観測性</u></a>を追加し、エージェントにとって柔軟で安全な認証を追加することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Outbound Workersを使って秘密鍵をヘッダーに追加する方法を簡単に説明します。</p>
+	<pre class="language-javascript"><code class="language-javascript">class OpenCodeInABox extends Sandbox {
+  static outboundByHost = {
+    "github.com": (request, env, ctx) =&gt; {
+      const headersWithAuth = new Headers(request.headers);
+      headersWithAuth.set("x-auth-token", env.SECRET);
+      return fetch(request, { headers: headersWithAuth });
+    }
+  }
+}
+</code></pre>
+	<p>サンドボックスで実行されているコードが <code>“github.com”</code> にリクエストを行うと、リクエストはハンドラを介してプロキシされます。これにより、各リクエストに対して、ログ記録、変更、取り消しなど、何でもすることができます。この場合、シークレット（詳細は後述）を安全に挿入することができます。プロキシはサンドボックスと同じマシンで実行され、分散状態にアクセスでき、簡単なJavaScriptで簡単に変更できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RSbCJMOoqz8xLWMnPyijV/520addf1676d195be6258b427881cdde/BLOG-3199_2.png" alt="BLOG-3199 2" class="kg-image" width="1496" height="736" loading="lazy">
+	</figure>
+	<p>当社は、特にエージェントの認証に関して、Sandboxに追加される可能性を非常に楽しみにしています。詳しく説明する前に、従来の認証形式と、弊社が優れたものがあると考える理由について簡単に説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="common-auth-for-agentic-workloads">エージェンティックワークロードの共通認証</h2>
+		<a href="https://blog.cloudflare.com/#common-auth-for-agentic-workloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェント認証の中心的な問題は、ワークロードを完全に信頼することができないことです。当社のLLMは（少なくともまだ）悪意のあるものではありませんが、データを不適切に使用したり、不適切なアクションを実行したりしないように、保護を適用できる必要があります。</p>
+	<p>エージェントに認証を提供するための一般的な方法がいくつかありますが、それぞれに欠点があります。</p>
+	<p><b>Standard APIトークン</b>は最も基本的な認証方法で、通常は環境変数か、インストールされたシークレットファイルを介してアプリケーションに挿入されます。これは確かに最もシンプルな方法ですが、安全性は最も低いです。リクエストを行っている間に、サンドボックスが何らかの形で侵害されたり、誤ってトークンが流出したりする可能性はないと信用しなければなりません。エージェントを完全に信頼できないため、トークンの有効期限とローテーションを設定する必要があり、面倒な作業になる可能性があります。</p>
+	<p>OIDCトークンなどのワークロードIDトークンは、この問題の一部を解決できます。エージェントに一般的な権限でトークンを付与するのではなく、そのアイデンティティを証明するトークンを付与することができます。現在、エージェントはトークンを使用していくつかのサービスに直接アクセスするのではなく、IDトークンを非常に短期間のアクセストークンに交換することができます。OIDCトークンは、特定のエージェントのワークフローが完了した後に無効にすることができ、有効期限の管理も容易になります。ワークロードIDトークンの最大の欠点の1つは、統合の柔軟性に欠ける可能性があることです。多くのサービスにはOIDCの一流のサポートがないため、アップストリームのサービスとの統合を機能させるためには、プラットフォームは独自のトークン交換サービスを展開する必要があります。これにより、導入が困難になります。</p>
+	<p><b>カスタムプロキシ</b>は最大限の柔軟性を提供し、ワークロードIDトークンと組み合わせることができます。サンドボックスのエグレスの一部またはすべてを信頼できるコードを介して通過させることができれば、必要なルールを挿入できます。エージェントが通信しているアップストリームサービスのRBACストーリーが異なり、きめ細かい許可を提供できないかもしれません。問題ありません。コントロールと許可を自分で書けば良いのです！これは、きめ細かい制御でロックダウンする必要があるエージェントに最適なオプションです。しかし、サンドボックスのトラフィックをすべて傍受するにはどうすればいいのでしょうか？動的で簡単にプログラム可能なプロキシを設定するにはどうすればよいでしょうか？トラフィックを効率的にプロキシする方法は？これらは解決するのは簡単ではありません。</p>
+	<p>このような不完全な方法を念頭に置くと、理想的な認証メカニズムはどのようなものになるでしょうか？</p>
+	<p>理想的には、次のような状態です：</p>
+	<ul>
+		<li>
+			<p><b>Zero Trust.</b>信頼できないユーザーにトークンが付与されることは決してありません。</p>
+		</li>
+		<li>
+			<p><b>シンプルです。</b>作成が容易。トークンの生成、ローテーション、復号化という複雑なシステムは不要です。</p>
+		</li>
+		<li>
+			<p><b>柔軟性。</b>必要なきめ細かいアクセスの提供を上流システムに依存することはありません。どんなルールでも適用できます。</p>
+		</li>
+		<li>
+			<p><b>ID認識型。</b>呼び出しを行うサンドボックスを特定し、そのサンドボックスに特定のルールを適用することができます。</p>
+		</li>
+		<li>
+			<p><b>観測可能。</b>どのような呼び出しが行われているかに関する情報を簡単に収集することができます。</p>
+		</li>
+		<li>
+			<p><b>パフォーマンス。</b>一元化された、または遅い信頼できる情報源にラウンドトリップするわけではありません。</p>
+		</li>
+		<li>
+			<p><b>透明。</b>サンドボックス化されたワークロードは、それを知る必要はありません。上手く機能しているのです。</p>
+		</li>
+		<li>
+			<p><b>ダイナミック。</b>ルールはその場で変更できます。</p>
+		</li>
+	</ul>
+	<p>Cloudflareは、Outbound Workers for Sandboxsがこれらすべてに適合すると考えています。方法を見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="outbound-workers-in-practice">Outbound Workersの活用事例</h2>
+		<a href="https://blog.cloudflare.com/#outbound-workers-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="basics-restriction-and-observability">基本：制限と可観測性</h3>
+		<a href="https://blog.cloudflare.com/#basics-restriction-and-observability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、リクエストをログに記録し、特定のアクションを拒否するという非常に基本的な例を見ていきます。</p>
+	<p>この場合は、サンドボックスからすべての発信HTTPリクエストを傍受するアウトバウンド関数を使用します。数行のJavaScriptで、GETだけを実行し、ログに記録して、許可されていないメソッドを拒否することが簡単にできます。</p>
+	<pre class="language-javascript"><code class="language-javascript">class MySandboxedApp extends Sandbox {
+  static outbound = (req, env, ctx) =&gt; {
+    // Deny any non-GET action and log
+    if (req.method !== 'GET') {
+      console.log(`Container making ${req.method} request to: ${req.url}`);
+      return new Response('Not Allowed', { status: 405, statusText: 'Method Not Allowed'});
+    }
+
+    // Proceed if it is a GET request
+    return fetch(req);
+  };
+}
+</code></pre>
+	<p>このプロキシはWorkers上で実行され、サンドボックス化されたVMと同じマシン上で実行されます。Workersは応答時間を短縮するために構築されており、キャッシュされたCDNトラフィックの前面に位置することが多いため、追加の遅延は極めて最小限に抑えられます。</p>
+	<p>これはWorkers上で実行されているため、すぐに観測可能性が得られます。Workersダッシュボードでログやアウトバウンドリクエストを表示したり、お好みのアプリケーションパフォーマンス監視ツールにエクスポートしたりできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-credential-injection">Zero Trustクレデンシャルインジェクション</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-credential-injection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これを使って、エージェントに<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>Zero Trust環境</u></a>を強制する方法とは？プライベートなGitHubインスタンスにリクエストを作成したいが、LLMにはプライベートトークンにアクセスさせたくない場合を想像してみましょう。</p>
+	<p><code>outboundByHost</code>を使用して、特定のドメインまたはIPに対する関数を定義できます。今回、ドメインが「my-internal-vcs.dev」の場合、保護されたクレデンシャルを挿入します。サンドボックス化されたエージェントは、これらのクレデンシャルに<i>アクセスすることはできません</i>。</p>
+	<pre class="language-javascript"><code class="language-javascript">class OpenCodeInABox extends Sandbox {
+  static outboundByHost = {
+    "my-internal-vcs.dev": (request, env, ctx) =&gt; {
+      const headersWithAuth = new Headers(request.headers);
+      headersWithAuth.set("x-auth-token", env.SECRET);
+      return fetch(request, { headers: headersWithAuth });
+    }
+  }
+}
+</code></pre>
+	<p>また、コンテナのIDに基づいて、応答の条件を簡単に設定することもできます。すべてのサンドボックスインスタンスに同じトークンを注入する必要はありません。</p>
+	<pre class="language-javascript"><code class="language-javascript"> static outboundByHost = {
+  "my-internal-vcs.dev": (request, env, ctx) =&gt; {
+    // note: KV is encrypted at rest and in transit
+    const authKey = await env.KEYS.get(ctx.containerId);
+
+    const requestWithAuth = new Request(request);
+    requestWithAuth.headers.set("x-auth-token", authKey);
+    return fetch(requestWithAuth);
+  }
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="using-the-cloudflare-developer-platform">Cloudflare開発者プラットフォームを使用する</h3>
+		<a href="https://blog.cloudflare.com/#using-the-cloudflare-developer-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最後の例でお分かりのように、Outbound Workersを使用するもう1つの大きな利点は、Workersエコシステムへの統合が容易になることです。以前は、ユーザーが<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>にアクセスする場合、R2認証情報を挿入し、コンテナからパブリックR2 APIを呼び出す必要がありました。<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>、<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>、その他の<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>、その他の<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Workerサービス</u></a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>など</u></a>でも同様です。</p>
+	<p>今、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>任意のバインディング</u></a>をOutbound Workersから呼び出すだけです。</p>
+	<pre class="language-javascript"><code class="language-javascript">class MySandboxedApp extends Sandbox {
+  static outboundByHost = {
+    "my.kv": async (req, env, ctx) =&gt; {
+      const key = keyFromReq(req);
+      const myResult = await env.KV.get(key);
+      return new Response(myResult);
+    },
+    "objects.cf": async (req, env, ctx) =&gt; {
+      const prefix = ctx.containerId
+      const path = pathFromRequest(req);
+      const object = await env.R2.get(`${prefix}/${path}`);
+      const myResult = await env.KV.get(key);
+      return new Response(myResult);
+    },
+  };
+}
+</code></pre>
+	<p>トークンを解析したりポリシーを設定したりする代わりに、コードと必要なロジックを使用して簡単にアクセスの条件を設定できます。R2の例では、サンドボックスのIDを使用して、アクセスの範囲を簡単に拡大することができました。</p>
+	<div class="flex anchor relative">
+		<h3 id="making-controls-dynamic">動的制御</h3>
+		<a href="https://blog.cloudflare.com/#making-controls-dynamic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワーク制御も動的である必要があります。多くのプラットフォームでは、コンテナとVMネットワーキングの設定は静的で、次のようになります。</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  defaultEgress: "block",
+  allowedDomains: ["github.com", "npmjs.org"]
+}
+</code></pre>
+	<p>これなら何もないよりはいいのですが、もっと良い方法があります。多くのサンドボックスでは、開始時にポリシーを適用し、特定の操作が実行された後で別のポリシーに上書きしたい場合があります。</p>
+	<p>たとえば、サンドボックスを起動し、NPMやGithubを介して依存関係を取得し、その後、エグレスをロックダウンすることができます。そうすることで、ネットワークを開く時間ができるだけ短くなります。</p>
+	<p>これを実現するために、<code>outboundHandlers</code>を使用できます。これにより、<code>setOutboundHandler</code>メソッドを使用してプログラム的に適用できる任意のアウトバウンドハンドラーを定義できます。これらのそれぞれはパラムを利用するので、コードから動作をカスタマイズすることができます。この場合、カスタム「<code>allowHosts</code>」ポリシーでいくつかのホスト名を許可し、その後はHTTPをオフにします。 </p>
+	<pre class="language-javascript"><code class="language-javascript">class MySandboxedApp extends Sandbox {
+  static outboundHandlers = {
+    async allowHosts(req, env, { params }) {
+     const url = new URL(request.url);
+     const allowedHostname = params.allowedHostnames.includes(url.hostname);
+
+      if (allowedHostname) {
+        return await fetch(newRequest);
+      } else {
+        return new Response(null, { status: 403, statusText: "Forbidden" });
+      }
+    }
+    
+    async noHttp(req) {
+      return new Response(null, { status: 403, statusText: "Forbidden" });
+    }
+  }
+}
+
+async setUpSandboxes(req, env) {
+  const sandbox = await env.SANDBOX.getByName(userId);
+  await sandbox.setOutboundHandler("allowHosts", {
+    allowedHostnames: ["github.com", "npmjs.org"]
+  });
+  await sandbox.gitClone(userRepoURL)
+  await sandbox.exec("npm install")
+  await sandbox.setOutboundHandler("noHttp");
+}
+</code></pre>
+	<p>これはさらに拡張することも可能です。<code>エージェントはエンドユーザーに対して、「cloudflare.comへのPOSTリクエストを許可しますか？」といった質問をするかもしれません。アクセスできるように\nしたりすることもできます。</code>動的Outbound Workersを使用すると、その場でサンドボックスルールを簡単に変更して、このレベルの制御を提供することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="tls-support-with-mitm-proxying">MITMプロキシによるTLSサポート</h2>
+		<a href="https://blog.cloudflare.com/#tls-support-with-mitm-proxying" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リクエストを許可または拒否する以上の有用な操作を行うには、コンテンツへのアクセスが必要です。つまり、HTTPSリクエストを行う場合、Workersプロキシによって復号化される必要があるのです。</p>
+	<p>これを実現するために、各サンドボックスインスタンスに一意のエフェメラル認証局（CA）とプライベートキーを作成し、CAをサンドボックスに配置します。デフォルトでは、サンドボックスインスタンスはこのCAを信頼しますが、標準的なコンテナインスタンスは、たとえば<code>sudo update-ca-certificates</code>を呼び出すことによって、信頼することを選択できます。</p>
+	<pre class="language-javascript"><code class="language-javascript">export class MyContainer extends Container {
+  interceptHttps = true;
+}
+
+MyContainer.outbound = (req, env, ctx) =&gt; {
+  // All HTTP(S) requests will trigger this hook.
+  return fetch(req);
+};
+
+</code></pre>
+	<p>TLSトラフィックは、TLSハンドシェイクを実行することにより、Cloudflareの分離されたネットワークプロセスによってプロキシされます。一過性の一意のプライベートキーからエッジCAを作成し、ClientHelloから抽出されたSNIを使用します。次に、同じマシンで設定済みのWorkerを呼び出し、HTTPSリクエストを処理します。</p>
+	<p>一過性のプライベートキーとCAは、コンテナランタイムのサイドカープロセスから離れることはなく、他のコンテナサイドカープロセスで共有されることはありません。</p>
+	<p>これを有効にすると、Outbound Workersは真に透明性のあるプロキシとして機能します。サンドボックスは、特定のプロトコルまたはドメインを認識する必要がありません。すべてのHTTPおよびHTTPSトラフィックは、フィルタリングまたは変更のためにアウトバウンドハンドラーを通過します。</p>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">機器の中身</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記の機能を<a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><u><code>Container</code></u></a>と<a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u><code>Sandbox</code></u></a>の両方で有効にするために、<a href="https://developers.cloudflare.com/durable-objects/api/container" target="_blank" rel="noopener noreferrer"><u><code>ctx.container</code></u></a>オブジェクトに新しいメソッドを追加しました。<code>interceptOutboundHttpとinterceptOutboundHttps</code>は、特定のホスト名（基本的なglobパターン一致を含む）、IP範囲での発信リクエストをインターセプトし、すべての発信リクエストをインターセプトするために使用できます。これらのメソッドは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a> を使用して呼び出されます。WorkerEntrypointは、Outbound Workersの玄関口として設定されます。</p>
+	<pre class="language-javascript"><code class="language-javascript">export class MyWorker extends WorkerEntrypoint {
+ fetch() {
+   return new Response(this.ctx.props.message);
+ }
+}
+
+// ... inside your container DurableObject ...
+this.ctx.container.start({ enableInternet: false });
+const outboundWorker = this.ctx.exports.MyWorker({ props: { message: 'hello' } });
+await this.ctx.container.interceptOutboundHttp('15.0.0.1:80', outboundWorker);
+
+// From now on, all HTTP requests to 15.0.0.1:80 return "hello"
+await this.waitForContainerToBeHealthy();
+
+// You can decide to return another message now...
+const secondOutboundWorker = this.ctx.exports.MyWorker({ props: { message: 'switcheroo' } });
+await this.ctx.container.interceptOutboundHttp('15.0.0.1:80', secondOutboundWorker);
+// all HTTP requests to 15.0.0.1 now show "switcheroo", even on connections that were
+// open before this interceptOutboundHttp
+
+// You can even set hostnames, CIDRs, for both IPv4 and IPv6
+await this.ctx.container.interceptOutboundHttp('example.com', secondOutboundWorker);
+await this.ctx.container.interceptOutboundHttp('*.example.com', secondOutboundWorker);
+await this.ctx.container.interceptOutboundHttp('123.123.123.123/23', secoundOutboundWorker);</code></pre>
+	<p>Workersへのプロキシはすべて、サンドボックスVMを実行している同じマシン上でローカルに行われます。コンテナとWorkerの間の通信は「認証されていない」ものですが、安全です。</p>
+	<p>これらのメソッドは、コンテナが開始する前または後、接続がまだオープン中であっても、いつでも呼び出すことができます。複数のHTTPリクエストを送信する接続は、新しいエントリポイントを自動的に選択するため、Outbound Workersを更新しても、既存のTCP接続が切断されたり、HTTPリクエストが中断されたりすることはありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21utJcR5UpS7c0YNj8Y385/4a47d83acad42c5708ca23a7b04342f3/BLOG-3199_3.png" alt="BLOG-3199 3" class="kg-image" width="1862" height="900" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer"><u>wrangler dev</u></a>を使用したローカル開発は、エグレス傍受もサポートしています。これを可能にするために、ローカルコンテナのネットワークネームスペース内にサイドカープロセスを自動的に生成します。私たちはこのサイドカーコンポーネントを<a href="https://github.com/cloudflare/proxy-everything" target="_blank" rel="noopener noreferrer"><i><u>proxy-everything</u></i></a>と呼んでいます。<i>proxy-everything</i>が接続されると、適切なTPROXY nftableルールが適用され、ローカルコンテナから<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>（CloudflareのオープンソースJavaScriptランタイム）にトラフィックがルーティングされ、アウトバウンドWorkerを実行します。これにより、ローカル開発エクスペリエンスが本番環境で発生することを反映させることができるため、テストと開発はシンプルのままとなります。</p>
+	<div class="flex anchor relative">
+		<h2 id="giving-outbound-workers-a-try">Giving Outbound Workers a try</h2>
+		<a href="https://blog.cloudflare.com/#giving-outbound-workers-a-try" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Sandboxesをまだお試しでない方は、<a href="https://developers.cloudflare.com/sandbox/get-started" target="_blank" rel="noopener noreferrer"><u>利用開始ガイド</u></a>をぜひご覧ください。現在既に<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>または<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a>をご利用の方は、<a href="https://developers.cloudflare.com/containers/platform-details/outbound-traffic" target="_blank" rel="noopener noreferrer"><u>ドキュメントをご覧になり</u></a>、<code>@cloudflare/containers@0.3.0</code>または<code>@cloudflare/sandbox@0.8.9</code>にアップグレードして、今すぐOutbound Workersを使い始めてください。</p>
+	<div class="flex anchor relative">
+		<h4 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h4>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;"> <iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/748ed282b02cbbfb5da9076d41758ede/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F748ed282b02cbbfb5da9076d41758ede%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe> </div>
+	<p></p>
+</div>

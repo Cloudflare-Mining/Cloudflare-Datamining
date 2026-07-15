@@ -1,0 +1,170 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/diy-byoip">English</a>および<a href="https://blog.cloudflare.com/ko-kr/diy-byoip">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CtNeyMeaudw9VHiERQfn5/c62b1676ece46d7fde53d319c6be645d/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip"><u>お客様がIPアドレス空間</u></a>をCloudflareに持ち込みたい場合、アカウントチームに連絡してリクエストを提出する必要がありました。このリクエストは、アドレス指定やネットワークエンジニアリングなど、Cloudflareのさまざまなエンジニアリングチームに送信され、そして、プレフィックスを使用したい特定のサービスを担当するチーム（CDN、Magic Transit、Spectrum、エグレスなど）に送信されます。さらに、複雑な承認を経て<a href="https://developers.cloudflare.com/byoip/concepts/loa" target="_blank" rel="noopener noreferrer"><u>エージェンシー証明書（LOA）</u></a>を発行してもらうために、IPプレフィックスの主要所有者を持たない場合は、法務チームや、場合によっては別の組織と協力しなければなりませんでした。このプロセスは複雑で手作業が多く、関係者すべてにとって時間がかかるもので、様々な承認によっては4～6週間かかることもあります。</p>
+	<p>でも、今は違います！本日、セルフサービスBYOIP APIのローンチを発表いたします。お客様自身がオンボードしてBYOIPプレフィックスを設定できるようになります。</p>
+	<p>セルフサービスでは、事務作業を当社がお手伝いします。このプロセスは、ルーティングセキュリティのゴールドスタンダードであるRPKIを使用して自動化しています。その間も、新しい所有権検証プロセスのセキュリティ保証に基づき、お客様に代わってLOAを生成することで、最高品質のサービスを確保し続けています。これにより、インターネットの隅々まで顧客ルートが受け入れられ続けることが保証されます。</p>
+	<p>Cloudflareは、インターネット全体のセキュリティと安定性を非常に重視しています。RPKIは暗号的に強力な認証メカニズムで、スキャンされた文書を人間がレビューすることに依存する一般的な手法よりも大幅に信頼性が高いと、当社は考えています。ただし、ASパス認可（ASPA）オブジェクトのようないくつかのRPKI署名アーティファクトのデプロイと可用性は依然として制限されています。そのため、セルフサービスオンボーディングの初期範囲を、Cloudflareの自律システム番号から発信されたBYOIPプレフィックスに限定しています。 AS 13335.このためには、広く利用可能なルートオリジン認証（ROA）オブジェクトの公開に依存するだけで済みます。このアプローチは、インターネット上で安全であり、BYOIP顧客のほとんどのニーズを満たすという利点があります。</p>
+	<p>本日、当社は、より包括的なIPアドレス管理（IPAM）プラットフォームをお客様に提供するという大きな一歩を踏み出しました。<a href="https://blog.cloudflare.com/your-ips-your-rules-enabling-more-efficient-address-space-usage"><u>単一のBYOIPプレフィックスで複数のサービスを有効にする最近のアップデートと</u></a>、APIを介したセルフサーブのオンボーディングが可能になった最新の進歩により、お客様は当社ネットワーク上のIPのコントロールを掌握していると感じていただけることを願っています。</p>
+	<div class="flex anchor relative">
+		<h2 id="an-evolution-of-cloudflare-byoip">Cloudflare BYOIPの進化</h2>
+		<a href="https://blog.cloudflare.com/#an-evolution-of-cloudflare-byoip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、Cloudflareがお客様のインフラストラクチャの延長のように感じられるようにしたいと考えています。そのため、<a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip"><u>2020年にBring-Your-Own-IP（BYOIP）を開始しました</u></a>。</p>
+	<p>簡単におさらいすると、「Bring-your-own-IP」はその機能のまさにその名が付けられており、顧客が独自の IP スペースを Cloudflare に持ち込むことを可能にします。お客様がBYOIPを選ぶ理由はさまざまですが、主な理由は制御と設定の可能性です。IPプレフィックスとは、IPアドレスの範囲またはブロックのことです。ルーターは、ルーティングテーブルと呼ばれる到達可能なプレフィックスのテーブルを作成し、パケットがインターネット上で正しく配信されるようにします。お客様のCloudflareサービスがお客様独自のアドレスを使用するように設定され、BYOIPとしてCloudflareにオンボードされると、対応する宛先アドレスを持つパケットがインターネットを経由してCloudflareのグローバルエッジネットワークにルーティングされ、そこで受信され、処理されます。BYOIPは、当社のアプリケーション層サービス、Spectrum、またはMagic Transitと一緒に使用できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-look-under-the-hood-how-it-works">機器の中身：仕組み</h2>
+		<a href="https://blog.cloudflare.com/#a-look-under-the-hood-how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="todays-world-of-prefix-validation">プレフィックス検証の世界</h3>
+		<a href="https://blog.cloudflare.com/#todays-world-of-prefix-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>少し戻って、今のBYOIPの世界の状況を見てみましょう。たとえば、あるお客様がさまざまなIPアドレスに対する権限を持ち、それをCloudflareに導入したいとします。当社では、お客様に認可書（LOA）、プレフィックスとASNが一致するインターネットルーティングレジストリ（IRR）レコードの提供を求めています。これを取得後、Cloudflareエンジニアによる手動レビューが必要です。この処理には、いくつかの問題があります。</p>
+	<ul>
+		<li>
+			<p>安全でない：LOAは単なる文書であり、紙片に過ぎません。この方法のセキュリティは、文書を確認するエンジニアの努力にかかっています。レビューで文書が不正または不正確であることを検出できない場合、プレフィックスまたは自律システム番号がハイジャックされる可能性があります。</p>
+		</li>
+		<li>
+			<p>時間がかかる：LOAを1つ作成するだけでは、十分とは限りません。IPスペースをリースしている場合は、その関係を確認する文書の提出を求められます。これにより、お客様への元の割り当てや割り当てから明確な承認連鎖を見ることができます。すべての紙ドキュメントを作成して、この所有権の連鎖を確認する必要があり、手動によるレビューを待つ必要があるため、プレフィックスのデプロイに何週間も待つ必要がある可能性があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="automating-trust-how-cloudflare-verifies-your-byoip-prefix-ownership-in-minutes">信頼の自動化：Cloudflareが数分でBYOIPプレフィックスの所有権を検証する仕組み</h3>
+		<a href="https://blog.cloudflare.com/#automating-trust-how-cloudflare-verifies-your-byoip-prefix-ownership-in-minutes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セルフサービスモデルに移行したことで、プレフィックス所有権チェックの実施方法を見直すことができました。私たちは自問してみました。ユーザーがIPプレフィックスの使用を許可され、Cloudflareを経由することを許可されていることを、迅速、安全、自動的に証明するには、どうすればよいのでしょうか。</p>
+	<p>最終的には、RPKI ROAの作成（意図の検証）とIRRレコードまたはrDNSレコードの変更（所有権の検証）を含む2段階のプロセスのおかげで、一石三鳥。セルフサービスは、より迅速かつ人間の介入なしにプレフィックスをオンボードできるだけでなく、単純なスキャンされたドキュメントよりも厳格な所有権チェックを実行できます。100%確実ではありませんが、所有権の確認方法が大幅に改善されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="tapping-into-the-authorities">当局とやりとりする </h3>
+		<a href="https://blog.cloudflare.com/#tapping-into-the-authorities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>地域インターネットレジストリ（RIR）は、IPアドレスのようなインターネット番号リソースの配布と管理を担当する組織です。世界のさまざまな地域（<a href="https://developers.cloudflare.com/byoip/get-started/#:~:text=Your%20prefix%20must%20be%20registered%20under%20one%20of%20the%20Regional%20Internet%20Registries%20(RIRs)%3A" target="_blank" rel="noopener noreferrer"><u>RIR</u></a>）で運営される5つの異なる事業体で構成されています。もともとはインターネット Assigned Numbers Authority（IANA）から割り当てられたアドレス空間であり、そのIP空間をISPのようなローカルインターネットレジストリ（LIR）に割り当て、割り当てられます。</p>
+	<p>このプロセスは、法的文書、既存のデータベース/レジストリレコード、技術的連絡先、BGP情報などを一般的に確認するRIRポリシーに基づいています。エンドユーザーは、LIRからアドレスを取得することも、場合によってはRIRから直接取得することもできます。IPv4アドレスが不足するにつれ、ブローカーサービスが開始され、アドレスを元の割り当て先から一定期間リースできるようになりました。</p>
+	<p>インターネットルーティングレジストリ（IRR）は、アドレスの割り当てではなくルーティングに焦点を当てた別個のシステムです。多くの組織がIRRインスタンスを運用し、5つのRIRすべてを含むルーティング情報を公開することを許可しています。ほとんどのIRRインスタンスには、ルーティングデータの公開に対してほとんど障壁はありませんが、RIRによって運用されるインスタンスは、対応するアドレスが割り当てられた組織と、ルーティング情報の公開機能を結びつけることができます。この方法で保護されたIRRレコードを変更できるということは、ユーザーがプレフィックスを使用する権利を持っていることを示す良い兆候だと考えています。</p>
+	<p>検証トークンを含むルートオブジェクトの例（ドキュメント専用アドレス 192.0.2.0/24 を使用）：</p>
+	<pre class="language-Rust"><code class="language-Rust">% whois -h rr.arin.net 192.0.2.0/24
+
+route:          192.0.2.0/24
+origin:         AS13335
+descr:          Example Company, Inc.
+                cf-validation: 9477b6c3-4344-4ceb-85c4-6463e7d2453f
+admin-c:        ADMIN2521-ARIN
+tech-c:         ADMIN2521-ARIN
+tech-c:         CLOUD146-ARIN
+mnt-by:         MNT-CLOUD14
+created:        2025-07-29T10:52:27Z
+last-modified:  2025-07-29T10:52:27Z
+source:         ARIN</code></pre>
+	<p>IRRベースの検証を経たくない企業のために、リバースDNS（DNS）が別の安全な検証方法として提供されています。PTRレコードまたはセキュリティTXTレコードのいずれを作成する場合でも、プレフィックスのrDNSを管理するには、最初にIPブロックを割り当てたエンティティ（通常はISPまたはRIR）から許可が与えられる必要があります。</p>
+	<p>この許可は、次の2つの方法のいずれかで示されます：</p>
+	<ul>
+		<li>
+			<p>IP所有者の認証されたカスタマーポータル（ISP/RIR）経由で直接運用する。</p>
+		</li>
+		<li>
+			<p>IP所有者が、リバースゾーンのNSレコードを介して、サードパーティのDNSプロバイダーに権限を委任する場合。</p>
+		</li>
+	</ul>
+	<p>digコマンドを使用したリバースドメインルックアップの例（ドキュメント専用アドレス192.0.2.0/24を使用）：</p>
+	<pre class="language-Rust"><code class="language-Rust">% dig cf-validation.2.0.192.in-addr.arpa TXT
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; cf-validation.2.0.192.in-addr.arpa TXT
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 16686
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;cf-validation.2.0.192.in-addr.arpa. IN TXT
+
+;; ANSWER SECTION:
+cf-validation.2.0.192.in-addr.arpa. 300 IN TXT "b2f8af96-d32d-4c46-a886-f97d925d7977"
+
+;; Query time: 35 msec
+;; SERVER: 127.0.2.2#53(127.0.2.2)
+;; WHEN: Fri Oct 24 10:43:52 EDT 2025
+;; MSG SIZE  rcvd: 150</code></pre>
+	<p>では、具体的にはどのようにこれらのレコードを変更するべきなのでしょうか。そこで登場するのが検証トークンです。IRRまたはリバースDNS方法のいずれかを選択すると、一意の使い捨て検証トークンが提供されます。IRRまたはDNSのいずれかで、このトークンを関連するレコードのコンテンツに追加する必要があります。そして、システムは、要求が変更を行う権限を持つ人物によって行われたことの証拠として、トークンの存在を探します。トークンが見つかった場合、検証が完了し、所有性が確認されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-digital-passport">デジタルパスポート 🛂</h3>
+		<a href="https://blog.cloudflare.com/#the-digital-passport" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>オーナーシップは戦いの半分にすぎません。また、Cloudflareにプレフィックスのアドバタイズを許可するという意図を確認する必要があります。そのために、当社はルーティングセキュリティの絶対的基準であるリソースプライベートキーインフラストラクチャ（RPKI）、特にルートオリジン認証（ROA）オブジェクトに依存しています。</p>
+	<p>ROAは、どの自律システム番号（ASN）がIPプレフィックスの発信を許可されているかを指定する、暗号署名された文書です。ROAは、プレフィックスの所有者から送られる認証済み、署名付き、認証済みの契約のデジタル版と考えることができます。</p>
+	<p>信頼する当事者は、RPKIを使用してROAの署名を検証できます。Cloudflareの自律システム番号（AS13335）を認定オリジンとして指定するROAを作成し、署名を手配するだけです。当社のお客様の多くは、RIRポータルから提供されるホスティングされたRPKIシステムを使ってきました。当社のシステムがこの署名された認証を検出すると、お客様のルーティングの意図は即座に確認されます。</p>
+	<p>BYOIPをサポートしている他の多くの企業では、自己署名証明書を作成し、RDAP（登録データアクセスプロトコル）レコードを手動で変更する必要があり、管理が大変です。IRRオブジェクトの変更とリバースDNS TXTレコードの選択肢を採用し、RPKIと組み合わせることで、既存のネットワークオペレーターにとって、より身近で簡単な検証プロセスを提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-global-reach-guarantee">グローバルリーチの保証</h3>
+		<a href="https://blog.cloudflare.com/#the-global-reach-guarantee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいセルフサーブフローでは、LOAである「dinosaur Relic」の必要性はなくなりましたが、世界中の多くのネットワークオペレーターは、他のネットワークからプレフィックスを受け入れるプロセスの一部として、LOAに依存しています。</p>
+	<p>お客様のプレフィックスがグローバルに隣接するネットワークで受け入れられるようにするために、Cloudflareはお客様に代わって文書を自動的に作成し、LOAの代わりに配布します。この文書には、お客様のプレフィックスの発信を許可されていることを確認するために実施したチェックに関する情報が記載されています。また、当社の発信を許可するために有効なROAの存在を確認することができます。このようにして、LOAを利用しているネットワークオペレーターのワークフローを、お客様が生成する負担を強いることなく、サポートすることができるのです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GimIe80gJn5PrRUGkEMpF/130d2590e45088d58ac62ab2240f4d5c/image1.png" alt="" class="kg-image" width="1999" height="1312" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="staying-away-from-black-holes">ブラックホールからの回避</h2>
+		<a href="https://blog.cloudflare.com/#staying-away-from-black-holes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セルフサーブAPIを設計する際の懸念の1つは、お客様に柔軟性を提供することと、一致するサービスバインディングなしにIPプレフィックスがアドバタイズされないように、必要な保護策を実装することとのトレードオフです。このような場合、Cloudflareは、トラフィックを受信する際にどのような処理を行うかについて、混乱のない方法でプレフィックスを通知することになります。私たちは、このトラフィックを「ブラックホール化」と呼んでいます。これに対処するために、デフォルトのサービスバインディング、つまり、オンボードIPプレフィックスの全範囲にまたがるサービスバインディングの要件を導入しました。</p>
+	<p>お客様は、デフォルトのSpectrumサービスバインディングの上にCDNを置くように、<a href="https://blog.cloudflare.com/your-ips-your-rules-enabling-more-efficient-address-space-usage"><u>複数のサービスバインディング</u></a>を使用して、デフォルトのサービスバインディングの上に別のサービスバインディングを重ねることができます。このように、サービスのバインディングやお客様のトラフィックのブラックホール化なしに、プレフィックスがアドバタイズされることはありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20QAM5GITJ5m5kYkNlh701/82812d202ffa7b9a4e46838aa6c04937/image2.png" alt="この図は、デフォルトのサービスバインディングを持つIPv4 /24 IPv4プレフィックスを示しており、上のレイヤーは異なるサービスバインディングを持つ/28を示しています。上記から送られたパケットを示します。1つは/28バインディングにヒットして適切なサービスにルーティングされ、もう1つは/24バインディングにヒットしてデフォルトのバインディングに従って処理されます。" class="kg-image" width="1999" height="1369" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">利用開始</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/byoip/get-started" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>で、当社のAPIを介してIPプレフィックスにサービスをオンボード、アドバタイズ、追加する方法について最新情報を提供しています。ご確認ください。オンボーディングは複雑な作業になる可能性があることを忘れないで、当社による作業をご希望の場合は、お気軽に質問したり、当社の<a href="https://www.cloudflare.com/professional-services" target="_blank" rel="noopener noreferrer"><u>プロフェッショナルサービス</u></a>チームまでご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-future-of-network-control">ネットワーク制御の未来</h2>
+		<a href="https://blog.cloudflare.com/#the-future-of-network-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BYOIP管理をスクリプト化し、既存のワークフローに統合する機能は、現代のネットワーク運用にとってゲームチェンジャーであり、私たちはまだ始まったばかりです。今後数か月以内に、ダッシュボードのセルフサーブBYOIPとオフボーディングを開始し、お客様のコントロールをさらに強化します。</p>
+	<p>CloudflareのセルフサービスBYOIP APIオンボーディングは、IP資産に対してかつてない制御と柔軟性をお客様に提供します。オンボーディングの自動化への移行により、セキュリティ体制が強化され、手動でレビューするPDFから脱却し、<a href="https://rpki.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>RPKIの採用</u></a>が促進されます。これらのAPI呼び出しを使用することで、組織は複雑なネットワークタスクを自動化し、移行を合理化し、より耐障害性と俊敏性の高いネットワークインフラを構築することができます。</p>
+</div>

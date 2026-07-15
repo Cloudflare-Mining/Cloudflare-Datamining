@@ -1,0 +1,146 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7etdUqxBJ3QSA1J1dbHeWM/bb4f90ad6c0d5c212c6a611c60d99098/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="securing-the-ai-revolution-introducing-cloudflare-mcp-server-portals"><b>AI革命のセキュリティ確保：Cloudflare MCPサーバーポータルの紹介</b></h3>
+		<a href="https://blog.cloudflare.com/#securing-the-ai-revolution-introducing-cloudflare-mcp-server-portals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>大規模言語モデル（LLM）</u></a>は、印象的な情報検索ツールから、アクティブでインテリジェントなエージェントへと急速に進化しています。この変革を実現するための鍵となるのが<b>モデルコンテキストプロトコル（MCP）</b>です。これは、LLMがSlackからCanva、独自の内部データベースまで、あらゆるアプリケーションに安全に接続し、やりとりできるようにするオープンソースの標準です。</p>
+	<p>これは大きな前進です。MCPを使用すると、Gemini、Claude、ChatGPTのようなLLMクライアントは、単に「Slackについて教えて」以上の応答をすることができます。尋ねることができます：「先週のJiraのエンジニアリングP0は何でしたか？または、それらに関する#engineering-support Slackチャンネルの現在の感情はどうですか？そして、アップデートやバグ修正を提案してマージします。」</p>
+	<p>これがMCPの力です。モデルをチームの一員に変えるのです。</p>
+	<p>しかし、この大きな力には比例するリスクが伴います。LLMを最も重要なアプリケーションに接続することで、新しい、複雑で、ほとんど保護されていない<a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface" target="_blank" rel="noopener noreferrer"><u>攻撃対象領域</u></a>が生まれます。今日、当社はそれを変えます。Cloudflare <b>MCPサーバーポータル</b>のオープンベータ版が利用可能になりました。MCPサーバーポータルは、組織内のすべてのMCP接続を一元化し、保護し、監視できる新機能です。この機能は、<a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>の一部であり、お客様のワークスペースの接続と保護を支援する当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>セキュアアクセスサービスエッジ（SASE）</u></a>プラットフォームです。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-exactly-is-the-model-context-protocol"><b>モデルコンテキストプロトコルとは？</b></h3>
+		<a href="https://blog.cloudflare.com/#what-exactly-is-the-model-context-protocol" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>MCP</u></a>は、万能翻訳者またはAIのデジタルスイッチボードと考えてください。これは、LLMと日常的なアプリケーションという全く異なる種類のソフトウェアが効果的に相互に通信できるようにする標準化されたルールセットです。2つの主要コンポーネントで構成されています。</p>
+	<ul>
+		<li>
+			<p><b>MCPクライアント：</b>ChatGPT、Claude、Geminiなど、お客様がやり取りするLLMです。クライアントは、質問したりコマンドを与えたりするために使うAIのフロントエンドです。</p>
+		</li>
+		<li>
+			<p><b>MCPサーバー：</b>LLMに接続したいあらゆるアプリケーションのために開発できます。SlackやAtlassianなどのSaaSプロバイダーが、自社の製品用にMCPサーバーを提供している場合や、自社の開発者が社内ツール用にカスタムのサーバーを構築することもできます。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Du5DBczqtDdq3qhNPbQWt/479d741dcef445f73b5da82e716fdd32/image3.png" alt="" class="kg-image" width="712" height="318" loading="lazy">
+	</figure>
+	<p>クレジット：<a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noopener noreferrer"><u>アーキテクチャ概要 - モデルコンテキストプロトコル</u></a></p>
+	<p>有用な接続のために、MCPは他にもいくつかの主要概念に依存しています。</p>
+	<ul>
+		<li>
+			<p><b>リソース：</b>サーバーがLLMにコンテキストを提供する仕組み。これは、特定のファイル、データベーススキーマ、またはアプリケーション内のユーザーリストなどです。</p>
+		</li>
+		<li>
+			<p><b>プロンプト：</b>リクエストを満たすために必要な情報を取得するために、サーバーがクライアントに尋ねることができる標準化された質問（例：「どのユーザーを検索したいですか？」など）。</p>
+		</li>
+		<li>
+			<p><b>ツール：</b>データベースへの問い合わせ、APIの呼び出し、メッセージの送信など、クライアントがサーバーに実行を依頼できるアクションを指します。</p>
+		</li>
+	</ul>
+	<p>MCPがなければ、LLMは分離されてしまいます。MCPは統合され、構造化された予測可能な方法でソフトウェアエコシステム全体と対話することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-peril-of-an-unsecured-ai-ecosystem"><b>安全でないAIエコシステムの危険</b></h3>
+		<a href="https://blog.cloudflare.com/#the-peril-of-an-unsecured-ai-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLM は、これまでで最も優秀で熱心な若者の採用だと考えてください。彼らは無限のエネルギーを生み出すことができ、素晴らしい仕事を生み出すことができますが、何を<i>すべきでない</i>のかを知るために長年にわたる判断を持ち合わせていません。現在のMCPに対する分散型アプローチは、新入社員に入社1日目にすべてのオフィスとサーバールームのマスターキーを与えるようなものです。</p>
+	<p>「<i>おこるかどうか</i>」ではなく、「<i>いつ問題が生じるか</i>」です。</p>
+	<p>この「シャドーAI」インフラストラクチャは、初期のインターネットに相当するものであり、すべてのサーバーが公開IPアドレスを持っており、世界中に完全に公開されていました。これは管理外の接続の荒波であり、保護は不可能です。そして、そのリスクは、偶発的なデータ削除だけではありません。攻撃者は、LLM駆動型のエコシステムに固有の脆弱性を積極的に悪用しています。</p>
+	<ul>
+		<li>
+			<p><b>プロンプトとツールインジェクション：</b>これは単にモデルに「以前の指示を無視する」ように指示するだけではありません。攻撃者は現在、MCPツール自体の説明に悪意のあるコマンドを隠しています。一見無害な「Web検索」ツールを使わようとするLLMを考えてみましょう。説明が汚染されると、金融データベースに対してクエリを実行し、その結果を流出させる可能性があります。</p>
+		</li>
+		<li>
+			<p><b>サプライチェーン攻撃：</b>チームが使用しているサードパーティMCPサーバーはどのように信頼できるでしょうか？2025年半ば、MCP認証に使われる一般的なnpmパッケージに重大な脆弱性（<a href="https://nvd.nist.gov/vuln/detail/CVE-2025-6514" target="_blank" rel="noopener noreferrer"><u><b>CVE-2025-6514</b></u></a>）が発見され、無数のサーバーが危険にさらされました。「<b>NeighborJack</b>」と呼ばれる別のインシデントでは、セキュリティリサーチャーが発見しました。数百のMCPサーバーが誤ってパブリックインターネットにさらされたのです。これは、ファイアウォールなしに0.0.0.0にバインドされており、OSコマンドインジェクションやホストの乗っ取りが可能だったからです。</p>
+		</li>
+		<li>
+			<p><b>特権昇格と「混乱した使節」：</b>攻撃者はLLMを破壊する必要はありません。混乱させる必要があるのです。記録されたあるケースでは、高レベルの権限で実行しているAIエージェントが騙され、サポートチケットに埋め込まれたSQLコマンドを実行させられました。「混乱した副社長」として機能したエージェントは、悪意のあるSQLと正当なチケットデータを区別できずにコマンドを実行し、データベース全体を侵害しました。</p>
+		</li>
+		<li>
+			<p><b>データ漏洩：</b>一元化された制御がない場合、予期しない方法でシステム間でデータが流出する可能性があります。<a href="https://www.bleepingcomputer.com/news/security/asana-warns-mcp-ai-feature-exposed-customer-data-to-other-orgs" target="_blank" rel="noopener noreferrer"><u>2025年6月</u></a>、ある人気のチームコラボレーションツールのMCP統合においてプライバシー侵害が起こり、バグにより一部の顧客情報が他の顧客のMCPインスタンスに表示されるようになってしまい、統合が2週間にわたってオフラインになる事態が発生しました。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="the-solution-a-single-front-door-for-your-mcp-servers"><b>解決策：MCPサーバーのための1つの玄関ドア</b></h3>
+		<a href="https://blog.cloudflare.com/#the-solution-a-single-front-door-for-your-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>見えないものを保護することはできません。<b>Cloudflare MCPサーバーポータル</b>は、すべてのMCPサーバーに単一かつ一元化されたゲートウェイを提供することで、この問題を解決します。<a href="https://www.cloudflare.com/learning/access-management/what-is-sso" target="_blank" rel="noopener noreferrer"><u>シングルサインオン</u></a>のためのアプリケーションランチャーに似ています。開発者が数十の個別サーバーエンドポイントを配布する代わりに、Cloudflareにサーバーを登録します。お客様は、MCPクライアントで設定する単一の統合ポータルエンドポイントをユーザーに提供します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gIceb6D72AwuQSNjq0eqb/25147ec57731dd2e016887d6bab33f55/image1.png" alt="" class="kg-image" width="1464" height="584" loading="lazy">
+	</figure>
+	<p>これにより、セキュリティに対する取り組みとユーザーエクスペリエンスが即座に変わります。すべてのMCPトラフィックをCloudflareを介してルーティングすることで、次のことが得られます。</p>
+	<ul>
+		<li>
+			<p><b>一元化されたポリシーの適用：</b>MCPサーバーポータルをCloudflare Oneに直接統合できます。つまり、AI接続にも、人間のユーザーと同じきめ細かいアクセスポリシーを適用できるということです。<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>多要素認証</u></a>の要求、デバイスポスチャーのチェック、地理による制限、適切なユーザーのみが特定のサーバーやツールにアクセスできるようにすること。</p>
+		</li>
+		<li>
+			<p><b>包括的な可視化とログ記録：</b>誰がどのMCPサーバーにアクセスし、どのツールセットを利用しているか？どのようなプロンプトが実行されていますか？呼び出されるツールは？以前は、このデータはすべての個々のサーバーに分散していました。サーバーポータルは、すべてのMCPリクエストログを1か所に集約し、アクティビティの監査に必要な可視性を提供し、異常が侵害になる前に検出できます。</p>
+		</li>
+		<li>
+			<p><b>最小権限に基づく厳選されたAIユーザーエクスペリエンス：</b>管理者は、MCPサーバーをポータルを通じてユーザーが利用できるようにする前に、MCPサーバーを確認、承認できるようになりました。ユーザーがポータルを介して認証されると、使用を許可されたサーバーとツールの厳選されたリストのみが表示されるので、未検証のサードパーティサーバーや悪意のあるサードパーティサーバーが使用されることを防ぎます。このアプローチは、<a href="https://www.cloudflare.com/learning/access-management/principle-of-least-privilege" target="_blank" rel="noopener noreferrer"><u>最小権限</u></a>という<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>ゼロトラストセキュリティ</u></a>のベストプラクティスに従ったものです。</p>
+		</li>
+		<li>
+			<p><b>簡素化されたユーザー設定：</b>MCPクライアントに個々のMCPサーバーの設定を読み込む代わりに、ユーザーはアクセス可能なすべてのMCPサーバーをプルダウンする1つのURLを読み込むことができます。これにより、必要なURLの数を共有してユーザーに知らせる必要が大幅に簡素化されます。新しいMCPサーバーが追加されると、サーバーの公開時に新しいURLを共有するのではなく、ポータルを通じて動的に利用できるようになります。</p>
+		</li>
+	</ul>
+	<p>ユーザーがMCPサーバーポータルに接続すると、<a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Access</u></a>はユーザーに企業IDプロバイダーに認証を求めます。認証が行われると、Cloudflareは、基盤となるサーバーの認可ポリシーに関係なく、ユーザーがアクセスできるMCPサーバーを強制します。</p>
+	<p>CloudflareにドメインがホストされているMCPサーバーの場合、Accessポリシーを使用して、サーバーに直接認可を適用することができます。これは、<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/mcp-servers/linked-apps" target="_blank" rel="noopener noreferrer"><u>ドメインの既存の Access Application にリンクされるOAuthサーバー</u></a>を作成することで行われます。Cloudflareの外にドメインや第三者がホストするMCPサーバーの場合、Cloudflare Accessの外で<a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization" target="_blank" rel="noopener noreferrer"><u>認可制御</u></a>を必要とするため、これは通常、OAuthを使用して行われます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-road-ahead-whats-next-for-ai-security"><b>今後の道のり：AIセキュリティの今後は？</b></h3>
+		<a href="https://blog.cloudflare.com/#the-road-ahead-whats-next-for-ai-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPサーバーポータルは、<a href="https://www.cloudflare.com/ai-security" target="_blank" rel="noopener noreferrer">AI革命のセキュリティを確保する</a>という当社の使命の基礎を成すものです。これは始まりにすぎません。今後数か月の間に、この土台を基盤として、次のことを計画しています。</p>
+	<ul>
+		<li>
+			<p><b>MCPサーバーをロックダウンするメカニズム：</b>MCPサーバーの作成者が<a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization" target="_blank" rel="noopener noreferrer"><u>認可</u></a>コントロールを適用しない限り、ユーザーはポータル外でMCPに技術的にアクセスすることができます。このような事態を阻止するために、追加の強制メカニズムを構築します。</p>
+		</li>
+		<li>
+			<p><b>Firewall for AIの統合：</b><a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>のパワーをMCPトラフィックに適用し、プロンプトインジェクション攻撃がサーバーに到達する前に検出してブロックするところを想像してみてください。</p>
+		</li>
+		<li>
+			<p><b>Cloudflareのホスト型MCPサーバー：</b>Cloudflareの<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>を使ってMCPサーバーを簡単にデプロイできるようにします。これにより、より詳細なプロンプトフィルタリングと制御が可能になります。</p>
+		</li>
+		<li>
+			<p><b>不正利用の検出に機械学習を適用：</b>MCPログの上に当社の<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>機械学習モデル</u></a>を適用し、異常なデータ流出パターンや不審なツール使用状況など、異常な動作を自動的に識別します。</p>
+		</li>
+		<li>
+			<p><b>プロトコルの強化：</b>私たちは、オープンソースコミュニティと協力してMCP標準自体を強化し、すべての人にとってより安全で堅牢なエコシステムに貢献することに尽力しています。</p>
+		</li>
+	</ul>
+	<p>これは当社のコミットメントです。お客様が自信を持ってイノベーションに必要なツールを提供することです。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today"><b>今すぐ始めましょう</b></h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>進歩のためにセキュリティを犠牲にする必要はありません。MCPサーバーポータルを使えば、お客様のチームがAIで未来を安全に構築できるように支援できます。これはより良いインターネットの構築に重要な要素であり、皆さんがそれを使って何を構築するか楽しみです。</p>
+	<p>MCPサーバーポータルは、Cloudflare Oneのすべてのお客様を対象にオープンベータでご利用いただけます。まず、Zero Trustダッシュボードの<b>「Access」&gt;「AI Controls」</b>ページに移動します。アカウントをお持ちでない方は、<a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>今すぐサインアップ</u></a>して、最大50名まで無料のシートをご利用いただくこともできますし、<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>より大規模なデプロイメントについてご相談</u></a>いただくこともできます。</p>
+	<p>Cloudflareはまた、<a href="https://www.cloudflare.com/learning/ai/what-is-ai-security" target="_blank" rel="noopener noreferrer">AIセキュリティ</a>に焦点を当てたユーザーリサーチプログラムを開始しています。新機能のプレビューにご興味がある方、またはロードマップの作成への協力をご希望の方は、<a href="https://www.cloudflare.com/lp/ai-security-user-research-program-2025" target="_blank" rel="noopener noreferrer"><u>こちらからご連絡をお願いいたします</u></a>。 </p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/5fa9b7f8af6ed1b7b6ed78eeedf0f11b/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F5fa9b7f8af6ed1b7b6ed78eeedf0f11b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

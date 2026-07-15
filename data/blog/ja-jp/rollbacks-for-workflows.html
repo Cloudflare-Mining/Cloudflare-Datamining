@@ -1,0 +1,337 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/rollbacks-for-workflows">English</a>、<a href="https://blog.cloudflare.com/zh-tw/rollbacks-for-workflows">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/rollbacks-for-workflows">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/rollbacks-for-workflows">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HPEKK5VhL31s4G3AHSo4T/a97f5954b6d2ae476a32f550c163f181/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflare Workflowsは、長期間実行されるプロセス全体で、組み込みのリトライ処理と状態の永続性を備えた、耐久性のあるマルチステップアプリケーションを構築することができます。<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflow</u></a>が実行されると、各ステップは外部システムを呼び出し、失敗を再試行し、再起動時に状態を保持することができます。しかし、1つのステップが失敗すると、完了したステップから以前の作業が一貫性のない、または部分的な状態になる可能性があります。</p>
+	<p>本日、Workflowsのサガロールバックを出荷します。これにより、障害が発生した場合に、ステップ自体でロールバックロジックを宣言できるようになります。</p>
+	<p>たとえば、2つの異なる銀行の口座間で資金移動を行うワークフローがあるとします。</p>
+	<ol>
+		<li>
+			<p>A銀行の口座からの借方</p>
+		</li>
+		<li>
+			<p>B銀行の口座に振り込み</p>
+		</li>
+		<li>
+			<p>両方のアカウント所有者に確認メールを送信する</p>
+		</li>
+	</ol>
+	<p>ステップ2（B銀行の口座への貸方）が失敗した場合はどうなりますか？A銀行で借方に成功すると、取引がコミットされ、お金がシステムを離れます。取引のオーケストレーターとして、A銀行のシステムで操作を単純に「元に戻す」ことはできません。この代わりに、最初の操作と逆の操作を意味する新しい操作を通じて、A銀行の口座に返金する必要があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1j8xfDeKb3FCgE2Ktxf4fq/723e2b9e34189747d3c8eb65f906fb41/BLOG-3317_image6.png" alt="BLOG-3317 image6" class="kg-image" width="1376" height="1310" loading="lazy">
+	</figure>
+	<p>
+		このような操作と報酬ロジックの組み合わせは、<a href="https://www.youtube.com/watch?v=xDuwrtwYHu8" target="_blank" rel="noopener noreferrer"><u>サガパターン</u></a>と呼ばれます。</p>
+	<p>今日まで、開発者は、ステップの直接的な定義以外に、何が成功し、何が失敗し、失敗した場合にどのような行動をとるべきかを追跡するために、独自の報酬ロジックを実装する必要がありました。これで、各<code>step.do()</code>に対して報酬ロジックを定義できるようになりました。ステップ自体内の引数として、ロールバックに対するワークフローの耐久性を維持します。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// track what completed so we know what to undo
+let debitA;
+let creditB;
+try {
+  debitA = await step.do("debit-bank-a", () =&gt; bankA.debit(from, amount));
+  creditB = await step.do("credit-bank-b", () =&gt; bankB.credit(to, amount));
+  await step.do("notify", () =&gt; notifyBoth(from, to, amount));
+} catch (error) {
+  // unwind in reverse. each undo is its own durable step,
+  // must be idempotent, and must keep going if one fails.
+  if (creditB) {
+    try {
+      await step.do("reverse-credit-b", () =&gt; bankB.debit(to, amount, creditB.id));
+    } catch (e) {
+      await alertOnCall("reverse-credit-b failed", e);
+    }
+  }
+  if (debitA) {
+    try {
+      await step.do("refund-debit-a", () =&gt; bankA.credit(from, amount, debitA.id));
+    } catch (e) {
+      await alertOnCall("refund-debit-a failed", e);
+    }
+  }
+  throw error;
+}</code></pre>
+	<p><i><sup>ロールバックなし</sup></i></p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// each step ships with its own undo. add a step,
+// add its rollback right here. no growing catch
+// block, no manual ordering, no replay logic.
+await step.do("debit-bank-a", () =&gt; bankA.debit(from, amount), {
+  rollback: async ({ output }) =&gt; bankA.credit(from, amount, output.id),
+});
+await step.do("credit-bank-b", () =&gt; bankB.credit(to, amount), {
+  rollback: async ({ output }) =&gt; bankB.debit(to, amount, output.id),
+});
+await step.do("notify", () =&gt; notifyBoth(from, to, amount));</code></pre>
+	<p><i><sup>ロールバック機能あり</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">試してみる</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロールバックを使用するには、<code>rollback</code>関数を含むオプションオブジェクトを、<code>step.do()</code>の最後の引数として渡すだけです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const debit = await step.do(
+  "debit-account-a",
+  async () =&gt; {
+    return await bankA.debit({
+      accountId: fromAccountId,
+      amount,
+      idempotencyKey: `${transferId}:debit-account-a`,
+    });
+  },
+  {
+    rollback: async () =&gt; {
+      await bankA.credit({
+        accountId: fromAccountId,
+        amount,
+        idempotencyKey: `${transferId}:rollback-debit-account-a`,
+      });
+    },
+  }
+);
+
+// The idempotency keys make both the forward operations and rollback operations safe to retry without duplicating the transfer
+
+const credit = await step.do(
+  "credit-account-b",
+  async () =&gt; {
+    return await bankB.credit({
+      accountId: toAccountId,
+      amount,
+      idempotencyKey: `${transferId}:credit-account-b`,
+    });
+  },
+  {
+    rollback: async ({ output }) =&gt; {
+      if (output === undefined) {
+        return;
+      }
+
+      await bankB.debit({
+        accountId: toAccountId,
+        amount,
+        idempotencyKey: `${transferId}:rollback-credit-account-b`,
+      });
+    },
+  }
+);
+
+
+// If we fail here, we may want to revert all previous payments. Users should not have to wrap their code in complex try-catch logic just to revert two small payments (see below)
+
+await step.do("send-confirmation", async () =&gt; {
+  await sendTransferConfirmation({ ... });
+});</code></pre>
+	<p>ロールバック関数は、通常のWorkflowステップと同様に、か部門である必要があります。料金を払い戻しる場合は、支払プロバイダーの識別キーを使用します。インベントリをリリースする場合、リリースを複数回呼び出すことができるようにします。</p>
+	<p>いずれかのステップが失敗すると、ロールバックハンドラは逆の<code>ステップ-開始</code>順序で実行されます。それはシンプルに聞こえます。何かが失敗する時に、元に戻すステップを実行するだけです。実際には、APIと実行モデルを重要にする詳細がいくつかあります。</p>
+	<p>1.<b>失敗したステップは、まだロールバックが必要である場合があります。</b>失敗した<code>step.do()</code>ロールバックハンドラを登録すれば、ロールバック対象になることができます。</p>
+	<p>ユーザーコードがエラーを検知してWorkflowが続行する場合は、ロールバックは開始されませんが、ステップエラーが検知されて、その後Workflowが別の理由で失敗した場合、ロールバックは以前登録されたハンドラに対してまだ実行できます。これは逆の<code>step-start</code>順序で実行されます。</p>
+	<p>なぜでしょうか？このステップは、外部システムと部分的に対話している可能性があります。たとえば、決済プロバイダーは請求をキャプチャできますが、Workflowsに<code>chargeId</code>を返す前に、このステップが失敗することがあります。そのため、ロールバックハンドラーは<code>output</code>を受け取りますが、<code>output === undefined</code>を処理しなければなりません。</p>
+	<p>2. <b>ロールバックは、Workflowが失敗した場合にのみ始まります。</b>ロールバックハンドラーを追加しても、すべてのステップエラーがロールバックをトリガーするわけではありません。ユーザーコードがエラーを検知して続行する場合、Workflowは続行します。ロールバックは、Workflow自体が最終的に障害に直面しつつある時点から始まります。</p>
+	<p>ロールバックが開始されると、Workflowsは条件を満たす<code>step.do()</code>を見つけますロールバックハンドラを実行し、最終的なWorkflowの障害を記録します。</p>
+	<p>3. <b>順序は予測可能である必要があります。</b>時系列のWorkflowsでは、ロールバック順序は当然のことのように感じられます：</p>
+	<ol>
+		<li>
+			<p>在庫確保。</p>
+		</li>
+		<li>
+			<p>請求カード。</p>
+		</li>
+		<li>
+			<p>配送を作成します。</p>
+		</li>
+		<li>
+			<p>出荷に失敗した場合は、カードを返金し、在庫をリリースします。</p>
+		</li>
+	</ol>
+	<p>パラレルステップを踏むことで、これはより巧妙になります。完了順序は開始順序と異なる場合があるため、Workflowsは、逆の完了順序ではなく、逆のステップ開始順序を使用します。</p>
+	<p>実用的なルールは次のとおりです。</p>
+	<ol>
+		<li>
+			<p>ロールバックハンドラを使用して開始または完了したステップが対象です。</p>
+		</li>
+		<li>
+			<p>ロールバックハンドラーを登録されている場合、失敗した<code>step.do()</code>も対象となります。</p>
+		</li>
+		<li>
+			<p>ハンドラは完了順ではなく、逆のステップ開始順で実行されます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="how-we-designed-the-api">APIの設計方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-designed-the-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>想定される動作を想定したら、この新しいパターンをWorkflows APIに追加する必要がありました。ロールバックは、<code>ロールバックオプション</code>にたどり着くまでに、いくつかのイテレーションを経ました。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-not-a-fluent-or-builder-api">なぜAPIが流暢またはビルダーのAPIではないのか？</h3>
+		<a href="https://blog.cloudflare.com/#why-not-a-fluent-or-builder-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最初のアプローチは、流暢な形式でした。<code>step.do(...).rollback(...)</code> 読みやすいです。フォワードアクションと報酬は隣にあり、呼び出しサイトは通常のJavaScriptの連鎖のように見えます。</p>
+	<p>問題は、<code>step.do()</code> です。耐久性のあるステップを開始し、ステップ出力のPromiseを返すため、すでに重要な意味を持っています。Workersでは、Workers RPCが<a href="https://capnproto.org/rpc.html#time-travel-promise-pipelining" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a> のようなシステムから継承されたパターンである<a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library/#chained-calls-promise-pipelining"><u>promise pipelining</u></a>をサポートしているため、promiseのような値が特に意味を持ちます。</p>
+	<p>約束パイプラインを使用すると、コードは将来の値が呼び出し元に完全に返される前に、将来の値に対してメソッドを呼び出すことができます。たとえば：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const session = api.authenticate(apiKey);
+const name = await session.whoami();</code></pre>
+	<p>ここでは、<code>セッション</code>はまだ実際のセッションオブジェクトではありません。これは、まもなく存在するセッションのハンドラーのようなものです。<code>session.whoami()</code>を呼び出すと、Workersは、この呼び出しをリモート側に早く送信して、「認証がセッションを作成したら、<code>whoami()</code>を呼び出してください」と言うことができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cgBccGGKzjrx2gnnyAUvL/f0470a7a40ef05027e952d42abfa592c/BLOG-3317_image4.png" alt="BLOG-3317 image4" class="kg-image" width="1999" height="1332" loading="lazy">
+	</figure>
+	<p>これにより、ラウンドトリップが節約できます。呼び出し元は、<code>authenticate()</code>が完全に終了するのを待ってから<code>whoami()</code>を問い合わせる必要がありません。</p>
+	<p>Cloudflareは、流暢なAPIと考えました。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">step.do("charge-card", chargeCard).rollback(refundCharge);</code></pre>
+	<p>
+		読者には、それが「<code>charge-card</code>の結果に対して<code>.rollback()</code> を呼び出す」ことのように見えるかもしれません。ただし、ロールバックはステップの出力の一部ではありません。これは、<code>step.do()</code>の一部です。ステップが開始する前に登録されているため、Workflowsは、後のステップが失敗した場合にそのステップを修正する方法を知っています。</p>
+	<p>また、流暢なAPIは、ステップのタイミングを考えるのを難しくします。現在、<code>step.do()</code>呼び出されたときにステップを開始するため、開発者はステップを開始してから他の作業を行い、後で最初のステップを待つことができます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const first = step.do("first", () =&gt; serviceA.call());
+
+await step.do("second", () =&gt; serviceB.call());
+
+await first;</code></pre>
+	<p>現在の実行モデルでは、<code>1つ目</code>はすぐに始まり、<code>2番目</code>です。流暢なAPIはそれをさらに複雑にします。Workflowsは、<code>.rollback()</code> を実行するかどうかを確認するために待機する必要があります。完全なステップ定義を知る前に付加されます。それにより、ステップがエンジンに送信される時間が遅れる可能性があります。</p>
+	<p>先の例では、<code>second</code>の完了後、<code>first</code>は<code>step.do("first", ...)</code>からではなく、<code>await first</code>から開始される可能性があります。</p>
+	<p>このため、同時実行されるWorkflowsの理解が難しくなります。ステップのタイミングは、返された<code>Promise</code>が消費されるタイミングだけでなく、<code>step.do()</code>が呼び出される場所にも依存することになります。</p>
+	<p>また、ビルダースタイルのAPIも検討しました。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const charge = await step
+	.saga("charge")
+	.do(() =&gt; chargeCard())
+	.rollback(() =&gt; refundCharge())
+	.run();</code></pre>
+	<p>ビルダーAPIは、<code>Promise</code>の曖昧さを回避します。また、将来のステップレベルの選択肢が明確で、フォワードアクションとロールバックアクションが同じ収集ステップに属していることも明確になっています。</p>
+	<p>しかし、それはセレモニーを増すことにもなります。各ステップの最後には必ず<code>.run()</code>を記述する必要があります。<code>.run()</code>を書き忘れることは容易ですが、ツールを使わなければそのミスに気づくのは困難であり、単純な1ステップのケースでさえ、設定の連鎖のように見えてしまうようになります。また、新しい<code>step.saga()</code>ビルダーが導入され、従来の<code>step.</code>パターンから脱却しています。何よりも重要なのは、これにより<code>step.do()</code>が、Workflowsの主要なプリミティブというよりは、むしろ古いAPIのように感じられてしまう点です。ロールバックの目的は、<code>step.do()</code>を拡張することであり、置き換えることではありませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="rollback-as-step-metadata">ステップメタデータとしてロールバック</h3>
+		<a href="https://blog.cloudflare.com/#rollback-as-step-metadata" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-TypeScript"><code class="language-TypeScript">step.do(..., { rollback })</code></pre>
+	<p>最終的に、ロールバックがステップのメタデータになる明示的な形式を選びました。</p>
+	<p>このように、各ロールバックは前進ステップ自体の中で定義されます。各ハンドラは、ロールバック開始の原因となったエラー、<a href="https://developers.cloudflare.com/workflows/build/step-context" target="_blank" rel="noopener noreferrer"><u>ステップコンテキスト</u></a>、および出力を受け取ります。これらは、フォワードステップによって返された永続的な値（未定義である場合があります）、またはステップが値を永続化する前に失敗した場合は未定義となります。</p>
+	<p>ロールバックはライフサイクルイベントを発生させるため、代替が開始されたか、どのロールバックハンドラが失敗したか、そしてロールバックが正常に完了したかを把握できます。</p>
+	<p>重要なのは、元のWorkflowの障害が別個に残っていることです。ロールバックは障害発生後にWorkflowsが行うことであり、Workflowの障害が発生した理由ではありません。</p>
+	<p><code>WorkflowStepConfig</code>を介して<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig" target="_blank" rel="noopener noreferrer"><u> ステップ設定</u></a>でカスタムの再試行動作とタイムアウト動作を定義できるのと同様に、<code>rollbackConfig</code>にロールバック固有の値を追加します。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">{
+  rollback: async ({ output }) =&gt; {
+    await bankA.credit({ accountId: fromAccountId, amount, transferId: `${transferId}-reversal` });
+  },
+  rollbackConfig: {
+    retries: { limit: 10, delay: '30 seconds', backoff: 'exponential' },
+    timeout: '2 minutes',
+  },
+}</code></pre>
+	<p>これは、当社が求めていたライフサイクルイベントのメンタルモデルに一致しています。<code>step.do()</code>は、Workflowsが記録し、再試行し、そして後でログに表示する耐久性のある作業単位をすでに記述しています。ロールバックは、同じ作業単位の別のライフサイクル動作です。別のラッパーやビルダー内ではなく、ステップ定義と共に移動する必要があります。</p>
+	<ul>
+		<li>
+			<p>ステップは、<code>step.do()</code>が通常開始されるときに開始されます。</p>
+		</li>
+		<li>
+			<p>返された約束は、依然としてステップの出力を表します。</p>
+		</li>
+		<li>
+			<p>同時実行Workflowコードは、同じ実行モデルを保持します。</p>
+		</li>
+		<li>
+			<p>ロールバックハンドラの横にあるロールバックライブのリトライとタイムアウトのオプション。</p>
+		</li>
+		<li>
+			<p>既存の<code>step.do()</code>の呼び出しは、現在とまったく同じように動作し続けます。</p>
+		</li>
+	</ul>
+	<p>この形は、流暢なAPIよりも若干明示的ですが、この明確さは便利です。オペレーションとその報酬は依然として一箇所にあり、APIは新しいステップビルダーや新しい種類のプロミスを導入するものではありません。すでに<code>step.do()</code>を理解している開発者は、追加で<code>options</code>オブジェクトを1つ学ぶだけで済みます。</p>
+	<p>これは魔法のようではありませんが、採用が簡単で、理解しやすいのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-under-the-hood">内部の仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロールバックは小さなAPIの追加のように感じられますが、各ステップについてWorkflowsが記録する必要があるものが変化します。</p>
+	<p>定期的な<code>step.do()</code>すでに耐久性のあるレコードがあります。Workflowsは、ステップが開始されたか、完了したか、返されたか、またWorkflowが後で再開された場合に繰り返されるべきかどうかを記録します。</p>
+	<p>ロールバックは、そのレコードにもう1つ、ステップが報酬ロジックを登録済みかどうかを追加します。</p>
+	<p>つまり、Workflowsが失敗した場合に、Workflowsは2つの情報をまとめなければなりません。</p>
+	<p>1つ目は、<b>耐久性のあるステップ履歴</b>です。Workflowエンジンは、実行された内容、完了した内容、保存された出力内容、ロールバックが登録されたかどうかを把握するためのデータを保存します。</p>
+	<p>2つ目は、<b>ロールバックハンドラ</b>自体で、そのステップを補完するために書かれた関数です。Workflowsは、その関数のテキストをデータとして保存しません。その代わり、Workflowの実行中に、ハンドラへの呼び出し可能な参照を保持します。</p>
+	<p>Workers RPCでは、この種の呼び出し可能な参照を<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle" target="_blank" rel="noopener noreferrer"><u><b>スタブ</b></u></a>と呼びます。スタブリ込みとは、システムの一部が、別の場所で実行中のコードを呼び出すことを可能にします。また、スタブには有効期限があり、呼び出しや実行のコンテキストが終了すると処分できるようになっています。その時点を超えてスタブを保持する必要がある場合、Workers RPCは、同じターゲットに別のハンドルを作成する<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#the-dup-method" target="_blank" rel="noopener noreferrer"><u><code>dup()</code></u></a>メソッドを提供します。</p>
+	<p>ロールバックには、このモデルが便利です。耐久性のあるステップ履歴に、報酬が必要なものを記録。ロールバックスタブにより、Workflowsは報酬コードを呼び出す方法を得ることができます。また、ロールバックハンドラーは、即時の<code>step.do()</code>よりも長く存続する必要があるため、Workflowsは、ロールバックフェーズのハンドラへの独自の呼び出し可能な参照を保持します。</p>
+	<p>一般的なケースでは、Workflowが同じエンジン有効期間内にロールバックに入る時、Workflowsには既に必要なロールバックスタブがあります。耐久性のあるステップ履歴を使用して対象となるステップを見つけ、フォワード実行中に登録されたロールバックスタブを呼び出すことができます。</p>
+	<p>これは、再起動後にWorkflowsが<b>回復する</b>必要がある場合、より微妙になります。</p>
+	<p>ロールバックが必要な時にエンジンがエビクション、クラッシュ、または再起動した場合、Workflowsにはまだ耐久性のあるステップ履歴がありますが、メモリ内ロールバックスタブはなくなる可能性があります。Workflowsは、回復するために、<b>リプレイ</b>を使用します。これは、完了したフォワードステップ本文を再実行することなく、Workflowコードを再実行できるリカバリーモードです。</p>
+	<p>リプレイが完了した<code>step.do()</code>に達すると、Workflowsは、ステップ本文を再度実行する代わりに、永続化された結果を読み取ります。ロールバックリカバリーの場合、Workflowsは、ロールバックが付加されたステップのリビルドハンドラのみを必要とします。これらの<code>step.do()</code>はロールバックオプションにより、呼び出し可能なスタブを再び登録できます。</p>
+	<p>これにより、Workflowsは、元の外部のサイド効果を重複させることなく、必要なロールバックハンドラを回復することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F0SOtk10x2op5YxnKKnXM/54f7e763f4ada07e353e8bcac5549833/BLOG-3317_image5.png" alt="BLOG-3317 image5" class="kg-image" width="1738" height="1698" loading="lazy">
+	</figure>
+	<p>これらの要素が整っていれば、ハンドラがメモリ上にまだ存在している場合でも、リカバリ中に再構築する必要がある場合でも、ロールバックは正常に機能します。</p>
+	<p>ワークフローが失敗しそうになった場合、Workflowsはアプリケーションに対して、何が起きたのかを再現するよう要求することはありません。すでにステップ履歴があります。保持された記録を見て、重要な質問に答えることができます。</p>
+	<ul>
+		<li>
+			<p>どのステップから始まりましたか？</p>
+		</li>
+		<li>
+			<p>完了したステップは？</p>
+		</li>
+		<li>
+			<p>失敗したステップのどれが、まだクリーンアップが必要かもしれませんか？</p>
+		</li>
+		<li>
+			<p>登録されたロールバックハンドラはどのステップか？</p>
+		</li>
+		<li>
+			<p>各ロールバックハンドラはどの出力を受信すべきか？</p>
+		</li>
+		<li>
+			<p>報酬はどのような順序で実行されるべきか？</p>
+		</li>
+	</ul>
+	<p>次に、Workflowsは、ロールバックコンテキスト（オリジナルエラー、ステップコンテキスト、ステップ出力（永続化されている場合））を使用して、各ロールバックスタブを呼び出します。</p>
+	<p>順序の細部が重要です。通常のJavaScript、特に<code>Promise.all()</code>では、完了順序は、開始順序と同じではありません。ステップAが最初に始まり、ステップBが2番目に始まる場合、ステップBが最初に完了するかもしれません。ロールバックの際、Workflowsは、保存された開始順序を安定した信頼できる情報源として使用し、逆に展開します。</p>
+	<p>ロールバックハンドラーは、Workflowsの通常のステップ機械も実行します。つまり、報酬は、Workflowsに期待されるのと同じ運用プロパティ（リトライ、タイムアウト、ライフサイクルイベント、ログ、記録された最終的な結果）が得られるということです。ロールバックハンドラーが設定されたリトライ後に失敗し続けると、Workflowsはロールバックの結果を失敗として記録し、残りのロールバックハンドラの実行を停止し、Workflowインスタンスは最終的に<code>Errored</code>状態になります。</p>
+	<p>これは、サガロールバックと<code>キャッチ</code>ブロックの主な違いです。Catchブロックは、JavaScript実行の正確な時点でまだメモリにあるもの<code>だけ</code>がわかります。Workflowsのロールバックは、残っているステップ履歴を使用して、すでに何が起こったかを判断し、一般的なケースではすでにあるスタブを呼び出し、必要な場合はリカバリ中に不足しているスタブリを安全に再構築します。</p>
+	<p>また、それが理由で、このAPIでは<code>step.do()</code>自体にロールバック機能が実装されています。ロールバックは、別のグローバルなエラーハンドラーではありません。これは、Workflowsがすでに理解しているワークの耐久性のある単位にメタデータが付加されるものです。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロールバックの最初のイテレーションには以下の内容が含まれます：</p>
+	<ul>
+		<li>
+			<p><code>step.do()</code>の明示的なステップごとのロールバックハンドラ</p>
+		</li>
+		<li>
+			<p>順次ロールバック実行</p>
+		</li>
+		<li>
+			<p>修正のための設定再試行とタイムアウト</p>
+		</li>
+	</ul>
+	<p>次に、以下を探ります。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workflows/build/events-and-parameters/#wait-for-events" target="_blank" rel="noopener noreferrer"><u><code>waitForEvent</code></u></a> のロールバックサポート</p>
+		</li>
+		<li>
+			<p>並列ロールバック実行のサポート</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workflows/python" target="_blank" rel="noopener noreferrer"><u>Python Workflows</u></a>のサポートをロールバックする</p>
+		</li>
+	</ul>
+	<p>マルチステップのアプリケーションが途中で失敗したとき、最も大変なのは、失敗した<i>こと</i>に気づいていないことが多いのです。すでに何が起こったのか、次に何が起こる必要があるのかを<i>知る</i>ことです。</p>
+	<p>SaaSロールバックを使用すると、その答えを各ステップの横に直接配置することができます。Workflowsでマルチステップのアプリケーションを構築している場合、s頻度のロールバックを試し、次に必要な報酬パターンを教えてください。<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflowsドキュメント</u></a>の利用を開始し、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>でフィードバックを共有してください。</p>
+</div>

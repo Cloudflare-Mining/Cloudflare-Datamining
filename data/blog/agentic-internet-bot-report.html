@@ -1,272 +1,105 @@
-<div class="mb2 gray5">10 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/agentic-internet-bot-report">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/agentic-internet-bot-report">Français</a>, <a href="https://blog.cloudflare.com/de-de/agentic-internet-bot-report">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/agentic-internet-bot-report">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/agentic-internet-bot-report">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/agentic-internet-bot-report">Português</a>, <a href="https://blog.cloudflare.com/es-la/agentic-internet-bot-report">Español (Latinoamérica)</a> and <a href="https://blog.cloudflare.com/zh-tw/agentic-internet-bot-report">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nE7HAncurO4lahc5zbtO8/3cea57d56b82681198bf725fdc2c4d3c/BLOG-3368_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>One year ago, we declared <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>Content Independence Day</u></a>. At the time, we could see what many in the industry were beginning to sense: the fundamental economics of the Internet were shifting. AI adoption was accelerating, publishers were experiencing rapid declines in referral traffic, and AI companies were crawling the web at unprecedented scale, often without clearly declaring intent, and almost always without compensation.</p>
-	<p>We changed the defaults. For all new domains on Cloudflare, AI training crawlers would be blocked by default unless domain owners chose otherwise. We didn't do this to wall off the web. We did it because we believed a healthier ecosystem required transparency, control, scarcity, and ultimately, a market where high-quality content could be valued and exchanged fairly.</p>
-	<p>A year later, that market has emerged. But the transformation of the Internet has happened even faster than we anticipated. In this report, we share key data points that illustrate how quickly the business model of the Internet has shifted – and what this new content market means for publishers and site owners.</p>
-	<div class="flex anchor relative">
-		<h2 id="part-i-the-internet-has-changed-faster-than-anyone-expected">Part I: The Internet has changed – faster than anyone expected</h2>
-		<a href="https://blog.cloudflare.com/#part-i-the-internet-has-changed-faster-than-anyone-expected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="the-vertical-adoption-curve">The vertical adoption curve</h3>
-		<a href="https://blog.cloudflare.com/#the-vertical-adoption-curve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>AI is not just another technology cycle. It is a platform shift happening at more than 2x the speed that smartphones were adopted. In just 3.5 years, over 30% of humanity — 2.5 billion active users — has adopted regular use of generative AI. The adoption curve isn't merely steep: it's going vertical.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M69Z8Mu3wANYivgEMbUqZ/e891d57b2569c021bad63c0bfeca0530/BLOG-3368_2.png" alt="BLOG-3368 2" class="kg-image" width="1800" height="1040" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="the-decline-of-the-open-web">The decline of the open web</h3>
-		<a href="https://blog.cloudflare.com/#the-decline-of-the-open-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Never before have we seen such a rapid change in how humans interact with information, perform work, and spend time online.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wQGImgn0OFJeZCUY2Qhq5/28a11af7ceaf09de87dabe6f5d55e3f7/BLOG-3368_3.png" alt="BLOG-3368 3" class="kg-image" width="1800" height="1222" loading="lazy">
-	</figure>
-	<p>
-		The way people use the Internet is changing dramatically. Today, for every hour spent online searching for information, only 15 minutes is spent on the open web. Traditional search behavior is collapsing as users shift to AI-driven discovery and consumption. Instead of visiting multiple sites to source and compare information, users simply type a prompt and receive a nearly instantaneous, consolidated answer.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-agentic-internet-is-here">The agentic Internet is here</h3>
-		<a href="https://blog.cloudflare.com/#the-agentic-internet-is-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This year, agent traffic crossed a historic threshold for the first time: more than 50% of traffic on the Internet is now non-human. This shift has staggering implications for publishers, content owners, and the future of the open web.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YkpFdETFdLIerSyejSQTI/72ed1bddb4f713cfaa68376ffca78d7e/BLOG-3368_4.png" alt="BLOG-3368 4" class="kg-image" width="2000" height="1208" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="crawlers-have-changed-their-purpose">Crawlers have changed their purpose</h3>
-		<a href="https://blog.cloudflare.com/#crawlers-have-changed-their-purpose" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When looking at the crawlers Cloudflare identifies by purpose, the composition of crawler traffic tells the story clearly:</p>
-	<ul>
-		<li>
-			<p>52% of crawler requests are now for AI training as of June 2026, up from 22% in Spring 2025.</p>
-		</li>
-		<li>
-			<p>Mixed-use crawlers (those blending search, agent use, and training) represent over 36% of activity.</p>
-		</li>
-		<li>
-			<p>Pure search crawling now represents a small and declining share of overall crawler activity, despite remaining critical for publisher visibility. </p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2as6G3xsTXPJXccFOKsjXx/83a0a06d713f878b1b6ea61563593e0e/f2f4f782-ecdf-48bd-9b88-62fa649d2963.png" alt="BLOG-3368 5" class="kg-image" width="918" height="521" loading="lazy">
-	</figure>
-	<p>As AI training becomes a primary driver of crawler activity, the ability to distinguish between discovery and training becomes increasingly important. Mixed-use crawlers blur that distinction, putting content owners in a difficult position: choose between remaining discoverable in the agentic era, and giving away their most valuable content without compensation.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-old-business-model-is-gone">The old business model is gone</h3>
-		<a href="https://blog.cloudflare.com/#the-old-business-model-is-gone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For decades, the economic model of the open web was straightforward. Content creators exchanged access to their content for visibility in search engines, which returned referral traffic. That traffic became the primary mechanism through which publishers, creators, and businesses generated economic value.</p>
-	<p>But today, that exchange is breaking down. Content is still being crawled, indexed, and used — but increasingly without corresponding traffic being returned to the source. As AI systems answer questions, compare products, conduct research, and complete tasks directly, information across the open web is increasingly becoming part of AI training and retrieval systems. The existential question this raises is simple: if content is consumed without audiences ever visiting the source, how do content creators sustain themselves?</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60T7EMNO25yQ4tlA6JHpKl/abc121511a14c89f8c01cca5f70ec65c/BLOG-3368_6.png" alt="BLOG-3368 6" class="kg-image" width="1600" height="1110" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="the-implications-are-industry-agnostic">The implications are industry-agnostic</h3>
-		<a href="https://blog.cloudflare.com/#the-implications-are-industry-agnostic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The earliest industries to feel the impact were news organizations and media companies. Today, similar dynamics are impacting businesses across retail, software, IT, and finance. Some of the most heavily crawled categories have seen human traffic decline as much as 40% in less than one year.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j3sF7FpYa4b5eLGgSXqhs/a1748b3f3feca6b8722a03d6912bcd72/BLOG-3368_7.png" alt="BLOG-3368 7" class="kg-image" width="2000" height="1268" loading="lazy">
-	</figure>
-	<p>Many publishers are now preparing for what they call "Google Zero" — a world where little to no traffic comes from search referrals.</p>
-	<p>The implications extend to essentially every industry. Any organization that publishes proprietary information on the Internet will need to understand how to operate in an agentic era. This dynamic matters not just to content owners, but to all of us. The Internet is a critical part of the global economy and one of the world's most important public resources for surfacing information. Ensuring it remains healthy and sustainable is essential for all.</p>
-	<div class="flex anchor relative">
-		<h2 id="part-ii-the-market-has-emerged">Part II: The market has emerged</h2>
-		<a href="https://blog.cloudflare.com/#part-ii-the-market-has-emerged" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="what-we-built">What we built</h3>
-		<a href="https://blog.cloudflare.com/#what-we-built" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When we launched Content Independence Day, we committed to three things:</p>
-	<ol>
-		<li>
-			<p>Transparency and control for site owners, enabling them to define how their content is accessed and monetized.</p>
-		</li>
-		<li>
-			<p>Tools that create scarcity, shifting the balance of power back to content owners.</p>
-		</li>
-		<li>
-			<p>A marketplace where content creators and AI companies of all sizes can discover, license, and determine the value of content more efficiently.</p>
-		</li>
-	</ol>
-	<p>One year later, a market for monetized content is here, and the conditions for a dynamic marketplace are forming.</p>
-	<div class="flex anchor relative">
-		<h3 id="transparency-and-control-created-scarcity">Transparency and control created scarcity</h3>
-		<a href="https://blog.cloudflare.com/#transparency-and-control-created-scarcity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Historically, publishers have had limited visibility into how AI companies accessed and used their content. As referral traffic declined, that lack of visibility became an economic problem prompting publishers to seek new ways to capture value.</p>
-	<p>Cloudflare's attribution, business intelligence, and enforcement tools gave publishers visibility into AI consumption at the network level — an enforcement mechanism far more effective than voluntary standards like robots.txt. For the first time, publishers could determine how their content was accessed and monetized. That control created scarcity, and drove a supply-and-demand content economy.</p>
-	<div class="flex anchor relative">
-		<h3 id="scarcity-created-leverage">Scarcity created leverage</h3>
-		<a href="https://blog.cloudflare.com/#scarcity-created-leverage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Publishers that exercised control over access successfully created scarcity, giving them negotiating leverage that led to better deals. For the first time, publishers gained operator-level attribution data — evidence of how often LLMs attempted to access their content, which competitive LLMs were crawling, what their most in-demand URLs were, and what their crawl-to-referral ratios looked like. This reduced information asymmetry in licensing discussions and enabled publishers to negotiate from a position of knowledge.</p>
-	<div class="flex anchor relative">
-		<h3 id="leverage-is-changing-the-balance-of-power">Leverage is changing the balance of power</h3>
-		<a href="https://blog.cloudflare.com/#leverage-is-changing-the-balance-of-power" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This leverage has empowered our customers. As they have gained greater visibility into how AI systems access and use their content, they’ve become better equipped to understand the implications for their businesses and more confidently articulate the value of the information, brand, and audiences they have built.</p>
-	<p>As the balance of power between content owners and AI companies begins to change, a licensing economy is emerging:&nbsp;</p>
-	<ul>
-		<li>
-			<p>More than 50 publisher-AI agreements have been signed since 2023.</p>
-		</li>
-		<li>
-			<p>Major AI companies now actively license content, increasingly recognizing the value of differentiated and premium content.</p>
-		</li>
-		<li>
-			<p>Collective licensing models continue to emerge and scale.</p>
-		</li>
-		<li>
-			<p>Large publishers are securing meaningful licensing agreements, demonstrating that content has real economic value within the AI ecosystem.</p>
-		</li>
-	</ul>
-	<p>The conversation is no longer <i>whether</i> content should be compensated. The conversation now is <i>how</i>.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-market-is-maturing-but-inefficiencies-remain">The market is maturing, but inefficiencies remain</h3>
-		<a href="https://blog.cloudflare.com/#the-market-is-maturing-but-inefficiencies-remain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Early licensing agreements proved demand exists, but licensing today remains largely bespoke and unlikely to fully replace lost referral, advertising, and affiliate revenue. As a result, publishers are increasingly optimizing for AI consumption alongside traditional human discovery while exploring new monetization pathways.</p>
-	<p>Supply and demand remain difficult to match efficiently, and while there’s an understanding that not all content carries the same value, content valuation is still unresolved.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-google-convergence-problem">The Google convergence problem</h3>
-		<a href="https://blog.cloudflare.com/#the-google-convergence-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>No discussion of this market is complete without addressing Google's unique role. Google remains the dominant gateway to online discovery, accounting for approximately 88% of referral traffic. But increasingly, Google is helping users consume content directly within Google-owned AI experiences.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4npzNthY9RDNXRhqe0L2z0/f8414329fd1451bfe5e1ce4d4a9cdc97/BLOG-3368_9.png" alt="BLOG-3368 9" class="kg-image" width="1648" height="940" loading="lazy">
-	</figure>
-	<p>Discovery and consumption serve fundamentally different purposes. Search drives users to content, while AI-powered experiences increasingly summarize and reuse it without requiring users to visit the source. Website owners view these activities differently because one generates traffic, while the other increasingly substitutes for it.</p>
-	<p>These differences become especially important when site owners are deciding who should be allowed to access their content and for what purpose. Most leading AI companies separate discovery crawlers from training crawlers, making it relatively simple for publishers to enable content access for one purpose or the other. Google does not. Today, Google has access to about 2x more information than leading AI companies because Google leverages a mixed-use bot that makes it difficult for customers to participate in Google's search ecosystem without also participating in Google's AI ecosystem.&nbsp;</p>
-	<p>Unlike other AI providers, Google’s mixed-use crawler also limits transparency for site owners. Because discovery and AI access are combined into a single crawler, publishers cannot tell why Google is accessing their content or distinguish between traffic used for search and traffic used for AI experiences. They also lose the visibility and evidence that comes from being able to allow or block these activities independently at the network level.</p>
-	<p>This dynamic has accelerated demand for greater transparency and control, as well as new monetization models to better serve both content owners and AI companies of all sizes.</p>
-	<div class="flex anchor relative">
-		<h2 id="part-iii-a-unique-view-of-the-ecosystem">Part III: A unique view of the ecosystem</h2>
-		<a href="https://blog.cloudflare.com/#part-iii-a-unique-view-of-the-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare sits at the intersection of the emerging agentic economy.</p>
-	<p>More than 20% of the web sits behind Cloudflare’s network. Of the world's most-visited websites, 36% rely on our network, and more than 40% of the Fortune 500 are Cloudflare customers. Nearly 80% of leading AI companies use Cloudflare, alongside thousands of developers and emerging AI companies.</p>
-	<p>This unique position gives us visibility into both sides of the market. We see the content owners creating content, the AI companies consuming it, and the signals increasingly connecting them. That perspective has given us a unique view into how the market has evolved over the past year, and what it now requires.</p>
-	<div class="flex anchor relative">
-		<h2 id="part-iv-lessons-from-an-emerging-market">Part IV: Lessons from an emerging market</h2>
-		<a href="https://blog.cloudflare.com/#part-iv-lessons-from-an-emerging-market" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As publishers and AI companies adapt to a new agentic economy, Cloudflare has gained a clearer understanding of what the ecosystem now needs.</p>
-	<div class="flex anchor relative">
-		<h3 id="transparency-must-become-the-standard">Transparency must become the standard</h3>
-		<a href="https://blog.cloudflare.com/#transparency-must-become-the-standard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Content owners increasingly need visibility and control over who is accessing their content, how it is being used, and for what purpose. AI companies increasingly recognize that transparency builds trust and reduces friction with publishers. Visibility and enforcement are no longer security concerns alone — they have become business requirements that directly influence licensing negotiations and commercial decision making.</p>
-	<p>To help make transparency the standard, Cloudflare is continuing to invest in enhanced attribution, measurement, and publisher controls that give content owners greater visibility into and control over how their content is accessed and used.</p>
-	<p>As the industry shifts toward greater transparency, we believe that verifiable bot self-identification and declarations of crawl intent are fundamental to a sustainable ecosystem. Today, more than one-third of crawler activity on our network still comes from mixed-use bots that make it impossible for content owners to distinguish crawl intent. We are actively engaging with the ecosystem and investing in tooling to help drive that number to zero by this time next year.</p>
-	<div class="flex anchor relative">
-		<h3 id="better-ai-requires-better-signals">Better AI requires better signals</h3>
-		<a href="https://blog.cloudflare.com/#better-ai-requires-better-signals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over the past year, it has become increasingly clear that AI companies need more than access to content. They need better ways to determine what to access, when to access it, and how frequently it has changed. Indiscriminate crawling wastes compute for AI companies and creates unnecessary bandwidth burden for publishers, reducing efficiency across the ecosystem.</p>
-	<p>We believe better answers require better intelligence. We are investing in real-time freshness signals with richer trust, quality, and relevance to help AI companies discover differentiated information while reducing unnecessary crawling across the web.</p>
-	<div class="flex anchor relative">
-		<h3 id="markets-need-better-discovery-before-better-pricing">Markets need better discovery before better pricing</h3>
-		<a href="https://blog.cloudflare.com/#markets-need-better-discovery-before-better-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We believe better discovery must precede better pricing. In order for the market to mature, publishers and AI companies need better information about one another. We are investing in richer market intelligence, content signaling, and capabilities that improve discovery between both sides of the ecosystem, laying the foundation for more scalable market mechanisms over time.</p>
-	<div class="flex anchor relative">
-		<h2 id="part-v-building-the-infrastructure-for-the-agentic-internet">Part V. Building the infrastructure for the agentic Internet</h2>
-		<a href="https://blog.cloudflare.com/#part-v-building-the-infrastructure-for-the-agentic-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One year ago, Content Independence Day introduced a simple idea: content owners should have greater control over how AI companies access and use their information.</p>
-	<p>Over the past twelve months, that control helped give rise to a market. Transparency created scarcity. Scarcity created leverage. Leverage accelerated licensing. What was once a theoretical discussion about the future of AI and content has become an active market, with publishers, AI companies, and technology providers all adapting to a new set of economic realities.</p>
-	<p>The market is now entering a new phase that demands new infrastructure. As the Internet becomes increasingly agentic, the underlying systems that support it must evolve to handle permissions, licensing, and commercial transactions at scale. Content owners and AI companies need more efficient ways to connect and exchange value. We believe these capabilities will converge into programmable, scalable mechanisms for content discovery and monetization – reducing friction while unlocking richer forms of value exchange.</p>
-	<p>Cloudflare's role is to build the infrastructure and business intelligence, and contribute to the standards that allow the market to determine value more efficiently and help publishers and AI companies participate in a healthier, more dynamic content economy.</p>
-	<p>The Internet has always evolved. This evolution is faster and more consequential than most. But with the right infrastructure, the right incentives, and a commitment to transparency, we believe the agentic Internet can become more sustainable, more efficient, and better for everyone.</p>
-	<p><b>Methodology:
-		</b>The data in this report is compiled from <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> and the <a href="https://cloudflare.net/files/doc_downloads/Presentations/2026/06/15/New/Master-Deck-2026-Investor-Day-FINAL.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudflare Investor Day 2026 Presentation</u></a>.</p>
-	<p>Cloudflare Radar is a hub showcasing global Internet traffic, attack, and technology trends and insights. Powered by data from Cloudflare's global network, Radar was created to help anyone understand what is happening on the Internet from a security, performance and usage perspective.</p>
-	<p>Cloudflare's unique understanding of the Internet comes from its global network — one of the world's largest, spanning 330+ cities in 100+ countries — and aggregated and anonymized data from Cloudflare's 1.1.1.1 public DNS Resolver, widely used as a fast and private way to browse the Internet. More than 20% of the web sits behind Cloudflare’s network.</p>
-</div>
+<p>One year ago, we declared <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation" target="_blank" rel="noopener noreferrer"><u>Content Independence Day</u></a>. At the time, we could see what many in the industry were beginning to sense: the fundamental economics of the Internet were shifting. AI adoption was accelerating, publishers were experiencing rapid declines in referral traffic, and AI companies were crawling the web at unprecedented scale, often without clearly declaring intent, and almost always without compensation.</p>
+<p>We changed the defaults. For all new domains on Cloudflare, AI training crawlers would be blocked by default unless domain owners chose otherwise. We didn't do this to wall off the web. We did it because we believed a healthier ecosystem required transparency, control, scarcity, and ultimately, a market where high-quality content could be valued and exchanged fairly.</p>
+<p>A year later, that market has emerged. But the transformation of the Internet has happened even faster than we anticipated. In this report, we share key data points that illustrate how quickly the business model of the Internet has shifted – and what this new content market means for publishers and site owners.</p>
+<h2>Part I: The Internet has changed – faster than anyone expected</h2>
+<h3>The vertical adoption curve</h3>
+<p>AI is not just another technology cycle. It is a platform shift happening at more than 2x the speed that smartphones were adopted. In just 3.5 years, over 30% of humanity — 2.5 billion active users — has adopted regular use of generative AI. The adoption curve isn't merely steep: it's going vertical.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="413" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=640&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=750&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=828&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=1080&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=1280&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPP38X760XFR4PSRDYKJ.png&amp;w=1430&amp;h=826&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="413" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>The decline of the open web</h3>
+<p>Never before have we seen such a rapid change in how humans interact with information, perform work, and spend time online.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="485" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=750&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=828&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=1080&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=1280&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZGX6S5ME99WJ3Y5W5DN.png&amp;w=1430&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="485" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 3"></div>
+</figure>
+<p><br>The way people use the Internet is changing dramatically. Today, for every hour spent online searching for information, only 15 minutes is spent on the open web. Traditional search behavior is collapsing as users shift to AI-driven discovery and consumption. Instead of visiting multiple sites to source and compare information, users simply type a prompt and receive a nearly instantaneous, consolidated answer.</p>
+<h3>The agentic Internet is here</h3>
+<p>This year, agent traffic crossed a historic threshold for the first time: more than 50% of traffic on the Internet is now non-human. This shift has staggering implications for publishers, content owners, and the future of the open web.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXFA2QKQ7PHVX103A23W.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 4"></div>
+</figure>
+<h3>Crawlers have changed their purpose</h3>
+<p>When looking at the crawlers Cloudflare identifies by purpose, the composition of crawler traffic tells the story clearly:</p>
+<ul>
+	<li>52% of crawler requests are now for AI training as of June 2026, up from 22% in Spring 2025.</li>
+	<li>Mixed-use crawlers (those blending search, agent use, and training) represent over 36% of activity.</li>
+	<li>Pure search crawling now represents a small and declining share of overall crawler activity, despite remaining critical for publisher visibility. </li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="406" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=750&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=828&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=1080&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=1280&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PKVMFJN7NB1N7VB3F5QZ.png&amp;w=1430&amp;h=812&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="406" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 5"></div>
+</figure>
+<p>As AI training becomes a primary driver of crawler activity, the ability to distinguish between discovery and training becomes increasingly important. Mixed-use crawlers blur that distinction, putting content owners in a difficult position: choose between remaining discoverable in the agentic era, and giving away their most valuable content without compensation.</p>
+<h3>The old business model is gone</h3>
+<p>For decades, the economic model of the open web was straightforward. Content creators exchanged access to their content for visibility in search engines, which returned referral traffic. That traffic became the primary mechanism through which publishers, creators, and businesses generated economic value.</p>
+<p>But today, that exchange is breaking down. Content is still being crawled, indexed, and used — but increasingly without corresponding traffic being returned to the source. As AI systems answer questions, compare products, conduct research, and complete tasks directly, information across the open web is increasingly becoming part of AI training and retrieval systems. The existential question this raises is simple: if content is consumed without audiences ever visiting the source, how do content creators sustain themselves?</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="496" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=640&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=750&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=828&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=1080&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=1280&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q0CKFXGR5SX4Y5Q6ESBS.png&amp;w=1430&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="496" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 6"></div>
+</figure>
+<h3>The implications are industry-agnostic</h3>
+<p>The earliest industries to feel the impact were news organizations and media companies. Today, similar dynamics are impacting businesses across retail, software, IT, and finance. Some of the most heavily crawled categories have seen human traffic decline as much as 40% in less than one year.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="453" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=640&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=750&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=828&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=1080&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=1280&amp;h=811&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PXJ1QF50SJ765YSPAKSC.png&amp;w=1430&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="453" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 7"></div>
+</figure>
+<p>Many publishers are now preparing for what they call "Google Zero" — a world where little to no traffic comes from search referrals.</p>
+<p>The implications extend to essentially every industry. Any organization that publishes proprietary information on the Internet will need to understand how to operate in an agentic era. This dynamic matters not just to content owners, but to all of us. The Internet is a critical part of the global economy and one of the world's most important public resources for surfacing information. Ensuring it remains healthy and sustainable is essential for all.</p>
+<h2>Part II: The market has emerged</h2>
+<h3>What we built</h3>
+<p>When we launched Content Independence Day, we committed to three things:</p>
+<ol>
+	<li>Transparency and control for site owners, enabling them to define how their content is accessed and monetized.</li>
+	<li>Tools that create scarcity, shifting the balance of power back to content owners.</li>
+	<li>A marketplace where content creators and AI companies of all sizes can discover, license, and determine the value of content more efficiently.</li>
+</ol>
+<p>One year later, a market for monetized content is here, and the conditions for a dynamic marketplace are forming.</p>
+<h3>Transparency and control created scarcity</h3>
+<p>Historically, publishers have had limited visibility into how AI companies accessed and used their content. As referral traffic declined, that lack of visibility became an economic problem prompting publishers to seek new ways to capture value.</p>
+<p>Cloudflare's attribution, business intelligence, and enforcement tools gave publishers visibility into AI consumption at the network level — an enforcement mechanism far more effective than voluntary standards like robots.txt. For the first time, publishers could determine how their content was accessed and monetized. That control created scarcity, and drove a supply-and-demand content economy.</p>
+<h3>Scarcity created leverage</h3>
+<p>Publishers that exercised control over access successfully created scarcity, giving them negotiating leverage that led to better deals. For the first time, publishers gained operator-level attribution data — evidence of how often LLMs attempted to access their content, which competitive LLMs were crawling, what their most in-demand URLs were, and what their crawl-to-referral ratios looked like. This reduced information asymmetry in licensing discussions and enabled publishers to negotiate from a position of knowledge.</p>
+<h3>Leverage is changing the balance of power</h3>
+<p>This leverage has empowered our customers. As they have gained greater visibility into how AI systems access and use their content, they’ve become better equipped to understand the implications for their businesses and more confidently articulate the value of the information, brand, and audiences they have built.</p>
+<p>As the balance of power between content owners and AI companies begins to change, a licensing economy is emerging:&nbsp;</p>
+<ul>
+	<li>More than 50 publisher-AI agreements have been signed since 2023.</li>
+	<li>Major AI companies now actively license content, increasingly recognizing the value of differentiated and premium content.</li>
+	<li>Collective licensing models continue to emerge and scale.</li>
+	<li>Large publishers are securing meaningful licensing agreements, demonstrating that content has real economic value within the AI ecosystem.</li>
+</ul>
+<p>The conversation is no longer <em>whether</em> content should be compensated. The conversation now is <em>how</em>.</p>
+<h3>The market is maturing, but inefficiencies remain</h3>
+<p>Early licensing agreements proved demand exists, but licensing today remains largely bespoke and unlikely to fully replace lost referral, advertising, and affiliate revenue. As a result, publishers are increasingly optimizing for AI consumption alongside traditional human discovery while exploring new monetization pathways.</p>
+<p>Supply and demand remain difficult to match efficiently, and while there’s an understanding that not all content carries the same value, content valuation is still unresolved.</p>
+<h3>The Google convergence problem</h3>
+<p>No discussion of this market is complete without addressing Google's unique role. Google remains the dominant gateway to online discovery, accounting for approximately 88% of referral traffic. But increasingly, Google is helping users consume content directly within Google-owned AI experiences.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="408" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=640&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=750&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=828&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=1080&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=1280&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW2JAQQ51FYVYB3RBRC5.png&amp;w=1430&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3368 9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="408" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3368 9"></div>
+</figure>
+<p>Discovery and consumption serve fundamentally different purposes. Search drives users to content, while AI-powered experiences increasingly summarize and reuse it without requiring users to visit the source. Website owners view these activities differently because one generates traffic, while the other increasingly substitutes for it.</p>
+<p>These differences become especially important when site owners are deciding who should be allowed to access their content and for what purpose. Most leading AI companies separate discovery crawlers from training crawlers, making it relatively simple for publishers to enable content access for one purpose or the other. Google does not. Today, Google has access to about 2x more information than leading AI companies because Google leverages a mixed-use bot that makes it difficult for customers to participate in Google's search ecosystem without also participating in Google's AI ecosystem.&nbsp;</p>
+<p>Unlike other AI providers, Google’s mixed-use crawler also limits transparency for site owners. Because discovery and AI access are combined into a single crawler, publishers cannot tell why Google is accessing their content or distinguish between traffic used for search and traffic used for AI experiences. They also lose the visibility and evidence that comes from being able to allow or block these activities independently at the network level.</p>
+<p>This dynamic has accelerated demand for greater transparency and control, as well as new monetization models to better serve both content owners and AI companies of all sizes.</p>
+<h2>Part III: A unique view of the ecosystem</h2>
+<p>Cloudflare sits at the intersection of the emerging agentic economy.</p>
+<p>More than 20% of the web sits behind Cloudflare’s network. Of the world's most-visited websites, 36% rely on our network, and more than 40% of the Fortune 500 are Cloudflare customers. Nearly 80% of leading AI companies use Cloudflare, alongside thousands of developers and emerging AI companies.</p>
+<p>This unique position gives us visibility into both sides of the market. We see the content owners creating content, the AI companies consuming it, and the signals increasingly connecting them. That perspective has given us a unique view into how the market has evolved over the past year, and what it now requires.</p>
+<h2>Part IV: Lessons from an emerging market</h2>
+<p>As publishers and AI companies adapt to a new agentic economy, Cloudflare has gained a clearer understanding of what the ecosystem now needs.</p>
+<h3>Transparency must become the standard</h3>
+<p>Content owners increasingly need visibility and control over who is accessing their content, how it is being used, and for what purpose. AI companies increasingly recognize that transparency builds trust and reduces friction with publishers. Visibility and enforcement are no longer security concerns alone — they have become business requirements that directly influence licensing negotiations and commercial decision making.</p>
+<p>To help make transparency the standard, Cloudflare is continuing to invest in enhanced attribution, measurement, and publisher controls that give content owners greater visibility into and control over how their content is accessed and used.</p>
+<p>As the industry shifts toward greater transparency, we believe that verifiable bot self-identification and declarations of crawl intent are fundamental to a sustainable ecosystem. Today, more than one-third of crawler activity on our network still comes from mixed-use bots that make it impossible for content owners to distinguish crawl intent. We are actively engaging with the ecosystem and investing in tooling to help drive that number to zero by this time next year.</p>
+<h3>Better AI requires better signals</h3>
+<p>Over the past year, it has become increasingly clear that AI companies need more than access to content. They need better ways to determine what to access, when to access it, and how frequently it has changed. Indiscriminate crawling wastes compute for AI companies and creates unnecessary bandwidth burden for publishers, reducing efficiency across the ecosystem.</p>
+<p>We believe better answers require better intelligence. We are investing in real-time freshness signals with richer trust, quality, and relevance to help AI companies discover differentiated information while reducing unnecessary crawling across the web.</p>
+<h3>Markets need better discovery before better pricing</h3>
+<p>We believe better discovery must precede better pricing. In order for the market to mature, publishers and AI companies need better information about one another. We are investing in richer market intelligence, content signaling, and capabilities that improve discovery between both sides of the ecosystem, laying the foundation for more scalable market mechanisms over time.</p>
+<h2>Part V. Building the infrastructure for the agentic Internet</h2>
+<p>One year ago, Content Independence Day introduced a simple idea: content owners should have greater control over how AI companies access and use their information.</p>
+<p>Over the past twelve months, that control helped give rise to a market. Transparency created scarcity. Scarcity created leverage. Leverage accelerated licensing. What was once a theoretical discussion about the future of AI and content has become an active market, with publishers, AI companies, and technology providers all adapting to a new set of economic realities.</p>
+<p>The market is now entering a new phase that demands new infrastructure. As the Internet becomes increasingly agentic, the underlying systems that support it must evolve to handle permissions, licensing, and commercial transactions at scale. Content owners and AI companies need more efficient ways to connect and exchange value. We believe these capabilities will converge into programmable, scalable mechanisms for content discovery and monetization – reducing friction while unlocking richer forms of value exchange.</p>
+<p>Cloudflare's role is to build the infrastructure and business intelligence, and contribute to the standards that allow the market to determine value more efficiently and help publishers and AI companies participate in a healthier, more dynamic content economy.</p>
+<p>The Internet has always evolved. This evolution is faster and more consequential than most. But with the right infrastructure, the right incentives, and a commitment to transparency, we believe the agentic Internet can become more sustainable, more efficient, and better for everyone.</p>
+<p><strong>Methodology:<br></strong>The data in this report is compiled from <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> and the <a href="https://cloudflare.net/files/doc_downloads/Presentations/2026/06/15/New/Master-Deck-2026-Investor-Day-FINAL.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudflare Investor Day 2026 Presentation</u></a>.</p>
+<p>Cloudflare Radar is a hub showcasing global Internet traffic, attack, and technology trends and insights. Powered by data from Cloudflare's global network, Radar was created to help anyone understand what is happening on the Internet from a security, performance and usage perspective.</p>
+<p>Cloudflare's unique understanding of the Internet comes from its global network — one of the world's largest, spanning 330+ cities in 100+ countries — and aggregated and anonymized data from Cloudflare's 1.1.1.1 public DNS Resolver, widely used as a fast and private way to browse the Internet. More than 20% of the web sits behind Cloudflare’s network.</p>

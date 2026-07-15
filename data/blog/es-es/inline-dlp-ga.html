@@ -1,0 +1,109 @@
+<div class="mb2 gray5">3 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/inline-dlp-ga">English</a>, <a href="https://blog.cloudflare.com/fr-fr/inline-dlp-ga">Français</a>, <a href="https://blog.cloudflare.com/de-de/inline-dlp-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HBqV9rfR02JvgaaeJlSkX/ec47d1d207b905e4a3ed91364cb9524c/inline-dlp-ga.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En julio, <a href="https://blog.cloudflare.com/inline-data-loss-prevention">anunciamos</a> el acceso a la versión beta de nuestra solución de prevención de pérdida de datos (DLP), nuestro último producto Zero Trust. Hoy nos complace todavía más anunciar que ya está disponible de forma general. Cualquier cliente puede obtener ya visibilidad y control de los datos confidenciales que entran, salen y se mueven en su red corporativa. Si te interesa, echa un vistazo a la parte inferior de esta publicación.</p>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-dlp">¿Qué es DLP?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestra solución de prevención de pérdida de datos (DLP) te ayuda a superar uno de los mayores desafíos: identificar y proteger los datos confidenciales. Debido a la migración a la nube, el seguimiento y control de la información confidencial es más difícil que nunca. Los empleados utilizan un número cada vez mayor de herramientas para manipular una enorme cantidad de datos. Al mismo tiempo, los gerentes de seguridad y de TI tienen dificultades para identificar quién debe acceder a los datos confidenciales, cómo se almacenan los datos y a dónde pueden dirigirse.</p>
+	<p>DLP te permite proteger tus datos según sus características, como por ejemplo palabras clave o patrones. Cuando hay tráfico de entrada y salida en la infraestructura corporativa, su inspección comprueba si contiene indicadores de datos confidenciales. Si se encuentran, el tráfico se permite o se bloquea según las reglas de los clientes.</p>
+	<p>El uso más común de DLP es la protección de la información de identificación personal, pero a muchos clientes les interesa proteger la propiedad intelectual, el código fuente, la información financiera corporativa o cualquier otra información vital para el negocio. El uso adecuado de datos puede incluir quién los ha utilizado, dónde se han enviado o cómo se almacenan.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-dlp-see-my-corporate-traffic">¿Cómo ve DLP mi tráfico corporativo?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-dlp-see-my-corporate-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DLP forma parte de Cloudflare One, nuestra plataforma de red como servicio Zero Trust que conecta a los usuarios con los recursos empresariales. Cloudflare One ejecuta tráfico de centros de datos, oficinas y usuarios remotos mediante la red de Cloudflare. Ofrece una amplia variedad de oportunidades para proteger el tráfico, que incluyen, entre otras, validar la postura de identidad y del dispositivo, filtrar el tráfico corporativo como protección contra el malware y el phishing, comprobar las configuraciones en las aplicaciones SaaS y utilizar la solución de aislamiento de navegador para que la navegación web sea más segura para los empleados. Todo ello con el rendimiento de nuestra red global y administrado con un único plano de control.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work">¿Cómo funciona?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69LEhrzNB3qO19DcQSDxIC/b8c83b53d142ab6bd27f083c13b8290e/image5-5.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>DLP aprovecha las capacidades de filtrado HTTP de Cloudflare One. Mientras tu tráfico recorre nuestra red, puedes aplicar reglas y enrutar el tráfico según la información en la solicitud HTTP. Existe una gran variedad de opciones para el filtrado, como por ejemplo por dominio, URL, aplicación, método HTTP y muchas otras. Puedes utilizar estas opciones para segmentar el tráfico que desees que DLP inspeccione.</p>
+	<p>Cuando se aplica DLP, las solicitudes HTTP relevantes se descomprimen, descodifican y exploran para comprobar si contienen coincidencias de expresiones regulares. A continuación, si es posible, las coincidencias de expresiones regulares numéricas se validan algorítmicamente, por ejemplo, con cálculos de suma de comprobación o el <a href="https://es.wikipedia.org/wiki/Algoritmo_de_Luhn" target="_blank" rel="noopener noreferrer">algoritmo de Luhn</a>. Sin embargo, algunas detecciones numéricas no cumplen la validación algorítmica, como por ejemplo los números de la seguridad social de EE. UU.</p>
+	<p>Si la detección identifica datos confidenciales, la transferencia de datos se permitirá o se bloqueará según el conjunto de reglas del cliente.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-use-it">¿Cómo puedo utilizarlo?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Profundicemos un poco más para ver cómo todo esto se aplica en la práctica. Para utilizar DLP en el panel de control Zero Trust, ve a la pestaña Perfiles de DLP en Puerta de enlace:</p>
+	<p>Decide qué tipo de datos deseas proteger. Actualmente, detectamos números de tarjeta de crédito y números de la seguridad social de EE. UU., pero tenemos previsto ampliarlo para disponer de una sólida biblioteca de detecciones de DLP. &nbsp;Nuestros pasos siguientes son detecciones predefinidas adicionales y personalizadas, incluidos más identificadores internacionales y números de registro financiero.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EQnaB7V1Akwzwysxv4XyF/c9c42b926e2d5ef38ef1f33b6d029b2b/image2-14.png" alt="" class="kg-image" width="1238" height="468" loading="lazy">
+
+	</figure>
+	<p>Cuando te hayas decidido, selecciona Configurar para habilitar las detecciones:</p>
+	<p>Habilita las detecciones que deseas utilizar. Como se ha descrito anteriormente, estas detecciones de número de tarjeta se llevan a cabo utilizando expresiones regulares y se validan con el algoritmo de Luhn. Puedes realizar detecciones numéricas para tarjetas de crédito o detectar cadenas que coincidan con nombres de tarjeta, p. ej., "American Express".</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ohWjYF6CSnHW9c3clXCg9/5fcb59d40da56942b5610bf04a1e9a01/image6-2.png" alt="" class="kg-image" width="1990" height="668" loading="lazy">
+
+	</figure>
+	<p>A continuación, aplica las detecciones a una <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies" target="_blank" rel="noopener noreferrer">política HTTP</a> de puerta de enlace en el tráfico que elijas. Aquí aplicamos DLP al tráfico de Google Drive. Esta política bloqueará las cargas y descargas de archivos en Google Drive que contengan números de la seguridad social de EE. UU.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eUqmagXBJcZiQ6N8DASD6/be655b80c0b59bb6657395dea5259d6a/image3-10.png" alt="" class="kg-image" width="1962" height="1392" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="holistic-data-protection-with-cloudflare-zero-trust">Protección integral de los datos con Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#holistic-data-protection-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5es1X7XImRbyrAgxm7jaOW/525a16426f263bb04ecb850aac80f8c3/image4-6.png" alt="" class="kg-image" width="1770" height="1134" loading="lazy">
+
+	</figure>
+	<p>La inspección del tráfico HTTP para detectar la presencia de datos confidenciales con la prevención de pérdida de datos es decisiva para que las organizaciones pueden reducir el riesgo de filtración de datos, reforzar el cumplimiento normativo y mejorar la gobernanza general de los datos.</p>
+	<p>La implementación de la prevención de pérdida de datos es solo un paso hacia un enfoque más integral de la seguridad de los datos.</p>
+	<p>Para ello, nuestra plataforma <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust</a> ofrece controles más exhaustivos sobre cómo cualquier usuario de cualquier dispositivo accede a los datos e interactúa con ellos, todo ello desde una única interfaz de gestión:</p>
+	<ul>
+		<li>
+			<p>Para proteger los datos en tránsito, los administradores pueden aplicar políticas de acceso granulares que tengan en cuenta la identidad con nuestro servicio de <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">acceso a la red Zero Trust (ZTNA)</a>, o aprovechar nuestra <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">puerta de enlace web segura en línea (SWG)</a> para aplicar controles corporativos por aplicación.</p>
+		</li>
+		<li>
+			<p>Nuestro servicio de <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">aislamiento remoto del navegador (RBI)</a> puede controlar la forma en que los usuarios interactúan con los datos utilizados dentro de un navegador, por ejemplo, restringiendo la descarga, el copiado/pegado y la impresión de datos en dispositivos locales.</p>
+		</li>
+		<li>
+			<p>Para los datos en reposo, <a href="https://blog.cloudflare.com/casb-ga">nuestro agente de seguridad de acceso a la nube (CASB) ya está disponible desde hoy de forma general</a>. Detecta si las configuraciones erróneas en las aplicaciones SaaS pueden provocar fuga de datos.</p>
+		</li>
+	</ul>
+	<p>Hemos diseñado nuestro servicio de DLP para que funcione de forma eficaz con estos servicios de seguridad ZTNA, SWG, CASB, entre otros. Conforme seguimos ampliando sus funciones, este enfoque de plataforma nos prepara de forma inigualable para abordar las necesidades de nuestros clientes con flexibilidad.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-access-to-data-loss-prevention">Accede a DLP</h3>
+		<a href="https://blog.cloudflare.com/#get-access-to-data-loss-prevention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para obtener acceso a DLP, solicita una <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">consulta</a> o ponte en contacto con tu administrador de cuenta.</p>
+</div>

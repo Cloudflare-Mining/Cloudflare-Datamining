@@ -1,0 +1,885 @@
+<div class="mb2 gray5">Lesezeit: 11&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">English</a>, <a href="https://blog.cloudflare.com/zh-tw/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">한국어</a>, <a href="https://blog.cloudflare.com/nl-nl/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-cn/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ieTEQGalyYWqU0FkjLKKp/6395034c8fe69dd90646cf05ff92f833/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>KI (<a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>Künstliche Intelligenz</u></a>) ist ein weit gefasstes Konzept, das Maschinen umfasst, die menschliche kognitive Aufgaben simulieren oder duplizieren, wobei <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>Machine Learning</u></a> (ML) als datengesteuerte Engine dient. Beide gibt es schon seit Jahrzehnten, aber sie bekamen neuen Auftrieb, als die <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>generative KI (Generative AI)</u></a>, d.&nbsp;h. KI-Modelle, die Text, Bilder, Audio, Code und Video erstellen können, nach der <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>Veröffentlichung</u></a> von ChatGPT von OpenAI Ende 2022 an Popularität gewann. In diesem Blogbeitrag untersuchen wir die beliebtesten Generative AI-Dienste und ihre Entwicklung im Jahr 2024 und Anfang 2025. Wir versuchen auch, Fragen zu beantworten, wie z.&nbsp;B. wie stark das Traffic-Wachstum diese Generative AI-Websites aus Sicht von Cloudflare verzeichnet hat, wie viel von diesem Traffic bösartig war und andere Erkenntnisse.</p>
+	<p>Zu diesem Zweck verwenden wir aggregierte Daten von unserem <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>DNS-Resolver 1.1.1.1</u></a>, um die Beliebtheit bestimmter Generative AI-Dienste zu messen. Normalerweise tun wir dies für unseren „<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>Das Jahr im Rückblick</u></a>“-Bericht und jetzt auch auf der <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Seite mit den DNS-Domain-Rankings</u></a> von Cloudflare Radar, wo wir verwandte Domains für jeden Dienst zusammenfassen und Websites identifizieren, die Nutzern Dienste anbieten. In Bezug auf das allgemeine Traffic-Wachstum und die Angriffstrends verlassen wir uns auf aggregierte Daten aus der Kohorte der Generative AI-Kunden, die Cloudflare für Performance (einschließlich KI-Inferenz) und Sicherheit nutzen.</p>
+	<p>Wichtigste Erkenntnisse:</p>
+	<ul>
+		<li>
+			<p><b>ChatGPT verteidigt seinen Spitzenplatz:</b> ChatGPT von OpenAI bleibt die Nummer 1 in Bezug auf die Beliebtheit generativer KI und bewegt sich in den Top 50 der Internet-Domains insgesamt, gegenüber Platz 200 Ende 2023.</p>
+		</li>
+		<li>
+			<p><b>Rascher Traffic-Anstieg:</b> Der monatliche Traffic für Generative AI-Dienste ist im vergangenen Jahr, zwischen dem 1. Februar 2024 und dem 1. März 2025, um 251&nbsp;% gestiegen.</p>
+		</li>
+		<li>
+			<p><b>Neue Anbieter auf dem Vormarsch:</b> Der chinesische Chatbot DeepSeek und Grok/xAI kletterten schnell in den Rängen und verdeutlichen, wie schnell Newcomer im Bereich KI Fuß fassen können.</p>
+		</li>
+		<li>
+			<p><b>Globale Reichweite mit regionalen Unterschieden:</b> Die USA sind mit 23&nbsp;% der Besucher der generativen KI führend, aber Asien dominiert bestimmte Plattformen wie poe.com. Brasilien zeigt sich auch als starker Nutzer mehrerer KI-Dienste.</p>
+		</li>
+		<li>
+			<p><b>Im Visier von Cyberangriffen:</b> Mehr als 197 Milliarden potenzielle Angriffsanfragen wurden von Cloudflare im vergangenen Jahr blockiert. 39 Milliarden davon waren Teil von DDoS-Angriffskampagnen, die insbesondere allgemeine KI-Chatbots und Websites zur Bilderzeugung betrafen.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="generative-ai-services-popularity-ranking-new-kids-in-town">Beliebtheitsranking für Generative AI-Dienste: Newcomer fassen Fuß</h3>
+		<a href="https://blog.cloudflare.com/#generative-ai-services-popularity-ranking-new-kids-in-town" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir betrachten zunächst die Popularität von generativen KI-Diensten anhand der <a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>neuen KI-Registerkarte auf Cloudflare Radar</u></a>. Der jüngste Neuzugang in unseren Top 10 ist DeepSeek, ein chinesischer Chatbot, der am 10. Januar 2025 eingeführt wurde. Am 26. Januar 2025 stieg er auf Platz 9 ein, kletterte am 29. Januar (zeitlich dem chinesischen Neujahrsfest) auf Platz 3 und behielt diese Position bis zum 4. Februar, bevor es sich auf seiner aktuellen Position auf Platz 6 einpendelte.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s9pGGWSp87CqvIOcbZ4gb/8a5a83deabdf8a0ed7f9898fc384c74d/image1.png" alt="Generative AI services popularity worldwide" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<p>Hervorzuheben ist hier auch ein anderer KI-Chatbot, der in letzter Zeit an Beliebtheit gewonnen hat: Grok/xAI von X. Dieser Generative AI-Dienst für veröffentlichte seine Android-App im Februar und erregte nach dem 17. Februar 2025 <a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>Aufmerksamkeit</u></a>, als er das Modell Grok-3 auf den Markt brachte. In unserem Ranking für Generative AI stieg er am 21. Februar 2025 auf Platz 9 in die Top 10 ein, erreichte kurzzeitig Claudes typischen Platz auf Platz 8 und schwankt nun zwischen Platz 9 und Platz 10.</p>
+	<p>Hier sind die aktuellen Generative AI Top 10 auf der Cloudflare Radar <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>AI-Seite</u></a>, Stand vom 9. März 2025, mit ChatGPT/OpenAI als #1 seit Beginn des Jahres (ein Trend, der auch in den Vorjahren zu beobachten war, wie die Tabelle unten zeigt).</p><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar – Popularität von Generative AI-Diensten" loading="lazy" style="border:0;max-width:100%;"></iframe>
+	<p>Damit Veränderungen in der Rangliste und Trends leichter erkannt werden können, zeigt die nachstehende Tabelle auf der linken Seite die Platzierungen vom 1. Februar bis 1. März 2025 (monatlicher Durchschnitt) mit farbig unterlegten Vergleichen mit der Liste von 2024: Dienste, die seit 2024 gesunken sind, sind rot, während neue oder höher eingestufte Elemente grün erscheinen. Zum Vergleich zeigt die zweite Spalte die Top 10 aus unserem <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>Jahresrückblick 2024</u></a> (einschließlich Vergleiche zum Vorjahr) und die dritte Spalte die Top 10 für 2023.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<figure class="table" style="width:100%;">
+		<table class="tg ck-table-resized">
+			<colgroup>
+				<col style="width:31.68%;">
+				<col style="width:33.12%;">
+				<col style="width:35.2%;">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>Top 10 der Generative AI-Dienste&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>im Februar 2025</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>Platz 4 in 2024</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>#3</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>#7</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">DeepSeek (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity </span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>(#6</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>Platz 5</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Suno AI (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>Top 10 Generative AI-Dienste 2024 (</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radar Jahresrückblick</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>)</strong></span></span><br><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot (Platz 3 in 2023)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>Platz 7</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>Platz 5</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Tabnine (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>neu</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>Top 10 Generative AI-Dienste 2023 (</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radar Jahresrückblick</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>)</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Google Bard</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ProWritingAid</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Voicemod</span></span></th>
+				</tr>
+			</thead>
+		</table>
+	</figure>
+	<p>Abgesehen von den bereits erwähnten DeepSeek, Grok/xAI und ChatGPT/OpenAI umfassen die Top 10 andere Chatbots wie Claude von Anthropic sowie andere Arten von generativen KI-Diensten. Character.AI – eine spezialisierte Plattform für die Erstellung von und Interaktion mit Charakter-basierten Persönlichkeiten – ist die Nummer 2, dann gibt es noch Perplexity (Platz 7), das als KI-Suchmaschine fungiert, während QuillBot (Platz 3) ein KI-gestützter Schreibassistent für Umschreibungen, Grammatik und Zusammenfassungen ist. Codeium (Platz 4), das Produktivitätsdienste für Entwickler wie Windsurf AI umfasst, und GitHub Copilot (Platz 5) dienen als KI-Codierungsassistenten.</p>
+	<p>Es gibt auch Hugging Face (Platz 9), einen Open-Source-Hub für KI-Modelle (wir nehmen es hier als Generative AI-Plattform auf, genau wie andere KI-Modelle wie Replicate und Stability AI), und Suno AI (Platz 10), einem Musikgenerator, der Songs aus Text-Prompts erstellt.</p>
+	<p>Wir haben gesehen, dass Grok/xAI in den letzten Tagen des Februar in die Top 10 eingestiegen ist, aber da wir den Monatsdurchschnitt vom Februar verwenden, erscheint es hier auf Platz 11. Neugierig auf den Rest der Top 20 vom Februar 2025? Hier sind sie: KI-Codierungsdienste sind stark vertreten – neben Codeium und GitHub Copilot finden sich auch Sider AI und Tabnine auf der Liste.</p>
+	<p>11 Grok / xAI</p>
+	<p>12 Poe</p>
+	<p>13 Sider AI</p>
+	<p>14 Civitai</p>
+	<p>15 Tabnine</p>
+	<p>16 Google Gemini</p>
+	<p>17 Voicemod</p>
+	<p>18 GliaCloud</p>
+	<p>19 Runway ml</p>
+	<p>20 Midjourney</p>
+	<p>Wir haben Beliebtheitsrankings für Generative AI sowohl im Cloudflare Radar-Jahresrückblick <a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023</u></a> als auch <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a> veröffentlicht, und in beiden Fällen hat ChatGPT von OpenAI durchweg den ersten Platz belegt. Wie in unserem <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>Blog-Beitrag</u></a> erläutert, hat sich ChatGPT <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a> auch in unserer Gesamtrangliste bewegt und wäre am Ende des Jahres fast in die Top 50 aufgestiegen. (2023 lag es knapp außerhalb der Top 100).</p>
+	<div class="flex anchor relative">
+		<h3 id="chatgpts-influence-in-the-overall-ranking">Einfluss von ChatGPT auf das Gesamtranking&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#chatgpts-influence-in-the-overall-ranking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Neu bei Cloudflare Radar ist die aktualisierte Domain-Ranking-Seite in unserem <a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS-Bereich</u></a>, der eine Reihe von detaillierten Trends enthält. Dort zeigen wir nun die <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Top 100 der allgemeinen Internetdienste</u></a> neben einer Liste der Top-100-Domains an. ChatGPT/OpenAI, der führende Generative AI-Dienst, liegt an Werktagen in der Regel zwischen 50 und am Wochenende in der Nähe von Platz 60 (basierend auf Erkenntnissen von Anfang März 2025), neben Nicht-KI-Diensten wie Temu, eBay oder Disney Plus.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4miBGzkADr0y6XTYzyFpCR/cea822eb3c9b7c8c25d27858a72762ca/image5.png" alt="BLOG-2764" class="kg-image" width="1294" height="1038" loading="lazy">
+	</figure>
+	<p>Wie in unserem&nbsp; <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>Blog-Beitrag „Das Jahr im Rückblick“</u></a> erwähnt, lag ChatGPT / OpenAI Anfang 2023 auf Platz 200 und kletterte bis Ende des Jahres fast in die Top 100. 2024 begann es knapp außerhalb der Top 100, erreichte im Mai mit der <a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>Veröffentlichung des 4o-Modells</u></a> die Top 60 und befindet sich seit September 2024 in der Nähe der Top 50, was mit der Rückkehr von Angestellten und Schülern in den Alltag zusammenhängt.</p>
+	<div class="flex anchor relative">
+		<h3 id="visitor-location-distribution-americas-europe-and-asia">Verteilung der Besucherstandorte: Amerika, Europa und Asien<i></i></h3>
+		<a href="https://blog.cloudflare.com/#visitor-location-distribution-americas-europe-and-asia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Seite <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Domain-Informationen auf Cloudflare Radar</u></a> ermöglicht es Benutzern, die Standortpopularität einer <a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>bestimmten Domain</u></a> (aus den letzten sieben Tagen) einzusehen, abgeleitet aus den Daten des Cloudflare DNS-Resolvers <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> in einem Zeitraum von 48 Stunden (Standardeinstellung von Radar) am 3. und 4. März 2025.</p>
+	<p>In diesem Fall kommt der größte Teil des DNS-Traffics der Domain <a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a> aus den Vereinigten Staaten (17&nbsp;%), gefolgt von Deutschland (7&nbsp;%), Brasilien (4&nbsp;%), Indonesien (4&nbsp;%) und Indien (4&nbsp;%).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MsCFiTsGRVF1N3c1oa87b/d5e02c68d7558b16e4fdb518ef5c776a/image2.png" alt="" class="kg-image" width="1999" height="1101" loading="lazy">
+	</figure>
+	<p>Im Fall des Neuzugangs <a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>Deepseek.com</u></a> sind die USA mit 14&nbsp;% des DNS-Traffics dieser Domain die Nummer 1, gefolgt von China (11&nbsp;%), Deutschland (10&nbsp;%), Brasilien (7&nbsp;%) und Hongkong (5&nbsp;%).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YKbSmz0ksNrbef2Xt7UE0/3fd694750f2cb413cd0e6e5001dfb248/image10.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+	</figure>
+	<p><a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a> hingegen hat 20 % seines Traffics aus den USA, 8 % aus Hongkong, 6 % aus Deutschland, 6 % aus Japan und 6 % aus Vietnam, was eine starke Präsenz in Asien innerhalb der Top 5 Standorte widerspiegelt. Bei einer anderen bekannten Domain eines generativen KI-Chatbots, <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>, ist Asien sogar noch dominanter: Hongkong steht auf Platz 1 (29&nbsp;% des Traffics), gefolgt von den USA (13&nbsp;%), Japan (6&nbsp;%), China (6&nbsp;%) und Singapur (5&nbsp;%).</p>
+	<p>Hugging Face (<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>Huggingface.co</u></a>), die Plattform für Generative AI-Modelle, hat ebenfalls die USA als Top-Standort (34&nbsp;% des Traffics), aber zu den Top 5 gehören vier europäische Länder: Frankreich (6&nbsp;%), das Vereinigte Königreich (6&nbsp;%), Deutschland (4&nbsp;%) und Schweden (4&nbsp;%).</p>
+	<p>Was die KI-gestützten Codierungstools betrifft, so wird deutlich, dass der DNS-Traffic für <a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com hauptsächlich aus den Vereinigten Staaten (22&nbsp;%), gefolgt von Deutschland (6&nbsp;%), Hongkong (5&nbsp;%), Indien (5&nbsp;%) und Indien stammt Japan (5&nbsp;%).</u></a> Ein ähnliches Muster zeigt sich für <a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a>, wobei die USA mit 15&nbsp;% an der Spitze stehen, gefolgt von Hongkong (8&nbsp;%), Japan (7&nbsp;%), Brasilien (5&nbsp;%) und den Niederlanden (5&nbsp;%). <a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>Cursor.com</u></a> erhält 20–% seines DNS-Traffics aus den USA, gefolgt von Hongkong (10&nbsp;%), Indien (6&nbsp;%), China (6&nbsp;%) und Japan (5&nbsp;%). <a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>, ein weiteres Tool zur Vervollständigung von KI-Code, hat den höchsten Traffic aus den USA (15&nbsp;%), gefolgt von Indien (6&nbsp;%), Brasilien (5&nbsp;%), Deutschland (5&nbsp;%) und Hongkong (5&nbsp;%).</p>
+	<p>Die DNS Traffic-Daten von Cloudflare Radar zeigen eine starke Nutzung aller wichtigen generativen KI- und KI-Codierungstools in den USA, wobei die regionale Akzeptanz je nach Plattform variiert. (Es sei darauf hingewiesen, dass 1.1.1.1 in den USA eine größere Benutzerbasis hat, aber diese spezifischen Trends variieren je nach Domain.)</p>
+	<ul>
+		<li>
+			<p>Asien dominiert poe.com und KI-Codierungstools wie Codeium und Cursor.</p>
+		</li>
+		<li>
+			<p>Europa spielt bei Hugging Face und GitHub Copilot eine wichtige Rolle.</p>
+		</li>
+		<li>
+			<p>Brasilien erweist sich als bemerkenswerter Akteur, insbesondere bei DeepSeek und Tabnine.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="generative-ai-general-traffic-growth">Generative AI: Allgemeines Traffic-Wachstum&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#generative-ai-general-traffic-growth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare hat aus Sicht von Generative AI-Kunden einen einzigartigen Blick auf die Branche. Wir betreiben viele große und kleine Generative AI-Dienste. Aus einer Kohorte von Generative AI-Kunden – einige sind seit kurzem populär, andere haben Chatbots oder Bild-KI-Generatoren eingerichtet, und einige haben gerade erst damit begonnen – haben wir sowohl HTTP-Anfragedaten der letzten Monate als auch Trends bei <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>Angriffen auf der Anwendungsebene</u></a> gesammelt.</p>
+	<p>Beginnen wir mit der Zunahme des HTTP-Anfrage-Traffics im vergangenen Jahr. Vom 1. Februar 2024 bis zum 1. März 2025 (ein 13-monatiger Zeitraum, um den Februar 2024 mit dem Februar 2025 zu vergleichen) <b>stieg der monatliche Datenverkehr um insgesamt 251&nbsp;%</b>, und über 2&nbsp;% der von Cloudflare verarbeiteten Anfragen wurden als potenzielle Angriffe abgewehrt.</p>
+	<p>Bitte beachten Sie, dass bei den meisten Unternehmen innerhalb der Gruppe der generativen KI-Websites ein Anstieg zu verzeichnen war. Das Wachstum von 251&nbsp;% schließt auch neue Generative AI-Kunden mit ein. Diese neuen Kunden haben den allgemeinen Wachstumstrend jedoch nur geringfügig beeinflusst. Wenn man Generative AI-Kunden ausschließt, die Ende 2024 oder Anfang 2025 zu Cloudflare gewechselt sind, liegt das Jahreswachstum bei 234&nbsp;%.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4323TeVxE3VqSEoFjopa8t/640305a2b4b3583218115f7a9c35cd60/image11.png" alt="" class="kg-image" width="1999" height="937" loading="lazy">
+	</figure>
+	<p>In der nächsten Betrachtung, die auf Tagesbasis dargestellt wird, ist der erwartete Rückgang während der Weihnachtszeit und der Feiertage zum Jahresende deutlich zu erkennen. Ein weiterer Trend zeigt sich: Die Kohorte der Generative AI-Kunden von Cloudflare wird definitiv stärker an Wochentagen als am Wochenende genutzt, was auf einen Fokus auf den Arbeitsplatz hindeutet. Der deutliche Rückgang während der Feiertage umfasst auch den Sommer auf der Nordhalbkugel – im Juli gibt es etwa einen leichten Rückgang des Traffics in Spitzenzeiten (ähnlich wie wir den allgemeinen Datenverkehr in den meisten Ländern beobachten).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NvzlVxeom6omVtgFjwauB/a3088b03dc870581c9b6b1f86a810f6d/image12.png" alt="" class="kg-image" width="1960" height="608" loading="lazy">
+	</figure>
+	<p>Wir haben auch eine Perspektive auf die wichtigsten Besucherstandorte von generativen KI-Websites, wobei die USA mit 23&nbsp;% aller Anfragen in dieser Kategorie auf Platz 1 stehen, gefolgt von Indien (8&nbsp;%), Brasilien (5&nbsp;%), Indonesien (4&nbsp;%). ) und die Philippinen (4&nbsp;%) unter den Top 5. Europäische Länder wie Großbritannien und Deutschland folgen in der Rangliste. Nachfolgend zeigen wir die Top 50, die noch eingehender erforscht werden müssen. Beachten Sie, dass Ägypten das erste afrikanische Land ist, das in der Rangliste erscheint, auf Platz 32, mit den gleichen 0,7&nbsp;% wie Südafrika.</p>
+	<p><b>Wichtigste Standorte nach Anteil des Traffics auf generativen KI-Websites</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Rang</b></p>
+				</td>
+				<td>
+					<p><b>Land</b></p>
+				</td>
+				<td>
+					<p><b>Prozentsatz der Gesamtheit</b></p>
+				</td>
+				<td>
+					<p><b>Rang</b></p>
+				</td>
+				<td>
+					<p><b>Land</b></p>
+				</td>
+				<td>
+					<p><b>Prozentsatz der Gesamtheit</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>Vereinigte Staaten</p>
+				</td>
+				<td>
+					<p>22,7 %</p>
+				</td>
+				<td>
+					<p>26</p>
+				</td>
+				<td>
+					<p>Singapur</p>
+				</td>
+				<td>
+					<p>1,1&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>Indien</p>
+				</td>
+				<td>
+					<p>8,3 %</p>
+				</td>
+				<td>
+					<p>27</p>
+				</td>
+				<td>
+					<p>Ukraine</p>
+				</td>
+				<td>
+					<p>1&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>Brasilien</p>
+				</td>
+				<td>
+					<p>4,9&nbsp;%</p>
+				</td>
+				<td>
+					<p>28</p>
+				</td>
+				<td>
+					<p>Taiwan</p>
+				</td>
+				<td>
+					<p>0,9&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>Indonesien</p>
+				</td>
+				<td>
+					<p>4,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>29</p>
+				</td>
+				<td>
+					<p>Thailand</p>
+				</td>
+				<td>
+					<p>0,9&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5</p>
+				</td>
+				<td>
+					<p>Philippinen</p>
+				</td>
+				<td>
+					<p>4&nbsp;%</p>
+				</td>
+				<td>
+					<p>30</p>
+				</td>
+				<td>
+					<p>Chile</p>
+				</td>
+				<td>
+					<p>0,8&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>6</p>
+				</td>
+				<td>
+					<p>Großbritannien</p>
+				</td>
+				<td>
+					<p>3,8&nbsp;%</p>
+				</td>
+				<td>
+					<p>31</p>
+				</td>
+				<td>
+					<p>Vereinigte Arabische Emirate</p>
+				</td>
+				<td>
+					<p>0,7&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>7</p>
+				</td>
+				<td>
+					<p>Deutschland</p>
+				</td>
+				<td>
+					<p>3,7&nbsp;%</p>
+				</td>
+				<td>
+					<p>32</p>
+				</td>
+				<td>
+					<p>Ägypten</p>
+				</td>
+				<td>
+					<p>0,7&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8</p>
+				</td>
+				<td>
+					<p>Kanada</p>
+				</td>
+				<td>
+					<p>3,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>33</p>
+				</td>
+				<td>
+					<p>Saudi-Arabien</p>
+				</td>
+				<td>
+					<p>0,7&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>9</p>
+				</td>
+				<td>
+					<p>Frankreich</p>
+				</td>
+				<td>
+					<p>3&nbsp;%</p>
+				</td>
+				<td>
+					<p>34</p>
+				</td>
+				<td>
+					<p>Südafrika</p>
+				</td>
+				<td>
+					<p>0,7&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>10</p>
+				</td>
+				<td>
+					<p>Mexiko</p>
+				</td>
+				<td>
+					<p>2,7&nbsp;%</p>
+				</td>
+				<td>
+					<p>35</p>
+				</td>
+				<td>
+					<p>Schweden</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11</p>
+				</td>
+				<td>
+					<p>Japan</p>
+				</td>
+				<td>
+					<p>2,4&nbsp;%</p>
+				</td>
+				<td>
+					<p>36</p>
+				</td>
+				<td>
+					<p>Belgien</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12</p>
+				</td>
+				<td>
+					<p>Russische Föderation</p>
+				</td>
+				<td>
+					<p>2,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>37</p>
+				</td>
+				<td>
+					<p>Bangladesch</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13</p>
+				</td>
+				<td>
+					<p>Spanien</p>
+				</td>
+				<td>
+					<p>2&nbsp;%</p>
+				</td>
+				<td>
+					<p>38</p>
+				</td>
+				<td>
+					<p>Schweiz</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14</p>
+				</td>
+				<td>
+					<p>Australien</p>
+				</td>
+				<td>
+					<p>2&nbsp;%</p>
+				</td>
+				<td>
+					<p>39</p>
+				</td>
+				<td>
+					<p>Marokko</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>15</p>
+				</td>
+				<td>
+					<p>Südkorea</p>
+				</td>
+				<td>
+					<p>1,8&nbsp;%</p>
+				</td>
+				<td>
+					<p>40</p>
+				</td>
+				<td>
+					<p>Ecuador</p>
+				</td>
+				<td>
+					<p>0,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>16</p>
+				</td>
+				<td>
+					<p>Vietnam</p>
+				</td>
+				<td>
+					<p>1,6&nbsp;%</p>
+				</td>
+				<td>
+					<p>41</p>
+				</td>
+				<td>
+					<p>Israel</p>
+				</td>
+				<td>
+					<p>0,5&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>17</p>
+				</td>
+				<td>
+					<p>Italienisch</p>
+				</td>
+				<td>
+					<p>1,5&nbsp;%</p>
+				</td>
+				<td>
+					<p>42</p>
+				</td>
+				<td>
+					<p>Nigeria</p>
+				</td>
+				<td>
+					<p>0,5&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>18</p>
+				</td>
+				<td>
+					<p>Malaysia</p>
+				</td>
+				<td>
+					<p>1,5&nbsp;%</p>
+				</td>
+				<td>
+					<p>43</p>
+				</td>
+				<td>
+					<p>Rumänien</p>
+				</td>
+				<td>
+					<p>0,5&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>19</p>
+				</td>
+				<td>
+					<p>Türkei</p>
+				</td>
+				<td>
+					<p>1,4&nbsp;%</p>
+				</td>
+				<td>
+					<p>44</p>
+				</td>
+				<td>
+					<p>Portugal</p>
+				</td>
+				<td>
+					<p>0,5&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>20</p>
+				</td>
+				<td>
+					<p>Polen</p>
+				</td>
+				<td>
+					<p>1,4&nbsp;%</p>
+				</td>
+				<td>
+					<p>45</p>
+				</td>
+				<td>
+					<p>Kasachstan</p>
+				</td>
+				<td>
+					<p>0,5&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>21</p>
+				</td>
+				<td>
+					<p>Niederlande</p>
+				</td>
+				<td>
+					<p>1,4&nbsp;%</p>
+				</td>
+				<td>
+					<p>46</p>
+				</td>
+				<td>
+					<p>Österreich</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>22</p>
+				</td>
+				<td>
+					<p>Argentinien</p>
+				</td>
+				<td>
+					<p>1,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>47</p>
+				</td>
+				<td>
+					<p>Tschechische Republik</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>23</p>
+				</td>
+				<td>
+					<p>Kolumbien</p>
+				</td>
+				<td>
+					<p>1,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>48</p>
+				</td>
+				<td>
+					<p>Hongkong</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>24</p>
+				</td>
+				<td>
+					<p>Pakistan</p>
+				</td>
+				<td>
+					<p>1,2&nbsp;%</p>
+				</td>
+				<td>
+					<p>49</p>
+				</td>
+				<td>
+					<p>Algerien</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>25</p>
+				</td>
+				<td>
+					<p>Peru</p>
+				</td>
+				<td>
+					<p>1,1&nbsp;%</p>
+				</td>
+				<td>
+					<p>50</p>
+				</td>
+				<td>
+					<p>Dänemark</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="attacks-targeting-generative-ai-websites">Angriffe auf Generative AI-Websites</h3>
+		<a href="https://blog.cloudflare.com/#attacks-targeting-generative-ai-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In puncto Sicherheit sind Websites mit generativer KI zu wichtigen Zielen für DDoS-Angriffe geworden, da sie mehr Aufmerksamkeit und Popularität gewonnen haben. Kürzlich hat unser Cloudforce One Team eine Bedrohung zu Angriffen von Anonymous Sudan auf Unternehmen mit KI-Bezug veröffentlicht: „<a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>Inside LameDuck: Analyzing Anonymous Sudan's Threat Operations</u></a>“. In diesem Bericht erläuterten sie, wie das US-Justizministerium zwei sudanesische Brüder hinter LameDuck anklagte, die sie mit über 35.000 DDoS-Angriffen über das Skynet Botnet in Verbindung brachten. Der Fall deckt sowohl die politischen als auch die finanziellen Motive hinter ihren Aktivitäten auf und unterstreicht die weltweiten Bemühungen – einschließlich der von Cloudflare – zur Stärkung der Cybersicherheit.</p>
+	<p>In den letzten 13 Monaten, vom 1. Februar 2024 bis zum 1. März 2025, hat Cloudflare <b>197 Milliarden Anfragen</b> als potenzielle Angriffe blockiert. Davon waren<b>39 Milliarden</b> Anfragen Teil von <b>DDoS-Angriffen</b> auf Generative AI-Websites.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4R9GfQsKixZ3CcGB4GPazz/2e43fa46125d22a3058e2099a1c8c38e/image6.png" alt="" class="kg-image" width="1988" height="944" loading="lazy">
+	</figure>
+	<p>Was die blockierten bösartigen Anfragen betrifft, so wurden im Juni 2024 die meisten potenziellen Angriffe von Cloudflare blockiert, gefolgt vom Januar 2025. Bei den DDoS-Angriffen wurde der Januar 2025 mit der höchsten Aktivität verzeichnet, gefolgt von November 2024 und Februar 2024.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KtuwFvwQWbjHL464kDbUG/45bc21c813d9a0ab0fb621da4eb4367d/image14.png" alt="" class="kg-image" width="1999" height="925" loading="lazy">
+	</figure>
+	<p>Betrachtet man den DDoS-Traffic auf Tagesebene genauer, so fand der größte Angriff am 23. Februar 2024 statt, als 3,7 Milliarden Anfragen im Rahmen einer DDoS-Attacke blockiert wurden. Der zweitgrößte war ein DDoS-Angriff mit 1,5 Milliarden Anfragen am 13. November 2024. Außerdem fand zwischen dem 20. und dem 31. Januar 2025 eine Reihe von mehrtägigen DDoS-Angriffen statt, wobei am 29. Januar mit über einer Milliarde Anfragen (insgesamt 7,3 Milliarden Anfragen) die höchste Zahl an Anfragen im Zusammenhang mit DDoS-Angriffen verzeichnet wurde.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DpI9bSIUziw2mVCA6WwUh/06d00c656656af711cba830f6380ae98/image3.png" alt="" class="kg-image" width="1946" height="620" loading="lazy">
+	</figure>
+	<p>Während des DDoS-Angriffs am 23. Februar 2024, der auf einen bestimmten Generative AI-Kunden abzielte, wurden mehr als 20&nbsp;% aller Anfragen bei allen Generative AI-Kunden blockiert.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gh467o7mEZBvm0wu3s9eI/1e2a21f47e3645de4257549937bc5ba0/image8.png" alt="" class="kg-image" width="1956" height="610" loading="lazy">
+	</figure>
+	<p>Schaut man sich die DDoS-Angriffe gegen diesen speziellen Generative AI-Kunden genauer an, so begann der Angriff am 22. Februar 2024 um 23:45&nbsp;Uhr MESZ und dauerte über acht Stunden mit ununterbrochenen Traffic-Spitzen, die einen Spitzenwert von 270.000 Anfragen pro Sekunde erreichten. Weitere Angriffe folgten, von denen der größte am 26. Februar 2024 um 3:45&nbsp;Uhr MESZ stattfand, drei Minuten dauerte und einen Spitzenwert von 309.000 Anfragen pro Sekunde erreichte.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ccxcb4WCqyoZOpZvJkv8/1748a4044e7de327aff9f289d51e4fdc/image9.png" alt="" class="kg-image" width="1422" height="687" loading="lazy">
+	</figure>
+	<p>Ein weiterer beliebter Generative AI-Kunde wurde vom 25. bis 31. Januar 2025 Ziel einer DDoS-Kampagne, wobei der Traffic am 30. Januar mit 523.000 Anfragen pro Sekunde seinen Höhepunkt erreichte.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZBMBJXBlyk7kHc85TthBG/ba0309a070b3d920b9ba2f9651fb1343/image7.png" alt="" class="kg-image" width="1966" height="918" loading="lazy">
+	</figure>
+	<p>Eine weitere Perspektive, die für den gleichen Zeitraum von Februar 2024 bis Februar 2025 zu berücksichtigen ist, ist die Art von Generative AI-Websites, die am stärksten von DDoS-Angriffen betroffen haben. Allgemeine KI-Chatbots machten mehr als 80&nbsp;% aller blockierten Anfragen aus und waren damit die primären Ziele.</p>
+	<p><b>DDoS-Angriffsziele nach Generative AI-Kategorie</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Kategorie</b></p>
+				</td>
+				<td>
+					<p><b>Prozentsatz</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Allgemeine Chatbots</p>
+				</td>
+				<td>
+					<p>82,7 %</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bild KI-Generatoren</p>
+				</td>
+				<td>
+					<p>8,2&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Code-Assistenten</p>
+				</td>
+				<td>
+					<p>3,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Andere</p>
+				</td>
+				<td>
+					<p>2,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Forschung &amp; Infra</p>
+				</td>
+				<td>
+					<p>1,3&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Musikerstellung</p>
+				</td>
+				<td>
+					<p>1,2&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI für Schreiben und Inhalte</p>
+				</td>
+				<td>
+					<p>0,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI für Stimme und Video</p>
+				</td>
+				<td>
+					<p>0,3&nbsp;%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Betrachtet man jedoch den prozentualen Anteil des gesamten Traffics, der als DDoS-Angriffe innerhalb der einzelnen Kategorien blockiert wurde, wiesen Websites mit Bild-KI-Bezug den höchsten Anteil auf, denn mehr als 50&nbsp;% ihres gesamten Traffics wurden blockiert.</p>
+	<p><b>Websites-Kategorie mit dem höchsten Prozentsatz an als DDoS-Angriff blockiertem Traffic&nbsp;</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Kategorie</b></p>
+				</td>
+				<td>
+					<p><b>Blockierter DDoS (in %)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bild-KI</p>
+				</td>
+				<td>
+					<p>50,8 %</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Chatbot</p>
+				</td>
+				<td>
+					<p>31&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Suche</p>
+				</td>
+				<td>
+					<p>9,4&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Code-Assistent</p>
+				</td>
+				<td>
+					<p>6,8&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Modell</p>
+				</td>
+				<td>
+					<p>5,8&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-gestützte Musik</p>
+				</td>
+				<td>
+					<p>3,6&nbsp;%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>KI-Unternehmen</p>
+				</td>
+				<td>
+					<p>2,9 %</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-ai-transformation">Fazit: KI-Transformation</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-ai-transformation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Generative AI wächst weiter und verändert die Internetnutzung, sodass der Traffic für KI-Dienste im vergangenen Jahr um über 250&nbsp;% zugenommen hat. ChatGPT ist definitiv der beliebteste Dienst und nähert sich den Top-50 aller Internetdienste, wie eine Analyse des Traffics von unserem DNS-Resolver 1.1.1.1 zeigt. Neue Anbieter wie DeepSeek und Grok/xAI sind in der Rangliste schnell nach oben geklettert, während die regionalen Adoptionsmuster zeigen, dass die USA, Indien und Brasilien beim Besucher-Traffic an der Spitze stehen.</p>
+	<p>Dieser rasante Anstieg hat auch Cyberangriffe mit sich gebracht: Im vergangenen Jahr wurden 39 Milliarden Anfragen als DDoS-Angriffe identifiziert, die auf bestimmte Generative AI-Websites abzielten. Die meisten Angriffe konzentrieren sich auf allgemeine KI-Chatbots. Allerdings weisen Websites zur Generierung von Bildern mit über 50&nbsp;% den höchsten Prozentsatz blockierter Anfragen auf. Während sich Generative AI weiterentwickelt, ermöglicht die Verfolgung dieser Trends einen historischen Überblick über Wachstumsspitzen, globale Reichweite und neue Bedrohungen.</p>
+	<p>Wenn Sie an weiteren Internet-Trends und -Einblicken interessiert sind, besuchen Sie <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>. Folgen Sie uns bei <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> (X), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> (Mastodon) und <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a> (Bluesky) oder nehmen Sie per E-Mail Verbindung zu uns auf.</p>
+</div>

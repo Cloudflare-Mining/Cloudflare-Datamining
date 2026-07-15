@@ -1,0 +1,226 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/every-7-8us-your-computers-memory-has-a-hiccup">English</a>, <a href="https://blog.cloudflare.com/fr-fr/every-7-8us-your-computers-memory-has-a-hiccup">Français</a>, <a href="https://blog.cloudflare.com/de-de/every-7-8us-your-computers-memory-has-a-hiccup">Deutsch</a> y <a href="https://blog.cloudflare.com/zh-cn/every-7-8us-your-computers-memory-has-a-hiccup">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/791063MiEVgyr0YOABGN7W/8b88ff9f9aedf985d6f240c7c1588c68/every-7-8us-your-computers-memory-has-a-hiccup.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>DDR3 SDRAM moderna. Fuente: BY-SA/4.0 por Kjerish</p>
+	<p>Durante mi reciente visita al <a href="http://www.computerhistory.org" target="_blank" rel="noopener noreferrer">Computer History Museum (Museo de historia de los ordenadores)</a> en Mountain View, me detuve a contemplar una antigua <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank" rel="noopener noreferrer">memoria de núcleos magnéticos</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hsvsgHolMQyvCWSIDzdNw/a1c5ba4bf5c4781ddfce24e468d40ee2/240px-KL_CoreMemory.jpg" alt="240px-KL_CoreMemory" class="kg-image" width="240" height="240" loading="lazy">
+
+	</figure>
+	<p>Fuente: BY-SA/3.0 por Konstantin Lanzet</p>
+	<p>Inmediatamente llegué a la conclusión de que no tenía ni idea de cómo funcionaban estas cosas. Me pregunté si los anillos rotaban (no lo hacen) y por qué cada anillo tenía tres cables entrelazados (y todavía no entiendo cómo funcionaban exactamente). Y lo que es más importante, me di cuenta de que apenas entendía el funcionamiento de la memoria moderna - RAM dinámica.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dVCvpQMSH4SxxcOltfABE/4e7e4aa9b619a4f8f7516336f14692b8/cpumemory.8.png" alt="cpumemory.8" class="kg-image" width="115" height="77" loading="lazy">
+
+	</figure>
+	<p>Fuente: Serie de Ulrich Drepper sobre la memoria</p>
+	<p>Particularmente, me interesaba una de las consecuencias del funcionamiento de la RAM dinámica. Verás, cada bit de datos se almacena por la carga (o falta de ella) en un pequeño condensador dentro del chip de la RAM. Pero estos condensadores pierden gradualmente su carga con el tiempo. Para evitar perder los datos almacenados, deben actualizarse regularmente para restaurar la carga (si existe) a su nivel original. Este <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank" rel="noopener noreferrer">proceso de actualización</a> implica leer el valor de cada bit y luego reescribirlo. Durante este tiempo de "actualización", la memoria está ocupada y no puede realizar operaciones normales como cargar o almacenar bits.</p>
+	<p>Esto es algo que me ha preocupado durante cierto tiempo y me pregunté... ¿se puede percibir el retraso de la actualización en el software?</p>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-ram-refresh-primer"><b>Manual básico de actualización de la RAM dinámica</b></h2>
+		<a href="https://blog.cloudflare.com/#dynamic-ram-refresh-primer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cada módulo DIMM está compuesto por «celdas» y «filas», «columnas», «lados» y/o «rangos». En esta presentación de <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank" rel="noopener noreferrer">la Universidad de Utah se explica la nomenclatura</a>. Puede comprobar la configuración de la memoria en su ordenador con el comando decode-dimms. A continuación, un ejemplo:</p>
+	<pre class="language-bash"><code class="language-bash">$ decode-dimms
+Size                                       4096 MB
+Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
+Ranks                                      2</code></pre>
+	<p>No vamos a entrar hoy en el formato completo de la DDR DIMM, solo necesitamos entender una sola celda de memoria, que almacena un bit de información. Específicamente, solo nos interesa cómo se realiza el proceso de actualización.</p>
+	<p>Vamos a revisar dos fuentes:</p>
+	<ul>
+		<li>
+			<p><a href="http://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank" rel="noopener noreferrer">Un Tutorial de actualización de DRAM, de la Universidad de Utah</a></p>
+		</li>
+		<li>
+			<p>Y una impresionante documentación de una celda de 1 gigabit de micron: Diseño de TN-46-09 para DDR SDRAM de 1 GB</p>
+		</li>
+	</ul>
+	<p>Cada bit almacenado en la memoria dinámica debe actualizarse, por lo general, cada 64 ms (lo que se conoce como actualización estática). Esta es una operación bastante costosa. Para evitar una paralización importante cada 64 ms, este proceso se divide en 8192 operaciones de actualización más pequeñas. En cada operación, el controlador de memoria del ordenador envía comandos de actualización a los chips de la DRAM. Después de recibir la instrucción, un chip actualizará 1/8192 de sus celdas. Si se hace el cálculo: 64 ms / 8192 = 7812,5 ns o 7,81 μs. Esto significa:</p>
+	<ul>
+		<li>
+			<p>Se emite un comando de actualización cada 7812,5 ns. Esto se llama tREFI.</p>
+		</li>
+		<li>
+			<p>El chip necesita algo de tiempo para realizar la actualización y la recuperación, de modo que pueda realizar operaciones normales de lectura y escritura de nuevo. Este tiempo, llamado tRFC, es de 75 ns o 120 ns (según la hoja de datos mencionada de Micron).</p>
+		</li>
+	</ul>
+	<p>Cuando la memoria está caliente (&gt; 85° C), el tiempo de retención de memoria disminuye y el tiempo de actualización estática se reduce a la mitad, hasta 32 ms, y el tREFI desciende a 3906,25 ns.</p>
+	<p>Un chip de memoria típico está ocupado con actualizaciones durante una fracción significativa de su tiempo de ejecución: entre 0,4 % y 5 %. Además, los chips de memoria son responsables de una parte no menor del consumo de potencia típico de un ordenador, y gran parte de esa energía se emplea en la aplicación de las actualizaciones.</p>
+	<p>Durante la acción de actualización, se bloquea el chip de memoria completo. Esto significa que cada uno de los bits en la memoria se bloquea por más de 75 ns cada 7812 ns. Midámoslo.</p>
+	<div class="flex anchor relative">
+		<h2 id="preparing-an-experiment"><b>Preparación de un experimento</b></h2>
+		<a href="https://blog.cloudflare.com/#preparing-an-experiment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para medir las operaciones con una granularidad a nanosegundo, tenemos que escribir un bucle ajustado, tal vez en C. Se ve así:</p>
+	<pre class="language-bash"><code class="language-bash">    for (i = 0; i &lt; ...; i++) {
+		// Perform memory load. Any load instruction will do
+		*(volatile int *) one_global_var;
+
+		// Flush CPU cache. This is relatively slow
+		_mm_clflush(one_global_var);
+
+		// mfence is needed, otherwise sometimes the loop
+		// takes very short time (25ns instead of like 160). I
+		// blame reordering.
+		asm volatile("mfence");
+
+		// Measure and record time
+		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
+    }</code></pre>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank" rel="noopener noreferrer">El código completo está disponible en Github</a>.</p>
+	<p>El código es realmente sencillo. Realizar una lectura de memoria. Limpiar datos de las memorias caché de la CPU. Medir tiempo.</p>
+	<p>(Nota: en <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank" rel="noopener noreferrer">el segundo experimento, intenté usar MOVNTDQA</a> para realizar la carga de datos, pero esto requiere una página especial que no se pueda guardar en caché, y para ello se necesita acceso de administrador.)</p>
+	<p>En mi ordenador, genera datos como estos:</p>
+	<pre class="language-bash"><code class="language-bash"># timestamp, loop duration
+3101895733,     134
+3101895865,     132
+3101896002,     137
+3101896134,     132
+3101896268,     134
+3101896403,     135
+3101896762,     359
+3101896901,     139
+3101897038,     137</code></pre>
+	<p>Por lo general, obtengo ~ 140 ns por bucle, y la duración del bucle salta periódicamente a ~ 360 ns. A veces, obtengo extrañas lecturas superiores a 3200 ns.</p>
+	<p>Desafortunadamente, los datos resultan ser muy ruidosos. Es muy difícil ver si hay un retraso notable relacionado con los ciclos de actualización.</p>
+	<div class="flex anchor relative">
+		<h2 id="fast-fourier-transform"><b>Transformada rápida de Fourier</b></h2>
+		<a href="https://blog.cloudflare.com/#fast-fourier-transform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En algún momento, tuve una idea. Ya que queremos encontrar un evento de intervalo fijo, podemos añadir los datos en el algoritmo FFT (transformada rápida de Fourier), que descifra las frecuencias subyacentes.</p>
+	<p>No soy el primero que pensó en esto. Mark Seaborn de Rowhammer <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank" rel="noopener noreferrer">implementó con notoriedad esta técnica</a> en 2015. Incluso después de echarle un vistazo al código de Mark, conseguir que FFT funcionara resultó ser más difícil de lo esperado. Pero finalmente conseguí reunir todas las piezas.</p>
+	<p>Primero, tenemos que preparar los datos. FFT requiere que los datos de entrada se muestreen con un intervalo de muestreo constante. También queremos recortar los datos para reducir el ruido. Con el método de prueba y error, descubrí que los mejores resultados se producen cuando los datos están preprocesados:</p>
+	<ul>
+		<li>
+			<p>Los valores pequeños (menores que el promedio * 1,8) de iteraciones de bucle se eliminan, ignoran y sustituyen por lecturas de "0". No queremos incluir el ruido en el algoritmo.</p>
+		</li>
+		<li>
+			<p>Todas las lecturas restantes se reemplazan por "1", ya que realmente no nos importa la amplitud del retraso que provoca el ruido.</p>
+		</li>
+		<li>
+			<p>Fijé un intervalo de muestro de 100 ns, pero cualquier número hasta <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank" rel="noopener noreferrer">un valor de Nyquist (frecuencia doble esperada) también funciona bien</a>.</p>
+		</li>
+		<li>
+			<p>Los datos se deben muestrear con tiempos fijos antes de introducirlos en la FFT. Todos los métodos de muestreo razonables funcionan adecuadamente, y terminé realizando una interpolación lineal básica.</p>
+		</li>
+	</ul>
+	<p>El algoritmo es parecido al siguiente:</p>
+	<pre class="language-bash"><code class="language-bash">UNIT=100ns
+A = [(timestamp, loop_duration),...] 
+p = 1
+for curr_ts in frange(fist_ts, last_ts, UNIT):
+    while not(A[p-1].timestamp &lt;= curr_ts &lt; A[p].timestamp):
+        p += 1
+    v1 = 1 if avg*1.8 &lt;= A[p-1].duration &lt;= avg*4 else 0
+    v2 = 1 if avg*1.8 &lt;= A[p].duration &lt;= avg*4 else 0
+    v = estimate_linear(v1, v2, A[p-1].timestamp, curr_ts, A[p].timestamp)
+    B.append( v )</code></pre>
+	<p>Que en mis datos produce un vector bastante aburrido como este:</p>
+	<pre class="language-bash"><code class="language-bash">[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</code></pre>
+	<p>Sin embargo, el vector es bastante largo, normalmente con alrededor de 200 000 puntos de datos. Los datos preparados así ya están listos para introducirse en FFT.</p>
+	<pre class="language-bash"><code class="language-bash">C = numpy.fft.fft(B)
+C = numpy.abs(C)
+F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)</code></pre>
+	<p>Bastante simple, ¿verdad? Esto produce dos vectores:</p>
+	<ul>
+		<li>
+			<p>C contiene números complejos de los componentes de frecuencia. No nos interesan los números complejos, así que podemos aplanarlos al llamar a abs().</p>
+		</li>
+		<li>
+			<p>F contiene las etiquetas de qué contenedor de frecuencia radica en qué lugar en el vector C. Tenemos que normalizarlo a Hz, multiplicándolo por la frecuencia de muestreo de los vectores de entrada.</p>
+		</li>
+	</ul>
+	<p>El resultado se puede mostrar en un gráfico:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GN44y65zWWJhSV8uNzqnu/cd9ff00a109e3eac49d858948edfbbf0/fft1a.png" alt="fft1a" class="kg-image" width="1893" height="824" loading="lazy">
+
+	</figure>
+	<p>El eje Y no tiene unidad, ya que normalizamos los tiempos de retraso. Sin embargo, muestra picos claros en algunos intervalos de frecuencia fija. Ampliemos:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xnQR5GYgpUVqOqH4Lvbry/35d7dab15d7515d3101d341cd882abdf/fft2a.png" alt="fft2a" class="kg-image" width="1893" height="824" loading="lazy">
+
+	</figure>
+	<p>Primero, podemos ver tres picos claros. Después de un poco de insípida aritmética, con un filtrado de la lectura de al menos 10 veces el tamaño de la media, podemos extraer las frecuencias subyacentes:</p>
+	<pre class="language-bash"><code class="language-bash">127850.0
+127900.0
+127950.0
+255700.0
+255750.0
+255800.0
+255850.0
+255900.0
+255950.0
+383600.0
+383650.0</code></pre>
+	<p>Si se hace el cálculo: 1000000000 (ns/s) / 127900 (Hz) = 7818,6 ns</p>
+	<p>¡Hurra! El primer pico de frecuencia es ciertamente lo que estábamos buscando y, de hecho, se correlaciona con los tiempos de actualización.</p>
+	<p>Los otros picos a 256 kHz, 384 kHz, 512 kHz, etc., son multiplicaciones de nuestra frecuencia base de 128 kHz, llamada armonía. Estos son un efecto secundario de <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank" rel="noopener noreferrer">realizar la FFT sobre algo parecido a una onda cuadrada</a>, y es algo totalmente esperado.</p>
+	<p>Para una experimentación más sencilla, <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank" rel="noopener noreferrer">preparamos una versión de la línea de comando de esta herramienta</a>. Usted mismo puede ejecutar el código. A continuación, una ejecución de muestra en mi servidor:</p>
+	<pre class="language-bash"><code class="language-bash">~/2018-11-memory-refresh$ make
+gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
+./measure-dram | python3 ./analyze-dram.py
+[*] Verifying ASLR: main=0x555555554890 stack=0x7fffffefe2ec
+[ ] Fun fact. I did 40663553 clock_gettime()'s per second
+[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.
+[*] Writing out data
+[*] Input data: min=117 avg=176 med=167 max=8172 items=131072
+[*] Cutoff range 212-inf
+[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero
+[*] Running FFT
+[*] Top frequency above 2kHz below 250kHz has magnitude of 7716
+[+] Top frequency spikes above 2kHZ are at:
+127906Hz    7716
+255813Hz    7947
+383720Hz    7460
+511626Hz    7141</code></pre>
+	<p>Tengo que admitir que el código no es perfectamente estable. En caso de problemas, considere deshabilitar Turbo Boost, el escalado de frecuencia de la CPU y el ajuste para rendimiento.</p>
+	<div class="flex anchor relative">
+		<h2 id="finale"><b>Final</b></h2>
+		<a href="https://blog.cloudflare.com/#finale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Se pueden sacar dos importantes conclusiones de este trabajo.</p>
+	<p>Hemos visto que los datos de nivel bajo son bastante difíciles de analizar y parecen ser bastante ruidosos. En lugar de tratar de averiguar algo a simple vista, siempre podemos emplear FFT. Se necesita algo de optimismo al preparar los datos.</p>
+	<p>Y lo que es más importante, mostramos que a menudo es posible medir los comportamientos sutiles de hardware de un proceso de espacio de usuario simple. Este tipo de pensamiento condujo al descubrimiento de la vulnerabilidad del <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank" rel="noopener noreferrer">Rowhammer original</a>, se utilizó en ataques Meltdown/Spectre y se mostró de nuevo en la <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections" target="_blank" rel="noopener noreferrer">reciente reencarnación de la derrota de ECC de Rowhammer</a>.</p>
+	<p>Queda tanto más por decir. Apenas hemos arañado la superficie del funcionamiento interno del subsistema de la memoria. Recomiendo lecturas adicionales:</p>
+	<ul>
+		<li>
+			<p><a href="http://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank" rel="noopener noreferrer">L3 cache mapping on Sandy Bridge CPUs</a></p>
+		</li>
+		<li>
+			<p><a href="http://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank" rel="noopener noreferrer">How physical address maps to rows and banks in DRAM</a></p>
+		</li>
+		<li>
+			<p><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd" target="_blank" rel="noopener noreferrer">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></p>
+		</li>
+	</ul>
+	<p>Finalmente, aquí hay una buena lectura sobre la vieja memoria de núcleo magnético:</p>
+	<ul>
+		<li>
+			<p><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank" rel="noopener noreferrer">PDP-11 core memory explained by University of Sydney</a></p>
+		</li>
+	</ul>
+</div>

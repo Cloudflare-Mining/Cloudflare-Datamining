@@ -1,0 +1,166 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ml-api-discovery-and-schema-learning">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ml-api-discovery-and-schema-learning">Français</a>、<a href="https://blog.cloudflare.com/de-de/ml-api-discovery-and-schema-learning">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ml-api-discovery-and-schema-learning">한국어</a>、<a href="https://blog.cloudflare.com/es-es/ml-api-discovery-and-schema-learning">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/ml-api-discovery-and-schema-learning">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9rMvSDWzIib1lnJRTYt3y/fad83e0c1dd1d996be5cdb9cf7f84af5/ml-api-discovery-and-schema-learning.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは現在、すべてのAPIエンドポイントを自動的に検出し、すべての<a href="https://www.cloudflare.com/application-services/products/api-gateway" target="_blank" rel="noopener noreferrer">API Gateway</a>のお客様に対し、APIスキーマを学習します。お客様はこれらの新機能を使用することで、既存のAPIに関する情報がほとんどない場合でも、APIエンドポイントに有用なセキュリティモデルを適用することができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O4mCKw9fBP5rNhxrGj3NP/e4439b1f3cfd0f4b0674c8be82e494e3/image6-6.png" alt="Automatically discovering API endpoints and generating schemas using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>APIを保護するための最初のステップは、APIのホスト名とエンドポイントを知ることです。よく聞かれることとして、顧客がAPIのカタログ化と管理の取り組みを、「<i>スプレッドシートを電子メールで送り、開発者にすべてのエンドポイントをリストアップしてもらう</i>」という形で始めざるを得ないという話があります。</p>
+	<p>この方法の問題点がお分かりになりますか。もしかしたら、実際に見たことがあるかもしれません。「Eメールで問い合わせる」というアプローチでは特定の時点での内容が作成されるため、次のコードリリースで変更される可能性が高くなります。属人的な知識であるため、その知識は組織を去る人々とともに消えてしまうかもしれません。最後に、ヒューマンエラーの可能性があります。</p>
+	<p>グループ作業によって収集された正確なAPIインベントリがあったとしても、APIスキーマを強制することによって、APIが意図したとおりに使用されていることを検証するには、そのスキーマを構築するためにさらに多くの集合的な知識が必要になります。そこで、API Gatewayの新しいAPI Discoveryとスキーマ学習機能を組み合わせることにより、Cloudflareグローバルネットワーク全体の<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">APIを自動的に保護</a>し、手動による<a href="https://www.cloudflare.com/ja-jp/learning/security/api/what-is-api-discovery/?cf_target_id=CA9ABD67E8A7740455B9D4E3D6ABFFE9" target="_blank" rel="noopener noreferrer">APIの検出</a>やスキーマ構築の必要性を排除できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="api-gateway-discovers-and-protects-apis">API GatewayによるAPIの検出と保護</h2>
+		<a href="https://blog.cloudflare.com/#api-gateway-discovers-and-protects-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API GatewayはAPI Discoveryと呼ばれる機能を通じて<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a>を検出します。以前は、API Discoveryは、お客様固有のセッション識別子（HTTPヘッダーまたはCookie）を使用してAPIエンドポイントを特定し、その分析をお客様に表示していました。</p>
+	<p>この方法で検出することはうまくいきましたが、3つの欠点がありました。</p>
+	<ol>
+		<li>
+			<p>お客様はセッションを区別するために、どのヘッダーやCookieを使用したかを知る必要がありました。セッション識別子は一般的ですが、適切なトークンを見つけるには時間がかかります。</p>
+		</li>
+		<li>
+			<p>API Discoveryにセッション識別子が必要なため、完全に認証されていないAPIを監視してレポートすることができませんでした。お客様は、引き続きすべてのAPIエンドポイントが文書化され、乱用が最小限に抑えられていることを確認するために、セッションレスのトラフィックを可視化することを望んでいます。</p>
+		</li>
+		<li>
+			<p>セッション識別子がダッシュボードに入力されると、お客様は検出プロセスが完了するまで最大24時間待たなければなりませんでした。誰も待つのは好きではありません。</p>
+		</li>
+	</ol>
+	<p>このアプローチには欠点もありましたが、セッションベースの製品から始めることで、顧客に迅速に価値を提供できることはわかっていました。顧客を獲得し、より多くのトラフィックをシステムに通すにつれて、新しいラベル付けされたデータが当社製品をさらに構築するために非常に有用であることがわかっていました。既存のAPIメタデータと新しいラベル付きデータで<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">機械学習モデル</a>をトレーニングできれば、どのエンドポイントがAPI用かを特定するためのセッション識別子は必要なくなります。そこで、私たちはこの新しいアプローチを構築することにしました。</p>
+	<p>セッション識別子に基づくデータから学んだことを利用し、セッション識別子に関係なく、ドメインへのすべてのAPIトラフィックを明らかにする機械学習モデルを構築しました。新しい機械学習ベースのAPI Discoveryにより、Cloudflareはお客様からの事前入力なしに、当社のネットワークを経由するすべてのAPIトラフィックを継続的に検出します。このリリースにより、API Gatewayのお客様はAPI Discoveryをこれまで以上に迅速に開始できるようになり、これまで発見できなかった認証されていないAPIを検出できるようになります。</p>
+	<p>セッション識別子はAPI Gatewayにとって重要であることに変わりはありません。セッション識別子はAPI Gatewayの不正利用防止の<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">レート制限</a>や<a href="https://blog.cloudflare.com/ja-jp/api-sequence-analytics-ja-jp">シーケンス分析</a>の基礎となるからです。新しいアプローチがどのように機能するかについては、以下の「仕組み」セクションをご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="api-protection-starting-from-nothing">ゼロから始めるAPI保護</h3>
+		<a href="https://blog.cloudflare.com/#api-protection-starting-from-nothing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API Discoveryを使用して新しいAPIを見つけたところで、それらをどのように保護するのでしょうか。攻撃を防御するためには、APIの開発者は、APIがどのように使用されることを想定しているかを正確に知っておく必要があります。幸運なことに、開発者はAPIに受け入れられる入力をコード化したAPIスキーマファイルをプログラムによって生成し、API Gatewayの<a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">スキーマ検証</a>にアップロードすることができます。</p>
+	<p>しかし、多くのお客様が、開発者がAPIを構築するのと同じくらい速くAPIを見つけることができないことは、すでにお話ししました。また、APIを検出したとしても、セキュリティチームがHTTPリクエストメソッドとパス以上のものをログで見ることはめったにないことを考えると、何百もあるようなAPIエンドポイントのそれぞれについて一意のOpenAPIスキーマを正確に構築することは非常に困難です。</p>
+	<p>API Gatewayの利用パターンを調べたところ、お客様はAPIを検出することはあってもスキーマを適用することはほとんどありませんでした。その理由を尋ねると、答えは簡単でした。「_APIの存在を知っていても、スキーマを提供できるように、それぞれのAPIの所有者を追跡するのにとても時間が_かかります。このようなタスクの優先順位を、他のやらなければならないセキュリティアイテムよりも高くするのは難しいのです。」時間と専門知識の不足は、お客様が保護を可能にする上で最大のギャップでした。</p>
+	<p>そこで私たちはこのギャップを埋めようと考えました。私たちは、APIエンドポイントを検出するために使用したのと同じ学習プロセスを、スキーマを自動的に学習するために、一度検出したエンドポイントに適用できることを発見しました。<b>この方法を使うことで、</b><b><i>発見したすべてのエンドポイントに対して、リアルタイムでOpenAPI形式のスキーマを生成できる</i></b>**ようになりました。**私たちはこの新機能をスキーマ学習と呼んでいます。その後、お客様はCloudflareが生成したスキーマをSchema Validationにアップロードして、有用なセキュリティモデルを実施することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VpHCVozyIsmpo7qSr6mTq/6193978955979c057b25a8f42b9d67d6/Schema-Learning-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="machine-learning-based-api-discovery">機械学習ベースのAPI検出</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning-based-api-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>RESTful APIの呼び出しは、異なるHTTPメソッドとパスで構成されています。例えば<a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Cloudflare API</a>ですが、このブログへのリクエストのうち、このAPIへのリクエストには特徴的なパスの共通傾向があることにお気づきでしょう。つまり、API呼び出しはすべて「/client/v4」で始まり、サービス名、一意の識別子、そして時にはサービス機能名とさらなる識別子で続いているということです。</p>
+	<p>API呼び出しはどのようにして簡単に特定できるのでしょうか。一見すると、これらのリクエストは「/clientで始まるパス」のようなヒューリスティックな方法でプログラムで簡単に発見できるように思えますが、新しいDiscoveryの中核には、HTTPトランザクションをスコアリングする分類機能を強化する機械学習モデルが含まれています。APIパスがそれほど構造化されているのであれば、なぜ機械学習が必要なのでしょうか。</p>
+	<p>その答えは、「何がAPI呼び出しで、非API呼び出しとは何が違うのか」ということです。2つの例を見てみましょう。</p>
+	<p>Cloudflare APIのように、多くのお客様のAPIは、API呼び出しのパスの前に「API」識別子とバージョンを付けるなどのパターンに従っています。(例: <i>/API/v2/user/7f577081-7003-451e-9abe-eb2e8a0f103d)</i></p>
+	<p>ですから、パスの中で「API」やバージョンを探すだけで、これがAPIの一部である可能性が非常に高いことを教えてくれる、かなり優れたヒューリスティックな方法なのですが、残念ながらいつもそう簡単なわけではありません。</p>
+	<p>さらに2つの例を考えてみましょう。<i>/users/7f577081-7003-451e-9abe-eb2e8a0f103d.jpg_と、</i>/users/7f577081-7003-451e-9abe-eb2e8a0f103d_では、拡張子「.jpg」だけが異なります。最初のパスはユーザーのサムネイルのような静的なリソースかもしれません。2つ目のパスは、パスだけでは多くの手がかりを与えてくれません。</p>
+	<p>ヒューリスティックを手作業で作るのはすぐに難しくなります。人間はパターンを見つけるのが得意ですが、Cloudflareが毎日目にするデータの規模を考えると、ヒューリスティックを構築するのは困難です。そのため、私たちは機械学習を使ってヒューリスティックを自動的に導き出しており、それには再現性があり、一定の精度を保っていることも確認しています。</p>
+	<p>学習用に入力されるのは、前述のDiscoveryを通じ、セッション識別子に基づいて収集した、HTTPリクエスト/レスポンスサンプルの「content-type」やファイル拡張子などの特徴です。残念ながら、このデータのすべてがAPIであるとは限りません。さらに、API以外のトラフィックを表すサンプルも必要です。そのため、セッション識別子のDiscoveryデータから始め、手作業でクリーンアップし、非APIトラフィックのサンプルをさらに導出しました。モデルをデータに適合させすぎないよう、細心の注意を払いました。モデルが訓練データを超えて汎化することを望んでいるためです。</p>
+	<p>このモデルを学習させるために、<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">CatBoostライブラリ</a>を使いました。CatBoostライブラリは、当社の<a href="https://blog.cloudflare.com/ja-jp/machine-learning-mobile-traffic-bots-ja-jp">ボット管理のMLモデル</a>にも使われているので、すでに十分な専門知識があります。単純化すると、得られたモデルをフローチャートとみなすことができます。このフローチャートは、例えば、パスに「API」が含まれる場合、ファイルに拡張子がないかもチェックする、という具合に、どの条件を次々にチェックすべきかを教えてくれます。このフローチャートの最後には、HTTPトランザクションがAPIに属する可能性を示すスコアがあります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/360Ff2sU2vH0xHRTwQ1a1i/9acd901bac12dd2e228f123904e1322d/ML-Discovery-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+
+	</figure>
+	<p>学習されたモデルが与えられれば、Cloudflareネットワークを通過するHTTPリクエスト／レスポンスの特徴を入力し、このHTTPトランザクションがAPIに属するかどうかの可能性を計算することができます。特徴抽出とモデルのスコアリングはRustで行われ、当社のグローバルネットワークではわずか数マイクロ秒しかかかりません。Discoveryは強力な<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">データパイプライン</a>からデータを取得するため、実際には_各トランザクション_をスコアリングする必要はありません。はじめからデータパイプラインで終わることが分かっているトランザクションのみをスコアリングすることで、サーバーの負荷を減らすことができます。ですから、これはCPUタイムの消費も抑えた、費用対効果の高い機能です。</p>
+	<p>データパイプラインに分類結果があれば、セッション識別子ベースの検出に使っていたのと同じ<a href="https://blog.cloudflare.com/api-abuse-detection">API Discoveryの仕組み</a>を使うことができます。この既存のシステムはうまく機能し、コードを効率的に再利用できます。また、セッション識別子ベースのDiscoveryと結果を比較する際にも、システムが直接比較できるため役立ちました。</p>
+	<p>API Discoveryの結果を有用なものにするために、Discoveryの最初のタスクは、私たちが目にする固有のパスを変数に単純化することです。これについては以前にも<a href="https://blog.cloudflare.com/api-abuse-detection">説明</a>しました。グローバルネットワーク全体で見られるさまざまな異なる識別子スキームを推定するのは簡単なことではなく、特にサイトが単純なGUIDや整数形式以外のカスタム識別子を使用している場合はなおさらです。API Discoveryは、いくつかの異なる変数分類機能と教師あり学習の助けを借りて、変数を含むパスを適切に正規化します。</p>
+	<p>パスを正規化した後でのみ、Discoveryの結果をユーザーがそのまま使用できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-results-hundreds-of-found-endpoints-per-customer">その結果、顧客ごとに数百のエンドポイントが検出されました。</h3>
+		<a href="https://blog.cloudflare.com/#the-results-hundreds-of-found-endpoints-per-customer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>では、ML Discoveryは、APIトラフィックをタグ付けするためにヘッダーやCookieに依存するセッション識別子ベースのDiscoveryと比べてどうでしょうか。</p>
+	<p>私たちが期待しているのは、非常に類似したエンドポイントのセットを検出することです。しかし、私たちのデータには2つの問題があることが分かっていました。第一に、お客様がセッション識別子を使用して、API トラフィックだけをきれいに分離できないことがあります。この場合、Discoveryは非APIトラフィックを表面化させます。第二に、API Discoveryの最初のバージョンではセッション識別子が必要だったので、セッションの一部ではないエンドポイント（ログインエンドポイントや非認証エンドポイントなど）は、概念的に検出不可能でした。</p>
+	<p>次のグラフは、両方の検出バリアントについて、顧客ドメインで検出されたエンドポイント数のヒストグラムを示しています。</p>
+	<p>ふかん的に見ると、結果は非常によく似ています。これは、ML Discoveryが想定通りに機能していることを示す良い指標です。このプロットにはいくらかの違いが見られますが、セッション識別子だけでは概念的に検出できないエンドポイントも検出されることは、予想されることです。実際、ドメインごとの比較を詳しく見てみると、約46％のドメインで変化がないことがわかります。次のグラフは、セッションベースとMLベースの検出結果の違い（エンドポイントの割合）を比較したものです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2B3SRaTlzY9IeP14TiJmJt/ec42e3ecc5072fc6bd6f839ea6414a18/imageLikeEmbed.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+
+	</figure>
+	<p>ドメインの15%で、1～50の間でエンドポイントの増加が見られ、9%で1～50の間の減少が見られます。ドメインの約28%で、50を超える追加エンドポイントが見つかりました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xgilUYXsRSsK0szWTUE4Y/663978d4aa8a919010c024b5d2bea3bb/imageLikeEmbed--1-.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+
+	</figure>
+	<p>これらの結果は、ML Discoveryが、これまでレーダーの下に隠れていた追加のエンドポイントを浮上させることができ、API Gatewayが提供する一連のツールを拡張して、API環境に秩序をもたらせることを示しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="on-the-fly-api-protection-through-api-schema-learning">APIスキーマ学習によるオンザフライAPI保護</h3>
+		<a href="https://blog.cloudflare.com/#on-the-fly-api-protection-through-api-schema-learning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API Discoveryが完了したところで、実務者は新たに発見されたエンドポイントをどのように保護すればよいのでしょうか。API呼び出しのメタデータについてはすでに見てきたので、次はAPI呼び出しの本文を見てみましょう。APIのすべてのAPIエンドポイントに対して期待されるすべてのフォーマットのコンパイルは、APIスキーマとして知られています。API Gatewayのスキーマ検証は、リクエストの本文、パス、クエリ文字列がそのAPIエンドポイントの期待される情報を期待されるフォーマットで含んでいることを確認し、<a href="https://github.com/OWASP/API-Security" target="_blank" rel="noopener noreferrer">OWASPトップ10のAPI攻撃</a>から保護する優れた方法です。しかし、期待されるフォーマットがわからない場合はどうすればよいでしょうか。</p>
+	<p>特定のAPIのスキーマがお客様に知られていない場合でも、このAPIを使用するクライアントは、ほとんどがこの未知のスキーマに適合するリクエストを送信するようにプログラムされています（さもなければ、エンドポイントへのクエリを成功させることはできません）。スキーマ学習はこの事実を利用し、お客様のために入力スキーマを自動的に再構築するために、このAPIへの成功したリクエストを調べます。例として、APIはリクエストのユーザーIDパラメーターが_id12345-a_という形式であることを期待するかもしれません。この期待値が明示されていなくても、APIとのやりとりを成功させたいクライアントはこの形式でユーザーIDを送信するでしょう。</p>
+	<p>スキーマ学習は、まずAPIエンドポイントへの最近成功したすべてのリクエストを識別し、次に各リクエストの異なる入力パラメーターをその位置とタイプに従って解析します。すべてのリクエストを解析した後、スキーマ学習は各ポジションの異なる入力値を調べ、それらが共通する特徴を特定します。すべての観測されたリクエストがこれらの共通性を共有していることを検証した後、スキーマ学習はこれらの共通性に従うように入力を制限し、スキーマ検証に直接使用できる入力スキーマを作成します。</p>
+	<p>より正確な入力スキーマを可能にするために、スキーマ学習は、パラメーターが異なるタイプの入力を受け取ることができるときを識別します。OpenAPIv3スキーマファイルを書いて、クエリパラメーターがUNIXタイムスタンプであることをリクエストの小さなサンプルで手動で観測したいとしましょう。あなたは、そのクエリパラメーターが昨年のUNIXエポックの始まりより大きい整数であることを強制するAPIスキーマを書きます。もしあなたのAPIがISO 8601フォーマットでもそのパラメーターを許可していた場合、あなたの新しいルールは異なるフォーマットの（しかし有効な）パラメーターがAPIにヒットしたときに誤検出を発生させるでしょう。スキーマ学習は、このような重労働をすべて自動で行い、手作業ではできない検査を行います。</p>
+	<p>誤検知を防ぐために、スキーマ学習はこれらの値の分布について統計的なテストを行い、分布が高い信頼性で境界を持つ場合にのみスキーマを書き込みます。</p>
+	<p>では、その効果は？以下は、パラメーターの種類と値に関する統計です。</p>
+	<p>パラメーター学習では、全パラメーターの半分強を文字列に分類し、次いで整数がほぼ3分の1を占めます。残りの17%は配列、ブール値、数値（浮動小数点数）パラメーターで構成され、オブジェクトパラメーターはパスやクエリではあまり見られません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76Sum5LAwABwVzNQqAjyIZ/8dfa9adfce34f3d7bdb871d4e17b9fc8/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="462" loading="lazy">
+
+	</figure>
+	<p>通常、パス内のパラメーター数は非常に少なく、全エンドポイントの94%がパス内のパラメーターを1つしか見ていません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4F7YFE3mJGLcJnFo2crtSU/6fba9b4f4cdf54bc17f659e3f2978aa7/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1600" height="517" loading="lazy">
+
+	</figure>
+	<p>クエリでは、より多くのパラメーターが表示され、1つのエンドポイントに対して50ものパラメータが表示されることもあります！</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4z6BUn5ZAabsQqscDeHaUx/d2a883f1eb8255deee3c459d7a5c3891/imageLikeEmbed--4-.png" alt="" class="kg-image" width="1600" height="585" loading="lazy">
+
+	</figure>
+	<p>パラメーター学習は、観測されたパラメーターの大部分について、99.9%の信頼度で数値制約を推定することができます。これらの制約は、パラメーターの値、長さ、サイズの最大値／最小値、またはパラメーターが取らなければならない一意な値の限定セットのいずれかになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="protect-your-apis-in-minutes">数分でAPIを保護</h2>
+		<a href="https://blog.cloudflare.com/#protect-your-apis-in-minutes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、API Gatewayをご利用のすべてのお客様は、以前の情報がない状態から始めても、わずか数クリックでAPIを検出し、保護できるようになりました。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボード</a>でAPI Gatewayに入り、<a href="https://developers.cloudflare.com/api-shield/security/api-discovery" target="_blank" rel="noopener noreferrer">[Discovery]</a>タブをクリックすると、検出されたエンドポイントが表示されます。これらのエンドポイントは、何もしなくてもすぐに利用できるようになります。次に、Discoveryから関連するエンドポイントを<a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank" rel="noopener noreferrer">エンドポイント管理</a>に追加します。スキーマ学習は、エンドポイント管理に追加されたすべてのエンドポイントに対して自動的に実行されます。24時間後、学習したスキーマをエクスポートし、<a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">スキーマ検証</a>にアップロードします。</p>
+	<p>Enterpriseプランをご利用でAPI Gatewayを未購入のお客様は、Cloudflareダッシュボード内の<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">API Gatewayトライアルを有効化</a>するか、担当アカウントマネージャーにご連絡いただければ、API Gatewayの利用を開始できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今後、当社はJSONとURLエンコード形式の両方のPOST本文パラメーターや、ヘッダーとCookieのスキーマのように、より多くの形式でより多くの学習済みパラメーターをサポートすることで、スキーマ学習を強化する予定です。将来的には、スキーマ学習は特定されたAPIスキーマの変更を検出した際にもお客様に通知し、更新されたスキーマを提示する予定です。</p>
+	<p>これらの新機能に関するご意見をお聞かせください。適切な改善点を優先できるよう、お客様のご意見を担当アカウントチームまでお寄せください。ご連絡をお待ちしています！</p>
+</div>

@@ -1,0 +1,396 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/improved-developer-security">English</a>、<a href="https://blog.cloudflare.com/zh-tw/improved-developer-security">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/improved-developer-security">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/improved-developer-security">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12oLba01zeRh7qKjtPoxTS/d267216179b34e92be7e271cc06c7385/BLOG-3216_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>エージェントを使えばソフトウェアをかつてない速さで構築できますが、環境とお客様が書いたコードをミスや悪意のあるファイルから保護するためには、大変な対応が必要です。<a href="https://www.cloudflare.com/learning/security/threats/owasp-top-10" target="_blank" rel="noopener noreferrer"><u>Open Web Application Security Project</u></a>（OWASP）は、資格情報漏洩、ユーザーなりすまし、権限昇格のリスクなど、エージェンティックAIシステムに存在する多くの<a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations" target="_blank" rel="noopener noreferrer"><u>リスク</u></a>について詳述しています。これらのリスクは、サービス拒否、データ損失、データ漏洩など、環境に深刻なダメージを与える可能性があり、財務や評判に甚大な損害を与える可能性があります。 </p>
+	<p>これはIDの問題です。現代の開発において、「アイデンティティ」は単なる人ではなく、エージェント、スクリプト、そしてあなたに代わって行動するサードパーティツールのことです。これらの非人間アイデンティティを保護するには、ライフサイクル全体を管理する必要があります。資格情報（トークン）が漏えいしないことを確認し、OAuthを介してどのアプリケーションがアクセスできるかを確認し、きめ細かいRBACを使用してアクセス許可を絞り込むことです。</p>
+	<p>本日は、こうしたニーズにお応えするためのアップデートをご紹介します。資格情報を保護するためのスキャン可能なトークン、プリンシパルを管理するためのOAuthの可視化、ポリシーを細かく調整するためのリソーススコープ設定のRBACです。</p>
+	<div class="flex anchor relative">
+		<h2 id="understanding-identity-principals-credentials-and-policies">IDを理解する：プリンシパル、クレデンシャル、およびポリシー</h2>
+		<a href="https://blog.cloudflare.com/#understanding-identity-principals-credentials-and-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>自律型エージェント</u></a>の時代にインターネットを保護するためには、IDの取り扱い方法を再考する必要があります。リクエストの送信者が人間の開発者であろうとAIエージェントであろうと、APIとのやりとりはすべて次の3つの柱に依存しています：</p>
+	<ul>
+		<li>
+			<p><b>プリンシパル（トラベラー）：</b>これはアイデンティティそのもの、つまり"誰が"か。OAuth経由でログインしている場合もあれば、APIトークンを使用してコードをデプロイするバックグラウンドエージェントである場合もあります。</p>
+		</li>
+		<li>
+			<p><b>認証情報（パスポート）：</b>これは、そのIDの証明です。この世界では、APIトークンがあなたのパスポートです。盗難または漏えいした場合、誰でもその身元を「詐称」できてしまいます。</p>
+		</li>
+		<li>
+			<p><b>ポリシー（ビザ）：</b>そのIDに許可される操作を定義します。有効なパスポートを持つからといっても、すべての国に入国できるビザを持っているわけではありません。ポリシーは、検証済みのIDでも、必要な特定のリソースにのみアクセスできるようにします。</p>
+		</li>
+	</ul>
+	<p>これら3つの柱が同時に管理されていないと、セキュリティは破綻します。盗んだクレデンシャルを使用した有効なプリンシパルを使用したり、あまりに広範なポリシーを持つ正当なIDが使用されたりしている可能性があります。 </p>
+	<div class="flex anchor relative">
+		<h2 id="leaked-token-detection">漏洩トークンの検出</h2>
+		<a href="https://blog.cloudflare.com/#leaked-token-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントやその他のサードパーティアプリケーションは、APIトークンを使用してCloudflare APIにアクセスします。秘密情報の漏えいの最も単純な方法の一つは、秘密情報を誤って公開GitHubリポジトリにプッシュしてしまうことです。<a href="https://www.gitguardian.com/files/the-state-of-secrets-sprawl-report-2026" target="_blank" rel="noopener noreferrer"><u>GitGuardian</u></a>の報告によると、昨年2,800万以上のシークレットがGitHub公開リポジトリに公開され、AIが原因でリークが以前の5倍の速さで発生しているとのことです。</p>
+	<p>APIトークンがデジタルパスポートである場合、公開リポジトリでの漏洩はパスポートをベンチに置くようなものです。それを見つけた人は誰でも、文書がキャンセルされるまで、その身元になりすますことができます。GitHubとのパートナーシップは、これらの認証情報のグローバルな「紛失、確認」のようなものです。パスポートが紛失に気づいた時点で、すでに書類を識別し、チェックサムでその真正性を確認し、不正利用を防ぐために無効化しています。</p>
+	<p>Cloudflareは、いくつかの主要な認証情報スキャンツールと提携し、漏えいしたトークンを事前に見つけ出し、悪意をもって使用される前に失効できるよう支援しています。それは、もしあなたが、従業員、または代理店の1人が間違いを犯して、あってはいけない場所に秘密をプッシュしてしまう可能性があるということです。</p>
+	<div class="flex anchor relative">
+		<h4 id="github">GitHub</h4>
+		<a href="https://blog.cloudflare.com/#github" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareはGitHubと提携し、GitHubのシークレットスキャンプログラムに参加して、パブリックリポジトリとプライベートリポジトリの両方でトークンを検出します。トークンが公開リポジトリに漏えいしたという通知を受けた場合、悪意を持って使用されることを防ぐために、自動的にトークンを無効化します。プライベートリポジトリの場合、GitHubは漏洩したCloudflareトークンについて通知し、お客様はこれらをクリーンアップすることができます。</p>
+	<div class="flex anchor relative">
+		<h5 id="how-it-works">仕組み</h5>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいトークンフォーマット（以下！）をGitHubと共有し、今やコミットのたびにスキャンされるようになりました。漏洩したCloudflareトークンと似たものを発見した場合、そのトークンが本物であることを確認し（チェックサムを使って）、当社にWebhookを送信して無効化して、ダッシュボード設定で新規トークンを生成できるようにメールで通知します。</p>
+	<p>これは、穴が見つかれば、すぐに塞ぐことを意味します。間違いを犯したことに気づく頃には、既に修正済みです。</p>
+	<p>このような機能が必要でないことを願っていますが、当社のパートナーはお客様の安全を守るために情報漏えいに目を光らせています。</p>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-one">Cloudflare One</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Oneのお客様も、これらの漏洩から保護されます。<a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#credentials-and-secrets" target="_blank" rel="noopener noreferrer"><u>クレデンシャルとシークレット</u></a>のDLPプロファイルを設定することで、企業は認証情報が移動するあらゆる場所でその漏洩を防ぐことができます。</p>
+	<ul>
+		<li>
+			<p><b>ネットワークトラフィック (</b><a href="https://www.cloudflare.com/sase/products/gateway" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare Gateway</b></u></a><b>):</b> これらのエントリをポリシーに適用し、ネットワーク上を移動するCloudflare APIトークンを検出およびブロックします。ファイルのアップロードのトークン、送信リクエスト、またはダウンロードは、宛先に到達する前に停止されます。</p>
+		</li>
+		<li>
+			<p><b>アウトバウンドメール (</b><a href="https://www.cloudflare.com/sase/products/email-security" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare Email Security</b></u></a><b>):</b> Microsoft 365をご利用のお客様は、Outlookにもこの同じ防止策を拡張することができます。<a href="https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp" target="_blank" rel="noopener noreferrer"><u>DLP Assist</u></a> アドインは、メッセージを配信前にスキャンし、外部に送信される前にトークンを捕捉します。</p>
+		</li>
+		<li>
+			<p><b>Data at Rest (</b><a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u><b>Cloudflare CASB</b></u></a><b>):</b> Cloudflareのクラウドアクセスセキュリティブローカーは、同じプロファイルを適用して、接続されたSaaSアプリケーションのファイルをスキャンし、Google Drive、OneDrive、Dropbox、およびその他の統合されたサービスで保存または共有されたトークンを捕捉します。</p>
+		</li>
+	</ul>
+	<p>しかし、最も斬新な露出ベクトルはAIトラフィックです。<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a>は、同じDLPプロファイルと統合され、入ってくるプロンプトと発信されるAIモデルの応答の両方をリアルタイムでスキャンしてブロックします。</p>
+	<div class="flex anchor relative">
+		<h4 id="other-credential-scanners">その他の認証情報スキャナ</h4>
+		<a href="https://blog.cloudflare.com/#other-credential-scanners" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>クレデンシャルスキャンは、ユーザーの現状に合わせる必要があります。そのため、当社は、いくつかのオープンソースおよび商用の認証情報スキャナーと協力し、どのようなシークレットスキャナーを使用していても、お客様が確実に保護できるようにしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これまでは、CloudflareのAPIトークンは汎用的なものであったため、クレデンシャルスキャナーが高い精度で識別することは困難でした。これらの自動セキュリティツールは、コードリポジトリをスキャンして、APIキー、トークン、パスワードなどの公開された認証情報を探します。「cf」プレフィックスにより、Cloudflareトークンはより高い信頼性で即座に認識可能になり、チェックサムにより、ツールが静的に検証しやすくなります。既存のトークンは引き続き機能しますが、生成する新しいトークンはすべてスキャン可能な形式を使用するため、高い信頼性で簡単に検出できます。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>認証情報タイプ</b></p>
+				</td>
+				<td>
+					<p><b>目的</b></p>
+				</td>
+				<td>
+					<p><b>新フォーマット</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ユーザーAPIキー</p>
+				</td>
+				<td>
+					<p>ユーザーアカウントに紐付けられたレガシーグローバルAPIキー（フルアクセス）</p>
+				</td>
+				<td>
+					<p><b>cfk_[40 characters][checksum]</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ユーザーAPIトークン</p>
+				</td>
+				<td>
+					<p>特定の権限用に作成するスコープ付きトークン</p>
+				</td>
+				<td>
+					<p><b>cfut_[40 characters][checksum]</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>アカウントAPIトークン</p>
+				</td>
+				<td>
+					<p>アカウント所有のトークン（特定ユーザーではない）</p>
+				</td>
+				<td>
+					<p><b>cfat_[40 characters][checksum]</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h4 id="getting-started">利用開始</h4>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>既存のAPIトークンがある場合、トークンをロールオーバーして、新しいスキャン可能なAPIトークンを作成できます。これはオプションですが、トークンが漏洩した場合に簡単に発見できるようにするために推奨されます。</p>
+	<p>APIトークンは一般的に独自のスクリプトやエージェントで使用されますが、OAuthはサードパーティプラットフォームのアクセスを管理する方法です。どちらも、不正アクセスを防ぐためには明確な可視性が必要で、誰が（または何に）データにアクセスできるかを正確に把握する必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="improving-the-oauth-consent-experience">OAuth同意エクスペリエンスの向上</h2>
+		<a href="https://blog.cloudflare.com/#improving-the-oauth-consent-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WranglerのようなサードパーティアプリケーションをOAuthを使用してCloudflareアカウントに接続する場合、アカウントのデータへのアクセスをアプリケーションに許可したことになります。時間が経つにつれて、そもそもサードパーティアプリケーションにアカウントへのアクセス権を付与した理由を忘れてしまう可能性があります。以前は、これらのアプリケーションを表示・管理するための中央場所がありませんでした。本日から、です。</p>
+	<p>今後、サードパーティのアプリケーションがCloudflareアカウントへのアクセスを要求すると、以下を確認できるようになります。</p>
+	<ul>
+		<li>
+			<p>アクセスを要求している<b>サードパーティアプリケーション</b>と、アプリケーションの名前、ロゴ、発行者などに関する情報。</p>
+		</li>
+		<li>
+			<p><b>どのスコープ</b>にサードパーティアプリケーションがアクセスを要求しているか。</p>
+		</li>
+		<li>
+			<p>サードパーティアプリケーションにアクセス権を与える<b>アカウント</b>。</p>
+		</li>
+	</ul>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用前</span></th>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用後</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2p3RZFDklLn9cfQOVYq5vS/d40e6116c115c453095f8ed2d110f062/image3.png" alt=""></td>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/33yGBWfD468P6T0hAnvbPX/9241ef24b6381eedaf2830b782a69f2e/image4.png" alt=""><br><br>
+
+						<img src="https://images.ctfassets.net/zkvhlag99gkb/22pDfCAFbPLNhnAPXLB36w/0671d7e892c5a93040ab17a62eda4a3c/image1.png" alt="">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>すべてのアプリケーションに同じ権限が必要なわけではありません。データの読み取りだけで済む人もあれば、アカウントに変更を加える必要がある人もいます。アクセスを許可する前にこれらのスコープを理解することで、最小特権を維持することができます。 </p>
+	<p>また、<a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>接続済みアプリケーション</u></a>エクスペリエンスも追加されました。これにより、どのアプリケーションがどのアカウントにアクセスできるか、そのアプリケーションにどのようなスコープ/権限が関連付けられているかを確認でき、必要に応じてそのアクセスを簡単に取り消すことができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Aiu82urkjaL9SWpZUBgNi/827cf38aa655d4094de1895d07f51137/BLOG-3216_5.png" alt="BLOG-3216 5" class="kg-image" width="1530" height="527" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="getting-started">利用開始</h4>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>OAuthの同意と取り消しに関する改善点は、現在利用可能です。現在、どのアプリがお客様のアカウントにアクセスできるかを確認するには、「マイプロフィール（My Profile）」 &gt; 「アクセス管理（Access Management）」 &gt; 「接続されたアプリケーション（Connected Applications）」をご覧ください。</p>
+	<p>Cloudflareとの統合を構築している開発者の皆様は、<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>Cloudflare Changelog</u></a>で、独自のOAuthアプリをまもなく登録できるようになる方法に関するさらなる発表にご注目ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="fine-grained-resource-level-permissioning">リソースレベルのきめ細やかなアクセス許可</h2>
+		<a href="https://blog.cloudflare.com/#fine-grained-resource-level-permissioning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>トークンがパスポートであれば、リソーススコープ付きのアクセス許可がその中の有効期限です。有効なパスポートがあれば、正面玄関を通過できますが、建物内のすべての部屋にアクセスできるわけではありません。単一のロードバランサープールや特定のGatewayポリシーなど、特定のリソースに範囲を設定することで、IDが確認されても、厳密に必要な場所に移動するための「ビザ」だけを取得することができます。</p>
+	<p>当社は昨年、CloudflareのZero Trust製品のいくつかについて、リソーススコープ付き権限のサポートを<a href="https://developers.cloudflare.com/changelog/post/2025-10-01-fine-grained-permissioning-beta" target="_blank" rel="noopener noreferrer"><u>発表しました</u></a>。Cloudflareの<a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>ロールベースアクセス制御（RBAC）</u></a>システムにおけるリソーススコープ付き権限のサポートを発表しました。これにより、ユーザーとエージェントの両方に適切な規模の権限を設定し、セキュリティリスクを最小限に抑えることができます。この機能を拡張して、新たにリソースレベルの権限もいくつか与えました。リソーススコープは次に対してサポートされるようになりました：</p>
+	<ul>
+		<li>
+			<p>アクセスアプリケーション</p>
+		</li>
+		<li>
+			<p>アクセスIDプロバイダー</p>
+		</li>
+		<li>
+			<p>アクセスポリシー</p>
+		</li>
+		<li>
+			<p>アクセスサービストークン</p>
+		</li>
+		<li>
+			<p>アクセスターゲット</p>
+		</li>
+	</ul>
+	<p>また、APIトークンの作成エクスペリエンスを完全に刷新し、お客様はCloudflareダッシュボードから直接、アカウントAPIトークンのプロビジョニングおよび管理が容易になりました。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XSjOtE46g8iVNN7QNzoDI/2f2280b106da9ebc9f3959d5300a4241/account_owned_token_gif.gif" alt="" class="kg-image" width="1280" height="659" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works">仕組み</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareアカウントにメンバーを追加したり、APIトークンを作成したりすると、通常、そのプリンシパルにポリシーを割り当てます。許可ポリシーとは、Cloudflare One AccessアプリケーションやDNSレコードの管理など、アクション実行の許可を主に与えるものです。ポリシーがなければ、プリンシパルは認証できますが、アカウント内でアクションを実行することはできません。</p>
+	<p>ポリシーは、プリンシパル、ロール、スコープの3つのコンポーネントで構成されています。プリンシパル（プリンシパル）とは、人間のユーザー、APIトークンのような非人間ID（NHI）、あるいはユーザーに代わって動作するエージェントのいずれであっても、誰に、あるいは何にアクセスを許可するかを示します。ロールは、ユーザーが許可するアクションを定義します。スコープは、これらの権限がどこに適用されるかを決定し、従来は、アカウント全体または個々のゾーンに制限されていました。</p>
+	<div class="flex anchor relative">
+		<h2 id="new-permission-roles">新しい権限の役割</h2>
+		<a href="https://blog.cloudflare.com/#new-permission-roles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、多くの製品に対して多くの新しいロールを導入することで、アカウントとゾーンの両方でロール対象領域をより広く拡大しています。 </p>
+	<ul>
+		<li>
+			<p>アカウントスコープ</p>
+			<ul>
+				<li>
+					<p>CDN管理</p>
+				</li>
+				<li>
+					<p>MCPポータル</p>
+				</li>
+				<li>
+					<p>Radar</p>
+				</li>
+				<li>
+					<p>リクエストトレーサー</p>
+				</li>
+				<li>
+					<p>SSL/TLS管理</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>ゾーンスコープ</p>
+			<ul>
+				<li>
+					<p>Analytics</p>
+				</li>
+				<li>
+					<p>Logpush</p>
+				</li>
+				<li>
+					<p>Page Rules</p>
+				</li>
+				<li>
+					<p>セキュリティセンター</p>
+				</li>
+				<li>
+					<p>Snippets</p>
+				</li>
+				<li>
+					<p>ゾーン設定</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="getting-started">利用開始</h4>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リソーススコープとすべての新しいアカウントおよびゾーンレベルのロールは、本日よりすべてのCloudflareのお客様にご利用いただけます。Cloudflareダッシュボード、API、またはTerraformを通じて、アカウント、ゾーン、またはリソーススコープ設定されたポリシーを割り当てることができます。</p>
+	<p>使用可能なすべてのロールとスコープの仕組みの詳細については、<a href="https://developers.cloudflare.com/fundamentals/manage-members/roles" target="_blank" rel="noopener noreferrer"><u>ロール</u></a>と<a href="https://developers.cloudflare.com/fundamentals/manage-members/scope" target="_blank" rel="noopener noreferrer"><u>スコープに関するドキュメント</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="secure-your-accounts">アカウントの安全を確保する</h2>
+		<a href="https://blog.cloudflare.com/#secure-your-accounts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらのアップデートは、真の最小特権アーキテクチャに必要なきめ細かなビルディングブロックを提供します。許可と認証情報の管理方法を改善することで、開発者や企業は、Cloudflareにアクセスするユーザー、アプリ、エージェント、スクリプト全体のセキュリティ体制により大きな信頼を持つことができます。最小特権は新しい概念ではなく、企業にとっては以前からの選択肢ではありません。人間の管理者がゾーンを管理している場合でも、エージェントがWorkerをプログラム的にデプロイしている場合でも、期待は同じです。与えられた仕事だけを許可されるべきであり、それ以外には何も許可されていなければなりません。</p>
+	<p>本日の発表を受けて、以下をお勧めします：</p>
+	<ol>
+		<li>
+			<p><a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>APIトークン</u></a>を確認し、新しいスキャン可能なAPIトークンをできるだけ早く再発行してください。</p>
+		</li>
+		<li>
+			<p><a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>承認されたOAuthアプリを見直す</u></a>, 使用しなくなったアプリは取り消してください</p>
+		</li>
+		<li>
+			<p>アカウントの<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fbilling" target="_blank" rel="noopener noreferrer"><u>メンバー</u></a>および<a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>APIトークン</u></a>の権限を見直して、リスク領域を減らすために必要に応じてユーザーが新しいアカウント、ゾーン、またはリソースのスコープ設定された権限を利用していることを確認してください。</p>
+		</li>
+	</ol>
+	<p></p>
+</div>

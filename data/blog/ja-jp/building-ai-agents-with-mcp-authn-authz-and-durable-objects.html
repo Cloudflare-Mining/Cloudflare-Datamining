@@ -1,0 +1,369 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects">English</a>、<a href="https://blog.cloudflare.com/zh-tw/building-ai-agents-with-mcp-authn-authz-and-durable-objects">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Français</a>、<a href="https://blog.cloudflare.com/de-de/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/building-ai-agents-with-mcp-authn-authz-and-durable-objects">한국어</a>、<a href="https://blog.cloudflare.com/es-la/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/nl-nl/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/building-ai-agents-with-mcp-authn-authz-and-durable-objects">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TwoHmJacmESFWbUsT8gG3/5dcc9efc89b275ccd1ec887eed06245f/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareが<a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>エージェントの未来に関して強気である</u></a>ことは周知の事実です。AIが私たちに寄り添うコパイロットであるだけでなく、実際にタスク全体をAIに委ね始められる未来に期待しています。</p>
+	<p>開発者によるエージェントの構築を容易にするAgents SDKを<a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>最初に発表</u></a>してからまだそれほど経っていませんが、エージェンティックな未来を実現するには、この目標に向けて継続的に結果を出す必要があります。本日は、エージェンティックな開発を加速するため、以下のようないくつかの発表を行います：</p>
+	<ul>
+		<li>
+			<p><b>新しいAgents SDKの機能：</b>トランスポートと認証が組み込まれたリモートMCPクライアントを構築し、AIエージェントが外部サービスに接続できるようにします。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u><b>MCP用BYO Authプロバイダー</b></u></a><b>：</b><a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a>、<a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>と統合し、リモートMCPサーバーに認証と認可を追加します。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u><b>McpAgentのハイバネーション</b></u></a><b>：</b>ステートフルなリモートMCPサーバーを非アクティブ時に自動的にスリープ状態にし、必要な場合を起動します。これにより長時間セッションの接続を維持しつつ、アイドル状態の時間については支払わなくて済むようになります。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u><b>Durable Objectsの無料枠利用</b></u></a><b>：</b>Durable Objectsはエージェント構築の重要コンポーネントだと当社は考えており、当社のAgents SDKを使用するならDurable Objectsへのアクセスが必要です。Durable Objectsはこれまで有料プランの一部としてのみアクセス可能でしたが、今回、無料枠に含めることができて嬉しく思います。</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution"><u><b>Workflows GA</b></u></a><b>：</b>本番環境で利用可能で長時間実行されるマルチステップのエージェントアクションを出荷できるようにします。</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare"><u><b>AutoRAG</b></u></a><b>：</b>わずか数クリックで、コンテキスト認識型AIをアプリケーションに組み込むことができます。</p>
+		</li>
+		<li>
+			<p><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u><b>objects.cloudflare.com</b></u></a><b>：</b>エージェント関連を網羅した新しいランディングページです。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="new-mcp-capabilities-in-agents-sdk">Agent SDKの新しいMCP機能</h2>
+		<a href="https://blog.cloudflare.com/#new-mcp-capabilities-in-agents-sdk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIエージェントはMCP（<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>モデルコンテキストプロトコル</u></a>）を介して外部サービスに接続し、対話することができるようになりました。Agents SDKを更新し、お客様がAIエージェントにリモートMCPクライアントを組み込めるようにしました。認証フロー、ツール検出、接続管理といったすべてのコンポーネントがビルトインされています。</p>
+	<p>これにより、以下ができるエージェントの作成が可能になります：</p>
+	<ol>
+		<li>
+			<p>エンドユーザーにサードパーティサービス（MCPサーバー）へのアクセスを許可するようプロンプトする。</p>
+		</li>
+		<li>
+			<p>エンドユーザーに代わって、それらの外部サービスのツールを使用する。</p>
+		</li>
+		<li>
+			<p>Workflows、スケジュールされたタスク、またはエージェントの任意の部分からMCPサーバーを呼び出す。</p>
+		</li>
+		<li>
+			<p>複数のMCPサーバーに接続し、サードパーティサービスが提供する新しいツールや機能を自動的に発見する。</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/X3RvQHewsVwJhq3TVOD0w/bbc5690d2d687f7a390f91474b3eb385/1.png" alt="" class="kg-image" width="1999" height="1309" loading="lazy">
+	</figure>
+	<p>MCP（モデルコンテキストプロトコル）は<a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>Anthropicが最初に導入し</u></a>、OpenAI、Cursor、Copilotといったプロバイダーが採用して、AIエージェントが外部サービスとやり取りする標準的な方法に早くもなりつつあります。</p>
+	<p><a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>最近発表</u></a>したように、当社はCloudflare上での<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>リモートMCPサーバー構築</u></a>をサポートしており、 MCPのリモート側（トランスポートと認証/許可）を自動的に処理する<code>McpAgent</code>クラスをAgents SDKに追加しました。今回、MCPクライアントとして機能するエージェントにも同じ機能を拡張できることを嬉しく思います。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nxl3bIRTbfRzpdLhHF720/41bea06c9e48b7d356d11a6f254b76ef/2.png" alt="" class="kg-image" width="1810" height="596" loading="lazy">
+	</figure>
+	<p>実際にその様子をご覧になりたいですか？下のボタンを使って、リモートMCPサーバーへの接続に使える完全リモートMCPクライアントをデプロイしてください。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included">AIエージェントは、トランスポートと認証を含むリモートMCPクライアントとして機能可能に</h2>
+		<a href="https://blog.cloudflare.com/#ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIエージェントが組み込まれたナレッジにないツール、データ、機能にアクセスするには、外部サービスに接続する必要があります。つまり、AIエージェントはリモートMCPクライアントとして機能して、それらのツールや機能をホストしているリモートMCPサーバーに接続できるようにする必要があります。</p>
+	<p>お客様のAIエージェントがMCP経由で外部サービスを呼び出すのに必要なすべてのツールを提供するために、新しいクラスである<code>MCPClientManager</code>をAgents SDKに追加しました。<code>MCPCClientManager</code>クラスは以下を自動的に処理します：</p>
+	<ul>
+		<li>
+			<p><b>トランスポート：</b> SSEとHTTPでリモートMCPサーバーに接続する。<a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a>のサポートも近日予定。</p>
+		</li>
+		<li>
+			<p><b>接続管理：</b>クライアントはすべての接続の状態を追跡し、接続が失われた場合は自動的に再接続する。</p>
+		</li>
+		<li>
+			<p><b>機能検出：</b>MCPサーバーが提供するすべての機能、ツール、リソース、プロンプトを自動的に検出する。</p>
+		</li>
+		<li>
+			<p><b>リアルタイム更新</b>：サーバーのツール、リソース、またはプロンプトが変更されると、クライアントは自動的に通知を受け取り、内部の状態を更新する。</p>
+		</li>
+		<li>
+			<p><b>名前空間の設定：</b>複数のMCPサーバーに接続する場合、競合を回避するために、すべてのツールとリソースの名前空間を自動的に設定する。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients">MCPクライアントの組み込み認証チェックにより、エージェントがツールにアクセスすることを許可</h3>
+		<a href="https://blog.cloudflare.com/#granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>完全なOAuth認証フローをAgents SDKに直接統合したため、お客様は認証フローを一から構築する必要はなく、AIエージェントは任意のリモートMCPサーバーにセキュアに接続し、認証できます。</p>
+	<p>これにより、お客様はユーザーにセキュアなログイン方法を提供でき、明示的にアクセス許可を与えることによって、エージェントがお客様に代わって自動的に以下を行えるようになります：</p>
+	<ul>
+		<li>
+			<p>OAuth 2.1プロトコルをサポートする。</p>
+		</li>
+		<li>
+			<p>ユーザーをサービスのログインページにリダイレクトする。</p>
+		</li>
+		<li>
+			<p>チャレンジコードを生成し、認証コードをアクセストークンと交換する。</p>
+		</li>
+		<li>
+			<p>アクセストークンを使用して、MCPサーバーに認証済みリクエストを行う。</p>
+		</li>
+	</ul>
+	<p>以下は、クライアントマネージャーを初期化し、サーバーを追加し、認証コールバックを処理することによってMCPサーバーにセキュアに接続できるエージェントの例です：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // initialize MCPClientManager which manages multiple MCP clients with optional auth
+  this.mcp = new MCPClientManager("my-agent", "1.0.0", {
+    baseCallbackUri: `${serverHost}/agents/${agentNamespace}/${this.name}/callback`,
+    storage: this.ctx.storage,
+  });
+}
+
+async addMcpServer(url: string): Promise&lt;string&gt; {
+  // Add one MCP client to our MCPClientManager
+  const { id, authUrl } = await this.mcp.connect(url);
+  // Return authUrl to redirect the user to if the user is unauthorized
+  return authUrl
+}
+
+async onRequest(req: Request): Promise&lt;void&gt; {
+  // handle the auth callback after being finishing the MCP server auth flow
+  if (this.mcp.isCallbackRequest(req)) {
+    await this.mcp.handleCallbackRequest(req);
+    return new Response("Authorized")
+  }
+  
+  // ...
+}</code></pre>
+	<p>複数のMCPサーバーに接続し、その機能を検出する</p>
+	<p>Agents SDKを使用して、MCPクライアントを複数のMCPサーバーに同時に接続できます。これは、エージェントが異なるサービスプロバイダーが提供するツールやリソースにアクセスしてやり取りできるようにしたい場合に特に有用です。</p>
+	<p><code>MCPCClientManager</code>クラスは、<code>mcpConnections</code>オブジェクトを介して複数のMCPサーバーへの接続を維持します。mcpConnectionsオブジェクトは、一意のサーバー名をそれぞれの<code>MCPClientConnection</code>インスタンスにマップする辞書です。</p>
+	<p><code>connect()</code>を使って新しいサーバー接続を登録すると、マネージャーは以下を行います：</p>
+	<ol>
+		<li>
+			<p>サーバー固有の認証で新しい接続インスタンスを作成する。</p>
+		</li>
+		<li>
+			<p>接続を初期化し、サーバー機能通知に登録します。</p>
+		</li>
+	</ol>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // Connect to an image generation MCP server
+  await this.mcp.connect("https://image-gen.example.com/mcp/sse");
+  
+  // Connect to a code analysis MCP server
+  await this.mcp.connect("https://code-analysis.example.org/sse");
+  
+  // Now we can access tools with proper namespacing
+  const allTools = this.mcp.listTools();
+  console.log(`Total tools available: ${allTools.length}`);
+}</code></pre>
+	<p>各接続は独自の認証コンテキストを管理し、1つのAIエージェントが複数のサーバーに対して同時に認証できるようにします。さらに、<code>MCPClientManager</code>は自動的に名前空間設定を処理し、異なるサーバーにある同一の名前を持つツール間の衝突を防止します。</p>
+	<p>例えば、「画像MCPサーバー」と「コードMCPサーバー」の両方に「分析」という名前のツールがあっても、両者は名前の競合なく別々に呼び出し可能です。</p>
+	<div class="flex anchor relative">
+		<h2 id="use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server">Stytch、Auth0、WorkOSを使って、MCPサーバーに認証・認可を導入</h2>
+		<a href="https://blog.cloudflare.com/#use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPはユーザーがアプリケーションとやり取りする新たな方法となり、エントリーポイントをダッシュボードやAPIに依存することもなくなります。ユーザーに代わって動作するAIエージェントがサービスにアクセスするようになります。ユーザーとエージェントがサービスにセキュアに接続できるようにするには、既存の認証・認可システムを拡張し、MCPサーバーのログインフロー、権限スコープ、同意フォーム、アクセス施行を実装してエージェントのインタラクションをサポートする必要があります。</p>
+	<p>当社は<a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a>、<a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>との統合を追加して、MCPサーバーを構築する人が誰でもMCPサーバーの認証・認可を簡単に設定できるようにします。</p>
+	<p>MCPサーバーのStytch、Auth0、WorkOSとの統合によって、次のことが可能になります：</p>
+	<ul>
+		<li>
+			<p>ユーザーがメール、ソーシャルログイン、SSO（シングルサインオン）、MFA（多要素認証）を介してMCPサーバーに対して認証できるようにする。</p>
+		</li>
+		<li>
+			<p>MCPツールに直接マッピングするスコープと権限を定義する。</p>
+		</li>
+		<li>
+			<p>要求された許可に対応する同意ページをユーザーに提示する。</p>
+		</li>
+	</ul>
+	<p>許可を適用し、エージェントが許可されたツールのみを呼び出せるようにします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oYchjMwoMxwYxsqq4PObk/381937e89c249b87c1930295b407faf6/3.png" alt="" class="kg-image" width="1226" height="604" loading="lazy">
+	</figure>
+	<p>まずは、以下の例でやってみましょう。「Cloudflareへデプロイ」ボタンで、お客様のCloudflareアカウントにデモMCPサーバーをデプロイしてください。これらのデモには、事前設定された認証エンドポイント、同意フロー、ニーズに合わせて調整可能な許可モデルが含まれています。デモMCPサーバーをデプロイしたら、ブラウザベースのリモートMCPクライアントである<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI Playground</u></a>を使用して、エンドツーエンドのユーザーフローをテストできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="stytch">Stytch</h3>
+		<a href="https://blog.cloudflare.com/#stytch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stytchを使用してユーザーがメール、Googleログイン、またはエンタープライズSSOでサインインし、AIエージェントがユーザーに代わって会社のOKRを表示・管理できるようにするリモートMCPサーバーの利用を<a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>開始</u></a>しましょう。Stytchは、組織内でのユーザーの役割とアクセス権限に基づいて、AIエージェントのスコープ制限を行います。MCPクライアントを認可する際、各ユーザーには、自身の役割に基づいて付与できるようエージェントが要求しているアクセス権限の概要を記した同意ページが表示されます。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>より消費者向けのユースケースの場合は、認証とMCPクライアントの認可にStytchを使用するTo Doアプリ用のリモートMCPサーバーをデプロイします。ユーザーはメールでサインインして、アカウントに連携するTo Doリストにすぐアクセスし、AIアシスタントにアクセスを許可してタスク管理をサポートさせることができます。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>Stytchを使用すると、ユースケースを問わず、アプリケーションをOAuth 2.0 IDプロバイダーに簡単に変換でき、リモートMCPサーバーをRelying Partyにすることで、アプリからIDと権限を引き継ぐことが容易になります。StytchがリモートMCPサーバーへのセキュアな認証を実現する仕組みの詳細については、<a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>ブログ記事</u></a>をご覧ください。</p>
+	<blockquote>
+		<p><i>「AIエージェントの可能性を実現する上での課題の1つは、AIエージェントが他のプラットフォームからデータにセキュアかつ確実にアクセスできるようにすることです。Stytch Connected Appsはこうしたエージェントのユースケースのために構築されたもので、お客様のアプリをOAuth 2.0 IDプロバイダーにしてリモートMCPサーバーへのセキュアなアクセスを簡単に実現できます。Cloudflare WorkersとStytch Connected Appsを組み合わせることにより、開発者を阻むバリアを取り除き、AIの概念実証からデプロイされたセキュアな実装へ迅速に移行できるようにします。」— Julianna Lamb氏、Stytch共同創業者兼CTO</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="auth0">Auth0</h3>
+		<a href="https://blog.cloudflare.com/#auth0" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Auth0を使用してメール、ソーシャルログイン、またはエンタープライズSSOを通じてユーザーを認証し、AIエージェントを通じてTo Doリストや個人データとやり取りするリモートMCPサーバーの利用を開始しましょう。MCPサーバーは、ユーザーに代わってAPIエンドポイントにセキュアに接続し、ユーザーから同意を得た後、エージェントがどのリソースにアクセスできるかを厳密に表示します。この実装では、アクセストークンは長時間のインタラクション中に自動的に更新されます。</p>
+	<p>セットアップするには、まず保護されたAPIエンドポイントをデプロイします： </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>次に、Auth0による認証を行い、AIエージェントをAPIエンドポイントにセキュアに接続するMCPサーバーをデプロイします。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<blockquote>
+		<p><i>「Cloudflareは、AI Gateway、Vectorize、Workers AIなどのツールで、AI製品を構築する開発者を支援し続けています。最近リモートMCPサーバーが追加されたことは、Cloudflare WorkersとDurable ObjectsがサーバーレスAIを展開するための先進的プラットフォームであることを示しています。Auth0がこうした最先端のワークロードの認証・認可ニーズの解決に役立つことを、当社は大変誇りに思っています。」— Sandrino Di Mattia氏、Auth0製品アーキテクチャ担当シニアディレクター</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="workos">WorkOS</h3>
+		<a href="https://blog.cloudflare.com/#workos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WorkOSのAuthKitを使用してユーザーを認証し、AIエージェントに付与される権限を管理するリモートMCPサーバーの利用を開始しましょう。この例では、MCPサーバーはユーザーの役割とアクセス権に基づいてツールを動的に公開します。認証されたすべてのユーザーが<code>追加</code>ツールにアクセスできますが、WorkOSで<code>image_generation</code>の権限が割り当てられたユーザーのみが、AIエージェントの画像生成ツールへのアクセスを許可できます。これは、MCPサーバーが、認証されたユーザーの役割と権限に基づいて、AIエージェントに条件付きで機能を公開できることを示す典型的な例です。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<blockquote>
+		<p><i>「MCPはAIエージェント統合の標準になりつつありますが、認証と認可はエンタープライズによる導入にまだ大きなギャップがあります。WorkOS Connectによって、あらゆるアプリケーションがOAuth 2.0認証サーバーになることができ、エージェントとMCPクライアントは詳細な権限承認とリソースアクセスのためのトークンをセキュアに取得することができます。Cloudflare Workersを使えば、開発者はOAuthとエンタープライズグレードのアクセス制御機能を備えたリモートMCPサーバーを迅速にデプロイできます。WorkOSとCloudflareを組み合わせることで、セキュアでエンタープライズ対応のエージェントインフラストラクチャを簡単に出荷できます。」— Michael Grinich氏、WorkOS CEO</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use">ハイバネート可能なWebSockets：AIエージェントを不使用時はスリープさせる</h2>
+		<a href="https://blog.cloudflare.com/#hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、McpAgentのクラスに新たな改善が見られます。<a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>WebSockets Hiberlation API</u></a>のサポートで、MCPサーバーがリクエストを受信していない時にはスリープ状態になり、必要な時に即座に起動することを可能にします。つまり、支払いはエージェントが実際に動作している時のコンピュート料だけで済むということです。</p>
+	<p><a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>最近</u></a>、<a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>McpAgentクラス</u></a>を導入しました。これにより、開発者はDurable Objectsを使用してCloudflare上にリモートMCPサーバーを構築し、すべてのクライアントセッションでステートフルな接続を維持することができます。最初からステートフルになるようにMcpAgentを構築していますので、開発者はコンテキスト、ユーザーの好み、会話履歴を記憶できるサーバーを構築できます。しかし、クライアントとの接続を維持するということは、使用していない時でも、セッションが長時間アクティブなままとなる可能性があることを意味します。</p>
+	<div class="flex anchor relative">
+		<h3 id="mcp-agents-are-hibernate-able-by-default">MCPエージェントはデフォルトでハイバネーション対応</h3>
+		<a href="https://blog.cloudflare.com/#mcp-agents-are-hibernate-able-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ハイバネーションを利用するためにコードを変更する必要はありません。最新のSDKアップデートにより、すべてのMcpAgentインスタンスに自動的にハイバネーションサポートが含まれるようになりました。これにより、ステートフルなMCPサーバーは非アクティブな間はスリープし、必要な時に状態を保持した形で起動することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Server-Sent Eventsエンドポイント、 /sseでリクエストが来ると、Worker はセッションに使用する適切なDurable ObjectへのWebSocket接続を初期化し、SSEストリームをクライアントに返します。すべての応答フローがこの流れになります。</p>
+	<p>実装では、Durable Objects内のWebSocket Hibernation APIを使います。非アクティブな時間が発生した場合は、WebSocket 接続が開いたままにして、Durable Objectをメモリから削除することができます。WebSocketがその後メッセージを受け取ると、ランタイムはDurable Objectを再作成し、そのメッセージを適切なハンドラに届けます。</p>
+	<div class="flex anchor relative">
+		<h2 id="durable-objects-on-free-tier">Durable Objectsを無料枠で利用</h2>
+		<a href="https://blog.cloudflare.com/#durable-objects-on-free-tier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareでAIエージェントを構築しやすいように、<a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>を無料枠で提供し、コミットメントゼロで始められるようにしています。Agents SDKを使用すると、Durable Objectsを使うCloudflareにAIエージェントをデプロイできます。</p>
+	<p>Durable Objectsはコンピュートと永続ストレージを提供し、Workersと組み合わせることで、ステートフルなサーバーレスアプリケーションを実現します。各Durable Objectは、クライアントのリアルタイムのインタラクションを処理し、LLMなどの外部サービスにリクエストを行い、<a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>ゼロ遅延のSQLiteストレージ</u></a>での状態永続化によってエージェント「メモリ」を作成するためのステートフルなコーディネーターです。つまり、AIエージェントに必要な全タスクを調整するのです。Durable Objectsは、数百万のエージェントまで簡単に拡張できます。各エージェントは、やり取りしているユーザーの近くで作成され、高速なパフォーマンスを実現します。すべてCloudflareが管理します。</p>
+	<p>Durable Objectsのゼロ遅延SQLiteストレージは、2024年9月のBirthday Weekで<a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>パブリックベータ版が紹介されました</u></a>。以来、私たちはDurable Objectsの既存のキーバリューストレージと比較して欠けている機能の充実と堅牢性に焦点を当ててきました。SQLiteストレージを一般公開できることを嬉しく思います。GA版はDurable Objectごとに10GBのSQLiteデータベースがあり、当社ではすべての新しいDurable ObjectクラスにSQLiteストレージを推奨します。Durable Objectsの無料利用枠でアクセス可能なのは、SQLiteストレージにのみです。</p>
+	<p>Cloudflareの無料枠で、実際のアプリケーションを構築することができます。Freeプランでは、すべてのWorkerリクエストがDurable Objectを呼び出せます。<a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>従量制課金</u></a>の場合、Durable Objectsにはコンピュートとストレージの使用量が発生し、以下の無料利用制限が設けられています。</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.34%;" width="233">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers 無料</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers 有料</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">コンピュート：リクエスト</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100,000件 / 日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100万件 / 月を含む</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.15 / 百万</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">コンピュート：時間</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">13,000GB-秒 / 日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">400,000GB-秒 / 月を含む</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $12.50 / 百万GB-秒</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">ストレージ：読み取り行数</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">500万 / 日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">250億 / 月を含む</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.001 / 100万</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">ストレージ：書き込み行数</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100,000件 / 日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5,000万 / 月を含む</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $1.00 / 百万</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">ストレージ： SQL保存データ</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5GB（合計）</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5GB / 月を含む</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.20 / GB-月</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="find-us-at-agents-cloudflare-com">agents.cloudflare.comで情報提供</h3>
+		<a href="https://blog.cloudflare.com/#find-us-at-agents-cloudflare-com" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>膨大な情報量であることは承知していますが、心配は無用です。エージェントはまったく初めてという方も、Cloudflareがエージェント構築をどう支援しているかについて詳しく知りたいという方も、利用開始を支援するために新しいサイト（&nbsp;<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a>&nbsp;）を本日立ち上げましたのでご利用ください。</p>
+	<p>何を構築されているかお聞かせください！</p>
+</div>

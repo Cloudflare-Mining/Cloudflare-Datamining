@@ -1,0 +1,361 @@
+<div class="mb2 gray5">Lecture&nbsp;: 8 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/agents-week-in-review">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/agents-week-in-review">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/agents-week-in-review">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/agents-week-in-review">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/agents-week-in-review">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/agents-week-in-review">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/agents-week-in-review">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/es-es/agents-week-in-review">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/agents-week-in-review">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JDUBjXv45ARm2pvdCN3DP/c95854c24522463acee97bffb40a4ced/BLOG-3239_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Aujourd’hui marque la fin de notre première Agents Week&nbsp;– une semaine consacrée à l’innovation, entièrement dédiée à l’ère des agents. La date n’aurait pu être plus opportune&nbsp;: au cours de l’année passée, les agents ont rapidement transformé l'approche du travail des utilisateurs. Les agents de codage aident aujourd'hui les développeurs à déployer des solutions plus rapidement que jamais auparavant. Les agents d'assistance résolvent les tickets de bout en bout. Les agents de recherche vérifient des hypothèses en consultant des centaines de sources en quelques minutes seulement. Par ailleurs, les utilisateurs ne se contentent pas d'exécuter un seul agent&nbsp;: ils en exécutent une multitude en parallèle, de jour comme de nuit.</p>
+	<p>Comme l’ont souligné Dane&nbsp;Knecht, CTO de Cloudflare, et Rita&nbsp;Kozlov, VP&nbsp;Product de Cloudflare, dans notre <a href="https://blog.cloudflare.com/welcome-to-agents-week"><u>article de blog Bienvenue dans l'Agents&nbsp;Week</u></a>, l’ampleur potentielle des agents est stupéfiante&nbsp;: si même une fraction des travailleurs du savoir du monde exécutait chacun quelques agents en parallèle, il faudrait disposer d'une capacité de calcul suffisante pour exécuter des dizaines de millions de sessions simultanées. Le modèle «&nbsp;d'une application servant de nombreux utilisateurs&nbsp;» sur lequel repose le cloud ne convient pas à cela. Or, c’est précisément ce que souhaitent faire les développeurs et les entreprises&nbsp;: créer des agents, les déployer auprès des utilisateurs et les exécuter à grande échelle.</p>
+	<p>Pour y parvenir, il sera nécessaire de résoudre des problèmes affectant l’ensemble de l'environnement technologique. Les agents ont besoin d’une <b>puissance de calcul</b> capable d'évoluer d’un système d’exploitation complet à des isolats légers. Ils ont besoin d’une <b>sécurité</b> et d’une identité intégrées à leur fonctionnement.&nbsp; Ils ont besoin d’une <b>suite d'outils pour agents</b>: les modèles, les outils et le contexte pertinents pour accomplir un travail concret. L'ensemble du code généré par les agents doit suivre un parcours clair, <b>d'un simple prototype à l'application de production</b>. Enfin, tandis que les agents sont à l'origine d'une part croissante du trafic Internet, le web lui-même doit s'adapter à l'émergence du <b>web agentique</b>. Il s’avère que la plateforme de calcul sans conteneur et serverless que nous avons lancée il y a huit ans avec Workers était parfaitement adaptée à ce moment. Depuis, nous l’avons développée pour en faire une plateforme complète et, cette semaine, nous avons lancé une nouvelle série de primitives dédiées aux agents, conçues pour répondre précisément à ces problématiques.</p>
+	<p>Notre objectif consiste à créer le Cloud&nbsp;2.0, le cloud agentique&nbsp;– une infrastructure conçue pour un monde dans lequel les agents constituent une charge de travail principale.&nbsp;</p>
+	<p>Voici la liste de toutes les annonces que nous avons faites cette semaine, pour que vous n'en manquiez pas une seule.</p>
+	<div class="flex anchor relative">
+		<h2 id="compute">Traitement</h2>
+		<a href="https://blog.cloudflare.com/#compute" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons commencé par le calcul. Les agents ont besoin d'un environnement d'exécution, ainsi que d'un espace pour stocker et exécuter le code qu'ils écrivent. Tous les agents n'ont pas les mêmes besoins&nbsp;: certains nécessitent un système d'exploitation complet, permettant l'installation de packages et l'exécution de commandes de terminal, tandis que la plupart requièrent une solution légère, capable de démarrer en quelques millisecondes et d'évoluer massivement. Cette semaine, nous avons déployé les environnements nécessaires à leur exécution, ainsi qu'un nouvel espace de travail compatible avec Git pour les agents&nbsp;:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Annonce</b></p>
+				</th>
+				<th>
+					<p><b>Récapitulatif</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta"><u>Artifacts : une solution de stockage versionné qui parle Git</u></a></p>
+				</td>
+				<td>
+					<p>Offrez un emplacement dédié au code et aux données à vos agents, à vos développeurs et à vos automatisations. Nous venons de lancer Artifacts&nbsp;: une solution de stockage versionné compatible avec Git, spécialement développée pour les agents. Créez des dizaines de millions de référentiels, créez des reprises logicielles depuis n’importe quel référentiel distant et transmettez une URL à n’importe quel client Git.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/sandbox-ga"><u>Les agents disposent de leurs propres ordinateurs grâce à la mise en disponibilité générale des sandboxes</u></a></p>
+				</td>
+				<td>
+					<p>Les sandboxes de Cloudflare offrent aux agents d’IA un environnement persistant et isolé&nbsp;: un véritable ordinateur doté d’un shell, d’un système de fichiers et de processus en arrière-plan qui démarre à la demande et reprend exactement là où il s’est arrêté.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/sandbox-auth"><u>Dynamiques, sensibles à l’identité et sécurisés&nbsp;: contrôles de sortie pour les environnements sandbox</u></a></p>
+				</td>
+				<td>
+					<p>Le service Outbound Workers for Sandboxes propose un proxy de sortie programmable et Zero&nbsp;Trust pour les agents&nbsp;IA. Il permet ainsi aux développeurs d’injecter des identifiants et d’appliquer des politiques de sécurité dynamiques sans exposer de jetons sensibles à du code non fiable.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Durable Objects au sein des Dynamic Workers&nbsp;: donner sa propre base de données à chaque application générée par IA</u></a></p>
+				</td>
+				<td>
+					<p>Le service Durable Objects Facets permet à Dynamic Workers d'exécuter des instances Durable Objects avec leurs propres bases de données SQLite isolées. Grâce à lui, les développeurs peuvent concevoir des plateformes capables d'exécuter du code persistant, avec état, généré à la volée.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/workflows-v2"><u>Remanier l'architecture du plan de contrôle du service Workflows pour l'ère agentique</u></a></p>
+				</td>
+				<td>
+					<p>Le service Cloudflare Workflows, un moteur d'exécution durable dédié au développement d'applications multi-étapes, propose désormais des limites de 50&nbsp;000&nbsp;exécutions simultanées et de 300&nbsp;créations grâce à une architecture de plan de contrôle restructurée, qui contribue à fournir l'évolutivité indispensable aux scénarios d'utilisation d'agents d'arrière-plan persistants.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GiG5cEdgwoLU94AuUuLfS/f9022abc8ce823ef2468860474598b6f/BLOG-3239_2.png" alt="BLOG-3239 2" class="kg-image" width="1999" height="531" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="security">Sécurité</h2>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L’exécution d’agents et de leur code ne représente que la moitié du défi. Les agents se connectent à des réseaux privés, accèdent à des services internes et effectuent des actions de manière autonome pour le compte des utilisateurs. Lorsque tous les collaborateurs d'une entreprise peuvent déployer leurs propres agents, la sécurité ne peut pas être reléguée au second plan. Elle doit devenir le mode de fonctionnement par défaut. Cette semaine, nous avons inauguré les outils qui permettent de parvenir facilement à ce résultat.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Annonce</b></p>
+				</th>
+				<th>
+					<p><b>Récapitulatif</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/mesh"><u>Sécurisez la connectivité réseau privée pour tous : utilisateurs, nœuds, agents, Workers — Lancement de Cloudflare Mesh</u></a></p>
+				</td>
+				<td>
+					<p>La solution Cloudflare Mesh garantit un accès réseau sécurisé et privé aux utilisateurs, aux nœuds et aux agents IA autonomes. Grâce à l’intégration du service Workers VPC, les développeurs peuvent désormais accorder à leurs agents un accès ciblé aux bases de données privées et aux API, sans avoir à mettre en place de tunnels manuels.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/managed-oauth-for-access"><u>Managed OAuth for Access : préparer les applications internes au déploiement des agents en un seul clic</u></a></p>
+				</td>
+				<td>
+					<p>Le service Managed OAuth pour Cloudflare Access contribue à sécuriser l'accès des agents&nbsp;IA aux des applications internes. En adoptant la spécification RFC&nbsp;9728, les agents peuvent s’authentifier pour le compte des utilisateurs sans passer par un compte de service non sécurisé.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/improved-developer-security"><u>Sécuriser les identités non humaines : révocation automatisée, OAuth et autorisations limitées</u></a></p>
+				</td>
+				<td>
+					<p>Cloudflare inaugure des jetons d’API analysables, une visibilité améliorée du processus OAuth et la publication en disponibilité générale d'autorisations limitées au niveau des ressources. Ces outils aident les développeurs à déployer une véritable architecture basée sur le principe du moindre privilège, tout en assurant une protection contre les fuites d’identifiants.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/enterprise-mcp"><u>Faire évoluer l’adoption de MCP&nbsp;: notre architecture de référence pour les déploiements de MCP dans les grandes entreprises</u></a></p>
+				</td>
+				<td>
+					<p>Nous présentons la stratégie interne de Cloudflare concernant la gouvernance de MCP, reposant sur les solutions Access et AI&nbsp;Gateway, ainsi que les portails de serveur MCP. Nous lançons également l’outil Code&nbsp;Mode pour réduire le coût des jetons et recommandons de nouvelles règles de détection d'utilisation clandestines de MCP (Shadow&nbsp;MCP) dans Cloudflare&nbsp;Gateway.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dT2Kw2vS0AJvk6Nw1oAg2/c1b9ca10314f85664ce6a939339f1247/BLOG-3239_3.png" alt="BLOG-3239 3" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="agent-toolbox">Suite d'outils pour agents</h2>
+		<a href="https://blog.cloudflare.com/#agent-toolbox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un agent performant doit être capable de réfléchir, de mémoriser, de communiquer et de voir. Pour cela, il doit disposer de modèles adéquat et avoir accès à des outils appropriés et à un contexte pertinents pour accomplir la tâche qui lui est attribuée. Cette semaine, nous avons lancé les composantes primitives (inférence, recherche, mémoire, voix, messagerie électronique et navigateur) qui permettent à un agent d'être réellement opérationnel.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Annonce</b></p>
+				</th>
+				<th>
+					<p><b>Récapitulatif</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/project-think"><u>Project Think&nbsp;: développer la nouvelle génération d’agents IA sur Cloudflare</u></a></p>
+				</td>
+				<td>
+					<p>Nous annonçons une version préliminaire de la prochaine édition du SDK Agents, qui évolue d’un ensemble de primitives légères vers une plateforme prête à l’emploi, conçue pour le développement d’agents IA qui réfléchissent, agissent et persistent.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/voice-agents"><u>Donnez une voix à votre agent</u></a></p>
+				</td>
+				<td>
+					<p>Un pipeline vocal expérimental pour le SDK Agents permet des interactions vocales en temps réel par l’intermédiaire de WebSockets. Les développeurs peuvent désormais concevoir des agents dotés de fonctions&nbsp;STT et TTS continues en codant seulement une trentaine de lignes de code côté serveur.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/email-for-agents"><u>Cloudflare Email Service&nbsp;: désormais disponible en version bêta publique, prêt pour vos agents</u></a></p>
+				</td>
+				<td>
+					<p>Les agents adoptent désormais une approche multicanal. Cette évolution leur permet d’être accessibles là où se trouvent vos utilisateurs, notamment dans leurs comptes de messagerie. Désormais disponible en version bêta publique, le service Cloudflare Email Service dispose d'une couche d’infrastructure destinée à simplifier vos opérations. Vous pouvez maintenant envoyer, recevoir et traiter vos e-mails de façon native, directement depuis vos agents.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-platform"><u>La plateforme IA Cloudflare&nbsp;: une couche d’inférence conçue pour les agents&nbsp;</u></a></p>
+				</td>
+				<td>
+					<p>Nous transformons Cloudflare en une couche d’inférence unifiée dédiée aux agents, permettant ainsi aux développeurs d’appeler les modèles de plus de 14&nbsp;fournisseurs. Les nouvelles fonctionnalités incluent une liaison Workers pour l'exécution de modèles tiers et un catalogue étendu comprenant des modèles multimodaux.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/high-performance-llms"><u>Jeter les fondations nécessaires à l'exécution des modèles linguistiques de très grande taille</u></a></p>
+				</td>
+				<td>
+					<p>Nous avons développé un environnement technologique personnalisé, conçu pour exécuter rapidement des grands modèles linguistiques sur l’infrastructure de Cloudflare. Cet article explore les compromis sur le plan technique et les optimisations nécessaires pour rendre accessible l’inférence&nbsp;IA hautes performances.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/unweight-tensor-compression"><u>Unweight&nbsp;: comment nous avons compressé un LLM de 22&nbsp;% sans sacrifier la qualité</u></a></p>
+				</td>
+				<td>
+					<p>L’exécution de grands LLM sur le réseau Cloudflare exige de notre part une gestion plus intelligente et plus efficace de la bande passante de la mémoire des GPU. C’est pourquoi nous avons développé Unweight, un système de compression sans pertes lors de l’inférence, qui nous permet de réduire l’empreinte d’un modèle de jusqu’à 22&nbsp;% afin d'assurer une inférence plus rapide et moins coûteuse que jamais auparavant.&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/introducing-agent-memory"><u>Agents qui mémorisent&nbsp;: présentation de Mémoire d'agent</u></a></p>
+				</td>
+				<td>
+					<p>Notre service géré Cloudflare Agent Memory fournit une mémoire persistante aux agents&nbsp;IA afin de leur permettre de mémoriser ce qui est essentiel, d’oublier ce qui ne l’est pas et de gagner en intelligence au fil du temps.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-search-agent-primitive"><u>AI Search&nbsp;: la primitive de recherche pour vos agents</u></a></p>
+				</td>
+				<td>
+					<p>La solution AI Search se présente comme une primitive de recherche pour vos agents. Créez dynamiquement des instances, importez des fichiers et effectuez des recherches dans les instances grâce aux fonctions de récupération hybride et d’optimisation de la pertinence. Elle est extrêmement simple d'utilisation&nbsp;: créez une instance de recherche, importez des données, puis effectuez la recherche.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/browser-run-for-ai-agents"><u>Browser Run : équipez vos agents d'un navigateur</u></a></p>
+				</td>
+				<td>
+					<p>Le service Browser Rendering devient Browser Run, et s’enrichit de nouvelles fonctionnalités pour vos agents IA&nbsp;: affichage dynamique&nbsp;(Live View), intervention humaine&nbsp;(Human in the Loop), accès à CDP&nbsp;(Chrome DevTools Protocol), enregistrement des sessions et limites d'exécution simultanée quatre fois plus élevées.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sTmO0Pt0PabTR2g8pZ963/a3f523a17db3a13301072232664b11c2/BLOG-3239_4.png" alt="BLOG-3239 4" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="prototype-to-production">Du prototype à la production</h2>
+		<a href="https://blog.cloudflare.com/#prototype-to-production" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La meilleure infrastructure doit également être facile à utiliser. Nous souhaitons aller à la rencontre des développeurs et de leurs agents là où ils opèrent déjà (sur le terminal, dans l’éditeur et dans l'invite de commande) et leur permettre d'accéder à l’intégralité de la plateforme Cloudflare sans changement de contexte.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Annonce</b></p>
+				</th>
+				<th>
+					<p><b>Récapitulatif</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cf-cli-local-explorer"><u>Développer une CLI pour l'ensemble de Cloudflare</u></a></p>
+				</td>
+				<td>
+					<p>Nous lançons cf, une nouvelle interface de ligne de commande unifiée, conçue pour assurer la cohérence sur l’ensemble de la plateforme Cloudflare, en plus de Local Explorer, un service destiné au débogage des données locales. Ces outils simplifieront les interactions des développeurs et des agents&nbsp;IA avec nos près de 3&nbsp;000&nbsp;opérations d’API.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/introducing-agent-lee"><u>Découvrez Agent Lee, une nouvelle interface dans la pile Cloudflare</u></a></p>
+				</td>
+				<td>
+					<p>Agent Lee est un agent intégré au tableau de bord qui transforme la navigation dans l’interface de Cloudflare, substituant une invite de commande unique aux changements manuels d'onglets. Il s’appuie sur un framework TypeScript en sandbox et vous aide à trouver une solution à vos problèmes et à gérer votre environnement technologique comme un collaborateur technique pragmatique.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/flagship"><u>Présentation de Flagship&nbsp;: des indicateurs de fonctionnalité conçus pour l’ère de l’IA</u></a></p>
+				</td>
+				<td>
+					<p>Nous lançons Flagship, un service natif de gestion d'indicateurs de fonctionnalités déployé sur le réseau mondial Cloudflare, permettant d’éliminer la latence des fournisseurs tiers. Flagship s’appuie sur les solutions KV et Durable Objects pour assurer l’évaluation des indicateurs en moins d’une milliseconde.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers"><u>Déployez des bases de données Postgres et MySQL grâce à la solution combinée PlanetScale + Workers</u></a></p>
+				</td>
+				<td>
+					<p>Découvrez comment déployer des bases de données PlanetScale Postgres et MySQL avec Cloudflare et connecter vos instances Cloudflare Workers.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/registrar-api-beta"><u>Enregistrez vos domaines à l'endroit où vous développez : l'API Cloudflare Registrar est désormais en bêta</u></a></p>
+				</td>
+				<td>
+					<p>L’API Cloudflare Registrar est désormais disponible en version bêta. Les développeurs et les agents&nbsp;IA peuvent effectuer des recherches, vérifier la disponibilité et enregistrer des noms de domaines à prix coûtant directement depuis leur éditeur, leur terminal ou leur agent, sans interrompre leur flux de travail.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BuOIU5Q3gfMIekZJEiBra/732c42b78aa397e7bb19b3816c7d1516/BLOG-3239_5.png" alt="BLOG-3239 5" class="kg-image" width="1999" height="583" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="agentic-web">Web agentique</h2>
+		<a href="https://blog.cloudflare.com/#agentic-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un nombre croissant d'agents se connectent désormais à Internet, mais naviguent encore sur un Internet conçu pour les humains. Les sites web existants ont besoin de nouveaux outils pour contrôler l'accès des bots à leur contenu, regrouper les contenus et les présenter aux agents et mesurer leur état de préparation à ce changement.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Annonce</b></p>
+				</th>
+				<th>
+					<p><b>Récapitulatif</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/agent-readiness"><u>Découvrez le score d’état de préparation aux agents. Votre site est-il prêt à accueillir les agents&nbsp;?</u></a></p>
+				</td>
+				<td>
+					<p>Le score d’état de préparation aux agents peut aider les propriétaires de sites web à mieux comprendre dans quelle mesure leurs sites sont adaptés aux agents&nbsp;IA. Nous examinons ici les nouvelles normes, partageons avec vous les données issues de Cloudflare&nbsp;Radar et expliquons en détail comment nous avons fait de la documentation de Cloudflare l'une des ressources Internet les plus adaptées aux agents.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-redirects"><u>Redirects for AI Training garantit l'unicité du contenu</u></a></p>
+				</td>
+				<td>
+					<p>Les directives non contraignantes n'empêchent pas les robots d'indexation d'ingérer des contenus obsolètes. La fonction Redirects for AI Training permet à n’importe quel utilisateur sur Cloudflare de rediriger les robots d’indexation vérifiés vers des pages canoniques sur simple activation d’une option, sans modification du serveur d’origine.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/network-performance-agents-week"><u>Agents Week&nbsp;: le point sur les performances réseau</u></a></p>
+				</td>
+				<td>
+					<p>En migrant sa couche de traitement des requêtes vers une architecture basée sur Rust appelée FL2, Cloudflare a creusé son avance en termes de performances, dépassant désormais 60&nbsp;% des réseaux mondiaux les plus rapides. Nous nous appuyons sur des mesures provenant d'utilisateurs réels et les trimoyennes de temps de connexion&nbsp;TCP pour nous assurer que nos données reflètent l’expérience réelle des utilisateurs d'Internet.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/shared-dictionaries"><u>Des dictionnaires de compression partagés adaptés au web agentique</u></a></p>
+				</td>
+				<td>
+					<p>Nous vous proposons un aperçu de notre prise en charge des dictionnaires de compression partagés, nous vous montrons comment elle améliore les temps de chargement des pages et nous vous révélons quand vous pourrez tester vous-même la version bêta.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jKSnMla0hclK999LtHfuu/886f66ffda1c699a5a15bf6748a6cf9b/BLOG-3239_6.png" alt="BLOG-3239 6" class="kg-image" width="1999" height="642" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="thats-a-wrap">C’est dans la boîte&nbsp;!</h2>
+		<a href="https://blog.cloudflare.com/#thats-a-wrap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L’Agents Week 2026 touche à sa fin, mais le cloud agentique n'en est qu'à ses débuts. Tout ce que nous avons déployé cette semaine, des services de calcul et de sécurité à la suite d'outils pour agents et au web agentique, en constitue la fondation. Nous allons continuer à créer sur cette fondation afin de vous offrir tout ce dont vous aurez besoin pour développer les services de demain.</p>
+	<p>D'autres articles seront publiés aujourd'hui et demain afin de continuer cette histoire&nbsp;; alors, restez à l’écoute des dernières actualités <a href="https://blog.cloudflare.com"><u>sur notre blog</u></a>.</p>
+	<p>Si vous utilisez les produits que nous avons annoncés cette semaine pour développer des services, nous serions ravis d'en entendre parler. Venez nous retrouver sur&nbsp;<a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>X</u></a> ou sur <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, ou consultez notre <a href="https://developers.cloudflare.com/products/?product-group=Developer+platform" target="_blank" rel="noopener noreferrer"><u>documentation pour développeurs</u></a>. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YLNvB0KU0Eh3KpAj6YgD6/77c190843d1fa76b212571f1d607d8d2/BLOG-3239_7.png" alt="BLOG-3239 7" class="kg-image" width="1200" height="295" loading="lazy">
+	</figure>
+	<p></p>
+</div>

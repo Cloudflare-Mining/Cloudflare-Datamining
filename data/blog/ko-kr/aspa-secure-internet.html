@@ -1,0 +1,187 @@
+<div class="mb2 gray5">9분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/aspa-secure-internet">English</a>, <a href="https://blog.cloudflare.com/zh-tw/aspa-secure-internet">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/aspa-secure-internet">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/aspa-secure-internet">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzMhLvkCbegyTQUNorwM6/1a5818020a0f7b0e069cea1326fd58b9/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>인터넷 트래픽은 네트워크 간에 길을 찾기 위해 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>경계 Gateway 프로토콜(BGP)</u></a> 에 의존합니다. 하지만 때때로 이 트래픽은 구성 오류나 악의적인 행동으로 인해 잘못 전달될 수 있습니다. 트래픽이 통과하도록 의도되지 않은 네트워크를 통해 라우팅되는 경우 이를 <a href="https://datatracker.ietf.org/doc/html/rfc7908" target="_blank" rel="noopener noreferrer"><u>경로 유출</u></a>이라고 합니다. <a href="https://blog.cloudflare.com/bgp-route-leak-venezuela"><u>Cloudflare는 블로그에</u></a> <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar"><u>BGP 경로</u></a> 유출과 이러한 유출이 인터넷 라우팅에 미치는 <a href="https://blog.cloudflare.com/cloudflare-1111-incident-on-june-27-2024"><u>영향에 대해 여러 번 게시했으며, BGP의 경로</u></a> 검증 미래에 대해서도 몇 차례 언급한 바 있습니다.&nbsp;</p>
+	<p>네트워크 커뮤니티가 인터넷 트래픽의 최종 목적지를 확인하는 데 상당한 진전을 이루었지만, 거기에 도달하는 실제 경로를 보호하는 것은 안정적인 인터넷을 유지하기 위한 핵심 과제로 남아 있습니다. 이 문제를 해결하기 위해 업계에서는 <a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification" target="_blank" rel="noopener noreferrer"><u>ASPA(자율 시스템 공급자 인증)</u></a>라는 새로운 암호화 표준을 채택하고 있습니다. 이 표준은 네트워크 트래픽의 전체 경로를 검증하고 라우팅 유출을 방지하도록 설계되었습니다.</p>
+	<p>커뮤니티에서 이 표준의 롤아웃을 추적하는 데 도움을 주기 위해 Cloudflare Radar에서는 새로운 ASPA 배포 모니터링 기능을 도입했습니다. 사용자는 이 보기를 통해 5개<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u> 지역 인터넷 레지스트리(RIR)</u></a>에서 시간에 따른 ASPA 채택 동향을 관찰하고<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u> 자율 시스템(AS)</u></a> 수준에서 시간에 따른 ASPA 기록과 변경 사항을 볼 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-aspa">ASPA란 무엇입니까?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA의 작동 방식을 이해하려면 현재 인터넷이 트래픽 목적지를 어떻게 보호하고 있는지 알아보는 것이 도움이 됩니다.</p>
+	<p>오늘날 네트워크는 <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure" target="_blank" rel="noopener noreferrer"><u>RPKI(Resource Public Key Infrastructure)</u></a>라고 하는 보안 인프라 시스템을 사용하며, 지난 몇 년 동안 <a href="https://blog.apnic.net/2026/02/20/rpkis-2025-year-in-review" target="_blank" rel="noopener noreferrer"><u>배포가 크게 증가</u></a> 했습니다. RPKI 내에서 네트워크는 ROA(Route Origin Authorization)라는 특정 암호화 레코드를 게시합니다. ROA는 확인 가능한 클라이언트 인증서 카드 역할을 하여 자율 시스템(AS)이 특정 IP 주소를 발표할 수 있는 공식적으로 권한을 받았는지 확인합니다. 이를 통해 한 네트워크에서 다른 네트워크로 가장하려고 시도하는 "원본 하이재킹" 문제를 해결할 수 있습니다.</p>
+	<p><a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification" target="_blank" rel="noopener noreferrer"><u>ASPA (Autonomous System Provider Authorization)</u></a> 는 이러한 기반 위에 직접 구축됩니다. ROA가 <i>목적지</i>를 확인하는 동안 ASPA 레코드는 <i>여정</i>을 확인합니다.</p>
+	<p>데이터는 인터넷을 통해 이동할 때 통과하는 모든 네트워크의 실행 로그를 유지합니다. BGP에서 이 로그는 <a href="https://datatracker.ietf.org/doc/html/rfc4271#section-5.1.2" target="_blank" rel="noopener noreferrer"><u><code>AS_PATH</code></u></a> (자율 시스템 경로)로 알려져 있습니다. ASPA는 네트워크에서 RPKI 시스템 내에 승인된 업스트림 공급자 목록을 공식적으로 게시하는 방법을 제공합니다. 이를 통해 모든 수신 네트워크에서 <code>AS_PATH</code>를 살펴보고, 연결된 ASPA 레코드를 확인하며, 트래픽이 승인된 네트워크 체인을 통해서만 이동했는지 확인할 수 있습니다.</p>
+	<p>ROA는 트래픽이 올바른 목적지에 도착하도록 하고, ASPA는 트래픽이 거기에 도달하기 위해 의도되고 승인된 경로를 따라가도록 보장합니다. 경로 평가가 실제로 어떻게 작동하는지 살펴보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="route-leak-detection-with-aspa">ASPA를 통한 라우팅 누출 감지</h2>
+		<a href="https://blog.cloudflare.com/#route-leak-detection-with-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA는 경로가 <i>우회</i>인지 어떻게 알 수 있을까요? 조직은 인터넷이라는 계층 구조에 의존합니다.</p>
+	<p>정상적인 인터넷 라우팅 토폴로지에서는(예: <a href="https://ieeexplore.ieee.org/document/6363987" target="_blank" rel="noopener noreferrer"><u>“valley-free” 라우팅</u></a>), 트래픽은 일반적으로 특정 경로를 따릅니다. 고객에서 대규모 공급자(주요 인터넷 서비스 공급자 등)로 "상향" 이동하고, 선택적으로 다른 대규모 공급자로 교차한 다음, 대상으로 "하향" 흐릅니다. 이를 '산' 모양으로 시각화할 수 있습니다.</p>
+	<ol>
+		<li>
+			<p><b>Up-Ramp:</b> 트래픽이 고객에서 시작되어 점점 더 규모가 큰 인터넷 서비스 공급자(ISP)를 통해 "위로" 이동하며, 인터넷 서비스 공급자(ISP)는 다른 인터넷 서비스 공급자(ISP)에 비용을 지불하여 트래픽을 전송합니다.</p>
+		</li>
+		<li>
+			<p><b>정점:</b> 인터넷 백본의 최상위 계층에 도달하여 단일 피어링 링크를 통과할 수 있습니다.</p>
+		</li>
+	</ol>
+	<p><b>하향 램프:</b> 트래픽은 공급자를 통해 "아래로" 이동하여 대상 고객에 도달합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VGuSHfq6GcQZUYLGmoDH3/a1486f40c16e568f32ca2fa81d58ac41/1.png" alt="" class="kg-image" width="1540" height="636" loading="lazy">
+	</figure>
+	<p><i><sup>'밸리 없는' 라우팅 시각화. 경로는 선택적으로 하나의 피어링 링크를 통해 공급자에게 전달되어 고객에게 전달됩니다.</sup></i></p>
+	<p>이 모델에서 라우팅 유출은 밸리 또는 딥과 같습니다. 이러한 유출의 한 유형은 트래픽이 고객에게 향했다가 예기치 않게 다른 공급자에게 다시 <i>업로드</i> 하려고 할 때 발생합니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eoaEpdIJpCCLbMnNZD5ob/7ceca2a98f2252e8161915b942bf7dbd/2.png" alt="" class="kg-image" width="1548" height="706" loading="lazy">
+	</figure>
+	<p>이러한 "다운 앤 업" 이동은 바람직하지 않습니다. 고객은 두 곳의 대규모 네트워크 공급자 간에 트래픽을 전송하도록 의도된 것이 아니고 그러한 준비가 되어 있지도 않기 때문입니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-aspa-validation-works">ASPA 유효성 검사의 작동 방식</h4>
+		<a href="https://blog.cloudflare.com/#how-aspa-validation-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA는 네트워크 운영자가 <i>승인된 공급자를</i> 선언할 수 있는 암호화 방법을 제공하여 수신 네트워크에서 AS 경로가 이러한 예상 구조를 따르는지 확인할 수 있습니다.</p>
+	<p>ASPA는 경로 전파의 양쪽 끝에서 '관계의 체인'을 확인하여 AS 경로의 유효성을 검사합니다.</p>
+	<ul>
+		<li>
+			<p><b>상향 램프 확인:</b> 검사는 원본에서 시작하여 앞으로 이동합니다. 모든 홉에서 <i>"이 네트워크가 다음 네트워크를 공급자로 인증했습니까?"</i> 라고 묻습니다. 사슬이 멈출 때까지 계속됩니다.</p>
+		</li>
+		<li>
+			<p><b>Down-Ramp 확인:</b> BGP 업데이트 대상에서부터 뒤로 이동하면서 동일한 작업을 수행합니다.</p>
+		</li>
+	</ul>
+	<p>"위로" 경로와 "아래로" 경로가 겹치거나 위에서 만나는 경우 그 경로가 <b>유효합니다</b>. 산 모양은 그대로입니다.</p>
+	<p>그러나 두 개의 유효한 경로가 <b>만나지 않는</b> 경우, 즉 권한 부여가 누락되었거나 유효하지 않은 중간에 공백이 있는 경우, ASPA는 이러한 경로를 문제가 있는 것으로 보고합니다. 이 간격은 "계곡" 또는 누출을 나타냅니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="validation-process-example">검증 프로세스 예시</h4>
+		<a href="https://blog.cloudflare.com/#validation-process-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크(AS65539)가 고객(AS65538)으로부터 잘못된 경로를 수신하는 시나리오를 살펴보겠습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kn8W6c7CaPcMLMycjS5NO/59036dc52a942870e9bb0e377f235dd4/3.png" alt="" class="kg-image" width="1122" height="890" loading="lazy">
+	</figure>
+	<p>고객(AS65538)이 한 공급자(AS65537)로부터 받은 트래픽을 다른 공급자(AS65539) "위로" 보내려고 하며, 공급자 간의 다리 역할을 합니다. 이는 <a href="https://datatracker.ietf.org/doc/html/rfc7908#autoid-4" target="_blank" rel="noopener noreferrer"><u>전형적인 라우팅 유출</u></a>입니다. 이제 ASPA 유효성 검사 프로세스를 살펴보겠습니다.</p>
+	<ol>
+		<li>
+			<p>저희는 <b>Up-Ramp</b>를 확인합니다: 원래 소스(AS65536)가 공급자를 인증합니다. (성공 확인).</p>
+		</li>
+		<li>
+			<p><b>Down-Ramp</b>를 확인합니다. 목적지에서 시작하여 뒤를 돌아봅니다. 고객(AS65538)을 봅니다.</p>
+		</li>
+		<li>
+			<p><b>불일치:</b> 상승 진입로는 AS65537에서 끝나며 하락 진입로는 65538에서 끝납니다. 두 램프는 연결되지 않습니다.</p>
+		</li>
+	</ol>
+	<p>"위로" 경로와 "아래로" 경로가 연결되지 않으므로 시스템에서는 이 경로를 ASPA <b>유효하지 않음</b>으로 플래그를 지정합니다. 이 경로 유효성 검사를 수행하려면 ASPA가 필요합니다. RPKI에 서명된 ASPA 객체가 없으면 어떤 네트워크가 어떤 접두사에게 누구에게 광고할 권한이 있는지 알 수 없기 때문입니다. 각 AS의 공급자 네트워크 목록에 서명함으로써 어떤 네트워크가 접두사를 측면 또는 업스트림으로 전파할 수 있는지 알 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="aspa-against-forged-origin-hijacks">위조 원본 하이재킹에 대한 ASPA</h3>
+		<a href="https://blog.cloudflare.com/#aspa-against-forged-origin-hijacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA는 공격자가 실제 원본 프리픽스에 대한 BGP 경로를 가장하고 광고하여 라우팅 시작점 유효성 검사(ROV)를 우회하는 <a href="https://www.usenix.org/conference/nsdi24/presentation/holterbach" target="_blank" rel="noopener noreferrer"><u>위조 원본 하이재킹</u></a>에 대한 효과적인 방어 수단이 될 수 있습니다. 원본 AS는 여전히 정확하지만, 하이재커와 피해자 간의 관계는 조작된 것입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MNVRoNDzxlHDVGTP2nRPw/87485ad246baa734eef3192fd48012a8/4.png" alt="" class="kg-image" width="1402" height="862" loading="lazy">
+	</figure>
+	<p>ASPA는 피해자 네트워크가 실제 승인된 공급자를 암호로 선언할 수 있도록 하여 이러한 속임수를 노출합니다. 하이재커가 승인된 목록에 없기 때문에 경로는 잘못된 것으로 거부되어 악의적 리디렉션을 효과적으로 방지합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KGtsKWBdlNFySIswRb5rD/d26b266c2dc942be9b9f6c6ec383843b/5.png" alt="" class="kg-image" width="1159" height="862" loading="lazy">
+	</figure>
+	<p>하지만, ASPA는 위조 원본 하이재킹을 완전히 차단할 수 없습니다. ASPA 유효성 검사로도 네트워크에서 이러한 유형의 공격을 완전히 방지할 수 없는 경우가 적어도 하나 이상 존재합니다. ASPA에서 위조 원본 하이재킹을 처리할 수 없는 경우의 예로는 공급자가 <i>고객에게</i>경로 광고를 위조하는 것이 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DPYEXwSUPmWUWvsyxFJHX/b059dae85cf764fdcd5a5257f5ebc373/6.png" alt="" class="kg-image" width="1999" height="1795" loading="lazy">
+	</figure>
+	<p>기본적으로 공급자는 다른 AS와의 피어링 링크를 '가짜' 피어링 링크가 없는 경우에도 길이가 짧은 AS_Path를 가진 고객의 트래픽을 유치할 수 있습니다. ASPA는 공급자가 수행하는 이 경로 위조를 막지 못합니다. ASPA는 공급자 정보로만 작동하고 피어링 관계에 대해서는 아무것도 알지 못하기 때문입니다.</p>
+	<p>따라서 ASPA는 위조된 원본 하이재킹 경로를 거부하는 효과적인 방법이 될 수 있지만, 효과적이지 않은 몇 가지 드문 경우가 있으며, 주목할 가치가 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="creating-aspa-objects-just-a-few-clicks-away">몇 번의 클릭만으로 ASPA 개체 생성</h2>
+		<a href="https://blog.cloudflare.com/#creating-aspa-objects-just-a-few-clicks-away" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크(또는 자율 시스템)를 위한 ASPA 개체를 생성하는 것은 이제 <a href="https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security" target="_blank" rel="noopener noreferrer"><u>RIPE</u></a> 및 <a href="https://www.arin.net/announcements/20260120" target="_blank" rel="noopener noreferrer"><u>ARIN</u></a>과 같은 레지스트리에서 간단한 프로세스가 되었습니다. 자신의 AS 번호와 인터넷 전송 서비스를 구매하는 공급자의 AS 번호만 있으면 됩니다. 광범위한 인터넷에 내 IP 주소를 알릴 때 신뢰할 수 있는 인증된 업스트림 네트워크를 말합니다. 반대로, 이는 사용자가 전체 라우팅 테이블을 보낼 수 있도록 권한을 부여한 네트워크이며, 나머지 인터넷에 연결하는 방법에 대한 완전한 지도 역할을 합니다.</p>
+	<p>간단한 예제를 통해 ASPA 개체를 만드는 것이 얼마나 쉬운지 보여드리고자 합니다.&nbsp;</p>
+	<p>Cloudflare London 사무실 인터넷에 사용하는 AS203898에 대한 ASPA 개체를 만들어야 한다고 가정해 보겠습니다. 이 글을 작성하는 현재로서는 사무실을 위한 인터넷 공급자 AS8220, AS2860, AS1273 등 3개를 이용합니다. 즉, 목록의 세 공급자 멤버를 사용하여 AS203898에 대한 ASPA 개체를 생성한다는 의미입니다.</p>
+	<p>먼저 RIPE <a href="https://dashboard.rpki.ripe.net/#overview" target="_blank" rel="noopener noreferrer"><u>RPKI 대시보드</u></a> 에 로그인한 다음 <a href="https://dashboard.rpki.ripe.net/#aspa" target="_blank" rel="noopener noreferrer"><u>ASPA</u></a> 섹션으로 이동합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CCFItZpP8JbYCotDGfuM3/c7ad0041ceea4f48c37ff59f416f8242/7.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>그런 다음 ASPA 개체를 만들려는 개체에 대해 “ Create ASPA” 를 클릭합니다. 거기에서 해당 AS에 대한 공급자를 입력하기만 하면 됩니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ABmfhRQQRbLhMat6Ug01K/3a9d73ad8ade315416c4cc6eb9073ada/8.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>그만큼 간단합니다. 짧은 대기 시간 후에 글로벌 RPKI 생태계를 쿼리하고 우리가 정의한 공급자를 통한 AS203898에 대한 ASPA 개체를 찾을 수 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xAKD1b704fg7SMxeg867P/59ce564867565331e2d531de15dc7e87/Screenshot_2026-02-27_at_11.09.55.png" alt="" class="kg-image" width="1666" height="304" loading="lazy">
+	</figure>
+	<p>현재 ASPA 개체 생성을 지원하는 유일한 <a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u>지역 인터넷 레지스트리(RIR)인</u></a> <a href="https://www.arin.net" target="_blank" rel="noopener noreferrer"><u>ARIN의</u></a> 경우도 비슷합니다. <a href="https://account.arin.net/public/login" target="_blank" rel="noopener noreferrer"><u>ARIN 온라인</u></a> 에 로그인한 다음 라우팅 보안으로 이동하여 “RPKI 관리”를 클릭합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PTCdyldcTc1Uc0iazZlg4/51ed97a8ef0d095b947f7ab2bf4b1fd3/9.png" alt="" class="kg-image" width="1966" height="748" loading="lazy">
+	</figure>
+	<p>거기에서 “ASP 생성”을 클릭할 수 있습니다. 이 예에서는 Cloudflare의 다른 ASN 중 하나인 AS400095에 대한 개체를 생성합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bLLHAeU4Eaz6RPgSPDzn9/a482b6c7ed4ef78f7346ca80c9a5ba46/10.png" alt="" class="kg-image" width="1928" height="900" loading="lazy">
+	</figure>
+	<p>끝입니다. 이제 공급자 AS0을 사용하여 AS40095에 대한 ASPA 개체를 만들었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9yOZPpMH4olQXu2DNpJPO/cca432fd82e61c6492987b7ccedbdc57/11.png" alt="" class="kg-image" width="1966" height="972" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6emDXxMbU0BSKk5BVXUdJ6/132b9a7279b93e3ae0329dec83a9bfac/Screenshot_2026-02-27_at_11.11.31.png" alt="" class="kg-image" width="1676" height="296" loading="lazy">
+	</figure>
+	<p>'AS0' 공급자 항목은 사용 시 특별하며, AS 소유자가 네트워크에 유효한 업스트림 공급자가 <b>없음</b> 을 증명함을 의미합니다. 정의상, 이는 전송이 없는 모든 Tier 1 네트워크가 실제로 피어 관계와 고객 관계만 있는 경우 결국 개체에 "AS0"만 포함된 ASPA에 서명해야 함을 의미합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="new-aspa-features-in-cloudflare-radar">Cloudflare Radar의 새로운 ASPA 기능&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#new-aspa-features-in-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar에</u></a> 새로운 ASPA 배포 모니터링 기능을 추가했습니다. 새로운 ASPA 배포 보기를 통해 사용자는 AS 등록을 기준으로 5개 <a href="https://en.wikipedia.org/wiki/Regional_Internet_registry" target="_blank" rel="noopener noreferrer"><u>지역 인터넷 레지스트리(RIR)</u></a> 에 걸쳐 추세를 시각화하여 시간에 따른 ASPA 채택 증가를 살펴볼 수 있습니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FoW86CVloqBqZO7wcOiq8/f5f2973db227b8184127f76fdad64dc4/12.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>또한 ASPA 데이터를 국가/지역 및 자율 시스템 번호(ASN) 라우팅 페이지에 직접 통합했습니다. 사용자는 이제 현지에서 등록된 고객 ASN의 관련 ASPA 기록을 기반으로 다양한 지역에서 인프라 보안이 어떻게 발전하고 있는지 추적할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tBhOpIxc6tNOJXWPPAk4U/7c334c9ddb089eb823ce23eb49ddbdc3/13.png" alt="" class="kg-image" width="1848" height="1456" loading="lazy">
+	</figure>
+	<p>특정 자율 시스템(AS)을 자세히 살펴보면 새로운 기능이 있습니다. 예를 들어 <a href="https://radar.cloudflare.com/routing/AS203898#connectivity" target="_blank" rel="noopener noreferrer"><u>AS203898</u></a>을 참조하십시오.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nTBPD0PgzPOS0eOxpG3rW/65d9b312be2e81e4c59164c98b7b6276/14.png" alt="" class="kg-image" width="1999" height="837" loading="lazy">
+	</figure>
+	<p>Cloudflare는 네트워크에서 관찰된 BGP 업스트림 공급자가 ASPA 승인을 받았는지 여부, ASPA 개체에 포함된 전체 공급자 목록, AS를 포함하는 ASPA 변경 타임라인 등을 확인할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-road-to-better-routing-security">라우팅 보안을 개선하는 길</h2>
+		<a href="https://blog.cloudflare.com/#the-road-to-better-routing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA가 마침내 실현됨에 따라 인터넷 경로 유효성 검사를 위한 암호화를 업그레이드했습니다. 그러나 라우팅 시작점 유효성 검사를 위해 RPKI가 시작되었을 때부터 사용해 온 사람들은 <a href="https://manrs.org/2023/05/estimating-the-timeline-for-aspa-deployment" target="_blank" rel="noopener noreferrer"><u>이것이 실제로 인터넷에서 상당한 가치를 제공하는 데는 먼 여정이 될 것임을</u></a> 알고 있습니다. 실제로 ASPA 개체를 사용하고 해당 개체로 경로의 유효성을 검사하려면 RPKI 중계자(RP) 패키지, 서명자 구현, RTR(RPKI 대 라우터 프로토콜) 소프트웨어, BGP 구현을 변경해야 합니다.</p>
+	<p>사업자는 ASPA 채택과 더불어, <a href="https://datatracker.ietf.org/doc/rfc9234" target="_blank" rel="noopener noreferrer"><u>RFC9234</u></a>에 설명된 대로 BGP 역할도 구성해야 합니다. BGP 세션에서 구성된 BGP 역할은 향후 라우터에서 ASPA를 구현할 때 <a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-24#section-6.3" target="_blank" rel="noopener noreferrer"><u>어떤 알고리즘을 적용할지 결정하는 데</u></a>: <i>업스트림</i> 또는 <i>다운스트림</i> 도움이 될 것입니다. 다시 말해, BGP 역할은 운영자로서 우리가 다른 AS와의 의도한 BGP 관계를 해당 이웃과의 세션에 직접 연결할 수 있는 권한을 제공합니다. 라우팅 벤더에 문의하여 이들 벤더가 <a href="https://datatracker.ietf.org/doc/rfc9234" target="_blank" rel="noopener noreferrer"><u>RFC9234 BGP 역할 및 OTC(Only-to-Customer)</u></a> 속성 구현을 지원하는지 확인합니다.</p>
+	<p>Cloudflare에서는 모두가 ASPA를 최대한 활용하여 자신의 AS를 위한 ASPA 개체를 생성하는 것을 권장합니다<i>. </i>이러한 ASPA 개체를 만들고 유지하려면 세심한 주의가 필요합니다. 앞으로 네트워크에서 이러한 레코드를 사용하여 잘못된 경로를 적극적으로 차단함에 따라 합법적인 공급자를 누락하면 트래픽이 삭제될 수 있습니다. 그러나 이러한 위험을 관리하는 것은 오늘날 네트워크에서 이미 라우팅 시작점 권한 부여(ROA)를 처리하는 방법과 다르지 않습니다. ASPA는 인터넷 경로 유효성 검사에 필요한 암호화 업그레이드이며, 우리는 이것이 있어 기쁩니다!</p>
+</div>

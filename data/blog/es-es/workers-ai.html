@@ -1,0 +1,375 @@
+<div class="mb2 gray5">8 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/workers-ai">English</a>, <a href="https://blog.cloudflare.com/fr-fr/workers-ai">Français</a>, <a href="https://blog.cloudflare.com/de-de/workers-ai">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-ai">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/workers-ai">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/workers-ai">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UewVkAc6TTFtDukOViAJh/a84ca62d2b4bb345355f34fc9c7e4c36/workers-ai.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Si te relacionas o formas parte de una comunidad de desarrolladores, sabrás que es casi imposible evitar el impacto que los últimos avances de la IA han tenido en el ecosistema. Tanto si utilizas la IA en tu flujo de trabajo para mejorar la productividad, o creas funciones basadas en la IA para tus usuarios, la IA ya está en todas partes. El enfoque en las mejoras de la IA es extraordinario, y estamos muy entusiasmados con las oportunidades que se avecinan, pero no es suficiente.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kH38tclcLOGwYv40vTHNy/300956275074e73dd480a93898d43c08/image1-29.png" alt="" class="kg-image" width="1800" height="1014" loading="lazy">
+
+	</figure>
+	<p>Hasta hace poco, si querías aprovechar el poder de la IA, necesitabas conocer los entresijos del aprendizaje automático y ser capaz de gestionar la infraestructura para que funcionara.</p>
+	<p>Contamos con una plataforma para desarrolladores con más de un millón de usuarios activos, y creemos que aún queda mucho potencial por descubrir, por lo que estamos cambiando la forma en que se ofrece la IA a los desarrolladores. Muchas de las soluciones actuales, aunque eficaces, se basan en modelos cerrados y patentados, que no responden a las necesidades de privacidad que exigen los desarrolladores y los usuarios. Por otra parte, la demanda de servicios de código abierto está creciendo exponencialmente con modelos potentes, pero no son lo suficientemente accesibles para todos los desarrolladores. Imagina poder ejecutar un modelo, a partir de tu código, dondequiera que esté alojado, y no tener que buscar unidades de procesamiento de gráficos (GPU) ni ocuparte de configurar la infraestructura para que sea compatible.</p>
+	<p>Por eso nos complace anunciar Workers AI, una plataforma de inferencia de IA como servicio, que permite a los desarrolladores ejecutar modelos de IA con solo unas líneas de código, todo ello con la tecnología de nuestra red global de GPU. Es una plataforma abierta y accesible, sin servidor, prioriza la privacidad, se ejecuta cerca de tus usuarios, es de pago por uso, y se ha desarrollado desde cero para ofrecer la mejor experiencia a los desarrolladores.</p>
+	<div class="flex anchor relative">
+		<h2 id="workers-ai-making-inference-just-work">Workers AI, una solución diseñada para que la inferencia funcione sin más</h2>
+		<a href="https://blog.cloudflare.com/#workers-ai-making-inference-just-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Llega Workers AI para poner la inferencia de IA al alcance de todos los desarrolladores y, para cumplir realmente ese objetivo, debe <b>funcionar sin necesidad de configuración</b> ¿Cómo lo conseguimos?</p>
+	<ul>
+		<li>
+			<p>En esencia, se ejecuta en la infraestructura adecuada: nuestra red de GPU de primera clase.</p>
+		</li>
+		<li>
+			<p>Proporcionamos modelos listos para usar que se ejecutan sin problemas en nuestra infraestructura.</p>
+		</li>
+		<li>
+			<p>Por último, se lo entregamos al desarrollador final de una forma que le resulte satisfactoria. Un desarrollador debería ser capaz de crear su primera aplicación Workers AI en cuestión de minutos, y decir "¡Vaya, es magia!</p>
+		</li>
+	</ul>
+	<p>¿Qué es exactamente Workers AI? Es otro bloque de creación que estamos añadiendo a nuestra plataforma para desarrolladores, uno que ayuda a los desarrolladores a ejecutar modelos de IA muy conocidos en GPU sin servidor, todo ello en la red global de confianza de Cloudflare. Workers AI, que es una de las últimas novedades de nuestra plataforma para desarrolladores, funciona a la perfección con Workers y Pages, pero para que sea realmente accesible, es independiente en cuanto a plataformas respecta, de modo que funciona en todas las demás, y está disponible a través de una REST API.</p>
+	<div class="flex anchor relative">
+		<h2 id="models-you-know-and-love">Modelos que conoces y te encantan</h2>
+		<a href="https://blog.cloudflare.com/#models-you-know-and-love" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este lanzamiento viene acompañado de un conjunto seleccionado de modelos de código abierto conocidos, que abarcan una amplia gama de tareas de inferencia:</p>
+	<ul>
+		<li>
+			<p><b>Generación de texto (modelo de lenguaje de gran tamaño):</b> meta/llama-2-7b-chat-int8</p>
+		</li>
+		<li>
+			<p><b>Reconocimiento automático de voz (ASR):</b> openai/whisper</p>
+		</li>
+		<li>
+			<p><b>Traducción:</b> meta/m2m100-1.2</p>
+		</li>
+		<li>
+			<p><b>Clasificación de textos:</b> huggingface/distilbert-sst-2-int8</p>
+		</li>
+		<li>
+			<p><b>Clasificación de imágenes:</b> microsoft/resnet-50</p>
+		</li>
+		<li>
+			<p><b>Incrustaciones:</b> baai/bge-base-en-v1.5</p>
+		</li>
+	</ul>
+	<p>Puedes examinar todos los modelos disponibles en tu panel de control de Cloudflare, y en breve podrás explorar los registros y análisis ¡por modelo!</p>
+	<p>Esto es solo el principio. Tenemos grandes planes. Tras el lanzamiento, seguiremos añadiendo funciones a partir de las opiniones de la comunidad. Y lo que es más emocionante, con el objeto de ampliar nuestro catálogo, anunciamos la asociación con Hugging Face, una comunidad y centro de investigación líder en IA. La asociación es multidimensional, pincha <a href="https://blog.cloudflare.com/best-place-region-earth-inference">aquí</a> para más información, pero pronto podrás explorar y ejecutar un subconjunto del catálogo de Hugging Face directamente en Workers AI.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iLFApyCjCwTCEtV8QRhke/91793f5eaabe3c426cf5fb7f421f4508/image4-14.png" alt="" class="kg-image" width="1306" height="832" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="accessible-to-everyone">Accesible para todos</h2>
+		<a href="https://blog.cloudflare.com/#accessible-to-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Parte de la misión de nuestra plataforma para desarrolladores es proporcionar <b>todos</b> los bloques de creación que los desarrolladores necesitan para crear las aplicaciones de sus sueños. Tener acceso a los bloques adecuados es solo una parte. Como desarrollador, tu trabajo es agruparlos en una aplicación, y el nuestro, hacerlo lo más fácil posible.</p>
+	<p>Para asegurarnos de que pudieras utilizar Workers AI de manera sencilla, independientemente del punto de entrada, queríamos proporcionar acceso a través de Workers o Pages para facilitar su uso dentro del ecosistema de Cloudflare, y a través de REST API en el caso de que quieras utilizar Workers AI con tu pila actual.</p>
+	<p>A continuación, puedes ver un ejemplo rápido de CURL que traduce un texto del inglés al francés:</p>
+	<p>Este es el aspecto de la respuesta:</p>
+	<pre class="language-bash"><code class="language-bash">curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/m2m100-1.2b \
+-H "Authorization: Bearer {API_TOKEN}" \
+	-d '{ "text": "I'll have an order of the moule frites", "target_lang": "french" }'</code></pre>
+	<p>Utilízalo con cualquier pila, en cualquier lugar: tu marco Jamstack favorito, Python + Django/Flask, Node.js, Ruby on Rails, las posibilidades son infinitas. ¡Implementa!</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "result": {
+    "answer": "Je vais commander des moules frites"
+  },
+  "success": true,
+  "errors":[],
+  "messages":[]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="designed-for-developers">Una solución diseñada para desarrolladores</h2>
+		<a href="https://blog.cloudflare.com/#designed-for-developers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La experiencia de los desarrolladores es muy importante para nosotros. De hecho, la mayor parte de este artículo trata precisamente de eso, de asegurarnos de que funciona sin configuración, con modelos conocidos que funcionan sin más, y de que sea accesible para todos los desarrolladores, tanto si crean e implementan con Cloudflare como si lo hacen en otro lugar. Pero no solo eso. La experiencia no debe dar problemas, el paso a producción debe ser rápido y fácil.</p>
+	<p>Veamos otro ejemplo para demostrar lo fácil que es utilizarlo. Ejecutaremos Llama 2, un popular modelo de lenguaje de código abierto de Meta, en un worker.</p>
+	<p>Suponemos que ya has completado la información básica (cuenta de Cloudflare, Node, NPM, etc.), pero si no es así, <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank" rel="noopener noreferrer">esta guía</a> te ayudará con la configuración.</p>
+	<div class="flex anchor relative">
+		<h3 id="1-create-a-workers-project">1. Crea un proyecto Workers</h3>
+		<a href="https://blog.cloudflare.com/#1-create-a-workers-project" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Crea un nuevo proyecto llamado workers-ai ejecutando:</p>
+	<p>Cuando configures tu worker 'workers-ai', responde a las preguntas de configuración como se indica a continuación:</p>
+	<pre class="language-bash"><code class="language-bash">$ npm create cloudflare@latest</code></pre>
+	<ul>
+		<li>
+			<p>Escribe <b>workers-ai</b> como nombre de la aplicación</p>
+		</li>
+		<li>
+			<p>Elige el script <b>'Hello World'</b> para el tipo de aplicación</p>
+		</li>
+		<li>
+			<p>Selecciona <b>sí</b> en "Usar TypeScript"</p>
+		</li>
+		<li>
+			<p>Selecciona <b>sí</b> en "Usar Git"</p>
+		</li>
+		<li>
+			<p>Selecciona <b>no</b> en "Implementar"</p>
+		</li>
+	</ul>
+	<p>Por último, ve al directorio de tu nueva aplicación:</p>
+	<div class="flex anchor relative">
+		<h3 id="2-connect-workers-ai-to-your-worker">2. Conecta Workers AI a tu worker</h3>
+		<a href="https://blog.cloudflare.com/#2-connect-workers-ai-to-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">cd workers-ai</code></pre>
+	<p>Crea un enlace Workers AI, que permita a tu worker acceder al servicio Workers AI sin que tengas que gestionar una clave API.</p>
+	<p>Para enlazar Workers AI a tu worker, añade lo siguiente al final de tu archivo <b>wrangler.toml</b>:</p>
+	<p>También puedes enlazar Workers AI a una función de Pages. Para más información, consulta <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank" rel="noopener noreferrer">Functions Bindings</a>.</p>
+	<pre class="language-bash"><code class="language-bash">[ai]
+binding = "AI" #available in your worker via env.AI</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="3-install-the-workers-ai-client-library">3. Instala la biblioteca cliente Workers AI</h3>
+		<a href="https://blog.cloudflare.com/#3-install-the-workers-ai-client-library" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="4-run-an-inference-task-in-your-worker">4. Ejecuta una tarea de inferencia en tu worker</h3>
+		<a href="https://blog.cloudflare.com/#4-run-an-inference-task-in-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">npm install @cloudflare/ai</code></pre>
+	<p>Actualiza el archivo <b>source/index.ts</b> con el siguiente código:</p>
+	<div class="flex anchor relative">
+		<h3 id="5-develop-locally-with-wrangler">5. Desarrolla localmente con Wrangler</h3>
+		<a href="https://blog.cloudflare.com/#5-develop-locally-with-wrangler" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai'
+export default {
+  async fetch(request, env) {
+    const ai = new Ai(env.AI);
+    const input = { prompt: "What's the origin of the phrase 'Hello, World'" };
+    const output = await ai.run('@cf/meta/llama-2-7b-chat-int8', input );
+    return new Response(JSON.stringify(output));
+  },
+};</code></pre>
+	<p>En el directorio de tu proyecto, prueba localmente Workers AI ejecutando:</p>
+	<p><b>Nota:</b> actualmente, estos modelos solo se ejecutan en la red de GPU de Cloudflare (y no localmente), por lo que es imprescindible configurar <code>--remote</code> arriba, y te solicitaremos que inicies sesión en este punto.</p>
+	<pre class="language-bash"><code class="language-bash">$ npx wrangler dev --remote</code></pre>
+	<p>Wrangler te dará una URL (probablemente localhost:8787). Visita esa URL y se te mostrará una respuesta como esta:</p>
+	<div class="flex anchor relative">
+		<h3 id="6-deploy-your-worker">6. Implementa tu worker</h3>
+		<a href="https://blog.cloudflare.com/#6-deploy-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">{
+  "response": "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello, World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello, World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The C Programming Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.
+}</code></pre>
+	<p>Por último, implementa tu worker para que tu proyecto sea accesible en Internet:</p>
+	<p>Y esto es todo. Puedes implementar IA de la nada en cuestión de minutos. Obviamente, se trata de un ejemplo sencillo, pero muestra lo fácil que es ejecutar Workers AI desde cualquier proyecto.</p>
+	<pre class="language-bash"><code class="language-bash">$ npx wrangler deploy
+# Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="privacy-by-default">Privacidad por defecto</h2>
+		<a href="https://blog.cloudflare.com/#privacy-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando se fundó Cloudflare, nuestra propuesta de valor tenía tres pilares: más seguridad, más fiabilidad y más rendimiento. Con el tiempo, nos hemos dado cuenta de que para mejorar Internet, necesitamos mejorar también la privacidad, y queremos contribuir a ello.</p>
+	<p>Por eso Workers AI es una plataforma privada por defecto. No entrenamos nuestros modelos, LLM o de otro tipo, con tus datos o conversaciones, y nuestros modelos no aprenden de tu uso. Puedes sentirte seguro cuando utilices Workers AI tanto en entornos personales como profesionales, sin tener que preocuparte por la filtración de tus datos. Otros proveedores solo ofrecen esta importante función en su versión para empresas. Cloudflare la pone a disposición de todos.</p>
+	<p>También nos entusiasma la idea de admitir la localización de datos en el futuro. Para ello, tenemos un ambicioso plan de implementación de GPU, que hoy ponemos en marcha en siete centros de datos, a finales de año, llegaremos a 100 centros de datos, y a finales de 2024 estarán prácticamente en todas partes. En última instancia, de esta forma, los desarrolladores podrán seguir ofreciendo a sus usuarios funciones de IA revolucionarias, sin dejar de cumplir la normativa en materia de localización de datos de sus usuarios finales.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-power-of-the-platform">La eficacia de la plataforma</h2>
+		<a href="https://blog.cloudflare.com/#the-power-of-the-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="vector-database-vectorize"><b>Base de datos vectorial - Vectorize</b></h4>
+		<a href="https://blog.cloudflare.com/#vector-database-vectorize" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AI consiste en ejecutar inferencias, y en conseguir que sea realmente fácil hacerlo, pero a veces la inferencia es solo una parte de la ecuación. Los modelos de lenguaje de gran tamaño (LLM) se entrenan utilizando conjuntos de datos fijos, basados en una "instantánea" en un momento concreto del pasado, y no tienen contexto sobre tu negocio o caso de uso. Cuando envías una consulta (<i>prompt</i>), la información específica sobre ti puede aumentar la calidad de los resultados, haciéndolos más útiles y relevantes. Por eso también lanzamos Vectorize, nuestra base de datos vectorial que se integra perfectamente con Workers AI. A continuación, te ofrecemos un resumen rápido sobre cómo podrías utilizar Workers AI junto con Vectorize.</p>
+	<p>Ejemplo: Utiliza tus datos (base de conocimientos) para proporcionar contexto adicional a un LLM cuando un usuario esté chateando con él.</p>
+	<ol>
+		<li>
+			<p><b>Genera incrustaciones iniciales:</b> ejecuta tus datos en Workers AI utilizando un modelo de incrustación. El resultado serán incrustaciones, que son representaciones numéricas de esas palabras.</p>
+		</li>
+		<li>
+			<p><b>Inserta esas incrustaciones en Vectorize:</b> de esta manera se rellena inicialmente la base de datos vectorial con tus datos, con el fin de que podamos utilizarla más tarde para recuperar incrustaciones que sean similares a las consultas de tus usuarios.</p>
+		</li>
+		<li>
+			<p><b>Genera incrustaciones a partir de la pregunta del usuario:</b> cuando un usuario envía una pregunta a tu aplicación de IA, primero, coge esa pregunta y ejecútala a través de Workers AI utilizando un modelo de incrustación.</p>
+		</li>
+		<li>
+			<p><b>Obtén el contexto de Vectorize:</b> utiliza esa incrustación para consultar a Vectorize. Esta práctica debería generar incrustaciones similares a la pregunta de tu usuario.</p>
+		</li>
+		<li>
+			<p><b>Crea una consulta adaptada al contexto:</b> ahora coge el texto original asociado a esas incrustaciones y crea un nuevo mensaje que combine el texto de la búsqueda vectorial con la pregunta original.</p>
+		</li>
+		<li>
+			<p><b>Ejecuta la consulta:</b> ejecuta esta consulta en Workers AI utilizando un modelo LLM para obtener el resultado final.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h4 id="ai-gateway"><b>AI Gateway</b></h4>
+		<a href="https://blog.cloudflare.com/#ai-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Esta herramienta incluye un caso de uso más avanzado. Por otro lado, si estás ejecutando modelos en otro lugar, pero quieres sacar más partido a la experiencia, puedes ejecutar esas API en nuestra AI Gateway para beneficiarte de funciones como el almacenamiento en caché, la limitación de velocidad, el análisis y los registros. Estas funciones se pueden utilizar para proteger tu punto final, controlar y optimizar los costes, y también para ayudar en la prevención de la pérdida de datos. Más información sobre AI Gateway <a href="https://blog.cloudflare.com/announcing-ai-gateway">aquí</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">Empieza a desarrollar hoy mismo</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pruébalo y dinos qué te parece. Hoy lanzamos Workers AI en versión beta abierta para todos los planes de Workers, gratuitos o de pago. Dicho esto, es muy pronto, así que...</p>
+	<div class="flex anchor relative">
+		<h4 id="warning-its-an-early-beta"><b>Aviso: se trata de una primera versión beta</b></h4>
+		<a href="https://blog.cloudflare.com/#warning-its-an-early-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Actualmente <b>no se recomienda su uso en aplicaciones en producción</b>, y los límites y el acceso están sujetos a cambios.</p>
+	<div class="flex anchor relative">
+		<h4 id="limits"><b>Límites</b></h4>
+		<a href="https://blog.cloudflare.com/#limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Inicialmente vamos a lanzar límites por modelo</p>
+	<ul>
+		<li>
+			<p>@cf/meta/llama-2-7b-chat-int8: 50 solicitudes por minuto a nivel global</p>
+		</li>
+	</ul>
+	<p>Consulta nuestros <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank" rel="noopener noreferrer">documentos</a> para conocer nuestros límites.</p>
+	<div class="flex anchor relative">
+		<h4 id="pricing"><b>Precio</b></h4>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lo que hemos publicado hoy es solo un pequeño avance para darte una idea de lo que te espera (simplemente no podíamos contenernos), pero estamos deseando que pruebes la versión completa de Workers AI.</p>
+	<p>Somos conscientes de que cuando estás a punto de crear algo, quieres saber: ¿cuánto me va a costar? Sobre todo teniendo en cuenta que los costes de la IA se nos van de las manos. Por eso, queríamos informarte de los próximos precios de Workers AI.</p>
+	<p>Aunque no facturaremos el primer día, queremos que sepas cómo esperamos que sean nuestros precios.</p>
+	<p>Los usuarios podrán elegir entre dos formas de ejecutar Workers AI:</p>
+	<ul>
+		<li>
+			<p><b>Regular Twitch Neurons (RTN)</b> - se ejecutan donde haya capacidad a 0,01 USD / 1000 neuronas</p>
+		</li>
+		<li>
+			<p><b>Fast Twitch Neurons (FTN)</b> - se ejecutan en la ubicación del usuario más cercana a 0,125 USD / 1000 neuronas</p>
+		</li>
+	</ul>
+	<p>Quizá te preguntes: ¿qué es una neurona?</p>
+	<p>Las neuronas son una forma de medir el rendimiento de la IA que siempre se reduce a cero (si no utilizas nada, se te cobrarán 0 neuronas). Para que te hagas una idea, con 1000 neuronas puedes: generar 130 respuestas LLM, 830 clasificaciones de imágenes o 1250 incrustaciones.</p>
+	<p>Nuestro objetivo es ayudar a nuestros clientes a pagar solo por lo que utilizan, y a elegir el precio que mejor se adapte a su caso de uso, ya sea el precio o la latencia lo más importante.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-on-the-roadmap">¿Cuál es el plan de desarrollo?</h3>
+		<a href="https://blog.cloudflare.com/#whats-on-the-roadmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AI no ha hecho más que empezar, y queremos que nos ayudes a que sea una herramienta de gran utilidad. Dicho esto, nuestra hoja de ruta incluye muchos elementos interesantes.</p>
+	<div class="flex anchor relative">
+		<h4 id="more-models-please"><b>Más modelos, por favor</b></h4>
+		<a href="https://blog.cloudflare.com/#more-models-please" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este lanzamiento incluye un conjunto sólido de modelos que funcionan, pero seguiremos implementando nuevos modelos en función de tus comentarios. Si hay algún modelo en particular que te gustaría integrar en Workers AI, entra en <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a> y cuéntanoslo.</p>
+	<p>Además, también hemos anunciado la <a href="https://blog.cloudflare.com/best-place-region-earth-inference">asociación con Hugging Face</a>, y pronto podrás acceder y ejecutar un subconjunto del catálogo de Hugging Face directamente desde Workers AI.</p>
+	<div class="flex anchor relative">
+		<h4 id="analytics-observability"><b>Análisis y observabilidad</b></h4>
+		<a href="https://blog.cloudflare.com/#analytics-observability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hasta ahora, nos hemos centrado mucho en facilitar a cualquier desarrollador la ejecución de modelos de IA con solo unas líneas de código. Pero eso no es todo. Próximamente, trabajaremos en algunas funciones de análisis y de observabilidad para ofrecerte información sobre tu uso, rendimiento, gasto por modelo, además de la posibilidad de acceder a tus registros si te interesa investigar.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-road-to-global-gpu-coverage"><b>En camino hacia una cobertura GPU completa</b></h4>
+		<a href="https://blog.cloudflare.com/#a-road-to-global-gpu-coverage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestro objetivo es convertirnos en el mejor lugar para ejecutar inferencia en Region: planeta Tierra, así que estamos añadiendo las GPU a nuestros centros de datos lo más rápido posible.</p>
+	<p><b>Tenemos previsto implementar GPU en 100 centros de datos antes de finales de este año</b></p>
+	<p><b>Y llegaremos a todas partes a finales de 2024</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5A8SGUOEAcs3sjNjv48yIh/bafbc77b256fef490d4357613b036603/image3-28.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p><b>Nos hace mucha ilusión ver tus desarrollos:</b> consulta <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">nuestros documentos</a> para empezar.Si necesitas inspiración, quieres compartir el proyecto que estés desarrollando o tienes alguna duda entra en <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rrL2H0dHYZ4hxOBq0X1pw/f38d122af92f789dc2b31d3bdea1ab06/unnamed-3.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+</div>

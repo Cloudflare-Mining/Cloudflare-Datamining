@@ -1,0 +1,367 @@
+<div class="mb2 gray5">7분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/2023-phishing-report">English</a>, <a href="https://blog.cloudflare.com/zh-tw/2023-phishing-report">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/2023-phishing-report">Français</a>, <a href="https://blog.cloudflare.com/de-de/2023-phishing-report">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/2023-phishing-report">日本語</a>, <a href="https://blog.cloudflare.com/es-es/2023-phishing-report">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/2023-phishing-report">简体中文</a>로도 이용할 수 있습니다.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zKdGorR5BXoIDN9iE1c2y/ef2bc7e7b92d5b73dd48caba515210bb/Introducing-Cloudflare-2023-phishing-threats-report-1.png" alt="Introducing Cloudflare's 2023 phishing threats report." class="kg-image" width="1348" height="766" loading="lazy">
+
+	</figure>
+	<p>43개국에서 수천 명에게 피해를 입힌 '서비스형 피싱' 작전을 차단한 후, 인터폴에서는 최근 다음과 같이 <a href="https://www.interpol.int/en/News-and-Events/News/2023/Notorious-phishing-platform-shut-down-arrests-in-international-police-operation" target="_blank" rel="noopener noreferrer">지적했습니다</a>. “피싱과 같은 사이버 공격은 본질적으로 국경이 없고 가상이지만, 피해자에게 미치는 영향은 실제적이고 파괴적입니다.” FBI에 따르면, Business 이메일 손상(<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank" rel="noopener noreferrer">BEC</a>)은 수신자를 속여 자금을 이체하도록 하는 등, 맬웨어를 사용하지 않는 공격의 일종으로, FBI에 따르면 전 세계적으로 피해자에게 500억 달러 이상의 <a href="https://www.ic3.gov/Media/Y2023/PSA230609" target="_blank" rel="noopener noreferrer">비용을 발생</a>시켰습니다.</p>
+	<p>성공적인 사이버 공격의 90%가 이메일 <a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">피싱</a>으로 <a href="https://www.cisa.gov/shields-guidance-families" target="_blank" rel="noopener noreferrer">시작되는</a> 것으로 추정되며, 이는 공격자에게 계속 큰 수익이 되고 있습니다. 현재로서는 피싱 <i>시도</i>를 차단할 수 있는 방법이 많지 않습니다. 그러나 <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing" target="_blank" rel="noopener noreferrer">공격이 <i>성공</i>하는 것을 방지</a>하려면 공격자가 '알려진' 이메일 발신자에 대한 의도된 피해자의 신뢰를 교묘하게 악용하는 방법을 포함하여 진화하는 피싱 동향을 이해하고 선제적으로 해결하는 것이 중요합니다. 이를 위해 이번 주 Cloudflare에서는 첫 번째 <a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">피싱 위협 보고서</a>를 발표했습니다.</p>
+	<p>이 보고서에서는 2022년 5월부터 2023년 5월까지의 <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">이메일 보안</a> 데이터를 기반으로 주요 피싱 동향과 관련 권장 사항을 살펴봅니다. 이 기간 동안 Cloudflare에서는 <b>약 130억 건의 이메일을 처리</b>했으며, 여기에는 약 <b>2억 5천만 건의 악의적인 메시지</b>가 고객의 수신함에 도달하지 못하도록 차단하는 것이 포함되었습니다. 이 보고서에는 Cloudflare에서 의뢰하여 북미, EMEA, APAC 지역의 <b>보안 의사 결정권자 316명을 대상으로 한 설문조사</b> 결과도 포함되어 있습니다(여기에서 별도의 연구를 <a href="https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing" target="_blank" rel="noopener noreferrer">다운로드하실 수 있습니다</a>).</p>
+	<p>보고서 전문을 확인하여 세 가지 주요 내용을 알아보세요.</p>
+	<ul>
+		<li>
+			<p><b>공격자들이 가장 많이 사용하는 피싱 수법으로 사기성 링크를 사용하는 방법</b> — 그리고 클릭을 유도하는 방법과 링크를 무기화하는 방법이 어떻게 진화하고 있는지.</p>
+		</li>
+		<li>
+			<p><b>신원 속임수</b>는 다양한 형태(비즈니스 이메일 손상(BEC) 및 브랜드 사칭 포함)로 이루어지며 <b>이메일 인증 표준을 쉽게 우회할 수 있습니다.</b></p>
+		</li>
+		<li>
+			<p>공격자는 수백 개의 다양한 조직으로 가장하지만, <b>주로 우리가 신뢰하는 엔터티를 가장</b>하고 작업을 수행해야 합니다.</p>
+		</li>
+	</ul>
+	<p>다음은 2023년 피싱 위협 보고서를 읽으면서 염두에 두어야 할 몇 가지 사항입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="email-threat-categorization">이메일 위협 분류</h3>
+		<a href="https://blog.cloudflare.com/#email-threat-categorization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>공격자는 일반적으로 <a href="https://www.cloudflare.com/learning/security/threats/social-engineering-attack" target="_blank" rel="noopener noreferrer">소셜 엔지니어링</a>과 기술적 난독화 기술을 조합하여 메시지가 정상적인 것처럼 보이게 합니다. 따라서 Cloudflare에서는 여러 고급 감지 기술을 사용하여 '퍼지' 신호(맨눈으로 보이는 콘텐츠뿐만 아니라)를 분석하여 원치 않는 이메일을 식별합니다. 이러한 신호에는 다음이 포함됩니다.</p>
+	<ul>
+		<li>
+			<p><b>구조 분석</b>을 수행하여, 피싱 신호를 감지하도록 설계된 휴리스틱 및 <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">머신 러닝 모델</a>을 통해 제목, 본문, 이미지, 링크, 첨부 파일, 페이로드 등을 분석합니다.</p>
+		</li>
+		<li>
+			<p><b>감정 분석</b>을 통해 패턴 및 행동(예: 작성 패턴 및 표현)의 변화를 감지합니다.</p>
+		</li>
+		<li>
+			<p><b>신뢰 그래프</b>를 통해 파트너 소셜 그래프, 이메일 전송 기록, 잠재적인 파트너 사칭을 평가합니다</p>
+		</li>
+	</ul>
+	<p>Cloudflare의 <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services" target="_blank" rel="noopener noreferrer">이메일 보안 서비스</a>에는 매일 평균 1,400억 건의 사이버 위협을 차단하는 Cloudflare의 전역 네트워크의 <a href="https://www.cloudflare.com/learning/security/glossary/threat-intelligence-feed" target="_blank" rel="noopener noreferrer">위협 인텔리전스</a>도 통합되어 있습니다.</p>
+	<p>이러한 신호와 기타 여러 가지 신호를 통해 악의적, BEC, 스푸핑, 스팸으로 분류되는 이메일은 Cloudflare의 대시보드를 통해 특정 이메일 분류에 대한 구체적인 이유(즉, 위협 지표 '카테고리')를 고객에게 알려줍니다.</p>
+	<p>아래 2022년 5월 2일부터 2023년 5월 2일 사이에 관찰된 상위 이메일 위협 지표의 스냅 샷이 나와 있습니다. Cloudflare에서는 위협 지표를 30여 개의 다양한 범주로 분류하였으며, 해당 기간 동안 가장 많이 관찰된 위협 지표에는 <b>사기성 링크</b>, <b>도메인 사용 기간</b>(신규 등록 도메인), <b>신원 속임수</b>, <b>자격 증명 수집</b>, <b>브랜드 사칭</b> 등이 포함됩니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JfZOoAKRayGTRMdjkwQOn/502f97161f6cdd8ba4614e299e5f6fc9/image4-6.png" alt="" class="kg-image" width="1999" height="1913" loading="lazy">
+
+	</figure>
+	<p>다음은 각 상위 범주에 대한 간략한 설명입니다(보고서 부록에서 더 자세히 설명합니다).</p>
+	<p><b>속임수 링크</b>를 클릭하면 사용자의 기본 웹 브라우저가 열리고 링크에서 참조하는 데이터가 렌더링되거나 애플리케이션(예: PDF)이 직접 열립니다. HTML에서 링크의 표시 텍스트(즉, 하이퍼텍스트)는 임의로 설정할 수 있으므로 공격자는 실제로는 악성 사이트임에도 불구하고 정상 사이트로 연결되는 것처럼 URL을 표시할 수 있습니다.</p>
+	<p><b>도메인 사용 기간</b>은 도메인에 할당된 전체 점수인 도메인 평판과 관련이 있습니다. &nbsp;예를 들어 도메인 등록 직후 새 이메일을 많이 보내는 도메인은 평판이 좋지 않아 점수가 낮아지는 경향이 있습니다.</p>
+	<p><b>신원 속임수</b>는 공격자 또는 악의적인 의도를 가진 사람이 자신이 다른 사람이라고 주장하는 이메일을 보낼 때 발생합니다. 그 메커니즘과 전술은 매우 다양합니다. 일부 전술에는 비슷하게 보이는 도메인을 등록하거나(도메인 가장이라고 함), 스푸핑하거나, 신뢰할 수 있는 도메인에서 보낸 것처럼 보이도록 이름 표시 트릭을 사용하는 것 등이 있습니다. 기타 변형으로는 도메인 프런팅 및 평판이 높은 웹 서비스 플랫폼을 사용하여 이메일을 보내는 것 등이 있습니다.</p>
+	<p><b>자격 증명 수집기</b>는 공격자가 사용자를 속여 로그인 자격 증명을 제공하도록 설정됩니다. 사용자가 모르는 사이에 자격 증명을 입력하면 결국 공격자가 계정에 액세스할 수 있게 됩니다.</p>
+	<p><b>브랜드 사칭</b>은 공격자가 인지 가능한 회사 또는 브랜드를 사칭하는 피싱 메시지를 보내는 신원 사칭의 한 형태입니다. 브랜드 사칭은 광범위한 기술을 사용하여 수행됩니다.</p>
+	<p>공격 맥락에서 열거나 실행될 때, 호출 행동(예: 대상을 링크 클릭으로 유도)을 포함하거나 공격자가 설정한 일련의 작업을 수행하는 이메일의 <b>첨부 파일</b> .</p>
+	<p>Cloudflare에서는 하나의 피싱 이메일에서 여러 위협 지표를 정기적으로 관찰합니다. 예를 들어, 실리콘 밸리 은행을 테마로 한 피싱 캠페인(<a href="https://blog.cloudflare.com/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">이</a> 2023년 3월 블로그에 자세히 설명되어 있음)은 <i>브랜드 사칭</i>, <i>속임수 링크</i>, <i>악성 첨부 파일</i>을 결합했습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uyngezMfEcC6gf784nyV6/225bc53f509017a05329698ccea01c74/image3-5.png" alt="" class="kg-image" width="637" height="697" loading="lazy">
+
+	</figure>
+	<p>공격자들은 DocuSign인 테마 템플릿에서 SVB 브랜드를 활용했습니다. 이메일에는 초기 링크와 4단계로 구성된 복잡한 리디렉션 체인이 들어있는 HTML 코드가 포함되어 있었습니다. 공격에 포함된 HTML 파일은 수신자를 재귀적 리디렉션 기능이 있는 WordPress 인스턴스로 보냈을 것입니다.</p>
+	<p>(링크에 대해 말하자면, 사기성 링크는 <b>가장 큰 위협 범주</b> 였으며, <b>Cloudflare 감지한 사례의 35.6%에서</b> 나타났습니다. 공격자는 이메일 채널의 링크만 사용하는 것이 아닙니다. SMS/문자, 채팅, 소셜 미디어 등 다른 앱을 악용하는 멀티 채널 피싱 위협의 증가도 보고서에 포함되어 있습니다).</p>
+	<div class="flex anchor relative">
+		<h3 id="trusted-and-most-impersonated-brands">신뢰할 수 있는(그리고 가장 많이 가장되는) 브랜드</h3>
+		<a href="https://blog.cloudflare.com/#trusted-and-most-impersonated-brands" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Silicon Valley Bank는 2022년 5월부터 2023년 5월까지 Cloudflare 고객을 대상으로 하는 이메일에서 가장된 <b>약 1,000개의 브랜드</b> 중 하나에 불과했습니다. (Cloudflare 직원들은 2022년 7월에 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a> 제품군으로 <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">차단한</a> 'Oktapus' 피싱 공격에서 브랜드 가장을 통해 직접 표적이 되었습니다.)</p>
+	<p>그러나 피싱 위협 보고서에서 자세히 설명한 바와 같이 이메일 공격자들은 20개의 유명 글로벌 브랜드 중 하나를 가장하는 경우가 가장 많았으며(51.7%), <b>Microsoft</b>가 1위를 차지한 것으로 관찰되었습니다.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">순위</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">가장한 브랜드</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">세계보건기구</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SpaceX</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">T-Mobile</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">YouTube</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterCard</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Notion.so</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Comcast</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Line Pay</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterClass</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Truist Financial Corp</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Louis Vuitton</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="example-of-a-microsoft-credential-harvesting-attempt">Microsoft 자격 증명 수집 시도의 예</h3>
+		<a href="https://blog.cloudflare.com/#example-of-a-microsoft-credential-harvesting-attempt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>올해 초, Cloudflare에서는 합법적이지만 손상된 사이트를 통해 자격 증명을 수집하기 위해 Microsoft 브랜드를 활용하는 피싱 캠페인을 감지하고 차단했습니다.</p>
+	<p>아래 이메일 예시에서는 이메일의 외관과는 달리 본문에 텍스트가 없습니다. 본문 전체는 하이퍼링크된 JPEG 이미지입니다. 따라서 수신자가 본문의 아무 곳이나 클릭하면(링크를 클릭할 의도가 없더라도) 사실상 링크를 클릭한 것이 됩니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7awKbnZvPkxboytqFmUaGl/7506202a224e5b3ee8736074d7d7e7d0/image1-16.png" alt="" class="kg-image" width="671" height="497" loading="lazy">
+
+	</figure>
+	<p>처음에는 이 이미지의 하이퍼링크가 정상적인 Baidu URL인 것처럼 보입니다 - hxxp://www.baidu[.]com/link?url=-yee3T9X9U41UHUa3VV6lx1j5eX2EoI6XpZqfDgDcf-2NYQ8RVpOn5OYkDTuk8Wg#&lt;수신자의 이메일 주소 base64가 암호화됨&gt;. &nbsp;그러나 이 링크를 클릭하면 공격 대상의 브라우저가 손상되어 자격 증명 수집기를 호스팅하는 데 사용된 사이트로 리디렉션됩니다.</p>
+	<p>공격자는 Microsoft Office 365 브랜딩을 사용했지만, 이미지 내에 브랜드 정보를 포함시켜 브랜드 감지 기술을 우회하려고 시도했습니다(즉, 브랜드를 식별하기 위해 검사할 수 있는 일반 텍스트 또는 HTML 텍스트가 없었음).</p>
+	<p>그러나 Cloudflare에서는 광학식 문자 인식(OCR)을 사용하여 이미지에서 'Office 365'와 'Microsoft'를 식별하는 데 성공했습니다. 또한 OCR을 사용하여 비밀번호와 관련된 의심스러운 계정 미끼를 사용했다는 것도 확인했습니다.</p>
+	<p>이 예시에서 공격자의 기법에는 다음 내용이 포함되어 있었습니다.</p>
+	<ul>
+		<li>
+			<p>JPEG 이미지만 포함(OCR 없이는 단어 감지 불가능)</p>
+		</li>
+		<li>
+			<p>해당 이미지에 하이퍼링크 삽입(본문 아무 곳이나 클릭하면 링크를 클릭하게 됨)</p>
+		</li>
+		<li>
+			<p>Baidu URL 하이퍼링크(평판 기반 URL 감지 기술을 우회하는 데 사용)</p>
+		</li>
+		<li>
+			<p>수신자의 브라우저를 인증 정보 수집 사이트로 리디렉션하는 Baidu URL(즉, 딥링크 검사를 수행할 수 없는 다른 이메일 보안 방어를 우회할 수 있음)</p>
+		</li>
+		<li>
+			<p>공격자가 손상시킨 합법적인 사이트에서 자격 증명 수집 도구를 호스팅(딥링크 검사를 사용하더라도 평판에 기반한 URL 감지 기법을 다시 우회하려고 시도)</p>
+		</li>
+	</ul>
+	<p>이 공격 벡터는 Baidu의 높은 평판과 신뢰도를 활용하여 자격 증명 수집 도구가 호스팅되는 실제 호스트/IP의 평판을 우회합니다.</p>
+	<p>이 특정 캠페인은 Microsoft 자격 증명을 수집하는 데 중점을 두었지만, 공격자들이 유사한 방법을 사용하여 브랜드 감지 기술을 우회하고 피해자를 속여 <a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank" rel="noopener noreferrer">맬웨어</a> 및 기타 <a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank" rel="noopener noreferrer">악의적인 페이로드</a>를 다운로드하도록 유도하는 것을 우리는 종종 목격합니다.</p>
+	<p>URL 리디렉션 기술은 피싱 캠페인에서 자주 볼 수 있지만, 위협 행위자는 <a href="http://baidu.com" target="_blank" rel="noopener noreferrer">baidu.com</a>, <a href="http://bing.com" target="_blank" rel="noopener noreferrer">bing.com</a>, <a href="http://goo.gl" target="_blank" rel="noopener noreferrer">goo.gl</a> 등의 합법적인 도메인을 점점 더 많이 악용하여 접근 방식을 계속 개선하고 있습니다. Cloudflare에서는 다양한 감지 기능을 통해 합법적인 도메인을 남용하는 것을 포함하여 모든 종류의 리디렉션 기술을 사용하여 URL에 대한 딥링크 검사를 수행할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-about-spf-dkim-and-dmarc">SPF, DKIM, DMARC는 어떨까요?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-spf-dkim-and-dmarc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이메일 인증(특히 <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank" rel="noopener noreferrer">SPF, DKIM, DMARC</a> 표준)은 종종 브랜드 가장에 대하여 유용한 것으로 언급되는데, 이들 표준은 서버 및 테넌트의 원본을 확인하고, 메시지 무결성을 보호하며, 정책을 시행하는 등의 기능을 제공합니다.</p>
+	<p>그러나 공격자는 여전히 인증을 우회하여 이메일 제품군을 속이는 방법을 찾을 수 있으며, 저희는 실제로 <b>원치 않는 메시지의 89%가 '통과'</b>한 SPF, DKIM 및/또는 DMARC 검사를 관찰한 바 있습니다.</p>
+	<p>이메일 인증의 몇 가지 제약은 다음과 같습니다.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-6v43 {
+			background-color: #ffffff;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">SPF</span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">(발신자 정책 프레임워크)</span></th>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">주요 이점:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버 원본 유효성 검사(즉, 메시지의 출처 확인)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">도메인 소유자를 대신하여 메시지를 보낼 수 있는 이메일 서버 및 서비스 정의</span></th>
+			</tr>
+			<tr>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">제한 사항:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">유사 이메일, 도메인, 표시 이름 </span><a href="https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing"><span style="font-weight:400;font-style:normal;background-color:transparent">스푸핑을</span></a>방지하지 못함<br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">'발신자' 헤더의 유효성을 검사하지 않음. '발신자' 봉투를 사용하여 발신 도메인 결정</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">이메일이 전달되거나 메일링 리스트에 전송된 메시지가 각 구독자에게 전송될 때는 유효성 검사가 비효율적임 </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPF 평가 프로세스는 특정 수의 </span><a href="https://www.cloudflare.com/learning/dns/what-is-dns"><span style="font-weight:400;font-style:normal;background-color:transparent">DNS</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">조회로 제한될 수 있음</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">URL이 포함된 '검증된' 이메일, </span><a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload"><span style="font-weight:400;font-style:normal;background-color:transparent">악의적인 페이로드</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">, 첨부 파일을 사용하는 공격으로부터 보호하지 않음</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">DKIM </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">(도메인 키 식별 메일)</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">주요 이점:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">테넌트 원본 유효성 검사 제공(즉, 도메인 소유자가 디지털 서명을 통해 이메일을 전송/인증했는지 확인)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버에서 서버로 전송되는 동안 이메일이 변경되지 않도록 보장. 메시지 무결성 보호</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">제한 사항:</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"><br>유사 이메일, 도메인, 표시 이름 스푸핑을 방지하지 못함</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://developers.cloudflare.com/magic-wan/reference/anti-replay-protection"><span style="font-weight:400;font-style:normal;background-color:transparent">재생 공격</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">으로부터 보호하지 못함(DKIM은 메시지의 특정 부분에만 서명합니다. 공격자는 DKIM을 통과한 이메일에 다른 헤더 필드를 추가한 다음 이를 전달할 수 있습니다.)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">URL, 악의적인 페이로드, 첨부 파일이 포함된 '유효성이 검사된' 이메일을 사용한 공격으로부터 보호하지 않습니다</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DMARC(도메인 기반 메시지 인증, 보고, 규제 준수)</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">주요 이점:</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPF 및 DKIM에 대한 정책 시행 및 보고 제공</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">이메일이 SPF 또는 DKIM 인증을 통과하지 못할 경우 따라야 할 정책 규정(예: 거부/삭제, 격리, 정책 없음/전송)</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">보고 기능을 통해 도메인 소유자는 누가 자신을 대신하여 이메일을 보내는지 확인할 수 있습니다(즉, 자신의 도메인 스푸핑 및 브랜드 남용을 방지할 수 있습니다)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">제한 사항: </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">다른 브랜드 도메인의 스푸핑을 방지하지 못함</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">유사 이메일, 도메인, 표시 이름 스푸핑을 방지하지 못함</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">도메인 소유자는 메일 DMARC 정책의 적용 비율을 지정함. 100% 미만의 애플리케이션 비율은 효과적이지 않음</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">임베딩된 URL, 악의적인 페이로드, 첨부 파일이 있는 '검증된' 이메일을 사용하는 공격으로부터 보호하지 못함</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="conclusions">결론</h3>
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>공격자들은 끊임없이 전술을 진화시키고 있습니다. 메시지가 받은 편지함에 도착하기 전, 도착하는 동안, 도착한 후에 다중 보호 계층을 구축해야 합니다. Cloudflare에서는 모든 유형의 이메일 통신(내부, 외부, '알려진' 비즈니스 파트너가 보낸 것으로 보이는지 여부와 관계없이)을 본질적으로 '신뢰'하지 않습니다.</p>
+	<p>마찬가지로, Cloudflare에서는 무엇보다도 모든 조직에서 '절대 신뢰하지 말고 항상 확인하라'는 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 보안 모델</a>을 네트워크와 애플리케이션 뿐만 아니라 이메일 받은 편지함까지 확장할 것을 권장합니다.</p>
+	<p>Zero Trust 접근 방식으로 <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">이메일 보안</a>을 유지하는 것 외에도 저희는 다음 사항을 권장합니다.</p>
+	<ul>
+		<li>
+			<p><b>다중 피싱 방지 제어를 통해 클라우드 이메일 강화.</b> <a href="https://www.forrester.com/blogs/announcing-the-forrester-wave-enterprise-email-security-q2-2023" target="_blank" rel="noopener noreferrer">이</a> Forrester 블로그(6월 작성)에서 언급했듯이, <i>“여러 장치에서 메시징, 협업, 파일 공유, 엔터프라이즈 서비스형 소프트웨어 애플리케이션을 사용하면 직원 생산성과 경험이 향상됩니다. 이러한 환경의 대부분은 ‘폐쇄적’이라고 간주되지만, 공급망 파트너의 자격 증명에 대한 피싱이 성공하면 조직이 데이터 손실, 자격 증명 도용, 사기, 랜섬웨어 공격에 노출될 수 있습니다. 이메일 받은 편지함용으로 개발된 보호 기능은 이러한 환경과 직원의 일상적인 워크플로우 전체로 확장되어야 합니다.”</i></p>
+		</li>
+		<li>
+			<p><b>피싱을 차단하는 다단계 인증(</b><a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><b>MFA</b></a><b>) 채택.</b> 모든 MFA가 동일한 보안 계층을 제공하는 것은 아니지만, 하드웨어 보안 키는 <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">성공적인 피싱 공격을 방지</a>하기 위한 가장 안전한 인증 방법 중 하나입니다. 하드웨어 보안 키는 공격자가 사용자 이름과 비밀번호에 액세스하더라도 네트워크를 보호할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>사람이 실수하기 어려운 환경을 만드세요.</b> &nbsp;직원과 팀이 이미 사용하고 있는 도구를 더 안전하게 만들고 실수를 방지하도록 보호하여 기대를 충족하세요. 예를 들어 원격 브라우저 격리(<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">RBI</a>) 기술을 <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank" rel="noopener noreferrer">클라우드 이메일 보안</a>과 통합하면 의심스러운 이메일 링크를 자동으로 격리하여 사용자가 잠재적인 악의적 웹 콘텐츠에 노출되는 것을 방지할 수 있습니다. 또한 신뢰할 수 없는 웹 사이트에서 키보드 입력을 비활성화하여 사용자가 양식 작성 또는 자격 증명 수집 중에 실수로 중요한 정보를 입력하는 것을 방지할 수 있습니다. 이는 사용자가 워크플로우를 방해하지 않고 링크를 안전하게 열 수 있도록 효과적으로 허용하므로 다중 채널 피싱 공격에 대한 방어 계층이 제공됩니다.</p>
+		</li>
+	</ul>
+	<p>전체 분석 결과에 관심이 있는 경우 <a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">여기</a>에서 2023년 피싱 위협 보고서와 성공적인 피싱 공격을 방지하기 위한 권장 사항을 다운로드할 수 있습니다. Cloudflare의 이메일 보안이 실제로 작동하는지 확인하고 싶다면 <a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank" rel="noopener noreferrer">여기</a>에서 무료 피싱 위험 평가를 요청할 수 있습니다.</p>
+</div>

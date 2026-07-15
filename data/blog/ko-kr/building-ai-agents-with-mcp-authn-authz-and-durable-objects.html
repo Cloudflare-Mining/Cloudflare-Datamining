@@ -1,0 +1,369 @@
+<div class="mb2 gray5">9분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects">English</a>, <a href="https://blog.cloudflare.com/zh-tw/building-ai-agents-with-mcp-authn-authz-and-durable-objects">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Français</a>, <a href="https://blog.cloudflare.com/de-de/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/building-ai-agents-with-mcp-authn-authz-and-durable-objects">日本語</a>, <a href="https://blog.cloudflare.com/es-la/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/nl-nl/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/building-ai-agents-with-mcp-authn-authz-and-durable-objects">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TwoHmJacmESFWbUsT8gG3/5dcc9efc89b275ccd1ec887eed06245f/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare가 에이전트 중심의 미래를 <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>강하게 확신</u></a>하고 있다는 것은 비밀이 아닙니다. 우리는 AI가 인간과 단순히 협업하는 수준을 넘어, 실제 업무를 완전히 위임할 수 있는 시대를 기대하고 있습니다.&nbsp;</p>
+	<p>Cloudflare는 개발자가 에이전트를 더 쉽게 구축할 수 있도록 Agents SDK를 <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>처음 발표한 지</u></a> 그리 오래되지 않았지만, 에이전트 중심의 미래를 실현하기 위해서는 목표를 향한 지속적인 기능 개선과 배포가 반드시 필요합니다. 오늘 Cloudflare는 에이전트 개발을 가속화하기 위해 다음과 같은 몇 가지 사항을 발표합니다.</p>
+	<ul>
+		<li>
+			<p><b>새로운 Agents SDK 기능:</b> 기본 전송 및 인증 기능이 내장된 원격 MCP 클라이언트를 구축하여, AI 에이전트가 외부 서비스와 연결할 수 있도록 지원합니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u><b>MCP용 사용자 인증 공급자 직접 연결(BYO)</b></u></a><b>:</b> <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a>, <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>와의 통합으로 원격 MCP 서버에 인증 및 권한 부여 기능을 추가합니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u><b>McpAgent용 최대 절전 모드</b></u></a><b>:</b> 비활성 상태일 경우 상태 저장형 원격 MCP 서버를 자동으로 절전 모드로 전환하고, 필요시 다시 활성화합니다. 이렇게 하면 장기 세션에 대한 연결을 유지하면서도 유휴 시간에 대한 비용을 지불하지 않아도 됩니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u><b>Durable Objects 무료 등급</b></u></a><b>:</b> Cloudflare는 Durable Objects를 에이전트 구축의 핵심 구성 요소로 간주하고 있으며, Agents SDK를 사용하는 모든 사용자에게 제공되어야 한다고 생각합니다. 기존에는 Durable Objects가 유료 요금제에서만 사용할 수 있었지만, 오늘 Cloudflare는 이를 무료 등급에 포함하게 되어 매우 기쁩니다.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution"><u><b>Workflows 정식 출시(GA)</b></u></a><b>:</b> 에이전트에서 프로덕션 준비가 완료된 장기 실행형 다단계 작업을 배포할 수 있도록 지원합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare"><u><b>AutoRAG</b></u></a><b>:</b> 몇 번의 클릭만으로 컨텍스트 인식 AI를 애플리케이션에 통합할 수 있도록 지원합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u><b>agents.cloudflare.com</b></u></a><b>:</b> 에이전트와 관련된 모든 정보를 확인할 수 있는 Cloudflare의 신규 랜딩 페이지입니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="new-mcp-capabilities-in-agents-sdk">Agents SDK의 새로운 MCP 기능</h2>
+		<a href="https://blog.cloudflare.com/#new-mcp-capabilities-in-agents-sdk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 AI 에이전트는 MCP(<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>모델 컨텍스트 프로토콜</u></a>)를 통해 외부 서비스에 연결하고 상호작용할 수 있습니다. Cloudflare는 Agents SDK를 업데이트하여&nbsp;인증 흐름, 도구 검색, 연결 관리 등 모든 구성 요소가&nbsp;내장된 원격 MCP 클라이언트를 AI 에이전트에 구축할 수 있도록 지원합니다.</p>
+	<p>이를 통해 다음과 같은 기능을 갖춘 에이전트를 구축할 수 있습니다.</p>
+	<ol>
+		<li>
+			<p>최종 사용자에게 제3자 서비스(MCP 서버)에 대한 액세스 권한을 부여하도록 요청합니다.</p>
+		</li>
+		<li>
+			<p>이러한 외부 서비스의 도구를 활용하여 최종 사용자를 대신해 작업을 수행합니다.</p>
+		</li>
+		<li>
+			<p>Workflows, 예약된 작업, 또는 에이전트의 어느 부분에서든 MCP 서버를 호출합니다.</p>
+		</li>
+		<li>
+			<p>여러 MCP 서버에 연결하고 제3자 서비스가 제공하는 새로운 도구나 기능을 자동으로 검색합니다.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/X3RvQHewsVwJhq3TVOD0w/bbc5690d2d687f7a390f91474b3eb385/1.png" alt="" class="kg-image" width="1999" height="1309" loading="lazy">
+	</figure>
+	<p>MCP(모델 컨텍스트 프로토콜)는 <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>Anthropic에서&nbsp;처음 소개</u></a>된 이후,&nbsp;AI 에이전트가 외부 서비스와 상호작용하는 표준 방식으로 빠르게 자리 잡았습니다. OpenAI, Cursor, Copilot 등의 공급자도 이를 채택하고 있습니다.</p>
+	<p>Cloudflare는 <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>최근</u></a> 자사에서 <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>원격 MCP 서버를 구축</u></a>할 수 있도록 지원한다고 발표했으며, MCP의 원격 측면인 전송 및 인증/권한 부여를 자동으로 처리할 수 있도록 Agents SDK에 <code>McpAgent</code> 클래스를 추가했습니다. 이제 우리는 MCP 클라이언트 역할을 하는 에이전트에도 동일한 기능을 확장하게 되어 기쁩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nxl3bIRTbfRzpdLhHF720/41bea06c9e48b7d356d11a6f254b76ef/2.png" alt="" class="kg-image" width="1810" height="596" loading="lazy">
+	</figure>
+	<p>직접 사용해보고 싶으신가요? 아래 버튼을 눌러 원격 MCP 서버에 연결할 수 있는 완전한 원격 MCP 클라이언트를 배포해 보세요.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included">이제 AI 에이전트는 전송 및 인증 기능이 포함된 원격 MCP 클라이언트 역할을 할 수 있습니다</h2>
+		<a href="https://blog.cloudflare.com/#ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 에이전트는 내장된 지식 범위를 넘어서는 도구, 데이터, 기능에 접근하기 위해 외부 서비스에 연결해야 합니다. 즉, AI 에이전트는 이러한 도구와 기능을 호스팅하는 원격 MCP 서버에 연결할 수 있도록 원격 MCP 클라이언트 역할을 할 수 있어야 합니다.&nbsp;</p>
+	<p>Cloudflare는 Agents SDK에 새로운 클래스인 <code>MCPClientManager</code>를 추가하여, AI 에이전트가 MCP를 통해 외부 서비스에 호출할 수 있도록 필요한 모든 도구를 제공합니다. <code>MCPClientManager</code> 클래스는 다음을 자동으로 처리합니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>전송: </b>SSE와 HTTP를 통해 원격 MCP 서버에 연결하며, 곧 <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a>도 지원할 예정입니다.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>연결 관리: </b>클라이언트는 모든 연결 상태를 추적하고, 연결이 끊기면 자동으로 다시 연결합니다.</p>
+		</li>
+		<li>
+			<p><b>기능 검색: </b>MCP 서버가 제공하는 모든 기능, 도구, 리소스, 프롬프트를 자동으로 탐색합니다.</p>
+		</li>
+		<li>
+			<p><b>실시간 업데이트</b>: 서버의 도구, 리소스, 프롬프트가 변경되면 클라이언트 자동으로 알림을 수신하고 내부 상태를 업데이트합니다.</p>
+		</li>
+		<li>
+			<p><b>네임스페이싱: </b>여러 MCP 서버에 연결할 경우, 모든 도구와 리소스에 자동으로 네임스페이스를 적용하여 충돌을 방지합니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients">MCP 클라이언트에 내장된 인증 확인 기능으로 에이전트 도구 액세스 권한 부여</h3>
+		<a href="https://blog.cloudflare.com/#granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare는 전체 OAuth 인증 흐름을 Agents SDK에 직접 통합하여, AI 에이전트가 인증 흐름을 처음부터 구축하지 않고도 원격 MCP 서버에 안전하게 연결하고 인증할 수 있도록 지원합니다.</p>
+	<p>이를 통해 사용자는 에이전트가 자신을 대신해 안전하게 로그인하고 작동할 수 있도록 명시적으로 접근 권한을 부여할 수 있으며, 에이전트는 이를 바탕으로 다음 작업을 자동으로 수행합니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>OAuth 2.1 프로토콜을 지원합니다.</p>
+		</li>
+		<li>
+			<p>사용자를 서비스의 로그인 페이지로 리디렉션합니다.</p>
+		</li>
+		<li>
+			<p>코드 인증 질문을 생성하고 인증 코드를 액세스 토큰으로 교환합니다.</p>
+		</li>
+		<li>
+			<p>액세스 토큰을 사용하여 MCP 서버에 인증된 요청을 전송합니다.</p>
+		</li>
+	</ul>
+	<p>다음은 클라이언트 관리자를 초기화하고, 서버를 추가하며, 인증 콜백을 처리하여 MCP 서버에 안전하게 연결할 수 있는 에이전트의 예시입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // initialize MCPClientManager which manages multiple MCP clients with optional auth
+  this.mcp = new MCPClientManager("my-agent", "1.0.0", {
+    baseCallbackUri: `${serverHost}/agents/${agentNamespace}/${this.name}/callback`,
+    storage: this.ctx.storage,
+  });
+}
+
+async addMcpServer(url: string): Promise&lt;string&gt; {
+  // Add one MCP client to our MCPClientManager
+  const { id, authUrl } = await this.mcp.connect(url);
+  // Return authUrl to redirect the user to if the user is unauthorized
+  return authUrl
+}
+
+async onRequest(req: Request): Promise&lt;void&gt; {
+  // handle the auth callback after being finishing the MCP server auth flow
+  if (this.mcp.isCallbackRequest(req)) {
+    await this.mcp.handleCallbackRequest(req);
+    return new Response("Authorized")
+  }
+  
+  // ...
+}</code></pre>
+	<p>여러 MCP 서버에 연결하고 제공하는 기능 알아보기</p>
+	<p>Agents SDK를 사용하면 MCP 클라이언트를 동시에 여러 MCP 서버에 연결할 수 있습니다. 이는 에이전트가 다양한 서비스 공급자가 제공하는 도구 및 리소스에 액세스하고 상호작용하도록 할 때 특히 유용합니다.&nbsp;</p>
+	<p><code>MCPClientManager</code> 클래스는 <code>mcpConnections</code> 개체를 통해 여러 MCP 서버와의 연결을 유지합니다. 이 개체는 고유한 서버 이름을 각각의 <code>MCPClientConnection</code> 인스턴스에 매핑하는 사전(dictionary)입니다.&nbsp;</p>
+	<p><code>connect()</code>를 사용하여 신규 서버 연결을 등록하면, 관리자는 다음을 수행합니다.&nbsp;</p>
+	<ol>
+		<li>
+			<p>서버별 인증 정보를 바탕으로 새로운 연결 인스턴스를 생성합니다.</p>
+		</li>
+		<li>
+			<p>연결을 초기화하고 서버 기능 알림을 등록합니다.</p>
+		</li>
+	</ol>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // Connect to an image generation MCP server
+  await this.mcp.connect("https://image-gen.example.com/mcp/sse");
+  
+  // Connect to a code analysis MCP server
+  await this.mcp.connect("https://code-analysis.example.org/sse");
+  
+  // Now we can access tools with proper namespacing
+  const allTools = this.mcp.listTools();
+  console.log(`Total tools available: ${allTools.length}`);
+}</code></pre>
+	<p>각 연결은 자체 인증 컨텍스트를 관리하므로 하나의 AI 에이전트가 동시에 여러 서버에 인증할 수 있도록 지원합니다. 또한 <code>MCPClientManager</code>는 서로 다른 서버에서 동일한 이름을 가진 도구 간의 충돌을 방지하기 위해 자동으로 네임스페이싱을 처리합니다.&nbsp;</p>
+	<p>예를 들어, “Image MCP Server”와 “Code MCP Server”가 모두 “analyze”라는 도구를 가지고 있다면, 두 도구는 각각 독립적으로 호출할 수 있어 이름 충돌이 발생하지 않습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server">Stytch, Auth0, WorkOS를 사용해 MCP 서버에 인증 및 권한 부여 기능 추가&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP를 사용하면 사용자는 더 이상 대시보드나 API를 진입점으로 사용하지 않고 애플리케이션과 새로운 방식으로 상호작용할 수 있습니다. 이제 서비스는 사용자를 대신해 동작하는 AI 에이전트를 통해 접근하게 됩니다. 사용자와 에이전트가 귀사의 서비스에 안전하게 연결할 수 있도록 하려면, 기존 인증 및 권한 부여 시스템을 확장하여 이러한 에이전트 기반 상호작용을 지원해야 합니다. 즉, MCP 서버에 대해 로그인 흐름, 권한 범위, 동의 양식, 액세스 시행 기능을 구현해야 합니다.&nbsp;</p>
+	<p>Cloudflare는 MCP 서버를 구축하는 누구나 인증 및 권한 부여를 더 쉽게 구성할 수 있도록 <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a>, <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>와의 통합을 추가할 예정입니다.&nbsp;</p>
+	<p>Stytch, Auth0, WorkOS와 통합된 Cloudflare MCP 서버 기능을 활용하면 다음과 같은 이점을 누릴 수 있습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>이메일, 소셜 로그인, SSO(싱글 사인온), MFA(다단계 인증)를 통해 MCP 서버 사용자 인증을 지원합니다.</p>
+		</li>
+		<li>
+			<p>MCP 도구에 직접 매핑되는 범위와 권한을 정의합니다.</p>
+		</li>
+		<li>
+			<p>요청된 권한에 대응하는 동의 페이지를 사용자에게 표시합니다.</p>
+		</li>
+	</ul>
+	<p>에이전트가 허용된 도구만 호출할 수 있도록 권한을 시행합니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oYchjMwoMxwYxsqq4PObk/381937e89c249b87c1930295b407faf6/3.png" alt="" class="kg-image" width="1226" height="604" loading="lazy">
+	</figure>
+	<p>아래 “Cloudflare에 배포” 버튼을 사용하여 Cloudflare 계정에 데모 MCP 서버를 배포하고 예시를 시작해 보세요. 이 데모에는 사전 구성된 인증 엔드포인트, 동의 흐름, 권한 모델이 포함되어 있으며, 필요에 맞게 조정할 수 있습니다. 데모 MCP 서버를 배포한 후에는 브라우저 기반 원격 MCP 클라이언트인 <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI 플레이그라운드</u></a>를 사용하여 엔드투엔드 사용자 흐름을 테스트할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="stytch">Stytch</h3>
+		<a href="https://blog.cloudflare.com/#stytch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자가 이메일, Google 로그인 또는 엔터프라이즈 SSO를 통해 로그인할 수 있는 Stytch 기반 원격 MCP 서버를 <a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>사용</u></a>하면 AI 에이전트가 사용자를 대신하여 회사의 OKR를 확인하고 관리하도록 권한을 부여할 수 있습니다. Stytch는 사용자의 조직 내 역할과 권한에 따라 AI 에이전트에게 부여되는 권한 범위를 제한합니다. MPC 클라이언트에 권한을 부여하는 동안 각 사용자에게 에이전트가 요청하는 특정 권한이 자세히 설명된 동의 페이지가 표시되며, 역할에 따라 부여할 수 있는 권한으로 제한됩니다.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<p>더 많은 소비자 중심 사용 사례의 경우, Stytch를 활용한 인증 및 MCP 클라이언트 권한 부여 기능이 적용된 할 일을 나타내는 애플리케이션용 원격 MCP 서버를 배포할 수 있습니다. 사용자는 이메일로 로그인한 후 자신의 계정에 연결된 할 일 목록에 즉시 접근할 수 있으며, AI 어시스턴트가 작업 관리를 지원할 수 있도록 어시스턴트에 접근 권한을 부여할 수 있습니다.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<p>사용 사례와 관계없이, Stytch는 애플리케이션을 OAuth 2.0 ID 공급자로 쉽게 전환하고, 원격 MCP 서버를 신뢰 당사자로 설정하여 애플리케이션으로부터 ID와 권한을 간편하게 상속받을 수 있도록 지원합니다. Stytch가 원격 MCP 서버에 대한 안전한 인증을 실현한 방법을 자세히 알아보려면, Stytch의 <a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>블로그 게시물</u></a>을 확인하세요.</p>
+	<blockquote>
+		<p><i>“AI 에이전트의 잠재력을 실현하는 데 있어 가장 큰 과제 중 하나는, 이러한 에이전트가 다른 플랫폼의 데이터에 안전하고 안정적으로 접근할 수 있도록 하는 것입니다. Stytch Connected Apps는 이러한 에이전트 중심의 사용 사례를 위해 특별히 설계되어, 애플리케이션을 OAuth 2.0 ID 공급자로 간편히 전환하고 원격 MCP 서버에 안전하게 액세스할 수 있도록 지원합니다. Cloudflare Workers와 Stytch Connected Apps를 결합함으로써, Cloudflare는 개발자가 AI 개념 증명에서 보안이 적용된 실제 배포 환경으로 빠르게 전환할 수 있도록 장벽을 제거하고 있습니다.” — Julianna Lamb, Stytch 공동 창립자 겸 CTO.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="auth0">Auth0</h3>
+		<a href="https://blog.cloudflare.com/#auth0" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자가 Auth0를 사용하여 이메일, 소셜 로그인 또는 엔터프라이즈 SSO를 통해 인증하고, AI 에이전트를 통해 할 일 목록 및 개인 데이터를 다룰 수 있도록 하는 원격 MCP 서버를 쉽게 시작할 수 있습니다. MCP 서버는 사용자를 대신하여 API 엔드포인트에 안전하게 연결되며, 사용자의 동의를 받으면 에이전트가 접근할 수 있는 리소스를 명확히 보여줍니다. 이 구현에서는 장시간 상호작용 중에도 액세스 토큰이 자동으로 갱신됩니다.</p>
+	<p>설정 절차를 시작하려면 먼저 보호된 API 엔드포인트를 배포합니다. </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<p>그런 다음, Auth0를 통해 인증을 처리하고 AI 에이전트를 API 엔드포인트에 안전하게 연결하는 MCP 서버를 배포합니다.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<blockquote>
+		<p><i>“Cloudflare는 AI Gateway, Vectorize, Workers AI와 같은 도구로 AI 제품을 구축하는 개발자들을 계속해서 지원하고 있습니다. 최근 추가된 원격 MCP 서버 기능은 Cloudflare Workers와 Durable Objects가 서버리스 AI 배포를 위한 선도적인 플랫폼이라는 사실을 다시 한번 입증합니다. Auth0가 이러한 최첨단 워크로드의 인증 및 권한 부여 요구를 해결하는 데 도움이 될 수 있어 매우 자랑스럽습니다." — Sandrino Di Mattia, Auth0 제품 아키텍처 선임 이사.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="workos">WorkOS</h3>
+		<a href="https://blog.cloudflare.com/#workos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WorkOS의 AuthKit을 활용하여 사용자를 인증하고 AI 에이전트에 부여된 권한을 관리하는 원격 MCP 서버로 시작해 보세요. 이 예시에서 MCP 서버는 사용자 역할과 접근 권한에 따라 도구를 동적으로 노출합니다. 인증된 모든 사용자는 <code>추가</code> 도구에 액세스할 수 있지만, WorkOS에서 <code>image_generation</code> 권한이 할당된 사용자만 AI 에이전트에 이미지 생성 도구에 대한 접근 권한을 부여할 수 있습니다. 이는 MCP 서버가 인증된 사용자의 역할과 권한에 따라 AI 에이전트에 조건부로 기능을 노출할 수 있음을 보여줍니다.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<blockquote>
+		<p><i>“MCP는 AI 에이전트 통합의 표준으로 자리매김했지만, 기업 도입에는 여전히 인증 및 권한 부여가 주요한 걸림돌입니다. WorkOS Connect는 어떤 애플리케이션이든 OAuth 2.0 권한 부여 서버로 전환시켜, 에이전트와 MCP 클라이언트가 세분화된 권한 인증 및 리소스 접근을 위해 토큰을 안전하게 획득할 수 있도록 지원합니다. Cloudflare Workers를 통해 개발자는 내장된 OAuth와 엔터프라이즈급의 액세스 제어 기능을 갖춘 원격 MCP 서버를 신속하게 배포할 수 있습니다. WorkOS와 Cloudflare의 협업으로 안전하고 기업에 적합한 에이전트 인프라를 쉽게 구축할 수 있도록 지원합니다.” — Michael Grinich, WorkOS CEO.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use">최대 절전 모드 가능한 WebSocket: 사용하지 않을 때 AI 에이전트를 절전 모드로 전환</h2>
+		<a href="https://blog.cloudflare.com/#hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘부터 McpAgent 클래스에 새로운 개선 사항이 적용됩니다. MCP 서버가 요청을 수신하지 않을 때 절전 모드로 전환했다가 필요시 즉시 재개할 수 있도록 하는 <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>WebSocket Hibernation API</u></a>를 지원합니다. 즉, 이제 에이전트가 실제로 작동할 때만 컴퓨팅 비용을 지불하면 된다는 의미입니다.</p>
+	<p>Cloudflare는 <a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>McpAgent 클래스</u></a>를 <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>최근 도입</u></a>했습니다. 이 클래스는 개발자가 Cloudflare에서 Durable Objects를 사용하여 각 클라이언트 세션에 대한 상태 저장 연결을 유지하는 원격 MCP 서버를 구축할 수 있도록 지원합니다. Cloudflare는 처음부터 McpAgent를 상태 저장 기반으로 설계하여 개발자가 컨텍스트, 사용자 선호도, 대화 기록을 기억할 수 있는 서버를 구축할 수 있도록 지원했습니다. 하지만 클라이언트 연결을 유지한다는 것은 세션이 사용되지 않을 때도 오랫동안 활성 상태로 남아 있을 수 있음을 의미합니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="mcp-agents-are-hibernate-able-by-default">기본적으로 최대 절전 모드가 가능한 MCP 에이전트</h3>
+		<a href="https://blog.cloudflare.com/#mcp-agents-are-hibernate-able-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>최대 절전 모드를 활용하기 위해 코드를 변경할 필요가 없습니다. 최신 SDK 업데이트를 통해 모든 McpAgent 인스턴스에는 자동으로 최대 절전 모드 지원이 포함되므로, 비활성 기간 동안 상태 저장 MCP 서버를 최대 절전 모드로 전환하고 필요시 상태를 유지한 채로 다시 활성화할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">작동 방식</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>서버 전송 이벤트 엔드포인트인 /sse에 요청이 들어오면, Worker는 세션에 적합한 Durable Object에 웹소켓 연결을 초기화하고 클라이언트에 SSE 스트림을 반환합니다. 모든 응답은 이 스트림을 통해 전달됩니다.</p>
+	<p>이 구현은 Durable Objects 내의 WebSocket Hibernation API를 활용합니다. 일정 기간 비활성 상태가 감지되면 WebSocket 연결을 유지한 채 Durable Object를 메모리에서 제거할 수 있습니다. 이후 WebSocket이 메시지를 수신하면 런타임은 Durable Object를 다시 생성하고 해당 메시지를 적절한 처리기로 전달합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="durable-objects-on-free-tier">무료 등급에서 Durable Objects 제공</h2>
+		<a href="https://blog.cloudflare.com/#durable-objects-on-free-tier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서 AI 에이전트를 구축할 수 있도록, <a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>를 무료 등급에서 제공하여 초기 비용 없이 시작할 수 있도록 지원합니다. Agents SDK를 사용하면, AI 에이전트는 Durable Objects 위에서 실행되는 Cloudflare에 배포됩니다.</p>
+	<p>Durable Objects는 영구 스토리지와 함께 컴퓨팅 기능을 제공하며, Workers와 결합하면 상태 저장 서버리스 애플리케이션을 구현할 수 있습니다. 각 Durable Object는 클라이언트와의 실시간 상호작용을 처리하고, LLM과 같은 외부 서비스에 요청을 전송하며, <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>대기 시간이 0인 SQLite 스토리지</u></a>에서 상태 지속성을 통해 에이전트의 "메모리"를 생성하는 등 AI 에이전트 필수 작업을 수행하는 상태 저장 기반의 코디네이터입니다. Durable Objects는 수백만 개의 에이전트로 손쉽게 확장 가능하며, 각 에이전트는 사용자의 가까운 위치에서 생성되어 빠른 성능을 보장하고, 모두 Cloudflare에서 관리됩니다.&nbsp;</p>
+	<p>Durable Objects의 대기 시간이 없는 SQLite 스토리지는 2024년 9월 Birthday Week에 <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>공개 베타 버전으로 처음 도입</u></a>되었습니다. 그 이후로 Cloudflare는 기존 Durable Objects의 키-값 스토리지에 비해 부족했던 기능과 안정성 향상에 집중해 왔습니다. 이제 SQLite 스토리지를 정식 출시하게 되어 기쁘게 생각합니다. Durable Object당 10GB의 SQLite 데이터베이스를 제공하며, 모든 신규 Durable Object 클래스에 SQLite 스토리지를 사용하는 것을 권장해 드립니다. 무료 등급에서의 Durable Objects는 SQLite 스토리지만 이용할 수 있습니다.</p>
+	<p>Cloudflare의 무료 등급을 이용하면 실제 애플리케이션을 구축할 수 있습니다. Free 요금제에서 모든 Worker 요청은 Durable Object를 호출할 수 있습니다. <a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>사용량 기반 가격 정책</u></a>에서 Durable Objects는 컴퓨팅 및 스토리지 사용에 대해 다음 무료 등급 한도를 적용합니다.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.34%;" width="233">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers Free</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers Paid</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">컴퓨팅: 요청</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100,000 / 일</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100만 건 / 월 포함</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.15 / 백만 건</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">컴퓨팅: 지속 기간</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">13,000 GB-초 / 일</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">400,000 GB-초 / 월&nbsp;포함&nbsp;</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $12.50 / 백만 GB-초</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">스토리지: 읽은 행 수</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">500만 / 일</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">250억 행 / 월 포함</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.001 / 백만 행&nbsp;</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">스토리지: 작성된 행 수</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100,000 / 일</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5천만 행 / 월 포함</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $1.00 / 백만 행</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">스토리지: 저장된 SQL 데이터</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5GB(총)</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5GB-월 포함</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ $0.20 / GB-월</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="find-us-at-agents-cloudflare-com">agents.cloudflare.com에서 더 많은 정보를 확인하세요</h3>
+		<a href="https://blog.cloudflare.com/#find-us-at-agents-cloudflare-com" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare는 알아야 할 정보가 많다는 점을 이해합니다. 하지만 걱정하지 마세요. 에이전트를 처음 접하든, Cloudflare가 에이전트 구축에 어떤 도움이 될 수 있는지 알아보고 싶은 분이든, 오늘 새롭게 오픈한 사이트<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>(agents.cloudflare.com)</u></a>가 첫걸음을 도와드리겠습니다.&nbsp;</p>
+	<p>무엇을 구축하고 계신지 알려주세요!</p>
+</div>

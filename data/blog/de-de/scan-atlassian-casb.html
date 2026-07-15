@@ -1,0 +1,71 @@
+<div class="mb2 gray5">Lesezeit: 2&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/scan-atlassian-casb">English</a>, <a href="https://blog.cloudflare.com/fr-fr/scan-atlassian-casb">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/scan-atlassian-casb">日本語</a>, <a href="https://blog.cloudflare.com/es-es/scan-atlassian-casb">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/scan-atlassian-casb">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pSVK0vOVS5KCNFrMz7WqC/e05070325f5735734828e614ee16736e/scan-atlassian-casb.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Im Rahmen der Security Week gibt es zwei neue Integrationen für Cloudflare CASB, eine für Atlassian Confluence und eine für Atlassian Jira.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bqsv7cI4zU4QNT0rvzPpD/4bdc86509688d9164ef464d30dce03eb/Secure-Atlassian-with-CASB---Proactively-scan-Jira-and-Confluence-for-misconfig-and-data-leaks.png" alt="Scan and secure Atlassian with Cloudflare CASB" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Wir freuen uns, die Unterstützung für diese beiden neuen SaaS-Anwendungen (zusätzlich zu <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank" rel="noopener noreferrer">den bereits von uns unterstützten SaaS-Apps</a>) einzuführen, da wir gesehen haben, dass Unternehmen auf der ganzen Welt sie für ein optimiertes, durchgängiges Projektmanagement einsetzen.</p>
+	<p>Lassen Sie uns einen Blick darauf werfen, was Cloudflare Zero Trust-Kunden von diesen neuen Integrationen erwarten können.</p>
+	<div class="flex anchor relative">
+		<h3 id="casb-security-for-your-saas-apps">CASB: Sicherheit für Ihre SaaS-Apps</h3>
+		<a href="https://blog.cloudflare.com/#casb-security-for-your-saas-apps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zunächst ein kurzer Rückblick. CASB (Cloud Access Security Broker) ist eines der neueren Angebote von Cloudflare, das im September letzten Jahres auf den Markt kam, um Sicherheitsverantwortlichen – CISOs und Security Engineers – klare Transparenz und administrative Kontrolle über die Sicherheit ihrer SaaS-Anwendungen zu bieten.</p>
+	<p>Ob Google Workspace, Microsoft 365, Slack, Salesforce, Box, GitHub oder Atlassian (wow!), CASB kann diese Anwendungen ganz einfach verbinden und auf kritische Sicherheitsprobleme überprüfen. Dabei erhalten die Benutzer eine ausführliche Liste der identifizierten Probleme, die für die Vorauswahl sortiert ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="scan-confluence-with-cloudflare-casb">Confluence mit Cloudflare CASB scannen</h3>
+		<a href="https://blog.cloudflare.com/#scan-confluence-with-cloudflare-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16BcZ05g2b4YzwqMSK5LaU/343144f5e4abad2609340a3b244e6e0d/CASB_Atlassian_1.png" alt="" class="kg-image" width="1233" height="1117" loading="lazy">
+
+	</figure>
+	<p>Im Laufe der Zeit hat sich Atlassian Confluence zur bevorzugten Kollaborationsplattform für Teams entwickelt, um Inhalte wie Dokumente, Notizen und Besprechungsprotokolle zu erstellen, zu organisieren und gemeinsam zu nutzen. Die Flexibilität von Confluence und seine weitreichende Kompatibilität mit Anwendungen von Drittanbietern können jedoch ein Sicherheitsrisiko darstellen, wenn sie nicht richtig konfiguriert und überwacht werden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FPOXC7mEDMcwbqTVyad6S/b7e77abfe419e4afe163eaf2832b09d8/CASB_Atlassian_2.png" alt="" class="kg-image" width="1233" height="1117" loading="lazy">
+
+	</figure>
+	<p>Mit dieser neuen Integration können IT- und Sicherheitsteams nach Atlassian- und Confluence-spezifischen Sicherheitsproblemen suchen, durch die vertrauliche Unternehmensdaten gefährdet sein könnten. CASB-Kunden, die Confluence Cloud verwenden, können davon ausgehen, dass Probleme wie öffentlich freigegebene Inhalte, unbefugter Zugriff und andere Schwachstellen, die von bösartigen Akteuren ausgenutzt werden könnten, erkannt werden.</p>
+	<p>Durch die Bereitstellung dieser zusätzlichen SaaS-Sicherheitsebene kann Cloudflare CASB Unternehmen dabei helfen, ihre vertraulichen Daten besser zu schützen und gleichzeitig die kollaborativen Möglichkeiten von Confluence zu nutzen.</p>
+	<div class="flex anchor relative">
+		<h3 id="scan-jira-with-cloudflare-casb">Jira mit Cloudflare CASB scannen</h3>
+		<a href="https://blog.cloudflare.com/#scan-jira-with-cloudflare-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Atlassian Jira ist ein wichtiges Projektmanagement-Tool, um Aufgaben, Probleme und den Projektfortschritt im Auge zu behalten. Es ist zu einem unverzichtbaren Bestandteil des Softwareentwicklungsprozesses für Teams jeder Größe geworden. Gleichzeitig bedeutet dies aber auch, dass Jira zu einem attraktiven Ziel für Angreifer geworden ist, die sich Zugang zu vertraulichen Daten verschaffen möchten.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Gdd8kYQvdsZOceciHtr6a/03a2ab966df4cbba3f3cddd807d26a99/CASB_Atlassian_3.png" alt="" class="kg-image" width="1233" height="762" loading="lazy">
+
+	</figure>
+	<p>Mit Cloudflare CASB können Sicherheitsteams jetzt problemlos Sicherheitsprobleme erkennen, die Mitarbeiter und vertrauliche Unternehmensdaten gefährden könnten. Die mit Jira Cloud-Konten kompatible Lösung kann vielfältige Probleme identifizieren, von der Kennzeichnung von Problemen beim Zugriff durch Benutzer und Drittanbieter-Apps, wie z. B. Kontomissbrauch und Benutzer, die sich nicht an bewährte Praktiken halten, bis hin zur Identifizierung von Dateien, die möglicherweise gemeinsam genutzt werden und eine genauere Untersuchung wert sind.</p>
+	<p>Cloudflare CASB bietet Sicherheitsadministratoren einen umfassenden Überblick über Sicherheitsprobleme in ihrem gesamten SaaS-Umfeld, einschließlich Jira und Confluence, und macht es so für Sicherheitsteams einfacher, über potenzielle Sicherheitsrisiken auf dem Laufenden zu bleiben.</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Erste Schritte</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Indem wir die wachsende Liste der CASB-Integrationen um Jira und Confluence erweitern, machen wir unsere Produkte so weit wie möglich kompatibel, damit Unternehmen uns auch in Zukunft vertrauen, wenn es darum geht, ihre Sicherheit zu gewährleisten.</p>
+	<p>Heute unterstützt Cloudflare CASB Integrationen mit Google Workspace, Microsoft 365, Slack, Salesforce, Box, GitHub, Jira und Confluence, und die Liste weiterer wichtiger Anwendungen wächst. Falls Sie eine bestimmte Anwendung auf Ihrer Wunschliste haben, die Sie schnell benötigen, lassen Sie es uns gern wissen!</p>
+	<p>Wenn Sie Cloudflare Zero Trust bislang noch nicht nutzen, machen Sie doch einfach heute die Probe aufs Exempel und testen Sie die Plattform mit 50 kostenlosen Lizenzen. Registrieren Sie sich dafür einfach hier und wenden Sie sich hier an unser Team, um mehr darüber zu erfahren, wie Sie mit Cloudflare CASB Sicherheitslücken Ihrer SaaS-Anwendungen schließen können.</p>
+</div>

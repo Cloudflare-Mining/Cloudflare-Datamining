@@ -1,0 +1,178 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/best-place-region-earth-inference">English</a>、<a href="https://blog.cloudflare.com/fr-fr/best-place-region-earth-inference">Français</a>、<a href="https://blog.cloudflare.com/de-de/best-place-region-earth-inference">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/best-place-region-earth-inference">한국어</a>、<a href="https://blog.cloudflare.com/es-es/best-place-region-earth-inference">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/best-place-region-earth-inference">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2czdgetRMBxjwvu8vNJTSO/241dfb4a5ca1c0b198670717c0e98ee6/best-place-region-earth-inference.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>今日、CloudflareのWorkersプラットフォームには100万人を超える開発者が集まり、以前は不可能だった洗練されたフルスタックアプリケーションを構築しています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nXxcEexoml7CrpZNwEdIj/48092e191987110e5182ca79535677ed/unnamed-2.png" alt="The best place on Region: Earth for inference" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>もちろん、Workersは最初からその地位を確立できたわけではありません。過去の今日のような日に、<a href="https://blog.cloudflare.com/introducing-cloudflare-workers">バースデーウィーク</a>での発表から始まったのです。今日備えているような付加機能はなかったものの、Workersの発売時にお試しになっていたのなら、「今までとは違う、何かが変わる」と感じられたことでしょう。突然、何もないところから完全にスケーラブルでグローバルなアプリケーションになるのにかかった時間は、数時間、数日、数週間、あるいは数ヶ月ではなく、たったの数秒でした。それは、アプリケーションを構築する全く新しい在り方の始まりとなったのです。</p>
+	<p>この数カ月間、生成AIを少し試したことがある人なら、同じような感覚を持ったかもしれません。何人かの友人や同僚にアンケートを取ったところ、ひらめきの瞬間は若干異なったものの、現時点での業界全体の感情は一致したものでした。</p>
+	<p>本日は、Workersがコンピューティングの未来にもたらしたものと同様のインパクトが確信される一連の発表を行えることを嬉しく思います。前置きはここまでとし、以下がその内容です：</p>
+	<ul>
+		<li>
+			<p><b>Workers AI</b>（旧称Constellation AI）<b>は、Cloudflareのグローバルネットワーク上のNVIDIA GPU上で動作</b>し、AIにサーバーレスモデルをもたらします。使用した分だけ料金が発生し、インフラに費やす時間を減らしてアプリにより多くの時間を費やすことができます。</p>
+		</li>
+		<li>
+			<p><b>等車のベクトルデータベースであるVectorize</b>は、実行中のモデルだけでなく、カスタマイズされたデータにもアクセスする必要があるユースケースに対応するため、ベクトルへのインデックス付けと保存を簡単、高速、低価格で実現します。</p>
+		</li>
+		<li>
+			<p><b>AI Gateway</b>は、実行されている場所に関係なくAIデプロイの<b>キャッシュ、レート制限、観察</b>できるツールを組織対しに提供するものです。</p>
+		</li>
+	</ul>
+	<p>しかし、それだけではありません。</p>
+	<p>大きなことを成し遂げることはチームスポーツであり、当社はこれを単独でやろうとは思いません。当社は、巨人の肩の上に立っているようなものです。当社は、<b>NVIDIA、マイクロソフト、Hugging Face、メタ</b>などこの分野の最大手と提携できることに大きな期待を持っています。</p>
+	<p>本日の発表は、6年前のWorkersのように、CloudflareによるAI界への旅の始まりに過ぎません。当社の本日の発表をぜひ、受け止めていただきたく思います。決して失望することはないはずです。当社はまた、前のめりになる勢いを少し抑え、AIに対する私たちのより広いビジョンと、今回の発表がそれに合致している様子をお伝えする機会を持ちたいとも思っています。</p>
+	<div class="flex anchor relative">
+		<h3 id="inference-the-future-of-ai-workloads">推論：AIワークロードの未来</h3>
+		<a href="https://blog.cloudflare.com/#inference-the-future-of-ai-workloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIには、訓練と推論という2つの主要なプロセスがあります。</p>
+	<p>生成AIモデルのトレーニングでは、長期にわたる（時には数ヶ月に及ぶ）計算集約的なプロセスの結果、モデルが生成されます。そのため、従来の集中型クラウドでの実行に最も適しているのがワークロードのトレーニングでした。GPUへの長期的なアクセスを確保することが難しくなり、企業のマルチクラウド化が進んでいる昨今、当社ではR2がどのコンピュート·クラウドからでもトレーニング·データにアクセスできるよう、<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">エグレス料金</a>を廃絶する必要不可欠なサービスを提供できることは既にお話ししました。しかし、今日ここでお話ししたいのはそのことではありません。</p>
+	<p>トレーニングには多くのリソースが必要となるものの、AI関連の計算タスクは推論となります。最近、ChatGPTに質問したり、画像を生成したり、テキストを翻訳したりしたことがあるなら、推論タスクを実行したことになります。推論は（一度だけでなく）すべての呼び出しで必要とされるため、推論がAI関連の作業負荷の主流になると予想されます。</p>
+	<p>トレーニングが集中型クラウドに最適だとすれば、推論にはどのような場所が最適なのでしょうか？</p>
+	<div class="flex anchor relative">
+		<h3 id="the-network-just-right-for-inference">推論に「最適な」ネットワーク</h3>
+		<a href="https://blog.cloudflare.com/#the-network-just-right-for-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>通常、その反対側にユーザーが待っていることが推論の決定的な特徴です。つまり、遅延に敏感なタスクなのです。</p>
+	<p>遅延に敏感なタスクに最適な場所は、デバイス上だと思うかもしれません。場合によってはそうなるかもしれないが、いくつかの問題があります。第一に、デバイスのハードウェアはそれほど強力ではありません。バッテリーの寿命も問題です。</p>
+	<p>一方、集中型のクラウドコンピューティングも存在します。デバイスとは異なり、クラウドの集中管理された場所で稼働しているハードウェアは、とりわけ馬力があります。もちろん、ユーザーから何百ミリ秒も離れていることがその問題です。また、時には国境を越えることもあり、それなりの困難が伴います。</p>
+	<p>そのため、デバイスの性能はまだ十分ではなく、集中型クラウドも遠すぎることになります。これにより、ネットワークは推論におけるゴルディロックス（どっちつかずの状態）となります。遠すぎず、十分な計算能力があるものが、最適なものとなります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-first-inference-cloud-running-on-region-earth">地球規模で動作する最初の推論クラウド</h3>
+		<a href="https://blog.cloudflare.com/#the-first-inference-cloud-running-on-region-earth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社が開発者向けプラットフォームを構築して学んだ教訓のひとつに、ネットワーク·スケールでアプリケーションを実行することは、パフォーマンスとスケールの最適化に役立ち、これは素晴らしいメリットであるものの、さらに重要なことは開発者が迅速に行動するための適切な抽象化レベルを生み出すということがあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-ai-for-serverless-inference">サーバーレス推論のためのWorkers AI</h3>
+		<a href="https://blog.cloudflare.com/#workers-ai-for-serverless-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/workers-ai">Workers AIの</a>発表を皮切りに、私たちは初の真にサーバーレスなGPUクラウドを、その完璧なマッチング相手である地球全域にもたらします。機械学習の専門知識も、GPUを探し回る必要もありません。当社が提供するモデルの一つを選ぶだけで済むのです。</p>
+	<p>Workers AIでは、モデルのデプロイをできるだけスムーズに行えるよう、多くの工夫を凝らしています。</p>
+	<p>貴社で2023年に何らかのモデルをデプロイするのであれば、そのうちの1つは<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">LLM</a>となる可能性が高いでしょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="vectorize-for-storing-vectors">ベクトルを保存するためのベクトル化</h3>
+		<a href="https://blog.cloudflare.com/#vectorize-for-storing-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エンド·ツー·エンドのAI操作チャットボットを構築するには、ユーザーにUIを提示し、渡したい情報のコーパス（例えば、製品カタログ）を解析し、モデルを使ってエンベッディング情報に変換し、そしてどこかに保存する方法も必要となります。今日まで、最初の2つについては必要な製品を提供してきましたが、後者のエンベッディングの保存については、ベクトル·データベースというユニークなソリューションが必要です。</p>
+	<p>Workers発表直後にWorkers KVを発表したように、ステートへのアクセスなしに計算できることはほとんどありません。AIについても同じことが言えます。有意義なAIのユースケースを構築するには、AIに状態へのアクセスを与える必要があります。これが<a href="https://www.cloudflare.com/learning/ai/what-is-vector-database" target="_blank" rel="noopener noreferrer">ベクトルデータベース</a>が活躍する場であり、今日、当社が独自のベクトルデータベースであるVectorizeを発表できることに期待を込めている理由でもあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-gateway-for-caching-rate-limiting-and-visibility-into-your-ai-deployments">キャッシング、レート制限、AIデプロイメントの可視化のためのAI Gateway</h3>
+		<a href="https://blog.cloudflare.com/#ai-gateway-for-caching-rate-limiting-and-visibility-into-your-ai-deployments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareでは、何かを改善しようとするとき、最初のステップは常に、対象を測定することから始めます。測定できなければ、改善することはできません。AI導入コストの抑制に苦慮しているお客様の話を聞いたとき、当社はどのようにアプローチするか、つまり計測し改善していくべきかを考えました。</p>
+	<p>当社のAI Gatewayは、その両方を行うことができるのです。</p>
+	<p>リアルタイムの観測機能により、プロアクティブな管理が可能になり、AI導入の監視、デバッグ、微調整が容易になります。AI導入のキャッシュ、レート制限、監視に活用することは、パフォーマンスを最適化し、コストを効果的に管理するために不可欠です。頻繁に使用されるAIの応答をキャッシングすることで、遅延を削減し、システムの信頼性を強化する一方、レート制限によって効率的なリソース割り当てを保証し、AIコストの高騰という課題を軽減できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="collaborating-with-meta-to-bring-llama-2-to-our-global-network">Llama 2をグローバルネットワークに導入するためのメタとの協業</h3>
+		<a href="https://blog.cloudflare.com/#collaborating-with-meta-to-bring-llama-2-to-our-global-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最近まで、LLMにアクセスする唯一の方法は、自社のモデルへの呼び出しでした。LLMのトレーニングは、時間、計算、資金といったリソースの面で深刻な投資となるため、ほとんどの開発者にとってアクセスできるものではありません。メタがオープンソースのLLMであるLlama 2をリリースしたことで、開発者が独自のLLMを実行してデプロイできるようになり、期待に満ちた変化がもたらされることになりました。もちろん、1つだけ細かいことを挙げれば、GPUにアクセスする必要はここでも残ります。</p>
+	<p>Llama 2をWorkers AI製品ラインナップの一部として利用できるようにすることで、すべての開発者がLLMにアクセスできるようになることを期待しています。</p>
+	<p>もちろん、実行中のモデルを持つことは、AIアプリの構成要素のひとつにすぎません。</p>
+	<div class="flex anchor relative">
+		<h3 id="leveraging-the-onnx-runtime-to-make-moving-between-cloud-to-edge-to-device-seamless-for-developers">ONNXランタイムを活用し、開発者がクラウドからエッジ－デバイス間をシームレスに移動できるようにする</h3>
+		<a href="https://blog.cloudflare.com/#leveraging-the-onnx-runtime-to-make-moving-between-cloud-to-edge-to-device-seamless-for-developers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エッジは、これらの問題の多くを解決するための最適な場所となり得るものの、アプリケーションは、デバイス、エッジ、集中型クラウドのスペクトラムに沿った他の場所でもデプロイされ続けることが予想されます。</p>
+	<p>例えば、自動運転車を見てみましょう。1ミリ秒単位で重要な決断を下す必要がある場合、デバイス上で決断を下す必要が出てきます。逆に、何千億ものパラメータバージョンのモデルを実行するのであれば、集中型クラウドの方がワークロードに適しています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KCsHYhiF6Pe1IsVG2QyLI/0092b7f26a65a2b0d772a851123205dc/image1-22.png" alt="" class="kg-image" width="1801" height="752" loading="lazy">
+
+	</figure>
+	<p>そこで問題になるのが、これらの場所をいかにスムーズに移動するかということになります。</p>
+	<p>Constellation AI（現在はWorkers AIと呼んでいます）の最初のリリース以来、当社が特に注目していたテクノロジーのひとつがONNXランタイムでした。ONNXランタイムは、モデルを実行するための標準化された環境を作り出し、異なる場所でさまざまなモデルを実行することを可能にします。</p>
+	<p>エッジは推論そのものを実行するのに最適な場所であることはすでに説明しましたが、ユースケースや、遅延、正確性、コスト、コンプライアンス、プライバシーなど、最適化したいことに基づき3つの場所すべてでワークロードをスムーズに誘導するルーティングレイヤーとしても優れています。</p>
+	<div class="flex anchor relative">
+		<h3 id="partnering-with-hugging-face-to-provide-optimized-models-at-your-fingertips">Hugging Faceと提携し、容易に扱える最適化されたモデルを提供</h3>
+		<a href="https://blog.cloudflare.com/#partnering-with-hugging-face-to-provide-optimized-models-at-your-fingertips" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>もちろん、開発者がいる場所でそれらが手に入る以上に、開発者のスピードアップを助けるものはありません。そこで、当社は<a href="https://blog.cloudflare.com/partnering-with-hugging-face-deploying-ai-easier-affordable">Hugging Face</a>と<a href="https://blog.cloudflare.com/partnering-with-hugging-face-deploying-ai-easier-affordable">提携</a>し、開発者が活動しているその場所で、利用可能なモデルにサーバーレス推論を提供していきます。</p>
+	<div class="flex anchor relative">
+		<h3 id="partnering-with-databricks-to-make-ai-models">Databricksと提携してAIモデルを作成</h3>
+		<a href="https://blog.cloudflare.com/#partnering-with-databricks-to-make-ai-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Databricksと提携し、当社ではMLflowのパワーをデータサイエンティストやエンジニアに提供していきます。MLflowは、エンドツーエンドの機械学習ライフサイクルを管理するためのオープンソースプラットフォームであり、今回の提携により、ユーザーは大規模なMLモデルのデプロイと管理が容易になります。今回の提携により、Cloudflare Workers AIを基盤とする開発者は、MLFlow互換モデルを活用し、Cloudflareのグローバルネットワークに容易に導入できるようになります。MLflowを使用して、Cloudflareのサーバーレス開発者プラットフォームに直接モデルを効率的にパッケージング、実装、デプロイ、追跡することができるようになります。</p>
+	<p>CIO、CFO、顧問弁護士に安眠をもたらすAI</p>
+	<p>AIでは物事が急速に進んでおり、開発者が動き出すために必要なツールを提供することが重要な一方、心配すべき重要な考慮事項がある場合、迅速に動くことは難しいのが現実です。コンプライアンス、コスト、プライバシーについては、どうでしょうか。</p>
+	<div class="flex anchor relative">
+		<h3 id="compliance-friendly-ai">コンプライアンスに配慮したAI</h3>
+		<a href="https://blog.cloudflare.com/#compliance-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くの人々が考えたくないことではあるものの、AIとデータレジデンシーは政府によってますます規制されつつあります。政府がデータの域内での処理や住民のデータの国内保存を要求しているため、企業は推論ワークロードがどこで実行されるかという文脈でも考えなければならなくなります。遅延に関しては、ネットワークエッジは可能な限り広い範囲をカバーする能力を提供できます。コンプライアンスに関して言えば、300都市にまたがるネットワークと当社のデータローカライゼーションスイートなどの提供サービスには、AIの展開をローカルに保つために必要なきめ細かさを可能にするという威力があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="budget-friendly-ai">予算に優しいAI</h3>
+		<a href="https://blog.cloudflare.com/#budget-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIを実験的に活用している多くの友人や同僚と話すと、ひとつの感情が共鳴しているように思えます。制作に取り掛かる前に、あるいはその制作物から価値を見出す前に、コストは簡単に離れてしまいます。私たちのAIプラットフォームの意図はコストを手頃なものにすることである一方、おそらくより重要なのは、使用した分だけ課金するという点です。Workers AI、または当社のAIゲートウェイを直接使用しているかどうかにかかわらず、当社はAIの支出を防ぐために必要な可視性とツールを提供したいと考えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="privacy-friendly-ai">プライバシーに配慮したAI</h3>
+		<a href="https://blog.cloudflare.com/#privacy-friendly-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIを顧客体験や企業の業務の最前線に据えているのであれば、AIを通過するデータはすべて安全に管理されていると安心したいはずです。Cloudflareではこれまでも常にそうであったように、プライバシーを第一に考えたアプローチを取っています。大規模な言語モデルを訓練するための推論に、Cloudflareを通過する顧客データを流用することはありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="no-but-really-were-just-getting-started">確かに始まっている、しかしまだ、始まったばかり</h3>
+		<a href="https://blog.cloudflare.com/#no-but-really-were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIは、まだ始まったばかりであり、荒波の中を進んでいると言えます。このテクノロジーの恩恵を解き放ち続ける中で、この先にある無限の可能性に畏敬の念と驚きを感じずにはいられません。医療革命から働き方の変革に至るまで、AIは私たちが思いもよらない方法で物事の在り方を変えようとしています。AIの未来はこれまでになく明るくなっています。準備を整え、この先現れるものをお待ちください。</p>
+	<p>このまとめのメッセージはAIによって作成されたもののは家、その気持ちは本物です。まだ、始まったばかりであり、これからあなたが構築していくものが心待ちにされているのです。</p>
+</div>

@@ -1,0 +1,100 @@
+<div class="mb2 gray5">4 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary">English</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-the-customer-metadata-boundary">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-the-customer-metadata-boundary">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-the-customer-metadata-boundary">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-the-customer-metadata-boundary">Español</a>, <a href="https://blog.cloudflare.com/th-th/introducing-the-customer-metadata-boundary">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/introducing-the-customer-metadata-boundary">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zQZVocNWpi3O9YBnbLMoy/ff0e17bf8967685543ac34521b59a662/introducing-the-customer-metadata-boundary.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Pelokalan data mendapat banyak perhatian dalam beberapa tahun terakhir karena sejumlah negara melihatnya sebagai cara untuk mengontrol atau melindungi data warganya. Negara-negara seperti Australia, Cina, India, Brasil, dan Korea Selatan menggunakan atau sedang mempertimbangkan peraturan yang menegaskan kedaulatan hukum atas personal data warganya dalam beberapa cara — data perawatan kesehatan harus disimpan secara lokal; lembaga publik hanya dapat membuat kontrak dengan penyedia layanan lokal, dll.</p>
+	<p></p>
+	<p>Di UE, keputusan “Schrems II” baru-baru ini menghasilkan persyaratan tambahan bagi perusahaan yang mentransfer personal data di luar UE. Dan sejumlah industri yang sangat diatur mengharuskan jenis personal data tertentu tetap berada di dalam batas-batas UE.</p>
+	<p>Cloudflare berkomitmen untuk membantu pelanggan kami menyimpan personal data di UE. Tahun lalu, kami memperkenalkan <a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite">Data Localisation Suite</a>, yang memberi pelanggan kendali atas tempat data mereka diperiksa dan disimpan.</p>
+	<p>Hari ini, kami dengan senang hati memperkenalkan Batas Metadata Pelanggan, yang memperluas Data Localisation Suite untuk memastikan bahwa traffic metadata pengguna akhir pelanggan tetap berada di UE.</p>
+	<div class="flex anchor relative">
+		<h3 id="metadata-a-primer"><b>Metadata: yang utama</b></h3>
+		<a href="https://blog.cloudflare.com/#metadata-a-primer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>"Metadata" bisa menjadi istilah yang menakutkan, tetapi ini adalah konsep yang sederhana — ini hanya berarti "data tentang data." Dengan kata lain, ini adalah deskripsi aktivitas yang terjadi di jaringan kami. Setiap layanan di Internet mengumpulkan metadata dalam beberapa bentuk, dan sangat penting untuk keamanan pengguna dan ketersediaan jaringan.</p>
+	<p>Di Cloudflare, kami mengumpulkan metadata tentang penggunaan produk kami untuk beberapa tujuan:</p>
+	<ul>
+		<li>
+			<p>Melayani analitik melalui dasbor dan API kami</p>
+		</li>
+		<li>
+			<p>Berbagi log dengan pelanggan</p>
+		</li>
+		<li>
+			<p>Menghentikan ancaman keamanan seperti serangan bot atau DDoS</p>
+		</li>
+		<li>
+			<p>Meningkatkan kinerja jaringan kami</p>
+		</li>
+		<li>
+			<p>Menjaga keandalan dan ketahanan jaringan kami</p>
+		</li>
+	</ul>
+	<p>Seperti apa pengumpulan dilakukan dalam praktik di Cloudflare? Jaringan kami terdiri dari lusinan layanan: Firewall, Cache, Penyelesai DNS, sistem perlindungan DDoS, waktu aktif Worker, dan banyak lagi. Setiap layanan memancarkan pesan log terstruktur, yang berisi bidang seperti stempel waktu, URL, penggunaan fitur Cloudflare, serta pengidentifikasi akun dan zona pelanggan.</p>
+	<p>Pesan-pesan tersebut tidak berisi <i>konten</i> traffic pelanggan, sehingga <b>tidak</b> berisi hal-hal seperti nama pengguna, kata sandi, informasi pribadi, dan detail pribadi lainnya dari pengguna akhir pelanggan. Namun, log ini bisa berisi alamat IP pengguna akhir, yang dianggap sebagai personal data di UE.</p>
+	<div class="flex anchor relative">
+		<h3 id="data-localisation-in-the-eu"><b>Lokalisasi Data di UE</b></h3>
+		<a href="https://blog.cloudflare.com/#data-localisation-in-the-eu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Peraturan Perlindungan Data Umum UE, atau GDPR, adalah salah satu undang-undang privasi data paling komprehensif (dan terkenal) di dunia. GDPR <i>tidak</i>, bagaimanapun, bersikeras bahwa data pribadi harus tetap di Eropa. Sebaliknya, peraturan ini menyediakan sejumlah mekanisme hukum untuk memastikan bahwa perlindungan tingkat GDPR tersedia untuk personal data UE jika ditransfer ke luar UE ke negara pihak ketiga seperti Amerika Serikat. Transfer data dari UE ke AS, hingga saat ini, diizinkan berdasarkan perjanjian yang disebut <a href="https://www.privacyshield.gov/welcome" target="_blank" rel="noopener noreferrer">EU-U.S. Privacy Shield Framework</a>.</p>
+	<p>Tak lama setelah GDPR mulai berlaku, seorang aktivis privasi bernama <a href="https://en.wikipedia.org/wiki/Max_Schrems" target="_blank" rel="noopener noreferrer">Max Schrems</a> mengajukan gugatan terhadap Facebook atas praktik pengumpulan data mereka. Pada Juli 2020, Pengadilan Uni Eropa mengeluarkan keputusan “Schrems II” — yang, antara lain, membatalkan kerangka kerja Perlindungan Privasi. Namun, pengadilan menjunjung tinggi mekanisme transfer valid lainnya yang memastikan personal data UE tidak akan diakses oleh otoritas pemerintah AS dengan cara yang melanggar GDPR.</p>
+	<p>Sejak keputusan Schrems II, banyak pelanggan bertanya kepada kami bagaimana kami melindungi data warga negara Uni Eropa. Untungnya, Cloudflare telah memiliki <a href="https://www.cloudflare.com/gdpr/introduction" target="_blank" rel="noopener noreferrer">pengamanan perlindungan data</a> jauh sebelum kasus Schrems II, seperti <a href="https://assets.ctfassets.net/slt3lc6tev37/2RM2ZAb5XJiudjz4QHvth4/b3df347d8a7a629ccd5cadd4f7cfd2f3/BDES-1406_Privacy_Day_Whitepaper_2021.pdf" target="_blank" rel="noopener noreferrer">komitmen kami yang terdepan di industri</a> berdasarkan permintaan data oleh pemerintah. Menanggapi Schrems II secara khusus, kami memperbarui <a href="https://www.cloudflare.com/cloudflare-customer-dpa" target="_blank" rel="noopener noreferrer">Adendum Pemrosesan Data</a> (DPA) pelanggan kami. Kami memasukkan <a href="https://www.cloudflare.com/cloudflare-customer-scc" target="_blank" rel="noopener noreferrer">Klausul Kontrak Standar</a> terbaru, yang merupakan perjanjian hukum yang disetujui oleh Komisi UE dan memungkinkan transfer data. Kami juga memberikan perlindungan tambahan sebagaimana diuraikan dalam <a href="https://edpb.europa.eu/news/news/2021/edpb-adopts-final-version-recommendations-supplementary-measures-letter-eu_en" target="_blank" rel="noopener noreferrer">Rekomendasi EDPB pada Juni 2021 tentang Tindakan Tambahan</a>. Terakhir, layanan Cloudflare disertifikasi dengan standar ISO 27701, yang dipetakan sesuai persyaratan GDPR.</p>
+	<p>Mengingat langkah-langkah ini, kami percaya bahwa pelanggan UE kami dapat menggunakan layanan Cloudflare dengan cara yang selaras dengan GDPR dan keputusan Schrems II. Namun, kami menyadari bahwa banyak pelanggan kami ingin personal data UE mereka tetap berada di UE. Misalnya, beberapa pelanggan kami di industri seperti kesehatan, hukum, dan keuangan mungkin memiliki persyaratan tambahan. &nbsp;Oleh karena itu, kami telah mengembangkan rangkaian layanan opsional untuk memenuhi persyaratan tersebut. Kami menyebutnya Data Localisation Suite.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-the-data-localisation-suite-helps-today"><b>Bagaimana Data Localisation Suite membantu saat ini</b></h3>
+		<a href="https://blog.cloudflare.com/#how-the-data-localisation-suite-helps-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pelokalan Data adalah sebuah tantangan bagi pelanggan karena volume dan variasi data yang mereka tangani. Saat menangani traffic Cloudflare mereka, kami menemukan bahwa pelanggan biasanya memperhatikan tiga hal:</p>
+	<ol>
+		<li>
+			<p>Bagaimana cara memastikan kunci enkripsi saya tetap berada di UE?</p>
+		</li>
+		<li>
+			<p>Bagaimana saya bisa memastikan bahwa layanan seperti caching dan WAF hanya berjalan di UE?</p>
+		</li>
+		<li>
+			<p>Bagaimana memastikan bahwa metadata tidak pernah ditransfer ke luar UE?</p>
+		</li>
+	</ol>
+	<p>Untuk mengatasi masalah pertama, Cloudflare telah lama menawarkan <a href="https://www.cloudflare.com/ssl/keyless-ssl" target="_blank" rel="noopener noreferrer">Keyless SSL</a> dan <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, yang memastikan bahwa materi kunci SSL/TLS pribadi tidak pernah meninggalkan UE. Keyless SSL memastikan bahwa Cloudflare tidak pernah memiliki materi kunci privat sama sekali; Geo Key Manager menggunakan Keyless SSL untuk memastikan kunci tidak pernah meninggalkan wilayah yang ditentukan.</p>
+	<p>Tahun lalu kami mengatasi masalah kedua dengan <a href="https://blog.cloudflare.com/introducing-regional-services">Layanan Regional</a>, yang memastikan bahwa Cloudflare hanya akan dapat mendekripsi dan memeriksa konten traffic HTTP di dalam UE. Dengan kata lain, koneksi SSL hanya akan dihentikan di UE, dan semua layanan keamanan dan kinerja layer 7 kami hanya akan berjalan di pusat data UE kami.</p>
+	<p>Hari ini, kami mengizinkan pelanggan untuk mengatasi masalah ketiga dan terakhir, dan juga menjaga metadata tetap lokal.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-the-metadata-boundary-works"><b>Bagaimana Batas Metadata Bekerja</b></h3>
+		<a href="https://blog.cloudflare.com/#how-the-metadata-boundary-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Batas Metadata Pelanggan memastikan, secara sederhana, bahwa traffic metadata pengguna akhir yang dapat mengidentifikasi pelanggan tetap berada di UE. Ini mencakup semua log dan analitik yang dilihat pelanggan.</p>
+	<p>Bagaimana kami bisa melakukan ini? Semua metadata yang dapat mengidentifikasi pelanggan mengalir melalui satu layanan di edge kami, sebelum diteruskan ke salah satu pusat data inti kami.</p>
+	<p>Ketika Batas Metadata diaktifkan untuk pelanggan, edge kami memastikan bahwa setiap pesan log yang mengidentifikasi pelanggan tersebut (yaitu, berisi ID Akun pelanggan tersebut) tidak dikirim ke luar UE. Pesan log hanya akan dikirim ke pusat data inti kami di UE, dan bukan pusat data inti kami di AS.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next"><b>Apa selanjutnya</b></h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12lcx2Efei67w6jfteXoMN/d3c2c22e54af6bf25d549067e559dae8/image2-14.png" alt="The Metadata Boundary ensures that a customer’s end user traffic metadata stays in the EU" class="kg-image" width="1108" height="992" loading="lazy">
+
+	</figure>
+	<p>Hari ini, Data Localisation Suite kami berfokus untuk membantu pelanggan kami di UE melokalkan data untuk traffic HTTP internal mereka. Ini termasuk produk Cache, Firewall, Perlindungan DDoS, dan Manajemen Bot kami.</p>
+	<p>Kami telah mendengar dari pelanggan bahwa mereka menginginkan pelokalan data di lebih banyak produk dan lebih banyak wilayah. Ini berarti membuat semua Produk Pelokalan Data kami, termasuk <i>Geo Key Manager</i> dan Layanan Regional, berfungsi secara global. Kami juga sedang berupaya memperluas Batas Metadata untuk memasukkan produk Zero Trust kami berfungsi seperti Cloudflare for Teams. Simak terus!</p>
+</div>

@@ -1,0 +1,112 @@
+<div class="mb2 gray5">Lesezeit: 5&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/replicate-joins-cloudflare">English</a>, <a href="https://blog.cloudflare.com/fr-fr/replicate-joins-cloudflare">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/replicate-joins-cloudflare">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/replicate-joins-cloudflare">한국어</a>, <a href="https://blog.cloudflare.com/es-la/replicate-joins-cloudflare">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/nl-nl/replicate-joins-cloudflare">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-tw/replicate-joins-cloudflare">繁體中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D5M72O0Dl0m6ndTklDea3/ef6f18f53a1a1170381e4f29134f2e89/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir haben eine spannende Neuigkeit für Sie: Replicate, die führende Plattform für die Ausführung von KI-Modellen, wird Teil von Cloudflare.</p>
+	<p>Wir haben das Gespräch mit Replicate aufgrund unserer vielen Gemeinsamkeiten aufgenommen, die weit über eine Affinität zu lebhaften Farben hinausgehen. Mit der Cloudflare Workers-Entwicklerplattform wollen wir die Entwicklung und Bereitstellung von Full-Stack-Anwendungen so leicht wie möglich gestalten. Replicate verfolgt ein ganz ähnliches Ziel, nämlich die Bereitstellung eines KI-Modells ebenso leicht zu machen wie das Schreiben einer Zeile Programmcode. Uns ist klargeworden, dass wir gemeinsam etwas noch Besseres schaffen können, indem wir die Replicate-Plattform direkt in Cloudflare integrieren.</p>
+	<p>Wir freuen uns, Ihnen diese Neuigkeit mitzuteilen, und sind schon gespannt darauf, was unsere Kunden daraus machen werden. Durch die Integration der Tools von Replicate bei Cloudflare ist unsere Entwicklerplattform auch in Zukunft der beste Ort im Internet, um KI-gestützte oder agentenbasierte Workflows zu entwickeln und zu implementieren.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-does-this-mean-for-you">Was bedeutet das für Sie?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#what-does-this-mean-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor wir mehr über die Zukunft von KI sprechen, möchten wir die Fragen beantworten, die Replicate- und Cloudflare-Nutzer am meisten beschäftigen. Zunächst in aller Kürze:&nbsp;</p>
+	<p><b>Für bestehende Replicate-Nutzer:</b> Ihre API und Workflows laufen weiterhin störungsfrei. Sie werden in Kürze von der gesteigerten Performance und Zuverlässigkeit des globalen Netzwerks von Cloudflare profitieren.</p>
+	<p><b>Für bestehende Workers&nbsp;AI-Nutzer:</b> Sie können sich auf eine erhebliche Erweiterung des Modellkatalogs freuen und werden künftig Feinabstimmungen und benutzerdefinierte Modelle direkt auf Workers&nbsp;AI ausführen können.</p>
+	<p>Nun zurück zu dem, was uns so optimistisch in unsere gemeinsame Zukunft blicken lässt.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-ai-revolution-was-not-televised-but-it-started-with-open-source">Die KI-Revolution hat ohne großes Aufsehen begonnen und ist aus Open Source-Projekten hervorgegangen</h2>
+		<a href="https://blog.cloudflare.com/#the-ai-revolution-was-not-televised-but-it-started-with-open-source" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lange bevor KI <i>in aller Munde</i> war, wurde sie jahrzehntelang einfach als „maschinelles Lernen“ bezeichnet. Es handelte sich um ein spezialisiertes, fast schon akademisches Feld. Der Fortschritt vollzog sich stetig, aber in abgeschotteter Weise: Die entscheidenden Durchbrüche fanden in ein paar wenigen großen, gut finanzierten Forschungslaboren statt. Die Modelle waren monolithisch, die Daten proprietär und die Werkzeuge für die meisten Entwickler nicht zugänglich. Doch all das änderte sich, als die Kultur der Open Source-Zusammenarbeit&nbsp;– die bereits das moderne Internet aufgebaut hat&nbsp;– auf maschinelles Lernen traf und Forschende und Unternehmen begannen, nicht nur ihre wissenschaftlichen Arbeiten, sondern auch ihre Modellgewichtungen und ihren Quellcode zu veröffentlichen.</p>
+	<p>Dies sorgte für einen beispiellosen Innovationsschub. Allein in den letzten paar Jahren war das Tempo atemberaubend. Was vor 18&nbsp;Monaten (manchmal fühlt es sich sogar an wie vor wenigen Tagen) noch der neuste Stand der Technik war, gilt heute als Grundstandard. Am deutlichsten zeigt sich dieses Tempo im Bereich der generativen KI.&nbsp;</p>
+	<p>Der Übergang von leicht verstörend wirkenden, verschwommenen Experimenten zu fotorealistischer Bilderzeugung hat sich gefühlt innerhalb eines Wimpernschlags vollzogen. Quelloffene Modelle wie Stable Diffusion haben Entwicklern sofort ungeahnte kreative Möglichkeiten eröffnet, und das war erst der Anfang. Wenn man sich heute den Modellkatalog von Replicate anschaut, findet man dort Tausende von Bildmodellen aller Art, von denen jedes auf dem vorherigen aufbaut.&nbsp;</p>
+	<p>Diese Entwicklung war nicht nur bei Bildmodellen zu beobachten, sondern auch bei Video-, Audio- und Sprachmodellen und vielen weiteren.&nbsp;</p>
+	<p>Doch dieser beeindruckende, von der Community vorangetriebene Fortschritt stellt uns in der Praxis vor eine gewaltige Herausforderung: Wie lassen sich diese Modelle eigentlich <i>ausführen</i>? Jedes neue Modell weist unterschiedliche Abhängigkeiten auf, benötigt spezifische GPU-Hardware (und zwar in ausreichendem Umfang) und erfordert eine komplexe Bereitstellungsinfrastruktur, um skaliert werden zu können. Entwickler verbrachten mehr Zeit damit, sich mit CUDA-Treibern und requirements.txt-Dateien zu beschäftigen, als mit der eigentlichen Erstellung ihrer Anwendungen.</p>
+	<p>Genau dieses Problem hat Replicate gelöst. Die Firma hat eine Plattform geschaffen, die diese Komplexität vollständig beseitigt (indem ihr Open Source-Tool <a href="https://github.com/replicate/cog" target="_blank" rel="noopener noreferrer"><u>Cog</u></a> Modelle in standardisierte, reproduzierbare Container verpackt). Das erlaubt es jedem Entwickler oder Data Scientist, selbst die komplexesten quelloffenen Modelle mit einem einfachen API-Aufruf auszuführen.&nbsp;</p>
+	<p>Heute umfasst der Katalog von Replicate mehr als 50.000 quelloffene und einer Feinabstimmung unterzogene Modelle. Durch das Open Source-Prinzip haben sich viele Möglichkeiten eröffnet. Das Toolset von Replicate geht aber noch weiter und erlaubt Entwicklern den Zugriff auf alle von ihnen benötigten Modelle zentral an einem einzigen Ort, ohne Wenn und Aber. Mit seinem Marktplatz bietet das Unternehmen außerdem reibungslosen Zugang zu führenden proprietären Modellen wie GPT-5 und Claude Sonnet&nbsp;– alles über eine einzige, übergreifende API.</p>
+	<p>Besonders hervorzuheben ist, dass Replicate nicht nur einen Inferenzdienst entwickelt, sondern auch eine <b>Community</b> aufgebaut hat. So viel Innovatives entsteht dadurch, dass man sich von der Arbeit anderer inspirieren lässt, darauf aufbaut und sie weiterentwickelt. Replicate ist zur zentralen Plattform für Entwickler geworden, die die neuesten Modelle in einer öffentlichen Umgebung ausprobieren, teilen, optimieren und damit experimentieren wollen.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="stronger-together-the-ai-catalog-meets-the-ai-cloud">Gemeinsam mehr erreichen: KI-Katalog trifft auf KI-Cloud</h2>
+		<a href="https://blog.cloudflare.com/#stronger-together-the-ai-catalog-meets-the-ai-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um zur Workers-Platform zurückzukommen: Unser Ziel war es von Anfang an, die Entwicklung von Full-Stack-Anwendungen ohne Infrastrukturaufwand zu ermöglichen. Das gilt zwar weiterhin, doch durch KI haben sich die Anforderungen an moderne Anwendungen grundlegend verändert.</p>
+	<p>Heute werden ganz andere Applikationen entwickelt als noch vor drei Jahren. Im Gegensatz zu heute hat damals noch niemand Agenten geschaffen oder mit KI Launch-Videos generiert. Infolgedessen haben sich auch die Bedürfnisse und Erwartungen der Entwickler an die <b>(KI-)Cloud</b> geändert.</p>
+	<p>Um dem gerecht zu werden, hat Cloudflare damit begonnen, die Grundpfeiler der KI-Cloud zu entwickeln. Dabei sollte Inferenz an der Edge und damit in Nutzernähe ausgeführt werden. Wir reden hier nicht von einem einzelnen Produkt, sondern von einem vollständigen Stack:</p>
+	<ul>
+		<li>
+			<p><b>Workers AI:</b> Serverless-GPU-Inferenz in unserem globalen Netzwerk</p>
+		</li>
+		<li>
+			<p><b>AI Gateway:</b> Eine Steuerungsebene für Zwischenspeicherung, Durchsatzbegrenzung und Beobachtung jeder KI-API</p>
+		</li>
+		<li>
+			<p><b>Daten-Stack:</b> Einschließlich Vectorize (unsere Vektordatenbank) und R2 (zur Modell- und Datenspeicherung)</p>
+		</li>
+		<li>
+			<p><b>Abstimmung:</b> Tools wie AI&nbsp;Search (früher Autorag), Agenten und Workflows zur Erstellung komplexer, mehrstufiger Anwendungen</p>
+		</li>
+		<li>
+			<p><b>Fundament:</b> Alles ist auf unserer zentralen Entwicklerplattform aus Workern, Durable Objects und dem Rest unseres Stacks aufgesetzt</p>
+		</li>
+	</ul>
+	<p>Während wir Entwicklern dabei helfen, ihre Anwendungen zu skalieren, verfolgt Replicate ein ganz ähnliches Ziel: eine ebenso unkomplizierte Implementierung von KI-Modellen wie von Quellcode zu ermöglichen. An dieser Stelle fügt sich alles ineinander. Während Replicate über eine(n) der branchenweit größte(n) und am stärksten in Anspruch genommene(n) <b>Modellkataloge und Entwickler-Communitys</b> verfügt, betreibt Cloudflare ein <b>globales Netzwerk und eine Serverless-Inferenzplattform</b>, die beide extrem leistungsstark sind. Gemeinsam bieten wir das Beste aus beiden Welten: Die umfassendste Auswahl an Modellen, die auf einer schnellen, zuverlässigen und erschwinglichen Inferenzplattform ausgeführt werden können.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-shared-vision">Unsere gemeinsame Vision</h2>
+		<a href="https://blog.cloudflare.com/#our-shared-vision" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="for-the-community-the-hub-for-ai-exploration">Für die Community: Der Hub für KI-Erforschung</h3>
+		<a href="https://blog.cloudflare.com/#for-the-community-the-hub-for-ai-exploration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Modelle mit anderen auszutauschen, Feinabstimmungen von Modellen zu veröffentlichen, Sterne zu sammeln und im „Playground“ zu experimentieren: diese Möglichkeiten bilden das Herzstück der Replicate-Community. Wir werden weiterhin in diese Plattform investieren und sie ausbauen, um sie als wichtigste Anlaufstelle für KI-Forschung und -Experimente zu etablieren, die bereits jetzt dank <b>des globalen Cloudflare-Netzwerks</b> schneller und reaktionsfähiger ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-inference-one-platform-all-models">Die Zukunft der Inferenz: Eine einzige Plattform für alle Modelle</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-inference-one-platform-all-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir wollen die besten Eigenschaften beider Plattformen vereinen. Dafür werden wir den gesamten Replicate-Katalog mit seinen mehr als 50.000&nbsp;Modellen und Feinabstimmungen bei Workers&nbsp;AI integrieren. Sie haben also die Wahl: Sie können Modelle in der flexiblen Umgebung von Replicate oder auf der Serverless-Plattform von Cloudflare ausführen&nbsp;– alles von einem einzigen Ort aus.</p>
+	<p>Doch wir beschränken uns nicht auf eine Erweiterung des Katalogs. Wir können außerdem bekannt geben, dass wir mit fachkundiger Unterstützung durch das Replicate-Team Feinabstimmungsfunktionen in Workers&nbsp;AI integrieren werden. Außerdem sorgen wir dafür, dass Workers&nbsp;AI flexibler wird als je zuvor. Bald werden Sie Ihre <b>eigenen benutzerdefinierten Modelle</b> in unser Netzwerk einbinden können. Um diesen Prozess reibungslos, reproduzierbar und bequem zu gestalten, machen wir uns die Erfahrung von Replicate mit <b>Cog</b> zunutze.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-ai-cloud-more-than-just-inference">Die KI-Cloud: Mehr als nur Inferenz</h3>
+		<a href="https://blog.cloudflare.com/#the-ai-cloud-more-than-just-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ein Modell auszuführen ist nur ein Teil des großen Ganzen. Wirklich spannend wird es, wenn KI mit einer kompletten Anwendung verknüpft wird. Stellen Sie sich vor, was Sie alles erschaffen können, wenn der umfangreiche Katalog von Replicate tiefgreifend in die gesamte Cloudflare-Entwicklerplattform integriert ist. Sie können beispielsweise ein Modell ausführen und die Ergebnisse direkt bei <b>R2</b> oder <b>Vectorize</b> speichern, Inferenz durch einen <b>Worker</b> oder eine <b>Queue</b> starten, mit <b>Durable Objects</b> den Status eines KI-Agenten verwalten oder eine generative Echtzeit-Benutzeroberfläche mit <b>WebRTC</b> und WebSockets erstellen.</p>
+	<p>Um all dies zu verwalten, werden wir unsere übergreifende Inferenzplattform tiefgreifend bei <b>AI&nbsp;Gateway</b> integrieren. Dadurch erhalten Sie eine zentrale Steuerungsebene für Beobachtbarkeit, Prompt-Management, A/B-Tests und Kostenanalysen für <i>alle</i> Ihre Modelle&nbsp;– unabhängig davon, ob diese bei Cloudflare, Replicate oder einem anderen Anbieter betrieben werden.</p>
+	<div class="flex anchor relative">
+		<h2 id="welcome-to-the-team">Willkommen im Team!</h2>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir möchten das Replicate-Team herzlich bei Cloudflare willkommen heißen. Sein Engagement für die Entwickler-Community und seine Fachkenntnis bezüglich des KI-Ökosystems sind unübertroffen. Wir können es kaum erwarten, gemeinsam die Zukunft der KI zu gestalten.</p>
+</div>

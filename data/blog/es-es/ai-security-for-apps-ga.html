@@ -1,0 +1,115 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/ai-security-for-apps-ga">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ai-security-for-apps-ga">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ai-security-for-apps-ga">Français</a>, <a href="https://blog.cloudflare.com/de-de/ai-security-for-apps-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ai-security-for-apps-ga">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ai-security-for-apps-ga">한국어</a>, <a href="https://blog.cloudflare.com/ru-ru/ai-security-for-apps-ga">Рyсский</a>, <a href="https://blog.cloudflare.com/nl-nl/ai-security-for-apps-ga">Nederlands</a> y <a href="https://blog.cloudflare.com/zh-cn/ai-security-for-apps-ga">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/663Prk0UZJS4eRloD2XayY/bba0c4840520eb72d5539d1235768d34/BLOG-3128_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La solución <a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>AI Security for Apps</u></a> de Cloudflare detecta y mitiga las amenazas a las aplicaciones con IA. Hoy queremos anunciar que ya está disponible para todos.</p>
+	<p>Hemos añadido nuevas funciones, como la detección de temas personalizados, y ahora el servicio de detección de puntos finales que utilizan IA es gratuito para todos los clientes de Cloudflare — incluidos aquellos con planes gratuito, Pro y Business — para que todos puedan ver dónde está implementada la IA en sus aplicaciones conectadas a Internet.</p>
+	<p>También anunciamos una mayor colaboración con IBM, que ha elegido a Cloudflare para ofrecer seguridad basada en IA a sus clientes de servicios en la nube. Además, nos hemos asociado con Wiz para ofrecer a nuestros clientes comunes una visión global de su estado de seguridad basada en IA.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-kind-of-attack-surface">Un nuevo tipo de superficie de ataque</h2>
+		<a href="https://blog.cloudflare.com/#a-new-kind-of-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las aplicaciones web tradicionales tienen operaciones definidas, como consultar el saldo bancario o hacer una transferencia. Puedes escribir reglas determinadas para proteger esas interacciones.&nbsp;</p>
+	<p>Las aplicaciones y los agentes basados en IA son diferentes. Aceptan el lenguaje natural y generan respuestas impredecibles. No hay un conjunto fijo de operaciones para permitir o denegar, porque los datos de entrada y los resultados son probabilidades. Los atacantes pueden manipular los modelos de lenguaje de gran tamaño (LLM) para realizar acciones no autorizadas o filtrar datos confidenciales. La inyección de instrucciones, la divulgación de información confidencial y el consumo ilimitado son solo algunos de los riesgos que figuran en la lista de los <a href="https://genai.owasp.org/llm-top-10" target="_blank" rel="noopener noreferrer"><u>10 principales riesgos de OWASP para aplicaciones de LLM</u></a>.</p>
+	<p>Estos riesgos aumentan a medida que las aplicaciones de IA se convierten en agentes. Cuando una herramienta de IA tiene acceso a operaciones en las que se procesan reembolsos, se modifican cuentas, se aplican descuentos o se accede a datos de clientes, una sola instrucción maliciosa se convierte inmediatamente en un incidente de seguridad.</p>
+	<p>Los clientes nos cuentan a qué se enfrentan. "La mayoría de los equipos de Newfold Digital están implementando sus propias medidas de seguridad para la IA generativa, pero todo el mundo está innovando tan rápido que, tarde o temprano, es inevitable que surjan algunas deficiencias", afirma Rick Radinger, arquitecto principal de sistemas en Newfold Digital, que opera Bluehost, HostGator y Domain.com. </p>
+	<div class="flex anchor relative">
+		<h2 id="what-ai-security-for-apps-does">Qué hace AI Security for Apps</h2>
+		<a href="https://blog.cloudflare.com/#what-ai-security-for-apps-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hemos creado AI Security for Apps para solucionarlo. Se integra con tus aplicaciones basadas en IA, tanto si utilizas un modelo de terceros como si alojas el tuyo propio, como parte del <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer"><u>proxy inverso</u></a> de Cloudflare. Te ayuda a (1) detectar aplicaciones basadas en IA en tu propiedad web, (2) detectar comportamientos maliciosos o fuera de la política en esos puntos finales, y (3) mitigar las amenazas mediante el conocido creador de reglas WAF. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xpmckBUupzELjYOSx5bAF/cace1ab2ed2dd54d8d7a7ff60587ef65/BLOG-3128_2.png" alt="BLOG-3128 2" class="kg-image" width="1999" height="650" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="discovery-now-free-for-everyone">Discovery, ¡ya es gratis para todos!</h3>
+		<a href="https://blog.cloudflare.com/#discovery-now-free-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Antes de que puedas proteger tus aplicaciones basadas en LLM, debes saber dónde se utilizan. A menudo, los equipos de seguridad nos comentan que no tienen una visión completa de las implementaciones de IA en sus aplicaciones, sobre todo ahora que el mercado de los LLM está en constante evolución y los desarrolladores van cambiando de modelos y proveedores.&nbsp;</p>
+	<p>AI Security for Apps identifica automáticamente los puntos finales basados en LLM en tus propiedades web, independientemente de dónde estén alojados o de cuál sea el modelo. A partir de hoy, esta función es gratuita para todos los clientes de Cloudflare, incluidos aquellos con planes gratuito, Pro y Business.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dBKhU5VNbzAePDAnaHkTK/3f6a569e495e03c3e2afca4d6183e02d/image4.png" alt="BLOG-3128 3" class="kg-image" width="1999" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup>Página del panel de control de Cloudflare con los activos web, en la que se muestran dos puntos finales de ejemplo etiquetados como </sup></i><i><sup><code>cf-llm</code></sup></i></p>
+	<p>La detección automática de estos puntos finales requiere algo más que la coincidencia de patrones de ruta comunes como <code>/chat/completions</code>. Muchas aplicaciones basadas en IA no tienen una interfaz de chat. Piensa, por ejemplo, en la búsqueda de productos, las herramientas de valoración inmobiliaria o los motores de recomendación. Hemos desarrollado un <a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#discovering-llm-powered-applications"><u>sistema de detección que analiza cómo se comportan los puntos finales</u></a>, no cómo se llaman. Para identificar con confianza los puntos finales que utilizan IA, se requiere <a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements" target="_blank" rel="noopener noreferrer"><u>suficiente tráfico válido</u></a>.</p>
+	<p>Los puntos finales que utilizan IA que se hayan detectado serán visibles en <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets" target="_blank" rel="noopener noreferrer"><u>Seguridad → Activos web</u></a>, etiquetados como <code>cf-llm</code>. Para los clientes con el plan gratuito, la detección de puntos finales se inicia la primera vez que accedes a la <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets%2Fdiscovery" target="_blank" rel="noopener noreferrer"><u>página Discovery</u></a>. Para los clientes con un plan de pago, la detección se produce automáticamente en segundo plano de forma recurrente. Si se han detectado puntos finales basados en IA, puedes revisarlos inmediatamente.</p>
+	<div class="flex anchor relative">
+		<h3 id="detection">Detección</h3>
+		<a href="https://blog.cloudflare.com/#detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las detecciones de AI Security for Apps siguen el enfoque <a href="https://developers.cloudflare.com/waf/detections" target="_blank" rel="noopener noreferrer"><u>siempre activo</u></a> para el tráfico a tus puntos finales que usan IA. Cada instrucción se ejecuta a través de varios módulos de detección para la inyección de instrucciones, la exposición de información de identificación personal y temas sensibles o tóxicos. Los resultados — ya sea que la instrucción fuera maliciosa o no — se adjuntan como metadatos que puedes usar en reglas WAF personalizadas para aplicar tus políticas. Buscamos constantemente formas de aprovechar nuestra red global, que registra el tráfico de aproximadamente el <a href="https://w3techs.com/technologies/history_overview/proxy/all" target="_blank" rel="noopener noreferrer"><u>20&nbsp;% de la web</u></a>, para detectar nuevos patrones de ataque en millones de sitios web antes de que lleguen al tuyo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oGjcaUL5L9zlAkz8lSmXv/4354a9555135e19de5c93d3d113e6790/BLOG-3128_4.png" alt="BLOG-3128 4" class="kg-image" width="1922" height="444" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-topics-detection">Disponibilidad general: Detección de temas personalizados</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-topics-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El producto incluye detección integrada de amenazas comunes: inyecciones de instrucciones, <a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#detecting-prompts-designed-to-leak-pii"><u>extracción de información de identificación personal</u></a> y <a href="https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai"><u>temas peligrosos</u></a>. Sin embargo, cada empresa tiene su propia definición de lo que está prohibido. Una empresa de servicios financieros podría necesitar detectar conversaciones sobre valores específicos. Una empresa del sector sanitario podría necesitar marcar las conversaciones que traten sobre datos de pacientes. Un minorista puede querer saber cuándo los clientes preguntan por productos de la competencia.</p>
+	<p>La nueva función de temas personalizados te permite definir estas categorías. Tú especificas el tema, nosotros inspeccionamos la instrucción y emitimos una puntuación de relevancia que puedes utilizar para registrar, bloquear o gestionar como prefieras. Nuestro objetivo es crear una herramienta adaptable que se ajuste a tus necesidades.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WzPhy11ZmUXDGZjft4sY1/7ebfafaf2114eaba83a829694837fc2c/image1.png" alt="BLOG-3128 5" class="kg-image" width="1946" height="819" loading="lazy">
+	</figure>
+	<p><i><sup>Puntuación de relevancia de la Instrucción dentro de AI Security for Apps</sup></i></p>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-prompt-extraction">Disponibilidad general: Extracción de instrucciones personalizadas</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-prompt-extraction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Apps aplica medidas de seguridad antes de que las instrucciones no seguras puedan llegar a tu infraestructura. Para ejecutar las detecciones con precisión y proporcionar protección en tiempo real, primero debemos identificar las instrucciones dentro de la carga malintencionada de la solicitud. Las instrucciones pueden estar en cualquier lugar del cuerpo de una solicitud, y los diferentes proveedores de LLM estructuran sus API de forma diferente. OpenAI y la mayoría de los proveedores utilizan <code>$.messages[*].content</code> para las sugerencias de chat. La API por lotes de Anthropic integra las solicitudes dentro de <code>$.requests[*].params.messages[*].content</code>. Tu herramienta de valoración de propiedades personalizada podría utilizar <code>$.property_description</code>.</p>
+	<p>Desde el primer momento, admitimos los formatos estándar utilizados por OpenAI, Anthropic, Google Gemini, Mistral, Cohere, xAI, DeepSeek, entre otros. Cuando no podemos hacer coincidir un patrón conocido, aplicamos una postura segura por defecto y ejecutamos la detección en todo el cuerpo de la solicitud. Si la carga malintencionada contiene campos que son sensibles pero que no se envían directamente a un modelo de IA, esto puede provocar falsos positivos. Por ejemplo, un campo como <code>$customer_name</code> junto con la indicación real podría activar la detección de datos de identificación personal de forma innecesaria.</p>
+	<p>En breve, podrás definir tus propias expresiones JSONPath para indicarnos exactamente dónde encontrar la instrucción. De este modo, se reducirán los falsos positivos y las detecciones serán más precisas. También estamos desarrollando una función de aprendizaje de instrucciones que se adaptará automáticamente a la estructura de tu aplicación con el tiempo.</p>
+	<div class="flex anchor relative">
+		<h3 id="mitigation">Mitigación</h3>
+		<a href="https://blog.cloudflare.com/#mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Una vez identificada y puntuada una amenaza, puedes bloquearla, registrarla o proporcionar respuestas personalizadas, utilizando el mismo motor de reglas WAF que ya utilizas para el resto de la seguridad de tus aplicaciones. La eficacia de la plataforma compartida de Cloudflare es que puedes combinar señales específicas de la IA con todo lo demás que sabemos sobre una solicitud, representado por <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference" target="_blank" rel="noopener noreferrer"><u>cientos de campos</u></a> disponibles en el WAF. Un intento de inyección de instrucciones es sospechoso. Pero que una dirección IP que ha estado investigando tu página de inicio de sesión intente inyectar código de forma inmediata, utilizando una huella digital del navegador relacionada con ataques anteriores y rotando a través de una red de bots, eso ya es otra historia. Las soluciones específicas que solo ven la capa de IA no pueden hacer estas conexiones.</p>
+	<p>Esta capa de seguridad unificada es exactamente lo que necesitan en Newfold Digital para detectar, etiquetar y proteger los puntos finales de IA, afirma Radinger: "Estamos deseando usarla en todos estos proyectos para que nos sirva de medida de seguridad".</p>
+	<div class="flex anchor relative">
+		<h2 id="growing-ecosystem">Ecosistema en crecimiento</h2>
+		<a href="https://blog.cloudflare.com/#growing-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Apps también estará disponible a través del cada vez más amplio ecosistema de Cloudflare, incluida la integración con IBM Cloud. A través de <a href="https://www.ibm.com/products/cloud-internet-services" target="_blank" rel="noopener noreferrer"><u>IBM Cloud Internet Services (CIS)</u></a>, los usuarios finales ya pueden adquirir soluciones avanzadas de seguridad de aplicaciones y gestionarlas directamente a través de su cuenta de IBM Cloud.&nbsp;</p>
+	<p>También nos asociamos con Wiz para conectar AI Security for Apps con <a href="https://www.wiz.io/solutions/ai-spm" target="_blank" rel="noopener noreferrer"><u>Wiz AI Security</u></a>, lo que ofrece a nuestros clientes comunes una visión unificada de su estado de seguridad en materia de IA, desde la detección de modelos y agentes en la nube hasta las medidas de protección en la capa de aplicaciones en el perímetro.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">Cómo empezar</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Apps ya está disponible para los clientes Enterprise de Cloudflare. Ponte en contacto con tu equipo de cuenta para empezar, o comprueba cómo funciona el producto con una <a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>visita autoguiada</u></a>.</p>
+	<p>Si tienes un plan gratuito, Pro o Business, puedes usar la detección de puntos finales de IA hoy mismo. Inicia sesión en tu panel de control y ve a <b>Seguridad → Activos web</b> para ver qué puntos finales hemos identificado. ¡Atentos! Pronto pondremos a disposición de los clientes de todos los planes todas las funciones de "AI Security for Apps".</p>
+	<p>Para obtener más información sobre la configuración, consulta nuestra <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>documentación</u></a>.</p>
+</div>

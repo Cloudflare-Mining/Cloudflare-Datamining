@@ -1,0 +1,162 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/flux-2-workers-ai">English</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IPRgIcyKZjt8jfBBwbTgf/0a648fbf1bf11b359ad29ecff15b6a7b/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Mit der Einführung von <a href="https://gemini.google/overview/image-generation" target="_blank" rel="noopener noreferrer"><u>Nano Banana von Google</u></a> und <a href="https://openai.com/index/image-generation-api" target="_blank" rel="noopener noreferrer"><u>den Bildgenerierungsmodellen von OpenAI</u></a> haben solche proprietären KI-Modelle in den letzten Monaten einen großen Sprung nach vorn gemacht. Wir freuen uns, Ihnen heute mitteilen zu können, dass mit dem Start von FLUX.2 [dev] von Black Forest Lab (BFL) ein neuer Open Weight-Anwärter verfügbar ist und auf der Cloudflare-Inferenzplattform Workers AI ausgeführt werden kann. Mehr zu diesem neuen Modell erfahren Sie in <a href="https://bfl.ai/blog/flux-2" target="_blank" rel="noopener noreferrer"><u>diesem</u></a> Blogbeitrag von BFL, der näher auf die Einführung des neuen Modells eingeht. </p>
+	<p>Wir sind bereits seit Erscheinen den ersten Versionen große Fans der FLUX-Bildmodelle von Black Forest Lab. Die von uns gehostete Version von FLUX.1 [schnell] zählt aufgrund ihrer fotorealistischen Ergebnisse und ihrer detailgetreuen Bildgenerierung zu den beliebtesten Modellen in unserem Katalog. Als sich die Möglichkeit bot, die lizenzierte Version des neuen Modells der Firma zu hosten, haben wir nicht lange gezögert und die Gelegenheit sofort ergriffen. In dem FLUX.2-Modell wurden die besten Funktionen von FLUX.1 noch einmal optimiert, um mit Unterstützung zusätzlicher Anpassungsoptionen wie JSON-Prompting noch realistischere und überzeugendere Bilder generieren zu können.</p>
+	<p>Unsere auf Workers&nbsp;AI gehostete Version von FLUX.2 weist einige spezifische Muster auf, wie die Verwendung von Multipart-Formulardaten zur Unterstützung von Eingabe-Bildern (bis zu vier Bilder mit 512x512&nbsp;Pixel) und Ausgabe-Bildern mit bis zu 4&nbsp;Megapixel. Mit dem Multipart-Formulardatenformat können Nutzer uns neben den üblichen Modellparametern auch mehrere Bildeingaben senden. Wie man das FLUX.2-Modell verwendet, können Sie unserer <a href="https://developers.cloudflare.com/changelog/2025-11-25-flux-2-dev-workers-ai" target="_blank" rel="noopener noreferrer"><u>Changelog-Ankündigung in der Entwicklerdokumentation</u></a> entnehmen.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-makes-flux-2-special-physical-world-grounding-digital-world-assets-and-multi-language-support">Was ist das Besondere an FLUX.2? Verankerung in der realen Welt, digitale Assets und Unterstützung mehrerer Sprachen</h2>
+		<a href="https://blog.cloudflare.com/#what-makes-flux-2-special-physical-world-grounding-digital-world-assets-and-multi-language-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das FLUX.2-Modell beruht auf einem besseren Verständnis der realen Welt, wodurch abstrakte Konzepte in etwas Fotorealistisches verwandelt werden können. Es zeichnet sich durch die Generierung realistischer Bilddetails aus und bildet Hände, Gesichter, Stoffe, Logos und kleine Objekte, die von anderen Modellen oft übergangen werden, korrekt ab. Diese Kenntnis der realen Welt ermöglicht auch die Darstellung naturgetreuer Beleuchtung, Winkel und Tiefenwirkung.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3tOCj8UT98MbcvlXFe8EMl/ad6d94d8b4713453dcd2455a9a3ad331/image3.png" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<p><sup>Abbildung&nbsp;1. Mit FLUX.2 generiertes Bild eines Pariser Café mit realistischer Darstellung von Licht, Schatten, Reflexionen und Tiefenwirkung.</sup></p>
+	<p>Aufgrund ihrer hohen Darstellungstreue ist die Lösung ideal für Anwendungsbereiche, die eine herausragende Bildqualität verlangen&nbsp;– etwa für kreative Fotografie, E-Commerce-Produktaufnahmen, Marketingvisualisierungen und Innenarchitektur. Da das Modell Kontext, Tonalität und Trends versteht, kann es mit kurzen Prompts ansprechendes digitales Material in redaktioneller Qualität erstellen.</p>
+	<p>Es ist jedoch nicht nur in der Lage, die reale Welt abzubilden, sondern auch digitale Produkte wie Startseiten von Websites oder ausführliche Infografiken zu erstellen (wie unten beispielhaft zu sehen). Außerdem versteht es auf natürliche Weise mehrere Sprachen. Durch die Kombination dieser beiden Funktionen lässt sich aus einem französischen Prompt eine ansprechende Landingpage auf Französisch generieren.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">Générer une page web visuellement immersive pour un service de promenade de chiens. L'image principale doit dominer l'écran, montrant un chien exubérant courant dans un parc ensoleillé, avec des touches de vert vif (#2ECC71) intégrées subtilement dans le feuillage ou les accessoires du chien. Minimiser le texte pour un impact visuel maximal.</code></pre>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3C9EEp5jsISYMrOsC4NKb/12e0630b51334feb02a5be805e767d08/image8.png" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="character-consistency-solving-for-stochastic-drift">Zeichenkonsistenz – Lösung für stochastische Abweichung</h2>
+		<a href="https://blog.cloudflare.com/#character-consistency-solving-for-stochastic-drift" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FLUX.2 bietet Multi-Referenz-Bearbeitung mit modernster Zeichenkonsistenz und gewährleistet die Einheitlichkeit von Identitäten, Produkten und Stilen innerhalb einer Aufgabe. Mit generativer KI einmalig ein qualitativ hochwertiges Bild zu erzeugen, ist leicht. Die Schwierigkeit bestand bisher aber immer darin, eine Figur oder ein Produkt beim zweiten Mal wieder genau <i>gleich</i> aussehen zu lassen. Man spricht von einer „stochastischen Abweichung“, wenn generierte Bilder Unterschiede gegenüber dem ursprünglichen Ausgangsmaterial aufweisen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58T8pavXCsWneWxEDfKgte/a821df53fa3a86d577dd72e3c285fe8a/image9.png" alt="" class="kg-image" width="1024" height="443" loading="lazy">
+	</figure>
+	<p><sup>Abbildung&nbsp;2: Infografik zur stochastischen Abweichung (generiert mit FLUX.2)</sup></p>
+	<p>Zu den bei FLUX.2 erzielten Durchbrüchen gehört die Multi-Referenz-Bildeingabe, die dieses Konsistenzproblem lösen soll. Damit lassen sich Hintergrund, Beleuchtung oder Pose in einem Bild anpassen, ohne versehentlich das Gesicht des Modells oder das Design des Produkts zu verändern. Man kann auch auf andere Bilder verweisen oder mehrere Bilder zu etwas Neuem kombinieren.&nbsp;</p>
+	<p>Der Quellcode von Workers AI sieht die Unterstützung von (bis zu vier) Multi-Referenz-Bildern mit einem Multipart-Formulardaten-Upload vor. Bei den eingegebenen Bildern handelt es sich um Binärbilder. Ausgegeben wird ein Base64-kodiertes Bild:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-dev' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: multipart/form-data' \
+  --form 'prompt=take the subject of image 2 and style it like image 1' \
+  --form input_image_0=@/Users/johndoe/Desktop/icedoutkeanu.png \
+  --form input_image_1=@/Users/johndoe/Desktop/me.png \
+  --form steps=25
+  --form width=1024
+  --form height=1024</code></pre>
+	<p>Wir unterstützen dies auch durch die Workers AI-Bindung:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const image = await fetch("http://image-url");
+const form = new FormData();
+ 
+const image_blob = await streamToBlob(image.body, "image/png");
+form.append('input_image_0', image_blob)
+form.append('prompt', 'a sunset with the dog in the original image')
+ 
+const resp = await env.AI.run("@cf/black-forest-labs/flux-2-dev", {
+    multipart: {
+        body: form,
+        contentType: "multipart/form-data"
+    }
+})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="built-for-real-world-use-cases">Entwickelt für reale Anwendungsfälle</h3>
+		<a href="https://blog.cloudflare.com/#built-for-real-world-use-cases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das neueste Bildmodell stellt eine Verlagerung zu funktionalen Geschäftsanwendungsfällen dar, die über einfache Verbesserungen der Bildqualität hinausgehen. FLUX.2 ermöglicht Ihnen:</p>
+	<ul>
+		<li>
+			<p><b>Erstellen verschiedener Anzeigenvarianten:</b> Es können 50 verschiedene Anzeigen mit exakt demselben Schauspieler erstellt werden, ohne dass sich sein Gesicht zwischen den Frames verändert.</p>
+		</li>
+		<li>
+			<p><b>Naturgetreue Darstellung von Produktfotos:</b> Sie können Ihr Produkt auf einem Model, in einer Strandszene, einer Straße oder auf einem Studiotisch platzieren: Es wird immer naturgetreu dargestellt, auch wenn sich die Umgebung ändert.</p>
+		</li>
+		<li>
+			<p><b>Erstellen dynamischer Editorials:</b> Sie können eine durchgehende Strecke von Modebildern generieren, bei der das Model unabhängig vom Blickwinkel in jeder einzelnen Aufnahme identisch aussieht.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Me4jErrBPSW7kAx8qecId/22b2c98a8661489ebe45188cb7947381/image6.png" alt="" class="kg-image" width="1999" height="794" loading="lazy">
+	</figure>
+	<p><sup>Abbildung&nbsp;3. Ein Werbefoto mit Hoodie in Übergröße und Jogginghosen (generiert mit FLUX.2) wurde mit dem Cloudflare-Logo kombiniert, um Produktrenderings mit einheitlichen Gesichtern, Stoffen und Hintergründen zu erzeugen. **</sup><sup><i> Hinweis: Wir haben per Prompt eine weiße Cloudflare-Schrift anstelle der ursprünglichen schwarzen Schrift vorgegeben.&nbsp;</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="granular-controls-json-prompting-hex-codes-and-more">Fein justierbar – JSON-Prompting, HEX-Codes und mehr!</h2>
+		<a href="https://blog.cloudflare.com/#granular-controls-json-prompting-hex-codes-and-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das FLUX.2-Modell stellt einen weiteren Fortschritt dar, weil Nutzer damit kleine Einzelheiten in Bildern mit Werkzeugen wie JSON-Prompting steuern und spezifische Hexadezimalcodes festlegen können.</p>
+	<p>Sie könnten diese JSON-Datei beispielsweise als Prompt (als Teil der mehrteiligen Formulareingabe) senden. Das daraus generierte Bild entspricht genau dem Prompt:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hnd2lQHC8kqKGbEFqdsgb/de72f15c9e3ede2fcfa717c013a4cba4/image4.jpg" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+  "scene": "A bustling, neon-lit futuristic street market on an alien planet, rain slicking the metal ground",
+  "subjects": [
+    {
+      "type": "Cyberpunk bounty hunter",
+      "description": "Female, wearing black matte armor with glowing blue trim, holding a deactivated energy rifle, helmet under her arm, rain dripping off her synthetic hair",
+      "pose": "Standing with a casual but watchful stance, leaning slightly against a glowing vendor stall",
+      "position": "foreground"
+    },
+    {
+      "type": "Merchant bot",
+      "description": "Small, rusted, three-legged drone with multiple blinking red optical sensors, selling glowing synthetic fruit from a tray attached to its chassis",
+      "pose": "Hovering slightly, offering an item to the viewer",
+      "position": "midground"
+    }
+  ],
+  "style": "noir sci-fi digital painting",
+  "color_palette": [
+    "deep indigo",
+    "electric blue",
+    "acid green"
+  ],
+  "lighting": "Low-key, dramatic, with primary light sources coming from neon signs and street lamps reflecting off wet surfaces",
+  "mood": "Gritty, tense, and atmospheric",
+  "background": "Towering, dark skyscrapers disappearing into the fog, with advertisements scrolling across their surfaces, flying vehicles (spinners) visible in the distance",
+  "composition": "dynamic off-center",
+  "camera": {
+    "angle": "eye level",
+    "distance": "medium close-up",
+    "focus": "sharp on subject",
+    "lens": "35mm",
+    "f-number": "f/1.4",
+    "ISO": 400
+  },
+  "effects": [
+    "heavy rain effect",
+    "subtle film grain",
+    "neon light reflections",
+    "mild chromatic aberration"
+  ]
+}</code></pre>
+	<p>Um noch einen Schritt weiter zu gehen, kann das Modell durch Angabe eines bestimmten Hexadezimalcodes wie #F48120 angewiesen werden, das Cloudflare-Orange als Akzentuierungsfarbe zu verwenden.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79EL6Y3YGu8PqvWauHyqzh/29684aa0f4bb9b4306059e1634b5b94c/image1.jpg" alt="" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out-today">Probieren Sie es einfach aus!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das neueste FLUX.2 [dev]-Modell ist jetzt auf Workers AI verfügbar. Sie können unsere <a href="http://developers.cloudflare.com/workers-ai/models/flux-2-dev" target="_blank" rel="noopener noreferrer"><u>Entwicklerdokumentation</u></a> nutzen, um mit dem Modell loszulegen, oder es auf unserem <a href="https://multi-modal.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>multimodalen Playground</u></a> testen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49KKiYwNbkrRaiDRruKCck/66cdcb3b41f8a87fd44a240e05bd851a/image2.png" alt="" class="kg-image" width="1999" height="1037" loading="lazy">
+	</figure>
+	<p></p>
+</div>

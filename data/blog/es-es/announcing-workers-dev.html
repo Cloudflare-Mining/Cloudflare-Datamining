@@ -1,0 +1,77 @@
+<div class="mb2 gray5">2 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/announcing-workers-dev">English</a>, <a href="https://blog.cloudflare.com/fr-fr/announcing-workers-dev">Français</a>, <a href="https://blog.cloudflare.com/de-de/announcing-workers-dev">Deutsch</a> y <a href="https://blog.cloudflare.com/zh-cn/announcing-workers-dev">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14Nog8PQJPkrkP5PD7RyxX/e68e2925f6c531e00b58b15c21c02732/announcing-workers-dev.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Estamos trabajando duramente para que puedas implementar Workers sin tener un dominio de Cloudflare. ¡Pronto podrás desplegar tu Cloudflare en un subdominio-de-tu-eleccion.workers.dev, que se puede pedir ahora en <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>!</p>
+	<div class="flex anchor relative">
+		<h3 id="why-are-we-doing-this">¿Por qué lo hacemos?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-we-doing-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Posiblemente hayas leído la publicación del blog que anuncia Workers (uno de los muchos tutoriales y publicaciones de visitantes), y habrás pensado: "hay que probarlo". Si ya eres cliente de Cloudflare, habrás iniciado sesión en tu panel, habrás encontrado un nuevo icono llamado “Workers”, habrás pagado 5 $ y ya estarás en ello. Si no, habrás hecho clic en "Inscribirse", pero en vez de crear y desplegar un Worker, te hemos pedido tu dominio (si no tenías uno, te hicimos registrar uno) y habrás cambiado de sitio tus servidores de nombres.</p>
+	<p>Desde el lanzamiento, muchísima gente ha querido construir un nuevo proyecto serverless desde cero o simplemente probar Workers, pero les resultaba difícil empezar. Queremos que sea más fácil, para que cualquiera pueda empezar a crear e implementar aplicaciones serverless.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-get-here"><b>¿Cómo hemos llegado hasta aquí?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-get-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La manera en que has empezado con Workers hoy refleja nuestro recorrido como empresa. Nuestra misión de "ayudar a construir un Internet mejor" se ha mantenido constante, pero las maneras en que podemos ayudar han evolucionado. No empezamos como una empresa serverless, sino como una manera de asegurar y acelerar tus propiedades web.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TINzEnhMPK2xtuwpFfn02/f98458cf06d2fd6ce44bdf49474e7f2e/0_FPoyiJBZRQHxug6TsI_pi0X8IV2e_hSU5UVr-dMBhrAH8-0wsd04gPB1aOF1AzTs7T_OsoZjMVyriJMTiR_nILVilzS3SgQqflApUggkjVmbR2x8mp-aAzeS2E.png" alt="" class="kg-image" width="1600" height="1111" loading="lazy">
+
+	</figure>
+	<p>Después de la puesta en marcha de Workers, inmediatamente quedó claro que sus posibilidades son infinitas. Realmente creemos que Workers es una tecnología revolucionaria que cambiará cómo los desarrolladores piensan en el proceso.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4S1yQih0gt7mBZVP7PlGxH/a421261cf68343821141428253be31ae/UuIE60s-ONBOGD6dUGFrALYQIKc-6PZgyEJT6clkZT_HSNZjm9x1I-p63ZVlYCULJFSSUTFaF5RLSXlLA4blHny4Y5S33ekGHSA6SJQgT5Kl194SCjW3XaCbNEZw.png" alt="" class="kg-image" width="1600" height="919" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="our-serverless-mission">Nuestra misión serverless</h3>
+		<a href="https://blog.cloudflare.com/#our-serverless-mission" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Todavía tenemos la misión de ayudar a construir un Internet mejor. Para nosotros, un mundo con un Internet mejor significa un mundo donde no hay distinción entre la escritura de código y la implementación de aplicaciones globales.</p>
+	<p>Es decir, que un desarrollador independiente pueda tener acceso a la misma infraestructura escalable para ejecutar su código que una empresa multimillonaria.</p>
+	<p>Para eliminar cualquier obstáculo que impida que los desarrolladores usen Workers ya, vamos a permitir a los desarrolladores que ejecuten Workers en los subdominios de workers.dev.</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-dev">Workers.dev</h3>
+		<a href="https://blog.cloudflare.com/#workers-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Como parte del programa de lanzamiento TLD de Google, tuvimos la suerte de obtener workers.dev, para permitir a los clientes ejecutar Workers ahí.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yS0msNCcEj9Qzeklb9ZsF/1dc2de018eb23b00f6749bd81f57e787/vj--KybN5EaDpPcedIXHc3BIFYL6Pi9ixQhKWpiKHidfr4XsfaNQKDIF0Omz-eLhnyzl50SDzJdLfAJ476LarK2dpKky8XfWgbQe9e1XosvdSOaausvONM5majIY.png" alt="" class="kg-image" width="395" height="126" loading="lazy">
+
+	</figure>
+	<p>Ahora puedes ir a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> y leer sobre todos los beneficios de Workers que nos tienen realmente entusiasmados.</p>
+	<p>Además, en workers.dev podrás pedir un subdominio para ejecutar Workers (uno por usuario). Después de elegir tu subdominio, se te pedirá que verifiques tu correo electrónico. Si ya tienes una cuenta de Cloudflare, por favor, utiliza el mismo correo electrónico que usaste para inscribirte. También utilizaremos el mismo correo electrónico para notificarte cuando ya estemos listos para que despliegues tu primer Worker en el subdominio que seleccionaste.</p>
+	<p>Ten en cuenta que Cloudflare Workers da todo el servicio a workers.dev. Todo lo siguiente se hace usando Workers:</p>
+	<ul>
+		<li>
+			<p>Servir al sitio estático de almacenamiento</p>
+		</li>
+		<li>
+			<p>Pruebas A/B de nuestros temas luminoso vs. oscuro</p>
+		</li>
+		<li>
+			<p>La API de registro previo que te permite pedir un subdominio, valida tu correo electrónico y lo reserva para ti (pronto daremos más información sobre ello).</p>
+		</li>
+	</ul>
+	<p>Aunque utilizamos Workers plenamente, no se ha perjudicado a Workers en la realización de este sitio.</p>
+	<p>Esperamos ver las grandes cosas que crearás con Workers.</p>
+	<p>Échale un vistazo a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> para pedir tu subdominio y leer sobre la plataforma Workers.</p>
+</div>

@@ -1,0 +1,264 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/flagship">English</a>および<a href="https://blog.cloudflare.com/ko-kr/flagship">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xIVGKg5jBtGf8fGekitjX/fe20782d6027bf430068c5c9c96f4ea5/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>AIはかつてないほど多くのコードを書いています。現在、プラットフォーム全体の新しいコードのうち、AIによる貢献が急速に増えています。OpenCodeやClaude Codeなどのエージェンティックコーディングツールは、数分ですべての機能をリリースできます。</p>
+	<p>本番環境に入るAI生成コードは加速する一方です。しかし、より大きな変化はスピードだけではなく、自律性です。</p>
+	<p>現在では、AIエージェントがコードを記述し、人間はそれをレビュー、統合、デプロイします。明日は、エージェント自身がそれをすべて行います。ここで問題になるのが、「すべてのセーフティネットを削除することなく、エージェントを本番環境に出荷するにはどうすればよいか？」ということです。</p>
+	<p>その答えは、機能フラグです。エージェントはフラグの背後に新しいコードパスを記述し、それをデプロイします。フラグはオフなので、ユーザーには何も変化しません。その後、エージェントは自分自身または小さなテストコホートとしてフラグを有効にし、本番環境でこの機能を実行し、結果を確認します。良性と判断すれば、ロールアウトを開始します。何かが壊れると、フラグは無効になります。人間は、すべてのステップがループに入る必要はありません。人間が境界を設定し、フラグが影響範囲をコントロールします。</p>
+	<p>これは、リリースからデプロイメントを切り離すだけでなく、出荷プロセスの各段階から人間の注意を切り離すために、フラグが常に構築していったワークフロー機能です。フラグがあれば高速移動しても安全だからです。エージェントは高速に移動します。</p>
+	<p>本日、Flagshipを発表します。Flagshipは、機能フラグ評価のためのCNCFオープンスタンダードである<a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer"><u>OpenFeature</u></a>上に構築されたCloudflareのネイティブ機能フラグサービスです。Workers、Node.js、Burn、Deno、Browser — しかし、最速はWorkers上でフラグがCloudflareネットワーク内で評価されます。FlagshipバインディングとOpenFeatureを使用すると、統合は次のようになります：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">await OpenFeature.setProviderAndWait(
+    new FlagshipServerProvider({ binding: env.FLAGS })
+);</code></pre>
+	<p>フラグシップは現在クローズドベータ版で利用可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-problem-with-feature-flags-on-workers">Workersの機能フラグの問題</h3>
+		<a href="https://blog.cloudflare.com/#the-problem-with-feature-flags-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くのCloudflare開発者は、実用的な回避策に頼っています。フラグロジックをWorkersに直接ハードコーディングするということです。正直なところ、最初は十分に機能します。Workersは数秒でデプロイできるため、コードのブール値を切り換えて本番環境にプッシュするだけで、ほとんどの状況で十分な速さです。</p>
+	<p>しかし、すべては単純なものではありません。ハードコードされたフラグが10になります。10つは50になり、異なるチームが所有し、オン/オフを中央で把握することができなくなります。監査証跡はありません。何か問題が発生すると、誰が何を切り替えたのかを突き止めるために、<code>git blame</code> を検索することになります。</p>
+	<div class="flex anchor relative">
+		<h4 id="network-call-to-external-services">外部サービスへのネットワーク呼び出し</h4>
+		<a href="https://blog.cloudflare.com/#network-call-to-external-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workersで使用されるもう1つの一般的なパターンは、次の方法で外部サービスにHTTPリクエストを行うことです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const response = await fetch("https://flags.example-service.com/v1/evaluate", {
+      ...
+      body: JSON.stringify({
+        flagKey: "new-checkout-flow",
+        context: {
+          ...
+        },
+      }),
+    });
+const { value } = await response.json();
+if (value === true) {
+    return handleNewCheckout(request);
+}
+return handleLegacyCheckout(request);</code></pre>
+	<p>そのアウトバウンドリクエストは、すべてのユーザーリクエストのクリティカルパスにあります。ユーザーがフラグサービスの地域からどれだけ離れているかによって、かなりの遅延が発生する可能性があります。</p>
+	<p>これは奇妙な状況です。アプリケーションはエッジで実行され、ユーザーから数ミリ秒の圏内で実行できます。しかし、機能フラグチェックによって、何をレンダリングするかを決定する前に、インターネット経由で別のAPIに到達することを強制します。</p>
+	<div class="flex anchor relative">
+		<h4 id="why-local-evaluation-doesnt-solve-the-problem">ローカル評価が問題解決にならない理由</h4>
+		<a href="https://blog.cloudflare.com/#why-local-evaluation-doesnt-solve-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>機能フラグサービスの中には、「ローカル評価」SDKを提供するものもあります。リクエストごとにリモートAPIを呼び出す代わりに、SDKはフラグルールの完全なセットをメモリにダウンロードし、ローカルで評価します。評価ごとのアウトバウンドリクエストはなく、フラグの決定は進行中で行われます。</p>
+	<p>Workersでは、これらの前提はいずれも成り立ちません。長期間有効なプロセスはありません。Worker Isolateを作成し、リクエストを処理し、あるリクエストと次のリクエストの間に退避させることができます。新しい呼び出しは、SDKをゼロからやり直すことを意味するかもしれません。</p>
+	<p>サーバーレスプラットフォームでは、すでにエッジにある分散プリミティブが必要です。キャッシングが管理され、読み取りがローカルで、最新の状態に維持するために永続的な接続が不要な分散プリミティブが必要です。</p>
+	<p>Cloudflare KVは、そのための素晴らしいプリミティブです。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-flagship-works">フラグシップの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-flagship-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Flagshipは、Cloudflareのインフラストラクチャ（Workers、Durable Objects、KV）上に完全に構築されています。評価パスには、外部データベース、サードパーティサービス、中央集中型配信元サーバーはありません。</p>
+	<p>フラグを作成または更新すると、コントロールプレーンは変更をアトミックに<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a>に書き込みます。Durable Objectは、SQLiteをバックエンドとするグローバルに一意なインスタンスであり、そのアプリのフラグ設定と変更ログの信頼できる情報源として機能します。更新されたフラグ設定は数秒以内に、Cloudflareのグローバルに分散されたキーバリューストアである<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>に同期され、Cloudflareのネットワーク全体で複製されます。</p>
+	<p>リクエストがフラグを評価すると、FlagshipはエッジのKVから直接フラグ設定を読み取ります。つまり、すでにリクエストを処理しているのと同じCloudflareロケーションです。そして、評価エンジンは<a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer"><u>分離された状態</u></a>で実行されます。リクエストのコンテキストをフラグのターゲットルールと照合し、ロールアウトの割合を解決し、バリエーションを返します。データもロジックもエッジで存在し、評価されるために他の場所に送られることは一切ありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nKDxB6OkUr1fpVKGWEugC/8fc4dbf0bd1ec45e30010a223982487e/image2.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="using-flagship-the-worker-binding">フラグシップの使用：Workerバインディング</h3>
+		<a href="https://blog.cloudflare.com/#using-flagship-the-worker-binding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workersを実行しているチームに対して、FlagshipはWorkersランタイム内でフラグを評価するダイレクトバインディングを提供します。HTTPラウンドトリップもSDKオーバーヘッドもありません。<code>wrangler.jsonc</code>にバインディングを追加すると、Workerが接続されます。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "flagship": [
+    {
+      "binding": "FLAGS",
+      "app_id": "&lt;APP_ID&gt;"
+    }
+  ]
+}</code></pre>
+	<p>これで、以上です。アカウントIDはCloudflareアカウントから推測され、<code>app_id</code> はバインディングを特定のフラグシップアプリに結び付けます。Workerでは、フラグ値を要求するだけです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export default {
+  async fetch(request: Request, env: Env) {
+    // Simple boolean check
+    const showNewUI = await env.FLAGS.getBooleanValue('new-ui', false, {
+      userId: 'user-42',
+      plan: 'enterprise',
+    });
+    // Full evaluation details when you need them
+    const details = await env.FLAGS.getStringDetails('checkout-flow', 'v1', {
+      userId: 'user-42',
+    });
+    // details.value = "v2", details.variant = "new", details.reason = "TARGETING_MATCH"
+  },
+};</code></pre>
+	<p>バインディングは、すべてのバリエーションタイプ（<code>getBooleanValue()</code>、<code>getStringValue()</code>、<code>getNumberValue()</code>、<code>getObjectValue()</code>）の型付きアクセサーと、一致したバリアントおよび選択された理由とともに解決された値を返す<code>*Details()</code>バリアントをサポートしています。評価エラーがあれば、デフォルト値がスムーズに返されます。型の不一致があった場合、バインディングは例外を発生させます。これはコードのバグであり、一時的な障害ではありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-sdk-openfeature-native">SDK：OpenFeatureネイティブ</h3>
+		<a href="https://blog.cloudflare.com/#the-sdk-openfeature-native" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどの機能フラグSDKには、独自のインターフェースと評価パターンが付属しています。時間の経過とともに、これらはコードベースに深く組み込まれ、プロバイダーを切り替えるということは、すべての通話サイトを書き換えることを意味します。</p>
+	<p>私たちは、同じようなものをまた作りたいとは思いませんでした。Flagshipは、機能フラグ評価のためのCNCFオープンスタンダードである<a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer">OpenFeature</a>上に構築されています。OpenFeatureは、複数の言語やプロバイダーにまたがるフラグ評価のための共通のインターフェースを定義します。それはOpenTelemetryが観測可能性を持っているのと同じ関係です。基準に照らし、評価コードを一度記述し、設定を1行変更するだけでプロバイダーをスワップできます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { OpenFeature } from '@openfeature/server-sdk';
+import { FlagshipServerProvider } from '@cloudflare/flagship/server';
+await OpenFeature.setProviderAndWait(
+  new FlagshipServerProvider({
+    appId: 'your-app-id',
+    accountId: 'your-account-id',
+    authToken: 'your-cloudflare-api-token',
+  })
+);
+const client = OpenFeature.getClient();
+const showNewCheckout = await client.getBooleanValue(
+  'new-checkout-flow',
+  false,
+  {
+    targetingKey: 'user-42',
+    plan: 'enterprise',
+    country: 'US',
+  }
+);</code></pre>
+	<p>Flagshipバインディングを持つWorkersを実行している場合、OpenFeatureプロバイダーに直接渡すことができます。バインディングはすでにアカウントコンテキストを伝送するため、設定する必要はありません。認証は暗黙的です。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { OpenFeature } from '@openfeature/server-sdk';
+import { FlagshipProvider } from '@cloudflare/flagship/server';
+let initialized = false;
+export default {
+  async fetch(request: Request, env: Env) {
+    if (!initialized) {
+      await OpenFeature.setProviderAndWait(
+        new FlagshipServerProvider({ binding: env.FLAGS })
+      );
+      initialized = true;
+    }
+    const client = OpenFeature.getClient();
+    const showNewCheckout = await client.getBooleanValue('new-checkout-flow', false, {
+      targetingKey: 'user-42',
+      plan: 'enterprise',
+    });
+  },
+};</code></pre>
+	<p>評価コードは変更されません。OpenFeatureのインターフェースは同一です。しかし、内部的には、FlagshipはHTTP経由ではなくバインディングを通じてフラグを評価します。標準のポータビリティとバインディングのパフォーマンスが得られます。</p>
+	<p>ブラウザについては、クライアント側のプロバイダーも利用できます。指定したフラグをプリフェッチし、設定可能な有効期限（TTL）でキャッシュし、そのキャッシュから同期的に評価を行います。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-you-can-do-with-flagship">フラグシップでできること</h3>
+		<a href="https://blog.cloudflare.com/#what-you-can-do-with-flagship" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Flagshipは、機能フラグサービスから予想されるパターンと、AIで生成されたコードが毎日本番環境にランディングされる際に重要となるパターンをサポートします。</p>
+	<p>フラグ値はブール値、文字列、数値、または完全なJSONオブジェクトです。設定ブロック、UIテーマの定義、または個別のコードパスを維持することなく、ユーザーを異なるAPIバージョンにルーティングするのに役立ちます。</p>
+	<div class="flex anchor relative">
+		<h4 id="targeting-rules">ターゲティングルール</h4>
+		<a href="https://blog.cloudflare.com/#targeting-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>各フラグは複数のルールを持つことができ、優先順に評価されます。最初に一致するルールが優先されます。</p>
+	<p>ルールは次の要素で構成されています：</p>
+	<ul>
+		<li>
+			<p>ルールが指定されたコンテキストに適用されるかどうかを決定する条件</p>
+		</li>
+		<li>
+			<p>ルールが一致した時に提供するフラグのバリエーション</p>
+		</li>
+		<li>
+			<p>パーセンテージベースの配信のオプション展開</p>
+		</li>
+		<li>
+			<p>複数のルールが存在する場合の評価順序を決定する優先順位（数値が小さいほど優先順位が高い）</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="nested-logical-conditions">入れ子になった論理条件</h4>
+		<a href="https://blog.cloudflare.com/#nested-logical-conditions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>条件は、AND/OR論理を使って構成することができ、最大5レベルの深さに入れ子にできます。一つのルールで、以下のような内容を表現することができます：</p>
+	<pre class="language-Rust"><code class="language-Rust">(plan == “enterprise” AND region == “us” ) OR (user.email.endsWith(“@cloudflare.com”))
+= serve (“premium”)</code></pre>
+	<p>ルールの最上位レベルでは、複数の条件が暗黙的なANDと組み合わされ、ルールが一致するためには、すべての条件が通過しなければなりません。各条件内で、AND/ORグループを入れ子にして、より複雑なロジックを使うことができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="flag-rollouts-by-percentage">割合別のフラグロールアウト</h4>
+		<a href="https://blog.cloudflare.com/#flag-rollouts-by-percentage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>段階的デプロイメント</u></a>とは異なり、Workerの異なるアップロードされたバージョン間でトラフィックを分割するのに対し、機能フラグを使用すると、トラフィックの100%を処理している単一のバージョン内で動作をパーセンテージでロールアウトすることができます。 </p>
+	<p>どのルールにも、ロールアウトの割合が含まれます。条件に一致する人すべてにバリエーションを提供するのではなく、その中の何割かにバリエーションを提供します。 </p>
+	<p>ロールアウトは、特定のコンテキスト属性で一貫したハッシングを使用します。同じ属性値（たとえば、userId ）は常に同じバケットにハッシュされるため、リクエスト間のバリエーションを切り替えることはありません。ユーザーの5%～10%、50%～100%まで上昇できるため、すでにロールアウトに参加しているユーザーはそのままです。</p>
+	<div class="flex anchor relative">
+		<h3 id="built-for-what-comes-next">次の一手を生み出すために</h3>
+		<a href="https://blog.cloudflare.com/#built-for-what-comes-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本番環境に入るAI生成コードは加速する一方です。エージェンティックワークフローは、それをさらに推し進めます。つまり、本番環境のコードを自律的にデプロイ、テスト、反復するエージェントです。この世界で繁栄するチームは、最速で製品を生み出すチームではありません。迅速に出荷でき、ユーザーが見るものを依然としてコントロールでき、何かが壊れれば数秒で戻り、新しいコードパスを自信を持って徐々に公開できるものです。</p>
+	<p>Flagshipは、そのために作られています</p>
+	<ul>
+		<li>
+			<p><b>地球全体で評価、</b>K/Vを使ってグローバルにキャッシュ。</p>
+		</li>
+		<li>
+			<p><b>完全な監査証跡。</b>フラグの変更はすべて、フィールドレベルのブラウザで記録され、誰が、いつ、何を変更したかを把握できます。</p>
+		</li>
+		<li>
+			<p><b>ダッシュボード統合</b>。チームのメンバーは誰でも、コードに触れることなく、フラグを切り替えたり、ロールアウトを調整したりすることができます。</p>
+		</li>
+		<li>
+			<p><b>OpenFeatureの互換性。</b>評価コードを書き換えることなく、フラグシップを導入しましょう。書き換えもせず、そのままにします。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="get-started-with-flagship">フラグシップを始めましょう</h3>
+		<a href="https://blog.cloudflare.com/#get-started-with-flagship" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、Flagshipはプライベートベータ版として公開されます。アクセスをリクエストできます<a href="https://www.cloudflare.com/lp/flagship-private-beta" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>。価格設定の詳細は、一般公開に向けてお知らせします。</p>
+	<ul>
+		<li>
+			<p><a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にアクセスして、最初のFlagshipアプリを作成しましょう</p>
+		</li>
+		<li>
+			<p>SDKをインストールします: <code>npm i @cloudflare/flagship</code>; またはWorkerバインディングを直接Workerで使用する</p>
+		</li>
+		<li>
+			<p>統合ガイドとAPIのリファレンスについては、<a href="https://developers.cloudflare.com/flagship/get-started" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をお読みください</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/flagship" target="_blank" rel="noopener noreferrer"><u>例のあるソースコードをご覧いただき、</u></a></p>
+		</li>
+	</ul>
+	<p>現在、Workersでフラグをハードコーディングしている場合、またはすべてのリクエストに遅延を追加する外部サービスを通じてフラグを評価している場合は、Flagshipをお試しください。構築されたものについてぜひお聞かせください。</p>
+</div>

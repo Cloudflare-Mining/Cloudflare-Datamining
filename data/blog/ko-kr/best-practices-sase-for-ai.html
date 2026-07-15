@@ -1,0 +1,337 @@
+<div class="mb2 gray5">14분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/best-practices-sase-for-ai">English</a>, <a href="https://blog.cloudflare.com/zh-tw/best-practices-sase-for-ai">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/best-practices-sase-for-ai">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/best-practices-sase-for-ai">Português</a>, <a href="https://blog.cloudflare.com/es-la/best-practices-sase-for-ai">Español (Latinoamérica)</a> 및 <a href="https://blog.cloudflare.com/zh-cn/best-practices-sase-for-ai">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SKzgHF9i2f9SeyynwdCQP/8c837976992746b031178b27d1890929/0.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>생성형 AI</u></a> 때문에 모든 곳의 비즈니스가 혁신됨에 따라, 보안 및 IT 리더들은 어려운 상황에 놓이게 되었습니다. 경영진은 효율성을 증대하고 경쟁 우위를 확보하기 위해 생성형 AI 도구의 신속한 도입을 지시하고 있습니다. 한편, IT팀과 보안팀에서는 조직에서 생성형 AI를 도입하고 배포할 계획을 정확히 파악하기 전이라도 AI 보안 전략을 신속하게 개발해야 합니다.&nbsp;</p>
+	<p>IT팀과 보안팀의 경우 '비행 중에 비행기를 제작하는 것'이 낯설지 않습니다. 하지만 이러한 순간에는 새롭고 복잡한 보안 문제가 따릅니다. 승인을 받은 비즈니스와 승인되지 않은 비즈니스 기능을 모두 망라하여, 직원들이 채택한 새로운 AI 기능이 폭증하고 있습니다. AI 에이전트는 인증 정보를 수집하여 중요한 회사 리소스와 자율적으로 상호 작용합니다. 보안 및 규제 준수 체계가 제대로 갖춰지지 않은 상황에서도 중요한 데이터가 AI 도구와 공유되고 있습니다.</p>
+	<p>AI 사용을 내부적으로 관리하는 문제는 보안 및 IT 리더에게는 전략적 사고를 요구하지만, 결코 극복할 수 없는 문제는 아닙니다. <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>안전한 액세스 서비스 에지(SASE)</u></a>는 널리 사용되는 클라우드 기반 네트워크 아키텍처로, 네트워킹 기능과 보안 기능을 하나의 통합된 서비스로 결합하여, 직원들이 위치와 상관없이 인터넷과 회사 리소스에 안전하고 효율적으로 접근할 수 있도록 지원합니다. SASE 아키텍처는 AI 환경에서 조직의 위험 및 보안 요구 사항을 충족하기 위해 효과적으로 확장될 수 있습니다.&nbsp;</p>
+	<p>Cloudflare의 SASE 플랫폼은 IT 팀에서 혁신을 저해하지 않으면서도 안전하고 책임감 있는 방식으로 AI 사용을 관리하도록 지원하는 데 있어 아주 유리한 위치에 있습니다. 이 분야에서 Cloudflare가 차별화되는 점은 사이버 보안뿐만 아니라 AI 인프라에서도 운영되는 몇 안 되는 SASE 벤더 중 하나라는 것입니다. 여기에는 개발자를 위한 AI 인프라 제공(예: <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>, <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>원격 MCP 서버</u></a>, <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Realtime AI Apps</u></a>)부터 공개 LLM 보호(예: <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>Firewall for AI</u></a> 또는 <a href="https://blog.cloudflare.com/ai-labyrinth"><u>AI 라비린스</u></a>), 콘텐츠 제작자가 자신의 콘텐츠에 액세스하는 데 대해 <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>AI 크롤러에 요금을 청구할 수 있도록 허용하는 것까지 포함되며</u></a>, 목록은 계속됩니다. Cloudflare에서는 이 분야에 대한 전문성을 바탕으로 조직 내부에서 AI 사용을 관리하는 독특한 관점을 확보합니다.&nbsp; 또한 고객은 당사 플랫폼의 다양한 구성 요소를 연결하여 AI <i>및</i> AI 사이버 보안 인프라를 구축할 기회를 얻을 수 있습니다.</p>
+	<p>이번 주에는 이러한 AI 전문성을 활용하여 고객께서 성공적인 AI 보안 전략을 구현하는 데 필요한 모든 것을 갖추도록 지원하고자 합니다. 이러한 노력의 일환으로 다음과 같은 몇 가지 새로운 AI 보안 상태 관리(AI-SPM) 기능을 발표합니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/shadow-AI-analytics"><u>Shadow AI 보고</u></a>를 통해 직원의 AI 사용에 대한 가시성 확보,</p>
+		</li>
+		<li>
+			<p>AI 공급자의 위험 관리를 위한 <a href="https://blog.cloudflare.com/confidence-score-rubric"><u>신뢰도 점수</u></a>,&nbsp;</p>
+		</li>
+		<li>
+			<p>악의적 입력을 방어하고 데이터 손실을 방지하는 <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>AI 프롬프트 보호</u></a>,&nbsp;</p>
+		</li>
+		<li>
+			<p>잘못된 구성 감지를 위한 AI 공급자와의 대역 외 <a href="https://blog.cloudflare.com/casb-ai-integrations"><u>API CASB 통합 </u></a>,&nbsp;</p>
+		</li>
+		<li>
+			<p>기업에서 <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>모델 컨텍스트 프로토콜(MCP)</u></a>&nbsp; 배포를 <a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>해결하고 보안을 강화하는</u></a> 새로운 도구.</p>
+		</li>
+	</ul>
+	<p>이러한 모든 새로운 AI-SPM 기능은 Cloudflare의 강력한 <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>SASE</u></a> 플랫폼에 직접 내장되어 있습니다.</p>
+	<p>이제 시작일 뿐입니다. 저희는 Cloudflare를 AI를 보호하고, 연결하며, AI를 통해 구축할 수 있는 최고의 장소로 만들기 위한 투자를 계속함에 따라, 앞으로 몇 달 안에 <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 플랫폼</u></a>에서 더욱 가치 있는 AI-SPM 기능을 출시할 예정입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-in-this-ai-security-guide">이 AI 보안 가이드에는 어떤 내용이 담겨 있나요?</h3>
+		<a href="https://blog.cloudflare.com/#whats-in-this-ai-security-guide" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 가이드에서는 Cloudflare의 <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>안전한 액세스 서비스 에지(SASE)</u></a> 플랫폼을 사용하여 조직에서 생성형 AI를 도입하는 모범 사례를 다룹니다. IT 및 보안 리더가 AI 보안 전략을 어떻게 수립할 수 있는지에 대해 먼저 알아보겠습니다. 다음으로, 이번 주에 출시된 새로운 AI-SPM 기능과 함께 기존 SASE 플랫폼 기능을 사용하여 이 전략을 구현하는 방법을 설명합니다.&nbsp;</p>
+	<p>이 가이드는 AI에 대한 (인간) 직원 액세스 관리를 위한 세 가지 핵심 요소, 즉 가시성, 위험 관리, 데이터 보호로 구성되어 있습니다. 또한 MCP를 사용하여 기업에서 에이전틱 AI를 배포하는 방법에 대한 추가 지침도 제공합니다. Cloudflare의 목표는 모든 프로젝트와 팀에서 AI 채택을 촉진하는 동시에 보안 전략을 비즈니스 목표에 맞게 조정하도록 지원하는 것입니다.&nbsp;</p>
+	<p>Cloudflare에서는 이 모든 작업을 단일 <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>SASE</u></a> 플랫폼을 사용하여 수행하므로 복잡하게 여러 포인트 솔루션과 보안 도구를 배포하고 관리할 필요가 없습니다. 실제로, 여기에서 보시는 바와 같이 단일 대시보드에서 AI 보안 현황에 대한 개요를 제공합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5y6ZHDu9lwCSHZ1FuZsoWT/b3f6a9eb034a3cdb2b663cff428a2335/1.png" alt="" class="kg-image" width="1999" height="1074" loading="lazy">
+	</figure>
+	<p><i>Cloudflare SASE 플랫폼의 AI 보안 보고서</i></p>
+	<div class="flex anchor relative">
+		<h2 id="develop-your-ai-security-strategy">AI 보안 전략 개발</h2>
+		<a href="https://blog.cloudflare.com/#develop-your-ai-security-strategy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 사용 시 안전을 확보하기 위한 첫 번째 단계는 조직의 위험 감수 수준을 설정하는 것입니다. 여기에는 사용자 및 데이터에 대한 가장 큰 보안 문제점을 정확히 파악하고 관련 법률 및 규제 준수 요구 사항을 확인하는 것이 포함됩니다. &nbsp; 고려해야 할 관련 문제에는 다음이 포함됩니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>특정 AI 도구와 공유해서는 안 되는 특정 <b>중요 데이터</b>가 있나요? (예를 들어, 개인 식별 정보(PII), 개인 건강 정보(PHI), 중요한 금융 데이터, 비밀번호 및 자격 증명, 소스 코드, 기타 독점적인 비즈니스 정보 등이 있습니다.)</p>
+		</li>
+		<li>
+			<p>직원이 AI의 도움을 받아 <b>내리면 안 되는 비즈니스 의사 결정이 있나요</b>? (예를 들어, EU AI 법에서는 AI를 사용하여 사회적 행동, 개인적 특성, 성격 특성을 기준으로 개인을 평가하거나 분류하는 것을 금지합니다.)</p>
+		</li>
+		<li>
+			<p>귀하는 직원이 사용한 생성형 AI 도구, 더 나아가 직원이 AI 공급자에 입력한 프롬프트 기록까지 제출하도록 요구하는 <b>규제 준수 체계</b>의 적용 대상인가요? (예를 들어 HIPAA에서는 조직에서 누가 언제 PHI에 액세스했는지 기록하는 감사 추적을 시행하도록 요구하고, GDPR에서는 개인 식별 정보에 대해 동일하게 요구하며, SOC2에서는 비밀 및 자격 증명에 대해 동일하게 요구합니다.)</p>
+		</li>
+		<li>
+			<p>직원들이 <b>특정 생성 AI 공급업체의 승인된 엔터프라이즈 버전</b>을 사용하고 특정 AI 도구나 해당 소비자 버전을 피하도록 요구하는 구체적인 데이터 보호 요구 사항이 있나요?&nbsp; (엔터프라이즈 AI 도구는 데이터 보존 기간 단축, 제3자와의 데이터 공유 제한, 사용자 입력을 기반으로 AI 모델을 학습하지 않겠다는 약속 등 더 유리한 서비스 약관을 제공하는 경우가 많습니다.)</p>
+		</li>
+		<li>
+			<p>특정 AI 도구가 신뢰할 수 없거나, 검토되지 않았거나, 위험한 지역에 본사를 두고 있다는 이유 등으로 직원들이 특정 AI 도구를 완전히 <b>사용하지 않도록</b> 요구하시나요?&nbsp;</p>
+		</li>
+		<li>
+			<p>조직에서 승인한 AI 공급자가 제공하는 보안 보호 기능은 무엇이며, 중요한 데이터 유출을 초래할 수 있는 <b>AI 도구의 잘못된 구성으로부터 어느 정도까지 보호</b>할 계획인가요?&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/the-net/building-cyber-resilience/secure-govern-ai-agents" target="_blank" rel="noopener noreferrer">자율적인 AI 에이전트 사용에 대한 귀사의 정책</a>은 무엇인가요?&nbsp; <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u><b>모델 컨텍스트 프로토콜(MCP)</b></u></a>을 <b>채택</b>하기 위한 전략은 무엇인가요? (모델 컨텍스트 프로토콜은 애플리케이션 프로그래밍 인터페이스(API)가 작동하는 방식과 유사하게 대규모 언어 모델(LLM)이 정보를 활용할 수 있도록 하는 표준 방식입니다. MCP는 자율적으로 목표를 추구하고 조치를 취할 수 있는 에이전틱 AI를 지원합니다.)</p>
+		</li>
+	</ul>
+	<p>거의 모든 조직은 생성형 AI 사용과 관련된 규제 준수 요구 사항을 가지고 있지만, 이러한 문제를 해결하는 데 있어 '만능 해결책'은 없습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>일부 조직에는 모든 종류의 AI 도구를 광범위하게 도입해야 하는 의무가 있는 반면, 다른 조직에서는 승인된 AI 도구만 사용하도록 직원에게 요구합니다.&nbsp;</p>
+		</li>
+		<li>
+			<p>일부 조직에서는 MCP를 빠르게 도입하고 있지만, 에이전트가 기업 리소스와 자율적으로 상호 작용하도록 할 준비가 아직 되지 않은 조직도 있습니다.&nbsp;</p>
+		</li>
+		<li>
+			<p>일부 조직은 데이터 손실 방지(DLP)와 관련하여 엄격한 요구 사항을 가지고 있지만, 다른 조직은 DLP를 조직에 배포하는 프로세스의 초기 단계에 있습니다.</p>
+		</li>
+	</ul>
+	<p>이처럼 목표와 요구 사항이 다양하더라도 Cloudflare SASE는 조직의 AI 보안 전략을 구현할 수 있는 유연한 플랫폼을 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="build-a-solid-foundation-for-ai-security">AI 보안을 위한 견고한 토대 구축&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#build-a-solid-foundation-for-ai-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 보안 전략을 구현하려면 먼저 탄탄한 <a href="https://developers.cloudflare.com/reference-architecture/architectures/sase" target="_blank" rel="noopener noreferrer"><u>SASE 배포</u></a>가 필요합니다.&nbsp;</p>
+	<p>SASE는 보안 및 네트워킹을 통합하는 단일 플랫폼을 제공하여, 분산된 포인트 솔루션들을 하나의 플랫폼으로 대체합니다. 이 플랫폼은 애플리케이션 가시성, 사용자 인증, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>데이터 손실 방지(DLP)</u></a> 및 인터넷과 내부 기업 리소스에 대한 접근 정책을 제어합니다.&nbsp; SASE는 효과적으로 AI 보안 전략을 시행하기 위한 필수적인 토대입니다.&nbsp;</p>
+	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>SASE 아키텍처</u></a>는 직원들이 사용하는 AI 도구를 파악하고 목록화하여 AI 보안 전략을 실행할 수 있도록 지원합니다. 이러한 가시성을 통해 AI 프롬프트 및 응답을 모니터링하여 AI 도구와 공유되는 데이터를 파악함으로써 위험을 사전에 관리하고 규제 준수 요구 사항을 지원할 수 있습니다. DLP가 강력하면 AI 도구에 중요한 데이터가 입력되는 것을 스캔하고 차단하여 데이터 유출을 방지하고 조직의 가장 중요한 정보를 보호할 수 있습니다. Cloudflare의 <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>안전한 웹 게이트웨이(SWG)</u></a>를 통해 비승인된 AI 공급자의 트래픽을 사용자 교육 페이지 또는 승인된 엔터프라이즈 AI 공급자로 리디렉션할 수 있습니다. 또한, 당사의 SASE 플랫폼에 MCP 도구를 새롭게 통합하여 조직 내에서 에이전트 기반 AI의 배포를 안전하게 보호할 수 있습니다.</p>
+	<p>이제 막 SASE 여정을 시작하셨다면, Cloudflare의 <a href="https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts" target="_blank" rel="noopener noreferrer"><u>안전한 인터넷 트래픽 배포 가이드</u></a>가 시작하기에 가장 적합한 곳입니다. 하지만 이 가이드에서는 이러한 소개 세부 사항은 생략하고 생성형 AI 사용을 안전하게 보호하기 위해 SASE를 사용하는 방법을 곧바로 살펴보겠습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="gain-visibility-into-your-ai-landscape">귀사의 AI 환경을 가시적으로 파악&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#gain-visibility-into-your-ai-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>볼 수 없는 것은 보호할 수 없습니다. 첫 번째 단계는 조직 내에서 직원들이 사용, 배포, 실험하는 모든 AI 도구를 파악하고 목록화하는 데 필수적인 AI 환경에 대한 가시성을 확보하는 것입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="discover-shadow-ai">Shadow AI 파악&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#discover-shadow-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Shadow AI는 IT 부서에서 공식적으로 승인하지 않은 AI 애플리케이션의 사용을 의미합니다. Shadow AI는 드문 현상이 아닙니다. Salesforce에서 실시한 설문조사에 참여한 <a href="https://www.salesforce.com/news/stories/ai-at-work-research/?utm_campaign=amer_cbaw&amp;utm_content=Salesforce_World+Tour&amp;utm_medium=organic_social&amp;utm_source=linkedin" target="_blank" rel="noopener noreferrer"><u>지식 근로자의 절반 이상</u></a>이 직장에서 승인되지 않은 AI 도구를 사용한다고 인정했습니다. 승인되지 않은 AI 사용이 반드시 악의적인 의도를 의미하는 것은 아닙니다. 직원들은 종종 자신의 업무를 더 효율적으로 수행하려 할 뿐입니다. IT 또는 보안 책임자로서, 귀하의 목표는 Shadow AI를 식별하고 적절한 AI 보안 정책을 적용하는 것이어야 합니다. 이를 수행하는 강력한 방법으로는 인라인 방식과 대역 외 방식 등 두 가지가 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="discover-employee-usage-of-ai-inline">인라인에서 직원의 AI 사용량 확인</h4>
+		<a href="https://blog.cloudflare.com/#discover-employee-usage-of-ai-inline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>가시성을 확보하는 가장 직접적인 방법은 <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare의 안전한 웹 게이트웨이(SWG)</u></a>를 사용하는 것입니다.&nbsp;</p>
+	<p>SWG는 승인된 AI 및 승인되지 않은 AI와 채팅 애플리케이션을 명확하게 파악하는 데 도움이 됩니다. 감지된 사용량 검토를 통해 조직에서는 사용 중인 AI 애플리케이션에 대한 인사이트를 얻을 수 있습니다. 이 지식은 승인된 도구를 지원하고 위험한 도구를 차단하거나 제어하는 정책을 구축하는 데 필수적입니다. 이 기능을 사용하려면 최종 사용자 장치에서 게이트웨이 프록시 모드로 WARP 클라이언트를 배포해야 합니다.</p>
+	<p>Cloudflare의 새로운 애플리케이션 라이브러리와 <a href="https://blog.cloudflare.com/shadow-AI-analytics"><u>섀도우 IT</u></a> 대시보드를 사용하여 회사의 AI 애플리케이션 사용량을 검토할 수 있습니다. 이러한 도구를 통해 다음을 수행할 수 있습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>사용자 장치의 트래픽을 검토하여 시간 경과에 따라 특정 애플리케이션에 얼마나 많은 사용자가 참여하는지 파악합니다.</p>
+		</li>
+		<li>
+			<p>조직 내에서 애플리케이션의 상태(예: 승인, 미승인)를 지정하고, 해당 상태를 기준으로 애플리케이션에 대한 액세스를 제어하는 다양한 SWG 정책의 입력으로 활용합니다.&nbsp;</p>
+		</li>
+		<li>
+			<p>&nbsp;곧 출시될 <a href="https://blog.cloudflare.com/confidence-score-rubric"><u>Cloudflare 애플리케이션 신뢰도 점수</u></a>로 SaaS 및 생성형 AI 애플리케이션을 대규모로 자동 평가합니다.<b>&nbsp;</b></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NFrOpJkBMH6tsPZVec02Q/37b54f7477082dedcac2adcba31e2c29/2.png" alt="" class="kg-image" width="1999" height="1277" loading="lazy">
+	</figure>
+	<p><i><sup>다양한 상태(승인됨, 미승인, 검토 중, 미검토)에 따른 애플리케이션 활용도를 보여주는 섀도우 IT 대시보드.</sup></i></p>
+	<div class="flex anchor relative">
+		<h4 id="discover-employee-usage-of-ai-out-of-band">직원의 AI 대역 외 AI 사용 현황 알아보기</h4>
+		<a href="https://blog.cloudflare.com/#discover-employee-usage-of-ai-out-of-band" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>조직에서 장치 클라이언트를 사용하지 않더라도 클라우드 액세스 보안 브로커(<a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>)를 위한 Cloudflare의 통합을 Google Workspace, Microsoft 365, GitHub 등의 서비스와 함께 사용하면 Shadow AI 사용에 대한 귀중한 데이터를 얻을 수 있습니다.&nbsp;</p>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a>는 중요한 데이터 가시성 및 의심스러운 사용자 활동을 포함하여 SaaS 환경에 대하여 아주 상세하고 정확한 정보를 제공합니다. CASB를 SSO 공급자와 통합하여 사용자가 타사 AI 애플리케이션에 인증했는지 확인하고 조직 전체에서 애플리케이션 사용 현황을 명확하고 비침투적인 방식으로 파악할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HDUtSAX9f5XZasSyACTiV/367f80a5d745070fd8e0191d0e36e61d/3.png" alt="" class="kg-image" width="1999" height="988" loading="lazy">
+	</figure>
+	<p><i><sup>타사 통합에 맞게 필터링된 검색 결과를 보여주는 Google Workspace와 API CASB의 통합. 여러 LLM 통합이 발견되었습니다.</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="implement-an-ai-risk-management-framework">AI 위험 관리 프레임워크 구현</h2>
+		<a href="https://blog.cloudflare.com/#implement-an-ai-risk-management-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 환경에 대한 가시성을 확보했으니, 다음 단계는 이러한 위험을 사전에 관리하는 것입니다. Cloudflare SASE 플랫폼을 통해 AI 프롬프트와 응답을 모니터링하고, 세분화된 보안 정책을 적용하며, 사용자에게 안전한 사용법을 안내하고, 기업 AI 공급자의 잘못된 구성을 방지할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="detect-and-monitor-ai-prompts-and-responses">AI 프롬프트 및 응답 감지 및 모니터링</h3>
+		<a href="https://blog.cloudflare.com/#detect-and-monitor-ai-prompts-and-responses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>SASE 플랫폼에서 <a href="https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption" target="_blank" rel="noopener noreferrer"><u>TLS 암호 해독이 활성화</u></a>된 경우, 직원이 AI를 어떻게 사용하는지에 대한 새롭고 강력한 인사이트를 새로운 <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>AI 프롬프트 보호</u></a> 기능으로 얻을 수 있습니다.&nbsp;&nbsp;</p>
+	<p>AI 프롬프트 보호는 지원되는 AI 애플리케이션에서 직원의 상호 작용으로부터 발생하는 정확한 프롬프트와 응답에 대한 가시성을 제공합니다. 이를 통해 어떤 도구가 사용되고 있는지 아는 것을 넘어 어떤 종류의 정보가 공유되고 있는지도 정확히 파악할 수 있습니다.&nbsp;&nbsp;</p>
+	<p>이 기능은 또한 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer"><u>DLP 프로필</u></a>과 함께 작동하여 프롬프트에서 중요한 데이터를 감지합니다. 작업을 차단할지 아니면 단순히 모니터링할지 선택할 수도 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JpNZiyklt6qBRjW4LZuSW/1ea4043b6d03f8de31ce24175aa6ca02/4.png" alt="" class="kg-image" width="847" height="653" loading="lazy">
+	</figure>
+	<p><i><sup>AI 프롬프트 보호를 사용하여 감지된 프롬프트에 대한 로그 항목.</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="build-granular-ai-security-policies">세분화된 AI 보안 정책 구축</h3>
+		<a href="https://blog.cloudflare.com/#build-granular-ai-security-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모니터링 도구를 통해 AI 사용을 명확하게 파악하면, 보안 목표를 달성하기 위한 보안 정책 구축을 시작할 수 있습니다. Cloudflare Gateway를 사용하면 애플리케이션 카테고리, 애플리케이션 승인 상태, 사용자, 사용자 그룹, 장치 상태를 기준으로 정책을 생성할 수 있습니다. 예를 들어, 다음과 같은 작업을 수행할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>승인된 AI 애플리케이션을 명시적으로 허용하고, 승인되지 않은 AI 애플리케이션은 차단하는 정책을 수립합니다.</p>
+		</li>
+		<li>
+			<p>승인되지 않은 AI 애플리케이션에서 승인된 AI 애플리케이션으로 <a href="https://developers.cloudflare.com/changelog/2025-04-11-http-redirect-custom-block-page-redirect" target="_blank" rel="noopener noreferrer"><u>사용자를 리디렉션하는 정책</u></a>을 생성합니다.</p>
+		</li>
+		<li>
+			<p>특정 애플리케이션에 대한 액세스를 특정 장치 보안 상태를 가진 특정 사용자 또는 그룹으로 제한합니다.</p>
+		</li>
+		<li>
+			<p>계약직 또는 신입 사원과 같이 위험도가 높은 특정 사용자 그룹이 조직의 다른 부분에 영향을 주지 않으면서<a href="https://blog.cloudflare.com/ai-prompt-protection"><u> AI 프롬프트 보호</u></a>를 통해 신속하게 프롬프트를 캡처할 수 있게 하는 정책을 구축합니다.</p>
+		</li>
+		<li>
+			<p>특정 애플리케이션을 <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation" target="_blank" rel="noopener noreferrer"><u>원격 브라우저 격리(RBI)</u></a> 뒤에 배치하여 최종 사용자가 애플리케이션에 파일을 업로드하거나 데이터를 붙여 넣을 수 없도록 합니다.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BCDxoKrUDRAOO13V8Qd4W/28e84e4529f3e040ba4a2c3c98c6eed7/5.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
+	</figure>
+	<p><i><sup>Gateway 애플리케이션 상태 정책 선택기</sup></i></p>
+	<p>이러한 모든 정책은 Cloudflare Gateway의 통합 정책 빌더에서 작성할 수 있어, 조직 전체에 AI 보안 전략을 간편하게 배포할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="control-access-to-internal-llms">내부 LLM 액세스 제어&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#control-access-to-internal-llms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>를 사용하여 귀사 직원이 내부적으로 학습시킨 독점 모델 및 귀사에서 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker의 AI</u></a>에서 실행하는 모델을 포함하여 귀사 내부 LLM에 대한 액세스를 제어할 수 있습니다.&nbsp;</p>
+	<p>Cloudflare Access를 사용하면 사용자의 신원, 사용자 그룹, 장치 상태 및 기타 상황적 신호에 따라 액세스 권한이 부여되도록 하는 등 세분화된 정책을 사용하여 이러한 LLM에 대한 액세스를 제어할 수 있습니다. 예를 들어,<a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>를 사용하여 조직의 특정 데이터 과학자만 특정 유형의 고객 데이터를 <a href="https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain" target="_blank" rel="noopener noreferrer"><u>학습한</u></a> <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 모델에 액세스할 수 있도록 보장하는 정책을 작성할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="manage-the-security-posture-of-third-party-ai-providers">타사 AI 공급자의 보안 상태 관리</h3>
+		<a href="https://blog.cloudflare.com/#manage-the-security-posture-of-third-party-ai-providers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>승인할 AI 도구를 정의할 때 일관된 사용을 위해 기능적 보안 제어 장치를 개발할 수 있습니다. Cloudflare에서는 OpenAI(ChatGPT), Anthropic(Claude), Google Gemini 등 인기 있는 <a href="https://blog.cloudflare.com/casb-ai-integrations"><u>AI 도구와의 API CASB 통합</u></a>을 새롭게 지원합니다. 이러한 '대역 외' 통합은 사용자가 승인된 AI 도구를 어떻게 사용하고 있는지에 대한 즉각적인 가시성을 제공하여 상태 관리 결과 보고를 지원하며, 보고 대상은 다음과 같습니다.</p>
+	<ul>
+		<li>
+			<p>공유 설정 관련 잘못된 구성.</p>
+		</li>
+		<li>
+			<p>API 키 관리 모범 사례.</p>
+		</li>
+		<li>
+			<p>업로드된 첨부 파일에서 DLP 프로필 일치 항목</p>
+		</li>
+		<li>
+			<p>켜져 있는 더 위험한 AI 기능(예: 자율 웹 브라우징, 코드 실행)</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0a6FVjCwejeyUzdQR0pyb/79f29b0d92c27bcd400ed7ded8d4c4e3/6.png" alt="" class="kg-image" width="1999" height="1753" loading="lazy">
+	</figure>
+	<p><i><sup>켜져 있는 위험한 기능, 사용하지 않는 관리자 자격 증명과 같은 보안 상태 위험, 업로드된 첨부 파일이 DLP 프로필과 일치하는지를 보여주는 OpenAI API CASB 통합.</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="layer-on-data-protection">데이터 보호 계층&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#layer-on-data-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>강력한 데이터 보호는 직원이 AI에 액세스하는 것을 보호하는 마지막 보루입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="prevent-data-loss">데이터 손실 방지</h3>
+		<a href="https://blog.cloudflare.com/#prevent-data-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 SASE 플랫에서는 데이터 유출을 방지하고 조직의 가장 중요한 정보를 보호하기 위해 AI 도구에 중요한 데이터가 입력되는 것을 스캔하고 차단하는 데이터 손실 방지(<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>DLP</u></a>) 도구를 오랫동안 지원해 왔습니다.&nbsp; <a href="https://blog.cloudflare.com/improving-data-loss-prevention-accuracy-with-ai-context-analysis"><u>조직별 트래픽 패턴</u></a>에 맞춰 중요한 데이터를 감지하는 정책을 작성하고 Cloudflare Gateway의 통합 정책 빌더를 사용하여 이러한 정책을 사용자와 AI 도구 또는 기타 애플리케이션의 상호 작용에 적용할 수 있습니다. 예를 들어, 주민등록번호(SSN), 전화번호, 주소의 업로드를 감지하고 차단하는 DLP 정책을 작성할 수 있습니다.</p>
+	<p>새로운 <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>AI 프롬프트 보호</u></a> 기능의 일부로 이제 지원되는 AI 공급자와 사용자의 상호 작용을 의미상 이해할 수도 있습니다. 프롬프트는 PII, 자격 증명 및 비밀, 소스 코드, 재무 정보, 코드 남용/악성 코드, 프롬프트 주입/탈옥을 포함하는 의미 있고 높은 수준의 주제로 <i>인라인</i>으로 분류됩니다.&nbsp; 그런 다음 이러한 상위 수준의 주제 분류를 기반으로 세분화된 인라인 정책을 만들 수 있습니다. 예를 들어, 인사 부서 직원이 아닌 사람이 응답에서 개인 식별 정보(PII)를 받으려는 의도로 프롬프트를 제출하는 것을 차단하는 정책을 만들 수 있지만, 인사팀에서는 보상 계획 주기 동안에는 그렇게 하도록 허용할 수 있습니다.&nbsp;</p>
+	<p>Cloudflare의 새로운 <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>AI 프롬프트 보호</u></a> 기능으로 사용자별 스마트 DLP 규칙을 적용하여 팀의 업무 수행 역량을 강화하고 보안 상태를 강화할 수 있습니다. Cloudflare의 최신 DLP 기능을 사용하려면 트래픽 검사를 위해 TLS 암호 해독을 활성화해야 합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dUnu8P5cMS18k9BxkGoHY/16fdccae7f8e99dc34ebfe7399db4b94/7.png" alt="" class="kg-image" width="1999" height="1431" loading="lazy">
+	</figure>
+	<p><i><sup>상기 정책에 따라 엔지니어링, 마케팅, 제품, 재무 </sup></i><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/identity-selectors" target="_blank" rel="noopener noreferrer"><i><sup><u>사용자 그룹</u></sup></i></a><i><sup>의 직원에 대한 응답에서 PII를 다시 수신할 수 있는 모든 ChatGPT 프롬프트가 차단됩니다.&nbsp;</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="secure-mcp-and-agentic-ai">MCP 및 에이전틱 AI 보호&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#secure-mcp-and-agentic-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP(모델 컨텍스트 프로토콜)는 새로운 AI 표준이며, MCP 서버는 <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 에이전트</u></a>의 번역 계층 역할을 수행하여 AI 에이전트가 퍼블릭 및 프라이빗 API와 통신하고 데이터 세트를 이해하며 작업을 수행할 수 있게 합니다. 이러한 서버는 AI 에이전트가 데이터에 접근하여 조작하는 주요 진입점이 되므로, 보안팀에서 관리해야 할 새롭고 중요한 보안 자산입니다.</p>
+	<p>Cloudflare에서는 이미 <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>원격 MCP 서버</u></a> 배포를 위한 강력한 개발자 도구 세트를 제공하고 있으며, 이는 사용자의 데이터 및 도구와 다양한 AI 애플리케이션 사이의 다리 역할을 하는 클라우드 기반 서버입니다. 하지만 이제 고객들은 엔터프라이즈 MCP 배포를 보호하기 위해 도움을 요청하고 있습니다.&nbsp;</p>
+	<p>그렇기 때문에 Cloudflare에서는 MCP 보안 제어를 SASE 플랫폼의 핵심 요소로 만들고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="control-mcp-authorization">MCP 권한 제어</h4>
+		<a href="https://blog.cloudflare.com/#control-mcp-authorization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP 서버는 일반적으로 권한 부여에 OAuth를 사용하며, 이때 서버는 권한을 부여하는 사용자의 권한을 상속받습니다. 이는 사용자에게 최소 권한을 적용하는 데 도움이 되지만, 시간이 지남에 따라 에이전트가 과도한 권한을 축적하는 <b>권한 확산</b>으로 이어질 수 있습니다. 이로 인해 에이전트가 공격자에게는 아주 가치가 있는 표적이 됩니다.</p>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>는 이제 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer"><u>Zero Trust 원칙</u></a>을 MCP 서버 액세스에 적용하여 무분별한 권한 확산을 관리하는 것을 지원합니다. Zero Trust 모델은 어떠한 사용자, 장치, 네트워크도 암묵적으로 신뢰할 수 없다고 가정하므로, 모든 요청은 지속해서 검증됩니다. 이러한 <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>접근 방식</u></a> 덕분에 비즈니스가 더 에이전트 중심의 워크플로우를 채택할 때 이러한 중요 자산의 안전한 인증과 관리가 보장됩니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="centralize-management-of-mcp-servers">MCP 서버 관리 중앙 집중화</h4>
+		<a href="https://blog.cloudflare.com/#centralize-management-of-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>Cloudflare MCP 서버 포털</u></a>은 Cloudflare의 SASE 플랫폼의 새로운 기능으로, 조직의 MCP 서버의 관리, 보안, 관찰을 중앙 집중화합니다.</p>
+	<p>MCP 서버 포털을 사용하면 모든 MCP 서버를 Cloudflare에 등록하고 최종 사용자에게 MCP 클라이언트에서 구성할 수 있는 단일 통합 포털 엔드포인트를 제공할 수 있습니다. 이 접근 방식은 모든 MCP 클라이언트와 서버 간에 일대일 연결을 구성할 필요가 없으므로 사용자 경험이 간소화됩니다. 이는 새로운 MCP 서버가 포털에 추가될 때마다 사용자들이 동적으로 이용할 수 있게 된다는 의미이기도 합니다.&nbsp;</p>
+	<p>이러한 사용성 개선 외에도, MCP 서버 포털은 기업 환경에서 MCP와 관련된 중요한 보안 위험을 해결합니다. 현재의 분산형 MCP 배포 방식은 관리되지 않는 일대일 연결이 복잡하게 얽혀 있어 보호하기가 어렵습니다. 중앙 집중식 제어가 없을 경우 프롬프트 주입, 도구 주입(악성 코드가 MCP 서버 자체의 일부인 경우), 공급망 공격, 데이터 유출 등 다양한 위험이 야기됩니다.&nbsp;</p>
+	<p>MCP 서버 포털은 모든 MCP 트래픽을 Cloudflare를 통해 라우팅함으로써 이 문제를 해결합니다. 이를 통해 중앙 집중식 정책 시행, 포괄적인 가시성 및 로깅, 최소 권한 원칙에 기반한 맞춤형 사용자 경험 등이 제공됩니다. 관리자는 MCP 서버를 검토하고 승인하여 사용 가능하게 설정할 수 있으며, 사용자에게는 권한이 있는 서버와 도구만 표시되므로 검증되지 않거나 악성 타사 서버의 사용이 방지됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64a5Snga1xwRHeCmdbYrpj/f23dc4584618f0c37fb0be8f3399554b/8.png" alt="" class="kg-image" width="1464" height="584" loading="lazy">
+	</figure>
+	<p><i><sup>Cloudflare 대시보드의 MCP 서버 포털</sup></i></p>
+	<p>이러한 모든 기능은 MCP 보안 로드맵의 시작에 불과합니다. 저희는 Cloudflare 플랫폼 전반에서 MCP 인프라 및 보안 제어 지원을 지속해서 개선해 나가고 있기 때문입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="implement-your-ai-security-strategy-in-a-single-platform">단일 플랫폼에서의 AI 보안 전략 구현</h2>
+		<a href="https://blog.cloudflare.com/#implement-your-ai-security-strategy-in-a-single-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>여러 조직에서 AI 보안 전략을 빠르게 개발하고 배포함에 따라, Cloudflare의 SASE 플랫폼은 생산성과 데이터 및 보안 통제를 균형 있게 유지하는 정책을 구현하는 데 있어 이상적인 위치에 있습니다.</p>
+	<p>저희 SASE는 직원과 AI 상호 작용을 보호하는 모든 기능을 갖추고 있습니다. 이러한 기능 중 일부는 당사의 <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>안전한 웹 게이트웨이(SWG)</u></a>에 심층 통합되어 있어 세분화된 액세스 정책을 작성하고, <a href="https://blog.cloudflare.com/shadow-AI-analytics"><u>섀도우 IT</u></a>에 대한 가시성을 확보하며, <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>AI 프롬프트 보호</u></a>를 통해 AI 도구와의 상호 작용을 자세히 살펴볼 수 있습니다. 이러한 인라인 제어 외에도 Cloudflare의 <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>는 대역 외 API 통합을 통해 가시성 및 제어 능력을 제공합니다. 저희 Cloudflare <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Access</u></a> 제품은 Zero Trust 원칙을 적용하는 동시에 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 또는 다른 곳에서 호스팅되는 기업 LLM에 대한 직원의 액세스를 보호할 수 있습니다. 저희는 <a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>MCP 보안</u></a>을 위한 제어 기능을 새롭게 통합했으며, 이는 Cloudflare의 <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>원격 MCP 서버</u></a> 플랫폼과 함께 사용할 수도 있습니다.</p>
+	<p>이러한 모든 기능은 Cloudflare SASE의 통합 대시보드에 직접 통합되어 AI 보안 전략을 구현할 수 있는 통합 플랫폼이 제공됩니다. 새롭게 출시된 AI-SPM 개요 대시보드를 통해 AI-SPM 제어에 대한 전체적인 시각을 확보할 수도 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WzeNXp9TbX0h0QF8Nyby5/bcbeb8824e3eb5558826aed2cb17c11a/9.png" alt="" class="kg-image" width="1658" height="488" loading="lazy">
+	</figure>
+	<p><i><sup>AI 애플리케이션 활용 현황을 보여주는 AI 보안 보고서.</sup></i></p>
+	<p>AI 인프라까지도 제공하는 몇 안 되는 SASE 벤더 중 하나인 Cloudflare의 SASE 플랫폼은 개발자 및 애플리케이션 보안 플랫폼의 제품과 함께 배포하여 AI 인프라 전략과 함께 AI 보안 전략을 전체적으로 구현할 수도 있습니다(예: <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>, <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>원격 MCP 서버</u></a>, <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Realtime AI 애플리케이션</u></a>, <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>Firewall for AI</u></a>, <a href="https://blog.cloudflare.com/ai-labyrinth"><u>AI 라비린스</u></a>, <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>크롤링당 결제</u></a> 사용).</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-is-committed-to-helping-enterprises-securely-adopt-ai">Cloudflare에서는 기업에서 AI를 안전하게 도입하도록 지원하기 위해 노력하고 있습니다</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-is-committed-to-helping-enterprises-securely-adopt-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 성공은 안전한 인터넷 환경에 크게 의존하고 있습니다. 따라서 AI 기술이 확장 가능하면서도 안전하고 복원력이 있는 방식으로 운영되도록 지원하는 것은 이러한 사명의 연장선이라 할 수 있습니다. AI 도입이 계속 가속화됨에 따라 AI 보안 상태 관리(AI-SPM)를 위한 업계 최고의 제어 기능 모음을 제공하려는 당사의 목표 역시 더욱 가속화되고 있습니다. <a href="https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts" target="_blank" rel="noopener noreferrer"><u>Cloudflare에서 AI 보안을 지원</u></a>하는 방법에 대해 자세히 알아보거나 지금 바로 Cloudflare의 SASE <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>대시보드 </u></a>에서 새로운 AI-SPM 기능을 알아보세요!</p>
+</div>

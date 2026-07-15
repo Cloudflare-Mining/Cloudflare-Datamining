@@ -1,0 +1,270 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/2026-threat-report">English</a>、<a href="https://blog.cloudflare.com/zh-tw/2026-threat-report">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/2026-threat-report">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/2026-threat-report">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k7ryPnmQf38QXwtdZDRFN/16c8a56f23e106a5eda0ddcf5b131c91/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>現在の脅威状況はかつてないほど多様化し、深刻化しています。高度な国家アクターあり、超帯域幅消費型DDoS攻撃あり。ディープフェイクや詐欺師が採用面接を受け、Google Calendar、Dropbox、GitHubなどの信頼される内部ツールを悪用したステルス攻撃もあります。</p>
+	<p>昨年1年間に何兆ものネットワーク信号を実用的なインテリジェンスに変換した<a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a>が、脅威の根本的進化を確認しています。ブルートフォースによる侵入の時代は終わりつつあり、信頼性の高いサービスを悪用して何としてでも結果を出すこと優先するモデルへ移行しています。この新しい時代に合った戦略的ロードマップを防御側に提供するため、当社は本日、初となる<a href="https://cloudflare.com/lp/threat-report-2026" target="_blank" rel="noopener noreferrer"><u><b>2026年Cloudflare脅威レポート</b></u></a>を公開します。このレポートは、産業化されたサイバー脅威の台頭に対応するために必要なインテリジェンスを提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-new-barometer-for-risk-measure-of-effectiveness-moe">リスクの新バロメーター：有効性指標（MOE）</h2>
+		<a href="https://blog.cloudflare.com/#the-new-barometer-for-risk-measure-of-effectiveness-moe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudforce Oneは、攻撃者の心理の幅広い変化を観察しています。手法の選択を理解するには、その背後にある理由、つまり<b>有効性指標</b>（MOE）を理解する必要があります。</p>
+	<p>2026年は、攻撃者が「高度化」（複雑で高コストの一度限りのハッキング）の追求よりも、スループットを重視するようになってきています。MOEは、攻撃者が次に悪用するものを決める際に使用する指標で、<b>運用成果に対する労力の比率</b>を冷徹に計算します。</p>
+	<ul>
+		<li>
+			<p>窃取したセッショントークン（ID）を使う方がMOEが高いのに、高コストのゼロデイエクスプロイトを使うでしょうか？</p>
+		</li>
+		<li>
+			<p>レピュテーションシールド（LotX）で、ほぼ追跡不可能なインフラストラクチャを無料で使え、高い有効性を確保できるのに、カスタムサーバーを構築するでしょうか？</p>
+		</li>
+		<li>
+			<p>最も機密性の高いデータをつなげる結合組織の検出をAIで自動化できるのに、手作業でコードを書くでしょうか？</p>
+		</li>
+	</ul>
+	<p>2026年の最も危険な脅威アクターは、最先端のコードを書く者ではありません。インテリジェンスとテクノロジーを単一の継続的なシステムに統合し、可能な限りの最短時間でミッションを達成できる者たちです。</p>
+	<div class="flex anchor relative">
+		<h2 id="key-findings-from-the-2026-cloudflare-threat-report">2026年Cloudflare脅威レポートの主な調査結果</h2>
+		<a href="https://blog.cloudflare.com/#key-findings-from-the-2026-cloudflare-threat-report" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2026年の脅威状況の特徴は、MOEを動機とする8つの主要トレンドです：</p>
+	<ol>
+		<li>
+			<p><b>AIが高速攻撃オペレーションを自動化</b>　脅威アクターは、生成AIを利用してリアルタイムのネットワークマッピング、エクスプロイト開発、ディープフェイクの作成を行い、低スキルのアクターでも高インパクトの攻撃を実行できるようにしています。</p>
+		</li>
+		<li>
+			<p><b>国家支援型の事前配置活動により、重要インフラのレジリエンスが低下</b>　中国の脅威アクター（Salt Typhoon、Linen Typhoonなど）は北米の通信事業者、商業、政府、ITサービスを優先的に狙い、居座りによって長期的な地政学的優位性を確保しようとしています。</p>
+		</li>
+		<li>
+			<p><b>SaaS統合時の過剰な権限付与により、攻撃の影響範囲が拡大</b>　<a href="https://blog.cloudflare.com/response-to-salesloft-drift-incident"><u>GRUB1によるSalesloft侵害</u></a>で実証された通り、サードパーティAPI統合の結合組織が脆弱性となり、APIが1つ侵害されると、数百もの個別の企業環境に波及する可能性があります。</p>
+		</li>
+		<li>
+			<p><b>敵は、信頼されるクラウドツールを武器化して攻撃を隠蔽</b>　脅威アクターは、Google Calendar、Dropbox、GitHubといった正規のSaaS、IaaS、PaaSツールを積極的に狙い、通常の業務活動の中に悪意ある行動をカモフラージュしています。</p>
+		</li>
+		<li>
+			<p><b>ディープフェイクペルソナにより、敵の工作員が欧米組織の従業員として潜入</b>　北朝鮮は、諜報活動と不正収益を目的として、ディープフェイクと偽装アイデンティティを使って国家支援型工作員を欧米の組織に従業員として直接潜入させるリモートITワーカースキームを稼働させています。</p>
+		</li>
+		<li>
+			<p><b>トークン盗難により多要素認証が無力化</b>　LummaC2のような情報窃取ツールを武器としてアクティブセッションのトークンを収集することにより、<a href="https://www.cloudflare.com/the-net/bypassing-mfa" target="_blank" rel="noopener noreferrer"><u>攻撃者は従来の多要素認証をバイパス</u></a>し、認証後のアクションに直接入ります。</p>
+		</li>
+		<li>
+			<p><b>リレーの死角を突く内部ブランドなりすまし</b>　「サービスとしてのフィッシング（PhaaS）」ボットは、メールサーバーが送信者のIDを再検証できないという盲点を悪用し、信頼性の高いブランドになりすましたメールをユーザーの受信トレイに直接配信します。</p>
+		</li>
+		<li>
+			<p><b>超帯域幅消費型攻撃でインフラ容量が枯渇</b>　<a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a>のような巨大ボットネットによって可能になった超帯域幅消費型分散サービス妨害（DDoS）攻撃が、定期的に記録を更新しています。人間の対応では間に合わなくなってきています。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="deep-dive-how-attackers-are-weaponizing-cloud-tooling">深掘り：攻撃者はクラウドツールをどう武器化しているのか</h2>
+		<a href="https://blog.cloudflare.com/#deep-dive-how-attackers-are-weaponizing-cloud-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>それでは、当社が確認した高MOE戦術の一つ、クラウドツールの武器化について詳しく見てみましょう。攻撃者は、既知の悪性サーバーを使用する代わりに、Google Drive、Microsoft Teams、Amazon S3などの正当なクラウドエコシステムを利用して、コマンド＆コントロール（C2）トラフィックを隠蔽しています。「環境寄生型」（あらゆる「サービスとしてのX」に寄生）攻撃と呼ばれるもので、信頼されるプロバイダーを隠れ蓑にして活動し、通常の企業トラフィックとほとんど見分けがつかなくします。</p>
+	<p>SaaSプラットフォームは、攻撃のホスト、開始、リダイレクト、拡大にも使われます。たとえば、Amazon SESやSendGridは正当なメール一斉送信サービスですが、<a href="https://www.cloudflare.com/the-net/phishing-impersonation" target="_blank" rel="noopener noreferrer"><u>高度なフィッシングやマルウェア配布キャンペーン</u></a>の端緒として頻繁に悪用されています。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-some-groups-are-applying-these-tactics">これらの戦術の実践</h3>
+		<a href="https://blog.cloudflare.com/#how-some-groups-are-applying-these-tactics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>クラウドリソースの悪用は昔からある手口ですが、2025年の調査で国家アクターの戦略が加速度的に成熟していることが明らかになりました。単なるインフラ悪用から広範な環境寄生型（LotX）攻撃への移行が引き続き進行しています。2026年は脅威アクターが、攻撃プレイブックの戦略目標として、このテクニックの標準化を図ると予想されます。</p>
+	<p>ここでは、脅威アクター集団とその活動拠点、攻撃方法の例をいくつか紹介します。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-bniq {
+			background-color: #EFEFEF;
+			border-color: inherit;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-53s5 {
+			background-color: #FFF;
+			color: #1F1F1F;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-bl8p {
+			background-color: #EFEFEF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-tp98 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-e4b2 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-v0hj">脅威アクター</th>
+					<th class="tg-bl8p">国</th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">技術</span></th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">詳細</span></th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">例</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">FrumpyToad</span></td>
+					<td class="tg-53s5">中国</td>
+					<td class="tg-tp98"><span style="color:#1F1F1F;background-color:#FFF">ロジックベースのC2</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">評判の高いSaaSロジックの「ボックス内」で動き、検出を回避</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Google Calendarをクラウド間C2ループとして武器化し、暗号化したコマンドをイベント説明欄で直接読み書きします。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">PunyToad</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">中国</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">暗号化されたトンネリング</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">正規の開発者ツールを利用してエグレスフィルタリングを回避</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">トンネル機能とクラウドコンピューティングを活用して、レジリエントなクラウド環境寄生型アーキテクチャを構築し、バックエンドのオリジンIPを隠蔽し、長期間居座ることを優先します。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">NastyShrew</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ロシア</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ペーストサイトを悪用したデッドドロップリゾルバー</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">公開「ペースト」サイトを利用してインフラ改変を画策</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Teletype.inやRentry.coなどのサービスをデッドドロップリゾルバー（DDR）として使用します。感染したホストは、これらのサイトをポーリングして、ローテーションされているC2アドレスを取得します。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">PatheticSlug</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">北朝鮮</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">境界のPaaS化</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">クラウドエコシステムの「レピュテーションシールド」を隠れ蓑にしてマルウェアを配布</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Google DriveやDropboxを使ってXenoRATペイロードをホストし、GitHubを隠密C2として悪用することで、正当な企業トラフィックに紛れ込むことに成功しています。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">CrustyKrill</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">イラン</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SaaSホスト型フィッシング</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">一般的なクラウドホスティングにクレデンシャルハーベスティングを混入</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Azure Web Apps（.azurewebsites.net）でC2ページをホストし、ONLYOFFICEを使ってペイロードをホストすることで、活動を正当に見せかけます。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudforce-one-unmasked-the-2026-landscape">Cloudforce Oneが2026年の状況を明らかにした方法</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudforce-one-unmasked-the-2026-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MOEの確立には、高レベルの観察だけでは不十分です。2026年の状況を真に解明するため、本レポートでは、Cloudforce Oneが当社ならではの専門スキルとグローバルテレメトリを活かして、従来のセキュリティモデルでは見逃されがちなインサイトを明らかにした方法を詳述しています。</p>
+	<p>方法は多岐にわたります。たとえば：</p>
+	<ul>
+		<li>
+			<p>AI駆動型防御の研究の一環として、AIコーディングエージェントに脆弱性自己分析のタスクを課し、エージェント自体のセキュリティギャップを明らかにさせました。この「ドッグフーディング」により、<a href="https://github.com/anomalyco/opencode/security/advisories/GHSA-c83v-7274-4vgp" target="_blank" rel="noopener noreferrer"><u><b>CVE-2026-22813</b></u></a><b>（9.4 CVSS）</b>が発見されました。認証されていないリモートコード実行を可能にする、マークダウンレンダリングパイプラインの重大な欠陥です。</p>
+		</li>
+		<li>
+			<p><b>サービスとしてのフィッシング</b>（PhaaS）に関する綿密な調査により、参入障壁が消失していることが明らかになりました。アナリストたちは、攻撃者が高評価ドメイン（Google Drive、Azureなど）を利用してフィルターをバイパスするのを観測しました。メールテレメトリから「アイデンティティギャップ」が判明しました。<b>分析したメールのほぼ46%がDMARC（メール認証プロトコル）の認証に失敗</b>し、それにより露出した攻撃対象領域をPhaaSボットがすぐさま悪用していることが明らかになったのです。</p>
+		</li>
+		<li>
+			<p>ステルス性の悪用からブラックアウト（通信停止）に追い込む試みまでの移行を追跡したところ、DDoS攻撃の<b>ベースラインが31.4 Tbps</b>になったことがわかりました。また、過去3か月のテレメトリから、全ログインの<a href="https://radar.cloudflare.com/security/application-layer?dateRange=12w#leaked-credentials-usage" target="_blank" rel="noopener noreferrer"><u>63%</u></a>で既にどこかで侵害された認証情報が使われ、全ログイン試行の<a href="https://radar.cloudflare.com/security/application-layer?dateRange=12w#leaked-credentials-usage" target="_blank" rel="noopener noreferrer"><u>94%</u></a>がボットから発信されていることも判明しました。</p>
+		</li>
+	</ul>
+	<p>この調査の各段階を通じて、Cloudforce Oneは、当社の膨大なグローバルテレメトリと最前線の脅威インテリジェンスを活用し、一見孤立しているインシデントの点と点をつないできました。ゼロデイ脆弱性の悪用を未然に防ぐために自社のAIエージェントをドッグフーディングするにしても、住宅用プロキシを介してトンネリングする何百万ものボット感染ホストが仕掛けた攻撃を追跡するにしても、この統合された可視性のおかげで、1件の認証情報のフィッシングと数テラビットのブラックアウトの間にあるスルーライン（一貫したテーマ）を見出すことができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-path-forward-drive-moe-to-zero-with-autonomous-defense">今後の道筋：自律的な防御でMOEをゼロに</h2>
+		<a href="https://blog.cloudflare.com/#the-path-forward-drive-moe-to-zero-with-autonomous-defense" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スルーラインの特定は最初のステップに過ぎません。脅威が機械のスピードで動くとき、人間中心の防御はもはや有効な盾にはなりません。「システムによる攻撃」に対抗するには、業界全体で防御者が、敵のMOEをゼロにするために<b>自律型防御</b>モデルへ転換しなければなりません<b>。</b></p>
+	<p>自律型防御へ転換するには、手動のチェックリストや断片的なアラートからの脱却が必要です。リアルタイムの可視性と自動対応機能によってネットワークの結合組織を強化する必要があるのです。この新時代において、目標は優れた防御壁の構築だけではありません。誰も監視していなくても、システムが攻撃者より迅速に行動できるようにすることが肝要です。</p>
+	<p>この転換をサポートするため、当社は本日、<a href="https://blog.cloudflare.com/cloudflare-threat-intelligence-platform"><u>脅威イベントプラットフォームの大幅なアップグレードを発表</u></a>します。このアップグレードにより、単純なデータアクセスから、セキュリティオペレーションセンター向けの完全自動ビジュアルコマンドセンターへと進化します。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-the-2026-cloudflare-threat-report">2026年Cloudflare脅威レポートを入手しましょう</h2>
+		<a href="https://blog.cloudflare.com/#get-the-2026-cloudflare-threat-report" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>脅威についての比類ない可視性とCloudforce Oneリサーチャーの専門スキルを活かして、産業化されたサイバー脅威のスピードに負けない防御に必要なインテリジェンスを提供します。<b>データセット一式、詳細なケーススタディ、戦術的な推奨事項については、</b><a href="https://cloudflare.com/lp/threat-report-2026" target="_blank" rel="noopener noreferrer"><u><b>2026年Cloudflare脅威レポート</b></u></a>本編をご覧ください。</p>
+	<p>当社の脅威インテリジェンス、マネージド防御、またはインシデント対応サービスについて詳細をご希望の方は、<a href="https://www.cloudflare.com/lp/cloudforce-one-contact" target="_blank" rel="noopener noreferrer"><u><b>Cloudforce Oneの専門担当者にお問い合わせ</b></u></a>ください<b>。</b></p>
+</div>

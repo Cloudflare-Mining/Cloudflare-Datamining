@@ -1,0 +1,152 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/5-december-2025-outage">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/5-december-2025-outage">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/5-december-2025-outage">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/5-december-2025-outage">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/5-december-2025-outage">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/5-december-2025-outage">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/5-december-2025-outage">Português</a>, en <a href="https://blog.cloudflare.com/es-la/5-december-2025-outage">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/es-es/5-december-2025-outage">Español</a>, en <a href="https://blog.cloudflare.com/ru-ru/5-december-2025-outage">Рyсский</a>, en <a href="https://blog.cloudflare.com/pl-pl/5-december-2025-outage">Polski</a>, en <a href="https://blog.cloudflare.com/nl-nl/5-december-2025-outage">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/5-december-2025-outage">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NoiDo8eH6E6bTJYfEqoe9/5dbf9b8cf88260554ac603c2a28ca7dd/Screenshot_2025-12-09_at_9.57.52%C3%A2__AM.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Le 5&nbsp;décembre&nbsp;2025 à 8&nbsp;h&nbsp;47 UTC (toutes les heures mentionnées dans ce blog sont au format UTC), une partie du réseau Cloudflare a commencé à connaître des défaillances significatives. L'incident a été résolu à 9&nbsp;h&nbsp;12 avec le rétablissement complet de l'ensemble des services (au total, le problème s'est donc fait sentir pendant environ 25&nbsp;minutes).</p>
+	<p>Le sous-ensemble de clients affectés totalisait près de 28&nbsp;% de l'ensemble du trafic HTTP diffusé par Cloudflare. La réunion de plusieurs facteurs était nécessaire pour qu'un client particulier soit touché selon les modalités décrites ci-après.</p>
+	<p>Le dysfonctionnement ne résultait en aucune façon d'une cyberattaque ou d'une quelconque activité malveillante sur les systèmes Cloudflare, ni directement ni indirectement. Il découlait de modifications que nous avons apportées à notre logique d'analyse du corps des requêtes lors d'une tentative visant à détecter et à atténuer une vulnérabilité des React Server Components (composants serveur React) <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability"><u>révélée cette semaine</u></a> et affectant l'ensemble du secteur.</p>
+	<p>Toute forme d'interruption de nos systèmes est inacceptable et nous savons que nous avons encore une fois déçu la communauté Internet après l'incident déjà survenu le 18&nbsp;novembre. Restez à l'écoute de nos canaux la semaine prochaine, nous publierons des informations détaillées sur les mesures que nous comptons prendre pour éviter que ce type de dysfonctionnement se reproduise.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-happened">Que s'est-il passé&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le graphique ci-dessous présente le nombre d'erreurs HTTP&nbsp;500 émises par notre réseau sur l'ensemble de la période de l'incident (ligne rouge en bas) par rapport au trafic Cloudflare total non affecté par le problème (ligne verte en haut).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43yFyHQhKjhPoLh4yB7pQ8/c1eb08a3e056530311e6056ecac522ed/image1.png" alt="500 error codes served by Cloudflare’s network during the incident" class="kg-image" width="1999" height="955" loading="lazy">
+	</figure>
+	<p>Le pare-feu applicatif web (Web Application Firewall, WAF) de Cloudflare assure une protection contre le contenu malveillant à nos clients afin de leur permettre de détecter et de bloquer ce dernier. Pour ce faire, le proxy Cloudflare place le contenu du corps de la requête HTTP en mémoire tampon afin de procéder à son analyse. La taille du tampon était jusqu'ici de 128&nbsp;Ko.</p>
+	<p>Dans le cadre des efforts que nous menons pour protéger nos clients utilisateurs de React contre la vulnérabilité critique dénommée <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a>, nous avons commencé à déployer une augmentation de la taille de notre mémoire tampon à 1&nbsp;Mo, la limite autorisée par défaut pour les applications Next.js afin de nous assurer de protéger le plus grand nombre de clients possible.</p>
+	<p>L'implémentation de cette première modification a été confiée à notre système de déploiement progressif. Nous avons remarqué lors du déploiement que notre outil interne chargé de tester le pare-feu WAF ne prenait pas en charge l’augmentation de la taille de la mémoire tampon. Comme cet outil de test interne n’était pas nécessaire à l’époque et qu’il n’affectait en aucune façon le trafic de nos clients, nous avons procédé à une deuxième modification afin de le désactiver.</p>
+	<p>Cette deuxième modification visant à désactiver notre outil de test du pare-feu WAF a été déployée à l'aide de notre système de configuration mondial. Ce système ne procède pas par déploiements progressifs, mais propage les modifications en quelques secondes à l’ensemble de la flotte de serveurs qui composent notre réseau. Il est d'ailleurs toujours en cours d'examen <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>suite au dysfonctionnement survenu le 18&nbsp;novembre</u></a>.&nbsp;</p>
+	<p>Malheureusement, certaines circonstances entourant le déploiement de cette deuxième modification (conçue, rappelons-le, pour désactiver notre outil de test des règles WAF) au sein de la version FL1 de notre proxy ont entraîné une erreur, qui a abouti à l’émission de codes d’erreur HTTP&nbsp;500 depuis notre réseau.</p>
+	<p>Lorsque la modification s'est propagée à notre réseau, l'exécution du code au sein de notre proxy FL1 a débouché sur un bug présent dans notre module de règles, qui a conduit à l'exception Lua suivante&nbsp;: </p>
+	<pre class="language-Rust"><code class="language-Rust">[lua] Failed to run module rulesets callback late_routing: /usr/local/nginx-fl/lua/modules/init.lua:314: attempt to index field 'execute' (a nil value)</code></pre>
+	<p>Le système a dès lors émis des erreurs de code HTTP&nbsp;500 en conséquence.</p>
+	<p>Identifiée peu après l'application, la modification à l'origine du problème a été annulée à 9&nbsp;h&nbsp;12, suite à quoi l'intégralité du trafic est revenu à la normale.</p>
+	<p>Seuls les clients dont les ressources web sont traitées par notre ancien proxy FL1 <b>ET</b> qui avaient déployé l'ensemble de règles gérées Cloudflare ont été touchés. Toutes les requêtes adressées aux sites web concernés ont renvoyé un message d'erreur HTTP&nbsp;500, mis à part un petit nombre de points de terminaison dédiés aux tests, comme <code>/cdn-cgi/trace</code>, par exemple.</p>
+	<p>Les clients qui ne disposaient pas de la configuration présentée ci-dessus n'ont pas été affectés. De même, le trafic client traité par le réseau Chine n'a pas non plus été touché.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-runtime-error">L'erreur au sein de l'environnement d'exécution</h3>
+		<a href="https://blog.cloudflare.com/#the-runtime-error" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La plateforme Cloudflare consiste en plusieurs ensembles de règles évalués lors de l'entrée d'une requête au sein de notre système (chacune de ces requêtes en fait). Ces règles se composent d'un filtre (qui sélectionne un certain trafic) et d'une action qui applique un effet au trafic sélectionné. Les actions généralement mises en œuvre sont «&nbsp;<code>block</code>&nbsp;» (Bloquer), «&nbsp;<code>log</code>&nbsp;» (Journaliser) ou «&nbsp;<code>skip</code>&nbsp;» (Ignorer). Un autre type d'action est l'action «&nbsp;<code>execute</code>&nbsp;» (Exécuter), utilisée pour déclencher l'évaluation d'un autre ensemble de règles.</p>
+	<p>Notre système de journalisation interne s'appuie sur cette fonctionnalité pour évaluer les nouvelles règles avant de les proposer au public. Un ensemble de règles de niveau supérieur exécutera un autre ensemble contenant des règles de test. Ce sont ces dernières que nous avons tenté de désactiver.</p>
+	<p>Nous avons intégré un sous-système d'arrêt d'urgence (également appelé «&nbsp;killswitch&nbsp;») au système d'ensembles de règles. Ce dispositif est conçu pour permettre la désactivation rapide d'une règle qui présenterait un comportement anormal. Le killswitch reçoit des informations de la part du système de configuration mondial que nous mentionnons dans les sections précédentes. Nous avons utilisé ce système d'arrêt d'urgence plusieurs fois par le passé pour atténuer des incidents et disposons d'une procédure opérationnelle standard bien définie concernant son fonctionnement. La procédure a d'ailleurs été suivie à la lettre lors de l'incident.</p>
+	<p>Nous n'avions toutefois jamais appliqué ce killswitch à une règle accompagnée de l'action type «&nbsp;<code>execute</code>&nbsp;». Le code a ainsi correctement ignoré l'évaluation de l'action Exécuter lorsque le système d'arrêt d'urgence a été enclenché et n'a pas évalué le sous-ensemble de règles désigné par cette action. Or, une erreur est survenue lors du traitement des résultats généraux de l'évaluation de l'ensemble de règles.</p>
+	<pre class="language-Rust"><code class="language-Rust">if rule_result.action == "execute" then
+  rule_result.execute.results = ruleset_results[tonumber(rule_result.execute.results_index)]
+end</code></pre>
+	<p>Ce code s'attend à ce que l'objet «&nbsp;rule_result.execute&nbsp;» existe si l'ensemble de règles a comme action «&nbsp;execute&nbsp;». Toutefois, comme la règle avait été ignorée, l'objet rule_result.execute n'existait pas et le système Lua a renvoyé une erreur, car il tentait de rechercher une valeur nulle.</p>
+	<p>Cette simple erreur au sein du code existe probablement depuis de nombreuses années, mais n'avait jamais été détectée jusqu'ici. Les langages dotés de systèmes de typage forts permettent d'éviter ce type d'erreur de code. Cette erreur ne s'est ainsi pas produite au sein de notre nouveau proxy FL2 (dont le code a été remplacé par un code rédigé en Rust).</p>
+	<div class="flex anchor relative">
+		<h3 id="what-about-the-changes-being-made-after-the-incident-on-november-18-2025">Qu'en est-il des modifications effectuées après l'incident du 18&nbsp;novembre&nbsp;2025&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#what-about-the-changes-being-made-after-the-incident-on-november-18-2025" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>incident de disponibilité plus long</u></a>, mais néanmoins similaire, s'est produit il y a deux semaines (le 18&nbsp;novembre&nbsp;2025) suite au déploiement par nos services d'une modification sans lien avec le problème qui nous occupe aujourd'hui. Le problème résultait, dans les deux cas, du déploiement d'un correctif visant à atténuer un problème de sécurité pour nos clients. La modification s'est ensuite propagée à l'ensemble de notre réseau et a conduit à des erreurs pour pratiquement tous nos clients.</p>
+	<p>Nous avons parlé directement à des centaines de clients à la suite de cet incident et les avons informés de notre volonté de procéder à des changements au sein de notre plateforme afin d'empêcher qu'une simple mise à jour n'entraîne d'aussi nombreuses conséquences. Nous pensons que ces changements auraient permis d'éviter les effets de l'incident d'aujourd'hui, mais nous n'avons malheureusement pas encore terminé de les déployer.</p>
+	<p>Nous savons qu'il est décevant d'apprendre que ces travaux ne sont pas encore achevés, mais ils demeurent toutefois une priorité absolue pour l'ensemble de notre entreprise. Les projets décrits ci-dessous devraient notamment contribuer à limiter l'incidence de ce type de modifications&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Amélioration des processus de déploiement et de gestion des versions</b>&nbsp;: les données utilisées pour la réponse rapide aux menaces et la configuration générale doivent bénéficier des mêmes fonctionnalités de sécurité et d'atténuation des risques sur lesquelles nous nous appuyons lorsque nous déployons des logiciels, de manière lente et mesurée, avec un strict processus de validation de l'intégrité. Outre la validation de l'intégrité, ces fonctionnalités comprennent, entre autres, des capacités de restauration rapide.</p>
+		</li>
+		<li>
+			<p><b>Rationalisation des fonctionnalités d'urgence (break-glass)</b>&nbsp;: nous devons nous assurer d'être toujours à même de réaliser nos opérations essentielles, malgré les autres types de défaillances qui pourraient se produire. Ce plan s'applique aux services internes, mais aussi aux méthodes standard d'interaction avec l'interface Cloudflare utilisée par l'ensemble de nos clients.</p>
+		</li>
+		<li>
+			<p><b>Traitement «&nbsp;fail-open&nbsp;» des erreurs&nbsp;: </b>dans le cadre de nos efforts d'amélioration de notre résilience, nous remplaçons la logique incorrectement mise en œuvre de gestion des erreurs de type «&nbsp;hard-fail&nbsp;» (échec total, sans basculement) pour tous les composants essentiels du plan de données Cloudflare. Ainsi, en cas de corruption d'un fichier de configuration ou de fonctionnement hors plage de ce dernier (en cas de dépassement des limites d'une fonctionnalité, par exemple), le système journalise l'erreur et, plutôt que d'abandonner les requêtes, revient par défaut à un état correct connu ou transmet le trafic sans lui attribuer de score. Certains services permettront probablement au client de choisir entre le basculement en position ouverte (fail-open) ou fermée (fail-closed) dans certains scénarios de défaillance. Ces nouvelles mesures comprendront des fonctionnalités de prévention des dérives afin d'assurer leur application en continu.</p>
+		</li>
+	</ul>
+	<p>Nous publierons une analyse détaillée de l'ensemble des projets d'amélioration de la résilience actuellement en cours (notamment de ceux présentés ci-dessus) avant la fin de la semaine prochaine. Nous verrouillerons le déploiement de toutes les modifications apportées à notre réseau pendant ces travaux afin de nous assurer que nous disposons de meilleurs systèmes d'atténuation et de restauration avant de reprendre les opérations.</p>
+	<p>Les incidents de ce type (de même que la proximité temporelle de ces derniers) ne sont pas acceptables pour un réseau comme le nôtre. Au nom de toute l'équipe Cloudflare, nous tenons à vous présenter nos excuses pour les effets néfastes et les désagréments que ce problème a (de nouveau) causé à nos clients et à l'ensemble de l'Internet.</p>
+	<div class="flex anchor relative">
+		<h3 id="timeline">Chronologie</h3>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>Heure (UTC)</p>
+				</td>
+				<td>
+					<p>État</p>
+				</td>
+				<td>
+					<p>Description</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8&nbsp;h&nbsp;47</p>
+				</td>
+				<td>
+					<p>Début de L'INCIDENT</p>
+				</td>
+				<td>
+					<p>Déploiement et propagation au réseau de la modification de la configuration</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8&nbsp;h&nbsp;48</p>
+				</td>
+				<td>
+					<p>Impact maximal</p>
+				</td>
+				<td>
+					<p>Propagation totale de la modification</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8&nbsp;h&nbsp;50</p>
+				</td>
+				<td>
+					<p>Déclaration de L'INCIDENT</p>
+				</td>
+				<td>
+					<p>Émission d'alertes automatisées</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>9&nbsp;h&nbsp;11</p>
+				</td>
+				<td>
+					<p>Annulation de la modification</p>
+				</td>
+				<td>
+					<p>Annulation de la modification apportée à la configuration et démarrage de la propagation</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>9&nbsp;h&nbsp;12</p>
+				</td>
+				<td>
+					<p>Fin de L'INCIDENT</p>
+				</td>
+				<td>
+					<p>Fin de la propagation de la mesure d'annulation, rétablissement de l'ensemble du trafic</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+</div>

@@ -1,0 +1,112 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-ai-audit-control-ai-content-crawlers">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/cloudflare-ai-audit-control-ai-content-crawlers">Français</a>、<a href="https://blog.cloudflare.com/de-de/cloudflare-ai-audit-control-ai-content-crawlers">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-ai-audit-control-ai-content-crawlers">한국어</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-ai-audit-control-ai-content-crawlers">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-ai-audit-control-ai-content-crawlers">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KLyiUjjLMAkZQdSj6oX17/f345f1996820e24ec3dc8107b6afe48a/BLOG-2509_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>サイト所有者はこれまで、AIサービスが自分の管理するコンテンツを、どのような目的（トレーニングやその他の目的）で使用できるかを制御する手段を持っていませんでした。本日、Cloudflareは、サイト所有者、クリエイター、パブリッシャーが、AI関連のボットやクローラーに、自分のコンテンツの利用方法を簡単に制御できる一連のツールをリリースします。Cloudflareのすべてのお客様は、AIモデルがお客様のサイト上のコンテンツにアクセスする方法を監査および制御できるようになります。</p>
+	<p>この発表では、AIサービスがお客様のサイトをクロールしてアクセスした特定のコンテンツの詳細な分析ビューが提供されますアクティビティはそれぞれグループ化して（AIプロバイダー別、ボットのタイプ別、サイト内で最も人気のあるセクション別）確認することができます。このデータは、追加の設定なしでCloudflare上のすべてのサイトで利用できます。</p>
+	<p>チームはこの新しいレベルで可視化できる機能を使用して、AIクローラーに対してどこまでを許可するかを判断する必要があります。この決断を下す時間を確保するため、Cloudflareは現在、AIクローラーがどのサイトにもアクセスできないように<a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click"><u>ワンクリック</u></a>でブロックできるオプションをダッシュボードに提供しました。チームはこの「一時停止」を利用して、特定のAIプロバイダーやボットの種類を許可させるかどうかを決定することができます。決定後、管理者はCloudflareダッシュボードで新しいフィルターを使用し、わずか数クリックでこれらのポリシーを適用することができます。</p>
+	<p>一部のお客様は、すでにAI企業と直接交渉することを決めています。これらの契約の多くには、スキャンの頻度やアクセス可能なコンテンツの種類に関する条件が盛り込まれています。当社は、これらのパブリッシャーがこれらの契約の実施を測定するためのツールを持つことを望んでいます。本日の発表の一環として、Cloudflareのお客様は、これらの取り決めで許可されているアクティビティの監査に使用できるレポートをワンクリックで作成できるようになりました。</p>
+	<p>また、私たちはどのような規模のサイトも、AIモデルが自分のコンテンツを利用することに対して、その対価を徴収できる方法を決められるべきだと考えています。本日の発表では、Cloudflareの新しい収益化機能（サイト所有者が、価格設定、アクセス制御、コンテンツスキャンによる対価を得るためのツール）をプレビューします。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-the-problem">そもそも何が問題か？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最近まで、インターネット上のボットやスクレイパーは主に「良性」と「悪性」の2つのカテゴリに分類されていました。検索エンジンクローラーのような「良性」のボットは、閲覧者が自分のサイトを見つけて訪問者数を獲得するのに役立ちます。「悪性」ボットは、サイトをダウンさせたり、アクセスを横入したり、競合他社のデータのスクレイピングを試みます。お客様がこの2つの幅広いカテゴリを区別し、許可またはブロックできるようにするために、<a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>Cloudflareボット管理</u></a>プラットフォームを構築しました。</p>
+	<p>AI大規模言語モデル（LLM）やその他の生成系ツールの台頭により、より厄介な3番目のカテゴリが生まれました。これらのプラットフォームに関連付けられたクローラーは、「悪性」ボットとは異なり、サイトをオフラインにしたり、閲覧者の邪魔をしたりすることはありません。このボットは機密データを盗むことを目的としておらず、単にサイトですでに公開されているものをスキャンすることを目的としています。</p>
+	<p>ただし、役に立つボットとは異なり、これらのAI関連のクローラーは、必ずしもサイトへの訪問者の増加につながりません。AIデータスクレイパーボットは、お客様のサイトのコンテンツをスキャンして新しい大規模言語モデル（LLM）のトレーニングに使用します。その後、素材はミキサーのようなものに入れられ、他のコンテンツと混ぜ合わせられ、ユーザーの質問に答えるために使われますが、その際には出所が明示されず、ユーザーがお客様のサイトを訪れる必要もありません。別のタイプのクローラーであるAI検索クローラーボットは、お客様のコンテンツをスキャンし、ユーザーの検索に対する回答としてそれを引用しようとします。そのデメリットは、閲覧者はAIによって回答が得られた画面に満足し、お客様のサイトを訪れない可能性があるということです。</p>
+	<p>この不透明さにより、サイトの所有者は難しい決断を迫られています。サイト所有者は遅れを取り戻そうとする間、不利な立場に置かれます。多くのサイトでは、これらのクローラーはほとんどが「良性」ボットのように見えるため、これらのAIクローラーにコンテンツをスキャンさせることを許可していますが、その結果、AIによって再加工された回答が作成されるため、自分のサイトを訪問する人はますます減少します。</p>
+	<p>これはオープンなインターネットにリスクをもたらすと私たちは考えています。スキャンを制御し、価値を実現できなければ、サイト所有者はインターネットプロパティを立ち上げたり維持したりすることに意欲を失ってしまいます。クリエイターは、自分のコンテンツを有料の壁の後ろに隠すようになり、最大手のパブリッシャーは直接契約を結ぶようになるでしょう。その結果、AIモデルプロバイダーによって、小さなサイトにある良質なコンテンツを見つけてアクセスすることが困難なものになります。</p>
+	<p>両者とも、健全で透明性のある権限と価値の交換を行うためのツールを欠いています。本日より、Cloudflareはサイト所有者に、この問題の解決に必要なサービスを提供します。私たちは、すべてのお客様が取り組むべき一連のステップを提案します。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-1-understand-how-ai-models-use-your-site">ステップ1：AIモデルが自分のサイトをどのように使用するかを理解する</h3>
+		<a href="https://blog.cloudflare.com/#step-1-understand-how-ai-models-use-your-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare上のすべてのサイトは、人気のある既知のAIサービスのクロール動作を要約する新しい分析ビューにアクセスできるようになりました。ダッシュボードでサイトを選択し、左側のナビゲーションバーの [<b>AI監査</b>] タブに移動すると、自分のコンテンツに対するAIスキャンの状況を把握することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FknDZw445xutqps2fSSJt/597fca585cf0e7086ea5db567f258714/BLOG-2509_2.png" alt="BLOG-2509 2" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>AIモデルプロバイダーは、サイトのコンテンツにアクセスするときに、「ボット」または「クローラー」と呼ばれる自動化されたツールを使用してページをスキャンします。ボットはページのコンテンツを要求し、応答をキャプチャし、将来のデータトレーニングセットの一部として保存したり、将来のAI検索エンジンの結果のために記憶します。</p>
+	<p>これらのボットは、多くの場合、クロール対象のサイトやCloudflareのネットワークに対して身分を明かすために、ユーザーエージェントと呼ばれるリクエストにHTTPヘッダーを含めます。ただし、これらのAIサービスの1つのボットがヘッダーを送信しないこともあり、その際はCloudflareがIPアドレスや行動などの他の手がかりを使って識別します。</p>
+	<p>身分を明かすボットのヘッダーには、ボット名を含むテキスト文字列の記載があります。たとえば、<a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener noreferrer"><u>Anthropic</u></a>は「<code>ClaudeBot</code>」というボットを使用してインターネット上のサイトをクロールすることがあります。そのサービスがCloudflare上のサイトからページのコンテンツをリクエストすると、Cloudflareはユーザーエージェントを<code>ClaudeBot</code>として記録します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55IhilRHrLYZo4kvLSPBuI/7a88476fb443e09a28fdbf7e9abd5b8d/BLOG-2509_3.png" alt="BLOG-2509 3" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>Cloudflareは、サイトへの訪問から収集したログを取得し、既知のAIボットやクローラーと一致するユーザーエージェントを探します。個々のクローラーのアクティビティを要約し、特定のAIプラットフォームのアクティビティだけをレビューするフィルターも提供します。多くのAI企業は、異なる目的を果たす複数のクローラーを使用しています。<a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer"><u>OpenAIがサイトをスキャン</u></a>してデータスクレイピングを行う場合はGPTBotを使用しますが、新しいAI検索エンジン用にサイトをクロールする場合はOAI- SearchBotを使用します。</p>
+	<p>こうした違いは重要です。多様な種類のボットからのスキャンは、サイトへの訪問者数やコンテンツの出所に影響を与える可能性があります。AI検索エンジンは、応答の一部としてサイトへのリンクを提供して訪問者を目的のサイトに送る可能性があります。その場合、そういったボットがあなたのインターネットプロパティをクロールことに対してオープンである可能性があります。一方、AIデータスクレイパーは、将来のモデルのトレーニングや既存のモデルの改善のために、インターネットをできるだけ多く読み取るために存在しています。</p>
+	<p>私たちは、いつ、どのくらいの頻度で、ボットがお自分のサイトをクロールするのかを知る必要があると考えています。本日のリリースでは、「AIデータスクレイパー」、「AI検索クローラー」、「アーカイバー」などのカテゴリごとにボットアクティビティを確認できるフィルターが提供されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vd66ddf4Lii8LEr8Tt3Nt/ff85253f1d6894d4086a6696e14d250e/BLOG-2509_4.png" alt="BLOG-2509 4" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>このデータを使用して、AIモデルの自分のサイトに対するアクセス状況を分析することができます。特に、コンテンツに対するAIスキャンの処理方法をチームがまだ決めていない場合、この情報の多さにどうすれば良いか分からないと思います。その場合は、ステップ2に進んでください。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-2-give-yourself-a-pause-to-decide-what-to-do-next">ステップ2：次に何をするか決めるために一旦立ち止まる</h3>
+		<a href="https://blog.cloudflare.com/#step-2-give-yourself-a-pause-to-decide-what-to-do-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、AIクローラーにとって自分たちのサイトが価値ある目的地だと認識しているものの、まだどう対処すべきか分からない複数の組織と話をしました。これらのチームは、自分たちのデータをこれらのサービスにどのように提供するかを慎重に決めるための「タイムアウト」が必要です。</p>
+	<p>Cloudflareはその簡単なボタンを今すぐ提供します。どのプランのお客様でも、すべてのAIボットとクローラーをブロックすることができ、許可する内容を決めるまで一旦立ち止まることができます。</p>
+	<p>このオプションを実装するには、Cloudflareダッシュボードの [セキュリティ] タブにある「ボット」セクションに移動します。右上隅にある青いリンクを使用して、Cloudflareのプロキシがボットトラフィックを処理する方法を設定します。次に、「AIスクレイパーとクローラーをブロックする」カードのボタンを「オン」の位置に切り替えます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RQm7Zofbmkzekclq5OWsa/921660fa9b45018ab2ecf402c104960b/BLOG-2509_5.png" alt="BLOG-2509 5" class="kg-image" width="1999" height="1394" loading="lazy">
+	</figure>
+	<p>ワンクリックオプションを使用すると、Cloudflareが管理するリストに基づいて、既知のAI関連ボットやクローラーが自分のサイトにアクセスするのをブロックすることができます。ブロックを有効にすると、お客様とチームがコンテンツに関しての処理方法を多少時間をかけて決めることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-3-control-the-bots-you-do-want-to-allow">ステップ3許可したいボットを制御する</h3>
+		<a href="https://blog.cloudflare.com/#step-3-control-the-bots-you-do-want-to-allow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一時停止ボタンを使用することで、チームはクローラーに対する自分のコンテンツの向き合い方を多少の時間をかけて決めることができます。チームが決定を下したら、Cloudflareのネットワークを活用してそのポリシーを実行することができます。</p>
+	<p>その決定が、「どのようなクローリングも許可しない」となった場合、上記のブロックボタンを「オン」に切り替えたままにすることができます。スキャンを選択的に許可したい場合、本日のリリースで提供される、特定の種類のボット、または特定のプロバイダーからのボットのみのコンテンツへのアクセスを許可するオプションを使用することができます。</p>
+	<p>AI検索エンジンに関連するボットであれば、自分のサイトに訪問者を誘導できる可能性があるため、スキャンを許可したいというチームもあるでしょう。その他に、特定のモデルプロバイダーと契約を結んでおり、そのプロバイダーのものであれば全種類のボットにコンテンツへのアクセスを許可したいと考える組織もいるでしょう。お客様はCloudflareダッシュボードのWAFセクションから、これらを実現できるポリシーを実装することができるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rtP61D3cneqk5pqQn1lFO/d297e6a10354b4dab193c67549252cb6/BLOG-2509_6.png" alt="BLOG-2509 6" class="kg-image" width="1999" height="1228" loading="lazy">
+	</figure>
+	<p>また、管理者は、例えば特定のプラットフォームからのAIボットを除くすべてのAIボットをブロックするルールを作成することもできます。チームがある1つのAIモデルプロバイダーとそのポリシーに満足しており、その他のAIプラットフォームに対して懐疑的である場合、このタイプのフィルターを導入できます。この種のルールは、サイト所有者が単一プロバイダーからのスキャンを許可するよう交渉した場合の契約の実装にも使用できます。サイト管理者は、すべての種類のAI関連ボットをブロックするルールを作成し、特定のボット（またはAIパートナーからのボット）を許可する例外を追加する必要があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dc8LlDlamjuWXsRQgx45p/9212bba47cf6df8da8b57b3bac7d38fe/BLOG-2509_7.png" alt="BLOG-2509 7" class="kg-image" width="1999" height="624" loading="lazy">
+	</figure>
+	<p>また、これらの新しいフィルターの適用に加え、この新しいユースケースをカバーするようにサービス利用規約を更新することを検討することをお勧めします。私たちは、「善良な市民」ボットやクローラーがrobots.txtファイルに従うべき<a href="https://developers.cloudflare.com/bots/reference/sample-terms" target="_blank" rel="noopener noreferrer"><u>手順を文書化</u></a>しています。そのベストプラクティスの延長として、新たに利用規約のサンプルセクションを文書に追加しました。このセクションでは、サイト所有者が、AIスキャンがrobots.txtファイルに定めたポリシーに従う必要があることを明確にするために使用することを検討できるサンプルのサービス利用規約セクションを提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-4-audit-your-existing-scanning-arrangements">ステップ4：既存のスキャン設定を監査する</h3>
+		<a href="https://blog.cloudflare.com/#step-4-audit-your-existing-scanning-arrangements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コンテンツの読み取りへの対価について、モデルプロバイダーと直接契約を交わすサイトが増えています。これらの契約の多くには、特定のセクションまたはサイト全体のクロール頻度に対する取り決めについて記載された規定があります。Cloudflareの [AI監査] タブでは、その種の契約を監視するためのツールが提供されています。</p>
+	<p>AI監査ツールの下部にある表には、ページ上部で設定したフィルターに基づいた期間内で最も多くスキャンされたサイトの人気コンテンツが、スキャン回数順に一覧表示されます。[CSVにエクスポート] ボタンをクリックすれば、ここに表示された詳細をファイルにダウンロードすることができ、コンテンツへのアクセスを許可しているAIプラットフォームとの矛盾について議論する際に使用することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3e0OE5WAARgyjcJKOOmnFT/f427935bd50b215bb603a96e3d529743/BLOG-2509_8.png" alt="BLOG-2509 8" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>現在、利用可能なデータは、特定のページに対するリクエストやサイト全体に対するリクエストなど、このような契約を結んでいるお客様から提供された主要な指標を反映しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-5-prepare-your-site-to-capture-value-from-ai-scanning">ステップ5：AIスキャンから対価を得るための準備をする</h3>
+		<a href="https://blog.cloudflare.com/#step-5-prepare-your-site-to-capture-value-from-ai-scanning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>誰もがAI企業と契約内容を交渉できるだけの時間や人脈を持っているわけではありません。これまでは、インターネット上の大手パブリッシャーのみが、そのような条件を設定し、自分たちのコンテンツに対して報酬を得るためのリソースを持っていました。</p>
+	<p>それ以外の人たちは、自分のデータがどのように扱われるかについて、「すべてのスキャンをブロックする」か、「無制限にアクセスを許可する」かの2つの基本的な選択肢しかありません。本日のリリースにより、コンテンツクリエーターたちはこの2つの選択肢だけでなくより多くの可視性とコントロールを得ることができますが、インターネット上の多くのサイトは、収益化の道筋がまだ整っていません。</p>
+	<p>私たちは、どのような規模のサイトでも、コンテンツの使用に対して公平な対価が支払われるべきだと考えています。Cloudflareでは、単にクロールをブロックして分析するだけに留まらない、ダッシュボードの新しいコンポーネントを立ち上げる予定です。サイト所有者は、サイトまたはサイトのセクションの価格を設定し、スキャンと設定された価格に基づいてモデルプロバイダーに請求することができます。残りの作業はCloudflareが行いますので、お客様は訪問者のための素晴らしいコンテンツの制作に集中できます。</p>
+	<p>この新しいコンポーネントを通じて対価を得るための最速の方法は、お客様のサイトがCloudflareのネットワークを使用していることを確認することです。サイトが最初にCloudflareに参加した日付に基づいて、ベータ版への参加を招待する予定です。利用可能になり次第、お知らせを受け取りたい方は、<a href="http://www.cloudflare.com/lp/ai-value-tool-waitlist" target="_blank" rel="noopener noreferrer"><u>こちらからお知らせください</u></a>。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/581ZPDNlMumBmFzrVgnG9D/d2b9d5a2b96d572239d00a39da79c77a/BLOG-2509_9.png" alt="BLOG-2509 9" class="kg-image" width="1801" height="564" loading="lazy">
+	</figure>
+	<p></p>
+</div>

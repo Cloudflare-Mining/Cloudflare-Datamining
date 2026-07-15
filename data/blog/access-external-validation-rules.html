@@ -1,73 +1,41 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/access-external-validation-rules">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/access-external-validation-rules">한국어</a>, <a href="https://blog.cloudflare.com/es-es/access-external-validation-rules">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/access-external-validation-rules">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nbofnnzI1SdUMEul7486i/14bc7472d0c51bf17284a5503b323cdc/access-external-validation-rules.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Zero Trust application security means that every request to an application is denied unless it passes a specific set of defined security policies. Most <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> solutions allow the use of a user’s identity, device, and location as variables to define these security policies.</p>
-	<p>We heard from customers that they wanted more control and more customizability in defining their Zero Trust policies.</p>
-	<p>Starting today, we’re excited that Access policies can consider anything before allowing a user access to an application. And by anything, we really do mean absolutely <i>anything</i>. You can now build infinitely customizable policies through the External Evaluation rule option, which allows you to call any <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> during the evaluation of an Access policy.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-we-built-external-evaluation-rules">Why we built external evaluation rules</h3>
-		<a href="https://blog.cloudflare.com/#why-we-built-external-evaluation-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over the past few years we added the ability to check location and device posture information in Access. However, there are always additional signals that can be considered depending on the application and specific requirements of an organization. We set out to give customers the ability to check whatever signal they require without any direct support in Access policies.</p>
-	<p>The Cloudflare security team, as an example, needed the ability to verify a user’s mTLS certificate against a registry to ensure applications can only be accessed by the right user from a corporate device. Originally, they considered using a Worker to check the user’s certificate after Access evaluated the request. However, this was going to take custom software development and maintenance over time. With External Evaluation rules, an API call can be made to verify whether a user is presenting the correct certificate for their device. The API call is made to a Worker that stores the mapping of mTLS certificates and user devices. The Worker executes the custom logic and then returns a true or false to Access.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-it-works">How it works</h3>
-		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Access is a reverse proxy in front of any web application. If a user has not yet authenticated, they will be presented with a login screen to authenticate. The user must meet the criteria defined in your Access policy. A typical policy would look something like:</p>
-	<ul>
-		<li>
-			<p>The user’s email ends in @example.com</p>
-		</li>
-		<li>
-			<p>The user authenticated with a hardware based token</p>
-		</li>
-		<li>
-			<p>The user logged in from the United States</p>
-		</li>
-	</ul>
-	<p>If the user passes the policy, they are granted a cookie that will give them access to the application until their session expires.</p>
-	<p>To evaluate the user on other custom criteria, you can add an external evaluation rule to the Access policy. The external evaluation rule requires two values: an API endpoint to call and a key to verify that any request response is coming from a trusted source.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EF4L7OHVla686FO6GbGWA/e3e6db51af877feb8f930a118eeb62e4/image1-25.png" alt="" class="kg-image" width="1231" height="575" loading="lazy">
-
-	</figure>
-	<p>After the user authenticates with your identity provider, all information about the user, device and location is passed to your external API. The API returns a pass or fail response to Access which will then either allow or deny access to the user.</p>
-	<p>Example logic for the API would look like this:</p>
-	<pre class="language-bash"><code class="language-bash">/**
- * Where your business logic should go
- * @param {*} claims
- * @returns boolean
- */
-async function externalEvaluation(claims) {
-  return claims.identity.email === 'address@example.com'
-}</code></pre>
-	<p>Where the claims object contains all the information about the user, device and network making the request. This <code>externalEvaluation</code> function can be extended to perform any desired business logic. We have made an <a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank" rel="noopener noreferrer">open-source repository</a> available with example code for consuming the Access claims and verifying the signing keys from Access.</p>
-	<p>This is really powerful! Any Access policy can now be infinitely extended to consider any information before allowing a user access. Potential examples include:</p>
-	<ul>
-		<li>
-			<p>Integrating with endpoint protection tools we don’t yet integrate with by building a middleware that checks the endpoint protection tool’s API.</p>
-		</li>
-		<li>
-			<p>Checking IP addresses against external threat feeds</p>
-		</li>
-		<li>
-			<p>Calling industry-specific user registries</p>
-		</li>
-		<li>
-			<p>And much more!</p>
-		</li>
-	</ul>
-	<p>We’re just getting started with extending Access policies. In the future we’ll make it easier to programmatically decide how a user should be treated before accessing an application, not just allow or deny access.</p>
-	<p>This feature is available in the Cloudflare Zero Trust dashboard today. Follow <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation" target="_blank" rel="noopener noreferrer">this guide</a> to get started!</p>
+<p>Zero Trust application security means that every request to an application is denied unless it passes a specific set of defined security policies. Most <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> solutions allow the use of a user’s identity, device, and location as variables to define these security policies.</p>
+<p>We heard from customers that they wanted more control and more customizability in defining their Zero Trust policies.</p>
+<p>Starting today, we’re excited that Access policies can consider anything before allowing a user access to an application. And by anything, we really do mean absolutely <em>anything</em>. You can now build infinitely customizable policies through the External Evaluation rule option, which allows you to call any <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> during the evaluation of an Access policy.</p>
+<h3>Why we built external evaluation rules</h3>
+<p>Over the past few years we added the ability to check location and device posture information in Access. However, there are always additional signals that can be considered depending on the application and specific requirements of an organization. We set out to give customers the ability to check whatever signal they require without any direct support in Access policies.</p>
+<p>The Cloudflare security team, as an example, needed the ability to verify a user’s mTLS certificate against a registry to ensure applications can only be accessed by the right user from a corporate device. Originally, they considered using a Worker to check the user’s certificate after Access evaluated the request. However, this was going to take custom software development and maintenance over time. With External Evaluation rules, an API call can be made to verify whether a user is presenting the correct certificate for their device. The API call is made to a Worker that stores the mapping of mTLS certificates and user devices. The Worker executes the custom logic and then returns a true or false to Access.</p>
+<h3>How it works</h3>
+<p>Cloudflare Access is a reverse proxy in front of any web application. If a user has not yet authenticated, they will be presented with a login screen to authenticate. The user must meet the criteria defined in your Access policy. A typical policy would look something like:</p>
+<ul>
+	<li>The user’s email ends in @example.com</li>
+	<li>The user authenticated with a hardware based token</li>
+	<li>The user logged in from the United States</li>
+</ul>
+<p>If the user passes the policy, they are granted a cookie that will give them access to the application until their session expires.</p>
+<p>To evaluate the user on other custom criteria, you can add an external evaluation rule to the Access policy. The external evaluation rule requires two values: an API endpoint to call and a key to verify that any request response is coming from a trusted source.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495XNMZMSZEA936RBJC0R8.png&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1151 Embedded Image - vPvPTo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1151 Embedded Image - vPvPTo"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>After the user authenticates with your identity provider, all information about the user, device and location is passed to your external API. The API returns a pass or fail response to Access which will then either allow or deny access to the user.</p>
+<p>Example logic for the API would look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/**</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> Where</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> business</span><span class="sk-032f62-99ffe4"> logic</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> go</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> @param</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">}</span><span class="sk-032f62-99ffe4"> claims</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> @returns</span><span class="sk-032f62-99ffe4"> boolean</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> externalEvaluation</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">claims</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> claims.identity.email</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> 'address@example.com'</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Where the claims object contains all the information about the user, device and network making the request. This <code>externalEvaluation</code> function can be extended to perform any desired business logic. We have made an <a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank" rel="noopener noreferrer">open-source repository</a> available with example code for consuming the Access claims and verifying the signing keys from Access.</p>
+<p>This is really powerful! Any Access policy can now be infinitely extended to consider any information before allowing a user access. Potential examples include:</p>
+<ul>
+	<li>Integrating with endpoint protection tools we don’t yet integrate with by building a middleware that checks the endpoint protection tool’s API.</li>
+	<li>Checking IP addresses against external threat feeds</li>
+	<li>Calling industry-specific user registries</li>
+	<li>And much more!</li>
+</ul>
+<p>We’re just getting started with extending Access policies. In the future we’ll make it easier to programmatically decide how a user should be treated before accessing an application, not just allow or deny access.</p>
+<p>This feature is available in the Cloudflare Zero Trust dashboard today. Follow <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation" target="_blank" rel="noopener noreferrer">this guide</a> to get started!</p>

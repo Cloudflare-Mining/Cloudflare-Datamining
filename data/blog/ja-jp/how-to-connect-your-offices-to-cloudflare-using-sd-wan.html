@@ -1,0 +1,60 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-to-connect-your-offices-to-cloudflare-using-sd-wan">English</a>、<a href="https://blog.cloudflare.com/id-id/how-to-connect-your-offices-to-cloudflare-using-sd-wan">Indonesia</a>、<a href="https://blog.cloudflare.com/th-th/how-to-connect-your-offices-to-cloudflare-using-sd-wan">ไทย</a>、<a href="https://blog.cloudflare.com/zh-cn/how-to-connect-your-offices-to-cloudflare-using-sd-wan">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7c7SJO8oiVbwEV0Gn3mqDP/bd5d7e6f270b91b0caa45d1f6448e04f/how-to-connect-your-offices-to-cloudflare-using-sd-wan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>多くのオフィスが間もなく再開されますが、リモートワークへの移行がITやネットワークのチームにパラダイム変化をもたらした2年前と同様に、オフィスへの復帰は独自の課題をもたらすでしょう。2年前、最高情報責任者（CIO）は、ほぼ一夜にして完全なリモートワークが可能になるという驚きの火災避難訓練に直面しました。企業がハイブリッドワークモデルを試行錯誤し始めると、ITチームは新たな問題に直面することになります。より柔軟な労働力の分散を可能にするために、既存の支社を再開し、新しい支社を起動する可能性があるだけでなく、ユーザーがどこに接続しても一貫したエクスペリエンスを得られるようにする必要があります。また、複雑化し、維持が難しくなっている企業ネットワークの可視性と安全性を維持しながら、これらすべてを実現しなければなりません。</p>
+	<p></p>
+	<p>こうした問題を解決するために、SD-WANの技術を導入する企業もあります。SD-WANとは、Software-Defined Wide-area Networkingの略で、さまざまなハードウェアプラットフォームにソフトウェアをオーバーレイとして使用し、支社と本社を相互接続する柔軟な方法です。SD-WANを導入することで、管理タスクを統合し、ルーター構成の複雑さを抽象化することで、ITおよびネットワークチームの生活をよりシンプルにすることができます。SD-WANプラットフォームには、接続されている拠点に関する情報を保持する中央の「オーケストレーター」が含まれていることが多くあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="sd-wan-as-management-overlay-for-your-corporate-network"><b>企業ネットワークの管理用オーバーレイとしてのSD-WAN</b></h3>
+		<a href="https://blog.cloudflare.com/#sd-wan-as-management-overlay-for-your-corporate-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来、ネットワークチームは、特定のハードウェアやソフトウェアに依存し、時には拠点間の専用回線やリース回線まで含む複雑な相互接続アーキテクチャによって、支社を企業ネットワークに接続していました。この設定は、軌道に乗るまで高価かつ複雑で、新規および既存の支社のアクティベーションに時間がかかるという問題がありました。Cloudflare Oneは、パフォーマンスと耐障害性に優れた当社のグローバルエニーキャストネットワーク上に構築されており、お客様は250以上の都市にある当社のグローバルネットワークを企業のバックボーンとして活用することができます。つまり、お客様のインフラを任意の場所からCloudflareのグローバルエニーキャストネットワークに接続するだけで、他のすべての場所と即座に接続されるのです。シンプルです。</p>
+	<p>図1. 新しい企業のバックボーン</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dM55ENR9XXsmCi9ctiFUf/8d8013250911903ceb25fad897b3651e/image3-6.png" alt="Figure 1. The New Corporate Backbone" class="kg-image" width="607" height="516" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="but-how-exactly-do-you-connect-your-offices-to-cloudflares-global-network"><b>しかし、Cloudflareのグローバルネットワークに自分のオフィスを接続するには、具体的にどうすればよいでしょうか？</b></h3>
+		<a href="https://blog.cloudflare.com/#but-how-exactly-do-you-connect-your-offices-to-cloudflares-global-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今日では、SD-WANを使ってネットワークを構成し、Cloudflareのネットワークに接続し、それを新しい企業バックボーンとして活用するのがより現代的なアプローチと言えるでしょう。それは迅速かつ簡単です!業界標準のトンネリングプロトコルを革新的な方法で使用しています。詳細は、<a href="https://blog.cloudflare.com/anycast-ipsec">エニーキャストIPsec</a>ブログでご覧いただけます。</p>
+	<p>詳細なチュートリアルについては、開発者向けドキュメントの<a href="https://developers.cloudflare.com/magic-wan/tutorials/secure-web-gateway" target="_blank" rel="noopener noreferrer">『Magic WANでSecure Web Gatewayに接続する』</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="keeping-things-performant-secure"><b>性能を維持してセキュアに保つ</b></h3>
+		<a href="https://blog.cloudflare.com/#keeping-things-performant-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これまで、企業は専用線とMPLSを活用してネットワークをつなぎ合わせていました。それらは、企業のトラフィックに安定したパフォーマンスの高い接続を提供するための専用パスとリンクでした。</p>
+	<p>バックボーンとしてCloudflareのネットワークを使用すると、パフォーマンスを犠牲にすることなく、MPLSや専用線の法外なコストや管理オーバーヘッドを伴わずに、<a href="https://blog.cloudflare.com/argo-v2">グローバルに最適化されたWAN</a>のメリットを享受することができます。つまり、既存の接続と同等か、それ以上のパフォーマンスと信頼性が得られるのです。</p>
+	<p>高性能な接続性は物語の一部に過ぎませんが、基盤となるネットワークは、それが何であれ、やはり安全でなければなりません。Cloudflareのネットワーク上のトラフィックは常に安全です。お客様のトラフィック、支社、オフィスと遠隔地の両方のユーザーに対してエンドツーエンドで安全です。トラフィックは暗号化され、ネットワーク全体でフィルタリングされるため、完全なセキュアWebゲートウェイとZero Trustファイアウォールを実現できます。</p>
+	<p>図2. Cloudflare Zero Trustネットワーキング</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L2on2DxItTGyVOfuaxoUl/e11cd5e19e250a1765aa2bd26acb3d1c/unnamed-3.png" alt="Figure 2. Cloudflare Zero Trust Networking" class="kg-image" width="1211" height="753" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="easier-management-greater-flexibility"><b>より簡単な管理&amp; より大きな柔軟性</b></h3>
+		<a href="https://blog.cloudflare.com/#easier-management-greater-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>標準的なトンネリングプロトコルを使用することで、SD-WAN製品を使用できるだけでなく、トンネリングプロトコル（GRE&amp; IPsec）をサポートするルーターやデバイスを使用して接続することができます。SD-WANへの転換の途中であったり、M&amp;Aの結果複数のプラットフォームを持っていたり、あるいはスモールオフィスを素早くスピンアップさせたい場合、私たちがサポートします。</p>
+	<p>そして、すべてがCloudflareに接続されることで、サイト間だけでなく、インターネットとのトラフィックも含めて、すべてのトラフィックの中央制御プレーンを持てるようになりました。</p>
+	<p>さらに簡単にするために、Aruba Networks、VMware VeloCloud、InfovistaなどのSD-WANパートナーと協力し、数クリックでSD-WANプラットフォームからのトラフィックをさらに簡単にオンランプできるようにしているところです。今後のアップデートにご期待ください。</p>
+</div>

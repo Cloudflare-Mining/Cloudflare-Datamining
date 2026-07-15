@@ -1,0 +1,78 @@
+<div class="mb2 gray5">2 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/threats-lurking-office-365-cloudflare-email-retro-scan">English</a>, <a href="https://blog.cloudflare.com/zh-tw/threats-lurking-office-365-cloudflare-email-retro-scan">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/threats-lurking-office-365-cloudflare-email-retro-scan">Français</a>, <a href="https://blog.cloudflare.com/de-de/threats-lurking-office-365-cloudflare-email-retro-scan">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/threats-lurking-office-365-cloudflare-email-retro-scan">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/threats-lurking-office-365-cloudflare-email-retro-scan">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/threats-lurking-office-365-cloudflare-email-retro-scan">Português</a>, <a href="https://blog.cloudflare.com/ru-ru/threats-lurking-office-365-cloudflare-email-retro-scan">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/threats-lurking-office-365-cloudflare-email-retro-scan">Polski</a>, <a href="https://blog.cloudflare.com/he-il/threats-lurking-office-365-cloudflare-email-retro-scan">עברית</a> y <a href="https://blog.cloudflare.com/zh-cn/threats-lurking-office-365-cloudflare-email-retro-scan">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RWybqXkpJAhDWm5j7VHFO/44ff0b256bc8947caa6645fac09ddbec/threats-lurking-office-365-cloudflare-email-retro-scan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ahora los clientes de Cloudflare pueden analizar viejos mensajes de sus bandejas de entrada de Office 365 en busca de amenazas. Retro Scan te permitirá observar qué amenazas ha pasado por alto tu actual herramienta de seguridad del correo electrónico en los últimos siete catorce días.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ev0RiZp3HLU82CLkO5CFW/d91c85faf8cccb3040fc99cbc70c90e2/image6-9.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-run-a-retro-scan">Por qué ejecutar Retro Scan</h2>
+		<a href="https://blog.cloudflare.com/#why-run-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Al hablar con los clientes, solemos escuchar que no conocen el estado de los buzones de correo de sus organizaciones. Las organizaciones tienen una herramienta de seguridad para correo electrónico o usan la protección integrada de Microsoft, pero no entienden qué nivel de efectividad tiene la actual solución. A menudo, descubrimos que estas herramientas permiten el paso de correos electrónicos maliciosos a través de sus filtros, lo que aumenta el riesgo en la empresa.</p>
+	<p>En nuestra búsqueda de ayudar a crear un mejor servicio de Internet, permitimos a los clientes de Cloudflare el uso de Retro Scan para analizar mensajes en sus buzones de entrada con nuestros modelos de aprendizaje automático avanzados, ¡gratis! Nuestro Retro Scan detecta y resalta las amenazas que encontramos para que los clientes puedan limpiar sus buzones de entrada y gestionarlas dentro de sus cuentas de correo electrónico. Con esta información, los clientes también pueden implementar controles adicionales, como el uso de Cloudflare o las soluciones que prefieran, para evitar que amenazas similares lleguen a sus casillas de correo en el futuro.</p>
+	<div class="flex anchor relative">
+		<h2 id="running-a-retro-scan">Cómo ejecutar Retro Scan</h2>
+		<a href="https://blog.cloudflare.com/#running-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los clientes pueden ir al panel de Cloudflare y allí verán debajo de la pestaña Área 1 la opción de Retro Scan:</p>
+	<p>Para poder tener acceso a los mensajes, Cloudflare necesita tener autorización para analizarlos. Para comenzar este proceso, debes brindar a Cloudflare los permisos correspondientes para analizar los mensajes. La segunda autorización permitirá que la aplicación de Cloudflare acceda al directorio activo. Eso es necesario para comprender qué usuarios están en la organización y a qué grupos pertenecen, lo que ayuda a que nuestros algoritmos evalúen mejor si un mensaje es malicioso.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ts8XaDTCCbeQnXHaLcDvB/f14d668e9c7f3b2350fc8daf41d0f902/image4-20.png" alt="" class="kg-image" width="1921" height="1080" loading="lazy">
+
+	</figure>
+	<p>Una vez que se conceden todas las autorizaciones, queda un último paso que consiste en elegir qué dominios queremos analizar y se nos facilita información sobre los demás proveedores de seguridad de correo electrónico que protegen tus bandejas de entrada.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Jy3hy3WT81WeaLMs5hXpv/d359be11ce51116fc2fdaef3c1876f95/image1-43.png" alt="" class="kg-image" width="1177" height="825" loading="lazy">
+
+	</figure>
+	<p>Por último, los clientes pueden hacer clic en “Generar Retro Scan” que hará que Cloudflare Area 1 Email Security comience a analizar los mensajes más antiguos.Como este proceso lleva tiempo, avisamos a los clientes por correo electrónico cuando finaliza el análisis.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Cw3b6VsrjNmVnE22P7YwY/772455c6d46e0816bc99718cffa51c78/image5-12.png" alt="" class="kg-image" width="1096" height="896" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="analyzing-the-results">Cómo analizar los resultados</h2>
+		<a href="https://blog.cloudflare.com/#analyzing-the-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Se te brindará un detalle de las amenazas que encontramos en las bandejas de entrada de correo electrónico de tu organización.La sección superior muestra todas las detecciones por tipo. Aquí puedes encontrar el recuento de mensajes maliciosos, sospechosos, con suplantación de identidad, spam y mensajes masivos. También destacamos los más importantes a tener en cuenta en los correos electrónicos de phishing. En cualquier momento, puedes hacer clic en el botón Buscar para obtener más información sobre los correos electrónicos con esas etiquetas.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bqwVJ4a0Pp3bwc4tSeCoI/9b7e128161f2327595430f01dea10172/Screenshot-2023-09-28-at-8.59.52-PM.png" alt="" class="kg-image" width="1200" height="1106" loading="lazy">
+
+	</figure>
+	<p>El informe también muestra los empleados que han recibido la mayor cantidad de ataques y los lugares más comunes de donde provienen las amenazas. Todas estas estadísticas sirven para comprender mejor lo que ocurre en la bandeja de entrada de tu empresa.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qYK2pXMDnaoZqPvidj3oP/d7459545d59847c80ff16d5b9a73d364/Screenshot-2023-09-28-at-9.01.37-PM.png" alt="" class="kg-image" width="1228" height="712" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-to-sign-up">Cómo registrarse</h2>
+		<a href="https://blog.cloudflare.com/#how-to-sign-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El Retro Scan se encuentra actualmente en fase beta cerrada.Si te interesa ejecutar Retro Scan en tus dominios de correo electrónico de Office 365, comunícate con tu contacto de Cloudflare y lo incorporaremos a tu cuenta.</p>
+	<p>Después de ejecutar Retro Scan y ver los resultados, puedes optar por comprar Cloudflare Area 1 para evitar que futuras amenazas lleguen a tu bandeja de entrada o configurar una evaluación de riesgos de phishing, que es una prueba gratuita de 30 días del producto Área 1. Si bien Retro Scan es una excelente herramienta para ver qué amenazas latentes existen, una evaluación del riesgo de phishing puede ayudarte a obtener una mejor visibilidad de todas las herramientas que tenemos para mantener limpios los buzones de correo.</p>
+	<p>Para empezar, puedes hacer clic en el botón “Solicitar prueba” de la parte inferior del informe de Retro Scan, completar el formulario correspondiente y una persona de Cloudflare se pondrá en contacto contigo, o puedes comunicarte directamente con tu contacto de Cloudflare.</p>
+</div>

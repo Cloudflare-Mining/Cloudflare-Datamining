@@ -1,83 +1,35 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-database-integrations">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/announcing-database-integrations">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-database-integrations">日本語</a>, <a href="https://blog.cloudflare.com/es-es/announcing-database-integrations">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-database-integrations">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MbjTfQTdMcZnbMf2v3t7N/f03db904fd9dd77705770073adae99ea/announcing-database-integrations.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p><i>This blog post references a feature which has updated documentation. For the latest reference content, visit </i><a href="https://developers.cloudflare.com/workers/databases/third-party-integrations" target="_blank" rel="noopener noreferrer"><i>https://developers.cloudflare.com/workers/databases/third-party-integrations/</i></a></p>
-	<p>One of the best feelings as a developer is seeing your idea come to life. You want to move fast and Cloudflare’s developer platform gives you the tools to take your applications from 0 to 100 within minutes.</p>
-	<p>One thing that we’ve heard slows developers down is the question: <i>“What databases can be used with Workers?”</i>. Developers stumble when it comes to things like finding the databases that Workers can connect to, the right library or driver that's compatible with Workers and translating boilerplate examples to something that can run on our developer platform.</p>
-	<p>Today we’re announcing Database Integrations &nbsp;– making it seamless to connect to your database of choice on Workers. To start, we’ve added some of the most popular databases that support HTTP connections: <a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a>, <a href="https://planetscale.com" target="_blank" rel="noopener noreferrer">PlanetScale</a> and <a href="https://supabase.com" target="_blank" rel="noopener noreferrer">Supabase</a> with more (like Prisma, Fauna, MongoDB Atlas) to come!</p>
-	<div class="flex anchor relative">
-		<h2 id="focus-more-on-code-less-on-config">Focus more on code, less on config</h2>
-		<a href="https://blog.cloudflare.com/#focus-more-on-code-less-on-config" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless SQL database</a>, D1, launched in open alpha last year, and we’re continuing to invest in making it production ready (stay tuned for an exciting update later this week!). We also recognize that there are plenty of flavours of databases, and we want developers to have the freedom to select what’s best for them and pair it with our powerful compute offering.</p>
-	<p>On our second day of this Developer Week 2023, data is in the spotlight. We’re taking huge strides in making it possible and more performant to connect to databases from Workers (spoiler alert!):</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Announcing connect() — a new API for creating TCP sockets from Cloudflare Workers</a></p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/announcing-database-integrations">Smart Placement speeds up applications by moving code close to your backend — no config needed</a></p>
-		</li>
-	</ul>
-	<p>Making it possible and performant is just the start, we also want to make connecting to databases painless. Databases have specific protocols, drivers, APIs and vendor specific features that you need to understand in order to get up and running. With Database Integrations, we want to make this process foolproof.</p>
-	<p>Whether you’re working on your first project or your hundredth project, you should be able to connect to your database of choice with your eyes closed. With Database Integrations, you can spend less time focusing on configuration and more on doing what you love – building your applications!</p>
-	<div class="flex anchor relative">
-		<h2 id="what-does-this-experience-look-like">What does this experience look like?</h2>
-		<a href="https://blog.cloudflare.com/#what-does-this-experience-look-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="discoverability">Discoverability</h3>
-		<a href="https://blog.cloudflare.com/#discoverability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you’re starting a project from scratch or want to connect Workers to an existing database, you want to know <i>“What are my options?”</i>.</p>
-	<p>Workers supports connections to a wide array of database providers over HTTP. &nbsp;With newly released <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">outbound TCP support</a>, the databases that you can connect to on Workers will only grow!</p>
-	<p>In the new “Integrations” tab, you’ll be able to view all the databases that we support and add the integration to your Worker directly from here. To start, we have support for Neon, PlanetScale and Supabase with many more coming soon.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72AInQBXAsWNkEcBr3DPeo/3c546a2d7e2cfdf403ffac91154f172a/image2-10.png" alt="Database integrations on the Cloudflare dashboard" class="kg-image" width="1999" height="1247" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="authentication">Authentication</h3>
-		<a href="https://blog.cloudflare.com/#authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You should never have to copy and paste your database credentials or other parts of the connection string.</p>
-	<p>Once you hit “Add Integration” we take you through an OAuth2 flow that automatically gets the right configuration from your database provider and adds them as encrypted environment variables to your Worker.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DKr9USRBKD90foCkyPkLM/b9bedf4c535ed33c1b42bdc176f066c3/integration-flow.png" alt="Set up an integration between your database and Worker" class="kg-image" width="1714" height="1594" loading="lazy">
-
-	</figure>
-	<p>Once you have credentials set up, check out our <a href="https://developers.cloudflare.com/workers/learning/integrations/databases/#native-database-integrations-beta" target="_blank" rel="noopener noreferrer">documentation</a> for examples on how to get started using the data platform’s client library. What’s more – we have templates coming that will allow you to get started even faster!</p>
-	<p>That’s it! With database integrations, you can connect your Worker with your database in just a few clicks. Head to your Worker &gt; Settings &gt; Integrations to try it out today.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What’s next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve only just scratched the surface with Database Integrations and there’s a ton more coming soon!</p>
-	<p>While we’ll be continuing to add support for more popular data platforms we also know that it's impossible for us to keep up in a moving landscape. We’ve been working on an integrations platform so that any database provider can easily build their own integration with Workers. As a developer, this means that you can start tinkering with the next new database right away on Workers.</p>
-	<p>Additionally, we’re working on adding wrangler support, so you can create integrations directly from the CLI. We’ll also be adding support for account level environment variables in order for you to share integrations across the Workers in your account.</p>
-	<p>We’re really excited about the potential here and to see all the new creations from our developers! Be sure to join <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare’s Developer Discord</a> and share your projects. Happy building!</p>
-</div>
+<p><em>This blog post references a feature which has updated documentation. For the latest reference content, visit <a href="https://developers.cloudflare.com/workers/databases/third-party-integrations" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/databases/third-party-integrations/</a></em></p>
+<p>One of the best feelings as a developer is seeing your idea come to life. You want to move fast and Cloudflare’s developer platform gives you the tools to take your applications from 0 to 100 within minutes.</p>
+<p>One thing that we’ve heard slows developers down is the question: <em>“What databases can be used with Workers?”</em>. Developers stumble when it comes to things like finding the databases that Workers can connect to, the right library or driver that's compatible with Workers and translating boilerplate examples to something that can run on our developer platform.</p>
+<p>Today we’re announcing Database Integrations &nbsp;– making it seamless to connect to your database of choice on Workers. To start, we’ve added some of the most popular databases that support HTTP connections: <a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a>, <a href="https://planetscale.com" target="_blank" rel="noopener noreferrer">PlanetScale</a> and <a href="https://supabase.com" target="_blank" rel="noopener noreferrer">Supabase</a> with more (like Prisma, Fauna, MongoDB Atlas) to come!</p>
+<h2>Focus more on code, less on config</h2>
+<p>Our <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless SQL database</a>, D1, launched in open alpha last year, and we’re continuing to invest in making it production ready (stay tuned for an exciting update later this week!). We also recognize that there are plenty of flavours of databases, and we want developers to have the freedom to select what’s best for them and pair it with our powerful compute offering.</p>
+<p>On our second day of this Developer Week 2023, data is in the spotlight. We’re taking huge strides in making it possible and more performant to connect to databases from Workers (spoiler alert!):</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Announcing connect() — a new API for creating TCP sockets from Cloudflare Workers</a></li>
+	<li><a href="https://blog.cloudflare.com/announcing-database-integrations">Smart Placement speeds up applications by moving code close to your backend — no config needed</a></li>
+</ul>
+<p>Making it possible and performant is just the start, we also want to make connecting to databases painless. Databases have specific protocols, drivers, APIs and vendor specific features that you need to understand in order to get up and running. With Database Integrations, we want to make this process foolproof.</p>
+<p>Whether you’re working on your first project or your hundredth project, you should be able to connect to your database of choice with your eyes closed. With Database Integrations, you can spend less time focusing on configuration and more on doing what you love – building your applications!</p>
+<h2>What does this experience look like?</h2>
+<h3>Discoverability</h3>
+<p>If you’re starting a project from scratch or want to connect Workers to an existing database, you want to know <em>“What are my options?”</em>.</p>
+<p>Workers supports connections to a wide array of database providers over HTTP. &nbsp;With newly released <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">outbound TCP support</a>, the databases that you can connect to on Workers will only grow!</p>
+<p>In the new “Integrations” tab, you’ll be able to view all the databases that we support and add the integration to your Worker directly from here. To start, we have support for Neon, PlanetScale and Supabase with many more coming soon.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="446" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=640&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=750&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=828&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=1080&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=1280&amp;h=798&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48J9D9AT0FXGM0X6FYT8M3.png&amp;w=1430&amp;h=892&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Database integrations on the Cloudflare dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="446" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Database integrations on the Cloudflare dashboard"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Authentication</h3>
+<p>You should never have to copy and paste your database credentials or other parts of the connection string.</p>
+<p>Once you hit “Add Integration” we take you through an OAuth2 flow that automatically gets the right configuration from your database provider and adds them as encrypted environment variables to your Worker.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="665" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=715&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=640&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=715&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=750&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=828&amp;h=770&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=1080&amp;h=1004&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=1280&amp;h=1190&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JK3M4NBS71YFZ85MX0W2.png&amp;w=1430&amp;h=1330&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Set up an integration between your database and Worker" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="665" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Set up an integration between your database and Worker"></div>
+</figure>
+<p>Once you have credentials set up, check out our <a href="https://developers.cloudflare.com/workers/learning/integrations/databases/#native-database-integrations-beta" target="_blank" rel="noopener noreferrer">documentation</a> for examples on how to get started using the data platform’s client library. What’s more – we have templates coming that will allow you to get started even faster!</p>
+<p>That’s it! With database integrations, you can connect your Worker with your database in just a few clicks. Head to your Worker &gt; Settings &gt; Integrations to try it out today.</p>
+<h2>What’s next?</h2>
+<p>We’ve only just scratched the surface with Database Integrations and there’s a ton more coming soon!</p>
+<p>While we’ll be continuing to add support for more popular data platforms we also know that it's impossible for us to keep up in a moving landscape. We’ve been working on an integrations platform so that any database provider can easily build their own integration with Workers. As a developer, this means that you can start tinkering with the next new database right away on Workers.</p>
+<p>Additionally, we’re working on adding wrangler support, so you can create integrations directly from the CLI. We’ll also be adding support for account level environment variables in order for you to share integrations across the Workers in your account.</p>
+<p>We’re really excited about the potential here and to see all the new creations from our developers! Be sure to join <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare’s Developer Discord</a> and share your projects. Happy building!</p>

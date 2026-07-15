@@ -1,0 +1,317 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/building-d1-a-global-database">English</a>、<a href="https://blog.cloudflare.com/zh-tw/building-d1-a-global-database">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/building-d1-a-global-database">Français</a>、<a href="https://blog.cloudflare.com/de-de/building-d1-a-global-database">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/building-d1-a-global-database">한국어</a>、<a href="https://blog.cloudflare.com/es-es/building-d1-a-global-database">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/building-d1-a-global-database">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RjwMi9G4wj7Nywb50DT8B/5806eccf5daa32a6defbf63cdd3c1a7c/building-d1-a-global-database.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Workerアプリを構築する開発者は、必要なインフラストラクチャではなく作成するものに集中し、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflareネットワーク</a>のグローバルなリーチを活用しています。個人的プロジェクトからビジネスクリティカルなワークロードまで、アプリケーションの多くは永続データを必要とします。Workersは開発者のニーズに合わせて、キーバリューやオブジェクトストレージなど、さまざまな<a href="https://developers.cloudflare.com/workers/platform/storage-options" target="_blank" rel="noopener noreferrer">データベースとストレージのオプション</a>を提供します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76hMKeBHewbCLm4XlVS4zL/92271c25576185cad1ab5e70e29ede58/image2-33.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>リレーショナルデータベースは今日、多くのアプリケーションのバックボーンになっています。Cloudflareのリレーショナルデータベースを補完する <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>は、現在一般公開されています。2022年末のアルファ版から2024年4月のGA版までに至るまでの過程では、開発者が慣れ親しんだリレーショナルデータとSQLで本番ワークロードを構築できるようにすることに重点を置きました。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-d1">D1とは？</h3>
+		<a href="https://blog.cloudflare.com/#whats-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1は、Cloudflareに組み込まれたサーバレスのリレーショナルデータベースです。Workerアプリでは、D1がSQLiteのSQL方言を活用してSQLの表現力を提供し、<a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md" target="_blank" rel="noopener noreferrer">Drizzle ORM</a>のようなオブジェクトリレーショナルマッパー（ORM）を含めた開発者ツールの統合を可能にします。D1には、<a href="https://developers.cloudflare.com/d1/build-with-d1/d1-client-api" target="_blank" rel="noopener noreferrer">Workers</a>または<a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database" target="_blank" rel="noopener noreferrer">HTTP API</a>を通じてアクセスできます。</p>
+	<p>サーバレスでプロビジョニングが不要。<a href="https://developers.cloudflare.com/d1/reference/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>によるディザスタリカバリ機能がデフォルトで組み込まれており、<a href="https://developers.cloudflare.com/d1/platform/pricing" target="_blank" rel="noopener noreferrer">利用料金は従量制</a>です。D1には無料枠がたっぷりあるため、開発者はD1で実験し、本番環境に移行することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-make-data-global">データをグローバル化するには？</h3>
+		<a href="https://blog.cloudflare.com/#how-to-make-data-global" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1のGA版では、信頼性と開発者体験に重点を置きました。 当社は現在、グローバルに分散されたアプリケーションのサポートを強化するためにD1の拡張を計画しています。</p>
+	<p>Workersモデルでは、着信リクエストが最寄りのデータセンターでのサーバレス実行を呼び出します。 Workerアプリは、ユーザーのリクエストに応じてグローバルに拡張できます。 しかし、アプリケーションデータは中央集中型のデータベースに保存されたままであり、グローバルユーザートラフィックはデータロケーションへのアクセスラウンドトリップを考慮する必要があります。例えば、現在のD1データベースは一か所に存在します。</p>
+	<p>Workersは、頻繁にアクセスされるデータの局所性を考慮する<a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer">Smart Placement</a>をサポートしています。Smart Placementは、データベースなど中央集中型のバックエンドサービスに近いWorkerを呼び出すことで遅延を減らし、アプリケーションのパフォーマンスを向上させます。こうしてグローバルアプリのWorker配置については解決しましたが、データ配置を解決する必要があります。</p>
+	<p>では、CloudflareのビルトインデータベースソリューションD1は、どうすればグローバルアプリケーションのデータ配置のサポートを強化できるのでしょうか。 その答えは、非同期読み取りレプリケーションです。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-asynchronous-read-replication">非同期読み取りレプリケーションとは？</h3>
+		<a href="https://blog.cloudflare.com/#what-is-asynchronous-read-replication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I58tQFeSOcIyqrGfv9UnB/c1bc267b8cd2eb09332ae909429aeb5b/image4-30.png" alt="" class="kg-image" width="1800" height="590" loading="lazy">
+
+	</figure>
+	<p>Postgres、MySQL、SQL Server、Oracleといったサーバベースのデータベース管理システムにおける<b>リードレプリカ</b>は、プライマリデータベースサーバのほぼリアルタイムの読み取り専用コピーとして機能する別のデータベースサーバです。管理者は、プライマリサーバのスナップショットから新しいサーバを起動し、プライマリサーバがレプリカサーバに更新を非同期で送信するように設定することで、リードレプリカを作成します。更新は非同期に行われるため、リードレプリカはプライマリサーバの現在の状態より遅れている可能性があります。プライマリサーバとレプリカの差は、<b>レプリカラグ</b>と呼ばれます。複数のリードレプリカを持つことも可能です。</p>
+	<p>非同期読み取りレプリケーションは、データベースのパフォーマンスを向上させる手段として実績のあるソリューションです：</p>
+	<ul>
+		<li>
+			<p>複数のレプリカに負荷を分散することで、スループットを向上できます。</p>
+		</li>
+		<li>
+			<p>クエリを作成するユーザーの近くにレプリカを配置することで、クエリの遅延を低減できます。</p>
+		</li>
+	</ul>
+	<p>データベースシステムによっては、同期レプリケーションを提供するものもあります。 同期レプリケーション方式のシステムでは、書き込みはすべてのレプリカが書き込みを確認するまで待たなければなりません。 同期レプリケーション方式のシステムは、最も遅いレプリカと同じ速度でしか実行できず、レプリカに障害が発生すると停止します。 グローバル規模でパフォーマンスを向上させようとするなら、同期レプリケーションはできるだけ避けたいものです！</p>
+	<div class="flex anchor relative">
+		<h3 id="consistency-models-read-replicas">一貫性モデルとリードレプリカ</h3>
+		<a href="https://blog.cloudflare.com/#consistency-models-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどのデータベースシステムは、設定に応じて<a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">コミット済み読み取り</a>、<a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">スナップショット分離</a>、または<a href="https://jepsen.io/consistency/models/serializable" target="_blank" rel="noopener noreferrer">直列化可能</a>の一貫性モデルを提供しています。例えば、Postgresの<a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">デフォルトはコミット済み読み取り</a>ですが、より厳密なモードを使用するように設定できます。SQLiteは<a href="https://www.sqlite.org/draft/isolation.html" target="_blank" rel="noopener noreferrer">WALモードでスナップショット分離</a>を提供しています。スナップショット分離や直列化可能のような厳密なモードは、許容されるシステム並行性のシナリオや、プログラマが心配しなければならない並行性の競合状態の種類を制限するため、プログラムするのが容易です。</p>
+	<p>リードレプリカは独立して更新されるため、各レプリカの内容は常に異なる可能性があります。プライマリであろうとリードレプリカであろうと、同じサーバにすべてのクエリが送られるのであれば、基礎となるデータベースが提供する<a href="https://jepsen.io/consistency" target="_blank" rel="noopener noreferrer">一貫性モデル</a>に従って、一貫した結果になるはずです。リードレプリカを使用していれば結果が少し古いかもしれないというだけのことです。</p>
+	<p>リードレプリカを使用するサーバベースのデータベースでは、セッション内のすべてのクエリで同じサーバを使用することが重要です。 同じセッションで別のリードレプリカに切り替えると、アプリケーションが提供する一貫性モデルが損なわれて、データベースの動作に関する仮定に違反し、アプリケーションが正しくない結果を返す場合があります！</p>
+	<p><b>例</b>例えば、AとBの2つのレプリカがあり、レプリカAはプライマリデータベースから100ms遅れ、レプリカBはプライマリデータベースから2s遅れています。 あるユーザーが次のように望んだとします：</p>
+	<ol>
+		<li>
+			<p>クエリ1の実行1a. クエリ1の結果に基づいて計算</p>
+		</li>
+		<li>
+			<p>(1a)の計算結果に基づいてクエリ2を実行</p>
+		</li>
+	</ol>
+	<p>時刻t=10sでクエリ1はレプリカAに行って返ります。 クエリ1が見るのは、t=9.9sのプライマリデータベースの状態です。 計算に500msかかるとすると、t=10.5sでクエリ2はレプリカBに行きます。レプリカBはプライマリデータベースより2s遅れているため、t=10.5sでクエリ2はt=8.5sのデータベースを見ることになります。 このアプリケーションに関する限り、クエリ2の結果はデータベースが過去に遡ったように見えます！</p>
+	<p>形式的には、コミットされたデータのみをクエリが参照するため<a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">コミット済み読み取り</a>の一貫性ですが、それ以外の保証はありません。自分の書き込みを読み取れる保証すらないのです。コミット済み読み取りは有効な一貫性モデルですが、コミット済み読み取りモデルが許容するすべての競合状態を推論することは難しく、アプリケーションを正しく書くことは困難です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2R1p29j20c7szuRmY2Sjlp/52e4982c6c45e18c4d0c18835931b016/image3-34.png" alt="" class="kg-image" width="1200" height="510" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="d1s-consistency-model-read-replicas">D1の一貫性モデルとリードレプリカ</h3>
+		<a href="https://blog.cloudflare.com/#d1s-consistency-model-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1のデフォルトは、SQLiteが提供する<a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">スナップショット分離</a>です。</p>
+	<p>スナップショット分離は多くの開発者にとって使いやすい一貫性モデルです。D1では、D1データベースのアクティブなコピーを1つだけ確保し、その1つのデータベースへHTTPリクエストを全てルーティングすることで、この一貫性モデルを実装しています。D1データベースのアクティブなコピーが最大1つであることを保証するのは厄介な分散システムの問題ですが、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>を使用してD1を構築することで解決しました。Durable Objectはグローバルな一意性を保証するため、一度Durable Objectsに依存すればHTTPリクエストのルーティングは簡単です。D1 Durable Objectへ送ればいいだけです。</p>
+	<p>データベースのアクティブなコピーが複数あると、一般的な着信HTTPリクエストを見て毎回確実に同じレプリカにルーティングすることができないため、この方法は通用しません。残念ながら、前節の例のように関連するリクエストを毎回同じレプリカにルーティングしない場合は、当社が提供できる最善の一貫性モデルはコミット済み読み取りとなります。</p>
+	<p>特定のレプリカに一貫してルーティングすることが不可能な場合、もう一つのアプローチは、リクエストを任意のレプリカにルーティングし、選択されたレプリカがプログラマにとって「理に適った」一貫性モデルに従ってリクエストに応答することを保証することです。リクエストに<a href="https://en.wikipedia.org/wiki/Lamport_timestamp" target="_blank" rel="noopener noreferrer">Lamportタイムスタンプを</a>含めることを厭わなければ、どのレプリカを使っても<a href="https://jepsen.io/consistency/models/sequential" target="_blank" rel="noopener noreferrer">逐次一貫性</a>を実装することができます。逐次一貫性モデルには、「<a href="https://jepsen.io/consistency/models/read-your-writes" target="_blank" rel="noopener noreferrer">自分の書き込みを読み取る</a>」と「<a href="https://jepsen.io/consistency/models/writes-follow-reads" target="_blank" rel="noopener noreferrer">書き込みは読み取りに追従する</a>」などの重要なプロパティと、書き込みの全順序があります。書き込みの全順序とは、すべてのレプリカでトランザクションが同じ順序でコミットされることを意味し、これはまさにトランザクション処理システムに望まれる動作です。逐次一貫性には、システム内のいずれかのエンティティが恣意的に古くなる可能性があるという注意点が伴いますが、APIを設計する際にレプリカの遅延を考慮することができるため、この注意点は当社にとっては機能です。</p>
+	<p>つまり、D1がすべてのデータベースクエリについてLamportタイムスタンプをアプリケーションに与え、それらのアプリケーションが最後に見たLamportタイムスタンプをD1に伝えれば、逐次一貫性モデルに従ったクエリの動作を各レプリカに決定させることができるという発想です。</p>
+	<p>レプリカで逐次一貫性を実装する堅牢でシンプルな方法は、次の通りです：</p>
+	<ul>
+		<li>
+			<p>データベースへの各リクエストとLamportタイムスタンプを関連付けます。 単調増加するコミットトークンが効果的です。</p>
+		</li>
+		<li>
+			<p>すべての書き込みクエリをプライマリデータベースに送信し、書き込みの全順序を確保します。</p>
+		</li>
+		<li>
+			<p>任意のレプリカに読み込みクエリを送信しますが、そのレプリカでのクエリ処理は、プライマリデータベースからクエリのLamportタイムスタンプより遅い更新を受信するまで遅延します。</p>
+		</li>
+	</ul>
+	<p>この実装の良いところは、読み込みの多いワークロードが常に同じレプリカに送られるような一般的なケースで高速に動作し、リクエストが異なるレプリカにルーティングされても動作する点です。</p>
+	<div class="flex anchor relative">
+		<h3 id="sneak-preview-bringing-read-replication-to-d1-with-sessions">スニークプレビュー：SessionsでD1に読み取りレプリケーションを導入</h3>
+		<a href="https://blog.cloudflare.com/#sneak-preview-bringing-read-replication-to-d1-with-sessions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1に読み取りレプリケーションを導入するために、「<b>セッション（Sessions）</b>」という新概念でD1 APIを拡張します。セッションとは、アプリケーションの1つの論理セッションを成すすべてのクエリをカプセル化したものです。例えば、特定のWebブラウザからのすべてのリクエストもセッションですし、モバイルアプリからのすべてのリクエストもセッションになります。セッションを使う場合、クエリは、プライマリデータベースであれ近くのレプリカであれ、リクエストにとって最も有用なD1データベースのコピーを使用します。D1にセッション機能を実装すれば、セッション内の全クエリについて逐次一貫性を確保できます。</p>
+	<p>セッションAPIはD1の一貫性モデルを変更するため、開発者は新しいAPIにオプトインする必要があります。既存のD1 APIメソッドに変更はなく、スナップショット分離の一貫性モデルも以前と同じです。ただし、新しいセッションAPIを使って作成したクエリのみがレプリカを使用します。</p>
+	<p>D1セッションAPIの例です：</p>
+	<p>D1のセッション実装ではコミットトークンを使用します。 コミットトークンは、データベースに対する特定のコミット済みクエリを識別します。D1はコミットトークンを使って、セッション内のクエリの実行順序が逐次的になるようにします。上の例でいうと、D1セッションは、SELECT COUNT(*) というクエリが必ず新しい順序のINSERTの後に実行されるようにます。awaitとawaitの間でレプリカを切り換えたとしても、この逐次性は保証されます。</p>
+	<pre class="language-js"><code class="language-js">export default {
+  async fetch(request: Request, env: Env) {
+    // When we create a D1 Session, we can continue where we left off
+    // from a previous Session if we have that Session's last commit
+    // token.  This Worker will return the commit token back to the
+    // browser, so that it can send it back on the next request to
+    // continue the Session.
+    //
+    // If we don't have a commit token, make the first query in this
+    // session an "unconditional" query that will use the state of the
+    // database at whatever replica we land on.
+    const token = request.headers.get('x-d1-token') ?? 'first-unconditional'
+    const session = env.DB.withSession(token)
+
+
+    // Use this Session for all our Workers' routes.
+    const response = await handleRequest(request, session)
+
+
+    if (response.status === 200) {
+      // Set the token so we can continue the Session in another request.
+      response.headers.set('x-d1-token', session.latestCommitToken)
+    }
+    return response
+  }
+}
+
+
+async function handleRequest(request: Request, session: D1DatabaseSession) {
+  const { pathname } = new URL(request.url)
+
+
+  if (pathname === '/api/orders/list') {
+    // This statement is a read query, so it will execute on any
+    // replica that has a commit equal or later than `token` we used
+    // to create the Session.
+    const { results } = await session.prepare('SELECT * FROM Orders').all()
+
+
+    return Response.json(results)
+  } else if (pathname === '/api/orders/add') {
+    const order = await request.json&lt;Order&gt;()
+
+
+    // This statement is a write query, so D1 will send the query to
+    // the primary, which always has the latest commit token.
+    await session
+      .prepare('INSERT INTO Orders VALUES (?, ?, ?)')
+      .bind(order.orderName, order.customer, order.value)
+      .run()
+
+
+    // In order for the application to be correct, this SELECT
+    // statement must see the results of the INSERT statement above.
+    // The Session API keeps track of commit tokens for queries
+    // within the session and will ensure that we won't execute this
+    // query until whatever replica we're using has seen the results
+    // of the INSERT.
+    const { results } = await session
+      .prepare('SELECT COUNT(*) FROM Orders')
+      .all()
+
+
+    return Response.json(results)
+  }
+
+
+  return new Response('Not found', { status: 404 })
+}</code></pre>
+	<p>Workersフェッチハンドラでセッションを開始する方法はいくつかあります。 &nbsp;<code>db.withSession(&lt;condition&gt;)</code> は、以下の引数を受け付けます：</p>
+	<p><code><b>condition</b></code><b> 条件の引数</b></p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><b><code>condition</code> argument</b></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><b>Behavior</b></span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>&lt;commit_token&gt;</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) starts Session as of given commit token</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>first-unconditional</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) if the first query is read, read whatever current replica has and use the commit token of that read as the basis for subsequent queries.&nbsp; If the first query is a write, forward the query to the primary and use the commit token of the write as the basis for subsequent queries.</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>first-primary</code></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(1) runs first query, read or write, against the primary</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><code>null</code> or missing argument</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">treated like <code>first-unconditional</code>&nbsp;</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><b>動作</b></p>
+	<p><code>&lt;commit_token&gt;</code></p>
+	<p>(1) 任意のコミットトークンの時点からセッションを開始します</p>
+	<p>(2) これ以降のクエリは逐次一貫性を持ちま</p>
+	<p><code>first-unconditional</code></p>
+	<p>(1) 最初のクエリが読み取りの場合は、現在のレプリカが持っているものをすべて読み取り、その読み込みのコミットトークンを後続クエリのベースとして使用します。&nbsp; 最初のクエリが書き込みの場合は、そのクエリをプライマリへ転送し、その書き込みのコミットトークンを後続クエリのベースとして使用します。</p>
+	<p>(2) 後続のクエリは逐次一貫性を持ちます</p>
+	<p><code>first-primary</code></p>
+	<p>(1) プライマリに対する最初のクエリ（読み取りまたは書き込み）を実行します</p>
+	<p>(2) 後続のクエリは逐次一貫性を持ちます</p>
+	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create northwind-traders
+
+# omit --remote to run on a local database for development
+npx wrangler d1 execute northwind-traders --remote --file=./schema.sql
+
+npx wrangler d1 execute northwind-traders --remote --file=./data.sql</code></pre>
+	<p><code>null</code> または 引数なし</p>
+	<pre class="language-bash"><code class="language-bash"># database schema &amp; data
+npx wrangler d1 export northwind-traders --remote --output=./database.sql
+
+# single table schema &amp; data
+npx wrangler d1 export northwind-traders --remote --table='Employee' --output=./table.sql
+
+# database schema only
+npx wrangler d1 export &lt;database_name&gt; --remote --output=./database-schema.sql --no-data=true</code></pre>
+	<p><code>first-unconditional</code>&nbsp;と同様の扱いです</p>
+	<pre class="language-bash"><code class="language-bash"># To find top 10 queries by average execution time:
+npx wrangler d1 insights &lt;database_name&gt; --sort-type=avg --sort-by=time --count=10</code></pre>
+	<p>セッションの最後のクエリからコミットトークンを 「ラウンドトリップ」し、それを使って新しいセッションを開始することで、セッションが複数のリクエストにまたがるようにすることができます。 &nbsp;これにより、Webアプリやモバイルアプリのような個々のユーザーエージェントは、ユーザーが見るすべてのクエリに逐次一貫性を持たせることができます。</p>
+	<p>D1の読み取りレプリケーションはビルトインにし、追加の使用料やストレージコストはなく、レプリカの設定も不要にします。CloudflareがアプリのD1トラフィックを<a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">監視</a>し、自動的にデータベースのレプリカを作成して、ユーザーに近い場所にある複数のサーバにユーザートラフィックを分散させます。当社のサーバレスモデルと整合するため、D1開発者がレプリカのプロビジョニングや管理について心配する必要はありません。開発者には、レプリケーションとデータ一貫性のトレードオフに関するアプリの設計に注力していただきたいのです。</p>
+	<p>当社はグローバルな読み取りレプリケーションに力を入れ、上記の提案の実現に取り組んでいます（Developer Discordの<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1チャンネル</a>でフィードバックを共有してください）。それが実現するまで、いくつかのエキサイティングな新機能を加えたD1 GAをご活用ください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dTCMeWMaQjhBd1SM8hM6O/2cbe9ec1a7a4fb0c061afe0e1c0bf666/image1-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="check-out-d1-ga">D1 GAをチェック</h3>
+		<a href="https://blog.cloudflare.com/#check-out-d1-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、2023年10月にD1のオープンベータ版を提供して以来、重要サービスに求められる信頼性、拡張性、開発者体験を重視してD1を開発してきました。開発者がD1でアプリケーションの構築とデバッグを高速化できるよう、いくつかの新機能に投資しています。</p>
+	<p><b>より大きなデータベースで大きく構築</b>当社は、より大きなデータベースを求める開発者の声に耳を傾けてきました。D1は現在、最大10GBのデータベースをサポートし、Workersの有料プランでは5万件のデータベースをサポートしています。D1のスケールアウトによって、アプリはビジネスエンティティごとのデータベースのユースケースをモデル化することができます。ベータ版になってから、新しいD1データベースが一定期間に処理するリクエストはアルファ版の40倍になっています。</p>
+	<p><b>バルクデータのインポートとエクスポート</b>開発者がデータをインポートおよびエクスポートする理由はさまざまです：</p>
+	<ul>
+		<li>
+			<p>異なるデータベースシステムとのデータベース移行テスト</p>
+		</li>
+		<li>
+			<p>ローカル開発またはテスト用のデータコピー</p>
+		</li>
+		<li>
+			<p>コンプライアンスなどのカスタム要件に対応するための手動バックアップ</p>
+		</li>
+	</ul>
+	<p>D1に対するSQLファイル実行は可能でしたが、大規模なインポートをアトミック操作にし、データベースが中途半端な状態にならないように <code>wrangler d1 execute –file=&lt;filename&gt;</code> を改良しています。<code>wrangler d1 execute</code> のデフォルトもローカル優先になり、リモートの本番用データベースを保護できるようになっています。</p>
+	<p>当社でご用意した<a href="https://github.com/cloudflare/d1-northwind/tree/main" target="_blank" rel="noopener noreferrer">Northwind Traders</a>のデモデータベースをインポートするには、<a href="https://github.com/cloudflare/d1-northwind/blob/main/db/schema.sql" target="_blank" rel="noopener noreferrer">スキーマ</a>と<a href="https://github.com/cloudflare/d1-northwind/blob/main/db/data.sql" target="_blank" rel="noopener noreferrer">データ</a>をダウンロードし、SQLファイルを実行します。</p>
+	<p>以下を使って、D1データベースのデータとスキーマ、スキーマのみ、またはデータのみをSQLファイルにエクスポートできます：</p>
+	<p><b>クエリパフォーマンスのデバッグ</b>SQLクエリのパフォーマンスを理解し、遅いクエリをデバッグすることは、本番環境ワークロードでは重要なステップです。開発者がクエリパフォーマンスメトリクスを分析できるように、実験用の <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights" target="_blank" rel="noopener noreferrer"><code>wrangler d1 insights</code></a> を追加しました。こちらも<a href="https://developers.cloudflare.com/d1/observability/metrics-analytics" target="_blank" rel="noopener noreferrer">GraphQL API</a>からご利用いただけます。</p>
+	<p><b>開発者ツール</b>さまざまな<a href="https://developers.cloudflare.com/d1/reference/community-projects" target="_blank" rel="noopener noreferrer">コミュニティ開発者プロジェクト</a>がD1をサポートしています。新たに加わったのは<a href="https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm" target="_blank" rel="noopener noreferrer">Prisma ORM</a>などで、Prisma ORMはバージョン5.12.0でWorkersとD1をサポートしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">次のステップ</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GAとグローバル読み取りレプリケーション設計で利用可能になった機能は、開発者のアプリケーションに必要なSQLデータベースを提供するためのスタートに過ぎません。まだD1をお使いでない方は、今すぐ<a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">利用を開始</a>していただけます。D1の<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>を見て着想のきっかけにしていただいたり、Developer Discordの<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1チャンネル</a>に参加して他のD1開発者や当社の製品エンジニアリングチームとお話しください。</p>
+</div>

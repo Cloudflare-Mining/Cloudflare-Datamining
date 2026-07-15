@@ -1,0 +1,262 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/payload-cms-workers">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11T4VDy7ogJAIETN32fEQZ/f95ac6a7cec852b9edc39b565c3007f8/Payload_CMS_on_Workers.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>数え切れないほどのWebサイトの管理者ログイン画面の背後に置かれているのは、インターネットの隠れた英雄の1つです：コンテンツ管理システム（CMS）です。この一見基本的なソフトウェアは、ブログ記事の草稿作成と公開、メディア資産の整理、ユーザープロフィールの管理、そして目まぐるしいほど多様なユースケースにわたる無数のタスクを実行するために使用される。この部門で際立っているのが悪意のあるペイロードと呼ばれる活発なオープンソースプロジェクトです。<a href="https://github.com/payloadcms/payload" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>に35,000以上のスターを擁し、コミュニティの熱狂を引き起こし、最近Figmaが<a href="https://www.figma.com/blog/payload-joins-figma" target="_blank" rel="noopener noreferrer"><u>買収</u></a>するほどでした。</p>
+	<p>本日、Payloadチームが提供する<a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u><b>新しいテンプレート</b></u></a>を紹介します。これにより、ワンクリックでCloudflareのプラットフォームに本格的なCMSをデプロイすることが可能になります。<i>「Deploy to Cloudflare（Cloudflareにデプロイ）」</i>ボタンをクリックするだけで、完全に設定されたペイロードインスタンスを生成することができます。 Cloudflare D1とR2へのバインディングで完成します。以下では、これを可能にする技術的な取り組み、それが可能にする機会、そして<a href="https://cloudflare.tv" target="_blank" rel="noopener noreferrer"><u>Cloudflare TV</u></a>の稼働にPayloadをどう活用しているかについて説明します。まず、Workers上でCMSをホストすることがゲームチェンジャーである理由をご説明します。</p>
+	<center><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a></center>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57tUnVPCONmXQIShJaJH1V/c9a7974265d79f784be0d789f924bb94/image3.png" alt="" class="kg-image" width="1999" height="1249" loading="lazy">
+	</figure>
+	<p><i><sup>舞台裏：Cloudflare TVの悪意のあるペイロードインスタンス</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="serverless-by-design">設計によるサーバーレス</h3>
+		<a href="https://blog.cloudflare.com/#serverless-by-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどのCMSは、24時間365日稼働の従来のサーバー上でホストされるように設計されています。つまり、ハードウェアや仮想マシンのプロビジョニング、CMSソフトウェアと依存関係のインストール、ポートとファイアウォールの管理、そして継続的なメンテナンスとスケーリングの課題を乗り越える必要があります。</p>
+	<p>これは、運用上のオーバーヘッドが大きく、サーバーが大量のトラフィック（またはスパイク的なピーク）を処理する必要がある場合にコストがかかる可能性があります。さらに悪いことに、アクティブユーザーがいるかどうかに関係なく、そのサーバーに対して料金を支払っています。Cloudflare Workersの強大なパワーの1つは、お客様のアプリケーションとデータに24時間365日アクセスでき、サーバーが常時稼働している必要はありません。ユーザーがアプリケーションを使用する際は、最寄りのCloudflareサーバーでスピンアップされ、すぐに利用可能です。ユーザーがスリープ状態になっている時、Workerはスピンダウンし、使用していないコンピュート料を支払う必要はありません。</p>
+	<p>PayloadをWorkers上で実行することで、従来のCMSの長所（完全に設定可能なアセット管理、カスタムWebhook、コミュニティプラグインのライブラリ、バージョン履歴）をすべてサーバーレスのフォームファクターで得ることができます。24時間年中無休の動画プラットフォームCloudflare TVのインスタンスで、Payload-on-Workersのテンプレートをパイロット導入し、新しい技術のテストマシンとして使用しています。従来のCMSからの移行は、条件付きロジックや、管理ダッシュボードを構築するための広範なコンポーネントのセットなどの共通機能のサポートのおかげで、容易なものでした。当社のコンテンツライブラリーには、2,000以上のエピソードと70,000以上のアセットがあり、悪意のあるペイロードの<a href="https://payloadcms.com/docs/queries/overview" target="_blank" rel="noopener noreferrer"><u>フィルタリングと検索</u></a>機能を使ってそれらを簡単にナビゲートできます。</p>
+	<div style="position: relative; padding-top: 65.16587677725119%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ac9ba174903f80c3d9dd7e52dc40c67/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ac9ba174903f80c3d9dd7e52dc40c67%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>出版からeコマース、Claude CodeやCodexによってオーダーメイドのアプリケーションダッシュボードまで、CMSがいかに多くのユースケースに対応できるかは、繰り返し説明する価値があります。CMSは、技術に明るくないユーザーが直感的に把握しやすく、プロジェクトに最適な形に作ることができる一種のインターフェースを提供します。ユーザーがどんなものを構築するか楽しみです。</p>
+	<div class="flex anchor relative">
+		<h3 id="opennext-opens-doors">OpenNextが開く</h3>
+		<a href="https://blog.cloudflare.com/#opennext-opens-doors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>悪意のあるペイロードは2022年にNode/Express.jsアプリケーションとしてローンチされ、すぐに勢いを増し始めました。2024年には、人気のNext.jsフレームワークのネイティブサポートを<a href="https://payloadcms.com/posts/blog/payload-30-the-first-cms-that-installs-directly-into-any-nextjs-app" target="_blank" rel="noopener noreferrer"><u>導入</u></a>し、本日の発表への道を開きました。今年、CloudflareはOpenNextアダプターのGA<a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter"><u>リリース</u></a>により、Next.js上に構築されたアプリケーションをホストするのに最適な場所となりました。</p>
+	<p>このアダプターのおかげで、悪意のあるペイロードのOpenNextへの移植はOpenNext<a href="https://opennext.js.org/cloudflare/get-started#existing-nextjs-apps" target="_blank" rel="noopener noreferrer"><u>Get Started</u></a>ガイドを使って比較的簡単にできました。<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>のすべての利点を活用して、Workers上でアプリケーションをシームレスに実行したかったため、Cloudflareのデータベースとストレージ製品のサポートを確保することにしました。</p>
+	<div class="flex anchor relative">
+		<h3 id="database">データベース</h3>
+		<a href="https://blog.cloudflare.com/#database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最初のアプローチでは、公式の<code>@payloadcms/db-postgres</code>アダプターを使用して、悪意のあるペイロードを外部のPostgresデータベースに接続することから始めました。Workersの<code>node-postgres</code>パッケージのサポートのおかげで、全てがすぐに機能しました。リクエスト間で接続を<a href="https://opennext.js.org/cloudflare/troubleshooting#error-cannot-perform-io-on-behalf-of-a-different-request" target="_blank" rel="noopener noreferrer"><u>共有できない</u></a>ため、接続プーリングを無効にするべきでした。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { buildConfig } from 'payload'
+import { postgresAdapter } from '@payloadcms/db-postgres'
+
+export default buildConfig({
+  …
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI,
+      maxUses: 1,
+    },
+  }),
+  …
+});
+</code></pre>
+	<p>もちろん、接続プーリングを無効にすると、各リクエストが最初にデータベースとの新しい接続を確立する必要があるため、全体的な遅延が増加します。これに対処するため、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>をその前面に配置しました。これにより、データベースサーバーへのトンネルを設定してCloudflareネットワーク全体の接続プールを維持するだけでなく、クエリキャッシュを追加して、パフォーマンスを大幅に向上させます。 </p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { buildConfig } from 'payload'
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+
+const cloudflare = await getCloudflareContext({ async: true });
+
+export default buildConfig({
+  …
+  db: postgresAdapter({
+    pool: {
+      connectionString: cloudflare.env.HYPERDRIVE.connectionString,
+      maxUses: 1,    
+    },
+  }),
+  …
+});
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="database-with-d1">D1を利用したデータベース</h3>
+		<a href="https://blog.cloudflare.com/#database-with-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Postgresが機能しているため、次にSQLite上に構築されたCloudflareの<a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"> マネージドサーバーレスデータベース</a> である<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u> D1</u></a> のサポートを追加したいと考えました。</p>
+	<p>PayloadはそのままではD1をサポートしませんが、<code>@payloadcms/db-sqlite</code>アダプターを介してSQLiteをサポートしており、これはlibSQLとともに<a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer"><u>Drizzle ORM</u></a>を使用します。ありがたいことに、DrizzleはD1のサポートも持っているので、SQLiteのアダプターをベースとして使用して、D1用のカスタムアダプターを構築することにしました。</p>
+	<p>D1とlibSQLの主な違いは結果オブジェクトにあり、D1の結果をlibSQLが想定するフォーマットにマッピングする小さなメソッドを構築しました。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export const execute: Execute&lt;any&gt; = function execute({ db, drizzle, raw, sql: statement }) {
+  const executeFrom = (db ?? drizzle)!
+  const mapToLibSql = (query: SQLiteRaw&lt;D1Result&lt;unknown&gt;&gt;) =&gt; {
+    const execute = query.execute
+    query.execute = async () =&gt; {
+      const result: D1Result = await execute()
+      const resultLibSQL: Omit&lt;ResultSet, 'toJSON'&gt; = {
+        columns: undefined,
+        columnTypes: undefined,
+        lastInsertRowid: BigInt(result.meta.last_row_id),
+        rows: result.results as any[],
+        rowsAffected: result.meta.rows_written,
+      }
+
+      return Object.assign(result, resultLibSQL)
+    }
+
+    return query
+  }
+
+  if (raw) {
+    const result = mapToLibSql(executeFrom.run(sql.raw(raw)))
+    return result
+  } else {
+    const result = mapToLibSql(executeFrom.run(statement!))
+    return result
+  }
+}</code></pre>
+	<p>それ以外は、<a href="https://orm.drizzle.team/docs/connect-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>D1バインディング</u></a>をDrizzleのコンストラクターに直接渡すことで動作させることができました。</p>
+	<p>デプロイ中にデータベース移行を適用するために、Wranglerの 新しくリリースされた<a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"><u>リモートバインディング</u></a>機能を使用して、同じバインディングでリモートデータベースに接続しました。こうすることで、データベースと対話できるようにAPIトークンを設定する必要はありませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="media-storage-with-r2">R2を使ったメディアストレージ</h3>
+		<a href="https://blog.cloudflare.com/#media-storage-with-r2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>悪意のあるペイロードは、<code>@payloadcms/storage-s3</code>パッケージで、公式のS3ストレージアダプターを提供しています。R2はS3互換性があるため、公式アダプターを使うこともできましたが、データベースと同様、APIトークンを作成する代わりに、R2バインディングを使いたかったのです。</p>
+	<p>そのため、R2用のカスタムストレージアダプターも構築することにしました。バインディングが既にほとんどの作業を処理しているため、これは非常に簡単です。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import type { Adapter } from '@payloadcms/plugin-cloud-storage/types'
+import path from 'path'
+
+const isMiniflare = process.env.NODE_ENV === 'development';
+
+export const r2Storage: (bucket: R2Bucket) =&gt; Adapter = (bucket) =&gt; ({ prefix = '' }) =&gt; {
+  const key = (filename: string) =&gt; path.posix.join(prefix, filename)
+  return {
+    name: 'r2',
+    handleDelete: ({ filename }) =&gt; bucket.delete(key(filename)),
+    handleUpload: async ({ file }) =&gt; {
+      // Read more: https://github.com/cloudflare/workers-sdk/issues/6047#issuecomment-2691217843
+      const buffer = isMiniflare ? new Blob([file.buffer]) : file.buffer
+      await bucket.put(key(file.filename), buffer)
+    },
+    staticHandler: async (req, { params }) =&gt; {
+      // Due to https://github.com/cloudflare/workers-sdk/issues/6047
+      // We cannot send a Headers instance to Miniflare
+      const obj = await bucket?.get(key(params.filename), { range: isMiniflare ? undefined : req.headers })
+      if (obj?.body == undefined) return new Response(null, { status: 404 })
+
+      const headers = new Headers()
+      if (!isMiniflare) obj.writeHttpMetadata(headers)
+
+      return obj.etag === (req.headers.get('etag') || req.headers.get('if-none-match'))
+        ? new Response(null, { headers, status: 304 })
+        : new Response(obj.body, { headers, status: 200 })
+    },
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="deployment">デプロイメント</h3>
+		<a href="https://blog.cloudflare.com/#deployment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>データベースとストレージアダプターを配置し、Cloudflareの開発者プラットフォーム上で完全に動作する悪意のあるペイロードのインスタンスを正常に起動することができました。</p>
+	<p>空白のテンプレートは、2つのテーブルだけで構成され、1つはメディア用、もう1つはユーザー用です。このテンプレートでは、サインアップ、新規ユーザーの作成、メディアファイルのアップロードが可能です。そして、悪意のあるペイロードの設定を変更することで、追加の<a href="https://payloadcms.com/docs/configuration/collections" target="_blank" rel="noopener noreferrer"><u>コレクション</u></a>、関係、カスタムフィールドで簡単に拡張できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="performance-optimization-with-read-replicas">Read Replicasによるパフォーマンスの最適化</h3>
+		<a href="https://blog.cloudflare.com/#performance-optimization-with-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>デフォルトでは、D1は1つの場所に配置されており、ロケーションのヒントを使ってカスタマイズ可能です。悪意のあるペイロードがWorkerとしてデプロイされると、リクエストは世界中のどこからでも送られてくる可能性があるため、データベースに接続する際は遅延が発生します。</p>
+	<p>これを解決するには、世界中に複数の読み取り専用レプリカをデプロイするD1の<a href="https://developers.cloudflare.com/d1/best-practices/read-replication" target="_blank" rel="noopener noreferrer"><u>グローバル読み取りレプリケーション</u></a>を活用することができます。正しいレプリカを選択し、逐次一貫性を確保するために、D1はセッションを使用しますが、そのブックマークは引き渡される必要があります。</p>
+	<p>Drizzleはまだ<a href="https://github.com/drizzle-team/drizzle-orm/issues/2226" target="_blank" rel="noopener noreferrer"><u>D1セッションをサポートしていません</u></a>が、「ファーストプライマリ」タイプのセッションを使うことができます。このタイプでは、最初のクエリが常にプライマリインスタンスにヒットし、後続のクエリがレプリカのひとつにヒットする可能性があります。レプリカを使用するアダプターの更新は、D1セッションを直接渡すようにDrizzleの初期化を更新するだけの問題です：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">this.drizzle = drizzle(this.binding.withSession("first-primary"), 
+{ logger, schema: this.schema });</code></pre>
+	<p>この単純な変更後、遅延がすぐに改善され、北米東部にあるデータベースに接続した場合、世界中からのリクエストのP50の実時間が60％短縮されました。リードレプリカは名前通り、読み取り専用のクエリのみに影響するため、書き込み操作は常にプライマリインスタンスに転送されますが、ここでのユースケースではトラフィックの大半が読み取りです。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>リードレプリカなし</p>
+				</td>
+				<td>
+					<p>リードレプリカが有効</p>
+				</td>
+				<td>
+					<p>改善</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>P50</p>
+				</td>
+				<td>
+					<p>300ミリ秒</p>
+				</td>
+				<td>
+					<p>120ミリ秒</p>
+				</td>
+				<td>
+					<p>-60%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>P90</p>
+				</td>
+				<td>
+					<p>480ミリ秒</p>
+				</td>
+				<td>
+					<p>250ミリ秒</p>
+				</td>
+				<td>
+					<p>-48%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>P99</p>
+				</td>
+				<td>
+					<p>760ミリ秒</p>
+				</td>
+				<td>
+					<p>550ミリ秒</p>
+				</td>
+				<td>
+					<p>-28%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i><sup>Cloudflare Dashが報告する、それぞれ2回のデータベース呼び出しを伴う悪意のあるペイロード workerへのリクエストの実時間。負荷は、グローバルに分散された4つのアップタイムチェックを介して生成され、60秒ごとに4つの異なるURLにリクエストを行いました。</sup></i></p>
+	<p>Cloudflare TVの膨大なコンテンツライブラリの管理を悪意のあるペイロードに頼るため、大規模にテストできる環境にあり、最適化や改善が発生次第、PRを提出し続けます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-right-tool-for-the-job">業務に適したツール</h3>
+		<a href="https://blog.cloudflare.com/#the-right-tool-for-the-job" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CMSの潜在的なユースケースは無限であるため、選択肢があることは素晴らしいことです。当社がWorkersを選んだのは、そのコンポーネントの広範なライブラリ、成熟した機能セット、大規模なコミュニティが理由ですが、悪意のあるペイロードと互換性のあるCMSはそれだけではありません。</p>
+	<p>もう1つのエキサイティングなプロジェクトが<a href="https://github.com/lane711/sonicjs" target="_blank" rel="noopener noreferrer"><u>SonicJs</u></a> (<a href="https://sonicjs.com" target="_blank" rel="noopener noreferrer"><u> Docs</u></a> ) です。これは、Workers、D1、Astroをベースに、ゼロから構築されており、超スピードと信頼性の高い基盤を提供します。SonicJsは、ClaudeやCodexのようなエージェンティックAIアシスタントとのコラボレーションに適したバージョンを開発しており、その開発の様子が見られることを楽しみにしています。軽量のユースケースの場合、<a href="https://github.com/microfeed/microfeed" target="_blank" rel="noopener noreferrer"><u>マイクロフィード</u></a>は、ポッドキャスト、ブログ、写真などを管理するために設計されたCloudflare上のセルフホスト型CMSです。</p>
+	<p>これらはそれぞれヘッドレスCMSであり、アプリケーションのフロントエンドを選択します。AstroとTanstackという強力なフレームワークのスポンサーに関する<a href="https://blog.cloudflare.com/cloudflare-astro-tanstack"><u>最近の発表</u></a>をお見逃しなく。これらのフレームワークやReact + Viteを含む他のフレームワークを使用するための完全ガイドは、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps" target="_blank" rel="noopener noreferrer"><u>Workers Docs</u></a>でご覧いただけます。</p>
+	<p>悪意のあるペイロードの使用を今すぐ始めるには、下の<i>「Cloudflareにデプロイ」</i>ボタンをクリックしてください。これにより、D1データベースやworkerに自動的にバインドされたR2バケットなど、完全に機能する悪意のあるペイロードインスタンスが生成されます。READMEと詳細は、悪意のあるペイロードの<a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>テンプレートリポジトリ</u></a>にあります。</p>
+	<center><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a></center>
+	<p></p>
+</div>

@@ -1,0 +1,108 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare">English</a>、<a href="https://blog.cloudflare.com/zh-tw/bringing-ai-to-cloudflare">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/bringing-ai-to-cloudflare">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/bringing-ai-to-cloudflare">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32vnNHpfRqiOypOggowFgw/d075a178424e42324b9b7cb586a401f1/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>過去24か月間で、AIの継続的な成長はインターネットに大きな変化をもたらしました。AIはますます身近な存在となっており、Cloudflareはそれがもたらす新たな機会と課題に積極的に取り組んでいます。今年のCloudflareバースデーでは、新しいWAFルールの構築を支援するAIアシスタント機能を拡張し、Radarに新しいAIボットとクローラートラフィックのインサイトを追加し、お客様に新しいAIボットブロック機能を提供いたしました。</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-assistant-for-waf-rule-builder">WAFルール作成時のAIアシスタント</h2>
+		<a href="https://blog.cloudflare.com/#ai-assistant-for-waf-rule-builder" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RYC4wmCDbs0axY92FfkFk/a728906cb6a902dd1c78ec93a0f650c2/BLOG-2564_1.png" alt="BLOG-2564 1" class="kg-image" width="1999" height="501" loading="lazy">
+	</figure>
+	<p>Cloudflareでは、常にお客様からのご意見に耳を傾け、当社の製品をできるだけ使いやすくユーザーフレンドリーかつ強力なものにするために努めています。特に、Webアプリケーションファイアウォール（WAF）でのカスタムルールやレート制限ルールの作成が複雑だというご意見を多くいただいていました。こういった意見を真摯に受け止め、今回ルール作成をより簡単かつ直感的に行う新機能、WAFルール作成用AIアシスタントを導入しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7avSjubqlfg7L8ymKEztgk/7c3c31e50879ec64bccc384bdfcd5524/BLOG-2564_2.png" alt="BLOG-2564 2" class="kg-image" width="1056" height="1460" loading="lazy">
+	</figure>
+	<p>自然言語の指示を入力するだけで、ニーズに合わせたカスタムルールやレート制限ルールを生成することができます。たとえば、複雑なルールの一致基準を手動で設定する代わりに、「ボットスコアが低いリクエストと一致させる」のように入力することで、アシスタントがルールを自動的に生成してくれます。一歩で完璧なルールを作るのではなく、基盤となるルールを提供し、それをもとにさらに調整できるようにするための機能です。</p>
+	<p>このアシスタント機能は、すべてのWAFユーザー向けのカスタムおよびレート制限ルールビルダーでご利用いただけます。この機能は、すべてのお客様向けにベータ版として提供されます。ぜひお試しください。お客様のご要望に合わせて今後さらにこのツールの改良と強化を続けて行きたいと考えているため、お客様からのフィードバック（UIから送信可能）をお待ちしております。</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-bot-traffic-insights-on-cloudflare-radar">Cloudflare RadarでのAIボットトラフィックの洞察</h2>
+		<a href="https://blog.cloudflare.com/#ai-bot-traffic-insights-on-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モデルのトレーニングに使用するため、AIプラットフォームプロバイダーはボットを使用してWebサイトをクロールおよびスクレイピングし、そのデータをバックアップします。これは多くの場合、コンテンツの所有者や提供者の許可を得ず、ビジネス関係がないまま行われます。7月にCloudflareはコンテンツ所有者やプロバイダーに対して<a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click"><u>「AIとの分立宣言」</u></a>を呼びかけ、ワンクリックでAIボット、スクレイパー、クローラーをブロックする方法を提供しました。このいわゆる「簡単なボタン」のアプローチに加えて、サイトは、<a href="https://www.cloudflare.com/en-gb/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>ファイルのディレクティブを通じて、これらのボットにアクセスを許可しないものについて、より具体的なガイダンスを提供することができるものです。AI関連ボットからのリクエストをブロックしているお客様にも、許可されているお客様にも、Cloudflareはこれらのボットからのリクエストアクティビティと関連するトラフィックの経時的な傾向について洞察を提供します。</p>
+	<p>AIボットによるトラフィックの傾向を追跡することで、最も活発でリクエスト量が多いもの、定期的にクロールを行うものなど、活動内容を経時的によりよく理解することができます。<a href="https://radar.cloudflare.com/traffic#ai-bot-crawler-traffic" target="_blank" rel="noopener noreferrer"><u>Radarのトラフィックページにある新しい</u><u><b>AIボットとクローラーのトラフィックグラフ</b></u></a>を使用すると、選択した期間に収集されたこれらのトラフィックの傾向と上位のAIボットに関するインサイトを見ることができます。ここで追跡されたボットの関連リストは、<a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noopener noreferrer"><u>ai.robots.txtリスト</u></a>に基づいており、新しいボットが識別されるたびに更新されます。<a href="https://developers.cloudflare.com/api/operations/radar-get-ai-bots-timeseries-group-by-user-agent" target="_blank" rel="noopener noreferrer"><u>時系列</u></a>データと<a href="https://developers.cloudflare.com/api/operations/radar-get-ai-bots-summary-by-user-agent" target="_blank" rel="noopener noreferrer"><u>要約</u></a>データはRadar APIからも利用可能です。（AIボットおよびクローラーの完全なセットに関するトラフィックの傾向は、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots" target="_blank" rel="noopener noreferrer"><u>新しい Data Explorerで見ることができます</u></a>。）</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tYefQaBhTPYpqZPtE6KPu/f60694d0b24de2acba13fe0944589885/BLOG-2564_3.png" alt="BLOG-2564 3" class="kg-image" width="1999" height="631" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="blocking-more-ai-bots">より多くのAIボットをブロック</h2>
+		<a href="https://blog.cloudflare.com/#blocking-more-ai-bots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UiFu8l6K4Pm3ulxTK3XU0/541d109e29a9ae94e4792fdf94f7e4aa/BLOG-2564_4.png" alt="BLOG-2564 4" class="kg-image" width="1999" height="501" loading="lazy">
+	</figure>
+	<p>Cloudflareのバースデーウィークに合わせて紹介した以前のブログ記事「<a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click"><i><u>AIとの分立を宣言しましょう</u></i></a>」に続き、AIボットを阻止するために追加した新しい検出に関する最新情報をお知らせします。まだ設定されていないお客様は、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots%2Fconfigure" target="_blank" rel="noopener noreferrer"><u>ボタンをクリック</u></a>するだけの、AIボットのブロックしてWebサイトの保護を強化できる機能をお試しください。</p>
+	<div class="flex anchor relative">
+		<h3 id="enabling-dynamic-updates-for-the-ai-bot-rule">AIボットルールの動的更新を有効にする</h3>
+		<a href="https://blog.cloudflare.com/#enabling-dynamic-updates-for-the-ai-bot-rule" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のボタンでは、robots.txtを遵守し、クロール頻度を守り、自らを隠さない<i>検証済み</i>のAIクローラーをブロックすることができました。今回、新たなクローラーをリストに追加しただけでなく、以前のルールも拡大し、ルールに<i>従わない</i>AIボットの27のシグネチャ（今後も増加予定）を含めました。新しいAIボットを見つけるために「<a href="https://docs.google.com/forms/d/14bX0RJH_0w17_cAUiihff5b3WLKzfieDO4upRlo5wj8" target="_blank" rel="noopener noreferrer"><u>情報提供窓口</u></a>」を利用していただいた皆様に、この場を借りて感謝を申し上げます。これらの情報提供は、私たちがすぐに気づけなかったボットを発見するのに非常に役立ちました。</p>
+	<p>追加した各ボットは、「Definitely automated（確実に自動化されている）」の定義にも追加されます。そのため、<a href="https://blog.cloudflare.com/super-bot-fight-mode"><u>Super Bot Fightモード</u></a>をご利用のセルフサービスプランのお客様であれば、すでに保護されているということになります。Enterpriseのボット管理をご利用のお客様では、「Likely Bot（ボットの可能性が高い）」から「Definitely automated（確実に自動化されている）」に分類されるリクエストが増えることになります。この点については、後ほど詳しく説明します。</p>
+	<p>今回、このルールロジックを内部的に<a href="https://developers.cloudflare.com/waf/managed-rules" target="_blank" rel="noopener noreferrer"><u>Cloudflareマネージドルール</u></a>（WAFを動作させるのと同じフレームワーク）に変換しました。これにより、セキュリティアナリストやエンジニアがリアルタイムで安全にルールを更新できるようになり、WAFの新しいルールが迅速に提供されるのと同様に、最新の脆弱性（CVE）からお客様を保護できます。以前のバージョンのAIボット保護が発表されてから現在までBotsダッシュボードにまだログインされていない方は、最新の保護に更新するために再度ボタンをクリックしていただく必要があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tI8Yqxt1S0UPapImb32J4/6cb9e9bf423c370383edb820e5722929/BLOG-2564_5.png" alt="BLOG-2564 5" class="kg-image" width="1999" height="522" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-impact-of-new-fingerprints-on-the-model">新しいフィンガープリンティングがモデルに与える影響</h3>
+		<a href="https://blog.cloudflare.com/#the-impact-of-new-fingerprints-on-the-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいAIボットのフィンガープリンティングの隠れた恩恵の1つは、当社のMLモデルです。<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more"><u>以前お話したように</u></a>、当社のグローバルMLモデルは教師ありの機械学習を使用しており、ラベル付きのボットデータのソースがより充実することから大きな恩恵を受けています。以下のグラフでは、ボタンを更新し、新しいルールを追加する前と後で、MLモデルがこれらのリクエストを自動化されたものとしてどの程度認識したかをご覧いただけます。シンプルにするために、リクエスト量で分類した際の上位5件のボットのみを表示しています。新しい管理ルールを導入したことで、これらのAIボットの大部分について検出能力の向上が見られました。ボタンv1は古いオプション（検証済みのAIクローラーのみをブロックできるもの）を表し、ボタンv2は新たに導入された機能（マネージドルールによる検出を含む）です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CZVGyDCp9ZtMrZdIi49fE/aacd04d240e9348b5a9b65bad4b470e2/BLOG-2564_6.jpg" alt="BLOG-2564 6" class="kg-image" width="1887" height="1406" loading="lazy">
+	</figure>
+	<p>では、どのように検出の信頼性を高めたのでしょうか？以前にも述べたように、時には<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more"><i><u>一つの属性がボットを見分ける</u></i></a>手がかりになる場合があります。このようなAIボットに合わせた高度なヒューリスティック（経験則）セットを開発し、容易かつ正確にAIボットを分類できるようにしました。当社のMLモデルは既にこれらの大部分のリクエストを検出していましたが、追加のヒューリスティックを統合したことで、各ボットの検出率が顕著に上昇し、すべてのリクエストを100％正しくスコアリングできるようになりました。純粋な機械学習によるアプローチからヒューリスティックを組み込むことには、検出時間の短縮、分類の確実性の向上など、いくつかの利点があります。機械学習モデルのデプロイは複雑で時間がかかりますが、新しいヒューリスティックは数分で作成することができます。</p>
+	<p>AIボットブロックボタンの初回導入は高く評価され、現在13万3000以上のWebサイトで使用されており、当社の無料枠のお客様にも広く導入されています。2024年8月20日にリリースされた新しく更新されたボタンは急速な支持を受け、すでに9万以上のゾーンがこの新しいルールを採用しており、毎時約240の新しいサイトが統合しています。全体として、14万6,000以上のサイトの知的財産をAIボットから保護するのに役立っており、現在、この新しいルールは1日あたり6,600万件のリクエストをブロックしています。さらに、今年年末までにTerraformを介したAIボット保護の設定のサポートが利用可能になる予定です。これにより、ボット保護設定の管理でより柔軟に、制御できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="bot-behavior">ボットの挙動</h3>
+		<a href="https://blog.cloudflare.com/#bot-behavior" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>検出能力の向上に伴い、これらの変更がインターネット上のボット活動に与える影響を評価することが重要です。アップデートしたAIボットブロックボタンのリリース以来、私たちはボットの活動と適応戦略の変化を注意深く監視してきました。私たちがAIボットを識別するために使用する最も基本的なフィンガープリンティング技術は、シンプルなユーザーエージェントの一致を探すことです。ユーザーエージェントとの一致を監視することは、ボットがWebサイトをクロールしているときに自分の身分を明かしていることを示すため重要です。</p>
+	<p>以下のグラフは、過去2か月間にAIボットとラベル付けされたトラフィックの量を示しています。青い線は日々のリクエスト数を示し、赤色の線は月ごとの平均リクエスト数を表しています。過去2か月間で平均3,000万件近くのリクエストが減少しており、直近の月は4,000万件減少しました。この減少は、ボタンv1とボタンv2のリリースの時期と一致しています。私たちの仮説は、新しいAIボットブロック機能により、Cloudflareがこれらのボットの大部分をブロックし、ボットがクロールするのを妨げているというものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23ULxmxBIRskEONlWVIvlA/1dbd3d03239047492c2d4f7307217d97/BLOG-2564_7.jpg" alt="BLOG-2564 7" class="kg-image" width="1999" height="1048" loading="lazy">
+	</figure>
+	<p>この仮説は、いくつかの上位AIクローラーからのリクエストの減少によって裏付けられています。具体的には、6月末に1日あたり約1億件あったBytespiderボットのリクエストが、8月末までにわずか5,000万件にまで減っています（下のグラフ参照）。この減少は、新しいAIボットのブロックボタンやクローラー戦略の変更など、いくつかの要因に起因すると考えられます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UwtyZSXULrVzIqLcICGKd/fdf02c15d17e1d7ed248ba5f8a97eb54/BLOG-2564_8.jpg" alt="BLOG-2564 8" class="kg-image" width="1999" height="993" loading="lazy">
+	</figure>
+	<p>いくつかのAIクローラーの自身の行為における責任が向上していることも観察されています。私たちがAIボットを識別するために使用する最も基本的なフィンガープリンティング技術は、シンプルなユーザーエージェントの一致を探すことです。ユーザーエージェントとの一致を監視することは、ボットがWebサイトをクロールしているときに自分の身分を明かしていることを示すため重要です。最近では、これらのクローラーが自らのエージェントを使用する頻度が増えており、より透明で責任ある行動へのシフトが見られます。特に、Perplexityユーザーエージェントからのリクエスト数が大幅に急増しています。この増加は、Perplexityがユーザーエージェントを適切に提示しなかったという<a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">以前の指摘</a>に関連している可能性があり、より優れた識別とコンプライアンスを確保するためのアプローチの変化を促した可能性があります。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Hq2vUMqqdNCyaxNTCg3JD/610ad53d57203203c5176229245c8086/BLOG-2564_9.jpg" alt="BLOG-2564 9" class="kg-image" width="1999" height="991" loading="lazy">
+	</figure>
+	<p>これらの傾向は、当社のアップデートがAIクローラーのコンテンツとのインタラクションに影響を与えている可能性を示唆しています。引き続きAIボットの活動を監視し、ユーザーが自分のコンテンツに誰が、どのようにアクセスするかを制御できるようにしていきます。私たちは、新たなパターンに目を光らせることで、トラフィック管理に関する意思決定を行うために必要なツールとインサイトをユーザーに提供することを目指しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="wrap-up">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#wrap-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのダッシュボードをさらに使いやすくする方法や、防御すべき新しい脅威を見つけるなど、AI環境を探求し続けることを楽しみにしています。Radarでの当社のAIインサイトはほぼリアルタイムで更新されます。新しいトレンドが出現した際は、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>でその話題について共有してください。</p>
+</div>

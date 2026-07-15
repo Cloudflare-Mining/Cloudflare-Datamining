@@ -1,0 +1,143 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/pingora-open-source">English</a>、<a href="https://blog.cloudflare.com/zh-tw/pingora-open-source">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/pingora-open-source">Français</a>、<a href="https://blog.cloudflare.com/de-de/pingora-open-source">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/pingora-open-source">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/pingora-open-source">Português</a>、<a href="https://blog.cloudflare.com/es-es/pingora-open-source">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/pingora-open-source">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/f24aeLVQUjlbXRxDzdWm9/dc66227c33b56143feba15c9f3da26c9/pingora-open-source.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>このたびCloudflareは、Pingoraのオープンソース化を発表いたします。Pingoraは、当社が、トラフィックの大部分を支えるサービスを構築するために使用してきたRustフレームワークで、<a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License 2.0</a>で<a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer">リリース</a>されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aQBSJRQlM3b1ZRdvJycqY/72f9bd908abc139faba41716074d69d5/Rock-crab-pingora-open-source-mascot.png" alt="Open sourcing Pingora: our Rust framework for building programmable network services" class="kg-image" width="2000" height="548" loading="lazy">
+
+	</figure>
+	<p>過去の<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">ブログ投稿</a>に記述したように、PingoraはRustの非同期型マルチスレッドフレームワークで、CloudflareでのHTTPプロキシサービスの構築をサポートしています。この投稿の後、Cloudflareのグローバルネットワーク全体で一千兆件近くのインターネットリクエストがPingoraにより処理されてきました。</p>
+	<p>Cloudflareは、自社のインフラストラクチャを超えて、より良く、より安全なインターネットの構築を支援するために、Pingoraをオープンソース化いたします。私たちは、このオープンソース化により、ユーザーの皆様やその他の方々に、メモリ安全性の高いフレームワークを使って独自のインターネットインフラを構築する際の、ツール、アイデア、ヒントをご提供したいと考えています。<a href="https://www.theregister.com/2022/09/20/rust_microsoft_c" target="_blank" rel="noopener noreferrer">業界</a>や<a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report" target="_blank" rel="noopener noreferrer">米国政府</a>でもメモリ安全性の重要性に対する認識が高まっていることを考えると、このようなフレームワークは特に重要です。この共通の目標の下、Cloudflareは<a href="https://www.abetterinternet.org" target="_blank" rel="noopener noreferrer">Internet Security Research Group（ISRG）</a>の<a href="https://www.memorysafety.org/blog/introducing-river" target="_blank" rel="noopener noreferrer">Prossimoプロジェクト</a>とともに、インターネットの最も重要なインフラにおけるPingora導入の促進に取り組みます。</p>
+	<p><a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">前述のブログ投稿</a>では、Pingoraを構築した理由と方法を説明しました。この投稿では、Pingoraを使うべき理由とその方法についてご説明します。</p>
+	<p>Pingoraは、プロキシだけでなく、クライアントとサーバーにもビルディングブロックを提供します。これらのコンポーネントに加え、<a href="https://blog.cloudflare.com/how-pingora-keeps-count">イベントカウント</a>、エラー処理、キャッシングなどの共通ロジックが実装されたユーティリティライブラリも提供されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-in-the-box">詳細</h3>
+		<a href="https://blog.cloudflare.com/#whats-in-the-box" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pingoraは、HTTP/1やHTTP/2、API TLS上、またはTCP/UDPの直上でサービスを構築するためのライブラリとUDPを提供します。プロキシとしては、HTTP/1およびHTTP/2エンドツーエンド、gRPC、WebSocketプロキシをサポートします（HTTP/3のサポートも予定されています）。また、カスタマイズ可能な負荷分散とフェイルオーバーの手法も付随します。コンプライアンスとセキュリティについては、一般的に使用される、FIPSコンプライアンスと<a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">ポスト量子暗号</a>を備えたOpenSSLとBoringSSLライブラリの両方をサポートします。</p>
+	<p>これらの機能の提供に加え、Pingoraで提供されるフィルタとコールバックを使用すれば、サービスがリクエストをどのように処理し、変換し、転送するべきかを完全にカスタマイズできます。これらのAPIは、その多くがOpenRestyの「*_by_lua」コールバックに直感的にマッピングされるため、OpenRestyとNGINXユーザーにとっては特に使いやすいはずです。</p>
+	<p>運用面では、Pingoraはダウンタイムゼロのグレースフルリスタートを提供し、着信リクエストを1つもドロップすることなく自身をアップグレードします。SyslogやPrometheus、Sentry、OpenTelemetry、その他必要な可観測性ツールもPingoraと簡単に統合できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="who-can-benefit-from-pingora">Pingoraのメリット</h3>
+		<a href="https://blog.cloudflare.com/#who-can-benefit-from-pingora" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下のケースでは、Pingora導入の検討が推奨されます。</p>
+	<p>**セキュリティが最優先事項となるケース：**Pingoraは、C/C++で書かれたサービスにはよりメモリ安全性の高い代替手段です。プログラミング言語におけるメモリ安全性については議論の余地がありますが、私たちは、実際の経験に基づき、メモリ安全性の問題につながるコーディングミスの可能性はかなり低いと考えています。しかも、これらの問題に悩まされる時間が軽減されるため、生産的に新機能の実装に取り組むことができます。</p>
+	<p>**サービスがパフォーマンス重視であるケース：**Pingoraは、高速かつ効率的です。以前のブログ記事で説明したように、私たちはPingoraのマルチスレッドアーキテクチャで多くのCPUとメモリリソースを節約できました。コストやシステムの速度を重視するワークロードにとっては、時間とリソースの節約は魅力的でしょう。</p>
+	<p>**広範なカスタマイズが必要なサービスであるケース：**Pingoraプロキシのフレームワークが提供するAPIは、優れたプログラマブル性を有します。カスタマイズされた高度なゲートウェイやロードバランサーを構築するユーザーにとって、Pingoraは強力かつシンプルにそれを実現します。次のセクションで例を見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-build-a-load-balancer">ロードバランサーを構築してみる</h2>
+		<a href="https://blog.cloudflare.com/#lets-build-a-load-balancer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>シンプルなロードバランサーを構築して、PingoraのプログラマブルなAPIを試してみましょう。ロードバランサーは、<a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a>と<a href="https://1.0.0.1" target="_blank" rel="noopener noreferrer">https://1.0.0.1/</a>の間でラウンドロビン方式で上流を選択します。</p>
+	<p>まず、空のHTTPプロキシを作成しましょう。</p>
+	<p><code>ProxyHttp</code> trait（C++やJavaのインターフェースの概念に似ている）を実装しているオブジェクトはすべてHTTPプロキシです。唯一必要なメソッドは、すべてのリクエストに対して呼び出される<code>upstream_peer()</code>です。この関数は、接続先のオリジンIPと接続方法を含む <code>HttpPeer</code>を返す必要があります。</p>
+	<pre class="language-bash"><code class="language-bash">pub struct LB();
+
+#[async_trait]
+impl ProxyHttp for LB {
+    async fn upstream_peer(...) -&gt; Result&lt;Box&lt;HttpPeer&gt;&gt; {
+        todo!()
+    }
+}</code></pre>
+	<p>次に、ラウンドロビン方式の選択を実装しましょう。Pingoraフレームワークでは、すでに<code>LoadBalancer</code>にラウンドロビンやハッシュなどの一般的な選択アルゴリズムが提供されているので、それを使用してみましょう。ユースケースにより、より高度なサーバー選択ロジックやサーバー選択ロジックのカスタマイズが必要とされる場合は、この関数でユーザーが簡単に実装できます。</p>
+	<p>HTTPSサーバーに接続するので、SNIも設定する必要があります。必要に応じて、証明書、タイムアウト、その他の接続オプションも、HttpPeerオブジェクトで設定することができます。</p>
+	<pre class="language-bash"><code class="language-bash">pub struct LB(Arc&lt;LoadBalancer&lt;RoundRobin&gt;&gt;);
+
+#[async_trait]
+impl ProxyHttp for LB {
+    async fn upstream_peer(...) -&gt; Result&lt;Box&lt;HttpPeer&gt;&gt; {
+        let upstream = self.0
+            .select(b"", 256) // hash doesn't matter for round robin
+            .unwrap();
+
+        // Set SNI to one.one.one.one
+        let peer = Box::new(HttpPeer::new(upstream, true, "one.one.one.one".to_string()));
+        Ok(peer)
+    }
+}</code></pre>
+	<p>最後に、サービスを実行してみましょう。この例では、オリジンサーバーのIPをハードコードします。実際のワークロードでは、オリジンサーバーのIPは、 <code>upstream_peer()</code>が呼び出される際、あるいはバックグラウンドで動的に検出することもできます。サービスが作成されたら、LBサービスに127.0.0.1:6188をリッスンするように指示します。これでPingoraサーバーが完成です。このサーバーは、負荷分散サービスを実行するプロセスとなります。</p>
+	<p>試してみましょう。</p>
+	<pre class="language-bash"><code class="language-bash">fn main() {
+    let mut upstreams = LoadBalancer::try_from_iter(["1.1.1.1:443", "1.0.0.1:443"]).unwrap();
+
+    let mut lb = pingora_proxy::http_proxy_service(&amp;my_server.configuration, LB(upstreams));
+    lb.add_tcp("127.0.0.1:6188");
+
+    let mut my_server = Server::new(None).unwrap();
+    my_server.add_service(lb);
+    my_server.run_forever();
+}</code></pre>
+	<p>プロキシが機能しているのに、オリジンサーバーが403で拒否していることがわかります。これは、curlによって設定されたHostヘッダー（127.0.0.1:6188）を単純にプロキシしていることが原因で、これがオリジンサーバーに不都合を引き起こしています。この問題を修正するために、<code>upstream_request_filter</code>と呼ばれるフィルタを追加します。このフィルタは、オリジンサーバーに接続された後、HTTPリクエストが送信される前に各リクエストで実行されます。このフィルタ内でHTTPリクエストヘッダーを追加、削除、変更できます。</p>
+	<pre class="language-bash"><code class="language-bash">curl 127.0.0.1:6188 -svo /dev/null
+&gt; GET / HTTP/1.1
+&gt; Host: 127.0.0.1:6188
+&gt; User-Agent: curl/7.88.1
+&gt; Accept: */*
+&gt; 
+&lt; HTTP/1.1 403 Forbidden</code></pre>
+	<p>もう一度試してみます。</p>
+	<pre class="language-bash"><code class="language-bash">async fn upstream_request_filter(…, upstream_request: &amp;mut RequestHeader, …) -&gt; Result&lt;()&gt; {
+    upstream_request.insert_header("Host", "one.one.one.one")
+}</code></pre>
+	<p>今回はうまくいきました。コードの全体は<a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">こちら</a>でご確認ください。</p>
+	<pre class="language-bash"><code class="language-bash">curl 127.0.0.1:6188 -svo /dev/null
+&lt; HTTP/1.1 200 OK</code></pre>
+	<p>以下は、この例で使用したコールバックとフィルタを通過するリクエストの流れを非常に簡単に示した図です。現在、Pingoraプロキシフレームワークでは、リクエストのさまざまな段階で<a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">より多くのフィルタ</a>とコールバックが提供され、リクエストおよびレスポンスの変更、拒否、ルーティング、記録が可能です。</p>
+	<p>Pingoraプロキシフレームワークが裏で接続プーリング、 TLSハンドシェイク、リクエストの読み取り、書き込み、解析、およびその他の一般的なプロキシタスクを処理するので、ユーザーは重要なロジックに集中できるようになります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WvHfhONcYEEL4kPRwGzKp/f2456d177e727063a49265eea831b8af/Flow_Diagram.png" alt="" class="kg-image" width="710" height="213" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="open-source-present-and-future">オープンソースの現在と未来</h2>
+		<a href="https://blog.cloudflare.com/#open-source-present-and-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pingoraはライブラリとツールセットであり、実行可能なバイナリではありません。例えるなら、Pingoraは車を動かすエンジンのことであり、車そのものではないのです。Pingoraは産業利用の本番環境に対応していますが、バッテリー付きでローコードまたはノーコードの設定オプションを備えた、すぐに使えるWebサービスを求める人が多いことも私たちは把握しています。Pingora上にそのアプリケーションを構築することが、Pingoraのリーチ拡大に向けたISRGとの協力のテーマです。このプロジェクトに関する今後の発表に引き続きご注目ください。</p>
+	<p>その他の注意事項</p>
+	<ul>
+		<li>
+			<p>**現在、APIの安定性は保証されていません。**破壊的な変更を行う頻度は最小限に抑える予定ですが、特にこの1.0以前の期間中は、ライブラリの進化に伴ってリクエストやレスポンスフィルタなどのコンポーネントを追加、削除、変更する権利を留保します。</p>
+		</li>
+		<li>
+			<p>**Unixベースでないオペレーティングシステムのサポートは、現在予定されていません。**将来的には変更される可能性があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-to-contribute">ご協力をお願いします</h2>
+		<a href="https://blog.cloudflare.com/#how-to-contribute" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>バグレポート、ドキュメントの問題、機能リクエストは、GitHubの<a href="https://github.com/cloudflare/pingora/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a>でお気軽にお寄せください。プルリクエストを開く前に、Cloudflareの<a href="https://github.com/cloudflare/pingora/blob/main/.github/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">コントリビュートガイド</a>をご覧いただくことをおすすめします。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このブログ投稿では、Pingoraフレームワークのオープンソース化をお知らせして、インターネットエンティティとインフラストラクチャにとって、Pingoraのセキュリティ、パフォーマンス、カスタマイズ可能性が価値となることを説明しました。また、Pingoraの使いやすさやカスタマイズ可能性を実証しました。</p>
+	<p>本番Webサービスの構築中の方々、あるいはネットワークテクノロジーを試してみようと思っている方々に、Pingoraを利用する価値を感じていただければと思います。長い道のりでしたが、このプロジェクトをオープンソースコミュニティと共有することは、当初からの目標でした。Rustコミュニティに感謝いたします。Pingoraは多くの素晴らしいオープンソースのRustクレートで構築されています。メモリ安全性の高いインターネットへの移行は不可能とも思える道のりかもしれませんが、ご参加いただければ幸いです。</p>
+</div>

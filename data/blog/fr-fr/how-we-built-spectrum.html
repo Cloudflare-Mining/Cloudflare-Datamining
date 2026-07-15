@@ -1,0 +1,234 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/how-we-built-spectrum">English</a>, en <a href="https://blog.cloudflare.com/de-de/how-we-built-spectrum">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/how-we-built-spectrum">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/how-we-built-spectrum">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/how-we-built-spectrum">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/how-we-built-spectrum">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBc1UfFU6JKIdXFfqTLE1/4068183ffdde5483b46ed5f857b20bcd/how-we-built-spectrum.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Aujourd'hui, nous <a href="https://blog.cloudflare.com/spectrum">présentons Spectrum</a> : une nouvelle fonctionnalité de Cloudflare qui apporte la protection contre les attaques DDoS, l'équilibrage de la charge et l'accélération du contenu à tout protocole axé sur TCP.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gm96owfEOWttanNpmKl0l/6e45398b0d60ed2730a9d838bc47a0e4/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" class="kg-image" width="640" height="425" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">Image CC BY-SA 2.0</a> &nbsp;par &nbsp;<a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans</a></p>
+	<p>Peu de temps après le début de la construction de Spectrum, nous avons rencontré un problème technique majeur : Spectrum exige que nous acceptions les connexions sur tout port TCP valide, compris entre 1 et 65535. Sur nos serveurs périphériques Linux, il est impossible « d'accepter les connexions entrantes pour <i>n'importe quel</i> numéro de port ». Ce n'est pas une limitation propre à Linux : il s’agit d’une caractéristique de l'API des sockets BSD, la base des applications réseau sur la plupart des systèmes d'exploitation. Avant de fournir Spectrum, persistaient deux problèmes que nous devions résoudre :</p>
+	<ul>
+		<li>
+			<p>comment accepter les connexions TCP sur tous les numéros de port compris entre 1 et 65535</p>
+		</li>
+		<li>
+			<p>comment configurer un seul serveur Linux pour accepter les connexions sur un très grand nombre d'adresses IP (nous avons plusieurs milliers d'adresses IP dans nos plages anycast)</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="assigning-millions-of-ips-to-a-server"><b>Affectation de millions d'IP à un serveur</b></h3>
+		<a href="https://blog.cloudflare.com/#assigning-millions-of-ips-to-a-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les serveurs périphériques de Cloudflare ont une configuration presque identique. Au départ, nous assignions des adresses IP spécifiques /32 (et /128) à l'interface réseau de rebouclage <a href="https://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>. Cela fonctionnait bien lorsque nous avions quelques dizaines d’adresses IP. Mais ce n’était plus adapté à mesure que nous nous sommes développés.</p>
+	<p>Alors, nous avons mis sur pied <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">le tour « AnyIP »</a>. AnyIP nous permet d’attribuer des préfixes IP entiers (sous-réseaux) à l’interface de bouclage, à partir d’adresses IP spécifiques. AnyIP est déjà utilisé de manière courante : 127.0.0.0/8 est attribué à l’interface de bouclage sur votre ordinateur. En ce qui concerne votre ordinateur, toutes les adresses IP de 127.0.0.1 à 127.255.255.254 appartiennent à la machine locale.</p>
+	<p>Cette astuce est applicable au-delà du bloc 127.0.0.1/8. Pour traiter la plage entière de 192.0.2.0/24 comme affectée localement, exécutez :</p>
+	<pre class="language-bash"><code class="language-bash">ip route add local 192.0.2.0/24 dev lo</code></pre>
+	<p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
+	<pre class="language-bash"><code class="language-bash">nc -l 192.0.2.1 8080</code></pre>
+	<p>Ensuite, vous pouvez vous connecter parfaitement au port 8080 sur l’une de ces adresses IP :</p>
+	<pre class="language-bash"><code class="language-bash">ip route add local 2001:db8::/64 dev lo</code></pre>
+	<p><code>nc -l 192.0.2.1 8080</code></p>
+	<p>Faire fonctionner IPv6 est un peu plus difficile :</p>
+	<pre class="language-bash"><code class="language-bash">$ ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+    inet 1.1.1.0/24 scope global lo
+       valid_lft forever preferred_lft forever
+    inet 104.16.0.0/16 scope global lo
+       valid_lft forever preferred_lft forever
+...</code></pre>
+	<p><code>ip route add local 2001:db8::/64 dev lo</code></p>
+	<p>Malheureusement, vous ne pouvez pas simplement vous connecter à ces adresses IP v6 rattachées, comme dans l'exemple v4. Pour que cela fonctionne, vous devez utiliser l'option de socket IP_FREEBIND, qui nécessite des privilèges élevés. Pour être complet, il existe également un sysctl net.ipv6.ip_nonlocal_bind, mais nous ne recommandons pas de le toucher.</p>
+	<p>Cette astuce AnyIP nous permet d’avoir des millions d’adresses IP attribuées à chaque serveur local :</p>
+	<div class="flex anchor relative">
+		<h3 id="binding-to-all-ports"><b>Liaison vers TOUS les ports</b></h3>
+		<a href="https://blog.cloudflare.com/#binding-to-all-ports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le deuxième problème majeur est la possibilité d'ouvrir des sockets TCP pour n'importe quel numéro de port. Sous Linux, et généralement sur tout système prenant en charge l'API de sockets BSD, vous ne pouvez vous lier qu'à un numéro de port TCP spécifique à l’aide d’un seul appel système de liaison. Il n’est pas possible de se lier à plusieurs ports en une seule opération.</p>
+	<pre class="language-bash"><code class="language-bash">/* Yes, really, this is all you need. */
+#define INET_LHTABLE_SIZE       32</code></pre>
+	<p>Une solution naïve consisterait à lier 65535 fois, une fois pour chacun des 65535 ports possibles. En effet, cela aurait pu être une option, mais avec des conséquences terribles :</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/revenge-listening-sockets">La revanche des sockets d'écoute</a></p>
+		</li>
+	</ul>
+	<p>En interne, le noyau Linux stocke les sockets d'écoute dans une table de hachage indexée par numéros de port, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank" rel="noopener noreferrer">LHTABLE</a>, en utilisant exactement 32 compartiments :</p>
+	<p>Si nous avions ouvert 65 000 ports, les recherches sur cette table ralentiraient considérablement : chaque compartiment de la table de hachage contiendrait deux mille éléments.</p>
+	<p>Une autre façon de résoudre notre problème serait d’utiliser les fonctionnalités NAT riches d’iptables : nous pourrions réécrire la destination des paquets entrants sur une adresse/un port spécifique, et notre application y serait liée.</p>
+	<p>Toutefois, nous ne voulions pas emprunter cette piste, car cela nécessite l'activation du module iptables conntrack. Historiquement, nous avons rencontré des <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">problèmes de performances</a> et conntrack ne peut pas gérer certaines des grandes attaques DDoS dont nous faisons face.</p>
+	<p>De plus, avec l'approche NAT, nous perdrions les informations d'adresse IP de destination. Pour y remédier, il existe une option de socket SO_ORIGINAL_DST mal connue, mais le <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">code ne semble pas encourageant</a>.</p>
+	<p>Heureusement, il existe un moyen d’atteindre nos objectifs, et qui ne nécessite ni de se connecter à tous les 65 000 ports, ni d’utiliser conntrack.</p>
+	<div class="flex anchor relative">
+		<h3 id="firewall-to-the-rescue"><b>Pare-feu à la rescousse</b></h3>
+		<a href="https://blog.cloudflare.com/#firewall-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant d’aller plus loin, revenons sur le flux général des paquets réseau dans un système d’exploitation.</p>
+	<p>Généralement, le chemin des paquets entrants comporte deux couches distinctes :</p>
+	<ul>
+		<li>
+			<p>Pare-feu IP</p>
+		</li>
+		<li>
+			<p>pile réseau</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AmbKOGpP2SLYGI4dCFTvG/26b0fe28a0379e3a0203d0fcbe5b50f5/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
+
+	</figure>
+	<p>Ceux-ci sont différents en termes de conception. Le pare-feu IP est généralement un logiciel sans état (ignorons pour l’instant le réassemblage de conntrack et de fragments d’IP). Le pare-feu analyse les paquets IP et décide de les ACCEPTER ou de les SUPPRIMER. Remarque : sur cette couche, nous parlons de <i>paquets</i> et de <i>numéros de ports</i>, et non <i>d'applications ou de sockets</i>.</p>
+	<p>Ensuite, il y a la pile réseau. Cette pièce conserve beaucoup d'état. Son rôle principal consiste à répartir les paquets IP entrants dans des <i>sockets</i>, qui sont ensuite gérés par les <i>applications</i> de l'espace utilisateur. La pile réseau gère les abstractions partagées avec l'espace utilisateur. Il regroupe les flux TCP, gère le routage et sait quelles adresses IP sont locales.</p>
+	<pre class="language-bash"><code class="language-bash">TPROXY
+This target is only valid in the mangle table, in the 
+PREROUTING chain and user-defined chains which are only 
+called from this chain.  It redirects the packet to a local 
+socket without changing the packet header in any way. It can
+also change the mark value which can then be used in 
+advanced routing rules. </code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="the-magic-dust"><b>La poussière magique</b></h3>
+		<a href="https://blog.cloudflare.com/#the-magic-dust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Source : <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">Toujours de YouTube</a></p>
+	<p>À un moment donné, nous développer le module iptables TPROXY. La <a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">documentation officielle</a> est facile à oublier :</p>
+	<p>Une autre documentation est disponible dans le noyau :</p>
+	<ul>
+		<li>
+			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></p>
+		</li>
+	</ul>
+	<p>Plus on y pensait, plus nous étions curieux...</p>
+	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
+  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
+				    ip_hdrlen(skb) +
+				      __tcp_hdrlen(tcph),
+				    saddr, sport,
+				    daddr, dport,
+				    in-&gt;ifindex, 0);</code></pre>
+	<p>Ainsi... Que <i>fait</i> réellement TPROXY ?</p>
+	<div class="flex anchor relative">
+		<h3 id="revealing-the-magic-trick"><b>Révéler le tour de magie</b></h3>
+		<a href="https://blog.cloudflare.com/#revealing-the-magic-trick" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le code <code>TPROXY</code> est <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">étonnamment simple</a> :</p>
+	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
+	<p>Permettez-moi de vous lire ceci à haute voix : dans un module iptables, qui fait partie du pare-feu, nous appelons inet_lookup_listener. Cette fonction prend un src/dst port/IP 4-uplet et renvoie le socket d’écoute capable d'accepter cette connexion. Il s’agit d’une fonctionnalité essentielle de la répartition du socket de la pile réseau.</p>
+	<p>Encore une fois : le code du pare-feu demande une routine de répartition des sockets.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51PUlTDqve3FXm5AhGdfZt/c57a4956155d52e7c3b447d7887bce4e/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
+
+	</figure>
+	<p>Plus tard, <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer"><code>TPROXY</code> <i>effectue</i> la répartition des sockets</a>:</p>
+	<p><code>skb-&gt;sk = sk;</code></p>
+	<pre class="language-bash"><code class="language-bash"># Set 192.0.2.0/24 to be routed locally with AnyIP.
+# Make it explicit that the source IP used for this network
+# when connecting locally should be in 127.0.0.0/8 range.
+# This is needed since otherwise the TPROXY rule would match
+# both forward and backward traffic. We want it to catch 
+# forward traffic only.
+sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
+
+# Set the magical TPROXY routing
+sudo iptables -t mangle -I PREROUTING \
+        -d 192.0.2.0/24 -p tcp \
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
+	<p>Cette ligne assigne un « struct sock » de socket à un paquet entrant, complétant ainsi la répartition.</p>
+	<pre class="language-bash"><code class="language-bash">IP_TRANSPARENT (since Linux 2.6.24)
+Setting this boolean option enables transparent proxying on
+this socket.  This socket option allows the calling applica‐
+tion to bind to a nonlocal IP address and operate both as a
+client and a server with the foreign address as the local
+end‐point.  NOTE: this requires that routing be set up in
+a way that packets going to the foreign address are routed 
+through the TProxy box (i.e., the system hosting the 
+application that employs the IP_TRANSPARENT socket option).
+Enabling this socket option requires superuser privileges
+(the CAP_NET_ADMIN capability).
+
+TProxy redirection with the iptables TPROXY target also
+requires that this option be set on the redirected socket.</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="pulling-the-rabbit-from-the-hat"><b>Sortir un lapin du chapeau</b></h3>
+		<a href="https://blog.cloudflare.com/#pulling-the-rabbit-from-the-hat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">import socket
+
+IP_TRANSPARENT = 19
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
+
+s.bind(('127.0.0.1', 1234))
+s.listen(32)
+print("[+] Bound to tcp://127.0.0.1:1234")
+while True:
+    c, (r_ip, r_port) = s.accept()
+    l_ip, l_port = c.getsockname()
+    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
+    c.send(b"hello world\n")
+    c.close()</code></pre>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">Image CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">par Angela Boothroyd</a></p>
+	<pre class="language-bash"><code class="language-bash">$ nc -v 192.0.2.1 9999
+Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
+hello world</code></pre>
+	<p>Doté de TPROXY, nous pouvons effectuer très facilement une connexion à tous les ports. Voici la configuration :</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo python3 transparent2.py
+[+] Bound to tcp://127.0.0.1:1234
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
+	<p>En plus de mettre cela en place, vous devez démarrer un serveur TCP avec l'option de socket magique IP_TRANSPARENT. Notre exemple ci-dessous doit être écouté sur tcp: //127.0.0.1: 1234. La <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">page de manuel pour IP_TRANSPARENT</a> montre :</p>
+	<p>Voici un serveur Python simple :</p>
+	<p>Après avoir exécuté le serveur, vous pouvez vous y connecter à partir d’adresses IP arbitraires :</p>
+	<p>Plus important encore, le serveur signalera que la connexion a bien été dirigée vers le port 9999 du 192.0.2.1, <i>même si personne n’écoute réellement sur cette adresse IP et sur ce port :</i></p>
+	<p>Tada ! Voici comment <i>lier à n’importe quel port</i> sous Linux, sans utiliser conntrack.</p>
+	<div class="flex anchor relative">
+		<h3 id="thats-all-folks"><b>C'est tout</b></h3>
+		<a href="https://blog.cloudflare.com/#thats-all-folks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans cet article, nous avons décrit comment utiliser un module inconnu iptables, conçu à l'origine pour aider à la transparence du proxy, pour quelque chose de légèrement différent. Grâce à lui, nous pouvons réaliser des tâches que nous pensions impossibles avec l’API standard des sockets BSD, en évitant le recours à des correctifs de noyau personnalisés.</p>
+	<p>Le module TPROXY est très inhabituel. Dans le contexte du pare-feu Linux, il exécute des tâches généralement effectuées par la pile réseau Linux. La documentation officielle fait défaut et je ne crois pas que de nombreux utilisateurs de Linux comprennent toute la puissance de ce module.</p>
+	<p>Il est juste de dire que TPROXY permet à notre produit Spectrum de fonctionner en douceur sur le noyau vanille. C’est un rappel supplémentaire de l’importance d’essayer de comprendre iptables et la pile réseau !</p>
+	<hr>
+	<p><i>Faire le travail de socket de bas niveau semble intéressant ? Rejoignez notre</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>équipe de renommée mondiale</i></a> <i>à Londres, Austin, San Francisco, Champaign et notre bureau d'élite à Varsovie, en Pologne.</i></p>
+	<hr>
+	<ol>
+		<li>
+			<p>L'attribution d'adresses IP à l'interface de bouclage, ainsi que la configuration appropriée de rp_filter et BGP, nous permettent de gérer des plages IP arbitraires sur nos serveurs périphériques. <a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></p>
+		</li>
+	</ol>
+</div>

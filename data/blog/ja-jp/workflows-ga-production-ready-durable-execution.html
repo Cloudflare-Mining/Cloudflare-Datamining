@@ -1,0 +1,299 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution">English</a>、<a href="https://blog.cloudflare.com/zh-tw/workflows-ga-production-ready-durable-execution">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/workflows-ga-production-ready-durable-execution">Français</a>、<a href="https://blog.cloudflare.com/de-de/workflows-ga-production-ready-durable-execution">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/workflows-ga-production-ready-durable-execution">한국어</a>、<a href="https://blog.cloudflare.com/es-la/workflows-ga-production-ready-durable-execution">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/nl-nl/workflows-ga-production-ready-durable-execution">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/workflows-ga-production-ready-durable-execution">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JAXkncQezxjEeV0IHNG5b/944fcc20d602ce88e6c2f5dfebba1a56/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>ベータ版はフィードバックやイテレーションに有用とはいえ、結局のところ、誰もが実験台になったり、ベータ版ソフトウェアに時折起きる厳しいエッジを許容できるわけではありません。時には、輝かしい「一般提供」のラベル（またはブログ記事）が必要になることもあるでしょう。そこでWorkflowsの出番です。</p>
+	<p>長期間実行されるマルチステップアプリケーション（別名「ステップ関数」）をWorkers上に構築するサーバーレスで耐久性のある実行エンジンである<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>は、現在GA（一般提供）版となっています。</p>
+	<p>要するに、<i>プロダクションレディ</i>で利用できると言うことで、Workflowsが固定されてしまうという意味ではありません。当社は引き続き、Workflowsを拡張し（より多くの同時インスタンスを含む）、新しい機能（新しい<code>waitForEvent</code> APIなど）を導入し、<a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>エージェントSDKとWorkflows</u></a>を使用してAIエージェントのより簡単な構築の実現を目指しています。</p>
+	<p>散文よりもコードが望ましい場合、Workflowsスタータープロジェクトをすぐにインストールし、単一のコマンドでコードとAPIの調査を開始することができます。</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest workflows-starter -- 
+--template="cloudflare/workflows-starter"</code></pre>
+	<p>Workflowsの仕組みとは？この製品で何が構築できるか？Workflowsと<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>エージェントSDK</u></a>を使ったAIエージェント構築についてどう考えるか？では、この記事をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="building-with-workflows">Workflowsを使って構築する</h2>
+		<a href="https://blog.cloudflare.com/#building-with-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsは、Cloudflare Workers上に構築された耐久性のある実行エンジンで、回復力のあるマルチステップアプリケーションを構築することができます。</p>
+	<p>その核となるWorkflowsは、ステップベースのアーキテクチャを実装しており、アプリケーションの各ステップを個別にリトライ処理することができ、ステップ間のステートは自動的に永続化されます。つまり、一時的なエラーやネットワークの問題によりあるステップが失敗した場合でも、Workflowsは、アプリケーション全体を最初から再起動することなく、そのステップだけを再試行できるのです。</p>
+	<p>Workflowを定義する際は、アプリケーションを以下のような論理的なステップに分割します。</p>
+	<ul>
+		<li>
+			<p>各ステップでコード（<code>step.do</code>）を実行するWorkflowをスリープ状態にする（<code>step.sleep</code>または<code>step.sleepUntil</code>）イベントを待つ（<code>step.waitForEvent</code>）</p>
+		</li>
+		<li>
+			<p>Workflowが実行されると、各ステップから返されたステートを自動的に保持するので、障害やハイバネーション期間が経過した後でも、アプリケーションが中断した場所から正確に続行できます。&nbsp;</p>
+		</li>
+		<li>
+			<p>この耐久性のある実行モデルは、複数のシステム間で調整したり、データを順番に処理したり、数分、数時間、数日に及ぶような長期的なタスクを処理する必要があるアプリケーションにとって特に強力なものとなります。</p>
+		</li>
+	</ul>
+	<p>Workflowsは、従来のステートレス機能が苦手とする複雑なビジネスプロセスの処理に特に役立ちます。</p>
+	<p>例えば、eコマースの注文処理ワークフローにおいて、在庫の確認、支払い方法の請求、確認メールの送信、データベースの更新などが、すべて別個のステップとして行われます。一時的な停止により支払処理ステップが失敗した場合、Workflowsは、在庫チェックを重複させたりプロセス全体を再起動したりすることなく、支払サービスが再び利用可能になった時にそのステップを自動的に再試行します。&nbsp;</p>
+	<p>この仕組み：サービスへの各呼び出しはステップとしてモデル化することができ、個別にリトライ処理することが可能で、必要に応じてそのステップ以降を復元することができます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } from 'cloudflare:workers';
+
+// The params we expect when triggering this Workflow
+type OrderParams = {
+	orderId: string;
+	customerId: string;
+	items: Array&lt;{ productId: string; quantity: number }&gt;;
+	paymentMethod: {
+		type: string;
+		id: string;
+	};
+};
+
+// Our Workflow definition
+export class OrderProcessingWorkflow extends WorkflowEntrypoint&lt;Env, OrderParams&gt; {
+	async run(event: WorkflowEvent&lt;OrderParams&gt;, step: WorkflowStep) {
+		// Step 1: Check inventory
+		const inventoryResult = await step.do('check-inventory', async () =&gt; {
+			console.log(`Checking inventory for order ${event.payload.orderId}`);
+
+			// Mock: In a real workflow, you'd query your inventory system
+			const inventoryCheck = await this.env.INVENTORY_SERVICE.checkAvailability(event.payload.items);
+
+			// Return inventory status as state for the next step
+			return {
+				inStock: true,
+				reservationId: 'inv-123456',
+				itemsChecked: event.payload.items.length,
+			};
+		});
+
+		// Exit workflow if items aren't in stock
+		if (!inventoryResult.inStock) {
+			return { status: 'failed', reason: 'out-of-stock' };
+		}
+
+		// Step 2: Process payment
+		// Configure specific retry logic for payment processing
+		const paymentResult = await step.do(
+			'process-payment',
+			{
+				retries: {
+					limit: 3,
+					delay: '30 seconds',
+					backoff: 'exponential',
+				},
+				timeout: '2 minutes',
+			},
+			async () =&gt; {
+				console.log(`Processing payment for order ${event.payload.orderId}`);
+
+				// Mock: In a real workflow, you'd call your payment processor
+				const paymentResponse = await this.env.PAYMENT_SERVICE.processPayment({
+					customerId: event.payload.customerId,
+					orderId: event.payload.orderId,
+					amount: calculateTotal(event.payload.items),
+					paymentMethodId: event.payload.paymentMethod.id,
+				});
+
+				// If payment failed, throw an error that will trigger retry logic
+				if (paymentResponse.status !== 'success') {
+					throw new Error(`Payment failed: ${paymentResponse.message}`);
+				}
+
+				// Return payment info as state for the next step
+				return {
+					transactionId: 'txn-789012',
+					amount: 129.99,
+					timestamp: new Date().toISOString(),
+				};
+			},
+		);
+
+		// Step 3: Send email confirmation
+		await step.do('send-confirmation-email', async () =&gt; {
+			console.log(`Sending confirmation email for order ${event.payload.orderId}`);
+			console.log(`Including payment confirmation ${paymentResult.transactionId}`);
+			return await this.env.EMAIL_SERVICE.sendOrderConfirmation({ ... })
+		});
+
+		// Step 4: Update database
+		const dbResult = await step.do('update-database', async () =&gt; {
+			console.log(`Updating database for order ${event.payload.orderId}`);
+			await this.updateOrderStatus(...)
+
+			return { dbUpdated: true };
+		});
+
+		// Return final workflow state
+		return {
+			orderId: event.payload.orderId,
+			processedAt: new Date().toISOString(),
+		};
+	}
+}</code></pre>
+	<p>
+		この耐久性、自動リトライ処理、ステートの永続性を備えたWorkflowsは、実際の障害に柔軟に対処できる信頼性の高い分散アプリケーションの構築に最適です。</p>
+	<div class="flex anchor relative">
+		<h2 id="human-in-the-loop">ヒューマン・イン・ザ・ループ</h2>
+		<a href="https://blog.cloudflare.com/#human-in-the-loop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsは単なるコード、しかし非常に強力：オンザフライで、ステップを動的に定義付け、条件によってブランチしたり、必要なシステムにAPI呼び出しを行うことができます。しかし、現実世界では、何かが起こるのを待つためにWorkflowも必要になる場合があります。</p>
+	<p>例：</p>
+	<ul>
+		<li>
+			<p>進歩するための人間からの承認。</p>
+		</li>
+		<li>
+			<p>Stripeの支払いやGitHubイベントなどの、受信webhook。 </p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>イベント通知</u></a>をトリガーするR2へのファイルのアップロードなどのステート変更により、ワークフローへのファイルへの参照をプッシュして、ワークフローがファイルを処理できる（またはAIモデルで実行できる）ようにします。</p>
+		</li>
+	</ul>
+	<p>Workflowsの新しい<code>waitForEvent</code> APIを使用すると、まさにそれが可能になります。&nbsp;</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">let event = await step.waitForEvent&lt;IncomingStripeWebhook&gt;("receive invoice paid webhook from Stripe", { type: "stripe-webhook", timeout: "1 hour" }) </code></pre>
+	<p>そうすれば、HTTPリクエストを行う外部サービスから特定のインスタンスにイベントを送信することができるようになります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">curl -d '{"transaction":"complete","id":"1234-6789"}' \
+  -H "Authorization: Bearer ${CF_TOKEN}" \
+\ "https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}"</code></pre>
+	<p>またはWorker自体内にある<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a>経由する方法：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">interface Env {
+  MY_WORKFLOW: Workflow;
+}
+
+interface Payload {
+  transaction: string;
+  id: string;
+}
+
+export default {
+  async fetch(req: Request, env: Env) {
+    const instanceId = new URL(req.url).searchParams.get("instanceId")
+    const webhookPayload = await req.json&lt;Payload&gt;()
+
+    let instance = await env.MY_WORKFLOW.get(instanceId);
+    // Send our event, with `type` matching the event type defined in
+    // our step.waitForEvent call
+    await instance.sendEvent({type: "stripe-webhook", payload: webhookPayload})
+    
+    return Response.json({
+      status: await instance.status(),
+    });
+  },
+};</code></pre>
+	<p><code>type</code>パラメーターを使用して、複数のイベントを待機したり、<code>Promise.race</code>を使用して、最初に受信したイベントに応じて複数のイベントを続行することもできます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+	async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+		let state = await step.do("get some data", () =&gt; { /* step call here */ })
+		// Race the events, resolving the Promise based on which event
+// we receive first
+		let value = Promise.race([
+step.waitForEvent("payment success", { type: "payment-success-webhook", timeout: "4 hours" ),
+step.waitForEvent("payment failure", { type: "payment-failure-webhook", timeout: "4 hours" ),
+])
+// Continue on based on the value and event received
+	}
+}</code></pre>
+	<p><code>waitForEvent</code>をもう少し詳細に可視化するために、ここで、GitHubリポジトリを監視するコードレビューエージェントによってトリガーされるWorkflowがあると仮定してみましょう。</p>
+	<p>イベントを待つ能力がなければ、Workflowは、提案を返す（あるいは独自のPRを提出する）ことについて、人間の承認を容易に得ることができません。更新されたステートをポーリングする<i>可能性</i>はありますが、これをする場合、任意の期間、<code>step.sleep</code>を呼び出し、ストレージサービスをポーリングして更新された値を取得し、存在しない場合はこれを繰り返す必要があります。この場合コードが多いのでエラーの可能性が高くなります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64dgTwe9V6bAfKUDQgJ1z3/e0a897623a8ca452139f00dd2cff9733/1.png" alt="" class="kg-image" width="1999" height="860" loading="lazy">
+	</figure>
+	<p><i><sup>waitForEventなしでは、実行中のWorkflowインスタンスへのデータ送信が困難</sup></i></p>
+	<p>同じ例を変更して、新しいwaitForEvent APIを組み込むと、変更を加える前に、このAPIを使用して人間の承認を待つことができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BIuiSytb7roytyDhHVioz/0e005829fea9e60d772dcb6888acac2c/2.png" alt="" class="kg-image" width="1999" height="860" loading="lazy">
+	</figure>
+	<p><i><sup>コードレビューワークフローにwaitForEventを追加し、明示的な承認を求めることができます。</sup></i></p>
+	<p>AIエージェントが人間の代わりに送信したり、行動したりすることを想定できます。<code>waitForEvent</code>は、単にWorkflowが継続する（または継続しない）前に世界の何かが変化するのを取得し、一時停止する方法を公開するに過ぎません。</p>
+	<p>重要なのは、Workflowsの他のステップと同じように、<code>waitForEvent</code>を呼び出すことができることです。条件付き、複数回、およびループの中で呼び出すことができます。WorkflowsはまさにWorkers：プログラミング言語のフルパワーを持ち、また<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>ドメイン固有言語（DSL）</u></a>や設定言語に制限されることはありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="pricing">価格設定</h2>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>耳寄りな話：オリジナルベータ版の発表からほとんど変更されていません！Workflowsによって保存されるステートのストレージ価格を追加し、CPUベースとリクエスト（呼び出し）ベースの価格を以下のように維持します。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>単位</b></p>
+				</td>
+				<td>
+					<p><b>Workers 無料</b></p>
+				</td>
+				<td>
+					<p><b>Workers 有料</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>CPU時間（ミリ秒）</b></p>
+				</td>
+				<td>
+					<p>1つのWorkflowにつき10ミリ秒</p>
+				</td>
+				<td>
+					<p>月々3,000万ミリ秒のCPUコストを含む</p>
+					<p>CPU時間100万ミリ秒につき$0.02追加</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>リクエスト</b></p>
+				</td>
+				<td>
+					<p>1日あたり100,000件のワークフロー呼び出し（<a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer"><u>Workersと共有</u></a>）</p>
+				</td>
+				<td>
+					<p>1か月あたり、1,000万込み</p>
+					<p>追加100万ごとに、+$0.30</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>ストレージ料金（GB）</b></p>
+				</td>
+				<td>
+					<p>1 GB</p>
+				</td>
+				<td>
+					<p>1GB/月を含む
+						$0.20/月追加</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>ストレージ料金が新しいため、2025年9月15日まではストレージに対する積極的な請求は行いません。当社は、ストレージに課金する前に、基本料金に含まれる1GBの制限を超えたユーザーに対して通知を行います。Workflowsは、既定で、3日（Freeプラン）または30日（有料プラン）経過後に、保存ステートが失効します。</p>
+	<p>「CPU時間」とは何かということですが、これはWorkflowが積極的にコンピューティングリソースを消費している時間です。それにはAPI呼び出しの待ち時間、LLMの推論、その他のI/O（データベースへの書き込みなど）は<i>含まれません</i>。これは小さいことに思えるかもしれませんが、実際積み重なると膨大になります。ほとんどのアプリケーションは、1桁ミリ秒のCPU時間と数秒の経過実時間ですが、応答するのに100～250ミリ秒かかるAPIが1つか2つでもあれば、それは膨大な量になってしまいます！</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zRZ3gFQ0TrCetwlW0bqWG/87e41b7ab75ae48a4f2a6655d8ac2a86/3.png" alt="" class="kg-image" width="1912" height="832" loading="lazy">
+	</figure>
+	<p><i><sup>Workflowの課金は、アイドル中や待機中に費やされる時間ではなく、CPUに対して請求されます。</sup></i></p>
+	<p>Workflowエンジンは、特に待機時間が長くなり、オブジェクトストレージ（<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>など）からデータを読み取る、o3-miniやClaude 3.7のようなサードパーティのAPIやLLMを呼び出す、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>、Postgres、MySQLのようなデータベースに問い合わせるといったことも行います。Workflowsで、Workersの様に：アプリケーションが待機している時間は課金されません。</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building">構築を開始する</h2>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsとそのの仕組みを十分に把握したうえで、構築しましょう。そしてその次は？</p>
+	<ol>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflowsの仕組み、</u></a>Workflows APIの理解、ベストプラクティスについては、Workflowsのドキュメントをご覧ください</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>スタータープロジェクト</u></a>のコードを確認する</p>
+		</li>
+		<li>
+			<p>最後に、数回クリックするだけで、スターターをCloudflareアカウントにデプロイできます。</p>
+		</li>
+	</ol><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fworkflows-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+</div>

@@ -1,0 +1,133 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/high-performance-llms">English</a>、<a href="https://blog.cloudflare.com/zh-tw/high-performance-llms">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/high-performance-llms">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/high-performance-llms">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/H6HzVR3djJacCrzX8b8EE/aea7e8130edf09565333b6a550c010db/BLOG-3266_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>エージェントは大規模な言語モデルで動作する必要があります。数週間前、私たちは、Workers AIが正式に、Moonshotのkimi K2.5のような大規模なオープンソースモデルをホストする分野に正式に進出することを発表しました。それ以来、当社はKimi K2.5を3倍高速化し、より多くのモデルを実行中です。これらのモデルは、当社が今週発売した多くのエージェンティック製品、利用、ツールの基盤となっています。</p>
+	<p>AIモデルのホスティングは、興味深い課題です。ソフトウェアと、非常に高価なハードウェアの間の微妙なバランスを取る必要があるのです。Cloudflareは、賢いソフトウェアエンジニアリングを通じてハードウェアからあらゆる効率性を引き出すことに長けています。これは、超大規模言語モデルを実行するための基盤作りについて、深く掘り下げたものです。</p>
+	<div class="flex anchor relative">
+		<h2 id="hardware-configurations">ハードウェア構成</h2>
+		<a href="https://blog.cloudflare.com/#hardware-configurations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/workers-ai-large-models"><u>以前のKimi K2.5ブログ記事</u></a>で述べたように、当社はモデルに最適なサービスを提供するために、様々なハードウェア構成を使用しています。ハードウェア構成の多くは、ユーザーがモデルに送信する入力と出力のサイズに依存します。例えば、モデルを使ってファンフィクションを書く場合、いくつかの小さなプロンプト（入力トークン）を与え、コンテンツページ（出力トークン）を生成するよう依頼することができます。</p>
+	<p>逆に、要約タスクを実行する場合、何十万もの入力トークンを送信することになるかもしれませんが、出力トークンは小さな要約しか生成されないことになります。このような相反するユースケースがあるため、モデル構成を調整して、入力トークンの処理をより高速にすべきか、出力トークンをより高速に生成できるか、選択を迫られます。</p>
+	<p>Workers AIで大規模な言語モデルをローンチしたとき、ユースケースのほとんどはエージェントに使用されることをわかっていたのです。エージェントの場合、大量の入力トークンを送ります。すべてのツール、MCPを含む大きなシステムプロンプトから始まります。最初のユーザープロンプトで、そのコンテキストは拡大し続けます。ユーザーからの新しい各プロンプトがモデルにリクエストを送信します。モデルは、以前書かれたすべての内容（これまでのユーザープロンプト、アシスタントメッセージ、生成されたコードなど）で構成されます。Workers AIの場合、これは「高速な入力トークン処理」と「高速なツール呼び出し」の2つに集中する必要がありました。</p>
+	<div class="flex anchor relative">
+		<h3 id="prefill-decode-pd-disaggregation">事前入力デコード（PD）分解</h3>
+		<a href="https://blog.cloudflare.com/#prefill-decode-pd-disaggregation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社がパフォーマンスと効率性を向上させるために使用するハードウェア構成の1つに、分散したプリフィルメントがあります。LLMリクエストの処理には、入力トークンを処理してKVキャッシュに入力するプリフィルと、出力トークンを生成するデコードの2つの段階があります。通常、プリフィルはコンピューティングの制約があり、デコードはメモリの制約があります。つまり、各ステージで使用するGPUの部品が異なり、プリフィルは常にデコード前に行われるため、各ステージは互いにブロックします。つまり、単一のマシンでプリ入力とデコードの両方を行うと、GPUの能力を効率的に活用できないということになります。</p>
+	<p>事前入力デコードの分解により、各段階で別の推論サーバーが稼働します。まず、リクエストがプリフィルステージに送信され、プリフィルを実行してKVキャッシュに保存します。次に、同じリクエストがデコードサーバーに送信され、プリフィルサーバーからKVキャッシュを転送し、デコードを開始する方法に関する情報とともに送信されます。これには、サーバーが実行している役割に合わせて個別に調整したり、より入力が多い、または出力が多いトラフィックを考慮するために拡張したり、さらには異種ハードウェア上で実行することができるため、多くの利点があります。</p>
+	<p>このアーキテクチャを実現するには、比較的複雑なロードバランサーが必要です。前述のようにリクエストをルーティングするだけでなく、デコードサーバーのレスポンス（ストリーミングSSEを含む）を書き換えて、キャッシュされたトークンなどプリフィルサーバーからの情報を含める必要があります。問題を複雑にしているのは、推論サーバーごとに、KVキャッシュ転送を開始する際に必要な情報が異なるためです。Cloudflareはこれを拡張して、トークン認識型の負荷分散を実装しました。この負荷分散では、プリ入力エンドポイントとデコードエンドポイントのプールがあり、ロードバランサーはプール内の各エンドポイントに転送されているプリ入力トークンまたはデコードトークンの数を推定し、この負荷を分散しようとします。均等に。</p>
+	<p>パブリックモデルのローンチ後に、当社のインプット/アウトプットのパターンが再び大きく変わりました。新しい利用パターンを分析し、お客様のユースケースに合わせて設定を調整しました。</p>
+	<p>これは、トラフィックを新しいPD分離アーキテクチャに移行した後、同じ量のGPUを使用してリクエスト量が増加した場合の、p90の最初のトークンの時間（TTFB）の低下率のグラフです。テール遅延のばらつきに大幅な改善が見られました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j6AEIF1GMhnHuJD08VQtw/9e65e2badc5fd1e75557230e8f455ccc/BLOG-3266_2.png" alt="BLOG-3266 2" class="kg-image" width="1999" height="604" loading="lazy">
+	</figure>
+	<p>同様に、トークンあたりのp90は、変動が大きい約100ミリ秒から20～30ミリ秒になり、トークン間遅延が3倍改善されました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MNBGFHwI3U0bYwuAosg2g/394f4f5708cc1d3b045dc3f52c64b808/BLOG-3266_3.png" alt="BLOG-3266 3" class="kg-image" width="1999" height="470" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="prompt-caching">プロンプトキャッシング</h3>
+		<a href="https://blog.cloudflare.com/#prompt-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントの使用ケースには通常、長いコンテキストがあるため、毎回入力テンソルを再計算しないように、効率的なプロンプトキャッシングを最適化します。当社では、<code>x-session-affinity</code>と呼ばれるヘッダーを活用して、以前に計算された入力テンソルがあった正しい地域にリクエストがルーティングされるようにしています。このことについては、当社の<a href="https://blog.cloudflare.com/workers-ai-large-models"><u>オリジナルブログ記事</u></a>Workers AIでの大規模LLMローンチに関する人気のエージェント機能にセッションアフィニティヘッダーを追加しました<a href="https://github.com/anomalyco/opencode/pull/20744" target="_blank" rel="noopener noreferrer"><u>OpenCodeのような</u></a>、総スループットが大幅に増加したことがわかりました。ユーザーからのプロンプトキャッシュにおけるわずかな違いは、モデルを実行するのに必要な追加のGPUの要因につながる可能性があります。内部的にKVを認識するルーティングがありますが、プロンプト**キャッシング**を明示するために、クライアントが<code>x-session-affinity</code>を送信することに依存しています。当社は、キャッシュされたトークンの割引を提供することで、ヘッダーの使用に割引を提供します。当社では、ユーザーがより迅速な推論とより安価な価格設定のために、<a href="https://developers.cloudflare.com/workers-ai/features/prompt-caching" target="_blank" rel="noopener noreferrer"><u>プロンプトキャッシングを活用する</u></a>ことを強くお勧めします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gKzvEB0JlL1L0IHIby7TV/fe82399fe870d343a572f053d62b4e52/BLOG-3266_4.png" alt="BLOG-3266 4" class="kg-image" width="932" height="511" loading="lazy">
+	</figure>
+	<p>当社は、社内の最支援ユーザーと協力して、このヘッダーを採用しました。その結果、ピーク時に入力トークンのキャッシュヒット率が60%から80%に増加しました。これにより、Cloudflareが対応できるリクエストのスループットが大幅に向上し、OpenCodeやAIコードレビューなど、インタラクティブで時間を重視するセッションのパフォーマンスが向上します。</p>
+	<div class="flex anchor relative">
+		<h3 id="kv-cache-optimization">KVキャッシュ最適化</h3>
+		<a href="https://blog.cloudflare.com/#kv-cache-optimization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在はより大規模なモデルを提供しているため、1つのインスタンスが複数のGPUにまたがることが可能です。つまり、GPU間でKVキャッシュを共有するための効率的な方法を見つけなければならなかったのです。KVキャッシュは、プリ入力（セッション内のプロンプトの結果）からのすべての入力テンソルが保存される場所であり、最初はGPUのVRAMにあります。すべてのGPUのVRAMサイズは固定ですが、モデルインスタンスに複数のGPUが必要な場合は、KVキャッシュがGPU間で存在し、互いに通信する方法が必要になります。キミのためにこれを実現するために、私たちは<a href="https://github.com/kvcache-ai/Mooncake" target="_blank" rel="noopener noreferrer"><u>Moonshot AIの</u></a>Mooncake Transfer EngineとMooncake Storeを活用しました。</p>
+	<p>Mooncatの Transfer Engineは、高性能なデータ転送フレームワークです。これは、NVLinkやNVMe over Fabricなどのさまざまなリモートダイレクトメモリアクセス（RDMA）プロトコルと動作し、CPUを必要とせずに直接的なメモリからメモリへのデータ転送を可能にします。これにより、複数のGPUマシン間でデータを転送する速度が向上します。これは、モデルのマルチGPUおよびマルチノード構成で特に重要です。</p>
+	<p>LMCacheまたはSGLang HiCacheと組み合わせると、キャッシュはクラスター内のすべてのノードで共有され、プリフィルノードは別のノードで事前入力された以前のリクエストからのキャッシュを識別して再利用することができます。これにより、クラスター内でセッションを意識したルーティングを行う必要がなくなり、トラフィックをより均等に負荷分散することができます。Moon取り除く Storeでは、GPU VRAMを超えてキャッシュを拡張し、NVMeストレージを活用することもできます。これにより、セッションがキャッシュに留まる時間が長くなり、キャッシュヒット率が向上し、より多くのトラフィックを処理し、ユーザーにより良いパフォーマンスを提供できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="speculative-decoding">投機的デコーディング</h3>
+		<a href="https://blog.cloudflare.com/#speculative-decoding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLMは、その前に来たトークンに基づいて、シーケンス内の次のトークンを予測することで機能します。単純な実装では、モデルは次の <i>n</i> トークンのみを予測しますが、実際にはモデルの1回のフォワードパスで次の <i>n+1、n+2...</i> トークンを予測させることができます。この人気のある技術は、投機的デコーディングとして知られており、これについては、<a href="https://blog.cloudflare.com/making-workers-ai-faster"><u>Workers AIに関する以前の投稿</u></a>で紹介しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Au0LKNr8ozQg5UQM34wY/06080a8699d5f8edb050450913a19a40/BLOG-3266_5.png" alt="BLOG-3266 5" class="kg-image" width="1999" height="745" loading="lazy">
+	</figure>
+	<p>投機的デコーディングでは、小規模なLLM（草稿モデル）を活用して、ターゲットモデルが選ぶための候補トークンをいくつか生成します。ターゲットモデルは、1回のフォワードパスで小さな候補トークンプールから選択するだけで済みます。トークンの検証は、大規模なターゲットモデルを使用してトークンを生成するよりも高速で計算コストが低いです。しかし、ターゲットモデルは最終的にドラフトトークンを受け入れるか拒否する必要があるため、品質は維持されます。</p>
+	<p>エージェンティックな使用例では、モデルが生成する必要のあるツールコールと構造化された出力の量のため、投機的デコーディングが特に活躍します。ツールの呼び出しはたいてい予測可能です。名前と説明があり、JSONエンベロープに囲まれていることがわかっています。</p>
+	<p>Kimi K2.5でこれを行うために、<a href="https://huggingface.co/nvidia/Kimi-K2.5-Thinking-Eagle3" target="_blank" rel="noopener noreferrer"><u>NVIDIAのEAGLE-3</u></a>（Extrapolation Algorithm for Greater Language-model Efficiency）ドラフトモデルを活用します。投機的デコーディングのチューニングには、将来生成するトークンの数も使っています。その結果、1秒あたりのスループットを高速化しながら、高品質な推論を実現できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="infire-our-proprietary-inference-engine">Infire：当社独自の推論エンジン</h2>
+		<a href="https://blog.cloudflare.com/#infire-our-proprietary-inference-engine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025年のバースデーウィーク中に発表したように、Cloudflareには独自の推論エンジン<a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine"><u>Infire</u></a>があり、機械学習モデルをより高速化します。InfireはRustで記述された推論エンジンで、Cloudflareの分散型グローバルネットワークからの推論で当社独自の課題をサポートするために設計されています。私たちは、実行する予定の、この新しいクラスの大規模言語モデルのInfireサポートを拡張しました。つまり、すべてを機能させるために、いくつかの新しい機能を構築する必要があったのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="multi-gpu-support">マルチGPUサポート</h3>
+		<a href="https://blog.cloudflare.com/#multi-gpu-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>kimi K2.5のような大規模言語モデルには1兆以上のパラメータがあり、モデルの重みの約560GBに相当します。典型的なH100はVRAMが約80GBで、モデルを動作させるためにはGPUメモリに重みをロードする必要があります。つまり、kimi K2.5のようなモデルは、モデルをメモリにロードして実行するために、少なくとも8 H100が必要だということです。それには、コンテキストウィンドウを含むKV キャッシュに必要な余分なVRAMも含まれないことになります。</p>
+	<p>Infireをローンチした当初から、マルチGPUのサポートを追加し、推論エンジンをパイプライン並列またはテンソルパラレルモードの複数のGPUで実行できるようにし、専門家による並列性もサポートしました。</p>
+	<p>パイプラインの並列性のために、Infireはパイプラインのすべてのステージを適切に負荷分散して、他のステージが実行されているときにあるステージのGPUが枯渇するのを防ぐことを試みます。一方、テンソル並列性の場合は、InfireはGPU間の通信を減らし、可能な限り高速にするために最適化します。ほとんどのモデルでは、パイプライン並列性とテンソル並列性の両方を組み合わせることで、スループットと遅延の最良のバランスが得られます。</p>
+	<div class="flex anchor relative">
+		<h3 id="even-lower-memory-overhead">メモリオーバーヘッドの削減</h3>
+		<a href="https://blog.cloudflare.com/#even-lower-memory-overhead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>GPUメモリのオーバーヘッドは既に<a href="https://vllm.ai" target="_blank" rel="noopener noreferrer"><u>vLLM</u></a>より遥かに低いですが、Infireはさらに最適化され、アクティベーションなどの内部ステートに必要なメモリを削減しました。現在、Infireはわずか2台のH200 GPUでLlama 4 Scoutを実行することができ、KVキャッシュ用に56GiB以上が残っており、120万以上のトークンに十分です。Infireは、8つのH100 GPU（もちろんH100です）でのみK2.5を実行することができ、30 GiB以上をまだKVキャッシュに利用できます。どちらの場合も、そもそもvLLMを起動することさえ困難となるでしょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-cold-starts">コールドスタートの高速化</h3>
+		<a href="https://blog.cloudflare.com/#faster-cold-starts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、マルチGPUのサポートを追加しながら、起動時間を改善する他の方法を特定しました。Kim K2.5のような最大規模のモデルでも、Infireは20秒以内にリクエスト処理を開始できます。読み込み時間は、ドライブ速度によってのみ制限されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="maximizing-our-hardware-for-faster-throughput">ハードウェアを最大化し、スループットを高速化</h3>
+		<a href="https://blog.cloudflare.com/#maximizing-our-hardware-for-faster-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社独自の推論エンジンへの投資により、制約のないシステムで毎秒スループット毎秒最大20%高いトークンを得られ、ハードウェアを最大限活用できるようになりました。また、以前は完全に不可能だったローエンドハードウェアを最新のモデルに使用できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-journey-doesnt-end">旅は続く</h2>
+		<a href="https://blog.cloudflare.com/#the-journey-doesnt-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>機械学習コミュニティでは、新しい技術、研究、モデルが毎週のように登場しています。当社は、GPUを効率的に運用しながら、高品質でパフォーマンスの高い推論をお客様に提供するために、継続的に技術スタックを最適化しています。ご関心がおありでしたら、<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>ぜひご応募ください</u></a>！</p>
+</div>

@@ -1,0 +1,122 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-to-build-your-own-vpn-or-the-history-of-warp">English</a>および<a href="https://blog.cloudflare.com/ko-kr/how-to-build-your-own-vpn-or-the-history-of-warp">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NQ735PxiKa2lse7NqfF61/9b12261ad02b05ba6d60ec8fc20eadc2/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Linuxのネットワーク機能は、CloudflareがDDoS攻撃に直面する際の数十億ものリクエストに対処するための重要な部分です。Cloudflareが提供するツールは<a href="https://blog.cloudflare.com/why-we-use-the-linux-kernels-tcp-stack"><u>非常に貴重で有用</u></a>であり、世界中の開発者からの絶え間ない貢献により、<a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world"><u>絶えず能力とパフォーマンスが向上し続けています</u></a>。</p>
+	<p>当社が<a href="https://blog.cloudflare.com/1111-warp-better-vpn"><u>モバイルファーストのパフォーマンスおよびセキュリティアプリであるWARP</u></a>を開発した際、新たな課題に直面しました。何百万ものモバイルクライアント向けの任意のユーザーパケットをエッジマシンから安全かつ効率的に転送する方法です。この記事では、Linuxネットワークスタックを使って独自の高パフォーマンスVPNを構築するという私たちの最初のソリューションについて探ります。既存のネットワークに統合する必要がありました。 CDNサービスに直接リンクするだけでなく、Cloudflareマシンから任意のユーザーパケットを安全にエグレスする方法も提供します。ここで学んだ教訓は、新<a href="https://www.cloudflare.com/en-gb/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>製品</u></a>や<a href="https://blog.cloudflare.com/icloud-private-relay"><u>機能</u></a>の開発に役立ち、その他にも未知のものを発見するのに役立ちました。まず、どこから始めたのでしょうか？</p>
+	<div class="flex anchor relative">
+		<h2 id="a-bridge-between-two-worlds">2つの世界の架け橋</h2>
+		<a href="https://blog.cloudflare.com/#a-bridge-between-two-worlds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WARPの初期実装は、インターネットアクセスを可能にする仮想プライベートネットワーク（VPN）に似ていました。具体的には、レイヤー3 VPN – IPパケットのためのトンネルです。</p>
+	<p>IPパケットはインターネットの構成要素です。インターネット経由でデータを送信すると、データは小さな塊に分割され、パケットで別々に送信されます。それぞれには、宛先アドレス（パケットの宛先）と送信元アドレス（返信の送信先）がラベル付けされます。インターネットに接続しているならIPアドレスがあります。</p>
+	<p>ただし、<i>一意の</i>IPアドレスがないかもしれません。これはIPv4に確実に当てはまります。IPv4は、世界中でIPv6に移行するための長年の努力にもかかわらず、依然として広く使われています。IPv4に可能なアドレスは40億個しかなく、すべて割り当てられており、共有しなければなりません。</p>
+	<p>自宅や職場、コーヒーショップでWi-Fiを使うと、ローカルネットワークに接続することになります。お使いのデバイスにはローカルIPアドレスが割り当てられ、アクセスポイントやネットワーク内の他のデバイスと通信します。ただし、そのアドレスはローカルネットワーク外では意味を持ちません。そのアドレスは、インターネット経由で送信されるIPパケットで使うことはできません。それは、すべてのローカルIPv4ネットワークが<a href="https://en.wikipedia.org/wiki/Private_network" target="_blank" rel="noopener noreferrer"><u>同じいくつかのアドレスセット</u></a>を使用するためです。</p>
+	<p>では、インターネットアクセスはどのように機能するのでしょうか？ローカルIPv4ネットワークは通常、ネットワークアドレス変換（NAT）を実行するための機器である<i>ルーター</i>を採用しています。NATは、ローカルエリアネットワーク上のデバイスに割り当てられたプライベートIPv4ネットワークアドレスを、インターネットサービスプロバイダーから与えられた小さなパブリックにルーティング可能なアドレスセットに変換するために使用されます。ルーターは、2つのネットワーク間で適用される変換テーブルを作成して記録します。一方のネットワークでパケットが受信されると、ルーターは変換テーブルを参照して適切な変換を適用してから、反対のネットワークにパケットを送信します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uT2VOMUn2fJ9NleofEfVB/b871de07a16714f1d05b2b3d0d547aa7/image6.png" alt="NATを使用してプライベートネットワーク上のデバイスからパブリックインターネットへの接続をブリッジするルーターの図。" class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>NATを使用してプライベートネットワーク上のデバイスからパブリックインターネットへの接続をブリッジするルーターの図</sup></p>
+	<p>インターネットアクセスを提供するVPNも、この点ではLANと同じです。唯一違う点は、VPNのユーザーがパブリックインターネット経由でVPNサーバーと通信することです。モデルはシンプルです。プライベートネットワークのIPパケットは、VPNサーバーにアドレス指定されたパブリックIPパケットにトンネリングまたはカプセル化されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/613OhwoQSh2JHzIsBLzo8U/876446bed57eb8b70ba9ecac0d8f0c75/image5.png" alt="VPNクライアントとサーバー間でHTTPSパケットがカプセル化される図式" class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>VPNクライアントとサーバー間でHTTPSパケットがカプセル化される図式</sup></p>
+	<p>ほとんどの場合、VPNソフトウェアはパケットのカプセル化とカプセル化の解除だけを実行し、VPN上でパケットを送受信するための仮想ネットワークデバイスを提供します。これにより、VPNを自由に設定することができます。WARPでは、当社のサーバーがVPNクライアントとインターネット間のルーターとして機能する必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="nats-how-you-do-it">NATで実現</h2>
+		<a href="https://blog.cloudflare.com/#nats-how-you-do-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サーバーを支えているOSであるLinuxは、<a href="https://en.wikipedia.org/wiki/Netfilter" target="_blank" rel="noopener noreferrer"><u>Netfilter</u></a>サブシステムでNATを使ったルーティングを実行するように設定することができます。ネットフィルタは、nftablesルールまたはiptablesルールを通じて設定されることが多いです。発信パケットのソースIPを書き換える「ソースNAT」の設定は、次の1つのルールで実現されます。</p>
+	<p><code>nft addrule ip nat postrouting oifname "eth0" ip saddr 10.0.0.0/8 snat to 198.51.100.42</code></p>
+	<p>このルールにより、NetfilterのNAT機能が、次の基準に一致するパケットのソースアドレス変換を実行します。</p>
+	<ol>
+		<li>
+			<p>送信元アドレスは10.0.0.0/8プライベートネットワークのサブネットです。この例では、VPNクライアントがこのサブネットのアドレスを持つとします。</p>
+		</li>
+		<li>
+			<p>パケットは、「eth0」インターフェースに送信されます。この例では、サーバーの物理的なネットワークインターフェースであるため、パブリックインターネットへのルートです。</p>
+		</li>
+	</ol>
+	<p>これら2つの条件がそろった場合、「snat」アクションが適用され、VPNクライアントが使用しているアドレスから、サンプルサーバーのパブリックIPアドレス198.51.100.42にソースIPパケットを書き換えます。元のアドレスと書き換えられたアドレスは書き換えテーブルで追跡します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sUznAhNxIXRCdhjILq6fe/539a2ee09eb149ae9856172043a7d527/image1.png" alt="VPNサーバーによって、カプセル化されたパケットがカプセル化され、書き換えられるスキーマ。" class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>VPNサーバーによってカプセル化されたパケットが解除され、書き換えられる図式</sup></p>
+	<p>ディストリビューションがnftablesを出荷する方法によっては、<a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters/configuring-nat-using-nftables" target="_blank" rel="noopener noreferrer"><u>追加の設定が必要な場合があります</u></a>。nftablesは、非推奨のiptablesよりも柔軟ですが、使用できる「暗黙の」テーブルは少ないです。</p>
+	<p>また、デフォルトでは2つの異なるネットワークに接続されているマシンが認識なしに転送を行うことは避けたいため、<a href="https://linux-audit.com/kernel/sysctl/net/net.ipv4.ip_forward" target="_blank" rel="noopener noreferrer"><u>一般的にIPフォワーディングを有効にする</u></a>必要があるかもしれません。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-conntrack-is-a-conntrack-is-a-conntrack">コネクティビティクラウドは、</h2>
+		<a href="https://blog.cloudflare.com/#a-conntrack-is-a-conntrack-is-a-conntrack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前に、ルーターは2つのネットワーク内のアドレス間のコンバージョンを追跡すると述べました。上の図では、その状態は書き換えテーブルで保持されています。</p>
+	<p>実際には、どのデバイスもTCPおよびUDPプロトコル、特にポート番号を使用して複数の独立したデータフローを単一のIPアドレスでサポートする方法を理解している場合にのみ、NATを有用に実装できます。NATデバイス（この場合はLinuxの場合は）は、各接続に一意の送信元ポートとアドレスが使用されることを保証し、必要に応じてポートを再割り当てします。また、TCP接続のライフサイクルを理解して、ポート番号を再利用しても安全である理由を把握する必要があります。可能なポートは65,536しかありませんが、ポートの再利用は不可欠です。</p>
+	<p>Linux Netfilterには、<i>conntrack</i>モジュールがあり、なりすましパケットや予期せぬパケットからサーバーを保護し、正当な接続への干渉を防ぐステートフルファイアウォールの実装に広く使用されています。この保護が可能なのは、TCPと接続の有効な状態を理解しているからです。この機能は、NATを実装するのにも最適な位置にあります。実際、パケットの書き換えはすべてconntrackによって実装されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HjxbjpRIJIPygV4zMo4XL/7ff4e11334e8e64826be1f29f5e5fb17/image2.png" alt="conntrackがパケットを検証し、書き換えるための手順を示す図" class="kg-image" width="1360" height="726" loading="lazy">
+	</figure>
+	<p><sup>conntrackがパケットを検証し、書き換えるための手順を示す図</sup></p>
+	<p>ステートフルファイアウォールとして、connecttrackモジュールはこれが確認したすべての接続のテーブルを保持します。アクティブな接続のすべてを把握できれば、使用されていないポートへの新しい接続を書き換えることができます。</p>
+	<p>上記の「snat」ルールでは、Netfilterは書き換えテーブルにエントリを追加しますが、パケットはまだ変更しません。nftables内では、<a href="https://wiki.nftables.org/wiki-nftables/index.php/Mangling_packet_headers" target="_blank" rel="noopener noreferrer"><u>基本的なパケット変更のみが許可されます</u></a>。パケット処理がconntrackモジュールに到達するのを待つ必要があります。conntrackモジュールは、アクティブな接続で未使用のポートを選択し、その後でパケットを書き換えます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qT3d8JXiTYLwQWsVOCtcQ/ff8c8adcb209f2cdc2578dc1218923ca/image4.png" alt="" class="kg-image" width="1634" height="592" loading="lazy">
+	</figure>
+	<p><sup>NATをトラフィックに適用する場合のネットフィルタと接続の役割を示す図</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="marky-mark-and-the-firewall-bunch">Markyマークとファイアウォールバンドル</h2>
+		<a href="https://blog.cloudflare.com/#marky-mark-and-the-firewall-bunch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>接続の別のモードは、接続に属するパケットに永続的なマークを割り当てることです。マークは、nftablesルールで参照され、異なるファイアウォールポリシーの実装や、ルーティング決定の制御に使用されます。</p>
+	<p>特定のアドレス（ゲストネットワークからなど）が、マシン上の特定のサービスにアクセスするのを防ぎたいとします。各サービスに対して、これらのアドレスへのアクセスを拒否するファイアウォールルールを追加できます。ただし、ブロックするアドレスのセットを変更する必要がある場合は、それに応じてすべてのルールを更新する必要があります。</p>
+	<p>あるいは、1つのルールを使用して、ブロックしたいアドレスからのパケットにマークを適用し、ブロックを実装するすべてのサービスルールでそのマークを参照することもできます。ここで、アドレスを変更する場合、1つのルールを更新するだけで、そのパケットマークのスコープを変更できます。</p>
+	<p>ルーティングルールはNetfilterほど多くのパケットの属性を決定できないため、これはルーティングの動作を制御するのに最も有益です。マークを使用すると、強力なネットフィルタルールに基づいてパケットを選択することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33J5E9eds0JiGVNqOInJ0K/829d033b3ee255093ff1927c0b03f4fb/image3.png" alt="特定のパケットにマーキングして特別なルーティングルールを適用するネットフィルターを示す図。" class="kg-image" width="1808" height="488" loading="lazy">
+	</figure>
+	<p><sup>特定のパケットにマーキングして特別なルーティングルールを適用するネットフィルターを示す図</sup></p>
+	<p>WARPサービスを支えているコードは、Cloudflareがセキュリティ重視のシステムプログラミング言語であるRustで書いたものです。WireGuardの実装である<a href="https://github.com/cloudflare/boringtun" target="_blank" rel="noopener noreferrer"><u>boringtun</u></a>と、<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>MASQUE</u></a>の実装には、細心の注意を払いました。しかし、たとえ正面玄関が通過できないと考えたとしても、多層防御を採用することは、良いセキュリティ対策なのです。</p>
+	<p>その一例として、クライアントから来たIPパケットと、当社のネットワークの他の場所から発信されたパケットを区別することが挙げられます。一般的な方法として、WARPトラフィックに一意のIP空間を割り当て、IPアドレスに基づいて区別する方法がありますが、内部ネットワークの番号を振り分ける必要がある場合、脆弱になる可能性があります。IPv4のアドレス空間は限られていることを思い出してください！代わりに、もっとシンプルな方法が可能です。</p>
+	<p>WARPクライアントからのIPパケットをLinuxネットワーキングスタックに取り込むために、WARPは<a href="https://blog.cloudflare.com/virtual-networking-101-understanding-tap"><u>TUNデバイス</u></a>を使用します。これは、プログラムがIPパケットを送受信するために使用できる仮想ネットワークデバイスのLinuxでの名称です。TUNデバイスは、ファイアウォールやルーティングを含む、EthernetまたはWi-Fiアダプターのような他のネットワークデバイスと同様に構成できます。</p>
+	<p>nftablesを使用して、WARPのTUNデバイスに出力されるすべてのパケットをマークします。ネットフィルタはconntrackと独立してパケットマークを使用できるため、発信経路上のconntrackの状態テーブルにマークを明示的に格納し、着信パケットのためにそれを取得する必要があります。</p>
+	<pre class="language-Rust"><code class="language-Rust">table ip mangle {
+    chain forward {
+        type filter hook forward priority mangle; policy accept;
+        oifname "fishtun" counter ct mark set 42
+    }
+    chain prerouting {
+        type filter hook prerouting priority mangle; policy accept;
+        counter meta mark set ct mark
+    }
+}</code></pre>
+	<p>また、マークされたパケットをTUNデバイスに返すためのルーティングルールを追加する必要があります。</p>
+	<p><code>ip route add fwmark 42 table 100 priority 10
+			ip route add 0.0.0.0/0 proto static dev warp-tun table 100</code></p>
+	<p>これで完了です。WARPからの接続はすべて明確に識別され、ローカルからの接続やネットワーク上の他のノードと分けて、ファイアウォールを設定することができます。ConntrackはNATを処理し、接続マークはWARPクライアントによってどの追跡済み接続が行われたかを示しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-end">これで終わり？</h2>
+		<a href="https://blog.cloudflare.com/#the-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WARPの最初のバージョンでは、Linuxのネットワークスタックの複数のコンポーネントを組み合わせることで、クライアントが任意のインターネットホストにアクセスできるようにしました。各エッジサーバーは、WARP専用の割り当てから単一のIPアドレスを持ち、標準的で詳細に文書化された方法を用いて、NAT、ルーティング、適切なファイアウォールルールを設定することができました。</p>
+	<p>Linuxは柔軟で設定が容易ですが、マシンごとに1つのIPv4アドレスが必要です。IPv4アドレスが枯渇するため、このアプローチはCloudflareの大規模ネットワークに拡張できません。WARPサーバーを実行するすべてのマシンに専用のIPv4アドレスを割り当てることにより、アドレスリースの請求額が莫大な額になります。コストを抑えるには、WARPを実行するサーバーの数を制限し、導入の運用をますます複雑化する必要がありました。</p>
+	<p>アイデアはありましたが、Linuxが与えてくれた簡単な道を諦めなければなりませんでした。<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>IP共有が最も有望なソリューションのように思えましたが</u></a>、1台のマシンが狭いポート群に向けられたパケットしか受信できない場合、どれだけの変更が必要になるでしょうか？すべてをフォローアップのブログ記事で明らかにしますが、もしあなたがこの問題のソリューションをすでに想像しようとしている、好奇心旺盛な問題解決エンジニアの方であれば、<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>当社の求人情報</u></a>をご覧ください。ご連絡をお待ちしています！</p>
+</div>

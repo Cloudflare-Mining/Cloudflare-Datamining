@@ -1,41 +1,22 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fEnwn0bkbGMOkCBDg4uYJ/1fb3e4c23700cf34364b7f9b325287f9/a-day-in-the-life-of-a-technical-support-engineer-at-cloudflare-marty-strong-london.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This blog post is the first in a series from the CloudFlare support team. Over the next few months, engineers from our support team will write posts about working with customers and with other members of the CloudFlare team.</i></p>
-	<p>As a Technical Support Engineer I get to work with many different members of the CloudFlare family and with customers from all around the world. Each day is very different to the next, and of course, some days stand out more than others.</p>
-	<p>Recently, I spent a bit of time working with a customer on an issue that was causing severe performance degradation on their website. The initial inquiry described a website that was yet to be publicised so it wasn’t seeing very much traffic. However, pages on the site were taking almost a minute to load. Throughout the day I worked with both the customer and other members of the support team to eliminate all the possible causes of the performance degradation. The main areas we looked at were:</p>
-	<ul>
-		<li>
-			<p>Did the customer’s server run out of resources?</p>
-		</li>
-		<li>
-			<p>Was there anything preventing assets from being cached?</p>
-		</li>
-		<li>
-			<p>Had the ISP of the customer caused traffic to be routed strangely?</p>
-		</li>
-		<li>
-			<p>Were there any parts of the site that were noticeably slower than others?</p>
-		</li>
-		<li>
-			<p>Did performance change when browsing the customer’s server directly?</p>
-		</li>
-	</ul>
-	<p>After eliminating each of those points, it was unclear to us what was causing the issue. At this point we decided to make some configuration changes within the customer’s CloudFlare account. The main thing we did was to set up a few <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Page Rules</a> to force everything under a certain URL pattern to be cached. The motivation for doing this was to ensure the site was fast for visitors while we continued to work on the performance issue behind the scenes. Another feature enabled for this CloudFlare Business customer was <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, to improve performance on any pages that we couldn’t set a Cache Everything page rule on.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HW3LrJHPsbJ2pXxisRo1A/91e92b12b4740c907f1efc3010b217f2/illustration-support-blog.png" alt="" class="kg-image" width="958" height="477" loading="lazy">
-
-	</figure>
-	<p>After a careful examination of exactly what was running on the customer’s server we managed to find what was causing the issues — it was an installation of a caching programme on the origin that was taking up too much CPU, causing the web server to have to wait a long time before it could respond to any incoming requests. Upon disabling the programme the CPU load on the server dropped dramatically, this hugely improved performance.</p>
-	<p>By the end of the day the issue was solved and the customer had some extra CloudFlare features enabled to fully optimise the performance of their website — a great day working with a customer.</p>
-	<hr>
-	<p><b><i>About Marty</i></b></p>
-	<p><i>Though he’d love to be at a Formula 1 race track any day of the week, we have convinced Marty to hang out in our UK office and help our customers. Previously a developer, Marty came to CloudFlare in the most awesome of ways: he was a customer. He’s now excited to be behind the scenes making the CloudFlare experience better for everyone. On his off days, he’ll be traveling between Formula 1 race tracks throughout the world.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AZL1CgHWakcTdedwUJeWT/143197e69ea09f10645b4f26fdaf3273/2014-01-15_14.03.20.jpg" alt="Simon ?" class="kg-image" width="3264" height="2448" loading="lazy">
-
-	</figure>
-	<p> The London Support Team (Marty is on the far left)</p>
-	<p>Do you have the enthusiasm to work with a technically motivated team? Do you enjoy working with a diverse global customer base? Are you somebody who uses their intuition to solve problems? CloudFlare is hiring Technical Support Engineers in <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">London and San Francisco</a>.</p>
-</div>
+<p><em>This blog post is the first in a series from the CloudFlare support team. Over the next few months, engineers from our support team will write posts about working with customers and with other members of the CloudFlare team.</em></p>
+<p>As a Technical Support Engineer I get to work with many different members of the CloudFlare family and with customers from all around the world. Each day is very different to the next, and of course, some days stand out more than others.</p>
+<p>Recently, I spent a bit of time working with a customer on an issue that was causing severe performance degradation on their website. The initial inquiry described a website that was yet to be publicised so it wasn’t seeing very much traffic. However, pages on the site were taking almost a minute to load. Throughout the day I worked with both the customer and other members of the support team to eliminate all the possible causes of the performance degradation. The main areas we looked at were:</p>
+<ul>
+	<li>Did the customer’s server run out of resources?</li>
+	<li>Was there anything preventing assets from being cached?</li>
+	<li>Had the ISP of the customer caused traffic to be routed strangely?</li>
+	<li>Were there any parts of the site that were noticeably slower than others?</li>
+	<li>Did performance change when browsing the customer’s server directly?</li>
+</ul>
+<p>After eliminating each of those points, it was unclear to us what was causing the issue. At this point we decided to make some configuration changes within the customer’s CloudFlare account. The main thing we did was to set up a few <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Page Rules</a> to force everything under a certain URL pattern to be cached. The motivation for doing this was to ensure the site was fast for visitors while we continued to work on the performance issue behind the scenes. Another feature enabled for this CloudFlare Business customer was <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, to improve performance on any pages that we couldn’t set a Cache Everything page rule on.</p>
+<p>After a careful examination of exactly what was running on the customer’s server we managed to find what was causing the issues — it was an installation of a caching programme on the origin that was taking up too much CPU, causing the web server to have to wait a long time before it could respond to any incoming requests. Upon disabling the programme the CPU load on the server dropped dramatically, this hugely improved performance.</p>
+<p>By the end of the day the issue was solved and the customer had some extra CloudFlare features enabled to fully optimise the performance of their website — a great day working with a customer.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
+<p><strong><em>About Marty</em></strong></p>
+<p><em>Though he’d love to be at a Formula 1 race track any day of the week, we have convinced Marty to hang out in our UK office and help our customers. Previously a developer, Marty came to CloudFlare in the most awesome of ways: he was a customer. He’s now excited to be behind the scenes making the CloudFlare experience better for everyone. On his off days, he’ll be traveling between Formula 1 race tracks throughout the world.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TXG9NPV34MGG1N4T0FTG.jpg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Simon ?" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Simon ?"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p> The London Support Team (Marty is on the far left)</p>
+<p>Do you have the enthusiasm to work with a technically motivated team? Do you enjoy working with a diverse global customer base? Are you somebody who uses their intuition to solve problems? CloudFlare is hiring Technical Support Engineers in <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">London and San Francisco</a>.</p>

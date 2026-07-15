@@ -1,0 +1,62 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/api-based-email-scanning">English</a>, <a href="https://blog.cloudflare.com/zh-tw/api-based-email-scanning">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/api-based-email-scanning">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/api-based-email-scanning">日本語</a>, <a href="https://blog.cloudflare.com/es-es/api-based-email-scanning">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/api-based-email-scanning">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75BP47Yv6eE20R7eGBTuhj/6d08ff4d50e0b825b6be4a83062ed3b9/api-based-email-scanning.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Die Welt der E-Mail-Sicherheit ist stets in Bewegung, doch eine Sache bleibt gleich: Die meisten großen Bedrohungskampagnen beginnen mit E-Mails. Angreifer starten oft mit einer Phishing-Kampagne zur Beschaffung von Mitarbeiterdaten. Wenn erfolgreich, nutzen sie diese, um Daten zu exfiltrieren, Geld abzuschöpfen oder andere böswillige Aktivitäten durchzuführen. Diese Bedrohung bleibt allgegenwärtig, auch wenn Unternehmen ihre E-Mails mit Providern wie Microsoft 365 oder Google Workspace in die Cloud verlagern.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fRadJRFI9bBWzFvq9Q7q0/6df53ce80bc35f5b42c186298b5f9190/image1-32.png" alt="API-based email scanning" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Cloudflare möchte zu einem besseren Internet beitragen und Online-Bedrohungen bekämpfen. Deshalb bieten wir über unser Produkt Area 1 E-Mail-Sicherheit an, es schützt alle Arten von E-Mail-Postfächern, sowohl in der Cloud als auch lokal vor Ort. Das Produkt Area 1 analysiert jede E-Mail, die ein Unternehmen erhält, und beurteilt anhand unserer Bedrohungsmodelle, ob die Nachricht ein Risiko für den Kunden darstellt. Bei Nachrichten, die als böswillig eingestuft werden, verhindert die Area 1-Plattform sogar, dass die E-Mail im Posteingang des Empfängers landet und untergräbt so einen Angriffsversuch. &nbsp;</p>
+	<p>Unsere Kunden sollen die Flexibilität haben, unsere Lösung auf die für sie einfachste Weise bereitzustellen. Im Zuge dieses Bestrebens, unsere Lösung so schlüsselfertig wie möglich zu machen, freuen wir uns, unsere offene Beta für das Onboarding von Microsoft 365-Domains über die Microsoft Graph API anzukündigen. Wir wissen, dass über die API eingebundene Domains schnellere Bereitstellungszeiten und mehr Flexibilität bieten. Diese Onboarding-Methode ist eine von vielen, so dass Kunden jetzt Domains nach eigenem Ermessen einrichten können, ohne den Schutz der Area 1 zu verlieren.</p>
+	<div class="flex anchor relative">
+		<h2 id="onboarding-microsoft-365-domains-via-api">Onboarding von Microsoft 365-Domains über API</h2>
+		<a href="https://blog.cloudflare.com/#onboarding-microsoft-365-domains-via-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Area 1 bietet seinen Kunden viele <a href="https://developers.cloudflare.com/email-security/deployment" target="_blank" rel="noopener noreferrer">Optionen für die Bereitstellung</a>. Ob Journaling + BCC (bei dem Kunden eine Kopie jeder E-Mail an Area 1 senden), Inline/MX-Einträge (bei denen über MX-Einträge ein weiterer Hop hinzugefügt wird) oder Secure E-Mail-Gateway Connectors (bei denen Area 1 direkt mit einer SEG interagiert) – Kunden können Area 1 flexibel nutzen. Wir empfehlen unseren Kunden jedoch seit jeher, MX-Einträge zu verwenden.</p>
+	<p>Durch diesen zusätzlichen Hop und die Verweisung der Domains auf Area 1 kann der Service einen Schutz mit Sinkholing bieten, böswillige E-Mails erreichen also nicht den Posteingang des Ziels. Wir haben jedoch erkannt, dass die Konfiguration von Area 1 als erster Hop (d. h. die Änderung der MX-Einträge) die Zustimmung anderer Teams im Unternehmen erfordern und zu zusätzlichen Zyklen führen kann. Unternehmen müssen außerdem warten, bis diese Inline-Änderung im DNS erscheint (bekannt als DNS-Propagierungszeit). Wir wissen, dass unsere Kunden möglichst schnell geschützt sein möchten, während sie diese notwendigen Anpassungen vornehmen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27WhZHBE17nRxuXOdNVFYD/883e3726e201af66e452f11c53f3fe2b/image2-21.png" alt="" class="kg-image" width="1999" height="557" loading="lazy">
+
+	</figure>
+	<p>Mit Microsoft 365-Onboarding benötigen Sie für das Hinzufügen von Schutz weniger Konfigurationsschritte und Wartezeiten. Wir werten jetzt alle mit einer Domain verbundenen Nachrichten über die Microsoft Graph API aus. So erhalten die Einsatzteams mehr Flexibilität bei der Bereitstellung von Area 1.</p>
+	<p>Beispielsweise profitiert ein Kunde von Area 1, der aufgrund seiner Branche stark in M&amp;A-Transaktionen involviert ist, von dem schnellen Einsatz von Area 1 über die Microsoft API. Vor dem API-Onboarding verbrachten IT-Teams viel Zeit damit, die Übergabe der verschiedenen erworbenen Assets zu jonglieren. Die Zuweisung neuer Zugriffsrechte, die Übergabe des Eigentümerrechts und andere Aufgaben dauerten lange und die Postfächer blieben dabei ungesichert. Wenn der Kunde jedoch eine neue Einheit erwirbt, kann er den Schutz für die gerade erworbenen Domains mithilfe des API-Onboarding schnell hinzufügen. Auf diese Weise können sie die mit der neuen Domain verbundenen E-Mail-Adressen schützen, während sie sich um die anderen anstehenden Aufgaben kümmern. Wie unser API-Onboarding-Prozess funktioniert, sehen Sie unten.</p>
+	<p>Sobald wir autorisiert sind, eingehende Nachrichten von Microsoft 365 zu lesen, beginnen wir mit der Verarbeitung von E-Mails und der Erkennung von verdächtigen E-Mails. Dieser neue Onboarding-Prozess ist deutlich schneller und erfordert nur wenige Klicks.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aDQVkfjyA7XhTEREVsQdl/d5fbd0ce4fd4a37eeb632e4a3a9ae890/image4-16.png" alt="" class="kg-image" width="577" height="386" loading="lazy">
+
+	</figure>
+	<p>Um den Prozess zu starten, wählen Sie die Domain, die Sie über die API einbinden möchten. In der Benutzeroberfläche können Sie dann in den Einstellungen zu „Domains und Routing“ navigieren. Nachdem Sie eine neue Domain hinzugefügt und den API-Scan ausgewählt haben, folgen Sie unserem Setup-Assistenten, um Area 1 für das Lesen von Nachrichten zu autorisieren.</p>
+	<p><b>API-Scan</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hQK1E7Ixpq6aFUyVYxNCQ/44e3767916583a12294dc8f6751cc507/image5-12.png" alt="" class="kg-image" width="1188" height="1954" loading="lazy">
+
+	</figure>
+	<p>Innerhalb weniger Minuten nach der Autorisierung ist Ihr Unternehmen durch Area 1 geschützt.</p>
+	<p>Ready to scan ‌‌</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yOicmQz0n4vvNTy58MIPD/103938baee0a9c0948aff6a4421337d7/image3-20.png" alt="" class="kg-image" width="1204" height="1946" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="looking-ahead">Wie es weiter geht</h2>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dieser Onboarding-Prozess ist Teil unserer kontinuierlichen Bemühungen, unseren Kunden einen erstklassigen E-Mail-Schutz zu bieten. Mit unserem API-Onboarding bieten wir unseren Kunden eine größere Flexibilität bei der Bereitstellung unserer Lösung. In Zukunft öffnet unser Microsoft 365-API-Onboarding die Tür für weitere Funktionen.</p>
+	<p>Unser Team möchte nun die Möglichkeit schaffen, E-Mails, die vor der Installation von Area 1 gesendet wurden, rückwirkend zu überprüfen. So können neue Kunden alte E-Mails bereinigen, die noch ein Risiko für das Unternehmen darstellen könnten. Außerdem möchten wir Unternehmen, die mehr Kontrolle darüber haben möchten, welche Postfächer mit Area 1 gescannt werden, mehr Möglichkeiten bieten. In Kürze werden Kunden in der Benutzeroberfläche festlegen können, welche Postfächer von Area 1 gescannt werden sollen.</p>
+	<p>Außerdem beschränken wir derzeit die Bereitstellungsart jeder Domain auf einen Typ (d. h. eine Domain kann entweder über MX-Einträge oder über API eingebunden werden). Wir prüfen jedoch, ob wir unseren Kunden die Möglichkeit bieten können, hybride Bereitstellungen vorzunehmen, bei denen sowohl API- als auch MX-Einträge verwendet werden. Dieser Kombinationsansatz bietet nicht nur die größte Flexibilität, sondern auch eine maximale Abdeckung.</p>
+	<p>Das Area 1-Team plant noch viele weitere Projekte, die wir unseren Kunden im Jahr 2023 zur Verfügung stellen wollen, und diese offene Beta ermöglicht es uns, diese neuen Funktionen zu entwickeln.</p>
+	<p>Alle Kunden können an der offenen Beta-Version teilnehmen. Wenn Sie also daran interessiert sind, eine neue Domain auf diese Weise einzurichten, folgen Sie den obigen Schritten und erhalten Sie Area 1-Schutz für Ihre Microsoft 365-Domains.</p>
+</div>

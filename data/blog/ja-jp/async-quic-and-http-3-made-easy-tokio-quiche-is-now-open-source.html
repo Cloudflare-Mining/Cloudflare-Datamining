@@ -1,0 +1,51 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source">English</a>および<a href="https://blog.cloudflare.com/ko-kr/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6no55dm8tLkgA5eWcZIDIn/9a1d32be20b783a421b23ea382a096b1/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>6年余り前、私たちはRustで書かれたオープンソースのQUIC実装である<a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust"><u>quiche</u></a>を発表しました。本日、<a href="https://crates.io/crates/tokio-quiche" target="_blank" rel="noopener noreferrer"><u><b>tokio-quiche</b></u></a>のオープンソース化を発表します。これは、<b>quiche</b>とRust <b>Tokio</b>の非同期ランタイムの両方を組み合わせた、攻撃テスト済みの非同期QUICライブラリです。Apple iCloud Private RelayにあるCloudflareのプロキシBと当社の次世代<a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxyベース</u></a>のプロキシを利用することで、<b>tokio-quiche</b>は毎秒数百万のHTTP/3リクエストを低遅延と高いスループットで処理します。tokio-quicheは<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>Cloudflare WarpのMASQUE</u></a>クライアントも稼働し、WireGuardトンネルをQUICベースのトンネルに置き換え、<a href="https://blog.cloudflare.com/h3i"><u>h3i</u></a>の非同期バージョンを実現しています。</p>
+	<p>quicheは、<a href="https://sans-io.readthedocs.io/how-to-sans-io.html" target="_blank" rel="noopener noreferrer"><u>sans-io</u></a>ライブラリとして開発されました。つまり、ユーザーがどのようにIOを実行するかを仮定せずに、QUICトランスポートプロトコルを処理するために必要な状態マシンを実装します。つまり、スラッシュと企業比があれば、誰でもQRフィッシングとのIO統合を書けるのです！これには、UDPソケット上での<code>接続</code>または<code>リッスン</code>、そのソケット上のUDPデータグラムの送受信を管理し、すべてのネットワーク情報をQR情報に供給することが含まれます。この統合は非同期である必要があるため、非同期のRustランタイムと統合しながら行う必要があります。tokio-quicheがそのすべてを担ってくれます。</p>
+	<div class="flex anchor relative">
+		<h3 id="lowering-the-barrier-to-entry">利用のハードルを下げる</h3>
+		<a href="https://blog.cloudflare.com/#lowering-the-barrier-to-entry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>もともと、tokio-quicheは<a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxy</u></a>のHTTP/3 <i>サーバー</i>のコアとしてのみ使用されていました。しかし、tokio-quicheをスタンドアロンライブラリとして作成するきっかけは、MASQUE対応のHTTP/3 <i>クライアント</i>を必要としていたからです。当社のZero Trustチームとプライバシーチームは、それぞれWARPとプライバシープロキシを介してデータをトンネリングするためにMASQUEクライアントを必要としており、同じテクノロジーを使用してクライアントとサーバーの両方を構築したいと考えました。</p>
+	<p>私たちは当初、メモリ安全性の高いQUICとHTTP/3の実装をできるだけ多くのステークホルダーと共有するために、QRフィッシングをオープンソース化しました。当時、私たちが重視していたのは、多くのタイプのソフトウェアに統合できて広く展開できる低レベルのサンアイオ設計でした。この目標は、QRフィッシングを多くの異なるクライアントとサーバーにデプロイすることで達成されました。しかし、sans-ioライブラリをアプリケーションに統合するのは、エラーが発生しやすく、時間もかかるプロセスです。tokio-quicheの目的は、必要なコードの多くを自社で提供することによって、参入の障壁を下げることです。</p>
+	<p>CloudflareだけがHTTP/3を採用していても、当社の製品やシステムとのやり取りを望む他の人がHTTP/3を採用していなければ、あまり役に立ちません。オープンソーシングにより、当社のシステムとの統合がより簡単になり、業界がHTTPの新しい標準を推進するのに役立ちます。tokio-quicheをRustのエコシステムに戻すことで、HTTP/3、QUIC、そして新しいプライバシー保護技術の開発と利用を促進したいと考えています。</p>
+	<p>tokio-quicheは、ここ数年前から社内で使用されています。これにより、微調整と実地テストを行う時間がかかり、何百万ものRPSに対応できることが実証されました。tokio-quicheは、スタンドアロンのHTTP/3クライアントまたはサーバーであることを意図され<b>ていません</b>が、低レベルのプロトコルを実装し、将来的により高いレベルのプロジェクトを可能にします。READMEには、<a href="https://github.com/cloudflare/quiche/tree/master/tokio-quiche#starting-an-http3-server" target="_blank" rel="noopener noreferrer"><u>サーバー</u></a>と<a href="https://github.com/cloudflare/quiche/tree/master/tokio-quiche#sending-an-http3-request" target="_blank" rel="noopener noreferrer"><u>クライアント</u></a>のイベントループの例が掲載されています。</p>
+	<div class="flex anchor relative">
+		<h3 id="its-actors-all-the-way-down">すべてのアクターが</h3>
+		<a href="https://blog.cloudflare.com/#its-actors-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"><u>Tokio</u></a>は、広く普及している非同期Rustランタイムです。当社のエッジで実行される数十億の非同期タスクを効率的に管理し、スケジュールし、実行します。<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>Cloudflare</u></a><a href="https://blog.cloudflare.com/pingora-open-source"><u>では</u></a>Tokioを<a href="https://blog.cloudflare.com/introducing-oxy"><u>幅広</u></a>く使っているので、QuicheとTokio-quicheを密接に統合することにしました。内部では、tokio-quicheは<i>アクター</i>を使用して、QUICとHTTP/3のステートマシンの異なる部分を駆動します。アクターは、内部状態を持つ小さなタスクで、通常チャネルを介してメッセージを渡して外部世界と通信します。</p>
+	<p>アクターモデルは、概念的な類似性により、sans-ioライブラリの非同期化に使用するのに優れた抽象化です。アクターとSans-ioライブラリの両方とも、排他的アクセスを望む内部状態があります。どちらも通常、「メッセージ」の送受信によって外部世界とやり取りしています。quicheの「メッセージ」は生のバイトバッファで、送受信されるネットワークデータを表します。tokio-quicheの「メッセージ」の1つは、着信UDPパケットを説明する<code>Incoming</code> structです。これらの類似点から、Sans-ioライブラリのasync化は、新しいメッセージやIOを待つ、メッセージやIOをsans-ioライブラリが理解できるものに変換する、内部のステートマシンを進める、ステートマシンの出力をメッセージやメッセージまたはIOを送信します。（Tokioとのアクターについての詳細議論については、このトピックに関するAlice Rhylの<a href="https://ryhl.io/blog/actors-with-tokio" target="_blank" rel="noopener noreferrer"><u>優れたブログ記事</u></a>をご覧ください。）</p>
+	<p>tokio-quicheの主要アクターは、QRとソケットの間でパケットを移動するIOループアクターです。QUICはトランスポートプロトコルですので、必要なアプリケーションプロトコルを伝送することができます。<a href="https://datatracker.ietf.org/doc/rfc9114" target="_blank" rel="noopener noreferrer"><u>HTTP/3</u></a>はかなり一般的ですが、<a href="https://datatracker.ietf.org/doc/rfc9250" target="_blank" rel="noopener noreferrer"><u>DNS over QUIC</u></a>や、今後登場する<a href="https://blog.cloudflare.com/moq"><u>Media over QUIC</u></a>もその例です。独自のQUICアプリケーションを作成するための<a href="https://www.rfc-editor.org/rfc/rfc9308.html" target="_blank" rel="noopener noreferrer"><u>RFC</u></a>もあります！tokio-quicheは、<code>ApplicationOverQuic </code>トレイトを公開し、アプリケーションプロトコルを抽象化します。この特性は、quicheのメソッドや基盤となるI/Oを抽象化し、アプリケーションのロジックに集中できるようにします。例えば、当社のHTTP/3デバッグおよびテストクライアントである<a href="https://blog.cloudflare.com/h3i"><u>h3i</u></a>は、クライアントに焦点を当てた、HTTP/3以外の<code>ApplicationOverQuic</code>実装によって動作しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AOaumZTjtZkzdY1iJLVTZ/c958b6937c2e4a455f3b98b0389388fd/image2.png" alt="" class="kg-image" width="1590" height="1540" loading="lazy">
+	</figure>
+	<p><sup>サーバーアーキテクチャ図</sup></p>
+	<p>tokio-quicheは、<code>H3Driver</code>と呼ばれるHTTP/3に焦点を当てた<code>ApplicationOverQuic</code>を搭載しています。<code>H3Driver</code>は、quicheのHTTP/3モジュールをこのIOループと連携させ、非同期HTTP/3クライアントまたはサーバーのビルディングブロックを提供します。ドライバーは、quicheの生のHTTP/3イベントをより高いレベルのイベントと非同期のボディデータストリームに変換し、迅速に応答できるようにします。<code>H3Driver</code>はそれ自体が汎用的で、<code>ServerH3Driver</code>と<code>ClientH3Driver</code>のバリアントを公開し、それぞれがコアドライバーのイベントの上に追加の動作をスタックします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zxI09AhiqrBSyk8fhcSnr/b78917274391ec855370e565985c7bfc/image4.png" alt="" class="kg-image" width="1880" height="1002" loading="lazy">
+	</figure>
+	<p><sup>内部データフロー</sup></p>
+	<p>tokio-quiche内では、ソケットからQRフィッシングへのデータ移動を促進する2つの重要なタスクが発生します。1つ目は、<code>InboundPacketRouter</code>で、ソケットの受信半分を所有し、受信データグラムを<a href="https://datatracker.ietf.org/doc/html/rfc9000#name-connection-id" target="_blank" rel="noopener noreferrer"><u>接続ID</u></a>（DCID）で接続ごとのチャネルにルーティングします。2つ目のタスクである<code>IoWorker</code>アクターは、前述のIOループで、単一のQRフィッシング<code>接続</code>を駆動します。<code>ApplicationOverQuic</code>メソッドとのQRフィッシングコールを挿入することで、IOのインタラクションの前後に接続を検査できるようにします。</p>
+	<p>tokio-quicheの作成に関する他のブログ記事は近日公開予定です。アクターモデルとマルチTXS、UDP GROとGSO、Tokioタスクの予算編成などについてお話します。</p>
+	<div class="flex anchor relative">
+		<h3 id="next-up-more-on-quic-and-beyond">次は、QUICとその先についてです。</h3>
+		<a href="https://blog.cloudflare.com/#next-up-more-on-quic-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>tokio-quicheは、CloudflareがQUICとHTTP/3のエコシステムに投資する際に重要な基盤ですが、依然として複雑さを持つ構成要素に過ぎません。将来的には、現在のOxyプロキシとWARPクライアントを支えているのと同じ使いやすいHTTPクライアントとサーバーの抽象化をリリースする予定です。CloudflareのQUICとHTTP/3に関する今後のブログ記事にご期待ください。当社の<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/#privacy-preserving-proxying-built-into-applications"><u>プライバシープロキシ</u></a>のお客様向けのオープンソースクライアントや、tokio-quicheで数百万RPSを処理するまったく新しいサービスなどをご紹介します！</p>
+	<p>今のところ、crates.ioの<a href="https://crates.io/crates/tokio-quiche" target="_blank" rel="noopener noreferrer"><u>tokio-quicheクレート</u></a>とGitHubの<a href="https://github.com/cloudflare/quiche/tree/master/tokio-quiche" target="_blank" rel="noopener noreferrer"><u>ソースコード</u></a>をチェックして、独自のQUICアプリケーションを構築してみてください。シンプルなエコーサーバー、DNS-over-QUICクライアント、カスタムVPN、あるいは本格的なHTTPサーバーなどです。打ちのめしてしまうかもしれません。</p>
+</div>

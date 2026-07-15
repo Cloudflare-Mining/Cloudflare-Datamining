@@ -1,0 +1,97 @@
+<div class="mb2 gray5">3분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">English</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-mitigated-yet-another-okta-compromise">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-mitigated-yet-another-okta-compromise">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-mitigated-yet-another-okta-compromise">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uxI0nb27T2YAwE7nghISd/131e9b05b696d2f4021a941fcecc36bc/how-cloudflare-mitigated-yet-another-okta-compromise.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023년 10월 18일 수요일, 우리 시스템에서 Okta로 역추적할 수 있는 공격이 발견되었습니다. 위협 행위자는 Okta에서 손상된 인증 토큰을 활용하여 Cloudflare의 Okta 인스턴스로 피벗할 수 있었습니다. 이는 문제가 되는 보안 사고였지만, 보안 사고 대응팀(SIRT)의 실시간 감지와 신속한 대응으로 문제를 억제하고 Cloudflare 시스템과 데이터에 미치는 영향을 최소화할 수 있었습니다. 신속한 대응 덕분에 이 사건으로 <b>인해 Cloudflare 고객 정보나 시스템에 영향이 미치지 않았음을 확인했습니다</b>. Okta에서는 현재 이 사고에 대한 <a href="https://sec.okta.com/harfiles" target="_blank" rel="noopener noreferrer">공개 성명</a>을 발표했습니다.</p>
+	<p>Okta의 시스템 유출로 인해 Cloudflare에서 영향을 받은 것은 이번이 두 번째입니다. <a href="https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise">2022년 3월</a>, Okta 유출로 Cloudflare에 어떤 영향이 미쳤는지에 대하여 조사한 결과를 블로그에 포스팅한 바 있습니다. 당시 사고에서는 위협 행위자가 Cloudflare의 시스템이나 데이터에 액세스할 수 없었다는 결론을 내렸으며, Cloudflare에서는 다단계 인증에 하드 키를 사용하여 이 공격을 차단했습니다.</p>
+	<p>이번 주에 있었던 사고를 완화할 수 있었던 것은 우리 팀의 조기 발견과 즉각적인 대응 덕분이었습니다. 실제로 우리는 Okta에서 시스템 유출 사실을 알리기 전에 먼저 연락을 취했습니다. 공격자는 관리자 권한이 있는 Okta의 열린 세션을 사용하여 Okta 인스턴스에 액세스했습니다. 우리는 Cloudflare Zero Trust 액세스, 게이트웨이, 데이터 손실 방지, Cloudforce One 위협 연구를 이용하여 공격자가 고객 데이터, 고객 시스템, 우리 프로덕션 네트워크에 액세스하기 전에 사고의 범위를 확인하고 이를 차단할 수 있었습니다. 이러한 자신감 덕분에 위협 행위자가 지속 능력을 확보하기 전에 신속하게 사고를 완화할 수 있었습니다.</p>
+	<p>Okta 측의 발표에 따르면, 위협 행위자는 Okta의 고객 지원 시스템에 액세스하여 특정 Okta 고객이 최근 지원 사례의 일부로 업로드한 파일을 확인했습니다. 우리의 경우, 위협 행위자는 Cloudflare 직원이 작성한 지원 티켓에서 세션 토큰을 탈취할 수 있었던 것으로 보입니다. 위협 행위자는 Okta에서 추출한 토큰을 사용하여 10월 18일에 Cloudflare 시스템에 액세스했습니다. 이 정교한 공격에서 위협 행위자가 Okta 플랫폼 내에서 두 개의 개별 Cloudflare 직원 계정을 손상시킨 것이 관찰되었습니다. 이 활동을 내부적으로 감지한 것은 Okta로부터 유출 사실을 통보받은 시점으로부터 24시간 이전이었습니다. 이를 감지하자마자 Cloudflare의 침해 사고 대응팀(SIRT)에서는 신속하게 개입하여 전체 손상 범위를 파악하고 보안 사고를 억제할 수 있었습니다. Cloudflare의 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 아키텍처</a>는 프로덕션 환경을 보호하여 고객에 대한 영향을 방지하는 데 도움이 되었습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-okta">Okta에 대한 권고</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-okta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>우리는 Okta에서 다음과 같은 모범 사례의 구현을 고려할 것을 권고합니다.</p>
+	<ul>
+		<li>
+			<p>손상 신고를 심각하게 받아들이고 즉시 조치를 취하여 피해를 줄이십시오. 이 사례의 경우 Okta에서는 2023년 10월 2일 <a href="https://www.beyondtrust.com/blog/entry/okta-support-unit-breach" target="_blank" rel="noopener noreferrer">BeyondTrust</a>로부터 처음 통보를 받았지만, 공격자는 적어도 2023년 10월 18일까지 지원 시스템에 액세스할 수 있었습니다.</p>
+		</li>
+		<li>
+			<p>시스템 침해로 고객에게 영향이 미친 것을 확인한 경우 고객에게 시의 적절하고 책임감 있게 공개하십시오.</p>
+		</li>
+		<li>
+			<p>타사 지원 공급자를 포함한 모든 시스템을 보호하기 위해 하드웨어 키를 요구하십시오.</p>
+		</li>
+	</ul>
+	<p>우리는 Okta와 같은 중요 보안 서비스 공급자의 경우 이러한 모범 사례를 따르는 것이 매우 중요하다고 생각합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-oktas-customers">Okta 고객을 위한 권고</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-oktas-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Okta 고객인 경우, 조직에 미칠 잠재적 영향에 대한 자세한 내용을 Okta에 문의하는 것을 권고합니다. 또한 다음과 같은 조치를 취할 것을 권고합니다.</p>
+	<ul>
+		<li>
+			<p>모든 사용자 계정에 대해 하드웨어 MFA를 사용 설정. 비밀번호만으로는 공격으로부터 필요한 수준의 보호 기능을 제공하지 못합니다. 다른 방식의 MFA는 피싱 공격에 취약할 수 있으므로 하드웨어 키를 사용하는 것을 강력히 권고합니다.</p>
+		</li>
+		<li>
+			<p>조사 및 다음에 대한 대응:</p>
+			<ul>
+				<li>
+					<p>Okta 사례에 대한 모든 예기치 않은 비밀번호 및 MFA 변경 사항.</p>
+				</li>
+				<li>
+					<p>지원팀에서 시작된 의심스러운 이벤트.</p>
+				</li>
+				<li>
+					<p>모든 비밀번호 재설정이 유효한지 확인하고 의심스러운 경우 비밀번호를 강제로 재설정합니다.</p>
+				</li>
+				<li>
+					<p>의심스러운 MFA 관련 이벤트가 발생하면 사용자의 계정 구성에 유효한 MFA 키만 있는지 확인합니다.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>모니터링 대상:</p>
+			<ul>
+				<li>
+					<p>새로이 생성된 Okta 사용자.</p>
+				</li>
+				<li>
+					<p>Okta 사용자 재활성화.</p>
+				</li>
+				<li>
+					<p>모든 세션에 적절한 인증이 연결되어 있음.</p>
+				</li>
+				<li>
+					<p>모든 Okta 계정 및 권한 변경 사항.</p>
+				</li>
+				<li>
+					<p>MFA 정책 재정의, MFA 변경, MFA 제거.</p>
+				</li>
+				<li>
+					<p>중요한 애플리케이션의 위임.</p>
+				</li>
+				<li>
+					<p>테넌트에 액세스하는 공급망 공급자.</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>세션 하이재킹 공격을 제한하기 위해 세션 만료 정책을 검토.</p>
+		</li>
+		<li>
+			<p>중요한 시스템에 연결된 장치의 유효성을 검사하는 도구(예: Cloudflare 액세스 장치 상태 확인)를 활용.</p>
+		</li>
+		<li>
+			<p>감지 및 모니터링 전략을 위한 심층 방어 연습.</p>
+		</li>
+	</ul>
+	<p>Cloudflare의 보안 및 IT 팀에서는 이 손상 사고 이후에도 계속 경계를 늦추지 않고 있습니다. Okta에서 추가 정보를 공개하거나 추가적인 로그 분석을 통해 발견되는 경우, 이 게시물에 대한 업데이트를 게시할 예정입니다.</p>
+	<p><i>Cloudflare의 보안 사고 대응 팀에서 </i><a href="http://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>채용</i></a><i> 중입니다.</i></p>
+</div>

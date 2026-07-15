@@ -1,0 +1,95 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/dls-2022">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/dls-2022">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/dls-2022">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/dls-2022">日本語</a>, en <a href="https://blog.cloudflare.com/pt-br/dls-2022">Português</a> et en <a href="https://blog.cloudflare.com/zh-cn/dls-2022">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77YiFRV8chxMyfUTBNF1aO/3bd1077d94333acbc359e86f9ce9b306/dls-2022.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Chez Cloudflare, nous pensons que le déploiement de mesures de cybersécurité efficaces constitue <a href="https://blog.cloudflare.com/investing-in-security-to-protect-data-privacy">le meilleur moyen de protéger</a> la confidentialité des données personnelles, et que cette approche peut être plus efficace que s'assurer que ces informations restent dans une juridiction particulière. Pourtant, nos clients en Europe, en Inde, en Australie, au Japon et dans de nombreuses autres régions nous informent que, dans le cadre de leurs programmes de protection de la confidentialité, ils ont besoin de solutions permettant de localiser les données, afin de satisfaire à leurs obligations réglementaires.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EYiLjXGqj15qzzu24PmZ3/bfc3ae0c89d06eede8899add141bf3fc/image1-51.png" alt="Navigating the changing data localization landscape with Cloudflare’s Data Localization Suite" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>C'est pourquoi, lorsque nous réfléchissons à la Journée de la protection des données, qui aura lieu le 28 janvier, nous nous trouvons dans une position intéressante : nous ne partageons pas l'avis de ceux qui pensent que la localisation des données est un substitut à une meilleure protection des données, toutefois, nous voulons soutenir nos clients qui doivent se conformer à certaines réglementations.</p>
+	<p>C'est pour cette raison que nous avons <a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite">inauguré notre solution Data Localization Suite</a> (DLS) en 2020, afin d'aider les clients à s'orienter dans un panorama de protection des données toujours davantage centré sur la localisation des données. Avec DLS, les clients peuvent utiliser le puissant réseau mondial et les mesures de sécurité de Cloudflare pour protéger leurs entreprises, tout en conservant localement les données traitées par l'entreprise en leur nom. Depuis son lancement, de nombreux clients ont adopté Data Localization Suite. Dans cet article de blog, nous voulons présenter de nouvelles informations sur les dispositions que nous prenons pour rendre la solution DLS plus complète et plus facile à utiliser.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-confusing-state-of-data-protection-regulations">La situation confuse des réglementations en matière de protection des données</h3>
+		<a href="https://blog.cloudflare.com/#the-confusing-state-of-data-protection-regulations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous recevons souvent des questions de clients qui entendent parler de nouvelles législations locales ou d'interprétations de réglementations existantes qui semblent restreindre leurs choix en matière de traitement des données. Cette situation est particulièrement déroutante pour les clients exerçant une activité sur l'Internet mondial, qui doivent s'orienter parmi des réglementations suggérant que les clients présents dans un pays ne peuvent pas utiliser les produits d'entreprises situées dans un autre pays, sauf à mettre en place un nombre considérable de mesures.</p>
+	<p>Nous ne pensons pas que ce soit une façon adéquate de réglementer l'Internet. Comme nous en parlerons plus en détail demain dans notre article de blog consacré aux transferts de données transfrontaliers, nous nous sentons encouragés par les nouveaux développements visant à établir un ensemble commun de mesures de protection des données entre les juridictions, afin de rendre ces transferts de données plus transparents. &nbsp;</p>
+	<p>En attendant, nous proposons la solution Data Localization Suite pour aider nos clients à relever ces défis.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-recap-of-how-the-data-localization-suite-works">Un récapitulatif du fonctionnement de Data Localization Suite</h3>
+		<a href="https://blog.cloudflare.com/#a-recap-of-how-the-data-localization-suite-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons développé DLS pour répondre à trois problématiques principales des clients :</p>
+	<ol>
+		<li>
+			<p>Comment puis-je m'assurer que mes clés de chiffrement restent dans ma juridiction ?</p>
+		</li>
+		<li>
+			<p>Comment puis-je m'assurer que les services d'application tels que la mise en cache et le pare-feu WAF fonctionnent uniquement dans ma juridiction ?</p>
+		</li>
+		<li>
+			<p>Comment puis-je m'assurer que les journaux et les métadonnées ne sont jamais transférés hors de ma juridiction ?</p>
+		</li>
+	</ol>
+	<p>Pour répondre à ces préoccupations, DLS comporte un composant de gestion des clés de chiffrement, un composant qui prend en compte le point de terminaison et le lieu d'inspection des contenus en transit et un composant qui veille à conserver les métadonnées dans la juridiction du client :</p>
+	<ol>
+		<li>
+			<p><b>Des clés de chiffrement</b>Cloudflare propose depuis longtemps les services <a href="https://www.cloudflare.com/ssl/keyless-ssl" target="_blank" rel="noopener noreferrer">SSL sans clé</a> et <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, qui assurent que les données concernant les clés privées SSL/TLS ne quittent jamais l'UE. Les clients utilisant notre service Geo Key Manager peuvent demander que les clés de chiffrement soient stockées uniquement dans des datacenters situés dans la région spécifiée par le client, tandis que le service SSL sans clé garantit que Cloudflare n'est jamais en possession des données relatives aux clés privées ; Geo Key Manager garantit que les clés sont protégées par un contrôle d'accès cryptographique, de sorte qu'elles puissent uniquement être utilisées dans les régions spécifiées.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-regional-services"><b>Services régionaux</b></a><b> :</b>Les Services régionaux de Cloudflare assurent que seule Cloudflare est en mesure de déchiffrer et d'inspecter le contenu du trafic HTTP dans la région choisie par un client. Lorsque les Services régionaux sont activés, quel que soit le datacenter dans lequel le trafic atteint initialement notre réseau mondial, nous transmettons le flux TCP sous forme chiffrée, au lieu de le déchiffrer dans le premier datacenter. Lorsqu'il atteint un datacenter situé dans la région choisie par le client, nous le déchiffrons et mettons en œuvre nos mesures de sécurité de la couche 7 pour empêcher le trafic malveillant d'atteindre les sites web de nos clients. &nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary"><b>Isolement géographique des métadonnées client</b></a>Lorsque cette option est activée, aucun journal de trafic d'utilisateur final (qui contient des adresses IP) traité par Cloudflare pour le compte de ses clients ne quitte la région choisie par le client. (Actuellement disponible uniquement dans l'UE et aux États-Unis.)</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="expanding-data-localization-suite-to-new-regions">Extension de Data Localization Suite à de nouvelles régions</h3>
+		<a href="https://blog.cloudflare.com/#expanding-data-localization-suite-to-new-regions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bien que nous ayons initialement lancé Data Localization Suite en pensant d'abord à l'Europe et à l'Amérique, nous avons rapidement pris conscience qu'un grand nombre de nos clients étaient également intéressés par des versions spécifiques à la région Asie-Pacifique. Au mois de septembre, l'année dernière, nous avons ajouté la <a href="https://blog.cloudflare.com/regional-services-comes-to-apac">prise en charge des Services régionaux</a> au Japon, en Australie et en Inde.</p>
+	<p>Ensuite, en décembre 2022, nous avons annoncé que Geo Key Manager est désormais disponible dans <a href="https://blog.cloudflare.com/configurable-and-scalable-geo-key-manager-closed-beta">15 régions</a>. Les clients peuvent configurer des listes d'autorisation et de refus avec les régions de prise en charge de leur choix, afin de bénéficier d'un contrôle plus précis de l'endroit où sont stockées les données de leurs clés.</p>
+	<p>Lisez également notre <a href="https://blog.cloudflare.com/inside-geo-key-manager-v2">analyse technique approfondie</a> consacrée au développement de Geo Key Manager v2.</p>
+	<div class="flex anchor relative">
+		<h3 id="making-data-localization-more-accessible">Rendre la localisation des données plus accessible</h3>
+		<a href="https://blog.cloudflare.com/#making-data-localization-more-accessible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les Services régionaux et le service d'isolement géographique des métadonnées offrent des protections importantes pour nos clients, mais ils étaient trop difficiles à utiliser. Ces deux services nécessitaient des étapes de configuration manuelles par les équipes de Cloudflare et proposaient des API publiques déroutantes (voire inexistantes).</p>
+	<p>Aujourd'hui, nous remédions à cela ! Nous sommes ravis d'annoncer deux grandes améliorations en matière de convivialité :</p>
+	<ol>
+		<li>
+			<p>Les clients des Services régionaux disposent désormais d'<a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/#regional-services-via-api" target="_blank" rel="noopener noreferrer">une interface utilisateur et d'une API dédiées, depuis lesquelles ils peuvent activer les Services régionaux</a>, accessibles directement depuis l'onglet DNS. Différentes régions peuvent désormais être définies en fonction des noms d'hôtes.</p>
+		</li>
+		<li>
+			<p>Les clients qui souhaitent utiliser le service d'isolement géographique des métadonnées client peuvent utiliser <a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started" target="_blank" rel="noopener noreferrer">notre API accessible en libre-service</a> pour l'activer.</p>
+		</li>
+	</ol>
+	<p>Nous sommes ravis de faciliter l'utilisation de Data Localization Suite et d'offrir aux clients un contrôle plus précis de la localisation des différentes parties de leur trafic.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Et maintenant ?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Data Localization Suite est accessible dès aujourd'hui aux clients de l'offre Entreprise ; veuillez vous adresser à votre représentant de compte si vous souhaitez l'utiliser. Vous trouverez plus d'informations sur la configuration de la solution <a href="https://developers.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">ici</a>, dans notre documentation pour développeurs.</p>
+	<p>Nous avons prévu beaucoup d'autres annonces concernant Data Localization Suite cette année. Nous avons l'intention d'offrir la prise en charge de nombreuses autres régions pour les Services régionaux et le service d'isolement géographique des métadonnées client. Nous avons également l'intention de proposer une prise en charge complète de Data Localization Suite dans tous nos produits Zero Trust. Suivez ce blog pour plus d'informations !</p>
+</div>

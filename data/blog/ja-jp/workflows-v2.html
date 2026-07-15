@@ -1,0 +1,183 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workflows-v2">English</a>、<a href="https://blog.cloudflare.com/zh-tw/workflows-v2">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/workflows-v2">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/workflows-v2">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RVbbRxnAMmyQiLMSfOsTp/0bc05e7cbde7a55919fdee642ef892ad/BLOG-3116_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>弊社が最初に開発したマルチステップアプリケーション用の耐久性のある実行エンジンである<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>は、ユーザーのサインアップや注文などの人間のアクションによってワークフローがトリガーされる世界を想定してデザインされました。オンボーディングフローのようなユースケースの場合、Workflowsは1人あたり1つのインスタンスをサポートするだけで、ユーザーはとても速くクリックできるようになりました。</p>
+	<p>時間の経過とともに、私たちが実際に見ているのは、ワークロードとアクセスパターンの定量的な変化です。人間がトリガーするワークフローが減少し、機械的なスピードで作成されたエージェントがトリガーするワークフローが増えています。</p>
+	<p>エージェントがユーザーに代わって数時間または数日にわたって動作する、永続的で自律的なインフラストラクチャになるにつれ、ユーザーが行っている作業には、耐久性のある非同期実行エンジンが必要になります。Workflowsは、まさに、それを提供します。すべてのステップを個別に再試行でき、ワークフローはヒューマンインザループの承認のために一時停止することができ、各インスタンスは進行を失うことなく障害を乗り越えることができます。</p>
+	<p>さらに、ワークフロー自体がエージェントループの実装に使用され、エージェントを管理し、維持するための耐久性のある手段として機能しています。当社の<a href="https://developers.cloudflare.com/changelog/post/2026-02-03-agents-workflows-integration" target="_blank" rel="noopener noreferrer"> <u>Agents SDK統合</u></a>により、これが加速され、エージェントはワークフローインスタンスを簡単に生成し、リアルタイムの進捗状況を把握できるようになりました。単一のエージェントセッションで数十のワークフローを開始でき、多くのエージェントが同時に実行されるということは、数秒で数千のインスタンスが作成されることを意味します。<a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a>が利用可能になったことで、活動の速さは加速の一途になるでしょう。</p>
+	<p>開発者がWorkflows上でエージェントとアプリケーションを拡張できるように、サポート開始を発表できることを嬉しく思います。</p>
+	<ul>
+		<li>
+			<p>同時インスタンス数は50,000（並行して実行されるワークフローの実行数）、<a href="https://developers.cloudflare.com/changelog/post/2025-02-25-workflows-concurrency-increased" target="_blank" rel="noopener noreferrer"><u>当初は4,500</u></a></p>
+		</li>
+		<li>
+			<p>アカウントあたり300インスタンス/秒（以前は100回）作成</p>
+		</li>
+		<li>
+			<p>ワークフローあたり200万件のキューイングされたインスタンス（作成または起動され、同時実行スロットを待っているインスタンスを意味します）、100万件から増加</p>
+		</li>
+	</ul>
+	<p>こうした増加に対応するために、使用状況データと第一原則からWorkflowsコントロールプレーンを再設計しました。コントロールプレーンのV1では、単一のDurable Object（DO）がアカウント全体の中央レジストリとコーディネーターとして機能します。V2では、システムを水平に拡張し、V1がもたらしたボトルネックを軽減するために、2つの新しいコンポーネントを構築しました。その後、ライブトラフィックを持つすべてのお客様を新バージョンにシームレスに移行できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="v1-initial-architecture-of-workflows">V1：Workflowsの初期アーキテクチャ</h2>
+		<a href="https://blog.cloudflare.com/#v1-initial-architecture-of-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社の<a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/#building-cloudflare-on-cloudflare"><u>パブリックベータ版に関するブログ投稿</u></a>で説明されているように、当社は<a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>を完全に独自の開発者プラットフォーム上に構築しました。基本的にワークフローは一連の耐久性のあるステップで、それぞれを個別に再試行可能で、タスクを実行したり、外部イベントを待機したり、所定の時間までスリープしたりすることができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">export class MyWorkflow extends WorkflowEntrypoint {
+
+  async run(event, step) {
+    const data = await step.do("fetch-data", async () =&gt; {
+      return fetchFromAPI();
+    });
+
+    const approval = await step.waitForEvent("approval", {
+      type: "approval",
+      timeout: "24 hours",
+    });
+
+    await step.do("process-and-save", async () =&gt; {
+      return store(transform(data));
+    });
+  }
+}
+</code></pre>
+	<p>各インスタンスをトリガーし、ロジックを実行し、メタデータを保存するために、SQLiteをバックエンドとする<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>を活用しています。Durable Objectsは、分散システム内での調整とストレージのための、シンプルながらも強力なプリミティブです。</p>
+	<p>コントロールプレーンでは、一部のDurable Objects（ステップ、リトライ、スリープロジックを含む実際のワークフローインスタンスを実行する<i>エンジン</i>など）が、インスタンスあたり1:1の割合で起動されます。一方、<i>アカウント</i>はアカウントレベルのDurable Objectで、そのアカウントのすべてのワークフローとワークフローインスタンスを管理します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55bqaUjc30HJHe9spWYTo8/d8053955660553db8b64a484fb321ec7/BLOG-3116_2.png" alt="BLOG-3116 2" class="kg-image" width="1999" height="1466" loading="lazy">
+	</figure>
+	<p>V1コントロールプレーンの詳細については、弊社の<a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>Workflows発表のブログ記事</u></a>をご覧ください。</p>
+	<p>Workflowsのベータ版を公開した後、お客様がすぐに利用を拡大できるのを見てワクワクしましたが、一方で、アカウントレベルの情報をすべて保存するために単一のDurable Objectがあることがボトルネックになっていることも判明しました。多くのお客様は、1分間に数百、あるいは数千のWorkflowインスタンスを作成して実行する必要があり、これにより元のアーキテクチャではすぐに<i>アカウント</i>が過負荷状態になる可能性がありました。本来のレート制限（4,500の同時実行スロット、10秒あたり100のインスタンス作成）は、この制限によるものでした。</p>
+	<p>V1コントロールプレーンでは、これらの制限は厳しい上限でした。作成、更新、一覧取得を含む、<i>アカウント</i>に依存するすべての操作は、1つのDOを通過する必要がありました。高い同時実行ワークロードを持つユーザーの場合、数千のインスタンスが任意の時点で開始および終了し、<i>アカウント</i>への毎秒最大数千のリクエストが構築される可能性があります。これを解決するために、私たちはワークフローのコントロールプレーンを再設計し、コンカレンシーと作成レート制限を高くするために水平にスケールできるようにしました。</p>
+	<div class="flex anchor relative">
+		<h2 id="v2-horizontal-scale-for-higher-throughput">V2：高スループットのための水平スケール</h2>
+		<a href="https://blog.cloudflare.com/#v2-horizontal-scale-for-higher-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新バージョンでは、大量のワークフローに最適化する目的で、あらゆる操作をゼロから再考しました。最終的に、Workflowsは開発者が何千ものインスタンスを作成するのか、一度に数百万のインスタンスを実行するのかにかかわらず、開発者が必要とするものすべてをサポートするために拡張できるべきです。また、V2には、V1に課された厳しい上限ではなく、柔軟な制限を設け、切り替えたり、利用を拡大し続けることができるようにしたかったこともあります。何度も設計を反復した結果、新しいアーキテクチャの柱として確定しました。</p>
+	<ul>
+		<li>
+			<p>特定のインスタンスの存在に関する信頼できる情報源は、その<i>Engine</i>以外にはありません。</p>
+			<ul>
+				<li>
+					<p>V1のコントロールプレーンアーキテクチャでは、インスタンスをキューに入れる前に、その<i>Engine</i>が実際に存在するかどうかのチェックがありませんでした。これにより、インスタンスがキューに入れられたにもかかわらず、対応する<i>Engine</i>が起動していないという、不適切な状態が発生する可能性がありました。</p>
+				</li>
+				<li>
+					<p>インスタンスのライフサイクルと稼働率のメカニズムは、ワークフローごとに水平に拡張可能で、多くの地域に分散されている必要があります。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>新しいアカウントシングルトンは、必要最小限のメタデータのみを保存し、同時リクエストの最大量は不変です。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1txhhObwwIcV8C2gr9Hjfe/df7ea739567c7e42471458357c16583d/unnamed.png" alt="BLOG-3116 3" class="kg-image" width="2040" height="1180" loading="lazy">
+	</figure>
+	<p>V2コントロールプレーンには、Workflowsのスケーラビリティを改善することを可能にした、<i>SousChef</i>と<i>Gatekeeper</i>の2つの新しい重要なコンポーネントがあります。最初のコンポーネントである<i>SousChef</i>は、<i>アカウント</i>の「副司令官」です。以前は、<i>アカウント</i>は、特定のアカウント内のすべてのワークフローのすべてのインスタンスのメタデータとライフサイクルを管理していました。<i>SousChef</i>は、特定のワークフロー内のインスタンスの<b>サブセット</b>上でメタデータとライフサイクルを追跡するために導入されました。1つのアカウント内で、<i>SousChefs</i>の配布は、より効率的で管理しやすい方法で<i>アカウント</i>に報告することができます。<i>SousChef</i>（この設計のさらなる利点：各SourceChefは1つの特定のワークフローだけを処理するため、同じアカウント内で不意に「ワークフローごと」の分離を持つことができました）。</p>
+	<p>2番目のコンポーネントである<i>Gatekeeper</i>は、アカウント内のすべての<i>SousChefs</i>に同時実行「スロット」（同時実行制限から導き出される）を配布するメカニズムです。リースシステムとして機能します。インスタンスが作成されると、そのアカウント内の<i>SousChefs</i>のいずれかにランダムに割り当てられます。次に、<i>SousChef</i>は<i>アカウント</i>にリクエストを行い、そのインスタンスをトリガーします。スロットが付与されるか、インスタンスがキューに入れられます。スロットが付与されると、<i>SousChef</i>はインスタンスの実行をトリガーし、インスタンスがフリーズしないように責任を負います。</p>
+	<p><i>Gatekeeper</i>は、<i>Engines</i>が<i>アカウント</i>を過負荷にしないようにするために必要でした（V1における差し迫ったリスク）。そのため、<i>SousChefs</i>と<i>アカウント</i>間のすべての通信は、1秒に1回、定期的なサイクルで行われます。各サイクルでは、すべてのスロットリクエストもバッチ処理され、JSRPCコールが1回だけ行われるようにします。これにより、インスタンス作成レートが最も重要なコンポーネントである<i>アカウント</i>に過負荷を与えたり、影響を与えたりすることはありえません（余談ですが、<i>SousChef</i>のカウントが高すぎると、レート制限呼び出しを行ったり、異なる期間に複数の<i>SousChefs</i>に分散したりします）。また、この定期的プロパティにより、古いインスタンスの公平性を維持し、多くの<i>SousChefs</i>を通じて最大最小の公平性を確保することで、すべてを進行させることができます。例えば、インスタンスが起動した場合、新しく作成されたインスタンスよりもスロットを優先する必要がありますが、各<i>SousChef</i>は、それぞれのインスタンスがスタックしないようにします。</p>
+	<p>このアーキテクチャはより分散されているため、より拡張性があります。これで、インスタンスが作成されると、リクエストパスは次のようになります。</p>
+	<ol>
+		<li>
+			<p>コントロールプレーンバージョンの確認</p>
+		</li>
+		<li>
+			<p>ワークフローのキャッシュされたバージョンとバージョンの詳細が、その場所で利用可能かどうかを確認する</p>
+			<ol>
+				<li>
+					<p>そうでない場合は、<i>アカウント</i>を確認して、ワークフロー名、一意のID、バージョンを取得し、その情報をキャッシュします。</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<p>必要なメタデータ（インスタンスペイロード、作成日）だけを独自の<i>Engine</i>に保存</p>
+		</li>
+	</ol>
+	<p>では、<i>Engine</i> はどのようにしてコントロールプレーンに存在を伝えるのでしょうか？これは、インスタンスのメタデータが設定された後、バックグラウンドで行われます。Durable Objectに対するバックグラウンド操作は、立ち退きやサーバー障害のために失敗することがあるため、作成のホットパスで<i>Engine</i>にアラームも設定します。そうすることで、バックグラウンドタスクが終了しない場合でも、アラームはインスタンスが<b>開始されることを保証します</b>。</p>
+	<p><a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Durable Object Alarmsでアラームを設定すると、少なくとも1回の実行モデルと自動リトライが組み込まれているため、将来的に一定のタイミングでDurable</u></a> Objectインスタンスを起動することができます。<b></b>当社は、このバックグラウンド「タスク」とアラートの組み合わせを幅広く使用して、ホットパスから操作を削除しつつ、すべてが計画通りに行われるようにします。このようにして、信頼性を損なうことなく、<i>インスタンスの作成</i>のような重要な操作を高速に保っています。</p>
+	<p>このバージョンのコントロールプレーンは、拡張性以外にも、次のことを意味します：</p>
+	<ul>
+		<li>
+			<p>インスタンスリストのパフォーマンスが向上し、実際にブラウザページ移動と一貫性があります。</p>
+		</li>
+		<li>
+			<p>インスタンスに対する操作は、厳密に1つのネットワークホップを行います（<i>Engine</i>に直接アクセスできるため、エンドユーザーのリクエストの遅延を可能な限り小さく抑えることができます）。</p>
+		</li>
+		<li>
+			<p>より多くのインスタンスが、実際に（時間通りに実行されることで）同時に正しく動作していることを確認できます（そうでない場合は修正し、<i>Engines</i>が実行を継続するのに遅れないようにします）。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="v1-v2-migration">V1 → V2の移行</h2>
+		<a href="https://blog.cloudflare.com/#v1-v2-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>より多くのユーザー負荷に対応できる新バージョンのWorkflowsコントロールプレーンを手に入れたので、顧客とインスタンスを新しいシステムに移行するという「ボーリング」作業を行う必要がありました。Cloudflareの規模では、それ自体が問題となるため、「ボーリング」の部分が最大の課題となります。Workflowsは、公開して1年を迎える前に、すでに数百万のインスタンスと数千の顧客を獲得していました。また、V1のコントロールプレーンに技術的負債があることもあり、キューに入れられたインスタンスに独自の<i>Engine</i> Durable Objectがまだ作成されていない可能性があり、問題をさらに複雑にしています。</p>
+	<p>お客様はいつでも実行中のインスタンスを持っている可能性があるため、このような移行は難しくなります。中断やダウンタイムを発生させることなく、<i>SousChef</i>と<i>Gatekeeper</i>のコンポーネントを古いアカウントに追加する方法が必要でした。</p>
+	<p>最終的に、<i>SourceChefs</i>のように動作するように、既存の<i>アカウント</i>（<i>AccountOlds</i>と呼びます）を移行することにしました。<i>アカウント</i>DOを保持することで、インスタンスのメタデータを維持し、DOを<i>SousChef</i>の「DO」に変換するだけです。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// You might be wondering what's this SousChef class? This is the SousChef DO class!
+import { SousChef } from "@repo/souschef";
+
+class AccountOld extends DurableObject {
+  constructor(state: DurableObjectState, env: Env) {
+    // We added the following snippet to the end of our AccountOld DO's
+    // constructor. This ensures that if we want, we can use any primitive
+    // that is available on SousChef DO
+    if (this.currentVersion === ControlPlaneVersions.SOUS_CHEFS) {
+      this.sousChef = new SousChef(this.ctx, this.env);
+      await this.sousChef.setup()
+    }
+  }
+
+  async updateInstance(params: UpdateInstanceParams) {
+    if (this.currentVersion === ControlPlaneVersions.SOUS_CHEFS) {
+      assert(this.sousChef !== undefined, 'SousChef must exist on v2');
+      return this.sousChef.updateInstance(params);
+    }
+
+    // old logic remains the same
+  }
+
+  @RequiresVersion&lt;AccountOld&gt;(ControlPlaneVersions.V1)
+  async getMetadata() {
+    // this method can only be run if 
+    // this.currentVersion === ControlPlaneVersions.V1
+  }
+}</code></pre>
+	<p><i>SousChefs</i> と <i>AccountOld</i> DOの両方にあるインスタンスメタデータを追跡するSQLテーブルは同じであるため、<i> AccountOld</i> 内で<i> SousChef クラスをインスタンス化することができます。</i>そのため、使用するコードのバージョンを決定するだけでいいのです。もしこれがそうでなければ、何百万ものインスタンスのメタデータを移行しなければならなかったでしょうから、各アカウントの移行はより困難で、より時間のかかるものになっていたでしょう。では、移行はどのように行われたのでしょうか？</p>
+	<p>まず、<i>AccountOld</i> DOを<i>SousChefs</i>として動作するように切り替える準備をしました（これは、上記のスニペットのバージョンを含むリリースを作成することを意味しました）。次に、アカウントごとにコントロールプレーンV2を有効にし、次の3つのステップをほぼ同時にトリガーしました。</p>
+	<ul>
+		<li>
+			<p>すべての新しいインスタンス作成リクエストは、新しい<i>SousChefs</i>にルーティングされるようになりました（<i>SousChefs</i>は最初のリクエストを受信したときに作成されます）。新しいインスタンスが<i>AccountOld</i>に再び移動することはありません。</p>
+		</li>
+		<li>
+			<p><i>AccountOld</i> DOは、<i>SousChefs</i>のように振る舞うために、自分自身を移行し始めます。</p>
+		</li>
+		<li>
+			<p>新しい<i>アカウント</i>DOは、対応するメタデータとともに作成されます。</p>
+		</li>
+	</ul>
+	<p>すべてのアカウントを新しいコントロールプレーンバージョンに移行した後、インスタンス保持期間が切れた時点で<i>AccountOld</i> DOを廃止することができました。<i>AccountOlds</i>の全アカウントのすべてのインスタンスを移行したら、それらのDOを永久にダウンさせることができました。移行は、ダウンタイムもなく、まるで運転中の車のホイールを交換しているようなプロセスで完了しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">試してみる</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsを初めてご利用になる方は、弊社の<a href="https://developers.cloudflare.com/workflows/get-started/guide" target="_blank" rel="noopener noreferrer"><u>入門ガイド</u></a>をお試しいただくか、Workflowsで<a href="https://developers.cloudflare.com/workflows/get-started/durable-agents" target="_blank" rel="noopener noreferrer"><u>最初の耐久性のあるエージェントを構築</u></a>してください。</p>
+	<p>お客様の用途で、新しいデフォルトより高い制限（同時実行制限は50,000スロット、アカウントレベルの作成レート制限は1秒あたり300インスタンス、ワークフローあたり100個）が必要な場合は、アカウントチームまたは<a href="https://forms.gle/ukpeZVLWLnKeixDu7" target="_blank" rel="noopener noreferrer"><u>Workers制限リクエストフォーム</u></a>からご連絡ください。また、フィードバックや機能のリクエスト、Discordサーバー上でWorkflowsをどのように使っているかを共有することもできます。</p>
+</div>

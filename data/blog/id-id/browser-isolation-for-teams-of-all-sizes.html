@@ -1,0 +1,87 @@
+<div class="mb2 gray5">4 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes">English</a>, <a href="https://blog.cloudflare.com/zh-tw/browser-isolation-for-teams-of-all-sizes">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/browser-isolation-for-teams-of-all-sizes">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/browser-isolation-for-teams-of-all-sizes">한국어</a>, <a href="https://blog.cloudflare.com/es-es/browser-isolation-for-teams-of-all-sizes">Español</a>, <a href="https://blog.cloudflare.com/th-th/browser-isolation-for-teams-of-all-sizes">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CHUOaDOIDbM5O3TgIjDbz/b350d0051cd1e137b73c58a3ecbafb7b/browser-isolation-for-teams-of-all-sizes.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Setiap organisasi yang terhubung ke Internet bergantung pada browser web untuk beroperasi: menerima transaksi, terlibat dengan pelanggan, atau bekerja dengan data sensitif. Tindakan mengklik tautan memicu browser web Anda untuk men-download dan menjalankan sekumpulan besar kode yang tidak dikenal di perangkat lokal Anda.</p>
+	<p>Organisasi TI selalu kalah manuver saat membela diri dari ancaman keamanan. Ini bukan pertanyaan 'jika', tetapi 'kapan' kerentanan hari nol berikutnya akan membahayakan browser web. Bagaimana organisasi TI dapat melindungi pengguna dan data mereka dari ancaman yang tidak diketahui tanpa memblokir setiap potensi risiko secara berlebihan? Solusinya adalah mengalihkan beban dalam mengeksekusi kode yang tidak tepercaya dari perangkat pengguna ke browser yang terisolasi dari jarak jauh.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14XtPSLyUvlfQFjTYYDoTT/a4273c6a6b94fec1567a0eb420ad57f4/Browser-Isolation-OG-body-3.png" alt="" class="kg-image" width="1252" height="669" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="bringing-remote-browser-isolation-to-teams-of-any-size">Menghadirkan Isolasi Browser Jarak Jauh bagi tim dengan berbagai ukuran</h3>
+		<a href="https://blog.cloudflare.com/#bringing-remote-browser-isolation-to-teams-of-any-size" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Kwv4UgTOIsQ2H80GztC6d/524c2dc3bdf81bec78e1475242fbfd7b/image4-27.png" alt="" class="kg-image" width="1418" height="722" loading="lazy">
+
+	</figure>
+	<p>Hari ini kami dengan senang hati mengumumkan bahwa Isolasi Browser Cloudflare sekarang tersedia dalam Cloudflare for Teams suite dengan keamanan zero trust dan layanan penjelajahan web yang aman sebagai sebuah add-on. Tim dari berbagai ukuran mulai dari perusahaan rintisan hingga perusahaan besar dapat memperoleh manfaat dari penjelajahan yang andal dan aman tanpa mengubah browser web pilihan mereka atau menyiapkan topologi jaringan yang kompleks.</p>
+	<div class="flex anchor relative">
+		<h3 id="remote-browsers-must-be-reliable">Browser Jarak Jauh harus andal</h3>
+		<a href="https://blog.cloudflare.com/#remote-browsers-must-be-reliable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Menjalankan beban kerja sensitif di lingkungan yang aman bukanlah hal baru, dan teknologi Isolasi Browser Jarak Jauh (RBI) telah ada selama bertahun-tahun. Ini menimbulkan pertanyaan, mengapa browser jarak jauh bukan teknologi umum yang digunakan oleh semua orang?</p>
+	<p>Jawabannya adalah — eksekusi yang cacat secara historis. Semua orang bergantung pada browser web untuk sebagian besar pekerjaan mereka dan setiap dampak terhadap pengalaman atau kinerja pengguna dapat berarti hilangnya produktivitas dan paling buruk penolakan langsung terhadap solusi.</p>
+	<p>Render yang tidak dapat diandalkan dan kinerja yang buruk dalam solusi isolasi browser lama telah menyebabkan organisasi TI mencadangkan postur keamanan yang ditingkatkan hanya untuk pengguna atau aktivitas yang sangat bertarget. Sama seperti mempercayai jaringan melalui model kastel dan parit, berasumsi beberapa pengguna atau situs web bukan pengelabuhan atau vektor malware membuka pintu untuk diserang.</p>
+	<p>Isolasi Browser Cloudflare dibangun di atas Chromium (mesin yang sama yang mendukung browser web populer lainnya seperti Google Chrome, Microsoft Edge, dan Brave Browser). Ini, dipadukan dengan teknik <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">Rendering Vektor Jaringan</a> kami yang baru, memastikan bahwa halaman web dirender dengan aman dan konsisten bahkan ketika teknologi web berkembang dan menjadi lebih kompleks.</p>
+	<div class="flex anchor relative">
+		<h3 id="remote-browsers-must-be-fast">Browser Jarak Jauh Harus Cepat</h3>
+		<a href="https://blog.cloudflare.com/#remote-browsers-must-be-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Solusi isolasi browser lama dilumpuhkan oleh teknologi dasarnya atau jaringan tempat mereka beroperasi. Solusi lama ini bergantung pada dorongan piksel dengan latensi tinggi dan bandwidth berat, atau pelucutan konten yang rapuh dan teknik rekonstruksi yang menurunkan kinerja, merusak situs web, dan mungkin melewatkan muatan berbahaya dalam prosesnya.</p>
+	<p>Dengan Render Vektor Jaringan kami dapat memberikan tampilan aman halaman web jarak jauh tanpa penggunaan bandwidth tinggi atau kualitas gambar yang menurun, tetapi ini adalah salah satu bagian dari solusi. Dengan memanfaatkan jaringan global kami, kami memosisikan browser jarak jauh dekat dengan semua orang yang terhubung ke Internet. Dengan demikian kami dapat memberikan aliran halaman web yang responsif dan berlatensi rendah di mana pun Anda berada secara fisik.</p>
+	<p>Menjalankan browser web di server kuat yang terhubung ke backbone Internet memberikan manfaat kinerja yang kuat. Dengan mengirimkan perintah penarikan minimal melalui kabel jarak jauh, pengguna dengan koneksi Internet bandwidth rendah menikmati Internet yang lebih cepat dan lebih responsif.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14hVfWbzFCUuQBFVWj4obN/800fc77266678170d7746dfe8f17d75f/image1-35.png" alt="" class="kg-image" width="1500" height="948" loading="lazy">
+
+	</figure>
+	<p>Padukan jaringan besar, cerdas, terdistribusi dengan teknologi Render Vektor Jaringan kami yang super cepat dan ringan yang telah dipatenkan, dan hasilnya adalah teknologi penjelajahan jarak jauh yang terbebas dari kendala lama — menyediakan halaman terisolasi yang tajam bagi semua pengguna, di semua perangkat, di seluruh dunia.</p>
+	<p>Salah satu keuntungan menggunakan Isolasi Browser adalah mengurangi beban browser web lokal untuk men-download halaman web modern. Menurut FCC, hampir 30 juta orang Amerika tidak memiliki akses ke Internet broadband (<a href="https://www.fcc.gov/about-fcc/fcc-initiatives/bridging-digital-divide-all-americans" target="_blank" rel="noopener noreferrer">sumber</a>). Situs web modern tidak dioptimalkan untuk koneksi bandwidth rendah yang biasanya memerlukan download ratusan objek. Browser jarak jauh Cloudflare terhubung ke backbone Internet dan dapat men-download situs web secara konsisten dengan kecepatan broadband, yang meratakan bidang bagi pengguna pada koneksi Internet bandwidth rendah.</p>
+	<p>Berikut adalah contoh pemuatan halaman web pada koneksi Internet lambat dibandingkan dengan dan tanpa Isolasi Browser. Kami senang melihat Isolasi Browser menjembatani kesenjangan digital dan membuat Internet lebih cepat bagi pengguna Internet yang kurang terlayani.</p>
+	<p><i>Catatan: Waktu diukur dari awal download halaman web hingga halaman web memicu sinyal on-load.</i></p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 66.66666666666666%;"><iframe src="https://iframe.videodelivery.net/f3b7ffbe1eba370b4ee28d509fef918a?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p><i>Note: Timing is measured from the start of web page download until the webpage has triggered it’s on-load signal.</i></p><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="remote-browsers-must-be-easy-to-use">Browser Jarak Jauh Harus Mudah Digunakan</h3>
+		<a href="https://blog.cloudflare.com/#remote-browsers-must-be-easy-to-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Produk Isolasi Browser biasanya diimplementasikan baik sebagai peralatan jaringan add-on (seperti mesin virtual atau kotak firewall) atau dengan mengubah browser pilihan pengguna. Sebagai alat jaringan add-on, tim TI perlu mengumpulkan beberapa solusi yang berbeda (bahkan apabila ditawarkan oleh vendor yang sama). Hal ini menyebabkan kompleksitas yang tidak perlu dalam jaringan dan antarmuka terpisah untuk mengontrol konfigurasi kebijakan dan memantau ancaman.</p>
+	<p>Isolasi Browser Cloudflare terintegrasi secara native ke Cloudflare for Teams, memberikan tampilan terkonsolidasi dari semua jaringan dan lalu lintas yang terisolasi. Sama seperti bagaimana Anda dapat menggunakan Gateway untuk mengizinkan / memblokir lalu lintas berdasarkan kategori konten, atau ancaman keamanan, Anda juga dapat menentukan kebijakan Isolasi untuk mengisolasi situs web secara dinamis berdasarkan identitas, ancaman keamanan, atau konten.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40YG6LOKdW7W9xsVZoTr5o/ff92964ea1f5e15f88fb6487cc1afc95/image2-29.png" alt="" class="kg-image" width="1942" height="1294" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-internet-browsing-is-remote-browsing">Masa Depan Penjelajahan Internet adalah Penjelajahan Jarak Jauh</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-internet-browsing-is-remote-browsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eksekusi halaman web lokal menimbulkan ancaman besar bagi bisnis dan organisasi di seluruh dunia. Solusinya sederhana: alihkan beban dalam mengeksekusi kode yang tidak tepercaya dari perangkat pengguna ke browser yang terisolasi dari jarak jauh.</p>
+	<p>Isolasi Browser Jarak Jauh yang aman, cepat, dan sederhana sekarang adalah mungkin. Hari ini kami dengan senang hati mengumumkan bahwa Isolasi Browser Cloudflare tersedia sebagai add-on untuk Cloudflare for Teams. Anda sekarang dapat melindungi bisnis Anda dari ancaman keamanan berbasis browser tanpa mengubah browser web atau jaringan Anda. Untuk memulai, <a href="https://www.cloudflare.com/teams/browser-isolation" target="_blank" rel="noopener noreferrer">daftar akun Cloudflare for Teams</a>, dan tambahkan Isolasi Browser ke Teams Gateway atau paket standar Teams. Pelanggan kontrak dapat menambahkan Isolasi Browser ke paket Cloudflare for Teams mereka dengan <a href="http://cloudflare.com/teams/plans/enterprise" target="_blank" rel="noopener noreferrer">meminta akses di formulir ini</a>.</p>
+	<p>Sejak Cloudflare dimulai, misi kami adalah membantu membangun Internet yang lebih baik dan mendemokratisasi teknologi yang sebelumnya hanya dapat diakses oleh perusahaan besar dengan jaringan canggih, tim TI khusus, dan anggaran untuk mendukung mereka.</p>
+	<p>Seperti masa lalu yang belum terlalu lama ketika enkripsi HTTPS dicadangkan untuk halaman login "sensitif" dan checkout eCommerce, kami percaya bahwa mempercayai kode situs web arbitrer akan tampak sama kunonya dengan menciptakan paradigma baru penjelajahan web Zero Trust. Waktu untuk teknologi Isolasi Browser Jarak Jauh yang andal dan responsif adalah SEKARANG.</p>
+</div>

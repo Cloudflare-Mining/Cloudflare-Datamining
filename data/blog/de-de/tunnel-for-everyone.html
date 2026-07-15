@@ -1,0 +1,63 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/tunnel-for-everyone">English</a>, <a href="https://blog.cloudflare.com/es-es/tunnel-for-everyone">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/tunnel-for-everyone">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Xus2VUKDDXEy0R48CGTJd/c9c660f48bdc8515fff219846c9de8e1/tunnel-for-everyone.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Vor ein paar Monaten haben wir angekündigt, dass wir Zero Trust-Sicherheit allgemein zugänglich machen wollen – unabhängig von Größe, Umfang oder Ressourcen. Argo Tunnel, unsere sichere Methode, Ressourcen direkt mit Cloudflare zu verbinden, ist dabei das nächste Puzzleteil.</p>
+	<p>Mithilfe eines schlanken Konnektors, der in Ihrer Umgebung implementiert wird, stellt Argo Tunnel eine sichere, ausschließlich ausgehende Verbindung zwischen Ihren Diensten und Cloudflare her. So muss Ihr Team nicht erst mühsam dafür sorgen, dass Ihre Firewall entsprechende Verbindungen zulässt, oder überprüfen, ob der Datenverkehr von Cloudflare-IP-Adressen stammt.</p>
+	<p>Bisher wurden die Preise für Argo Tunnel aus der Bandbreitennutzung im Rahmen von Argo Smart Routing, der Funktion zur Beschleunigung des Datenverkehrs von Cloudflare, abgeleitet. Doch ab heute können alle Unternehmen diese sichere Lösung, die ausschließlich ausgehende Verbindungen erlaubt, kostenlos nutzen. Und natürlich können Sie immer noch die kostenpflichtige Argo Smart Routing-Funktion in Anspruch nehmen, um den Datenverkehr zu beschleunigen.</p>
+	<p>Als Teil dieser Änderung (und um Missverständnissen vorzubeugen) benennen wir das Produkt in Cloudflare Tunnel um. Um loszulegen, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">melden Sie sich einfach an</a>.</p>
+	<p>Weiter unten erfahren Sie, wie und warum wir dies tun.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-private-link-to-the-public-internet">Eine nicht öffentliche Verbindung zum öffentlichen Internet</h3>
+		<a href="https://blog.cloudflare.com/#a-private-link-to-the-public-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Jahr 2018 hat Cloudflare Argo Tunnel eingeführt. Die Lösung bietet <b>nicht öffentliche, sichere Verbindungen</b> zwischen Ihrem Ursprungsserver und Cloudflare. Von dem Moment an, in dem eine Website oder Internetanwendung bereitgestellt wird, verwenden Entwickler traditionell viel Zeit und Energie darauf, diese durch Zugangskontrolllisten, wechselnde IP-Adressen oder schwerfällige Lösungen wie GRE-Tunnel abzusichern.</p>
+	<p>Um ihnen die Arbeit zu erleichtern, haben wir Tunnel entwickelt.</p>
+	<p>Damit können Nutzer eine nicht öffentliche Verbindung von ihrem Ursprungsserver direkt zu Cloudflare herstellen, ohne dafür eine routingfähige IP-Adresse zu benötigen. Stattdessen wird ein schlanker Daemon, cloudflared, auf Ihrem Ursprungsserver ausgeführt, der eine sichere, ausschließlich ausgehende Verbindung herstellt. Somit kann nur Datenverkehr, der durch Cloudflare geleitet wird, Ihren Ursprungsserver erreichen.</p>
+	<div class="flex anchor relative">
+		<h3 id="building-our-tunnel">Entstehungsgeschichte von Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#building-our-tunnel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ursprünglich haben wir Tunnel entwickelt, um ein einfaches Problem zu lösen: Zuvor war es unnötig kompliziert, einen Server mit dem Internet zu verbinden. Anstatt andere ältere Modelle zu implementieren, wollten wir eine reibungslose Möglichkeit schaffen, eine nicht öffentliche Direktverbindung zu Cloudflare herzustellen. Das war für uns von besonderem Interesse, weil wir damit auch eines der Hauptprobleme vieler unserer eigenen Kunden lösen wollten.</p>
+	<p>Seit 2010 erfolgt bei Cloudflare die Aufnahme neuer Nutzer in zwei Schritten: 1) Hinzufügen ihrer Internetpräsenz und 2) Ändern ihrer Nameserver. Der zweite Schritt ist wichtig, denn sobald Sie Ihre Nameserver ändern, werden Anfragen an Ihre Ressourcen zuerst an das Netzwerk von Cloudflare weitergeleitet. Cloudflare ist dann in der Lage, unerwünschten oder schädlichen Datenverkehr zu blockieren, sodass Angreifer die IP-Adressen Ihres Ursprungsservers nicht direkt treffen können. Dies wird gemeinhin als Reverse-Proxy-Modell bezeichnet.</p>
+	<p>Doch was passiert, wenn ein Angreifer die IP-Adresse des Ursprungsservers herausfindet? Könnte er Cloudflare dann nicht einfach umgehen? An dieser Stelle kommt Tunnel ins Spiel. Tunnel schützt Ihren Ursprungsserver, weil damit <b>ausschließlich ausgehende</b> Verbindungen zu Cloudflare hergestellt werden können. So entfallen die Anforderungen des alten Modells, bei dem Regeln für eingehenden Traffic in das System integriert werden müssen, was die Infrastruktur anfällig für Angriffe macht. Noch wichtiger ist, dass Sie die Sicherheitskontrollen Ihres Ursprungsservers verbessern können, indem Sie mithilfe von Cloudflare die Durchsetzung von <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Zero Trust</a>-Regeln erzwingen, anhand derer jede Anfrage an Ihre Ressource validiert werden muss.</p>
+	<p>Nehmen wir an, Sie arbeiten in einer lokalen Entwicklungsumgebung an einer neuen Webanwendung und möchten Updates auf sichere Weise an Kollegen übermitteln. In diesem Fall würden Sie zunächst cloudflared installieren, um Ihren Ursprungsserver mit Cloudflare zu verbinden. Dann erstellen Sie Ihren Tunnel und generieren im Cloudflare-Dashboard einen Hostnamen mit Ihrer Tunnel-UUID, damit Nutzer Ihre Ressource erreichen und Ihren Tunnel einsetzen können. Es ist auch möglich, eine Zero Trust-Richtlinie mit Cloudflare Access zu Ihrem DNS-Eintrag hinzufügen, damit nur Kollegen Ihre Ressource sehen können.</p>
+	<div class="flex anchor relative">
+		<h3 id="reinforcing-our-tunnel">Optimierung von Tunnel</h3>
+		<a href="https://blog.cloudflare.com/#reinforcing-our-tunnel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In den letzten Monaten haben wir auch an der Verbesserung der Stabilität und Persistenz gearbeitet. Um die Stabilität zu erhöhen, haben wir interne Abhängigkeiten beseitigt, aufgrund derer <a href="https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane/#:~:text=The%2520control%2520plane%2520is%2520the,is%2520the%2520actual%2520forwarding%2520process." target="_blank" rel="noopener noreferrer">sowohl die Kontroll- als auch die Datenebene</a> von Tunnel online und für die Wiederherstellung von Tunneln verfügbar sein mussten.</p>
+	<p>Durch die Beseitigung dieser vorgelagerten Abhängigkeiten können die Tunnel nun Verbindungen zuverlässig neu initiieren, ohne dass beide Dienste gleichzeitig verfügbar sein müssen. Außerdem sind wir auf den Edge-Load-Balancer von Cloudflare, <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>, migriert, was die durchschnittliche Lebensdauer eines bestimmten Tunnels von einigen Minuten auf mehrere Tage erhöht hat. Wenn diese Verbindungen längere Betriebszeiten unterstützen und weniger auf interne Abhängigkeiten zurückgreifen, sind sie gut aufgestellt, um mehr Stabilität rund um den Globus zu gewährleisten.</p>
+	<p>Darüber hinaus wollten wir unsere Anstrengungen auf die Persistenz konzentrieren. Wenn cloudflared aus irgendeinem Grund neu gestartet werden musste, haben wir bisher jeden Neustart wie einen neuen Tunnel behandelt. Es musste also ein neuer DNS-Eintrag erstellt und eine Verbindung zu Cloudflare aufgebaut werden.</p>
+	<p>In unserer neuesten Version haben wir das Konzept der <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a> eingeführt. Mit Named Tunnels können Nutzer einem Tunnel einen dauerhaften Namen zuweisen, der dann eine direkte Beziehung zu Ihrer Tunnel-UUID herstellt. Dieses Modell erlaubt es den beiden Bezeichnern, zu dauerhaften Datensätzen zu werden, die eine autonome Wiederherstellung der Verbindung ermöglichen. Falls Ihr Named Tunnel neu gestartet werden muss, kann Ihre cloudflared-Instanz auf diese UUID-Adresse verweisen, um die Verbindung wiederherzustellen, anstatt jeden Neustart ganz von vorn zu beginnen.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-can-you-do-with-tunnel-right-now">Wofür kann Tunnel jetzt genutzt werden?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-you-do-with-tunnel-right-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei Cloudflare haben wir uns vorgenommen, ein besseres Internet zu schaffen. Nun freuen wir uns, mit der Öffnung von Tunnel für die Allgemeinheit einen weiteren Schritt in diese Richtung zu tun. Wir können es kaum erwarten, zu sehen, wie Sie die Vorteile der verbesserten Stabilität, Persistenz und Zero Trust-Sicherheit von Tunnel nutzen werden.</p>
+	<p>Wir haben festgestellt, dass Ihrer Kreativität bei den Anwendungsmöglichkeiten von Tunnel keine Grenzen gesetzt sind. Deshalb wollen wir Ihnen nicht vorschreiben, wie Sie Tunnel benutzen sollten. Stattdessen bieten wir Ihnen hier ein paar einfache Einstiegsmöglichkeiten:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel" target="_blank" rel="noopener noreferrer">Verbindung einer Anwendung oder eines Servers</a>: Verbinden Sie einen Ursprungsserver mit Cloudflare über einen öffentlichen Hostnamen</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/cloudflared" target="_blank" rel="noopener noreferrer">Aufbau eines nicht öffentlichen Netzwerks</a>: Aktivieren Sie den Fernzugriff auf Anwendungen im nicht öffentlichen Netzwerk</p>
+		</li>
+	</ul>
+</div>

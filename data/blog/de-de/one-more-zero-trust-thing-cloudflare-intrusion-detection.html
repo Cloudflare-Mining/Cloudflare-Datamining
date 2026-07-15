@@ -1,0 +1,85 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/one-more-zero-trust-thing-cloudflare-intrusion-detection">English</a>, <a href="https://blog.cloudflare.com/fr-fr/one-more-zero-trust-thing-cloudflare-intrusion-detection">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/one-more-zero-trust-thing-cloudflare-intrusion-detection">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/one-more-zero-trust-thing-cloudflare-intrusion-detection">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aY2We3PTSail72xBJ3rCE/b25f3547d5e7078e7668e6c0695a2d88/one-more-zero-trust-thing-cloudflare-intrusion-detection.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir freuen uns heute sehr, unsere Pläne für das Cloudflare Intrusion Detection System veröffentliche zu können. Dabei handelt es sich um ein neues Produkt, das Ihr Netzwerk überwacht und bei Verdacht auf einen Angriff Alarm schlägt. Durch die umfassende Integration in Cloudflare One bietet Ihnen das Cloudflare Intrusion Detection System eine Vogelperspektive auf Ihr <i>gesamtes</i> globales Netzwerk und überprüft den gesamten Traffic auf böswilliges Verhalten, unabhängig davon, ob der Traffic von außerhalb oder innerhalb Ihres Netzwerks kommt.</p>
+	<div class="flex anchor relative">
+		<h3 id="analyze-your-network-without-doing-the-legwork">Analysieren Sie Ihr Netzwerk ohne viel Aufwand</h3>
+		<a href="https://blog.cloudflare.com/#analyze-your-network-without-doing-the-legwork" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unternehmen erstellen Firewall-Regeln, um ihre Netzwerke vor externen und internen Bedrohungen zu schützen. Wenn böswillige Akteure versuchen, ein Netzwerk anzugreifen, überprüfen diese Firewalls, ob der Angriff einem Regelmuster entspricht. Wenn dies der Fall ist, greift die Firewall ein und blockiert den Angriff.</p>
+	<p>Früher wurden diese Regeln auf verschiedenen physischen Firewall-Geräten konfiguriert, häufig Geräten verschiedener Fabrikate und Hersteller, die an physischen Standorten bereitgestellt wurden. Gestern haben wir die <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall angekündigt</a>, die Cloudflare-Firewall auf Netzwerkebene, die in unseren Rechenzentren auf der ganzen Welt bereitgestellt wird. Ihr Team kann eine Firewall-Regel einmal schreiben, <a href="https://blog.cloudflare.com/our-network-cloudflare-one">sie in Cloudflare bereitstellen</a> und unser globales Netzwerk schützt Ihre Büros und Rechenzentren ganz ohne Hardware vor Ort.</p>
+	<p>Das ist super, wenn man weiß, wo die Angriffe herkommen. Wenn Sie dieses Maß an Sicherheit nicht haben, wird das Aufspüren dieser Art von Angriffen zum aufwendigen Ratespiel. Raffinierte Angreifer können die Verteidigung eines Netzwerks provozieren, um festzustellen, welche Regeln existieren oder nicht existieren. Sie können diese Informationen ausnutzen, um subtilere Angriffe zu starten. Oder noch schlimmer: Sie kompromittieren Ihre Mitarbeiter und greifen von innen heraus an.</p>
+	<p>Wir freuen uns, die Zero-Trust-Woche mit einer weiteren Veröffentlichung abzuschließen: Das Cloudflare Intrusion Detection System (IDS) ist eine Lösung, die Ihr gesamtes Netzwerk gleichzeitig analysiert und Sie auf Ereignisse hinweist, die Ihre Regeln möglicherweise nicht erfassen.</p>
+	<p>Cloudflare IDS ist ein entscheidender Baustein von Cloudflare One. WARP verbindet Ihre Geräte und Magic Transit verbindet Ihre Büros und Rechenzentren mit Cloudflare; Cloudflare IDS befindet sich auf beiden und ermöglicht es Ihnen, den gesamten Traffic gleichzeitig zu untersuchen und auszuwerten. &nbsp;Dadurch erhalten Sie einen einheitlichen Überblick darüber, was innerhalb Ihres Netzwerks geschieht und wo eine Verletzung stattgefunden haben könnte. Cloudflare IDS wird auch kontinuierlich besser darin, Bedrohungen und Angriffe zu identifizieren. Sie können Warnmeldungen aktivieren und mit einem einzigen Klick schnell und einfach die Eindringversuche blockieren, die sich an statischen Regeln vorbeischleichen. Am wichtigsten ist jedoch, dass Ihr Team von den Informationen profitiert, die Cloudflare über Angriffe in anderen Regionen oder Branchen sammelt, um Ereignisse zu kennzeichnen, die Sie betreffen könnten.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n3WciYqFWcKC5TOfRTt3o/b79c51173068b0f1ab20f14387015320/IDS-diagram_3x.png" alt="" class="kg-image" width="1600" height="1041" loading="lazy">
+
+	</figure>
+	<p>Und wie funktioniert es?</p>
+	<div class="flex anchor relative">
+		<h3 id="assume-breach">Von einem Verstoß ausgehen</h3>
+		<a href="https://blog.cloudflare.com/#assume-breach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bisherige Sicherheitsmodelle vertrauten implizit jeder Verbindung innerhalb des Netzwerks. Das machte sie anfällig für Verstöße und Angriffe von böswilligen Akteuren, die von innen kamen. Das Konzept des Zero Trust kehrt das Modell um: Es geht davon aus, dass jede Verbindung gefährlich ist. Anstatt auf Beweise dafür zu warten, dass ein definitiver Verstoß stattgefunden hat, wird davon ausgegangen, dass dieser bereits geschehen ist.</p>
+	<p>Um das Zero.Trust-Modell effektiv umzusetzen, benötigen Sie zwei Kernkomponenten:</p>
+	<ul>
+		<li>
+			<p>eine umfassende Übersicht über Ihr gesamtes Netzwerk, das laufend analysiert wird, um Probleme aufzudecken, die von statischen Regeln möglicherweise nicht erfasst wurden;</p>
+		</li>
+		<li>
+			<p>ein Angriffserkennungssystem (eingekauft oder selbst entwickelt), das die Analyse durchführt.</p>
+		</li>
+	</ul>
+	<p>Cloudflare IDS ist auch durch die umfassende Integration in Cloudflare One so effektiv. WARP und Magic Transit bilden die erste Komponente, mit der Sie Ihr gesamtes Netzwerk und alle Geräte mit Cloudflare verbinden können, sodass Sie jedes einzelne Paket und jede einzelne Verbindung aus der Vogelperspektive betrachten können.</p>
+	<p>Cloudflare IDS hilft dann bei der Erkennung von Angriffen, die von überall innerhalb des Netzwerks kommen, indem es den Traffic und den Inhalt des Traffic aktiv untersucht. Cloudflare IDS hat zwei Funktionsweisen: Traffic-Form und Traffic-Untersuchung. Wenn wir uns das Verhalten des Traffics in Ihrem Netzwerk anschauen, können wir lernen, wie normales Verhalten aussieht: Ein Nutzer meldet sich jeden Tag nur bei einem einzigen System an, er greift nur auf bestimmte Anwendungen zu usw. Wir würden nicht erwarten, dass jemand versucht, sich in viele Systeme gleichzeitig einzuloggen oder das Netzwerk zu scannen; das wären klare Anzeichen für böswillige Absichten.</p>
+	<p>Die andere Form der Angriffserkennung ist die Traffic-Untersuchung: Wir schauen in den Traffic hinein, der durch Ihr Netzwerk fließt, um festzustellen, ob jemand einen sehr gezielten Angriff durchführt. Diese Arten von Angriffen können mit herkömmlichen Methoden nicht erkannt werden, weil sie tatsächlich wie normaler Traffic aussehen. Nur durch einen Blick ins Innere können wir sehen, dass der Akteur etwas Böswilliges versucht.</p>
+	<div class="flex anchor relative">
+		<h3 id="herd-immunity">Herdenimmunität</h3>
+		<a href="https://blog.cloudflare.com/#herd-immunity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Angreifer tendieren dazu, einem Muster zu folgen. Böswillige Akteure, die einen Angriff bei einem Unternehmen versucht haben, werden den gleichen Angriff an anderer Stelle wiederholen. Leider haben wir in letzter Zeit einen Anstieg dieser Angriffe beobachtet, als Angriffe wie der DDoS-Feldzug von Fancy Bear von einem Unternehmen zum anderen wanderten und immer demselben Skript folgten.</p>
+	<p>Gemeinsam sind wir sicherer. Cloudflare IDS lernt aus Angriffen, die auf unser Netzwerk und alle Netzwerke unserer Kunden abzielen, um ständig neue Arten von Angriffen zu erkennen. Ihr Team profitiert dann von den Erfahrungen, die wir beim Schutz unserer Kunden gesammelt haben. Die Plattform bezieht auch externe Bedrohungs-Feeds ein. Außerdem können Sie auch Ihre eigenen mitbringen.</p>
+	<div class="flex anchor relative">
+		<h3 id="offload-cpu-spend">CPU-Aufwand auslagern</h3>
+		<a href="https://blog.cloudflare.com/#offload-cpu-spend" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Kunden, die ihre eigene IDS-Lösung betreiben (unabhängig davon, ob sie selbst entwickelt oder gekauft wurde), beschweren sich immer wieder über eine Sache: den berühmt-berüchtigten CPU-Hunger von IDS-Lösungen. Sie müssen viele Zustände im Speicher halten und erfordern für eine effektive und korrekte Funktion eine Menge Rechenleistung.</p>
+	<p>Mit Cloudflare IDS wälzen Sie diese Last auf unser Netzwerk ab. Wir haben Cloudflare von Grund auf so konzipiert, dass es unendlich skalierbar ist. Jedes Edge-Rechenzentrum nutzt die gleiche Software, sodass wir die Arbeitslast effizient und in großem Umfang auslagern können. Wenn Cloudflare Ihr IDS betreibt, können Sie die rechenintensive Last, die veraltete Lösungen mit sich bringen, abschütteln und müssen sich keine Sorgen mehr über Kapazitäten machen.</p>
+	<div class="flex anchor relative">
+		<h3 id="ridiculously-easy">Spielend einfach</h3>
+		<a href="https://blog.cloudflare.com/#ridiculously-easy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Ihr Team Cloudflare IDS einsetzt, müssen Sie einfach nur auf eine Schaltfläche klicken und das war's. Ab sofort analysieren wir Muster in Ihrem Magic-Transit-Traffic und in Magic-Firewall-Ereignissen und gleichen diese mit unseren Bedrohungs-Feeds ab.</p>
+	<p>Wenn uns etwas Verdächtiges auffällt, benachrichtigen wir Ihr Team mit einem Alarm. Ihr Sicherheitsteam kann den Versuch dann überprüfen und die Daten genauer untersuchen, um festzustellen, was passiert ist. Auf dem Dashboard erhalten Sie weitere Einblicke in die Art des Angriffs und den Ort, an dem er stattgefunden hat. Die Problembehebung ist nur einen Klick entfernt: Richten Sie einfach eine Regel ein und senden Sie sie an das globale Cloudflare-Netzwerk: Wir stoppen den Angriff auf der Stelle.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Was kommt als Nächstes?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der Start des Cloudflare IDS folgt der Markteinführung unserer <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a>. Wenn Sie zu den ersten IDS-Nutzern gehören möchten, wenden Sie sich bitte an Ihr Kundenbetreuungsteam, um mehr zu erfahren.</p>
+</div>

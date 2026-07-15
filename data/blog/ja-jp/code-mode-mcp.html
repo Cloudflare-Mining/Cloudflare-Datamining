@@ -1,0 +1,214 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/code-mode-mcp">English</a>、<a href="https://blog.cloudflare.com/zh-tw/code-mode-mcp">繁體中文</a>、<a href="https://blog.cloudflare.com/it-it/code-mode-mcp">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/code-mode-mcp">한국어</a>、<a href="https://blog.cloudflare.com/vi-vn/code-mode-mcp">Tiếng Việt</a>、<a href="https://blog.cloudflare.com/zh-cn/code-mode-mcp">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YAHY3FwNCFMGMYtIDuri7/139b77ff4e1b71ca706af22064222f67/images_BLOG-3184_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>モデルコンテキストプロトコル（MCP）</u></a>は、AIエージェントが外部ツールを利用するための標準的な方法となっています。しかし、その中には緊張関係があります。エージェントが有用な作業を行うためには、多くのツールが必要であるのに、追加されたツールごとにモデルのコンテキストウィンドウが埋められ、実際のタスクの余地が減ってしまうのです。 </p>
+	<p><a href="https://blog.cloudflare.com/code-mode"><u>コードモード</u></a>は、エージェントツール使用中のコンテキストウィンドウの使用を減らすために最初に導入した技術です。すべての操作を個別のツールとして説明するのではなく、モデルが型付きSDKに対してコードを記述し、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker Loader</u></a>内で安全にコードを実行できるようにします。このコードは、コンパクトなプランとして機能します。このモデルは、ツールの操作を調査し、複数の呼び出しを構成し、必要なデータだけを返すことができます。Anthropicは、<a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener noreferrer"><u>Code Execution with MCP</u></a>に関する投稿で、同じパターンを独自に調査しました。</p>
+	<p>本日、<a href="https://developers.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a>や<a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Zero Trust</u></a>から<a href="https://workers.cloudflare.com/product/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>、<a href="https://workers.cloudflare.com/product/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>まで、<a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer"><u>Cloudflare API全体に</u></a>コードモードを使用する<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>新しいMCPサーバー</u></a>をご紹介します。サーバーは、search()と実行()の2つのツールを使用するだけで、サーバーはわずか1,000のトークンを消費しながら、MCP上でCloudflare API全体へのアクセスを提供することができます。APIエンドポイントの数に関係なく、フットプリントは固定されます。</p>
+	<p>Cloudflare APIのような大規模なAPIの場合、コードモードは使用される入力トークンの数を99.9%削減します。コードモードを持たない同等のMCPサーバーは、117万トークンを消費します。これは、最先端の基盤モデルのコンテキストウィンドウ全体よりも多いものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KqjQiI09KubtUSe9Dgf0N/6f37896084c7f34abca7dc36ab18d8e0/image2.png" alt="images/BLOG-3184 3" class="kg-image" width="1999" height="501" loading="lazy">
+	</figure>
+	<p><sup><i>ネイティブMCPに対するコードモードの節約</i></sup><sup>（</sup><a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer"><i><sup><u>Tiktoken</u></sup></i></a><sup>での測定）</sup></p>
+	<p>この新しいCloudflare MCPサーバーは、今すぐ使い始めることができます。また、<a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u> Cloudflare Agents SDK で</u></a><a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>新しいコードモードSDK</u></a> をオープンソースとして公開しています。これにより、独自のMCPサーバーやAIエージェントでも同じアプローチを使用できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-code-mode">サーバー側コードモード</h3>
+		<a href="https://blog.cloudflare.com/#server-side-code-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ir1KOZHIjVNyqdC9FSuZs/334456a711fb2b5fa612b3fc0b4adc48/images_BLOG-3184_2.png" alt="images/BLOG-3184 2" class="kg-image" width="1999" height="1248" loading="lazy">
+	</figure>
+	<p>この新しいMCPサーバーは、コードモードをサーバー側に適用します。サーバーは、数千のツールの代わりに、<code>search()</code>と<code>execute()</code>の2つのツールをエクスポートします。どちらもコードモードで動作します。以下は、モデルコンテキストに読み込まれるツールの全領域です。</p>
+	<pre class="language-javascript"><code class="language-javascript">[
+  {
+    "name": "search",
+    "description": "Search the Cloudflare OpenAPI spec. All $refs are pre-resolved inline.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "JavaScript async arrow function to search the OpenAPI spec"
+        }
+      },
+      "required": ["code"]
+    }
+  },
+  {
+    "name": "execute",
+    "description": "Execute JavaScript code against the Cloudflare API.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "JavaScript async arrow function to execute"
+        }
+      },
+      "required": ["code"]
+    }
+  }
+]
+</code></pre>
+	<p>何ができるかを探るために、エージェントは<code>search()</code>を呼び出します。OpenAPI仕様の型付け表現に対してJavaScriptを記述しています。エージェントは、製品、パス、タグ、またはその他のメタデータでエンドポイントをフィルタリングし、何千ものエンドポイントを必要なものに絞り込むことができます。OpenAPIの完全仕様がモデルコンテキストに入ることは決してありません。エージェントはコードを通じてのみ対話します。</p>
+	<p>エージェントが行動する準備ができると、<code>execute()</code> を呼び出します。エージェントは、Cloudflare APIリクエストを実行し、ページ指定の処理、応答の確認、および単一の実行で操作を連鎖させることができるコードを記述します。</p>
+	<p>どちらのツールも、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> Isolate（ファイルシステムなし、プロンプトインジェクションによって漏えいする環境変数がデフォルトで無効化されている）機能を備えた軽量なV8サンドボックス内で生成されたコードを実行します。アウトバウンドリクエストは、必要に応じてアウトバウンドフェッチハンドラーを使用して明示的に制御することができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="example-protecting-an-origin-from-ddos-attacks">例：オリジンをDDoS攻撃から保護</h4>
+		<a href="https://blog.cloudflare.com/#example-protecting-an-origin-from-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>あるユーザーがエージェントに「DDoS攻撃からオリジンを保護してください」と伝えたとします。エージェントの最初のステップは、ドキュメントを参照することです。<a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare Docs MCPサーバー</u></a>を呼び出したり、<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflareスキル</u></a>を使用したり、Webを直接検索したりする場合があります。ドキュメントから学ぶ：<a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>Cloudflare WAF</u></a>と<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>DDoS攻撃対策</u></a>ルールをオリジンの前に配置する。</p>
+	<p><b>ステップ1：適切なエンドポイントを検索します。
+		</b><code>検索</code>ツールはモデルに<code>spec</code>オブジェクトを与えます。完全なCloudflare OpenAPIの仕様で、すべての<code>$refs</code>が事前に解決されています。モデルはそれに反してJavaScriptを書きます。ここでは、エージェントはゾーン上のWAFとルールセットエンドポイントを探します：</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const results = [];
+  for (const [path, methods] of Object.entries(spec.paths)) {
+    if (path.includes('/zones/') &amp;&amp;
+        (path.includes('firewall/waf') || path.includes('rulesets'))) {
+      for (const [method, op] of Object.entries(methods)) {
+        results.push({ method: method.toUpperCase(), path, summary: op.summary });
+      }
+    }
+  }
+  return results;
+}
+</code></pre>
+	<p>サーバーはWorkers分離でこのコードを実行し、以下を返します。</p>
+	<pre class="language-javascript"><code class="language-javascript">[
+  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages",              "summary": "List WAF packages" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}", "summary": "Update a WAF package" },
+  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules", "summary": "List WAF rules" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}", "summary": "Update a WAF rule" },
+  { "method": "GET",    "path": "/zones/{zone_id}/rulesets",                           "summary": "List zone rulesets" },
+  { "method": "POST",   "path": "/zones/{zone_id}/rulesets",                           "summary": "Create a zone ruleset" },
+  { "method": "GET",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Get a zone entry point ruleset" },
+  { "method": "PUT",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Update a zone entry point ruleset" },
+  { "method": "POST",   "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules",        "summary": "Create a zone ruleset rule" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}", "summary": "Update a zone ruleset rule" }
+]
+</code></pre>
+	<p>Cloudflare APIの全仕様には、2,500を超えるエンドポイントがあります。このモデルは、必要なWAFとルールセットのエンドポイントに絞り込み、Specをコンテキストウィンドウに入力することはありませんでした。</p>
+	<p>モデルは、特定のエンドポイントを呼び出す前に、そのスキーマに掘り下げることもできます。ここでは、ゾーンルールセットで利用可能なフェーズを検査します：</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const op = spec.paths['/zones/{zone_id}/rulesets']?.get;
+  const items = op?.responses?.['200']?.content?.['application/json']?.schema;
+  // Walk the schema to find the phase enum
+  const props = items?.allOf?.[1]?.properties?.result?.items?.allOf?.[1]?.properties;
+  return { phases: props?.phase?.enum };
+}
+
+{
+  "phases": [
+    "ddos_l4", "ddos_l7",
+    "http_request_firewall_custom", "http_request_firewall_managed",
+    "http_response_firewall_managed", "http_ratelimit",
+    "http_request_redirect", "http_request_transform",
+    "magic_transit", "magic_transit_managed"
+  ]
+}
+</code></pre>
+	<p>これで、エージェントは必要なフェーズ（DDoS攻撃対策には<code>ddos_l7</code>、WAFには<code>http_request_firewall_managed</code>）を把握することができます。</p>
+	<p><b>ステップ2：API上で実行
+		</b>エージェントは<code>実行</code>の使用に切り替えます。サンドボックスは <code>cloudflare.request()</code> を取得します。Cloudflare APIに対して認証された呼び出しを行うことができるクライアントです。まず、エージェントはゾーンに既に存在するルールセットをチェックします。</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const response = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets`
+  });
+  return response.result.map(rs =&gt; ({
+    name: rs.name, phase: rs.phase, kind: rs.kind
+  }));
+}
+
+[
+  { "name": "DDoS L7",          "phase": "ddos_l7",                        "kind": "managed" },
+  { "name": "Cloudflare Managed","phase": "http_request_firewall_managed", "kind": "managed" },
+  { "name": "Custom rules",     "phase": "http_request_firewall_custom",   "kind": "zone" }
+]
+</code></pre>
+	<p>エージェントは、管理されたDDoSおよびWAFルールセットがすでに存在することを認識します。呼び出しを連鎖してルールを検査し、一度の実行で感度レベルを更新できるようになりました。</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  // Get the current DDoS L7 entrypoint ruleset
+  const ddos = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets/phases/ddos_l7/entrypoint`
+  });
+
+  // Get the WAF managed ruleset
+  const waf = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets/phases/http_request_firewall_managed/entrypoint`
+  });
+}
+</code></pre>
+	<p>仕様の検索とスキーマの検査から、ルールセットのリスト作成、DDoSとWAFの設定の取得に至るまで、この操作全体で4回のツール呼び出しが必要でした。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-cloudflare-mcp-server">Cloudflare MCPサーバー</h3>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まずは、個々の製品用のMCPサーバーから始めました。DNSを管理するエージェントをご希望ですか？ <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics" target="_blank" rel="noopener noreferrer"><u>DNS MCPサーバー</u></a>を追加します。Workersのログが必要ですか？<a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Workers Observability MCPサーバー</u></a>を追加します。各サーバーは、API操作にマッピングされた固定のツールセットをエクスポートしました。これはツールセットが小規模だったときは機能していましたが、Cloudflare APIには2,500以上のエンドポイントがあります。手作業でメンテナンスしているサーバーの集合体では対応しきれません。</p>
+	<p>CloudflareのMCPサーバーはこれを簡単に実現します。2つのツール、およそ1,000のトークン、APIの全エンドポイントをカバーします。新しい製品を追加するとき、同じ<code>search()</code>および<code>execute()</code>のコードパスがそれらを発見し、呼び出すことができます。新しいツール定義も、新しいMCPサーバーも必要ありません。<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer"><u>GraphQL Analytics API</u></a>のサポートもあります。</p>
+	<p>当社のMCPサーバーは、最新のMCP仕様に基づいて構築されています。OAuth 2.1に準拠しており、<a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>Workers OAuth Provider</u></a> を使用して、トークンの範囲を、接続時にユーザーが承認した選択した権限にダウンスコープします。エージェントは、ユーザーが明示的に許可された機能のみを取得します。</p>
+	<p>開発者にとっては、シンプルなエージェントループを使用しながら、エージェントが組み込みのプログレッシブ機能検出機能を備えたすべてのCloudflare APIにアクセスできることを意味します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60ZoSFdK6t6hR6DpAn6Bub/93b86239cedb06d7fb265859be7590e8/images_BLOG-3184_4.png" alt="images/BLOG-3184 4" class="kg-image" width="1552" height="1601" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="comparing-approaches-to-context-reduction">コンテキスト削減へのアプローチ比較</h3>
+		<a href="https://blog.cloudflare.com/#comparing-approaches-to-context-reduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCPツールが消費するトークンの数を減らすためのいくつかのアプローチが登場しました。</p>
+	<p><b>クライアントサイドのコードモード</b>は、当社の最初の実験でした。モデルは、型付けされたSDKに対してTypeScriptを記述し、クライアント上のDynamic Worker Loaderで実行します。その代償として、エージェントに安全なサンドボックスアクセスを提供する必要があります。コードモードは、<a href="https://block.github.io/goose/blog/2025/12/15/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Goose</u></a>とAnthropics Claude SDKに<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling" target="_blank" rel="noopener noreferrer"><u>Programmatic Tool Calling</u></a>として実装されています。</p>
+	<p><b>コマンドラインインターフェイス</b>は、別の経路です。CLIは自己文書型であり、エージェントが検討している機能を明らかにします。<a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>や<a href="https://blog.cloudflare.com/moltworker-self-hosted-ai-agent"><u>Moltworker</u></a>などのツールは、<a href="https://github.com/steipete/mcporter" target="_blank" rel="noopener noreferrer"><u>MCPorter</u></a>を使用してMCPサーバーをCLIに変換し、エージェントにプログレッシブな情報開示を提供します。限界は明らかです。エージェントにはシェルが必要ですが、すべての環境が提供できるわけではなく、サンドボックス化された分離よりもはるかに広い攻撃対象領域をもたらします。</p>
+	<p><b>動的ツール検索</b>は、<a href="https://x.com/trq212/status/2011523109871108570" target="_blank" rel="noopener noreferrer"><u>Claude CodeでAnthropicが</u></a>使用しているように、現在のタスクに関連すると思われるより少ないツールを表示します。コンテキストの利用は縮小しますが、維持および評価しなければならない検索機能が必要であり、一致した各ツールは依然としてトークンを使用します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FPxVAuJggv7A08DbPsksb/aacb9087a79d08a1430ea87bb6960ad3/images_BLOG-3184_5.png" alt="images/BLOG-3184 5" class="kg-image" width="1999" height="1966" loading="lazy">
+	</figure>
+	<p>いずれのアプローチも現実的な問題を解決します。しかし、特にMCPサーバーでは、サーバーサイドコードモードはその利点を組み合わせています。APIサイズに関係なくトークンコストが固定されている、エージェント側での変更は不要、プログレッシブ検出が組み込まれている、サンドボックス化された隔離内での安全な実行が可能です。エージェントはコードを使用して2つのツールを呼び出すだけです。それ以外のことはすべてサーバー上で行われます。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">今すぐ始めましょう</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare MCPサーバーが利用可能になりました。MCPクライアントをサーバーのURLに向けると、Cloudflareにリダイレクトされ、エージェントに付与する権限を承認および選択します。この設定をMCPクライアントに追加します。</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "mcpServers": {
+    "cloudflare-api": {
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
+  }
+}
+</code></pre>
+	<p>CI/CD、自動化、またはトークンをご自身で管理したい場合は、必要な権限を持つCloudflare APIトークンを作成してください。ユーザートークンとアカウントトークンの両方がサポートされており、<code>Authorization</code> ヘッダーのベアラートークンとして渡すことができます。</p>
+	<p>さまざまなMCPのセットアップ設定の詳細については、<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCPリポジトリ</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-forward">これからのこと</h3>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コードモードは、単一のAPIのコンテキストコストを解決します。しかし、エージェントが1つのサービスと通信することはほとんどありません。開発者エージェントは、GitHub、データベース、および内部ドキュメントサーバーとともにCloudflare APIを必要とする場合があります。追加のMCPサーバーが発生するたびに、最初に挙げたものと同じコンテキストウィンドウでの圧力が得られます。</p>
+	<p><a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>Cloudflare MCPサーバーポータル</u></a>を使用すると、統合された認証とアクセス制御を備えた単一のゲートウェイの背後で複数のMCPサーバーを構成できます。私たちは、すべてのMCPサーバーに対して第一級のコードモード統合を構築し、ゲートウェイの背後にあるサービスの数に関係なく、組み込みのプログレッシブディスカバリーと同じ固定トークンフットプリントでエージェントに公開します。</p>
+</div>

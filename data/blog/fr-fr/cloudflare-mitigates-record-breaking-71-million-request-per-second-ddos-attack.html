@@ -1,0 +1,124 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7u9M35IgOdUEbH73zyFlFH/9a2a3cad9325a406e3ea0a666bfc3c45/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS</a> lancées ce week-end ont établi de nouveaux records. Pendant le week-end, Cloudflare a détecté et atténué des dizaines d'attaques DDoS <i>hyper-volumétriques</i>. La majorité des attaques ont atteint un pic de l'ordre de 50 à 70 millions de requêtes par seconde (r/s), la plus importante ayant dépassé 71 millions de r/s. Il s'agit de la plus vaste attaque DDoS HTTP jamais observée, représentant une progression de plus de 35 % par rapport au précédent record de 46 millions de r/s en juin 2022.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zzsCqug2fzQ1LZ9cDhPPc/f41f616c5972ce12c9dedbb8844a2147/DDoS-protection-1.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Les attaques étaient basées sur HTTP/2 et ciblaient des sites web protégés par Cloudflare. Elles étaient lancées depuis plus de 30 000 adresses IP. Parmi les sites web visés par les attaques figuraient un célèbre fournisseur de jeux vidéo, des sociétés spécialistes des cryptomonnaies, des fournisseurs d'hébergement et des plateformes de cloud. Les attaques provenaient de nombreux fournisseurs de services de cloud, et nous avons collaboré avec eux pour contenir la menace liée au botnet.</p>
+	<p>Une attaque record : une attaque DDoS dépassant 71 millions de requêtes par seconde</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TDtAM4ae2w8i3WkfQqd08/737282a05169368edb3dfaaa54b7afaa/1711-1.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
+
+	</figure>
+	<p>Au cours de l'année passée, nous avons constaté une augmentation du nombre d'attaques provenant de fournisseurs de cloud. Pour cette raison, nous allons proposer aux prestataires de services possédant un système autonome un <a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp">flux gratuit d'informations sur les menaces liées aux botnets</a>. Ce flux fournira aux fournisseurs de services des informations sur les menaces émanant de leur espace d'adressage IP, c'est-à-dire sur les attaques lancées depuis leur système autonome. Les prestataires de services qui exploitent un espace d'adressage IP peuvent désormais <a href="https://www.cloudflare.com/lp/botnet-threat-feed" target="_blank" rel="noopener noreferrer">s'inscrire</a> sur la liste d'attente d'accès anticipé.</p>
+	<div class="flex anchor relative">
+		<h3 id="is-this-related-to-the-super-bowl-or-killnet">Ces attaques sont-elles liées au Super Bowl ou à Killnet ?</h3>
+		<a href="https://blog.cloudflare.com/#is-this-related-to-the-super-bowl-or-killnet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Non. Cette campagne d'attaques survient moins de deux semaines après la <a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks">campagne d'attaques DDoS Killnet</a>, qui ciblait des sites web de soins de santé. Compte tenu des méthodes employées et des cibles désignées, nous ne pensons pas que ces récentes attaques soient liées à la campagne d'attaques contre les systèmes de soins de santé ; par ailleurs, le Super Bowl américain a eu lieu hier, et nous ne pensons pas non plus que cette campagne d'attaques soit liée à cet événement.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-are-ddos-attacks">Que sont les attaques DDoS ?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">attaques par déni de service distribué</a> sont des cyberattaques qui visent à mettre hors service des propriétés Internet et à les rendre indisponibles pour les utilisateurs. Ces types de cyberattaques peuvent s'avérer très efficaces contre les sites web non protégés, et leur mise en œuvre peut être très peu coûteuse pour des acteurs malveillants.</p>
+	<p>Une attaque DDoS HTTP consiste généralement à inonder (« flood ») un site web cible de <a href="https://www.cloudflare.com/fr-fr/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer">requêtes HTTP</a>. L'objectif de l'acteur malveillant est de submerger un site web sous un nombre plus important de requêtes qu'il ne peut traiter. Si le nombre de requêtes est suffisamment élevé, le serveur du site web ne sera pas en mesure de traiter à la fois les requêtes liées à l'attaque et les requêtes <i>légitimes</i> des utilisateurs. Pour les utilisateurs, cela entraînera des lenteurs de chargement du site web, des délais d'attente et, finalement, l'impossibilité de se connecter au site web souhaité.</p>
+	<p>Illustration d'une attaque DDoS</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41VYHEH1KGaJHxqfyuCUX3/62edd1a178f035d50b0ec325fde9d074/1711-2.png" alt="" class="kg-image" width="1254" height="759" loading="lazy">
+
+	</figure>
+	<p>Pour accroître l'ampleur et la complexité des attaques, les acteurs malveillants exploitent généralement un réseau de bots, appelé « <a href="https://www.cloudflare.com/fr-fr/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer"><i>botnet</i></a> ». L'auteur de l'attaque orchestre le botnet pour bombarder de requêtes HTTP les sites web de la victime. Un botnet suffisamment vaste et puissant peut générer des attaques de très grande ampleur, comme nous l'avons observé dans ce cas.</p>
+	<p>Toutefois, la création et l'exploitation de botnets exigent d'importants investissements et compétences. Alors, que pourrait bien faire un citoyen lambda ? Pour commencer, un citoyen lambda qui souhaite lancer une attaque DDoS contre un site web n'a pas besoin de monter l'attaque de toutes pièces. Il peut louer les services de l'une des nombreuses plateformes DDoS-as-a-Service pour 30 dollars par mois seulement. Plus le montant versé est élevé, plus l'attaque sera vaste et longue.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-ddos-attacks">Quel est l'intérêt des attaques DDoS ?</h3>
+		<a href="https://blog.cloudflare.com/#why-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Au fil des ans, il est devenu plus facile et moins coûteux pour les auteurs d'attaques et les « prestataires de services d'attaque » de lancer des attaques DDoS, qui sont ainsi devenues plus accessibles. Toutefois, face à la simplification de cette entreprise pour les acteurs malveillants, nous tenons à nous assurer qu'il est encore plus facile (et gratuit) pour les personnes chargées de la défense d'organisations de toute taille de se protéger contre les attaques DDoS de tous types.</p>
+	<p>À la différence des <a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware" target="_blank" rel="noopener noreferrer">attaques par rançongiciel</a>, les <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS avec demande de rançon</a> ne nécessitent pas d'intrusion réelle dans le système ou d'implantation sur le réseau ciblé. En règle générale, les attaques par rançongiciel commencent lorsqu'un employé clique naïvement sur un lien contenu dans un e-mail, qui installe et propage le logiciel malveillant. Avec les attaques DDoS, cette démarche n'est pas nécessaire. Ces attaques ressemblent davantage à des « attaques éclair »". Les seules informations que l'auteur d'une attaque DDoS a besoin de connaître sont l'adresse et/ou l'adresse IP du site web ciblé.</p>
+	<div class="flex anchor relative">
+		<h3 id="is-there-an-increase-in-ddos-attacks">Les attaques DDoS progressent-elles ?</h3>
+		<a href="https://blog.cloudflare.com/#is-there-an-increase-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oui. La taille, la sophistication et la fréquence des attaques ont augmenté au cours des derniers mois. Dans la dernière édition de notre <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2022-q4-fr-fr">rapport consacré aux menaces DDoS</a>, nous avons constaté que le nombre d'attaques DDoS HTTP a augmenté de 79 % par rapport à l'année précédente. En outre, le nombre d'attaques volumétriques dépassant 100 Gb/s a augmenté de 67 % par rapport au trimestre précédent, tandis que le nombre d'attaques d'une durée de plus de trois heures a augmenté de 87 % par rapport au trimestre précédent.</p>
+	<p>Toutefois, cette progression ne s'arrête pas là. L'audace des acteurs malveillants augmente, elle aussi. Dans la dernière édition de notre rapport consacré aux menaces DDoS, nous avons constaté que les <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">attaques DDoS avec demande de rançon</a> ont connu une augmentation régulière tout au long de l'année. Elles ont atteint leur point culminant en novembre 2022 ; à cette période, un client interrogé sur quatre a déclaré avoir été victime d'attaques ou de menaces DDoS avec demande de rançon.</p>
+	<p>Répartition mensuelle des attaques DDoS avec demande de rançon</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dtJk2dHnMO7XbQ7RQM79W/02faf2f2a4494adf85062060581c1644/1711-3.png" alt="" class="kg-image" width="1196" height="738" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="should-i-be-worried-about-ddos-attacks">Dois-je me préoccuper des attaques DDoS ?</h3>
+		<a href="https://blog.cloudflare.com/#should-i-be-worried-about-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oui. Si votre site web, votre serveur ou vos réseaux ne sont pas protégés contre les attaques DDoS volumétriques par un service de cloud proposant des fonctions de détection et d'atténuation automatiques, nous vous recommandons vraiment d'y réfléchir.</p>
+	<p>Les clients de Cloudflare n'ont pas de raison de s'inquiéter, mais ils doivent être conscients et préparés. Vous trouverez ci-dessous une liste d'étapes recommandées pour garantir l'optimisation de votre posture de sécurité.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-steps-should-i-take-to-defend-against-ddos-attacks">Quelles mesures dois-je prendre pour me défendre contre les attaques DDoS ?</h3>
+		<a href="https://blog.cloudflare.com/#what-steps-should-i-take-to-defend-against-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les systèmes de Cloudflare détectent et <a href="https://www.cloudflare.com/fr-fr/learning/ddos/ddos-mitigation" target="_blank" rel="noopener noreferrer">atténuent</a> automatiquement les attaques DDoS.</p>
+	<p>Cloudflare propose de nombreuses fonctionnalités et capacités auxquelles vous avez peut-être déjà accès, mais que vous n'utilisez peut-être pas. C'est pourquoi, à titre de précaution supplémentaire, nous vous recommandons d'utiliser ces capacités pour améliorer et optimiser votre niveau de sécurité :</p>
+	<ol>
+		<li>
+			<p>Assurez-vous que toutes les <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">règles gérées spécifiques aux attaques DDoS</a> sont configurées avec les paramètres par défaut (sensibilité élevée et actions d'atténuation), pour une activation optimale en cas d'attaque DDoS.</p>
+		</li>
+		<li>
+			<p>Les clients de l'offre Cloudflare Enterprise qui sont abonnés au service Protection anti-DDoS avancée doivent envisager d'activer le service <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer">Protection anti-DDoS adaptative</a>, qui permet d'atténuer les attaques de manière plus intelligente, en fonction de vos schémas de trafic uniques.</p>
+		</li>
+		<li>
+			<p>Déployez des <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules" target="_blank" rel="noopener noreferrer">règles de pare-feu</a> et des <a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer">règles de limitation de débit</a> pour appliquer un modèle alliant des approches positive et négative de la sécurité. Limitez le trafic autorisé sur votre site web en fonction de votre utilisation connue.</p>
+		</li>
+		<li>
+			<p>Assurez-vous que votre serveur d'origine n'est pas exposé à l'Internet public (<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses" target="_blank" rel="noopener noreferrer">autorisez uniquement l'accès aux adresses IP de Cloudflare</a>). À titre de mesure de sécurité supplémentaire, nous vous recommandons de contacter votre fournisseur d'hébergement et de demander de nouvelles adresses IP pour votre serveur d'origine, si ces adresses ont été la cible directe d'attaques par le passé.</p>
+		</li>
+		<li>
+			<p>Nous invitons les clients ayant accès aux <a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/#managed-ip-lists" target="_blank" rel="noopener noreferrer">listes d'adresses IP gérées</a> à envisager d'intégrer ces listes aux règles de pare-feu. Quant aux clients ayant souscrit le service <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription" target="_blank" rel="noopener noreferrer">Gestion des bots</a>, nous les invitons à tirer parti des scores de bots intégrés aux règles de pare-feu.</p>
+		</li>
+		<li>
+			<p>Activez la fonction de <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer">mise en cache</a> autant que possible, afin de réduire la pression sur vos serveurs d'origine, et lorsque vous utilisez <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a>, évitez de surcharger votre serveur d'origine avec un volume inutilement élevé de sous-requêtes.</p>
+		</li>
+		<li>
+			<p>Activez le service d'<a href="https://developers.cloudflare.com/ddos-protection/reference/alerts" target="_blank" rel="noopener noreferrer">alertes sur les attaques DDoS</a>, afin d'améliorer vos temps de réponse.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="preparing-for-the-next-ddos-wave">Se préparer pour la prochaine vague d'attaques DDoS</h3>
+		<a href="https://blog.cloudflare.com/#preparing-for-the-next-ddos-wave" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La défense contre les attaques DDoS est essentielle pour les entreprises de toutes tailles. Si les attaques sont lancées par des humains, elles sont mises en œuvre par des bots – et pour avoir le dessus sur ces derniers, il est nécessaire de combattre le feu par le feu. Les processus de détection et d'atténuation doivent être automatisés autant que possible, car le fait de compter uniquement sur l'intervention humaine pour atténuer les attaques en temps réel constitue un désavantage pour le personnel chargé de la défense. Les systèmes automatisés de Cloudflare détectent et atténuent les attaques DDoS en permanence pour nos clients, afin de leur épargner cette tâche. Cette approche automatisée, associée à notre vaste sélection de fonctionnalités de sécurité, permet aux clients d'adapter la protection à leurs besoins.</p>
+	<p>Nous fournissons gratuitement à tous nos clients une <a href="https://blog.cloudflare.com/fr-fr/unmetered-mitigation-fr-fr">protection illimitée contre les attaques DDoS</a> depuis 2017, date à laquelle nous sommes devenus les pionniers de ce concept. La mission de Cloudflare est de contribuer à bâtir un Internet meilleur, et un Internet meilleur est un Internet plus sûr, plus rapide et plus fiable pour tous – même face aux attaques DDoS.</p>
+</div>

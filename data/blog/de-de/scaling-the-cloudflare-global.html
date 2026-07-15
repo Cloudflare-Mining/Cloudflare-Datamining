@@ -1,0 +1,73 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">English</a>, <a href="https://blog.cloudflare.com/fr-fr/scaling-the-cloudflare-global">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/scaling-the-cloudflare-global">日本語</a>, <a href="https://blog.cloudflare.com/es-es/scaling-the-cloudflare-global">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/scaling-the-cloudflare-global">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uQ20hRuTIFHopxTt8Zi9l/207ab1f7cb81b353fdf65644ff53b41b/scaling-the-cloudflare-global.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Das globale Netzwerk von Cloudflare umfasst derzeit 193 Städte in über 90 Ländern. Mit über 20 Millionen Internetwebsites in unserem Netzwerk erhöhen wir jedes Mal, wenn wir einen Standort hinzufügen, die Sicherheit, Performance und Zuverlässigkeit großer Teile des Internets.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6othJ1CZ1L7QpVqAHMqu2/e3eaeb54fc1eb8f9a02e3dc8e6447770/image1-3.png" alt="" class="kg-image" width="1986" height="1228" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="expanding-network-to-new-cities"><b>Erweiterung des Netzwerks mit neuen Städten</b></h3>
+		<a href="https://blog.cloudflare.com/#expanding-network-to-new-cities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Jahr 2019 haben wir bislang bereits eine Reihe neuer Standorte hinzugefügt: Amman, Antananarivo*, Arica*, Asuncién, Baku, Bengaluru, Buffalo, Casablanca, Cordoba*, Cork, Curitiba, Dakar*, Dar es Salaam, Fortaleza, Genf, Göteborg, Guatemala City, Hyderabad, Kigali, Kolkata, Male*, Maputo, Nagpur, Neuquén*, Nikosia, Nouméa, Ottawa, Port-au-Prince, Porto Alegre, Querétaro, Ramallah und Thessaloniki.</p>
+	<div class="flex anchor relative">
+		<h4 id="our-humble-beginnings"><b>Unsere bescheidenen Anfänge</b></h4>
+		<a href="https://blog.cloudflare.com/#our-humble-beginnings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Als wir Cloudflare im Jahr 2010 starteten, konzentrierten wir uns darauf, Server an den Schnittstellen des Internets aufzustellen: große Rechenzentren mit wichtigen Verbindungen, wie der Amsterdam Internet Exchange und Equinix Ashburn. Dies bot nicht nur den meisten Menschen auf einmal den größten Nutzen, sondern war auch einfacher zu verwalten, da sich unsere Server in denselben Gebäuden befanden wie alle lokalen ISPs, Serveranbieter und andere Personen, die zur Optimierung unsere Dienste gebraucht wurden.</p>
+	<p>Dies ist ein großartiger Ansatz, um durch Bootstrapping ein globales Netzwerk aufzubauen, aber wir sind besessen von <a href="https://blog.cloudflare.com/tag/speed-week">Geschwindigkeit im Allgemeinen</a>. Es gibt mehr als fünfhundert Städte auf der Welt mit über einer Million Einwohnern, aber nur eine Handvoll von ihnen haben die Art von großen Internet-Knoten, die wir anvisierten. Unser Ziel als Unternehmen ist es, das Internet für alle besser zu machen, nicht nur für diejenigen, die das Glück haben, in Gebieten mit erschwinglichen und leicht zugänglichen Netzwerkverbindungspunkten zu leben. Dabei stießen wir jedoch auf zwei große Probleme: a) es gab nicht genug große Internet-Knoten und b) die Latenz war immer noch nicht so niedrig, wie wir wollten. Uns wurde klar, dass wir mit der Skalierung auf neue Weise beginnen mussten.</p>
+	<p>Einer unserer ersten großen Schritte war der Abschluss von Partnerschaften mit lokalen ISPs auf der ganzen Welt, von denen viele der gleichen Probleme haben wie wir: ISPs wollen Geld sparen und ihren Kunden schnelles Internet bieten, aber sie haben oft keinen großen Internet-Knoten in der Nähe, mit dem sie sich verbinden können. Die Erweiterung ihrer Infrastruktur mit Cloudflare-Rechnern brachte ihnen mehr vom Internet näher. Wir helfen ihnen dabei, Millionen von Internetwebsites zu beschleunigen und gleichzeitig die Kosten zu senken, indem der Datenverkehr lokal bereitgestellt wird. Da alle unsere Server alle unsere Produkte unterstützen, kann auch eine relativ kleine physische Präsenz <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">Sicherheit</a>, <a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">Performance</a>, <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Zuverlässigkeit</a> und mehr bieten.</p>
+	<div class="flex anchor relative">
+		<h2 id="upgrading-capacity-in-existing-cities"><b>Erweiterung der Kapazität in bestehenden Städten</b></h2>
+		<a href="https://blog.cloudflare.com/#upgrading-capacity-in-existing-cities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Obwohl offensichtlich und leicht zu übersehen, ist der weitere Ausbau bestehender Standorte auch ein wichtiges Element beim Aufbau eines globalen Netzwerks. In diesem Jahr haben wir die Rechenkapazität an unserem Netzwerkrand deutlich erhöht. Darüber hinaus haben wir die Anzahl der einzelnen Netzwerke, die direkt mit uns verbunden sind, auf über 8.000 erhöht, indem wir es <a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">einfacher</a> gemacht haben, sich mit Cloudflare <a href="https://bgp.he.net/report/exchanges#_participants" target="_blank" rel="noopener noreferrer">zu verbinden</a>. Dies ermöglicht eine schnellere und zuverlässigere Internet-Erfahrung für die mehr als 1 Milliarde IPs, die wir täglich verzeichnen.</p>
+	<p>Eines unserer Erfolgsrezepte, um diese Kapazitätserweiterungen für unsere Kunden zu ermöglichen, war eine effiziente Infrastrukturbereitstellung. Wir wollen, dass die Bereitstellung unserer Infrastruktur zielgerichtet und flexibel ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="targeted-deployment"><b>Gezielte Bereitstellung</b></h3>
+		<a href="https://blog.cloudflare.com/#targeted-deployment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der nächste Kunde, der vor unserer Tür steht, könnte ein kleiner Restaurantbesitzer mit einem Pro-Tarif mit Tausenden von monatlichen Seitenaufrufen sein oder ein <a href="https://www.cloudflare.com/case-studies/discord" target="_blank" rel="noopener noreferrer">schnell wachsendes globales Hightech-Unternehmen wie Discord.</a> Daher müssen wir immer einen Schritt voraus sein und für unsere Kunden viele Daten auf einmal synthetisieren.</p>
+	<p>Um dieser Erweiterung gerecht zu werden, erforscht unser Kapazitätsplanungsteam neue Wege für die Optimierung unserer Server. Dabei ist eine wichtige Strategie, gezielt zu bestimmen, wo unsere Server aufgestellt werden sollen. Es ist jedoch nicht einfach, den Überblick zu behalten – wir sind ein globales <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a>-Netzwerk, was unvorhersehbar macht, wohin eingehender Datenverkehr geht. Um die Dinge noch komplizierter zu machen, kann es in jeder Stadt bis zu fünf verschiedene Bereitstellungen geben. Bei der Planung stellt sich nicht nur die Frage, in welcher Stadt Server aufgestellt werden sollen, sondern an welcher Adresse.</p>
+	<p>Um das alles zu verstehen, gehen wir das Problem mit Simulationen an. Einige, aber nicht alle, der von uns modellierten Variablen umfassen historische Traffic-Wachstumsraten, vorhersehbare anomale Spitzen (z. B. Cyber Day in Chile) und Verbrauchszustände aus unserer Live-Deal-Pipeline sowie Produktkosten, Nutzerwachstum und Endkundenakzeptanz. Wir berücksichtigen auch die Standortzuverlässigkeit, das Expansionspotenzial und zu erwartende regionale Expansion und Partnerschaften, ebenso wie strategische Prioritäten und, natürlich, das Feedback unserer fantastischen Systems Reliability Engineers.</p>
+	<div class="flex anchor relative">
+		<h3 id="flexible-supply-chain"><b>Flexible Lieferkette</b></h3>
+		<a href="https://blog.cloudflare.com/#flexible-supply-chain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zu wissen, wo ein Server aufgestellt werden sollte, ist nur die erste Herausforderung von vielen, wenn es um ein globales Netzwerk geht. Genau wie unsere Nutzerbasis muss auch unsere Lieferkette die ganze Welt umfassen und gleichzeitig flexibel genug bleiben, um schnell auf Zeitbeschränkungen, Preisänderungen einschließlich Steuern und Zölle, Import-/Exportbeschränkungen und erforderliche Zertifizierungen zu reagieren – ganz zu schweigen von den vielen weiteren dynamischen standortspezifischen Variablen, die mit lokalen Partnerschaften verbunden sind. Ein weiterer Grund, weshalb wir reaktionsschnell bleiben müssen, ist, dass es auch bei den am sorgfältigsten vorbereiteten Plänen immer zu unvorhergesehenen Hindernissen und Umwegen kommen wird. So könnte beispielsweise eine geplante Erweiterung an unserem Standort Prag eine erweiterte Präsenz in Wien als Ausfallsicherung rechtfertigen.</p>
+	<p>Sobald die Server in unseren Rechenzentren eintreffen, arbeiten unsere Teams für Rechenzentrumsbereitstellung und technischen Betrieb mit unseren Anbietern und den Mitarbeitern des Rechenzentrums (unsere „Remote Hands“ und „Smart Hands“) zusammen, um den physischen Server zu installieren, die Verkabelung abzuwickeln und andere Bereitstellungsprozesse in der Frühphase zu erledigen.</p>
+	<p>Unsere <a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world">Architektur</a> ist so konzipiert, dass jeder Server jeden Dienst unterstützen kann, wodurch wir Hardwareausfälle leichter verkraften und die Workloads effizient zwischen Geräten und Standorten verteilt werden können.</p>
+	<div class="flex anchor relative">
+		<h2 id="join-our-team"><b>Werden Sie Teil unseres Teams</b></h2>
+		<a href="https://blog.cloudflare.com/#join-our-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie gerne in einem schnell wachsenden, global diversifizierten Unternehmen arbeiten möchten: wir <a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer">suchen Kandidaten</a> für eine Vielzahl von Positionen, auch im Bereich Infrastruktur. Wenn Sie zur Steigerung der Hardwareeffizienz beitragen, Server bereitstellen und warten, an unserer Lieferkette arbeiten oder ISP-Partnerschaften stärken möchten, setzen Sie sich mit uns in Verbindung.</p>
+	<p><i>*Repräsentiert Städte, in denen wir Rechenzentren mit aktiven Internet-Ports haben und in denen wir – zum Zeitpunkt der Veröffentlichung – unsere Server so konfigurieren, dass sie Datenverkehr für mehr Kunden abwickeln können.</i></p>
+	<p><a href="https://blog.cloudflare.com/tag/cloudflare-network">Cloudflare Netzwerk</a> <a href="https://blog.cloudflare.com/tag/data-center">Rechenzentrum</a> <a href="https://blog.cloudflare.com/tag/africa">Afrika</a> <a href="https://blog.cloudflare.com/tag/south-america">Südamerika</a> <a href="https://blog.cloudflare.com/tag/india">Indien</a></p>
+</div>

@@ -1,0 +1,837 @@
+<div class="mb2 gray5">21분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/private-rate-limiting">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/private-rate-limiting">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47hyta5R7SyBkQGy0jhFjH/b2509cf86400d6168130b7f981aaf9fb/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>우리가 인터넷과 상호 작용하는 방식이 변화하고 있습니다. 오래 전까지 피자 주문은 웹 사이트를 방문하여 메뉴를 클릭하고 결제 세부 정보를 입력하는 것이었습니다. 머지않아 <a href="https://www.cnet.com/tech/services-and-software/i-had-chatgpt-order-me-a-pizza-this-could-change-everything" target="_blank" rel="noopener noreferrer"><u>휴대폰으로</u></a> 선호하는 피자를 주문할 수도 있을 것입니다. 우리가 <a href="https://developers.cloudflare.com/agents/concepts/what-are-agents" target="_blank" rel="noopener noreferrer"><u>AI 에이전트</u></a>라고 부르는 사용자의 장치나 원격 서버의 프로그램이 웹사이트를 방문하여 사용자를 대신하여 필요한 단계를 조율합니다.</p>
+	<p>물론 에이전트는 피자를 주문하는 것 이상의 일을 할 수 있습니다. 머지 않아 콘서트 티켓을 구매하거나, 휴가를 계획하거나, 심지어 풀 요청을 작성하고, 검토하고, 병합하는 데 API를 사용할 수 있게 될 것입니다. 이러한 작업 중 일부는 로컬에서 실행되겠지만, 현재로서는 대부분 세계에서 가장 큰 데이터 센터에서 실행되는 대규모 AI 모델로 구동됩니다. 에이전트형 AI의 인기가 증가함에 따라 이러한 AI 플랫폼의 트래픽이 크게 증가하고 휴대폰 등 기존 소스로부터의 트래픽은 감소할 것으로 예상됩니다.</p>
+	<p>이러한 트래픽 패턴의 변화로 인해 AI 시대에 고객을 온라인 상태로 유지하고 보안을 유지하는 방법을 평가하게 되었습니다. 한편으로는 요청의 특성이 변화하고 있습니다. 인간 방문자에게 최적화된 웹 사이트는 더 빠르고, 잠재적으로 더 많은 트래픽을 요구할 수 있는 에이전트에 대처해야 합니다. 반면에 AI 플랫폼은 곧 플랫폼 자체의 악의적인 사용자에 의해 시작된 중요한 공격 출처가 될 수 있습니다.</p>
+	<p>안타깝게도 기존의 이러한 (오류) 행동을 관리하는 도구는 이러한 전환을 관리하기에는 너무 대략적일 수 있습니다. <a href="https://blog.cloudflare.com/per-customer-bot-defenses"><u>예를 들어, 특정 요청이 알려진 공격 패턴의 일부라는 것을 Cloudflare가 감지한</u></a> 경우, 최선의 조치는 동일한 소스의 후속 요청을 모두 차단하는 것입니다. 소스가 AI 에이전트 플랫폼인 경우, 같은 플랫폼의 모든 사용자, 심지어 피자를 주문하려는 정직한 사용자까지 의도하지 않게 차단할 수 있습니다. Cloudflare는 <a href="https://blog.cloudflare.com/web-bot-auth"><u>올해 초</u></a> 이 문제를 해결하기 시작했습니다. 하지만 에이전트 AI의 인기가 커지면서, 인터넷에는 정직한 사용자에게 영향을 주지 않으면서 에이전트를 관리하기 위한 더욱 세분화된 메커니즘이 필요하다고 생각합니다.</p>
+	<p>동시에, Cloudflare는 이러한 보안 메커니즘은 사용자의 개인정보 보호를 핵심으로 하여 설계되어야 한다고 생각합니다. 이 게시물에서는 <b>익명 자격 증명(AC)</b> 을 사용하여 이러한 도구를 구축하는 방법을 설명합니다. 익명 자격 증명을 사용하면 웹 사이트 운영자가 사용자를 식별하거나 전체 요청을 추적하지 않고도 사용자 레이트 리미팅이나 악의적인 특정 사용자 차단과 같은 광범위한 보안 정책을 적용할 수 있습니다.</p>
+	<p><a href="https://mailarchive.ietf.org/arch/msg/privacy-pass/--JXbGvkHnLq1iHQKJAnfn5eH9A" target="_blank" rel="noopener noreferrer"><u>IETF에서는</u></a> 웹 사이트, 브라우저, 플랫폼에서 작동할 수 있는 표준을 제공하기 위해 익명 자격 증명을 개발 중입니다. 아직 초기 단계이지만, Cloudflare는 이 작업이 AI 시대에 인터넷을 안전하고 비공개로 유지하는 데 중요한 역할을 할 것이라고 믿습니다. 우리는 실제 배포를 향해 작업하면서 이 프로세스에 기여할 것입니다. 아직은 초기 단계입니다. 혹 이 시기에 관련되어 일하고 계시다면 여러분도 함께 도움을 드리고 기여해 주시기를 바랍니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-build-a-small-agent">소규모 에이전트 구축하기</h2>
+		<a href="https://blog.cloudflare.com/#lets-build-a-small-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 에이전트가 웹 서버에 어떤 영향을 미치는지 논의하는 데 도움이 되도록 직접 에이전트를 구축해 보겠습니다. 인근 피자 가게에서 피자를 주문할 수 있는 에이전트를 확보하는 것이 목표입니다. 에이전트가 없다면 브라우저를 열고, 근처에 어떤 피자 가게가 있는지 파악하고, 메뉴를 보고 선택하고, 메뉴를 추가하고(더블 페퍼로니), 신용카드로 결제를 진행해야 합니다. 에이전트의 경우도 흐름은 동일하며, 에이전트가 사용자를 대신하여 브라우저를 열고 오케스트레이션한다는 점입니다.</p>
+	<p>기존의 흐름에서는 사람이 도중에 있으며 각 단계마다 명확한 의도가 있습니다. 현재 위치에서 3km 이내에 있는 모든 피자 가게를 나열합니다. 메뉴에서 피자를 선택하세요. 내 신용 카드를 입력하세요. 이런 식으로요. 반면에 에이전트는 "피자 주문" 프롬프트에서 이러한 각 작업을 추론해야 합니다.</p>
+	<p>이 섹션에서는 프롬프트를 받고 요청을 보낼 수 있는 간단한 프로그램을 구축합니다. 다음은 특정 프롬프트를 사용하고 그에 따라 응답을 생성하는 간단한 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Worker</u></a> 의 예입니다. 코드는 <a href="https://github.com/cloudflareresearch/mini-ai-agent-demo" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>에서 찾을 수 있습니다:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
+           prompt: `I'd like to order a pepperoni pizza with extra cheese.
+                    Please deliver it to Cloudflare Austin office.
+                    Price should not be more than $20.`,
+       });
+
+
+       return new Response(out.response);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>이러한 맥락에서 LLM이 최선의 해답을 제공합니다. 우리에게 계획과 지침을 제공할 뿐, 우리를 대신하여 작업을 수행하지는 않습니다. 우리에게는 선택의지가 있고 세상에 영향을 미칠 수 있으므로, 여러분과 저는 지침 목록을 받아들고 조치를 취할 수 있습니다. 에이전트가 더 많은 세상과 상호 작용할 수 있도록 웹 브라우저에 대한 제어 권한을 부여합니다.</p>
+	<p>Cloudflare에서는 Worker에 직접 바인딩할 수 있는 <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>브라우저 렌더링</u></a> 서비스를 제공합니다. 그렇게 합시다. 다음 코드에서는 브라우저를 간단하게 제어할 수 있게 해주는 자동화 프레임워크인 스테이지핸드를 <a href="https://www.stagehand.dev" target="_blank" rel="noopener noreferrer"><u>사용합니다.</u></a> 저희는 여기에 Cloudflare 원격 브라우저의 인스턴스 및 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>용 클라이언트를 전달합니다.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient"; // wrapper to convert cloudflare AI
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+
+
+       const page = stagehand.page;
+       await page.goto("https://mini-ai-agent.cloudflareresearch.com/llm");
+
+
+       const { extraction } = await page.extract("what are the pizza available on the menu?");
+       return new Response(extraction);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>해당 코드는 <a href="https://mini-ai-agent.cloudflareresearch.com/llm" target="_blank" rel="noopener noreferrer"><i><u>https://mini-ai-agent.cloudflareresearch.com/llm</u></i></a>에서 직접 확인할 수 있습니다. 2025년 10월 10일에 Cloudflare가 받은 응답은 다음과 같습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">Margherita Classic: $12.99
+Pepperoni Supreme: $14.99
+Veggie Garden: $13.99
+Meat Lovers: $16.99
+Hawaiian Paradise: $15.49</code></pre>
+	<p>브라우저 렌더링의 스크린샷 API를 사용하여 에이전트가 무엇을 하고 있는지 검사할 수도 있습니다. 위 예시에서 브라우저가 페이지를 렌더링하는 방법은 다음과 같습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lXTePCTUORCyyOWNNcwZ8/5978abd1878f78107a2c9606c3a1ef51/image4.png" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+	</figure>
+	<p><code>스테이지핸드를 사용하면 page.act("Click on 페퍼로니 피자")</code> 및 <code>page.act("지금 결제를</code> 클릭하세요")와 같은 페이지의 구성 요소를 식별할 수 있습니다. 이렇게 하면 개발자와 브라우저 간의 상호 작용이 수월해집니다.</p>
+	<p>더 나아가서 에이전트가 전체 흐름을 자율적으로 수행하도록 지시하려면 스테이지핸드의 적절한 이름을 가진 <a href="https://docs.stagehand.dev/basics/agent" target="_blank" rel="noopener noreferrer"><u>에이전트</u></a> 모드를 사용해야 합니다. 이 기능은 아직 Cloudflare Workers에서 지원되지 않지만, 완전성을 위해 아래에 제공됩니다.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient";
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+       
+       const agent = stagehand.agent();
+       const result = await agent.execute(`I'd like to order a pepperoni pizza with extra cheese.
+                                           Please deliver it to Cloudflare Austin office.
+                                           Price should not be more than $20.`);
+
+
+       return new Response(result.message);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>단계별 지침을 추가하는 대신 에이전트가 제어할 수 있음을 확인할 수 있습니다. 실제로 결제하려면 <a href="https://en.wikipedia.org/wiki/Controlled_payment_number" target="_blank" rel="noopener noreferrer"><u>가상 신용 카드</u></a>와 같은 결제 방법에 액세스할 수 있어야 합니다.</p>
+	<p>위치 범위를 Cloudflare의 오스틴 사무실로 지정했다는 점에서 이 프롬프트는 약간 미묘한 차이가 있습니다. 이는 에이전트가 우리에게 응답하는 동안 맥락을 이해해야 하기 때문입니다. 이 경우 에이전트는 우리와 멀리 떨어진 Cloudflare 에지에서 작동합니다. 이는 음식이 배달되었다 하더라도 이 <a href="https://www.cloudflare.com/learning/cdn/glossary/data-center" target="_blank" rel="noopener noreferrer"><u>데이터 센터</u></a> 에서 피자를 배달받을 가능성은 거의 없음을 의미합니다.</p>
+	<p>우리가 에이전트에게 더 많은 기능을 제공할수록, 일부 혼란을 초래할 수 있는 능력이 커집니다. 10초당 1개의 요청이라는 느린 속도로 5개의 클릭을 수행하는 대신, 데이터 센터에서 프로그램을 실행하여 1초에 5개의 요청을 모두 수행할 수 있게 되었습니다.</p>
+	<p>이 에이전트는 단순하지만, 이제 수천 개에 달하는 수천 가지가 데이터 센터 속도로 실행되는 모습을 상상해 보세요. 오리진들은 바로 이 문제에 직면하게 됩니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="protecting-origins">원본 보호</h2>
+		<a href="https://blog.cloudflare.com/#protecting-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>인간이 온라인 세계와 상호 작용하려면 웹 브라우저와 해당 브라우저의 동작을 지시할 주변 장치가 필요합니다. 에이전트는 브라우저에 지시를 내리는 또 다른 방법이므로, 원본의 관점에서 실제로 바뀌는 것은 별로 없다고 생각할 수도 있습니다. 실제로 원본 서버의 관점에서 볼 때 가장 눈에 띄는 변화는 바로 트래픽이 어디에서 오는지입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/304j2MNDUNwAaipqmH2Jbt/35beb792bda327a6cf0db3b642bbc4d6/unnamed-1.png" alt="" class="kg-image" width="1600" height="780" loading="lazy">
+	</figure>
+	<p>이러한 변경이 중요한 이유는 서버에서 트래픽을 관리하기 위해 제공하는 도구와 관련이 있습니다. 웹 사이트는 일반적으로 최대한 관대하려고 노력하지만, 한정된 리소스(대역폭, CPU, 메모리, 저장 공간 등)도 관리해야 합니다. 이를 수행하는 몇 가지 기본 방법이 있습니다.</p>
+	<ol>
+		<li>
+			<p><b>글로벌 보안 정책</b>: 서버는 모든 사용자의 요청을 느리게 하거나, 캡차를 사용하거나, 심지어 일시적으로 차단할 수도 있습니다. 이 정책은 전체 사이트, 특정 리소스 또는 알려지거나 가능성이 있는 공격 패턴의 일부로 분류된 요청에 적용할 수 있습니다. 이러한 메커니즘은 DDoS 공격에서와 같이 트래픽 급증이 관찰된 것에 대응하여 또는 <a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer"><u>Waiting Room</u></a>에서처럼 정상적인 트래픽의 급증을 예상하여 배포될 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>인센티브</b>: 서버는 때로 가용한 리소스가 더 많을 때 사용자가 사이트를 사용하도록 장려하려고 합니다. 예를 들어 서버 가격은 위치 또는 요청 시간에 따라 더 낮을 수 있습니다. 이는 <a href="https://developers.cloudflare.com/rules/snippets/when-to-use" target="_blank" rel="noopener noreferrer"><u>Cloudflare Snippets</u></a>으로 구현할 수 있습니다.</p>
+		</li>
+	</ol>
+	<p>두 도구는 모두 효과적일 수 있지만, 때로는 심각한 부수적 피해를 초래하기도 합니다. 예를 들어 웹 사이트의 로그인 엔드포인트를 레이트 리미팅하면 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-against-credential-stuffing" target="_blank" rel="noopener noreferrer"><u>자격 증명 스터핑 공격을 방지할 수</u></a> 있지만, 공격자가 아닌 경우 사용자 경험이 저하됩니다. 이러한 조치를 취하기 전에, 서버는 먼저 보안 정책(속도 제한, CAPTCHA, 완전 차단 등)을 개별 사용자 또는 사용자 그룹에 적용하려고 시도합니다.</p>
+	<p>그러나 보안 정책을 개인에게 적용하려면 서버에는 개인을 식별할 수 있는 방법이 필요합니다. 지금까지 이는 IP 주소, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent" target="_blank" rel="noopener noreferrer"><u>사용자 에이전트</u></a>, 사용자 ID에 연결된 계정(사용 가능한 경우) 및 기타 지문의 조합을 통해 수행되었습니다. 대부분의 클라우드 서비스 공급자와 마찬가지로 Cloudflare는 이러한 휴리스틱을 기반으로 사용자당 레이트 리미팅을 적용하는 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices" target="_blank" rel="noopener noreferrer"><u>전용 제품</u></a> 을 제공합니다.</p>
+	<p>지문 인식은 대부분 효과가 있습니다. 하지만 이는 공평하게 분산되어 있지 않습니다. 모바일에서 사용자는 <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>특히 CAPTCHA를 해결하는 데 어려움을 겪습니다</u></a>. VPN을 사용할 때 그들은 <a href="https://arstechnica.com/tech-policy/2023/07/meta-blocking-vpn-access-to-threads-in-eu" target="_blank" rel="noopener noreferrer"><u>더 가능성이</u></a> <a href="https://www.theregister.com/2015/10/19/bbc_cuts_off_vpn_to_iplayer" target="_blank" rel="noopener noreferrer"><u>더 높습니다</u></a> <a href="https://torrentfreak.com/hulu-blocks-vpn-users-over-piracy-concerns-140425" target="_blank" rel="noopener noreferrer"><u>차단될</u></a> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/troubleshooting/common-issues" target="_blank" rel="noopener noreferrer"><u>차단</u></a><a href="https://help.netflix.com/en/node/277" target="_blank" rel="noopener noreferrer"><u>될</u></a> 수 있으며, <a href="https://www.peteresnyder.com/static/papers/speedreader-www2019.pdf" target="_blank" rel="noopener noreferrer"><u>읽기 모드</u></a>를 사용할 경우 지문이 엉망이 되어 페이지 렌더링이 불가능해질 수 있습니다.</p>
+	<p>마찬가지로 에이전틱 AI는 핑거프린팅의 한계를 악화시킬 뿐입니다. 더 작은 소스 IP 범위에 더 많은 트래픽이 집중될 뿐만 아니라 에이전트 자체가 동일한 소프트웨어 및 하드웨어 플랫폼을 실행하므로 정직한 사용자와 악의적인 사용자를 구분하기가 더 어려워집니다.</p>
+	<p>여기에 도움이 될 만한 것은 에이전트가 자신이 어떤 플랫폼에서 운영되고 있는지를 원본으로 확인할 수 있게 해주는 <a href="https://blog.cloudflare.com/web-bot-auth"><u>웹 봇 인증</u></a>입니다. 그러나 플랫폼 자체를 식별하기 위한 이 메커니즘을 플랫폼의 개별 사용자를 식별하기 위한 용도로 확장하고 싶지는 않습니다.</p>
+	<p>개별 사용자를 식별하지 않고 이에 대한 보안 제어를 구현할 수 있는 방법이 필요합니다. 하지만 어떻게 해야 할까요? The Privacy Pass 프로토콜은 <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>부분적인 솔루션을 제공합니다</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="privacy-pass-and-its-limitations">Privacy Pass 및 그 한계</h2>
+		<a href="https://blog.cloudflare.com/#privacy-pass-and-its-limitations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘날 가장 눈에 띄는 Privacy Pass 사용 사례 중 하나는 앞에서 설명한 것처럼 사용자에서 원본에 대한 요청을 <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer"><u>속도</u></a> <a href="https://blog.cloudflare.com/privacy-pass-standard/#privacy-pass-protocol"><u>제한하는</u></a> 것입니다. 프로토콜은 대략 다음과 같이 작동합니다. 클라이언트는 여러 <b>토큰</b> 을 <b>발급 받습니다</b>. 요청을 수행할 때마다 토큰 중 하나를 원본에게 <b>사용합니다</b>. 원본은 토큰이 <b>새로운</b> 경우, 즉 원본에서 이전에 관찰한 적이 없는 경우에만 요청 통과를 허용합니다.</p>
+	<p>사용자당 레이트 리미팅에 Privacy Pass를 사용하려면 각 사용자에게 발급되는 토큰의 수를 제한해야 합니다(예: 시간당 사용자당 100개 토큰). AI 에이전트의 레이트 리미팅의 경우, 이 역할은 AI 플랫폼이 수행합니다. 토큰을 받으려면 사용자는 플랫폼으로 로그인해야 하며, 플랫폼을 통해 사용자는 발급자로부터 토큰을 받을 수 있습니다. AI 플랫폼은 Privacy Pass <a href="https://datatracker.ietf.org/doc/html/rfc9576" target="_blank" rel="noopener noreferrer"><u>용어 에서</u></a> <b>증명자</b> 역할을 수행합니다. 증명자는 속도 제한의 사용자별 속성을 보장하는 당사자입니다. AI 플랫폼은 증명자로서 평판을 걸면서 이러한 토큰 배포를 시행하도록 인센티브를 받습니다. 너무 많은 토큰이 발급되도록 허용하면 발급자가 토큰을 불신할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62Rz5eS1UMm2pKorpowEGg/4949220bdf2fa3c39ccfa17d4df70fff/token__1_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>발행 및 상환 프로토콜은 다음과 같은 두 가지 속성을 갖도록 설계되었습니다.</p>
+	<ul>
+		<li>
+			<p>토큰은 <b>위조할 수 없으며</b> 발급자만 유효한 토큰을 발행할 수 있습니다.</p>
+		</li>
+		<li>
+			<p>토큰은 <b>연결할 수 없습니다. </b>발급자, 증명자, 출처를 포함한 그 어떤 당사자도 토큰이 어떤 사용자에게 발급되었는지 알 수 없습니다. </p>
+		</li>
+	</ul>
+	<p><a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>이러한 속성은 블라인드 서명</u></a> 체계라는 <a href="https://csrc.nist.gov/glossary/term/cryptographic_primitive" target="_blank" rel="noopener noreferrer"><u>암호화 기본 요소를</u></a> 사용하여 얻을 수 있습니다. 기존의 서명 체계에서는 서명자가 <b>개인 키</b> 를 사용하여 메시지에 대한 서명을 생성합니다. 나중에 검증자는 서명자의 <b>공개 키</b> 를 사용하여 서명을 검증할 수 있습니다. 블라인드 서명 체계도 동일한 방식으로 작동하지만, 단, 서명할 메시지가 블라인드되어 서명자가 메시지를 작성할 수 없다는 점을 다릅니다. 클라이언트는 서명할 메시지를 '숨겨진(blind)' 후 서버로 전송하며, 서버는 숨은 메시지에 대해 블라인드 서명을 계산합니다. 클라이언트가 서명의 블라인드를 해제하여 최종 서명을 얻습니다. </p>
+	<p>표준화된 Privacy Pass 발급 프로토콜이 <a href="https://www.rfc-editor.org/rfc/rfc9578" target="_blank" rel="noopener noreferrer"><u>RFC 9578</u></a>에서 정의된 방식입니다.</p>
+	<ul>
+		<li>
+			<strong>발행:</strong> 사용자가 우리가
+			<strong> nullifier라고</strong> 부르는 무작위 메시지
+			<strong>$k$를</strong>
+			생성합니다. 구체적으로, 이는 무작위의 32바이트 문자열입니다. 그런 다음 무효화 요소를 블라인드하고 발행자에게 보냅니다. 발급자는 블라인드 서명으로 응답합니다. 마지막으로, 사용자는 서명의 블라인드를 해제하여 무효화 기호
+			<strong>$k$에 대한</strong>
+			서명인
+			<strong>$k$를</strong> 얻습니다. 토큰은
+			<strong>$(k, \sigma)$</strong> 쌍입니다.
+		</li>
+		<li>
+			<strong>상환:</strong> 사용자가
+			<strong>$(k, \sIGMA)$를</strong> 제시하면 원본은
+			<strong>$\s그마$가</strong> 무효화 기호
+			<strong>$k$에</strong> 대한 유효한 서명이고
+			<strong>$k$가</strong> 새로운 것인지 확인합니다. 두 조건에 모두 해당하는 경우 요청을 수락하고 통과시킵니다.
+		</li>
+	</ul>
+	<p>블라인드 서명은 간단하고 저렴하며 많은 애플리케이션에 완벽하게 적합합니다. 하지만 몇 가지 제한 사항이 있어 저희 사용 사례에 적합하지 않습니다.</p>
+	<p>첫째, 발급 프로토콜의 통신 비용이 너무 높습니다. 발급된 각 토큰에 대해 사용자는 256바이트 블라인드 무효화를 보내고 발급자는 256바이트 블라인드 서명으로 응답합니다(RSA-2048이 사용된다고 가정). 이는 요청당 0.5KB의 추가 통신 또는 1,000개 요청당 500KB입니다. 이는 이전에 Privacy Pass에 대한 <a href="https://eprint.iacr.org/2023/414.pdf" target="_blank" rel="noopener noreferrer"><u>실험에서 본</u></a> 것처럼 관리할 수 있는 수준이지만, 이상적이지는 않습니다. 이상적으로는, 대역폭이 적용하려는 레이트 리미팅에서 아선형이어야 합니다. 컴퓨팅 시간이 더 짧은 블라인드 서명의 대안은 Oblivious Pseudorandom Functions(<a href="https://datatracker.ietf.org/doc/rfc9497" target="_blank" rel="noopener noreferrer"><u>VOPRF</u></a>)이지만, 대역폭은 여전히 점근적으로 선형적입니다. 이러한 내용은 Privacy Pass의 초기 <a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>배포를 위한 기반이 되었기 때문에 과거에도 논의한 바 있습니다.</u></a></p>
+	<p>둘째, 블라인드 서명은 원본별로 속도를 제한하는 데 사용할 수 없습니다. 이상적으로는, 클라이언트에게 $N$ 토큰을 발급할 때 클라이언트는 토큰의 유효성을 확인할 수 있는 모든 원본 서버에서 최대 $N$ 토큰을 사용할 수 있습니다. 그러나 서버가 이러한 교환을 동일한 클라이언트에 연결할 수 있기 때문에 클라이언트는 둘 이상의 서버에서 동일한 토큰을 안전하게 교환할 수 없습니다. 필요한 것은 우리가 <b>지연된 원본 바인딩</b>이라고 부를 만한 몇 가지 메커니즘입니다. 특정 원본에서 상환용 토큰을 동일한 토큰의 다른 상환과 연결할 수 없는 방식으로 변환하는 것입니다.</p>
+	<p>셋째, 일단 토큰이 발급되면 취소할 수 없으며 발급자의 공개 키가 유효한 한 유효합니다. 따라서 공격을 감지하거나 토큰이 손상된 경우에도 원본 서버가 특정 사용자를 차단할 수 없습니다. 원본 서버는 문제가 되는 요청을 차단할 수 있지만, 사용자는 남은 토큰 예산을 사용하여 계속 요청을 보낼 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-credentials-and-the-future-of-privacy-pass">익명 자격 증명과 Privacy Pass의 미래</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-credentials-and-the-future-of-privacy-pass" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1985년 <a href="https://dl.acm.org/doi/pdf/10.1145/4372.4373" target="_blank" rel="noopener noreferrer"><u>Chaum</u></a> 이 언급한 바와 같이, <b>익명의 자격 증명</b> 시스템을 통해 사용자는 발급자로부터 자격 증명을 발급받은 후 추가 정보를 공개하지 않고도 나중에 연결할 수 없는 방식으로 이 자격 증명의 소유권을 증명할 수 있습니다. 또한, 자격 증명에 일부 속성이 첨부되어 있음을 입증할 수도 있습니다.</p>
+	<p>익명의 자격 증명을 후기 바인딩(발급 후 토큰 원본에 연결), 멀티 쇼(단일 발급자 응답에서 여러 토큰 생성), 만료 등의 추가 기능을 갖춘 일종의 블라인드 서명으로 생각하면 됩니다 이는 키 순환과 다릅니다(발급자 암호화 키 유효성과 분리된 토큰 유효성). Privacy Pass의 상환 흐름에서 클라이언트는 블라인드되지 않은 메시지와 서명을 서버에 제시합니다. 상환을 수락하려면 서버가 서명을 확인해야 합니다. AC 시스템에서는 클라이언트가 <b>메시지의 일부</b>만 제시합니다. 서버가 요청을 수락하려면 클라이언트가 메시지 전체를 공개하지 않고 전체 메시지에 대한 유효한 서명을 알고 있음을 서버에 증명해야 합니다.</p>
+	<p>따라서 위에서 설명한 흐름에는 이러한 추가 <b>프레젠테이션</b> 단계가 포함됩니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pb3ZDoAHbDLEt0mxtf67T/b6be11710a7df7a4df7d1c89788285a7/credentials__2_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>블라인드 서명이나 VOPRF를 통해 생성된 토큰은 한 번만 사용할 수 있으므로 <i>일회용 토큰</i>으로 간주할 수 있습니다. 그러나 토큰을 여러 번 사용할 수 있는 익명 자격 증명 유형이 있습니다. 이 과정을 위해 발급자는 사용자에게 <i>자격 증명</i> 을 부여하며, 사용자는 나중에 상환을 위해 최대 <i>N</i> 개의 일회용 토큰을 추출할 수 있습니다. 따라서 사용자는 단일 발급 세션을 희생하여 여러 요청을 보낼 수 있습니다. </p>
+	<p>아래 표에서는 블라인드 서명과 익명 자격 증명이 레이트 리미팅에 대한 관심 대상 기능을 어떻게 제공하는지 설명합니다.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>기능</b></p>
+				</td>
+				<td>
+					<p><b>블라인드 서명</b></p>
+				</td>
+				<td>
+					<p><b>익명 자격 증명</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>발급 비용</b></p>
+				</td>
+				<td>
+					<p>선형적인 복잡성: 10개의 서명을 발급하는 것이 1개의 서명을 발급하는 것보다 10배 더 비쌉니다.</p>
+				</td>
+				<td>
+					<p>준선형 복잡성: 10개의 속성을 서명하는 것이 10개의 개별 서명보다 저렴합니다</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>능력 증명</b></p>
+				</td>
+				<td>
+					<p>메시지가 서명되었다는 것만 증명하세요</p>
+				</td>
+				<td>
+					<p>부분 진술(즉, 속성)의 효율적인 증명 허용</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>상태 관리</b></p>
+				</td>
+				<td>
+					<p>상태 비저장</p>
+				</td>
+				<td>
+					<p>상태 저장</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>속성</b></p>
+				</td>
+				<td>
+					<p>속성 없음</p>
+				</td>
+				<td>
+					<p>퍼블릭(예: 만료 시간) 및 비공개 상태</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		간단한 익명 자격 증명 스킴이 어떻게 작동하는지 살펴보겠습니다. 클라이언트의 메시지는
+		<strong>$(k, C)$</strong> 쌍으로 구성됩니다. 여기서
+		<strong>$k$는</strong> <strong></strong> 무효화이고
+		<strong>$C$는</strong> 클라이언트가 리소스에 액세스할 수 있는 남은 횟수를
+		<strong></strong> 나타내는 카운터입니다. 카운터의 금액은 서버에서 제어합니다. 클라이언트는 자격 증명을 교환할 때 무효화와 카운터를 모두 제시합니다. 이에 대한 응답으로 서버는 메시지의 서명이 유효한지, 이전과 마찬가지로 null 기호가 새로운지 확인합니다. 또한, 서버도
+	</p>
+	<ol>
+		<li>
+			<p>카운터가 0보다 큰지 확인합니다. 그리고</p>
+		</li>
+		<li>
+			<p>업데이트된 카운터에 대해 새 자격 증명을 발급하고 새로운 무효화를 발행하는 카운터를 감소시킵니다.</p>
+		</li>
+	</ol>
+	<p>이러한 기능을 충족하기 위해 블라인드 서명을 이용할 수 있습니다. 그러나 이전처럼 nullifier를 블라인드할 수 있는 반면, 서버가 카운터가 유효한지(단계 1) 확인하고 업데이트(단계 2)할 수 있도록 일반 텍스트로 카운터를 처리해야 합니다. 이는 카운터를 제어하는 서버가 동일한 클라이언트의 여러 프레젠테이션을 연결하는 데 사용할 수 있으므로 명백한 개인정보 위험을 초래합니다. 예를 들어, 사용자가 페퍼로니 피자를 사려고 연락할 때 원본에서 특별한 카운터 값을 할당하여 두 번째 피자를 제시할 때 지문 인식이 쉬워질 수 있습니다. 다행히도, 익명의 자격 증명이 이러한 개인정보 보호 격차를 해소할 수 있도록 고안되었습니다.</p>
+	<p>위의 스킴은 Anonymous Credit 토큰(<a href="https://datatracker.ietf.org/doc/draft-schlesinger-cfrg-act" target="_blank" rel="noopener noreferrer"><u>ACT</u></a>)을 단순화한 것으로 IETF의 <a href="https://datatracker.ietf.org/wg/privacypass/about" target="_blank" rel="noopener noreferrer"><u>Privacy Pass 워킹 그룹</u></a> 이 채택을 고려하고 있는 익명의 자격 증명 스킴 중 하나입니다. ACT의 주요 기능은 <b>상태 저장</b>입니다. 상환에 성공하면 서버가 nullifier와 카운터 값이 업데이트된 새 자격 증명을 재발급합니다. 이렇게 하면 클라이언트와 서버 간에 다양한 보안 정책을 표현하는 데 사용할 수 있는 피드백 루프가 생성됩니다.</p>
+	<p>설계상 ACT 자격 증명은 동시에 여러 번 제시할 수 없습니다. 다음 요청에서 재발급된 자격 증명을 제시할 수 있도록 첫 번째 제시를 완료해야 합니다. <b>병렬 처리 </b>는 Privacy Pass 워킹 그룹에서 논의 중인 또 다른 방식인 Anonymous Rate-limited Credential(<a href="https://datatracker.ietf.org/doc/html/draft-yun-cfrg-arc-00" target="_blank" rel="noopener noreferrer"><u>ARC</u></a>)의 주요 기능입니다. ARC는 발행 중에 결정된 표시 제한까지 여러 요청에 병렬로 제시될 수 있습니다.</p>
+	<p>ARC의 또 다른 중요한 기능은 후기 원본 바인딩을 지원한다는 것입니다. 클라이언트가 표시 제한이 $N$인 ARC가 발행되면 클라이언트는 안전하게 자격 증명을 사용하여 자격 증명을 확인할 수 있는 모든 원본에 $N$번까지 제시할 수 있습니다 .</p>
+	<p>이는 일부 익명 자격 증명의 관련 기능을 보여주는 예시일 뿐입니다. 일부 응용 프로그램은 이러한 하위 집합으로부터 이점을 얻을 수 있습니다. 추가 기능이 필요할 수 있습니다. 다행히도 ACT와 ARC 모두 다른 목적으로 쉽게 조정할 수 있는 소규모 암호화 기본 요소 집합으로 구성할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-blocks-for-anonymous-credentials">익명 자격 증명 구성 요소</h2>
+		<a href="https://blog.cloudflare.com/#building-blocks-for-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ARC와 ACT는 두 가지 기본 원칙을 공유합니다. <a href="https://eprint.iacr.org/2013/516.pdf" target="_blank" rel="noopener noreferrer"><u><b>대수 MAC는</b></u></a> 블라인드 메시지에 대해 제한된 계산을 제공하며, 및 서버에 공개되지 않은 메시지 부분의 유효성을 증명하는 영지식 <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><u><b>증명(ZKP)을 포함합니다.</b></u></a> 각각에 대해 자세히 살펴보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="algebraic-macs">대수적 MAC</h3>
+		<a href="https://blog.cloudflare.com/#algebraic-macs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>메시지 인증 코드(MAC)는 메시지의 진위(요청한 발신자가 보낸 것인지)와 무결성(변조되지 않은 것인지)을 확인하는 데 사용되는 암호화 태그입니다. 대수적 MAC는 <a href="https://en.wikipedia.org/wiki/Group_action" target="_blank" rel="noopener noreferrer"><u>그룹 작업</u></a>과 같은 수학적 구조로 구축됩니다. 대수적 구조 덕분에 몇 가지 추가 기능이 제공되며, 그 중 하나는 MAC의 실제 값을 숨기기 위해 쉽게 숨길 수 있는 <i>동형 함수</i> 입니다. 대수적 MAC에 무작위 값을 추가하면 값이 블라인드됩니다.</p>
+	<p>블라인드 서명과 달리 ACT와 ARC는 모두 <i>비공개로</i> 확인할 수 있습니다. 즉, 발급자와 원본이 모두 발급자의 개인 키를 가지고 있어야 합니다. Cloudflare를 예로 들면, 이는 Cloudflare에서 발급한 자격 증명은 Cloudflare를 지원하는 출처에서만 사용할 수 있음을 의미합니다. 둘 모두의 공개적으로 검증 가능한 변형이 가능하지만, 추가 비용이 발생합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-knowledge-proofs-for-linear-relations">선형 관계에 대한 영지식 증명</h3>
+		<a href="https://blog.cloudflare.com/#zero-knowledge-proofs-for-linear-relations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>영지식 증명(ZKP)을 사용하면 진술을 사실로 만드는 정확한 이유를 공개하지 않고도 진술이 사실임을 증명할 수 있습니다. ZKP는 실제로 비밀을 소유한 사람만 생성할 수 있는 방식으로 증명자가 구성합니다. 그런 다음 검증자는 이 증명에 대해 빠른 수학적 검사를 실행할 수 있습니다. 검사가 통과하면 검증자는 증명자의 초기 진술이 유효하다고 확신합니다. 중요한 특징은 증거 자체가 진술을 확인하는 데이터에 불과하다는 것입니다. 여기에는 원래 비밀을 재구성하는 데 사용될 수 있는 다른 정보는 포함되어 있지 않습니다.</p>
+	<p>ARC와 ACT에 대해 <i>비밀의 선형 관계를 증명하려고 합니다.</i> ARC에서 사용자는 서로 다른 토큰이 동일한 원래 비밀 자격 증명에 연결되어 있음을 증명해야 합니다. 예를 들어, 사용자는 <i>요청 토큰</i> 이 유효하게 <i>발급된 자격 증명에서 도출되었음을 보여주는 증거를</i> 생성할 수 있습니다. 시스템은 이 증명을 검증하여 토큰을 묶어주는 근본적인 비밀 자격 증명을 알지 못한 채 토큰이 합법적으로 연결됐는지 확인할 수 있습니다. 이를 통해 시스템은 사용자의 개인정보를 보장하면서 사용자 행동을 검증할 수 있습니다.</p>
+	<p>단순한 선형 관계식의 증명을 확장하여 예를 들어 숫자가 범위 내에 있다는 것과 같은 강력한 진술의 수를 증명할 수 있습니다. 예를 들어, 계정에 긍정적인 잔액이 있음을 증명할 때 유용합니다. 바이너리로 인코딩할 수 있음을 증명하면, 잔액이 양수인 것을 증명할 수 있습니다. 계정에 최대 1024개의 크레딧이 있다고 가정해 보겠습니다. 예를 들어, 12인 경우 잔액이 0이 아니라는 것을 증명하려면 두 가지를 동시에증명합니다. 비트(8*1 + 4*1 + 2*0 + 1*0)를 이용한 등식의 합은 약정 잔고의 총합이 됩니다. 따라서 검증자는 정확한 값을 학습하지 않고도 숫자가 유효하게 구성되었다고 확신합니다. 이는 2의 거듭제곱에 대해 작동하는 방식이지만, <a href="https://github.com/chris-wood/draft-arc/pull/38" target="_blank" rel="noopener noreferrer"><u>임의의 범위로 쉽게 확장할 수 있습니다</u></a>.</p>
+	<p>대수적 MAC은 의 수학적 구조로 인해 블라인드 및 평가가 용이합니다. 이 구조를 통해 MAC을 공개하지 않고도 개인 키로 MAC이 평가되었음을 쉽게 증명할 수 있습니다. 또한 ARC는 ZKP를 사용하여 이전에 nonce가 사용된 적이 없음을 증명할 수 있습니다. 반면, ACT는 ZKP를 사용하여 토큰에 충분한 잔고가 있음을 증명합니다. 나머지는 더 많은 그룹 구조를 사용하여 동형 방식으로 뺄셈입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-much-does-this-all-cost">이 모든 작업에 비용이 얼마나 들까요?</h2>
+		<a href="https://blog.cloudflare.com/#how-much-does-this-all-cost" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>익명 자격 증명을 사용하면 특정 응용 프로그램의 블라인드 서명에 비해 유연성이 생기고 통신 비용을 줄일 수 있습니다. 이러한 응용 프로그램을 식별하려면 이러한 새로운 프로토콜의 구체적인 통신 비용을 측정해야 합니다. 또한 블라인드 서명 및 모호한 의사 난수 함수와 비교하여 CPU 사용량을 이해할 필요가 있습니다.</p>
+	<p>본 발명자들은 일부 AC 계획의 각 단계에서 각 참여자가 소비하는 시간을 측정했습니다. 또한, 네트워크를 통해 전송되는 메시지의 크기도 보고합니다. ARC, ACT, VOPRF의 경우 <a href="https://doi.org/10.17487/RFC9496" target="_blank" rel="noopener noreferrer"><u>listretto255를</u></a> 소수 그룹으로 사용하고 해싱에 SHake128을 사용합니다. 블라인드 RSA의 경우 해싱에 2048비트 모듈러스와 SHA-384를 사용합니다.</p>
+	<p>각 알고리즘은 <a href="https://github.com/cloudflare/circl" target="_blank" rel="noopener noreferrer"><u>CIRCL</u></a> 라이브러리 위에서 Go로 구현되었습니다. ARC와 ACT의 사양이 안정화되기 시작하면 코드의 소스를 공개할 계획입니다.</p>
+	<p>Privacy Pass: Blind RSA에서 가장 널리 사용되는 배포를 살펴보겠습니다. 사용 시간은 짧으며, 대부분의 비용은 발급 시 서버에 있습니다. 통신 코스트는 거의 일정하며 256바이트 정도입니다.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">블라인드 RSA</span><br><a href="https://doi.org/10.17487/RFC9474"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9474</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(RSA-2048+SHA384)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">토큰 1개</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">발급</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트( 블라인드)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버(평가)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.69ms</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(완료)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">사용</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,000억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>VOPRF를 살펴볼 때 서버에서의 검증 시간은 Blind RSA보다 약간 높지만 통신 비용과 발행이 훨씬 빠릅니다. 상각 후 <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens" target="_blank" rel="noopener noreferrer"><u>토큰 발행을 사용하면 토큰 1개의 경우 서버에서 평가 시간이</u></a> 10배, 25배 이상 빨라집니다. 토큰당 통신 비용도 메시지 크기가 3배 이상 작아져 더욱 매력적이었습니다.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VOPRF</span><br><a href="https://doi.org/10.17487/RFC9497"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9497</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Ristretto255+SHA512)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">토큰 1개</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000개 상각 발행 발행</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">시간 </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(토큰당)</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기 </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(토큰당)</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">발급</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트( 블라인드)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">320억</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">320억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버(평가)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">260μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">960억</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">99μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32.064B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(완료)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">376μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">640억</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">173μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">640억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">사용</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">960억</span></td>
+					<td class="tg-baqh" colspan="2" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">57μs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>따라서 VOPRF 토큰은 약간 더 높은 상환 비용을 수용할 수 있고 공개 검증이 필요하지 않은 많은 토큰이 필요한 응용 프로그램에 매력적입니다.</p>
+	<p>이제 ARC 및 ACT 익명 자격 증명 사기에 대한 수치를 살펴보겠습니다. 저희는 두 체계 모두 최대 $N=1000$회까지 제시할 수 있는 자격 증명을 발급하는 데 걸리는 시간을 측정합니다.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-l4d4 {
+			background-color: #D9D2E9;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-8mqg {
+			background-color: #FCE5CD;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-sd4m {
+			background-color: #CCC;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-har8 {
+			background-color: #8E7CC3;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-y4nt {
+			background-color: #E69138;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-7nm9 {
+			background-color: #D9D2E9;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dzqp {
+			background-color: #FCE5CD;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dgl5 {
+			background-color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-sd4m" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">발급</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">자격 증명 생성</span></th>
+					<th class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></th>
+					<th class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ACT</span></th>
+				</tr>
+				<tr>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(요청)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">323μs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,240억</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">64μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,410억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버(응답)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1349μs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,480억</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">251μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(완료)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1293μs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,280억</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">204μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi" colspan="5"></td>
+				</tr>
+				<tr>
+					<td class="tg-dgl5" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">사용 자격</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">증명 프레젠테이션</span></td>
+					<td class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></td>
+					<td class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ACT</span></td>
+				</tr>
+				<tr>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></td>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">메시지 크기</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(현재)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">735μs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,880억</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 1740μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1867년 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">서버(확인/환불)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">740μs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1785μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,410억</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">클라이언트(업데이트)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">508μs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176B</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>예상대로 통신 비용과 서버의 런타임은 Blind RSA나 VOPRF를 이용해 일괄 발급하는 것보다 훨씬 저렴합니다. 예를 들어, VOPRF에서 토큰 1,000개를 발급하는 데는 99ms(토큰당 99μs)가 걸리는 <i>반면</i>, 1,000번의 프레젠테이션이 가능한 ARC 자격 증명 1개를 발급하는 데는 1.35ms가 걸립니다. 이는 약 70배 빠른 속도입니다. 이 단점은 클라이언트와 서버 모두에게 프레젠테이션 비용이 더 많이 든다는 것입니다.</p>
+	<p>ACT는 어떻습니까? ARC와 마찬가지로, 크레딧이 발행되면 발행에 대한 통신 비용이 훨씬 느리게 증가할 것으로 예상됩니다. Cloudflare의 구현을 통해 이를 증명합니다. 그러나 ARC와 ACT 간에는 흥미로운 성능 차이가 몇 가지 있습니다. ACT는 발급이 ARC보다 훨씬 저렴하지만, 상환은 그 반대입니다.</p>
+	<p>무슨 일이죠? 그 대답은 주로 각 당사자가 각 단계에서 ZKP를 사용하여 증명해야 하는 것과 관련이 있습니다. 예를 들어, ACT 상환 중에 클라이언트는 서버(영 지식에서) $C$가 원하는 범위, 즉 $0 \leq C \leq N$에 있음을 증명합니다. 교정 크기는 $\log_{2} N$ 정도이며, 이는 더 큰 메시지 크기를 나타냅니다. 현재 버전에서는 ARC 상환에 범위 증명이 포함되지 않지만, <a href="http://mailarchive.ietf.org/arch/msg/privacy-pass/A3VHUdHqhslwBzYEQjcaXzYQAxQ" target="_blank" rel="noopener noreferrer"><u>향후 버전</u></a>에서 범위 증명이 추가될 수 있습니다. 한편, ARC 발급 중에 클라이언트와 서버가 증명해야 하는 진술은 ARC 프레젠테이션보다 조금 더 복잡하므로 런타임 차이가 발생합니다.</p>
+	<p>이전 섹션에서 설명한 것처럼 익명 자격 증명의 장점은 발급이 한 번만 수행되면 된다는 것입니다. 서버에서는 비용을 평가할 때 모든 발급 비용과 모든 검증 비용을 고려합니다. 현재는 자격 증명 비용만 고려하면 익명의 자격 증명 제시를 확인하는 것보다 서버에서 토큰을 발급하고 확인하는 것이 저렴합니다.</p>
+	<p>다중 사용 익명 자격 증명의 장점은 발급자가 $N$ 토큰을 생성하는 대신 대부분의 계산이 클라이언트에게 오프로드된다는 것입니다. 이는 더 범위가 지정되었습니다. 지연 시간 원본 바인딩을 사용하면 여러 원본/네임스페이스에서 작업할 수 있으며, 만료와 키 교체를 역 상관 관계가 없도록 범위 증명을 적용할 수 있으며, 동적 레이트 리미팅을 제공하는 환불을 제공할 수 있습니다. 이들의 현재 애플리케이션은 이들이 제공하는 추가적인 효율성보다는 일회용 토큰 기반 체계의 한계에 의해 영향을 받고 있습니다. 이 부분은 탐색하면서 그 격차를 좁힐 수 있을지 검토해 볼 만한 흥미로운 부분인 것 같습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="managing-agents-with-anonymous-credentials">익명의 자격 증명으로 에이전트 관리</h2>
+		<a href="https://blog.cloudflare.com/#managing-agents-with-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>에이전트를 관리하려면 ARC와 ACT의 기능이 모두 필요할 수 있습니다.</p>
+	<p>ARC는 이미 우리가 필요로 하는 많은 기능을 갖추고 있습니다. ARC 자격 증명이 발급되면, 이를 취소할 수 없다는 것이 단점입니다. 악의적인 사용자는 원하는 원본에 대해 언제든지 최대 <i>N</i> 개의 요청을 생성할 수 있습니다.</p>
+	<p>ARC를 블라인드 서명(또는 VOPRF)과 페어링하여 제한된 형태의 취소를 허용할 수 있습니다. ARC 자격 증명을 제시할 때마다 개인정보 보호 패스 토큰이 수반됩니다. 제시에 성공하면 클라이언트에게 다른 개인정보 보호 패스 토큰이 발급되며, 다음 프레젠테이션에서 사용할 수 있습니다. 자격 증명을 철회하기 위해 서버는 토큰을 재발급하지 않기만 하면 됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EiHmkbLef6kXsQU473fcX/d1d4018eaf2abd42b9690ae5d01494dc/image1.png" alt="" class="kg-image" width="1999" height="1767" loading="lazy">
+	</figure>
+	<p>이 계획은 이미 상당히 유용합니다. 하지만 여기에는 몇 가지 중요한 한계가 있습니다.</p>
+	<ul>
+		<li>
+			<p>원본 서버 간의 병렬 표시는 불가능합니다. 클라이언트는 하나의 원본 서버에 대한 요청이 성공할 때까지 기다려야 두 번째 원본 서버에 대한 요청을 시작할 수 있습니다.</p>
+		</li>
+		<li>
+			<p>취소는 원본별로 이루어지지 않고 전역적으로 이루어집니다. 즉, 제시되었던 자격 증명뿐만 아니라, 제시될 수 있는 모든 원본에 대해서도 자격 증명이 취소됩니다. 이는 경우에 따라 바람직하지 않은 경우도 있습니다. 예를 들어, 원본은 요청이 <code>robots.txt</code> 정책을 위반하는 경우 취소하고자 할 수 있습니다. 다른 출처에서도 동일한 요청을 수락했을 수 있습니다. </p>
+		</li>
+	</ul>
+	<p>이러한 방식의 보다 근본적인 한계는 자격 증명이 제시된 단일 요청을 기반으로만 철회 결정을 내릴 수 있다는 것입니다. 단일 요청을 기반으로 사용자를 차단하기로 결정하는 것은 위험할 수 있습니다. 실제로 공격 패턴은 다수의 요청을 통해서만 나타날 수 있습니다. ACT의 상태 저장을 이용하면 이러한 종류의 방어에 있어 최소한 기본적인 형태의 방어가 가능합니다. 다음과 같은 방식을 고려하세요.</p>
+	<ul>
+		<li>
+			<p><b>발행: </b>클라이언트에게 $N=1$ 표시 한도가 있는 ARC가 발행됩니다.</p>
+		</li>
+		<li>
+			<p><b>프레젠테이션:</b></p>
+			<ul>
+				<li>
+					<p>클라이언트가 처음으로 ARC 자격 증명을 원본에 제시하면 서버에서 유효한 초기 상태의 ACT 자격 증명이 발급됩니다.</p>
+				</li>
+				<li>
+					<p>클라이언트가 유효한 상태(예: 크레딧 카운터가 0보다 큰 상태)의 ACT를 제시하면, 원본은 다음 중 하나의 조치를 취합니다.</p>
+					<ul>
+						<li>
+							<p>새로운 ACT 발급을 거부하면 자격 증명이 취소됩니다. 해당 요청이 공격의 일부라는 신뢰도가 높은 경우에만 그렇게 할 것입니다. 또는</p>
+						</li>
+						<li>
+							<p>요청을 처리하는 동안 소비된 리소스 양만큼 ACT 크레딧을 줄이도록 업데이트된 상태가 포함된 새로운 ACT를 발급합니다.</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>무해한 요청은 상태가 크게 변경되지 않지만(그렇다면) 의심스러운 요청은 사용자가 레이트 리미팅에 훨씬 더 빨리 가까워지는 방식으로 상태에 영향을 미칠 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="demo">데모</h2>
+		<a href="https://blog.cloudflare.com/#demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 아이디어가 실제로 어떻게 작동하는지 확인하기 위해 <a href="https://developers.cloudflare.com/agents/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>모델 컨텍스트 프로토콜</u></a>을 사용하는 실제 사례를 살펴보겠습니다. 아래 데모는<a href="https://developers.cloudflare.com/agents/model-context-protocol/tools" target="_blank" rel="noopener noreferrer"> <u>MCP 도구를</u></a> 사용하여 구축되었습니다. 도구는 AI 에이전트가 자신의 기능을 확장할 수 있는 확장 기능입니다. 릴리스 시에는 MCP 클라이언트 내에서 통합할 필요가 없습니다. 이렇게 하면 익명의 자격 증명에 대한 훌륭하고 쉬운 프로토타이핑 방법을 제공할 수 있습니다.</p>
+	<p>도구는 MCP 호환 인터페이스를 통해 서버에서 제공됩니다. 이러한 MCP 서버를 구축하는 방법에 대한 세부 정보는 <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>이전 블로그</u></a>에서 확인할 수 있습니다.</p>
+	<p>우리의 피자 컨텍스트에서 이는 바우처를 제공하는 피자 가게처럼 보일 수 있습니다. 피자 3판을 제공하는 바우처입니다. 디자인을 모방해 채팅 애플리케이션 내의 통합은 다음과 같이 보일 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WD5MYoSMYGyRW2biwe6j4/bde101967276a72d48d9e494a23db5fa/image5.png" alt="" class="kg-image" width="1104" height="627" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SEqaVpwFxS1D21oyjjbN8/80dde2484f43c15e206ecfda991c286a/image9.png" alt="" class="kg-image" width="1106" height="630" loading="lazy">
+	</figure>
+	<p>첫 번째 창에는 MCP 서버가 공개한 모든 도구가 표시됩니다. 두 번째 이미지는 에이전트를 호출하여 수행하는 상호작용입니다.</p>
+	<p>이러한 흐름이 어떻게 구현되는지 살펴보기 위해, MCP 도구를 작성하고, MCP 서버에 제공하며, <a href="https://modelcontextprotocol.io/docs/tools/inspector" target="_blank" rel="noopener noreferrer"><u>MCP Inspector</u></a>를 통해 호출을 수동으로 조율해 보겠습니다.</p>
+	<p>MCP 서버는 두 가지 도구를 제공해야 합니다.</p>
+	<ul>
+		<li>
+			<p><code> </code>3번의 요청에 대해 유효한 ACT 자격 증명을 발급합니다. 여기에 사용된 코드는 몇 가지 제한 사항이 있는 IETF 초안의 이전 버전입니다.</p>
+		</li>
+		<li>
+			<p><code>Act-redeem</code> 은 로컬 자격 증명을 프레젠테이션하고 피자 메뉴를 가져옵니다.</p>
+		</li>
+	</ul>
+	<p>먼저, <code>act-issue</code>를 실행합니다. 이 단계에서 에이전트에<a href="https://modelcontextprotocol.info/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"> <u>OAuth 흐름</u></a>을 실행하거나, 내부 인증 엔드포인트를 가져오거나, 작업 증명을 계산하도록 요청할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sLS7jMfTHPjVW5vMvsTWX/2d2b10fdb12c64f0e33fee89e09eab85/image10.png" alt="" class="kg-image" width="1013" height="474" loading="lazy">
+	</figure>
+	<p>그러면 원본에 대해 3크레딧을 사용할 수 있습니다. 그런 다음 <code>act-redeem</code>을 실행합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YTc0Wohrsqw3hizAOmJjU/4534cccbc490ad0aa09522a3875693af/image8.png" alt="" class="kg-image" width="1006" height="460" loading="lazy">
+	</figure>
+	<p>Et voila. <code>act-redeem</code> 을 다시 한 번 실행하면 크레딧이 1개 줄어드는 것을 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a0zmBfl46hX33hWoXyGyX/86649d9f435562c95a85ec72fbf33022/image3.png" alt="" class="kg-image" width="1017" height="472" loading="lazy">
+	</figure>
+	<p>직접 테스트해 볼 수도 있으며 <a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo" target="_blank" rel="noopener noreferrer"><u>사용 가능한 소스 코드도</u></a> 있습니다. MCP 서버는<a href="https://github.com/modelcontextprotocol/rust-sdk" target="_blank" rel="noopener noreferrer"> <u>Rust</u></a> 로 작성되어 <a href="https://github.com/SamuelSchlesinger/anonymous-credit-tokens/stargazers" target="_blank" rel="noopener noreferrer"><u>ACT rust</u></a> 라이브러리와 통합됩니다. <a href="https://act-client-demo.cloudflareresearch.com" target="_blank" rel="noopener noreferrer"><u>브라우저 기반 클라이언트</u></a> 도 비슷하게 작동합니다. 확인해 보세요.</p>
+	<div class="flex anchor relative">
+		<h2 id="moving-further">추가 단계</h2>
+		<a href="https://blog.cloudflare.com/#moving-further" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이번 게시물에서는 레이트 리미팅 에이전트 트래픽에 대한 구체적인 접근 방식을 제시했습니다. 클라이언트를 완전히 제어하며 사용자의 개인정보를 보호하도록 구축되었습니다. 익명 자격 증명에 대해 새로운 표준을 사용하고, MCP와 통합되고, Cloudflare Workers에서 바로 배포할 수 있습니다.</p>
+	<p>우리는 올바른 방향으로 가고 있지만, 여전히 의문이 남아 있습니다. 이전에 다뤘지만, ARC와 ACT의 주목할 만한 한계는 <i>개인적으로만 확인할 수 있다</i>는 것입니다. 즉 발급자와 출처가 각각 자격 증명을 발급하고 확인하기 위해 개인 키를 공유해야 합니다. 이것이 가능하지 않은 배포 시나리오가 있을 수 있습니다. 다행히, IETF를 통과하는 <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-bbs-signatures" target="_blank" rel="noopener noreferrer"><u>BBS 서명 사양에서와</u></a> <i> 같이 페어링</i>기반 암호화를 사용하여 이러한 경우에 대한 경로가 있을 수 있습니다. 또한, <a href="https://blog.cloudflare.com/pq-anonymous-credentials"><u>동시 게시물</u></a>을 통해 포스트 퀀텀의 영향도 살펴보고 있습니다.</p>
+	<p>에이전트 플랫폼, 에이전트 개발자 또는 브라우저인 경우, 실험할 수 있도록 모든 코드가 <a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a> 에 제공됩니다. Cloudflare에서는 실제 사용 사례에서 이 접근 방식을 검사하는 데 적극적으로 노력하고 있습니다.</p>
+	<p>규격과 논의는 IETF 및 W3C 내에서 진행되고 있습니다. 이를 통해 프로토콜이 공개적으로 구축되고 전문가가 참여할 수 있습니다. 성능과 개인정보 사이의 적절한 절충점을 명확히 하기 위한 개선이나 개방형 웹에 배포하기 위한 스토리조차 아직 남아 있습니다.</p>
+	<p><a href="https://www.cloudflare.com/careers/early-talent" target="_blank" rel="noopener noreferrer"><u>도움을</u></a> 원하신다면 내년 한 해 동안<a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>1,111명의 인턴을 채용할</u></a> 예정입니다.</p>
+</div>

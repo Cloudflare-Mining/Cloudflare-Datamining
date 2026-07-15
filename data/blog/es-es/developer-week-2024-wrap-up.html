@@ -1,0 +1,578 @@
+<div class="mb2 gray5">1 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/developer-week-2024-wrap-up">English</a>, <a href="https://blog.cloudflare.com/zh-tw/developer-week-2024-wrap-up">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/developer-week-2024-wrap-up">Français</a>, <a href="https://blog.cloudflare.com/de-de/developer-week-2024-wrap-up">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/developer-week-2024-wrap-up">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/developer-week-2024-wrap-up">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/developer-week-2024-wrap-up">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cklGiKp5giq2lTUR7rXzw/c98249931e6752de4eea94439dce56c9/developer-week-2024-wrap-up.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Developer Week 2024 ha llegado oficialmente a su fin. Cada día de la semana pasada, lanzamos nuevos productos y nuevas funcionalidades orientados a proporcionar a los desarrolladores los componentes que necesitan para crear aplicaciones integrales en Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fwPu75tSubJgSS8nJ5gOt/6e2fd9b7cc6f9dcd7b86d73988a6e5fb/Dev-week-wrap-up-1.jpg" alt="Developer Week 2024 wrap-up" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Aunque Developer Week ya ha terminado, seguimos innovando con los más de dos millones de desarrolladores que utilizan nuestra plataforma. El desarrollo de una plataforma es una tarea apasionante, pero la utilización que le dan los desarrolladores lo es por igual. Antes de sumergirnos en un resumen de los anuncios para terminar la semana, queríamos compartir información sobre cómo algunas empresas utilizan Cloudflare para impulsar sus aplicaciones:</p>
+	<blockquote>
+		<p>Utilizamos Workers para la entrega de imágenes mediante R2 y hemos podido mantener un nivel de operaciones estables durante un año tras la implantación. La velocidad de implementación y la flexibilidad de las configuraciones detalladas han reducido enormemente el tiempo y los esfuerzos necesarios para la gestión tradicional de los servidores. En concreto, hemos constatado un notable ahorro de costes y agradecemos profundamente el soporte que hemos recibido de Cloudflare Workers.-<a href="http://www.fancs.com" target="_blank" rel="noopener noreferrer">FAN Communications</a></p>
+	</blockquote>
+	<blockquote>
+		<p>Milkshake ayuda a creadores, personas influyentes y propietarios de negocios a crear páginas web atractivas directamente desde su teléfono, para promocionar de forma sencilla y creativa sus proyectos y pasiones. Cloudflare nos ha ayudado a migrar datos de forma rápida y asequible con R2. Utilizamos Workers como capa de enrutamiento entre los sitios web de nuestros usuarios y sus imágenes y activos, y para crear una oferta de análisis personalizados a un precio asequible. Las innovaciones de Cloudflare nos han permitido siempre ejecutar la infraestructura a una fracción del coste de otras plataformas de desarrollo, y esperamos con impaciencia las actualizaciones de D1 y Queues para escalar Milkshake de forma sostenible a medida que el producto sigue creciendo.-<a href="https://milkshake.app" target="_blank" rel="noopener noreferrer">Milkshake</a></p>
+	</blockquote>
+	<p>Por si te has perdido algo, aquí podrás consultar un resumen de los anuncios y los análisis técnicos detallados que se publicaron la semana pasada:</p>
+	<div class="flex anchor relative">
+		<h2 id="summary-of-announcements">Resumen de los anuncios</h2>
+		<a href="https://blog.cloudflare.com/#summary-of-announcements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="monday">LUNES</h3>
+		<a href="https://blog.cloudflare.com/#monday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/making-full-stack-easier-d1-ga-hyperdrive-queues"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Making state easy with D1 GA, Hyperdrive, Queues and Workers Analytics Engine updates</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A core part of any full-stack application is storing and persisting data! We kicked off the week with announcements that help developers build stateful applications on top of Cloudflare, including making D1, Cloudflare’s SQL database and Hyperdrive, our database accelerating service, generally available.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/building-d1-a-global-database"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Building D1: a Global Database</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">D1, Cloudflare’s SQL database, is now generally available. With new support for 10GB databases, data export, and enhanced query debugging, we empower developers to build production-ready applications with D1 to meet all their relational SQL needs. To support Workers in global applications, we’re sharing a sneak peek of our design and API for D1 global read replication to demonstrate how developers scale their workloads with D1.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/workers-environment-live-object-bindings"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Why Workers environment variables contain live objects</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bindings don't just reduce boilerplate. They are a core design feature of the Workers platform which simultaneously improve developer experience and application security in several ways. Usually these two goals are in opposition to each other, but bindings elegantly solve for both at the same time.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Anuncio</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/workers-ai-ga-huggingface-loras-python-support"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Leveling up Workers AI: General Availability and more new capabilities</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We made a series of AI-related announcements, including Workers AI, Cloudflare’s inference platform becoming GA, support for fine-tuned models with LoRAs, one-click deploys from HuggingFace, Python support for Cloudflare Workers, and more.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/fine-tuned-inference-with-loras"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Running fine-tuned models on Workers AI with LoRAs</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers AI now supports fine-tuned models using LoRAs. But what is a LoRA and how does it work? In this post, we dive into fine-tuning, LoRAs and even some math to share the details of how it all works under the hood.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/python-workers"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Bringing Python to Workers using Pyodide and WebAssembly</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We introduced Python support for Cloudflare Workers, now in open beta. We've revamped our systems to support Python, from the Workers runtime itself to the way Workers are deployed to Cloudflare’s network. Learn about a Python Worker's lifecycle, Pyodide, dynamic linking, and memory snapshots in this post.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Resumen</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/r2-events-gcs-migration-infrequent-access"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">R2 adds event notifications, support for migrations from Google Cloud Storage, and an infrequent access storage tier</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We announced three new features for Cloudflare R2: event notifications, support for migrations from Google Cloud Storage, and an infrequent access storage tier.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/data-anywhere-events-pipelines-durable-execution-workflows"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Data Anywhere with Pipelines, Event Notifications, and Workflows</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We’re making it easier to build scalable, reliable, data-driven applications on top of our global network, and so we announced a new Event Notifications framework; our take on durable execution, Workflows; and an upcoming streaming ingestion service, Pipelines.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/prisma-orm-and-d1"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Improving Cloudflare Workers and D1 developer experience with Prisma ORM</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Together, Cloudflare and Prisma make it easier than ever to deploy globally available apps with a focus on developer experience. To further that goal, Prisma ORM now natively supports Cloudflare Workers and D1 in Preview. With version 5.12.0 of Prisma ORM you can now interact with your data stored in D1 from your Cloudflare Workers with the convenience of the Prisma Client API. Learn more and try it out now.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/picsart-move-to-workers-huge-performance-gains"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">How Picsart leverages Cloudflare's Developer Platform to build globally performant services</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Picsart, one of the world’s largest digital creation platforms, encountered performance challenges in catering to its global audience. Adopting Cloudflare's global-by-default Developer Platform emerged as the optimal solution, empowering Picsart to enhance performance and scalability substantially.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><a href="https://blog.cloudflare.com/es-es/making-full-stack-easier-d1-ga-hyperdrive-queues-es-es">Facilitamos el estado con las actualizaciones de D1 (disponible de forma general), Hyperdrive, Queues y Workers Analytics Engine</a></p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/pages-workers-integrations-monorepos-nextjs-wrangler"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Announcing Pages support for monorepos, wrangler.toml, database integrations and more!</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We launched four improvements to Pages that bring functionality previously restricted to Workers, with the goal of unifying the development experience between the two. Support for monorepos, wrangler.toml, new additions to Next.js support and database integrations!</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/workers-production-safety"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">New tools for production safety — Gradual Deployments, Stack Traces, Rate Limiting, and API SDKs</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Production readiness isn’t just about scale and reliability of the services you build with. We announced five updates that put more power in your hands – Gradual Deployments, Source mapped stack traces in Tail Workers, a new Rate Limiting API, brand-new API SDKs, and updates to Durable Objects – each built with mission-critical production services in mind.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/whats-next-for-cloudflare-media"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">What’s new with Cloudflare Media: updates for Calls, Stream, and Images</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">With Cloudflare Calls in open beta, you can build real-time, serverless video and audio applications. Cloudflare Stream lets your viewers instantly clip from ongoing streams. Finally, Cloudflare Images now supports automatic face cropping and has an upload widget that lets you easily integrate into your application.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-calls-anycast-webrtc"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Calls: millions of cascading trees all the way down</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Calls is a serverless SFU and TURN service running at Cloudflare’s edge. It’s now in open beta and costs $0.05/ real-time GB. It’s 100% anycast WebRTC.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>El almacenamiento y la conservación de los datos son aspectos esenciales de una aplicación integral. Nos complace arrancar la semana con novedades que ayudarán a los desarrolladores a crear aplicaciones con estado en Cloudflare, incluida la disponibilidad general de D1, la base de datos SQL de Cloudflare, e Hyperdrive, nuestro de servicio de aceleración de bases de datos.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Browser Rendering API GA, rolling out Cloudflare Snippets, SWR, and bringing Workers for Platforms to all users</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Browser Rendering API is now available to all paid Workers customers with improved session management.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-acquires-baselime-expands-observability-capabilities"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare acquires Baselime to expand serverless application observability capabilities</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We announced that Cloudflare has acquired Baselime, a serverless observability company.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-acquires-partykit"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare acquires PartyKit to allow developers to build real-time multi-user applications</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We announced that PartyKit, a trailblazer in enabling developers to craft ambitious real-time, collaborative, multiplayer applications, is now a part of Cloudflare. This acquisition marks a significant milestone in our journey to redefine the boundaries of serverless computing, making it more dynamic, interactive, and, importantly, stateful.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/blazing-fast-development-with-full-stack-frameworks-and-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Blazing fast development with full-stack frameworks and Cloudflare</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Full-stack web development with Cloudflare is now faster and easier! You can now use your framework’s development server while accessing D1 databases, R2 object stores, AI models, and more. Iterate locally in milliseconds to build sophisticated web apps that run on Cloudflare. Let’s dev together!</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="http://staging.blog.mrk.cfdata.org/javascript-native-rpc"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">We've added JavaScript-native RPC to Cloudflare Workers</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Workers now features a built-in RPC (Remote Procedure Call) system for use in Worker-to-Worker and Worker-to-Durable Object communication, with absolutely minimal boilerplate. We've designed an RPC system so expressive that calling a remote service can feel like using a library.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/2024-community-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Community Update: empowering startups building on Cloudflare and creating an inclusive community</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We closed out Developer Week by sharing updates on our Workers Launchpad program, our latest Developer Challenge, and the work we’re doing to ensure our community spaces – like our Discord and Community forums – are safe and inclusive for all developers.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><a href="https://blog.cloudflare.com/es-es/building-d1-a-global-database-es-es">Creación de D1, una base de datos a nivel global</a></p><!--kg-card-begin: html-->
+	<blockquote class="twitter-tweet" data-media-max-width="800">
+		<p lang="en" dir="ltr">🏃<a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw">@CloudflareDev</a> Developer Week 2024 🧡 ICYMI 🧡 Speed run <a href="https://t.co/0uzPJshC93">pic.twitter.com/0uzPJshC93</a></p>— Craig Dennis (@craigsdennis) <a href="https://twitter.com/craigsdennis/status/1778875721575989734?ref_src=twsrc%5Etfw">April 12, 2024</a>
+	</blockquote>
+	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: html-->
+	<p>D1, la base de datos SQL de Cloudflare, ya disponible La nueva compatibilidad para bases de datos de 10 GB, la exportación de datos y la optimización de la depuración de consultas permitirán a los desarrolladores crear aplicaciones listas para entornos de producción con D1 que respondan a todas las necesidades de la base de datos SQL relacional. Para admitir Workers en aplicaciones globales, mostramos un adelanto de nuestro diseño y API para réplicas globales de lectura de D1 con el fin de demostrar cómo los desarrolladores escalan sus cargas de trabajo con D1.</p>
+	<p><a href="https://blog.cloudflare.com/workers-environment-live-object-bindings">Porqué las variables del entorno de Workers contienen objetos en vivo</a></p>
+	<p>Los enlaces no solo reducen el texto reutilizable. Son una función de diseño esencial de la plataforma Workers que mejora simultáneamente la experiencia de los desarrolladores y la seguridad de la aplicación de varias maneras. Por lo general, estos dos objetivos se oponen entre sí, pero los enlaces resuelven el problema para ambos al mismo tiempo.</p>
+	<div class="flex anchor relative">
+		<h3 id="tuesday">MARTES</h3>
+		<a href="https://blog.cloudflare.com/#tuesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>Anuncio</p>
+	<p>Resumen</p>
+	<p><a href="https://blog.cloudflare.com/es-es/workers-ai-ga-huggingface-loras-python-support-es-es">Optimización de Workers AI: disponibilidad general y nuevas funciones</a></p>
+	<p>Hemos realizado una serie de anuncios relacionados con la IA, como Workers AI, la plataforma de inferencia de Cloudflare, que ha pasado a disponibilidad general, la compatibilidad con modelos ajustados con los protocolos LoRA, las implementaciones con un solo clic de HuggingFace, la compatibilidad de Python para Cloudflare Workers, y mucho más.</p>
+	<p><a href="https://blog.cloudflare.com/es-es/fine-tuned-inference-with-loras-es-es">Cómo ejecutar modelos ajustados en Workers AI con los protocolos LoRA</a></p>
+	<p>Workers AI admite modelos adaptados con el uso de protocolos LoRA. Pero, ¿qué es LoRA y cómo funciona? En esta publicación, analizaremos los ajustes, los protocolos LoRA e incluso algunos cálculos para que conozcas los detalles sobre cómo funciona todo a nivel interno.</p>
+	<p><a href="https://blog.cloudflare.com/python-workers">Usamos Python en Workers con Pyodide y WebAssembly</a></p>
+	<p>Anunciamos la compatibilidad de Python con Cloudflare Workers, ahora en versión beta abierta. Hemos renovado nuestros sistemas para que sean compatibles con Python, desde el entorno de ejecución de Workers hasta la forma en que se implementa Workers en la red de Cloudflare. Podrás encontrar más información sobre el ciclo de vida útil de Python en Worker, Pyodide, enlaces dinámicos e instantáneas de memoria en esta publicación.</p>
+	<div class="flex anchor relative">
+		<h3 id="wednesday">MIÉRCOLES</h3>
+		<a href="https://blog.cloudflare.com/#wednesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>Anuncio</p>
+	<p>Resumen</p>
+	<p><a href="https://blog.cloudflare.com/es-es/r2-events-gcs-migration-infrequent-access-es-es">R2 añade notificaciones de eventos, compatibilidad para migraciones desde Google Cloud Storage y un nivel de almacenamiento de acceso ocasional</a></p>
+	<p>Nos complace anunciar tres nuevas funciones de Cloudflare R2: notificaciones de eventos, compatibilidad para migraciones desde Google Cloud Storage y un nivel de almacenamiento de acceso ocasional.</p>
+	<p><a href="https://blog.cloudflare.com/data-anywhere-events-pipelines-durable-execution-workflows">Datos en cualquier lugar con Pipelines, notificaciones de eventos y Workflows</a></p>
+	<p>Trabajamos para facilitar la creación de aplicaciones escalables, fiables y controladas por datos sobre nuestra red global, y por eso anunciamos tres novedades: un nuevo marco de notificaciones de eventos, nuestra solución Workflows, nuestra propuesta de ejecución duradera, y un próximo servicio de ingestión de transmisión, Pipelines.</p>
+	<p><a href="https://blog.cloudflare.com/prisma-orm-and-d1">Mejoramos la experiencia de los desarrolladores de Cloudflare Workers y D1 con Prisma ORM</a></p>
+	<p>Cloudflare y Prisma facilitan más que nunca la implementación de aplicaciones disponibles a nivel global con un enfoque en la experiencia del desarrollador. Para alcanzar ese objetivo, Prisma ORM es ahora compatible de manera nativa con Cloudflare Workers y D1 (disponible en vista previa). Con la versión 5.12.0 de Prisma ORM ahora puedes interactuar con tus datos almacenados en D1 desde Cloudflare Workers con la comodidad de la API de cliente Prisma. ¡Pruébalo ya! Más información.</p>
+	<p><a href="https://blog.cloudflare.com/picsart-move-to-workers-huge-performance-gains">Cómo aprovecha Picsart la plataforma para desarrolladores de Cloudflare para crear servicios eficaces a nivel mundial</a></p>
+	<p>Picsart, una de las mayores plataformas de creación digital del mundo, tenía problemas de rendimiento para satisfacer las necesidades de su audiencia global. La adopción de la plataforma para desarrolladores de Cloudflare, global por defecto, se reveló como la solución óptima, que permitió a Picsart mejorar sustancialmente el rendimiento y la escalabilidad.</p>
+	<div class="flex anchor relative">
+		<h3 id="thursday">Jueves</h3>
+		<a href="https://blog.cloudflare.com/#thursday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>Anuncio</p>
+	<p>Resumen</p>
+	<p><a href="https://blog.cloudflare.com/pages-workers-integrations-monorepos-nextjs-wrangler">Novedad: Compatibilidad de Pages con monorepos, wrangler.toml, integraciones de base de datos y mucho más.</a></p>
+	<p>Hoy anunciamos cuatro mejoras en Pages que ofrecen funcionalidades, que anteriormente se limitaban a Workers, con el objetivo de unificar la experiencia de desarrollo entre ambos. Compatibilidad con monorepos, wrangler.toml, nuevas incorporaciones a la compatibilidad con Next.js e integraciones con bases de datos.</p>
+	<p><a href="https://blog.cloudflare.com/es-es/workers-production-safety-es-es">Nuevas herramientas para la seguridad de la producción — implementaciones graduales, stack traces, limitación de velocidad y SDK de API</a></p>
+	<p>La puesta en producción no depende únicamente de la escala y la fiabilidad de los servicios con los que desarrollas. Hoy anunciamos cinco novedades que te darán más poder: implementaciones graduales, stack traces con correlaciones de código fuente en Tail Workers, una nueva API de limitación de velocidad, nuevos SDK de API, y actualizaciones de Durable Objects, cada una de ellas pensada para los servicios esenciales de producción.</p>
+	<p><a href="https://blog.cloudflare.com/whats-next-for-cloudflare-media">Novedades en Cloudflare Media: actualizaciones de Calls, Stream e Images</a></p>
+	<p>La versión beta abierta de Cloudflare Calls te permite crear aplicaciones de vídeo y audio en tiempo real y sin servidor. Cloudflare Stream permite a tus visitantes hacer clip de vídeos instantáneamente a partir de transmisiones en curso. Por último, Cloudflare Images permite ahora recortar caras de manera automática e incorpora un widget de carga que facilitará las integraciones en tu aplicación.</p>
+	<p><a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc">Cloudflare Calls se asemeja a millones de árboles en cascada</a></p>
+	<p>Cloudflare Calls es un servicio SFU y TURN sin servidor que se ejecuta en el perímetro de Cloudflare. Ya está en versión beta abierta y cuesta 0,05 USD/ GB en tiempo real. Utiliza Anycast para una transmisión 100 % WebRTC.</p>
+	<div class="flex anchor relative">
+		<h3 id="friday">VIERNES</h3>
+		<a href="https://blog.cloudflare.com/#friday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;text-decoration:underline;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>Anuncio</p>
+	<p>Resumen</p>
+	<p><a href="https://blog.cloudflare.com/es-es/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans-es-es">Disponibilidad general de la API Browser Rendering, implementación de Cloudflare Snippets, SWR y, por último, Workers for Platforms, que ya está al alcance de todos los usuarios</a></p>
+	<p>La API de Browser Rendering ya está disponible para todos los clientes de pago de Workers, y hemos mejorado la gestión de sesiones.</p>
+	<p><a href="https://blog.cloudflare.com/cloudflare-acquires-baselime-expands-observability-capabilities">Cloudflare adquiere Baselime para ampliar las funciones de observabilidad de aplicaciones sin servidor</a></p>
+	<p>Hemos anunciado que Cloudflare ha adquirido Baselime, una empresa de observabilidad sin servidor.</p>
+	<p><a href="https://blog.cloudflare.com/cloudflare-acquires-partykit">Cloudflare adquiere PartyKit para permitir a los desarrolladores crear aplicaciones multiusuario en tiempo real</a></p>
+	<p>Nos complace anunciar que PartyKit, una empresa pionera que permite a los desarrolladores crear ambiciosas aplicaciones multijugador colaborativas en tiempo real, ahora forma parte de Cloudflare. Esta adquisición marca un hito importante en nuestro recorrido para redefinir los límites de la informática sin servidor, y conseguir que sea más dinámica, interactiva y, lo que es más importante, con estado.</p>
+	<p><a href="https://blog.cloudflare.com/blazing-fast-development-with-full-stack-frameworks-and-cloudflare">Desarrollo ultrarrápido con marcos integrales y Cloudflare</a></p>
+	<p>¡El desarrollo web integral con Cloudflare es ahora más rápido y fácil! Ahora puedes utilizar el servidor de desarrollo de tu marco mientras accedes a bases de datos D1, almacenes de objetos R2, modelos de IA y mucho más. Itera localmente en milisegundos para crear aplicaciones web sofisticadas que se ejecutan en Cloudflare. ¡Desarrollemos juntos!</p>
+	<p><a href="https://blog.cloudflare.com/javascript-native-rpc">Hemos añadido RPC basado en JavaScript a Cloudflare Workers</a></p>
+	<p>Cloudflare Workers incorpora ahora un sistema RPC (Remote Procedure Call) para utilizarlo en la comunicación de Worker-Worker y Worker-Durable Object, con texto reutilizable mínimo. Hemos diseñado un sistema RPC tan expresivo que la llamada a un servicio remoto puede parecer como utilizar una biblioteca.</p>
+	<p><a href="https://blog.cloudflare.com/2024-community-update">Novedad de la comunidad: Ayudamos a las empresas emergentes a desarrollar en Cloudflare y crear una comunidad inclusiva</a></p>
+	<p>Nos complace concluir la Developer Week anunciando las novedades sobre nuestro programa Workers Launchpad, nuestro último desafío para desarrolladores, y el trabajo que estamos realizando para garantizar que tanto Discord como nuestra comunidad sean espacios seguros e inclusivos para todos los desarrolladores.</p>
+	<div class="flex anchor relative">
+		<h2 id="continue-the-conversation">Continuar la conversación</h2>
+		<a href="https://blog.cloudflare.com/#continue-the-conversation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Gracias por formar parte de la Developer Week! ¿Quieres continuar la conversación y compartir lo que desarrollas? Únete a nosotros en <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>. &nbsp;Consulta nuestra <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">documentación para desarrolladores</a> para empezar a desarrollar en Workers.</p>
+</div>

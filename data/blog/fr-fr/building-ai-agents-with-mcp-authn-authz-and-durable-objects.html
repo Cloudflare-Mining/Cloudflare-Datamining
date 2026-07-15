@@ -1,0 +1,369 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/building-ai-agents-with-mcp-authn-authz-and-durable-objects">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/building-ai-agents-with-mcp-authn-authz-and-durable-objects">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/building-ai-agents-with-mcp-authn-authz-and-durable-objects">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/nl-nl/building-ai-agents-with-mcp-authn-authz-and-durable-objects">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/building-ai-agents-with-mcp-authn-authz-and-durable-objects">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TwoHmJacmESFWbUsT8gG3/5dcc9efc89b275ccd1ec887eed06245f/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ce n'est pas un secret que chez Cloudflare, <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>nous sommes optimistes</u></a> quant à l'avenir des agents. Nous nous réjouissons d'un avenir dans lequel l'IA pourrait non seulement jouer le rôle de copilote à nos côtés, mais dans lequel nous pourrions même commencer à déléguer des tâches entières à l'IA.&nbsp;</p>
+	<p>Bien qu'il se soit écoulé relativement peu de temps depuis <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare"><u>la première annonce</u></a> de notre SDK Agents, dont l'objectif est de faciliter la création d'agents par les développeurs, la construction d'un avenir agentique exige, à cette fin, des livraisons continues. Aujourd'hui, nous effectuons plusieurs annonces afin de contribuer à accélérer le développement agentique, et notamment&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Nouvelles fonctionnalités du SDK Agents&nbsp;:</b> développez des clients MCP distants, dotés de fonctions de transport et d'authentification intégrées, afin de permettre aux agents&nbsp;IA de se connecter à des services externes.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u><b>Fournisseur d'authentification BYO pour MCP</b></u></a><b>&nbsp;:</b> intégrations avec <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> et <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>, afin d'ajouter des fonctions d'authentification et d'autorisation à votre serveur MCP distant.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u><b>Hibernation pour McpAgent</b></u></a><b>&nbsp;:</b> mettez automatiquement en veille les serveurs MCP distants avec état lorsqu'ils sont inactifs et réveillez-les lorsque c'est nécessaire. Ceci vous permet de maintenir les connexions pour les sessions de longue durée, tout en vous assurant que vous ne payez pas pour le temps d'inactivité.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u><b>Offre gratuite de Durable Objects</b></u></a><b>&nbsp;:</b> nous considérons Durable Objects comme une composante essentielle du développement d'agents, et si vous utilisez notre SDK Agents, vous devez y avoir accès. Jusqu'à aujourd'hui, Durable Objects était uniquement accessible dans le cadre de nos offres payantes, et nous sommes maintenant heureux de l'inclure dans notre offre gratuite.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution"><u><b>Disponibilité générale de Workflows</b></u></a><b>&nbsp;:</b> cette fonctionnalité vous permet de livrer des actions multi-étapes, de longue durée et prêtes pour la production dans des agents.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare"><u><b>AutoRAG</b></u></a><b>&nbsp;:</b> aide à intégrer l'IA contextuelle à vos applications en quelques clics seulement.</p>
+		</li>
+		<li>
+			<p><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u><b>agents.cloudflare.com</b></u></a><b>&nbsp;:</b> notre nouvelle page d'accueil pour tout ce qui concerne les agents.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="new-mcp-capabilities-in-agents-sdk">Nouvelles fonctionnalités MCP dans le SDK Agents</h2>
+		<a href="https://blog.cloudflare.com/#new-mcp-capabilities-in-agents-sdk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents&nbsp;IA peuvent désormais se connecter aux services externes et interagir avec eux par l'intermédiaire du protocole MCP (<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol</u></a>). Nous avons mis à jour le SDK Agents pour vous permettre d'intégrer un client MCP distant à votre agent&nbsp;IA, avec tous les composants (flux d'authentification, découverte d'outils et gestion des connexions) intégrés à votre place.</p>
+	<p>Cette approche vous permet de développer des agents capables d'effectuer les actions suivantes&nbsp;:</p>
+	<ol>
+		<li>
+			<p>Inviter l'utilisateur final à autoriser l'accès à un service tiers (serveur MCP).</p>
+		</li>
+		<li>
+			<p>Utiliser les outils provenant de ces services externes, en agissant au nom de l'utilisateur final.</p>
+		</li>
+		<li>
+			<p>Appeler des serveurs MCP depuis Workflows, des tâches programmées ou n'importe quelle partie de votre agent.</p>
+		</li>
+		<li>
+			<p>Se connecter à plusieurs serveurs MCP et découvrir automatiquement les nouveaux outils ou fonctionnalités présentés par le service tiers.</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/X3RvQHewsVwJhq3TVOD0w/bbc5690d2d687f7a390f91474b3eb385/1.png" alt="" class="kg-image" width="1999" height="1309" loading="lazy">
+	</figure>
+	<p>Le protocole MCP (Model Context Protocol), <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>introduit pour la première fois par Anthropic</u></a>, s'impose aujourd'hui rapidement comme le moyen standard pour les agents&nbsp;IA d'interagir avec des services externes. Il bénéficie de l'adoption par des fournisseurs tels que OpenAI, Cursor et Copilot.</p>
+	<p>Nous avons <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>récemment annoncé</u></a> la prise en charge du <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>développement de serveurs MCP distants</u></a> sur Cloudflare, et nous avons ajouté à notre SDK Agents une classe <code>McpAgent</code> qui gère automatiquement les aspects distants de MCP&nbsp;: le transport et l'authentification/l'autorisation. Nous sommes aujourd'hui heureux d'étendre les mêmes fonctionnalités aux agents agissant en tant que clients MCP.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nxl3bIRTbfRzpdLhHF720/41bea06c9e48b7d356d11a6f254b76ef/2.png" alt="" class="kg-image" width="1810" height="596" loading="lazy">
+	</figure>
+	<p>Vous souhaitez découvrir la solution en action&nbsp;? Cliquez sur le bouton ci-dessous pour déployer un client MCP entièrement distant, pouvant être utilisé pour établir une connexion à des serveurs MCP distants.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included">Les agents&nbsp;IA peuvent maintenant agir en tant que clients MCP distants avec fonctions de transport et d'authentification incluses</h2>
+		<a href="https://blog.cloudflare.com/#ai-agents-can-now-act-as-remote-mcp-clients-with-transport-and-auth-included" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents&nbsp;IA doivent se connecter à des services externes pour accéder aux outils, aux données et aux capacités excédant leurs connaissances intégrées. Cela signifie que les agents&nbsp;IA doivent pouvoir agir en tant que clients MCP distants afin de pouvoir se connecter aux serveurs MCP distants hébergeant ces outils et fonctionnalités.&nbsp;</p>
+	<p>Nous avons ajouté au SDK Agents une nouvelle classe, <code>MCPClientManager</code>, afin de vous fournir tous les outils nécessaires pour permettre à votre agent&nbsp;IA de contacter des services externes via MCP. La classe <code>MCPClientManager</code> gère automatiquement les fonctions suivantes&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Transport&nbsp;: </b>établissez une connexion aux serveurs MCP distants via SSE et HTTP. La prise en charge du protocole <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a> sera assurée prochainement.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Gestion des connexions&nbsp;: </b>le client surveille l'état de toutes les connexions et se reconnecte automatiquement en cas d'interruption d'une connexion.</p>
+		</li>
+		<li>
+			<p><b>Découverte des capacités&nbsp;: </b>découvre automatiquement l'ensemble des fonctionnalités, des outils, des ressources et des invites présentés par le serveur MCP.</p>
+		</li>
+		<li>
+			<p><b>Mises à jour en temps réel&nbsp;:</b> lorsque les outils, les ressources ou les invites d'un serveur changent, le client reçoit automatiquement des notifications et met à jour son état interne.</p>
+		</li>
+		<li>
+			<p><b>Gestion des espaces de noms&nbsp;: </b>en cas de connexion à plusieurs serveurs MCP, tous les outils et ressources reçoivent automatiquement des espaces de noms, afin d'éviter les conflits.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients">Autoriser les agents à accéder aux outils avec une vérification de l'authentification intégrée pour les clients MCP</h3>
+		<a href="https://blog.cloudflare.com/#granting-agents-access-to-tools-with-built-in-auth-check-for-mcp-clients" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons intégré l'ensemble du flux d'authentification OAuth directement dans le SDK Agents, afin que vos agents&nbsp;IA puissent se connecter et s'authentifier en toute sécurité sur n'importe quel serveur MCP distant, sans devoir créer intégralement une procédure d'authentification.</p>
+	<p>Cela vous permet de fournir aux utilisateurs une manière sécurisée de se connecter et d'accorder explicitement l'accès, afin de permettre à l'agent d'agir en leur nom en gérant automatiquement les aspects suivants&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Prise en charge du protocole OAuth&nbsp;2.1.</p>
+		</li>
+		<li>
+			<p>Redirection des utilisateurs vers la page de connexion du service.</p>
+		</li>
+		<li>
+			<p>Génération de la vérification du code et échange d'un code d'autorisation contre un jeton d'accès.</p>
+		</li>
+		<li>
+			<p>Utilisation du jeton d'accès pour la transmission de requêtes authentifiées au serveur MCP.</p>
+		</li>
+	</ul>
+	<p>Voici un exemple d'agent capable d'établir une connexion sécurisée aux serveurs MCP en initialisant le gestionnaire de client, en ajoutant le serveur, puis en effectuant les rappels d'authentification&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // initialize MCPClientManager which manages multiple MCP clients with optional auth
+  this.mcp = new MCPClientManager("my-agent", "1.0.0", {
+    baseCallbackUri: `${serverHost}/agents/${agentNamespace}/${this.name}/callback`,
+    storage: this.ctx.storage,
+  });
+}
+
+async addMcpServer(url: string): Promise&lt;string&gt; {
+  // Add one MCP client to our MCPClientManager
+  const { id, authUrl } = await this.mcp.connect(url);
+  // Return authUrl to redirect the user to if the user is unauthorized
+  return authUrl
+}
+
+async onRequest(req: Request): Promise&lt;void&gt; {
+  // handle the auth callback after being finishing the MCP server auth flow
+  if (this.mcp.isCallbackRequest(req)) {
+    await this.mcp.handleCallbackRequest(req);
+    return new Response("Authorized")
+  }
+  
+  // ...
+}</code></pre>
+	<p>Connexion à plusieurs serveurs MCP et découverte des capacités qu'ils fournissent</p>
+	<p>Vous pouvez utiliser le SDK Agents pour connecter un client MCP à plusieurs serveurs MCP simultanément. Cela s'avère particulièrement utile lorsque vous souhaitez que votre agent accède à, et interagisse avec, des outils et des ressources servis par différents fournisseurs de services.&nbsp;</p>
+	<p>La classe <code>MCPClientManager</code> maintient les connexions à plusieurs serveurs MCP par l'intermédiaire de l'objet <code>mcpConnections</code>, un dictionnaire qui associe les noms de serveurs uniques aux instances <code>MCPClientConnection</code> correspondantes.&nbsp;</p>
+	<p>Lorsque vous enregistrez une nouvelle connexion à un serveur avec <code>connect()</code>, le gestionnaire&nbsp;:&nbsp;</p>
+	<ol>
+		<li>
+			<p>Crée une nouvelle instance de connexion avec l'authentification spécifique au serveur.</p>
+		</li>
+		<li>
+			<p>Initialise les connexions et s'enregistre pour recevoir les notifications de fonctionnalité du serveur.</p>
+		</li>
+	</ol>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async onStart(): Promise&lt;void&gt; {
+  // Connect to an image generation MCP server
+  await this.mcp.connect("https://image-gen.example.com/mcp/sse");
+  
+  // Connect to a code analysis MCP server
+  await this.mcp.connect("https://code-analysis.example.org/sse");
+  
+  // Now we can access tools with proper namespacing
+  const allTools = this.mcp.listTools();
+  console.log(`Total tools available: ${allTools.length}`);
+}</code></pre>
+	<p>Chaque connexion gère son propre contexte d'authentification, ce qui permet à un agent&nbsp;IA unique de s'authentifier simultanément sur plusieurs serveurs. En outre, <code>MCPClientManager</code> assure la gestion automatique des espaces de noms afin d'éviter les conflits entre les outils portant des noms identiques, fournis depuis différents serveurs.&nbsp;</p>
+	<p>Par exemple, si des serveurs «&nbsp;Image MCP Server&nbsp;» et «&nbsp;Code MCP Server&nbsp;» disposent tous deux d'un outil nommé «&nbsp;analyze&nbsp;», ils peuvent tous deux être appelés indépendamment, sans générer de conflit de nom.</p>
+	<div class="flex anchor relative">
+		<h2 id="use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server">Utilisez Stytch, Auth0 et WorkOS pour déployer l'authentification et l'autorisation sur votre serveur MCP&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#use-stytch-auth0-and-workos-to-bring-authentication-authorization-to-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec MCP, les utilisateurs disposeront d'une nouvelle façon d'interagir avec votre application, sans dépendre du tableau de bord ou d'une API comme point d'entrée. Au lieu de cela, des agents&nbsp;IA agissant pour le compte de l'utilisateur accéderont désormais au service. Pour garantir que les utilisateurs et les agents peuvent établir une connexion sécurisée à votre service, vous devez étendre votre système d'authentification et d'autorisation existant afin de prendre en charge ces interactions agentiques, en déployant des flux de connexion, des domaines d'application des autorisations, des formulaires de consentement et des mesures d'accès pour votre serveur MCP.&nbsp;</p>
+	<p>Nous ajoutons des intégrations avec <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> et <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> afin de faciliter, pour tous les utilisateurs développant un serveur MCP, la configuration des fonctionnalités d'authentification et d'autorisation pour leur serveur MCP.&nbsp;</p>
+	<p>Vous pouvez tirer parti de notre intégration de serveur MCP avec Stytch, Auth0 et WorkOS pour&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Permettre aux utilisateurs de s'authentifier sur votre serveur MCP par e-mail, via les identifiants sociaux, par authentification unique (SSO, Single Sign-On) et par authentification multifacteur (MFA, Multi-Factor Authentication).</p>
+		</li>
+		<li>
+			<p>Définir des domaines d'application et des autorisations correspondant directement à vos outils MCP.</p>
+		</li>
+		<li>
+			<p>Présenter aux utilisateurs une page de consentement correspondant aux autorisations demandées.</p>
+		</li>
+	</ul>
+	<p>Imposer des autorisations afin que les agents puissent uniquement invoquer les outils autorisés.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oYchjMwoMxwYxsqq4PObk/381937e89c249b87c1930295b407faf6/3.png" alt="" class="kg-image" width="1226" height="604" loading="lazy">
+	</figure>
+	<p>Faites vos premiers pas en suivant les exemples ci-dessous. Cliquez sur le bouton «&nbsp;Déployer sur Cloudflare&nbsp;» pour déployer les serveurs MCP de démonstration sur votre compte Cloudflare. Ces démos comprennent des points de terminaison d'authentification préconfigurés, des flux de consentement et des modèles d'autorisation que vous pouvez adapter à vos besoins. Après avoir déployé les serveurs MCP de démonstration, vous pouvez utiliser le bac à sable <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers&nbsp;AI Playground</u></a>, un client MCP distant basé sur navigateur, pour tester l'ensemble de la procédure pour utilisateurs.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="stytch">Stytch</h3>
+		<a href="https://blog.cloudflare.com/#stytch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>Faites vos premiers pas</u></a> avec un serveur MCP distant utilisant Stytch pour permettre aux utilisateurs de se connecter par e-mail, avec leurs identifiants Google ou via l'authentification SSO de leur entreprise, puis autoriser leur agent&nbsp;IA à afficher et gérer les OKR de l'entreprise en leur nom. Stytch gérera la restriction des domaines d'application accordés à l'agent&nbsp;IA en fonction du rôle de l'utilisateur et des autorisations dont il dispose au sein de son entreprise. Lors de l'autorisation du client MCP, chaque utilisateur verra s'afficher une page de consentement décrivant les autorisations que l'agent lui demande d'accorder en fonction de son rôle.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<p>Pour plus de scénarios d'utilisation grand public, vous pouvez déployer un serveur MCP distant pour une application de gestion des tâches utilisant Stytch pour l'authentification et l'autorisation du client MCP. Les utilisateurs peuvent se connecter par e-mail, puis accéder immédiatement aux listes de tâches associées à leur compte, mais également accorder l'accès à un assistant&nbsp;IA afin qu'il les aide à gérer leurs tâches.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<p>Quel que soit le scénario d'utilisation, Stytch vous permet de transformer facilement votre application en fournisseur d'identité OAuth&nbsp;2.0 et de transformer votre serveur MCP distant en client Relying Party, afin qu'il puisse facilement hériter de l'identité et des autorisations depuis votre application. Pour en savoir plus sur la manière dont Stytch permet une authentification sécurisée aux serveurs MCP distants, consultez l'<a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>article de blog</u></a> de la plateforme.</p>
+	<blockquote>
+		<p><i>«&nbsp;L'un des défis qu'implique la réalisation de la promesse des agents&nbsp;IA consiste à permettre à ces derniers d'accéder de manière sécurisée et fiable aux données provenant d'autres plateformes. La solution Stytch Connected Apps est conçue pour ces scénarios d'utilisation agentiques, simplifiant la transformation de votre application en fournisseur d'identité OAuth&nbsp;2.0, avec l'objectif de sécuriser l'accès aux serveurs MCP distants. En associant Cloudflare Workers à Stytch Connected Apps, nous éliminons les obstacles pour les développeurs et leur permettons d'évoluer rapidement des démonstrations de faisabilité de l'IA vers des implémentations sécurisées et déployées.&nbsp;» – Julia Lamb, cofondatrice et CTO, Stytch.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="auth0">Auth0</h3>
+		<a href="https://blog.cloudflare.com/#auth0" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Faites vos premiers pas avec un serveur MCP distant utilisant Auth0 pour authentifier les utilisateurs par e-mail, via les identifiants sociaux ou via l'authentification SSO de leur entreprise, leur permettant d'interagir avec leurs applications de gestion des tâches et leurs données personnelles par le biais d'agents&nbsp;IA. Le serveur MCP établit une connexion sécurisée aux points de terminaison d'API pour le compte des utilisateurs, en indiquant exactement les ressources auxquelles l'agent pourra accéder lorsqu'il aura obtenu le consentement de l'utilisateur. Dans cette implémentation, les jetons d'accès sont automatiquement actualisés lors des interactions de longue durée.</p>
+	<p>Pour configurer cette implémentation, déployez d'abord le point de terminaison d'API protégé&nbsp;: </p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<p>Ensuite, déployez le serveur MCP qui gère l'authentification via Auth0 et connecte en toute sécurité les agents&nbsp;IA à votre point de terminaison d'API.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<blockquote>
+		<p><i>«&nbsp;Cloudflare continue à faciliter le travail des développeurs créant des produits&nbsp;IA avec des outils tels qu'AI&nbsp;Gateway, Vectorize et Workers&nbsp;AI. Le récent ajout de serveurs MCP distants démontre, une fois encore, que Cloudflare Workers et Durable Objects constituent une plateforme d'exception pour le déploiement de solutions&nbsp;IA serverless. Nous sommes très fiers qu'Auth0 puisse contribuer à répondre aux besoins d'authentification et d'autorisation de ces charges de travail innovantes.&nbsp;» – Sandrero Di Mattia, Sr. Director, Product Architecture de Auth0.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="workos">WorkOS</h3>
+		<a href="https://blog.cloudflare.com/#workos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Faites vos premiers pas avec un serveur MCP distant utilisant le service WorkOS AuthKit pour authentifier les utilisateurs et gérer les autorisations accordées aux agents&nbsp;IA. Dans cet exemple, le serveur MCP expose dynamiquement les outils en fonction du rôle et des droits d'accès de l'utilisateur. Tous les utilisateurs authentifiés ont accès à l'outil <code>add</code>, mais seuls les utilisateurs à qui l'autorisation <code>image_generation</code> a été attribuée dans WorkOS peuvent accorder à l'agent&nbsp;IA l'accès à l'outil de génération d'images. Cet exemple démontre comment les serveurs MCP peuvent exposer conditionnellement leurs capacités aux agents&nbsp;IA en fonction du rôle et de l'autorisation de l'utilisateur authentifié.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="Déployer sur Cloudflare"></a>
+	<p></p>
+	<blockquote>
+		<p><i>«&nbsp;MCP devient la norme en matière d'intégration des agents&nbsp;IA, mais l'authentification et l'autorisation restent des lacunes importantes au regard de l'adoption par les entreprises. WorkOS Connect permet à n'importe quelle application de devenir un serveur d'autorisation OAuth&nbsp;2.0, permettant aux agents et aux clients MCP d'obtenir en toute sécurité des jetons pour définir des autorisations détaillées, ainsi que l'accès aux ressources. Avec Cloudflare Workers, les développeurs peuvent rapidement déployer des serveurs MCP distants intégrant la prise en charge d'OAuth et un contrôle d'accès conçu pour les grandes entreprises. Ensemble, WorkOS et Cloudflare facilitent le déploiement d'une infrastructure d'agents sécurisée, adaptée aux grandes entreprises.&nbsp;» – Michael Grinich, CEO de WorkOS.</i></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use">WebSockets avec hibernation&nbsp;: mettez les agents IA en sommeil lorsqu'ils ne sont pas utilisés</h2>
+		<a href="https://blog.cloudflare.com/#hibernate-able-websockets-put-ai-agents-to-sleep-when-theyre-not-in-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À compter d'aujourd'hui, une nouvelle amélioration apparaît dans la classe McpAgent&nbsp;: la prise en charge de l'<a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>API WebSockets Hibernation</u></a>, qui permet à votre serveur MCP de se mettre en sommeil lorsqu'il ne reçoit pas de requêtes et de se réveiller instantanément lorsque la situation l'exige. Ainsi, vous payez des frais de calcul uniquement lorsque votre agent travaille réellement.</p>
+	<p>Nous avons <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>récemment lancé</u></a> la <a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>classe McpAgent</u></a>, qui permet aux développeurs de créer des serveurs MCP distants sur Cloudflare en utilisant des instances Durable Objects pour maintenir des connexions avec état pour chaque session client. Dès le départ, nous avons opté pour le développement de mpAgent avec état, afin de permettre aux développeurs de créer des serveurs capables de mémoriser le contexte, les préférences des utilisateurs et l'historique des conversations. Toutefois, le maintien des connexions des clients permet à la session de rester active pendant une longue période, même lorsqu'elle n'est pas utilisée.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="mcp-agents-are-hibernate-able-by-default">Les agents MCP peuvent être mis en hibernation par défaut</h3>
+		<a href="https://blog.cloudflare.com/#mcp-agents-are-hibernate-able-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il n'est pas nécessaire de modifier votre code pour tirer profit de l'hibernation. Avec la dernière mise à jour du SDK, toutes les instances McpAgent intègrent automatiquement la prise en charge de l'hibernation, permettant à vos serveurs MCP avec état d'entrer en sommeil pendant les périodes d'inactivité et de se réveiller, sans perdre leur état, lorsque la situation l'exige.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">Fonctionnement</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsqu'une requête parvient au point de terminaison Server-Sent Events&nbsp;(/sse), l'instance Workers initialise une connexion WebSocket à l'instance Durable Objects associée pour la session, puis renvoie un flux SSE au client. Toutes les réponses circulent via ce flux.</p>
+	<p>Cette implémentation tire parti de l'API WebSocket Hibernation au sein de Durable Objects. En cas de période d'inactivité, l'instance Durable Objects peut être expulsée de la mémoire, tout en maintenant la connexion WebSocket ouverte. Si le WebSocket reçoit ultérieurement un message, le runtime recrée l'instance Durable Objects et transmet le message au gestionnaire approprié.</p>
+	<div class="flex anchor relative">
+		<h2 id="durable-objects-on-free-tier">Durable Objects inclus dans l'offre gratuite</h2>
+		<a href="https://blog.cloudflare.com/#durable-objects-on-free-tier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour vous aider à développer des agents&nbsp;IA sur Cloudflare, la solution <a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> est maintenant disponible dans l'offre gratuite, afin que vous puissiez faire vos premiers pas sans engagement. Avec le SDK Agents, vous déployez vos agents&nbsp;IA sur Cloudflare et les exécutez dans des instances Durable Objects.</p>
+	<p>Les instances Durable Objects offrent une puissance de calcul et un stockage durable qui, associé avec Workers, permet le développement d'applications serverless avec état. Chaque instance Durable Objects est un coordinateur avec état permettant de gérer les interactions client en temps réel, de transmettre des requêtes à des services externes tels que les LLM et de créer une «&nbsp;mémoire&nbsp;» agentique par le biais de la persistance de l'état dans un <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>stockage SQLite sans latence</u></a>&nbsp;– autant de tâches que doit pouvoir accomplir un agent&nbsp;IA. Les instances Durable Objects peuvent évoluer avec facilité pour inclure des millions d'agents&nbsp;; chaque agent créé à proximité de l'utilisateur interagit avec son agent afin de garantir des performances rapides, l'ensemble étant géré par Cloudflare.&nbsp;</p>
+	<p>Le stockage SQLite sans latence dans Durable Objects a été <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>lancé pendant la version bêta publique</u></a> de septembre&nbsp;2024, à l'occasion de la Semaine anniversaire de Cloudflare. Depuis, nous avons priorisé les fonctionnalités et la robustesse qui faisaient défaut par rapport au stockage clé-valeur préexistant dans Durable Objects. Nous sommes ravis de proposer le stockage SQLite en disponibilité générale, avec une base de données SQLite de 10&nbsp;Go par instance Durable Objects, et nous recommandons le stockage SQLite pour toutes les nouvelles classes Durable Objects. L'offre gratuite de la solution Durable Objects peut uniquement accéder au stockage SQLite.</p>
+	<p>L'offre gratuite de Cloudflare vous permet de développer des applications dans le monde réel. Dans l'offre gratuite, chaque requête d'une instance Workers peut faire appel à une instance Durable Objects. Pour une <a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>tarification en fonction de l'utilisation</u></a>, l'utilisation du calcul et du stockage associés aux instances Durable Objects est facturée en fonction des limites suivantes de l'offre gratuite.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.33%;" width="233">
+					<col style="width:33.34%;" width="233">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers&nbsp;: offre gratuite</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Workers&nbsp;: offre payante</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Calcul&nbsp;: requêtes</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100&nbsp;000/jour</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 million/mois inclus</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+0,15&nbsp;USD/million</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Calcul&nbsp;: durée</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">13&nbsp;000 Go-s/jour</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">400&nbsp;000 Go-s/mois inclus&nbsp;</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+12,50&nbsp;USD/million de Go/s</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Stockage&nbsp;: lignes lues</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5&nbsp;millions/jour</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">25&nbsp;milliards/mois inclus</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+ 0,001&nbsp;USD/million&nbsp;</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Stockage&nbsp;: lignes écrites</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">100&nbsp;000/jour</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">50 millions/mois inclus</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+1&nbsp;USD/million</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt;">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Stockage&nbsp;: données stockées en SQL</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5&nbsp;Go (total)</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5&nbsp;Go/mois inclus</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+0,20&nbsp;USD/Go-mois</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h3 id="find-us-at-agents-cloudflare-com">Retrouvez-nous sur agents.cloudflare.com</h3>
+		<a href="https://blog.cloudflare.com/#find-us-at-agents-cloudflare-com" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous sommes conscients que cela représente beaucoup de nouvelles informations à assimiler, mais ne vous inquiétez pas. Que vous découvriez tout juste les agents ou que vous cherchiez à en savoir plus sur la manière dont Cloudflare peut vous aider à les développer, nous avons lancé aujourd'hui un nouveau site pour vous aider à faire vos premiers pas&nbsp;: <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a>.&nbsp;</p>
+	<p>Racontez-nous ce que vous développez&nbsp;!</p>
+</div>

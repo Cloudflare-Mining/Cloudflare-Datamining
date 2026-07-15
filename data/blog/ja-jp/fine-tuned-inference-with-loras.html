@@ -1,0 +1,123 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/fine-tuned-inference-with-loras">English</a>、<a href="https://blog.cloudflare.com/zh-tw/fine-tuned-inference-with-loras">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/fine-tuned-inference-with-loras">Français</a>、<a href="https://blog.cloudflare.com/de-de/fine-tuned-inference-with-loras">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/fine-tuned-inference-with-loras">한국어</a>、<a href="https://blog.cloudflare.com/es-es/fine-tuned-inference-with-loras">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/fine-tuned-inference-with-loras">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wCfi0bSkURRvHYDjnYFMb/a2696d5496483d856e1c438ca891ad61/fine-tuned-inference-with-loras.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="inference-from-fine-tuned-llms-with-loras-is-now-in-open-beta">LoRAを用いたファインチューニング済みLLMからの推論がオープンベータ版に</h3>
+		<a href="https://blog.cloudflare.com/#inference-from-fine-tuned-llms-with-loras-is-now-in-open-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70HGv5JY8CcvWM8IesAxt0/5b60789faf49d45cd4f54e6dd8e4efd4/loraai.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>本日、Workers AI上でLoRAによるファインチューニング済み推論を実行できるようになったことを発表します。この機能はオープンベータ版で、Mistral、Gemma、またはLlama 2で使用するための学習済みLoRAアダプタで利用可能ですが、いくつかの制限があります。BYO (Bring Your Own) LoRA機能の概要については、<a href="https://blog.cloudflare.com/workers-ai-ga-huggingface-loras-python-support">製品発表のブログ記事</a>をご覧ください。</p>
+	<p>この記事では、ファインチューニングとLoRAとは何かを深く掘り下げ、当社のWorkers AIプラットフォームでの使い方を紹介し、プラットフォームでの実装方法についての技術的な詳細を掘り下げます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-fine-tuning">ファインチューニングとは？</h2>
+		<a href="https://blog.cloudflare.com/#what-is-fine-tuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ファインチューニングとは、データを追加して学習を継続することで、AIモデルを修正することの総称です。ファインチューニングの目的は、生成がデータセットに類似する確率を高めることです。モデルをゼロからトレーニングすることは、かかる費用と時間を考えると多くのユースケースでは現実的ではありません。既存の学習済みモデルをファインチューニングすることで、その能力を活用しながら目的のタスクを達成することができます。<a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">低ランク適応</a>（Low-Rank Adaptation：LoRA）は、LLMだけでなくさまざまなモデルアーキテクチャに適用できる特定のファインチューニング手法です。従来のファインチューニング手法では、学習済みモデルの重みを直接修正したり、追加したファインチューニングの重みと融合させたりするのが一般的です。一方、LoRAでは、ファインチューニングの重みと学習済みモデルは分離されたままであり、学習済みモデルは変更されません。その結果、コードを生成する、特定の性格を持つ、特定のスタイルで画像を生成するなど、特定のタスクでより正確なモデルをトレーニングすることができます。既存の<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">LLM</a>をファインチューニングして、特定のトピックに関する追加情報を理解することもできます。</p>
+	<p>元のベースモデルの重みを維持するというアプローチは、比較的少ない計算で新しいファインチューニングの重みを作成できることを意味します。既存の基盤モデル（Llama、Mistral、Gemmaなど）を活用し、ニーズに合わせて適応させることができるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-fine-tuning-work">ファインチューニングの仕組みは？</h2>
+		<a href="https://blog.cloudflare.com/#how-does-fine-tuning-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ファインチューニングと、LoRAがなぜこれほど効果的なのかをよりよく理解するためには、一歩下がってAIモデルがどのように機能するのかを理解する必要があります。（LLMのような）AIモデルは、ディープラーニング技術によって訓練されたニューラルネットワークです。ニューラルネットワークでは、モデルのドメイン知識の数学的表現として機能するパラメータセットがあり、重みとバイアス、簡単に言えば数字で構成されています。これらのパラメータは通常、数値の大きな行列として表されます。パラメータが多ければ多いほど、モデルは大きくなります。ですから、llama-2-7bのようなモデルを見たとき、「7b」と読むと、そのモデルには70億個のパラメータがあることがわかります。</p>
+	<p>モデルのパラメータは、その挙動を定義します。モデルをゼロから訓練する場合、これらのパラメータは通常、乱数として始まります。データセットでモデルを訓練する際、これらのパラメータは、モデルがデータセットを反映して正しい挙動を示すまで、少しずつ調整されます。あるパラメータは他のパラメータよりも重要であるため、重みを適用し、その重みで重要性の高低を示します。重みは、訓練されるデータのパターンと関係を捉えるためのモデルの能力において重要な役割を果たします。</p>
+	<p>従来のファインチューニングでは、学習済みモデルの_すべての_パラメータを新しい重みのセットで調整します。そのため、ファインチューニングされたモデルには、元のモデルと同じ量のパラメータを提供する必要があります。つまり、完全にファインチューニングされたモデルの学習と推論の実行には、多くの時間と計算が必要になるのです。その上、最先端モデルや既存モデルの新しいバージョンが定期的にリリースされるため、完全にファインチューニングされたモデルは、トレーニング、メンテナンス、保存にコストがかかることになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="lora-is-an-efficient-method-of-fine-tuning">LoRAはファインチューニングの効率的な方法</h2>
+		<a href="https://blog.cloudflare.com/#lora-is-an-efficient-method-of-fine-tuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>非常に単純に言えば、LoRAでは学習済みモデルのパラメータを調整することを避け、代わりに少数の追加パラメータを適用することができます。これらの追加パラメータはベースモデルに一時的に適用され、モデルの挙動を効果的に制御します。従来のファインチューニング手法に比べ、LoRAアダプタと呼ばれるこれらの追加パラメータのトレーニングに必要な時間と計算量が大幅に削減されます。トレーニング後、LoRAアダプタを別個のモデルファイルとしてパッケージ化し、トレーニング元のベースモデルにプラグインできるようにします。完全にファインチューニングされたモデルは数十ギガバイトのサイズになることもありますが、これらのアダプタは通常、わずか数メガバイトです。これにより配信が非常に簡単になり、LoRAでファインチューニングされた推論を提供しても、推論にかかる合計時間にはミリ秒の遅延しか追加されません。</p>
+	<p>なぜLoRAがこれほど効果的なのかを理解したい方は、気を引き締めて、まず最初に、線形代数の簡単なレッスンを受けてください。大学時代から考えたことのない用語かもしれませんが、これから説明しますのでご心配なく。</p>
+	<div class="flex anchor relative">
+		<h2 id="show-me-the-math">数学のレッスン</h2>
+		<a href="https://blog.cloudflare.com/#show-me-the-math" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のファインチューニングでは、モデルの重み（<i>W0</i>）を取り出し、それを微調整して新しい重みのセットを出力することができます。そのため、元のモデルの重みと新しい重みの差は_ΔW_となり、重みの変化を表します_。<i>したがって、調整されたモデルは、元のモデルの重みに重みの変化分_W0</i> + <i>ΔWを加えた新しい重みのセットを持つことになります。</i></p>
+	<p>これらのモデルの重みはすべて、実際には大きな数値の行列として表現されることを覚えておいてください。数学では、どの行列にもランク（<i>r</i>）と呼ばれる性質があり、これは行列内の線形独立な列や行の数を表します。行列のランクが低い場合、「重要」な列や行はわずかしかないため、実際には最も重要なパラメータを持つ2つの小さな行列に分解または分割することができます（代数学における因数分解のようなものだと考えてください）。このテクニックはランク分解と呼ばれ、最も重要なビットを保ちながら行列を大幅に縮小、単純化することができます。ファインチューニングの文脈では、ランクは元のモデルから変更されるパラメータの数を決定します。ランクが高いほどファインチューニングが強くなり、出力に対してよりきめ細かさが増します。</p>
+	<p><a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRAの原論文</a>によると、研究者はモデルが低ランクの場合、重みの変化を表す行列も低ランクであることを発見しました。したがって、重みの変化_ΔW_を表す行列にランク分解を適用して、小さな2つの行列_A、B_（<i>ΔW = BA</i>）を作成することができます。これで、モデルの変化を2つの小さな低ランク行列で表すことができるのです_。_これが、このファインチューニングの方法が低ランク適応と呼ばれる理由です。</p>
+	<p>推論を実行するとき、モデルの挙動を変えるために必要なのは、より小さな行列_A、B_だけです。_A、B_のモデルの重みがLoRAアダプタを構成します（設定ファイルとともに）。実行時に、元のモデル（<i>W0</i>）とLoRAアダプタ（_A、B）_を組み合わせて、モデルの重みを足し合わせます。足し算と引き算は簡単な数学的操作です。つまり、_W0_から_A、B_を足したり引いたりすることで、さまざまなLoRAアダプタをすばやく入れ替えることができます。元のモデルの重みを一時的に調整することで、モデルの挙動と出力を修正し、その結果、最小限の遅延の追加でファインチューニングされた推論を得ることができるのです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13k5puOQpL75CRNCTv5ZYE/309e49ef14cc3ef7a3493c5ad75c1f97/Lora-lineapro.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+
+	</figure>
+	<p><a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRAの原論文</a>によると、「LoRAは学習可能なパラメータ数を10,000分の1に、GPUのメモリ必要量を3分の1に削減できる」そうです。このため、LoRAは、完全にファインチューニングされたモデルよりも計算コストがはるかに低く、推論時間を増やすことなく、より小さくポータブルであるため、ファインチューニングの最も一般的な手法の1つとなっています。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-you-use-loras-with-workers-ai">Workers AIでLoRAをどのように使用するか</h2>
+		<a href="https://blog.cloudflare.com/#how-can-you-use-loras-with-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AIは、そのサーバーレス推論の実行方法により、LoRAの実行に非常に適しています。当社のカタログにあるモデルは、常にGPUにプリロードされています。つまり、お客様のリクエストがコールドスタートになることがないよう、GPUをウォーム状態にしています。つまり、ベースモデルは常に利用可能で、必要に応じてLoRAアダプタを動的にロードしたり入れ替えたりすることができます。実際には、1つのベースモデルに複数のLoRAアダプタをプラグインできるので、一度に複数の異なるファインチューニング済みの推論リクエストに対応することができます。</p>
+	<p>LoRAでファインチューニングを行うと、カスタムモデルの重み（<a href="https://huggingface.co/docs/safetensors/en/index" target="_blank" rel="noopener noreferrer">safetensors</a>形式）とアダプタ構成ファイル（json形式）の2つのファイルが出力されます。これらの重みを自分で作成するには、<a href="https://huggingface.co/docs/peft/en/tutorial/peft_model_config" target="_blank" rel="noopener noreferrer">Hugging Face PEFT</a>（Parameter-Efficient Fine-Tuning）ライブラリと<a href="https://huggingface.co/docs/autotrain/en/llm_finetuning" target="_blank" rel="noopener noreferrer">Hugging Face AutoTrain LLMライブラリ</a>を組み合わせて、自分のデータでLoRAをトレーニングすることができます。また、<a href="https://huggingface.co/autotrain" target="_blank" rel="noopener noreferrer">Auto Train</a>や<a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer">Google Colab</a>のようなサービスでトレーニングタスクを実行することもできます。あるいは、<a href="https://huggingface.co/models?pipeline_tag=text-generation&amp;sort=trending&amp;search=mistral+lora" target="_blank" rel="noopener noreferrer">Hugging Face上では</a>さまざまなユースケースをカバーするオープンソースのLoRAアダプタが利用可能です。</p>
+	<p>最終的には、私たちのプラットフォームでLoRAのトレーニングワークロードをサポートしたいと考えていますが、現在はトレーニング済みのLoRAアダプタをWorkers AIに持ち込んでいただく必要があります。そのため、この機能をBring Your Own (BYO) LoRAと呼んでいます。</p>
+	<p>最初のオープンベータ版リリースでは、Mistral、Llama、GemmaのモデルでLoRAを使用できるようにしています。LoRAを許可するこれらのモデルのバージョンには、モデル名の最後に「<code>-lora</code>」を追加することでアクセスできます。アダプタは、以下のサポートされているベースモデルのいずれかから、ファインチューニング済みのものである必要があります。</p>
+	<ul>
+		<li>
+			<p><code>@cf/meta-llama/llama-2-7b-chat-hf-lora</code></p>
+		</li>
+		<li>
+			<p><code>@cf/mistral/mistral-7b-instruct-v0.2-lora</code></p>
+		</li>
+		<li>
+			<p><code>@cf/google/gemma-2b-it-lora</code></p>
+		</li>
+		<li>
+			<p><code>@cf/google/gemma-7b-it-lora</code></p>
+		</li>
+	</ul>
+	<p>この機能をオープンベータ版で開始するにあたって、現在注意すべき制限がいくつかあります。量子化されたLoRAモデルはまだサポートされていません。LoRAアダプタは100MBより小さく、最大ランクは8までです。オープンベータ版の最初の期間中に、アカウントごとに最大30のLoRAをお試しいただけます。Workers AIでLoRAを開始するには、<a href="https://developers.cloudflare.com/workers-ai/fine-tunes/loras" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>をお読みください。</p>
+	<p>通常通り、Workers AIと新しいBYO LoRA機能は、モデルのライセンス条項に含まれるモデル固有の使用制限を含め当社の<a href="https://www.cloudflare.com/service-specific-terms-developer-platform/#developer-platform-terms" target="_blank" rel="noopener noreferrer">利用規約</a>を念頭に置いて使用していただくものと想定しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-build-multi-tenant-lora-serving">マルチテナントのLoRAサービスをどのように構築したのか</h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-build-multi-tenant-lora-serving" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>複数のLoRAモデルに同時にサービスを提供することは、GPUのリソース使用率という点で課題となります。ベースモデルへの推論リクエストをバッチ処理することは可能ですが、独自のLoRAアダプタを提供する複雑さが加わったリクエストをバッチ処理することは、はるかに困難です。この問題に取り組むため、私たちはPunica CUDAカーネル設計とグローバルキャッシュ最適化の組み合わせを活用し、マルチテナントLoRAサービスのメモリ集中型ワークロードを処理しながら、低い推論遅延を提供します。</p>
+	<p>Punica CUDAカーネルは論文「<a href="https://arxiv.org/abs/2310.18547" target="_blank" rel="noopener noreferrer">Punica: Multi-Tenant LoRA Serving</a>」で、同じベースモデルに適用される複数の大きく異なるLoRAモデルを提供する方法として紹介されました。これまでの推論手法と比較して、この手法はスループットと遅延を大幅に改善します。この最適化は、異なるLoRAアダプタにサービスを提供するリクエスト全体において、リクエストのバッチ処理を可能にすることで実現しています。</p>
+	<p>Punicaカーネルシステムの中核は、「セグメント化された集合行列およびベクトルの乗算」（Segmented Gather Matrix-Vector Multiplication：SGMV）と呼ばれる新しいCUDAカーネルです。SGMVは、GPUが異なるLoRAモデルに対応しながら、学習済みモデルのコピーを1つだけ保存することを可能にします。Punicaカーネル設計システムは、ユニークなLoRAモデルに対するリクエストのバッチを統合し、バッチ内の異なるリクエストの特徴量重み乗算を並列化することでパフォーマンスを向上させます。同じLoRAモデルに対するリクエストは、運用強度を高めるためにグループ化されます。最初に、GPUはベースモデルをロードし、GPUメモリの大部分をKVキャッシュ用に確保します。LoRAコンポーネント（AおよびB行列）は、着信リクエストによって要求されると、リモートストレージ（CloudflareのキャッシュまたはR2）からオンデマンドでロードされます。このオンデマンドローディングでは、遅延はミリ秒しか発生しないため、推論パフォーマンスへの影響を最小限に抑えながら、複数のLoRAアダプタをシームレスにフェッチし、サービスを提供することができます。頻繁にリクエストされるLoRAアダプタは、可能な限り最速の推論のためにキャッシュされます。</p>
+	<p>リクエストされたLoRAがローカルにキャッシュされると、推論に利用できる速度はPCIe帯域幅によってのみ制限されます。それにもかかわらず、各リクエストがそれ自身のLoRAを必要とする可能性があることを考えると、LoRAのダウンロードとメモリコピー操作が非同期で実行されることが重要になります。Punicaスケジューラはこの課題に正確に取り組み、現在GPUメモリで利用可能なLoRAの重みを必要とするリクエストのみをバッチ化し、そうでないリクエストは、必要な重みが利用可能になりリクエストが効率的にバッチに参加できるようになるまでキューに入れられます。</p>
+	<p>KVキャッシュを効果的に管理し、これらのリクエストをバッチ処理することで、マルチテナントLoRAの大規模なワークロードを処理することができます。さらに重要な最適化は、連続バッチの使用です。一般的なバッチ手法では、同じアダプタへのすべてのリクエストが停止状態に達してから解放される必要があります。連続バッチ処理では、バッチ内のリクエストを早期にリリースすることで、最長のリクエストを待つ必要がなくなります。</p>
+	<p>CloudflareのネットワークにデプロイされたLLMがグローバルに利用可能であることを考えると、LoRAアダプタモデルも同様に利用可能であることが重要です。近々、Cloudflareのエッジでキャッシュされるリモートモデルファイルを実装し、推論遅延をさらに削減する予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-roadmap-for-fine-tuning-on-workers-ai">Workers AIでのファインチューニングのためのロードマップ</h2>
+		<a href="https://blog.cloudflare.com/#a-roadmap-for-fine-tuning-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LoRAアダプタのサポートを開始することは、私たちのプラットフォームのファインチューニングを切り開くための重要なステップです。現在利用可能なLLMのファインチューニングに加えて、より多くのモデルや、画像生成を含むさまざまなタイプのタスクのサポートが可能になる予定です。</p>
+	<p>Workers AIのビジョンは、開発者がAIワークロードを実行するための最高の場所になることです。最終的には、Workers AI上で直接、ファインチューニングのトレーニングジョブや、完全なファインチューニング済みモデルを実行できるようにしたいと考えています。これにより、特定のタスクに対してよりきめ細かく詳細なモデルを作成できるようになり、AIが組織でより活用できる多くのユースケースを生み出します。</p>
+	<p>AI Gatewayを使うことで、開発者がプロンプトと応答をログに記録し、本番データを使ってモデルをファインチューニングできるようになります。私たちのビジョンは、AI Gatewayからのログデータを使って（Cloudflare上の）モデルを再トレーニングし、ファインチューニング済みモデルを推論のためにWorkers AIに再展開できる、ワンクリックのファインチューニングサービスを持つことです。これにより、開発者はアプリケーションに合わせてAIモデルをパーソナライズでき、ユーザー単位まで粒度を細かく設定することができます。ファインチューニング済みモデルは、より小さく、より最適化され、ユーザーがAI推論の時間とコストを節約できるようになります。そして、このすべてが私たち独自の<a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">開発者プラットフォーム</a>内で実現できるという魅力があります。</p>
+	<p>BYO LoRAのオープンベータ版をぜひお試しください！詳細は<a href="https://developers.cloudflare.com/workers-ai/fine-tunes" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>をお読みいただき、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a>でご感想をお聞かせください。</p>
+</div>

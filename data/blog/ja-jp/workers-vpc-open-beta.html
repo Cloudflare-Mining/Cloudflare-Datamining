@@ -1,0 +1,119 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-vpc-open-beta">English</a>および<a href="https://blog.cloudflare.com/ko-kr/workers-vpc-open-beta">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66ZjYyTM1PSduy2rLVPVn4/ffd606d4a2098d803211bbfe96a7dd72/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareは4月に、<a href="https://blog.cloudflare.com/workers-virtual-private-cloud"><u>Cloudflare上のグローバル仮想プライベートクラウド</u></a>というビジョンをお話しました。これは、地域的に制約のあるクラウドやオンプレミスネットワークからアプリケーションを解放し、真にクロスクラウドアプリケーションの構築を可能にするものです。</p>
+	<p>本日は、Workers VPCイニシアチブの最初のマイルストーンであるVPCサービスを発表します。VPCサービスを使用すると、世界中どこにいても実行している<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u> Workers</u></a>から、<a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel" target="_blank" rel="noopener noreferrer"><u> Cloudflare Tunnels</u></a>を介して、地域のプライベートネットワークにあるAPI、コンテナ、仮想マシン、サーバーレス機能、データベース、その他のサービスに接続することができます。</p>
+	<p>希望のネットワークにTunnelをセットアップしたら、そのホストまたはIPアドレスを設定して、Workersに公開したい各サービスを登録できます。そうすれば、他の<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Workersサービスバインディング</u></a>と同じようにVPCサービスにアクセスできます。Cloudflareのネットワークは、Workerがどこで実行されているかに関係なく、Cloudflareのネットワーク上で自動的にVPC Serviceにルーティングされます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+  async fetch(request, env, ctx) {
+    // Perform application logic in Workers here	
+
+    // Call an external API running in a ECS in AWS when needed using the binding
+    const response = await env.AWS_VPC_ECS_API.fetch("http://internal-host.com");
+
+    // Additional application logic in Workers
+    return new Response();
+  },
+};</code></pre>
+	<p>Workers VPCは、Cloudflare Tunnelと同様に、Workersを使用するすべての方に、ベータ期間中は追加料金なしでご利用いただけます。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fvpc%2Fservices" target="_blank" rel="noopener noreferrer"><u>今すぐお試しください。</u></a>そして、その内部でどのように機能するかについての詳細は、以下をお読みください。</p>
+	<div class="flex anchor relative">
+		<h2 id="connecting-the-networks-you-trust-securely">信頼できるネットワークを安全に接続</h2>
+		<a href="https://blog.cloudflare.com/#connecting-the-networks-you-trust-securely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アプリケーションは、オンプレミスでも外部クラウドでも、複数のネットワークにまたがっています。しかし、これまではプライベートネットワークの背後にロックインされたAPIやデータベースに、Workersから接続するのは困難でした。</p>
+	<p>以前、<a href="https://blog.cloudflare.com/workers-virtual-private-cloud"><u>従来の仮想</u></a>プライベートクラウドやネットワークが従来のクラウドにどのように組み込まれるかについて説明しました。ワークロードの分離とセキュリティは提供されますが、従来の仮想プライベートクラウドは、クラウドをまたいで構築したり、独自のアプリケーションにアクセスしたり、スタックに適したテクノロジーを選択することを困難にしています。</p>
+	<p>クラウドロックインの重要な部分は、セキュアな分散型ワークロードを構築する固有の複雑さです。VPCピアリングは、接続を確保するのにクラウド間でのネットワーク接続に依存するため、ルーティングテーブル、セキュリティグループ、ネットワークアクセス制御リストを設定する必要があります。多くの企業では、これは承認を得るための数週間の議論と関係する多くのチームの関与を意味します。このロックインは、この複雑さを解決するために発明されたソリューションにも反映されています。各クラウドプロバイダーが、クロスネットワーク接続を促進するための「プライベートリンク」の独自バージョンを使用しているため、そのクラウドと統合されたベンダーにさらに限定されます。可能です。</p>
+	<p>Workers VPCは、それを劇的に簡素化します。一度、プライベートネットワークにアクセスするために必要な許可を得て、Cloudflare Tunnelをセットアップしましょう。次に、Workersに公開するサービスのトンネルとホスト名（またはIPアドレスとポート）で、Workers VPC Servicesを設定できます。そのVPCサービスに対するリクエストはすべて、この設定を使用してネットワーク内の指定されたサービスにルーティングされます。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "type": "http",
+  "name": "vpc-service-name",
+  "http_port": 80,
+  "https_port": 443,
+  "host": {
+    "hostname": "internally-resolvable-hostname.com",
+    "resolver_network": {
+      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da"
+    }
+  }
+}</code></pre>
+	<p>これにより、一度Workers VPC Serviceとして表現されると、プライベートネットワーク内のサービスは、他のCloudflareバインディングと同じ方法でWorkersバインディングモデルを使用して保護されることが保証されます。簡単なVPCサービスバインディングの例を見てみましょう：</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+  "name": "WORKER-NAME",
+  "main": "./src/index.js",
+  "vpc_services": [
+    {
+      "binding": "AWS_VPC2_ECS_API",
+      "service_id": "5634563546"
+    }
+  ]
+}</code></pre>
+	<p>他のWorkersバインディングと同様に、VPCサービスに接続しようとするWorkerプロジェクトをデプロイすると、デプロイ時にアクセス許可が検証され、Workerが当該サービスにアクセスできることを確認します。一度デプロイされると、WorkerはVPC Serviceバインディングを使用して、そのVPCサービスにリクエストを行うことができます。また、ネットワーク内のそのサービスに限り、そのVPCサービスにリクエストを行うことができます。</p>
+	<p>これは重要です。Workerにネットワーク全体を公開する代わりに、Workerは特定のVPCサービスのみにアクセスできるようになります。このアクセスはデプロイ時に検証され、従来のネットワークやアクセス制御リストよりも明示的で透明性のあるサービスアクセス制御を提供します。</p>
+	<p>これは、Workersバインディングの設計における重要な要素です。セキュリティがシンプルで、Workersをサーバーサイドリクエストフォージェリ（SSRF）攻撃に対抗できるようにすることです。<a href="https://blog.cloudflare.com/workers-environment-live-object-bindings/#security"><u>過去には、バインディングセキュリティモデルについて深く掘り下げていきましたが</u></a>、プライベートネットワークにアクセスする際、より重要になるようになりました。</p>
+	<p>特に、Workersとは何か、つまりCloudflareのグローバルネットワーク上で動作するスクリプトを考える際には、バインディングモデルも重要です。従来のクラウドとは異なり、IPアドレスを持つ個々のマシンではなく、ネットワーク内には存在しません。バインディングは、Cloudflareアカウント内の他のリソースへの安全なアクセスを可能にします。Workers VPC Servicesにも同様のことが適用されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-peek-under-the-hood">機器の中身を知る</h2>
+		<a href="https://blog.cloudflare.com/#a-peek-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>では、VPCサービスとそのバインディングは、Cloudflareのグローバルネットワーク上のどこからでもWorkersからリージョンネットワークへネットワークリクエストをトンネルを使ってどのようにルーティングするのでしょうか。ここでは、VPCサービスの専用<b>fetch()</b>リクエストから作成されたサンプルHTTPリクエストのライフサイクルを見てみましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iUTiZjmbm2ujppLugfxJo/4db92fdf8549c239f52d8636e2589baf/image4.png" alt="" class="kg-image" width="1225" height="740" loading="lazy">
+	</figure>
+	<p>すべてはワーカーコードで始まります。そこでは<b>.fetch()</b>が実行されます。必要なVPCサービスの関数は、標準JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer"><u>リクエスト</u></a>（ステップ1に示されるように）で呼び出されます。Workersランタイムは、他の多くのWorkersバインディングと同様に、<a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a> remote-procedure-callを使用して、オリジナルのHTTPリクエストを追加のコンテキストとともに送信します。</p>
+	<p>VPCサービスシステムのバインディングWorker は、バインディングコンテキスト（この場合は呼び出されるVPCサービスのサービスID）とともにHTTPリクエストを受け取ります。バインディングWorkerは、HTTP CONNECT接続内でこの情報をIrisサービスにプロキシします。これは、Workersランタイム自体ではなく、Cloudflareのエッジサービスへの接続ロジックをWorkerコード内に配置する、Cloudflareのバインディング全体の標準的なパターンです（ステップ2）。</p>
+	<p>Iris Serviceは、Workers VPCの主要サービスです。VPCサービスに対するリクエストを受け入れ、VPCサービスがあるネットワークにルーティングする役割を担っています。これは、<a href="https://developers.cloudflare.com/cloudflare-one/?cf_target_id=2026081E85C775AF31266A26CE7F3D4D" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>の内部サービスである<a href="https://blog.cloudflare.com/extending-local-traffic-management-load-balancing-to-layer-4-with-spectrum/#how-we-enabled-spectrum-to-support-private-networks"><u>Apollo</u></a>と統合することによって実現します。Apolloは、ネットワークのさまざまなレイヤーにわたって<a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework"><u>ネットワークやトンネルに安全に接続する</u></a>複雑さを解消する統合インターフェースを提供します。</p>
+	<p>Apolloと統合するには、Irisは2つのタスクを完了する必要があります。まず、IrisはメタデータからVPCサービスIDを解析し、設定ストアからそれに関連付けられたトンネルの情報を取得します。これには、Irisが正しいトンネルにオリジナルリクエストを送信するために必要な情報である、設定ストアからのトンネルIDとタイプが含まれます（ステップ3）。</p>
+	<p>2つ目は、IrisがVPCサービスのホスト名のAレコードおよびAAAAレコードに対するDNS質問を含むUDPデータグラムを作成します。これらのデータグラムは、最初に、Apolloを経由して送信されます。DNS解決が完了すると、元のリクエストが、解決されたIPアドレスとポートとともに送信されます（ステップ4）。つまり、ステップ4から7が、最初のリクエストに対して2回、順番に行われます。1回はDNS解決のために、2回目は元のHTTPリクエストのために行われます。後続のリクエストはIrisのDNS解決情報キャッシングの恩恵を受け、リクエストの遅延を最小限に抑えることができます。</p>
+	<p>ステップ5で、Apolloはアクセスする必要のあるCloudflare Tunnelのメタデータと、DNS解決UDPデータグラムまたはHTTPリクエストTCPパケットを受け取ります。トンネルIDを使用して、どのデータセンターがCloudflare Tunnelに接続されているかを決定します。このデータセンターはCloudflare Tunnelに近い地域にあるため、ApolloはDNS解決メッセージとオリジナルリクエストをそのデータセンターで実行されているTunnel Connector Serviceにルーティングします（ステップ5）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eXnv33qvTvGRRNGqS9ywj/99e57beeaa32de0724c6c9f396ab3b17/image3.png" alt="" class="kg-image" width="1408" height="736" loading="lazy">
+	</figure>
+	<p>トンネルコネクタサービスは、Cloudflare TunnelからCloudflareネットワークへのアクセスを提供する役割を担っています。DNS解決の質問を中継し、その後、元のリクエストをQUICプロトコルを介してトンネルに転送します（ステップ6）。</p>
+	<p>最後に、Cloudflare Tunnelは、属するネットワークのDNSリゾルバーにDNS解決の質問を送信します。次に、元のHTTPリクエストを自分のIPアドレスから宛先IPとポートに送信します（ステップ7）。その後、リクエストの結果は、トンネルに最も近いデータセンターから、Workerリクエストを実行する元のCloudflareデータセンターまで、元のWorkerにまで転送されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-vpc-service-allows-you-to-build">VPCサービスで構築可能な内容</h2>
+		<a href="https://blog.cloudflare.com/#what-vpc-service-allows-you-to-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これにより、Cloudflareで構築できるまったく新しいアプリケーションが利用可能になります。Workersは長年にわたり、エッジで優れてきましたが、そのほとんどはコアインフラストラクチャの「外」に置かれてきました。呼び出すのはパブリックエンドポイントしかできず、プライベートアカウントのAPIや内部のインベントリデータベースなど、スタックの最も重要な部分との対話機能は制限されました。今は、VPC ServicesによってWorkersがプライベートAPI、データベース、サービスに安全にアクセスできるようになっており、可能なことが根本的に変わります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DDDzgVtHtK92DZ4LwKhLI/904fc30fcab4797fd6ee263f09b85ab1/image2.png" alt="" class="kg-image" width="1999" height="1150" loading="lazy">
+	</figure>
+	<p>これにより、Cloudflare WorkersとAWS、GCP、Azureなどの他のクラウドにまたがる真のクロスクラウドアプリケーションが即座に実現します。プライベートベータ版の期間中、多くのお客様がこのパターンを採用し、外部クラウドとCloudflare Workers間のプライベート接続を確立しています。当社は、WorkersをコアデータセンターのKubernetesサービスに接続して、当社の多くのサービスのコントロールプレーンAPIを稼働させています。お客様がすでに信頼しているネットワークでステートフルなバックエンドを維持しながら、グローバルな規模でWorkersを使用して、同じ強力な分散型アーキテクチャを構築できるようになりました。</p>
+	<p>また、Workersからオンプレミスネットワークに接続できるため、Workersのパフォーマンスと無限のスケールでレガシーアプリケーションを最新化できます。さらに興味深いのは、開発者のワークフローに関する新しいユースケースです。開発者がノートパソコンで<a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel" target="_blank" rel="noopener noreferrer"><u><code>cloudflared</code></u></a>を実行し、デプロイされたWorkerをローカルマシンに接続してリアルタイムデバッグを行っているケースがあります。完全な柔軟性を持つCloudflare Tunnelsは、今やWorkerから直接アクセスできるプログラム可能なプリミティブとなり、可能性の世界が広がりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-path-ahead-of-us">今後の展望</h2>
+		<a href="https://blog.cloudflare.com/#the-path-ahead-of-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>VPCサービスは、より大きなWorkers VPCイニシアチブの中での最初のマイルストーンですが、まだ始まったばかりです。当社の目標は、世界中どこからでも、あらゆるサービスやネットワークに、Workersエクスペリエンスのシームレスな接続を実現することです。今後の取り組みは以下の通りです：</p>
+	<p><b>より深いネットワーク統合</b>。Cloudflare Tunnelから始めるのは、意図的な選択でした。可用性が高く、柔軟性が高く、使いやすいソリューションであり、構築に最適な基盤です。企業ネットワーキングのオプションを増やすために、標準IPsecトンネル、Cloudflareネットワーク Interconnect（CNI）、AWS Transit Gatewayのサポートを追加し、お客様とお客様のチームにとって、より多くの選択肢と潜在的な最適化を提供します。重要なのは、これらの接続が真に双方向になり、イベントをQueuesにプッシュしたり、R2から取得するなど、プライベートサービスがCloudflareリソースに戻る接続を開始できることです。</p>
+	<p><b>プロトコルとサービスのサポートが拡張されている。</b>HTTPの次のステップは、TCPサービスへのアクセスを有効化することです。これはHyperdriveとの統合によってまず実現します。プライベートデータベースの従来のHyperdriveサポートを進化させ、VPCサービスの設定で簡素化して、Cloudflare Accessの追加とセキュリティトークンを管理する必要性を回避します。これにより、Hyperdriveの強力な接続プーリングを備えた、よりネイティブなエクスペリエンスが実現します。これ以降、未加工のTCP接続のサポートを追加し、<a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer"><u><code>Workers ‘connect()’</code></u></a>からRedisキャッシュやメッセージキューなどのサービスへの直接接続を可能にする予定です。</p>
+	<p><b>エコシステム互換性。</b>プライベートサービスへの接続が、パブリックサービスに接続するのと同じくらい自然になるようにしたいと考えています。そのため、Workers VPCサービスごとに、<a href="https://developers.cloudflare.com/hyperdrive/get-started/#write-a-worker" target="_blank" rel="noopener noreferrer"><u>Hyperdriveの接続文字列</u></a>と同様に自動生成された一意のホスト名を提供します。これにより、ホスト名（グローバルな '<code>fetch()</code>' の呼び出しやMongoDB接続文字列など）を必要とする可能性のある既存のライブラリやオブジェクトリレーショナルマッピングライブラリとともに、Workers VPCをより簡単に使用できるようになります。Workers VPCサービスのホスト名は、'<code>fetch()</code>'コマンドと同様に、自動的に解決され、正しいVPCサービスにルーティングされます。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-with-workers-vpc">Workers VPCの利用を始めましょう</h2>
+		<a href="https://blog.cloudflare.com/#get-started-with-workers-vpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日、Workers VPC Servicesのオープンベータ版をリリースできることを大変嬉しく思います。Workersのプライベートネットワークアクセスへの最初のマイルストーンの構築とテストに数か月を費やしてきました。そして、クローズドベータ期間中に、社内チームとお客様からのフィードバックに基づいてさらに改良を加えてきました。</p>
+	<p><b>今回、オープンベータ期間中、無料で、Workers VPCを使って誰もがWorkers上でクロスクラウドアプリを構築できるようになることを嬉しく思います。</b>Workers VPCを使えば、プライベートネットワーク上のアプリを地球全体に展開し、ユーザーにより近くして、世界中のWorkersから利用できるようになります。</p>
+	<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fvpc%2Fservices" target="_blank" rel="noopener noreferrer"><u><b>今すぐWorkers VPC Servicesを無料で始めましょう。</b></u></a></p>
+</div>

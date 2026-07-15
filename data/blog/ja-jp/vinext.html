@@ -1,0 +1,430 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/vinext">English</a>および<a href="https://blog.cloudflare.com/ko-kr/vinext">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64oL10LCSz30EiEHWVdJPG/aeaed48a681ec3d5bc9d8cb6e5e30a96/BLOG-3194_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><i><sub>*この投稿は、ビルド時間ベンチマークの誤字を修正するために、午後 12:35（太平洋時間）に更新されました。</sub></i></p>
+	<p>先週、あるエンジニアとAIモデルは、最も人気のあるフロントエンドフレームワークをゼロから再構築しました。その結果、<a href="https://github.com/cloudflare/vinext" target="_blank" rel="noopener noreferrer"><u>vinext</u></a>（「ヴィーネクスト」と発音します）は、Next.jsのドロップイン代替品であり、単一コマンドでCloudflare Workersにデプロイできる、<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a>上に構築されたプラットフォームです。初期のベンチマークでは、本番アプリを最大4倍速く構築し、最大57%縮小したクライアントバンドルを生成しています。すでに本番環境で実行しているお客様もいます。</p>
+	<p>トークンの費用はおよそ1100ドルです。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-next-js-deployment-problem">Next.jsのデプロイに関する問題</h2>
+		<a href="https://blog.cloudflare.com/#the-next-js-deployment-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://nextjs.org" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>は、最も人気のあるReactフレームワークです。数百万人の開発者が利用しています。プロダクションWebの巨大な部分を支えているのには、もっともな理由があります。開発者体験は最高のものです。</p>
+	<p>しかし、Next.jsをより広範なサーバーレスエコシステムで使用すると、展開上の問題があります。ツールは完全にオーダーメイドです。Next.jsはTurbopackに多額の投資をしていますが、Cloudflare、Netlify、またはAWS Lambdaにデプロイしたい場合は、そのビルドのアウトプットを取り、ターゲットのプラットフォームが実際に実行できるものに再形成する必要があります。</p>
+	<p>「OpenNextがやっているのではないか？」という意見をお持ちなら、あなたは正しいです。</p>
+	<p>それこそがまさに、<a href="https://opennext.js.org" target="_blank" rel="noopener noreferrer"><u>OpenNext</u></a>が解決するために作られた問題です。OpenNextには、Cloudflareを含む複数のプロバイダーから、大量のエンジニアリングの労力が注がれています。動作はするものの、すぐに制限に遭遇し、もぐらたたきゲームのようになります。</p>
+	<p>Next.jsのアウトプットを基盤として構築するのは、困難で脆弱なアプローチであることが証明されています。OpenNextはNext.jsのビルド出力をリバースエンジニアリングする必要があるため、その結果、バージョン間で予測不可能な変更が発生し、修正に多くの作業が必要になります。</p>
+	<p>Next.jsは、ファーストクラスのアダプターAPIに取り組んでおり、当社は彼らと協力してきました。まだ初期段階ですが、アダプターを使用しても、オーダーメイドのTurbopackツールチェーン上で構築することができます。また、アダプターは構築と展開のみをカバーしています。開発中、次の開発者はNode.jsのみで実行されます。別のランタイムをプラグインする方法はありません。アプリがDurable Objects、KV、AIバインディングなどのプラットフォーム固有のAPIsを使用している場合、回避策を講じずに開発環境でそのコードをテストすることはできません。</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-vinext">vinextの紹介 </h2>
+		<a href="https://blog.cloudflare.com/#introducing-vinext" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BCYnb6nCnc9oRBPQnuES5/d217b3582f4fe30597a3b4bf000d9bd7/BLOG-3194_2.png" alt="BLOG-3194 2" class="kg-image" width="1999" height="412" loading="lazy">
+	</figure>
+	<p>もしNext.jsの出力を適応させるのではなく、Next.js APIサーフェスを<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a>上で直接再実装したらどうでしょうか。Viteは、Next.js以外のフロントエンドエコシステムの大部分で使用されているビルドツールで、Astro、SvelteKit、Nuxt、Remixなどのフレームワークを動作させます。単なるラッパーやアダプターではなく、クリーンな再実装です。正直、効果があると思っていませんでした。しかし、2026年、ソフトウェア構築のコストは完全に変化しました。</p>
+	<p>当初の予想をはるかに超えるものになりました。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">npm install vinext</code></pre>
+	<p>スクリプトで<code>next</code>を<code>vinext</code>に置き換えれば、他はすべて同じです。既存の<code>app/</code>、<code>pages/</code>、および<code>next.config.js</code>は、そのまま機能します。</p>
+	<pre class="language-shell"><code class="language-shell">vinext dev          # Development server with HMR
+vinext build        # Production build
+vinext deploy       # Build and deploy to Cloudflare Workers</code></pre>
+	<p>これはNext.jsとTurbopackの出力のラッパーではありません。これは、ルーティング、サーバーレンダリング、React Server Components、サーバーアクション、キャッシング、ミドルウェアなど、APIサーフェスの代替実装です。そのすべてがVite上にプラグインとして構築されています。最も重要なのは、<a href="https://vite.dev/guide/api-environment" target="_blank" rel="noopener noreferrer"><u>Vite Environment API</u></a>のおかげで、Vite出力があらゆるプラットフォームで実行されることです。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-numbers">数字</h2>
+		<a href="https://blog.cloudflare.com/#the-numbers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>初期のベンチマークは有望な数字でした。共有33ルートのApp Routerアプリケーションを使って、vinextとNext.js 16を比較しました。
+
+		どちらのフレームワークも、サーバーレンダリングされたルートのコンパイル、バンドル、準備という同じ作業を行っています。Next.jsのビルドでは、TypeScriptのタイプチェックとESLintを無効にし（Viteはビルド時にこれらを実行しません）、force-dynamicを使用することで、Next.jsが静的ルーティングのプリレンダリングに余分な時間を費やさず、不当に遅くなる可能性があります。数字を見ることになります。目的は、バンドルとコンパイル速度のみを測定することであり、それ以外には何も測定しませんでした。ベンチマークは、mainへのマージのたびにGitHub CIで実行されます。 </p>
+	<p><b>本番環境のビルド時間：</b></p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-bn4o {
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-nx8p {
+			font-size: 18px;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 453px">
+			<colgroup>
+				<col style="width: 251px">
+				<col style="width: 101px">
+				<col style="width: 101px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">フレームワーク</span></th>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">平均</span></th>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vs. Next.js</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none">Next.js 16.1.6（Turbopack）</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.38秒</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ベースライン</span></td>
+				</tr>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vinext (Vite 7 / Rollup)</span></td>
+					<td class="tg-nx8p">4.64秒</td>
+					<td class="tg-nx8p">1.6倍速い</td>
+				</tr>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vinext (Vite 8 / Rolldown)</span></td>
+					<td class="tg-nx8p">1.67秒</td>
+					<td class="tg-nx8p">4.4倍速い</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p><b>クライアントバンドルサイズ（gzip圧縮）：</b></p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-bn4o {
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-nx8p {
+			font-size: 18px;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 453px">
+			<colgroup>
+				<col style="width: 251px">
+				<col style="width: 101px">
+				<col style="width: 101px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">フレームワーク</span></th>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gzip圧縮</span></th>
+					<th class="tg-bn4o"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vs. Next.js</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Next.js 16.1.6</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">168.9KB</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ベースライン</span></td>
+				</tr>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vinext（ロールアップ）</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">74.0KB</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">56%縮小</span></td>
+				</tr>
+				<tr>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">vinext（ロールダウン）</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">72.9 KB</span></td>
+					<td class="tg-nx8p"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">57%縮小</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>これらのベンチマークは、コンパイルとバンドルの速度を測定するもので、本番環境のパフォーマンスではありません。テストフィクスは、単一の33ルートアプリであり、すべての本番アプリケーションの代表的サンプルではありません。これらの数値は、3つのプロジェクトが継続するにつれて進化することが予定されています。<a href="https://benchmarks.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>すべての方法論と過去の結果</u></a>が公開されています。決定的なものではなく、方向性として捉えてください。</p>
+	<p>それでも、この方向性は力強いものです。Viteのアーキテクチャ、特に<a href="https://rolldown.rs" target="_blank" rel="noopener noreferrer"><u>Rolldown</u></a>（Vite 8で登場するRustベースのバンドラー）には、ビルドパフォーマンスの構造的な利点があり、それが明確に表れています。</p>
+	<div class="flex anchor relative">
+		<h2 id="deploying-to-cloudflare-workers">Cloudflare Workersへのデプロイ</h2>
+		<a href="https://blog.cloudflare.com/#deploying-to-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>vinextは、Cloudflare Workersを最初のデプロイメントターゲットとして構築されています。単一のコマンドで、ソースコードから実行中のWorkerへアクセスできます。</p>
+	<pre class="language-Shell"><code class="language-Shell">vinext deploy</code></pre>
+	<p>アプリケーションの構築、Worker設定の自動生成、デプロイなど、すべてを行うことができるのです。App ルーターとPages ルーターは両方ともWorkersで動作し、完全なクライアントサイドのハイドレーション、インタラクティブコンポーネント、クライアントサイドナビゲーション、Reactステートを備えています。</p>
+	<p>本番環境のキャッシングのために、VinextにはCloudflare KVキャッシュハンドラーが含まれており、すぐにISR（Incremental Static Regeneration）を提供します。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { KVCacheHandler } from "vinext/cloudflare";
+import { setCacheHandler } from "next/cache";
+
+setCacheHandler(new KVCacheHandler(env.MY_KV_NAMESPACE));</code></pre>
+	<p><a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>は、ほとんどのアプリケーションにとって良いデフォルトですが、キャッシュレイヤーはプラグ可能なように設計されています。このsetCacheHandlerの呼び出しは、意味のあるバックエンドであればスワップできることを意味します。<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>は、大きなキャッシュペイロードを持つアプリや、異なるアクセスパターンを持つアプリに適しているかもしれません。また、より少ない設定で強力なキャッシングレイヤーを提供できるように、Cache APIの改善にも取り組んでいます。目指すべきは柔軟性であり、アプリに合ったキャッシング戦略を選択できるのです。</p>
+	<p>現在実行中のライブ例：</p>
+	<ul>
+		<li>
+			<p><a href="https://app-router-playground.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>App ルーター Playground</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://hackernews.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>Hacker Newsクローン</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://app-router-cloudflare.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>アプリルーター 最小限</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://pages-router-cloudflare.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>Pagesルーター最小</u></a></p>
+		</li>
+	</ul>
+	<p>また、Next.jsアプリでCloudflare Agentsが実行されている<a href="https://next-agents.threepointone.workers.dev" target="_blank" rel="noopener noreferrer"><u>ライブ例</u></a>もあります。開発フェーズとデプロイフェーズの両方でアプリ全体がworkerdで実行されるため、<a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy" target="_blank" rel="noopener noreferrer"><u>getPlatformProxy</u></a>のような回避策は必要ありません。つまり、Durable Objects、AIバインディング、その他のCloudflare固有のサービスを妥協することなく使用できるということです。<a href="https://github.com/cloudflare/vinext-agents-example" target="_blank" rel="noopener noreferrer"><u>こちらをご覧ください。</u></a> </p>
+	<div class="flex anchor relative">
+		<h2 id="frameworks-are-a-team-sport">フレームワークはチームスポーツ</h2>
+		<a href="https://blog.cloudflare.com/#frameworks-are-a-team-sport" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在のデプロイ対象はCloudflare Workersですが、これは全体像のごく一部に過ぎません。vinextの95%のように、純粋なViteです。ルーティング、モジュールシム、SSRパイプライン、RSC統合：いずれもCloudflare固有のものではありません。</p>
+	<p>Cloudflareは、他のホスティングプロバイダーのお客様のために、このツールチェーンの採用を検討しています（導入の負担は最小限です。当社は<a href="https://vinext-on-vercel.vercel.app" target="_blank" rel="noopener noreferrer"><u>Vercel</u></a>で30分以内に概念実証を動作させることができました！）。これはオープンソースプロジェクトであり、長期的な成功のためには、エコシステム全体のパートナーと協力して継続的な投資を確実にすることが重要だと考えています。他のプラットフォームからのPRも歓迎します。デプロイメントターゲットの追加にご興味のある方は、<a href="https://github.com/cloudflare/vinext/issues" target="_blank" rel="noopener noreferrer"><u>問題を報告する</u></a>か、ご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="status-experimental">ステータス：実験</h2>
+		<a href="https://blog.cloudflare.com/#status-experimental" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>明確にしたいのは、vinextは実験的なものです。これはまだ1週間前であり、有意義な大規模トラフィックによる実地テストもまだ行われていません。本番アプリケーションとして評価する場合は、慎重に進めてください。</p>
+	<p>とはいえ、テストスイートは広範なものです。1,700以上のVitestテストと380 Playwright E2Eテストがあり、Next.jsテストスイートやOpenNextのCloudflare準拠スイートから直接移植されたテストも含まれています。当社では、Next.js App Router Playgroundに照らして検証しました。カバレッジはNext.js 16 API攻撃対象領域の94%に対応しています。
+
+		実際の顧客からの初期の結果は、心強いものでした。当社は、あらゆる政府のインターフェースを最新化することを目指す<a href="https://ndstudio.gov" target="_blank" rel="noopener noreferrer"><u>National Design Studio</u></a>と、彼らのベータサイトの1つである<a href="https://www.cio.gov" target="_blank" rel="noopener noreferrer"><u>CIO.gov</u></a>で協力してきました。すでに本番環境で実行されており、ビルド時間とバンドルサイズの大幅な改善が見られます。</p>
+	<p>READMEには、<a href="https://github.com/cloudflare/vinext#whats-not-supported-and-wont-be" target="_blank" rel="noopener noreferrer"><u>サポートされないもの、今後もサポートされないもの</u></a>、および<a href="https://github.com/cloudflare/vinext#known-limitations" target="_blank" rel="noopener noreferrer"><u>既知の制限</u></a>について正直に記載されています。私たちは、過剰な約束ではなく、先手を打つことを目指しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-about-pre-rendering">プリレンダリングは？</h2>
+		<a href="https://blog.cloudflare.com/#what-about-pre-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>vinextは、すぐに増分静的再生（ISR）をサポートしています。ページへの最初のリクエストの後、Next.jsと同様にバックグラウンドでキャッシュされ、再検証されます。その実装は現在も有効です。</p>
+	<p>vinextは、ビルド時の静的プリレンダリングをまだサポートしていません。Next.jsでは、動的データのないページは<code>次のビルド</code>時にレンダリングされ、静的HTMLとして提供されます。動的ルートがある場合は、<code>generateStaticParams()</code> を使用して、どのページを事前に構築するかを列挙します。vinextは、まだありません。</p>
+	<p>これはローンチに向けた意図的な設計上の決定でした。ロードマップには<a href="https://github.com/cloudflare/vinext/issues/9">組み込まれています</a>が、貴社のサイトが静的コンテンツを含む100%ビルド済みのHTMLの場合、現在vinextのメリットはあまり見られないでしょう。とはいえ、あるエンジニアがトークンに<span>$</span>1,100を費やしてNext.jsを再構築できるのであれば、おそらく10ドルを費やして、<a href="https://astro.build">Astro</a>（<a href="https://blog.cloudflare.com/astro-joins-cloudflare">Cloudflare Workersにもデプロイされます</a>）のような静的コンテンツ専用に設計されたViteベースのフレームワークに移行できます。</p>
+	<p>ですが、純粋に静的ではないサイトの場合は、ビルド時にすべてをプリレンダリングするよりももっと良い方法があると考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-traffic-aware-pre-rendering">トラフィックを意識したプリレンダリングの導入</h2>
+		<a href="https://blog.cloudflare.com/#introducing-traffic-aware-pre-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Next.jsは、ビルド中に<code>generateStaticParams()</code>で一覧化されたすべてのページをプリレンダリングします。10,000の製品ページがあるサイトは、構築時に10,000のレンダリングが行われることを意味しますが、そのうちの99%はリクエストを受信しない可能性もあります。ビルドは、ページ数に応じて直線的に拡張します。これが、大規模なNext.jsサイトのビルドが30分で終わる理由です。</p>
+	<p>そこで当社は、<b>トラフィックを意識したプリレンダリング</b>（TPR）を開発しました。現在は実験的なものですが、もっと現実的なテストが実施されたら、デフォルトにする予定です。</p>
+	<p>答えはシンプルです。Cloudflareはすでにサイトのリバースプロキシになっています。トラフィックデータがありますどのページが実際にアクセスされるのかも把握できます。そのため、すべてをプリレンダリングしたり、何もプリレンダリングしたりするのではなく、vinextはCloudflareのデプロイ時にCloudflareのゾーン分析を照会し、重要なページだけをプリレンダリングします。</p>
+	<pre class="language-javascript"><code class="language-javascript">vinext deploy --experimental-tpr
+
+  Building...
+  Build complete (4.2s)
+
+  TPR (experimental): Analyzing traffic for my-store.com (last 24h)
+  TPR: 12,847 unique paths — 184 pages cover 90% of traffic
+  TPR: Pre-rendering 184 pages...
+  TPR: Pre-rendered 184 pages in 8.3s → KV cache
+
+  Deploying to Cloudflare Workers...
+</code></pre>
+	<p>10万ページのあるサイトでは、電力法はトラフィックの90％が通常50～200ページに向けられることを意味します。これらは数秒でプリレンダリングされます。それ以外はすべてオンデマンドSSRに戻り、最初のリクエスト後にISR経由でキャッシュされます。新たにデプロイするたびに、現在のトラフィックパターンに基づいてセットが更新されます。拡散したページは自動的に取り上げられます。これはすべて、<code>generateStaticParams()</code> なしで、ビルドを本番データベースに結びつけることなく動作します。</p>
+	<div class="flex anchor relative">
+		<h2 id="taking-on-the-next-js-challenge-but-this-time-with-ai">Next.jsの課題に挑むが、今回はAIを使って</h2>
+		<a href="https://blog.cloudflare.com/#taking-on-the-next-js-challenge-but-this-time-with-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このようなプロジェクトには、通常、エンジニアチームが数年とは言わないまでも、数ヶ月が必要です。さまざまな企業の複数のチームが試みており、その範囲は膨大です。過去にCloudflareで試してみました！ 2台のルーター、33個以上のモジュールシム、サーバーレンダリングパイプライン、RSCストリーミング、ファイルシステムルーティング、ミドルウェア、キャッシング、静的エクスポート。これには、理由があります。</p>
+	<p>今回は1週間以内で完了しました。1人のエンジニア（技術エンジニアリングマネージャー）がAIを直接運用するために、</p>
+	<p>最初のコミットは2月13日に到達しました。その同日の夕方までに、Pagesルーターとアプリルーターの両方が、ミドルウェア、サーバーアクション、ストリーミングとともに、基本的なSSRが動作するようになりました。次の午後までに、<a href="https://app-router-playground.vinext.workers.dev" target="_blank" rel="noopener noreferrer"><u>App Router Playground</u></a>は11のルートのうち10をレンダリングしています。3日目までに、<code>vinext deploy</code>は完全なクライアントハイドレーションとともにCloudflare Workersにアプリを出荷しました。この週の残りの期間は強化に向けられました。エッジケースの修正、テストスイートの拡大、APIカバレッジの94%拡大などでした。</p>
+	<p>前回の試みから何が変わったのでしょうか？AIはより優れた。それがもっと優れています。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-this-problem-is-made-for-ai">この問題がAI向けに作られた理由</h2>
+		<a href="https://blog.cloudflare.com/#why-this-problem-is-made-for-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのプロジェクトがこうなるわけではありませんが、これは、いくつかのことが良いタイミングに合わせてできたため、実行しました。</p>
+	<p><b>Next.jsは明確に指定されています。</b>広範なドキュメント、膨大なユーザーベース、長年にわたるスタックオーバーフローの回答とチュートリアルがあります。APIサーフェスは、トレーニングデータ全体をカバーします。Claudeに<code>getServerSideProps</code>を実装したり、<code>useRouter</code>の仕組みを説明したりするように依頼しても、ハルシネーションはありません。次の仕組みを知っているのです。</p>
+	<p><b>Next.jsには、精巧なテストスイートがあります。</b><a href="https://github.com/vercel/next.js" target="_blank" rel="noopener noreferrer"><u>Next.jsリポジトリ</u></a>には、あらゆる機能とエッジケースをカバーする数千のE2Eテストが含まれています。スイートから直接テストを移植しました（コードには帰属表示があります）。これにより、機械的に検証できる仕様ができました。</p>
+	<p><b>Viteは優れた基盤です。</b><a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a>は、高速HMR、ネイティブESM、クリーンなプラグインAPI、本番バンドルなど、フロントエンドツールの難しい部分を担います。バンドラーを構築する必要はありませんでした。Next.jsを話すようにする必要がありました。<a href="https://github.com/vitejs/vite-plugin-rsc" target="_blank" rel="noopener noreferrer"><u><code>@vitejs/plugin-rsc</code></u></a>はまだ初期段階ですが、RSC実装を一から構築する必要なく、React Server Componentsをサポートしてくれました。</p>
+	<p><b>モデルは追いついていました。</b>わずか数か月前では、不可能だったでしょう。以前のモデルでは、このサイズのコードベース全体で一貫性を保つことはできませんでした。新しいモデルは、アーキテクチャ全体を文脈から保持し、モジュールの相互作用について合理化し、しばしば正しいコードを生成することで、勢いを維持することができます。時には、Next、Vite、Reactの内部に侵入してバグを見つけることもありました。最先端のモデルは素晴らしいもので、ますます改善され続けているように見えます。</p>
+	<p>これらすべてが、同時に実現しなければなりませんでした。ターゲットAPI、包括的なテストスイート、基盤となるビルドツール、そして複雑さに対処できるモデル。どれを選んでも、うまく機能しません。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-actually-built-it">実際の構築方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-actually-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほぼすべてのコードがAIによって書かれています。しかし、ここで重要なことは、すべての行が人間が書いたコードに期待するのと同じ品質のゲートを通過することです。このプロジェクトには、1,700以上のVitestテスト、380のPlaywright E2Eテスト、tsgoによるTypeScriptの完全タイプチェック、oxlintによるリンティングがあります。継続的インテグレーションにより、すべてのプルリクエストでそれが実行されます。AIのコードベースで生産性を高めるには、一連の優れたガードレールを確立することが重要です。</p>
+	<p>このプロセスは、計画から始まりました。<a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>でClaudeと何度もやり取りを重ね、何を構築するか、どのような順序で、どの抽象化を使用するかといったアーキテクチャを定義するのに数時間を費やしました。この計画は結果的に重要目標の達成に寄与しました。そこから、ワークフローはスムーズになりました。</p>
+	<ol>
+		<li>
+			<p>タスクを定義します（「usePathname, <code>useSearchParams</code>, <code>useRouter</code>」で、<code>次のナビゲーションシム</code>を実装する）。</p>
+		</li>
+		<li>
+			<p>AIに実装とテストを書いてもらいましょう。</p>
+		</li>
+		<li>
+			<p>テストスイートを実行します。</p>
+		</li>
+		<li>
+			<p>テストに合格したら、合併します。そうでない場合は、AIにエラー出力を与え、反復させます。</p>
+		</li>
+		<li>
+			<p>繰り返し、</p>
+		</li>
+	</ol>
+	<p>AIエージェントにコードレビューを依頼しました。PRを開くと、エージェントがレビューを行いました。レビューコメントが返されると、別のエージェントが対応しました。フィードバックループはほぼ自動化されています。 </p>
+	<p>毎回、完璧に機能するわけではありませんでした。PRが間違っていたのです。AIは、正しいように見えるものの、実際のNext.jsの動作と一致しないものを自信を持って実装するでしょう。定期的にコース修正をしなければなりませんでした。アーキテクチャに関する決定、優先順位付け、AIがいつ行き詰ったかを知るなど、それは私にとって全容でした。AIに適切な指示、コンテキスト、ガードレールを与えると、生産性を大幅に高めることができます。しかし、それでも人間は舵取りをしなければなりません。</p>
+	<p>ブラウザレベルのテストでは、<a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener noreferrer"><u>agent-browser</u></a> を使用して、実際のレンダリング出力、クライアントサイドのナビゲーション、ハイドレーションの動作を検証しました。ユニットテストでは、多くの微妙なブラウザ問題を見逃します。それが彼らを捕獲したのです。</p>
+	<p>プロジェクトの全過程で、OpenCodeで800以上のセッションを実施しました。合計費用：Claude APIトークンでおよそ1,100ドル。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-this-means-for-software">ソフトウェアにとって何を意味するか</h2>
+		<a href="https://blog.cloudflare.com/#what-this-means-for-software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>なぜこれほど多くのレイヤーがあるのでしょうか？このプロジェクトで、私はこの問いについて深く考えざるを得なくなりました。そして、AIがその答えにどのように影響するかを考慮することです。</p>
+	<p>ソフトウェアの抽象化が存在するのは、人間が支援を必要としているからです。システム全体を把握できなかったので、複雑さを管理するためのレイヤーを構築しました。各層は次の人の仕事を容易にしていました。こうして、フレームワークの上にフレームワーク、ラッパーライブラリ、何千行ものグルーコードが存在することになります。</p>
+	<p>AIにも同じ限界があります。システム全体をコンテキストに保持し、コードを記述するだけで、中間フレームワークが必要ないため、整理するのに役立ちます。つまり、仕様と構築のための基盤が必要なのです。</p>
+	<p>どの抽象化が真に基礎的なもので、どの抽象化が人間の認識を妨げるだけであったのかはまだ明確ではありません。この境界線は、今後数年で大きく変化するでしょう。しかし、vinextはデータポイントです。API契約、ビルドツール、AIモデルを持ち、AIはその間のすべてを書いてくれました。中間フレームワークは必要ありません。今後、多くのソフトウェアで繰り返されると思います。長年にわたって構築してきたレイヤーがすべて実現するわけではありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="acknowledgments">謝辞</h2>
+		<a href="https://blog.cloudflare.com/#acknowledgments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Viteチームのおかげです。<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a>は、この全体の基盤となっています。<a href="https://github.com/vitejs/vite-plugin-rsc" target="_blank" rel="noopener noreferrer"><u><code>@vitejs/plugin-rsc</code></u></a>はまだ初期段階ですが、ゼロから構築する必要なくRSCサポートを提供してくれました。これは、そうでなければプロジェクトを断念する要因となっていたでしょう。Viteの保守担当者は、以前テストされていない領域にプラグインをプッシュした際、対応が速くて協力してくれました。</p>
+	<p>また、<a href="https://nextjs.org" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>チームにも感謝の意を表したいと思います。彼らは、React開発の水準を引き上げるフレームワークを構築するために、何年も投資してきました。同社のAPIサーフェスは十分に文書化されており、テストスイートは非常に包括的であるという事実が、このプロジェクトを可能にした大きな理由となっています。vinextは、彼らが設定した基準なしには存在しません。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it">ぜひお試しください</h2>
+		<a href="https://blog.cloudflare.com/#try-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>vinextには、移行を処理する<a href="https://agentskills.io" target="_blank" rel="noopener noreferrer"><u>エージェントスキル</u></a>が含まれています。Claude Code、OpenCode、Cursor、Codeex、その他数十のAIコーディングツールと連携します。インストールし、Next.jsプロジェクトを開き、AIに移行するよう指示してください。</p>
+	<pre class="language-javascript"><code class="language-javascript">npx skills add cloudflare/vinext</code></pre>
+	<p>そして、サポートされているツールでNext.jsプロジェクトを開いて、まさに以下を押してください。</p>
+	<pre class="language-javascript"><code class="language-javascript">migrate this project to vinext</code></pre>
+	<p>このスキルでは、互換性のチェック、依存関係のインストール、設定の生成、開発サーバーの起動も行えます。Vinextが何をサポートしているかを知っており、手作業による注意が必要なものすべてにフラグを立てます。</p>
+	<p>手動で行いたい場合は：</p>
+	<pre class="language-javascript"><code class="language-javascript">npx vinext init    # Migrate an existing Next.js project
+npx vinext dev     # Start the dev server
+npx vinext deploy  # Ship to Cloudflare Workers</code></pre>
+	<p>ソースは<a href="https://github.com/cloudflare/vinext" target="_blank" rel="noopener noreferrer"><u>github.com/cloudflare/vinext</u></a>にあります。問題、PR、フィードバックをお待ちしています。</p>
+</div>

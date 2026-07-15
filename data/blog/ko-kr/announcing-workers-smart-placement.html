@@ -1,0 +1,154 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/announcing-workers-smart-placement">English</a>, <a href="https://blog.cloudflare.com/zh-tw/announcing-workers-smart-placement">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-workers-smart-placement">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/announcing-workers-smart-placement">Português</a>, <a href="https://blog.cloudflare.com/es-es/announcing-workers-smart-placement">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/announcing-workers-smart-placement">Рyсский</a> 및 <a href="https://blog.cloudflare.com/zh-cn/announcing-workers-smart-placement">简体中文</a>로도 이용할 수 있습니다.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68NfZl5AwLPrk573wmR7Id/e605ccc58d1612b69beef233229ae79f/image2-14.png" alt="Smart Placement speeds up applications by moving code close to your backend — no config needed" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>웹 사이트 로딩 속도가 느리거나 애플리케이션이 업데이트를 위해 API를 호출해야 할 때 멈추는 것 같은 불편함을 누구나 경험해 본 적이 있을 것입니다. 즉각 이루어지지 않으면 신경이 다른 데 쏠리게 됩니다...</p>
+	<p>작업 속도가 빨라지게 하는 한 가지 방법은 리소스를 사용자에게 최대한 가까운 곳에서 가져오는 것이며, Cloudflare에서는 대부분의 사용자에 대하여 밀리초 이내에 실행하는 컴퓨팅으로 이를 실행하고 있습니다. 그러나 직관적이지 않은 것처럼 보일 수 있지만, 때로는 사용자에게 더 가까운 곳에서 리소스를 가져오면 실제로 애플리케이션 속도가 느려질 수 있습니다. 애플리케이션을 최종 사용자와 가까운 곳에 있지 않은 API, 데이터베이스, 기타 리소스에 연결해야 하는 경우, 사용자가 아니라 리소스 근처에서 애플리케이션을 실행하는 편이 성능이 더 좋을 수 있습니다.</p>
+	<p>따라서 오늘 모든 상호 작용을 가장 빠르게 수행하는 Workers 및 Pages Functions를 위한 Smart Placement를 발표하게 되어 기쁩니다. Cloudflare에서는 Smart Placement를 통해 컴퓨팅 자원을 최적의 위치로 이동시켜 애플리케이션의 속도를 높이는 방식으로 서버리스 컴퓨팅을 Supercloud로 도입하고 있습니다. 가장 좋은 점은 Smart Placement가 완전히 자동이며 추가 입력(예: 두려운 '지역')이 없다는 것입니다.</p>
+	<p>Smart Placement는 모든 Workers 및 Pages 고객이 지금 오픈 베타로 이용할 수 있습니다!</p>
+	<p><a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">Smart Placement 작동 방식에 대한 데모를 확인하세요!</a></p><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="the-serverless-shift">서버리스 전환</h2>
+		<a href="https://blog.cloudflare.com/#the-serverless-shift" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 Anycast 네트워크는 <i>사용자와 가까운 곳에서 요청을 즉각</i> 처리하도록 구축되었습니다. 개발자의 입장에서는, 바로 이런 점이 Cloudflare의 서버리스 컴퓨팅 제품인 Cloudflare Workers가 아주 매력적인 이유입니다. 경쟁업체는 '지역'에 국한되어 있는 반면, Workers는 모든 곳에서 실행되므로 지구라는 하나의 지역으로 묶여 있습니다. Workers에서만 전적으로 처리되는 요청은 원본 서버에 도달할 필요도 없이 바로 그 시점에 즉석에서 처리될 수 있습니다.</p>
+	<p>이 서버리스라는 개념은 원래 가벼운 작업을 위한 것으로 간주되었지만, 최근 몇 년 동안 서버리스 컴퓨팅도 변화하고 있습니다. 서버리스는 단순히 아키텍처를 보강하는 것이 아니라 원본 서버와 자체 관리형 인프라에 의존하는 전통적인 아키텍처를 대체하는 데 사용되고 있습니다. Workers 및 Pages 사용자에게 있어서 이러한 사용 사례가 늘어나고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="serverless-needs-state">서버리스에는 상태가 필요함</h3>
+		<a href="https://blog.cloudflare.com/#serverless-needs-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>서버리스로 전환하고 전체 애플리케이션을 Workers에서 구축함에 따라 데이터가 필요하게 되었습니다. 이전 작업 또는 이벤트에 대한 정보를 저장하면 개인화된 대화형 애플리케이션을 구축할 수 있습니다. 예를 들어 사용자 프로필을 작성하고, 사용자가 어느 페이지에서 종료했는지, 사용자가 장바구니에 담은 SKU는 무엇인지 저장해야 하는 경우, 이러한 모든 정보는 상태를 유지하는 데 사용되는 데이터 포인트에 매핑됩니다. 관계형 데이터베이스, 키값 저장소, blob 스토리지, API 등의 백엔드 서비스를 통해 상태 저장 애플리케이션을 구축할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-compute-storage-a-powerful-duo">Cloudflare 컴퓨팅 + 스토리지: 강력한 듀오</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-compute-storage-a-powerful-duo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 스토리지 제품군은 Workers KV, Durable Objects, D1, <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a> 등 점점 더 늘어나고 있습니다. 데이터 제품이 성숙해지면서 저희가 해당 제품과 Workers의 상호 작용에 대해 깊이 고려하므로 여러분은 그에 대해 숙고할 필요가 없습니다! 예를 들어, 경우에 따라 성능이 더 나아질 수 있는 또 다른 접근 방식은 사용자에게 가까운 곳에서 컴퓨팅하지 않고 스토리지를 이동시키는 것입니다. 사용자가 실시간 게임을 제작하기 위해 Durable Objects를 사용하는 경우, 저희는 모든 사용자의 대기 시간을 최소화하기 위해 Durable Objects를 이동시킬 수 있습니다.</p>
+	<p>향후 상태에 대한 Cloudflare의 목표는 사용자가 모드를 '스마트'로 설정하고 저희가 추가 구성 없이 사용자의 모든 리소스가 최적으로 배치되었는지 평가하는 것입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-compute-backendservice">Cloudflare 컴퓨팅 + ${backendService}</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-compute-backendservice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘날 Smart Placement의 주요 사용 사례는 외부 데이터베이스나 타사 API와 같이 Cloudflare의 서비스가 아닌 서비스를 애플리케이션에 대하여 사용하는 경우입니다.</p>
+	<p>자체 호스팅이든 관리형 서비스이든 관계없이 많은 백엔드 서비스는 중앙 집중화되어 있으므로 데이터가 단일 위치에 저장되고 관리됩니다. 귀사의 사용자는 전 세계에 걸쳐 있고, Workers도 전 세계에 걸쳐 사용되지만, 백엔드는 중앙 집중화되어 있습니다.</p>
+	<p>코드가 백엔드 서비스에 여러 번 요청을 보내는 경우 해당 요청이 지구 전역을 여러 번 횡단하게 되어 성능에 큰 영향이 미칠 수 있습니다. 일부 서비스는 데이터 복제 및 캐싱을 제공하여 성능 향상에 도움이 되지만, 데이터 일관성 및 높은 비용과 같은 단점도 있으므로 사용 사례와 비교하여 고려해야 합니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xh0tIBnMeZp7z1mDeonqd/2d55124ff2c831d964eb36a98852a968/map.png" alt="A map of the globe illustrating global users, global workers and a centralized database. " class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Cloudflare 네트워크는 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">전 세계 인터넷 연결 인구의 95%로부터 50ms</a> 이내의 거리에 있습니다. 이를 뒤집어서 생각해 보면, Cloudflare는 귀사의 백엔드 서비스와도 매우 가깝습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="application-performance-is-user-experience">애플리케이션 성능이 곧 사용자 경험입니다</h2>
+		<a href="https://blog.cloudflare.com/#application-performance-is-user-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>예를 들면서 백엔드 서비스와 가까운 곳으로 컴퓨팅을 이동시키면 애플리케이션 대기 시간을 어떻게 줄일 수 있는지 알아보겠습니다.</p>
+	<p>Workers에서 실행되는 애플리케이션에 액세스하는 사용자가 호주 시드니에 있다고 가정해 보겠습니다. 이 애플리케이션은 사용자의 요청을 처리하기 위해 독일 프랑크푸르트에 있는 데이터베이스까지 세 번 왕복합니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EGjgjjCqADFBQGq5OXVFC/cfd95273a6e9a7afbe09ab27e3c90104/download--1--6.png" alt="" class="kg-image" width="1600" height="569" loading="lazy">
+
+	</figure>
+	<p>우리는 병목 현상이 Worker가 데이터베이스를 여러 번 왕복하는 데 걸리는 시간일 것으로 직관적으로 추측할 수 있습니다. 사용자와 가까운 곳에서 Worker를 호출하는 대신 데이터베이스에 가장 가까운 데이터 센터에서 Worker를 호출한다면 어떻게 될까요?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D4IOJIAlHuGYce5DqjGky/09d291252b813c1981cac9ef19cb1fd7/wAAAABJRU5ErkJggg__" alt="" class="kg-image" width="undefined" height="undefined" loading="lazy">
+
+	</figure>
+	<p>이를 테스트해 보겠습니다.</p>
+	<p>Smart Placement가 활성화되지 않은 Worker의 요청 지속 시간을 측정하고 이를 Smart Placement가 활성화된 Worker와 비교했습니다. 두 테스트 모두를 위해 저희는 시드니에서 eu-central-1(프랑크푸르트)에 위치한 <a href="https://upstash.com" target="_blank" rel="noopener noreferrer">Upstash</a> 인스턴스(무료 등급)를 3번 왕복하는 Worker에 3,500개의 요청을 보냈습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54nvh0FI2RcDh1gQ9ea4Tq/6a0ca6a7ea678cd965c79b25d7b90874/image3-7.png" alt="A graph showing request duration with and without Smart Placement enabled. " class="kg-image" width="1524" height="920" loading="lazy">
+
+	</figure>
+	<p>그 결과는 명확합니다! 이 예에서는 Worker를 백엔드에 가깝게 이동시켰을 때 <b>애플리케이션 성능이 4~8배</b><b>개선되었습니다</b>.</p>
+	<div class="flex anchor relative">
+		<h2 id="network-decisions-shouldnt-be-human-decisions">네트워크상의 결정은 사람의 결정이 되어서는 안 됩니다</h2>
+		<a href="https://blog.cloudflare.com/#network-decisions-shouldnt-be-human-decisions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>개발자는 가장 잘하는 일인 애플리케이션 구축에 집중해야 합니다. 애플리케이션을 더 빠르게 만들기 위한 네트워크 결정에 대해서는 걱정할 필요 없이 말입니다.</p>
+	<p>Cloudflaredptj는 고유한 관점을 가지고 있습니다. 저희 네트워크에서는 사용자, Cloudflare 데이터 센터, 백엔드 서버 간의 최적 경로에 대한 정보가 수집됩니다. 저희는 <a href="https://blog.cloudflare.com/argo">Argo Smart Routing</a>을 통해 이 분야에서 많은 경험을 쌓았습니다. Smart Placement는 이러한 요소를 고려하여 자동으로 Worker를 최상의 위치에 배치하여 전체 요청 지속 시간을 최소화합니다.</p>
+	<p>그렇다면 Smart Placement는 어떻게 작동할까요?</p>
+	<p>Smart Placement는 '설정' 탭이나 wrangler.toml 파일에서 Worker별로 활성화할 수 있습니다.</p>
+	<pre class="language-bash"><code class="language-bash">[placement]
+mode = "smart"</code></pre>
+	<p>Worker 또는 Pages Function에서 Smart Placement를 활성화하면 Smart Placement 알고리즘은 Worker의 가져오기 요청(하위 요청이라고도 함)을 실시간으로 분석합니다. 그런 다음 이를 네트워크에서 집계된 대기 시간 데이터와 비교합니다. 평균적으로 Worker가 백엔드 리소스에 대해 두 개 이상의 하위 요청을 하는 것이 감지되면 최적의 데이터 센터에서 자동으로 Worker가 호출됩니다!</p>
+	<p>정당한 이유로 스마트 배치 알고리즘에서 고려하지 않는 백엔드 서비스가 몇 가지 있습니다.</p>
+	<ul>
+		<li>
+			<p>전 세계적으로 분산된 서비스: Worker가 통신하는 서비스가 여러 지역에 걸쳐 분산된 경우 Smart Placement는 적합하지 않습니다. 이는 Smart Placement 최적화에서 자동으로 제외됩니다.</p>
+		</li>
+		<li>
+			<p>분석 또는 로깅 서비스: 분석 또는 로깅 서비스에 대한 요청이 애플리케이션의 중요 경로에 있을 필요는 없습니다. 코드를 계측할 때 사용자에 대한 응답이 차단되지 않도록 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer"><code>WaitUntil()</code></a>을 사용해야 합니다. 사용자 관점에서는 <code>WaitUntil()</code>이 요청 지속 시간에 영향을 미치지 않으므로 저희는 Smart Placement 최적화에서 분석/로깅 서비스를 자동으로 제외합니다.</p>
+		</li>
+	</ul>
+	<p>Smart Placement 알고리즘에서 고려되지 않는 서비스 목록은 Cloudflare <a href="https://developers.cloudflare.com/workers/platform/smart-placement/#supported-backends" target="_blank" rel="noopener noreferrer">문서</a>를 참조하세요.</p>
+	<p>Smart Placement가 작동하면 Worker에서 새로운 'Request Duration' 탭을 확인할 수 있습니다. Cloudflare에서는 Smart Placement를 활성화하지 않은 상태에서 요청의 1%를 라우팅하므로 사용자는 요청 지속 시간에 미치는 영향을 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IicbhnuU143f8T6EJc9s4/2f24b79cc4b019123b1e7ed2df4cd02a/download-9.png" alt="Request duration with and without Smart Placement shown on the Workers dashboard. " class="kg-image" width="1600" height="868" loading="lazy">
+
+	</figure>
+	<p>그리고, 정말이지 그 정도로 간단합니다!</p>
+	<p>저희 <a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">데모</a>를 확인하여 Smart Placement를 사용해 보세요(너무 재미 있답니다!). 자세한 내용은 <a href="https://developers.cloudflare.com/workers/platform/smart-placement" target="_blank" rel="noopener noreferrer">개발자 문서</a>를 참조하세요.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-smart-placement">Smart Placement의 다음 단계는 무엇일까요?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-smart-placement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 시작일 뿐입니다! Smart Placement를 개선할 수 있는 다양한 아이디어가 있습니다.</p>
+	<ul>
+		<li>
+			<p>애플리케이션에서 여러 백엔드를 사용할 때 최적의 위치 계산 지원</p>
+		</li>
+		<li>
+			<p>미세 조정된 배치(예: Worker가 경로에 따라 여러 백엔드를 사용하는 경우. 저희는 Worker별이 아닌 경로별로 최적의 배치를 계산합니다)</p>
+		</li>
+		<li>
+			<p>TCP 기반 연결 지원</p>
+		</li>
+	</ul>
+	<p>여러분의 의견을 듣고 싶습니다! 피드백이나 기능에 대한 요청이 있다면 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developer Discord</a>를 통해 연락해 주시기 바랍니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TV에서 보기</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

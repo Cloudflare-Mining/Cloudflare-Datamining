@@ -1,0 +1,126 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/introducing-ai-agent">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-ai-agent">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-ai-agent">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-ai-agent">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-ai-agent">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-ai-agent">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/introducing-ai-agent">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xorIrMANoEkjSDTPof0Zz/435411092defa3c7b10fd49035879891/BLOG-2692_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>오늘은 저희 Cloudflare에게는 중요한 날입니다! Security Week 중 하루일 뿐만 아니라 사용자가 저희 모든 제품과 상호 작용하고 가치를 얻는 방식을 개선하기 위해 완전히 새로운 기능 영역으로 Cloudflare가 첫 발을 내딛는 날이기도 합니다.</p>
+	<p>여러분이 알고 사랑하는 Cloudflare 제품의 관리에 AI 기능이 어떻게 통합되는지 처음으로 보여드리게 되어 기쁩니다. Cloudflare의 첫 번째 임무는? 보안에 집중하고 규칙 및 정책 관리 경험을 간소화하는 것입니다. 목표는 Cloudflare WAF의 사용자 지정 규칙과 Cloudflare One의 Gateway 정책을 수동으로 검토하고 컨텍스트화하는 시간 소모적인 작업을 자동화하여 각 정책의 기능, 차이점, 해결 방법을 즉시 파악할 수 있도록 하는 것입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-cloudy-cloudflares-first-ai-agent">Cloudflare의 첫 AI 에이전트, Cloudy를 만나보세요</h3>
+		<a href="https://blog.cloudflare.com/#meet-cloudy-cloudflares-first-ai-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>완전한 AI 기반 제품을 경험하기 위한 첫 번째 단계는 Cloudflare AI 에이전트의 첫 번째 버전인 <i>Cloudy</i>의 출시입니다. Cloudflare AI 에이전트는 사용자가 제품군의 여러 영역에서 Cloudflare 구성을 빠르게 이해하고 개선할 수 있도록 돕기 위해 마련된 도우미 같은 기능입니다. 대시보드 전체에 걸쳐 Cloudy 기능이 두 개의 Cloudflare 제품에 원활하게 내장되어 있음을 확인할 수 있습니다. 이에 대해서는 아래에서 설명하겠습니다.</p>
+	<p><i>Cloudy</i>라는 이름은 재미있고 경쾌할지 모르지만, 저희 목표는 더 진지합니다. Cloudflare의 모든 곳에 Cloudy와 AI 기반 기능을 제공하고, 사용자가 좋아하는 Cloudflare 제품을 운영하고 관리하는 방식을 최적화하는 것입니다. 이제 WAF 및 Gateway 제품을 사용하는 모든 고객이 Cloudy를 이용할 수 있는 두 곳부터 시작하겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="waf-custom-rules">WAF 사용자 지정 규칙</h3>
+		<a href="https://blog.cloudflare.com/#waf-custom-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI 기반 <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>WAF 사용자 지정 규칙</u></a> 개요부터 시작하겠습니다. 익숙하지 않은 분들을 위해 설명하자면, Cloudflare의 웹 애플리케이션 방화벽(WAF)은 SQL 삽입, Cross-site scripting(XSS), 기타 취약점 등의 공격으로부터 웹 애플리케이션을 보호하는 데 도움이 됩니다.&nbsp;</p>
+	<p>WAF의 기능 중 하나는 WAF 사용자 지정 규칙을 생성하는 것입니다. 이를 통해 사용자는 특정 속성이나 보안 기준에 따라 트래픽을 차단하거나 인증 질문을 하거나 허용하도록 보안 정책을 맞춤 설정할 수 있습니다.</p>
+	<p>그러나 조직 전체에 규칙이 수십 개 또는 수백 개 배포된 고객의 경우 보안 상태를 명확하게 이해하는 것이 어려울 수 있습니다. 규칙 구성은 시간이 지남에 따라 발전하며, 여러 팀원이 관리하는 경우가 많으므로 비효율과 보안 격차로 이어질 가능성이 있습니다. Cloudy가 해결하기에 이보다 더 좋은 문제가 있을까요?</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zcFRfhRWGQWhoza9TolDu/25e1357540db32e59150609e6eddd1e0/BLOG-2692_2.png" alt="BLOG-2692 2" class="kg-image" width="1999" height="1774" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>에 기반하여, 오늘은 Cloudy가 WAF 사용자 지정 규칙을 검토하는 데 어떻게 도움이 되는지 공유하고 전체 규칙에 구성된 내용을 요약해 보겠습니다. Cloudy는 다음과 같은 문제를 파악하고 해결하는 데도 도움이 됩니다.</p>
+	<ul>
+		<li>
+			<p><b>중복 규칙 식별</b>: 여러 규칙이 동일한 기능을 수행하거나 유사한 필드를 사용하는 경우를 식별하여 구성을 간소화할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>실행 순서 최적화</b>: 규칙 순서가 기능에 영향을 미치는 경우를 파악합니다. 예를 들어 종료 규칙(차단/인증 질문 작업)으로 인해 후속 규칙이 실행되지 않는 경우가 있습니다.</p>
+		</li>
+		<li>
+			<p><b>상충 규칙 분석</b>: 한 규칙이 다른 규칙이 허용하거나 기록하도록 설계된 트래픽을 차단하는 등 규칙이 서로 상충되는 경우를 감지합니다.</p>
+		</li>
+		<li>
+			<p><b>비활성화된 규칙 식별</b>: 비활성화된 상태인 잠재적으로 중요한 보안 규칙을 강조 표시하여 중요한 보호 기능이 실수로 비활성화되는 일이 없도록 합니다.</p>
+		</li>
+	</ul>
+	<p>Cloudy는 규칙을 요약하는 데에서 그치지 않습니다. 규칙 간의 관계와 상호 작용을 분석하여 실행 가능한 권장 사항을 제공합니다. 복잡한 사용자 지정 규칙 집합을 관리하는 보안팀의 경우, 이는 구성 감사에 소요되는 시간이 줄어들고 보안 범위에 대한 확신이 증가됨을 의미합니다.</p>
+	<p>모든 사용자가 이용할 수 있는 Cloudflare AI 에이전트가 WAF 사용자 지정 규칙을 시작으로 제품의 사용성을 개선하는 방법을 보여드릴 수 있어 기쁩니다. 하지만 이는 시작에 불과합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-one-firewall-policies">Cloudflare One 방화벽 정책</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-one-firewall-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CXHQVlO3GGqwp6DGyOklJ/3068c434c4a303cf22c328c302947fcb/BLOG-2692_3.png" alt="BLOG-2692 3" class="kg-image" width="766" height="783" loading="lazy">
+	</figure>
+	<p>저희는 또한 SASE 플랫폼인 <a href="https://www.cloudflare.com/static/e9ea5dfaa69c554cc1cbaa7f3e441acf/Cloudflare_One_at_a_glance.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>에 Cloudy를 추가했습니다. 기업에서는 여기 단일 대시보드에서 직원 및 도구의 보안을 관리할 수 있습니다.</p>
+	<p>Cloudflare의 보안 웹 게이트웨이 제품인 <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>에서 고객은 직원이 인터넷에서 업무를 수행하는 방식을 관리하는 정책을 구성할 수 있습니다. 이러한 Gateway 정책에 따라 악의적 사이트에 대한 액세스를 차단하고, 데이터 손실 위반을 방지하며, 사용자 액세스를 제어하는 등의 작업을 수행할 수 있습니다.</p>
+	<p>하지만 WAF 사용자 지정 규칙과 유사하게, Gateway 정책 구성은 누가 무엇을 하는지 알아내는 오래되고 잊혀진 정책으로 인해 시간이 지남에 따라 지나치게 복잡해지고 정체될 수 있습니다. 직관적이지 않은 방식으로 작동하는 여러 선택기와 연산자. 그중 일부는 트래픽을 차단하고, 일부는 트래픽을 허용합니다. 여러 사용자 그룹을 포함하지만 특정 직원만 골라내는 정책. 심지어 한 번에 수백 개의 URL을 차단하는 정책도 목격되었습니다. 즉, 여러 해에 걸쳐 Gateway 정책을 관리하는 것은 엄청난 부담이 될 수 있습니다.</p>
+	<p>그렇다면 Cloudy가 Gateway 정책을 명확하고 간결하게 요약하여 그 목적을 명확히 하는 것은 어떨까요?</p>
+	<p>모든 Cloudflare Gateway 사용자에게 제공되는 Cloudy는 이제 사용자가 보는 모든 Gateway 정책에 대한 빠른 요약을 제공합니다(무료 Cloudflare One 계정은 <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>여기</u></a>에서 생성할 수 있습니다). 이제 그 어느 때보다 한눈에 각 정책을 명확하게 파악할 수 있으므로 관리자는 잘못된 구성, 중복 제어, 기타 개선 사항을 발견하고 자신 있게 진행할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="built-on-workers-ai">Workers AI로 구축</h3>
+		<a href="https://blog.cloudflare.com/#built-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>새로운 기능의 중심에는 방대한 양의 정보를 처리하기 위해 고급 대규모 언어 모델(LLM)을 활용하는 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers AI</u></a> (모든 사람이 사용하는 동일한 버전!)가 있습니다. 이 경우에 그 정보는 정책 및 규칙 데이터입니다. 전통적으로 복잡한 구성을 수동으로 검토하고 컨텍스트를 파악하는 것은 모든 보안 팀에게 어려운 작업입니다. 저희는 Workers AI를 통해 해당 프로세스를 자동화하여 원시 구성 데이터를 일관되고 명확한 요약과 실행 가능한 권장 사항으로 전환합니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works"><b>작동 원리</b></h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers AI는 Cloudflare 설정에서 정책 및 규칙 구성을 수집하고 이를 목적에 맞게 구축된 LLM 프롬프트와 결합합니다. Cloudflare에서는 고객에게 제공하는 것과 동일한 <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>공개적으로 사용 가능한 LLM 모델</u></a>을 활용한 다음, 컨텍스트를 제공하기 위해 몇 가지 추가 데이터로 프롬프트를 더욱 풍부하게 만듭니다. 정책 및 규칙 데이터를 분석하고 요약하는 이 특정 작업을 위해 Cloudflare에서는 LLM을 제공했습니다.</p>
+	<ul>
+		<li>
+			<p><b>정책 및 규칙 데이터</b>: 이것은 Cloudy가 요약하고 이에 대한 제안을 제공할 수 있는 정책/규칙의 현재 구성을 포함한 주요 데이터 자체입니다.</p>
+		</li>
+		<li>
+			<p><b>제품 기능의 문서화:</b> Cloudflare에서는 각 제품에서 가능한 정책/규칙 구성에 대한 추가 기술 세부 정보를 모델에 제공하여 모델이 경계 내부에 어떤 종류의 권장 사항이 있는지 알 수 있도록 합니다.</p>
+		</li>
+		<li>
+			<p><b>강화된 데이터 세트</b>: WAF 사용자 지정 규칙 또는 CF1 Gateway 정책이 다른 '목록'을 활용하는 경우(예: 여러 국가를 참조하는 WAF 규칙, 특정 콘텐츠 범주를 활용하는 Gateway 정책), 선택된 목록 항목은 먼저 ID에서 일반 텍스트 문구로 변환되어야 LLM이 실제로 사용되는 정책/규칙 값을 해석할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>출력 지침</b>: 저희는 출력을 받을 형식을 모델에 지정합니다. 이 경우 가장 쉬운 처리를 위해 JSON을 사용합니다.</p>
+		</li>
+		<li>
+			<p><b>추가 설명</b>: 마지막으로, LLM에 명시적으로 지시하여 출력을 확인하고 다른 무엇보다도 이러한 측면을 중시합니다. 이렇게 하면 할루시네이션이 최종 결과물에 도달하지 못하도록 하는 데 도움이 됩니다.</p>
+		</li>
+	</ul>
+	<p>Cloudflare Workers AI는 WAF 사용자 지정 규칙 및 Gateway 정책 분석을 자동화하여 시간을 절약할 뿐만 아니라 인적 오류의 위험을 줄여 보안을 강화합니다. 사용자는 노동 집약적인 수동 검토 없이도 구성을 간소화하고, 이상을 신속하게 발견하며, 강력한 보안 상태를 유지할 수 있는 명확하고 실행 가능한 인사이트를 얻을 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="whats-next-for-cloudy">Cloudy의 향후 계획</h4>
+		<a href="https://blog.cloudflare.com/#whats-next-for-cloudy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudy의 베타 버전 미리 보기가 현재 모든 Cloudflare 고객에게 제공됩니다. 하지만 이는 전체 제품군에 걸쳐 AI 기반 기능에 대해 구상하고 있는 저희 계획의 시작에 불과합니다.</p>
+	<p>2025년 남은 기간 동안 Cloudflare의 다른 영역에서도 추가적인 AI 에이전트 기능을 출시할 계획입니다. 이러한 새로운 기능은 고객이 보안을 보다 효율적으로 관리하는 데 도움이 될 뿐만 아니라 성능을 최적화하고, 운영을 간소화하며, 전반적인 사용자 경험을 개선하기 위한 지능형 권장 사항도 제공합니다.</p>
+	<p>Cloudy를 만나고 새로운 AI 기능을 사용해 본 여러분의 의견을 듣고 싶습니다. Cloudflare에 <a href="https://blog.cloudflare.com/#"><u>cloudyfeedback@cloudflare.com</u></a>으로 피드백을 보내거나 #SecurityWeek! 해시태그를 달아 X, LinkedIn, Mastodon에 게시해 주세요! 보내주신 피드백은 AI 개선 로드맵을 수립하고, 사용자에게 더 스마트하고 효율적인 도구를 제공하여 모두가 더 안전하게 사용할 수 있도록 하는 데 도움이 됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gGseiyO6pbddpdSVQ5wfJ/ae1d0d5a2f8ec01f571de7a85b655370/BLOG-2692_4.png" alt="BLOG-2692 4" class="kg-image" width="1999" height="347" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TV에서 보기</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a17f6d8c6e2bd7401e443b67ed780120/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa17f6d8c6e2bd7401e443b67ed780120%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

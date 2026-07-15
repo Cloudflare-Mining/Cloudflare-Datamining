@@ -1,0 +1,344 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">English</a>, en <a href="https://blog.cloudflare.com/ja-jp/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Português</a>, en <a href="https://blog.cloudflare.com/es-es/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Español</a>, en <a href="https://blog.cloudflare.com/id-id/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Indonesia</a>, en <a href="https://blog.cloudflare.com/nl-nl/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Nederlands</a>, en <a href="https://blog.cloudflare.com/th-th/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">ไทย</a> et en <a href="https://blog.cloudflare.com/de-de/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iNGnV69vCGK2I0aizUmti/7697146a7cb1c7a0051cdbcb8156551b/Hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>À la mi-mai&nbsp;2025, Cloudflare a bloqué l'attaque DDoS la plus volumineuse jamais enregistrée, avec un débit stupéfiant de 7,3&nbsp;térabits par seconde (Tb/s)./ L'événement survient peu après le 27&nbsp;avril&nbsp;2025, soit la date de publication de notre <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1"><u>rapport sur les menaces DDoS au premier trimestre&nbsp;2025</u></a>, dans lequel nous attirons l'attention sur des attaques culminant à 6,5&nbsp;Tb/s et 4,8&nbsp;milliards de paquets par seconde (p/s). Cette attaque de 7,3&nbsp;Tb/s se révèle 12&nbsp;% plus massive que notre précédent record et 1&nbsp;Tb/s plus volumineuse qu'une récente attaque signalée par le journaliste en cybersécurité Brian Krebs sur sa page <a href="https://krebsonsecurity.com/2025/05/krebsonsecurity-hit-with-near-record-6-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>KrebsOnSecurity</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ANdNP7alw2BkWu5hiXaTa/4e6c32c48c5b48ed1943ddb9c9819d18/1.png" alt="" class="kg-image" width="1796" height="810" loading="lazy">
+	</figure>
+	<p><i><sup>Nouveau record mondial&nbsp;: une attaque DDoS culminant à 7,3&nbsp;Tb/s bloquée de manière autonome par Cloudflare</sup></i></p>
+	<p>L'attaque visait un client Cloudflare, sous la forme d'un fournisseur d'hébergement qui s'appuie sur <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Magic Transit</u></a> pour protéger son réseau IP. Comme nous l'avons signalé dans notre <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#attacks-target-the-cloudflare-network-and-internet-infrastructure"><u>dernier rapport sur les menaces DDoS</u></a>, les fournisseurs d'hébergement sont de plus en plus souvent la cible d'attaques DDoS, de même que les infrastructures Internet essentielles. L'image ci-dessous illustre une campagne d'attaques menées de janvier à février&nbsp;2025 avec plus de 13,5&nbsp;millions d'attaques DDoS lancées contre l'infrastructure Cloudflare et les fournisseurs d'hébergement protégés par Cloudflare.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fbj7Uvc4g61ag7FdNpsVY/e0911256cdda102d394f04467922989e/2.png" alt="" class="kg-image" width="1999" height="778" loading="lazy">
+	</figure>
+	<p><i><sup>Une campagne d'attaques DDoS vise l'infrastructure Cloudflare et les fournisseurs d'hébergement protégés par Cloudflare</sup></i></p>
+	<p>Avant de nous intéresser à la manière dont nos systèmes ont détecté et atténué cette attaque, commençons par quelques statistiques.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-7-3-tbps-attack-delivered-37-4-terabytes-in-45-seconds">L'attaque de 7,3&nbsp;Tb/s a déversé 37,4&nbsp;téraoctets en 45&nbsp;secondes</h2>
+		<a href="https://blog.cloudflare.com/#the-7-3-tbps-attack-delivered-37-4-terabytes-in-45-seconds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si le chiffre de 37,4&nbsp;téraoctets ne s'avère pas particulièrement impressionnant en termes de volume pur à l'échelle actuelle, une décharge de 37,4&nbsp;To en seulement 45&nbsp;secondes l'est assurément. L'opération revient à saturer votre réseau en lui envoyant un trafic équivalent à plus de 9&nbsp;350&nbsp;films complets en HD ou à la diffusion sans interruption de 7&nbsp;480&nbsp;h de vidéo haute définition (soit près d'un an de visionnage non-stop) en seulement 45&nbsp;secondes. S'il s'agissait de musique, l'ordre de grandeur serait le téléchargement d'environ 9,35&nbsp;millions de titres en moins d'une minute, soit de quoi occuper un auditeur pendant 57&nbsp;ans s'il devait écouter chaque titre à la suite pendant cette période. Vous pouvez également imaginer l'équivalent comme le fait de prendre 12,5&nbsp;millions de photos haute résolution sur votre smartphone (en imaginant que vous ne manquiez jamais de stockage, si vous deviez ne prendre qu'une photo par jour, vous seriez encore en train d'appuyer sur le déclencheur de l'appareil 4&nbsp;000&nbsp;ans plus tard). Or, le processus s'est effectué ici en seulement 45&nbsp;secondes.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LdE4nXpbZNNq5nuu6zcAI/0d3bb3ce445219e32e0c193ac293e2c7/3.png" alt="" class="kg-image" width="1064" height="737" loading="lazy">
+	</figure>
+	<p><i><sup>L'attaque record de 7,3&nbsp;Tb/s a diffusé 37,4&nbsp;To en 45&nbsp;secondes</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="the-attack-details">Les détails de l'attaque</h2>
+		<a href="https://blog.cloudflare.com/#the-attack-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'attaque a bombardé en moyenne 21&nbsp;925&nbsp;ports de destination d'une unique adresse IP possédée par notre client (et utilisée par ce dernier), avec un pic culminant à 34&nbsp;517&nbsp;ports de destination par seconde. La répartition des ports source de l'attaque était plus ou moins similaire.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GZqL1pFqCYp7YmaY6BJ7B/7bfc6c9896f68936897ffa4458705eac/4.png" alt="" class="kg-image" width="1294" height="578" loading="lazy">
+	</figure>
+	<p><i><sup>Répartition des ports de destination</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="attack-vectors">Vecteurs d'attaque</h3>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'attaque de 7,3&nbsp;Tb/s se présentait sous la forme d'une attaque DDoS multivectorielle. Près de 99,996&nbsp;% du trafic hostile était classé dans la catégorie des floods UDP. Toutefois, les 0,004&nbsp;% restants, qui représentaient donc 1,3&nbsp;Go du trafic hostile, étaient identifiés comme attaques par réflexion (QOTD, Echo, NTP), comme, attaques par flood (UDP Mirai, Portmap) et comme attaques par amplification RIPv1.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11Vi16gyvOnkCK9XCjkiW7/5453372518abfe68982ff3450245a295/5.png" alt="" class="kg-image" width="1240" height="728" loading="lazy">
+	</figure>
+	<p><i><sup>Les autres vecteurs d'attaque que le flood UDP</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="breakdown-of-the-attack-vectors">Répartition des vecteurs d'attaque</h3>
+		<a href="https://blog.cloudflare.com/#breakdown-of-the-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous trouverez ci-dessous les détails concernant les différents vecteurs d'attaque observés lors de cette attaque, comment les entreprises peuvent éviter de participer aux attaques par réflexion et par amplification, ainsi que des recommandations pour se protéger contre ces attaques tout en évitant d'affecter le trafic légitime. Les clients Cloudflare sont protégés contre ces attaques.</p>
+	<div class="flex anchor relative">
+		<h4 id="udp-ddos-attack">Attaque DDoS UDP</h4>
+		<a href="https://blog.cloudflare.com/#udp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type</b>&nbsp;: flood (inondation)</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;:</b> un volume élevé de paquets UDP est envoyé vers des ports aléatoires ou spécifiques de la ou des adresses IP cibles. Cette attaque peut tenter de saturer la liaison Internet ou de surcharger les appareils internes (in-line) sous un flot de paquets plus élevé que ces éléments ne peuvent en gérer.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre cette attaque&nbsp;:</b> déployez une protection contre les attaques DDoS basée sur le cloud, mettez en place un contrôle du volume des requêtes intelligent sur le trafic UDP et abandonnez totalement le trafic UDP indésirable.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;:</b> un filtrage agressif peut venir perturber les services UDP légitimes, comme la VoIP, la vidéoconférence ou les jeux en ligne. Appliquez vos seuils avec la plus grande prudence.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="qotd-ddos-attack">Attaque DDoS QOTD</h4>
+		<a href="https://blog.cloudflare.com/#qotd-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type&nbsp;:</b> réflexion&nbsp;+ amplification</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;:</b> cette attaque exploite le protocole Quote of the Day (QOTD, citation du jour) qui écoute le port UDP&nbsp;17 et répond par une courte citation ou un bref message. Les acteurs malveillants adressent des requêtes QOTD aux serveurs exposés depuis une adresse IP usurpée afin de provoquer une amplification des réponses amplifiées et de submerger la victime sous le trafic.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de devenir un élément de la réflexion ou de l'amplification&nbsp;:</b> désactivez le service QOTD et bloquez le port UDP/17 sur l'ensemble des serveurs et des pare-feu.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;:</b> bloquez le trafic UDP/17 entrant. Abandonnez le trafic présentant des pics anormaux de requêtes UDP à petits paquets.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;:</b> le protocole QOTD est un protocole de diagnostic/débogage obsolète. Les applications modernes n'y font pas appel. Sa désactivation ne devrait pas avoir d'effet négatif sur les services légitimes.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="echo-ddos-attack">Attaque DDoS Echo</h4>
+		<a href="https://blog.cloudflare.com/#echo-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type&nbsp;: </b>réflexion + amplification</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;: </b>cette attaque exploite le protocole Echo (port UDP/TCP&nbsp;7), qui répond avec les données qu'il reçoit. Les acteurs malveillants usurpent l'adresse IP de la victime afin d'amener les appareils à renvoyer les données et, par conséquent, d'amplifier l'attaque.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de devenir un élément de la réflexion ou de l'amplification&nbsp;:</b> désactivez le service Echo sur l'ensemble des appareils. Bloquez le port UDP/TCP&nbsp;7 à la périphérie du réseau.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;: </b>désactivez le service Echo et bloquez le port TCP/UDP&nbsp;7 au niveau du périmètre réseau.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;: </b>Echo est un outil de diagnostic obsolète. Sa désactivation ou son blocage n'a aucun effet négatif sur les systèmes modernes.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="ntp-ddos-attack">Attaque DDoS NTP</h4>
+		<a href="https://blog.cloudflare.com/#ntp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type&nbsp;: </b>réflexion + amplification</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;: </b>cette attaque utilise abusivement le protocole NTP (Network Time Protocol, protocole de temps réseau) utilisé pour synchroniser les horloges sur Internet. Les acteurs malveillants exploitent la commande «&nbsp;monlist&nbsp;» sur les anciens serveurs NTP (UDP/123). Or, cette commande renvoie une longue liste des connexions récentes. Les requêtes usurpées entraînent une amplification des réflexions.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de devenir un élément de la réflexion ou de l'amplification&nbsp;:</b> mettez à niveau ou configurez vos serveurs NTP afin de désactiver la commande «&nbsp;monlist&nbsp;». Limitez les requêtes NTP aux adresses IP de confiance uniquement.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;: </b>désactivez la commande «&nbsp;monlist&nbsp;», mettez à jour le logiciel NTP et filtrez ou limitez le trafic UDP/123.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;: </b>la désactivation de la commande «&nbsp;monlist&nbsp;» n'a aucun effet sur la synchronisation temporelle. Toutefois, le filtrage ou le blocage du port UDP/123 pourrait affecter la synchronisation de l'heure si le filtre/le blocage est trop large. Assurez-vous que seules les sources non fiables ou externes soient bloquées.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="mirai-udp-attack">Attaque Mirai UDP</h4>
+		<a href="https://blog.cloudflare.com/#mirai-udp-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type</b>&nbsp;: flood (inondation)</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;: </b>le <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>botnet Mirai</u></a> est composé d'appareils IdO compromis. Il noie les victimes sous un flot de paquets UDP aléatoires ou spécifiques à un service (p. ex., DNS, services de jeu).</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de participer à un botnet&nbsp;:</b> sécurisez vos appareils IdO, changez vos mots de passe par défaut, mettez à jour vos appareils vers la dernière version du firmware et suivez les <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/iot-security" target="_blank" rel="noopener noreferrer"><u>bonnes pratiques en matière de sécurité IdO</u></a>. Dans la mesure du possible, surveillez le trafic sortant afin de détecter les irrégularités.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;: </b>déployez une protection contre les attaques DDoS volumétriques basée dans le cloud et mettez en place un contrôle du volume de requêtes sur le trafic UDP.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;:</b> veillez tout d'abord à comprendre votre réseau et le type de trafic que vous recevez, notamment les protocoles, leurs sources et leurs destinations. Identifiez les services exécutés sur UDP que vous souhaitez éviter d'affecter. Une fois ces derniers identifiés, vous pouvez mettre en place le contrôle du volume des requêtes d'une manière qui exclut ces points de terminaison ou qui prend vos niveaux de trafic habituels en compte. Dans le cas contraire, un contrôle agressif du volume des requêtes liées au trafic UDP peut affecter votre trafic légitime et impacter les services fonctionnant sur UDP, comme les appels VoIP et le trafic VPN.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="portmap-ddos-attack">Attaque DDoS Portmap</h4>
+		<a href="https://blog.cloudflare.com/#portmap-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type&nbsp;:</b> réflexion&nbsp;+ amplification</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;: </b>cette attaque vise le service Portmapper (UDP/111) utilisé par les applications basées sur le protocole RPC (Remote Procedure Call, appel de procédure à distance) afin d'identifier les services disponibles. Les requêtes usurpées entraînent une réflexion des réponses.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de devenir un élément de la réflexion ou de l'amplification&nbsp;: </b>désactivez le service Portmapper s'il n'est pas nécessaire. Si le service s'avère nécessaire en interne, limitez-le aux adresses IP de confiance uniquement.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;: </b>désactivez le service Portmapper s'il n'est pas nécessaire et bloquez le trafic entrant UDP/111. Mettez en place des listes de contrôle des accès (Access Control Lists, ACL) ou des pare-feu pour limiter l'accès aux services RPC connus.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;: </b>la désactivation du service Portmapper peut venir perturber les applications reposant sur RPC (p. ex. le protocole Network File System). Validez les dépendances des services avant leur suppression.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="ripv1-ddos-attack">Attaque DDoS RIPv1</h4>
+		<a href="https://blog.cloudflare.com/#ripv1-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Type&nbsp;:</b> réflexion&nbsp;+ (faible) amplification</p>
+		</li>
+		<li>
+			<p><b>Fonctionnement&nbsp;: </b>cette attaque exploite la version&nbsp;1 du protocole RIP (Routing Information Protocol, protocole d'information de routage), un ancien protocole de routage à vecteur de distances non authentifié qui fait appel au port UDP/520. Les acteurs malveillants envoient des mises à jour de routage usurpées afin de submerger ou de perturber les réseaux.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter de devenir un élément de la réflexion ou de l'amplification&nbsp;: </b>désactivez le protocole RIPv1 sur les routeurs. Utilisez le RIPv2 avec authentification là où le routage est nécessaire.</p>
+		</li>
+		<li>
+			<p><b>Comment se protéger contre l'attaque&nbsp;: </b>bloquez le trafic UDP/520 entrant en provenance de réseaux non fiables. Surveillez les mises à jour de routage inattendues.</p>
+		</li>
+		<li>
+			<p><b>Comment éviter les conséquences imprévues&nbsp;: </b>le protocole RIPv1 est quasiment obsolète. Sa désactivation s'avère généralement sûre. Si d'anciens systèmes y font néanmoins appel, validez le comportement de routage avant d'effectuer des modifications.</p>
+		</li>
+	</ul>
+	<p>Afin d'éviter les effets indésirables sur le trafic légitime, toutes les recommandations présentées ici doivent être prises en considération en tenant compte du contexte et du comportement de chaque réseau ou de chaque application.</p>
+	<div class="flex anchor relative">
+		<h3 id="attack-origins">Origines de l'attaque</h3>
+		<a href="https://blog.cloudflare.com/#attack-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'attaque émanait de plus de 122&nbsp;145&nbsp;adresses IP source couvrant 5&nbsp;433&nbsp;systèmes autonomes (AS) répartis dans 161&nbsp;pays.&nbsp;</p>
+	<p>Près de la moitié du trafic hostile provenait du Brésil et du Vietnam, avec une part d'environ un quart pour chaque pays. Un autre tiers (cumulé) du trafic provenait de Taïwan, de Chine, d'Indonésie, d'Ukraine, d'Équateur, de Thaïlande, des États-Unis et d'Arabie saoudite.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CNlOoTGF4USsh5q7Lw5XK/4c108ae003c4f14418aeab2ad98ab197/6.png" alt="" class="kg-image" width="1728" height="984" loading="lazy">
+	</figure>
+	<p><i><sup>Les dix principaux pays d'origine du trafic hostile</sup></i></p>
+	<p>Le nombre moyen d'adresses IP source uniques par seconde était de 26&nbsp;855, avec un pic culminant à 45&nbsp;097.&nbsp;&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Il1KDn7BuFpFBYvvdiEaK/ba2a5b75f087bbd16ab0c94840ff0951/7.png" alt="" class="kg-image" width="1278" height="544" loading="lazy">
+	</figure>
+	<p><i><sup>Répartition des adresses IP source uniques</sup></i></p>
+	<p>L'attaque provenait de 5&nbsp;433&nbsp;réseaux (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>AS</u></a>) différents. Avec 10,5&nbsp;% de l'ensemble, Telefonica Brazil (<a href="https://radar.cloudflare.com/as27699" target="_blank" rel="noopener noreferrer"><u>AS27699</u></a>) représentait la plus grande part du trafic de l'attaque DDoS. Le système autonome Viettel Group (<a href="https://radar.cloudflare.com/as7552" target="_blank" rel="noopener noreferrer"><u>AS7552</u></a>) lui emboîtait le pas avec 9,8&nbsp;%, tandis que China Unicom (<a href="https://radar.cloudflare.com/as4837" target="_blank" rel="noopener noreferrer"><u>AS4837</u></a>) et Chunghwa Telecom (<a href="https://radar.cloudflare.com/as3462" target="_blank" rel="noopener noreferrer"><u>AS3462</u></a>) contribuaient respectivement au total à hauteur de 3,9&nbsp;% et 2,9&nbsp;%. China Telecom&nbsp;(<a href="https://radar.cloudflare.com/as4134" target="_blank" rel="noopener noreferrer"><u>AS4134</u></a>) représentait 2,8&nbsp;% du trafic. Les ASN restants dans le top&nbsp;10, comme Claro NXT (<a href="https://radar.cloudflare.com/as28573" target="_blank" rel="noopener noreferrer"><u>AS28573</u></a>), VNPT Corp (<a href="https://radar.cloudflare.com/as45899" target="_blank" rel="noopener noreferrer"><u>AS45899</u></a>), UFINET Panama (<a href="https://radar.cloudflare.com/as52468" target="_blank" rel="noopener noreferrer"><u>AS52468</u></a>), STC (<a href="https://radar.cloudflare.com/as25019" target="_blank" rel="noopener noreferrer"><u>AS25019</u></a>) et FPT Telecom Company (<a href="https://radar.cloudflare.com/as18403" target="_blank" rel="noopener noreferrer"><u>AS18403</u></a>) ont chacun contribué au trafic hostile total de l'attaque DDoS dans une proportion comprise entre 1,3&nbsp;% et 1,8&nbsp;%.
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6msz4mK3gxDD1gBnIbYmt9/3d56c615b29def674d9a699339f65a4c/8.png" alt="" class="kg-image" width="1738" height="974" loading="lazy">
+	</figure>
+	<p><i>Top&nbsp;10 des systèmes autonomes source</i></p>
+	<div class="flex anchor relative">
+		<h3 id="free-botnet-threat-feed">Flux gratuit d'informations sur les menaces</h3>
+		<a href="https://blog.cloudflare.com/#free-botnet-threat-feed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Afin d'aider les fournisseurs d'hébergement, les fournisseurs de solutions d'informatique cloud et les FAI à identifier et à éliminer les comptes abusifs à l'origine de ces attaques, nous tirons parti du point de vue unique de Cloudflare pour proposer le <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>flux d'informations gratuit sur les menaces liées aux botnets et destiné aux fournisseurs de services</u></a> (free DDoS Botnet Threat Feed for Service Providers). Plus de 600&nbsp;entreprises à travers le monde se sont déjà abonnées à ce flux. Ce dernier informe les fournisseurs de services sur leur ASN en leur présentant une liste d'adresses IP impliquées dans le lancement d'attaques DDoS HTTP. Le service est entièrement gratuit. Il vous suffit d'ouvrir un compte Cloudflare gratuit, d'authentifier l'ASN via <a href="https://docs.peeringdb.com/howto/authenticate" target="_blank" rel="noopener noreferrer"><u>PeeringDB</u></a>, puis de <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/#get-full-report" target="_blank" rel="noopener noreferrer"><u>récupérer le flux par l'intermédiaire d'une API</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-attack-was-detected-and-mitigated">Comment l'attaque a été détectée et atténuée</h2>
+		<a href="https://blog.cloudflare.com/#how-the-attack-was-detected-and-mitigated" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="using-the-distributed-nature-of-ddos-attacks-against-it">Utiliser la nature distribuée des attaques DDoS contre elles</h3>
+		<a href="https://blog.cloudflare.com/#using-the-distributed-nature-of-ddos-attacks-against-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'adresse IP attaquée a été annoncée depuis le réseau Cloudflare en Global <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>Anycast</u></a>. L'utilisation de cette méthode implique ainsi que les paquets hostiles qui ciblaient l'adresse IP ont été acheminés vers le datacenter Cloudflare le plus proche. L'utilisation du Global Anycast nous permet de répartir le trafic hostile et d'exploiter sa nature distribuée pour contrer ce dernier. Nous pouvons dès lors l'atténuer près des nœuds de botnet, tout en continuant à servir les utilisateurs depuis les datacenters les plus proches de leur position géographique. L'attaque qui nous intéresse dans cet article a été détectée et atténuée dans 477&nbsp;datacenters répartis sur 293&nbsp;points d'implantation à travers le monde. Nous disposons d'une présence au sein de plusieurs datacenters dans les zones à trafic intense.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="autonomous-ddos-detection-and-mitigation">Détection et atténuation autonomes des attaques DDoS</h3>
+		<a href="https://blog.cloudflare.com/#autonomous-ddos-detection-and-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le réseau mondial de Cloudflare exécute chaque service dans chaque datacenter. C'est notamment le cas de nos systèmes de détection et d'atténuation des attaques DDoS. Les attaques peuvent ainsi être détectées et atténuées de manière totalement autonome, indépendamment de leur origine.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="real-time-fingerprinting">Analyse des empreintes numériques en temps réel</h3>
+		<a href="https://blog.cloudflare.com/#real-time-fingerprinting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsqu'un paquet entre dans notre datacenter, il fait l'objet d'un <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><u>équilibrage de charge intelligent</u></a> vers un serveur disponible. Nous échantillonnons ensuite les paquets directement depuis les profondeurs du noyau Linux, c'est-à-dire l'<a href="https://en.wikipedia.org/wiki/Express_Data_Path" target="_blank" rel="noopener noreferrer"><u><i>eXpress Data Path</i></u><u> (XDP)</u></a>, à l'aide d'un programme <a href="https://en.wikipedia.org/wiki/EBPF" target="_blank" rel="noopener noreferrer"><u>eBPF</u></a> (extended Berkeley Packet Filter, filtre de paquets Berkeley étendu) de manière à acheminer les échantillons de paquets vers l'espace utilisateur dans lequel nous procédons à l'analyse.</p>
+	<p>Notre système analyse les échantillons de paquets afin d'identifier les schémas suspects grâce à notre moteur heuristique unique nommé <i>dosd</i> (denial of service daemon, daemon de déni de service). Dosd se met à l'affût de certains schémas au sein des échantillons de paquets, comme les similitudes dans les champs d'en-tête des paquets et la recherche d'anomalies dans les paquets, tout en appliquant également d'autres techniques propriétaires.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fIg4qw12q8V4WDwV9t2gj/a4f02ff1618e5a68de9f660cb053be7d/9.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
+	</figure>
+	<p><sup>&nbsp;</sup><sup><i>Organigramme de la génération d'empreintes numériques en temps réel</i></sup></p>
+	<p>Pour nos clients, ce système complexe d'empreintes numériques se présente sous la forme d'un ensemble convivial de <i>règles gérées</i>, les <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer"><u>ensembles de règles gérées pour la protection contre les attaques DDoS</u></a>.&nbsp;</p>
+	<p>Lorsque dosd détecte des schémas particuliers, il génère plusieurs permutations de ces empreintes afin de déterminer l'empreinte la plus précise, celle qui offrira la meilleure efficacité et la plus grande finesse en matière d'atténuation (p. ex. essayer de correspondre avec une précision chirurgicale au trafic hostile sans affecter le trafic légitime.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZnkWPuJ9sy5eVXvjcr0bO/eaf92ebca11a718f181d13d3396840b6/10.png" alt="" class="kg-image" width="1999" height="1487" loading="lazy">
+	</figure>
+	<p><sup><i>Schéma des systèmes de protection Cloudflare contre les attaques DDoS</i></sup><sup>&nbsp;</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="mitigation">Atténuation</h2>
+		<a href="https://blog.cloudflare.com/#mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous comptabilisons les différents échantillons de paquets qui correspondent à chaque permutation d'empreintes numériques et mettons en avant l'empreinte numérique comptant le plus de correspondances grâce à un algorithme de recherche au sein des flux de données. Pour éviter les faux positifs, en cas de dépassement des seuils d'activation, une règle d'atténuation reposant sur la syntaxe des empreintes est compilée sous forme de programme eBPF afin d'abandonner les paquets correspondant au modèle de l'attaque. Lorsque l'attaque prend fin, la règle expire et est supprimée automatiquement.</p>
+	<div class="flex anchor relative">
+		<h2 id="gossiping-about-attacks">Rumeurs sur les attaques</h2>
+		<a href="https://blog.cloudflare.com/#gossiping-about-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comme nous l'avons mentionné, chaque serveur détecte et atténue les attaques de manière entièrement autonome. Notre réseau s'avère donc très efficace, résilient et rapide en ce qui concerne le blocage des attaques. Chaque serveur <i>transmet</i> (<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-igmp/#:~:text=What%20is%20multicasting%3F" target="_blank" rel="noopener noreferrer"><i><u>multidiffuse</u></i></a>) en outre les principales permutations d'empreintes numériques au sein d'un datacenter et à l'échelle mondiale. Ce principe de partage d'informations sur les menaces en temps réel contribue à améliorer l'efficacité des mesures d'atténuation au sein d'un datacenter et, là encore, à l'échelle mondiale.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="protecting-the-internet">Protéger Internet</h2>
+		<a href="https://blog.cloudflare.com/#protecting-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nos systèmes ont réussi à bloquer cette attaque DDoS record de 7,3&nbsp;Tb/s de manière totalement autonome, sans intervention humaine, sans déclencher d'alertes et sans provoquer d'incidents. Cet exemple illustre dès lors l'efficacité de nos systèmes de protection contre les attaques DDoS. Nous avons construit ce système dans le cadre de notre mission visant à contribuer à bâtir un Internet meilleur, conçu pour proposer une protection contre les attaques DDoS gratuite et illimitée.</p>
+</div>

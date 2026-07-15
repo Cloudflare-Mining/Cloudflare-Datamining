@@ -1,0 +1,140 @@
+<div class="mb2 gray5">10분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/backbone2024">English</a>, <a href="https://blog.cloudflare.com/zh-tw/backbone2024">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/backbone2024">Français</a>, <a href="https://blog.cloudflare.com/de-de/backbone2024">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/backbone2024">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/backbone2024">Português</a>, <a href="https://blog.cloudflare.com/es-es/backbone2024">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/backbone2024">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vNUUbJMhQo7TzovlT6YNN/a5a9bc8b8fee3417b20ad37fdc6b27c1/BLOG-2432-Hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>"클라우드"의 현대적인 사용은 수십 년 동안 네트워크 다이어그램에서 흔히 볼 수 있는 클라우드 아이콘에서 그 기원을 찾을 수 있습니다. 클라우드는 네트워크 또는 인터넷 서비스 제공에 필요한 방대하고 복잡한 인프라 구성 요소를 나타내기 위해 사용되었지만, 근본적인 복잡성에 대해서는 심도 있게 다루지 않았습니다. Cloudflare는 중요한 인프라 솔루션을 사용자 친화적이고 사용하기 쉬운 방식으로 제공하여 이러한 원칙을 구현합니다. 클라우드 기호를 나타내는 Cloudflare 로고는 모든 사용자를 위해 인터넷 인프라의 복잡성을 단순화하려는 Cloudflare의 약속을 반영합니다.</p>
+	<p>이 블로그 게시물에서는 2024년의 글로벌 백본에 초점을 맞추어 Cloudflare의 인프라에 대한 최신 정보를 제공하고, Cloudflare의 인프라가 고객에게 미치는 이점과 시장에서의 경쟁 우위, 더 나은 인터넷 구축을 지원한다는 Cloudflare의 사명에 대한 영향을 강조합니다. 2021년에 마지막으로 작성한 백본 관련 <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">블로그 게시물</a> 이후, Cloudflare의 백본 용량(Tbps)이 500% 이상 증가하여 모든 고객에게 안정성 및 성능 이점뿐만 아니라 새로운 사용 사례를 제공했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-snapshot-of-cloudflares-infrastructure">Cloudflare 인프라의 스냅샷</h3>
+		<a href="https://blog.cloudflare.com/#a-snapshot-of-cloudflares-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024년 7월 현재, Cloudflare는 120여 개 국가에 걸친 330개 도시에 데이터 센터를 운영하고 있으며, 각 도시에서 Cloudflare 장비와 서비스를 실행하고 있습니다. 이러한 데이터 센터의 서버 수와 연산 능력의 양은 다르지만, Cloudflare 제품과 서비스를 어디에서나 제공하려는 목표는 일관되게 유지됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38RRu7BaumWFemL23JcFLW/fd1e4aced5095b1e04384984c88e48be/BLOG-2432-2.png" alt="BLOG-2432-2" class="kg-image" width="1600" height="1000" loading="lazy">
+	</figure>
+	<p></p>
+	<p>이러한 데이터 센터는 전 세계 각지에 전략적으로 위치하여 모든 주요 지역에서 Cloudflare의 입지를 보장하고 고객이 현지 규정을 준수할 수 있도록 지원합니다. 이는 프로그래밍 가능한 스마트 네트워크이며, 트래픽이 최상의 데이터 센터로 이동하여 처리됩니다. 이러한 프로그래밍 가능성을 통해 Cloudflare는 <a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">Data Localization Suite 솔루션</a>을 사용하여 고객이 부과하는 제약 내에서중요한 데이터를 지역적으로 유지할 수 있습니다. 이러한 사이트를 연결하고 고객, 퍼블릭 클라우드, 파트너 및 더욱 광범위한 인터넷과 데이터를 교환하는 것이 Cloudflare 네트워크의 역할이며, 인프라 엔지니어링 및 네트워크 전략 팀에 의해 관리됩니다. 이 네트워크는 Cloudflare 제품을 번개같이 빠르게 만들어 글로벌 안정성 및 모든 고객 요청에 대한 보안을 보장하고, 고객이 데이터 주권 요구 사항을 준수할 수 있도록 지원하는 기반을 형성합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-exchange-methods">트래픽 교환 방법</h3>
+		<a href="https://blog.cloudflare.com/#traffic-exchange-methods" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>인터넷은 서로 다른 네트워크와 별도의 <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">자율 시스템</a>이 상호 연결되어 서로 데이터를 교환함으로써 작동합니다. 데이터를 교환하는 방법에는 여러 가지가 있지만, 편의를 위해 이들 네트워크가 통신하는 방법에 대한 두 가지 핵심 방법인 피어링과 IP 전송에 중점을 두겠습니다. Cloudflare 글로벌 백본의 이점을 더 잘 이해하려면 Cloudflare 네트워크에서 사용하는 이러한 기본 연결 솔루션을 이해하는 것이 도움이 됩니다.</p>
+	<ol>
+		<li>
+			<p><b>피어링</b>: 관리 면에서 분리된 인터넷 네트워크를 자발적으로 상호 연결하여 각 네트워크의 사용자 간의 트래픽 교환을 허용하는 것을 "<a href="https://www.netnod.se/ix/what-is-peering" target="_blank" rel="noopener noreferrer">피어링</a>"이라고 합니다. Cloudflare는 전 세계에서 <a href="https://bgp.he.net/report/exchanges#_participants" target="_blank" rel="noopener noreferrer">가장 많이 피어링된 네트워크</a> 중 하나입니다. Cloudflare는 330개 도시 및 <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp" target="_blank" rel="noopener noreferrer">인터넷 익스체인지(IX)</a>의 ISP 및 기타 네트워크와 피어링 계약을 체결하고 있습니다. 이해 당사자는 언제든지 등록하여 <a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">피어링하거나</a> <a href="https://developers.cloudflare.com/network-interconnect/pni-and-peering" target="_blank" rel="noopener noreferrer">사설 네트워크 상호 연결(PNI)</a>을 통해 링크를 사용하여 Cloudflare 네트워크에 직접 연결할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>IP 전송</b>: 트래픽이 다른 사람의 네트워크를 통과하거나 "전송"할 수 있도록 허용하는 유료 서비스로, 일반적으로 소규모 인터넷 서비스 공급자(ISP)를 대규모 인터넷에 연결합니다. 자동차로 사유 고속도로에 진입하기 위해 통행료를 지불하는 것으로 생각하면 됩니다.</p>
+		</li>
+	</ol>
+	<p>백본은 Cloudflare의 전역 데이터 센터 간에 트래픽을 이동시키는 전용 고용량 광섬유 네트워크이며, 위에서 언급한 트래픽 교환 방법을 사용하여 다른 네트워크와 상호 연결합니다. 이를 통해 공용 인터넷보다 더 안정적인 데이터 전송이 가능합니다. 도시 내 연결 및 장거리 연결의 경우, Cloudflare는 자체 다크 파이버를 관리하거나 고밀도 파장 분할 다중화(DWDM)를 사용하여 파장을 임대합니다. DWDM은 동일한 광섬유 내에서 서로 다른 빛의 파장으로 여러 데이터 스트림을 동시에 전송하여 네트워크 용량을 향상시키는 광섬유 기술입니다. 이는 고속도로에 차선이 여러 개 있어 같은 고속도로에서 더 많은 차량이 주행할 수 있는 것과 같습니다. Cloudflare는 전 세계의 글로벌 이동 통신사 파트너로부터 이러한 서비스를 구매하고 임대합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RgjDtW5LehGZEYXey4AQH/cfef08965313f67c84a052e0541fc42b/BLOG-2432-3.png" alt="BLOG-2432-3" class="kg-image" width="1999" height="750" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="backbone-operations-and-benefits">백본 운영 및 이점</h3>
+		<a href="https://blog.cloudflare.com/#backbone-operations-and-benefits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>글로벌 백본을 운영하는 것은 까다롭기 때문에, 많은 경쟁업체가 이 일을 하지 않습니다. Cloudflare는 트래픽 라우팅 제어와 비용 효율성이라는 두 가지 주요 이유에서 이 문제를 해결하고자 합니다.</p>
+	<p>IP 전송의 경우, Cloudflare에서 최종 목적지 네트워크까지 트래픽을 전송하기 위해 전송 파트너에 의존하므로 불필요하게 타사에 의존하게 됩니다. 이에 비해, 백본은 내부 및 외부 트래픽의 라우팅에 대한 완전한 통제권을 확보할 수 있으므로 더욱 효과적으로 트래픽을 관리할 수 있습니다. 이러한 제어는 앞서 언급한 바와 같이 트래픽 경로를 최적화하여 일반적으로 대기 시간이 가장 짧은 경로를 도출할 수 있으므로 매우 중요합니다. 또한 백본을 통해 대량의 트래픽을 처리할 때 드는 비용은 평균적으로 IP 전송보다 비용 효율적입니다. 프랑크푸르트, 런던, 암스테르담, 파리, 마르세유 등 트래픽이 지속적으로 증가하고 연결 솔루션의 가용성이 높고 가격 경쟁력이 있는 지역에서 백본 용량을 두 배로 늘리고 있는 이유도 바로 이것입니다.</p>
+	<p>Cloudflare의 백본은 내부 및 외부 트래픽 모두를 처리합니다. 내부 트래픽에는 Cloudflare의 보안 또는 성능 제품을 사용하는 고객 트래픽과 Cloudflare 데이터 센터 간에 데이터를 이동시키는 Cloudflare 내부 시스템에서 발생한 트래픽이 포함됩니다. 예를 들어 <a href="https://blog.cloudflare.com/introducing-regional-tiered-cache">계층형 캐싱</a>은 데이터 센터를 하위 계층과 상위 계층의 계층 구조로 나누어 캐싱 제공을 최적화합니다. 하위 계층 데이터 센터에 콘텐츠가 없는 경우 상위 계층에 콘텐츠를 요청합니다. 상위 계층에도 주소가 없다면 원본 서버에서 요청합니다. 이 프로세스에서는 원본 서버 요청이 줄어들고 캐시 효율성이 향상됩니다. Cloudflare의 네트워크 규모를 고려하면, 백본을 사용하여 하위 및 상위 계층 데이터 센터와 원본 간에 캐시된 콘텐츠를 전송하는 것이 가장 비용 효율적인 방법인 경우가 많습니다. <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>은 BGP anycast를 통해 최종 사용자에게 가장 가까운 Cloudflare 데이터 센터로 트래픽을 유도하고 DDoS 솔루션을 구현하는 또 다른 사례입니다. Cloudflare의 백본은 깨끗한 트래픽을 고객의 데이터 센터로 전송하며, 고객은 이 데이터 센터에 <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">Cloudflare 네트워크 상호 연결(CNI)</a>을 통해 연결합니다.</p>
+	<p>백본에서 전송하는 외부 트래픽은 AWS, Oracle, Alibaba, Google Cloud Platform, Azure 등 다른 원본 공급자로부터의 트래픽일 수 있습니다. 이러한 클라우드 공급자로부터의 원본 응답은 피어링 포인트 및 Cloudflare 백본을 통해 고객에게 가장 가까운 Cloudflare 데이터 센터로 전송됩니다. Cloudflare는 백본을 활용함으로써 네트워크 전체에서 이러한 트래픽을 백홀하는 방식을 더 잘 제어할 수 있으므로 안정성과 성능을 개선하고 공용 인터넷에 대한 의존성이 낮아집니다.</p>
+	<p>Cloudflare의 글로벌 백본에서 실행되는 성능, 보안, 프로그래밍 가능성, 가시성의 제어된 계층을 통해 퍼블릭 클라우드, 사무실, 인터넷을 상호 연결하는 것이 Cloudflare의 <a href="https://blog.cloudflare.com/ko-kr/welcome-to-connectivity-cloud-ko-kr">클라우드 연결성</a>입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Fk6k5NOgfOM3qpK0z3wb0/2fe9631dbe6b2dfc6b3c3cd0156f293e/Screenshot_2024-08-28_at_3.21.50_PM.png" alt="This map is a simplification of our current backbone network and does not show all paths" class="kg-image" width="788" height="543" loading="lazy">
+	</figure>
+	<p><sub><i>이 지도는 현재 백본 네트워크를 단순화한 것으로 모든 경로를 표시하지는 않습니다</i></sub></p>
+	<p><i></i></p>
+	<div class="flex anchor relative">
+		<h3 id="expanding-our-network">Cloudflare 네트워크 확장</h3>
+		<a href="https://blog.cloudflare.com/#expanding-our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>소개에서 언급했듯이 Cloudflare는 2021년부터 백본 용량(Tbps)을 500% 이상 늘렸습니다. Cloudflare는 아프리카에 대한 해저 케이블 용량 추가와 함께 2023년에 글로벌 백본 링을 완성하는 중요한 성과를 달성했습니다. 이제 지상파 광섬유와 해저 케이블을 통해 6개 대륙에 도달합니다.</p>
+	<p>중부 유럽이나 미국과 같은 시장에 비해 인터넷 인프라가 덜 개발된 지역 내에서 백본을 구축하는 것이 최신 네트워크 확장의 핵심 전략이었습니다. Cloudflare는 데이터 흐름을 현지화하고 최종 사용자에게 최대한 가까운 곳에서 데이터 흐름을 유지한다는 목표를 지역 ISP 파트너들과 공유하고 있습니다. 트래픽은 로컬 피어링 및 지역적 인프라의 불충분으로 인해 지역 외부에서 비효율적인 경로를 이용하는 경우가 많습니다. 트래픽 트롬본 효과라고 하는 이 현상은 보다 비용 효율적인 국제 경로 및 기존 피어링 계약을 통해 데이터가 라우팅될 때 발생합니다.</p>
+	<p>인도나 터키와 같은 국가에 대한 지역 백본 투자는 이러한 비효율적인 라우팅의 필요성을 줄이기 위한 것입니다. Cloudflare의 자체 지역 내 백본을 이용하면 뭄바이에서 뉴델리, 첸나이까지 등 국가 내 Cloudflare 데이터 센터 간에 트래픽을 직접 라우팅하여 대기 시간을 줄이고, 안정성을 높일 수 있으며, 선진 시장과 같은 수준의 서비스 품질을 제공할 수 있습니다. Cloudflare는 데이터가 로컬 상태를 유지하도록 제어할 수 있으며, 데이터 저장 및 처리 장소를 제어함으로써 기업이 지역의 데이터 개인정보 보호법을 준수할 수 있도록 도움을 주는 Data Localization Suite(<a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">DLS</a>)를 지원합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WCNB78y1jHHsid46pBZOo/e950ced1e510cb8caeea0961c43ea8a0/BLOG-2432-5.png" alt="BLOG-2432-5" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="improved-latency-and-performance">개선된 대기 시간 및 성능</h3>
+		<a href="https://blog.cloudflare.com/#improved-latency-and-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 전략적 확장으로 Cloudflare의 범위가 전 세계로 확장되었을 뿐만 아니라 전체 대기 시간도 크게 개선되었습니다. 리스본과 요하네스버그 사이에 Cloudflare 백본을 배포한 후 요하네스버그에 있는 사용자의 성능이 크게 향상되었다는 것을 한 가지 예시로 볼 수 있습니다. 이러한 대기 시간 개선의 혜택을 보는 고객의 예시로는 밀리초가 거래에 영향을 미칠 수 있는 실시간 거래를 위해 Cloudflare를 통해 API를 실행하는 금융 기관이거나, 지사 간 연결성을 용이하게 하기 위한 Cloudflare의 <a href="https://www.cloudflare.com/network-services/products/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> 사용자 등이 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o0H8BNLf5ca8BBx38Q5Ee/5b22f7c0ad1c5c49a67bc5149763e81d/BLOG-2432-6.png" alt="BLOG-2432-6" class="kg-image" width="1999" height="455" loading="lazy">
+	</figure>
+	<p></p>
+	<p>위의 표에는 요하네스버그의 최종 사용자로부터 다양한 원본 위치까지 캐시되지 않은 원본 페치의 왕복 시간(RTT)을 측정하여 백본과 공용 인터넷을 비교한 예시가 나와 있습니다. IP 전송이나 피어링이 아닌 Cloudflare의 백본을 통해 원본 요청을 전달함으로써 요하네스버그의 로컬 사용자는 콘텐츠를 최대 22% 더 빠르게 이용하게 됩니다. Cloudflare는 자체 백본을 사용하여 최종 목적지까지 트래픽을 장거리로 전송함으로써 경로와 성능을 완벽하게 제어할 수 있습니다. 이러한 대기 시간의 개선은 위치에 따라 다르지만, 고성능 연결을 제공하는 Cloudflare 백본 인프라의 우수성을 일관적으로 입증합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZEEZJERWQ2UB1sdTjWUtM/f90b11507ab24edbf84e9b4cfb9b1155/BLOG-2432-7.png" alt="BLOG-2432-7" class="kg-image" width="1999" height="533" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-control">트래픽 제어</h3>
+		<a href="https://blog.cloudflare.com/#traffic-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1) 경로를 식별하기 위한 GPS 및 2) 최종 목적지까지 유효하며 멈추지 않고 톨게이트를 통과할 수 있는 고속도로 유료 통행증을 사용하는 내비게이션 시스템을 고려해 보겠습니다. Cloudflare의 백본도 아주 비슷하게 작동합니다.</p>
+	<p>Cloudflare의 글로벌 백본은 두 가지 핵심 요소를 기반으로 구축되었습니다. 첫 번째는 인터넷 라우팅 프로토콜인 BGP(<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">경계 게이트웨이 프로토콜</a>), 두 번째는 IP 네트워크에서 사전 정의된 전달 경로를 통해 트래픽을 조정하는 기술인 세그먼트 라우팅 MPLS(<a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls" target="_blank" rel="noopener noreferrer">멀티프로토콜 레이블 스위칭</a>)입니다. 기본적으로 세그먼트 라우팅은 중간 노드가 경로 조회를 실행하지 않는 수신 라우터부터 송신 라우터까지 엔드투엔드 캡슐화를 제공합니다. 대신 레이블 전환 경로라고 하는 엔드투엔드 가상 회로 또는 터널을 통해 트래픽을 전달합니다. 레이블 전환 경로에 트래픽이 들어가게 되면, 트래픽은 공용 인터넷으로 우회할 수 없게 되며, Cloudflare의 백본을 통해 미리 정해진 경로로 계속 이동해야 합니다. 많은 네트워크에서 모든 경로 인텔리전스가 네트워크의 에지에서 전달되고 중간 노드가 수신부터 송신까지의 포워딩만 하는 "BGP 프리 코어"를 실행하는 네트워크가 많으므로 이러한 방식은 전혀 새로운 것이 아닙니다.</p>
+	<p>Cloudflare는 백본에서 세그먼트 라우팅 트래픽 엔지니어링(SR-TE)을 활용하면서 대기 시간과 성능에 최적화된 데이터 센터 사이의 경로를 자동으로 선택할 수 있습니다. 라우팅 프로토콜 비용 측면에서 "최단 경로"가 대기 시간이 가장 짧거나 성능이 가장 높은 경로가 아닌 경우도 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QettBytPdJxacwVLVHYFN/de95a8e5a67514e64931fbe4d26967b6/BLOG-2432-8.png" alt="BLOG-2432-8" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="supercharged-argo-and-the-global-backbone">강화: Argo 및 글로벌 백본</h3>
+		<a href="https://blog.cloudflare.com/#supercharged-argo-and-the-global-backbone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/lp/pg-argo-smart-routing/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=ao-fy-pay-gbl_en_native-applications-ge-ge-general-core_paid_apo_argo&amp;utm_content=argo&amp;utm_term=cloudflare+argo&amp;campaignid=71700000092259497&amp;adgroupid=58700007751943324&amp;creativeid=666481290143&amp;_bt=666481290143&amp;_bk=cloudflare+argo&amp;_bm=e&amp;_bn=g&amp;_bg=138787490550&amp;_placement=&amp;_target=&amp;_loc=1017825&amp;_dv=c&amp;awsearchcpc=1&amp;gad_source=1&amp;gclid=Cj0KCQjwvb-zBhCmARIsAAfUI2uj2VOkHjvM2qspAfBodOROAH_bG040P6bjvQeEbVwFF1qwdEKLXLkaAllMEALw_wcB&amp;gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">Argo Smart Routing</a>은 Cloudflare의 백본, 전송, 피어링 연결성 포트폴리오를 활용하여 사용자의 요청이 도착하는 데이터 센터와 백엔드 원본 서버 사이의 최적 경로를 찾는 서비스입니다. 그렇게 함으로써 성능이 향상될 경우, Argo는 원본으로 가는 한 Cloudflare 데이터 센터의 요청을 도중에 다른 데이터 센터로 전달할 수 있습니다. <a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed">Orpheus</a>는 Argo에 대응하며, 모든 고객 원본 요청에 대해 성능이 저하된 경로를 무료로 라우팅합니다. Orpheus는 실시간으로 네트워크 상태를 분석하고 도달 가능성 장애를 능동적으로 피할 수 있습니다. Argo를 활성화한 고객은 Cloudflare 데이터 센터에서 원본까지의 요청에 대해 최적의 성능을 얻을 수 있으며, Orpheus는 모든 고객에게 오류 자가 복구 기능을 보편적으로 제공합니다. Cloudflare에서는 세그먼트 라우팅을 언더레이로 사용하는 글로벌 백본과 <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing" target="_blank" rel="noopener noreferrer">Argo Smart Routing</a> 및 Orpheus를 연결성 오버레이로 혼합하여 가장 최적화된 경로를 통해 중요한 고객 트래픽을 전송할 수 있습니다.</p>
+	<p>그렇다면 Cloudflare의 글로벌 백본은 Argo Smart Routing과 정확히 어떻게 맞물릴까요? <a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Transit Selection</a>은 Cloudflare 데이터 센터 홉 간에 대기 시간이 가장 짧은 경로를 명시적으로 선택하여 고객 원본 요청을 전달하는 데 사용하는 Argo Smart Routing의 확장 기능입니다. 대기 시간이 가장 짧은 경로는 타사 전송 네트워크와 달리 보다 전용적이고 개인적인 연결 수단이므로 Cloudflare의 글로벌 백본이 되는 경우가 많습니다.</p>
+	<p>Cloudflare의 네트워크와 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASE 솔루션</a> 서비스를 사용하여 전 세계 사무실, 연구소, 원격 근무 직원들을 연결하는 네덜란드의 다국적 제약 회사를 예로 들어 보겠습니다. 이 회사의 아시아 지사에서는 Cloudflare의 보안 솔루션 및 네트워크를 이용하여 중앙 데이터 센터에서 아시아 지사에 이르기까지 중요한 데이터에 대한 안전한 액세스를 제공합니다. 지역 사이에 케이블이 절단되는 경우 Cloudflare 네트워크가 자동으로 지역 간 최상의 대체 경로를 찾아 비즈니스에 미치는 영향이 제한됩니다.</p>
+	<p>Argo는 스마트 라우팅을 통해 원본에 도달하기 위한 옵션으로, Cloudflare의 자체 백본을 포함한 다양한 공급자 경로의 모든 잠재적 조합을 측정합니다. 수많은 네트워크와의 방대한 상호 연결과 글로벌 사설 백본으로 인해 Argo는 요청에 대해 최고 성능의 네트워크 경로를 식별할 수 있습니다. 백본은 Argo가 선택할 수 있는 대기 시간이 가장 짧은 경로 중 하나입니다.</p>
+	<p>Cloudflare는 고성능뿐만 아니라 고객의 네트워크 안정성에도 신경을 쓰고 있습니다. 이는 광섬유 절단과 타사 전송 공급자 문제에 대해 최대한의 회복력을 가져야 한다는 의미입니다. Argo가 <a href="https://en.wikipedia.org/wiki/AAE-1" target="_blank" rel="noopener noreferrer">AAE-1</a> (<a href="https://www.submarinecablemap.com/submarine-cable/asia-africa-europe-1-aae-1" target="_blank" rel="noopener noreferrer">아시아 아프리카 유럽-1</a>) 해저 케이블 중단 사고를 당했을 때, 싱가포르와 암스테르담 사이의 일부 전송 사업자 경로와 백본 사이에서 Argo가 목격한 상황이 이와 같습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66CGBePnLzuLRuTErvf8Cr/813b4b60a95935491e967214851e5a04/BLOG-2432-9.png" alt="BLOG-2432-9" class="kg-image" width="1999" height="728" loading="lazy">
+	</figure>
+	<p></p>
+	<p>큰 폭(보라색 선)은 타사 IP 전송 공급자 경로 중 하나에서 혼잡으로 인해 대기 시간이 증가한 것으로, 해당 공급자의 네트워크 내부의 트래픽 엔지니어링에 의해 결국 해결되었습니다. 다른 전송 네트워크에 비해 대기 시간 증가(노란색 선)는 작았지만, 그래도 눈에 띄는 수준이었습니다. 그래프의 맨 아래(초록색) 선은 Cloudflare의 백본으로, 아시아와 유럽 간의 다양한 백본 연결성으로 인해 이벤트 내내 왕복 시간이 어느 정도 일정하게 유지됩니다. 광섬유가 절단된 동안 네덜란드와 싱가포르 사이는 약 200ms로 안정적으로 유지되었습니다. 전송 공급자 경로에서 나타난 눈에 띄는 네트워크 끊김이 없었으므로 Argo는 최적의 성능을 위해 백본을 적극적으로 활용했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1A8CdaGq8P2hF3DtIs9dQI/a10fdf3af9de917fb0036d38eace9905/BLOG-2432-10.png" alt="BLOG-2432-10" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="call-to-action">행동의 촉구</h3>
+		<a href="https://blog.cloudflare.com/#call-to-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Argo가 네트워크의 성능을 개선함에 따라 Cloudflare 네트워크 상호 연결(<a href="https://developers.cloudflare.com/network-interconnect" target="_blank" rel="noopener noreferrer">CNI</a>)은 네트워크 접속을 최적화합니다. 당사는 Enterprise 고객이 가능할 때마다 Cloudflare 네트워크에 대한 온램프(on-ramp)로 무료 CNI를 사용하실 것을 권장합니다. 이렇게 하면 강력한 백본을 포함한 Cloudflare 네트워크를 최대한 활용하고 Cloudflare 클라우드 연결성 내에 있는 모든 제품의 성능을 개선할 수 있습니다. 결국, Cloudflare의 전역 네트워크는 당사의 주요 제품이며 백본은 여기에서 중요한 역할을 합니다. 이를 통해 Cloudflare는 어디에서나 모두를 위한 서비스를 개선하여 더 나은 인터넷을 구축하는 데 지속적으로 도움을 드리고 있습니다.</p>
+	<p>Cloudflare의 사명에 동참하고 싶으시다면 Cloudflare 네트워크 온램프(on-ramp) 파트너에 합류하여 당사와 직접 통합함으로써 고객에게 안전하고 안정적인 연결을 제공하십시오. <a href="https://www.cloudflare.com/network-onramp-partners" target="_blank" rel="noopener noreferrer">여기</a>에서 온램프(on-ramp) 파트너십에 대해 자세히 알아보고 여러분의 비즈니스에 어떤 이점이 있는지 알아보십시오.</p>
+</div>

@@ -1,0 +1,111 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/cloudflare-snippets-alpha">English</a> y <a href="https://blog.cloudflare.com/ja-jp/cloudflare-snippets-alpha">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QsjzJhsf8r9VVdwAMAEDk/f4d4f5a6e125d72e0134abddd463ff97/cloudflare-snippets-alpha.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hoy tenemos el agrado de anunciar que <a href="https://blog.cloudflare.com/es-es/snippets-announcement-es-es">Cloudflare Snippets</a> ya está disponible en la versión Alpha. En las próximas semanas, habilitaremos el acceso a nuestra lista de espera.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-are-snippets">¿Qué es Snippets?</h3>
+		<a href="https://blog.cloudflare.com/#what-are-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FdTXg0HVrBTm50qkJmxW7/140cc4d0c1b5bc951812fe6c51f6fbdf/image5-9.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>En los últimos dos años, hemos lanzado una serie de nuevos productos relacionados con reglas, como Reglas de transformación, Reglas de caché, Reglas de origen, Reglas de configuración y Reglas de redireccionamiento. Con estos nuevos productos, los clientes tienen más control sobre cómo procesamos su tráfico en nuestra red global. Y, hasta el momento, han tenido una gran aceptación. Sin embargo, aún hay ocasiones en las que nuestros clientes necesitan hacer mucho más que lo que les permiten las funcionalidades predeterminadas. Y esto no solo se trata de agregar un encabezado HTTP, sino de realizar cálculos avanzados para crear el contenido</p>
+	<p>Para estos casos, Cloudflare Snippets viene al rescate. Los Snippets son pequeños fragmentos del lenguaje JavaScript creado por el usuario que son ejecutados por Cloudflare antes de que tu sitio web, API o aplicación esté disponible para el usuario. Si conoces <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, nuestra sólida plataforma para desarrolladores, entonces Snippets no será ninguna novedad para ti. Para aquellos que no los conozcan, los Snippets están diseñados para que puedan crearse, probarse y desplegarse con facilidad, lo que te da la posibilidad de desplegar tus Snippets de JavaScript personalizados por toda nuestra <a href="https://www.cloudflare.com/en-gb/network" target="_blank" rel="noopener noreferrer">red global</a> en cuestión de segundos.</p>
+	<p>Aunque Snippets se haya desarrollado a partir de la plataforma Workers, existen algunas diferencias entre ellos. La primera tiene que ver con que los Snippets funcionan dentro del <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer">Motor del conjunto de reglas</a> como una nueva fase especializada, de manera similar a las <a href="https://blog.cloudflare.com/transform-rules-requests-transform-and-roll-out">Reglas de transformación</a> y las <a href="https://blog.cloudflare.com/introducing-cache-rules">Reglas de caché</a>. Esto significa que los clientes pueden seleccionar y ejecutar un Snippet basado en cualquier filtro del Motor del conjunto de reglas, lo que les da flexibilidad para ejecutar un Snippet en cada solicitud o aplicarlo de manera selectiva sobre la base de diversos criterios ofrecidos, como puntuaciones de bots específicos, país de origen o ciertas cookies.</p>
+	<p>Además, los Snippets son acumulativos por defecto, lo que les permite a los usuarios tener varios Snippets que se pueden ejecutar si cumplen determinadas condiciones. Por ejemplo, un Snippet puede agregar un encabezado HTTP y otro puede reescribir el URL; pero ambos se ejecutarán si se cumplen sus respectivas condiciones.</p>
+	<p>Ahora los usuarios tienen la flexibilidad de elegir si van a usar una regla para tareas simples sin códigos requeridos, como agregar un encabezado Cookie de respuesta básica con las Reglas de transformación, o si van a escribir un Cloudflare Snippet para una funcionalidad de cookies más compleja, como cambiar de forma dinámica el servidor o la fecha dentro del valor de la cookie. Snippets da a los clientes la posibilidad de hacer su trabajo rápidamente y sin esfuerzo dentro del ecosistema de Cloudflare, sin incurrir en gastos adicionales (aunque se aplica un límite de uso razonable).</p>
+	<div class="flex anchor relative">
+		<h3 id="the-difference-between-snippets-and-workers">La diferencia entre Snippets y Workers</h3>
+		<a href="https://blog.cloudflare.com/#the-difference-between-snippets-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Otra ventaja importante de Cloudflare Snippets es que está disponible para todos los planes sin costo adicional. Esto les da a los usuarios la posibilidad de migrar sus cargas de trabajo simples desde soluciones heredadas, como VCL, hacia la plataforma de Cloudflare, lo que reduce de forma activa sus gastos mensuales.</p>
+	<p>Snippets está disponible para los usuarios de los planes Free, Pro, Business y Enterprise. Los usuarios del plan Free tienen acceso a cinco Snippets por zona, mientras que los planes Pro, Business y Enterprise ofrecen 10, 25 y 50 Snippets por zona, respectivamente.</p>
+	<p>En cuanto a recursos, Cloudflare Snippets es más liviano en comparación con Workers. Tienen un tiempo de ejecución máxima de 5 ms, una memoria máxima de 2 MB y un tamaño de paquete total de 32 KB. Estos límites son más que suficientes para casos de uso frecuentes, como la modificación de encabezados HTTP, la reescritura de URL y las tareas de direccionamiento de tráfico que no requieren las funciones ni los recursos adicionales que Cloudflare Workers tiene para ofrecer.</p>
+	<p>Asimismo, Snippets se ejecuta antes que Workers, lo que significa que los usuarios podrán mover una lógica simple de Cloudflare Workers a Snippets o usar Cloudflare Workers y sus funciones para continuar modificando una solicitud. La <a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">IU Secuencia del tráfico</a> también se ha actualizado para incorporar a Snippets, lo que permite entender con facilidad cómo todos los productos encajan entre sí y comprender cómo fluyen las solicitudes HTTP entre sí.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-can-you-build-with-cloudflare-snippets">¿Qué puedes crear con Cloudflare Snippets?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-you-build-with-cloudflare-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mzGrins7tVyfuUDsaHVYI/d9987a80370fac66c94ec49cac211871/image4-13.png" alt="" class="kg-image" width="1386" height="884" loading="lazy">
+
+	</figure>
+	<p>Snippets permite a los clientes migrar sus cargas de trabajo existentes a Cloudflare. Por ejemplo, los clientes que quieran configurar una cookie dinámica en todas sus respuestas para un porcentaje de solicitudes pueden usar la función "math.random" dentro de su Snippet.</p>
+	<p>Al aprovechar el Motor del conjunto de reglas, podemos mejorar la implementación moviendo la lógica de cookie configurada a la regla, en lugar de ejecutarla en cada respuesta o de gestionarla dentro de un Snippet. Por ejemplo, si solo quiero configurar esta cookie para mi subdominio de tienda y únicamente para los clientes de Alemania o del Reino Unido, puedo crear la siguiente regla.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FMCvZXK5bgjhsyzLkFo4G/1641ca4379e1acfc5d1252deee86ffa8/Screenshot-2023-06-12-at-15.40.26.png" alt="" class="kg-image" width="1600" height="902" loading="lazy">
+
+	</figure>
+	<p>Este método garantiza que el Snippet se ejecute solo cuando sea necesario, para así minimizar el procesamiento y reducir la complejidad del código requerido.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hvl6NIA5Qd6JUu9zCJQTl/df6b3c51b85332fd812dd3d032b130ec/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
+
+	</figure>
+	<p>Estamos entusiasmados por ver otros casos de uso que Cloudflare Snippets tiene para ofrecer a nuestros clientes.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-snippets">Cómo usar Snippets</h3>
+		<a href="https://blog.cloudflare.com/#using-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Snippets está ubicado dentro de la sección Reglas del panel de control de Cloudflare. Allí, los clientes pueden utilizar la IU para escribir, previsualizar y desplegar su primer Snippet.</p>
+	<p>Al igual que con todos los productos de Cloudflare, los usuarios pueden desplegar sus Snippets a través de la API y Terraform, lo que les permite incorporar Snippets con facilidad dentro de sus canales de integración y distribución continuas (CI/CD). El beneficio extra de agregar el Motor del conjunto de reglas les da a los usuarios la posibilidad de probar su código en un subconjunto de tráfico. Por ejemplo, pueden especificar la IP de su oficina o encabezado secreto dentro del filtro que solo se activará si el Snippet está presente. Por último, integraremos Snippets dentro del <a href="https://developers.cloudflare.com/api/operations/account-request-tracer-request-trace" target="_blank" rel="noopener noreferrer">Rastreador de solicitudes de cuentas</a> para ayudar a los usuarios a identificar de forma sencilla todas las Reglas que se estén ejecutando en una solicitud específica.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65jEwkBoBxpxT5hDxVcXFX/a108461a9ffad8f23cab13ff8971536b/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="677" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-did-we-build-snippets">¿Cómo creamos Snippets?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-we-build-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Durante la Developer Week, debatimos sobre el proceso de <a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">desarrollo de Cloudflare en Cloudflare</a>, utilizando nuestra plataforma para desarrolladores Cloudflare Workers para mejorar nuestros productos en términos de velocidad, solidez y facilidad de desarrollo. Snippets, el producto más reciente de Cloudflare, se creó a partir de Workers for Platforms.</p>
+	<p>Un Snippet es un fragmento de JavaScript definido por el usuario que, al crearse, genera una Id. de Snippet única. Posteriormente, esta Id. de Snippet se asocia con una regla definida por el usuario creada con el uso de la sintaxis Motor de regla. Cuando se crea una regla, se le asigna una Id. única. La Id. de Snippet y la Id. de Regla se vinculan entonces en una relación de uno a uno. Los clientes tienen la flexibilidad de crear varios Snippets y reglas, cada uno con su propio Id. único. Los clientes con varios Snippets pueden priorizarlos fácilmente dentro de la interfaz de usuario (IU) o a través de la API, al igual que con nuestros otros productos basados en reglas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZjJrhzjJN19EPkBsFs1pF/3f926e67df4b3df4efffb03f0163cec9/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="434" loading="lazy">
+
+	</figure>
+	<p>Cuando la solicitud de un cliente llega a Cloudflare, evaluamos los parámetros de esa solicitud frente a las reglas de Snippets creada dentro de la zona de un usuario. Si una regla de Snippets tiene una coincidencia, se agrega la Id. de Snippet única a la tabla de Snippets. Una vez que se hayan evaluado todas las reglas y se haya completado la tabla de Snippets, esta tabla pasa al servicio interno Snippets de Workers.</p>
+	<p>Este Worker recibe todas las Id. de Snippet almacenadas dentro de la tabla que se van a ejecutar en forma secuencial. El diseño del sistema ofrece la flexibilidad de mantener la sencillez de Snippets, para que los usuarios puedan administrar Snippets individuales de forma independiente y se ejecuten en la misma solicitud. Este método les da a los usuarios la libertad de controlar y ajustar Snippets individuales en lugar de fusionarlos en una sola entidad.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pfQrVdEz8jHYz1pTV7HYI/7da7e12c763efe37bb21a2e23c184ad0/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="660" loading="lazy">
+
+	</figure>
+	<p>Cada Snippet recibe la solicitud modificada del Snippet previo y aplica en él nuevas modificaciones. Después de ejecutar las Id. de Snippet finales, la solicitud modificada resultante vuelve a pasar a FL para el próximo paso del procesamiento de la solicitud.</p>
+	<div class="flex anchor relative">
+		<h3 id="snip-into-action">Snippets en acción</h3>
+		<a href="https://blog.cloudflare.com/#snip-into-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Estamos entusiasmados por ver los casos de uso innovadores que crearán nuestros clientes con Snippets. En las próximas semanas, empezaremos a dar acceso a la versión Alpha a aquellos que estén en la lista de espera. Si todavía no te inscribiste en la lista de espera, aún podrás <a href="https://www.cloudflare.com/en-gb/lp/cloudflare-snippets" target="_blank" rel="noopener noreferrer">registrarte</a> con una versión Beta abierta que estará disponible en los próximos meses.</p>
+</div>

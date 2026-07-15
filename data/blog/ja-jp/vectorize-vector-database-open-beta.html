@@ -1,0 +1,442 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">English</a>、<a href="https://blog.cloudflare.com/fr-fr/vectorize-vector-database-open-beta">Français</a>、<a href="https://blog.cloudflare.com/de-de/vectorize-vector-database-open-beta">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/vectorize-vector-database-open-beta">한국어</a>、<a href="https://blog.cloudflare.com/es-es/vectorize-vector-database-open-beta">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/vectorize-vector-database-open-beta">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1c8wvy4jY6FSibQBUFAa8y/0ae663ad4fff3fe71d474833c043f0b9/vectorize-vector-database-open-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Vectorizeは、Cloudflareのグローバルネットワーク上で完全にフルスタックのAI搭載アプリケーションを構築できるように設計された、すぐにでも構築を始めることができる当社の全く新しいベクトルデータベース製品です。Vectorizeはオープンベータであり、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>を利用されている開発者であれば、どなたでもご利用いただけます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UEegJQ4EtPbnJwh7UQZcd/2221274c908415bce2e1eba81a115d90/image2-21.png" alt="Vectorize: a vector database for shipping AI-powered applications to production, fast" class="kg-image" width="1200" height="668" loading="lazy">
+
+	</figure>
+	<p>Vectorize with <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>をご利用いただくと、Workersを使用したセマンティック検索、分類、推奨、異常検出のユースケースの直接強化、LLM（大規模言語モデル）からの回答の精度やコンテキストの向上、OpenAIやCohereなどの一般的なプラットフォームからの独自の埋め込みを取り込むことができます。</p>
+	<p>ベクトルデータベースが何をするものか、Vectorizeは何が違うのかをより詳しく知りたい方は、<a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank" rel="noopener noreferrer">Vectorizeの開発者向けドキュメント</a>をご一読ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-do-i-need-a-vector-database">ベクトルデータベースが必要な理由</h2>
+		<a href="https://blog.cloudflare.com/#why-do-i-need-a-vector-database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="machine-learning-models-cant-remember-anything-only-what-they-were-trained-on">機械学習モデルは、学習したことしか記憶できません。</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning-models-cant-remember-anything-only-what-they-were-trained-on" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ベクトルデータベースは、構造化・非構造化テキスト、画像、音声などをMLモデルがどのようにデータを表現するかをキャプチャし、_将来の_入力と比較できるように保存することで、この問題を解決するように設計されています。これにより、それらがトレーニングされていないコンテンツに対して既存の機械学習モデルやLLM（大規模言語モデル）の力を活用することができます。このことは、モデルのトレーニングにかかる莫大なコストを考えると、非常に強力な機能であることをご理解いただけると思います。</p>
+	<p>Vectorizeのようなベクトルデータベースがなぜ有用であるかをより分かりやすく説明するために、ベクトルデータベースが存在しない世界を仮定して、セマンティック検索や推薦タスクのためにMLモデルやLLMにコンテキストを与えることがいかに大変な作業であるかを見てみましょう。目標は、クエリーに対するコンテンツの一致度を理解して、データセットを基にそれを返すことです。</p>
+	<ol>
+		<li>
+			<p>「Cloudflare WorkersからR2に書き込む方法」を検索するユーザーからのクエリーが入ります。</p>
+		</li>
+		<li>
+			<p>私たちは、（ありがたいことに「小さい」データセットである2.1GBの約65,000センテンスの）ドキュメントデータセット全体を読み込み、ユーザーからのクエリーと一緒に提供します。これによって、データを基に、モデルに必要なコンテキストを持たせることができます。</p>
+		</li>
+		<li>
+			<p><b>しばらく待ちます。</b></p>
+		</li>
+		<li>
+			<p><b>（長い間）</b></p>
+		</li>
+		<li>
+			<p>ユーザーのクエリーに最も近いセンテンスの類似度スコアが返され、それらをURLにマッピングしてから検索結果を返します。</p>
+		</li>
+	</ol>
+	<p>...そしてまた別のクエリーが入り、これをまた最初からやり直します。</p>
+	<p>現実的に、これを行うことは不可能です。多くの機械学習モデルはAPI呼び出し（プロンプト）でそれほど多くのコンテキストを渡すことはできません。たとえできたとしても、データセットを幾度となく処理するために膨大な量のメモリと時間を消費することになります。</p>
+	<p>ベクトルデータベースを使えば、上記手順2を繰り返す必要はありません。一度だけ、あるいはデータセットの更新時に実行し、ベクトルデータベースを機械学習モデルの長期記憶として利用します。ワークフローは以下により近いものになります：</p>
+	<ol>
+		<li>
+			<p>ドキュメントデータセット全体を読み込み、モデルを通して実行し、結果のベクトル埋め込みをベクトルデータベースに保存します（一度のみ）。</p>
+		</li>
+		<li>
+			<p>各ユーザークエリー（およびクエリーのみ）を同一のモデルに問い合わせてベクトル表現を取得します。</p>
+		</li>
+		<li>
+			<p>そのクエリーベクトルを使用してベクトルデータベースに問い合わせることで、クエリーベクトルに最も近いベクトルが返されます。</p>
+		</li>
+	</ol>
+	<p>この2つのフローを並べて見ることで、ベクトルデータベースを使用せずに既存のモデルで独自のデータセットを使用することが、いかに非効率的で非現実的であるかが一目でわかります：</p>
+	<p><i>ベクトルデータベースを使用して機械学習モデルの記憶を支援する。</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nVc2lsVxxlTjVWb5fF8Gn/df03f68c7792ece281f887608f0bad2f/image4-11.png" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
+
+	</figure>
+	<p>この簡単な例から、多少なりとも理解に近付いたことと思います。ですが、なぜ普通のデータベースではなく、ベクトルデータベースが必要なのかという疑問は残るかもしれません。</p>
+	<p>ベクトルとは、入力に対するモデルの表現であり、その入力を内部構造、つまり「特徴」にどのようにマッピングするかを示すものです。大まかに言えば、類似したベクトルが多ければ多いほど、モデルは（入力から特徴を抽出する方法を基に）入力同士がより類似していると捉えます。</p>
+	<p>ほんの一握りの次元のベクトルを例にとれば、これは一見簡単なことのように見えます。しかし実世界の出力では、1万～25万のベクトルおよびそれぞれが潜在的に持つ1,536次元もの幅を検索することは簡単ではありません。そこでベクトルデータベースの出番となります。ベクトルデータベースは、大規模な検索を可能にするために、k近傍法（<a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm" target="_blank" rel="noopener noreferrer">kNN</a>）や他の近似最近傍探索（ANN）のような特定のクラスの<a href="https://arxiv.org/abs/1603.09320" target="_blank" rel="noopener noreferrer">アルゴリズム</a>を使用してベクトルの類似性を判断します。</p>
+	<p>また、ベクトルデータベースはAIや機械学習を利用したアプリケーションを構築する際に非常に有用ですが、そのようなユースケースに_のみ_有用なわけではなく、多くの分類や異常検出タスクにも使用することができます。クエリー入力が他の入力と類似しているか否かを知ることで、コンテンツモデレーション（既知の不適切なコンテンツと一致するか）やセキュリティアラート（以前に検知したことがあるか）のタスクに活用することもできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="building-a-recommendation-engine-with-vector-search">ベクトル検索によるレコメンドエンジンの構築</h2>
+		<a href="https://blog.cloudflare.com/#building-a-recommendation-engine-with-vector-search" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはVectorizeを、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>の強力なパートナーとして構築しました。ベクトル検索タスクを可能な限りユーザーの近くで実行するため、本番環境でのスケールアップを考える必要はありません。</p>
+	<p>ここでは実際の例として、eコマースストア向けの（商品）レコメンドエンジンの構築を取り上げます。（一部単純化しています）。</p>
+	<p>ベクトル検索の完璧なユースケースである、各商品リストページに「関連商品」のリストを表示することをゴールとします。この例の入力ベクトルは事前に用意したものですが、実際のアプリケーションでは、商品説明やカートデータを文章の類似性モデル（Worker's AIの<a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank" rel="noopener noreferrer">テキスト埋め込みモデル</a>など）に渡して生成します。</p>
+	<p>各ベクトルがストア全体の商品を表すため、それに商品のURLを関連付けます。各ベクトルのIDを商品IDに設定することもできます。どちらの方法も有効です。クエリー（ベクトル検索）は、ユーザーが現在閲覧している商品の商品説明とコンテンツを表しています。実際のコード例を見てみましょう。この例は<a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>からそのまま引用したものです：</p>
+	<p>上記のコードは意図的に単純なものにしていますが、ベクトル検索の中核部分を示しています。データベースにベクトルを挿入し、クエリーのベクトルの距離が最も小さいベクトルを問い合わせます。</p>
+	<p>以下は値を含む視覚的な観測結果で、クエリーのベクトル[54.8, 5.5, 3.1]が、検索から返された最も高いスコアの一致[58.799,6.699,3.400]に類似しています。このインデックスは<a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank" rel="noopener noreferrer">コサイン</a>類似度でベクトル間の距離を計算し、スコアが1に近いほど、ベクトルの類似度が大きいことを意味します。</p>
+	<pre class="language-javascript"><code class="language-javascript">export interface Env {
+	// This makes our vector index methods available on env.MY_VECTOR_INDEX.*
+	// e.g. env.MY_VECTOR_INDEX.insert() or .query()
+	TUTORIAL_INDEX: VectorizeIndex;
+}
+
+// Sample vectors: 3 dimensions wide.
+//
+// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
+// wide (or wider still).
+const sampleVectors: Array&lt;VectorizeVector&gt; = [
+	{ id: '1', values: [32.4, 74.1, 3.2], metadata: { url: '/products/sku/13913913' } },
+	{ id: '2', values: [15.1, 19.2, 15.8], metadata: { url: '/products/sku/10148191' } },
+	{ id: '3', values: [0.16, 1.2, 3.8], metadata: { url: '/products/sku/97913813' } },
+	{ id: '4', values: [75.1, 67.1, 29.9], metadata: { url: '/products/sku/418313' } },
+	{ id: '5', values: [58.8, 6.7, 3.4], metadata: { url: '/products/sku/55519183' } },
+];
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		if (new URL(request.url).pathname !== '/') {
+			return new Response('', { status: 404 });
+		}
+		// Insert some sample vectors into our index
+		// In a real application, these vectors would be the output of a machine learning (ML) model,
+		// such as Workers AI, OpenAI, or Cohere.
+		let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
+
+		// Log the number of IDs we successfully inserted
+		console.info(`inserted ${inserted.count} vectors into the index`);
+
+		// In a real application, we would take a user query - e.g. "durable
+		// objects" - and transform it into a vector emebedding first.
+		//
+		// In our example, we're going to construct a simple vector that should
+		// match vector id #5
+		let queryVector: Array&lt;number&gt; = [54.8, 5.5, 3.1];
+
+		// Query our index and return the three (topK = 3) most similar vector
+		// IDs with their similarity score.
+		//
+		// By default, vector values are not returned, as in many cases the
+		// vectorId and scores are sufficient to map the vector back to the
+		// original content it represents.
+		let matches = await env.TUTORIAL_INDEX.query(queryVector, { topK: 3, returnVectors: true });
+
+		// We map over our results to find the most similar vector result.
+		//
+		// Since our index uses the 'cosine' distance metric, scores will range
+		// from 1 to -1.  A value of '1' means the vector is the same; the
+		// closer to 1, the more similar. Values of -1 (least similar) and 0 (no
+		// match).
+		// let closestScore = 0;
+		// let mostSimilarId = '';
+		// matches.matches.map((match) =&gt; {
+		// 	if (match.score &gt; closestScore) {
+		// 		closestScore = match.score;
+		// 		mostSimilarId = match.vectorId;
+		// 	}
+		// });
+
+		return Response.json({
+			// This will return the closest vectors: we'll see that the vector
+			// with id = 5 has the highest score (closest to 1.0) as the
+			// distance between it and our query vector is the smallest.
+			// Return the full set of matches so we can see the possible scores.
+			matches: matches,
+		});
+	},
+};</code></pre>
+	<p>実際のアプリケーションでは、最も類似度の高い商品を基に商品の推薦URLを素早く返し、スコア順にソート（最高値から最低値）し、表示を増やす場合はtopK値を増やすことができます。各ベクトルに付随して格納されるメタデータには、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2オブジェクト</a>へのパス、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1データベース</a>の行のUUID、または<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>からのキーと値のペアを埋め込むこともできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-ai-vectorize-full-stack-vector-search-on-cloudflare">Workers AI + Vectorize：Cloudflare上でのフルスタックベクトル検索</h3>
+		<a href="https://blog.cloudflare.com/#workers-ai-vectorize-full-stack-vector-search-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-javascript"><code class="language-javascript">{
+  "matches": {
+    "count": 3,
+    "matches": [
+      {
+        "score": 0.999909,
+        "vectorId": "5",
+        "vector": {
+          "id": "5",
+          "values": [
+            58.79999923706055,
+            6.699999809265137,
+            3.4000000953674316
+          ],
+          "metadata": {
+            "url": "/products/sku/55519183"
+          }
+        }
+      },
+      {
+        "score": 0.789848,
+        "vectorId": "4",
+        "vector": {
+          "id": "4",
+          "values": [
+            75.0999984741211,
+            67.0999984741211,
+            29.899999618530273
+          ],
+          "metadata": {
+            "url": "/products/sku/418313"
+          }
+        }
+      },
+      {
+        "score": 0.611976,
+        "vectorId": "2",
+        "vector": {
+          "id": "2",
+          "values": [
+            15.100000381469727,
+            19.200000762939453,
+            15.800000190734863
+          ],
+          "metadata": {
+            "url": "/products/sku/10148191"
+          }
+        }
+      }
+    ]
+  }
+}</code></pre>
+	<p>実際のアプリケーションでは、（データベースのシード処理のために）オリジナルのデータセットからベクトル埋め込みを生成し、ユーザーからのクエリーを_素早く_ベクトル埋め込みに変換できる機械学習モデルが必要です。モデルごとに表現する特徴が異なるため、これらは同じモデルである必要があります。</p>
+	<p>以下はCloudflareでエンドツーエンドのベクトル検索パイプライン全体を構築するコンパクトな例です：</p>
+	<p>上記のコードは次の4つの内容を実行しています：</p>
+	<ol>
+		<li>
+			<p>3つの文をWorkers AIの<a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank" rel="noopener noreferrer">テキスト埋め込みモデル</a>（@cf/baai/bge-base-ja-v1.5）に渡し、そのベクトル埋め込みを取得します。</p>
+		</li>
+		<li>
+			<p>これらのベクトルをVectorizeのインデックスに挿入します。</p>
+		</li>
+		<li>
+			<p>ユーザーからのクエリーを受け取り、同一のWorkers AIモデルを通してベクトル埋め込みに変換します。</p>
+		</li>
+		<li>
+			<p>一致するVectorizeインデックスを問い合わせます。</p>
+		</li>
+	</ol>
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
+export interface Env {
+	TEXT_EMBEDDINGS: VectorizeIndex;
+	AI: any;
+}
+interface EmbeddingResponse {
+	shape: number[];
+	data: number[][];
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		const ai = new Ai(env.AI);
+		let path = new URL(request.url).pathname;
+		if (path.startsWith('/favicon')) {
+			return new Response('', { status: 404 });
+		}
+
+		// We only need to generate vector embeddings just the once (or as our
+		// data changes), not on every request
+		if (path === '/insert') {
+			// In a real-world application, we could read in content from R2 or
+			// a SQL database (like D1) and pass it to Workers AI
+			const stories = ['This is a story about an orange cloud', 'This is a story about a llama', 'This is a story about a hugging emoji'];
+			const modelResp: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+				text: stories,
+			});
+
+			// We need to convert the vector embeddings into a format Vectorize can accept.
+			// Each vector needs an id, a value (the vector) and optional metadata.
+			// In a real app, our ID would typicaly be bound to the ID of the source
+			// document.
+			let vectors: VectorizeVector[] = [];
+			let id = 1;
+			modelResp.data.forEach((vector) =&gt; {
+				vectors.push({ id: `${id}`, values: vector });
+				id++;
+			});
+
+			await env.TEXT_EMBEDDINGS.upsert(vectors);
+		}
+
+		// Our query: we expect this to match vector id: 1 in this simple example
+		let userQuery = 'orange cloud';
+		const queryVector: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+			text: [userQuery],
+		});
+
+		let matches = await env.TEXT_EMBEDDINGS.query(queryVector.data[0], { topK: 1 });
+		return Response.json({
+			// We expect vector id: 1 to be our top match with a score of
+			// ~0.896888444
+			// We are using a cosine distance metric, where the closer to one,
+			// the more similar.
+			matches: matches,
+		});
+	},
+};</code></pre>
+	<p>この例は単純「すぎる」ように見えるかもしれませんが、本番アプリケーションでは、ベクトルを1回（または<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer">Cron Triggers</a>を介して定期的に）挿入する、この3つの例文を、R2、D1データベース、または他のストレージプロバイダに保存された実際のデータに置き換えるといった2つの変更だけで完了します。</p>
+	<p>実際、これは私たちがCloudflare Workerに関する質問に答えるAIアシスタント「<a href="https://developers.cloudflare.com/workers/ai" target="_blank" rel="noopener noreferrer">Cursor</a>」の実行方法と非常によく似ています（私たちはCursorをWorkers AIとVectorize上で実行するように移行しました）。組み込みのテキスト埋め込みモデルを使用して開発者向けドキュメントからテキスト埋め込みを生成し、Vectorizeインデックスに挿入し、同じモデルを介してユーザーからのクエリーをその場で変換します。</p>
+	<div class="flex anchor relative">
+		<h2 id="byo-embeddings-from-your-favorite-ai-api">お気に入りのAI APIから独自の埋め込みを持ち込む</h2>
+		<a href="https://blog.cloudflare.com/#byo-embeddings-from-your-favorite-ai-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>VectorizeはWorkers AI専用ではなく、完全に独立したベクトルデータベースです。</p>
+	<p>すでに<a href="https://platform.openai.com/docs/guides/embeddings" target="_blank" rel="noopener noreferrer">OpenAIのEmbedding API</a>や、Cohereの<a href="https://docs.cohere.com/reference/embed" target="_blank" rel="noopener noreferrer">多言語モデル</a>、その他の埋め込みAPIを使用している場合は、Vectorizeに簡単に独自のベクトルを持ち込む（BYO）ことができます。</p>
+	<p>これは、埋め込みを生成し、それをVectorizeに挿入し、インデックスにクエリーを実行する前にモデルにクエリーを渡すという全く同じ動作をします。Vectorizeには、最も一般的な埋め込みモデルのいくつかのショートカットが含まれています。</p>
+	<p>これは、既存のEmbeddings APIを中心とした既存のワークフローが既にある場合や、ユースケースに対して特定のマルチモーダルまたは多言語の埋め込みモデルを検証している場合に特に有用です。</p>
+	<div class="flex anchor relative">
+		<h2 id="making-the-cost-of-ai-predictable">AIのコストを予測可能にする</h2>
+		<a href="https://blog.cloudflare.com/#making-the-cost-of-ai-predictable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-python"><code class="language-python"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models
+$ wrangler vectorize create openai-index-example --preset=openai-text-embedding-ada-002</code></pre>
+	<p>AIとMLには非常に大きな期待が寄せられている一方で、実験にコストがかかりすぎる、大規模な予測が困難であると言う大きな懸念があります。</p>
+	<p>私たちはVectorizeのベクトルデータベースに、よりシンプルな価格モデルを採用したいと考えました。職場で概念実証のアイデアをお持ちですか？当社の設定する無料利用枠に収まります。パフォーマンスと精度を最適化するために埋め込みの次元をスケールアップしたいですか？予約枠を破綻させることはありません。</p>
+	<p>重要なのは、Vectorizeでは予測可能であることを目指していることです。使い始めでは困難で、まったく新しいユースケースで本番のピークとオフピークの時間帯を計画しようとするとさらに困難となるCPUやメモリの消費量を見積もる必要はありません。課金は、保存しているベクトル次元の総数と、毎月のそれらに対するクエリーの数に基づいて行われます。お客様のクエリーパターンに合わせたスケールアップは私たちの仕事です。</p>
+	<p>以下はVectorizeの価格表です。現在Workersの有料プランを利用されている場合、Vectorizeは2024年まで完全無料でご利用いただけます：</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}</p>
+	<p>Workers 無料版 (近日公開)</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers Free (coming soon)</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers Paid ($5/month)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Queried vector dimensions included</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30M total queried dimensions / month</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50M total queried dimensions / month</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stored vector dimensions included</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5M stored dimensions / month</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10M stored dimensions / month</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Additional cost </span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$0.04 / 1M vector dimensions queried or stored</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$0.04 / 1M vector dimensions queried or stored</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Workers 有料版 ($5/月)</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9i10jyPHmjy6FTjqtCD2S/8362250de55ae98d45068fc5d37dc7e4/image1-25.png" alt="" class="kg-image" width="1999" height="1123" loading="lazy">
+
+	</figure>
+	<p>クエリーされたベクトル次元数を含む</p>
+	<p>3千万 (総クエリ次元数) / 月</p>
+	<p>5千万 (総クエリ次元数) / 月</p>
+	<p>保存されたベクトル次元数を含む</p>
+	<p>5百万 (保存次元数) / 月</p>
+	<p>1千万 (保存次元数) / 月</p>
+	<p>追加料金</p>
+	<p>$0.04 / 100万 (クエリまたは保存ベクトル次元数)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/V5sZHDJiYORdAiY3o6K6U/cd72b9e7eb6715300ce2b1afe4b7b26a/image6-3.png" alt="" class="kg-image" width="1801" height="448" loading="lazy">
+
+	</figure>
+	<p>$0.04 / 100万 (クエリまたは保存ベクトル次元数)</p>
+	<p><b>価格は、保存する内容とクエリーの内容によって決まり、（問い合わせたベクトルの次元の合計 + 保存）* ベクトルあたりの大きさ * 価格となります。問い合わせ数を増やしますか？簡単に予測可能です。速度を向上させ、全体的な遅延を減らすために、ベクトルあたりの次元を小さくするように最適化しますか？コストは低減します。新しいユースケースを試作したり実験するためのインデックスを複数お持ちですか？インデックスごとの課金はありません。</b></p>
+	<p><i>新しいアイデアのプロトタイプとして、または本番用と開発用を分けるために、必要な数のインデックスを作成します。</i></p>
+	<p>例として、10,000個のWorkers AIベクトル（各384次元）を読み込み、インデックスに対して毎日5,000回のクエリーを行った場合、クエリーされるベクトル次元の合計は4,900万となり、Workersの有料プラン（月額5ドル）に_まだ_収まります。さらに嬉しいことに、非アクティブな状態が原因でインデックスが削除されることはありません。</p>
+	<p>この価格設定は確定版ではありませんが、今後の変更はほぼないと考えています。プラットフォームでビルドを始め、コードの記入やテスト、技術のニュアンスを学んだ_後_で、その価格設定を維持できない状態に気づくほど最悪なことはなく、私たちはそのような驚愕の要素は避けたいと考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="vectorize">Vectorize！</h2>
+		<a href="https://blog.cloudflare.com/#vectorize" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>有料プランをご利用のWorkers開発者であれば、どなたでもすぐにVectorizeを使い始めることができます。現在利用できるのはオープンベータです。<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">始めるには開発者向けドキュメントをご覧ください</a>。</p>
+	<p>これもまた、私たちCloudflareにとってのベクトルデータベースの物語の始まりに過ぎません。今後数週間から数か月の間に、クエリーのパフォーマンスをさらに向上させ、さらに大きなインデックスをサポートし、サブインデックスのフィルタリング機能の導入、メタデータの制限の増加、インデックスごとの分析を行う新しいクエリーエンジンのリリースを予定しています。</p>
+	<p>何を作ればいいのかヒントをお探しの方は、Workers AIとVectorizeを組み合わせたドキュメント検索を行う<a href="http://developers.cloudflare.com/vectorize/get-started/embeddings" target="_blank" rel="noopener noreferrer">セマンティック検索のチュートリアル</a>（完全にCloudflareで実行）、または<a href="https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai" target="_blank" rel="noopener noreferrer">OpenAIとVectorizeを組み合わせて</a>LLMにより多くのコンテキストを与えて回答の精度を劇的に向上させる方法の例をご覧ください。また、当社の製品およびエンジニアリングチームでの Vectorizeの使用方法について質問がある方や、Workers AIを使用して構築している他の開発者とアイデアを交換したい方は、是非当社の<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Discord</a>の#vectorizeおよび#workers-aiチャンネルにご参加ください。</p>
+</div>

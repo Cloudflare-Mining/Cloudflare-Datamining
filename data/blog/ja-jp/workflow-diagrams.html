@@ -1,0 +1,354 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workflow-diagrams">English</a>および<a href="https://blog.cloudflare.com/ko-kr/workflow-diagrams">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FyTRKAqxfcEb135KFMWow/7fe82b4b9a7fb60085a5ed34707c8e7e/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、ステップを連鎖させ、失敗時に再試行し、長期間実行されるプロセス全体で状態を保持できる耐久性のある実行エンジンです。開発者はWorkflowsを使用して、バックグラウンドエージェントの強化、データパイプラインの管理、ヒューマンインザループ承認システムなどを構築します。</p>
+	<p>先月、Cloudflareにデプロイされたすべてのワークフローのダッシュボードに完全なビジュアル図が表示されるようになったことを<a href="https://developers.cloudflare.com/changelog/post/2026-02-03-workflows-visualizer" target="_blank" rel="noopener noreferrer"><u>発表しました</u></a>。</p>
+	<p>これは、アプリケーションを可視化することがこれまで以上に重要になっているためです。コーディングエージェントが書いているコードは、あなたが読んでいるかどうかに関係なく、しかし、ステップがどのようにつながり、どこに分岐するか、実際に何が起こっているかなど、構築されるものの形は依然として重要です。</p>
+	<p>以前、ビジュアルワークフロービルダーの図を見たことがあるとしたら、それらは通常、JSON設定、YAML、ドラッグ＆ドロップなどの宣言的なものから動作しています。しかし、Cloudflare Workflowsは単なるコードです。これらには、<a href="https://developers.cloudflare.com/workflows/build/workers-api" target="_blank" rel="noopener noreferrer"><u>Promise、Promise.all、ループ、条件式</u></a>を含めることができ、また関数やクラスにネストすることもできます。この動的実行モデルでは、図のレンダリングが少し複雑になります。</p>
+	<p>Cloudflareでは、抽象構文ツリー（AST）を使用してグラフを静的に取得し、<code>Promise</code>と<code>await</code>の関係を追跡し、何が並列に実行され、何がブロックし、各要素がどのように連携するかを把握します。</p>
+	<p>この図の作成方法について、この記事を続けてご覧ください。あるいは、最初のワークフローをデプロイして、図をご覧ください。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fworkflows-starter-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>以下は、Cloudflare Workflowsのコードから生成された図の例です：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44NnbqiNda2vgzIEneHQ3W/044856325693fbeb75ed1ab38b4db1c2/image1.png" alt="" class="kg-image" width="1366" height="1742" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-workflow-execution">動的ワークフローの実行</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-workflow-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一般的に、ワークフローエンジンは、動的実行順序またはシーケンシャル（静的）実行順序のいずれかに従って実行できます。順次実行は、ワークフローをトリガー → ステップA → ステップB → ステップC、エンジンがステップAを完了した直後にステップBが実行、といった形で実行されます。</p>
+	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、動的実行モデルに従っています。ワークフローは単なるコードなので、ランタイムが遭遇するとステップが実行されます。ランタイムがステップを検出すると、そのステップはワークフローエンジンに引き渡され、ワークフローエンジンはその実行を管理します。このステップは、待機されていない限り、本質的に順次処理されるものではありません。エンジンは、待機中のステップをすべて並行して実行します。こうすることで、追加のラッパーやディレクティブなしで、ワークフローコードをフロー制御として記述することができます。引き渡しの仕組みは次のとおりです。</p>
+	<ol>
+		<li>
+			<p>そのインスタンスの「スーパーバイザー」Durable Objectである<i>エンジン</i>が起動されます。エンジンは、実際のワークフロー実行のロジックを担当します。</p>
+		</li>
+		<li>
+			<p>エンジンは、<a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers" target="_blank" rel="noopener noreferrer"><u>ユーザーWorker</u></a>を<a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch" target="_blank" rel="noopener noreferrer"><u>動的ディスパッチ</u></a>を介してトリガーし、Workersランタイムに制御を渡します。</p>
+		</li>
+		<li>
+			<p>ランタイムが<code>step.do</code>に遭遇すると、実行をエンジンに渡します。</p>
+		</li>
+		<li>
+			<p>エンジンはステップを実行し、結果を保持します（該当する場合はエラーを発生させます）。そして、ユーザーWorkerを再びトリガーします。</p>
+		</li>
+	</ol>
+	<p>このアーキテクチャでは、エンジンは実行中のステップの順序を本質的に「知る」ことはできませんが、図にとっては、ステップの順序は重要な情報になります。ここでの課題は、ワークフローの大部分を診断に有用なグラフに正確に変換することにあります。ベータ版の図を使って、これらの表現を繰り返し、改善し続けます。</p>
+	<div class="flex anchor relative">
+		<h3 id="parsing-the-code">コードの解析</h3>
+		<a href="https://blog.cloudflare.com/#parsing-the-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>実行時ではなく、<a href="https://developers.cloudflare.com/workers/get-started/guide/#4-deploy-your-project" target="_blank" rel="noopener noreferrer"><u>デプロイ時</u></a>にスクリプトを取得することで、ワークフロー全体を解析して静的に図を生成することができます。</p>
+	<p>一歩下がって、ワークフローデプロイメントの概略を説明すると、次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zoOCYji26ahxzh594VavQ/63ad96ae033653ffc7fd98df01ea6e27/image5.png" alt="" class="kg-image" width="1312" height="1896" loading="lazy">
+	</figure>
+	<p>図を作成するために、Workersをデプロイする内部設定サービスによってバンドルされたスクリプトを取得します（Workflowデプロイのステップ2）。次に、パーサーを使用してワークフローを表す抽象構文ツリー（AST）を作成し、内部サービスがすべてのWorkflowErrorpointsとワークフローステップへの呼び出しを含む中間グラフを生成して横断します。APIの最終結果に基づいて図をレンダリングします。</p>
+	<p>Workerがデプロイされると、設定サービスは（<a href="https://esbuild.github.io" target="_blank" rel="noopener noreferrer"><u>esbuild</u></a>をデフォルトで使用して）コードをバンドルし、<a href="https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys" target="_blank" rel="noopener noreferrer"><u>特に指定がない限り</u></a>圧縮します。これには別の課題があります。TypeScriptのWorkflowsは直感的なパターンに従いますが、圧縮されたJavascript（JS）は緻密で消費しにくい可能性があります。また、バンドルによって、コードの圧縮方法も異なります。</p>
+	<p>これは、<b>エージェントが並行して実行することを示す</b>Workflowコードの例です。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const summaryPromise = step.do(
+         `summary agent (loop ${loop})`,
+         async () =&gt; {
+           return runAgentPrompt(
+             this.env,
+             SUMMARY_SYSTEM,
+             buildReviewPrompt(
+               'Summarize this text in 5 bullet points.',
+               draft,
+               input.context
+             )
+           );
+         }
+       );
+        const correctnessPromise = step.do(
+         `correctness agent (loop ${loop})`,
+         async () =&gt; {
+           return runAgentPrompt(
+             this.env,
+             CORRECTNESS_SYSTEM,
+             buildReviewPrompt(
+               'List correctness issues and suggested fixes.',
+               draft,
+               input.context
+             )
+           );
+         }
+       );
+        const clarityPromise = step.do(
+         `clarity agent (loop ${loop})`,
+         async () =&gt; {
+           return runAgentPrompt(
+             this.env,
+             CLARITY_SYSTEM,
+             buildReviewPrompt(
+               'List clarity issues and suggested fixes.',
+               draft,
+               input.context
+             )
+           );
+         }
+       );</code></pre>
+	<p><a href="https://rspack.rs" target="_blank" rel="noopener noreferrer"><u>rspack</u></a>とバンドルした場合、縮小コードのスニペットは次のようになります。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">class pe extends e{async run(e,t){de("workflow.run.start",{instanceId:e.instanceId});const r=await t.do("validate payload",async()=&gt;{if(!e.payload.r2Key)throw new Error("r2Key is required");if(!e.payload.telegramChatId)throw new Error("telegramChatId is required");return{r2Key:e.payload.r2Key,telegramChatId:e.payload.telegramChatId,context:e.payload.context?.trim()}}),s=await t.do("load source document from r2",async()=&gt;{const e=await this.env.REVIEW_DOCUMENTS.get(r.r2Key);if(!e)throw new Error(`R2 object not found: ${r.r2Key}`);const t=(await e.text()).trim();if(!t)throw new Error("R2 object is empty");return t}),n=Number(this.env.MAX_REVIEW_LOOPS??"5"),o=this.env.RESPONSE_TIMEOUT??"7 days",a=async(s,i,c)=&gt;{if(s&gt;n)return le("workflow.loop.max_reached",{instanceId:e.instanceId,maxLoops:n}),await t.do("notify max loop reached",async()=&gt;{await se(this.env,r.telegramChatId,`Review stopped after ${n} loops for ${e.instanceId}. Start again if you still need revisions.`)}),{approved:!1,loops:n,finalText:i};const h=t.do(`summary agent (loop ${s})`,async()=&gt;te(this.env,"You summarize documents. Keep the output short, concrete, and factual.",ue("Summarize this text in 5 bullet points.",i,r.context)))...</code></pre>
+	<p>または、<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>vite</u></a> とバンドルすると、以下に縮小版のスニペットを示します。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">class ht extends pe {
+  async run(e, r) {
+    b("workflow.run.start", { instanceId: e.instanceId });
+    const s = await r.do("validate payload", async () =&gt; {
+      if (!e.payload.r2Key)
+        throw new Error("r2Key is required");
+      if (!e.payload.telegramChatId)
+        throw new Error("telegramChatId is required");
+      return {
+        r2Key: e.payload.r2Key,
+        telegramChatId: e.payload.telegramChatId,
+        context: e.payload.context?.trim()
+      };
+    }), n = await r.do(
+      "load source document from r2",
+      async () =&gt; {
+        const i = await this.env.REVIEW_DOCUMENTS.get(s.r2Key);
+        if (!i)
+          throw new Error(`R2 object not found: ${s.r2Key}`);
+        const c = (await i.text()).trim();
+        if (!c)
+          throw new Error("R2 object is empty");
+        return c;
+      }
+    ), o = Number(this.env.MAX_REVIEW_LOOPS ?? "5"), l = this.env.RESPONSE_TIMEOUT ?? "7 days", a = async (i, c, u) =&gt; {
+      if (i &gt; o)
+        return H("workflow.loop.max_reached", {
+          instanceId: e.instanceId,
+          maxLoops: o
+        }), await r.do("notify max loop reached", async () =&gt; {
+          await J(
+            this.env,
+            s.telegramChatId,
+            `Review stopped after ${o} loops for ${e.instanceId}. Start again if you still need revisions.`
+          );
+        }), {
+          approved: !1,
+          loops: o,
+          finalText: c
+        };
+      const h = r.do(
+        `summary agent (loop ${i})`,
+        async () =&gt; _(
+          this.env,
+          et,
+          K(
+            "Summarize this text in 5 bullet points.",
+            c,
+            s.context
+          )
+        )
+      )...</code></pre>
+	<p>縮小コードは、かなり危険な状態になっており、バンドラーによっては、さまざまな方向に向かってバラバラになる可能性があります。</p>
+	<p>当社には、さまざまな形態のミニファイされたコードを素早く正確に解析する方法が必要でした。私たちは、<a href="https://oxc.rs" target="_blank" rel="noopener noreferrer"><u> JavaScript Oxidation Compiler</u></a> （OXC）の<code> oxc-parser </code>がこの仕事に最適であると判断しました。Cloudflareはまず、Rustを実行するコンテナでこのアイデアをテストしました。すべてのスクリプトIDが<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queue</u></a>に送信され、その後、メッセージが取り出され、処理のためにコンテナに送信されました。このアプローチが有効であることを確認すると、Rustで書かれたWorkerに移行しました。Workersは<a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>WebAssemblyを介したRustの実行</u></a>をサポートしており、パッケージはこれを簡単にするのに十分な小ささでした。</p>
+	<p>Rust Workerは、まず圧縮されたJSをASTノードタイプに変換し、次にASTノードタイプをダッシュボード上にレンダリングされるワークフローのグラフィカルバージョンに変換します。そのために、各ワークフローに対して事前に定義された<a href="https://developers.cloudflare.com/workflows/build/visualizer" target="_blank" rel="noopener noreferrer"><u>ノードタイプ</u></a>のグラフを生成し、一連のノードマッピングを通してグラフ表現に変換します。</p>
+	<div class="flex anchor relative">
+		<h3 id="rendering-the-diagram">図のレンダリング</h3>
+		<a href="https://blog.cloudflare.com/#rendering-the-diagram" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ワークフローの図バージョンをレンダリングするためには、ステップと関数の関係を正しく追跡する方法と、すべての攻撃対象領域をカバーしながら、ワークフローのノードタイプをできるだけシンプルに定義する方法という2つの課題がありました。</p>
+	<p>ステップと関数の関係を正しく追跡することを保証するには、関数とステップの両方の名前を収集する必要がありました。先に述べたように、エンジンはステップに関する情報しかありませんが、ステップが関数に依存することもあれば、その逆も同様です。例えば、開発者は関数の中にステップを含めたり、関数をステップとして定義することがあります。異なる<a href="https://blog.cloudflare.com/workers-javascript-modules"><u>モジュール</u></a>からの関数内のステップを呼び出すことも、ステップ名を変更することもできます。</p>
+	<p>ライブラリはASTを与えることで最初の課題は克服できるものの、まだそれをどのように解析するかを決定する必要があります。コードパターンによっては、さらなる創造性が必要になります。例えば、関数 — <code>WorkflowEntrypoint</code>内では、ステップを直接、間接的に、またはまったく呼び出さない関数を使用することができます。<code>functionA</code> を考えてみましょう。これは、<code>console.log(await functionB(), await functionC()</code>) を含み、その中で <code>functionB</code> が <code>step.do()</code> を呼び出します。その場合、<code>functionA</code>と<code>functionB</code>の両方をワークフロー図に含める必要があります。しかし、<code>functionC</code>はそうすべきではありません。直接および間接のステップ呼び出しを含むすべての関数を捕捉するために、各関数のサブグラフを作成し、ステップ呼び出し自体が含まれているか、あるいは別の関数を呼び出す可能性があるのかを確認します。これらのサブグラフは、関連するすべてのノードを含む関数ノードによって表されます。関数ノードがグラフの緑の場合、その中に直接または間接のワークフローステップがない場合は、最終出力から切り詰めます。</p>
+	<p>私たちは、最大10の異なる方法で定義された、ワークフロー図や変数を推測できる静的ステップのリストなど、他のパターンもチェックします。スクリプトに複数のワークフローが含まれる場合、関数用に作成されたサブグラフと同様のパターンに従い、1レベル上に抽象化されます。</p>
+	<p>ASTノードタイプごとに、ループ、ブランチ、プロミス、パラレル、await、アロー関数など、ワークフロー内で使用できるあらゆる方法を検討しなければなりませんでした。こうした経路の中にさえ、何十もの可能性があります。ループにする方法をいくつか考えてみましょう。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// for...of
+for (const item of items) {
+	await step.do(`process ${item}`, async () =&gt; item);
+}
+// while
+while (shouldContinue) {
+	await step.do('poll', async () =&gt; getStatus());
+}
+// map
+await Promise.all(
+	items.map((item) =&gt; step.do(`map ${item}`, async () =&gt; item)),
+);
+// forEach
+await items.forEach(async (item) =&gt; {
+	await step.do(`each ${item}`, async () =&gt; item);
+});</code></pre>
+	<p>また、ループ処理に加えて、ブランチングの処理方法についてもお話します。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// switch / case
+switch (action.type) {
+	case 'create':
+		await step.do('handle create', async () =&gt; {});
+		break;
+	default:
+		await step.do('handle unknown', async () =&gt; {});
+		break;
+}
+
+// if / else if / else
+if (status === 'pending') {
+	await step.do('pending path', async () =&gt; {});
+} else if (status === 'active') {
+	await step.do('active path', async () =&gt; {});
+} else {
+	await step.do('fallback path', async () =&gt; {});
+}
+
+// ternary operator
+await (cond
+	? step.do('ternary true branch', async () =&gt; {})
+	: step.do('ternary false branch', async () =&gt; {}));
+
+// nullish coalescing with step on RHS
+const myStepResult =
+	variableThatCanBeNullUndefined ??
+	(await step.do('nullish fallback step', async () =&gt; 'default'));
+
+// try/catch with finally
+try {
+	await step.do('try step', async () =&gt; {});
+} catch (_e) {
+	await step.do('catch step', async () =&gt; {});
+} finally {
+	await step.do('finally step', async () =&gt; {});
+}</code></pre>
+	<p>私たちの目標は、開発者が知っておくべきことを、過度に複雑にすることなく伝える簡潔なAPIを作ることでした。しかし、ワークフローを図に変換するということは、あらゆるパターン（ベストプラクティスに従っているかどうか）と可能なエッジケースを考慮することを意味します。先に説明したように、各ステップはデフォルトでは他のステップと明示的に続くものではありません。ワークフローが<code>await</code>と<code>Promise.all()</code>を使用しない場合、ステップが発生した順に実行されると仮定します。しかし、ワークフローに<code>await</code>、<code>Promise</code>、または<code>Promise.all()</code>が含まれている場合、これらの関係を追跡する方法が必要だったのです。</p>
+	<p>各ノードに<code>starts:</code>と<code>resolves:</code>フィールドがある実行順序を追跡することにしました。<code>starts</code>と<code>resolves</code>のインデックスは、約束がいつ実行され始めたか、すぐに続く結論なしに開始された最初の約束と比較して、いつ終了するかを示します。これは、図UIの縦長の配置（<code>starts:1</code>を持つすべてのステップがインラインになります）に相関しています。ステップが宣言されたときに待機している場合、<code>starts</code>と<code>resolves</code>は未定義となり、ワークフローはランタイムにステップが表示された順番で実行されます。</p>
+	<p>解析中に、未解決の<code>Promise</code>または<code>Promise.all()</code>に遭遇すると、そのノード（または複数のノード）にはエントリー番号が付けられ、<code>starts</code>フィールドに表示されます。その約束に <code>await</code> が発生した場合、エントリー番号は1つインクリメントされ、出口番号（<code>resolves</code> の値）として保存されます。これにより、同時に実行されるPromiseと、相互の関係においていつ完了するかを知ることができます。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export class ImplicitParallelWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+ async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+   const branchA = async () =&gt; {
+     const a = step.do("task a", async () =&gt; "a"); //starts 1
+     const b = step.do("task b", async () =&gt; "b"); //starts 1
+     const c = await step.waitForEvent("task c", { type: "my-event", timeout: "1 hour" }); //starts 1 resolves 2
+     await step.do("task d", async () =&gt; JSON.stringify(c)); //starts 2 resolves 3
+     return Promise.all([a, b]); //resolves 3
+   };
+
+   const branchB = async () =&gt; {
+     const e = step.do("task e", async () =&gt; "e"); //starts 1
+     const f = step.do("task f", async () =&gt; "f"); //starts 1
+     return Promise.all([e, f]); //resolves 2
+   };
+
+   await Promise.all([branchA(), branchB()]);
+
+   await step.sleep("final sleep", 1000);
+ }
+}</code></pre>
+	<p>図でステップの整合性を確認できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EZJ38J3H55yH0OnT11vgg/6dde06725cd842725ee3af134b1505c0/image3.png" alt="" class="kg-image" width="1596" height="1364" loading="lazy">
+	</figure>
+	<p>これらのパターンをすべて考慮した結果、次のようなノードタイプのリストに落ち着きました。 </p>
+	<pre class="language-Rust"><code class="language-Rust">| StepSleep
+| StepDo
+| StepWaitForEvent
+| StepSleepUntil
+| LoopNode
+| ParallelNode
+| TryNode
+| BlockNode
+| IfNode
+| SwitchNode
+| StartNode
+| FunctionCall
+| FunctionDef
+| BreakNode;</code></pre>
+	<p>さまざまな動作に対するAPI出力のサンプルをいくつか示します。</p>
+	<p><code>function</code> call:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "functions": {
+    "runLoop": {
+      "name": "runLoop",
+      "nodes": []
+    }
+  }
+}</code></pre>
+	<p><code>if</code> 条件分岐による <code>step.do</code>:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "type": "if",
+  "branches": [
+    {
+      "condition": "loop &gt; maxLoops",
+      "nodes": [
+        {
+          "type": "step_do",
+          "name": "notify max loop reached",
+          "config": {
+            "retries": {
+              "limit": 5,
+              "delay": 1000,
+              "backoff": "exponential"
+            },
+            "timeout": 10000
+          },
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}</code></pre>
+	<p><code>step.do</code>および<code>waitForEvent</code>と<code>waitForEvent</code>：</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "type": "parallel",
+  "kind": "all",
+  "nodes": [
+    {
+      "type": "step_do",
+      "name": "correctness agent (loop ${...})",
+      "config": {
+        "retries": {
+          "limit": 5,
+          "delay": 1000,
+          "backoff": "exponential"
+        },
+        "timeout": 10000
+      },
+      "nodes": [],
+      "starts": 1
+    },
+...
+    {
+      "type": "step_wait_for_event",
+      "name": "wait for user response (loop ${...})",
+      "options": {
+        "event_type": "user-response",
+        "timeout": "unknown"
+      },
+      "starts": 3,
+      "resolves": 4
+    }
+  ]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="whats-next">今後の展開は？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最終的に、これらのWorkflow図の目標は、フルサービスのデバッグツールとして機能することです。つまり、以下が可能になるということです。</p>
+	<ul>
+		<li>
+			<p>グラフを通じて実行をリアルタイムで追跡する</p>
+		</li>
+		<li>
+			<p>エラーを発見し、ヒューマンインザループの承認を待ち、テストのステップを省略する</p>
+		</li>
+		<li>
+			<p>ローカル開発におけるアクセスの可視化</p>
+		</li>
+	</ul>
+	<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fworkflows" target="_blank" rel="noopener noreferrer"><u>Workflow概要ページ</u></a>で図を確認してください。機能リクエストがある場合、またはバグにお気づきの点がある場合は、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>DiscordのCloudflare開発者コミュニティ</u></a>に参加して、Cloudflareチームに直接フィードバックを共有してください。</p>
+</div>

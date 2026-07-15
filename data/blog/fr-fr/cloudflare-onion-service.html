@@ -1,0 +1,264 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-onion-service">English</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-onion-service">Deutsch</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-onion-service">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-onion-service">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TRVgKXIsxFHQJhUVRTTKs/d419e463c376335efa48a0c6c47cd7ab/cloudflare-onion-service.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<ul>
+		<li>
+			<p><b>Quand</b> : un froid après-midi d'été à San Francisco</p>
+		</li>
+		<li>
+			<p><b>Où</b> : bureau <a href="https://httpstat.us/305" target="_blank" rel="noopener noreferrer">305</a>, chez Cloudflare</p>
+		</li>
+		<li>
+			<p><b>Qui</b> : 2 personnes de chez Cloudflare et 9 personnes associées au projet Tor</p>
+		</li>
+	</ul>
+	<p>Ça ne peut que bien se passer.</p>
+	<div class="flex anchor relative">
+		<h3 id="bit-of-background"><b>Petit rappel des faits</b></h3>
+		<a href="https://blog.cloudflare.com/#bit-of-background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il y a deux ans cette semaine, Cloudflare dévoilait le <a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web">Opportunistic Encryption</a>, une fonctionnalité qui offrait une sécurité et des performances supplémentaires aux sites Web qui n'étaient pas encore passés à HTTPS. En effet, à l'époque, certains sites Web n'utilisaient que le HTTP... Bizarre, non ? « Opportuniste » signifiait ici que le serveur annonçait la prise en charge du protocole HTTP/2 via un en-tête <a href="https://tools.ietf.org/html/rfc7838" target="_blank" rel="noopener noreferrer">HTTP Alternative Service</a>, dans l'espoir que tout navigateur qui reconnaîtrait le protocole pourrait profiter de ces avantages dans les requêtes ultérieures pour ce domaine.</p>
+	<p>Vers la même époque, le PDG Matthew Prince <a href="https://blog.cloudflare.com/the-trouble-with-tor">a parlé</a> de l'importance et des défis de la protection de la vie privée sur Internet, et nous a chargé de trouver une solution alliant <b>commodité</b>, <b>sécurité</b> et <b>anonymat</b>.</p>
+	<p>Depuis la neutralisation de l'empreinte navigateur et des outils de surveillance dont <a href="https://www.eff.org/privacybadger" target="_blank" rel="noopener noreferrer">Privacy Badger</a> se nourrit quotidiennement jusqu'à l'atténuation des attaques par corrélation dont seuls les plus gros groupes sont capables, garantir la confidentialité est un défi complexe. Heureusement, le <a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer">projet Tor</a> répond à ce <a href="https://www.torproject.org/projects/torbrowser/design/#adversary" target="_blank" rel="noopener noreferrer">modèle d’adversaire</a> étendu dans le navigateur Tor.</p>
+	<p>Cependant, Internet regorge de groupes et d'individus malveillants, et il devient de plus en plus difficile de distinguer le trafic légitime du trafic malveillant, qui est l'une des principales raisons d'être de Cloudflare, si ce trafic est anonyme. Notamment, de nombreuses fonctionnalités qui font de Tor un excellent outil de protection de la vie privée en font également un outil permettant de masquer la source du trafic malveillant. C'est pourquoi beaucoup de sites ont recours aux défis CAPTCHA pour perturber l'activité des bots sur le réseau Tor. Toutefois, le recours aux tests CAPTCHA pour arrêter les robots entraîne un dégât collatéral : les humains doivent aussi s'y confronter.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59vmBdRen9zTJnzUEwUOOL/54910c287d16f022e66afc2d8ff68d0e/Captcha-Example.png" alt="" class="kg-image" width="300" height="57" loading="lazy">
+
+	</figure>
+	<p>Pour réduire ce problème autant que possible, il est possible d'utiliser des signatures cryptographiques préservant la vie privée, c'est-à-dire des tokens aveugles, tels que ceux dont se sert <a href="https://blog.cloudflare.com/privacy-pass-the-math">Privacy Pass</a>.</p>
+	<p>Il est également possible d'utiliser des services cachés.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CENi6YjjPGrHKOsS7hfgE/3f07dbad9c56b377cb5bcfa7d8f40c36/Onion-Cloudflare.png" alt="" class="kg-image" width="1349" height="618" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="here-come-the-onions"><b>Ajoutez les oignons</b></h3>
+		<a href="https://blog.cloudflare.com/#here-come-the-onions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'édition d'aujourd'hui de la Crypto Week propose une solution « opportuniste » à ce problème, de sorte que dans des conditions appropriées, toute personne utilisant <a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank" rel="noopener noreferrer">Tor Browser 8.0</a> bénéficiera d'une sécurité et de performances accrues lorsqu'elle consultera les sites Web de Cloudflare sans devoir répondre à un questionnaire CAPTCHA. En même temps, cette fonction permet de limiter plus précisément le débit afin d'éviter le trafic malveillant, et, comme les principes de l'idée décrite ici ne sont pas propres à Cloudflare, tout le monde peut <a href="https://github.com/mahrud/caddy-altonions" target="_blank" rel="noopener noreferrer">utiliser cette méthode</a> sur son propre site.</p>
+	<p>Avant de continuer, si vous avez besoin de vous rafraîchir le mémoire au sujet de Tor ou si vous voulez savoir pourquoi nous parlons d'oignons, nous vous invitons à consulter le site <a href="https://www.torproject.org/about/overview.html.en" target="_blank" rel="noopener noreferrer">Tor Project</a> ou notre article de blog datant de juin sur le <a href="https://blog.cloudflare.com/welcome-hidden-resolver">résolveur DNS basé sur .onion</a>.</p>
+	<p>Comme Matthew l'a expliqué dans son article de blog, il est possible de trier le trafic Tor en utilisant le protocole du <a href="https://www.torproject.org/docs/onion-services.html.en" target="_blank" rel="noopener noreferrer">service onion</a>. Les services cachés (Onion) sont des nœuds Tor qui annoncent leur clé publique, encodée comme une adresse avec le TLD .onion, et utilisent des « points de rendez-vous » pour établir des connexions intégralement sur le réseau Tor :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YwoSQd9m6fwJ4INk44fsz/7aa81a4f71f35f9323ba4173e328d356/Tor-network-example-1.png" alt="" class="kg-image" width="1999" height="575" loading="lazy">
+
+	</figure>
+	<p>Bien que les services cachés soient destinés à garantir l'anonymat des fournisseurs de contenu, les <a href="https://securedrop.org/directory" target="_blank" rel="noopener noreferrer">agences de presse</a> les utilisent pour communiquer en toute sécurité avec les lanceurs d'alerte, et <a href="https://www.facebook.com/notes/protect-the-graph/making-connections-to-facebook-more-secure/1526085754298237" target="_blank" rel="noopener noreferrer">Facebook</a> en utilise un pour distinguer les utilisateurs Tor des bots.</p>
+	<p>La raison technique pour laquelle cela fonctionne est que, du point de vue d'un service caché, chaque connexion Tor (ou circuit) individuelle est associée à un numéro unique mais éphémère, alors que du point de vue du serveur normal, toutes les requêtes Tor effectuées via un nœud de sortie partagent la même adresse IP. En utilisant ce numéro de circuit, les services cachés peuvent distinguer les circuits individuels et stopper ceux qui semblent se comporter de manière malveillante. Attention : cela ne signifie pas que les services cachés peuvent identifier ou suivre les utilisateurs de Tor.</p>
+	<p>Si les individus ou groupes mal intentionnés peuvent toujours mettre en place un nouveau circuit en répétant le protocole de rendez-vous, cela implique un échange de clés cryptographiques nécessitant du temps et des calculs. Voyez ça comme une séquence de <a href="https://en.wikipedia.org/wiki/File:Dial_up_modem_noises.ogg" target="_blank" rel="noopener noreferrer">numérotation</a> cryptée. Les spammeurs peuvent appeler notre service caché à plusieurs reprises, mais ils doivent à chaque fois répéter l'échange de clé.</p>
+	<p>On peut aussi considérer la fin du protocole de rendez-vous comme une sorte de preuve des efforts que nécessite l'utilisation du service Onion de Cloudflare. Cela augmente le coût d'utilisation de notre service Onion dans le cas d'attaques par déni de service.</p>
+	<div class="flex anchor relative">
+		<h3 id="problem-solved-right"><b>Le problème est donc résolu, non ?</b></h3>
+		<a href="https://blog.cloudflare.com/#problem-solved-right" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pas tout à fait. Comme nous l'avons évoqué lors de la présentation du <a href="https://blog.cloudflare.com/welcome-hidden-resolver">résolveur caché</a>, la difficulté à s'assurer qu'une adresse .onion en apparence aléatoire soit correcte est un obstacle à la sécurité utilisable. Dans ce cas, notre solution fut d'acheter un certificat de <a href="https://www.digicert.com/extended-validation-ssl.htm" target="_blank" rel="noopener noreferrer">validation étendue</a> (EV), ce qui coûte beaucoup plus cher. Inutile de dire que cela limite le nombre de personnes ayant la possibilité d'acheter un certificat HTTPS pour leur service caché à <a href="https://crt.sh/?Identity=%25.onion" target="_blank" rel="noopener noreferrer">quelques privilégiés</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n6CTaL7LjM6pQGorlXIQ6/4ffd43906dcaa7fac54a098379d12171/Address-Bar.png" alt="" class="kg-image" width="697" height="23" loading="lazy">
+
+	</figure>
+	<p>Certaines personnes ne sont <a href="https://cabforum.org/pipermail/public/2017-November/012451.html" target="_blank" rel="noopener noreferrer">pas d’accord</a>. La <a href="https://blog.torproject.org/tors-fall-harvest-next-generation-onion-services" target="_blank" rel="noopener noreferrer">nouvelle génération</a> de services cachés corrige notamment la faille que Matthew a mentionnée comme une raison possible au fait que le forum des autorités de certification <a href="https://cabforum.org/2015/02/18/ballot-144-validation-rules-dot-onion-names" target="_blank" rel="noopener noreferrer">autorise uniquement</a> les certificats EV pour les services cachés. Cela pourrait signifier qu'il sera sans doute bientôt possible d'obtenir des certificats de validation de domaine (DV) pour les services cachés. Nous espérons sincèrement que ce sera le cas.</p>
+	<p>Néanmoins, les certificats DV ne portent pas le nom de l'organisme (par ex., « Cloudflare, Inc. ») qui apparaît dans la barre d'adresse, et aucun humain n'est capable de mémoriser ou de distinguer les chiffres importants du point de vue cryptographique. Cela nous ramène au problème de la sécurité utilisable, donc nous avons eu une autre idée.</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-at-onion-addresses-differently"><b>Portons un autre regard sur les adresses .onion</b></h3>
+		<a href="https://blog.cloudflare.com/#looking-at-onion-addresses-differently" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oublions pour le moment que nous parlons d'anonymat. Lorsque vous écrivez « cloudflare.com » dans un navigateur et que vous appuyez sur Entrée, votre appareil résout d'abord ce nom de domaine en adresse IP, puis votre navigateur demande au serveur un certificat valide pour « cloudflare.com » et essaie d'établir une connexion cryptée avec l'hôte. Tant que le certificat est approuvé par une autorité de certification, il n'y a aucune raison de se préoccuper de l'adresse IP.</p>
+	<p>En gros, l'idée ici est simplement de substituer à l'adresse IP du scénario ci-dessus une adresse .onion. Tant que le certificat est valide, l'adresse .onion elle-même n'a pas besoin d'être saisie manuellement par un utilisateur ni même d'être mémorisable. En effet, la validité du certificat indique que l'adresse .onion était correcte.</p>
+	<p>Ainsi, de la même manière que des millions de domaines peuvent être reliés à une seule adresse IP, une seule adresse .onion devrait pouvoir couvrir un nombre illimité de domaines.</p>
+	<p>Sauf que le système DNS ne fonctionne pas de cette façon.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-it-work-then"><b>Comment ça marche alors ?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-does-it-work-then" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tout comme avec Opportunistic Encryption, nous pouvons diriger les utilisateurs vers le service Cloudflare Onion à l'aide de <a href="https://tools.ietf.org/html/rfc7838" target="_blank" rel="noopener noreferrer">HTTP Alternative Services</a>, un dispositif permettant aux serveurs de signaler aux clients que le service auquel ils accèdent est disponible sur un autre réseau ou avec un autre protocole. Par exemple, lorsque Tor Browser envoie une requête à « cloudflare.com », Cloudflare ajoute un en-tête de service alternatif pour indiquer que le site est accessible par HTTP/2 via nos services cachés.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5bKEOaIJdnsqhNTT2Ozo/e1466f89156e68b539b2cefc8d506d2a/tor-resquest_2x.png" alt="" class="kg-image" width="2000" height="413" loading="lazy">
+
+	</figure>
+	<p>Tout comme Cloudflare possède les adresses IP qui sont utilisées pour les sites Web de nos clients, nous gérons 10 adresses .onion. Considérez-les comme 10 PoP (Points of Presence) Cloudflare sur le réseau Tor. L'en-tête exact ressemble à ceci, à l'exception des 10 adresses .onion jointes, chacune commençant par le préfixe « cflare » :</p>
+	<pre class="language-bash"><code class="language-bash">alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1</code></pre>
+	<p>Ceci indique simplement que l'accès à « cloudflare.com » peut être autorisé par le biais de HTTP/2 (« h2 ») via le service caché « cflare2n[...].onion », avec le port virtuel 443. Le champ « ma » (max-age) indique combien de temps en secondes le client doit se souvenir de l'existence du service alternatif et « persist » indique si le cache du service alternatif doit être vidé lorsque le réseau est interrompu.</p>
+	<p>Une fois que le navigateur reçoit cet en-tête, il tente de mettre en place un nouveau circuit Tor vers le service caché indiqué dans l'en-tête alt-svc et de confirmer que le serveur qui écoute sur le port virtuel 443 peut présenter un certificat valide pour « cloudflare.com » (soit le nom d'hôte d’origine, pas l'adresse .onion).</p>
+	<p>Le service caché relaie alors le paquet Client Hello à un serveur local qui peut délivrer un certificat pour « cloudflare.com ». Ainsi, le daemon Tor lui-même peut être très réduit. Voici un extrait de fichier de configuration :</p>
+	<pre class="language-bash"><code class="language-bash">SocksPort 0
+HiddenServiceNonAnonymousMode 1
+HiddenServiceSingleHopMode 1
+HiddenServiceVersion 3
+HiddenServicePort 443
+SafeLogging 1
+Log notice stdout</code></pre>
+	<p>Soyez prudent avec l'utilisation de la configuration ci-dessus, car elle permet un paramétrage non anonyme pour les services cachés qui n'ont pas besoin d'anonymat pour eux-mêmes. En clair, cela ne sacrifie pas la vie privée ou l'anonymat des utilisateurs de Tor, juste le serveur. De plus, la latence des circuits est améliorée.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NVzWfvM9FVH73gjp0AG3X/8a3dbf2a8440bb0f32e05626e30bb695/Tor-Onion-Service-Cloudflare.png" alt="" class="kg-image" width="1999" height="474" loading="lazy">
+
+	</figure>
+	<p>Si le certificat est signé par une autorité de certification reconnue, pour toute requête ultérieure adressée à « cloudflare.com », le navigateur se connectera par HTTP/2 via le service caché, sans avoir à passer par un nœud de sortie.</p>
+	<p>Voici à nouveau le résumé des étapes :</p>
+	<ol>
+		<li>
+			<p>Un nouveau circuit Tor est établi.</p>
+		</li>
+		<li>
+			<p>Le navigateur envoie un Client Hello au service caché avec SNI=cloudflare.com.</p>
+		</li>
+		<li>
+			<p>Le service caché relaie le paquet à un serveur local.</p>
+		</li>
+		<li>
+			<p>Le serveur répond avec Server Hello pour SNI=cloudflare.com.</p>
+		</li>
+		<li>
+			<p>Le service caché relaie le paquet au navigateur.</p>
+		</li>
+		<li>
+			<p>Le navigateur vérifie la validité du certificat.</p>
+		</li>
+	</ol>
+	<p>Pour rappel, le certificat présenté par le service caché ne doit être valable que pour le nom d'hôte d’origine, ce qui signifie que l'adresse .onion n'a pas besoin d'être mentionnée sur le certificat. C'est un avantage énorme, car cela vous permet, par exemple, de présenter un certificat <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a> gratuit pour votre domaine.org plutôt qu'un certificat EV coûteux.</p>
+	<p>Facilité d'utilisation, ✓</p>
+	<div class="flex anchor relative">
+		<h3 id="distinguishing-the-circuits"><b>Distinguer les circuits</b></h3>
+		<a href="https://blog.cloudflare.com/#distinguishing-the-circuits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rappelez-vous qu'un nœud de sortie peut desservir de nombreux clients différents, mais, du point de vue de Cloudflare, tout ce trafic provient d'une seule adresse IP. Cette mise en commun permet de limiter le trafic malveillant au sein du trafic légitime, mais n'est pas essentielle à la sécurité ou à la confidentialité de Tor. En fait, cela peut potentiellement nuire aux utilisateurs en exposant leur trafic à des <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank" rel="noopener noreferrer">nœuds de sortie dangereux</a>.</p>
+	<p>Souvenez-vous que les circuits Tor vers les services cachés portent un numéro de circuit que nous pouvons utiliser pour limiter le débit du circuit. La question est maintenant de savoir comment communiquer ce numéro à un serveur comme nginx avec un minimum d'efforts. En fait, avec une <a href="https://github.com/torproject/tor/pull/343" target="_blank" rel="noopener noreferrer">petite modification</a> dans le binaire de Tor, nous pouvons insérer un en-tête <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">Protocole proxy</a> au début de chaque paquet envoyé sur le serveur. Ce protocole est conçu pour aider les proxys TCP à transmettre les paramètres qui peuvent être manquants, tels que les adresses IP de source et de destination, et est déjà pris en charge par nginx, Apache, Caddy, etc.</p>
+	<p>Heureusement pour nous, l'espace IPv6 est si vaste que nous pouvons encoder le numéro de circuit Tor comme une adresse IP dans une plage inutilisée, et utiliser le protocole Proxy pour l'envoyer au serveur. Voici un exemple de l'en-tête que notre daemon Tor insérerait dans la connexion :</p>
+	<pre class="language-bash"><code class="language-bash">PROXY TCP6 2405:8100:8000:6366:1234:ABCD ::1 43981 443\r\n</code></pre>
+	<p>Dans ce cas, 0x1234ABCD code le numéro de circuit dans les 32 derniers bits de l'adresse IP source. Le serveur Cloudflare local peut alors utiliser cette adresse IP de manière transparente pour attribuer une réputation, afficher les CAPTCHA ou bloquer les requêtes si nécessaire.</p>
+	<p>Notez que même si les requêtes relayées par un service caché ne portent pas d'adresse IP, vous verrez une adresse IP comme celle ci-dessus avec le code pays « T1 » dans vos journaux. Cette adresse IP ne spécifie que le numéro de circuit vu par le service caché, et non l'adresse IP réelle de l'utilisateur. En fait, 2405:8100:8000:8000::/48 est un sous-réseau inutilisé et alloué à Cloudflare que nous ne redirigeons pas dans le monde entier dans ce but.</p>
+	<p>Cela permet aux clients de continuer à détecter les bots en utilisant la réputation IP, tout en épargnant aux humains la corvée de devoir cliquer sans fin sur des images de panneaux de signalisation dans CAPTCHA.</p>
+	<p>Sécurité, ✓</p>
+	<div class="flex anchor relative">
+		<h3 id="why-should-i-trust-cloudflare"><b>Pourquoi devrais-je faire confiance à Cloudflare ?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-should-i-trust-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pas besoin. Le service Cloudflare Onion présente exactement le même certificat que celui que nous aurions utilisé pour les requêtes directes vers nos serveurs. Vous pouvez donc contrôler ce service avec Certificate Transparency (qui inclut <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">Nimbus</a>, notre journal de transparence des certificats), pour détecter toute triche éventuelle.</p>
+	<p>De plus, puisque Tor Browser 8.0 crée un nouveau circuit pour chaque nom d'hôte lorsqu'il se connecte via un service alternatif .onion, le numéro de circuit ne peut pas être utilisé pour relier des connexions à deux sites différents en même temps.</p>
+	<p>Remarquez que tout cela fonctionne sans exécuter de nœuds d'entrée, de relais ou de sortie. Par conséquent, les seules requêtes que nous voyons grâce à cette fonctionnalité sont celles qui nous étaient de toute manière destinées. Plus particulièrement, étant donné qu'aucun nouveau trafic n'est introduit, Cloudflare n'obtient plus d'informations sur ce que les gens font sur Internet.</p>
+	<p>Anonymat, ✓</p>
+	<div class="flex anchor relative">
+		<h3 id="is-it-faster"><b>Est-ce plus rapide ?</b></h3>
+		<a href="https://blog.cloudflare.com/#is-it-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tor n'est pas réputé pour sa rapidité. L'une des raisons réside dans le coût physique que représente le rebondissement des paquets dans un réseau décentralisé. Les connexions par l'intermédiaire du service Cloudflare Onion n'ajoutent pas à ce coût, car le nombre de sauts n'est pas plus élevé que d'habitude.</p>
+	<p>Les coûts de bande passante des opérateurs de nœuds de sortie expliquent également cette situation. C'est un domaine dans lequel nous espérons que ce service pourra apporter un soulagement, car il transfère le trafic des nœuds de sortie vers nos propres serveurs, réduisant ainsi les coûts de fonctionnement des nœuds de sortie.</p>
+	<p>BONUS : Performances, ✓</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-enable-it"><b>Comment l’activer ?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-enable-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Onion Routing est désormais disponible pour tous les clients Cloudflare, et il est activé par défaut pour les clients Free et Pro. L'option est disponible dans l'onglet consacré au cryptage du tableau de bord de Cloudflare.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hA2RUo2mh5WZDM5xSkwow/d407c5fb030c3df65cf64fdbad2fffcd/Screen-Shot-2018-09-20-at-7.36.11-AM.jpg" alt="" class="kg-image" width="1728" height="370" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="browser-support"><b>Compatibilité avec les navigateurs</b></h3>
+		<a href="https://blog.cloudflare.com/#browser-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous recommandons d'utiliser <a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank" rel="noopener noreferrer">Tor Browser 8.0</a>, qui est la première version stable basée sur Firefox 60 ESR, et qui prend en charge les en-têtes .oignon Alt-Svc ainsi que HTTP/2. Le nouveau navigateur Tor pour Android (alpha) prend également en charge cette fonctionnalité. Vous pouvez vérifier si votre connexion est acheminée via un service caché ou non dans la fenêtre Developer Tools (Outils de développement) de l'onglet Network (Réseau). Si vous utilisez le navigateur Tor et que vous ne voyez pas Alt-Svc dans les en-têtes de réponse, cela signifie que vous utilisez déjà le routage .onion. Vous pourrez le voir dans l'<a href="https://trac.torproject.org/projects/tor/ticket/27590" target="_blank" rel="noopener noreferrer">interface utilisateur</a> des futures versions de Tor Browser.</p>
+	<blockquote>
+		<p>We've got BIG NEWS. We gave Tor Browser a UX overhaul.</p>
+		<p>Tor Browser 8.0 has a new user onboarding experience, an updated landing page, additional language support, and new behaviors for bridge fetching, displaying a circuit, and visiting .onion sites.<a href="https://t.co/fpCpSTXT2L" target="_blank" rel="noopener noreferrer">https://t.co/fpCpSTXT2L</a> <a href="https://t.co/xbj9lKTApP" target="_blank" rel="noopener noreferrer">pic.twitter.com/xbj9lKTApP</a></p>
+		<p>— The Tor Project (@torproject) <a href="https://twitter.com/torproject/status/1037397236257366017?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">September 5, 2018</a></p>
+	</blockquote>
+	<blockquote>
+		<p>Nous avons de grandes nouvelles. Nous avons remanié l'expérience utilisateur de Tor Browser.</p>
+	</blockquote>
+	<blockquote>
+		<p>Tor Browser 8.0 offre une nouvelle expérience d'intégration aux utilisateurs, une page d'accueil mise à jour, un support linguistique supplémentaire, et de nouveaux comportements pour aller chercher les passerelles, afficher les circuits et visiter les sites .onion. <a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank" rel="noopener noreferrer">https://blog.torproject.org/new-release-tor-browser-80</a>...</p>
+	</blockquote>
+	<p>D'autres fournisseurs de navigateurs soucieux de la protection de la vie privée s'y intéressent également. Tom Lowenthal, chef de produit en matière de confidentialité et de sécurité chez <a href="https://brave.com" target="_blank" rel="noopener noreferrer">Brave</a>, a déclaré :</p>
+	<p>Les migrations automatiques vers les sites « .onion » fourniront une autre couche de sécurité à la navigation privée Brave avec Tor. Nous nous réjouissons de la concrétisation de cette nouvelle norme.</p>
+	<div class="flex anchor relative">
+		<h3 id="any-last-words"><b>Un dernier mot ?</b></h3>
+		<a href="https://blog.cloudflare.com/#any-last-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tout comme Opportunistic Encryption, Opportunistic Onions ne vous protège pas complètement contre les attaquants qui peuvent simplement supprimer l'en-tête de service alternatif. Il est donc important d'utiliser <a href="https://www.eff.org/https-everywhere" target="_blank" rel="noopener noreferrer">HTTPS Everywhere</a> pour sécuriser la première requête. Une fois qu'un circuit Tor est établi, les requêtes suivantes devraient rester dans le réseau Tor de la source à la destination.</p>
+	<p>Au fur et à mesure que nous actualiserons et <a href="https://trac.torproject.org/projects/tor/ticket/27502" target="_blank" rel="noopener noreferrer">améliorerons</a> ce service, nous vous ferons part de nos découvertes. En attendant, n'hésitez pas à essayer cette idée sur <a href="https://github.com/mahrud/caddy-altonions" target="_blank" rel="noopener noreferrer">Caddy</a> et à nous faire part de vos commentaires ou suggestions.</p>
+	<div class="flex anchor relative">
+		<h3 id="acknowledgments"><b>Remerciements</b></h3>
+		<a href="https://blog.cloudflare.com/#acknowledgments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">cflarexljc3rw355ysrkrzwapozws6nre6xsy3n4yrj7taye3uiby3ad.onion
+cflarenuttlfuyn7imozr4atzvfbiw3ezgbdjdldmdx7srterayaozid.onion
+cflares35lvdlczhy3r6qbza5jjxbcplzvdveabhf7bsp7y4nzmn67yd.onion
+cflareusni3s7vwhq2f7gc4opsik7aa4t2ajedhzr42ez6uajaywh3qd.onion
+cflareki4v3lh674hq55k3n7xd4ibkwx3pnw67rr3gkpsonjmxbktxyd.onion
+cflarejlah424meosswvaeqzb54rtdetr4xva6mq2bm2hfcx5isaglid.onion
+cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion
+cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion
+cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion
+cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</code></pre>
+	<p>Patrick McManus de Mozilla pour avoir rendu possible la compatibilité des services alternatifs .onion dans Firefox ; Arthur Edelstein du projet Tor pour avoir corrigé et activé HTTP/2 et HTTP Alternative Services dans Tor Browser 8.0 ; Alexander Færøy et George Kadianakis du projet Tor pour l'ajout de la compatibilité de Proxy Protocol avec les services cachés ; l'équipe du projet Tor pour son aide précieuse et les discussions qui ont été menées ; sans oublier tous les membres de Cloudflare ayant participé à ce projet.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15NmOPYhQ1eUrnNvavD3TX/f3878ea7031dee5fa0b8fcfffb5e6563/Crypto-Week.png" alt="" class="kg-image" width="1808" height="925" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="addresses-used-by-the-cloudflare-onion-service"><b>Adresses utilisées par le service Cloudflare Onion</b></h4>
+		<a href="https://blog.cloudflare.com/#addresses-used-by-the-cloudflare-onion-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/subscribe"><i>Abonnez-vous à notre blog</i></a> <i>pour recevoir quotidiennement des bulletins d’information.</i></p>
+</div>

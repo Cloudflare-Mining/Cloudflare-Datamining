@@ -1,0 +1,254 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/harnessing-office-chaos">English</a>、<a href="https://blog.cloudflare.com/zh-tw/harnessing-office-chaos">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/harnessing-office-chaos">Français</a>、<a href="https://blog.cloudflare.com/de-de/harnessing-office-chaos">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/harnessing-office-chaos">한국어</a>、<a href="https://blog.cloudflare.com/es-es/harnessing-office-chaos">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/harnessing-office-chaos">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n5sZWsglzWeRBJsUc5Wuc/d3b9becd94ec6c28c377eb1a145733f1/harnessing-office-chaos.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>児童文学の<a href="https://en.wikipedia.org/wiki/The_Snail_and_the_Whale" target="_blank" rel="noopener noreferrer">「カタツムリとクジラ」</a>では、思いがけず遠くへの冒険から帰った後、主人公が「どれくらい時が経ったのかな」、「大きくなったね」と言いました。前回LavaRand（ラバランド）について書いてから約4年が経ちますが、その間、Cloudflareによる物理的なエントロピー源を利用したインターネットのセキュリティ向上のストーリーは続き、多くの人々の関心を集めてきました。当初はラバランプであった唯一の物理的エントロピー源は、成長し多様化しました。LavaRandのストーリーを少しご紹介したいと思います。このブログポストでは、LavaRandに追加された新しい「カオス」ソースと、そのカオスを利用した次なるアプリケーションについて説明します。「ランダムな抽選」を行う際、その結果が何らかの方法で操作されていないことを証明するに当たり、その言葉だけを信じる必要がなくなります。そして、将来のある時点までメッセージを解読できないようにするタイムロック暗号化について説明します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VAXGAjHjvvY5IAEG63gPu/4c199f8bb127b03fe613ab8dc6c0016f/image12-1.png" alt="Harnessing chaos in Cloudflare offices" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="lavarand-origins">LavaRandの起源</h2>
+		<a href="https://blog.cloudflare.com/#lavarand-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サンフランシスコにある弊社オフィスのラバランプの壁から供給されるエントロピーは、Cloudflareを通しての接続を保護するランダム性の一翼を長い間に渡り担ってきました。</p>
+	<p>ロウが流れる溶岩ランプ。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XdIuQkEWKat2c9YanaCY0/aa873b127b5eea8cea19982f3552ccc2/image11-3.png" alt="Lava lamps with flowing wax." class="kg-image" width="1612" height="381" loading="lazy">
+
+	</figure>
+	<p>Cloudflareのサーバーは、毎秒5,500万件以上のHTTPリクエストを処理しています。<a href="https://radar.cloudflare.com/adoption-and-usage#http-vs-https" target="_blank" rel="noopener noreferrer">その大部分はTLSプロトコルを介して保護され</a>ており、真正性と機密性を保証しています。その中のTLSなどの暗号プロトコルは、その根底に安全なランダム性のソースを必要としており、これがなければセキュリティは実現しません。</p>
+	<p>暗号技術で使用される安全なランダム性は、「真の」ランダム性と計算上区別できないものであることが必要です。そのためには<a href="https://en.wikipedia.org/wiki/Randomness_test" target="_blank" rel="noopener noreferrer">統計的なランダム性テスト</a>に合格し、計算量に制限のある敵対者がどれだけ過去の出力を見たとしても、その出力を予測できないことが必要です。これを実現する典型的な方法は、あるランダムな「シード（種）」を取り、それを要求に応じて一連の予測不可能なバイトのストリームを無限に生成できる<a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>暗号学的に安全な擬似乱数発生器</i></a>に読み込ませます。CSPRNGの特性により、その内部状態を知らない誰にとっても、すべての出力が真にランダムな出力と実質的に区別できないことが保証されます。しかし、これはすべて、安全かつランダムなシードが初めに李朝できるか否かにかかってきます。真のランダム性と擬似ランダム性の詳細は、<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">別のブログ</a>をご覧ください。安全でないランダム性ではうまくいかない好例については、<a href="https://blog.cloudflare.com/why-randomness-matters">このブログ</a>をご覧ください。</p>
+	<p>長年にわたり、Cloudflareのサーバーはエントロピープールのシードをローカルなエントロピーのソース（パケット到着の正確なタイミングやキーボードイベントなど）に依存していました。これらのサーバーのローカル・エントロピー・ソースが安全でない、もしくは簡単に侵害される可能性があると確信できる理由はないものの、弊社はその可能性を完全に避けたいと考えました。弊社では、サーバーが定期的に外部ソースからの真のランダム性でエントロピープールをリフレッシュできるシステムを構築することを解決策として定めました。</p>
+	<p>そこで登場するのが、Lavarand（ラバランド）です。「Lavarand」は長い間、<a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank" rel="noopener noreferrer">ランダム性を生成するシステム</a>（1997年にSilicon Graphics社によってはじめて開発）を指す名称でした。Cloudflareは2017年、サンフランシスコのオフィスにある溶岩ランプの壁からエントロピーを収集し、内部APIを介して利用可能にするシステムとしての<a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production">インスタンス化したLavaRandシステムを立ち上げ</a>ました。ここでは、弊社のサーバーが定期的にAPIに問い合わせ、LavaRandから新鮮なランダムネスを取得し、エントロピーのプールに組み込みます。LavaRandによる貢献は、エントロピープールミックスへのさらに味を調えるスパイスとなったのです（技術的な詳細は、<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">前回のブログ記事</a>をご覧ください）。</p>
+	<p>Cloudflareサンフランシスコオフィスのラバランプ。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IPp9Lizp0pL83clLWGGNa/19d397787b5a5adbb337f581d9639fce/image10.jpg" alt="Lava lamps in Cloudflare’s San Francisco office." class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="adding-to-the-office-chaos">オフィスのカオスをさらに強化</h2>
+		<a href="https://blog.cloudflare.com/#adding-to-the-office-chaos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サンフランシスコにある弊社のラバランプは弊社のシステムに新鮮なエントロピーを供給するために何年も不眠不休で働き続けた中、今ではその仕事を手伝ってくれる仲間が世界中に現れています。Cloudflareが成長するにつれ、弊社オフィスで見い出され、弊社オフィスから供給されるエントロピーのソースも多様化しています。<a href="https://blog.cloudflare.com/ja-jp/cloudflare-top-100-most-loved-workplaces-in-2022-ja-jp">CloudflareのPlacesチーム</a>は、弊社オフィスが弊社の価値観や文化を反映したものになるよう努力しています。大規模なオフィスの中には、物理的なエントロピーのシステムが設置されている場所もあり、長い間を懸けてLavaRandを取り込む取り組みの結果となっています。これらのシステムの具体的かつ期待に満ちたその魅力は、直感的にランダムだと考える物理的な力学に基づくものです。ラバランプの中で、冷えた「溶岩」の塊の中を温められた「溶岩」の塊が浮遊していく様子は、他の予測不可能（そして多くの場合美しく見える）でダイナミックなシステムが弊社の心をつかむのと同じように、弊社の関心を掻き立てます。</p>
+	<div class="flex anchor relative">
+		<h3 id="londons-unpredictable-pendulums">ロンドンの予測不能な振り子</h3>
+		<a href="https://blog.cloudflare.com/#londons-unpredictable-pendulums" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロンドンオフィスの訪問者が目にするものに、壁一面の二重の振り子があります。その美しい揺れ方は、LavaRandとCloudflareのサーバーが引き出すランダム性のプールにさらなるエントロピーの源をもたらしています。</p>
+	<p>Cloudflareのロンドンオフィスにある二重振り子ディスプレイの近景。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjgKso6GgfvLX74LEyYsE/7688dcdd10f3f3219f0c569724cb42ab/image8.jpg" alt="Close-up of double pendulum display in Cloudflare’s London office." class="kg-image" width="512" height="341" loading="lazy">
+
+	</figure>
+	<p>ぱっと見では、振り子台の影と後壁の回転アームが落とす影は混沌としたものに見えるかもしれません。そうであれば、この装置は目的を達成したと言えるでしょう。さまざまな光の条件とそれらが織りなす影が、このエントロピー源からもたらされるカオスに拍車をかけます。</p>
+	<p>Cloudflareロンドンオフィスに設置された、光の状態が変化する二重振り子のディスプレイ。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JWrKSqoaPJQC2VSbHygj/e87c2936282e55730a1db4af7d4f7e7f/Screenshot-2024-03-08-at-13.13.12.png" alt="Double pendulum display in Cloudflare’s London office with changing light conditions." class="kg-image" width="1616" height="408" loading="lazy">
+
+	</figure>
+	<p>実際、アームの動きを2次元に限定しても、アームがたどる軌跡は魅惑的なほど変化に富んでおり、<a href="https://en.wikipedia.org/wiki/Double_pendulum" target="_blank" rel="noopener noreferrer">数学的にカオス</a>であることを示します。空気抵抗、温度、環境を忘れ、突然変異は完全に決定論的であると仮定したとしても、結果として生じる長期的な運動を予測することは困難です。特にこのシステムは初期の状態に非常に敏感で、この初期の状態（どのように運動させるか）と決定論的な動作との組み合わせにより、振り子が静止し、ロンドンにいるCloudflareの従業員によって再びシステムが運動させられるまで、ユニークな経路が生み出され続けます。</p>
+	<div class="flex anchor relative">
+		<h3 id="austins-mesmerizing-mobiles">オースティンの魅惑的なモビール</h3>
+		<a href="https://blog.cloudflare.com/#austins-mesmerizing-mobiles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>テキサス州オースティンの美しいCloudflareの新オフィスは先日、開設1周年を迎えました。オースティンのダウンタウンにあるCloudflareのエントランスの上には、半透明の虹のモビールが吊り下げられています。変化する光を反射して渦を巻き、囲いの壁に色とりどりの模様を映し出します。吊り下げられたモビールのディスプレイとその影は、ドアの開閉、空調の変化、周囲の光など、物理的な環境に非常に敏感です。このカオスシステムの魅惑的で変化するシーンは定期的にキャプチャされ、ラバランドのランダム性のストリームに供給されています。</p>
+	<p>Cloudflareオースティンのオフィスに吊るされたレインボーモビール。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mfXP2V8pX0C0CoheE369Q/83fe1b4bdba232b8c8c722bc49987bfe/Screenshot-2024-03-08-at-13.14.22.png" alt="Hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1594" height="1568" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="mixing-new-sources-into-lavarand">LavaRandへのソースの新たなミックス</h2>
+		<a href="https://blog.cloudflare.com/#mixing-new-sources-into-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>弊社は、この新しいオフィスのカオスの発生源を、<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">以前詳しく紹介した</a>既存の溶岩ランプと同じ方法でLavaRandシステムに組み込みました（溶岩ランプ以外のものも登場しているものの、LavaRandとの名前を継承しています）。</p>
+	<p>簡単にまとめると、一定の間隔でカメラがディスプレイのその時点のランダムネスを撮影します。基礎となるシステムが真にランダムであるため、生成される画像には真のランダム性が備わることになります。影や光の状態の変化さえも、ユニークさかつ予測不可能性を生み出すのに一役買うのです。ここだけの話ですが、基本的なレベルでは、現実世界のイメージセンサーはノイズ源たり得ることが多く、レンズキャップを外して撮影した画像でさえ、エントロピー源として十分に機能するのです。弊社はこれを、このインストレーションの美しきカオス的な動きに偶然加わった付加的なノイズととらえています。</p>
+	<p>Cloudflareオースティンのオフィスに吊るされた虹のモビールの近景。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zrgpZA2xosqvTzU6dk8V/6e1f061640192f7de4585d7f2959f4a7/Screenshot-2024-03-08-at-13.16.23.png" alt="Close-up of hanging rainbow mobiles in Cloudflare’s Austin office." class="kg-image" width="1624" height="786" loading="lazy">
+
+	</figure>
+	<p>特定の時点でのランダムネスディスプレイの状態をキャプチャした静止画像が得られたら、その画像のコンパクトな表現であるハッシュを計算し、新にランダムなバイトの固定サイズの出力を導きます。</p>
+	<p>物理的なエントロピーディスプレイをランダムなバイト列に変換するプロセス。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VjuWFkK83t3EkTjPxYGc6/2ddc9da8c2553a8a1dbb04513de6acbd/image4-26.png" alt="Process of converting physical entropy displays into random byte strings." class="kg-image" width="1491" height="400" loading="lazy">
+
+	</figure>
+	<p>ランダムなバイトは、（旧来のシードおよびシステムのローカルなエントロピーソースからのランダム性とともに）<i>鍵導出関数</i>（KDF）への入力として使用され、新しいランダムシードが計算されます。<a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator" target="_blank" rel="noopener noreferrer"><i>暗号的に安全な擬似乱数生成器</i></a>（CSPRNG）は、要求に応じて予測不可能なバイトストリームを無限に生成できます。CSPRNGの特性により、すべての出力は、その内部状態を知らない誰もが真にランダムな出力と実質的に区別できないことが保証されます。LavaRandは、クライアントが新鮮なランダム性を要求できるシンプルな内部APIを通し、このランダム性のストリームを提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-use-lavarand">LavaRandの利用方法</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">seed = KDF(new image || previous seed || system randomness)
+rng = CSPRNG(seed)
+…
+rand1 = rng.random()
+rand2 = rng.random()</code></pre>
+	<p>アプリケーションでは通常、プライベートとパブリックの2種類の安全なランダム性が使用されます。</p>
+	<p><b>プライベートなランダム性</b>は、パスワード、暗号化キー、ユーザーID、および永遠に秘密にすることになるその他の値を生成するために使用されます。<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">以前説明した</a>通り、弊社サーバーはエントロピーのプールを更新するため、定期的にLavaRandから新しいプライベートなランダム性を要求します。このため、LavaRandからのランダムネスは基本的に外部にも利用可能なのです。開発者がLavaRandのプライベートランダム性を利用する簡単な方法の一つに、Cloudflare Workerの<a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#methods" target="_blank" rel="noopener noreferrer">Web Crypto APIのgetRandomValues関数</a>利用することが挙げられます。または、（<a href="https://github.com/ejcx/csprng.xyz" target="_blank" rel="noopener noreferrer">ソース</a>）のように、既に構築されたものを使用することもできます。</p>
+	<p><b>パブリックなランダム性</b>とは、予測不可能で偏りのない乱数値のことで、公開されると誰でも利用できるようになります。そのため、<b><i>暗号化キーの生成には用いるべきではありません</i></b>。宝くじの当選番号やスポーツイベントの開始時のコイントスは、パブリックなランダム性の一例です。結果が分かっているコイントスは偏りのない予測不可能なエントロピーの源とは_なり得ず_、スポーツベッティングの世界に劇的な影響がもたらされることになります。</p>
+	<p>予測不可能かつ不偏であることに加え、ランダム性を消費する者がその値が誠実な方法で生成されたことを保証できるように、パブリックなランダム性が_信頼できるもの_であることも望ましいと言えます。当たりくじが不当に選ばれると分かっていれば、宝くじを買う人はいないはずです。実際、腐敗した内通者が個人的な利益目的でパブリックなランダム性を破壊した事例が知られています。<a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank" rel="noopener noreferrer">州政府主催の宝くじの従業員</a>が宝くじの乱数発生器を操作し、友人や家族が何百万ドルもの賞金を獲得した事例があります。</p>
+	<p>パブリックなランダム性における基本的な課題は、ランダムな出力を生成する権威を信用しなければならないことになります。<a href="https://beacon.nist.gov/home" target="_blank" rel="noopener noreferrer">NIST</a>（アメリカ国立標準技術研究所）などの著名な権威は多くのアプリケーションでは十分信頼に値するかもしれませんが、一部のアプリケーション（特に分散化が重要なアプリケーション）では問題になる可能性があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="drand-distributed-and-verifiable-public-randomness">drand：分散された検証可能なパブリックなランダム性</h2>
+		<a href="https://blog.cloudflare.com/#drand-distributed-and-verifiable-public-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この信頼の問題を解決するため、Cloudflareは2019年に7つの独立した地理的に散らばる組織と共同で<a href="https://blog.cloudflare.com/ja-jp/league-of-entropy-ja-jp">リーグオブエントロピー</a>を結成し、<a href="https://blog.cloudflare.com/inside-the-entropy">drand</a>プロトコル（ディーランドと発音）を用いたパブリックなランダム性をリリースしました。各組織は、drandネットワークのシードに使用されるエントロピーの共同プールに独自のランダム性のソースを準備することとなりました。Cloudflareはもちろん、LavaRandからのランダム性を使用しました。</p>
+	<p>リーグオブエントロピーは実験的なネットワークとして始まりましたが、<a href="https://protocol.ai" target="_blank" rel="noopener noreferrer">Protocol Labs</a>のdrandチームの指導とサポートにより、<a href="https://spec.filecoin.io/libraries/drand" target="_blank" rel="noopener noreferrer">分散ファイルストレージ</a>から<a href="https://twitter.com/etherplay/status/1734875536608882799" target="_blank" rel="noopener noreferrer">オンラインゲーミング</a>、<a href="https://medium.com/tierion/tierion-joins-the-league-of-entropy-replaces-nist-randomness-beacon-with-drand-in-chainpoint-9f3c32f0cd9b" target="_blank" rel="noopener noreferrer">タイムスタンプ証明</a>、<a href="https://drand.love/docs/timelock-encryption" target="_blank" rel="noopener noreferrer">タイムロック暗号化</a>（後述）までのアプリケーションが頼りにすることになる、信頼性が高く本番稼動可能なコアインターネットサービスになりました。リーグオブエントロピーも成長し、現在では4大陸にまたがる18の組織がdrandネットワークに参加しています。</p>
+	<p>リーグオブエントロピーのdrandビーコン（乱数値を生成する頻度や乱数値を_連鎖_させるかどうかなど、それぞれ異なるパラメータで実行される－以下に詳述）には、その信頼性に寄与する2つの重要た特性として、_分散型_であることと_検証可能性_を備えています。分散化によって、一人や二人の悪意のあるアクターが乱数ビーコンを破壊したり偏らせたりすることができないようにし、検証可能性により乱数値がdrandプロトコルに従いdrandネットワークの参加者の一定数（少なくとも半分、通常はそれ以上）の参加によって生成されていることを誰でもチェックできます。このように、新しい参加者が増えるごとに、drandネットワークの信頼性・信用性は高まっていきます。</p>
+	<p>以下、drandが分散鍵生成と閾値署名を用いてこれらの特性を実現している様子を簡単に説明します。より詳しくお知りになりたい場合、<a href="https://blog.cloudflare.com/inside-the-entropy">以前のブログ記事</a>およびdrandチームがまとめた<a href="https://drand.love/blog" target="_blank" rel="noopener noreferrer">非常に優れた記事</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="distributed-key-generation-and-threshold-signatures">分散鍵生成と閾値署名</h3>
+		<a href="https://blog.cloudflare.com/#distributed-key-generation-and-threshold-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>drandビーコンの初期セットアップ中に、ネットワーク内のノードは<a href="https://en.wikipedia.org/wiki/Distributed_key_generation" target="_blank" rel="noopener noreferrer">Pedersenコミットメント方式</a>に基づく分散鍵生成（DKG）プロトコルを実行します。その結果、各ノードは分散グループ鍵の「シェア」（鍵ペア）を保持します。メッセージへの署名のようにグループ秘密鍵を使って有用なことをするためには、ネットワーク内のノードの少なくとも一定数以上の値（例えば9台中7台）が<a href="https://en.wikipedia.org/wiki/BLS_digital_signature" target="_blank" rel="noopener noreferrer">BLS閾値署名</a>のグループ情報の構築に参加する必要があります。リーグオブエントロピーのメインネットdrandネットワークでの<a href="https://drand.love/blog/2023/10/16/quicknet-is-live" target="_blank" rel="noopener noreferrer">quicknet</a>ビーコンのグループ情報を以下に示します：</p>
+	<p>（上記のURLの52db9b...という16進数は、ビーコンのコンフィギュレーションのハッシュ値です。<a href="https://drand.cloudflare.com/chains" target="_blank" rel="noopener noreferrer">https://drand.cloudflare.com/chains</a>にて、メインネットのdrandノードがサポートするすべてのビーコンをご覧ください)。</p>
+	<pre class="language-curl"><code class="language-curl">curl -s https://drand.cloudflare.com/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/info | jq
+{
+  "public_key": "83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a",
+  "period": 3,
+  "genesis_time": 1692803367,
+  "hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+  "groupHash": "f477d5c89f21a17c863a7f937c6a6d15859414d2be09cd448d4279af331c5d3e",
+  "schemeID": "bls-unchained-g1-rfc9380",
+  "metadata": {
+    "beaconID": "quicknet"
+  }
+}</code></pre>
+	<p>ネットワーク内のノードは、定期的（クイックネットでは3秒ごと）に、現在のラウンド番号や前回のラウンド署名など、合意されたメッセージに対する署名を作成するよう設定されています（詳細は後述）。各ノードはグループ鍵のシェアを使用して現在のラウンドメッセージに対する部分署名を作成し、ネットワーク内の他のノードにブロードキャストします。ノードが十分な部分署名を得ると、それらを集約して指定されたラウンドのグループ署名を生成できます。</p>
+	<p>ラウンドのグループ署名_は、_ランダム性となります（上記の出力では、より短く固定サイズの出力を好むアプリケーションのために、ランダム性の値は単に署名のsha256ハッシュとなっています）。署名は、drandネットワーク内のノードの十分な数（少なくとも過半数であるものの、それ以上に設定することも可能）が正直であり結託しない限り、事前に予測はできません。さらに、誰でもビーコンのグループ・パブリックキーを使って特定のラウンドの署名を検証できます。開発者はdrandクライアント<a href="https://drand.love/developer/clients" target="_blank" rel="noopener noreferrer">ライブラリ</a>や<a href="https://drand.love/developer/drand-client" target="_blank" rel="noopener noreferrer">CLI</a>を用い、ビーコンから取得したすべての値について検証を行うことが推奨されます。</p>
+	<pre class="language-curl"><code class="language-curl">curl -s https://drand.cloudflare.com/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/13335 | jq
+{
+  "round": 13335,
+  "randomness": "f4eb2e59448d155b1bc34337f2a4160ac5005429644ba61134779a8b8c6087b6",
+  "signature": "a38ab268d58c04ce2d22b8317e4b66ecda5fa8841c7215bf7733af8dbaed6c5e7d8d60b77817294a64b891f719bc1b40"
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="chained-vs-unchained-randomness">連鎖するランダム性と連鎖しないランダム性</h3>
+		<a href="https://blog.cloudflare.com/#chained-vs-unchained-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リーグオブエントロピーが2019年に第1世代のdrandビーコンをローンチしたとき、グループの署名が計算されるラウンドごとのメッセージには、前のラウンドの署名が含まれていました。これにより、最初の「ジェネシス」ラウンドに至るまで、ランダム性ラウンドのチェーン（連鎖）が生まれます。連鎖したランダム性は、単一ソースのランダム性ビーコンにいくつかの優れた特性を提供し、NISTの相互運用のための仕様に要件として含まれおり、さらに<a href="https://csrc.nist.gov/projects/interoperable-randomness-beacons" target="_blank" rel="noopener noreferrer">相互運用可能なパブリックランダムネスビーコンについてのNIST仕様</a>にも含まれています。</p>
+	<p>しかし、2022年にdrandチームは<a href="https://drand.love/blog/2022/02/21/multi-frequency-support-and-timelock-encryption-capabilities/#unchained-randomness-timed-encryption" target="_blank" rel="noopener noreferrer">連鎖しないランダム性</a>について明確にし、署名されるメッセージは_予測可能_であり、以前のラウンドのランダム性に依存せず、drandネットワークでの連鎖するランダム性と同じセキュリティの確約がもたらされることを示しました（両者とも一定数の誠実なノードを必要とします）。<a href="https://drand.love/blog/2023/10/16/quicknet-is-live" target="_blank" rel="noopener noreferrer">quicknet</a>における非連鎖ランダム性の実装では、署名されるメッセージは単にラウンド番号で構成されます。</p>
+	<p>連鎖しないランダムネスは、複数の強力な特性とユーザビリティの向上をもたらします。使い勝手の面では、ランダム性ビーコンを利用する場合、特定のラウンドを完全に検証するため、発生ラウンドまでのランダム性の連鎖を完全に再構築する必要はなく、現在ラウンドの番号とグループ・パブリックキーだけが必要な情報となります。これにより、クライアントはランダム性の連鎖を継続的に追う必要がなく、ランダム性のラウンドを発生させる頻度を選択できるため、柔軟性が大幅に向上します。</p>
+	<pre class="language-bash"><code class="language-bash"># chained randomness
+signature = group_sign(round || previous_signature)
+
+# unchained randomness
+signature = group_sign(round)</code></pre>
+	<p>署名されるメッセージは（単なるラウンド数であり）事前に分かっているため、連鎖しないランダム性はタイムロック暗号化という強力かつ新たな特性ももたらすことになります。</p>
+	<p>回転二重振り子。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PVw1hyLALNYG3p20U2f2D/eeac0fd2fe805cabc1b75055cc0b0076/image7-7.png" alt="Rotating double pendulums." class="kg-image" width="1999" height="381" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="timelock-encryption">タイムロック暗号化</h2>
+		<a href="https://blog.cloudflare.com/#timelock-encryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>タイムロック（または「タイムリリース」）暗号化とは、ある一定の時間が経過するまでメッセージを復号できないように暗号化する方法です。タイムロック暗号化には、<a href="https://dspace.mit.edu/bitstream/handle/1721.1/149822/MIT-LCS-TR-684.pdf" target="_blank" rel="noopener noreferrer">Rivest、Shamir、Wagner</a>が定義する次の2つの基本的なアプローチがあります。</p>
+	<p>- 「タイムロック問題」の利用：コンピュータを一定時間以上動かし続けないと解けない計算問題）</p>
+	<p>- 特定の期日まで特定の情報を明らかにしないと確約する、信頼できるエージェントの利用</p>
+	<p>信頼できるエージェントを使う場合、そのエージェントが信頼できることを保証しなければならない点は明らかに問題となります。この懸念の軽減のため、秘密の共有アプローチを活用できます。</p>
+	<p>drandネットワークは、信頼性のために秘密分散を使用する独立したエージェントのグループであり、指定された日付まで明らかにされるべきでない「特定の情報」は、ラウンドごとのランダム性とよく似ているのです。次に、連鎖しないランダム性を持つdrandネットワーク上でタイムロック暗号を実装する方法について説明し、最後に実用的なデモンストレーションを行います。これを可能にするバイリニア・グループやペアリングに基づく暗号についてはここでは掘り下げませんが、興味のある方はぜひ、Nicolas Gailly、Kelsey Melissaris、Yolan Romailler共著の <a href="https://eprint.iacr.org/2023/189" target="_blank" rel="noopener noreferrer">tlock: Practical Timelock Encryption from Threshold BLS</a>（tlock：Threshold BLSからの実践的タイムロック暗号化）をお読みください。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-timelock-your-secrets">秘密情報をタイムロックする方法</h3>
+		<a href="https://blog.cloudflare.com/#how-to-timelock-your-secrets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、タイムロックで暗号化されたメッセージが開示された時点で復号できるランダム性ラウンドを特定します。drandネットワークは一定の間隔でランダム性を生成するため、drandビーコンの各ラウンドは特定のタイムスタンプ（ネットワークが実際にビーコンを生成するまでのわずかな遅延を除く）と密接に結びついていることが考慮する点として重要になります。</p>
+	<p>ラウンドが決まれば、バイリニア・グループの特性を利用することで、drandビーコンのグループ・パブリックキーにより、あるラウンドまでのメッセージを暗号化できます。</p>
+	<p>drandネットワークのノードが協力してラウンドのランダム性を導き出した後（実際には、ビーコンのグループ秘密鍵を使ってラウンド番号に署名するだけ）、_誰も_が暗号文を解読できます（ここでバイリニア・グループの威力が活躍します）。</p>
+	<p>これが可能になるのは、実際にはタイムロックされたメッセージは対称スキームの秘密鍵であるためです。つまり、メッセージを共通鍵で暗号化し、その鍵をタイムロックで暗号化することで、未来の時点での復号を可能にします。</p>
+	<pre class="language-bash"><code class="language-bash">ciphertext = EncryptToRound(msg, round, beacon_public_key)</code></pre>
+	<p>次に、タイムロック暗号化を実際に行うため、当社のエンジニアがCloudflare Workers上で構築したツールを使用します。<a href="https://github.com/thibmeu/tlock-worker" target="_blank" rel="noopener noreferrer">ソースコード</a>は公開されていますので、動作の様子をご覧ください。</p>
+	<pre class="language-bash"><code class="language-bash">random = Randomness(round)
+message = Decrypt(ciphertext,random)</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LavaRandを振り返り、将来Cloudflareのオフィスを訪れてランダムネス表示を直接見たり、次のプロジェクトでdrandがもたらす検証可能な「パブリックなランダム性」やタイムロック暗号化の活用に取り組むきっかけになれば幸いです。</p>
+	<pre class="language-python"><code class="language-python"># 1. Create a file
+echo "A message from the past to the future..." &gt; original.txt
+
+# 2. Get the drand round 1 minute into the future (20 rounds) 
+BEACON="52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971"
+ROUND=$(curl "https://drand.cloudflare.com/$BEACON/public/latest" | jq ".round+20")
+
+# 3. Encrypt and require that round number
+curl -X POST --data-binary @original.txt --output encrypted.pem https://tlock-worker.crypto-team.workers.dev/encrypt/$ROUND
+
+# 4. Try to decrypt it (and only succeed 20 rounds x 3s later)
+curl -X POST --data-binary @encrypted.pem --fail --show-error https://tlock-worker.crypto-team.workers.dev/decrypt</code></pre>
+	<p>インターネットを保護する暗号化には、カオスが必要になります。新たなソースが追加されさえしたとしても－まだ夢にすら描かれていない、これから見つかる新たな使い方にも適合し－あの童話のカタツムリと同じように－CloudflareのLavaRandは、弊社オフィスの物理的世界の混沌とした美しさをランダム性のストリームに変え続けます。</p>
+	<p>空、海、陸、波、洞窟、金色の砂...彼女はすべてを見つめ、そのすべてに驚き、そしてクジラに言ったのです。「自分は、小さいなあ」</p>
+	<p>そう、カタツムリはクジラの上ではるかに大きな世界を見ているのです。</p>
+	<p>今後もニュースやお知らせ、示唆に富んだディスカッションをお届けいたします！<a href="https://cloudflare.tv/shows/security-week" target="_blank" rel="noopener noreferrer">Security Weekのハブページ</a>もぜひご覧ください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aUx8oEz7t6W649nYlAmzD/f4658fe8a6b467804f2e6c21c9dec2cb/image1-30.png" alt="A snail on a whale." class="kg-image" width="1999" height="381" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/52095915c232273e4d91f11ab6ae4004/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F52095915c232273e4d91f11ab6ae4004%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+</div>

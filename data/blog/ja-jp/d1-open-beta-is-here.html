@@ -1,0 +1,182 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/d1-open-beta-is-here">English</a>、<a href="https://blog.cloudflare.com/zh-tw/d1-open-beta-is-here">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/d1-open-beta-is-here">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/d1-open-beta-is-here">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eLTxRRRkGcnVBu8ZIcCvz/37802ea59a6d3f36afd2b9ae2dd84d07/d1-open-beta-is-here.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><b>D1は現在オープンベータ中で</b>、テーマは「スケール」です。データベースあたりのストレージ上限を引き上げる_とともに_、より多くのデータベースを作成できるようにすることで、開発者がD1で本番規模のアプリケーションを構築できるようにします。既存の有料Workersプランをお持ちの開発者の皆様は、この恩恵を受けるために指一本動かす必要はありません。既存のD1データベースにはすべてにこれを適用しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sioTCCEWQ0hiLg5ZSCD46/c53658e14bc379bea56cd0f3fed1d42b/image1-37.png" alt="D1: open beta is here" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>Developer Weekの際の<a href="https://blog.cloudflare.com/ja-jp/d1-turning-it-up-to-11-ja-jp">最新のD1アップデート情報</a>や、<a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">変更履歴にある多数のアップデート情報</a>を見逃した方、D1全般が初めての方は、ぜひお読みください。</p>
+	<div class="flex anchor relative">
+		<h3 id="remind-me-d1-databases">おさらい: D1とは？データベース？</h3>
+		<a href="https://blog.cloudflare.com/#remind-me-d1-databases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>昨年11月にアルファ版をリリースしたD1のネイティブサーバーレスデータベースは、<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>を補完するクエリ可能なデータベースです。</p>
+	<p>D1の構築に着手したとき、私たちは以下の必要性を認識していました。高速であること、驚くほど簡単にデータベースを作成できること、そしてSQLベースであることです。</p>
+	<p>最後の点はとても重要でした。(a) 開発者が別のカスタムクエリ言語を習得する必要がないため、また、(b) 既存のクエリビルディングやORM（オブジェクトリレーショナルマッパー）ライブラリ、その他のツールが最小限の労力でD1に接続できるようにするためです。これにより、<a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md" target="_blank" rel="noopener noreferrer">Drizzle ORM</a>や<a href="https://developers.cloudflare.com/d1/platform/community-projects/#d1-adapter-for-kysely-orm" target="_blank" rel="noopener noreferrer">Kysely</a>のD1サポートから、D1をデータベースとして使用するフルスタックツールキットである<a href="https://t4stack.com" target="_blank" rel="noopener noreferrer">T4アプリまで</a>、たいへん多くのプロジェクトがD1をサポートするようになりました。</p>
+	<p>また、Workersからデータベースに問い合わせる唯一の方法がD1であるはずがありません。既存のデータベースや数千行ものSQL、既存のORMコードを持つチームにとって、D1への移行は一朝一夕の作業ではありません。そのようなチームのために、<a href="https://blog.cloudflare.com/ja-jp/hyperdrive-making-regional-databases-feel-distributed-ja-jp">Hyperdrive</a>を構築し、既存のデータベースに接続し、それらをグローバルに利用できるようにしました。グローバルに分散されたアプリのためにD1とWorkersを組み合わせ、レガシークラウドにあり、一晩では削除できないデータベースのクエリにはHyperdriveを使用する、といった柔軟性をチームに提供できると考えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="larger-databases-and-more-of-them">より大きく、そしてより多くのデータベース</h3>
+		<a href="https://blog.cloudflare.com/#larger-databases-and-more-of-them" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アルファ版を通じて何千人ものD1ユーザーから寄せられた最大の要望は、より多くのデータベースが必要なだけでなく、_より大きな_データベースが必要だということでした。</p>
+	<p><b>Workers有料プランの開発者は、各データベースを最大2GBまで拡張し、50,000個のデータベースを作成できるようになります（500MBと10個から制限引き上げ）。はい、その通りです。1アカウントにつき50,000のデータベースです。これにより、従来のリレーショナル・データベースでは不可能であった、ユーザーごと、ユースケースごとの多くのデータベースを利用することが可能になり、顧客間の真の分離が実現します。</b></p>
+	<p>今後数週間から数ヶ月の間に、さらに大規模なデータベースの利用開放に取り組み続けます。D1ベータを使用している開発者は、<a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">D1の公開変更履歴</a>でこれらの制限の自動的な増加を確認できます。</p>
+	<p>10GBを超えるデータベースの最大の障害の1つはパフォーマンスです。データベースは_非常に速く_ロードされ、準備が整わなければなりません。数秒以上かかるコールドスタートは許されません。10GBや20GBのデータベースがクエリに答えるまでに15秒もかかるようでは、使うのにかなりイライラしてしまいます。</p>
+	<p>Workersの無料プランのユーザーは、10個の500MBデータベース（<a href="https://developers.cloudflare.com/d1/changelog/#per-database-limit-now-500-mb" target="_blank" rel="noopener noreferrer">変更履歴</a>）を永久に保持できます。より多くの開発者に、D1とWorkersに踏み切る前にテストする機会を持っていただくためです。</p>
+	<div class="flex anchor relative">
+		<h3 id="time-travel-is-here">Time Travelはこちら</h3>
+		<a href="https://blog.cloudflare.com/#time-travel-is-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>を使用すると、データベースを特定の時点（具体的には、分単位で過去30日間の任意の時点）にロールバックすることができます。この機能はすべてのD1データベースでデフォルトで有効になっており、コストはかからず、ストレージの上限にもカウントされません。</p>
+	<p>記事をご覧になっている皆さんへ: Time Travelは今年の初めに発表され、<a href="https://developers.cloudflare.com/d1/changelog/#time-travel" target="_blank" rel="noopener noreferrer">7月にはすべてのD1ユーザーに提供</a>されました。その核心は、驚くほどシンプルです。Time Travelは、D1に「ブックマーク」という概念を導入したものです。ブックマークとは、特定の時点におけるデータベースの状態を表すもので、事実上、追記のみのログです。Time Travelはタイムスタンプをブックマークに変換したり、直接ブックマークを取得したりできるので、その時点への復元が可能になります。さらに良いことに、復元してもそれ以上さかのぼることはできません。</p>
+	<p>Time Travelは例で説明するのが一番効果的だと思いますので、データベースを変更してみましょう。eコマースストアに対して行われたすべての注文を保存するOrderテーブルを持つデータベースです。</p>
+	<p>いいですね。では、住所変更や運送会社の変更など、特定の注文を変更したい場合はどうすればよいでしょうか？</p>
+	<pre class="language-typescript"><code class="language-typescript"># To illustrate: we have 89,185 unique addresses in our order database. 
+➜  wrangler d1 execute northwind --command "SELECT count(distinct ShipAddress) FROM [Order]" 
+┌──────────┐
+│ count(*) │
+├──────────┤
+│ 89185    │
+└──────────┘</code></pre>
+	<p>これまで多くの人がしたのと同じ間違いをしてしまいました。UPDATEクエリのWHERE句を忘れていました。特定の注文IDを更新する代わりに、テーブル内のすべての注文のShipAddress（宛先住所）を更新してしまいました。</p>
+	<pre class="language-typescript"><code class="language-typescript"># I think we might be forgetting something here...
+➜  wrangler d1 execute northwind --command "UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico' </code></pre>
+	<p>パニック発生です。この変更を行う前にバックアップを取っていましたか。そうしたのはいつでしたか。ポイントインタイムリカバリーをオンにしていましたか。当時は高くつく可能性があるように思えたのですが。</p>
+	<pre class="language-typescript"><code class="language-typescript"># Every order is now going to a wine bar in Mexico City. 
+➜  wrangler d1 execute northwind --command "SELECT count(distinct ShipAddress) FROM [Order]" 
+┌──────────┐
+│ count(*) │
+├──────────┤
+│ 1        │
+└──────────┘</code></pre>
+	<p>大丈夫です。D1を使っています。Time Travelを使えます。デフォルトでオンになっています。修正するため、数分前に戻りましょう。</p>
+	<p>うまくいったかどうか確認してみましょう。</p>
+	<pre class="language-typescript"><code class="language-typescript"># Let's go back in time.
+➜  wrangler d1 time-travel restore northwind --timestamp="2023-09-23T14:20:00Z"
+
+🚧 Restoring database northwind from bookmark 0000000b-00000002-00004ca7-9f3dba64bda132e1c1706a4b9d44c3c9
+✔ OK to proceed (y/N) … yes
+
+⚡️ Time travel in progress...
+✅ Database dash-db restored back to bookmark 00000000-00000004-00004ca7-97a8857d35583887de16219c766c0785
+↩️ To undo this operation, you can restore to the previous bookmark: 00000013-ffffffff-00004ca7-90b029f26ab5bd88843c55c87b26f497</code></pre>
+	<p>Time Travelは、小規模なデータベースが多数ある場合に、さらに効果を発揮すると考えられます。復元操作のデメリットがさらに軽減され、単一のユーザーまたはテナントに範囲が狭められます。</p>
+	<pre class="language-typescript"><code class="language-typescript"># Phew. We're good. 
+➜  wrangler d1 execute northwind --command "SELECT count(distinct ShipAddress) FROM [Order]" 
+┌──────────┐
+│ count(*) │
+├──────────┤
+│ 89185    │
+└──────────┘</code></pre>
+	<p>これはTime Travelの始まりにすぎません。データベースの復元だけでなく、既存のデータベースをフォークして上書きする機能もサポートするように取り組んでいます。単一のコマンドでデータベースをフォークしたり、移行やスキーマの変更を実際のデータに対してテストすることができれば、データベースを扱う際に今まで直面してきた従来からの課題の多くをリスク回避することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="row-based-pricing">行ベースの価格設定</h3>
+		<a href="https://blog.cloudflare.com/#row-based-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/ja-jp/d1-turning-it-up-to-11-ja-jp">5月に</a>D1の価格を発表してから、無料と有料プランに含まれる使用量について多くの有益なフィードバックをいただきました。8月には、これまでのバイト単位に代わる新しい行ベースのモデルを発表し、より簡単に使用量を予測・定量化できるようになりました。行ベースに移行したのは、理屈が簡単なためであり、行を書き込む場合、それが1KBであろうと1MBであろうと関係ありません。読み取りクエリがインデックス付き列を使用してフィルタリングする場合、パフォーマンス上のメリットだけでなく、コスト削減も見込めます。</p>
+	<p>これはD1の価格設定ですが、ほとんどすべてが同じく、行数に応じて課金されるという利点もあります。</p>
+	<p>D1の価格設定 - <a href="https://developers.cloudflare.com/d1/platform/pricing" target="_blank" rel="noopener noreferrer">D1の公開ドキュメントに</a>詳細が記載されています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4053N3dvxuEp46TQG6xec9/74244f620374666d3b8fcbcf5d0016bb/Screenshot-2023-09-29-at-09.33.51.png" alt="" class="kg-image" width="1584" height="490" loading="lazy">
+
+	</figure>
+	<p>従来通り、D1では「データベース時間」、データベース数、ポイントインタイムリカバリー（<a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>）に対して課金されることはありません。D1へのクエリ、読み取り、書き込み、ストレージの料金を支払うだけです。</p>
+	<p>これにより、D1のコスト効率が格段に向上するだけでなく、顧客データや本番用と開発用を分離するために複数のデータベースを管理することも容易になります。_どの_データベースに対してクエリするかは問われません。好きなようにデータを管理し、顧客データを分離できます。たとえそれが直感的でなくても、あるいはあなたのチームにとって理にかなっていなくても、課金される方法だけを考えて構築する「課金ベースのアーキテクチャ」の罠にはまらないようにしましょう。</p>
+	<p>あるクエリにどれだけのコストがかかっているのか、<i>また</i><a href="https://developers.cloudflare.com/d1/learning/using-indexes" target="_blank" rel="noopener noreferrer">インデックスを使用してクエリを最適化する</a>タイミングを簡単に確認できるように、D1はクエリが読み込んだ行数または書き込んだ行数（またはその両方）を返します。どれほどコストがかかっているかや、スピード面の影響がわかります。</p>
+	<p>例えば、以下のクエリは日付に基づいて注文をフィルタリングします。</p>
+	<p>上記のインデックスなしクエリは16,800行をスキャンします。最適化しないとしても、D1には月間250億回のクエリが無料で含まれています。つまり、余分なコストを気にすることなく、このクエリを月間140万回実行できることになります。</p>
+	<pre class="language-typescript"><code class="language-typescript">SELECT * FROM [Order] WHERE ShippedDate &gt; '2016-01-22'" 
+
+[
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 5.032,
+      "size_after": 33067008,
+      "rows_read": 16818,
+      "rows_written": 0
+    }
+  }
+]</code></pre>
+	<p>しかし、インデックスがあればもっとうまくやれます。</p>
+	<p>インデックスが作成されたので、クエリが読み取る必要がある行数を確認してみましょう。</p>
+	<pre class="language-typescript"><code class="language-typescript">CREATE INDEX IF NOT EXISTS idx_orders_date ON [Order](ShippedDate)</code></pre>
+	<p>「ShippedDate」列にインデックスを付けた同じクエリで読み取るのは、わずか417行です。このクエリの方が速いだけでなく（実行時間はミリ秒単位！）、コストも低く抑えられます。このクエリを月に5,900万回実行しても、Workersプランで提供される5ドル以上のコストはかかりません。</p>
+	<pre class="language-typescript"><code class="language-typescript">SELECT * FROM [Order] WHERE ShippedDate &gt; '2016-01-22'" 
+
+[
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 3.793,
+             "size_after": 33067008,
+      "rows_read": 417,
+      "rows_written": 0
+    }
+  }
+]</code></pre>
+	<p>D1はまた、Cloudflareダッシュボードと当社のGraphQL分析APIの両方を介して<a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics" target="_blank" rel="noopener noreferrer">行数を表示</a>します。したがって、パフォーマンスをチューニングする際にクエリごとに確認できるだけでなく、すべてのデータベースにわたってクエリパターンを解析することもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="d1-for-platforms">プラットフォーム用D1</h3>
+		<a href="https://blog.cloudflare.com/#d1-for-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1のアルファ版期間中、私たちはD1の水平スケールアウト能力に注目するチームから話を聞いたり、一緒に働いたりしてきました。つまり、顧客（またはユーザー！）ごとにデータベースをデプロイできることで、チームがデータにアクセスする場所をより近くに保ち_、さらに_そのデータを他のユーザーからより明確に分離できるのです。</p>
+	<p><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">Workers for Platforms</a>で次の大きなものを構築するチームは、「Functions as a Service, as a Service」と考えて、D1を使ってユーザーごとにデータベースをデプロイすることができ、顧客データをそれぞれより明確に分離しておくことができます。</p>
+	<p>例えば、<a href="https://twitter.com/roninapp" target="_blank" rel="noopener noreferrer">RONIN</a>はD1をいち早く採用した企業の1社ですが、顧客ごとに専用のD1データベースに設けられた最先端のコンテンツ&amp;データプラットフォームを構築しています。これにより、顧客はデータをユーザーの近くに置くことができ、各顧客は他の顧客のクエリから分離されます。</p>
+	<p>RONINは、従来のデータベースインスタンスを無数に立ち上げて管理する代わりに、D1 for Platformsを使用してエッジで自動的に無限のスケーラビリティを提供します。これにより、RONINはコンテンツを直感的に編集するエクスペリエンスを提供することに専念することができます。</p>
+	<p>「D1 for Platforms」を実現するために、当初よりいくつかの方法が検討されてきました。</p>
+	<ul>
+		<li>
+			<p><b><b><b>Workers for Platformsユーザーは、D1がすでに提供している1アカウントあたり50,000のデータベースに加え、100,000以上のデータベースをサポートします。制限はないのですが、「無制限」といっても信じがたいでしょう。</b></b></b></p>
+		</li>
+		<li>
+			<p>D1の価格設定 - データベースごとの支払いや「アイドルデータベース」に対する支払いはありません。数千QPSのユーザーから10分に1～2人のユーザーまで、さまざまなユーザーがいる場合、トラフィックの少ないデータベースの「データベース時間」に対して高い料金を支払ったり、ユーザーベース全体で発生するスパイクのようなワークロードのために計画したりする必要はありません。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database" target="_blank" rel="noopener noreferrer">D1のHTTP API</a><i>を介して、より多くのデータベースをプログラムで設定し、再デプロイすることなく</i><a href="https://developers.cloudflare.com/api/operations/worker-script-patch-settings" target="_blank" rel="noopener noreferrer">Workerにアタッチする</a>ことができます。「プロビジョニング」の遅延もありません。データベースを作成したら、すぐにお客様やお客様のユーザーがクエリできるようになります。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/d1/platform/metrics-analytics" target="_blank" rel="noopener noreferrer">データベースごとの詳細な分析</a>により、D1のGraphQL分析APIを介して、どのデータベースが使用され、どのようにクエリされているかを把握できます。</p>
+		</li>
+	</ul>
+	<p>Workers上に次の大きなプラットフォームを構築し、D1を大規模に使用したい場合、<a href="https://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer">Workers Launchpadプログラム</a>に参加しているかどうかに関わらず、ご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-d1">D1の次の目標は？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>**私たちが掲げている明確な目標は、来年初頭（2024年第1四半期）までに、D1を本番環境で利用できる「一般利用可能（GA）」にすることです。**D1はすでにウェイティングリストや承認プロセスなしでご利用いただけますが、データベースに関して一般利用可能ということが多くの人にとって重要なことを理解しています（私たちも同様です）。</p>
+	<p>これから一般利用開始までの間、信頼性とパフォーマンスに焦点を当てながら、D1ビジョンの非常に重要な部分に取り組んでいきます。</p>
+	<p>このビジョンの残された最大のピースの1つが、<a href="https://blog.cloudflare.com/ja-jp/d1-turning-it-up-to-11-ja-jp">今年の初めに記事にした</a>グローバルなリードレプリケーションです。重要なのは、レプリケーションは無料で、ストレージの消費量を増やさず、セッションの一貫性（read-your-writes）を実現することです。D1のミッションの1つは、データをユーザーのいる場所に近づけることですが、その実現も楽しみです。</p>
+	<p>また、D1に内蔵されているポイントインタイムのリカバリ機能である<a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>ですが、特定の時点からデータベースをその場でブランチしたり、クローンしたりできるようにするための拡張にも取り組んでいます。</p>
+	<p>**また、今年中にデータベースごとのストレージの制限を徐々に開放し、アカウントごとのストレージ数を増やし、作成できるデータベースの数を増やしていく予定です。**D1の<a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">変更履歴</a>（またはお使いの受信トレイ）に注意していてください。</p>
+	<p>まだD1を使ったことがない方は、今すぐ<a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">開始</a>できます。D1の<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>をご覧になるなら、アイデアがひらめくでしょう。または、開発者用Discordの<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1-betaチャンネルに参加</a>して、他のD1開発者や製品エンジニアリングチームと話すこともできます。</p>
+</div>

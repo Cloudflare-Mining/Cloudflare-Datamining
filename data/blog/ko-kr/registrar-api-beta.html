@@ -1,0 +1,173 @@
+<p><em>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</em></p>
+<p>오늘 Cloudflare Registrar의 다음 장인 <strong>Registrar API 베타 버전</strong>이 출시됩니다.</p>
+<p>Registrar API를 사용하면 도메인을 검색하고, 가용성을 확인하며, 프로그래밍 방식으로 도메인을 등록할 수 있습니다. 이제 아이디어가 실제로 느껴질 때 도메인을 구매하여 에이전트 기반 워크플로우에서 벗어날 필요가 없습니다.</p>
+<p>Registrar API는 Cloudflare를 이용하는 빌더가 가장 자주 묻는 질문 중 하나입니다. 에이전트 워크플로우가 편집기, 터미널, 에이전트 기반 도구로 이동함에 따라 도메인 등록 문제는 해소해야 할 분명한 공백이 되었습니다.</p>
+<p>7년 전 <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer"><u>Cloudflare Registrar</u></a> 를 출시했을 때의 아이디어는 단순했습니다. 도메인은 마크업 및 게임 없이 <a href="https://www.cloudflare.com/application-services/solutions/low-cost-domain-names" target="_blank" rel="noopener noreferrer"><u>원가로</u></a> 제공되어야 합니다. 그 이후로 Cloudflare Registrar는 더 많은 사람들이 다음 프로젝트를 구축하기 위해 Cloudflare를 선택하면서 세계에서 가장 빠르게 성장하는 등록 기관 중 하나가 되었습니다.</p>
+<div id="html-block-ki" class="html-block">
+	<div style="padding-top:53.93225331369662%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/8e4b034c73d9e0a94c2070e9d1401bf6/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F8e4b034c73d9e0a94c2070e9d1401bf6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>
+<p><span data-portabletext-unknown="mark"><em>AI 코드 편집기 내에서 에이전트에 이름 아이디어를 생성하고, 도메인을 검색, 확인, 구매하도록 프롬프트를 표시합니다.</em></span></p>
+<h2>에이전트 및 자동화를 위해 구축됨</h2>
+<p>Registrar API는 내부 편집기, 배포 파이프라인, 백엔드 서비스, 에이전트 기반 워크플로우 등 이미 소프트웨어가 구축 중인 모든 곳에서 잘 작동하도록 설계되었습니다.</p>
+<p>워크플로우는 의도적으로 단순하고 기계 친화적입니다. <strong><code>검색</code></strong>은 후보자 이름을 반환합니다. <strong><code>확인</code></strong>은 실시간 재고 및 가격을 반환합니다. <strong><code>Register</code></strong>는 최소한의 요청으로 즉시 완료할 수 있는 워크플로우 형태의 응답을 반환하고, 시간이 더 걸릴 경우 폴링합니다. 따라서 기존 API 클라이언트와 사용자를 대신하는 <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 에이전트</u></a> 는 간편하게 사용할 수 있습니다.</p>
+<p>실제로, 이 모든 과정은 에이전트가 이름 제안, 실제로 등록 가능한 사람 확인, 승인을 위한 가격 표시, 사용자에게 이미 사용 중인 도구를 강제로 밖으로 내보내지 않고 구매를 완료하는 등의 모든 과정에 도움을 줄 수 있음을 의미합니다.</p>
+<h2>Registrar API</h2>
+<p>Registrar API의 첫 번째 릴리스의 핵심은 세 가지 기능입니다.</p>
+<ul>
+	<li>도메인 <strong><code>검색</code></strong></li>
+	<li>이용 가능 여부 <strong><code>확인</code></strong></li>
+	<li>도메인 <strong><code>등록</code></strong></li>
+</ul>
+<p>선별된 인기 TLD 세트로 시작하려면 <a href="https://developers.cloudflare.com/api/resources/registrar" target="_blank" rel="noopener noreferrer"><u>Registrar API 문서</u></a>를 참조하세요. 지원되는 경우 <a href="https://www.cloudflare.com/learning/dns/glossary/premium-domains" target="_blank" rel="noopener noreferrer"><u>프리미엄 도메인</u></a> 도 등록할 수 있지만, 이를 위해서는 명시적인 요금 확인이 필요합니다.</p>
+<p>Registrar API는 전체 Cloudflare API의 일부이므로, 현재 에이전트는 이미 <a href="https://blog.cloudflare.com/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP</u></a>를 통해 액세스할 수 있습니다. 별도의 통합이나 사용자 지정 도구 정의가 필요하지 않습니다. Cursor, Claude Code 또는 모든 MCP 호환 환경에서 작업하는 에이전트는 전체 Cloudflare API 표면을 포함하는 동일한 <code>search()</code> 및 <code>execute()</code> 패턴을 사용하여 Registrar 엔드포인트를 검색하고 호출할 수 있습니다. API가 사양에 포함되는 순간부터 에이전트도 사용할 수 있게 됩니다.</p>
+<p><em>실제로는 다음과 같은 모습입니다</em>:</p>
+<p>선호하는 AI 코드 편집기에서 새 프로젝트를 빌드합니다. 스캐폴딩 절반에서 에이전트에게 "좋은 .dev를 찾아주세요. 도메인을 새로 만들고 등록하세요."</p>
+<p>에이전트는 귀사의 프로젝트를 기반으로 후보자의 이름을 검색합니다. 선택하신 품목의 실시간 가용성을 확인하여 가격을 확인합니다. '예'라고 답하면 그러면 계정의 기본 연락처 정보와 결제 방법을 사용하여 도메인이 자동으로 등록됩니다. 응답을 읽을 때쯤이면 도메인이 등록되고 개인정보 보호가 활성화됩니다.</p>
+<p>세 가지 API 호출 몇 초입니다.</p>
+<p><em>코드로 보면 다음과 같습니다</em>:</p>
+<h3>1단계: 도메인 이름 <strong><code>검색</code></strong></h3>
+<p><strong><code>검색</code></strong> 엔드포인트를 사용하여 도메인 확장자 유무에 관계없이 도메인 쿼리를 제출할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/accounts/${</span><span class="sk-24292e-fff">accountId</span><span class="sk-032f62-99ffe4">}/registrar/domain-search`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    query: { q: </span><span class="sk-032f62-99ffe4">"acme corp"</span><span class="sk-24292e-fff">, limit: </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "domains"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "registrable"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "tier"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "pricing"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "currency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "registration_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"8.57"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "renewal_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"8.57"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "registrable"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "tier"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "pricing"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "currency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "registration_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"10.11"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "renewal_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"10.11"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.app"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "registrable"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "tier"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "pricing"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "currency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "registration_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"11.00"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "renewal_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"11.00"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>2단계: 가용성 및 가격 <strong><code>확인</code></strong></h3>
+<p>검색 결과는 빠르지만, 신뢰할 수 없습니다. 캐시 데이터를 기반으로 하며 인기 있는 이름의 참석 여부는 몇 초만에 바뀔 수 있습니다. <strong><code>확인</code></strong> 은 레지스트리를 직접 쿼리합니다. 등록 직전에 호출하고, 가격 응답을 출처로 활용합니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/accounts/${</span><span class="sk-24292e-fff">accountId</span><span class="sk-032f62-99ffe4">}/registrar/domain-check`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    body: { domains: [</span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff">] },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "domains"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "registrable"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "tier"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "pricing"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "currency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "registration_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"10.11"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "renewal_cost"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"10.11"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>3단계: 도메인 <strong><code>등록</code></strong></h3>
+<p>유일한 필수 필드는 도메인 이름입니다. WHOIS 개인정보 보호는 추가 비용 없이 기본적으로 활성화되어 있습니다. 계정에 기본 등록자 연락처가 있는 경우 API는 이 연락처를 자동으로 사용합니다. 그렇지 않은 경우, 요청 세부 정보를 인라인으로 제공하셔도 됩니다. 자동으로 기본 결제 방법이 사용됩니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/accounts/${</span><span class="sk-24292e-fff">accountId</span><span class="sk-032f62-99ffe4">}/registrar/registrations`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    body: { domain_name: </span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "domain_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "state"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"succeeded"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "completed"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "created_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-10-27T10:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "updated_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-10-27T10:00:03Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "context"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "registration"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "domain_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"acmecorp.dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "status"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"active"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "created_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-10-27T10:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "expires_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-10-27T10:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "auto_renew"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "privacy_enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "locked"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "links"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "self"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/accounts/abc/registrar/registrations/acmecorp.dev/registration-status"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "resource"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/accounts/abc/registrar/registrations/acmecorp.dev"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>등록은 일반적으로 동기식으로 몇 초 이내에 완료됩니다. 시간이 더 오래 걸리면 API는 폴링할 워크플로 URL과 함께 202 Accepted를 반환합니다. 어느 쪽이든 응답 형태는 동일하며 특별한 케이스가 필요하지 않습니다. 프리미엄 도메인의 경우, <strong><code>Check</code></strong> 응답은 레지스트리가 설정한 정확한 가격을 반환하고, <strong><code>Register</code></strong> 요청은 이를 명시적인 수수료 알림으로 반환합니다.</p>
+<h3>에이전트 및 환불 불가 구매에 대한 참고 사항</h3>
+<p>에이전트가 사용자를 대신하여 도메인을 등록하면 기본 결제 방법에 요금이 부과됩니다. 도메인 등록이 완료된 후에는 환불이 불가능합니다. 잘 설계된 에이전트 흐름에서는 등록 엔드포인트를 호출하기 전에 사용자와 함께 도메인 이름과 가격을 확인해야 합니다. <strong><code>Check</code></strong> 단계는 정확히 해당 확인 단계를 명시적이고 명확하게 하기 위해 존재합니다. API는 API를 올바르게 구축할 수 있는 도구를 제공합니다. 이에 대한 책임은 에이전트의 로직에 있습니다.</p>
+<p>기본적으로 API 문서에는 API 등록 호출 중에 사용자에게 권한을 요청하는 명시적인 에이전트 대면 지침이 있습니다. <strong>하지만 사용자의 승인 없이 도메인을 구매하지 않는 에이전트 플로우를 설계하는 것은 인간의 책임입니다</strong>.</p>
+<h2>Cloudflare가 이를 다르게 할 수 있는 이유</h2>
+<p>현재 도메인 워크플로를 추가하는 많은 개발자 플랫폼과 Cloudflare의 차이점은 Cloudflare에서 등록 기관 자체를 운영한다는 점입니다. 즉, 프로젝트가 빌드되고 배포되는 동일한 플랫폼에서 마크업을 추가하지 않고도 도메인을 검색, 등록, 관리할 수 있습니다.</p>
+<p>실제 원가 가격 책정은 Cloudflare 등록 기관 모델의 핵심입니다. Cloudflare는 레지스트리에서 부과하는 요금을 정확히 그대로 부과합니다. 이는 대시보드를 통해 도메인을 등록하든, API를 직접 호출하거나, 에이전트에게 귀사를 대신하여 등록해달라고 요청하든, 마찬가지입니다.</p>
+<h2>API의 다음 단계</h2>
+<p>이 베타 버전은 도메인 수명 주기의 첫 번째 중요한 순간인 검색, 확인, 등록에 초점을 맞춥니다. Cloudflare에서는 핵심 Registrar 경험을 더 많이 포괄하여 API를 확장하기 위해 적극적으로 노력하고 있습니다. 따라서 도메인을 생성하는 순간뿐만 아니라 도메인을 구매한 후에도 프로그래밍 방식으로 관리할 수 있습니다. 여기에는 이전, 갱신, 연락처 업데이트 등의 수명 주기 요소가 포함됩니다.</p>
+<p>API는 더 광범위한 서비스형 등록 기관 제품을 향한 첫 번째 단계입니다. 해당 서비스는 현재 개발 중이며, 올해 말 출시를 목표로 하고 있습니다. API가 확장되면 웹 사이트 빌더, 호스팅 공급자, AI 제품, 기타 다중 테넌트 애플리케이션과 같은 플랫폼에서 도메인 등록을 사용자 경험의 일부로 만들 수 있습니다. 사용자는 도메인을 검색하고, 구매하고, 이미 구축한 서비스나 에이전트 기반 워크플로를 벗어나지 않고도 프로비저닝할 수 있습니다.</p>
+<h2>오늘 바로 구축 시작</h2>
+<p>Registrar API는 빌더가 요청하기 때문에 존재합니다. 이제 베타 버전으로 제공되므로, <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 커뮤니티</u></a>, <a href="https://x.com/cloudflare" target="_blank" rel="noopener noreferrer"><u>X</u></a> 또는 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>에서 여러분이 무엇을 구축하시는지 보고 싶습니다.<br><br>시작 방법:</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/registrar/registrar-api" target="_blank" rel="noopener noreferrer"><u>Registrar API 가이드</u></a>검토</li>
+	<li><a href="https://developers.cloudflare.com/api/resources/registrar" target="_blank" rel="noopener noreferrer"><u>API 참조</u></a>를 확인하세요</li>
+</ul>
+<p>누락된 부분이 있거나, 워크플로가 제대로 작동하지 않거나, 더 규모가 큰 플랫폼 사용 사례를 구축하고 있다면 알려주시기 바랍니다. Cloudflare는 도메인 갱신, 이전 등을 지원할 수 있도록 API의 기능을 확장하기 위해 빠르게 노력하고 있습니다.</p>
+<p>여러분이 무엇을 구축해나갈지 정말 기대됩니다!</p>
+<p><em>Registrar API 베타 서비스를 제공하는 데 귀중한 기여를 해준 Lucy Dryava와 Fred Pinto에게 특별히 감사의 말씀을 전합니다.</em></p>

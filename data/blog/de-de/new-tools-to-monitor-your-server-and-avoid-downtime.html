@@ -1,0 +1,111 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">English</a>, <a href="https://blog.cloudflare.com/es-es/new-tools-to-monitor-your-server-and-avoid-downtime">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/new-tools-to-monitor-your-server-and-avoid-downtime">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xXzAYUvRoiiq0Ec2jve5/e5b83b4d70596a8419352100236560d8/new-tools-to-monitor-your-server-and-avoid-downtime.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wenn Ihr Server ausfällt, ist das ein großes Problem. Heute stellt Cloudflare zwei neue Tools vor, mit denen Sie bei Ausfällen besser verstehen, was vorgeht, und schneller reagieren können; außerdem einen neuen Dienst, mit dem sich Ausfallzeiten automatisch <i>vermeiden</i> lassen.</p>
+	<p>Die neuen Features sind:</p>
+	<ul>
+		<li>
+			<p>Standalone Health Checks, durch die Sie informiert werden, sobald wir Probleme auf Ihrem Ursprungsserver erkennen. Dafür wird kein Cloudflare Load Balancer benötigt.</p>
+		</li>
+		<li>
+			<p>Passive Origin Monitoring, die passive Überwachung des Ursprungsservers, durch die Sie darüber informiert werden, wann Ihr Ursprungsserver nicht erreicht werden kann. Dafür ist keine Konfiguration erforderlich.</p>
+		</li>
+		<li>
+			<p>Zero-Downtime Failover, das Ausfälle durch erneute Ausführung von Anfragen auf dem Ursprungsserver automatisch beheben kann.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="standalone-health-checks"><b>Standalone Health Checks</b></h3>
+		<a href="https://blog.cloudflare.com/#standalone-health-checks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das erste neue Tool sind die Standalone Health Checks, durch die Sie informiert werden, sobald wir Probleme auf Ihrem Ursprungsserver erkennen. Dafür wird kein Cloudflare Load Balancer benötigt.</p>
+	<p>Ein <i>Health Check</i> ist ein Dienst, der in unserem Edge-Netzwerk ausgeführt wird und überwacht, ob Ihr Ursprungsserver online ist. Health Checks sind ein wichtiger Bestandteil unseres Lastverteilungsdienstes. Mit ihnen können wir Traffic schnell und aktiv an Ursprungsserver weiterleiten, die live und einsatzbereit sind. Mit den Standalone Health Checks können Sie den Zustand Ihres Ursprungsservers auch dann überwachen, wenn Sie nur einen solchen Ursprungsserver haben oder noch keine Lastverteilung über Ihre Infrastruktur benötigen.</p>
+	<p>Wir stellen viele Dimensionen für gezielte Überprüfungen bereit, zum Beispiel Antwortcode, Protokolltyp und Intervall. Sie können einen bestimmten Pfad angeben, wenn Ihr Ursprungsserver mehrere Anwendungen bereitstellt, oder Sie können eine größere Teilmenge der Antwortcodes für Ihre Staging-Umgebung überprüfen. Mit all diesen Optionen können Sie den Health Check gezielt konfigurieren und sich so ein genaues Bild davon verschaffen, was möglicherweise das Problem mit Ihrem Ursprungsserver ist.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vtTuksJ9p1aCImlW8G92Q/77f4673597912f4e067c567c9caa7414/image4-3.png" alt="" class="kg-image" width="1678" height="1316" loading="lazy">
+
+	</figure>
+	<p>Wenn einer Ihrer Ursprungsserver nicht mehr verfügbar ist, erhalten Sie eine Benachrichtigung und werden über die Zustandsänderung informiert. Sie bekommen detaillierte Informationen über den Ausfall, damit Sie Maßnahmen ergreifen und die Integrität Ihres Ursprungsservers wiederherstellen können.</p>
+	<p>Sobald Sie die Health Checks für die verschiedenen Ursprungsserver eingerichtet haben, können Sie sich auch über Trends oder die am häufigsten betroffenen Ursprungsserver informieren. Mit Health Check Analytics können Sie alle Änderungsereignisse für einen bestimmten Health Check aufrufen, Ursprungsserver isolieren, die möglicherweise besonders problematisch sind oder unterdurchschnittliche Performance aufweisen, und das Problem beheben. Darüber hinaus arbeiten wir daran, Ihnen demnächst auch Zugriff auf alle Ereignis-Rohdaten für Health Checks anzubieten. Damit bekommen Sie einen so genauen Einblick, dass Sie Protokolle der Cloudflare Health Check Events mit internen Serverprotokollen vergleichen können.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VYa5CvnnQFYZPtYy6HJ0D/c0b8f509411e19726998b1d6fd3f2b49/image5-3.png" alt="" class="kg-image" width="1860" height="1320" loading="lazy">
+
+	</figure>
+	<p>Anwender mit einem Pro, Business oder Enterprise Plan bekommen Zugriff auf Standalone Health Checks und Health Check Analytics und können damit die Zuverlässigkeit ihrer wichtigsten Anwendungen fördern und das Vertrauen ihrer Kunden in ihre Marke steigern. Sie können über die Traffic-App im Dashboard auf Standalone Health Checks und Health Check Analytics zugreifen.</p>
+	<div class="flex anchor relative">
+		<h3 id="passive-origin-monitoring"><b>Passive Origin Monitoring</b></h3>
+		<a href="https://blog.cloudflare.com/#passive-origin-monitoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Standalone Health Checks sind eine äußerst flexible Möglichkeit, das Geschehen auf Ihrem Ursprungsserver nachzuvollziehen. Sie müssen aber sorgfältig konfiguriert werden, bevor ein Ausfall tatsächlich eintritt. Deshalb bieten wir jetzt auch <i>passive</i> Überwachung von Ursprungsservern an. Dabei werden Sie automatisch benachrichtigt, wenn ein Problem auftritt. Es ist keine Konfiguration erforderlich.</p>
+	<p>Cloudflare weiß, wenn Ihr Ursprungsserver ausfällt, denn wir sind ja diejenigen, die ihn zu erreichen versuchen, um den Traffic weiterzuleiten! Wenn wir Ausfallzeiten feststellen, die länger dauern als ein paar Minuten, senden wir Ihnen eine E-Mail.</p>
+	<p>Ab heute können Sie Warnmeldungen für die Überwachung der Ursprungsserver konfigurieren und sie an mehrere E-Mail-Adressen senden lassen. Warnmeldungen für das Origin Monitoring sind im neuen Benachrichtigungszentrum (mehr dazu unten!) im Cloudflare-Dashboard verfügbar:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KZoJ9kNRg0X8i3LJkBtZN/fd6b4d2b57d0781d495b17effd855495/image1-6.png" alt="" class="kg-image" width="1826" height="1188" loading="lazy">
+
+	</figure>
+	<p>Passive Origin Monitoring steht unseren Kunden bei allen Cloudflare-Tarifen zur Verfügung.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-downtime-failover"><b>Zero-Downtime Failover</b></h3>
+		<a href="https://blog.cloudflare.com/#zero-downtime-failover" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Was könnte besser sein, als über Ausfallzeiten informiert zu werden? Wenn Ausfallzeiten erst gar nicht eintreten! Mit Zero-Downtime Failover können wir Anfragen erneut auf dem Ursprungsserver ausführen, noch bevor das Load Balancing aktiv wird.</p>
+	<p>Wie funktioniert das? Wenn eine Anfrage an Ihren Ursprungsserver fehlschlägt und Cloudflare einen weiteren Eintrag für Ihren Ursprungsserver hat, versuchen wir es einfach <i>innerhalb derselben HTTP-Anfrage</i> mit dem anderen Ursprungsserver. Der alternative Eintrag kann entweder ein A/AAAA-Eintrag sein, der über Cloudflare-DNS konfiguriert ist, oder ein anderer Ursprungsserver im gleichen Load-Balancing-Pool.</p>
+	<p>Nehmen wir an, für die Website example.com gibt es Webserver mit zwei verschiedenen IP-Adressen: 203.0.113.1 und 203.0.113.2. Ohne Zero-Downtime Failover läuft das so ab: wenn 203.0.113.1 nicht mehr verfügbar ist, versucht Cloudflare, eine Verbindung herzustellen; dies schlägt fehl und dem Nutzer wird letztendlich eine Fehlerseite angezeigt. Mit Zero-Downtime Failover versucht der Proxy von Cloudflare, wenn 203.0.113.1 nicht erreicht werden kann, übergangslos eine Verbindung mit 203.0.113.2 herzustellen. Wenn der zweite Server antworten kann, braucht Cloudflare dem Besucher von example.com keine Fehlermeldung zu senden.</p>
+	<p>Seit wir vor ein paar Wochen Zero-Downtime Failover eingeführt haben, konnten wir täglich Millionen fehlgeschlagener Anfragen vermeiden!</p>
+	<p>Durch die Kombination von Zero-Downtime Failover, Load Balancing, Standalone Health Checks und Passive Origin Monitoring läuft Ihre Website so reibungslos wie noch nie. Health Checks und Load Balancing können Ausfälle verhindern, es dauert aber eine gewisse Zeit, bis sie wirksam werden. Zero-Downtime Failover funktioniert ohne Verzögerung, dafür muss man aber bei jedem Verbindungsversuch zusätzliche Latenz in Kauf nehmen. In der Praxis hilft Zero-Downtime Failover zu <i>Beginn</i> eines Vorfalls, denn es kann Fehler unmittelbar beheben. Wenn ein Health Check ein Problem erkannt hat, kann ein Load Balancer einspringen und den Traffic sinnvoll umleiten. Und wenn kein Ursprungsserver zur Verfügung steht, senden wir über Passive Origin Monitoring eine Warnmeldung.</p>
+	<p>Schauen wir uns ein Beispiel aus der Praxis an, einen Vorfall, der kürzlich bei einem Kunden auftrat. Dieser Kunde erlebte eine Zunahme der Fehler auf seinem Ursprungsserver. Normalerweise hätte dies zu einem Einbruch der Verfügbarkeit geführt (rote Linie), aber dank Zero-Downtime Failover blieb die tatsächliche Verfügbarkeit praktisch unverändert (blaue Linie).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cvaHca9BEnJbZXotcJ20N/e2e930d0986728978a569df15e719f51/zdf-availability.png" alt="" class="kg-image" width="1212" height="766" loading="lazy">
+
+	</figure>
+	<p>Im Verlauf von 30 Minuten wurde die Gesamtverfügbarkeit durch Zero-Downtime Failover von 99,53 % auf 99,98 % verbessert und es konnte für 140.000 HTTP-Anfragen eine Fehlermeldung verhindert werden.</p>
+	<p>Es ist wichtig zu beachten, dass wir nur bei solchen Anfragen, die während der TCP- oder TLS-Verbindungsphase fehlgeschlagen sind, einen erneuten Versuch machen. HTTP-Header und Nutzlast wurden zu diesem Zeitpunkt noch nicht übertragen. Dank dieses Sicherheitsmechanismus können wir Zero-Downtime Failover für Pro, Business und Enterprise Pläne als Standardeinstellung von Cloudflare verwenden. Anders ausgedrückt: Durch Zero-Downtime Failover werden Verbindungen zu Ihren Ursprungsservern zuverlässiger. Sie müssen dafür nichts unternehmen oder konfigurieren.</p>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon-more-notifications-more-flexibility"><b>Demnächst: mehr Benachrichtigungen, mehr Flexibilität</b></h3>
+		<a href="https://blog.cloudflare.com/#coming-soon-more-notifications-more-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unsere Kunden wünschen sich immer umfassendere Erkenntnisse über den Status ihrer kritischen Edge-Infrastruktur. Health Checks und Passive Origin Monitoring sind für Cloudflare ein wichtiger Schritt in Richtung eines proaktiven statt reaktiven Vorgehens im Hinblick auf diese Erkenntnisse.</p>
+	<p>Um diese Arbeit zu unterstützen, machen wir das Benachrichtigungszentrum jetzt zur zentralen Anlaufstelle für Benachrichtigungen. Es ist ab sofort im Dashboard verfügbar, direkt von der Startseite Ihres Kontos aus.</p>
+	<p>Von hier aus können Sie neue Benachrichtigungen erstellen und alle vorhandenen Benachrichtigungen aufrufen, die Sie bereits eingerichtet haben. Mit der heutigen Version können Sie Benachrichtigungen für Passive Origin Monitoring konfigurieren und mehrere E-Mail-Empfänger festlegen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZDuV1fp4eY29qoySlyBr2/a67bfa65849c3194b1ab990b889f66c2/image2-7.png" alt="" class="kg-image" width="1815" height="1182" loading="lazy">
+
+	</figure>
+	<p>Wir freuen uns darüber, dass unsere Kunden mit diesen Neuerungen Ausfallzeiten noch besser vermeiden können. Auf der Grundlage Ihrer Rückmeldungen haben wir noch weitere Verbesserungen geplant, damit Sie zeitnah die Erkenntnisse erhalten, die Sie brauchen:</p>
+	<ul>
+		<li>
+			<p>Neue Mechanismen für die Zustellung von Benachrichtigungen</p>
+		</li>
+		<li>
+			<p>Weitere Ereignisse, die Benachrichtigungen auslösen können</p>
+		</li>
+		<li>
+			<p>Erweiterte Konfigurationsoptionen für Health Checks, einschließlich zusätzlicher Protokolle sowie Benachrichtigungen und Statusänderungen auf Basis von Schwellenwerten.</p>
+		</li>
+		<li>
+			<p>Weitere Möglichkeiten, Passive Health Checks zu konfigurieren, z. B. Schwellenwerte hinzuzufügen und bestimmte Statuscodes zu filtern</p>
+		</li>
+	</ul>
+</div>

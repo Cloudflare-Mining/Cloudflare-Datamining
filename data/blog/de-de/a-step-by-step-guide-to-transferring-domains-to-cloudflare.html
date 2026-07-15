@@ -1,0 +1,143 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare">English</a>, <a href="https://blog.cloudflare.com/zh-tw/a-step-by-step-guide-to-transferring-domains-to-cloudflare">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/a-step-by-step-guide-to-transferring-domains-to-cloudflare">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/a-step-by-step-guide-to-transferring-domains-to-cloudflare">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/a-step-by-step-guide-to-transferring-domains-to-cloudflare">한국어</a>, und <a href="https://blog.cloudflare.com/zh-cn/a-step-by-step-guide-to-transferring-domains-to-cloudflare">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Joqdyk5YX96Jcx0cz0Jni/dba077fd62c95de47ff082f69f9e4ed2/a-step-by-step-guide-to-transferring-domains-to-cloudflare.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Man zieht seine Domains nicht alle Tage zu einem neuen Registrar um. Passieren dabei an irgendeiner Stelle Fehler, kann es zu Ausfällen und Störungen kommen. Deshalb haben wir anlässlich der aktuellen Speed Week eine Checkliste für den Domaintransfer zusammengestellt. Wir möchten jedem die Möglichkeit geben, Domains schnell zu Cloudflare Registrar umzuziehen, ohne sich Gedanken über eventuell vergessene Zwischenschritte machen zu müssen oder mit offenen Fragen zurückzubleiben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m5xyu3d7H4TFzymFCKDWZ/56264f55a7a3d1d72f799f4018577c62/image1-36.png" alt="A step-by-step guide to transferring domains to Cloudflare" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="domain-transfer-checklist">Checkliste für den Domaintransfer</h2>
+		<a href="https://blog.cloudflare.com/#domain-transfer-checklist" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="confirm-eligibility">Eignung prüfen</h3>
+		<a href="https://blog.cloudflare.com/#confirm-eligibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Stellen Sie sicher, dass Sie wirklich die Nameserver von Cloudflare nutzen wollen:</b> Wir <a href="https://blog.cloudflare.com/cloudflare-registrar">haben unseren Registrar speziell für Kunden entwickelt</a>, die andere Cloudflare-Produkte nutzen. Das bedeutet, dass bei Cloudflare registrierte Domains nur unsere Nameserver nutzen können. <i>Wenn für Ihre Domain Nameserver benötigt werden, die nicht zu Cloudflare gehören, sind wir nicht der richtige Registrar für Sie.</i></p>
+		</li>
+		<li>
+			<p><b>Vergewissern Sie sich, dass Cloudflare die TLD Ihrer Domain unterstützt:</b> &nbsp;Die <a href="https://www.cloudflare.com/tld-policies" target="_blank" rel="noopener noreferrer">vollständige Liste der von uns derzeit unterstützten Top-Level-Domains (TLDs) finden Sie hier</a>. <i>Hinweis: Wir planen, ab Mitte Juli 2023 auch .dev und .app zu unterstützen.</i></p>
+		</li>
+		<li>
+			<p><b>Achten Sie darauf, dass es sich bei Ihrer Domain nicht um eine Premium-Domain handelt und dass sie keinen Internationalized Domain Name (IDN) trägt:</b> Gegenwärtig werden Premium-Domains und IDNs (Unicode) von Cloudflare nicht unterstützt.</p>
+		</li>
+		<li>
+			<p><b>Stellen Sie sicher, dass Ihre Domain nicht in den letzten 60 Tagen registriert oder bereits übertragen wurde:</b> Die Vorschriften der ICANN verbieten den Transfer einer Domain, die innerhalb der letzten 60 Tage registriert oder umgezogen wurde.</p>
+		</li>
+		<li>
+			<p><b>Vergewissern Sie sich, dass die Kontaktdaten des Whois-Domaineigentümers („Registrant“) in den letzten 60 Tagen nicht geändert wurden:</b> Auch in diesem Fall untersagen die ICANN-Regeln den Transfer einer Domain.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="before-you-transfer">Vor dem Transfer</h3>
+		<a href="https://blog.cloudflare.com/#before-you-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Halten Sie die Anmeldedaten für Ihren aktuellen Registrar bereit:</b> Überprüfen Sie, ob Sie über die Anmeldedaten für Ihren derzeitigen Registrar verfügen. Vielleicht haben Sie sich ja seit Jahren nicht mehr eingeloggt und müssen Ihr Passwort zurücksetzen lassen.</p>
+		</li>
+		<li>
+			<p><b>Halten Sie Ihre aktuellen DNS-Einstellungen fest:</b> Beim Transfer Ihrer Domain scant Cloudflare automatisch Ihre DNS-Einträge. Für den Fall, dass Probleme auftreten, sollten Sie Ihre derzeitigen Einstellungen aber auch selbst erfassen.</p>
+		</li>
+		<li>
+			<p><b>Heben Sie gegebenenfalls den Whois-Datenschutz auf:</b> In den meisten Fällen funktioniert der Domaintransfer auch bei eingeschalteten Whois-Datenschutzdiensten. Manche Registrare erlauben die Übertragung aber möglicherweise nicht, wenn der Datenschutzservice aktiv ist.</p>
+		</li>
+		<li>
+			<p><b>Deaktivieren Sie die DNSSEC:</b> Sie können die <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a> aussetzen, indem Sie den DS-Eintrag bei Ihrem aktuellen DNS-Host entfernen und die <a href="https://developers.cloudflare.com/registrar/account-options/enable-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC im Cloudflare-Dashboard</a> deaktivieren.</p>
+		</li>
+		<li>
+			<p><b>Verlängern Sie Ihre Domainregistrierung, wenn diese in den nächsten 15 Tagen abläuft:</b> Sollte Ihre Domainregistrierung in Kürze ablaufen, müssen Sie sie verlängern, bevor Sie einen Transfer einleiten.</p>
+		</li>
+		<li>
+			<p><b>Geben Sie die Domain frei:</b> Bei Registraren ist eine Art Minimalschutz eingerichtet, um zu verhindern, dass Domaintransfers von Unbefugten eingeleitet werden. Man spricht dabei oft von einer Registrar- oder Domainsperre. Diese hindert allerdings auch andere Registrare daran, einen Domainumzug zu starten. Nur der Registrant kann diese Sperre ein- und ausschalten, und zwar normalerweise über eine Verwaltungsoberfläche des Registrars.</p>
+		</li>
+		<li>
+			<p><b>Registrieren Sie sich bei Cloudflare:</b> Wenn Sie noch kein Konto bei Cloudflare haben, können Sie sich <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">hier registrieren</a>.</p>
+		</li>
+		<li>
+			<p><b>Tragen Sie Ihre Domain bei Cloudflare ein:</b> Sie können Ihrem Cloudflare-Account eine neue Domain hinzufügen. Folgen Sie dazu einfach <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site" target="_blank" rel="noopener noreferrer">dieser Anleitung</a>.</p>
+		</li>
+		<li>
+			<p><b>Hinterlegen Sie eine gültige Kreditkarte in Ihrem Cloudflare-Konto:</b> Wenn Sie noch keine Zahlungsmethode im Rechnungsprofil Ihres Cloudflare-Dashboards festgelegt haben, werden Sie dazu aufgerufen, wenn Sie Ihre Domain eintragen.</p>
+		</li>
+		<li>
+			<p><b>Überprüfen Sie Ihre DNS-Einträge bei Cloudflare:</b> Nachdem Sie Ihre Domain hinzugefügt haben, sollten Sie <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#review-dns-records" target="_blank" rel="noopener noreferrer">die von Cloudflare automatisch konfigurierten DNS-Einträge kontrollieren</a> und sie mit dem abgleichen, was Ihnen bei Ihrem aktuellen Registrar angezeigt wird. So stellen Sie sicher, dass nichts übersehen wurde.</p>
+		</li>
+		<li>
+			<p><b>Stellen Sie Ihre DNS-Nameserver auf Cloudflare um:</b> Für den Transfer Ihrer Domain müssen Ihre <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup" target="_blank" rel="noopener noreferrer">Nameserver auf Cloudflare eingestellt sein</a>.</p>
+		</li>
+		<li>
+			<p><b>(optional) Konfigurieren Sie das E-Mail-Routing von Cloudflare:</b> Wenn Sie eine E-Mail-Weiterleitungsfunktion nutzen, sollten Sie diesen <a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">Leitfaden für die Migration zum E-Mail-Routing von Cloudflare</a> befolgen.</p>
+		</li>
+		<li>
+			<p><b>Warten Sie, bis Ihre DNS-Änderungen flächendeckend übernommen wurden:</b> Es kann bis zu 24 Stunden dauern, bis Registrare die Aktualisierung von Nameservern verarbeitet haben. Sobald Cloudflare feststellt, dass diese Änderungen erfolgt sind, erhalten Sie von uns eine E-Mail. Solange dieser Vorgang nicht abgeschlossen ist, können Sie den Transfer Ihrer Domain nicht durchführen.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="initiating-and-confirming-transfer-process">Transfer einleiten und bestätigen</h3>
+		<a href="https://blog.cloudflare.com/#initiating-and-confirming-transfer-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Fordern Sie einen Autorisierungscode an:</b> Cloudflare muss sich bei Ihrem bisherigen Registrar vergewissern, dass die Übertragung autorisiert ist. Zu diesem Zweck stellt dieser Ihnen einen Autorisierungscode („Authorization Code“, „Auth Code“, „Authinfo Code“ oder „Transfer Code“) zur Verfügung. Um den Umzug Ihrer Domain(s) zu Cloudflare abzuschließen, müssen Sie diesen Code eingeben, weil wir uns damit vergewissern können, dass bei dem Transfer alles mit rechten Dingen zugeht.</p>
+		</li>
+		<li>
+			<p><b>Leiten Sie den Umzug zu Cloudflare ein:</b> Rufen Sie den <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fdomains%2Ftransfer" target="_blank" rel="noopener noreferrer">Abschnitt „Transfer Domains“</a> (Domaintransfer) im Cloudflare-Dashboard auf. Dort werden Ihnen die Domains angezeigt, für die ein Transfer möglich ist. Falls Ihre Domain nicht aufgeführt ist, sollten Sie sich vergewissern, dass Sie alle vorangehenden Schritte vollständig ausgeführt haben. Das ist der Fall? Dann überprüfen Sie, ob einer der Punkte der Liste <a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#5-initiate-your-transfer-to-cloudflare" target="_blank" rel="noopener noreferrer">auf dieser Seite</a> auf Ihre Domain zutrifft.</p>
+		</li>
+		<li>
+			<p><b>Überprüfen Sie den Transferpreis:</b> Beim Umzug einer Domain verlangt ICANN von Ihnen, dass Sie für die Verlängerung Ihrer Registrierung um ein Jahr ab dem Vertragsende bezahlen. Das wird Ihnen an dieser Stelle des Prozesses nicht in Rechnung gestellt. Cloudflare belastet Ihre Karte, wenn Sie den Autorisierungscode eingeben und die Kontaktdaten am Ende Ihrer Transferanfrage bestätigen.</p>
+		</li>
+		<li>
+			<p><b>Geben Sie Ihren Autorisierungscode ein:</b> Geben Sie auf der nächsten Seite den Autorisierungscode für jede Domain ein, die Sie umziehen möchten.</p>
+		</li>
+		<li>
+			<p><b>Geben Sie Ihre Kontaktdaten ein oder bestätigen Sie diese:</b> Während der letzten Etappe des Transfers müssen Sie die Kontaktdaten für Ihre Registrierung eingeben. Diese werden standardmäßig von Cloudflare Registrar geschwärzt, sind aber zur Erfassung der richtigen Kontaktdaten für diese Registrierung erforderlich.</p>
+		</li>
+		<li>
+			<p><b>Genehmigen Sie den Transfer gegenüber Cloudflare:</b> Sobald Sie den Transfer beantragt haben, beginnt Cloudflare mit der Bearbeitung. Im Zuge dessen senden wir dem Registranten eine E-Mail mit einem Registrierungsformular, wenn die E-Mail-Adresse in einer öffentlichen Whois-Datenbank erscheint. Mit diesem Autorisierungsformular wird der Domaintransfer genehmigt.</p>
+		</li>
+		<li>
+			<p><b>Genehmigen Sie die Übertragung gegenüber Ihrem bisherigen Registrar:</b> Nach diesem Schritt sendet Ihnen Ihr bisheriger Registrar ebenfalls eine E-Mail, um sicherzugehen, dass Sie den Transfer auch wirklich in Auftrag gegeben haben. Bei den meisten Registraren enthält diese E-Mail einen Bestätigungslink. Wenn Sie diesem folgen, können Sie den Transfer beschleunigen. Reagieren Sie nicht auf die E-Mail, kann der Registrar bis zu fünf Tage verstreichen lassen, bis er den Umzug zu Cloudflare bearbeitet. Eventuell ist es auch möglich, den Transfer über das Dashboard Ihres bisherigen Registrars zu genehmigen.</p>
+		</li>
+		<li>
+			<p><b>Verfolgen Sie den Stand des Transfervorgangs über Ihr Cloudflare-Dashboard:</b> Der <a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-statuses" target="_blank" rel="noopener noreferrer">Transferstatus</a> für Ihre Domain ist unter „Account Home“ &gt; „Overview“ &gt; „Domain Registration“ (Kontostartseite &gt; Übersicht &gt; Domainregistrierung) einsehbar.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="after-you-transfer">Nach dem Transfer</h3>
+		<a href="https://blog.cloudflare.com/#after-you-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Testen Sie Ihre Website und Ihr E-Mail-Postfach:</b> Nach Abschluss des Transfers sollten Sie ihre Website testen, um sicherzugehen, dass alles ordnungsgemäß funktioniert. Bei Problemen oder Fragen können Sie sich jederzeit über unsere <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Community-Foren</a> oder unseren <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord-Server</a> an uns wenden.</p>
+		</li>
+		<li>
+			<p><b>Schaffen Sie etwas Neues:</b> Vielleicht handelt es sich um eine Domain, die Sie zwar gekauft, aber noch nicht genutzt haben. Nachdem Sie diese nun umgezogen haben, ist die Gelegenheit günstig, darauf etwas Neues zu schaffen. Sie könnten beispielsweise <a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank" rel="noopener noreferrer">ein neues Projekt starten, das auf auf dem von Ihnen bevorzugten Frontend-Framework mit C3 entwickelt wird</a>, <a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity" target="_blank" rel="noopener noreferrer">auf Cloudflare Pages mit Nuxt.js und Sanity.io einen Blog anzulegen</a> oder <a href="https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">versuchen, Ihr erstes ChatGPT-Plugin mit Cloudflare Workers zu erstellen</a>.</p>
+		</li>
+	</ul>
+</div>

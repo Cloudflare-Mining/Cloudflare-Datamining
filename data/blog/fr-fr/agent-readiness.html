@@ -1,0 +1,376 @@
+<div class="mb2 gray5">Lecture&nbsp;: 13 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/agent-readiness">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/agent-readiness">繁體中文</a>, en <a href="https://blog.cloudflare.com/it-it/agent-readiness">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/agent-readiness">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/agent-readiness">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/agent-readiness">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/agent-readiness">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fzhmLsLUKbjVjXeUTRkmh/d303a5174fe53bf6fa2126738a0b73c0/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Internet a toujours dû s'adapter à de nouvelles normes. Il a appris à communiquer avec les navigateurs web, puis à dialoguer avec les moteurs de recherche. Il doit désormais apprendre à dialoguer avec les agents IA.</p>
+	<p>Nous sommes ravis de vous présenter aujourd'hui <a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a>&nbsp;: un nouvel outil conçu pour aider les propriétaires de sites à mieux comprendre comment optimiser leurs sites pour les agents, du guidage de ces derniers à travers le processus d'authentification au contrôle du contenu qu'ils peuvent voir, du format dans lequel ils le reçoivent et de la manière dont ils le rémunèrent. Nous lançons également <a href="https://radar.cloudflare.com/ai-insights#adoption-of-ai-agent-standards" target="_blank" rel="noopener noreferrer"><u>un nouvel ensemble de données sur Cloudflare Radar</u></a>, conçu pour suivre l'adoption de chaque norme relative aux agents sur Internet.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sGg5lZjafjQ398V7hYyMv/93e112a34754e2065ffbf6445ebc4500/unnamed.png" alt="" class="kg-image" width="2048" height="1511" loading="lazy">
+	</figure>
+	<p>Nous souhaitons prêcher par l'exemple. C'est pourquoi nous vous informons également de notre récente réorganisation de la <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Developer Documentation</u></a> Cloudflare (les documents destinés aux développeurs) dont le but consistait à rendre notre site de documentation le plus convivial possible pour les agents, mais aussi de permettre aux outils IA de répondre plus rapidement aux questions, pour un coût nettement inférieur.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-agent-ready-is-the-web-today">Dans quelle mesure Internet est-il prêt aujourd'hui pour accueillir les agents&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#how-agent-ready-is-the-web-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En réalité… pas vraiment. Cette situation est attendue, mais révèle également à quel point les agents pourraient être plus efficaces qu'ils ne le sont aujourd'hui si des normes étaient adoptées.</p>
+	<p>Pour analyser cette dernière, Cloudflare Radar a sélectionné les <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>200&nbsp;000&nbsp;domaines les plus visités</u></a> sur Internet, filtré les catégories pour lesquelles la préparation aux agents n'a aucune importance (comme les redirections, les serveurs publicitaires et les services de tunnellisation) afin de se concentrer sur les entreprises, les plateformes et les éditeurs avec lesquels les agents AI pourraient réellement avoir besoin d'interagir. Nous avons ensuite scanné les catégories restantes à l'aide de notre nouvel outil.</p>
+	<p>Nous avons ainsi produit un nouveau graphique nommé «&nbsp;Adoption of AI agent standards&nbsp;» (Adoption des normes relatives aux agents IA) qui figure désormais sur la page <a href="https://radar.cloudflare.com/ai-insights#adoption-of-ai-agent-standards" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar AI Insights</u></a> (Statistiques concernant l'IA). Cette page nous permet ensuite de mesurer l'adoption de chaque norme dans différentes catégories de domaines.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Vn8SoboYs4OmY2y6aXZke/c641d63cc71e4645e3b19c4124b5e912/image3.png" alt="" class="kg-image" width="1600" height="1332" loading="lazy">
+	</figure>
+	<p>Certains éléments ont retenu notre attention en ce qui concerne les mesures de contrôle individuelles&nbsp;:</p>
+	<ul>
+		<li>
+			<p>L'utilisation du fichier <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a> est pratiquement universelle et 78&nbsp;% des sites en possèdent un. La grande majorité d'entre eux sont toutefois rédigés à l'attention des robots d'indexation des moteurs de recherche traditionnels, pas pour les agents IA.</p>
+		</li>
+		<li>
+			<p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Signaux de contenu</u></a>&nbsp;: 4&nbsp;% des sites ont déclaré leurs préférences en matière d'utilisation de l'IA dans leurs fichiers robots.txt. Cette nouvelle norme gagne manifestement en popularité.</p>
+		</li>
+		<li>
+			<p>La négociation de contenu Markdown (diffusion de contenu text/markdown grâce à l'en-tête Accept: text/markdown) est présente sur 3,9&nbsp;% des sites.</p>
+		</li>
+		<li>
+			<p>De nouvelles normes émergent, comme les <a href="https://modelcontextprotocol.io/community/server-card/charter" target="_blank" rel="noopener noreferrer"><u>cartes de serveur MCP</u></a> (MCP Server Cards) et les <a href="https://datatracker.ietf.org/doc/rfc9727" target="_blank" rel="noopener noreferrer"><u>catalogues d'API (RFC&nbsp;9727)</u></a>, mais elles n'apparaissent que pour moins de 15&nbsp;sites sur l'ensemble du jeu de données. Nous en sommes encore à un stade précoce. Vous avez la possibilité de vous démarquer en faisant partie des premiers sites à adopter les nouvelles normes et à travailler efficacement avec les agents.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Ce graphique sera actualisé chaque semaine et les données seront également accessibles par l'intermédiaire de l'outil <a href="https://radar.cloudflare.com/explorer" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a> ou de <a href="https://developers.cloudflare.com/api/resources/radar" target="_blank" rel="noopener noreferrer"><u>l'API Radar</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-an-agent-readiness-score-for-your-site">Obtenez un score d'état de votre préparation aux agents pour votre site</h2>
+		<a href="https://blog.cloudflare.com/#get-an-agent-readiness-score-for-your-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous pouvez obtenir un score évaluant l'état de votre préparation aux agents pour votre propre site web en vous rendant sur <a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a> et en saisissant l'URL de votre site.</p>
+	<p>Les scores et les audits qui proposent un retour d'information exploitable ont déjà contribué à l'adoption de nouvelles normes. L'outil <a href="https://developer.chrome.com/docs/lighthouse/performance/performance-scoring" target="_blank" rel="noopener noreferrer"><u>Google Lighthouse</u></a>, par exemple, évalue les sites web en fonction de leurs performances et de leur respect des bonnes pratiques en matière de sécurité. Il guide les propriétaires de sites dans l'adoption des dernières normes régissant les plateformes web. Nous pensons qu'un outil similaire devrait exister pour aider les propriétaires de sites à adopter les bonnes pratiques concernant les agents.</p>
+	<p>Lorsque vous saisissez l'URL de votre site, Cloudflare adresse des requêtes à ce dernier pour contrôler les normes qu'il prend en charge, avant de lui attribuer un score basé sur quatre axes&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Référencement&nbsp;: <a href="https://datatracker.ietf.org/doc/html/rfc9309" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>, <a href="https://www.sitemaps.org/protocol.html" target="_blank" rel="noopener noreferrer"><u>sitemap.xml</u></a>, <a href="https://datatracker.ietf.org/doc/html/rfc8288" target="_blank" rel="noopener noreferrer"><u>en-têtes de lien (RFC&nbsp;8288)</u></a></p>
+		</li>
+		<li>
+			<p>Contenu&nbsp;:&nbsp;<a href="https://blog.cloudflare.com/markdown-for-agents"><u>Markdown for Agents</u></a></p>
+		</li>
+		<li>
+			<p>Contrôle des accès des bots&nbsp;: <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>signaux de contenu</u></a>, <a href="https://developers.cloudflare.com/ai-crawl-control" target="_blank" rel="noopener noreferrer"><u>règles régissant les bots IA contenues dans le fichier robots.txt</u></a>, <a href="https://datatracker.ietf.org/doc/draft-meunier-web-bot-auth-architecture" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a></p>
+		</li>
+		<li>
+			<p>Fonctionnalités&nbsp;: <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a> (compétences des agents), catalogue d'API <a href="https://www.rfc-editor.org/rfc/rfc9727" target="_blank" rel="noopener noreferrer"><u>(RFC&nbsp;9727)</u></a>, identification des serveurs OAuth à l'aide des <a href="https://www.rfc-editor.org/rfc/rfc8414" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;8414</u></a> et <a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;9728</u></a>, <a href="https://modelcontextprotocol.io/community/server-card/charter" target="_blank" rel="noopener noreferrer"><u>MCP Server Card</u></a> et <a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank" rel="noopener noreferrer"><u>WebMCP</u></a></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69MdHcYAZi60gVKRVP9GFM/f3521831b2ca361e12a33f6c8eb05f5b/image9.png" alt="Screenshot of results from an agent-readiness check for an example website." class="kg-image" width="1724" height="1238" loading="lazy">
+	</figure>
+	<p><i><sup>Capture d'écran des résultats obtenus après exécution de la procédure de contrôle de l'état de préparation aux agents effectuée pour un site web donné.</sup></i></p>
+	<p>Nous vérifions également si le site prend en charge les normes de commerce agentique, notamment <a href="https://www.x402.org" target="_blank" rel="noopener noreferrer"><u>x402</u></a>, <a href="https://ucp.dev" target="_blank" rel="noopener noreferrer"><u>Universal Commerce Protocol</u></a> et <a href="https://www.agenticcommerce.dev" target="_blank" rel="noopener noreferrer"><u>Agentic Commerce Protocol</u></a>, mais celles-ci ne sont pas encore prises en compte dans notre note.</p>
+	<p>Pour chaque contrôle en échec, nous vous communiquons une invite à transmettre à votre agent de codage afin qu'il l'implémente en votre nom.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9C62LtqTLgvZGViVEh8n0/b9c01cebe9042ad4b458d4305b3db7b2/image6.png" alt="" class="kg-image" width="1814" height="1320" loading="lazy">
+	</figure>
+	<p>Le site lui-même est prêt pour accueillir les agents et prêche donc par l'exemple. Il expose un serveur MCP sans état (https://isitagentready.com/.well-known/mcp.json) au moyen d'un outil <code>scan_site</code> exécuté en Streamable HTTP. N'importe quel agent compatible MCP peut donc analyser les sites web de manière programmatique, sans passer par l'interface web. Il publie également un index des Agent Skills (https://isitagentready.com/.well-known/agent-skills/index.json) comportant des documents de compétences pour chaque norme contrôlée. Les agents sauront non seulement ce qu'il faut corriger, mais aussi comment procéder.</p>
+	<p>Intéressons-nous maintenant de manière plus approfondie aux contrôles de chaque catégorie et à leur importance pour les agents.</p>
+	<div class="flex anchor relative">
+		<h3 id="discoverability">Visibilité</h3>
+		<a href="https://blog.cloudflare.com/#discoverability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le fichier <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a> existe depuis 1994 et la plupart des sites en possèdent un. Le fichier robots.txt sert deux objectifs pour les agents. Il définit les règles d'exploration (quels agents peuvent accéder à quelles ressources) et pointe vers les sitemaps de votre site. Un sitemap (plan de site) est un fichier XML qui répertorie chaque chemin d'accès à votre site. Il s'agit fondamentalement d'une carte que les agents peuvent suivre pour explorer l'ensemble de votre contenu sans avoir à suivre chaque lien. Le fichier robots.txt est la première étape des agents lorsqu'ils explorent un site.</p>
+	<p>Au-delà des sitemaps, les agents sont également capables d'identifier des ressources importantes directement à partir des en-têtes de réponse HTTP, et plus précisément de l'en-tête de réponse Link (<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;8288</u></a>). Contrairement aux liens incorporés au code HTML, l'en-tête Link fait partie intégrante de la réponse HTTP elle-même et permet donc à un agent d'identifier les liens vers les ressources sans avoir à analyser le moindre balisage&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust">HTTP/1.1 200 OK
+Link: &lt;/.well-known/api-catalog&gt;; rel="api-catalog"</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="content-accessibility">Accessibilité du contenu</h3>
+		<a href="https://blog.cloudflare.com/#content-accessibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le déploiement d'un agent sur votre site est une chose. S'assurer qu'il peut réellement lire votre contenu en est une autre.</p>
+	<p>En septembre 2024 (soit ce qui semble remonter à une éternité compte tenu de la rapidité d'évolution de l'IA), le fichier <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> a été avancé comme moyen de proposer une représentation d'un site web conviviale pour les LLM et de s'intégrer à la fenêtre contextuelle du modèle. Placé à la racine de votre site, le fichier <a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> fournit une liste de lecture structurée aux agents : la nature du site, son contenu et l'emplacement de ses informations importantes. Considérez-le comme un plan de site conçu pour être lu par un LLM plutôt qu'indexé par un robot d'exploration&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust"># My Site
+&gt; A developer platform for building on the edge.
+## Documentation
+- [Getting Started](https://example.com/docs/start.md)
+- [API Reference](https://example.com/docs/api.md)
+## Changelog
+- [Release Notes](https://example.com/changelog.md)</code></pre>
+	<p>La <a href="https://blog.cloudflare.com/markdown-for-agents"><u>négociation de contenu Markdown</u></a> va encore plus loin. Lorsqu'un agent va chercher une page et lui adresse un en-tête <code>Accept: text/markdown</code>, le serveur répond en proposant une version propre de la page en Markdown plutôt qu'en HTML. La version Markdown nécessite beaucoup moins de jetons (d'après nos mesures, jusqu'à 80&nbsp;% de moins dans certains cas). Les réponses sont donc plus rapides, moins coûteuses et plus susceptibles d'être consommées dans leur intégralité, compte tenu des limitations dont la plupart des outils d'agents disposent par défaut en ce qui concerne leurs fenêtres de contexte.</p>
+	<p>Par défaut, nous ne vérifions que si le site traite correctement la négociation de contenu Markdown et ne contrôlons pas la présence d'un fichier llms.txt. Vous pouvez personnaliser vous-même le processus d'analyse afin qu'il intègre le fichier llms.txt si vous le souhaitez.</p>
+	<div class="flex anchor relative">
+		<h3 id="bot-access-control">Contrôle des accès des bots</h3>
+		<a href="https://blog.cloudflare.com/#bot-access-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Maintenant que les agents peuvent s'orienter sur votre site Internet et consommer votre contenu, la question suivante se pose&nbsp;: souhaitez-vous réellement permettre à n'importe quel bot de faire de même&nbsp;?</p>
+	<p>Le fichier <code>robots.txt</code> peut servir à autre chose que d'indiquer simplement l'emplacement des sitemaps. C'est également à cet endroit que vous définissez vos règles d'accès. Vous pouvez déclarer explicitement quels bots d'exploration sont autorisés à entrer sur votre site et les ressources auxquelles ils peuvent accéder. Vous pouvez même stipuler des chemins d'accès spécifiques. Cette convention est bien établie et ce fichier demeure le premier élément que tous les bots bien élevés doivent consulter avant de commencer à explorer un site.</p>
+	<p>Les <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>signaux de contenu</u></a> vous permettent d'être encore plus spécifiques. Plutôt que de vous contenter d'autoriser un bot à accéder à votre site ou de l'empêcher d'entrer, vous pouvez déclarer exactement ce que l'IA peut faire avec votre contenu. La présence d'une directive <code>Content-Signal</code> au sein de votre fichier <code>robots.txt</code>, vous permet de contrôler trois aspects de manière indépendante&nbsp;: si votre contenu peut être utilisé à des fins d'entraînement de l'IA («&nbsp;<code>ai-train</code>&nbsp;»), s'il peut être utilisé comme entrant IA à des fins d'inférence et d'ancrage («&nbsp;<code>ai-input</code>&nbsp;»), et s'il doit figurer dans les résultats de recherche («&nbsp;<code>search</code>&nbsp;»)&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: *
+Content-Signal: ai-train=no, search=yes, ai-input=yes</code></pre>
+	<p>Inversement, le projet de norme IETF <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a> (authentification des bots web) permet aux bots «&nbsp;amis&nbsp;» de s'authentifier et aux sites web qui reçoivent des requêtes de la part des bots de les identifier comme tels. Le bot signe ses requêtes HTTP et le site récepteur contrôle ces signatures à l'aide des clés publiques publiées par le bot.</p>
+	<p>Ces clés publiques résident sur un point de terminaison bien connu, <code>/.well-known/http-message-signatures-directory</code>, que nous contrôlons bien évidemment dans le cadre de l'analyse.</p>
+	<p>Tous les sites n'ont pas besoin de mettre cette mesure de contrôle en œuvre.&nbsp;L'opération n'est par exemple pas nécessaire si votre site se contente de diffuser du contenu et n'adresse pas de requêtes à d'autres sites. Nous nous attendons cependant à ce que cette technologie prenne de l'importance au fil du temps, suite à l'augmentation du nombre de sites Internet qui exécutent leurs propres agents et adressent des requêtes à d'autres sites.</p>
+	<div class="flex anchor relative">
+		<h3 id="protocol-discovery">Identification de protocole</h3>
+		<a href="https://blog.cloudflare.com/#protocol-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Au-delà de la consommation passive de contenu, les agents peuvent également interagir directement avec votre site web en effectuant des appels d'API, en invoquant des outils et en achevant des tâches de manière autonome.</p>
+	<p>Si votre service comporte une ou plusieurs API publiques, le catalogue d'API (<a href="https://www.rfc-editor.org/rfc/rfc9727" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;9727</u></a>) s'impose comme un emplacement unique et connu où les agents peuvent identifier toutes vos API. Hébergé à l'adresse <code>/.well-known/api-catalog</code>, il dresse la liste de vos API et renvoie vers leurs spécifications, leur documentation et leurs points de terminaison d'état, en vous évitant ainsi de contraindre les agents à parcourir votre portail pour développeurs ou votre documentation.</p>
+	<p>Nous ne pouvons décemment pas parler des agents sans mentionner le MCP. Le <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer"><u>protocole MCP</u></a> (Model Context Protocol, protocole de contexte de modèle) est une norme ouverte qui permet aux modèles IA de se connecter à des sources de données et des outils externes. Plutôt que de développer une intégration personnalisée pour chaque outil IA, vous n'avez à bâtir qu'un serveur MCP unique, que tous les agents compatibles pourront utiliser.</p>
+	<p>Vous pouvez également publier une MCP Server Card pour aider les agents à trouver votre serveur MCP (cette proposition est <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649" target="_blank" rel="noopener noreferrer"><u>en cours de rédaction</u></a>). Cette Card se présente sous la forme d'un fichier JSON résidant à l'adresse <code>/.well-known/mcp/server-card.json</code> et permet de décrire votre serveur avant même qu'un agent ne s'y connecte&nbsp;: les outils qu'il expose, la manière d'y accéder et la procédure à suivre pour s'authentifier auprès de lui. Les agents consultent ce fichier et connaissent dès lors tout ce dont ils ont besoin pour commencer à utiliser votre serveur&nbsp;:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "search-mcp-server",
+    "title": "Search MCP Server",
+    "version": "1.0.0"
+  },
+  "description": "Search across all documentation and knowledge base articles",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "/mcp"
+  },
+  "authentication": {
+    "required": false
+  },
+  "tools": [
+    {
+      "name": "search",
+      "title": "Search",
+      "description": "Search documentation by keyword or question",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" }
+        },
+        "required": ["query"]
+      }
+    }
+  ]
+}</code></pre>
+	<p>Les agents sont plus efficaces lorsqu'ils disposent de <a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>compétences d'agent</u></a> (Agent Skills) qui les aident à accomplir des tâches spécifiques. Mais comment un agent peut-il identifier les compétences qu'un site lui propose&nbsp;? Nous avons proposé que les sites puissent rendre ces informations disponibles à l'adresse <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><u><code>.well-known/agent-skills/index.json</code></u></a>, un point de terminaison qui indique à l'agent quelles compétences sont disponibles et à quel endroit. Vous remarquerez peut-être que la norme <code>.well-known</code> (<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>) est utilisée par de nombreux autres normes ayant trait aux agents et à l'autorisation. Nous souhaitons à ce titre remercier Mark Nottingham de Cloudflare, qui est à l'origine de cette norme, ainsi que les autres contributeurs de l'IETF&nbsp;!</p>
+	<p>De nombreux sites exigent que vous vous connectiez en premier lieu avant d'accéder à leur contenu. C'est la raison pour laquelle les utilisateurs humains éprouvent des difficultés à accorder aux agents la capacité d'accéder à ces sites en leur nom et pourquoi certains ont adopté l'approche de contournement potentiellement dangereuse qui consiste à ce que l'utilisateur accorde aux agents l'accès à son navigateur web par l'intermédiaire de la session sur laquelle ils sont connectés.</p>
+	<p>Une meilleure solution existe et permet aux internautes d'accorder explicitement l'accès. En indiquant aux agents où trouver le serveur d'autorisation (<a href="https://datatracker.ietf.org/doc/html/rfc9728" target="_blank" rel="noopener noreferrer"><u>RFC&nbsp;9728</u></a>), les sites qui prennent en charge OAuth permettent aux agents d'accompagner les utilisateurs humains au terme d'un processus OAuth, au sein duquel ils pourront choisir d'accorder officiellement l'accès à l'agent. Comme annoncé lors de l'Agents Week 2026, la solution <a href="https://blog.cloudflare.com/managed-oauth-for-access"><u>Cloudflare Access prend désormais en charge l'intégralité de ce processus OAuth</u></a>. Nous avons également montré de quelle manière des agents tels qu'OpenCode peuvent s'appuyer sur cette norme pour s'assurer que tout fonctionne correctement lorsque les utilisateurs communiquent des URL protégées aux agents&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BrGE7eydNNCpEEe3PowrJ/6a2bb1e1b1e7d84d672c1f6ad2333129/image4.png" alt="" class="kg-image" width="1818" height="1644" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="commerce">Commerce</h3>
+		<a href="https://blog.cloudflare.com/#commerce" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents peuvent également acheter des produits en votre nom, mais les procédures de paiement en ligne ont été conçues pour les humains&nbsp;: ajouter un article au panier, saisir le numéro de carte de paiement et cliquer sur «&nbsp;Payer&nbsp;». Ce processus s'effondre totalement lorsque l'acheteur est un agent IA.</p>
+	<p>La norme <a href="https://x402.org" target="_blank" rel="noopener noreferrer"><u>x402</u></a> résout ce problème au niveau du protocole en rétablissant l'erreur HTTP&nbsp;402 «&nbsp;Payment Required&nbsp;» («&nbsp;paiement nécessaire&nbsp;»), un code d'état présent dans les spécifications depuis&nbsp;1997, mais qui n'avait jamais connu une large utilisation. Le processus est simple&nbsp;: un agent demande une ressource, le serveur répond par un code&nbsp;402 et un contenu lisible par machine qui décrit les conditions du paiement. L'agent procède au paiement et recommence. Cloudflare s'est associée à Coinbase pour lancer la <a href="https://blog.cloudflare.com/x402"><u>x402 Foundation</u></a>, un organisme dont la mission consiste à favoriser l'adoption du x402 en tant que norme ouverte pour les paiements sur Internet.</p>
+	<p>Nous contrôlons également la présence des protocoles <a href="https://ucp.dev" target="_blank" rel="noopener noreferrer"><u>Universal Commerce Protocol</u></a> (protocole de commerce universel) et <a href="https://www.agenticcommerce.dev" target="_blank" rel="noopener noreferrer"><u>Agentic Commerce Protocol</u></a> (protocole de commerce agentique), deux normes émergentes parmi les protocoles de commerce agentique conçues pour permettre aux agents d'identifier et d'acheter les produits que les humains achèteraient généralement par l'intermédiaire de boutiques d'e-commerce (et donc en suivant un processus de paiement).</p>
+	<div class="flex anchor relative">
+		<h2 id="integrating-agent-readiness-into-cloudflare-url-scanner">Intégrer le degré de préparation aux agents à l'outil Cloudflare URL Scanner</h2>
+		<a href="https://blog.cloudflare.com/#integrating-agent-readiness-into-cloudflare-url-scanner" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'outil <a href="https://radar.cloudflare.com/scan" target="_blank" rel="noopener noreferrer"><u>URL Scanner</u></a> proposé par Cloudflare vous permet de nous adresser une URL de votre choix et d'obtenir un rapport détaillé à son sujet&nbsp;: en-têtes HTTP, certificats TLS, enregistrements DNS, technologies utilisées, données relatives aux performances et signaux de sécurité. Il s'agit d'un outil fondamental pour les chercheurs en sécurité et les développeurs qui souhaitent comprendre le fonctionnement exact d'une URL en coulisses.</p>
+	<p>Nous avons repris les mêmes mesures de contrôle que celles utilisées sur la page <a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a> et les avons ajoutées à l'URL Scanner sous un nouvel onglet nommé Préparation aux agents. Ainsi, lorsque vous scannerez une URL donnée, vous pourrez désormais consulter le rapport complet sur l'état de préparation aux agents du site, en plus de son analyse habituelle&nbsp;: les contrôles réussis, le degré actuel du site et les recommandations pour améliorer le score du site.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tIXif15b4nfpm6ZmS5QZM/596536ca95a10684c73003c4184d6367/image2.png" alt="" class="kg-image" width="1999" height="1145" loading="lazy">
+	</figure>
+	<p>Cette intégration est également disponible de manière programmatique par l'intermédiaire de <a href="https://developers.cloudflare.com/api/resources/url_scanner" target="_blank" rel="noopener noreferrer"><u>l'API URL Scanner</u></a>. Transmettez l'option «&nbsp;agentReadiness&nbsp;» dans votre requête d'analyse afin d'y inclure les résultats indiquant le niveau de préparation aux agents&nbsp;:</p>
+	<pre class="language-Shell"><code class="language-Shell">curl -X POST https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/urlscanner/v2/scan \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+    -d '{
+          "url": "https://www.example.com",
+          "options": {"agentReadiness": true}
+        }'</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="leading-by-example-upgrading-cloudflare-docs">Prêcher par l'exemple&nbsp;: actualiser les Cloudflare Docs</h2>
+		<a href="https://blog.cloudflare.com/#leading-by-example-upgrading-cloudflare-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque nous étions en train de développer les outils qui nous permettraient de mesurer le degré de préparation d'Internet, nous savions que nous devions nous assurer que nos propres affaires étaient en ordre. Nos documents doivent être facilement compréhensibles pour les agents que nos clients utilisent.</p>
+	<p>Nous avons naturellement adopté les normes pertinentes relatives aux sites et au contenu mentionnées ci-dessus. N'hésitez d'ailleurs pas à consulter notre score en la matière <a href="https://isitagentready.com/developers.cloudflare.com?profile=content" target="_blank" rel="noopener noreferrer"><u>ici</u></a>. Nous ne nous sommes toutefois pas arrêtés en si bon chemin. Découvrez comment nous avons amélioré les <a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Developer Docs</u></a> de Cloudflare afin d'en faire l'une des ressources les plus conviviales pour les agents sur Internet.</p>
+	<div class="flex anchor relative">
+		<h3 id="url-fallbacks-using-index-md-files">Connexions de secours aux URL à l'aide de fichiers <code>index.md</code></h3>
+		<a href="https://blog.cloudflare.com/#url-fallbacks-using-index-md-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Malheureusement, sur les 7&nbsp;agents testés <a href="https://www.checklyhq.com/blog/state-of-ai-agent-content-negotation" target="_blank" rel="noopener noreferrer"><u>en février&nbsp;2026</u></a>, seuls Claude Code, OpenCode et Cursor demandent du contenu avec l'en-tête <code>Accept: text/markdown</code> par défaut. Pour les autres, nous avions besoin d'une connexion de secours fluide basée sur URL.</p>
+	<p>À cet effet, nous mettons chaque page à disposition séparément par l'intermédiaire d'un fichier Markdown (relative à l'URL de la page) à l'adresse <code>/index.md</code>. Cette tâche est réalisée de manière dynamique en combinant deux règles Cloudflare, sans dupliquer les fichiers statiques&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Une <a href="https://developers.cloudflare.com/rules/transform/url-rewrite" target="_blank" rel="noopener noreferrer"><u>règle de réécriture d'URL</u></a> fait correspondre les requêtes se terminant par <code>/index.md</code> et les réécrit de manière dynamique vers le chemin de base à l'aide de l'expression <code>regex_replace</code> (en supprimant <code>/index.md</code>).&nbsp;</p>
+		</li>
+		<li>
+			<p>Une <a href="https://developers.cloudflare.com/rules/transform/request-header-modification" target="_blank" rel="noopener noreferrer"><u>règle de transformation d'en-tête de la requête</u></a> correspond au chemin de la requête initiale <i>avant</i> sa réécriture (<code>raw.http.request.uri.path</code>) et définit automatiquement l'en-tête <code>Accept: text/markdown</code>.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Grâce à ces deux règles, nous pouvons récupérer n'importe quelle page au format Markdown en ajoutant l'adresse /index.md à l'URL&nbsp;:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/r2/get-started/index.md" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/r2/get-started/index.md</u></a></p>
+		</li>
+	</ul>
+	<p>Nous pointons vers ces URL <code>/index.md</code> dans nos fichiers <code>llms.txt</code>. Autrement dit, pour ces chemins <code>/index.md</code>, nous renverrons toujours du texte Markdown, quels que soient les en-têtes définis par le client. Nous parvenons à mener à bien cette opération sans étape de développement supplémentaire ni duplication de contenu.</p>
+	<div class="flex anchor relative">
+		<h3 id="creating-effective-llms-txt-files-for-large-sites">Créer des fichiers <code>llms.txt</code> efficaces pour les sites volumineux</h3>
+		<a href="https://blog.cloudflare.com/#creating-effective-llms-txt-files-for-large-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le fichier <code>llms.txt</code> sert de «&nbsp;base principale&nbsp;» aux agents, en leur offrant un répertoire de pages conçu pour aider les LLM à trouver le contenu. Un document unique de plus de 5&nbsp;000&nbsp;pages de documentation dépasse toutefois la taille des fenêtres contextuelles des modèles.</p>
+	<p>Plutôt qu'un fichier massif, nous générons un fichier <code>llms.txt</code> distinct pour <i>chaque répertoire de premier niveau</i> dans nos documents. Le fichier <code>llms.txt</code> à la racine pointe simplement vers ces sous-répertoires.</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/llms.txt</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/r2/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/r2/llms.txt</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/llms.txt" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/workers/llms.txt</u></a></p>
+		</li>
+	</ul>
+	<p>Nous supprimons également des centaines de pages d'annuaires qui n'apportent que peu de valeur sémantique à un LLM afin de nous assurer que chaque page propose un contexte descriptif riche (titres, noms sémantiques et descriptions).</p>
+	<p>Nous omettons, par exemple, près de 450&nbsp;pages qui ne servent qu'à dresser une liste des répertoires localisés, comme&nbsp;: <a href="https://developers.cloudflare.com/workers/databases" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/workers/databases/</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WaKjZBJbu3onfthzEIELu/42a3e31e8c71bc606b2b45d26ab4a5dd/image1.png" alt="" class="kg-image" width="1760" height="1184" loading="lazy">
+	</figure>
+	<p>Ces pages apparaissent dans notre sitemap, mais ne contiennent que très peu d'informations pour un LLM. Comme toutes les pages filles sont déjà liées individuellement au sein du fichier <code>llms.txt</code>, la récupération d'une page de répertoire ne propose qu'une liste redondante de liens et contraint l'agent à émettre une autre requête pour trouver le contenu réel.</p>
+	<p>Chaque entrée du fichier <code>llms.txt</code> doit être riche en contexte, mais légère en jetons, pour aider les agents à s'orienter de manière efficace. Les utilisateurs humains peuvent ignorer l'en-tête frontmatter et les étiquettes de filtrage, mais ces métadonnées constituent la roue directrice pour un agent IA. C'est la raison pour laquelle notre équipe Product Content Experience (PCX) a affiné nos titres de page, nos descriptions et nos structures d'URL afin que les agents sachent toujours exactement quelles pages récupérer.</p>
+	<p>Examinons une section de notre fichier racine<a href="https://developers.cloudflare.com/llms.txt" target="_blank" rel="noopener noreferrer"> <u>llms.txt</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OvVdBcHHItCF3xN2kMVZZ/d105546f402885da90466ff9545f66d2/image5.png" alt="" class="kg-image" width="1999" height="470" loading="lazy">
+	</figure>
+	<p>Chaque lien comporte un nom sémantique, une URL correspondante et une description de haute valeur. Aucun travail supplémentaire n'a été nécessaire pour générer le fichier <code>llms.txt</code>. Toutes les informations étaient déjà disponibles dans l'en-tête frontmatter des documents. Il en va de même pour les pages mentionnées dans les répertoires de premier niveau des fichiers <code>llms.txt</code>. L'ensemble de ce contexte confère aux agents tous les outils nécessaires pour trouver plus efficacement les informations pertinentes.</p>
+	<div class="flex anchor relative">
+		<h3 id="custom-agent-friendly-documentation-afdocs-tooling">Outils de documentation adaptés aux besoins des agents personnalisés (afdocs)</h3>
+		<a href="https://blog.cloudflare.com/#custom-agent-friendly-documentation-afdocs-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous testons également nos documents par rapport aux <a href="https://github.com/agent-ecosystem/afdocs" target="_blank" rel="noopener noreferrer"><u>afdocs</u></a>. Cette spécification de documentation émergente et adaptée aux les agents, qui se double d'un projet open source, permet aux équipes de tester divers aspects des sites de documentation, comme l'identification du contenu et la navigation. Cette spécification nous a permis de développer nos propres outils d'audit personnalisés. En ajoutant quelques mesures correctives ciblées et spécifiques à notre scénario d'utilisation, nous avons produit un tableau de bord conçu pour faciliter l'évaluation.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lzMVtLnGAoKtdwf43YtDx/757f52fd09bb2525fac41b634bf987ad/image10.png" alt="" class="kg-image" width="1999" height="1227" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="benchmark-results-faster-and-cheaper">Résultats des évaluations comparatives&nbsp;: notre solution est plus rapide et moins chère</h3>
+		<a href="https://blog.cloudflare.com/#benchmark-results-faster-and-cheaper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons pointé un agent (Kimi-k2.5 via OpenCode) vers les fichiers <code>llms.txt</code> d'autres grands sites de documentation technique et demandé à cet agent de répondre à des questions techniques très spécifiques.</p>
+	<p>En moyenne, l'agent pointé vers la documentation de Cloudflare a consommé <b>31&nbsp;% de jetons en moins</b> et est arrivé à la bonne réponse <b>66&nbsp;% plus rapidement</b> que le site moyen non optimisé pour les agents. L'intégration de nos répertoires de produits au sein d'une fenêtre contextuelle unique permet aux agents d'identifier la page exacte dont ils ont besoin et de la récupérer en suivant un chemin linéaire unique.</p>
+	<div class="flex anchor relative">
+		<h3 id="structure-leads-to-speed">La structure mène à la vitesse</h3>
+		<a href="https://blog.cloudflare.com/#structure-leads-to-speed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La précision des réponses des LLM constitue bien souvent une conséquence de l'efficacité de la fenêtre contextuelle. Nous avons observé une tendance récurrente avec d'autres ensembles de documentation pendant les tests.</p>
+	<ol>
+		<li>
+			<p><b>La boucle grep&nbsp;:</b> de nombreux sites de documentation proposent un fichier llms.txt unique et gigantesque, qui dépasse la taille de la fenêtre contextuelle immédiate de l'agent. Comme l'agent ne peut pas «&nbsp;lire&nbsp;» le fichier dans son ensemble, il commence à chercher les mots clés par l'intermédiaire d'une boucle <a href="https://en.wikipedia.org/wiki/Grep" target="_blank" rel="noopener noreferrer"><u>grep</u></a>. Si la première recherche échoue à localiser précisément l'information requise, l'agent doit alors réfléchir, affiner sa recherche et réessayer.</p>
+		</li>
+		<li>
+			<p><b>Contexte restreint et précision moindre&nbsp;: </b>l'agent perd le contexte général de la documentation lorsqu'il s'appuie principalement sur la recherche itérative plutôt que sur la lecture du fichier complet. Cette vue fragmentée conduit souvent l'agent à avoir une compréhension réduite de la documentation disponible.</p>
+		</li>
+		<li>
+			<p><b>Latence et inflation excessive du nombre de jetons&nbsp;:</b> chaque itération de la boucle <code>grep</code> nécessite de l'agent qu'il génère de nouveaux «&nbsp;jetons de raisonnement&nbsp;» et qu'il exécute des requêtes de recherche supplémentaires. Ces allers-retours ralentissent notablement la réponse finale et augmentent le nombre total de jetons. Il en résulte dès lors un coût plus élevé pour l'utilisateur final.</p>
+		</li>
+	</ol>
+	<p>En revanche, les documents Cloudflare sont conçus pour s'inscrire intégralement au sein de la fenêtre contextuelle d'un agent. Cette approche permet à l'agent d'ingérer le répertoire, d'identifier la page exacte dont il a besoin et d'extraire le Markdown sans détours inutiles.</p>
+	<div class="flex anchor relative">
+		<h3 id="improving-llm-answers-over-time-by-redirecting-ai-training-crawlers">Améliorer les réponses des LLM au fil du temps en redirigeant les bots d'exploration dédiés à l'entraînement de l'IA</h3>
+		<a href="https://blog.cloudflare.com/#improving-llm-answers-over-time-by-redirecting-ai-training-crawlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La documentation des produits existants, comme <a href="https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands" target="_blank" rel="noopener noreferrer"><u>Wrangler&nbsp;v1</u></a> ou <a href="https://developers.cloudflare.com/workers/configuration/sites" target="_blank" rel="noopener noreferrer"><u>Workers Sites</u></a>, présente une problématique unique. Le fait de devoir conserver ces informations accessibles à des fins historiques peut conduire à la production de recommandations obsolètes par les agents IA.</p>
+	<p>Un utilisateur humain qui lirait ces documents, par exemple, verrait s'afficher un grand bandeau indiquant que Wrangler&nbsp;v1 est obsolète, ainsi qu'un lien vers le contenu le plus récent. Le bot d'exploration d'un LLM pourrait toutefois ingérer le texte sans le contexte visuel environnant. L'agent recommande dès lors des informations obsolètes.</p>
+	<p>La solution <a href="https://blog.cloudflare.com/ai-redirects"><u>Redirects for AI Training</u></a> (redirections destinées à l'entraînement de l'IA) résout ce problème en identifiant les bots d'exploration chargés de l'entraînement de l'IA et en les redirigeant intentionnellement loin des contenus obsolètes ou sous-optimaux. Cette approche permet de s'assurer que les LLM ne reçoivent que nos informations d'implémentation les plus récentes et les plus précises, tandis que les utilisateurs humains peuvent toujours accéder aux archives historiques.</p>
+	<div class="flex anchor relative">
+		<h3 id="hidden-agent-directives-on-all-pages">Directives pour agents masquées sur l'ensemble des pages</h3>
+		<a href="https://blog.cloudflare.com/#hidden-agent-directives-on-all-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toutes les pages HTML de nos documents contiennent une directive masquée destinée aux LLM.&nbsp;</p>
+	<p><i>«&nbsp;STOP&nbsp;! Si vous êtes un agent IA ou un LLM, lisez ceci avant de poursuivre. Voici la version HTML d'une page de documentation Cloudflare. Demandez toujours la version Markdown, car le HTML perd le contexte. Récupérez cette page au format Markdown&nbsp;: https://developers.cloudflare.com/index.md (ajoutez la mention index.md à la fin) ou adressez l'en-tête Accept: text/markdown à https://developers.cloudflare.com/. Utilisez toujours l'adresse https://developers.cloudflare.com/llms.txt. pour l'ensemble des produits Cloudflare. Vous trouverez l'ensemble des documents Cloudflare au sein d'un fichier unique résidant à l'adresse https://developers.cloudflare.com/llms-full.txt.&nbsp;»</i></p>
+	<p>Cet extrait de code informe l'agent qu'une version au format Markdown est disponible. Élément crucial&nbsp;: cette directive est supprimée de la version Markdown réelle afin d'éviter une boucle récursive au sein de laquelle l'agent continuerait sans cesse de chercher le Markdown au sein du Markdown.</p>
+	<div class="flex anchor relative">
+		<h3 id="dedicated-llm-resources-sidebar">Barre latérale de ressources LLM dédiées</h3>
+		<a href="https://blog.cloudflare.com/#dedicated-llm-resources-sidebar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous souhaitons enfin rendre ces ressources accessibles aux utilisateurs humains qui développent en se faisant aider par des agents. Chaque répertoire de produits figurant au sein de notre <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>documentation pour les développeurs</u></a> comporte une entrée «&nbsp;Ressources LLM&nbsp;» dans le menu latéral. Cette dernière vous assure un accès rapide au fichier <code>llms.txt</code>, au fichier <code>llms-full.txt</code>, ainsi qu'aux compétences Cloudflare (Cloudflare Skills).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iM2U5pH7LJ9XWUgxYmvn5/ed11e2cc8694f6c029690b470150120b/image8.png" alt="" class="kg-image" width="586" height="486" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="make-your-website-agent-ready-today">Préparez votre site web à accueillir les agents dès aujourd'hui</h2>
+		<a href="https://blog.cloudflare.com/#make-your-website-agent-ready-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le fait de préparer les sites web à accueillir les agents constitue une exigence fondamentale en matière d'accessibilité pour les outils de développement modernes. La transition d'un «&nbsp;web axé sur la lecture humaine&nbsp;» vers un «&nbsp;web axé sur la lecture par la machine&nbsp;» constitue le plus important changement architectural depuis des décennies.&nbsp;</p>
+	<p>Obtenez un score d'état de votre préparation aux agents pour votre site sur <a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>isitagentready.com</u></a>, utilisez les invites que l'outil vous propose et demandez à votre agent d'actualiser votre site pour l'ère de l'IA. Restez à l'écoute de <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> pour davantage d'informations sur l'évolution du taux d'adoption des différentes normes relatives aux agent sur l'Internet l'an prochain. Si nous avons appris quelque chose cette année, c'est que les choses peuvent évoluer très rapidement&nbsp;!</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Regarder sur Cloudflare&nbsp;TV</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bbf048260ce0ec9900167a567a708746/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbbf048260ce0ec9900167a567a708746%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>
+	</p>
+</div>

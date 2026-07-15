@@ -1,0 +1,142 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">English</a>, <a href="https://blog.cloudflare.com/fr-fr/hyperdrive-making-regional-databases-feel-distributed">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/hyperdrive-making-regional-databases-feel-distributed">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/hyperdrive-making-regional-databases-feel-distributed">한국어</a>, <a href="https://blog.cloudflare.com/es-es/hyperdrive-making-regional-databases-feel-distributed">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/hyperdrive-making-regional-databases-feel-distributed">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sFxc3uh02u4kcENY3ivRo/044efe326d58983c5b4a706e332e11ed/hyperdrive-making-regional-databases-feel-distributed.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hyperdrive macht den Zugriff auf Ihre bestehenden Datenbanken von Cloudflare Workers aus hyperschnell, egal wo sie laufen. Sie verbinden Hyperdrive mit Ihrer Datenbank, ändern eine Codezeile, um eine Verbindung über Hyperdrive herzustellen, und voilà: Verbindungen und Abfragen werden schneller (und Spoiler: <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Sie können es schon heute nutzen</a>).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38AL8kYOfUuUOlGD2p2Wfw/596490c5c841fb416154cbce56cc830b/image1-33.png" alt="Hyperdrive: making databases feel like they’re global" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Kurz gesagt: Hyperdrive nutzt unser globales Netzwerk, um Abfragen an Ihre bestehenden Datenbanken zu beschleunigen, unabhängig davon, ob sich diese bei einem alten Cloud-Provider oder bei Ihrem bevorzugten Provider für Serverless-Datenbanken befinden. Die Latenz, die durch das wiederholte Einrichten neuer Datenbankverbindungen entsteht, wird drastisch reduziert, und die beliebtesten Leseabfragen an Ihre Datenbank werden zwischengespeichert, sodass Sie oft gar nicht mehr zu Ihrer Datenbank zurückkehren müssen.</p>
+	<p>Wenn Ihre Kerndatenbank – mit Ihren Nutzerprofilen, Ihrem Produktbestand oder Ihrer wichtigen Web-App – in der us-east1-Region eines veralteten Cloud-Anbieters angesiedelt ist, wird der Zugriff für Nutzende in Paris, Singapur und Dubai ohne Hyperdrive sehr langsam sein und selbst für Nutzende in Los Angeles oder Vancouver langsamer, als er sein sollte. Da jeder Roundtrip bis zu 200 ms dauert, können die mehrfachen Roundtrips, die allein für den Verbindungsaufbau erforderlich sind, leicht bis zu einer Sekunde (oder mehr!) in Anspruch nehmen; und das, bevor Sie überhaupt eine Abfrage für Ihre Daten gemacht haben. Hyperdrive soll dieses Problem lösen.</p>
+	<p>Um die Performance von Hyperdrive zu demonstrieren, haben wir eine <a href="https://hyperdrive-demo.pages.dev" target="_blank" rel="noopener noreferrer">Demo-Anwendung</a> erstellt, die Abfragen gegen dieselbe Datenbank durchführt: sowohl mit Hyperdrive als auch ohne Hyperdrive (direkt). Die App wählt eine Datenbank in einem Nachbarkontinent aus: Wenn Sie sich in Europa befinden, wählt sie eine Datenbank in den USA – etwas, das europäische Nutzende allzu häufig erleben – und wenn Sie sich in Afrika befinden, wählt sie eine Datenbank in Europa (und so weiter). Sie erhalten die Rohdaten einer einfachen SELECT-Abfrage, ohne sorgfältig ausgewählte Durchschnittswerte oder herausgepickte Metriken.</p>
+	<p><i>Wir haben eine</i> <a href="https://hyperdrive-demo.pages.dev" target="_blank" rel="noopener noreferrer"><i>Demo-App entwickelt</i></a><i>, die echte Abfragen an eine PostgreSQL-Datenbank stellt, mit und ohne Hyperdrive.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VWco8QZERMlkgBpiilOyA/99245c5a6ce8a208e7fc793121aeaef3/image2-25.png" alt="" class="kg-image" width="1999" height="1705" loading="lazy">
+
+	</figure>
+	<p>Bei internen Tests, ersten Berichten von Nutzenden und mehreren Durchläufen in unserem Benchmark erzielte Hyperdrive bei gecachten Abfragen eine 17- bis 25-fache Performance-Verbesserung im Vergleich zur direkten Abfrage der Datenbank und eine sechs- bis achtfache Verbesserung bei ungecachten Abfragen und Schreibvorgängen. Die gecachte Latenz wird Sie vielleicht nicht überraschen, aber wir sind der Meinung, dass die sechs- bis achtfache Verbesserung bei nicht gecachten Abfragen aus „Ich kann keine zentralisierte Datenbank von Cloudflare Workers aus abfragen“ in „Wie bin ich nur solange ohne diese Möglichkeit ausgekommen?!“ verwandelt. Wir arbeiten auch weiterhin an der Verbesserung der Performance: Wir haben bereits weitere Einsparungen bei der Latenz festgestellt und werden diese in den kommenden Wochen veröffentlichen.</p>
+	<p>Und das Beste daran? Entwickler und Entwicklerinnen mit einem kostenpflichtigen Tarif können <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">sofort die offene Betaversion von Hyperdrive ausprobieren</a>: Es gibt keine Wartelisten oder spezielle Anmeldeformulare.</p>
+	<div class="flex anchor relative">
+		<h3 id="hyperdrive-never-heard-of-it">Hyperdrive? Noch nie davon gehört?</h3>
+		<a href="https://blog.cloudflare.com/#hyperdrive-never-heard-of-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir arbeiten seit einiger Zeit im Verborgenen an Hyperdrive. Aber die Möglichkeit für Entwicklungsteams, sich mit bereits vorhandenen Datenbanken zu verbinden – mit ihren bestehenden Daten, Abfragen und Werkzeugen – beschäftigt uns schon seit geraumer Zeit.</p>
+	<p>In einer modernen verteilten Cloud-Umgebung wie der von Workers, in der die Rechenleistung global verteilt ist (also in der Nähe der Nutzenden) und die Funktionen kurzlebig sind (sodass nicht mehr als nötig in Rechnung gestellt wird), war die Verbindung zu herkömmlichen Datenbanken sowohl langsam als auch nicht skalierbar. Langsam, weil es für den Verbindungsaufbau mehr als sieben Runden braucht (TCP-Handshake, TLS-Verhandlung und Autorisierung). Und nicht skalierbar, weil Datenbanken wie PostgreSQL <a href="https://www.postgresql.org/message-id/flat/31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi" target="_blank" rel="noopener noreferrer">hohe Ressourcenkosten pro Verbindung</a> verursachen. Schon einige hundert Verbindungen zu einer Datenbank können einen nicht zu unterschätzenden Arbeitsspeicher verbrauchen – den für die Abfragen benötigten Arbeitsspeicher nicht mitgerechnet.</p>
+	<p>Unsere Freunde bei Neon (einem beliebten Serverless Postgres-Provider) haben darüber geschrieben und <a href="https://neon.tech/blog/serverless-driver-for-postgres" target="_blank" rel="noopener noreferrer">sogar einen WebSocket-Proxy und -Treiber veröffentlicht</a>, um den Verbindungsaufwand zu reduzieren. Aber sie haben trotzdem zu kämpfen: Selbst mit einem benutzerdefinierten Treiber sind wir bei vier Roundtrips, die jeweils 50–200 Millisekunden oder mehr dauern können. Wenn diese Verbindungen langlebig sind, ist das in Ordnung – es kann bestenfalls einmal alle paar Stunden passieren. Aber wenn sie auf einen einzelnen Funktionsaufruf beschränkt sind und nur wenige Millisekunden bis bestenfalls Minuten von Nutzen sind, verbringt Ihr Code mehr Zeit mit Warten. Das ist praktisch eine andere Art von Kaltstart: Da Sie vor einer Abfrage eine neue Verbindung zu Ihrer Datenbank herstellen müssen, ist die Verwendung einer herkömmlichen Datenbank in einer verteilten oder serverlosen Umgebung (vorsichtig ausgedrückt) <i>sehr langsam</i>.</p>
+	<p>Um dies zu verhindern, macht Hyperdrive zweierlei.</p>
+	<p>Erstens unterhält es eine Reihe regionaler Datenbankverbindungspools im gesamten Cloudflare-Netzwerk, sodass ein Cloudflare Worker nicht bei jeder Anfrage eine neue Verbindung zu einer Datenbank herstellen muss. Stattdessen kann der Worker eine Verbindung zu Hyperdrive herstellen (schnell!), wobei Hyperdrive einen Pool von einsatzbereiten Verbindungen zurück zur Datenbank unterhält. Da eine Datenbank bei einem <i>einzigen</i> Roundtrip zwischen 30 ms und (oft) 300 ms entfernt sein kann (ganz zu schweigen von den sieben Roundtrips oder mehr, die Sie für eine neue Verbindung benötigen), reduziert ein Pool verfügbarer Verbindungen das Latenzproblem, das bei kurzlebigen Verbindungen sonst auftreten würde, drastisch.</p>
+	<p>Zweitens versteht es den Unterschied zwischen lesenden (nicht verändernden) und schreibenden (verändernden) Abfragen und Transaktionen und kann Ihre beliebtesten lesenden Abfragen automatisch zwischenspeichern: Diese machen über 80 % der meisten Abfragen aus, die in typischen Webanwendungen an Datenbanken gestellt werden. Die Seite mit den Produktangeboten, die stündlich von Zehntausenden besucht wird, offene Stellen auf einer renommierten Karriereseite oder auch Abfragen von Konfigurationsdaten, die sich gelegentlich ändern. Ein Großteil der abgefragten Daten ändert sich nicht oft, und das Cachen dieser Daten in der Nähe des Ortes, von dem ein Nutzender sie abfragt, kann den Zugriff auf diese Daten für die nächsten zehntausend Nutzenden dramatisch beschleunigen. Schreibabfragen, die nicht sicher zwischengespeichert werden können, profitieren dennoch sowohl vom Verbindungspooling von Hyperdrive <i>als auch</i> vom <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">globalen Netzwerk von Cloudflare</a>: Da wir über unser Backbone die schnellsten Routen durch das Internet nehmen können, wird auch hier die Latenz reduziert.</p>
+	<p>Selbst wenn sich Ihre Datenbank auf der anderen Seite des Landes befindet, sind 70 ms x 6 Roundtrips eine Menge Zeit für Nutzende, die auf eine Antwort auf ihre Abfrage warten.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZPuh9S7KNGNfcIOW1FSqF/07cd95b1d45dd66d7b13fcab51cf4189/image4-16.png" alt="" class="kg-image" width="1725" height="1005" loading="lazy">
+
+	</figure>
+	<p>Hyperdrive funktioniert nicht nur mit PostgreSQL-Datenbanken – einschließlich <a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a>, <a href="https://www.timescale.com" target="_blank" rel="noopener noreferrer">Google Cloud SQL, AWS RDS und</a> Timescale – sondern auch mit PostgreSQL-kompatiblen Datenbanken wie <a href="https://materialize.com" target="_blank" rel="noopener noreferrer">Materialize</a> (einer leistungsstarken Stream-Processing-Datenbank), <a href="https://www.cockroachlabs.com" target="_blank" rel="noopener noreferrer">CockroachDB</a> (einer großen verteilten Datenbank), <a href="https://cloud.google.com/alloydb" target="_blank" rel="noopener noreferrer">AlloyDB</a> von Google Cloud und AWS Aurora Postgres.</p>
+	<p>Wir arbeiten außerdem daran, bis zum Ende des Jahres Unterstützung für MySQL, einschließlich Providern wie PlanetScale, zu bieten, und planen für die Zukunft die Unterstützung weiterer Datenbank-Engines.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-magic-connection-string">Der magische Verbindungsstring</h3>
+		<a href="https://blog.cloudflare.com/#the-magic-connection-string" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eines der wichtigsten Ziele bei der Entwicklung von Hyperdrive war, dass die Entwicklungsteams ihre bestehenden Treiber, Abfrage-Builder und ORM-Bibliotheken (Object-Relational Mapper) weiter verwenden können. Es wäre egal gewesen, wie schnell Hyperdrive ist, wenn wir von Ihnen verlangt hätten, von Ihrem bevorzugten ORM zu migrieren und/oder Hunderte (oder mehr) von Codezeilen und Tests neu zu schreiben, um von der Performance von Hyperdrive zu profitieren.</p>
+	<p>Um dies zu erreichen, haben wir mit den Betreuenden beliebter Open-Source-Treiber – einschließlich <a href="https://node-postgres.com" target="_blank" rel="noopener noreferrer">node-postgres</a> und <a href="https://github.com/porsager/postgres" target="_blank" rel="noopener noreferrer">Postgres.js</a> – zusammengearbeitet, damit ihre Bibliotheken die <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">neue TCP-Socket-API von Workers</a> unterstützen, die derzeit den <a href="https://github.com/wintercg/proposal-sockets-api" target="_blank" rel="noopener noreferrer">Standardisierungsprozess</a> durchläuft, und wir erwarten, dass sie auch in Node.js, Deno und Bun Einzug halten wird.</p>
+	<p>Der einfache Datenbankverbindungsstring ist die gemeinsame Sprache der Datenbanktreiber und hat normalerweise dieses Format:</p>
+	<p>Der Zauber von Hyperdrive besteht darin, dass Sie es in Ihren bestehenden Workers-Anwendungen mit Ihren bestehenden Abfragen einsetzen können, indem Sie einfach Ihren Verbindungsstring gegen den von Hyperdrive generierten austauschen.</p>
+	<pre class="language-bash"><code class="language-bash">postgres://user:password@some.database.host.example.com:5432/postgres</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="creating-a-hyperdrive">Hyperdrive erstellen</h3>
+		<a href="https://blog.cloudflare.com/#creating-a-hyperdrive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mit einer vorhandenen Datenbank – in diesem Beispiel verwenden wir eine Postgres-Datenbank von <a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a> – dauert es weniger als eine Minute, um Hyperdrive zum Laufen zu bringen (ja, wir haben die Zeit gemessen).</p>
+	<p>Wenn Sie kein bestehendes Cloudflare Workers-Projekt haben, können Sie schnell eines erstellen:</p>
+	<p>Von hier aus brauchen wir nur noch den Datenbankverbindungsstring für unsere Datenbank und einen kurzen <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank" rel="noopener noreferrer">Wrangler-Befehlszeilenaufruf</a>, damit Hyperdrive sich mit ihr verbindet.</p>
+	<pre class="language-python"><code class="language-python">$ npm create cloudflare@latest
+# Call the application "hyperdrive-demo"
+# Choose "Hello World Worker" as your template</code></pre>
+	<p>Fügen Sie unseren Hyperdrive in die <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">Konfigurationsdatei wrangler.toml</a> für unseren Worker ein:</p>
+	<pre class="language-python"><code class="language-python"># Using wrangler v3.10.0 or above
+wrangler hyperdrive create a-faster-database --connection-string="postgres://user:password@neon.tech:5432/neondb"
+
+# This will return an ID: we'll use this in the next step</code></pre>
+	<p>Wir können nun einen <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Worker</a> schreiben – oder ein bestehendes Worker-Skript nehmen – und Hyperdrive verwenden, um Verbindungen und Abfragen zu unserer bestehenden Datenbank zu beschleunigen. Wir verwenden hier <a href="https://node-postgres.com" target="_blank" rel="noopener noreferrer">node-postgres</a>, aber wir könnten genauso gut <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer">Drizzle ORM</a> nutzen.</p>
+	<pre class="language-python"><code class="language-python">[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"</code></pre>
+	<p>Der obige Code ist absichtlich einfach gehalten, aber die Magie ist hoffentlich nachvollziehbar: Unser Datenbanktreiber erhält einen Verbindungsstring von Hyperdrive und ist dabei völlig ahnungslos. Er muss nichts über Hyperdrive wissen, wir müssen unsere Lieblingsbibliothek für Abfrageerstellung nicht über Bord werfen und wir profitieren sofort von den Geschwindigkeitsvorteilen bei Abfragen.</p>
+	<pre class="language-python"><code class="language-python">import { Client } from 'pg';
+
+export interface Env {
+	HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		console.log(JSON.stringify(env));
+		// Create a database client that connects to our database via Hyperdrive
+		//
+		// Hyperdrive generates a unique connection string you can pass to
+		// supported drivers, including node-postgres, Postgres.js, and the many
+		// ORMs and query builders that use these drivers.
+		const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+
+		try {
+			// Connect to our database
+			await client.connect();
+
+			// A very simple test query
+			let result = await client.query({ text: 'SELECT * FROM pg_tables' });
+
+			// Return our result rows as JSON
+			return Response.json({ result: result });
+		} catch (e) {
+			console.log(e);
+			return Response.json({ error: JSON.stringify(e) }, { status: 500 });
+		}
+	},
+};</code></pre>
+	<p>Verbindungen werden automatisch gepoolt und warmgehalten, unsere beliebtesten Abfragen werden gecacht, und unsere gesamte Anwendung wird schneller.</p>
+	<p>Wir haben auch <a href="https://developers.cloudflare.com/hyperdrive/examples" target="_blank" rel="noopener noreferrer">Leitfäden für alle wichtigen Datenbank-Provider</a> erstellt, damit Sie das, was Sie von diesen Providern benötigen (einen Verbindungsstring), ganz einfach in Hyperdrive übertragen können.</p>
+	<div class="flex anchor relative">
+		<h3 id="going-fast-cant-be-cheap-right">Schnelles Tempo kann nicht günstig sein, oder?</h3>
+		<a href="https://blog.cloudflare.com/#going-fast-cant-be-cheap-right" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir sind der Meinung, dass Hyperdrive für den Zugriff auf Ihre bestehenden Datenbanken entscheidend ist, wenn Sie auf Cloudflare Workers entwickeln: Herkömmliche Datenbanken wurden einfach nie für eine Welt entwickelt, in der Clients global verteilt sind.</p>
+	<p><b>Das Verbindungspooling von Hyperdrive wird immer kostenlos sein,</b> sowohl für Datenbankprotokolle, die wir heute unterstützen, als auch für neue Datenbankprotokolle, die wir in Zukunft hinzufügen werden. Genau wie der DDoS-Schutz und unser globales <a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank" rel="noopener noreferrer">CDN</a> sind wir der Meinung, dass der Zugang zum Kernfeature von Hyperdrive zu nützlich ist, um ihn zurückzuhalten.</p>
+	<p>Während der offenen Beta-Phase wird Hyperdrive selbst keine Gebühren für die Nutzung erheben, unabhängig davon, wie Sie es verwenden. Weitere Details zur Preisgestaltung von Hyperdrive werden wir rechtzeitig vor der allgemeinen Freigabe (Anfang 2024) bekannt geben.</p>
+	<div class="flex anchor relative">
+		<h3 id="time-to-query">Zeit für eine Abfrage</h3>
+		<a href="https://blog.cloudflare.com/#time-to-query" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie geht es nun mit Hyperdrive weiter?</p>
+	<p>Wir planen, Hyperdrive Anfang 2024 auf den Markt zu bringen – und arbeiten an mehr Kontrolle über das Caching und die automatische Invalidierung auf der Grundlage von Schreibvorgängen, detaillierten Abfrage- und Performance-Analytics (bald!), Unterstützung für weitere Datenbank-Engines (einschließlich MySQL) und möchten die Geschwindigkeit weiter ankurbeln.</p>
+	<p>Wir arbeiten auch daran, die Verbindung zu privaten Netzwerken über <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> und Cloudflare Tunneling zu ermöglichen, sodass Sie auf Datenbanken zugreifen können, die nicht im öffentlichen Internet zugänglich sind (oder sein können).</p>
+	<p>Um Hyperdrive mit Ihrer bestehenden Datenbank zu verbinden, besuchen Sie unsere <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Dokumentation für die Entwicklung</a>. Es dauert weniger als eine Minute, um einen Hyperdrive zu erstellen und bestehenden Code zu aktualisieren, um ihn zu verwenden. Treten Sie dem Kanal <i>#hyperdrive-beta</i> in unserem <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Entwicklungs-Discord</a> bei, um Fragen zu stellen, Fehler zu melden und direkt mit unseren Produkt- und Entwicklungsteams zu sprechen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BbZolVBokU7h0EedVawor/e98def78df39541f03a595ef2e083387/image3-31.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
+
+	</figure>
+</div>

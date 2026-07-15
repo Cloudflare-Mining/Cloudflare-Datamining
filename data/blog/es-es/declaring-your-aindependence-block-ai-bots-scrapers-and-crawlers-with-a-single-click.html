@@ -1,0 +1,320 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">English</a>, <a href="https://blog.cloudflare.com/zh-tw/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Français</a>, <a href="https://blog.cloudflare.com/de-de/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FDTzC1VAKO8bya2ojApwa/98fa80510a4f0e4b37f8884202c55e5f/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Con el fin de ayudar a preservar la seguridad de Internet para los creadores de contenido, acabamos de lanzar una nueva función que permite bloquear todos los bots de IA con solo un clic. Está disponible para todos los clientes, incluidos los clientes suscritos a nuestro plan gratuito.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D59Fq5QkC4J7Jjo5lM4Fm/fcc55b665562d321bd84f88f53f46b22/image7-1.png" alt="Declaring your AIndependence: block AI bots, scrapers and crawlers with a single click" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>La popularidad de la <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer">IA generativa</a> ha disparado la demanda de contenido utilizado para entrenar modelos o ejecutar inferencias, y, aunque algunas empresas de IA identifican claramente sus bots de extracción de contenidos web, no todas son transparentes. Según informes, Google <a href="https://www.reuters.com/technology/reddit-ai-content-licensing-deal-with-google-sources-say-2024-02-22" target="_blank" rel="noopener noreferrer">pagará 60 millones de dólares al año</a> para utilizar el contenido generado por los usuarios de Reddit. También es sabido que Scarlett Johansson <a href="https://www.nature.com/articles/d41586-024-01578-4" target="_blank" rel="noopener noreferrer">alegó que OpenAI utilizó su voz para su nuevo asistente personal</a> sin su consentimiento y, más recientemente, Perplexity ha sido <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">acusada de hacerse pasar por visitantes web legítimos</a> para extraer contenido de sitios web. El valor del contenido original en masa nunca ha sido tan alto.</p>
+	<p>El año pasado, <a href="https://blog.cloudflare.com/ai-bots">Cloudflare anunció la capacidad para permitir a sus clientes bloquear fácilmente los bots buenos de IA</a>. Estos bots siguen las reglas del archivo <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer">robots.txt</a> y no utilizan contenido sin licencia para entrenar sus modelos o ejecutar inferencias para aplicaciones <a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">RAG</a> utilizando datos de sitios web. Aunque estos bots de IA siguen las reglas, los clientes de Cloudflare optan mayoritariamente por bloquearlos.</p>
+	<p>Entendemos claramente que los clientes no quieren que los bots de IA visiten sus sitios web, y especialmente aquellos que lo hacen de forma fraudulenta. Para ayudarles, hemos añadido una nueva función que con un solo clic bloquea todos los bots de IA. Está disponible para todos los clientes, incluidos los clientes suscritos al plan gratuito. Para activarlo, solo tienes que ir a la sección <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots%2Fconfigure" target="_blank" rel="noopener noreferrer">Seguridad &gt; Bots</a> del panel de control de Cloudflare y hacer clic en el botón <i>AI Scrapers and Crawlers</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aAA77Hl9OM2vtI611QcUI/0992e096262e348b451efd8be296fa27/image9.png" alt="" class="kg-image" width="1800" height="675" loading="lazy">
+
+	</figure>
+	<p>Esta función se actualizará automáticamente con el tiempo a medida que veamos nuevas huellas digitales de bots infractores que identifiquemos como rastreadores web para el entrenamiento de modelos. Para asegurarnos de que tenemos un conocimiento exhaustivo de toda la actividad de los rastreadores de IA, hemos analizado el tráfico en nuestra red.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xD0lhy89vZb34dtIWukt1/3e0e1ed979a33d344e53d4da2a819e1e/image2.png" alt="" class="kg-image" width="1660" height="746" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ai-bot-activity-today">Actividad actual de los bots de IA</h3>
+		<a href="https://blog.cloudflare.com/#ai-bot-activity-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El siguiente gráfico muestra los bots de IA más populares observados en la red de Cloudflare en términos de su volumen de solicitudes. Analizamos los agentes de usuario de rastreadores de IA comunes y agrupamos el número de solicitudes en nuestra plataforma procedentes de estos agentes de usuario de IA durante el último año:</p>
+	<p>Si observamos el número de solicitudes realizadas a los sitios de Cloudflare, vemos que <i>Bytespider</i>, <i>Amazonbot</i>, <i>ClaudeBot</i> y <i>GPTBot</i> son los cuatro principales rastreadores de IA. ByteDance, la empresa china propietaria de TikTok, <i>utiliza Bytespider</i> para recopilar datos de entrenamiento para sus modelos de lenguaje de gran tamaño (LLM), incluidos los que dan soporte a su rival ChatGPT, Doubao. <i>Amazonbot</i> y <i>ClaudeBot</i> siguen a <i>Bytespider</i> en volumen de solicitudes. <i>Amazonbot</i>, que supuestamente se utiliza para indexar el contenido de las respuestas a las preguntas de Alexa, envió el segundo mayor número de solicitudes y <i>ClaudeBot</i>, que se utiliza para entrenar al chatbot de Claude, ha aumentado recientemente su volumen de solicitudes.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13pNq4MJJB92Dcs1ghxC6k/b7e7acc7e65e9e0958eed5d4b4cb0594/image6.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
+
+	</figure>
+	<p>Entre los principales bots de IA que observamos, <i>Bytespider</i> no solo lidera en términos de número de solicitudes, sino también en cuanto al alcance de su rastreo de las propiedades de Internet y la frecuencia con la que se bloquea. Le sigue de cerca <i>GPTBot</i>, que ocupa el segundo lugar tanto en rastreo como en bloqueo. <i>GPTBot</i>, gestionado por OpenAI, recopila datos de entrenamiento para sus LLM, en los que se basan productos de IA como ChatGPT. En la siguiente tabla, la columna de "Porcentaje de sitios web visitados" se refiere a la proporción de sitios web protegidos por Cloudflare a los que accedió el bot de IA mencionado.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Bot</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Share of Websites Accessed</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35.46%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.17%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ImagesiftBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CCBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT-User</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.84%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">omgili</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Diffbot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.08%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Claude-Web</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.04%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.01%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Bot de IA</p>
+	<p>Porcentaje de sitios web visitados</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m4jV8g9sQ0BLR7OIonsoB/a4c3100a34160c96aea07c4ed4bc6a8d/image3.png" alt="" class="kg-image" width="1866" height="1008" loading="lazy">
+
+	</figure>
+	<p>Bytespider</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Top N Internet properties by number of visitors seen by Cloudflare</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% accessed by AI bots</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% blocking AI bots</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">80.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">53.2%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.8%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47.99%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.92%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44.53%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.36%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38.73%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.98%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gCWVJMv9GajRT3H8BQ5EM/effb5e2b52c0bdecb99f5f4e339c8d1d/image4.png" alt="" class="kg-image" width="1259" height="509" loading="lazy">
+
+	</figure>
+	<p>40,40 %</p>
+	<p>GPTBot</p>
+	<p>35,46 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JpBRAGuQ1DOCTSFu9yHbH/9c11b569a30f68ddb1b4c197054ed1c8/image1.png" alt="" class="kg-image" width="1800" height="563" loading="lazy">
+
+	</figure>
+	<p>ClaudeBot</p>
+	<p>11,17 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y0G6D2b512V1UAgR6sooD/4cc9b659f091e84facbec66a30baafad/image5.png" alt="" class="kg-image" width="1386" height="414" loading="lazy">
+
+	</figure>
+	<p>ImagesiftBot</p>
+	<p>8,75 %</p>
+	<p>CCBot</p>
+	<p>2,14 %</p>
+	<p>ChatGPT-User</p>
+	<p>1,84 %</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iwX6mvdnqg3KGRN0dMHou/a7c0a39275680db58f49c9292ca180c7/image8.png" alt="" class="kg-image" width="1874" height="1583" loading="lazy">
+
+	</figure>
+	<p>omgili</p>
+	<p>0,10 %</p>
+	<p>Diffbot</p>
+	<p>0,08 %</p>
+	<p>Claude-web</p>
+	<p>0,04 %</p>
+	<p>PerplexityBot</p>
+	<p>0,01 %</p>
+	<p>Aunque nuestro análisis identificó los rastreadores más populares en términos de volumen de solicitudes y número de propiedades de Internet consultadas, es probable que muchos clientes no sean conscientes de que los rastreadores de IA más populares rastrean activamente sus sitios.</p>
+	<p>El equipo de Cloudflare Radar analizó las principales entradas del archivo robots.txt en los <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">10 000 principales dominios de Internet</a> para identificar el bot de IA más utilizado, y luego observó la frecuencia con la que veíamos estos bots en sitios protegidos por Cloudflare. En el gráfico siguiente, que analiza los rastreadores no permitidos para estos sitios, vemos que los clientes suelen hacer referencia a <i>GPTBot, CCBot</i> y <i>Google</i> en robots.txt, pero no deshabilitan específicamente a los rastreadores de IA más populares como <i>Bytespider</i> y <i>ClaudeBot</i>.</p>
+	<p>Ahora que Internet está inundado de estos bots de IA, teníamos curiosidad por ver la respuesta de los operadores de sitios web. En junio, los bots de IA accedieron a cerca del 39 % del millón de propiedades de Internet que más utilizan Cloudflare, pero solo el 2,98 % de estas propiedades adoptaron medidas para bloquear o cuestionar esas solicitudes. Además, cuanto más alta sea la clasificación (más popular) de una propiedad de Internet, más probable es que sea el objetivo de un bot de IA y, en consecuencia, más probable es que bloquee tales solicitudes.</p>
+	<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top}</p>
+	<p>Top N de propiedades de Internet por número de visitantes web vistos por Cloudflare</p>
+	<p>% de acceso de bots de IA</p>
+	<p>% que bloquea bots de IA</p>
+	<p>10</p>
+	<p>80,0 %</p>
+	<p>40 %</p>
+	<p>100</p>
+	<p>63 %</p>
+	<p>16 %</p>
+	<p>1000</p>
+	<p>53,2 %</p>
+	<p>8,8 %</p>
+	<p>10.000</p>
+	<p>47,99 %</p>
+	<p>8,92 %</p>
+	<p>100 000</p>
+	<p>44,53 %</p>
+	<p>6,36 %</p>
+	<p>1 000 000</p>
+	<p>38,73 %</p>
+	<p>2,98 %</p>
+	<p>Vemos que los operadores de sitios web bloquean por completo el acceso a estos rastreadores de IA utilizando el archivo robots.txt. Sin embargo, estos bloqueos dependen de que el operador del bot siga las reglas del archivo robots.txt y de su conformidad con el <a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer">RFC9309</a> (que garantiza que las variaciones específicas de usuario de todas las páginas del producto coincidan con el token de producto) para identificar honestamente quiénes son cuando visitan una propiedad de Internet. Sin embargo, los agentes de usuario pueden ser modificados fácilmente por los operadores de bots.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-find-ai-bots-pretending-to-be-real-web-browsers">Cómo encontramos bots de IA que fingen ser navegadores web reales</h3>
+		<a href="https://blog.cloudflare.com/#how-we-find-ai-bots-pretending-to-be-real-web-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lamentablemente, hemos observado que los operadores de bots intentan aparentar ser un navegador real mediante el uso de un agente de usuario falsificado. Hemos supervisado esta actividad a lo largo del tiempo, y estamos orgullosos de afirmar que nuestro modelo global de aprendizaje automático siempre ha reconocido esta actividad como un bot, incluso cuando los operadores mienten sobre su agente de usuario.</p>
+	<p>Veamos a modo de ejemplo un bot específico que <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">otros</a> observaron que <a href="https://www.wired.com/story/perplexity-is-a-bullshit-machine" target="_blank" rel="noopener noreferrer">ocultaba su actividad</a>. Realizamos un análisis para ver cómo nuestros modelos de aprendizaje automático puntuaban el tráfico procedente de este bot. En el siguiente diagrama, puedes ver que todas <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">las puntuaciones de bots</a> están claramente por debajo de 30, lo que indica que nuestra puntuación cree que es probable que esta actividad proceda de un bot.</p>
+	<p>El diagrama refleja la puntuación de las solicitudes utilizando <a href="https://blog.cloudflare.com/residential-proxy-bot-detection-using-machine-learning">nuestro modelo más reciente</a>, donde los colores "más cálidos" indican que un mayor número de consultas correspondía a esta banda, y los colores "más fríos" significan que un menor número de consultas lo hacía. Podemos ver que la gran mayoría de las solicitudes corresponden a las dos bandas inferiores, lo que demuestra que el modelo de Cloudflare otorgó al bot fraudulento una puntuación de 9 o inferior. Los cambios del agente de usuario no tienen ningún efecto en la puntuación, porque es lo primero que esperamos que hagan los operadores de bots.</p>
+	<p>Cualquier cliente con una regla WAF en vigor configurada para cuestionar a visitantes con una puntuación de bot inferior a 30 (nuestra recomendación) bloqueaba automáticamente todo este tráfico de bots de IA sin que el cliente tuviera que intervenir. Lo mismo ocurrirá con los futuros bots de IA que utilicen técnicas similares para ocultar su actividad.</p>
+	<p>Usamos las señales globales de Cloudflare para calcular nuestra puntuación de bot, que para bots de IA como el anterior, refleja que los identificamos correctamente y los calificamos como "probable bot ".</p>
+	<p>Cuando los ciberdelincuentes intentan rastrear sitios web a escala, suelen utilizar herramientas y marcos cuya huella digital podemos identificar. Por cada huella digital que observamos, utilizamos la red de Cloudflare, que procesa una media de más de 57 millones de solicitudes por segundo, para comprender hasta qué punto debemos confiar en esta huella digital. Para impulsar nuestros modelos, calculamos datos agregados globales a través de muchas señales. Sobre la base de estas señales, nuestros modelos pudieron identificar adecuadamente como bots, el tráfico procedente de bots de IA evasivos, como el ejemplo mencionado anteriormente.</p>
+	<p>La conclusión de estos datos agregados globalmente es que podemos detectar inmediatamente nuevas herramientas de apropiación y su comportamiento sin necesidad de identificar manualmente la huella digital del bot, lo que garantiza que los clientes estén protegidos de las últimas oleadas de actividad de bots.</p>
+	<p>Si tienes alguna pista sobre un bot de IA con un comportamiento anómalo, nos encantaría investigarlo. Hay dos opciones que puedes utilizar para informar sobre el mal comportamiento de los rastreadores de IA:</p>
+	<ol>
+		<li>
+			<p>Los clientes del plan Enterprise que utilizan nuestra solución de gestión de bots pueden enviar un informe de <a href="https://developers.cloudflare.com/bots/concepts/feedback-loop" target="_blank" rel="noopener noreferrer">bucle de retroalimentación</a> de falsos negativos a través de nuestra herramienta de análisis de bots simplemente seleccionando el segmento de tráfico en el que han observado un comportamiento inadecuado:</p>
+		</li>
+	</ol>
+	<p>2. También hemos creado una <a href="https://docs.google.com/forms/d/14bX0RJH_0w17_cAUiihff5b3WLKzfieDO4upRlo5wj8/edit" target="_blank" rel="noopener noreferrer">herramienta de elaboración de informes</a> para que cualquier cliente de Cloudflare pueda informar sobre bots de IA que se estén apropiando de su sitio web sin permiso.</p>
+	<p>Tememos que algunas empresas de IA que intentan eludir las reglas para acceder a contenidos sigan adaptándose para eludir la detección de bots. Seguiremos atentos y añadiremos más bloques de bots a nuestra regla <i>AI Scrapers y Crawlers</i>. Desarrollaremos nuestros modelos de aprendizaje automático para ayudar a que Internet siga siendo un lugar donde los creadores de contenido puedan progresar y mantener el control total sobre los modelos que se utilizan para entrenar o ejecutar la inferencia.</p>
+</div>

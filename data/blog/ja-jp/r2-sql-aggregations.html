@@ -1,0 +1,156 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/r2-sql-aggregations">English</a>、<a href="https://blog.cloudflare.com/zh-tw/r2-sql-aggregations">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/r2-sql-aggregations">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/r2-sql-aggregations">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BxBJuKr0SXKiRy4GKgS1p/008af5c43fe9a75262d14619363f8702/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>大量のデータを扱うとき、簡単な概要を把握するのが役立ちます。これはまさにSQLで集約が提供するものです。「GROUP クエリ」と呼ばれる集約は全体像が示されるため、膨大な量のデータからインサイトを素早く得ることができます。</p>
+	<p>Cloudflareのサーバーレス分散型分析クエリエンジンである<a href="https://blog.cloudflare.com/r2-sql-deep-dive"><u>R2 SQL</u></a>での集約対応を発表できることを嬉しく思います。R2 SQLは、<a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2データカタログ</u></a>に格納されたデータに対してSQLクエリを実行することができます。集約により、<a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>のユーザーはデータの重要な傾向や変化を見極め、レポートを作成し、ログの異常を発見することができます。</p>
+	<p>このリリースは、すでにサポートされているフィルタクエリに基づいており、分析ワークロードの基盤となり、ユーザーが<a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>ファイルの干し草の山から針を見つけることができるようになります。</p>
+	<p>この記事では、集約の有用性と特異性を解き放ち、R2データカタログに保存された膨大な量のデータに対するクエリーの実行をサポートするために、どのようにR2SQLを拡張したかを掘り下げます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-importance-of-aggregations-in-analytics">分析における集約の重要性</h2>
+		<a href="https://blog.cloudflare.com/#the-importance-of-aggregations-in-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>集約（「クエリ別グループ」）で、元データの短い要約を生成します。</p>
+	<p>集約の一般的な使用例は、レポートの生成です。「売上」と呼ばれる表を想像してみてください。これには、ある企業のさまざまな国と部門の全売上の履歴データが含まれています。この集計クエリを使って、部門別の売上高に関するレポートを簡単に作成することができます。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT department, sum(value)
+FROM sales
+GROUP BY department</code></pre>
+	<p>
+		「GROUP BY」文を使用することで、テーブル行をバケットに分割することができます。各バケットには、特定の部署に対応するラベルが付いています。バケットが満杯になると、各バケットの全行の「合計（value）」を計算し、対応する部門で行われる売上の総量を求めることができます。</p>
+	<p>レポートによっては、量が最も多い部門だけに関心があるかもしれません。そこで登場するのが「ORDER BY」文です。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT department, sum(value)
+FROM sales
+GROUP BY department
+ORDER BY sum(value) DESC
+LIMIT 10</code></pre>
+	<p>ここでは、すべての部門バケットを合計売上高で降順にソートし、上位10件のみを返すようにクエリーエンジンに指示しています。</p>
+	<p>最後に、異常をフィルタリングすることに関心があるかもしれません。たとえば、売上合計が5件を超える部門のみをレポートに含めたい場合があります。「HAVING」ステートメントを使うことで、簡単にそれを行うことができます。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT department, sum(value), count(*)
+FROM sales
+GROUP BY department
+HAVING count(*) &gt; 5
+ORDER BY sum(value) DESC
+LIMIT 10</code></pre>
+	<p>ここでは、クエリに新しい集計関数「count(*)」を追加しています。これは、各バケットの最終行数を計算するものです。これは、各部門の売上数に直接対応するため、「HAVING」ステートメントに予測条件を追加し、5行以上のバケットのみを残りするようにしました。</p>
+	<div class="flex anchor relative">
+		<h2 id="two-approaches-to-aggregation-compute-sooner-or-later">集約には2つのアプローチがあります：早い段階での計算</h2>
+		<a href="https://blog.cloudflare.com/#two-approaches-to-aggregation-compute-sooner-or-later" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>集計クエリには、どこにも保存されていない列を参照することができるという興味深い特性があります。「sum(value)」について考えてみましょう。このカラムは、R2に保存されたParquetファイルから取得される「部署」列とは異なり、クエリーエンジンによってその場で計算されます。この微妙な違いは、「sum」、「count」などの集計を参照するクエリは、2つのフェーズに分割する必要があることを意味します。</p>
+	<p>最初のフェーズは、新しい列を計算します。「ORDER BY」文を使って「count(*)」列でデータをソートしたり、「HAVING」文を使って行をフィルタリングする場合は、この列の値を知る必要があります。「count(*)」などの列の値が把握できたら、残りのクエリ実行に移ることができます。</p>
+	<p>クエリがHAVINGまたはORDER BY”で集約関数を参照せず、“SELECT”でそれらを使用している場合、騙すことができることに注意してください。集計関数の値は最後まで必要ないため、ユーザーに返す前に、それらを部分的に計算し、結果を統合することができます。</p>
+	<p>2つのアプローチの重要な違いは、集約関数を事前に、後で追加の計算を行う場合、その場で、ユーザーが必要とする結果を反復的に構築することもできるのです。</p>
+	<p>まず、その場で結果を構築していきます。これは「スキャッター集約」と呼ばれるテクニックです。そしてその上に、集計関数の上で「HAVING」や「ORDER BY」などの追加の計算を実行できる「シャッフル集約」を導入します。</p>
+	<div class="flex anchor relative">
+		<h2 id="scatter-gather-aggregations">スキャッター集約</h2>
+		<a href="https://blog.cloudflare.com/#scatter-gather-aggregations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>「HAVING」と「ORDER BY」を使用しない集約クエリは、フィルタクエリに似た方法で実行できます。フィルタクエリの場合、R2 SQLはクエリ実行のコーディネーターとなるノードを1つ選択します。このノードはクエリを分析し、R2データカタログを参照して、どのParquet行グループにクエリに関連するデータが含まれているかを把握します。Parquetの各行グループは、単一のコンピューティングノードが処理できる比較的小さな作業を表します。コーディネーターノードは多くのWorkerノードに作業を分散し、結果を収集してユーザーに返します。</p>
+	<p>集約されたクエリを実行するために、すべて同じ手順に従い、Workerノード間で小さな作業を分散します。しかし今回は、「WHERE」ステートメントの前提条件に基づいて行をフィルタリングするだけでなく、Workerノードは<b>事前集約</b>も計算します。</p>
+	<p>プリ集約は、集約の中間状態を表します。これは、データのサブセット上で部分的に計算された集計関数を表すデータの不完全な断片です。複数の事前集約を結合して、集約関数の最終値を計算することができます。集約関数を事前集約に分割することで、集約の計算を水平にスケールすることができ、Cloudflareのネットワークにある膨大な計算リソースを活用することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Vh0x4qHkjOuQTrxSzkVKx/84c05ebf590cb4949b188f5856a4e951/image2.png" alt="" class="kg-image" width="1999" height="1885" loading="lazy">
+	</figure>
+	<p>例えば、「count(*)」の事前集計は、データのサブセットの行数を表す数値です。最終的な「count(*)」の計算は、これらの数字を加算するのと同じくらい簡単です。「avg(値)」の事前集計は、「合計(値)」と「カウント(*)」の2つの数値で構成されています。「avg(value)」の値は、すべての「sum(value)」値を足し合わせ、すべての「count(*)」値を足し合わせ、最後に1つの数字を他の数字で割ることによって計算できます。</p>
+	<p>ワーカーノードは事前集計の計算を終えると、結果をコーディネーターノードにストリーミングします。コーディネーターノードは、すべての結果を収集し、事前集約から集計関数の最終値を計算し、結果をユーザーに返します。</p>
+	<div class="flex anchor relative">
+		<h2 id="shuffling-beyond-the-limits-of-scatter-gather">寄せ集めの限界を超えたシャッフル</h2>
+		<a href="https://blog.cloudflare.com/#shuffling-beyond-the-limits-of-scatter-gather" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スキャッターギャンブルは、コーディネーターがWorkerから小さな部分的な状態をマージすることで最終結果を計算できる場合、非常に効率的です。<code>SELECT sum(sales) FROM orders</code>のようなクエリーを実行すると、コーディネーターは各workerから単一の数字を受け取り、それらを合計します。R2に存在するデータの量に関係なく、コーディネーターのメモリフットプリントは無視できます。</p>
+	<p>しかし、クエリが集計の<i>結果</i>に基づいてソートやフィルタリングを必要とする場合、この方法は非効率になります。売上高の上位2つの部門を見つけるクエリーについて考えてみましょう。</p>
+	<pre class="language-SQL"><code class="language-SQL">SELECT department, sum(sales)
+FROM sales
+GROUP BY department
+ORDER BY sum(sales) DESC
+LIMIT 2</code></pre>
+	<p>グローバルトップ2を正しく判断するには、データセット全体の各部門の合計売上を知る必要があります。データは基盤となるParquetファイル全体にランダムに効果的に分散されるため、特定の部門の売上が多くの異なるWorkerに分割される可能性があります。同じ部署は、個々の労働者の売上が低い場合があり、ローカルトップ2リストから除外すれば、それらの労働者の合計売上がグローバルでは最高売上になります。</p>
+	<p>次の図は、このクエリに対して分散型収集アプローチが機能しないことを示しています。「Dept A」はグローバルなセールスリーダーですが、売上が従業員全体に均等に行き渡るため、ローカルのトップ2リストにランクインせず、コーディネーターから破棄されてしまいます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZJ6AfXzepKtJhiL6DcjiJ/07f4f523d871b25dcf444ee2ada546bd/image4.png" alt="" class="kg-image" width="1999" height="1885" loading="lazy">
+	</figure>
+	<p>したがって、クエリのグローバル集計による順序の結果がある場合、コーディネーターはWorkerからの事前フィルタリングされた結果に依存することはできません。分類する前に、<i>全</i>ワーカーから<i>各部門</i>の合計カウントをリクエストして、グローバル合計を計算する必要があります。IPアドレスやユーザーIDのような高カーディナリティ列でグループ化している場合、コーディネーターは何百万行もの行を取り込んでマージしなければならないため、単一のノードでリソースのボトルネックが発生します。</p>
+	<p>これを解決するためには、最終的な集計が行われる前に、特定のグループのデータを同じ場所に配置する方法である<b>シャッフル</b>が必要になります。</p>
+	<div class="flex anchor relative">
+		<h3 id="shuffling-of-aggregation-data">集計データのシャッフル</h3>
+		<a href="https://blog.cloudflare.com/#shuffling-of-aggregation-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>そこで、ランダムなデータ分散の問題を解決するために、<b>シャッフルステージ</b>を導入しました。コーディネーターに結果を送信する代わりに、Workerは互いに直接データを交換し、グループ化キーに基づいて行を同じ場所に配置します。</p>
+	<p>このルーティングは、<b>決定論的なハッシュ分割</b>に依存しています。Workerが行を処理する際、<code>GROUP BY</code>列をハッシュし、宛先Workerを識別します。このハッシュは決定性があるため、クラスター内のすべてのworkerが個別に特定のデータの送信先に同意します。「Engineering」ハッシュがWorker 5に送信された場合、すべてのWorkerは「Engineering」行をWorker 5にルーティングすることを知っています。中央レジストリは不要です。</p>
+	<p>下図は、この流れを示したものです。「Dept A」がWorkers 1、2、3上で始まることに注目してください。ハッシュ関数は「Dept A」をWorker 1にマッピングするため、すべてのWorkerはそれらの行を同じ宛先にルーティングします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Mw7FvL7ZJgDZqnh3ygkZM/9cfb493b5889d7efe43e4719d9523c93/image1.png" alt="" class="kg-image" width="1999" height="1740" loading="lazy">
+	</figure>
+	<p>集計をシャッフルすると、正しい結果が得られます。しかし、この全面的な交換はタイミングの依存関係を生み出します。Worker 3がデータの送信を完了する前に、Worker 1が「Dept A」の最終合計を計算し始めた場合、結果は不完全になります。</p>
+	<p>これに対処するために、当社では厳格な<b>同期バリア</b>を適用しています。コーディネーターはクラスター全体の進行状況を追跡し、Workerは発信データをバッファリングし、<a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a>ストリーム経由でピアにフラッシュします。すべてのWorkerが入力ファイルの処理が完了したことを確認してからシャッフルバッファを消去すると、コーディネーターは続行するコマンドを発行します。このバリアにより、次のステージが開始された時に、各Workerのデータセットが完全かつ正確であることを保証します。</p>
+	<div class="flex anchor relative">
+		<h3 id="local-finalization">ローカルファイリング</h3>
+		<a href="https://blog.cloudflare.com/#local-finalization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>同期バリアが取り去られると、すべてのworkerは割り当てられたグループの完全なデータセットを保持するようになります。Worker 1は「Dept A」の売上記録の100%を持ち、最終的な合計を確実に計算できるようになりました。</p>
+	<p>これにより、コーディネーターに負担をかけるのではなく、フィルタリングやソートのような計算ロジックをworkerにプッシュすることができます。例えば、クエリに<code>HAVING count(*) &gt; 5</code>が含まれている場合、Workerは集約直後にこの基準を満たさないグループを除外できます。</p>
+	<p>この段階の終了時に、各Workerは所有するグループに対してソートされた最終的な結果のストリームを生成します。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-streaming-merge">ストリーミングマージ</h3>
+		<a href="https://blog.cloudflare.com/#the-streaming-merge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パズルの最後のピースは、コーディネーターです。分散型収集モデルでは、コーディネーターがデータセット全体の集計とソートという費用のかかるタスクを担当しました。シャッフルモデルでは、その役割は変わります。</p>
+	<p>Workerはすでに最終的な集計を計算し、ローカルでソートしているため、コーディネーターは<b>k-wayマージ</b>を実行するだけで済みます。すべてのWorkerにストリームを開き、結果を行ごとに読み込んでいきます。各workerからの現在の行を比較し、ソート順に基づいて「winner」を選択し、ユーザーに送信されるクエリ結果に追加します。</p>
+	<p>このアプローチは、特に<code>LIMIT</code>クエリに強力なアプローチとなります。ユーザーが上位10の部署を要求すると、コーディネーターは上位10の項目を見つけるまでストリームを統合し、その後すぐに処理を停止します。残りの数百万行をロードまたはマージする必要はなく、計算リソースを過剰に消費することなく、運用の規模を拡大できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-powerful-engine-for-processing-massive-datasets">膨大なデータセットを処理するための強力なエンジン</h2>
+		<a href="https://blog.cloudflare.com/#a-powerful-engine-for-processing-massive-datasets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>集約の追加により、<a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>は、データのフィルタリングに優れたツールから、膨大なデータセットのデータ処理が可能な強力なエンジンに変貌します。これは、スクレイピング、シャッフルなどの分散型実行戦略を実装することで実現します。Cloudflareのグローバルな計算能力とネットワークの規模を使って、データがある場所にコンピューティングをプッシュすることができるのです。</p>
+	<p>レポートの作成、大量のログの異常の監視、単にデータの傾向を見極めるなど、複雑なOLAPインフラストラクチャの管理やR2からのデータ移動にかかるオーバーヘッドなしに、そのすべてをCloudflareの開発者プラットフォーム内で簡単にできるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">今すぐお試しください！</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>R2 SQLの集約のサポートは、本日よりご利用いただけます。これらの新機能を、R2 Data Catalogのデータでどのように活用するか、楽しみにしています。</p>
+	<ul>
+		<li>
+			<p><b>開始する:</b> 集約クエリの実行に関する例と構文ガイドについては、<a href="https://developers.cloudflare.com/r2-sql/sql-reference" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</p>
+		</li>
+		<li>
+			<p><b>会話に参加する：</b>質問、フィードバック、または構築しているものを共有したい場合は、Cloudflare <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Developer Discord</u></a>に参加してください。</p>
+		</li>
+	</ul>
+	<p></p>
+</div>

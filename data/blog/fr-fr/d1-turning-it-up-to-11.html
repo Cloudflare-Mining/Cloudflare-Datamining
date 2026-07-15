@@ -1,0 +1,172 @@
+<div class="mb2 gray5">Lecture&nbsp;: 7 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">English</a>, en <a href="https://blog.cloudflare.com/de-de/d1-turning-it-up-to-11">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/d1-turning-it-up-to-11">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/d1-turning-it-up-to-11">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/d1-turning-it-up-to-11">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DdicCzvb4qXE1WIGDrjw6/44b27d5f92b209cb301b62d2f6df048b/d1-turning-it-up-to-11.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous n'allons pas noyer le poisson : nous sommes ravis de lancer une mise à jour majeure de notre base de données D1, offrant des améliorations spectaculaires en termes de performances et d'évolutivité. Les utilisateurs de la version alpha (cela inclut <i>tous</i> les utilisateurs de Workers) peuvent dès maintenant créer de nouvelles bases de données sur le nouveau backend de stockage avec la commande suivante :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yviS5FtF4KbuDnCWmxXmU/a99a32be9b00040a1d2cd20dc284e364/image1-51.png" alt="D1: We turned it up to 11" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Dans les semaines à venir, ceci deviendra l'expérience par défaut pour tous les utilisateurs, mais nous voulons inviter les développeurs à commencer à expérimenter dès maintenant avec la nouvelle version de D1. Nous partagerons également, très prochainement, d'autres informations sur le développement du nouveau sous-système de stockage de D1 et les avantages que lui apporte le réseau distribué de Cloudflare..</p>
+	<pre class="language-bash"><code class="language-bash">$ wrangler d1 create your-database --experimental-backend</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="remind-me-whats-d1">Rafraîchissez-moi la mémoire : D1, qu'est-ce que c'est ?</h3>
+		<a href="https://blog.cloudflare.com/#remind-me-whats-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>D1 est la base de données serverless native de Cloudflare, que nous avons <a href="https://blog.cloudflare.com/d1-open-alpha">lancée dans sa version alpha</a> en novembre de l'année dernière. Des développeurs ont créé des applications complexes avec Workers, KV, Durable Objects, et dernièrement, Queues et R2 ; cependant, ils nous demandent également une chose : une base de données qu'ils peuvent interroger.</p>
+	<p>Nous avons, par ailleurs, recueilli de nombreux commentaires nous demandant une solution basée sur SQL, « scale-to-zero » (c'est-à-dire pouvant être réduite à zéro instance, comme le service Workers lui-même), qui adopte une approche globale (« Region: Earth ») de la réplication. Nous avons donc entendu ces commentaires et avons entrepris de créer D1. SQLite nous a offert un dialecte SQL que nous connaissions, un moteur de requêtes robuste et une base de code particulièrement éprouvée, sur laquelle développer notre solution.</p>
+	<p>Nous avons livré la première version de D1 sous la forme d'une « véritable » version alpha : c'était, pour nous, une façon d'aborder le développement sous un angle ouvert, de recueillir les commentaires directement auprès des développeurs et de mieux hiérarchiser nos priorités. Et, fidèle à la tradition de l'appellation « alpha », cette première version se distinguait par des bugs, des problèmes de performances et un « parcours heureux » (c'est-à-dire un scénario dans lequel toutes les fonctions s'exécutent comme prévu) assez étroit.</p>
+	<p>Malgré cela, nous avons constaté que des développeurs créaient des milliers de bases de données et exécutaient des milliards de requêtes, que des ORM populaires telles que <a href="https://github.com/drizzle-team/drizzle-orm" target="_blank" rel="noopener noreferrer">Drizzle</a> et <a href="https://github.com/kysely-org/kysely" target="_blank" rel="noopener noreferrer">Kysely</a> ont ajouté la prise en charge de D1 (déjà !), et que des modèles <a href="https://github.com/jose-donato/race-stack" target="_blank" rel="noopener noreferrer">Remix</a> et <a href="https://github.com/Atinux/nuxt-todos-edge" target="_blank" rel="noopener noreferrer">Nuxt</a> ont également été développés directement autour de D1.</p>
+	<div class="flex anchor relative">
+		<h3 id="turning-it-up-to-11">Régler la puissance sur 11</h3>
+		<a href="https://blog.cloudflare.com/#turning-it-up-to-11" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si, à ce jour, vous avez utilisé D1 dans sa version alpha, oubliez tout ce que vous savez. D1 est désormais beaucoup plus rapide – jusqu'à 20 fois plus rapide avec la célèbre <a href="https://github.com/cloudflare/d1-northwind" target="_blank" rel="noopener noreferrer">démo Northwind Traders</a>, dont <a href="https://northwind.d1sql.com" target="_blank" rel="noopener noreferrer">nous venons d'effectuer la migration</a> vers notre nouveau backend de stockage :</p>
+	<p>Notre nouvelle architecture améliore également les performances en écriture : un simple test de référence consistant à insérer 1 000 lignes (chaque ligne mesurant environ 200 octets en largeur) se déroule environ 6,8 fois plus rapidement qu'avec la précédente version de D1.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sD4jP1YsKJQN81B4R2Mfv/2747c22b32fc38d1f02b4e47c61ed683/image5-12.png" alt="" class="kg-image" width="1226" height="402" loading="lazy">
+
+	</figure>
+	<p>Pour les lots plus volumineux (10 000 lignes d'une largeur d'environ 200 octets), l'amélioration est encore plus remarquable : l'insertion est 10 à 11 fois plus rapide, la latence du nouveau backend de stockage étant également beaucoup plus constante. Nous n'avons pas encore commencé à optimiser notre débit d'écriture global ; nous pensons donc que désormais, D1 deviendra encore plus rapide.</p>
+	<p>Avec notre nouveau backend de stockage, nous tenons également à revendiquer que D1 n'est pas un « gadget », et nous comparons continuellement les performances de notre solution à celles d'autres bases de données serverless. Une requête sur une table clé-valeur de 500 000 lignes (en n'oubliant pas que les valeurs de référence sont intrinsèquement synthétiques) démontre que D1 est 3,2 fois plus rapide qu'une célèbre solution Postgres serverless :</p>
+	<p>Nous avons exécuté les requêtes Postgres à plusieurs reprises, afin d'amorcer le cache des pages, puis nous avons observé le temps médian des requêtes, mesuré par le serveur. Nous continuerons à affiner les performances de notre solution au fur et à mesure du développement.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RQ3n0MEB7ZOGlrsg7rU0S/d536f7c25b66099897be571baa2be372/download-14.png" alt="" class="kg-image" width="1600" height="525" loading="lazy">
+
+	</figure>
+	<p>Les développeurs disposant de bases de données existantes peuvent importer des données dans une nouvelle base de données utilisant le moteur de stockage en suivant les étapes décrites, dans notre documentation, pour <a href="https://developers.cloudflare.com/d1/learning/backups/#downloading-a-backup-locally" target="_blank" rel="noopener noreferrer">exporter une base de données</a>, puis <a href="https://developers.cloudflare.com/d1/learning/importing-data/#import-an-existing-database" target="_blank" rel="noopener noreferrer">l'importer</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-did-i-miss">Qu'est-ce que j'ai manqué ?</h3>
+		<a href="https://blog.cloudflare.com/#what-did-i-miss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons également travaillé sur un certain nombre d'améliorations de l'expérience qu'offre D1 aux développeurs :</p>
+	<ul>
+		<li>
+			<p>Une nouvelle interface de console permettant d'émettre des requêtes directement depuis le tableau de bord, facilitant la prise en main et/ou l'émission de requêtes ponctuelles.</p>
+		</li>
+		<li>
+			<p>La <a href="https://developers.cloudflare.com/d1/learning/querying-json" target="_blank" rel="noopener noreferrer">prise en charge formelle de fonctions JSON</a> permettant d'exécuter des requêtes via JSON directement dans votre base de données.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/d1/learning/data-location" target="_blank" rel="noopener noreferrer">Location Hints</a>, qui permet d'influer sur le choix de l'endroit où se trouve votre leader (responsable des écritures) dans le monde entier.</p>
+		</li>
+	</ul>
+	<p>Bien que D1 soit conçue pour s'exécuter nativement dans une instance Cloudflare Workers, nous avons conscience qu'il est souvent nécessaire d'émettre rapidement des requêtes ponctuelles via une interface de ligne de commande ou un éditeur web lors du prototypage ou, simplement, de l'exploration d'une base de données. En plus de la <a href="https://developers.cloudflare.com/workers/wrangler/commands/#execute" target="_blank" rel="noopener noreferrer">prise en charge dans wrangler pour l'exécution de requêtes</a> (et de fichiers), nous avons également introduit un éditeur de console permettant d'émettre des requêtes, d'inspecter des tables et même d'éditer des données à la volée :</p>
+	<p>Les <a href="https://developers.cloudflare.com/d1/learning/querying-json/#extracting-values" target="_blank" rel="noopener noreferrer">fonctions JSON</a> vous permettent d'interroger les valeurs JSON stockées dans des colonnes TEXT dans D1, offrant davantage de flexibilité quant aux données associées strictement (ou non) à votre schéma de base de données relationnelle, tout en vous permettant d'interroger toutes vos données via SQL (avant qu'elles n'atteignent votre application).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rZ9d0Hqrq10a8tfkJ4atE/b541e1c27513569c560d4da2a26b8d16/image3-20.png" alt="" class="kg-image" width="1999" height="960" loading="lazy">
+
+	</figure>
+	<p>Par exemple, supposons que vous stockiez les informations d'horodatage des dernières connexions sous forme de tableau JSON dans une colonne TEXT intitulée login_history : vous pouvez interroger (et extraire) directement des sous-objets ou des éléments de la table en fournissant un chemin d'accès à la clé correspondante :</p>
+	<p>La prise en charge des fonctions JSON par D1 est extrêmement flexible, et tire profit du cœur SQLite sur lequel est développée D1.</p>
+	<pre class="language-bash"><code class="language-bash">SELECT user_id, json_extract(login_history, '$.[0]') as latest_login FROM users</code></pre>
+	<p>Lorsque vous créez pour la première fois une base de données avec D1, nous déduisons automatiquement la localisation de l'endroit depuis lequel vous vous connectez actuellement. Dans certains cas, cependant, il peut être souhaitable d'influer sur ce choix, par exemple, lorsque vous êtes en déplacement ou que votre équipe est présente dans une région différente de celle depuis laquelle proviendra, selon vous, la majorité de vos écritures.</p>
+	<p>La prise en charge de Location Hints par D1 simplifie cette procédure :</p>
+	<p><a href="https://developers.cloudflare.com/d1/learning/data-location" target="_blank" rel="noopener noreferrer">Location Hints</a> est désormais également accessible depuis le tableau de bord de Cloudflare :</p>
+	<pre class="language-bash"><code class="language-bash"># Automatically inferred based your location
+$ wrangler d1 create user-prod-db --experimental-backend
+
+# Indicate a preferred location to create your database
+$ wrangler d1 create eu-users-db --location=weur --experimental-backend</code></pre>
+	<p>Par ailleurs, nous avons publié <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">d'autres documents</a> destinés à aider les développeurs à effectuer leurs premiers pas, mais également à utiliser les fonctionnalités avancées de D1. Vous pouvez vous attendre à ce que la documentation de D1 continue à s'étoffer considérablement au cours des prochains mois.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12JpcimRiOP51cuhDFpmg4/a71d83d15d3277152775cb5a96f963dc/image4-20.png" alt="" class="kg-image" width="1988" height="1802" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="not-going-to-burn-a-hole-in-your-wallet">Une solution qui ne videra pas votre portefeuille</h3>
+		<a href="https://blog.cloudflare.com/#not-going-to-burn-a-hole-in-your-wallet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Depuis l'annonce de la version alpha, de très nombreux développeurs nous ont demandé comment nous allions établir la tarification de D1 ; nous sommes maintenant prêts à vous indiquer comment elle se présentera. Nous savons qu'il est important de comprendre le coût potentiel d'un service <i>avant</i> de commencer à développer une solution avec celui-ci, afin de ne pas avoir de mauvaise surprise six mois plus tard.</p>
+	<p>En résumé :</p>
+	<ul>
+		<li>
+			<p>Nous annonçons la tarification pour vous permettre de commencer à modéliser à l'avance le coût de D1 pour votre scénario d'utilisation. La tarification définitive est susceptible d'être modifiée, mais nous nous attendons à ce que les changements soient relativement mineurs.</p>
+		</li>
+		<li>
+			<p>La facturation ne sera pas activée avant la fin de l'année, et nous informerons les utilisateurs actuels de D1 par e-mail préalablement à ce changement. D'ici là, l'utilisation de D1 restera gratuite.</p>
+		</li>
+		<li>
+			<p>D1 comprendra un niveau toujours gratuit, correspondant à une utilisation incluse dans notre abonnement à 5 $/mois à Workers, ainsi qu'une facturation établie en fonction des lectures, des écritures et du stockage.</p>
+		</li>
+	</ul>
+	<p>Si vous avez déjà souscrit un abonnement à Workers, vous n'avez rien à faire : l'utilisation de D1 sera incluse dans votre abonnement existant lorsque la facturation sera activée, à l'avenir.</p>
+	<p>Voici un récapitulatif (nous avons volontairement simplifié les choses) :</p>
+	<p>Une chose importante : <b>lorsque nous activerons la réplication globale en lecture, celle-ci n'entraînera pas de coût supplémentaire, et la réplication ne multipliera pas non plus votre consommation d'espace de stockage.</b> Nous pensons que la réplication automatique intégrée est importante, et nous pensons que les développeurs ne devraient pas avoir à s'acquitter de coûts multiplicatifs (répliques × frais de stockage) pour assurer la rapidité de leur base de données <i>partout dans le monde</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3R6k7Iu1ARM90hAytxmGkK/7a909968043acb71cec31f73d7485484/Screenshot-2023-05-19-at-10.14.58.png" alt="" class="kg-image" width="1584" height="488" loading="lazy">
+
+	</figure>
+	<p>Par ailleurs, nous avons voulu veiller à ce que D1 reprenne les meilleurs aspects de la tarification serverless (à savoir la capacité scale-to-zero et le paiement en fonction de l'utilisation), afin que vous n'ayez pas besoin d'essayer de déterminer le nombre de processeurs et/ou la quantité de mémoire requis par votre charge de travail, ni d'écrire des scripts destinés à réduire l'échelle de votre infrastructure pendant les heures plus calmes.</p>
+	<p>La tarification des lectures de D1 est basée sur le concept familier des unités de lecture (pour 4 Ko de données lues) et des unités d'écriture (pour 1 Ko de données écrites). Une requête qui lit (analyse) environ 10 000 lignes de 64 octets chacune consommera 160 unités de lecture. L'écriture d'une longue ligne de 3 Ko dans une table « blog_posts » contenant beaucoup de Markdown représentera trois unités d'écriture. Et si vous <a href="https://developers.cloudflare.com/d1/learning/using-indexes" target="_blank" rel="noopener noreferrer">créez des index pour vos requêtes les plus fréquemment utilisées</a>, afin d'améliorer les performances et de réduire le volume de données que doivent analyser ces requêtes, vous réduirez également le montant qui vous sera facturé. Nous pensons que l'approche consistant, par défaut, à faire du chemin rapide le plus rentable également est la bonne.</p>
+	<p>Une chose importante : nous continuerons à recueillir des commentaires sur notre tarification avant de la mettre en application.</p>
+	<div class="flex anchor relative">
+		<h3 id="time-travel">Time Travel</h3>
+		<a href="https://blog.cloudflare.com/#time-travel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous inaugurons également une nouvelle fonctionnalité de sauvegarde : la restauration ponctuelle, que nous appelons Time Travel (c'est-à-dire « voyage dans le temps »), parce que c'est précisément le ressenti qu'elle procure. <b>Time Travel vous permet de restaurer votre base de données D1 à n'importe quelle minute au cours des 30 derniers jours ; la fonction intégrée aux bases de données D1 par l'intermédiaire de notre nouveau système de stockage.</b> Nous avons l'intention d'activer Time Travel pour les nouvelles bases de données D1 dans un avenir très proche.</p>
+	<p>Ce qui rend la fonctionnalité Time Travel si puissante, c'est que <i>vous n'avez plus lieu de paniquer</i> et de vous demander « Oh, mais attends – est-ce que j'ai fait une sauvegarde avant de déployer ce changement majeur ? » ; nous le faisons à votre place. Nous conservons un flux de toutes les modifications apportées à votre base de données (<a href="https://www.sqlite.org/wal.html" target="_blank" rel="noopener noreferrer">Write-Ahead Log</a>), qui nous permet de restaurer votre base de données à un <i>instant donné</i> en lisant ces modifications dans l'ordre jusqu'à ce point.</p>
+	<p>Voici un exemple (sous réserve de quelques modifications mineures de l'API) :</p>
+	<p>Et bien que l'idée de la restauration à un instant donné ne soit pas nouvelle, il s'agit souvent d'une option payante, si tant est qu'elle soit disponible. Si vous vous rendez compte que vous auriez dû l'activer après avoir supprimé des données ou avoir commis une autre erreur, il est souvent trop tard.</p>
+	<pre class="language-javascript"><code class="language-javascript"># Using a precise Unix timestamp (in UTC):
+$ wrangler d1 time-travel my-database --before-timestamp=1683570504
+
+# Alternatively, restore prior to a specific transaction ID:
+$ wrangler d1 time-travel my-database --before-tx-id=01H0FM2XHKACETEFQK2P5T6BWD</code></pre>
+	<p>Par exemple, supposons que je commette l'erreur classique consistant à oublier WHERE dans une instruction UPDATE :</p>
+	<p>Sans Time Travel, je n'aurais plus qu'à espérer qu'une sauvegarde programmée ait été exécutée récemment ou que j'aie pensé à effectuer une sauvegarde manuelle juste avant. Grâce à Time Travel, je peux revenir à un point situé une minute ou deux avant cette erreur (et espérer en tirer une leçon pour la prochaine fois).</p>
+	<pre class="language-javascript"><code class="language-javascript">-- Don't do this at home
+UPDATE users SET email = 'matt@example.com' -- missing: WHERE id = "abc123"</code></pre>
+	<p>Nous explorons également des fonctionnalités permettant d'identifier des changements plus importants dans l'état de votre base de données, notamment en facilitant l'identification des modifications de schéma, du nombre de tables, des écarts importants dans les données stockées <i>et même des requêtes spécifiques</i> (via les identifiants de transaction), afin de vous aider à mieux comprendre à quel instant précis vous devez restaurer votre base de données.</p>
+	<div class="flex anchor relative">
+		<h3 id="on-the-roadmap">En prévision</h3>
+		<a href="https://blog.cloudflare.com/#on-the-roadmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Alors, quelles sont les prochaines innovations pour D1 ?</p>
+	<ul>
+		<li>
+			<p><b>Bêta ouverte</b> : nous nous assurons d'avoir observé notre nouveau sous-système de stockage sous charge (et en conditions d'utilisation réelle) avant d'en faire la valeur par défaut pour toutes les commandes « d1 create ». Nous plaçons la barre très haut, en termes de durabilité et de disponibilité, même pour une version « bêta », et nous sommes également conscients que l'accès aux sauvegardes (Time Travel) est un aspect important de la confiance qu'accordent les utilisateurs à une nouvelle base de données. Surveillez le blog de Cloudflare dans les semaines à venir pour plus de nouvelles à ce sujet &nbsp;!</p>
+		</li>
+		<li>
+			<p><b>Des bases de données plus volumineuses</b> : nous savons que c'est une demande très courante de la part d'un grand nombre d'utilisateurs, et nous sommes à deux doigts d'y répondre. Les développeurs bénéficiant de <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">l'offre payante Workers</a> auront accès à des bases de données de 1 Go dans un avenir très proche, et nous continuerons à augmenter la taille maximale par base de données au fil du temps.</p>
+		</li>
+		<li>
+			<p><b>Indicateurs et observabilité</b> : vous pourrez inspecter le volume global de requêtes par base de données, les requêtes ayant échoué, le stockage consommé et les unités de lecture/d'écriture depuis le tableau de bord de D1 et via <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">notre API GraphQL</a>, afin de faciliter le débogage des problèmes et le suivi des dépenses.</p>
+		</li>
+		<li>
+			<p><b>Réplication automatique en lecture</b> : notre nouveau sous-système de stockage est fondamentalement conçu dans l'optique de la réplication, et nous nous veillons actuellement à nous assurer que notre couche de réplication est à la fois rapide et fiable, avant de la proposer aux développeurs. La réplication en lecture est conçue pour améliorer la latence des requêtes, en stockant des copies (des répliques) de vos données dans plusieurs endroits, à proximité de vos utilisateurs, mais elle nous permettra également d'assurer l'évolutivité horizontale des bases de données D1 pour les utilisateurs exécutant des charges de travail plus importantes.</p>
+		</li>
+	</ul>
+	<p>En attendant, vous pouvez dès maintenant <a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">commencer à prototyper et expérimenter avec D1</a>, explorer notre <a href="https://github.com/rozenmd/d1-drizzle-remix-example" target="_blank" rel="noopener noreferrer">exemple de projet</a> D1 + Drizzle + Remix ou rejoindre le <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">canal #d1</a> sur le serveur Discord Cloudflare Developers, afin d'échanger directement avec l'équipe D1 et d'autres utilisateurs développant dans D1.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

@@ -1,0 +1,135 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/agents-stripe-projects">English</a>, en <a href="https://blog.cloudflare.com/ja-jp/agents-stripe-projects">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/agents-stripe-projects">한국어</a> et en <a href="https://blog.cloudflare.com/de-de/agents-stripe-projects">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zsV0PbSCJ5t1ImOeO6ymW/31f074c51b99bf86454aa201e43ed53f/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les agents de codage gèrent très efficacement le développement de logiciels. Pour déployer une application en production, toutefois, ils ont besoin de trois éléments liés à la plateforme cloud sur laquelle ils souhaitent héberger l’application&nbsp;: un compte, un moyen de paiement et un jeton d’API. Ces tâches étaient, jusqu’à présent, gérées directement par des humains. Désormais, toutefois, ce sont de plus en plus souvent des agents qui les gèrent pour le compte des utilisateurs. Les agents doivent être en mesure d’accomplir toutes les tâches que peuvent effectuer des clients humains. Les utilisateurs confient aux agents des problèmes complexes à résoudre, et ce sont eux qui prennent la décision d’utiliser Cloudflare et d’appeler des API de Cloudflare.</p>
+	<p>À compter d’aujourd’hui, les agents peuvent provisionner Cloudflare pour le compte de leurs utilisateurs. Ils peuvent créer un compte Cloudflare, souscrire un abonnement payant, enregistrer un domaine et obtenir un jeton d’API pour déployer immédiatement leur code. Des utilisateurs humains peuvent être intégrés au processus de demande d’autorisation, et ils doivent accepter les conditions d’utilisation de Cloudflare. En dehors de cette tâche, toutefois, aucune autre intervention humaine n’est requise du début à la fin du processus. Il n’est pas nécessaire d’accéder au tableau de bord, de copier-coller des jetons d’API ou de saisir les informations d’une carte de paiement. Sans aucune configuration supplémentaire, les agents disposent de toutes les informations et autorisations nécessaires pour déployer une nouvelle application de production en une seule fois. Et, grâce aux <a href="https://blog.cloudflare.com/code-mode"><u>serveurs&nbsp;MCP Code&nbsp;Mode</u></a> et aux packages <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a> de Cloudflare, ils le font encore plus efficacement.</p>
+	<p>Tout cela fonctionne grâce à un nouveau protocole que nous avons conçu en collaboration avec Stripe, dans le cadre du lancement de <a href="https://projects.dev" target="_blank" rel="noopener noreferrer"><u>Stripe&nbsp;Projects</u></a>.</p>
+	<p>Nous sommes ravis d’inaugurer ce nouveau partenariat avec Stripe et d’offrir <a href="https://support.stripe.com/questions/stripe-atlas-perks-partners" target="_blank" rel="noopener noreferrer"><u>100&nbsp;000&nbsp;dollars de crédits Cloudflare</u></a> à toutes les start-ups qui utilisent <a href="https://stripe.com/atlas" target="_blank" rel="noopener noreferrer"><u>Stripe&nbsp;Atlas</u></a> pour leur incorporation. Toutefois, ce nouveau protocole permet également d’intégrer toute plateforme comportant des utilisateurs connectés à Cloudflare, de la même manière que Stripe, sans aucune difficulté pour les utilisateurs finaux.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-zero-to-production-without-any-setup-or-manual-steps">Comment ça fonctionne&nbsp;: du point zéro à la production, sans aucune configuration ni intervention manuelle</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-zero-to-production-without-any-setup-or-manual-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Installez l’interface de ligne de commande <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe&nbsp;CLI</u></a> avec le <a href="https://docs.stripe.com/projects" target="_blank" rel="noopener noreferrer"><u>plugin Stripe&nbsp;Projects</u></a>, connectez-vous à Stripe, puis créez un nouveau projet&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>Demandez ensuite à votre agent de créer une nouvelle application et de la déployer sur un nouveau domaine. Vous pouvez regarder ci-dessous une courte vidéo de deux minutes résumant l’ensemble de cette séquence&nbsp;:</p>
+	<div style="position: relative; padding-top: 54.48275862068967%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3c85ef631a52c381990431af3ef01b9d/iframe?preload=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3c85ef631a52c381990431af3ef01b9d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>Si l’adresse e-mail avec laquelle vous êtes connecté à Stripe est déjà associée à un compte Cloudflare, vous serez invité à suivre une procédure d’authentification OAuth habituelle afin d’accorder l’accès à l’agent. Si aucun compte Cloudflare n’est associé à l’adresse e-mail avec laquelle vous vous êtes connecté, Cloudflare créera automatiquement un compte pour vous et votre agent&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y4grvxbS3wPfLYOGPV0PE/230d2f439ff9ea8cc75fe6cde9469792/image8.png" alt="" class="kg-image" width="1999" height="1147" loading="lazy">
+	</figure>
+	<p>Vous verrez l’agent créer et déployer un site sur un nouveau compte Cloudflare, puis utiliser l’interface&nbsp;CLI de Stripe&nbsp;Projects pour enregistrer le domaine&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EKRFYCJLYdsFBVVAkrmnX/82a9781b1e5f8818093f1028decd310b/image6.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>L’agent vous demandera de saisir des informations et d’autoriser ses actions lorsque nécessaire. Par exemple, si aucun moyen de paiement n’est encore associé à votre compte Stripe, l’agent vous invitera à en ajouter un&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oTud5jPuMjldOEhLBbMrd/fb91e1065a84668f7bd606963006641b/image1.png" alt="" class="kg-image" width="1999" height="924" loading="lazy">
+	</figure>
+	<p>À la fin de la procédure, l’agent a été déployé en production et l’application s’exécute sur le domaine nouvellement enregistré&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57boiRl1hScbG8n1ktcUzt/d97e1fc46610329e21accaa34ad92f13/image4.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>L’agent a progressé du point zéro, sans compte Cloudflare, sans package <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Agent&nbsp;Skills</u></a> ni <a href="https://blog.cloudflare.com/code-mode-mcp"><u>serveur&nbsp;MCP</u></a> préconfiguré, à&nbsp;:</p>
+	<ul>
+		<li>
+			<p>La fourniture d’un nouveau compte Cloudflare</p>
+		</li>
+		<li>
+			<p>L’obtention d’un jeton d’API</p>
+		</li>
+		<li>
+			<p>L’achat d’un domaine</p>
+		</li>
+		<li>
+			<p>Le déploiement d’une application en production</p>
+		</li>
+	</ul>
+	<p>Mais attendez… Comment l’agent a-t-il découvert qu’il était capable de faire tout cela&nbsp;? Comment savait-il quels services il pouvait provisionner et comment acheter un domaine&nbsp;? Comment a-t-il obtenu les informations contextuelles indispensables pour comprendre comment déployer une application sur Cloudflare&nbsp;? Examinons cela de plus près.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-protocol-and-integration-works">Comment fonctionnent le protocole et l’intégration</h2>
+		<a href="https://blog.cloudflare.com/#how-the-protocol-and-integration-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L’interaction entre l’agent, Stripe et Cloudflare illustrée ci-dessus comporte trois éléments&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Découverte</b>&nbsp;: l’agent peut appeler une commande afin d’interroger le catalogue de services disponibles.</p>
+		</li>
+		<li>
+			<p><b>Autorisation</b>&nbsp;: la plateforme authentifie l’identité de l’utilisateur, ce qui permet aux fournisseurs de créer des comptes ou d’associer des comptes existants, puis d’assurer la transmission sécurisée des identifiants à l’agent.</p>
+		</li>
+		<li>
+			<p><b>Paiement</b>&nbsp;: la plateforme fournit un jeton de paiement que les fournisseurs peuvent utiliser pour facturer le client, permettant à l’agent de souscrire des abonnements, d’effectuer des achats et d’établir une facturation en fonction de l’utilisation.</p>
+		</li>
+	</ul>
+	<p>Ces procédures sont fondées sur l’état de la technique et les normes existantes, telles que OAuth, OIDC et la tokenisation des paiements, mais elles sont utilisées conjointement pour éliminer une multitude d’étapes qui pourraient autrement nécessiter l’intervention d’un utilisateur humain.</p>
+	<div class="flex anchor relative">
+		<h2 id="discovery-how-agents-find-services-they-can-provision-themselves">Découverte&nbsp;: comment les agents identifient les services qu’ils peuvent provisionner eux-mêmes</h2>
+		<a href="https://blog.cloudflare.com/#discovery-how-agents-find-services-they-can-provision-themselves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans la session d’agent décrite ci-dessus, avant d’exécuter la commande CLI <code>stripe projects add cloudflare/registrar:domain</code>, l’agent a d’abord dû découvrir le service <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Registrar</u></a>. Pour cela, il a exécuté la commande <code>stripe projects catalog</code>, qui renvoie la liste des services disponibles&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fGiH332y2mAIfxiPT4Uof/cad52b61f6f7c89088ea3d54cb678a46/image2.png" alt="" class="kg-image" width="1999" height="755" loading="lazy">
+	</figure>
+	<p>La liste complète de <a href="https://developers.cloudflare.com/directory" target="_blank" rel="noopener noreferrer"><u>produits Cloudflare</u></a> et de services proposés par d’autres fournisseurs <a href="https://docs.stripe.com/projects#available-providers" target="_blank" rel="noopener noreferrer"><u>est vaste et ne cesse de s’allonger</u></a>, ce qui peut logiquement paraître déconcertant pour des utilisateurs humains. Pour les agents, toutefois, ce catalogue de services fournit précisément le contexte dont ils ont besoin. L’agent sélectionne les services à utiliser dans ce catalogue en fonction de ce que l’utilisateur lui a demandé de faire et de ses préférences. L’utilisateur n’a pas besoin de connaître au préalable les services proposés par les différents fournisseurs et n’a pas besoin de fournir d’informations. Les fournisseurs tels que Cloudflare mettent ce catalogue à disposition via une simple API REST qui renvoie des données au format JSON et fournit aux agents toutes les informations dont ils ont besoin.</p>
+	<div class="flex anchor relative">
+		<h2 id="authorization-instant-account-creation-for-new-users">Autorisation&nbsp;: création instantanée d’un compte pour les nouveaux utilisateurs</h2>
+		<a href="https://blog.cloudflare.com/#authorization-instant-account-creation-for-new-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque l’agent sélectionne et provisionne un service (par exemple&nbsp;: <code>stripe projects add cloudflare/registrar:domain</code>), il provisionne la ressource dans un compte Cloudflare. Mais comment parvient-il à créer un compte à la demande, sans demander à l’utilisateur de se rendre sur une page d’enregistrement&nbsp;?</p>
+	<p>Vous souvenez-vous qu’au début, l’utilisateur s’est connecté à son compte Stripe&nbsp;? Stripe se comporte comme un fournisseur d’identité, certifiant l’identité de l’utilisateur. Cloudflare provisionne automatiquement un nouveau compte pour l’utilisateur, si aucun compte n’existe déjà, puis renvoie les informations d’identification à l’interface&nbsp;CLI de Stripe&nbsp;Projects. Ces identifiants sont stockés de façon sécurisée, mais restent accessibles à l’agent, qui peut les utiliser pour exécuter des requêtes authentifiées auprès de Cloudflare. Cela signifie que si un utilisateur découvre Cloudflare ou d’autres services pour la première fois, il peut immédiatement commencer à développer des applications avec son agent, sans aucune étape supplémentaire.</p>
+	<p>Si l’utilisateur dispose déjà d’un compte Cloudflare, il est redirigé vers un processus OAuth standard, afin d’autoriser l’accès à l’interface&nbsp;CLI de Stripe&nbsp;Projects, ce qui lui permet de provisionner des ressources sur son compte Cloudflare existant.</p>
+	<div class="flex anchor relative">
+		<h2 id="payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info">Paiement&nbsp;: attribuez à votre agent un budget qu’il peut dépenser, sans lui communiquer les informations de votre carte de paiement</h2>
+		<a href="https://blog.cloudflare.com/#payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous pourriez vous inquiéter, à juste titre&nbsp;: «&nbsp;Et si mon agent se laisse un peu emporter et commence à acheter des dizaines de domaines&nbsp;? Vais-je me retrouver à devoir payer une facture astronomique&nbsp;? Puis-je vraiment confier ma carte de paiement à mon agent&nbsp;?&nbsp;»</p>
+	<p>Le protocole tient compte de ces préoccupations de deux manières. Lorsqu’un agent provisionne un service payant, Stripe inclut un jeton de paiement dans la requête adressée au fournisseur (c’est-à-dire Cloudflare). Les données de paiement brutes, telles que les numéros de carte de paiement, ne sont jamais communiquées à l’agent. Stripe impose alors une limite par défaut de 100,00&nbsp;USD par mois, qui correspond au montant maximal que l’agent peut dépenser auprès d’un même fournisseur. Lorsque vous serez prêt à augmenter cette limite, vous pourrez configurer des <a href="https://developers.cloudflare.com/changelog/post/2026-04-13-billable-usage-dashboard-and-budget-alerts" target="_blank" rel="noopener noreferrer"><u>alertes budgétaires</u></a> sur votre compte Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does">Toute plateforme comportant des utilisateurs connectés peut s’intégrer à Cloudflare de la même manière que Stripe</h2>
+		<a href="https://blog.cloudflare.com/#any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toute plateforme comportant des utilisateurs connectés peut se comporter comme un «&nbsp;orchestrateur&nbsp;», à l’instar de Stripe avec Stripe&nbsp;Projects, et s’intégrer à Cloudflare.</p>
+	<p>Supposons que votre produit soit un agent de codage. Vous aimeriez que les utilisateurs puissent déployer en production les applications qu’ils ont développées, en utilisant Cloudflare et d’autres services. Toutefois, la dernière chose que vous souhaitez, c’est bien d’inviter les utilisateurs à s’égarer dans un véritable dédale de procédures d’autorisation et d’arborescences décisionnelles pour déterminer où et comment déployer l’application. Vous souhaitez simplement permettre aux utilisateurs de déployer leurs applications.</p>
+	<p>Votre plateforme joue le rôle d’orchestrateur pour les utilisateurs déjà connectés. Si un utilisateur a besoin de pouvoir fournir un <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>domaine</u></a>, un <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>compartiment de stockage</u></a>, une <a href="https://blog.cloudflare.com/dynamic-workers"><u>sandbox</u></a> ou <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>quoi que ce soit d’autre</u></a> à son agent, il vous suffit d’exécuter un simple appel d’API à Cloudflare pour provisionner un nouveau compte Cloudflare pour lui et obtenir un jeton permettant d’effectuer des requêtes authentifiées en leur nom.</p>
+	<p>Ou, supposons que vous souhaitiez permettre aux clients de Cloudflare de provisionner facilement votre service, de la même manière que le partenariat entre Cloudflare et Planetscale permet <a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers"><u>la création de bases de données Postgres Planetscale directement depuis Cloudflare</u></a>. Nous avons commencé à travailler avec Planetscale sur ce projet bien avant que ce nouveau protocole ne voie le jour, mais le déroulement des opérations est ici assez similaire. Cloudflare joue le rôle d’orchestrateur, vous permettant de vous connecter à votre compte PlanetScale, de créer des bases de données et d’utiliser le mode de paiement existant de l’utilisateur pour la facturation.</p>
+	<p>Ce nouveau protocole commence à normaliser les types d’intégrations entre produits que de nombreuses plateformes proposent depuis des années, souvent de manière ponctuelle ou spécifique à une plateforme particulière. En l’absence de norme, chaque intégration nécessitait l’intervention de personnel technique, dont le travail s’avérait souvent inexploitable dans le cadre d’intégrations ultérieures. De la même manière que la <a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>norme OAuth</u></a> a permis de déléguer l’accès à votre compte à d’autres plateformes, le protocole utilise OAuth et étend ses fonctionnalités aux paiements et à la création de comptes d’une manière qui accorde une place centrale aux agents.</p>
+	<p>Nous sommes impatients de continuer à faire évoluer cette norme et de collaborer avec Stripe afin de publier prochainement une spécification plus officielle. Nous sommes également impatients de proposer l’intégration d’autres plateformes. Écrivez-nous à l’adresse <a href="https://blog.cloudflare.com/#"><u>agenticpartnerships@cloudflare.com</u></a> et dites-nous comment vous souhaitez intégrer votre plateforme à Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="give-your-agent-the-power-to-provision-and-pay">Donnez à votre agent la possibilité de provisionner des ressources et d’effectuer des paiements</h2>
+		<a href="https://blog.cloudflare.com/#give-your-agent-the-power-to-provision-and-pay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stripe Projects est actuellement disponible en bêta ouverte, et vous pouvez commencer à l’utiliser, même si vous ne disposez pas encore d’un compte Cloudflare. Installez simplement l’interface de ligne de commande <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe&nbsp;CLI</u></a>, connectez-vous à Stripe, puis créez un nouveau projet&nbsp;:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>Demandez à votre agent de développer une nouvelle application sur Cloudflare et montrez-nous ce que vous avez créé&nbsp;!</p>
+</div>

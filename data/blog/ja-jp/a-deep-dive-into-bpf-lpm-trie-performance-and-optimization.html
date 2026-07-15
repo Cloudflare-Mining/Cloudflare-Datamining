@@ -1,0 +1,198 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/a-deep-dive-into-bpf-lpm-trie-performance-and-optimization">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29PWgCn1cfUU5ReqLRXT9C/ff8b2bf9ade18e5bf17aedd957c359fe/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>それは、本番環境の不可解なソフトロックアップメッセージから始まりました。当社が使用している最も基本的なデータ構造の1つであるBPF LPMトリ</p>
+	<p>BPFトライマップ（<a href="https://docs.ebpf.io/linux/map-type/BPF_MAP_TYPE_LPM_TRIE" target="_blank" rel="noopener noreferrer">BPF_MAP_TYPE_LPM_TRIE</a>）は、ネットワークパケットをルーティングする際のIPおよびIP+ポートのマッチングなどのために多用され、リクエストが結果を返す前に適切なサービスを通過するようにします。このデータ構造のパフォーマンスはお客様にサービスを提供するために重要ですが、現在の実装のスピードは多くの不満を残しています。BPF LPMトライマップに数百万のエントリーを保存する際、エントリーの検索時間が数百ミリ秒かかったり、マップが10秒以上にわたってCPUをロックアップするなど、いくつかのボトルネックに遭遇しました。たとえば、BPFマップは、Cloudflareの<a href="https://www.cloudflare.com/network-services/products/magic-firewall" target="_blank" rel="noopener noreferrer"><u>Magic Firewall</u></a>ルールを評価する際に使用されますが、これらのボトルネックが、一部のお客様ではトラフィックパケット損失につながっています。</p>
+	<p>この記事では、試行とプレフィックスの一致の仕組み、ベンチマークの結果、そして現在のBPF LPMトライの実装の欠点のリストについて再確認します。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-brief-recap-of-tries">試行の簡単な要約</h2>
+		<a href="https://blog.cloudflare.com/#a-brief-recap-of-tries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最後にトライデータ構造を見てからしばらく経った場合（あるいは、これまでご覧になったことがない場合）、トライはツリーデータ構造（バイナリツリーと同様）で、データを保存し、検索することができます。指定されたキーを処理し、各ノードがいくつかのキービットを保存します。</p>
+	<p>検索はパスを横断することによって実行されます。つまり、ノードはトラバーサルパスからキーを再構築するため、ノードはフルキーを保存する必要がありません。この点は、左子ノードが現在のノードより小さいキーを持ち、右子ノードがより大きいキーを持つという一次不変量が存在する従来のバイナリ検索ツリー（BST）とは異なります。BSTでは、検索ステップごとに比較ができるように、各ノードが完全なキーを保存する必要があります。</p>
+	<p>以下は、BSTがキーの値をどのように保存するかを示す例です。</p>
+	<ul>
+		<li>
+			<p>ABC</p>
+		</li>
+		<li>
+			<p>ABCD</p>
+		</li>
+		<li>
+			<p>ABCDEFGH</p>
+		</li>
+		<li>
+			<p>DEF</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uXt5qwpyq7VzrqxXlHFLj/99677afd73a98b9ce04d30209065499f/image4.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>ちなみに、同じキーのセットを保存しようとすると、これは次のようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TfFZmwekNAF18yWlOIVWh/58396a19e053bd1c02734a6a54eea18e/image8.png" alt="" class="kg-image" width="1589" height="1555" loading="lazy">
+	</figure>
+	<p>このようにビットを分割する方法は、データに冗長性がある場合、たとえば、共有データに必要なノードのセットは1つだけであるため、キーには一般的なものがあります。このため、文字列を効率的に格納するために、試行がよく使用されます。例：単語の辞書。文字列「ABC」と「ABCD」の格納には、3バイト＋4バイト（ASCIIを仮定）の必要はなく、3バイト＋1バイトで済みます。これは、「ABC」が両者（正確なビット数）で共有されるためです。実装によって異なる）。</p>
+	<p>また、試行することで、より効率的な検索が可能になります。たとえば、キー「CAR」がBSTに存在したかどうかを知りたい場合、ルートの正しい子（キー「DEF」を持つノード）に移動し、その左子をチェックする必要があります。存在すれば、なおさらです。トライはプレフィックス順に検索するため、より効率的です。この例では、トライはそのキーがトライにあるかどうかをルートで知ることができます。</p>
+	<p>この設計は、最も長いプレフィックスの一致を実行したり、CIDRを使用したIPルーティングで作業するのに最適です。CIDRは、IPアドレス空間をより効率的に使用するために導入されました（クラスを8ビットの4バケットに分類する必要がなくなりました）が、IPアドレスのネットワーク部分がどこにでも位置づけられる可能性があるため、複雑さが増しています。IPルーティングテーブルでCIDRスキームを処理するには、完全一致の検索を実行するのではなく、テーブル内の最も長い（最も具体的な）プレフィックスのマッチングが必要です。</p>
+	<p>トライを検索する際に各ノードでシングルビットの比較を行う場合、それはバイナリトライです。検索でより多くのビットを比較する場合、これを<i><b>マルチビットトライ</b></i>と呼びます。IPやサブネットアドレスなど、何でもわかります。すべて、0と1だけになります。</p>
+	<p>マルチビットトライアルのノードは、バイナリトライのノードよりも多くのメモリを使用しますが、コンピューターはいずれにせよマルチビットワードで動作するため、マイクロアーキテクチャの観点からは、マルチビットトライを使用した方がビットをより速く横断することができ、比較する回数を減らすことができるため、より効率的です検索に使用できますこれは古典的なスペースと時間のトレードオフです。</p>
+	<p>ほかにも、試行で使用できる最適化があります。トリガーに保存するデータの分布は一様ではなく、人口がまばらな地域である可能性があります。例えば、文字列「A」と「BCDEFGHI」をマルチビットトライアルに格納した場合、ノードの数が想定されていますか？ASCIIを使用している場合、ルートノードと左にある「A」または右にある「B」の分岐でバイナリトライを構築することができます。8ビットノードの場合、「C」、「D」、「E」、「F」、「G」、「H」、「I」を格納するには、さらに7つのノードが必要です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LO6izFC5e06dRf9ra2roC/167ba5c4128fcebacc7b7a8eab199ea5/image5.png" alt="" class="kg-image" width="943" height="1578" loading="lazy">
+	</figure>
+	<p>トライアルには他の文字列がないので、これはかなり最適とは言えません。「B」で一致した後最初のレベルに到達すると、そのプレフィックスを持つトライ新しい文字列が1つだけであることがわかり、<i><b>パス圧縮</b></i>を使用することで、他のすべてのノードを作成することなく回避できます。パス圧縮は、ノード「C」、「D」、「E」などを「I」のような単一のノードに置き換えます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ADY3lNtF7NIgfUX7bX9vY/828a14e155d6530a4dc8cf3286ce8cc3/image13.png" alt="" class="kg-image" width="939" height="1165" loading="lazy">
+	</figure>
+	<p>ツリーを横断して「I」をヒットした場合でも、検索キーをスキップしたビットと比較して、検索キーが文字列と一致することを確認する必要があります。スキップされたビットをどこにどのように格納するかは実装によって異なります。BPF LPMは、単純にキー全体をリークノードに格納しようとします。データの密度が増すにつれて、パス圧縮の効果が低下します。</p>
+	<p>データ分布が密度で、たとえば、トライアルの最初の3レベルがすべて完全に入力されている場合はどうなるでしょうか。その場合は、<i><b>レベル圧縮</b></i>を使用して、そのレベルのすべてのノードを2**3個の子を持つ単一ノードに置き換えることができます。これは、Linuxカーネルで<a href="https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux" target="_blank" rel="noopener noreferrer">IPルートルックアップ</a>に使用されるLevel-Compressed Triesの動作の仕組みです（<a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c" target="_blank" rel="noopener noreferrer"><u>net/ipv4/fib_trie.c</u></a>を参照）。</p>
+	<p>他の最適化もありますが、この記事ではこの簡単な迂回は、カーネルのBPF LPMトライ実装は先ほど説明した3つの方法を十分に使用していないため、この記事では十分です。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-fast-are-bpf-lpm-trie-maps">BPF LPMのトライアルマップの速さは？</h2>
+		<a href="https://blog.cloudflare.com/#how-fast-are-bpf-lpm-trie-maps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここでは、AMD EPYC 9684X 96-Coreマシンで<a href="https://lore.kernel.org/bpf/20250827140149.1001557-1-matt@readmodwrite.com" target="_blank" rel="noopener noreferrer"><u>BPFセルフテストベンチマーク</u></a>を実行したときの数字をいくつか紹介します。ここでは、トライは10,000のエントリー、32ビットのプレフィックス長、範囲[0, 10,000]内のすべてのキーのエントリーがあります。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>業務</p>
+				</td>
+				<td>
+					<p>スループット</p>
+				</td>
+				<td>
+					<p>Stddev</p>
+				</td>
+				<td>
+					<p>遅延</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ルックアップ</p>
+				</td>
+				<td>
+					<p>742.3万ops/秒</p>
+				</td>
+				<td>
+					<p>0.02.3百万ps/秒</p>
+				</td>
+				<td>
+					<p>134.710 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>更新</p>
+				</td>
+				<td>
+					<p>264.3万ops/秒</p>
+				</td>
+				<td>
+					<p>0.01.5万ops/秒</p>
+				</td>
+				<td>
+					<p>378.310 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>削除</p>
+				</td>
+				<td>
+					<p>071.2万ops/秒</p>
+				</td>
+				<td>
+					<p>0.008万ops/秒</p>
+				</td>
+				<td>
+					<p>1405.152 ns/op</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>free</p>
+				</td>
+				<td>
+					<p>0.57.3万ops/s</p>
+				</td>
+				<td>
+					<p>0.574,000 pps/s</p>
+				</td>
+				<td>
+					<p>1.743 ms/op</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>1万件のエントリーがあるBPF LPMトライアルを解放するまでの時間が非常に大きいです。最近、これに時間がかかりすぎ、<a href="https://lore.kernel.org/lkml/20250616095532.47020-1-matt@readmodwrite.com" target="_blank" rel="noopener noreferrer"><u>ソフトロックアップメッセージ</u></a>が本番環境で大量に発生する問題が発生しました。</p>
+	<p>このベンチマークから、最悪の場合の動作がある程度想定できます。キーは非常に密接に使用されているため、パス圧縮はまったく効果がありません。次のセクションでは、関連するボトルネックを理解するために、ルックアップ操作について説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-bpf-lpm-tries-slow">BPF LPM試行が遅い理由は？</h2>
+		<a href="https://blog.cloudflare.com/#why-are-bpf-lpm-tries-slow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://elixir.bootlin.com/linux/v6.12.43/source/kernel/bpf/lpm_trie.c" target="_blank" rel="noopener noreferrer"><u>kernel/bpf/lpm_trie.c</u></a> の LPM トライの実装には、冒頭で説明した最適化が2つあります。エッジノードでマルチビットの比較が可能ですが、各内部ノードには子ポインタが2つしかないため、ツリーが1ビットしか異なる多くのデータが密に挿入されている場合、これらのマルチビット比較は1ビットの比較にまで劣化します。</p>
+	<p>ここで例を紹介します。0、1、3の数字をBPF LPMトライに格納するとします。これらの値は32ビットまたは64ビットの機械語に収まるため、単一の比較で、トライの中の次のノードを決めることができると思うかもしれません。しかし、これは、trie実装に3つの子ポインタが現在のノードに3つの子ポインタがある場合にのみ可能です（これは当然のことながら、ほとんどのtrie実装で行われています）。言い換えると、3方向の分岐を決定したいのに、BPF LPMには2つの子しか与えないため、2方向の分岐に限定されます。</p>
+	<p>この2-サブネットの図を以下に示します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ciL2t6aMyJHR2FfX41rNk/365abe47cf384729408cf9b98c65c0be/image9.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>リークノードは緑で表示され、キーはバイナリ文字列として中央に表示されます。8ビットの比較だけでも、どのノードがそのキーを持つかを知ることはできますが、BPF LPMの実装では、中間ノード（青）を挿入して、パストラバーサルに2通りのブランチの決定を挿入します。オレンジ色のルートノードには2つの子しかいません。リークノードに到達すると、BPF LPMはマルチビット比較を実行して鍵をチェックします。ノードがより多くの子をサポートする場合、上記のトライはこのように見え、3ウェイ分岐を許可し、検索時間を短縮します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17VoWl8OY6tzcARKDKuSjS/b9200dbeddf13f101b7085a549742f95/image3.png" alt="" class="kg-image" width="1096" height="694" loading="lazy">
+	</figure>
+	<p>この2取得が3つの高さに影響を与えます。最悪の場合、完全なトライは基本的に高さlog2(nr_entries)を持つバイナリ検索ツリーになり、トライの高さはキーを検索するために必要な比較の回数に影響します。</p>
+	<p>上記の例は、BPF LPMがどのようにパス圧縮を実装しようとするかを示しています。キーが1ビットだけ異なる2つのノードがある中間ノードを挿入するだけです。3の代わりに15のキー（0b1111）を挿入した場合でも、トライのレイアウトは変わりません。ルートの正しい子に単一のノードが必要なだけです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ecfKSeoqN3bfBXmC9KHw5/3be952edea34d6b2cc867ba31ce14805/image12.png" alt="" class="kg-image" width="1313" height="1111" loading="lazy">
+	</figure>
+	<p>そして最後に、BPF LPMはレベル圧縮を実装しません。これも、3型のノードが子を2人しか保有できないという事実に起因しています。IPルートテーブルは、共通のプレフィックスを多く持つ傾向があり、通常、上位レベルで密に詰め込まれた試行が見られるため、IPルートを含むトライのレベル圧縮は非常に効果的です。</p>
+	<p>下記は、LPMのルックアップスループット（百万ops/秒で測定）が、エントリー数の増加（1エントリーから最大10万エントリーまで測定）に伴って低下することを示したグラフです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33I92exrEZTcUWOjxaBOqY/fb1de551b06e3272c8670d0117d738fa/image2.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>エントリが100万に達すると、スループットは約150万op/秒で、エントリ数が増えるにつれて減少し続けます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OhaAaI5Y2XJCofI9V39z/567a01b3335f29ef3b46ccdd74dc27e5/image1.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>なぜでしょうか？当初、これはL1のDCキャッシュのミス率のためです。トライアルで通過する必要のあるノードはすべて、キャッシュミスの可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Gx4fOLKmhUKHegybQU7sl/4936239213f0061d5cbc2f5d6b63fde6/image11.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>グラフからわかるように、L1のDCキャッシュミス率は比較的安定しており、それでも、スループットは減少し続けています。8万前後になると、dTLBのミス率がボトルネックになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Jy7aTN3Nyo2EsbSzw313n/d26871fa417ffe293adb47fe7f7dc56b/image7.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<p>BPF LPMはカーネルメモリのフリーリストから個々のノードを動的に割り当てようとするため、これらのノードは任意のアドレスに存在する可能性があります。つまり、トライアルを通過すると、ほぼ確実にキャッシュミスが発生し、dTLBミスが発生する可能性があります。エントリーの数とトライの高さが増加するにつれ、この状況はさらに悪化します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CB3MvSvSgH1T2eY7Xlei8/81ebe572592ca71529d79564a88993f0/image10.png" alt="" class="kg-image" width="1780" height="1102" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="where-do-we-go-from-here">ここからの発展</h2>
+		<a href="https://blog.cloudflare.com/#where-do-we-go-from-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BPF LPMトライの現在の限界を理解することで、インターネットの将来に向けて、よりパフォーマンスと効率的なソリューションの構築に取り組むことができます。</p>
+	<p>私たちはすでにこれらのベンチマークをアップストリームのLinuxカーネルに貢献していますが、それは始まりに過ぎません。BPM LPM試行のパフォーマンス、特にワークロードによく使用されるルックアップ関数のパフォーマンスを改善する計画があります。この記事では、すでに<a href="https://elixir.bootlin.com/linux/v6.12.43/source/net/ipv4/fib_trie.c" target="_blank" rel="noopener noreferrer"><u>net/ipv4/fib_trie.c</u></a>で使用されている多くの最適化を取り上げています。自然な最初のステップは、一般的なLevel Compressed tryの実装が利用できるように、そのコードをリファクタリングすることです。今後のブログ記事で、本研究を深く掘り下げてみましょう。</p>
+	<p>より多くのパフォーマンス数値をご覧になりたい方は、<a href="https://wiki.cfdata.org/display/~jesper" target="_blank" rel="noopener noreferrer">Jesper Brouer</a>がこちらでいくつか記録しています：<a href="https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org" target="_blank" rel="noopener noreferrer">https://github.com/xdp-project/xdp-project/blob/main/areas/bench/bench02_lpm-trie-lookup.org</a>.</p>
+	<h6><i>Linuxカーネル、パフォーマンス、またはデータ構造の最適化に興味がある方は、</i><a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;location=default" target="_blank" rel="noopener noreferrer"><i>当社のエンジニアリングチームが募集しています</i></a><i>。</i></h6>
+	<p></p>
+</div>

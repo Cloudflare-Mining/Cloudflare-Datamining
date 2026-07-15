@@ -1,0 +1,116 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-security-for-apps-ga">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-security-for-apps-ga">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ai-security-for-apps-ga">Français</a>、<a href="https://blog.cloudflare.com/de-de/ai-security-for-apps-ga">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-security-for-apps-ga">한국어</a>、<a href="https://blog.cloudflare.com/es-es/ai-security-for-apps-ga">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/ai-security-for-apps-ga">Рyсский</a>、<a href="https://blog.cloudflare.com/nl-nl/ai-security-for-apps-ga">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-security-for-apps-ga">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/663Prk0UZJS4eRloD2XayY/bba0c4840520eb72d5539d1235768d34/BLOG-3128_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareの<a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>AI Security for Apps</u></a>は、AI搭載アプリケーションに対する脅威を検出し、軽減します。本日、この機能の一般提供を発表します。</p>
+	<p>カスタムトピックの検出などの新機能を搭載し、Cloudflareのすべてのお客様（Free、Pro、Businessプランをご利用のお客様を含む）に対して、AIエンドポイント検出を無料にし、誰もがインターネットのどこにデプロイされているかを可視化します。直面しているアプリが対象です。</p>
+	<p>弊社はまた、クラウド顧客に<a href="https://www.cloudflare.com/learning/ai/what-is-ai-security" target="_blank" rel="noopener noreferrer">AIセキュリティ</a>を提供するためにCloudflareを採用したIBMとの拡大したコラボレーションを発表します。そして、共通のお客様に<a href="https://www.cloudflare.com/ai-security" target="_blank" rel="noopener noreferrer">AIセキュリティ体制の統合的なビュー</a>を提供するために、Wizと提携します。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-kind-of-attack-surface">新種の攻撃対象領域</h2>
+		<a href="https://blog.cloudflare.com/#a-new-kind-of-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のWebアプリケーションは、銀行残高の確認や振り込みなどの操作が定義されています。これらの相互作用を保護するために、決定論的なルールを書くことができます。</p>
+	<p>AI搭載アプリケーションとエージェントは異なります。自然言語を受け入れ、予測不可能な応答を生成します。入力と出力は確率的であるため、許可または拒否するための固定された操作はありません。攻撃者は、大規模な言語モデルを操作して、不正なアクションを実行したり、機密データを漏えいさせたりする可能性があります。プロンプトインジェクション、機密情報の開示、無制限の利用は、<a href="https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms" target="_blank" rel="noopener noreferrer"><u>OWASP LLMアプリケーションのトップ10</u></a>に挙げられるリスクのほんの一部です。</p>
+	<p>こうしたリスクは、AIアプリケーションがエージェントとなるにつれて増大します。AIがツール呼び出し（返金の処理、アカウントの変更、割引の提供、顧客データへのアクセスなど）にアクセスできるようになると、悪意のあるプロンプトが即座にセキュリティインシデント発生します。</p>
+	<p>お客様について、当社が直面していることを教えてください。「Newful Digitalのチームのほとんどは、独自の生成AIの安全策を講じていますが、どのチームも急速にイノベーションを進めているため、最終的にはギャップが必然的に生じるでしょう」と、Bluehost、HostGatorを運営するNewful Digitalのプリンシパルシステムアーキテクト、Rick Radinger氏は述べています。 Domain.comに対して、ゾーンがあるとしましょう。 </p>
+	<div class="flex anchor relative">
+		<h2 id="what-ai-security-for-apps-does">AI Security for Appsができること</h2>
+		<a href="https://blog.cloudflare.com/#what-ai-security-for-apps-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これに対応するため、CloudflareはAI Security for Appsを構築しました。サードパーティモデルを使用している場合でも、独自にホストしている場合でも、Cloudflareの<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer"><u>リバースプロキシ</u></a>の一部として、AI搭載アプリケーションの前に配置されます。この機能は、（1）Webプロパティ全体にわたるAI搭載アプリの検出、（2）それらのエンドポイントに対する悪意のある行動や非ポリシーの行動の検出、（3）使い慣れたWAFルールビルダーを介した脅威の軽減に役立ちます。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xpmckBUupzELjYOSx5bAF/cace1ab2ed2dd54d8d7a7ff60587ef65/BLOG-3128_2.png" alt="BLOG-3128 2" class="kg-image" width="1999" height="650" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="discovery-now-free-for-everyone">ディスカバリー — あらゆる人が無料に</h3>
+		<a href="https://blog.cloudflare.com/#discovery-now-free-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LLMを活用したアプリケーションを保護する前に、それらがどこで使われているかを把握する必要があります。特にLLM市場が進化し、開発者がモデルやプロバイダーを入れ替える中、アプリ全体でAIデプロイメントの全体像を把握できていないセキュリティチームの話をよく耳にします。</p>
+	<p>AI Security for Appsは、ホストされている場所やモデルの種類に関係なく、Webプロパティ全体でLLMを活用するエンドポイントを自動的に識別します。本日より、この機能はFree、Pro、Businessプランを含むすべてのCloudflareのお客様に無料でご利用いただけます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dBKhU5VNbzAePDAnaHkTK/3f6a569e495e03c3e2afca4d6183e02d/image4.png" alt="BLOG-3128 3" class="kg-image" width="1999" height="1000" loading="lazy">
+	</figure>
+	<p><i><sup><code>「cf-llm」</code></sup></i><i><sup>とラベル付けされた2つのエンドポイントの例を示す、WebアセットのCloudflareダッシュボードページ</sup></i></p>
+	<p>これらのエンドポイントを自動的に検出するには、<code>/chat/completions</code> のような一般的なパスパターンとの一致だけでは不十分です。多くのAI搭載アプリケーションには、製品検索、特性評価ツール、レコメンドエンジンなどのチャットインターフェースがありません。エンドポイントの名前ではなく、エンドポイントの動作を調べる<a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#discovering-llm-powered-applications"><u>検出システム</u></a>を構築しました。AI搭載エンドポイントを確実に識別するには、<a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements" target="_blank" rel="noopener noreferrer"><u>十分な有効なトラフィック</u></a>が必要です。</p>
+	<p>検出されたAI搭載エンドポイントは、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets" target="_blank" rel="noopener noreferrer"><u>Security → Web Assets</u></a> の下に表示され、<code>cf-llm</code> としてラベル付けされます。Freeプランのお客様の場合、エンドポイントディスカバリーは、最初に<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets%2Fdiscovery" target="_blank" rel="noopener noreferrer"><u>Discoveryページ</u></a>に移動した時に開始されます。有料プランのお客様の場合は、検出はバックグラウンドで自動的に定期的に行われます。AI搭載エンドポイントが検出された場合、すぐに確認できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="detection">検出</h3>
+		<a href="https://blog.cloudflare.com/#detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Appsの検出は、AIを活用したエンドポイントへのトラフィックに対する<a href="https://developers.cloudflare.com/waf/detections" target="_blank" rel="noopener noreferrer"><u>常時稼働のアプローチ</u></a>に従います。各プロンプトは、プロンプトインジェクション、個人を特定できる情報、機密情報、有害なトピックについて、複数の検出モジュールを通過します。プロンプトが悪意のあるものか否かにかかわらず、結果はメタデータとして添付され、カスタムWAFルールで使用してポリシーを適用できます。当社は、<a href="https://w3techs.com/technologies/history_overview/proxy/all" target="_blank" rel="noopener noreferrer"><u>Webの約20%</u></a>からのトラフィックを確認する当社のグローバルネットワークを活用し、何百万ものサイトの新たな攻撃パターンをお客様のサイトに到達する前に特定する方法を常に模索しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oGjcaUL5L9zlAkz8lSmXv/4354a9555135e19de5c93d3d113e6790/BLOG-3128_4.png" alt="BLOG-3128 4" class="kg-image" width="1922" height="444" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-topics-detection">一般公開新機能：カスタムトピック検出</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-topics-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この製品は、プロンプトインジェクション、<a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#detecting-prompts-designed-to-leak-pii"><u>個人を特定できる情報の抽出</u></a>、<a href="https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai"><u>有害なトピック</u></a>など、一般的な脅威を検出する機能を内蔵しています。しかし、企業にはそれぞれ独自の定義があります。金融サービス会社は、特定の有権者に関する議論を検出する必要があるかもしれません。医療会社は、患者データに触れる会話にフラグを立てる必要があるかもしれません。小売業者は、顧客が競合製品についてどのような質問をしているのかを知りたいと考えるかもしれません。</p>
+	<p>新しいカスタムトピック機能では、これらのカテゴリーを定義できます。トピックを指定すると、プロンプトを検査し、関連性スコアを出力します。それをログに記録、ブロック、処理するために使用できるようにします。当社の目標は、お客様のユースケースに合わせて柔軟に対応できる拡張可能なツールの構築です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WzPhy11ZmUXDGZjft4sY1/7ebfafaf2114eaba83a829694837fc2c/image1.png" alt="BLOG-3128 5" class="kg-image" width="1946" height="819" loading="lazy">
+	</figure>
+	<p><i><sup>AI Security for Apps内のプロンプト関連性スコア</sup></i></p>
+	<div class="flex anchor relative">
+		<h4 id="new-in-ga-custom-prompt-extraction">一般公開版新機能：カスタムプロンプト抽出</h4>
+		<a href="https://blog.cloudflare.com/#new-in-ga-custom-prompt-extraction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Appsは、安全でないプロンプトがインフラに到達する前にガードレールを適用します。検出を正確に実行してリアルタイムの保護を提供するには、まずリクエストペイロード内のプロンプトを識別する必要があります。プロンプトはリクエスト本文のどこにでも位置することができ、LLMプロバイダーによってAPIは異なります。OpenAIとほとんどのプロバイダーは<code>$.messages[*].content</code> を使用しますチャット補完機能が\nあるかもしれません。AnthropicのバッチAPIは、<code>$.requests[*].params.messages[*].content</code>の中にプロンプトをネストしています。カスタムプロパティ評価ツールは、<code>$.property_description</code>を使用することがあります。</p>
+	<p>標準形式はそのままで、OpenAI、Anthropic、Google Gemini、Mistral、Cohere、xAI、DeepSeekなどで使用されています。既知のパターンと一致しない場合は、デフォルトのセキュアポスチャを適用し、リクエスト本文全体で検出を実行します。これにより、ペイロードに機密性の高いフィールドが含まれていても、AIモデルに直接フィードされない場合、誤検知が発生する可能性があります。例えば、実際のプロンプトと並んで存在する<code>$.customer_name</code>フィールドが不必要にPII検出をトリガーする可能性があります。</p>
+	<p>まもなく、お客様独自のJSONPath表現を定義して、プロンプトがどこにあるかを正確に伝えることができるようになります。これにより、誤検知が減り、より正確な検出が可能になります。また、アプリケーションの構造に時間の経過とともに自動的に適応するプロンプト学習機能も構築中です。</p>
+	<div class="flex anchor relative">
+		<h3 id="mitigation">軽減</h3>
+		<a href="https://blog.cloudflare.com/#mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>脅威が特定され、スコアが付けられると、アプリケーションセキュリティの他の部分にすでに使用しているのと同じWAFルールエンジンを使用して、脅威をブロックしたり、ログに記録したり、カスタムレスポンスを配信したりできます。Cloudflareの共有プラットフォームの力は、AI固有のシグナルを、WAFで利用可能な<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference" target="_blank" rel="noopener noreferrer"><u>数百のフィールド</u></a>で表される、リクエストについて他のすべてのことがわかっていることと組み合わせることができることです。プロンプトインジェクションの試みは、疑わしいものです。ログインページをプローブしているIPからのプロンプトインジェクションの試み、以前の攻撃に関連するブラウザのフィンガープリントを使用し、ボットネットを経由する攻撃は別状況です。AIレイヤーのみを確認するポイントソリューションでは、これらの接続を行うことはできません。</p>
+	<p>この統合セキュリティレイヤーは、まさにNewful DigitalがAIエンドポイントを発見し、ラベル付けし、保護するために必要としていたものです。</p>
+	<div class="flex anchor relative">
+		<h2 id="growing-ecosystem">エコシステムの拡大</h2>
+		<a href="https://blog.cloudflare.com/#growing-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Applicationsは、IBM Cloudとの統合など、Cloudflareの拡大するエコシステムを通じてご利用いただけるようになります。<a href="https://www.ibm.com/products/cloud-internet-services" target="_blank" rel="noopener noreferrer"><u>IBM Cloud Internet Services（CIS）</u></a>を通じて、エンドユーザーはすでに高度なアプリケーションセキュリティソリューションを調達し、IBM Cloudアカウントを通じて直接それを管理することができます。</p>
+	<p>また、Wizと提携してAI Security for ApplicationsをWiz AI Securityと接続し、クラウド上のモデルやエージェントの検出からエッジのアプリケーション層のガードレールまで、AIセキュリティ体制の統合ビューを共通のお客様に提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">使用開始手順</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Security for Appsは、CloudflareのEnterpriseプランのお客様にご利用いただけるようになりました。利用を開始するには、アカウントチームにお問い合わせいただくか、<a href="https://www.cloudflare.com/demos/protect-ai-apps" target="_blank" rel="noopener noreferrer"><u>セルフガイドツアー</u></a>で製品の動作をご覧ください。</p>
+	<p>Freeプラン、Proプラン、またはBusinessプランをご利用のお客様は、今すぐAIエンドポイントディスカバリーをご利用いただけます。ダッシュボードにログインし、<b>セキュリティ → Web アセット</b> に移動して、特定されたエンドポイントを確認します。ご期待ください。すべてのプランのお客様が近日中に、AI Security for Appsの機能を利用できるようにする予定です。</p>
+	<p>構成の詳細については、当社の<a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</p>
+</div>

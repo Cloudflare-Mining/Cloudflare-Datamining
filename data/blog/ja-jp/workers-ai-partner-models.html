@@ -1,0 +1,121 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-ai-partner-models">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24eaEAFJQtC4seHoUKWFVl/e2691f5779435b8aef21c58c5db0c52c/BLOG-2903_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Workers AIを<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>立ち上げたとき</u></a>、私たちはAIモデルがより速く、より小さくなることになると賭けました。私たちはこの仮説に基づいてインフラストラクチャを構築し、世界中のデータセンターに可能な限り速く推論を提供できる専用のGPUを追加しました。当社は、できる限り汎用的なプラットフォームを構築しましたが、低遅延の画像生成やリアルタイムの音声ボイスエージェントなど、当社のインフラストラクチャに適したニッチなユースケースも特定しました。これらのユースケースに目を向けるため、これらのアプリケーションの開発をより簡単にするための新しいモデルをいくつか導入しています。</p>
+	<p>本日、モデルカタログを拡大し、このユースケースに適合するクローズドソースパートナーモデルも含めることを発表でき、嬉しく思います。<a href="http://leonardo.ai" target="_blank" rel="noopener noreferrer"><u>Leonardo.Ai</u></a>と<a href="https://deepgram.com" target="_blank" rel="noopener noreferrer"><u>Deepgram</u></a>と提携し、Cloudflareのインフラ上でホストされているWorkers AIに最新かつ最高のモデルを提供します。LeonardoとDeepgramはどちらも、Workers AIのインフラストラクチャに適した優れた速度比のモデルを提供しています。まずは、これらの優れたパートナーから始めますが、他のパートナーモデルにもカタログを拡大していく予定です。</p>
+	<p>Workers AIでこれらのモデルを使用する利点は、スタンドアロンの推論サービスだけでなく、AIを中心としたアプリケーション全体を構築できる開発者向け製品のスイート全体を利用できることにあります。画像生成プラットフォームを構築している場合、Workersで<a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">アプリケーションロジックをホスト</a>し、Workers AIで画像を生成し、R2で保存し、Imagesでメディアの配信と変換を行うこともできます。リアルタイムの音声エージェントを構築する場合、Workersを介したWebRTCとWebSocketのサポート、Workers AIを介した音声テキスト入力、テキスト入力音声のサポート、Workers AIを介したターン検出モデル、Cloudflare Realtimeを介したオーケストレーションレイヤーを提供します。全体として、Cloudflareだけが持つ優れていると思われるユースケースを検討し、開発者ツールがそれをバックアップすることで、包括的な開発者プラットフォーム上で最高のAIアプリケーションを構築できるようにしたいと考えています。 .</p>
+	<div class="flex anchor relative">
+		<h2 id="leonardo-models">Leonardo Models</h2>
+		<a href="https://blog.cloudflare.com/#leonardo-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.leonardo.ai" target="_blank" rel="noopener noreferrer"><u>Leonardo.Ai</u></a>は、独自のモデルをトレーニングし、顧客が生成メディアを作成できるようにプラットフォームをホストする生成AIメディアラボです。Workers AIチームはしばらくの間、Leonardoと協力し、同社の画像生成モデルのマジックを直接体験してきました。Leonardoの2つの画像生成モデルを導入できることを嬉しく思います：@cf/leonardo/phoenix-1.0と@cf/leonardo/lucid-origin。</p>
+	<blockquote>
+		<p><i>「当社は、ゲーム用のキャラクター画像の作成、Webサイトのパーソナライズされた画像の生成、その他さまざまな用途に、Cloudflareのお客様が当社の画像生成技術を拡張し、使用できる新しい手段をWorkersを通じて提供できることを嬉しく思います。 AIとCloudflare開発者プラットフォーム」 -</i><a href="http://leonardo.ai" target="_blank" rel="noopener noreferrer"><i><u> Leonardo.Ai</u></i></a><i> 、CTO、</i><i><b> Peter Runham氏</b></i></p>
+	</blockquote>
+	<p>Phoenixモデルは、Leonardoによって一から訓練され、テキストのレンダリングやプロンプトの一貫性などに優れています。全画像生成リクエストには、1024x1024の画像で25ステップ、エンドツーエンドで4.89秒かかりました。</p>
+	<pre class="language-shell"><code class="language-shell">curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/leonardo/phoenix-1.0 \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "A 1950s-style neon diner sign glowing at night that reads '\''OPEN 24 HOURS'\'' with chrome details and vintage typography.",
+    "width":1024,
+    "height":1024,
+    "steps": 25,
+    "seed":1,
+    "guidance": 4,
+    "negative_prompt": "bad image, low quality, signature, overexposed, jpeg artifacts, undefined, unclear, Noisy, grainy, oversaturated, overcontrasted"
+}'
+</code></pre>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1q7ndHYrwLQqqAdX6kGEkl/96ece588cf82691fa8e8d11ece382672/BLOG-2903_2.png" alt="BLOG-2903 2" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<p>Lucid Originモデルは、Leonardoのモデルファミリーに最近追加されたもので、写真現実的なimagesを生成するのが得意です。この画像は、25ステップのエンドツーエンドで、1024x1024の画像サイズを生成するのに4.38秒かかりました。</p>
+	<pre class="language-shell"><code class="language-shell">curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/leonardo/lucid-origin \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "prompt": "A 1950s-style neon diner sign glowing at night that reads '\''OPEN 24 HOURS'\'' with chrome details and vintage typography.",
+    "width":1024,
+    "height":1024,
+    "steps": 25,
+    "seed":1,
+    "guidance": 4,
+    "negative_prompt": "bad image, low quality, signature, overexposed, jpeg artifacts, undefined, unclear, Noisy, grainy, oversaturated, overcontrasted"
+}'
+</code></pre>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26VKWD8ua6Pe2awQWRnF7n/bb42c9612b08269af4ef38df39a2ed30/BLOG-2903_3.png" alt="BLOG-2903 3" class="kg-image" width="1024" height="1024" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="deepgram-models">Deepgramモデル</h2>
+		<a href="https://blog.cloudflare.com/#deepgram-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Deepgramは、独自の音声モデルを開発する音声AI企業で、ユーザーが自然な人間のインターフェースである音声を通じてAIと対話できるようにしています。音声は、テキストよりも高い帯域幅を伝送し、ペーシング、イントネーションなどの他の音声信号を持っているため、エキサイティングなインターフェイスです。私たちがプラットフォームに導入しているDeepgramモデルは、非常に高速な音声からテキストへの推論、およびテキストから音声への推論を実行する音声モデルです。Workers AIインフラストラクチャと組み合わせることで、これらのモデルは、お客様が低遅延の音声エージェントなどを構築できるようにする、当社独自のインフラストラクチャを紹介します。</p>
+	<blockquote>
+		<p><i>「CloudflareのWorkers AI上で音声モデルをホストすることにより、開発者は超低遅延でリアルタイムの表現力豊かな音声エージェントを作成できるようになりました。Cloudflareのグローバルネットワークにより、AIコンピューティングをあらゆる場所のユーザーに近づけることができ、お客様は複雑なインフラストラクチャを気にすることなく、超高速の会話型AIエクスペリエンスを提供できるようになりました。」-</i><i><b> Adam</b></i><i> Syp関係者、Deepgram、CTO</i></p>
+	</blockquote>
+	<p><a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/nova-3</u></a>は、高い精度で音声を迅速に文字起こしできる音声テキストモデルです。<a href="https://developers.cloudflare.com/workers-ai/models/aura-1" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/aura-1</u></a>は、文脈を認識するテキスト音声モデルで、入力されたテキストに基づいて自然なペースと表現力を適用することができます。新しいAura 2モデルは、まもなくWorkers AIで利用可能になります。また、バイナリmp3ファイルのWorkers AIへの送信エクスペリエンスも改善したので、これまで必要だったようにUint8配列に変換する必要はありません。Realtimeの発表（近日公開予定！）とともに、これらの音声モデルは、お客様がCloudflare上で直接音声エージェントを構築できるようにするための鍵となります。</p>
+	<p>AIバインディングの場合、Nova 3の音声からテキストへのモデルの呼び出しは次のようになります：</p>
+	<pre class="language-javascript"><code class="language-javascript">const URL = "https://www.some-website.com/audio.mp3";
+const mp3 = await fetch(URL);
+ 
+const res = await env.AI.run("@cf/deepgram/nova-3", {
+    "audio": {
+      body: mp3.body,
+      contentType: "audio/mpeg"
+    },
+    "detect_language": true
+  });
+</code></pre>
+	<p>REST APIの場合は、次のようになります。</p>
+	<pre class="language-shell"><code class="language-shell">curl --request POST \
+  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true' \
+  --header 'Authorization: Bearer {TOKEN}' \
+  --header 'Content-Type: audio/mpeg' \
+  --data-binary @/path/to/audio.mp3</code></pre>
+	<p>また、Deepgramモデルに WebSocket サポートを追加しました。これにより、推論サーバーへの接続をライブのまま維持して、双方向の入出力に使用することができます。WebSocketサポートでNovaモデルを使用する場合は、<a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>を参照してください。</p>
+	<p>これらの要素が連携することで、次のことが可能になります。</p>
+	<ol>
+		<li>
+			<p><b>Cloudflare Realtime</b>であらゆるWebRTCソースからの音声をキャプチャ</p>
+		</li>
+		<li>
+			<p>WebSocket経由で処理<b>パイプ</b>ラインにパイプライン接続</p>
+		</li>
+		<li>
+			<p>Workers AI上で音声MLモデルDeepgramを実行して<b>文字起こし</b></p>
+		</li>
+		<li>
+			<p>Workers AIでホストまたは<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>経由でプロキシされたモデルを通じて、選択したLLMで<b>処理</b></p>
+		</li>
+		<li>
+			<p><b>リアルタイムエージェント</b>ですべてをオーケストレーション</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="try-these-models-out-today">これらのモデルを今すぐお試しください</h2>
+		<a href="https://blog.cloudflare.com/#try-these-models-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AIで利用可能な最新のパートナーモデルの詳細、価格、利用開始方法については、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>をご確認ください。</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/ad1638b8cba7dc17a2b2000206a5f990/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fad1638b8cba7dc17a2b2000206a5f990%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

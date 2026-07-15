@@ -1,0 +1,193 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/league-of-entropy">English</a>, <a href="https://blog.cloudflare.com/fr-fr/league-of-entropy">Français</a>, <a href="https://blog.cloudflare.com/de-de/league-of-entropy">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/league-of-entropy">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/league-of-entropy">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/T3zJDy9jm4WLb7ULLNFDF/3e28481b78814b46b0a3cdf8d25c2e54/league-of-entropy.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Para iniciar <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">la Criptosemana 2019</a>, nos complace anunciar una nueva solución a un antiguo problema en la criptografía. Para entender mejor la parte técnica de este problema, consulte la próxima <a href="https://blog.cloudflare.com/inside-the-entropy">publicación</a> para profundizar más sobre el tema.</p>
+	<p>Todo, desde la criptografía hasta una gran cantidad de dinero ganado en la lotería y la <a href="https://arxiv.org/pdf/1611.02176.pdf" target="_blank" rel="noopener noreferrer">mecánica cuántica</a>, requiere algún tipo de aleatoriedad. Pero, ¿qué significa exactamente que un número se genere de manera aleatoria y de dónde proviene la aleatoriedad?</p>
+	<p>La generación de aleatoriedad se remonta a tres mil años atrás, cuando en la edad antigua se hacían rodar “los dados” para determinar el destino. Piense en las loterías -- parece algo simple, ¿verdad? Todos compran sus boletos, eligen seis números y esperan a que una persona encargada los saque al azar de un cesto. Parece una solución infalible. Y luego, en 1980, el presentador del sorteo de la lotería de Pensilvania fue <a href="https://www.nytimes.com/1981/05/21/us/2-guilty-of-bid-to-rig-pennsylvania-lottery.html" target="_blank" rel="noopener noreferrer">arrestado por usar bolas con mayor peso</a> para elegir el número ganador. Esta lección, junto con la necesidad de contar con otros sistemas complejos para generar números aleatorios, impulsó la creación de generadores de números aleatorios.</p>
+	<p>Al igual que un juego de lotería selecciona números aleatorios de manera impredecible, un generador de números aleatorios es un dispositivo o software que se encarga de generar secuencias de números de una manera impredecible. A medida que aumenta la necesidad de aleatoriedad, también aumenta la necesidad de una generación constante de números sustancialmente grandes e impredecibles. Esta es la razón por la cual las organizaciones desarrollaron <a href="https://csrc.nist.gov/Projects/Interoperable-Randomness-Beacons" target="_blank" rel="noopener noreferrer">faros de aleatoriedad públicamente disponibles</a> -- servidores que generan secuencias de 512 bits completamente impredecibles (números de aproximadamente 155 dígitos) a intervalos regulares.</p>
+	<p>Ahora bien, usted podría pensar que el uso de un faro de aleatoriedad para procesos de generación aleatoria, como los que se necesitan para la selección de la lotería, podría hacer que el proceso fuera resiliente ante la manipulación de un adversario, pero no es el caso. Se ha explotado la aleatoriedad de una sola fuente para generar resultados sesgados.</p>
+	<p>En la actualidad, los faros de aleatoriedad generan números para loterías y auditorías electorales, y ambos afectan tanto las vidas como las fortunas de millones de personas. Lamentablemente, la explotación de un único punto de origen de estos faros ha dado lugar a resultados fraudulentos que beneficiaron a un <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank" rel="noopener noreferrer">infiltrado corrupto</a>. Para impedir la explotación, Cloudflare y otros proveedores de faros de aleatoriedad han aunado esfuerzos para ofrecer a los usuarios un quórum de faros aleatorios descentralizados. Después de todo, ¡ocho faros distribuidos de manera independiente a nivel global pueden ser mucho más confiables que uno!</p>
+	<p>Nos complace presentarle ....</p>
+	<p>LA LIGA .... DE LA.... ¡¡¡¡¡¡ENTROPÍA!!!!!!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3u6pMN9g1KQu3ZvwMTwkmb/d90c484cfb789a728cd8fdcc0f002324/image8-1.png" alt="" class="kg-image" width="1762" height="1047" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-randomness-beacon"><b>¿Qué es un faro de aleatoriedad?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-randomness-beacon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un faro de aleatoriedad es un servicio público que proporciona números aleatorios impredecibles a intervalos regulares.</p>
+	<p><a href="https://github.com/dedis/drand" target="_blank" rel="noopener noreferrer"><i>drand</i></a> (se pronuncia dee-rand) es un faro de <i>aleatoriedad distribuida</i> que fue desarrollado por <a href="https://twitter.com/nikkolasg1" target="_blank" rel="noopener noreferrer">Nicolas Gailly</a>, con la ayuda de <a href="https://twitter.com/daeinar" target="_blank" rel="noopener noreferrer">Philipp Jovanovic</a> y <a href="https://github.com/PizzaWhisperer" target="_blank" rel="noopener noreferrer">Mathilde Raynal</a>. El proyecto <i>drand</i> se originó a partir del trabajo de investigación<a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank" rel="noopener noreferrer">Scalable Bias-Resistant Distributed Randomness</a> publicado en <a href="https://ieeexplore.ieee.org/abstract/document/7958592" target="_blank" rel="noopener noreferrer">2017 IEEE Symposium on Security and Privacy</a> por <a href="http://ewa.syta.us" target="_blank" rel="noopener noreferrer">Ewa Syta</a>, <a href="https://philipp.jovanovic.io" target="_blank" rel="noopener noreferrer">Philipp Jovanovic</a>,<a href="https://lefteriskk.github.io" target="_blank" rel="noopener noreferrer">Eleftherios Kokoris Kogias</a>, <a href="https://github.com/nikkolasg" target="_blank" rel="noopener noreferrer">Nicolas Gailly</a>, <a href="https://people.epfl.ch/linus.gasser" target="_blank" rel="noopener noreferrer">Linus Gasser</a>, <a href="https://ismailkhoffi.com" target="_blank" rel="noopener noreferrer">Ismail Khoffi</a>,<a href="http://www.cs.yale.edu/homes/fischer" target="_blank" rel="noopener noreferrer">Michael J. Fischer</a>, <a href="https://bford.info" target="_blank" rel="noopener noreferrer">Bryan Ford</a>, del <a href="https://dedis.epfl.ch" target="_blank" rel="noopener noreferrer">laboratorio de Sistemas decentralizados/distribuidos (DEDIS)</a> en <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer">EPFL</a>, <a href="https://www.yale.edu" target="_blank" rel="noopener noreferrer">Yale University</a>, y <a href="https://www.trincoll.edu" target="_blank" rel="noopener noreferrer">Trinity College Hartford</a>, con el apoyo de <a href="https://researchinstitute.io" target="_blank" rel="noopener noreferrer">Research Institute</a>.</p>
+	<p>Para cada ronda de generación de aleatoriedad, <i>drand</i> proporciona las siguientes propiedades, tal como se especifica en el <a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank" rel="noopener noreferrer">documento de investigación</a>:</p>
+	<ul>
+		<li>
+			<p>Disponibilidad: la generación de aleatoriedad distribuida se completa correctamente con una alta probabilidad.</p>
+		</li>
+		<li>
+			<p>Imprevisibilidad: ninguna parte conoce nada sobre el resultado aleatorio de la ronda actual, salvo con una probabilidad insignificante, hasta que un número suficiente de nodos <i>drand</i> muestra sus contribuciones en el protocolo de generación de aleatoriedad.</p>
+		</li>
+		<li>
+			<p>Imparcialidad: el resultado aleatorio representa un valor aleatorio imparcial y uniforme, con una probabilidad insignificante.</p>
+		</li>
+		<li>
+			<p>Verificabilidad: el resultado aleatorio es verificable por terceros con respecto a la clave pública colectiva que se calcula durante la configuración de <i>drand</i>. Esto sirve como certificación indeleble de que la serie de nodos <i>drand</i> documentada ejecutó el protocolo para generar el único resultado aleatorio, con una probabilidad insignificante.</p>
+		</li>
+	</ul>
+	<p><i>La entropía</i> mide la naturaleza impredecible de un número. Para la aleatoriedad, cuanta más entropía mejor, por lo tanto, de ahí viene nuestro nombre, la Liga de la Entropía.</p>
+	<p>Nuestros miembros fundadores aportan sus fuentes individuales de alta entropía para proporcionar un faro más aleatorio e impredecible para generar valores aleatorios verificables públicamente cada sesenta segundos. El hecho de que el faro <i>drand</i> esté descentralizado y que se haya creado con sistemas criptográficos rudimentarios apropiados y probablemente seguros, aumenta nuestro nivel de confianza de que cuenta con todas las propiedades mencionadas anteriormente.</p>
+	<p>Esta red global de servidores que generan aleatoriedad garantiza que incluso si algunos servidores están desconectados, el faro sigue generando nuevos números mediante los servidores que permanecen conectados. &nbsp;Incluso si uno o dos de los servidores o sus fuentes de entropía estuvieran comprometidos, el resto aún se asegurará de que la entropía producida de manera conjunta sea totalmente impredecible e imparcial.</p>
+	<p>¿Quién dirige exactamente este faro? Actualmente, La Liga de la Entropía es un consorcio formado por las siguientes organizaciones globales y colaboradores individuales: Cloudflare, el investigador de Protocol Labs Nicolas Gailly, la Universidad de Chile, la Escuela Politécnica Federal de Lausana (EPFL), Kudelski Security e investigadores de EPFL, Philipp Jovanovic y Ludovic Barman.</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-the-league-of-entropy"><b>Conoce la Liga de la Entropía</b></h3>
+		<a href="https://blog.cloudflare.com/#meet-the-league-of-entropy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BWt5ZDGMydRLWX7xttadU/47daf5fed2017f4359b6354938faca5d/image4-3.png" alt="" class="kg-image" width="1515" height="1710" loading="lazy">
+
+	</figure>
+	<p>LavaRand de Cloudflare: <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand</a> obtiene su alta entropía de la pared de lámparas de lava de Cloudflare en nuestra sede de San Francisco. El flujo impredecible de la “lava” dentro de las lámparas se utiliza para alimentar un generador de números pseudoaleatorios criptográficamente seguros (CSPRNG) que genera el valor aleatorio.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rPgrKMIvEhDQcA9mb96Xg/69c52f8b49ab3d5f4a75097db174491c/3R-uEem_pwlr_yfXEVJJiub0eiVTPEX01rBof0SB1xopcgbzgfOFsH4BLRXKfdnwqpAkXlJbBFG6PUQRBK-UJBqTEGIFKQxQaRaq-5FoZG8ny6WhkahwAMjSTD9X.png" alt="" class="kg-image" width="1150" height="874" loading="lazy">
+
+	</figure>
+	<p>URand de <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer">EPFL</a>: La potencia de URand proviene del generador de aleatoriedad local que se encuentra presente en cada computadora en /dev/urandom. El aporte de aleatoriedad se recopila a partir de ingresos como pulsaciones de teclado, clics del mouse, tráfico de red, etc. URand agrupa estos ingresos aleatorios para producir una secuencia continua de aleatoriedad.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2MG8iT5EJUNbvBMRnIs0jL/5e874cbd8522463cd841550a3ce6a735/image5-2.png" alt="" class="kg-image" width="1787" height="1711" loading="lazy">
+
+	</figure>
+	<p>Sismic Girl de <a href="https://random.uchile.cl/en" target="_blank" rel="noopener noreferrer">UChile</a>: Seismic Girl extrae una aleatoriedad superverificable de cinco fuentes consultadas cada minuto. Estas fuentes incluyen: mediciones sísmicas de temblores y terremotos en Chile; una transmisión desde una estación de radio local; una selección de publicaciones de Twitter; datos de la cadena de bloques Ethereum; y su propia tarjeta de RNG.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yqHoYjeD9Bc2rqw64Z0AI/2b2913dc2ffbcf95bca4c91e7b43db40/Sg4AYv1L_bjeQyXri7ksWM9w13hQrghD-seBI2ErHx_k4XL5Cm0f2xXZsvDRNEu3ZQCX0klZevk8Y6U3BdS_XU7AaC1VWYeL34ZSjSa1fZXKYg1I7AP6IaxkmAOH.png" alt="" class="kg-image" width="1600" height="1412" loading="lazy">
+
+	</figure>
+	<p>ChaChaRand de <a href="https://www.kudelskisecurity.com" target="_blank" rel="noopener noreferrer">Kudelski Security</a>: ChaChaRand utiliza un generador de números aleatorios criptográficos (CRNG) que se basa en el cifrador de flujo <a href="https://tools.ietf.org/html/rfc7539" target="_blank" rel="noopener noreferrer">ChaCha20.</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wjCZoEtdvwmp3n89CMvgM/7aaf481355bad193d251013c1b8466fc/image3-3.png" alt="" class="kg-image" width="1691" height="1655" loading="lazy">
+
+	</figure>
+	<p>InterplanetaryRand de <a href="https://protocol.ai" target="_blank" rel="noopener noreferrer">Protocol Labs</a>: InterplanetaryRand utiliza el poder de la entropía para garantizar la seguridad del protocolo en el espacio y el tiempo mediante el uso de ruido ambiental y el generador de números pseudoaleatorios (PRNG) de Linux, acompañado por la aleatoriedad de origen de la CPU (<a href="https://blog.cloudflare.com/ensuring-randomness-with-linuxs-random-number-generator">RdRand</a>).</p>
+	<p>Juntos, nuestros héroes se comprometen a salvar internet #savetheinternet al combinar su aleatoriedad para formar un faro de aleatoriedad distribuida a nivel global y verificable desde un punto de vista criptográfico.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oq8NHvjmXXlKoLJrhmDq9/63750368c5a8c280e05365de5789bef2/pTiFdLtxsabqbVpczCBKVT4dzbP9e9WxeU4lOPbiUIecOR5ER9QlRZG196PfYvJvF_Sbm-DTlUphCBWBMIOtqiTTKmTmRDumoCUlges8uEmNxJh75unUdnP2xobX.png" alt="" class="kg-image" width="1600" height="849" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="public-versus-private-randomness"><b>Aleatoriedad pública versus privada</b></h3>
+		<a href="https://blog.cloudflare.com/#public-versus-private-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Se necesitan diferentes tipos de aleatoriedad para los diferentes tipos de aplicaciones.</p>
+	<p>El truco para generar claves criptográficas seguras es usar números aleatorios grandes y generados de forma privada que nadie pueda predecir. Con faros de aleatoriedad que generen y anuncien públicamente números aleatorios, los usuarios NO deben utilizar el resultado de un faro de aleatoriedad para sus claves secretas, ya que estos números son accesibles para cualquier persona. Si un atacante puede adivinar el número aleatorio del que se deriva la clave criptográfica privada de un usuario, puede descifrar su sistema y su información confidencial. Esto simplemente significa que los números aleatorios generados por un faro público no son seguros para usar como claves de cifrado: no porque la aleatoriedad sea algo negativo, sino porque esta es pública.</p>
+	<p>Los clientes que utilizan el faro <i>drand</i> pueden solicitar una aleatoriedad privada de algunos o de todos los nodos <i>drand</i> si desean generar un valor aleatorio que no se anunciará públicamente. &nbsp;Para obtener más información sobre cómo hacerlo, consulte los documentos para desarrolladores en <a href="https://developers.cloudflare.com/randomness-beacon" target="_blank" rel="noopener noreferrer">developer docs</a>.</p>
+	<p>Por otro lado, la aleatoriedad pública a menudo es utilizada por los usuarios que requieren un valor de aleatoriedad que se supone que no es secreto, pero cuya generación debe ser transparente, razonable e imparcial. Esto resulta ideal para varios propósitos como juegos, loterías y auditoría electoral, donde el auditor y el público exigen transparencia en cuanto al momento, al modo y a la equidad con que se generó el valor aleatorio.</p>
+	<p>La Liga de la Entropía brinda aleatoriedad pública que cualquier usuario puede obtener de <a href="https://leagueofentropy.com" target="_blank" rel="noopener noreferrer">leagueofentropy.com</a>. Los usuarios podrán ver el valor de secuencia de 512 bits que se genera cada 60 segundos. ¿Por qué 60 segundos? No hay ninguna razón en particular. En teoría, la generación de aleatoriedad puede tener la rapidez que permite el hardware, pero no es necesaria para la mayoría de los casos prácticos. Los valores generados cada 60 segundos brindan a los usuarios 1440 valores aleatorios en un período de 24 horas.</p>
+	<p>* RECORDATORIO: ESTA ALEATORIEDAD ES PÚBLICA. NO LA UTILICE PARA CLAVES CRIPTOGRÁFICAS PRIVADAS*</p>
+	<div class="flex anchor relative">
+		<h3 id="why-does-public-randomness-matter"><b>¿Por qué es importante la aleatoriedad pública?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-does-public-randomness-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="election-auditing"><b>Auditoría electoral</b></h4>
+		<a href="https://blog.cloudflare.com/#election-auditing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En Estados Unidos, después de la mayoría de las elecciones, se hace una auditoría para verificar que estas elecciones se llevaron a cabo de manera imparcial y transparente. Los sólidos sistemas de auditoría mejoran la confianza de los votantes, ya que los funcionarios cuentan con más herramientas para responder de manera efectiva ante denuncias de fraude y para detectar fallas en el sistema.</p>
+	<p>Actualmente, la mayoría de los votos y distritos electorales son elegidos al azar por los funcionarios electorales. Este método es potencialmente vulnerable a la imparcialidad de un infiltrado corrupto que podría seleccionar ciertos distritos para presentar un resultado favorito. Incluso en una situación en la que cada distrito electoral haya sido manipulado, mediante el uso de un faro sólido, distribuido y, lo que es más importante, <i>impredecible e imparcial,</i> los auditores electorales pueden confiar en que una pequeña muestra de distritos son suficientes para una auditoría, siempre y cuando un atacante no pueda predecir la selección del distrito.</p>
+	<p>En Chile, quienes trabajan en encuestas electorales se seleccionan al azar de un grupo de votantes elegibles. El <a href="https://random.uchile.cl/en" target="_blank" rel="noopener noreferrer">proyecto</a> Random UChile de la Universidad de Chile ha estado trabajando en un prototipo que utiliza su faro de aleatoriedad para este proceso. Alejandro Hevia, director de Random UChile, cree que para la auditoría electoral, la aleatoriedad pública es importante para la transparencia, y que la aleatoriedad distribuida permite que las personas confíen en la improbabilidad de que <i>múltiples</i> contribuyentes al faro se confabulen, en lugar de depositar la confianza en una sola entidad.</p>
+	<div class="flex anchor relative">
+		<h4 id="lotteries"><b>Loterías</b></h4>
+		<a href="https://blog.cloudflare.com/#lotteries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>De 2005 a 2014, el director de seguridad de la información de la Asociación de Loterías Multiestatales, Eddie Tipton, <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank" rel="noopener noreferrer">manipuló un generador de números aleatorios</a> y ¡ganó la lotería seis veces!</p>
+	<p>Tipton pudo predecir los números ganadores al omitir el proceso de propagación aleatorio estándar. Pudo ingresar en la función del código generador de números aleatorios que controlaba la fecha, el día de la semana y la hora. Si estas tres variables no se alineaban, el generador de números aleatorios utilizaba material radiactivo y un contador Geiger para generar una propagación aleatoria. Si las variables se alineaban como se había programado de manera encubierta, lo que generalmente solo sucedía una vez al año, entonces generaría la propagación usando una fórmula de 7 variables que ingresaba en un <a href="https://en.wikipedia.org/wiki/Mersenne_Twister" target="_blank" rel="noopener noreferrer">Mersenne Twister</a>, un generador de números <i>psuedoaleatorios</i>.</p>
+	<p>Tipton conocía estas 7 variables. Conocía el pequeño grupo de números que podrían ser el valor original. Este conocimiento le permitió predecir los resultados de Mersenne Twister. Con un faro de aleatoriedad distribuida, este fraude puede ser sustancialmente más difícil de cometer, e incluso casi imposible.</p>
+	<p>Rob Sand, exfiscal general adjunto de Iowa y actual auditor del estado de Iowa que procesó los casos de Tipton, también defiende activamente la mejora de los controles. Él dijo:</p>
+	<p><i>“No hay excusa para que una industria que recauda $80 mil millones en concepto de ingresos anuales no utilice los medios más sofisticados y verdaderamente aleatorios para garantizar la integridad”.</i></p>
+	<div class="flex anchor relative">
+		<h4 id="distributed-ledger-platforms"><b>Plataformas de contabilidad distribuidas</b></h4>
+		<a href="https://blog.cloudflare.com/#distributed-ledger-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hGB9Ryb87DWFPSKjFCiQQ/5bcdf5446f0344d2c0a123226dba867c/IzxDdb91VENIgVK05HqMqA6u2mwL-pMx3GLBdxJQjCeaPSD1bGTjE3mnOyInEOgq0lyovRBghGCcDbPpWSPO4ToT2tR4aftwcLdQNVwCKn3Lghh2FkK8UbEkC63J.png" alt="" class="kg-image" width="1600" height="1360" loading="lazy">
+
+	</figure>
+	<p>En muchas plataformas de computación distribuida para cadenas de bloques y criptomonedas, como <a href="https://en.wikipedia.org/wiki/Ethereum" target="_blank" rel="noopener noreferrer">Ethereum</a>, se suele necesitar una selección aleatoria en la capa de la aplicación. Una solución para evitar imparcialidades en una selección aleatoria de este tipo es utilizar un faro de aleatoriedad distribuida como <i>drand</i> para generar el valor aleatorio. Justin Drake, investigador en <a href="https://www.ethereum.org" target="_blank" rel="noopener noreferrer">Ethereum Foundation</a>, cree que la “aleatoriedad de una federación de tipo <i>drand</i> podría ser una coincidencia particularmente buena para aplicaciones descentralizadas en tiempo real en Ethereum, como los juegos en vivo y los juegos de azar”. Esto se debe a la posibilidad de ofrecer una aleatoriedad de latencia ultrabaja que se aplica a una amplia gama de aplicaciones en las que se requiere una aleatoriedad pública.</p>
+	<div class="flex anchor relative">
+		<h3 id="lets-get-you-on-drand"><b>¡Le enseñaremos qué es un</b> <b><i>drand</i></b><b>!</b></h3>
+		<a href="https://blog.cloudflare.com/#lets-get-you-on-drand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45QOeg172UTQopTpSz4urP/4dadd599bf2c2c1b3a447de62174eca1/30p6dmRd2omn-YRzrY7oPmYEVUwRFOo7izqymD6xvYQ9txl6hzOwachb_AkrHilkBKEr2kZu_lCGSXhJQrubJ_q1gPbf-NYu4V3o98cvIfa_bq2Ug1MLk6PrSysL.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
+
+	</figure>
+	<p>Para obtener más información sobre la Liga de la Entropía y cómo utilizar el faro de aleatoriedad distribuida, visite <a href="https://leagueofentropy.com" target="_blank" rel="noopener noreferrer">https://leagueofentropy.com</a>. El sitio web muestra periódicamente la aleatoriedad generada por la red, e incluso se pueden ver los valores generados anteriormente. ¡Adelante, pruébelo!</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-join-the-league"><b>Cómo unirse a la liga:</b></h3>
+		<a href="https://blog.cloudflare.com/#how-to-join-the-league" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>¿Quiere unirse a la liga? ¡No tenemos un sistema de exclusividad!</p>
+	<p>Si usted es una organización o una persona que está interesada en colaborar en el faro <i>drand</i>, consulte los documentos para desarrolladores en <a href="https://developers.cloudflare.com/randomness-beacon" target="_blank" rel="noopener noreferrer">developer docs</a> para obtener más información sobre los requisitos necesarios para configurar un servidor y unirse al grupo actual. En este momento, <i>drand</i> está en su fase de lanzamiento beta y debe enviar una solicitud de aprobación a <a href="https://blog.cloudflare.com/#">leagueofentropy@googlegroups.com</a> para obtener la aprobación de servidor contribuyente.</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-into-the-future"><b>Perspectiva para el futuro</b></h3>
+		<a href="https://blog.cloudflare.com/#looking-into-the-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Solamente tendría sentido que la internet del futuro exija faros de aleatoriedad impredecibles. La Liga de la Entropía ahora está creando las bases para que los sistemas futuros aprovechen una aleatoriedad pública fiable. Nuestro objetivo es mejorar la confianza del usuario y proporcionar un único centro para satisfacer todas sus necesidades de entropía pública. ¡Únase a nosotros!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5u1TlHjajsOzmkNeIqsGoH/b881384074d8b079c0234550377f87aa/image2-4.png" alt="" class="kg-image" width="1999" height="1465" loading="lazy">
+
+	</figure>
+</div>

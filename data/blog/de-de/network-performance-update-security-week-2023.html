@@ -1,0 +1,509 @@
+<div class="mb2 gray5">Lesezeit: 8&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">English</a>, <a href="https://blog.cloudflare.com/fr-fr/network-performance-update-security-week-2023">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/network-performance-update-security-week-2023">日本語</a>, <a href="https://blog.cloudflare.com/es-es/network-performance-update-security-week-2023">Español</a>, <a href="https://blog.cloudflare.com/lv-lv/network-performance-update-security-week-2023"></a>, <a href="https://blog.cloudflare.com/et-ee/network-performance-update-security-week-2023"></a>, <a href="https://blog.cloudflare.com/lt-lt/network-performance-update-security-week-2023"></a>, und <a href="https://blog.cloudflare.com/zh-cn/network-performance-update-security-week-2023">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lV6M62bahcs4SH48pIsK8/ef28f2fcf6d693644e094de60999f7c6/network-performance-update-security-week-2023.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Während jeder Innovation Week vergleichen wir die Performance unseres Netzwerks mit der unserer Wettbewerber. In den vergangenen Wochen haben wir das Augenmerk vor allem darauf gerichtet, wie viel schneller wir im Vergleich zu <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer">Reverse-Proxy-Lösungen</a> wie der von Akamai sind – oder zu Plattformen wie Fastly und AWS, die Serverless-Computing anbieten, das sich mit dem unserer <a href="https://blog.cloudflare.com/de-de/welcome-to-the-supercloud-and-developer-week-2022-de-de">Supercloud</a> vergleichen lässt. Diese Woche möchten wir ein Update dazu liefern, wie wir im Vergleich zu anderen Reserve-Proxy-Diensten abschneiden und wie sich unsere Produkte für Anwendungssicherheit gegenüber Zscaler und Netskope schlagen. Es geht um Lösungen, die Teil unserer Zero Trust-Plattform sind. Diese tragen dazu bei, Anwendungen und Nutzererfahrungen im öffentlichen Internet abzusichern, während unser Reverse-Proxy Ihre Websites vor externen Nutzern schützt.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55TdGvLzWIBgOcEtkpsMso/129826342df03d81ea5748071145665d/image6-12.png" alt="Cloudflare Access is the fastest Zero Trust proxy" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Zusätzlich zu einem <a href="https://blog.cloudflare.com/de-de/network-performance-update-cio-edition-de-de">früheren Blogbeitrag dazu, wie sich unsere Zero Trust-Plattform im Vergleich zu Zscaler schlägt</a>, haben wir <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">in der Vergangenheit bereits umfangreiche Netzwerk-Benchmarking-Ergebnisse für Reverse -Proxys aus 3.000 Netzwerken der letzten Meile auf der ganzen Welt veröffentlicht</a> . Es ist schon einige Zeit her, dass wir Ihnen unsere Fortschritte auf dem Weg zur Nummer 1 in jedem Netzwerk der letzten Meile präsentiert haben. Wir möchten diese Daten nun veröffentlichen und noch einmal auf unsere Testreihe zurückkommen, bei der wir Cloudflare Access mit Zscaler Private Access und Netskope Private Access verglichen haben. Bei unseren allgemeinen Netzwerktests ist Cloudflare die Nummer 1 in 47 % der 3.000 am häufigsten gemeldeten Netzwerke. Bei unseren Tests bezüglich Anwendungssicherheit ist Cloudflare 50 % schneller als Zscaler und 75 % schneller als Netskope.</p>
+	<p>In diesem Blogbeitrag wird dargelegt, warum die Performance für unsere Produkte von Bedeutung ist. Wir werden einen tiefen Einblick in die Messungen geben, um zu zeigen, dass wir schneller sind. Außerdem erläutern wir, wie die Performance für jedes Produkt ermittelt wurde.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-does-performance-matter">Warum ist die Performance wichtig?</h3>
+		<a href="https://blog.cloudflare.com/#why-does-performance-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben dies in unserem <a href="https://blog.cloudflare.com/de-de/network-performance-update-cio-edition-de-de">jüngsten Blogbeitrag</a> bereits angesprochen, aber die Performance ist von Bedeutung, weil sie sich auf die Nutzererfahrungen Ihrer Mitarbeitenden und deren Fähigkeit zur Erledigung ihrer Aufgaben auswirkt. Ob es sich um den Zugriff auf Dienste über Produkte zur Zugriffskontrolle, die Verbindung mit dem öffentlichen Internet über ein Secure Web Gateway oder den Schutz vor risikobehafteten externen Websites mittels Remote-Browserisolierung handelt – all dies muss reibungslos funktionieren.</p>
+	<p>Eine kurze Zusammenfassung: Nehmen wir an, Bob von der Acme Corporation stellt für seine Arbeit von Johannesburg aus eine Verbindung zu Slack oder Zoom her. Befindet sich das Secure Web Gateway von Acme weit entfernt von Bob in London, kann es sein, dass Bobs Datenverkehr von Johannesburg nach London und dann zurück nach Johannesburg geleitet wird, bis er sein E-Mail-Postfach erreicht. Wenn Bob versucht, einen Anruf über Slack oder Zoom zu tätigen, könnte das für ihn das Versenden und Empfangen von E-Mails extrem verlangsamen. Tatsächlich ist für eine optimale Performance laut Zoom und Slack eine geringe Latenz empfehlenswert. Der zusätzliche Hop, den Bob über sein Gateway nehmen muss, könnte den Durchsatz verringern und die Latenz steigern, was sein Nutzererlebnis beeinträchtigen würde.</p>
+	<p>Wenn diese Produkte langsam arbeiten oder Nutzererfahrungen beeinträchtigt werden, könnte wie bereits besprochen Schlimmeres passieren, als dass sich die Nutzer beschweren: Sie könnten Wege finden, die Produkte auszuschalten oder zu umgehen, was das Unternehmen einer Gefahr aussetzt. Zero Trust-Produkte sind völlig nutzlos, wenn niemand sie verwendet, weil sie zu langsam sind. Die Schnelligkeit von Zero Trust-Lösungen ist entscheidend für ihre Effektivität: Mitarbeitende werden sie nicht abschalten und sich selbst einem Risiko aussetzen wollen, wenn sie ihr Vorhandensein praktisch nicht bemerken.</p>
+	<p>Ähnlich wie Zscaler übertrifft Netskope zwar womöglich viele ältere – um nicht zu sagen: veraltete – Lösungen, der Anbieter kann sich aber trotzdem nicht mit einem hochleistungsfähigen und optimierten Netzwerk wie dem von Cloudflare messen. Wir haben alle unsere Zero Trust-Produkte im Test gegen die von Netskope antreten lassen und beziehen auch Zscaler ein, um zu demonstrieren, wie diese Lösung gegenüber denn anderen abschneidet. Nun gehen wir genauer auf die Zahlen ein, um darzustellen, wie und warum wir bei einem kritischen Zero Trust-Szenario eine höhere Geschwindigkeit erreichen. Dabei stellen wir Cloudflare Access, Zscaler Private Access und Netskope Private Access einander gegenüber.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-access-the-fastest-zero-trust-proxy">Cloudflare Access: der schnellste Zero Trust-Proxy</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-the-fastest-zero-trust-proxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Zugriffskontrolle muss für den Nutzer nahtlos und transparent erfolgen: Das beste Kompliment für eine Zero Trust-Lösung ist, wenn die Mitarbeitenden ihr Vorhandensein kaum bemerken. Mit diesen Diensten können Nutzer Authentifizierungsdaten im Netzwerk des Anbieters zwischenspeichern. So werden der sichere und schnelle Anwendungszugriff sowie die gewünschte reibungslose Nutzererfahrung gewährleistet. Ein Netzwerk, das die Anzahl der erforderlichen Logins minimiert und gleichzeitig die Latenz der Anwendungsanfragen senkt, trägt zur Aufrechterhaltung eines schnellen Interneterlebnisses bei.</p>
+	<p>Cloudflare Access ist 75 % schneller als Netskope und 50 % schneller als Zscaler. Somit gewährleistet unsere Lösung standortunabhängig weltweit ein schnelles und sicheres Anwendungserlebnis:</p>
+	<p>Wir haben den Anwendungszugriff über Cloudflare, Zscaler und Netskope von 300 verschiedenen Standorten auf der ganzen Welt aus gemessen, die sich mit sechs verschiedenen Anwendungsservern in Hongkong, Toronto, Johannesburg, São Paulo, Phoenix und der Schweiz verbinden. An jedem dieser Standorte war die Reaktionszeit von Cloudflare im 95. Perzentil kürzer als die von Zscaler und Netskope. Werfen wir einen Blick auf die Daten, wenn die Applikation in Toronto gehostet wird – einem Gebiet, in dem Zscaler und Netskope gut abschneiden sollten, da es sich um eine stark vernetzte Region handelt, nämlich Nordamerika.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/395y3xqEmEc1esGtwPddNw/d69cdfcfa0e12568a1bf6f2b57a7a0e7/pasted-image-0-10.png" alt="" class="kg-image" width="1600" height="792" loading="lazy">
+
+	</figure>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FEMU2tMrWq2Qps7mlEVTt/12311176e84fbeb5fa392503510dc6a9/pasted-image-0--1--8.png" alt="" class="kg-image" width="1330" height="1442" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Response time (95th Percentile) - Toronto</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th Percentile Response (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,182</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,071</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6,072</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>ZT-Zugriff – Reaktionszeit (95. Perzentil) – Toronto</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RonjCNZLQDUTetXsKJ0q1/a07f845d76e2ab71907216a51954aeaf/pasted-image-0--2--5.png" alt="" class="kg-image" width="1362" height="1462" loading="lazy">
+
+	</figure>
+	<p>Reaktionszeit im 95. Perzentil (ms)</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Response time (95th Percentile) - South America</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th Percentile Response (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,961</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9,271</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8,223</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Connect time (95th Percentile) - South America</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th Percentile Connect (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">369</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,753</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,160</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>2.182</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46vdh3YktcfPIZHE7Bhgzn/6fdf8b195dfcbf8b7461484634af41d5/pasted-image-0--3--5.png" alt="" class="kg-image" width="1600" height="752" loading="lazy">
+
+	</figure>
+	<p>Zscaler</p>
+	<p>4.071</p>
+	<p>Netskope</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Response Time (95th Percentile) - Toronto</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New Sessions (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Existing Sessions (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,276</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,022</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,415</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,797</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,741</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,822</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>6.072</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Response Time (95th Percentile) - Hong Kong</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New Sessions (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Existing Sessions (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,582</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,075</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,956</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,617</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,139</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,902</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare sticht besonders in Regionen mit vielfältigeren Konnektivitätsoptionen wie Südamerika oder dem Asien-Pazifik-Raum heraus, wo für Zscaler der Vergleich mit Netskope positiver ausfällt als der mit Cloudflare:</p>
+	<p>Betrachtet man die lokal gehosteten Anwendungsserver in Südamerika, erweist sich Cloudflare als herausragend:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>ZT-Zugriff – Reaktionszeit (95. Perzentil) – Südamerika</p>
+	<p>Reaktionszeit im 95. Perzentil (ms)</p>
+	<p>Cloudflare</p>
+	<p>2.961</p>
+	<p>Zscaler</p>
+	<p>9.271</p>
+	<p>Netskope</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5T9VF91tGgsZqGP8e6Oak8/b2f569f2fdc3aeda8213ca9b14eedf2e/pasted-image-0--4--4.png" alt="" class="kg-image" width="1600" height="694" loading="lazy">
+
+	</figure>
+	<p>8.223</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YiP64E2kEY9i3V7baEgTC/ed9e09ea007807b3fea8061198ef3a78/pasted-image-0--5--2.png" alt="" class="kg-image" width="1600" height="701" loading="lazy">
+
+	</figure>
+	<p>Hier glänzt das Netzwerk von Cloudflare, das es uns ermöglicht, Verbindungen in der Nähe der Nutzer anzunehmen. Deutlich wird dies an den Verbindungszeiten in Südamerika:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pnpGlJdpxeTIoU6nc05Qy/d5e3007c4c29731b2ca60a22928c8014/pasted-image-0--6--2.png" alt="" class="kg-image" width="1600" height="816" loading="lazy">
+
+	</figure>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kwJ7AU0PYqaHguQDjel2L/f5fe850bbb545041ca2ce49102706908/pasted-image-0--7--4.png" alt="" class="kg-image" width="1600" height="799" loading="lazy">
+
+	</figure>
+	<p>ZT-Zugriff – Verbindungszeit (95. Perzentil) – Südamerika</p>
+	<p>Verbindung im 95. Perzentil (ms)</p>
+	<p>Cloudflare</p>
+	<p>369</p>
+	<p>Zscaler</p>
+	<p>1.753</p>
+	<p>Netskope</p>
+	<p>1.160</p>
+	<p>Durch das Cloudflare-Netzwerk setzen wir uns hier von anderen ab, weil wir in der Lage sind, Nutzer schneller in unser Netzwerk einzubinden und weltweit die optimalen Routen zurück zum Anwendungshost zu ermitteln. Dank dieser besonderen Fähigkeit sind wir doppelt so schnell wie Zscaler und dreimal so schnell wie Netskope. Im Rahmen sämtlicher Tests ist die Verbindungszeit von Cloudflare bei allen 300 Testknoten durchgängig schneller.</p>
+	<p>In unserem <a href="https://blog.cloudflare.com/de-de/network-performance-update-cio-edition-de-de">letzten Blogbeitrag</a> haben wir uns mit zwei verschiedenen Szenarien beschäftigt, für die beim Vergleich zwischen Cloudflare und Zscaler gesonderte Messungen durchgeführt werden müssen. Beim ersten Szenario meldet sich ein Nutzer bei seiner Anwendung an, wofür er sich authentifizieren muss. In diesem Fall wird er vom Zero Trust-Zugriffsdienst erst für die Authentifizierung zu einer Anmeldeseite und – sofern diese gelingt – anschließend zu seiner Applikation weitergeleitet.</p>
+	<p>Dies wird als „neue Sitzung“ bezeichnet, da Authentifizierungsinformationen weder zwischengespeichert werden noch im Access-Netzwerk vorhanden sind. Das zweite Szenario ist eine „bestehende Sitzung“: Ein Nutzer wurde bereits authentifiziert und diese Authentifizierungsdaten können zwischengespeichert werden. Bei diesem Szenario erfolgt die Abwicklung in der Regel sehr viel schneller, weil zum Abschluss des Vorgangs keine zusätzliche Anfrage bei einem Identitätsanbieter erforderlich ist.</p>
+	<p>Wir messen diese Szenarien gerne getrennt, da wir bei der Betrachtung der Werte für das 95. Perzentil fast immer neue Sitzungen ansehen würden, wenn wir neue und bestehende Sitzungen zusammenfassen. Doch bei beiden Szenarien ist Cloudflare in jeder Region durchweg schneller. Nehmen wir eine in Toronto gehostete Anwendung in den Blick, bei der Nutzer, die auf unser Angebot zurückgreifen, die Verbindung sowohl im Rahmen von neuen als auch von bereits bestehenden Sitzungen schneller herstellen als mit Zscaler und Netskope.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>ZT-Zugriff – Reaktionszeit (95. Perzentil) – Toronto</p>
+	<p>Neue Sitzungen (ms)</p>
+	<p>Bestehende Sitzungen (ms)</p>
+	<p>Cloudflare</p>
+	<p>1.276</p>
+	<p>1.022</p>
+	<p>Zscaler</p>
+	<p>2.415</p>
+	<p>1.797</p>
+	<p>Netskope</p>
+	<p>5.741</p>
+	<p>1.822</p>
+	<p>Wie Sie sehen können, sind neue Sitzungen erwartungsgemäß langsamer, doch das Netzwerk und der optimierte Softwarestack von Cloudflare sorgen für eine gleichbleibend schnelle Nutzererfahrung. In Szenarien, in denen die Ende-zu-Ende-Konnektivität eine größere Herausforderung darstellen kann, hebt sich Cloudflare sogar noch mehr ab. Werfen wir nun einen Blick auf Nutzer in Asien, die eine Verbindung zu einer Applikation in Hongkong herstellen.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>ZT-Zugriff – Reaktionszeit (95. Perzentil) – Hongkong</p>
+	<p>Neue Sitzungen (ms)</p>
+	<p>Bestehende Sitzungen (ms)</p>
+	<p>Cloudflare</p>
+	<p>2.582</p>
+	<p>2.075</p>
+	<p>Zscaler</p>
+	<p>4.956</p>
+	<p>3.617</p>
+	<p>Netskope</p>
+	<p>5.139</p>
+	<p>3.902</p>
+	<p>Interessant ist hier, dass das Cloudflare-Netzwerk extrem leistungsoptimiert ist, Zscaler aber bei der Performance eher mit Netskope als mit Cloudflare vergleichbar ist. Netskope schneidet auch bei neuen Sitzungen schlecht ab, was darauf hindeutet, dass der Dienst des Anbieters nicht gut reagiert, wenn Nutzer neue Sitzungen aufbauen.</p>
+	<p>Wir möchten neue und bestehende Sitzungen getrennt voneinander betrachten, weil es für einen aussagekräftigen Vergleich wichtig ist, ähnliche Anfragepfade heranzuziehen. Wenn beispielsweise eine Anfrage über Zscaler in einer bestehenden Sitzung mit einer Anfrage über Cloudflare in einer neuen Sitzung gegenübergestellt wird, ist festzustellen, dass Cloudflare aufgrund der erforderlichen Authentifizierung viel langsamer ist als Zscaler. Daher haben wir bei der Beauftragung einer externen Stelle mit der Durchführung dieser Tests sichergestellt, dass dieser Aspekt berücksichtigt wurde.</p>
+	<p>Für diese Tests hat Cloudflare fünf Anwendungsinstanzen konfiguriert, die in Toronto, Los Angeles, São Paulo, Johannesburg und Hongkong gehostet werden. Dann nutzte Cloudflare 300 verschiedene Catchpoint-Knoten auf der ganzen Welt, um eine Browseranmeldung wie folgt zu simulieren:</p>
+	<ul>
+		<li>
+			<p>Über einen Browser, der von einer Catchpoint-Instanz nachgeahmt wird, verbindet sich der Nutzer mit der Anwendung – neue Sitzung</p>
+		</li>
+		<li>
+			<p>Der Nutzer authentifiziert sich gegenüber seinem Identitätsanbieter</p>
+		</li>
+		<li>
+			<p>Der Nutzer greift auf die Ressource zu</p>
+		</li>
+		<li>
+			<p>Der Nutzer aktualisiert die Browserseite und versucht, auf dieselbe Ressource zuzugreifen, jedoch mit bereits vorhandenen Anmeldedaten – bestehende Sitzung</p>
+		</li>
+	</ul>
+	<p>So können wir Cloudflare und alle anderen Produkte im Bereich Anwendungsperformance sowohl für neue als auch für bestehende Sitzungen vergleichen, und wie bereits erwähnt hat sich dabei gezeigt, dass wir schneller sind. Wie ebenfalls schon festgestellt, ist das zu einem großen Teil unserem Netzwerk und der Art und Weise zu verdanken, wie wir uns in der Nähe unserer Nutzer positionieren. Als Nächstes schauen wir uns an, wie Cloudflare gemessen an anderen großen Netzwerken abschneidet und wie wir dafür sorgen, dass wir in Ihrer Nähe sind.</p>
+	<div class="flex anchor relative">
+		<h3 id="network-effects-make-the-user-experience-better">Netzwerkeffekte verbessern die Nutzererfahrung</h3>
+		<a href="https://blog.cloudflare.com/#network-effects-make-the-user-experience-better" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eine größere Nähe zu den Nutzern verkürzt die Paketumlaufzeit (Round Trip Time – RTT) auf der letzten Meile. Wie wir im Zugriffsvergleich erörtert haben, verbessert eine kurze Paketumlaufzeit die Kundenperformance, da neue und bestehende Sitzungen keinen sonderlich weiten Weg zurücklegen müssen, um zum Zero Trust-Netzwerk von Cloudflare zu gelangen. Die Einbettung in diese Netzwerke der letzten Meile hilft uns, näher an unsere Nutzer heranzukommen. Das kommt nicht nur der Performance im Bereich Zero Trust, sondern auch im Bereich <a href="https://blog.cloudflare.com/network-performance-update-security-week">Web</a> und <a href="https://blog.cloudflare.com/network-performance-update-developer-week">Entwicklerarbeit</a> zugute, wie wir in früheren Blogbeiträgen bereits dargelegt haben.</p>
+	<p>Um die Netzwerkperformance zu quantifizieren, müssen wir genügend Daten aus der ganzen Welt über alle möglichen unterschiedlichen Netzwerke erhalten und uns mit anderen Anbietern vergleichen. Wir haben Real User Measurements (RUM) verwendet, um eine 100 KB große Datei von verschiedenen Anbietern abzurufen. Nutzer aus aller Welt berichten über die Performance verschiedener Anbieter. Je mehr Nutzer die Daten melden, desto höher ist die Signaltreue. Ziel ist es, ein genaues Bild davon zu erhalten, wo die verschiedenen Anbieter schneller sind und, was noch wichtiger ist, wo Cloudflare sich verbessern kann. Weitere Informationen zur Methodik finden Sie im ursprünglichen Blogbeitrag zur Speed Week 2021 <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">hier</a>.</p>
+	<p>Wir sind ständig dabei, der Frage nachzugehen, warum wir langsam waren – und uns dann zu verbessern. Die Herausforderungen, denen wir uns stellen mussten, waren bei jedem Netzwerk andere und haben eine Vielzahl verschiedener, im Internet weit verbreiteter Probleme aufgezeigt. Wir werden einen Überblick über einige der Maßnahmen geben, mit denen wir unsere Performance für unsere Nutzer verbessern.</p>
+	<p>Doch zunächst möchten wir Ihnen die Ergebnisse unserer Bemühungen seit der Developer Week 2022 vorstellen, als wir diese Zahlen das letzte Mal präsentiert haben. Unter den 3.000 größten Netzwerken der Welt (gemessen an der Zahl der beworbenen IPv4-Adressen) finden Sie hier eine Aufschlüsselung der Anzahl der Netzwerke, in denen jeder Anbieter die Nummer 1 bei der TCP-Verbindungszeit im 95. Perzentil ist. Dabei handelt es sich um die Zeit, die ein Nutzer in einem bestimmten Netzwerk benötigt, um eine Verbindung zum Anbieter herzustellen:</p>
+	<p>So sehen diese Zahlen in der dieswöchigen Security Week 2023 aus:</p>
+	<p>Wie Sie sehen können, haben wir unseren Vorsprung bei der Geschwindigkeit in mehr Netzwerken ausgebaut, während andere Anbieter, die zuvor schneller waren, etwa Akamai und Fastly, ihren Vorsprung eingebüßt haben. Die Auswirkungen sehen wir auf der Weltkarte. So sah die Weltkarte in der Developer Week 2022 aus:</p>
+	<p>Und so sieht sie jetzt, während der Security Week 2023, aus:</p>
+	<p>Daran zeigt sich, dass Cloudflare in Brasilien, in vielen Ländern Afrikas, darunter Südafrika, Äthiopien und Nigeria, sowie in Asien (Indonesien) und in Europa (Norwegen, Schweden und Großbritannien) schneller geworden ist.</p>
+	<p>Viele dieser Länder haben von dem Edge-Partner-Programm profitiert, das wir in unserem <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets">Blogbeitrag zur Impact Week</a> besprochen haben. Kurz zur Erinnerung: Das Programm ermutigt ISPs der letzten Meile, zur Schaffung von in solche ISPs eingebetteten Cloudflare-Standorten mit uns zusammenzuarbeiten. Dadurch wird die Paketumlaufzeit auf der letzten Meile verkürzt und die Performance für Dinge wie den Zugriff verbessert. Seit wir Ihnen diese Karte das letzte Mal gezeigt haben, hat Cloudflare weitere Partnerstandorte in Ländern wie Nigeria und Saudi-Arabien eingerichtet, durch die sich die Performance für Nutzer bei allen Szenarien verbessert hat. Bemühungen wie das Edge-Partner-Programm tragen nicht nur zur Verbesserung der Ergebnisse bei Zero Trust-Szenarien bei, wie wir sie oben beschrieben haben, sondern auch zur Verbesserung der allgemeinen Surferfahrung für Endnutzer, die von Cloudflare geschützte Websites verwenden.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-generation-performance-in-a-zero-trust-world">Performance der nächsten Generation in einem Zero Trust-Kontext</h3>
+		<a href="https://blog.cloudflare.com/#next-generation-performance-in-a-zero-trust-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In einer Welt ohne Zero Trust waren Sie und Ihre IT-Abteilungen die Betreiber des Netzwerks, sodass sie die Performance kontrollieren konnten. Diese Kontrolle war zwar beruhigend, stellte aber auch eine große Belastung für Ihre IT-Mitarbeitenden dar, die die Verbindungen zwischen den Büros und Ressourcen auf der mittleren Meile verwalten mussten. In einer Zero Trust-Welt fungiert nun aber das öffentliche Internet als Ihr Netzwerk. Das bedeutet weniger Arbeit für Ihre Teams – aber viel mehr Verantwortung für Ihren Zero Trust-Anbieter, der die Performance für jeden einzelnen Ihrer Nutzer verwalten muss. Je stärker Ihr Zero Trust-Anbieter die Ende-zu-Ende-Performance steigert, desto besser ist das Erlebnis für Ihre Nutzer und desto geringer ist das Risiko, dem Sie sich aussetzen. Und für Echtzeitanwendungen wie Authentifizierung und Secure Web Gateways ist ein schnelles Nutzererlebnis entscheidend.</p>
+	<p>Ein Zero Trust-Anbieter muss nicht nur Ihre Nutzer im öffentlichen Internet absichern, sondern dieses auch optimieren, um ihnen kontinuierlichen Schutz zu gewährleisten. Die Umstellung auf Zero Trust reduziert nicht nur den Bedarf an Firmennetzwerken, sondern ermöglicht auch einen natürlicheren Fluss des Nutzertraffics zu den Ressourcen. Ihr Zero Trust-Anbieter ist damit der Gatekeeper für alle Ihre Nutzer und Anwendungen. Deshalb ist die Performance ein wichtiger Aspekt, den es zu bewerten gilt, um Reibungsverluste für Ihre Nutzer zu reduzieren und die Wahrscheinlichkeit zu verringern, dass sich die Nutzer beschweren, weniger produktiv sind oder die Lösungen abschalten. Um für die bestmögliche Nutzererfahrung zu sorgen, verbessern wir das Cloudflare-Netzwerk ständig – im Rahmen von Initiativen wie dem <a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">Edge-Partner-Programm</a> und durch die kontinuierliche Verbesserung unseres Peerings und unserer Interconnections. Diesen unermüdlichen Bemühungen haben wir es zu verdanken, dass wir der schnellste Zero Trust-Anbieter sind.</p>
+</div>

@@ -1,0 +1,280 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/from-bpf-to-packet">English</a>および<a href="https://blog.cloudflare.com/ko-kr/from-bpf-to-packet">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58uFNLvpda3ebe4FYcPlrZ/ca27fd15c73f3d20b92e8aeec7645666/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Linuxのマルウェアは、Serkeley Packet Filter（BPF）ソケットプログラムに潜んでいます。BPFは、Linuxカーネルに埋め込んだ実行可能なロジックで、ネットワークトラフィックの処理方法をカスタマイズすることができます。インターネット上の最も執拗な脅威の一部は、これらのフィルターを使用して、特定の「マジック」パケットを受信するまで休止状態を維持します。これらのフィルターは何百もの命令になり、複雑な論理ジャンプを含むため、手作業によるリバースエンジニアリングはセキュリティ研究者にとってボトルネックとなります。</p>
+	<p>私たちはより良い方法を見つけるために、シンボリック実行を検討しました。これは、コードを単なる命令ではなく、一連の制約として扱う方法です。Z3証明者を使うことで、悪意のあるフィルターから逆算して、トリガーに必要なパケットを自動的に生成することができます。この記事では、何時間もかかる手作業による組み立て分析をわずか数秒で完了するタスクに、これを自動化するツールをどのように作ったかを説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-complexity-ceiling">複雑さの上限</h2>
+		<a href="https://blog.cloudflare.com/#the-complexity-ceiling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>悪意のあるフィルターの分解方法を見る前に、フィルターを実行しているエンジンを理解する必要があります。バークレーパケットフィルター（BPF）は、カーネルが一連のバイトコード指示に基づいてネットワークスタックから特定のパケットを引き出すことができる、非常に効率的な技術です。</p>
+	<p>可観測性とセキュリティに使用される強力な進化である<a href="https://blog.cloudflare.com/tag/ebpf">eBPF</a>（拡張BPF）は、多くの現代の開発者がご存知でしょうが、この記事では「classic」BPFに焦点を当てます。もともとtcpdumpなどのツール用に設計された従来のBPFは、わずか2つのレジスタを持つシンプルな仮想マシンを使用し、ネットワークトラフィックを高速に評価します。カーネルの内部で深く実行され、ユーザー空間のツールからトラフィックを「隠す」ことができるため、巧妙なバックドアを構築しようとするマルウェア作成者にとってお気に入りのツールとなっています。</p>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>を使用してBPF指示のコンテキスト表現を作成することで、アナリストの手作業によるオーバーヘッドはすでに削減されていますが、検証条件に対応するネットワークパケットを作成するには、LLMが提供するコンテキストが追加されても、依然として多くの作業が必要です。</p>
+	<p>ほとんどの場合、BPFプログラムに20個の命令しかない場合は問題ありませんが、一部のサンプルで観察されたように、BPFプログラムが100以上の命令で構成されている場合、指数関数的に複雑になり、時間がかかります。</p>
+	<p>問題を分解すると、結果に応じて実行パスを継続するか、停止して最終結果を確認するかの、バッファの読み取りと制約のチェックに確認できます。</p>
+	<p>決定論的な結果を持つこの種の問題は、与えられた制約で問題を解決する手段を持つ理論証明者であるZ3が解くことができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="exhibit-a-bpfdoor">資料A：BPFDoor</h2>
+		<a href="https://blog.cloudflare.com/#exhibit-a-bpfdoor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BPFDoorは、高度なパッシブLinuxバックドアであり、主に中国拠点の脅威アクター（別名：Earth Bluecrow）によるサイバースパイ活動に使用されます。少なくとも2021年以来活動しているこのマルウェアは、電気通信、教育、政府部門を標的とし、侵害されたネットワークに隠れた足掛かりを維持するように設計されており、特にアジアと中東での活動に重点を置いています。</p>
+	<p>BPFDoorは、BPFを使用して、特定のネットワークポートを開くことなく、すべての着信トラフィックを監視します。</p>
+	<div class="flex anchor relative">
+		<h3 id="bpfdoor-example-instructions">BPFDoorの指示例</h3>
+		<a href="https://blog.cloudflare.com/#bpfdoor-example-instructions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware" target="_blank" rel="noopener noreferrer"><u>Fortinet</u></a>の調査で共有されたサンプル（82ed617816453eba2d755642e3efebfcbd19705ac626f6bc8ed238f4fc111bb0）に焦点を当ててみましょう。BPFの指示を分解して、注釈を追加すると、次のようになります。</p>
+	<pre class="language-Rust"><code class="language-Rust">(000) ldh [0xc]                   ; Read halfword at offset 12 (EtherType)
+(001) jeq #0x86dd, jt 2, jf 6     ; 0x86DD (IPv6) -&gt; ins 002 else ins 006
+(002) ldb [0x14]                  ; Read byte at offset 20 (Protocol)
+(003) jeq #0x11, jt 4, jf 15      ; 0x11 (UDP) -&gt; ins 004 else DROP
+(004) ldh [0x38]                  ; Read halfword at offset 56 (Dst Port)
+(005) jeq #0x35, jt 14, jf 15     ; 0x35 (DNS) -&gt; ACCEPT else DROP
+(006) jeq #0x800, jt 7, jf 15     ; 0x800 (IPv4) -&gt; ins 007 else DROP
+(007) ldb [23]                    ; Read byte at offset 23 (Protocol)
+(008) jeq #0x11, jt 9, jf 15      ; 0x11 (UDP) -&gt; ins 009 else DROP
+(009) ldh [20]                    ; Read halfword at offset 20 (fragment)
+(010) jset #0x1fff, jt 15, jf 11  ; fragmented -&gt; DROP else ins 011
+(011) ldxb 4*([14]&amp;0xf)           ; Load index (x) register ihl &amp; 0xf
+(012) ldh [x + 16]                ; Read halfword at offset x+16 (Dst Port)
+(013) jeq #0x35, jt 14, jf 15     ; 0x35 (DNS) -&gt; ACCEPT else DROP
+(014) ret #0x40000 (ACCEPT)
+(015) ret #0 (DROP)</code></pre>
+	<p>上記の例では、ACCEPTの結果につながる2つの経路（ステップ5とステップ13）が確立されています。また、そのオフセットや値を含め、特定のバイトがチェックされていることがはっきりとわかります。</p>
+	<p>これらの検証を行い、ACCEPTパスに一致するものを追跡すれば、パケットを自動的に作成できるはずです。</p>
+	<div class="flex anchor relative">
+		<h3 id="calculating-the-shortest-path">最短パスを計算する</h3>
+		<a href="https://blog.cloudflare.com/#calculating-the-shortest-path" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BPF指示で提示された条件を検証するパケットへの最短経路を見つけるには、望ましくない状態で終了していない経路を追跡しておく必要があります。</p>
+	<p>まずは小さなキューを作ることから始めます。このキューは、いくつかの重要なデータポイントを保持します。</p>
+	<ul>
+		<li>
+			<p>次の命令へのポインタ。</p>
+		</li>
+		<li>
+			<p>現在実行されている命令のパス＋次の命令までです。</p>
+		</li>
+	</ul>
+	<p>条件をチェックしている命令に遭遇すると、ブール値を使用して結果を追跡し、これをキューに保存します。これにより、ACCEPT条件に到達する前の条件量のパスを比較し、最短のパスを計算することができます。擬似コードでは、これは次のように最適に表現できます：</p>
+	<pre class="language-Python"><code class="language-Python">paths = []
+queue = dequeue([(0, [0])])
+
+while queue:
+	pc, path = queue.popleft()
+
+	if pc &gt;= len(instructions):
+            continue
+
+instruction = instructions[pc]
+	
+	if instruction.class == return_instruction:
+		if instruction_constant != 0:  # accept
+			paths.append(path)
+		continue  # drop or accept, stop parsing this instruction
+
+if instruction.class == jump_instruction:
+	if instruction.operation == unconditional_jump:
+		next_pc = pc + 1 + instruction_constant
+		queue.append((next_pc, path + [next_pc]))
+		continue
+
+	# Conditional jump, explore both
+	pc_true = pc + 1 + instruction.jump_true
+	pc_false = pc + 1 + instruction.jump_false
+	
+	if instruction.jump_true &lt;= instruction.jump_false:
+		queue.append((pc_true, path + [pc_true]))
+		queue.append((pc_false, path + [pc_false]))
+	# else: same as above but reverse order of appending
+# else: sequential instruction, append to the queue</code></pre>
+	<p>先ほどのBPFDoorの例に対してこのロジックを実行すると、受け入れられたパケットへの最短パスが表示されます。</p>
+	<pre class="language-Rust"><code class="language-Rust">(000) code=0x28 jt=0 jf=0  k=0xc     ; Read halfword at offset 12 (EtherType)
+(001) code=0x15 jt=0 jf=4  k=0x86dd  ; IPv6 packet
+(002) code=0x30 jt=0 jf=0  k=0x14    ; Read byte at offset 20 (Protocol)
+(003) code=0x15 jt=0 jf=11 k=0x11    ; Protocol number 17 (UDP)
+(004) code=0x28 jt=0 jf=0  k=0x38    ; Read word at offset 56 (Destination Port)
+(005) code=0x15 jt=8 jf=9  k=0x35    ; Destination port 53
+(014) code=0x06 jt=0 jf=0  k=0x40000 ; Accept</code></pre>
+	<p>これは、BPF指示を分析し、バックドアのために受け入れられたパケットがどのように見えるかを理解する際に、BPF制約を自動的に解決するのに役立つ自動化機能です。しかし、さらに一歩踏み込むことができるとしたらどうでしょう。</p>
+	<p>もし、期待されたパケットを自動化された方法で返してくれる小さなツールを作成できたらどうなるでしょうか？</p>
+	<div class="flex anchor relative">
+		<h2 id="employing-z3-and-scapy">Z3とScapyの採用</h2>
+		<a href="https://blog.cloudflare.com/#employing-z3-and-scapy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一連の制約が与えられた問題を解決するのに最適なツールの1つが、<a href="https://github.com/z3Prover/z3" target="_blank" rel="noopener noreferrer"><u>Z3</u></a>です。Microsoftが開発したこのツールは、定説証明者と名付けられ、内部で非常に複雑な数学的操作を行う使いやすい関数を公開します。</p>
+	<p>有効なマジックパケットを作成するために使用するもう1つのツールは、対話型のパケット操作のための人気のPythonライブラリである<a href="https://github.com/secdev/scapy" target="_blank" rel="noopener noreferrer"><u>scapy</u></a>です。</p>
+	<p>受け入れられたパケットへのパスを見つける方法がすでにあるので、この問題自体を解決し、この解決策をネットワークパケットのそれぞれのオフセットのバイトに変換するだけです。</p>
+	<div class="flex anchor relative">
+		<h3 id="symbolic-execution">シンボリック実行</h3>
+		<a href="https://blog.cloudflare.com/#symbolic-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>あるプログラムで実行されるパスを調べるのは、シンボリック実行と呼ばれるのが一般的な手法です。このテクニックでは、制約を含め変数として使用できる入力を与えています。成功したパスの結果を知ることで、ツールを調整してこれらの成功したパスをすべて見つけ、最終結果をコンテキストに基づいた形式で表示することができます。</p>
+	<p>これを機能させるためには、定数、レジスタ、さまざまなブール演算子などの状態を、チェックされている条件の結果として追跡できる小さなマシンを実装する必要があります。</p>
+	<pre class="language-Python"><code class="language-Python">class BPFPacketCrafter:
+    MIN_PKT_SIZE = 64           # Minimum packet size (Ethernet + IP + UDP headers)
+    LINK_ETHERNET = "ethernet"  # DLT_EN10MB - starts with Ethernet header
+    LINK_RAW = "raw"            # DLT_RAW - starts with IP header directly
+    MEM_SLOTS = 16              # Number of scratch memory slots (M[0] to M[15])
+
+    def __init__(self, ins: list[BPFInsn], pkt_size: int = 128, ltype: str = "ethernet"):
+        self.instructions = ins
+        self.pkt_size = max(self.MIN_PKT_SIZE, pkt_size)
+        self.ltype = ltype
+
+        # Symbolic packet bytes
+        self.packet = [BitVec(f"pkt_{i}", 8) for i in range(self.pkt_size)]
+
+        # Symbolic registers (32-bit)
+        self.A = BitVecVal(0, 32)  # Accumulator
+        self.X = BitVecVal(0, 32)  # Index register
+
+        # Scratch memory M[0-15] (32-bit words)
+        self.M = [BitVecVal(0, 32) for _ in range(self.MEM_SLOTS)]</code></pre>
+	<p>上記のコードで、シンボリックな実行中に状態を維持するためのマシンの大部分をカバーすることができました。もちろん、記録しておく必要のある条件はもっとありますが、これらは解決の過程で処理されます。ADD命令を処理するために、マシンはBPF操作をZ3追加にマッピングします。</p>
+	<pre class="language-Python"><code class="language-Python">def _execute_ins(self, insn: BPFInsn):
+    cls = insn.cls
+    if cls == BPFClass.ALU:
+        op = insn.op
+        src_val = BitVecVal(insn.k, 32) if insn.src == BPFSrc.K else self.X
+        if op == BPFOp.ADD:
+            self.A = self.A + src_val</code></pre>
+	<p>幸いなことに、BPF命令セットは実装が比較的簡単な小さな命令セットしかなく、2つのレジスタだけを追跡するのは、間違いなく歓迎すべき制約です！</p>
+	<p>このシンボリックな実行の全体的な仕組みは、以下のように抽象化された概要で説明することができます：</p>
+	<ul>
+		<li>
+			<p>「x」（インデックス）と「a」（累積コンピュータ）レジスタをベースの状態に初期化します。</p>
+		</li>
+		<li>
+			<p>成功パスとして識別されたパスからの指示をループさせます。</p>
+			<ul>
+				<li>
+					<p>ジャンプ以外の命令をそのまま実行し、登録の状態を追跡します。</p>
+				</li>
+				<li>
+					<p>ジャンプ命令があるかどうかを判断し、分岐を実行する必要があるかどうかを確認します。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>Z3check()関数を使用して、与えられた制約(ACCEPT)で当社の条件が満たされているかどうかをチェックします。</p>
+		</li>
+		<li>
+			<p>Z3ビットベクトル配列をバイトに変換します。</p>
+		</li>
+		<li>
+			<p>scapyを使用して、変換されたバイトのパケットを構築します。</p>
+		</li>
+	</ul>
+	<p>Z3リゾルバーによって構築される制約を見ると、Z3がパケットバイトを構築するために取る実行ステップを追跡することができます。</p>
+	<pre class="language-Rust"><code class="language-Rust">[If(Concat(pkt_12, pkt_13) == 0x800,
+    pkt_14 &amp; 0xF0 == 0x40,
+    True),
+ If(Concat(pkt_12, pkt_13) == 0x800, pkt_14 &amp; 0x0F &gt;= 5, True),
+ If(Concat(pkt_12, pkt_13) == 0x800, pkt_14 &amp; 0x0F == 5, True),
+ If(Concat(pkt_12, pkt_13) == 0x86DD,
+    pkt_14 &amp; 0xF0 == 0x60,
+    True),
+ 0x86DD == ZeroExt(16, Concat(pkt_12, pkt_13)),
+ 0x11 == ZeroExt(24, pkt_20),
+ 0x35 == ZeroExt(16, Concat(pkt_56, pkt_57))]</code></pre>
+	<p>Z3表示の制約の最初の部分は、リンク層のBPF指示を処理する際に、有効なイーサネットIPを構築するために追加された制約です。「If」文は、検出されるプロトコルに基づいて特定の制約を適用します。</p>
+	<ul>
+		<li>
+			<p>IPv4 Logic (0x0800):</p>
+			<ul>
+				<li>
+					<p>pkt_14 &amp; 240 == 64: Byte 14はIPヘッダーの始まりです。0xF0マスクは、ハイニブル（Versionフィールド）を分離して、バージョンが4（0x40）かどうかを確認します。</p>
+				</li>
+				<li>
+					<p>pkt_14 &amp; 15 == 5: 15 (0x0F)、ローニブル（IHL - インターネットヘッダー長）を分離これは、ヘッダーの長さ5（20バイト）を必須とします。これは、オプションのない標準サイズです。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>IPv6 Logic (0x86dd):</p>
+			<ul>
+				<li>
+					<p>pkt_14 &amp; 240 == 0x60: バージョンフィールドがバージョン6（0x60）かどうかを確認する</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>異なる値がチェックされている2番目の部分を見ると、ネットワークパケット値が確認できます。</p>
+	<ul>
+		<li>
+			<p>0x86DD: IPv6ヘッダーのパケット条件。</p>
+		</li>
+		<li>
+			<p>0x11: UDPプロトコル番号。</p>
+		</li>
+		<li>
+			<p>0x35: 宛先ポート（53）。</p>
+		</li>
+	</ul>
+	<p>予想される値の横に、指定されたパケット（例：pkt_12, pkt_13)。</p>
+	<div class="flex anchor relative">
+		<h3 id="crafting-packets">パケットの作成</h3>
+		<a href="https://blog.cloudflare.com/#crafting-packets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これで、どのバイトが特定のオフセットに存在すべきかが確立されたので、それをscapyを使って実際のネットワークパケットに変換することができます。以前のZ3制約のバイトから新しいパケットを生成すると、パケットがどのようなものになるかを明確に確認でき、これをさらなる処理のために保存することができます。</p>
+	<pre class="language-Python"><code class="language-Python">###[ Ethernet ]###
+  dst       = 00:00:00:00:00:00
+  src       = 00:00:00:00:00:00
+  type      = IPv6                 &lt;-- IPv6 Packet
+###[ IPv6 ]###
+     version   = 6
+     tc        = 0
+     fl        = 0
+     plen      = 0
+     nh        = UDP               &lt;-- UDP Protocol
+     hlim      = 0
+     src       = ::
+     dst       = ::
+###[ UDP ]###
+        sport     = 0
+        dport     = domain         &lt;-- Port 53
+        len       = 0
+        chksum    = 0x0</code></pre>
+	<p>これらの新しく作成されたパケットは、ネットワーク上でこれらをスキャンすることで、これらのインプラントの存在を特定するために、さらなる調査や特定に使用することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-yourself">ご自身で試してみてください</h2>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>特定のBPF指示が何をしているのかを理解するのは、面倒で時間のかかる作業です。この例は、合計16の指示に過ぎませんが、私たちは、理解するのに少なくとも1日はかかる200以上の命令を検出したことがあります。Z3リゾルバーを使って、この時間をわずか数秒に短縮し、受け入れられたパケットへのパスだけでなく、そのためのパケットスクレイピングも表示できるようになりました。</p>
+	<p>当社は、コミュニティがBPFベースのインプラントの分解を自動化できるように、<b>filterforge</b>ツールをオープンソース化しました。ソースコードと使用例は、<a href="https://github.com/cloudflare/filterforge" target="_blank" rel="noopener noreferrer"><u>弊社のGitHubリポジトリ</u></a>でご覧いただけます。</p>
+	<p>この調査結果を公開し、アナリストがBPFの指示を理解するのに費やす時間を削減するためのツールを共有することで、他の人がこの形態の自動化を拡大するためにさらに研究を進めることを願っています。</p>
+</div>

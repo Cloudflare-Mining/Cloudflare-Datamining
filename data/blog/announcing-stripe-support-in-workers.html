@@ -1,119 +1,114 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-stripe-support-in-workers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-stripe-support-in-workers">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eN4PbPb1cRLCGDVj71hGn/e81b3c2ee61264828f5e1155599ad29f/announcing-stripe-support-in-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Handling payments inside your apps is crucial to building a business online. For many developers, the leading choice for handling payments is <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>. Since my first encounter with Stripe about seven years ago, the service has evolved far beyond simple payment processing. In the <a href="https://blog.cloudflare.com/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers">e-commerce example application I shared last year</a>, Stripe managed a complete seller marketplace, using the <a href="https://stripe.com/connect" target="_blank" rel="noopener noreferrer">Connect</a> product. Stripe's product suite is great for developers looking to go beyond accepting payments.</p>
-	<p>Earlier versions of Stripe's SDK had core Node.js dependencies, like many popular JavaScript packages. In Stripe’s case, it interacted directly with core Node.js libraries like <code>net/http</code>, to handle HTTP interactions. For Cloudflare Workers, a V8-based runtime, this meant that the official Stripe JS library didn’t work; you had to fall back to using Stripe’s (very well-documented) REST API. By doing so, you’d lose the benefits of using Stripe’s native JS library — things like automatic type-checking in your editor, and the simplicity of function calls like <code>stripe.customers.create()</code>, instead of manually constructed HTTP requests, to interact with Stripe’s various pieces of functionality.</p>
-	<p>In April, we wrote that we were <a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers">focused on increasing</a> the number of JavaScript packages that are <a href="https://workers.cloudflare.com/works" target="_blank" rel="noopener noreferrer">compatible with Workers</a>:</p>
-	<blockquote>
-		<p>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</p>
-	</blockquote>
-	<p>I’m excited to announce general availability for the <a href="https://github.com/stripe/stripe-node" target="_blank" rel="noopener noreferrer"><code>stripe</code></a> JS package for Cloudflare Workers. You can now use the native Stripe SDK directly in your projects! To get started, install <code>stripe</code> in your project: <code>npm i stripe</code>.</p>
-	<p>This also opens up a great opportunity for developers who have deployed sites to Cloudflare Pages to begin using Stripe right alongside their applications. With this week’s announcement of serverless function support in Cloudflare Pages, you can accept payments for your digital product, or handle subscriptions for your membership site, with a few lines of JavaScript added to your Pages project. There’s no additional configuration, and it scales automatically, just like your Pages site.</p>
-	<p>To showcase this, we’ve prepared an example open-source repository, showing how you can integrate <a href="https://stripe.com/payments/checkout" target="_blank" rel="noopener noreferrer">Stripe Checkout</a> into your Pages application. There’s no additional configuration needed — as we announced yesterday, Pages’ new Workers Functions features allows you to deploy infinitely-scalable functions just by adding a new <code>functions</code> folder to your project. See it in action at <a href="https://stripe.pages.dev" target="_blank" rel="noopener noreferrer">stripe.pages.dev</a>, or <a href="https://github.com/cloudflare/stripe.pages.dev" target="_blank" rel="noopener noreferrer">check out the open-source repository on GitHub</a>.</p>
-	<p>With the SDK installed, you can begin accepting payments directly in your applications. The below example shows <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank" rel="noopener noreferrer">how to initiate a new Checkout session</a> and redirect to Stripe’s hosted checkout page:</p>
-	<pre class="language-js"><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
-
-// use web crypto 
-export const webCrypto = Stripe.createSubtleCryptoProvider();
-
-export function getStripe({env}){
-  if(!env?.STRIPE_KEY){
-    throw new Error('Can not initialize Stripe without STRIPE_KEY');
-  }
-  const client = Stripe(env.STRIPE_KEY, {
-      httpClient: Stripe.createFetchHttpClient(), // ensure we use a Fetch client, and not Node's `http`
-  });
-  return client;
-}
-
-
-
-export default {
-  async fetch(request, env) {
-    const stripe = getStripe({ env })
-    const session = await stripe.checkout.sessions.create({
-      line_items: [{
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'T-shirt',
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      }],
-      payment_method_types: [
-        'card',
-      ],
-      mode: 'payment',
-      success_url: `${YOUR_DOMAIN}/success.html`,
-      cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-    });
-
-    return Response.redirect(session.url)
-  }
-}</code></pre>
-	<p>With support for the Stripe SDK natively in Cloudflare Workers, you aren’t just limited to payment processing either. Any JavaScript example that's currently in <a href="https://stripe.com/docs/api?lang=node" target="_blank" rel="noopener noreferrer">Stripe’s extensive documentation</a> works directly in Workers, without needing to make any changes.</p>
-	<p>In particular, using Workers to handle the multitude of available Stripe webhooks means that you can get better visibility into how your existing projects are working, without needing to spin up any new infrastructure. The below example shows how you can securely validate incoming webhook requests to a Workers function, and perform business logic by parsing the data inside that webhook:</p>
-	<pre class="language-js"><code class="language-js">import Stripe from 'stripe/lib/stripe.js';
-
-// use web crypto 
-export const webCrypto = Stripe.createSubtleCryptoProvider();
-
-export function getStripe({env}){
-  if(!env?.STRIPE_KEY){
-    throw new Error('Can not initialize Stripe without STRIPE_KEY');
-  }
-  const client = Stripe(env.STRIPE_KEY, {
-      httpClient: Stripe.createFetchHttpClient(), // ensure we use a Fetch client, and not Node's `http`
-  });
-  return client;
-}
-
-export default {
-  async fetch(request, env) {
-    const stripe = getStripe({ env })
-    const body = await request.text()
-    const sig = request.headers.get('stripe-signature')
-    
-const event = await stripe.webhooks.constructEventAsync(
-      body
-      sig,
-      env.STRIPE_ENDPOINT_SECRET,
-      undefined,
-      webCrypto
-    );
-
-
-    // Handle the event
-    switch (event.type) {
-      case 'payment_intent.succeeded':
-        const paymentIntent = event.data.object;
-        // Then define and call a method to handle the successful payment intent.
-        // handlePaymentIntentSucceeded(paymentIntent);
-        break;
-      case 'payment_method.attached':
-        const paymentMethod = event.data.object;
-        // Then define and call a method to handle the successful attachment of a PaymentMethod.
-        // handlePaymentMethodAttached(paymentMethod);
-        break;
-      // ... handle other event types
-      default:
-        console.log(`Unhandled event type ${event.type}`);
-    }
-
-    // Return a response to acknowledge receipt of the event
-    return new Response(JSON.stringify({ received: true }), {
-      headers: { 'Content-type': 'application/json' }
-    })
-  }
-}
-</code></pre>
-	<p>We’re also announcing <a href="https://github.com/stripe-samples/stripe-node-cloudflare-worker-template" target="_blank" rel="noopener noreferrer">a new Workers template</a> in partnership with Stripe. The template will help you get up and running with Stripe and Workers, using our best practices.</p>
-	<p>In less than five minutes, you can begin accepting payments for your next digital product or membership business. You can also handle and validate incoming webhooks at the edge, from a single codebase. This comes with no upfront cost, server provisioning, or any of the standard scaling headaches. Take your serverless functions, deploy them to Cloudflare’s edge, and start making money!</p>
-	<blockquote>
-		<p>“We're big fans of Cloudflare Workers over here at Stripe. Between the wild performance at the edge and fantastic serverless development experience, we're excited to see what novel ways you all use Stripe to make amazing apps.”— <b>Brian Holt, Stripe</b></p>
-	</blockquote>
-	<p>We’re thrilled with this incredible update to Stripe’s JavaScript SDK. We’re also excited to see what you’ll build with native Stripe support in Workers. Join our Discord server and share what you’ve built in the #what-i-built channel — <a href="https://cloudflare.community" target="_blank" rel="noopener noreferrer">get your invite here</a>.</p>
+<p>Handling payments inside your apps is crucial to building a business online. For many developers, the leading choice for handling payments is <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>. Since my first encounter with Stripe about seven years ago, the service has evolved far beyond simple payment processing. In the <a href="https://blog.cloudflare.com/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers">e-commerce example application I shared last year</a>, Stripe managed a complete seller marketplace, using the <a href="https://stripe.com/connect" target="_blank" rel="noopener noreferrer">Connect</a> product. Stripe's product suite is great for developers looking to go beyond accepting payments.</p>
+<p>Earlier versions of Stripe's SDK had core Node.js dependencies, like many popular JavaScript packages. In Stripe’s case, it interacted directly with core Node.js libraries like <code>net/http</code>, to handle HTTP interactions. For Cloudflare Workers, a V8-based runtime, this meant that the official Stripe JS library didn’t work; you had to fall back to using Stripe’s (very well-documented) REST API. By doing so, you’d lose the benefits of using Stripe’s native JS library — things like automatic type-checking in your editor, and the simplicity of function calls like <code>stripe.customers.create()</code>, instead of manually constructed HTTP requests, to interact with Stripe’s various pieces of functionality.</p>
+<p>In April, we wrote that we were <a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers">focused on increasing</a> the number of JavaScript packages that are <a href="https://workers.cloudflare.com/works" target="_blank" rel="noopener noreferrer">compatible with Workers</a>:</p>
+<blockquote>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</blockquote>
+<p>I’m excited to announce general availability for the <a href="https://github.com/stripe/stripe-node" target="_blank" rel="noopener noreferrer"><code>stripe</code></a> JS package for Cloudflare Workers. You can now use the native Stripe SDK directly in your projects! To get started, install <code>stripe</code> in your project: <code>npm i stripe</code>.</p>
+<p>This also opens up a great opportunity for developers who have deployed sites to Cloudflare Pages to begin using Stripe right alongside their applications. With this week’s announcement of serverless function support in Cloudflare Pages, you can accept payments for your digital product, or handle subscriptions for your membership site, with a few lines of JavaScript added to your Pages project. There’s no additional configuration, and it scales automatically, just like your Pages site.</p>
+<p>To showcase this, we’ve prepared an example open-source repository, showing how you can integrate <a href="https://stripe.com/payments/checkout" target="_blank" rel="noopener noreferrer">Stripe Checkout</a> into your Pages application. There’s no additional configuration needed — as we announced yesterday, Pages’ new Workers Functions features allows you to deploy infinitely-scalable functions just by adding a new <code>functions</code> folder to your project. See it in action at <a href="https://stripe.pages.dev" target="_blank" rel="noopener noreferrer">stripe.pages.dev</a>, or <a href="https://github.com/cloudflare/stripe.pages.dev" target="_blank" rel="noopener noreferrer">check out the open-source repository on GitHub</a>.</p>
+<p>With the SDK installed, you can begin accepting payments directly in your applications. The below example shows <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank" rel="noopener noreferrer">how to initiate a new Checkout session</a> and redirect to Stripe’s hosted checkout page:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Stripe </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'stripe/lib/stripe.js'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// use web crypto </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> webCrypto</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stripe.</span><span class="sk-6f42c1-ffc799">createSubtleCryptoProvider</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getStripe</span><span class="sk-24292e-fff">({</span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">}){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">env?.</span><span class="sk-005cc5-fff">STRIPE_KEY</span><span class="sk-24292e-fff">){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Can not initialize Stripe without STRIPE_KEY'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> Stripe</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">STRIPE_KEY</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      httpClient: Stripe.</span><span class="sk-6f42c1-ffc799">createFetchHttpClient</span><span class="sk-24292e-fff">(), </span><span class="sk-6a737d-8b8b8b94">// ensure we use a Fetch client, and not Node's `http`</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> client;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> stripe</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getStripe</span><span class="sk-24292e-fff">({ env })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> stripe.checkout.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      line_items: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">        price_data: {</span></span>
+<span class="line"><span class="sk-24292e-fff">          currency: </span><span class="sk-032f62-99ffe4">'usd'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          product_data: {</span></span>
+<span class="line"><span class="sk-24292e-fff">            name: </span><span class="sk-032f62-99ffe4">'T-shirt'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          },</span></span>
+<span class="line"><span class="sk-24292e-fff">          unit_amount: </span><span class="sk-005cc5-ffc799">2000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        quantity: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }],</span></span>
+<span class="line"><span class="sk-24292e-fff">      payment_method_types: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'card'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-24292e-fff">      mode: </span><span class="sk-032f62-99ffe4">'payment'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      success_url: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">YOUR_DOMAIN</span><span class="sk-032f62-99ffe4">}/success.html`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      cancel_url: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">YOUR_DOMAIN</span><span class="sk-032f62-99ffe4">}/cancel.html`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(session.url)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>With support for the Stripe SDK natively in Cloudflare Workers, you aren’t just limited to payment processing either. Any JavaScript example that's currently in <a href="https://stripe.com/docs/api?lang=node" target="_blank" rel="noopener noreferrer">Stripe’s extensive documentation</a> works directly in Workers, without needing to make any changes.</p>
+<p>In particular, using Workers to handle the multitude of available Stripe webhooks means that you can get better visibility into how your existing projects are working, without needing to spin up any new infrastructure. The below example shows how you can securely validate incoming webhook requests to a Workers function, and perform business logic by parsing the data inside that webhook:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Stripe </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'stripe/lib/stripe.js'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// use web crypto </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> webCrypto</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stripe.</span><span class="sk-6f42c1-ffc799">createSubtleCryptoProvider</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getStripe</span><span class="sk-24292e-fff">({</span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">}){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">env?.</span><span class="sk-005cc5-fff">STRIPE_KEY</span><span class="sk-24292e-fff">){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Can not initialize Stripe without STRIPE_KEY'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> Stripe</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">STRIPE_KEY</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      httpClient: Stripe.</span><span class="sk-6f42c1-ffc799">createFetchHttpClient</span><span class="sk-24292e-fff">(), </span><span class="sk-6a737d-8b8b8b94">// ensure we use a Fetch client, and not Node's `http`</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> client;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> stripe</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getStripe</span><span class="sk-24292e-fff">({ env })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> sig</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'stripe-signature'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> stripe.webhooks.</span><span class="sk-6f42c1-ffc799">constructEventAsync</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">      body</span></span>
+<span class="line"><span class="sk-24292e-fff">      sig,</span></span>
+<span class="line"><span class="sk-24292e-fff">      env.</span><span class="sk-005cc5-fff">STRIPE_ENDPOINT_SECRET</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">      undefined</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      webCrypto</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Handle the event</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    switch</span><span class="sk-24292e-fff"> (event.type) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      case</span><span class="sk-032f62-99ffe4"> 'payment_intent.succeeded'</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> paymentIntent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.data.object;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Then define and call a method to handle the successful payment intent.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // handlePaymentIntentSucceeded(paymentIntent);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      case</span><span class="sk-032f62-99ffe4"> 'payment_method.attached'</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> paymentMethod</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.data.object;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Then define and call a method to handle the successful attachment of a PaymentMethod.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // handlePaymentMethodAttached(paymentMethod);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // ... handle other event types</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      default</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">        console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Unhandled event type ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">type</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Return a response to acknowledge receipt of the event</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ received: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }), {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">'Content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json'</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>We’re also announcing <a href="https://github.com/stripe-samples/stripe-node-cloudflare-worker-template" target="_blank" rel="noopener noreferrer">a new Workers template</a> in partnership with Stripe. The template will help you get up and running with Stripe and Workers, using our best practices.</p>
+<p>In less than five minutes, you can begin accepting payments for your next digital product or membership business. You can also handle and validate incoming webhooks at the edge, from a single codebase. This comes with no upfront cost, server provisioning, or any of the standard scaling headaches. Take your serverless functions, deploy them to Cloudflare’s edge, and start making money!</p>
+<blockquote>“We're big fans of Cloudflare Workers over here at Stripe. Between the wild performance at the edge and fantastic serverless development experience, we're excited to see what novel ways you all use Stripe to make amazing apps.”— <strong>Brian Holt, Stripe</strong></blockquote>
+<p>We’re thrilled with this incredible update to Stripe’s JavaScript SDK. We’re also excited to see what you’ll build with native Stripe support in Workers. Join our Discord server and share what you’ve built in the #what-i-built channel — <a href="https://cloudflare.community" target="_blank" rel="noopener noreferrer">get your invite here</a>.</p>

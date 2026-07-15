@@ -1,0 +1,356 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/network-performance-update-developer-week">English</a>、<a href="https://blog.cloudflare.com/es-es/network-performance-update-developer-week">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-developer-week">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Qx4vvdLgQpvg2e2jSpLZ0/5b4562bcceddcbc5be47ddbe112419c1/network-performance-update-developer-week.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは、世界最速のネットワークを構築しています。ですが、この言葉をそのまま鵜呑みにしてもらいたいわけではありません。それを実証するために、私たちは絶えず自社と他社を比較して当社が最速であることを確認しています。開発者ウィークということで、競合製品に対する当社のWorkers製品のパフォーマンス、および全体的なネットワークパフォーマンスの最新情報をお伝えしたいと思います。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4t4TbYqSzYFn7vBWOBPHLi/3177e7422faba1d872a58d5f0f08434a/image6-9.png" alt="Network Performance Update: Developer Week 2022" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>今年の初め、Fastly社のCompute@Edgeと比較したところ、全体的に当社の速度が勝っていました。今回は同様のテストを繰り返しただけでなく、さらに多くの競合他社との比較を示すために、AWS Lambda@Edgeも対象に追加しました。要約すると、当社は市場最速の開発者向けプラットフォームを提供しています。お客様の環境をより高速にするために私たちがどのようにネットワークを構築しているのか、また、それをどのように開発者向けプラットフォームに反映させているのかについて説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="latest-update-on-network-performance">ネットワークパフォーマンスの最新情報</h3>
+		<a href="https://blog.cloudflare.com/#latest-update-on-network-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一般的なネットワークパフォーマンスに関するデータと、WorkersをCompute@EdgeおよびLambda@Edgeと比較したデータの2つを用意しました。</p>
+	<p>グローバルなネットワークパフォーマンスを定量化するには、他のプロバイダーを使用した世界中の様々なネットワークで自分たちを比較した十分なデータを取得する必要があります。当社はReal User Measurements (RUM) を使用して、様々なプロバイダーから100kBのファイルを取得し、世界中のユーザーからさまざまなプロバイダーのパフォーマンスがレポートされています。データをレポートするユーザーが多いほど、信号の信用度は高くなります。目標は、さまざまなプロバイダーの中で速いのはどこか、さらに重要なことは、Cloudflareのどこを改善できるのかを正確に把握することです。その方法の詳細については、<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">こちら</a>のオリジナルのSpeed Weekブログ記事をご覧ください。</p>
+	<p>Cloudflare One ウィーク（2022年6月）では、最も多くの報告書に記載されているネットワークの多くで、当社が競合他社よりも高速であることをお伝えしました。世界のネットワーク上位3,000（アドバタイズされたIPv4アドレス数）のうち、各プロバイダーがp95 TCP接続時間で1位となったネットワーク数の内訳は次のとおりです。これは、あるネットワーク上のユーザーがプロバイダーに接続するのにかかった時間を表しています。以下のデータはCloudflare One ウィーク（2022年6月）のものです：</p>
+	<p>開発者ウィーク（2022年11月）のネットワーク上位3,000の分布は以下のとおりです：</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RQm5IePsaPDDPxYPegmhR/e66b037dcc9ac5cedd45187beda8f09c/image7-5.png" alt="" class="kg-image" width="1999" height="857" loading="lazy">
+
+	</figure>
+	<p>Cloudflareは、一般利用されるネットワークで最速であるだけでなく、すべての国において最速のプロバイダーになることにも力を注いでいます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VIdpUl6VxMJUQHggHL0ix/9e83f14d6c44e4fd8e49de1fb3d1b457/image8-3.png" alt="" class="kg-image" width="1999" height="867" loading="lazy">
+
+	</figure>
+	<p>Cloudflare One ウィーク（2022年6月）のネットワーク上位3,000のデータを世界地図で表すと、以下のようになります（Cloudflareはオレンジ色）。</p>
+	<p>また、開発者ウィーク（2022年11月）のネットワーク上位3,000を見てみると、世界では以下のようになります：</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15eoTx57v2bSeTnU9uQUmr/595853ece6fe985afe84137e6894d64c/image3-42.png" alt="" class="kg-image" width="1999" height="1029" loading="lazy">
+
+	</figure>
+	<p>Cloudflareは、ロシア、ウクライナ、カザフスタン、インド、中国などのヨーロッパとアジアのより多くの国でNo .1になり、世界最速のネットワークという当社の使命をさらに果たす結果となりました。では、Supercloudを最速の開発者プラットフォームにするために、このネットワークがどのように支えているかについてお伝えしたいと思います。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74j6srshahgm0qoDZ1OcRR/77739fe5713256c35287ec37a43a53ed/image4-29.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-were-comparing-developer-platforms">開発者プラットフォームの比較方法</h3>
+		<a href="https://blog.cloudflare.com/#how-were-comparing-developer-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最初のテストを公開してから6ヶ月が経ちましたが、ここで簡単におさらいしましょう。ネットワークへの接続時間、リクエスト完了に要した時間、全体の応答時間の計測結果を比較します。私たちはこれらの数字を「接続」、「待機」、「応答」と呼んでいます。これらの数字を選択した理由は、ユーザーの優れた体験のためにできるだけ高速であることが要求される重要な構成要素であるためです。当社は、可能な限りユーザーに近い場所でピアリングすることで、接続時間を短縮することができます。当社では、コードの実行速度が可能な限り高速になるよう最適化することで、待機時間を短縮することができます。この2つのプロセスを最適化すると、要求のエンドツーエンドのレイテンシーを表す応答時間が最適化されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="test-methodology">テスト方法論</h3>
+		<a href="https://blog.cloudflare.com/#test-methodology" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>「接続」、「待機」、「応答」を測定するために、各プロバイダーに対して、単純なノーオペレーション命令のJavaScript関数、複雑なJavaScript関数、複雑なRust関数の3つのテストを実施しました。単純なRust関数でのテストを実施しない理由は、多くのプロバイダーが両方をWebAssemblyにコンパイルすることで、ほとんど時間がかからないことを想定していること、エンドツーエンド機能のベースラインはノーオペレーション命令のJavaScript関数ですでに用意されていることです。</p>
+	<p>ここでは、それぞれの関数を紹介します：</p>
+	<p>JavaScriptノーオペレーション命令：</p>
+	<p>JavaScriptハード関数：</p>
+	<pre class="language-javascript"><code class="language-javascript">async function getErrorResponse(event, message, status) {
+  return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
+}</code></pre>
+	<p>Rustハード関数：</p>
+	<pre class="language-javascript"><code class="language-javascript">function testHardBusyLoop() {
+  let value = 0;
+  let offset = Date.now();
+
+  for (let n = 0; n &lt; 15000; n++) {
+    value += Math.floor(Math.abs(Math.sin(offset + n)) * 10);
+  }
+
+  return value;
+}</code></pre>
+	<p>各プラットフォームがエンドユーザーにどれだけ近いかを評価することに加えて、各プラットフォームがコンピューティングの最適化にどれだけ優れているかのテストを試行します。ただし、今回のテストでは、Lambda@Edgeについては当社のRust関数にネイティブに対応するにはお客様自身でコンパイルしたWASMバイナリをアップロードする必要があるため、Rustテストは実施しませんでした。Lambda@EdgeにはRustを実行するための最適な開発者プラットフォームとツールがないため、Lambda@EdgeのRustのシナリオは除外することにしました。そのため、Lambda@Edgeの数値の比較は、JavaScriptの単純テストとJavaScriptのハードテストのみが対象となります。</p>
+	<pre class="language-rust"><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
+  let mut value = 0;
+  let offset = Date::now().as_millis();
+
+  for n in 0..15000 {
+    value += (((offset + n) as f64).sin().abs() * 10.0) as i32;
+  }
+
+  value
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="measuring-workers-performance-from-real-users">実際のユーザーからのWorkersパフォーマンスの測定</h3>
+		<a href="https://blog.cloudflare.com/#measuring-workers-performance-from-real-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>データの収集は、Catchpointと呼ばれるサードパーティサービスと、当社独自のネットワークパフォーマンスベンチマークテストの2つの異なる方法を用いて行います。まず、Catchpointを使用して、一連のプローブ合成データを収集しました。Catchpointは、業界標準の「合成」テストツールであり、世界中に分散している実際のユーザーからの収集値を測定します。Catchpointは、世界中に分散した合計約2,000ものエンドポイントを有するモニタリングプラットフォームであり、テストごとに特定のリソースと時間を取得するように設定することができます。Catchpointは、負荷に対するエンドツーエンドのパフォーマンスを測定するための一貫性のある反復可能な方法を提供し、ユーザーにとってのベストエフォートの近似値を提供するため、当社のようなネットワークプロバイダーにとって有用です。</p>
+	<p>Catchpointには、世界中のISPに組み込まれたバックボーンノードがあります。つまり、これらのノードは利用者と同じようにISPルーターに接続され、トラフィックはISPネットワークを経由して監視対象の各エンドポイントに到達します。これらは、実際のユーザーに近い形で再現することはできますが、本当の意味で実際のユーザーを再現することはできません。たとえば、これらのノードの帯域幅は100%がプラットフォームの監視に占有されるのに対し、自宅のインターネット接続では、インターネット体験はさまざまなユースケースが混在することになり、中にはWorkersアプリケーションとまったく通信しないものもあります。</p>
+	<p>今回新しく行ったテストでは、世界中のラストワンマイルとなるISPに組み込まれている300のバックボーンノードを選択しました。クラウドプロバイダーのノードや、複数のトランジットオプションがある都市圏のノードを除外し、重複する経路を可能な限り排除するようにしました。</p>
+	<p>これらのテストは、私たちがグローバルネットワークのパフォーマンスに関するデータを収集するのと同じように、無料のWebサイトに接続したユーザーが1XXXエラーページを受信した際に収集される独自のデータセットとのクロスチェックを行っています。このエラーページが表示されると、レンダリングの一部としてこれらのテストが実行され、これらの呼び出しに関するパフォーマンスメトリックがCloudflareにアップロードされます。</p>
+	<p>また、テスト方法を、Fastly、Cloudflare、AWSの有料アカウントを使用するように変更しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-vs-compute-edge-vs-lambda-edge">Workers、Compute@Edge、Lambda@Edgeの比較</h3>
+		<a href="https://blog.cloudflare.com/#workers-vs-compute-edge-vs-lambda-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今回は、エンドツーエンドでどのようなことを行っているかを示すために応答時間から見ていきましょう：</p>
+	<p>テスト</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sgSlifjq7RN2dY3PmMsLx/5cc8c3da5cf125eea83b70c8a54c5e2b/1-6.png" alt="" class="kg-image" width="1600" height="644" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile response (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>479</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>634</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>1,400</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>471</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>683</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>1,411</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>472</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>638</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>95パーセンタイル応答（ミリ秒）</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27QZQA1el04bLrd5p4DsT3/78a26822a2905949c1b3f365f4bdbdc3/2-1.png" alt="" class="kg-image" width="1600" height="652" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile connect (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>295</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>297</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>79</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>94</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare JavaScriptノーオペレーション命令</p>
+	<p>479</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jtejZz6fmJ43QDINfl7M8/cc35ce4e499c5daf9bdcdfe7b5474457/3-1.png" alt="" class="kg-image" width="1600" height="645" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile wait (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>110</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>122</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>362</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>115</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>178</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>367</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>122</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Fastly JavaScriptノーオペレーション命令</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UcLVMWthz8awwRUYPqKyN/27121f38e03dc2f849061a04ce809742/4-1.png" alt="" class="kg-image" width="1600" height="578" loading="lazy">
+
+	</figure>
+	<p>634</p>
+	<p>AWS JavaScriptノーオペレーション命令</p>
+	<p>1,400</p>
+	<p>Cloudflare JavaScriptハード関数</p>
+	<p>471</p>
+	<p>Fastly JavaScriptハード関数</p>
+	<p>683</p>
+	<p>AAWS JavaScriptハード関数</p>
+	<p>1,411</p>
+	<p>Cloudflare Rustハード関数</p>
+	<p>472</p>
+	<p>Fastly Rustハード関数</p>
+	<p>638</p>
+	<p>すべてのケースで当社が最速です。次に、実際の演算処理が実行される前の、ユーザーがコンピュートプラットフォームに接続する速度を示す接続時間を見てみましょう。</p>
+	<p>テスト</p>
+	<p>95パーセンタイル接続（ミリ秒）</p>
+	<p>Cloudflare JavaScriptノーオペレーション命令</p>
+	<p>82</p>
+	<p>Fastly JavaScriptノーオペレーション命令</p>
+	<p>94</p>
+	<p>AWS JavaScriptノーオペレーション命令</p>
+	<p>295</p>
+	<p>Cloudflare JavaScriptハード関数</p>
+	<p>82</p>
+	<p>Fastly JavaScriptハード関数</p>
+	<p>94</p>
+	<p>AWS JavaScriptハード関数</p>
+	<p>297</p>
+	<p>Cloudflare Rustハード関数</p>
+	<p>79</p>
+	<p>Fastly Rustハード関数</p>
+	<p>94</p>
+	<p>なお、これらの時間は、実行されているコードによって異なることは想定されていませんが、同じテストのセットから抽出しているため、ここで分割しています。</p>
+	<p>それでは、待機時間についてはどうでしょうか？待機時間はリクエストの_演算_にかかった時間を表しています。では、一番プラットフォームを最適化しているのはどこでしょうか？ハード関数によるRustテストではFastlyがまだわずかに優勢（さらなる最適化で打ち負かす予定です）ではあるものの、ここでもCloudflareです。</p>
+	<p>テスト</p>
+	<p>95パーセンタイル待機（ミリ秒）</p>
+	<p>Cloudflare JavaScriptノーオペレーション命令</p>
+	<p>110</p>
+	<p>Fastly JavaScriptノーオペレーション命令</p>
+	<p>122</p>
+	<p>AWS JavaScriptノーオペレーション命令</p>
+	<p>362</p>
+	<p>Cloudflare JavaScriptハード関数</p>
+	<p>115</p>
+	<p>Fastly JavaScriptハード関数</p>
+	<p>178</p>
+	<p>AWS JavaScriptハード関数</p>
+	<p>367</p>
+	<p>Cloudflare Rustハード関数</p>
+	<p>125</p>
+	<p>Fastly Rustハード関数</p>
+	<p>122</p>
+	<p>これらの結果を検証するため、Catchpointの結果を当社独自のデータセットと比較しました。以下は、当社のデータから、Fastly、AWS、CloudflareのJavaScriptとRustのハード関数ループのp95 TTFBを示したものです：</p>
+	<p>CloudflareはJavaScriptとRustの呼び出しが高速です。これらの数字は、Rustの呼び出しにおけるFastlyのわずかな演算処理の優位性も裏付けています。</p>
+	<p>ここから得られる重要なポイントは、ほぼすべてのテストでリクエスト処理にかかる時間でCloudflareが高速であることに加えて、Cloudflareのネットワークとパフォーマンスの最適化全体で他と一線を画し、Workersプラットフォームをすべてにおいてさらに高速にできるという点です。もちろん、今後もこの状態を継続していく予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="your-application-but-faster">あなたのアプリケーションを、より高速に</h3>
+		<a href="https://blog.cloudflare.com/#your-application-but-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>レイテンシーはユーザーエクスペリエンスにとって重要な要素であるとともに、ユーザーが可能な限り高速に処理できることを保証できることは、アプリケーションを成功させるために開発者にとっても欠かせない要素です。Workers、D1、R2でアプリケーションを構築したり、Pagesでドキュメントをホストしたり、SaaSプラットフォームの一部としてWorkersを活用する場合でも、当社のグローバルネットワークであるSuperCloudでコードを実行することで、ユーザーに可能な限り最高の体験を提供できます。</p>
+	<p>当社のネットワークは、お客様のコードを可能な限り高速化するために超最適化されています。アプリケーションの実行にCloudflareのネットワークを使用すれば、Cloudflareが最高のユーザー体験を提供していることを容易に知ることになり、お客様は可能な限り最高のアプリケーションを作ることに集中できます。これは、Cloudflareの開発者プラットフォームが、<a href="https://blog.cloudflare.com/network-performance-update-cloudflare-one-week-june-2022">世界最速のネットワーク</a>の上に構築されているからです。さあ、一歩踏み出して、私たちと共にいち早くあなたの夢を実現しましょう。</p>
+</div>

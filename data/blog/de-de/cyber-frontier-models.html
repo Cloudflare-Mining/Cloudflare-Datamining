@@ -1,0 +1,285 @@
+<div class="mb2 gray5">Lesezeit: 9&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cyber-frontier-models">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cyber-frontier-models">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cyber-frontier-models">Français</a>, <a href="https://blog.cloudflare.com/it-it/cyber-frontier-models">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/cyber-frontier-models">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cyber-frontier-models">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/cyber-frontier-models">Português</a>, <a href="https://blog.cloudflare.com/es-es/cyber-frontier-models">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/cyber-frontier-models">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-cn/cyber-frontier-models">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y625m3YXlvfZAoQZZp8vW/a0a33ce98166cab55e038eafe6b43ac8/unnamed__67_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>In den letzten Monaten haben wir auf unserer eigenen Infrastruktur eine Reihe von sicherheitsbezogenen LLM getestet. Sie helfen uns beim Aufspüren zu behebender Schwachstellen in unseren eigenen Systemen. Außerdem zeigen sie auf, wozu Angreifer mit den neuesten Modellen in der Lage sind.</p>
+	<p>Keines dieser LLM hat mehr Aufmerksamkeit erregt als Mythos Preview von Anthropic. Vor ein paar Wochen wurden wir eingeladen, Mythos Preview im Rahmen von <a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener noreferrer"><u>Project Glasswing</u></a> zu verwenden. Schon bald haben wir die Lösung auf mehr als fünfzig unserer eigenen Repositorys angesetzt. Wir wollten sehen, was sie finden würde und wie sie funktioniert. </p>
+	<p>An dieser Stelle wollen wir unsere Beobachtungen beschreiben und darauf eingehen, wo sich die Modelle gut geschlagen haben und wo nicht. Außerdem beschäftigen wir uns mit der Frage, wie die Architektur und Prozesse, die sie umgeben, angepasst werden müssen, damit sie in großem Stil eingesetzt werden können.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-changed-with-mythos-preview">Was sich mit Mythos Preview geändert hat</h2>
+		<a href="https://blog.cloudflare.com/#what-changed-with-mythos-preview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mythos Preview stellt einen echten Fortschritt dar, das wollen wir hier zunächst klipp und klar feststellen. Wir legen unseren Programmcode schon seit einiger Zeit solchen Modellen vor. Deshalb können wir sagen, dass die heutige Performance von Mythos Preview mehr als eine Verfeinerung dessen ist, wozu frühere allgemeine Frontier-Modelle in der Lage waren&nbsp;– hier wurde ein echter Sprung vollzogen.</p>
+	<p>Wir haben es mit einer anderen Art von Werkzeug zu, das eine andere Art von Arbeit verrichtet. Das erschwert den direkten Vergleich mit früheren Modellen. Anstatt Mythos Preview allgemeinen Frontier-Modellen gegenüberzustellen, ist es zielführender, zu beschreiben, was die Lösung tatsächlich leisten kann. Zwei Funktionen sind uns bei unserer Arbeit mit Mythos Preview besonders aufgefallen:</p>
+	<ul>
+		<li>
+			<p><b>Erstellung einer Exploit-Kette:</b> Ein echter Angriff stützt sich selten nur auf einen einzigen Fehler im System. Vielmehr werden mehrere kleinere Elemente zu einem wirksamen Exploit verknüpft. So könnte beispielsweise ein „Use After Free“-Fehler in eine beliebige Lese- und Schreiboperation umgewandelt, der Kontrollfluss gekapert und mithilfe von ROP (Return-Oriented Programming)-Ketten die vollständige Kontrolle über ein System übernommen werden. Mythos Preview ist in der Lage, mehrere dieser Einzelbausteine zu berücksichtigen und abzuleiten, wie sie sich zu einem echten Verwundbarkeitsnachweis kombinieren lassen. Die dabei dargelegte Argumentationskette ähnelt der Arbeit eines erfahrenen Experten, nicht dem von einem automatischen Scanner gelieferten Ergebnis.</p>
+		</li>
+		<li>
+			<p><b>Erstellung von Nachweisen:</b> Einen Fehler aufzuspüren und nachzuweisen, dass er ausgenutzt werden kann, sind zwei Paar Schuhe. Mythos Preview kann beides. Das Produkt schreibt ein Programm, das den vermuteten Fehler auslösen würde, kompiliert diesen Quellcode in einer Testumgebung und führt ihn aus. Wenn sich das Programm so verhält wie vom Modell erwartet, ist der Nachweis erbracht. Ist das nicht der Fall, erfasst das Modell den Fehler, passt seine Hypothese an und versucht es erneut. Dieser Kreislauf hat ebenso große Bedeutung wie die aufgespürten Fehler, denn eine vermutete Schwäche ohne praktischen Beleg ist lediglich Spekulation. Mythos Preview schließt diese Lücke eigenständig.</p>
+		</li>
+	</ul>
+	<p>Einiges von dem, was wir gerade beschrieben haben, ist nicht auf Mythos Preview beschränkt. Andere dem gleichen Testverfahren unterzogenen Frontier-Modelle haben eine große Zahl derselben zugrunde liegenden Fehler aufgespürt und in manchen Fällen sind sie auch in ihrer Argumentation weitergekommen als von uns erwartet. Wo sie jedoch nicht überzeugt haben, war beim Zusammensetzen der Einzelteile. So haben einzelne Modelle einen interessanten Bug identifiziert, eine gut durchdachte Erklärung dazu verfasst, warum dieser von Bedeutung ist, es dann jedoch dabei belassen. Die begonnene Argumentationskette blieb unvollendet und die Frage der Ausnutzbarkeit wurde nicht beantwortet. Anders sieht das mit Mythos Preview aus: Ein Modell kann nun eine Reihe harmloser erscheinender Fehler (die normalerweise unsichtbar auf ihre Bearbeitung warten) zu einem einzigen, schwerwiegenderen Exploit verknüpfen.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="model-refusals-in-legitimate-vulnerability-research">Verweigerung des Modells bei legitimer Erforschung von Schwachstellen</h2>
+		<a href="https://blog.cloudflare.com/#model-refusals-in-legitimate-vulnerability-research" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das von Anthropic im Rahmen von Project Glasswing bereitgestellte Mythos Preview-Modell weist nicht die zusätzlichen Schutzvorkehrungen auf, mit denen die der Allgemeinheit zugänglichen Modelle (wie Opus&nbsp;4.7 oder GPT-5.5) ausgestattet sind.</p>
+	<p>Trotzdem widersetzt sich das Modell bestimmten Anfragen organisch. Ähnlich wie seine für die Jagd auf Schwachstellen nützlichen Cyberfunktionen enthält es eigene, sich entwickelnde Schutzmechanismen. Aufgrund dieser widersetzt es sich manchmal legitimen Anfragen, die der Sicherheitsforschung dienen. Allerdings haben wir festgestellt, dass diese organischen Ablehnungen keinem bestimmten Muster folgen: Wird dieselbe Aufgabe anders formuliert oder in einem anderen Kontext präsentiert, kann sie zu völlig unterschiedlichen Ergebnissen führen. Dies ist veranschaulichen die folgenden Beispiele.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5St6rLRq9wkuxwmLHZ88CV/b4eb948c917ef7f7b0028ccc8ec0aefe/image2.png" alt="" class="kg-image" width="1242" height="716" loading="lazy">
+	</figure>
+	<p><i><sup>Beispiel für eine Weigerung von Mythos Preview, ein funktionierendes Proof of Concept zu erstellen&nbsp;</sup></i></p>
+	<p>Das Modell hat sich beispielsweise zunächst geweigert, Schwachstellenforschung für ein Projekt durchzuführen. Nach einer nicht damit in Verbindung stehenden Änderung an der Projektumgebung hat es dann aber derselben Forschung am gleichen Quellcode doch zugestimmt. An dem zu analysierenden Programmcode hatte sich nichts geändert.
+
+		In einem anderen Fall hat das Modell mehrere schwerwiegende Speicherfehler in einer Codebasis gefunden und bestätigt, sich aber geweigert, einen Exploit zu Demonstrationszwecken zu erstellen. Anders formuliert ergab die gleiche Anfrage jedoch eine andere Antwort. Selbst ohne Umformulierung kann die gleiche Anfrage aufgrund der probabilistischen Natur des Modells bei verschiedenen Durchläufen unterschiedliche Ergebnisse liefern. Semantisch gleichwertige Aufgaben können entgegengesetzte Ergebnisse hervorbringen, je nachdem, wie und wann sie dem Modell vorgelegt werden.</p>
+	<p>Das ist deshalb von Bedeutung, weil organische Verweigerungen&nbsp;/ Schutzmaßnahmen innerhalb des Modells zwar vorkommen, aber nicht so konsequent sind, dass sie als alleinige Grenzlinie geeignet wären. Aus diesem Grund muss jedes gut funktionierende Frontier-Cybermodell, das künftig der breiten Öffentlichkeit zur Verfügung gestellt wird, über dieses grundlegende Verhalten hinaus zusätzliche Sicherheitsmaßnahmen umfassen. Nur dann ist es für einen weiter gefassten Einsatz außerhalb eines kontrollierten Forschungskontexts wie dem von Project Glasswing geeignet.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-signal-to-noise-problem">Viele Störsignale</h2>
+		<a href="https://blog.cloudflare.com/#the-signal-to-noise-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der Priorisierung von Sicherheitslücken besteht eine der schwierigsten Aufgaben darin, zu entscheiden, welche Fehler real sind, welche ausgenutzt werden könnten und welche sofort behoben werden müssen. Das war schon in einer Zeit vor Existenz der KI eine große Herausforderung. KI-gestützte Schwachstellenscanner und KI-generierter Quellcode haben das Problem nun noch verschärft. Um es zu meistern, haben wir bei Cloudflare etliche Nachprüfungsstufen entwickelt.</p>
+	<p>Zwei Faktoren sind bezüglich der Störsignale besonders wichtig:</p>
+	<ul>
+		<li>
+			<p><b>Programmiersprache:</b> C und C++ geben Ihnen direkte Kontrolle über den Speicher und damit Fehlerklassen (wie Pufferüberläufe, Lese- und Schreibvorgänge außerhalb des zulässigen Bereichs), die bei speichersicheren Sprachen wie Rust zur Kompilierungszeit beseitigt werden. Bei Projekten, die in nicht speichersicheren Sprachen geschrieben wurden, haben wir durchgehend mehr Fehlalarme verzeichnet.</p>
+		</li>
+		<li>
+			<p><b>Modellbefangenheit:</b> Ein guter menschlicher Forscher sagt Ihnen, was er gefunden hat und wie sicher er sich diesbezüglich ist. Modelle tun das nicht. Wenn Sie ein Modell auffordern, Fehler zu finden, wird es das tun&nbsp;– unabhängig davon, ob der Programmcode tatsächlich welche enthält oder nicht. Die Antworten beinhalten dann einfach weitaus häufiger Einschränkungen wie „möglicherweise“, „potenziell“, „könnte theoretisch“ und die Zahl der verlässlichen Ergebnisse ist deutlich niedriger. Diese Schieflage ist bei einem Werkzeug, das zur Erkundung gedacht ist, durchaus sinnvoll. Doch bei einer Warteschlange mit Fehlern, über deren Dringlichkeit entschieden werden muss, ist sie fatal. Denn die Überprüfung solcher spekulativen Befunde bindet menschliche Aufmerksamkeit und verschlingt eine große Zahl von Token, was bei tausendfacher Wiederholung die Kosten schnell in die Höhe treibt.</p>
+		</li>
+	</ul>
+	<p>Mythos Preview stellt hier insbesondere aufgrund der Fähigkeit des Modells, Einzelelemente miteinander zu verketten, eine deutliche Verbesserung dar. Denn so können mehrere Schwachstellen in ein funktionierendes Proof of Concept (PoC) integriert werden, anstatt sie isoliert zu melden. Auf einen Befund, bei dem das PoC gleich mitgeliefert wird, können Sie reagieren. Somit verbringen Sie weit weniger Zeit damit, sich zu fragen, ob der Fehler überhaupt existiert.</p>
+	<p>Unsere Systeme sind bewusst so eingestellt, dass sie zu viele Warnmeldungen generieren, damit wir mehr erkennen (und weniger übersehen). Allerdings geht das auch mit erheblich mehr Störsignalen einher. Bei der Triage erweisen sich die Ergebnisse von Mythos Preview aber als von spürbar höherer Qualität: weniger vage Befunde, klarere Schritte für das Nachvollziehen und ein geringer Aufwand bei der Entscheidung, ob etwas behoben werden muss oder ignoriert werden kann.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work">Warum es nicht funktioniert, einem gewöhnlichen Coding-Agenten ein Repository vorzulegen</h2>
+		<a href="https://blog.cloudflare.com/#why-pointing-a-generic-coding-agent-at-a-repo-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Als wir im letzten Jahr mit der KI-gestützten Erforschung von Schwachstellen begonnen haben, war unser naheliegende Instinkt, einen allgemeinen Coding-Agenten auf ein beliebiges Repository anzusetzen und ihn darin nach Schwachstellen suchen zu lassen. Das funktioniert insofern, als das Modell Ergebnisse liefert. Diese Vorgehensweise erlaubt aber weder eine sinnvolle Abdeckung einer echten Codebasis noch die Gewinnung nützlicher Erkenntnisse. Das hat vor allem zwei Gründe:</p>
+	<ul>
+		<li>
+			<p><b>Kontext:</b> Programmier-Agenten sind auf ein klar abgegrenztes Aufgabenfeld ausgelegt: eine Funktion entwickeln, einen Fehler beheben, das Programm für ein Refactoring verfassen. Sie verarbeiten eine große Menge Quellcode, prüfen jeweils nur eine einzige Hypothese und führen darauf basierend Iterationen durch. Das ist jedoch genau der falsche Ansatz für die Schwachstellenforschung, die von Natur aus eng gefasst und parallel verläuft. Ein menschlicher Forscher wählt ein bestimmtes Problemfeld aus, das er gründlich untersucht. Dabei kann es sich um eine einzelne komplexe Funktion handeln, um das Übertreten von Sicherheitsschwellen oder um eine bestimmte Kategorie von Schwachstellen wie Befehlsinjektionen, bei denen Eingaben des Angreifers als Shell-Befehl ausgeführt werden. Dann wird der Vorgang für eine andere Funktion, Sicherheitsschwelle oder Schwachstellenkategorie wiederholt&nbsp;– mehrere tausend Mal für den gesamten Quellcode. Eine einzelne Agenten-Sitzung (selbst mit Unteragenten) bei einem Repository mit hunderttausend Zeilen kann vielleicht ein Zehntelprozent der Oberfläche sinnvoll abdecken, bevor sich das Kontextfenster des Modells füllt und die Komprimierung einsetzt&nbsp;– wodurch möglicherweise frühere, relevante Ergebnisse verworfen werden.</p>
+		</li>
+		<li>
+			<p><b>Durchsatz:</b> Ein Single-Stream-Agent führt jeweils nur eine Aufgabe aus, doch für echte Codebasen sind viele Hypothesen in Bezug auf zahlreiche Komponenten gleichzeitig erforderlich&nbsp;– mit der Möglichkeit weiterer Verzweigungen, falls sich etwas Interessantes ergibt. Man kann einen einzelnen Agenten zwar stärker beanspruchen, aber ab einem bestimmten Punkt wird man nicht mehr durch das Modell eingeschränkt, sondern durch die Form der Interaktion selbst. Die direkte Verwendung des Modells in einem Programmier-Agenten erweist sich als gut geeignet für händische Untersuchungen, wenn ein Forscher bereits eine Spur hat und eine zweite Meinung einholen möchte. Es ist jedoch das falsche Werkzeug, wenn eine hohe Abdeckung erreicht werden soll. Als wir das eingesehen hatten, haben wir aufgehört, Mythos Preview für die falsche Aufgabe einzusetzen. Stattdessen haben wir begonnen, das Gerüst darum herum zu erschaffen.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="what-a-harness-actually-fixes">Was sich mit einem Gerüst tatsächlich beheben lässt</h2>
+		<a href="https://blog.cloudflare.com/#what-a-harness-actually-fixes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aus der Durchführung des Projekts in großem Maßstab haben wir vier Erkenntnisse gewonnen. Diese lassen alle darauf schließen, dass zur Steuerung der gesamten Ausführung ein Grundgerüst erforderlich ist:</p>
+	<ul>
+		<li>
+			<p><b>Ein begrenzterer Fokus führt zu besseren Ergebnissen:</b> Wenn man dem Modell die Anweisung „Finde Schwachstellen in diesem Repository“ gibt, lässt man es im Trüben fischen. Sagt man ihm hingegen „Such nach Befehlsinjektionen in dieser bestimmten Funktion, mit dieser darüber liegenden Vertrauensgrenze; hier sind die Architekturdokumentation und die bisherige Berichterstattung zu diesem Bereich“, führt es etwas aus, was der tatsächlichen Vorgehensweise eines Forschers viel stärker ähnelt.</p>
+		</li>
+		<li>
+			<p><b>Gegenprüfung reduziert Störsignale:</b> Durch Einfügen eines zweiten Agenten&nbsp;– mit einem anderen Prompt, einem anderen Modell und ohne die Fähigkeit, eigene Ergebnisse zu erzeugen&nbsp;– zwischen dem ursprünglichen Ergebnis und der Warteschlange werden viele Störsignale abgefangen, die der erste Agent übersehen würde, wenn er lediglich seine eigene Arbeit überprüfen würde. Es hat sich herausgestellt, dass es weitaus effektiver ist, zwei Agenten bewusst in Widerspruch zueinander zu bringen, als nur einem Agenten zu sagen, er solle vorsichtig sein.</p>
+		</li>
+		<li>
+			<p><b>Die Aufteilung der Kette auf verschiedene Agenten führt zu besseren Schlussfolgerungen: </b> „Enthält dieser Code Fehler?“ und „Kann ein Angreifer diesen Fehler tatsächlich von außerhalb des Systems aus erreichen?“ sind zwei unterschiedliche Fragen. Das Modell liefert für jede einzelne Frage bessere Ergebnisse, wenn man sie getrennt stellt, da jede Frage enger gefasst ist als eine kombinierte Version.</p>
+		</li>
+		<li>
+			<p><b>Parallele, eng gefasste Aufgaben liefern bessere Ergebnisse als ein einziger, umfassender Agent:</b> Die Abdeckung verbessert sich, wenn viele Agenten an eng gefassten Fragen arbeiten und man die Ergebnisse anschließend zusammensetzt, anstatt einen übergeordneten Agenten mit der gesamten Frage zu betrauen.</p>
+		</li>
+	</ul>
+	<p>Jede dieser Beobachtungen betrifft das Modellverhalten und zusammengenommen beschreiben sie etwas, das keine Chat-Oberfläche mehr ist. Es handelt sich um ein Grundgerüst, das dabei hilft, zu den endgültigen Ergebnissen zu gelangen. Die ersten Schritte zum Erstellen dieses Gerüsts sind leicht, da man das Modell um Unterstützung bitten kann. Genau das haben wir getan: Wir haben Mythos Preview zur Anpassung und Verbesserung unserer ursprünglichen Gerüste eingesetzt, um ihre Stärken optimal nutzen zu können.
+
+		Ein Beispiel dafür, wie ein solches Grundgerüst in der Praxis aussieht, wird unten beschrieben.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-vulnerability-discovery-harness">Unser Werkzeug zum Aufspüren von Sicherheitslücken</h2>
+		<a href="https://blog.cloudflare.com/#our-vulnerability-discovery-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hier ist unser Gerüst zur Ermittlung von Schwachstellen&nbsp;– Abschnitt für Abschnitt. Damit wurde Produktivcode in unserer Laufzeitumgebung, dem Edge-Datenpfad, dem Protokoll-Stack, der Steuerungsebene und den Open Source-Projekten, auf die wir zurückgreifen, gescannt.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OhgJDEeyc5aq8EoF4yFJE/917c9a9d8a92d0920acb96f7d5cb66f6/image6.png" alt="" class="kg-image" width="1999" height="905" loading="lazy">
+	</figure>
+	<figure class="table table-style-block-align-left" style="width:97.66%;">
+		<table class="ck-table-resized" style="border-style:none;">
+			<colgroup>
+				<col style="width:11.55%;">
+				<col style="width:56.06%;">
+				<col style="width:32.39%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Phase</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Vorteil</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>Warum das wichtig ist</strong></span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png" data-ckbox-resource-id="822rcAA5ctaT" width="32" height="32" alt="">
+								</picture><br>
+								Auskundschaftung
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Ein Agent liest das Repository von oben nach unten, weist die Aufgaben den für die einzelnen Teilsysteme zuständigen Unteragenten zu und erstellt eine Architekturdokumentation mit Build-Befehlen, Vertrauensgrenzen, Einstiegspunkten und der voraussichtlichen Angriffsfläche. Zudem generiert er die ursprüngliche Aufgabenwarteschlange für die nächste Phase.&nbsp;&nbsp;</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Stellt jedem nachgelagerten Agenten einen gemeinsamen Kontext zur Verfügung. Löst das Problem des Herumstocherns im Nebel.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png" data-ckbox-resource-id="MZetX0ROffYM" width="31" height="31" alt="">
+								</picture>&nbsp;<br>
+								Bedrohungsjagd
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Jede Aufgabe besteht aus einer Angriffsklasse in Verbindung mit einem Hinweis zum Anwendungsbereich. Jäger (die Agenten, die tatsächlich nach Fehlern suchen) laufen parallel, in der Regel etwa fünfzig gleichzeitig, wobei sich jeder in eine Handvoll Erkundungs-Unteragenten aufteilt. Jeder Jäger hat Zugriff auf Werkzeuge, die Proof of Concept-Quellcode in einem aufgabenbezogenen Arbeitsverzeichnis kompilieren und ausführen.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Hier findet der Hauptteil der Arbeit statt. Viele eng gefasste Einzelaufgaben werden parallel abgearbeitet, nicht durch einen einzigen allumfassenden Agenten.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png" data-ckbox-resource-id="b0ZpxOYkUhjr" width="29" height="29" alt="">
+								</picture><br>
+								Kontrolle
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Ein unabhängiger Agent liest den Quellcode erneut und versucht, den ursprünglichen Befund zu widerlegen. Ihm wird eine andere andere Eingabeaufforderung gegeben und er hat keine Möglichkeit, eigene neue Erkenntnisse zu generieren.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Fängt einen bedeutenden Teil der Störsignale ab, die dem Jäger bei der Überprüfung seiner eigenen Arbeit entgehen würde.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png 68w" type="image/webp" sizes="(max-width: 68px) 100vw, 68px"><img src="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png" data-ckbox-resource-id="Y31tucc41jy0" width="28" height="28" alt="">
+								</picture><br>
+								Schließung von Lücken
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Jäger kennzeichnen Bereiche, mit denen sie in Berührung gekommen sind, die sie aber nicht vollständig untersucht haben. Diese Bereiche werden für einen weiteren Durchgang in eine Warteschlange aufgenommen.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Wirkt der Tendenz des Modells entgegen, sich auf Angriffsklassen zu konzentrieren, bei denen es bereits Erfolge verzeichnet hat.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png" data-ckbox-resource-id="lvNRuZ_yo_es" width="28" height="28" alt="">
+								</picture><br>
+								Beseitigung von Dubletten
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Befunde, die auf dieselbe Ursache verweisen, werden zu einem einzigen Datensatz zusammengefasst.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Die Variantenanalyse ist eine Funktion und kein Mittel, um die Warteschlange mit Dubletten zu überfrachten.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png" data-ckbox-resource-id="_rUjvs8wRMj1" width="29" height="29" alt="">
+								</picture><br>
+								Nachverfolgung
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Für jeden bestätigten Befund in einer gemeinsam genutzten Bibliothek wird ein Nachverfolgungs-Agent gestartet (eine Instanz pro Endnutzer-Repository). Dieser verwendet einen repositoryübergreifenden Symbolindex und ermittelt, ob vom Angreifer kontrollierte Eingaben von außerhalb des Systems den Fehler tatsächlich erreichen.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">So wird aus „es gibt eine Schwachstelle“ die Erkenntnis „es gibt eine ausnutzbare Schwachstelle“. Dies ist die entscheidende Phase.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png" data-ckbox-resource-id="ylBXj7IP-Thj" width="26" height="26" alt="">
+								</picture><br>
+								Feedback
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Aus erreichbaren Spuren werden neue Suchaufgaben in den Repositorys der Endnutzer, in denen der Fehler tatsächlich auftritt.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Damit schließt sich der Kreis. Je länger die Pipeline in Betrieb ist, desto besser das Ergebnis.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;"><strong>
+								<picture>
+									<source srcset="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png 51w" type="image/webp" sizes="(max-width: 51px) 100vw, 51px"><img src="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png" data-ckbox-resource-id="pDRKY2-VeUPg" width="27" height="27" alt="">
+								</picture><br>
+								Berichterstattung
+							</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Ein Agent verfasst einen strukturierten Bericht nach einem vordefinierten Schema, behebt alle Validierungsfehler gemäß diesem Schema und übermittelt den Bericht an eine API zur Datenaufnahme.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top;">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px;">Das Ergebnis ist kein frei formulierter Text, sondern Daten, die abgefragt werden können.</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-this-means-for-security-teams">Bedeutung für Sicherheitsteams</h2>
+		<a href="https://blog.cloudflare.com/#what-this-means-for-security-teams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die deutlichsten Reaktionen anderer Sicherheitsverantwortlicher auf Mythos Preview betrafen die Geschwindigkeit: schnelleres Scannen und Patchen ermöglichen eine Verkürzung des Reaktionszyklus. Mehr als ein Team, mit dem wir gesprochen haben, arbeitet mittlerweile nach einem SLA von zwei Stunden von der CVE-Veröffentlichung bis zum Patch im Produktivbetrieb. Der Ansatz ist verständlich: Wenn sich der Zeitrahmen für Angreifer verkürzt, müssen die Verteidiger mithalten. Doch Beschleunigung allein wird nicht ausreichen. Unserer Meinung nach sind viele Teams im Begriff, viel Zeit, Mühe und Geld darauf zu verwenden, dies auf die harte Tour zu lernen.</p>
+	<p>Schnellere Fehlerbehebung ändert nichts an der Struktur der Pipeline, die den Patch erzeugt. Wenn Regressionstests einen Tag dauern, lässt sich ein SLA von zwei Stunden nicht einhalten, ohne diese Tests zu überspringen&nbsp;– und die Fehler, die man beim Auslassen der Regressionstests in Kauf nimmt, sind in der Regel schwerwiegender als diejenigen, die man eigentlich beheben wollte. Wir haben eine ähnliche Erfahrung gemacht, als wir versuchten, das Modell seine eigenen Patches erstellen zu lassen. Dabei konnten wir beobachten, das in einigen Fällen zwar der ursprüngliche Fehler behoben, unbemerkt aber etwas anderes beschädigt wurde, wovon der Code abhängig war.</p>
+	<p>Die schwierigere Frage ist, wie die Architektur rund um die Sicherheitslücke aussehen sollte. Das Prinzip besteht darin, einem Angreifer die Ausnutzung zu erschweren, selbst wenn ein Fehler vorliegt. So verliert nämlich der Zeitraum zwischen der Bekanntgabe einer Sicherheitslücke und ihrer Behebung an Bedeutung. Dies bedeutet, dass Abwehrmaßnahmen, die eine Ausnutzung des Fehlers verhindern, der Applikation vorgeschaltet werden. Es bedeutet, die Anwendung so zu gestalten, dass ein Fehler in einem Teil des Quellcodes einem Angreifer keinen Zugriff auf andere Teile davon ermöglicht. Es bedeutet, in der Lage zu sein, einen Fix an jedem Ort, an dem der Quellcode ausgeführt wird, gleichzeitig bereitzustellen, anstatt darauf zu warten, dass die einzelnen Teams ihn implementieren.&nbsp;</p>
+	<p>Wir erkennen an, dass dieses Thema in beide Richtungen Auswirkungen hat. Die gleichen Funktionen, die uns dabei geholfen haben, Fehler in unserem eigenen Programmcode zu finden, erleichtern in den falschen Händen Angriffe auf jede Anwendung im Internet. Cloudflare ist Millionen dieser Applikationen vorgeschaltet und die oben beschriebenen Architekturprinzipien sind genau diejenigen, die unsere Produkte im Auftrag unserer Kunden anwenden sollen. In den kommenden Wochen werden wir näher darauf eingehen, was das für unsere Kunden bedeutet.</p>
+	<p>Falls Ihr Team an ähnlichen Projekten arbeitet und sich darüber austauschen möchte, schreiben Sie uns einfach an <a href="https://blog.cloudflare.com/#"><u>security-ai-research@cloudflare.com</u></a>.</p>
+	<p><i>Unsere Forschungsarbeiten mit Mythos Preview wurden in einer kontrollierten Umgebung auf Grundlage unserer eigenen Programmierrichtlinien durchgeführt. Jede dabei aufgedeckte Sicherheitslücke wurde im Rahmen des formellen Schwachstellenmanagements von Cloudflare geprüft, validiert und, sofern erforderlich, behoben.</i></p>
+	<p><i>Es handelt sich um eine Teamleistung. Herzlichen Dank an Albert Pedersen, Craig Strubhart, Dan Jones, Irtefa Fairuz, Martin Schwarzl und Rohit Chenna Reddy für ihre diesem Blogbeitrag zugrunde liegenden Beiträge zur Recherche, technischen Umsetzung und Auswertung.</i></p>
+</div>

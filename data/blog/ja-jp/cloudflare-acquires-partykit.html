@@ -1,0 +1,76 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-acquires-partykit">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-acquires-partykit">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-acquires-partykit">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/cloudflare-acquires-partykit">Português</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-acquires-partykit">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/cloudflare-acquires-partykit">Рyсский</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-partykit">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nSyJQb948NaUSlcwzcp98/04dc3e678d3b47c89ea5329c601a19b2/cloudflare-acquires-partykit.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>リアルタイムでコラボレーションが可能なマルチプレイヤー向けのアプリを展開するためのオープンソースプラットフォームであるPartyKitが、Cloudflareの一部となったことを発表します。この買収は、サーバーレスコンピューティングの枠組みを再定義し、よりダイナミックかつインタラクティブ、そして最も重視すべきステートフルを目指す私たちの旅において、重要な節目となります。</p>
+	<div class="flex anchor relative">
+		<h3 id="defining-the-future-of-serverless-compute-around-state">状態に関連したサーバーレスコンピューティングの未来を定義する</h3>
+		<a href="https://blog.cloudflare.com/#defining-the-future-of-serverless-compute-around-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webでリアルタイムアプリケーションを構築することは、決して簡単ではありません。それは分散システムの問題だけでなく、複数クライアントにわたって状態を維持するにはインフラストラクチャ、データベース、その他のサービスのプロビジョンと管理も必要だからです。こうした複雑性は従来から、多くの開発者、特に新規参入しようとする開発者の参入を阻むバリアになっていました。</p>
+	<p>当社は、Webの同期されたリアルタイム体験を構築する方法として、<a href="https://blog.cloudflare.com/introducing-workers-durable-objects">2020年にDurable Objectsを発表し</a>ました。一時的でステートレスな通常のサーバーレス機能とは異なり、Durable Objectsはステートフルであるため、開発者はリクエスト間で状態を維持するアプリを構築できます。また、複数のクライアント間で状態を維持する必要があるリアルタイムアプリを構築するための理想的な同期ポイントとしても機能します。Durable ObjectsはWebSocketsと組み合わせることで、マルチプレイヤーゲームから共同描画ツールまで、幅広いアプリの構築に使用することができます。</p>
+	<p>2022年、PartyKitはDurable Objectsの機能をさらに探求し、使い慣れたコンポーネントを通じて公開することで、開発者にとってより利用しやすいものにするプロジェクトとして始まりました。わずか数秒で、これらのオブジェクトの動作を設定したプロジェクトを作成し、Cloudflareにデプロイできます。<a href="https://github.com/yjs/yjs" target="_blank" rel="noopener noreferrer">Yjs</a>（共同編集におけるゴールドスタンダード）やReactなどの人気ライブラリと統合することで、PartyKitは開発者がマルチプレーヤーゲームから共同描画ツールまで、さまざまなユースケースをアプリに組み込めるようにしました。</p>
+	<p>リアルタイムコンポーネントを使ったエクスペリエンスの構築は、以前は数十億ドル規模の企業のみがアクセスできましたが、エッジ上のDurable Objectsのような新しいコンピューティングプリミティブの利用によって、一般の開発者やチームがアクセスできるようになりました。PartyKitを傘下に収めた当社は、つまりサーバーレスがステートフルになる未来へのコミットメントを一層強化しています。</p>
+	<p>アプリに関する私たちの共通のビジョンと、一緒に簡素化することを楽しみにしているユースケースのプレビューを提供できることを嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h3 id="making-state-for-serverless-easy">サーバーレスへの移行を容易にする</h3>
+		<a href="https://blog.cloudflare.com/#making-state-for-serverless-easy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>従来のアプローチでは、外部データベースに依存して状態を維持するため、スケーラビリティが複雑になり、コストが増加します。これとは異なり、PartyKitはCloudflareのDurable Objectsを活用して、ステートフルなサーバーレス機能が1台のマシンで実行されているかのように動作し、リクエスト間で状態を維持するシームレスなモデルを提供しています。このイノベーションは、開発を簡素化するだけでなく、何千もの「マシン」がグローバルにスピンアップされ、それぞれが独自の状態を維持できることにより、リアルタイムコンピューティング、共同編集、マルチプレイヤーゲーミングなど、より幅広いユースケースを切り拓きます。PartyKitは、従来のサーバーレスコンピューティングの補完を目指し、ステートフルな動作を必要とするアプリを開発するための、より直感的で効率的な方法を提供することにより、サーバーレスコンピューティングの「次の進化」を目指します。</p>
+	<div class="flex anchor relative">
+		<h3 id="simplifying-websockets-for-real-time-interaction">WebSocketsの簡略化によりリアルタイムインタラクションが実現</h3>
+		<a href="https://blog.cloudflare.com/#simplifying-websockets-for-real-time-interaction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebSocketsは、Web上の双方向通信に関する考え方を大きく変革しました。しかし、このような相互作用を何百万もの規模に滞りなく拡張することは、常に課題となっていました。Cloudflare Workersはその課題に立ち向かい、チャットサービス、マルチプレイヤーゲーム、コラボレーションツールなどのリアルタイムアプリを可能にするだけでなく、スケーラブルで効率的なものにするサーバーレスフレームワークを提供いたします。</p>
+	<div class="flex anchor relative">
+		<h3 id="powering-games-and-multiplayer-applications-without-limits">制限のないゲームとマルチプレイヤーアプリの強化</h3>
+		<a href="https://blog.cloudflare.com/#powering-games-and-multiplayer-applications-without-limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ゲームでラグが全くなく、シームレスなコラボレーションができ、ビデオ会議が非常に明瞭になるマルチプレイヤープラットフォームを構築する場面を想像してみてください。CloudflareのDurable Objectsは、ステートレスなサーバーレス環境を、永続的な接続が繁栄する領域に変えます。PartyKitがこのエコシステムに統合されたことで、開発者は、従来存在したオーバーヘッドなしで、野心的なマルチプレイヤービジョンを実現するための強力なツールキットを手に入れることができます。</p>
+	<p>これは特にゲーミングにおいて重要なことであり、低遅延とリアルタイムのインタラクションがこれほど重要になる分野は他にありません。ミリ秒単位、ラグ、遅延すべてが、エクスペリエンス全体に影響を及ぼします。PartyKitの機能がCloudflareに統合されたことで、開発者は当社の組み合わせ技術を活用し、スケーラブルで没入型、インタラクティブなプラットフォームのおかげで、単なるゲームプレイでなく、臨場感のあるゲーミングエクスペリエンスを生み出すことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-toolkit-for-building-local-first-applications">ローカルファーストアプリ構築のためのツールキット</h3>
+		<a href="https://blog.cloudflare.com/#the-toolkit-for-building-local-first-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットは素晴らしいもので、常時利用可能になってきていますが、航空機や列車での移動中、またはビーチなど、インターネットの切断を余儀なくされることはまだあります。</p>
+	<p>ローカルファーストのアプリの前提は、インターネットが停止しても、仕事が停止しないということです。ドキュメントで作業途中のものがあったとしても、オンラインに復帰すれば状態が復元されると仮定して、作業を継続できます。これらのアプリは、クライアントにデータを保存し、オンライン復帰時に同期することにより、比類ない耐障害性と応答性を提供します。PartyKitの技術によって強化されたCloudflareのビジョンは、ローカルファーストを単なる選択肢ではなく、アプリ開発の標準にすることを目指しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-partykit-users">PartyKitユーザーの次の期待は？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-partykit-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーは、既存のプロジェクトが期待どおりに機能し続けることを期待できます。既存のWorkersやPagesプロジェクト内でPartyKitプロジェクトを作成して使用する機能など、このプラットフォームにはさらなる機能を追加していく予定です。商業目的でPartyKitを利用する場合、Cloudflare Workersおよびその他のサービスの標準利用料金以外に追加料金はかかりません。さらに、React、Vue、Angularなどの人気のフレームワークやライブラリとの統合に向けてロードマップを拡大していく予定です。当社は、PartyKitのビジョンとロードマップの実現に全力で取り組んでおり、皆さんがそれを使って作成するものを見るのを楽しみにしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-beginning-of-a-new-chapter">新章の始まり</h3>
+		<a href="https://blog.cloudflare.com/#the-beginning-of-a-new-chapter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareによるPartyKitの買収は、当社の2つのチームにとって単なるマイルストーンではありません。あらゆる開発者にとっての飛躍的な前進です。当社は単にツールを構築しているのではなく、次世代インターネットアプリの基盤を皆さんと共に構築しているのです。サーバーレスの未来はステートフルです。PartyKitの技術が当社の武器の一部になったことにより、その未来を実現する準備がこれまで以上に整いました。</p>
+	<p>Cloudflareのチーム、PartyKitへようこそ。素晴らしいものを一緒に構築していきましょう。</p>
+</div>

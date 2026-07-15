@@ -1,0 +1,235 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/how-we-built-dmarc-management">English</a>, <a href="https://blog.cloudflare.com/zh-tw/how-we-built-dmarc-management">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/how-we-built-dmarc-management">Français</a>, <a href="https://blog.cloudflare.com/de-de/how-we-built-dmarc-management">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-we-built-dmarc-management">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-we-built-dmarc-management">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/how-we-built-dmarc-management">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3C6SZLukZv7Q3bQYTvLYjF/cb2e49c737ad330e401c5d8f1b5144b9/how-we-built-dmarc-management.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="what-are-dmarc-reports">Qué son los informes DMARC</h3>
+		<a href="https://blog.cloudflare.com/#what-are-dmarc-reports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3P7EqcZydcPUKVhQNdVwkr/55e20a63d7ae1ce2ff638c2818d7da58/How-we-built-DMARC-Management.png" alt="How we built DMARC Management" class="kg-image" width="1201" height="676" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record" target="_blank" rel="noopener noreferrer">DMARC</a> son las siglas de "Domain-based Message Authentication, Reporting, and Conformance" y hace referencia a la autenticación de mensajes, informes y conformidad basada en dominios. Es un protocolo de autenticación del correo electrónico que ayuda con la protección contra el <a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">phishing</a> y la <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing" target="_blank" rel="noopener noreferrer">suplantación</a> del correo electrónico.</p>
+	<p>Cuando se envía un correo electrónico, DMARC permite que el propietario del dominio configure un registro DNS que especifica qué métodos de autenticación, como por ejemplo <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record" target="_blank" rel="noopener noreferrer">SPF</a> (Sender Policy Framework) y <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record" target="_blank" rel="noopener noreferrer">DKIM</a> (DomainKeys Identified Mail), se utilizan para verificar la autenticidad del correo electrónico. Cuando el correo electrónico no pasa estas comprobaciones de autenticación, DMARC indica al proveedor de correo electrónico del remitente cómo manejar el mensaje, bien poniéndolo en cuarentena, bien rechazándolo.</p>
+	<p>Hoy en día, la importancia de DMARC está en aumento en Internet, donde los ataques de phishing y de suplantación del correo electrónico son cada vez más sofisticados y frecuentes. Mediante la implementación de DMARC, los propietarios de dominios pueden proteger su marca y a sus clientes contra las repercusiones negativas de estos ataques, como la pérdida de confianza, los daños a la reputación y las pérdidas financieras.</p>
+	<p>Además de proteger contra los ataques de phishing y de suplantación, DMARC también proporciona prestaciones de <a href="https://www.rfc-editor.org/rfc/rfc7489" target="_blank" rel="noopener noreferrer">informes</a>. Los propietarios de dominios pueden recibir informes sobre la actividad de autenticación del correo electrónico. Estos informes incluyen qué mensajes han pasado las comprobaciones de DMARC y cuáles no, así como el origen de estos mensajes.</p>
+	<p>La gestión de DMARC implica la configuración y el mantenimiento de políticas DMARC para un dominio. Una gestión de DMARC eficaz requiere la supervisión y el análisis continuados de la actividad de autenticación del correo electrónico, así como la capacidad de realizar ajustes y actualizaciones a las políticas DMARC según las necesidades.</p>
+	<p>Estos son algunos de los componentes principales de una gestión de DMARC eficaz:</p>
+	<ul>
+		<li>
+			<p>Configuración de políticas DMARC: implica configurar el registro DMARC del dominio para especificar los métodos de autenticación y las políticas adecuados para manejar los mensajes que no pasen las comprobaciones de autenticación. Este es el aspecto de un registro DNS DMARC:</p>
+		</li>
+	</ul>
+	<p><code>v=DMARC1; p=reject; rua=mailto:dmarc@example.com</code></p>
+	<p>Especifica que utilizaremos DMARC versión 1, que nuestra política rechazará los correos electrónicos si no pasan las comprobaciones de DMARC, y la dirección de correo electrónico a la que los proveedores deben enviar los informes DMARC.</p>
+	<ul>
+		<li>
+			<p>Supervisión de la actividad de autenticación del correo electrónico: los informes DMARC son una herramienta importante para que los propietarios de dominios puedan garantizar la seguridad y la capacidad de entrega del correo electrónico, así como la conformidad con los estándares y las normativas del sector. Mediante la supervisión y el análisis periódicos de los informes DMARC, los propietarios de dominios pueden identificar las amenazas de correo electrónico, optimizar las campañas de correo electrónico y mejorar la autenticación del correo electrónico a nivel global.</p>
+		</li>
+		<li>
+			<p>Realización de los ajustes necesarios: en función de los análisis de los informes DMARC, los propietarios de dominios pueden realizar ajustes en los métodos de autenticación o en las políticas DMARC para garantizar la autenticación y la protección adecuadas de los mensajes de correo electrónico contra los ataques de phishing y de suplantación.</p>
+		</li>
+		<li>
+			<p>Colaboración con proveedores de correo electrónico y externos: una gestión de DMARC eficaz puede requerir la colaboración con proveedores de correo electrónico y externos para garantizar la implementación y la aplicación adecuadas de las políticas DMARC.</p>
+		</li>
+	</ul>
+	<p>Hoy, anunciamos el lanzamiento de la solución <a href="https://blog.cloudflare.com/es-es/dmarc-management-es-es">DMARC Management</a>. Así es cómo la hemos desarrollado.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-it">Cómo la hemos desarrollado</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Como uno de los principales proveedores de soluciones de seguridad y rendimiento basadas en la nube, en Cloudflare adoptamos un enfoque determinado para probar nuestros productos. Somos los primeros usuarios en probar nuestros propios servicios y herramientas, lo que significa que los utilizamos para llevar nuestro negocio. Esto nos ayuda a identificar los problemas o errores antes de que afecten a nuestros usuarios.</p>
+	<p>Utilizamos nuestros productos internamente, como por ejemplo <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, una plataforma sin servidor que permite a los desarrolladores ejecutar su código en nuestra red global. Desde su lanzamiento en 2017, el ecosistema de Workers ha crecido de manera notable. Hoy en día, miles de desarrolladores desarrollan e implementan aplicaciones en la plataforma. La eficacia del ecosistema de Workers radica en su capacidad de permitir a los desarrolladores desarrollar sofisticadas aplicaciones cuya ejecución tan cerca de los clientes antes resultaba imposible o poco práctica. Workers se puede utilizar para desarrollar las API, para generar contenido dinámico, para optimizar imágenes, para realizar proceso en tiempo real y mucho más. Las posibilidades son prácticamente infinitas. Hemos utilizado Workers para servicios como <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">Radar 2.0</a> o para paquetes de software como <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare">Wildebeest</a>.</p>
+	<p>Recientemente, nuestro producto <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer">Email Routing</a> se unió a Workers, lo que permite <a href="https://blog.cloudflare.com/announcing-route-to-workers">procesar los correos electrónicos entrantes</a> mediante scripts de Workers. Como indica la <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer">documentación</a>: "Con Workers de correo electrónico puedes utilizar la eficacia de Cloudflare Workers para implementar cualquier lógica que necesites para procesar tus correos electrónicos y crear reglas complejas. Estas reglas determinan qué sucede cuando recibes un correo electrónico". Tanto las reglas como las direcciones verificadas se pueden configurar mediante nuestra <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses" target="_blank" rel="noopener noreferrer">API</a>.</p>
+	<p>Este es el aspecto de un Worker de correo electrónico sencillo:</p>
+	<p>Muy claro, ¿no?</p>
+	<pre class="language-js"><code class="language-js">export default {
+  async email(message, env, ctx) {
+    const allowList = ["friend@example.com", "coworker@example.com"];
+    if (allowList.indexOf(message.headers.get("from")) == -1) {
+      message.setReject("Address not allowed");
+    } else {
+      await message.forward("inbox@corp");
+    }
+  }
+}</code></pre>
+	<p>Con la capacidad de procesar mediante programación los correos electrónicos entrantes in situ, parece la manera perfecta de manejar los correos electrónicos de informes DMARC entrantes de forma escalable y eficaz, dejando que Email Routing y Workers se encarguen de la pesada tarea de recibir un número ilimitado de correos electrónicos de todo el mundo. Aquí tienes una descripción general de las tareas que necesitábamos hacer:</p>
+	<ol>
+		<li>
+			<p>Recibir el correo electrónico y extraer el informe</p>
+		</li>
+		<li>
+			<p>Publicar los detalles relevantes en la plataforma de análisis</p>
+		</li>
+		<li>
+			<p>Almacenar el informe sin procesar</p>
+		</li>
+	</ol>
+	<p>Los Workers de correo electrónico nos permiten realizar fácilmente la primera tarea. Solo debemos crear un worker con un controlador email(). Este recibirá los elementos de sobre <a href="https://www.rfc-editor.org/rfc/rfc5321" target="_blank" rel="noopener noreferrer">SMTP</a>, una versión preanalizada de los encabezados de correo electrónico y una secuencia para leer todo el correo electrónico sin procesar.</p>
+	<p>Para la segunda tarea, también podemos recurrir a la plataforma Workers, donde encontraremos <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>. Solo debemos definir un esquema adecuado, que depende tanto de lo que incluyan los informes como de las consultas que tengamos previsto realizar posteriormente. A continuación, podemos consultar los datos mediante la API <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL</a> o <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api" target="_blank" rel="noopener noreferrer">SQL</a>.</p>
+	<p>Para la tercera tarea, simplemente podemos utilizar nuestro almacenamiento de objetos <a href="https://www.cloudflare.com/en-gb/products/r2" target="_blank" rel="noopener noreferrer">R2</a>. El acceso a R2 desde un Worker es <a href="https://developers.cloudflare.com/r2/examples/demo-worker" target="_blank" rel="noopener noreferrer">extremadamente sencillo</a>. Una vez extraídos los informes del correo electrónico, los almacenaremos en R2 para la posteridad.</p>
+	<p>Hemos desarrollado esta solución como un servicio administrado que puedes activar en tu zona. También hemos añadido una interfaz de panel de control para tu comodidad. No obstante, en realidad dispones de todas las herramientas para implementar tu propio procesador de informes DMARC en Cloudflare Workers, en tu propia cuenta, sin tener que preocuparte por los servidores, la escalabilidad o el rendimiento.</p>
+	<div class="flex anchor relative">
+		<h3 id="architecture">Arquitectura</h3>
+		<a href="https://blog.cloudflare.com/#architecture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer">Workers de correo electrónico</a> es una función de nuestro producto Email Routing, que se ejecuta en todos nuestros nodos, por lo que cualquiera de ellos puede procesar el correo entrante. Esto es importante porque anunciamos el prefijo BGP de entrada de correo electrónico desde todos nuestros centros de datos. El envío de correos electrónicos a un Worker de correo electrónico es tan fácil como establecer una regla en el panel de control de Email Routing.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d55aU3WlGrgQcuc1TKPAF/a02a34f819174b82e768b0aed5053708/Screenshot-2023-03-16-at-4.18.08-PM.png" alt="" class="kg-image" width="2000" height="1146" loading="lazy">
+
+	</figure>
+	<p>Cuando el componente Email Routing recibe un correo electrónico que coincide con una regla para su entrega a un Worker, se pondrá en contacto con nuestra versión interna del tiempo de ejecución de <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>, que hace poco pasó a ser de código abierto, y que también se ejecuta en todos los nodos. El esquema RPC que controla esta interacción se define en un esquema <a href="https://github.com/capnproto/capnproto" target="_blank" rel="noopener noreferrer">Capnproto</a>, y permite la transmisión del cuerpo del correo electrónico a Edgeworker al leerlo. Si el script de worker decide reenviar este correo electrónico, Edgeworker se pondrá en contacto con Email Routing mediante una función enviada en la solicitud original.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tgjcPuXeJ3lJ9yLxQoPxz/7c9f34dd7ae03aeb2293e64df9ebf8e6/pasted-image-0--4--3.png" alt="" class="kg-image" width="1600" height="312" loading="lazy">
+
+	</figure>
+	<p>En el contexto de los informes DMARC, manejamos los correos electrónicos entrantes así:</p>
+	<pre class="language-js"><code class="language-js">jsg::Promise&lt;void&gt; ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional&lt;jsg::Ref&lt;Headers&gt;&gt; maybeHeaders) {
+  auto req = emailFwdr-&gt;forwardEmailRequest();
+  req.setRcptTo(rcptTo);
+
+  auto sendP = req.send().then(
+      [](capnp::Response&lt;rpc::EmailMetadata::EmailFwdr::ForwardEmailResults&gt; res) mutable {
+    auto result = res.getResponse().getResult();
+    JSG_REQUIRE(result.isOk(), Error, result.getError());
+  });
+  auto&amp; context = IoContext::current();
+  return context.awaitIo(kj::mv(sendP));
+}
+</code></pre>
+	<ol>
+		<li>
+			<p>Obtenemos el destinatario del correo electrónico que se está procesando, es decir, el registro RUA utilizado. El registro RUA es un parámetro de configuración de DMARC que indica dónde se debe notificar la información agregada de proceso de DMARC relativa a un dominio específico. Este destinatario se encuentra en el atributo "to" del mensaje.</p>
+			<p>const ruaID = message.to</p>
+		</li>
+		<li>
+			<p>Puesto que manejamos informes DMARC para un número ilimitado de dominios, utilizamos Workers KV para almacenar información sobre cada uno de ellos y especificar esta información acerca del registro RUA. Esto también nos permite saber si deberíamos recibir estos informes.</p>
+			<p>const accountInfoRaw = await env.KV_DMARC_REPORTS.get(dmarc:${ruaID})</p>
+		</li>
+		<li>
+			<p>En este punto, queremos leer todo el correo electrónico en arrayBuffer para analizarlo. En función del tamaño del informe, podemos encontrarnos con los límites del plan gratuito de Workers. Si sucede esto, te recomendamos que cambies al modelo de recursos <a href="https://www.cloudflare.com/en-gb/workers-unbound-beta" target="_blank" rel="noopener noreferrer">Workers Unbound</a> que no tiene esta limitación.</p>
+			<p>const rawEmail = new Response(message.raw)
+				const arrayBuffer = await rawEmail.arrayBuffer()</p>
+		</li>
+		<li>
+			<p>El análisis del correo electrónico sin procesar implica, entre otros, el análisis de sus componentes MIME. Varias bibliotecas disponibles permiten hacerlo. Por ejemplo, podrías utilizar <a href="https://www.npmjs.com/package/postal-mime" target="_blank" rel="noopener noreferrer">postal-mime</a>:</p>
+			<p>const parser = new PostalMime.default()
+				const email = await parser.parse(arrayBuffer)</p>
+		</li>
+		<li>
+			<p>Una vez analizado el correo electrónico, tenemos acceso a sus archivos adjuntos, que son los propios informes DMARC y pueden estar comprimidos. Lo primero que haremos será almacenarlos en su formato comprimido en <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage" target="_blank" rel="noopener noreferrer">R2</a> para su almacenamiento a largo plazo, ya que pueden ser útiles más adelante para volver a procesar o investigar informes de interés. Para ello, es tan sencillo como llamar a put() en el enlace R2. Para facilitar su posterior recuperación, recomendamos distribuir los archivos de informes en directorios basados en la hora actual.</p>
+			<p>await env.R2_DMARC_REPORTS.put(
+				<code>${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${attachment.filename}</code>,
+				attachment.content
+				)
+			</p>
+		</li>
+		<li>
+			<p>Ahora debemos buscar el tipo MIME del archivo adjunto. El formato sin procesar de los informes DMARC es XML, pero pueden estar comprimidos. Si es así, primero debemos descomprimirlos. Los archivos de informes DMARC pueden utilizar varios algoritmos de compresión. Utilizamos el tipo MIME para saber cuál utilizar. Para los informes comprimidos <a href="https://en.wikipedia.org/wiki/Zlib" target="_blank" rel="noopener noreferrer">Zlib</a> podemos utilizar <a href="https://www.npmjs.com/package/pako" target="_blank" rel="noopener noreferrer">pako</a>, mientras que para los archivos comprimidos ZIP, <a href="https://www.npmjs.com/package/unzipit" target="_blank" rel="noopener noreferrer">unzipit</a> es una buena opción.</p>
+		</li>
+		<li>
+			<p>Una vez que hemos obtenido el formato XML sin procesar del informe, <a href="https://www.npmjs.com/package/fast-xml-parser" target="_blank" rel="noopener noreferrer">fast-xml-parser</a> los ha analizado automáticamente. El formato XML del informe DMARC es el siguiente:</p>
+		</li>
+		<li>
+			<p>Ahora tenemos todos los datos del informe a nuestra disposición. Lo que hagamos con ellos dependerá mucho de cómo queramos presentarlos. En nuestro caso, el objetivo era mostrar información significativa extraída de ellos en nuestro panel de control. Por lo tanto, necesitábamos una plataforma de análisis donde pudiéramos enviar los datos enriquecidos. Aquí utilizamos <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>. Analytics Engine es perfecto para esta tarea, puesto que nos permite <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank" rel="noopener noreferrer">enviarle</a> datos desde un worker, y expone una <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a> para interactuar posteriormente con los datos. Así es cómo obtenemos los datos para que se muestren en nuestro panel de control.</p>
+		</li>
+	</ol>
+	<p>De cara al futuro, también estamos considerando la integración de <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a> en el flujo de trabajo para procesar de forma asíncrona el informe y evitar tener que esperar a que el cliente lo complete.</p>
+	<pre class="language-bash"><code class="language-bash">const ruaID = message.to</code></pre>
+	<p>Hemos conseguido implementar el proyecto de un extremo a otro basándonos exclusivamente en la infraestructura de Workers. Esto demuestra no solo que es posible el desarrollo de aplicaciones complejas sin tener que preocuparse acerca de la escalabilidad, el rendimiento, el almacenamiento y la seguridad, sino que también presenta ventajas.</p>
+	<pre class="language-bash"><code class="language-bash">const accountInfoRaw = await env.KV_DMARC_REPORTS.get(dmarc:${ruaID})</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="open-sourcing">Código abierto</h3>
+		<a href="https://blog.cloudflare.com/#open-sourcing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">const rawEmail = new Response(message.raw)
+const arrayBuffer = await rawEmail.arrayBuffer()</code></pre>
+	<p>Como hemos mencionado anteriormente, hemos desarrollado un servicio administrado que puedes activar y utilizar, y nosotros seremos los encargados de administrarlo. Sin embargo, tú también puedes implementar todo lo que hemos hecho, en tu cuenta, para poder administrar tus propios informes DMARC. Es fácil y gratuito. Para ayudarte, lanzamos una versión de código abierto de un Worker que procesa los informes DMARC de la forma descrita más arriba: <a href="https://github.com/cloudflare/dmarc-email-worker" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/dmarc-email-worker</a></p>
+	<pre class="language-bash"><code class="language-bash">const parser = new PostalMime.default()
+const email = await parser.parse(arrayBuffer)</code></pre>
+	<p>Si no tienes un panel de control donde mostrar los datos, también puedes <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying" target="_blank" rel="noopener noreferrer">consultar</a> Analytics Engine desde un Worker. O bien, si quieres almacenarlos en una base de datos relacional, <a href="https://developers.cloudflare.com/d1/platform/client-api" target="_blank" rel="noopener noreferrer">D1</a> puede ayudarte. Las posibilidades son infinitas. Estamos deseando saber que desarrollarás con estas herramientas.</p>
+	<pre class="language-bash"><code class="language-bash">await env.R2_DMARC_REPORTS.put(
+    `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${attachment.filename}`,
+    attachment.content
+  )</code></pre>
+	<p>Contribuye, crea tus propias herramientas, estaremos atentos.</p>
+	<pre class="language-bash"><code class="language-bash">&lt;feedback&gt;
+  &lt;report_metadata&gt;
+    &lt;org_name&gt;example.com&lt;/org_name&gt;
+    &lt;emaildmarc-reports@example.com&lt;/email&gt;
+   &lt;extra_contact_info&gt;http://example.com/dmarc/support&lt;/extra_contact_info&gt;
+    &lt;report_id&gt;9391651994964116463&lt;/report_id&gt;
+    &lt;date_range&gt;
+      &lt;begin&gt;1335521200&lt;/begin&gt;
+      &lt;end&gt;1335652599&lt;/end&gt;
+    &lt;/date_range&gt;
+  &lt;/report_metadata&gt;
+  &lt;policy_published&gt;
+    &lt;domain&gt;business.example&lt;/domain&gt;
+    &lt;adkim&gt;r&lt;/adkim&gt;
+    &lt;aspf&gt;r&lt;/aspf&gt;
+    &lt;p&gt;none&lt;/p&gt;
+    &lt;sp&gt;none&lt;/sp&gt;
+    &lt;pct&gt;100&lt;/pct&gt;
+  &lt;/policy_published&gt;
+  &lt;record&gt;
+    &lt;row&gt;
+      &lt;source_ip&gt;192.0.2.1&lt;/source_ip&gt;
+      &lt;count&gt;2&lt;/count&gt;
+      &lt;policy_evaluated&gt;
+        &lt;disposition&gt;none&lt;/disposition&gt;
+        &lt;dkim&gt;fail&lt;/dkim&gt;
+        &lt;spf&gt;pass&lt;/spf&gt;
+      &lt;/policy_evaluated&gt;
+    &lt;/row&gt;
+    &lt;identifiers&gt;
+      &lt;header_from&gt;business.example&lt;/header_from&gt;
+    &lt;/identifiers&gt;
+    &lt;auth_results&gt;
+      &lt;dkim&gt;
+        &lt;domain&gt;business.example&lt;/domain&gt;
+        &lt;result&gt;fail&lt;/result&gt;
+        &lt;human_result&gt;&lt;/human_result&gt;
+      &lt;/dkim&gt;
+      &lt;spf&gt;
+        &lt;domain&gt;business.example&lt;/domain&gt;
+        &lt;result&gt;pass&lt;/result&gt;
+      &lt;/spf&gt;
+    &lt;/auth_results&gt;
+  &lt;/record&gt;
+&lt;/feedback&gt;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="final-words">Últimas palabras</h3>
+		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Esperamos que esta publicación te haya permitido entender mejor la plataforma Workers. Actualmente, en Cloudflare aprovechamos esta plataforma para desarrollar la mayoría de nuestros servicios. Creemos que tú deberías hacer lo mismo.</p>
+	<p>No dudes en contribuir a nuestra versión de código abierto y mostrarnos lo que puedes hacer con ella.</p>
+	<p>También estamos trabajando con la solución Email Routing para ampliar la funcionalidad de la API de Workers de correo electrónico. Pronto dedicaremos otra publicación a este tema.</p>
+</div>

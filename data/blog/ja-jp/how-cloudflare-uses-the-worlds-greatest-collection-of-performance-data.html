@@ -1,0 +1,82 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">English</a>、<a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Français</a>、<a href="https://blog.cloudflare.com/de-de/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">한국어</a>、<a href="https://blog.cloudflare.com/es-la/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Español</a>、<a href="https://blog.cloudflare.com/vi-vn/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Tiếng Việt</a>、<a href="https://blog.cloudflare.com/nl-nl/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FnrULONTevLAGUrYo1a7R/9d13a5e2252491926da56e2cc46fe42c/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは、世界最速のネットワークを運用しています。本日、当社が保有するすべてのサーバーを高速化するソフトウェア技術の全面的な見直しを行い、世界中で速度を向上させていることに関する<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>最新情報をご紹介しました</u></a>。</p>
+	<p>しかし、これで終わりではありません。さらなる高速化を実現するためには、日々インターネットで発生する輻輳を素早く処理し、より処理速度の速いサーバーにトラフィックをルーティングする必要があります。</p>
+	<p>当社は長年、輻輳制御に投資してきました。本日は、私たちのネットワークの強みである膨大なFreeプランのユーザーにご協力いただき、パフォーマンスを最適化し、全世界のお客様のためにネットワーク全体でトラフィックを最適にルーティングする方法を見つける取り組みについてご紹介します。</p>
+	<p>初期の結果では、従来と比較して平均10%のパフォーマンス向上が見られました。これは、日々観測するインターネットのデータをもとに、複数のアルゴリズムを適用して最適化を進めた成果です。これらの改善成果は、すべてのお客様に向けて順次展開予定ですのでご期待ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-traffic-arrive-in-our-network">トラフィックが私たちのネットワークに到達する仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-does-traffic-arrive-in-our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットは、相互接続されたネットワークの巨大な集合体であり、それぞれは多くのマシン（「ノード」）で構成され、データは小さなパケットに分割され、あるマシンから別のマシンへと（「リンク」を介して）渡されます。これらのマシンはそれぞれ多くの他のマシンに接続されていますが、各接続の容量は限られています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fTvUVuusvuivy20i1ikSm/4a46cfc5bf3263a8712a52ed3b207af6/image5.png" alt="" class="kg-image" width="1416" height="1999" loading="lazy">
+	</figure>
+	<p>パケットは、AからBへのリンクを介して「ホップ」を繰り返しながら進んでいきます。この経路のどこかに使用可能な容量が最も少ないリンク（1つの「ホップ」）が存在し、それがボトルネックとなります。</p>
+	<p>課題はここにありますが、インターネット経由でデータを送信する際、どのルートを通るかを事前に知ることはできません。実際には、トラフィックの送信経路は各ノードが決定し、同じAからBに送信する場合でも、パケットごとにまったく違う経路を通ることがあります。この動的かつ分散的な仕組みこそが、インターネットを非常に効果的に機能させる仕組みとなっていますが、同時に、どれだけのデータを送信できるかを見極めることを困難にしています。&nbsp;では、送信側はどのようにボトルネックの場所を特定し、その場所に適したデータ送信速度を判断することができるのでしょうか。</p>
+	<p>Cloudflareのノード間では、<a href="https://developers.cloudflare.com/argo-smart-routing" target="_blank" rel="noopener noreferrer"><u>Argo Smart Routing</u></a>という製品を使用して、グローバルネットワークの可視性を活用して通信を高速化します。同様に、お客様のオリジンに接続する際もArgoやその他のインサイトを活用して最適化します。ただし、携帯電話またはノートパソコン（以下「クライアント」）から最も近いCloudflareデータセンターまでの接続速度は、お客様からCloudflareまでの経路の中で最も容量が小さいリンク（ボトルネック）で決まります。これは、当社のネットワークの外部で発生します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ca9pXZUfgCIlCyi5LMikk/220154f58f8dbfbfb45b49db4f068dc9/image2.png" alt="" class="kg-image" width="1999" height="472" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-happens-when-too-much-data-arrives-at-once">大量のデータが一度に届くと何が起きるか</h3>
+		<a href="https://blog.cloudflare.com/#what-happens-when-too-much-data-arrives-at-once" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リクエストを処理するための通信経路上のあるノードに大量のデータが届いた場合、リクエスト送信側は輻輳による遅延を経験します。データは一時的にキューに入れられるか（<a href="https://en.wikipedia.org/wiki/Bufferbloat" target="_blank" rel="noopener noreferrer"><u>バッファブロート</u></a>のリスクがあります）、もしくは一部は単純に破棄されます。TCPやQUICのようなプロトコルは、パケットの消失を検知すると再送を行いますが、当然遅延が伴い、制限された容量をさらに過負荷にすることで問題を悪化させる可能性があります。</p>
+	<p>Cloudflare のようなクラウドインフラ事業者が輻輳を慎重に管理しないと、システムが過負荷になり、データの通過速度が低下するリスクがあります。実際、<a href="https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse" target="_blank" rel="noopener noreferrer"><u>インターネットの黎明期に実際にこうした問題が発生していました。</u></a>これを回避するために、インターネットのインフラコミュニティは、輻輳を制御するシステムを開発し、ネットワークに過負荷をかけることなく、誰もが順番にデータを送信できるようにしてきました。ネットワークがますます複雑になるにつれて、この課題は進化し続けています。輻輳を制御するための最善策の模索は常に続いています。これまでに輻輳に対応するそれぞれ異なる情報源や信号を使用して独自の方法で最適化するさまざまなアルゴリズムが開発されています。</p>
+	<p>輻輳制御アルゴリズムは、ネットワークの構造を知らなくても複数の信号を手がかりに、トラフィックの送信に適切な速度を推定します。その重要な手がかりのひとつが「<b>ロス</b>」です。パケットを受信すると、受信側は「ACK」を送信し、送信者にパケットが通過したことを伝えますが、途中でドロップされると、送信側は受領確認を受け取れず、タイムアウト後にパケットは失われたもの（ロス）として扱われます。</p>
+	<p>近年では、これに加えて別の情報も利用するアルゴリズムが登場しています。たとえば、私たちがトラフィックの多くに使用している<a href="https://blog.cloudflare.com/http-2-prioritization-with-nginx/#bbr-congestion-control"><u>BBR（ボトルネック帯域幅と往復伝播時間）</u></a>と呼ばれる一般的なアルゴリズムは、損失情報に加え、往復時間を推定に利用しながら「ある時間内に送信可能な最大データ量」をモデル化し、通信ごとに最適化を行います。</p>
+	<p>多くの場合、最適なアルゴリズムの選択はワークロード（扱われるデータの種類）に依存します。たとえば、ビデオ通話のようなインタラクティブなトラフィックの場合、過剰にデータを送るアルゴリズムを使うとキューがたまり、遅延が増えて映像が乱れる原因になります。しかし、一方、それを避けてデータを控えめに送ると、一括ダウンロードのような用途では回線を最大限に活用することができません。パフォーマンス最適化の結果は、多くの異なる要因によって変わります。しかし、私たちはその多くを把握しています！</p>
+	<p>BBRは損失ベースの事後対応型アプローチからモデルベースの事前最適化へと移行した輻輳制御アプローチにおける画期的な開発であり、現代のネットワークのパフォーマンスを大幅に向上しました。私たちの持つ膨大なデータは、パフォーマンスを向上させるためにさまざまなアルゴリズム手法を適用することで、さらなる進展の機会を提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-can-we-do-better">当社の改善策</h3>
+		<a href="https://blog.cloudflare.com/#how-can-we-do-better" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>既存のアルゴリズムはすべて、現在の接続中に得られる情報のみしか使用できないという制約があります。しかし幸いなことに、私たちはそれ以上の情報を持っています。&nbsp;Cloudflareはトラフィックを俯瞰できる視点があり、個々のお客様やISPでは見えない範囲まで広く把握することができます。</p>
+	<p>私たちは毎日、世界中のほぼすべての主要ネットワークからのトラフィックを目にしています。リクエストが私たちのシステムに届いたとき、どのクライアント端末から来ているのか、どの種類のネットワークを通じて接続されているのか、そして相手が一般消費者向けの ISP なのか、それともクラウドインフラ事業者なのかまで把握することができます。</p>
+	<p>私たちは、世界のインターネット全体の負荷パターンと、過負荷になっていると考えられる場所が私たちのネットワークの内側または外側であるかを把握しています。さらに、安定した特性を持つネットワーク、携帯データ接続によってパケット損失が多いネットワーク、低軌道衛星リンクを経由するために 15 秒ごとに経路が大きく変わるネットワークについても把握しています。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-this-work">その仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-does-this-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは現在、輻輳制御アルゴリズムのパラメータを柔軟に調整し、さまざまな実験を行えるようにするため、Rustを基盤とした新しいプラットフォームへネットワーク技術スタックを移行している最中です。次に必要となったのは、そのためのデータでした。</p>
+	<p>これらの実験を支えるデータは、私たちが最適化しようとしている指標、すなわちユーザーエクスペリエンスを反映している必要があります。単に世界中のほぼすべてのネットワークにデータを送信するだけでは不十分で、お客様がどのような体験をしているのかを把握する必要があります。では、私たちの規模でそれをどのように行うのでしょうか？</p>
+	<p>まず、私たちはネットワークからデータをどのくらいの速度で送信できるかと、送信先が受信を確認するまでの時間を記録した詳細な「パッシブ」ログを持っています。これはすべてのトラフィックをカバーしており、クライアントがどれくらい速くデータを受け取ったかの目安になりますが、ユーザー体験を完全に示すものではありません。</p>
+	<p>次に、私たちは<a href="https://developers.cloudflare.com/speed/observatory/rum-beacon" target="_blank" rel="noopener noreferrer"><u>リアルユーザー測定</u></a>（RUM）データを収集するシステムを持っています。これは対応するウェブブラウザで、ページ読み込み時間（PLT）などの指標を記録する仕組みです。Cloudflareのお客様であれば誰でもこれを有効化してダッシュボードで詳細な分析情報を確認することができます。さらに、このメタデータをすべてのお客様とネットワーク全体で集約して活用することで、お客様が実際にどのような体験をしているかを把握します。&nbsp;</p>
+	<p>ただし、RUMデータが取得できるのは当社のネットワーク全体の接続のごく一部に限られます。そこで私たちは、パッシブログでのみ確認できるデータから、RUMの測定値を予測する方法を模索してきました。たとえば、こちらは私たちが行った実験の結果で、2つの異なるアルゴリズムを従来のcubicベースラインと比較したものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/u3C9Otkgf46yMcc2gGQTe/adde0c39d62f2fb6c88b439d826e8f4a/image4.png" alt="" class="kg-image" width="1501" height="525" loading="lazy">
+	</figure>
+	<p>こちらは同じ時間軸で、パッシブログのデータに基づいて予測した結果です。曲線の形は非常によく似ていますが、さらに重要なのは、曲線同士の比率も非常に似ていることです。<b>これは非常に大きな成果です！</b>比較的少量のRUMデータで調査結果を検証できますが、パッシブログの完全なデータストリームを使用することにより、より詳細にネットワークを最適化できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ExUljHIAUBxFiUuFccRtY/6db8fa8d3d388f484b6ac7f71eeab83f/image3.png" alt="" class="kg-image" width="1999" height="908" loading="lazy">
+	</figure>
+	<p>あまりにも遠くまでの推定は信頼性を欠くため、当社は主要なお客様と協力し、そのお客様のクライアントの視点からネットワークの挙動をよりよく把握することで、この予測モデルをさらに拡張することを目指しています。その結果、他のプラットフォームでは提供できない方法で、クライアントの真の体験に関する洞察をお客様に提供できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-next">今後の展開</h3>
+		<a href="https://blog.cloudflare.com/#what-is-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は現在、すべてのFreeプランで扱うQUICトラフィックを対象に、輻輳制御の実験と改良されたアルゴリズムを実行しています。今後さらに知見を深め、より複雑なお客様環境で検証し、TCPトラフィックにも拡大していくことで、2026年以降、すべてのお客様、すべてのトラフィックに対して段階的に展開していく予定です。現時点の結果として、ベースラインと比較して最大で10％の改善が見られています！</p>
+	<p>現在、選択した企業グループと協力して、早期アクセスプログラムでテストを行っています。さらに詳しい情報についてはお気軽に<a href="https://forms.gle/MCBjEEhYQvwWFccx9" target="_blank" rel="noopener noreferrer"><u>お問い合わせ</u></a>ください。&nbsp;</p>
+</div>

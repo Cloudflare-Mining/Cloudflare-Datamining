@@ -1,93 +1,48 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zCGPwzpCVzjoRBJnEigP6/7cf0708f61d20f3ce699bf43fa9987a1/photo-1501139083538-0139583c060f" alt="selective focus photo of brown and blue hourglass on stones" class="kg-image" width="1080" height="720" loading="lazy">
-
-	</figure>
-	<p><i>Photo by </i><a href="https://unsplash.com/@aronunsplash?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer"><i>Aron</i></a><i> / </i><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer"><i>Unsplash</i></a></p>
-	<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
-	<div class="flex anchor relative">
-		<h3 id="timing-with-curl">Timing with cURL</h3>
-		<a href="https://blog.cloudflare.com/#timing-with-curl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://curl.haxx.se" target="_blank" rel="noopener noreferrer">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website <a href="http://www.zasag.mn" target="_blank" rel="noopener noreferrer">www.zasag.mn</a> (the Mongolian government), and measure how long a request to its home page takes:</p>
-	<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
-	<pre class="language-bash"><code class="language-bash">$ cat .curlrc
--w "dnslookup: %{time_namelookup} | connect: %{time_connect} | appconnect: %{time_appconnect} | pretransfer: %{time_pretransfer} | starttransfer: %{time_starttransfer} | total: %{time_total} | size: %{size_download}\n"</code></pre>
-	<p>Now connect to the site dropping the output (<code>-o /dev/null</code>) since we’re only interested in the timing:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -so /dev/null https://www.zasag.mn
-dnslookup: 1.510 | connect: 1.757 | appconnect: 2.256 | pretransfer: 2.259 | 
-starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
-	<p>These timings are in seconds. Depending on your version of cURL, you may get more decimal places than this example. 3 seconds is a long time, and remember this is only for the HTML from the home page - it doesn’t include any JavaScript, images, etc.</p>
-	<p>The diagram below shows what each of those timings refer to against a typical HTTP over TLS 1.2 connection (TLS 1.3 setup <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a">needs one less round trip</a>):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EfInkqn7sNtWkWFdxPDk4/2f3e1c0202ed6025bbe12f6f540c1b4a/Screen-Shot-2018-10-16-at-14.51.29-1.png" alt="" class="kg-image" width="1262" height="1266" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>time_namelookup</b> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank" rel="noopener noreferrer">faster</a> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">resolver</a> :).</p>
-		</li>
-		<li>
-			<p><b>time_connect</b> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trip time (RTT)</a> to the server. In this example, RTT looks to be about 200 ms.</p>
-		</li>
-		<li>
-			<p><b>time_appconnect</b> here is TLS setup. The client is then ready to send it’s HTTP GET request.</p>
-		</li>
-		<li>
-			<p><b>time_starttransfer</b> is just before cURL reads the first byte from the network (it hasn't actually read it yet). <code>time_starttransfer - time_appconnect</code> is practically the same as Time To First Byte (TTFB) from this client - 250 ms in this example case. This includes the round trip over the network, so you might get a better guess of how long the server spent on the request by calculating <code>TTFB - (time_connect - time_namelookup)</code>, so in this case, the server spent only a few milliseconds responding, the rest of the time was the network.</p>
-		</li>
-		<li>
-			<p><b>time_total</b> is just after the client has sent the FIN connection tear down.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="timing-with-chrome">Timing with Chrome</h3>
-		<a href="https://blog.cloudflare.com/#timing-with-chrome" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing" target="_blank" rel="noopener noreferrer">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FucQd5wZiX7K01gcDGiCL/8c82a221c3ea0ad064a3a19020dca543/Screen-Shot-2018-08-04-at-12.07.37--1-.png" alt="" class="kg-image" width="1092" height="634" loading="lazy">
-
-	</figure>
-	<p>Again, here’s how this maps onto a typical HTTP over TLS 1.2 connection, also showing the Resource Timing attribute names:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fAas2lxyTJGoBn3X0izru/3d41a94ce5ae888bea98aba106fe1407/Screen-Shot-2018-10-16-at-14.52.48.png" alt="" class="kg-image" width="1402" height="1382" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>Stalled</b> (fetchStart to domainLookupStart) is the browser waiting to start the connection, e.g. allocating cache on disk, if there are higher priority requests, or if there are already 6 connections open to this host.</p>
-		</li>
-		<li>
-			<p><b>Initial connection</b> shown by Chrome is connectStart to connectEnd. Unlike cURL timings, this includes SSL connection setup, so if you want a fair estimate of RTT, this would be <code>Initial connection - SSL</code>. If an existing connection is being reused, then DNS Lookup, Initial connection and SSL won't be shown.</p>
-		</li>
-		<li>
-			<p><b>Request sent</b> is <code>connectEnd - requestStart</code>, which should be negligible.</p>
-		</li>
-		<li>
-			<p>Similarly to cURL, if we subtract the TCP handshake time from TTFB, we can guess the amount of time the server really spent processing (again, we don't have an exact RTT timing, so this is a approximation).</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="what-are-we-looking-for-again">What are we looking for again?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-we-looking-for-again" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>These measurements, including TTFB, can be helpful in diagnosing problems, and might help you to delve into a specific problem, but do they actually tell you about how well a website is performing? Ultimately, if you are looking to measure the experience of users, the time it takes for the first byte of some HTML to return isn’t effective. A web page might contain hundreds of images, it might have JavaScript and styles that need to load before you can interact. To reflect real user experience, you need to time how long until the web page becomes useful, and to take those measurements from representative sample of where your users are accessing the site from. And that's a topic for another day :)</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DFR9KJM9YBWN2G7RKAF7.jpeg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="selective focus photo of brown and blue hourglass on stones" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: selective focus photo of brown and blue hourglass on stones"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Photo by <a href="https://unsplash.com/@aronunsplash?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Aron</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></em></p>
+<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
+<h3>Timing with cURL</h3>
+<p><a href="https://curl.haxx.se" target="_blank" rel="noopener noreferrer">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website <a href="http://www.zasag.mn" target="_blank" rel="noopener noreferrer">www.zasag.mn</a> (the Mongolian government), and measure how long a request to its home page takes:</p>
+<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> .curlrc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-w</span><span class="sk-032f62-99ffe4"> "dnslookup: %{time_namelookup} | connect: %{time_connect} | appconnect: %{time_appconnect} | pretransfer: %{time_pretransfer} | starttransfer: %{time_starttransfer} | total: %{time_total} | size: %{size_download}\n"</span></span></code></pre>
 </div>
+<p>Now connect to the site dropping the output (<code>-o /dev/null</code>) since we’re only interested in the timing:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -so</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://www.zasag.mn</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">dnslookup:</span><span class="sk-005cc5-ffc799"> 1.510</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> connect:</span><span class="sk-005cc5-ffc799"> 1.757</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> appconnect:</span><span class="sk-005cc5-ffc799"> 2.256</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> pretransfer:</span><span class="sk-005cc5-ffc799"> 2.259</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">starttransfer:</span><span class="sk-005cc5-ffc799"> 2.506</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> total:</span><span class="sk-005cc5-ffc799"> 3.001</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> size:</span><span class="sk-005cc5-ffc799"> 53107</span></span></code></pre>
+</div>
+<p>These timings are in seconds. Depending on your version of cURL, you may get more decimal places than this example. 3 seconds is a long time, and remember this is only for the HTML from the home page - it doesn’t include any JavaScript, images, etc.</p>
+<p>The diagram below shows what each of those timings refer to against a typical HTTP over TLS 1.2 connection (TLS 1.3 setup <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a">needs one less round trip</a>):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="717" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=715&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=640&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=715&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=750&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=828&amp;h=830&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=1080&amp;h=1083&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=1280&amp;h=1284&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454ZKYRVBB415E8SNMDFHW.png&amp;w=1430&amp;h=1434&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A Question of Timing Embedded Image - HNN8zA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="717" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A Question of Timing Embedded Image - HNN8zA"></div>
+</figure>
+<ul>
+	<li><strong>time_namelookup</strong> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank" rel="noopener noreferrer">faster</a> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">resolver</a> :).</li>
+	<li><strong>time_connect</strong> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trip time (RTT)</a> to the server. In this example, RTT looks to be about 200 ms.</li>
+	<li><strong>time_appconnect</strong> here is TLS setup. The client is then ready to send it’s HTTP GET request.</li>
+	<li><strong>time_starttransfer</strong> is just before cURL reads the first byte from the network (it hasn't actually read it yet). <code>time_starttransfer - time_appconnect</code> is practically the same as Time To First Byte (TTFB) from this client - 250 ms in this example case. This includes the round trip over the network, so you might get a better guess of how long the server spent on the request by calculating <code>TTFB - (time_connect - time_namelookup)</code>, so in this case, the server spent only a few milliseconds responding, the rest of the time was the network.</li>
+	<li><strong>time_total</strong> is just after the client has sent the FIN connection tear down.</li>
+</ul>
+<h3>Timing with Chrome</h3>
+<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing" target="_blank" rel="noopener noreferrer">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="415" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=715&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=715&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=750&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=828&amp;h=481&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=1080&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=1280&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Q7MY5FWE5XFNZCBJ9921.png&amp;w=1430&amp;h=830&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A Question of Timing Embedded Image - 3JZyd0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="415" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A Question of Timing Embedded Image - 3JZyd0"></div>
+</figure>
+<p>Again, here’s how this maps onto a typical HTTP over TLS 1.2 connection, also showing the Resource Timing attribute names:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="705" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=715&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=640&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=715&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=750&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=828&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=1080&amp;h=1065&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=1280&amp;h=1262&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W38X82RYVGJ88Y0DDVDA.png&amp;w=1430&amp;h=1410&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A Question of Timing Embedded Image - 3Nm4VB" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="705" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A Question of Timing Embedded Image - 3Nm4VB"></div>
+</figure>
+<ul>
+	<li><strong>Stalled</strong> (fetchStart to domainLookupStart) is the browser waiting to start the connection, e.g. allocating cache on disk, if there are higher priority requests, or if there are already 6 connections open to this host.</li>
+	<li><strong>Initial connection</strong> shown by Chrome is connectStart to connectEnd. Unlike cURL timings, this includes SSL connection setup, so if you want a fair estimate of RTT, this would be <code>Initial connection - SSL</code>. If an existing connection is being reused, then DNS Lookup, Initial connection and SSL won't be shown.</li>
+	<li><strong>Request sent</strong> is <code>connectEnd - requestStart</code>, which should be negligible.</li>
+	<li>Similarly to cURL, if we subtract the TCP handshake time from TTFB, we can guess the amount of time the server really spent processing (again, we don't have an exact RTT timing, so this is a approximation).</li>
+</ul>
+<h3>What are we looking for again?</h3>
+<p>These measurements, including TTFB, can be helpful in diagnosing problems, and might help you to delve into a specific problem, but do they actually tell you about how well a website is performing? Ultimately, if you are looking to measure the experience of users, the time it takes for the first byte of some HTML to return isn’t effective. A web page might contain hundreds of images, it might have JavaScript and styles that need to load before you can interact. To reflect real user experience, you need to time how long until the web page becomes useful, and to take those measurements from representative sample of where your users are accessing the site from. And that's a topic for another day :)</p>

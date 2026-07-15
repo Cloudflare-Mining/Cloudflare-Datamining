@@ -1,0 +1,2038 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/cloudflare-is-faster-than-netskope-and-zscaler-across-latam">English</a> y <a href="https://blog.cloudflare.com/pt-br/cloudflare-is-faster-than-netskope-and-zscaler-across-latam">Português</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bLQR2TgEiJFgCpw7kfaez/f544b7424cd387bd0406ae1f08db879d/cloudflare-is-faster-than-netskope-and-zscaler-across-latam.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En la CIO Week anterior, te <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">mostramos cómo nuestra red se compara con la de los competidores de varios países.</a> Demostramos mediante nuestras pruebas que Cloudflare Access es un 38 % más rápido que ZScaler (ZPA) en todo el mundo.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HcaVOON1Bu8TnyylDTVYc/e77a5c264e9c6667990b50c094592083/image16.png" alt="Cloudflare is faster than Netskope and Zscaler across LATAM." class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>Hoy queríamos enfocarnos en América Latina y mostrar el rendimiento de nuestra red frente a Zscaler y Netskope en Argentina, Brasil, Chile, Colombia, Costa Rica, Ecuador, México, Perú, Uruguay y Venezuela.</p>
+	<p>Con <b>47</b> <b>centros de datos en América Latina y el Caribe, Cloudflare tiene la mayor cantidad de puntos de presencia SASE entre todos los proveedores</b>, lo que quiere decir que podemos ofrecer nuestros servicios <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> más cerca del usuario final y reducir la latencia no deseada.</p>
+	<p>Hemos realizado una serie de pruebas para comparar nuestro producto Zero Trust Network Access con los productos comparables de Zscaler y Netskope.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35fJOFY293MRzX5ABBZE4f/29331bbc0a7db89fae1ce79957cd2418/Cloudflare-is-faster-than-Netskope-and-Zscaler-across-LATAM.png" alt="" class="kg-image" width="1730" height="1838" loading="lazy">
+
+	</figure>
+	<p>Para cada una de estas pruebas, hemos utilizado pruebas de tiempo hasta el primer byte y pruebas de respuesta del percentil 95, que miden el tiempo que le lleva a un usuario hacer una solicitud y obtener el inicio de la respuesta (tiempo hasta el primer byte) y el final de la respuesta (respuesta). Estas pruebas se diseñaron con el objetivo de intentar una medición del rendimiento desde la perspectiva de un usuario final.</p>
+	<p>En este blog, abordaremos por qué el rendimiento es importante y analizaremos detalladamente qué mediciones hacemos para mostrar que somos más rápidos.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-does-performance-matter">¿Por qué el rendimiento es importante?</h2>
+		<a href="https://blog.cloudflare.com/#why-does-performance-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El rendimiento es importante porque afecta la experiencia de tus empleados y su capacidad para hacer correctamente su trabajo. Por ejemplo, si Anna se conecta a una aplicación protegida alojada como Salesforce para completar determinado trabajo, no quiere estar esperando constantemente a que se carguen las páginas o a que se autentiquen sus solicitudes. En una aplicación con control de acceso, lo primero que haces al conectarte es iniciar sesión. Si ese inicio de sesión lleva mucho tiempo, podrías distraerte con cualquier mensaje de un compañero o decidir abandonar por completo el trabajo. Incluso si obtienes la autenticación, aún quieres que tu experiencia normal con la aplicación sea ágil y fluida. Si Zero Trust funciona de forma óptima, los usuarios no deberían notar su presencia.</p>
+	<p>Si estos productos o experiencias son lentos, las quejas de tus usuarios no son lo peor que podría pasar: estos pueden encontrar la manera de desactivar los productos u omitirlos, lo cual pone a tu empresa en riesgo. Un conjunto de productos Zero Trust es completamente ineficaz si nadie lo utiliza porque es demasiado lento.</p>
+	<p>Para que una solución Zero Trust sea eficaz, es fundamental garantizar su rapidez. Si los usuarios prácticamente desconocen su existencia, no querrán desactivarla ni se pondrán en riesgo. Los servicios como Zscaler o Netskope pueden superar a muchas soluciones anteriores y anticuadas, pero su red aún no está a la altura de una red optimizada y de alto rendimiento como la de Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-access-the-fastest-zero-trust-proxy">Cloudflare Access: el proxy Zero Trust más rápido</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-the-fastest-zero-trust-proxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El control de acceso debe ser fluido y transparente para el usuario: el mejor elogio que puede recibir una solución Zero Trust es que los usuarios apenas notan su presencia. Los servicios como Cloudflare Access y Zscaler Private Access (ZPA) permiten a los usuarios almacenar en caché la información de autenticación en la red del proveedor. Esto garantiza el acceso seguro y rápido a las aplicaciones para ofrecer a los usuarios la experiencia eficaz que desean. Por lo tanto, una red que minimiza el número de inicios de sesión necesarios y al mismo tiempo reduce la <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latencia</a> de tus solicitudes de aplicaciones al entregar el servicio más cerca del usuario ayudará a que la experiencia de Internet sea ágil y reactiva.</p>
+	<p>Para estas pruebas, Cloudflare ha contratado a Miercom, un tercero que ha llevado a cabo un conjunto de pruebas cuyo objetivo era replicar un usuario final que se conecta a un recurso protegido por Cloudflare, Zscaler y Netskope. Miercom configuró las instancias de la aplicación en 14 ubicaciones de todo el mundo, y diseñó una prueba que iniciaría sesión en la aplicación mediante distintos proveedores Zero Trust para acceder a un contenido específico. A continuación, describimos la metodología de la prueba, pero puedes leer todo el informe de Miercom donde se detalla la metodología de la prueba <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler" target="_blank" rel="noopener noreferrer">aquí</a>:</p>
+	<ul>
+		<li>
+			<p>El usuario se conecta a la aplicación desde un navegador que imita una instancia de Catchpoint: sesión nueva</p>
+		</li>
+		<li>
+			<p>El usuario se autentica en el proveedor de identidad</p>
+		</li>
+		<li>
+			<p>El usuario accede al recurso</p>
+		</li>
+		<li>
+			<p>El usuario renueva la página del navegador e intenta acceder al mismo recurso, pero con credenciales ya existentes: sesión existente</p>
+		</li>
+	</ul>
+	<p>En esta prueba, evaluamos Cloudflare contra Zscaler y Netskope, accediendo a aplicaciones alojadas en dos regiones específicas (Brasil y el suroeste de EE. UU.). Probamos el tiempo de respuesta para una sesión existente, cuando un usuario ya se ha autenticado, y esa información de autenticación se puede almacenar en caché.</p>
+	<p>Así es como se ven estos datos para cada uno de los 10 países en los que hicimos pruebas en América Latina:</p>
+	<div class="flex anchor relative">
+		<h3 id="argentina">Argentina</h3>
+		<a href="https://blog.cloudflare.com/#argentina" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rFSVERD8l3GWtijerANdQ/a6d28200009f6ad81bab2584ad2779f0/argentina.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,203</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">8,319</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">5,961</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/z5orID582YD4ISIrgpchu/726816b62ec0ccd455653b31d3e7ea3e/argentina2.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,587</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">5,082</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">5,299</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NNAPqdvbrxcj4F1Pbm8is/e973c8b75d035bb88d75d74f1106b443/unnamed-1.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,525</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,799</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,916</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>1,203</p>
+	<p>Netskope</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oBjLgdPdhXK9IBvb037Li/9fdc1feecf62258caceac87926b3b165/brazil2.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,603</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,989</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,894</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>8,319</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UBlnPf5Xx0Td2KkHNfnGc/08882a8ba3fb1359a2f87e65a15de411/chile.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">714</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,000</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,157</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zscaler</p>
+	<p>5,961</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F4VRdPQC5mTl87DmVb0dw/cad8371e07f2f0f09636d4136c5170c0/chile2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">648</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,113</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,290</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Argentina hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 75 % más rápido que Zscaler y un 85 % más rápido que Netskope.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zj7Rsnv9G3WmVvVkD33LA/74c65fcd811fec342e1a0f4c2ea22ba0/colombia.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,628</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,699</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">4,763</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare también es más rápido cuando se conecta desde Argentina hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 70 % más rápido que Zscaler y un 68 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WudJn1az2A1OOVsjOs0gX/013b097f753e20f6131005bf865b9387/colombia2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,466</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,351</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,623</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oxuXU2nWpiKbbDkzHkbir/b433ae5d5b65c0ad56692b61e862daf6/costa-rica.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,432</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,036</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,110</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nQLksQpe9Lo5Wk0Py2Wse/18a3ee07fa4091982979d478615555d2/costa-rica2-1.png" alt="" class="kg-image" width="648" height="371" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,387</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,044</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,191</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>1,587</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YNFC1QgpXPQjsYHKnBgDF/058e9bce2e77b4bf41866a9781c65d46/ecuador-1.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,134</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,002</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,206</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Netskope</p>
+	<p>5,082</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56UZ0JCeFBpvIoqxxW7Rqx/6887a429be728d4a97c4993eba4eeed6/ecuador2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,179</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,976</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,210</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zscaler</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vBOzokWOjI9SuYJWGXmff/1b72a7060ceb48bd273e7601b4866adb/mexico.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,334</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,882</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,537</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>5,299</p>
+	<div class="flex anchor relative">
+		<h3 id="brazil">Brasil</h3>
+		<a href="https://blog.cloudflare.com/#brazil" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BCeKlVEFJRTOLAFH7NzMb/2f3415a61c8216c0ae2b081c9546d997/mexico2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,249</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,679</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,880</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pezxzfIZ2qYpoJA8bteQZ/44946a582c61a61a103cd6000e4b3718/peru.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">609</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,425</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,992</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mqwLYA1lqnTxdX6DipUwW/d39175be55dccbc291dc4337c3c4c4e7/peru2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">827</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,108</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">4,189</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zx4wWykqGxSyPNnSak3Wd/dd5be5a4d3bf03ff43bba1b6cd74611e/uruguay.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,242</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,556</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">4,467</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>1,525</p>
+	<p>Netskope</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PGuW9PUz36ZE3aGv8aoRX/ffa35f6f5ae9887df358b0d13d88a526/uruguay2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1078</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,101</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,726</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>3,799</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5h3Ij6UN9jFkMmeF01RqNE/aedb5a1b30063d1ebf2125f20c045662/venezuela.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in Brazil)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">1,272</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,451</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">3,800</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Zscaler</p>
+	<p>3,916</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ugIPfzZR32cRMPcwKj0wB/ae7011917cad9ac90d18a3afd1a53599/venezuela2.png" alt="" class="kg-image" width="1296" height="742" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-3vik {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-3vik"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zero Trust Access - Time to First Byte (App in US West)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">95th Percentile (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Cloudflare</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">685</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Netskope</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">2,984</span></td>
+			</tr>
+			<tr>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">Zscaler</span></td>
+				<td class="tg-afol"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">4,627</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Brasil hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 61 % más rápido que Zscaler y un 59 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Brasil hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 58 % más rápido que Zscaler y un 59 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,603</p>
+	<p>Netskope</p>
+	<p>3,989</p>
+	<p>Zscaler</p>
+	<p>3,894</p>
+	<div class="flex anchor relative">
+		<h3 id="chile">Chile</h3>
+		<a href="https://blog.cloudflare.com/#chile" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>714</p>
+	<p>Netskope</p>
+	<p>3,000</p>
+	<p>Zscaler</p>
+	<p>3,157</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Chile hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 77 % más rápido que Zscaler y un 76 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Chile hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 80 % más rápido que Zscaler y un 79 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>648</p>
+	<p>Netskope</p>
+	<p>3,113</p>
+	<p>Zscaler</p>
+	<p>3,290</p>
+	<div class="flex anchor relative">
+		<h3 id="colombia">Colombia</h3>
+		<a href="https://blog.cloudflare.com/#colombia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,628</p>
+	<p>Netskope</p>
+	<p>2,699</p>
+	<p>Zscaler</p>
+	<p>4,763</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Colombia hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 65 % más rápido que Zscaler y un 39 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Chile hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 59 % más rápido que Zscaler y un 56 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,466</p>
+	<p>Netskope</p>
+	<p>3,351</p>
+	<p>Zscaler</p>
+	<p>3,623</p>
+	<div class="flex anchor relative">
+		<h3 id="costa-rica">Costa Rica</h3>
+		<a href="https://blog.cloudflare.com/#costa-rica" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,432</p>
+	<p>Netskope</p>
+	<p>2,036</p>
+	<p>Zscaler</p>
+	<p>2,110</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Costa Rica hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 32 % más rápido que Zscaler y un 29 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Costa Rica hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 36 % más rápido que Zscaler y un 32 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,387</p>
+	<p>Netskope</p>
+	<p>2,044</p>
+	<p>Zscaler</p>
+	<p>2,191</p>
+	<div class="flex anchor relative">
+		<h3 id="ecuador">Ecuador</h3>
+		<a href="https://blog.cloudflare.com/#ecuador" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,134</p>
+	<p>Netskope</p>
+	<p>2,002</p>
+	<p>Zscaler</p>
+	<p>2,206</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Ecuador hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 48 % más rápido que Zscaler y un 43 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Ecuador hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 46 % más rápido que Zscaler y un 40 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,179</p>
+	<p>Netskope</p>
+	<p>1,976</p>
+	<p>Zscaler</p>
+	<p>2,210</p>
+	<div class="flex anchor relative">
+		<h3 id="mexico">México</h3>
+		<a href="https://blog.cloudflare.com/#mexico" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>2,334</p>
+	<p>Netskope</p>
+	<p>2,882</p>
+	<p>Zscaler</p>
+	<p>3,537</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde México hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 34 % más rápido que Zscaler y un 19 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde México hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 56 % más rápido que Zscaler y un 53 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,249</p>
+	<p>Netskope</p>
+	<p>2,679</p>
+	<p>Zscaler</p>
+	<p>2,880</p>
+	<div class="flex anchor relative">
+		<h3 id="peru">Perú</h3>
+		<a href="https://blog.cloudflare.com/#peru" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>609</p>
+	<p>Netskope</p>
+	<p>2,425</p>
+	<p>Zscaler</p>
+	<p>2,992</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Perú hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 79 % más rápido que Zscaler y un 74–% más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Perú hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 80 % más rápido que Zscaler y un 73 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>827</p>
+	<p>Netskope</p>
+	<p>3,108</p>
+	<p>Zscaler</p>
+	<p>4,189</p>
+	<div class="flex anchor relative">
+		<h3 id="uruguay">Uruguay</h3>
+		<a href="https://blog.cloudflare.com/#uruguay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,242</p>
+	<p>Netskope</p>
+	<p>3,556</p>
+	<p>Zscaler</p>
+	<p>4,467</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Uruguay hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 72 % más rápido que Zscaler y un 65 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Uruguay hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 60 % más rápido que Zscaler y un 48 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1078</p>
+	<p>Netskope</p>
+	<p>2,101</p>
+	<p>Zscaler</p>
+	<p>2,726</p>
+	<div class="flex anchor relative">
+		<h3 id="venezuela">Venezuela</h3>
+		<a href="https://blog.cloudflare.com/#venezuela" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en Brasil)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>1,272</p>
+	<p>Netskope</p>
+	<p>3,451</p>
+	<p>Zscaler</p>
+	<p>3,800</p>
+	<p>Cuando profundizamos más en los datos, observamos que Cloudflare es sistemáticamente más rápido desde Venezuela hasta una app alojada en Brasil. El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 66 % más rápido que Zscaler y un 63 % más rápido que Netskope.</p>
+	<p>Cloudflare también es más rápido cuando se conecta desde Venezuela hasta una aplicación alojada en los Estados Unidos (región suroeste). El tiempo hasta el primer byte del percentil 95 de Cloudflare es un 85 % más rápido que Zscaler y un 77 % más rápido que Netskope:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-3vik{background-color:#FFF;color:#36393A;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-afol{background-color:#FFF;color:#36393A;text-align:left;vertical-align:top}</p>
+	<p>Zero Trust Access - Tiempo hasta el primer byte (app en el oeste de EE. UU.)</p>
+	<p>Percentil 95 (ms)</p>
+	<p>Cloudflare</p>
+	<p>685</p>
+	<p>Netskope</p>
+	<p>2,984</p>
+	<p>Zscaler</p>
+	<p>4,627</p>
+</div>

@@ -1,0 +1,54 @@
+<div class="mb2 gray5">1分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Français</a>、<a href="https://blog.cloudflare.com/de-de/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">한국어</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dqirQtpHmYSt5N89JGA7J/d7172ec91a8d958507a8d7773f699143/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>今週初め、Cloudflareは<a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS攻撃</a>を自動的に検知し、軽減しました。ピーク時の攻撃は2 Tbpsに迫り、これまでで最大規模のものとなりました。この攻撃は、DNS増幅攻撃と<a href="https://www.cloudflare.com/en-gb/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer">UDPフラッド</a>を組み合わせたマルチベクトル攻撃でした。攻撃全体はわずか1分間で終了しました。この攻撃は、IoTデバイスと<a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild" target="_blank" rel="noopener noreferrer">パッチが適用されていないGitLabインスタンス</a>上でオリジナルのMiraiコードの亜種を実行する約15,000のボットから開始されました。</p>
+	<p></p>
+	<p>ピーク時のDDoS攻撃は2 Tbpsに迫る</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69O75xM8BJ3AQ4xboaaJc8/05b4efd41d8beb38aabe8f5df3b1e48c/image4-11.png" alt="DDoS attack peaking just below 2 Tbps" class="kg-image" width="1874" height="591" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-increased-by-44">ネットワーク層DDoS攻撃は44％増</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-increased-by-44" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前四半期には複数のテラビット級のDDoS攻撃が確認されており、今回の攻撃もこの増加傾向を踏襲するものです。<a href="https://blog.cloudflare.com/ja-jp/ddos-attack-trends-for-2021-q3-ja-jp">2021年第3四半期におけるDDoS攻撃の傾向</a>で判明した別の重要な傾向は、実際のネットワーク層DDoS攻撃が前四半期比で44%増加したことです。第4四半期はまだ終わっていませんが、Cloudflareのお客様を標的としたテラビット級の攻撃が複数発生しています。</p>
+	<p>1〜1.4 Tbpsでピークに達するDDoS攻撃</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16L0jRaxzWrkoprzjXWbEU/ebb62af9ba073ea608920f1b14c34a12/image1-21.png" alt="DDoS attacks peaking at 1-1.4 Tbps" class="kg-image" width="1812" height="714" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-did-cloudflare-mitigate-this-attack">CloudflareはどのようにDDoS攻撃を阻止したか？</h3>
+		<a href="https://blog.cloudflare.com/#how-did-cloudflare-mitigate-this-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まず、当社のシステムはトラフィックサンプルを常に「パス外」で分析しているため、遅延の原因となったり、パフォーマンスへ影響したりすることなく、非同期にDDoS攻撃を検知することが可能です。攻撃トラフィックが検知されたとき（1秒未満）、システムは、攻撃パターンと正確に一致したトラフィックにリアルタイムのシグネチャを生成し、正規のトラフィックに影響を与えることなく攻撃を軽減しました。</p>
+	<p>フィンガープリントが生成されると、一時的な攻撃軽減ルールとしてCloudflareエッジの最適な場所に伝達され、コスト効率良く軽減します。このケースでは、ほとんどのL3/4 DDoS攻撃と同様に、ルールはLinuxカーネルの<a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">eXpress Data Path</a> (XDP) にインラインでプッシュされ、攻撃パケットを速攻でドロップします。</p>
+	<p>CloudflareのDDoS対策システムの概念図</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aDR60Hnanrkb1TJ5cNgMO/e173eb50b8433d027d2e5ab834e4ee52/image3-17.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+
+	</figure>
+	<p><a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer">CloudflareのDDoS</a>攻撃<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer">対策システム</a>についての詳細をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">より良いインターネットの構築を支援</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのミッションは、誰にとっても安全で、高速かつ信頼性の高い、より良いインターネットの構築を支援することです。DDoSチームが掲げるDDoS攻撃の影響を過去のものにするというビジョンは、このミッションに基づいています。<a href="https://blog.cloudflare.com/meris-botnet">Merisボットネット</a> <a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp">(史上最大級のHTTP DDoS攻撃を仕掛けた)</a>、最近の<a href="https://blog.cloudflare.com/update-on-voip-attacks">VoIPプロバイダーに対する攻撃</a>、インターネットプロパティにDDoS攻撃を仕掛けた今回のMiraiの亜種のいずれに対しても、CloudflareのネットワークはDDoS攻撃を自動で検出し、軽減します。Cloudflareでは、すべての種類のインターネットプロパティ向けに、安全かつ信頼性が高く、高パフォーマンスで<a href="https://blog.cloudflare.com/http-ddos-managed-rules">カスタマイズ可能な</a>プラットフォームを提供しています。</p>
+	<p>CloudflareのDDoS攻撃対策に関する詳細につきましては、<a href="https://www.cloudflare.com/enterprise" target="_blank" rel="noopener noreferrer">こちら</a>にお問い合わせください。また、CloudflareのFreeプランをお試しになりたい場合は、 <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">こちら</a>のサイトからお申し込みいただけます。</p>
+</div>

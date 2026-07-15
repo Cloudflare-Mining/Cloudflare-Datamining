@@ -1,0 +1,136 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/agents-stripe-projects">English</a>, <a href="https://blog.cloudflare.com/de-de/agents-stripe-projects">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/agents-stripe-projects">日本語</a> 및 <a href="https://blog.cloudflare.com/fr-fr/agents-stripe-projects">Français</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zsV0PbSCJ5t1ImOeO6ymW/31f074c51b99bf86454aa201e43ed53f/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>코딩 에이전트는 소프트웨어 구축에 능숙합니다. 하지만 프로덕션에 배포하려면 클라우드로부터 애플리케이션을 호스팅하려는 세 가지 요소, 즉 계정, 결제 방법, API 토큰이 필요합니다. 지금까지 이러한 작업은 사람이 직접 처리하는 작업이었습니다. 점점 더 많은 에이전트가 사용자를 대신하여 처리합니다. 에이전트는 인간 고객이 할 수 있는 모든 작업을 수행해야 합니다. 아이들은 풀어야 할 고차원적인 문제가 주어졌고, Cloudflare를 사용하고 Cloudflare API를 호출하기로 결정했습니다.</p>
+	<p>오늘부터 에이전트는 사용자를 대신하여 Cloudflare를 프로비저닝할 수 있습니다. 즉시 Cloudflare 계정을 만들고, 유료 구독을 시작하고, 도메인을 등록하고, API 토큰을 다시 받아 코드를 배포할 수 있습니다. 사람이 권한을 부여하기 위해 루프에 관여할 수 있으며 Cloudflare의 서비스 약관에 동의해야 하며, 그 외에는 처음부터 끝까지 사람의 조치가 필요하지 않습니다. 대시보드로 이동하여 API 토큰을 복사하여 붙여넣거나 신용카드 정보를 입력할 필요가 없습니다. 에이전트는 추가 설정 없이 새로운 프로덕션 앱을 배포하는 데 필요한 모든 것을 한꺼번에 얻을 수 있습니다. 또한 Cloudflare의 <a href="https://blog.cloudflare.com/code-mode"><u>코드 모드 MCP 서버</u></a> 와 <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>에이전트 기술</u></a>을 사용하여 이러한 작업을 더욱 잘 처리할 수 있습니다.</p>
+	<p>이 모든 것은 <a href="https://projects.dev" target="_blank" rel="noopener noreferrer"><u>Stripe Projects</u></a> 출시의 일환으로 Stripe와 공동으로 설계한 새로운 프로토콜을 통해 작동합니다.</p>
+	<p>Stripe과의 새로운 파트너십을 시작하게 되어 기쁘며,<a href="https://stripe.com/atlas" target="_blank" rel="noopener noreferrer"><u>Stripe Atlas를</u></a> 사용하여 법인을 설립하는 모든 신규 스타트업에 <a href="https://support.stripe.com/questions/stripe-atlas-perks-partners" target="_blank" rel="noopener noreferrer"><u>$100,000 상당의 Cloudflare 크레딧</u></a>을 제공합니다. 그러나 이 새로운 프로토콜을 사용하면 로그인한 사용자가 있는 모든 플랫폼에서 Stripe와 동일한 방식으로 Cloudflare와 통합할 수 있으며, 최종 사용자는 마찰이 없습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-zero-to-production-without-any-setup-or-manual-steps">작동 방식: 아무런 설정이나 수동 단계 없이 프로덕션까지 제로</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-zero-to-production-without-any-setup-or-manual-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://docs.stripe.com/projects" target="_blank" rel="noopener noreferrer"><u>Stripe Projects</u></a> 플러그인으로 <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe CLI를</u></a> 설치하고 Stripe에 로그인하여 새 프로젝트를 시작하세요.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>그런 다음 에이전트를 통해 새로운 것을 구축하고 새 도메인에 배포하세요. 이 전체 흐름을 보여주는 2분 분량의 동영상을 아래에서 시청할 수 있습니다.</p>
+	<div style="position: relative; padding-top: 54.48275862068967%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3c85ef631a52c381990431af3ef01b9d/iframe?preload=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3c85ef631a52c381990431af3ef01b9d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>Stripe에 로그인할 때 사용한 이메일에 이미 Cloudflare 계정이 있는 경우, 에이전트 액세스 권한을 부여하라는 일반적인 OAuth 흐름 메시지가 표시됩니다. 로그인에 사용된 이메일에 기존 Cloudflare 계정이 없는 경우, Cloudflare는 고객과 상담원을 위해 자동으로 계정을 프로비저닝합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y4grvxbS3wPfLYOGPV0PE/230d2f439ff9ea8cc75fe6cde9469792/image8.png" alt="" class="kg-image" width="1999" height="1147" loading="lazy">
+	</figure>
+	<p>에이전트가 빌드를 확인하고 사이트를 새 Cloudflare 계정에 배포한 다음 Stripe Projects CLI를 사용하여 도메인을 등록합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EKRFYCJLYdsFBVVAkrmnX/82a9781b1e5f8818093f1028decd310b/image6.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>에이전트는 필요한 경우 입력과 승인을 요청합니다. 예를 들어, Stripe 계정에 아직 연결된 결제 방법이 없는 경우, 에이전트가 하나를 추가하라는 메시지를 표시합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oTud5jPuMjldOEhLBbMrd/fb91e1065a84668f7bd606963006641b/image1.png" alt="" class="kg-image" width="1999" height="924" loading="lazy">
+	</figure>
+	<p>드디어 에이전트가 프로덕션에 배포되었고 앱이 새로 등록된 도메인에서 실행됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57boiRl1hScbG8n1ktcUzt/d97e1fc46610329e21accaa34ad92f13/image4.png" alt="" class="kg-image" width="1999" height="1278" loading="lazy">
+	</figure>
+	<p>에이전트가 말 그대로 0(Cloudflare 계정이 전혀 없고, 사전 구성된 <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>에이전트 기술</u></a> 이나 <a href="https://blog.cloudflare.com/code-mode-mcp"><u>MCP 서버</u></a>도 없는 상태)에서 다음을 갖추게 되었습니다.</p>
+	<ul>
+		<li>
+			<p>새 Cloudflare 계정 프로비저닝됨</p>
+		</li>
+		<li>
+			<p>API 토큰 획득</p>
+		</li>
+		<li>
+			<p>도메인을 구매함</p>
+		</li>
+		<li>
+			<p>애플리케이션을 프로덕션에 배포</p>
+		</li>
+	</ul>
+	<p>잠깐만요. 에이전트는 이 모든 작업을 수행할 수 있다는 것을 어떻게 발견했을까요? 도메인이 프로비저닝할 수 있는 서비스와 도메인을 구매하는 방법을 어떻게 알 수 있었을까요? Cloudflare에 배포하는 방법을 이해하는 데 필요한 컨텍스트를 어떻게 얻었을까요? 자세히 알아보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-protocol-and-integration-works">프로토콜 및 통합이 작동하는 방식</h2>
+		<a href="https://blog.cloudflare.com/#how-the-protocol-and-integration-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>위에 표시된 에이전트, Stripe 및 Cloudflare 간의 상호 작용에는 세 가지 구성 요소가 있습니다.</p>
+	<ul>
+		<li>
+			<p><b>검색</b> — 에이전트는 명령을 호출하여 사용 가능한 서비스 카탈로그를 쿼리할 수 있습니다.</p>
+		</li>
+		<li>
+			<p><b>권한 부여</b> — 플랫폼에서 사용자의 ID를 인증하여 공급자가 계정을 프로비저닝하거나 기존 계정을 연결하고, 자격 증명을 에이전트에 안전하게 발급할 수 있도록 합니다.</p>
+		</li>
+		<li>
+			<p><b>결제</b> — 플랫폼은 공급자가 고객에게 요금을 청구하는 데 사용할 수 있는 결제 토큰을 제공하여, 에이전트가 구독을 시작하고 구매하며 사용량에 따라 요금을 청구할 수 있도록 합니다.</p>
+		</li>
+	</ul>
+	<p>이들 조치는 OAuth, OIDC, 결제 토큰화 등의 선행 기술 및 기존 표준을 기반으로 구축되지만, 이를 함께 사용하여 루프에 사람이 개입해야 할 수 있는 많은 단계를 제거합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="discovery-how-agents-find-services-they-can-provision-themselves">탐색: 에이전트가 스스로 프로비저닝할 수 있는 서비스를 찾는 방법</h2>
+		<a href="https://blog.cloudflare.com/#discovery-how-agents-find-services-they-can-provision-themselves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>위의 에이전트 세션에서 에이전트는 CLI 명령 <code>stripe projects add cloudflare/registrar:domain</code>을 실행하기 전에 먼저 <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Registrar</u></a> 서비스를 검색해야 했습니다. 이는 사용 가능한 서비스를 반환하는 <code>Stripe Projects Catalog</code> 명령을 호출하여 이를 수행했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fGiH332y2mAIfxiPT4Uof/cad52b61f6f7c89088ea3d54cb678a46/image2.png" alt="" class="kg-image" width="1999" height="755" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/directory" target="_blank" rel="noopener noreferrer"><u>Cloudflare 제품</u></a> 및 다른 공급자의 서비스 전체는 <a href="https://docs.stripe.com/projects#available-providers" target="_blank" rel="noopener noreferrer"><u>길고 점점 늘어나</u></a> 인간이 감당하기에는 압도적일 수 있습니다. 하지만 상담원의 경우 이 서비스 카탈로그가 바로 상담원에게 필요한 컨텍스트입니다. 에이전트는 사용자가 수행하도록 요청한 작업과 사용자의 선호도에 따라 이 카탈로그에서 사용할 서비스를 선택하지만, 사용자는 공급자가 어떤 서비스를 제공하는지에 대한 사전 지식이 필요하지 않으며 어떤 입력도 제공할 필요가 없습니다. Cloudflare와 같은 공급자는 JSON을 반환하고 에이전트에 필요한 모든 것을 제공하는 단순한 REST API를 통해 이 카탈로그를 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="authorization-instant-account-creation-for-new-users">권한 부여: 신규 사용자를 위한 즉시 계정 생성</h2>
+		<a href="https://blog.cloudflare.com/#authorization-instant-account-creation-for-new-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>에이전트가 서비스를 선택하고 프로비저닝하면(예: <code>stripe projects add cloudflare/registrar:domain</code>), Cloudflare 계정 내에 리소스를 프로비저닝합니다. 하지만 어떻게 등록 페이지에 사람을 보내지 않고 온디맨드 계정을 만들 수 있을까요?</p>
+	<p>시작 시 사용자가 Stripe 계정에 로그인하는 과정을 기억하시나요? Stripe는 ID 공급자 역할을 하여 사용자의 ID를 인증합니다. Cloudflare는 계정이 이미 존재하지 않는 경우 사용자를 위해 새 계정을 자동으로 프로비저닝하고, 자격 증명을 Stripe Projects CLI에 반환합니다. 그러면 안전하게 저장되지만, 에이전트가 Cloudflare에 인증된 요청을 할 때 사용할 수 있습니다. 즉, Cloudflare 또는 기타 서비스를 처음 접하는 경우 추가 단계 없이 에이전트를 사용하여 즉시 구축할 수 있습니다.</p>
+	<p>사용자에게 이미 Cloudflare 계정이 있는 경우, 표준 OAuth 흐름을 통해 Stripe Projects CLI에 대한 액세스 권한을 부여하여 기존 Cloudflare 계정에서 리소스를 제공할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info">결제: 에이전트에게 신용카드 정보를 알려주지 않고 지출할 수 있는 예산을 제공합니다</h2>
+		<a href="https://blog.cloudflare.com/#payment-give-your-agent-a-budget-it-can-spend-without-giving-it-your-credit-card-info" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>“에이전트가 돈을 너무 많이 받아서 수십 개의 도메인을 사기 시작하면 어떻게 될까요? 거액의 청구서를 받게 됩니까? 내 신용 카드를 말하는 내 에이전트를 정말 신뢰할 수 있나요?”</p>
+	<p>프로토콜은 두 가지 방식으로 이를 해결합니다. 에이전트가 유료 서비스를 프로비저닝하면 Stripe는 공급자(Cloudflare)에 대한 요청에 결제 토큰을 포함시킵니다. 신용 카드 번호와 같은 원시 결제 세부 정보는 에이전트와 절대 공유되지 않습니다. 그런 다음 Stripe는 에이전트가 한 공급자에 지출할 수 있는 최대 금액을 기본 제한인 $100.00 USD/월로 설정합니다. 이 한도를 높일 준비가 되면 Cloudflare 계정에서 <a href="https://developers.cloudflare.com/changelog/post/2026-04-13-billable-usage-dashboard-and-budget-alerts" target="_blank" rel="noopener noreferrer"><u>예산 알림</u></a> 을 설정할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does">로그인 사용자가 있는 모든 플랫폼은 Stripe의 통합 방식과 동일한 방식으로 Cloudflare와 통합할 수 있습니다.</h2>
+		<a href="https://blog.cloudflare.com/#any-platform-with-signed-in-users-can-integrate-with-cloudflare-in-the-same-way-stripe-does" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자가 로그인한 상태의 모든 플랫폼은 Stripe Projects에서 Stripe가 하는 것과 동일한 역할을 수행하는 “오케스트레이터” 역할을 수행하고 Cloudflare와 통합할 수 있습니다.</p>
+	<p>귀사의 제품이 코딩 에이전트라고 가정해 보겠습니다. Cloudflare 및 기타 서비스를 이용하면 사람들이 자신이 구축한 것을 가져와 프로덕션에 배포할 수 있기를 바랍니다. 하지만 여러분이 원하는 것은 사람들을 권한 부여의 위치와 방법에 대한 미로 같은 권한 부여 흐름과 의사 결정 트리로 보내야 하는 것입니다. 배송을 하게 하고 싶을 뿐입니다.</p>
+	<p>플랫폼은 이미 사용자가 로그인한 상태에서 오케스트레이터 역할을 합니다. 사용자에게 <a href="https://domains.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>도메인</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>스토리지 버킷</u></a>, 에이전트에게 제공할 <a href="https://blog.cloudflare.com/dynamic-workers"><u>샌드박스</u></a> 또는 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>기타 필요한 것</u></a>이 필요하면, Cloudflare에 한 번의 API 호출을 수행하여 새 Cloudflare 계정을 프로비저닝하고, 사용자를 대신하여 인증된 요청을 할 수 있는 토큰을 다시 받습니다.</p>
+	<p>또는 Cloudflare에서 Planetscale과 파트너십을 맺어 Cloudflare에서 직접 Planetscale Postgres 데이터베이스를 만들 수 있는 것과 유사하게 Cloudflare 고객이 귀사의 서비스를 쉽게 프로비저닝할 수 있기를 원한다고 가정해 보겠습니다. <a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers"><u>Cloudflare에서 직접 Planetscale Postgres 데이터베이스 생성</u></a>. 우리는 이 새로운 프로토콜이 본격화되기 훨씬 전에 Planetscale과 협력하기 시작했지만, 그 흐름은 매우 유사합니다. Cloudflare는 오케스트레이터 역할을 하므로 PlanetScale 계정에 연결하고 데이터베이스를 생성하며 청구에 사용자의 기존 결제 방법을 사용할 수 있습니다.</p>
+	<p>이 새로운 프로토콜은 많은 플랫폼이 수년간 수행해 온 제품 간 통합 유형을 표준화하기 시작했으며, 주로 특정 플랫폼에 대해 일회성 또는 맞춤형 방식으로 수행되었습니다. 표준이 없으면 통합할 때마다 엔지니어링 작업이 필요했으며 이는 향후 통합에 활용할 수 없는 경우가 많았습니다. <a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>OAuth 표준</u></a> 을 통해 계정에 대한 액세스를 다른 플랫폼에 위임할 수 있었던 것과 유사하게, 이 프로토콜은 에이전트를 최우선으로 취급하는 방식으로 OAuth를 사용하고 결제 및 계정 생성까지 확장합니다.</p>
+	<p>표준을 계속 발전시키고 Stripe와 협력하여 더 공식적인 사양을 곧 공유할 수 있게 되어 기쁩니다. Cloudflare는 더 많은 플랫폼과의 통합을 기대합니다. <a href="https://blog.cloudflare.com/#"><u>agenticpartnerships@cloudflare.com</u></a>으로 이메일을 보내 귀사의 플랫폼이 Cloudflare와 어떻게 통합되기를 원하는지 알려주세요.</p>
+	<div class="flex anchor relative">
+		<h2 id="give-your-agent-the-power-to-provision-and-pay">에이전트가 프로비저닝하고 비용을 지불할 수 있도록 지원</h2>
+		<a href="https://blog.cloudflare.com/#give-your-agent-the-power-to-provision-and-pay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stripe Projects는 오픈 베타 버전이며, 아직 Cloudflare 계정이 없더라도 시작할 수 있습니다. <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe CLI</u></a>를 설치하고 Stripe에 로그인한 다음 새 프로젝트를 시작하세요:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">stripe projects init</code></pre>
+	<p>에이전트에게 Cloudflare에 새로운 것을 구축하도록 요청하고, 구축한 것을 Cloudflare에 보여주세요!</p>
+</div>

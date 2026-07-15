@@ -1,0 +1,178 @@
+<div class="mb2 gray5">Lecture&nbsp;: 7 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/ddos-threat-report-2025-q4">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2025-q4">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2025-q4">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2025-q4">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2025-q4">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-2025-q4">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/ddos-threat-report-2025-q4">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2025-q4">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eRGuUxJiP3sPpTpzC8A4U/6cb4e560ea682da2c762b1981852e5fe/BLOG-3098_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Bienvenue dans la 24e&nbsp;édition du rapport trimestriel Cloudflare consacré aux menaces DDoS. Dans ce rapport, <a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a> vous propose une analyse complète du panorama évolutif des menaces liées aux <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>attaques par déni de service distribué</u></a> (Distributed Denial of Service, DDoS), sur la base des données issues du <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>réseau Cloudflare</u></a>. Cette édition se concentrera sur le quatrième trimestre&nbsp;2025 et vous présentera les données globales de l'année&nbsp;2025.</p>
+	<p>Le quatrième trimestre&nbsp;2025 s'est caractérisé par un bombardement sans précédent lancé par le <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>botnet Aisuru-Kimwolf</u></a>. Cette campagne d'attaques DDoS a été surnommée «&nbsp;The Night Before Christmas&nbsp;» (la veille de Noël). Les clients de Cloudflare (de même que le tableau de bord et l'infrastructure de notre plateforme) se sont ainsi retrouvés la cible d'attaques DDoS HTTP hypervolumétriques dépassant les 200&nbsp;millions de requêtes par seconde (Mr/s), quelques semaines seulement après une attaque record mesurée à 31,4&nbsp;térabits par seconde (Tb/s).</p>
+	<div class="flex anchor relative">
+		<h2 id="key-insights">Informations essentielles</h2>
+		<a href="https://blog.cloudflare.com/#key-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p>Le nombre d'attaques DDoS s'est accru de 121&nbsp;% en&nbsp;2025 pour atteindre une moyenne de 5&nbsp;376&nbsp;attaques atténuées automatiquement par heure.</p>
+		</li>
+		<li>
+			<p>Hong Kong a gagné 12&nbsp;places au classement lors du dernier trimestre&nbsp;2025 pour devenir la deuxième cible la plus touchée par les attaques DDoS à travers le monde. Le Royaume-Uni a également vu sa position bondir de 36&nbsp;places pour devenir la sixième cible la plus attaquée.</p>
+		</li>
+		<li>
+			<p>Les Android TV infectées (un composant du botnet Aisuru-Kim Wolf) ont bombardé le réseau Cloudflare d'attaques DDoS HTTP hypervolumétriques, tandis que le secteur des télécommunications s'est imposé comme le secteur le plus attaqué.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="2025-saw-a-huge-spike-in-ddos-attacks">L'année&nbsp;2025 a connu une hausse phénoménale du nombre d'attaques DDoS</h2>
+		<a href="https://blog.cloudflare.com/#2025-saw-a-huge-spike-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le nombre total d'attaques DDoS a plus que doublé en 2025, avec un total incroyable de 47,1&nbsp;millions. Ces chiffres ont explosé ces dernières années&nbsp;: le nombre d'attaques DDoS a ainsi bondi de 236&nbsp;% entre&nbsp;2023 et 2025.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gWz9fvMGvTVL30YfnFL55/57749a329c2be23e45f87227221aa440/BLOG-3098_2.png" alt="BLOG-3098 2" class="kg-image" width="1482" height="908" loading="lazy">
+	</figure>
+	<p>Cloudflare a atténué en moyenne 5&nbsp;376&nbsp;attaques DDoS par heure en 2025, dont 3&nbsp;925&nbsp;attaques DDoS sur la couche réseau et 1&nbsp;451&nbsp;attaques DDoS HTTP.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cANr8wDVOOMNIb9IPvPYb/56f75509048fcd68c188fdd87f68e883/.png" alt="BLOG-3098 3" class="kg-image" width="1688" height="716" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-more-than-tripled-in-2025">Le nombre d'attaques DDoS sur la couche réseau a plus que triplé en 2025</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-more-than-tripled-in-2025" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>C'est au niveau des attaques DDoS sur la couche réseau que nous avons observé la croissance la plus importante. Le nombre de ces dernières a plus que triplé par rapport à l'année précédente. Cloudflare a ainsi atténué 34,4&nbsp;millions d'attaques DDoS sur la couche réseau en 2025, contre 11,4&nbsp;millions en 2024.</p>
+	<p>Une part considérable des attaques sur la couche réseau (environ 13,5&nbsp;millions) s'en sont directement prises à l'infrastructure de Cloudflare, ainsi qu'à l'infrastructure Internet mondiale protégée par notre service <a href="https://www.cloudflare.com/en-gb/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a>, dans le cadre d'une campagne d'attaques DDoS de 18&nbsp;jours qui a débuté au premier trimestre&nbsp;2025. Parmi ces attaques, 6,9&nbsp;millions visaient les clients de Magic Transit, tandis que les 6,6&nbsp;millions restants visaient directement Cloudflare.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jomtSPOraOer8LPDxJ3Aw/603db470ecbde1362579624193807e43/BLOG-3098_4.png" alt="BLOG-3098 4" class="kg-image" width="1556" height="918" loading="lazy">
+	</figure>
+	<p>Ces attaques faisaient partie d'une campagne DDoS multivectorielle regroupant des <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>attaques SYN flood</u></a>, des <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>attaques DDoS générées par Mirai</u></a> et des <a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack" target="_blank" rel="noopener noreferrer"><u>attaques par amplification SSDP</u></a>, pour n'en citer que quelques exemples. Nos systèmes ont détecté et atténué ces attaques automatiquement. Nous n'avons en réalité découvert la campagne qu'au cours de la phase de préparation de notre <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1"><u>rapport sur les menaces DDoS au premier trimestre&nbsp;2025</u></a>. Un véritable exemple de l'efficacité des mesures d'atténuation DDoS de Cloudflare&nbsp;!</p>
+	<p>Lors du dernier trimestre&nbsp;2025, le nombre d'attaques DDoS a augmenté de 31&nbsp;% par rapport au trimestre précédent et de 58&nbsp;% par rapport à 2024. Les attaques DDoS sur la couche réseau ont alimenté cette croissance. Au quatrième trimestre&nbsp;2025, les attaques DDoS sur la couche réseau représentaient ainsi 78&nbsp;% de l'ensemble des attaques DDoS. Le nombre d'attaques DDoS HTTP est resté le même, mais leur ampleur a atteint des débits que nous n'avions pas observés depuis la <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>campagne d'attaques DDoS HTTP/2 Rapid Reset</u></a> de 2023. Ces récentes flambées d'attaques ont été lancées par le <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>botnet Aisuru-Kimwolf</u></a>, que nous aborderons dans la section suivante.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="the-night-before-christmas-ddos-campaign">La campagne d'attaques DDoS «&nbsp;The Night Before Christmas&nbsp;»</h3>
+		<a href="https://blog.cloudflare.com/#the-night-before-christmas-ddos-campaign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le vendredi 19&nbsp;décembre&nbsp;2025, le <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>botnet Aisuru-Kimwolf</u></a> a commencé à bombarder l'infrastructure et les clients de Cloudflare sous un flot d'attaques DDoS hypervolumétriques. L'élément novateur de cette campagne résidait dans sa taille. En effet, les attaques DDoS HTTP hypervolumétriques lancées par le botnet affichaient des débits supérieurs à 20&nbsp;millions de requêtes par seconde (Mr/s).
+
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CMbEWh6TwRcld7gccwE81/dbe9877483861026d2fec6c0112ca8bb/BLOG-3098_5.png" alt="BLOG-3098 5" class="kg-image" width="1508" height="748" loading="lazy">
+	</figure>
+	<p>Le botnet Aisuru-Kimwolf se présente sous la forme d'un ensemble massif d'appareils infectés par des <a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank" rel="noopener noreferrer"><u>logiciels malveillants</u></a>, principalement des téléviseurs connectés Android TV. Composé d'environ 1 à 4&nbsp;millions d'hôtes infectés, il est capable de lancer des attaques DDoS susceptibles de paralyser les infrastructures essentielles, d'entraîner l'arrêt de la plupart des solutions existantes de protection contre les attaques DDoS dans le cloud, voire de perturber la connectivité de pays entiers.</p>
+	<p>Les systèmes autonomes de défense contre les attaques DDoS de Cloudflare ont détecté et atténué l'ensemble des attaques tout au long de la campagne&nbsp;: 384&nbsp;attaques intensives du point de vue des paquets, 329&nbsp;attaques intensives du point de vue des bits et 189&nbsp;attaques intensives du point de vue des requêtes, pour un total de 902&nbsp;attaques DDoS hypervolumétriques, soit une moyenne de 53&nbsp;attaques par jour.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GDQWNNnHac5Ovwm4z5Bug/052d194716063d069e4ccd2ff49e4228/BLOG-3098_6.png" alt="BLOG-3098 6" class="kg-image" width="1119" height="648" loading="lazy">
+	</figure>
+	<p>Les tailles moyennes des attaques DDoS hypervolumétriques observées pendant la campagne étaient de 3&nbsp;Gp/s, 4&nbsp;Tb/s et 54&nbsp;Mr/s (respectivement, pour chacun des indicateurs précédents). Les débits maximaux enregistrés pendant la campagne étaient de 9&nbsp;Gp/s, 24&nbsp;Tb/s et 205&nbsp;Mr/s.</p>
+	<p>Pour vous donner un ordre d'idée, l'ampleur d'une attaque DDoS mesurée à 205&nbsp;Mr/s est comparable à ce qui se produirait si l'ensemble des habitants du Royaume-Uni, de l'Allemagne et de l'Espagne saisissaient tous simultanément une adresse de site web avant d'appuyer sur «&nbsp;Entrée&nbsp;» lors de la même seconde.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7N0ruuQdsq6ncG7sQOMvv2/eb092b6380378031003760697d123f9d/BLOG-3098_7.png" alt="BLOG-3098 7" class="kg-image" width="1774" height="962" loading="lazy">
+	</figure>
+	<p>Malgré son caractère spectaculaire, la campagne «&nbsp;The Night Before Christmas&nbsp;» ne représentait qu'une petite partie des attaques DDoS hypervolumétriques que nous avons observées tout au long de l'année.</p>
+	<div class="flex anchor relative">
+		<h3 id="hyper-volumetric-ddos-attacks">Attaques DDoS hyper-volumétriques</h3>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare a constaté un accroissement continu du nombre d'attaques DDoS hypervolumétriques tout au long de l'année&nbsp;2025. Au quatrième trimestre&nbsp;2025, ce type d'attaques a ainsi augmenté de 40&nbsp;% par rapport au trimestre précédent.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZZAyBKHY8TST9or2kXc7b/a5927b87b686c50aa7137847cd204b74/BLOG-3098_8.png" alt="BLOG-3098 8" class="kg-image" width="1093" height="670" loading="lazy">
+	</figure>
+	<p>Si le nombre d'attaques a augmenté au cours de l'année&nbsp;2025, la taille de ces attaques s'est également accrue de plus de 700&nbsp;%, l'une d'elles ayant même culminé à 31,4&nbsp;Tb/s lors d'une attaque DDoS qui n'a toutefois duré que 35&nbsp;secondes. Le graphique ci-dessous présente la croissance rapide en taille des attaques DDoS observées et bloquées par Cloudflare. Chacune d'elles constitue d'ailleurs un record mondial, c'est-à-dire l'attaque la plus volumineuse jamais révélée publiquement par une entreprise à l'époque.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fqqJ2VBvAlhnv0vIpoGZF/bd260c5a7ab673b35865e94b9e86a6d7/BLOG-3098_9.png" alt="BLOG-3098 9" class="kg-image" width="1225" height="681" loading="lazy">
+	</figure>
+	<p>Comme toutes les autres attaques, l'attaque DDoS mesurée à 31,4&nbsp;Tb/s a été détectée et atténuée automatiquement par le système autonome de défense contre les attaques DDoS proposé par Cloudflare, qui s'est révélé capable de s'adapter et de concentrer rapidement ses efforts sur les botnets du type d'Aisuru-Kimwolf.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3piM1qb6UGpxBXExV0adHn/8f1cfbb2841dce9d6b462fb71704bca2/BLOG-3098_10.png" alt="BLOG-3098 10" class="kg-image" width="1239" height="618" loading="lazy">
+	</figure>
+	<p>La plupart des attaques DDoS hypervolumétriques visaient des clients Cloudflare du secteur des télécommunications, des fournisseurs d'accès Internet et des opérateurs. Les clients Cloudflare du secteur des jeux vidéo et les clients fournisseurs de services d'IA générative ont également été fortement touchés. Enfin, l'infrastructure de Cloudflare s'est elle-même retrouvée la cible de plusieurs vecteurs d'attaque, comme les <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>floods HTTP</u></a>, les <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer"><u>attaques DNS</u></a> et les <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>floods UDP</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="most-attacked-industries">Les secteurs les plus visés</h3>
+		<a href="https://blog.cloudflare.com/#most-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque l'on analyse les attaques DDoS de toutes les tailles, on s'aperçoit que le secteur des télécommunications, des fournisseurs d'accès Internet et des opérateurs s'est également révélé le plus touché. C'est le secteur des technologies et des services de l'information qui détenait ce titre regrettable par le passé.</p>
+	<p>Les secteurs des jeux de hasard/casinos, ainsi que celui des jeux vidéo, se sont classés respectivement en troisième et quatrième position. Les changements les plus importants survenus dans le top&nbsp;10 concernaient le secteur des logiciels et celui des services aux entreprises, qui ont tous deux progressé de plusieurs places dans le classement.&nbsp;</p>
+	<p>Les secteurs les plus visés sont définis par leur rôle d'infrastructure essentielle, d'épine dorsale pour les autres entreprises, ou par leur sensibilité financière immédiate et substantielle aux épisodes d'interruption de service et à la latence.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zmtrvUq0cXCEKlprLopWg/80e622f255fa6466f5facfa1288d571b/image8.png" alt="BLOG-3098 11" class="kg-image" width="1999" height="1184" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="most-attacked-locations">Les pays les plus visés</h3>
+		<a href="https://blog.cloudflare.com/#most-attacked-locations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En ce qui concerne les pays les plus attaqués à travers le monde, le panorama des attaques DDoS a connu à la fois une stabilité prévisible et des fluctuations spectaculaires. En conservant une place dans le classement des cinq premiers pays visés, la Chine, l'Allemagne, le Brésil et les États-Unis ont démontré un attrait persistant pour les acteurs malveillants.&nbsp;</p>
+	<p>Hong Kong a réalisé une avancée significative, en gagnant douze places pour se hisser à la deuxième position. L'événement majeur du trimestre s'est toutefois révélé l'ascension fulgurante du Royaume-Uni, qui a bondi de 36&nbsp;places au classement pour s'inscrire en 6e&nbsp;position des pays les plus attaqués.&nbsp;&nbsp;</p>
+	<p>Le Vietnam a conservé sa place en tant que septième pays le plus fréquemment visé par les attaques, suivi par l'Azerbaïdjan (en huitième position), l'Inde (neuvième) et Singapour (dixième).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fbfabacHT9WNKaZLhShlP/465f20da2e2f728692d5c22fc788a0a3/image10.png" alt="BLOG-3098 12" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="top-attack-sources">Principales sources des attaques</h3>
+		<a href="https://blog.cloudflare.com/#top-attack-sources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le Bangladesh a détrôné l'Indonésie en tant que plus importante source d'attaques DDoS au quatrième trimestre&nbsp;2025. L'Indonésie a chuté à la troisième place après avoir passé un an en tête des sources d'attaques DDoS. L'Équateur a également gagné deux places pour devenir la deuxième source la plus importante d'attaques DDoS.</p>
+	<p>De manière remarquable, l'Argentine a progressé de 20&nbsp;places pour s'installer à la quatrième position du classement des sources d'attaques DDoS. Hong Kong a progressé de trois rangs, pour atteindre la cinquième place. L'Ukraine arrivait en sixième position, suivie par le Vietnam, Taïwan, Singapour et le Pérou.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67THFzBjHYivQwttU61U9a/f8f5fe3afcca9495cb7d5fb7f61220fa/image5.png" alt="BLOG-3098 13" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-source-networks">Principaux réseaux d'origine</h2>
+		<a href="https://blog.cloudflare.com/#top-source-networks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le classement des 10&nbsp;premiers réseaux à l'origine d'attaques se présente comme une liste des géants de l'Internet. Il révèle ainsi une histoire fascinante quant à l'anatomie des attaques DDoS modernes. Le fil rouge apparaît de manière évidente&nbsp;: les acteurs malveillants tirent parti des infrastructures réseau les plus accessibles et les plus puissantes du monde, qui se composent principalement de grands services accessibles au public.&nbsp;</p>
+	<p>Nous remarquons que la plupart des attaques DDoS proviennent d'adresses IP associées à des plateformes d'informatique cloud et à des fournisseurs d'infrastructure cloud, comme<a href="https://radar.cloudflare.com/as14061" target="_blank" rel="noopener noreferrer"> <u>DigitalOcean (AS&nbsp;14061)</u></a>,<a href="https://radar.cloudflare.com/as8075" target="_blank" rel="noopener noreferrer"> <u>Microsoft (AS&nbsp;8075)</u></a>,<a href="https://radar.cloudflare.com/as132203" target="_blank" rel="noopener noreferrer"> <u>Tencent (AS&nbsp;132203)</u></a>, <a href="https://radar.cloudflare.com/as31898" target="_blank" rel="noopener noreferrer"><u>Oracle (AS&nbsp;31898)</u></a> et<a href="https://radar.cloudflare.com/as24940" target="_blank" rel="noopener noreferrer"> <u>Hetzner (AS&nbsp;24940)</u></a>. Ce constat démontre le lien fort qui existe entre les machines virtuelles facilement accessibles et les attaques à volume élevé. Fortement concentrées aux États-Unis, ces sources cloud sont suivies de près par une présence significative d'attaques issues d'adresses IP associées à des fournisseurs de télécommunications traditionnels. Ces entreprises de télécommunications principalement situées dans la région Asie-Pacifique (qui inclut le Vietnam, la Chine, la Malaisie et Taïwan) viennent compléter le reste du top&nbsp;10.</p>
+	<p>Cette diversité géographique et organisationnelle confirme la réalité bidimensionnelle des attaques. Si l'échelle même des sources d'attaques les plus importantes tire souvent son origine de hubs cloud internationaux, le problème s'avère incontestablement mondial, car les attaques transitent sur les voies les plus essentielles d'Internet, partout dans le monde. Nous observons ainsi la présence de milliers d'ASN sources différents dans de nombreuses attaques DDoS. Ce point met en évidence la répartition véritablement mondiale des nœuds de botnets.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ga5hHIgrc1pTwosbpx9di/458a87c028e8d51e10c7c56b416d3b64/BLOG-3098_14.png" alt="BLOG-3098 14" class="kg-image" width="1560" height="597" loading="lazy">
+	</figure>
+	<p>Nous tirons parti de la position avantageuse de Cloudflare pour aider les fournisseurs d'hébergement, les plateformes d'informatique cloud et les fournisseurs d'accès Internet à identifier et à éliminer les adresses IP/comptes malveillants à l'origine des attaques DDoS en leur proposant notre <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>flux d'informations gratuit sur les menaces liées aux botnets</u></a> (DDoS Botnet Threat Feed for Service Providers).</p>
+	<p>Plus de 800&nbsp;réseaux à travers le monde entier se sont inscrits à ce flux et nous avons déjà constaté une excellente collaboration s'établir au sein de la communauté pour éliminer les nœuds de botnets.</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-defend-the-internet">Contribuer à protéger Internet</h3>
+		<a href="https://blog.cloudflare.com/#helping-defend-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les attaques DDoS connaissent une croissance rapide, tant en termes de sophistication que d'ampleur, et dépassent désormais tout ce qui était imaginable jusqu'ici. L'évolution du panorama des menaces constitue un défi considérable pour les nombreuses entreprises qui cherchent à suivre le rythme. Les entreprises qui font actuellement appel à des équipements d'atténuation sur site ou aux services de centres de nettoyage à la demande pourraient bénéficier d'une réévaluation de leur stratégie de défense.</p>
+	<p>Peu importe la taille, la durée ou le volume des attaques, Cloudflare s'efforce de proposer<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"> <u>une protection DDoS gratuite et illimitée</u></a> à l'ensemble de ses clients en tirant parti de son<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"> <u>vaste réseau mondial</u></a> et de ses<a href="https://developers.cloudflare.com/ddos-protection/about" target="_blank" rel="noopener noreferrer"> <u>systèmes autonomes d'atténuation des attaques DDoS</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="about-cloudforce-one">À propos de Cloudforce One</h3>
+		<a href="https://blog.cloudflare.com/#about-cloudforce-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Portée par une mission visant à défendre Internet, l'équipe de <a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a> tire parti des données télémétriques du réseau mondial Cloudflare (qui protège près de 20&nbsp;% du web) afin de soutenir la recherche sur les menaces et d'assurer une réponse opérationnelle, deux axes qui permettront par la suite de protéger les systèmes essentiels de millions d'entreprises à travers le monde.</p>
+</div>

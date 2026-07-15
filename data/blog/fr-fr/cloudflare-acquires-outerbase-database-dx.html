@@ -1,0 +1,98 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-acquires-outerbase-database-dx">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/cloudflare-acquires-outerbase-database-dx">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-acquires-outerbase-database-dx">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-acquires-outerbase-database-dx">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/cloudflare-acquires-outerbase-database-dx">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/cloudflare-acquires-outerbase-database-dx">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/nl-nl/cloudflare-acquires-outerbase-database-dx">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-outerbase-database-dx">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MvFdMXLBUAHvXJjVcSSJJ/f956f874b1e62e667b3f2457c68b1762/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous nous réjouissons de vous annoncer l'acquisition d'<a href="https://www.outerbase.com" target="_blank" rel="noopener noreferrer"><u>Outerbase</u></a> par Cloudflare. Il s'agit là d'une opportunité incroyable pour nous. Je souhaite vous expliquer comment nous en sommes arrivés à ce point, ce que nous avons développé jusqu'à présent et pourquoi nous sommes si enthousiastes à l'idée de rejoindre l'équipe Cloudflare.</p>
+	<p>Les bases de données sont essentielles au développement de presque toutes les applications de production&nbsp;: vous devez conserver un état persistant pour vos utilisateurs (ou vos agents), être en mesure d'interroger un certain nombre de clients différents et veiller à assurer leur rapidité. Or, les bases de données ne sont pas toujours simples à utiliser&nbsp;: la conception d'un modèle approprié, la rédaction de requêtes performantes, la création d'index et l'optimisation des schémas d'accès ont tendance à demander beaucoup d'expérience. Si l'on ajoute à l'ensemble l'exposition des données par le biais d'API faciles à «&nbsp;gnoquer&nbsp;» («&nbsp;grok&nbsp;», un néologisme issu du roman «&nbsp;En terre étrangère&nbsp;» de Robert Heinlein communément utilisé par le milieu de la technologie anglophone et signifiant «&nbsp;comprendre pleinement, de manière intuitive&nbsp;») et qui mettent en évidence le «&nbsp;bon&nbsp;» moyen de procéder, une formidable expérience pour les développeurs (du tableau de bord à l'interface de ligne de commande)… L'utilisation de bases de données implique beaucoup de travail.</p>
+	<p>L'équipe d'Outerbase commence déjà à travailler sur d'importants changements concernant la manière dont consulter, modifier et visualiser les bases de données (et vos données) au sein de <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>. Nous sommes heureux de vous offrir un aperçu de ce que nous comptons vous proposer lorsque nous nous mettrons au travail.</p>
+	<div class="flex anchor relative">
+		<h3 id="database-dx">L'expérience de développement des bases de données</h3>
+		<a href="https://blog.cloudflare.com/#database-dx" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque nous avons lancé Outerbase, nous savions à quel point les bases de données pouvaient se révéler compliquées. Tous les utilisateurs rencontraient des difficultés pour rédiger des requêtes, indexer les données et verrouiller leurs données, même les développeurs expérimentés. En parallèle, les non-développeurs se sentaient souvent enfermés et ne pouvaient pas accéder aux données dont ils avaient besoin. Nous étions convaincus qu'un meilleur moyen devait exister. Dès le premier jour, notre objectif a été de rendre les données accessibles à tous, quel que soit leur niveau de compétence. Si elle provient à l'origine du simple développement d'une meilleure interface pour bases de données, notre solution a rapidement évolué vers quelque chose de bien plus spécial.</p>
+	<p>Outerbase est devenue une plateforme qui vous aide à gérer les données d'une manière qui vous semble naturelle. Elle vous permet de parcourir des tableaux, d'éditer des lignes et d'exécuter des requêtes sans avoir à vous soucier de mémoriser une structure SQL. Vous pouvez en outre utiliser Outerbase pour approfondir vos recherches et partager vos connaissances avec votre équipe, même si vous connaissez déjà SQL. Nous avons également ajouté des fonctionnalités de visualisation permettant à des équipes entières, techniques ou non, de voir ce qui se passe avec leurs données en un coup d'œil. Enfin, avec la croissance de l'IA, nous avons remarqué que nous pouvions utiliser cette technologie pour gérer un grand nombre de tâches plus complexes.</p>
+	<p>L'une de nos offres les plus intéressantes est Starbase, une base de données compatible SQLite basée sur le service <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> de Cloudflare. Notre objectif n'a jamais été de simplement proposer un système existant sous une toute nouvelle interface&nbsp;: nous souhaitions qu'il soit facile de vous lancer dès le premier jour, à partir de rien. La solution Durable Objects de Cloudflare nous offrait un moyen de créer et de gérer facilement des bases de données pour ceux qui en avaient besoin. Pour couronner le tout, nous proposions des API REST automatisées, une sécurité au niveau des lignes, la prise en charge du protocole WebSocket pour les requêtes de diffusion et bien d'autres fonctionnalités.</p>
+	<div class="flex anchor relative">
+		<h3 id="1-1-3">1&nbsp;+&nbsp;1&nbsp;=&nbsp;3</h3>
+		<a href="https://blog.cloudflare.com/#1-1-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Notre collaboration avec Cloudflare a débuté l'année dernière, lorsque nous avons proposé aux développeurs un moyen d'importer et de gérer leurs bases de données <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> dans Outerbase. Nous avons été impressionnés par la puissance des outils Cloudflare en matière de déploiement et de mise à l'échelle des applications. En travaillant ensemble, nous avons rapidement constaté à quel point nos missions s'alignaient parfaitement. Cloudflare bâtissait l'infrastructure dont nous aurions aimé bénéficier à nos débuts et nous concevions l'expérience données à laquelle de nombreux développeurs Cloudflare aspiraient. C'est ce qui a fini par conduire à la décision apparemment évidente de rejoindre Cloudflare&nbsp;: la démarche semblait des plus logiques.</p>
+	<p>Nous comptons à l'avenir intégrer les fonctionnalités principales d'Outerbase au sein de la plateforme Cloudflare. Vous commencerez ainsi à remarquer les fonctionnalités d'Outerbase dans le tableau de bord Cloudflare si vous êtes développeur et que vous utilisez les services D1 ou Durable Objects. Attendez-vous également à voir notre explorateur de données, qui vous permet de parcourir et d'éditer les tableaux, nos nouvelles API REST, l'éditeur de requêtes avec fonctionnalité de saisie semi-automatique (type-ahead), la capture de données en temps réel et bien d'autres outils que nous avons peaufinés ces deux dernières années, au sein du tableau de bord Cloudflare.</p>
+	<p>Dans le cadre de cette transition, le cloud Outerbase hébergé cessera de fonctionner le 15&nbsp;octobre&nbsp;2025, soit dans environ six mois. Nous savons que certains d'entre vous s'appuient sur la plateforme Outerbase sous sa forme actuelle et nous laissons donc les référentiels open source en l'état.</p>
+	<p>Vous pourrez toujours héberger vous-même Outerbase si vous le souhaitez. Nous vous expliquerons comment procéder dans votre compte Cloudflare. Notre objectif principal sera de nous assurer que les meilleurs aspects d'Outerbase deviendront une partie intégrante de l'expérience pour développeurs proposée par Cloudflare afin de vous éviter d'avoir à faire un choix (ce dernier sera évident&nbsp;!).</p>
+	<div class="flex anchor relative">
+		<h3 id="sneak-peek">Aperçu</h3>
+		<a href="https://blog.cloudflare.com/#sneak-peek" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous avons déjà beaucoup réfléchi à la manière dont nous allons intégrer les meilleurs composants d'Outerbase au sein des solutions D1, Durable Objects, Workflows et Agents. Nous allons ainsi vous révéler quelques-uns des éléments qui vont être intégrés au cours du deuxième&nbsp;trimestre&nbsp;2025, lorsque l'équipe d'Outerbase se mettra au travail.</p>
+	<p>Nous nous concentrerons plus spécifiquement sur les points suivants&nbsp;:</p>
+	<ul>
+		<li>
+			<p>Adaptation du puissant outil de visualisation des tableaux et d'exécution des requêtes aux services D1 et Durable Objects (entre autres&nbsp;!).</p>
+		</li>
+		<li>
+			<p>Facilitation du démarrage avec Durable Objects&nbsp;: amélioration de l'expérience dans Wrangler (notre outil CLI), du tableau de bord Cloudflare et de la manière dont vous vous connectez à ces derniers depuis vos applications client.</p>
+		</li>
+		<li>
+			<p>Améliorations de la manière dont vous pouvez visualiser l'état d'un Workflow et de (milliers, voire millions&nbsp;!) d'instances Workflow à n'importe quel moment.</p>
+		</li>
+		<li>
+			<p>Implémentation des hooks pré-requête et post-requête pour D1 afin d'enregistrer automatiquement les handlers vous permettant d'agir sur vos données.</p>
+		</li>
+		<li>
+			<p>Intégration de l'API <a href="https://starbasedb.com" target="_blank" rel="noopener noreferrer"><u>Starbase</u></a> à D1 afin d'étendre l'API REST existante de D1 et ajout de la prise en charge du protocole WebSocket, afin de faciliter l'utilisation de D1, même pour les applications hébergées en dehors de Workers.</p>
+		</li>
+	</ul>
+	<p>Nous avons déjà commencé à préparer le terrain pour ces changements. Au cours des semaines à venir, nous lancerons un explorateur de données unifié pour D1 et Durable Objects. Cet outil empruntera fortement à l'interface d'Outerbase telle que vous la connaissez.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/FHinAqMr5I8ukmIZLln3a/a34734a3ed680556b01794c6de5e1f63/image2.png" alt="" class="kg-image" width="1999" height="1191" loading="lazy">
+	</figure>
+	<p><i><sup>Intégrer l'explorateur de données d'Outerbase au tableau de bord Cloudflare.</sup></i></p>
+	<p>Nous allons également lier certaines des fonctionnalités de Starbase directement à la plateforme de Cloudflare afin de vous permettre de tirer parti de ses offres uniques, comme les hooks pré-requête et post-requête ou la sécurité au niveau des lignes, directement depuis vos bases de données D1 existantes et le service Durable Objects.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const beforeQuery = ({ sql, params }) =&gt; {
+    // Prevent unauthorized queries
+    if (!isAllowedQuery(sql)) throw new Error('Query not allowed');
+};
+
+const afterQuery = ({ sql, result }) =&gt; {
+    // Basic PII masking example
+    for (const row of result) {
+        if ('email' in row) row.email = '[redacted]';
+    }
+};
+
+// Execute the query with pre- and post- query hooks
+const { results } = await env.DB.prepare("SELECT * FROM users;", beforeQuery, afterQuery);</code></pre>
+	<p><i><sup>Définissez, sur vos requêtes D1, des hooks susceptibles d'être réutilisés, partagés et exécutés automatiquement avant ou après l'exécution de vos requêtes.</sup></i></p>
+	<p>Cette approche devrait vous assurer davantage de clarté et de contrôle sur vos données, tout en vous proposant de nouveaux moyens de les sécuriser et de les optimiser.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6W2C3WRqP13ghnHYnZsJHl/fecc1a6f8e92b6cac9499716ab5d7bc4/image1.png" alt="" class="kg-image" width="1608" height="970" loading="lazy">
+	</figure>
+	<p><i><sup>Repenser l'expérience de démarrage sur le service Durable Objects.</sup></i></p>
+	<p>Nous avons même commencé à optimiser l'expérience du tableau de bord Cloudflare autour des solutions Durable Objects et D1 afin d'améliorer l'état vide, de proposer davantage de ressources pour le démarrage et, dans l'ensemble, de faciliter encore plus la gestion et le suivi des ressources de votre base de données.
+
+		Nous remercions chaudement ceux parmi vous qui nous ont soutenus, nous ont fait part de leurs retours et nous ont accompagnés tout au long de notre croissance. Vous avez contribué à l'évolution d'Outerbase et à en faire ce qu'elle est aujourd'hui. Cette acquisition nous permet de consacrer davantage de ressources et d'attention à la conception de l'expérience données que nous avons toujours souhaité proposer. Nous espérons qu'en devenant une partie de Cloudflare, nous pourrons l'aider à toucher encore plus de développeurs en concevant des expériences intuitives, en accélérant la vitesse d'innovation et en développant des outils qui s'intégreront naturellement à vos flux de travail.</p>
+	<p>Il s'agit d'une étape importante pour Outerbase et nous ne pourrions être plus enthousiastes. Merci d'avoir participé à cette aventure jusqu'ici. Nous avons hâte de vous présenter ce que nous vous réservons, alors même que nous continuerons à rendre les données plus accessibles, plus intuitives et plus puissantes, en collaboration avec Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Et ensuite&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous prévoyons de commencer à travailler sur certains des grands changements à apporter à votre manière d'interagir avec vos données sur Cloudflare, en commençant par les solutions D1 et Durable Objects.</p>
+	<p>Nous veillerons également à proposer une excellente expérience de développement aux utilisateurs de la plateforme de base de données et de stockage disponible plus largement sur Cloudflare, notamment au niveau de la manière dont vous accédez aux données dans <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> et même dans vos <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>agents IA</u></a> (pour ne citer que quelques-uns des services Cloudflare).</p>
+	<p>Pour rester dans la course, suivez le nouveau <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>journal des modifications Cloudflare</u></a> et rejoignez notre <a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord destiné aux développeurs</u></a> pour discuter avec l'équipe et découvrir les premiers aperçus de nos nouvelles fonctionnalités avant le lancement de ces dernières.</p>
+</div>

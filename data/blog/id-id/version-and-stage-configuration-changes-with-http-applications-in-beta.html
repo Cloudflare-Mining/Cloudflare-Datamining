@@ -1,0 +1,160 @@
+<div class="mb2 gray5">6 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta">English</a>, <a href="https://blog.cloudflare.com/ja-jp/version-and-stage-configuration-changes-with-http-applications-in-beta">日本語</a>, <a href="https://blog.cloudflare.com/th-th/version-and-stage-configuration-changes-with-http-applications-in-beta">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/version-and-stage-configuration-changes-with-http-applications-in-beta">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cFx04PMIpDzbmD2Rody09/14b2188b91c484318a1ef199c2228b24/version-and-stage-configuration-changes-with-http-applications-in-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hari ini, kami mengumumkan beta tertutup Aplikasi HTTP: cara baru untuk menguji dan memberlakukan perubahan pada lalu lintas HTTP Anda dengan aman. Aplikasi HTTP memperkenalkan penetapan versi konfigurasi dan kemampuan kontrol saat perubahan diluncurkan pada lalu lintas HTTP di jaringan edge global Cloudflare. Pelanggan perusahaan yang menginginkan kontrol lebih besar harus menghubungi Manajer Customer Success mereka untuk mendapatkan akses.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uHwCFeawx2DxDeztCqngJ/0dbc28566b8a3900228c4a0561bba4c1/image7-9.png" alt="Version and Stage Configuration Changes with HTTP Applications in Beta" class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="issues-encountered-in-managing-configurations"><b>Masalah yang Dijumpai saat Mengelola Konfigurasi</b></h3>
+		<a href="https://blog.cloudflare.com/#issues-encountered-in-managing-configurations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sejak awal Cloudflare didirikan, manajemen situs web dan aplikasi web telah dilakukan lewat hal yang kami sebut sebagai Zona, yang berasal dari konsep <a href="https://www.cloudflare.com/learning/dns/glossary/dns-zone" target="_blank" rel="noopener noreferrer">Zona DNS</a>. Meski telah berfungsi baik selama bertahun-tahun bagi pelanggan, model ini menghadirkan kesulitan dalam mengelola konfigurasi edge, yaitu:</p>
+	<ol>
+		<li>
+			<p>Pelanggan perlu mengerahkan upaya manual untuk melakukan setup lingkungan staging.</p>
+		</li>
+		<li>
+			<p>Risiko penyimpangan dalam konfigurasi antara produksi dan staging.</p>
+		</li>
+	</ol>
+	<p>Dalam pengembangan perangkat lunak, Anda perlu menguji perubahan dalam lingkungan yang aman untuk memvalidasinya sebelum diproduksi atau memengaruhi lalu lintas langsung. Dalam banyak siklus pengembangan perangkat lunak umum, ini berarti memberlakukan perubahan pada lingkungan staging atau praproduksi untuk pengujian dan validasi. Cara paling umum yang dilakukan pelanggan dalam Cloudflare saat ini adalah menggunakan dua Zona yang ditandai dengan nama host zona tersebut, misalnya: satu untuk staging bernama <i>staging.example.com</i> dan satu untuk produksi bernama <i>example.com</i>. Ini menyelesaikan masalah inti, sebab mereka memberikan insulasi perubahan. Kesalahan dalam zona staging tidak akan memengaruhi lalu lintas produksi.</p>
+	<p>Namun, agar dapat diterapkan dalam produksi, perubahan yang berhasil diverifikasi dalam staging harus disalin secara manual oleh pelanggan — atau membuat automasi melalui <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank" rel="noopener noreferrer">Penyedia Terraform</a> Cloudflare. Bagi banyak orang, ini mengikuti proses 'perubahan permintaan' manual saat tiket dicatat dengan perubahan yang akan dibuat. Kemudian, seseorang (kerap kali orang yang berbeda) mengambil tiket dan harus secara akurat menggandakan perubahan yang sama berdasarkan instruksi manual. Rentan terjadi kesalahan dalam proses ini; dan kesalahan dalam proses ini dapat mengakibatkan penghentian, tergantung pada perubahannya. Selain itu, penyimpangan konfigurasi antara konfigurasi staging dan produksi dapat menghasilkan kerumitan lebih lanjut.</p>
+	<p>Kami ingin memberikan keamanan dan keandalan bagi pelanggan dalam mengelola layanan mereka pada Cloudflare. Untuk mengatasi masalah yang dijelaskan sebelumnya, kami mengumumkan Aplikasi HTTP beserta Aturan Perutean.</p>
+	<div class="flex anchor relative">
+		<h3 id="http-applications"><b>Aplikasi HTTP</b></h3>
+		<a href="https://blog.cloudflare.com/#http-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aplikasi HTTP adalah cara untuk mengelola konfigurasi edge dengan kasus penggunaan, bukan dengan nama host. Setiap Aplikasi HTTP memiliki tujuan, baik menangani konfigurasi situs web pemasaran Anda maupun aplikasi internal. Setiap Aplikasi HTTP terdiri dari beberapa versi konfigurasi, di mana setiap versi mewakili cuplikan pengaturan untuk mengelola lalu lintas — page rule, aturan firewall, pengaturan cache, dll. &nbsp;Setiap versi konfigurasi dalam Aplikasi HTTP terpisah dari satu sama lain, tetapi apabila versi baru dibuat, versi ini dimulai sebagai salinan versi sebelumnya.</p>
+	<div class="flex anchor relative">
+		<h3 id="routing-rules"><b>Aturan Perutean</b></h3>
+		<a href="https://blog.cloudflare.com/#routing-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Tidak seperti zona, setiap versi Aplikasi HTTP tidak tergantung pada nama host tertentu. Oleh karena itu, jika versi tidak terkait dengan nama host, seperti zona, bagaimana Anda dapat menentukan versi Aplikasi HTTP yang akan memengaruhi rangkaian lalu lintas tertentu? Jawabannya adalah Aturan Perutean. Dengan Aturan Perutean, Anda dapat menentukan versi Aplikasi HTTP yang diterapkan pada lalu lintas tertentu, atau nama host. Aturan Perutean didukung oleh <a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer">Kumpulan Aturan Teknis</a> Cloudflare dan mengandalkan penggunaan aturan "jika demikian" kondisional untuk memetakan nama host yang dikontrol dalam akun Cloudflare Anda ke versi konfigurasi tertentu. Sebagai contoh, jika nama host permintaan cocok dengan '<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>', terapkan versi 2 Aplikasi HTTP Pemasaran saya. Saat aturan dilaksanakan dalam edge kami, alih-alih menerapkan konfigurasi zona reguler <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>, edge akan menggunakan konfigurasi yang ditetapkan dalam versi 2 Aplikasi HTTP.</p>
+	<p>Aturan Perutean mendukung dua jenis aturan — aturan staging dan aturan produksi. Keduanya menggunakan daftar nama host, sebagaimana dijelaskan, tetapi saat membuat aturan staging, kami menambahkan filter agar aturan hanya akan dijalankan saat lalu lintas dikirimkan ke IP khusus pada edge kami. Ini artinya Anda dapat menguji perubahan secara aman dengan mengirimkan lalu lintas ke <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a> pada IP staging tanpa berdampak pada pelanggan. Lebih baik lagi, setelah Anda memvalidasi perubahan dengan pembuatan aturan perutean produksi, konfigurasi yang sama persis akan diterapkan dalam produksi untuk semua pelanggan Anda.</p>
+	<p>Cukup sudah penjelasannya — mari melihatnya langsung!</p>
+	<div class="flex anchor relative">
+		<h3 id="using-http-applications-to-safely-test-and-deploy-a-change"><b>Menggunakan Aplikasi HTTP untuk menguji dan memberlakukan perubahan dengan aman</b></h3>
+		<a href="https://blog.cloudflare.com/#using-http-applications-to-safely-test-and-deploy-a-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Untuk panduan ini, saya akan berperan sebagai pelanggan lama. Saya memiliki zona yang melayani pelanggan dan ingin membuat beberapa perubahan untuk mengganti aturan agar dapat menulis ulang lokasi aset saya. Tetapi, saya tidak terlalu menguasai regex dan situs semua pelanggan saya akan rusak jika terjadi kesalahan! Daripada membuat perubahan langsung dalam zona, kami akan menggunakan Aplikasi HTTP dan Aturan Perutean untuk membuat, menguji, dan meluncurkan perubahan.</p>
+	<p>Pertama-tama, saya login ke Dasbor Cloudflare. Setelah memilih akun, saya melihat Aplikasi HTTP yang tersedia pada bilah samping. Selepas memilihnya, saya dapat memilih untuk membuat Aplikasi HTTP pertama saya.</p>
+	<p>Dasbor Cloudflare menunjukkan halaman kondisi kosong untuk Aplikasi HTTP</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Nd7yCSBQjOJ8m1GJKxeBi/ea7cd4f48ef2625a0047fead77758146/image9-2.png" alt="The Cloudflare Dashboard showing the empty state page for HTTP Applications" class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Untuk membuat Aplikasi HTTP pertama saya, saya perlu menamai dan memilih zona yang ada sebelumnya, dalam hal ini example.com. Cloudflare akan menggunakan zona itu untuk mengawali konfigurasi versi pertama Aplikasi HTTP. Dengan menyalinnya pada pengaturan yang ada dari zona, saya memiliki salinan aman untuk dikerjakan dan tidak perlu menyusun ulang konfigurasi secara manual.</p>
+	<p>Layar "Create an Application” (Buat Aplikasi) yang menunjukkan bahwa Aplikasi HTTP akan dibuat dengan nama "Example application (Aplikasi Contoh)" dan dimulai dari example.com</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XyZ5d6ChNq8iErjbLMY09/7acc911cec6786070783734f64f2c4dc/image4-26.png" alt="The “Create an Application” screen showing that an HTTP Application will be created named “Example Application” and initialized from example.com." class="kg-image" width="1440" height="1203" loading="lazy">
+
+	</figure>
+	<p>Setelah memilih "Create” (Buat), Aplikasi HTTP pertama saya sudah jadi! Sekarang, versi pertama sedang dibuat. Di balik layar, Cloudflare akan mengambil konfigurasi example.com yang ada dan menyalinnya ke Versi 1 Aplikasi HTTP ini. Setelah berhasil disalin, saya dapat mulai mengedit konfigurasi ini.</p>
+	<p>Daftar versi Aplikasi Contoh, yang menunjukkan Versi 1 sedang dibuat.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WFILRdVat2nT78zgcMd5F/47f17f72a8c6acb502a441f4e3b947f5/image6-15.png" alt="The Version list of the Example Application, showing Version 1 being created." class="kg-image" width="1999" height="1422" loading="lazy">
+
+	</figure>
+	<p>Saya dapat mengedit versi ini seperti yang saya lakukan dalam zona apa saja. Namun, terdapat dua perbedaan penting. Pertama: perubahan yang saya lakukan sekarang tidak akan memengaruhi lalu lintas langsung pada edge Cloudflare, sebab kami belum membuat aturan perutean untuk mengirimkan lalu lintas ke konfigurasi versi ini. Kedua: kami tidak mengizinkan segala hal yang terhubung dengan zona untuk dikontrol melalui Aplikasi HTTP, yaitu: catatan DNS, Sertifikat SSL, Spectrum, atau Load Balancing.</p>
+	<p>Aturan transformasi Versi 1 menunjukkan bahwa tidak ada aturan yang dibuat.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BRn4GFKdQK8mIXZ6YPeSa/c87dc956111f59181770998c2dea6747/image8-8.png" alt="Transform rules of Version 1 showing no rules have been created." class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Dalam bagian Aturan pada <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Aturan Transformasi</a>, saya membuat aturan baru untuk menulis ulang jalur aset ke lokasi yang benar. Untuk semua permintaan ke example.com/assets/*, kami akan menulis ulang jalur menjadi example.com/internal/files/assets/*.</p>
+	<p>Membuat aturan transformasi untuk Versi 1 bernama "Rewrite Assets (Tulis Ulang Aset)"</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IOkrSZpo2qzsaJGQgx6FX/54036e3f872ea97d65555784111e87e1/image13.png" alt="Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/” with “internal/files/assets/”." class="kg-image" width="1440" height="1393" loading="lazy">
+
+	</figure>
+	<p>. Aturan ini menggantikan jalur permintaan yang dimulai dengan “/assets/*” dengan “internal/files/assets/*”.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bSyIcAlnKfZgYrxUqToMp/6c56883f7b7025311b622608f5c38589/image8-10.png" alt="Transform rules of Version 1 showing a new rule named “Rewrite Assets” has been created." class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Aturan transformasi Versi 1 yang menunjukkan aturan baru bernama "Rewrite Assets (Tulis Ulang Aset)" telah dibuat.</p>
+	<p>Pada saat ini, saya telah membuat perubahan, dan sekarang ingin mengujinya. Untuk melakukannya, saya dapat keluar dari bagian pengeditan versi dan menuju Aturan Perutean untuk Aplikasi HTTP ini. Di sini, saya dapat membuat aturan yang akan mengizinkan lalu lintas yang ada untuk dirutekan melalui konfigurasi versi ini.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68azYVx9EQe6VLE65dNZPu/26577b088b21188c3f8e7c448e8a5cf0/image12-3.png" alt="An empty list of Routing Rules for the Example Application." class="kg-image" width="1999" height="1422" loading="lazy">
+
+	</figure>
+	<p>Daftar kosong dari Aturan Perutean untuk Aplikasi Contoh.</p>
+	<p>Saya akan membuat aturan staging, sebab saya ingin menjadi satu-satunya yang menguji perubahan ini tanpa berdampak pada pelanggan. Perhatikan, saat membuat aturan staging, IP yang dapat digunakan untuk menguji versi ini akan ditampilkan pada layar pembuatan aturan.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tRvch04hvhXofPwAkArEF/73a8ed140d068076a677007e934fc2a8/image5-15.png" alt="Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1" class="kg-image" width="1999" height="1551" loading="lazy">
+
+	</figure>
+	<p>Membuat Aturan Perutean staging yang akan cocok apabila permintaan cocok dengan example.com dan IP edge adalah 192.168.1.1 atau 192.168.2.2 dan menerapkan konfigurasi Versi 1</p>
+	<p>Setelah membuat aturan, saya dapat mengonfigurasikan komputer untuk mengirimkan permintaan ke IP tersebut untuk example.com. Rackspace memiliki <a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file" target="_blank" rel="noopener noreferrer">panduan lengkap</a> mengenai cara mengubah file host mesin lokal Anda untuk melakukannya. Sekarang, saat saya mengunjungi example.com, aturan transformasi baru dijalankan, tetapi tidak ada yang berubah bagi orang lain yang mengunjungi situs tersebut.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MtOYdPSjloi85alwvPYIo/0b7c69d1c844de0febf006fa38050592/image10-3.png" alt="Routing Rules for the Example Application showing one rule for staging has been created." class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Aturan Perutean untuk Aplikasi Contoh yang menunjukkan satu aturan staging telah dibuat.</p>
+	<p>Setelah saya yakin perubahan berfungsi, saya dapat membuat Aturan Perutean produksi yang akan menerapkan perubahan ini bagi semua lalu lintas pada example.com — dan semuanya selesai!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Mm3VFMhazKLwRXoDkyZC0/de0d34b90121b249fa27e16c7ce7f4a3/image3-30.png" alt="Routing Rule creation screen showing the creation of a production rule that will apply Version 1 when requests match example.com" class="kg-image" width="1999" height="1551" loading="lazy">
+
+	</figure>
+	<p>Layar pembuatan Aturan Perutean yang menunjukkan pembuatan aturan produksi yang akan menerapkan Versi 1 apabila permintaan cocok dengan example.com</p>
+	<p>Setelah diperbarui, jalur aset untuk situs saya akan ditulis ulang untuk semua permintaan ke <i>example.com</i>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25SLXGcLHJdpAEv72gdtsy/71cabaeea463164f387375d91b91dbb9/image1-61.png" alt="Routing Rules for the Example Application showing both a staging and production rule for Version 1." class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Aturan Perutean untuk Aplikasi Contoh yang menunjukkan aturan staging dan produksi untuk Versi 1.</p>
+	<p>Apa yang terjadi selanjutnya? Apabila saya siap membuat rangkaian perubahan lainnya, saya dapat membuka Aplikasi HTTP dan menggandakan Versi 1 untuk membuat Versi 2. Awalnya, Versi 2 akan sama persis dengan konfigurasi Versi 1, tetapi karena tidak ada Aturan Perutean yang cocok, ini tidak akan diterapkan ke lalu lintas.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LAzLL9J0HlpOEED5SCkYw/18a45edb600b3fc7ab597935b7a4f82a/image11-3.png" alt="The list of versions for the Example Application showing Version 1 being applied to staging and production, and Version 2 ready to edit, but not being used anywhere." class="kg-image" width="1999" height="1422" loading="lazy">
+
+	</figure>
+	<p>Daftar versi Aplikasi Contoh yang menunjukkan Versi 1 diterapkan ke staging dan produksi, dan Versi 2 siap diedit, tetapi tidak digunakan di mana pun.</p>
+	<p>Sekarang saya dapat mengedit Versi 2 dengan aman seperti yang saya lakukan sebelumnya dengan Versi 1. Kali ini, saya ingin mengubah aturan firewall agar saya dapat mencegah lalu lintas yang mungkin berbahaya agar tidak mengakses situs saya. Mengubah Versi 2 tidak akan mengubah lalu lintas di edge hingga saya memperbarui Aturan Perutean staging saya untuk menggunakan Versi 2. Ini memungkinkan saya membuat perubahan dengan penuh keyakinan, kemudian mengujinya dengan aman.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Fn5gR3WRYZCtxAFdqCtvE/26253d3f18921f4dc7078652929738ef/image2-46.png" alt="The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production." class="kg-image" width="1440" height="1024" loading="lazy">
+
+	</figure>
+	<p>Daftar aturan perutean untuk Aplikasi Contoh menunjukkan Versi 2 yang digunakan untuk staging, sedangkan Versi 1 masih digunakan dalam produksi.</p>
+	<p>Setelah memvalidasi rangkaian perubahan ini, saya dapat mendorong Versi 2 ke semua lalu lintas dengan memperbarui Aturan Perutean produksi untuk menggunakan Versi 2. Proses yang sama dapat dilakukan untuk setiap rangkaian perubahan berikutnya yang ingin saya buat.</p>
+	<div class="flex anchor relative">
+		<h3 id="http-applications-now-available-in-closed-beta"><b>Aplikasi HTTP Kini Tersedia dalam Beta Tertutup</b></h3>
+		<a href="https://blog.cloudflare.com/#http-applications-now-available-in-closed-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dengan kekuatan Aplikasi HTTP dan Aturan Perutean, pelanggan kini dapat lebih mengontrol cara dan waktu perubahan konfigurasi dibuat. Ini mengurangi kekhawatiran membuat perubahan buruk yang mungkin merusak situs Anda. Kapabilitas ini tersedia dalam beta tertutup untuk pelanggan perusahaan, tetapi jika Anda tertarik, hubungi tim akun Cloudflare Anda untuk mempelajari cara mendapatkan akses!</p>
+</div>

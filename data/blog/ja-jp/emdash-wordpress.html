@@ -1,0 +1,222 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/emdash-wordpress">English</a>および<a href="https://blog.cloudflare.com/ko-kr/emdash-wordpress">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VnjnsSUePsv89JB4JiwI/1d69cc5560e220b4e9445aa21b939d83/EmDash-big.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>ソフトウェア構築のコストは大幅に削減されています。最近、AIコーディングエージェントを使って<a href="https://blog.cloudflare.com/vinext"><u>1週間でNext.jsを再構築しました</u></a>。しかし、この2か月間、当社のエージェントはさらに野心的なプロジェクトに取り組んできました。WordPressのオープンソースプロジェクトをゼロから再構築するということです。</p>
+	<p>WordPressは<a href="https://w3techs.com/technologies/details/cm-wordpress" target="_blank" rel="noopener noreferrer"><u>インターネットの40%以上を支えています</u></a>。誰もが出版業者になれるようにし、WordPress開発者の世界的なコミュニティを創設した大成功です。しかし、WordPressのオープンソースプロジェクトは今年で24周年を迎えます。その時期に、Webサイトのホスティングも劇的に変わりました。WordPressが生まれたとき、AWS EC2は存在しませんでした。この数年の間に、その作業は仮想プライベートサーバーのレンタルから始まり、JavaScriptバンドルをグローバルに分散されたネットワークに事実上無料でアップロードできるようになりました。この変化に対応するために、インターネット上で最も人気のあるCMSをアップグレードする時が来ています。</p>
+	<p>この新しいCMSの名前はEmDashです。当社は、WordPressの精神的な後継と考えています。これはすべてTypeScriptで記述されています。サーバーレスですが、独自のハードウェアや選択したプラットフォームで実行できます。プラグインは安全にサンドボックス化されており、独自の<a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>分離環境</u></a>で、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>を介して実行でき、WordPressプラグインアーキテクチャの根本的なセキュリティ問題を解決します。また、内部では、EmDashはコンテンツ主導のWebサイト向けの最速Webフレームワークである<a href="https://astro.build" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>を使用しています。</p>
+	<p>EmDashは完全にオープンソースで、MITライセンス取得済みで、<a href="https://github.com/emdash-cms/emdash" target="_blank" rel="noopener noreferrer"><u>GitHubで利用できます</u></a>。EmDashはWordPress機能との互換性を目指していますが、EmDashを作成するためにWordPressコードは使用されません。これにより、より寛容なMITライセンスの下でオープンソースプロジェクトを認可することができます。より多くの開発者が適応し、拡張し、EmDashの開発に参加できるようになることを期待しています。</p>
+	<p>EmDash v0.1.0は、早期開発者ベータ版の一環として、現在、Cloudflareアカウント、または任意のNode.jsサーバーでプレビューを表示します：</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Femdash-cms%2Ftemplates%2Ftree%2Fmain%2Fblog-cloudflare"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>または、<a href="https://emdashcms.com" target="_blank" rel="noopener noreferrer"><u>EmDash Playground</u></a>でこちらの管理インターフェースをお試しください:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50n8mewREzoxOFq2jDzpT9/6a38dbfbaeec2d21040137e574a935ad/CleanShot_2026-04-01_at_07.45.29_2x.png" alt="" class="kg-image" width="3616" height="2692" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-wordpress-has-accomplished">WordPressが達成したこと</h3>
+		<a href="https://blog.cloudflare.com/#what-wordpress-has-accomplished" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPressのストーリーは、かつてない規模での出版を可能にしたオープンソースの勝利です。インターネットで調達した世代に同じような認識可能なインパクトを与えたプロジェクトは、ほとんどありませんでした。WordPressのコアと数千のプラグインやテーマの開発者によって、数百万ドルの出版を民主化したプラットフォームが構築されました。多くの生活や生活が、このユビキタスなソフトウェアによって変わりつつあります。</p>
+	<p>WordPressの場所は常にありますが、コンテンツ出版の世界が成長するためのスペースもたくさんあります。10年前、キーボードを手に入れた人は共通して、WordPressでブログを公開することを学びました。現在、その人がAstroや別のTypeScriptフレームワークを学び、構築する可能性が高くなります。このエコシステムには、23年前のWordPressが必要だったように、幅広いオーディエンスを可能にする選択肢が必要です。</p>
+	<p>EmDashは、WordPressが作ったもの、つまり、誰でも低コストでインストール・利用できるオープンソースのパブリッシングスタックを基盤として構築することに尽力し、WordPressでは解決できないコア問題を解決します。</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-the-wordpress-plugin-security-crisis">WordPressプラグインのセキュリティ危機解決</h3>
+		<a href="https://blog.cloudflare.com/#solving-the-wordpress-plugin-security-crisis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPressのプラグインアーキテクチャは根本的に安全ではありません。WordPressサイトの<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2025" target="_blank" rel="noopener noreferrer"><u>セキュリティ問題の96%は</u></a>プラグインに起因しています。2025年、<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026" target="_blank" rel="noopener noreferrer"><u>WordPressのエコシステムには</u></a>、過去2年分の合計よりも多い深刻な脆弱性が見つかりました。</p>
+	<p>20年以上経った今、WordPressプラグインのセキュリティが問題になっているのはなぜでしょうか。</p>
+	<p>WordPressプラグインとは、WordPressに直接フックして機能を追加・変更するPHPスクリプトのことです。隔離はなく、WordPressプラグインはWordPressサイトのデータベースおよびファイルシステムに直接アクセスできます。WordPressプラグインをインストールする時、ほとんどすべてのものにアクセスでき、あらゆる悪意のある入力やエッジケースを完璧に処理すると信頼することができるのです。</p>
+	<p>EmDashがこれを解決します。EmDashでは、各プラグインは独自の分離されたサンドボックスである<a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a>で実行されます。EmDashは、基礎となるデータに直接アクセスするのではなく、プラグインがマニフェストで必要と明示的に宣言している内容に基づいて、<a href="https://blog.cloudflare.com/workers-environment-live-object-bindings"><u>バインディングを介して機能</u></a>をプラグインに提供します。このセキュリティモデルには厳格な保証があります。EmDashプラグインは、マニフェストで明示的に宣言されたアクションのみを実行できます。プラグインをインストールする前に、何を許可するのか、事前に知り、信頼することができます。OAuthフローを経由し、サードパーティアプリに特定の範囲付き許可セットを許可するのと同様です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JDq2oEgwONHL8uUJsrof2/fb2ae5fcacd5371aaab575c35ca2ce2e/image8.png" alt="" class="kg-image" width="1999" height="1181" loading="lazy">
+	</figure>
+	<p>例えば、コンテンツアイテムが保存された後にメールを送信するプラグインは、次のようになります：</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { definePlugin } from "emdash";
+
+export default () =&gt;
+  definePlugin({
+    id: "notify-on-publish",
+    version: "1.0.0",
+    capabilities: ["read:content", "email:send"],
+    hooks: {
+      "content:afterSave": async (event, ctx) =&gt; {
+        if (event.collection !== "posts" || event.content.status !==    "published") return;
+
+        await ctx.email!.send({
+          to: "editors@example.com",
+          subject: `New post published: ${event.content.title}`,
+          text: `"${event.content.title}" is now live.`,
+         });
+
+        ctx.log.info(`Notified editors about ${event.content.id}`);
+      },
+    },
+  });</code></pre>
+	<p>このプラグインは、<code>content:afterSave</code>がコンテンツライフサイクルにフックし、<code>email:send</code>が<code>ctx.email</code>関数にアクセスするという2つの機能を明示的にリクエストします。プラグインが、これらの機能を使わずに他のことをすることは不可能です。外部ネットワークへのアクセスはありません。ネットワークアクセスが必要な場合は、定義の一部として通信する必要のある正確なホスト名を特定し、特定のホスト名との通信のみを許可されます。</p>
+	<p>また、いかなる場合でも、プラグインのニーズは事前に静的に宣言されるため、インストール時に、プラグインが何を許可するかを常に明確にすることができます。プラットフォームまたは管理者は、承認されたプラグインまたは安全なプラグインの許可リストではなく、彼らがどのような権限を要求するかに基づいて、特定のユーザーグループがインストールできるまたは許可しないプラグインのルールを定義できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-plugin-security-means-solving-marketplace-lock-in">プラグインのセキュリティ解決は、マーケットプレイスのロックイン解決を意味します</h3>
+		<a href="https://blog.cloudflare.com/#solving-plugin-security-means-solving-marketplace-lock-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPressプラグインのセキュリティは、WordPress.orgがマーケットプレイスにある各プラグインを<a href="https://developer.wordpress.org/plugins/wordpress-org/plugin-developer-faq/#where-do-i-submit-my-plugin" target="_blank" rel="noopener noreferrer"><u>手作業で確認し、承認している</u></a>ほど、現実的なリスクとなります。この記事の執筆時点で、そのレビューキューは800プラグインの長さで、通過に少なくとも2週間かかっています。WordPressプラグインの脆弱攻撃対象領域は広範囲に及ぶため、実際、すべての関係者は市場の評判、評価、レビューに依存しています。また、WordPressプラグインはWordPress自体と同じ実行コンテキストで動作し、 WordPressのコードと深く絡み合っているため、WordPressのGPLライセンスをさらに進化させる必要があると主張する人もいます。</p>
+	<p>これらの現実が相まって、プラグインを構築する開発者や、WordPressサイトをホスティングするプラットフォームを対象とする重大な効果が生まれています。</p>
+	<p>プラグインセキュリティはこの問題の根本原因です。マーケットプレイスビジネスは、当事者が互いに簡単に信頼できない場合に、信頼を提供します。WordPressマーケットプレイスの場合、プラグインのセキュリティリスクは非常に大きく、また確率が高いため、多くの顧客はマーケットプレイスを通じてプラグインを合理的に信頼することができます。しかし、マーケットプレイスの一部であるためには、コードは、そのマーケットプレイス以外の場所で無料で提供することを強制するような方法でライセンスされる必要があります。ロックインされています。</p>
+	<p>EmDashプラグインには、マーケットプレイスのロックインを軽減する2つの重要なプロパティがあります。</p>
+	<ol>
+		<li>
+			<p><b>プラグインは任意のライセンスを持つことができます</b>: EmDashから独立して実行され、コードを共有しません。これはプラグイン作成者の選択です。</p>
+		</li>
+		<li>
+			<p><b>プラグインコードは安全なサンドボックスで独立して実行されます</b>: プラグインはEmDashサイトに提供され、信頼できるものであり、EmDashサイトがコードを見ることはありません。</p>
+		</li>
+	</ol>
+	<p>最初の部分は簡単です。プラグイン作成者として、必要なライセンスを選択します。NPM、PyPi、Packagest、またはその他のレジストリに公開するときも同じ方法です。これは、プラグインやテーマにどのようなライセンスを使用するかというEmDashプロジェクトではなく、コミュニティまでのオープンなエコシステムです。</p>
+	<p>次のパートは、EmDashのプラグインアーキテクチャが中央集権的なマーケットプレイスから脱却するところです。</p>
+	<p>開発者は、プラグインを使用するか信頼するかを決定できるよう、プラグインの精査がはるかに少ないサードパーティマーケットプレイスに依存する必要があります。上記のプラグインの例として、コンテンツを保存した後にメールを送信するものを考えてみましょう。プラグインは3つのことを宣言します：</p>
+	<ul>
+		<li>
+			<p><code>content:afterSave</code>フックでのみ実行されます。</p>
+		</li>
+		<li>
+			<p><code>read:content</code>の機能があります</p>
+		</li>
+		<li>
+			<p><code>email:send</code>機能があります。</p>
+		</li>
+	</ul>
+	<p>プラグインには何万行ものコードを入れることができますが、すべてにアクセスでき、パブリックインターネットと通信できるWordPressプラグインとは異なり、プラグインの追加者は、自分がどのようなアクセス権を付与しているかを正確に把握しています。境界を明確に定義することで、セキュリティリスクに関する情報に基づいた意思決定を行い、プラグインが提供する機能に直接関連するより具体的なリスクに焦点を当てることができます。</p>
+	<p>サイトとプラットフォームの両方がセキュリティモデルを信頼して制約を提供できればするほど、サイトとプラットフォームはプラグインを信頼できるようになり、マーケットプレイスや評判の中央集中型管理から脱却します。言い換えれば、自分の市で食品の安全管理が徹底されていると信頼できれば、概して新しい場所に挑戦するでしょう。移行に必須メニューがあると確信できない場合、新しい場所を試みる前にGoogleに相談することになり、誰もが新しいレストランを開くことは困難になります。</p>
+	<div class="flex anchor relative">
+		<h3 id="every-emdash-site-has-x402-support-built-in-charge-for-access-to-content">すべてのEmDashサイトにx402サポートが組み込まれています。コンテンツへのアクセスには課金が必要です</h3>
+		<a href="https://blog.cloudflare.com/#every-emdash-site-has-x402-support-built-in-charge-for-access-to-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webのビジネスモデルは、<a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>危険にさらされています</u></a>。特にコンテンツクリエーターや出版業者にとっては。コンテンツを広くアクセス可能にするという古い方法は、トラフィックと引き換えにすべてのクライアントが無料でアクセスできるようにするというものです。サイトを訪れる人がいない場合、クライアントはそのサイトに代わってWebにアクセスすることになります。クリエイターは、この新しいエージェントの世界で収益を上げ続けるための方法を必要としています。そして、ユーザーのエージェントが必要とし、お金を払うことにサービスを提供する新しい種類のWebサイトを構築する必要があります。数十年前、クリエイターの新たな波が（多くの場合、WordPressを利用した）素晴らしいビジネスとなるWebサイトを制作しましたが、現在も同様の機会が存在しています。</p>
+	<p><a href="https://www.x402.org" target="_blank" rel="noopener noreferrer"><u>x402</u></a> は、インターネットネイティブな決済のためのオープンで中立的な標準です。インターネット上の誰でも簡単に課金でき、どのクライアントもオンデマンドで従量課金で支払うことができます。エージェント（エージェントなど）のクライアントが、HTTPリクエストを送信し、HTTP 402 Payment Required（支払いが必要）ステータスコードを受け取ります。応答として、クライアントはオンデマンドのアクセスに対して支払いを行い、サーバーは要求されたコンテンツにクライアントを通過させることができます。</p>
+	<p>EmDashは、x402のサポートが組み込まれています。つまり、EmDashサイトを持つ人は誰でも、サブスクリプションを必要とせず、エンジニアリング作業もゼロで、コンテンツへのアクセスに対して課金できるということです。課金が必要なコンテンツを設定し、課金金額を設定し、ウォレットアドレスを提供するだけです。リクエスト/レスポンスフローは最終的に次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IKfYGHF6Pgi3jQf1ERRQC/48815ffec3e204f4f2c6f7a40f232a93/image4.png" alt="" class="kg-image" width="1999" height="1678" loading="lazy">
+	</figure>
+	<p>すべてのEMDashサイトに、AI時代に対応したビジネスモデルが組み込まれています。</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-scale-to-zero-for-wordpress-hosting-platforms">WordPressホスティングプラットフォームのスケールツーゼロ解決</h3>
+		<a href="https://blog.cloudflare.com/#solving-scale-to-zero-for-wordpress-hosting-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WordPressはサーバーレスではありません。サーバーのプロビジョニングと管理、従来のWebアプリケーションのようにサーバーのスケーリングが必要です。パフォーマンスを最大化し、トラフィックスパイクに対処できるようにするために、インスタンスを事前にプロビジョニングして、ある程度のアイドル状態のコンピューティングを実行したり、パフォーマンスを制限するような方法でリソースを共有したりする必要性は避けられません。これは、コンテンツがサーバーレンダリングしなければならず、キャッシュできないサイトに特に当てはまります。</p>
+	<p>EmDashは違います。サーバーレスプラットフォームで動作するように構築されており、Cloudflareのオープンソースランタイム<a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>v8 isolate architecture</u></a>の<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>を最大限に活用するように設計されています。受信したリクエストに対して、Workersランタイムは即座に分離を立ち上げてコードを実行し、レスポンスを提供します。リクエストがなければ、ゼロにスケールダウンします。また、<a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>課金はCPU時間（実際の作業に費やされた時間）</u></a>に対してのみ発生します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yIX0whveiJ7xQ9P20TeyA/84462e6ec58cab27fbd6bf1703efeabc/image7.png" alt="" class="kg-image" width="1795" height="703" loading="lazy">
+	</figure>
+	<p>EmDashは、あらゆるNode.jsサーバー上でどこでも実行できますが、Cloudflareでは、<a href="https://developers.cloudflare.com/cloudflare-for-platforms" target="_blank" rel="noopener noreferrer"><u>Cloudflare for Platforms</u></a>を使用して数百万のEmDashインスタンスを実行できます。各インスタンスは、世界最大のWebサイトが利用しているのとまったく同じネットワークとランタイムを使用して、必要なRPS数まで瞬時に完全にスケールダウンできます。</p>
+	<p>コストの最適化やパフォーマンス上のメリットはもちろん、Cloudflareがこのアーキテクチャに賭けている理由は、低コストかつ無料枠があること、そして誰もがスケーリングするWebサイトを構築できるはずだと考えることです。当社は、プラットフォームの大小を問わず、このアーキテクチャのメリットを自社の顧客にも広げるお手伝いができることを嬉しく思います。</p>
+	<div class="flex anchor relative">
+		<h3 id="modern-frontend-theming-and-architecture-via-astro">Astroを利用した最新のフロントエンドテーマとアーキテクチャ</h3>
+		<a href="https://blog.cloudflare.com/#modern-frontend-theming-and-architecture-via-astro" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDashは、コンテンツ主導型WebサイトのためのWebフレームワークであるAstroを利用しています。EmDashのテーマを作成するには、以下を含むAstroプロジェクトを作成します。</p>
+	<ul>
+		<li>
+			<p><b>Pages</b>: コンテンツ（ホームページ、ブログ記事、アーカイブなど）をレンダリングするためのAstroルート</p>
+		</li>
+		<li>
+			<p><b>レイアウト:</b> 共有HTML構造</p>
+		</li>
+		<li>
+			<p><b>コンポーネント:</b> 再利用可能なUI要素（ナビゲーション、カード、フッター）</p>
+		</li>
+		<li>
+			<p><b>スタイル:</b> CSSまたはTailwindの設定</p>
+		</li>
+		<li>
+			<p><b>シードファイル：</b>CMSに作成するコンテンツのタイプとフィールドを示すJSON</p>
+		</li>
+	</ul>
+	<p>これにより、<a href="https://npm-stat.com/charts.html?package=astro&amp;from=2024-01-01&amp;to=2026-03-30" target="_blank" rel="noopener noreferrer"><u>Astroを選択するフロントエンド開発者</u></a>や、すでにAstroでトレーニングを受けているLLMにとって、テーマの作成は身近なものになります。</p>
+	<p>WordPressテーマは非常に柔軟ですが、プラグインと同じセキュリティリスクが多く潜んでいます。人気が高く一般的であればあるほど、標的になりやすくなります。テーマは、すべてを包含する実行環境である<code>functions.php</code>と統合することで実行され、テーマは信じられないほど強力で潜在的に危険なものになります。EmDashのテーマは、動的プラグインと同様に、この期待を覆します。テーマはデータベース操作を実行できません。</p>
+	<div class="flex anchor relative">
+		<h3 id="an-ai-native-cms-mcp-cli-and-skills-for-emdash">AIネイティブCMS — EmDashのMCP、CLI、スキル</h3>
+		<a href="https://blog.cloudflare.com/#an-ai-native-cms-mcp-cli-and-skills-for-emdash" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CMSの操作で最も楽しくない部分は、コンテンツのローテーションマイグレーションを行うことです。文字列の検索と置換、カスタムフィールドをあるフォーマットから別のフォーマットへのカスタムフィールドの移行、名前変更、並び替え、移動などです。これは、つまらない反復作業であるか、一度限りのスクリプトや「使い捨て」プラグインやツールが必要で、通常は書くのも好きでもクエリーも楽しいものではありません。</p>
+	<p>EmDashは、AIエージェントによってプログラムで管理できるように設計されています。エージェントが必要とする以下のようなコンテキストとツールを提供します：</p>
+	<ol>
+		<li>
+			<p><b>エージェントスキル：</b> 各EmDashインスタンスには、EmDashがプラグインに提供できる機能、プラグインをトリガーできるフック、<a href="https://github.com/emdash-cms/emdash/blob/main/skills/creating-plugins/SKILL.md" target="_blank" rel="noopener noreferrer"><u> プラグインの構成方法に関するガイダンス</u></a> 、さらには <a href="https://github.com/emdash-cms/emdash/blob/main/skills/wordpress-theme-to-emdash/SKILL.md" target="_blank" rel="noopener noreferrer"><u>レガシーWordPressテーマをEmDashにネイティブに移行する方法 をエージェントに説明する</u></a><a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u> エージェントスキル</u></a> が含まれています。エージェントにEmDashのコードベースを提供すると、EmDashはエージェントが必要な方法でサイトをカスタマイズできるよう必要なすべての情報を提供します。</p>
+		</li>
+		<li>
+			<p><b>EmDash CLI:</b> <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx" target="_blank" rel="noopener noreferrer"><u>EmDash CLI</u></a>を使用すると、エージェントはEmDashのローカルまたはリモートインスタンスとプログラムで対話することができます。<a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#media-upload-file" target="_blank" rel="noopener noreferrer"><u>メディアのアップロード</u></a>, <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#emdash-search" target="_blank" rel="noopener noreferrer"><u>コンテンツの検索</u></a>, <a href="https://github.com/emdash-cms/emdash/blob/main/docs/src/content/docs/reference/cli.mdx#schema-create-collection" target="_blank" rel="noopener noreferrer"><u>スキーマの作成と管理</u></a>、といった一連の作業を管理者UIで行うのと同じです。</p>
+		</li>
+		<li>
+			<p><b>組み込みのMCPサーバー：</b>すべてのEmDashインスタンスは、独自のリモートモデルコンテキストプロトコル（MCP）サーバーを提供し、管理者UIでできることと同じセットを行うことができます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="pluggable-authentication-with-passkeys-by-default">デフォルトでパスキーを使用した、プラグ可能な認証</h3>
+		<a href="https://blog.cloudflare.com/#pluggable-authentication-with-passkeys-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDashは、デフォルトでパスキーベースの認証を使用しています。つまり、漏洩すべきパスワードはなく、ブルートフォース攻撃による防御策も存在しません。ユーザー管理には、使い慣れたRBACが含まれており、管理者、編集者、作成者、貢献者など、それぞれが必要なアクションに厳密に範囲を設定しています。認証はプラグイン可能で、SSOプロバイダーと連携するようにEMDashを設定し、IdPメタデータに基づいてアクセスを自動プロビジョニングすることもできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="import-your-wordpress-sites-to-emdash">WordPressサイトをEmDashにインポート</h3>
+		<a href="https://blog.cloudflare.com/#import-your-wordpress-sites-to-emdash" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>既存のWordPressサイトをインポートするには、WordPress管理画面に移動してWXRファイルをエクスポートするか、WordPressサイトに<a href="https://github.com/emdash-cms/wp-emdash/tree/main/plugins/emdash-exporter" target="_blank" rel="noopener noreferrer"><u>EmDash Exporterプラグイン</u></a>をインストールします。これにより、お客様だけに公開され、お客様が管理するWordPressアプリケーションパスワードで保護されたセキュアなエンドポイントが設定されます。コンテンツの移行はわずか数分で完了し、自動的に動作して、添付されたメディアをEmDashのメディアライブラリに取り込みます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SUFaWUIoEFSN2z9rclKZW/28870489d502cff34e35ab3b59f19eae/image1.png" alt="" class="kg-image" width="1999" height="1249" loading="lazy">
+	</figure>
+	<p>WordPressでポストかつページ以外のタイプのカスタムコンテンツを作成するということは、高度なカスタムフィールドのような重いプラグインをインストールし、その結果を混雑したWordPress投稿テーブルに送り込む必要があったのです。EmDashのやり方は違っています。管理パネルで直接スキーマを定義することができ、これにより、まったく新しいEmDashのコレクションが作成され、データベース内で個別に順序付けられます。インポート時も同じ機能を使って、WordPressから任意のカスタムポストタイプを取得し、そこからEmDashのコンテンツタイプを作成することができます。</p>
+	<p>カスタムブロックの場合、<a href="https://github.com/emdash-cms/emdash/blob/main/skills/creating-plugins/references/block-kit.md" target="_blank" rel="noopener noreferrer"><u>EmDash Block Kit Agent Skill</u></a> を使用して、選択したエージェントに指示を出し、EmDash向けにブロックを作成できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xutdF9nvHYMYlN6XfqRGu/1db0e0d73327e926d606f92fdd7aabec/image3.png" alt="" class="kg-image" width="1200" height="319" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="try-it">ぜひお試しください</h3>
+		<a href="https://blog.cloudflare.com/#try-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>EmDashはv0.1.0で、プレビュー版です。ぜひお試しいただき、フィードバックをお願いいたします。<a href="https://github.com/emdash-cms/emdash" target="_blank" rel="noopener noreferrer"><u>EmDash GitHubリポジトリ</u></a>への貢献も歓迎いたします。</p>
+	<p>もし、ただ試してみたいだけで、何ができるかまず理解したいのであれば、<a href="https://emdashcms.com" target="_blank" rel="noopener noreferrer"><u>EmDash Playground</u></a>の管理インターフェースを試してみてください。</p>
+	<p>新しいEMDashサイトをローカルに作成するには、CLIを介して、次を実行します。</p>
+	<p><code>npm create emdash@latest</code></p>
+	<p>または、以下のCloudflareダッシュボードから同じ設定を行うことができます。</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Femdash-cms%2Ftemplates%2Ftree%2Fmain%2Fblog-cloudflare"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>お客様が構築されるものを楽しみにしています。もし、WordPressコミュニティで、ホスティングプラットフォーム、プラグインやテーマの作成者としてご活動されている方は、ぜひご連絡をお待ちしています。EmDash@cloudflare.comまでメールで、EmDashプロジェクトからどのような機能を期待されるかをお知らせください。</p>
+	<p>EmDashの主要な開発に関する最新情報を入手したい方は、<a href="https://forms.gle/ofE1LYRYxkpAPqjE7" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>にメールアドレスを残しておくことができます。</p>
+</div>

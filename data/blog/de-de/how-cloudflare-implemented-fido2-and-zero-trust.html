@@ -1,0 +1,107 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">English</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-implemented-fido2-and-zero-trust">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/how-cloudflare-implemented-fido2-and-zero-trust">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-implemented-fido2-and-zero-trust">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-implemented-fido2-and-zero-trust">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-cloudflare-implemented-fido2-and-zero-trust">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-implemented-fido2-and-zero-trust">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16QIHuUzEgHkromTfxZ0Cj/c6d1f9578efcec2b0558c93f290dea8c/how-cloudflare-implemented-fido2-and-zero-trust.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Vor einigen Jahren war die Sicherheitsarchitektur von Cloudflare eine klassische VPN-Architektur nach dem etablierten Perimetermodell („Burg und Burggraben“). Unsere Mitarbeiter nutzten unser Unternehmens-VPN, um sich mit allen internen Anwendungen und Servern zu verbinden und ihre Arbeit zu erledigen. Wir setzten eine Zwei-Faktor-Authentifizierung mit zeitbasierten Einmal-Passcodes (TOTP) durch und verwendeten eine Authentifizierungs-App wie Google Authenticator oder Authy, wenn sie sich beim VPN anmeldeten. Allerdings hatten nur wenige interne Anwendungen eine zweite Authentifizierungsebene. Diese Architektur sieht äußerlich gut aus, aber das Sicherheitsmodell ist schwach. Kürzlich haben wir <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">die Mechanismen eines von uns verhinderten Phishing-Angriffs</a>, beschrieben, der zeigt, wie Angreifer Phishing für Anwendungen durchführen können, die mit Zweitfaktor-Authentifizierungsmethoden wie TOTP „gesichert“ sind. Glücklicherweise haben wir TOTP schon lange abgeschafft und durch Hardware-Sicherheitsschlüssel und Cloudflare Access ersetzt. In diesem Blog erfahren Sie, wie wir das gemacht haben.</p>
+	<p></p>
+	<p>Die Lösung für das Phishing-Problem liegt in einem <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer">Multi-Faktor-Authentifizierung (MFA)</a>-Protokoll namens <i>FIDO2/WebAuthn</i>. Heute melden sich alle Cloudflare-Mitarbeiter mit FIDO2 als sicherem Multi-Faktor an und authentifizieren sich bei unseren Systemen mit unseren eigenen Zero Trust-Produkten. Unsere neuere Architektur ist vor Phishing sicher und ermöglicht es uns, die Zugangskontrolle mit den geringsten Privilegien leichter durchzusetzen.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-little-about-the-terminology-of-security-keys-and-what-we-use">Ein Wort zur Terminologie der Sicherheitsschlüssel und was wir verwenden</h3>
+		<a href="https://blog.cloudflare.com/#a-little-about-the-terminology-of-security-keys-and-what-we-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Jahr 2018 wussten wir, dass wir zu einer Phishing-beständigen MFA migrieren wollten. Wir hatten <a href="https://github.com/kgretzky/evilginx2" target="_blank" rel="noopener noreferrer">evilginx2</a> und die Reife von Phishing-Push-basierten mobilen Authentifikatoren und TOTP beobachtet. Die einzige Phishing-beständige MFA, die Social-Engineering-Angriffen und dem Diebstahl von Anmeldeinformationen standhielt, waren Sicherheitsschlüssel, die FIDO-Standards implementieren. FIDO-basierte MFA führt neue Begriffe ein, wie z. B. FIDO2, WebAuthn, Hard(ware)-Schlüssel, Sicherheitsschlüssel und insbesondere den YubiKey (der Name eines bekannten Herstellers von Hardwareschlüsseln), auf den wir in diesem Beitrag Bezug nehmen werden.</p>
+	<p><b>WebAuthn</b> bezieht sich auf den <a href="https://www.w3.org/TR/webauthn-2" target="_blank" rel="noopener noreferrer">Web-Authentifizierungsstandard</a>, und wir haben ausführlich darüber geschrieben, wie dieses Protokoll funktioniert, als wir <a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn">Unterstützung für Sicherheitsschlüssel im Cloudflare-Dashboard</a> veröffentlichten.</p>
+	<p><b>CTAP1(U2F) und CTAP2</b> beziehen sich auf das Client-zu-Authentifikator-Protokoll, das beschreibt, wie Software- oder Hardware-Geräte mit der Plattform interagieren, die das WebAuthn-Protokoll ausführt.</p>
+	<p><b>FIDO2</b> ist die Zusammenfassung dieser beiden Protokolle, die für die Authentifizierung verwendet werden. Die Unterscheidungen sind nicht wichtig, aber die Nomenklatur kann verwirrend sein.</p>
+	<p>Das Wichtigste ist, dass alle diese Protokolle und Standards entwickelt wurden, um offene Authentifizierungsprotokolle zu schaffen, die Phishing-sicher sind und mit einem Hardware-Gerät implementiert werden können. In der Software werden sie mit Face ID, Touch ID, Windows Assistant oder ähnlichem umgesetzt. In der Hardware wird ein YubiKey oder ein anderes separates physisches Gerät für die Authentifizierung mit USB, Lightning oder NFC verwendet.</p>
+	<p>FIDO2 ist Phishing-sicher, da es ein kryptografisch sicheres Challenge/Response-Verfahren implementiert und das Challenge-Protokoll die spezifische Website oder Domain enthält, bei der sich der Nutzer authentifiziert. Bei der Anmeldung erzeugt der Sicherheitsschlüssel auf example.net eine andere Antwort als bei einem legitimen Versuch des Nutzers, sich auf example.com anzumelden.</p>
+	<p>Bei Cloudflare haben wir im Laufe der Jahre mehrere Arten von Sicherheitsschlüsseln an unsere Mitarbeiter ausgegeben, aber derzeit geben wir zwei verschiedene FIPS-validierte Sicherheitsschlüssel an alle Mitarbeiter aus. Der erste Schlüssel ist ein YubiKey 5 Nano oder YubiKey 5C Nano, der immer in einem USB-Steckplatz auf den Laptops unserer Mitarbeiter verbleiben soll. Der zweite ist der YubiKey 5 NFC oder YubiKey 5C NFC, der sowohl auf Desktops als auch auf mobilen Geräten über NFC oder USB-C funktioniert.</p>
+	<p>Ende 2018 haben wir bei einer unternehmensweiten Veranstaltung Sicherheitsschlüssel verteilt. Wir baten alle Mitarbeiter, ihre Schlüssel zu registrieren, sich mit ihnen zu authentifizieren und in einem kurzen Workshop Fragen zu den Geräten zu stellen. Das Programm war ein großer Erfolg, aber es gab immer noch Ecken und Kanten und Anwendungen, die mit WebAuthn nicht funktionierten. Wir waren noch nicht bereit für die vollständige Durchsetzung von Sicherheitsschlüsseln. Wir brauchten eine Zwischenlösung, bis wir die Probleme gelöst hatten.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust">Der Anfang: Selektive Durchsetzung von Sicherheitsschlüsseln mit Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben Tausende von Anwendungen und Servern, für deren Wartung wir verantwortlich sind und die durch unser VPN geschützt wurden. Wir begannen mit der Migration all dieser Anwendungen zu unserem Zero Trust Access Proxy zur gleichen Zeit, als wir unseren Mitarbeitern ihre Sicherheitsschlüssel ausstellten.</p>
+	<p>Cloudflare Access ermöglichte es unseren Mitarbeitern, sicher auf Websites zuzugreifen, die zuvor durch das VPN geschützt waren. Jeder interne Dienst würde einen signierten Berechtigungsnachweis validieren, um einen Nutzer zu authentifizieren und sicherzustellen, dass der Nutzer sich bei unserem Identitätsanbieter angemeldet hat. Cloudflare Access &nbsp;<i>war für die Einführung von Sicherheitsschlüsseln notwendig</i>, weil wir damit ein Tool hatten, mit dem wir die ersten internen Anwendungen, die eine Authentifizierung mit einem Sicherheitsschlüssel erfordern, selektiv durchsetzen konnten.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7z0izoSKAEICEWz1ExjagE/759d732a44cd0d0a4e3558ea29703405/image4-24.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
+
+	</figure>
+	<p>Wir haben Terraform verwendet, als wir unsere Anwendungen auf unsere Zero Trust-Produkte umgestellt haben, und dies ist die Cloudflare-Zugangsrichtlinie, in der wir zum ersten Mal Sicherheitsschlüssel durchgesetzt haben. Wir haben Cloudflare Access so eingerichtet, dass es bei der Integration mit unserem Identitätsanbieter OAuth2 verwendet, und der Identitätsanbieter informiert Access darüber, welche Art von zweitem Faktor als Teil des OAuth-Flows verwendet wurde.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2NfwXv0gUUeZvJ8MyCQnMb/e71d44fb185a171800ce164dcf1849ff/image6-13.png" alt="" class="kg-image" width="624" height="325" loading="lazy">
+
+	</figure>
+	<p>In unserem Fall ist <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04" target="_blank" rel="noopener noreferrer">swk</a> ein Beweis für den Besitz eines Sicherheitsschlüssels. Wenn sich jemand anmeldet und seinen Sicherheitsschlüssel nicht verwendet, wird ihm eine hilfreiche Fehlermeldung angezeigt, in der er aufgefordert wird, sich erneut anzumelden und seinen Sicherheitsschlüssel zu drücken, wenn er dazu aufgefordert wird.</p>
+	<p>Die selektive Durchsetzung veränderte sofort die Richtung unserer Einführung von Sicherheitsschlüsseln. Wir begannen am 29. Juli 2020 mit der Durchsetzung in einem einzigen Dienst, und die Authentifizierung mit Sicherheitsschlüsseln wurde in den folgenden zwei Monaten massiv ausgebaut. Dieser Schritt war entscheidend, um unseren Mitarbeitern die Möglichkeit zu geben, sich mit der neuen Technologie vertraut zu machen. Ein Zeitfenster für die selektive Durchsetzung sollte mindestens einen Monat betragen, um die Urlaubszeit zu berücksichtigen, aber im Nachhinein betrachtet muss es nicht viel länger sein.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cbptDgJcHyaqg8MVsJrU/f231888bb983e593e265e2cf32a96704/image2-62.png" alt="" class="kg-image" width="1999" height="539" loading="lazy">
+
+	</figure>
+	<p>Welche weiteren Sicherheitsvorteile haben wir durch die Umstellung unserer Anwendungen auf unsere Zero Trust-Produkte und die Abschaffung unseres VPNs erhalten? Bei älteren Anwendungen oder Anwendungen, die SAML nicht implementieren, war diese Migration zur Durchsetzung der rollenbasierten Zugriffskontrolle und des Prinzips der geringsten Privilegien erforderlich. Ein VPN authentifiziert Ihren Traffic im Netzwerk. Allerdings werden alle Ihre Anwendungen nicht wissen, von wem der Netzwerk-Traffic stammt. Unsere Anwendungen hatten Schwierigkeiten, mehrere Berechtigungsebenen durchzusetzen und mussten jeweils ihr eigenes Berechtigungsschema neu erfinden.</p>
+	<p>Als wir Cloudflare Access einführten, erstellten wir Gruppen, um RBAC durchzusetzen und unseren Anwendungen mitzuteilen, welche Berechtigungsstufe jede Person haben sollte.</p>
+	<p>Hier ist eine Webseite, auf die nur Mitglieder der Gruppe ACL-CFA-CFDATA-argo-config-admin-svc Zugriff haben. Sie erzwingt, dass der Mitarbeiter bei der Anmeldung seinen Sicherheitsschlüssel verwendet, und dafür war keine komplizierte OAuth- oder SAML-Integration erforderlich. Wir haben über 600 interne Websites, die dasselbe Muster verwenden, und alle setzen die Nutzung eines Sicherheitsschlüssel voraus.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EZfrzqPeyfD7TUf39kdao/663301d89fe227e8f8208398eb049347/image5-23.png" alt="" class="kg-image" width="1318" height="1390" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-end-of-optional-the-day-cloudflare-dropped-totp-completely">Das Ende der Optionalität: Der Tag, an dem Cloudflare TOTP komplett abschaffte</h3>
+		<a href="https://blog.cloudflare.com/#the-end-of-optional-the-day-cloudflare-dropped-totp-completely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Februar 2021 begannen unsere Mitarbeiter damit, Social-Engineering-Versuche an unser Sicherheitsteam zu melden. Sie erhielten Anrufe von jemandem, der behauptete, in unserer IT-Abteilung zu arbeiten, und wir waren alarmiert. Wir haben beschlossen, die Verwendung von Sicherheitsschlüsseln für alle Authentifizierungen vorzuschreiben, um zu verhindern, dass Mitarbeiter Opfer von Social Engineering-Angriffen werden.</p>
+	<p>Nach der Deaktivierung aller anderen Formen von MFA (SMS, TOTP usw.), mit Ausnahme von WebAuthn, unterstützten wir offiziell nur noch FIDO2. Der „Soft Token“ (TOTP) liegt in diesem Diagramm allerdings nicht exakt bei Null. Dies liegt daran, dass diejenigen, die ihre Sicherheitsschlüssel verlieren oder aus ihren Konten ausgesperrt werden, einen sicheren Offline-Wiederherstellungsprozess durchlaufen müssen, bei dem die Anmeldung durch eine alternative Methode erleichtert wird. Es empfiehlt sich, mehrere Sicherheitsschlüssel an die Mitarbeiter zu verteilen, um für den Fall einer solchen Situation ein Backup zu haben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mQQiEEno9jPICKiUCm3kk/0d2179a903c2e60f7d8cf0feb8471493/image1-74.png" alt="" class="kg-image" width="1620" height="668" loading="lazy">
+
+	</figure>
+	<p>Jetzt, wo alle Mitarbeiter ihre YubiKeys für Phishing-beständige MFA verwenden, sind wir am Ziel? Und was ist mit SSH und Nicht-HTTP-Protokollen? Wir wollten einen einheitlichen Ansatz für die Identitäts- und Zugriffsverwaltung, weshalb wir als Nächstes Sicherheitsschlüssel für beliebige andere Protokolle einführen wollten.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-security-keys-with-ssh">Verwendung von Sicherheitsschlüsseln mit SSH</h3>
+		<a href="https://blog.cloudflare.com/#using-security-keys-with-ssh" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um SSH-Verbindungen mit Sicherheitsschlüsseln zu versehen, haben wir <a href="https://www.cloudflare.com/de-de/products/tunnel" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a> in unserer gesamten Produktionsinfrastruktur eingesetzt. Cloudflare Tunnel lässt sich nahtlos in Cloudflare Access integrieren, unabhängig von dem Protokoll, das den Tunnel durchläuft, und die Ausführung eines Tunnels erfordert den Tunnel-Client <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">cloudflared</a>. Das bedeutet, dass wir die cloudflared-Binärdatei auf unserer gesamten Infrastruktur bereitstellen und einen Tunnel zu jeder Maschine erstellen könnten, Cloudflare Access-Richtlinien erstellen, in denen Sicherheitsschlüssel erforderlich sind, und ssh-Verbindungen würden dann Sicherheitsschlüssel über Cloudflare Access verlangen.</p>
+	<p>In der Praxis sind diese Schritte weniger kompliziert, als sie klingen, und in den Entwicklerdokumenten zu Zero Trust finden Sie eine <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion" target="_blank" rel="noopener noreferrer">großartige Anleitung</a> zu diesem Thema. Jeder unserer Server hat eine Konfigurationsdatei, die benötigt wird, um den Tunnel zu starten. Systemd ruft cloudflared auf, das diese (oder eine ähnliche) Konfigurationsdatei beim Starten des Tunnels verwendet.</p>
+	<p>Wenn sich ein Betreiber per SSH in unsere Infrastruktur einwählen muss, verwendet er die SSH-Direktive ProxyCommand, um cloudflared aufzurufen, sich mit Cloudflare Access zu authentifizieren und dann die SSH-Verbindung über Cloudflare weiterzuleiten. Die SSH-Konfigurationen unserer Mitarbeiter haben einen Eintrag, der in etwa so aussieht und mit einem Hilfsbefehl in cloudflared erzeugt werden kann:</p>
+	<pre class="language-bash"><code class="language-bash">tunnel: 37b50fe2-a52a-5611-a9b1-ear382bd12a6
+credentials-file: /root/.cloudflared/37b50fe2-a52a-5611-a9b1-ear382bd12a6.json
+
+ingress:
+  - hostname: &lt;identifier&gt;.ssh.cloudflare.com
+    service: ssh://localhost:22
+  - service: http_status:404</code></pre>
+	<p>Es sei darauf hingewiesen, dass OpenSSH FIDO2 seit <a href="https://www.openssh.com/txt/release-8.2" target="_blank" rel="noopener noreferrer">Version 8.2</a>. Wir haben jedoch festgestellt, dass ein einheitlicher Ansatz für die Zugriffskontrolle, bei dem alle Zugriffskontrolllisten an einem einzigen Ort verwaltet werden, Vorteile bietet.</p>
+	<pre class="language-bash"><code class="language-bash">Host *.ssh.cloudflare.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="what-weve-learned-and-how-our-experience-can-help-you">Was wir gelernt haben und wie Sie davon profitieren können</h3>
+		<a href="https://blog.cloudflare.com/#what-weve-learned-and-how-our-experience-can-help-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nach den letzten Monaten steht es außer Frage, dass die Zukunft der Authentifizierung in FIDO2 und WebAuthn liegt. Insgesamt haben wir dafür einige Jahre gebraucht, und wir hoffen, dass diese Erkenntnisse für andere Organisationen, die eine Modernisierung mit FIDO-basierter Authentifizierung anstreben, hilfreich sein können.</p>
+	<p>Wenn Sie Sicherheitsschlüssel in Ihrem Unternehmen einführen möchten oder an den Zero Trust-Produkten von Cloudflare interessiert sind, kontaktieren Sie uns unter <a href="https://blog.cloudflare.com/#">securitykeys@cloudflare.com</a>. Wir sind froh, dass uns unsere Präventivmaßnahmen geholfen haben, uns vor den jüngsten Phishing- und Social Engineering-Angriffen zu schützen. Dennoch wächst unser <a href="https://www.cloudflare.com/de-de/careers/jobs/?department=Security" target="_blank" rel="noopener noreferrer">Sicherheitsteam</a> weiter, um zu verhindern, was auch immer als nächstes kommt.</p>
+</div>

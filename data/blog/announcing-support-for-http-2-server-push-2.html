@@ -1,195 +1,83 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46AoGwL7L54V7STfNQEaQv/b7a2441fe8e63d131c8153188d89e38b/announcing-support-for-http-2-server-push-2.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank" rel="noopener noreferrer">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BllrfZ3osa7oyYGPEUgfa/d97891945a77819a659806b652af406d/They_started_our_car_by_pushing_it_backwards_up_the_hill-_-3854246685-.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/people/83555001@N00" target="_blank" rel="noopener noreferrer">Roger Price</a></p>
-	<div class="flex anchor relative">
-		<h3 id="incremental-improvements-on-spdy">Incremental Improvements On SPDY</h3>
-		<a href="https://blog.cloudflare.com/#incremental-improvements-on-spdy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>HTTP/2’s main benefit is multiplexing, which allows multiple HTTP requests to share a single TCP connection. This has a huge impact on performance compared to HTTP/1.1, but it’s nothing new—SPDY has been multiplexing TCP connections since at least 2012.</p>
-	<p>Some of the most important aspects of HTTP/2 have yet to be implemented by major web servers or edge networks. The real promise of HTTP/2 comes from brand new features like Header Compression and Server Push. Since February, we’ve been quietly testing and deploying HTTP/2 Header Compression, which resulted in an average 30% reduction in header size for all of our clients using HTTP/2. That's awesome. However, the real opportunity for a quantum leap in web performance comes from Server Push.</p>
-	<div class="flex anchor relative">
-		<h3 id="pushing-ahead">Pushing Ahead</h3>
-		<a href="https://blog.cloudflare.com/#pushing-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dHj9DypA42vVajxh1mB94/ba8f12ebadb8a3f405af9049cd254d3e/http2-server-push-2.png" alt="Server Push Diagram" class="kg-image" width="600" height="320" loading="lazy">
-
-	</figure>
-	<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push" target="_blank" rel="noopener noreferrer">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">live Server Push demo</a>.</p>
-	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6" target="_blank" rel="noopener noreferrer"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
-	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4" target="_blank" rel="noopener noreferrer"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
-	<p>The <code>PUSH_PROMISE</code> looks a lot like an HTTP/2 GET request, and the client attempts to match received push promises before sending outgoing requests.</p>
-	<div class="flex anchor relative">
-		<h3 id="enabling-server-push">Enabling Server Push</h3>
-		<a href="https://blog.cloudflare.com/#enabling-server-push" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
-	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
-	<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
-	<pre class="language-bash"><code class="language-bash">Link: &lt;/asset/to/push.js&gt;; rel=preload; as=script</code></pre>
-	<p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
-	<p>Only relative links will be pushed by our edge servers, which means Server Push won’t work with third-party resources.</p>
-	<div class="flex anchor relative">
-		<h4 id="disabling-server-push">Disabling Server Push</h4>
-		<a href="https://blog.cloudflare.com/#disabling-server-push" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
-	<pre class="language-bash"><code class="language-bash">Link: &lt;/dont/want/to/push/this.css&gt;; rel=preload; as=style; nopush</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="is-server-push-for-me">Is Server Push For Me?</h3>
-		<a href="https://blog.cloudflare.com/#is-server-push-for-me" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Server Push has the potential for tremendous performance gains. However, it’s not able to speed up every website, and it can even degrade the performance somewhat if you get overzealous. Generally, the downside of pushing assets that will end up unused is only the wasted bandwidth, while the upside is a speedup equivalent to one round trip from the client to our edge network.</p>
-	<p>Both the downside and the upside are mostly evident on slow, lossy connections, such as mobile networks. We suggest you profile the behavior of your individual website/API with and without Server Push to estimate the benefits. In our testing, we saw around a 45% performance gain when using Server Push on a mobile network.</p>
-	<p>Also note that because Server Push operates over a given HTTP/2 connection, it can only be used to push resources from <i>your</i> domain. If your website is bottlenecked on third-party assets, Server Push is unlikely to help you.</p>
-	<p>Some of the best use cases for HTTP/2 Server Push are:</p>
-	<ul>
-		<li>
-			<p>Uncacheable content - Content that is not cached on the edge benefits from Server Push, since it will be requested from the origin earlier in the connection.</p>
-		</li>
-		<li>
-			<p>All assets on a requested page - By pushing all the CSS, JS, and image assets on a given page, it’s possible to transfer the entire page in a single round trip. This is only useful when no third party assets are blocking the page rendering. If the majority of the assets are cached on the client’s browser, this behavior can be wasteful.</p>
-		</li>
-		<li>
-			<p>The most likely next page - If there is a link on the loaded page that is most likely clicked next (for example the most recent post in a blog) you could push both the HTML and all of that pages assets. When the user clicks the link, it will render almost instantly.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="profiling-server-push">Profiling Server Push</h3>
-		<a href="https://blog.cloudflare.com/#profiling-server-push" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html" target="_blank" rel="noopener noreferrer">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
-	<div class="flex anchor relative">
-		<h4 id="plain-http-2">Plain HTTP/2:</h4>
-		<a href="https://blog.cloudflare.com/#plain-http-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73FpGNBukfaH2eXahBHOx0/7b5fb5b9a0ffb942efb3c3a9d84014d3/Screen-Shot-2016-04-26-at-15-07-53.png" alt="alt" class="kg-image" width="1854" height="314" loading="lazy">
-
-	</figure>
-	<p>After the main page is loaded (and some processing time) the browser makes a request for the five images. After another round trip, those images are delivered and loaded.</p>
-	<h6>HTTP/2 + Server Push:</h6>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/awzxwhSEWtmEZk2hsuaxe/6e9e4afc662e655c77e8ced078a229d2/Screen-Shot-2016-04-26-at-15-08-59.png" alt="alt" class="kg-image" width="1856" height="314" loading="lazy">
-
-	</figure>
-	<p>With Server Push enabled, we can see that the images are delivered while the page is being processed, thus no additional round trip is required. As soon as the images are needed, Chrome matches them with existing Push Promises and immediately uses them.</p>
-	<p>In Canary Chrome, you can also see that the pushed assets are identified in the Initiator column as Push/Other.</p>
-	<div class="flex anchor relative">
-		<h4 id="other-browsers">Other browsers:</h4>
-		<a href="https://blog.cloudflare.com/#other-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h4 id="firefox">Firefox</h4>
-		<a href="https://blog.cloudflare.com/#firefox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Pushed assets will not get a timeline and are identified by a solid grey circle (unlike cached content that is identified by a non-solid circle, and a “cached” indication in the “Transferred tab”).</p>
-	<p><b>Plain HTTP/2:</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50EP7Couz0xYY3nmdU0uMA/d29ab6853c8803bf8611f3dcc9b01b56/Screen-Shot-2016-04-26-at-17-25-15.png" alt="alt" class="kg-image" width="1852" height="318" loading="lazy">
-
-	</figure>
-	<p><b>HTTP/2 + Server Push:</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24DVYPcTyqoiOthb97LwCh/5d902ead36ff7749c39f007f8ecaf1b8/Screen-Shot-2016-04-26-at-17-25-42.png" alt="alt" class="kg-image" width="1852" height="318" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="edge">Edge</h4>
-		<a href="https://blog.cloudflare.com/#edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Pushed assets won’t have the yellow bar in the timeline (TTFB), and under the Protocol tab, the protocol will appear as HTTPS and not HTTP/2.</p>
-	<p><b>Plain HTTP/2:</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3acdLJx33EUVZWqDfGvdqs/46a413799609ea4b66ffd6ea35fceb5d/Capture3.PNG.png" alt="alt" class="kg-image" width="1424" height="329" loading="lazy">
-
-	</figure>
-	<p><b>HTTP/2 + Server Push:</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JHBwo6FAHhA2xdkbKl07q/e97c0befd3367f6240236ba59324d229/Capture1.PNG.png" alt="alt" class="kg-image" width="1424" height="328" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="safari">Safari</h4>
-		<a href="https://blog.cloudflare.com/#safari" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Safari browser does not support Server Push at the moment, but support is expected in the near future.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next-for-http-2">What’s Next For HTTP/2?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next-for-http-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the future, we plan to develop new tools to help our users to make more educated decisions in regards to Server Push. Over time, CloudFlare will even be able to predict the best assets to push automatically.</p>
-	<p>This feature is very new, and CloudFlare is the first major provider to deploy it at scale. We look forward to hearing from customers who make use of Server Push, now that we’ve made it available for experimentation.</p>
-	<p>We believe that Server Push is the most important upgrade to the web since SPDY. It has enormous potential to speed up the Internet since, for the first time, it gives website owners the power to <i>send</i> information to a web browser before the browser even asks for it.We’ll also be monitoring the still ongoing process of HTTP/2 development, especially efforts to make Server Push more aware of the client’s cache (thus reducing the number of redundant pushes).</p>
-	<hr>
-	<ol>
-		<li>
-			<p>We are currently only looking at link elements in HTTP headers and not in page HTML. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
-		</li>
-	</ol>
+<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank" rel="noopener noreferrer">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/people/83555001@N00" target="_blank" rel="noopener noreferrer">Roger Price</a></p>
+<h3>Incremental Improvements On SPDY</h3>
+<p>HTTP/2’s main benefit is multiplexing, which allows multiple HTTP requests to share a single TCP connection. This has a huge impact on performance compared to HTTP/1.1, but it’s nothing new—SPDY has been multiplexing TCP connections since at least 2012.</p>
+<p>Some of the most important aspects of HTTP/2 have yet to be implemented by major web servers or edge networks. The real promise of HTTP/2 comes from brand new features like Header Compression and Server Push. Since February, we’ve been quietly testing and deploying HTTP/2 Header Compression, which resulted in an average 30% reduction in header size for all of our clients using HTTP/2. That's awesome. However, the real opportunity for a quantum leap in web performance comes from Server Push.</p>
+<h3>Pushing Ahead</h3>
+<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="600" height="320" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=600&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=600&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 600w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=640&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=750&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=828&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=1080&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EGY79N9EVJ5Z9KAPX5DT.png&amp;w=1200&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 1200w" alt="Server Push Diagram" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 600px) 600px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="600" height="320" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Server Push Diagram"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push" target="_blank" rel="noopener noreferrer">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">live Server Push demo</a>.</p>
+<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6" target="_blank" rel="noopener noreferrer"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
+<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4" target="_blank" rel="noopener noreferrer"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
+<p>The <code>PUSH_PROMISE</code> looks a lot like an HTTP/2 GET request, and the client attempts to match received push promises before sending outgoing requests.</p>
+<h3>Enabling Server Push</h3>
+<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
+<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
+<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/asset/to/push.j</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">script</span></span></code></pre>
 </div>
+<p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
+<p>Only relative links will be pushed by our edge servers, which means Server Push won’t work with third-party resources.</p>
+<h4>Disabling Server Push</h4>
+<p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dont/want/to/push/this.cs</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">style</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">nopush</span></span></code></pre>
+</div>
+<h3>Is Server Push For Me?</h3>
+<p>Server Push has the potential for tremendous performance gains. However, it’s not able to speed up every website, and it can even degrade the performance somewhat if you get overzealous. Generally, the downside of pushing assets that will end up unused is only the wasted bandwidth, while the upside is a speedup equivalent to one round trip from the client to our edge network.</p>
+<p>Both the downside and the upside are mostly evident on slow, lossy connections, such as mobile networks. We suggest you profile the behavior of your individual website/API with and without Server Push to estimate the benefits. In our testing, we saw around a 45% performance gain when using Server Push on a mobile network.</p>
+<p>Also note that because Server Push operates over a given HTTP/2 connection, it can only be used to push resources from <em>your</em> domain. If your website is bottlenecked on third-party assets, Server Push is unlikely to help you.</p>
+<p>Some of the best use cases for HTTP/2 Server Push are:</p>
+<ul>
+	<li>Uncacheable content - Content that is not cached on the edge benefits from Server Push, since it will be requested from the origin earlier in the connection.</li>
+	<li>All assets on a requested page - By pushing all the CSS, JS, and image assets on a given page, it’s possible to transfer the entire page in a single round trip. This is only useful when no third party assets are blocking the page rendering. If the majority of the assets are cached on the client’s browser, this behavior can be wasteful.</li>
+	<li>The most likely next page - If there is a link on the loaded page that is most likely clicked next (for example the most recent post in a blog) you could push both the HTML and all of that pages assets. When the user clicks the link, it will render almost instantly.</li>
+</ul>
+<h3>Profiling Server Push</h3>
+<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html" target="_blank" rel="noopener noreferrer">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
+<h4>Plain HTTP/2:</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=715&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=640&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=715&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=750&amp;h=127&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=828&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=1080&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=1280&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JNEQNNBFMF0G9XCJKQVP.png&amp;w=1430&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="121" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<p>After the main page is loaded (and some processing time) the browser makes a request for the five images. After another round trip, those images are delivered and loaded.</p>
+<h6>HTTP/2 + Server Push:</h6>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=715&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=640&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=715&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=750&amp;h=127&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=828&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=1080&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=1280&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DN9A9ZHK6EZMRN9XPWR8.png&amp;w=1430&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="121" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<p>With Server Push enabled, we can see that the images are delivered while the page is being processed, thus no additional round trip is required. As soon as the images are needed, Chrome matches them with existing Push Promises and immediately uses them.</p>
+<p>In Canary Chrome, you can also see that the pushed assets are identified in the Initiator column as Push/Other.</p>
+<h4>Other browsers:</h4>
+<h4>Firefox</h4>
+<p>Pushed assets will not get a timeline and are identified by a solid grey circle (unlike cached content that is identified by a non-solid circle, and a “cached” indication in the “Transferred tab”).</p>
+<p><strong>Plain HTTP/2:</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="123" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=715&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=640&amp;h=110&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=715&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=750&amp;h=129&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=828&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=1080&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=1280&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474XMZAZWMEG1DVB4ZBDRG.png&amp;w=1430&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="123" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<p><strong>HTTP/2 + Server Push:</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="123" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=715&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=640&amp;h=110&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=715&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=750&amp;h=129&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=828&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=1080&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=1280&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450S5QBBTBRJ4VB4MTEKMR.png&amp;w=1430&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="123" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<h4>Edge</h4>
+<p>Pushed assets won’t have the yellow bar in the timeline (TTFB), and under the Protocol tab, the protocol will appear as HTTPS and not HTTP/2.</p>
+<p><strong>Plain HTTP/2:</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="165" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=640&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=750&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=828&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=1080&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=1280&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464JWNWDYC3ZWBFVTXJF1H.png&amp;w=1430&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="165" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<p><strong>HTTP/2 + Server Push:</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="165" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=640&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=750&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=828&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=1080&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=1280&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BV1PRDBK5RYR4R3GWY24.png&amp;w=1430&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="alt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="165" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: alt"></div>
+</figure>
+<h4>Safari</h4>
+<p>The Safari browser does not support Server Push at the moment, but support is expected in the near future.</p>
+<h3>What’s Next For HTTP/2?</h3>
+<p>In the future, we plan to develop new tools to help our users to make more educated decisions in regards to Server Push. Over time, CloudFlare will even be able to predict the best assets to push automatically.</p>
+<p>This feature is very new, and CloudFlare is the first major provider to deploy it at scale. We look forward to hearing from customers who make use of Server Push, now that we’ve made it available for experimentation.</p>
+<p>We believe that Server Push is the most important upgrade to the web since SPDY. It has enormous potential to speed up the Internet since, for the first time, it gives website owners the power to <em>send</em> information to a web browser before the browser even asks for it.We’ll also be monitoring the still ongoing process of HTTP/2 development, especially efforts to make Server Push more aware of the client’s cache (thus reducing the number of redundant pushes).</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
+<ol>
+	<li>We are currently only looking at link elements in HTTP headers and not in page HTML. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></li>
+</ol>

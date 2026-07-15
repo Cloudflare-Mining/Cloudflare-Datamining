@@ -1,0 +1,267 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/the-rum-diaries-enabling-web-analytics-by-default">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kEhTVrInMarDtXh9DYxHu/9fe5de94098034d44572c12c9a7ef2fd/BLOG-2675_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>インターネット上でのパフォーマンスの測定と改善は、ユーザーのデバイスやブラウザ、DNSルックアップとネットワークルート、エッジ設定、配信元サーバーの場所など、複数の層にまたがるため、困難な作業になることがあります。各レイヤーは、ラストマイルの帯域幅の制約、サードパーティスクリプト、限られたCPUリソースなど、独自の変動性をもたらします。これらは、堅牢な<a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">可観測性ツール</a>を導入していない限り、しばしば見えないものです。これらのインターネットホップのほとんどからデータを収集したとしても、パフォーマンスエンジニアは、フロントエンドイベント、ネットワーク処理時間、サーバーサイドのログなどのさまざまなメトリクスを相関させて、把握しづらい「遅延」が発生する場所と理由を特定する必要があります。 </p>
+	<p>当社は、アプリケーションのデバッグと最適化を支援する強力で詳細なモニタリングソリューションを提供し、インターネット全体でパフォーマンスの問題をエンドツーエンドで理解して追跡できるようにすることで、この問題を解決したいと考えています。</p>
+	<p>そのため、私たちはCloudflareのパフォーマンス分析スイートのメジャーアップグレードの<i><b>開始</b></i>を発表することを嬉しく思います。リアルユーザーモニタリング（RUM）ツールの一部としてのWeb Analyticsは、まもなくネットワークレベルの洞察と組み合わされ、パフォーマンスの問題を特定できるようになります訪問者のブラウザからCloudflareのネットワーク、そしてお客様の配信元までのパケットの移動に関するものです。</p>
+	<p>人気のあるWebパフォーマンス監視ツールの中には、深い可視性を実現するためにユーザーのプライバシーを犠牲にするものもあります。また、トレードオフをなくすことを目指します。クライアント側のメトリクス（<a href="https://web.dev/articles/vitals#core_web_vitals" target="_blank" rel="noopener noreferrer"><u>Core Web Vitals</u></a>など）と詳細なネットワークやオリジンデータを相関させることで、開発者は、エンドユーザーのプライバシーを保護しながら、（クライアント固有の情報を除外し、訪問者ごとにデータを集計することで）減速が発生する場所とその理由を確認することができます。詳細は後述します）。</p>
+	<p>今後数ヶ月の間に、私たちは次のことをお伝えします：</p>
+	<ul>
+		<li>
+			<p>Web Analyticsの仕組み</p>
+		</li>
+		<li>
+			<p>インターネット全体からの実例のデバッグ例</p>
+		</li>
+		<li>
+			<p>Cloudflareの分析ツールから最大限の価値を得るためのヒント</p>
+		</li>
+	</ul>
+	<p>移行が始まるのは<b>2025年10月15日</b>です。Cloudflareは<b>すべての無料ドメインに対して</b><a href="https://www.cloudflare.com/web-analytics" target="_blank" rel="noopener noreferrer"><u>Web Analytics</u></a>を有効にします。これにより、お客様は、個人データを収集することなく（トラフィックには適用されません）、世界中の訪問者に対してリアルタイムでサイトの実際のパフォーマンスを確認できます。 EUまたは英国の発信源、<a href="https://blog.cloudflare.com/#what-does-privacy-first-mean">下記参照</a>）。2026年半ばまでに、これまでになかったもの、つまり、パフォーマンス監視とデバッグのための包括的で<a href="https://blog.cloudflare.com/privacy-first-web-analytics"><u>プライバシー優先のプラットフォーム</u></a>を提供します。他の多くのツールと違って、このプラットフォームは遅延の発生場所を表示するだけでなく、それを修正する手助けをします。最も難しいボトルネックを解消することから、グローバルなパフォーマンスの明確な視野を得るまで、この新しいツールはWebアプリケーションの見方を変え、新しいパフォーマンス機能を試すことになります。私たちはそれを閉ざされたドアの後ろで構築しているのではなく、一般に公開するときに、お客様と一緒にお届けしたいと考えています。その道のりを共有するこのシリーズ、<i>RUMダイアリー</i>をフォローしてください。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-this-matters">なぜこれが重要なのか</h2>
+		<a href="https://blog.cloudflare.com/#why-this-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パフォーマンス監視は、表示できる詳細と同じくらい優れたものであり、トラフィックパフォーマンスを観察しているものの、<i>ユーザー</i>が観察していないことに対するユーザーの信頼も低下します。以下で説明するように、<b>実際のユーザーメトリクス</b>と<b>深いネットワーク内インスツルメンテーション</b>を組み合わせることで、開発者がスタックのあらゆるレイヤーをデバッグできるようになる可視性を提供しながら、プライバシーに対するCloudflareの妥協なしのスタンスを維持します。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-problem-are-we-solving">当社が解決しようとしている問題は？</h2>
+		<a href="https://blog.cloudflare.com/#what-problem-are-we-solving" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多くのパフォーマンス監視ソリューションは、クライアントまたはオリジンのいずれかに焦点を当てた、パフォーマンスレイヤーのごく一部しか提供していません。可視性の欠如が原因で、クライアントまたはオリジン間のすべてを曖昧な「処理時間」に置き換えます。しかし、Webアプリケーションが複雑化し、ユーザーの期待が高まり続ける中、従来の分析だけでは十分ではありません。<i>何</i>が起こったのかを知ることは氷山の一角に過ぎません。ボトルネックが<i>なぜ</i>発生したのか、ネットワーク状況、コード変更、あるいは1つの外部スクリプトによって読み込み時間が<i>大幅に</i>短縮される可能性があることを理解する必要があります。さらに、利用可能なツールは、パフォーマンスを最適化するよりも、パフォーマンスを<i>観察する</i>だけしかできないことが多く、そのため、チームはレイテンシーに合わせて何をするべきか理解できません。</p>
+	<p>私たちのプラットフォームで使用しているサービスのパフォーマンスへの影響と、どうすれば最高のパフォーマンスを得られるようにするかを理解していただけるよう、この機会を提供したいと思います。</p>
+	<p>ミシガン州デトロイトのShannon氏を例に挙げてみましょう。彼女は電子商取引サイトを運営し、世界中のレコード愛好家に入手できない時計を販売しています。Shanon氏は、お客様が切迫感を醸成していることを知っています（彼女は頻繁にリストをチェックするイメージです）。サイトの読み込みが遅いと、売り上げが失われ、SEOが低下し、顧客はより良いオンラインショッピング体験ができる別の店舗に行ってしまいます。</p>
+	<p>その結果、Shannon氏は自社サイトのパフォーマンスを継続的に監視していますが、世界のさまざまな地域のお客様が自分のサイトをどのように体験しているのかを理解しようとして、しばしば問題に直面しています。サイトを更新した後、デトロイトのオフィスのWi-Fiでブラウザを使用してパフォーマンスをスポット確認することが多いのですが、ドイツの顧客から読み込みが遅いという苦情を絶えず耳にしています。そこで、シャノンは、世界中のパフォーマンスを監視するソリューションを探しに探しました。</p>
+	<p>この既製のパフォーマンス監視ソリューションでは、さまざまなデスクトップ、モバイルデバイス、さらにはISPまで、世界中に配置された仮想マシンから、顧客に近い場所で同様のテストを実行することが可能です。Janonは、これらのテストから、これらの合成クライアントのDNS解決の速さ、特定のサーバーへの接続の速さ、さらには応答がクライアントに戻る途中までのデータを受け取ります。Shanon氏のおかげで、既製のパフォーマンス監視ソリューションによって、ドイツにおける遅延の原因は「サーバー処理時間」であると特定されました。しかし、遅いのは私のサーバーにあるのか、ドイツのユーザーのトランジット接続が遅いのか、疑問を抱かずにはいられません。ドイツに別のサーバーを追加したり、CDN設定を更新したりすることで、サイトを高速化できますか？ネットワークの問題かサーバーの問題か、あるいはその他の問題なのかという3つの選択肢があります。</p>
+	<p>Cloudflareは、より充実したパフォーマンス分析を提供できるユニークな立場にあるため、Shannon（そして他の他社も！）のお役に立てます。クライアントとオリジンの間に位置するリバースプロキシとして、Cloudflareは多くの場合、コンテンツを要求する際にユーザーが最初に接続するWebサーバーになります。重要なことを顧客の近くに移動するだけでなく、当社の製品スイートはエッジ（例：<a href="https://developers.cloudflare.com/learning-paths/workers/get-started/first-worker" target="_blank" rel="noopener noreferrer"><u>ワーカーは</u></a>、専用の<a href="https://blog.cloudflare.com/backbone2024"><u>バックボーン</u></a>を通じてトラフィックを誘導します（例：cloudflaredなど）を経由して、インターネットトラフィックの渋滞（<a href="https://blog.cloudflare.com/argo-v2"><u>Argo</u></a>）。適切なソリューションを調整することで、以下を実現できます：</p>
+	<ul>
+		<li>
+			<p>パフォーマンスデータを提供し</p>
+		</li>
+		<li>
+			<p>リアルタイムのネットワーク指標を提供し</p>
+		</li>
+		<li>
+			<p>構成設定、</p>
+		</li>
+		<li>
+			<p>オリジンのパフォーマンス測定値</p>
+		</li>
+	</ul>
+	<p>曖昧な「処理時間」の中で何が起こっているかについて、より洞察に満ちた情報を提供することができます。これにより、Shannon氏のような開発者は、自分のサイトのパフォーマンスを高め、ビジネスと顧客の満足度を高めるために、何を微調整すべきかを理解できるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-web-analytics">Web Analyticsとは？</h2>
+		<a href="https://blog.cloudflare.com/#what-is-web-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>2025年10月15日</b>に起こっていることを振り返ります：Web Analyticsを可能にすることで、チームがパフォーマンスのボトルネックを追跡することができるようにします。Web Analyticsは、軽量のJavaScriptスニペットをWebサイトに追加することで機能し、訪問者からサイトへのパフォーマンスメトリクスを監視します。Web Analyticsダッシュボードでは、ブラウザによるページの描画方法（<a href="https://web.dev/articles/lcp" target="_blank" rel="noopener noreferrer"><u>LCP</u></a>、<a href="https://web.dev/articles/inp" target="_blank" rel="noopener noreferrer"><u>INP</u></a>、および<a href="https://web.dev/articles/cls" target="_blank" rel="noopener noreferrer"><u>CLS</u></a>）、サーバー処理に関連する一般的な読み込み時間メトリクス、訪問者の集計カウントなど、以下に関連するパフォーマンスデータを集計できます。</p>
+	<p>ブラウザでDevToolsを開き、読み込みが遅いページの透かしチャートを目にしたことがある人なら、Web Analyticsが何を行っているかにレジストされたことがあるかと思います。ただし、<i>ノートパソコン</i>から読み込み時間を測定する代わりに、実際の訪問者の<i>ブラウザ</i>から直接アクセスできるようにすることです。</p>
+	<p>アーキテクチャの概要を以下に示します：</p>
+	<p><b>ブラウザでの軽量ビーコン
+		</b>CloudflareのWeb分析で追跡するすべてのページには、レンダリングを妨げないように非同期的に読み込むように最適化された小さなJavaScriptスニペットが含まれます。</p>
+	<ul>
+		<li>
+			<p>このスニペットは、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer"><u>パフォーマンスAPI</u></a>、リソースタイミングなどの最新のブラウザAPIにフックします</p>
+		</li>
+		<li>
+			<p>これにより、Cloudflareは、<b>Largest Contentful Paint</b>や<b>Next Paint</b>などのコアWebバイタルメトリクスに加え、リソースの読み込み時間、TLSハンドシェイク時間などのデータをクライアントの視点から収集します。</p>
+		</li>
+	</ul>
+	<p><b>エッジでの集約
+		</b>ブラウザがパフォーマンスデータを送信すると、最も近いCloudflareデータセンターに送られます。生のイベントをデータベースに直接プッシュするのではなく、エッジで事前処理します。これにより、ストレージの必要性が削減され、遅延が最小限に抑えられ、IPアドレスのような個人情報が排除されます。この前処理が行われた後、コアデータセンターに送信され、ユーザーによる処理と照会が行われます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QLjAwnkmYM5tXv9hbVv79/98684d34b3555532b3c2bc94039aacc2/BLOG-2675_2.png" alt="BLOG-2675 2" class="kg-image" width="1666" height="1248" loading="lazy">
+	</figure>
+	<p><b>Web Analytics</b>は、ダッシュボードの<b>Analytics &amp; Logs</b>セクションの下（ダッシュボードのアカウントレベルとドメインレベルの両方）にあります。2025年10月15日以降、無料ドメインはデフォルトでWeb Analyticsが有効化され、ダッシュボードに訪問者のパフォーマンスを確認できるようになります。Pro、Business、ENTのアカウントで、スニペットを追加するWebサイトのホスト名を選択し、<b>自動セットアップ</b>を選択することでWeb Analyticsを有効化できます。<code>&lt;/body&gt;</code>あるいは、オリジンから追跡したいHTMLページで、末尾タグの前にJavaScriptビーコンを手動で貼り付けることもできます。ダッシュボードの「Web Analytics」タブから「サイトの管理」を選択するだけです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ucGMd53CtM2Y5pGVPpaSa/8444898164ee7c45afa7755960000d38/BLOG-2675_3.png" alt="BLOG-2675 3" class="kg-image" width="548" height="152" loading="lazy">
+	</figure>
+	<p>有効にすると、JSスニペットは訪問者のブラウザと連携して、ユーザーがページのロード時間を測定し、重要なクライアントサイドのメトリクスについて報告します。これらのメトリクスの下には、リソース属性表があり、ユーザーがサイトのパフォーマンスをよりよく最適化できるように、メトリクスごとに読み込みに最も時間がかかるアセットを把握できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RrhjEuT91lp4OfEKi9dxm/490f270eebebd5cbd648c315d222d3d6/BLOG-2675_4.png" alt="BLOG-2675 4" class="kg-image" width="1488" height="708" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-does-privacy-first-mean">プライバシー優先とはどういう意味か？</h2>
+		<a href="https://blog.cloudflare.com/#what-does-privacy-first-mean" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のWeb Analyticsツールは当初から、プライバシーを侵害することなくインサイトを提供することに重点を置いています。プライバシーを優先しているということは、分析のために個々のユーザーを追跡することはありません。分析の目的でクライアント側の状態（CookieやlocalStorageなど）を一切使わず、IPアドレス、ユーザーエージェント、その他のフィンガープリンティング技術でユーザーを経時的に追跡することもありません。</p>
+	<p>さらに、Web Analyticsを有効にする際、希望する場合は、欧州と英国の訪問者からのリクエストをドロップすることができます（特に<a href="https://developers.cloudflare.com/speed/speed-test/rum-beacon/#rum-excluding-eeaeu" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>に記載しています）。つまり、欧州と英国のデータセンターを通過するトラフィックからRUMのメトリクスを収集することはありません。<b>デフォルトで有効になるWeb Analyticsのバージョンは、EUの訪問者からのデータを除外します（これは必要に応じてダッシュボードで変更できます）。</b></p>
+	<p><i>訪問</i>という概念は、当社のプライバシーアプローチにおいて鍵となります。固有のIPアドレスをカウントするのではなく（各訪問者に関する状態の保存が必要）、個別の参照イベントやナビゲーションイベントから生じたページビューをカウントするだけで、個人データとみなされる可能性のある情報を保存する必要性を回避します。私たちが長年、プライバシーを第一に考えたWeb Analyticsを提供する際に使ってきたものと同じ概念を、ネットワークやオリジンのメトリクスにも論理的に拡張できると、私たちは考えています。これにより、お客様は、訪問者に関する不必要なデータを収集しないようにしながら、デバッグやパフォーマンス問題の解決に必要なインサイトを得られるようになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UdLc8qugqv29lZUYyB41d/c4def741c23a6cbf2937d3b05a804c03/BLOG-2675_5.png" alt="BLOG-2675 5" class="kg-image" width="1772" height="1328" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="opting-out">オプトアウト</h2>
+		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、プライバシーを第一に考えたアプローチを維持しながら、Webサイトの運営に必要なインサイトを提供するためにWeb Analyticsサービスを構築しました。オプトアウトしたい場合は、こちらの手順に従います。</p>
+	<div class="flex anchor relative">
+		<h3 id="via-dashboard">ダッシュボード経由</h3>
+		<a href="https://blog.cloudflare.com/#via-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>無料ドメインを持ち、ゾーンのWeb Analyticsを自動的に有効にしない場合は、2025年10月15日までに以下を行う必要があります：</p>
+	<ol>
+		<li>
+			<p>Cloudflareダッシュボード内のゾーンへナビゲートする</p>
+		</li>
+		<li>
+			<p>画面左側のリストで、Web Analyticsに移動します
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lWwBak29Cmv1UijeKGhH6/14c3980ddcf9845cd4e97571b362a8e4/Screenshot_2025-09-17_at_11.48.13%C3%A2__AM.png" alt="BLOG-2675 6" class="kg-image" width="1159" height="750" loading="lazy">
+			</figure>
+			<p></p>
+		</li>
+		<li>
+			<p>次のページで、「グローバルに有効にする」または「EUを除外する」のいずれかを選択して機能を有効化します
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4M8Gb1cqDkCmC1u45Xn1iG/bda1ffe64212b3a2e10befd7a01c9eb3/BLOG-2675_7.png" alt="BLOG-2675 7" class="kg-image" width="1999" height="1050" loading="lazy">
+			</figure>
+			<p></p>
+		</li>
+		<li>
+			<p>Web Analyticsが有効化されたら、Web Analyticsダッシュボードの「RUM設定の管理」に移動します
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LXl9FnYS2JRnfl4fsMXle/a5e74ed39dfd888514ed6e489db911f0/Screenshot_2025-09-17_at_11.47.46%C3%A2__AM.png" alt="BLOG-2675 8" class="kg-image" width="1165" height="626" loading="lazy">
+			</figure>
+			<p></p>
+		</li>
+		<li>
+			<p>次に、次のページで、「無効」を選択して、ゾーンのWeb Analyticsを無効にします
+			</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JCslLOmHqnqw7BXR4JHZf/fa9a391f399e70c525c2b947a8ed16a0/BLOG-2675_9.png" alt="BLOG-2675 9" class="kg-image" width="1999" height="720" loading="lazy">
+			</figure>
+			<p></p>
+		</li>
+		<li>
+			<p>または、ゾーンからWeb Analyticsを完全に削除するには、<code>高度なオプション</code>をクリックし、<code>削除</code>をクリックして設定を削除します。</p>
+			<figure class="kg-card kg-image-card">
+				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GYyPsNL6mXt1SIVWsrm5M/ecd627e14ab398db1e1cc87edbb66030/BLOG-2675_10.png" alt="BLOG-2675 10" class="kg-image" width="1999" height="1116" loading="lazy">
+			</figure>
+			<p>一度製品を無効にした場合、再度有効にすることはありません。ただし、この機能はいつでも有効にできます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="via-api">API経由</h3>
+		<a href="https://blog.cloudflare.com/#via-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p>以下のAPI呼び出しで、Web Analytics設定を作成します：
+			</p>
+			<pre class="language-unset"><code class="language-unset">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info \
+    -H 'Content-Type: application/json' \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+    -d '{
+          "auto_install": false,
+          "host": "example.com",
+          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"
+        }'
+</code></pre>
+			<p><i><sub>注：これによって、auto_install が `false` に設定されているため、ゾーンがRUMデータを収集することはありません</sub></i></p>
+		</li>
+		<li>
+			<p>このコールへのレスポンスから<code>site_tag</code>と<code>zone_tag</code>フィールドを収集します。</p>
+			<ol>
+				<li>
+					<p>このレスポンスの<code>site_tag</code>は、以下の呼び出しで<code>$SITE_ID</code>に対応します。</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<p>EITHER 以下のAPI呼び出しで、Web Analyticsの設定を無効にします：
+			</p>
+			<pre class="language-none"><code class="language-none">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+    -d '{
+          "auto_install": true,
+          "enabled": false,
+          "host": "example.com",
+          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"
+        }'
+
+</code></pre>
+			<p></p>
+		</li>
+		<li>
+			<p>または、以下のAPI呼び出しでWeb Analyticsの設定を削除します：
+			</p>
+			<pre class="language-none"><code class="language-none">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \
+    -X DELETE \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"</code></pre>
+			<p></p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="where-were-going-next">次の目標</h2>
+		<a href="https://blog.cloudflare.com/#where-were-going-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、Web Analyticsによって、<i>ユーザー</i>がブラウザでお客様のサイトをどのように体験したかを可視化することができます。次に、ユーザーのブラウザでのクリックからCloudflareのグローバルネットワーク、配信元サーバー、さらには配信元サーバーに至るまで、<i>リクエストパス全体で何が起こっているか</i>を表示するために、この視点を拡大していきます。</p>
+	<p>今後の予定：</p>
+	<ol>
+		<li>
+			<p><b>レイヤー間の相関関係
+				</b>クライアントからのRUMデータを、ネットワークタイミング、Cloudflareのエッジ処理、オリジンのレスポンスレイテンシーと照合し、TTFBのスパイクが遅いスクリプトが原因か、キャッシュミスが原因か、オリジンのボトルネックが原因か、ピンポイントで特定できるようにします。</p>
+		</li>
+		<li>
+			<p><b>プロアクティブなアラート
+				</b>設定可能なアラートにより、特定の地域でパフォーマンスが低下したとき、データ センターのパフォーマンスが低下したとき、またはオリジンのレイテンシが急増したときなどに通知されます。</p>
+		</li>
+		<li>
+			<p><b>実用的なインサイト
+				</b>「処理時間」を単一の数字として抱えるのではなく、ジャーニーを構成する実際のステップ、プロキシルーティング、セキュリティチェック、キャッシュルックアップ、オリジンフェッチなどに分けます。</p>
+		</li>
+		<li>
+			<p><b>統一されたビュー
+				</b>すべてが分析、ログ、ファイアウォールイベント、設定設定とともに1か所（Cloudflareダッシュボード）に存在し、1つのワークフローで原因と影響を確認できます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはお客様に協力し、最も包括的でプライバシーを重視したパフォーマンス分析プラットフォームを構築します。ご期待ください。私たちは力を合わせ、リクエストの全過程を徹底的に公開し、お客様が毎回最適化、革新、そしてユーザーに最高の体験を提供できるようにしていきます。</p>
+	<p>このジャーニーの次の章では、他では得られないプロアクティブなアラート、クロスレイヤーの相関、実用的なインサイトを実現します。RUM Diariesはまだ始まったばかりですので、フォローしてください。</p>
+</div>

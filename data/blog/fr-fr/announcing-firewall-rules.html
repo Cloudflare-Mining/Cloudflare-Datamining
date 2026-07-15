@@ -1,0 +1,165 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/announcing-firewall-rules">English</a>, en <a href="https://blog.cloudflare.com/de-de/announcing-firewall-rules">Deutsch</a>, en <a href="https://blog.cloudflare.com/es-es/announcing-firewall-rules">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/announcing-firewall-rules">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zuTR8DRuFpzIvAdn2YdRW/0db780cdba0d6d241b44385fd5f45e21/announcing-firewall-rules.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Les menaces changent de visage à chaque seconde. Au fur et à mesure que les pirates évoluent, devenant plus dynamiques et sournois, les vulnérabilités se matérialisent plus rapidement que les ingénieurs ne peuvent corriger leurs applications. La mission de Cloudflare consiste en partie à garantir votre sécurité et celle de vos applications. Aujourd'hui, Cloudflare lance une nouvelle fonctionnalité qui offre aux clients ce qu'ils réclamaient : un contrôle précis sur les requêtes qu'ils reçoivent.</p>
+	<p>Cloudflare offre déjà un certain nombre d'outils de pare-feu puissants comme les règles IP, les règles CIDR, les règles ASN, les règles nationales, le blocage d’agent utilisateur HTTP, Zone Lockdown (car ces URI n'autorisent le trafic qu'à partir de ces adresses IP) et notre WAF (Web Application Firewall). Cependant, il faut parfois combiner leur puissance pour contrer efficacement une attaque, et formuler une règle de blocage allant au-delà des limites des outils existants, pour pouvoir « bloquer le trafic vers cette URI lorsque la requête provient de cette IP et que l'agent utilisateur correspond à une de celles-ci ».</p>
+	<div class="flex anchor relative">
+		<h3 id="flexibility-and-control"><b>Flexibilité et contrôle</b></h3>
+		<a href="https://blog.cloudflare.com/#flexibility-and-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YfAM9xTlNAiOQigJiTfEm/35324dbb36b9a512f8288637a8b332e9/Stefano-Kocka.jpg" alt="" class="kg-image" width="1999" height="1330" loading="lazy">
+
+	</figure>
+	<p>© Stefano Kocka : Source Wikipedia</p>
+	<p>Des thèmes communs sont ressortis lorsque nous avons échangé avec les clients concernant leurs besoins et examiné les demandes de fonctionnalités observées par notre service d'assistance client. Nous avons ainsi pu classer les principaux commentaires et demandes de fonctionnalités en trois principales catégories de besoins :</p>
+	<ol>
+		<li>
+			<p>Plus de flexibilité pour créer une règle de pare-feu correspondant à plusieurs attributs, comme une adresse IP et un agent utilisateur</p>
+		</li>
+		<li>
+			<p>Une flexibilité permettant non seulement de faire correspondre exactement un attribut, mais aussi de le faire correspondre partiellement, en utilisant une chaîne de caractères ou un motif, par exemple <code>User-Agent: *Firefox*</code></p>
+		</li>
+		<li>
+			<p>Un contrôle total en libre-service grâce à l'interface utilisateur et à l'API publique de Cloudflare, même pour les règles de pare-feu les plus complexes</p>
+		</li>
+	</ol>
+	<p>L'équipe a travaillé de concert pour faire évoluer notre pare-feu, avec une mission primordiale : concevoir un couteau suisse de pare-feu pour nos clients. Nos principaux objectifs étaient les suivants :</p>
+	<ol>
+		<li>
+			<p>Fournir un outil donnant aux clients un contrôle flexible et précis de leur trafic</p>
+		</li>
+		<li>
+			<p>Offrir une expérience utilisateur fluide et intuitive, ce qui nous tient à cœur</p>
+		</li>
+		<li>
+			<p>Faire en sorte qu'il soit accessible et utilisable par tous nos clients, quelles que soient leurs compétences ou la taille de leur entreprise</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="firewall-rules"><b>Firewall Rules</b></h3>
+		<a href="https://blog.cloudflare.com/#firewall-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Firewall Rules, la nouvelle solution de Cloudflare, donne aux clients la possibilité de contrôler les requêtes d'une manière flexible et intuitive, inspirée du langage Wireshark® dont la réputation est largement établie. Il est possible de configurer les règles non seulement à l'aide de notre tableau de bord et de notre API, mais aussi à l'aide de Terraform (<a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">lien ici</a>).</p>
+	<p>Deux éléments se dégagent de la structure de Firewall Rules :</p>
+	<ul>
+		<li>
+			<p>Correspondance : définissez un filtre global correspondant exactement à votre trafic.</p>
+		</li>
+		<li>
+			<p>Action : indiquez l'action Cloudflare à effectuer lorsque le filtre correspond.</p>
+		</li>
+	</ul>
+	<p>Autrement dit, lorsque le filtre correspond, appliquez l'action voulue.</p>
+	<div class="flex anchor relative">
+		<h3 id="matching-scoping-the-rule"><b>Correspondance : détermination de la portée de la règle</b></h3>
+		<a href="https://blog.cloudflare.com/#matching-scoping-the-rule" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec Cloudflare Firewall Rules, les clients ont accès aux propriétés de la requête HTTP, y compris le référant, l'agent utilisateur, les cookies, le score de menace Cloudflare (score de réputation IP), et plus encore.</p>
+	<p>Tous les en-têtes pris en charge peuvent être reconnus par de nombreux opérateurs, notamment en cas de correspondance partielle ( <code>contient</code> ), de chaîne complète ou de correspondance d'entier ( <code>est égal à</code>) et, pour nos clients Business et Enterprise, de correspondance de structures ( <code>correspond à</code> ). Oui, vous avez bien lu, nous proposons maintenant le filtrage par expressions régulières, directement via le tableau de bord et l'API !</p>
+	<p>L'avantage le plus intéressant de Firewall Rules est la flexibilité dont bénéficie Cloudflare pour les options de champ. Par exemple, Cloudflare Threat Intelligence, qui détermine notre niveau de sécurité fonctionnel sur le tableau de bord, sera un champ accessible aux clients. L'un des champs les plus importants introduits par Cloudflare est notre champ <code>cf.client.bot</code>, qui contrôle les bots bienveillants par reverse DNS. Dans notre première version, nous donnons aux clients l'accès au classement général des « bots de bonne réputation ». Vous trouverez de plus amples détails concernant la liste <a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/#which-bots-or-crawlers-are-detected-in-firewall-rules" target="_blank" rel="noopener noreferrer">ici</a>. Cloudflare a toujours mis Google sur liste blanche pour ses clients et a utilisé des règles de pare-feu applicatif Web, qui ne sont disponibles que pour les clients Pro et plus, pour bloquer les robot d'indexation usurpés. Avec Firewall Rules, tous les clients ont désormais accès à ces protections. Puisque Cloudflare a supprimé la fonctionnalité de mise en liste blanche, les clients doivent inclure simplement <code>cf.client.bot</code> dans une règle autorisée pour éviter de bloquer par inadvertance de bons robots d'indexation qui pourraient avoir une incidence sur le référencement et sur le suivi.</p>
+	<div class="flex anchor relative">
+		<h3 id="action-what-action-is-applied-to-the-request"><b>Action : détermination de l’action appliquée à la requête</b></h3>
+		<a href="https://blog.cloudflare.com/#action-what-action-is-applied-to-the-request" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toutes les actions Cloudflare standard telles que JavaScript Challenge, Challenge et Block sont disponibles.</p>
+	<p>Nous avons ajouté un nouvel élément à la liste d'atténuation standard, l'action d'autorisation, qui donne au client la possibilité de créer une règle lui permettant de dire « si ce critère est respecté, ne plus appliquer de règles ».</p>
+	<div class="flex anchor relative">
+		<h3 id="give-me-some-examples"><b>Des exemples, s’il vous plaît !</b></h3>
+		<a href="https://blog.cloudflare.com/#give-me-some-examples" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bien sûr. Voici quatre bons exemples de ce qui est utilisé aujourd'hui. Les règles avancées ou intégrées ne sont pas prises en charge dans Visual Rule Builder actuellement. Ces dernières sont notées sous chaque règle.</p>
+	<p><b><i>Exemple 1 : Imposer un questionnaire à tous les pays sauf la Grande-Bretagne</i></b></p>
+	<pre class="language-bash"><code class="language-bash">(ip.geoip.country ne "GB")</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xJ8ApfaQjUhMAwP3JY3mF/c8ce76060aad93b3c87c548d3690d9b6/image.png" alt="" class="kg-image" width="1746" height="1346" loading="lazy">
+
+	</figure>
+	<p>Prise en charge : Visual Builder, Expression Editor</p>
+	<pre class="language-bash"><code class="language-bash">(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WPhDS97KcnmamMZ9nC700/d6e7b379ec0a934e08117dc52240fed5/Firewall-Rule-2.png" alt="" class="kg-image" width="1560" height="1718" loading="lazy">
+
+	</figure>
+	<p>Vous pouvez le faire à l'aide de notre pare-feu IP, mais cela nécessiterait plus de 150 règles !</p>
+	<pre class="language-bash"><code class="language-bash">(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4y7Ft5Ios00FrHaopdenbN/16ff08e012263b36e538e4af426840de/Firewall-Rule-3.png" alt="" class="kg-image" width="1560" height="952" loading="lazy">
+
+	</figure>
+	<p><b><i>Exemple 2 : Protection anti-hotlink avancée</i></b></p>
+	<pre class="language-bash"><code class="language-bash">((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
+111</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YulU707a6hH6HeohJTIjp/888445ff574449a6e5b7af089953b7ae/Firewall-Rule-4.png" alt="" class="kg-image" width="1396" height="866" loading="lazy">
+
+	</figure>
+	<p>Prise en charge : Visual Builder, Expression Editor</p>
+	<p>La protection anti-hotlink intégrée de Cloudflare peut être contraignante pour certains clients, car elle ne permet pas de contourner certaines connexions. Certains robots d'indexation légitimes peuvent également être interceptés.</p>
+	<p><b><i>Exemple 3 : Blocage des clients dont le score de menace est supérieur à 10 ou de ceux provenant d'un réseau malveillant par numéro AS, vers ma page de connexion</i></b></p>
+	<p>Prise en charge : Expression Editor</p>
+	<p>L'un des avantages de Firewall Rules est que nous vous avons donné accès à cf.threat_score, qui détermine le niveau de sécurité du tableau de bord actuel.</p>
+	<p><b><i>Exemple 4 : Cas d'utilisation de type Zone Lockdown utilisant l'expression régulière, les CIDR d'adresse IP, le code pays et les numéros AS pour protéger les terminaux d'authentification via le site Web Wordpress et une API</i></b></p>
+	<p>Prise en charge : Expression Editor</p>
+	<p>Zone Lockdown est un excellent outil, mais il a ses limites pour certains cas d'utilisation critiques. Voici une idée un peu folle pour démontrer la flexibilité :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KXeXqcLx8aty5tA2k9AoA/21f5031d792c59d1c0570dd33f41b668/Optimized-WAF-Rules.png" alt="" class="kg-image" width="600" height="714" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="positive-and-negative-security-models"><b>Modèles de sécurité positive et négative</b></h3>
+		<a href="https://blog.cloudflare.com/#positive-and-negative-security-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cette solution est un excellent complément au pare-feu, car elle permet à nos clients de choisir entre une politique de sécurité positive (autoriser les requêtes spécifiques et refuser tout le reste) et une politique de sécurité négative (bloquer les requêtes spécifiques et autoriser tout le reste).</p>
+	<p>Par défaut, Cloudflare autorise tout dans Firewall Rules. Le grand avantage de cette approche est qu'elle permet de ne bloquer que les éléments nuisibles. Bien qu'il s'agisse d'un moyen très efficace et performant de faire fonctionner un pare-feu, il pose un certain nombre de problèmes. En laissant passer tout le trafic, vos dispositifs de sécurité doivent être réactifs en cas de problème.</p>
+	<p>Le monde de la sécurité prône le concept de « confiance zéro ». Comme son nom l'indique, le principe de confiance zéro signifie que l'on ne fait confiance à rien et que toute autorisation doit être justifiée d'une manière ou d'une autre. Pour établir une politique de sécurité de type « confiance zéro », vous devez inverser le fonctionnement de votre politique de pare-feu par défaut, c'est-à-dire faire basculer la dernière action de allow à block, soit une politique de sécurité positive. Auparavant, cela n'était pas possible ; aujourd'hui, ça l'est avec Firewall Rules.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-visual-rule-builder-and-expression-editor"><b>Visual Rule Builder et Expression Editor</b></h3>
+		<a href="https://blog.cloudflare.com/#the-visual-rule-builder-and-expression-editor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'une des plus grandes préoccupations lorsque l'on donne du pouvoir aux clients, c'est de le faire de manière sûre et efficace. L'équipe de conception produit et d'interface utilisateur a élaboré plusieurs versions successives pour aboutir à un éditeur de règles puissant mais accessible. L'équipe a passé plusieurs mois à élaborer plusieurs versions successives pour aboutir à un outil de création et une solution d'édition de règles performants, sans encombrer ou compliquer l'interface utilisateur.</p>
+	<p>Pete Thomas, concepteur en chef de la nouvelle interface utilisateur du pare-feu, nous a rappelé les bases des sessions de prototypage sur papier pour tester et découvrir comment les règles sont créées et gérées.</p>
+	<p>Vous pouvez voir ci-dessous une photo de Matthew Bullock, l'un de nos ingénieurs de Londres, et moi-même, en train de procéder à des essais.</p>
+	<p>Tout au long du processus de conception, nous avons voulu nous focaliser sur les raisons pour lesquelles les clients auraient besoin de Firewall Rules. Les résultats ont été simples : créer des règles défensives proactives, pour sécuriser une application, et des règles réactives, pour protéger les applications attaquées.</p>
+	<p>Dans Visual Rule Builder, nous avons mis à la disposition des clients un moyen intuitif de créer des règles de pare-feu, sans restreindre l'accès aux fonctionnalités de base. La future feuille de route permet un regroupement plus souple grâce à Visual Builder. Cependant, nous proposons une option pour les exigences plus complexes ou les règles de pare-feu intégrées. Vous pouvez les créer dans l'éditeur de règles, qui est basé sur notre langage inspiré de Wireshark® qui vous permet de vous servir d'expressions créées dans Wireshark et de créer des règles de pare-feu. David Kitchen, directeur technique responsable de l'élaboration des règles de pare-feu, rédigera un blog au cours des prochaines semaines pour expliquer en détail pourquoi nous avons choisi un DSL inspiré de Wireshark® pour nos expressions de filtrage. Pour voir la liste des champs pris en charge, consultez notre <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/fields-and-expressions" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+</div>

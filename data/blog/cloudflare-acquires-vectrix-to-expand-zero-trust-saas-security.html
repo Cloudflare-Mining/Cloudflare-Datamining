@@ -1,118 +1,48 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security">繁體中文</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dOkY5QDJfM6IXw2bL6gtT/e4c8f799e885d0bca83e75cdb50f78ae/image2-10.png" alt="Cloudflare acquires Vectrix to expand Zero Trust SaaS security" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>We are excited to share that Vectrix has been acquired by Cloudflare!</p>
-	<p>Vectrix helps IT and security teams detect security issues across their SaaS applications. We look at both data and users in SaaS apps to alert teams to issues ranging from unauthorized user access and file exposure to misconfigurations and shadow IT.</p>
-	<p>We built Vectrix to solve a problem that terrified us as security engineers ourselves: how do we know if the SaaS apps we use have the right controls in place? Is our company data protected? SaaS tools make it easy to work with data and collaborate across organizations of any size, but that also makes them vulnerable.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-growing-saas-security-problem">The growing SaaS security problem</h3>
-		<a href="https://blog.cloudflare.com/#the-growing-saas-security-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The past two years have accelerated SaaS adoption much faster than any of us could have imagined and without much input on how to secure this new business stack.</p>
-	<p>Google Workspace for collaboration. Microsoft Teams for communication. Workday for HR. Salesforce for customer relationship management. The list goes on.</p>
-	<p>With this new reliance on SaaS, IT and security teams are faced with a new set of problems like files and folders being made public on the Internet, external users joining private chat channels, or an employee downloading all customer data from customer relationship tools.</p>
-	<p>The challenge of securing users and data across even a handful of applications, each with its own set of security risks and a unique way of protecting it, is overwhelming for most IT and security teams. Where should they begin?</p>
-	<div class="flex anchor relative">
-		<h3 id="one-platform-many-solutions">One platform, many solutions</h3>
-		<a href="https://blog.cloudflare.com/#one-platform-many-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Enter the API-driven <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer">Cloud Access Security Broker (CASB)</a>. We think about an API-driven CASB as a solution that can scan, detect, and continuously monitor for security issues across organization-approved, IT-managed SaaS apps like Microsoft 365, ServiceNow, Zoom, or Okta.</p>
-	<p>CASB solutions help teams with:</p>
-	<ul>
-		<li>
-			<p><b>Data security</b> - ensuring the wrong file or folder is not shared publicly in Dropbox.</p>
-		</li>
-		<li>
-			<p><b>User activity</b> - alerting to suspicious user permissions changing in Workday at 2:00 AM.</p>
-		</li>
-		<li>
-			<p><b>Misconfigurations</b> - keeping Zoom Recordings from becoming publicly accessible.</p>
-		</li>
-		<li>
-			<p><b>Compliance</b> - tracking and reporting who modified Bitbucket branch permissions.</p>
-		</li>
-		<li>
-			<p><b>Shadow IT</b> - detecting users that signed up for an unapproved app with their work email.</p>
-		</li>
-	</ul>
-	<p><a href="https://www.cloudflare.com/application-services/solutions" target="_blank" rel="noopener noreferrer">Securing SaaS applications</a> starts with visibility into what users and data reside in a service, and then understanding how they’re used. From there, protective and preventive measures, within the SaaS application and on the network, can be used to ensure data stays safe.</p>
-	<p>It’s not always the extremely complex things either. A really good example of this came from an early Vectrix customer who asked if we could detect public Google Calendars for them. They recently had an issue where someone on the team had shared their calendar which contained several sensitive meeting links and passcodes. They would have saved themselves a headache if they could have detected this prior, and even better, been able to correct it in a few clicks.</p>
-	<p>In this SaaS age something as innocent as a calendar invite can introduce risks that IT and security teams now have to think about. This is why we’re excited to grow further at Cloudflare, helping more teams stay one step ahead.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/N1DZNQ3B5Av5h94AmYCyZ/158720e015e7ecdfaa6321f87465d84f/image3-14.png" alt="" class="kg-image" width="1103" height="582" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="ridiculously-easy-setup">Ridiculously easy setup</h3>
-		<a href="https://blog.cloudflare.com/#ridiculously-easy-setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A core component of an API-first approach is the access system, which powers integrations via an OAuth 2.0 or vendor marketplace app to authorize secure API access into SaaS services. This means the API-driven CASB works out of band, or not in the direct network path, and won’t cause any network slowdowns or require any network configuration changes.</p>
-	<p>In just a few clicks, you can securely integrate with SaaS apps from anywhere—no agents, no installs, no downloads.</p>
-	<p>Over a cup of coffee an IT or security system administrator can connect their company's critical SaaS apps and start getting visibility into data and user activity right away. In fact, we usually see no more than 15 minutes pass from creating an account to the first findings being reported.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7uHxEUxm4HmZl5rWnVF1Fu/d64adb38cb72d1d612fea57b09419346/image1-11.png" alt="" class="kg-image" width="1003" height="737" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="the-more-the-merrier">The more, the merrier</h3>
-		<a href="https://blog.cloudflare.com/#the-more-the-merrier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>By integrating with more and more organization-approved SaaS application patterns that may otherwise not be visible start to emerge.</p>
-	<p>For example, being alerted that Sam attempted to disable two-factor authentication in multiple SaaS applications may indicate a need for more security awareness training. Or being able to detect numerous users granting sensitive account permissions to an unapproved third-party app could indicate a possible phishing attempt.</p>
-	<p>The more integrations you protect the better your overall SaaS security becomes.</p>
-	<div class="flex anchor relative">
-		<h3 id="better-together-in-zero-trust">Better together in Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#better-together-in-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The entire Vectrix team has joined Cloudflare and will be integrating API-driven CASB functionality into the <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust platform</a>, launching later this year.</p>
-	<p>This means an already impressive set of growing products like <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Access (ZTNA)</a>, <a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Gateway (SWG)</a>, and <a href="https://www.cloudflare.com/teams/browser-isolation" target="_blank" rel="noopener noreferrer">Browser Isolation</a>, will be getting even better, together. Even more exciting though, is that using all of these services will be a seamless experience, managed from a unified <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust platform</a> and dashboard.</p>
-	<p>A few examples of what we’re looking forward to growing together are:</p>
-	<ul>
-		<li>
-			<p><b>Shadow IT:</b> use <a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Gateway</a> to detect all your SaaS apps in use, block those that are unapproved, and use CASB to ensure your data stays safe in sanctioned ones.</p>
-		</li>
-		<li>
-			<p><b>Secure access</b>: use <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Access</a> to ensure only users who match your device policies will be allowed into SaaS apps and CASB to ensure the SaaS app stays configured only for your approved authentication method.</p>
-		</li>
-		<li>
-			<p><b>Data control</b>: use <a href="https://www.cloudflare.com/teams/browser-isolation" target="_blank" rel="noopener noreferrer">Browser Isolation</a>’s input controls to prevent users from copy/pasting or printing data and CASB to ensure the data isn’t modified to be shared publicly from within the SaaS app itself for total control.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Vectrix will be integrated into the <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust platform</a> to extend the security of Cloudflare’s global network to the data stored in SaaS applications from a single control plane.</p>
-	<p>If you’d like early beta access, <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta" target="_blank" rel="noopener noreferrer">please click here to join the waitlist</a>. We will send invites out in the sign-up order we received them. You can learn more about the acquisition <a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb">here</a>.</p>
-</div>
+<p>We are excited to share that Vectrix has been acquired by Cloudflare!</p>
+<p>Vectrix helps IT and security teams detect security issues across their SaaS applications. We look at both data and users in SaaS apps to alert teams to issues ranging from unauthorized user access and file exposure to misconfigurations and shadow IT.</p>
+<p>We built Vectrix to solve a problem that terrified us as security engineers ourselves: how do we know if the SaaS apps we use have the right controls in place? Is our company data protected? SaaS tools make it easy to work with data and collaborate across organizations of any size, but that also makes them vulnerable.</p>
+<h3>The growing SaaS security problem</h3>
+<p>The past two years have accelerated SaaS adoption much faster than any of us could have imagined and without much input on how to secure this new business stack.</p>
+<p>Google Workspace for collaboration. Microsoft Teams for communication. Workday for HR. Salesforce for customer relationship management. The list goes on.</p>
+<p>With this new reliance on SaaS, IT and security teams are faced with a new set of problems like files and folders being made public on the Internet, external users joining private chat channels, or an employee downloading all customer data from customer relationship tools.</p>
+<p>The challenge of securing users and data across even a handful of applications, each with its own set of security risks and a unique way of protecting it, is overwhelming for most IT and security teams. Where should they begin?</p>
+<h3>One platform, many solutions</h3>
+<p>Enter the API-driven <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer">Cloud Access Security Broker (CASB)</a>. We think about an API-driven CASB as a solution that can scan, detect, and continuously monitor for security issues across organization-approved, IT-managed SaaS apps like Microsoft 365, ServiceNow, Zoom, or Okta.</p>
+<p>CASB solutions help teams with:</p>
+<ul>
+	<li><strong>Data security</strong> - ensuring the wrong file or folder is not shared publicly in Dropbox.</li>
+	<li><strong>User activity</strong> - alerting to suspicious user permissions changing in Workday at 2:00 AM.</li>
+	<li><strong>Misconfigurations</strong> - keeping Zoom Recordings from becoming publicly accessible.</li>
+	<li><strong>Compliance</strong> - tracking and reporting who modified Bitbucket branch permissions.</li>
+	<li><strong>Shadow IT</strong> - detecting users that signed up for an unapproved app with their work email.</li>
+</ul>
+<p><a href="https://www.cloudflare.com/application-services/solutions" target="_blank" rel="noopener noreferrer">Securing SaaS applications</a> starts with visibility into what users and data reside in a service, and then understanding how they’re used. From there, protective and preventive measures, within the SaaS application and on the network, can be used to ensure data stays safe.</p>
+<p>It’s not always the extremely complex things either. A really good example of this came from an early Vectrix customer who asked if we could detect public Google Calendars for them. They recently had an issue where someone on the team had shared their calendar which contained several sensitive meeting links and passcodes. They would have saved themselves a headache if they could have detected this prior, and even better, been able to correct it in a few clicks.</p>
+<p>In this SaaS age something as innocent as a calendar invite can introduce risks that IT and security teams now have to think about. This is why we’re excited to grow further at Cloudflare, helping more teams stay one step ahead.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="377" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=750&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=828&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=1080&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=1280&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498P5Y8XW0PAW9E72BVVDY.png&amp;w=1430&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-980 Embedded Image - 3Q7nkf" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="377" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-980 Embedded Image - 3Q7nkf"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Ridiculously easy setup</h3>
+<p>A core component of an API-first approach is the access system, which powers integrations via an OAuth 2.0 or vendor marketplace app to authorize secure API access into SaaS services. This means the API-driven CASB works out of band, or not in the direct network path, and won’t cause any network slowdowns or require any network configuration changes.</p>
+<p>In just a few clicks, you can securely integrate with SaaS apps from anywhere—no agents, no installs, no downloads.</p>
+<p>Over a cup of coffee an IT or security system administrator can connect their company's critical SaaS apps and start getting visibility into data and user activity right away. In fact, we usually see no more than 15 minutes pass from creating an account to the first findings being reported.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="525" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=640&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=750&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=828&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=1080&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=1280&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491QETKB5R1J8B559R2GZ0.png&amp;w=1430&amp;h=1050&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-980 Embedded Image - qqSv4s" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="525" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-980 Embedded Image - qqSv4s"></div>
+</figure>
+<h3>The more, the merrier</h3>
+<p>By integrating with more and more organization-approved SaaS application patterns that may otherwise not be visible start to emerge.</p>
+<p>For example, being alerted that Sam attempted to disable two-factor authentication in multiple SaaS applications may indicate a need for more security awareness training. Or being able to detect numerous users granting sensitive account permissions to an unapproved third-party app could indicate a possible phishing attempt.</p>
+<p>The more integrations you protect the better your overall SaaS security becomes.</p>
+<h3>Better together in Zero Trust</h3>
+<p>The entire Vectrix team has joined Cloudflare and will be integrating API-driven CASB functionality into the <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust platform</a>, launching later this year.</p>
+<p>This means an already impressive set of growing products like <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Access (ZTNA)</a>, <a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Gateway (SWG)</a>, and <a href="https://www.cloudflare.com/teams/browser-isolation" target="_blank" rel="noopener noreferrer">Browser Isolation</a>, will be getting even better, together. Even more exciting though, is that using all of these services will be a seamless experience, managed from a unified <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust platform</a> and dashboard.</p>
+<p>A few examples of what we’re looking forward to growing together are:</p>
+<ul>
+	<li><strong>Shadow IT:</strong> use <a href="https://www.cloudflare.com/teams/gateway" target="_blank" rel="noopener noreferrer">Gateway</a> to detect all your SaaS apps in use, block those that are unapproved, and use CASB to ensure your data stays safe in sanctioned ones.</li>
+	<li><strong>Secure access</strong>: use <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Access</a> to ensure only users who match your device policies will be allowed into SaaS apps and CASB to ensure the SaaS app stays configured only for your approved authentication method.</li>
+	<li><strong>Data control</strong>: use <a href="https://www.cloudflare.com/teams/browser-isolation" target="_blank" rel="noopener noreferrer">Browser Isolation</a>’s input controls to prevent users from copy/pasting or printing data and CASB to ensure the data isn’t modified to be shared publicly from within the SaaS app itself for total control.</li>
+</ul>
+<h3>What’s next?</h3>
+<p>Vectrix will be integrated into the <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Cloudflare Zero Trust platform</a> to extend the security of Cloudflare’s global network to the data stored in SaaS applications from a single control plane.</p>
+<p>If you’d like early beta access, <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta" target="_blank" rel="noopener noreferrer">please click here to join the waitlist</a>. We will send invites out in the sign-up order we received them. You can learn more about the acquisition <a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb">here</a>.</p>

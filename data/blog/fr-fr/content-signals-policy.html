@@ -1,0 +1,133 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/content-signals-policy">English</a>, en <a href="https://blog.cloudflare.com/de-de/content-signals-policy">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/content-signals-policy">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/content-signals-policy">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/content-signals-policy">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/content-signals-policy">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/content-signals-policy">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZnWk49LOi8USluhXstwJJ/36c179d0ef439bc7701c86e620212e71/BLOG-2956_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Si nous voulons que le web reste ouvert et florissant, nous avons besoin de plus d'outils pour notifier la manière dont les créateurs de contenu souhaitent que leurs données soient utilisées, tout en permettant un accès libre. Le compromis à faire est aujourd'hui trop limité. Les opérateurs de sites web peuvent soit garder leur contenu accessible sur le web, risquant ainsi qu'il soit utilisé à des fins indésirables, soit le protéger par des identifiants de connexion et restreindre leur audience.</p>
+	<p>En réponse aux préoccupations actuelles de nos clients concernant l'utilisation de leurs contenus par les robots d'indexation et les extracteurs de données, nous lançons la politique sur les signaux de contenu. Cette politique est un nouvel ajout à robots.txt qui vous permet d'exprimer vos préférences sur la façon dont votre contenu peut être utilisé après avoir été consulté.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-robots-txt-does-and-does-not-do-today">Ce que <code>robots.txt</code> fait (et ne fait pas) aujourd'hui</h2>
+		<a href="https://blog.cloudflare.com/#what-robots-txt-does-and-does-not-do-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>Robots.txt</u></a> est un fichier en texte brut hébergé sur votre domaine qui met en œuvre le <a href="https://www.rfc-editor.org/rfc/rfc9309.html" target="_blank" rel="noopener noreferrer"><u>protocole d'exclusion des robots</u></a>. Il vous permet d'indiquer quels robots d'indexation et bots peuvent accéder à quelles parties de votre site.&nbsp; De nombreux robots d'indexation et certains bots obéissent aux fichiers robots.txt, mais pas tous.</p>
+	<p>Par exemple, si vous souhaitiez autoriser tous les robots d'indexation à accéder à chaque partie de votre site, vous pourriez héberger un fichier robots.txt contenant les éléments suivants&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Allow: /
+</code></pre>
+	<p>L'agent utilisateur correspond à la manière dont votre navigateur, ou un bot, s'identifie auprès de la ressource qu'il consulte. Dans cet exemple, l'astérisque indique aux visiteurs que n'importe quel agent utilisateur, sur n'importe quel appareil ou navigateur, peut accéder au contenu. Le / dans le champ <code>Allow</code> indique au visiteur qu'il peut également accéder à n'importe quelle partie du site.</p>
+	<p>Le fichier <code>robots.txt</code> peut également comprendre des commentaires, il suffit pour cela d'ajouter des caractères après le symbole #. Les bots et les machines ignoreront ces commentaires, mais c'est un moyen de laisser des notes plus lisibles par l'homme à une personne qui examine le fichier. Voici <a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>un exemple</u></a>&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust">#    .__________________________.
+#    | .___________________. |==|
+#    | | ................. | |  |
+#    | | ::[ Dear robot ]: | |  |
+#    | | ::::[ be nice ]:: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | | ,|
+#    | !___________________! |(c|
+#    !_______________________!__!
+#   /                            \
+#  /  [][][][][][][][][][][][][]  \
+# /  [][][][][][][][][][][][][][]  \
+#(  [][][][][____________][][][][]  )
+# \ ------------------------------ /
+#  \______________________________/
+</code></pre>
+	<p>Les propriétaires de sites web peuvent rendre le fichier <code>robots.txt</code> plus spécifique en listant certains agents-utilisateurs (par exemple, pour n'autoriser que certains agents-utilisateurs de bots ou de navigateurs) et en précisant les parties d'un site qu'ils sont ou ne sont pas autorisés à explorer. L'exemple ci-dessous indique aux bots de ne pas explorer le chemin des archives.</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Disallow: /archives/
+</code></pre>
+	<p>Et l'exemple ici devient plus spécifique, en indiquant au bot de Google de ne pas explorer le chemin des archives.</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: Googlebot 
+Disallow: /archives/
+</code></pre>
+	<p>Cela vous permet de spécifier quels robots d'exploration sont autorisés et quelles parties de votre site ils peuvent consulter. Cependant, cela ne leur indique pas ce qu'ils peuvent faire avec votre contenu après y avoir accédé. Comme beaucoup l'ont <a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>remarqué,</u></a> il doit exister un moyen standard, lisible par une machine, de signaler les règles de votre route concernant la manière dont vos données peuvent être utilisées, même après qu'elles ont fait l'objet d'un accès.&nbsp;</p>
+	<p>C'est ce que la politique sur les signaux de contenu vous permet de notifier : vos préférences concernant ce qu'un robot d'indexation peut ou ne peut pas faire avec votre contenu.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-we-launching-the-content-signals-policy-now">Pourquoi lançons-nous la politique sur les signaux de contenu maintenant&nbsp;?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-are-we-launching-the-content-signals-policy-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il existe des entreprises qui extraient chaque jour de vastes quantités de données d'Internet. Les opérateurs de sites web supportent un coût réel pour servir ces bots d'extraction de données, en particulier lorsqu'ils ne reçoivent aucune compensation en retour&nbsp;; nous sommes confrontés à un problème classique de <a href="https://en.wikipedia.org/wiki/Free-rider_problem" target="_blank" rel="noopener noreferrer"><u>passager clandestin</u></a>. La situation ne fera qu'empirer&nbsp;: nous prévoyons que le trafic lié aux bots dépassera celui des humains sur Internet d'ici la fin de 2029, et qu'en 2031, l'activité des bots à elle seule surpassera la somme du trafic Internet actuel.&nbsp;</p>
+	<p>Les paramètres par défaut de facto de l'Internet ont permis cet état de fait. La norme voulait que vos données soient ingérées, mais que vous, le créateur de ce contenu, obteniez quelque chose en retour&nbsp;: soit du trafic de recommandation que vous pourriez monétiser, soit au minimum une attribution vous citant comme auteur. Pensez au <a href="https://en.wikipedia.org/wiki/Linkback" target="_blank" rel="noopener noreferrer"><u>linkback</u></a> aux débuts de la publication de blogs, qui était une façon d'accorder du crédit à l'auteur initial de l'œuvre. Aucune somme d'argent n'a changé de mains, mais cette attribution a favorisé de futures découvertes et avait une valeur intrinsèque. Cette norme a été intégrée dans de nombreuses licences permissives telles que <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener noreferrer"><u>MIT</u></a> et <a href="https://creativecommons.org/share-your-work/cclicenses" target="_blank" rel="noopener noreferrer"><u>Creative Commons</u></a>, chacune exigeant une attribution au créateur original.&nbsp;</p>
+	<p>Ce monde a changé&nbsp;; les contenus extraits sont désormais parfois utilisés pour concurrencer économiquement le créateur original. En conséquence, beaucoup se sont retrouvés face à un <a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>choix impossible</u></a>&nbsp;: verrouiller l'accès à votre contenu et à vos données, ou accepter la réalité, à savoir moins de renvois et une attribution minimale&nbsp;? Si le premier choix est la seule possibilité, la transmission libre d'idées sur le web est compromise et les nouveaux entrants dans l'écosystème de l'IA sont en situation de désavantage injuste en raison des efforts qu'ils déploient pour entraîner de nouveaux modèles.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-cloudflare-content-signals-policy">La politique de Cloudflare sur les signaux de contenu</h2>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-content-signals-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La politique sur les signaux de contenu s'intègre dans les fichiers robots.txt des opérateurs de sites web. Il s'agit d'un texte lisible par l'humain qui suit le symbole # pour indiquer qu'il s'agit d'un commentaire. Cette politique définit trois signaux de contenu : recherche, ai-input et ai-train, ainsi que leur intérêt pour les robots d'indexation.</p>
+	<p>Un opérateur de site web peut alors, le cas échéant, notifier ses préférences à l'aide de signaux de contenu lisibles par une machine.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust"># As a condition of accessing this website, you agree to abide by the following content signals:
+
+# (a)  If a content-signal = yes, you may collect content for the corresponding use.
+# (b)  If a content-signal = no, you may not collect content for the corresponding use.
+# (c)  If the website operator does not include a content signal for a corresponding use, the website operator neither grants nor restricts permission via content signal with respect to the corresponding use.
+
+# The content signals and their meanings are: 
+
+# search: building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents).  Search does not include providing AI-generated search summaries.
+# ai-input: inputting content into one or more AI models (e.g., retrieval augmented generation, grounding, or other real-time taking of content for generative AI search answers). 
+# ai-train: training or fine-tuning AI models.
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET. </code></pre>
+	<p>Ce texte comporte trois parties&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Le premier paragraphe explique aux entreprises comment interpréter un signal de contenu donné.&nbsp; « Yes » signifie avancer, « No » signifie s'arrêter, et l'absence de signal n'a pas de signification Cette dernière option neutre est importante&nbsp;: elle permet aux opérateurs de sites web d'exprimer une préférence pour un signal de contenu sans qu'il soit nécessaire de le faire pour un autre.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>Le deuxième paragraphe définit le vocabulaire des signaux de contenu. Nous avons gardé les signaux simples pour que quiconque accédant au contenu puisse les suivre facilement.&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>Le dernier paragraphe rappelle à ceux qui automatisent l'accès aux données que ces signaux de contenu pourraient correspondre à des droits légaux dans différentes juridictions.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Un opérateur de site web peut alors annoncer ses préférences spécifiques dans un texte lisible par machine en utilisant une syntaxe délimitée par des virgules, « yes » ou « no ». Si un opérateur de site web souhaite autoriser la recherche, interdire l'apprentissage, et n'exprime aucune préférence concernant l'entrée de l'IA, il peut inclure les éléments suivants dans son fichier robots.txt&nbsp;:</p>
+	<pre class="language-Rust"><code class="language-Rust">User-Agent: *
+Content-Signal: search=yes, ai-train=no 
+Allow: / 
+</code></pre>
+	<p>Si un opérateur de site web laisse le signal de contenu pour ai-input vide comme dans l'exemple ci-dessus, cela ne signifie pas qu'il n'a aucune préférence concernant cette utilisation ; cela signifie simplement qu'il n'a pas utilisé cette partie de son fichier robots.txt pour le notifier.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-add-content-signals-to-your-website">Comment ajouter des signaux de contenu à votre site web</h2>
+		<a href="https://blog.cloudflare.com/#how-to-add-content-signals-to-your-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si vous savez déjà comment configurer votre fichier robots.txt, il est aussi simple de déployer des signaux de contenu que d'ajouter la politique sur les signaux de contenu ci-dessus, il suffit ensuite de définir vos préférences via un signal de contenu.&nbsp;&nbsp;</p>
+	<p>Nous voulons faire en sorte que l'adoption des signaux de contenu soit simple. Les clients de Cloudflare ont déjà activé notre fonctionnalité gérée de robots.txt pour plus de 3,8 millions de domaines. Ce faisant, ils ont choisi d'indiquer aux entreprises qu'ils ne souhaitent pas que le contenu de ces domaines soit utilisé pour l'entraînement de l'IA. Pour ces clients, nous mettrons à jour le fichier robots.txt que nous servons déjà pour leur compte afin d'inclure la politique sur les signaux de contenu et les signaux suivants :</p>
+	<pre class="language-Rust"><code class="language-Rust">Content-Signal: search=yes, ai-train=no</code></pre>
+	<p>Nous ne fournirons pas de signal « ai-input » à nos clients utilisant le fichier robots.txt géré. Nous ne connaissons pas leur préférence à l'égard de ce signal, et nous ne voulons pas faire d'hypothèse.&nbsp;&nbsp;</p>
+	<p>À partir d'aujourd'hui, nous fournirons également la politique des signaux de contenu commentée et lisible par l'homme pour toute zone client gratuite ne possédant pas de fichier robots.txt existant. En pratique, cela signifie qu'une requête vers robots.txt sur ce domaine renverrait les commentaires qui définissent ce que sont les signaux de contenu. Ces commentaires sont ignorés par les robots d'indexation. Il est important de noter qu'il ne contiendra aucune directive d'autorisation ou d'interdiction, et ne transmettra aucun signal de contenu réel. Ce sont les utilisateurs qui choisissent et expriment leurs préférences réelles si et quand ils sont prêts à le faire. Les clients disposant déjà d'un fichier robots.txt n'observeront aucun changement.</p>
+	<p>Les zones de l'offre gratuite peuvent désactiver la politique sur les signaux de contenu dans la section Paramètres de sécurité du tableau de bord Cloudflare, ainsi que dans la section Vue d'ensemble.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69VPgMTwoI1KqUTP4cNqG5/9576a3ca6eeee93b58688aea7f7ff0ae/BLOG-2956_2.png" alt="BLOG-2956 2" class="kg-image" width="1686" height="684" loading="lazy">
+	</figure>
+	<p>Pour créer vos propres signaux de contenu, il vous suffit de copier et coller le texte que nous vous aidons à générer sur <a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>ContentSignals.org</u></a> dans votre fichier <code>robots.txt</code>, ou de le déployer immédiatement à l'aide du bouton Déployer sur Cloudflare. Vous pouvez également activer notre <a href="https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt" target="_blank" rel="noopener noreferrer"><u>fonctionnalité gérée robots.txt</u></a> si vous souhaitez notifier votre préférence pour interdire l'apprentissage.&nbsp;</p>
+	<p>Il est important de se rappeler que les signaux de contenu notifient des préférences&nbsp;; ils ne constituent pas des contre-mesures techniques face à l'extraction de contenu. Certaines entreprises pourraient simplement les ignorer. Si vous êtes un éditeur de sites web cherchant à contrôler ce que d'autres font avec votre contenu, nous pensons qu'il est préférable de combiner vos signaux de contenu avec les règles du <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer"><u>pare-feu d'applications web (WAF)</u></a> et la <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>gestion des bots</u></a>.</p>
+	<p>Si ces fonctionnalités de Cloudflare visent à en faciliter l'utilisation, nous souhaitons encourager leur adoption par tous, partout. Afin de promouvoir cette pratique, nous publions cette politique sous une <a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank" rel="noopener noreferrer"><u>licence CC0</u></a>, qui permet à chacun de la mettre en œuvre et de l'utiliser librement.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Et maintenant&nbsp;?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nos clients ont entièrement le contrôle sur les robots d'indexation qu'ils souhaitent autoriser et ceux qu'ils souhaitent bloquer. Certains veulent écrire pour la superintelligence, d'autres souhaitent plus de contrôle&nbsp;: nous pensons que cela doit être à eux de décider.</p>
+	<p>Les signaux de contenu permettent à quiconque de notifier comment ils souhaitent que son contenu soit utilisé une fois qu'il a fait l'objet d'un accès. Il était plus que temps d'offrir la possibilité de notifier ses préférences.&nbsp;</p>
+	<p>Nous savons qu’il reste encore du travail à faire. La signalisation des règles de la route ne fonctionne que si les autres reconnaissent ces règles. C'est pourquoi nous continuerons à travailler au sein des organismes de normalisation pour développer et normaliser des solutions qui répondent aux besoins de nos clients et qui sont acceptées par la communauté Internet au sens large.</p>
+	<p>Nous espérons que vous nous accompagnerez dans ces efforts&nbsp;: le web ouvert vaut la peine d'être défendu.</p>
+</div>

@@ -1,0 +1,121 @@
+<div class="mb2 gray5">Lecture&nbsp;: 6 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/public-keys-are-not-enough-for-ssh-security">English</a>, en <a href="https://blog.cloudflare.com/de-de/public-keys-are-not-enough-for-ssh-security">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/public-keys-are-not-enough-for-ssh-security">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/public-keys-are-not-enough-for-ssh-security">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/public-keys-are-not-enough-for-ssh-security">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TGtljSQy3ImYuEpHXy7Kh/09c4fbf4c1f0f936e98c1fb597704b8e/public-keys-are-not-enough-for-ssh-security.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Si votre société utilise des clés publiques SSH, il est tout à fait possible que vous en ayez déjà perdu une. Un fichier stocké dans une copie de sauvegarde ou sur l'ordinateur d'un ancien employé permet à son détenteur d'accéder à votre infrastructure. Si vous partagez des clés SSH entre employés, il est probable que seules quelques clés suffisent pour permettre à une personne malveillante d'accéder à l'ensemble de votre système. Si vous ne les partagez pas, il est probable que votre équipe ait généré tellement de clés que vous en ayez perdu au moins une depuis longtemps.</p>
+	<p>Si une personne malveillante parvient à pirater un seul de vos périphériques clients, il est probable qu'il y trouve un fichier known_hosts qui répertorie chaque cible pouvant être atteinte avec les clés déjà présentes sur la machine. Si quelqu'un parvient à pirater l'ordinateur portable d'un membre de l'équipe, il peut utiliser les clés sur l'appareil qui ne sont pas protégées par mot de passe pour atteindre des cibles confidentielles.</p>
+	<p>Si cela se produisait, comment réagiriez-vous et révoqueriez-vous la clé SSH perdue ? Tenez-vous un registre des clés qui ont été générées ? Renouvelez-vous les clés SSH ? Comment faire dans une entreprise qui se consacre si activement au service de ses clients pour que la sécurité soit adoptée en toute simplicité ?</p>
+	<p>Cloudflare Access <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">a commencé</a> à prendre en charge les connexions SSH l'année dernière afin de mettre en place un système de sécurité Zero Trust pour la connexion des équipes aux infrastructures. Access s’intègre à votre fournisseur d'identité pour offrir une sécurité SSO aux connexions SSH en appliquant des règles basées sur l'identité chaque fois qu'un utilisateur tente de se connecter à une ressource cible.</p>
+	<p>Cependant, une fois qu'Access connectait les utilisateurs au serveur, ces derniers devaient encore se fier aux clés SSH héritées pour obtenir l'autorisation de leur compte. A partir d'aujourd'hui, nous allons aider les équipes à lever cette condition et à remplacer les clés SSH statiques par des certificats de courte durée.</p>
+	<div class="flex anchor relative">
+		<h2 id="replacing-a-private-network-with-cloudflare-access"><b>Remplacer un réseau privé par Cloudflare Access</b></h2>
+		<a href="https://blog.cloudflare.com/#replacing-a-private-network-with-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans les modèles traditionnels de périmètre de réseau, les équipes sécurisent leur infrastructure avec deux passerelles : un réseau privé et des clés SSH.</p>
+	<p>Le réseau privé exige que tout utilisateur tentant de se connecter à un serveur soit sur le même réseau ou un équivalent associé (comme un VPN). Cependant, cela présente un certain risque. Par défaut, les réseaux privés considèrent qu'un utilisateur sur le réseau peut atteindre une machine. Les administrateurs doivent segmenter proactivement le réseau ou sécuriser chaque élément de l'infrastructure à l'aide de listes de contrôle pour remonter à partir de cette valeur par défaut.</p>
+	<p>Cloudflare Access sécurise l'infrastructure en prenant la direction opposée : aucun utilisateur ne doit être digne de confiance. Les utilisateurs doivent plutôt prouver qu'ils sont autorisés par défaut à accéder à toute machine ou destination unique.</p>
+	<p>Nous avons introduit <a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage">l'an dernier</a> la prise en charge des connexions SSH dans Cloudflare Access pour aider les équipes à quitter ce modèle de périmètre réseau et à le remplacer par un modèle qui évalue l'identité des utilisateurs pour chaque requête envoyée à un serveur. Grâce à cette intégration avec les fournisseurs d'identité les plus utilisés, cette solution permet également aux équipes d'intégrer leur pipeline SSO à leur flux SSH.</p>
+	<div class="flex anchor relative">
+		<h2 id="replacing-static-ssh-keys-with-short-lived-certificates"><b>Remplacement des clés SSH statiques par des certificats de courte durée</b></h2>
+		<a href="https://blog.cloudflare.com/#replacing-static-ssh-keys-with-short-lived-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une fois qu'un utilisateur est connecté à un serveur par SSH, il a généralement besoin d'autoriser sa session. La machine qu'il essaie de joindre possède un ensemble de profils composés d'identités d'utilisateurs ou de rôles. Ces profils déterminent quelles actions l'utilisateur peut effectuer.</p>
+	<p>Les processus SSH mettent à la disposition de l'utilisateur un certain nombre de possibilités pour se connecter à un profil. Dans certains cas, les utilisateurs peuvent se connecter avec un nom d'utilisateur et un mot de passe. Cependant, la plupart des équipes utilisent des certificats de clés publics-privés pour gérer cette connexion. Pour utiliser ce flux, les administrateurs et les utilisateurs doivent au préalable effectuer quelques opérations.</p>
+	<p>Avant la connexion, l'utilisateur doit générer un certificat et fournir la clé publique à un administrateur, qui configurera ensuite le serveur pour qu'il fasse confiance au certificat et l'associe à un certain utilisateur et à un ensemble d'autorisations. L'utilisateur enregistre ce certificat sur son appareil et le présente au cours de cette dernière étape. Cependant, cela laisse la porte ouverte à tous les problèmes que le SSO tente de résoudre :</p>
+	<ul>
+		<li>
+			<p>La plupart des équipes ne forcent jamais les utilisateurs à renouveler les certificats. Si c'est le cas, cela pourrait être nécessaire une fois par an au plus. Les informations d'identification statiques de l'infrastructure centrale sont donc conservées sur des centaines ou des milliers de périphériques.</p>
+		</li>
+		<li>
+			<p>Les utilisateurs ont la responsabilité de sécuriser leurs certificats sur leurs appareils. Les utilisateurs sont également responsables des mots de passe, mais les entreprises peuvent centraliser le respect des exigences et la révocation.</p>
+		</li>
+		<li>
+			<p>La révocation est difficile. Les équipes doivent se doter d'une plate-forme CRL ou OCSP pour s'assurer que les certificats perdus ou volés ne sont pas utilisés.</p>
+		</li>
+	</ul>
+	<p>Avec Cloudflare Access, vous pouvez mettre en place l'authentification des utilisateurs pour vos comptes SSO au sein de votre infrastructure. Aucune clé statique n’est requise.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work"><b>Comment cela fonctionne-t-il ?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour y parvenir, nous avons eu recours à trois outils que nous possédions déjà : Cloudflare Access, Argo Tunnel et Workers.</p>
+	<p>Access est un moteur d'application des politiques qui associe les données des employés enregistrées par le fournisseur d'identité (comme Okta ou AzureAD) aux politiques que vous élaborez. En se basant sur ces politiques, Access peut limiter l'accès à vos applications internes aux utilisateurs de votre choix. Il n'est pas difficile de comprendre comment le même concept pourrait servir à contrôler l'accès à un serveur via SSH. Vous rédigez une politique et nous l'utilisons pour décider qui parmi vos employés peut accéder à telles ou telles ressources. Nous générons ensuite un certificat temporaire qui leur permet d'accéder à cette ressource pendant une très courte durée. Si vous supprimez un utilisateur de votre fournisseur d'identité, son accès à votre infrastructure est également supprimé.</p>
+	<p>Pour canaliser le trafic via notre réseau, nous utilisons un autre outil Cloudflare existant : Argo Tunnel. Argo Tunnel renverse le modèle traditionnel de connexion d'un serveur à Internet. Lorsque vous lancez notre programme fantôme sur une machine, il établit des connexions sortantes vers Cloudflare, et tout votre trafic circule ensuite sur ces connexions. Cela permet à la machine de faire partie du réseau Cloudflare sans que vous ayez à la connecter directement à Internet.</p>
+	<p>Pour les cas d'utilisation du HTTP, Argo Tunnel n'a besoin que d'être exécuté sur le serveur. Dans le cas du flux SSH Access, nous proxysons le trafic SSH au travers de Cloudflare en exécutant le client Argo Tunnel cloudflared, à la fois sur le serveur et sur l’ordinateur portable de l'utilisateur final.</p>
+	<p>Lorsque les utilisateurs se connectent via SSH à une ressource sécurisée par Access for Infrastructure, ils utilisent l'outil de ligne de commande cloudflared. cloudflared prend le trafic SSH destiné à ce nom d'hôte et le transfère via Cloudflare en fonction des paramètres de configuration SSH. Pas besoin d'acheminement ou de mise en forme de commande. cloudflared lance une fenêtre de navigateur et invite l'utilisateur à s'authentifier avec ses identifiants SSO.</p>
+	<p>Une fois l'authentification effectuée, Access vérifie l'identité de l'utilisateur par rapport à la politique que vous avez définie pour cette application. Si l'utilisateur est autorisé à accéder à la ressource, Access génère un jeton Web JSON (JWT), signé par Cloudflare et envoyé à l'utilisateur et à l'application. Access envoie le jeton à l'appareil de l'utilisateur avec cloudflared et l'outil le stocke localement.</p>
+	<p>Tout comme le flux d'authentification principal d'Access, la validation des jetons est réalisée avec un Cloudflare Worker qui est exécuté dans chacun de nos datacenters, ce qui le rend à la fois rapide et très disponible. Workers nous a permis de déployer ce SSH en le proxysant sur l'ensemble des 194 datacenters de Cloudflare, ce qui signifie que l'accès pour l'infrastructure accélère souvent les sessions SSH plutôt que de les ralentir.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MxtvEuRCYs7hngzPl4Pyb/917149b04474ae4a309a05faccc47839/Short-lived-Cert-copy_2x-1.png" alt="" class="kg-image" width="1600" height="896" loading="lazy">
+
+	</figure>
+	<p>Avec l'activation des certificats temporaires, le processus d'exécution de cloudflared sur le client ajoute une étape. cloudflared envoie ce jeton à un point de terminaison signant le le certificat Cloudflare qui crée un certificat éphémère. Le flux SSH de l'utilisateur envoie alors à la fois le jeton, qui sert à s'authentifier via Access, et le certificat de courte durée, qui sert à s'authentifier sur le serveur. Tout comme le flux d'authentification principal d'Access, la validation des jetons est réalisée avec un Cloudflare Worker qui est exécuté dans chacun de nos datacenters, ce qui le rend à la fois rapide et très disponible.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CgKQgZMDeHEkLHWTJEY7r/a5553c302a6d394e6355cf421e6234d9/Short-lived-Cert_2x.png" alt="" class="kg-image" width="1600" height="889" loading="lazy">
+
+	</figure>
+	<p>Lorsque le serveur reçoit la requête, il valide le certificat temporaire en fonction de cette clé publique et, s'il est authentique, attribue l'identité de l'utilisateur à un utilisateur Unix correspondant. Une fois émis, le certificat est valide pendant 2 minutes mais la connexion SSH peut durer plus longtemps une fois que la session a débuté.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-the-end-user-experience"><b>Quelle est l'expérience de l'utilisateur final ?</b></h2>
+		<a href="https://blog.cloudflare.com/#what-is-the-end-user-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La fonction SSH de Cloudflare Access est entièrement transparente pour l'utilisateur final et ne nécessite aucune commande, wrapper ou marqueur SSH uniques. Au lieu de cela, Access demande que les membres de votre équipe prennent quelques mesures ponctuelles pour commencer :</p>
+	<div class="flex anchor relative">
+		<h4 id="1-install-the-cloudflared-daemon"><b>1. Installer le démon cloudflared</b></h4>
+		<a href="https://blog.cloudflare.com/#1-install-the-cloudflared-daemon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le logiciel allégé qui est exécuté sur le serveur cible est utilisé pour mettre en proxy les connexions SSH des appareils des membres de votre équipe via Cloudflare. Les utilisateurs peuvent l'installer avec des gestionnaires de packages populaires comme Brew ou en cliquant sur le lien disponible <a href="https://developers.cloudflare.com/access/cli/installing-cli-tool" target="_blank" rel="noopener noreferrer">ici</a>. Ou alors, le logiciel étant open-source, il peut être compilé et distribué par vos administrateurs.</p>
+	<div class="flex anchor relative">
+		<h4 id="2-print-ssh-configuration-update-and-save"><b>2. Imprimer la mise à jour de la configuration SSH et l'enregistrer</b></h4>
+		<a href="https://blog.cloudflare.com/#2-print-ssh-configuration-update-and-save" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une fois qu'un utilisateur final a installé <code>cloudflared</code>, il doit exécuter une commande pour générer de nouvelles lignes à ajouter à son fichier de configuration SSH :</p>
+	<pre class="language-ssh"><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
+	<p>Le champ <code>--hostname</code> contiendra le nom d'hôte ou le sous-domaine générique de la ressource protégée par Access. Une fois exécuté, <code>cloudflared</code> imprimera les détails des configurations suivantes :</p>
+	<pre class="language-ssh"><code class="language-ssh">Host vm.example.com
+    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %r@cfpipe-vm.example.com &gt;&amp;2 &lt;&amp;1'
+    
+Host cfpipe-vm.example.com
+    HostName vm.example.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    IdentityFile ~/.cloudflared/vm.example.com-cf_key
+    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</code></pre>
+	<p>Les utilisateurs doivent ajouter ces données à leur fichier de configuration SSH. Une fois celui-ci enregistré, ils peuvent se connecter à la ressource protégée via SSH. Access leur demandera de se connecter avec leurs identifiants SSO dans le navigateur, de la même manière qu'ils se connectent à tout autre outil du navigateur. S'ils ont déjà une session de navigation active avec leurs identifiants, ils verront simplement une page de confirmation.</p>
+	<p>Dans leur appareil, <code>cloudflared</code> créera la session et délivrera le certificat client correspondant à leur identité.</p><!--kg-card-begin: html-->
+	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="whats-next"><b>Et ensuite ?</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec des certificats de courte durée, Access peut devenir une passerelle unique intégrant le SSO pour votre équipe et votre infrastructure dans n’importe quel environnement. Les utilisateurs peuvent utiliser SSH directement sur une machine donnée et les administrateurs peuvent remplacer complètement leurs serveurs intermédiaires (jumphosts), en supprimant cette surcharge. La fonctionnalité est disponible aujourd'hui pour tous les clients d’Access. Vous pouvez débuter en vous référant au manuel disponible <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server" target="_blank" rel="noopener noreferrer">ici</a>.</p>
+</div>

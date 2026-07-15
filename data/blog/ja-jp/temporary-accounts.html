@@ -1,0 +1,109 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/temporary-accounts">English</a>、<a href="https://blog.cloudflare.com/zh-tw/temporary-accounts">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/temporary-accounts">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/temporary-accounts">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/TaeUUpmHSgKNA48R3gp9q/71645cfc910b9f32689980930010913d/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>現在は、誰もがAIエージェントを使ってコードを書いています。しかし、エージェントが何かをデプロイする必要があり、サインアップしてアカウントを作成する必要がある瞬間、ブラウザベースのOAuthフロー、クリックするためのダッシュボード、コピーするためのAPIトークンなど、人間のために構築された壁に最初にぶつかります。 -ペースト、多要素認証のプロンプトが表示されるなど、満足のいくものとなっています。開発者の隣に座るインタラクティブなコパイロットにとって、それは頭を悩ませることになります。バックグラウンドエージェントにとって、これは難しい阻止です。</p>
+	<p>本日、エージェント用一時Cloudflareアカウントを展開します。</p>
+	<p>エージェントは、アカウントにサインアップする必要なく、<a href="https://www.cloudflare.com/solutions/frontends" target="_blank" rel="noopener noreferrer"><u>ウェブサイト</u></a>、<a href="https://www.cloudflare.com/products/workers" target="_blank" rel="noopener noreferrer"><u>API</u></a>、<a href="https://www.cloudflare.com/products/agents" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>をすぐにデプロイできるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6joSXmAJAARgyGphPhXGla/9c3e8cef6f269df6a9c458495c5fe40b/image2.png" alt="" class="kg-image" width="1999" height="442" loading="lazy">
+	</figure>
+	<p>どのエージェントでも、<code>wrangler deploy --temporary</code>を実行して、CloudflareにWorkerをデプロイできるようになりました。この一時的なデプロイは60分間有効で、その間は一時的アカウントを請求することができ、永久に自分のものにすることができます。そうしないと、自動的に期限切れになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IKqILTXCvDH4QjNFtx2pp/798c00b190c9b9909a4501f29b8c18bb/image4.png" alt="" class="kg-image" width="694" height="369" loading="lazy">
+	</figure>
+	<p>私たちの目的は、エージェントのコードを実行し、送信してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-frictionless-deployments-matter-for-ai-agents">AIエージェントにとって摩擦のないデプロイメントが重要な理由</h2>
+		<a href="https://blog.cloudflare.com/#why-frictionless-deployments-matter-for-ai-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>フリクションのない一時的なアカウントは、一見するよりも重要です：</p>
+	<ul>
+		<li>
+			<p><b>バックグラウンドAIセッションには人間が関与せず、それが標準になりつつあります</b>。ブラウザ、コピーペースト、または「60秒でここをクリック」を必要とする認証ステップは、エージェントが行き詰まり、他の場所にデプロイすることを選択することを意味します。</p>
+		</li>
+		<li>
+			<p><b>トライアルアンドエラーはエージェントの強大な力です。</b>エージェントには、書き込み → デプロイ → 検証のループが必要です。安価ですぐに使えるデプロイメントのターゲットが必要なので、彼らは自分たちの出力をcurl処理して、正しくできたかどうかを判断することができます。</p>
+		</li>
+		<li>
+			<p><b>エージェントプラットフォームは、余分なステップや認証情報なしで「うまく機能する」ようにコードをデプロイするための独自の方法を構築しています</b>。人々は、これまで使ったことのない、または聞いたことのない他のサービスにサインアップする必要なく、このプロセスが機能することを期待し始めています。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一時アカウントは、開発者向けプラットフォームコマンドラインインターフェイス（CLI）ツールである<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>を中心に構築されます。Wranglerは、開発者が新しいプロジェクトを立ち上げたり、設定やリソースを管理したり、デプロイしたり更新したりすることができます。</p>
+	<p>Wranglerの使用方法はオンラインで広く<a href="https://developers.cloudflare.com/workers/examples" target="_blank" rel="noopener noreferrer"><u>文書化されており</u></a>、エージェントはその使用方法を熟知しています。しかし、まだサインインしていない、 CloudflareアカウントにWranglerにアクセス許可を与えていない場合、エージェントがデプロイしようとすると、サインアップと認証のステップで表示されません。正しく尋ねるかもしれません。エージェントとLLMは、Wranglerの新しい<code>--temporary</code>フラグの存在をどのように知り、人間が明示的に指示することなく、実際に使用することができるのでしょうか？</p>
+	<p>これを解決するために、Wranglerを更新し、エージェントに<code>--temporary</code>フラグについて伝えるメッセージを表示するようにしました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pF05TQ9S8HXvOmwD1zoG0/d99ae0ec7d82f26f85dbd5957759697e/image3.png" alt="" class="kg-image" width="669" height="184" loading="lazy">
+	</figure>
+	<p>エージェントがこれを発見し、<code><b>wrangler deploy</b></code>を<code>--temporary</code>フラグを付けて再度実行すると、Cloudflareはエージェントが使用するための一時的なアカウントをプロビジョニングし、Wranglerが動作するためのAPIトークンを提供し、エージェントが人間に返すことができるクレームURLを提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-go-over-every-step-of-the-flow">フローの各ステップを</h2>
+		<a href="https://blog.cloudflare.com/#lets-go-over-every-step-of-the-flow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="deploying-and-iterating-on-a-new-project">新しいプロジェクトでのデプロイとイテレーション</h3>
+		<a href="https://blog.cloudflare.com/#deploying-and-iterating-on-a-new-project" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最新の<a href="https://github.com/cloudflare/workers-sdk/releases" target="_blank" rel="noopener noreferrer"><u>Wranglerリリース</u></a>を使用していることを確認し、お気に入りのコーディングエージェントを起動して、ビルドモードで「hello world」アプリをデプロイするためのプロンプトを記述します。</p>
+	<blockquote>
+		<p><code>TypeScriptで、非常にシンプルなハローワールドCloudflare Workerを作成し、Wranglerを使用してデプロイしてください。私に質問しないで、できる限り最善を尽くしてください。</code></p>
+	</blockquote>
+	<p>エージェントはwranglerを実行し、出力メッセージから<code>--temporary</code>フラグを検出し、スクリプトをビルドして即座にデプロイします。人の手を介する必要はありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Okmqkf7nBH7Hu2wsKWmnc/879cb6025e630bbd8a99b546de935828/image7.png" alt="" class="kg-image" width="727" height="638" loading="lazy">
+	</figure>
+	<p>ご覧のように、エージェントはスクリプトを書き、<code>--temporary</code>フラグを使ってデプロイし、出力から取得したプレビューリンクをカールし、結果がコードと一致することを確認しています。</p>
+	<p>これは素晴らしいことですが、エージェンティックコーディングは、多くの場合、単一のデプロイメントを対象としたものではありません。セッションは、複数のコード変更のサイクルを経ることがあります。これは問題ありません。エージェントはWorkerスクリプトを反復し、変更を何度でも（60分間の請求期間内）再デプロイできます。このプロンプトを入力します：</p>
+	<blockquote>
+		<p><code>Hello Worldを「Hello Cloudflare」に変更し、再デプロイ</code></p>
+	</blockquote>
+	<p>エージェントがソースコードを変更し、以前に作成した一時アカウントを再利用し、新しいバージョンを再デプロイして、結果を再確認する様子をご覧ください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3W86UmPyW5oQxpGkmEEJzL/6168e21df00111aedab481fee5b0a313/image5.png" alt="" class="kg-image" width="727" height="520" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="claiming-the-account">アカウントの請求</h3>
+		<a href="https://blog.cloudflare.com/#claiming-the-account" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>いつでも、一時的なアカウントを請求し、永久にあなたのものにすることができます。請求リンクをクリックすると、Cloudflareにサインアップまたはサインインして、Workerがデプロイされた一時アカウントを請求できるページが表示されます。これには、Workersだけでなく、データベースや他のバインディングなどのリソースの請求も含まれます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rrCw7HiJJxy6k3eyipWLR/5aca8cdcb2fc391ea27bab5f335449b0/image6.png" alt="" class="kg-image" width="1654" height="1200" loading="lazy">
+	</figure>
+	<p>これらの一時アカウントを60分以内に請求しない場合、自動的に削除されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-road-to-frictionless-agentic-deployments">摩擦のないエージェント展開への道のり</h2>
+		<a href="https://blog.cloudflare.com/#the-road-to-frictionless-agentic-deployments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは、エージェントのサインアップ障壁を取り除く一つの方法に過ぎません。当社は最近、<a href="https://blog.cloudflare.com/agents-stripe-projects"><u>Stripeと当社が共同設計した新しいプロトコルとのパートナーシップを発表しました</u></a>。これは、エージェントがユーザーに代わってCloudflareをプロビジョニングできるようにするものです。アカウントの作成、サブスクリプションの開始、ドメインの登録、コードをデプロイするためのAPIトークンの取得。コピーは不要です。 -トークンを貼り付ける、またはクレジットカードの詳細を入力する先月、私たちはWorkOSと協力して、誰でも採用できる<a href="https://workos.com/auth-md" target="_blank" rel="noopener noreferrer"><u>auth.md</u></a>の立ち上げを発表しました。これにより、エージェントが確立された既存のOAuth標準を使用して新しいアカウントをプロビジョニングできるようになりました。</p>
+	<p>この分野では多くのことが進行しており、エージェントがCloudflareをより簡単に利用できるように、また、開発者が独自のアプリを<a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer"><u>エージェント対応</u></a>にできるようにしていくことを嬉しく思います。一時的アカウントは、摩擦のないエージェントのデプロイへのさらなる一歩です。今後の動きにご注目ください。</p>
+	<p>一時的アカウントには制限があり、時間の経過とともに機能が変更される場合があります。<a href="https://developers.cloudflare.com/workers/platform/claim-deployments" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>で詳細を確認してから何かを構築しましょう。お客様のエージェントをCloudflareに向け、どこまで到達するかを確認し、改善できる点やお客様が喜びを感じるものをお聞かせください。<a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>X</u></a>で構築したものを共有したり、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>に参加したりしてください。</p>
+</div>

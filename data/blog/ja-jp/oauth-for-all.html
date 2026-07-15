@@ -1,0 +1,309 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/oauth-for-all">English</a>、<a href="https://blog.cloudflare.com/zh-tw/oauth-for-all">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/oauth-for-all">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/oauth-for-all">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/470YV3u8pJdiSjyhZl1Zro/12aaff16d7787082571eeee0d2b8217f/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>CloudflareはWebの20%の稼働を支えるサービスを提供していますが、これは当社だけでは実現しません。当社のプラットフォームの開発者は、他社が提供するさまざまなツールやサービスも利用しています。Cloudflareは、開発者がインフラストラクチャのさまざまな部分をつなぎ合わせる自動化、CI/CD、統合を作成できるような充実したAPIを提供しています。今月初め、Cloudflareは<a href="https://developers.cloudflare.com/changelog/post/2026-06-03-public-oauth-clients" target="_blank" rel="noopener noreferrer"><u>自己管理型OAuth</u></a>を発表しました。これにより、お客様はCloudflare APIへの委任アクセスのために独自のOAuthクライアントを容易に作成・管理することが可能になります。</p>
+	<p>CloudflareはOAuthにとって新しいわけではありません。Wranglerを使ったことがある方や、PlanetScaleなどのパートナーの統合機能を使ったことがある方は、すでに利用していることでしょう。しかし、これまでサードパーティのOAuthは、手動でオンボードされる統合を通じてのみ利用でき、より広範な開発者が利用できるものではありませんでした。つまり、独自の統合を構築する開発者はAPIトークンに頼らざるをえないのが現状ですが、APIトークンは管理が難しく、多くの委任されたアプリケーションフローには適していません。</p>
+	<p>昨年、当社は、Cloudflare OAuthの背後にある同意、取り消し、セキュリティモデルを改善する一方で、早期パートナーの数を増やしてきました。しかし、当社の開発者プラットフォームが成長し、エージェンティックツールによるアクセス移管の需要が高まるにつれ、当社のプラットフォームの成功に、すべてのお客様にOAuthを開放することが極めて重要だと関わるようになりました。</p>
+	<p>自己管理型OAuthにより、開発者は、顧客が範囲付きアクセスを直接許可する標準OAuthフローを提供できるようになり、SaaS統合、内部開発者プラットフォーム、エージェンティックツールの構築を容易にし、ユーザーに明確な同意、より簡単な取り消し、より詳細な制御を提供できるようになります。使用できるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="scaling-the-ecosystem-securely">エコシステムの安全な拡大</h2>
+		<a href="https://blog.cloudflare.com/#scaling-the-ecosystem-securely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前のOAuthソリューションは、慎重に管理された少数のパートナーに対しては十分でしたが、許可モデル、同意の経験、潜在的な不正利用ベクトルを軽減する方法は、十分に成熟していないと認識しました。</p>
+	<p>今年初め、私たちは<a href="https://blog.cloudflare.com/improved-developer-security/#improving-the-oauth-consent-experience"><u>同意エクスペリエンスを更新</u></a>し、どのアプリケーションがアクセスを要求しているか、そしてどのような許可を受けるかをより明確にしました。また、ダッシュボードに取り消し機能を追加して、開発者がデータにアクセスできるアプリケーションを簡単に制御できるようにし、OAuthフィッシング攻撃を防ぐために、アプリの所有権をより可視化しました。</p>
+	<p>自己管理型OAuthをすべてのお客様に公開するには、基盤となるOAuthエンジンにも大きなアップグレードが必要でした。このプロセスには、ユーザーの中断を最小限に抑えながら、データの安定性とセキュリティを確保するための多くの計画が必要でした。</p>
+	<div class="flex anchor relative">
+		<h2 id="planning-the-upgrade-to-our-oauth-engine">OAuthエンジンへのアップグレードを計画する</h2>
+		<a href="https://blog.cloudflare.com/#planning-the-upgrade-to-our-oauth-engine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>数年前、私たちはCloudflare OAuthを内部で稼働させるために、オープンソースのOAuthエンジンである<a href="https://github.com/ory/hydra" target="_blank" rel="noopener noreferrer"><u>Hydra</u></a>をデプロイしました。このデプロイメントは、利用が限られていたときはうまく機能していましたが、開発者プラットフォームが成長し、エージェントワークフローが一般的になるにつれ、新しい機能を解放し、パフォーマンスを向上させるためのメジャーなアップグレードが必要であると感じました。</p>
+	<p>今回のアップグレードを計画する際、1回の大規模なアップグレードではなく、2回の小規模なアップグレードを実施することにしました。まず、最新の1.Xリリースに移行し、動作やパフォーマンスの変更を評価した後、2.Xへのアップグレードを進めます。</p>
+	<p>アップグレード計画中に、Hydraデータベースは以下のような広範なスキーマ移行を必要とするため、1.Xにアップグレードしても、依然としてお客様に影響を与えることが明らかになりました。</p>
+	<ol>
+		<li>
+			<p>重要なテーブルを排他的ロックとみなすような方法でインデックスを作成し、アクティブユーザーが重要なOAuth操作をできないようにする</p>
+		</li>
+		<li>
+			<p>重要なテーブルに列を追加し、他の列を新しいテーブルに移動しました</p>
+		</li>
+	</ol>
+	<p>また、私たちが使用していたHydraのバージョンには、SDKがSELECT *操作を実行するという異常があり、スキーマの変更に関してデシリアル化の問題が発生していました。</p>
+	<p>ユーザーへの影響を防ぐために、SQLマイグレーションを書き直して、CREATE INDEX CONCURRENTLYなどの機能を使用し、SELECT *ではなく明示的な列を選択したHydraのカスタムバージョンを構築しました。</p>
+	<p>最新の1.Xアップグレードが計画されていたため、さらに大きな2.Xアップグレードの計画を立てる必要がありました。私たちは3つの潜在的な選択肢を特定し、それぞれの利点と欠点を比較しました。インプレースアップグレードは、主要なバージョンバンプがもたらすスキーマの変更の量があまりにも多いため、うまくいきませんでした。ブルーグリーン戦略が有効だと判断しましたが、新しいバージョンを使い始めるには、スイッチを切り替えるだけでは不十分でした。アップグレードと移行のプロセスには数時間かかり、その間もシステムが正常に機能し続ける必要がありました。</p>
+	<p>最初の青緑の選択肢は、データベースへの書き込みを無効にし、新しい認可が発生するのを防ぎます。つまり、移行中に紛失することはありませんが、有効な認証情報をすでに持っていない限り、既存のOAuthアプリを使用できないことも意味します。また、別の大きな問題が発生しました。ユーザーが何らかの理由でアプリケーションからのアクセス権を取り消す必要がある場合、アップグレードの実行中は実行できません。</p>
+	<p>これらの問題に対処するために、データベースへの書き込みを有効にしておく方法を考案しましたが、グリーンバージョンに切り替えると一部が失われます。まず解決すべきは、新しいトークンの書き込み回数を最小限に抑えることでした。トークンの有効期限を数時間に延ばすという、運用上の圧力があったのです。これにより、アップグレード前に新しいトークンを受け取ったアプリは、更新する必要なくそれらを引き続き使用できます。</p>
+	<p>書き込み削減を解決した後、アップグレード期間中にユーザーが実行した取り消しを失わない方法を見つける必要がありました。これを行うために、キューシステム（<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>を使用）を作成しました。取り消しイベント後に、その取り消しに関する情報を含むレコードがキューに書き込まれます。これにより、データベースを緑色のバージョンに切り替えてキューを解消し、失われたタイムウィンドウに発生したすべての取り消しイベントをリプレイすることができます。この権利を守るためには、ユーザーが無効にしたアプリケーションのアクセス権が誤って復元されてしまうため、非常に重要でした。</p>
+	<div class="flex anchor relative">
+		<h2 id="executing-the-upgrade">アップグレードの実行</h2>
+		<a href="https://blog.cloudflare.com/#executing-the-upgrade" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="upgrading-to-1-x">1.Xへのアップグレード</h3>
+		<a href="https://blog.cloudflare.com/#upgrading-to-1-x" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>運用上の観点からは、最後の1.Xリリースへの最初のアップグレードは問題なく完了しました。カスタムデータベースの移行は予想よりも速く実行され、ユーザーへの影響はありませんでした。古いバージョンは、新バージョンによって作成されたトークンをイン検査できないため、新しいバージョンへのハードな移行を実施しなければなりませんでした。</p>
+	<p>カットオーバー後に、以前は見られなかったリフレッシュトークンエラーが増加しました。これは最終的に、新バージョンでのリフレッシュの無効化の動作が厳格化したためです。リフレッシュトークンが再利用されると、Hydraはアクセストークンを無効化し、トークンチェーン全体を無効化します。これは、WranglerとMCPクライアントにとって問題です。これらのクライアントはどちらもリクエスト量が多く、単一の再利用されるリフレッシュトークンがセッション全体を無効化します。</p>
+	<p>Cloudflareは、OAuthトラフィックを正しい宛先にルーティングするWorkerにリフレッシュトークンの結束動作を追加することで、この問題を軽減しました。これにより、Hydraに到達する前にリフレッシュトークンリクエストを一時的にキャッシュできるため、リトライを検出した場合も、トークンを無効化することなくリクエストを短時間で応答することができました。幸いなことに、Hydraの2.Xバージョンには設定可能な「リフレッシュトークンの猶予期間」があり、チェーン全体を無効化することなく、一定期間のリフレッシュトークンを再試行できるようにすることで、この問題を解決します。</p>
+	<div class="flex anchor relative">
+		<h3 id="upgrading-to-2-x">2.Xへのアップグレード</h3>
+		<a href="https://blog.cloudflare.com/#upgrading-to-2-x" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>何時間にもわたり、ユーザーに対して高い影響を与えることは許容されないため、ブルーグリーン色のアップグレード戦略を設定しました。これは大まかに言えば、簡単に聞こえます。移行は本番データベースのコピーで実行され、完了後に新しいHydraバージョンに合わせて移行されます。実際には、はるかに<i>多くの</i>可動部分がありました。</p>
+	<ul>
+		<li>
+			<p>取り消しリプレイキャプチャキューの有効化</p>
+		</li>
+		<li>
+			<p>データベースをコピーして新しいターゲットに復元する</p>
+		</li>
+		<li>
+			<p>標的型データクリーンアップ：既存のデータが、新バージョンで導入されたいくつかの新しい制約に違反したため、移行の成功を妨げる可能性がある</p>
+		</li>
+		<li>
+			<p>Hydraサービスと2つの重要な内部システムの両方を同時にカットオーバーし、エラーを防止する</p>
+		</li>
+		<li>
+			<p>カットオーバー後の監視と検証</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tbiQb2wX9zyyC2n6cOMmv/706bacb728d5abef09117c3893ec288d/hydra_upgrade_diagram.png" alt="" class="kg-image" width="819" height="692" loading="lazy">
+	</figure>
+	<p>当社は、Hydra社の1秒あたりのリクエスト量が最も少ない時に、アップグレード期間を選択し、トークンの書き込み損失を最小限に抑えることができました。本番移行は、若干のタイムアウト調整を除いて、新しいデータベースに対してうまく機能しました。本番移行の正味ランタイムは約3時間でした。移行完了後、Hydraサービスの新バージョンと、システムを有効にして新しいSDKバージョンを使用できるようにするための2つの追加のシステム設定を慎重に展開しました。</p>
+	<p>トラフィックを遮断した直後に、認証サービス（Hydra同意セッションAPIに依存する）のデータクリーンアップジョブが、OAuthポリシーデータのパージを過剰に要求していることがわかりました。調査の結果、Hydraの移行の1つに問題があり、特定の有効なOAuthセッションの状態を損なう問題があり、移行によって無効と表示されるようになったことを発見しました。有効なセッションが破損することで、Hydraと当社の認証サービスとの間で不一致が生じ、403の増加として現れました。この問題を軽減するために、データ復元を行い、静的ポリシーデータへの依存を解消するために、OAuth承認動作の改善に取り組み始めました。</p>
+	<p>データクリーンアップの問題以外にも、特定のクライアントの動作に起因する小さな修正がいくつかありました。これはすぐに見つけられるものです。</p>
+	<p>Hydraのバージョンアップグレードが完了し、OAuthトラフィックは安定した状態を維持し、お客様にとってシステムパフォーマンスと信頼性が向上しました。また、新しいOAuth APIがすでにステージングで検証されていたのと同じ基盤に本番環境をもたらし、<a href="https://developers.cloudflare.com/changelog/post/2026-06-03-public-oauth-clients" target="_blank" rel="noopener noreferrer"><u>6月3日の自己管理型OAuthリリース</u></a>への道が開かれました。</p>
+	<div class="flex anchor relative">
+		<h2 id="performance-improvements">パフォーマンス向上</h2>
+		<a href="https://blog.cloudflare.com/#performance-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このような大規模なアップグレードが完了した後は、その影響に関するいくつかの幅広い指標を見ると、必ずやりがいがあり、状況を把握することができるのです。データベース移行中に追加のメトリクスを収集し、アップグレード完了後に大幅なパフォーマンス改善が確認されました。</p>
+	<div class="flex anchor relative">
+		<h3 id="database">データベース</h3>
+		<a href="https://blog.cloudflare.com/#database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-9uby {
+			background-color: #ffffff;
+			border-color: inherit;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 700px">
+		<colgroup>
+			<col style="width: 350px">
+			<col style="width: 350px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指標</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">約100件価値</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">更新された行数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13,250万人</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">挿入された行数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1億1470万人</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">一時バイト数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">136.97GB</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">トランザクションのコミット</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22,200人</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="hydra-performance">Hydraパフォーマンス</h3>
+		<a href="https://blog.cloudflare.com/#hydra-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-9uby {
+			background-color: #ffffff;
+			border-color: inherit;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 700px">
+		<colgroup>
+			<col style="width: 250px">
+			<col style="width: 150px">
+			<col style="width: 150px">
+			<col style="width: 150px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指標（平均）</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用前</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用後</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">変更履歴</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">API P95</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">185ミリ秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">101ミリ秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-45%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSSメモリ</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">888MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">763MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">大量の割り当て</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">449MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">271MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">～40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ゴルーチン</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4015</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3076</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-23%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.07コア</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.67コア</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-37%</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="self-managed-oauth-for-all">すべての自己管理型OAuth</h2>
+		<a href="https://blog.cloudflare.com/#self-managed-oauth-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのお客様にOAuthを開放することは、Cloudflareアプリのエコシステムの広範化に向けた重要なステップです。現在、Cloudflareのすべてのお客様は独自のOAuthアプリケーションを作成し、Cloudflare上で統合を構築することができます。Cloudflare自己管理型OAuthをすべてのお客様に提供開始できることを大変嬉しく思います。</p>
+	<p>開始するには、<a href="https://developers.cloudflare.com/fundamentals/oauth" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧いただくか、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Foauth-clients" target="_blank" rel="noopener noreferrer"><u>ダッシュボード</u></a>のOAuthアプリページに直接移動して、最初のOAuthアプリを作成してください。</p>
+</div>

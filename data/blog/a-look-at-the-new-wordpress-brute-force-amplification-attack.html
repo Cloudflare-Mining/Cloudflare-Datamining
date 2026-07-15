@@ -1,165 +1,128 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4W6BcZa3ilvqXHkW7YK68n/17fc001105de141193b45c7e614f817a/a-look-at-the-new-wordpress-brute-force-amplification-attack.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.</p>
-	<p>The vulnerability can easily be abused by a simple script to try a significant number of username and password combinations with a relatively small number of HTTP requests. The following diagram shows a 4-fold increase in login attempts to HTTP requests, but this can trivially be expanded to a thousand logins.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jdeVX3b5JHTMwZvY4J7wY/3db3519b348381101ef3bdd943e6e636/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack" class="kg-image" width="1137" height="1663" loading="lazy">
-
-	</figure>
-	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-xml-rpc">What is XML-RPC?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-xml-rpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
-	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener noreferrer">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
-	<p>Here is an example that requests a list of the user’s blogs:</p>
-	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
-&lt;methodCall&gt;
-&lt;methodName&gt;wp.getUsersBlogs&lt;/methodName&gt;
-&lt;params&gt;
- &lt;param&gt;
-  &lt;value&gt;
-   &lt;string&gt;admin&lt;/string&gt;
-  &lt;/value&gt;
- &lt;/param&gt;
- &lt;param&gt;
-  &lt;value&gt;
-   &lt;string&gt;password123&lt;/string&gt;
-  &lt;/value&gt;
- &lt;/param&gt;
-&lt;/params&gt;
-&lt;/methodCall&gt;</code></pre>
-	<p>The server responds with an XML message containing the requested information. The <code>isAdmin</code> name-value pair tells us our credentials were correct:</p>
-	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;methodResponse&gt;
-&lt;params&gt;
-	&lt;param&gt;
-	  &lt;value&gt;
-	  &lt;array&gt;&lt;data&gt;
-	  &lt;value&gt;&lt;struct&gt;
-	  &lt;member&gt;
-		&lt;name&gt;isAdmin&lt;/name&gt;
-		&lt;value&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/value&gt;
-	  &lt;/member&gt;
-	  &lt;member&gt;
-		&lt;name&gt;url&lt;/name&gt;
-		&lt;value&gt;&lt;string&gt;http://example.com/&lt;/string&gt;&lt;/value&gt;
-	  &lt;/member&gt;
-	  &lt;member&gt;
-		&lt;name&gt;blogid&lt;/name&gt;
-		&lt;value&gt;&lt;string&gt;1&lt;/string&gt;&lt;/value&gt;
-	  &lt;/member&gt;
-	  &lt;member&gt;
-		&lt;name&gt;blogName&lt;/name&gt;
-		&lt;value&gt;&lt;string&gt;testing&lt;/string&gt;&lt;/value&gt;
-	  &lt;/member&gt;
-	  &lt;member&gt;
-		&lt;name&gt;xmlrpc&lt;/name&gt;
-		&lt;value&gt;&lt;string&gt;http://example.com/xmlrpc.php&lt;/string&gt;&lt;/value&gt;
-	  &lt;/member&gt;
-	  &lt;/struct&gt;&lt;/value&gt;
-	  &lt;/data&gt;&lt;/array&gt;
-	  &lt;/value&gt;
-	&lt;/param&gt;
-&lt;/params&gt;
-&lt;/methodResponse&gt;</code></pre>
-	<p>As shown in this request, you must provide proper authentication to get a successful response. You can, in theory, create a script that tries different combinations of the username and password, but that is a noisy option that isn’t very effective and is easily detected (the server logs would show a flood of failed login attempts).</p>
-	<p>This is where the <code>system.multicall</code> functionality comes into play. You can run multiple methods with a single HTTP request. This is useful for mass editing blogs or deleting large numbers of comments, etc. Any method that requires authentication can be abused to brute force credentials. Here is what a sample XML <code>system.multicall</code> payload would look like:</p>
-	<pre class="language-bash"><code class="language-bash">&lt;?xml version="1.0"?&gt;
-&lt;methodCall&gt;
-&lt;methodName&gt;system.multicall&lt;/methodName&gt;
-&lt;params&gt;
-  &lt;param&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;
-  &lt;value&gt;&lt;struct&gt;
-  &lt;member&gt;
-	&lt;name&gt;methodName&lt;/name&gt;
-	&lt;value&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;
-  &lt;/member&gt;
-  &lt;member&gt;
-	&lt;name&gt;params&lt;/name&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;
-	&lt;value&gt;&lt;array&gt;&lt;data&gt;
-	&lt;value&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;
-	&lt;value&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;
-	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
-	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
-  &lt;/member&gt;
-  &lt;/struct&gt;&lt;/value&gt;
-  &lt;value&gt;&lt;struct&gt;
-  &lt;member&gt;
-	&lt;name&gt;methodName&lt;/name&gt;
-	&lt;value&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;
-  &lt;/member&gt;
-  &lt;member&gt;
-	&lt;name&gt;params&lt;/name&gt;
-	&lt;value&gt;&lt;array&gt;&lt;data&gt;
-	&lt;value&gt;&lt;array&gt;&lt;data&gt;
-	  &lt;value&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;
-	  &lt;value&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;
-	  &lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
-	&lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
-  &lt;/member&gt;
-  &lt;/struct&gt;&lt;/value&gt;
-  &lt;/data&gt;&lt;/array&gt;&lt;/value&gt;
-  &lt;/param&gt;
-&lt;/params&gt;
-&lt;/methodCall&gt;</code></pre>
-	<p>As you can see, this can lead to very obvious abuse.</p>
-	<div class="flex anchor relative">
-		<h3 id="exploitation">Exploitation</h3>
-		<a href="https://blog.cloudflare.com/#exploitation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>During testing, I was able to call the method <code>wp.getUserBlogs</code> 1,000 times in a single HTTP request (limited only by PHP memory issues). If a user creates a simple shell loop that executes one thousand times and runs a PHP script that crafts an HTTP request with one thousand method calls all requiring authentication, then that user would be able to try one million unique logins in a very short period of time.</p>
-	<p>This makes brute forcing the login very fast and can run down a pretty large wordlist in a short period of time. Also note that the <code>wp.getUserBlogs</code> method isn’t the only RPC call requiring authentication. It’s possible to use any RPC method which requires authentication to attempt logins and brute force the Wordpress credentials.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-customers-are-protected">CloudFlare Customers Are Protected</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-customers-are-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When using CloudFlare with a Pro level plan or higher, you have the ability to turn on the Web Application Firewall (WAF) and take advantage of the new WordPress ruleset I created to mitigate this attack—all without any major interaction or supervision on your end.</p>
-	<p>Our WAF works by checking HTTP requests for consistencies that line up with known attacks and malicious activities. If a request does appear to be malicious, we drop it at the edge so it never even reaches the customer’s origin server.</p>
-	<p>To enable the rule, navigate to your CloudFlare Firewall dashboard, and reference the rule named "Blocks amplified brute force attempts to xmlrpc.php" with the rule ID WP0018.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UjJTAaaGerRJ928DM0NGv/cc569d79f7675aafdf10d83ef73ea4cc/enabling-xmlrpc-waf-rule.png" alt="Enabling WordPress XML-RPC WAF Rule" class="kg-image" width="950" height="205" loading="lazy">
-
-	</figure>
-	<p>That’s all there is to it. Now you are protected from the new WordPress XML-RPC brute force amplification attack.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-manual-solution">The Manual Solution</h3>
-		<a href="https://blog.cloudflare.com/#the-manual-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Another way to mitigate this attack is by disabling the ability to call the<code>system.multicall</code> method in your Wordpress installation by editing your<code>functions.php</code> file. Adding the function <code>mmx_remove_xmlrpc_methods()</code> will alleviate the problem, like so:</p>
-	<pre class="language-bash"><code class="language-bash">function mmx_remove_xmlrpc_methods( $methods ) {
-	unset( $methods['system.multicall'] );
-	return $methods;
-}
-add_filter( 'xmlrpc_methods', 'mmx_remove_xmlrpc_methods');</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="final-thoughts">Final Thoughts</h3>
-		<a href="https://blog.cloudflare.com/#final-thoughts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>XML-RPC can be a useful tool for making changes to WordPress and other web applications; however, improper implementation of certain features can result in unintended consequences. Default-on methods like <code>system.multicall</code> and <code>pingback.ping</code> (we have a <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf">WAF rule for that one</a>, too) are just a few examples of possible exploits.</p>
-	<p>Properly configuring the CloudFlare Web Application Firewall for your Internet facing properties will protect you from such attacks with no changes to your server configuration.</p>
+<p>Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.</p>
+<p>The vulnerability can easily be abused by a simple script to try a significant number of username and password combinations with a relatively small number of HTTP requests. The following diagram shows a 4-fold increase in login attempts to HTTP requests, but this can trivially be expanded to a thousand logins.</p>
+<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
+<h3>What is XML-RPC?</h3>
+<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
+<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener noreferrer">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
+<p>Here is an example that requests a list of the user’s blogs:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;?</span><span class="sk-24292e-fff">xml version</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1.0"</span><span class="sk-24292e-fff"> encoding</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"iso-8859-1"?</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">methodCall</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">methodName</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">wp.getUsersBlogs</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/methodName</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   &lt;</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">admin</span><span class="sk-24292e-fff">&lt;/string&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-6f42c1-ffc799">/param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   &lt;</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">password123</span><span class="sk-24292e-fff">&lt;/string&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-6f42c1-ffc799">/param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/methodCall</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
 </div>
+<p>The server responds with an XML message containing the requested information. The <code>isAdmin</code> name-value pair tells us our credentials were correct:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;?</span><span class="sk-24292e-fff">xml version</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1.0"</span><span class="sk-24292e-fff"> encoding</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"UTF-8"?</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">methodResponse</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">array</span><span class="sk-24292e-fff">&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;struct&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">isAdmin</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">url</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;http://example.com/&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">blogid</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;1&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">blogName</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;testing&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">xmlrpc</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;http://example.com/xmlrpc.php&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/struct</span><span class="sk-24292e-fff">&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/value</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">/param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/methodResponse</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>As shown in this request, you must provide proper authentication to get a successful response. You can, in theory, create a script that tries different combinations of the username and password, but that is a noisy option that isn’t very effective and is easily detected (the server logs would show a flood of failed login attempts).</p>
+<p>This is where the <code>system.multicall</code> functionality comes into play. You can run multiple methods with a single HTTP request. This is useful for mass editing blogs or deleting large numbers of comments, etc. Any method that requires authentication can be abused to brute force credentials. Here is what a sample XML <code>system.multicall</code> payload would look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;?</span><span class="sk-24292e-fff">xml version</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1.0"?</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">methodCall</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">methodName</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">system.multicall</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/methodName</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;struct&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">methodName</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">params</span><span class="sk-24292e-fff">&lt;/name&gt;&lt;value&gt;&lt;array&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;array&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/struct</span><span class="sk-24292e-fff">&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;struct&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">methodName</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;wp.getUsersBlogs&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">params</span><span class="sk-24292e-fff">&lt;/name&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;array&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;array&gt;&lt;data&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;admin&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">&gt;&lt;string&gt;password&lt;/string&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	  &lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	&lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/member</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/struct</span><span class="sk-24292e-fff">&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/data</span><span class="sk-24292e-fff">&gt;&lt;/array&gt;&lt;/value&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/param</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/params</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/methodCall</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>As you can see, this can lead to very obvious abuse.</p>
+<h3>Exploitation</h3>
+<p>During testing, I was able to call the method <code>wp.getUserBlogs</code> 1,000 times in a single HTTP request (limited only by PHP memory issues). If a user creates a simple shell loop that executes one thousand times and runs a PHP script that crafts an HTTP request with one thousand method calls all requiring authentication, then that user would be able to try one million unique logins in a very short period of time.</p>
+<p>This makes brute forcing the login very fast and can run down a pretty large wordlist in a short period of time. Also note that the <code>wp.getUserBlogs</code> method isn’t the only RPC call requiring authentication. It’s possible to use any RPC method which requires authentication to attempt logins and brute force the Wordpress credentials.</p>
+<h3>CloudFlare Customers Are Protected</h3>
+<p>When using CloudFlare with a Pro level plan or higher, you have the ability to turn on the Web Application Firewall (WAF) and take advantage of the new WordPress ruleset I created to mitigate this attack—all without any major interaction or supervision on your end.</p>
+<p>Our WAF works by checking HTTP requests for consistencies that line up with known attacks and malicious activities. If a request does appear to be malicious, we drop it at the edge so it never even reaches the customer’s origin server.</p>
+<p>To enable the rule, navigate to your CloudFlare Firewall dashboard, and reference the rule named "Blocks amplified brute force attempts to xmlrpc.php" with the rule ID WP0018.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="154" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=715&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=640&amp;h=138&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=715&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=750&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=828&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=1080&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=1280&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RV6GDX8CM963HZGNK8K8.png&amp;w=1430&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Enabling WordPress XML-RPC WAF Rule" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="154" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Enabling WordPress XML-RPC WAF Rule"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>That’s all there is to it. Now you are protected from the new WordPress XML-RPC brute force amplification attack.</p>
+<h3>The Manual Solution</h3>
+<p>Another way to mitigate this attack is by disabling the ability to call the<code>system.multicall</code> method in your Wordpress installation by editing your<code>functions.php</code> file. Adding the function <code>mmx_remove_xmlrpc_methods()</code> will alleviate the problem, like so:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> mmx_remove_xmlrpc_methods</span><span class="sk-24292e-fff">( $methods ) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	unset</span><span class="sk-24292e-fff">( $methods</span><span class="sk-032f62-99ffe4">['system.multicall']</span><span class="sk-24292e-fff"> );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> $methods;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add_filter(</span><span class="sk-032f62-99ffe4"> 'xmlrpc_methods',</span><span class="sk-032f62-99ffe4"> 'mmx_remove_xmlrpc_methods'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<h3>Final Thoughts</h3>
+<p>XML-RPC can be a useful tool for making changes to WordPress and other web applications; however, improper implementation of certain features can result in unintended consequences. Default-on methods like <code>system.multicall</code> and <code>pingback.ping</code> (we have a <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf">WAF rule for that one</a>, too) are just a few examples of possible exploits.</p>
+<p>Properly configuring the CloudFlare Web Application Firewall for your Internet facing properties will protect you from such attacks with no changes to your server configuration.</p>

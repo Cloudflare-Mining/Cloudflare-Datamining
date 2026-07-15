@@ -1,0 +1,304 @@
+<div class="mb2 gray5">3분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/post-quantum-cryptography-ga">English</a>, <a href="https://blog.cloudflare.com/zh-tw/post-quantum-cryptography-ga">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-cryptography-ga">Français</a>, <a href="https://blog.cloudflare.com/de-de/post-quantum-cryptography-ga">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/post-quantum-cryptography-ga">日本語</a>, <a href="https://blog.cloudflare.com/es-es/post-quantum-cryptography-ga">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/post-quantum-cryptography-ga">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TzLh4ygDBBzeVYRkK2w8l/db4a57cc57dde6aad2f233cd0c83b4ee/post-quantum-cryptography-ga.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>지난 12개월 동안 저희는 인터넷 암호화의 새로운 기준인 양자내성암호에 대해 이야기해왔습니다. 작년 창립기념일 주간에 저희는 <a href="https://blog.cloudflare.com/post-quantum-for-all">Kyber의 베타 버전을 테스트할 수 있다</a>고 발표했으며, 양자내성암호를 통해 <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a>을 양자내성암호로 활성화할 수 있다고 발표했습니다. 올해 초, 저희는 이 기반 기술을 <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">모든 사람이 영원히 무료로</a> 사용할 수 있어야 한다는 입장을 분명히 했습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CftKQnuBYwGI69XmAFsVq/d0577dd4455257096f07d478ddaf5bdd/image2-28.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>6년 동안 <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 개의 블로그 게시물</a>을 작성한 끝에 오늘, 저희는 고객, 서비스, 내부 시스템에 대한 양자내성암호 지원의 <a href="https://blog.cloudflare.com/post-quantum-to-origins">일반 공개</a>1를 시작한다는 이정표를 제시했습니다( 아래에서 자세히 설명합니다). 여기에는 원본 연결용 <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a>, 1.1.1.1, R2, Argo Smart Routing, Snippets 등의 제품이 포함됩니다.</p>
+	<p>이는 인터넷의 이정표입니다. 양자 컴퓨터가 오늘날의 암호화를 해독할 만큼 충분한 규모를 갖추게 될 시기는 아직 알 수 없지만, 지금 양자내성암호로 업그레이드하면 얻을 수 있는 이점은 분명합니다. 오늘날 <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">빠른 연결과 미래 보장형 보안</a>은 모두 Cloudflare, Google, Mozilla, 미국 국립표준기술연구소, 인터넷 엔지니어링 태스크포스, 수많은 학술 기관 등에서 이룬 진전 덕분에 가능해졌습니다.</p>
+	<p>일반 공개란 무엇을 의미할까요? 2022년 10월에 <a href="https://blog.cloudflare.com/post-quantum-for-all">저희는 <i>Cloudflare를 통해 제공되는 모든 웹 사이트와 API에 대해</i> X25519+Kyber</a>를 베타로 사용하도록 설정했습니다. 하지만 손뼉도 마주쳐야 소리가 납니다. 브라우저에서 양자내성암호를 지원하는 경우에만 연결이 안전하게 보호됩니다. 2023년 8월부터 <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank" rel="noopener noreferrer">Chrome</a>에서는 _X25519+Kyber_를 기본으로 서서히 활성화할 예정입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oRJ1q0ib6rCSfgBJPJyuU/8e2847b56b058eb6267d1b9303a74883/image1-40.png" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " class="kg-image" width="1999" height="522" loading="lazy">
+
+	</figure>
+	<p>사용자의 요청은 Cloudflare의 네트워크(2)를 통해 라우팅됩니다. 이러한 내부 연결 중 상당수를 양자내성암호를 사용하도록 업그레이드했으며, 2024년 말까지 모든 내부 연결의 업그레이드가 완료될 것으로 예상합니다. 그러면 최종 연결로서 당사와 _원본 서버_사이의 연결(3)이 남게 됩니다.</p>
+	<p>대부분의 인바운드 <b>및 아웃바운드 연결에</b> 대해 X25519+Kyber를 <i>원본 서버</i> 및 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> fetch()es 등에 대한 지원을 사용하도록 일반 공개하게 되었음을 발표하게 되어 기쁩니다.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Plan</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Support for post-quantum outbound connections</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Started roll-out. Aiming for 100% by the end of the October.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro and business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aiming for 100% by the end of year.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roll-out begins February 2024. 100% by March 2024.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>요금제</p>
+	<p>양자내성 아웃바운드 연결 지원</p>
+	<p>Free</p>
+	<p>출시를 시작했습니다. 10월 말까지 100%를 목표로 하고 있습니다.</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API Gateway</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Automatic Platform Optimization</td>
+			</tr>
+			<tr>
+				<td>Automatic Signed Exchange</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Egress</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rulesets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Custom Error Pages</td>
+			</tr>
+			<tr>
+				<td>Flow Based Monitoring</td>
+			</tr>
+			<tr>
+				<td>Health checks</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Network Error Logging</td>
+			</tr>
+			<tr>
+				<td>Project Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 Storage</td>
+			</tr>
+			<tr>
+				<td>Request Tracer</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed on Cloudflare Dash</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>WAF, Managed Rules</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Pro 및 business</p>
+	<p>연말까지 100%를 목표로 하고 있습니다.</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare DNS</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Logging</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Bot Management</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Enterprise</p>
+	<p>출시는 2024년 2월에 시작됩니다. 2024년 3월까지 100%.</p>
+	<p>Enterprise 고객을 대상으로는 향후 6개월 동안 정기적으로 추가 정보를 발송하여 출시에 대비하도록 지원할 예정입니다. Pro, Business, Enterprise 고객은 지금 바로 해당 영역에서 옵트인하거나 <a href="https://blog.cloudflare.com/post-quantum-to-origins">동반 블로그 게시물</a>에서 설명하는 API를 사용하여 미리 옵트아웃할 수 있습니다. 2024년 2월에 Enterprise 고객을 대상으로 출시하기 전에 대시보드에 옵트아웃할 수 있는 토글을 추가할 예정입니다.</p>
+	<p>지금 바로 시작하고 싶으면, <a href="https://blog.cloudflare.com/post-quantum-to-origins">기술적인 세부 사항이 담긴 블로그를 확인하고 API를 통해 양자내성암호 지원을 사용해 보세요</a>!</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-included-and-what-is-next">포함되는 항목과 다음 단계는 무엇일까요?</h3>
+		<a href="https://blog.cloudflare.com/#whats-included-and-what-is-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 이 정도 규모의 업그레이드에서는 가장 많이 사용하는 제품에 먼저 집중한 다음 에지 케이스까지 확장하고 싶었습니다. 이 과정을 통해 이번 출시에 다음과 같은 제품과 시스템을 포함하게 되었습니다.</p>
+	<p>1.1.1.1</p>
+	<p>AMP</p>
+	<p>API Gateway</p>
+	<p>Argo Smart Routing</p>
+	<p>Auto Minify</p>
+	<p>자동 플랫폼 최적화</p>
+	<p>자동 서명된 교환</p>
+	<p>Cloudflare 송신</p>
+	<p>Cloudflare Images</p>
+	<p>Cloudflare 규칙 집합</p>
+	<p>Cloudflare Snippets</p>
+	<p>Cloudflare Tunnel</p>
+	<p>사용자 지정 오류 페이지</p>
+	<p>흐름 기반 모니터링</p>
+	<p>상태 검사</p>
+	<p>Hermes</p>
+	<p>호스트 헤드 검사기</p>
+	<p>Magic Firewall</p>
+	<p>Magic Network Monitoring</p>
+	<p>네트워크 오류 로깅</p>
+	<p>Flame 프로젝트</p>
+	<p>Quicksilver</p>
+	<p>R2 스토리지</p>
+	<p>Request Tracer</p>
+	<p>Rocket Loader</p>
+	<p>Cloudflare Dash의 속도</p>
+	<p>SSL/TLS</p>
+	<p>트래픽 관리자</p>
+	<p>WAF, 관리형 규칙</p>
+	<p>Waiting Room</p>
+	<p>Web Analytics</p>
+	<p>사용 중인 제품이나 서비스가 여기에 나열되어 있지 않다면 저희가 아직 양자내성암호를 출시하지 않은 것입니다. 저희는 Zero Trust 제품을 포함한 모든 제품과 서비스에 양자내성암호를 적용하기 위해 적극적으로 노력하고 있습니다. 모든 시스템에서 양자내성암호를 지원할 때까지 매 혁신 주간마다 업데이트 블로그에 게시하여 어떤 제품에 양자내성암호를 적용했는지, 다음에 적용될 제품은 무엇인지, 앞으로 무엇을 준비 중인지에 대해 설명하겠습니다.</p>
+	<p>곧 양자내성암호 지원을 제공하기 위해 노력 중인 제품:</p>
+	<p>Cloudflare Gateway</p>
+	<p>Cloudflare DNS</p>
+	<p>Cloudflare Load Balancer</p>
+	<p>Cloudflare Access</p>
+	<p>Always Online</p>
+	<p>Zaraz</p>
+	<p>로깅</p>
+	<p>D1</p>
+	<p>Cloudflare Workers</p>
+	<p>Cloudflare WARP</p>
+	<p>봇 관리</p>
+	<div class="flex anchor relative">
+		<h3 id="why-now">왜 지금일까요?</h3>
+		<a href="https://blog.cloudflare.com/#why-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>올해 초에 발표한 대로, 양자내성암호로 지원할 수 있는 모든 Cloudflare 제품과 서비스에 해당 지원이 무료로 포함될 예정입니다. 최고의 암호화 기술에는 모든 사람이 무료로 액세스할 수 있어서 전 세계의 개인정보 보호와 인권 지원에 도움이 되어야 합니다.</p>
+	<p>지난 3월에 <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">언급한 내용:</a></p>
+	<p><i>"한때 실험적인 프런티어였던 인터넷은 이제 현대 사회의 기본 구조로 자리 잡았습니다. 전력망, 병원, 공항, 은행 등 가장 중요한 인프라에서 실행됩니다. 우리는 우리의 가장 소중한 추억이 담긴 이곳을 신뢰합니다. 우리의 비밀을 믿고 맡깁니다. 그러므로 인터넷은 기본적으로 비공개여야 합니다. 기본적으로 안전해야 하고요."</i></p>
+	<p>양자내성암호에 대한 저희 연구는 기존 암호화를 해독할 수 있는 양자 컴퓨터가 Y2K 버그와 유사한 문제를 일으킬 수 있다는 가설에 기반하고 있습니다. 저희는 향후 사용자, 기업, 나아가 국가에 치명적인 결과를 초래할 수 있는 문제가 발생할 수 있다는 것을 알고 있습니다. 이번에는 차이점이 이러한 계산 패러다임의 변화가 언제 어떻게 일어날지 모른다는 것입니다. 더 심각한 문제는 오늘 캡처된 트래픽이 나중에 해독될 수 있다는 점입니다. 우리는 이러한 위협에 대비하기 위해 지금부터 준비해야 합니다.</p>
+	<p>Cloudflare에서는 모두가 양자내성암호를 시스템에 도입할 수 있게 되어 기쁩니다. 양자내성암호 배포 및 타사 클라이언트/서버 지원의 최신 개발 상황을 확인하려면 <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a>을 방문하고 이 블로그를 계속 주시해 주세요.</p>
+	<p>***</p>
+	<p><sup>1</sup>저희는 양자내성 키 합의를 위하여 NIST에서 선택한 <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank" rel="noopener noreferrer">예비 버전</a>인 Kyber를 사용하고 있습니다. Kyber는 아직 확정되지 않았습니다. 2024년에 ML-KEM이라는 이름으로 최종 표준이 발표될 것으로 예상되며, 그렇게 되면 저희가 X25519Kyber768Draft00에 대한 지원을 중단하면서 즉시 채택할 예정입니다.</p>
+</div>

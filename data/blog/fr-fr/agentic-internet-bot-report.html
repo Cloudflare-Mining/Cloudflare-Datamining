@@ -1,0 +1,272 @@
+<div class="mb2 gray5">Lecture&nbsp;: 10 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/agentic-internet-bot-report">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/agentic-internet-bot-report">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/agentic-internet-bot-report">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/agentic-internet-bot-report">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/agentic-internet-bot-report">한국어</a>, en <a href="https://blog.cloudflare.com/pt-br/agentic-internet-bot-report">Português</a>, en <a href="https://blog.cloudflare.com/es-la/agentic-internet-bot-report">Español (Latinoamérica)</a> et en <a href="https://blog.cloudflare.com/zh-cn/agentic-internet-bot-report">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nE7HAncurO4lahc5zbtO8/3cea57d56b82681198bf725fdc2c4d3c/BLOG-3368_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Il y a un an, nous déclarions la <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>Journée de l'indépendance du contenu</u></a> (Content Independence Day). Nous pouvions constater à l'époque ce que beaucoup d'acteurs du secteur commençaient à ressentir&nbsp;: la réalité économique fondamentale d'Internet était en train de se transformer. L'adoption de l'IA s'accélérait, les éditeurs voyaient leur trafic référent décliner rapidement et les entreprises de développement d'IA exploraient le web à une échelle sans précédent, souvent sans déclarer clairement leur intention et presque toujours sans compensation.</p>
+	<p>Nous avons modifié les paramètres par défaut. Les bots d'exploration destinés à l'entraînement de l'IA seront bloqués par défaut pour tous les nouveaux domaines sur le réseau Cloudflare à moins que les propriétaires de ces domaines n'en décident autrement. Cette modification n'avait pas pour objectif d'isoler le web. Nous l'avons déployée, car nous considérions qu'un écosystème plus sain nécessitait un certain degré de transparence, de contrôle et de rareté, mais aussi, en définitive, l'apparition d'un marché au sein duquel le contenu de haute qualité pourrait être valorisé et échangé de manière équitable.</p>
+	<p>Ce marché a émergé un an plus tard. Or, la transformation d'Internet s'est produite encore plus rapidement que prévu. Ce rapport a pour objectif de vous présenter des points de données essentiels qui illustrent la vitesse à laquelle le modèle économique de l'Internet a évolué, mais aussi ce que ce nouveau marché du contenu implique pour les éditeurs et les propriétaires de sites.</p>
+	<div class="flex anchor relative">
+		<h2 id="part-i-the-internet-has-changed-faster-than-anyone-expected">Première partie&nbsp;: le réseau Internet s'est transformé, plus rapidement que quiconque n'aurait pu le prévoir</h2>
+		<a href="https://blog.cloudflare.com/#part-i-the-internet-has-changed-faster-than-anyone-expected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="the-vertical-adoption-curve">La courbe d'adoption verticale</h3>
+		<a href="https://blog.cloudflare.com/#the-vertical-adoption-curve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'IA n'est pas un énième nouveau cycle technologique. Ce changement d'infrastructure se produit à plus de deux fois la vitesse à laquelle les smartphones ont été adoptés. En seulement 3&nbsp;ans et demi, plus de 30&nbsp;% de l'humanité a adopté l'utilisation régulière de l'IA générative (soit 2,5&nbsp;milliards d'utilisateurs actifs). La courbe d'adoption ne présente plus seulement un pic rapide&nbsp;: elle en devient verticale.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M69Z8Mu3wANYivgEMbUqZ/e891d57b2569c021bad63c0bfeca0530/BLOG-3368_2.png" alt="BLOG-3368 2" class="kg-image" width="1800" height="1040" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-decline-of-the-open-web">Le déclin du web ouvert</h3>
+		<a href="https://blog.cloudflare.com/#the-decline-of-the-open-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Jamais auparavant nous n'avons observé une mutation aussi rapide de la manière dont les êtres humains interagissent avec l'information, procèdent à leurs tâches et passent du temps en ligne.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wQGImgn0OFJeZCUY2Qhq5/28a11af7ceaf09de87dabe6f5d55e3f7/BLOG-3368_3.png" alt="BLOG-3368 3" class="kg-image" width="1800" height="1222" loading="lazy">
+	</figure>
+	<p>
+		La façon dont les utilisateurs se servent d'Internet évolue dans des proportions considérables. Pour chaque heure passée en ligne à rechercher des informations aujourd'hui, 15&nbsp;minutes seulement sont passées sur le web ouvert. Le comportement traditionnel de recherche s'effondre à mesure que les utilisateurs se tournent vers un processus de découverte et de consommation des informations piloté par IA. Plutôt que de se rendre sur plusieurs sites pour obtenir et comparer des informations, les utilisateurs n'ont désormais plus qu'à saisir une invite (prompt) pour recevoir une réponse consolidée presque instantanément.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-agentic-internet-is-here">L'Internet agentique est là</h3>
+		<a href="https://blog.cloudflare.com/#the-agentic-internet-is-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cette année, le trafic des agents a franchi un seuil historique pour la première fois&nbsp;: plus de 50&nbsp;% du trafic circulant sur Internet est désormais d'origine automatisée. Ce changement a des implications stupéfiantes pour les éditeurs, les propriétaires de contenu, et l'avenir du web ouvert.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5YkpFdETFdLIerSyejSQTI/72ed1bddb4f713cfaa68376ffca78d7e/BLOG-3368_4.png" alt="BLOG-3368 4" class="kg-image" width="2000" height="1208" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="crawlers-have-changed-their-purpose">Les bots d'exploration ont changé d'objectif</h3>
+		<a href="https://blog.cloudflare.com/#crawlers-have-changed-their-purpose" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsqu'on s'intéresse à l'objectif des bots d'exploration que Cloudflare identifie, la composition du trafic automatisé est des plus éloquentes&nbsp;:</p>
+	<ul>
+		<li>
+			<p>52&nbsp;% des requêtes des bots d'exploration concernaient l'entraînement de l'IA en juin&nbsp;2026, contre 22&nbsp;% au printemps&nbsp;2025.</p>
+		</li>
+		<li>
+			<p>Les bots d'exploration à usage mixte (qui allient la recherche, l'utilisation des agents et l'entraînement) totalisent plus de 36&nbsp;% de l'activité.</p>
+		</li>
+		<li>
+			<p>La pure exploration à des fins de recherche représente désormais une part réduite et en déclin de l'activité globale des bots, bien qu'elle reste essentielle pour la visibilité des éditeurs. </p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2as6G3xsTXPJXccFOKsjXx/83a0a06d713f878b1b6ea61563593e0e/f2f4f782-ecdf-48bd-9b88-62fa649d2963.png" alt="BLOG-3368 5" class="kg-image" width="918" height="521" loading="lazy">
+	</figure>
+	<p>À l'heure où l'entraînement de l'IA devient le principal moteur de l'activité des bots d'exploration, la capacité de distinguer l'identification de l'entraînement gagne nettement en importance. Les bots d'exploration à usage mixte brouillent cette distinction, en contraignant les propriétaires de contenu à adopter une position difficile&nbsp;: choisir entre le fait de rester identifiable à l'ère de l'agentivité et céder leur contenu le plus précieux sans compensation.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-old-business-model-is-gone">Le modèle économique du passé est révolu</h3>
+		<a href="https://blog.cloudflare.com/#the-old-business-model-is-gone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pendant des décennies, le modèle économique du web ouvert se révélait plutôt simple. Les créateurs de contenu échangeaient l'accès à leur contenu contre de la visibilité dans les moteurs de recherche, qui renvoyaient du trafic de référence. Ce trafic est devenu le principal mécanisme par lequel les éditeurs, les créateurs et les entreprises ont généré de la valeur économique.</p>
+	<p>Or, cette relation est en train de s'effondrer aujourd'hui. Le contenu continue d'être exploré, indexé et utilisé, mais de plus en plus sans trafic de référence correspondant vers la source. Lorsque les systèmes IA répondent aux questions, comparent des produits, mènent des recherches et accomplissent directement les tâches, les informations qui circulent sur le web ouvert deviennent de plus en plus partie intégrante des systèmes d'entraînement et de récupération sur lesquels repose l'IA. La question existentielle soulevée par ce constat est simple&nbsp;: si le contenu est consommé sans que les audiences ne se rendent jamais sur la source, comment les créateurs de contenu peuvent-ils se rémunérer de manière soutenable&nbsp;?</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60T7EMNO25yQ4tlA6JHpKl/abc121511a14c89f8c01cca5f70ec65c/BLOG-3368_6.png" alt="BLOG-3368 6" class="kg-image" width="1600" height="1110" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-implications-are-industry-agnostic">Les implications sont agnostiques du point de vue du secteur</h3>
+		<a href="https://blog.cloudflare.com/#the-implications-are-industry-agnostic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les premiers secteurs à ressentir l'impact sont ceux des organismes de presse et des entreprises de médias. Plusieurs dynamiques similaires impactent aujourd'hui les entreprises des secteurs du commerce, des logiciels, de l'IT et de la finance. Certaines des catégories les plus explorées ont vu le trafic d'origine humaine diminuer de 40&nbsp;% en moins d'un an.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j3sF7FpYa4b5eLGgSXqhs/a1748b3f3feca6b8722a03d6912bcd72/BLOG-3368_7.png" alt="BLOG-3368 7" class="kg-image" width="2000" height="1268" loading="lazy">
+	</figure>
+	<p>De nombreux éditeurs se préparent maintenant à ce qu'ils appellent le «&nbsp;Google Zero&nbsp;», un monde dans lequel peu ou pas de trafic provient de références liées aux recherches.</p>
+	<p>Les implications s'étendent à pratiquement tous les secteurs. Toutes les entreprises qui publient des informations propriétaires sur Internet devront comprendre comment opérer à l'ère agentique. Cette dynamique est des plus importantes, non seulement pour les propriétaires de contenu, mais également pour chacun d'entre nous. Le réseau Internet est une composante essentielle de l'économie mondiale et l'une des ressources publiques les plus essentielles pour faire émerger des informations. Il est crucial pour nous tous de nous assurer qu'il demeure sain et durable.</p>
+	<div class="flex anchor relative">
+		<h2 id="part-ii-the-market-has-emerged">Deuxième partie&nbsp;: le marché a émergé</h2>
+		<a href="https://blog.cloudflare.com/#part-ii-the-market-has-emerged" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-we-built">Ce que nous avons bâti</h3>
+		<a href="https://blog.cloudflare.com/#what-we-built" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous nous sommes engagés sur trois aspects lorsque nous avons lancé la Journée de l'indépendance du contenu&nbsp;:</p>
+	<ol>
+		<li>
+			<p>transparence et contrôle pour les propriétaires de sites afin de leur permettre de définir une approche quant à l'accès à leur contenu et à la monétisation de ce dernier&nbsp;;</p>
+		</li>
+		<li>
+			<p>des outils qui créent de la rareté afin de renverser l'équilibre des pouvoirs en faveur des propriétaires de contenu&nbsp;;</p>
+		</li>
+		<li>
+			<p>un marché au sein duquel les créateurs de contenu et les entreprises de développement d'IA de toutes les tailles peuvent identifier le contenu, l'évaluer et contracter une licence pour y accéder de manière plus efficace.</p>
+		</li>
+	</ol>
+	<p>Un an plus tard, un marché pour le contenu monétisé est présent et les conditions sont en train de se former pour l'émergence d'un marché dynamique.</p>
+	<div class="flex anchor relative">
+		<h3 id="transparency-and-control-created-scarcity">La transparence et le contrôle ont créé la rareté</h3>
+		<a href="https://blog.cloudflare.com/#transparency-and-control-created-scarcity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Historiquement, les éditeurs disposaient d'une visibilité limitée sur la manière dont les entreprises de développement d'IA accédaient à leur contenu et l'utilisaient. Plus le trafic référent diminuait, plus ce manque de visibilité est devenu un problème économique qui a incité les éditeurs à chercher de nouveaux moyens de capturer de la valeur.</p>
+	<p>Les structures d'attribution, d'intelligence métier et d'application des règles proposées par Cloudflare ont offert une visibilité sur la consommation de l'IA au niveau du réseau aux éditeurs. Ce mécanisme d'application s'est révélé bien plus efficace que les normes volontaires comme robots.txt. Pour la première fois, les éditeurs pouvaient déterminer une approche définissant l'accès à leur contenu et la monétisation de ce dernier. Ce contrôle a entraîné la rareté et engendré une économie basée sur l'offre et la demande autour du contenu.</p>
+	<div class="flex anchor relative">
+		<h3 id="scarcity-created-leverage">La rareté a généré un effet de levier</h3>
+		<a href="https://blog.cloudflare.com/#scarcity-created-leverage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les éditeurs qui exerçaient un contrôle sur l'accès à leur contenu ont réussi à créer la rareté et cette dernière leur a donné un avantage pour négocier de meilleurs accords. Pour la première fois, les éditeurs ont bénéficié de données d'attribution de niveau opérationnel, comme une preuve de la fréquence à laquelle les LLM tentaient d'accéder à leur contenu, quels LLM concurrents exploraient leur contenu et quelles URL les modèles demandaient le plus souvent, en plus du rapport explorations/renvois. Ces données ont réduit l'asymétrie en matière d'information lors des discussions sur la cession de licences et ont permis aux éditeurs de négocier en toute connaissance de cause.</p>
+	<div class="flex anchor relative">
+		<h3 id="leverage-is-changing-the-balance-of-power">L'effet de levier modifie l'équilibre des pouvoirs</h3>
+		<a href="https://blog.cloudflare.com/#leverage-is-changing-the-balance-of-power" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'effet de levier généré a donné du pouvoir à nos clients.En acquérant davantage de visibilité sur la manière dont les systèmes IA accèdent à leurs contenus et les utilisent, nos clients sont mieux équipés pour comprendre les implications pour leurs entreprises et exprimer avec plus de confiance la valeur des informations, de la marque et des audiences qu'ils ont construites.</p>
+	<p>À l'heure où l'équilibre des pouvoirs entre les propriétaires de contenu et les entreprises de développement d'IA commence à changer, une économie tournant autour de l'octroi de licences émerge&nbsp;:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Plus de 50&nbsp;accords éditeurs-IA ont été signés depuis 2023.</p>
+		</li>
+		<li>
+			<p>En reconnaissant de plus en plus la valeur d'un contenu différencié et premium, les grandes entreprises de l'IA contractent désormais des licences pour accéder au contenu.</p>
+		</li>
+		<li>
+			<p>Les modèles de licence collective continuent d'émerger et de se développer.</p>
+		</li>
+		<li>
+			<p>Les grands éditeurs concluent des accords de licence significatifs et démontrent ainsi que le contenu présente une véritable valeur économique au sein de l'écosystème de l'IA.</p>
+		</li>
+	</ul>
+	<p>La conversation ne porte plus sur <i>le fait de savoir si</i> le contenu doit être rémunéré. Elle porte maintenant sur <i>la manière de le faire</i>.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-market-is-maturing-but-inefficiencies-remain">Le marché arrive à maturité, mais des inefficacités subsistent</h3>
+		<a href="https://blog.cloudflare.com/#the-market-is-maturing-but-inefficiencies-remain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les premiers accords de licence ont prouvé qu'il existait une demande, mais l'octroi de licence en lui-même demeure aujourd'hui largement une procédure sur mesure et se révèle peu susceptible de remplacer entièrement les revenus perdus du trafic référent, de la publicité et de l'affiliation. En conséquence, les éditeurs optimisent de plus en plus leur contenu pour la consommation par l'IA en parallèle de la découverte traditionnelle par des humains, tout en explorant de nouvelles voies de monétisation.</p>
+	<p>L'offre et la demande restent difficiles à concilier efficacement et à l'heure où le public commence à comprendre que tous les contenus n'ont pas la même valeur, le problème de l'évaluation de ces derniers n'est toujours pas résolu.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-google-convergence-problem">Le problème de convergence de Google</h3>
+		<a href="https://blog.cloudflare.com/#the-google-convergence-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aucune discussion sur ce marché ne saurait être complète sans aborder le rôle unique de Google. Avec près de 88&nbsp;% du trafic de référence, Google demeure la principale porte d'entrée en matière de découverte de contenu en ligne. Google aide toutefois de plus en plus les utilisateurs à consommer du contenu directement au sein de l'expérience IA détenue par Google.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4npzNthY9RDNXRhqe0L2z0/f8414329fd1451bfe5e1ce4d4a9cdc97/BLOG-3368_9.png" alt="BLOG-3368 9" class="kg-image" width="1648" height="940" loading="lazy">
+	</figure>
+	<p>La découverte et la consommation servent des objectifs fondamentalement différents. La recherche oriente les utilisateurs vers le contenu, tandis que les expériences assistées par IA synthétisent et réutilisent de plus en plus ce dernier sans que les utilisateurs aient besoin de se rendre sur le site source. Les propriétaires de sites web traitent ces activités différemment, car l'une génère du trafic, tandis que l'autre le remplace de plus en plus.</p>
+	<p>Ces différences se révèlent particulièrement importantes lorsque les propriétaires de sites décident qui doit être autorisé à accéder à leur contenu et dans quel but. La plupart des grandes entreprises de développement d'IA distinguent les bots de découverte des bots d'entraînement. Les éditeurs peuvent dès lors proposer un accès relativement simple au contenu pour l'une ou l'autre de ces activités. Google ne fait pas cette différence. Google a aujourd'hui accès à près de deux fois plus d'informations que les principales entreprises de l'IA, car Google tire parti d'un bot à usage mixte qui complique la tâche aux clients qui souhaitent participer à l'écosystème de recherche Google sans également participer à l'écosystème IA de Google.&nbsp;</p>
+	<p>Contrairement à d'autres fournisseurs d'IA, le bot d'exploration à usage mixte de Google limite également la transparence pour les propriétaires de sites. Comme les fonctions de découverte de contenu et d'accès à l'IA sont combinées sous un seul bot, les éditeurs ne peuvent pas connaître la finalité pour laquelle Google accède à leur contenu ni distinguer le trafic utilisé à des fins de recherche du trafic utilisé pour nourrir les expériences IA. Ils perdent également la visibilité et les preuves résultant de la capacité à autoriser ou bloquer ces activités de manière indépendante au niveau du réseau.</p>
+	<p>Cette dynamique a accéléré la demande pour davantage de transparence et de contrôle, ainsi que de nouveaux modèles de monétisation conçus pour servir à la fois les propriétaires de contenu et les entreprises de développement d'IA de toutes les tailles.</p>
+	<div class="flex anchor relative">
+		<h2 id="part-iii-a-unique-view-of-the-ecosystem">Troisième partie&nbsp;: une vision unique de l'écosystème</h2>
+		<a href="https://blog.cloudflare.com/#part-iii-a-unique-view-of-the-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare se situe à l'intersection de l'économie agentique émergente.</p>
+	<p>Plus de 20&nbsp;% du web se situe derrière le réseau Cloudflare. 36&nbsp;% des sites web les plus visités au monde s'appuient sur notre réseau et plus de 40&nbsp;% des entreprises classées au Fortune&nbsp;500 sont clientes de Cloudflare. Près de 80&nbsp;% des principales entreprises de développement d'IA utilisent Cloudflare, en plus de milliers de développeurs et d'entreprises émergentes dans le domaine de l'IA.</p>
+	<p>Cette position unique nous confère une visibilité sur les deux côtés du marché. Nous observons ainsi les créateurs concevoir du contenu, les entreprises de l'IA le consommer et les signaux connecter de plus en plus ces deux acteurs. Cette perspective nous a permis de disposer d'une vision unique sur l'évolution du marché au cours de l'année écoulée, ainsi que sur ses exigences actuelles.</p>
+	<div class="flex anchor relative">
+		<h2 id="part-iv-lessons-from-an-emerging-market">Quatrième partie&nbsp;: les leçons d'un marché émergent</h2>
+		<a href="https://blog.cloudflare.com/#part-iv-lessons-from-an-emerging-market" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À l'heure où les éditeurs et les entreprises de développement d'IA s'adaptent à une nouvelle économie agentique, Cloudflare bénéficie désormais d'une compréhension plus nette des besoins actuels de l'écosystème.</p>
+	<div class="flex anchor relative">
+		<h3 id="transparency-must-become-the-standard">La transparence doit devenir la norme</h3>
+		<a href="https://blog.cloudflare.com/#transparency-must-become-the-standard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les propriétaires de contenu ont de plus en plus besoin de visibilité et de contrôle sur les utilisateurs et les entités qui accèdent à leur contenu, la manière dont ce dernier est utilisé et la finalité à laquelle il l'est. Les entreprises de développement d'IA reconnaissent de plus en plus que la transparence permet de bâtir la confiance et de réduire les frictions avec les éditeurs. La visibilité et l'application des règles ne sont plus uniquement des préoccupations de sécurité, il s'agit désormais d'exigences opérationnelles qui influencent directement les négociations autour de l'octroi de licences et la prise de décisions commerciales.</p>
+	<p>Pour contribuer à faire de la transparence une norme, Cloudflare continue d'investir dans des mécanismes améliorés de contrôle des mesures, de l'attribution et de la publication capables de proposer une plus grande visibilité aux propriétaires de contenu et un plus grand contrôle sur la manière dont leur contenu est consulté et utilisé.</p>
+	<p>Alors que le secteur évolue vers davantage de transparence, nous pensons que la mise en place d'un processus vérifiable d'auto-identification et de déclaration d'intention des bots d'exploration s'avère fondamentale pour un écosystème durable. Il reste toujours impossible pour les propriétaires de contenu de distinguer l'intention de l'exploration, car plus d'un tiers de l'activité des bots d'exploration sur notre réseau provient encore aujourd'hui de bots à usage mixte. Nous collaborons activement avec l'écosystème et investissons dans des outils pour faire en sorte que ce chiffre atteigne zéro d'ici l'année prochaine.</p>
+	<div class="flex anchor relative">
+		<h3 id="better-ai-requires-better-signals">Une IA meilleure nécessite de meilleurs signaux</h3>
+		<a href="https://blog.cloudflare.com/#better-ai-requires-better-signals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il est devenu de plus en plus clair au cours de l'année écoulée que les entreprises de développement d'IA ont besoin de davantage que d'un simple accès au contenu. Elles ont besoin de meilleures méthodes pour déterminer à quel contenu accéder, à quel moment y accéder et à quelle fréquence ce contenu a fait l'objet de changements. L'exploration au hasard gaspille des ressources de calcul pour les entreprises de l'IA et entraîne une charge inutile en termes de bande passante pour les éditeurs. L'efficacité de l'ensemble de l'écosystème s'en trouve ainsi réduite.</p>
+	<p>Nous considérons que de meilleures réponses nécessitent une meilleure intelligence. Nous investissons dans des signaux de récence en temps réel avec une confiance, une qualité et une pertinence enrichies de manière à aider les entreprises de développement d'IA à découvrir des informations différenciées tout en réduisant les efforts d'exploration inutiles sur le web.</p>
+	<div class="flex anchor relative">
+		<h3 id="markets-need-better-discovery-before-better-pricing">Les marchés ont besoin d'un meilleur processus de découverte avant de penser à un meilleur prix</h3>
+		<a href="https://blog.cloudflare.com/#markets-need-better-discovery-before-better-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous pensons que l'amélioration du processus de découverte doit précéder celle de la tarification. Afin que le marché arrive à maturité, les éditeurs et les entreprises de l'IA ont besoin de meilleures informations les uns sur les autres. En investissant dans des dispositifs plus riches en termes de connaissance du marché, de signaux de contenu et de capacités susceptibles d'améliorer la découverte des deux côtés de l'écosystème, nous posons dès lors les bases de mécanismes de marché plus évolutifs sur le long terme.</p>
+	<div class="flex anchor relative">
+		<h2 id="part-v-building-the-infrastructure-for-the-agentic-internet">Cinquième partie&nbsp;: bâtir l'infrastructure de l'Internet agentique</h2>
+		<a href="https://blog.cloudflare.com/#part-v-building-the-infrastructure-for-the-agentic-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il y a un an, la Journée de l'indépendance du contenu a introduit une idée simple&nbsp;: les propriétaires de contenu devraient disposer de davantage de contrôle sur la manière dont les entreprises de développement d'IA accèdent à leurs informations et utilisent ces dernières.</p>
+	<p>Au cours des douze derniers mois, ce contrôle a contribué à donner naissance à un véritable marché. La transparence a créé la rareté. La rareté a généré un effet de levier. Cet effet de levier a accéléré l'émergence d'un système d'octroi de licences. Ce qui était autrefois une discussion théorique sur l'avenir de l'IA et du contenu est devenu un marché actif au sein duquel les éditeurs, les entreprises de l'IA et les fournisseurs de technologies s'adaptent tous à une nouvelle réalité économique.</p>
+	<p>Le marché entre maintenant dans une nouvelle phase nécessitant de nouvelles infrastructures. À l'heure où Internet devient de plus en plus agentique, les systèmes sous-jacents qui soutiennent le réseau mondial doivent évoluer pour gérer les autorisations, les licences et les transactions commerciales à grande échelle. Les propriétaires de contenu et les entreprises de développement d'IA ont besoin de moyens plus efficaces pour se connecter et échanger de la valeur. Nous pensons que ces capacités vont converger sous forme de mécanismes programmables et évolutifs encadrant la découverte et la monétisation du contenu afin de réduire les frictions, tout en libérant des structures d'échange de valeur plus riches.</p>
+	<p>Le rôle de Cloudflare consiste à bâtir l'infrastructure et l'intelligence métier, à contribuer aux normes qui permettent au marché de déterminer plus efficacement la valeur, mais aussi à aider les éditeurs et les entreprises de l'IA à participer à une économie dynamique plus saine autour du contenu.</p>
+	<p>L'Internet a toujours évolué. L'évolution qui nous intéresse aujourd'hui est plus rapide et plus conséquente que la plupart des évolutions qui ont précédé. Toutefois, avec la bonne infrastructure, les bonnes mesures incitatives et davantage d'engagement envers la transparence, nous pensons que l'Internet agentique peut devenir plus durable, plus efficace et meilleur pour tous.</p>
+	<p><b>Méthodologie&nbsp;:
+		</b>Les données de ce rapport sont compilées à partir de <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> et de la <a href="https://cloudflare.net/files/doc_downloads/Presentations/2026/06/15/New/Master-Deck-2026-Investor-Day-FINAL.pdf" target="_blank" rel="noopener noreferrer"><u>présentation de la Journée des investisseurs Cloudflare&nbsp;2026</u></a>.</p>
+	<p>Cloudflare Radar est un portail présentant des tendances et des analyses concernant le trafic Internet, les attaques et la technologie au niveau international. Soutenu par les données du réseau mondial Cloudflare, le service Radar a été créé pour aider chaque internaute à comprendre ce qui se passe sur Internet du point de vue de la sécurité, des performances et de l'utilisation.</p>
+	<p>Cloudflare présente une compréhension unique de l'Internet grâce à son réseau mondial (un des plus vastes au monde, présent dans plus de 270&nbsp;villes de plus de 100&nbsp;pays), ainsi qu'aux données agrégées et anonymisées issues de son résolveur DNS public&nbsp;1.1.1.1, largement utilisé pour naviguer rapidement et en toute confidentialité sur Internet. Plus de 20&nbsp;% du web se situe derrière le réseau Cloudflare.</p>
+</div>

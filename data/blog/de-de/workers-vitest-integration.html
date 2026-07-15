@@ -1,0 +1,373 @@
+<div class="mb2 gray5">Lesezeit: 10&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/workers-vitest-integration">English</a>, <a href="https://blog.cloudflare.com/es-es/workers-vitest-integration">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/workers-vitest-integration">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14JHZYmeSwuAjeyMKSaZMv/c2046097dc20d6846681b016da7974e1/workers-vitest-integration.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir freuen uns, heute eine neue Workers-Vitest-Integration bekannt geben zu können, mit der Modul- und Integrationstests über das beliebte Testframework Vitest geschrieben werden können, die direkt in unserer Laufzeitumgebung <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a> ausgeführt werden.</p>
+	<p>Dank dieser Integration können Sie nun <b><i>alles</i></b> testen, was mit Ihrem Worker zu tun hat.</p>
+	<p>Es ist erstmals möglich, Modultests zu schreiben, die in der gleichen <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">Laufzeitumgebung</a> laufen wie Cloudflare Workers im Produktivbetrieb. So haben Sie die Gewissheit, dass Ihr Worker in den Tests das gleiche Verhalten an den Tag legt wie bei der Bereitstellung im Produktivbetrieb. Außerdem können für Workers jetzt Integrationstests geschrieben werden, die durch <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer">Cron Triggers</a> zusätzlich zu den traditionellen <code>fetch()</code>-Events ausgelöst werden. Darüber hinaus lassen sich komplexe Anwendungen, die mit <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>, <a href="https://developers.cloudflare.com/workers/configuration/bindings/about-service-bindings" target="_blank" rel="noopener noreferrer">Service Bindings</a> und weiteren Cloudflare-Produkten interagieren, jetzt leichter testen.</p>
+	<p>Für alle Ihre Tests haben Sie Zugriff auf <a href="https://vitest.dev/guide/features.html" target="_blank" rel="noopener noreferrer">Vitest-Funktionen</a> wie Snapshots, Mocks, Timer und Spies.</p>
+	<p>Neben zusätzlichen Tests und Funktionen werden Ihren noch andere Verbesserungen für Entwickler auffallen, etwa das Hot Module Reloading, der standardmäßig aktivierte Überwachungsmodus und die isolierte Speicherung pro Test. Ihre Tests werden während der Entwicklung und Bearbeitung also automatisch neu ausgeführt, ohne dass Sie Ihren Test Runner neu starten müssen.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-testing-workers-with-vitest">Workers jetzt mit Vitest testen</h2>
+		<a href="https://blog.cloudflare.com/#get-started-testing-workers-with-vitest" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Am einfachsten beginnen Sie mit dem Testen Ihrer Workers über Vitest, indem sie über unser Tool create-cloudflare ein neues Workers-Projekts starten:</p>
+	<p>Wenn Sie diesen Befehl ausführen, wird ein neues Projekt mit der bereits eingerichteten Workers Vitest-Integration per Scaffolding für Sie vorerstellt. Ein Beispiel für einen Modultest und einen Integrationstest ist ebenfalls enthalten.</p>
+	<pre class="language-shell"><code class="language-shell">npm create cloudflare@latest hello-world -- --type=hello-world</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="manual-install-and-setup-instructions"><b>Anleitung für die manuelle Installation und Einrichtung</b></h3>
+		<a href="https://blog.cloudflare.com/#manual-install-and-setup-instructions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie es vorziehen, die Workers-Vitest-Integration manuell zu installieren und einzurichten, beginnen Sie mit der Installation von <code>@cloudflare/vitest-pool-workers</code> über npm:</p>
+	<p><code>@cloudflare/vitest-pool-workers</code> hat eine Peering-Abhängigkeit von einer bestimmten Version von <code>vitest</code>. Moderne Versionen von <code>npm</code> installieren diese automatisch. Wir empfehlen aber, sie auch explizit zu installieren. Die aktuell unterstützte Version finden Sie im <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test" target="_blank" rel="noopener noreferrer">Einstiegsleitfaden</a>. Wenn Sie TypeScript verwenden, fügen Sie <code>@cloudflare/vitest-pool-workers</code> zu den <code>types</code> von <code>tsconfig.json</code> hinzu, um Typen für das Modul <code>cloudflare:test</code> zu erhalten:</p>
+	<pre class="language-shell"><code class="language-shell">$ npm install --save-dev @cloudflare/vitest-pool-workers</code></pre>
+	<p>Aktivieren Sie dann den Pool in Ihrer Vitest-Konfigurationsdatei:</p>
+	<pre class="language-json"><code class="language-json">{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext"],
+    "types": [
+      "@cloudflare/workers-types/experimental",
+      "@cloudflare/vitest-pool-workers"
+    ]
+  }
+}</code></pre>
+	<p>Definieren Sie danach ein Kompatibilitätsdatum nach „2022-10-31“ und aktivieren Sie das <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code>nodejs_compat</code> Compatibility Flag</a> bei <code>wrangler.toml</code>:</p>
+	<pre class="language-ts"><code class="language-ts">// vitest.config.js
+import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+
+export default defineWorkersConfig({
+  test: {
+    poolOptions: {
+      workers: {
+        wrangler: { configPath: "./wrangler.toml" },
+      },
+    },
+  },
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="test-anything-exported-from-a-worker">Alles testen, was von einem Worker exportiert wird</h2>
+		<a href="https://blog.cloudflare.com/#test-anything-exported-from-a-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-toml"><code class="language-toml"># wrangler.toml
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]</code></pre>
+	<p>Mit der neuen Vitest-Integration von Workers können Sie alles, was von Ihrem Worker exportiert wird, sowohl Modul- als auch Integrationstests unterziehen. Innerhalb dieser Tests können auch miteinander verbundene Ressourcen wie R2, KV und DO getestet werden, ebenso wie eine Anwendung mit mehreren Workers.</p>
+	<div class="flex anchor relative">
+		<h3 id="writing-unit-tests">Schreiben von Modultests</h3>
+		<a href="https://blog.cloudflare.com/#writing-unit-tests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In einem Workers-Kontext werden im Rahmen eines Modultests Funktionen aus Ihrem Worker importiert und direkt aufgerufen, um dann deren Rückgabewerte zu überprüfen. Nehmen wir an, ihr Worker sieht folgendermaßen aus:</p>
+	<p>Nachdem Sie die Vitest-Integration von Workers eingerichtet und installiert haben, können Sie diesen Worker testen, indem Sie eine neue Testdatei namens <code>index.spec.js</code> mit dem folgenden Code erstellen:</p>
+	<pre class="language-js"><code class="language-js">export function add(a, b) {
+  return a + b;
+}
+
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    const a = parseInt(url.searchParams.get("a"));
+    const b = parseInt(url.searchParams.get("b"));
+    return new Response(add(a, b));
+  }
+}</code></pre>
+	<p>Mit der Vitest-Integration von Workers können Sie Modultests wie diese für jeden Ihrer Worker schreiben.</p>
+	<pre class="language-js"><code class="language-js">import { env, createExecutionContext, waitOnExecutionContext, } from "cloudflare:test";
+import { describe, it, expect } from "vitest";
+import { add }, worker from "./src";
+
+describe("Hello World worker", () =&gt; {
+  it(“adds two numbers”, async () =&gt; {
+    expect(add(2,3).toBe(5);
+  });
+  it("sends request (unit style)", async () =&gt; {
+    const request = new Request("http://example.com/?a=3&amp;b=4");
+    const ctx = createExecutionContext();
+    const response = await worker.fetch(request, env, ctx);
+    await waitOnExecutionContext(ctx);
+    expect(await response.text()).toMatchInlineSnapshot(`"7"`);
+  });
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="writing-integration-tests">Integrationstests schreiben</h3>
+		<a href="https://blog.cloudflare.com/#writing-integration-tests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Modultests eignen sich hervorragend zum Testen einzelner Teile Ihrer Anwendung. Integrationstests ermöglichen demgegenüber die Bewertung mehrerer Funktionskomponenten. So lässt sich sicherstellen, dass Arbeitsabläufe und Funktionen wie erwartet funktionieren. Integrationstext sind in der Regel komplexer als Modultests, bieten aber mehr Sicherheit dahingehend, dass Ihre Anwendung wie erwartet funktioniert. Im Workers-Kontext werden im Rahmen eines Integrationstests HTTP-Anfragen an Ihren Worker geschickt und die HTTP-Antworten überprüft.</p>
+	<p>Mit der Vitest-Integration von Workers können Integrationstests durchgeführt werden, indem man <code>SELF</code> aus dem neuen <code>cloudflare:test</code> -Dienstprogramm wie folgt importieren:</p>
+	<p>Wenn Sie <code>SELF</code> für Integrationstests verwenden, läuft Ihr Worker-Quellcode im selben Kontext wie der Test Runner. Das bedeutet, dass Sie Mock-Objekte verwenden können, um Ihren Worker zu kontrollieren.</p>
+	<pre class="language-ts"><code class="language-ts">// test/index.spec.ts
+import { SELF } from "cloudflare:test";
+import { it, expect } from "vitest";
+import "../src";
+
+// an integration test using SELF
+it("sends request (integration style)", async () =&gt; {
+   const response = await SELF.fetch("http://example.com/?a=3&amp;b=4");
+   expect(await response.text()).toMatchInlineSnapshot(`"7"`);
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="testing-different-scenarios">Testen verschiedener Szenarien</h3>
+		<a href="https://blog.cloudflare.com/#testing-different-scenarios" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ob Sie nun Modul- oder Integrationstests schreiben: Wenn Ihre Anwendung Produkte der Entwicklerplattform von Cloudflare (wie KV, R2, D1, Queues oder Durable Objects) verwendet, können Sie diese testen. Um das zu demonstrieren, haben wir eine Reihe von <a href="https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples" target="_blank" rel="noopener noreferrer">Beispielen</a> erstellt, die Ihnen beim Einstieg in das Testen helfen sollen.</p>
+	<div class="flex anchor relative">
+		<h2 id="better-testing-experience-better-testing">Bessere Testerfahrung === bessere Tests</h2>
+		<a href="https://blog.cloudflare.com/#better-testing-experience-better-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bessere Testwerkzeuge machen es einfacher, Projekte von Anfang an zu testen, was zu einer höheren Gesamtqualität und einer positiveren Endnutzererfahrung führt. Die Vitest-Integration von Workers sorgt für ein besseres Erlebnis – einerseits für die Entwickler, aber auch, weil sie das Testen einer gesamten Anwendung erleichtert.</p>
+	<p>Der Rest dieses Blog-Beitrags wird sich darauf konzentrieren, <i>wie</i> wir diese neue Testintegration aufgebaut haben. Wir tauchen dazu tiefer in die Funktionsweise von Vitest ein und erörtern die Probleme, auf die wir bei dem Versuch gestoßen sind, ein Framework in unsere Laufzeitumgebung einzubinden. Schließlich gehen wir noch darauf ein, wie wir diese Probleme gelöst haben und wie sich die Entwicklererfahrung dadurch verbessert.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-vitest-traditionally-works">Traditionelle Funktionsweise von Vitest</h2>
+		<a href="https://blog.cloudflare.com/#how-vitest-traditionally-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Beim Starten der CLI von Vitest sammelt diese zunächst alle Ihre Testdateien und ordnet sie an. Standardmäßig verwendet Vitest einen „Threads“-Pool, der <a href="https://nodejs.org/api/worker_threads.html" target="_blank" rel="noopener noreferrer">Node.js-Worker-Threads</a> zur Isolierung und parallelen Ausführung von Tests erzeugt. Jeder Thread erhält eine auszuführende Testdatei, fordert bei Bedarf dynamisch Quellcode an und wertet ihn aus. Importiert der Test Runner ein Modul, sendet er eine Anfrage an den „Vite Node Server“ des Hosts, der als Antwort entweder von Vite transformierten JavaScript-Rohcode oder einen externen Modulpfad ausgibt. Wird Rohcode ausgegeben, wird er mit der Funktion <a href="https://nodejs.org/api/vm.html#vmruninthiscontextcode-options" target="_blank" rel="noopener noreferrer"><code>node:vm</code> <code>runInThisContext()</code></a> ausgeführt. Wird ein Modulpfad ausgegeben, wird er mit <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import" target="_blank" rel="noopener noreferrer">dynamic <code>import()</code></a> importiert. Die Umwandlung von Nutzerquellcode mit Vite ermöglicht Hot Module Reloading (HMR): Ändert sich ein Modul, wird es im Modul-Cache ungültig gemacht und beim nächsten Import eine neue Version als Antwort ausgegeben.</p>
+	<p>Miniflare ist ein vollständig lokaler Simulator für die Entwicklerplattform von Cloudflare. <a href="https://blog.cloudflare.com/miniflare">Miniflare v2</a> bot eine <a href="https://miniflare.dev/testing/vitest" target="_blank" rel="noopener noreferrer">benutzerdefinierte Umgebung</a> für Vitest, die es Ihnen ermöglichte, Ihre Tests <i>innerhalb</i> der Workers-Sandbox auszuführen. So konnten Sie mithilfe der Laufzeitumgebungs-API von Workers jede Funktion in Ihre Tests importieren und aufrufen. Sie waren nicht auf Integrationstests beschränkt, die lediglich HTTP-Anfragen senden und empfangen. Darüber hinaus bot diese Umgebung eine isolierte Speicherung pro Test, wobei alle Änderungen am Ende jedes Tests automatisch rückgängig gemacht wurden. In Miniflare v2 war diese Umgebung relativ einfach zu implementieren. Wir hatten die Laufzeitumgebungs-API von Workers bereits in einer Node.js-Umgebung reimplementiert und konnten sie mithilfe von Vitest-API in den globalen Bereich des Test Runners injizieren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bmF35IKzPZ9mTXK7lnTA8/c6924d8fd533ea835035fb67dbf0e0c4/Untitled-1.png" alt="overview of Vitest’s architecture using Miniflare v2’s environments" class="kg-image" width="1600" height="726" loading="lazy">
+
+	</figure>
+	<p>Im Gegensatz dazu führt Miniflare v3 Ihren Worker-Quellcode <a href="https://blog.cloudflare.com/miniflare-and-workerd">innerhalb der gleichen <code>workerd</code>-Laufzeitumgebung</a> aus, die von Cloudflare im Produktivbetrieb verwendet wird. Die Ausführung von Tests direkt in <a href="https://blog.cloudflare.com/miniflare-and-workerd"><code>workerd</code></a> stellte eine Herausforderung dar – <a href="https://blog.cloudflare.com/miniflare-and-workerd"><code>workerd</code></a> läuft in einem eigenen Prozess, getrennt vom Node.js Worker-Thread. Es ist nicht möglich, JavaScript-Klassen über eine Prozessgrenze hinweg zu referenzieren.</p>
+	<div class="flex anchor relative">
+		<h2 id="solving-the-problem-with-custom-pools">Lösung des Problems mit benutzerdefinierten Pools</h2>
+		<a href="https://blog.cloudflare.com/#solving-the-problem-with-custom-pools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ngw1zLJWN4jfTko19ZhOn/e052b51d4bf2f00d89826cd02d2a2ad5/Untitled--1--1.png" alt="problem with Miniflare v3, the runtime APIs are defined in a separate process to the test environments, and JavaScript objects cannot cross process boundaries" class="kg-image" width="1600" height="635" loading="lazy">
+
+	</figure>
+	<p>Stattdessen verwenden wir die Funktion der <a href="https://vitest.dev/advanced/pool.html" target="_blank" rel="noopener noreferrer">benutzerdefinierten Pools von Vitest</a>, um den lokal mit <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime"><code>workerd</code></a> laufenden Test Runner in Cloudflare Workers auszuführen. Ein Pool erhält die auszuführenden Testdateien und entscheidet, wie sie ausgeführt werden sollen. Durch die Ausführung des Runners innerhalb von <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime"><code>workerd</code></a> haben die Tests direkten Zugriff auf die Laufzeitumgebungs-API von Workers, da sie in einem Worker ausgeführt werden. WebSockets werden verwendet, um serialisierbare RPC-Nachrichten zwischen dem Node.js-Host und dem <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime"><code>workerd</code></a>-Prozess zu senden und zu empfangen. Beachten Sie, dass wir hier genau denselben Test Runner-Quellcode ausführen, der ursprünglich für einen Node-Kontext innerhalb eines Workers entwickelt wurde. Das bedeutet, dass unser Worker die in Node integrierten Module bereitstellen, dynamische Code-Evaluierung unterstützen und beliebige Module von der Festplatte mit <a href="https://nodejs.org/api/esm.html#resolution-algorithm-specification" target="_blank" rel="noopener noreferrer">Node-Auflösungsverhalten</a> laden muss. Das <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage"><code>nodejs_compat</code> Compatibility Flag</a> unterstützt einige der integrierten Module von Node, löst aber unsere anderen Probleme nicht. Dafür mussten uns etwas einfallen lassen …</p>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-code-evaluation"><b>Dynamische Quellcode-Bewertung</b></h2>
+		<a href="https://blog.cloudflare.com/#dynamic-code-evaluation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xktF5P98mL5puD3UaQnZx/0a66f121c5cc631009df97c3b0f33dd7/Untitled--2--1.png" alt="our solution for Miniflare v3, make the tests run in workerd, and use WebSockets for communication" class="kg-image" width="1600" height="726" loading="lazy">
+
+	</figure>
+	<p>Aus <a href="https://developers.cloudflare.com/workers/runtime-apis/web-standards/#javascript-standards" target="_blank" rel="noopener noreferrer">Sicherheitsgründen</a> erlaubt die Cloudflare Workers-Laufzeitumgebung keine dynamische Code-Evaluierung mittels`eval()` oder `new Function()`. Außerdem müssen alle Module im Voraus definiert werden, bevor die Ausführung beginnt. Ohne Aufhebung dieser Beschränkungen haben wir keine Möglichkeit, den von Vite transformierten JavaScript-Rohcode auszuführen oder beliebige Module von der Festplatte zu importieren. Glücklicherweise ist das Sicherheitsmodell für Quellcode, der nur lokal ausgeführt werden soll – etwa für Tests – viel laxer als für implementierten Quellcode. Um die Unterstützung lokaler Tests und anderer entwicklungsspezifischer Anwendungsfälle wie <a href="https://vitejs.dev/guide/api-vite-runtime" target="_blank" rel="noopener noreferrer">die neue Laufzeitumgebungs-API von Vite</a> zu ermöglichen, haben wir `workerd` um <a href="https://github.com/cloudflare/workerd/pull/1338" target="_blank" rel="noopener noreferrer">„unsafe-eval bindings“</a> und <a href="https://github.com/cloudflare/workerd/pull/1423" target="_blank" rel="noopener noreferrer">„module-fallback services“</a> erweitert.</p>
+	<p>Unsafe-eval-Bindungen bieten lokalen Zugriff auf die Funktion <code>eval()</code> und die Konstruktoren <code>new Function()</code>/<code>new AsyncFunction()</code>/<code>new WebAssembly.Module()</code>. Indem wir diese über eine Bindung bereitstellen, behalten wir die Kontrolle darüber, welcher Quellcode Zugriff auf diese Funktionen hat.</p>
+	<p>Mithilfe der Methode <code>eval()</code> der unsafe-eval-Bindung konnten wir ein <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/worker/lib/node/vm.ts" target="_blank" rel="noopener noreferrer">Polyfill für die erforderliche <code>vm.runInThisContext()</code></a>-Funktion implementieren. Wir könnten das Laden beliebiger Module von der Festplatte zwar auch mithilfe von unsafe-eval-Bindungen implementieren, das würde aber erfordern, dass wir das Modulauflösungssystem von <code>workerd</code> in JavaScript nachbilden. Stattdessen erlauben wir es, dass Worker mit Modul-Fallback-Diensten konfiguriert werden. Sind diese aktiviert, werden Importe, die nicht von <code>workerd</code> aufgelöst werden können, zu HTTP-Anfragen an den Fallback-Dienst. Diese beinhalten den Specifier und den Referrer. Außerdem geben sie an, ob es sich um <code>import</code> oder <code>require</code> handelte. Der Dienst kann mit einer Moduldefinition oder einem Redirect zu einem anderen Ort antworten, wenn der aufgelöste Ort nicht mit dem Specifier übereinstimmt. Anfragen, die von synchronen <code>require</code> stammen, blockieren den Hauptthread, bis das Modul aufgelöst ist. Der <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/pool/module-fallback.ts" target="_blank" rel="noopener noreferrer">Fallback-Dienst</a> des Vitest-Pools von Workers implementiert eine <a href="https://nodejs.org/api/esm.html#resolution-algorithm" target="_blank" rel="noopener noreferrer">Node-ähnliche Auflösung</a> mit Node-ähnlicher <a href="https://nodejs.org/api/esm.html#interoperability-with-commonjs" target="_blank" rel="noopener noreferrer">Interoperabilität zwischen CommonJS- und ES-Modulen</a>.</p>
+	<pre class="language-ts"><code class="language-ts">// Type signature for unsafe-eval bindings
+interface UnsafeEval {
+  eval(script: string, name?: string): unknown;
+  newFunction(script: string, name?: string, ...args: string[]): Function;
+  newAsyncFunction(script: string, name?: string, ...args: string[]): AsyncFunction;
+  newWasmModule(src: BufferSource): WebAssembly.Module;
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="durable-objects-as-test-runners">Durable Objects als Test Runner</h2>
+		<a href="https://blog.cloudflare.com/#durable-objects-as-test-runners" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir können nun beliebigen Quellcode ausführen und importieren. Der nächste Schritt besteht darin, den Thread-Worker von Vitest innerhalb von <code>workerd</code> zum Laufen zu bringen. Jede eingehende Anfrage hat ihren eigenen Anfragekontext. Um die Performance insgesamt zu verbessern, können E/A-Objekte wie Streams, Request/Response-Bodys und WebSockets, die in einem Anfragekontext erstellt wurden, nicht von einem anderen verwendet werden. Wenn wir einen WebSocket für RPC zwischen dem Pool und unseren <code>workerd</code>-Prozessen verwenden wollen, müssen wir also sicherstellen, dass der WebSocket nur von einem Anfragekontext aus verwendet wird. Um dies zu koordinieren, definieren wir ein Durable Object als Singleton, das die RPC-Verbindung annimmt und von dem aus die Tests laufen. Funktionen, die RPC verwenden, wie das Auflösen von Modulen, das Melden von Ergebnissen und die Konsolenprotokollierung, werden immer dieses Singleton verwenden. Wir benutzen <a href="https://github.com/cloudflare/miniflare/pull/639" target="_blank" rel="noopener noreferrer">das „magic proxy“-System von Miniflare</a>, um einen Verweis auf den Stub des Singletons in Node.js zu erhalten und eine WebSocket-Upgrade-Anfrage direkt an dieses zu senden. Nach dem Hinzufügen einiger weiterer Node.js-Polyfills und eines <code>cloudflare:test</code>-Basismoduls, das den Zugriff auf Bindungen und eine Funktion zum Erstellen von <code>ExecutionContext</code> ermöglicht, können wir einfache Workers-Modultests schreiben 🎉.</p>
+	<div class="flex anchor relative">
+		<h2 id="integration-tests-with-hot-module-reloading">Integrationstests mit Hot Module Reloading</h2>
+		<a href="https://blog.cloudflare.com/#integration-tests-with-hot-module-reloading" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vRactoOowJXYwInIONXC9/68880e0b835a82a299d434f859607a1c/Vitest-Pool-Workers-Architecture--4-.png" alt="architecture of the Workers Vitest Pool" class="kg-image" width="1600" height="1087" loading="lazy">
+
+	</figure>
+	<p>Neben Modultests werden auch Integrationstests mit einer speziellen <code>SELF</code>-Dienstbindung im Modul <code>cloudflare:test</code> unterstützt. Dies verweist auf einen speziellen <code>export default { fetch(...) {...} }</code>-Handler, der Vite benutzt, um Ihr <code>main</code>-Workers-Modul zu importieren.</p>
+	<p>Die Verwendung der Transformationspipeline von Vite bedeutet, dass Ihrem Handler Hot Module Reloading (HMR) umsonst zur Verfügung steht. Wird der Quellcode aktualisiert, wird der Modul-Cache ungültig gemacht. Außerdem werden die Tests erneut durchgeführt und nachfolgende Anfragen werden mit dem neuen Quellcode ausgeführt. Der gleiche Ansatz der Verpackung von Nutzerquellcode-Handlern wird auch auf Durable Objects angewandt und bietet die gleichen HMR-Vorteile.</p>
+	<p>Integrationstests können durch den Aufruf von <code>SELF.fetch()</code> geschrieben werden, der ein <code>fetch()</code>-Ereignis an Ihren Nutzerquellcode im gleichen globalen Bereich wie Ihr Test, aber in einem anderen Anforderungskontext sendet. Das bedeutet, dass globale Mock-Objekte für die Ausführung Ihrer Worker gelten, ebenso wie Einschränkungen der Lebensdauer des Anfragekontexts. Insbesondere, wenn Sie vergessen, <code>ctx.waitUntil()</code> aufzurufen, werden Sie eine entsprechende Fehlermeldung erhalten. Das wäre nicht der Fall, wenn Sie den Handler Ihres Workers direkt in einem Modultest aufrufen würden, da Sie ihn dann unter dem Durable Object-Anforderungskontext des Runner-Singletons betreiben würden, dessen Lebensdauer automatisch verlängert wird.</p>
+	<div class="flex anchor relative">
+		<h2 id="isolated-per-test-storage">Isolierte Speicherung pro Test</h2>
+		<a href="https://blog.cloudflare.com/#isolated-per-test-storage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-ts"><code class="language-ts">// test/index.spec.ts
+import { SELF } from "cloudflare:test";
+import { it, expect } from "vitest";
+import "../src/index";
+
+it("sends request", async () =&gt; {
+   const response = await SELF.fetch("https://example.com");
+   expect(await response.text()).toMatchInlineSnapshot(`"body"`);
+});</code></pre>
+	<p>Die meisten Workers-Anwendungen haben mindestens eine Bindung an einen Cloudflare-Speicherdienst wie KV, R2 oder D1. Im Idealfall sollten die Tests in sich abgeschlossen sein und in beliebiger Reihenfolge oder einzeln ausgeführt werden können. Um das zu ermöglichen, müssen die Schreibvorgänge im Speicher am Ende jedes Tests rückgängig gemacht werden, damit die Lesevorgänge anderer Tests nicht beeinträchtigt werden. Das ist zwar auch manuell möglich, aber es kann schwierig sein, den Überblick über alle Schreibvorgänge zu behalten und sie in der richtigen Reihenfolge rückgängig zu machen. Nehmen wir zum Beispiel die folgenden zwei Funktionen:</p>
+	<p>Wenn wir diese Funktionen testen wollten, könnte der Quellcode dazu ungefähr so aussehen im folgenden Beispiel. Wir müssen alle Schlüssel, in die wir schreiben könnten, im Blick behalten und ihre Werte am Ende von Tests wiederherstellen – selbst wenn diese Tests fehlschlagen.</p>
+	<pre class="language-ts"><code class="language-ts">// helpers.ts
+interface Env {
+  NAMESPACE: KVNamespace;
+}
+// Get the current list stored in a KV namespace
+export async function get(env: Env, key: string): Promise&lt;string[]&gt; {
+  return await env.NAMESPACE.get(key, "json") ?? [];
+}
+// Add an item to the end of the list
+export async function append(env: Env, key: string, item: string) {
+  const value = await get(env, key);
+  value.push(item);
+  await env.NAMESPACE.put(key, JSON.stringify(value));
+}</code></pre>
+	<p>Mit dem kürzlich eingeführten <a href="https://vitest.dev/api/#ontestfinished" target="_blank" rel="noopener noreferrer"><code>onTestFinished()</code>-Hook</a> lässt sich dies etwas leichter bewerkstellen. Sie müssen sich aber immer noch merken, in welche Schlüssel geschrieben wurde, oder sie am Anfang/Ende von Tests aufzählen. Sie müssen dies auch für KV, R2, Durable Objects, Caches und jeden anderen von ihnen verwendeten Speicherdienst verwalten. Idealerweise sollte das Testframework diese Verwaltung für Sie übernehmen …</p>
+	<pre class="language-ts"><code class="language-ts">// helpers.spec.ts
+import { env } from "cloudflare:test";
+import { beforeAll, beforeEach, afterEach, it, expect } from "vitest";
+import { get, append } from "./helpers";
+
+let startingList1: string | null;
+let startingList2: string | null;
+beforeEach(async () =&gt; {
+  // Store values before each test
+  startingList1 = await env.NAMESPACE.get("list 1");
+  startingList2 = await env.NAMESPACE.get("list 2");
+});
+afterEach(async () =&gt; {
+  // Restore starting values after each test
+  if (startingList1 === null) {
+    await env.NAMESPACE.delete("list 1");
+  } else {
+    await env.NAMESPACE.put("list 1", startingList1);
+  }
+  if (startingList2 === null) {
+    await env.NAMESPACE.delete("list 2");
+  } else {
+    await env.NAMESPACE.put("list 2", startingList2);
+  }
+});
+
+beforeAll(async () =&gt; {
+  await append(env, "list 1", "one");
+});
+
+it("appends to one list", async () =&gt; {
+  await append(env, "list 1", "two");
+  expect(await get(env, "list 1")).toStrictEqual(["one", "two"]);
+});
+
+it("appends to two lists", async () =&gt; {
+  await append(env, "list 1", "three");
+  await append(env, "list 2", "four");
+  expect(await get(env, "list 1")).toStrictEqual(["one", "three"]);
+  expect(await get(env, "list 2")).toStrictEqual(["four"]);
+});</code></pre>
+	<p>Genau das tut der Vitest-Pool von Workers mit der Option <code>isolatedStorage</code>, die standardmäßig aktiviert ist. Alle in einem Test durchgeführten Schreibvorgänge auf den Speicher werden am Ende des Tests automatisch rückgängig gemacht. Um Daten in <code>beforeAll()</code>-Hooks zu setzen, einschließlich solcher in verschachtelten <code>describe()</code>-Blöcken, wird ein Stack verwendet. Vor jeder Suite oder jedem Test wird ein neuer Frame in den Speicher-Stack eingefügt. Alle im Rahmen des Tests oder durch die zugehörigen <code>beforeEach()</code>/<code>afterEach()</code>-Hooks durchgeführten Schreibvorgänge werden in den Frame geschrieben. Nach jeder Suite oder jedem Test wird der oberste Frame aus dem Speicher-Stack gelöst und alle Schreibvorgänge werden rückgängig gemacht.</p>
+	<p>Miniflare implementiert Simulatoren für Speicherdienste <a href="https://github.com/cloudflare/miniflare/pull/656" target="_blank" rel="noopener noreferrer">auf Grundlage von Durable Objects</a> mit <a href="https://github.com/cloudflare/miniflare/discussions/525" target="_blank" rel="noopener noreferrer">einem separaten Blob-Speicher</a>. Wenn <code>workerd</code> lokal läuft, wird SQLite zur Speicherung von Durable Objects verwendet. Zur Implementierung eines isolierten Speichers implementieren wir einen Stack von <code>.sqlite</code>-Datenbankdateien auf der Festplatte, indem wir die Datenbanken beim „Pushing“ sichern und beim „Popping“ (Loslösen des Frames) wiederherstellen. Die im separaten Speicher abgelegten Blobs werden durch Stack-Operationen beibehalten und am Ende jedes Testlaufs bereinigt. Das funktioniert zwar, erfordert aber das Kopieren vieler <code>.sqlite</code>-Dateien. Wir möchten als Nächstes die Verwendung von <a href="https://www.sqlite.org/lang_savepoint.html" target="_blank" rel="noopener noreferrer"><code>SAVEPOINTS</code></a> von SQLite für eine effizientere Lösung ausloten.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ixe0KPm6lrn7dvt7N1AhY/525418edee96350e76dffebf7c95895d/Untitled--3--1.png" alt="Storage stack frames created with isolated storage enabled" class="kg-image" width="1600" height="890" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="declarative-request-mocking">Deklaratives Request Mocking</h2>
+		<a href="https://blog.cloudflare.com/#declarative-request-mocking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zusätzlich zur Speicherung werden die meisten Workers ausgehende <code>fetch()</code>-Anfragen stellen. Für Tests ist es oft nützlich, die Antworten auf diese Anfragen zu simulieren. Miniflare erlaubt es Ihnen bereits, einen <a href="https://undici.nodejs.org/#/docs/api/MockAgent" target="_blank" rel="noopener noreferrer"><code>undici</code> <code>MockAgent</code></a> zu spezifizieren, durch den alle Anfragen geleitet werden. Die Klasse <code>MockAgent</code> bietet eine deklarative Schnittstelle, um die zu spiegelnden Anfragen und die entsprechenden Antworten zu spezifizieren. Diese API ist relativ einfach gehalten, aber trotzdem flexibel genug für fortgeschrittene Anwendungsfälle. Wir stellen eine Instanz von <code>MockAgent</code> als <code>fetchMock</code> im Modul <code>cloudflare:test</code> zur Verfügung.</p>
+	<p>Um das zu implementieren, haben wir eine abgespeckte Version von <code>undici</code> gebündelt, die nur den <code>MockAgent</code>-Quellcode enthält. Dann haben wir <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/vitest-pool-workers/src/worker/fetch-mock.ts" target="_blank" rel="noopener noreferrer">einen benutzerdefinierten <code>undici</code> <code>Dispatcher</code> erstellt</a>, der die globale `fetch()`-Funktion von Workers anstelle der integrierten HTTP-Implementierung von <code>undici</code> auf Grundlage von <a href="https://github.com/nodejs/llhttp" target="_blank" rel="noopener noreferrer"><code>llhttp</code></a> und <a href="https://nodejs.org/api/net.html" target="_blank" rel="noopener noreferrer"><code>node:net</code></a> verwendet.</p>
+	<pre class="language-ts"><code class="language-ts">import { fetchMock } from "cloudflare:test";
+import { beforeAll, afterEach, it, expect } from "vitest";
+
+beforeAll(() =&gt; {
+  // Enable outbound request mocking...
+  fetchMock.activate();
+  // ...and throw errors if an outbound request isn't mocked
+  fetchMock.disableNetConnect();
+});
+// Ensure we matched every mock we defined
+afterEach(() =&gt; fetchMock.assertNoPendingInterceptors());
+
+it("mocks requests", async () =&gt; {
+  // Mock the first request to `https://example.com`
+  fetchMock
+    .get("https://example.com")
+    .intercept({ path: "/" })
+    .reply(200, "body");
+
+  const response = await fetch("https://example.com/");
+  expect(await response.text()).toBe("body");
+});</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="testing-durable-objects-directly">Durable Objects direkt testen</h2>
+		<a href="https://blog.cloudflare.com/#testing-durable-objects-directly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die benutzerdefinierte Vitest-Umgebung von Miniflare v2 unterstützt den direkten Zugriff auf die Instanzmethoden und den Zustand von Durable Objects in Tests. Das ermöglichte es Ihnen, Durable Objects wie jede andere JavaScript-Klasse Modultests zu unterziehen – Sie konnten bestimmte Methoden und Eigenschaften nachahmen oder bestimmte Handler wie <code>alarm()</code> sofort aufrufen. Um dies in <code>workerd</code> zu implementieren, stützen wir uns auf unser bestehendes Wrapping von Nutzer-Durable Objects für Vite-Transformationen und das Hot Module Reloading. Wenn Sie die Funktion <code>runInDurableObject(stub, callback)</code> von <code>cloudflare:test</code> aufrufen, speichern wir `callback` in einem globalen Cache. Außerdem senden wir eine spezielle <code>fetch()</code>-Anfrage an <code>stub</code>, die von dem Wrapper abgefangen wird. Der Wrapper führt den <code>callback</code> im Anfragekontext des Durable Object aus und speichert das Ergebnis im gleichen Cache. <code>runInDurableObject()</code> liest dann aus diesem Cache und gibt das Ergebnis zurück.</p>
+	<p>Dies setzt voraus, dass das Durable Object in demselben isolierten Bereich läuft wie der Aufruf <code>runInDurableObject()</code>. Während das für lokal laufende Durable Objects desselben Workers gilt, kann auf Durable Objects, die in Hilfs-Workern definiert sind, folglich nicht direkt zugegriffen werden.</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Probieren Sie es aus!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir freuen uns, das Paket <code>@cloudflare/vitest-pool-workers</code> auf npm veröffentlichen und Ihnen eine verbesserte Testerfahrung bieten zu können.</p>
+	<p>Lesen Sie unbedingt den <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test" target="_blank" rel="noopener noreferrer">Leitfaden „Write your first test“</a> und beginnen Sie direkt damit, Modul- und Integrationstests zu schreiben. Wenn Sie bisher Tests mit einer unserer früheren Optionen geschrieben haben, sollte unser <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/migrate-from-unstable-dev" target="_blank" rel="noopener noreferrer">Migrationsleitfaden</a> für <code>unstable_dev</code> oder unser <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/migrate-from-miniflare-2" target="_blank" rel="noopener noreferrer">Migrationsleitfaden</a> für Miniflare 2 die wichtigsten Unterschiede erklären und Ihnen dabei helfen, Ihre Tests schnell umzustellen.</p>
+	<p>Wenn Sie auf Probleme stoßen oder Verbesserungsvorschläge haben, <a href="https://github.com/cloudflare/workers-sdk/issues/new/choose" target="_blank" rel="noopener noreferrer">melden</a> Sie dies bitte in unserem GitHub-Repository oder kontaktieren Sie uns über unseren <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord-Kanal für Entwickler</a>.</p>
+</div>

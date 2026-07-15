@@ -1,0 +1,341 @@
+<div class="mb2 gray5">5 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/api-sequence-analytics">English</a>, <a href="https://blog.cloudflare.com/zh-tw/api-sequence-analytics">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/api-sequence-analytics">Français</a>, <a href="https://blog.cloudflare.com/de-de/api-sequence-analytics">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/api-sequence-analytics">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/api-sequence-analytics">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/api-sequence-analytics">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CxCrd84oy1gSzNzVE0ghN/cc490e9bf999783c92868b0affd7855b/api-sequence-analytics.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hoy anunciamos la solución Cloudflare Sequence Analytics para las API. Con Sequence Analytics, los clientes suscritos a <a href="https://developers.cloudflare.com/api-shield" target="_blank" rel="noopener noreferrer">API Gateway</a> pueden ver las secuencias más importantes de las solicitudes de API a sus puntos finales. Esta nueva función ayuda a los clientes a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">proteger</a> primero los puntos finales más importantes.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZIGEKXxAHQjkdhTmJIlI7/88561d87ef5b611280c21d6ca2cf3c5a/image1-26.png" alt="Detecting API abuse automatically using sequence analysis" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>¿Qué es una secuencia? Es básicamente una lista ordenada cronológicamente de llamadas API HTTP que realiza un visitante específico cuando navega por un sitio web, utiliza una aplicación móvil o interactúa con un socio B2B mediante la API. Este es un ejemplo de una sección de una secuencia realizada durante una transferencia de fondos bancarios:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Order</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Method</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Path</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/users/{user_id}/accounts</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">user_id is the active user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is one of the user’s accounts</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is a different account belonging to the user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Containing a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Orden</p>
+	<p>Método</p>
+	<p>Ruta</p>
+	<p>Descripción</p>
+	<p>1</p>
+	<p>GET</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-5frq {
+			font-style: italic;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-8zwo {
+			font-style: italic;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Order</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Method</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Path</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/users/{user_id}/accounts</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">user_id is the active user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is one of the user’s accounts</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is a different account belonging to the user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Containing a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer</span></td>
+			</tr>
+			<tr>
+				<td class="tg-5frq" colspan="4"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">… attacker copies the request to a debugging tool like Postman …</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Attacker has modified the POST body to try and trick the API</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A further modified POST body to try and trick the API</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-8zwo"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">Another</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">, further modified POST body to try and trick the API</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>/api/v1/users/{user_id}/accounts</p>
+	<p>user_id es el usuario activo.</p>
+	<p>2</p>
+	<p>GET</p>
+	<p>/api/v1/accounts/{account_id}/balance</p>
+	<p>account_id es una de las cuentas del usuario.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AJLBVYJl3ApceVT8ubl7v/995a6548852547fb31e6e9d6a5c4b917/unnamed-1.png" alt="" class="kg-image" width="826" height="511" loading="lazy">
+
+	</figure>
+	<p>3</p>
+	<p>GET</p>
+	<p>/api/v1/accounts/{account_id}/balance</p>
+	<p>account_id es otra cuenta perteneciente al usuario.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XNYHZ4fxireN81jqHtCs5/401355249971c341845feed2f68445a0/image2-14.png" alt="" class="kg-image" width="1999" height="1794" loading="lazy">
+
+	</figure>
+	<p>4</p>
+	<p>POST</p>
+	<p>/api/v1/transferFunds</p>
+	<p>Contiene el cuerpo de una llamada que detalla la cuenta de origen, la cuenta de destino y el importe de la transferencia de fondos a realizar.</p>
+	<p>¿Por qué es importante para la seguridad de las API prestar atención a las secuencias? Si la API anterior recibiera llamadas POST /api/v1/transferFunds sin ninguna de las llamadas anteriores, parecería sospechoso. Considera lo siguiente: ¿cómo sabría el cliente de la API cuáles son los ID de cuenta relevantes si no se especifican para el usuario? ¿Cómo sabría el cliente de la API qué importe está disponible para la transferencia? En este ejemplo resulta evidente. Sin embargo, debido a la gran cantidad de llamadas API a cualquier API de producción determinada, resulta complicado para los analistas humanos detectar los usos sospechosos.</p>
+	<p>En el ámbito de la seguridad, una medida de protección contra un número incalculable de amenazas cuyo escrutinio resulta imposible a un equipo humano es crear un <i>modelo de seguridad positiva</i>. En lugar de intentar bloquear todo lo que potencialmente podría ser una amenaza, por defecto permites la entrada de todo el tráfico bueno o benigno y bloqueas todo lo demás.</p>
+	<p>Los clientes ya podían crear modelos de seguridad positiva con API Gateway en dos áreas principales: la <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">protección contra el abuso volumétrico</a> y la <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">validación de esquemas</a>. Las secuencias constituirán el tercer pilar de un modelo de seguridad positiva para el tráfico de las API. API Gateway podrá aplicar la prioridad de los puntos finales en cualquier secuencia de API determinada. Mediante el establecimiento de la prioridad en una secuencia de la API, API Gateway registrará o bloqueará cualquier tráfico que no coincida con las expectativas, lo que reducirá el tráfico abusivo.</p>
+	<div class="flex anchor relative">
+		<h3 id="detecting-abuse-by-sequence">Detección del abuso por secuencia</h3>
+		<a href="https://blog.cloudflare.com/#detecting-abuse-by-sequence" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando los atacantes intentan exfiltrar los datos de forma abusiva, no suelen seguir los patrones del tráfico de API esperado. Los ataques a menudo utilizan software especial para aplicar técnicas de <a href="https://owasp.org/www-community/Fuzzing" target="_blank" rel="noopener noreferrer">"fuzzing"</a> a la API, enviando varias solicitudes con distintos parámetros de solicitud, esperando encontrar respuestas inesperadas de la API que indiquen oportunidades para exfiltrar datos. Los atacantes también pueden enviar a las API solicitudes de forma manual, que intentan engañarla para que realice acciones no autorizadas, como otorgar a un atacante privilegios elevados o acceder a los datos mediante un <a href="https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa1-broken-object-level-authorization.md" target="_blank" rel="noopener noreferrer">ataque de autenticación a nivel de objeto sin función</a>. La protección de las API con límites de velocidad es una práctica recomendada habitual. Sin embargo, en ambos ejemplos anteriores los atacantes pueden ejecutar deliberadamente las secuencias de solicitud con lentitud, a fin de frustrar la detección de abuso volumétrico.</p>
+	<p>Considera de nuevo la secuencia de llamadas anterior, pero esta vez imagina que un atacante copia la llamada de transferencia de fondos legítima y modifica su carga para intentar engañar al sistema:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-5frq{font-style:italic;text-align:center;vertical-align:top} .tg .tg-8zwo{font-style:italic;text-align:left;vertical-align:top}</p>
+	<p>Orden</p>
+	<p>Método</p>
+	<p>Ruta</p>
+	<p>Descripción</p>
+	<p>1</p>
+	<p>GET</p>
+	<p>/api/v1/users/{user_id}/accounts</p>
+	<p>user_id es el usuario activo.</p>
+	<p>2</p>
+	<p>GET</p>
+	<p>/api/v1/accounts/{account_id}/balance</p>
+	<p>account_id es una de las cuentas del usuario.</p>
+	<p>3</p>
+	<p>GET</p>
+	<p>/api/v1/accounts/{account_id}/balance</p>
+	<p>account_id es otra cuenta perteneciente al usuario.</p>
+	<p>4</p>
+	<p>POST</p>
+	<p>/api/v1/transferFunds</p>
+	<p>Contiene el cuerpo de una llamada que detalla la cuenta de origen, la cuenta de destino y el importe de la transferencia de fondos a realizar.</p>
+	<p>… el atacante copia la llamada en una herramienta de depuración como Postman …</p>
+	<p>5</p>
+	<p>POST</p>
+	<p>/api/v1/transferFunds</p>
+	<p>El atacante ha modificado el cuerpo de la llamada POST para intentar engañar a la API.</p>
+	<p>6</p>
+	<p>POST</p>
+	<p>/api/v1/transferFunds</p>
+	<p>Un cuerpo de la llamada POST con más modificaciones para intentar engañar a la API.</p>
+	<p>7</p>
+	<p>POST</p>
+	<p>/api/v1/transferFunds</p>
+	<p>Otro cuerpo de la llamada POST con más modificaciones para intentar engañar a la API.</p>
+	<p>Si el cliente supiera previamente que es fundamental proteger el punto final de la transferencia de fondos, y que solo se produce una vez durante una secuencia, podría escribir una regla para garantizar que nunca se llamara dos veces en una fila y que una llamada GET /balance siempre precediera a una llamada POST /transferFunds. Sin embargo, sin esta información previa acerca de qué secuencias de punto final es esencial proteger, ¿cómo sabría el cliente qué reglas debe definir? Un límite de velocidad bajo implica demasiado riesgo, puesto que un usuario de la API podría tener que realizar legítimamente varias llamadas de transferencia de fondos en un breve periodo de tiempo. En la realidad actual, hay pocas herramientas para evitar este tipo de abuso, y la mayoría de los clientes lo único que pueden hacer es adoptar medidas reactivas una vez que ya se ha producido el fraude y trabajar con sus equipos de aplicaciones y los departamentos contra el fraude para remediar el abuso.</p>
+	<p>Por último, estamos convencidos de que para proporcionar a nuestros clientes la capacidad de definir modelos de seguridad positiva en las secuencias de solicitudes de API es necesario un enfoque a tres bandas:</p>
+	<ol>
+		<li>
+			<p><b>Análisis de la secuencia</b>: determinar qué secuencias de las llamadas API se han producido y cuándo, así como resumir los datos en un formato de fácil comprensión.</p>
+		</li>
+		<li>
+			<p><b>Detección de abuso de secuencia</b>: identificar qué secuencias de llamadas API probablemente son de origen benigno o malicioso.</p>
+		</li>
+		<li>
+			<p><b>Mitigación de la secuencia</b>: identificar las reglas relevantes en las secuencias de llamadas API para decidir qué tráfico se debe permitir y cuál se debe bloquear.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="challenges-of-sequence-creation">Desafíos de la creación de una secuencia</h3>
+		<a href="https://blog.cloudflare.com/#challenges-of-sequence-creation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El análisis de las secuencias presenta algunos difíciles desafíos técnicos, ya que las sesiones pueden ser de larga duración y constar de muchas llamadas. Como resultado, no es suficiente definir las secuencias exclusivamente por identificador de sesión. En su lugar, era necesario que desarrolláramos una solución que pudiera identificar automáticamente varias secuencias que se produjeran en una sesión determinada. Además, puesto que las secuencias importantes no necesariamente se caracterizan solo por el volumen, y el conjunto de posibles secuencias es grande, era necesario desarrollar una solución que pudiera identificar las secuencias <i>importantes</i>, en lugar de mostrar las secuencias simplemente más <i>frecuentes</i>.</p>
+	<p>Para ayudar a ilustrar estos desafíos en el caso del ejemplo de api.cloudflare.com, podemos agrupar las llamadas API por sesión y trazar el número de secuencias distintas frente a la longitud de las secuencias:</p>
+	<p>El diagrama se basa en una instantánea de una hora de duración que consta aproximadamente de 88 000 sesiones y de 260 millones de solicitudes de API, con 301 puntos finales de API distintos. Procesamos los datos aplicando a cada sesión una ventana deslizante de longitud fija, y a continuación contabilizamos el número total de distintas secuencias de longitud fija ("n-gramas") que observamos como resultado de la aplicación de la ventana deslizante. El diagrama muestra resultados para un tamaño de ventana ("longitud de n-gramas") que oscila entre 1 y 10 solicitudes. El número de secuencias distintas va de 301 (para un tamaño de ventana de 1 solicitud) a aproximadamente 780 000 (para un tamaño de ventana de 10 solicitudes). Si observamos el diagrama, vemos un gran número de secuencias posibles que aumenta con la longitud de la secuencia: cuando incrementamos el tamaño de la ventana deslizante, vemos un número cada vez mayor de distintas secuencias en la muestra. La tendencia suave se puede explicar por el hecho de que aplicamos una ventana deslizante (las sesiones pueden contener ellas mismas muchas secuencias) en combinación con muchas sesiones largas relacionadas con la longitud de la secuencia.</p>
+	<p>Dado el gran número de secuencias posibles, intentar encontrar las secuencias abusivas es como buscar una aguja en un pajar.</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-sequence-analytics">Presentamos Sequence Analytics</h3>
+		<a href="https://blog.cloudflare.com/#introducing-sequence-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A continuación te mostramos una captura de pantalla del panel de control de API Gateway donde se destaca Sequence Analytics:</p>
+	<p>Desglosemos la nueva funcionalidad que vemos en la captura de pantalla.</p>
+	<p>API Gateway determina de forma inteligente las secuencias de llamadas realizadas por los usuarios de la API mediante los métodos descritos anteriormente en este artículo. API Gateway puntúa las secuencias mediante una métrica que denominamos "puntuación de correlación". Sequence Analytics muestra las 20 secuencias con la puntuación de correlación más alta, a las que haremos referencia como las secuencias más importantes. Las secuencias muy importantes contienen llamadas API que probablemente se producen juntas de forma secuencial.</p>
+	<p>Deberías inspeccionar cada una de tus secuencias para comprender sus puntuaciones de correlación. Las secuencias con una puntuación de correlación alta pueden estar formadas por puntos finales poco utilizados (comportamiento de usuario potencialmente anómalo) así como por puntos finales utilizados habitualmente (comportamiento de usuario posiblemente benigno). Puesto que los puntos finales que se encuentran en estas secuencias habitualmente se producen juntos, representan patrones de uso real de tu API. Deberías aplicar a estos puntos finales todas las protecciones de API Gateway posibles (<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">sugerencias de limitación de velocidad</a>, <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">validación de esquemas</a>, <a href="https://developers.cloudflare.com/api-shield/security/jwt-validation" target="_blank" rel="noopener noreferrer">validación JWT</a> y <a href="https://developers.cloudflare.com/api-shield/security/mtls" target="_blank" rel="noopener noreferrer">mTLS</a>) y verificar el orden específico de sus puntos finales con tu equipo de desarrollo.</p>
+	<p>Sabemos que los clientes quieren establecer explícitamente el comportamiento permisible en sus API, además de las protecciones activas que ofrece actualmente API Gateway. En breve lanzaremos reglas de prioridad de secuencia y habilitaremos la capacidad de bloquear llamadas en función de estas reglas. Las nuevas reglas de prioridad de secuencia permitirán a los clientes especificar el orden exacto de las llamadas API permisibles. Esto será otra forma de definir un modelo de seguridad positiva para proteger tu API contra las amenazas desconocidas.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">Cómo empezar</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Todos los clientes de API Gateway ya pueden acceder a Sequence Analytics. Ve a una zona del panel de control de Cloudflare y haz clic en la pestaña Seguridad &gt; API Gateway &gt; Secuencias. Verás las secuencias más importantes a las que llaman tus usuarios de la API.</p>
+	<p>Los clientes Enterprise que no han comprado API Gateway pueden empezar <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">activando la prueba de API Gateway</a> en el panel de control de Cloudflare o poniéndose en contacto con su gerente de cuenta.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">¿Y ahora qué?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La detección basada en secuencias es una función eficaz y única que abre muchas nuevas oportunidades para identificar y evitar los ataques. Puesto que seguimos mejorando la precisión de los métodos de identificación de estas secuencias y de incorporarlos en nuestra red global, más adelante lanzaremos funciones de mitigación en tiempo real y de coincidencia de secuencias personalizadas. También nos aseguraremos de que dispongas de la información práctica que necesitas proporcionar a tu equipo sobre quiénes han sido los usuarios de la API que han intentado llamar a secuencias no coincidentes con tu política.</p>
+</div>

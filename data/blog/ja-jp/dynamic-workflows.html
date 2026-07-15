@@ -1,0 +1,264 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/dynamic-workflows">English</a>および<a href="https://blog.cloudflare.com/ko-kr/dynamic-workflows">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rnOsb3NbZKTeboXYz1zgi/1af3453bc36960a949c084db725158df/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>8年前にWorkersを初めてローンチしたとき、それは開発者向けの直接プラットフォームでした。長年にわたり、私たちはエコシステムを拡大・拡張してきました。これにより、プラットフォームはWorkers上で直接構築するだけでなく、<i>その</i>お客様が多くのマルチテナントアプリケーションを通じて<i>当社</i>にコードを出荷できるようになる可能性もあります。Workers：アプリでは、ユーザーが欲しい結果を記述し、AIが実装を書きます。マルチテナントSaaSでは、すべてのお客様のビジネスロジックが、実行時に、プラットフォームがこれまでに見たことのないTypeScriptを使用します。独自のツールを作成して実行するエージェント。すべてのリポジトリが独自のパイプラインを定義するCI/CD製品。</p>
+	<p>先月、<a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workersのオープンベータ版</u></a>を出荷した際、私たちはこれらのプラットフォームに、<i>コンピューティング</i>側でクリーンなプリミティブを提供しました。Workersランタイムに実行時にコードを渡すと、同じマシン上で数ミリ秒で、分離されたサンドボックス化されたWorkerが返されます。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Durable Object Facets</u></a>は、同じ考え方を<i>ストレージ</i>にも拡張しました。動的にロードされる各アプリは、オンデマンドで起動される独自のSQLiteデータベースを持つことができ、プラットフォームがスーパーバイザーとして前に位置します。<a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta"><u>Artifacts</u></a>は、<i>ソース管理</i>に対しても同様の機能を提供しました。Gitネイティブでバージョン管理されたファイルシステムを、数千万単位で作成できます。エージェントごとに1つ、セッションごとに1つ、テナントごとに1つといった具合にです。そのため、ストレージやソース制御のために動的なデプロイメントが可能です。今後の展開は？</p>
+	<p>現在は、<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u><b>Dynamic Workflows</b></u></a>で耐久性の高い実行と動的デプロイを橋渡ししています。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-gap-between-durable-and-dynamic-execution">耐久性のある実行と動的実行のギャップ</h2>
+		<a href="https://blog.cloudflare.com/#the-gap-between-durable-and-dynamic-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>は、当社の耐久性のある実行エンジンです。これは、<code>run(event, step)</code>関数を、すべてのステップが失敗しても存続し、数時間または数日間スリープでき、外部イベントを待つことができ、アイソレートがリサイクルされると中断した場所から正確に再開されるプログラムに変換します。単一のリクエストを超えて「継続」する必要があるものすべてに最適なプリミティブです。オンボーディングフロー、動画トランスコーディングパイプライン、複数段階の課金、長期実行されるエージェントループ、そして — <a href="https://blog.cloudflare.com/workflows-v2"><u>Workflows V2</u></a>以降 — 最大50,000の同時インスタンスと、アカウントあたり毎秒300の新規インスタンスに対応し、エージェント時代に向けて再設計されました。</p>
+	<p>しかし、Workflowsには、常に暗号化された前提があります。ワークフローコードはデプロイメントの一部であるということです。あなたの <code>wrangler.jsonc</code>には、<i>"エンジンが </i><i><code>WORKFLOWS</code></i><i>を呼び出すと、</i><i><code>MyWorkflow</code></i>というクラスが実行されます。" というブロックがあります<i>。</i>1つのバインディング、1つのクラス。都度、デプロイごとに。</p>
+	<p>すべてのコードを所有している場合は問題ありません。従来のアプリケーションを実行している場合は問題ありません。</p>
+	<p><i>お客様が</i>ワークフローを出荷させたいと思った瞬間、機能を停止します。</p>
+	<p>例えば、AIがすべてのテナントのTypeScriptを書き込むアプリプラットフォームを構築しているとします。例えば、各リポジトリが独自のパイプラインを持つCI/CD製品を実行しているとします。各エージェントが独自の耐久性のあるプランを記述するエージェントSDKを使用しているとします。いずれの場合も、ワークフローはテナントごと、エージェント、リクエストごとに異なります。バインドするクラスはありません。</p>
+	<p>これはDynamic Workersがコンピューティングのために解決し、Durable Object Facetsがストレージのために解決したものと同じ形の問題です。耐久性のある実行を実現する方法をまだ解決していませんでした。</p>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-workflows">動的ワークフロー</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>@cloudflare/dynamic-workflows</code>は小さなライブラリです。およそ300行のTypeScript。単一のWorker — <b>Worker Loader</b> — が、すべての<code>create()</code>呼び出しを別のテナントのコードにルーティングでき、重要なことに、ワークフローが実際に実行される数秒、数時間、あるいは数日後に、その同じコードに<code>run(event, step)</code>をディスパッチします。</p>
+	<p>全体のパターンは次の通りです。Worker Loader：</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import {
+  createDynamicWorkflowEntrypoint,
+  DynamicWorkflowBinding,
+  wrapWorkflowBinding,
+} from '@cloudflare/dynamic-workflows';
+
+// The library looks this class up on cloudflare:workers exports.
+export { DynamicWorkflowBinding };
+
+function loadTenant(env, tenantId) {
+  return env.LOADER.get(tenantId, async () =&gt; ({
+    compatibilityDate: '2026-01-01',
+    mainModule: 'index.js',
+    modules: { 'index.js': await fetchTenantCode(tenantId) },
+    // The tenant sees this as a normal Workflow binding.
+    env: { WORKFLOWS: wrapWorkflowBinding({ tenantId }) },
+  }));
+}
+
+// Register this as class_name in wrangler.jsonc.
+export const DynamicWorkflow = createDynamicWorkflowEntrypoint&lt;Env&gt;(
+  async ({ env, metadata }) =&gt; {
+    const stub = loadTenant(env, metadata.tenantId);
+    return stub.getEntrypoint('TenantWorkflow');
+  }
+);
+
+export default {
+  fetch(request, env) {
+    const tenantId = request.headers.get('x-tenant-id');
+    return loadTenant(env, tenantId).getEntrypoint().fetch(request);
+  },
+};</code></pre>
+	<p>お使いの <code>wrangler.jsonc</code> に追加します:</p>
+	<pre class="language-JSON"><code class="language-JSON">"workflows": [
+		{
+			"name": "dynamic-workflow",
+			"binding": "WORKFLOW",
+			"class_name": "DynamicWorkflow"
+		}
+	]</code></pre>
+	<p>テナントは、プレーンで構文的なWorkflowsコードを記述します。自分たちが派遣されていることに気づいていないのです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { WorkflowEntrypoint } from 'cloudflare:workers';
+
+export class TenantWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    return step.do('greet', async () =&gt; `Hello, ${event.payload.name}!`);
+  }
+}
+
+export default {
+  async fetch(request, env) {
+    const instance = await env.WORKFLOWS.create({ params: await request.json() });
+    return Response.json({ id: await instance.id });
+  },
+};</code></pre>
+	<p>これで、以上です。テナントは、ごく通常のWorkflowバインディングのように見えるものに対して<code>env.WORKFLOWS.create(...)</code>を呼び出します。ワークフローID、<code>.status()</code>、<code>.pause()</code>、リトライ、ハイバネーション、耐久性のあるステップ、<code>step.sleep('24時間')</code>、<code>step.waitForEvent()</code>— すべてが上手く機能するのです。</p>
+	<p>ライブラリが処理するのは1つことだけです。Workflowsエンジンが最終的に起動して<code>run(event, step)</code>を呼び出すと、最終的に<i>正しいテナントの</i>コード内に行き着くのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3つの層があります。上はWorkflowsエンジン（プラットフォーム）、中央はWorker Loader、下はテナントのコード（Dynamic Worker）です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3D8fGfZalW4N4h7QngR8tN/59ef281c194cfcba12ea6cfb6ec240d7/image2.png" alt="" class="kg-image" width="2048" height="1289" loading="lazy">
+	</figure>
+	<p>リクエストがWorker Loaderに届くと、その場で正しい動的コードの実行をルーティングします。残りの実行は、これら3つのレイヤー間の受け渡しで、時間と共に左から右へ、リクエストが入り、エンジンにバウンスし、持続され、後に再びバウンスします。</p>
+	<p>フローの流れを認証する：</p>
+	<p><b>① → ② テナントのコードを入力します。</b>Worker Loaderは、HTTPリクエストを受信し、どのテナントに対するものであるかを判断し、Worker Loaderを介してそのテナントのコードを読み込み、リクエストをその<code>default.fetch</code>に転送します。テナントに手渡される<code>env</code>には、<code>WORKFLOWS: wrapWorkflowBinding({ tenantId })</code>が含まれています。テナントに関する限り、それは実際のWorkflowバインディングのように見え、動作します。</p>
+	<p><b>③ Worker Loaderまで。</b>テナントが<code>env.WORKFLOWS.create({ params })</code>を呼び出すと、実際には、Worker LoaderにRemote Procedure Call（RPC）を作成しています。ラップされたバインディングは、ランタイムが読み込み時にテナントのメタデータに特化した<code>WorkerEntrypoint</code>サブクラス（<code>DynamicWorkflowBinding</code>）です。そのため、Worker Loaderから<code>{ DynamicWorkflowBinding }をエクスポートする</code>必要があります。ランタイムは、<code>cloudflare:workers</code>のエクスポートでクラスを検索することにより、テナントごとのスタブを構築します。Dynamic Worker境界をまたぐバインディングは、RPCスタブである<i>必要</i>があります。プレーンの<code>{ create, get }</code> オブジェクトは構造化複製されず、未加工の<code>Workflow</code>バインディングもシリアル化できません。</p>
+	<p>Worker Loader内部では、ラップされたバインディングがペイロードを透過的に書き換えます。</p>
+	<pre class="language-Rust"><code class="language-Rust">tenant calls:  create({ params: { name: 'Alice' } })
+                            │
+                            ▼
+engine sees:   create({ params: {
+                  __workerLoaderMetadata: { tenantId: 't-42' },
+                  params: { name: 'Alice' }
+               }})
+</code></pre>
+	<p><b>④ エンジンまで。</b>次にWorker Loaderは、エンベロープを引数として、<i>実際の</i><code>WORKFLOWS</code>バインディングで<code>.create()</code> を呼び出します。ここから、Workflowsエンジンが引き継ぎます。<code>event.payload</code>（エンベロープを含む）を保持し、実行をスケジュールします。エンジンが後でワークフローを起動するたびに（それが24時間のスリープ後、クラッシュ、またはデプロイの後であろうと）、メタデータはペイロードと共に乗り、実行のルーティングを待ちます。</p>
+	<p>つまり、メタデータを認証ではなくルーティングヒントとして扱うということです。テナントは、<code>instance.status()</code>を介してそれを読み戻すことができます。秘密情報を入れないでください。</p>
+	<p><b>⑤ → ⑥ エンジンが下降します。</b>エンジンがステップを実行する準備ができると、<code>wrangler.jsonc</code>で登録されたクラスの<code>.run(event,step)</code>を呼び出します。これは、<code>createDynamicWorkflowEnpoint</code>が提供したものです。そのクラスはエンベロープを展開し、メタデータを<code>loadRunner</code>コールバック<i>が</i>書いたものに渡し、ラップされていないイベントをコールバックが返すランナーに転送します。</p>
+	<p>コールバックは興味深いことが起きる場所で、完全にお客様のものになります。R2からテナントの最新ソースを取得します。プラン階層を確認し、地域を選択します。テナントごとのログ記録用にtail Workerを接続します。<a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a>でTypeScriptをオンザフライでバンドルします。一般的なケースでは、Worker Loaderに引き渡すだけです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const stub = env.LOADER.get(tenantId, () =&gt; loadTenantCode(tenantId));
+return stub.getEntrypoint('TenantWorkflow');</code></pre>
+	<p>
+		Worker LoaderはID別にキャッシュするため、多くのステップを何時間も実行するワークフローは、それらの間で同じ動的Workerを再利用します。最終的に分離が追い出されると、次の <code>step.do()</code> は再びコードをプルして、行き続けます。テナントのワークフローは、何が起こったかに気づきません。Dynamic Workerは、数メガバイトのメモリを使用して1桁ミリ秒で起動するため、ディスパッチのオーバーヘッドは本質的に無料です。独自のワークフローコードを持つ100万のテナントを保有でき、それぞれが必要なステップ境界で遅延してスピンアップされ、アイドル状態になっているテナントのいずれもコストはかかりません。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-escape-hatch">エスケープハック</h3>
+		<a href="https://blog.cloudflare.com/#the-escape-hatch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>WorkflowEntrypoint</code>を自身でサブクラス化する場合 — たとえば、<code>run() </code>の周りにロギングを追加したり、テナントごとの可観測性を確保したり、カスタム状態をスレッド化したりする目的で — ライブラリは、 <code>createDynamicWorkflowEntrypoint</code>の基盤となっている、より低レベルの<code>dispatchWorkflow</code>プリミティブを公開しています。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { dispatchWorkflow } from '@cloudflare/dynamic-workflows';
+
+export class MyDynamicWorkflow extends WorkflowEntrypoint {
+  async run(event, step) {
+    return dispatchWorkflow(
+      { env: this.env, ctx: this.ctx },
+      event,
+      step,
+      ({ metadata, env }) =&gt; loadRunnerForTenant(env, metadata),
+    );
+  }
+}
+</code></pre>
+	<p>その他のすべて（ID、一時停止/再開、<code>sendEvent</code>、リトライ）は、そのまま実際のWorkflowsエンジンに渡されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="dynamic-workers-are-the-primitive">Dynamic Workersはプリミティブ</h2>
+		<a href="https://blog.cloudflare.com/#dynamic-workers-are-the-primitive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ちょっと具体的な説明から考えてみましょう。このライブラリのすべての興味深い行は、アウトバウンド側の<code>.create()</code>のラッパー、またはインバウンド側の<code>WorkflowEntrypoint</code>のラッパーのいずれかです。実際の作業（テナントのコードのスピンアップ、サンドボックス化、境界を越えたRPCルーティング、分離のキャッシング、ステップ間のハイバネーション）はすべてDynamic Workersによって行われます。</p>
+	<p>これが現実のストーリーであり、Workflowsより遥かに大きな規模です</p>
+	<p>Dynamic Workersは、すべてを組み込むプリミティブです。<a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Durable Object Facets</u></a>は、Durable Objectsに適用される同じパターンです。Dynamic Workflowsは、<code>WorkflowEntrypoint</code>に適用されるパターンと同じです。それぞれが、これまでの静的バインディングとお客様に手渡できる動的バージョンの間のエンベロープとラップを解除するための接着剤です。</p>
+	<p>Workflowsにとどまりません。現在Workersで公開されているバインディングはすべて、対応するものです。つまり、各プロデューサーが独自のハンドラー、キャッシュ、データベース、オブジェクトストア、AIバインディング、そしてすべてのテナントが独自のツールを持ち込むMCPサーバーを送信するキューです。現在、Workerに何にバインドしていても、間もなく動的にバインドできるようになります。テナントごと、エージェント、リクエストごとに、アイドル状態のコストはゼロです。</p>
+	<p>このようなプラットフォームを運営するための単位経済は、率直に言って途方もないものです。かつてはマルチテナント製品を出荷するということは、すべての顧客に独自のコンテナ、独自のデータベース、独自のディスク、独自のスケジューラを提供し、オーケストレーション用接着剤、サービスメッシュ、ヘアプル型請求計算でつなぎ合わせることを意味していました。そうしたアプリケーションの多くは、少なくとも数千人の顧客をサポートしなければなりません。数百万ドルに達することもあります。Dynamic Workersとその上に構成するすべてのものでは、アイドル状態のテナントは約ゼロで、アクティブなテナントは分離レベルのマルチテナンシーを通じて同じハードウェアを共有します。フロアの高さは桁違いに低下します。これまでは、数千人の有料顧客を利用していたプラットフォームが、数千万ドル単位の顧客に合理的にサービスを提供できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-this-unlocks">この取り組みの内容</h2>
+		<a href="https://blog.cloudflare.com/#what-this-unlocks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="agent-platforms-that-plan-like-engineers">エンジニアのように計画するエージェントプラットフォーム</h3>
+		<a href="https://blog.cloudflare.com/#agent-platforms-that-plan-like-engineers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コーディングエージェント — <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a>、<a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a>、Codex、Pi — は、過去1年間で、LLMが時系列なツール呼び出しよりも<i>コードを書く</i>方がはるかに得意であることを証明しました。<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>と<a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a>は、そのインサイトを耐久性のある実行にまで拡張します。ファイバーやサブエージェントのようなプリミティブを使用することで、エージェントの長期実行プランは、ユーザーが気づくことなく、クラッシュ、ハイバネーション、再デプロイを乗り越えることができます。</p>
+	<p>Dynamic Workflowsは、そのプランを<i>第一級のCloudflare Workflow</i>にするものです。つまり、エージェントが文字通り記述し、プラットフォームが文字通り実行し、その背後には完全な耐久性メカニズムが備わっています。モデルが分前に書いた<code>run(event, step)</code>関数は、すべての<code>step.do(...)</code>が独立して再試行可能で、すべての<code>step.sleep('24時間')</code>が無料でハイバネーションし、すべての<code>step.waitForEvent(...)</code>は、人間が次のアクションを承認するのを無期限に待ちます。エージェントはワークフローを書き込み、プラットフォームがそれを実行するプランの内容を事前に知る必要はありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="sdks-and-frameworks-where-the-user-brings-the-logic">ユーザーがロジックを持ち込むSDKとフレームワーク</h3>
+		<a href="https://blog.cloudflare.com/#sdks-and-frameworks-where-the-user-brings-the-logic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>顧客が<code>run(event, step)</code>関数を記述するフレームワーク（ワークフロービルダーUI、ビジュアルオートメーションツール、テナントごとの拡張システム、非開発者向けローコードツールなど）を出荷する場合、Dynamic Workflowsは妥協することなく機能させるためのプリミティブとなります。<code>wrapWorkflowBinding({ tenantId })</code>を一度呼び出し、結果を<code>WORKFLOWS</code>としてコードに渡すと、作成されたすべてのワークフローインスタンスは自動的にタグ付けされ、ルーティングされ、サンドボックスで実行されます。フレームワークはWorker Loaderを所有します。ユーザーがワークフローを所有している一方を気にする必要はありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="ci-cd-at-primitive-speed">原始的速度のCI/CD</h3>
+		<a href="https://blog.cloudflare.com/#ci-cd-at-primitive-speed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>こちらは、当社で最も興奮しているユースケースです。</p>
+	<p>既存のCI/CDプラットフォームはすべて、その根底において、リポジトリごとの設定ファイルをディスパッチするものです。<i>「これらのステップをこの順序で、これらのシークレットを使って実行し、これらのディレクトリをキャッシュし、これらのアーティファクトをアップロードする。」</i>各リポジトリには独自のパイプラインがあります。各ブランチは独自のバリアントを持つことがあります。各プルリクエストにより、完了まで実行されなければならないパイプラインのインスタンスが生成され、マシンがクラッシュしたり、不安定なステップを切り抜けたり、ログをストリーミングしたり、承認のために一時停止したり、結果を保持する必要があります。</p>
+	<p>それこそが、耐久性のあるワークフローの<i>まさに</i>その形です。これまで、CIがそのような方法で構築されなかった理由は、<b>ワークフロー自体がリポジトリごとに異なり、ランタイム時にディスパッチされ、プロビジョニングコストがゼロであるような</b>クラウドプリミティブが存在しなかったためです。これで完了です。</p>
+	<p>これは、CIパイプラインが、お客様のレポジトリで出荷したコードだけの場合の例です。例えば、<code>.cloudflare/ci.ts</code> の場合です。ワークフロー自体は現実のものであり、以下の<code>runInSandbox() / summarise()</code> / GitHubバインディングヘルパーはプラットフォームが提供する接着剤で、ディスパッチャで一度だけ出荷するようなものです。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { WorkflowEntrypoint } from 'cloudflare:workers';
+
+export class CIPipeline extends WorkflowEntrypoint {
+  async run(event, step) {
+    const { repo, sha, branch, pr } = event.payload;
+
+    // Fork an isolated copy of the repo at this commit. Seconds, not minutes.
+    const workspace = await step.do('checkout', () =&gt;
+      this.env.ARTIFACTS.fork(repo, { sha })
+    );
+
+    await step.do('install', () =&gt; runInSandbox(workspace, ['pnpm', 'install']));
+
+    // Each parallel step is independently retryable.
+    const [lint, test, build] = await Promise.all([
+      step.do('lint',  () =&gt; runInSandbox(workspace, ['pnpm', 'lint'])),
+      step.do('test',  () =&gt; runInSandbox(workspace, ['pnpm', 'test'])),
+      step.do('build', () =&gt; runInSandbox(workspace, ['pnpm', 'build'])),
+    ]);
+
+    if (pr) {
+      await step.do('comment', () =&gt;
+        this.env.GITHUB.commentOnPR(repo, pr, summarise({ lint, test, build }))
+      );
+    }
+
+    // Workflow hibernates until approval arrives. No VM held open.
+    if (branch === 'main') {
+      await step.waitForEvent('approval', { type: 'deploy-approval', timeout: '24 hours' });
+      await step.do('deploy', () =&gt; runInSandbox(workspace, ['pnpm', 'deploy']));
+    }
+  }
+}</code></pre>
+	<p>プラットフォームがディストリビューターを所有する。Webフックを取り込み、どのリポジトリから来たかを特定し、<i>そのリポジトリの</i><code>CIPipeline</code>クラスをDynamic Workerとして読み込み、Dynamic Workflowsに実行を引き渡します。プラットフォームは、パイプラインに何があるのかを把握しません。しかし、その必要はありません。これは、お客様のリポジトリに存在する耐久性のある関数を実行するものです。</p>
+	<p>それでは、各ステップの実際の内容を整理しましょう。</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta"><u><b>Artifacts</b></u></a>は、Cloudflareのグローバルに分散されたネットワーク上に存在する、Gitネイティブのバージョン管理されたファイルシステムをすべてのリポジトリに提供します。<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>ArtifactFS</u></a>はツリーを遅延なくハイライトするため、マルチGBのリポジトリでも1桁の秒以内に動作可能です。また、<code>fork()</code>は、<code>gitクローン</code>を課すことなく、各CIを独自に分離したコピーを提供します。</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/dynamic-workers"><u><b>Dynamic Workers</b></u></a>は、リポジトリのデータと同じマシン上で、ミリ秒で起動するサンドボックス化された分離で各軽量なステップ（lint、フォーマット、タイプチェック、バンドル）を実行します。VMのプロビジョニング、イメージのプル、コールドスタートは不要です。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u><b>動的ワークフロー</b></u></a>が全体を一体化させます。ステップは再試行可能で耐久性があります。実行は承認を待ちながら、無料でハイバネーションします。デプロイ、立ち退き、クラッシュがあっても状態と進捗はそのままです。</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/sandbox-ga"><u><b>サンドボックス</b></u></a>は、<code>Dockerビルド</code>が必要なステップ、Postgresの実行が必要な統合スイート、8コアが必要なRustのコンパイルといった、厄介な部分に対応します。R2へのスナップショットは、数秒のウォームスタートでもあります。</p>
+		</li>
+	</ul>
+	<p>中規模のJSリポジトリにおける従来のCI実行は、次のようなものになります: <i>VM割り当て（15-30秒） → ベースイメージのプル（10秒） → </i><i><code>git clone</code></i><i>（10秒） → </i><i><code>npm ci</code></i><i>（30-60秒） → テスト実行（実際の作業） → 環境の破棄</i>。最初のテストが実行される数分間のセレモニーで、仮想マシン全体の料金を支払います。</p>
+	<p>このスタックの同じパイプラインは、次のようになります： <i>リポジトリのエッジフォーク（秒） → 各ステップが新しいアイソレートまたはスナップショット復元されたサンドボックスをミリ秒で起動 → 実際の作業を実行 → ハイバネートします。</i>コールドスタートは必要ありません。何かを事前にプロビジョニングする必要はありません。何も可視化する必要はありません。リポジトリは移動せず、コンピューティングが来ます。</p>
+	<p>CIはこれまでに高速化することはなく、また高速化されなかった理由は、これらのプリミティブが同じ場所に存在していないためです。実現可能になりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it">ぜひお試しください</h2>
+		<a href="https://blog.cloudflare.com/#try-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>@cloudflare/dynamic-workflows</code> はMITライセンスで、本日よりnpmで利用可能です。</p>
+	<pre class="language-Shell"><code class="language-Shell">npm install @cloudflare/dynamic-workflows</code></pre>
+	<p>Workers有料プランのオープンベータ版であるDynamic Workers上で動作します。この<a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>リポジトリ</u></a>には、動作例が含まれています。インタラクティブなブラウザのプレイグラウンドで、<code>TenantWorkflow</code>クラスを記述し、<b>Run</b>をクリックすると、ライブストリーミングログと、各<code>step.do()</code>が実行されるにつれて点灯するステップごとのチェックリストで、ステップの実行を確認できます。コミットします。クローン、デプロイし、同僚に見せる。</p>
+	<p>プラットフォーム、SDK、フレームワーク、またはCI/CD製品であり、自社のプロセスでコードを実行することなく、顧客に独自のワークフローを提供したい場合、これはあなたのために構築されたプリミティブです。耐久性のあるプランを記述するエージェントを構築する場合、これはプランを<i>実際の</i>Workflowsにするプリミティブです。もしこのすべてを見ているだけで、その上に構築するのも楽しいように思えるなら、あなたが作るものをぜひご覧ください。</p>
+	<p><a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>で私たちを見つけてください。</p>
+</div>

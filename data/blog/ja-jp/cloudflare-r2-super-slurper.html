@@ -1,0 +1,78 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-r2-super-slurper">English</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-r2-super-slurper">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-r2-super-slurper">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dcz3GfLzC7cI7RxEez3Wm/0f29e7d33ed47d8086928e255b5e5a43/cloudflare-r2-super-slurper.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>R2はS3互換のグローバル分散オブジェクトストレージで、開発者は大量の非構造化データを、他のプロバイダーでよく見られる高価なエグレス帯域幅料金なしで保存することができます。</p>
+	<p></p>
+	<p>無料のエグレスをご利用いただくには、お客様がお持ちのすべてデータのR2に移行する計画を立案する必要があります。データの一貫性を確保しながら、できるだけ多くのデータを迅速に移動するために、すべてを一度に実行したいと思うかもしれません。それとも、データをゆっくりとR2に移動し、読み取りを古いプロバイダーから徐々にR2に移行する方がよいでしょうか。そして初めて、古いストレージを切り捨てるか、R2の新しいオブジェクトのバックアップとして残しておくかを決めるのですか？</p>
+	<p>この移行に関するアーキテクチャと実装には複数の選択肢がありますが、クラウドストレージプロバイダーから別のプロバイダーへ何TBものデータを移動させることは、常に問題があり、常に計画が必要で、おそらく人手も必要です。</p>
+	<p>それは困難を極めました。でも、今は違います。</p>
+	<p>本日、R2へのすべてのデータの移行を扱いやすい直感的なUIとAPIで行うことができる「R2 Super Slurper」を発表します。この機能を使うと、すべてのデータを一気に吸い上げる、または一口ずつR2移行することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-first-step-r2-super-slurper-private-beta">最初のステップ：R2 Super Slurperプライベートベータ版</h2>
+		<a href="https://blog.cloudflare.com/#the-first-step-r2-super-slurper-private-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ndFgYCd0mbAXlnMc5LRQ2/a52499ae2b42f8f7d0b99c08ae1333b5/image2-29.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="one-giant-slurp">一気に吸い上げる</h3>
+		<a href="https://blog.cloudflare.com/#one-giant-slurp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>R2 Super Slurperの最初のイテレーションでは、S3バケットを対象に、そこに保存されているオブジェクトをR2バケットにインポートすることができるようになります。最も一般的なシナリオを対象とした、1回限りの単純なインポートです。既存のS3ソースを指し、R2 Super Slurperに移行したいオブジェクトの読み取り権限を与えると、非同期ジョブが残りを処理します。</p>
+	<p>また、移行元のバケットにアクセス定義や認証情報を保存できるため、新たな操作でバケット内の異なるフォルダを移行する際にも、URLや認証情報を改めて定義する必要はありません。この操作だけで、整合性を検証したいパスのあるバケットをスクリプトで処理する手間が省けます。ベータ版では、利用者の皆様からのフィードバックをいただきながら、R2 Super Slurperを進化させ、誰でもいくつかのボタンをクリックするだけで、完全に一貫性を維持した、アクティブな移行を実現できるようにします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WkVFWS2GIAuc9TnpHuAsT/898b781ae72a521fddafb2ddb722763b/image1-34.png" alt="an active migration implies a big-bang of data movement from your old buckets to R2" class="kg-image" width="1680" height="1350" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="automatic-sip-by-sip-migration">一つずつ吸い上げる自動移行</h3>
+		<a href="https://blog.cloudflare.com/#automatic-sip-by-sip-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、将来的には、エンドユーザーからの要求に応じてオブジェクトをR2に徐々にコピーする、自動で一口ずつ吸い上げる移行方式も開発します。移行に合わせてR2からのオブジェクト配信を開始することができるため、すぐにコストを削減することができます。</p>
+	<p>リクエストとオブジェクトの移行フローは次の通りです：</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36YMN6Y7USY0TMwG8VQuob/a3e1f03714895b9581abe870a322566b/image4-16.png" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested" class="kg-image" width="1999" height="1216" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p><b>オブジェクトの確認</b>：リクエストがCloudflareに届く**(1)<b>と、リクエストされたオブジェクトがR2バケットにあるかどうかチェック</b>(2)<b>します。オブジェクトが存在する場合、R2がそれを提供</b>(3)**します。</p>
+		</li>
+		<li>
+			<p><b>オブジェクトのコピー</b>：オブジェクトがR2に存在_しない_場合、そのオブジェクトに対するリクエストがオリジンバケット**(2a)<b>に流れます。オブジェクトを含む回答があれば、それを提供し、R2にコピー</b>(2b)**します。</p>
+		</li>
+		<li>
+			<p><b>オブジェクトの提供</b>：R2は、オブジェクトに対する今後のすべての要求を提供します**(3)**。</p>
+		</li>
+	</ul>
+	<p>この機能により、これまで他のベンダーの1つまたは複数のバケットに分散していたオブジェクトをコピーしながら、エンドユーザー側からの要求物はすべてR2から提供することができます。また、R2 Super Slurperでは、初回のリクエストを他の場所から吸い上げるだけなので、それ以降のリクエストについてはエグレス料金がかからないようになります。</p>
+	<p>現在のところ、S3互換のバケットを対象としていますが、2023年中に他のソースが利用可能になることが予定されています。</p>
+	<div class="flex anchor relative">
+		<h2 id="join-the-waitlist-for-the-r2-super-slurper-private-beta">R2 Super Slurperプライベートベータ版の待機リストに参加する</h2>
+		<a href="https://blog.cloudflare.com/#join-the-waitlist-for-the-r2-super-slurper-private-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>R2 Super Slurperにアクセスするには、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fplans" target="_blank" rel="noopener noreferrer">まずR2ユーザーであることと</a>、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Fslurper" target="_blank" rel="noopener noreferrer">ここで</a>R2 Super Slurperの待機リストにサインアップする必要があります。</p>
+	<p>プライベートベータステージでは、多くの初期ユーザーと密接に協力し、サービスを洗練させ、テストしていきます。近日中に、ユーザーがサインアップできるオープンベータを発表する予定です。</p>
+	<p>当社の<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discordサーバー</a>に参加して、R2関連のトピックについて、ユーザーやCloudflareスタッフの素晴らしいコミュニティと交流を深めましょう。</p>
+</div>

@@ -1,0 +1,162 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/going-bgp-zombie-hunting">English</a>および<a href="https://blog.cloudflare.com/ko-kr/going-bgp-zombie-hunting">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IsyCgrC1KNhZ9daQrYN2b/74e6bedea74f3a768d1ab3b71bea0f18/image9.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareでは、弊社独自のゾンビハンティングでハロウィーンをお祝いしています。削除したいゾンビは、インターネットがトラフィックをルーティングする方法を担当するコアフレームワークである<a href="http://cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>BGP（ボーダーゲートウェイプロトコル）</u></a>を妨害するものです。</p>
+	<p><a href="https://dl.acm.org/doi/10.1145/3472305.3472315" target="_blank" rel="noopener noreferrer"><u>BGPゾンビ</u></a>とは、インターネットの<a href="https://en.wikipedia.org/wiki/Default-free_zone" target="_blank" rel="noopener noreferrer"><u>デフォルトフリーゾーン（DFZ）</u></a>で立ち行かなくなったルートのことです。DFZとは、デフォルトルートを必要としないすべてのインターネットルーターの集合体であり、潜在的にはプレフィックスの取り消し、または喪失が原因です。</p>
+	<p>ルーターのソフトウェアのバグから、単に一般的なルート処理の遅さまで、ゾンビの根本原因として複数のものが考えられます。これは、BGPプレフィックスがインターネットから失われることになっているのですが、何らかの理由でアンデマンドのメンバーとなり、一定期間存続するという状況です。</p>
+	<p>これらのゾンビは、長ければ長いほど、運用への影響が大きくなり、ネットワーク運用者にとっては大きな頭痛の種になります。ゾンビは、ルートループ内にパケットを閉じ込めたり、過度に遠回りなルートを選択させたりすることで、パケットを誤ってリードさせる可能性があります。本日は、ハロウィーンを祝い、BGPゾンビが形成される仕組みと、BGPゾンビがインターネットトラフィックに大打撃を与える可能性を減らす方法について取り上げたいと思います。</p>
+	<div class="flex anchor relative">
+		<h2 id="path-hunting">パスハンティング</h2>
+		<a href="https://blog.cloudflare.com/#path-hunting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>BGPゾンビにつながりかねない遅延を理解するには、パスハンティングについて説明する必要があります。<a href="https://www.noction.com/blog/bgp-path-hunting" target="_blank" rel="noopener noreferrer"><u>パスハンティング</u></a>は、BGPを実行するルーターが、<a href="https://en.wikipedia.org/wiki/Longest_prefix_match" target="_blank" rel="noopener noreferrer"><u>最長プレフィックス一致</u></a>（LPM）およびパス長やローカルプリファレンスなどのBGPルーティング属性によって決定された、プレフィックスへの最適なパスを徹底的に検索するときに発生します。これは、経路がどのように、どれくらい長く停滞するのか、そして、インターネット上でどの程度目に見えるのかを観測することに関連しています。</p>
+	<p>たとえば、パスハンティングは、より具体的なBGPプレフィックスがグローバルルーティングテーブルから削除され、ネットワークはより具体的でないBGPアドバタイズにフォールバックする必要があるときに発生します。この例では、より具体的なBGPアナウンスに2001:db8::/48を使用し、より具体的ではないプレフィックスには2001:db8::/32を使用します。発信元の<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>自律システム</u></a>（AS）によって/48が撤回されると、BGPルーターはそのルートが欠落していることを認識して、2001:db8::/32ルートを介して2001:db8::1などのIPにトラフィックをルーティングし始めなければなりません。プレフィックス2001:db8::/48はなくなっていますが、</p>
+	<p>実際にどのような結果につながるのか、いくつかの図を使って見てみましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xRNAHChJUyiMbtBZyLOlF/973d10be053b7b7f088721389c34c10e/BLOG-3059_2.png" alt="BLOG-3059 2" class="kg-image" width="1999" height="1462" loading="lazy">
+	</figure>
+	<p><i><sub>図1：アクティブな2001:db8::/48ルート</sub></i></p>
+	<p>この初期の状態では、2001:db8::/48がトラフィックの転送にアクティブに使用され、AS64511に向かう途中ですべてAS13335を経由します。この場合、AS64511はCloudflareのBYOIP顧客です。AS64511は、別のインターネットサービスプロバイダー（ISP）であるAS64510への<i>バックアップ</i>ルートもアナウンスしますが、このルートは、2001:db8::1に転送するためのAS64510のルーティングテーブルでもアクティブではありません。これは、2001:db8::/48がより長いプレフィックス一致であるためです。 2001:db8::/32と比較した場合：</p>
+	<p>物事がより興味深いものになるのは、2001:db8::/48のAS64510シグナルがCloudflareによって取り消されることです（AS13335）。</p>
+	<p>お客様が2001:db8::/48のアナウンスを取り消すためにCloudflareに信号を送ると、すべてのBGPルーターがこの更新に<a href="https://en.wikipedia.org/wiki/Convergence_(routing)" target="_blank" rel="noopener noreferrer"><u>収束</u></a>しなければなりませんが、これにはパスハンティングが含まれます。AS13335は、2001:db8::/48のBGP取り消しメッセージを、直接接続されたBGPネイバーに送信します。廃止のニュースはAS13335から他のネットワークにすばやく広がるかもしれませんが、近隣の一部のネットワークにはより迅速に伝達されることがあります。つまり、すべてのユーザーが取り消しを受信・処理するまで、ネットワークはAS13335が削除した後でも、相互にルーティングして2001:db8::/48プレフィックスに到達する可能性があるのです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7h3Vba4T7tm6XPB2pIyQex/f5f7c27148bed4dd72959b3820d045ac/BLOG-3059_3.png" alt="BLOG-3059 3" class="kg-image" width="1999" height="1417" loading="lazy">
+	</figure>
+	<p><i><sub>図2：2001:db8::/48 pathさせる（AS13335を介して廃止）</sub></i></p>
+	<p>AS64501が残りのASより少し遅っていることを想像してみてください。古いハードウェアの使用、ハードウェアの過負荷、ソフトウェアのバグ、特定の設定設定、不運、またはその他の要因が考えられますが、まだ/48の削除処理がされていません。経路がごくわずかな時間だけ停止するため、これ自体がBGPゾンビである可能性があります。2001:db8::1に向けたpingは、実際にはAS64511に到達できません。AS13335は/48が削除されることを知っているのですが、完全なテーブルを伝送するルーターは、その結果にまだ収束していません。</p>
+	<p>パスハンティングに費やす時間は、最小ルートアドバタイズ間隔（MRAI）と呼ばれるものによって増幅されます。MRAIは、BGPルーターからのBGPアドバタイズメッセージ間の最小時間を指定します。つまり、各BGPアドバタイズの更新の間に意図的な秒数の遅延を導入するのです。<a href="https://datatracker.ietf.org/doc/html/rfc4271" target="_blank" rel="noopener noreferrer"><u>RFC4271</u></a>では、eBGP更新のMRAI値を30秒にすることを推奨しています。これにより、BGPのチャットを軽減することができ、更新のサイクルを軽減できますが、パスハンティングにも時間がかかります。</p>
+	<p>次のパスハンティングのサイクルでは、以前AS13335から存在しない/48ルートを指していたAS64501でさえ、/32アドバタイズは2001:db8::1に向けて残されているだけであることを見つける必要があります。これを完了すると、トラフィックフローは次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sCGMS95R8y32WTjnUigfN/1e5c9a7551c572a08596985edac5c17b/BLOG-3059_4.png" alt="BLOG-3059 4" class="kg-image" width="1999" height="1429" loading="lazy">
+	</figure>
+	<p><i><sub>図3：2001:db8::/32 と 2001:db8::/48へのルーティングフォールバックがDFZからなくなっている</sub></i></p>
+	<p>これにより、BGPパスハンティングは終わり、インターネットは、2001:db8::/32が2001:db8::1に向けて利用できる最善のルートであることを認識し、2001:db8::/48は本当になくなったことを認識しました。この例では、意図的にパスハンティングを最後の2サイクルだけにしていますが、特にAS13335が世界中の何千ものピアリングネットワークや<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank" rel="noopener noreferrer"><u>Tier-1</u></a>に高度に接続している場合、現実にはそれ以上になる可能性があります。</p>
+	<p>BGPパスハンティングとその仕組みについて説明してきましたが、これでBGPゾンビが大量発生し始める方法や、ルーティングテーブルが長時間にわたって固定される可能性があることがお分かりいただけると思います。以前からのより具体的なプレフィックスを探す過剰なBGPパスハンティングは、ゾンビが追跡する可能性がある初期の指標となり得ます。</p>
+	<div class="flex anchor relative">
+		<h2 id="spawning-a-zombie">ゾンビの生成</h2>
+		<a href="https://blog.cloudflare.com/#spawning-a-zombie" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ゾンビは最近注目を集めています。一部のお客様は、<a href="https://www.cloudflare.com/en-gb/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Magic Transit</u></a>の<a href="https://developers.cloudflare.com/byoip" target="_blank" rel="noopener noreferrer"><u>Bring-Your-Own-IP（BYOIP）</u></a>オンデマンド広告を利用しているからです。BYOIPは、プレフィックスが継続的に通知される「常時オン」と、顧客が選択した場合にのみプレフィックスが通知される「オンデマンド」の2つのモードで設定できます。一部のオンデマンドのお客様では、アナウンスと取り消しのサイクルがより頻繁に発生するため、BGPゾンビの増加につながる<i>可能性が</i>あります。</p>
+	<p>このことを念頭に、パスハンティングの仕組みを理解したうえで、インターネット上に独自のゾンビを出現しましょう。そのために、IPv4とIPv6の余分なブロックを取り出して、次のようにアナウンスします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20shWBMhqLR3tBMh50v7Uy/bf40e90c2f6a506a5bcfc9bafd1e31d2/BLOG-3059_5.png" alt="BLOG-3059 5" class="kg-image" width="1106" height="903" loading="lazy">
+	</figure>
+	<p>ルートが発表され、安定すると、Cloudflareを介してグローバルにアドバタイズされたより具体的なルートを削除します。数回のクリックで、彼らが死角を作り直すことができました。</p>
+	<p><i>バリアントA：トランスフォーメーションゲートウェイズ</i></p>
+	<p>ゾンビがよく発生する場所のひとつは、上流のISP間です。あるISPネットワーク内の1つのルーターの更新が少し遅いと、ルートは停止することがあります。</p>
+	<p>例えば、上流パートナー2社間で観測された次のようなループを考えてみましょう。</p>
+	<pre class="language-none"><code class="language-none">7. be2431.ccr31.sjc04.atlas.cogentco.com
+8. tisparkle.sjc04.atlas.cogentco.com
+9. 213.144.177.184
+10. 213.144.177.184
+11. 89.221.32.227
+12. (waiting for reply)
+13. be2749.rcr71.goa01.atlas.cogentco.com
+14. be3219.ccr31.mrs02.atlas.cogentco.com
+15. be2066.agr21.mrs02.atlas.cogentco.com
+16. telecomitalia.mrs02.atlas.cogentco.com
+17. 213.144.177.186
+18. 89.221.32.227</code></pre>
+	<p></p>
+	<p>または、同じ取り消しテストで観察されたこのループは、2つの異なるプロバイダー間で発生します。 </p>
+	<pre class="language-unset"><code class="language-unset">15. if-bundle-12-2.qcore2.pvu-paris.as6453.net
+16. if-bundle-56-2.qcore1.fr0-frankfurt.as6453.net
+17. if-bundle-15-2.qhar1.fr0-frankfurt.as6453.net
+18. 195.219.223.11
+19. 213.144.177.186
+20. 195.22.196.137
+21. 213.144.177.186
+22. 195.22.196.137</code></pre>
+	<p></p>
+	<p><i>バリアントB：無制限LAN（ローカルエリアネットワーク）</i></p>
+	<p>同時に、ゾンビは特定のネットワーク内で発生することもあります。Cloudflareのネットワークからルートが撤回されると、ネットワーク内の各デバイスは、個別にルート削除プロセスを開始する必要があります。これはたいていスムーズなプロセスですが、行き詰まることがあります。</p>
+	<p>たとえば、ネットワーク内のルーターが、まだ削除を完全に処理していない状況を考えてみましょう。接続パートナーは、（まだ削除を受け取っていないため）そのルーターに向けてトラフィックをルーティングし続けますが、実際にトラフィックを処理できるルーターの背後にあるホストは残りません。結果は、内部専用のループパスです。</p>
+	<pre class="language-unset"><code class="language-unset">10. 192.0.2.112
+11. 192.0.2.113
+12. 192.0.2.112
+13. 192.0.2.113
+14. 192.0.2.112
+15. 192.0.2.113
+16. 192.0.2.112
+17. 192.0.2.113
+18. 192.0.2.112
+19. 192.0.2.113
+</code></pre>
+	<p></p>
+	<p>多くの現実的複数のゾンビとは異なり、当社の高度に可視化されたゾンビは、ほとんどの主要ネットワークで寿命に限りがある。この例ではわずか6分程度で、その後、ほとんどの攻撃者は最も具体的でないネットワークに再コンバージェンスし、パス。残念ながら、これは短い方です。場合によっては、長命なゾンビが10分以上にわたって到達可能な問題を引き起こすこともあります。これは、ほとんどのネットワーク事業者が通常の状況下でBGPコンバージェンスにかかる時間よりも長い時間と言っても過言ではありません。</p>
+	<p>しかし、これは前述の過剰なパスハンティングなのか、BGPゾンビなのかという疑問もあるでしょう。実際には、<a href="https://dl.acm.org/doi/10.1145/3472305.3472315" target="_blank" rel="noopener noreferrer"><u>BGPコンバージェンスがプレフィックスの削除処理にどれくらいの時間を要すべきか</u></a>に関する期待と許容度によります。いずれの場合、より具体的なプレフィックスを削除してから30分以上が経過しても、ルートビューのパブリックコレクターでゾンビルートを簡単に確認することができます。</p>
+	<pre class="language-unset"><code class="language-unset">~ % monocle search --start-ts 2025-10-28T12:40:13Z --end-ts 2025-10-28T13:00:13Z --prefix 198.18.0.0/24
+A|1761656125.550447|206.82.105.116|54309|198.18.0.0/24|54309 13335 395747|IGP|206.82.104.31|0|0|54309:111|false|||route-views.ny
+
+</code></pre>
+	<p></p>
+	<p>Tier-1ネットワーク層の最悪の場合、BGPが収束するのには6～11分（あるいはそれ以上）が妥当な時間だと主張するかもしれませんが、それ自体が延長線上にあるように思えます。それを差し置いても、当社のデータからは、ごく本物のBGPゾンビがグローバルルーティングテーブルに存在し、トラフィックに悪影響を及ぼしていることがわかります。興味深いことに、パスハンティングの遅延はIPv4でさらに悪化しており、主要（Tier-1）ネットワークで観測された最長のIPv6への影響は4分強でした。これは、インターネットグローバルルーティングテーブルにあるIPv4プレフィックスの数がIPv6グローバルテーブルより<a href="https://bgp.potaroo.net/index-bgp.html" target="_blank" rel="noopener noreferrer"><u>はるかに多い</u></a>こと、そして、BGPスピーカーがそれらを別々に処理していることによるものと推測できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WOQBZb7MV2a5PA84xm6Be/28e252e5212781ae2d477150692605db/25x_10fps_a.gif" alt="BLOG-3059 6" class="kg-image" width="720" height="405" loading="lazy">
+	</figure>
+	<p><i><sub>出典：RIPEstatのBGPlay</sub></i></p>
+	<p>遅延の一部は、AS13335の相互接続方法に起因しているようです。インターネットの大半と大量にピアリングされているため、経路が特定の場所で行き詰る可能性が高まります。そう考えると、逆方向で運用すれば、ゾンビは短命に終わるでしょう。具体的でないメッセージを13335に持続的にアナウンスし、通常運用中にローカルISP経由で詳細をアナウンスします。取り消しは、ピアリングが不十分なネットワークから行われるため、コンバージェンスまでの時間がより短縮される可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4O7r3Nffpbus6ht3Eo6eiF/a7d577042e43c9b4da988cf9bd29f6fe/BLOG-3059_7.png" alt="BLOG-3059 7" class="kg-image" width="1099" height="909" loading="lazy">
+	</figure>
+	<p>実際、予測したようにルートは行き詰っているのですが、Tier-1ネットワーク層で約20秒しか存在しません。</p>
+	<pre class="language-unset"><code class="language-unset">19. be12488.ccr42.ams03.atlas.cogentco.com
+20. 38.88.214.142
+21. be2020.ccr41.ams03.atlas.cogentco.com
+22. 38.88.214.142
+23. (waiting for reply)
+24. 38.88.214.142
+25. (waiting for reply)
+26. 38.88.214.142
+</code></pre>
+	<p></p>
+	<p>残念ながら、その20秒は影響力のある20秒です。良いとはいえ、私たちが望む場所には至っていません。正確な時間は接続しているネイティブISPネットワークによって異なり、ルーティングが停止する数分に相当する可能性があります。</p>
+	<p>どちらのケースも、最初の発表までの時間で損失は発生せず、ゾンビが作成されることもありませんでした。両方の経路が最初の存続時間中は有効のままであったためです。ゾンビは、より具体的なプレフィックスが完全に取り消された場合にのみ作成されました。新たに発表されたルートは、取り消されたより具体的なルートと同様に、パスハンティングの対象にはなりません。言われるように、良い（新しい）ニュースは速く情報を拡散します。</p>
+	<div class="flex anchor relative">
+		<h2 id="lessening-the-zombie-outbreak">ゾンビの発生を減少させる</h2>
+		<a href="https://blog.cloudflare.com/#lessening-the-zombie-outbreak" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この調査結果から、より具体的なプレフィックスを削除することで、ゾンビがより長い時間にわたって横ばいする可能性があると考えています。このため、BGPゾンビルーティングがオンデマンドBGP機能に依存しているお客様への影響を軽減するためのいくつかの改善を検討しています。</p>
+	<p>スタックルートでCloudflareに<b>到達した</b>トラフィックに関しては、たとえルートが誤って弊社を指していても、トラフィックをより安全に撤回できるよう、BGPトラフィックフォワーディングの改善を内部に導入する予定です。これは、BGPを実行しているサーバーが行う、BGPの<a href="https://www.rfc-editor.org/rfc/rfc1997.html" target="_blank" rel="noopener noreferrer"><u>有名な非エクスポート</u></a>コミュニティの機能によく似ています。つまり、 ルーティング が停止しているために外部者からのトラフィックを受け取った場合でも、トンネル接続または <a href="https://www.cloudflare.com/network-services/products/network-interconnect" target="_blank" rel="noopener noreferrer"><u>Cloudflareネットワーク</u></a> Interconnect（CNI）経由でトラフィックを配信する機会が得られます。デフォルトでトラフィックをさらに際限なく解消できるように、この改善を行った後、プラスの影響をご報告できることを楽しみにしています。</p>
+	<p>Cloudflareのエッジに<b>到達せず</b>、ネットワークプロバイダー間をループするトラフィックについては、別のアプローチを使用する必要があります。より固有のプレフィックスルーティングフォールバックは、BGPゾンビが発生しやすいことがわかっているため、Cloudflareのエッジからトラフィックを排除してオンデマンドのプレフィックスを確保する場合は、複数ステップのドキュメンテーションプロセスを使用することをお客様にお勧めします。ルートループやブラックホールイベントを導入している可能性があります。CloudflareからBYOIPプレフィックスのトラフィックを削除する際のプロセスは次のようになります：</p>
+	<ol>
+		<li>
+			<p>お客様はすでにCloudflareからプレフィックスの例をアナウンスしており、例：198.18.0.0/24</p>
+		</li>
+		<li>
+			<p>お客様は、トラフィックをフェイルオーバーしたいインターネットサービスプロバイダーに対して、ネットワークからプレフィックス198.18.0.0/24（Cloudflare経由で知らせるプレフィックスと同じ長さ）を<i>ネイティブに</i>広報し始める。</p>
+		</li>
+		<li>
+			<p>数分後に、お客様が198.18.0.0/24プレフィックスのCloudflareからBGPの取り消しを伝えます。</p>
+		</li>
+	</ol>
+	<p>結果は、刷新され、同じ長さのプレフィックス（198.18.0.0/24）がグローバルルーティングテーブルに残っているため、影響のあるゾンビは回避されます。ルーターは、失われたより具体的なプレフィックス一致を積極的に探す必要はなく、ネイティブに発信されたパスから顧客のネットワークへのルーティングテーブルに永続的な同じ長さのアナウンスにフォールバックできるため、過剰なパスハンティングは回避されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KmRvPsGUOp5PsNXcKCE1F/78f2c29c8c278d158972114df875ad0c/25x_10fps_b.gif" alt="BLOG-3059 8" class="kg-image" width="720" height="405" loading="lazy">
+	</figure>
+	<p><i><sub>出典：RIPEstatのBGPlay</sub></i></p>
+	<div class="flex anchor relative">
+		<h2 id="what-next">そしてその次は？</h2>
+		<a href="https://blog.cloudflare.com/#what-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今後、より多くの洞察を得られるよう、BGPゾンビの測定方法の改良を続けていきます。また、ゾンビの測定に関する<a href="https://blog.benjojo.co.uk/post/bgp-stuck-routes-tcp-zero-window" target="_blank" rel="noopener noreferrer"><u>コミュニティ</u></a>内の<a href="https://www.thousandeyes.com/bgp-stuck-route-observatory" target="_blank" rel="noopener noreferrer"><u>他の人の作業</u></a>もあり、興味深いもので、有用なデータが生成されています。BGPゾンビの作成に関するソフトウェアバグに対処するために、ルーティングベンダーは<a href="https://datatracker.ietf.org/doc/html/rfc9687" target="_blank" rel="noopener noreferrer"><u>RFC9687</u></a>、BGP SendHoldTimerを実装する必要があります。一般的には、遠側のルーターがBGPメッセージの処理を予期せず停止した場合、ローカルのルーターがSendHoldTimerを介して検出できると考えられます。これにより、ゾンビが長時間にわたって立ち行かなくなる可能性は低くなります。</p>
+	<p>さらに、この記事で、より具体的なプレフィックスアナウンスと過剰なパスハンティングについて観察したことも念頭に置いておくべきでしょう。ネットワークオペレータとして、フェイルオーバーやトラフィックエンジニアリングのために、より具体的なBGPプレフィックスアナウンスに依存している場合、完全なBGPコンバージェンスが発生する前に、ルートが長時間にわたって停止する可能性があることに注意する必要があります。</p>
+	<p>BGPゾンビのような問題に興味をお持ちの方は、Cloudflareでの<a href="https://www.cloudflare.com/en-gb/careers/jobs/?location=default" target="_blank" rel="noopener noreferrer"><u>入社</u></a>や<a href="https://www.cloudflare.com/en-gb/careers/early-talent" target="_blank" rel="noopener noreferrer"><u>インターンシップ</u></a>への応募を検討してください。私たちと一緒に、より良いインターネットを構築しましょう！ </p>
+</div>

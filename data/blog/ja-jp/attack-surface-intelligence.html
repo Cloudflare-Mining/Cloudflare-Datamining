@@ -1,0 +1,356 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/attack-surface-intelligence">English</a>および<a href="https://blog.cloudflare.com/ko-kr/attack-surface-intelligence">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MDF0lDKdfp6P1ju2jcS7Y/5b8c0fa6d648e6ef63c1771ec7ca93c2/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>新しいドメイン、アプリケーション、Webサイト、APIエンドポイントが加わるごとに、組織の攻撃対象領域が拡大します。多くのチームにとって、革新とデプロイメントのスピードは、これらの資産をカタログ化し保護する能力を上回り、多くの場合、管理されていないインフラストラクチャが攻撃者の簡単な侵入口となる「標的が豊富で、リソースが不足する」環境を作り出しています。</p>
+	<p>手作業による監査を自動化することは、インターネット上の存在感を安全に拡大するために不可欠です。こうした理由から、CloudflareダッシュボードのマスターカードのリスクRecon攻撃対象領域インテリジェンス機能で直接、インターネットに直面している死角を継続的に発見、監視、修正することができる統合版を発表できることを嬉しく思います。</p>
+	<p>従量課金プランとEnterpriseアカウントの情報セキュリティ担当者は、2026年第3四半期に統合をプレビューできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="attack-surface-intelligence-can-spot-security-gaps-before-attackers-do">攻撃対象領域インテリジェンスで、攻撃者より前にセキュリティギャップを発見できる</h3>
+		<a href="https://blog.cloudflare.com/#attack-surface-intelligence-can-spot-security-gaps-before-attackers-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>マスターカードのリスクRecon攻撃対象領域インテリジェンスは、一般にアクセス可能なデータのみを使用して、組織のインターネットフットプリント全体をマッピングすることで、外部からの脆弱性を特定し、優先順位付けします。外部からのスキャナとして、このソリューションは即座にデプロイでき、内部の認証情報をもとにしたスキャンでは見逃しがちな「シャドーIT」、忘れられたサブドメイン、不正なクラウドサーバーを検出します。攻撃者が見たものをリアルタイムで確認することで、セキュリティチームはセキュリティギャップを悪用される前に事前に解消することができます。</p>
+	<p>しかし、攻撃者は通常、どのようなセキュリティギャップを悪用しようとしているのでしょうか？マスターカード社は、セキュリティ侵害を経験した15,896社を対象に<a href="https://www.riskrecon.com/report-six-lessons-from-10-years-of-ransomware-attacks" target="_blank" rel="noopener noreferrer"><u>2025年に実施した調査</u></a>で、パッチが適用されていないソフトウェア、公開されているサービス（例：データベース、リモート管理など）、脆弱なアプリケーションセキュリティ（例：認証なし）や古いWeb暗号化は、以下のグラフに見られるように、頻繁な危険信号でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70o4e4XoPHJN1x5OpeNP9x/f6a9f3854368a7f83eccad14412a89a6/image2.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<p>また、同じ調査によると、この地域でサイバーセキュリティ体制の大きなギャップがある企業は、サイバーセキュリティの衛生状態を維持している企業に比べて、ランサムウェア攻撃を受ける可能性が5.3倍、データ漏洩に見舞われる可能性が3.6倍高いことがわかりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-cloudflare-and-mastercard-are-partnering">Cloudflareとマスターカード社が提携する理由</h3>
+		<a href="https://blog.cloudflare.com/#why-cloudflare-and-mastercard-are-partnering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このパートナーシップは、マスターカードの攻撃対象領域に対するインテリジェンスと、セキュリティの問題を特定するインテリジェンスと、Cloudflareの問題解決能力を組み合わせたものです。企業は、マスターカードのデータを使用して、忘れられたドメインや保護されていないクラウドインスタンスなどのシャドーアセットを見つけ、Cloudflareのプロキシを介してトラフィックをルーティングすることで、それらを保護することができます。これにより、基盤となるWebサイトやアプリケーションを変更することなく、セキュリティ制御を即座に導入することができます。</p>
+	<p>1,800万以上のシステムにまたがる約38万8000の組織のサンプルに基づくと、マスターカード社の攻撃対象領域インテリジェンスは、Cloudflareをプロキシとして使用するシステムが、そうでないシステムよりも大幅にセキュリティ衛生管理を備えていることを示しています。</p>
+	<ul>
+		<li>
+			<p><b>ソフトウェアのパッチ適用:</b> ソフトウェアの脆弱性を53%削減</p>
+		</li>
+		<li>
+			<p><b>Web暗号化：</b>SSL/TLSの問題が58%減少</p>
+		</li>
+		<li>
+			<p><b>システムレピュテーション：</b>悪意のある動作の発生が98%減少（例：ボットネットのコマンド＆コントロールサーバーとの通信、フィッシングサイトのホスティングなど）をすることがあります。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69JeczWmG5UioBEK2odUv/08cda631baac7a38422b31a82f36c0a2/image5.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+	</figure>
+	<p>以下の表は、マスターカードが提供するセキュリティ体制インサイトの詳細を示したものです。これらのインサイトは、一般にアクセス可能なホスト、Webアプリケーション、設定をパッシブにスキャンすることで生成されます。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">分類</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">セキュリティチェック</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">説明</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax" rowspan="4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ソフトウェアのパッチ適用</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">アプリケーションサーバー</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パッチが適用されていないアプリケーションサーバーソフトウェア。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OpenSSL</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パッチが適用されていないOpenSSL。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CMSのパッチ適用</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パッチが適用されていないコンテンツ管理システムソフトウェア。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Webサーバー</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">パッチが適用されていないWebサーバーソフトウェア。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">アプリケーションセキュリティ</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CMS認証</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">インターネットに公開されているコンテンツ管理システムの管理インターフェースの列挙。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">高価値のシステム暗号化</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">暗号化が実装されていない機密データを収集するシステムの列挙。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">悪意のあるコード</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">悪意のあるコード（Magecart）を含むシステムの列挙。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax" rowspan="5"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Web暗号化</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">証明書有効期限</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SSL証明書の期限切れ。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">証明書有効日</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SSL証明書の有効日がまだ有効ではありません。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">暗号化ハッシュアルゴリズム</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">脆弱なSSL暗号化ハッシュアルゴリズム。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">暗号化鍵の長さ</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SSL暗号化キーの長さが脆弱。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">証明書件名</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SSL証明書の件名が無効です。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サービス/ネットワークフィルタリング</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">安全でないネットワークサービス</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">データベース（例：SQL Server、PostgreSQLなど）やリモートアクセスサービス（RDP、VNCなど）に依存します。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IoTデバイス</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">プリンター、組み込みシステムインターフェイスなどのIoTデバイスの列挙</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="comprehensive-domain-discovery-continuous-posture-visibility-and-remediation">包括的なドメインの検出、継続的な態勢可視化、修正</h3>
+		<a href="https://blog.cloudflare.com/#comprehensive-domain-discovery-continuous-posture-visibility-and-remediation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflareのセキュリティインサイト</u></a>は、<a href="https://www.cloudflare.com/application-services/products" target="_blank" rel="noopener noreferrer"><u>Cloudflareのアプリケーションセキュリティ</u></a>スイートにおいて、Cloudflareによってプロキシされたあらゆるドメインのリスク（DNS設定ミス、脆弱なWeb暗号化、非アクティブなWAFルールなど）を現在特定します。しかし、大きなセキュリティギャップが残っています。存在を知り得ないドメインを保護することはできません。</p>
+	<p>マスターカードとの連携により、こうした死角は排除されます。マスターカード社は、1200万を超える組織のインターネットフットプリントを継続的にプロファイルすることで、お客様の会社に関連するドメイン、ホスト、ソフトウェアスタックを、まだCloudflareのプロキシの背後になくても特定します。これにより、セキュリティインサイトはシャドーITや保護されていないホストを検出し、CloudflareのWAFとDDoS攻撃対策で保護できます。</p>
+	<p>可視化は最初のステップに過ぎません。発見されたアセットの重要性を理解することで、セキュリティチームは発見に優先順位をつけることができるようになります。各ホストには、重大度レベルが割り当てられます。</p>
+	<ul>
+		<li>
+			<p><b>高重大度:</b> 機密データを収集したり、認証を必要としたり、データベースリスナーやリモートアクセスなどの機密ネットワークサービスを実行するホストに割り当てられます。</p>
+		</li>
+		<li>
+			<p><b>中重要度:</b> 同じクラスCネットワーク上に存在するような、高重要度システムに隣接するパンフレットWebサイトを運営するホストに割り当てられます。</p>
+		</li>
+		<li>
+			<p><b>優先度低：</b>重要システムに隣接していないパンフレットWebサイトを運営するホストに割り当てられます。</p>
+		</li>
+	</ul>
+	<p>以下は、把握していないドメインが多くある企業の架空の例です。これらの検出されたドメインのうち、現在Cloudflareによってプロキシされているのは1つだけです。セキュリティインサイトでは、シャドードメインとホストについて、このレベルの詳細を可視化することができます。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-gpv6 {
+			background-color: #F00;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-473x {
+			border-color: inherit;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-9qug {
+			background-color: #6AA84F;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-g6kh {
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-vw3c {
+			background-color: #EFEFEF;
+			border-color: inherit;
+			color: #1F1F1F;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-6rdc {
+			border-color: inherit;
+			color: #1F1F1F;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 916px">
+		<colgroup>
+			<col style="width: 156px">
+			<col style="width: 82px">
+			<col style="width: 295px">
+			<col style="width: 75px">
+			<col style="width: 169px">
+			<col style="width: 139px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ドメイン</span></th>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Cloudflareが保護</span></th>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ホスト（IP）</span></th>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">緊急度</span></th>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">場所</span></th>
+				<th class="tg-vw3c"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ホスティングプロバイダー</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">大規模検索エンジン.net</span></td>
+				<td class="tg-9qug"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">はい</span></td>
+				<td class="tg-473x"><a href="http://portal.search-engine.net"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">portal.search-engine.net</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XX.5)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">アメリカ合衆国春のフィールド</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">zenith-industries.com</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://vpn.zenith-industries.com"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">vpn.zenith-industries.com</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XXX.106)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">フィンランド ヘルシンキ</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">クラウドノードサービス</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">status-global.com</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://store.stratus-global.com"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">store.stratus-global.com</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XXX.124)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">ドイツ、ミュンヘン</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SwiftStream-Tech</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">Core-logic.cl</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://extranet.core-logic.cl"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">extranet.core-logic.cl</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XXX.178)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">チリ、サンティアゴ</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SecureCanopy Ltd.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">vanguard-labs.com</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://extranet.vanguard-labs.com"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">extranet.vanguard-labs.com</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XX.197)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">メトロポリタン（米国）</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">GlobalSoft Systems</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">fusion-id.com</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://fusion-id.com"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">fusion-id.com</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XXX.146)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">高</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">チェコ、プラハ</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">EuroData-Hub</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">noden-biotech.no</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://store.norden-biotech.no"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">store.norden-biotech.no</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XX.124)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">中</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">アメリカ合衆国シカゴ（米国）</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SwiftStream-Tech</span></td>
+			</tr>
+			<tr>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">noden-biotech.se</span></td>
+				<td class="tg-gpv6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">いいえ</span></td>
+				<td class="tg-473x"><a href="http://store.norden-biotech.se"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">store.norden-biotech.se</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent"> (10.XXX.XX.124)</span></td>
+				<td class="tg-6rdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">中</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">アメリカ合衆国シカゴ（米国）</span></td>
+				<td class="tg-g6kh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SwiftStream-Tech</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i><sup>シャドードメインと組織に関連する非保護ホストの例</sup></i></p>
+	<p>マスターカードはまた、ソフトウェアのパッチ適用、公開されたネットワークサービス（データベース、リモートアクセスなど）、アプリケーションセキュリティ（例：認証されていないCMS）などの分野を含む、インターネットに接続されたシステムのセキュリティ体制を継続的に可視化することを可能にします。これは、以下に示すように、<a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflareのセキュリティインサイト</u></a>を補完するものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/T3ff3WNmedjbAO76X0fQr/d04a60dc4e1d7093832eec12f653e92e/image1.png" alt="" class="kg-image" width="1920" height="1290" loading="lazy">
+	</figure>
+	<p><i><sup>シャドードメイン、プロキシされていないホスト、態勢調査結果を含むセキュリティインサイトダッシュボード</sup></i></p>
+	<p>これらのインサイトは、行動につながる場合にのみ有用です。<a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflareのセキュリティインサイトは</u></a>、ドメインやホストが危険にさらされていることを単に通知するのではなく、問題の解決に向けたガイドを提供します。可能な手順には、Cloudflareプロキシの有効化（ひいてはシャドーゾーンやホストに対するDDoSおよびボット対策）、セキュリティ制御の有効化（WebアプリケーションファイアウォールやWAFなど）、および特定された特定のリスクを軽減するためのより厳格なTLS暗号化の適用が含まれます。スキャンしてみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-updated-security-insights-dashboard">最新情報：セキュリティインサイトダッシュボードの更新</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-updated-security-insights-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は現在、カード会社のRiskRecon攻撃対象領域インテリジェンスを<a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflareのセキュリティ Insights</u></a>ダッシュボードに統合し、シャドードメインや保護されていないホスト、それらに関連するポスチャーギャップを即座に可視化する作業を進めています。</p>
+	<p>インサイトの増加に伴い、ロードマップにはリスクスコアリングやAIを活用した診断パスの構築も含まれます。つまり、インサイトだけでなく、追加の関連相関（パッチが適用されていないホストへのトラフィックなど）を提案し、それを無害化するために必要な特定のWAFルールまたは<a href="https://blog.cloudflare.com/api-abuse-detection"><u>API Shield</u></a>設定を提案するダッシュボードを表示することになります。</p>
+	<p>こちらの<a href="https://www.cloudflare.com/lp/mastercard-defense-program" target="_blank" rel="noopener noreferrer"><u>順番待ちリストにご参加ください</u></a>。</p>
+</div>

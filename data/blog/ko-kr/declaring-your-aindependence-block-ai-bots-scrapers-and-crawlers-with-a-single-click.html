@@ -1,0 +1,320 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">English</a>, <a href="https://blog.cloudflare.com/zh-tw/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Français</a>, <a href="https://blog.cloudflare.com/de-de/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Português</a>, <a href="https://blog.cloudflare.com/es-es/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FDTzC1VAKO8bya2ojApwa/98fa80510a4f0e4b37f8884202c55e5f/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare는 콘텐츠 크리에이터를 대상으로 인터넷을 안전하게 보호하기 위해 모든 AI 봇을 차단하는 새로운 '이지 버튼'을 출시했습니다. 무료 등급 고객을 포함한 모든 고객이 이용할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/D59Fq5QkC4J7Jjo5lM4Fm/fcc55b665562d321bd84f88f53f46b22/image7-1.png" alt="Declaring your AIndependence: block AI bots, scrapers and crawlers with a single click" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer">생성형 AI</a>의 인기로 인해 모델 훈련이나 추론을 실행하는 데 사용하는 콘텐츠에 대한 수요가 급증하고 있습니다. 일부 AI 회사는 웹 스크래핑 봇의 존재를 분명히 인정하고 있지만, 모든 AI 회사가 사실을 투명하게 공개하고 있는 것은 아닙니다. Google은 Reddit의 사용자 생성 콘텐츠 라이선스를 위해 <a href="https://www.reuters.com/technology/reddit-ai-content-licensing-deal-with-google-sources-say-2024-02-22" target="_blank" rel="noopener noreferrer">연간 6,000만 달러를 지불</a>한 것으로 알려졌으며, Scarlett Johansson은 <a href="https://www.nature.com/articles/d41586-024-01578-4" target="_blank" rel="noopener noreferrer">OpenAI가 새로운 개인 비서에 자신의 목소리</a>를 무단으로 사용했다고 주장했습니다. 또한 가장 최근 Perplexity는 웹 사이트의 콘텐츠를 스크래핑하기 위해 <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">적법한 사용자로 위장했다는 의혹을 받기도 했습니다</a>. 대량의 원본 콘텐츠의 가치는 그 어느 때보다 중요해졌습니다.</p>
+	<p>작년 <a href="https://blog.cloudflare.com/ai-bots">Cloudflare는 올바르게 작동하는 AI 봇을 고객이 쉽게 차단할 수 있는 기능</a>을 발표했습니다. 이러한 봇은 <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer">robots.txt</a>를 준수하며, 라이선스가 없는 콘텐츠를 사용하여 모델을 학습하거나 웹 사이트 데이터를 사용하여 <a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">RAG</a> 애플리케이션의 추론을 실행하지 않습니다. 이러한 AI 봇은 규칙을 준수하고 있음에도 불구하고 대다수의 Cloudflare 고객은 이를 차단하기로 선택합니다.</p>
+	<p>Cloudflare는 고객들이 정직하지 않은 방식으로 AI 봇이 자신의 웹 사이트를 방문하는 것을 원하지 않는다는 사실을 잘 알고 있습니다. 이 문제를 해결하기 위해 Cloudflare는 원클릭으로 모든 AI 봇을 차단할 수 있는 새로운 기능을 추가했습니다. 이 기능은 무료 등급 고객을 포함한 모든 고객이 이용할 수 있습니다. 활성화하려면 Cloudflare 대시보드의 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots%2Fconfigure" target="_blank" rel="noopener noreferrer">보안 &gt; 봇</a> 섹션으로 이동하여 ‘AI 스크래퍼 및 크롤러’라고 표시된 토글을 클릭하기만 하면 됩니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aAA77Hl9OM2vtI611QcUI/0992e096262e348b451efd8be296fa27/image9.png" alt="" class="kg-image" width="1800" height="675" loading="lazy">
+
+	</figure>
+	<p>이 기능은 Cloudflare가 모델 학습 목적으로 웹을 광범위하게 스크래핑하는 것으로 파악하는 공격 봇의 새로운 지문을 확인하면 자동으로 업데이트됩니다. Cloudflare는 모든 AI 크롤러 활동을 종합적으로 파악하기 위해 네트워크 전반의 트래픽을 조사했습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xD0lhy89vZb34dtIWukt1/3e0e1ed979a33d344e53d4da2a819e1e/image2.png" alt="" class="kg-image" width="1660" height="746" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ai-bot-activity-today">오늘날의 AI 봇 활동</h3>
+		<a href="https://blog.cloudflare.com/#ai-bot-activity-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>아래 그래프는 Cloudflare 네트워크에서 요청량 기준으로 가장 인기 있는 AI 봇을 보여줍니다. Cloudflare는 널리 사용되는 AI 크롤러 사용자 에이전트를 살펴보고 지난 한 해 동안 다음과 같은 AI 사용자 에이전트가 Cloudflare 플랫폼에 보낸 요청 수를 집계했습니다.</p>
+	<p>Cloudflare 사이트에 대한 요청 수를 살펴보면 상위 4대 AI 크롤러는 <i>Bytespider</i>, <i>Amazonbot</i>, <i>ClaudeBot</i>, _GPTBot_이라는 사실을 확인할 수 있습니다. TikTok을 소유한 중국 기업 ByteDance가 운영하는 _Bytespider_는 ChatGPT의 경쟁사인 Doubao를 지원하는 대규모 언어 모델(LLM)을 위한 학습 데이터를 수집하는 데 사용되는 것으로 알려졌습니다. _Amazonbot_과 _ClaudeBot_은 요청량 면에서 _Bytespider_의 뒤를 잇고 있습니다. Alexa의 질의응답 콘텐츠 색인화에 사용되는 _Amazonbot_은 두 번째로 많은 요청을 전송했으며, Claude 챗봇을 학습시키는 데 활용되는 _ClaudeBot_은 최근 요청량이 증가하고 있는 것으로 알려졌습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13pNq4MJJB92Dcs1ghxC6k/b7e7acc7e65e9e0958eed5d4b4cb0594/image6.png" alt="" class="kg-image" width="1999" height="1262" loading="lazy">
+
+	</figure>
+	<p>Cloudflare는 상위 AI 봇 중에서는 요청 수뿐만 아니라 인터넷 자산 크롤링 범위와 차단 빈도에서도 _Bytespider_가 선두를 달리고 있다는 사실을 확인했습니다. 크롤링 수와 차단 횟수 모두에서 2위를 차지한 _GPTBot_이 그 뒤를 바짝 쫓고 있습니다. OpenAI가 관리하는 _GPTBot_은 ChatGPT 등의 AI 기반 제품을 뒷받침하는 LLM을 위한 학습 데이터를 수집합니다. 아래 표에서 ‘액세스한 웹 사이트 점유율’은 Cloudflare가 보호하는 웹 사이트 중 잘 알려진 AI 봇이 액세스한 웹 사이트의 비율을 나타냅니다.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Bot</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Share of Websites Accessed</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35.46%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.17%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ImagesiftBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CCBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT-User</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.84%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">omgili</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Diffbot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.08%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Claude-Web</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.04%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.01%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>AI 봇</p>
+	<p>액세스한 웹 사이트 점유율</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6m4jV8g9sQ0BLR7OIonsoB/a4c3100a34160c96aea07c4ed4bc6a8d/image3.png" alt="" class="kg-image" width="1866" height="1008" loading="lazy">
+
+	</figure>
+	<p>Bytespider</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Top N Internet properties by number of visitors seen by Cloudflare</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% accessed by AI bots</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% blocking AI bots</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">80.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">53.2%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.8%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47.99%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.92%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44.53%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.36%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38.73%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.98%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gCWVJMv9GajRT3H8BQ5EM/effb5e2b52c0bdecb99f5f4e339c8d1d/image4.png" alt="" class="kg-image" width="1259" height="509" loading="lazy">
+
+	</figure>
+	<p>40.40%</p>
+	<p>GPTBot</p>
+	<p>35.46%</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JpBRAGuQ1DOCTSFu9yHbH/9c11b569a30f68ddb1b4c197054ed1c8/image1.png" alt="" class="kg-image" width="1800" height="563" loading="lazy">
+
+	</figure>
+	<p>ClaudeBot</p>
+	<p>11.17%</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y0G6D2b512V1UAgR6sooD/4cc9b659f091e84facbec66a30baafad/image5.png" alt="" class="kg-image" width="1386" height="414" loading="lazy">
+
+	</figure>
+	<p>ImagesiftBot</p>
+	<p>8.75%</p>
+	<p>CCBot</p>
+	<p>2.14%</p>
+	<p>ChatGPT-User</p>
+	<p>1.84%</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iwX6mvdnqg3KGRN0dMHou/a7c0a39275680db58f49c9292ca180c7/image8.png" alt="" class="kg-image" width="1874" height="1583" loading="lazy">
+
+	</figure>
+	<p>omgili</p>
+	<p>0.10%</p>
+	<p>Diffbot</p>
+	<p>0.08%</p>
+	<p>Claude-Web</p>
+	<p>0.04%</p>
+	<p>PerplexityBot</p>
+	<p>0.01%</p>
+	<p>Cloudflare 분석을 통해 요청량 및 액세스하는 온라인 자산 수 측면에서 가장 많이 사용되는 크롤러가 밝혀졌지만, 많은 고객들은 자신의 사이트를 활발하게 크롤링하는 더 널리 퍼진 AI 크롤러에 대해 인식하지 못하고 있을 가능성이 높습니다. Cloudflare Radar 팀은 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">상위 10,000개 인터넷 도메인</a>에서 가장 많이 활동하는 AI 봇을 파악하기 위해 상위 robots.txt 항목을 분석한 후, Cloudflare가 보호하는 사이트에서 이러한 봇이 얼마나 자주 관찰되는지 확인했습니다.</p>
+	<p>이러한 사이트에 대해 허용되지 않는 크롤러에 초점을 맞춘 아래 그래프는 고객이 robots.txt에서 가장 많이 참조하는 것은 <i>GPTBot, CCBot</i>, _Google_이지만, <i>Bytespider</i> 및 _ClaudeBot_과 같은 인기 있는 AI 크롤러는 명시적으로 차단하지 않는다는 사실을 보여줍니다.</p>
+	<p>인터넷에 이러한 AI 봇이 넘쳐나는 상황에서 Cloudflare는 웹 사이트 운영자들이 어떻게 대응하고 있는지 궁금했습니다. 지난 6월, AI 봇은 Cloudflare를 사용하여 상위 100만 개의 인터넷 자산 중 약 39%에 액세스했지만, 이러한 요청을 차단하거나 대응하기 위한 조치를 취한 자산은 2.98%에 불과했습니다. 또한 순위가 높은(인기 있는) 인터넷 자산일수록 AI 봇의 표적이 될 가능성이 높으며, 따라서 이러한 요청을 차단할 가능성도 높아집니다.</p>
+	<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top}</p>
+	<p>방문자 수 기준으로 Cloudflare가 확인한 상위 N개의 인터넷 자산</p>
+	<p>AI 봇의 액세스 비율(%)</p>
+	<p>AI 봇 차단 비율(%)</p>
+	<p>10</p>
+	<p>80.0%</p>
+	<p>40.0%</p>
+	<p>100</p>
+	<p>63.0%</p>
+	<p>16.0%</p>
+	<p>1,000</p>
+	<p>53.2%</p>
+	<p>8.8%</p>
+	<p>10,000</p>
+	<p>47.99%</p>
+	<p>8.92%</p>
+	<p>100,000</p>
+	<p>44.53%</p>
+	<p>6.36%</p>
+	<p>1,000,000</p>
+	<p>38.73%</p>
+	<p>2.98%</p>
+	<p>웹 사이트 운영자들은 robots.txt를 사용하여 이러한 AI 크롤러에 대한 액세스를 완전히 차단하고 있습니다. 그러나 이러한 차단은 봇 운영자가 robots.txt를 존중하고 <a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer">RFC9309</a>(사용자에 대한 변형이 제품 토큰과 일치하도록 보장)을 준수하여 인터넷 자산을 방문할 때 자신을 정확하게 식별할 수 있습니다. 하지만 봇 운영자는 사용자 에이전트를 쉽게 변경할 수 있어 이러한 조치가 큰 효과를 발휘하지 못합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-find-ai-bots-pretending-to-be-real-web-browsers">실제 웹 브라우저처럼 위장한 AI 봇을 찾아내는 방법</h3>
+		<a href="https://blog.cloudflare.com/#how-we-find-ai-bots-pretending-to-be-real-web-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>안타깝게도 Cloudflare는 봇 조작자가 스푸핑된 사용자 에이전트를 사용하여 실제 브라우저인 것처럼 보이게 하려는 시도를 관찰했습니다. Cloudflare는 이러한 활동을 지속적으로 모니터링해 왔으며, 운영자가 사용자 에이전트에 대해 속이려고 시도할 때도 당사의 글로벌 머신 러닝 모델이 이러한 활동을 항상 봇으로 식별해 왔다고 자신 있게 말씀드릴 수 있습니다.</p>
+	<p><a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">다른 사람들</a>이 <a href="https://www.wired.com/story/perplexity-is-a-bullshit-machine" target="_blank" rel="noopener noreferrer">자신의 활동을 숨기려고</a> 시도하는 특정 봇을 예로 들어 보겠습니다. Cloudflare는 분석을 실행하여 머신 러닝 모델이 이 봇의 트래픽을 점수화하는 방식을 확인했습니다. 아래 다이어그램에서 볼 수 있듯이 모든 <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">봇 점수</a>가 30점 미만으로 확실히 낮게 나타나고 있으며, 이는 Cloudflare 점수 시스템이 이 활동이 봇에 의한 것일 가능성이 높다고 판단하고 있음을 나타냅니다.</p>
+	<p>이 다이어그램은 <a href="https://blog.cloudflare.com/residential-proxy-bot-detection-using-machine-learning">Cloudflare 최신 모델</a>을 사용한 요청 점수를 반영하며, ‘더 뜨거운’ 색상은 해당 범위에 속하는 요청이 많다는 것을 의미하고 ‘더 차가운’ 색상은 요청이 적다는 것을 나타냅니다. 대부분의 요청이 하단의 두 대역에 속하는 것을 관찰할 수 있는데, 이는 Cloudflare의 모델이 문제를 일으킨 봇에 9점 이하의 점수를 부여했다는 사실을 보여줍니다. 봇 운영자가 사용자 에이전트를 가장 먼저 변경할 것으로 예상하기 때문에 사용자 에이전트를 변경해도 점수에 영향을 미치지 않습니다.</p>
+	<p>Cloudflare의 권고에 따라 봇 점수가 30점 미만인 방문자에게 추가 인증 단계를 진행하도록 설정된 기존 WAF 규칙이 있는 모든 고객은 새로운 조치 없이도 이 AI 봇 트래픽을 모두 자동으로 차단했습니다. 향후 유사한 기법을 사용하여 자신의 활동을 숨기는 AI 봇에 대해서도 동일하게 적용됩니다.</p>
+	<p>Cloudflare는 봇 점수를 계산하기 위해 Cloudflare 글로벌 신호를 활용하며, 이는 위와 같은 AI 봇의 경우 ‘봇일 가능성이 있는’ 것으로 올바르게 식별하고 점수를 매기는 것을 나타냅니다.</p>
+	<p>악의적인 행위자가 웹 사이트를 대규모로 크롤링하려고 시도하는 경우, 일반적으로 Cloudflare가 지문을 확인할 수 있는 도구와 프레임워크를 사용합니다. Cloudflare는 모든 지문에 대해 초당 평균 5,700만 건 이상의 요청을 확인하는 Cloudflare 네트워크를 활용하여 이 지문의 신뢰성을 파악합니다. Cloudflare는 모델을 구동하기 위해 여러 신호에 대한 글로벌 집계를 계산합니다. 이러한 집계된 신호를 기반으로 Cloudflare 모델은 앞서 언급한 봇과 같은 회피형 AI 봇의 트래픽을 봇으로 적절히 지정할 수 있었습니다.</p>
+	<p>전 세계적으로 집계된 이 데이터의 결론은 봇을 수동으로 핑거프린팅할 필요 없이 새로운 스크래핑 도구와 그 동작을 즉시 탐지할 수 있어 최신 봇 활동으로부터 고객을 보호할 수 있다는 점입니다.</p>
+	<p>올바르게 작동하지 않는 AI 봇에 대한 정보가 있으시다면 Cloudflare가 기꺼이 조사해 드리겠습니다. 올바르게 작동하지 않는 AI 크롤러를 신고할 수 있는 두 가지 옵션은 다음과 같습니다.</p>
+	<ol>
+		<li>
+			<p>Enterprise Bot Management 고객은 다음과 같이 문제 행동을 확인한 트래픽 세그먼트를 선택하기만 하면 Bot Analytics를 통해 미탐(False Negative) <a href="https://developers.cloudflare.com/bots/concepts/feedback-loop" target="_blank" rel="noopener noreferrer">피드백 루프</a> 보고서를 제출할 수 있습니다.</p>
+		</li>
+	</ol>
+	<p>2. 또한, 모든 Cloudflare 고객이 허가 없이 웹 사이트를 스크래핑하는 AI 봇에 대한 보고서를 제출할 수 있는 <a href="https://docs.google.com/forms/d/14bX0RJH_0w17_cAUiihff5b3WLKzfieDO4upRlo5wj8/edit" target="_blank" rel="noopener noreferrer">보고 도구</a>를 설정했습니다.</p>
+	<p>Cloudflare는 일부 AI 기업들이 봇 탐지를 피하고자 계속해서 규칙을 우회하여 콘텐츠에 접근하려 할 것이라고 우려하고 있습니다. Cloudflare는 AI 스크래퍼 및 크롤러 규칙에 더 많은 봇 차단 조치를 추가하고 머신 러닝 모델을 개선하는 등 지속적으로 경계를 늦추지 않을 것입니다. 이를 통해 인터넷을 콘텐츠 크리에이터가 성공할 수 있는 공간으로 유지하고, 이들이 학습 또는 추론 실행에 콘텐츠를 사용하는 모델을 완전히 제어할 수 있도록 지원할 계획입니다.</p>
+</div>

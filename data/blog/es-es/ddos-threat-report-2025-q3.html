@@ -1,0 +1,167 @@
+<div class="mb2 gray5">8 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/ddos-threat-report-2025-q3">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2025-q3">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2025-q3">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2025-q3">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2025-q3">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2025-q3">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-2025-q3">Português</a>, <a href="https://blog.cloudflare.com/ru-ru/ddos-threat-report-2025-q3">Рyсский</a>, <a href="https://blog.cloudflare.com/pl-pl/ddos-threat-report-2025-q3">Polski</a> y <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2025-q3">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z356UL3P2c8iLMKV1npwH/f8c565d7adc848a28f6a9eef4cd6743c/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Te damos la bienvenida a la 23.ª edición del informe trimestral sobre amenazas DDoS de Cloudflare. Este informe ofrece un análisis exhaustivo de la evolución del panorama de amenazas de los <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataques de denegación de servicio distribuido (DDoS)</u></a> basado en los datos de la <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>red de Cloudflare</u></a>. En esta edición, nos centramos en el 3.er trimestre de 2025.</p>
+	<p>En el 3.er trimestre de 2025, la botnet Aisuru acaparó toda la atención con un enorme ejército de entre 1-4 millones de servidores infectados en todo el mundo. Aisuru lanzó ataques DDoS hipervolumétricos que superaban habitualmente 1&nbsp;TB/s y 1000 millones de paquetes por segundo. El número de estos ataques se disparó un 54&nbsp;% en términos intertrimestrales, con una media de 14 ataques hipervolumétricos diarios. La magnitud de los ataques alcanzó niveles sin precedentes, hasta un pico de 29,7&nbsp;TB/s y 14&nbsp;100&nbsp;millones de paquetes por segundo.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-insights">Aspectos clave</h2>
+		<a href="https://blog.cloudflare.com/#key-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Además de Aisuru, otros aspectos clave de este informe son:</p>
+	<ol>
+		<li>
+			<p>El tráfico de ataques DDoS contra empresas de IA aumentó hasta un 347&nbsp;% intermensual en septiembre de 2025, a medida que crecía la preocupación pública y se intensificaba la revisión normativa de la IA.&nbsp;</p>
+		</li>
+		<li>
+			<p>La escalada de las tensiones comerciales entre la Unión Europea y China por los minerales de tierras raras y los aranceles a los vehículos eléctricos coincide con un aumento significativo de los ataques DDoS contra el sector de la minería, los minerales y los metales, así como contra el sector de la automoción en el trimestre en revisión.</p>
+		</li>
+		<li>
+			<p>En esos meses, las defensas autónomas de Cloudflare bloquearon un total de 8,3&nbsp;millones de ataques DDoS. Esto supone una media de casi 3780&nbsp;ataques DDoS por hora. El número de ataques DDoS repuntó un 15&nbsp;% intertrimestral y un 40&nbsp;% interanual.&nbsp;</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attacks-in-numbers">Ataques DDoS en cifras</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attacks-in-numbers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En lo que va de 2025, y a falta de un trimestre para que termine el año, Cloudflare ya ha mitigado 36,2&nbsp;millones de ataques DDoS. Eso equivale al 170&nbsp;% de los ataques DDoS que Cloudflare mitigó a lo largo de 2024. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QLCQUXGrmRZcmIwHMCbTv/a09ba99c8f31dec842b2f8a5199f6ed1/image7.png" alt="" class="kg-image" width="1674" height="1012" loading="lazy">
+	</figure>
+	<p>En el 3.er trimestre de 2025, Cloudflare detectó y mitigó automáticamente 8,3&nbsp;millones de ataques DDoS, lo que representa un aumento del 15&nbsp;% en términos intertrimestrales y del 40&nbsp;% en términos interanuales.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZmBSvQBKaYpeWCyK1FGOG/a4b853fdcd925c7719719cfdc8ab93b1/image10.png" alt="" class="kg-image" width="1678" height="998" loading="lazy">
+	</figure>
+	<p>Los ataques DDoS a la capa de red, que representaron el 71&nbsp;% de los ataques DDoS en el periodo, o 5,9 millones de ataques DDoS, se incrementaron un 87&nbsp;% intertrimestral y un 95&nbsp;% interanual. Sin embargo, los ataques DDoS HTTP, que supusieron solo el 29&nbsp;% de los ataques DDoS en el 3.er trimestre de 2025, o 2,4&nbsp;millones de ataques DDoS, disminuyeron un 41&nbsp;% en comparación con el trimestre anterior y un 17&nbsp;% respecto al mismo periodo del año pasado.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1O5ch4cMbuknOjrqbafPNg/2316adb67b36151b7761c2b4badc996b/image17.png" alt="" class="kg-image" width="1686" height="1032" loading="lazy">
+	</figure>
+	<p>En el 3.er trimestre de 2025, Cloudflare mitigó una media de 3780&nbsp;ataques DDoS cada hora.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oAh0gu3V3vynIWzz3GEQ8/f880711ec0fb6c70ba7db3d2e1916499/image9.png" alt="" class="kg-image" width="1908" height="800" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="aisuru-breaking-records-with-ultrasophisticated-hyper-volumetric-ddos-attacks">Aisuru bate récords con ataques DDoS hipervolumétricos y ultrasofisticados</h2>
+		<a href="https://blog.cloudflare.com/#aisuru-breaking-records-with-ultrasophisticated-hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Fuerza disruptiva</b></p>
+	<p>Aisuru apuntó a proveedores de telecomunicaciones, <a href="https://www.cloudflare.com/gaming" target="_blank" rel="noopener noreferrer"><u>empresas de videojuegos</u></a>, proveedores de alojamiento web y <a href="https://www.cloudflare.com/banking-and-financial-services" target="_blank" rel="noopener noreferrer"><u>servicios financieros</u></a>, por nombrar algunos. También causó "una interrupción colateral generalizada de Internet [en Estados Unidos]", según informó <a href="https://krebsonsecurity.com/2025/10/ddos-botnet-aisuru-blankets-us-isps-in-record-ddos" target="_blank" rel="noopener noreferrer"><u>Krebs on Security</u></a>, simplemente debido a la cantidad de tráfico de botnets que se enruta a través de los proveedores de acceso a Internet (ISP).&nbsp;</p>
+	<p>Piénsalo bien. Si el tráfico de ataque de Aisuru puede interrumpir partes de la infraestructura de Internet de Estados Unidos cuando dichos proveedores de acceso a Internet ni siquiera eran el objetivo del ataque, imagina lo que puede hacer cuando se dirige directamente a ISP sin protección o con una protección deficiente, <a href="https://www.cloudflare.com/the-net/government/critical-infrastructure" target="_blank" rel="noopener noreferrer"><u>infraestructuras críticas</u></a>, <a href="https://www.cloudflare.com/healthcare" target="_blank" rel="noopener noreferrer"><u>servicios sanitarios</u></a>, servicios de emergencia y sistemas militares.&nbsp;</p>
+	<p><b>Estadísticas sobre botnets de alquiler y ataques DDoS</b></p>
+	<p>Los distribuidores ofrecen "fragmentos" de Aisuru como botnets de alquiler, por lo que cualquiera puede potencialmente sembrar el caos en naciones enteras paralizando las redes troncales y saturando los enlaces de Internet. De esta forma, millones de usuarios se verían afectados y se dificultaría el acceso a servicios esenciales, todo ello por unos cientos o unos pocos miles de dólares estadounidenses.&nbsp;</p>
+	<p>Desde principios de 2025, Cloudflare ya ha mitigado 2867&nbsp;ataques de Aisuru. Solo en el 3.er trimestre, Cloudflare mitigó 1304&nbsp;ataques hipervolumétricos iniciados por Aisuru. Esta cifra representa un aumento del 54&nbsp;% respecto al trimestre anterior. Entre ellos se incluyen el ataque DDoS de 29,7&nbsp;TB/s y el ataque DDoS de 14&nbsp;100&nbsp;millones de paquetes por segundo, que batieron el récord mundial.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UZV89JNOcl0yLbG4HDgvz/0061bb2be7a8ae9a7b80b88ce4988e93/image15.png" alt="" class="kg-image" width="1690" height="994" loading="lazy">
+	</figure>
+	<p>Los 29,7&nbsp;TB/s correspondían a un ataque UDP de bombardeo masivo que atacaba una media de 15&nbsp;000 puertos de destino por segundo. El ataque distribuyó aleatoriamente varios atributos de paquetes en un intento por evadir las defensas, pero los sistemas de mitigación de Cloudflare detectaron y mitigaron todos los ataques, incluido este, de forma totalmente autónoma. Más información sobre <a href="https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack/#how-cloudflare-defends-against-large-attacks"><u>Cómo Cloudflare mitiga los ataques DDoS hipervolumétricos</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DtwdZEIMGpvEsSlj1qfhm/9f2448d11b9ae69fd2372856b4755ca7/image12.png" alt="" class="kg-image" width="1906" height="966" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="attack-characteristics">Características de los ataques</h2>
+		<a href="https://blog.cloudflare.com/#attack-characteristics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aunque la mayoría de los ataques DDoS son relativamente pequeños, en el 3.er&nbsp;trimestre, la cantidad de ataques DDoS que superaron los 100&nbsp;millones de paquetes por segundo aumentó un 189&nbsp;% intertrimestral. Del mismo modo, los ataques que superaron 1&nbsp;TB/s se dispararon un 227&nbsp;% respecto al trimestre anterior. En la capa HTTP, cuatro de cada 100 ataques superaron 1 millón de solicitudes por segundo.&nbsp;</p>
+	<p>Además, la mayoría de los ataques, el 71&nbsp;% de los ataques DDoS HTTP y el 89&nbsp;% de los ataques a la capa de red, finalizaron en menos de 10 minutos, y eso es demasiado rápido para que cualquier humano o servicio bajo demanda pueda reaccionar. Un ataque breve puede durar solo unos segundos, pero la interrupción que causa puede ser grave, y la recuperación lleva mucho más tiempo. Los equipos de ingeniería y operaciones se ven entonces obligados a seguir un proceso complejo y de múltiples pasos para volver a poner en funcionamiento los sistemas críticos, comprobar la coherencia de los datos en los sistemas distribuidos y restablecer un servicio seguro y fiable para los clientes.&nbsp;</p>
+	<p>El impacto de los ataques DDoS de corta duración, ya sean hipervolumétricos o no, puede extenderse mucho más allá de la duración del ataque.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6N0gv9eyTPPFU4z8PtTVKL/14a52537d3f0fbecf70b1b3b1abd6af5/image5.png" alt="" class="kg-image" width="1916" height="984" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-attack-sources">Principales orígenes de los ataques</h2>
+		<a href="https://blog.cloudflare.com/#top-attack-sources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Siete de los diez principales orígenes de los ataques se encuentran en Asia, con Indonesia a la cabeza. Indonesia es el principal origen de los ataques DDoS y lleva un año entero (desde el 3.er trimestre de 2024) ocupando el primer puesto en el ranking mundial. Incluso antes de eso, Indonesia siempre había figurado entre los primeros puestos de las listas de orígenes de ataques. En el 2.º trimestre de 2024, Indonesia fue el segundo principal origen, tras escalar desde posiciones inferiores en trimestres y años anteriores.</p>
+	<p>Para demostrar el auge de Indonesia como centro de ataques DDoS, en solo cinco años (desde el 3.er trimestre de 2021), el porcentaje de solicitudes de ataques DDoS HTTP originadas en Indonesia ha aumentado un asombroso 31&nbsp;900&nbsp;%.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/266w30HDsQmP5YZ2FGl7ZT/a65ec3bfea8d887461b6248ff9bfb59e/image14.png" alt="" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-attacked-industries">Sectores más afectados por los ataques</h2>
+		<a href="https://blog.cloudflare.com/#top-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Ataques DDoS contra minerales de tierras raras</b></p>
+	<p>Los ataques DDoS contra la industria de la minería, los minerales y los metales se alzaron significativamente en el 3.er trimestre de 2025, cuando la <a href="https://www.consilium.europa.eu/en/press/press-releases/2025/07/24/25th-eu-china-summit-eu-press-release" target="_blank" rel="noopener noreferrer"><u>25.ª cumbre comercial entre la Unión Europea y China</u></a> fue testigo de crecientes tensiones en torno a los aranceles sobre los vehículos eléctricos, las exportaciones de tierras raras y cuestiones de ciberseguridad, según publicaron varios medios de comunicación. La BBC <a href="https://www.bbc.co.uk/news/articles/clyxk4ywppzo" target="_blank" rel="noopener noreferrer"><u>informó</u></a> de que "China también elevó los controles de exportación de tierras raras y minerales críticos". En general, el sector de la minería, los minerales y los metales ascendió 24 puestos en la clasificación mundial, convirtiéndose en el 49.º sector más afectado por los ataques a nivel mundial.</p>
+	<p>El sector automotor experimentó el mayor repunte en el número de ataques DDoS, que le hizo subir 62 puestos en solo un trimestre, situándose como el 6.º&nbsp;sector más perjudicado del mundo. Las empresas de ciberseguridad también vieron un aumento significativo en los ataques DDoS. El sector de la ciberseguridad escaló 17&nbsp;posiciones, y se convirtió en el 13.º sector peor parado.</p>
+	<p><b>Los ataques DDoS contra la IA se dispararon un 347%</b></p>
+	<p>En septiembre de 2025, una encuesta del<a href="https://www.theguardian.com/technology/2025/sep/22/more-britons-view-ai-as-economic-risk-than-opportunity-tony-blair-thinktank-finds?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer"> <u>Instituto Tony Blair</u></a> reveló que los británicos consideraban la IA más un riesgo económico que una oportunidad, lo que provocó importantes titulares sobre la automatización y la confianza. La<a href="https://www.localgovernmentlawyer.co.uk/governance/396-governance-news/62164-law-commission-to-review-public-sector-use-of-ai-in-automated-decisions?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer"> <u>Comisión de Derecho del Reino Unido</u></a> inició una revisión sobre el uso de la IA en el Gobierno, convirtiéndolo en un mes destacado para la ética de la IA, la regulación y la adopción de la IA generativa. En septiembre de 2025, Cloudflare también observó picos intermensuales de hasta el 347&nbsp;% en el tráfico de ataques DDoS HTTP contra empresas de IA generativa (según una muestra de los principales servicios de IA generativa).</p>
+	<p><b>Los 10 sectores peor parados</b></p>
+	<p>En el 3.er trimestre de 2025, el sector de la tecnología y los servicios de la información encabezó la lista como el más afectado, seguido por las telecomunicaciones, las apuestas y los casinos. Cabe destacar que el sector automotor escaló de forma espectacular 62 puestos con respecto al trimestre anterior. El sector de medios de comunicación, producción y edición también experimentó un fuerte aumento, precedido por el sector de servicios bancarios y financieros, el <a href="https://www.cloudflare.com/retail" target="_blank" rel="noopener noreferrer"><u>sector minorista</u></a> y el sector de la electrónica de consumo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XfLCO7VG8CE1oCqMvz56y/3848413b8c0d13c74d625a1ca116d272/image11.png" alt="" class="kg-image" width="1999" height="1215" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-attacked-locations">Ubicaciones más afectadas por los ataques</h2>
+		<a href="https://blog.cloudflare.com/#top-attacked-locations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Existe una correlación directa entre los eventos geopolíticos y la actividad de los ataques DDoS.</p>
+	<p><b>¡No a los saqueos!</b></p>
+	<p>"Lootuvaifi" (¡No a los saqueos!) en maldivo<b>, </b>se convirtió en el grito de guerra de las <a href="https://en.wikipedia.org/wiki/2025_Maldivian_protests" target="_blank" rel="noopener noreferrer"><u>protestas de 2025 en Maldivas</u></a>, cuando los manifestantes salieron a las calles para oponerse a la "corrupción percibida del Gobierno y el retroceso democrático", que culminó con el proyecto de ley sobre los medios de comunicación que "pone fin a la libertad de expresión", y que, según el <a href="https://www.ohchr.org/en/press-releases/2025/09/un-human-rights-chief-calls-repeal-new-media-law-maldives" target="_blank" rel="noopener noreferrer"><u>Alto Comisionado de las Naciones Unidas para los Derechos Humanos</u></a>, "socavará gravemente la libertad de los medios de comunicación y el derecho a la libertad de expresión del pueblo de Maldivas si no se retira". Las protestas maldivas de 2025 estuvieron acompañadas por un aluvión de ataques DDoS. En consecuencia, Maldivas fue el país que experimentó el mayor aumento de ataques DDoS. En el 3.er trimestre de 2025, Maldivas escaló 125 puestos, convirtiéndose en el 38.º país más afectado por ataques del mundo.</p>
+	<p><b>Bloqueemos todo</b></p>
+	<p>El <a href="https://www.reuters.com/world/europe/block-everything-protests-sweep-across-france-scores-arrested-2025-09-10" target="_blank" rel="noopener noreferrer"><u>movimiento de protesta nacional</u></a>, "Bloqueemos todo", o "Bloquons Tout" en francés, fue lanzado por los sindicatos franceses en septiembre de 2025 para oponerse al Gobierno del presidente Macron por las nuevas medidas de austeridad, los cambios en el sistema de pensiones y el aumento del coste de la vida. Mientras los sindicatos convocaban huelgas coordinadas y bloqueos de transporte para paralizar el país, los ciberdelincuentes atacaron sitios web y servicios de Internet franceses con oleadas de ataques DDoS. Francia ascendió 65 puestos con respecto al trimestre anterior, lo que la convierte en el 18.º país más afectado por ataques en todo el mundo.&nbsp;</p>
+	<p><b>"Línea roja por Gaza en Bruselas"</b></p>
+	<p>Se observó un aumento de los ataques DDoS coincidiendo con las protestas en más países. Por ejemplo, <a href="https://www.euronews.com/2025/09/07/tens-of-thousands-of-protesters-draw-the-red-line-for-gaza-in-brussels" target="_blank" rel="noopener noreferrer"><u>Bélgica</u></a> escaló 63 posiciones, convirtiéndose en el 74.º país más afectado del mundo, cuando "decenas de miles de manifestantes trazaron la línea roja por Gaza en Bruselas".</p>
+	<p><b>Los 10 países más afectados</b></p>
+	<p>En el 3.er trimestre de 2025, China siguió siendo el país más afectado, seguido de Turquía y Alemania, que ocuparon el segundo y el tercer lugar, respectivamente. Los cambios más notables en este trimestre fueron el aumento de los ataques DDoS contra Estados Unidos, que escaló 11 puestos, convirtiéndose en el quinto país que recibió más ataques. Filipinas experimentó el mayor aumento dentro de los 10 primeros puestos, ya que escaló 20 posiciones.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gMNTNdj0YIhjmKlQDgHqD/a7d47f2e54236aa362ed89540b9c5a48/image3.png" alt="" class="kg-image" width="1999" height="1446" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="attack-vectors">Vectores de ataque&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Ataques DDoS a la capa de red</b></p>
+	<p>La cantidad de <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataques DDoS UDP</u></a>, impulsados en parte por los ataques Aisuru, aumentó un 231&nbsp;% intertrimestral, lo que los convirtió en el principal vector de ataque a la capa de red. <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>Las inundaciones DNS</u></a> ocuparon el segundo lugar, <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>las inundaciones SYN</u></a> el tercero y <a href="https://www.cloudflare.com/learning/ddos/ping-icmp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>las inundaciones ICMP</u></a> el cuarto, lo que representa algo más de la mitad de todos los ataques DDoS a la capa de red.</p>
+	<p>Aunque han pasado casi 10 años desde su primera aparición importante, los ataques DDoS de la botnet Mirai siguen siendo bastante comunes. Casi dos de cada 100 ataques DDoS a la capa de red son lanzados por variantes de la <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>botnet Mirai</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Efit0jw1fku9MRQigXN9n/da577b0ff61b4f7fda9dd924a0503884/image19.png" alt="" class="kg-image" width="1999" height="771" loading="lazy">
+	</figure>
+	<p><b>Ataques DDoS HTTP</b></p>
+	<p>Prácticamente el 70&nbsp;% de los ataques DDoS HTTP procedió de <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer"><u>botnets</u></a> que Cloudflare ya conocía. Esto refleja una de las ventajas que obtienen nuestros clientes cuando utilizan Cloudflare. Una vez que una botnet ataca a uno de los millones de clientes de Cloudflare, todos quedan automáticamente protegidos de esa botnet.</p>
+	<p>Otro 20&nbsp;% aproximadamente de los ataques DDoS HTTP procedió de navegadores falsos o sin interfaz, o incluyeron atributos HTTP sospechosos. El 10&nbsp;% restante fue una combinación de <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>inundaciones genéricas</u></a>, solicitudes inusuales, ataques de destrucción de caché y ataques contra puntos finales de inicio de sesión.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8BohIaUui3UFOf6njtjM9/30534ee91a2317f97784bed3e9ddea35/image8.png" alt="" class="kg-image" width="1862" height="750" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-legacy-ddos-solutions-no-longer-suffice">Por qué las soluciones heredadas contra los ataques DDoS ya no son suficientes</h2>
+		<a href="https://blog.cloudflare.com/#why-legacy-ddos-solutions-no-longer-suffice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hemos entrado en una era en la que los ataques DDoS han crecido rápidamente en sofisticación y tamaño, más allá de lo que podríamos haber imaginado hace unos años. Muchas organizaciones han enfrentado desafíos para mantenerse al día con este panorama de amenazas en evolución.&nbsp;</p>
+	<p>Las organizaciones que dependen de dispositivos de mitigación locales o de soluciones de centros de filtrado bajo demanda pueden verse beneficiadas si revisan su estrategia de defensa, dado el panorama actual de las amenazas.</p>
+	<p>Cloudflare, con su <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>vasta red global</u></a> y sus <a href="https://developers.cloudflare.com/ddos-protection/about" target="_blank" rel="noopener noreferrer"><u>sistemas autónomos de mitigación de DDoS</u></a>, se compromete a proporcionar<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u> protección contra DDoS gratuita e ilimitada</u></a> a todos los clientes, independientemente del tamaño, la duración o la cantidad de los ataques DDoS a los que se enfrenten.</p>
+</div>

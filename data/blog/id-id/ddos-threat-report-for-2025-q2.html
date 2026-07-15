@@ -1,0 +1,469 @@
+<div class="mb2 gray5">15 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2025-q2">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2025-q2">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2025-q2">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2025-q2">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2025-q2">한국어</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2025-q2">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/ddos-threat-report-for-2025-q2">Nederlands</a>, dan <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2025-q2">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2caEYpNfjHYpwi9BCPDg0J/6e9f22e5301fba13a6e0e52c89554258/image12.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Selamat datang di Laporan Ancaman DDoS Cloudflare edisi ke-22. Laporan yang diterbitkan setiap kuartal ini memberikan analisis komprehensif tentang perkembangan lanskap ancaman <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>serangan Distributed Denial of Service (DDoS)</u></a> berdasarkan data dari <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>jaringan Cloudflare</u></a>. Dalam edisi ini, kami fokus pada kuartal kedua tahun 2025. Untuk melihat laporan sebelumnya, kunjungi <a href="http://www.ddosreport.com" target="_blank" rel="noopener noreferrer"><u>www.ddosreport.com</u></a>.</p>
+	<p>Juni merupakan bulan tersibuk untuk serangan DDoS pada Q2 2025, mencakup hampir 38% dari seluruh aktivitas yang diamati. Salah satu target penting adalah outlet berita independen Eropa Timur yang dilindungi oleh Cloudflare, yang melaporkan serangan setelah meliput parade Pride lokal selama Bulan Pride LGBTQ.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-ddos-insights">Wawasan utama DDoS</h2>
+		<a href="https://blog.cloudflare.com/#key-ddos-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Serangan DDoS terus memecahkan rekor. Selama Q2 2025, Cloudflare secara otomatis memblokir serangan DDoS terbesar yang pernah dilaporkan, dengan puncaknya pada <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos"><u>7,3 terabit per detik (Tbps)</u></a> dan 4,8 miliar paket per detik (Bpps).</p>
+		</li>
+		<li>
+			<p>Secara keseluruhan, pada Q2 2025, serangan DDoS hiper-volumetrik meningkat pesat. Cloudflare memblokir lebih dari 6.500 serangan DDoS hiper-volumetrik, rata-rata 71 per hari.&nbsp;</p>
+		</li>
+		<li>
+			<p>Meskipun jumlah keseluruhan serangan DDoS turun dibandingkan kuartal sebelumnya — yang mengalami lonjakan belum pernah terjadi sebelumnya didorong oleh kampanye skala besar yang menargetkan jaringan Cloudflare dan infrastruktur Internet penting yang dilindungi oleh Cloudflare — jumlah serangan pada Q2 2025 masih 44% lebih tinggi daripada pada Q2 2024. Infrastruktur penting terus menghadapi tekanan berkelanjutan, dengan sektor Telekomunikasi, Penyedia Layanan, dan Operator kembali naik ke puncak sebagai industri yang paling banyak menjadi target.</p>
+		</li>
+	</ul>
+	<p>Semua serangan dalam laporan ini secara otomatis terdeteksi dan diblokir oleh <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>pertahanan otonom</u></a> kami.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4D7sY9wWyZAarqgEOuudjL/4a1a424dd002a85cd65ebd2678deeb9b/image11.png" alt="" class="kg-image" width="1422" height="808" loading="lazy">
+	</figure>
+	<p>Untuk mempelajari lebih lanjut tentang serangan DDoS dan jenis ancaman siber lainnya, lihat <a href="https://www.cloudflare.com/learning" target="_blank" rel="noopener noreferrer"><u>Pusat Pembelajaran</u></a> kami. Kunjungi <a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> untuk melihat versi interaktif laporan ini tempat Anda dapat menelusuri lebih jauh. Radar juga menawarkan <a href="https://developers.cloudflare.com/radar" target="_blank" rel="noopener noreferrer"><u>API gratis</u></a> bagi mereka yang tertarik menyelidiki tren Internet. Anda juga dapat mempelajari lebih lanjut tentang <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank" rel="noopener noreferrer"><u>metodologi</u></a> yang digunakan dalam menyiapkan laporan ini.</p>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attacks-in-numbers">Serangan DDoS dalam angka</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attacks-in-numbers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pada Q2 tahun 2025, Cloudflare mengurangi 7,3 juta serangan DDoS — turun tajam dari 20,5 juta pada Q1, ketika kampanye selama 18 hari terhadap infrastruktur Cloudflare sendiri dan infrastruktur penting lainnya yang dilindungi oleh Cloudflare, menghasilkan 13,5 juta serangan tersebut.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66gdansdUZd0UgyFW8bQQu/8e1cde9766c737d0f33354cab8425a9f/image13.png" alt="DDoS attacks by quarter" class="kg-image" width="1428" height="862" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS per kuartal</sup></p>
+	<p>Kita baru saja melewati pertengahan tahun 2025, dan sejauh ini Cloudflare telah memblokir 27,8 juta serangan DDoS, setara dengan 130% dari semua serangan DDoS yang kami blokir sepanjang tahun kalender 2024.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zwR5A7JjeS1yH37j0VRlM/2bbc86d197f6bb53de5f86c2fa975b0a/image7.png" alt="DDoS attacks by year" class="kg-image" width="1586" height="954" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS berdasarkan tahun</sup></p>
+	<p>Jika dijabarkan lebih lanjut, <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>serangan DDoS Layer 3/Layer 4 (L3/4)</u></a> anjlok 81% kuartal ke kuartal menjadi 3,2 juta, sedangkan serangan DDoS HTTP naik 9% menjadi 4,1 juta. Perubahan dari tahun ke tahun tetap tinggi. Serangan secara keseluruhan 44% lebih tinggi dari Q2 2024, dengan serangan HTTP DDoS mengalami peningkatan terbesar sebesar 129% tahun ke tahun.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dxz1L4L4Y8ihvTxdKZRZf/7294397a7957d4f186ac80b43eabb5a0/image8.png" alt="DDoS attacks by month" class="kg-image" width="1602" height="956" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS per bulan</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="hyper-volumetric-ddos-attacks">Serangan DDoS hipervolumetrik</h2>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pada Q2 2025, Cloudflare memblokir lebih dari 6.500 serangan DDoS hiper-volumetrik, dengan rata-rata 71 serangan hiper-volumetrik per hari. Serangan hiper-volumetrik mencakup serangan DDoS L3/4 yang melebihi 1 Bpps atau 1 Tbps, dan serangan DDoS HTTP yang melebihi 1 juta permintaan per detik (Mrps).</p>
+	<p>Jumlah serangan DDoS hipervolumetrik yang melampaui 100 juta paket per detik (pps) melonjak 592% dibandingkan kuartal sebelumnya, dan jumlah yang melampaui 1 miliar pps dan 1 terabit per detik (Tbps) berlipat ganda dibandingkan kuartal sebelumnya. Jumlah serangan HTTP DDoS yang melebihi 1 juta rps (rps) tetap sama yakni sekitar 20 juta secara total, rata-rata hampir 220.000 serangan setiap hari.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yDy1OKIjVSssQrxTuHoLx/452dcdd5d2aacc936cb4a6b4ec7f9317/image4.png" alt="Hyper-volumetric DDoS attacks in 2025 Q2" class="kg-image" width="1999" height="922" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS hiper-volumetrik pada Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="threat-actors">Pelaku ancaman</h2>
+		<a href="https://blog.cloudflare.com/#threat-actors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ketika ditanya siapa yang berada di balik serangan DDoS yang mereka alami pada Q2 2025, mayoritas (71%) responden mengatakan mereka tidak tahu siapa yang menyerang mereka. Dari 29% responden sisanya yang mengaku telah mengidentifikasi aktor ancaman, 63% menunjuk ke pesaing, sebuah pola yang umum khususnya dalam industri Gaming, Perjudian, dan Kripto. Sebanyak 21% lainnya mengaitkan serangan tersebut dengan aktor di tingkat negara atau yang disponsori negara, sementara 5% masing-masing mengatakan mereka secara tidak sengaja menyerang diri mereka sendiri (self-DDoS), menjadi sasaran pemeras, atau mengalami serangan dari pelanggan/pengguna yang tidak puas.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rGHPX3t7S9KpTde5udYKi/ba0e11669b7d38520c221f190f500e14/image5.png" alt="Top threat actors reported in 2025 Q2" class="kg-image" width="1640" height="906" loading="lazy">
+	</figure>
+	<p><sup>Aktor ancaman teratas yang dilaporkan pada Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-ddos-attacks">Serangan Ransom DDoS (DDoS dengan tebusan)</h2>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Persentase pelanggan Cloudflare yang diserang yang melaporkan menjadi sasaran <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer"><u>serangan DDoS Tebusan</u></a> atau yang diancam meningkat sebesar 68% dibandingkan dengan kuartal sebelumnya, dan sebesar 6% dibandingkan dengan kuartal yang sama pada tahun 2024.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78PZiUidGYsY2qS9KY7eFl/0e132812ede418be620a48c882ba37b2/image6.png" alt="Ransom DDoS attacks by quarter 2025 Q2" class="kg-image" width="1592" height="916" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS Tebusan pada Q2 2025</sup></p>
+	<p>Jika kita tinjau lebih lanjut, serangan DDoS Tebusan meningkat pada bulan Juni 2025. Sekitar sepertiga responden melaporkan diancam atau menjadi sasaran serangan DDoS Tebusan.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Urv9538LpsEoZFNNfha7o/871c9d30431df06b2c0962729191b482/image9.png" alt="Ransom DDoS attacks by month 2025 Q2" class="kg-image" width="1556" height="948" loading="lazy">
+	</figure>
+	<p><sup>Serangan DDoS Tebusan berdasarkan bulan Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="top-attacked-locations">Lokasi yang paling banyak diserang</h2>
+		<a href="https://blog.cloudflare.com/#top-attacked-locations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Peringkat 10 lokasi paling banyak diserang pada Q2 2025 berubah secara signifikan. Tiongkok naik dua peringkat untuk merebut kembali posisi pertama, Brasil naik empat peringkat ke posisi kedua, Jerman turun dua peringkat ke posisi ketiga, India naik satu peringkat ke posisi keempat, dan Korea Selatan naik empat peringkat ke posisi kelima. Turki turun empat peringkat ke posisi keenam, Hong Kong turun tiga peringkat ke posisi ketujuh, dan Vietnam melonjak lima belas peringkat ke posisi kedelapan. Sementara itu, Rusia meroket empat puluh peringkat ke posisi sembilan, dan Azerbaijan melonjak tiga puluh satu peringkat untuk melengkapi sepuluh besar.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HNdD7VgymVfuJBZtV5bII/ed6eed8f676ba0a0d7cec9a595521903/image19.png" alt="The locations most targeted by DDoS attacks for 2025 Q2" class="kg-image" width="1999" height="1447" loading="lazy">
+	</figure>
+	<p><sup>Lokasi yang paling banyak menjadi target serangan DDoS pada Q2 2025</sup></p>
+	<p>Penting untuk dicatat bahwa lokasi yang diserang ini ditentukan oleh negara penagihan pelanggan Cloudflare yang layanannya menjadi target — bukan negara tersebut sendiri yang diserang. Dengan kata lain, peringkat tinggi berarti lebih banyak pelanggan terdaftar kami di yurisdiksi penagihan itu yang ditargetkan oleh lalu lintas DDoS, daripada menyiratkan penargetan geopolitik langsung.</p>
+	<div class="flex anchor relative">
+		<h2 id="top-attacked-industries">Industri yang paling banyak diserang</h2>
+		<a href="https://blog.cloudflare.com/#top-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Peringkat 10 industri yang paling banyak diserang pada Q2 2025 juga memperlihatkan pergerakan yang signifikan. Telekomunikasi, Penyedia Layanan dan Operator naik satu peringkat ke posisi pertama, sementara sektor Internet naik dua peringkat ke posisi kedua. Teknologi Informasi &amp; Layanan mempertahankan posisinya di posisi ketiga yang paling banyak diserang, dan Gaming naik satu peringkat ke posisi keempat. Perjudian &amp; Kasino turun empat peringkat ke posisi kelima, dan industri Perbankan &amp; Jasa Keuangan tetap berada di posisi keenam. Ritel naik satu peringkat ke posisi ketujuh, dan Pertanian naik drastis 38 peringkat ke posisi kedelapan. Perangkat Lunak Komputer naik dua peringkat ke posisi kesembilan, dan Pemerintah naik dua peringkat untuk melengkapi sepuluh industri yang paling banyak diserang.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YTWU2MwLdGg5SumDgAogC/ec6e812c894cbe14490f74b90fa4da94/image20.png" alt="The top attacked industries of DDoS attacks for 2025 Q2" class="kg-image" width="1999" height="1184" loading="lazy">
+	</figure>
+	<p><sup>Industri yang paling banyak diserang DDoS pada Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="top-sources-of-ddos-attacks">Sumber utama serangan DDoS</h2>
+		<a href="https://blog.cloudflare.com/#top-sources-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Peringkat 10 sumber serangan DDoS terbesar pada Q2 2025 juga mengalami beberapa perubahan dibandingkan dengan kuartal sebelumnya. Indonesia naik satu peringkat ke posisi pertama, Singapura naik dua peringkat ke posisi kedua, Hong Kong turun dua peringkat ke posisi ketiga, Argentina turun satu peringkat ke posisi keempat, dan Ukraina bertahan sebagai sumber serangan DDoS terbesar kelima. Rusia melonjak enam peringkat sebagai sumber terbesar keenam, diikuti oleh Ekuador yang melonjak tujuh peringkat. Vietnam naik satu peringkat sebagai sumber terbesar kedelapan. Belanda naik empat peringkat sebagai sumber serangan DDoS terbesar kesembilan, dan Thailand turun tiga peringkat sebagai sumber serangan DDoS terbesar kesepuluh.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X8C3xPqQ08FYLCe7BE0Sm/997ae266e8ddfa19c8d320a2448cb793/image10.png" alt="The top sources of DDoS attacks for 2025 Q2" class="kg-image" width="1999" height="1468" loading="lazy">
+	</figure>
+	<p><sup>Sumber utama serangan DDoS pada Q2 2025</sup></p>
+	<p>Penting untuk dicatat bahwa peringkat "sumber" ini mencerminkan lokasi node botnet, proksi, atau titik akhir VPN — bukan lokasi sebenarnya dari pelaku ancaman. Untuk serangan DDoS L3/4, di mana <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank" rel="noopener noreferrer"><u>pemalsuan IP</u></a> merajalela, kami melakukan geolokasi setiap paket ke pusat data Cloudflare yang pertama kali menyerap dan memblokirnya, memanfaatkan kehadiran kami di lebih dari 330 kota untuk akurasi yang benar-benar terperinci.</p>
+	<div class="flex anchor relative">
+		<h2 id="top-source-networks-of-ddos-attacks">Jaringan sumber utama serangan DDoS</h2>
+		<a href="https://blog.cloudflare.com/#top-source-networks-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>ASN (Nomor Sistem Otonom/Autonomous System Number)</u></a> adalah pengenal unik yang ditetapkan ke jaringan atau sekelompok jaringan IP yang beroperasi di bawah kebijakan perutean tunggal di Internet. Digunakan untuk bertukar informasi perutean antara sistem yang menggunakan protokol seperti <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>BGP (Border Gateway Protocol)</u></a>.</p>
+	<p>Untuk pertama kalinya dalam sekitar satu tahun, jaringan <a href="https://radar.cloudflare.com/as24940" target="_blank" rel="noopener noreferrer"><u>Hetzner (AS24940)</u></a> yang berbasis di Jerman turun dari posisi pertama sebagai sumber serangan HTTP DDoS terbesar ke posisi ketiga. Sebagai gantinya, <a href="https://radar.cloudflare.com/as200373" target="_blank" rel="noopener noreferrer"><u>Drei-K-Tech-GmbH (AS200373)</u></a> yang berbasis di Jerman, yang juga dikenal sebagai 3xK Tech, melonjak 6 peringkat sebagai sumber serangan DDoS HTTP terbesar nomor satu. <a href="https://radar.cloudflare.com/as14061" target="_blank" rel="noopener noreferrer"><u>DigitalOcean (AS14061)</u></a> yang berbasis di AS naik satu peringkat ke posisi kedua. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hfTFpswSIsQwpZVoKlvUs/0897717483b4dcefa02fbce1fa8b6b48/image22.png" alt="The top 10 ASN sources of HTTP DDoS attacks" class="kg-image" width="1999" height="1040" loading="lazy">
+	</figure>
+	<p><sup>10 sumber ASN (Nomor Sistem Otonom) teratas serangan HTTP DDoS</sup></p>
+	<p>Seperti yang dapat dilihat pada bagan di atas, 8 dari 10 ASN yang terdaftar menawarkan <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine" target="_blank" rel="noopener noreferrer"><u>mesin virtual (VM)</u></a>, hosting, atau layanan cloud yang menunjukkan penggunaan umum botnet berbasis VM. Botnet ini <a href="https://blog.cloudflare.com/ddos-threat-report-2023-q2/#the-rise-of-the-virtual-machine-botnets"><u>diperkirakan 5.000x lebih kuat</u></a> dari botnet berbasis IoT. Hanya <a href="https://radar.cloudflare.com/as200373" target="_blank" rel="noopener noreferrer"><u>Drei (AS200373)</u></a> dan <a href="https://radar.cloudflare.com/as4134" target="_blank" rel="noopener noreferrer"><u>ChinaNet Backbone (AS4134)</u></a> yang terutama merupakan Penyedia Layanan Internet atau operator telekomunikasi tanpa penawaran VM/cloud publik yang signifikan.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17jMjLVEx0puvK14GOozDo/7a12fbb2816ace763098d0ef86203740/image2.png" alt="IoT-based botnets versus VM-based botnets" class="kg-image" width="1682" height="968" loading="lazy">
+	</figure>
+	<p><sup>Botnet berbasis IoT versus botnet berbasis VM</sup></p>
+	<p>Untuk membantu para penyedia hosting, penyedia komputasi cloud, dan semua penyedia layanan Internet dalam mengidentifikasi dan menghentikan akun pelaku penyalahgunaan yang melancarkan berbagai serangan ini, kami memanfaatkan perspektif unik Cloudflare guna menyediakan <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>Umpan Ancaman Botnet DDoS gratis bagi Para Penyedia Layanan</u></a>. Lebih dari 600 organisasi di seluruh dunia telah mendaftar untuk umpan ini, dan kami telah melihat kolaborasi hebat di seluruh komunitas untuk menghancurkan node botnet. Hal ini dimungkinkan berkat umpan ancaman yang memberikan penyedia layanan ini daftar alamat IP yang melanggar dari dalam Nomor Sistem Otonom mereka yang kami lihat meluncurkan serangan HTTP DDoS. Ini sepenuhnya gratis dan yang diperlukan hanyalah membuka akun Cloudflare gratis, mengautentikasi ASN melalui <a href="https://docs.peeringdb.com/howto/authenticate" target="_blank" rel="noopener noreferrer"><u>PeeringDB</u></a>, dan kemudian <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/#get-full-report" target="_blank" rel="noopener noreferrer"><u>mengambil intelijen ancaman melalui API</u></a>.</p>
+	<p>Dengan panggilan API sederhana, penyedia layanan bisa mendapatkan daftar IP yang melanggar dari dalam jaringan mereka. Contoh respons tersedia di bawah ini.</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "result": [
+    {
+      "cidr": "127.0.0.1/32",
+      "date": "2024-05-05T00:00:00Z",
+      "offense_count": 10000
+    },
+    // ... other entries ...
+  ],
+  "success": true,
+  "errors": [],
+  "messages": []
+}</code></pre>
+	<p><sup>Contoh respons dari API Umpan Ancaman Botnet DDoS Penyedia Layanan Internet gratis</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="attack-vectors">Vektor serangan</h2>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="defending-against-ddos-botnets">Melindungi Diri dari Botnet DDoS</h3>
+		<a href="https://blog.cloudflare.com/#defending-against-ddos-botnets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pada Q2 2025, mayoritas (71%) serangan HTTP DDoS diluncurkan oleh <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet" target="_blank" rel="noopener noreferrer"><u>botnet</u></a> yang dikenal. Deteksi cepat dan pemblokiran berbagai serangan ini dimungkinkan sebagai hasil dari pengoperasian jaringan yang sangat besar dan pengamatan terhadap berbagai jenis serangan dan botnet. Dengan memanfaatkan intelijen ancaman waktu nyata, sistem kami mampu memberatkan botnet DDoS dengan sangat cepat, berkontribusi pada mitigasi yang lebih efektif. Bahkan jika botnet DDoS telah diinkriminalisasi saat hanya menargetkan satu situs web atau alamat IP, seluruh jaringan dan basis pelanggan kami segera terlindungi terhadapnya. Sistem intelijen ancaman waktu nyata ini beradaptasi dengan botnet saat mereka mengubah dan mengganti node.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PtgDqHMGY52nVPAoBy6o2/f51af7ded6817ff568ad22701a17a47e/image1.png" alt="The top HTTP DDoS attack vectors for 2025 Q2" class="kg-image" width="1602" height="940" loading="lazy">
+	</figure>
+	<p><sup>Vektor serangan HTTP DDoS teratas: Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="l3-4-attack-vectors">Vektor serangan L3/4</h2>
+		<a href="https://blog.cloudflare.com/#l3-4-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pada Q2 2025, serangan <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer">banjir DNS</a> menjadi vektor serangan L3/4 teratas yang mencakup hampir sepertiga dari semua serangan DDoS L3/4. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer">Banjir SYN</a> vektor serangan paling umum kedua, turun dari 31% pada Q1 menjadi 27% pada Q2.&nbsp;</p>
+	<p>Di tempat ketiga, <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer">banjir UDP</a> juga tumbuh secara signifikan, naik dari 9% di Q1 menjadi 13% di Q2. Banjir RST, bentuk lain serangan DDoS berbasis TCP, yang mencakup 5% dari semua serangan L3/4, merupakan vektor keempat yang paling umum. Melengkapi lima teratas, <a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack" target="_blank" rel="noopener noreferrer"><u>banjir SSDP</u></a> naik ke posisi kelima pada 3% meskipun menurun dari 4,3% pada kuartal terakhir, tetapi cukup untuk menyingkirkan <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>serangan Mirai</u></a> yang sebelumnya lazim (yang turun dari 18% pada Q1 menjadi hanya 2% pada Q2) keluar dari lima teratas secara keseluruhan.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QzJzqm583fTd4r5fGiz3q/af7aad3201ccee3004c18d9a8c326b76/image15.png" alt="The top L3/4 DDoS attack vectors for 2025 Q2" class="kg-image" width="1936" height="1120" loading="lazy">
+	</figure>
+	<p><sup>Vektor serangan DDoS L3/4 teratas: Q2 2024</sup></p>
+	<div class="flex anchor relative">
+		<h3 id="breakdown-of-the-top-3-l3-4-ddos-attack-vectors">Rincian 3 vektor serangan DDoS L3/4 teratas</h3>
+		<a href="https://blog.cloudflare.com/#breakdown-of-the-top-3-l3-4-ddos-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Berikut rincian mengenai 3 serangan DDoS L3/4 yang paling umum. Kami memberikan rekomendasi tentang bagaimana organisasi dapat menghindari menjadi elemen refleksi dan amplifikasi, dan juga rekomendasi tentang cara mempertahankan diri terhadap serangan ini sambil menghindari dampak pada lalu lintas yang sah. Pelanggan Cloudflare dilindungi dari serangan ini.</p>
+	<div class="flex anchor relative">
+		<h4 id="dns-flood-attack">Serangan Banjir DNS</h4>
+		<a href="https://blog.cloudflare.com/#dns-flood-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe: </b>Flood (Banjir data)</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya:</b> Banjir DNS bertujuan untuk membanjiri server DNS dengan sejumlah besar kueri DNS—baik yang valid, acak, atau cacat—untuk menguras CPU, memori, atau bandwidth. Tidak seperti serangan amplifikasi, ini adalah banjir langsung yang ditujukan untuk menurunkan kinerja atau menyebabkan pemadaman, sering kali melalui port UDP 53, tetapi terkadang juga melalui TCP (terutama untuk zona yang mendukung DNS-over-TCP atau <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer"><u>DNSSEC</u></a> ).</p>
+		</li>
+		<li>
+			<p><b>Cara mempertahankan diri terhadap serangan:</b> Gunakan <a href="https://www.cloudflare.com/application-services/products/dns" target="_blank" rel="noopener noreferrer"><u>Cloudflare DNS</u></a> sebagai utama atau sekunder, <a href="https://www.cloudflare.com/en-gb/dns/dns-firewall" target="_blank" rel="noopener noreferrer"><u>Cloudflare DNS Firewall</u></a> dan/atau <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk menyerap dan mengurangi banjir kueri sebelum mencapai asal Anda. Jaringan global Cloudflare menangani puluhan juta permintaan DNS per detik dengan penyaringan DDoS bawaan dan caching, memblokir lalu lintas yang cacat atau berlebihan sambil menjawab permintaan yang sah.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan:</b> Hindari memblokir semua lalu lintas DNS atau menonaktifkan port UDP 53, yang akan merusak resolusi normal. Andalkan perlindungan khusus DNS Cloudflare seperti <a href="https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection" target="_blank" rel="noopener noreferrer"><u>Advanced DNS Protection</u></a>, dan terapkan perlindungan yang mendukung DNSSEC untuk menangani banjir kueri berbasis TCP dengan aman.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="syn-flood-attack">Serangan Banjir SYN</h4>
+		<a href="https://blog.cloudflare.com/#syn-flood-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe: </b>Flood (Banjir data)</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya:</b> Dalam banjir SYN, pelaku ancaman mengirim sejumlah besar paket TCP SYN—sering kali dengan alamat IP palsu—untuk memulai koneksi yang tidak pernah selesai. Hal ini menyebabkan sistem target memiliki koneksi setengah terbuka, menghabiskan memori dan sumber daya pelacakan koneksi, berpotensi menghabiskan batas server dan mencegah klien sebenarnya terhubung.</p>
+		</li>
+		<li>
+			<p><b>Cara bertahan terhadap serangan:</b> Gunakan <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk mencegat dan mengurangi banjir TCP SYN di tepi jaringan. Cloudflare memanfaatkan cookie SYN, pelacakan koneksi, dan analisis perilaku untuk membedakan klien asli dari sumber palsu atau berbahaya, memastikan koneksi TCP yang sah diselesaikan dengan sukses. Menggunakan layanan <a href="https://www.cloudflare.com/en-gb/application-services/products/cdn" target="_blank" rel="noopener noreferrer"><u>CDN</u></a>/<a href="https://www.cloudflare.com/en-gb/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> Cloudflare atau <a href="https://www.cloudflare.com/application-services/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer"><u>Cloudflare Spectrum</u></a> yang keduanya merupakan layanan proxy terbalik untuk HTTP atau TCP. Menggunakan proksi terbalik pada dasarnya menghilangkan kemungkinan dampak serangan DDoS berbasis TCP.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan:</b> Memblokir semua lalu lintas SYN atau menerapkan batas waktu yang agresif dapat memblokir pengguna sebenarnya. Sebaliknya, andalkan <a href="https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection" target="_blank" rel="noopener noreferrer"><u>sistem perlindungan TCP Lanjutan Cloudflare</u></a>, yang menggunakan pembentukan laju SYN, deteksi anomali, dan penyaringan paket untuk mengurangi serangan tanpa memengaruhi koneksi klien asli.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="udp-ddos-attack">Serangan DDoS UDP</h4>
+		<a href="https://blog.cloudflare.com/#udp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe</b>: Flood (Banjir data)</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya:</b> Sejumlah besar paket UDP dikirim ke berbagai port yang acak atau spesifik pada satu atau beberapa alamat IP target. Ia mungkin berupaya memenuhi sambungan Internet atau membanjiri peralatan internalnya dengan paket yang lebih banyak daripada yang dapat ditanganinya guna menimbulkan gangguan atau pemadaman.</p>
+		</li>
+		<li>
+			<p><b>Cara mempertahankan diri terhadap serangan</b>: Terapkan perlindungan DDoS berbasis cloud yang dapat melacak sidik jari lalu lintas serangan secara waktu nyata seperti <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> atau <a href="https://www.cloudflare.com/application-services/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer"><u>Cloudflare Spectrum</u></a>, terapkan pembatasan tingkat cerdas pada lalu lintas UDP, dan hentikan lalu lintas UDP yang tidak diinginkan secara menyeluruh dengan <a href="https://www.cloudflare.com/en-gb/network-services/products/magic-firewall" target="_blank" rel="noopener noreferrer"><u>Magic Firewall</u></a>.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan:</b> Pemfilteran agresif dapat mengganggu layanan UDP yang sah seperti VoIP, konferensi video, atau game online. Terapkan ambang batas dengan hati-hati.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="emerging-threats">Ancaman yang muncul</h2>
+		<a href="https://blog.cloudflare.com/#emerging-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Di antara ancaman DDoS L3/4 yang muncul pada Q2 2025, banjir Teeworlds mengalami lonjakan terbesar. Serangan ini melonjak 385% QoQ, diikuti oleh <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2/#teeworlds-ddos-attack"><u>banjir RIPv1</u></a>, yang melonjak sebesar 296%. <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2/#teeworlds-ddos-attack"><u>Banjir RDP</u></a> meningkat sebesar 173%, dan <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2/#teeworlds-ddos-attack"><u>banjir Demon Bot</u></a> meningkat sebesar 149%. Bahkan <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2/#teeworlds-ddos-attack"><u>banjir VxWorks</u></a> yang terhormat kembali terjadi, naik 71% dari kuartal ke kuartal. Peningkatan dramatis ini menyoroti eksperimen berkelanjutan para pelaku ancaman dengan protokol lama dan kurang dikenal untuk menghindari pertahanan standar.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70OHdfj3auYqnHGCc2s1P0/1beaa1427cc5007fa069f028c0c1bb4c/image14.png" alt="The top emerging threats for 2025 Q2" class="kg-image" width="1938" height="1104" loading="lazy">
+	</figure>
+	<p><sup>Ancaman-ancaman utama yang muncul pada Q2 2025</sup></p>
+	<div class="flex anchor relative">
+		<h3 id="breakdown-of-the-top-emerging-threats">Rincian ancaman utama yang muncul</h3>
+		<a href="https://blog.cloudflare.com/#breakdown-of-the-top-emerging-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Berikut rincian tentang ancaman yang muncul pada Q2 2025, sebagian besar merupakan daur ulang vektor serangan yang sangat lama. Kami memberikan rekomendasi tentang bagaimana organisasi dapat menghindari menjadi elemen refleksi dan amplifikasi, dan juga rekomendasi tentang cara mempertahankan diri terhadap serangan ini sambil menghindari dampak pada lalu lintas yang sah. Pelanggan Cloudflare dilindungi dari serangan ini.</p>
+	<div class="flex anchor relative">
+		<h4 id="teeworlds-ddos-attack">Serangan DDoS Teeworlds</h4>
+		<a href="https://blog.cloudflare.com/#teeworlds-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe: </b>Flood (Banjir data)</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya:</b> <a href="https://en.wikipedia.org/wiki/Teeworlds" target="_blank" rel="noopener noreferrer"><u>Teeworlds</u></a> adalah game tembak-menembak multipemain 2D bertempo cepat dan bersumber terbuka yang menggunakan protokol berbasis UDP khusus untuk permainan waktu nyata. Pelaku ancaman membanjiri server permainan target dengan paket UDP palsu atau berlebihan yang meniru tindakan dalam permainan atau upaya koneksi. Hal ini dapat membebani sumber daya server dan menyebabkan kelambatan atau pemadaman.</p>
+		</li>
+		<li>
+			<p><b>Cara bertahan terhadap serangan:</b> Gunakan <a href="https://www.cloudflare.com/application-services/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer"><u>Cloudflare Spectrum</u></a> atau <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk melindungi server. Cloudflare secara otomatis mendeteksi dan mengurangi jenis serangan ini menggunakan sidik jari waktu nyata, memblokir lalu lintas serangan namun tetap memperbolehkan pemain sungguhan untuk masuk. Magic Transit juga menyediakan kemampuan firewall tingkat paket, <a href="https://www.cloudflare.com/en-gb/network-services/products/magic-firewall" target="_blank" rel="noopener noreferrer"><u>Magic Firewall</u></a> yang dapat digunakan untuk membuat perlindungan khusus.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan:</b> Saat membuat aturan khusus, hindari memblokir atau melakukan pembatasan tingkat port UDP 8303 secara langsung karena dapat mengganggu permainan secara keseluruhan. Sebaliknya, andalkan layanan deteksi dan mitigasi cerdas untuk menghindari dampak pada pengguna yang sah.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/608xA7d6AuPV38WCXWcfxj/1d00cec07300ecd15b99c9ca5d0bb07c/image17.png" alt="Teeworlds Screenshot Jungle. Source: Wikipedia" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<p><sup>Tangkapan Layar Teeworlds Jungle. Sumber: </sup><a href="https://commons.wikimedia.org/wiki/File:Teeworlds_Screenshot_Jungle_0.6.1.png" target="_blank" rel="noopener noreferrer"><sup><u>Wikipedia</u></sup></a></p>
+	<div class="flex anchor relative">
+		<h4 id="ripv1-ddos-attack">Serangan DDoS RIPv1</h4>
+		<a href="https://blog.cloudflare.com/#ripv1-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe:</b> Pantulan + Amplifikasi (Rendah)</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya: </b>Memanfaatkan protokol Informasi Perutean versi 1 (RIPv1), yaitu protokol perutean jarak-vektor model lama yang tanpa autentikasi dan menggunakan port UDP/520. Pelaku ancaman mengirimkan pembaruan perutean palsu untuk membanjiri atau membingungkan jaringan.</p>
+		</li>
+		<li>
+			<p><b>Cara mencegah menjadi elemen pantulan/amplifikasi: </b>Nonaktifkan RIPv1 pada router. Gunakan RIPv2 dengan autentikasi apabila perutean diperlukan.</p>
+		</li>
+		<li>
+			<p><b>Cara melindungi diri dari serangan: </b>Blokir lalu lintas masuk UDP/520 dari jaringan yang tidak tepercaya. Pantau pembaruan perutean yang tidak diharapkan.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan: </b>Sebagian besar RIPv1 sudah usang; penonaktifan protokol ini umumnya aman. Jika sistem lama mengandalkan protokol ini, validasikan perilaku perutean sebelum melakukan perubahan.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="rdp-ddos-attack">Serangan DDoS RDP</h4>
+		<a href="https://blog.cloudflare.com/#rdp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe: </b>Pantulan + Amplifikasi</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya</b>: <a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol" target="_blank" rel="noopener noreferrer"><u>Protokol Desktop Jarak Jauh (RDP)</u></a> digunakan untuk akses jarak jauh ke sistem Windows dan biasanya berjalan melalui <a href="https://www.speedguide.net/port.php?port=3389" target="_blank" rel="noopener noreferrer"><u>port TCP 3389</u></a>. Pada beberapa pengaturan yang salah konfigurasi atau lama, RDP dapat merespons upaya koneksi yang tidak diautentikasi, sehingga memungkinkan penyalahgunaan untuk refleksi atau amplifikasi. Pelaku ancaman mengirim paket inisiasi RDP palsu ke server yang terekspos, menyebabkan mereka membalas ke korban, sehingga menghasilkan lalu lintas yang tidak diinginkan dalam jumlah besar.</p>
+		</li>
+		<li>
+			<p><b>Cara bertahan terhadap serangan</b>: Gunakan <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk melindungi infrastruktur jaringan Anda. Magic Transit menyediakan perlindungan DDoS L3/L4, menyaring lalu lintas RDP palsu atau cacat sebelum mencapai asal Anda. Untuk penyalahgunaan lapisan aplikasi yang ditargetkan, <a href="https://www.cloudflare.com/en-gb/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a> atau <a href="https://www.cloudflare.com/en-gb/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Akses Jaringan Zero Trust (ZTNA)</u></a> dapat membantu mengamankan akses desktop jarak jauh di balik terowongan yang diautentikasi.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan</b>: Jangan blokir TCP/3389 secara global jika RDP digunakan secara aktif. Sebaliknya, batasi akses RDP ke IP yang diketahui atau jaringan internal, atau gunakan <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> dengan <a href="https://www.cloudflare.com/en-gb/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Akses Jaringan Zero Trust</u></a> untuk menghilangkan paparan publik sepenuhnya sambil mempertahankan akses aman bagi pengguna yang sah.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="demonbot-ddos-attack">Serangan DDoS DemonBot</h4>
+		<a href="https://blog.cloudflare.com/#demonbot-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>Tipe</b>: Banjir berbasis Botnet</p>
+		</li>
+		<li>
+			<p><b>Cara kerjanya</b>: DemonBot adalah jenis perangkat lunak berbahaya yang menginfeksi sistem berbasis Linux—terutama perangkat IoT yang tidak aman—melalui port terbuka atau kredensial yang lemah. Setelah terinfeksi, perangkat menjadi bagian dari botnet yang dapat meluncurkan banjir UDP, TCP, dan lapisan aplikasi bervolume tinggi. Serangan biasanya didorong oleh perintah dan kontrol (C2) dan dapat menghasilkan lalu lintas volumetrik yang signifikan, sering kali menargetkan layanan gaming, hosting, atau perusahaan. Untuk menghindari infeksi, manfaatkan perangkat lunak antivirus dan penyaringan domain.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Cara bertahan melawan serangan</b>: Gunakan <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk menyerap dan menyaring banjir lapisan jaringan skala besar sebelum mencapai infrastruktur Anda. Analisis lalu lintas waktu nyata dan deteksi berbasis tanda tangan Cloudflare menetralkan lalu lintas yang berasal dari perangkat yang terinfeksi DemonBot. Untuk layanan Lapisan aplikasi, <a href="https://www.cloudflare.com/en-gb/ddos" target="_blank" rel="noopener noreferrer"><u>perlindungan DDoS Cloudflare</u></a> dan <a href="https://www.cloudflare.com/en-gb/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> dapat mengurangi <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>banjir HTTP</u></a> yang ditargetkan dan penyalahgunaan koneksi.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan</b>: Daripada memblokir jenis lalu lintas atau port secara luas, andalkan mitigasi adaptif Cloudflare untuk membedakan antara pengguna yang sah dan lalu lintas botnet. Kombinasikan dengan penyaringan reputasi IP, pemblokiran geografis, dan pembatasan tingkat untuk mengurangi positif palsu dan menjaga ketersediaan layanan.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41SKW3kjd0hp7wmySRb7OP/97a59d135cd7c3c975cda581acdec88c/image18.png" alt="" class="kg-image" width="1801" height="1012" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="vxworks-flood-ddos-attack">Serangan DDoS Banjir VxWorks</h4>
+		<a href="https://blog.cloudflare.com/#vxworks-flood-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<div class="flex anchor relative">
+				<h4 id="attack-size-duration"><b>Tipe:</b> Banjir (berbasis IoT)</h4>
+				<a href="https://blog.cloudflare.com/#attack-size-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+					<svg width="16" height="16" viewBox="0 0 24 24">
+						<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+					</svg>
+				</a>
+			</div>
+		</li>
+		<li>
+			<p><b>Cara kerjanya:</b> <a href="https://en.wikipedia.org/wiki/VxWorks" target="_blank" rel="noopener noreferrer"><u>VxWorks</u></a> adalah sistem operasi waktu nyata (<a href="https://en.wikipedia.org/wiki/Real-time_operating_system" target="_blank" rel="noopener noreferrer"><u>RTOS</u></a>) yang digunakan dalam jutaan perangkat tertanam dan IoT (misalnya, router, pengontrol industri). Perangkat yang menjalankan versi VxWorks yang kedaluwarsa atau salah konfigurasi dapat disusupi dan digunakan untuk meluncurkan serangan DDoS. Setelah terinfeksi — sering kali melalui eksploitasi publik atau kredensial yang lemah — mereka mengirimkan lalu lintas UDP, TCP, atau ICMP dalam jumlah besar untuk membanjiri target, mirip dengan botnet IoT tradisional.</p>
+		</li>
+		<li>
+			<p><b>Cara bertahan melawan serangan:</b> Gunakan <a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a> untuk memblokir lalu lintas volumetrik di tepi jaringan. Cloudflare menggunakan sidik jari waktu nyata dan heuristik hak milik untuk mengidentifikasi lalu lintas dari perangkat VxWorks yang disusupi dan memitigasinya secara waktu nyata. Untuk layanan aplikasi,layanan <a href="https://www.cloudflare.com/en-gb/ddos" target="_blank" rel="noopener noreferrer"><u>mitigasi DDoS</u></a> dan <a href="https://www.cloudflare.com/en-gb/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u><b>Gateway</b></u></a> Cloudflare memberikan perlindungan tambahan terhadap penyalahgunaan tingkat protokol.</p>
+		</li>
+		<li>
+			<p><b>Cara menghindari dampak yang tidak diinginkan:</b> Hindari pemblokiran lalu lintas UDP atau ICMP yang berlebihan, karena dapat mengganggu diagnostik yang sah atau layanan waktu nyata. Sebaliknya, gunakan alat penyaringan cerdas Cloudflare, pembatasan tingkat, dan reputasi geo/IP untuk mengurangi serangan dengan aman sekaligus menghindari dampak pada lalu lintas yang sah.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6b6CqQNrSd3QFE2yTaDaFU/3ecc930ecf487067dac0dc2f4d50d390/image21.png" alt="Cloudflare’s real-time fingerprint generation flow" class="kg-image" width="1999" height="538" loading="lazy">
+	</figure>
+	<p><sup>Alur pembuatan sidik jari waktu nyata Cloudflare</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="helping-build-a-better-internet">Ukuran dan durasi serangan</h2>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sebagian besar serangan DDoS berukuran kecil dan pendek. Pada Q2 2025, 94% serangan DDoS L3/4 tidak melebihi 500 Mbps. Demikian pula, sekitar 85% serangan DDoS L3/4 tidak melebihi 50.000 pps. Mayoritas serangan HTTP DDoS juga kecil, 65% tetap di bawah 50K rps. Namun, “kecil” adalah istilah relatif.</p>
+	<p>Server modern rata-rata biasanya mengacu pada mesin fisik atau virtual serbaguna dengan sekitar 4–8 inti CPU (misalnya Intel Xeon Silver), RAM 16–64 GB, dan NIC 1 Gbps, menjalankan OS Linux seperti Ubuntu atau CentOS dengan NGINX atau perangkat lunak serupa. Pengaturan ini dapat menangani ~100.000–500.000 pps, throughput hingga ~940 Mbps, dan sekitar 10.000–100.000 rps untuk konten statis atau 500–1.000 rps untuk aplikasi dinamis yang didukung basis data, tergantung pada penyetelan dan beban kerja.</p>
+	<p>Dengan asumsi server tidak dilindungi oleh layanan perlindungan DDoS berbasis cloud, jika server menjadi sasaran serangan DDoS "kecil" selama tingkat lalu lintas puncak, kemungkinan besar server tidak akan mampu mengatasinya. Bahkan serangan DDoS “kecil” dapat menyebabkan dampak signifikan pada server yang tidak terlindungi.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bAmx7jQRjWgJHit83V57j/d8ec58ee7b1b207e36cb8e5b20984d9c/image3.png" alt="DDoS attacks size and duration in 2025 Q2" class="kg-image" width="1754" height="876" loading="lazy">
+	</figure>
+	<p><sup>Ukuran dan durasi serangan DDoS pada Q2 2025</sup></p>
+	<p>Meskipun sebagian besar serangan DDoS berukuran kecil, serangan DDoS hipervolumetrik meningkat dalam ukuran dan frekuensi. 6 dari setiap 100 serangan HTTP DDoS melampaui 1 juta rps, dan 5 dari setiap 10.000 serangan L3/4 DDoS melampaui 1 Tbps — peningkatan 1.150% QoQ.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ukMkHvtJOpfQwfPWn6Co9/62e161fa9f091ce2d99d56e57a7cd354/image16.png" alt="The largest attack in the world: 7.3 Tbps" class="kg-image" width="1796" height="822" loading="lazy">
+	</figure>
+	<p><sup>Serangan terbesar di dunia: 7,3 Tbps</sup></p>
+	<p>Sebagian besar serangan DDoS berdurasi pendek, bahkan yang terbesar dan paling intens sekalipun. Pelaku ancaman sering kali mengandalkan ledakan singkat lalu lintas terkonsentrasi — kadang-kadang berlangsung hanya 45 detik seperti yang terlihat pada serangan DDoS 7,3 Tbps yang monumental — dalam upaya untuk menghindari deteksi, membanjiri target, dan menyebabkan gangguan maksimum sebelum pertahanan dapat sepenuhnya aktif. Taktik serangan singkat dan berintensitas tinggi ini membuat deteksi dan mitigasi lebih menantang dan menggarisbawahi perlunya perlindungan yang selalu aktif dan waktu nyata. Untungnya, pertahanan DDoS otonom Cloudflare segera aktif.</p>
+	<div class="flex anchor relative">
+		<h2 id="membantu-membangun-internet-yang-lebih-baik">Membantu membangun Internet yang lebih baik</h2>
+		<a href="https://blog.cloudflare.com/#membantu-membangun-internet-yang-lebih-baik" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Di Cloudflare, kami memiliki misi untuk membantu membangun Internet yang lebih baik. Bagian dari misi tersebut adalah menawarkan perlindungan DDoS gratis dan tak terbatas, tanpa memandang ukuran, durasi, dan kuantitas. Kami tidak hanya bertahan terhadap serangan DDoS. Pertahanan terbaik adalah serangan yang baik, dan dengan menggunakan Umpan Ancaman Botnet ISP gratis kami, kita berkontribusi pada penghapusan botnet.&nbsp;</p>
+	<p>Meskipun masih banyak yang menerapkan perlindungan secara reaktif atau mengandalkan solusi yang sudah ketinggalan zaman, data kami menunjukkan keamanan yang proaktif dan selalu aktif jauh lebih efektif. Didukung oleh jaringan global dengan kapasitas 388 Tbps di lebih dari 330 kota, kami menyediakan pertahanan otomatis, in-line, dan teruji dalam pertempuran melawan semua jenis serangan DDoS.</p>
+</div>

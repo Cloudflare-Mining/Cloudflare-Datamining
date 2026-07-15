@@ -1,0 +1,80 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/improving-data-loss-prevention-accuracy-with-ai-context-analysis">English</a>および<a href="https://blog.cloudflare.com/zh-cn/improving-data-loss-prevention-accuracy-with-ai-context-analysis">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k1jqytoKrUA4FF4ivwLvy/ddf9a33f4722a915b9ae51095cfde33a/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareの<a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer"><u>Data Loss Prevention</u></a>（DLP）ソリューションの最新のイノベーションを発表できることを嬉しく思います。お客様固有のトラフィックパターンに適応して誤検知を減らす、AIを活用した自己改善型アルゴリズムです。</p>
+	<p>多くのお客様は、自社の内外を移動する機密データを識別して保護するという「目まぐるしい」タスクに頭を悩ませています。正規表現などの決定性手段による機密データ検出は、個人特定情報（PII）や知的財産（IP）として分類される詳細を識別できないために失敗することが多々あります。そのため誤検知率が高くなり、アラートが頻発してレビュー疲れにつながる可能性があります。さらに重要なのは、このような理想的でない体験がDLP製品離れにつながり、セキュリティポスチャ全般が弱体化する可能性があるということです。</p>
+	<p>CloudflareのDLPエンジンに組み込まれたAIによって、ドキュメントやHTTPリクエストのコンテンツをお客様の履歴レポートと並行してインテリジェントに評価し、コンテキストの類似性を判断して、データの機密性に関する結論をより正確に導き出すことができます。</p>
+	<p>このブログ記事では、<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings" target="_blank" rel="noopener noreferrer"><u>DLP AIコンテキスト分析</u></a>と、<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>を使用した実装、当社が開発している今後の改善点について紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="understanding-false-positives-and-their-impact-on-user-confidence">誤検知とそれがユーザーの信頼に与える影響を理解</h3>
+		<a href="https://blog.cloudflare.com/#understanding-false-positives-and-their-impact-on-user-confidence" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのData Loss Prevention（DLP）は、Web、クラウド、メール、SaaSアプリケーションなどさまざまなチャネルにわたって潜在的なデータ漏洩源をスキャンすることにより、機密情報を検出します。当社はいくつかの検出方法を使っていますが、正規表現のようなパターンベースの方法が重要な役割を果たしています。この方法は多くのタイプの機密データに効果的です。しかし、特定の情報はパターンだけで分類するのは困難です。例えば、米国の社会保障番号（SSN）は<a href="https://en.wikipedia.org/wiki/Social_Security_number#Structure" target="_blank" rel="noopener noreferrer"><u>AAA-GG-SSSS</u></a>という構成になっており（ダッシュが省略される場合もあります）、納税者番号、銀行口座番号、電話番号など類似書式の他のデータと混同されることがよくあります。</p>
+	<p>当社はDLP製品を<a href="https://blog.cloudflare.com/inline-data-loss-prevention"><u>発表</u></a>して以来、ユーザーが受け取る誤検知の数を減らすために、<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings/#confidence-levels" target="_blank" rel="noopener noreferrer"><u>信頼度のしきい値</u></a>などの新機能を導入してきました。この機能は、パターン一致の周辺のコンテキストを調べ、パターンマッチングの精度に関するCloudflareの信頼度を評価するものです。ユーザーは信頼度のしきい値（低、中、高）を設定して、誤検知の許容レベルを指定することができます。DLPは選択されたしきい値を下限とし、信頼度が指定のしきい値以上の検出のみを表面化します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EOKyJisPTPWcSOep9Se7F/22c1bf40cbd0d698b0e24095826548cd/1.png" alt="" class="kg-image" width="1628" height="866" loading="lazy">
+	</figure>
+	<p>しかし、コンテキスト分析の実装も簡単な作業ではありません。簡単な方法は、パターン一致の近くに特定のキーワードがないか調べることです。例えば、マッチングでSSNの可能性があるとされる箇所の近くに「SSN」という言葉がないか探すわけですが、この方法には限界があります。キーワードリストが不完全なことも多く、ユーザーが入力ミスをする可能性もあります。また、識別の鍵となるキーワードが近くに（例：銀行コードの近くに銀行口座、名前の近くにSSNなど）ない真陽性も珍しくありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="leveraging-ai-ml-for-enhanced-detection-accuracy">AI/MLを活用して検出精度を向上</h3>
+		<a href="https://blog.cloudflare.com/#leveraging-ai-ml-for-enhanced-detection-accuracy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は、コンテキスト分析の戦略をハードコード化する方法の限界を克服するために、お客様のフィードバックから学習して将来のエクスペリエンスをさらに改善する、動的な自己改善型アルゴリズムを開発しました。お客様から<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies/logging-options/#4-view-payload-logs" target="_blank" rel="noopener noreferrer"><u>ペイロード復号化ログ</u></a>を介して誤検知が報告されると、このシステムが類似コンテキストにおける将来のヒットの信頼度を低下させます。逆に、真陽性の報告があれば、システムが類似コンテキストにおけるヒットの信頼度を高めます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4h84zJ0SNtfhTVGzwxVyk0/bbdcce73d4538619abb296617d793bff/2.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>コンテキストの類似性の判断には、Workers AIを活用しています。具体的には、テキストを高次元ベクトル（テキスト埋め込み）に変換する<a href="https://developers.cloudflare.com/workers-ai/models/bge-base-en-v1.5" target="_blank" rel="noopener noreferrer"><u>事前トレーニング済み言語モデル</u></a>を使っています。こうした埋め込みはテキストの意味を把握し、同じ意味だが表現が異なる2つの文が互いに近接するベクトルにマッピングされるようにします。</p>
+	<p>パターンの一致が検出されると、システムはAIモデルを使用して周辺のコンテキストの埋め込みを計算します。次に、最近傍検索を実行して、以前記録された類義の偽陽性または真陽性を探します。これによって、表現がまったく同じでなくても意味が同じであれば、システムは文脈の類似性を識別することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/z8yLmrAXES70MzTn2GdQE/0845b35884535843fa01e4f1a92a3f41/3.png" alt="" class="kg-image" width="1999" height="795" loading="lazy">
+	</figure>
+	<p>Cloudflare従業員のトラフィックを使って実験したところ、このアプローチはそれまで見られなかった新しいパターン一致を効果的に処理しており、その堅牢性が証明されています。DLP管理者がCloudflareのダッシュボードで<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies" target="_blank" rel="noopener noreferrer"><u>ポリシー</u></a>一致のペイロードログを見ながら誤検知と真陽性を報告すれば、DLPの継続的改善ができ、時間の経過とともに誤検知が大幅に減っていきます。</p>
+	<div class="flex anchor relative">
+		<h3 id="seamless-integration-with-workers-ai-and-vectorize">Workers AIやVectorizeとシームレスに統合</h3>
+		<a href="https://blog.cloudflare.com/#seamless-integration-with-workers-ai-and-vectorize" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この新機能の開発では、Cloudflareの開発者向けプラットフォームである<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>と<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>のコンポーネントを使用しました。基礎となるインフラを自社で管理するのではなく、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を基盤として活用し、テキストの埋め込みにはWorkers AIを、ベクターデータベースとしてVectorizeを使用しました。このセットアップにより、基盤となるリソースのプロビジョニングにオーバーヘッドをかけずに、アルゴリズム自体に集中することができます。</p>
+	<p>Workers AIのおかげで、テキスト埋め込みへの変換が極めて簡単になりました。たった1行のコードで、どんなテキストでも対応するベクトル表現に変換できます。</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const result = await env.AI.run(model, {text: [text]}).data;</code></pre>
+	<p>トークン化からGPUによる推論まで、あらゆる処理が可能で、プロセスがシンプルかつスケーラブルになります。</p>
+	<p>最近傍検索も同様に簡単です。Workers AIからベクトルを取得した後、Vectorizeを使って、過去のレポートから類似コンテキストをすばやく検索します。同時に、現在のパターン一致のベクトルをVectorizeに保存し、将来のフィードバックから学習できるようにします。</p>
+	<p>リソースの使用を最適化するために、いくつかの巧妙なテクニックを取り入れました。例えば、パターンがヒットしたらそのすべてのベクトルを保存するのではなく、オンラインクラスタリングによってベクトルをクラスターにグループ化し、クラスターの重心だけを、ヒットを追跡するカウンター、レポートとともに保存します。これにより、ストレージの必要性が減り、検索が高速化されます。さらに、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>を統合して、インデックス作成プロセスをDLPスキャンのホットパスから分離することで、堅牢で応答性の高いシステムを実現しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6e6krasQ5t5ekp1TK0kJ0A/414f74fd48ef10a16e369775ead189b7/4.png" alt="" class="kg-image" width="1999" height="981" loading="lazy">
+	</figure>
+	<p>プライバシーは最優先事項です。当社では、一致したテキストはすべて埋め込み変換する前に墨消しし、すべてのベクトルとレポートを<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/workers-kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>のお客様固有のプライベートな名前空間に保存します。つまり、お客様の学習プロセスはそれぞれ独立しており、セキュアだということです。さらに、データ保持ポリシーを実装し、60日間アクセスも参照もなかったベクトルは当社のシステムから自動的に削除されるようにしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="limitations-and-continuous-improvements">制約と継続的改善</h3>
+		<a href="https://blog.cloudflare.com/#limitations-and-continuous-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIを活用したコンテキスト分析により検出精度が大幅に向上します。ただし、これを行うとエンドユーザーエクスペリエンスに遅延が多少増します。有効化されたDLPエントリのいずれとも一致しないリクエストの場合は、遅延増加はありません。しかし、AIコンテキスト分析が有効になっているプロファイルの有効エントリと一致するリクエストでは、通常約400ミリ秒の遅延増加が発生します。複数のエントリに一致するリクエストなど稀にある極端なケースでは、1.5秒もの遅延増加が起こり得ます。当社は遅延低減に積極的に取り組んでおり、通常で250ミリ秒以内に抑えるのが理想です。</p>
+	<p>もう1つの制約は、当社の言語モデル選択上、現在の実装は英語しかサポートしていないということです。しかし、Workers AIは、DLPのサポートを他の地域や言語に広げられる多言語モデルを開発中です。</p>
+	<p>将来的には、AIコンテキスト分析の透明性の向上も目指しています。現在、ユーザーは、過去の誤検知や真陽性の報告に基づいてどのように判定が行われるかについて可視性が得られません。当社では、信頼度スコアの計算方法についてより多くのインサイトを提供し、説明可能性が高くユーザーフレンドリーなシステムにするツールやインターフェースを開発する予定です。</p>
+	<p>今回のローンチでは、AIコンテキスト分析が利用できるのはGatewayのHTTPトラフィックのみです。2025年末までには<a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a>と<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer"><u>メールセキュリティ</u></a>の両方で利用可能になり、お客様はデータ環境全体にわたって同じAI機能強化を受けることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="unlock-the-benefits-start-using-ai-powered-detection-features-today">メリットを実現：AIを活用した検出機能の使用を今すぐ始めましょう</h3>
+		<a href="https://blog.cloudflare.com/#unlock-the-benefits-start-using-ai-powered-detection-features-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DLPのAIコンテキスト分析はクローズドベータ版です。<a href="https://www.cloudflare.com/lp/dlp-ai-context-analysis" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>から早期アクセス登録して、DLP HTTPトラフィックのマッチの即時改善をご体験ください。一般公開に向けてさらなるアップデートが行われる予定です！</p>
+	<p>Cloudflare OneからDLPにアクセスする場合は、アカウントマネージャーまでお問い合わせください。</p>
+</div>

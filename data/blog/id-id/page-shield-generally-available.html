@@ -1,0 +1,149 @@
+<div class="mb2 gray5">5 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/page-shield-generally-available">English</a>, <a href="https://blog.cloudflare.com/ja-jp/page-shield-generally-available">日本語</a>, <a href="https://blog.cloudflare.com/th-th/page-shield-generally-available">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/page-shield-generally-available">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yFP5orxIleNIyqwifXK2y/a07c4c70266052d21315429a6d2e90ec/page-shield-generally-available.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Serangan rantai pasokan menimbulkan kekhawatiran besar bagi CIO dan tenaga profesional keamanan.</p>
+	<p></p>
+	<p>Dalam serangan rantai pasokan, penyerang membobol alat atau perpustakaan pihak ketiga yang sedang digunakan oleh aplikasi target. Ini biasanya membuat penyerang merebut akses khusus ke lingkungan aplikasi yang membuat mereka dapat mencuri data pribadi atau melancarkan serangan lanjutan. Sebagai contoh, Magecart, adalah jenis serangan rantai pasokan yang umum. Dalam serangan ini, penyerang mencuri data kartu kredit dari formulir checkout situs e-commerce dengan membobol perpustakaan yang digunakan dalam situs.</p>
+	<p>Untuk membantu mengidentifikasi dan memitigasi serangan rantai pasokan dalam konteks aplikasi web, hari ini kami meluncurkan Page Shield dalam General Availability (GA).</p>
+	<p>Dengan Page Shield, Anda mendapatkan visibilitas terkait skrip yang berjalan di aplikasi Anda dan dapat diberi notifikasi saat skrip terinfeksi atau menunjukkan perilaku berbahaya, seperti mencoba menghapus data pengguna.</p>
+	<p>Kami bekerja keras agar Page Shield mudah digunakan: Anda dapat menemukannya pada tab Firewall dan mengaktifkannya dengan sekali klik. Tidak perlu konfigurasi tambahan. Peringatan dapat diatur secara terpisah untuk beragam peristiwa yang berbeda.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-page-shield"><b>Apa itu Page Shield?</b></h2>
+		<a href="https://blog.cloudflare.com/#what-is-page-shield" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11FMU4xfNgkRYihU1EcdA5/f833b7529adad207b39e4788d9060ab4/image2-17.png" alt="The Page Shield interface showing the list of scripts detected on the zone" class="kg-image" width="1894" height="1134" loading="lazy">
+
+	</figure>
+	<p>Bulan Maret tahun ini, <a href="https://blog.cloudflare.com/introducing-page-shield">kami mengumumkan akses awal ke Page Shield</a>, solusi kami untuk melindungi data pengguna akhir dari pembobolan yang menyasar browser.</p>
+	<p>Hari ini, kami <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">mengumumkan akuisisi Zaraz</a>, alat yang dibuat dalam Workers yang membuat pelanggan dapat dengan mudah memuat alat pihak ketiga di cloud, tanpa harus memuat kode JavaScript di browser, secara langsung dari UI Cloudflare dengan manfaat langsung dari segi kinerja dan keamanan. Namun, tidak semua aplikasi menggunakan, atau ingin menggunakan, pengelola pihak ketiga. Apa pun yang dibutuhkan, kami siap mendukung Anda.</p>
+	<p>Page Shield memanfaatkan posisi kami di jaringan sebagai proxy terbalik untuk menerima informasi secara langsung dari browser tentang file dan modul JavaScript yang sedang dimuat. Kami kemudian menyediakan visibilitas, menganalisis, dan mengingatkan Anda apabila file JavaScript menunjukkan perilaku yang berbahaya.</p>
+	<p>Contoh file JavaScript yang terinfeksi adalah serangan Magecart, cryptomining, dan adware. Dengan makin populernya aplikasi dan layanan berbasis SaaS, makin jarang aplikasi yang tidak menggunakan atau memuat kode JavaScript secara langsung dari pihak ketiga di luar kontrol pemilik aplikasi, yang makin mempersulit upaya mendeteksi dan memitigasi file yang terinfeksi.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-hard-is-client-side-security"><b>Seberapa sulitkah keamanan di pihak klien?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-hard-is-client-side-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Indikasi awal dari Page Shield menunjukkan bahwa rata-rata aplikasi memuat skrip dari delapan host pihak ketiga. Host ini mungkin dimiliki oleh perusahaan besar seperti Google, sampai perusahaan lebih kecil yang menyediakan modul "plug and play" yang dengan cepat meningkatkan fungsi aplikasi web (sistem think chat, pemilih tanggal, platform checkout, dll.). Setiap pihak ketiga ini dapat menjadi sasaran potensial untuk serangan rantai pasokan, yang membuat permukaan serangan begitu luas dan sulit dipantau.</p>
+	<p>Yang lebih parah, perubahan terjadi begitu cepat. Rata-rata sekitar 50% aplikasi memuat skrip dari host pihak ketiga baru setiap bulannya. Ini menunjukkan bahwa permukaan serangan tidak hanya sangat luas, tetapi juga cepat berubah.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-page-shield-work"><b>Bagaimana cara kerja Page Shield?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-does-page-shield-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Seperti banyak produk keamanan, kami menganggap Page Shield sebagai penyedia layanan visibilitas, deteksi, mitigasi, dan pencegahan. Langkah pertama adalah visibilitas.</p>
+	<div class="flex anchor relative">
+		<h3 id="visibility"><b>Visibilitas</b></h3>
+		<a href="https://blog.cloudflare.com/#visibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Apabila diaktifkan, pengulangan Page Shield saat ini menggunakan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank" rel="noopener noreferrer">kebijakan keamanan konten</a> (CSP) yang diberlakukan dengan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank" rel="noopener noreferrer">petunjuk laporan saja</a> untuk mengumpulkan informasi dari browser. Ini membuat kami dapat menyediakan daftar semua skrip yang berjalan di aplikasi Anda.</p>
+	<p>Dalam istilah HTTP, ini adalah header respons HTTP yang ditambahkan ke sampel respons halaman dari server asal ke browser. Header CSP terlihat seperti ini:</p>
+	<p>Header di atas memberi tahu browser bahwa skrip tidak boleh dimuat &nbsp;<code>(script-src 'none')</code> dan melaporkan pelanggaran apa pun ke titik akhir yang disediakan <code>(report-uri /cdn-cgi/script_monitor/report)</code>. Perlu diperhatikan juga bahwa titik akhir laporan pelanggaran diarahkan ke <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">jaringan Cloudflare</a> dan diproses di sana, jadi tidak ada lalu lintas tambahan yang mencapai server asal.</p>
+	<pre class="language-bash"><code class="language-bash">content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report</code></pre>
+	<p>Setiap laporan pelanggaran yang dikirim oleh browser dan diterapkan sebagai permintaan HTTP POST memberi kami informasi seputar skrip. Berikut contohnya:</p>
+	<p>Laporan ini memberi tahu kita bahwa:</p>
+	<pre class="language-bash"><code class="language-bash">{
+   "csp-report":{
+      "document-uri":"https://www.example.com/",
+      "referrer":"",
+      "violated-directive":"script-src-elem",
+      "effective-directive":"script-src-elem",
+      "original-policy":"script-src 'none'; report-uri /cdn-cgi/script_monitor/report",
+      "Disposition":"report",
+      "blocked-uri":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
+      "status-code":200,
+      "script-sample":""
+   }
+}</code></pre>
+	<ul>
+		<li>
+			<p>Halaman asal skrip dimuat (document-uri)</p>
+		</li>
+		<li>
+			<p>Referrer, jika ada</p>
+		</li>
+		<li>
+			<p>Arahan CSP yang dilanggar</p>
+		</li>
+		<li>
+			<p>CSP lengkap yang memuat arahan</p>
+		</li>
+		<li>
+			<p>Tautan lengkap ke file JavaScript</p>
+		</li>
+		<li>
+			<p>Kode respons yang diterima browser saat memuat file. Dalam contoh di atas, kode respons adalah 200, yang berarti file berhasil dimuat.</p>
+		</li>
+	</ul>
+	<p>Dengan mengumpulkan semua informasi yang disediakan dalam laporan dan menyempurnakannya menggunakan data tambahan, kami dapat menyediakan informasi yang mendetail terkait skrip yang dimuat oleh aplikasi Anda, baik dengan UI <a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">maupun API Cloudflare</a>.</p>
+	<p>Semua zona Cloudflare Pro dapat mengakses laporan skrip Page Shield kami. Selain itu, zona Bisnis dan Perusahaan dapat mengakses informasi atribusi halaman, sehingga Anda dapat dengan cepat mengidentifikasi lokasi skrip dimuat dari dalam aplikasi Anda. Zona Bisnis dan Perusahaan juga dapat menyiapkan peringatan terkait jumlah peristiwa perubahan skrip.</p>
+	<div class="flex anchor relative">
+		<h3 id="detection"><b>Deteksi</b></h3>
+		<a href="https://blog.cloudflare.com/#detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pemilik aplikasi mungkin telah memanfaatkan kebijakan keamanan konten untuk memastikan hanya skrip tertentu yang dimuat. Namun, CSP sering kali bersifat terlalu luas dan browser tidak menyediakan mekanisme asli untuk mendeteksi saat file JavaScript menunjukkan perilaku berbahaya. Hal ini mencakup kode JavaScript yang diizinkan untuk dimuat sesuai dengan kebijakan keamanan konten, yang jauh mengurangi keefektifannya.</p>
+	<p>Dengan Page Shield, kami yakin bahwa ada peluang nyata untuk membantu menyediakan deteksi perilaku berbahaya bagi pelanggan kami.</p>
+	<p>Untuk setiap file JavaScript yang ditemukan dalam zona Anda oleh sistem kami, kami akan melakukan sejumlah tindakan yang bertujuan untuk mendeteksi perilaku berbahaya:</p>
+	<ol>
+		<li>
+			<p>Setiap file JavaScript yang dimuat dari nama host dengan kategori berbahaya dalam feed ancaman kami akan ditandai sebagaimana mestinya. Ini termasuk domain induk.</p>
+		</li>
+		<li>
+			<p>Sama halnya, jika URL tertentu masuk ke kategori berbahaya dalam feed kami, URL ini juga akan ditandai. Dalam kasus yang ini, mengingat file tepatnya telah dikategorikan sebagai berbahaya, kemungkinan serangan sedang berlangsung.</p>
+		</li>
+		<li>
+			<p>Terakhir, kami akan mengunduh file dan menjalankannya dalam pengklasifikasi kami. Pengklasifikasi menjalankan langkah simbolisasi, normalisasi, dan penguraian sandi sebelum mencari korelasi antara pengambilan lapangan format dan pemanggilan eksfiltrasi data. Makin kuat korelasinya, makin besar kemungkinan skrip menjalankan serangan jenis Magecart. Kami akan mem-posting detail teknis tambahan tentang teknologi kami dalam postingan lanjutan — ikuti terus!</p>
+		</li>
+	</ol>
+	<p>Pelanggan Perusahaan kami dapat membeli rangkaian penuh kapabilitas Page Shield, termasuk kapabilitas deteksi. Silakan hubungi manajer akun Anda.</p>
+	<p>Seiring kami membangun produk lebih lanjut selama tahun depan, kami berencana menambahkan sinyal deteksi tambahan serta meningkatkan kemampuan pengklasifikasi kami dan mendeteksi jenis serangan tambahan, termasuk adware, ransomware, dan cryptomining.</p>
+	<p>Setelah sinyal berbahaya dipicu di file JavaScript, Cloudflare dapat memberi tahu Anda melalui peringatan yang dapat diatur melalui email, webhook, PagerDuty, dan format lainnya.</p>
+	<div class="flex anchor relative">
+		<h3 id="prevention-and-mitigation"><b>Pencegahan dan mitigasi</b></h3>
+		<a href="https://blog.cloudflare.com/#prevention-and-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Banyak pelanggan besar kami telah memiliki kebijakan keamanan konten, dan meskipun mudah untuk <a href="https://blog.cloudflare.com/transform-http-response-headers">menambahkan header respons HTTP yang menerapkan CSP melalui Cloudflare</a>, kami dapat melakukannya dengan lebih baik.</p>
+	<p>Meskipun tidak termasuk dalam perilisan dalam waktu dekat ini, kami telah bekerja keras untuk menghadirkan opsi pencegahan dan mitigasi ke Page Shield:</p>
+	<ul>
+		<li>
+			<p>Pencegahan menggunakan pembuatan CSP secara mudah yang didasarkan pada skrip aktif yang dipatuhi, yang mengizinkan pengeditan dan pemberlakuan ulang kebijakan sesuai kebutuhan baik melalui dasbor maupun secara langsung menggunakan API sebagai bagian dari saluran pemberlakuan.</p>
+		</li>
+		<li>
+			<p>Pemblokiran yang memanfaatkan proxy kami agar skrip berbahaya dapat dihapus dari dalam bodi respons HTTP.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="get-started"><b>Memulai</b></h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Jika anda telah memiliki situs web di Cloudflare, upgrade ke paket berbayar apa pun untuk mulai memanfaatkan fitur Page Shield hari ini tanpa perlu konfigurasi tambahan. Anda juga dapat <a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">menggunakan API kami untuk memanfaatkan fitur Page Shield</a>.</p>
+	<p>Jika Anda tidak memiliki situs web di Cloudflare, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">mendaftar</a> tidak memakan waktu lebih dari 5 menit!</p>
+</div>

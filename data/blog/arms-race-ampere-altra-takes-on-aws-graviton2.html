@@ -1,502 +1,315 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7wrry5WHWoel7pmwlYzf6Z/a53b24ffe24731dbbbd2b0bf34bca28a/arms-race-ampere-altra-takes-on-aws-graviton2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Over three years ago, we embraced the ARM ecosystem after <a href="https://blog.cloudflare.com/arm-takes-wing">evaluating the Qualcomm Centriq</a>. The Centriq and its Falkor cores delivered a significant reduction in power consumption while maintaining a comparable performance against the processor that was powering our server fleet at the time. By the time we completed <a href="https://blog.cloudflare.com/porting-our-software-to-arm64">porting our software stack to be compatible with ARM</a>, Qualcomm decided to <a href="https://www.theregister.com/2018/12/10/qualcomm_layoffs" target="_blank" rel="noopener noreferrer">exit the server business</a>. Since then, we have been waiting for another server-grade ARM processor with hopes to improve our power efficiencies across our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">global network</a>, which now spans more than 200 cities in over 100 countries.</p>
-	<p>ARM has introduced the Neoverse N1 platform, the blueprint for creating power-efficient processors licensed to institutions that can customize the original design to meet their specific requirements. Ampere licensed the Neoverse N1 platform to create the Ampere Altra, a processor that allows companies that own and manage their own fleet of servers, like ourselves, to take advantage of the expanding ARM ecosystem. We have been working with Ampere to determine whether Altra is the right processor to power our first generation of ARM edge servers.</p>
-	<p>The AWS Graviton2 is the only other Neoverse N1-based processor publicly accessible, but only made available through Amazon’s cloud product portfolio. We wanted to understand the differences between the two, so we compared Ampere’s single-socket server, named Mt. Snow, equipped with the Ampere Altra Q80-30 against an EC2 instance of the AWS Graviton2.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gIm083qtHDE0lsyNQ9trI/871b344d6f1a3abc480c43ebec66973b/image22.png" alt="The Mt. Snow 1P server equipped with the Ampere Altra Q80-30" class="kg-image" width="1999" height="1453" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4p4UD5vZMIdLhnicWpFoNn/50f867f2a2841f22a9f0468594417926/image13-1.png" alt="The Mt. Snow 1P server equipped with the Ampere Altra Q80-30" class="kg-image" width="1999" height="1333" loading="lazy">
-
-	</figure>
-	<p>The Mt. Snow 1P server equipped with the Ampere Altra Q80-30</p>
-	<p>The Ampere Altra and AWS Graviton2 alike are based on the Neoverse N1 platform by ARM, manufactured on the TSMC 7nm process. The N1 reference core features an 11-stage out-of-order execution pipeline along with the <a href="https://www.arm.com/solutions/infrastructure" target="_blank" rel="noopener noreferrer">following specifications</a> in ARM nomenclature.</p><!--kg-card-begin: html-->
-	<center>
-		<table>
-			<thead>
-				<tr>
-					<th>Pipeline Stage</th>
-					<th>Width</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Fetch</td>
-					<td>4 instructions/cycle</td>
-				</tr>
-				<tr>
-					<td>Decode</td>
-					<td>4 instructions/cycle</td>
-				</tr>
-				<tr>
-					<td>Rename</td>
-					<td>4 Mops/cycle</td>
-				</tr>
-				<tr>
-					<td>Dispatch</td>
-					<td>8 µops/cycle</td>
-				</tr>
-				<tr>
-					<td>Issue</td>
-					<td>8 µops/cycle</td>
-				</tr>
-				<tr>
-					<td>Commit</td>
-					<td>8 µops/cycle</td>
-				</tr>
-			</tbody>
-		</table>
-	</center><!--kg-card-end: html-->
-	<p>A <a href="https://developer.arm.com/ip-products/processors/neoverse/neoverse-n1" target="_blank" rel="noopener noreferrer">N1 core</a> contains 64KiB of L1 instruction and 64KiB of L1 data caches and a dedicated L2 cache that can be implemented with up to 1MiB per core. The L3 cache or the System Level Cache can be implemented with up to 256MiB (up to 4MiB per slice, up to 64 slices) shared by all cores.</p><!--kg-card-begin: html-->
-	<center>
-		<style type="text/css">
-			.tg {
-				border-collapse: collapse;
-				border-spacing: 0;
-			}
-
-			.tg td {
-				border-color: black;
-				border-style: solid;
-				border-width: 1px;
-				font-family: Arial, sans-serif;
-				font-size: 14px;
-				overflow: hidden;
-				padding: 10px 5px;
-				word-break: normal;
-			}
-
-			.tg th {
-				border-color: black;
-				border-style: solid;
-				border-width: 1px;
-				font-family: Arial, sans-serif;
-				font-size: 14px;
-				font-weight: normal;
-				overflow: hidden;
-				padding: 10px 5px;
-				word-break: normal;
-			}
-
-			.tg .tg-jf6t {
-				background-color: #FFF;
-				color: #36393A;
-				text-align: left;
-				vertical-align: middle
-			}
-
-			.tg .tg-0z70 {
-				background-color: #FFF;
-				color: #36393A;
-				font-weight: bold;
-				text-align: left;
-				vertical-align: middle
-			}
-		</style>
-		<table class="tg">
-			<thead>
-				<tr>
-					<th class="tg-0z70">Cache Hierarchy</th>
-					<th class="tg-0z70">Capacity</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-jf6t">L1i Cache</td>
-					<td class="tg-jf6t">64 KiB</td>
-				</tr>
-				<tr>
-					<td class="tg-jf6t">L1d Cache</td>
-					<td class="tg-jf6t">64 KiB</td>
-				</tr>
-				<tr>
-					<td class="tg-jf6t">L2 Cache</td>
-					<td class="tg-jf6t">Up to 1 MiB</td>
-				</tr>
-				<tr>
-					<td class="tg-jf6t">L3 Cache</td>
-					<td class="tg-jf6t">Up to 256 MiB</td>
-				</tr>
-			</tbody>
-		</table>
-	</center><!--kg-card-end: html-->
-	<p>A pair of N1 cores can optionally be combined into a dual-core configuration through the Component Aggregation Layer, then placed inside the mesh interconnects named the Coherent Mesh Network or <a href="https://developer.arm.com/ip-products/system-ip/corelink-interconnect/corelink-coherent-mesh-network-family/corelink-cmn-600" target="_blank" rel="noopener noreferrer">CMN-600</a> that supports up to 64 pairs of cores, totaling 128 cores.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13WYF0ug8Fll9whw3hAYQc/b2120a5ab9238d7fb88a45a9216bc955/image14-2.png" alt="Component Aggregation Layer (CAL) supports up to two N1 cores" class="kg-image" width="500" height="332" loading="lazy">
-
-	</figure>
-	<p>Component Aggregation Layer (CAL) supports up to two N1 cores</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38oEPfzBX5YmBmZPvDfE4q/732ba4ed273fabe97a548dd6604d0ed9/image7-3.png" alt="Coherent Hub Interface (CHI) is used to connect components to the Mesh Cross Point (XP)" class="kg-image" width="500" height="426" loading="lazy">
-
-	</figure>
-	<p>Coherent Hub Interface (CHI) is used to connect components to the Mesh Cross Point (XP)</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xr86zntLVgCyTRqPOyZt6/a1662c7cb04adddf99c1c754a318783f/image17-1.png" alt="Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores" class="kg-image" width="1692" height="1520" loading="lazy">
-
-	</figure>
-	<p>Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores</p>
-	<div class="flex anchor relative">
-		<h2 id="system-specifications">System Specifications</h2>
-		<a href="https://blog.cloudflare.com/#system-specifications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<center>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>AWS (Annapurna Labs)</th>
-					<th>Ampere</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Processor Model</td>
-					<td>AWS Graviton2</td>
-					<td>Ampere Altra Q80-30</td>
-				</tr>
-				<tr>
-					<td>ISA</td>
-					<td>ARMv8.2</td>
-					<td>ARMv8.2+</td>
-				</tr>
-				<tr>
-					<td>Core / Thread Count</td>
-					<td>64C / 64T</td>
-					<td>80C / 80T</td>
-				</tr>
-				<tr>
-					<td>Operating Frequency</td>
-					<td>2.5 GHz</td>
-					<td>3.0 GHz</td>
-				</tr>
-				<tr>
-					<td>L1 Cache Size</td>
-					<td>8 MiB (64 x 128 KiB)</td>
-					<td>10 MiB (80 x 128 KiB)</td>
-				</tr>
-				<tr>
-					<td>L2 Cache Size</td>
-					<td>64 MiB (64 x 1 MiB)</td>
-					<td>80 MiB (80 x 1 MiB)</td>
-				</tr>
-				<tr>
-					<td>L3 Cache Size</td>
-					<td>32 MiB</td>
-					<td>32 MiB</td>
-				</tr>
-				<tr>
-					<td>System Memory</td>
-					<td>256 GB (8 x 32 GB DDR4-3200)</td>
-					<td>256 GB (8 x 32 GB DDR4-3200)</td>
-				</tr>
-			</tbody>
-		</table>
-	</center><!--kg-card-end: html-->
-	<p>We can verify that the two processors are based on the Neoverse N1 platform by checking <code>CPU part</code> inside <code>cpuinfo</code>, which returns <code>0xd0c</code>, the <a href="https://developer.arm.com/documentation/100616/0301/register-descriptions/aarch64-system-registers/midr-el1--main-id-register--el1" target="_blank" rel="noopener noreferrer">designated part number for the Neoverse N1</a>.</p>
-	<pre class="language-bash"><code class="language-bash">sung@ampere-altra:~$ cat /proc/cpuinfo | grep 'CPU part' | head -1
-CPU part	: 0xd0c</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">sung@aws-graviton2:~$ cat /proc/cpuinfo | grep 'CPU part' | head -1
-CPU part	: 0xd0c</code></pre>
-	<p>Ampere backported various features into the Ampere Altra notably, <a href="https://developer.arm.com/support/arm-security-updates/speculative-processor-vulnerability" target="_blank" rel="noopener noreferrer">speculative side-channel attack mitigations</a> that include Meltdown and Spectre (variants 1 and 2) from the ARMv8.5 instruction set architecture, giving Altra the “+” designation in their ISA (ARMv8.2+).</p>
-	<p>The Ampere Altra consists of 25% more physical cores and 20% higher operating frequency than the AWS Graviton2. Because of Altra’s higher core-count and frequency, we should expect the Ampere Altra to perform up to 50% better than the AWS Graviton2 in compute-bound workloads.</p>
-	<p>Both Ampere and AWS decided to implement 1MiB of L2 cache per core, but only 32MiB of L3 or System Level Cache, although the CMN-600 specification allows up to 256MiB. This leaves the Ampere Altra with a lower L3 cache-per-core ratio than the AWS Graviton2 and places Altra at a potential disadvantage in situations where the <a href="https://blog.cloudflare.com/impact-of-cache-locality">application’s working set does not fit within the L3 cache</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="methodology">Methodology</h2>
-		<a href="https://blog.cloudflare.com/#methodology" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We imaged both systems with Debian Buster and downloaded our open-source benchmark suite, <a href="https://github.com/cloudflare/cf_benchmark" target="_blank" rel="noopener noreferrer">cf_benchmark</a>. This benchmark suite executes 49 different workloads over approximately 15 to 30 minutes. Each workload utilizes a library that has either been used in our stack or considered at one point or another. Due to the relatively short duration of the benchmark and the libraries called by the workloads, we run cf_benchmark as our smoke test on any new system brought in for evaluation. We recommend cf_benchmark to our technology partners when we discuss new hardware, primarily processors, to ensure these workloads can compile and run successfully.</p>
-	<p>We ran cf_benchmark multiple times and observed no significant run-to-run variations. Similar to industry standard benchmarks, we calculated the overall score using geometric mean to provide a more conservative result than arithmetic mean across all 49 workloads and category scores using their respective subset of workloads.</p>
-	<p>In single-core scenarios, cf_benchmark will spawn a single application thread, occupying a single hardware thread. In multi-core scenarios, cf_benchmark will spawn as many application threads as needed until all hardware threads on the processor are occupied. Neither processors implemented <a href="https://en.wikipedia.org/wiki/Simultaneous_multithreading" target="_blank" rel="noopener noreferrer">simultaneous multithreading</a>, so each physical core can only execute one hardware thread at a time.</p>
-	<div class="flex anchor relative">
-		<h2 id="overall-performance-results">Overall Performance Results</h2>
-		<a href="https://blog.cloudflare.com/#overall-performance-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Given Altra’s advantage in both operating frequency and sheer core-count, the Ampere Altra took the lead across single and multi-core performance.</p>
-	<p>In single-core performance, the Ampere Altra outperformed the AWS Graviton2 by 16%. The differences in operating frequencies between the two processors gave the Ampere Altra a proportional advantage of up to 20% in more than half of our single-core workloads.</p>
-	<p>In multi-core performance, the Ampere Altra continued to maintain its edge over the AWS Graviton2 by 31%. We expected the Ampere Altra to attain a theoretical advantage between 20% to 50% due to Altra’s higher operating frequency and core count while taking inherent overheads associated with increasing core count into consideration, primarily scaling out the mesh network. We observed that the majority of our multi-core workloads fell within this 20% to 50% range.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hR6z2vf42BIvNqGDe7Fzo/d5334d860decb6ccc04213ba88016302/image27.png" alt="" class="kg-image" width="716" height="335" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="categorized-results">Categorized Results</h2>
-		<a href="https://blog.cloudflare.com/#categorized-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In OpenSSL and LuaJIT, the Ampere Altra scaled proportionally with its operating frequency in single-core performance and continued to scale out with its core count in multi-core performance. The Ampere Altra maintained its lead in the vast majority of compression and Golang workloads with the exception of Brotli level 9 compression and some Golang multi-core workloads that were not able to keep the two processors busy at 100% CPU utilization.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rgDArSL0EoMlSPBYXOPX0/5c85608e43ddc417565b18b12ead1fb7/image9-2.png" alt="" class="kg-image" width="716" height="337" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Xk9KE86pFwyLKTumNkXG6/4713fc65624711bea6a0d21fb0ccc8a8/image29.png" alt="" class="kg-image" width="716" height="337" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="openssl">OpenSSL</h2>
-		<a href="https://blog.cloudflare.com/#openssl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As described <a href="https://blog.cloudflare.com/arm-takes-wing">previously</a>, we use a fork of OpenSSL, named BoringSSL, in places such as for <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">TLS handshake</a> handling. The original OpenSSL comes with a built-in benchmark called `speed` that measures single and multi-core performance. The asymmetric and <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">symmetric</a> crypto workloads found here saturated the processors at 100% CPU utilization. Altra’s performance aligned with our expectations throughout this entire category by maintaining a consistent 20% advantage over the AWS Graviton2 in single-core and continued to scale with its core count and performed, on average, 47% better in multi-core performance.</p>
-	<div class="flex anchor relative">
-		<h3 id="public-key-cryptography">Public Key Cryptography</h3>
-		<a href="https://blog.cloudflare.com/#public-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WTE3GQC2F1PJGKCOJlIBn/872241c8d731b3a23ba4fa1a6be58c42/image4-9.png" alt="" class="kg-image" width="711" height="324" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WyA8y24VhaTVc6KSGMwgA/94b04a984a96434c5e27f580eae4781b/image6-4.png" alt="" class="kg-image" width="712" height="324" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="symmetric-key-cryptography">Symmetric Key Cryptography</h3>
-		<a href="https://blog.cloudflare.com/#symmetric-key-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IAWDbmAmeDB398TEqlFz7/ab9e3db71dd253ebb31f86bdc294bd07/image3-10.png" alt="" class="kg-image" width="717" height="345" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Vjjz0U0no96OWEUoPOyrL/43cc9a669378a0acc7b811d05def6848/image28.png" alt="" class="kg-image" width="717" height="343" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="luajit">LuaJIT</h2>
-		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We commonly describe LuaJIT as the <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">glue that holds Cloudflare together</a>. LuaJIT has a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">long history</a> here at Cloudflare for the same reason it is widely used in the videogame industry, where performance and responsiveness are non-negotiable requirements.</p>
-	<p>Although we have been transitioning from LuaJIT <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">to Rust</a>, we welcomed the <a href="https://developer.arm.com/documentation/100616/0400/functional-description/level-1-memory-system/cache-behavior/instruction-cache-coherency?lang=en" target="_blank" rel="noopener noreferrer">instruction cache coherency</a> implemented into the Ampere Altra. The instruction cache coherency aims to address the <a href="https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/caches-and-self-modifying-code" target="_blank" rel="noopener noreferrer">drawbacks associated with LuaJIT</a>, such as its self-modifying properties, where the next instruction that needs to be fetched is not in the instruction cache, but rather the data cache. With this feature enabled, the instruction cache becomes coherent or made aware of changes made in the data cache. The L2 cache becomes inclusive of the L1 instruction cache, meaning any cache lines found in the L1 instruction cache should also be present in the L2 cache. Furthermore, L2 cache intercepts any invalidations or stores made to any of the L2’s cache lines and propagates those changes up to the L1 instruction cache.</p>
-	<p>The Ampere Altra performed well within single-core performance except for fasta where both processors stalled at the front-end of the pipeline. In the multi-core version of fasta, Altra did not spend as many cycles stalled in the front-end likely due to Ampere's implementation of the instruction cache coherency. All other workloads continued to scale in multi-core workloads with binary trees coming in at 73%. Spectral was omitted since the multi-core variant failed to run on both servers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PTr1VFKBOtT3OJa2p1OIL/6c89fe575583d30dc7758ac071853be9/image25.png" alt="" class="kg-image" width="711" height="324" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1v8ZAjMln1cgNxC74M6rFH/f64281063db5deafcdb2c0df3d2f12cb/image18-1.png" alt="" class="kg-image" width="712" height="323" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="compression">Compression</h2>
-		<a href="https://blog.cloudflare.com/#compression" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://blog.cloudflare.com/results-experimenting-brotli">Brotli and Gzip</a> are the two primary types of compression we use at Cloudflare. We find value in highly efficient compression algorithms as it helps us find a balance between spending more resources on a faster processor or having a larger storage capacity in addition to being able to transfer contents faster. The Ampere Altra performed well on both compression types with the exception of Brotli level 9 and Gzip level 4 multi-core performance.</p>
-	<div class="flex anchor relative">
-		<h3 id="brotli">Brotli</h3>
-		<a href="https://blog.cloudflare.com/#brotli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XaMt4Zk04Sci4xEwYbEfZ/452e4a8fdd91eb329f72d5931ebf6fd4/image2-6.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8HNEM6fNB1ZHdJBi9WXwq/0ac8c02525138234f57138f63785ccf7/image30.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
-
-	</figure>
-	<p>Out of the entire benchmark suite, Brotli level 9 caused the largest delta between the Ampere Altra and the AWS Graviton2. Although we do not use <a href="https://blog.cloudflare.com/arm-takes-wing">Brotli level 7 and above</a> when performing dynamic compression, we decided to investigate further.</p>
-	<p>From historical observations, we noticed that most processors tend to experience significant performance degradation at level 9. Compression workloads generally consist of a higher branch instructions mix, and we found approximately 15% to 20% of the dynamic instructions to be branch instructions. Intuitively, we first looked at the misprediction rate since a high miss rate will quickly add up penalty cycles. However, to our surprise, we found the misprediction rate at level 9 very low.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/386axQVNM8iSnFqudd6Ogm/05018c18024e803c3cd0b9119dec2ecc/image15-3.png" alt="" class="kg-image" width="719" height="376" loading="lazy">
-
-	</figure>
-	<p>By analyzing our dataset further, we found the common underlying cause appeared to be the high number of page faults incurred at level 9. Ampere has demonstrated that by increasing the page size from 4K to 64K bytes, we can alleviate the bottleneck and bring the Ampere Altra at parity with the AWS Graviton2. We plan to experiment with large page sizes in the future as we continue to evaluate Altra.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DKo7g8rI17OWj0EYTaajg/0fd048aa115e975a5596ea6d4484e7c3/image16-1.png" alt="" class="kg-image" width="726" height="383" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="gzip">Gzip</h3>
-		<a href="https://blog.cloudflare.com/#gzip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Ysrj5aCW6xRAhfvaAU18x/6a4097d080255082d82f4e500b115850/image1-12.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Kq3MvWAn8SU4x6aMtXB70/d8ed96d3a91d806b2169533e3c3d320f/image19-1.png" alt="" class="kg-image" width="723" height="329" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="golang">Golang</h2>
-		<a href="https://blog.cloudflare.com/#golang" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>LuaJIT, Rust, C++, and Go are some of our <a href="https://blog.cloudflare.com/go-at-cloudflare">primary languages</a>; the Golang workloads found here include <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">cryptography</a>, compression, regular expression, and string manipulation. The Ampere Altra performed proportionally to its operating frequency against the AWS Graviton2 in the vast majority of single-core performance. In multi-core performance, the workloads that could not saturate the processors to 100% CPU utilization did not scale proportionally to the two processor’s respective operating frequencies and core count.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57IXPa7WCSeZKgL1uxFnwZ/1464a91c07a9d37f2f54a5c2a40cf4e3/image11-1.png" alt="" class="kg-image" width="993" height="386" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-cryptography">Go Cryptography</h3>
-		<a href="https://blog.cloudflare.com/#go-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sFiAVlYH3Yf7HRMHcs4lD/5d5767056e6bbdfcb1806a9a64837896/image8-3.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MtZ4a8jzSBvuILTK63K5N/bee30dc62c8c19906b025be68093a6c0/image23.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hUMrhpmi50JSnqTFSHCEI/f414af6ea4350c6001d3215414c476d9/image26.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Q4pFSFuq2vIdFqXRZTDuc/a150996a34937b5dc6a6abb03f8e6b81/image21-6.png" alt="" class="kg-image" width="718" height="351" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-compression-string">Go Compression &amp; String</h3>
-		<a href="https://blog.cloudflare.com/#go-compression-string" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eO7U4KLBUdakYPkZAMDEm/a9a49d5d059be39825c2492876e612c8/image24.png" alt="" class="kg-image" width="719" height="337" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jfNL4hgXTgikqd1xxKGS/c9bd212d89e2a34f64a71bc076323815/image10-3.png" alt="" class="kg-image" width="719" height="337" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-regex">Go Regex</h3>
-		<a href="https://blog.cloudflare.com/#go-regex" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hmpFGmyyhgx9cnCkTtbeJ/237481ec63e1f82fbdf42e986b9ed3a1/image12-1.png" alt="" class="kg-image" width="714" height="342" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5NNwnydydlXjw9iTomiML6/bc6e5bd6a72555f2db48c56b54b76a74/image20.png" alt="" class="kg-image" width="715" height="342" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="frequency-power-thermals">Frequency, Power &amp; Thermals</h2>
-		<a href="https://blog.cloudflare.com/#frequency-power-thermals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We were unable to collect any telemetry on the AWS Graviton2. Power would have been an interesting data point on the AWS Graviton2, but the EC2 instance did not expose either frequency or power sensors. The Ampere model we tested was the Altra Q80-30, rated with an operating frequency of 3.0GHz and a thermal design power (TDP) of 210W.</p>
-	<p>The Ampere Altra maintained a sustained operating frequency throughout cf_benchmark while Altra’s dynamic voltage and frequency scaling (DVFS) mechanism occasionally lowered its operating frequency in between workloads as needed to reduce power consumption. Package power varied depending on the workload, but Altra never consumed anywhere near its rated TDP while the default fan curve maintained the temperature below 70C. At the system level, by simply querying the baseboard management controller over <a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface" target="_blank" rel="noopener noreferrer">IPMI</a>, we observed that the Ampere server consumed no more than 300W. More power-efficient servers directly translates to more <a href="https://blog.cloudflare.com/an-introduction-to-three-phase-power-and-pdus">flexibility over how we can populate our racks</a> and we hope this trend will continue in production.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p2T05N3TKr8JDSNhHYs89/192ec5af3153877a60a39acceea1f7f4/image31.png" alt="" class="kg-image" width="681" height="256" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12tiKqNAFC8IK9o76MiJ6F/62186a14aed6c406d84553a7ec14fc55/image5-10.png" alt="" class="kg-image" width="681" height="254" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In our top-down evaluation, the Ampere Altra largely performed as we had expected throughout our benchmarking suite. We regularly observed the two Neoverse N1 processors perform to their respective operating frequency and core count, with the Ampere Altra coming on top in these key areas over the AWS Graviton2. The Ampere Altra yielded a better single-core performance due to higher operating frequency and multiplied its impact even further by scaling out with a higher core count in multi-core performance against the AWS Graviton2. We also found our Ampere evaluation server consuming less power than we had anticipated and hope this trend will continue in production.</p>
-	<p>Throughout this initial set of testing and learning more about the underlying architecture, there were many parts we found interesting when compared against contemporary x86 counterparts such as the absence of simultaneous multithreading or dynamic frequency boost. We look forward to seeing which design philosophy makes more sense for the cloud. We are currently assessing Altra’s performance against our fleet of servers and collaborating with Ampere to define an ARM edge server based on Altra that could be deployed at scale.</p>
+<p>Over three years ago, we embraced the ARM ecosystem after <a href="https://blog.cloudflare.com/arm-takes-wing">evaluating the Qualcomm Centriq</a>. The Centriq and its Falkor cores delivered a significant reduction in power consumption while maintaining a comparable performance against the processor that was powering our server fleet at the time. By the time we completed <a href="https://blog.cloudflare.com/porting-our-software-to-arm64">porting our software stack to be compatible with ARM</a>, Qualcomm decided to <a href="https://www.theregister.com/2018/12/10/qualcomm_layoffs" target="_blank" rel="noopener noreferrer">exit the server business</a>. Since then, we have been waiting for another server-grade ARM processor with hopes to improve our power efficiencies across our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">global network</a>, which now spans more than 200 cities in over 100 countries.</p>
+<p>ARM has introduced the Neoverse N1 platform, the blueprint for creating power-efficient processors licensed to institutions that can customize the original design to meet their specific requirements. Ampere licensed the Neoverse N1 platform to create the Ampere Altra, a processor that allows companies that own and manage their own fleet of servers, like ourselves, to take advantage of the expanding ARM ecosystem. We have been working with Ampere to determine whether Altra is the right processor to power our first generation of ARM edge servers.</p>
+<p>The AWS Graviton2 is the only other Neoverse N1-based processor publicly accessible, but only made available through Amazon’s cloud product portfolio. We wanted to understand the differences between the two, so we compared Ampere’s single-socket server, named Mt. Snow, equipped with the Ampere Altra Q80-30 against an EC2 instance of the AWS Graviton2.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="520" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=715&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=640&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=715&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=750&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=828&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=1080&amp;h=785&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=1280&amp;h=931&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X9T5W3378MMAN1RXNN6N.png&amp;w=1430&amp;h=1040&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The Mt. Snow 1P server equipped with the Ampere Altra Q80-30" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="520" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: The Mt. Snow 1P server equipped with the Ampere Altra Q80-30"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470GJJGZYD1W6JSB5HRYTY.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The Mt. Snow 1P server equipped with the Ampere Altra Q80-30" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: The Mt. Snow 1P server equipped with the Ampere Altra Q80-30"></div>
+</figure>
+<p>The Mt. Snow 1P server equipped with the Ampere Altra Q80-30</p>
+<p>The Ampere Altra and AWS Graviton2 alike are based on the Neoverse N1 platform by ARM, manufactured on the TSMC 7nm process. The N1 reference core features an 11-stage out-of-order execution pipeline along with the <a href="https://www.arm.com/solutions/infrastructure" target="_blank" rel="noopener noreferrer">following specifications</a> in ARM nomenclature.</p>
+<div id="html-block-kr" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Pipeline Stage</th>
+				<th>Width</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Fetch</td>
+				<td>4 instructions/cycle</td>
+			</tr>
+			<tr>
+				<td>Decode</td>
+				<td>4 instructions/cycle</td>
+			</tr>
+			<tr>
+				<td>Rename</td>
+				<td>4 Mops/cycle</td>
+			</tr>
+			<tr>
+				<td>Dispatch</td>
+				<td>8 µops/cycle</td>
+			</tr>
+			<tr>
+				<td>Issue</td>
+				<td>8 µops/cycle</td>
+			</tr>
+			<tr>
+				<td>Commit</td>
+				<td>8 µops/cycle</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
+<p>A <a href="https://developer.arm.com/ip-products/processors/neoverse/neoverse-n1" target="_blank" rel="noopener noreferrer">N1 core</a> contains 64KiB of L1 instruction and 64KiB of L1 data caches and a dedicated L2 cache that can be implemented with up to 1MiB per core. The L3 cache or the System Level Cache can be implemented with up to 256MiB (up to 4MiB per slice, up to 64 slices) shared by all cores.</p>
+<div id="html-block-kx" class="html-block">
+	<style>
+		#html-block-kx .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-kx .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kx .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kx .tg .tg-jf6t {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: middle
+		}
+
+		#html-block-kx .tg .tg-0z70 {
+			background-color: #FFF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: middle
+		}
+	</style>
+
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0z70">Cache Hierarchy</th>
+				<th class="tg-0z70">Capacity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-jf6t">L1i Cache</td>
+				<td class="tg-jf6t">64 KiB</td>
+			</tr>
+			<tr>
+				<td class="tg-jf6t">L1d Cache</td>
+				<td class="tg-jf6t">64 KiB</td>
+			</tr>
+			<tr>
+				<td class="tg-jf6t">L2 Cache</td>
+				<td class="tg-jf6t">Up to 1 MiB</td>
+			</tr>
+			<tr>
+				<td class="tg-jf6t">L3 Cache</td>
+				<td class="tg-jf6t">Up to 256 MiB</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>A pair of N1 cores can optionally be combined into a dual-core configuration through the Component Aggregation Layer, then placed inside the mesh interconnects named the Coherent Mesh Network or <a href="https://developer.arm.com/ip-products/system-ip/corelink-interconnect/corelink-coherent-mesh-network-family/corelink-cmn-600" target="_blank" rel="noopener noreferrer">CMN-600</a> that supports up to 64 pairs of cores, totaling 128 cores.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JG7ASB6BJWKFBYW8VBE.png&amp;w=1000&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Component Aggregation Layer (CAL) supports up to two N1 cores" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="332" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Component Aggregation Layer (CAL) supports up to two N1 cores"></div>
+</figure>
+<p>Component Aggregation Layer (CAL) supports up to two N1 cores</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="426" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=500&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=500&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=640&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=750&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=828&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T7XEZ384NZ8CN4NMF5HN.png&amp;w=1000&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Coherent Hub Interface (CHI) is used to connect components to the Mesh Cross Point (XP)" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="426" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Coherent Hub Interface (CHI) is used to connect components to the Mesh Cross Point (XP)"></div>
+</figure>
+<p>Coherent Hub Interface (CHI) is used to connect components to the Mesh Cross Point (XP)</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="642" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=715&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=640&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=715&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=750&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=828&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=1080&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=1280&amp;h=1149&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P57J283PV9FPBJ9225WB.png&amp;w=1430&amp;h=1284&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="642" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores"></div>
+</figure>
+<p>Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores</p>
+<h2>System Specifications</h2>
+<div id="html-block-k1e" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>AWS (Annapurna Labs)</th>
+				<th>Ampere</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Processor Model</td>
+				<td>AWS Graviton2</td>
+				<td>Ampere Altra Q80-30</td>
+			</tr>
+			<tr>
+				<td>ISA</td>
+				<td>ARMv8.2</td>
+				<td>ARMv8.2+</td>
+			</tr>
+			<tr>
+				<td>Core / Thread Count</td>
+				<td>64C / 64T</td>
+				<td>80C / 80T</td>
+			</tr>
+			<tr>
+				<td>Operating Frequency</td>
+				<td>2.5 GHz</td>
+				<td>3.0 GHz</td>
+			</tr>
+			<tr>
+				<td>L1 Cache Size</td>
+				<td>8 MiB (64 x 128 KiB)</td>
+				<td>10 MiB (80 x 128 KiB)</td>
+			</tr>
+			<tr>
+				<td>L2 Cache Size</td>
+				<td>64 MiB (64 x 1 MiB)</td>
+				<td>80 MiB (80 x 1 MiB)</td>
+			</tr>
+			<tr>
+				<td>L3 Cache Size</td>
+				<td>32 MiB</td>
+				<td>32 MiB</td>
+			</tr>
+			<tr>
+				<td>System Memory</td>
+				<td>256 GB (8 x 32 GB DDR4-3200)</td>
+				<td>256 GB (8 x 32 GB DDR4-3200)</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>We can verify that the two processors are based on the Neoverse N1 platform by checking <code>CPU part</code> inside <code>cpuinfo</code>, which returns <code>0xd0c</code>, the <a href="https://developer.arm.com/documentation/100616/0301/register-descriptions/aarch64-system-registers/midr-el1--main-id-register--el1" target="_blank" rel="noopener noreferrer">designated part number for the Neoverse N1</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sung@ampere-altra:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'CPU part'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> head</span><span class="sk-005cc5-99ffe4"> -1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CPU</span><span class="sk-032f62-99ffe4"> part</span><span class="sk-032f62-99ffe4">	:</span><span class="sk-005cc5-ffc799"> 0xd0c</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sung@aws-graviton2:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'CPU part'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> head</span><span class="sk-005cc5-99ffe4"> -1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CPU</span><span class="sk-032f62-99ffe4"> part</span><span class="sk-032f62-99ffe4">	:</span><span class="sk-005cc5-ffc799"> 0xd0c</span></span></code></pre>
+</div>
+<p>Ampere backported various features into the Ampere Altra notably, <a href="https://developer.arm.com/support/arm-security-updates/speculative-processor-vulnerability" target="_blank" rel="noopener noreferrer">speculative side-channel attack mitigations</a> that include Meltdown and Spectre (variants 1 and 2) from the ARMv8.5 instruction set architecture, giving Altra the “+” designation in their ISA (ARMv8.2+).</p>
+<p>The Ampere Altra consists of 25% more physical cores and 20% higher operating frequency than the AWS Graviton2. Because of Altra’s higher core-count and frequency, we should expect the Ampere Altra to perform up to 50% better than the AWS Graviton2 in compute-bound workloads.</p>
+<p>Both Ampere and AWS decided to implement 1MiB of L2 cache per core, but only 32MiB of L3 or System Level Cache, although the CMN-600 specification allows up to 256MiB. This leaves the Ampere Altra with a lower L3 cache-per-core ratio than the AWS Graviton2 and places Altra at a potential disadvantage in situations where the <a href="https://blog.cloudflare.com/impact-of-cache-locality">application’s working set does not fit within the L3 cache</a>.</p>
+<h2>Methodology</h2>
+<p>We imaged both systems with Debian Buster and downloaded our open-source benchmark suite, <a href="https://github.com/cloudflare/cf_benchmark" target="_blank" rel="noopener noreferrer">cf_benchmark</a>. This benchmark suite executes 49 different workloads over approximately 15 to 30 minutes. Each workload utilizes a library that has either been used in our stack or considered at one point or another. Due to the relatively short duration of the benchmark and the libraries called by the workloads, we run cf_benchmark as our smoke test on any new system brought in for evaluation. We recommend cf_benchmark to our technology partners when we discuss new hardware, primarily processors, to ensure these workloads can compile and run successfully.</p>
+<p>We ran cf_benchmark multiple times and observed no significant run-to-run variations. Similar to industry standard benchmarks, we calculated the overall score using geometric mean to provide a more conservative result than arithmetic mean across all 49 workloads and category scores using their respective subset of workloads.</p>
+<p>In single-core scenarios, cf_benchmark will spawn a single application thread, occupying a single hardware thread. In multi-core scenarios, cf_benchmark will spawn as many application threads as needed until all hardware threads on the processor are occupied. Neither processors implemented <a href="https://en.wikipedia.org/wiki/Simultaneous_multithreading" target="_blank" rel="noopener noreferrer">simultaneous multithreading</a>, so each physical core can only execute one hardware thread at a time.</p>
+<h2>Overall Performance Results</h2>
+<p>Given Altra’s advantage in both operating frequency and sheer core-count, the Ampere Altra took the lead across single and multi-core performance.</p>
+<p>In single-core performance, the Ampere Altra outperformed the AWS Graviton2 by 16%. The differences in operating frequencies between the two processors gave the Ampere Altra a proportional advantage of up to 20% in more than half of our single-core workloads.</p>
+<p>In multi-core performance, the Ampere Altra continued to maintain its edge over the AWS Graviton2 by 31%. We expected the Ampere Altra to attain a theoretical advantage between 20% to 50% due to Altra’s higher operating frequency and core count while taking inherent overheads associated with increasing core count into consideration, primarily scaling out the mesh network. We observed that the majority of our multi-core workloads fell within this 20% to 50% range.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JT5HB7M02WNTZRPAKCA5.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - thyV5L" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - thyV5L"></div>
+</figure>
+<h2>Categorized Results</h2>
+<p>In OpenSSL and LuaJIT, the Ampere Altra scaled proportionally with its operating frequency in single-core performance and continued to scale out with its core count in multi-core performance. The Ampere Altra maintained its lead in the vast majority of compression and Golang workloads with the exception of Brotli level 9 compression and some Golang multi-core workloads that were not able to keep the two processors busy at 100% CPU utilization.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="337" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=640&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=750&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=828&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=1080&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=1280&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490TNFHHAANWCGECE58K5G.png&amp;w=1430&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 2fqVgD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="337" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 2fqVgD"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="337" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=640&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=750&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=828&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=1080&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=1280&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SW22F5NSDJT353QJVAMM.png&amp;w=1430&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 17UJBY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="337" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 17UJBY"></div>
+</figure>
+<h2>OpenSSL</h2>
+<p>As described <a href="https://blog.cloudflare.com/arm-takes-wing">previously</a>, we use a fork of OpenSSL, named BoringSSL, in places such as for <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake" target="_blank" rel="noopener noreferrer">TLS handshake</a> handling. The original OpenSSL comes with a built-in benchmark called `speed` that measures single and multi-core performance. The asymmetric and <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">symmetric</a> crypto workloads found here saturated the processors at 100% CPU utilization. Altra’s performance aligned with our expectations throughout this entire category by maintaining a consistent 20% advantage over the AWS Graviton2 in single-core and continued to scale with its core count and performed, on average, 47% better in multi-core performance.</p>
+<h3>Public Key Cryptography</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="711" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=711&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=711&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 711w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=828&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=1280&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486R5JXKY2AQ4KW3K46YFP.png&amp;w=1422&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1422w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - FbN9BL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 711px) 711px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="711" height="324" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - FbN9BL"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=712&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=712&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=828&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47E9SNAS7QJFWCEEEWDVFC.png&amp;w=1424&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - Gu93sF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="324" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - Gu93sF"></div>
+</figure>
+<h3>Symmetric Key Cryptography</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="344" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=715&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=640&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=715&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=750&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=828&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=1080&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=1280&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49720144T1BX669BNSC1F0.png&amp;w=1430&amp;h=688&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - oDK4q6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="344" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - oDK4q6"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KGNFH45ST38FYMPAQWT7.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 4ouzFM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 4ouzFM"></div>
+</figure>
+<h2>LuaJIT</h2>
+<p>We commonly describe LuaJIT as the <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu">glue that holds Cloudflare together</a>. LuaJIT has a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">long history</a> here at Cloudflare for the same reason it is widely used in the videogame industry, where performance and responsiveness are non-negotiable requirements.</p>
+<p>Although we have been transitioning from LuaJIT <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">to Rust</a>, we welcomed the <a href="https://developer.arm.com/documentation/100616/0400/functional-description/level-1-memory-system/cache-behavior/instruction-cache-coherency?lang=en" target="_blank" rel="noopener noreferrer">instruction cache coherency</a> implemented into the Ampere Altra. The instruction cache coherency aims to address the <a href="https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/caches-and-self-modifying-code" target="_blank" rel="noopener noreferrer">drawbacks associated with LuaJIT</a>, such as its self-modifying properties, where the next instruction that needs to be fetched is not in the instruction cache, but rather the data cache. With this feature enabled, the instruction cache becomes coherent or made aware of changes made in the data cache. The L2 cache becomes inclusive of the L1 instruction cache, meaning any cache lines found in the L1 instruction cache should also be present in the L2 cache. Furthermore, L2 cache intercepts any invalidations or stores made to any of the L2’s cache lines and propagates those changes up to the L1 instruction cache.</p>
+<p>The Ampere Altra performed well within single-core performance except for fasta where both processors stalled at the front-end of the pipeline. In the multi-core version of fasta, Altra did not spend as many cycles stalled in the front-end likely due to Ampere's implementation of the instruction cache coherency. All other workloads continued to scale in multi-core workloads with binary trees coming in at 73%. Spectral was omitted since the multi-core variant failed to run on both servers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="711" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=711&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=711&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 711w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=828&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=1280&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H5A95B2TNA6A5DGDQBN6.png&amp;w=1422&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1422w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YieJsD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 711px) 711px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="711" height="324" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YieJsD"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="323" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=712&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=712&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=1080&amp;h=490&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=1280&amp;h=581&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X6T4E6PQZXVG6D3G59S7.png&amp;w=1424&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - rGcvpT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="323" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - rGcvpT"></div>
+</figure>
+<h2>Compression</h2>
+<p><a href="https://blog.cloudflare.com/results-experimenting-brotli">Brotli and Gzip</a> are the two primary types of compression we use at Cloudflare. We find value in highly efficient compression algorithms as it helps us find a balance between spending more resources on a faster processor or having a larger storage capacity in addition to being able to transfer contents faster. The Ampere Altra performed well on both compression types with the exception of Brotli level 9 and Gzip level 4 multi-core performance.</p>
+<h3>Brotli</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SRFHXN8QSWTBZN4N3XF3.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - MKFpfQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - MKFpfQ"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493S8NE9K24XC63WQANX0R.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - sn9fnb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - sn9fnb"></div>
+</figure>
+<p>Out of the entire benchmark suite, Brotli level 9 caused the largest delta between the Ampere Altra and the AWS Graviton2. Although we do not use <a href="https://blog.cloudflare.com/arm-takes-wing">Brotli level 7 and above</a> when performing dynamic compression, we decided to investigate further.</p>
+<p>From historical observations, we noticed that most processors tend to experience significant performance degradation at level 9. Compression workloads generally consist of a higher branch instructions mix, and we found approximately 15% to 20% of the dynamic instructions to be branch instructions. Intuitively, we first looked at the misprediction rate since a high miss rate will quickly add up penalty cycles. However, to our surprise, we found the misprediction rate at level 9 very low.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="374" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=640&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=750&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=828&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=1080&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=1280&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQG3DJWF549ZD3RZKPH.png&amp;w=1430&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - dXHvDO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="374" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - dXHvDO"></div>
+</figure>
+<p>By analyzing our dataset further, we found the common underlying cause appeared to be the high number of page faults incurred at level 9. Ampere has demonstrated that by increasing the page size from 4K to 64K bytes, we can alleviate the bottleneck and bring the Ampere Altra at parity with the AWS Graviton2. We plan to experiment with large page sizes in the future as we continue to evaluate Altra.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="377" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=750&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=828&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=1080&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=1280&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VXKHF7BE408E90PEKA9A.png&amp;w=1430&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YFIwN8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="377" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YFIwN8"></div>
+</figure>
+<h3>Gzip</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CXG73EEJ9NBN93G6T42J.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 0GcDoY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 0GcDoY"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482WWDQ5VG6SHGVVTV76V1.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 5vz4Eh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 5vz4Eh"></div>
+</figure>
+<h2>Golang</h2>
+<p>LuaJIT, Rust, C++, and Go are some of our <a href="https://blog.cloudflare.com/go-at-cloudflare">primary languages</a>; the Golang workloads found here include <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">cryptography</a>, compression, regular expression, and string manipulation. The Ampere Altra performed proportionally to its operating frequency against the AWS Graviton2 in the vast majority of single-core performance. In multi-core performance, the workloads that could not saturate the processors to 100% CPU utilization did not scale proportionally to the two processor’s respective operating frequencies and core count.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="278" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=715&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=640&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=715&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=750&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=828&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=1080&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=1280&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477AC0RKDB67TQ8KPGDSRP.png&amp;w=1430&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - a0nMQO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="278" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - a0nMQO"></div>
+</figure>
+<h3>Go Cryptography</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="350" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=640&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=750&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=828&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=1080&amp;h=529&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=1280&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KVN188R3QMZX8ATMP9NW.png&amp;w=1430&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 8AB9Zs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="350" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 8AB9Zs"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="350" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=640&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=750&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=828&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=1080&amp;h=529&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=1280&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H309ZF1DB9E29HVHSFQD.png&amp;w=1430&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 927MS6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="350" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 927MS6"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="350" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=640&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=750&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=828&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=1080&amp;h=529&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=1280&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MV1FHJDZEARMJNDFM0TX.png&amp;w=1430&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - e59IsM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="350" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - e59IsM"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="350" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=640&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=715&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=750&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=828&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=1080&amp;h=529&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=1280&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JQZA5MBNGAG1TRA037TR.png&amp;w=1430&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YpHIMs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="350" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - YpHIMs"></div>
+</figure>
+<h3>Go Compression &amp; String</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QD309Z4HQCRCS028HGM.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 9Sj8yb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 9Sj8yb"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GRTQT2Y3MH9YDXTYASXB.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - FKmJJE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - FKmJJE"></div>
+</figure>
+<h3>Go Regex</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="714" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=714&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=640&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=714&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 714w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=828&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=1280&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AMXMSB9EE9NMTW0XQTTA.png&amp;w=1428&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1428w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 0RQZoh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 714px) 714px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="714" height="342" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - 0RQZoh"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466AVQEMG122DV7XT0V4RY.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - qdwWXV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - qdwWXV"></div>
+</figure>
+<h2>Frequency, Power &amp; Thermals</h2>
+<p>We were unable to collect any telemetry on the AWS Graviton2. Power would have been an interesting data point on the AWS Graviton2, but the EC2 instance did not expose either frequency or power sensors. The Ampere model we tested was the Altra Q80-30, rated with an operating frequency of 3.0GHz and a thermal design power (TDP) of 210W.</p>
+<p>The Ampere Altra maintained a sustained operating frequency throughout cf_benchmark while Altra’s dynamic voltage and frequency scaling (DVFS) mechanism occasionally lowered its operating frequency in between workloads as needed to reduce power consumption. Package power varied depending on the workload, but Altra never consumed anywhere near its rated TDP while the default fan curve maintained the temperature below 70C. At the system level, by simply querying the baseboard management controller over <a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface" target="_blank" rel="noopener noreferrer">IPMI</a>, we observed that the Ampere server consumed no more than 300W. More power-efficient servers directly translates to more <a href="https://blog.cloudflare.com/an-introduction-to-three-phase-power-and-pdus">flexibility over how we can populate our racks</a> and we hope this trend will continue in production.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="681" height="256" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=681&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=640&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=681&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 681w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=750&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=828&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=1080&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=1280&amp;h=481&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JFPGXXRSG044PMK76D9J.png&amp;w=1362&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1362w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - VCutK8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 681px) 681px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="681" height="256" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - VCutK8"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="681" height="254" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=681&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=640&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=681&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 681w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=750&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=828&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=1080&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=1280&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448AX1E5CB4QZ5R2WWE86E.png&amp;w=1362&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1362w" alt="ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - RHpMmK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 681px) 681px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="681" height="254" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: ARMs Race: Ampere Altra takes on the AWS Graviton2 Embedded Image - RHpMmK"></div>
+</figure>
+<h2>Conclusion</h2>
+<p>In our top-down evaluation, the Ampere Altra largely performed as we had expected throughout our benchmarking suite. We regularly observed the two Neoverse N1 processors perform to their respective operating frequency and core count, with the Ampere Altra coming on top in these key areas over the AWS Graviton2. The Ampere Altra yielded a better single-core performance due to higher operating frequency and multiplied its impact even further by scaling out with a higher core count in multi-core performance against the AWS Graviton2. We also found our Ampere evaluation server consuming less power than we had anticipated and hope this trend will continue in production.</p>
+<p>Throughout this initial set of testing and learning more about the underlying architecture, there were many parts we found interesting when compared against contemporary x86 counterparts such as the absence of simultaneous multithreading or dynamic frequency boost. We look forward to seeing which design philosophy makes more sense for the cloud. We are currently assessing Altra’s performance against our fleet of servers and collaborating with Ampere to define an ARM edge server based on Altra that could be deployed at scale.</p>

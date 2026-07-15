@@ -1,0 +1,219 @@
+<div class="mb2 gray5">Lesezeit: 7&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cloudflare-data-platform">English</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-data-platform">Français</a>, <a href="https://blog.cloudflare.com/nl-nl/cloudflare-data-platform">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-cn/cloudflare-data-platform">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ghrplckFwHWe2jFWDzvG8/ec7a5682c0032cc3de9dce0669fb3cdd/unnamed__32_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Während der Developer Week im April 2025 haben wir <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta"><u>die Public Beta-Version des R2 Data Catalog</u></a> vorgestellt. Dieser vollständig verwaltete <a href="https://iceberg.apache.org/docs/nightly" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>-Katalog beruht auf dem <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2-Objektspeicher von Cloudflare</u></a>. Heute präsentieren wir Ihnen drei neue, auf diesem Fundament beruhende Produkte:</p>
+	<ul>
+		<li>
+			<p><b>Cloudflare Pipelines</b> empfängt per Workers oder HTTP übermittelte Ereignismeldungen, wandelt sie mit SQL um und sendet sie an Iceberg oder in Form von Dateien an R2</p>
+		</li>
+		<li>
+			<p><b>R2 Data Catalog</b> übernimmt die Verwaltung der Iceberg-Metadaten und die laufende Pflege, einschließlich Verdichtung, zur Abfrage-Optimierung</p>
+		</li>
+		<li>
+			<p>Unsere interne, verteilte SQL-Engine <b>R2 SQL</b> wurde für Abfragen im Petabyte-Maßstab von Daten in R2 entwickelt</p>
+		</li>
+	</ul>
+	<p>Gemeinsam bilden diese Lösungen die <b>Cloudflare Data Platform</b>, eine Komplettlösung zur Befüllung, Speicherung und Abfrage von Analysedaten-Tabellen.</p>
+	<p>Wie alle <a href="https://www.cloudflare.com/developer-platform/products" target="_blank" rel="noopener noreferrer"><u>Produkte der Entwicklerplattform von Cloudflare</u></a> laufen sie auf unserer globalen Recheninfrastruktur. Da sie auf offenen Standards und Interoperabilität beruhen, können Sie Ihre eigene Iceberg-Abfrage-Engine – ob PyIceberg, DuckDB oder Spark – mit anderen Plattformen wie Databricks und Snowflake verbinden, ohne für den Datenzugriff Egress-Gebühren zahlen zu müssen.</p>
+	<p>Analysedaten sind für moderne Unternehmen unverzichtbar, weil damit das Nutzerverhalten und die eigene Performance besser verstanden und Probleme erkannt werden können. Doch konventionelle Dateninfrastruktur ist kostspielig und aufwendig im Betrieb, da sie eine fest zugeordnete Cloud-Infrastruktur und internes Know-how erfordert. Cloudflare Data Plattform ist bedienungsfreundlich, erschwinglich und bietet nutzungsbasierte Tarife.</p>
+	<p>Wenn Sie direkt loslegen möchten, finden Sie in unserem <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>Data Platform-Tutorial</u></a> eine Schritt-für-Schritt-Anleitung zur Erstellung einer <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Pipeline</u></a>, die Ereignismeldungen verarbeitet und an eine <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a>-Tabelle schickt, die dann per <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> abgefragt werden kann. Wie wir an diesen Punkt gekommen sind und wie das Ganze funktioniert, erfahren Sie im folgenden Text.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-did-we-end-up-building-a-data-platform">Warum haben wir letzten Endes eine Datenplattform geschaffen?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-we-end-up-building-a-data-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei der <a href="https://blog.cloudflare.com/introducing-r2-object-storage"><u>Einführung des R2-Objektspeichers im Jahr 2021</u></a> haben wir eine radikale Preisstrategie verfolgt, da wir beschlossen haben, keine <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer"><u>Egress-Gebühren</u></a> zu erheben. Diese Bandbreitenkosten werden von Cloud-Dienstleistern normalerweise für den Datenexport berechnet, sodass die Daten praktisch „freigekauft“ werden müssen. Möglich war dies, weil wir bereits eines der größten globalen Netzwerke der Welt aufgebaut hatten, das mit Tausenden von Internetdienstanbietern, Cloud-Diensten und anderen Unternehmen verbunden ist.</p>
+	<p>Unser Objektspeicher unterstützt eine Vielzahl von Anwendungsfällen, von Medieninhalten über statische Assets bis hin zu KI-Trainingsdaten. Doch wir haben festgestellt, dass mit der Zeit immer mehr Unternehmen begonnen haben, zur Speicherung ihrer Warehouses für Analysedaten quelloffene Daten- und Tabellenformate zu verwenden.</p>
+	<p>Möglich wird das durch die Technologie <a href="https://iceberg.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>. Es handelt sich dabei um ein <i>Tabellenformat</i>, das zusätzlich zu den Datendateien im Objektspeicher datenbankähnliche Funktionen (wie Updates, ACID-Transaktionen und Schemaentwicklung) bietet&nbsp;– mit anderen Worten: eine Metadatenebene, die Clients darüber informiert, aus welchen Datendateien eine bestimmte logische Tabelle besteht, um welche Schemata es sich handelt und wie diese effizient abgefragt werden können.</p>
+	<p>Aufgrund einer branchenweiten Akzeptanz von Iceberg sind die Nutzer inzwischen nicht mehr an eine bestimmte Abfrage-Engine gebunden. Daten für mehrere Weltregionen und Clouds abzufragen, ist aufgrund der damit verbundenen Egress-Gebühren aber auch weiterhin extrem kostspielig. Dieses Problem wird aber durch R2 gelöst, da hier <a href="https://www.cloudflare.com/the-net/egress-fees-exit" target="_blank" rel="noopener noreferrer"><u>ausgehender Traffic kostenlos</u></a> ist. Somit sind die Nutzer auch nicht mehr an bestimmte Clouds gebunden. Sie können ihre Daten an einem herstellerneutralen Ort speichern und Teams die Verwendung einer für ihre Daten und Abfragemuster geeigneten Abfrage-Engine ihrer Wahl ermöglichen.</p>
+	<p>Allerdings müssen die Nutzer dann weiterhin alle Metadaten und die übrige Infrastruktur selbst verwalten. Uns ist klargeworden, dass wir die Gelegenheit hatten, ein großes Problem zu lösen und Reibungsverluste bei der Speicherung von Data Lakes auf R2 zu reduzieren. Daraus ist unser verwalteter Iceberg-Katalog, R2 Data Catalog, hervorgegangen.</p>
+	<p>Nach der Speicherung der Daten auf R2 und der Verwaltung der Metadaten mussten die Nutzer immer noch einige Lücken schließen.</p>
+	<p>Wie lassen sich Daten in Iceberg-Tabellen übertragen? Und wenn das geschafft ist: Wie kann die Abfrage-Performance optimiert werden? Und wie lässt sich schließlich aus den Daten ein Mehrwert gewinnen, ohne eine Abfrage-Engine selbst zu hosten oder eine andere Cloud-Plattform zu verwenden?</p>
+	<p>Im Folgenden wird darauf eingegangen, wie sich diese Herausforderungen mit den drei Produkten von Cloudflare Data Platform meistern lassen.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-pipelines">Cloudflare Pipelines</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-pipelines" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Analysedatentabellen bestehen aus <i>Ereignissen</i>, also Dingen, die zu einem bestimmten Zeitpunkt vorgefallen sind. Diese können von Serverprotokollen, Mobilgeräte-Anwendungen oder IoT-Geräten stammen und in Datenformaten wie JSON, Avro oder Protobuf kodiert sein. Im Idealfall verfügen sie über ein Schema&nbsp;– einen standardisierten Satz von Feldern. Es kann sich aber um alles handeln, was dem betreffenden Team vorschwebt.</p>
+	<p>Doch bevor sich Ereignisse mit Iceberg abfragen lassen, müssen sie erst erfasst, gemäß einem Schema strukturiert und in den Objektspeicher geschrieben werden. An dieser Stelle kommt <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Cloudflare Pipelines</u></a> ins Spiel.</p>
+	<p>Die Lösung basiert auf <a href="https://www.arroyo.dev" target="_blank" rel="noopener noreferrer"><u>Arroyo</u></a>, einer Stream-Processing-Engine, die wir Anfang des Jahres übernommen haben. Sie empfängt Ereignisse, wandelt sie mit SQL-Abfragen um und leitet sie an R2 und R2 Data Catalog weiter.</p>
+	<p>Pipelines ist um drei zentrale Objekte herum aufgebaut:</p>
+	<p>Über <a href="https://developers.cloudflare.com/pipelines/streams" target="_blank" rel="noopener noreferrer"><u><b>Streams</b></u></a> werden Daten bei Cloudflare eingespeist. Es handelt sich um robuste, gepufferte Warteschlangen, die Ereignisse empfangen und zur Verarbeitung speichern. Sie können Ereignisse auf zwei Arten entgegennehmen: über einen HTTP-Endpunkt oder eine <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker-Bindung</u></a>.</p>
+	<p><a href="https://developers.cloudflare.com/pipelines/sinks" target="_blank" rel="noopener noreferrer"><u><b>Sinks</b></u></a> definieren das Ziel der Daten. Wir unterstützen das Einlesen bei R2 Data Catalog sowie das Schreiben von Rohdateien in R2 im JSON- oder <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>-Format. Sinks kann so konfiguriert werden, dass Dateien häufig geschrieben werden und somit dem latenzarmen Datenimport Vorrang eingeräumt wird. Alternativ können größere Dateien seltener geschrieben werden, um eine bessere Abfrage-Performance zu erreichen. In beiden Fällen erfolgt der Import <i>genau einmal</i>. Das heißt, dass Ereignisse auf dem Weg zu R2 niemals dupliziert oder verworfen werden.</p>
+	<p><a href="https://developers.cloudflare.com/pipelines/pipelines" target="_blank" rel="noopener noreferrer"><u><b>Pipelines</b></u></a> verbindet Streams und Sinks per <a href="https://developers.cloudflare.com/pipelines/sql-reference" target="_blank" rel="noopener noreferrer"><u>SQL-Transformationen</u></a>, die Ereignisse ändern können, bevor sie in den Speicher geschrieben werden. Dadurch können Validierung, Schematisierung und Verarbeitung nach dem <i>Shift-Left-Prinzip</i> zur Importebene verlagert werden. So wird eine einfache, schnelle und korrekte Abfrage gewährleistet.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ExEHrwqgUuYLCm2q6yUkN/bf31d44dd7b97666af37cb2c25f12808/unnamed__33_.png" alt="" class="kg-image" width="1200" height="409" loading="lazy">
+	</figure>
+	<p>Es folgt eine Beispiel-Pipeline, die Ereignisse aus einer Clickstream-Datenquelle empfängt und diese in Iceberg speichert:</p>
+	<pre class="language-SQL"><code class="language-SQL">INSERT into events_table
+SELECT
+  user_id,
+  lower(event) AS event_type,
+  to_timestamp_micros(ts_us) AS event_time,
+  regexp_match(url, '^https?://([^/]+)')[1]  AS domain,
+  url,
+  referrer,
+  user_agent
+FROM events_json
+WHERE event = 'page_view'
+  AND NOT regexp_like(user_agent, '(?i)bot|spider');</code></pre>
+	<p>SQL-Transformationen sind sehr leistungsstark und geben Ihnen die volle Kontrolle darüber, wie Daten strukturiert und in die Tabelle geschrieben werden. Sie haben zum Beispiel folgende Möglichkeiten:</p>
+	<ul>
+		<li>
+			<p>Daten schematisieren und normalisieren&nbsp;– sogar mit <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>JSON-Funktionen</u></a> zum Extrahieren von Feldern aus beliebigem JSON-Dateien</p>
+		</li>
+		<li>
+			<p>Ereignisse herausfiltern oder in gesonderte Tabellen mit eigenen Schemata aufteilen</p>
+		</li>
+		<li>
+			<p>Sensible Informationen vor der Speicherung mit regulären Ausdrücken unkenntlich machen</p>
+		</li>
+		<li>
+			<p>Verschachtelte Arrays und Objekte in separate Ereignisse entfalten</p>
+		</li>
+	</ul>
+	<p>Pipelines unterstützt vorerst zustandslose Transformationen. In Zukunft werden wir die <a href="https://www.arroyo.dev/blog/stateful-stream-processing" target="_blank" rel="noopener noreferrer"><u>zustandsbehafteten Verarbeitungsfunktionen von Arroyo</u></a> stärker nutzen, um Aggregationen, inkrementell aktualisierte materialisierte Ansichten und Joins zu unterstützen.</p>
+	<p>Cloudflare Pipelines ist ab sofort als Open Beta-Version verfügbar. Sie können eine Pipeline über das Dashboard, Wrangler oder die REST-API erstellen. Wenn Sie direkt loslegen möchten, lohnt ein Blick in unsere <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>Entwicklerdokumentation</u></a>.</p>
+	<p>Derzeit fallen während der Open Beta-Phase keine Gebühren für Pipelines an. Für R2-Speicherung und -Vorgänge, die dadurch veranlasst werden, dass Sinks Daten in R2 schreiben, werden jedoch <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>Standardtarife</u></a> berechnet. Wenn wir mit der Abrechnung beginnen, wird die Berechnung voraussichtlich auf Grundlage der gelesenen Datenmenge, der Datenmenge, die per SQL-Transformationen verarbeitet wird, und der bereitgestellten Daten erfolgen.</p>
+	<div class="flex anchor relative">
+		<h3 id="r2-data-catalog">R2 Data Catalog</h3>
+		<a href="https://blog.cloudflare.com/#r2-data-catalog" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben im April die Open Beta-Version von <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> eingeführt und waren von der Resonanz sehr beeindruckt. Abfrage-Engines wie DuckDB <a href="https://duckdb.org/docs/stable/guides/network_cloud_storage/cloudflare_r2_import.html" target="_blank" rel="noopener noreferrer"><u>haben native Unterstützung hinzugefügt</u></a> und wir haben nützliche Integrationen wie <a href="https://blog.cloudflare.com/marimo-cloudflare-notebooks"><u>marimo notebooks</u></a> verzeichnet.</p>
+	<p>All dies erleichtert den Einstieg in Iceberg. Es ist nicht nötig, einen Datenbankcluster einzurichten, sich mit einem Objektspeicher zu verbinden oder eine Infrastruktur zu pflegen. Ein Katalog lässt sich schon mit wenigen <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler-Befehlen</u></a> erstellen:</p>
+	<pre class="language-Rust"><code class="language-Rust">$ npx wrangler bucket create mycatalog 
+$ npx wrangler r2 bucket catalog enable mycatalog</code></pre>
+	<p>Dadurch wird ein Data Lake bereitgestellt, der auf Speicherkapazitäten im Petabyte-Bereich skaliert und mit jeder beliebigen Engine abgefragt werden kann, ohne dass dabei Egress-Gebühren anfallen.</p>
+	<p>Das bloße Speichern der Daten reicht aber nicht aus. Beim Import von Daten wächst mit der Zeit die Zahl der zugrunde liegenden Datendateien, aus denen eine Tabelle besteht, wodurch sich die Abfrage auf Dauer verlangsamt.</p>
+	<p>Dies ist besonders beim latenzarmen Import ein Problem, da in diesem Fall Ereignisse so schnell wie möglich abfragbar sein sollten. Häufiges Schreiben von Daten bedeutet eine größere Menge kleinerer Dateien. Jede für eine Abfrage benötigte Datei muss aufgelistet, heruntergeladen und gelesen werden. Die Beanspruchung durch zu viele kleine Dateien kann die Gesamtabfragezeit beeinträchtigen.</p>
+	<p>Lösen lässt sich dieses Problem mit <i>Verdichtung</i>, einer vom Katalog regelmäßig durchgeführten Instandhaltungsmaßnahme. Dabei werden kleine Dateien in größere umgeschrieben. Dies reduziert den Metadaten-Overhead und steigert die Abfrageperformance.&nbsp;</p>
+	<p>Ab sofort wird Verdichtung von R2 Data Catalog unterstützt. Sie können diese Funktion für Ihren Katalog ganz leicht aktivieren:
+	</p>
+	<pre class="language-Rust"><code class="language-Rust">$ npx wrangler r2 bucket catalog compaction enable mycatalog</code></pre>
+	<p>Die Unterstützung der Verdichtung gilt zunächst für kleine Dateien, wird aber zu gegebener Zeit auf zusätzliche Verdichtungsstrategien ausgeweitet. In der zugehörigen <a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>Dokumentation</u></a> erfahren Sie mehr darüber, wie Verdichtung funktioniert und aktiviert werden kann.</p>
+	<p>Während der aktuellen Open Beta-Phase werden für R2 Data Catalog keine Gebühren erhoben. Vorläufig stellen wir uns die künftige Preisgestaltung folgendermaßen vor:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p><b>Tarife*</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>R2-Speicher</p>
+					<p>Für die Standard-Speicherklasse</p>
+				</td>
+				<td>
+					<p>0,015 $ pro GB-Monat (keine Änderung)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>R2-Vorgänge der Klasse A</p>
+				</td>
+				<td>
+					<p>4,50 $ pro 1 Mio. Vorgänge (keine Änderung)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>R2-Vorgänge der Klasse B</p>
+				</td>
+				<td>
+					<p>0,36 $ pro 1 Mio. Vorgänge (keine Änderung)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Catalog-Vorgänge</p>
+					<p>wie das Erstellen einer Tabelle, Abrufen von Tabellenmetadaten, Aktualisieren von Tabelleneigenschaften</p>
+				</td>
+				<td>
+					<p>9,00 $ pro 1 Million Katalogvorgänge</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>verarbeitete Data Catalog-Verdichtungsdaten</p>
+				</td>
+				<td>
+					<p>0,005&nbsp;$ pro verarbeitetem GB</p>
+					<p>2,00 $ pro 1 Mio. verarbeiteter Objekte</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ausgehende Daten</p>
+				</td>
+				<td>
+					<p>0 $ (keine Änderung, immer kostenlos)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><i>* Wir behalten uns Preisänderungen bis zur allgemeinen Verfügbarkeit vor.</i></p>
+	<p>Wenn das Produkt kostenpflichtig wird oder im Fall von Änderungen informieren wir Sie mindestens 30&nbsp;Tage im Voraus.</p>
+	<div class="flex anchor relative">
+		<h3 id="r2-sql">R2 SQL</h3>
+		<a href="https://blog.cloudflare.com/#r2-sql" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Aufnahme von Daten in den R2 Data Catalog ist nur der erste Schritt. Das eigentliche Ziel besteht darin, daraus Erkenntnisse zu gewinnen und einen Mehrwert zu ziehen. Üblicherweise erfordert das die Einrichtung und Verwaltung einer Abfrage-Engine wie DuckDB, Spark oder Trino und somit zusätzlichen Betriebsaufwand. Doch was wäre, wenn Abfragen direkt in Cloudflare ausgeführt werden könnten?</p>
+	<p>Das ist jetzt möglich, denn wir haben eine Abfrage-Engine speziell für R2 Data Catalog und die Edge-Infrastruktur von Cloudflare entwickelt. Sie heißt <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> und ist ab sofort als Open Beta-Version verfügbar.</p>
+	<p>Mit Wrangler ist das Ausführen einer Abfrage in einer R2 Data Catalog-Tabelle ganz unkompliziert:</p>
+	<pre class="language-Rust"><code class="language-Rust">$ npx wrangler r2 sql query "{WAREHOUSE}" "\
+  SELECT user_id, url FROM events \
+  WHERE domain = 'mywebsite.com'"</code></pre>
+	<p>Unsere Fähigkeit, die zeitliche Ausführung von Rechenvorgängen überall im globalen Cloudflare-Netzwerk zu planen, bildet das Grundgerüst von R2 SQL. Dadurch können wir Daten direkt dort verarbeiten, wo sie sich befinden, anstatt von Ihnen zu verlangen, zentrale Cluster für Ihre Analyse-Workloads zu verwalten.</p>
+	<p>R2 SQL ist eng in R2 Data Catalog und R2 integriert. Dadurch kann der Abfrage-Planer über einfaches Speicher-Scanning hinausgehen und die aufschlussreichen Statistiken in den Metadaten von R2 Data Catalog umfassend nutzen. Das bietet eine leistungsstarke Grundlage für eine neue Klasse von Abfrageoptimierungen, z.&nbsp;B. Hilfsindizes oder die Aktivierung komplexerer Analysefunktionen in der Zukunft.</p>
+	<p>Das Ergebnis ist ein vollständig serverloses Nutzererlebnis. Sie können sich also ganz auf SQL konzentrieren, ohne die Engine aus dem Effeff zu beherrschen. Alle, die mehr wissen möchten, finden <a href="https://blog.cloudflare.com/r2-sql-deep-dive"><u>hier eine ausführliche Beschreibung dazu, wie die verteilte Abfrage-Engine von R2 SQL maßstabsgerecht funktioniert</u></a>.</p>
+	<p>Die Open Beta-Version vermittelt einen ersten Eindruck von den R2 SQL-Abfragefunktionen und konzentriert sich zunächst auf Filterabfragen. Zu einem späteren Zeitpunkt werden wir weitere SQL-Funktionen wie komplexe Aggregationen aufnehmen.</p>
+	<p>Wir sind schon gespannt darauf, wofür unsere Nutzer R2&nbsp;SQL einsetzen werden. Wenn Sie die Lösung ausprobieren möchten, werfen Sie doch einen Blick in die zugehörige <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>Dokumentation</u></a> oder schauen Sie sich die <a href="https://developers.cloudflare.com/r2-sql/get-started" target="_blank" rel="noopener noreferrer"><u>Tutorials</u></a> dazu an.<b> </b>Während der Beta-Phase werden für die Nutzung von R2&nbsp;SQL derzeit keine Gebühren in Rechnung gestellt. Für R2-Speicherung und durch Abfragen verursachte Vorgänge werden aber Standardpreise berechnet. In der Zukunft planen wir, für das im Rahmen von Abfragen gescannte Datenvolumen Gebühren zu berechnen. Wir werden Sie aber vor der Umstellung benachrichtigen.</p>
+	<div class="flex anchor relative">
+		<h3 id="wrapping-up">Fazit</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aktuell können Sie mit der Data Platform von Cloudflare Ereignisse in den R2 Data Catalog aufnehmen und sie über R2 SQL abfragen. In der ersten Jahreshälfte 2026 werden wir die Funktionen dieser Produkte erweitern. Dazu gehören folgende Neuerungen:</p>
+	<ul>
+		<li>
+			<p>Integration bei <a href="https://developers.cloudflare.com/logs/logpush" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>, sodass Protokolle direkt in Cloudflare umgewandelt, gespeichert und abgefragt werden können</p>
+		</li>
+		<li>
+			<p>Benutzerdefinierte Funktionen über Workers und Unterstützung zustandsbehafteter Verarbeitung für Streaming-Transformationen</p>
+		</li>
+		<li>
+			<p>Erweiterung des Funktionsumfangs von R2&nbsp;SQL zur Abdeckung von Aggregationen und Joins</p>
+		</li>
+	</ul>
+	<p>In der Zwischenzeit können Sie Cloudflare Data Platform ausprobieren. Folgen Sie dafür dem <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>Tutorial</u></a>, um ein Ende-zu-Ende-System für Analysedaten zu erstellen&nbsp;– von der Erfassung mit Pipelines über die Speicherung im R2 Data Catalog bis hin zur Abfrage mit R2&nbsp;SQL.&nbsp;
+
+		Wir sind schon gespannt darauf, was Sie sich einfallen lassen! Sie haben Feedback für uns? Teilen Sie es uns auf unserem <a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Entwickler-Discord-Kanal</u></a> mit.</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/5ba9884c376445afc963b00e36fa0f9c/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F5ba9884c376445afc963b00e36fa0f9c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

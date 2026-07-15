@@ -1,0 +1,388 @@
+<div class="mb2 gray5">Lecture&nbsp;: 12 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/foundation-dns-launch">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/foundation-dns-launch">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/foundation-dns-launch">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/foundation-dns-launch">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/foundation-dns-launch">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/foundation-dns-launch">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/foundation-dns-launch">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hyjJ87RTQZTsRgOWxSGLA/ea7b5eeaeeb6daf717e95df5c02e5e6c/foundation-dns-launch.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Nous sommes très heureux d'annoncer le lancement officiel de <a href="https://blog.cloudflare.com/fr-fr/foundation-dns-fr-fr">Foundation DNS</a>, qui propose de nouveaux serveurs de noms avancés, encore plus de résilience et des outils d'analyses de données avancés, afin de répondre aux exigences complexes de nos clients entreprises. Foundation DNS constitue l'un des plus grands progrès accomplis par Cloudflare au sein de notre offre de DNS de référence depuis son lancement en 2010, et nous savons que nos clients sont intéressés par un service DNS de référence adapté aux entreprises et offrant des performances, une fiabilité, une sécurité et une flexibilité inégalées, ainsi que des fonctionnalités d'analyses de données avancées.</p>
+	<p>À compter d'aujourd'hui, chaque nouveau contrat d'entreprise incluant le service de DNS de référence bénéficiera de l'ensemble des fonctionnalités de Foundation DNS, et les clients entreprises existants auront accès aux fonctionnalités de Foundation DNS dans le courant de l'année. Si vous êtes un client entreprise et vous utilisez déjà nos services de DNS de référence et vous souhaitez accéder plus rapidement à Foundation DNS, contactez l'équipe responsable de votre compte, qui pourra l'activer pour vous. Examinons cela de plus près</p>
+	<div class="flex anchor relative">
+		<h2 id="why-is-dns-so-important">Pourquoi le DNS est-il si important ?</h2>
+		<a href="https://blog.cloudflare.com/#why-is-dns-so-important" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Du point de vue de l'utilisateur final, DNS est ce qui rend l'Internet utilisable. <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> est l'annuaire téléphonique de l'Internet, et traduit les noms d'hôtes tels que <code>www.cloudflare.com</code> en adresses IP que nos navigateurs, applications et appareils utilisent pour se connecter aux services. Sans DNS, les utilisateurs devraient se souvenir d'adresses IP telles que <code>108.162.193.147</code> ou <code>2606:4700:58::adf5:3b93</code> chaque fois qu'ils souhaitent consulter un site web depuis leur appareil mobile ou leur ordinateur de bureau. Imaginez devoir vous souvenir de suites de nombres aussi complexes, au lieu de simplement mémoriser <code>www.cloudflare.com</code>. DNS est utilisé dans toutes les applications pour utilisateurs finaux disponibles sur Internet, des réseaux sociaux jusqu'aux sites bancaires et aux portails de santé. L'utilisation d'Internet par toute personne dépend entièrement de DNS.</p>
+	<p>Du point de vue opérationnel, DNS constitue la toute première étape pour accéder à des sites web et se connecter à des applications. Les appareils doivent savoir où se connecter pour joindre les services, authentifier les utilisateurs et fournir les informations demandées. La résolution rapide des requêtes DNS peut faire la différence entre la réactivité et l'absence de réactivité perçue d'un site web ou d'une application, et peut avoir un impact réel sur l'expérience utilisateur.</p>
+	<p>Lorsque des pannes de DNS surviennent, les effets sont évidents. Imaginez que votre site d'e-commerce de prédilection ne se charge pas, comme cela a été le cas lors de la <a href="https://blog.cloudflare.com/how-the-dyn-outage-affected-cloudflare">panne subie par Dyn en 2016</a>, qui a entraîné l'arrêt de plusieurs sites d'e-commerce populaires. Ou, si vous faites partie d'une entreprise et les clients ne sont plus en mesure d'accéder à votre site web pour acheter les biens ou les services que vous vendez, une panne de DNS vous fera perdre de l'argent, au sens propre. DNS est souvent considéré comme acquis, mais ne vous méprenez pas : s'il ne fonctionne pas correctement, vous le remarquerez rapidement. Heureusement, si vous utilisez le DNS de référence de Cloudflare, ce sont des problèmes dont vous n'avez pas vraiment besoin de vous préoccuper.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2j8Eg82sdIpdztGDwGptGB/25ed0d0e10c497fc865248e13679a31e/image4-12.png" alt="" class="kg-image" width="1796" height="806" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="there-is-always-room-for-improvement">Il y a toujours moyen de mieux faire</h2>
+		<a href="https://blog.cloudflare.com/#there-is-always-room-for-improvement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare fournit des services DNS de référence depuis plus d'une décennie. Notre service de DNS de référence héberge des millions de domaines sur de nombreux domaines de premier niveau (TLD, « Top Level Domain ») différents. Nous avons des clients de toutes tailles, allant de domaines uniques comptant quelques enregistrements seulement à des clients possédant des dizaines de millions d'enregistrements répartis sur une multitude de domaines. Nos clients entreprises exigent à juste titre de notre service DNS des performances, une fiabilité, une sécurité et une flexibilité inégalées, ainsi que des analyses de données détaillées. Nos clients adorent notre DNS de référence ; toutefois, nous sommes conscients qu'il est toujours possible de mieux faire, dans certaines de ces catégories. À cette fin, nous avons décidé d'apporter un certain nombre d'améliorations majeures à notre architecture DNS, avec de nouvelles fonctionnalités et des modifications structurelles. Nous appelons fièrement cette offre améliorée Foundation DNS.</p>
+	<div class="flex anchor relative">
+		<h2 id="meet-foundation-dns">Découvrez Foundation DNS</h2>
+		<a href="https://blog.cloudflare.com/#meet-foundation-dns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nouvelle offre de DNS de référence dédiée aux entreprises, Foundation DNS a été conçu pour améliorer la fiabilité, la sécurité, la flexibilité et les analyses de notre service DNS de référence existant. Avant de nous intéresser davantage aux spécificités de Foundation DNS, voici un bref récapitulatif des nouvelles fonctionnalités qu'apporte Foundation DNS à notre offre de DNS de référence :</p>
+	<ul>
+		<li>
+			<p><b>Les serveurs de noms avancés</b> améliorent encore davantage la fiabilité de DNS.</p>
+		</li>
+		<li>
+			<p><b>Les nouveaux paramètres DNS définis par zone</b> permettent une configuration plus flexible des paramètres spécifiques à DNS.</p>
+		</li>
+		<li>
+			<p><b>Les clés DNSSEC uniques par compte et par zone</b> offrent une sécurité et une flexibilité supplémentaires pour DNSSEC.</p>
+		</li>
+		<li>
+			<p><b>Les outils d'analyse de données DNS basés sur GraphQL</b> fournissent des informations encore plus détaillées sur les requêtes DNS.</p>
+		</li>
+		<li>
+			<p><b>Un nouveau processus de déploiement</b> assure aux clients entreprises une stabilité et une fiabilité maximales.</p>
+		</li>
+		<li>
+			<p><b>Une tarification de DNS plus simple</b>, avec des quotas plus généreux pour les zones DNS uniquement et les enregistrements DNS.</p>
+		</li>
+	</ul>
+	<p>Examinons maintenant de plus près chacune de ces nouvelles fonctionnalités de Foundation DNS :</p>
+	<div class="flex anchor relative">
+		<h3 id="advanced-nameservers">Serveurs de noms avancés</h3>
+		<a href="https://blog.cloudflare.com/#advanced-nameservers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec Foundation DNS, nous lançons les serveurs de noms avancés, spécifiquement conçus pour améliorer la fiabilité pour votre entreprise. Peut-être connaissez-vous nos serveurs de noms de référence standard, qui se présentent sous la forme d'une paire par zone et utilisent des noms au sein du domaine cloudflare.com. Voici un exemple :</p>
+	<p>Maintenant, examinons la même zone avec les serveurs de noms avancés de Foundation DNS :</p>
+	<pre class="language-bash"><code class="language-bash">$ dig mycoolwebpage.xyz ns +noall +answer 
+mycoolwebpage.xyz.	86400	IN	NS	kelly.ns.cloudflare.com.
+mycoolwebpage.xyz.	86400	IN	NS	christian.ns.cloudflare.com.</code></pre>
+	<p>Les serveurs de noms avancés améliorent la fiabilité de différentes manières. La première amélioration provient du fait que les serveurs DNS de référence de Foundation DNS sont répartis sur une multitude de domaines de premier niveau. Cette approche offre une protection contre les défaillances de DNS et les attaques DDoS de grande ampleur, susceptibles d'affecter l'infrastructure DNS à un niveau supérieur, notamment les serveurs de noms de domaines de premier niveau. Les serveurs de noms de référence de Foundation DNS sont désormais répartis dans différentes branches de l'arborescence mondiale de DNS, permettant ainsi d'isoler davantage nos clients de ces pannes et attaques potentielles.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig mycoolwebpage.xyz ns +noall +answer 
+mycoolwebpage.xyz.	86400	IN	NS	blue.foundationdns.com.
+mycoolwebpage.xyz.	86400	IN	NS	blue.foundationdns.net.
+mycoolwebpage.xyz.	86400	IN	NS	blue.foundationdns.org.</code></pre>
+	<p>Peut-être avez-vous également remarqué qu'un autre serveur de noms est répertorié avec Foundation DNS. Certes, il s'agit d'une amélioration ; toutefois, sa raison d'être n'est pas celle que vous pourriez penser. En résolvant chacun de ces serveurs de noms vers leurs adresses IP correspondantes, nous pouvons faciliter la compréhension du processus. C'est ce que nous allons faire ici, en commençant par nos serveurs de noms standard :</p>
+	<p>Il existe au total six adresses IP pour les deux serveurs de noms. En réalité, il s'agit de l'unique aspect dont les résolveurs DNS se préoccupent lors de l'interrogation de serveurs de noms de référence. Les résolveurs DNS ne suivent généralement pas les noms de domaine réels des serveurs de référence ; ils gèrent simplement une liste non ordonnée d'adresses IP qu'ils peuvent utiliser pour résoudre les requêtes pour un domaine donné. Ainsi, avec nos serveurs de noms de référence, nous fournissons aux résolveurs six adresses IP devant être utilisées pour résoudre les requêtes DNS. Maintenant, examinons les adresses IP de nos serveurs de noms avancés dans Foundation DNS :</p>
+	<pre class="language-bash"><code class="language-bash">$ dig kelly.ns.cloudflare.com. +noall +answer
+kelly.ns.cloudflare.com. 86353  IN      A       108.162.194.91
+kelly.ns.cloudflare.com. 86353  IN      A       162.159.38.91
+kelly.ns.cloudflare.com. 86353  IN      A       172.64.34.91
+
+$ dig christian.ns.cloudflare.com. +noall +answer
+christian.ns.cloudflare.com. 86353 IN   A       108.162.195.247
+christian.ns.cloudflare.com. 86353 IN   A       162.159.44.247
+christian.ns.cloudflare.com. 86353 IN   A       172.64.35.247</code></pre>
+	<p>Tiens donc ! Le service Foundation DNS fournit les mêmes adresses IP pour chacun des serveurs de noms de référence que nous fournissons à une zone. Dans ce cas, nous avons fourni trois adresses IP seulement que les résolveurs peuvent utiliser pour résoudre les requêtes DNS. Peut-être vous demandez-vous « Six, ce n'est pas mieux que trois ? Ce n'est pas pire, plutôt que mieux ? » Il s'avère que la supériorité numérique n'est pas toujours un avantage en soi. Examinons maintenant pourquoi.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig blue.foundationdns.com. +noall +answer
+blue.foundationdns.com. 300     IN      A       108.162.198.1
+blue.foundationdns.com. 300     IN      A       162.159.60.1
+blue.foundationdns.com. 300     IN      A       172.64.40.1
+
+$ dig blue.foundationdns.net. +noall +answer
+blue.foundationdns.net. 300     IN      A       108.162.198.1
+blue.foundationdns.net. 300     IN      A       162.159.60.1
+blue.foundationdns.net. 300     IN      A       172.64.40.1
+
+$ dig blue.foundationdns.org. +noall +answer
+blue.foundationdns.org. 300     IN      A       108.162.198.1
+blue.foundationdns.org. 300     IN      A       162.159.60.1
+blue.foundationdns.org. 300     IN      A       172.64.40.1</code></pre>
+	<p>Vous avez probablement connaissance de l'utilisation d'<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a> par Cloudflare ; et comme vous pouvez le supposer, nos services DNS utilisent Anycast pour garantir que nos serveurs DNS de référence sont disponibles dans le monde entier, aussi près que possible des utilisateurs et des résolveurs sur l'ensemble d'Internet. Nos serveurs de noms standard sont tous annoncés depuis chaque datacenter de Cloudflare par un groupe Anycast unique. Si nous effectuons un zoom sur l'Europe, vous pouvez voir que dans un déploiement de serveur de noms standard, les deux serveurs de noms sont annoncés depuis chaque datacenter.</p>
+	<p>Nous pouvons prendre les six adresses IP de nos serveurs de noms standard mentionnés ci-dessus et effectuer une recherche pour leur enregistrement TXT « hostname.bind », qui nous indiquera le code de l'aéroport ou l'emplacement physique du datacenter le plus proche, depuis lequel nos requêtes DNS sont résolues. Ce résultat explique pourquoi la supériorité numérique n'est pas toujours un avantage en soi.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RXMhxG3gkV6QGdc9MLNn7/8821cb762aeccaf4ce51d82ff9d30711/DNS---Anycast---1-Group.png" alt="" class="kg-image" width="1600" height="909" loading="lazy">
+
+	</figure>
+	<p>Comme vous pouvez le constater, lorsque les requêtes sont transmises depuis la périphérie de Londres, l'ensemble de ces six adresses IP sont routées vers le même datacenter de Londres (LHR). Cela signifie que lorsqu'un résolveur à Londres résout les requêtes DNS pour un domaine avec le DNS de référence standard de Cloudflare, quelle que soit l'adresse IP du serveur de noms interrogé, le résolveur se connecte toujours au même emplacement physique.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig @108.162.194.91 ch txt hostname.bind +short
+"LHR"
+
+$ dig @162.159.38.91 ch txt hostname.bind +short
+"LHR"
+
+$ dig @172.64.34.91 ch txt hostname.bind +short
+"LHR"
+
+$ dig @108.162.195.247 ch txt hostname.bind +short
+"LHR"
+
+$ dig @162.159.44.247 ch txt hostname.bind +short
+"LHR"
+
+$ dig @172.64.35.247 ch txt hostname.bind +short
+"LHR"</code></pre>
+	<p>Vous vous demandez peut-être, « Et alors ? Qu'est-ce que ça signifie pour moi ? » Examinons un exemple. Si vous souhaitez résoudre un domaine avec les serveurs de noms standard de Cloudflare situés à Londres, et moi, j'utilise un résolveur public également situé à Londres, le résolveur se connectera toujours au datacenter LHR de Cloudflare, quel que soit le serveur de noms qu'il essaie d'atteindre. Il n'a pas d'autre choix, en raison d'Anycast.</p>
+	<p>En raison d'Anycast, si le datacenter LHR était complètement hors ligne, tout le trafic destiné à LHR serait acheminé vers d'autres datacenters situés à proximité, et les résolveurs continueraient à fonctionner normalement. Cependant, dans le scénario improbable où le datacenter LHR est en ligne, mais nos services DNS ne sont pas en mesure de répondre aux requêtes DNS, le résolveur n'aurait aucun moyen de résoudre ces requêtes DNS, car il ne pourrait contacter aucun autre datacenter. Dans ce scénario, nous pourrions avoir 100 adresses IP sans que cela ne nous aide. À terme, les réponses en cache expireront et le domaine ne sera plus résolu.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10cqrujFMIilg6rEPpjoWK/8f7ad630f291949b272881e8a8b48182/Untitled.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
+
+	</figure>
+	<p>Les serveurs de noms avancés de Foundation DNS transforment la manière dont nous utilisons Anycast en tirant parti de deux groupes Anycast ; cette approche constitue une rupture avec le paradigme précédent, qui consistait à annoncer chaque adresse IP de serveur de noms de référence depuis chaque datacenter. L'utilisation de deux groupes Anycast signifie que les emplacements physiques des serveurs de noms de référence de Foundation DNS sont en réalité différents les uns des autres, au lieu d'être annoncés depuis chaque datacenter. Voici à quoi ressemblerait cette même région avec deux groupes Anycast :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KzCMn3FGbmbfnv7tDJPND/af92cc20ed40e60a6611688c59da7416/Untitled--1-.png" alt="" class="kg-image" width="1228" height="294" loading="lazy">
+
+	</figure>
+	<p>Maintenant que nous avons compris que Foundation DNS utilise deux groupes Anycast pour annoncer les serveurs de noms, terminons notre comparaison entre six adresses IP de référence pour le DNS de référence standard et trois adresses IP pour Foundation DNS. Observons depuis quels emplacements les serveurs de Foundation DNS sont annoncés, pour notre exemple :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RNThUjcDyqemyWpHTWXgo/4d8b7490278fe202b7ce4c22fe0bec74/DNS---Anycast---2-Groups.png" alt="" class="kg-image" width="1600" height="880" loading="lazy">
+
+	</figure>
+	<p>Regardez un peu ! L'une des trois adresses IP de notre serveur de noms est annoncée depuis un autre datacenter, Manchester (MAN), ce qui permet d'améliorer la fiabilité et la résilience de Foundation DNS dans le cadre du scénario d'une panne, décrit plus haut. Il convient de mentionner que dans certaines villes, Cloudflare opère depuis plusieurs datacenters, ce qui signifie que les trois requêtes renvoient le même code d'aéroport. Bien que nous puissions garantir qu'au moins l'une de ces adresses IP est annoncée depuis un autre datacenter, nous comprenons que certains clients souhaitent tester ce postulat par eux-mêmes. Dans ces cas, une requête supplémentaire peut révéler que des adresses IP sont annoncées depuis des datacenters différents.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig @108.162.198.1 ch txt hostname.bind +short
+"LHR"
+
+$ dig @162.159.60.1 ch txt hostname.bind +short
+"LHR"
+
+$ dig @172.64.40.1 ch txt hostname.bind +short
+"MAN"</code></pre>
+	<p>Dans le texte en gras, le nombre précédant le caractère « <b>m</b> » représente le datacenter qui a répondu à la requête. Tant que ce nombre est différent dans l'une des trois réponses, vous savez que l'un des serveurs de noms de référence de Foundation DNS est annoncé depuis un emplacement physique différent.</p>
+	<pre class="language-bash"><code class="language-bash">$ dig @108.162.198.1 +nsid | grep NSID:
+; NSID: 39 34 6d 33 39 ("94m39")</code></pre>
+	<p>Avec Foundation DNS, qui tire parti de deux groupes Anycast, le scénario de panne évoqué plus haut est géré avec fluidité. Les résolveurs DNS surveillent les requêtes adressées à tous les serveurs de noms de référence et renvoyées pour un domaine donné, mais utilisent principalement le serveur de noms renvoyant les réponses les plus rapides.</p>
+	<p>Avec cette configuration, les résolveurs DNS sont en mesure de transmettre des requêtes à deux datacenters Cloudflare différents ; ainsi, en cas de défaillance sur un site physique, les requêtes sont automatiquement transmises au deuxième datacenter, où elles peuvent être résolues correctement.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1u3SrmtgUejWSebbRXUPAt/227561599823e742c22b8de84f58a6e1/Untitled--3-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
+
+	</figure>
+	<p>Les serveurs de noms avancés de Foundation DNS représentent une avancée considérable en matière de fiabilité pour nos clients entreprises. Nous invitons nos clients entreprises à activer dès aujourd'hui des serveurs de noms avancés pour les zones existantes. La migration vers Foundation DNS n'entraînera pas non plus d'interruption de service, car même après l'activation des serveurs de noms avancés de Foundation DNS pour une zone donnée, les anciens serveurs de noms DNS de référence continueront à fonctionner et à répondre aux requêtes correspondant à cette zone. Les clients n'ont pas besoin de planifier un basculement ou tout autre événement affectant le service pour effectuer la migration vers les serveurs de noms avancés de Foundation DNS .</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3keJQHl9r4G2MbPBfVM6z2/ea6df88b75f5509775e9606b346e1430/Untitled--4-.png" alt="" class="kg-image" width="1228" height="616" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="new-zone-level-dns-settings">Nouveaux paramètres DNS de zone</h3>
+		<a href="https://blog.cloudflare.com/#new-zone-level-dns-settings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Yb7o6mhNlOEOUzB49iaRj/7cdbb3feede33f2d5d32db89aff6a861/DNS-Enable-Foundation.png" alt="" class="kg-image" width="1600" height="610" loading="lazy">
+
+	</figure>
+	<p>Par le passé, nous avons régulièrement reçu de nos clients entreprises des demandes d'ajustement de paramètres DNS spécifiques qui n'étaient pas exposés via notre API ou notre tableau de bord, tels que l'activation de mesures de remplacement de DNS secondaires. Lorsque les clients souhaitaient ajuster ces paramètres, ils devaient contacter l'équipe responsable de leur compte, qui se chargeait de modifier les configurations. Avec Foundation DNS, nous exposons les paramètres les plus fréquemment demandés via l'<a href="https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings" target="_blank" rel="noopener noreferrer">API</a> et le tableau de bord, afin d'offrir à nos clients une flexibilité accrue avec leur solution DNS de référence Cloudflare.</p>
+	<p>Les clients entreprises peuvent désormais configurer les paramètres DNS suivants sur leurs zones :</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-p7vi{background-color:#C9DAF8;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-p7vi {
+			background-color: #C9DAF8;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Setting</span></th>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zone Type</span></th>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Foundation DNS advanced nameservers</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Primary and secondary zones</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to enable advanced nameservers on your zone.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Secondary DNS override</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Secondary zones</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to enable </span><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Secondary DNS Override</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> on your zone in order to proxy HTTP/S traffic through Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Multi-provider DNS</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Primary and secondary zones</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to have multiple authoritative DNS providers while using Cloudflare as a primary nameserver.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Paramètres</p>
+	<p>Type de zone</p>
+	<p>Description</p>
+	<p><a href="https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers" target="_blank" rel="noopener noreferrer">Serveurs de noms avancés de Foundation DNS</a></p>
+	<p>Zones principale et secondaire</p>
+	<p>Cette fonctionnalité vous permet d'activer des serveurs de noms avancés pour votre zone.</p>
+	<p><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic" target="_blank" rel="noopener noreferrer">Remplacement de DNS secondaire</a></p>
+	<p>Zones secondaires</p>
+	<p>Cette option vous permet d'activer la fonctionnalité de <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic" target="_blank" rel="noopener noreferrer">remplacement de DNS secondaire</a> dans votre zone, afin de transmettre le trafic HTTP/S en proxy via Cloudflare.</p>
+	<p><a href="https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns" target="_blank" rel="noopener noreferrer">DNS multi-fournisseurs</a></p>
+	<pre class="language-json"><code class="language-json">{
+  "query": "{
+    viewer {
+      zones(filter: { zoneTag: $zoneTag }) {
+        dnsAnalyticsAdaptiveGroups(
+          filter: $filter
+          limit: 10
+          orderBy: [datetime_ASC]
+        ) {
+          avg {
+            processingTimeUs
+          }
+          quantiles {
+            processingTimeUsP90
+          }
+          dimensions {
+            datetimeFifteenMinutes
+            sourceIP
+          }
+        }
+      }
+    }
+  }",
+  "variables": {
+    "zoneTag": "&lt;zone-tag&gt;",
+    "filter": {
+      "datetime_geq": "2024-05-01T00:00:00Z",
+      "datetime_leq": "2024-06-01T00:00:00Z"
+    }
+  }
+}</code></pre>
+	<p>Zones principale et secondaire</p>
+	<p>Cette fonctionnalité vous permet de configurer plusieurs fournisseurs DNS de référence, tout en utilisant Cloudflare comme serveur de noms principal.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wxCCwWyZnmhd0orYUww9Y/c851eba998a7fbdaded3426e1aff19b4/DNS-Analytics.png" alt="" class="kg-image" width="1600" height="791" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="unique-dnssec-keys-per-account-and-zone">Clés DNSSEC uniques par compte et par zone</h3>
+		<a href="https://blog.cloudflare.com/#unique-dnssec-keys-per-account-and-zone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a>, qui signifie Domain Name System Security Extensions, ajoute de la sécurité à un domaine ou à une zone en fournissant un moyen de vérifier que la réponse que vous recevez à une requête DNS est authentique et n'a pas été modifiée. DNSSEC empêche l'<a href="https://www.cloudflare.com/learning/dns/dns-cache-poisoning" target="_blank" rel="noopener noreferrer">empoisonnement de cache DNS (usurpation de DNS)</a>, ce qui permet d'assurer que les résolveurs DNS répondent aux requêtes DNS avec les adresses IP correctes.</p>
+	<p>Depuis le <a href="https://blog.cloudflare.com/introducing-universal-dnssec">lancement de Universal DNSSEC</a> en 2015, nous avons apporté de nombreuses améliorations, telles que l'ajout de la prise en charge de <a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC pour les zones secondaires</a> et du protocole <a href="https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC multi-signataire</a>. Par défaut, Cloudflare signe les enregistrements DNS à la volée (signature en direct) à mesure que nous répondons aux requêtes DNS. Ceci permet à Cloudflare d'héberger un domaine sécurisé par DNSSEC, tout en allouant dynamiquement des adresses IP aux serveurs d'origine traités en proxy. Cela permet également certains scénarios d'utilisation d'équilibrage de charge, car dans ces cas, les adresses IP servies dans la réponse DNS changent en fonction de la redirection.</p>
+	<p>Cloudflare utilise l'<a href="https://blog.cloudflare.com/dnssec-done-right">algorithme de signature à courbes elliptiques ECDSA P-256</a>, qui est plus puissant que la plupart des clés RSA utilisées aujourd'hui. Il consomme moins de temps processeur pour générer des signatures, améliorant ainsi l'efficacité de leur génération à la volée. Généralement, deux clés sont utilisées dans le cadre de DNSSEC : la clé de signature de zone (ZSK, Zone Signing Key) et la clé de signature de clé (KSK, Key Signing Key). Au niveau le plus simple, la clé ZSK est utilisée pour signer les enregistrements DNS servis en réponse aux requêtes, et la clé KSK est utilisée pour signer les clés <a href="https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records" target="_blank" rel="noopener noreferrer">DNSKEY</a>, notamment la clé ZSK, afin de garantir son authenticité.</p>
+	<p>Aujourd'hui, Cloudflare utilise une clé ZSK et une clé KSK partagées à l'échelle mondiale pour toutes les signatures DNSSEC, et puisque nous utilisons un algorithme cryptographique puissant, nous connaissons le niveau de sécurité qu'offre cet ensemble de clés ; par conséquent, nous ne pensons pas qu'il soit nécessaire de renouveler régulièrement les clés ZSK ou KSK – du moins, pas pour des raisons de sécurité. Certains clients, toutefois, ont appliqué des politiques qui exigent le renouvellement de ces clés à certains intervalles. C'est pour cette raison que nous avons ajouté aux nouveaux serveurs de noms avancés de Foundation DNS la possibilité de renouveler à la fois leur clé ZSK et leur clé KSK en fonction des besoins par compte ou par zone. Cette fonctionnalité sera tout d'abord accessible depuis l'API, puis par l'intermédiaire du tableau de bord Cloudflare. Ainsi, les clients dont le renouvellement des clés DNSSEC est soumis à des politiques strictes peuvent désormais répondre à ces exigences avec Cloudflare Foundation DNS.</p>
+	<div class="flex anchor relative">
+		<h3 id="graphql-based-dns-analytics">Analyses de données DNS basées sur GraphQL</h3>
+		<a href="https://blog.cloudflare.com/#graphql-based-dns-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour ceux qui ne le connaissent pas, <a href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL</a> est un langage de création de requêtes pour API et un runtime dédié à l'exécution de ces requêtes. Il permet aux clients de demander exactement ce dont ils ont besoin, ni plus, ni moins, et leur permet ainsi d'agréger les données de différentes sources via un appel d'API unique et de prendre en charge les mises à jour en temps réel par le biais des abonnements.</p>
+	<p>Comme vous le savez peut-être, Cloudflare propose depuis quelque temps une <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">API GraphQL</a> ; dans le cadre de Foundation DNS, toutefois, nous ajoutons à cette API un nouvel ensemble de données DNS, disponible uniquement avec les nouveaux serveurs de noms avancés de Foundation DNS.</p>
+	<p>Le nouvel ensemble de données DNS de notre API GraphQL peut être utilisé pour récupérer des informations sur les requêtes DNS reçues par une zone. Cette alternative plus rapide et plus puissante à notre <a href="https://developers.cloudflare.com/api/operations/dns-analytics-table" target="_blank" rel="noopener noreferrer">API DNS Analytics</a> actuelle vous permet d'interroger rapidement et efficacement les données sur de longues périodes de temps, sans vous heurter à des limites ou des délais d'expiration. L'API GraphQL est plus flexible au regard des requêtes qu'elle accepte et expose plus d'informations que l'API DNS Analytics.</p>
+	<p>Par exemple, vous pouvez exécuter cette requête pour obtenir la moyenne et le 90e centile du temps de traitement de vos requêtes, groupées par adresse IP source, par compartiments de 15 minutes. Cette requête serait utile pour identifier les adresses IP qui interrogent le plus souvent vos enregistrements pour une plage de temps donnée :</p>
+	<p>Auparavant, il aurait été impossible de créer une requête comme celle-ci, et ce, pour plusieurs raisons. La première est que nous avons ajouté de nouveaux champs, tels que <b>sourceIP</b>, qui nous permet de filtrer les données en fonction des adresses IP des clients (généralement, des résolveurs) qui transmettent des requêtes DNS. La seconde réside dans le fait que la requête de l'API GraphQL est capable de traiter et de renvoyer des données sur des plages temporelles beaucoup plus vastes. Une zone DNS contenant des volumes de requêtes suffisamment importants ne pouvait auparavant générer que des requêtes couvrant quelques jours de trafic seulement, tandis que la nouvelle API GraphQL peut fournir des données sur une période allant jusqu'à 31 jours. Nous avons l'intention d'améliorer encore davantage cette plage, ainsi que d'offrir la possibilité de stocker et d'interroger des données historiques.</p>
+	<p>L'API GraphQL nous permet également d'ajouter une nouvelle section dédiée aux analyses de données DNS au tableau de bord de Cloudflare. Les clients seront en mesure de suivre les enregistrements les plus fréquemment interrogés, d'identifier les datacenters qui répondent à ces requêtes, de consulter le nombre de requêtes effectuées et bien davantage.</p>
+	<p>Le nouvel ensemble de données DNS de notre API GraphQL et la nouvelle page d'analyses de données DNS fonctionnent ensemble, afin d'aider les clients de notre DNS à surveiller, analyser et résoudre les incidents liés à leurs déploiements de Foundation DNS.</p>
+	<div class="flex anchor relative">
+		<h3 id="new-release-process">Nouveau processus de déploiement</h3>
+		<a href="https://blog.cloudflare.com/#new-release-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le DNS de référence de Cloudflare reçoit des mises à jour logicielles environ une fois par semaine. Cloudflare dispose d'un processus de publication sophistiqué, qui permet d'éviter que les régressions n'affectent le trafic de production. Bien que cela soit rare, il est possible que des problèmes n'apparaissent que lorsque la nouvelle version est exposée au volume et à l'unicité du trafic de production.</p>
+	<p>Nos clients entreprises souhaitent plus de stabilité, plutôt que de nouvelles fonctionnalités ; par conséquent, les nouvelles versions seront soumises à un délai d'absorption de deux semaines avec nos serveurs de noms standard avant que les serveurs de noms avancés de Foundation DNS ne soient mis à niveau. Après deux semaines sans incident, les serveurs de noms avancés de Foundation DNS seront également mis à niveau.</p>
+	<p>Les zones utilisant les serveurs de noms avancés de Foundation DNS bénéficieront d'une fiabilité plus élevée, car elles sont mieux protégées contre les régressions liées aux nouvelles versions logicielles.</p>
+	<div class="flex anchor relative">
+		<h3 id="simpler-dns-pricing">Tarification DNS plus simple</h3>
+		<a href="https://blog.cloudflare.com/#simpler-dns-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Historiquement, Cloudflare facturait son DNS de référence en fonction du nombre mensuel de requêtes DNS mensuelles et du nombre de domaines du compte. Les clients entreprises de notre service DNS pour entreprises sont souvent intéressés par les zones DNS uniquement, c'est-à-dire des zones DNS hébergées dans Cloudflare qui n'utilisent pas nos services de proxy inverse (couche 7), tels que notre réseau CDN, notre pare-feu WAF ou notre solution de gestion des bots. Avec Foundation DNS, nous simplifions la tarification pour l'immense majorité de ces clients <b>en incluant par défaut 10 000 domaines DNS uniquement</b>. Ce changement signifie que la plupart des clients paient uniquement pour le nombre de requêtes DNS qu'ils consomment.</p>
+	<p>Nous <b>incluons également 1 million d'enregistrements DNS</b> sur tous les domaines d'un compte. Cela ne signifie pas pour autant que nous ne pouvons pas en prendre en charge davantage. En réalité, la zone unique la plus vaste de notre plateforme contient plus de 3,9 millions d'enregistrements, tandis que notre compte DNS le plus important compte près de 30 millions d'enregistrements DNS répartis sur plusieurs zones. Avec Cloudflare DNS, la gestion des déploiements les plus vastes se déroule en toute simplicité.</p>
+	<div class="flex anchor relative">
+		<h3 id="there-is-more-to-come">Ce n'est pas tout</h3>
+		<a href="https://blog.cloudflare.com/#there-is-more-to-come" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ce n'est qu'un début. À l'avenir, nous ajouterons d'autres fonctionnalités exclusives à Foundation DNS, notamment une fonctionnalité très demandée : <b>les jetons d'API et les autorisations utilisateur limités en fonction de l'enregistrement</b>. Ceci vous permettra de configurer les autorisations à un niveau encore plus granulaire. Par exemple, vous pourrez spécifier qu'un membre particulier de votre compte est uniquement autorisé à créer et gérer des enregistrements de type TXT et MX, afin d'éviter qu'il ne supprime ou ne modifie accidentellement les enregistrements d'adresses affectant le trafic web vers votre domaine. Un autre exemple sera la configuration d'autorisations en fonction du sous-domaine, afin de restreindre davantage la portée d'utilisateurs spécifiques.</p>
+	<p>Si vous êtes déjà client entreprise et vous souhaitez utiliser Foundation DNS, contactez l'équipe responsable de votre compte pour provisionner Foundation DNS sur votre compte.</p>
+</div>

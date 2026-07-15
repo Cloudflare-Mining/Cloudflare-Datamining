@@ -1,0 +1,836 @@
+<div class="mb2 gray5">21分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/private-rate-limiting">English</a>および<a href="https://blog.cloudflare.com/ko-kr/private-rate-limiting">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47hyta5R7SyBkQGy0jhFjH/b2509cf86400d6168130b7f981aaf9fb/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>私たちのインターネットとの関わり方は、変化しているものです。少し前までは、ピザを注文することは、Webサイトを訪問し、メニューをクリックし、支払い情報を入力することを意味していました。近いうちに、自分の好みに合ったピザを注文するよう<a href="https://www.cnet.com/tech/services-and-software/i-had-chatgpt-order-me-a-pizza-this-could-change-everything" target="_blank" rel="noopener noreferrer"><u>携帯電話に頼む</u></a>かもしれません。デバイス上またはリモートサーバー上のプログラム（<a href="https://developers.cloudflare.com/agents/concepts/what-are-agents" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>と呼びます）が、Webサイトを訪問し、お客様に代わって必要なステップを調整します。</p>
+	<p>もちろん、エージェントはピザを注文する以上のことができます。すぐに、コンサートのチケットの購入や休暇の計画、あるいはプルリクエストの書き込み、レビュー、統合に使用することもできるかもしれません。これらのタスクの一部は最終的にローカルで実行されますが、現在のほとんどは世界最大のデータセンターで稼働する大規模なAIモデルによって支えられています。エージェンティックAIの人気が高まるにつれて、これらのAIプラットフォームからのトラフィックが大幅に増加し、それに対応して、より従来のソース（携帯電話など）からのトラフィックは減少することが予想されます。</p>
+	<p>このトラフィックパターンの変化から、AI時代においてお客様のオンライン状態と安全性を維持する方法を評価する必要に迫られました。一方で、リクエストの性質は変化しています。人間の訪問者に最適化されたWebサイトは、より速く、潜在的には貪欲なエージェントに対処しなければなりません。一方で、AIプラットフォームは、プラットフォーム自体の悪意のあるユーザーを発信源とする、すぐに大きな攻撃源になる可能性があります。</p>
+	<p>残念ながら、そのような（誤った）動作を管理する既存のツールでは、この移行を管理するには、きめ細やかすぎる可能性があります。たとえば、<a href="https://blog.cloudflare.com/per-customer-bot-defenses"><u>リクエストが既知の攻撃パターンの一部であることをCloudflareが検出した場合</u></a>、最良のアクションは多くの場合、同じソースから後続のすべてのリクエストをブロックすることです。ソースがAIエージェントプラットフォームである場合、これは同じプラットフォームのすべてのユーザーを不注意にブロックする可能性があります。ブロックされるのは、ピザを注文しようとする稼働率の高いユーザーも含めたものです。<a href="https://blog.cloudflare.com/web-bot-auth"><u>今年の初めから</u></a>、この問題に取り組み始めました。しかし、エージェンティックAIの人気が高まるにつれて、インターネットには、正直なユーザーに影響を与えることなくエージェントを管理するための、よりきめ細かなメカニズムが必要になると考えています。</p>
+	<p>同時に、私たちは、こうしたセキュリティメカニズムは、ユーザーのプライバシーを中心に考えて設計される必要があると考えています。この記事では、これらのツールを構築するために<b>匿名認証情報（AC）</b>を使用する方法について説明します。匿名認証情報は、Webサイト運営者が、ユーザーを特定したり、リクエストごとに追跡したりすることなく、ユーザーのレート制限や特定の悪意のあるユーザーのブロックなど、幅広いセキュリティポリシーを適用するのに役立ちます。</p>
+	<p>Webサイト、ブラウザ、プラットフォームで機能する標準の提供を目的に、<a href="https://mailarchive.ietf.org/arch/msg/privacy-pass/--JXbGvkHnLq1iHQKJAnfn5eH9A" target="_blank" rel="noopener noreferrer"><u>IETFは現在</u></a>、匿名認証情報を開発中です。まだ初期段階ではありますが、この取り組みはAI時代のインターネットの安全性とプライベート性を保つ上で重要な役割を果たすと信じています。当社は、実際のデプロイメントに向けて、このプロセスに貢献していきます。これはまだ初期段階です。この分野で活動する方は、ぜひフォローしていただき、貢献していただければと思います。</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-build-a-small-agent">小さなエージェントを構築してみましょう</h2>
+		<a href="https://blog.cloudflare.com/#lets-build-a-small-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIエージェントがWebサーバーにどのように影響しているかを説明するために、自分自身でエージェントを構築してみましょう。私たちの目標は、近くのピザ屋からピザを注文できるエージェントを持つことです。エージェントがいない場合、ブラウザを開き、近くにあるピザ屋の場所を確認し、メニューを表示して選択し、余分なエクスペリエンス（ダブルペパロニ）を追加し、クレジットカードで精算することでしょう。エージェントを使用する場合も同じフローです。ただし、エージェントはお客様に代わってブラウザを開いて調整します。</p>
+	<p>従来のフローでは、その途中がすべて人間で、各ステップには明確な意図があります。「現在の場所から3Km以内にあるすべてのピザ屋をリストアップする」ということです。メニューからピザを選びますクレジットカードを入力し、などです一方、エージェントは「ピザを注文する」というプロンプトから、これらのアクションを推測する必要があります。</p>
+	<p>このセクションでは、プロンプトを受けて、送信リクエストを行う簡単なプログラムを構築します。これは、特定のプロンプトを取得し、それに応じて回答を生成する単純な<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>の例です。このコードは<a href="https://github.com/cloudflareresearch/mini-ai-agent-demo" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>にあります。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
+           prompt: `I'd like to order a pepperoni pizza with extra cheese.
+                    Please deliver it to Cloudflare Austin office.
+                    Price should not be more than $20.`,
+       });
+
+
+       return new Response(out.response);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>この文脈では、LLMが最善の答えを提供してくれます。プランと指示は与えられますが、私たちの代わりにアクションを実行するものではありません。あなたも私も、指示のリストを受け取り、実行することができます。なぜなら、私たちは手段を持ち、世界に影響を与えることができるからです。当社のエージェントが世界のより多くの地域と対話できるように、Webブラウザ上で制御できるようにします。</p>
+	<p>Cloudflareは、Workerに直接バインドできる<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ブラウザレンダリング</u></a>サービスを提供しています。そうしましょう。以下のコードは、ブラウザの制御を簡単にする自動化フレームワークである<a href="https://www.stagehand.dev" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a>を使用しています。Cloudflareリモートブラウザのインスタンスと、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>のクライアントを渡します。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient"; // wrapper to convert cloudflare AI
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+
+
+       const page = stagehand.page;
+       await page.goto("https://mini-ai-agent.cloudflareresearch.com/llm");
+
+
+       const { extraction } = await page.extract("what are the pizza available on the menu?");
+       return new Response(extraction);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>そのコードは、<a href="https://mini-ai-agent.cloudflareresearch.com/llm" target="_blank" rel="noopener noreferrer"><i><u>https://mini-ai-agent.cloudflareresearch.com/llm</u></i></a>でアクセスできます。2025年10月10日の回答がこちらです。</p>
+	<pre class="language-Rust"><code class="language-Rust">Margherita Classic: $12.99
+Pepperoni Supreme: $14.99
+Veggie Garden: $13.99
+Meat Lovers: $16.99
+Hawaiian Paradise: $15.49</code></pre>
+	<p>ブラウザレンダリングのスクリーンショットAPIを使用して、エージェントが行っていることを検査することもできます。上記の例でブラウザがページをレンダリングする方法を次に示します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lXTePCTUORCyyOWNNcwZ8/5978abd1878f78107a2c9606c3a1ef51/image4.png" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+	</figure>
+	<p>Stagehandを使用すると、<code>page.act（「ペパロニピザをクリックしてください」）</code>や<code>page.act（「今すぐ支払う」をクリックしてください）</code>など、ページ上のコンポーネントを識別できます。これにより、開発者とブラウザ間のインタラクションが容易になります。</p>
+	<p>さらに前進して、エージェントにフロー全体を自律的に実行するように指示するには、Stagehandの<a href="https://docs.stagehand.dev/basics/agent" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>モードを使用する必要があります。この機能は、Cloudflare Workersではまだサポートされていませんが、完全性を示すために以下に提供します。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient";
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+       
+       const agent = stagehand.agent();
+       const result = await agent.execute(`I'd like to order a pepperoni pizza with extra cheese.
+                                           Please deliver it to Cloudflare Austin office.
+                                           Price should not be more than $20.`);
+
+
+       return new Response(result.message);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>エージェントは段階的な指示を加えるのではなく、制御できるようになっていることがわかります。実際に支払うには、<a href="https://en.wikipedia.org/wiki/Controlled_payment_number" target="_blank" rel="noopener noreferrer"><u>バーチャルクレジットカード</u></a>などの支払方法にアクセスする必要があります。</p>
+	<p>プロンプトには、場所の範囲をCloudflareのオースティンのオフィスに限定した、いくつかの微妙な違いがありました。これは、エージェントが私たちに応答する一方で、私たちのコンテキストを理解する必要があるためです。この場合、エージェントはCloudflareのエッジ（当社から離れた場所）で動作します。これは、この<a href="https://www.cloudflare.com/learning/cdn/glossary/data-center" target="_blank" rel="noopener noreferrer"><u>データセンター</u></a>からピザが配達されたとしても、受け取る可能性が低いことを意味します。</p>
+	<p>エージェントに提供する機能が多ければ多いほど、混乱を引き起こす可能性があります。誰かが10秒に1リクエスト、低速で5回クリックする代わりに、データセンターでプログラムが実行されていて、おそらく1秒間に5つのリクエストすべてを作成することができるのです。</p>
+	<p>このエージェントはシンプルですが、何千ものもの（一部は良性のものもあれば、そうでないもの）がデータセンターのスピードで稼働していることを想像してみてください。オリジンサーバーが直面する課題は次の通りです。</p>
+	<div class="flex anchor relative">
+		<h2 id="protecting-origins">オリジンの保護</h2>
+		<a href="https://blog.cloudflare.com/#protecting-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>人間がオンライン世界と対話するためには、Webブラウザと、そのブラウザの動作を指示するための周辺機器が必要です。エージェントはブラウザを誘導する別の方法であるため、オリジンの観点から見れば、実際にはほとんど変更されていないと考えがちです。実際、オリジンの観点から最も明らかな変化は、単にトラフィックがどこから発生しているかです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/304j2MNDUNwAaipqmH2Jbt/35beb792bda327a6cf0db3b642bbc4d6/unnamed-1.png" alt="" class="kg-image" width="1600" height="780" loading="lazy">
+	</figure>
+	<p>この変化が重大な理由は、サーバーがトラフィックを管理するためのツールに関係しています。一般的に、Webサイトは、可能な限り寛容であるように努めますが、限られたリソース（帯域幅、CPU、メモリ、ストレージなど）を管理する必要もあります。これを行う基本的な方法はいくつかあります。</p>
+	<ol>
+		<li>
+			<p><b>グローバルセキュリティポリシー</b>：サーバーは、速度を低下させる、CAPTCHA、または一時的にすべてのユーザーからのリクエストをブロックすることができます。このポリシーは、サイト全体、特定のリソース、または既知またはその可能性の高い攻撃パターンの一部であると分類されたリクエストに適用されます。こうしたメカニズムは、DDoS攻撃のようにトラフィックの急増に対応してデプロイされることもあれば、<a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer"><u>Waiting Room</u></a>のように正当なトラフィックの急増を予期してデプロイされることもあります。</p>
+		</li>
+		<li>
+			<p><b>インセンティブ</b>: サーバーは、より多くのリソースが利用可能になった時に、ユーザーにサイトを利用してもらうよう誘導することがあります。例えば、場所やリクエスト時間によって、サーバー価格がより低くなることもあります。これは、<a href="https://developers.cloudflare.com/rules/snippets/when-to-use" target="_blank" rel="noopener noreferrer"><u>Cloudflare Snippet</u></a>で実装できます。</p>
+		</li>
+	</ol>
+	<p>どちらのツールも効果的ですが、重大な巻き添え被害をもたらすこともあります。例えば、Webサイトのログインエンドポイントをレート制限することは、<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-against-credential-stuffing" target="_blank" rel="noopener noreferrer"><u>クレデンシャルスタッフィング攻撃の防止に役立ちます</u></a>が、攻撃者以外のユーザーエクスペリエンスも低下させます。このような対策に頼る前に、サーバーはまずセキュリティポリシー（レート制限、CAPTCHA、完全ブロックを問わず）を個々のユーザーまたはユーザーグループに対して適用しようとします。</p>
+	<p>ただし、セキュリティポリシーを個人に適用するには、サーバーは個人を識別する何らかの方法を必要とします。これまで、これは、IPアドレス、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent" target="_blank" rel="noopener noreferrer"><u>User-Agent</u></a>、ユーザーIDに紐付けられたアカウント（利用可能な場合）、その他の指紋を組み合わせることで行われていました。ほとんどのクラウドサービスプロバイダーと同様に、Cloudflareは、このようなヒューリスティックに基づいてユーザーごとのレート制限に対する<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices" target="_blank" rel="noopener noreferrer"><u>専用のサービス</u></a>を提供しています。</p>
+	<p>フィンガープリンティングはほとんどの場合有効です。しかし、その分布は不公平です。モバイルでは、ユーザーは<a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>CAPTCHAを解決するのに特に苦労しており</u></a>、VPNを<a href="https://www.theregister.com/2015/10/19/bbc_cuts_off_vpn_to_iplayer" target="_blank" rel="noopener noreferrer"><u>使用す</u></a>る<a href="https://torrentfreak.com/hulu-blocks-vpn-users-over-piracy-concerns-140425" target="_blank" rel="noopener noreferrer"><u>と</u></a><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/troubleshooting/common-issues" target="_blank" rel="noopener noreferrer"><u>ブロックされる</u></a><a href="https://help.netflix.com/en/node/277" target="_blank" rel="noopener noreferrer"><u>可能性</u></a>が<a href="https://arstechnica.com/tech-policy/2023/07/meta-blocking-vpn-access-to-threads-in-eu" target="_blank" rel="noopener noreferrer"><u>高く</u></a>、<a href="https://www.peteresnyder.com/static/papers/speedreader-www2019.pdf" target="_blank" rel="noopener noreferrer"><u>読み取りモード</u></a>を使用するとフィンガープリントが崩れてページのレンダリングを妨げる可能性があります。</p>
+	<p>同様に、エージェンティックAIはフィンガープリンティングの限界をさらに悪化させるだけです。より小さいソースIP範囲にトラフィックが集中するだけでなく、エージェント自体も同じソフトウェアおよびハードウェアプラットフォームを実行するため、正当なユーザーと悪意のあるユーザーを区別することが難しくなります。</p>
+	<p>そこで役立つのが<a href="https://blog.cloudflare.com/web-bot-auth"><u>Webボット認証</u></a>で、エージェントがどのプラットフォームで操作しているかをオリジンに識別できるようになるものです。しかし、プラットフォーム自体を特定するためのこのメカニズムを、プラットフォームの個々のユーザーを特定する目的に拡大することは、これらのユーザーにとって許容できないプライバシーリスクを生むため、避けたいと考えます。</p>
+	<p>個々のユーザーを特定することなく、個々のユーザーに対するセキュリティ制御を実装する何らかの方法が必要です。でも、どうやって？プライバシーパスプロトコルは、<a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>部分的なソリューション</u></a>を提供します。</p>
+	<div class="flex anchor relative">
+		<h2 id="privacy-pass-and-its-limitations">プライバシーパスとその制限事項</h2>
+		<a href="https://blog.cloudflare.com/#privacy-pass-and-its-limitations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、プライバシーパスの最も顕著なユースケースの1つは、以前にも<a href="https://blog.cloudflare.com/privacy-pass-standard/#privacy-pass-protocol"><u> 説明したように</u></a> 、ユーザーからオリジンへのリクエストを<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer"><u> レート制限する</u></a> ことです。プロトコルは大まかに次のように機能します。クライアントには、複数の<b>トークン</b>が<b>発行されます</b>。リクエストを行うたびに、オリジンにトークンを1つ<b>引き換えます</b>。トークンが<b>新しい</b>場合（つまり、オリジンがこれまでに観測したことがない場合）のみ、オリジンはリクエストの通過を許可します。</p>
+	<p>プライバシーパスをユーザーごとのレート制限に使うには、各ユーザーに発行されるトークン数を制限する必要があります（例：ユーザー1人あたり100トークン/時間制限など）。AIエージェントのレート制限には、AIプラットフォームがこの役割を果たします。トークンを取得するには、ユーザーはプラットフォームにログインし、このプラットフォームは、ユーザーが発行者からトークンを取得できるようにします。AIプラットフォームは、プライバシーパスにおける<b>アテスター</b>の<a href="https://datatracker.ietf.org/doc/html/rfc9576" target="_blank" rel="noopener noreferrer"><u>役割</u></a>を果たします。アテスターは、レート制限のユーザーごとのプロパティを保証する側です。AIプラットフォームは、アテスターとして、その評判を脅かすことから、このトークン配布を実施するインセンティブがあります。もし、過剰なトークンの発行を許可すれば、発行者はそれを信用しない可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62Rz5eS1UMm2pKorpowEGg/4949220bdf2fa3c39ccfa17d4df70fff/token__1_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>発行プロトコルと請戻プロトコルは、次の2つのプロパティを持つように設計されています：</p>
+	<ul>
+		<li>
+			<p>トークンは<b>偽造不可能</b>です。発行者だけが有効なトークンを発行できます。</p>
+		</li>
+		<li>
+			<p>トークンは<b>リンク解除可能</b>です。発行者、アテスター、オリジンを含むどの関係者にも、トークンがどのユーザーに発行されたかを知ることはできません。 </p>
+		</li>
+	</ul>
+	<p>これらの特性は、<a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>ブラインド署名</u></a>スキームと呼ばれる暗号化<a href="https://csrc.nist.gov/glossary/term/cryptographic_primitive" target="_blank" rel="noopener noreferrer"><u>プリミティブ</u></a>を使って実現できます。従来の署名スキームでは、署名者は<b>プライベートキー</b>を使用してメッセージの署名を作成します。その後、検証者は署名者の<b>パブリックキー</b>を使用して署名を検証できます。ブラインド署名スキームも同じように機能しますが、署名されるメッセージは、署名者が署名しているメッセージを知ることができないように隠されています。クライアントは、署名されるメッセージを「ブラインド」してサーバーに送信します。そうすることで、サーバーはそのメッセージに対してブラインド署名を計算します。クライアントは、署名を解除することで最終的な署名を取得します。 </p>
+	<p>これはまさに、<a href="https://www.rfc-editor.org/rfc/rfc9578" target="_blank" rel="noopener noreferrer"><u>RFC 9578</u></a>で定義されている標準化されたプライバシーパス発行プロトコルです。</p>
+	<ul>
+		<li>
+			発行: ユーザーはランダムメッセージ
+			<strong>$k$</strong>
+			を生成します。これを
+			<strong>nullifier</strong> と呼びます。具体的には、これは単なるランダムな32バイトの文字列です。そして、ブラウジングをして発行者に送ります。発行者はブラインド署名で応答します。最後に、ユーザーは署名を解除して、
+			<strong>$\sigma$</strong>、
+			つまり
+			<strong>$k$</strong>の署名を取得します。トークンは、
+			<strong>$(k, \sigma)$</strong> のペアです。
+		</li>
+		<li>
+			<strong>あらゆる企業</strong><strong></strong><strong></strong><strong></strong><strong></strong>両方の条件が満たされた場合は、リクエストを受け入れ、通過させます。
+		</li>
+	</ul>
+	<p>ブラインド署名はシンプルで安価で、多くのアプリケーションに最適です。ただし、これらにはいくつかの制限があり、当社のユースケースには適していません。</p>
+	<p>まず、発行プロトコルの通信コストが高すぎます。発行された各トークンに対して、ユーザーは256バイトのブラインドニューラルファイアを送信し、発行者は256バイトのブラインド署名（RSA-2048の使用を想定）で応答します。これは、1リクエストあたり0.5KBの追加通信量、つまり1,000件のリクエストごとに500KBの通信量が必要だということです。これは、以前のプライバシーパスの<a href="https://eprint.iacr.org/2023/414.pdf" target="_blank" rel="noopener noreferrer"><u>実験</u></a>のように管理可能ですが、理想的ではありません。帯域幅が、適用したいレート制限のサブラインにあることが理想的です。計算時間が短いブラインド署名の代替として、Oblivious Pseudorandom Functions (<a href="https://datatracker.ietf.org/doc/rfc9497" target="_blank" rel="noopener noreferrer"><u>VOPRF</u></a>) がありますが、帯域幅は依然として漸近線形です。以前、プライバシーパスの初期導入の基盤となったため、<a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>過去に説明しました</u></a>。</p>
+	<p>第二に、ブラインド署名は、オリジンごとのレート制限に使用できません。クライアントに$N$トークンを発行する際、クライアントはトークンの有効性を確認できる配信元サーバーであれば、最高でも$N$トークンで引き換えられるのが理想です。ただし、サーバーが同じトークンを同じクライアントにリンクさせることができるため、クライアントは複数のサーバーで同じトークンを安全に引き換えることはできません。ここで必要なのは、レイトオリジンバインディングと呼ばれる何らかのメカニズムが必要になるということです。つまり、特定のオリジンでの払い戻しのために、同じトークンの他の解読とリンクできない方法でトークンを変換するということです。</p>
+	<p>第三に、トークンが一度発行されると取り消すことはできません。発行者のパブリックキーが有効である限り、有効なままです。これにより、オリジンが攻撃を検出した場合、またはそのトークンが侵害された場合に、特定のユーザーをブロックすることが不可能になります。オリジンは、問題を起こすリクエストをブロックできますが、ユーザーは残りのトークンバジェットを使用してリクエストを続けることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-credentials-and-the-future-of-privacy-pass">匿名認証情報とプライバシーパスの未来</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-credentials-and-the-future-of-privacy-pass" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>1985年に<a href="https://dl.acm.org/doi/pdf/10.1145/4372.4373" target="_blank" rel="noopener noreferrer"><u>Chaum</u></a>が指摘したように、<b>匿名認証情報</b>システムにより、ユーザーは発行者から資格情報を取得し、後でリンクを確立しない方法で、追加情報を明らかにすることなく、この資格情報を所有していることを証明することができます。また、いくつかの属性が認証情報に付いていることを示すことも可能です。</p>
+	<p>匿名認証情報は、レイテンシー（発行後にトークンをオリジンにリンクする）、マルチ表示（単一の発行者からの応答から複数のトークンを生成する）、有効期限などの追加機能を備えたブラインド署名のようなものと考えることができます。暗号化キーローテーション（トークンの有効性は発行者暗号化キーの有効性から切り離す）とは異なります。プライバシーパスの引き換えフローでは、クライアントはブラインドされていないメッセージと署名をサーバーに提示します。請戻を受け入れるには、サーバーは署名を検証する必要があります。ACシステムでは、クライアントは<b>メッセージの一部</b>しか提示しません。サーバーが要求を受け入れるためには、クライアントはすべてを明らかにせずに、メッセージ全体の有効な署名を知っていることをサーバーに証明する必要があります。</p>
+	<p>そのため、前述のフローには、この追加の<b>プレゼンテーション</b>ステップが含まれます。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pb3ZDoAHbDLEt0mxtf67T/b6be11710a7df7a4df7d1c89788285a7/credentials__2_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>なお、ブラインド署名やVOPRFを通じて生成された<i>トークン</i>は1回しか使用できないため、使い捨てトークンと見なすことができます。しかし、トークンを複数回使用できるタイプの匿名認証情報が存在します。これを機能させるために、発行者はユーザーに<i>資格情報</i>を付与し、ユーザーは後に引き換えとして最高<i>N</i>個の使い捨てトークンを生成することができます。したがって、ユーザーは1回の発行セッションを犠牲にして、複数のリクエストを送信することができます。 </p>
+	<p>以下の表は、ブラインド署名と匿名認証情報がレート制限にとって興味深い機能を提供する方法を示しています。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>特徴</b></p>
+				</td>
+				<td>
+					<p><b>ブラインド署名</b></p>
+				</td>
+				<td>
+					<p><b>匿名認証情報</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>発行コスト</b></p>
+				</td>
+				<td>
+					<p>単純な複雑さ：10の署名発行は、1回の署名発行の10倍のコストがかかる</p>
+				</td>
+				<td>
+					<p>サブライン的な複雑度：10の属性に署名する方が、10の個別署名よりも安価である</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>証明機能</b></p>
+				</td>
+				<td>
+					<p>メッセージが署名されたことを証明するだけ</p>
+				</td>
+				<td>
+					<p>部分的なステートメント（属性）の効率的な証明が可能になる</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>状態管理</b></p>
+				</td>
+				<td>
+					<p>ステートレス</p>
+				</td>
+				<td>
+					<p>ステートフル</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>属性</b></p>
+				</td>
+				<td>
+					<p>属性なし</p>
+				</td>
+				<td>
+					<p>パブリック（例：有効期限）やプライベート状態</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		単純な匿名認証情報スキームの仕組みを見てみましょう。クライアントのメッセージは、
+		<strong>$(k, C)$</strong>
+		のペアで構成され、<strong>$k$</strong>
+		は
+		<strong>ヌル文字</strong>で、
+		<strong>$C$</strong>
+		はクライアントがリソースにアクセスできる残り
+		<strong>回数</strong>を表すカウンターです。カウンターの値はサーバーによって制御されます。クライアントが認証情報を引き換えにすると、ニュールディアーとカウンターの両方が提示されます。レスポンスとして、サーバーはメッセージの署名が有効であり、ヌル攻撃者が以前と同じように新しいものであることをチェックします。さらに、サーバーは
+	</p>
+	<ol>
+		<li>
+			<p>カウンターがゼロより大きいことを確認する。かつ</p>
+		</li>
+		<li>
+			<p>更新されたカウンターと新しいNullifierを発行するカウンターを減らします。</p>
+		</li>
+	</ol>
+	<p>この機能を満たすために、ブラインド署名が使用されます。ただし、ヌこれは、カウンターの制御権を持つサーバーが、同じクライアントが使用する複数のプレゼンテーションをリンクするためにカウンターを利用できるため、明らかなプライバシーリスクを生み出します。たとえば、ペパロニピザを購入するために連絡を入れたとき、オリジンは特別なカウンター値を割り当てることができるため、二回目提示する際のフィンガープリンティングが容易になります。幸いなことに、この種のプライバシーのギャップを埋めるために設計された匿名の認証情報があります。</p>
+	<p>上記のスキームは、IETFの<a href="https://datatracker.ietf.org/wg/privacypass/about" target="_blank" rel="noopener noreferrer"><u> プライバシーパスワーキンググループ</u></a> によって採用が検討されている匿名認証情報スキームの1つである匿名クレジットトークン（<a href="https://datatracker.ietf.org/doc/draft-schlesinger-cfrg-act" target="_blank" rel="noopener noreferrer"><u> ACT</u></a> ）の簡易バージョンです。actの主な特徴は、その<b>状態性</b>です。正当化に成功すると、サーバーは更新されたニューリ攻撃者とカウンターの値を持つ新しい認証情報を再発行します。これにより、クライアントとサーバーの間にフィードバックループが作成され、さまざまなセキュリティポリシーを表現するために使用できます。</p>
+	<p>設計上、CT認証情報を複数回同時に提示することはできません。次のリクエストで再発行された認証情報を提示できるように、最初の提示が完了している必要があります。<b>並列性</b>は、プライバシーパスワーキンググループで議論中のもう1つのスキームである匿名レート制限クレデンシャル（<a href="https://datatracker.ietf.org/doc/html/draft-yun-cfrg-arc-00" target="_blank" rel="noopener noreferrer"><u>ARC</u></a>）の主要な機能です。ARCは、発行時に決定されるプレゼンテーション制限まで、複数のリクエストを並行して表示することができます。</p>
+	<p>ARCのもう1つの重要な機能は、レイテンシーバインディングのサポートです。クライアントがプレゼンテーション制限$N$でARCを発行された場合、クライアントは安全に、資格情報を使用して、資格情報を検証できるオリジンに最大$N$を提示できます。 .</p>
+	<p>これらは、一部の匿名認証情報の関連する機能の例にすぎません。一部のアプリケーションは、そのサブセットから恩恵を受けるかもしれません。また、追加機能が必要な場合もあります。幸いなことに、ACCとARCはどちらも小さな暗号プリミティブのセットから構築することができ、他の目的にも簡単に適応させることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="building-blocks-for-anonymous-credentials">匿名認証情報の基本要素</h2>
+		<a href="https://blog.cloudflare.com/#building-blocks-for-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ARCとactは、共通の2つのプリミティブを共有しています。<a href="https://eprint.iacr.org/2013/516.pdf" target="_blank" rel="noopener noreferrer"><u><b>代数MAC</b></u></a>は、ブラインドメッセージに関する制限された計算を可能にします。メッセージのサーバーに公開されていない部分の有効性を証明するための<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><u><b>ゼロ知識証明</b></u></a>（ZKP）を使用します。それぞれについて詳しく見ていきましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="algebraic-macs">代数MAC</h3>
+		<a href="https://blog.cloudflare.com/#algebraic-macs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>メッセージ認証コード（MAC）とは、メッセージの真正性（主張する送信者からのものであること）と完全性（メッセージが改ざんされていないこと）を確認するのに使用される暗号タグです。代数MACは、<a href="https://en.wikipedia.org/wiki/Group_action" target="_blank" rel="noopener noreferrer"><u>グループアクション</u></a>のような数学的構造から構築されています。代数的構造は、それらにいくつかの追加機能を与えますが、その1つは、MACの実際の値を簡単に隠すことができる<i>準同型</i>です。代数的なMACにランダムな値を追加すると、値を見えなくします。</p>
+	<p>ブラインド署名とは異なり、ACTとARCは両方とも<i>プライベート</i>に検証可能です。つまり、イシュア―とオリジンの両方が発行者のプライベートキーを持っている必要があります。Cloudflareを例に挙げると、Cloudflareによって発行された認証情報は、Cloudflareの背後のオリジンによってのみ使用できることを意味します。両方の公的に検証可能な亜種は可能ですが、追加コストがかかります。</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-knowledge-proofs-for-linear-relations">線形関係のゼロ知識証明</h3>
+		<a href="https://blog.cloudflare.com/#zero-knowledge-proofs-for-linear-relations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ゼロ知識証明（ZKP）によって、ステートメントが真となる正確な値を明らかにすることなく、ステートメントが真であることを証明することができます。ZKPは、証明者によって、実際に秘密を持つ人だけが生成できるように構築されます。そして、検証者はこの証明に対して簡単な数学的チェックを実行することができます。チェックに合格すれば、検証者は証明者の最初の声明が有効であると確信できます。重要なプロパティは、証明自体がステートメントを確認するデータに過ぎないことです。元の秘密を再構築するのに使用できる他の情報は含まれていません。</p>
+	<p>ARCとactでは、秘密の直線的関係を証明する必要があります。ARCでは、ユーザーは、異なるトークンが同じオリジナルのシークレット・クレデンシャルにリンクされていることを証明する必要があります。たとえば、ユーザーは、リクエストトークンが発行された有効な認証情報から派生したことを示す証明を作成できます。この証明により、トークンが正当に接続されていることが確認できます。トークンを結びつけている根本的な資格情報を学習することはありません。これにより、システムは、プライバシーを保護しながら、ユーザーの行動を検証することができます。</p>
+	<p>単純な線形関係の証明を拡張して、例えば数が範囲内にあることなど、強力なステートメントを証明できるようにすることができます。例えば、これは口座にプラスの残高があることを証明するのに役立ちます。残高がプラスであることを証明するには、残高をバイナリにエンコードできることを証明します。例えば、アカウントには最高1024クレジットがあるとします。例えば、12の場合、残高がゼロでないことを証明するには、2つのことを同時に証明します。1つ目は、バイナリビットのセット（この場合は12=(1100) 2）があること、2つ目は、リニアデータセンターであることです。これらのビット（8*1 + 4*1 + 2*0 +<sub> </sub>1*0）を使った方程式は、正しくコミットされた残高の合計になります。これにより、検証者は、正確な値を知ることなく、その数字が有効に作られたものだと確信することができます。これは2の累乗の仕組みですが、<a href="https://github.com/chris-wood/draft-arc/pull/38" target="_blank" rel="noopener noreferrer"><u>任意の範囲に簡単に拡張することができます</u></a>。</p>
+	<p>代数MACの数学的構造により、簡単に分かりやすく評価を行うことができます。この構造は、MACを明らかにすることなく、MACがプライベートキーを使用して評価されたことを簡単に証明することもできます。さらに、ARCはZKPを使用して、以前に投資されていないことを証明することができます。これに対して、ACTはZKPを使用して、トークンに十分な残高があることを証明します。残りはより多くのグループ構造を使用して準同型に引き出されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-much-does-this-all-cost">このすべての費用はいくらですか？</h2>
+		<a href="https://blog.cloudflare.com/#how-much-does-this-all-cost" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>匿名認証情報は柔軟性が高く、特定のアプリケーションのブラインド署名と比較して通信コストを削減できる可能性があります。そのようなアプリを特定するには、これらの新しいプロトコルの具体的な通信コストを測定する必要があります。さらに、CPU使用率がブラインド署名や紛失擬似ランダム関数と比較した場合を理解する必要があります。</p>
+	<p>いくつかのACスキームの各段階で参加者が費やす時間を測定します。また、ネットワーク上で送信されるメッセージのサイズも報告しています。ARC、ACT、VOPRFでは、<a href="https://doi.org/10.17487/RFC9496" target="_blank" rel="noopener noreferrer"><u>ristretto255</u></a>を素数グループとして使用し、ハッシュにはSHAKE128を使用します。ブラインドRSAには、2048ビットモジュラスとSHA-384をハッシュに使用します。</p>
+	<p>各アルゴリズムはGoで、<a href="https://github.com/cloudflare/circl" target="_blank" rel="noopener noreferrer"><u>CIRCL</u></a>ライブラリ上に実装されています。ARCとactの仕様が安定し始めたら、コードをオープンソース化する予定です。</p>
+	<p>それでは、プライバシーパスで最も広く使われているデプロイメントであるブラインドRSAを見てみましょう。請戻時間は短く、コストのほとんどは発行時のサーバーにあります。通信コストはほぼ一定で、256バイト単位です。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ブラインドRSA</span><br><a href="https://doi.org/10.17487/RFC9474"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9474</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(RSA-2048+SHA384)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1つのトークン</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">発行</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（ブラインド）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー（評価）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.69ミリ秒</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（ファイナライズ）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,560億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">請戻</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">300 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>VOPRFの場合、サーバーでの検証時間はブラインドRSAより若干高くなりますが、通信コストと発行ははるかに高速です。サーバー上の評価時間は、1つのトークンに対して10倍速く、つまり、<a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens" target="_blank" rel="noopener noreferrer"><u>償却トークン発行</u></a>を使用した場合は25倍以上速くなっています。トークンあたりの通信費用も魅力的で、メッセージサイズは3分の1以上に抑えられています。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VOPRF</span><br><a href="https://doi.org/10.17487/RFC9497"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9497</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Ristretto255+SHA512)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1つのトークン</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1000通</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（トークンあたり）</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（トークンごと）</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">発行</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（ブラインド）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,200億件</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,200億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー（評価）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">260µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">960億</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">99µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32.064 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（ファイナライズ）</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">376µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">640億</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">173µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">640億</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">請戻</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">960億</span></td>
+					<td class="tg-baqh" colspan="2" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">57µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>このため、VOPRFトークンは、やや高い払い戻しコストを受け入れられるが、公開された検証可能性を必要としない、多くのトークンを必要とするアプリケーションにとって魅力的です。</p>
+	<p>次に、ARCとactの匿名資格情報スキームの数字を見てみましょう。どちらのスキームについても、最高$N=1000$で提示できる認証情報の発行時間を測定しています。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-l4d4 {
+			background-color: #D9D2E9;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-8mqg {
+			background-color: #FCE5CD;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-sd4m {
+			background-color: #CCC;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-har8 {
+			background-color: #8E7CC3;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-y4nt {
+			background-color: #E69138;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-7nm9 {
+			background-color: #D9D2E9;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dzqp {
+			background-color: #FCE5CD;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dgl5 {
+			background-color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-sd4m" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">発行</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クレデンシャル生成</span></th>
+					<th class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></th>
+					<th class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ゼロトラスト</span></th>
+				</tr>
+				<tr>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></th>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（リクエスト）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">323µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,240億件</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">64µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1410億</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー（レスポンス）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1349µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">448 B</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">251µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1760億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（ファイナライズ）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1293µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,280億件</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">204µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1760億件</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi" colspan="5"></td>
+				</tr>
+				<tr>
+					<td class="tg-dgl5" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">引き換え</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">資格情報のプレゼンテーション</span></td>
+					<td class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></td>
+					<td class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ゼロトラスト</span></td>
+				</tr>
+				<tr>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></td>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">時間</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メッセージサイズ</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（プレゼンス）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">735µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,880億</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 1740µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1867 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー（検証／参照）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">740µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1785µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1410億</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">クライアント（アップデート）</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">508µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1760億件</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>期待通り、通信コストとサーバーのランタイムは、ブラインドRSAかVOPRFのバッチ発行よりもはるかに低くなります。例えば、1000個のトークンのVOPRF発行にかかる時間は99ミリ秒（トークンあたり99µs） <i>vs</i> 1000回のプレゼンテーションを可能にするARCクレデンシャル1つを発行する場合は1.35ミリ秒です。これは約70倍の高速化です。その代償として、クライアントとサーバーの両方にとって、プレゼンテーションはより高価なものになります。</p>
+	<p>行動を起こす人は？ ARCと同様に、発行されたクレジットに対して、発行の通信コストははるかに遅くなることが予想されます。当社の実装は、これを裏付けています。ただし、ARCとactには、興味深いパフォーマンスの違いがいくつかあります。発行はARCよりもはるかに安価ですが、請戻はその逆です。</p>
+	<p>現状その答えは、それぞれの段階でZKPを使用して証明する必要があることに大きく関係しています。例えば、アクティブな復元中、クライアントは、カウンター$C$が希望の範囲内にあることを（ゼロ知識で）証明します。つまり、$0 \leq C \leq N$です。証明サイズは $\log_{2} N$程度で、メッセージサイズが大きくなります。現在のバージョンでは、ARCの償還には範囲証明は含まれていませんが、<a href="http://mailarchive.ietf.org/arch/msg/privacy-pass/A3VHUdHqhslwBzYEQjcaXzYQAxQ" target="_blank" rel="noopener noreferrer"><u>将来のバージョン</u></a>で範囲証明が追加される可能性があります。一方、ARCの発行時にクライアントとサーバーが証明する必要があるステートメントは、ARCのプレゼンテーションよりも少し複雑で、このことが実行時の違いを引き起こします。</p>
+	<p>匿名認証情報の利点は、前述のように、発行が一度で済むことです。サーバーがコストを評価する際、すべての発行コストとすべての検証コストを考慮します。現在、認証情報のコストのみを考慮すると、サーバーは匿名の認証情報の提示を検証するよりもトークンを発行し検証する方が安価です。</p>
+	<p>複数の匿名認証情報の利点は、発行者が$N$トークンを生成する代わりに、計算の大部分がクライアントにオフロードされることです。これは、より限定的です。レイテンシーバインディングにより、複数のオリジン/ネームスペースで動作することができ、キーローテーションからの有効期限を相互に示す範囲証明、および動的なレート制限を提供するための払い戻しが可能になります。現在のアプリケーションは、シングルユーストークンベースのスキームの限界によって、それらが提供する効率性よりも大きな影響を受けています。このギャップを埋めることが可能かどうかを確認するために、エキサイティングな分野のように思えます。</p>
+	<div class="flex anchor relative">
+		<h2 id="managing-agents-with-anonymous-credentials">匿名認証情報によるエージェントの管理</h2>
+		<a href="https://blog.cloudflare.com/#managing-agents-with-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントの管理には、ARCとCTの両方の機能が必要になるかもしれません。</p>
+	<p>ARCには、レート制限をサポートし、通信効率が高く、レイテンシーバインディングをサポートするなど、当社が必要とする機能の多くがすでに備えられています。主な欠点は、一度ARC認証情報が発行されると取り消すことができないことです。悪意のあるユーザーは、望むオリジンに対して常にN件のリクエストを行うことができます。</p>
+	<p>ARCとブラインド署名（またはVOPRF）を組み合わせることで、限定的な形式の取り消しを許可できます。ARC認証情報の提示には、プライバシーパス トークンが付属します。提示が成功すると、クライアントには、次のプレゼンテーション時に使用できる別のプライバシーパス トークンが発行されます。認証情報を失効させるために、サーバーはトークンを再発行しません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EiHmkbLef6kXsQU473fcX/d1d4018eaf2abd42b9690ae5d01494dc/image1.png" alt="" class="kg-image" width="1999" height="1767" loading="lazy">
+	</figure>
+	<p>このスキームは既にかなり有用です。ただし、これにはいくつかの重要な制限があります。</p>
+	<ul>
+		<li>
+			<p>オリジン間でのパラレルプレゼンテーションは不可能です。クライアントは、2番目のオリジンへのリクエストを開始する前に、1つのオリジンへのリクエストが成功するのを待たなければなりません。</p>
+		</li>
+		<li>
+			<p>取り消しは、オリジンごとではなく<i>グローバル</i>です。つまり、認証情報は提示されたオリジンだけでなく、提示可能なすべてのオリジンから取り消されます。これは、場合によっては望ましくないものではないかと思います。たとえば、リクエストがその<code>robots.txt</code>ポリシーに違反した場合、オリジンは取り消したいと思うかもしれません。ただし、同じリクエストが他のオリジンで受理されている可能性もあります。 </p>
+		</li>
+	</ul>
+	<p>この設計のより基本的な制限は、取り消すという決定は単一のリクエスト、つまり、認証情報が提示されたリクエストに基づいてのみ行えるということです。1つのリクエストに基づいてユーザーをブロックすることは、危険な場合があります。実際には、攻撃パターンは多くのリクエストにわたってのみ生じる場合があります。CTのステート性は、少なくともこの種の防御の基本的な形態を可能にします。次のようなスキームを考えてみましょう。</p>
+	<ul>
+		<li>
+			<p><b>発行: </b>クライアントに、プレゼンテーション制限$N=1$でARCが発行されます。</p>
+		</li>
+		<li>
+			<p><b>プレゼンテーション：</b></p>
+			<ul>
+				<li>
+					<p>クライアントが初めてARC認証情報をオリジンに提示する時に、サーバーは有効な初期状態とともにCT認証情報を発行します。</p>
+				</li>
+				<li>
+					<p>クライアントが、有効なステート（例：クレジットカウンターが0より大きい）とともにCTを提示する場合、オリジンは次のいずれかを行います：</p>
+					<ul>
+						<li>
+							<p>それにより、クレデンシャルが取り消されます。リクエストが攻撃の一部であるという高い確信が持てる場合にのみ、または、</p>
+						</li>
+						<li>
+							<p>リクエストを処理するために消費されたリソースの量だけACKクレジットを削減するために、状態が更新された新しいactを発行する。</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>良性のリクエストであれば、状態を大きく変更することはありませんが（仮にいたとしても）、疑わしいリクエストは、ユーザーをレート制限にはるかに速く近づけるように状態に影響を与えるかもしれません。</p>
+	<div class="flex anchor relative">
+		<h2 id="demo">デモ</h2>
+		<a href="https://blog.cloudflare.com/#demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このアイディアが実際にどのように機能するかを確認するために、<a href="https://developers.cloudflare.com/agents/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>モデルコンテキストプロトコル</u></a>を使用した例を見てみましょう。<a href="https://developers.cloudflare.com/agents/model-context-protocol/tools" target="_blank" rel="noopener noreferrer"><u>以下のデモは、MCPツールを使用して構築されています。</u></a>ツールとは、AIエージェントが能力を拡張するために呼び出すことができる拡張機能のことです。リリース時にMCPクライアントに統合する必要はありません。これは、匿名認証情報の素晴らしい簡単なプロトタイピング手段を提供します。</p>
+	<p>ツールは、MCP互換のインターフェイスを介してサーバーから提供されます。こうしたMCPサーバーの構築方法については、<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>以前のブログ</u></a>で詳しくご紹介しています。</p>
+	<p>ピザの文脈で言えば、バウチャーを提供するピザ屋のようなものです。各バウチャーでピザ3原則が採用されます。設計を欺くと、チャットアプリケーション内の統合は次のようになります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WD5MYoSMYGyRW2biwe6j4/bde101967276a72d48d9e494a23db5fa/image5.png" alt="" class="kg-image" width="1104" height="627" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SEqaVpwFxS1D21oyjjbN8/80dde2484f43c15e206ecfda991c286a/image9.png" alt="" class="kg-image" width="1106" height="630" loading="lazy">
+	</figure>
+	<p>最初のパネルは、MCPサーバーによって公開されたすべてのツールを示しています。2つ目は、これらのツールを呼び出すエージェントによって実行されるインタラクションを示したものです。</p>
+	<p>このようなフローがどのように実装されるかを調べるために、MCPツールを作成し、MCPサーバーで提供し、<a href="https://modelcontextprotocol.io/docs/tools/inspector" target="_blank" rel="noopener noreferrer"><u>MCPインスペクター</u></a>を使用して手動で呼び出しを調整してみましょう。</p>
+	<p>MCPサーバーは次の2つのツールを提供する必要があります：</p>
+	<ul>
+		<li>
+			<p><code>3つのリクエストに有効なact認証情報を発行するact-issue。</code>ここで使用するコードは、IETF草案の旧バージョンで、いくつかの制限があります。</p>
+		</li>
+		<li>
+			<p><code>act-redeemは、ローカル認証情報のプレゼンテーションを行い、ピザメニューをフェッチします。</code></p>
+		</li>
+	</ul>
+	<p>まず、<code>法を実行します</code>。この段階で、エージェントに対して<u>OAuthフロー</u>を実行したり、内部認証エンドポイントを取得したり、動作証明を計算したりするように依頼できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sLS7jMfTHPjVW5vMvsTWX/2d2b10fdb12c64f0e33fee89e09eab85/image10.png" alt="" class="kg-image" width="1013" height="474" loading="lazy">
+	</figure>
+	<p>これにより、オリジンに対して費やす3クレジットが得られます。<code>次に、act-redeeを実行し、</code></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YTc0Wohrsqw3hizAOmJjU/4534cccbc490ad0aa09522a3875693af/image8.png" alt="" class="kg-image" width="1006" height="460" loading="lazy">
+	</figure>
+	<p>Etvoilé.再度実行すると、クレジットが1つ少ないことがわかります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a0zmBfl46hX33hWoXyGyX/86649d9f435562c95a85ec72fbf33022/image3.png" alt="" class="kg-image" width="1017" height="472" loading="lazy">
+	</figure>
+	<p>ご自身でテストしてみてください。こちらに<a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo" target="_blank" rel="noopener noreferrer"><u>ソースコード</u></a>があります。MCPサーバーは、<a href="https://github.com/modelcontextprotocol/rust-sdk" target="_blank" rel="noopener noreferrer"> <u>Rust</u></a> で記述され、<a href="https://github.com/SamuelSchlesinger/anonymous-credit-tokens/stargazers" target="_blank" rel="noopener noreferrer"><u>ACT rust</u></a> ライブラリと統合されています。<a href="https://act-client-demo.cloudflareresearch.com" target="_blank" rel="noopener noreferrer"><u>ブラウザベースのクライアント</u></a>も同様に動作します。ご覧ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="moving-further">さらなる移動</h2>
+		<a href="https://blog.cloudflare.com/#moving-further" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この記事では、レート制限エージェントのトラフィックに対する具体的なアプローチを紹介しました。クライアントの完全制御権があり、ユーザーのプライバシーを保護するために構築されています。匿名認証情報に関する新しい標準を使用し、MCPと統合され、Cloudflare Workersに容易にデプロイできます。</p>
+	<p>私たちは順調に進んでいますが、まだ疑問が残っています。以前にも触れたように、ARCとACTの両方の注目すべき制限は、これらが<i>プライベートに検証可能</i>であることです。つまり、発行者とオリジンはそれぞれ認証情報を発行および検証するために、プライベートキーを共有する必要があるのです。これが不可能なデプロイメントシナリオも存在するでしょう。幸いなことに、<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-bbs-signatures" target="_blank" rel="noopener noreferrer"><u>BBS署名仕様</u></a>がIETFを通過するように、<i>ペアリング</i>ベースの暗号を使用した場合への道筋もあるかもしれません。また、<a href="https://blog.cloudflare.com/pq-anonymous-credentials"><u>ポスト量子</u></a>への影響についても同時検討しています。</p>
+	<p>エージェントプラットフォーム、エージェント開発者、またはブラウザであれば、すべてのコードを<a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>で利用でき、実験のために利用できます。Cloudflareは、実際のユースケースを対象としたこのアプローチの検証に積極的に取り組んでいます。</p>
+	<p>現在、IETFとW3Cの中で仕様化と議論が行われています。これにより、プロトコルが公開され、専門家の参加を得られます。パフォーマンスとプライバシーのトレードオフや、オープンWebにデプロイするべき理由を明確化するためには、まだ改善が必要です。</p>
+	<p>当社を助けたいとお考えでしたら、来年度中に<a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>1,111名のインターンを採用し</u></a>、求人を<a href="https://www.cloudflare.com/careers/early-talent" target="_blank" rel="noopener noreferrer"><u>募集しています</u></a>。</p>
+</div>

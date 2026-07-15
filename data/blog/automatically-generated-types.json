@@ -1,16 +1,9 @@
 {
-	"author": {
-		"name": "Brendan Coll",
-		"url": "http://blog.cloudflare.com/author/brendan-coll/",
-		"sameAs": [
-			"https://twitter.com/_mrbbot"
-		]
-	},
+	"author": {},
 	"headline": "Automatically generating types for Cloudflare Workers",
-	"url": "http://blog.cloudflare.com/automatically-generated-types/",
+	"url": "https://blog.cloudflare.com/automatically-generated-types/",
 	"datePublished": "2021-11-16T13:58:45.000Z",
-	"dateModified": "2021-12-30T00:53:16.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-28.png",
-	"keywords": "Full Stack Week, Cloudflare Workers, Developers, Serverless",
+	"dateModified": "2026-07-15T13:33:49.434Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48ABG103BB9D8VZB84TED2.png",
 	"description": "Every time the Workers runtime code is built, a script runs over the public APIs and generates the Rust and TypeScript types as well as a JSON file containing an intermediate representation of the static types. The types are sent to the appropriate repositories and the JSON file is uploaded as well."
 }

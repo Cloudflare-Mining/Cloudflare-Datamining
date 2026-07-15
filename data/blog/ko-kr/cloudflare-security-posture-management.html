@@ -1,0 +1,248 @@
+<div class="mb2 gray5">9분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/cloudflare-security-posture-management">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-security-posture-management">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-security-posture-management">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-security-posture-management">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-security-posture-management">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-security-posture-management">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/cloudflare-security-posture-management">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-security-posture-management">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3988DHhLlFgPJVTDowhBl8/96e42aa3bb6f90882a8ecf4ce562f2cb/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>오늘날 빠르게 변화하는 디지털 환경에서 기업에서는 SaaS 애플리케이션 및 퍼블릭 클라우드 플랫폼부터 온프레미스 데이터 센터 및 하이브리드 설정에 이르기까지 점점 더 복잡해지는 환경을 관리하고 있습니다. 이러한 다양한 인프라 덕분에 유연성과 확장성이 제공되지만, 새로운 공격면이 생기기도 합니다.</p>
+	<p>비즈니스 연속성과 보안 요구 사항을 모두 지원하려면 “보안은 <a href="https://blog.cloudflare.com/welcome-to-security-week-2025/#how-can-we-help-make-the-internet-better"><u>사후 대응형에서 예측형으로</u></a> 진화해야 합니다”. 보안 상태를 양호하게 유지하려면 보안 방어 태세를 모니터링하고 강화하여 위험을 식별하고, 규제 준수를 보장하며, 진화하는 위협으로부터 보호해야 합니다. 이제 Cloudflare의 최신 기능을 사용하여 SaaS 및 웹 애플리케이션 전반에 걸쳐 건전한 상태를 유지할 수 있습니다. 이는 모든 보안팀의 궁극적인(매일하는) 질문인 <i>자산과 문서는 얼마나 잘 보호되고 있는가</i>에 대한 해답입니다.</p>
+	<p>예측형 보안 상태는 다음과 같은 주요 구성 요소에 의존합니다.</p>
+	<ul>
+		<li>
+			<p>모든 자산 및 문서의 실시간 검색 및 인벤토리</p>
+		</li>
+		<li>
+			<p>지속적인 자산 인식 위협 감지 및 위험 평가</p>
+		</li>
+		<li>
+			<p>우선순위 수정 제안으로 보호 강화</p>
+		</li>
+	</ul>
+	<p>오늘 Cloudflare에서는 SaaS 및 웹 애플리케이션 전반에서 이러한 주요 구성 요소를 구축하는 방법과 이를 사용하여 비즈니스의 보안 상태를 관리하는 방법을 공유합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="your-security-posture-at-a-glance">보안 상태 한눈에 보기</h3>
+		<a href="https://blog.cloudflare.com/#your-security-posture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 전역 네트워크에 <a href="https://developers.cloudflare.com/reference-architecture/architectures/security/#using-cloudflare-to-protect-your-business" target="_blank" rel="noopener noreferrer"><u>연결한</u></a> 애플리케이션과 관계없이 Cloudflare에서는 <a href="https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency" target="_blank" rel="noopener noreferrer"><u>정기적</u></a>으로 각 애플리케이션과 관련된 위험 및 잘못된 구성을 적극적으로 스캔합니다. 식별된 위험 및 잘못된 구성은 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center" target="_blank" rel="noopener noreferrer"><u>Security Center</u></a>의 대시보드에 인사이트로 표시됩니다.</p>
+	<p>인사이트가 심각도, 위험 유형, 해당 Cloudflare 솔루션별로 그룹화되어 있으므로 집중하고 싶은 부분을 다양한 각도에서 살펴볼 수 있습니다. 해당되는 경우, 선택한 인사이트 유형에 대해 <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls" target="_blank" rel="noopener noreferrer"><u>최소 TLS 버전</u></a> 을 1.2로 설정하는 등 <a href="https://developers.cloudflare.com/ssl/reference/protocols/#decide-which-version-to-use" target="_blank" rel="noopener noreferrer"><u>PCI DSS에서 권장하는</u></a> 원클릭 해결 방법이 제공됩니다. 이처럼 단순하므로 조직 전체에 배포되는 점점 더 많은 자산을 관리하는 고객들이 높이 평가합니다.</p>
+	<p>문제 해결 시간을 더욱 단축하기 위해, 최근 Cloudflare에서는 Cloudflare 대시보드의 <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>역할 기반 액세스 제어(RBAC)</u></a>를 <a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>Security Insights</u></a>에 추가했습니다. 이제 개별 보안 실무자는 자신의 역할과 관련된 인사이트를 정제된 관점에서 액세스할 수 있습니다. <a href="https://developers.cloudflare.com/fundamentals/setup/manage-members/roles" target="_blank" rel="noopener noreferrer"><u>관리자 역할</u></a>을 하는 사용자(예: CSO)는 모든 인사이트에 액세스하고 모든 인사이트를 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bnaU55Fi2z9bxUxl5pf7o/818043fbba2ae13c5a7c4cb25e5e7ebc/1.png" alt="A screenshot of the Security Insights page where multiple insights are grouped by such severity and type of risks." class="kg-image" width="1999" height="1541" loading="lazy">
+	</figure>
+	<p>저희는 계정 전반에 대한 보안 인사이트와 더불어 SaaS 및 웹 애플리케이션의 해당 보안 구성에 가까운 상태 개요도 제공합니다. 각각에 대해 자세히 알아보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-saas-applications">SaaS 애플리케이션 보안</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>중앙 집중식 상태 관리가 없으면 SaaS 애플리케이션은 마치 미국 서부의 보안 상태처럼 느껴질 수 있습니다. SaaS 애플리케이션에는 파일, 데이터베이스, 작업 공간, 디자인, 인보이스, 회사 운영에 필요한 모든 것 등 중요한 정보가 풍부하게 포함되어 있지만, 제어 능력이 벤더가 설정해놓은 상태로 제한되어 가시성이 떨어지고 사용자 지정 옵션이 줄어듭니다. 또한 팀원들은 파일을 공개적으로 공유하거나, 비준수 데이터베이스에 PII를 추가하거나, 타사 통합에 대한 액세스 권한을 부여하는 등 구성 드리프트 및 데이터 노출을 유발할 수 있는 콘텐츠를 지속해서 생성하고 업데이트하며 삭제하고 있습니다. Cloudflare를 사용하면 하나의 대시보드에서 SaaS 애플리케이션 제품군에 대한 가시성을 확보할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="posture-findings-across-your-saas-fleet">SaaS 제품군 전반에 걸친 상태 조사 결과</h4>
+		<a href="https://blog.cloudflare.com/#posture-findings-across-your-saas-fleet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>계정 전반에 걸친 보안 인사이트에서 잠재적인 SaaS 보안 문제에 대한 인사이트를 검토할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JRKfYveWKayrMxdLxLvDB/1c3383209462917214ad9dc6584e98fe/2.png" alt="A screenshot of the Security Insights page where examples of SaaS issues types are highlighted with corresponding severity." class="kg-image" width="1999" height="972" loading="lazy">
+	</figure>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/applications/casb" target="_blank" rel="noopener noreferrer"><u>클라우드 액세스 보안 브로커(CASB)</u></a>를 통해 잘못된 구성, 위험, 실패를 철저히 검토하여 SaaS 제품군 전반에서 모범 사례를 충족할 수 있도록 선택할 수 있습니다. 다음을 포함하되 이에 국한되지 않는 풍부한 보안 정보를 확인할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>공개적으로 이용 가능하거나 외부에서 공유된 파일</p>
+		</li>
+		<li>
+			<p>읽기 권한이나 편집 액세스 권한이 있는 타사 애플리케이션</p>
+		</li>
+		<li>
+			<p>알 수 없거나 익명인 사용자 액세스</p>
+		</li>
+		<li>
+			<p>자격 증명이 노출된 데이터베이스</p>
+		</li>
+		<li>
+			<p>2단계 인증을 사용하지 않는 사용자</p>
+		</li>
+		<li>
+			<p>비활성 사용자 계정</p>
+		</li>
+	</ul>
+	<p>SaaS 애플리케이션 내에 저장된 문서를 쉽게 검색하고 탐색할 수 있는 <i>Posture Findings </i> 페이지를 탐색할 수도 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6skScbapgiG31w5qRoTCjG/ba3b069de8cce0c0bfcb9f011a2df954/3.png" alt="A screenshot of the Posture Findings page where examples of SaaS insights types are highlighted with corresponding severity and instances of matches." class="kg-image" width="1726" height="970" loading="lazy">
+	</figure>
+	<p>또한 환경에서 구성 드리프트를 방지하는 정책을 생성할 수 있습니다. 예방 기반 정책을 수립하면 보안 운영팀의 알림 피로를 줄이는 동시에 안전한 구성과 규제 준수 표준을 유지하는 데 도움이 되며, 이러한 정책에 따라 중요한 데이터의 부적절한 이동이나 유출을 방지할 수 있습니다. 환경 전반에 걸쳐 제어 및 가시성을 통합하면 규제 대상 데이터 클래스를 쉽게 잠그고, 로그를 통해 상세한 감사 추적을 유지하며, 보안 상태를 개선하여 침해 위험을 줄일 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works-new-real-time-saas-documents-discovery">작동 방식: 새로운 실시간 SaaS 문서 검색</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works-new-real-time-saas-documents-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>SaaS 보안 상태 정보를 고객에게 제공하려면 다양한 플랫폼에서 방대한 양의 데이터를 수집해야 합니다. SaaS 애플리케이션에 있는 모든 문서(파일, 디자인 등)의 보안을 유지하려면 해당 문서의 구성에 대한 정보를 수집해야 합니다. 이러한 정보에는 공개적으로 공유되는지, 타사 애플리케이션에서 액세스할 수 있는지, <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>다단계 인증(MFA)</u></a>이 활성화되어 있는지 등이 포함됩니다.&nbsp;</p>
+	<p>이전에 저희는 SaaS API에서 데이터를 가져오는 크롤러로 이 작업을 수행했습니다. 하지만 더 큰 데이터 세트로 작업할 때 SaaS 벤더의 레이트 리미팅 문제로 어려움을 겪었습니다. 따라서 벤더가 허용하는 대로 배치 작업을 수행하고 스캔 양을 늘리거나 줄여야 했습니다. 이로 인해 오래된 결과가 도출되고 수정이 번거롭고 불분명해졌습니다. 예를 들어, Cloudflare에서는 권한이 제거된 후에도 잠시 동안 파일이 여전히 공개적으로 공유된다고 보고하여 고객에게 혼란을 초래하곤 했습니다.</p>
+	<p>이 문제를 해결하기 위해 Cloudflare에서는 새로운 보안 발견 사항, 업데이트된 자산, 벤더의 중요 경고 등의 환경 변화가 발생하면 이에 대응하는 동적 실시간 데이터 수집 파이프라인을 업그레이드했습니다. Cloudflare에서는 Microsoft 자산 검색 및 <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/microsoft-365" target="_blank" rel="noopener noreferrer"><u>상태 조사 결과</u></a>로 시작하여 Microsoft Admin Center, OneDrive, Outlook, SharePoint 구성에 대한 실시간 인사이트를 제공합니다. 향후에도 추가적인 SaaS 벤더에 대한 지원을 빠르게 확대할 예정입니다.</p>
+	<div class="flex anchor relative">
+		<h5 id="listening-for-update-events-from-cloudflare-workers">Cloudflare Workers로부터의 업데이트 이벤트 수신 대기</h5>
+		<a href="https://blog.cloudflare.com/#listening-for-update-events-from-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers는 벤더 웹후크의 진입점 역할을 하여 외부 서비스로부터의 자산 변경 알림을 처리합니다. 그 워크플로우는 다음과 같이 진행됩니다.</p>
+	<ul>
+		<li>
+			<p><b>웹훅 리스너:</b> 초기의 Worker는 벤더로부터 자산 변경 메시지를 수신하는 웹훅 리스너 역할을 합니다.</p>
+		</li>
+		<li>
+			<p><b>데이터 저장 및 대기:</b> 메시지를 받으면 Worker는 변경 알림의 원시 페이로드를 지속성을 위해 Cloudflare R2에 업로드하고, 원시 자산 변경 전용 Cloudflare Queue에 게시합니다.</p>
+		</li>
+		<li>
+			<p><b>Transformation Worker:</b> 원시 자산 변경 대기열에 소비자로 바인딩된 두 번째 Worker는 수신 메시지를 처리합니다. 이 Worker는 원시 벤더별 데이터를 CASB에 적합한 일반 형식으로 변환합니다. 변환된 데이터는 다음과 같이 처리됩니다.</p>
+			<ul>
+				<li>
+					<p>향후 참조를 위해 Cloudflare R2에 저장.</p>
+				</li>
+				<li>
+					<p>변환된 메시지를 위해 지정된 다른 Cloudflare Queue에 게시.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h5 id="casb-processing-consumers-crawlers">CASB 처리: 소비자 및 크롤러</h5>
+		<a href="https://blog.cloudflare.com/#casb-processing-consumers-crawlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>변환된 메시지가 CASB 계층에 도달하면 다음과 같은 추가 처리가 이루어집니다.</p>
+	<ul>
+		<li>
+			<p><b>소비자 폴링:</b> CASB에는 변환된 메시지 대기열을 폴링하는 소비자가 있습니다. 메시지를 수신하면 처리에 필요한 관련 핸들러가 결정됩니다.</p>
+		</li>
+		<li>
+			<p><b>크롤러 실행:</b> 그런 다음 핸들러가 메시지를 적절한 크롤러에 매핑하고, 이 크롤러는 벤더 API와 상호 작용하여 최신 자산 세부 정보를 가져옵니다.</p>
+		</li>
+		<li>
+			<p><b>데이터 스토리지:</b> 검색된 자산 데이터는 CASB 데이터베이스에 저장되므로 보안 및 규제 준수 검사를 위해 액세스할 수 있습니다.</p>
+		</li>
+	</ul>
+	<p>이러한 개선을 통해 현재 저희는 초당 10~20개의 Microsoft 업데이트 또는 매일 864,000~172만 개의 업데이트를 처리하여 고객에게 환경에 대한 매우 빠른 가시성을 제공하고 있습니다. 앞으로 몇 달 안에 다른 SaaS 벤더로 확장될 예정입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-web-applications">웹 애플리케이션 보안</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 애플리케이션 보호에 있어 고유한 과제는 모든 경우에 적합한 보안 솔루션은 없다는 것입니다. 자산 인식 상태 관리 솔루션은 보편적인 보안 솔루션과 고유한 비즈니스 요구 사항 간의 격차를 메우고 보안팀에 중요한 정보를 보호하기 위한 맞춤형 권장 사항을 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="posture-overview-from-attacks-to-threats-and-risks">공격부터 위협 및 위험까지의 상태 개요</h4>
+		<a href="https://blog.cloudflare.com/#posture-overview-from-attacks-to-threats-and-risks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘부터 모든 Cloudflare 고객은 온보딩된 각 도메인에 맞춤화된 새로운 랜딩 페이지인 보안 개요에 액세스할 수 있습니다. 이 페이지에서는 모든 웹 애플리케이션에 대한 보안 제안이 집계되고 우선순위가 지정됩니다.</p>
+	<ol>
+		<li>
+			<p>즉각적인 주의가 필요한 (지속적인) 공격 감지</p>
+		</li>
+		<li>
+			<p>지난 7일 동안 프록시된 모든 트래픽의 처리(완화, Cloudflare에서 제공, 원본에서 제공)</p>
+		</li>
+		<li>
+			<p>위협을 감지하는 현재 활성 상태인 보안 모듈 요약</p>
+		</li>
+		<li>
+			<p>단계별 가이드를 통한 보안 상태 개선 방법 제안</p>
+		</li>
+		<li>
+			<p>가장 적극적이고 최근에 업데이트된 보안 규칙 살펴보기</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YhmhUZbZbAIZryUuTodpV/2b9563ac7768348bb4be46abc5fef7b3/4.png" alt="Visual summary of the new Security Overview page with 5 sections listed in order" class="kg-image" width="1999" height="1732" loading="lazy">
+	</figure>
+	<p>이러한 맞춤형 보안 제안은 트래픽 프로필과 비즈니스 요구 사항을 기반으로 표시되며, 이는 프록시된 웹 자산을 검색하여 가능해집니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="discovery-of-web-assets">웹 자산 검색</h4>
+		<a href="https://blog.cloudflare.com/#discovery-of-web-assets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>산업이나 사용 사례와 관계없이, 많은 웹 애플리케이션에는 사용자 식별, 결제 정보 수락 등 유사한 기능이 필요합니다. 이러한 기능을 제공하는 자산을 검색함으로써, 저희는 표적 위협 감지를 구축하고 실행하여 이러한 자산을 심층적으로 보호할 수 있습니다.</p>
+	<p>예를 들어 마케팅 페이지와 로그인 페이지로 향하는 봇 트래픽은 비즈니스에 미치는 영향이 다릅니다. 마케팅 자료를 대상으로 콘텐츠 스크래핑이 발생할 수 있으며, 사용자는 이를 허용할 수도 있고 허용하지 않을 수도 있습니다. 반면, 로그인 페이지의 자격 증명 스터핑은 즉각적인 조치가 필요합니다.</p>
+	<p>웹 자산은 엔드포인트 목록으로 설명됩니다. 각각에 레이블을 지정하는 것이 비즈니스 목표를 정의하는 것입니다. 간단한 예로 경로 /<code>portal/login</code>에 대한 <code>POST</code> 요청을 들 수 있으며, 이는 사용자 인증을 위한 API를 설명할 가능성이 높습니다. 반면, <code>/portal/login</code> 경로에 대한 <code>GET</code> 요청은 실제 로그인 웹 페이지를 나타냅니다.</p>
+	<p>엔드포인트의 비즈니스 목표를 설명하려면 레이블이 필요합니다. 최종 사용자에게 서비스를 제공하는 <code>/portal/login</code> 엔드포인트와 직원이 사용하는<code> /api/admin/login</code> 엔드포인트에 대한 <code>POST</code> 요청은 모두 동일한 <code>cf-log-in</code><a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#managed-labels" target="_blank" rel="noopener noreferrer"><u>관리형 레이블</u></a>을 사용하여 레이블을 지정할 수 있으며, 이를 통해 Cloudflare에서는 사용자 이름과 비밀번호가 이러한 엔드포인트로 전송될 것으로 예상됨을 알 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jFh9mc7hyryXHIqeQwS9U/25ba022282b43cff9f09700d0ae81c76/5.png" alt="A screenshot of Cloudflare dashboard’s Endpoint Management overview which lists endpoints and labels attached to them" class="kg-image" width="1999" height="1107" loading="lazy">
+	</figure>
+	<p>API Shield 고객은 이미 <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels" target="_blank" rel="noopener noreferrer"><u>엔드포인트 레이블 지정</u></a>을 사용할 수 있습니다. 2025년 2분기 초에는 세 가지 레이블 <code>cf-log-in</code>, <code>cf-sign-up</code>, <code>cf-rss-feed</code>를 시작으로 레이블 검색 및 제안 기능을 추가할 예정입니다. 다른 모든 고객은 이들 레이블을 <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank" rel="noopener noreferrer"><u>저장된 엔드포인트</u></a>에 수동으로 추가할 수 있습니다. 아래에서 설명하는 한 가지 예는 가입 시 일회용 이메일을 사용하지 못하도록 하는 것입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="always-on-threat-detection-and-risk-assessment">상시 위협 감지 및 위험 평가</h4>
+		<a href="https://blog.cloudflare.com/#always-on-threat-detection-and-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h5 id="use-case-driven-threat-detection">사용 사례 기반 위협 감지</h5>
+		<a href="https://blog.cloudflare.com/#use-case-driven-threat-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희가 고객들에게서 들은 바로는 생성형 AI에 대한 관심이 높아짐에 따라 이 새로운 기술을 보호하면서 혁신을 방해하지 않도록 지원이 필요하다고 합니다. LLM 기반 서비스를 검색할 수 있으면 프롬프트 검사, 토큰 사용에 따른 프롬프트 비율 제한 등 특정 기술과 관련된 보안 제어를 세부적으로 조정할 수 있습니다. 별도의 Security Week 블로그 게시물에서 Cloudflare AI용 방화벽 구축 방법과 생성형 AI 워크로드를 쉽게 보호하는 방법을 공유하겠습니다.</p>
+	<p>다양한 공격 벡터를 포괄하는 계정 사기 감지는 Cloudflare에서 2025년에 중점을 둘 또 다른 핵심 영역입니다.</p>
+	<p>많은 로그인 페이지와 가입 페이지에서 <a href="https://www.cloudflare.com/learning/bots/how-captchas-work" target="_blank" rel="noopener noreferrer"><u>캡차</u></a> 솔루션은 일반적으로 바람직하지 않은 작업은 봇만 수행한다고 가정하고 사람만 통과하도록 하는 데 사용됩니다. 오늘날 대부분의 시각적 CAPTCHA 퍼즐은 <a href="https://arstechnica.com/ai/2024/09/ai-defeats-traffic-image-captcha-in-another-triumph-of-machine-over-man" target="_blank" rel="noopener noreferrer"><u>AI가 쉽게 풀 수 있다</u></a>는 사실은 제쳐두더라도 이러한 접근 방식으로는 대부분 계정 사기 벡터의 <i>근본 원인</i>을 효과적으로 해결할 수 없습니다. 예를 들어, 사람들이 일회용 이메일을 사용해 일회용 계정에 가입하고 가입 프로모션을 이용하는 경우가 있습니다.</p>
+	<p>이러한 사기성 가입 문제를 해결하기 위해 현재 개발 중인 보안 규칙을 아래와 같이 배포하여 요청자가 자동화되었는지 여부에 관계없이 일회용 이메일을 사용자 식별자로 사용하는 모든 시도를 차단할 수 있습니다. 기존 또는 향후 <code>cf-log-in</code> 및 <code>cf-sign-up</code> 레이블이 지정된 엔드포인트는 모두 사용자 식별이 필요하므로 이 단일 규칙으로 보호됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sJzdnjp9UWrp35Hd3SsGB/db0959b457c555a4a1e93e5515a1e61f/6.png" alt="A screenshot of a security rule configured to block requests when disposal email is detected using a tentative field" class="kg-image" width="1999" height="619" loading="lazy">
+	</figure>
+	<p>빠르게 확장되고 있는 저희 사용 사례 기반 위협 감지 기능은 트래픽을 Cloudflare에 처음 온보딩한 순간부터 모두 기본적으로 실행됩니다 . 즉시 사용 가능한 감지 결과는 보안 분석을 통해 검토할 수 있으므로 정보에 입각한 결정을 신속하게 내릴 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h5 id="api-endpoint-risk-assessment">API 엔드포인트 위험 평가</h5>
+		<a href="https://blog.cloudflare.com/#api-endpoint-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API에는 자체적인 위험과 취약점이 있으며, 오늘 Cloudflare에서는 API Posture Management를 통해 7가지 새로운 위험 스캔 방법을 제공합니다. API Shield의 이 새로운 기능은 API가 공격을 받기 전에 보안 문제를 식별하고 조기에 수정하여 위험을 줄이는 데 도움이 됩니다. API는 일반적으로 다양한 백엔드 서비스로 구성되므로 보안팀에서는 취약한 백엔드 서비스를 정확히 찾아내어 개발팀에서 식별된 문제를 해결할 수 있도록 해야 합니다.</p>
+	<p>Cloudflare의 새로운 API 상태 관리 위험 스캔이 바로 그 역할을 합니다. 사용자는 중요한 데이터 노출, 인증 상태, <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>손상된 개체 수준 권한 부여(BOLA)</u></a> 공격 등 다양한 취약점에 노출된 API 엔드포인트를 신속하게 파악할 수 있습니다.</p>
+	<p>인증 상태는 새로운 시스템에서 볼 수 있는 위험 검사 중 하나입니다. API 인증이 시행되는 것으로 가정되지만 실제로는 손상된 경우 중요한 데이터가 위험에 처할 수 있으므로 저희는 먼저 이 기능에 집중했습니다. <a href="https://developers.cloudflare.com/api-shield/security/authentication-posture" target="_blank" rel="noopener noreferrer"><u>Authentication Posture</u></a>는 고객이 API에 대한 인증 오류 구성과 해당 오류에 대한 알림을 식별하는 데 도움이 됩니다. 이는 API에 대한 성공적인 요청을 스캔하고 인증 상태를 기록하는 방식으로 이루어집니다. API Shield는 매일 트래픽을 스캔하고 추가 검토를 위해 인증이 누락되거나 혼합된 API 엔드포인트에 레이블을 지정합니다.</p>
+	<p>API Shield에서 세션 ID를 구성한 고객은 API Shield에서 새로운 위험 스캔 레이블 및 엔드포인트별 인증 세부 정보를 확인할 수 있습니다. 보안팀에서는 이 세부 정보를 개발팀에 전달하여 손상된 인증을 수정할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21jVSrwsgfjKlyxyOZ5Qye/7963d95ea28a41f5e2b4f331ab5d5060/7.png" alt="A screenshot of API Shield highlighting new authentication detail widgets on the per-endpoint details page. The authentication widget shows a mixed-authentication status with 95.1% of successful requests being authenticated, meaning that 4.9% of requests could be bypassing authentication security." class="kg-image" width="1999" height="979" loading="lazy">
+	</figure>
+	<p>오늘부터 인증 상태, 중요한 데이터, 보호가 부족한 API, BOLA 공격, 그리고 오류, 대기 시간, 응답 크기에 걸친 API 성능에 대한 이상을 검사하기 위한 <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels" target="_blank" rel="noopener noreferrer"><u>스캔</u></a>을 시작합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="simplify-maintaining-a-good-security-posture-with-cloudflare">Cloudflare 로 우수한 보안 상태 유지 간소화</h3>
+		<a href="https://blog.cloudflare.com/#simplify-maintaining-a-good-security-posture-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>빠르게 변화하는 환경에서 우수한 보안 상태를 유지하려면 복잡성을 단순화하는 혁신적인 솔루션이 필요합니다. 하나의 플랫폼을 통해 공공 및 사설 IT 환경 모두의 위협과 위험을 지속해서 평가할 수 있는 기능을 통합하는 것은 건전한 보안 상태를 유지하려는 고객의 노력을 지원하는 첫 번째 단계입니다.</p>
+	<p>저희는 보안 인사이트와 제안의 관련성을 더욱 높이고 작업의 우선 순위를 더 잘 정할 수 있도록 돕기 위해 Cloudflare의 위협 환경에 대한 글로벌 뷰를 통합하는 것을 고려하고 있습니다. 이를 통해 현재 업계에 대한 가장 큰 위협이 무엇인지, 공격자가 노리는 것이 무엇인지 등 추가적인 관점을 얻을 수 있습니다. 올해 말에 추가 업데이트가 있을 예정이니 기대해 주세요.</p>
+	<p>아직 온보딩하지 않았다면 지금 바로 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center" target="_blank" rel="noopener noreferrer"><u>SaaS 및 웹 애플리케이션을 Cloudflare에 온보딩</u></a>하여 귀사의 보안 상태를 개선하는 방법에 대한 즉각적인 인사이트를 얻어보세요.</p>
+</div>

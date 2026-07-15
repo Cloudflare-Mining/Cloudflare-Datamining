@@ -1,0 +1,152 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/conversational-search-with-nlweb-and-autorag">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QmpZuLWnl5dAxnNQZ7Drt/b37179e060f7f3f3416ca1767740f84f/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>出版業者やコンテンツクリエイターは、ユーザーがWebサイトのコンテンツをナビゲートするために、従来のキーワードベースの検索に依存してきました。しかし、従来の検索は時代遅れの前提に基づいて構築されており、ユーザーは意図を示すためにキーワードを入力すると、サイトは最も関連性の高い結果へのリンクのリストを返すのです。訪問者をクリックして、ページをスキミングし、探している答えをまとめるのは訪問者次第です。</p>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>AI</u></a>は期待をリセットし、そのパラダイムは壊れてきています。情報の検索方法が根本的に変化したのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="your-new-type-of-visitors">新しいタイプの訪問者</h2>
+		<a href="https://blog.cloudflare.com/#your-new-type-of-visitors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーは、旧来の方法でWebサイトを検索したくありません。Copilot、Claude、ChatGPTなどのAIシステムとの対話に慣れており、質問するだけで答えが得られます。私たちは検索エンジンから回答エンジンへと移行しました。</p>
+	<p>同時に、WebサイトにはAIエージェントという新しいクラスの訪問者が存在します。エージェントもキーワード検索で同じ問題を抱えています。キーワードクエリを発行し、リンクをクリックして、ページをスクレイピングして回答をつなぎ合わせなければなりません。しかし、それ以上の必要性があります。質問をし、Webサイト全体で信頼できる回答を得るための、構造化された方法です。つまり、Webサイトは情報を正確に取得できるように、信頼しているエージェントに制御されたアクセスを許可する方法が必要なのです。</p>
+	<p>Webサイトの所有者は、この変化に貢献する方法を必要としています。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-search-model-for-the-agentic-web">エージェンティックWebの新しい検索モデル</h2>
+		<a href="https://blog.cloudflare.com/#a-new-search-model-for-the-agentic-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIの期待がリセットされたとしたら、次に来るのは？人とエージェントの両方に対応するためには、Webサイトでは、キーワード検索の段階的なアップグレード以上のものが必要です。コンテンツへの会話型アクセスをWeb自体の一部にするモデルが必要です。</p>
+	<p>それこそが、私たちが提供したいものです。オープンスタンダード（NLWeb）とインフラストラクチャ（AutoRAG）を組み合わせることで、あらゆるWebサイトがAI対応を簡単に行えるようにするのです。</p>
+	<p><a href="https://news.microsoft.com/source/features/company-news/introducing-nlweb-bringing-conversational-interfaces-directly-to-the-web" target="_blank" rel="noopener noreferrer"><u>NLWeb</u></a>は、Microsoftが開発したオープンプロジェクトで、Webサイト上の自然言語クエリの標準プロトコルを定義しています。各NLWebインスタンスは、モデルコンテキストプロトコル（MCP）サーバーとしても動作します。Cloudflareはこの仕様を実現し、すべてのサイトがAIアプリのように機能し、ユーザーやエージェントが同様にコンテンツを自然に問い合わせできるようにすることを目標に、Microsoftと積極的に標準の拡張に協力しています。</p>
+	<p><a href="https://developers.cloudflare.com/autorag" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>、Cloudflareの管理された検索エンジンであるAutoRAGは、Webサイトを自動的にクロールし、コンテンツをR2に保存し、管理されたベクトルデータベースに埋め込むことができます。AutoRAGは、継続的な再クロールと再インデックスを行うことで、インデックスの新しい状態を維持します。モデルの推論と埋め込みにはWorkers AIを通じて提供することができます。各AutoRAGは、AIモデルの利用状況に関する<a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">観測可能性とインサイト</a>を提供できるAI Gatewayと組み合わされています。これにより、カスタムインフラストラクチャを管理する負担なく、会話型検索のための<a href="https://www.cloudflare.com/learning/ai/how-to-build-rag-pipelines" target="_blank" rel="noopener noreferrer">完全なマネージドパイプライン</a>が提供されます。</p>
+	<blockquote>
+		<p><i>「NLWebとAutoRAGを組み合わせることで、パブリッシャーは検索ボックスを超えることができ、Webサイト上の会話型インターフェースを簡単に作成、展開することができます。この統合により、ユーザーと信頼できるエージェントの両方にとって、すべてのWebサイトが簡単にAI対応になることになります。」</i>- RV Guha氏、NLWeb創設者、Microsoft社、CVP兼技術フェロー。</p>
+	</blockquote>
+	<p>これにより、パブリッシャーは新しい収益化モデルを手に入れることができると私たちは楽観的に考えています。</p>
+	<blockquote>
+		<p><i>「パブリッシャーが直面してきた課題は、AIがすでに試みられたビジネスモデルの崩壊を加速させるリスクと同様に、よく知られています。しかし、NLWebとAutoRAGにより、オーディエンスとの関係を良い方向にリセットする機会があります。より直接的出版社が所有・運営する（O&amp;O）環境へのエンゲージメントは、オーディエンスが出版社のブランドとボイスを評価することで、収益化の新たな可能性を意味します。これは業界全体のニーズをリセットするでしょう。」</i>– Joe Marche氏、Human Ventures社、ジェネラル＆ビルドパートナー</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="one-click-to-make-your-site-conversational">ワンクリックでサイトを対話型に</h2>
+		<a href="https://blog.cloudflare.com/#one-click-to-make-your-site-conversational" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>NLWebの標準をCloudflareのAutoRAGインフラストラクチャと組み合わせることで、あらゆるWebサイトに会話型検索を簡単に導入できるようにします。</p>
+	<p>AutoRAGでドメインを選択するだけで、セマンティッククエリーのためにサイトをクロールしてインデックス付けします。次に、アクセスレイヤーとして機能するCloudflare Workerをデプロイします。このWorkerは、<a href="https://github.com/nlweb-ai/NLWeb" target="_blank" rel="noopener noreferrer"><u>NLWebプロジェクト</u></a>によって定義されたNLWeb標準とUIを実装し、インデックス化されたコンテンツを人とAIエージェントの両方に公開します。
+
+		Workerには以下が含まれます：</p>
+	<ul>
+		<li>
+			<p><b>`/ask` エンドポイント：</b>会話型Web検索の提供方法について定義された標準。ルート `/` の会話UIと、`/snippet.html` の埋め込みプレビューをご覧ください。チャット履歴をサポートすることで、同じセッション内でクエリを互いに構築することができ、また、検索品質を向上させるための自動クエリデコンテキスト化が含まれます。</p>
+		</li>
+		<li>
+			<p><b>`/mcp` エンドポイント：</b>信頼できるAIエージェントが構造化されたアクセスのために接続できるMCPサーバーを実装します。</p>
+		</li>
+	</ul>
+	<p>このセットアップによって、サイトのコンテンツはすぐに2つの方法で利用可能になります。訪問者に提供できる会話型UIと、構造化されたMCPインターフェースを介して、信頼できるエージェントがあなたの条件に合わせて確実にサイトをクエリできるようになります。</p>
+	<p>さらに、NLWebプロジェクトの独自バージョンをデプロイしてホストしたい場合は、 <a href="https://github.com/nlweb-ai/NLWeb/blob/main/docs/setup-cloudflare-autorag.md" target="_blank" rel="noopener noreferrer"><u>NLWebインスタンス</u></a>を動作させる検索エンジンとしてAutoRAGを使用するオプションもあります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SM7rSQDhoR4fH5KgAJPD7/2266dc2e3c80f3fcc7f17014eb1d0cf1/image5.png" alt="" class="kg-image" width="1496" height="890" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-your-site-becomes-conversational">お客様のサイトが対話型になる方法</h2>
+		<a href="https://blog.cloudflare.com/#how-your-site-becomes-conversational" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xkeREv3GwXwBZw52Dg6XQ/caeb587819d08eff53a33aa893032b78/image2.png" alt="" class="kg-image" width="1999" height="695" loading="lazy">
+	</figure>
+	<p>あなたのサイトにとって、ワンクリックでサイトを会話型にすることができます。舞台裏では、AutoRAGは完全な検索パイプラインをスピンアップし、これを可能にします。</p>
+	<ol>
+		<li>
+			<p><b>クロールと取り込み：</b>AutoRAGは、「sitemap.xml」に従って、検索エンジンのようにサイトを調査します`robots.txt` は、どのページが利用可能でクロールが許可されているかを把握する機能を提供します。そこから、サイトマップに従って、ドメイン内のページを見つけます（最大10万ページまで）。<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Rendering</u></a>は、動的なJavaScriptコンテンツをキャプチャするために、各ページの読み込みに使用されます。クロールされたページは、アカウントの<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2バケット</u></a>にダウンロードされてから取り込まれます。</p>
+		</li>
+		<li>
+			<p><b>継続的なインデックス作成：</b>取り込まれたコンテンツは解析されて<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>に埋め込まれ、キーワードマッチングだけでなく、セマンティック検索によるクエリーも可能です。AutoRAGは、自動的に再クロールと再インデックスを行い、ナレッジベースを最新のコンテンツと整合させます。</p>
+		</li>
+		<li>
+			<p><b>アクセスと可観測性：</b>Cloudflare Workerは、NLWebプロトコルを実装するアクセスレイヤーとして機能するために、アカウントにデプロイされます（デプロイ可能なWorkerは、 Workers<a href="https://github.com/cloudflare/templates" target="_blank" rel="noopener noreferrer"><u>テンプレートリポジトリ</u></a>にもあります）。Workers AIは、応答性を向上させるための要約およびデコンテキスト化されたクエリ機能をシームレスに動作させるために使用されます。<i>まもなく、</i><a href="https://blog.cloudflare.com/ai-gateway-aug-2025-refresh"><i><u>AI GatewayとSecret StoreのBYOキー</u></i></a><i>を使用して、あらゆるプロバイダーからモデルを接続し、AutoRAGダッシュボードで直接選択することができるようになります。</i></p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="road-to-making-websites-a-first-class-data-source">Webサイトを第一級のデータソースにする道</h2>
+		<a href="https://blog.cloudflare.com/#road-to-making-websites-a-first-class-data-source" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これまで、<a href="https://developers.cloudflare.com/autorag/concepts/how-autorag-works" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>はR2をデータソースとしてのみサポートしていました。構造化されたファイルならうまく機能していましたが、Webサイト自体を、インデックス作成と検索可能な第一級のデータソースにする必要がありました。これを可能にするためには、AutoRAGにWebサイトクローリングを構築し、Webサイトのような大規模な動的ソースを処理できるようにシステムを強化する必要がありました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ouTCcbipVX3s1fPgg6hEs/541a03efb4365370fee5df67cd68841f/image4.png" alt="" class="kg-image" width="1999" height="1000" loading="lazy">
+	</figure>
+	<p>Webクローラーを実装する前は、データ同期の信頼性を向上させる必要がありました。AutoRAGの以前のユーザーは、インデックス同期がいつ実行され、それが成功したかどうかを可視化できませんでした。この問題を解決するために、すべての同期を追跡し、履歴を保存し、ログを提供するジョブモジュールを導入しました。このために、2つの新しいDurable ObjectsをAutoRAGのアーキテクチャに追加する必要がありました。</p>
+	<ul>
+		<li>
+			<p><b>ジョブマネージャー</b>は完全な同期を実行し、その役割はファイルのキューイング、コンテンツの埋め込み、Vectorizeデータベースを最新の状態に維持することなどです。データの一貫性を確保するために、RagManager（既存アーキテクチャではDurable Object）によって実行できるのは、RAGごとに一度に1つのJobManagerだけです。RagManagerは、手動またはスケジュールされた同期によってトリガーできる新しいジョブを開始する前に、実行中のジョブをキャンセルします。 .</p>
+		</li>
+		<li>
+			<p><b>FileManager</b>は、Workersの並列処理中にメモリが不足したときに発生したスケーラビリティの問題を解決しました。もともと、単一のDurable Objectが複数のファイルを処理する役割を担っていましたが、128MBのメモリ制限があるため、すぐにボトルネックになりました。解決策は作業を分割することでした。JobManagerは多くのFileManagerにファイルを分散し、それぞれが1つのファイルを担当します。20の異なるFileManagerを介して20のファイルを並行して処理することで、有効なメモリ容量を128MBからバッチあたり約2.5GBに拡張しました。</p>
+		</li>
+	</ul>
+	<p>こうした改善により、Webサイトパーサーを構築する準備が整いました。既存のR2ベースのキューイングロジックを再利用することで、最小限の中断でクローリングを追加しました。</p>
+	<ol>
+		<li>
+			<p>Webサイトクロールに指定されたJobManagerは、RAG設定に関連付けられているサイトマップを読み取ることで始まります。</p>
+		</li>
+		<li>
+			<p>R2バケットからオブジェクトをリスト化する代わりに、完全なURLをR2オブジェクトキーとして使用し、各Webサイトリンクを既存のR2ベースのキューにキューに入れます。</p>
+		</li>
+		<li>
+			<p>ここから、プロセスはファイルベースの同期とほぼ同じです。ファイルマネージャーはジョブを選択し、RAGがWebサイト解析用に設定されているかどうかを確認します。</p>
+		</li>
+		<li>
+			<p>存在する場合は、FileManagerはリンクをクロールし、ページのHTMLコンテンツをユーザーのR2バケットに配置します。この場合もURLをオブジェクトキーとして使用します。</p>
+		</li>
+	</ol>
+	<p>これらの手順の後、データにインデックスを付け、クエリ時に提供します。このアプローチにより、コードの再利用性が最大化され、<a href="https://blog.cloudflare.com/markdown-for-agents">HTMLからMarkdownへの変換</a>に対する改善は、ファイルベースとWebサイトベースの両方のRAGに自動的に利益をもたらします。</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-today">今すぐ始めましょう</h2>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>NLWebとAutoRAGを使って、ウェブサイトを会話型検索に備えて準備するのは簡単です。その仕組みは：</p>
+	<ol>
+		<li>
+			<p><b>Cloudflareダッシュボード</b>で、<b>コンピュートとAI &gt; AutoRAG</b>に移動します。</p>
+		</li>
+		<li>
+			<p>AutoRAGで<b>「作成」</b>を選択し、<b>NLWeb Webサイト</b>クイックデプロイオプションを選択します。</p>
+		</li>
+		<li>
+			<p>インデックスを作成したいCloudflareアカウントから<b>ドメイン</b>を選択します。</p>
+		</li>
+		<li>
+			<p><b>インデックス作成</b>をクリックします。</p>
+		</li>
+	</ol>
+	<p>以上です！提供されたリンクでNLWeb検索を体験してみたり、埋め込み可能なスニペットを使ってお客様のサイトでどのように表示されるかをテストしていただけます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dI9xwOKdn3jGkYKWK8NEN/e25ae13199eb09577868e421cc1fef7d/image1.png" alt="" class="kg-image" width="1298" height="873" loading="lazy">
+	</figure>
+	<p>この新機能を試した際のご意見をお聞かせください。<a href="https://blog.cloudflare.com/#">nlweb@cloudflare.com</a>までご連絡ください。</p>
+	<p></p>
+</div>

@@ -1,0 +1,220 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page">English</a>および<a href="https://blog.cloudflare.com/es-es/introducing-radar-internet-quality-page">Español</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CGo1txgRBavj2CTg30Ek4/6f0bab73295d9ab8875c6bbe01a0419b/introducing-radar-internet-quality-page.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>インターネット接続のマーケティングや販売は、多くの場合「速度」にもとづいてマーケティングと販売が行われています。プロバイダーは、さまざまなサービスレベルで提供されることになる、メガビット毎秒やギガビット毎秒を売り物にしています。加入する人は「ビット数が高ければ高いほうがいい」と考えていることが多いため、このマーケティングはおおむね成功していると言えるでしょう。さらに、世界各国のブロードバンドプランには、特定の目標接続速度が含まれていことが少なくありません。しかし、高速接続であっても、ゲームの最中にパフォーマンスが低下したり、ビデオ会議でが映像のフリーズや音声のドロップアウトに見舞われることがあります。速度だけでインターネット接続の品質をすべて説明できるわけではありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1j9oLJBK7nXXluuX8PL5AS/142eb5799625609bc9f2e77b6fc20b7d/image6-8.png" alt="Introducing the Cloudflare Radar Internet Quality Page" class="kg-image" width="1200" height="679" loading="lazy">
+
+	</figure>
+	<p>レイテンシ、ジッタ、パケット損失などといったさらなる要因は、エンドユーザーエクスペリエンスに大きな影響を与える可能性があります。高速接続なのに実際には低速接続よりもユーザーエクスペリエンスが低くなってしまう場合もあります。接続のパフォーマンスと品質は、使用状況にも左右されます。測定された平均速度は利用可能なピーク容量とは別物で、レイテンシは負荷状態とアイドル状態で変化します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-new-cloudflare-radar-internet-quality-page">Cloudflare Radarの新しいインターネット品質ページ</h2>
+		<a href="https://blog.cloudflare.com/#the-new-cloudflare-radar-internet-quality-page" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>3年と少し前の話になりますが、新型コロナウイルス感染症 （COVID-19) のパンデミックが発生して、仕事と学習が在宅へと移行し、家庭のインターネット接続が逼迫する状況になりました。この時<a href="https://blog.cloudflare.com/test-your-home-network-performance">Cloudflareはユーザーがインターネット接続のパフォーマンスと品質をテストできるspeed.cloudflare.com速度テストツールを発表しました</a>。このツールで、ユーザーは各自のテスト結果をCSVとしてダウンロードしたり、ソーシャルメディアで共有したりすることができるようになったのです。しかし、大規模な人口全体にわたる接続特性の観点を提供する、ネットワークまたは国レベルでのCloudflare速度テストの結果を、集約されたインサイトにまとめたことはありませんでした。</p>
+	<p>長らく見過ごされてきた接続パフォーマンスと品質に関する集約的なインサイトを、本日、Cloudflare Radarで開始します。新しくなった<a href="https://radar.cloudflare.com/quality" target="_blank" rel="noopener noreferrer">インターネット品質ページ</a>では、国とネットワーク（<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">自律システム</a>）レベルの両方で、インターネット接続のパフォーマンス（<a href="https://blog.cloudflare.com/aim-database-for-internet-quality">帯域幅</a>）と品質 （<a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">レイテンシ</a>、<a href="https://blog.cloudflare.com/aim-database-for-internet-quality">ジッタ</a>）の経時的なインサイトがご覧いただけます。（お客様が契約しているインターネットサービスプロバイダーは、おそらく独自の自律システム番号（ASN）を持つ自律システムであり、多くの大企業、オンラインプラットフォーム、教育機関も、おそらく独自の自律システムと関連するASNを持っているのではないでしょうか）。Cloudflareが提供するインサイトは、2つのセクションにわたっています。まずはインターネット品質指数 （IQI）です。これは、<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">Cloudflareおよびサードパーティのターゲットについて集計した一連の測定</a>にもとづいて、平均的なインターネット品質を推定します。もう1つが接続品質です。過去90日間に集計された<a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">speed.cloudflare.com</a>のテスト結果を元に、ピーク時および最良時の接続特性を表示します。（このデータの分析に対する当社のアプローチの詳細は以下のとおりです。）</p>
+	<p>このインターネット品質ページに表示される、それぞれの速度テストの結果や総計速度テスト結果が、他の速度テストツールのものとは異なることに気づかれるかもしれません。それはテストを行うエンドポイントの場所（地理的距離とネットワーク距離の両方を考慮）、テストコンテンツの選択、一部ISPによる「レートブースト」の影響、単一接続と複数の並列接続でのテストなど、<a href="https://cacm.acm.org/magazines/2020/12/248801-measuring-internet-speed/fulltext" target="_blank" rel="noopener noreferrer">さまざまな要因によってもたらされる違いかもしれません</a>。認識したパフォーマンス低下の確認や手に入れた速度を検証しようとするユーザーによる（どのスピードテストツールでも）頻繁ではないテストも、スピードテストプラットフォームによって公表する結果がまちまちになる原因の一つとなっています。</p>
+	<p>また今年の4月に行った発表の中にありましたように、<a href="https://blog.cloudflare.com/aim-database-for-internet-quality">CloudflareはMeasurement Lab （M-Lab）と提携し、</a>速度テストの結果を<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">一般公開し、クエリ可能なリポジトリ</a>の作成を行ってます。M-Labは世界各国のインターネット品質の代表的な情報を提供することを目的とした、非営利の第三者機関です。作成とホストをしている<a href="https://www.measurementlab.net/tests/ndt" target="_blank" rel="noopener noreferrer">ネットワーク診断ツール</a>は非常に人気の高いネットワーク品質テストで、1日に数百万ものサンプルを記録することができます。M-Labはインターネットの品質について、一般に閲覧可能で代表的な情報を提供するという使命を掲げています。それを鑑みて当社は、オープンで利用可能なデータを使用して、お客様と世界中の人たちのインターネット体験について正確な見解をお届けできるよう、M-Labと提携することにしました。</p>
+	<div class="flex anchor relative">
+		<h2 id="connection-speed-quality-data-is-important">カギとなる接続速度とデータ品質</h2>
+		<a href="https://blog.cloudflare.com/#connection-speed-quality-data-is-important" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ダウンロード速度（そしてピーク速度）を強調した固定ブロードバンドやモバイル接続の広告は数多くありますが、インターネット接続や、インターネット接続でのユーザーの体験は、1つの指標以上の意味を持ちます。ダウンロード速度だけでなく、ユーザーは使用している接続に可能なアップロード速度や、レイテンシやジッタと呼ばれる指標で表される接続品質も理解しておかなければなりません。そうした指標を余さず把握することで、特定のインターネット接続、あるいは地域やネットワーク全体のインターネット接続状況を総合的に理解することができます。</p>
+	<p>ダウンロード速度がいかなるものかは、パフォーマンスの尺度としてかなり周知のものとなっています。ただし、複数のホストから複数の小さなファイルを並行して取得することを伴う一般的なWebブラウジングをしている際にユーザーが経験する平均ダウンロード速度は、ファイルをダウンロードするピークのダウンロード速度とは大幅に異なり、単一の大きなファイル （ビデオやソフトウェアアップデートなど） により、接続が最大のパフォーマンスに達することができます。このことはしっかり覚えておく必要があります。ISPの広告でアップロードに利用できる帯域幅（速度）について説明されていることもありますが、そこに注目する人はそれほど多くないでしょう。（また、インターネット接続の種類によって、利用可能なアップロードとダウンロードの速度に大きな差が生じることも多々あります）。しかし2020年に発生した新型コロナウイルス（COVID-19）の大流行で、仕事の会議も学校の授業もインターネットへ移行し、ビデオ会議ツールの利用が急増したため、アップロードの重要性が前面に出てきました。音声や動画を他の参加者と共有するには、十分なアップロード帯域幅が必要なのです。この問題は1つの家庭用インターネット接続をみんなで共有しているとさらに悪化してしまうケースも少なからず発生しました。</p>
+	<p><a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">レイテンシ</a>（遅延）とは、データがインターネット上を移動するのにかかる時間のことです。データのパケットがクライアント（コンピューターやモバイルデバイスなど）からサーバーに送信されて、サーバーからまたクライアントに戻るまでにかかるまでをミリ秒数で測定します。速度メトリクスとは対照的に、レイテンシの数字は小さい方が良いパフォーマンスとなります。オンラインゲームなどではレイテンシがプレイ中にキャラクターの生死を分けることがありますし、ビデオ会議ではレイテンシが大きいと音声やビデオのエクスペリエンスが途切れ途切れになってしまう場合があります。そうしたユースケースに特に当てはまりますが、レイテンシは<a href="https://blog.cloudflare.com/ja-jp/making-home-internet-faster-ja-jp">Webページのパフォーマンスにも影響します</a>。速度メトリクス帯域幅がアクティブに消費されている負荷の高い接続での遅延を測定するのに対し、レイテンシは他のネットワークトラフィックが存在しない「アイドル」接続での遅延を測定します。（そうした特定のロード済みやアイドル状態の定義は、デバイスの観点からのもので、狭義には速度テストアプリケーションの観点からを指します。ルーターから直接速度テストを直接実行しいない限り、デバイスおよびアプリケーションはネットワークの残り部分のトラフィックが把握できません。）<a href="https://blog.cloudflare.com/test-your-home-network-performance">ジッタ</a>は連続した遅延測定で見つかった平均変動です。アイドル状態の接続と負荷がかかっている接続の両方で測定できます。ジッタの数値が小さいほど、レイテンシ測定の一貫性が高くなります。レイテンシと同様に、インターネット接続のジッタはなるべく低く抑える必要があります。そうすることでより安定したパフォーマンスが実現します。</p>
+	<div class="flex anchor relative">
+		<h2 id="our-approach-to-data-analysis">データ分析に対する当社のアプローチ</h2>
+		<a href="https://blog.cloudflare.com/#our-approach-to-data-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネット品質インデックス （IQI） セクションと接続品質セクションは異なる2つのソースからデータを取得することで、（関連性はあるものの）異なる2つの視点が得られます。それでも、内部でいくつかの共通原則を共有しています。</p>
+	<p>IQIは他業種のプレーヤーと比較して、自社を定期的にベンチマークするために使用している<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">メカニズム</a>にもとづいて構築されています。これは一連のCloudflareやサードパーティのターゲットに対するエンドユーザーの測定にもとづいていて、昨今のインターネットではかなり一般的になっているパターンを示すことを目的としています。インターネットにおいて多くのコンテンツは、世界中に点在する配信ネットワークから届けられます。このため、ほとんどのコンテンツを（ピアリングではなく）国際リンクに依存している地域やインターネットプロバイダーでは、IQIの数字はその設計上、良くないものになります。</p>
+	<p>集中的な使用ではなく、Webブラウジングに最も一般的に関連するトラフィック負荷を反映するようにIQIは設計されています。それに加えて選択した一連の測定目標により、実際にエンドユーザーが経験することへ数値が実質的に偏ります（レイテンシが速度に<a href="https://blog.cloudflare.com/ja-jp/making-home-internet-faster-ja-jp">重要な役割</a>を果たします）。</p>
+	<p>IQIがカバーする各指標および各ASNについて、当社は25パーセンタイル、中央値、75パーセンタイルを15分間隔で計算しています。国レベル以上では、その地域から可視化されている各ASNの計算数値を3つ個別に集計します。この集計では<a href="https://stats.labs.apnic.net/aspop" target="_blank" rel="noopener noreferrer">各ASNの推定ユーザー数</a>が考慮されているため、自動トラフィックの発生源は多いのにエンドユーザーが少ないネットワークから離れた数値に偏ります。</p>
+	<p>「接続品質」セクションは<a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Speed Test</a>ツールからデータを取得します。このツールはユーザーの接続を実行して、パフォーマンスがどの程度優れているかを確認します。最も近いCloudflareのロケーションに対して測定し、現実的な結果とエンドユーザーへのネットワークの近さの良いバランスを実現します。<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">世界各国の285都市</a>に拠点を置いている当社は、ほとんどユーザーに対して近い距離で対応が可能です。</p>
+	<p>各ASNもIQIと同様に25 パーセンタイル、中央値、75パーセンタイルを計算します。しかし、ASNではその3つの数値を、<a href="https://en.wikipedia.org/wiki/Trimean" target="_blank" rel="noopener noreferrer">TRIMMEAN関数</a>と呼ばれる演算を使用して即座に結合します。これによって、大多数のユーザーが持つ最高の接続品質と、そのASNから利用できる最高の接続品質のバランスをとることを目的とした1つの数値が得られます（ユーザーはさまざまな理由で利用可能な最高のプランに加入できない場合があります）。</p>
+	<p>ユーザーが速度テストを実行を選ぶ目的はさまざまで、そのタイミングもさまざまでしょう。また、当社ではプライバシーを非常に重視しており、テスト結果と照らし合わせると個人を特定できる情報は記録していません。そのため可能な限り多くの変動を把握するために90日間隔で集計しています。</p>
+	<p>国レベル以上では、その地域の各ASNで計算したTRIMMEAN関数の値を集計します。ここでも各ASNの推定ユーザー数を考慮しているため、エンドユーザーが少なくても、技術者がCloudflare Speed Testを使用してネットワークのパフォーマンスを評価している可能性があるネットワークから離れた数字へと偏ります。</p>
+	<div class="flex anchor relative">
+		<h2 id="navigating-the-internet-quality-page">インターネット品質ページのナビゲーション</h2>
+		<a href="https://blog.cloudflare.com/#navigating-the-internet-quality-page" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しくなった<a href="https://radar.cloudflare.com/quality" target="_blank" rel="noopener noreferrer">インターネット品質ページ</a>には、グローバル、国レベル、自律システム （AS） の3つのビューがあります。Cloudflare Radarの他のページと同じく、国レベルとASのページには同じデータセットが表示されますが、異なるのは集計レベルのみです。以下では、[インターネット品質] ページのさまざまな構成要素を紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="global">グローバル</h3>
+		<a href="https://blog.cloudflare.com/#global" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com/quality" target="_blank" rel="noopener noreferrer">グローバル （全世界）ビュー</a>の上部セクションには、大陸レベルで集計されたインターネット品質指数メトリクスの時系列グラフがあります。このグラフに表示される時間枠は、ページの右上にある時間枠ドロップダウンでの選択をすることで管理することができて、起動時には過去3か月のデータのみが表示されます。特定の大陸だけを調べたい場合、凡例内にあるそれ以外の大陸名をクリックすると、その大陸名がグラフから削除されます。大陸レベルの集計はまだかなり粗いもののですが、それでも世界中の地域のインターネット品質についてある程度のインサイトが得られるでしょう。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cMIwMf2Eb3K7ijLgnZwJV/dee237e425616488b7cbabb76177b91d/image10.png" alt="" class="kg-image" width="1056" height="1081" loading="lazy">
+
+	</figure>
+	<p>ページのさらに下にある [接続品質] セクションには<a href="https://en.wikipedia.org/wiki/Choropleth_map" target="_blank" rel="noopener noreferrer">コロプレスマップ</a>が表示され、ドロップダウンメニューで選択した速度、レイテンシ、ジッタのメトリック値に応じて国が影付きで表示されます。国の上にポインタを動かすと、その国の名前とメトリック値を含むラベルが表示されます。国をクリックすれば、その国のインターネット品質ページが表示されます。 IQIセクションとは対照的に、接続品質セクションには表示されるのはかならず過去90日間に集計されたデータになりますので、ご承知おきください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uw2wOQ826I1ZI4pSoIPTk/591560341fa18488928e1eac82b44829/image2-32.png" alt="" class="kg-image" width="1660" height="1094" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="autonomous-system-level">国レベル</h3>
+		<a href="https://blog.cloudflare.com/#autonomous-system-level" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<h3 id="IQI">Country-level</h3><!--kg-card-end: html-->
+	<p>国レベルのページ（以下の図例として、<a href="https://radar.cloudflare.com/quality/ca" target="_blank" rel="noopener noreferrer">カナダ</a>を使用します）内に、選択した期間中におけるその国のIQI指標が表示されます。これらの時系列グラフは、25パーセンタイルと75パーセンタイルを境界とする影付きの帯域内の帯域幅、レイテンシ、DNS応答時間の中央値を示しています。上記の_「データ分析に対する当社のアプローチ」_セクションで説明したように、全国で予想される平均的なユーザーエクスペリエンスを表しています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hk4e79T8ZLr0CN9qOkVsg/3b42c6353c777b66ec7e3df2b65b0207/image3-25.png" alt="" class="kg-image" width="772" height="382" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iMlQAaL6UNZAHWlNKqm6R/d46de0c921ac57dcd0d1aef48d023009/image7-7.png" alt="" class="kg-image" width="772" height="310" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hnrODy4OgChr7Fy27enNp/bd6463cbc96f97d92a97a48993ba3d1b/image12-1.png" alt="" class="kg-image" width="772" height="310" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<p id="connectionquality">Below that is the Connection Quality section, which provides a summary view of the country’s measured upload and download speeds, as well as latency and jitter, over the previous 90 days. The colored wedges in the Performance Summary graph are intended to illustrate aggregate connection quality at a glance, with an “ideal” connection having larger upload and download wedges and smaller latency and jitter wedges. Hovering over the wedges displays the metric’s value, which is also shown in the table to the right of the graph.</p><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7h0DIEi3JxWQlljgXCxASm/e42075ccd1d2da264aa85b502266b245/image4-21.png" alt="" class="kg-image" width="830" height="458" loading="lazy">
+
+	</figure>
+	<p>その下には「接続品質」セクションがあり、過去90日間に測定された国のアップロード速度とダウンロード速度、レイテンシ、ジッタの概要が表示されます。パフォーマンス概要グラフにある色付きのウェッジを見れば、接続総品質が一目で分かります。接続が「理想的」ならば、アップロードとダウンロードのウェッジが大きく、レイテンシとジッタのウェッジが小さくなります。ウェッジの上にマウスを移動すると、メトリック値が表示されます。この値はグラフの右側の表にも表示されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QL7897X8IVsuAOzjxKr8u/6dc623de0c8d7e3b170ef37a93ee72c5/image11-3.png" alt="" class="kg-image" width="830" height="663" loading="lazy">
+
+	</figure>
+	<p>その下の帯域幅とレイテンシとジッタのヒストグラムは、アップロード速度とダウンロード速度をバケット化した分布、およびレイテンシとジッタの測定値を示しています。場合によっては、速度ヒストグラムのレイテンシーとジッターのヒストグラムで1Gbpsまたは1000ミリ秒 （1 秒）で顕著なバーを示すことがあります。このようなバーの存在するということは、1Gbps/1000ミリ秒の最大ヒストグラム値を超える値を持つ一連の測定値があることを意味します。</p>
+	<div class="flex anchor relative">
+		<h3 id="exploring-connection-performance-quality-data">自律システムレベル</h3>
+		<a href="https://blog.cloudflare.com/#exploring-connection-performance-quality-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>国レベルのページの右上セクションには、その国の<a href="https://blog.cloudflare.com/asn-on-radar">上位5つの自律システム</a>のリストが表示されます。自律システム番号をクリックすると、そのシステムの「パフォーマンス」ページが表示されます。上位5つのリスト入っていないその他のシステムについては、ページ上部の検索バーを使用して自律システム名または番号で検索できます。自律システムレベルのビュー内に表示されるグラフは国レベルで表示されるグラフと同じですが、集計レベルが明らかに異なります。接続している自律システム名はCloudflare Radarの<a href="https://radar.cloudflare.com/ip" target="_blank" rel="noopener noreferrer">「マイ接続」ページ</a>から見つけられます。</p>
+	<div class="flex anchor relative">
+		<h2 id="characterizing-internet-connections">接続パフォーマンスと品質データの調査</h2>
+		<a href="https://blog.cloudflare.com/#characterizing-internet-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>IQIと接続品質の視覚化を精査してみると、インターネット接続の特徴や、障害、ネットワークの問題といったインターネット中断の影響の数々について面白い観測結果が得られるかもしれません。当社では以下のことを調べてみました。</p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-shifts-drive-latency-shifts">インターネット接続の特徴</h3>
+		<a href="https://blog.cloudflare.com/#traffic-shifts-drive-latency-shifts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wjsM0gTtzNBqeU7n8npg6/07c1de6472b7a8f22535ba4be44f034e/image13.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.verizon.com/home/fios" target="_blank" rel="noopener noreferrer">Verizon FiOS</a>は米国の顧客向け住宅用光ファイバーベースのインターネットサービスです。 （ケーブルベース、DSL、ダイヤルアップ、または衛星ではなく）ファイバーベースのインターネットサービスは、基本的にアップロード速度とダウンロード速度が対称的になっています。FiOSの<a href="https://www.verizon.com/home/fios-fastest-internet" target="_blank" rel="noopener noreferrer">プランページ</a>にはこれが当てはまり、300Mbps（アップロードおよびダウンロード）、500Mbps （アップロードおよびダウンロード）、「1ギガ」プラン（Verizonは有線平均速度をダウンロード750～940Mbps/アップロード750～880Mbpsとしています）がその内容となっています。 VerizonはFiOSのトラフィックを<a href="https://radar.cloudflare.com/quality/as701" target="_blank" rel="noopener noreferrer">AS701</a>（過去の買収により現在は<a href="https://en.wikipedia.org/wiki/UUNET" target="_blank" rel="noopener noreferrer">UUNET</a>と表示しています）で伝送しています。また、AS701の帯域幅ヒストグラムを見ると、いくつかの点が際立っていることがわかります。1 つ目はアップロード速度とダウンロード速度がほぼ対称であることです。（それとは逆に、ケーブルベースのインターネットサービスプロバイダーは一般的にダウンロード速度には幅があるものの、アップロード速度は範囲の下限に集中しています。）もう1つは300Mbpsと750Mbps付近にピークがあることです。これは300Mbpsプランや「1ギガ」プランが500 Mbpsプランよりも人気である可能性を示唆しています。また、速度が300Mbpsを下回るテスト結果が多数出ていることも明白です。その要因には以下のことが挙げられます。まず1つはVerizonがAS701で低速の非FiOSトラフィックも伝送していることです。もう1つは家庭で使用されるWiFiは不安定な性質を持つので、テストで達成される速度が購入時に想定したサービスレベルよりもしばしば低くなることです。</p>
+	<div class="flex anchor relative">
+		<h3 id="bandwidth-shifts-as-a-potential-early-warning-sign">トラフィックの変化がレイテンシの変化を引き起こす</h3>
+		<a href="https://blog.cloudflare.com/#bandwidth-shifts-as-a-potential-early-warning-sign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2023年5月9日、<a href="https://radar.cloudflare.com/pk" target="_blank" rel="noopener noreferrer">パキスタン</a>政府はイムラン・カーン元首相の逮捕に伴う抗議行動を受け、モバイルネットワークサービスの停止を命じました。このサービス停止を取り上げた<a href="https://blog.cloudflare.com/cloudflares-view-of-internet-disruptions-in-pakistan">ブログ投稿</a>で、私たちはトラフィックの観点からその影響について考察しました。モバイルネットワークが停止されたときに、固定ブロードバンドネットワークに関連する自律システムでトラフィックが大幅に増加したことを指摘しました。つまり、モバイルネットワークが利用できなり、一部のユーザーは固定ネットワーク（ホームブロードバンド）の利用に移行したのです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bMBKpVtEY49leTuopoTHf/4bc57ff4c4e85e3143b331a0f3d81b89/image8-3.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>ブログ記事掲載後にIQIのデータを調べたところ、このトラフィックの変化が与えた影響は、レイテンシデータにも現れていることが判明しました。下のグラフの網掛け部分をご覧ください。モバイルネットワークの停止により、レイテンシの高いモバイルネットワークからレイテンシの低い固定ブロードバンドネットワークにユーザーが移行したため、レイテンシの中央値が約25%低下しました。5月12日にモバイルネットワークの使用が再び解禁されたときの、レイテンシの増加がグラフに表れています。</p>
+	<div class="flex anchor relative">
+		<h3 id="submarine-cable-issues-cause-slower-browsing">潜在的な早期警告サインとしての帯域幅の変化</h3>
+		<a href="https://blog.cloudflare.com/#submarine-cable-issues-cause-slower-browsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iJ8Kk0I1TyLMf0r3edCjw/aca8ca531143e0da750205e1cd2032f9/image1-34.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>4月4日、英国の携帯電話事業者<a href="https://twitter.com/CloudflareRadar/status/1643070260130504704" target="_blank" rel="noopener noreferrer">ヴァージン・メディアは、短時間の停電に見舞われました</a>。ヴァージン・メディア（<a href="https://radar.cloudflare.com/quality/as5089" target="_blank" rel="noopener noreferrer">旧NTL</a>）のASNである<a href="https://en.wikipedia.org/wiki/NTL_Incorporated" target="_blank" rel="noopener noreferrer">AS5089</a>のIQI帯域幅グラフを見ると、帯域幅の中央値が約35Mbpsから約23Mbpsに低下してするという、潜在的な問題の兆候が見られました。停電による障害は下のグラフの丸で囲まれた領域に表示されています。<a href="https://www.ispreview.co.uk/index.php/2023/04/major-network-outage-strikes-broadband-isp-virgin-media-uk.html" target="_blank" rel="noopener noreferrer">公開された</a>報告と照らし合わせると、正午までに測定された帯域幅の中央値の低下と一致して、障害は4月5日まで続いたことがわかります。</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">海底ケーブルの問題によるブラウジングの遅延</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lAnA7kxm6DSC7bKYxN2Oo/f70e019d7950b43eb3d03907fc58055b/June-5---Philippines---PLDT---bandwidth---shaded.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wSAez7ZOMj6rnH2h4xnfv/07f99ef661079c5e8d4f5141a73b0567/image9.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>6月5日、フィリピンのインターネットプロバイダー<a href="https://pldt.com" target="_blank" rel="noopener noreferrer">PLDT</a>が「海底ケーブルパートナーの1社から、インターネット帯域幅の一部容量が低下し、インターネットブラウジング速度の低下を確認したという報告を受けた」という注意を<a href="https://twitter.com/pldt/status/1665670783388254208" target="_blank" rel="noopener noreferrer">ツイートしました</a>。PLDTが使用するプライマリASN、<a href="https://radar.cloudflare.com/quality/as9299" target="_blank" rel="noopener noreferrer">AS9299</a>のIQIレイテンシと帯域幅のグラフを見ると、UTC6時45分（現地時間14時45分）頃から明らかな変化が見られます。帯域幅の中央値は17Mbpsから8Mbpsへと半減し、レイテンシの中央値は37 ミリ秒から約65ミリ秒へと75%増加しています。75パーセンタイルのレイテンシも大幅に増加し、報告された海底ケーブルの障害と一致して63ミリ秒から180ミリ秒へと約3倍になっています。</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ネットワークパフォーマンスと品質に関するインサイトをCloudflare Radarでご覧いただけるようにすることは、より良いインターネットの構築を支援するというCloudflareの使命を進めるものではあります。しかし、それだけで十分ではありません。私たちはさらにこれを推し進める計画を立てています。それは、これまで以上に細かな地理レベル（州、できれば都市も）でデータを利用できるようにすることや、特定の種類のユースケースのインターネット品質を評価するのに役立つ<a href="https://blog.cloudflare.com/aim-database-for-internet-quality">AIMスコア</a>を組み込むことや、<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">オープンソース JavaScriptモジュール</a>を使用してCloudflare速度テストを Cloudflare Radarに直接埋め込むことなどが挙げられます。</p>
+	<p>それらを実現するまでの間、<a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">speed.cloudflare.com</a>を使用して、インターネット接続のパフォーマンスと品質をテストして、ソーシャルメディア （Twitterで<a href="https://twitter.com/cloudflareradar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a>またはMastodonで<a href="https://cloudflare.social/@radar" target="_blank" rel="noopener noreferrer">@radar@cloudflare.social</a>のタグをつけて投稿してください）で見つけた国または ASレベルのインサイトを共有してください。また、<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">M-Labリポジトリ</a>や<a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Radar API</a>を通じて基礎データをご覧いただけたらと思います。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/debcbed2114d086c870059ac604eca49/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fdebcbed2114d086c870059ac604eca49%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-tvdeshi-ting-suru">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-tvdeshi-ting-suru" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+</div>

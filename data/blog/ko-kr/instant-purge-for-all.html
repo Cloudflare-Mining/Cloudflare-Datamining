@@ -1,0 +1,184 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/instant-purge-for-all">English</a>, <a href="https://blog.cloudflare.com/zh-tw/instant-purge-for-all">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/instant-purge-for-all">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/instant-purge-for-all">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65pxEF0Emq9kVoxKhD6lP3/da052dd60681437575753d231a98b22c/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare에는 4월 1일에 온라인에 떠도는 장난스러운 제품 발표 대신 실제 제품을 출시하는 전통이 있습니다. 지난 몇 년 동안 Cloudflare에서는 <a href="https://blog.cloudflare.com/announcing-1111"><u>1.1.1.1</u></a> 및 <a href="https://blog.cloudflare.com/introducing-1-1-1-1-for-families"><u>1.1.1.1 가정용</u></a>과 같은 영향력 있는 제품을 도입했습니다. 오늘 Cloudflare에서는 <b>요금제 유형과 관계없이 모든 고객이 모든 제거 방법을 사용할 수 있도록</b> 하여 이러한 전통을 이어가게 되어 기쁩니다.</p>
+	<p>2024년 창립기념일 주간 동안, Cloudflare에서는 URL별 제거, 호스트 이름별 제거, 태그별 제거, 접두사별 제거, 모두 제거 등 전체 제거 방법 제품군을 모든 Cloudflare 요금제에 제공하겠다는 <a href="https://blog.cloudflare.com/instant-purge"><u>의도를 발표</u></a>했습니다. 이전에는 'URL별 제거' 및 '모두 제거' 이외의 방법은 Enterprise 고객 전용이었습니다. 하지만 저희는 지난 몇 년 동안 제거 파이프라인을 공개적으로 재구축했으며(해당하는 <a href="https://blog.cloudflare.com/part1-coreless-purge"><u>저희</u></a> <a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture"><u>블로그</u></a> <a href="https://blog.cloudflare.com/instant-purge"><u>시리즈</u></a>를 읽으셨기를 바랍니다) 그 결과를 더 널리 공유할 수 있게 되어 기쁩니다. 최근 몇 달 동안 저희는 새로운 Instant Purge 파이프라인이 부하가 증가한 상황에서도 150ms 미만으로 일관되게 수행되도록 보장하는 데 주력하여 모든 고객에게 제공할 준비가 되었습니다.&nbsp;&nbsp;</p>
+	<p>하지만 이것으로 끝이 아닙니다. Enterprise 고객에 대한 기본 제거 속도 제한을 크게 높여, 새로 개발된 <a href="https://blog.cloudflare.com/instant-purge"><u>Instant Purge</u></a> 시스템의 효율성 덕분에 제거 처리량을 훨씬 더 늘릴 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-a-better-purge-a-two-year-journey">더 나은 제거 구축: 2년의 여정</h2>
+		<a href="https://blog.cloudflare.com/#building-a-better-purge-a-two-year-journey" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>돌이켜보면, 오늘의 발표는 약 2년간의 집중적인 엔지니어링 작업의 결과물입니다. 2022년 말에 저희 팀에서는 전역 네트워크에서 무효화를 거의 즉각적으로 유지하면서 처리량을 극적으로 늘린다는, 명확하지만 도전적인 목표를 가지고 Cloudflare의 퍼지 파이프라인을 재구축하는 데 착수했습니다.</p>
+	<p>Cloudflare에서는 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>전 세계 335개 이상의 도시에서 데이터 센터</u></a>를 운영하고 있습니다. 인기 있는 캐시된 자산은 모든 데이터 센터에 상주할 수 있으며, 이는 삭제 요청이 해당 콘텐츠를 캐싱 모든 위치로 신속하게 전파되어야 함을 의미합니다. 제거 명령을 받은 각 데이터 센터에서는 캐시된 콘텐츠를 효율적으로 찾아 무효화하여 오래된 응답이 제공되지 않도록 해야 합니다. 무효화해야 하는 콘텐츠의 양은 단일 파일부터 특정 호스트 이름과 연결된 모든 캐시된 자산에 이르기까지 매우 다양할 수 있습니다. 콘텐츠가 제거된 후 이후, 모든 요청은 원본 서버에서 새 사본을 가져오도록 트리거하며, 이는 응답 중에 Cloudflare의 캐시에 저장됩니다.&nbsp;</p>
+	<p>방대한 네트워크에서 제거 요청이 일관되고 신속하게 전파되도록 하려면, 특히 가끔 발생하는 데이터 센터 중단, 유지 관리, 네트워크 중단 등을 고려할 때, 상당한 기술 문제가 발생합니다. 이러한 조건에서 일관성을 유지하려면 강력한 분산 시스템 엔지니어링이 필요합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-we-scale-purge">Cloudflare에서는 제거 규모를 어떻게 확장했을까요?</h2>
+		<a href="https://blog.cloudflare.com/#how-did-we-scale-purge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 <a href="https://blog.cloudflare.com/instant-purge"><u>이전 글에서</u></a> Cloudflare의 새로운 Instant Purge 시스템이 150ms 미만의 퍼지 시간을 달성하도록 설계된 방식에 대해 설명한 바 있습니다. 성능 개선은 새로운 아키텍처가 달성한 성과의 일부에 불과하다는 점은 주목할 만합니다. 이 아키텍처는 또한 모든 사용자에게 Instant Purge를 제공할 수 있도록 스토리지 및 처리량과 관련된 상당한 확장 과제를 해결하는 데에도 도움이 되었습니다.&nbsp;</p>
+	<p>처음에는 저희 제거 시스템이 잘 확장되었지만, 고객이 빠르게 증가함에 따라 매일 저장해야 하는 수백만 개의 퍼지 키로 인한 스토리지 소비로 인해 사용 가능한 캐싱 공간이 감소했습니다. 이러한 스토리지와 처리량 수요를 관리하려는 초기의 시도에는 트래픽 급증을 완화하기 위해 <a href="https://www.boltic.io/blog/kafka-queue" target="_blank" rel="noopener noreferrer"><u>대기열</u></a>과 일괄 처리가 필요했지만, 이로 인해 대기 시간 발생하고 사용량 증가와 스토리지 비용 상승 사이의 긴밀한 연관성이 강조되었습니다.</p>
+	<p>저희는 제거 키를 더 잘 저장하는 방법과 공간을 확보하기 위해 제거된 콘텐츠를 언제 제거해야 하는지에 대한 생각을 다시 살펴봐야 했습니다. 이전에는 고객이 태그, 접두사, 호스트 이름으로 콘텐츠를 제거하면 Cloudflare에서 해당 콘텐츠를 만료된 것으로 표시하고 나중에 제거할 수 있도록 허용했습니다. 이는 디스크에서 능동적으로 제거되는 것이 없으므로 지연 제거라고 합니다. 지연 제거는 빠르지만, 반드시 효율적이지는 않습니다. 왜냐하면 만료되었지만 아직 삭제되지 않은 콘텐츠를 위해 스토리지를 소비하기 때문입니다. 제거 키에 대한 글로벌 수준 또는 데이터 센터 수준의 인덱싱을 검토한 결과, 저희는 시스템 복잡성의 증가와 네트워크 규모로 인해 이러한 인덱스에 발생할 수 있는 대기 시간이 증가했기 때문에 실행 가능하지 않다고 판단했습니다. 그래서 저희는 캐시 프록시와 함께 인덱스를 직접 통합하는 머신별 인덱싱을 선택했습니다. 이를 통해 네트워크 복잡성을 최소화하고 안정성을 간소화하며 예측 가능한 확장을 제공했습니다.</p>
+	<p>신중한 분석과 벤치마킹 끝에 저희는 필요에 따라 최적화할 수 있는 임베디드 키-값 저장소인 <a href="https://rocksdb.org" target="_blank" rel="noopener noreferrer"><u>RocksDB</u></a>를 선택했고, 이는 각 캐시 프록시와 함께 실행되는 Rust 기반 서비스인 <a href="https://blog.cloudflare.com/instant-purge/#putting-it-all-together"><u>CacheDB</u></a>의 기반을 형성했습니다. CacheDB를 사용하면 인덱싱과 즉시 제거 실행(능동 제거)이 관리되어 필요한 스토리지가 크게 줄고 캐싱을 위한 공간이 확보됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FZ0bQSx5MUhx3x3hwlRuk/91a27af7db5e629cd6d5fbe692397eaf/image2.png" alt="" class="kg-image" width="1999" height="854" loading="lazy">
+	</figure>
+	<p>CacheDB 내의 로컬 대기열은 제거 작업을 버퍼링하므로 대기 시간 급증 없이 일관된 처리량이 보장되는 반면, 캐시 프록시는 CacheDB를 참조하므로 신속하고 적극적인 제거가 보장됩니다. 업데이트된 배포 파이프라인은 제거 사항을 여러 컴퓨터의 CacheDB 인스턴스로 직접 브로드캐스트하므로 처리량과 제거 속도가 극적으로 개선됩니다.</p>
+	<p>Cloudflare에서는 CacheDB를 사용하여 지연 제거 스토리지 축적을 없애고 귀중한 디스크 공간을 즉시 확보하여 스토리지 요구량을 10배 줄였습니다. 확보된 스토리지 덕분에 캐시 보존이 강화되어 캐시 HIT 비율이 높아지고 원본 송신이 최소화됩니다. 이러한 스토리지 비용 절감과 처리량 증가 덕분에 더 많은 고객에게 Instant Purge를 제공할 수 있는 수준으로 확장할 수 있었습니다.</p>
+	<p>새로운 Instant Purge 시스템을 설계한 방법에 대한 자세한 내용은 Purge 시리즈 블로그 게시물의 이전 <a href="https://blog.cloudflare.com/instant-purge"><u>회차</u></a>를 참조하세요.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="striking-the-right-balance-what-to-purge-and-when">적절한 균형 유지: 제거 대상 및 제거 시기</h2>
+		<a href="https://blog.cloudflare.com/#striking-the-right-balance-what-to-purge-and-when" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이러한 새로운 제거 방법을 사용할 때 고려해야 할 실질적인 사항으로 넘어가서, 무효화하려는 항목에 적합한 방법을 사용하는 것이 중요합니다. 너무 적극적으로 제거하면 불필요한 요청으로 원본 서버가 압도되어 송신 비용이 증가하고 잠재적으로 다운타임이 발생할 수 있습니다. 반대로 제거가 충분하지 않으면 방문자에게 오래된 콘텐츠가 제공됩니다. 정확성과 속도의 균형을 유지하는 것이 중요합니다.</p>
+	<p>Cloudflare에서는 고객이 이러한 균형을 이룰 수 있도록 다양한 대상 제거 방법을 지원합니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything" target="_blank" rel="noopener noreferrer"><u><b>모두 제거</b></u></a>: 웹 사이트와 관련된 캐시된 콘텐츠를 모두 지웁니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix" target="_blank" rel="noopener noreferrer"><u><b>접두사별 제거</b></u></a>: 공통 접두사를 공유하는 URL을 대상으로 합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname" target="_blank" rel="noopener noreferrer"><u><b>호스트 이름별 제거</b></u></a>: 특정 호스트 이름별로 콘텐츠를 무효화합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file" target="_blank" rel="noopener noreferrer"><u><b>URL별 제거(단일 파일 제거</b></u></a><b>)</b>: 개별 URL을 정확하게 대상으로 지정합니다.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags" target="_blank" rel="noopener noreferrer"><u><b>태그별 제거</b></u></a>: <a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#add-cache-tag-http-response-headers" target="_blank" rel="noopener noreferrer"><u>캐시 태그</u></a> 헤더를 사용하여 그룹화된 자산을 무효화하여 복잡한 캐시 관리 시나리오에 유연성을 부여합니다.</p>
+		</li>
+	</ul>
+	<p>오늘부터 모든 Cloudflare 고객이 이 모든 방법을 사용할 수 있습니다.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-purge">제거 방법&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-to-purge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사용자는 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fcaching%2Fconfiguration" target="_blank" rel="noopener noreferrer"><u>구성 섹션</u></a>의 캐시 탭 아래에 있는 Cloudflare 대시보드에서 직접 제거 방법을 선택하거나 <a href="https://developers.cloudflare.com/api/resources/cache" target="_blank" rel="noopener noreferrer"><u>Cloudflare API</u></a>를 통해 제거 방법을 선택할 수 있습니다. 각 제거 요청에는 선택한 제거 유형(제거 키라고 함)과 관련된 대상 URL, 호스트 이름, 접두사, 캐시 태그를 명확하게 지정해야 합니다. 예를 들어, 접두사 제거 요청의 경우 example.com/foo/bar와 같은 디렉터리를 지정할 수 있습니다. 효율성과 처리량을 극대화하려면 키가 하나인 개별 제거 요청을 보내는 것보다 여러 제거 키를 단일 요청으로 일괄 처리하는 것이 좋습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-much-can-you-purge">얼마나 제거할 수 있나요?</h2>
+		<a href="https://blog.cloudflare.com/#how-much-can-you-purge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 태그별, 접두사별, 호스트 이름별 제거, 그리고 모두 제거에 대한 새로운 레이트 리미트는 요금제 유형마다 다릅니다. Cloudflare에서는 <a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank" rel="noopener noreferrer"><u>토큰 버킷</u></a> 레이트 리미트 시스템을 사용하므로 각 계정에는 요금제 유형에 따라 최대 크기가 있는 토큰 버킷이 있습니다. Cloudflare에서는 제거 요청을 받으면 먼저 계정의 마지막 제거 요청 이후 경과된 시간을 요금제 유형의 리필 레이트(토큰의 일부일 수 있음)로 나눈 값을 기준으로 계정의 버킷에 토큰을 추가합니다. 그런 다음 버킷에 전체 토큰이 하나 이상 있는지 확인하고, 있으면 토큰을 제거하고 제거 요청을 처리합니다. 그렇지 않은 경우 제거 요청의 레이트가 제한됩니다. 이 레이트 리미트는 쉽게 생각하면, 리필 레이트는 사용자가 주어진 기간 동안 보낼 수 있는 요청의 일관된 비율을 나타내고 버킷 크기는 사용 가능한 최대 요청의 버스트를 나타낸다고 보시면 됩니다.</p>
+	<p>예를 들어 어느 무료 사용자가 버킷 크기는 25개 요청이고 리필 레이트는 분당 5개(12초당 하나의 요청)로 시작합니다. 사용자가 한 번에 26개의 요청을 모두 전송하는 경우 처음 25개의 요청은 처리되지만, 마지막 요청은 제한됩니다. 12초를 기다렸다가 마지막 요청을 다시 시도해야 성공할 수 있습니다.&nbsp;</p>
+	<p>현재 리미트는 <b>계정</b>별로 적용됩니다.&nbsp;</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>요금제</b></p>
+				</td>
+				<td>
+					<p><b>버킷 크기</b></p>
+				</td>
+				<td>
+					<p><b>요청 리필 레이트</b></p>
+				</td>
+				<td>
+					<p><b>요청당 최대 키</b></p>
+				</td>
+				<td>
+					<p><b>총 키</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Free</b></p>
+				</td>
+				<td>
+					<p>25개의 요청</p>
+				</td>
+				<td>
+					<p>분당 5개</p>
+				</td>
+				<td>
+					<p>100</p>
+				</td>
+				<td>
+					<p>분당 500개</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Pro</b></p>
+				</td>
+				<td>
+					<p>25개의 요청</p>
+				</td>
+				<td>
+					<p>초당 5개</p>
+				</td>
+				<td>
+					<p>100</p>
+				</td>
+				<td>
+					<p>초당 500개</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>biz</b></p>
+				</td>
+				<td>
+					<p>50개 요청</p>
+				</td>
+				<td>
+					<p>초당 10개</p>
+				</td>
+				<td>
+					<p>100</p>
+				</td>
+				<td>
+					<p>초당 1,000개</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Enterprise</b></p>
+				</td>
+				<td>
+					<p>500개 요청</p>
+				</td>
+				<td>
+					<p>초당 50개</p>
+				</td>
+				<td>
+					<p>100</p>
+				</td>
+				<td>
+					<p>초당 5,000개</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>모든 제거 레이트 리미트에 대한 자세한 문서는 Cloudflare <a href="https://developers.cloudflare.com/cache/how-to/purge-cache" target="_blank" rel="noopener noreferrer"><u>문서</u></a>에서 확인할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">다음은?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 제거 플랫폼을 최적화하는 데 많은 시간을 할애했습니다. 하지만 아직 끝난 것은 아닙니다. 앞으로도 Cloudflare의 단일 파일 제거 성능을 지속해서 개선할 예정입니다. 현재 P50 성능은 약 250ms이며, 더 최적화하여 200ms 미만으로 단축할 수 있다고 생각합니다. 또한 모든 시스템에 대해 더 큰 제거 처리량을 허용하는 기능을 구축할 것이며, 계속해서 효과적으로 확장하고 고객이 원할 때 언제든지 제거할 수 있도록 필터링 기술을 구현하는 방법을 찾을 계획입니다.&nbsp;</p>
+	<p>오늘 바로 Cloudflare의 새로운 제거 시스템을 체험하고 방문자에게 즉각적이고 원활한 환경을 제공하실 수 있도록 여러분을 초대합니다.</p>
+</div>

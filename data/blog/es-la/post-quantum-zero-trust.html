@@ -1,0 +1,203 @@
+<div class="mb2 gray5">10 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/post-quantum-zero-trust">English</a>, <a href="https://blog.cloudflare.com/zh-tw/post-quantum-zero-trust">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-zero-trust">Français</a>, <a href="https://blog.cloudflare.com/de-de/post-quantum-zero-trust">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/post-quantum-zero-trust">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/post-quantum-zero-trust">한국어</a>, <a href="https://blog.cloudflare.com/id-id/post-quantum-zero-trust">Indonesia</a>, <a href="https://blog.cloudflare.com/nl-nl/post-quantum-zero-trust">Nederlands</a>, <a href="https://blog.cloudflare.com/th-th/post-quantum-zero-trust">ไทย</a> y <a href="https://blog.cloudflare.com/zh-cn/post-quantum-zero-trust">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1I5sCnFfQVw5LTrvzZ7OFR/fd1503e5374a06cb413495136a319573/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Se están desarrollando activamente computadoras cuánticas que eventualmente tendrán la capacidad de descifrar la criptografía de la que dependemos para asegurar las comunicaciones modernas. Los <a href="https://blog.google/technology/research/google-willow-quantum-chip" target="_blank" rel="noopener noreferrer"><u>recientes avances</u></a> en la informática cuántica han puesto de manifiesto la vulnerabilidad de la criptografía convencional a estos ataques. Desde 2017, Cloudflare ha <a href="https://blog.cloudflare.com/tag/post-quantum"><u>estado a la vanguardia</u></a> del desarrollo, la estandarización y la implementación de la <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer"><u>criptografía poscuántica</u></a> para resistir los ataques de las computadoras cuánticas.&nbsp;</p>
+	<p>Nuestra misión es simple: queremos que cada cliente de Cloudflare tenga una idea clara para lograr la seguridad cuántica. Cloudflare reconoce la urgencia, por lo tanto, nos comprometemos a gestionar el complejo proceso de actualización de algoritmos criptográficos, para que no tengas que preocuparte por ello. No solo estamos hablando de hacerlo. <a href="https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption" target="_blank" rel="noopener noreferrer"><u>Más del 35&nbsp;% del tráfico HTTPS que no es de bots que llega a Cloudflare en la actualidad es seguro a nivel poscuántico.</u></a>&nbsp;</p>
+	<p>El <a href="https://www.nist.gov" target="_blank" rel="noopener noreferrer"><u>Instituto Nacional de Estándares y Tecnología (NIST)</u></a> también reconoce la urgencia de esta transición. El 15 de noviembre de 2024, el NIST hizo un <a href="https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8547.ipd.pdf" target="_blank" rel="noopener noreferrer"><u>anuncio</u></a> histórico al establecer un cronograma para eliminar gradualmente el <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer"><u>RSA</u></a> y la <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>Elliptic Curve Cryptography (ECC)</u></a>, los algoritmos criptográficos convencionales que sustentan casi todas las partes de Internet en la actualidad. Según el anuncio del NIST, estos algoritmos quedarán obsoletos en 2030 y no se permitirán en 2035.</p>
+	<p>En Cloudflare, no esperamos hasta 2035 o incluso hasta 2030. Creemos que la privacidad es un derecho humano fundamental, y la criptografía avanzada debe ser <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free"><u>accesible para todos</u></a> sin riesgos. No se debe exigir a nadie que pague más por la seguridad poscuántica. Por eso, cualquier visitante que acceda hoy a un <a href="https://blog.cloudflare.com/pq-2024"><u>sitio web protegido por Cloudflare</u></a> se beneficia de la criptografía poscuántica, cuando utiliza un navegador importante como <a href="https://blog.chromium.org/2024/05/advancing-our-amazing-bet-on-asymmetric.html" target="_blank" rel="noopener noreferrer"><u>Chrome, Edge</u></a> o <a href="https://www.mozilla.org/en-US/firefox/135.0/releasenotes" target="_blank" rel="noopener noreferrer"><u>Firefox</u></a>. (Y nos complace ver un <a href="https://radar.cloudflare.com/explorer?dataSet=http&amp;groupBy=post_quantum&amp;filters=botClass%253DLikely_Human%252Cos%253DiOS" target="_blank" rel="noopener noreferrer"><u>pequeño porcentaje de tráfico (móvil) de Safari</u></a> en nuestros datos de Radar). Más de un tercio del tráfico humano que pasa hoy en día a través de Cloudflare ya tiene esta seguridad mejorada, y esperamos que este porcentaje aumente a medida que más navegadores y clientes se actualicen y admitan la criptografía poscuántica.&nbsp;</p>
+	<p>Si bien se han logrado grandes avances para proteger el tráfico web humano, no todas las aplicaciones son aplicaciones web. Y cada organización tiene aplicaciones internas (tanto web como de otro tipo) que no son compatibles con la criptografía poscuántica.&nbsp;&nbsp;</p>
+	<p>¿Cómo deberían actualizar las organizaciones el tráfico confidencial de su red corporativa para admitir la criptografía poscuántica?</p>
+	<p>Aquí es donde entra en juego el anuncio de hoy. Nos complace anunciar la primera fase de la preparación cuántica de extremo a extremo de nuestra Plataforma Zero Trust<b>, </b>que permite a los clientes proteger su tráfico de red corporativa con criptografía poscuántica.<b> Las organizaciones pueden tunelizar el tráfico de su red corporativa a través de la Plataforma Zero Trust de Cloudflare, protegiéndola contra los adversarios cuánticos sin la molestia de tener que actualizar individualmente todas y cada una de las aplicaciones, sistemas o conexiones de red corporativas.</b>&nbsp;</p>
+	<p>Más concretamente, las organizaciones pueden utilizar nuestra plataforma Zero Trust para enrutar las comunicaciones desde los dispositivos de los usuarios finales (a través del navegador web o del <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>cliente de dispositivo WARP</u></a> de Cloudflare) para proteger las aplicaciones conectadas con <a href="https://blog.cloudflare.com/post-quantum-tunnel"><u>Cloudflare Tunnel</u></a>, y obtener seguridad cuántica de extremo a extremo, en los siguientes casos de uso:&nbsp;</p>
+	<ul>
+		<li>
+			<p><b></b><a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u><b>Acceso</b></u></a><b> sin cliente de Cloudflare: </b>nuestra solución de Acceso a la red Zero Trust (ZTNA) sin cliente verifica la identidad del usuario y el contexto del dispositivo para cada solicitud HTTPS a aplicaciones corporativas desde un navegador web. El acceso sin cliente ahora está protegido de extremo a extremo con criptografía poscuántica.</p>
+		</li>
+		<li>
+			<p><b></b><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u><b>Cliente de dispositivo WARP</b></u></a> <b>de Cloudflare:</b> a mediados de 2025, todo el tráfico de los clientes que utilicen el cliente de dispositivo WARP (independientemente del protocolo) se canalizará a través de una conexión protegida por criptografía poscuántica. El cliente WARP protege los dispositivos corporativos enrutando de forma privada su tráfico a la red global de Cloudflare, donde Gateway aplica un filtrado web avanzado y Access aplica políticas que garantizan el acceso a las aplicaciones.&nbsp;</p>
+		</li>
+		<li>
+			<p><b></b><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies" target="_blank" rel="noopener noreferrer"><u><b>Gateway</b></u></a> <b>de Cloudflare</b>: nuestra puerta de enlace web segura (SWG), diseñada para inspeccionar y filtrar el tráfico TLS con el fin de bloquear amenazas y comunicaciones no autorizadas, ahora es compatible con TLS con criptografía poscuántica.&nbsp;</p>
+		</li>
+	</ul>
+	<p>En las secciones restantes de esta publicación, analizaremos la amenaza que representa la computación cuántica y los desafíos que enfrentan las organizaciones en la transición a la criptografía poscuántica. También analizaremos los detalles técnicos sobre cómo nuestra plataforma Zero Trust en la actualidad es compatible con la criptografía poscuántica y compartiremos algunos planes para el futuro.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-transition-to-post-quantum-cryptography-and-why-now">¿Por qué hacer la transición a la criptografía poscuántica y por qué ahora?&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#why-transition-to-post-quantum-cryptography-and-why-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hay dos razones clave para adoptar la criptografía poscuántica ahora:</p>
+	<div class="flex anchor relative">
+		<h4 id="1-the-challenge-of-deprecating-cryptography">1. El desafío de desaprobar la criptografía</h4>
+		<a href="https://blog.cloudflare.com/#1-the-challenge-of-deprecating-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La historia demuestra que actualizar o eliminar algoritmos criptográficos obsoletos de los sistemas activos es sumamente difícil. Por ejemplo, aunque la función hash MD5 se <a href="https://iacr.org/archive/eurocrypt2005/34940019/34940019.pdf" target="_blank" rel="noopener noreferrer"><u>consideró insegura en 2004</u></a> y se desaprobó hace mucho tiempo, todavía se usaba con el protocolo de autenticación empresarial RADIUS en 2024. En julio de 2024, Cloudflare contribuyó a una investigación que reveló un <a href="https://blog.cloudflare.com/radius-udp-vulnerable-md5-attack"><u>ataque a RADIUS</u></a> que explotó su dependencia de MD5. Este ejemplo subraya el enorme desafío de actualizar los sistemas heredados — esta dificultad para lograr la <a href="https://en.wikipedia.org/wiki/Cryptographic_agility" target="_blank" rel="noopener noreferrer"><i><u>criptoagilidad</u></i></a> — que será igual de exigente cuando llegue el momento de la transición a la criptografía poscuántica. Entonces, tiene sentido comenzar este proceso ahora.</p>
+	<div class="flex anchor relative">
+		<h4 id="2-the-harvest-now-decrypt-later-threat">2. La amenaza de "recolección actual y descifrado futuro"</h4>
+		<a href="https://blog.cloudflare.com/#2-the-harvest-now-decrypt-later-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si bien las computadoras cuánticas carecen de suficientes qubits para descifrar la criptografía convencional en la actualidad, los atacantes pueden recopilar y almacenar comunicaciones encriptadas o robar conjuntos de datos con la intención de descifrarlos una vez que la tecnología cuántica se desarrolle. Si tus datos encriptados actuales pueden convertirse en un inconveniente en 10 o 15 años, es fundamental planificar un futuro poscuántico. Por esta razón, ya hemos comenzado a trabajar con algunos de los bancos, proveedores de servicios de Internet y gobiernos más innovadores de todo el mundo para lograr la seguridad cuántica.&nbsp;</p>
+	<p>El gobierno de EE. UU. ya está abordando estos riesgos. El 16 de enero de 2025, la Casa Blanca emitió el <a href="https://www.federalregister.gov/documents/2025/01/17/2025-01470/strengthening-and-promoting-innovation-in-the-nations-cybersecurity" target="_blank" rel="noopener noreferrer"><u>Decreto Ejecutivo 14144</u></a> para fortalecer y promocionar la innovación en la ciberseguridad del país. Este decreto exige que las agencias de gobierno “<i>actualicen periódicamente una lista de categorías de productos en la que los productos compatibles con la criptografía poscuántica (PQC) estén ampliamente disponibles... En un plazo de 90 días desde la inclusión de una categoría de producto en la lista... las agencias deben tomar medidas para incluir en cualquier solicitud de productos de esa categoría el requisito de que los productos sean compatibles con PQC.</i>”</p>
+	<p>En Cloudflare, estamos <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment"><u>investigando</u></a>, <a href="https://blog.cloudflare.com/securing-the-post-quantum-world"><u>desarrollando</u></a> y <a href="https://www.ietf.org/archive/id/draft-kwiatkowski-tls-ecdhe-mlkem-02.html" target="_blank" rel="noopener noreferrer"><u>estandarizando</u></a> la criptografía poscuántica <a href="https://blog.cloudflare.com/tag/post-quantum"><u>desde 2017</u></a>. Nuestra estrategia es simple:</p>
+	<p><b>Simplemente tuneliza tu tráfico a través de las conexiones cuánticas seguras de Cloudflare para protegerte de inmediato contra los ataques de recolección actual y descifrado futuro, sin la carga de tener que actualizar tú mismo cada biblioteca criptográfica.</b></p>
+	<p>Demos un vistazo más de cerca a cómo se está gestando la migración a la criptografía poscuántica en Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-two-phase-migration-to-post-quantum-cryptography">Una migración en dos fases a la criptografía poscuántica</h3>
+		<a href="https://blog.cloudflare.com/#a-two-phase-migration-to-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En Cloudflare, nos hemos centrado principalmente en migrar el protocolo <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer"><u>TLS (Transport Layer Security) 1.3</u></a> a la criptografía poscuántica. &nbsp; TLS protege principalmente las comunicaciones de las aplicaciones web, pero también se utiliza mucho para proteger el correo electrónico, la mensajería, <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>las conexiones VPN</u></a>, <a href="https://www.cloudflare.com/learning/dns/dns-over-tls" target="_blank" rel="noopener noreferrer"><u>el DNS</u></a> y muchos otros protocolos.&nbsp; Esto hace que TLS sea un protocolo ideal en el que centrarse al migrar a la criptografía poscuántica.</p>
+	<p>La migración implica la actualización de dos componentes críticos de TLS 1.3: <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer"><u>las firmas digitales utilizadas en los certificados</u></a> y <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation"><u>los mecanismos de acuerdo de claves</u></a>. Hemos logrado avances significativos en el acuerdo clave, pero la migración a las firmas digitales poscuánticas aún está en sus primeras etapas.</p>
+	<div class="flex anchor relative">
+		<h4 id="phase-1-migrating-key-agreement">Fase 1: Migración del acuerdo de claves</h4>
+		<a href="https://blog.cloudflare.com/#phase-1-migrating-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los protocolos de acuerdo de claves permiten que dos partes establezcan de forma segura una clave secreta compartida que pueden utilizar para proteger y cifrar sus comunicaciones. En la actualidad, los proveedores han coincidido en gran medida en la transición de TLS 1.3 para admitir un protocolo de intercambio de claves poscuántico conocido como <a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a> (Módulo entramado basado en un estándar de mecanismo de encapsulación clave). Hay dos razones principales para priorizar la migración del acuerdo clave:</p>
+	<ul>
+		<li>
+			<p><b>Rendimiento:</b> el estándar ML-KEM <a href="https://blog.cloudflare.com/pq-2024"><u>funciona</u></a> bien con el protocolo TLS 1.3, incluso para conexiones de red de corta duración.</p>
+		</li>
+		<li>
+			<p><b>Seguridad</b>: la criptografía convencional es vulnerable a los ataques de "recolección actual y descifrado futuro". En este modelo de amenaza, un atacante intercepta y almacena las comunicaciones encriptadas hoy y más tarde (en el futuro) utiliza una computadora cuántica para obtener la clave secreta, poniendo en riesgo la comunicación. En marzo de 2025, más de un tercio del tráfico web humano que llega a la red de Cloudflare está protegido contra estos ataques por TLS 1.3 con intercambio de claves híbrido ML-KEM.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Tgfy0HYHA5MM6JjaNP2Z1/b601d2938be3c52decf1f3cec7313c6e/image6.png" alt="" class="kg-image" width="1866" height="518" loading="lazy">
+	</figure>
+	<p><i><sup>Porcentaje cifrado poscuántico del tráfico de solicitudes HTTPS humanas observado por Cloudflare según </sup></i><a href="https://radar.cloudflare.com/adoption-and-usage?dateRange=52w" target="_blank" rel="noopener noreferrer"><i><sup><u>Cloudflare Radar</u></sup></i></a><i><sup> del 1 de marzo de 2024 al 1 de marzo de 2025. (Capturado el 13 de marzo de 2025).</sup></i></p>
+	<p>A continuación, te indicamos cómo comprobar si tu navegador Chrome utiliza ML-KEM para el acuerdo de claves al visitar un sitio web: Primero, <a href="https://developer.chrome.com/docs/devtools/inspect-mode#:~:text=Open%20DevTools,The%20element's%20margin%2C%20in%20pixels." target="_blank" rel="noopener noreferrer"><u>inspecciona la página</u></a>, luego abre la <a href="https://developer.chrome.com/docs/devtools/security" target="_blank" rel="noopener noreferrer"><u>pestaña Seguridad</u></a> y, por último, busca <a href="https://www.ietf.org/archive/id/draft-kwiatkowski-tls-ecdhe-mlkem-02.html" target="_blank" rel="noopener noreferrer"><u>X25519MLKEM768</u></a> como se muestra aquí:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EoD5jFMXJeWFeRtG9w6Uy/85aa13123d64f21ea93313f674d4378f/image1.png" alt="" class="kg-image" width="1388" height="814" loading="lazy">
+	</figure>
+	<p>Esto indica que tu navegador está utilizando el protocolo de acuerdo de claves ML-KEM <i>combinado con</i> la <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>elliptic curve cryptography</u></a> convencional en la curva <a href="https://en.wikipedia.org/wiki/Curve25519" target="_blank" rel="noopener noreferrer"><u>X25519</u></a>. Esto protege la criptografía convencional auténtica (<a href="https://en.wikipedia.org/wiki/Curve25519" target="_blank" rel="noopener noreferrer"><u>X25519</u></a>) junto con el nuevo acuerdo de clave poscuántica (<a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a>).</p>
+	<div class="flex anchor relative">
+		<h4 id="phase-2-migrating-digital-signatures">Fase 2: Migración de firmas digitales</h4>
+		<a href="https://blog.cloudflare.com/#phase-2-migrating-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer"><u>Las firmas digitales se utilizan en los certificados TLS</u></a> para validar la autenticidad de las conexiones, lo que permite al cliente estar seguro de que realmente se está comunicando con el servidor, y no con un atacante que se hace pasar por el servidor.&nbsp;</p>
+	<p>Sin embargo, las firmas digitales poscuánticas son significativamente más grandes y, por lo tanto, más lentas que sus contrapartes actuales. Este impacto en el rendimiento ha ralentizado su adopción, sobre todo porque ralentizan las conexiones TLS de corta duración.&nbsp;</p>
+	<p>Afortunadamente, las firmas poscuánticas no son necesarias para evitar los ataques de recolección actual y descifrado futuro. Estas protegen principalmente contra los ataques de alguien que está utilizando activamente una computadora cuántica para manipular una conexión TLS activa. Todavía tenemos algo de tiempo antes de que las computadoras cuánticas puedan hacer esto, lo que hace que la migración de las firmas digitales sea una prioridad menor.</p>
+	<p>Sin embargo, Cloudflare <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/07" target="_blank" rel="noopener noreferrer"><u>participa activamente en la estandarización</u></a> de las firmas poscuánticas para los certificados TLS. También estamos experimentando con su implementación en conexiones TLS de larga duración y explorando <a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs" target="_blank" rel="noopener noreferrer"><u>nuevos enfoques</u></a> para lograr la autenticación postcuántica sin sacrificar el rendimiento. Nuestro objetivo es garantizar que las firmas digitales poscuánticas estén listas para un uso generalizado cuando las computadoras cuánticas puedan atacar activamente las conexiones TLS activas.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-zero-trust-pqc-future-proofing-security">Cloudflare Zero Trust + PQC: seguridad preparada para el futuro</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-zero-trust-pqc-future-proofing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La plataforma Zero Trust de Cloudflare reemplaza los perímetros de seguridad corporativos heredados por la red global de Cloudflare, lo que agiliza y protege el acceso a Internet y a los recursos corporativos para los equipos de trabajo de todo el mundo. Hoy, nos complace anunciar que la plataforma Zero Trust de Cloudflare protege tus datos de las amenazas cuánticas mientras se desplazan por la Internet pública .&nbsp; Hay tres casos de uso clave de seguridad cuántica compatibles con nuestra plataforma Zero Trust en esta primera fase de preparación cuántica.</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-clientless-access">Acceso sin cliente con seguridad cuántica</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-clientless-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer"><u>Acceso sin cliente</u></a><a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app" target="_blank" rel="noopener noreferrer"><u>de Cloudflare</u></a> ahora protege el tráfico de Internet de una organización de las aplicaciones web internas contra las amenazas cuánticas, incluso si las propias aplicaciones aún no han migrado a la criptografía poscuántica. ("Acceso sin cliente" es un método para acceder a los recursos de la red sin instalar una aplicación de cliente exclusiva en el dispositivo del usuario.Los usuarios se conectan y acceden a la información a través de un navegador web).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mKiboLMsIEuNt1MaXlWsy/dad0956066e97db69401757b18e8ce5f/image4.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
+	</figure>
+	<p>Así es como funciona hoy:</p>
+	<ul>
+		<li>
+			<p><b>Conexión PQ a través del navegador: </b>(etiquetado con (1) en la figura).
+				Siempre que el navegador web del usuario sea compatible con el acuerdo de clave poscuántica, la conexión del dispositivo a la red de Cloudflare está protegida mediante TLS 1.3 con acuerdo de clave poscuántica.</p>
+		</li>
+		<li>
+			<p><b>PQ dentro de la red global de Cloudflare: </b>(etiquetado con (2) en la figura) Si el usuario y el servidor de origen están geográficamente distantes, el tráfico del usuario ingresará a la red global de Cloudflare en una ubicación geográfica (p. ej. Frankfurt) y saldrá en otra (p. ej., San Francisco).&nbsp; A medida que este tráfico se traslada de un centro de datos a otro dentro de la red global de Cloudflare, estos saltos a través de la red están protegidos mediante TLS 1.3 con acuerdo de clave poscuántica.<b>&nbsp;</b></p>
+		</li>
+		<li>
+			<p><b>PQ Cloudflare Tunnel: </b>(etiquetado con (3) en la figura)
+				Los clientes establecen un Cloudflare Tunnel desde su centro de datos o nube pública, donde se aloja su aplicación web corporativa, hasta la red de Cloudflare. Este túnel está protegido mediante TLS 1.3 con acuerdo de clave poscuántica, lo que lo protege de los ataques de recolección actual y descifrado futuro.</p>
+		</li>
+	</ul>
+	<p>En conjunto, el acceso sin cliente ofrece seguridad cuántica <b>de extremo a extremo</b> para acceder a las aplicaciones HTTPS corporativas, sin necesidad de que los clientes actualicen la seguridad de las aplicaciones web corporativas.</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement">Zero Trust con seguridad cuántica con configuración de cliente WARP a túnel de Cloudflare (como reemplazo de VPN)</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A mediados de 2025, las organizaciones podrán proteger <b>cualquier protocolo</b>, no solo HTTPS, mediante la tunelización a través de la plataforma Zero Trust de Cloudflare con criptografía poscuántica, brindando así seguridad cuántica a medida que el tráfico se desplaza por Internet desde el dispositivo del usuario final hasta la oficina corporativa, el centro de datos o el entorno de nube.</p>
+	<p>La plataforma Zero Trust de Cloudflare es ideal para sustituir las VPN tradicionales y habilitar las <a href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noopener noreferrer"><u>arquitecturas Zero Trust</u></a> con políticas modernas de autenticación y autorización.&nbsp; El cliente WARP a túnel de Cloudflare es una configuración de red popular para nuestra plataforma Zero Trust: las organizaciones implementan el <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>cliente de dispositivo WARP</u></a> de Cloudflare en los dispositivos de sus usuarios finales y luego usan <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> para conectarse a sus entornos de oficina corporativa, nube o centro de datos.&nbsp;&nbsp;&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xovIIyVOO32xrXBs0ZFcf/110928926b86f12777f16518b1313875/image3.png" alt="" class="kg-image" width="1548" height="525" loading="lazy">
+	</figure>
+	<p>&nbsp;Estos son los detalles:&nbsp;&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Conexión PQ a través de cliente WARP (disponible a mediados de 2025): </b>(etiquetado con (1) en la figura) El cliente WARP utiliza el <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>protocolo MASQUE</u></a> para conectarse desde el dispositivo a la red global de Cloudflare. Estamos trabajando para agregar soporte para establecer esta conexión MASQUE con TLS 1.3 con acuerdo de clave poscuántica, con una fecha de finalización prevista para mediados de 2025.&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>PQ dentro de la red global de Cloudflare:&nbsp; </b>(etiquetado con (2) en la figura)
+				A medida que el tráfico se desplaza de un centro de datos a otro dentro de la red global de Cloudflare, cada salto que da a través de la red de Cloudflare ya está protegido con TLS 1.3 con acuerdo de clave poscuántica.</p>
+		</li>
+		<li>
+			<p><b>PQ Cloudflare Tunnel: </b>(etiquetado con (3) en la figura)
+				Como se mencionó anteriormente, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> ya es compatible con el acuerdo de clave poscuántica.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Una vez que se completen las próximas mejoras poscuánticas en el cliente de dispositivo WARP, los clientes podrán encapsular su tráfico en túneles cuánticos seguros, mitigando de manera efectiva el riesgo de ataques de recolección actual y descifrado futuro sin necesidad de actualizar individualmente sus redes o aplicaciones .&nbsp; Y esto brinda una protección integral para cualquier protocolo que se pueda enviar a través de estos túneles, ¡no solo para HTTPS!</p>
+	<div class="flex anchor relative">
+		<h4 id="quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications">SWG con seguridad cuántica (PQC de extremo a extremo para acceder a aplicaciones web de terceros)</h4>
+		<a href="https://blog.cloudflare.com/#quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Una <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies" target="_blank" rel="noopener noreferrer"><u>puerta de enlace web segura</u></a> (SWG) se utiliza para proteger el acceso a sitios web de terceros en la Internet pública al interceptar e inspeccionar el tráfico TLS.&nbsp;</p>
+	<p>Cloudflare Gateway es ahora una SWG con seguridad cuántica para el tráfico HTTPS. Siempre que el sitio web de terceros que se esté inspeccionando sea compatible con el acuerdo de clave poscuántica, la SWG de Cloudflare también es compatible con el acuerdo de clave poscuántica. Esto es así independientemente de la vía de acceso que el cliente utilice para acceder a la red de Cloudflare (es decir, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer"><u>navegador web</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>cliente de dispositivo WARP</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector" target="_blank" rel="noopener noreferrer"><u>conector WARP</u></a>, <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer"><u>Magic WAN</u></a>), y solo requiere el uso de un navegador que admita el acuerdo de clave poscuántica.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vnkEFkvKbhSAxp33GmRk7/c58d00a14767a03b2422af1c48a53ba9/image5.png" alt="" class="kg-image" width="1488" height="700" loading="lazy">
+	</figure>
+	<p>La función HTTPS SWG de Cloudflare Gateway implica dos conexiones TLS poscuánticas, de la siguiente manera:</p>
+	<ul>
+		<li>
+			<p><b>Conexión PQ a través del navegador: </b>(etiquetado con (1) en la figura)
+				Se inicia una conexión TLS desde el navegador del usuario a un centro de datos en la red de Cloudflare que realiza la inspección TLS . Siempre que el navegador web del usuario admita el acuerdo de clave poscuántica, esta conexión está protegida por TLS 1.3 con acuerdo de clave poscuántica.&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Conexión de PQ al servidor de origen: </b>(etiquetada con (2) en la figura)
+				Una conexión TLS se inicia desde un centro de datos de la red de Cloudflare hasta el servidor de origen, que suele estar controlado por un tercero. La conexión de SWG de Cloudflare admite actualmente el acuerdo de clave poscuántica, siempre que el servidor de origen del tercero también admita el acuerdo de clave poscuántica.&nbsp; Puedes probarlo hoy mismo utilizando<a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer"><u>https://pq.cloudflareresearch.com/</u></a> como tu servidor de origen de terceros.&nbsp;</p>
+		</li>
+	</ul>
+	<p>En conjunto, el SWG de Cloudflare está preparado para la tecnología cuántica y admitir el acceso seguro a cualquier sitio web de terceros que esté preparado para la tecnología cuántica en la actualidad o en el futuro. ¡Y esto es así independientemente del acceso utilizado para llevar el tráfico de los usuarios finales a la red global de Cloudflare!</p>
+	<div class="flex anchor relative">
+		<h3 id="the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way">El futuro poscuántico: la plataforma Zero Trust de Cloudflare está a la vanguardia</h3>
+		<a href="https://blog.cloudflare.com/#the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Proteger a nuestros clientes de las amenazas cuánticas emergentes no es solo una prioridad, es nuestra responsabilidad. Desde 2017, Cloudflare es pionero en la criptografía poscuántica a través de la investigación, la estandarización y la implementación estratégica en todo nuestro ecosistema de productos.</p>
+	<p><b>El día de hoy marca un hito: </b>lanzamos la primera fase de protección cuántica segura para nuestra plataforma Zero Trust. El acceso sin cliente con seguridad cuántica y la puerta de enlace web segura ya están disponibles, y las configuraciones de red de cliente a túnel WARP estarán disponibles a mediados de 2025. A medida que avanzamos en la criptografía poscuántica de vanguardia, nuestro compromiso con la innovación continua garantiza que tu organización se mantenga a la vanguardia de las amenazas del mañana.&nbsp; Deja que nosotros nos ocupemos de la criptoagilidad para que tú no tengas que hacerlo.</p>
+	<p>Para obtener más información sobre cómo la criptoagilidad integrada de Cloudflare puedes preparar tu negocio para el futuro, visita nuestra <a href="http://cloudflare.com/pqc" target="_blank" rel="noopener noreferrer"><u>página web sobre criptografía poscuántica</u></a>. </p>
+</div>

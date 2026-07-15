@@ -1,0 +1,76 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cf-cli-local-explorer">English</a>および<a href="https://blog.cloudflare.com/ko-kr/cf-cli-local-explorer">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TTRJoUvbs5eWPtnu6NuL6/d31b8479cfca7f4a77517f875f0049eb/BLOG-3224_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareには広大なAPIサーフェスがあります。私たちには100を超える製品があり、3,000近くのHTTP API運用があります。</p>
+	<p>エージェントは、ますます、私たちのAPIの主要な顧客となっています。開発者は、コーディングエージェントを持ち込み、<a href="https://workers.cloudflare.com/solutions/frontends" target="_blank" rel="noopener noreferrer"><u>アプリケーション</u></a>、<a href="https://workers.cloudflare.com/solutions/ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>、および<a href="https://workers.cloudflare.com/solutions/platforms" target="_blank" rel="noopener noreferrer"><u>プラットフォーム</u></a>をCloudflareに構築・デプロイし、アカウントを設定し、当社のAPIにクエリを実行して分析やログを取得します。</p>
+	<p>私たちは、すべてのCloudflare製品をエージェントが必要とするすべての方法で利用できるようにしたいと考えています。たとえば、現在、CloudflareのAPI全体を、<a href="https://blog.cloudflare.com/code-mode-mcp"><u>1,000未満のトークン</u></a>を使用する単一のコードモードMCPサーバーで利用できるようにしています。しかし、カバーすべき領域は他にもたくさんあります：<a href="https://developers.cloudflare.com/workers/wrangler/commands" target="_blank" rel="noopener noreferrer"><u>CLIコマンド</u></a>。<a href="https://blog.cloudflare.com/workers-environment-live-object-bindings"><u>Workersバインディング</u></a> — ローカル開発とテスト用のAPIを含む。<a href="https://developers.cloudflare.com/fundamentals/api/reference/sdks" target="_blank" rel="noopener noreferrer"><u>複数言語に対応したSDK</u></a>。<a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer"><u>Cloudflareの設定ファイル</u></a>です。<a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer"><u>Terraform</u></a>。<a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメント</u></a>。<a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer"><u>APIドキュメント</u></a>および OpenAPI スキーマ。<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>エージェントスキル</u></a>。</p>
+	<p>現在、当社製品の多くは、これらのインターフェースのいずれにも使用できません。これは特に、CLIである<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>に当てはまります。多くのCloudflare製品には、WranglerにCLIコマンドがありません。エージェントはCLIを好みます。</p>
+	<p>そこで、Wrangler CLIを再構築し、Cloudflare全社向けのCLIにしました。これは、すべてのCloudflare製品にコマンドを提供し、コードとしてのインフラストラクチャを使用してそれらをまとめて設定できるようにします。</p>
+	<p>本日は、Wranglerの次のバージョンの早期情報を技術プレビューとしてご紹介します。まだ初期段階ですが、公共の場で仕事をする時に最高のフィードバックが得られます。</p>
+	<p>本日、<code>npx cf</code>を実行すると、技術プレビューをお試しいただけます。あるいは、<code>npm install -g cf</code>を実行して、グローバルにインストールすることもできます。</p>
+	<p>現在、cfはCloudflare製品のほんの一部のコマンドを提供しています。すでにCloudflare APIサーフェス全体をサポートするcfのバージョンをテスト中です。また、各製品のコマンドを意図的に見直し、調整し、エージェントと人間の両方にとって機能的な出力が得られるようになる予定です。この技術プレビューは、将来のWrangler CLIのほんの一部に過ぎません。これからの数か月の間に、皆さんがご存知のWranglerの一部をお届けします。</p>
+	<p>Cloudflareでの製品開発の速いペースと同期し続ける方法でこれを構築するために、コマンド、設定、バインディングAPIなどを生成できる新しいシステムを作成する必要がありました。</p>
+	<div class="flex anchor relative">
+		<h2 id="rethinking-schemas-and-our-code-generation-pipeline-from-first-principles">スキーマとコード生成パイプラインを第一原理から再考</h2>
+		<a href="https://blog.cloudflare.com/#rethinking-schemas-and-our-code-generation-pipeline-from-first-principles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare API用のOpenAPIスキーマに基づいて、Cloudflareはすでに<a href="https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline"><u>API SDK</u></a>、<a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider"><u>Terraformプロバイダー</u></a>、および<a href="https://blog.cloudflare.com/code-mode-mcp"><u>コードモードMCPサーバー</u></a>を生成しています。しかし、CLI、Workersバインディング、wrangler.jsonc設定、エージェントスキル、ダッシュボード、ドキュメントの更新は、依然として手動プロセスです。これは既にエラーが発生しやすく、やり取りが多すぎて、CLIの次のバージョンではCloudflare API全体をサポートするために拡張することができませんでした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wjmgUzBkjeI0RtyXKIMXm/f7fc6ce3b7323aacb3babdfb461f383f/BLOG-3224_2.png" alt="" class="kg-image" width="1804" height="1832" loading="lazy">
+	</figure>
+	<p>これを実現するためには、OpenAPIスキーマで表現できる以上のものが必要でした。OpenAPIスキーマはREST APIsを記述していますが、ローカル開発とAPI呼び出しの両方を組み合わせた複数のアクションを含むインタラクティブなCLIコマンドがあります。RPC APIsとして表現されるWorkersバインディングと、これらすべてを結びつけるエージェントスキルとドキュメントがあります。</p>
+	<p>Cloudflareでは多くのTypeScriptを記述しています。これはソフトウェアエンジニアリングの言語です。そして、<a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library"><u>Cap n’ Web</u></a>、<a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a>、Workersプラットフォームに組み込まれた<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPCシステム</u></a>と同じように、TypeScriptでAPIを表現する方が効果的であることがわかり続けています。</p>
+	<p>そこで、APIの全スコープ、CLIコマンドと引数、そしてインターフェースを生成するために必要なコンテキストを定義できる、新しいTypeScriptスキーマを導入しました。スキーマフォーマットは「単なる」TypeScript型のセットで、一貫性を保つための制約、リンティング、ガードレールが備わっています。しかし、当社独自のフォーマットであるため、現在<i>また</i>は将来的に必要なインターフェースをサポートするために簡単に適応でき、OpenAPIスキーマも生成できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4H0xSIPMmrixUWsFL86RUJ/998b93a465d26d856885b4d833ac19d4/BLOG-3224_3.png" alt="" class="kg-image" width="1826" height="1854" loading="lazy">
+	</figure>
+	<p>これまでは、当社が必要としていたマシンの構築に焦点が当てられてきました。これにより、当社が何年も提供を望んできたCLIやその他のインターフェースの構築を始めることができます。これにより、特にCLIのコンテキストエンジニアリングに関して、Cloudflare全体で標準化してエージェントにとってさらに優れたものになるだろうと、より大きな構想を持ち始めました。</p>
+	<div class="flex anchor relative">
+		<h2 id="agents-and-clis-consistency-and-context-engineering">エージェントとCLI — 一貫性とコンテキストエンジニアリング</h2>
+		<a href="https://blog.cloudflare.com/#agents-and-clis-consistency-and-context-engineering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントはCLIが一貫していることを期待しています。あるコマンドがリソースに関する情報を取得するための構文として<code>&lt;command&gt; info</code>を使用し、別のコマンドが<code>&lt;command&gt; get</code>を使用している場合、エージェントは1つを想定し、もう1つの存在しないコマンドを呼び出します。数百人、数千人の大規模なエンジニアリング組織が多くの製品を抱える大規模なエンジニアリング組織において、レビューを通じて手作業で一貫性を持たせるのはスイスのチーズです。また、CLIレイヤーで強制することもできますが、その場合、CLI、REST API、SDKの間で命名が異なるため、問題をさらに悪化させることになります。</p>
+	<p>最初のステップの1つは、スキーマ層で強制されるルールとガードレールの作成を開始することです。いつも <code>get</code> であって、決して <code>info</code> ではありません。常に <code>--force</code> であり、決して <code>--skip-confirmations</code> ではありません。常に <code>--json</code> であり、決して <code>--format</code> ではなく、常にコマンド全体でサポートされています。</p>
+	<p>Wrangler CLIもかなりユニークなもので、シミュレートされたローカルリソースと、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1データベース</u></a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2ストレージバケット</u></a>、<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KVネームスペース</u></a>のようなリモートリソースの両方で動作するコマンドと設定を提供します。つまり、一貫したデフォルトがさらに重要になるということです。エージェントがリモートデータベースを変更していると思っていても、実際にはローカルデータベースにレコードを追加しているだけで、開発者がリモートデータベースに対してローカル開発するためにリモートバインディングを使用している場合、エージェントは、新たに追加されたレコードが表示されない理由を理解できないエージェントがローカル開発サーバーにリクエストを行うと、起動します。一貫したデフォルトと、コマンドがリモートリソースに適用されるか、ローカルリソースに適用されるかを明確に示す出力により、エージェントは明示的なガイダンスを得ることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="local-explorer-what-you-can-do-remotely-you-can-now-do-locally">Local Explorer — リモートでできることを、ローカルでできるようになりました</h2>
+		<a href="https://blog.cloudflare.com/#local-explorer-what-you-can-do-remotely-you-can-now-do-locally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日、Local Explorerもリリースします。これは、WranglerとCloudflare Viteプラグインの両方でオープンベータで利用できる新機能です。</p>
+	<p>Local Explorerでは、<a href="https://www.cloudflare.com/developer-platform/products/workers-kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>、D1、<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>など、ローカル開発時にWorkerが使用するシミュレートされたリソースを調査できます。これらのそれぞれを使用したCloudflare APIとダッシュボードを介してできるのと同じことを、同じ基盤となるAPI構造によって活用して、完全にローカルで行うこともできます。</p>
+	<p>当社は長年にわたり、Cloudflare Workersだけでなくプラットフォーム全体を対象に、<a href="https://blog.cloudflare.com/wrangler3"><u>完全にローカルな開発に賭けてきました</u></a>。D1を使う場合、D1はホストされたサーバーレスデータベース製品であっても、追加のセットアップやツールなしに、完全にローカルでデータベースを実行し、バインディングを介して通信することができます。当社のローカル開発プラットフォームエミュレーターである<a href="https://developers.cloudflare.com/workers/testing/miniflare" target="_blank" rel="noopener noreferrer"><u>Miniflare</u></a>を介して、Workersランタイムは、ローカル開発で本番環境とまったく同じAPIを提供し、ローカルSQLiteデータベースを使用して同じ機能を提供します。これにより、ネットワークアクセスを必要とせず、オフラインで作業するテストを簡単に作成して実行できます。</p>
+	<p>しかし、これまでは、どのデータがローカルに保存されているかを調べるには、リバースエンジニアリングを行い、<code>.wrangler/state</code>のコンテンツを検査する必要がありました。ディレクトリに作成したり、サードパーティツールをインストールしたりすることができます。</p>
+	<p>これで、Wrangler CLIまたはCloudflare Viteプラグインでアプリを実行するたびに、ローカルエクスプローラー（キーボードショートカット<code>e</code>）を開くよう求められます。これにより、Workerが現在アタッチしているバインディング、そしてそれらに対してどのようなデータが保存されているかをシンプルなローカルインターフェースで確認することができます。</p>
+	<div style="position: relative; padding-top: 62.7906976744186%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/d39a1604ca1a03de1fa9824bd0c00cb3/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fd39a1604ca1a03de1fa9824bd0c00cb3%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>エージェントを使用して構築する場合、Local Explorerは、エージェントがデータで何をしているのかを理解するのに最適な方法であり、ローカル開発サイクルをよりインタラクティブにします。スキーマを検証したり、テストレコードをシードしたり、最初からやり直して<code>DROP TABLE</code>を実行する必要があるときはいつでも、Local Explorerを利用できます。</p>
+	<p>ここでの目標は、ローカルデータのみを変更するCloudflare APIのミラーサイトを提供し、すべてのローカルリソースがリモートで使用しているのと同じAPIを介して利用できるようにすることです。また、ローカルとリモートでAPIの形式を合わせることで、次期バージョンのCLIでCLIコマンドを実行し、<code>--local</code> フラグを渡した時に、コマンドが動作します。唯一の違いは、コマンドが代わりにCloudflare APIのこのローカルミラーにリクエストを行うことです。</p>
+	<p>本日より、このAPIはWranglerまたはVite Plugin搭載アプリケーションで、<code>/cdn-cgi/explorer/api</code>にてご利用いただけます。エージェントをこのアドレスに向けることで、エージェントに通信するだけで、あなたのローカルリソースを管理できるOpenAPI仕様が見つかります。</p>
+	<div class="flex anchor relative">
+		<h2 id="tell-us-your-hopes-and-dreams-for-a-cloudflare-wide-cli">Cloudflare全体のCLIに対する希望や夢をお聞かせください</h2>
+		<a href="https://blog.cloudflare.com/#tell-us-your-hopes-and-dreams-for-a-cloudflare-wide-cli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>マシンを構築したので、次はWranglerの最高の部分を取り上げ、現在可能なものと組み合わせて、WranglerをCloudflareのすべてを使用するための最高のCLIにする時です。</p>
+	<p>本日、<code>npx cf</code>を実行して、技術プレビューをお試しいただけます。あるいは、<code>npm install -g cf</code>を実行して、グローバルにインストールすることもできます。</p>
+	<p>この初期バージョンでは、現在の技術プレビューの機能だけでなく、Cloudflareのプラットフォーム全体のCLIに何を求められるかについて、皆様からのフィードバックを求めています。1行のCLIコマンドが簡単ですが、現在ダッシュボードで数回クリックできるようになっており、ご希望をお聞かせください。DNSレコードやキャッシュルールなど、<code>wrangler.jsonc</code>で設定できたらと思うこと。エージェントが行き詰っている場所、そしてエージェントに提供されるCLIが必要なコマンドは何か？</p>
+	<p><a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>に参加して、CLIに最初に追加してほしいものをお聞かせください。今後も多くのアップデートにご期待ください。</p>
+	<p><i>Emily Shen氏、Local Explorerプロジェクト立ち上げに貴重な貢献をしてくれたことに感謝の気持ちを贈りたいと思います。</i></p>
+</div>

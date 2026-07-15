@@ -1,0 +1,128 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VoeWz4uYyUO0N70CkENqB/eaf25c3382f436ba3d3e1b27da334cbc/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>セキュリティチームは、<a href="https://www.cloudflare.com/the-net/vulnerable-llm-ai" target="_blank" rel="noopener noreferrer"><u>AIを搭載したアプリケーションという新たな攻撃対象領域の保護</u></a>に躍起になっています。チャットボットから検索アシスタントに至るまで、LLMはすでにカスタマーエクスペリエンスを生み出していますが、新たなリスクへの扉も開いています。悪意のあるプロンプトが1つあるだけで、機密データを流出させたり、<a href="https://www.cloudflare.com/learning/ai/data-poisoning" target="_blank" rel="noopener noreferrer"><u>モデルをポイズニングしたり</u></a>、有害なコンテンツを顧客向けのインタラクションに挿入したりして、ユーザーの信頼を損なう可能性があります。ガードレールがなければ、最良のトレーニングを受けたモデルでも、ビジネスに対抗することができます。</p>
+	<p>本日、AI Weekの一環として、Cloudflare <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>Firewall for AI</u></a>に直接統合された安全でないコンテンツのモデレーションを導入することで、<a href="https://www.cloudflare.com/ai-security" target="_blank" rel="noopener noreferrer">AIセキュリティサービスを拡大します</a>。Llamaで構築されたこの新機能により、お客様は既存のFirewall for AIエンジンを活用して、検出、分析、トピックの適用を統合し、<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>ネットワークレベルで大規模言語モデル（LLM）</u></a>をリアルタイムで保護することができます。セキュリティチームとアプリケーションチームは、数回のクリックで有害なプロンプトやトピックをエッジで検出し、ブロックできるようになりました。アプリケーションコードやインフラストラクチャを変更する必要はありません。
+
+		この機能は、現在のFirewall for AIユーザーにすぐにご利用いただけます。まだオンボードをしていない方は、アカウントチームにご連絡いただければ、ベータプログラムにご参加いただけます。</p>
+	<div class="flex anchor relative">
+		<h2 id="ai-protection-in-application-security">アプリケーションセキュリティにおけるAI保護</h2>
+		<a href="https://blog.cloudflare.com/#ai-protection-in-application-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのFirewall for AIは、<a href="https://blog.cloudflare.com/best-practices-sase-for-ai">ユーザー向けのLLMアプリケーション</a>を不正利用やデータ漏洩から保護し、<a href="https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms" target="_blank" rel="noopener noreferrer"><u>OWASPのLLMトップ10リスク</u></a>であるプロンプトインジェクション、個人を特定できる情報の開示、無制限の利用などに対処します。また、安全でない、有害なコンテンツなどの他のリスクにも保護を拡張します。</p>
+	<p>モデルプロバイダーによって異なる組み込みの制御とは異なり、Firewall for AIはモデル非依存です。OpenAIやGeminiといったサードパーティ、自社で実行するモデル、自社で構築したカスタムモデルなど、選択したあらゆるモデルの前に位置し、同じ一貫した保護を適用します。</p>
+	<p>オリジンに依存しない<a href="https://www.cloudflare.com/application-services/#application-services-case-products" target="_blank" rel="noopener noreferrer"><u>アプリケーションセキュリティスイート</u></a>と同様に、Firewall for AIは、すべてのモデルに大規模にポリシーを適用し、統合されたセキュリティレイヤーを作成します。つまり、ガードレールを一度定義すれば、どこにでも適用できるということです。例えば、金融サービス企業では、LLMが財務関連の質問にのみ応答し、無関係なトピックや機密性の高いトピックに関するプロンプトをブロックするよう義務付けたり、使用されているすべてのモデルに一貫して適用することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="unsafe-content-moderation-protects-businesses-and-users">安全でないコンテンツのモデレーションがビジネスとユーザーを保護</h2>
+		<a href="https://blog.cloudflare.com/#unsafe-content-moderation-protects-businesses-and-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>効果的なAIモデレーションとは、「悪意のある言葉」をブロックするだけではありません。重要な声を黙殺するような過剰なモデレーションを行うことなく、ユーザーを保護し、法的義務を果たし、ブランドの整合性を維持することが重要です。</p>
+	<p>LLMは完全にスクリプト化できないため、その相互作用は本質的に予測不可能です。このような柔軟性のおかげで、豊かなユーザーエクスペリエンスが実現する一方で、不正利用の機会も生まれます。</p>
+	<p>安全でないプロンプトの主なリスクには、誤情報、偏ったコンテンツ、攻撃的なコンテンツ、モデルポイズニングなどがあります。有害なプロンプトが繰り返されると、将来のアウトプットの品質と安全性が低下します。こうしたプロンプトをブロックすることで、OWASPのLLMトップ10と整合し、即時の不正使用と長期的な劣化の両方を防ぐことができます。</p>
+	<p>この一例が、<a href="https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist" target="_blank" rel="noopener noreferrer"><u><b>MicrosoftのTayチャットボット</b></u></a>です。Trollは意図的に有害、人種差別、攻撃的プロンプトを送信し始め、Tayはすぐにそれを繰り返し始めました。失敗は、Tayの対応だけではありませんでした。入力内容について調整されて、</p>
+	<div class="flex anchor relative">
+		<h2 id="detecting-unsafe-prompts-before-reaching-the-model">モデルに到達する前の安全でないプロンプトを検出する</h2>
+		<a href="https://blog.cloudflare.com/#detecting-unsafe-prompts-before-reaching-the-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、<a href="https://huggingface.co/meta-llama/Llama-Guard-3-8B" target="_blank" rel="noopener noreferrer"><u>Llama Guard</u></a>をFirewall for AIと直接統合しました。これにより、お客様がすでにアプリケーションの保護に利用しているのと同じルールエンジンに、AI入力のモデレーションが導入されます。これは、私たちが<a href="https://blog.cloudflare.com/guardrails-in-ai-gateway"><u>AI Gateway</u></a>プロダクトでAIを構築する開発者のために作成したものと同じアプローチを採用しています。</p>
+	<p>Llama Guardはプロンプトをリアルタイムで分析し、ヘイト、暴力、性的コンテンツ、犯罪計画、自己危害など、複数の安全性カテゴリーにフラグを立てます。</p>
+	<p>この統合により、Firewall for AIは<a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#discovering-llm-powered-applications"><u>LLMトラフィックエンドポイントを自動的に検出</u></a>するだけでなく、セキュリティチームとAIチームが即座に対策を講じることができるようにします。安全でないプロンプトはモデルに到達する前にブロックでき、フラグの立ったコンテンツはログに記録またはレビューして監視とチューニングを行います。コンテンツの安全性チェックは、<a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>ボット管理</u></a>や<a href="https://www.cloudflare.com/application-services/products/rate-limiting" target="_blank" rel="noopener noreferrer"><u>レート制限</u></a>などの他のアプリケーションセキュリティ保護と組み合わせて、モデルを保護する際に多層防御を構築することもできます。</p>
+	<p>その結果、複雑な統合を必要とせずに、安全でないプロンプトがインフラストラクチャに到達する前にガードレールを適用する、単一のエッジネイティブなポリシーレイヤーを作成できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-under-the-hood">内部の動作</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Firewall for AI Engineのアーキテクチャと、それが前述のモジュールにどのように適合し、<a href="https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/#using-workers-ai-to-deploy-presidio"><u>プロンプト内の個人を特定できるか</u></a>を説明する前に、安全でないトピックを検出する方法について紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="detection-of-unsafe-topics">安全でないトピックの検出</h3>
+		<a href="https://blog.cloudflare.com/#detection-of-unsafe-topics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>安全用ガードレールを構築する上で重要な課題は、優れた検出機能とモデルの有用性のバランスを取ることです。検出の範囲が広すぎると、モデルが正当なユーザーの質問に答えることができなくなり、その有用性が損なわれる可能性があります。これは、文脈が意味の基本であるため、人間の言語の曖昧性と動的性質により、トピック検出では特に困難です。</p>
+	<p>キーワードブロックリストのようなシンプルなアプローチは、対象を正確に把握するものとしては興味深いものですが、十分ではありません。これらは簡単に迂回され、単語が使用されている文脈を理解できないため、記憶力が低下します。<a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation" target="_blank" rel="noopener noreferrer"><u>Latent Dirichlet Allocation（LDA）</u></a>のような古い確率的モデルは改善されましたが、単語の順序やその他の文脈の違いを適切に考慮できないものでした。
+
+		最近のLLMの進歩により、新しいパラダイムが導入されました。ゼロショットまたは数秒の分類を実行する能力は、トピック検出タスクに独自に適しています。このため、私たちは<a href="https://huggingface.co/meta-llama/Llama-Guard-3-8B" target="_blank" rel="noopener noreferrer"><u>Llama Guard 3</u></a>を選択しました。Llamaアーキテクチャに基づき、コンテンツの安全性分類のために特に細かく調整されたオープンソースモデルです。プロンプトを分析すると、そのテキストが安全か非安全かを答え、特定のカテゴリーを提供します。<a href="http://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe_topic_categories" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>に記載されているように、デフォルトのカテゴリを表示しています。Llama 3は知識の遮断が固定されているため、レコード、および選挙のような特定のカテゴリーは非常に緊急性の高いものです。その結果、モデルは学習後に出現したイベントやコンテキストを完全に取得できない可能性があります。この点に依存する場合は、その点を念頭に置いておくことが重要です。</p>
+	<p>今のところ、13のデフォルトカテゴリをカバーしています。モデルのゼロショット機能を活用して、将来的に対象範囲を拡大していく予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-scalable-architecture-for-future-detections">将来の検出のためのスケーラブルなアーキテクチャ</h3>
+		<a href="https://blog.cloudflare.com/#a-scalable-architecture-for-future-detections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Firewall for AIは、Llama Guardを含め、目立った遅延を発生させることなく拡張できるように設計しました。そして、新しい検出モデルを追加した場合でも変わりません。</p>
+	<p>そのために、新しい非同期アーキテクチャを構築しました。Firewall for AIで保護されているアプリケーションにリクエストが送信されると、Cloudflare Workerは、個人を特定できる情報用、安全でないトピック用などの検出モジュールに並列の非ブロッキングリクエストを行います。</p>
+	<p>Cloudflareネットワークのおかげで、この設計はすぐに大量のリクエストを処理できるように拡張でき、新しい検出を追加しても遅延が増加しません。使用される最も遅いモデルによってのみ制限されることになります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y2gTP6teVR2263UIEWHc9/9a31fb394cee6c437c1d4af6f71d867c/image3.png" alt="" class="kg-image" width="1924" height="1300" loading="lazy">
+	</figure>
+	<p>ガードレール検出の幅を十分に保ちながら、モデルのユーティリティを最大限に維持するように最適化します。</p>
+	<p>Llama Guardは比較的大規模なモデルであるため、遅延を最小限に抑えながら大規模に実行することが課題となっています。当社の大規模な高性能GPUを活用し、<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>上にデプロイしています。このインフラにより、ネットワーク全体で高速かつ信頼性の高い推論を提供できるようになります。</p>
+	<p>採用が拡大してもシステムが高速で信頼性を維持できるようにするため、実際のトラフィックに備えて、さまざまなプロンプトサイズのプロンプトを使用して、予想される1秒あたりのリクエスト数（RPS）をシミュレートした広範な負荷テストを実施しました。これに対処するため、ネットワークにデプロイされるモデルインスタンスの数は負荷に応じて自動的に拡張します。当社はコンカレンシーを採用して遅延を最低限に抑え、ハードウェア使用率を最適化しています。また、各分析に2秒のハードしきい値を強制します。この時間制限に達した場合は、すでに完了した検出に戻し、お客様のアプリケーションのリクエスト遅延にさらなる影響が及ばないようにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="from-detection-to-security-rules-enforcement">検出からセキュリティルールの適用まで</h3>
+		<a href="https://blog.cloudflare.com/#from-detection-to-security-rules-enforcement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Firewall for AIは、ボット管理やWAF Attack Scoreなどの他のアプリケーションセキュリティ機能と同じパターンに従っているため、簡単に導入できます。</p>
+	<p>有効にすると、<a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>セキュリティ分析</u></a>と拡張ログに<a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai/#fields" target="_blank" rel="noopener noreferrer"><u>新しいフィールド</u></a>が表示されます。そこから、安全でないトピックによってフィルタリングしたり、経時的な傾向を追跡したり、個々のリクエストの結果を掘り下げて、すべての検出結果を確認することができます。たとえば、安全でないトピックを検出したか、カテゴリーは何かなど。リクエスト本文（プロンプト自体は保存も公開もされません。分析の結果のみが記録されます</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/722JxyLvT6DFQxFpQhHMYP/3f1a6aa8ef1dafe4ad1a8277578fd7ae/image2.png" alt="" class="kg-image" width="1125" height="818" loading="lazy">
+	</figure>
+	<p>分析を確認した後、<a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>カスタムルール</u></a>のプロンプトカテゴリに基づいて、ログまたはブロックするルールを作成することで、安全でないトピックのモデレーションを適用できます。</p>
+	<p>たとえば、性的なコンテンツやヘイトスピーチとしてフラグが立てられたプロンプトを記録し、レビューすることができます。</p>
+	<p>この表現を使用することができます：
+		<code>If (any(cf.llm.prompt.unsafe_topic_categories[*] in {"S10" "S12"})) then Log</code>または、
+
+		以下のスクリーンショットのようにダッシュボードのカテゴリーフィールドでルールをデプロイします。
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CUsVjjpCEqv2UQMU6cMmt/5307235338c1b58856c0685585347537/image4.png" alt="" class="kg-image" width="1113" height="498" loading="lazy">
+	</figure>
+	<p>すべての安全でないプロンプトを完全にブロックすることで、より広範なアプローチをとることもできます。
+		<code>If (cf.llm.prompt.unsafe_topic_detected)then Block</code>
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uRT9YlRlRPsL5bNyBFA3i/54eb171ecb48aaecc7876b972789bf15/image5.png" alt="" class="kg-image" width="1169" height="628" loading="lazy">
+	</figure>
+	<p>これらのルールは、プロンプトを含むすべての検出されたHTTPリクエストに自動的に適用され、AIトラフィック全体に一貫したガードレールが適用されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今後数週間で、Firewall for AIはプロンプトインジェクションと脱獄の試みを検出できるように拡張します。また、チームが検出結果をより適切に検証できるように、分析とログの可視性を高める方法についても検討しています。当社のロードマップの重要な部分は、モデルレスポンス処理を追加することで、LLMに入るものだけでなく、出てくるものも制御できるようにするものです。トークンのレート制限やより安全なカテゴリーのサポートなど、追加の不正利用制御も予定されています。</p>
+	<p>Firewall for AIは、現在ベータ版でご利用いただけます。Cloudflareをはじめて利用される方で、これらのAI保護の実装方法についてお知りになりたい方は、<a href="https://www.cloudflare.com/plans/enterprise/contact/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>コンサルテーションをご利用ください</u></a>。すでにCloudflareをご利用中の方は、アカウントチームに連絡してアクセスを取得し、実際のトラフィックでテストを開始してください。</p>
+	<p>Cloudflareはまた、<a href="https://www.cloudflare.com/learning/ai/what-is-ai-security" target="_blank" rel="noopener noreferrer">AIセキュリティ</a>に焦点を当てたユーザーリサーチプログラムを開始しています。新機能のプレビューに関心がある場合、またはロードマップの作成に協力したい場合は、<a href="https://www.cloudflare.com/lp/ai-security-user-research-program-2025" target="_blank" rel="noopener noreferrer"><u>こちらからその旨をご連絡ください</u></a>。</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/8bae7c26062c169c1a42a2bb9365d9f1/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F8bae7c26062c169c1a42a2bb9365d9f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

@@ -1,0 +1,278 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/python-workers-advancements">English</a>、<a href="https://blog.cloudflare.com/zh-tw/python-workers-advancements">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/python-workers-advancements">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/python-workers-advancements">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Wu87IZkO6g7IBGyjMqYcQ/4658c65f65a28d9636ee0f2bdd3a433c/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p><i><sup>注：この投稿は、AWS Lambdaに関する追加の詳細で更新されました。</sup></i></p>
+	<p>昨年、当社は<a href="https://blog.cloudflare.com/python-workers"><u>Python Workersの基本的なサポート</u></a>を発表しました。これにより、Python開発者は単一のコマンドでPythonを地球全体に配信し、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workersプラットフォーム</u></a>を活用できるようになります。</p>
+	<p>それ以来、私たちは<a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>WorkersでのPython体験を素晴らしいものにする</u></a>ことに懸命に取り組んできました。当社は、パッケージサポートをプラットフォームにもたらすことに注力し、超高速コールドスタートとPythonネイティブの開発者体験を実現しました。</p>
+	<p>これは、パッケージがPython Workerに組み込まれる方法の変更を意味します。限られた組み込みパッケージのセットを提供する代わりに、Python Workersを支えるWebAssemblyランタイムである<a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html" target="_blank" rel="noopener noreferrer"><u>Pyodideがサポート</u></a>する任意のパッケージをサポートするようになりました。これには、すべての純粋なPythonパッケージと、動的ライブラリに依存する多くのパッケージが含まれます。また、パッケージのインストールを簡単にするために、<a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a> 関連のツールも構築しました。</p>
+	<p>また、コールドスタート時間を短縮するために、専用のメモリスナップショットを実装しました。これらのスナップショットは、他のサーバーレスPythonベンダーよりも大幅な速度向上をもたらします。一般的なパッケージを使用したコールドスタートテストでは、Cloudflare Workersは、<b>SnapStartを使用しない</b>AWS <b>Lambdaよりも2.4倍以上</b>、Googleクラウド<b> Runよりも3倍速く起動します</b>。</p>
+	<p>このブログ記事では、Python Workersの独自性とは何かを説明し、上述の成功をどのように実現したかについての技術的な詳細をご紹介します。しかし、まず、Workersやサーバーレスプラットフォームをよく知らない人、特にPythonのバックグラウンドを持つ人のために、Workersを使いたいと思う理由を共有しましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="deploying-python-globally-in-2-minutes">Pythonを2分間でグローバルにデプロイ</h3>
+		<a href="https://blog.cloudflare.com/#deploying-python-globally-in-2-minutes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workersの魔法の一部として、シンプルなコードと簡単なグローバルデプロイメントがあります。まず、2分以内の高速コールドスタートで、FastAPIアプリを世界中にデプロイする方法を示します。</p>
+	<p>FastAPIを使用した単純なWorkerは、いくつかの行で実装できます。</p>
+	<pre class="language-Rust"><code class="language-Rust">from fastapi import FastAPI
+from workers import WorkerEntrypoint
+import asgi
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+   return {"message": "This is FastAPI on Workers"}
+
+class Default(WorkerEntrypoint):
+   async def fetch(self, request):
+       return await asgi.fetch(app, request.js_object, self.env)</code></pre>
+	<p>同様のことをデプロイするには、<code>uv</code>と<code>npm</code>がインストールされていることを確認してから、以下を実行してください。</p>
+	<pre class="language-Shell"><code class="language-Shell">$ uv tool install workers-py
+$ pywrangler init --template \
+    https://github.com/cloudflare/python-workers-examples/03-fastapi
+$ pywrangler deploy</code></pre>
+	<p>ほんの少しのコードとPythonでのデプロイで、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>125か国、330か所に広がる</u></a>Cloudflareのエッジネットワーク全体にアプリケーションを<code>デプロイ</code>できました。インフラストラクチャやスケーリングを心配する必要はありません。</p>
+	<p>また、多くの場合、Python Workersは完全に無料です。当社の無料枠では、1日あたりリクエスト100,000件、呼び出し1回あたりのCPU時間10ミリ秒を保証しています。詳しくは、<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>当社のドキュメントで価格設定</u></a>をご覧ください。</p>
+	<p>その他の例については、<a href="https://github.com/cloudflare/python-workers-examples" target="_blank" rel="noopener noreferrer"><u>GitHubのリポジトリをご覧ください</u></a>。Python Workersの詳細について、さらにお読みください。</p>
+	<div class="flex anchor relative">
+		<h3 id="so-what-can-you-do-with-python-workers">では、Python Workersでは何ができるのでしょうか。</h3>
+		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-python-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workerを手に入れたら、どんなことも可能になります。コードを書くから、決定を決められます。Python WorkerはHTTPリクエストを受信し、パブリックインターネット上の任意のサーバーにリクエストを行うことができます。</p>
+	<p>Cronトリガーを設定できるため、Workerが定期的に実行されます。さらに、より複雑な要件がある場合は、<a href="https://blog.cloudflare.com/python-workflows"><u>Python Workers用Workflows</u></a>を使用することも、<a href="https://developers.cloudflare.com/durable-objects/get-started" target="_blank" rel="noopener noreferrer"><u>Durable Objectsを使用</u></a>して長期間実行されているWebSocketサーバーやクライアントでも使用することができます。</p>
+	<p>以下では、Python Workersを使用してできることの追加の例を紹介します。</p>
+	<ul>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/03-fastapi" target="_blank" rel="noopener noreferrer"><u>サーバーから直接動的コンテンツをフェッチしながら、Jinjaのようなライブラリを使ってエッジでHTMLテンプレートをレンダリングします。</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/11-opengraph" target="_blank" rel="noopener noreferrer"><u>サーバーからのレスポンスを変更する。たとえば、リクエストされたコンテンツに応じて、opengraphタグをHTMLに動的に挿入することができます。</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/15-chatroom" target="_blank" rel="noopener noreferrer"><u>Durable ObjectsとWebSocketsを使用してチャットルームを構築する</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/14-websocket-stream-consumer" target="_blank" rel="noopener noreferrer"><u>Bluesky消火栓などのWebSocket接続からデータを消費</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/12-image-gen" target="_blank" rel="noopener noreferrer"><u>Pillow Pythonパッケージを使用した画像の生成</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments" target="_blank" rel="noopener noreferrer"><u>PythonパッケージのAPIを公開する小さなPython Workerを書き、RPCを使ってJavaScript Workerからアクセスする</u></a></p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="faster-package-cold-starts">パッケージのコールドスタートの高速化</h3>
+		<a href="https://blog.cloudflare.com/#faster-package-cold-starts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workersのようなサーバーレスプラットフォームは、必要な時だけコードを実行することで、コストを節約します。つまり、Workerがリクエストを受信しない場合、Workerはシャットダウンされる可能性があり、新しいリクエストが入ってくると、再起動する必要があります。これは通常、「コールドスタート」と呼ばれるリソースのオーバーヘッドが発生します。エンドユーザーの遅延を最小限に抑えるためには、これらをできるだけ短くすることが重要です。</p>
+	<p>標準的なPythonでは、ランタイムの起動にコストがかかるため、Python Workersの初期実装は、<i>ランタイム</i>の起動を高速化することに重点を置きました。しかし、これだけでは不十分であることにすぐに気付きました。Pythonランタイムがすばやく起動したとしても、現実世界のシナリオでは、通常、初期起動はパッケージからのモジュールの読み込みを含むのが通常で、残念ながら、Pythonでは多くの人気のあるパッケージは読み込みに数秒かかることがあります。</p>
+	<p>私たちは、パッケージが読み込まれているかどうかに関係なく、コールドスタートを高速化することにしました。</p>
+	<p>現実的なコールドスタートパフォーマンスを測定するために、一般的なパッケージをインポートするベンチマークと、ベアPythonランタイムを使用して「hello world」を実行するベンチマークを設定しました。Standard Lambdaは<a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>ランタイムだけを素早く起動する</u></a>ことができますが、パッケージをインポートする必要があると、コールドスタート時間が長くなります。パッケージでのより速いコールドスタートを最適化するには、LambdaでSnapStartを使用することができます（間もなくリンクされたベンチマークに追加されます）。これには、スナップショットの保存コストと、復元のたびに追加のコストが発生します。Python Workersは、すべてのPython Workerに無料でメモリスナップショットを自動的に適用します。</p>
+	<p>3つの一般的なパッケージ（<a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer"><u>httpx</u></a>、<a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer"><u>fastapi</u></a>、<a href="https://docs.pydantic.dev/latest" target="_blank" rel="noopener noreferrer"><u>pydantic</u></a>）を読み込む際の平均コールドスタート時間は以下の通りです。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>プラットフォーム</b></p>
+				</td>
+				<td>
+					<p><b>平均コールドスタート（秒）</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare Python Workers</p>
+				</td>
+				<td>
+					<p>1.027</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AWS Lambda（SnapStartなし）</p>
+				</td>
+				<td>
+					<p>2.502</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Google クラウド Run</p>
+				</td>
+				<td>
+					<p>3.069</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>この場合、<b>Cloudflare Python Workersは、SnapStartを使用しないAWS Lambdaよりも2.4倍、Google Cloud Runよりも3倍速いコールドスタートを実現しています。</b>この低いコールドスタート数は、メモリスナップショットを使用することで実現しました。後のセクションではその方法について説明します。</p>
+	<p>これらのベンチマークは定期的に実行しています。当社のテスト方法に関する最新のデータや詳細情報は、<a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>からご覧いただけます。</p>
+	<p>当社はアーキテクチャ的に他のプラットフォームと異なります。つまり、<a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>Workersは分離ベース</u></a>です。そのため、私たちの目標は高いものであり、ゼロコールドスタートの未来に向けて計画を立てています。</p>
+	<div class="flex anchor relative">
+		<h3 id="package-tooling-integrated-with-uv">パッケージツールをuvと統合</h3>
+		<a href="https://blog.cloudflare.com/#package-tooling-integrated-with-uv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>多様なパッケージエコシステムは、Pythonを素晴らしいものにしている理由の大部分です。そのため、Workersでパッケージをできるだけ簡単に使用できるように懸命に取り組んできました。</p>
+	<p>私たちは、既存のPythonツールと連携することが、優れた開発体験を実現するための最善の方法であると考えました。そこで私たちは、高速で成熟し、Pythonエコシステムで勢いを増している<code>uv</code>パッケージとプロジェクトマネージャーを選びました。</p>
+	<p>Cloudflareは、<a href="https://github.com/cloudflare/workers-py#pywrangler" target="_blank" rel="noopener noreferrer"><u>pywrangler</u></a>と呼ばれる<code>uv</code>を中心とした独自のツールを構築しました。このツールは、基本的に次のアクションを実行します。</p>
+	<ul>
+		<li>
+			<p>Workerのpyproject.tomlファイルを読み込んで、そのファイルで指定された依存関係を判断する</p>
+		</li>
+		<li>
+			<p>Workerにある<code>python_modules</code>フォルダーに依存関係を含める</p>
+		</li>
+	</ul>
+	<p>Pywranglerは<code>uv</code>に呼び出して、Python Workersと互換性のある方法で依存関係をインストールし、ローカル開発やWorkersをデプロイする際には<code>wrangler</code>に呼び出します。</p>
+	<p>実際は、<code>pywrangler dev</code>と<code>pywrangler</code> <code>deploy</code>を実行して、Workerをローカルでテストし、デプロイするだけでいいのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="type-hints">タイプのヒント</h3>
+		<a href="https://blog.cloudflare.com/#type-hints" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>pywrangler型を使って、Wrangler設定で定義されたすべての<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>バインディング</u></a>に対し、<code>型ヒント</code>を生成することができます。これらの型ヒントは、<a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance" target="_blank" rel="noopener noreferrer"><u>Pylance</u></a>または<a href="https://mypy-lang.org" target="_blank" rel="noopener noreferrer"><u>mypy</u></a>の最新バージョンで動作します。</p>
+	<p>型を生成するには、<a href="https://developers.cloudflare.com/workers/wrangler/commands/#types" target="_blank" rel="noopener noreferrer"><u>wrangler types</u></a>を使用してTypescriptの型ヒントを作成し、次にTypescriptコンパイラを使用して、型の抽象構文ツリーを生成します。最後に、JSオブジェクトに反復子フィールドがあるかどうかなど、TypeScriptのヒントを使用して、Pyodide外部関数インタフェースで動作する<code>mypy</code>型ヒントを生成します。</p>
+	<div class="flex anchor relative">
+		<h3 id="decreasing-cold-start-duration-using-snapshots">スナップショットを使ったコールドスタート時間の短縮</h3>
+		<a href="https://blog.cloudflare.com/#decreasing-cold-start-duration-using-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pythonの起動は一般的に非常に遅く、Pythonモジュールのインポートは大量の作業をトリガーする可能性があります。メモリスナップショットを使って、コールドスタート中のPython起動実行を回避します。</p>
+	<p>Workerがデプロイされると、Workerのトップレベルスコープが実行され、メモリスナップショットが作成され、Workerと一緒に保存されます。Workerの新しい分離を開始するたびに、メモリスナップショットを復元し、Workerはリクエストを処理する準備ができており、準備としてPythonコードを実行する必要はありません。これにより、コールドスタート時間が大幅に改善されます。たとえば、スナップショットなしで、<code>fastapi</code>、<code>httpx</code>、<code>pydantic</code>をインポートするWorkerを起動するには、約10秒かかります。スナップショットの場合、1秒で完了します。</p>
+	<p>PyodideがWebAssembly上に構築されているという事実、それを可能にしています。ランタイムの線形メモリをすべてキャプチャし、復元することができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="memory-snapshots-and-entropy">メモリスナップショットとエントロピー</h4>
+		<a href="https://blog.cloudflare.com/#memory-snapshots-and-entropy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebAssemblyランタイムは、セキュリティのためにアドレス空間レイアウトのランダム化などの機能を必要としないため、最新のオペレーティングシステムでは、メモリスナップショットの問題のほとんどは発生しません。ネイティブメモリスナップショットと同様に、<a href="https://xkcd.com/221" target="_blank" rel="noopener noreferrer"><u>XKCD乱数ジェネレーター</u></a>の使用を避けるために、起動時にエントロピーの処理に慎重に注意する必要があります（私たちは<a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption" target="_blank" rel="noopener noreferrer"><u>実際のランダム性に大きな関心を持っています</u></a>）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q2LYb3LZhfC2q3vQCFr1R/ff8f229715a0d37484585664c61908dc/image1.png" alt="" class="kg-image" width="400" height="144" loading="lazy">
+	</figure>
+	<p>メモリのスナップショットを作成することで、ランダム性のためにシード値を誤ってロックしてしまうかもしれません。この場合、将来の「ランダム」数字の呼び出しは、多くのリクエストで一貫して同じ値のシーケンスを返すことになります。</p>
+	<p>Pythonは起動時に多くのエントロピーを使用するため、これを回避することは特に困難です。これには、libc関数<code>getentropy()</code>と<code>getrandom()</code>、および<code>/dev/random</code>と<code>/dev/urandom</code>からの読み取りが含まれます。これらの関数はすべて、JavaScript <code>crypto.getRandomValues()</code> 関数に関して同じ実装を共有しています。</p>
+	<p>Cloudflare Workersでは、<code>crypto.getRandomValues()</code>将来的にメモリスナップショットの使用に切り替えることができるように、起動時に常に無効になっています。残念ながら、Pythonインタプリタはこの関数を呼び出さず、ブートストラップができません。また、多くのパッケージは起動時にエントロピーを必要とします。このエントロピーには、大きく分けて2つの目的があります。</p>
+	<ul>
+		<li>
+			<p>ハッシュランダム化用のハッシュシード</p>
+		</li>
+		<li>
+			<p>擬似乱数発生器用シード</p>
+		</li>
+	</ul>
+	<p>ハッシュのランダム化は起動時に行い、各Workerが固定のハッシュシードを持つコストを受け入れます。Pythonには、起動後にハッシュシードを交換できる仕組みがありません。</p>
+	<p>擬似乱数発生器（PRNG）に対して、当社は次のアプローチをとっています。</p>
+	<p>デプロイ時：</p>
+	<ol>
+		<li>
+			<p>PRNGに固定の「ポイズニングシード」をシードし、PRNGの状態を記録します。</p>
+		</li>
+		<li>
+			<p>PRNGを呼び出すすべてのAPIを、ユーザーエラーでデプロイに失敗するオーバーレイに置き換える。</p>
+		</li>
+		<li>
+			<p>ユーザーコードのトップレベルスコープを実行する。</p>
+		</li>
+		<li>
+			<p>スナップショットをキャプチャする。</p>
+		</li>
+	</ol>
+	<p>実行時：</p>
+	<ol>
+		<li>
+			<p>PRNGの状態が変更されていないことを保証します。変更していただければ、何らかのメソッドのためのオーバーレイを忘れていました。内部エラーにより、デプロイに失敗する。</p>
+		</li>
+		<li>
+			<p>スナップショットを復元したら、ハンドラーを実行する前に乱数ジェネレーターを再シードします。</p>
+		</li>
+	</ol>
+	<p>これにより、Workerの実行中にPRNGを使用できるようにしますが、初期化とプリスナップショットの実行中はWorkersがPRNGを使用しないようにできます。</p>
+	<div class="flex anchor relative">
+		<h4 id="memory-snapshots-and-webassembly-state">メモリスナップショットとWebAssemblyの状態</h4>
+		<a href="https://blog.cloudflare.com/#memory-snapshots-and-webassembly-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebAssembly上でメモリスナップショットを作成するときに、さらなる困難が発生します。保存しているメモリスナップショットは、WebAssemblyリニアメモリのみで構成されていますが、Pyodide WebAssemblyインスタンスの完全な状態はリニアメモリに含まれていません。</p>
+	<p>このメモリの外側には2つのテーブルがあります。</p>
+	<p>1つのテーブルが関数ポインタの値を保持します。従来のコンピュータは「Von Neumann」アーキテクチャを使用しています。つまり、コードはデータと同じメモリ空間に存在するため、関数ポインタを呼び出すことは、何らかのメモリアドレスにジャンプすることになります。WebAssemblyには、コードが別のアドレス空間に存在する「ハーバードアーキテクチャ」があります。これは、WebAssemblyのセキュリティ保証のほとんどにおいて重要なことであり、特にWebAssemblyがアドレス空間レイアウトのランダム化を必要としない理由です。WebAssemblyの関数ポインタは、関数ポインタテーブルへのインデックスです。</p>
+	<p>2番目のテーブルは、Pythonから参照されるすべてのJavaScriptオブジェクトを保持します。JavaScript仮想マシンはJavaScriptオブジェクトへのポインタを直接取得することを禁止しているため、JavaScriptオブジェクトをメモリに直接保存することはできません。その代わり、それらはテーブルに格納され、WebAssemblyでテーブルのインデックスとして表現されます。</p>
+	<p>スナップショットを復元した後のこれらのテーブルの両方が、スナップショットを取得したときとまったく同じ状態になっていることを確認する必要があります。</p>
+	<p>WebAssemblyインスタンスが初期化されるとき、関数ポインタテーブルは常に同じ状態にあり、動的ライブラリ（numpyのようなネイティブPythonパッケージ）を読み込むときに動的ローダーによって更新されます。</p>
+	<p>動的読み込みを処理するには：</p>
+	<ol>
+		<li>
+			<p>スナップショットを取得するときに、ローダーにパッチを適用して、動的ライブラリの読み込み順、各ライブラリのメタデータが割り当てられるメモリ内のアドレス、および再配置用の関数ポインタテーブルのベースアドレスを記録します。</p>
+		</li>
+		<li>
+			<p>スナップショットを復元するとき、同じ順序で動的ライブラリを再ロードし、パッチを適用したメモリアロケーターを使用して、メタデータを同じ場所に配置します。関数ポインタテーブルの現在のサイズが、動的ライブラリに対して記録した関数ポインタテーブルベースと一致することを保証します。</p>
+		</li>
+	</ol>
+	<p>これにより、スナップショットを復元した後も、各関数のポインターが、スナップショット取得時と同じ意味を持つことが保証されます。</p>
+	<p>JavaScriptの参照を処理するために、かなり限定的なシステムを実装しました。JavaScriptオブジェクトがグローバルからアクセス可能な場合は、一連のプロパティアクセスによって、それらのプロパティアクセスを記録し、スナップショットを復元する時に再生します。この方法でアクセスできないJavaScriptオブジェクトへの参照が存在する場合、Workerのデプロイに失敗します。これは、Pyodideサポートを持つすべての既存のPythonパッケージを扱うのに十分です。Pyodideは、次のようなトップレベルのインポートを行います。</p>
+	<pre class="language-Python"><code class="language-Python">from js import fetch</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="reducing-cold-start-frequency-using-sharding">シャーディングによるコールドスタートの頻度の低減</h3>
+		<a href="https://blog.cloudflare.com/#reducing-cold-start-frequency-using-sharding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python Workersのパフォーマンス戦略におけるもう1つの重要な特徴は、シャーディングです。実装の経緯については、<a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer"><u>こちら</u></a>に詳しく説明されています。簡単に言うと、以前は新しいインスタンスを開始することを選択していたかもしれませんが、既存のWorkerインスタンスにリクエストをルーティングするようになりました。</p>
+	<p>シャーディングは実際にPython Workersで最初に有効になり、そのための素晴らしいテスト層であることが証明されました。PythonではJavaScriptよりもコールドスタートがはるかにコスト高になるため、リクエストが既に実行中の分離にルーティングされるようにすることが特に重要です。</p>
+	<div class="flex anchor relative">
+		<h3 id="where-do-we-go-from-here">ここからどこにいくのか？</h3>
+		<a href="https://blog.cloudflare.com/#where-do-we-go-from-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは始まりにすぎません。Python Workersをより良くするための計画はたくさんあります：</p>
+	<ul>
+		<li>
+			<p>開発者が使いやすいツール</p>
+		</li>
+		<li>
+			<p>分離アーキテクチャを活用して、コールドスタートをさらに高速化</p>
+		</li>
+		<li>
+			<p>より多くのパッケージをサポート</p>
+		</li>
+		<li>
+			<p>ネイティブTCPソケット、ネイティブWebSockets、より多くのバインディングをサポート</p>
+		</li>
+	</ul>
+	<p>Python Workersの詳細については、<a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>からドキュメントをご覧ください。サポートが必要な場合は、ぜひ<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>に参加してください。</p>
+</div>

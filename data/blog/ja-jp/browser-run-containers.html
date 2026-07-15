@@ -1,0 +1,135 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/browser-run-containers">English</a>、<a href="https://blog.cloudflare.com/zh-tw/browser-run-containers">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/browser-run-containers">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/browser-run-containers">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74vj8KeJSVGkqJVr0tsxEm/a5ade4d2b83e011e3b71e0be91e94ac6/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>Cloudflareの<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>コンテナ</u></a>上で再構築することで、Browser Runの使用上限を引き上げ、パフォーマンスを高速化し、信頼性を向上しました。</p>
+	<p>Workersバインディングを介して1分間に60のブラウザをスピンアップでき、最大120の同時実行が可能になりました。これは、従来の上限の4倍です。また、<a href="https://developers.cloudflare.com/browser-run/quick-actions" target="_blank" rel="noopener noreferrer"><u>Quick Action</u></a>の応答時間は50%以上短縮されました。何も変更する必要はありません。これらの改善は現在有効です。さらに、修正や新機能のリリースも以前より早く行っています。当社がこれを実現した方法とデータを見る方法について、この記事でご確認ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="remind-me-what-is-browser-run">ブラウザ実行とは？</h3>
+		<a href="https://blog.cloudflare.com/#remind-me-what-is-browser-run" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a>は、開発者がCloudflareのグローバルネットワーク上で実行されるヘッドレスブラウザインスタンスをプログラムで制御し、操作することを可能にします。これは、Webアプリケーションのエンドツーエンドテスト、疑わしいURLの安全な調査、ブラウザがPDFドキュメントを簡単にレンダリングできる方法の活用、およびスクリーンショットのキャプチャやコンテンツの抽出などの迅速なアクションに有用です。最近では、AIエージェントがWebと対話するための重要な手段となっています。当社は、自動化ブラウザを責任を持って安全かつ大規模に利用するための頼れるプラットフォームとして、Browser Runを構築しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="outgrowing-our-bunk-bed">2台の設備からの脱却</h3>
+		<a href="https://blog.cloudflare.com/#outgrowing-our-bunk-bed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Containersの導入前は、<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer"><u>ブラウザ分離（BISO）</u></a>とインフラストラクチャを共有していました。技術的には似ていますが、BISOのコンテナ画像が大きいため、起動と開発が遅れました。重要なことに、BISOブラウザは最適なグローバル配信ができず、耐障害性と遅延が損なわれていました。さらに、一般的なBISOユーザーの長く安定したセッションが、Browser Runの短くて急増する使用量と衝突し、拡張性のボトルネックと可用性の遅延を引き起こしました。</p>
+	<p>幸いなことに、社内開発を経て、Cloudflareは昨年<a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Durable Object（DO）対応のコンテナーのオープンベータ版をリリースし</u></a>、一時的な導入で最終的には両方の製品プラットフォームにメリットをもたらす準備ができていたのです。ほとんどの成功している製品プラットフォームと同様に、当社は実行可能な限り独自のプラットフォーム上で構築することに尽力し、外部のお客様よりも先に問題点を感じ、解決できるようにしています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-migration-containers">移行：コンテナ</h3>
+		<a href="https://blog.cloudflare.com/#the-migration-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>受信リクエストパスにWorkerを挿入し、BISOのユーザーとともにコンテナ搭載のブラウザを提供することで、段階的な移行を開始しました。開発時のこの2つのサポートは重要でした。パフォーマンスを比較し、実装に関するバグを分離し、最終的にはコンテナ駆動型のアプローチの利点に確信を持つことができたのです。</p>
+	<p>採用を加速するために、まずクイックアクションのエンドポイントすべてにコンテナブラウザを使用しました。次に無料アカウントでWorkersブラウザバインディングを介した接続に使用し、続いて従量課金アカウントを使用して安定性を検証しました。残りの契約者全員に適用され、お客様からのアクションや既存のWorkerの再デプロイを必要としない移行を実現しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="challenges-performance-and-scale-bottlenecks">課題：パフォーマンスと拡張性のボトルネック</h3>
+		<a href="https://blog.cloudflare.com/#challenges-performance-and-scale-bottlenecks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>しかし、当社の側では、ドキュメントが軽量、観測可能性、重複するタイムゾーンにいる従業員が軽減できる、斬新で不安定な初期段階のコンテナプラットフォームのインターフェースに慣れるために、新たな課題に直面しました。しかし、<a href="https://www.cloudflare.com/en-gb/the-net/top-of-mind-security/customer-zero" target="_blank" rel="noopener noreferrer"><u>Customer Zero</u></a>としての当社チームへのフィードバックにより、緊密なフィードバックループを提供し、外部のお客様にも利益をもたらす大規模なアップグレードにつながる可能性があると考えました。それでも、当初は克服すべき摩擦がたくさんあり、そのほとんどはアクティブ開発中のクローズドベータ版で提供されると予想されるものでした。新しい技術環境には、克服すべき他の障害が固有のものでした。</p>
+	<p>例えば、当社のブラウザがグローバルに実行できるようになった後、アーキテクチャは適応しなければなりませんでした。DO対応のコンテナは、入ってくるリクエストにできるだけ近い場所にDurable Objectを作成しますが、接続されたコンテナは地球の反対側でスピンアップすることがあります。これは、「アプリを起動してください」のような使い捨てメッセージには問題ありませんが、WebSocket間でWebSocketを確立し、スクリーンショットリクエストのために数十件のメッセージを交換すると、世界中を横断する余分なミリ秒の時間が蓄積され始めます。</p>
+	<p>私たちの提供するソリューションは、あらかじめウォームされたDOに対応したブラウザコンテナの地域プールを作成し、DOとコンテナ間の最大距離（そして最大遅延）を制約します。リクエストが来ると、その地域内でユーザーに最も近いDO-コンテナペアを選択します。これにより、ユーザーからDOへ、DOからコンテナへのホップの両方で遅延を低く抑えることができます。これにより、アーキテクチャ全体にいくつかの可動部分が追加されますが、各ブラウザのグローバルな状態に観測可能である限り、需要の変化に応じて容量の割り当てと再割り当てを行うことができる限り、価値があると考えました。<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>の完璧なユースケース…ある程度は。</p>
+	<p>昨年の初めから、ヘッドレスブラウザの需要が急増しています。つまり、AIエージェントビルダーがBrowser Runを発見したところ、すぐにリクエスト量が当社の既存容量を上回る状態となりました。私たちは、この新しい需要にスケーラブルなアプローチで対応するために、すぐにプール容量を調整することに限界を感じました。KVの<i>結果整合性</i>が約30秒かかることが、当社の重要なリクエスト経路のボトルネックとなっていました。KVをチェックして、コンテナが「利用可能」と表示されたとしても、ルーティングする時点（30秒後）までに、すでに主張しています。この遅れは、ブラウザの競合状態と過剰割り当てを引き起こし、需要の急増に対応するための拡張速度を著しく制限することになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="migrating-from-kv-to-d1-queues">KVからD1 + Queuesへの移行</h3>
+		<a href="https://blog.cloudflare.com/#migrating-from-kv-to-d1-queues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前は、各コンテナの状態をKVに保存していました。つまり、キャッシュの有効期限（TTL）による1分前の状態取得が可能だということです（最近の<a href="https://developers.cloudflare.com/changelog/post/2026-01-30-kv-reduced-minimum-cachettl" target="_blank" rel="noopener noreferrer"><u>KVは、最小キャッシュの有効期限（TTL）を30秒に変更しました</u></a>が、それでもこの値は高すぎます）。</p>
+	<p>私たちは、代わりにコンテナ状態を<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>インスタンスに移行することにしました。D1のトランザクションの性質はここに適しています。ブラウザをユーザーに割り当てると、それはユーザーのものになります。ブラウザは共有リソースではありません。SQLiteトランザクションは、アトミック割り当てを保証し、2つのリクエストが同じブラウザを同時に要求する競合状態を防止します。</p>
+	<p>以下は、ブラウザ取得クエリーを簡略化したものです。</p>
+	<pre class="language-SQL"><code class="language-SQL">WITH candidate_pool AS (
+    -- candidate pool logic to pick based on latency and other rules
+)
+UPDATE containers
+SET status = 'picked'
+WHERE sessionId IN (
+    SELECT sessionId
+    FROM candidate_pool
+    ORDER BY RANDOM()
+    LIMIT ?5
+)
+RETURNING data</code></pre>
+	<p>D1シャードを<a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>1か所ごとに</u></a>維持していますが、数千のコンテナが実行されている可能性があり、各コンテナが5秒ごとに状態を更新する必要があるため、<a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>データベースを過負荷にしてしまう</u></a>という問題に直面しました。例えば、各書き込みに1ミリ秒かかる場合、最大1,000回しか書き込みできません。つまり、1回の書き込みにつき1行ということは、データベースをオーバーロードする前に私たちができるコンテナは5,000個までということになります。</p>
+	<p>しかし、これらの書き込みをバッチ処理すると、バッチ処理は個々の書き込みよりも大幅に長くならないため、スループットを桁違いに増加させることができます。当社の場合、100行のバッチを使用しています。つまり、1つの場所あたり最大500,000個のコンテナを更新できることになります。このヘッドルームは、容量計画がボトルネックではないことを意味します。</p>
+	<p>現在、バッチ書き込みのP95は0.1ミリ秒です！</p>
+	<p>書き込みのバッチ処理には、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>を使用します。5秒ごとに、各コンテナはそれ自身の状態を計算し、それをロケーションキューに追加します。そして、<a href="https://developers.cloudflare.com/queues/configuration/batching-retries/#batching" target="_blank" rel="noopener noreferrer"><u>Worker コンシューマーを構成</u></a>し、バッチサイズ100、バッチタイムアウトは1秒に設定します。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+    ...
+    "queues": {
+        "consumers": [
+            {
+                "queue": "production-core-containers-queue-weur",
+                "max_batch_size": 100,
+                "max_batch_timeout": 1,
+                "max_retries": 1,
+            },
+            ...
+        ]
+        ...
+    }
+}</code></pre>
+	<p>この構成では、許容可能な遅延時間は2秒を大幅に下回ります。とはいえ、キューのバックログが古い状態を引き起こす可能性はまだあります。この場合、各リージョンは、プライマリキューが追いつくまで、指定されたバックアップリージョンに戻ります。</p>
+	<div class="flex anchor relative">
+		<h3 id="additional-perks-for-quick-actions">迅速な対応に対する追加の特典</h3>
+		<a href="https://blog.cloudflare.com/#additional-perks-for-quick-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>専用インフラストラクチャを使用することで、BISOなどの製品で不要な副作用や肥大化を招くことなく、ブラウザコンテナ画像をアップグレードできるようになりました。これにより、スクリーンショットやコンテンツ抽出などの迅速なアクションを最適化できるようになりました。以前は、Workerはリモートブラウザに WebSocket を確立し、ページを開く、URLに移動する、読み込みを待つ、スクリーンショットを作成する、といった指示を一度に送ってきました。次のステップが始まる前に、各ステップが完了しなければなりませんでした。</p>
+	<p>しかし、今は、1つのHTTPリクエストのすべてのパラメータをコンテナに直接送信し、Workerとブラウザ間で行ったり来たりすることなく、フロー全体が内部で実行されるようになりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="results-massive-performance-boost-and-increased-limits">結果：パフォーマンスの大幅な向上と制限の拡大</h3>
+		<a href="https://blog.cloudflare.com/#results-massive-performance-boost-and-increased-limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーがブラウザセッションから必要なものを短時間で取得できるようになったため、クイックアクションの平均応答時間が大幅に短縮されました。ブラウザの準備完了を待つ時間が短縮され、<a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>DevTools Protocol</u></a>メッセージの処理が高速化されたのです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eIJK055QLIl3ay12TIhfQ/9d988169efadb16cb5b18b539b62aa55/image3.png" alt="" class="kg-image" width="1999" height="767" loading="lazy">
+	</figure>
+	<p>この新しい規模でリアルタイムの状態管理を克服することは、最近ローンチされた<a href="https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawlエンドポイント</u></a>などの新機能を発見し、準備することに時間を費やすことができたということです。</p>
+	<div class="flex anchor relative">
+		<h3 id="better-browser-flexibility">ブラウザの柔軟性に優れている</h3>
+		<a href="https://blog.cloudflare.com/#better-browser-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、共有のブラウザ分離コンテナを撤廃することで、より迅速なアップグレードというもう1つの重要なメリットを得ました。</p>
+	<p>当社のブラウザが共有の製品インフラで実行されていたとき、Chromeをアップグレードするには、独自のロードマップと優先事項を持つ複数のチームと製品間の調整が必要でした。しかし、今は独自のコンテナイメージを実行しているため、より速いスピードでアップグレードすることができます。例えば、要望の多かった機能であるWebGLは、WebMCP（Web用モデルコンテキストプロトコル）とともにブラウザベースのレンダリングで利用可能になり、新しいエージェントインタラクションパターンを可能にします。両方とも、他のCloudflare製品での望ましくない副作用なく、ブラウザのバージョンとフラグを制御できることから可能になりました。</p>
+	<p>一言で言えば、特にエージェンティック開発のために、ブラウザの能力を大規模に活用することは始まったばかりです。<a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started">利用開始</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ブラウザ実行は全Workersプランで利用できます。<a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer"><u>クイックスタートガイド</u></a>から始めるか、<a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>クイックアクション</u></a>を試すか、または<a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawlエンドポイント</u></a>を使用して、サイト全体のリンクをたどりながら、あらゆるWebページからデータを深く抽出しましょう。</p>
+	<p>AIエージェントを作成中？Browser Run サポートが組み込まれた<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>をご覧ください。</p>
+</div>

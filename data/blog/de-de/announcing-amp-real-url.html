@@ -1,0 +1,103 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/announcing-amp-real-url">English</a>, <a href="https://blog.cloudflare.com/fr-fr/announcing-amp-real-url">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-amp-real-url">日本語</a>, <a href="https://blog.cloudflare.com/es-es/announcing-amp-real-url">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/announcing-amp-real-url">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56h201ECHzZao3aKqPzowd/89a5aebe4e8e3fc499e74a29eec83093/announcing-amp-real-url.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Das Projekt AMP (<a href="https://amp.dev" target="_blank" rel="noopener noreferrer">Accelerated Mobile Pages</a>) trat mit dem Versprechen an, dass es das Surfen im Web und insbesondere im mobilen Web viel angenehmer machen würde. Das HTML-Framework für AMP wurde entwickelt, um Webseiten schnell zu laden und den Benutzer nicht mit fremden Inhalten davon abzuhalten, sich auf den Inhalt der Webseite zu konzentrieren.</p>
+	<p>Es richtete sich insbesondere an Publisher (wie Nachrichtenorganisationen), die Lesern die beste und schnellste Weberfahrung bieten wollten, wenn sie unterwegs Nachrichten und ausführliche Artikel lasen. Später wurde es wertvoll für jede Webseite, für die mobile Leistung wichtig ist, einschließlich E-Commerce-Shops, Jobbörsen und Medienseiten.</p>
+	<p>Neben dem AMP-HTML-Framework verwendet AMP auch Caches, die Kopien von AMP-Inhalten nahe bei den Endbenutzern speichern, damit sie so schnell wie möglich geladen werden können. Obwohl dieser Cache das Laden von Webseiten viel, viel schneller macht, führt er zu einem Problem: Eine AMP-Seite, die aus dem Google-Cache bereitgestellt wird, hat eine URL, die mit <a href="https://google.com/amp/beginnt" target="_blank" rel="noopener noreferrer">https://google.com/amp/beginnt</a>. Das kann für Endbenutzer unglaublich verwirrend sein.</p>
+	<p>Benutzer haben sich daran gewöhnt, die Navigationsleiste in einem Webbrowser zu betrachten, um zu sehen, welche Webseite sie besuchen. Der AMP-Cache bricht mit dieser Erfahrung. Hier ist zum Beispiel eine Meldung von der BBC-Website, die über den AMP-Cache von Google angezeigt wird:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2o0JtbNro3j4HPq5ybHOSm/7e34a2a8525c63b9640de68e5b51504e/before.png" alt="" class="kg-image" width="795" height="540" loading="lazy">
+
+	</figure>
+	<p>Sehen Sie, wie der Browser behauptet, dass die Seite von google.com stammt? Das liegt am AMP-Cache. Dadurch wurde die Seite zwar sehr schnell geladen, es kann aber auch verwirrend sein. Um dieses Problem zu „beheben“, zeigt Google die eigentliche Webseite oben auf der AMP-Seite an. Dort sieht man, dass es sich um bbc.co.uk handelt. Wenn man auf bbc.co.uk klickt, gelangt Sie auf dieselbe Seite, bereitgestellt von den Webservern der BBC und mit bbc.co.uk in der Navigationsleiste des Webbrowsers:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kHf6MYqZVKYyxYjlG5agU/81e875d1d0bc1f087705f8d3529de322/after.png" alt="" class="kg-image" width="795" height="578" loading="lazy">
+
+	</figure>
+	<p>Aber die Probleme mit dem AMP-Cache-Ansatz sind tiefgreifender als nur eine gewisse Verwirrung auf Seiten des Benutzers. Durch das Bereitstellen der Seite aus dem Google-Cache gibt es für den Leser keine Möglichkeit, die Authentizität der Seite zu überprüfen. Wenn sie direkt von, sagen wir, der BBC bereitgestellt wird, hat der Benutzer die Sicherheit des Domain-Namens, ein grünes Schloss, das anzeigt, dass das SSL-Zertifikat gültig ist, und er kann sogar auf das Schloss klicken, um Details des Zertifikats zu erhalten.</p>
+	<p>Im letzten November haben wir eine technische Lösung für diese Probleme angekündigt, die es ermöglicht, AMP-Seiten aus einem Cache so bereitzustellen, dass die ursprüngliche URL der Seite und alle damit verbundenen Vorteile beibehalten werden. Der ausführliche <a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers">technische Blogbeitrag</a> von Gabbi Fisher und Avery Harnish enthält alle Details. Die Lösung nutzt <a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html" target="_blank" rel="noopener noreferrer">Web Packaging</a> (einschließlich einer cleveren Anwendung von Kryptografie), um es dem Cache (von Google, Cloudflare oder anderen) zu ermöglichen, eine Kopie einer AMP-Seite aufzubewahren und sie dem Endbenutzer schnell bereitzustellen, wobei diese Kopie auch kryptografische Beweise dafür enthält, woher die Seite ursprünglich stammt.</p>
+	<p>In Zusammenarbeit mit einem Browser, der Web Packaging versteht, bedeutet das, dass eine Seite in einem AMP-Cache gespeichert und schnell von diesem bereitgestellt werden kann, während die ursprüngliche URL der Webseite in der Navigationsleiste des Browsers angezeigt wird. Ein großer Rundum-Sieg!</p>
+	<p>Wir bezeichnen das als „AMP Real URL“ und ab heute ist es kostenlos für alle unsere Kunden verfügbar.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works"><b>Die Funktionsweise</b></h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der AMP-Crawler von Google lädt den Inhalt Ihrer Website herunter und speichert ihn mehrmals täglich im AMP-Cache. Wenn Ihre Webseite AMP Real URL aktiviert hat, signiert Cloudflare die diesem Crawler von uns zur Verfügung gestellten Inhalte digital, was kryptografisch beweist, dass sie von Ihnen generiert wurden. Diese Signatur ist alles, was ein moderner Browser (derzeit nur Chrome auf Android) benötigt, um die richtige URL in der Adressleiste anzuzeigen, wenn ein Besucher über die Google-Suchergebnisse zu Ihren AMP-Inhalten gelangt.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NWtcshqb2GvakMNINyonx/c086f872937ee33d96eda3b76199bee0/image-5.png" alt="" class="kg-image" width="1600" height="937" loading="lazy">
+
+	</figure>
+	<p>Der verhasste graue Balken ist verschwunden; alles, was Ihre Besucher sehen, ist Ihre richtige URL:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/657yHd3WoERfitovjFBtzB/42aeccb882f07474ccce42073a0d9a76/image-6.png" alt="" class="kg-image" width="899" height="548" loading="lazy">
+
+	</figure>
+	<p>Wichtig ist dabei, dass Ihre Webseite wie zuvor auch aus dem AMP-Cache von Google bereitgestellt wird. Dies bedeutet, dass es keine Einbußen bei Ihrer SEO oder Web-Performance gibt.</p>
+	<p>Seit unserer ursprünglichen Ankündigung hatten wir die Möglichkeit des Austausches mit Dutzenden von Mitgliedern der Publishing- und E-Commerce-Community. Nun möchten wir Ihnen mittteilen, was wir gelernt haben.</p>
+	<div class="flex anchor relative">
+		<h3 id="state-of-amp"><b>Der Zustand von AMP</b></h3>
+		<a href="https://blog.cloudflare.com/#state-of-amp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das von Google initiierte AMP-Projekt steht hinter einem großen Teil des mobilen Datenverkehrs und hat die Nutzung des Internets auf einem Telefon erheblich verbessert. Viele der Websites, mit denen wir gesprochen haben, erhalten bis zu 50 % ihres Web-Traffics über AMP, und der Geschwindigkeitsvorteil, den es bietet, führt direkt zu besseren Konversionsraten.</p>
+	<p>AMP Real URL bietet einige wichtige Vorteile für Websites, die AMP verwenden:</p>
+	<ul>
+		<li>
+			<p>Markenschutz: Webbenutzer wurde beigebracht, dass die URL in der Adressleiste eine Bedeutung hat. Der Umstand, dass google.com ganz oben auf einer Seite mit Inhalten steht, beeinträchtigt die Fähigkeit des Publishers, seine einzigartige Präsenz im Internet aufrechtzuerhalten.</p>
+		</li>
+		<li>
+			<p>Einfachere Analysen: AMP Real URL vereinfacht die Webanalyse für seine Nutzer erheblich, da alle Besucher, über AMP oder anderweitig, in derselben Tracking-Domain koexistieren.</p>
+		</li>
+		<li>
+			<p>Mehr Platz auf dem Bildschirm: Wenn AMP bislang verwendet wurde, wurde oben auf Ihrer Website Raum für einen „grauen Balken“ verwendet, um die echte URL anzuzeigen. Mit AMP Real URL ist das einfach nicht notwendig.</p>
+		</li>
+		<li>
+			<p>Niedrigere Absprungsrate: Wir glauben, dass Website-Besucher weniger wahrscheinlich zu Google oder einer anderen Website zurückkehren, wenn sich die tatsächliche Domain des Publishers in der Adressleiste befindet; dazu werden wir jedoch nach der Einführung von AMP Real URL mehr Daten sammeln.</p>
+		</li>
+		<li>
+			<p>Signieren des Inhalts: Durch die Verwendung kryptografischer Techniken stellt AMP Real URL sicher, dass die für Besucher bereitgestellten Inhalte nicht manipuliert wurden. Dadurch werden die Webseiten und Marken geschützt, die es anwenden. Es ist nun nicht mehr möglich, dass externe Parteien auf einer Website Inhalte hinzufügen, entfernen oder ändern.</p>
+		</li>
+	</ul>
+	<p>Wir haben auch mit Internetnutzern über AMP gesprochen und sind dabei auf gewisse Frustrationen gestoßen. Es gibt einige Benutzer, die mit der Komplexität zu kämpfen haben oder Webseiten einfach nicht laden können. Andere sind genervt oder verwirrt wegen des „grauen Balkens“ oben auf der Seite und der Verrenkungen, derer es bedarf, um die ursprüngliche URL einer Seite zu erhalten. Und schließlich gibt es Mitmenschen, die sicherstellen möchten, dass Google den Inhalt der Seiten auf ihrem Weg durch den AMP-Cache nicht ändert.</p>
+	<p>AMP Real URL behebt all diese Probleme. Es stellt sicher, dass Websites <a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers">kryptografisch signiert</a> sind, was sie davor schützt, von Google oder anderen geändert zu werden, selbst wenn sie physisch von einer Domain bereitgestellt werden, die Sie nicht kontrollieren. Wenn die Website in irgendeiner Weise geändert wird, stellt der Browser sicher, dass die tatsächliche URL der Website nicht mehr angezeigt wird. Es vereinfacht AMP auch erheblich und behebt viele der Zuverlässigkeitsprobleme, die Menschen erleben: AMP Real URL-basierte Links werden nicht mit der komplexen iframe-Mechanik von AMP geöffnet, sondern sie werden wie jede andere Website geladen (Google verwendet <a href="https://css-tricks.com/prefetching-preloading-prebrowsing" target="_blank" rel="noopener noreferrer">rel="prefetch"</a>, um einen ähnlichen Leistungsvorteil zu erzielen). Schließlich ist der „graue Balken“ unnötig, da sich die richtige URL direkt in der Adressleiste oben auf der Seite befindet und das Kopieren der URL einer Website zum Speichern oder Teilen genauso funktioniert wie bei Nicht-AMP-Websites.</p>
+	<p>Wir nutzen diese Gelegenheit auch, um die anderen AMP-Produkte und -Experimente, die wir im Laufe der Jahre entwickelt haben, wie <a href="https://blog.cloudflare.com/amp-validator-api">Ampersand</a> und <a href="https://blog.cloudflare.com/firebolt">Firebolt</a>, zu beenden. Diese Produkte waren innovativ, aber wir haben gelernt, dass Publisher AMP-Produkte schätzen, die gut mit den Suchergebnissen von Google korrelieren und nicht außerhalb davon existieren. Benutzer dieser älteren Produkte wurden vor einigen Wochen darüber informiert, dass sie nach und nach abgeschaltet werden, damit wir unsere Aufmerksamkeit auf AMP Real URL konzentrieren können.</p>
+	<div class="flex anchor relative">
+		<h3 id="on-your-site"><b>Auf Ihrer Seite</b></h3>
+		<a href="https://blog.cloudflare.com/#on-your-site" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Google führt die Unterstützung von AMP Real URL (außerhalb von Cloudflare als <a href="https://developers.google.com/web/updates/2018/11/signed-exchanges" target="_blank" rel="noopener noreferrer">Signed Exchanges</a> bezeichnet) ein und beginnt dabei mit den primären Google-Suchergebnissen. Wir hoffen, dass sie das im Laufe der Zeit auch auf andere Bereiche der Suchergebnisseite ausweiten, einschließlich des Nachrichtenbereichs „Schlagzeilen“ oben auf der Seite. Dies macht AMP Real URL heute am wertvollsten für Websites, die den größten Teil ihres AMP-Verkehrs aus den primären Suchergebnissen beziehen, wie beispielsweise E-Commerce, Jobbörsen und werbefinanzierte Websites. Nachrichtenverlage können und sollten AMP Real URL aktivieren, aber der Nutzen, den sie jetzt erleben, ergibt sich aus den Suchergebnissen, die außerhalb der „Schlagzeilen“ existieren. AMP Real URL wird derzeit nur vom Chrome-Browser unterstützt. Aber wir sind zuversichtlich, dass sich die Unterstützung ausweiten wird, je deutlicher der Nutzen für die Internetnutzer zutage tritt.</p>
+	<p>Nach Gesprächen mit Publishern und Internetnutzern haben wir uns dafür entschieden, AMP Real URL kostenlos anzubieten. Dies liegt nicht daran, dass unsere Kunden nicht begeistert oder bereit waren, dafür zu bezahlen. AMP macht einen großen Teil des Datenverkehrs vieler Websites aus. Unsere Motivation ist die gleiche wie beim kostenlosen Angebot von CDN- oder SSL-Diensten für Millionen von Kunden: Unser Ziel ist ein besseres Internet, und die Verbesserung von AMP ist ein großer Schritt in diese Richtung. Wir sind überzeugt, dass AMP Real URL eine Technologie ist, die das mobile Web grundlegend zum Besseren verändern wird und von jeder AMP-unterstützenden Website übernommen werden sollte. Wir haben noch ein anderes Motiv: Wir hoffen, dass dies potenzielle Kunden, die AMP schätzen, dazu motivieren wird, sich für Cloudflare zu entscheiden.</p>
+	<p>Ab heute finden Sie in Ihrem Cloudflare-Dashboard einen neuen Abschnitt auf der Registerkarte „Speed“:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NZ2d1MfNd5NB1fnBQrLpV/695455dfbfa2f939142ae736371707f8/image-7.png" alt="" class="kg-image" width="1999" height="303" loading="lazy">
+
+	</figure>
+	<p>Wir werden in den nächsten Wochen schrittweise die Unterstützung von AMP Real URL einführen. Aktivieren Sie es jetzt und wir informieren Sie, wenn es für Ihre Domain aktiviert ist. Wenn Sie ein interessierter Enterprise-Kunde sind, wenden Sie sich bitte an uns, damit wir Ihre Aktivierung beschleunigen können.</p>
+	<p>Zum Abschluss einige Meinungen der frühen Benutzer von AMP Real URL:</p>
+	<blockquote>
+		<p>**„Die Leistungsvorteile von AMP bieten unserem Geschäft einen Mehrwert und wir sind gespannt, wie AMP Real URL in der Lage ist, dies noch weiter zu steigern.“**– Solomon Moskalenko, Director of Interactive, US Xpress Trucking, The Johnson Group</p>
+	</blockquote>
+	<blockquote>
+		<p><b>„AMP hat einen entscheidender Anteil daran, dass unser Unternehmen wachsen und Verbraucher überall erreichen kann. Mit AMP Real URL haben wir jetzt mehr Kontrolle über unsere Marke und können Analysen für unsere Geschäftswebsite durchführen.“</b>– Sumantro Das, Sr Director, Product Innovations &amp; Growth Brands GM, 1-800-FLOWERS.COM</p>
+	</blockquote>
+	<blockquote>
+		<p><b>„AMP hat uns sehr dabei geholfen, unsere Zielgruppe effektiver zu erreichen und unsere Online-Community zu entwickeln. Wir sind sehr daran interessiert, AMP Real URL zu verwenden, um unsere Online-Präsenz besser zu verwalten und unsere Nutzer auf der Website zu halten.“</b>– Andrew Warner, CTO von Genius</p>
+	</blockquote>
+</div>

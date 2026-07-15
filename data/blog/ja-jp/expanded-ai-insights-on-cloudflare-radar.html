@@ -1,0 +1,75 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/expanded-ai-insights-on-cloudflare-radar">English</a>、<a href="https://blog.cloudflare.com/zh-tw/expanded-ai-insights-on-cloudflare-radar">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/expanded-ai-insights-on-cloudflare-radar">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/expanded-ai-insights-on-cloudflare-radar">Português</a>、<a href="https://blog.cloudflare.com/es-es/expanded-ai-insights-on-cloudflare-radar">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/expanded-ai-insights-on-cloudflare-radar">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12o0oZbw5QUaPAGimAW2lb/fffceff5a737744def8e4db5222bf491/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2024年のバースデーウィーク中に、Cloudflare Radarで<a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare/#ai-bot-traffic-insights-on-cloudflare-radar"><u>AIボットとクローラーのトラフィックのグラフ</u></a>を公開しました。このグラフでは、最も攻撃的でリクエスト数が多いボットやクローラー、定期的にクロールを行うボットなどを可視化することができます。本日、<a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarに「AI Insights」専用ページ</u></a>を新たに公開しました。このページでは、先述のグラフを組み込み、AIに関連するトレンドを多角的に理解できる追加のメトリクスも提供しています。新しいセクションでは、トラフィックのトレンドに加えて、<a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNSリゾルバー</u></a>トラフィックに基づく一般公開されている生成AIサービスの相対的な人気、AIボットのコンテンツアクセス制限に使われるrobots.txtディレクティブの使用状況、Cloudflare Workers AIによるオープンソースモデルの使用状況も確認できます。</p>
+	<p>以降で、新しいAI Insightsページの各セクションについて、より詳しく説明していきます。</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-bots-and-crawlers-traffic-trends">AIボットとクローラーのトラフィックの傾向</h3>
+		<a href="https://blog.cloudflare.com/#ai-bots-and-crawlers-traffic-trends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIボットによるトラフィックの傾向を追跡することで、その時間の経過に伴うAIボットの活動をよりよく理解することができます。この<a href="https://radar.cloudflare.com/ai-insights#ai-bot-crawler-traffic" target="_blank" rel="noopener noreferrer"><u><b>AIボットとクローラーのトラフィック</b></u></a>を示したグラフは、2024年9月にRadarの「トラフィック」ページで初めて公開されましたが、新しい「AI Insights」ページへ移動しました。ここでは、世界中のデータを使用して、指定した期間における最も活動的な上位5つのAIボットとクローラーのトラフィック傾向を可視化することができます。追跡対象のユーザーエージェントのリストは<a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noopener noreferrer"><u>ai.robots.txtに記載</u></a>されています。なお、このリストは新たなボットが確認され次第追加され、更新されます。このグラフの<a href="https://developers.cloudflare.com/api/operations/radar-get-ai-bots-timeseries-group-by-user-agent" target="_blank" rel="noopener noreferrer"><u>時系列</u></a>データと<a href="https://developers.cloudflare.com/api/operations/radar-get-ai-bots-summary-by-user-agent" target="_blank" rel="noopener noreferrer"><u>要約</u></a>データは Radar APIからも利用可能です（当社がトラフィックを確認しているAIボットおよびクローラーの完全なセットのトラフィック傾向は、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots" target="_blank" rel="noopener noreferrer"><u>Data Explorerで見ることができます</u></a>）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EicYZIfSdeRMBCIID5Fbr/0213b9501e22033ac5315bbef48c5a7a/image3.png" alt="" class="kg-image" width="1999" height="545" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="popularity-of-generative-ai-services">生成AIサービスの人気動向</h3>
+		<a href="https://blog.cloudflare.com/#popularity-of-generative-ai-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>過去数年間にわたり、Cloudflare RadarのYear in Reviewでは、<a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNSリゾルバー</u></a>からのリクエストトラフィックデータを分析し、一般およびいくつかのカテゴリの両方で、最も人気のあるインターネットサービスのランキングを紹介してきました。<a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023年</u></a>と<a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024年</u></a>には、一般公開されている生成AIサービスのランキングも掲載され、両年ともChatGPTが首位を獲得しました。しかし、<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><u>関連するブログ記事</u></a>でも1年間を通したランキングの推移を詳しく紹介していますが、過去のデータをもとにした分析であり、リアルタイムの変化を捉えるものではありませんでした。新しい<a href="https://radar.cloudflare.com/ai-insights#generative-ai-services-popularity" target="_blank" rel="noopener noreferrer"><u><b>生成AIサービスの人気度</b></u></a>グラフでは、生成AI関連のドメインに対するDNSリクエストのデータを集計し、サービスごとの相対的な人気度を日単位で可視化しています。時系列の元データは、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/ranking/subresources/internet_services/methods/timeseries_groups" target="_blank" rel="noopener noreferrer"><u>Radar API</u></a>の<code>serviceCategory=Generative%20AI</code>パラメーターを使用して取得することができます。</p>
+	<p>下のグラフを見ると、2025年1月末現在、上位5サービスは直前の4週間の間、安定した順位を維持していましたが、6～10位のサービスには頻繁な変動がありました。ランキングは今後も推移していくことが予想されます。特に1月末に業界を席巻した生成AIサービス「<a href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer"><u>DeepSeek</u></a>」は、1月26日に9位で初登場し、わずか3日後の1月29日には3位まで急上昇しました。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fzh8oz8ZhybkKlJXBE0qq/4f695ddd38dd676c3b418d5ceac939fb/image5.png" alt="" class="kg-image" width="1999" height="545" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="analysis-of-robots-txt-files">robots.txtファイルの分析</h3>
+		<a href="https://blog.cloudflare.com/#analysis-of-robots-txt-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Webサイトの運営者は、<a href="https://www.robotstxt.org" target="_blank" rel="noopener noreferrer"><u>robots.txt</u></a>ファイルの「Allow」または「Disallow」ディレクティブ（指令）を使用して、サイト全体またはサイトの特定の部分へのアクセス可否を指定することができます。ただし、このアクセス制御が機能するかどうかは、このファイルに記載したディレクティブ（指令）をボットが遵守するかどうかに依存しています。Cloudflareの<a href="https://blog.cloudflare.com/ai-audit-enforcing-robots-txt"><u>AI監査</u></a>は、AIボットが自分のサイトとどのようにやり取りしているかを可視化し、制御することを可能にします。また、Cloudflare Radarは、他のサイトがAIボットをどのように処理しているかに関するインサイトを提供します。</p>
+	<p>Cloudflareでは毎週Radarの<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>上位10,000件のドメイン</u></a>を分析し、それらのサイトがrobots.txtファイルを公開している場合、そのディレクティブに記載されているそれぞれのAI関連の情報を集約しています。<a href="https://radar.cloudflare.com/ai-insights#ai-user-agents-found-in-robotstxt" target="_blank" rel="noopener noreferrer"><u><b>robots.txtに記載されたAIユーザーエージェント</b></u></a>を以下のグラフで見ると、これらの上位サイトがAIボットに関してどのようなアクションをとっているかを知ることができます。処理方法としては、特定のユーザーエージェント（ボット識別子）に対し、サイト全体のコンテンツ（完全許可/完全拒否）または特定のセクション（部分許可/部分拒否）へのアクセスを制御するディレクティブによって指定されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16U4GdEyxsUlzqjKd4Y1jH/25535296e710ae31aa8658b4c338296e/image6.png" alt="" class="kg-image" width="1999" height="850" loading="lazy">
+	</figure>
+	<p>さらに、サイトのカテゴリごと（例：eコマース、ニュースメディア）に分類し、各業界がどのAIボットをrobots.txtのディレクティブでどのように制限しているかを分析しています。例えば、ニュースメディアのサイトでは、ほぼすべてのAIボットを完全拒否していることがわかります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7i1a23p2FfasbJvrS65S7l/0f476352a9573f9822b5ca9d351795d7/image4.png" alt="" class="kg-image" width="1999" height="850" loading="lazy">
+	</figure>
+	<p>一方、ディレクティブを「Allow」に変更すると、表示されるユーザーエージェントの数が大幅に減少し、完全または部分的なアクセスを明示的に許可するサイトの数が大幅に減少します。（なお、robots.txt内に特定のユーザーエージェント（ボット）が記載されていない場合、またはワイルドカード「*」も指定されていない場合、そのボットはデフォルトで完全にアクセス可能となります。）</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5I7OgW10PrX8wKVtRRWmnQ/193d5be5f5211b32c29b8c4601ee38ba/image2.png" alt="" class="kg-image" width="1999" height="850" loading="lazy">
+	</figure>
+	<p>これらの分析結果は「AI Insights」ページで見ることができるほか、より詳細な調査や分析を行うためにRadar<a href="https://developers.cloudflare.com/api/resources/radar/subresources/robots_txt/subresources/top/subresources/user_agents/methods/directive" target="_blank" rel="noopener noreferrer"><u>API</u></a>や<a href="https://radar.cloudflare.com/explorer?dataSet=robots_txt&amp;groupBy=user_agents%2Fdirective&amp;filters=directive%253DDISALLOW" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a>を通じて元データを取得することも可能です。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="popularity-of-models-and-tasks-on-workers-ai">Workers AIでのモデルとタスクの人気動向</h3>
+		<a href="https://blog.cloudflare.com/#popularity-of-models-and-tasks-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIモデルの進化は急速に進んでおり、テキストや画像の生成、音声認識、画像分類などの高度なタスクが可能なモデルが次々と登場しています。Cloudflareは、こうしたAIモデルの提供者と緊密に連携し、リリース後すぐに<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>Workers AIがこれらのモデルに対応</u></a>できるようにしています。新しい「AI Insights」ページでは、Radarを通じて、Workers AIで利用可能な公開モデルの人気度（<a href="https://radar.cloudflare.com/ai-insights/#workers-ai-model-popularity" target="_blank" rel="noopener noreferrer"><u><b>Workers AIモデルの人気度</b></u></a>）や、それらのモデルが対応するタスクの人気度（<a href="https://radar.cloudflare.com/ai-insights/#workers-ai-task-popularity" target="_blank" rel="noopener noreferrer"><u><b>Workers AIタスクの人気度</b></u></a>）を可視化できます。これらのデータは、顧客アカウントの利用割合をもとに分析されています。Data Explorerでは、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.inference&amp;groupBy=model" target="_blank" rel="noopener noreferrer"><u>モデル</u></a>と<a href="https://radar.cloudflare.com/explorer?dataSet=ai.inference&amp;groupBy=task" target="_blank" rel="noopener noreferrer"><u>タスク</u></a>の全リストについての共有傾向や概要、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.inference&amp;groupBy=model&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>モデル</u></a>と<a href="https://radar.cloudflare.com/explorer?dataSet=ai.inference&amp;groupBy=task&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>タスク</u></a>の割合を時系列で比較する機能など、様々な情報を利用することができます。また、APIエンドポイント経由で<a href="https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/subresources/timeseries_groups/subresources/summary/methods/model" target="_blank" rel="noopener noreferrer"><u>モデルの人気度</u></a>と<a href="https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/subresources/timeseries_groups/subresources/summary/methods/task" target="_blank" rel="noopener noreferrer"><u>タスクの人気度</u></a>に関する元データを取得することもできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5c7YE87EdMsoN4bYELM4Rw/556abd2ebb70cbc7839fa98c653e816d/image7.png" alt="" class="kg-image" width="1571" height="841" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">まとめ</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI分野は非常に変化が激しく、新しいプラットフォームやサービス、モデルが次々と登場しています。中には<a href="https://bsky.app/profile/radar.cloudflare.com/post/3lgxs6i4lco2e" target="_blank" rel="noopener noreferrer"><u>急速に注目を集め</u></a>、<a href="https://www.reuters.com/technology/chinas-deepseek-sets-off-ai-market-rout-2025-01-27" target="_blank" rel="noopener noreferrer"><u>市場に大きな影響を与える</u></a>ものもあります。また、ChatGPTの発表から2年以上が経ちましたが、コンテンツ提供者とAIプラットフォームの間では、モデルのトレーニングを目的としたコンテンツのスクレイピングの是非についての<a href="https://www.techpolicy.press/generative-ai-and-copyright-issues-globally-ani-media-v-openai" target="_blank" rel="noopener noreferrer"><u>議論が続いています</u></a>。<a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarの新しい「AI Insights」ページ</u></a>は、この変化の激しい分野の最新傾向や情報を提供し、業界関係者や参加者がAIの変化と進化の様子をよりよく理解できるようにします。</p>
+	<p>AI Insightsのグラフをソーシャルメディアで共有する際は、必ずタグ付けをしていただけますようお願いします：<a href="https://x.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a>（X）、<a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a>（Mastodon）、<a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a>（Bluesky）。また、ソーシャルメディアやメールを通じて、追加してほしいAIメトリクスのリクエストも受け付けています。</p>
+</div>

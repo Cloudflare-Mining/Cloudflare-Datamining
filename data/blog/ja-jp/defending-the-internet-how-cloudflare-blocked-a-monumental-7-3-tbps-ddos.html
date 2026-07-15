@@ -1,0 +1,344 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">English</a>、<a href="https://blog.cloudflare.com/de-de/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Português</a>、<a href="https://blog.cloudflare.com/es-es/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Español</a>、<a href="https://blog.cloudflare.com/id-id/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Indonesia</a>、<a href="https://blog.cloudflare.com/nl-nl/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Nederlands</a>、<a href="https://blog.cloudflare.com/th-th/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">ไทย</a>、<a href="https://blog.cloudflare.com/fr-fr/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos">Français</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iNGnV69vCGK2I0aizUmti/7697146a7cb1c7a0051cdbcb8156551b/Hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2025年5月中旬、Cloudflareは1秒あたり7.3テラビット（Tbps）という驚異的な規模で、史上最大のDDoS攻撃をブロックしました。これは、2025年4月27日に<a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1"><u>2025年第1四半期のDDoS脅威レポート</u></a>を発表した直後に発生したもので、このレポートでは6.5Tbpsに達し、48億パケット/秒（pps）に達する攻撃が強調されています。この7.3Tbpsの攻撃は、それまでの記録より12%大きく、<a href="https://krebsonsecurity.com/2025/05/krebsonsecurity-hit-with-near-record-6-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>KrebsOnSecurity</u></a>でサイバーセキュリティアナリストのBrian Krebs氏が報告した最近の攻撃よりも1Tbps大きいものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ANdNP7alw2BkWu5hiXaTa/4e6c32c48c5b48ed1943ddb9c9819d18/1.png" alt="" class="kg-image" width="1796" height="810" loading="lazy">
+	</figure>
+	<p><i><sup>新世界記録：Cloudflareが自律的にブロックした7.3TbpsのDDoS攻撃</sup></i></p>
+	<p>この攻撃の標的となったのは、IPネットワークを防御するために<a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Magic Transit</u></a>を使用しているCloudflareの顧客のホスティングプロバイダーです。最新の<a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#attacks-target-the-cloudflare-network-and-internet-infrastructure"><u>DDoS脅威レポート</u></a>で報告したように、ホスティングプロバイダーや重要なインターネットインフラがDDoS攻撃の標的となるケースが増えています。下の写真は2025年1月～2月に行われた攻撃キャンペーンで、CloudflareのインフラとCloudflareが保護するホスティングプロバイダーに対して1,350万件を超えるDDoS攻撃を仕掛けたものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fbj7Uvc4g61ag7FdNpsVY/e0911256cdda102d394f04467922989e/2.png" alt="" class="kg-image" width="1999" height="778" loading="lazy">
+	</figure>
+	<p><i><sup>Cloudflareが保護するCloudflareのインフラとホスティングプロバイダーを標的にしたDDoS攻撃キャンペーン</sup></i></p>
+	<p>まずは統計データから始めて、次に当社のシステムがこの攻撃をどのように検出し、軽減したのかを掘り下げていきましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-7-3-tbps-attack-delivered-37-4-terabytes-in-45-seconds">7.3Tbpsの攻撃は45秒で37.4テラバイトを送信</h2>
+		<a href="https://blog.cloudflare.com/#the-7-3-tbps-attack-delivered-37-4-terabytes-in-45-seconds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>37.4テラバイトは、現在の規模では驚異的な数字ではありませんが、わずか45秒で37.4テラバイトを転送することは驚異的だと言えます。これは、9,350本以上のフルHD映画でネットワークを氾濫させるのと同等であり、わずか45秒で7,480時間の高解像度動画をノンストップでストリーミングすることに相当します（これは、ほぼ1年分の連続視聴に相当します）。音楽であれば、1分以内に約935万曲をダウンロードでき、57年間ずっとリスナーを楽しませ続けることができます。スマートフォンで1,250万枚の高解像度写真を撮影しても、ストレージが不足することはありません。たとえ毎日1枚撮影しても、4,000年間撮り続けることになりますが、それが45秒で実現します。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LdE4nXpbZNNq5nuu6zcAI/0d3bb3ce445219e32e0c193ac293e2c7/3.png" alt="" class="kg-image" width="1064" height="737" loading="lazy">
+	</figure>
+	<p><i><sup>記録的な7.3TbpsのDDoS攻撃は、45秒で37.4TBを送信</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="the-attack-details">攻撃の詳細</h2>
+		<a href="https://blog.cloudflare.com/#the-attack-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この攻撃は、顧客が所有し使用する1つのIPアドレスに対して、平均21,925の宛先ポートを絨毯爆撃し、ピーク時には毎秒34,517の宛先ポートに達しました。攻撃はまた、類似した送信元ポートの分布から発生しました。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GZqL1pFqCYp7YmaY6BJ7B/7bfc6c9896f68936897ffa4458705eac/4.png" alt="" class="kg-image" width="1294" height="578" loading="lazy">
+	</figure>
+	<p><i><sup>宛先ポートの分布</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="attack-vectors">攻撃ベクトル</h3>
+		<a href="https://blog.cloudflare.com/#attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>7.3Tbpsの攻撃は、マルチベクトルDDoS攻撃でした。攻撃トラフィックの約99.996%がUDPフラッドと分類されました。しかし、残りの0.004%は攻撃トラフィックの1.3GBを占めており、QOTDリフレクション攻撃、エコーリフレクション攻撃、NTPリフレクション攻撃、Mirai UDPフラッド攻撃、ポートマップフラッド、RIPv1アンプ攻撃として識別されました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11Vi16gyvOnkCK9XCjkiW7/5453372518abfe68982ff3450245a295/5.png" alt="" class="kg-image" width="1240" height="728" loading="lazy">
+	</figure>
+	<p><i><sup>UDPフラッド以外の攻撃ベクトル</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="breakdown-of-the-attack-vectors">攻撃ベクトルの内訳</h3>
+		<a href="https://blog.cloudflare.com/#breakdown-of-the-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下に、この攻撃で観察されたさまざまな攻撃ベクトル、組織がリフレクションおよびアンプリフィケーションの参加者になることを避ける方法、そして正当なトラフィックへの影響を避けつつこれらの攻撃を防御するための推奨事項を示します。Cloudflareは、これらの攻撃から保護します。</p>
+	<div class="flex anchor relative">
+		<h4 id="udp-ddos-attack">UDP DDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#udp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ</b> : フラッド</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b> ターゲットIPアドレスのランダムまたは特定のポートに大量のUDPパケットが送信されます。インターネットリンクを飽和させたり、処理能力を超えるパケットでインライン機器を圧倒したりする可能性があります。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>クラウドベースの帯域幅消費型DDoS攻撃対策をデプロイし、UDPトラフィックにスマートレート制限を適用し、不要なUDPトラフィックを完全にドロップします。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>積極的なフィルタリングは、VoIP、ビデオ会議、オンラインゲームなどの正当なUDPサービスを中断する可能性があります。しきい値を慎重に適用してください。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="qotd-ddos-attack">QOTD DDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#qotd-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>リフレクション＋アンプリフィケーション</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b>UDPポート17でリッスンし、短い引用符またはメッセージで応答するQuote of the Day（QOTD）プロトコルを悪用します。攻撃者は、偽装されたIPアドレスから公開されたサーバーにQOTDリクエストを送信し、増幅された応答で被害者を圧倒します。</p>
+		</li>
+		<li>
+			<p><b>リフレクション/増幅要素になるのを防ぐ方法：</b>QOTDサービスを無効にし、すべてのサーバーとファイアウォールでUDP/17をブロックします。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>受信UDP/17をブロックします。異常な小パケットUDPリクエストのスパイクを排除します。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b> QOTDは時代遅れの診断/デバッグプロトコルであり、最新のアプリケーションでは使用されていません。それを無効化しても、正当なサービスに悪影響を与えることはありません。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="echo-ddos-attack">Echo DDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#echo-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>リフレクション＋アンプリフィケーション</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b> 受信したデータと同じデータで応答するEchoプロトコル（UDP/TCPポート7）を悪用します。攻撃者は被害者のIPアドレスを偽装し、デバイスにデータを反射させて攻撃を増幅します。</p>
+		</li>
+		<li>
+			<p><b>リフレクション/増幅の要素になるのを防ぐ方法：</b>すべてのデバイスでEchoサービスを無効にします。エッジでUDP/TCPポート7をブロックします。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>Echoサービスを無効にし、ネットワーク境界でTCP/UDPポート7をブロックします。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>Echoは時代遅れの診断ツールです無効にしたりブロックしたりしても、現代のシステムに悪影響を与えることはありません。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="ntp-ddos-attack">NTP DDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#ntp-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>リフレクション＋アンプリフィケーション</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b>インターネット上でクロックを同期させるために使用されるネットワークタイムプロトコル（NTP）を悪用します。攻撃者は、最近の接続の大きなリストを返す古いNTPサーバー（UDP/123）でmonlistコマンドを悪用します。なりすましリクエストは、リフレクションの増幅を引き起こします。</p>
+		</li>
+		<li>
+			<p><b>リフレクション/増幅要素になるのを防ぐ方法：</b>NTPサーバーをアップグレードまたは設定して、monlistを無効にします。NTPクエリを信頼できるIPアドレスのみに制限します。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>monlistコマンドを無効にし、NTPソフトウェアを更新し、UDP/123トラフィックをフィルタリングまたはレート制限します。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>monlistを無効化しても、時刻の同期には影響しません。ただし、UDP/123のフィルタリングやブロックは、信頼できないソースや外部のソースのみをブロックするようにするため、範囲が広すぎると同期時間に影響を与える可能性があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="mirai-udp-attack">Mirai UDP攻撃</h4>
+		<a href="https://blog.cloudflare.com/#mirai-udp-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>フラッド</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b>侵害されたIoTデバイスで構成される<a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>Miraiボットネット</u></a>は、ランダムまたはサービス固有のUDPパケット（DNS、ゲームサービスなど）を使用して被害者をフラッディングします。</p>
+		</li>
+		<li>
+			<p><b>ボットネットの一部になることを防ぐ方法：</b>ボットネットの一部になることを回避するために、IoTデバイスの安全性を確保し、デフォルトパスワードを変更し、最新のファームウェアバージョンにアップグレードし、<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/iot-security" target="_blank" rel="noopener noreferrer"><u>IoTセキュリティのベストプラクティス</u></a>に従います。可能な限り、アウトバウンドトラフィックを監視し、異常を検出してください。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>クラウドベースの帯域幅消費型DDoS攻撃対策とUDPトラフィックのレート制限をデプロイします。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>まず、ネットワークと受信するトラフィックの種類、特にプロトコル、その送信元と送信先を把握してください。UDPを介して実行されている影響を避けたいサービスを特定します。それらを特定したら、エンドポイントを除外するか、通常のトラフィックレベルを考慮してレート制限を適用することができます。さもなければ、UDPトラフィックの積極的なレート制限は正当なトラフィックに影響を与え、VoIP通話やVPNトラフィックなどUDPを介して実行されるサービスに影響を与える可能性があります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="portmap-ddos-attack">ポートマップDDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#portmap-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>リフレクション＋アンプリフィケーション</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b>Remote Procedure Call（RPC）ベースのアプリケーションが使用するポートマッパーサービス（UDP/111）を標的とし、利用可能なサービスを特定します。スプーフィングされたリクエストは反射された応答を引き起こします。</p>
+		</li>
+		<li>
+			<p><b>リフレクション・増幅要素になるのを防ぐ方法：</b>必要でない場合は、ポートマッパーサービスを無効にします。社内で必要な場合は、信頼できるIPアドレスのみに制限してください。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>必要でない場合はポートマップサービスを無効にし、インバウンドUDP/111トラフィックをブロックします。アクセス制御リスト（ACL）またはファイアウォールを使用して、既知のRPCサービスへのアクセスを制限します。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>ポートマップを無効にすると、RPC（ネットワークファイルシステムプロトコルなど）に依存するアプリケーションが中断される可能性があります。削除する前にサービスの依存関係を検証してください。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h4 id="ripv1-ddos-attack">RIPv1 DDoS攻撃</h4>
+		<a href="https://blog.cloudflare.com/#ripv1-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p><b>タイプ：</b>リフレクション＋（低）アンプリフィケーション</p>
+		</li>
+		<li>
+			<p><b>仕組み：</b>UDP/520を使用する古い非認証距離ベクトルルーティングプロトコルであるルーティング情報プロトコルバージョン1（RIPv1）を悪用します。攻撃者は、偽装されたルーティング更新を送信してネットワークを氾濫させたり、混乱させたりします。</p>
+		</li>
+		<li>
+			<p><b>リフレクション/増幅の要素になるのを防ぐ方法：</b>ルーターのRIPv1を無効にします。ルーティングが必要な場所では、認証付きのRIPv2を使用してください。</p>
+		</li>
+		<li>
+			<p><b>攻撃からの防御方法：</b>信頼できないネットワークからの受信UDP/520をブロックします。予期しないルーティングの更新を監視します。</p>
+		</li>
+		<li>
+			<p><b>意図しない影響の回避方法：</b>RIPv1はほとんど時代遅れです。通常は無効にするのが安全です。レガシーシステムがそれに依存している場合、変更前にルーティングの動作を検証してください。</p>
+		</li>
+	</ul>
+	<p>ここでの推奨事項はすべて、正当なトラフィックへの意図しない影響を回避するために、それぞれのネットワークやアプリケーションのコンテキストや動作を考慮する必要があります。</p>
+	<div class="flex anchor relative">
+		<h3 id="attack-origins">攻撃の発生元</h3>
+		<a href="https://blog.cloudflare.com/#attack-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この攻撃は、161か国にまたがる5,433の自律システム（AS）からの122,145以上のソースIPアドレスから発信されました。&nbsp;</p>
+	<p>攻撃トラフィックのほぼ半数がブラジルとベトナムから発信されており、それぞれ約4分の1です。さらに3分の1は、台湾、中国、インドネシア、ウクライナ、エクアドル、タイ、アメリカ合衆国、サウジアラビアから発生しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CNlOoTGF4USsh5q7Lw5XK/4c108ae003c4f14418aeab2ad98ab197/6.png" alt="" class="kg-image" width="1728" height="984" loading="lazy">
+	</figure>
+	<p><i><sup>攻撃トラフィックの発生元上位10か国</sup></i></p>
+	<p>1秒あたりの固有の送信元IPアドレスの平均数は26,855で、ピーク時には45,097でした。&nbsp;&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Il1KDn7BuFpFBYvvdiEaK/ba2a5b75f087bbd16ab0c94840ff0951/7.png" alt="" class="kg-image" width="1278" height="544" loading="lazy">
+	</figure>
+	<p><i><sup>一意の送信元IPアドレスの分布</sup></i></p>
+	<p>この攻撃は、5,433の異なるネットワーク（<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>AS</u></a>）から発信されました。Telefonica Brazil（<a href="https://radar.cloudflare.com/as27699" target="_blank" rel="noopener noreferrer"><u>AS27699</u></a>）が、DDoS攻撃トラフィックの大部分、全体の10.5%を占めていました。Viettel Group（<a href="https://radar.cloudflare.com/as7552" target="_blank" rel="noopener noreferrer"><u>AS7552</u></a>）が9.8%と僅差で続き、China Unicom（<a href="https://radar.cloudflare.com/as4837" target="_blank" rel="noopener noreferrer"><u>AS4837</u></a>）とChina Telecom（<a href="https://radar.cloudflare.com/as3462" target="_blank" rel="noopener noreferrer"><u>AS3462</u></a>）がそれぞれ3.9%と2.9%を占めています。China Telecom（<a href="https://radar.cloudflare.com/as4134" target="_blank" rel="noopener noreferrer"><u>AS4134</u></a>）はトラフィックの2.8%を占めていました。上位10位の残りのASN、Claro NXT（<a href="https://radar.cloudflare.com/as28573" target="_blank" rel="noopener noreferrer"><u>AS28573</u></a>）、VNPT Corp（<a href="https://radar.cloudflare.com/as45899" target="_blank" rel="noopener noreferrer"><u>AS45899</u></a>）、UFINET Panama（<a href="https://radar.cloudflare.com/as52468" target="_blank" rel="noopener noreferrer"><u>AS52468</u></a>）、STC（<a href="https://radar.cloudflare.com/as25019" target="_blank" rel="noopener noreferrer"><u>AS25019</u></a>）、FPT Telecom Company（<a href="https://radar.cloudflare.com/as18403" target="_blank" rel="noopener noreferrer"><u>AS18403</u></a>）は、それぞれDDoS攻撃トラフィックの総数の1.3％から1.8％を占めています。
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6msz4mK3gxDD1gBnIbYmt9/3d56c615b29def674d9a699339f65a4c/8.png" alt="" class="kg-image" width="1738" height="974" loading="lazy">
+	</figure>
+	<p><i>上位10の発信元自律システム</i></p>
+	<div class="flex anchor relative">
+		<h3 id="free-botnet-threat-feed">無料ボットネット脅威フィード</h3>
+		<a href="https://blog.cloudflare.com/#free-botnet-threat-feed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ホスティングプロバイダー、クラウドコンピューティングプロバイダー、およびインターネットサービスプロバイダーが、これらの攻撃を仕掛ける不正なアカウントを特定し、削除できるように、Cloudflareは独自の視点を活かして、<a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>サービスプロバイダー向け無料DDoSボットネット脅威フィード</u></a>を提供しています。すでに世界中で600以上の組織がこのフィードに登録しています。このフィードは、各自律システム番号内から発生しているHTTP DDoS攻撃の発信元IPアドレスのリストをサービスプロバイダーに提供します。完全無料で、必要なのはCloudflareの無料アカウントを開設し、<a href="https://docs.peeringdb.com/howto/authenticate" target="_blank" rel="noopener noreferrer"><u>PeeringDB</u></a>経由でASNを認証し、その後<a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/#get-full-report" target="_blank" rel="noopener noreferrer"><u>API経由でフィードを取得</u></a>することだけです。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-the-attack-was-detected-and-mitigated">攻撃の検出・軽減方法</h2>
+		<a href="https://blog.cloudflare.com/#how-the-attack-was-detected-and-mitigated" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="using-the-distributed-nature-of-ddos-attacks-against-it">DDoS攻撃の分散性を逆手に取る</h3>
+		<a href="https://blog.cloudflare.com/#using-the-distributed-nature-of-ddos-attacks-against-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃を受けたIPアドレスは、グローバル<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>エニーキャスト</u></a>を使用してCloudflareのネットワークからアドバタイズされています。つまり、そのIPを狙った攻撃パケットは、最寄りのCloudflareデータセンターにルーティングされました。グローバルエニーキャストを使用することで、攻撃トラフィックを分散させ、その分散性を利用してボットネットノードの近くで軽減し、ユーザーに最も近いデータセンターからサービスを継続して提供することができます。この攻撃は、世界中の293か所にある477のデータセンターで検出され、軽減されました。トラフィック量の多い場所では、複数のデータセンターに拠点があります。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="autonomous-ddos-detection-and-mitigation">自律的なDDoS検出と軽減</h3>
+		<a href="https://blog.cloudflare.com/#autonomous-ddos-detection-and-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareのグローバルネットワークは、すべてのデータセンターであらゆるサービスを稼働させています。これには、DDoS検出および軽減システムが含まれます。これは、攻撃の発生元がどこであるかに関わりな関わりなく、完全かつ自律的に攻撃を検出し、軽減できることを意味します。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="real-time-fingerprinting">リアルタイムのフィンガープリンティング</h3>
+		<a href="https://blog.cloudflare.com/#real-time-fingerprinting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パケットが当社のデータセンターに入ると、利用可能なサーバーへ<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><u>インテリジェントに負荷分散</u></a>します。その後、Linuxカーネルの深さ内から直接パケットをサンプリングし、<a href="https://en.wikipedia.org/wiki/Express_Data_Path" target="_blank" rel="noopener noreferrer"><u><i>eXpress Data Path</i></u><u>（XDP）</u></a>から<a href="https://en.wikipedia.org/wiki/EBPF" target="_blank" rel="noopener noreferrer"><u>拡張されたBerkley Packer Filter（eBPF）</u></a>プログラムを使って、パケットサンプルをユーザースペースにルーティングして分析を行います。</p>
+	<p>当社のシステムは、<i>dosd</i>（サービス拒否デーモン）という名前の独自のヒューリスティックエンジンに基づいて、パケットサンプルを分析し、疑わしいパターンを特定します。DoSDは、パケットヘッダーフィールドの共通性の発見やパケットの異常の発見など、パケットサンプルのパターンを検索し、他の専有技術も適用します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fIg4qw12q8V4WDwV9t2gj/a4f02ff1618e5a68de9f660cb053be7d/9.png" alt="" class="kg-image" width="1999" height="616" loading="lazy">
+	</figure>
+	<p><sup>&nbsp;</sup><sup><i>リアルタイムフィンガープリント生成のフロー図</i></sup></p>
+	<p>当社の顧客にとって複雑なフィンガープリンティングシステムは、ユーザーフレンドリーな<i>マネージドルール</i>のグループ、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer"><u>DDoS攻撃対策管理ルールセット</u></a>としてカプセル化されています。&nbsp;</p>
+	<p>DoSDがパターンを検出すると、最も高い軽減効果と精度を持つ最も正確なフィンガープリントを見つけるために、複数のフィンガープリントの順列を生成します。つまり、正当なトラフィックに影響を与えずに、攻撃トラフィックに対してピンポイントで正確に適合させることを試みます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZnkWPuJ9sy5eVXvjcr0bO/eaf92ebca11a718f181d13d3396840b6/10.png" alt="" class="kg-image" width="1999" height="1487" loading="lazy">
+	</figure>
+	<p><sup><i>CloudflareのDDoS攻撃対策システムの図</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="mitigation">軽減</h2>
+		<a href="https://blog.cloudflare.com/#mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>各フィンガープリントの順列に一致するさまざまなパケットサンプルをカウントし、データストリーミングアルゴリズムを使用して、最も多くのヒットを持つフィンガープリントを浮上させます。有効化しきい値を超えた場合、誤検出を避けるために、フィンガープリント構文を使用した緩和ルールがeBPFプログラムとしてコンパイルされ、攻撃パターンに一致するパケットをドロップします。攻撃が終了すると、ルールはタイムアウトして自動的に削除されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="gossiping-about-attacks">攻撃についてのゴシップ</h2>
+		<a href="https://blog.cloudflare.com/#gossiping-about-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前述したように、各サーバーは、攻撃を全自律的に検出・軽減するため、当社のネットワークは非常に効率的で、耐性があり、攻撃を迅速に阻止します。さらに、各サーバーは、データセンター内およびグローバルに、上位のフィンガープリント順列を<i>ゴシップ</i>（<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-igmp/#:~:text=What%20is%20multicasting%3F" target="_blank" rel="noopener noreferrer"><i><u>マルチキャスト</u></i></a>）します。リアルタイムの脅威インテリジェンスの共有は、データセンター内およびグローバルでの軽減効果を向上させます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="protecting-the-internet">インターネットを保護</h2>
+		<a href="https://blog.cloudflare.com/#protecting-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のシステムは、人の介入を必要とせず、アラートもトリガーせず、インシデントも引き起こすことなく、全自律的にこの記録的な7.3TbpsのDDoS攻撃をブロックすることに成功しました。これは、当社の誇る、世界トップクラスのDDoS攻撃対策システムの有効性を示しています。当社は、無料で無制限のDDoS攻撃対策を提供し、より良いインターネットの構築に貢献するという使命の一環としてこのシステムを構築しました。</p>
+</div>

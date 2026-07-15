@@ -1,0 +1,117 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/zero-trust-ai-security">English</a>, <a href="https://blog.cloudflare.com/zh-tw/zero-trust-ai-security">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/zero-trust-ai-security">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/zero-trust-ai-security">日本語</a>, <a href="https://blog.cloudflare.com/pt-br/zero-trust-ai-security">Português</a>, <a href="https://blog.cloudflare.com/es-es/zero-trust-ai-security">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/zero-trust-ai-security">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bmd1fGukS5vyt53JNxGkC/c6e096189a4efd2c98bc4d11f6226f60/zero-trust-ai-security.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><b>Leistungsstarke Cloudflare One-Tools, damit Ihre Teams KI-Dienste sicher nutzen können</b></p>
+	<p>Cloudflare One ermöglicht Teams jeder Größe, die besten Tools im Internet sicher zu nutzen, ohne sich um deren Verwaltung oder die Performance sorgen zu müssen. Wir freuen uns, Cloudflare One for AI ankündigen zu können, eine neue Reihe von Funktionen, die Ihrem Team dabei helfen, mit den neuesten KI-Diensten zu arbeiten und gleichzeitig ein Zero Trust-Sicherheitsniveau zu wahren.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OSWlU9VnnjLJ7TKZRhesn/ce969f4780a674a123bc0f258de651ee/image1-18.png" alt="A complete suite of Zero Trust security tools to get the most from AI" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="large-language-models-larger-security-challenges">Große Sprachmodelle, größere Herausforderungen für die Sicherheit</h3>
+		<a href="https://blog.cloudflare.com/#large-language-models-larger-security-challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ein Large Language Model (LLM, großes Sprachenmodell), wie OpenAIs GPT oder Googles Bard, besteht aus einem neuronalen Netzwerk, das anhand einer Reihe von Daten trainiert wurde, um Text auf der Grundlage einer Aufforderung (dem sogenannten „Prompt“) vorherzusagen und zu generieren. Nutzer können Fragen stellen, Feedback einholen und sich auf den Dienst stützen, um Outputs zu erzeugen – von Gedichten bis hin zu <a href="https://blog.samrhea.com/posts/2022/five-minute-ai-site" target="_blank" rel="noopener noreferrer">Cloudflare Workers-Anwendungen</a>.</p>
+	<p>Die Tools haben auch eine verblüffende Ähnlichkeit mit einem echten Menschen. Wie bei einigen persönlichen Gesprächen im wirklichen Leben kann auch bei diesen KI-Diensten ein übermäßiges Preisgeben von Informationen (ein als „Oversharing“ bezeichnetes Phänomen) zu einem <a href="https://mashable.com/article/samsung-chatgpt-leak-details" target="_blank" rel="noopener noreferrer">ernsthaften Problem</a> werden. Dieses Risiko vervielfacht sich durch die Arten von Anwendungsfällen, in denen LLM-Modelle ihre Stärken haben. Mit diesen Tools können Entwickler schwierige Programmieraufgaben lösen oder Sachbearbeiter prägnante Berichte aus einer Unmenge von Notizen erstellen. Das ist zwar hilfreich, aber jede Eingabe in eine Eingabeaufforderung wird zu einem Teil der Daten, der die Kontrolle Ihres Unternehmens verlässt.</p>
+	<p>Als Reaktion auf Tools wie ChatGPT wurde versucht, den Dienst komplett zu verbieten, entweder auf Unternehmensebene oder sogar <a href="https://www.reuters.com/technology/germany-principle-could-block-chat-gpt-if-needed-data-protection-chief-2023-04-03" target="_blank" rel="noopener noreferrer">für eine ganze Nation</a>. Unserer Ansicht nach sollte dies nicht notwendig sein. Mit Cloudflare One wollen wir Ihnen die Möglichkeit geben, die von Ihnen benötigten Tools sicher und ohne Performance-Einbußen zu nutzen – egal wo sie sich befinden. Bestehenden Nutzern der Zero Trust-Produkte von Cloudflare One werden diese Funktionen bekannt vorkommen. Wir freuen uns jedoch darauf, Ihnen Fälle zu zeigen, in denen Sie die jetzt verfügbaren Tools nutzen können, damit Ihr Team die Vorteile der neuesten LLM-Funktionen nutzen kann.</p>
+	<div class="flex anchor relative">
+		<h3 id="measure-usage">Nutzung messen</h3>
+		<a href="https://blog.cloudflare.com/#measure-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bei SaaS-Anwendungen kann sich jeder Nutzer einfach anmelden und loslegen. Durch diesen Komfort belasten diese Tools aber auch die IT-Budgets und Sicherheitsrichtlinien. Teams bezeichnen dieses Problem als „<a href="https://blog.cloudflare.com/introducing-shadow-it-discovery">Schatten-IT</a>“ – die Nutzung von Anwendungen und Diensten, die im Unternehmen eigentlich nicht genehmigt sind.</p>
+	<p>Was das Budget betrifft, so haben wir von Kunden gehört, die bereits seit einiger Zeit mit LLMs experimentieren, sich aber nicht sicher sind, wie sie die Entscheidung für eine kommerzielle Lizenzierung treffen sollen. Welche Dienste und Funktionen benötigen Ihre Nutzer und wie viele Lizenzen sollten sie kaufen?</p>
+	<p>In puncto Sicherheit können KIs einerseits die Arbeit deutlich erleichtern, andererseits aber verheerende Auswirkungen auf die Datenkontrolle haben. Die Teammitglieder behandeln diese KI wie einen Gesprächspartner für schmerzhafte Probleme. Die Dienste laden Nutzer dazu ein, ihre Fragen und Probleme mitzuteilen. Manchmal kann der Kontext innerhalb dieser Prompts sensible Informationen enthalten, die ein Unternehmen niemals verlassen sollten. Selbst wenn Teams einen einzigen Anbieter auswählen und genehmigen, bevorzugen Mitglieder Ihres Unternehmens möglicherweise eine andere KI und verwenden diese weiterhin in ihrem Arbeitsablauf.</p>
+	<p>Cloudflare One-Kunden jedes Tarifs <a href="https://developers.cloudflare.com/cloudflare-one/analytics/access" target="_blank" rel="noopener noreferrer">können jetzt die Nutzung von KIs überprüfen</a>. Ihre IT-Abteilung kann Cloudflare Gateway einsetzen und passiv beobachten, wie viele Nutzer welche Dienste auswählen, um so die Lizenzpläne für Unternehmen zu prüfen.</p>
+	<p>Administratoren können die Nutzung dieser Dienste auch mit einem einzigen Klick blockieren. Das ist aber heute gar nicht unser Ziel. Sie sollten diese Funktion nutzen, wenn Sie ChatGPT als genehmigtes Modell ausgewählt haben und sicherstellen möchten, dass Ihre Teammitglieder keine anderen Dienste mehr nutzen. Wir hoffen jedoch, dass Sie nicht alle diese Dienste vollständig blockieren. Für Cloudflare hat es Priorität, Ihnen die Möglichkeit zu geben, diese Tools sicher zu nutzen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uHrL23faFCHE9540fQFp0/c7fbebb109d03999ebaf94fc39890805/image6-5.png" alt="" class="kg-image" width="1879" height="682" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="control-api-access">Den API-Zugriff kontrollieren</h3>
+		<a href="https://blog.cloudflare.com/#control-api-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Als unsere Teams mit dem ChatGPT-Service von OpenAI zu experimentieren begannen, waren wir erstaunt darüber, was er bereits über Cloudflare wusste. Wir baten ChatGPT, Anwendungen mit <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> zu erstellen oder uns bei der Konfiguration einer <a href="https://www.cloudflare.com/products/zero-trust/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>-Richtlinie zu helfen, und in den meisten Fällen waren die Ergebnisse präzise und hilfreich.</p>
+	<p>In einigen Fällen verfehlten die Ergebnisse das Ziel. Die KI verwendete veraltete Informationen oder wir stellten Fragen zu Funktionen, die erst kürzlich eingeführt worden waren. Zum Glück können diese KIs lernen und wir können helfen. Wir können diese Modelle mit gezielten Eingaben trainieren und <a href="https://openai.com/blog/chatgpt-plugins" target="_blank" rel="noopener noreferrer">Plugins einbinden</a>, um unseren Kunden bessere KI-gesteuerte Erfahrungen bei der Nutzung von Cloudflare-Diensten zu bieten.</p>
+	<p>Wir haben von Kunden gehört, die das Gleiche tun wollen und die, wie wir, Trainingsdaten sicher freigeben und dem Plugin eines KI-Dienstes Zugang gewähren müssen. Die Sicherheitssuite von Cloudflare One geht über menschliche Nutzer hinaus und kann Teams die Möglichkeit geben, den Zero Trust-Zugriff auf sensible Daten über APIs sicher freizugeben.</p>
+	<p>Zunächst können Teams <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens" target="_blank" rel="noopener noreferrer">Service-Token</a> erstellen, die externe Dienste vorlegen müssen, um auf Daten zuzugreifen, die über Cloudflare One verfügbar sind. Administratoren können diese Token an Systeme weitergeben, die API-Anfragen stellen, und jede einzelne Anfrage protokollieren. Bei Bedarf können die Teams diese Token mit einem einzigen Klick widerrufen.</p>
+	<p>Nach der Erstellung und Ausgabe von Service-Token können Administratoren Richtlinien erstellen, um bestimmten Diensten den Zugriff auf ihre Trainingsdaten zu ermöglichen. Diese Richtlinien verifizieren das Service-Token und können erweitert werden, um Land, IP-Adresse oder ein mTLS-Zertifikat zu verifizieren. Es können auch Richtlinien erstellt werden, die menschliche Nutzer dazu verpflichten, sich bei einem Identitätsanbieter zu authentifizieren und eine MFA-Abfrage auszufüllen, bevor sie auf sensible Trainingsdaten oder -dienste zugreifen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MImi9GeUWltY5DOFwvMSh/c2d8358832bd18a88bdbc5e38bd12fb5/download-7.png" alt="" class="kg-image" width="1600" height="1317" loading="lazy">
+
+	</figure>
+	<p>Mit <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a> können Teams einem KI-Dienst erlauben, sich mit ihrer Infrastruktur zu verbinden, ohne Löcher in ihre Firewalls schlagen zu müssen. Cloudflare Tunnel stellt eine verschlüsselte, nur ausgehende Verbindung zum Netzwerk von Cloudflare her, bei der jede Anfrage anhand der Zugriffsregeln überprüft wird, die für einen oder mehrere durch Cloudflare One geschützte Dienste konfiguriert wurden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AsBiCcSRRs2cB0fX91qFb/d6235e9b8e6ab10b8b1370811aa8336f/download--1--4.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+
+	</figure>
+	<p>Die Zero Trust-Zugangskontrolle von Cloudflare ermöglicht Ihnen, für jede einzelne Anfrage an die Daten, die Ihr Unternehmen diesen Tools zur Verfügung stellen möchte, eine Authentifizierung durchzusetzen. Bleibt jedoch noch das Problem, dass Ihre Teammitglieder vielleicht von sich aus zu viele Daten preisgeben.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TXIWdwYglW1oueAfgVY3e/5136b53e234f770692a00f569edfdc84/download--2--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="restrict-data-uploads">Daten-Uploads einschränken</h3>
+		<a href="https://blog.cloudflare.com/#restrict-data-uploads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Administratoren können einen KI-Dienst auswählen, Schatten-IT-Alternativen blockieren und den Zugriff auf ihre Trainingsdaten sorgfältig kontrollieren. Letztlich sind aber immer noch Menschen an diesen KI-Experimenten beteiligt. Jeder von uns kann versehentlich einen Sicherheitsvorfall verursachen, indem er bei der Nutzung eines KI-Dienstes – selbst eines genehmigten Dienstes – zu viele Informationen preisgibt.</p>
+	<p>Wir gehen davon aus, dass sich die KI-Playgrounds weiterentwickeln und mehr Funktionen für die Datenverwaltung bieten werden, aber wir glauben nicht, dass Sie darauf warten müssen, um diese Dienste in Ihre Arbeitsabläufe zu integrieren. Der <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-policies" target="_blank" rel="noopener noreferrer">Data Loss Prevention (DLP)-Service von Cloudflare</a> kann einen Schutz bieten, um Oversharing zu stoppen, bevor es zu einem Vorfall für Ihr Sicherheitsteam kommt.</p>
+	<p>Sagen Sie uns zunächst, welche Daten Ihnen wichtig sind. Wir bieten einfache, vorkonfigurierte Optionen, mit denen Sie nach Eingaben suchen können, die wie Sozialversicherungsnummern oder Kreditkartennummern aussehen. Cloudflare DLP kann auch nach Mustern suchen, die auf von Ihrem Team konfigurierten, regulären Ausdrücken basieren.</p>
+	<p>Sobald Sie die Daten definiert haben, die Ihr Unternehmen niemals verlassen dürfen, können Sie genau festlegen, wie diese Daten mit KI-Diensten geteilt werden können und wie nicht. Vielleicht sind einige Nutzer berechtigt, mit Projekten zu experimentieren, die sensible Daten enthalten. In diesem Fall können Sie eine Regel erstellen, die es nur einer Active Directory- oder Okta-Gruppe erlaubt, diese Art von Informationen hochzuladen, während alle anderen gesperrt sind.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H0NwXfAL6x2e0iccJbfTr/58c6bd1e2ee1ba39cdafaec17b1d8896/download--3--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="control-use-without-a-proxy">Die Nutzung kontrollieren – ganz ohne Proxy</h3>
+		<a href="https://blog.cloudflare.com/#control-use-without-a-proxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15YcMzIxUHycVsceeYjlTr/3ee7c0b98d067656377ee5a188fcc100/download--4--3.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
+
+	</figure>
+	<p>Die im heutigen Blog-Beitrag vorgestellten Tools konzentrieren sich auf Funktionen, die sich auf Daten in der Übertragung (Data-in-Motion) beziehen. Wir wollen auch sicherstellen, dass Fehlkonfigurationen in den Anwendungen nicht zu Sicherheitsverstößen führen. Die neue Plugin-Funktion in ChatGPT bringt beispielsweise das Wissen und die Arbeitsabläufe externer Dienste in den KI-Interaktionsfluss ein. Das kann jedoch auch dazu führen, dass die Dienste hinter den Plugins mehr Zugriff haben, als Sie wollen</p>
+	<p>Der <a href="https://www.cloudflare.com/products/zero-trust/casb" target="_blank" rel="noopener noreferrer">Cloud Access Security Broker</a> (CASB) von Cloudflare scannt Ihre SaaS-Anwendungen auf potenzielle Probleme, die auftreten können, wenn Nutzer Änderungen vornehmen. Egal, ob Sie auf Dateien aufmerksam gemacht werden, die jemand versehentlich im Internet veröffentlicht hat, oder ob Sie überprüfen, ob Ihre <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations/github/#security-findings" target="_blank" rel="noopener noreferrer">GitHub-Repositories die richtigen Mitgliedschaftseinstellungen haben</a>, der CASB von Cloudflare macht den manuellen Aufwand überflüssig, der erforderlich ist, um jede einzelne Einstellung in Ihren SaaS-Anwendungen auf potenzielle Probleme zu überprüfen.</p>
+	<p>Wir arbeiten aktuell an neuen Integrationen mit beliebten KI-Diensten, um nach Fehlkonfigurationen zu suchen. Diese Integrationen werden bald verfügbar sein. Wie die meisten Nutzer dieser Dienste lernen auch wir immer noch mehr darüber, wo potenzielle Pannen auftreten können, und wir freuen uns, Administratoren, die unsere CASB nutzen, unsere erste Welle von Kontrollen für KI-Dienste zur Verfügung stellen zu können.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Was kommt als Nächstes?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Nützlichkeit dieser Tools wird nur noch zunehmen. Die Fähigkeit von KI-Diensten, zu coachen und Output zu generieren, wird es Entwicklern aller Fachbereiche und Disziplinen noch einfacher machen, die nächste große Innovation zu entwickeln.</p>
+	<p>Wir teilen ein ähnliches Ziel. Die Produkte von Cloudflare sind darauf ausgerichtet, Nutzern bei der Erstellung von Anwendungen und Diensten zu helfen. Dank unserer <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers-Plattform</a> müssen Sie sich nicht mehr darum sorgen, wo Sie Ihre Anwendung einsetzen oder wie Sie Ihre Dienste skalieren können. Cloudflare löst diese Probleme, damit sich die Nutzer auf die Entwicklung konzentrieren können. In Kombination mit den KI-Diensten erwarten wir, dass Tausende neuer Entwickler die nächste Welle von Produkten auf den Weg bringen, die auf Cloudflare basieren und durch KI-Coaching und -Generierung inspiriert sind.</p>
+	<p>Wir haben bereits Dutzende von Projekten florieren sehen, die auf Cloudflare Workers mit Hilfe von Tools wie ChatGPT entwickelt wurden. Wir planen die Einführung neuer Integrationen mit diesen Modellen, um dies noch nahtloser zu gestalten und eine bessere Cloudflare-spezifische Anleitung für das Chat-Erlebnis zu bieten.</p>
+	<p>Wir wissen auch, dass die Sicherheitsrisiken dieser Tools zunehmen werden. Wir werden Cloudflare One weiterhin mit Funktionen ausstatten, mit denen Sie den durch diese Tools entstehenden Risiken einen Schritt voraus sein können. Kann's losgehen? Melden Sie sich hier an, um Cloudflare One für Teams mit bis zu 50 Nutzern kostenlos zu nutzen.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f422c9ec2baed5c7139f8fc55bdee136/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff422c9ec2baed5c7139f8fc55bdee136%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

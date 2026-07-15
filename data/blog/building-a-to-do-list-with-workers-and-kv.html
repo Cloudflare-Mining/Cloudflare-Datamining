@@ -1,589 +1,536 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Bn8linQUEjxrTM5di3mR0/f3ced0d0a7e33f2ca0734b618501fa85/building-a-to-do-list-with-workers-and-kv.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.</p>
-	<p>To start, let’s break this project down into a couple different discrete steps. In particular, it can help to focus on the constraint of working with Workers KV, as handling data is generally the most complex part of building an application:</p>
-	<ol>
-		<li>
-			<p>Build a todos data structure</p>
-		</li>
-		<li>
-			<p>Write the todos into Workers KV</p>
-		</li>
-		<li>
-			<p>Retrieve the todos from Workers KV</p>
-		</li>
-		<li>
-			<p>Return an HTML page to the client, including the todos (if they exist)</p>
-		</li>
-		<li>
-			<p>Allow creation of new todos in the UI</p>
-		</li>
-		<li>
-			<p>Allow completion of todos in the UI</p>
-		</li>
-		<li>
-			<p>Handle todo updates</p>
-		</li>
-	</ol>
-	<p>This task order is pretty convenient, because it’s almost perfectly split into two parts: first, understanding the Cloudflare/API-level things we need to know about Workers <i>and</i> KV, and second, actually building up a user interface to work with the data.</p>
-	<div class="flex anchor relative">
-		<h3 id="understanding-workers">Understanding Workers</h3>
-		<a href="https://blog.cloudflare.com/#understanding-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In terms of implementation, a great deal of this project is centered around KV - although that may be the case, it’s useful to break down <i>what</i> Workers are exactly.</p>
-	<p>Service Workers are background scripts that run in your browser, alongside your application. Cloudflare Workers are the same concept, but super-powered: your Worker scripts run on Cloudflare’s edge network, in-between your application and the client’s browser. This opens up a huge amount of opportunity for interesting integrations, especially considering the network’s massive scale around the world. Here’s some of the use-cases that I think are the most interesting:</p>
-	<ol>
-		<li>
-			<p>Custom security/filter rules to block bad actors before they ever reach the origin</p>
-		</li>
-		<li>
-			<p>Replacing/augmenting your website’s content based on the request content (i.e. user agents and other headers)</p>
-		</li>
-		<li>
-			<p>Caching requests to improve performance, or using Cloudflare KV to optimize high-read tasks in your application</p>
-		</li>
-		<li>
-			<p>Building an application <i>directly</i> on the edge, removing the dependence on origin servers entirely</p>
-		</li>
-	</ol>
-	<p>For this project, we’ll lean heavily towards the latter end of that list, building an application that clients communicate with, served on Cloudflare’s edge network. This means that it’ll be globally available, with low-latency, while still allowing the ease-of-use in building applications directly in JavaScript.</p>
-	<div class="flex anchor relative">
-		<h3 id="setting-up-a-canvas">Setting up a canvas</h3>
-		<a href="https://blog.cloudflare.com/#setting-up-a-canvas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
-	<p>I also considered using <a href="https://todomvc.com" target="_blank" rel="noopener noreferrer">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#" target="_blank" rel="noopener noreferrer">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs" target="_blank" rel="noopener noreferrer">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
-	<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
-	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
-    &lt;title&gt;Todos&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Todos&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>. My personal website was already <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosted on Cloudflare</a>, and since I’ll be serving, it was time to create my first Worker.</p>
-	<div class="flex anchor relative">
-		<h3 id="creating-a-worker">Creating a worker</h3>
-		<a href="https://blog.cloudflare.com/#creating-a-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Inside of my Cloudflare account, I hopped into the Workers tab and launched the Workers editor.</p>
-	<p>This is one of my favorite features of the editor - working with your actual website, understanding <i>how</i> the worker will interface with your existing project.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/121XS5g0iERXCdVwilld5G/8fe0b9a7e7b869aaf2b5d5bba3c51d98/image4-2.png" alt="" class="kg-image" width="1600" height="1407" loading="lazy">
-
-	</figure>
-	<p>The process of writing a Worker should be familiar to anyone who’s used the fetch library before. In short, the default code for a Worker hooks into the <code>fetch</code> event, passing the request of that event into a custom function, <code>handleRequest</code>:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})</code></pre>
-	<p>Within <code>handleRequest</code>, we make the actual request, using <code>fetch</code>, and return the response to the client. In short, we have a place to intercept the response body, but by default, we let it pass-through:</p>
-	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
-  console.log('Got request', request)
-  const response = await fetch(request)
-  console.log('Got response', response)
-  return response
-}</code></pre>
-	<p>So, given this, where do we begin actually <i>doing stuff</i> with our worker?</p>
-	<p>Unlike the default code given to you in the Workers interface, we want to skip fetching the incoming request: instead, we’ll construct a new <code>Response</code>, and serve it directly from the edge:</p>
-	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
-  const response = new Response("Hello!")
-  return response
-}</code></pre>
-	<p>Given that very small functionality we’ve added to the worker, let’s deploy it. Moving into the “Routes” tab of the Worker editor, I added the route <code>https://todo.kristianfreeman.com/*</code> and attached it to the cloudflare-worker-todos script.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29QYuFrFiwZKVwZHkWN90v/851c0e9b95c03badc9eccbee41079a20/image5.png" alt="" class="kg-image" width="1600" height="1206" loading="lazy">
-
-	</figure>
-	<p>Once attached, I deployed the worker, and voila! Visiting todo.kristianfreeman.com in-browser gives me my simple “Hello!” response back.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Boo3xWgZdHEDHgpUgIrKy/594ae6a988d40a13253af74937d9a964/Screen-Shot-2019-05-15-at-10.12.04-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="writing-data-to-kv">Writing data to KV</h3>
-		<a href="https://blog.cloudflare.com/#writing-data-to-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The next step is to populate our todo list with actual data. To do this, we’ll make use of Cloudflare’s Workers KV - it’s a simple key-value store that you can access inside of your Worker script to read (and write, although it’s less common) data.</p>
-	<p>To get started with KV, we need to set up a “namespace”. All of our cached data will be stored inside that namespace, and given just a bit of configuration, we can access that namespace inside the script with a predefined variable.</p>
-	<p>I’ll create a new namespace in the Workers dashboard, called <code>KRISTIAN_TODOS</code>, and in the Worker editor, I’ll expose the namespace by binding it to the variable <code>KRISTIAN_TODOS</code>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i4hCpAgNXFTWxg8X2CXW2/8f67cbecd052f177ca02ce089b511e65/image1-6.png" alt="" class="kg-image" width="890" height="652" loading="lazy">
-
-	</figure>
-	<p>Given the presence of <code>KRISTIAN_TODOS</code> in my script, it’s time to understand the KV API. At time of writing, a KV namespace has three primary methods you can use to interface with your cache: <code>get</code>, <code>put</code>, and <code>delete</code>. Pretty straightforward!</p>
-	<p>Let’s start storing data by defining an initial set of data, which we’ll put inside of the cache using the put method. I’ve opted to define an object, <code>defaultData</code>, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use <code>JSON.stringify</code> to put a simple string into the cache:</p>
-	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
-  // ...previous code
-  
-  const defaultData = { 
-    todos: [
-      {
-        id: 1,
-        name: 'Finish the Cloudflare Workers blog post',
-          completed: false
-      }
-    ] 
-  }
-  KRISTIAN_TODOS.put("data", JSON.stringify(defaultData))
-}
-</code></pre>
-	<p>The Worker KV data store is <i>eventually</i> consistent: writing to the cache means that it will become available <i>eventually</i>, but it’s possible to attempt to read a value back from the cache immediately after writing it, only to find that the cache hasn’t been updated yet.</p>
-	<p>Given the presence of data in the cache, and the assumption that our cache is eventually consistent, we should adjust this code slightly: first, we should actually read from the cache, parsing the value back out, and using it as the data source if exists. If it doesn’t, we’ll refer to <code>defaultData</code>, setting it as the data source <i>for now</i> (remember, it should be set in the future… <i>eventually</i>), while also setting it in the cache for future use. After breaking out the code into a few functions for simplicity, the result looks like this:</p>
-	<pre class="language-javascript"><code class="language-javascript">const defaultData = { 
-  todos: [
-    {
-      id: 1,
-      name: 'Finish the Cloudflare Workers blog post',
-      completed: false
-    }
-  ] 
-}
-
-const setCache = data =&gt; KRISTIAN_TODOS.put("data", data)
-const getCache = () =&gt; KRISTIAN_TODOS.get("data")
-
-async function getTodos(request) {
-  // ... previous code
-  
-  let data;
-  const cache = await getCache()
-  if (!cache) {
-    await setCache(JSON.stringify(defaultData))
-    data = defaultData
-  } else {
-    data = JSON.parse(cache)
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="rendering-data-from-kv">Rendering data from KV</h3>
-		<a href="https://blog.cloudflare.com/#rendering-data-from-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Given the presence of data in our code, which is the cached data object for our application, we should actually take this data and make it available on screen.</p>
-	<p>In our Workers script, we’ll make a new variable, <code>html</code>, and use it to build up a static HTML template that we can serve to the client. In <code>handleRequest</code>, we can construct a new <code>Response</code> (with a <code>Content-Type</code> header of <code>text/html</code>), and serve it to the client:</p>
-	<pre class="language-javascript"><code class="language-javascript">const html = `
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
-    &lt;title&gt;Todos&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Todos&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-`
-
-async function handleRequest(request) {
-  const response = new Response(html, {
-    headers: { 'Content-Type': 'text/html' }
-  })
-  return response
-}</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JYK6WXof6rGxmk6ovyH27/77f4df33d945cf673df4510bf650b16b/Screen-Shot-2019-05-15-at-10.06.57-AM.png" alt="" class="kg-image" width="1600" height="1269" loading="lazy">
-
-	</figure>
-	<p>We have a static HTML site being rendered, and now we can begin populating it with data! In the body, we’ll add a <code>ul</code> tag with an id of <code>todos</code>:</p>
-	<pre class="language-html"><code class="language-html">&lt;body&gt;
-  &lt;h1&gt;Todos&lt;/h1&gt;
-  &lt;ul id="todos"&gt;&lt;/ul&gt;
-&lt;/body&gt;</code></pre>
-	<p>Given that body, we can also add a script <i>after</i> the body that takes a todos array, loops through it, and for each todo in the array, creates a <code>li</code> element and appends it to the todos list:</p>
-	<pre class="language-html"><code class="language-html">&lt;script&gt;
-  window.todos = [];
-  var todoContainer = document.querySelector("#todos");
-  window.todos.forEach(todo =&gt; {
-    var el = document.createElement("li");
-    el.innerText = todo.name;
-    todoContainer.appendChild(el);
-  });
-&lt;/script&gt;</code></pre>
-	<p>Our static page can take in <code>window.todos</code>, and render HTML based on it, but we haven’t actually passed in any data from KV. To do this, we’ll need to make a couple changes.</p>
-	<p>First, our <code>html</code> <i>variable</i> will change to a <i>function</i>. The function will take in an argument, <code>todos</code>, which will populate the <code>window.todos</code> variable in the above code sample:</p>
-	<pre class="language-html"><code class="language-html">const html = todos =&gt; `
-&lt;!doctype html&gt;
-&lt;html&gt;
-  &lt;!-- ... --&gt;
-  &lt;script&gt;
-    window.todos = ${todos || []}
-    var todoContainer = document.querySelector("#todos");
-    // ...
-  &lt;script&gt;
-&lt;/html&gt;
-`</code></pre>
-	<p>In <code>handleRequest</code>, we can use the retrieved KV data to call the <code>html</code> function, and generate a <code>Response</code> based on it:</p>
-	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
-  let data;
-  
-  // Set data using cache or defaultData from previous section...
-  
-  const body = html(JSON.stringify(data.todos))
-  const response = new Response(body, {
-    headers: { 'Content-Type': 'text/html' }
-  })
-  return response
-}</code></pre>
-	<p>The finished product looks something like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/579BL1kiP7vJc6bxWcDD82/057188acb0323d3764e76419b13e7469/image3-3.png" alt="" class="kg-image" width="1482" height="1228" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="adding-todos-from-the-ui">Adding todos from the UI</h3>
-		<a href="https://blog.cloudflare.com/#adding-todos-from-the-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <i>creating</i> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
-	<p>It’s worth noting here that Cloudflare’s Workers documentation suggests that any writes to your KV namespace happen via their API - that is, at its simplest form, a cURL statement:</p>
-	<pre class="language-javascript"><code class="language-javascript">curl "&lt;https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/first-key&gt;" \
-  -X PUT \
-  -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
-  --data 'My first value!'</code></pre>
-	<p>We’ll implement something similar by handling a second route in our worker, designed to watch for <code>PUT</code> requests to <code>/</code>. When a body is received at that URL, the worker will send the new todo data to our KV store.</p>
-	<p>I’ll add this new functionality to my worker, and in <code>handleRequest</code>, if the request method is a <code>PUT</code>, it will take the request body and update the cache:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})
-
-const setCache = data =&gt; KRISTIAN_TODOS.put("data", data)
-
-async function updateTodos(request) {
-  const body = await request.text()
-  const ip = request.headers.get("CF-Connecting-IP")
-  const cacheKey = `data-${ip}`;
-  try {
-    JSON.parse(body)
-    await setCache(body)
-    return new Response(body, { status: 200 })
-  } catch (err) {
-    return new Response(err, { status: 500 })
-  }
-}
-
-async function handleRequest(request) {
-  if (request.method === "PUT") {
-    return updateTodos(request);
-  } else {
-    // Defined in previous code block
-    return getTodos(request);
-  }
-}</code></pre>
-	<p>The script is pretty straightforward - we check that the request is a <code>PUT</code>, and wrap the remainder of the code in a <code>try/catch</code> block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method <i>other</i> than <code>PUT</code> - that is, <code>GET</code>, <code>DELETE</code>, or anything else - we return a 404.</p>
-	<p>With this script, we can now add some “dynamic” functionality to our HTML page to actually hit this route.</p>
-	<p>First, we’ll create an input for our todo “name”, and a button for “submitting” the todo.</p>
-	<pre class="language-html"><code class="language-html">&lt;div&gt;
-  &lt;input type="text" name="name" placeholder="A new todo"&gt;&lt;/input&gt;
-  &lt;button id="create"&gt;Create&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-	<p>Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button - once the button is clicked, the browser will <code>PUT</code> to <code>/</code> and submit the todo.</p>
-	<pre class="language-javascript"><code class="language-javascript">var createTodo = function() {
-  var input = document.querySelector("input[name=name]");
-  if (input.value.length) {
-    fetch("/", { 
-      method: 'PUT', 
-      body: JSON.stringify({ todos: todos }) 
-    });
-  }
-};
-
-document.querySelector("#create")
-  .addEventListener('click', createTodo);</code></pre>
-	<p>This code updates the cache, but what about our local UI? Remember that the KV cache is <i>eventually consistent</i> - even if we were to update our worker to read from the cache and return it, we have no guarantees it’ll actually be up-to-date. Instead, let’s just update the list of todos locally, by taking our original code for rendering the todo list, making it a re-usable function called <code>populateTodos</code>, and calling it when the page loads <i>and</i> when the cache request has finished:</p>
-	<pre class="language-javascript"><code class="language-javascript">var populateTodos = function() {
-  var todoContainer = document.querySelector("#todos");
-  todoContainer.innerHTML = null;
-  window.todos.forEach(todo =&gt; {
-    var el = document.createElement("li");
-    el.innerText = todo.name;
-    todoContainer.appendChild(el);
-  });
-};
-
-populateTodos();
-
-var createTodo = function() {
-  var input = document.querySelector("input[name=name]");
-  if (input.value.length) {
-    todos = [].concat(todos, { 
-      id: todos.length + 1, 
-      name: input.value,
-      completed: false,
-    });
-    fetch("/", { 
-      method: 'PUT', 
-      body: JSON.stringify({ todos: todos }) 
-    });
-    populateTodos();
-    input.value = "";
-  }
-};
-
-document.querySelector("#create")
-  .addEventListener('click', createTodo);</code></pre>
-	<p>With the client-side code in place, deploying the new Worker should put all these pieces together. The result is an actual dynamic todo list!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bexkIHx7QhOOnLX7m0T2a/d1cbb132f91d422682e12a169d1e3b1c/image7.gif" alt="" class="kg-image" width="444" height="236" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="updating-todos-from-the-ui">Updating todos from the UI</h3>
-		<a href="https://blog.cloudflare.com/#updating-todos-from-the-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For the final piece of our (very) basic todo list, we need to be able to update todos - specifically, marking them as completed.</p>
-	<p>Luckily, a great deal of the infrastructure for this work is already in place. We can currently update the todo list data in our cache, as evidenced by our <code>createTodo</code> function. Performing updates on a todo, in fact, is much more of a client-side task than a Worker-side one!</p>
-	<p>To start, let’s update the client-side code for generating a todo. Instead of a <code>ul</code>-based list, we’ll migrate the todo container <i>and</i> the todos themselves into using <code>div</code>s:</p>
-	<pre class="language-html"><code class="language-html">&lt;!-- &lt;ul id="todos"&gt;&lt;/ul&gt; becomes... --&gt;
-&lt;div id="todos"&gt;&lt;/div&gt;</code></pre>
-	<p>The <code>populateTodos</code> function can be updated to generate a <code>div</code> for each todo. In addition, we’ll move the name of the todo into a child element of that <code>div</code>:</p>
-	<pre class="language-javascript"><code class="language-javascript">var populateTodos = function() {
-  var todoContainer = document.querySelector("#todos");
-  todoContainer.innerHTML = null;
-  window.todos.forEach(todo =&gt; {
-    var el = document.createElement("div");
-    var name = document.createElement("span");
-    name.innerText = todo.name;
-    el.appendChild(name);
-    todoContainer.appendChild(el);
-  });
-}</code></pre>
-	<p>So far, we’ve designed the client-side part of this code to take an array of todos in, and given that array, render out a list of simple HTML elements. There’s a number of things that we’ve been doing that we haven’t quite had a use for, yet: specifically, the inclusion of IDs, and updating the completed value on a todo. Luckily, these things work well together, in order to support actually updating todos in the UI.</p>
-	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank" rel="noopener noreferrer"><i>Data attributes</i></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
-	<pre class="language-javascript"><code class="language-javascript">window.todos.forEach(todo =&gt; {
-  var el = document.createElement("div");
-  el.dataset.todo = todo.id
-  // ... more setup
-
-  todoContainer.appendChild(el);
-});</code></pre>
-	<p>Inside our HTML, each <code>div</code> for a todo now has an attached data attribute, which looks like:</p>
-	<pre class="language-html"><code class="language-html">&lt;div data-todo="1"&gt;&lt;/div&gt;
-&lt;div data-todo="2"&gt;&lt;/div&gt;</code></pre>
-	<p>Now we can generate a checkbox for each todo element. This checkbox will default to unchecked for new todos, of course, but we can mark it as checked as the element is rendered in the window:</p>
-	<pre class="language-javascript"><code class="language-javascript">window.todos.forEach(todo =&gt; {
-  var el = document.createElement("div");
-  el.dataset.todo = todo.id
-  
-  var name = document.createElement("span");
-  name.innerText = todo.name;
-  
-  var checkbox = document.createElement("input")
-  checkbox.type = "checkbox"
-  checkbox.checked = todo.completed ? 1 : 0;
-
-  el.appendChild(checkbox);
-  el.appendChild(name);
-  todoContainer.appendChild(el);
-})</code></pre>
-	<p>The checkbox is set up to correctly reflect the value of completed on each todo, but it doesn’t yet update when we actually check the box! To do this, we’ll add an event listener on the <code>click</code> event, calling <code>completeTodo</code>. Inside the function, we’ll inspect the checkbox element, finding its parent (the todo <code>div</code>), and using the <code>todo</code> data attribute on it to find the corresponding todo in our data. Given that todo, we can toggle the value of completed, update our data, and re-render the UI:</p>
-	<pre class="language-javascript"><code class="language-javascript">var completeTodo = function(evt) {
-  var checkbox = evt.target;
-  var todoElement = checkbox.parentNode;
-  
-  var newTodoSet = [].concat(window.todos)
-  var todo = newTodoSet.find(t =&gt; 
-    t.id == todoElement.dataset.todo
-  );
-  todo.completed = !todo.completed;
-  todos = newTodoSet;
-  updateTodos()
-}</code></pre>
-	<p>The final result of our code is a system that simply checks the <code>todos</code> variable, updates our Cloudflare KV cache with that value, and then does a straightforward re-render of the UI based on the data it has locally.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dSK1aNSHxnICPPqdBZeS1/4612465de022714c1d7a7cc64e261d55/image8-1.png" alt="" class="kg-image" width="1600" height="1176" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="conclusions-and-next-steps">Conclusions and next steps</h3>
-		<a href="https://blog.cloudflare.com/#conclusions-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>), security, speed, etc.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vif8WsAf5slR8KM3NLeGv/6cd59bcdf0c30a6df7e4bbf9eef916ba/image2-1.png" alt="" class="kg-image" width="1378" height="730" loading="lazy">
-
-	</figure>
-	<p>One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:</p>
-	<pre class="language-javascript"><code class="language-javascript">const ip = request.headers.get("CF-Connecting-IP")
-const cacheKey = `data-${ip}`;
-const getCache = key =&gt; KRISTIAN_TODOS.get(key)
-getCache(cacheKey)</code></pre>
-	<p>One more deploy of our Workers project, and we have a full todo list application, with per-user functionality, served at the edge!</p>
-	<p>The final version of our Workers script looks like this:</p>
-	<pre class="language-javascript"><code class="language-javascript">const html = todos =&gt; `
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
-    &lt;title&gt;Todos&lt;/title&gt;
-    &lt;link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"&gt;&lt;/link&gt;
-  &lt;/head&gt;
-
-  &lt;body class="bg-blue-100"&gt;
-    &lt;div class="w-full h-full flex content-center justify-center mt-8"&gt;
-      &lt;div class="bg-white shadow-md rounded px-8 pt-6 py-8 mb-4"&gt;
-        &lt;h1 class="block text-grey-800 text-md font-bold mb-2"&gt;Todos&lt;/h1&gt;
-        &lt;div class="flex"&gt;
-          &lt;input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-800 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="A new todo"&gt;&lt;/input&gt;
-          &lt;button class="bg-blue-500 hover:bg-blue-800 text-white font-bold ml-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create" type="submit"&gt;Create&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class="mt-4" id="todos"&gt;&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-
-  &lt;script&gt;
-    window.todos = ${todos || []}
-
-    var updateTodos = function() {
-      fetch("/", { method: 'PUT', body: JSON.stringify({ todos: window.todos }) })
-      populateTodos()
-    }
-
-    var completeTodo = function(evt) {
-      var checkbox = evt.target
-      var todoElement = checkbox.parentNode
-      var newTodoSet = [].concat(window.todos)
-      var todo = newTodoSet.find(t =&gt; t.id == todoElement.dataset.todo)
-      todo.completed = !todo.completed
-      window.todos = newTodoSet
-      updateTodos()
-    }
-
-    var populateTodos = function() {
-      var todoContainer = document.querySelector("#todos")
-      todoContainer.innerHTML = null
-
-      window.todos.forEach(todo =&gt; {
-        var el = document.createElement("div")
-        el.className = "border-t py-4"
-        el.dataset.todo = todo.id
-
-        var name = document.createElement("span")
-        name.className = todo.completed ? "line-through" : ""
-        name.innerText = todo.name
-
-        var checkbox = document.createElement("input")
-        checkbox.className = "mx-4"
-        checkbox.type = "checkbox"
-        checkbox.checked = todo.completed ? 1 : 0
-        checkbox.addEventListener('click', completeTodo)
-
-        el.appendChild(checkbox)
-        el.appendChild(name)
-        todoContainer.appendChild(el)
-      })
-    }
-
-    populateTodos()
-
-    var createTodo = function() {
-      var input = document.querySelector("input[name=name]")
-      if (input.value.length) {
-        window.todos = [].concat(todos, { id: window.todos.length + 1, name: input.value, completed: false })
-        input.value = ""
-        updateTodos()
-      }
-    }
-
-    document.querySelector("#create").addEventListener('click', createTodo)
-  &lt;/script&gt;
-&lt;/html&gt;
-`
-
-const defaultData = { todos: [] }
-
-const setCache = (key, data) =&gt; KRISTIAN_TODOS.put(key, data)
-const getCache = key =&gt; KRISTIAN_TODOS.get(key)
-
-async function getTodos(request) {
-  const ip = request.headers.get('CF-Connecting-IP')
-  const cacheKey = `data-${ip}`
-  let data
-  const cache = await getCache(cacheKey)
-  if (!cache) {
-    await setCache(cacheKey, JSON.stringify(defaultData))
-    data = defaultData
-  } else {
-    data = JSON.parse(cache)
-  }
-  const body = html(JSON.stringify(data.todos || []))
-  return new Response(body, {
-    headers: { 'Content-Type': 'text/html' },
-  })
-}
-
-async function updateTodos(request) {
-  const body = await request.text()
-  const ip = request.headers.get('CF-Connecting-IP')
-  const cacheKey = `data-${ip}`
-  try {
-    JSON.parse(body)
-    await setCache(cacheKey, body)
-    return new Response(body, { status: 200 })
-  } catch (err) {
-    return new Response(err, { status: 500 })
-  }
-}
-
-async function handleRequest(request) {
-  if (request.method === 'PUT') {
-    return updateTodos(request)
-  } else {
-    return getTodos(request)
-  }
-}
-
-addEventListener('fetch', event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})</code></pre>
-	<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.</p>
+<p>To start, let’s break this project down into a couple different discrete steps. In particular, it can help to focus on the constraint of working with Workers KV, as handling data is generally the most complex part of building an application:</p>
+<ol>
+	<li>Build a todos data structure</li>
+	<li>Write the todos into Workers KV</li>
+	<li>Retrieve the todos from Workers KV</li>
+	<li>Return an HTML page to the client, including the todos (if they exist)</li>
+	<li>Allow creation of new todos in the UI</li>
+	<li>Allow completion of todos in the UI</li>
+	<li>Handle todo updates</li>
+</ol>
+<p>This task order is pretty convenient, because it’s almost perfectly split into two parts: first, understanding the Cloudflare/API-level things we need to know about Workers <em>and</em> KV, and second, actually building up a user interface to work with the data.</p>
+<h3>Understanding Workers</h3>
+<p>In terms of implementation, a great deal of this project is centered around KV - although that may be the case, it’s useful to break down <em>what</em> Workers are exactly.</p>
+<p>Service Workers are background scripts that run in your browser, alongside your application. Cloudflare Workers are the same concept, but super-powered: your Worker scripts run on Cloudflare’s edge network, in-between your application and the client’s browser. This opens up a huge amount of opportunity for interesting integrations, especially considering the network’s massive scale around the world. Here’s some of the use-cases that I think are the most interesting:</p>
+<ol>
+	<li>Custom security/filter rules to block bad actors before they ever reach the origin</li>
+	<li>Replacing/augmenting your website’s content based on the request content (i.e. user agents and other headers)</li>
+	<li>Caching requests to improve performance, or using Cloudflare KV to optimize high-read tasks in your application</li>
+	<li>Building an application <em>directly</em> on the edge, removing the dependence on origin servers entirely</li>
+</ol>
+<p>For this project, we’ll lean heavily towards the latter end of that list, building an application that clients communicate with, served on Cloudflare’s edge network. This means that it’ll be globally available, with low-latency, while still allowing the ease-of-use in building applications directly in JavaScript.</p>
+<h3>Setting up a canvas</h3>
+<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
+<p>I also considered using <a href="https://todomvc.com" target="_blank" rel="noopener noreferrer">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#" target="_blank" rel="noopener noreferrer">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs" target="_blank" rel="noopener noreferrer">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
+<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> charset</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"UTF-8"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"viewport"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"width=device-width,initial-scale=1"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Todos</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Todos</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
 </div>
+<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>. My personal website was already <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosted on Cloudflare</a>, and since I’ll be serving, it was time to create my first Worker.</p>
+<h3>Creating a worker</h3>
+<p>Inside of my Cloudflare account, I hopped into the Workers tab and launched the Workers editor.</p>
+<p>This is one of my favorite features of the editor - working with your actual website, understanding <em>how</em> the worker will interface with your existing project.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="629" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=715&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=640&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=715&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=750&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=828&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=1080&amp;h=950&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=1280&amp;h=1126&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447ZRVGHQVQWJCQYV3JASB.png&amp;w=1430&amp;h=1258&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - wRxsrQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="629" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - wRxsrQ"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The process of writing a Worker should be familiar to anyone who’s used the fetch library before. In short, the default code for a Worker hooks into the <code>fetch</code> event, passing the request of that event into a custom function, <code>handleRequest</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>Within <code>handleRequest</code>, we make the actual request, using <code>fetch</code>, and return the response to the client. In short, we have a place to intercept the response body, but by default, we let it pass-through:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Got request'</span><span class="sk-24292e-fff">, request)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Got response'</span><span class="sk-24292e-fff">, response)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So, given this, where do we begin actually <em>doing stuff</em> with our worker?</p>
+<p>Unlike the default code given to you in the Workers interface, we want to skip fetching the incoming request: instead, we’ll construct a new <code>Response</code>, and serve it directly from the edge:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello!"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Given that very small functionality we’ve added to the worker, let’s deploy it. Moving into the “Routes” tab of the Worker editor, I added the route <code>https://todo.kristianfreeman.com/*</code> and attached it to the cloudflare-worker-todos script.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="539" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=715&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=640&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=715&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=750&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=828&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=1080&amp;h=814&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=1280&amp;h=965&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452X6950PWQE3JYDMAD4SW.png&amp;w=1430&amp;h=1078&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - XcWYaG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="539" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - XcWYaG"></div>
+</figure>
+<p>Once attached, I deployed the worker, and voila! Visiting todo.kristianfreeman.com in-browser gives me my simple “Hello!” response back.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="567" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=750&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=828&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=1080&amp;h=856&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=1280&amp;h=1015&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4955E121G51QNQY438CJYW.png&amp;w=1430&amp;h=1134&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - SvwpEq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="567" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - SvwpEq"></div>
+</figure>
+<h3>Writing data to KV</h3>
+<p>The next step is to populate our todo list with actual data. To do this, we’ll make use of Cloudflare’s Workers KV - it’s a simple key-value store that you can access inside of your Worker script to read (and write, although it’s less common) data.</p>
+<p>To get started with KV, we need to set up a “namespace”. All of our cached data will be stored inside that namespace, and given just a bit of configuration, we can access that namespace inside the script with a predefined variable.</p>
+<p>I’ll create a new namespace in the Workers dashboard, called <code>KRISTIAN_TODOS</code>, and in the Worker editor, I’ll expose the namespace by binding it to the variable <code>KRISTIAN_TODOS</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="524" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=640&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=750&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=828&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=1080&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=1280&amp;h=938&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XZ85SVWRDZAV1X7K6XWV.png&amp;w=1430&amp;h=1048&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - QyQhoP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="524" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - QyQhoP"></div>
+</figure>
+<p>Given the presence of <code>KRISTIAN_TODOS</code> in my script, it’s time to understand the KV API. At time of writing, a KV namespace has three primary methods you can use to interface with your cache: <code>get</code>, <code>put</code>, and <code>delete</code>. Pretty straightforward!</p>
+<p>Let’s start storing data by defining an initial set of data, which we’ll put inside of the cache using the put method. I’ve opted to define an object, <code>defaultData</code>, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use <code>JSON.stringify</code> to put a simple string into the cache:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...previous code</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> defaultData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span></span>
+<span class="line"><span class="sk-24292e-fff">    todos: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">'Finish the Cloudflare Workers blog post'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          completed: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ] </span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-005cc5-fff">  KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"data"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(defaultData))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The Worker KV data store is <em>eventually</em> consistent: writing to the cache means that it will become available <em>eventually</em>, but it’s possible to attempt to read a value back from the cache immediately after writing it, only to find that the cache hasn’t been updated yet.</p>
+<p>Given the presence of data in the cache, and the assumption that our cache is eventually consistent, we should adjust this code slightly: first, we should actually read from the cache, parsing the value back out, and using it as the data source if exists. If it doesn’t, we’ll refer to <code>defaultData</code>, setting it as the data source <em>for now</em> (remember, it should be set in the future… <em>eventually</em>), while also setting it in the cache for future use. After breaking out the code into a few functions for simplicity, the result looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> defaultData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span></span>
+<span class="line"><span class="sk-24292e-fff">  todos: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      name: </span><span class="sk-032f62-99ffe4">'Finish the Cloudflare Workers blog post'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      completed: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ] </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-e36209-fff"> data</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"data"</span><span class="sk-24292e-fff">, data)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> getCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"data"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getTodos</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... previous code</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> data;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getCache</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">cache) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(defaultData))</span></span>
+<span class="line"><span class="sk-24292e-fff">    data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> defaultData</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(cache)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Rendering data from KV</h3>
+<p>Given the presence of data in our code, which is the cached data object for our application, we should actually take this data and make it available on screen.</p>
+<p>In our Workers script, we’ll make a new variable, <code>html</code>, and use it to build up a static HTML template that we can serve to the client. In <code>handleRequest</code>, we can construct a new <code>Response</code> (with a <code>Content-Type</code> header of <code>text/html</code>), and serve it to the client:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> html</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;!DOCTYPE html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;head&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;meta charset="UTF-8"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;title&gt;Todos&lt;/title&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/head&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;body&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;h1&gt;Todos&lt;/h1&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/body&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;/html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(html, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="567" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=750&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=828&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=1080&amp;h=856&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=1280&amp;h=1015&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482E5XC012W2D8KS5HFGK0.png&amp;w=1430&amp;h=1134&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - bYxhn0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="567" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - bYxhn0"></div>
+</figure>
+<p>We have a static HTML site being rendered, and now we can begin populating it with data! In the body, we’ll add a <code>ul</code> tag with an id of <code>todos</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Todos</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">ul</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"todos"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">ul</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Given that body, we can also add a script <em>after</em> the body that takes a todos array, loops through it, and for each todo in the array, creates a <code>li</code> element and appends it to the todos list:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">  window.todos </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> todoContainer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#todos"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  window.todos.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">todo</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> el </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"li"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    el.innerText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.name;</span></span>
+<span class="line"><span class="sk-24292e-fff">    todoContainer.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(el);</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Our static page can take in <code>window.todos</code>, and render HTML based on it, but we haven’t actually passed in any data from KV. To do this, we’ll need to make a couple changes.</p>
+<p>First, our <code>html</code> <em>variable</em> will change to a <em>function</em>. The function will take in an argument, <code>todos</code>, which will populate the <code>window.todos</code> variable in the above code sample:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">const html = todos =&gt; `</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">doctype</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  &lt;!-- ... --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    window.todos </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ${todos </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> []}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> todoContainer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#todos"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+</div>
+<p>In <code>handleRequest</code>, we can use the retrieved KV data to call the <code>html</code> function, and generate a <code>Response</code> based on it:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> data;</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Set data using cache or defaultData from previous section...</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(data.todos))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The finished product looks something like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="592" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=715&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=640&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=715&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=750&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=828&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=1080&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=1280&amp;h=1060&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4778X5268PBDEN52VBDZQZ.png&amp;w=1430&amp;h=1184&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - elGsjg" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="592" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - elGsjg"></div>
+</figure>
+<h3>Adding todos from the UI</h3>
+<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <em>creating</em> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
+<p>It’s worth noting here that Cloudflare’s Workers documentation suggests that any writes to your KV namespace happen via their API - that is, at its simplest form, a cURL statement:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"&lt;https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/first-key&gt;"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: $CLOUDFLARE_EMAIL"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: $CLOUDFLARE_AUTH_KEY"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">data </span><span class="sk-032f62-99ffe4">'My first value!'</span></span></code></pre>
+</div>
+<p>We’ll implement something similar by handling a second route in our worker, designed to watch for <code>PUT</code> requests to <code>/</code>. When a body is received at that URL, the worker will send the new todo data to our KV store.</p>
+<p>I’ll add this new functionality to my worker, and in <code>handleRequest</code>, if the request method is a <code>PUT</code>, it will take the request body and update the cache:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-e36209-fff"> data</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"data"</span><span class="sk-24292e-fff">, data)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> updateTodos</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> ip</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-Connecting-IP"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cacheKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `data-${</span><span class="sk-24292e-fff">ip</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-fff">    JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(body)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-24292e-fff">(body)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, { status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(err, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "PUT"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> updateTodos</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Defined in previous code block</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> getTodos</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The script is pretty straightforward - we check that the request is a <code>PUT</code>, and wrap the remainder of the code in a <code>try/catch</code> block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method <em>other</em> than <code>PUT</code> - that is, <code>GET</code>, <code>DELETE</code>, or anything else - we return a 404.</p>
+<p>With this script, we can now add some “dynamic” functionality to our HTML page to actually hit this route.</p>
+<p>First, we’ll create an input for our todo “name”, and a button for “submitting” the todo.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-6f42c1-ffc799"> placeholder</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"A new todo"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">input</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">button</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"create"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Create</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button - once the button is clicked, the browser will <code>PUT</code> to <code>/</code> and submit the todo.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-6f42c1-ffc799"> createTodo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"input[name=name]"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (input.value.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">, { </span></span>
+<span class="line"><span class="sk-24292e-fff">      method: </span><span class="sk-032f62-99ffe4">'PUT'</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-24292e-fff">      body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ todos: todos }) </span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#create"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'click'</span><span class="sk-24292e-fff">, createTodo);</span></span></code></pre>
+</div>
+<p>This code updates the cache, but what about our local UI? Remember that the KV cache is <em>eventually consistent</em> - even if we were to update our worker to read from the cache and return it, we have no guarantees it’ll actually be up-to-date. Instead, let’s just update the list of todos locally, by taking our original code for rendering the todo list, making it a re-usable function called <code>populateTodos</code>, and calling it when the page loads <em>and</em> when the cache request has finished:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-6f42c1-ffc799"> populateTodos</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> todoContainer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#todos"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  todoContainer.innerHTML </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  window.todos.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">todo</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> el </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"li"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    el.innerText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.name;</span></span>
+<span class="line"><span class="sk-24292e-fff">    todoContainer.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(el);</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">populateTodos</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-6f42c1-ffc799"> createTodo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"input[name=name]"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (input.value.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    todos </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [].</span><span class="sk-6f42c1-ffc799">concat</span><span class="sk-24292e-fff">(todos, { </span></span>
+<span class="line"><span class="sk-24292e-fff">      id: todos.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-24292e-fff">      name: input.value,</span></span>
+<span class="line"><span class="sk-24292e-fff">      completed: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">, { </span></span>
+<span class="line"><span class="sk-24292e-fff">      method: </span><span class="sk-032f62-99ffe4">'PUT'</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-24292e-fff">      body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ todos: todos }) </span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    populateTodos</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    input.value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#create"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'click'</span><span class="sk-24292e-fff">, createTodo);</span></span></code></pre>
+</div>
+<p>With the client-side code in place, deploying the new Worker should put all these pieces together. The result is an actual dynamic todo list!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="444" height="236" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=444&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=444&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 444w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=640&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=750&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=828&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46523C28EEGN72EAP3H6E2.gif&amp;w=888&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 888w" alt="Building a To-Do List with Workers and KV Embedded Image - GNMD7c" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 444px) 444px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="444" height="236" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - GNMD7c"></div>
+</figure>
+<h3>Updating todos from the UI</h3>
+<p>For the final piece of our (very) basic todo list, we need to be able to update todos - specifically, marking them as completed.</p>
+<p>Luckily, a great deal of the infrastructure for this work is already in place. We can currently update the todo list data in our cache, as evidenced by our <code>createTodo</code> function. Performing updates on a todo, in fact, is much more of a client-side task than a Worker-side one!</p>
+<p>To start, let’s update the client-side code for generating a todo. Instead of a <code>ul</code>-based list, we’ll migrate the todo container <em>and</em> the todos themselves into using <code>div</code>s:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- &lt;ul id="todos"&gt;&lt;/ul&gt; becomes... --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"todos"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>The <code>populateTodos</code> function can be updated to generate a <code>div</code> for each todo. In addition, we’ll move the name of the todo into a child element of that <code>div</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-6f42c1-ffc799"> populateTodos</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> todoContainer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"#todos"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  todoContainer.innerHTML </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  window.todos.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">todo</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> el </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"div"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"span"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    name.innerText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.name;</span></span>
+<span class="line"><span class="sk-24292e-fff">    el.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(name);</span></span>
+<span class="line"><span class="sk-24292e-fff">    todoContainer.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(el);</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So far, we’ve designed the client-side part of this code to take an array of todos in, and given that array, render out a list of simple HTML elements. There’s a number of things that we’ve been doing that we haven’t quite had a use for, yet: specifically, the inclusion of IDs, and updating the completed value on a todo. Luckily, these things work well together, in order to support actually updating todos in the UI.</p>
+<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank" rel="noopener noreferrer"><em>Data attributes</em></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">window.todos.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">todo</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> el </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"div"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  el.dataset.todo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.id</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... more setup</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  todoContainer.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(el);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>Inside our HTML, each <code>div</code> for a todo now has an attached data attribute, which looks like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> data-todo</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"1"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> data-todo</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"2"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Now we can generate a checkbox for each todo element. This checkbox will default to unchecked for new todos, of course, but we can mark it as checked as the element is rendered in the window:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">window.todos.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">todo</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> el </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"div"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  el.dataset.todo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.id</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"span"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  name.innerText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.name;</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> checkbox </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"input"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  checkbox.type </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "checkbox"</span></span>
+<span class="line"><span class="sk-24292e-fff">  checkbox.checked </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> todo.completed </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  el.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(checkbox);</span></span>
+<span class="line"><span class="sk-24292e-fff">  el.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(name);</span></span>
+<span class="line"><span class="sk-24292e-fff">  todoContainer.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(el);</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>The checkbox is set up to correctly reflect the value of completed on each todo, but it doesn’t yet update when we actually check the box! To do this, we’ll add an event listener on the <code>click</code> event, calling <code>completeTodo</code>. Inside the function, we’ll inspect the checkbox element, finding its parent (the todo <code>div</code>), and using the <code>todo</code> data attribute on it to find the corresponding todo in our data. Given that todo, we can toggle the value of completed, update our data, and re-render the UI:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-6f42c1-ffc799"> completeTodo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">evt</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> checkbox </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> evt.target;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> todoElement </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> checkbox.parentNode;</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> newTodoSet </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [].</span><span class="sk-6f42c1-ffc799">concat</span><span class="sk-24292e-fff">(window.todos)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> todo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> newTodoSet.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">t</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">    t.id </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> todoElement.dataset.todo</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"><span class="sk-24292e-fff">  todo.completed </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">todo.completed;</span></span>
+<span class="line"><span class="sk-24292e-fff">  todos </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> newTodoSet;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  updateTodos</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The final result of our code is a system that simply checks the <code>todos</code> variable, updates our Cloudflare KV cache with that value, and then does a straightforward re-render of the UI based on the data it has locally.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="526" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=640&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=750&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=828&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=1080&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=1280&amp;h=942&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJFG0SGC8G21HTHAK6VV.png&amp;w=1430&amp;h=1052&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - i3DLot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="526" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - i3DLot"></div>
+</figure>
+<h3>Conclusions and next steps</h3>
+<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com" target="_blank" rel="noopener noreferrer">todo.kristianfreeman.com</a>), security, speed, etc.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="379" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=640&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=750&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=828&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=1080&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=1280&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S4SD6GK2C01KQ17KV1QP.png&amp;w=1430&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building a To-Do List with Workers and KV Embedded Image - 08u46N" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="379" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building a To-Do List with Workers and KV Embedded Image - 08u46N"></div>
+</figure>
+<p>One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ip</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-Connecting-IP"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> cacheKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `data-${</span><span class="sk-24292e-fff">ip</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> getCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-e36209-fff"> key</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">getCache</span><span class="sk-24292e-fff">(cacheKey)</span></span></code></pre>
+</div>
+<p>One more deploy of our Workers project, and we have a full todo list application, with per-user functionality, served at the edge!</p>
+<p>The final version of our Workers script looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-e36209-fff"> todos</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;!DOCTYPE html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;head&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;meta charset="UTF-8"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;title&gt;Todos&lt;/title&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"&gt;&lt;/link&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/head&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;body class="bg-blue-100"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;div class="w-full h-full flex content-center justify-center mt-8"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      &lt;div class="bg-white shadow-md rounded px-8 pt-6 py-8 mb-4"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        &lt;h1 class="block text-grey-800 text-md font-bold mb-2"&gt;Todos&lt;/h1&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        &lt;div class="flex"&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          &lt;input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-800 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="A new todo"&gt;&lt;/input&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          &lt;button class="bg-blue-500 hover:bg-blue-800 text-white font-bold ml-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="create" type="submit"&gt;Create&lt;/button&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        &lt;/div&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        &lt;div class="mt-4" id="todos"&gt;&lt;/div&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      &lt;/div&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;/div&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/body&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;script&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    window.todos = ${</span><span class="sk-24292e-fff">todos</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> []</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    var updateTodos = function() {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      fetch("/", { method: 'PUT', body: JSON.stringify({ todos: window.todos }) })</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      populateTodos()</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    var completeTodo = function(evt) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var checkbox = evt.target</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var todoElement = checkbox.parentNode</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var newTodoSet = [].concat(window.todos)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var todo = newTodoSet.find(t =&gt; t.id == todoElement.dataset.todo)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      todo.completed = !todo.completed</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      window.todos = newTodoSet</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      updateTodos()</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    var populateTodos = function() {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var todoContainer = document.querySelector("#todos")</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      todoContainer.innerHTML = null</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">      window.todos.forEach(todo =&gt; {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        var el = document.createElement("div")</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        el.className = "border-t py-4"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        el.dataset.todo = todo.id</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        var name = document.createElement("span")</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        name.className = todo.completed ? "line-through" : ""</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        name.innerText = todo.name</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        var checkbox = document.createElement("input")</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        checkbox.className = "mx-4"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        checkbox.type = "checkbox"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        checkbox.checked = todo.completed ? 1 : 0</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        checkbox.addEventListener('click', completeTodo)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        el.appendChild(checkbox)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        el.appendChild(name)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        todoContainer.appendChild(el)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      })</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    populateTodos()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    var createTodo = function() {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      var input = document.querySelector("input[name=name]")</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      if (input.value.length) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        window.todos = [].concat(todos, { id: window.todos.length + 1, name: input.value, completed: false })</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        input.value = ""</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        updateTodos()</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    document.querySelector("#create").addEventListener('click', createTodo)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/script&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;/html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> defaultData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { todos: [] }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(key, data)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> getCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-e36209-fff"> key</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> KRISTIAN_TODOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getTodos</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> ip</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'CF-Connecting-IP'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cacheKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `data-${</span><span class="sk-24292e-fff">ip</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> data</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getCache</span><span class="sk-24292e-fff">(cacheKey)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">cache) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-24292e-fff">(cacheKey, </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(defaultData))</span></span>
+<span class="line"><span class="sk-24292e-fff">    data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> defaultData</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(cache)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(data.todos </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> []))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> updateTodos</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> ip</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'CF-Connecting-IP'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cacheKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `data-${</span><span class="sk-24292e-fff">ip</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-fff">    JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(body)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> setCache</span><span class="sk-24292e-fff">(cacheKey, body)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, { status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(err, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'PUT'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> updateTodos</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> getTodos</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>

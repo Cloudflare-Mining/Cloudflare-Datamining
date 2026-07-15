@@ -1,0 +1,728 @@
+<div class="mb2 gray5">Lecture&nbsp;: 10 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/project-think">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/project-think">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/project-think">Deutsch</a>, en <a href="https://blog.cloudflare.com/it-it/project-think">Italiano</a>, en <a href="https://blog.cloudflare.com/ja-jp/project-think">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/project-think">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/project-think">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/es-es/project-think">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/project-think">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/588DgUbUQdYUlsmPN7HEvx/ee336b5fcff4d4841d8eece608e2c7c4/BLOG-3200_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Aujourd’hui, nous lançons Project Think&nbsp;: la nouvelle génération du <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK Agents</u></a>. Project Think propose un ensemble de nouvelles primitives dédié à la création d’agents à longue durée d’exécution (exécution durable, sous-agents, exécution de code en sandbox, sessions persistantes) et une classe de base prescriptive, permettant de toutes les connecter. Vous pouvez utiliser les primitives pour créer précisément l’agent dont vous avez besoin ou utiliser la classe de base pour vous lancer rapidement.</p>
+	<p>Un événement survenu plus tôt cette année a bouleversé notre perception de l’IA. Des outils tels que <a href="https://github.com/badlogic/pi-mono" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>, <a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>, <a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noopener noreferrer"><u>Claude&nbsp;Code</u></a> et <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer"><u>Codex</u></a> ont démontré une idée simple, mais puissante&nbsp;: si vous donnez à un LLM la capacité de lire des fichiers, d’écrire du code, de l’exécuter et de mémoriser ce qu’il a appris, vous obtiendrez une solution qui ressemble davantage à un assistant généraliste qu’à un outil de développement.</p>
+	<p>Ces agents de codage ne se contentent plus d’écrire du code. Les utilisateurs s’en servent pour gérer leurs calendriers, analyser des ensembles de données, négocier des achats, remplir leurs déclarations d’impôts et automatiser des processus opérationnels entiers. Le schéma est toujours le même&nbsp;: l’agent analyse le contexte, exécute un raisonnement, écrit du code pour agir, observe le résultat, puis recommence. Le code est le moyen d’action universel.</p>
+	<p>Notre équipe, qui utilise ces agents de codage tous les jours, se heurtait continuellement aux mêmes obstacles&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Les agents s’exécutent uniquement sur votre ordinateur portable ou sur un serveur virtuel privé&nbsp;(VPS) coûteux&nbsp;:</b> il n’y a ni partage, ni collaboration, ni transfert entre les appareils.</p>
+		</li>
+		<li>
+			<p><b>Ils sont coûteux lorsqu’ils sont inactifs&nbsp;</b>: un agent comporte un coût mensuel fixe, qu’il fonctionne ou non. Si vous transposez ce coût à une équipe, voire à une entreprise, le montant augmente rapidement.</p>
+		</li>
+		<li>
+			<p><b>Les agents nécessitent une gestion et une configuration manuelles&nbsp;</b>: installation des dépendances, gestion des mises à jour, configuration des identités et des secrets.</p>
+		</li>
+	</ul>
+	<p>Il existe par ailleurs un problème structurel plus profond. Les applications traditionnelles servent une multitude d’utilisateurs depuis une instance unique. Comme nous l’avons indiqué dans notre article «&nbsp;Bienvenue dans l’Agents Week&nbsp;», <a href="https://blog.cloudflare.com/welcome-to-agents-week"><u>les agents opèrent selon un principe «&nbsp;un pour un&nbsp;»</u></a>. Chaque agent est une instance unique, qui sert un utilisateur et exécute une tâche. Un restaurant propose un menu et dispose d’une cuisine optimisée pour préparer des plats en grande quantité. Un agent ressemble davantage à un chef à domicile&nbsp;: à chaque fois, il utilise d’autres ingrédients, d’autres techniques et d’autres outils.</p>
+	<p>Cela modifie radicalement les calculs concernant l’évolutivité. Si cent millions de travailleurs du savoir utilisent chacun un assistant agentique, même avec un nombre modeste de sessions simultanées, vous devez disposer d’une capacité permettant de gérer des dizaines de millions de sessions simultanées. Compte tenu des coûts par conteneur actuels, cette approche n’est pas viable. Nous avons besoin d’une fondation différente.</p>
+	<p>Et c’est ce que nous avons développé, dernièrement.</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-project-think">Présentation de Project Think</h2>
+		<a href="https://blog.cloudflare.com/#introducing-project-think" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Project Think propose un ensemble de nouvelles composantes primitives pour le SDK Agents&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Exécution durable</b> avec les «&nbsp;fibers&nbsp;»&nbsp;: reprise après incident, points de sauvegarde et persistance automatique</p>
+		</li>
+		<li>
+			<p><b>Sous-agents</b>&nbsp;: agents enfants isolés disposant chacun de leur propre instance SQLite et d’un RPC typé</p>
+		</li>
+		<li>
+			<p><b>Sessions persistantes</b>&nbsp;: messages structurés en arborescence, création de branches, compaction, recherche en texte intégral</p>
+		</li>
+		<li>
+			<p><b>Exécution de code en sandbox&nbsp;</b>: instances Dynamic Workers, codemode, résolution dynamique des packages npm lors de l’exécution</p>
+		</li>
+		<li>
+			<p><b>L’échelle d’exécution&nbsp;</b>: espace de travail, isolat, npm, navigateur, sandbox</p>
+		</li>
+		<li>
+			<p><b>Extensions auto-générées&nbsp;</b>: les agents créent leurs propres outils lors de l’exécution</p>
+		</li>
+	</ul>
+	<p>Chacune de ces composantes primitives est utilisable directement avec la classe de base Agent. Vous pouvez utiliser les primitives pour développer précisément les agents dont vous avez besoin ou utiliser la classe de base de Think pour vous lancer rapidement. Examinons ce que fait chacune d’elles.</p>
+	<div class="flex anchor relative">
+		<h2 id="long-running-agents">Agents à longue durée d’exécution</h2>
+		<a href="https://blog.cloudflare.com/#long-running-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les agents, tels qu’ils existent aujourd’hui, sont éphémères. Ils s’exécutent le temps d’une session, liés à un processus ou à un appareil unique, puis ils s’arrêtent. Un agent de codage qui s’arrête lorsque votre ordinateur se met en veille est un simple outil. Un agent qui persiste (c’est-à-dire un agent capable de se réveiller à la demande, de poursuivre le travail après une interruption et de transférer l’état sans dépendre de votre environnement d’exécution local) commence à ressembler à une infrastructure&nbsp;– et cela modifie complètement le modèle d’évolutivité des agents.</p>
+	<p>Le SDK Agents s’appuie sur <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> pour fournir à chaque agent une identité, un état persistant et la capacité de se réveiller à la réception d’un message. Il s’agit du <a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank" rel="noopener noreferrer"><u>modèle acteur</u></a>&nbsp;: chaque agent est une entité adressable disposant de sa propre base de données SQLite. Il ne consomme aucune puissance de calcul lorsqu’il est en veille prolongée. Lorsqu’un événement se produit (une requête HTTP, un message WebSocket, une alerte programmée, un e-mail entrant), la plateforme réveille l’agent, charge son état et lui transmet l’événement. L’agent effectue son travail, puis se remet en veille.</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>
+					</p>
+				</th>
+				<th>
+					<p><b>VM/Conteneurs</b></p>
+				</th>
+				<th>
+					<p><b>Durable Objects</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Coût en veille</b></p>
+				</td>
+				<td>
+					<p>Coût total en puissance de calcul, en&nbsp;permanence</p>
+				</td>
+				<td>
+					<p>Zéro (veille prolongée)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Mise à l'échelle</b></p>
+				</td>
+				<td>
+					<p>Provisionnement et gestion de la capacité</p>
+				</td>
+				<td>
+					<p>Automatique, par agent</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>État</b></p>
+				</td>
+				<td>
+					<p>Base de données externe requise</p>
+				</td>
+				<td>
+					<p>Base de données SQLite intégrée</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Reprise</b></p>
+				</td>
+				<td>
+					<p>Développement par vos soins (gestionnaires de processus, vérifications d’intégrité)</p>
+				</td>
+				<td>
+					<p>Redémarrage de la plateforme, persistance de l’état</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Identité/routage</b></p>
+				</td>
+				<td>
+					<p>Développés par vos soins (équilibrage de charge, sessions persistantes)</p>
+				</td>
+				<td>
+					<p>Intégrés (nom&nbsp;→&nbsp;agent)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>10&nbsp;000 agents, actifs 1&nbsp;% du temps</b></p>
+				</td>
+				<td>
+					<p>10&nbsp;000&nbsp;instances toujours actives</p>
+				</td>
+				<td>
+					<p>Env. 100&nbsp;instances actives à tout moment</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Cette approche modifie les paramètres économiques de l’exécution d’agents à grande échelle. Au lieu de déployer «&nbsp;un agent coûteux par utilisateur expérimenté&nbsp;», vous pouvez créer «&nbsp;un agent par client&nbsp;», «&nbsp;un agent par tâche&nbsp;» ou «&nbsp;un agent par fil de discussion par e-mail&nbsp;». Le coût marginal qu’entraîne la création d’un nouvel agent est pratiquement nul.</p>
+	<div class="flex anchor relative">
+		<h3 id="surviving-crashes-durable-execution-with-fibers">Survivre aux incidents&nbsp;: exécution durable avec les «&nbsp;fibers&nbsp;»</h3>
+		<a href="https://blog.cloudflare.com/#surviving-crashes-durable-execution-with-fibers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L’exécution d’un appel à un LLM demande 30&nbsp;secondes. L’exécution d’une boucle d’agent à plusieurs tours peut durer beaucoup plus longtemps. À tout moment pendant cette période, l’environnement d’exécution peut être arrêté en raison d’un déploiement, d’un redémarrage de la plateforme ou du dépassement des limites des ressources. La connexion en amont vers le fournisseur de modèles est définitivement interrompue, l’état en mémoire est perdu et, pour les clients connectés, le flux s’arrête sans aucune explication.</p>
+	<p><a href="https://developers.cloudflare.com/agents/api-reference/durable-execution" target="_blank" rel="noopener noreferrer"><u><code>runFiber()</code></u></a> résout ce problème. Un «&nbsp;fiber&nbsp;» est un appel de fonction persistant&nbsp;: il est enregistré dans SQLite avant le début de l’exécution, peut être sauvegardé à tout moment via <code>stash()</code> et peut être restauré au redémarrage via <code>onFiberRecovered</code>.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+
+export class ResearchAgent extends Agent {
+  async startResearch(topic: string) {
+    void this.runFiber("research", async (ctx) =&gt; {
+      const findings = [];
+
+      for (let i = 0; i &lt; 10; i++) {
+        const result = await this.callLLM(`Research step ${i}: ${topic}`);
+        findings.push(result);
+
+        // Checkpoint: if evicted, we resume from here
+        ctx.stash({ findings, step: i, topic });
+
+        this.broadcast({ type: "progress", step: i });
+      }
+
+      return { findings };
+    });
+  }
+
+  async onFiberRecovered(ctx) {
+    if (ctx.name === "research" &amp;&amp; ctx.snapshot) {
+      const { topic } = ctx.snapshot;
+      await this.startResearch(topic);
+    }
+  }
+}
+</code></pre>
+	<p>Le SDK maintient automatiquement l’activité de l’agent pendant l’exécution du fiber, sans qu’aucune configuration particulière ne soit nécessaire. Pour les tâches mesurées en minutes, les fonctions keepAlive()/keepAliveWhile() empêchent l’éviction pendant son fonctionnement actif. Pour les opérations plus longues (pipelines&nbsp;CI, revues de conception, génération de vidéos), l’agent démarre l’exécution de la tâche, enregistre l’identifiant de la tâche, se met en veille prolongée, puis se réactive en cas de rappel.</p>
+	<div class="flex anchor relative">
+		<h3 id="delegating-work-sub-agents-via-facets">Délégation des tâches&nbsp;: sous-agents via Facets</h3>
+		<a href="https://blog.cloudflare.com/#delegating-work-sub-agents-via-facets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un agent unique ne devrait pas exécuter toutes les tâches lui-même. Les <a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>sous-agents</u></a> sont des instances enfant Durable Objects colocalisées avec l’instance parent via <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Facets</u></a>, disposant chacune de leur propre base de données SQLite et d’un contexte d’exécution isolé&nbsp;:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+
+export class ResearchAgent extends Agent {
+  async search(query: string) { /* ... */ }
+}
+
+export class ReviewAgent extends Agent {
+  async analyze(query: string) { /* ... */ }
+}
+
+export class Orchestrator extends Agent {
+  async handleTask(task: string) {
+    const researcher = await this.subAgent(ResearchAgent, "research");
+    const reviewer = await this.subAgent(ReviewAgent, "review");
+
+    const [research, review] = await Promise.all([
+      researcher.search(task),
+      reviewer.analyze(task)
+    ]);
+
+    return this.synthesize(research, review);
+  }
+}
+</code></pre>
+	<p>Les sous-agents sont isolés au niveau du stockage. Chacun dispose de sa propre base de données SQLite, et il n’y a aucun partage implicite de données entre eux. Cet isolement est imposé par l’environnement d’exécution, où la latence d’un appel RPC vers un sous-agent équivaut à un simple appel de fonction. TypeScript détecte les utilisations abusives lors de la compilation.</p>
+	<div class="flex anchor relative">
+		<h3 id="conversations-that-persist-the-session-api">Conversations persistantes&nbsp;: l’API Session</h3>
+		<a href="https://blog.cloudflare.com/#conversations-that-persist-the-session-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le fonctionnement d’agents qui s’exécutent pendant plusieurs jours, voire plusieurs semaines nécessite plus qu’une liste linéaire standard de messages. L’<a href="https://developers.cloudflare.com/agents/api-reference/sessions" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> expérimentale modélise explicitement ce processus. Dans la classe de base Agent, les conversations sont stockées sous forme d’arborescences, chaque message disposant d’un parent_id. Cette configuration permet la création de branches (c’est-à-dire l’exploration d’une approche alternative sans perdre le chemin d’origine), la compaction non destructive (le résumé d’anciens messages, plutôt que leur suppression) et la recherche en texte intégral dans l’historique des conversations via <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener noreferrer"><u>FTS5</u></a>.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Agent } from "agents";
+import { Session, SessionManager } from "agents/experimental/memory/session";
+
+export class MyAgent extends Agent {
+  sessions = SessionManager.create(this);
+
+  async onStart() {
+    const session = this.sessions.create("main");
+    const history = session.getHistory();
+    const forked = this.sessions.fork(session.id, messageId, "alternative-approach");
+  }
+}
+</code></pre>
+	<p>L’API Session est utilisable directement avec <code>Agent</code> et constitue la couche de stockage sur laquelle s’appuie la classe de base <code>Think</code>.</p>
+	<div class="flex anchor relative">
+		<h2 id="from-tool-calls-to-code-execution">Des appels d’outils à l’exécution du code</h2>
+		<a href="https://blog.cloudflare.com/#from-tool-calls-to-code-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La syntaxe conventionnelle des appels d’outils est peu pratique. Le modèle appelle un outil, récupère le résultat par le biais de la fenêtre de contexte, appelle un autre outil, récupère ce résultat, et ainsi de suite. À mesure que la surface des outils s’accroît, cette approche devient à la fois coûteuse et peu pratique. Une centaine de fichiers correspond à une centaine d’allers-retours dans le modèle.</p>
+	<p>Toutefois, <a href="https://blog.cloudflare.com/code-mode"><u>les modèles sont plus à même d’écrire du code permettant d’utiliser un système que de se livrer au jeu de l’exécution d’appels d’outils</u></a>. C’est l’idée sur laquelle repose <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>@cloudflare/codemode</u></a>&nbsp;: au lieu d’exécuter des appels d’outils séquentiels, le LLM écrit un programme unique qui gère l’ensemble de la tâche.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// The LLM writes this. It runs in a sandboxed Dynamic Worker.
+const files = await tools.find({ pattern: "**/*.ts" });
+const results = [];
+for (const file of files) {
+  const content = await tools.read({ path: file });
+  if (content.includes("TODO")) {
+    results.push({ file, todos: content.match(/\/\/ TODO:.*/g) });
+  }
+}
+return results;
+</code></pre>
+	<p>Au lieu d’effectuer 100&nbsp;allers-retours vers le modèle, il suffit d’exécuter un programme unique. Cela permet de réduire le nombre de jetons utilisés, d’accélérer l’exécution et d’obtenir de meilleurs résultats. Le <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>serveur MCP de l’API Cloudflare</u></a> le démontre à grande échelle. Nous n’exposons que deux outils <code>(search()</code> et <code>execute())</code>, qui consomment environ 1&nbsp;000&nbsp;jetons, contre environ 1,17&nbsp;million de jetons pour l’approche équivalente naïve, reposant sur un outil par point de terminaison. Cela représente une réduction de 99,9&nbsp;%.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-missing-primitive-safe-sandboxes">La composante primitive manquante&nbsp;: des sandboxes sûrs</h3>
+		<a href="https://blog.cloudflare.com/#the-missing-primitive-safe-sandboxes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque vous avez admis le postulat que les modèles doivent écrire du code pour le compte des utilisateurs, la question qui se pose est la suivante&nbsp;: où s’exécute ce code&nbsp;? Pas finalement, pas après qu’une équipe produit en ait fait un élément de la feuille de route. À l’heure actuelle, pour cet utilisateur, sur ce système, avec des autorisations étroitement définies.</p>
+	<p><a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a> est cette sandbox. Un nouvel isolat&nbsp;V8 est lancé lors de l’exécution, en quelques millisecondes, avec quelques mégaoctets de mémoire seulement. Cette approche est environ 100&nbsp;fois plus rapide et jusqu’à 100&nbsp;fois plus économe en mémoire qu’un conteneur. Vous pouvez démarrer un nouvel isolat pour chaque requête, exécuter un fragment de code, puis le supprimer.</p>
+	<p>Le choix conceptuel déterminant est le modèle de capacité. Au lieu de partir d’une machine polyvalente et d’essayer de la contraindre, les instances Dynamic&nbsp;Workers commencent pratiquement sans aucune autorité ambiante (<code>globalOutbound: null</code>, aucun accès réseau) et le développeur accorde les capacités de manière explicite, ressource par ressource, par le biais de liaisons. La question n’est plus «&nbsp;Comment empêcher cet agent d’en faire trop&nbsp;?&nbsp;» à «&nbsp;Que voulons-nous exactement qu’il soit capable de faire&nbsp;?&nbsp;».</p>
+	<p>Il s’agit de la question pertinente concernant l’infrastructure des agents.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-execution-ladder">L’échelle d’exécution</h3>
+		<a href="https://blog.cloudflare.com/#the-execution-ladder" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ce modèle de capacité engendre naturellement un éventail d’environnements de calcul, une <b>échelle d’exécution</b> que l’agent peut gravir à mesure que ses besoins évoluent&nbsp;:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yokfTVcg8frH4snf7c4sp/2306d721650b4956b28e2198f7cf915d/BLOG-3200_2.png" alt="BLOG-3200 2" class="kg-image" width="1288" height="1202" loading="lazy">
+	</figure>
+	<p>Le niveau <b>Tier&nbsp;0</b> correspond à Workspace, un système de fichiers virtuel durable reposant sur SQLite et R2. Lecture, écriture, édition, recherche, grep, diff. Repose sur <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/shell</code></u></a>.</p>
+	<p>Le niveau <b>Tier&nbsp;1</b> est une instance Workers dynamique&nbsp;: du code JavaScript généré par LLM, exécuté dans un isolat en sandbox sans accès au réseau. Repose sur <a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>.</p>
+	<p>Le niveau <b>Tier&nbsp;2</b> ajoute npm. <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a> récupère les packages dans le registre, les regroupe avec esbuild, puis charge le résultat dans l’instance Dynamic&nbsp;Workers. L’agent écrit <code>import { z } from "zod"</code>, et ça fonctionne&nbsp;– tout simplement.</p>
+	<p>Le niveau <b>Tier&nbsp;3</b> correspond à un navigateur headless via <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare Browser Run</u></a>. Navigation, clic, extraction, capture d’écran. Utile lorsque le service ne prend pas encore en charge les agents via MCP ou les API.</p>
+	<p>Le niveau <b>Tier&nbsp;4</b> est une <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>sandbox Cloudflare</u></a> configurée avec vos chaînes d’outils, vos référentiels et vos dépendances (<code>git clone, npm test, cargo build</code>), qui bénéficie d’une synchronisation bidirectionnelle avec Workspace.</p>
+	<p>Le principe de conception fondamental&nbsp;: <b>l’agent doit être utile dès le niveau Tier&nbsp;0, chaque niveau étant additif</b>. L’utilisateur peut ajouter des fonctionnalités au fur et à mesure.</p>
+	<div class="flex anchor relative">
+		<h3 id="building-blocks-not-a-framework">Des composants fondamentaux, pas un cadre</h3>
+		<a href="https://blog.cloudflare.com/#building-blocks-not-a-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toutes ces composantes primitives sont disponibles sous forme de packages autonomes. <a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>, <a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a> et <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/shell</code></u></a> (un système de fichiers durable avec des outils) sont tous utilisables directement avec la classe de base Agent. Vous pouvez les associer pour fournir à n’importe quel agent une instance Workspace, ainsi que la capacité d’exécuter du code et de résoudre des packages de l’environnement d’exécution sans adopter un cadre prescriptif.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-platform">La plateforme</h2>
+		<a href="https://blog.cloudflare.com/#the-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Voici la pile complète pour développer des agents sur Cloudflare&nbsp;:</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Fonctionnalités</b></p>
+				</th>
+				<th>
+					<p><b>Ses actions</b></p>
+				</th>
+				<th>
+					<p><b>Repose sur</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>Isolement par agent</p>
+				</td>
+				<td>
+					<p>Chaque agent est un environnement à part entière</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> (DO)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Aucun coût en cas d’inactivité</p>
+				</td>
+				<td>
+					<p>0&nbsp;$ jusqu’à ce que l’agent se réveille</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>Veille prolongée de DO</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>État persistant</p>
+				</td>
+				<td>
+					<p>Stockage transactionnel et interrogeable</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage" target="_blank" rel="noopener noreferrer"><u>SQLite pour DO</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Système de fichiers durable</p>
+				</td>
+				<td>
+					<p>Fichiers survivant aux redémarrages</p>
+				</td>
+				<td>
+					<p>Workspace (SQLite + <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Exécution de code dans une sandbox</p>
+				</td>
+				<td>
+					<p>Exécution sécurisée de code généré par LLM</p>
+				</td>
+				<td>
+					<p><a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a> + <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Dépendances du runtime</p>
+				</td>
+				<td>
+					<p><code>import * from react</code> fonctionne, tout simplement</p>
+				</td>
+				<td>
+					<p><a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/worker-bundler</code></u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Automatisation web</p>
+				</td>
+				<td>
+					<p>Consultation, navigation, renseignement de formulaires</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Accès intégral au système d’exploitation</p>
+				</td>
+				<td>
+					<p>git, compilateurs, outils d’exécution de tests</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Sandboxes</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Exécution programmée</p>
+				</td>
+				<td>
+					<p>Proactif, pas uniquement réactif</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Alertes DO et fibers</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Streaming en temps réel</p>
+				</td>
+				<td>
+					<p>Jeton par jeton vers n’importe quel client</p>
+				</td>
+				<td>
+					<p>Protocoles WebSocket</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Outils externes</p>
+				</td>
+				<td>
+					<p>Connexion à n’importe quel serveur d’outils</p>
+				</td>
+				<td>
+					<p>MCP</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Coordination d’agents</p>
+				</td>
+				<td>
+					<p>RPC typé entre agents</p>
+				</td>
+				<td>
+					<p>Sous-agents (<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Accès aux modèles</p>
+				</td>
+				<td>
+					<p>Connexion à un LLM afin de piloter l’agent</p>
+				</td>
+				<td>
+					<p><a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> + <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> (ou Bring Your Own Model)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Chacun de ces éléments est un composant fondamental. Ensemble, ils forment quelque chose de nouveau&nbsp;: une plateforme sur laquelle chacun peut développer, déployer et exécuter des agents&nbsp;IA aussi performants que ceux qui s’exécutent actuellement sur votre machine locale. Toutefois, ces agents sont <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>serverless</u></a>, durables et intrinsèquement sûrs. </p>
+	<div class="flex anchor relative">
+		<h2 id="the-think-base-class">La classe de base Think</h2>
+		<a href="https://blog.cloudflare.com/#the-think-base-class" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Maintenant que vous avez découvert les composantes primitives, voici ce qui se passe lorsque vous les connectez toutes.</p>
+	<p><code>Think</code> est un cadre de travail prescriptif, qui gère l’intégralité du cycle de vie de la conversation&nbsp;: boucle agentique, persistance des messages, streaming, exécution d’outils, reprise de flux et extensions. Vous vous concentrez ainsi sur ce qui rend votre agent unique.</p>
+	<p>La sous-classe minimale se présente ainsi&nbsp;:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.5"
+    );
+  }
+}
+</code></pre>
+	<p>En pratique, c’est tout ce dont vous avez besoin pour disposer d’un agent de discussion fonctionnel avec streaming, persistance, interruption/annulation, traitement des erreurs, des flux avec reprise et un système de fichiers intégré dans l’espace de travail. Déployez avec <code>npx wrangler deploy</code>.</p>
+	<p>Think prend des décisions pour vous. Si vous avez besoin de davantage de contrôle, vous pouvez vous réserver celles qui importent pour vous&nbsp;:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Substitution</b></p>
+				</td>
+				<td>
+					<p><b>Objectif</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getModel()</code></p>
+				</td>
+				<td>
+					<p>Renvoyer le <code>LanguageModel</code> à utiliser</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getSystemPrompt()</code></p>
+				</td>
+				<td>
+					<p>Invite système</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getTools()</code></p>
+				</td>
+				<td>
+					<p><code>ToolSet</code> compatible avec le SDK&nbsp;IA pour la boucle agentique</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>maxSteps</code></p>
+				</td>
+				<td>
+					<p>Nombre maximum d’appels d’outils par tour</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>configureSession()</code></p>
+				</td>
+				<td>
+					<p>Blocs de contexte, compaction, recherche, fonctionnalités</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>En coulisses, Think exécute la boucle agentique complète à chaque tour&nbsp;: il assemble le contexte (instructions de base&nbsp;+ descriptions d’outils&nbsp;+ compétences&nbsp;+ mémoire&nbsp;+ historique de la conversation), appelle <code>streamText</code>, exécute les appels d’outil (avec troncature de la sortie afin d’éviter l’explosion du contexte), ajoute les résultats, puis répète la boucle jusqu’à ce que le modèle ait terminé ou que la limite d’étape soit atteinte. Tous les messages sont persistants après chaque tour.</p>
+	<div class="flex anchor relative">
+		<h3 id="lifecycle-hooks">Hooks de cycle de vie</h3>
+		<a href="https://blog.cloudflare.com/#lifecycle-hooks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Think met à votre disposition des hooks (c’est-à-dire des points d’ancrage) à chaque étape du tour de conversation, sans vous contraindre à gérer l’ensemble du pipeline&nbsp;:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">beforeTurn()
+  → streamText()
+    → beforeToolCall()
+    → afterToolCall()
+  → onStepFinish()
+→ onChatResponse()
+</code></pre>
+	<p>Optez pour un modèle moins coûteux pour les tours de suivi, restreignez le choix d’outils que peut utiliser le modèle et transmettez le contexte côté client à chaque tour. Vous pouvez également enregistrer chaque appel d’outil dans le système d’analyse de données et déclencher automatiquement un tour de suivi supplémentaire, une fois l’exécution du modèle terminée&nbsp;– et tout cela, sans remplacer <code>onChatMessage</code>.</p>
+	<div class="flex anchor relative">
+		<h3 id="persistent-memory-and-long-conversations">Mémoire persistante et conversations longues</h3>
+		<a href="https://blog.cloudflare.com/#persistent-memory-and-long-conversations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Think utilise l’<a href="https://developers.cloudflare.com/agents/api-reference/sessions/?cf_target_id=E7A3D837FA7DC4C7DDA822B3DE0F831B" target="_blank" rel="noopener noreferrer"><u>API Session</u></a> comme couche de stockage, mettant ainsi à votre disposition des messages structurés sous forme d’arborescence avec une gestion des branches intégrée.</p>
+	<p>Par ailleurs, Think ajoute de la mémoire persistante par le biais de <b>blocs de contexte</b>. Il s’agit de sections structurées de l’invite système que le modèle peut lire et mettre à jour au fil du temps, et qui persistent pendant toute la durée de la mise en veille prolongée. <b></b>Le modèle voit «&nbsp;MEMORY (infos importantes, utiliser set_context pour mettre à jour) [42%, 462/1100&nbsp;jetons]&nbsp;» et peut mémoriser proactivement des informations.</p>
+	<pre class="language-Typescript"><code class="language-Typescript">configureSession(session: Session) {
+  return session
+    .withContext("soul", {
+      provider: { get: async () =&gt; "You are a helpful coding assistant." }
+    })
+    .withContext("memory", {
+      description: "Important facts learned during conversation.",
+      maxTokens: 2000
+    })
+    .withCachedPrompt();
+}
+</code></pre>
+	<p>Les sessions sont flexibles. Vous pouvez exécuter plusieurs conversations par agent et créer des branches afin d’explorer une autre approche, sans toutefois perdre le chemin original.<b>&nbsp;</b></p>
+	<p>À mesure que le contexte s’étoffe, Think gère les limites grâce à une compaction non destructive. Les messages les plus anciens sont résumés, et non supprimés, tandis que l’historique complet reste stocké dans SQLite.<b></b></p>
+	<p>Une fonction de recherche est également intégrée. Avec FTS5, vous pouvez interroger l’historique des conversations d’une session ou de l’ensemble des sessions. L’agent peut également effectuer des recherches dans son propre passé avec l’outil <code>search_context</code>.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-full-execution-ladder-wired-in">L’échelle d’exécution complète, connectée</h3>
+		<a href="https://blog.cloudflare.com/#the-full-execution-ladder-wired-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Think intègre la totalité de la chaîne d’exécution dans le retour d’une fonction <code>getTools()</code> unique&nbsp;:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { Think } from "@cloudflare/think";
+import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
+import { createExecuteTool } from "@cloudflare/think/tools/execute";
+import { createBrowserTools } from "@cloudflare/think/tools/browser";
+import { createSandboxTools } from "@cloudflare/think/tools/sandbox";
+import { createExtensionTools } from "@cloudflare/think/tools/extensions";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  extensionLoader = this.env.LOADER;
+
+  getModel() {
+    /* ... */
+  }
+
+  getTools() {
+    return {
+      execute: createExecuteTool({
+        tools: createWorkspaceTools(this.workspace),
+        loader: this.env.LOADER
+      }),
+      ...createBrowserTools(this.env.BROWSER),
+      ...createSandboxTools(this.env.SANDBOX), // configured per-agent: toolchains, repos, snapshots
+      ...createExtensionTools({ manager: this.extensionManager! }),
+      ...this.extensionManager!.getTools()
+    };
+  }
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="self-authored-extensions">Extensions auto-générées</h3>
+		<a href="https://blog.cloudflare.com/#self-authored-extensions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Think va encore plus loin dans l’exécution du code. Un agent peut écrire ses propres extensions&nbsp;: des programmes TypeScript qui s’exécutent dans des instances Dynamic Workers et définissent les autorisations d’accès au réseau et d’exécution d’opérations dans Workspace.</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "name": "github",
+  "description": "GitHub integration: PRs, issues, repos",
+  "tools": ["create_pr", "list_issues", "review_pr"],
+  "permissions": {
+    "network": ["api.github.com"],
+    "workspace": "read-write"
+  }
+}
+</code></pre>
+	<p>Le service <code>ExtensionManager</code> de Think regroupe l’extension (éventuellement avec des dépendances npm, via <code>@cloudflare/worker-bundler</code>), charge celle-ci dans une instance Dynamic Workers, puis et enregistre les nouveaux outils. L’extension reste enregistrée dans le stockage de DO et survit à la mise en veille prolongée. La prochaine fois que l’utilisateur interroge les requêtes pull, l’agent disposera d’un outil <code>github_create_pr</code> qui n’existait pas encore 30&nbsp;secondes plus tôt.</p>
+	<p>C’est ce genre de boucle d’amélioration qui permet aux agents de devenir véritablement plus utiles au fil du temps&nbsp;– pas grâce à des réglages précis ou à l’apprentissage par renforcement à partir de retours humains, mais par le biais du code. L’agent est capable d’écrire de nouvelles fonctionnalités pour lui-même, et cela, en TypeScript, dans un environnement en sandbox, vérifiable et révocable.</p>
+	<div class="flex anchor relative">
+		<h3 id="sub-agent-rpc">RPC vers les sous-agents</h3>
+		<a href="https://blog.cloudflare.com/#sub-agent-rpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Think peut également fonctionner comme un sous-agent, appelé via l’instruction <code>chat()</code> par l’intermédiaire de RPC depuis un agent parent, avec la transmission des événements de streaming via une fonction de rappel&nbsp;:</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const researcher = await this.subAgent(ResearchSession, "research");
+const result = await researcher.chat(`Research this: ${task}`, streamRelay);
+</code></pre>
+	<p>Chaque agent enfant isolé dispose d’une arborescence de conversation, d’une mémoire, d’outils et d’un modèle propres. L’agent parent n’a pas besoin de connaître les détails.</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Commencer</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le projet Think est expérimental. La surface de l’API est stable, mais l’API continuera d’évoluer au fil des jours et des semaines à venir. Nous l’utilisons déjà en interne pour créer notre propre infrastructure d’agents en arrière-plan, et nous la partageons précocement pour vous permettre de développer des solutions avec nous.</p>
+	<pre class="language-Shell"><code class="language-Shell">npm install @cloudflare/think agents ai @cloudflare/shell zod workers-ai-provider</code></pre>
+
+	<pre class="language-Typescript"><code class="language-Typescript">// src/server.ts
+import { Think } from "@cloudflare/think";
+import { createWorkersAI } from "workers-ai-provider";
+import { routeAgentRequest } from "agents";
+
+export class MyAgent extends Think&lt;Env&gt; {
+  getModel() {
+    return createWorkersAI({ binding: this.env.AI })(
+      "@cf/moonshotai/kimi-k2.5"
+    );
+  }
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    return (
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  }
+} satisfies ExportedHandler&lt;Env&gt;;
+</code></pre>
+
+	<pre class="language-Typescript"><code class="language-Typescript">// src/client.tsx
+import { useAgent } from "agents/react";
+import { useAgentChat } from "@cloudflare/ai-chat/react";
+
+function Chat() {
+  const agent = useAgent({ agent: "MyAgent" });
+  const { messages, sendMessage, status } = useAgentChat({ agent });
+  // Render your chat UI
+}
+</code></pre>
+	<p>Think utilise le même protocole WebSocket que <code>@cloudflare/ai-chat</code>&nbsp;; ainsi, les composants d’IU existants fonctionnent immédiatement. Si vous avez développé une solution avec <a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><u><code>AIChatAgent</code></u></a>, votre code client n’a pas besoin d’être modifié.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-third-wave">La troisième vague</h2>
+		<a href="https://blog.cloudflare.com/#the-third-wave" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous distinguons trois vagues d’agents IA&nbsp;:</p>
+	<p><b>La première vague a été celle des chatbots.</b> Ils étaient réactifs et fragiles, et s’exécutaient sans état. Chaque conversation partait de zéro, sans mémoire, sans outils et sans capacité d’agir. Les chatbots étaient utiles pour répondre aux questions d’utilisateurs, mais leur utilité se limitait à cette seule fonction.</p>
+	<p><b>La deuxième vague a été celle des agents de codage.</b> Ces outils avec état sont capables d’utiliser des outils et sont dotés de capacités considérablement supérieures (Pi, Claude&nbsp;Code, OpenClaw et Codex, entre autres). Ces agents peuvent lire des bases de code, écrire du code, l’exécuter et réaliser des améliorations itératives. S’ils ont démontré qu’un LLM doté d’outils pertinents est une machine polyvalente, ils s’exécutent sur votre ordinateur portable, pour un utilisateur seulement, sans aucune garantie de durabilité.</p>
+	<p><b>Nous abordons maintenant dans la troisième vague&nbsp;: les agents en tant qu’infrastructure.</b> Ils sont durables, distribués, structurellement sûrs et proposent une exécution serverless. Il s’agit d’agents qui s’exécutent sur Internet, survivent aux défaillances, n’entraînent aucun coût lorsqu’ils sont inactifs et assurent une sécurité reposant sur leur architecture, plutôt que sur leur comportement. Ces agents peuvent être créés et déployés par n’importe quel développeur pour un nombre illimité d’utilisateurs.</p>
+	<p>C’est l’approche que nous privilégions.</p>
+	<p>Des milliers d’agents de production reposent déjà sur le SDK&nbsp;Agents. Avec Project&nbsp;Think et les primitives qu’il introduit, nous ajoutons les pièces manquantes permettant de rendre ces agents considérablement plus performants&nbsp;: espaces de travail persistants, exécution de code en sandbox, tâches durables à longue durée d’exécution, sécurité structurelle, coordination de sous-agents et extensions auto-générées.</p>
+	<p>Project Think est disponible dès aujourd’hui dans une version préliminaire. Nous développons à vos côtés, et nous avons vraiment hâte de découvrir ce que vous (et votre agent de codage) allez créer avec cet outil.</p>
+	<hr>
+	<p><i><sup>Think fait partie du SDK&nbsp;Agents de Cloudflare, disponible sous @cloudflare/think. Les fonctionnalités décrites dans cet article sont disponibles en version préliminaire. Les API sont susceptibles d’être modifiées à mesure que nous intégrons les commentaires. Consultez la </sup></i><a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><i><sup><u>documentation</u></sup></i></a><i><sup> et l’</sup></i><a href="https://github.com/cloudflare/agents/tree/main/examples/assistant" target="_blank" rel="noopener noreferrer"><i><sup><u>exemple</u></sup></i></a><i><sup> pour vous lancer.</sup></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/161Wz7Tf8Cpzn2u2cBCH3V/37633c016734590005edd280732e89b9/BLOG-3200_3.png" alt="BLOG-3200 3" class="kg-image" width="1200" height="295" loading="lazy">
+	</figure>
+	<p></p>
+</div>

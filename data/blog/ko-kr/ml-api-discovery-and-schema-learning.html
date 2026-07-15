@@ -1,0 +1,166 @@
+<div class="mb2 gray5">10분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ml-api-discovery-and-schema-learning">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ml-api-discovery-and-schema-learning">Français</a>, <a href="https://blog.cloudflare.com/de-de/ml-api-discovery-and-schema-learning">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ml-api-discovery-and-schema-learning">日本語</a>, <a href="https://blog.cloudflare.com/es-es/ml-api-discovery-and-schema-learning">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/ml-api-discovery-and-schema-learning">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9rMvSDWzIib1lnJRTYt3y/fad83e0c1dd1d996be5cdb9cf7f84af5/ml-api-discovery-and-schema-learning.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>이제 Cloudflare는 모든 API 엔드포인트를 자동으로 검색하고 모든 <a href="https://www.cloudflare.com/application-services/products/api-gateway" target="_blank" rel="noopener noreferrer">API Gateway</a> 고객에 대해 API 스키마를 학습합니다. 고객은 현재 기존 API에 대한 정보가 거의 없거나 전혀 없는 경우에도 이러한 새로운 기능을 사용하여 API 엔드포인트에 긍정적인 보안 모델을 적용할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O4mCKw9fBP5rNhxrGj3NP/e4439b1f3cfd0f4b0674c8be82e494e3/image6-6.png" alt="Automatically discovering API endpoints and generating schemas using machine learning" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>API 보안의 첫 번째 단계는 API 호스트 이름과 엔드포인트를 파악하는 것입니다. 우리는 고객이 "<i>우리는 스프레드시트에 대해 이메일을 보내 개발자에게 모든 엔드포인트를 나열해 주도록 요청합니다</i>"와 같은 방식으로 API 카탈로그 작성 및 관리 노력을 시작해야 한다는 말을 자주 듣습니다.</p>
+	<p>이 접근 방식의 문제점이 무엇인지 상상할 수 있으신가요? 그 문제점을 직접 보셨을 수도 있습니다. "이메일을 보내 요청하는" 방식으로 접근하면 다음 번 코드 릴리스에 따라 변경될 가능성이 있는 특정 시점의 인벤토리가 생성됩니다. 이는 사람들이 조직을 떠나면 사라질 수 있는 조직 내 지식에 의존합니다. 마지막으로, 이 접근 방식은 인적 오류에 취약합니다.</p>
+	<p>조직에서 노력하여 수집한 정확한 API 인벤토리가 있더라도 API 스키마를 적용하여 의도대로 사용되고 있는지 확인하려면 API 스키마를 구축하는 데 훨씬 더 많은 집단적 지식이 필요합니다. 이제 API Gateway의 새로운 API 검색 및 스키마 학습 기능이 결합되어 Cloudflare 전역 네트워크 전반에서 <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API를 자동으로 보호</a>하고 수동으로 <a href="https://www.cloudflare.com/ko-kr/learning/security/api/what-is-api-discovery" target="_blank" rel="noopener noreferrer">API를 검색</a>하고 스키마를 구축할 필요가 없어졌습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="api-gateway-discovers-and-protects-apis">API Gateway로 API를 검색하고 보호합니다</h2>
+		<a href="https://blog.cloudflare.com/#api-gateway-discovers-and-protects-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API Gateway는 API Discovery라는 기능을 통해 <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a>를 검색합니다 . 이전에는 API Discovery에서 고객별 세션 식별자(HTTP 헤더 또는 쿠키)를 사용하여 API 엔드포인트를 식별하고 해당 분석을 고객에게 표시했습니다.</p>
+	<p>이러한 방식으로 검색을 수행하면 효과가 있었지만, 세 가지 단점이 있었습니다.</p>
+	<ol>
+		<li>
+			<p>고객은 세션을 구분하려면 어떤 헤더나 쿠키를 사용했는지 알아야 했습니다. 세션 식별자는 일반적으로 사용되지만, 적절한 토큰을 찾는 데는 시간이 걸릴 수 있습니다.</p>
+		</li>
+		<li>
+			<p>API Discovery에 세션 식별자가 필요했기 때문에 Cloudflare에서는 완전히 인증되지 않은 API에 대한 모니터링 및 보고는 할 수 없었습니다. 오늘날 고객들은 여전히 세션 없는 트래픽에 대한 가시성을 확보하여 모든 API 엔드포인트가 문서화되고 남용이 최소화되기를 원합니다.</p>
+		</li>
+		<li>
+			<p>고객은 세션 식별자를 대시보드에 입력한 후 검색 프로세스가 완료될 때까지 최대 24시간을 기다려야 했습니다. 기다리는 것을 좋아하는 사람은 없습니다.</p>
+		</li>
+	</ol>
+	<p>이 접근 방식에는 단점이 있었지만, 우리는 세션 기반 제품으로 시작하면 고객에게 빠르게 가치를 제공할 수 있다는 것을 알았습니다. 우리는 고객이 확보되고 시스템을 통해 더 많은 트래픽이 전달됨에 따라 새롭게 레이블이 지정된 데이터가 제품을 더욱 발전시키는 데 아주 유용할 것임을 알았습니다. 기존의 API 메타데이터와 새롭게 레이블이 지정된 데이터로 <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">머신 러닝 모델</a>을 학습시킬 수 있다면, 어떤 엔드포인트가 API용인지 정확히 파악하기 위해 세션 식별자가 더 이상 필요하지 않을 것입니다. 그래서 우리는 이 새로운 접근 방식을 구축하기로 결정했습니다.</p>
+	<p>세션 식별자 기반 데이터에서 학습한 내용을 바탕으로 머신 러닝 모델을 구축하여 세션 식별자와 관계없이 도메인의 모든 API 트래픽을 파악했습니다. 새로운 머신 러닝 기반 API 검색을 통해 Cloudflare에서는 고객의 사전 입력 없이도 네트워크를 통해 라우팅되는 모든 API 트래픽을 지속해서 검색합니다. 이번 릴리스를 통해 API Gateway 고객은 API Discovery를 그 어느 때보다 더 빠르게 시작할 수 있으며, 이전에는 파악할 수 없었던 인증되지 않은 API를 파악할 수 있게 됩니다.</p>
+	<p>세션 식별자는 <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">Sequence Analytics</a>뿐만 아니라 볼류메트릭 남용 <a href="https://blog.cloudflare.com/ko-kr/api-sequence-analytics-ko-kr">레이트 리미팅</a>의 기초를 형성하므로 API Gateway에 여전히 중요합니다. 아래의 "작동 방식" 섹션에서 이 새로운 접근법의 작동 방식에 대해 자세히 알아보세요.</p>
+	<div class="flex anchor relative">
+		<h3 id="api-protection-starting-from-nothing">아무것도 없는 상태에서 시작되는 API 보호</h3>
+		<a href="https://blog.cloudflare.com/#api-protection-starting-from-nothing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 API Discovery를 사용하여 새로운 API를 찾았으니 어떻게 보호할 수 있을까요? 공격으로부터 방어하려면 API 개발자는 API가 어떻게 사용될 것으로 예상되는지 정확히 파악해야 합니다. 다행히도 개발자는 프로그래밍 방식으로 API 스키마 파일을 생성하여 API 에 허용되는 입력을 코딩하고 이를 API Gateway의 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">스키마 유효성</a>검사에 업로드할 수 &nbsp;있습니다.</p>
+	<p>그러나 많은 고객이 개발자가 API를 구축하는 것만큼 빠르게 자신의 API를 찾을 수 없다는 점에 대해서는 이미 이야기한 바 있습니다. 보안팀에서는 로그에서 HTTP 요청 방법과 경로 이외의 것을 확인하는 경우가 거의 없으므로, API를 찾더라도 잠재적으로 수백 개의 API 엔드포인트 각각에 대해 고유한 OpenAPI 스키마를 정확하게 구축하는 것은 매우 어렵습니다.</p>
+	<p>API Gateway의 사용 패턴을 살펴본 결과, 고객이 API를 검색은 하지만, 스키마를 적용하는 경우는 거의 없다는 것을 알 수 있었습니다. 고객에게 '왜 안 하느냐?'고 물었을 때 돌아온 대답은 간단했습니다. " <i>API가 존재한다는 것을 알더라도 각 API 의 소유자를 추적하여 스키마를 제공하려면 시간이 너무 많이 걸립니다. 이러한 작업을 다른 필수 보안 항목보다 우선순위에 두는 것은 어렵습니다.</i>" 시간과 전문 지식의 부족은 고객이 보안을 구현하는 데 있어 가장 큰 격차였습니다.</p>
+	<p>그래서 우리는 그 격차를 좁히기로 결정했습니다. 우리는 API 엔드포인트가 발견되면 API 엔드포인트를 발견할 때 사용한 학습 프로세스와 동일한 프로세스를 엔드포인트에 적용하여 스키마를 자동으로 학습할 수 있다는 사실을 발견했습니다. <b>이 방법을 사용하면</b> <b><i>이제 발견한 모든 엔드포인트에 대해 실시간으로 OpenAPI 형식의 스키마를 생성할 수 있습니다</i></b><b>.</b> 이 새로운 기능을 스키마 학습이라고 부릅니다. 그런 다음 고객은 Cloudflare에서 생성한 스키마를 스키마 유효성 검사에 업로드하여 긍정적인 보안 모델을 적용할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">작동 방식</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VpHCVozyIsmpo7qSr6mTq/6193978955979c057b25a8f42b9d67d6/Schema-Learning-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="machine-learning-based-api-discovery">머신 러닝 기반 API 검색</h3>
+		<a href="https://blog.cloudflare.com/#machine-learning-based-api-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>RESTful API의 경우, 호출은 다양한 HTTP 메서드와 경로로 구성됩니다. <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Cloudflare API</a>를 예로 들어보겠습니다. 이 블로그에 대한 요청 중에서 이 API에 대한 요청을 두드러지게 만드는 경로에서 공통된 경향을 발견할 수 있습니다. API 호출은 모두 /client/v4로 시작하여 서비스 이름, 고유 식별자, 그리고 때로는 서비스 기능 이름과 추가 식별자로 이어집니다.</p>
+	<p>API 호출을 쉽게 식별하려면 어떻게 해야 할까요? 언뜻 보기에 이러한 호출은 "경로가 /client로 시작"과 같은 휴리스틱으로 프로그래밍 방식으로 쉽게 발견할 수 있는 것처럼 보이지만, 새로운 Discovery의 핵심에는 HTTP 트랜잭션에 점수를 매기는 분류기를 구동하는 머신 러닝 모델이 포함되어 있습니다. API 경로가 그렇게 구성되어 있다면 왜 머신 러닝이 필요할까요? 그리고 간단한 휴리스틱을 사용하면 안 될까요?</p>
+	<p>그 질문에 대한 답은 '실제로 API 호출을 구성하는 요소는 무엇이며 비 API 호출과는 어떻게 다른가'라는 질문으로 귀결됩니다. 두 가지 예를 살펴보겠습니다.</p>
+	<p>Cloudflare API와 같이, 많은 고객의 API는 API 호출 경로 앞에 "API" 식별자와 다음 예와 같은 버전을 접두사로 붙이는 등의 패턴을 따릅니다. 예: <i>/api/v2/user/7f577081-7003-451e-9abe-eb2e8a0f103d.</i></p>
+	<p>따라서 경로에서 "api" 또는 버전을 찾는 것만으로도 이미 API의 일부일 가능성이 매우 높다는 것을 알 수 있는 꽤 좋은 휴리스틱이지만, 안타깝게도 항상 그처럼 쉬운 것은 아닙니다.</p>
+	<p>확장자만 다른 /_users/7f577081-7003-451e-9abe-eb2e8a0f103d.jpg_와 /_users/7f577081-7003-451e-9abe-eb2e8a0f103d_의 두 가지 예를 더 살펴 보겠습니다. 첫 번째 경로는 사용자의 썸네일과 같은 정적 리소스일 수 있습니다. 두 번째 경로는 경로만으로는 많은 단서가 제공되지는 않습니다.</p>
+	<p>이러한 휴리스틱을 수동으로 만드는 것은 금방 어려워집니다. 인간은 패턴을 찾는 데는 능숙하지만, Cloudflare에서 매일 목격하는 데이터의 규모를 고려할 때 휴리스틱을 구축하는 것은 어려운 일입니다. 따라서 Cloudflare에서는 머신 러닝을 사용하여 이러한 휴리스틱을 자동으로 도출해서 재현 가능하고 일정한 정확도를 준수할 수 있도록 합니다.</p>
+	<p>학습에 입력되는 것은 앞서 언급한 세션 식별자 기반 Discovery를 통해 수집한 콘텐츠 유형 또는 파일 확장자와 같은 HTTP 요청/응답 샘플의 특징입니다. 안타깝게도 이 데이터에 있는 모든 것이 명확하게 API인 것은 아닙니다. 또한 API가 아닌 트래픽을 나타내는 샘플도 필요합니다. 따라서 우리는 세션 식별자 Discovery 데이터로 시작하여 수동으로 정리한 후 비 API 트래픽의 추가 샘플을 도출했습니다. 데이터에 모델을 과도하게 맞추지 않도록 세심한 주의를 기울였습니다. 즉, 우리는 모델이 학습 데이터를 넘어 일반화되기를 원합니다.</p>
+	<p>모델을 학습시키기 위해 이미 상당한 전문 지식을 보유하고 있는 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-bot-management-machine-learning-and-more-ko-kr">CatBoost 라이브러리</a>를 사용했는데, 이 라이브러리는 <a href="https://blog.cloudflare.com/machine-learning-mobile-traffic-bots">봇 관리 ML 모델</a>에도 사용되고 있습니다. 단순화하자면, 그 결과로 나오는 모델을 어떤 조건을 차례로 확인해야 하는지 알려주는 플로우 차트로 간주할 수 있습니다. 예를 들어 경로에 "api"가 포함되어 있으면 파일 확장자가 없는지 확인하는 등의 작업을 수행합니다. 이 플로우 차트의 마지막에는 HTTP 트랜잭션이 API에 속할 가능성을 알려주는 점수가 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/360Ff2sU2vH0xHRTwQ1a1i/9acd901bac12dd2e228f123904e1322d/ML-Discovery-Flow.png" alt="" class="kg-image" width="1600" height="1138" loading="lazy">
+
+	</figure>
+	<p>따라서 학습된 모델이 주어지면 Cloudflare 네트워크를 통해 실행되는 HTTP 요청/응답의 특징을 입력하고 이 HTTP 트랜잭션이 API에 속하는지 아닌지 가능성을 계산할 수 있습니다. 특징 추출과 모델 점수는 Rust에서 수행되며, 전역 네트워크에서 단 몇 마이크로초밖에 걸리지 않습니다. Discovery는 강력한 Cloudflare의 <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">데이터 파이프라인</a>에서 데이터를 가져오므로 실제로 <i>각</i> 트랜잭션에 점수를 매길 필요는 없습니다. 처음부터 데이터 파이프라인에 포함될 것으로 예상되는 트랜잭션만 점수화함으로써 서버의 부하를 줄여 CPU 시간을 절약하고 비용 효율적으로 기능을 사용할 수 있습니다.</p>
+	<p>데이터 파이프라인의 분류 결과를 통해 세션 식별자 기반 검색에 사용했던 것과 동일한<a href="https://blog.cloudflare.com/api-abuse-detection">API Discovery 메커니즘</a>을 사용할 수 있습니다. 이 기존 시스템은 훌륭하게 작동하며 코드를 효율적으로 재사용할 수 있게 해줍니다. 또한 세션 식별자 기반 검색과 결과를 비교할 때 두 시스템이 직접적으로 비교 가능하기 때문에 도움이 되었습니다.</p>
+	<p>API Discovery 결과가 유용하려면 먼저 고유 경로를 변수로 단순화하는 것이 Discovery의 첫 번째 작업입니다. 이에 대해서는 이전에 <a href="https://blog.cloudflare.com/api-abuse-detection">언급한</a> 적이 &nbsp;있습니다. 전역 네트워크에서 볼 수 있는 다양한 식별자 체계를 추론하는 것은 간단하지 않으며, 특히 사이트에서 간단한 GUID 또는 정수 형식 이외의 사용자 지정 식별자를 사용하는 경우에는 더욱 복잡합니다. API Discovery는 몇 가지 다양한 변수 분류기와 지도 학습을 통해 변수가 포함된 경로를 적절하게 정규화합니다.</p>
+	<p>경로를 정규화한 후에야 사용자가 바로 간단하게 사용할 수 있도록 Discovery 결과를 준비할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-results-hundreds-of-found-endpoints-per-customer">결과: 고객당 수백 개의 엔드포인트 발견</h3>
+		<a href="https://blog.cloudflare.com/#the-results-hundreds-of-found-endpoints-per-customer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>그렇다면 헤더나 쿠키에 의존하여 API 트래픽에 태그를 지정하는 세션 식별자 기반 검색과 ML Discovery는 어떻게 다를까요?</p>
+	<p>우리는 ML Discovery에서 매우 유사한 엔드포인트 집합을 감지할 것으로 예상했습니다. 하지만 데이터에서 두 가지 차이가 있다는 것을 알 수 있었습니다. 첫째, 고객이 세션 식별자를 사용하여 API 트래픽만 깔끔하게 분석할 수 없는 경우가 종종 있습니다. 이 경우 Discovery는 비 API 트래픽을 표시합니다. 둘째, 첫 번째 버전의 API Discovery에서 세션 식별자가 필요했기 때문에 세션에 속하지 않는 엔드포인트(예: 로그인 엔드포인트 또는 인증되지 않은 엔드포인트)는 개념적으로 검색할 수 없었습니다.</p>
+	<p>다음 그래프에는 두 검색 변형에 대해 고객 도메인에서 감지된 엔드포인트 수의 히스토그램이 나와 있습니다.</p>
+	<p>조감도에서 보면 결과는 매우 비슷해 보이며, 이는 ML Discovery가 예상대로 제대로 작동한다는 좋은 지표입니다. 이 도표에는 이미 몇 가지 차이점이 보이는데, 이는 개념적으로 세션 식별자만으로는 발견할 수 없는 엔드포인트도 발견할 수 있기 때문에 우리가 이미 예상했던 것입니다. 실제로 도메인별 비교를 자세히 살펴보면 약 46%의 도메인에서는 변화가 없는 것을 알 수 있습니다. 그 다음 그래프는 세션 기반 검색과 ML 기반 검색의 차이(엔드포인트 비율)를 비교한 것입니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2B3SRaTlzY9IeP14TiJmJt/ec42e3ecc5072fc6bd6f839ea6414a18/imageLikeEmbed.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+
+	</figure>
+	<p>도메인의 약 15%에서 엔드포인트가 1~50개 사이로 증가했고, 약 9%에서는 비슷한 감소를 보였습니다. 도메인의 약 28%에서 50개 이상의 엔드포인트가 추가로 발견되었습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xgilUYXsRSsK0szWTUE4Y/663978d4aa8a919010c024b5d2bea3bb/imageLikeEmbed--1-.png" alt="" class="kg-image" width="1528" height="946" loading="lazy">
+
+	</figure>
+	<p>이러한 결과는 ML Discovery가 이전에는 눈에 띄지 않았던 엔드포인트를 추가로 발견할 수 있으며, 따라서 API Gateway에서 제공되는 도구 세트가 확장되어 API 환경에 질서를 가져오는 데 도움이 된다는 점을 알려줍니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="on-the-fly-api-protection-through-api-schema-learning">API 스키마 학습을 통한 즉각적인 API 보호</h3>
+		<a href="https://blog.cloudflare.com/#on-the-fly-api-protection-through-api-schema-learning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API 검색을 처리한 후 실무자는 새로 발견된 엔드포인트를 어떻게 보호할 수 있을까요? 이미 API 호출 메타데이터를 살펴봤으니 이제 API 호출 본문을 살펴보겠습니다. API의 모든 API 엔드포인트에 대해 예상되는 모든 형식의 컴파일을 API 스키마라고 합니다. API Gateway스키마 유효성 검사는 요청의 본문, 경로 및 쿼리 문자열에 해당 API 엔드포인트에 대해 예상된 정보가 예상된 형식으로 포함되어 있는지 확인하여<a href="https://github.com/OWASP/API-Security" target="_blank" rel="noopener noreferrer">OWASP 상위 10대 API 공격</a>으로부터 보호할 수 있는 좋은 방법입니다. 하지만 예상된 형식을 모른다면 어떻게 해야 할까요?</p>
+	<p>특정 API의 스키마가 고객에게 알려지지 않은 경우에도 이 API를 사용하는 클라이언트는 대부분 이 알려지지 않은 스키마를 따르는 요청을 보내도록 프로그래밍되어 있을 것입니다(그렇지 않으면 엔드포인트를 성공적으로 쿼리할 수 없을 것입니다). 스키마 학습은 이 사실을 활용하여 이 API에 대한 성공적인 요청을 살펴보고 고객을 위해 입력 스키마를 자동으로 재구성합니다. 예를 들어, API는 요청의 사용자-ID 매개변수가 _id12345-a_형식일 것으로 예상할 수 있습니다. 이러한 예상이 명시적으로 명시되어 있지 않더라도 API와 성공적으로 상호작용하기를 원하는 클라이언트는 이 형식의 사용자 ID를 전송합니다.</p>
+	<p>스키마 학습은 먼저 API 엔드포인트에 대한 최근의 모든 성공적인 요청을 식별한 다음, 각 요청의 위치와 유형에 따라 각 요청의 다양한 입력 매개변수를 구문 분석합니다. 스키마 학습은 모든 요청을 구문 분석한 다음 각 위치의 다양한 입력 값을 살펴보고 공통된 특성을 식별합니다. 스키마 학습은 관찰된 모든 요청이 이러한 공통점을 공유하는지 확인한 후, 이러한 공통점을 준수하도록 입력을 제한하고 스키마 유효성 검사에 직접 사용할 수 있는 입력 스키마를 생성합니다.</p>
+	<p>보다 정확한 입력 스키마를 허용하기 위해 스키마 학습은 매개변수가 다양한 유형의 입력을 받을 수 있는 시기를 식별합니다. OpenAPIv3 스키마 파일을 작성하고 작은 요청 샘플에서 쿼리 매개변수가 유닉스 타임스탬프임을 수동으로 관찰하고 싶다고 가정해 보겠습니다. 해당 쿼리 매개변수가 작년 유닉스 시대의 시작보다 큰 정수가 되도록 강제하는 API 스키마를 작성합니다. API가 ISO 8601 형식의 매개변수도 허용하는 경우, 새 규칙은 형식이 다르지만 유효한 매개변수가 API에 도달할 때 긍정 오류를 생성합니다. 스키마 학습은 이 모든 어려운 작업을 자동으로 수행하며 수동 검사로는 파악할 수 없는 부분을 찾아냅니다.</p>
+	<p>긍정 오류를 방지하기 위해 스키마 학습은 이러한 값의 분포에 대한 통계 테스트를 수행하여 분포가 높은 신뢰도로 경계에 도달한 경우에만 스키마를 작성합니다.</p>
+	<p>그렇다면 스키마 학습은 얼마나 잘 작동할까요? 다음은 표시되는 매개변수 유형 및 값에 대한 몇 가지 통계입니다.</p>
+	<p>매개변수 학습은 모든 매개변수의 절반 이상을 문자열로 분류하고, 그 다음으로 정수가 거의 1/3을 차지합니다. 나머지 17%는 배열, 부울, 숫자(float) 매개변수로 구성되며, 경로와 쿼리에서는 개체 매개변수가 더 드물게 나타납니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76Sum5LAwABwVzNQqAjyIZ/8dfa9adfce34f3d7bdb871d4e17b9fc8/imageLikeEmbed--2-.png" alt="" class="kg-image" width="1600" height="462" loading="lazy">
+
+	</figure>
+	<p>경로에 포함된 매개변수의 개수는 일반적으로 매우 적으며, 전체 엔드포인트의 94%는 경로에 최대 하나의 매개변수만 표시됩니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4F7YFE3mJGLcJnFo2crtSU/6fba9b4f4cdf54bc17f659e3f2978aa7/imageLikeEmbed--3-.png" alt="" class="kg-image" width="1600" height="517" loading="lazy">
+
+	</figure>
+	<p>쿼리의 경우 한 엔드포인트에 대해 50개의 서로 다른 매개변수에 도달하는 경우도 있습니다!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4z6BUn5ZAabsQqscDeHaUx/d2a883f1eb8255deee3c459d7a5c3891/imageLikeEmbed--4-.png" alt="" class="kg-image" width="1600" height="585" loading="lazy">
+
+	</figure>
+	<p>매개변수 학습에서는 관찰된 대부분의 매개변수에 대해 99.9%의 신뢰도로 숫자 제약 조건이 추정될 수 있습니다. 이러한 제약 조건은 매개변수의 값, 길이, 크기에 대한 최댓값/최솟값이거나 매개변수가 취해야 하는 고유한 값의 제한된 집합일 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="protect-your-apis-in-minutes">몇 분 이내에 API 보호</h2>
+		<a href="https://blog.cloudflare.com/#protect-your-apis-in-minutes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘부터 모든 API Gateway 고객은 이전 정보 없이 시작하더라도 몇 번의 클릭만으로 API를 검색하고 보호할 수 있습니다. <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">Cloudflare 대시보드</a>에서 API Gateway를 클릭하고 <a href="https://developers.cloudflare.com/api-shield/security/api-discovery" target="_blank" rel="noopener noreferrer">Discovery</a> 탭으로 이동하여 검색된 엔드포인트를 관찰하세요. 이러한 엔드포인트는 별도의 조치 없이 즉시 사용할 수 있습니다. 그런 다음, Discovery에서 <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank" rel="noopener noreferrer">엔드포인트 관리</a>로 관련 엔드포인트를 추가하세요. 스키마 학습은 엔드포인트 관리에 추가된 모든 엔드포인트에 대해 자동으로 실행됩니다. 24시간 후 학습한 스키마를 내보내고 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">스키마 유효성</a> 검사에 업로드합니다.</p>
+	<p>API Gateway를 구매하지 않은 Enterprise 고객은 Cloudflare 대시보드에서 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">API Gateway 평가판</a>을 활성화하거나 계정 관리자에게 문의하여 시작할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">다음 단계</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 헤더 및 쿠키 스키마뿐만 아니라 JSON 및 URL 인코딩 형식의 POST 본문 매개변수와 같이 더 많은 형식의 학습된 매개변수를 지원하여 스키마 학습을 강화할 계획입니다. 향후에는 스키마 학습에서 식별된 API 스키마의 변경 사항이 감지되면 고객에게 알려주고 새로 고침된 스키마를 제시할 것입니다.</p>
+	<p>새로운 기능에 대한 여러분의 의견을 듣고 싶습니다. 개선 작업의 우선순위를 정할 수 있도록 계정팀에 피드백을 보내주시기 바랍니다. 여러분의 의견을 기다리겠습니다!</p>
+</div>

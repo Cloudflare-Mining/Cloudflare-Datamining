@@ -1,0 +1,251 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts">English</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Q777IwqWsOlQrJA0WdW3i/775cadbd982b50ea4236d0afc5f4944d/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Le second tour des <a href="https://en.wikipedia.org/wiki/2024_French_legislative_election" target="_blank" rel="noopener noreferrer">élections législatives françaises de 2024</a>, qui s'est déroulé le 7 juillet, a produit des résultats surprenants par rapport au premier tour du 30 juin. Le Nouveau Front populaire (NFP) a remporté le plus grand nombre de sièges, suivi par le mouvement Ensemble du président français Emmanuel Macron et par le Rassemblement national. Les négociations concernant d'éventuelles coalitions suivront prochainement. Dans cet article, nous examinons les attaques ciblant actuellement les partis politiques français et la baisse notable du trafic Internet en France qu'ont entraîné les prévisions électorales initiales diffusées à 20 heures, heure locale.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KsxKvcICbZUDvcC3VXPbO/8ea52921f9df4b5b546369afda2b304d/image3-8.png" alt="French elections: political cyber attacks and Internet traffic shifts" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Cet article de blog fait partie de la <a href="https://blog.cloudflare.com/tag/election-security">série</a> consacrée au déroulement des nombreuses élections en 2024. Nous avons examiné les élections <a href="https://blog.cloudflare.com/internet-insights-on-2024-elections-in-the-netherlands-south-africa-iceland-india-and-mexico">en Afrique du Sud, en Inde, en Islande, au Mexique</a>, dans l'<a href="https://blog.cloudflare.com/exploring-the-2024-eu-election-internet-traffic-trends-and-cybersecurity-insights">Union européenne</a> et <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">au Royaume-Uni</a>, ainsi que le <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">débat présidentiel américain de 2024</a>. Nous mettons également continuellement à jour notre <a href="https://radar.cloudflare.com/reports/elections-2024" target="_blank" rel="noopener noreferrer">rapport concernant les élections</a> sur Cloudflare Radar.</p>
+	<p>Nous nous intéresserons d'abord aux attaques, puis nous examinerons les tendances du trafic Internet.</p>
+	<div class="flex anchor relative">
+		<h3 id="political-parties-under-attack">Les partis politiques pris pour cible</h3>
+		<a href="https://blog.cloudflare.com/#political-parties-under-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comme nous l'avons <a href="https://blog.cloudflare.com/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip">souligné la semaine dernière</a>, le premier tour des élections législatives françaises a été marqué par des attaques DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a>, déni de service distribué) spécifiques, qui ont ciblé les sites web de partis politiques français. Bien que les attaques en ligne soient courantes et ne soient pas toujours liées aux élections, les récentes activités observées en <a href="https://blog.cloudflare.com/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip">France</a>, aux <a href="https://blog.cloudflare.com/dutch-political-websites-hit-by-cyber-attacks-as-eu-voting-starts">Pays-Bas</a> et au <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">Royaume-Uni</a> confirment que les attaques DDoS ciblent fréquemment les partis politiques en période électorale.</p>
+	<p>Deux partis politiques français ont ainsi subi des attaques peu avant le premier tour des élections, et un troisième parti a été pris pour cible le 30 juin. Ce troisième parti, indiqué en vert sur le graphique ci-dessous, a été confronté à des attaques dans la soirée du 29 juin. Plusieurs tentatives ont été déjouées par Cloudflare tout au long de la journée du scrutin, de 10h00 à 23h00 UTC (de 12h00 à 1h00, heure locale). L'attaque la plus intense a eu lieu à 19h00 UTC (21h00, heure locale) et a atteint près de 40 000 requêtes par seconde ; au total, 620 millions de requêtes liées aux attaques DDoS ont enregistrées ce 29 juin.</p>
+	<p>Nos données indiquent que l'attaque la plus importante interceptée par Cloudflare ciblait un parti représenté en jaune sur le graphique ci-dessus. Ce parti avait déjà été la cible d'une attaque le 23 juin 2024, et cette nouvelle attaque s'est déroulée le 3 juillet à 21h36 UTC (23h36 heure locale). Elle a duré quatre minutes et a culminé à 151 000 requêtes par seconde (r/s), devenant la deuxième attaque la plus importante que nous ayons observée dernièrement contre un parti politique. L'intensité et la durée de l'attaque étaient comparables à celles d'une autre attaque lancée contre un <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">parti politique britannique</a> juste après son élection.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y46oB0jIcckK4ICs2LlKN/f60adecd41a1942702f2db4b39f711fa/unnamed--1--1.png" alt="" class="kg-image" width="1600" height="673" loading="lazy">
+
+	</figure>
+	<p>Le jour du second tour des élections législatives, le 7 juillet, le parti représenté par la ligne bleue a, une fois encore, été la cible d'une attaque, après avoir précédemment essuyé des attaques les 24, 27 et 29 juin. L'attaque la plus intense s'est produite le 27 juin ; certaines attaques ont atteint 118 000 r/s ; au total, 610 millions de requêtes liées à des attaques DDoS ont été observées pendant cette journée. Les attaques ont repris le 7 juillet, la première ayant débuté à 9h55 UTC (11h55, heure locale) et s'est poursuivie sporadiquement jusqu'à 23h18 UTC (1h18, heure locale le 8 juillet). Le pic de ces attaques a été observé à 11h40 UTC (13h40, heure locale), et a atteint 96 000 r/s.</p>
+	<p>Bien que ces volumes de requêtes puissent sembler peu élevés pour Cloudflare, ils peuvent être dévastateurs pour un site web insuffisamment protégé contre des niveaux de trafic aussi élevés. Les attaques DDoS peuvent non seulement parvenir à submerger les systèmes, mais peuvent également constituer, lorsqu'elles atteignent leurs objectifs, une <a href="https://cloudflare.tv/shows/this-week-in-net/d-do-s-report-certificate-changes-qr-phishing-and-more/oZK6nra4" target="_blank" rel="noopener noreferrer">diversion pour les équipes informatiques</a>, permettant à des acteurs malveillants de tenter de perpétrer d'autres types de violations.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72FT5qz48qec9PmecY1pTL/bee98a12bb07d64931200391b4c70e20/unnamed-3.png" alt="" class="kg-image" width="1600" height="666" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="exit-polls-came-with-a-20-00-internet-traffic-dip">La diffusion des sondages à la sortie des bureaux de vote a concordé avec une baisse du trafic Internet à 20h00</h3>
+		<a href="https://blog.cloudflare.com/#exit-polls-came-with-a-20-00-internet-traffic-dip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Chaque élection est associée à des circonstances uniques. Par exemple, l'élection anticipée au Royaume-Uni a eu lieu le jeudi 4 juillet 2024, s'inscrivant dans la <a href="https://www.standard.co.uk/news/politics/why-are-uk-general-elections-always-on-a-thursday-b1168631.html" target="_blank" rel="noopener noreferrer">tradition</a> britannique des élections tenues en semaine. À l'inverse, la France et de nombreux autres pays organisent les élections le week-end, généralement le dimanche.</p>
+	<p>Lors du premier tour des élections législatives françaises, le 30 juin, le trafic enregistré dans la matinée a été inférieur à celui observé la semaine précédente, puis a augmenté dans l'après-midi. Le second tour, une semaine plus tard, a présenté un comportement différent : par rapport au 30 juin, le trafic est resté stable dans la matinée, mais a connu une baisse significative l'après-midi, notamment après 17h30, heure locale. Les bureaux de vote des grandes villes ont fermé à 20h00, heure à laquelle les médias télévisés ont commencé à diffuser les premiers résultats du scrutin, entraînant une baisse de 16 % du trafic par rapport à la semaine précédente. Cette tendance, conformément à laquelle le trafic décline lors de l'annonce des premiers résultats, a également été observée lors d'autres élections, telles que celle du <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">Royaume-Uni</a>.</p>
+	<p>Par rapport à la semaine précédente, les fluctuations du trafic durant la journée du scrutin, sont plus révélatrices lorsqu'on les examine dans le détail. La carte et le tableau ci-dessous récapitulent les fluctuations du trafic observées au niveau national en France, lors de la fermeture des bureaux de vote et de la diffusion des prédictions des résultats initiaux à la télévision vers 20 heures, heure locale. C'est à ce moment que, du point de vue des données de Cloudflare, l'attention a été détournée de l'utilisation en ligne.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v5m4DQEz5o8jcnnpaWNx6/ca81699e98aa58d093af743b1bf3afba/unnamed--2--1.png" alt="" class="kg-image" width="1600" height="414" loading="lazy">
+
+	</figure>
+	<p>(Source : Cloudflare ; créé avec Datawrapper)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2x6P9SdJCaTGo9P725cd5X/35e75dea02ea4dd6462486868f281f7c/image5-2.png" alt="(Source: Cloudflare; created with Datawrapper)" class="kg-image" width="1999" height="1748" loading="lazy">
+
+	</figure>
+	<p>Le tableau ci-dessous montre la chute du trafic le 7 juillet à 20h00, heure locale, par rapport à la semaine précédente.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">State</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Drop in traffic (%)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bourgogne-Franche-Comté</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-19%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Grand Est</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-19%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brittany</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-15%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Auvergne-Rhône-Alpes</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-15%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Corsica</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Occitanie</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-11%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nouvelle-Aquitaine</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-11%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Normandy</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Île-de-France</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hauts-de-France</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-9%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pays de la Loire</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-8%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provence-Alpes-Côte d’Azur</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-7%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Centre-Val de Loire</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-6%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>État</p>
+	<p>Baisse du trafic (en %)</p>
+	<p>Bourgogne-Franche-Comté</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OIoWCtqHI7Th1MOztHjQs/b45a08bdfbe7ef1870c55e227a357776/unnamed--3--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
+
+	</figure>
+	<p>-19%</p>
+	<p>Grand Est</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fp35VD76a7PzLHQKJq638/b3175a621d1d9ea668c895950ba6acdf/unnamed--4--1.png" alt="" class="kg-image" width="1600" height="395" loading="lazy">
+
+	</figure>
+	<p>-19%</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4stAz2OutDjqRW2d2qog30/2545d2d21dd82f0249c393b0996e6433/unnamed--5--1.png" alt="" class="kg-image" width="1600" height="397" loading="lazy">
+
+	</figure>
+	<p>Bretagne</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OnmQkCY4ejYaFbRuFmwVs/8bb316c54657df186b2a91b45ee46270/unnamed--6--1.png" alt="" class="kg-image" width="1600" height="398" loading="lazy">
+
+	</figure>
+	<p>-15%</p>
+	<p>Auvergne-Rhône-Alpes</p>
+	<p>-15%</p>
+	<p>Corse</p>
+	<p>-14%</p>
+	<p>Occitanie</p>
+	<p>-11%</p>
+	<p>Nouvelle-Aquitaine</p>
+	<p>-11%</p>
+	<p>Normandy</p>
+	<p>-10%</p>
+	<p>Île-de-France</p>
+	<p>-10%</p>
+	<p>Hauts-de-France</p>
+	<p>-9%</p>
+	<p>Pays de la Loire</p>
+	<p>-8%</p>
+	<p>Provence-Alpes-Côte d’Azur</p>
+	<p>-7%</p>
+	<p>Centre-Val de Loire</p>
+	<p>-6%</p>
+	<p>Le jour des élections législatives en France, le trafic Internet a diminué de manière plus significative dans les régions Bourgogne-Franche-Comté et Grand Est. Ces deux régions, situées dans l'est du pays, ont toutes deux présenté une chute de 19 %. Si l'on compare ces régions à la région Île-de-France, où se trouve Paris, on constate une baisse plus faible du trafic, de 10 % seulement. Dans le sud du pays, la baisse observée dans des régions telles que la Provence-Alpes-Côte d'Azur est encore moins prononcée, à 7 %.</p>
+	<div class="flex anchor relative">
+		<h3 id="mobile-device-usage">Utilisation d'appareil mobile</h3>
+		<a href="https://blog.cloudflare.com/#mobile-device-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une importante augmentation de la part du trafic de requêtes provenant d'appareils mobiles a également été observée pendant les deux jours des élections, entraînant des niveaux plus élevés que d'habitude. Au cours du mois précédent, la part du trafic provenant d'appareils mobiles pendant la journée du dimanche se situait généralement entre 53 % et 54 %. Toutefois, elle s'est élevée à 57 % le 30 juin, le premier jour de l'élection, et a encore augmenté pour atteindre 58 % le jour du second tour, le 7 juillet 2024. Pendant ces jours, la part du trafic provenant d'appareils mobiles a été particulièrement élevée entre 11h00 et 22h00, heure locale.</p>
+	<div class="flex anchor relative">
+		<h3 id="dns-trends-news-outlets-bring-results">Tendances du trafic DNS : les médias génèrent des résultats</h3>
+		<a href="https://blog.cloudflare.com/#dns-trends-news-outlets-bring-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Examinons maintenant les tendances liées aux domaines : les données de notre résolveur <a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a> révèlent l'impact ciblé des élections législatives françaises, permettant d'établir une comparaison entre les deux jours des élections. L'analyse des médias français révèle que le trafic DNS en France a été considérablement plus élevé le premier jour du scrutin, le 30 juin, avec une augmentation de 250 % à 20h00, heure locale par rapport à la semaine précédente. Ce chiffre était supérieur de 6 % à celui de la journée du second tour des élections, le 7 juillet.</p>
+	<p>Pour les domaines des chaînes de télévision françaises, la situation s'est inversée lors du second tour des élections législatives, le 7 juillet, avec un trafic DNS supérieur de 31 % à 20h00, heure locale par rapport au premier tour. Le 30 juin, le trafic DNS à cette heure était déjà supérieur de 274 % à celui de la semaine précédente, et l'augmentation du 7 juillet a été encore plus importante, avec un trafic DNS supérieur de 391 % par rapport au 23 juin 2024, le dimanche précédant les deux jours des élections.</p>
+	<p>Pour les réseaux sociaux dédiés au micro-blogging en France, le trafic a été plus élevé pendant les deux jours des élections, et a connu un pic lors du premier tour. À la clôture des sondages à 20h00, heure locale le 30 juin, le trafic a bondi de 38 % par rapport à la journée du 23 juin 2024. Le 7 juillet, le jour du second tour des élections, le trafic a augmenté de 32 % à 20h00, heure locale par rapport au 23 juin ; cependant, il est resté inférieur de 4 % au volume de trafic observé le 30 juin.​</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-keeping-track-of-elections">Conclusion : suivre les élections</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-keeping-track-of-elections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En France, une plus grande part d'attention a été détournée d'Internet pendant la journée cruciale du second tour des élections législatives qu'au premier tour du scrutin, avec une baisse notable du trafic lors de l'annonce des résultats par les chaînes de télévision à 20h00, heure locale.</p>
+	<p>Si vous souhaitez suivre davantage de tendances et d'informations concernant Internet et les élections en particulier, vous pouvez consulter <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> et plus particulièrement notre nouveau rapport <a href="https://radar.cloudflare.com/reports/elections-2024" target="_blank" rel="noopener noreferrer">Elections Insights 2024</a> (Informations sur les élections 2024), qui sera mis à jour au fur et à mesure du déroulement des élections qui se tiendront tout au long de l'année.</p>
+	<p>Depuis la semaine dernière, nous avons mis à jour nos tendances afin d'inclure <a href="https://radar.cloudflare.com/reports/elections-2024#id-4-last-minute-voting-in-iran" target="_blank" rel="noopener noreferrer">le vote de dernière minute lors des élections en Iran</a> le 28 juin 2024 et la <a href="https://radar.cloudflare.com/reports/elections-2024#id-3-mobile-networks-shutdown-following-mauritania-election" target="_blank" rel="noopener noreferrer">suspension de l'Internet mobile en Mauritanie</a> à la suite des manifestations qui ont suivi les élections présidentielles du 29 juin, ainsi que les élections au <a href="https://blog.cloudflare.com/uk-election-day-2024-traffic-trends-and-attacks-on-political-parties">Royaume-Uni</a>.</p>
+</div>

@@ -1,0 +1,367 @@
+<div class="mb2 gray5">18분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/introducing-speed-brain">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-speed-brain">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-speed-brain">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-speed-brain">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-speed-brain">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-speed-brain">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/introducing-speed-brain">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pwJnviaM9hXlQcCbb4uXe/deedbd33b4e0df917e700a29b0f4724b/BLOG-2422_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>사용자는 귀사의 웹 페이지를 방문할 때마다 가능한 한 빨리 콘텐츠를 받기 위한 경쟁을 시작하게 됩니다. 성능은 방문자가 사이트와 상호 작용하는 방식에 영향을 미치는 중요한 <a href="https://www.speedcurve.com/blog/psychology-site-speed" target="_blank" rel="noopener noreferrer"><u>요소</u></a>입니다. 전 세계로 콘텐츠를 이동시키면 대기 시간이 상당히 길어질 것이라고 생각할 수도 있지만, 한동안 네트워크 전송 속도가 <a href="https://blog.cloudflare.com/fastest-internet"><u>이론상 한계</u></a>에 도달했습니다. 이를 넓은 시각에서 볼 때 Cloudflare의 데이터는 뉴욕과 런던 사이의 11,000km에 이르는 거리를 약 76밀리초 동안에 왕복하며, 이는 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4043155/#:~:text=one%20blink%20lasts%20about%201/3%20s" target="_blank" rel="noopener noreferrer"><u>눈 한 번 깜박이는 것</u></a>보다 빠릅니다.</p>
+	<p>그러나 웹 페이지 로드 시의 지연은 요청, 응답, 구성 처리의 복잡성으로 인해 지속되고 있습니다. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>연결 설정</u></a>, <a href="https://blog.cloudflare.com/this-is-brotli-from-origin"><u>압축</u></a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>하드웨어</u></a>, <a href="https://blog.cloudflare.com/ko-kr/pingora-open-source"><u>소프트웨어</u></a>의 발전을 추진 하는 것 외에도 저희는 방문자가 주어진 웹 페이지와 상호 작용하는 방식을 예측함으로써 페이지 로드 대기 시간을 줄이는 새로운 방법을 구축했습니다 .&nbsp;</p>
+	<p>오늘 속도 면에서 최근 비약적으로 개선된 <b>Speed Brain</b>을 공유하게 되어 매우 기쁩니다. Speed Brain은 <a href="https://developer.chrome.com/docs/web-platform/prerender-pages" target="_blank" rel="noopener noreferrer"><u>Speculation Rules API</u></a>에 의존하여 사용자가 다음번 탐색할 가능성이 높은 내비게이션 콘텐츠를 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prefetch" target="_blank" rel="noopener noreferrer"><u>프리페치합니다</u></a>. Speed Brain의 주요 목표는 사용자가 탐색하기 전에 웹 페이지를 브라우저 캐시에 다운로드하여 실제 탐색이 이루어질 때 거의 즉각적으로 페이지가 로드되도록 하는 것입니다.&nbsp;</p>
+	<p>저희 초기 접근 방식에서는 사용자가 터치 또는 <a href="https://developer.chrome.com/blog/speculation-rules-improvements#eagerness" target="_blank" rel="noopener noreferrer"><u>클릭 이벤트</u></a>를 시작할 때 다음 페이지를 위해 정적 콘텐츠를 프리페치하는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event" target="_blank" rel="noopener noreferrer"><u>보수적인</u></a> 모델을 사용합니다. 2024년 4분기와 2025년까지 더 빠른 경험을 위해 추측 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prerender" target="_blank" rel="noopener noreferrer"><u>사전 렌더링</u></a>(탐색이 수행되기 전에 페이지를 가져오는 것뿐만 아니라 완전히 렌더링하는 것)과 같은 더욱 공격적인 추측 모델을 제공할 예정입니다. 결국 Speed Brain은 아무런 구성 없이도 정적 웹 사이트의 대기 시간을 제거하는 방법을 학습하고, 브라우저와 협력하여 최대한 빨리 로드되게 될 것입니다.&nbsp;</p>
+	<p>예를 들어, 의류를 판매하는 전자상거래 웹사이트를 상상해 보겠습니다. 글로벌 요청 로그의 인사이트를 사용하면 일반적인 방문자가 상위 페이지인 '남성 &gt; 의류'를 볼 때 '셔츠'를 클릭할 가능성이 높다는 것을 높은 정확도로 예측할 수 있습니다. 이를 기반으로 쇼핑객이 '셔츠' 링크를 클릭하기도 전에 이미지와 같은 정적 콘텐츠를 제공하기 시작할 수 있습니다. 그 결과, 쇼핑객이 불가피하게 클릭하면 페이지가 즉시 로드됩니다. <b>최근 공격적인 로딩 모델 구현에 대한 실험실 테스트에서 </b><a href="https://developer.mozilla.org/en-US/docs/Glossary/Largest_contentful_paint" target="_blank" rel="noopener noreferrer"><b><u>최대 콘텐츠 페인트(LCP)</u></b></a>의 경우 브라우저에서 가장 큰 가시적 요소(예: 이미지, 비디오 또는 텍스트 블록)가 로드되고 렌더링되는 데 걸리는 시간이 최대 75% 감소하는 것으로 나타났습니다.</p>
+	<p>가장 좋은 점은? 저희는 Speed Brain을 모든 요금제에 즉시 무료로 제공하고 있습니다. <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank" rel="noopener noreferrer"><u>대시보드</u></a>나 <a href="https://developers.cloudflare.com/api/operations/zone-settings-get-speed-brain-setting" target="_blank" rel="noopener noreferrer"><u>API</u></a>에서 웹 사이트에 대한 Speed Brain 기능을 켜기만 하면 됩니다. 마법처럼 느껴지지만, 그 이면에는 많은 영리한 엔지니어링이 도사리고 있습니다.&nbsp;</p>
+	<p>Cloudflare에서는 이미 <u>모든</u> 무료 도메인에 Speed Brain을 기본으로 제공하고 있으며, <b>성공적인 프리페치로 LCP가 45% 감소</b>하는 것을 목격하고 있습니다. Pro, Business, Enterprise 도메인의 경우 Speed Brain을 수동으로 활성화해야 합니다. 아직 활성화하지 않으셨다면 대시보드를 통해 <b>Real User Measurements(RUM)를 활성화</b>하는 것을 <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><u>강력히</u></a> 권장합니다. 그러면 새롭고 개선된 웹 페이지 성능을 확인할 수 있습니다. 보너스로 도메인에 RUM을 활성화하면 가까운 미래에 웹사이트에 대한 <b>개선된</b> <b>사용자 정의</b> 프리페칭 및 사전 렌더링 규칙을 제공하는 데 도움이 됩니다!</p>
+	<div class="flex anchor relative">
+		<h2 id="how-browsers-work-at-a-glance">브라우저 작동 방식 한눈에 알아보기</h2>
+		<a href="https://blog.cloudflare.com/#how-browsers-work-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain이 콘텐츠를 매우 빠르게 로드하는 데 어떻게 도움이 되는지 논의하기 전에, 한 발 물러서서 브라우저에 콘텐츠를 로드하는 복잡성을 검토할 필요가 있습니다. 사용자는 귀사의 웹 페이지를 방문할 때마다 일련의 요청 및 응답 주기를 완료해야 합니다.&nbsp;</p>
+	<p>브라우저는 서버와 <a href="https://www.debugbear.com/blog/http-server-connections" target="_blank" rel="noopener noreferrer"><u>보안 연결</u></a>을 설정하고 나면 HTTP 요청을 보내 웹 페이지의 기본 문서를 검색합니다. 서버에서는 요청을 처리하고 필요한 HTML 문서를 구성한 다음 응답을 통해 브라우저로 다시 보냅니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hxlOWcShKyU4y6sqNYQs1/5717e4ebc130887376d629f9926d7a98/BLOG-2422_2.png" alt="BLOG-2422 2" class="kg-image" width="1371" height="1821" loading="lazy">
+	</figure>
+	<p>브라우저는 HTML 문서를 수신하는 즉시 콘텐츠 <a href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work#parsing" target="_blank" rel="noopener noreferrer"><u>구문 분석</u></a>을 시작합니다. 이 과정에서 CSS 파일, JavaScript, 이미지, 글꼴 등의 외부 리소스에 대한 참조가 발생할 수 있습니다. 이러한 하위 리소스는 페이지를 올바르게 렌더링하는 데 필수적이므로 브라우저는 이를 가져오기 위해 추가 HTTP 요청을 발행합니다. 그러나 이러한 리소스를 브라우저의 캐시에서 사용할 수 있는 경우 브라우저는 로컬에서 해당 리소스를 검색할 수 있으므로 <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer"><u>네트워크 대기 시간</u></a>이 크게 줄어들고 페이지 로드 시간이 개선됩니다.</p>
+	<p>브라우저에서 HTML, CSS, JavaScript가 처리됨에 따라 렌더링 엔진은 화면에 콘텐츠를 표시하기 시작합니다. 페이지의 시각적 요소가 표시되면 링크 클릭과 같은 사용자 상호 작용으로 인해 브라우저는 다음 페이지의 새 콘텐츠를 가져오기 위해 이 프로세스의 대부분을 다시 시작합니다. 이러한 워크플로우는 모든 탐색 세션에서 일반적입니다. 사용자가 탐색할 때 브라우저는 새롭거나 캐시되지 않은 리소스를 지속해서 가져오고 렌더링하므로 새 페이지가 완전히 로드되기 전에 지연이 발생합니다.</p>
+	<p>앞서 설명한 쇼핑 사이트를 탐색하는 사용자의 예를 들어보겠습니다. 쇼핑객이 홈페이지에서 사이트의 '남성' 섹션으로, '의류' 섹션으로, '셔츠' 섹션으로 이동함에 따라 후속 페이지를 검색하는 데 소요되는 시간이 누적되어 쇼핑객이 거래를 완료하기 전에 사이트를 떠나는 원인이 될 수 있습니다.&nbsp;&nbsp;</p>
+	<p>이상적으로는, 각 링크를 클릭할 때 프리페치되고 미리 렌더링된 페이지가 브라우저에 표시되어 있으면 네트워크 대기 시간 영향이 상당 부분 제거되므로 브라우저가 콘텐츠를 즉시 로드하고 더 원활한 사용자 경험을 제공할 수 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="wait-ive-heard-this-story-before-how-did-we-get-to-speed-brain">잠깐, 이 이야기를 전에도 들었던 적이 있습니다(저희가 어떻게 Speed Brain에 이르게 되었을까요?)</h2>
+		<a href="https://blog.cloudflare.com/#wait-ive-heard-this-story-before-how-did-we-get-to-speed-brain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>독자 여러분이 무슨 생각을 할지 알고 있습니다. 저희는 여러 해 동안 프리페칭을 해왔습니다. 과거에는 추측에 의한 프리페치 시도도 여러 번 있었습니다. 많이 들어보셨을 겁니다. 지금은 어떻게 다를까요?</p>
+	<p>물론, 바로 그렇습니다. 여러 해에 걸쳐 개발자와 브라우저 벤더는 페이지 로드 시간을 최적화하고 웹에서 사용자 경험을 개선하기 위해 끊임없이 노력해왔습니다. 네트워크 계층 연결 최적화부터 클라이언트에 더 가까운 곳에서 애플리케이션 콘텐츠를 프리로드하는 것까지 인터넷 스택의 다양한 계층을 포괄하는 수많은 기술이 개발되었습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="early-prefetching-lack-of-data-and-flexibility">초기 프리페치: 데이터와 유연성 부족</h4>
+		<a href="https://blog.cloudflare.com/#early-prefetching-lack-of-data-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 프리페칭은 10년 이상 존재해 온 그러한 기술 중 하나입니다. 이는 특정 하위 리소스가 가까운 미래에 필요할 가능성이 높으므로 사전에 페치하면 안 될 이유가 있을까요? 여기에는 HTML 페이지에서 이미지, 스타일시트, 사용자가 웹 사이트를 탐색할 때 필요할 수 있는 스크립트에 이르기까지 모든 것이 포함될 수 있습니다. 사실, 추측 실행의 핵심 개념은 새로운 것이 아니고, 여러 해 동안 컴퓨터 과학의 다양한 분야에서 사용되어 온 일반적인 기술이며, CPU의 <a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="noopener noreferrer"><u>분기 예측</u></a>이 대표적인 예입니다.</p>
+	<p>웹 초창기에는 성능을 향상할 수 있는 여러 사용자 지정 프리페치 솔루션이 등장했습니다. 예를 들어, Google은 2005년에 광대역 사용자의 브라우징 속도를 높이기 위한 클라이언트측 애플리케이션인 <a href="https://google.fandom.com/wiki/Google_Web_Accelerator" target="_blank" rel="noopener noreferrer"><u>Google Web Accelerator</u></a>를 소개했습니다. 이 프로젝트는 혁신적이었지만, 개인정보 및 호환성 문제로 인해 수명이 짧았습니다(Speed Brain이 어떻게 다른지는 아래 설명하겠습니다). 당시의 예측 프리페치는 사용자 행동, 특히 삭제, 구매 등의 중요한 사용자 행동을 포착하기 위한 데이터 인사이트와 API 지원이 부족했습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="static-lists-and-manual-effort">정적 목록 및 수동 작업</h4>
+		<a href="https://blog.cloudflare.com/#static-lists-and-manual-effort" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>전통적으로 프리페칭은 &lt;link rel="prefetch"&gt; 속성을<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch" target="_blank" rel="noopener noreferrer"><u>Resource Hints</u></a> 중 하나로 사용하여 수행되었습니다. 개발자는 브라우저가 프리페치하여 메모리에 캐시하기를 원하는 각 리소스에 대해 각 페이지에서 속성을 수동으로 지정해야 했습니다. 이러한 수동 작업은 힘들 뿐만 아니라 개발자는 종종 어떤 리소스를 프리페치해야 하는지에 대한 인사이트가 부족하여 지정된 힌트의 품질이 떨어졌습니다.</p>
+	<p>비슷한 맥락에서 <a href="https://developers.cloudflare.com/speed/optimization/content/prefetch-urls" target="_blank" rel="noopener noreferrer"><u>Cloudflare에서는 2015년부터 URL 프리페칭 기능을 제공해왔습니다</u></a>. 브라우저 캐시에서 프리페칭하는 대신 Cloudflare에서는 고객이 정적 리소스 목록을 CDN 캐시로 프리페칭할 수 있도록 합니다. 이 기능을 사용하면 실제로 필요할 때보다 미리 리소스를 프리페칭할 수 있으며, 일반적으로 유휴 시간이나 네트워크 조건이 양호할 때입니다. 그러나 CDN 프리페칭에도 비슷한 우려가 있습니다. 고객이 소유한 각 페이지에 대해 프리페칭하기에 적합한 리소스를 수동으로 결정해야 하기 때문입니다. 잘못 구성된 경우 정적 링크 프리페칭은 <a href="https://en.wiktionary.org/wiki/footgun" target="_blank" rel="noopener noreferrer"><u>제 발등 찍기</u></a>가 될 수 있으며, 웹 페이지 로드 시간이 실제로 느려질 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="server-push-and-its-struggles">서버 푸시와 그 어려움</h4>
+		<a href="https://blog.cloudflare.com/#server-push-and-its-struggles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc9113#name-server-push" target="_blank" rel="noopener noreferrer"><u>HTTP/2의 '서버 푸시'</u></a>는 요청하기 전에 클라이언트에 리소스를 푸시하여 웹 성능을 개선하려는 또 다른 시도였습니다. 이론적으로 이는 향후 자산에 대한 추가 왕복이 필요 없게 되어 대기 시간을 줄일 수 있습니다. 그러나 클라이언트에 리소스를 '푸시'하는 서버 중심의 독단적 특성은 브라우저에 이미 캐시된 내용에 대한 컨텍스트가 부족하여 상당한 문제를 야기했습니다. 이는 대역폭을 낭비할 뿐만 아니라 페이지를 렌더링할 때 브라우저 페치에 대한 경쟁 조건으로 인해 기본 HTML 및 CSS와 같은 중요한 리소스의 전달 속도를 늦출 가능성이 있었습니다. 클라이언트 캐시 내용에 대한 정보를 서버에 제공했을 <a href="https://datatracker.ietf.org/doc/html/draft-kazuho-h2-cache-digest-01" target="_blank" rel="noopener noreferrer"><u>캐시 다이제스트의 제안된 솔루션</u></a>은 널리 구현되지 않아 서버가 맹목적으로 리소스를 푸시하게 되었습니다. <a href="https://developer.chrome.com/blog/removing-push" target="_blank" rel="noopener noreferrer"><u>2022년 10월, Google Chrome은 Server Push 지원을 제거했고</u></a>, 2024년 9월에는 <a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/vU9hJg343U8/m/4cZsHz7TAQAJ" target="_blank" rel="noopener noreferrer"><u>Firefox도 그 뒤를 따랐습니다</u></a>.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-step-forward-with-early-hints">Early Hints로 한 단계 더 발전</h4>
+		<a href="https://blog.cloudflare.com/#a-step-forward-with-early-hints" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>그 후속으로 <a href="https://datatracker.ietf.org/doc/html/rfc8297" target="_blank" rel="noopener noreferrer"><u>Early Hints</u></a>는 2017년에 명시되었지만, <a href="https://blog.cloudflare.com/early-hints"><u>Cloudflaredptj 브라우저 및 주요 고객과 파트너십을 맺고 이를 배포한</u></a> 2022년에 이르러서야 널리 채택되었습니다. Early Hints는 로드할 리소스를 클라이언트에 '힌팅'하여 브라우저에 필요한 사항에 따라 더 나은 우선순위를 지정할 수 있게 하여 보다 효율적인 대안을 제공합니다. 특히 서버에서는 주요 응답을 준비하는 동안 브라우저가 로드를 시작해야 하는 주요 페이지 자산 목록과 함께 103 Early Hints HTTP 상태 코드를 전송합니다. 따라서 브라우저가 필수 리소스를 가져올 때 앞서 나갈 수 있고, 자산이 이미 캐시된 경우 중복 프리로드를 방지할 수 있습니다. Early Hints는 (아직) 사용자 행동이나 동적 페이지 조건에 적응하지 못하지만, 주로 전체 웹 페이지가 아닌 특정 자산을 미리 로드하는 데 사용되며, 특히 HTML을 생성하는 서버의 '생각 시간'이 긴 경우에 주로 사용됩니다.</p>
+	<p>웹이 진화함에 따라 추측 실행의 성능 이점과 최종 사용자의 잠재적인 단점 사이의 균형을 유지하기 위해서는, 복잡하고 동적인 사용자 상호작용을 처리할 수 있는 도구가 점점 더 중요해질 것입니다. 여러 해 동안 Cloudflare에서는 사용자 행동에 적응하고 인터넷 전반에서 속도와 정확성 결정의 균형을 맞추는 성능 기반 솔루션을 제공해 왔습니다. 예를 들어 <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing" target="_blank" rel="noopener noreferrer"><u>Argo Smart Routing</u></a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation"><u>Smart Tiered Cache</u></a>, <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>가 있습니다. 오늘 우리는 콘텐츠를 번개처럼 빠르게 제공하기 위한 적응형 프레임워크를 향해 한 걸음 더 나아갑니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="enter-speed-brain-what-makes-it-different">Speed Brain의 등장: 차별화된 요소는?</h2>
+		<a href="https://blog.cloudflare.com/#enter-speed-brain-what-makes-it-different" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain은 Cloudflare 서버에서 반환된 규칙 집합을 기반으로 브라우저 내에서 직접 예측 프리페치 전략을 구현하기 위한 강력한 접근 방식을 제공합니다. 이전 시도에서 얻은 교훈을 기초로 하여, Speed Brain은 리소스 예측에 대한 책임을 클라이언트로 이전하며, 예를 들어 링크에 마우스를 가져가는 등의 사용자 상호작용과 장치 기능에 따라 더욱 동적이고 개인화된 최적화가 가능합니다. 브라우저가 사용자가 다음 웹 페이지를 요청하기를 기다리며 +멍하니 앉아 있는 대신, 사용자가 페이지와 상호 작용하는 방식에서 신호를 가져와 사용자가 링크를 클릭하기 전에 다음 웹 페이지를 요청하기 시작합니다.</p>
+	<p>이 모든 마법은 <a href="https://developer.chrome.com/docs/web-platform/prerender-pages#speculation-rules-api" target="_blank" rel="noopener noreferrer"><u>Speculation Rules API </u></a>&nbsp;덕분에 가능해졌습니다. 이는 Google의 웹 성능 분야에서 떠오르는 표준입니다. Cloudflare의 Speed Brain 기능이 활성화되면 Speculation-Rules라는 HTTP 헤더가 웹 페이지 응답에 추가됩니다. 이 헤더의 값은 의견이 있는 Rules 구성을 호스팅하는 URL입니다. 이 구성은 브라우저에 향후 탐색을 위한 프리페치 요청을 시작하도록 지시합니다. Speed Brain은 웹 사이트에서 방문한 첫 번째 페이지의 페이지 로드 시간을 개선하지 않지만, 동일한 사이트에서 방문한 후속 웹 페이지의 로드 시간을 개선할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fu2ADDum0Pp9e5kq94Jd4/3eba0ffc4d94c42af67d4e9c1c708a29/BLOG-2422_3.png" alt="BLOG-2422 3" class="kg-image" width="1999" height="756" loading="lazy">
+	</figure>
+	<p>아이디어는 간단해 보이지만, 프리페치된 콘텐츠 중 일부는 사용되지 않을 수 있으므로 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching" target="_blank" rel="noopener noreferrer"><u>프리페치에는 어려움이 따릅니다</u></a>. Speed Brain의 최초 릴리스와 함께 저희는 이전의 추측 노력을 제한했던 두 가지 중요하지만 별개의 문제, 즉 <i>오래된 프리페치 구성</i>과 <i>잘못된 프리페치</i>를 해결하는 가드레일이 있는 솔루션을 설계했습니다. 이 최초 릴리스를 위해 선택한 Speculation Rules API 구성은 전체 사이트에 대한 규칙의 광범위한 적용성을 유지하면서도 프리페치의 안전성을 균형 있게 조절하도록 신중하게 설계되었습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="stale-prefetch-configuration">오래된 프리페치 구성</h4>
+		<a href="https://blog.cloudflare.com/#stale-prefetch-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>시간이 지남에 따라 웹 사이트는 필연적으로 변경되므로, 정적 프리페치 구성은 오래된 구성이 되어 프리페치가 비효율적이거나 비효과적이 되는 경우가 많습니다. 이는 rel=prefetch 속성 또는 정적 CDN 프리페치 URL 세트와 같은 기술의 경우 특히 그러했으며, 개발자가 웹 사이트의 각 페이지에 대해 프리페치 가능한 관련 URL 목록을 수동으로 유지해야 했습니다. 대부분의 정적 프리페치 목록은 실제 사용자 탐색 데이터가 아닌 개발자의 직관에 의존하므로 중요한 프리페치 기회를 놓치거나 불필요한 프리페치로 리소스를 낭비할 가능성이 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="incorrect-prefetching">잘못된 프리페치</h4>
+		<a href="https://blog.cloudflare.com/#incorrect-prefetching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>프리페치 요청은 `sec-purpose` HTTP 요청 헤더를 제외하고는 일반 요청과 똑같으므로 클라이언트, 네트워크, 서버에서 동일한 오버헤드가 발생합니다. 그러나 중요한 차이점은 프리페치 요청은 사용자 동작을 예상하고 응답이 사용되지 않을 수 있다는 것입니다.<a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching" target="_blank" rel="noopener noreferrer"><u>따라서 모든 오버헤드가 낭비될 수 있습니다</u></a>. 이로 인해 프리페치 정확도가 매우 중요합니다. 즉, 사용자가 보는 프리페치된 페이지의 비율을 최대화하는 것입니다. 잘못된 프리페치는 요청되지 않은 리소스를 캐싱하거나 대역폭과 네트워크 리소스를 낭비하는 등 비효율성과 불필요한 비용으로 이어질 수 있으며, 이는 특히 미터링된 모바일 네트워크나 저대역폭 환경에서 매우 중요합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="guardrails">가드레일</h3>
+		<a href="https://blog.cloudflare.com/#guardrails" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain의 최초 릴리스와 함께, 저희는 <i>오래된 프리페치 구성</i>의 가능성을 완전히 제거하고, <i>잘못된 프리페치</i>의 위험을 최소화하는 중요한 부작용 방지 가드레일이 있는 솔루션을 설계했습니다. 이 독단적인 구성은 <a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>문서 규칙</u></a>과 <a href="https://developer.chrome.com/blog/speculation-rules-improvements#eagerness" target="_blank" rel="noopener noreferrer"><u>열의(Eagerness)</u></a> <a href="https://developer.chrome.com/docs/web-platform/prerender-pages#speculation-rules-api" target="_blank" rel="noopener noreferrer"><u>Speculation Rules API</u></a>의 설정을 활용하여 달성됩니다. 저희가 선택한 구성은 다음과 같습니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "prefetch": [{
+    "source": "document",
+    "where": {
+      "and": [
+        { "href_matches": "/*", "relative_to": "document" },
+      ]
+    },
+    "eagerness": "conservative"
+  }]
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h5 id="document-rules">
+			문서 규칙</h5>
+		<a href="https://blog.cloudflare.com/#document-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>문서 규칙</u></a>은 구성에서 "source': "document" 및 "where" 키로 표시되며, 전체 웹 페이지에 동적으로 프리페칭을 적용할 수 있습니다. 이렇게 하면 프리페칭을 위한 미리 정의된 정적 URL 목록이 필요 없게 됩니다. 따라서 프리페칭 후보 링크가 활성 페이지 구조에 따라 결정되므로 <i>오래된 사전 페치 구성</i>의 문제를 제거합니다.</p>
+	<p>where 절에서 "relative_to": "document"를 사용하면 브라우저가 프리페칭을 동일 사이트 링크로 제한하도록 지시할 수 있습니다. 이를 통해 구현 시 사용자의 개인정보 침해를 방지하기 위해 교차 출처 프리페치를 피할 수 있는 추가 이점이 있습니다. 웹에서 사용자를 따라가지 않기 때문입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h5 id="eagerness">열의</h5>
+		<a href="https://blog.cloudflare.com/#eagerness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness" target="_blank" rel="noopener noreferrer"><u>열의(Eagerness)</u></a>는 브라우저가 콘텐츠를 프리페치하는 공격적인 정도를 제어합니다. 가능한 설정에는 네 가지가 있습니다.</p>
+	<ul>
+		<li>
+			<p><b><i>즉시</i></b><i>: 페이지 로드 시 가능한 한 빨리 사용되며, 일반적으로 브라우저가 규칙 값을 확인하는 즉시 다음 페이지를 프리페치하기 시작합니다.</i></p>
+		</li>
+		<li>
+			<p><b><i>열의(eager)</i></b><i>: 위의 immediate 설정과 동일하지만, 프리페치 트리거는 커서를 링크로 옮기는 것과 같은 약간의 사용자 상호 작용 이벤트에도 의존합니다(곧 제공 예정).</i></p>
+		</li>
+		<li>
+			<p><b><i>보통</i></b><i>: 링크 위에 포인터를 200밀리초 이상 올려놓으면 프리페치합니다(또는 해당 이벤트가 더 빨리 발생하더라도 </i><a href="https://developer.mozilla.org/docs/Web/API/Element/pointerdown_event" target="_blank" rel="noopener noreferrer"><i><u>pointerdown</u></i></a><i> 이벤트에서, 그리고 호버 이벤트가 없는 모바일에서).</i></p>
+		</li>
+		<li>
+			<p><b><i>보수적</i></b><i>: 포인터에서 프리페치하거나 링크에 터치다운합니다.</i></p>
+		</li>
+	</ul>
+	<p>Speed Brain의 최초 릴리스는 의도치 않은 리소스 낭비로 이어질 수 있는 잘못된 프리페칭 위험을 최소화하기 위해 <b><u>보수적인</u></b> 열의(eagerness) 값을 사용하지만, 웹 사이트를 눈에 띄게 빠르게 만듭니다. 더 공격적인 열의 설정이 제공하는 잠재적인 성능 개선은 손실되지만, 저희는 사용자의 안전을 우선시하기 위해 이와 같은 신중한 접근 방식을 선택했습니다. 앞으로는 더 자유로운 설정에서 이점을 얻을 수 있는 사이트에 대해 보다 동적인 열의 설정을 탐색할 계획이며, <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prerender" target="_blank" rel="noopener noreferrer"><u>사전 렌더링</u></a>을 포함하도록 규칙을 확장할 예정입니다.</p>
+	<p>Cloudflare에서 구현하는 또 다른 중요한 보호 장치는 이미 CDN 캐시에 저장된 정적 콘텐츠에 대해서만 프리페치 요청을 수락하는 것입니다. 콘텐츠가 캐시에 없으면 프리페치 요청이 거부됩니다. 요청을 프리페치하기 위해 CDN 캐시에서 직접 콘텐츠를 검색하면 캐시 자격에 대한 우려 사항을 우회할 수 있습니다. 그 이유는 간단합니다. 캐싱에 적합하지 않은 페이지는 브라우저 캐시에 프리페치되지 않도록 하려는 것입니다. 프리페치하면 의도치 않은 결과가 발생하고 원본 부하가 증가할 수 있습니다. 예를 들어, 로그아웃 페이지를 프리페치하면 사용자가 실제로 작업을 완료하기 전에 조기에 로그아웃될 수 있습니다. 상태 저장 프리페치 또는 사전 렌더링 요청은 예측하지 못한 결과를 초래하여, 클라이언트가 확인하지 않은 작업에 대한 서버 상태를 변경할 수 있습니다. 이미 CDN 캐시에 있는 페이지에 대해서만 프리페치를 허용하고 있으므로, 해당 페이지가 사용자 경험 에 부정적인 영향을 미치지 않습니다.</p>
+	<p>이러한 가드레일은 성능에 민감한 환경에서 작동하도록 구현되었습니다. 2024년 7월 초에 <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 개발자 문서</u></a>의 모든 페이지에서 기본 보수적 배포 모델의 영향을 측정했습니다. 저희는 실제로 사용자가 탐색할 올바른 콘텐츠, 즉 <b>94</b>%의 시간을 프리페치할 수 있다는 것을 발견했습니다. 저희는 의도치 않은 부작용을 유발하지 않고 p75 분위수에서 LCP를 <b>40</b>% 줄여 탐색 성능을 개선하는 동시에 이를 수행했습니다. 그 결과는 놀라웠습니다!</p>
+	<div class="flex anchor relative">
+		<h2 id="explaining-cloudflares-implementation">Cloudflare의 구현 설명&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#explaining-cloudflares-implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare 전역 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>네트워크</u></a>는 330개 이상의 도시에 걸쳐 있으며 인터넷에 연결된 인구의 95%에게 50밀리초 이내에 작동됩니다. 이처럼 범위가 광범위하므로 고객을 위해 캐시할 수 있는 자산의 성능을 크게 개선할 수 있습니다. Cloudflare에서는 Speed Brain을 통해 스마트 프리페치에 이 네트워크를 활용함으로써 CDN 캐시에서 직접 프리페치된 콘텐츠를 제공하여 네트워크 대기 시간을 즉각적으로 줄일 수 있습니다.</p>
+	<p>네트워크상에서의 당사의 독특한 위치 덕분에 당사에서는 고객이 원본 서버 구성을 전혀 변경하지 않아도 Speed Brain을 자동으로 활성화할 수 있는 역량을 갖추고 있습니다. 이는 스위치를 켜는 것만큼 간단합니다! 이제 저희 첫 번째 Speed Brain 버전이 출시되었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O3RwzUlOj1GlJuMSrq5TW/55d9ef31a2de21034eb036b8c029d5b6/BLOG-2422_4.png" alt="BLOG-2422 4" class="kg-image" width="1370" height="1540" loading="lazy">
+	</figure>
+	<ul>
+		<li>
+			<p>Cloudflare 서버는 Speed Brain이 활성화된 웹 페이지에 대한 요청을 받으면 'Speculation-Rules' HTTP 응답 헤더를 추가로 반환합니다. 이 헤더의 값은 (위에서 언급한 바와 같이) 독자적인 규칙 구성을 호스팅하는 URL입니다.</p>
+		</li>
+		<li>
+			<p>브라우저가 응답 헤더를 구문 분석하기 시작하면 Speculation-Rules 구성을 가져와 웹 페이지의 일부로 로드합니다.</p>
+		</li>
+		<li>
+			<p>이 구성은 방문자가 페이지와 상호작용하는 방식에 따라 방문자가 탐색할 가능성이 높은 다음 페이지를 Cloudflare에서 프리페치하는 시기를 브라우저에 알려줍니다.</p>
+		</li>
+		<li>
+			<p>사용자 동작(예: 다음 페이지 링크에서 마우스를 아래로 내리는 이벤트)으로 인해 규칙 애플리케이션이 트리거되면 브라우저는 'sec-purpose: prefetch' HTTP 요청 헤더와 함께 해당 페이지에 대한 프리페치 요청을 보냅니다.</p>
+		</li>
+		<li>
+			<p>저희 서버에서는 요청 헤더를 구문 분석하여 프리페치 요청을 식별합니다. 요청된 콘텐츠가 캐시에 있으면 반환하고, 그렇지 않으면<b> 503 HTTP 상태 코드를 반환하고</b> 프리페치 요청을 거부합니다. 이렇게 하면 프리페치를 인식하지 못하는 출처나 Cloudflare Workers에 요청을 보내는 안전하지 않은 부작용의 위험이 제거됩니다. 캐시에 있는 콘텐츠만 반환됩니다.</p>
+		</li>
+		<li>
+			<p>응답이 성공하면 브라우저는 메모리에 있는 콘텐츠를 성공적으로 프리페치하고 방문자가 해당 페이지로 이동하면 브라우저는 즉시 렌더링하기 위해 브라우저 캐시에서 웹 페이지를 직접 로드합니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="common-troubleshooting-patterns">일반적인 문제 해결 패턴&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#common-troubleshooting-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain 지원은 새로운 웹 표준인 <a href="https://developer.chrome.com/docs/web-platform/prerender-pages" target="_blank" rel="noopener noreferrer"><u>Speculation Rules API</u></a>에 의존합니다. 2024년 9월 현재, <a href="https://caniuse.com/mdn-http_headers_speculation-rules" target="_blank" rel="noopener noreferrer"><u>이 새로운 표준에 대한 지원</u></a>은 <b>Chromium 기반 브라우저(버전 121 이상)</b>(예: Google Chrome 및 Microsoft Edge)로 제한됩니다. 웹 커뮤니티가 API 표준화에 대한 합의에 도달함에 따라 다른 브라우저 공급업체에서도 더 광범위하게 채택되기를 바랍니다.</p>
+	<p>본질적으로 프리페칭은 동적 콘텐츠에는 적용되지 않습니다. 동적 콘텐츠의 상태가 변경될 수 있고, 잠재적으로 최종 사용자에게 오래되거나 구식이 된 데이터가 전달되고 원본 로드가 증가할 수 있기 때문입니다. 따라서 Speed Brain은 네트워크에 캐시된 웹사이트의 비동적 페이지에만 작동합니다. 동적 페이지의 로딩에는 영향을 미치지 않습니다. Speed Brain을 최대한 활용하려면 <a href="https://developers.cloudflare.com/cache/how-to/cache-rules" target="_blank" rel="noopener noreferrer"><u>캐시 규칙</u></a>을 사용하여 사이트의 모든 정적 콘텐츠(<b>특히 HTML 콘텐츠</b>)가 캐싱에 적합한지 확인하는 것을 권장합니다.</p>
+	<p>브라우저가 추측적 사전 페치 요청(sec-purpose: prefetch 헤더로 표시)에 대한 응답으로 503 HTTP 상태 코드를 받으면 프리페치 시도를 취소합니다. 브라우저 콘솔에 503 오류가 나타나면 위험해 보일 수 있지만, 프리페치 요청을 취소하는 것은 전혀 해가 없습니다. 초기 테스트에서 503 응답 코드는 일부 사이트 소유자에게 우려를 불러일으켰습니다. 파트너와 협력하여 클라이언트 환경을 개선하기 위해 이 작업을 반복하고 있지만, 현재로서는 브라우저가 추측성 요청을 안전하게 삭제하도록 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#:~:text=Using%20a%20non%2Dsuccess%20code%20(for%20example%20a%20503)%20is%20the%20easiest%20way%20to%20prevent%20speculative%20loading" target="_blank" rel="noopener noreferrer"><u>503 응답을 제안하는</u></a> 사양 지침을 따르시기 바랍니다. 초기 베타 테스터의 피드백을 바탕으로 Chrome 측과 활발하게 논의 중이며, 오류가 없는 새로운 전용 응답 코드가 더 적절하고 혼란을 덜 일으킬 것이라고 생각합니다. 그동안, Speed Brain과 관련된 사전 페치 요청에 대한 503 응답 로그는 해가 없습니다. 귀하의 툴링으로 인해 이러한 요청을 무시하기 어려운 경우 Chrome 팀과 더 나은 방안을 모색할 때까지 Speed Brain을 일시적으로 비활성화할 수 있습니다.</p>
+	<p>또한, 웹 사이트 에서 자체 사용자 지정 추측 규칙과 Cloudflare의 Speed Brain 기능을 모두 사용하는 경우, 두 규칙 집합을 모두 동시에 사용할 수 있습니다. Cloudflare의 가드레일(guardrail)은 캐시 가능한 페이지로 추측 규칙을 제한하며, 이는 기존에 구현되어 있는 웹 사이트에서 예상치 못한 제한이 될 수 있습니다. 이러한 동작이 있으면 사이트의 구현 중 하나를 비활성화하여 동작의 일관성을 유지하는 것이 좋습니다. 원본 서버 응답에 Speculation-Rules 헤더가 포함되어 있는 경우, 이 헤더는 재정의되지 않습니다. 따라서 규칙 집합이 충돌할 가능성은 주로 미리 정의된 인라인 추측 규칙을 사용해야 합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-see-the-impact-of-speed-brain">Speed Brain의 영향을 어떻게 확인할 수 있나요?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-see-the-impact-of-speed-brain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>일반적으로 Speed Brain과 대부분의 다른 Cloudflare 성능 <a href="https://developers.cloudflare.com/speed" target="_blank" rel="noopener noreferrer"><u>기능</u></a>을 <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><u>RUM 성능 측정 도구</u></a>를 활성화하여 사용하는 것을 권장합니다. 저희 RUM 기능은 개발자와 웹사이트 운영자가 최종 사용자가 애플리케이션 성능을 어떻게 경험하고 있는지 이해하도록 돕고, 다음에 대한 가시성을 제공합니다.</p>
+	<ul>
+		<li>
+			<p><b>로딩</b>: 콘텐츠를 사용할 수 있을 때까지 얼마나 걸리나요?</p>
+		</li>
+		<li>
+			<p><b>상호작용성</b>: 사용자가 웹 사이트와 상호작용할 때 웹 사이트의 반응성은 어느 정도인가요?</p>
+		</li>
+		<li>
+			<p><b>시각적 안정성</b>: 로딩하는 동안 페이지가 얼마나 움직이나요?</p>
+		</li>
+	</ul>
+	<p>RUM을 활성화하면 대시보드의 Web Analytics 섹션으로 이동하여 Speed Brain이 최대 콘텐츠 페인트(LCP) 및 로드 시간과 같은 <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer"><u>핵심 웹 바이탈</u></a> 지표에서 대기 시간을 줄이는 데 어떻게 도움이 되는지에 대한 중요한 정보를 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zv2kRvsot12PSNwwaWCad/25e9e56d6f3769b04a8752f99c656f3b/BLOG-2422_5.png" alt="BLOG-2422 5" class="kg-image" width="1128" height="730" loading="lazy">
+	</figure>
+	<p><i>9월 16일경 Speed Brain을 활성화한 많은 양의 프리페치 가능한 콘텐츠가 있는 웹사이트의 RUM 대시보드 예시.</i></p>
+	<div class="flex anchor relative">
+		<h2 id="what-have-we-seen-in-our-rollout-so-far">Cloudflare에서는 지금까지의 롤아웃에서 어떤 점을 발견했을까요?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#what-have-we-seen-in-our-rollout-so-far" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 기능은 모든 무료 요금제에 기본으로 제공되며 다음과 같은 사항을 목격했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="domains">도메인</h3>
+		<a href="https://blog.cloudflare.com/#domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 현재 Speed Brain을 사용하여 수천만 개의 도메인을 보유하고 있습니다. 이들 사이트에 대해 75번째 분위수(p75)에서 LCP를 측정한 결과, 40%에서 50%(평균 약 45%) 사이의 개선이 이루어졌습니다.&nbsp;</p>
+	<p>동일한 도메인 집합에 대해 탐색 프리페치를 일반적인(프리페치하지 않은) 페이지 로딩과 비교한 결과, 이러한 개선이 이루어진 것을 확인했습니다. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fNrRh84I3iZpHiEieNPg8/a789d9d9a736a8eb76fa6120a84cdf10/BLOG-2422_6.png" alt="BLOG-2422 6" class="kg-image" width="682" height="334" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="requests">요청</h3>
+		<a href="https://blog.cloudflare.com/#requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain이 활성화되기 전에 Cloudflare의 무료 웹사이트 p75는 약 2.2초의 LCP를 경험합니다. Speed Brain을 활성화하면 이러한 사이트에서는 LCP에서 대기 시간을 크게 줄일 수 있습니다. 전체적으로 Speed Brain 덕분에 낮은 단계에서 약 0.88초가 절약되고, 성공적인 프리페치마다 최대 1.1초가 절약됩니다!&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="applicable-browsers">적용 가능한 브라우저</h3>
+		<a href="https://blog.cloudflare.com/#applicable-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>현재 Speculation Rules API는 Chromium 브라우저에서만 사용할 수 있습니다. Cloudflare Radar에서 방문자의 요청 중 약 <a href="https://radar.cloudflare.com/adoption-and-usage" target="_blank" rel="noopener noreferrer"><u>70%</u></a>가 <a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank" rel="noopener noreferrer"><u>Chromium</u></a>(Chrome, Edge 등) 브라우저에서 온 것을 확인할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="across-the-network">네트워크 전반</h3>
+		<a href="https://blog.cloudflare.com/#across-the-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 매일 수천억 개의 HTML 콘텐츠 요청을 받습니다. 이 요청 중 약 절반이 캐시됩니다(HTML이 캐시 가능한지 확인하세요!). 이 요청의 약 1%는 방문자가 만든 탐색 프리페칭을 위한 것입니다. 이는 Speed Brain이 활성화된 웹사이트 방문자의 경우 매일 상당한 비용 절감을 의미합니다. <b>Speed Brain은 24시간마다 82년치 이상의 대기 시간을 절약할 수 있습니다!</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CIpcdPC17LY2EGjNxCjNo/cf1a915d16384e32d88951a48febed47/BLOG-2422_7.png" alt="BLOG-2422 7" class="kg-image" width="1210" height="1246" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">다음은?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>오늘 Cloudflare가 Speed Brain을 위해 제공하는 서비스는 시작에 불과합니다. 2025년을 향해 나아가면서, 저희가 탐색하고 출시할 수 있는 흥미로운 추가 기능이 많이 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="leveraging-machine-learning">머신 러닝 활용</h3>
+		<a href="https://blog.cloudflare.com/#leveraging-machine-learning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>인터넷상에서 저희의 독특한 위치 덕분에 웹 브라우징 패턴에 대한 귀중한 인사이트가 제공되며, 이를 활용하여 개별 사용자의 개인정보를 보호하면서 웹 성능을 개선할 수 있습니다. 일반화된 데이터 기반 머신 러닝 접근 방식을 채택함으로써 사용자 페이지에 대한 보다 정확한 사이트별 프리페치 예측자를 정의할 수 있습니다.&nbsp;</p>
+	<p>저희는 현재의 보수적인 제안보다 상당히 개선된 적응형 추측 모델을 개발하고 있습니다. 이 모델은 개인정보 보호 방법을 사용하여 동일 사이트 Referrer 헤더를 기반으로 각 사이트에 대한 사용자 탐색 그래프를 생성합니다. 탐색 홉으로 연결된 두 페이지에 대해, 저희 모델은 통합 트래픽 데이터에서 추출한 인사이트를 사용하여 일반적인 사용자가 두 페이지 간을 이동할 가능성을 예측합니다.</p>
+	<p>저희는 이 모델을 사용하여 사이트의 관련된 각각의 다음 페이지 링크에 대해 사용자 정의 열의 값을 사용하여 규칙 세트를 맞춤화할 수 있습니다. 모델이 사용자 탐색에 높은 신뢰도를 보일 것으로 예측하는 페이지의 경우, 시스템은 적극적으로 해당 페이지를 프리페치하거나 사전 렌더링합니다. 모델이 페이지에 대한 규칙을 제공하지 않으면 기존의 보수적인 접근 방식이 기본값으로 적용되어 기본 Speed Brain 모델의 이점이 유지됩니다. 이 신호는 브라우저가 적절한 페이지를 프리페치하고 사전 렌더링하도록 가이드하므로 현재의 안전 가드레일을 유지하면서도 사용자의 탐색 속도를 높이는 데 도움이 됩니다.</p>
+	<p>실험실 테스트에서, 저희 ML 모델은 LCP 지연 시간을 75% 단축하고 방문자 탐색을 약 98%의 정확도로 예측함으로써 사용자의 리소스 낭비를 막기 위해 올바른 페이지가 프리페치되도록 보장했습니다. 이 솔루션을 확장하면서, 저희는 다양한 사용자 행동과 진화하는 웹 사이트에 적응하기 위해 모델을 주기적으로 학습시키는 데 집중하고 있습니다. 온라인 머신 러닝 방식을 사용하면 수동 업데이트와 콘텐츠 드리프트의 필요성을 크게 줄이는 동시에 높은 정확도를 유지할 수 있습니다. 시간이 지날수록 더욱 스마트해지는 Speed Brain 로드 솔루션입니다!</p>
+	<div class="flex anchor relative">
+		<h3 id="finer-observability-via-rum">RUM을 통한 더 세밀한 관찰 가능성</h3>
+		<a href="https://blog.cloudflare.com/#finer-observability-via-rum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>앞서 언급했듯이, 저희는 RUM 도구가 Speed Brain이 웹 사이트 성능에 어떻게 도움이 되는지에 대한 가장 좋은 인사이트를 제공한다고 믿습니다. 앞으로는 탐색 유형별로 RUM 툴링을 필터링하는 기능을 제공하여 프리페치된 콘텐츠와 프리페치되지 않은 콘텐츠의 브라우저 렌더링을 비교할 수 있도록 할 계획입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="prerendering">사전 렌더링</h3>
+		<a href="https://blog.cloudflare.com/#prerendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 현재 캐시 가능한 콘텐츠를 프리페치하는 기능을 제공하고 있습니다. 프리페칭은 사용자가 탐색하기 전에 페이지의 주요 문서 리소스를 다운로드하지만, 브라우저에 페이지를 미리 렌더링하거나 추가 하위 리소스를 다운로드하도록 지시하지는 않습니다.</p>
+	<p>앞으로 Cloudflare의 Speed Brain 제품은 콘텐츠를 CDN 캐시로 프리페치한 다음 브라우저와 연동하여 사전 렌더링에 가장 적합한 잠재 고객을 파악할 것입니다. 이는 정적 콘텐츠를 즉석 렌더링에 훨씬 더 가깝게 만드는 데 도움이 됩니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="argo-smart-browsing-speed-brain-smart-routing">Argo Smart Browsing: Speed Brain 및 스마트 라우팅</h3>
+		<a href="https://blog.cloudflare.com/#argo-smart-browsing-speed-brain-smart-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain은 초기 구현에서 놀라운 성능 향상을 제공하지만, 구현은 여전히 보수적입니다. 열의와 리소스 소비 측면 모두에서 그렇습니다.</p>
+	<p>이 게시물에서 앞서 설명한 대로, 머신 러닝과 더 높은 열의로 구동되는 보다 공격적인 모델의 실험실 테스트 결과, <b>LCP가 75% 감소했습니다.</b> 저희는 Argo Smart Routing과 함께 이 보다 공격적인 추가 Speed Brain 구현을 묶어서 <b>'Argo Smart Browsing'이라는 제품으로 만드는 것을 조사하고 있습니다.</b></p>
+	<p>Cloudflare 고객은 Speed Brain을 자유롭게 계속 사용할 수 있지만, 성능을 더 개선하고자 하는 고객은 버튼 클릭 한 번으로 Argo Smart Browsing을 활성화할 수 있습니다. Argo Smart Browsing을 이용하면, 캐시할 수 있는 정적 콘텐츠가 더욱 공격적인 모델 덕분에 브라우저에서 최대 75% 더 빨리 로드될 뿐만 아니라 콘텐츠를 캐시할 수 없고 요청이 원본 서버 로 이동해야 하는 상황에서도 가장 성능이 우수한 네트워크 경로로 전송되어 평균적으로 <b>성능이 33% 향상됩니다.</b> 성능 최적화는 콘텐츠가 정적인지 동적인지, 캐시되었는지 여부와 관계없이 요청 수명 주기의 거의 모든 세그먼트에 적용되고 있습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">결론</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain을 시작하려면 Cloudflare 대시보드에서 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank" rel="noopener noreferrer"><b><u>속도</u></b><u> &gt; 최적화 &gt; 콘텐츠 최적화 &gt; </u><b><u>Speed Brain</u></b></a>으로 이동하여 활성화하세요. 그게 전부입니다! 이 기능은 <a href="https://developers.cloudflare.com/api/operations/zone-settings-get-speed-brain-setting" target="_blank" rel="noopener noreferrer"><u>API</u></a>를 통해서도 활성화할 수 있습니다. Free 요금제 도메인은 기본적으로 Speed Brain이 활성화되어 있습니다.</p>
+	<p>고객이 대시보드의 동일한 섹션에 있는 <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><b><u>RUM을 활성화</u></b></a>하는 것도 강력히 권장합니다. 이 기능을 사용하면 Speed Brain과 기타 Cloudflare 기능과 제품이 제공하는 성능 개선 사항을 확인할 수 있습니다.&nbsp;</p>
+	<p>웹 성능을 안정적으로 빠르게 만드는 제품과 기능을 계속 구축하게 되어 기쁩니다. 모든 사람을 위한 웹 성능을 개선하는 데 관심이 있는 엔지니어라면 <a href="http://cloudflare.com/jobs" target="_blank" rel="noopener noreferrer">저희와 함께하시기 바랍니다</a>!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaN8mrrAKAatOUCqGAsqu/15ac363626180a0f0ed1a0cdb8146e5f/BLOG-2422_8.png" alt="BLOG-2422 8" class="kg-image" width="1800" height="552" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TV에서 보기</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/6446ed524ea74cfb11e2325107f37113/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F6446ed524ea74cfb11e2325107f37113%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

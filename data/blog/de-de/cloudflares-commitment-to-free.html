@@ -1,0 +1,107 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cloudflares-commitment-to-free">English</a>, <a href="https://blog.cloudflare.com/nl-nl/cloudflares-commitment-to-free">Nederlands</a>, und <a href="https://blog.cloudflare.com/fr-fr/cloudflares-commitment-to-free">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QsuWo39pMfBJ9oc9nAF6v/a954ad1f610d5c6bf5b7420fc4b1c7cc/BLOG-2528_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir bei Cloudflare haben unsere kostenlose Tarifoption („Free“-Tarif) <a href="https://www.cloudflare.com/press-releases/2010/cloudflare-launches-at-techcrunch-disrupt" target="_blank" rel="noopener noreferrer"><u>zur gleichen Zeit eingeführt, als unser Unternehmen gegründet wurde</u></a>&nbsp;– vor vierzehn Jahren, am 27. September 2010. Seitdem hat sich natürlich einiges geändert&nbsp;– heute werden Millionen von Internetwebsites hinter Cloudflare geschützt. Da wir immer größer geworden sind und Millionen von Kunden im kostenlosen Tarif haben, lautet eine der Fragen, die uns oft gestellt wird: Wie kann Cloudflare es sich leisten, dies in diesem Umfang zu tun?</p>
+	<p>Cloudflare hat schon immer eine großzügige kostenlose Version für öffentlich zugängliche Anwendungen (<a href="https://www.cloudflare.com/application-services/products" target="_blank" rel="noopener noreferrer"><u>Anwendungsdienste</u></a>), interne private Netzwerke und Personen (<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>) und Entwicklertools (<a href="https://www.cloudflare.com/developer-platform/products" target="_blank" rel="noopener noreferrer"><u>Entwicklerplattform</u></a>) angeboten und wird dies auch in Zukunft tun. Entgegen dem, was man vermuten könnte, hilft uns unser kostenloser Service, unsere Kosten niedrig zu halten. Dabei ist unser kostenloser Service nicht nur auf die Mission ausgerichtet, sondern auch auf das Geschäft. Wir möchten es ganz klar sagen: Unser Free-Tarif wird bleiben, und wir haben diese Woche mit 15 Neuerungen in unserem gesamten Produktportfolio unter Beweis gestellt, dass wir den Free-Tarif noch weiter verbessern möchten.</p>
+	<div class="flex anchor relative">
+		<h2 id="understanding-our-cost-of-goods-sold">Zum besseren Verständnis unserer Umsatzkosten („Cost of Goods Sold“)</h2>
+		<a href="https://blog.cloudflare.com/#understanding-our-cost-of-goods-sold" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um die Wirtschaftlichkeit unseres Free-Tarifs zu verstehen, muss man unsere Cost of Goods Sells (COGS) verstehen. Cloudflare hat sein <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Netzwerk</u></a> nicht ausgelagert&nbsp;– wir haben es selbst aufgebaut, und es erstreckt sich über mehr als 330 Städte. Wir entwickeln unsere eigene <a href="https://blog.cloudflare.com/gen-12-servers"><u>Hardware</u></a> und vertreiben sie in aller Welt, stellen <a href="https://www.cloudflare.com/en-gb/partners/peering-portal" target="_blank" rel="noopener noreferrer"><u>Verbindungen</u></a> zu mehr als 12.500 Netzwerken her und verwalten eine Netzwerkkapazität von über 300&nbsp;Tbit/s. Wir haben sogar ein eigenes <a href="https://blog.cloudflare.com/backbone2024"><u>Backbone</u></a>, das sich über die ganze Welt erstreckt.</p>
+	<p>Es gibt drei wesentliche Kostenpunkte für den Betrieb unseres Netzwerks, die zusammen etwa 80&nbsp;% unserer COGS ausmachen. Der erste und größte ist die Bandbreite: der Traffic, der unser Netzwerk durchläuft. Dann gibt es noch die Hardware: die Server, die den Traffic verarbeiten. Und an dritter Stelle stehen die Colocation-Kosten: der Strom und der Platz in den Rechenzentren, in denen sich unsere Server befinden. Es gibt auch andere Elemente der COGS, wie unser SRE-Team, das das Netzwerk am Laufen hält, und unsere Gebühren für die Zahlungsabwicklung, ohne die wir keine Einnahmen erzielen könnten.</p>
+	<p>Um den Traffic eines Netzwerks unserer Größenordnung über das Internet zu transportieren, benötigen wir viel Bandbreite. In der Regel würde ein Netzwerk wie das unsere Transitnetzwerke von Drittanbietern und Internet Service Provider (ISPs) für die Übertragung von Daten überall im Internet bezahlen. Es gibt jedoch Tausende von Internetanbietern, die wir überhaupt nicht bezahlen müssen, und Hunderte, die uns auch kostenlos Platz in ihrem Rechenzentrum anbieten. Wie haben wir das geschafft? Die überraschende Antwort: der Free-Tarif.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-our-free-services-keep-costs-low">Wie unsere Free-Services die Kosten niedrig halten</h2>
+		<a href="https://blog.cloudflare.com/#how-our-free-services-keep-costs-low" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Stellen Sie sich vor, Sie betreiben einen ISP, der Ihre lokale Gemeinde bedient. Ihre Aufgabe ist es, Ihre Kunden mit dem Internet zu verbinden. Sie stellen fest, dass Ihre Kunden oft Websites besuchen, die hinter Cloudflare sind, das sich vor etwa <a href="https://w3techs.com/technologies/history_overview/proxy/all/q" target="_blank" rel="noopener noreferrer"><u>20&nbsp;% des Internets</u></a> befindet. Sie müssen diese Webseiten bereitstellen und die Verbindungen zu den Anwendungen hinter Cloudflare ermöglichen, aber derzeit müssen Sie einen Transit-Dienstleister bezahlen, um sie zu erreichen. Stattdessen könnten Sie sich für eine direkte <a href="https://www.internetsociety.org/resources/doc/2020/explainer-what-is-internet-peering" target="_blank" rel="noopener noreferrer"><u>Peering</u></a>-Verbindung mit Cloudflare entscheiden und den Traffic kostenlos austauschen.</p>
+	<p>Cloudflare ist eines der Netzwerke mit der <a href="https://bgp.tools/rankings/all?sort=peering" target="_blank" rel="noopener noreferrer"><u>höchsten Zahl an Anbindungen zu anderen Netzwerken weltweit</u></a>. Wir tauschen Traffic frei mit Tausenden von ISPs aus, die ihrerseits davon profitieren, dass sie einen dritten Transit-Provider umgehen können, um die Millionen von Websites und Anwendungen hinter Cloudflare zu erreichen.</p>
+	<p>Bleiben wir bei dieser Hypothese: Wenn Ihre Kunden als ISP für die Internetkonnektivität auf der Grundlage der Datennutzung bezahlen (ein gängiges Modell außerhalb Westeuropas und der USA), steigen Ihre Einnahmen mit dem Datenverbrauch. Eine einfache Möglichkeit, den Datenverbrauch zu steigern? Machen Sie das Internet schneller! Durch das Hosten der Cloudflare-Server bei Ihnen vor Ort und damit so nah wie möglich an Ihren Nutzern wird die Latenzzeit für Millionen von Websites und Anwendungen reduziert. Es liegt daher in Ihrem Interesse, die Server von Cloudflare in Ihren Rechenzentren zu hosten.</p>
+	<p>Wir haben Hunderte von ISP-Partnerschaften, die genau so aussehen. Der Mehrwert, den ISPs von Cloudflare erhalten, ergibt sich aus der Breite des Webs, das hinter Cloudflare liegt, eine Zahl, die von der Anzahl unserer Kunden im Free-Tarif bestimmt wird. Nicht zuletzt deshalb bieten wir unseren kostenlosen Service auch weiterhin an. PS: Wenn Sie wirklich Betreiber eines lokalen ISP sind und noch nicht mit uns zusammenarbeiten, verbinden Sie sich bitte über unser <a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer"><u>Peering-Portal</u></a> mit uns!</p>
+	<p>Heutzutage sind wir so groß, dass der Traffic, den unsere Kunden erzeugen, viel mehr Kapazität erfordert, als bei unseren ISP-Partnern untergebracht werden kann. Um unsere Enterprise-Kunden zuverlässig bedienen zu können, verfügen wir über mehrere Server-Standorte in jeder größeren Internet-Hub-Stadt. Und doch sind die Traffic-Muster unserer Enterprise-Kunden in der Regel sehr vorhersehbar. Sie folgen in der Regel einem Tageszyklus, mit Spitzen und Tiefs im Laufe eines Tages. Der Traffic von Enterprise-Kunden wird priorisiert und so nah wie möglich am Endbenutzer bereitgestellt, unabhängig von der Tageszeit. Aber unsere Free-Kunden nutzen Off-Cycle-Headroom. Aus diesem Grund können wir im Free-Tarif weiterhin uneingeschränkte Bandbreite anbieten: Wir stellen den Traffic aus unserem gesamten Netzwerk zur Verfügung, wo es immer freie Kapazitäten gibt. Er hat vielleicht nicht ganz die gleiche Performance wie unser Enterprise-Traffic, ist aber dennoch zuverlässig und schnell.</p>
+	<p>Es muss jedoch einige Regeln geben, damit dies weiterhin funktioniert. Der Free-Traffic muss ein überschaubarer Anteil unseres gesamten Datenverkehrs bleiben. Damit dies auch weiterhin so bleibt und wir Free-Kunden weiterhin kostenlos Traffic ohne Volumenbegrenzung anbieten können, müssen wir genau festlegen, welche Art von Traffic wir kostenlos zur Verfügung stellen. In unseren <a href="https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-terms" target="_blank" rel="noopener noreferrer"><u>Nutzungsbedingungen</u></a> heißt es, dass große Assets (wie Videos) von unserem Free-Tarif nicht unterstützt werden. Daher verlangen wir von Kunden, die große Dateien und Videos veröffentlichen, dass sie auf einen unserer kostenpflichtigen Dienste wie <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Images</u></a> und <a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer"><u>Stream</u></a> wechseln.</p>
+	<div class="flex anchor relative">
+		<h2 id="free-customers-help-us-build-better-products-and-grow-our-business">Free-Kunden helfen uns, bessere Produkte zu entwickeln und unser Geschäft auszubauen</h2>
+		<a href="https://blog.cloudflare.com/#free-customers-help-us-build-better-products-and-grow-our-business" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Vorteile unseres Free-Tarifs gehen weit über die direkten Kosten hinaus.</p>
+	<p>Unser Free-Tarif gibt uns bei Cloudflare Zugang zu einzigartigen Bedrohungsdaten. Durch die große Angriffsfläche ist unser Netzwerk unterschiedlichem Traffic und Angriffen ausgesetzt, die wir sonst nicht sehen würden. So können wir potenzielle Sicherheits- und Zuverlässigkeitsprobleme oft schon im frühesten Stadium erkennen. Wie ein Immunsystem lernen wir aus diesen Angriffen und passen uns an, um unsere Produkte für alle Kunden zu verbessern. Dies ist ein besonderer Wettbewerbsvorteil. <a href="https://radar.cloudflare.com/security-and-attacks" target="_blank" rel="noopener noreferrer"><u>Dank unserer Erkenntnisse über Angriffe</u></a> können wir Produkte entwickeln, die niemand sonst entwickeln könnte.</p>
+	<p>Unsere Free-Kunden helfen uns, die Qualitätssicherung schnell durchzuführen. Free-Kunden sind oft die ersten, die neue Produkte und Funktionen ausprobieren. Wenn wir etwas Neues auf den Markt bringen, erhalten wir sofort eine Unmenge an Daten und Feedback. Wir nutzen diese Signale, um Fehler schnell zu beheben und unsere Produkte zu verbessern.&nbsp;</p>
+	<p>Mit dem Free-Tarif sind wir gefordert, intuitivere Produkte zu entwickeln. Free-Kunden repräsentieren ein breites Publikum, von Technikbegeisterten bis hin zu Personen, die einfach nur ihre Website absichern oder eine Anwendung erstellen möchten. Die Entwicklung für ein breites Spektrum von Nutzern zwingt uns dazu, benutzerfreundlichere Tools für alle zu entwickeln.</p>
+	<p>Das Angebot eines kostenlosen Dienstes hat noch weitere Vorteile. Zu unseren stärksten Befürwortern gehören Leute, die unseren Free-Tarif für ihre Hobbyprojekte genutzt haben, bevor sie Cloudflare mit zur Arbeit nahmen. Einige von ihnen arbeiten sogar bei Cloudflare!</p>
+	<div class="flex anchor relative">
+		<h2 id="our-free-plan-will-keep-getting-better">Unser Free-Tarif wird noch besser</h2>
+		<a href="https://blog.cloudflare.com/#our-free-plan-will-keep-getting-better" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unser kostenloses Angebot ist ein Schwungrad, das dazu beiträgt, die Produkte, das Team und die Kostenstruktur von Cloudflare effizienter zu gestalten. Wir bedanken uns für diese Effizienzgewinne, indem wir unsere kostenlosen Angebote weiter verbessern. Allein diese Woche haben wir 15 Updates angekündigt, die unsere Free-Tarife noch besser machen:</p>
+	<ul>
+		<li>
+			<p>Free-Kunden können <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers?%2F="><u>die KI-Modelle, die auf ihre Inhalte zugreifen, überprüfen und kontrollieren</u></a>.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer"><u>Turnstile</u></a>, unsere datenschutzfreundliche CAPTCHA-Alternative, die für jedermann verfügbar ist, wird durch <a href="https://blog.cloudflare.com/turnstile-ephemeral-ids-for-fraud-detection"><u>fein abstimmbare Identifizierung auf Client-Ebene noch</u></a> genauer.</p>
+		</li>
+		<li>
+			<p>Kunden im Free-Tarif haben jetzt Zugang zu unseren Tools <a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloud Access Security Broker</u></a> (CASB), <a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer"><u>Data Loss Prevention</u></a> (DLP), <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex" target="_blank" rel="noopener noreferrer"><u>Digital Experience Monitoring</u></a> (DEX) und <a href="https://developers.cloudflare.com/magic-network-monitoring" target="_blank" rel="noopener noreferrer"><u>Magic Network Monitoring</u></a> (MNM) für bis zu 50 Nutzer.</p>
+		</li>
+		<li>
+			<p>Eine neue Version von <a href="https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials" target="_blank" rel="noopener noreferrer"><u>Leaked Credential Checks</u></a> (LCC) ist für alle Kunden verfügbar, um Angriffe zur Übernahme von Konten („Account Takeover“, ATO) abzuwehren.</p>
+		</li>
+		<li>
+			<p>Alle Kunden können jetzt Skripte von Drittanbietern mit <a href="https://developers.cloudflare.com/page-shield/detection/monitor-connections-scripts" target="_blank" rel="noopener noreferrer"><u>Page Shield Script Monitor</u></a> überwachen.</p>
+		</li>
+		<li>
+			<p>Free-Kunden können <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer"><u>die Schema-Validierung von API-Shield verwenden</u></a>, um sicherzustellen, dass nur gültige Anfragen an ihre API zum Ursprungsserver gelangen.</p>
+		</li>
+		<li>
+			<p>Free-Kunden erhalten zuverlässigere Analysen&nbsp;– mit für alle verfügbaren Versionen von <a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>Security Analytics</u></a> und <a href="https://developers.cloudflare.com/dns/additional-options/analytics" target="_blank" rel="noopener noreferrer"><u>DNS GraphQL</u></a>.</p>
+		</li>
+		<li>
+			<p>Alle Kunden können sich jetzt beim Cloudflare-Dashboard über „<a href="https://blog.cloudflare.com/a-safer-internet-with-cloudflare"><u>Sign in with Google</u>“</a> anmelden.</p>
+		</li>
+		<li>
+			<p>Free-Kunden, die unseren Terraform-Anbieter zur Konfiguration ihrer Infrastruktur nutzen, profitieren jetzt von <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider"><u>automatisch generierten API-SDKs</u></a>.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/calls/turn/overview" target="_blank" rel="noopener noreferrer"><u>Der verwaltete TURN-Dienst von Cloudflare Calls</u></a> ist jetzt allgemein verfügbar und für bis zu 1.000 GB pro Monat kostenlos.</p>
+		</li>
+		<li>
+			<p>Alle Kunden profitieren von der Einführung der <a href="https://blog.cloudflare.com/new-standards"><u>Zstandard-Komprimierung</u></a>, die die Webperformance verbessert, indem sie bis zu 42&nbsp;% schneller als Brotli komprimiert.</p>
+		</li>
+		<li>
+			<p>Der Traffic von Free-Kunden ist jetzt privater, da wir <a href="https://developers.cloudflare.com/ssl/edge-certificates/ech" target="_blank" rel="noopener noreferrer"><u>Encrypted Client Hello</u></a> (ECH) einführen, das Server Name Identifier (SNI) während eines TLS-Handshakes verschleiert.</p>
+		</li>
+		<li>
+			<p>Alle Kunden können 3 Tage lang Protokolle von ihrem <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> speichern und abfragen.</p>
+		</li>
+		<li>
+			<p>Anfragen, die über <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Service Bindings</u></a> und an <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer"><u>Tail Workers</u></a> gestellt werden, sind jetzt kostenlos.</p>
+		</li>
+		<li>
+			<p>&nbsp;Die <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Bildoptimierung von Cloudflare</u></a> ist jetzt für alle Cloudflare-Kunden verfügbar.</p>
+		</li>
+	</ul>
+	<p>Wir bieten den Free-Tarif nicht nur aus gutem Willen an&nbsp;– er ist ein zentrales Unterscheidungsmerkmal, das uns hilft, bessere Produkte zu entwickeln, das Wachstum voranzutreiben und die Kosten niedrig zu halten. Und er hilft uns, unserer Vision noch näher zu kommen: Ein besseres Internet zu schaffen, ist eine gemeinsame Anstrengung. Heute befinden sich mehr als 30 Millionen Domains, die etwa 20&nbsp;% des Internets ausmachen, hinter Cloudflare. Unser Free-Tarif macht diesen Teil des Web schneller, sicherer und effizienter. Free ist nicht nur ein Commitment&nbsp;– es ist ein Eckpfeiler unserer Strategie.</p>
+	<p>Werden Sie Teil eines besseren Internets und <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer"><u>melden Sie sich für den Free-Tarif von Cloudflare an</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pyDxxVAHg0jqcZTj2TVmw/9f484c51ab42c627b549b4ef7640680e/BLOG-2528_2.png" alt="BLOG-2528 2" class="kg-image" width="1201" height="330" loading="lazy">
+	</figure>
+	<p></p>
+</div>

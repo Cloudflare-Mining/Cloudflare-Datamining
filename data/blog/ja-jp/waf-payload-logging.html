@@ -1,0 +1,207 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/waf-payload-logging">English</a>および<a href="https://blog.cloudflare.com/ko-kr/waf-payload-logging">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22sUHPefT9pO4C6xggXTQH/fad62fabfa1b07cf755d1c0bfddf8086/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Web上の攻撃の対象領域が拡大するにつれ、Cloudflareの<a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>Webアプリケーションファイアウォール（WAF）</u></a>は、これらの攻撃を軽減する無数のソリューションを提供します。これは、お客様にとっては素晴らしいことですが、弊社が対応する数百万のリクエストのワークロードのカーディナリティにより、誤検知が発生することは避けられません。つまり、お客様向けのデフォルト設定を微調整する必要があるのです。</p>
+	<p>ファインチューニングは不透明なプロセスではありません。お客様はいくつかのデータポイントを取得してから、何が有効かを決定する必要があります。この記事では、WAFが特定のアクションを実行する理由や、ノイズを減らして信号を増加させるための改善点をお客様が知っていただけるように、Cloudflareが提供するテクノロジーについて説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-log-action-is-great-can-we-do-more">Logのアクションは素晴らしいです。もっとできることがあると思いますか？</h2>
+		<a href="https://blog.cloudflare.com/#the-log-action-is-great-can-we-do-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの<a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>は、<a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>アプリケーション層を標的とする</u></a>攻撃であるさまざまな種類のアプリケーション層攻撃から配信元サーバーを保護します。保護は、次のようなさまざまなツールで提供されます。</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/managed-rules" target="_blank" rel="noopener noreferrer"><u>マネージドルール</u></a>は、Cloudflare のセキュリティ アナリストが、<a href="https://www.cve.org" target="_blank" rel="noopener noreferrer"><u>共通脆弱性識別子 (CVE)</u></a>、<a href="https://www.cloudflare.com/learning/security/threats/owasp-top-10" target="_blank" rel="noopener noreferrer"><u>OWASP セキュリティ リスク</u></a>、Log4Shell などの脆弱性に対処するために作成します。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>カスタムルール</u></a>：お客様は、表現力豊かな<a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer"><u>Rules言語</u></a>を使ってルールを記述できます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer"><u>レート制限ルール</u></a>、<a href="https://developers.cloudflare.com/waf/detections/malicious-uploads" target="_blank" rel="noopener noreferrer"><u>悪意のあるアップロードの検出</u></a>、<a href="https://developers.cloudflare.com/waf/detections/leaked-credentials" target="_blank" rel="noopener noreferrer"><u>漏洩した資格情報の検出</u></a>など。</p>
+		</li>
+	</ul>
+	<p>これらのツールは、<a href="https://developers.cloudflare.com/ruleset-engine" target="_blank" rel="noopener noreferrer"><u>Rulesetsエンジン</u></a>上に構築されています。<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/expressions" target="_blank" rel="noopener noreferrer"><u>ルール式</u></a>に一致する場合、エンジンは<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank" rel="noopener noreferrer"><u>アクション</u></a>を実行します。</p>
+	<p>Logアクションは、ルールの動作をシミュレートするために使用されます。このアクションにより、ルール表現がエンジンによって一致したことが証明され、<a href="https://developers.cloudflare.com/waf/analytics/security-analytics" target="_blank" rel="noopener noreferrer"><u>セキュリティ分析</u></a>、<a href="https://developers.cloudflare.com/waf/analytics/security-events" target="_blank" rel="noopener noreferrer"><u>セキュリティイベント</u></a>、<a href="https://developers.cloudflare.com/logs/logpush" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>、または<a href="https://developers.cloudflare.com/logs/logpush/logpush-job/edge-log-delivery" target="_blank" rel="noopener noreferrer"><u>Edge Log Delivery</u></a>経由でアクセスできるログイベントが出力されます。</p>
+	<p>ログは、ルールが一致することが予想されたトラフィックで期待通りに機能することを検証するのには優れているものの、特にルール式が多くのコードパスを取ることができる場合、ルールの一致を示すのは十分ではありません。
+
+		擬似コードでは、式は次のようになります：</p>
+	<p><code>いずれかのHTTPリクエストヘッダーに「authorization」キーが含まれている場合、またはhttpホストヘッダーの小文字での表現が「cloudflare」で始まる場合、</code>
+
+		THENログのルール言語構文は次のようになります：</p>
+	<pre class="language-Rust"><code class="language-Rust">any(http.request.headers[*] contains "authorization") or starts_with(lower(http.host), "cloudflare")</code></pre>
+	<p>この表現のデバッグでは、いくつかの問題が発生します。上記のOR式の左側（LHS）と右側（RHS）のどちらが一致するのか？<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#decode_base64" target="_blank" rel="noopener noreferrer"><u>Base64デコーディング</u></a>、<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url_decode" target="_blank" rel="noopener noreferrer"><u>URLデコーディング</u></a>、そしてこの場合は<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower" target="_blank" rel="noopener noreferrer"><u>小文字化</u></a>などの機能は、これらのフィールドの元の表現に変換を適用することができ、リクエストのどの特性が一致につながったのか、さらに不明確になります。</p>
+	<p>さらに複雑なことに、1つの<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer"><u>ルールセット</u></a>内の多くの<a href="https://developers.cloudflare.com/ruleset-engine/about/rules" target="_blank" rel="noopener noreferrer"><u>ルール</u></a>が一致を登録することが可能です。<a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset" target="_blank" rel="noopener noreferrer"><u>Cloudflare OWASP</u></a>のようなルールセットは、異なるルールの累積スコアを使用し、スコアが<a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold" target="_blank" rel="noopener noreferrer"><u>設定しきい値</u></a>を超えた時にアクションをトリガーします。</p>
+	<p>さらに、Cloudflare Managed、OWASPルールの表現はプライベートです。これにより、セキュリティ体制は強化されますが、お客様は、タイトル、タグ、説明から、これらのルールが何をするのかを推測することしかできないということにもなります。例えば、「SonicWall SMA - Remote Code Execution - CVE:CVE-2025-32819」というラベルの付いたものがあります。</p>
+	<p>疑問が生じる：私のリクエストのどの部分が、ルールセットエンジンでの一致につながりましたか？これは誤検出ですか？</p>
+	<p>ここで登場するのが悪意のあるペイロードロギングです。これにより、一致につながったルールの特定のフィールドや、Transformations後のそれぞれの値まで掘り下げることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="payload-logging">ペイロードロギング</h2>
+		<a href="https://blog.cloudflare.com/#payload-logging" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>悪意のあるペイロードロギングは、リクエスト内のどのフィールドが、WAFがアクションを実行することにつながったルールに関連付けられているかを記録する機能です。これにより、曖昧さが減り、誤検知の発見、正確性の保証、パフォーマンス向上のためのルールの微調整に役立つ情報が提供されます。</p>
+	<p>上記の例では、悪意のあるペイロードログエントリーには式のLHSまたはRHSのいずれかが含まれますが、両方は含まれません。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-payload-logging-work">悪意のあるペイロードロギングの仕組みは？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-payload-logging-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ペイロードロギングとルールセットエンジンはWirefilter上に構築されており、これについては<a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust"><u>幅広く説明されています</u></a>。</p>
+	<p>基本的にこれらのエンジンは、<a href="https://github.com/cloudflare/wirefilter/blob/72e3954622ff7f30c4171f45461c2274656ee1e3/engine/src/compiler.rs#L7" target="_blank" rel="noopener noreferrer"><u>コンパイラー</u></a>トレイトを実装するRustで書かれたオブジェクトです。この特徴は、これらの表現から得られた抽象構文ツリー（AST）のコンパイルを推進します。</p>
+	<pre class="language-Rust"><code class="language-Rust">struct PayloadLoggingCompiler {
+     regex_cache HashMap&lt;String, Arc&lt;Regex&gt;&gt;
+}
+
+impl wirefilter::Compiler for PayloadLoggingCompiler {
+	type U = PayloadLoggingUserData
+	
+	fn compile_logical_expr(&amp;mut self, node: LogicalExpr) -&gt; CompiledExpr&lt;Self::U&gt; {
+		// ...
+		let regex = self.regex_cache.entry(regex_pattern)
+		.or_insert_with(|| Arc::new(regex))
+		// ...
+	}
+
+}</code></pre>
+	<p>ルールセットエンジンは式を実行し、それが true と評価された場合、式とその <a href="https://github.com/cloudflare/wirefilter/blob/72e3954622ff7f30c4171f45461c2274656ee1e3/engine/src/execution_context.rs#L38" target="_blank" rel="noopener noreferrer"><u>実行コンテキスト</u></a> がペイロード ログ コンパイラに送信され、再評価されます。実行コンテキストは、式を評価するのに必要なすべてのランタイム値を提供します。</p>
+	<p>再評価が行われると、true と評価された式の支店に関係するフィールドが記録されます。</p>
+	<p>ログの構造は、wirefilterフィールドとその値のマップです <code>Map&lt;Field, Value&gt;</code></p>
+	<pre class="language-Rust"><code class="language-Rust">{
+
+	“http.host”: “cloudflare.com”,
+	“http.method”: “get”,
+	“http.user_agent”: “mozilla”
+
+}</code></pre>
+	<p>注：<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke"><u>これらのログは、お客様が提供するパブリックキーで暗号化されます。</u></a></p>
+	<p>これらのログは、ロギングパイプラインを通過し、さまざまな方法で読み取ることができます。お客様は、Logpushジョブを構成して、お客様のプライベートキーを使用してこれらのログを自動的に復号化するカスタムWorkerに書き込むことができます。悪意のあるペイロード Logging <a href="https://github.com/cloudflare/matched-data-cli" target="_blank" rel="noopener noreferrer"><u>CLIツール</u></a>、<a href="https://github.com/cloudflare/matched-data-worker" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>、またはCloudflareダッシュボードも復号化に使用できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jTk0nPsfA0yowEwHx5VUr/eed6cece439d238b1ec861a9e0760dd6/image5.png" alt="" class="kg-image" width="1999" height="737" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-improvements-have-been-shipped">どのような改善が出荷されたか？</h3>
+		<a href="https://blog.cloudflare.com/#what-improvements-have-been-shipped" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wirefilterでは、一部のフィールドは配列タイプです。フィールド<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.names" target="_blank" rel="noopener noreferrer"><u>http.request.headers.names</u></a>は、リクエストのすべてのヘッダー名の配列です。たとえば：</p>
+	<pre class="language-Rust"><code class="language-Rust">[“content-type”, “content-length”, “authorization”, "host"]</code></pre>
+	<p>少なくとも1つのヘッダーが「c」という文字を含むため、<code>any(http.request.headers.names[*] contains “c”が含まれる)</code>は、trueと評価されます。以前のバージョンの悪意のあるペイロードロギングコンパイラでは、「http.request.headers.names」のすべてのヘッダーがフィールドは、true と評価する式の一部であるため、ログに記録されます。</p>
+	<p><b>悪意のあるペイロードログ（旧）</b></p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[*] = [“content-type”, “content-length”, “authorization”, "host"]</code></pre>
+	<p>ここでは、配列フィールドを部分的に評価し、制約式に一致するインデックスをログに記録します。この場合は、"c"を含むヘッダーだけです。</p>
+	<p><b>悪意のあるペイロードログ（新規）</b></p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[0,1] = [“content-type”, “content-length”]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="operators">オペレーター</h3>
+		<a href="https://blog.cloudflare.com/#operators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これにより、wirefilterのオペレーターが可能になります。「eq」のような一部の演算子は完全一致になります。例：<code>http.host eq “a.com”</code>.「in」、「contains」、「matches」など、「部分的」一致を実現する他の演算子も正規表現と並行して動作します。
+
+		この例の式：`<code>any(http.request.headers[*] contains “c”)`</code> は、部分一致を生成する「contains」演算子を使っています。また、「<code>any</code>」関数を使用していますが、これは部分一致を生成すると言えます。なぜなら、少なくとも1つのヘッダーに「c」が含まれている場合、<i>その</i>ヘッダーをログに記録する必要があるからです。以前のバージョンで行ったように、<i>すべて</i>のヘッダーをログに記録するのではありません。</p>
+	<p>悪意のあるペイロードロギングコンパイラーの改善により、これらの表現が評価される際に、部分的な一致だけを記録します。この場合、新しいペイロードロギングコンパイラは、<a href="https://doc.rust-lang.org/std/string/struct.String.html#method.find" target="_blank" rel="noopener noreferrer"><u>Rust標準ライブラリのバイトの「find」メソッド</u></a>と同様に、「contains」演算子を処理します。これにより、悪意のあるペイロードログが改善されます：</p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[0,1] = [“c”, “c”]</code></pre>
+	<p>これにより、物事がより明確になりました。また、ロギングパイプラインが数百万バイトを処理するようになるため、節約できます。例えば、よく分析されるフィールドは、リクエスト本文（<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw" target="_blank" rel="noopener noreferrer"><u>http.request.body.raw</u></a>）で、サイズが数十キロバイトになることもあります。表現が、3つの文字と一致する正規表現パターンをチェックしている場合があります。この場合は、キロバイトではなく3バイトをログに記録します。</p>
+	<div class="flex anchor relative">
+		<h3 id="context">コンテキスト</h3>
+		<a href="https://blog.cloudflare.com/#context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>[c]、[c]</code>は、本当の意味ではありません。一致の正確な理由を提供し、お客様のストレージ宛先に書き込まれるバイト量を大幅に削減できたとしても、主な目的はお客様に有用なデバッグ情報を提供することです。悪意のあるペイロードロギングの改善の一環として、コンパイラーは、部分的な一致の「前」と「後」（該当する場合）もログに記録します。現在、これらのバッファのサイズはそれぞれ15バイトです。つまり、悪意のあるペイロードログは次のようになります：</p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers[0,1] = [
+    {
+        before: null, // isnt included in the final log
+        content: “c”, 
+        after: “ontent-length”
+    },
+    {
+        before: null, // isnt included in the final log
+        content: “c”, 
+        after:”ontent-type”
+    }
+]</code></pre>
+	<p><b>悪意のあるペイロードログの例（旧）</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yhJWnG9FiDnQRAuV82t6C/0dbef6ded6f48a7f74d6a69aaf7d52a5/image7.png" alt="" class="kg-image" width="1999" height="242" loading="lazy">
+	</figure>
+	<p><b>悪意のあるペイロードログ（新規）の例</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6M1bQKaqNvalqtJo7nO6fM/8e87e1927ed404495273c082e258e6ee/image4.png" alt="" class="kg-image" width="964" height="262" loading="lazy">
+	</figure>
+	<p>以前のログでは、すべてのヘッダー値がありました。新しいログでは、HTTPヘッダー内の悪意のあるスクリプトである8番目のインデックスがあります。一致は「&lt;script&gt;」タグ上にあり、残りはグレー色のテキストであるコンテキストです。</p>
+	<div class="flex anchor relative">
+		<h3 id="optimizations">最適化</h3>
+		<a href="https://blog.cloudflare.com/#optimizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>マネージドルールは、悪意のあるリクエストのフィンガープリントを生成するために、正規表現に大きく依存しています。こうした表現の解析とコンパイルは、CPU負荷の高いタスクです。マネージドルールは一度記述され、何百万ものゾーンにデプロイされるため、こうした正規表現をコンパイルし、メモリにキャッシュすることで恩恵を受けます。これにより、プロセスが再起動するまで再コンパイルする必要がないため、CPUサイクルが節約されます。</p>
+	<p>悪意のあるペイロードロギングコンパイラーは、これらのログの中間状態を保存するために、動的にサイズの異なる配列またはベクトルをたくさん使用します。<a href="https://docs.rs/smallvec/latest/smallvec" target="_blank" rel="noopener noreferrer"><u>Smallvec</u></a>のようなCrateは、ヒープ割り当てを減らすためにも使われます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-infamous-truncated-value">悪名高い「TRUNCATED」値</h3>
+		<a href="https://blog.cloudflare.com/#the-infamous-truncated-value" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>時折、お客様の悪意のあるペイロードログは<a href="https://github.com/cloudflare/matched-data-cli/blob/master/src/main.rs#L124-L129" target="_blank" rel="noopener noreferrer"><u>「切り捨て」</u></a>で表示されることがあります。これは、すべてのファイアウォールイベントにバイト単位のサイズ制限があるためです。この制限を超過すると、悪意のあるペイロードログは切り捨てられます。</p>
+	<p><b>悪意のあるペイロードログ（旧）</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7234Ub1YB3xCMd6thJ5Gje/22b87bc0149f82a9315c258227764e58/image6.png" alt="" class="kg-image" width="1999" height="735" loading="lazy">
+	</figure>
+	<p><b>悪意のあるペイロードログ（新規）</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mBw8ElDalEbpjKmGoVTT3/f877a232df29c6e01889cc1941d1b69a/image1.png" alt="" class="kg-image" width="1999" height="834" loading="lazy">
+	</figure>
+	<p>悪意のあるペイロードログの50バイトサイズが1.5キロバイトから500バイトに縮小、つまり67%削減されました！つまり、悪意のあるペイロードログの切り捨てがさらに少なくなるのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">今後の展開は？</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、<a href="https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy" target="_blank" rel="noopener noreferrer"><u>非可逆表現のutf-8文字列を使って値を表しています</u></a>。つまり、マルチメディアのような無効なutf-8文字列は、<a href="https://doc.rust-lang.org/std/char/constant.REPLACEMENT_CHARACTER.html" target="_blank" rel="noopener noreferrer"><u>U+FFFDユニコード置き換え文字</u></a>として表されます。バイナリデータで機能するルールの場合、これらの値の整合性はバイト配列、または異なるフォーマットで保持する必要があります。</p>
+	<p>悪意のあるペイロードロギングのストレージ形式はJSONです。<a href="https://cbor.io" target="_blank" rel="noopener noreferrer"><u>CBOR</u></a>、<a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a>、<a href="https://protobuf.dev" target="_blank" rel="noopener noreferrer"><u>Protobuf</u></a>などの他のバイナリ形式と並んで、これをベンチマークとし、パイプラインでどれだけの処理時間が短縮されるかを確認します。これにより、ログをお客様により速く配信できるようになり、バイナリ形式は後方互換性のある定義されたスキーマを維持するのにも役立つという利点もあります。</p>
+	<p>最後に、悪意のあるペイロードロギングはマネージドルールでのみ機能します。また、カスタムルール、WAF attack score、コンテンツスキャン、<a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai" target="_blank" rel="noopener noreferrer"><u>Firewall for AI</u></a>など、他のCloudflare WAF製品への展開が予定されています。
+
+		<i>Firewall for AIによって検出された個人を特定できる情報を含むプロンプトを示す悪意のあるペイロードロギングの例：</i>
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nq4rYROygGRVW7mTZ3nqz/3c49b85c54eee6f98aa0397dfce32fa5/image2.png" alt="" class="kg-image" width="1674" height="380" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-should-i-be-excited">なぜ、ワクワクする必要があるのでしょうか？</h2>
+		<a href="https://blog.cloudflare.com/#why-should-i-be-excited" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WAFによって実行されるアクションが可視化されることで、ルールや設定が期待する通りのものであることを保証できます。悪意のあるペイロードロギングの特殊性改善は、この方向への一歩です。今後は、信頼性の向上、遅延改善、より多くのWAF製品への拡張が期待されます。</p>
+	<p>これはJSONスキーマの破壊的な変更であったため、<a href="https://developers.cloudflare.com/changelog/2025-05-08-improved-payload-logging" target="_blank" rel="noopener noreferrer"><u>適切なドキュメント</u></a>を持つお客様に徐々に展開しました。</p>
+	<p>悪意のあるペイロードロギングを開始し、有効にするには、<a href="https://developers.cloudflare.com/waf/managed-rules/payload-logging/#turn-on-payload-logging" target="_blank" rel="noopener noreferrer"><u>開発者向けドキュメントをご覧ください</u></a>。 </p>
+</div>

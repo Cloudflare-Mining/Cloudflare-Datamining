@@ -1,0 +1,140 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/backbone2024">English</a>、<a href="https://blog.cloudflare.com/zh-tw/backbone2024">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/backbone2024">Français</a>、<a href="https://blog.cloudflare.com/de-de/backbone2024">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/backbone2024">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/backbone2024">Português</a>、<a href="https://blog.cloudflare.com/es-es/backbone2024">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/backbone2024">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vNUUbJMhQo7TzovlT6YNN/a5a9bc8b8fee3417b20ad37fdc6b27c1/BLOG-2432-Hero.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>現代における「クラウド」の用い方は、数十年にわたってネットワーク図に遍在してきた象徴的な雲のアイコンに由来すると言えます。クラウドは、実際の複雑性について深入りすることなく、ネットワークやインターネットサービスの提供に必要となる広大かつ複雑なインフラコンポーネント相当の用途を発揮する様子を意味する語として用いられていました。Cloudflareでは、欠かせないインフラストラクチャソリューションをユーザーフレンドリーかつ使いやすい方法で提供することで、この原則を体現しています。雲のマークを模した弊社のロゴは、すべてのユーザーのために複雑なインターネットインフラストラクチャを簡素化するという弊社のコミットメントを反映したものとなっています。</p>
+	<p>このブログ記事では、2024年のグローバルバックボーンを中心にインフラストラクチャに関する最新情報をお伝えし、お客様にとってのメリット、市場における弊社の競争優位性、より良いインターネットの構築の支援を掲げる弊社の使命への影響に焦点を当てます。前回2021年にバックボーン関連の<a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">ブログ記事</a>を投稿して以来、弊社ではバックボーン容量（Tbps）を500%以上増加させ、新たなユースケースを開拓し、弊社のすべてのお客様に信頼性とパフォーマンス上のメリットを届けてきました。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-snapshot-of-cloudflares-infrastructure">Cloudflareのインフラストラクチャのスナップショット</h3>
+		<a href="https://blog.cloudflare.com/#a-snapshot-of-cloudflares-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年7月現在、Cloudflareは120か国以上に渡る330都市にデータセンターを保有し、それぞれにてCloudflareの機器とサービスが稼働しています。これらのデータセンターでは、サーバーの数や計算能力が異なるものの、あらゆる場所にCloudflareとサービスを提供するとの一貫した目標の元、運用しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38RRu7BaumWFemL23JcFLW/fd1e4aced5095b1e04384984c88e48be/BLOG-2432-2.png" alt="BLOG-2432-2" class="kg-image" width="1600" height="1000" loading="lazy">
+	</figure>
+	<p></p>
+	<p>これらのデータセンターは、あらゆる主要地域での弊社の存在感を確保し、お客様が各地での規制要件を遵守できることを目指し、世界各地に戦略的に配置されています。プログラム可能なスマートネットワークであり、お客様のトラフィックは可能な限り最良のデータセンターに送られ処理されます。このプログラマビリティにより、弊社の<a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">データローカライゼーションスイートソリューション</a>と併せ、お客様が課す制約に基づき機密データを地域内に留めることが可能となっています。弊社のネットワークの役割は、これらのサイトを接続し、顧客、パブリッククラウド、パートナー、より広範なインターネットとデータを交換することであり、弊社のインフラストラクチャエンジニアリングチームとネットワーク戦略チームがこれを管理しています。このネットワークこそが、弊社の製品を超高速にし、グローバルな信頼性、お客様のあらゆる要求に対するセキュリティの確保、お客様によるデータ主権要件の遵守を実現できる基盤を成しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-exchange-methods">トラフィックエクスチェンジの方法</h3>
+		<a href="https://blog.cloudflare.com/#traffic-exchange-methods" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットとは異なるネットワークと個別の<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">自律システム</a>の相互接続であり、互いにデータを交換することで動作しています。データを交換する方法は複数ある中、説明を簡素化するため、ここではネットワークの通信方法に関する2つの主要な方法であるピアリングとIPトランジットに着目ます。弊社のネットワークで使用しているこれらの基本的な接続ソリューションを理解することで、弊社のグローバルバックボーンのメリットを理解しやすくなります。</p>
+	<ol>
+		<li>
+			<p><b>ピアリング</b>：各ネットワークのユーザー間のトラフィック交換を可能にする、管理上分離したインターネットネットワークの自発的相互接続は、「<a href="https://www.netnod.se/ix/what-is-peering" target="_blank" rel="noopener noreferrer">ピアリング</a>」として知られています。Cloudflareは、世界で<a href="https://bgp.he.net/report/exchanges#_participants" target="_blank" rel="noopener noreferrer">最もピアリングされたネットワーク</a>の1つとなっています。弊社は、330都市におけるすべての主要<a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp" target="_blank" rel="noopener noreferrer">インターネットエクスチェンジ（IX）</a>で、ISPおよび他のネットワークとピアリング契約を締結しています。ご関心をお持ちの方は、いつでも<a href="https://www.cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">弊社のピアリング</a>に登録でき、また、<a href="https://developers.cloudflare.com/network-interconnect/pni-and-peering" target="_blank" rel="noopener noreferrer">プライベートネットワークインターコネクト（PNI）</a>を介したリンクにより弊社ネットワークに直接接続することもできます。</p>
+		</li>
+		<li>
+			<p><b>IPトランジット</b>：トラフィックが他社のネットワークを横断または「トランジット」できるようにする有料サービスを指します。通常、小規模なインターネットサービスプロバイダーISPを大規模インターネットに接続します。自分の車で専用の高速道路を使うための通行料に例えられます。</p>
+		</li>
+	</ol>
+	<p>バックボーンとなるのは、Cloudflareのグローバルデータセンター間でトラフィックを移動させる専用の大容量光ファイバーネットワークであり、上記のトラフィック交換方法により他のネットワークと相互接続しています。ここでは、パブリックなインターネットを介すよりも、信頼性の高いデータ転送が可能になります。都市内での接続や長距離接続については、自社のダークファイバーの管理、または高密度波長分割多重（DWDM）により帯域をリースしています。DWDMとは、同じファイバー内の異なる光の長さで複数のデータストリームを同時に送信することによりネットワーク容量を向上させる、光ファイバーテクノロジーを意味します。より多くの車が同じ高速道路を走行できるように、複数の車線を持つ高速道路を設けることに例えられるでしょう。弊社では、世界中のグローバルキャリアパートナーからこれらのサービスを購入およびリースしています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RgjDtW5LehGZEYXey4AQH/cfef08965313f67c84a052e0541fc42b/BLOG-2432-3.png" alt="BLOG-2432-3" class="kg-image" width="1999" height="750" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="backbone-operations-and-benefits">バックボーン運用とメリット</h3>
+		<a href="https://blog.cloudflare.com/#backbone-operations-and-benefits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>グローバルなバックボーンの運用には困難が伴い、多くの競合他社ではこれに取り組みません。Cloudflareでは、トラフィックルーティング制御と費用対効果の2つの理由により、この課題に取り組んでいます。</p>
+	<p>IPトランジットでは、Cloudflareから最終的な最終目的地となるネットワークへのトラフィックの搬送をトランジットパートナーに依存しており、サードパーティへの依存が発生しています。一方、弊社のバックボーンでは、内部および外部トラフィックのルーティングを完全に制御できるため、より効果的な管理が実現します。この制御により、前述のようにトラフィックルートを最適化することで最小の遅延経路が実現するため、非常に重要です。さらに、バックボーンを介して大量のトラフィックを提供するコストは、IPトランジットよりも平均で費用対効果が高くなります。これこそ、フランクフルト、ロンドン、アムステルダム、パリ、マルセイユなどの地域でバックボーン容量を強化している理由であり、当該地域でトラフィックが継続的に増加する中、接続ソリューションが広く利用可能で魅力的な価格設定になっています。</p>
+	<p>Cloudflareのバックボーンは、内部トラフィックと外部トラフィックの両方を処理しています。内部トラフィックには、弊社のセキュリティ製品またはパフォーマンス製品を使用する顧客のトラフィック、およびデータセンター間でデータをシフトするCloudflareの内部システムからのトラフィックが含まれます。例えば、<a href="https://blog.cloudflare.com/introducing-regional-tiered-cache">階層型キャッシング</a>では、データセンターを下位層と下位層に分割してキャッシング配信を最適化しています。下位層のデータセンターにコンテンツがない場合、上位層にコンテンツをリクエストします。上位層にもない場合、配信元サーバーにリクエストします。このプロセスにより、配信元サーバーへのリクエストが減り、キャッシュ効率が改善されます。弊社のネットワークの規模を考慮すると、弊社のバックボーンによる下位層と上位層のデータセンターおよびオリジン間でのキャッシュコンテンツの移送が最も費用対効果の高い方法となります。BGP Anycastを介してエンドユーザーに最も近いCloudflareデータセンターにトラフィックを引き付け、DDoSソリューションを実装するもう1つの例に、<a href="https://www.cloudflare.com/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>があります。弊社のバックボーンは、<a href="https://blog.cloudflare.com/cloudflare-network-interconnect">Cloudflareネットワークインターコネクト（CNI）</a>を介して接続するお客様のデータセンターに、クリーンなトラフィックを転送しています。</p>
+	<p>弊社のバックボーンを伝送する外部トラフィックは、AWS、Oracle、Alibaba、Googleクラウドプラットフォーム、Azureなどの他のオリジンプロバイダーからのトラフィックとなり得ます。これらのクラウドプロバイダーからのオリジンレスポンスは、ピアリングポイントおよび弊社のバックボーンを経由して、お客様に最も近いCloudflareデータセンターに転送されます。バックボーンを活用することで、ネットワーク全体におけるこのトラフィックのバックホールの仕方をよりコントロールできるようになり、その結果、信頼性とパフォーマンスが向上し、パブリックインターネットへの依存度が低減します。</p>
+	<p>パフォーマンス、セキュリティ、プログラマビリティ、可視性の制御されたレイヤー、そしてグローバルなバックボーン上で実行するパブリッククラウド、オフィス、インターネット間で相互接続するのが、弊社の<a href="https://blog.cloudflare.com/ja-jp/welcome-to-connectivity-cloud-ja-jp">コネクティビティクラウド</a>になります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RgjDtW5LehGZEYXey4AQH/cfef08965313f67c84a052e0541fc42b/BLOG-2432-3.png" alt="BLOG-2432-3" class="kg-image" width="1999" height="750" loading="lazy">
+	</figure>
+	<p><sub><i>このマップは現在のバックボーンネットワークを簡略化したものであり、すべてのパスを表したものではありません</i></sub></p>
+	<p><sub><i></i></sub></p>
+	<div class="flex anchor relative">
+		<h3 id="expanding-our-network">ネットワークの拡大</h3>
+		<a href="https://blog.cloudflare.com/#expanding-our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>冒頭で述べたように、弊社のバックボーン容量Tbpsは2021年以降500%以上増加しています。アフリカへの海底ケーブル容量を追加し、2023年にグローバルバックボーンリングを完成させ、大きなマイルストーンを達成しました。現在、地上のファイバーケーブルと海底ケーブルを介し、6大陸に広がっています。</p>
+	<p>中欧や米国などの市場に比べてインターネットインフラストラクチャが遅れている地域でのバックボーン構築は、最新のネットワーク拡張の重要な戦略となっています。弊社には、データフローをローカライズしてエンドユーザーにできるだけ近づけることを目指す、各地域のISPパートナーと共通の目標があります。十分なローカルピアリングおよび地域のインフラストラクチャの欠如のため、トラフィックが地域外の非効率的なルートをたどることがよく発生します。「トラフィックトロンボーン」として知られるこの現象は、データがより費用対効果の高い国際ルートや既存のピアリング契約を経由する場合に発生しています。</p>
+	<p>インドやトルコなどの国への地域バックボーン投資は、このような非効率なルーティングの必要性を減らすことを目的としています。独自の地域内バックボーンにより、ムンバイ、ニューデリー、チェンナイなど国内のCloudflareデータセンター間でトラフィックを直接ルーティングできるため、遅延を低減し、信頼性を高め、中国国内のバックボーンと同じレベルのサービス品質を提供できています。先進国市場の拡大に伴い、弊社のデータローカライゼーションスイート（<a href="https://www.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">DLS</a>）に対応することで、データをローカルに留められます。企業がデータを保存および処理する場所を管理できるようにすることで、地域のデータプライバシー法の遵守を支援しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WCNB78y1jHHsid46pBZOo/e950ced1e510cb8caeea0961c43ea8a0/BLOG-2432-5.png" alt="BLOG-2432-5" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="improved-latency-and-performance">遅延およびパフォーマンスの改善</h3>
+		<a href="https://blog.cloudflare.com/#improved-latency-and-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この戦略的拡大により、弊社はグローバルリーチを拡大しただけでなく、全体的な遅延も大幅に改善しました。リスボンとヨハネスブルグの間にバックボーンをデプロイして以来、ヨハネスブルグのユーザーのパフォーマンスが大幅に向上したことはその好例と言えます。たとえば、ミリ秒単位の時間が取引に影響を与える可能性があり、リアルタイム取引のために弊社を経由するAPIを実行する金融機関や、支店間のサイト間接続を容易にする弊社の<a href="https://www.cloudflare.com/network-services/products/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>ユーザーなどがこのメリットを享受しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o0H8BNLf5ca8BBx38Q5Ee/5b22f7c0ad1c5c49a67bc5149763e81d/BLOG-2432-6.png" alt="BLOG-2432-6" class="kg-image" width="1999" height="455" loading="lazy">
+	</figure>
+	<p></p>
+	<p>上の表は、ヨハネスブルグのエンドユーザーからさまざまなオリジンの場所への未キャッシュ化オリジンフェッチの往復時間（RTT）を測定し、弊社のバックボーンとパブリックインターネットを比較した例を示しています。IPトランジットやピアリングとは対照的に、オリジンリクエストを弊社のバックボーン経由で運ぶことで、ヨハネスブルグのローカルユーザーはコンテンツを最大22%速いスピードで取得できます。独自のバックボーンを使ってトラフィックを最終目的地まで長距離ホールすることで、経路とパフォーマンスを完全に制御できるのです。このような遅延改善は場所によって異なるものの、高性能接続を提供する上での弊社のバックボーンインフラストラクチャの一貫した優位性を示しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ZEEZJERWQ2UB1sdTjWUtM/f90b11507ab24edbf84e9b4cfb9b1155/BLOG-2432-7.png" alt="BLOG-2432-7" class="kg-image" width="1999" height="533" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="traffic-control">トラフィックの制御</h3>
+		<a href="https://blog.cloudflare.com/#traffic-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは、1）GPSでルートを識別し、2）最終目的地までつながっており停止することなく料金所を通過できる高速道路の料金支払いシステムを搭載したナビゲーションシステムに例えられます。弊社のバックボーンも、非常に似た機能を果たしています。</p>
+	<p>弊社のグローバルバックボーンは、2つの主な柱により構築されています。1つ目はインターネットのルーティング用に使用されるBGP（<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">ボーダー・ゲートウェイ・プロトコル</a>）、2つ目はIPネットワーク内において事前に定義された転送パス間でトラフィックをステアリングする技術であるセグメントルーティングMPLS（<a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls" target="_blank" rel="noopener noreferrer">マルチプロトコルラベルスイッチング</a>）となります。デフォルトでは、セグメントルーティングは、中間ノードがルートルックアップを実行しないイングレスからエグレスルーターまでのエンドツーエンドのカプセル化を行います。ここでは代わりに、ラベルスイッチング経路と呼ばれるエンドツーエンドの仮想回線またはトンネルを介してトラフィックを転送します。トラフィックがラベルスイッチングされたパスに送られると、パブリックインターネットに迂回することはできず、Cloudflareのバックボーン全体で事前に定義されたルートを進む必要があります。多くのネットワークでは、中間ノードがイングレスからエグレスへの転送にのみ参加し、すべてのルートインテリジェンスがネットワークのエッジで扱われる「BGPコア」を実行しさえするため、これは何も目新しいことではありません。</p>
+	<p>バックボーンでセグメントルーティングトラフィックエンジニアリング（SR-TE）を活用している一方、弊社では遅延とパフォーマンスに最適化されたデータセンター間の経路を自動的に選択できます。時に、ルーティングプロトコルのコストに関する「最短経路」は最小の遅延や最善パフォーマンスの経路とはならない場合があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QettBytPdJxacwVLVHYFN/de95a8e5a67514e64931fbe4d26967b6/BLOG-2432-8.png" alt="BLOG-2432-8" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="supercharged-argo-and-the-global-backbone">さらなる強化：Argoとグローバルバックボーン</h3>
+		<a href="https://blog.cloudflare.com/#supercharged-argo-and-the-global-backbone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/lp/pg-argo-smart-routing/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=ao-fy-pay-gbl_en_native-applications-ge-ge-general-core_paid_apo_argo&amp;utm_content=argo&amp;utm_term=cloudflare+argo&amp;campaignid=71700000092259497&amp;adgroupid=58700007751943324&amp;creativeid=666481290143&amp;_bt=666481290143&amp;_bk=cloudflare+argo&amp;_bm=e&amp;_bn=g&amp;_bg=138787490550&amp;_placement=&amp;_target=&amp;_loc=1017825&amp;_dv=c&amp;awsearchcpc=1&amp;gad_source=1&amp;gclid=Cj0KCQjwvb-zBhCmARIsAAfUI2uj2VOkHjvM2qspAfBodOROAH_bG040P6bjvQeEbVwFF1qwdEKLXLkaAllMEALw_wcB&amp;gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">Argo Smart Routing</a>は、Cloudflareのバックボーン、トランジット、ピアリング接続のポートフォリオを活用し、ユーザーのリクエストが届くデータセンターとバックエンドの配信元サーバー間の最適なパスを見つけるサービスです。Argoは、パフォーマンスが向上するためにオリジンに向かう途中で、あるCloudflareデータセンターから別のCloudflareデータセンターにリクエストを転送する場合があります。<a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed">Orpheus</a>はArgo同等のサービスで、すべてのカスタマーオリジンリクエストの劣化パスを無料で迂回します。Orpheusは、ネットワークの状態をリアルタイムで分析し、到達不能状態を積極的に回避できます。Argoをご利用のお客様は、Cloudflareデータセンターからオリジンへのリクエストに対して最適なパフォーマンスが得られます。一方、Orpheusは、すべてのお客様全般にエラーの自己回復機能を提供しています。Segment Routingを下層として使う弊社のグローバルなバックボーン、そして<a href="https://www.cloudflare.com/application-services/products/argo-smart-routing" target="_blank" rel="noopener noreferrer">Argo Smart Routing</a>とOrpheusを接続の上層として使うことにより、弊社で実現され得る最も最適化されたパスで重要な顧客トラフィックを伝送できるようになります。</p>
+	<p>次に、弊社のグローバルバックボーンがArgo Smart Routingとどのように適合するかを見てみましょう。<a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Transit Selection</a>はArgo Smart Routingの拡張機能であり、Cloudflareデータセンターのホップ間の遅延が最も少ない経路が明示的に選択し、お客様のオリジンリクエストの転送に使用します。最も遅延の少ない経路は、多くの場合、弊社のグローバルバックボーンになります。サードパーティのトランジットネットワークとは対照的に、より専用かつプライベートな接続手段であることがその理由です。</p>
+	<p>あるオランダの多国籍製薬企業では、グローバルオフィス、研究センター、リモートワークの従業員を接続するに当たり、Cloudflareの<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASEソリューション</a>によりCloudflareのネットワークとサービスを利用しています。中央データセンターからアジア内のオフィスに戻る重要データへの安全なアクセスをアジアの支社が確保するため、Cloudflareのセキュリティソリューションとネットワークを利用しています。地域間のケーブルが切断された場合でも、弊社のネットワークは自動的に地域間の最適な代替ルートを探すため、ビジネスへの影響は限定的なものとなります。</p>
+	<p>Argoは、スマートルーティングでオリジンに到達するための選択肢として、独自のバックボーンを含め、異なるプロバイダーパスのあらゆる組み合わせを検討します。非常に多くのネットワークとの広範な相互接続およびグローバルなプライベートバックボーンのおかげで、Argoはリクエストに対して最もパフォーマンスの高いネットワークパスを特定できます。バックボーンは、一貫してArgoが選択する最小の遅延パスの1つです。</p>
+	<p>Cloudflareでは、高いパフォーマンスに加え、お客様にとってのネットワークの信頼性を非常に重視しています。つまり、光ファイバーの切断事故やサードパーティトランジットプロバイダーの問題に対し、可能な限りの回復力を持たせています。<a href="https://en.wikipedia.org/wiki/AAE-1" target="_blank" rel="noopener noreferrer">AAE-1</a>（<a href="https://www.submarinecablemap.com/submarine-cable/asia-africa-europe-1-aae-1" target="_blank" rel="noopener noreferrer">アジア・アフリカ・ヨーロッパ-1</a>）海底ケーブルで断線があった際、弊社のトランジットプロバイダー・パスの一部とバックボーンを経由する経路で、Argoがシンガポールとアムステルダム間での接続に対応したのがその好例となっています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66CGBePnLzuLRuTErvf8Cr/813b4b60a95935491e967214851e5a04/BLOG-2432-9.png" alt="BLOG-2432-9" class="kg-image" width="1999" height="728" loading="lazy">
+	</figure>
+	<p></p>
+	<p>紫色の大きく上昇している部分は、輻輳によるサードパーティIPトランジットプロバイダー・パスの1つでの遅延増加を示しています。この増加は、プロバイダーのネットワーク内でのものと思われるトラフィックエンジニアリングに従って最終的に解決されました。他のトランジットネットワークで、より小規模な遅延増加（黄色の線）が見られたものの、それでも控えめなものとなっています。グラフの下の緑の線は弊社のバックボーンで、アジアとヨーロッパの間の多様なバックボーン接続により、往復時間はイベントを通じてほぼ横ばいとなっています。ファイバーの切断があった期間、アムステルダムとシンガポールの間で約200ミリ秒の速度を維持しました。トランジットプロバイダーのパスで見られたような顕著なネットワークの混乱はなく、Argoは最適なパフォーマンスを実現するためにバックボーンを積極的に活用した様子が見て取れます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1A8CdaGq8P2hF3DtIs9dQI/a10fdf3af9de917fb0036d38eace9905/BLOG-2432-10.png" alt="BLOG-2432-10" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="call-to-action">Call to Action（行動喚起）</h3>
+		<a href="https://blog.cloudflare.com/#call-to-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Argoがネットワーク内のパフォーマンスを向上させるのに合わせ、Cloudflareネットワークインターコネクト（<a href="https://developers.cloudflare.com/network-interconnect" target="_blank" rel="noopener noreferrer">CNI</a>）がArgoへのアクセスを最適化します。Enterpriseのお客様には、必要に応じ弊社ネットワークへのオンランプとして無料のCNIをご利用いただくようお勧めします。堅牢なバックボーンを含めた弊社のネットワークを最大限に活用し、Cloudflareコネクティビティクラウド内のすべての製品の全体的なパフォーマンスを向上できます。まとめると、弊社のグローバルネットワークこそが弊社の主力製品であり、弊社のバックボーンがここで重要な役割を果たしています。このようにして、Cloudflareはあらゆる場所ですべての人のためにサービスを改善することで、より良いインターネットの構築に貢献し続けています。</p>
+	<p>Cloudflareのミッションに参加したいとお考えの方は、CloudflareネットワークのオンランプパートナーとしてCloudflareと直接統合することで、お客様の顧客に安全で信頼性の高い接続をお届けします。弊社のオンランプパートナーシップ、そしてこれがお客様のビジネスにもたらすメリットの詳細は、<a href="https://www.cloudflare.com/network-onramp-partners" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+</div>

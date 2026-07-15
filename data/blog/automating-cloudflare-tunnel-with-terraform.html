@@ -1,320 +1,281 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HkKfLR1e0M1JAm7AAkJvZ/dd3bf1de2e24e78033a951cb26191111/automating-cloudflare-tunnel-with-terraform.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Cloudflare Tunnel allows you to connect applications securely and quickly to Cloudflare’s edge. With Cloudflare Tunnel, teams can expose anything to the world, from internal subnets to containers, in a secure and fast way. Thanks to recent developments with our <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/603" target="_blank" rel="noopener noreferrer">Terraform provider</a> and the advent of <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a> it’s never been easier to spin up.</p>
-	<div class="flex anchor relative">
-		<h3 id="classic-tunnels-to-named-tunnels">Classic Tunnels to Named Tunnels</h3>
-		<a href="https://blog.cloudflare.com/#classic-tunnels-to-named-tunnels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Historically, the biggest limitation to using Cloudflare Tunnel at scale was that the process to create a tunnel was manual. A user needed to download the binary for their OS, install/compile it, and then run the command <code>cloudflared tunnel login</code>. This would open a browser to their Cloudflare account so they could download a <code>cert.pem</code> file to authenticate their tunnel against Cloudflare’s edge with their account.</p>
-	<p>With the jump to Named Tunnels and a supported <a href="https://api.cloudflare.com/#argo-tunnel-create-argo-tunnel" target="_blank" rel="noopener noreferrer">API endpoint</a> Cloudflare users can automate this manual process. Named Tunnels also moved to allow a <code>.json</code> file for the origin side tunnel credentials instead of (or with) the <code>cert.pem</code> file. It has been a dream of mine since joining Cloudflare to write a Cloudflare Tunnel as code, along with my instance/application, and deploy it while I go walk my dog. Tooling should be easy to deploy and robust to use. That dream is now a reality and my dog could not be happier.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gSV6JJ9YIcaT8Mb0Jd3M3/7903db595fad3dcf6d88732542562f99/image3-2.png" alt="" class="kg-image" width="1800" height="1800" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="okay-so-what">Okay, so what?</h3>
-		<a href="https://blog.cloudflare.com/#okay-so-what" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The ability to dynamically generate a tunnel and tie it into a back end application(s) brings several benefits to users including: putting more of their Cloudflare config in code, auto-scaling resources, dynamically spinning up resources such as bastion servers for secure logins, and saving time from avoiding manually generating/maintaining tunnels.</p>
-	<p>Tunnels also allow traffic to connect securely into Cloudflare’s edge for <i>only</i> the particular account they are affiliated with. In a world where IPs are increasingly ephemeral, tunnels allow for a modern approach to tying your application(s) into Cloudflare. Putting automation around tunnels allows teams to incorporate them into their existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD (continuous improvement/continuous development) pipelines</a>.</p>
-	<p>Most importantly, the spin up of an environment securely tied into Cloudflare can be achieved with some Terraform config and then by running <code>terraform apply</code>. I can then go take my pup on an adventure while my environment kicks off.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-terraform">Why Terraform?</h3>
-		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While there are numerous Infrastructure as Code tools out there, Terraform has an actively maintained <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank" rel="noopener noreferrer">Cloudflare provider</a>. This is not to say that this same functionality cannot be re-created by making use of the API endpoint with a tool of your choice. The overarching concepts here should translate quite nicely. Using Terraform we can deploy Cloudflare resources, origin resources, and configure our server all with one tool. Let’s see what setting that up looks like.</p>
-	<div class="flex anchor relative">
-		<h3 id="terraform-config">Terraform Config</h3>
-		<a href="https://blog.cloudflare.com/#terraform-config" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The technical bits of this will cover how to set up an automated Named Tunnel that will proxy traffic to a Google compute instance (GCP) which is my backend for this example. These concepts should be the same regardless of where you host your applications such as an onprem location to a multi-cloud solution.</p>
-	<p>With <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel’s Ingress Rules</a>, we can use a single tunnel to proxy traffic to a number of local services. In our case we will tie into a Docker container running <a href="https://httpbin.org" target="_blank" rel="noopener noreferrer">HTTPbin</a> and the local SSH daemon. These endpoints are being used to represent a standard login protocol (such as SSH or RDP) and an example web application (HTTPbin). We can even take it a step further by applying a <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Zero Trust framework with Cloudflare Access</a> over the SSH hostname.</p>
-	<p>The version of Terraform used in this example is 0.15.0. Please refer to the provider documentation when using the Cloudflare Terraform provider. Tunnels are compatible with Terraform version 0.13+.</p>
-	<pre class="language-bash"><code class="language-bash">cdlg at cloudflare in ~/Documents/terraform/blog on master
-$ terraform --version
-Terraform v0.15.0
-on darwin_amd64
-+ provider registry.terraform.io/cloudflare/cloudflare v2.18.0
-+ provider registry.terraform.io/hashicorp/google v3.56.0
-+ provider registry.terraform.io/hashicorp/random v3.0.1
-+ provider registry.terraform.io/hashicorp/template v2.2.0</code></pre>
-	<p>Here is what the Terraform hierarchy looks like for this setup.</p>
-	<pre class="language-bash"><code class="language-bash">cdlg at cloudflare in ~/Documents/terraform/blog on master
-$ tree .
-.
-├── README.md
-├── access.tf
-├── argo.tf
-├── bootstrap.tf
-├── instance.tf
-├── server.tpl
-├── terraform.tfstate
-├── terraform.tfstate.backup
-├── terraform.tfvars
-├── terraform.tfvars.example
-├── test.plan
-└── versions.tf
-
-0 directories, 12 files</code></pre>
-	<p>We can ignore the files <code>README.md</code> and <code>terraform.tfvars.example</code> for now. The files ending in <code>.tf</code> is where our Terraform configuration lives. Each file is designated to a specific purpose. For example, the <code>instance.tf</code> file only contains the scope of the GCP server resources used with this deployment and the affiliated DNS records pointing to the tunnel on it.</p>
-	<pre class="language-bash"><code class="language-bash">cdlg at cloudflare in ~/Documents/terraform/blog on master
-$ cat instance.tf
-# Instance information
-data "google_compute_image" "image" {
-  family  = "ubuntu-minimal-1804-lts"
-  project = "ubuntu-os-cloud"
-}
-
-resource "google_compute_instance" "origin" {
-  name         = "test"
-  machine_type = var.machine_type
-  zone         = var.zone
-  tags         = ["no-ssh"]
-
-  boot_disk {
-    initialize_params {
-      image = data.google_compute_image.image.self_link
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-      // Ephemeral IP
-    }
-  }
-  // Optional config to make instance ephemeral
-  scheduling {
-    preemptible       = true
-    automatic_restart = false
-  }
-
-  metadata_startup_script = templatefile("./server.tpl",
-    {
-      web_zone    = var.cloudflare_zone,
-      account     = var.cloudflare_account_id,
-      tunnel_id   = cloudflare_argo_tunnel.auto_tunnel.id,
-      tunnel_name = cloudflare_argo_tunnel.auto_tunnel.name,
-      secret      = random_id.argo_secret.b64_std
-    })
-}
-
-
-
-# DNS settings to CNAME to tunnel target
-resource "cloudflare_record" "http_app" {
-  zone_id = var.cloudflare_zone_id
-  name    = var.cloudflare_zone
-  value   = "${cloudflare_argo_tunnel.auto_tunnel.id}.cfargotunnel.com"
-  type    = "CNAME"
-  proxied = true
-}
-
-resource "cloudflare_record" "ssh_app" {
-  zone_id = var.cloudflare_zone_id
-  name    = "ssh"
-  value   = "${cloudflare_argo_tunnel.auto_tunnel.id}.cfargotunnel.com"
-  type    = "CNAME"
-  proxied = true
-}</code></pre>
-	<p>This is a personal preference — if desired, the entire Terraform config could be put into one file. One thing to note is the usage of variables throughout the files. For example, the value of <code>var.cloudflare_zone</code> is populated with the value provided to it from the <code>terraform.tfvars</code> file. This allows the configuration to be used as a template with other deployments. The only change that would be necessary is updating the relevant variables, such as in the <code>terraform.tfvars</code> file, when re-using the configuration.</p>
-	<p>When using a credentials file (vs environment variables such as a <code>.tfvars</code> file) it is very important that this file is exempted from the version tracking tool. With git this is accomplished with a <code>.gitignore</code> file. Before running this example the <code>terraform.tfvars.example</code> file is copied to <code>terraform.tfvars</code> within the same directory and filled in as needed. The <code>.gitignore</code> file is told to ignore any file named <code>terraform.tfvars</code> to exempt the actual variables from version tracking.</p>
-	<pre class="language-bash"><code class="language-bash">cdlg at cloudflare in ~/Documents/terraform/blog on master
-$ cat .gitignore
-# Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
-*.tfstate
-*.tfstate.*
-
-# Crash log files
-crash.log
-
-# Ignore any .tfvars files that are generated automatically for each Terraform run. Most
-# .tfvars files are managed as part of configuration and so should be included in
-# version control.
-#
-# example.tfvars
-terraform.tfvars
-
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Include override files you do wish to add to version control using negated pattern
-#
-# !example_override.tf
-
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-*tfplan*
-*.plan*
-*lock*</code></pre>
-	<p>Now to the fun stuff! To create a Cloudflare Tunnel in Terraform we only need to set the following resources in our Terraform config (this is what populates the <code>argo.tf</code> file).</p>
-	<pre class="language-bash"><code class="language-bash">resource "random_id" "argo_secret" {
-  byte_length = 35
-}
-
-resource "cloudflare_argo_tunnel" "auto_tunnel" {
-  account_id = var.cloudflare_account_id
-  name       = "zero_trust_ssh_http"
-  secret     = random_id.argo_secret.b64_std
-}</code></pre>
-	<p>That’s it.</p>
-	<p>Technically you could get away with just the <code>cloudflare_argo_tunnel</code> resource, but using the <code>random_id</code> resource helps with not having to hard code the secret for the tunnel. Instead we can dynamically generate a secret for our tunnel each time we run Terraform.</p>
-	<p>Let’s break down what is happening in the <code>cloudflare_argo_tunnel</code> resource: we are passing the Cloudflare account ID (via the <code>var.cloudflare_account_id</code> variable), a name for our tunnel, and the dynamically generated secret for the tunnel, which is pulled from the <code>random_id</code> resource. Tunnels expect the secret to be in base64 standard encoding and at least 32 characters.</p>
-	<p>Using Named Tunnels now gives customers a UUID (universal unique identity) target to tie their applications to. These endpoints are routed off an internal domain to Cloudflare and can only be used with zones in your account, as mentioned earlier. This means that one tunnel can proxy multiple applications for various zones in your account, thanks to Cloudflare Tunnel Ingress Rules.</p>
-	<p>Now that we have a target for our services, we can create a tunnel/applications in the GCP instance. Terraform has a feature called a <a href="https://www.terraform.io/docs/language/functions/templatefile.html" target="_blank" rel="noopener noreferrer">templatefile function</a> that allows you to pass input variables as local variables (i.e. what the server can use to configure things) to an argument called <code>metadata_startup_script</code>.</p>
-	<pre class="language-bash"><code class="language-bash">resource "google_compute_instance" "origin" {
-...
-  metadata_startup_script = templatefile("./server.tpl", 
-    {
-      web_zone    = var.cloudflare_zone,
-      account     = var.cloudflare_account_id,
-      tunnel_id   = cloudflare_argo_tunnel.auto_tunnel.id,
-      tunnel_name = cloudflare_argo_tunnel.auto_tunnel.name,
-      secret      = random_id.argo_secret.b64_std
-    })
-}</code></pre>
-	<p>This abbreviated section of the <code>google_compute_instance</code> resource shows a templatefile using 5 variables passed to the file located at <code>./server.tpl</code>. The file <code>server.tpl</code> is a bash script within the local directory that will configure the newly created GCP instance.</p>
-	<p>As indicated earlier, Named Tunnels can make use of a JSON credentials file instead of the historic use of a <code>cert.pem</code> file. By using a templatefile function pointing to a bash script (or cloud-init, etc…) we can dynamically generate the fields that populate both the <code>cert.json</code> file and the <code>config.yml</code> file used for Ingress Rules on the server/host. Then the bash script can install <code>cloudflared</code> as <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/run-as-service" target="_blank" rel="noopener noreferrer">a system service</a>, so it is persistent (i.e it can come back up after the machine is rebooted). Here is an example of this.</p>
-	<pre class="language-bash"><code class="language-bash">wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
-sudo dpkg -i cloudflared-stable-linux-amd64.deb
-mkdir ~/.cloudflared
-touch ~/.cloudflared/cert.json
-touch ~/.cloudflared/config.yml
-cat &gt; ~/.cloudflared/cert.json &lt;&lt; "EOF"
-{
-    "AccountTag"   : "${account}",
-    "TunnelID"     : "${tunnel_id}",
-    "TunnelName"   : "${tunnel_name}",
-    "TunnelSecret" : "${secret}"
-}
-EOF
-cat &gt; ~/.cloudflared/config.yml &lt;&lt; "EOF"
-tunnel: ${tunnel_id}
-credentials-file: /etc/cloudflared/cert.json
-logfile: /var/log/cloudflared.log
-loglevel: info
-
-ingress:
-  - hostname: ${web_zone}
-    service: http://localhost:8080
-  - hostname: ssh.${web_zone}
-    service: ssh://localhost:22
-  - hostname: "*"
-    service: hello-world
-EOF
-
-sudo cloudflared service install
-sudo cp -via ~/.cloudflared/cert.json /etc/cloudflared/
-
-cd /tmp
-sudo docker-compose up -d &amp;&amp; sudo service cloudflared start</code></pre>
-	<p>In this example, a <a href="https://tldp.org/LDP/abs/html/here-docs.html" target="_blank" rel="noopener noreferrer">heredoc</a> is used to fill in the variable fields for the <code>cert.json</code> file and another heredoc is used to fill in the <code>config.yml</code> (Ingress Rules) file with the variables we set in Terraform. Taking a quick look at the <code>cert.json</code> file we can see that the Account ID is provided to it which secures the tunnel to your specific account. The UUID &nbsp;of the tunnel is then passed in along with the name that was assigned in the tunnel’s name argument. Lastly the 35 character secret is then passed to the tunnel. These are the necessary parameters to get our tunnel spun up against Cloudflare’s edge.</p>
-	<p>The <code>config.yml</code> file is where we set up the Ingress Rules for the Cloudflare Tunnel. The first few lines tell the tunnel which UUID to attach to, where the credentials are on the OS, and where the tunnel should write logs to. The log level of <code>info</code> is good for general use but for troubleshooting <code>debug</code> may be needed.</p>
-	<p>Next the first - <code>hostname:</code> line says any requests bound for that particular hostname need to be proxied to the service (HTTPbin) running at <code>localhost</code> port 8080. Following that the SSH target is defined and will proxy requests to the local SSH port. The next hostname is interesting in that we have a wildcard character. This functionality allows other zones or hostnames on the Account to point to the tunnel without being explicitly defined in Ingress Rules. The service that will respond to these requests is a built in <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress#supported-protocols" target="_blank" rel="noopener noreferrer">hello world service</a> the tunnel provides.</p>
-	<p>Pretty neat, but what else can we do? We can block all <a href="https://developers.cloudflare.com/cloudflare-one/faq/tunnel/#how-can-origin-servers-be-secured-when-using-tunnel" target="_blank" rel="noopener noreferrer">inbound networking</a> to the server and instead use Cloudflare Tunnel to proxy the connections to Cloudflare’s edge. To safeguard the SSH hostname <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps" target="_blank" rel="noopener noreferrer">an Access policy</a> can be applied over it.</p>
-	<div class="flex anchor relative">
-		<h3 id="ssh-and-zero-trust">SSH and Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#ssh-and-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Access team has several tutorials on how to <a href="https://developers.cloudflare.com/cloudflare-one/api-terraform/access-with-terraform" target="_blank" rel="noopener noreferrer">tie your policies into Terraform</a>. Using this as a guide we can create the Access related Terraform resources for the SSH endpoint.</p>
-	<pre class="language-bash"><code class="language-bash"># Access policy to apply zero trust policy over SSH endpoint
-resource "cloudflare_access_application" "ssh_app" {
-  zone_id          = var.cloudflare_zone_id
-  name             = "Access protection for ssh.${var.cloudflare_zone}"
-  domain           = "ssh.${var.cloudflare_zone}"
-  session_duration = "1h"
-}
-
-resource "cloudflare_access_policy" "ssh_policy" {
-  application_id = cloudflare_access_application.ssh_app.id
-  zone_id        = var.cloudflare_zone_id
-  name           = "Example Policy for ssh.${var.cloudflare_zone}"
-  precedence     = "1"
-  decision       = "allow"
-
-  include {
-    email = [var.cloudflare_email]
-  }
-}</code></pre>
-	<p>In the above <code>cloudflare_access_application</code> resource, a variable, <code>var.cloudflare_zone_id</code>, is used to pull in the Cloudflare Zone’s ID based on the value of the variable provided in the <code>terraform.tfvars</code> file. The Zone Name is also dynamically populated at runtime in the <code>var.cloudflare_zone</code> fields based on the value provided in the <code>terraform.tfvars</code> file. We also limit the scope of this access policy to <code>ssh.targetdomain.com</code> using the <code>domain</code> argument in the <code>cloudflare_access_application</code> resource.</p>
-	<p>In the <code>cloudflare_access_policy</code> resource, we take the information provided by the <code>cloudflare_access_application</code> resource called <code>ssh_app</code> and apply it as an active policy. The scope of who is allowed to log into this endpoint is the user’s email as provided by the <code>var.cloudflare_email</code> variable.</p>
-	<div class="flex anchor relative">
-		<h3 id="terraform-spin-up-and-ssh-connection">Terraform Spin up and SSH Connection</h3>
-		<a href="https://blog.cloudflare.com/#terraform-spin-up-and-ssh-connection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now to connect to this SSH endpoint. First we need to spin up our environment. This can be done with <code>terraform plan</code> and then <code>terraform apply</code>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7t9hVHmNwlWQASoIFnboLt/9efaaf728a3a432e73afff6c666544f6/image5-2.png" alt="" class="kg-image" width="1667" height="708" loading="lazy">
-
-	</figure>
-	<p>On my workstation I have <code>cloudflared</code> installed and updated my SSH config to proxy traffic for this SSH endpoint through <code>cloudflared</code>.</p>
-	<pre class="language-bash"><code class="language-bash">cdlg at cloudflare in ~
-$ cloudflared --version
-cloudflared version 2021.4.0 (built 2021-04-07-2111 UTC)
-
-cdlg at cloudflare in ~
-$ grep -A2 'ssh.chrisdlg.com' ~/.ssh/config
-Host ssh.chrisdlg.com
-    IdentityFile /Users/cdlg/.ssh/google_compute_engine
-    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h</code></pre>
-	<p>I can then SSH with my local user on the remote machine (cdlg) at the SSH hostname (ssh.chrisdlg.com). The instance of cloudflared running on my workstation will then proxy this request.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BcyIgXbVE2wu6rRq6pZgJ/8690b09b9e60f28a7fac1377942b7bc4/image4-3.png" alt="" class="kg-image" width="1999" height="306" loading="lazy">
-
-	</figure>
-	<p>This will open a new tab in my current browser and direct me to the Cloudflare Access application recently created with Terraform. Earlier in the Access resource we set the Cloudflare user as denoted by the <code>var.cloudflare_email</code> variable as the criteria for the Access policy. If the correct email address is provided the user will receive an email similar to the following.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Z4k965ZDENHc6gTFX0AZx/6914c9f98fdab2960ce873491966471d/image1-3.png" alt="" class="kg-image" width="796" height="407" loading="lazy">
-
-	</figure>
-	<p>Following the link or providing the pin on the previously opened tab will complete the authentication. Hitting ‘approve’ tells Cloudflare Access that the user should be allowed through per the length of the <code>session_duration</code> argument in the <code>cloudflare_access_application</code> resource. Navigating back to the terminal we can see that we are now on the server.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zogkUR1oIkrVNTAXAMlnl/35dfd66180b79030974a4df03154978a/image6.png" alt="" class="kg-image" width="1379" height="851" loading="lazy">
-
-	</figure>
-	<p>If we check the server’s authentication log we can see that connections from the tunnel are coming in via <code>localhost (127.0.0.1)</code>. This allows us to lock down external network access on the SSH port of the server.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HQdBMj9vWK7HiKP6VXwcI/383ba96ae8d91fd2eec69bf43a41e895/image2-2.png" alt="" class="kg-image" width="1323" height="332" loading="lazy">
-
-	</figure>
-	<p>The full config of this deployment can be viewed <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/terraform-zerotrust-ssh-http-gcp" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>The roadmap for Cloudflare Tunnels is bright. Hopefully this walkthrough provided some quick context on what you can achieve with Cloudflare Tunnels and Cloudflare. Personally my dog is quite happy that I have more time to take him on walks. We’re very excited to see what you build with Cloudflare Tunnels and Cloudflare!</p>
+<p>Cloudflare Tunnel allows you to connect applications securely and quickly to Cloudflare’s edge. With Cloudflare Tunnel, teams can expose anything to the world, from internal subnets to containers, in a secure and fast way. Thanks to recent developments with our <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/603" target="_blank" rel="noopener noreferrer">Terraform provider</a> and the advent of <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a> it’s never been easier to spin up.</p>
+<h3>Classic Tunnels to Named Tunnels</h3>
+<p>Historically, the biggest limitation to using Cloudflare Tunnel at scale was that the process to create a tunnel was manual. A user needed to download the binary for their OS, install/compile it, and then run the command <code>cloudflared tunnel login</code>. This would open a browser to their Cloudflare account so they could download a <code>cert.pem</code> file to authenticate their tunnel against Cloudflare’s edge with their account.</p>
+<p>With the jump to Named Tunnels and a supported <a href="https://api.cloudflare.com/#argo-tunnel-create-argo-tunnel" target="_blank" rel="noopener noreferrer">API endpoint</a> Cloudflare users can automate this manual process. Named Tunnels also moved to allow a <code>.json</code> file for the origin side tunnel credentials instead of (or with) the <code>cert.pem</code> file. It has been a dream of mine since joining Cloudflare to write a Cloudflare Tunnel as code, along with my instance/application, and deploy it while I go walk my dog. Tooling should be easy to deploy and robust to use. That dream is now a reality and my dog could not be happier.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="715" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=640&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=750&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=828&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=1080&amp;h=1080&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=1280&amp;h=1280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466TEQDYNVGNGCV8HQY954.png&amp;w=1430&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - cUewCl" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="715" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - cUewCl"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Okay, so what?</h3>
+<p>The ability to dynamically generate a tunnel and tie it into a back end application(s) brings several benefits to users including: putting more of their Cloudflare config in code, auto-scaling resources, dynamically spinning up resources such as bastion servers for secure logins, and saving time from avoiding manually generating/maintaining tunnels.</p>
+<p>Tunnels also allow traffic to connect securely into Cloudflare’s edge for <em>only</em> the particular account they are affiliated with. In a world where IPs are increasingly ephemeral, tunnels allow for a modern approach to tying your application(s) into Cloudflare. Putting automation around tunnels allows teams to incorporate them into their existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD (continuous improvement/continuous development) pipelines</a>.</p>
+<p>Most importantly, the spin up of an environment securely tied into Cloudflare can be achieved with some Terraform config and then by running <code>terraform apply</code>. I can then go take my pup on an adventure while my environment kicks off.</p>
+<h3>Why Terraform?</h3>
+<p>While there are numerous Infrastructure as Code tools out there, Terraform has an actively maintained <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank" rel="noopener noreferrer">Cloudflare provider</a>. This is not to say that this same functionality cannot be re-created by making use of the API endpoint with a tool of your choice. The overarching concepts here should translate quite nicely. Using Terraform we can deploy Cloudflare resources, origin resources, and configure our server all with one tool. Let’s see what setting that up looks like.</p>
+<h3>Terraform Config</h3>
+<p>The technical bits of this will cover how to set up an automated Named Tunnel that will proxy traffic to a Google compute instance (GCP) which is my backend for this example. These concepts should be the same regardless of where you host your applications such as an onprem location to a multi-cloud solution.</p>
+<p>With <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel’s Ingress Rules</a>, we can use a single tunnel to proxy traffic to a number of local services. In our case we will tie into a Docker container running <a href="https://httpbin.org" target="_blank" rel="noopener noreferrer">HTTPbin</a> and the local SSH daemon. These endpoints are being used to represent a standard login protocol (such as SSH or RDP) and an example web application (HTTPbin). We can even take it a step further by applying a <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Zero Trust framework with Cloudflare Access</a> over the SSH hostname.</p>
+<p>The version of Terraform used in this example is 0.15.0. Please refer to the provider documentation when using the Cloudflare Terraform provider. Tunnels are compatible with Terraform version 0.13+.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~/Documents/terraform/blog</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> master</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-005cc5-99ffe4"> --version</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Terraform</span><span class="sk-032f62-99ffe4"> v0.15.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">on</span><span class="sk-032f62-99ffe4"> darwin_amd64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/cloudflare/cloudflare</span><span class="sk-032f62-99ffe4"> v2.18.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/google</span><span class="sk-032f62-99ffe4"> v3.56.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/random</span><span class="sk-032f62-99ffe4"> v3.0.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/template</span><span class="sk-032f62-99ffe4"> v2.2.0</span></span></code></pre>
 </div>
+<p>Here is what the Terraform hierarchy looks like for this setup.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~/Documents/terraform/blog</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> master</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tree</span><span class="sk-032f62-99ffe4"> .</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> README.md</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> access.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> argo.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> bootstrap.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> instance.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> server.tpl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> terraform.tfstate</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> terraform.tfstate.backup</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> terraform.tfvars</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> terraform.tfvars.example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> test.plan</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span><span class="sk-032f62-99ffe4"> versions.tf</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> directories,</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-032f62-99ffe4"> files</span></span></code></pre>
+</div>
+<p>We can ignore the files <code>README.md</code> and <code>terraform.tfvars.example</code> for now. The files ending in <code>.tf</code> is where our Terraform configuration lives. Each file is designated to a specific purpose. For example, the <code>instance.tf</code> file only contains the scope of the GCP server resources used with this deployment and the affiliated DNS records pointing to the tunnel on it.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~/Documents/terraform/blog</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> master</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> instance.tf</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Instance information</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data</span><span class="sk-032f62-99ffe4"> "google_compute_image"</span><span class="sk-032f62-99ffe4"> "image"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  family</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> "ubuntu-minimal-1804-lts"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  project</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "ubuntu-os-cloud"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "google_compute_instance"</span><span class="sk-032f62-99ffe4"> "origin"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> "test"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  machine_type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.machine_type</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> var.zone</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tags</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"no-ssh"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  boot_disk</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    initialize_params</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      image</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> data.google_compute_image.image.self_link</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  network_interface</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    network</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "default"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    access_config</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      //</span><span class="sk-032f62-99ffe4"> Ephemeral</span><span class="sk-032f62-99ffe4"> IP</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Optional</span><span class="sk-032f62-99ffe4"> config</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> instance</span><span class="sk-032f62-99ffe4"> ephemeral</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  scheduling</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    preemptible</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    automatic_restart</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  metadata_startup_script</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> templatefile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"./server.tpl"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      web_zone</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      account</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.cloudflare_account_id,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel_id</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.auto_tunnel.id,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.auto_tunnel.name,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      secret</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> random_id.argo_secret.b64_std</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># DNS settings to CNAME to tunnel target</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_record"</span><span class="sk-032f62-99ffe4"> "http_app"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">cloudflare_argo_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">auto_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4">}.cfargotunnel.com"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  proxied</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_record"</span><span class="sk-032f62-99ffe4"> "ssh_app"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "ssh"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">cloudflare_argo_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">auto_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4">}.cfargotunnel.com"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  proxied</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This is a personal preference — if desired, the entire Terraform config could be put into one file. One thing to note is the usage of variables throughout the files. For example, the value of <code>var.cloudflare_zone</code> is populated with the value provided to it from the <code>terraform.tfvars</code> file. This allows the configuration to be used as a template with other deployments. The only change that would be necessary is updating the relevant variables, such as in the <code>terraform.tfvars</code> file, when re-using the configuration.</p>
+<p>When using a credentials file (vs environment variables such as a <code>.tfvars</code> file) it is very important that this file is exempted from the version tracking tool. With git this is accomplished with a <code>.gitignore</code> file. Before running this example the <code>terraform.tfvars.example</code> file is copied to <code>terraform.tfvars</code> within the same directory and filled in as needed. The <code>.gitignore</code> file is told to ignore any file named <code>terraform.tfvars</code> to exempt the actual variables from version tracking.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~/Documents/terraform/blog</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> master</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> .gitignore</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Local .terraform directories</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">**</span><span class="sk-24292e-fff">/.terraform/</span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># .tfstate files</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.tfstate</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.tfstate.</span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Crash log files</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">crash.log</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Ignore any .tfvars files that are generated automatically for each Terraform run. Most</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># .tfvars files are managed as part of configuration and so should be included in</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># version control.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># example.tfvars</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">terraform.tfvars</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Ignore override files as they are usually used to override resources locally and so</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># are not checked in</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">override.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">override.tf.json</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">_override.tf</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">_override.tf.json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Include override files you do wish to add to version control using negated pattern</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># !example_override.tf</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># example: *tfplan*</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">tfplan</span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.plan</span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">lock</span><span class="sk-d73a49-a0a0a0">*</span></span></code></pre>
+</div>
+<p>Now to the fun stuff! To create a Cloudflare Tunnel in Terraform we only need to set the following resources in our Terraform config (this is what populates the <code>argo.tf</code> file).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "random_id"</span><span class="sk-032f62-99ffe4"> "argo_secret"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  byte_length</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 35</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_argo_tunnel"</span><span class="sk-032f62-99ffe4"> "auto_tunnel"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.cloudflare_account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "zero_trust_ssh_http"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  secret</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> random_id.argo_secret.b64_std</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>That’s it.</p>
+<p>Technically you could get away with just the <code>cloudflare_argo_tunnel</code> resource, but using the <code>random_id</code> resource helps with not having to hard code the secret for the tunnel. Instead we can dynamically generate a secret for our tunnel each time we run Terraform.</p>
+<p>Let’s break down what is happening in the <code>cloudflare_argo_tunnel</code> resource: we are passing the Cloudflare account ID (via the <code>var.cloudflare_account_id</code> variable), a name for our tunnel, and the dynamically generated secret for the tunnel, which is pulled from the <code>random_id</code> resource. Tunnels expect the secret to be in base64 standard encoding and at least 32 characters.</p>
+<p>Using Named Tunnels now gives customers a UUID (universal unique identity) target to tie their applications to. These endpoints are routed off an internal domain to Cloudflare and can only be used with zones in your account, as mentioned earlier. This means that one tunnel can proxy multiple applications for various zones in your account, thanks to Cloudflare Tunnel Ingress Rules.</p>
+<p>Now that we have a target for our services, we can create a tunnel/applications in the GCP instance. Terraform has a feature called a <a href="https://www.terraform.io/docs/language/functions/templatefile.html" target="_blank" rel="noopener noreferrer">templatefile function</a> that allows you to pass input variables as local variables (i.e. what the server can use to configure things) to an argument called <code>metadata_startup_script</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "google_compute_instance"</span><span class="sk-032f62-99ffe4"> "origin"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  metadata_startup_script</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> templatefile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"./server.tpl"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      web_zone</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      account</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.cloudflare_account_id,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel_id</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.auto_tunnel.id,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.auto_tunnel.name,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      secret</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> random_id.argo_secret.b64_std</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This abbreviated section of the <code>google_compute_instance</code> resource shows a templatefile using 5 variables passed to the file located at <code>./server.tpl</code>. The file <code>server.tpl</code> is a bash script within the local directory that will configure the newly created GCP instance.</p>
+<p>As indicated earlier, Named Tunnels can make use of a JSON credentials file instead of the historic use of a <code>cert.pem</code> file. By using a templatefile function pointing to a bash script (or cloud-init, etc…) we can dynamically generate the fields that populate both the <code>cert.json</code> file and the <code>config.yml</code> file used for Ingress Rules on the server/host. Then the bash script can install <code>cloudflared</code> as <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/run-as-service" target="_blank" rel="noopener noreferrer">a system service</a>, so it is persistent (i.e it can come back up after the machine is rebooted). Here is an example of this.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wget</span><span class="sk-032f62-99ffe4"> https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> dpkg</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> cloudflared-stable-linux-amd64.deb</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> ~/.cloudflared</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">touch</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">touch</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/config.yml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.json</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff"> "EOF"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "AccountTag"   : "${account}",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "TunnelID"     : "${tunnel_id}",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "TunnelName"   : "${tunnel_name}",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "TunnelSecret" : "${secret}"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/config.yml</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff"> "EOF"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">tunnel: ${tunnel_id}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">credentials-file: /etc/cloudflared/cert.json</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">logfile: /var/log/cloudflared.log</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">loglevel: info</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">ingress:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  - hostname: ${web_zone}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    service: http://localhost:8080</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  - hostname: ssh.${web_zone}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    service: ssh://localhost:22</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  - hostname: "*"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    service: hello-world</span></span>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> -via</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.json</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> /tmp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> docker-compose</span><span class="sk-032f62-99ffe4"> up</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+</div>
+<p>In this example, a <a href="https://tldp.org/LDP/abs/html/here-docs.html" target="_blank" rel="noopener noreferrer">heredoc</a> is used to fill in the variable fields for the <code>cert.json</code> file and another heredoc is used to fill in the <code>config.yml</code> (Ingress Rules) file with the variables we set in Terraform. Taking a quick look at the <code>cert.json</code> file we can see that the Account ID is provided to it which secures the tunnel to your specific account. The UUID &nbsp;of the tunnel is then passed in along with the name that was assigned in the tunnel’s name argument. Lastly the 35 character secret is then passed to the tunnel. These are the necessary parameters to get our tunnel spun up against Cloudflare’s edge.</p>
+<p>The <code>config.yml</code> file is where we set up the Ingress Rules for the Cloudflare Tunnel. The first few lines tell the tunnel which UUID to attach to, where the credentials are on the OS, and where the tunnel should write logs to. The log level of <code>info</code> is good for general use but for troubleshooting <code>debug</code> may be needed.</p>
+<p>Next the first - <code>hostname:</code> line says any requests bound for that particular hostname need to be proxied to the service (HTTPbin) running at <code>localhost</code> port 8080. Following that the SSH target is defined and will proxy requests to the local SSH port. The next hostname is interesting in that we have a wildcard character. This functionality allows other zones or hostnames on the Account to point to the tunnel without being explicitly defined in Ingress Rules. The service that will respond to these requests is a built in <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress#supported-protocols" target="_blank" rel="noopener noreferrer">hello world service</a> the tunnel provides.</p>
+<p>Pretty neat, but what else can we do? We can block all <a href="https://developers.cloudflare.com/cloudflare-one/faq/tunnel/#how-can-origin-servers-be-secured-when-using-tunnel" target="_blank" rel="noopener noreferrer">inbound networking</a> to the server and instead use Cloudflare Tunnel to proxy the connections to Cloudflare’s edge. To safeguard the SSH hostname <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps" target="_blank" rel="noopener noreferrer">an Access policy</a> can be applied over it.</p>
+<h3>SSH and Zero Trust</h3>
+<p>The Access team has several tutorials on how to <a href="https://developers.cloudflare.com/cloudflare-one/api-terraform/access-with-terraform" target="_blank" rel="noopener noreferrer">tie your policies into Terraform</a>. Using this as a guide we can create the Access related Terraform resources for the SSH endpoint.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Access policy to apply zero trust policy over SSH endpoint</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_access_application"</span><span class="sk-032f62-99ffe4"> "ssh_app"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">             =</span><span class="sk-032f62-99ffe4"> "Access protection for ssh.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">cloudflare_zone</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  domain</span><span class="sk-032f62-99ffe4">           =</span><span class="sk-032f62-99ffe4"> "ssh.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">cloudflare_zone</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  session_duration</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "1h"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_access_policy"</span><span class="sk-032f62-99ffe4"> "ssh_policy"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  application_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cloudflare_access_application.ssh_app.id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> var.cloudflare_zone_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">           =</span><span class="sk-032f62-99ffe4"> "Example Policy for ssh.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">cloudflare_zone</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  precedence</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> "1"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  decision</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "allow"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  include</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [var.cloudflare_email]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>In the above <code>cloudflare_access_application</code> resource, a variable, <code>var.cloudflare_zone_id</code>, is used to pull in the Cloudflare Zone’s ID based on the value of the variable provided in the <code>terraform.tfvars</code> file. The Zone Name is also dynamically populated at runtime in the <code>var.cloudflare_zone</code> fields based on the value provided in the <code>terraform.tfvars</code> file. We also limit the scope of this access policy to <code>ssh.targetdomain.com</code> using the <code>domain</code> argument in the <code>cloudflare_access_application</code> resource.</p>
+<p>In the <code>cloudflare_access_policy</code> resource, we take the information provided by the <code>cloudflare_access_application</code> resource called <code>ssh_app</code> and apply it as an active policy. The scope of who is allowed to log into this endpoint is the user’s email as provided by the <code>var.cloudflare_email</code> variable.</p>
+<h3>Terraform Spin up and SSH Connection</h3>
+<p>Now to connect to this SSH endpoint. First we need to spin up our environment. This can be done with <code>terraform plan</code> and then <code>terraform apply</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="304" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=640&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=750&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=828&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=1080&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=1280&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4918F02DW29C0TT9NKTJHN.png&amp;w=1430&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - 4Wfeaj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="304" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - 4Wfeaj"></div>
+</figure>
+<p>On my workstation I have <code>cloudflared</code> installed and updated my SSH config to proxy traffic for this SSH endpoint through <code>cloudflared</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-005cc5-99ffe4"> --version</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2021.4.0</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2021-04-07-2111</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-005cc5-99ffe4"> -A2</span><span class="sk-032f62-99ffe4"> 'ssh.chrisdlg.com'</span><span class="sk-032f62-99ffe4"> ~/.ssh/config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host</span><span class="sk-032f62-99ffe4"> ssh.chrisdlg.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    IdentityFile</span><span class="sk-032f62-99ffe4"> /Users/cdlg/.ssh/google_compute_engine</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ProxyCommand</span><span class="sk-032f62-99ffe4"> /usr/local/bin/cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> %h</span></span></code></pre>
+</div>
+<p>I can then SSH with my local user on the remote machine (cdlg) at the SSH hostname (ssh.chrisdlg.com). The instance of cloudflared running on my workstation will then proxy this request.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="109" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=715&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=640&amp;h=98&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=715&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=750&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=828&amp;h=126&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=1080&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=1280&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BX4Q59CNHJ2TYV1X0B7S.png&amp;w=1430&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - T6utKw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="109" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - T6utKw"></div>
+</figure>
+<p>This will open a new tab in my current browser and direct me to the Cloudflare Access application recently created with Terraform. Earlier in the Access resource we set the Cloudflare user as denoted by the <code>var.cloudflare_email</code> variable as the criteria for the Access policy. If the correct email address is provided the user will receive an email similar to the following.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HPDQTD0SADS0KGDVM1W4.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - KGAUe0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - KGAUe0"></div>
+</figure>
+<p>Following the link or providing the pin on the previously opened tab will complete the authentication. Hitting ‘approve’ tells Cloudflare Access that the user should be allowed through per the length of the <code>session_duration</code> argument in the <code>cloudflare_access_application</code> resource. Navigating back to the terminal we can see that we are now on the server.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="441" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=640&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=750&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=828&amp;h=511&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=1080&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=1280&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474R8GMBP1HKPC059ENZZ1.png&amp;w=1430&amp;h=882&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - Aq4u7a" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="441" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - Aq4u7a"></div>
+</figure>
+<p>If we check the server’s authentication log we can see that connections from the tunnel are coming in via <code>localhost (127.0.0.1)</code>. This allows us to lock down external network access on the SSH port of the server.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E7GRM5B8B4QPNG7DJZ7Y.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-394 Embedded Image - KhhKs6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-394 Embedded Image - KhhKs6"></div>
+</figure>
+<p>The full config of this deployment can be viewed <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/terraform-zerotrust-ssh-http-gcp" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>The roadmap for Cloudflare Tunnels is bright. Hopefully this walkthrough provided some quick context on what you can achieve with Cloudflare Tunnels and Cloudflare. Personally my dog is quite happy that I have more time to take him on walks. We’re very excited to see what you build with Cloudflare Tunnels and Cloudflare!</p>

@@ -1,0 +1,206 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/email-for-agents">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/email-for-agents">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Qf637mptxRY4oxcvZhPi2/310c6583742e2b812a77e09c27340f70/BLOG-3210_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>이메일은 세계에서 가장 액세스하기 쉬운 인터페이스입니다. 이는 유비쿼터스입니다. 맞춤 채팅 애플리케이션이나 채널별 맞춤 SDK도 필요 없습니다. 모든 사람은 이미 이메일 주소를 가지고 있습니다. 즉, 누구나 이미 여러분의 응용 프로그램 또는 에이전트와 상호 작용할 수 있습니다. 그리고 에이전트는 누구와도 상호 작용할 수 있습니다.</p>
+	<p>애플리케이션을 개발하는 중이라면 이미 등록, 알림, 청구서를 이메일에 의존하고 있을 것입니다. 애플리케이션 로직에서만 이 채널이 필요한 것이 아닌 경우가 점점 더 많아지고 있습니다. 에이전트도 마찬가지입니다. 비공개 베타 기간 동안, 고객 지원 에이전트, 청구서 처리 파이프라인, 계정 인증 흐름, 멀티 에이전트 워크플로우 등을 구축하고 있는 개발자들과 이야기를 나눴습니다. 모든 것이 이메일을 기반으로 구축되었습니다. 패턴은 분명합니다. 이메일은 에이전트를 위한 핵심 인터페이스가 되고 있으며 개발자는 이메일을 위해 특별히 구축된 인프라가 필요합니다.</p>
+	<p>Cloudflare Email Service가 바로 그 부분입니다. <b>Email Routing</b>を使用すると、アプリケーションまたはエージェントにメールを受信できます。 <b>Email Sending,</b> 으로 이메일에 회신하거나 아웃바운드로 이메일을 보내 에이전트가 작업을 마치면 사용자에게 알릴 수 있습니다. 그리고 나머지 개발자 플랫폼과 함께 전체 이메일 클라이언트 및 <a href="https://blog.cloudflare.com/project-think"><u>Agents SDK</u></a> onEmail hook을 기본 기능으로 구축할 수 있습니다.&nbsp;</p>
+	<p>오늘 Agents Week의 일환으로 Cloudflare Email Service의 <b>공개 베타</b> 버전이 출시되어 모든 애플리케이션과 에이전트가 이메일을 전송할 수 있게 됩니다. 또한 이메일 네이티브 에이전트 구축을 위한 툴킷도 완성하고 있습니다.&nbsp;</p>
+	<ul>
+		<li>
+			<p>Email Sending 바인딩, Workers 및 Agents SDK에서 사용 가능&nbsp;</p>
+		</li>
+		<li>
+			<p>새로운 이메일 MCP 서버</p>
+		</li>
+		<li>
+			<p>Wrangler CLI 이메일 명령</p>
+		</li>
+		<li>
+			<p>코딩 에이전트를 위한 기술</p>
+		</li>
+		<li>
+			<p>오픈 소스 에이전트형 수신함 참조 앱</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="email-sending-now-in-public-beta">Email Sending: 현재 공개 베타 중</h2>
+		<a href="https://blog.cloudflare.com/#email-sending-now-in-public-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이메일 전송 기능이 오늘 비공개 베타에서 <b>공개 베타 </b>로 전환됩니다. 이제 API 키나 비밀 관리가 필요 없는 기본 Workers 바인딩을 통해 Workers에서 직접 거래 이메일을 전송할 수 있습니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+  async fetch(request, env, ctx) {
+    await env.EMAIL.send({
+      to: "user@example.com",
+      from: "notifications@your-domain.com",
+      subject: "Your order has shipped",
+      text: "Your order #1234 has shipped and is on its way."
+    });
+    return new Response("Email sent");
+  },
+};
+</code></pre>
+	<p>또는 REST API와 TypeScript, Python, Go SDK를 사용하여 모든 플랫폼, 모든 언어에서 전송할 수 있습니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email-service/send" \
+   --header "Authorization: Bearer &lt;API_TOKEN&gt;" \
+   --header "Content-Type: application/json" \
+   --data '{
+     "to": "user@example.com",
+     "from": "notifications@your-domain.com",
+     "subject": "Your order has shipped",
+     "text": "Your order #1234 has shipped and is on its way."
+   }'
+</code></pre>
+	<p>실제로 수신함에 도달하는 이메일을 전송하려면 SPF, DKIM, DMARC 레코드와 씨름해야 합니다. 도메인을 이메일 서비스에 추가하면 모두 자동으로 구성됩니다. 이메일은 인증되어 전달되며, 스팸으로 분류되지는 않습니다. 또한, 이메일 서비스는 Cloudflare 네트워크에 구축된 글로벌 서비스이므로 이메일이 짧은 대기 시간으로 전 세계 어디에 있든 전달됩니다.</p>
+	<p>수년간 무료로 제공되었던 <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing을</u></a> 결합하면 이제 단일 플랫폼 내에서 완전한 양방향 이메일이 제공됩니다. Cloudflare 내에서 이메일 수신, Worker에서 처리, 회신 등 모든 작업이 가능합니다.</p>
+	<p>이메일 발송에 대한 자세한 내용은 <a href="https://blog.cloudflare.com/email-service"><u>생일 주간 공지</u></a>를 참조하세요. 이 게시물의 나머지 부분에서는 이메일 서비스가 에이전트를 위해 무엇을 제공하는지 설명합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="agents-sdk-your-agent-is-email-native">Agents SDK: 에이전트가 이메일 네이티브입니다</h2>
+		<a href="https://blog.cloudflare.com/#agents-sdk-your-agent-is-email-native" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에 에이전트를 구축하기 위한 Agents SDK에는 이미 인바운드 이메일을 수신하고 처리하기 위한 최고 수준의 <a href="https://developers.cloudflare.com/agents/api-reference/agents-api" target="_blank" rel="noopener noreferrer"><u>onEmail hook</u></a> 이 있습니다. 하지만 지금까지는 Cloudflare 계정 구성원에게만 이메일을 보내거나 동기적으로 응답할 수 있었습니다.&nbsp;</p>
+	<p>With Email Sending, 이러한 제약이 사라졌습니다. 이것이 챗봇과 에이전트의 차이점입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aGV0BVpbrj3ql5TubPMXx/b85351f13c5fae93a27d11e20a5fc11e/BLOG-3210_2.png" alt="BLOG-3210 2" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><i><sup>이메일 에이전트는 메시지를 수신하고, 플랫폼 전반에서 작업을 오케스트레이션하며, 비동기적으로 응답합니다.</sup></i></p>
+	<p>챗봇은 즉시 응답하거나 전혀 응답하지 않습니다. 에이전트는 자신의 타임라인에 따라 생각하고 행동하며 소통합니다. 이메일 전송을 통해 에이전트는 메시지를 수신하고, 데이터를 처리하는 데 1시간 동안, 다른 시스템 3개를 확인하면, 그럴듯한 답변을 할 수 있습니다. 이는 후속 조치를 예약할 수 있습니다. 엣지 케이스를 감지하면 확대할 수 있습니다. 이는 독립적으로 작동할 수 있습니다. 다시 말해, AI는 질문에 대답하는 데 그치지 않고 실제로 작동할 수 있습니다.&nbsp;</p>
+	<p>다음은 수신, 지속, 회신의 전체 파이프라인이 끝난 지원 에이전트의 모습입니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Agent, routeAgentEmail } from "agents";
+import { createAddressBasedEmailResolver, type AgentEmail } from "agents/email";
+import PostalMime from "postal-mime";
+
+export class SupportAgent extends Agent {
+  async onEmail(email: AgentEmail) {
+    const raw = await email.getRaw();
+    const parsed = await PostalMime.parse(raw);
+
+   // Persist in agent state
+    this.setState({
+      ...this.state,
+      ticket: { from: email.from, subject: parsed.subject, body: parsed.text, messageId: parsed.messageId },
+    });
+
+    // Kick off long running background agent task 
+    // Or place a message on a Queue to be handled by another Worker
+
+    // Reply here or in other Worker handler, like a Queue handler
+    await this.sendEmail({
+      binding: this.env.EMAIL,
+      fromName: "Support Agent",
+      from: "support@yourdomain.com",
+      to: this.state.ticket.from,
+      inReplyTo: this.state.ticket.messageId,
+      subject: `Re: ${this.state.ticket.subject}`,
+      text: `Thanks for reaching out. We received your message about "${this.state.ticket.subject}" and will follow up shortly.`
+    });
+  }
+}
+
+export default {
+  async email(message, env) {
+    await routeAgentEmail(message, env, {
+      resolver: createAddressBasedEmailResolver("SupportAgent"),
+    });
+  },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>Agents SDK의 이메일 기능을 처음 접하는 경우를 위한 내부 상황은 다음과 같습니다.</p>
+	<p><b>각 에이전트는 단일 도메인에서 고유한 ID를 가져옵니다.</b> 주소 기반 확인자는 support@yourdomain.com을 "지원" 에이전트 인스턴스로, sales@yourdomain.com을 "sales" 인스턴스로 라우팅하는 식으로 이어집니다. 라우팅이 주소에 내장되어 있으므로 별도의 수신함을 프로비저닝할 필요가 없습니다. 하위 주소 지정(NotificationAgent+user123@yourdomain.com)을 사용해 다른 에이전트 네임스페이스 및 인스턴스로 라우팅할 수도 있습니다.</p>
+	<p><b>상태는 이메일 전체에 걸쳐 유지됩니다.</b> 에이전트는 Durable Objects의 지원을 받으므로 this.setState()를 호출하면 에이전트가 세션 전반의 대화 내역, 연락처 정보, 컨텍스트를 기억합니다. 받은 편지함은 별도의 데이터베이스나 벡터 저장소가 없어도 에이전트의 메모리가 됩니다.</p>
+	<p><b>안전한 응답 라우팅이 내장되어 있습니다.</b> 에이전트가 이메일을 보내고 응답을 예상하는 경우 원래 메시지를 전송한 정확한 에이전트 인스턴스로 응답이 라우팅되도록 DMAC-SHA256을 사용하여 라우팅 헤더에 서명할 수 있습니다. 이렇게 하면 공격자가 임의의 에이전트 인스턴스로 이메일을 라우팅하기 위해 헤더를 위조하지 못하게 됩니다(대부분의 "에이전트용 이메일" 솔루션에서 해결되지 않은 보안 문제).</p>
+	<p>이메일을 수신하고, 분석하고, 분류하고, 상태를 유지하고, 비동기 워크플로우를 시작하고, 회신하거나 에스컬레이션하는 등, 모든 작업을 Cloudflare의 네트워크에서 전 세계에 배포된 하나의 에이전트 클래스에서 처리할 수 있도록 팀에서 처음부터 새로 구축하고 있는 이메일 에이전트 파이프라인이 만들어졌습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="email-tooling-for-your-agents-mcp-server-wrangler-cli-and-skills">에이전트를 위한 이메일 도구: MCP 서버, Wrangler CLI, 기술</h2>
+		<a href="https://blog.cloudflare.com/#email-tooling-for-your-agents-mcp-server-wrangler-cli-and-skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이메일 서비스는 Cloudflare에서 실행되는 에이전트만을 위한 것이 아닙니다. 로컬 또는 원격 환경에서 실행되는 Claude Code, Cursor, Copilot 등의 코딩 에이전트, 컨테이너 또는 외부 클라우드에서 실행되는 프로덕션 에이전트까지, 에이전트는 모든 곳에서 실행됩니다. 이들은 모두 이러한 환경에서 이메일을 보내야 합니다. Cloudflare는 이메일 서비스의 실행 위치와 관계없이 모든 에이전트에 이메일 서비스를 제공하는 세 가지 통합을 제공할 예정입니다.</p>
+	<p>이메일은 이제 상담원에게 전체 Cloudflare API에 대한 액세스 권한을 제공하는 동일한 <a href="https://blog.cloudflare.com/code-mode"><u>코드 모드</u></a> 기반 서버인 <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP 서버를</u></a>통해 사용할 수 있습니다. 이 MCP 서버를 통해 에이전트는 이메일 엔드포인트를 찾고 호출을 통해 이메일을 전송하고 구성할 수 있습니다. 간단한 프롬프트가 포함된 이메일을 보낼 수 있습니다.</p>
+	<pre class="language-unset"><code class="language-unset">"Send me a notification email at hello@example.com from my staging domain when the build completes"</code></pre>
+	<p>컴퓨터나 bash 액세스 샌드박스에서 실행되는 에이전트의 경우 Wrangler CLI는 <a href="https://blog.cloudflare.com/code-mode"><u>코드 모드</u></a> 블로그 게시물에서 다룬 MCP 컨텍스트 창 문제를 해결합니다. 즉, 에이전트가 단일 메시지 처리를 시작하기도 전에 도구 정의가 수만 개의 토큰을 소비할 수 있습니다. Wrangler를 사용하면 에이전트가 거의 제로에 가까운 컨텍스트 오버헤드를 가진 상태에서 시작하여 `--help` 명령을 통해 온디맨드 방식으로 기능을 탐색할 수 있습니다. 에이전트가 Wrangler를 통해 이메일을 보내는 방법은 다음과 같습니다.</p>
+	<pre class="language-javascript"><code class="language-javascript">wrangler email send \
+  --to "teammate@example.com" \
+  --from "agent@your-domain.com" \
+  --subject "Build completed" \
+  --text "The build passed. Deployed to staging."
+</code></pre>
+	<p>에이전트에 Cloudflare MCP를 제공하든 Wrangler CLI를 제공하든 관계없이, 프롬프트만 표시되면 에이전트가 사용자를 대신해 이메일을 전송할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="skills">기술</h3>
+		<a href="https://blog.cloudflare.com/#skills" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 또한 <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Service 기술</u></a>을 게시하고 있습니다. 이 가이드는 에이전트에게 Workers 바인딩 구성, REST API 또는 SDK를 통한 이메일 전송, Email Routing 구성으로 인바운드 이메일 처리, Agents SDK를 사용한 구축, Wrangler CLI 또는 MCP를 통한 이메일 관리 등의 완전한 지침을 제공합니다. 또한 전달 가능성 모범 사례와 스팸이 아닌 수신함에 도착하는 좋은 거래 이메일을 만드는 방법을 다룹니다. 프로젝트에 투입하면 코딩 에이전트가 Cloudflare에서 프로덕션에 사용할 수 있는 이메일을 구축하는 데 필요한 모든 것을 제공해줍니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="open-sourcing-tools-for-email-agents">이메일 에이전트를 위한 오픈 소싱 도구</h2>
+		<a href="https://blog.cloudflare.com/#open-sourcing-tools-for-email-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>비공개 베타 기간 동안 Cloudflare는 이메일 에이전트도 실험했습니다. 이메일을 검토하고 에이전트가 무엇을 하는지 확인하기 위해 휴먼인더루프(human-in-the-loop) 요소를 계속 사용하고 싶은 경우가 많아졌습니다.이를 수행하는 가장 좋은 방법은 에이전트 자동화가 내장된 완벽한 기능을 갖춘 이메일 클라이언트를 사용하는 것입니다.</p>
+	<p>그래서 Cloudflare는 <a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>Agentic Inbox</u></a>를 개발했습니다. 이는 대화 스레딩, 이메일 렌더링, 이메일과 첨부 파일의 수신 및 저장, 이메일에 자동으로 회신하는 기능을 모두 갖춘 참조 애플리케이션입니다. 전용 MCP 서버가 내장되어 있으므로, 외부 에이전트가 에이전트 수신함에서 전송하기 전에 검토용 이메일 초안을 작성할 수 있습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PgrSXLUD5kgA2SFOhksCS/75f85353cf710842420ed806be31b6f6/BLOG-3210_3.png" alt="BLOG-3210 3" class="kg-image" width="1999" height="1301" loading="lazy">
+	</figure>
+	<p>저희는 인바운드를 위한 Email Routing, 아웃바운드를 위한 Email Sending, 분류를 위한 Workers AI, 첨부 파일을 위한 R2, 상태 저장 에이전트 로직을 위한 Agents SDK를 사용하여 완전한 이메일 애플리케이션을 구축하는 방법에 대한 참조 애플리케이션으로 <a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>Agentic Inbox를 오픈 소싱</u></a> 하고 있습니다. 오늘 배포하기만 하면 클릭 한 번으로 전체 수신함, 이메일 클라이언트, 이메일 에이전트를 구성할 수 있습니다.</p>
+	<p>Cloudflare는 이메일 에이전트 도구가 구성 가능하고 재사용 가능하기를 원합니다. 모든 팀이 동일한 인바운드 분류 응답 파이프라인을 다시 구축하는 대신, 이 참조 애플리케이션으로 시작하세요. 이를 분기, 확장, 귀사의 워크플로우에 맞는 자체 이메일 에이전트를 위한 출발점으로 사용하세요.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagentic-inbox"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflare에 배포"></a>
+	<p></p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out-today">지금 사용해 보세요</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이메일은 세계에서 가장 중요한 워크플로우가 있는 곳이지만, 상담원이 접근하기 어려운 채널인 경우가 많습니다. 이제 <b>Email Sending</b> 이 공개 베타 버전으로 출시되면 Cloudflare Email Service는 완전한 양방향 커뮤니케이션 플랫폼이 되어 수신함이 에이전트에게 가장 중요한 인터페이스가 됩니다.</p>
+	<p>수신함에서 고객을 만나는 지원 에이전트를 구축하든, 팀에 실시간으로 소식을 전달하는 백그라운드 프로세스를 구축하든, 이제 에이전트는 전 세계 규모와 원활하게 소통할 수 있습니다. 받은 편지함은 더 이상 사일로가 아닙니다. 이제 에이전트가 도움을 줄 수 있는 곳이 하나 더 생겼습니다.</p>
+	<ul>
+		<li>
+			<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Femail-service%2Fsending" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard에서 Email Sending</u></a></p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/email-service" target="_blank" rel="noopener noreferrer"><u>Email Service 문서</u></a>읽기</p>
+		</li>
+		<li>
+			<p><a href="http://developers.cloudflare.com/agents/api-reference/email" target="_blank" rel="noopener noreferrer"><u>에이전트 SDK 이메일 문서</u></a>&nbsp;를 따르세요.&nbsp;</p>
+		</li>
+		<li>
+			<p>Check out the <a href="http://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>Email Service MCP 서버</u></a> 및 <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>기술</u></a>을 확인해 보세요</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener noreferrer"><u>오픈 소스 참조 앱 배포</u></a></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YaSov283la8ajbi0Sbprq/9108f26b499fd976470a79ee74034e59/BLOG-3210_5.png" alt="BLOG-3210 5" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="watch-on-cloudflare-tv">Cloudflare TV에서 보기</h2>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/c1e1f9cc19044e109f08fb18993199af/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fc1e1f9cc19044e109f08fb18993199af%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

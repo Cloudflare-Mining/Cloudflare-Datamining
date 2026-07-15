@@ -1,0 +1,139 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-browser-insights">English</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-browser-insights">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-browser-insights">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-browser-insights">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-browser-insights">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F9txlJ8FOoyOFWpbLja0n/19d0c3a3610ae68981d6d074d9839b6b/introducing-browser-insights.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Geschwindigkeit ist wichtig. Wenn Ihre Website oder App schneller ist, bietet sie den Nutzern eine angenehmere Erfahrung und Sie erzielen mehr Konversionen und mehr Umsatz, das ist bekannt. Wir bei Cloudflare sind besessen von Geschwindigkeit, von der Entwicklung neuer Features und davon, jeden Tag noch ein bisschen mehr Leistung herauszuholen.</p>
+	<p>Aber wenn wir die Geschwindigkeit steigern möchten, müssen wir sie erst einmal messen. Deshalb haben wir <a href="https://www.cloudflare.com/website-optimization" target="_blank" rel="noopener noreferrer">Browser Insights</a> erfunden: ein neues Tool, das die Leistung Ihrer Website aus der Sicht Ihrer Nutzer misst. Mit Browser Insights können Sie im Detail erkennen, wo, wann und warum Webseiten langsam sind. Und Sie können es jetzt gleich kostenlos mit einem Klick aktivieren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZuMcXdosZupoTmlQTB0yq/1ec2dbbcef7acc8be1090ed62748dd5d/insights-option-1.png" alt="" class="kg-image" width="1600" height="980" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-did-we-build-browser-insights"><b>Warum haben wir Browser Insights entwickelt?</b></h2>
+		<a href="https://blog.cloudflare.com/#why-did-we-build-browser-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nehmen wir an, Sie betreiben eine E-Commerce-Website und möchten Ihre Konversionsraten verbessern. Sie haben festgestellt, dass es viele Zugriffe aus Peru gibt, aber bei diesen gibt es weniger Konversionen als bei den nordamerikanischen Nutzern. Möglicherweise haben Sie die Theorie, dass es zu lange dauert, bis Ihre Seite mit dem Bezahlvorgang geladen ist, und einige Kunden deshalb vor dem Bezahlen abspringen. Wie könnten Sie das überprüfen?</p>
+	<p>Dafür gibt es mehrere Möglichkeiten: Sie können sich die Zeitdaten in Ihren Serverprotokollen ansehen, oder Sie könnten die Seite ein paar Mal in Ihrem Browser laden, um zu sehen, was den Aufbau verzögert.</p>
+	<p>Diese Methoden haben jedoch einige Nachteile:</p>
+	<ul>
+		<li>
+			<p>Wenn Sie nur die serverseitigen Daten ansehen, entgehen Ihnen bestimmte Faktoren, die der Endbenutzer erlebt: Wie lange hat es gedauert, bis der Webbrowser alle erforderlichen Skripts geladen, ausgeführt und die Seite aufgebaut hatte?</p>
+		</li>
+		<li>
+			<p>Wenn Sie nur mit einem oder wenigen Computern messen, entgeht Ihnen die Vielfalt der Systeme und Endgeräte – zum Beispiel: „Wie funktioniert es auf einem Telefon über eine 3G-Verbindung?“</p>
+		</li>
+	</ul>
+	<p>Um diese Probleme zu lösen, setzen wir <i>Real User Monitoring</i> ein, d. h. wir beobachten aus der Sicht echter Anwender. So bekommen wir das Beste aus beiden Welten: Wir können einen Timer in echten Webbrowsern ausführen. Dieser Timer erfasst, wie lange das Laden von Webseiten bei Ihren tatsächlichen Nutzern dauert.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work"><b>Wie funktioniert es?</b></h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Browser Insights kann ganz einfach im Abschnitt „Geschwindigkeit“ des Dashboards aktiviert werden:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aYL5ude7wI1XAtraBJOpO/8eb784dea9c2c2e2b99c38cc29a3a76d/pasted-image-0--3-.png" alt="" class="kg-image" width="1600" height="558" loading="lazy">
+
+	</figure>
+	<p>Wenn es aktiviert ist, fügen wir beim Laden jeder HTML-Seite einen kurzen JavaScript-Code hinzu, der über die standardmäßige <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer">Performance-API</a> Timing-Informationen erfasst. So können wir Ihnen Messwerte darüber liefern, wie sich Ihre Webseiten in der richtigen Welt verhalten:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lqfAafronjSuidVMbu9eF/a8e2a3405d7c7b9d0556b7e23e04d973/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="819" loading="lazy">
+
+	</figure>
+	<p>Dieses Diagramm enthält eine Menge Informationen! Auf der oberen Ebene gibt es zwei Haupttypen von Messwerten:</p>
+	<ul>
+		<li>
+			<p>Messwerte auf Anforderungsebene, etwa TCP-Verbindungszeit oder Anforderungszeit. Diese Messwerte werden jedes Mal ermittelt, wenn die Seite geladen wird. Sie werden von der Internet-Infrastruktur beeinflusst, z. B. vom Mobilfunknetz Ihrer Endbenutzer oder der Geschwindigkeit Ihrer Server.</p>
+		</li>
+		<li>
+			<p>Messwerte auf Seitenebene, etwa die Seitenladedauer. Diese berücksichtigen die vielen Anforderungen, die zum Laden einer Webseite erforderlich sind, sowie die Zeit für das Parsen von HTML und das Ausführen von JavaScript.</p>
+		</li>
+	</ul>
+	<p>Weitere Informationen über die Bedeutung dieser Zeiten und darüber, wie wir sie ausgewählt haben, finden Sie im <a href="https://blog.cloudflare.com/browser-performance-api">begleitenden Blogbeitrag</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="digging-into-the-data"><b>Die Daten durchforsten</b></h2>
+		<a href="https://blog.cloudflare.com/#digging-into-the-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Neben den verschiedenen <i>Messwerten</i> zur Performance Ihrer Webseite kann es auch nützlich sein, sich die <i>Dimensionen</i> genauer anzusehen, die die Leistung beeinflussen, zum Beispiel URL und Land. Das bedeutet, Sie können bis hinunter zur Leistung einer bestimmten Seite filtern (z. B. Ihrer Homepage oder Kassenseite), und Sie können die Standorte sehen, an denen Ihre Website am schnellsten und langsamsten geladen wird.</p>
+	<p>Um auf unser obiges Beispiel zurückzukommen: Wir möchten also die Leistung in Peru mit der in Nordamerika vergleichen:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Olaop2W2UAmZUjcvoqHTZ/89161726f13168676d50f28863f97efc/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="1372" loading="lazy">
+
+	</figure>
+	<p>Wir erkennen tatsächlich, dass es viele Zugriffe aus Peru gibt, aber es dauert im Durchschnitt 13 s, bis eine Webseite geladen ist. Bei Nutzern in den USA sind es nur 4,2 Sekunden. Theorie bestätigt! &nbsp;Jetzt können wir alle unsere Messwerte nach Peru filtern, um besser zu verstehen, was los ist:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YIGywjdEhgzEKm3j1AqYJ/96dfce7b4666fb9e072e72c9269313aa/pasted-image-0-1.png" alt="" class="kg-image" width="1600" height="963" loading="lazy">
+
+	</figure>
+	<p>Beachten Sie, dass der Wert für Verarbeitung („Processing“) am stärksten zugenommen hat und auf 12 Sekunden gestiegen ist. Auch die Anforderungszeiten sind höher, wahrscheinlich wegen der Verbindung zu einem Ursprungsserver in den USA. Webseiten setzen sich aus vielen individuellen Anforderungen zusammen. Es ist also plausibel, dass diese Kombination zu längeren Ladezeiten führt. In diesem Beispiel könnten die Seiten wahrscheinlich schneller geladen werden, wenn schnellere Inhalte im Cache abgelegt würden.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-coming-next"><b>Wie geht es weiter?</b></h2>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die heutige Einführung von Browser Insights ist nur die Spitze des Eisbergs. Wir möchten schon sehr bald noch viel mehr Informationen aufnehmen, mit denen Sie besser verstehen können, was Ihre Website langsam macht und wie Sie sie beschleunigen können. Folgendes möchten wir einbeziehen:</p>
+	<ul>
+		<li>
+			<p><b>Weitere Messwerte und Dimensionen,</b> darunter Messwerte auf Seitenebene wie „Time to First Paint“ (Dauer bis zum Beginn des Seitenaufbaus) und Dimensionen wie Browser und Netzwerktyp.</p>
+		</li>
+		<li>
+			<p><b>Analysen von Subressourcen</b>. Eine durchschnittliche Webseite lädt über 100 Subressourcen, und wir können in einem Wasserfalldiagramm genau zeigen, welche davon langsam ist.</p>
+		</li>
+		<li>
+			<p><b>A-B-Tests</b>, an denen Sie erkennen, wie sich mögliche Konfigurationsänderungen auf die Leistung Ihres eigenen Traffics auswirken.</p>
+		</li>
+		<li>
+			<p><b>Fehlersammlung zur Beobachtung von Problemen</b> auf Netzwerkebene, in JavaScript usw.</p>
+		</li>
+		<li>
+			<p><b>Warnmeldungen</b>, um Sie zu informieren, wenn die Leistung unter einen vordefinierten Schwellenwert fällt.</p>
+		</li>
+		<li>
+			<p><b>Von Cloudflare gelieferte Informationen</b>, an denen Sie erkennen, <i>warum</i> etwas ggf. langsam ist – zum Beispiel die Auswirkungen Ihrer Cache-Trefferquote auf die Seitenladedauer.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="protecting-user-privacy"><b>Schutz der Privatsphäre von Anwendern</b></h2>
+		<a href="https://blog.cloudflare.com/#protecting-user-privacy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Grundlage von Cloudflares Mission, das Internet besser zu machen, ist die Bedeutung, die wir dem Vertrauen unserer Kunden, Website-Besucher und der Internet-Community weltweit beimessen. Unser Geschäftsmodell ist transparent und ganz auf die Interessen unserer Kunden abgestimmt: Wir verdienen Geld damit, die Internetauftritte unserer Kunden zu schützen und zu beschleunigen. Wir verkaufen weder die Daten unserer Kunden noch die ihrer Endanwender.</p>
+	<p>Für Browser Insights muss der Browser des Endanwenders Timing-Informationen an Cloudflare zurückmelden. Wir haben Browser Insights so gestaltet, dass nur der Mindestumfang an Daten gemeldet wird, die wir brauchen, um unseren Kunden zu zeigen, wie ihre Websites funktionieren. Browser Insights erfasst ausschließlich Messwerte zum Zeitverhalten. Wir verfolgen keine einzelnen Endanwender der Internetauftritte unserer Kunden. Rufen Sie einfach in Ihrem bevorzugten Webbrowser den Inspector auf, um zu sehen, was wir zurücksenden!</p>
+	<div class="flex anchor relative">
+		<h2 id="try-browser-insights-today"><b>Browser Insights noch heute ausprobieren</b></h2>
+		<a href="https://blog.cloudflare.com/#try-browser-insights-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im letzten Mai haben wir die brandneue <a href="https://blog.cloudflare.com/new-speed-page">Speed Page</a> angekündigt. Mit der Speed Page möchten wir Ihnen zeigen, wie schnell Ihre Website ist, und was Sie tun können, um sie schneller zu machen. Heute können wir Ihnen stolz mitteilen, dass die neue Speed Page für alle verfügbar ist!</p>
+	<p>Browser Insights wird im Rahmen des frühen Zugangs auf der Speed Page verfügbar sein. In den kommenden Wochen werden wir hart daran arbeiten, es so schnell wie möglich allen anbieten zu können. In diesem Blog werden wir Sie auf dem Laufenden halten!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hJnhW0T4YbbwNiJc0MTmL/d1cd8a6ac2944ee4c1082c44c20b5d48/zbVUo9ueL7h8vV_IvDhqK75p2XnT2FStCkTTKfUgwyX7DuyzkEf72Jd_rtYlXO1NT9pLG6r-FOtlRiurpal9TlJIi7pwi5aswjzd7tZUkmV8bFhZaqN28cvLCxfu.png" alt="" class="kg-image" width="1600" height="924" loading="lazy">
+
+	</figure>
+	<hr>
+	<p><a href="https://blog.cloudflare.com/subscribe"><i>Abonnieren Sie diesen Blog</i></a> <i>und Sie erhalten tägliche Updates zu allen unseren Mitteilungen der Geburtstagswoche.</i></p>
+</div>

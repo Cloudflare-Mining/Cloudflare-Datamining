@@ -1,0 +1,548 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/gen13-launch">English</a>および<a href="https://blog.cloudflare.com/ko-kr/gen13-launch">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Pl3ibbeqtfWJS8biSF5ZG/24cbbe62932fe5ee076263d853c0492c/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>2年前、Cloudflareは、大規模な3D V-キャッシュを備えたAMD EPYC™ Genoa-Xプロセッサを搭載した<a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>第12世代サーバーフリート</u></a>をデプロイしました。そのキャッシュ重視のアーキテクチャは、当時のリクエスト処理レイヤーであるFL1に完璧にマッチしていました。しかし、次世代ハードウェアを評価した際、ジレンマに直面しました。最大のスループットの向上をもたらすCPUが、大幅なキャッシュ削減を伴うものでした。当社のレガシーソフトウェアスタックはこの点に最適化されておらず、潜在的なスループットの利点は遅延の増加によって膨れ上がっていました。</p>
+	<p>このブログでは、Cloudflareのコアリクエスト処理レイヤーをRustベースで書き直した<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>FL2への移行</u></a>によって、Gen 13の可能性を最大限に引き出し、従来のスタックでは不可能だったパフォーマンスの向上をどのように実現したかについて説明します。FL2はより大きなキャッシュへの依存をやめ、SLAを維持しながら、コアによってパフォーマンスを拡張することができます。本日、CloudflareのAMD EPYC™第5世代のTurinベースのサーバーのローンチを発表しました。これは、エッジでのパフォーマンスの向上とスケーリングを効果的に実現します。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-amd-epycturin-brings-to-the-table">AMD EPYCturinがもたらすもの</h2>
+		<a href="https://blog.cloudflare.com/#what-amd-epycturin-brings-to-the-table" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMDのEPYC™第5世代Turinベースプロセッサ</u></a>は、コア数の増加だけではありません。このアーキテクチャは、Cloudflareサーバーが必要とする複数の次元にわたり、改善を実現します。</p>
+	<ul>
+		<li>
+			<p><b>2倍のコア数：</b>第12世代の96コアと比較して最大192コア、SMTは384スレッドを提供</p>
+		</li>
+		<li>
+			<p><b>IPCの向上：</b>Zen 5はアーキテクチャの改善により、Zen 4に比べより良いサイクルあたりの指示を提供</p>
+		</li>
+		<li>
+			<p><b>より良い電力効率</b>：コア数は多いにもかかわらず、TurinはGenoa-Xと比較してコアあたりの消費電力が最大32%少ない</p>
+		</li>
+		<li>
+			<p><b>DDR5-6400サポート</b>：すべてのコアに供給するための、より高いメモリ帯域幅</p>
+		</li>
+	</ul>
+	<p>しかし、Turinの密度の高いOPNは、コアキャッシュごとのスループットを優先するという意図的なトレードオフを行います。当社のTurinスタック全体の分析では、この変化が浮き彫りになりました。例えば、最も密度の高いTurin OPNと第12世代のGenoa-Xプロセッサを比較すると、Turinの192コアが384MBのL3キャッシュを共有していることがわかります。これにより、各コアはわずか2MB、第12世代の割り当ての6分の1にアクセスできるようになります。当社がしたように、キャッシュの局所性に大きく依存しているワークロードにとって、この減少は深刻な課題となりました。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>生成</p>
+				</td>
+				<td>
+					<p>プロセッサー</p>
+				</td>
+				<td>
+					<p>コア/スレッド</p>
+				</td>
+				<td>
+					<p>L3キャッシュ/コア</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>第12世代</p>
+				</td>
+				<td>
+					<p>AMD Genoa-X 9684X</p>
+				</td>
+				<td>
+					<p>96C/192T</p>
+				</td>
+				<td>
+					<p>12MB（3D V-Cache）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>第13世代 オプション1</p>
+				</td>
+				<td>
+					<p>AMD Turin 9755</p>
+				</td>
+				<td>
+					<p>128C/2560兆</p>
+				</td>
+				<td>
+					<p>4MB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>第13世代 オプション2</p>
+				</td>
+				<td>
+					<p>AMD Turin 9845</p>
+				</td>
+				<td>
+					<p>160C/320T</p>
+				</td>
+				<td>
+					<p>2MB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>第13世代 オプション3</p>
+				</td>
+				<td>
+					<p>AMD Turin 9965</p>
+				</td>
+				<td>
+					<p>192C/384T</p>
+				</td>
+				<td>
+					<p>2MB</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="diagnosing-the-problem-with-performance-counters">パフォーマンスカウンターで問題を診断する</h2>
+		<a href="https://blog.cloudflare.com/#diagnosing-the-problem-with-performance-counters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のFL1リクエスト処理レイヤー、NGINXベース、LuaJITベースのコードにとって、このキャッシュ削減は大きな課題でした。しかし、私たちはそれが問題になると想定しただけではなく、測定しました。</p>
+	<p>Gen 13のCPU評価フェーズでは、CPUパフォーマンスカウンターとプロファイリングデータを収集し、<a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProfツール</u></a>を使用して、内部で何が起こっているかを正確に特定しました。データは以下を示しました：</p>
+	<ul>
+		<li>
+			<p>L3のキャッシュミス率は、3D Vキャッシュプロセッサを搭載した第12世代のサーバーと比較して劇的に増加しました</p>
+		</li>
+		<li>
+			<p>以前はL3にあったデータをDRAMへ移す必要があったため、メモリフェッチの遅延がリクエスト処理時間の大半を占めていた</p>
+		</li>
+		<li>
+			<p>CPU使用率を上げ、キャッシュコンテンツを悪化させると、利用率の上昇による遅延のペナルティが増大</p>
+		</li>
+	</ul>
+	<p>L3のキャッシュヒットは約50サイクルで完了します。 DRAMアクセスを必要とするL3のキャッシュミスは350サイクル以上かかり、その差は歴然としています。コアあたりのキャッシュ容量が6分の1以下の第13世代のFL1は、メモリヒット率がはるかに高くなり、遅延のペナルティが発生していました。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-tradeoff-latency-vs-throughput">遅延 対 スループット</h2>
+		<a href="https://blog.cloudflare.com/#the-tradeoff-latency-vs-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>第13世代でFL1を稼働させた初期テストでは、パフォーマンスカウンターがすでに示唆した内容を確認することができました。Turinプロセッサは、より高いスループットを実現できましたが、遅延の費用が嵩みました。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>指標</p>
+				</td>
+				<td>
+					<p>Gen 12（FL1）</p>
+				</td>
+				<td>
+					<p>Gen 13 - AMD Turin 9755（FL1）</p>
+				</td>
+				<td>
+					<p>Gen 13 - AMD Turin 9845（FL1）</p>
+				</td>
+				<td>
+					<p>Gen 13 - AMD Turin 9965（FL1）</p>
+				</td>
+				<td>
+					<p>deleteC</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>コア数</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>+33%</p>
+				</td>
+				<td>
+					<p>+67%</p>
+				</td>
+				<td>
+					<p>+100%</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>FLスループット</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>+10%</p>
+				</td>
+				<td>
+					<p>+31%</p>
+				</td>
+				<td>
+					<p>+62%</p>
+				</td>
+				<td>
+					<p>改善</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>低から中程度のCPU使用率における遅延</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>+10%</p>
+				</td>
+				<td>
+					<p>+30%</p>
+				</td>
+				<td>
+					<p>+30%</p>
+				</td>
+				<td>
+					<p>回帰</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU使用率が高い場合の遅延</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>&gt; 20%&nbsp;</p>
+				</td>
+				<td>
+					<p>&gt; 50%&nbsp;</p>
+				</td>
+				<td>
+					<p>&gt; 50%&nbsp;</p>
+				</td>
+				<td>
+					<p>容認されない</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>60%のスループット向上を実現したAMD Turin 9965の第13世代評価サーバは魅力的なものであり、パフォーマンスの向上はCloudflareの総所有コスト（TCO）に最も改善をもたらしました。</p>
+	<p>しかし、50％を超える遅延のペナルティは許容されません。リクエスト処理の遅延が増加すると、カスタマーエクスペリエンスに直接影響を与えます。TCOのメリットがないソリューションを受け入れるか、遅延の増加を受け入れるか、あるいは遅延を発生させずに効率を高める方法を見つけるか、といったインフラストラクチャに関するよくある質問に直面しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="incremental-gains-with-performance-tuning">パフォーマンスチューニングによる段階的改善</h2>
+		<a href="https://blog.cloudflare.com/#incremental-gains-with-performance-tuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最適な結果への道筋を見つけるために、AMDと協力してTurin 9965のデータを分析し、標的を絞った最適化の実験を行いました。複数の設定を体系的にテストしました。</p>
+	<ul>
+		<li>
+			<p><b>ハードウェアのチューニング:</b> ハードウェアプリフェッチャーとData Fabric (DF) プローブフィルターを調整しましたが、わずかな向上しか見られませんでした</p>
+		</li>
+		<li>
+			<p><b>Scaling Workers</b>：FL1 Workersをさらに起動することでスループットは改善されたが、他の本番サービスからリソースを奪った</p>
+		</li>
+		<li>
+			<p><b>CPUピン留め &amp; 分離:</b> ワークロードの分離構成を調整して最適な組み合わせを見つけるが、成果は限定的</p>
+		</li>
+	</ul>
+	<p>最終的に最も価値をもたらした設定は、<b>AMDのPlatform Quality of Service（PQOS）でした。PQOS</b>拡張により、キャッシュやメモリの帯域幅など共有リソースのきめ細やかな制御が可能になります。Turinプロセッサは、1つのI/O抜き図と最大12個のコア・複雑・ダイ（CCD）で構成され、それぞれが最大16個のコアでL3キャッシュを共有するため、これをテストしました。さまざまな実験的構成がどのように行われたかを次に示します。</p>
+	<p>まず、PQOSを使ってFL1の単一CCD内の専用L3キャッシュシェアを割り当てましたが、効果はごくわずかでした。しかし、概念をソケットレベルに広げ、<i>全体</i>のCCDを厳密にFL1に特化した場合、遅延を許容しながら、スループットが大幅に向上することができました。</p>
+	<div dir="ltr" style="margin-left: 0pt;" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse: collapse; border-style: none;">
+				<colgroup>
+					<col style="width: 25%;" width="116">
+					<col style="width: 25%;" width="122">
+					<col style="width: 25%;" width="320">
+					<col style="width: 25%;" width="136">
+				</colgroup>
+				<tbody>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">設定</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">説明</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">イラスト</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">パフォーマンスの向上</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">NUMA対応コアアフィニティ&nbsp;</span></span><br><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">(ソケットレベルでPQOSと同等)</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">12のCCD（NUMAドメインと整合）は6がFLを実行しています。</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">各CCDの32MB第3キャッシュは、全コアで共有されます。</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 795px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 80w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 160w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 240w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 320w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" data-ckbox-resource-id="ScAsYReXHQlI" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&gt;15%増分</span></span></p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">スループットの向上</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS設定 1</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">各CCDの各物理コアの2vCPUのうち1つがFLを実行しています。</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FLは、各CCDの32MBL3キャッシュの75%を取得します。</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 390px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 302px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 368w" type="image/webp" sizes="(max-width: 368px) 100vw, 368px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="Nl0jNxumjs7w" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">スループット増大5%未満</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">その他のサービスでは、わずかな劣化の兆候が見られる</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS設定 2</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">各CCDの各物理コアの2 vCPUのうち1つがFLを実行しています。</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FLは、各CCDの32MBL3キャッシュの50%を取得します。</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 388px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 300px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 369w" type="image/webp" sizes="(max-width: 369px) 100vw, 369px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="6Es1KpqJZTZw" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">スループット増大5%未満</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS設定 3</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">各CCDの物理コアの50%の2 vCPUがFLを実行しています。</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FLは、各CCDの32MBL3キャッシュの50%を取得します。</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 396px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 80w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 160w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 240w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 320w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png" width="367" height="478" data-ckbox-resource-id="EA8Pplzp2IQX" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">スループット増大5%未満</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="the-opportunity-fl2-was-already-in-progress">機会：FL2はすでに進行していた</h2>
+		<a href="https://blog.cloudflare.com/#the-opportunity-fl2-was-already-in-progress" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ハードウェアのチューニングとリソースの構成によっては控えめな結果も得られましたが、第13世代アーキテクチャのパフォーマンスの可能性を真に引き出すには、ソフトウェアスタックを書き換えてシステムリソースの利用方法を根本的に変える必要があることが分かっていました。</p>
+	<p>幸いなことに、ゼロから始めるわけではありませんでした。<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>バースデーウィーク2025中に発表した</u></a>ように、すでにFL1をゼロから再構築していました。FL2はRustのリクエスト処理レイヤーを完全に書き換えたもので、<a href="https://blog.cloudflare.com/pingora-open-source"><u>Pingora</u></a>と<a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxy</u></a>のフレームワーク上に構築されており、15年にわたるNGINXとLuaJITのコードに置き換えられています。</p>
+	<p>FL2プロジェクトは第13世代のキャッシュ問題を解決するために始まったわけではなく、より優れたセキュリティ（Rustのメモリ安全性）、開発速度の高速化（厳格なモジュールシステム）、ボード全体的なパフォーマンス改善（CPUを減らす）、メモリ、モジュラー実行など）を作るのです。</p>
+	<p>FL2のクリーンなアーキテクチャは、優れたメモリアクセスパターンで動的割り当てが少ないため、FL1のように大量のL3キャッシュに依存しないかもしれません。これにより、FL2の移行を使用して、第13世代のスループットの向上が遅延のペナルティなしに実現できるかどうかを証明する機会が得られました。</p>
+	<div class="flex anchor relative">
+		<h2 id="proving-it-out-fl2-on-gen-13">実証済み：13世代のFL2</h2>
+		<a href="https://blog.cloudflare.com/#proving-it-out-fl2-on-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL2の展開が進むにつれて、第13世代サーバーからの本番メトリクスで、仮定した内容が検証されることになりました。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>指標</p>
+				</td>
+				<td>
+					<p>Gen 13 AMD Turin 9965（FL1）</p>
+				</td>
+				<td>
+					<p>Gen 13 AMD Turin 9965（FL2）</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU%あたりのFLリクエスト</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>50%高い</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>遅延とGen 12</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>70%低い</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>スループットとGen 12</p>
+				</td>
+				<td>
+					<p>62%高い</p>
+				</td>
+				<td>
+					<p>100%高い</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>新しいFL2スタックは、システムの最適化を行う前でも、すぐに大幅な効率向上を実現できました。FL2では遅延のペナルティが70%削減され、遅延SLAを厳密に満たしながら、第13世代のCPU使用率を高めることができるようになりました。FL1の下では、それは不可能だったでしょう。</p>
+	<p>キャッシュのボトルネックを効果的に解消することで、FL2はコア数に合わせてスループットを直線的に拡張することができます。高密度のAMD Turin 9965に対する影響は否定できません。当社は2倍のパフォーマンス向上を達成し、ハードウェアの真の可能性を引き出しました。さらなるシステムチューニングで、第13世代機器からさらに多くの電力を生み出すことが予想されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jV1q0n9PgmbbNzDl8E1J1/2ead24a20cc10836ba041f73a16f3883/image6.png" alt="Gen 13による世代改善" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="generational-improvement-with-gen-13">Gen 13による世代改善</h2>
+		<a href="https://blog.cloudflare.com/#generational-improvement-with-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL2が高コア数のAMD Turin 9965の膨大なスループットを実現したことで、当社は第13世代展開対象として正式にこれらのプロセッサーを選定しました。ハードウェアの認定が完了し、第13世代サーバーは弊社のグローバルな展開をサポートするために大量に出荷しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="performance-improvements">パフォーマンス向上</h3>
+		<a href="https://blog.cloudflare.com/#performance-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>第12世代&nbsp;</p>
+				</td>
+				<td>
+					<p>第13世代&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>プロセッサー</p>
+				</td>
+				<td>
+					<p>AMD EPYC™ 4th Gen Genoa-X 9684X</p>
+				</td>
+				<td>
+					<p>AMD EPYC™ 5th Gen Turin 9965</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>コア数</p>
+				</td>
+				<td>
+					<p>96C/192T</p>
+				</td>
+				<td>
+					<p>192C/384T</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>FLスループット</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>最大+100%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ワットごとのパフォーマンス</p>
+				</td>
+				<td>
+					<p>ベースライン</p>
+				</td>
+				<td>
+					<p>最大+50%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="gen-13-business-impact">第13世代ビジネスインパクト</h3>
+		<a href="https://blog.cloudflare.com/#gen-13-business-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Gen 12に比べて最大2倍</b>のスループットで妥協のないカスタマーエクスペリエンスを実現：遅延SLAの範囲内に維持しながらスループット容量を倍増することで、アプリケーションの高速性と応答性を維持し、大規模なトラフィックスパイクの吸収が可能であることを保証します。</p>
+	<p><b>第12世代と比較してパフォーマンス/ワットが50%向上</b>し、持続可能なスケーリングを実現：この電力効率の向上により、データセンターの拡張コストが削減されるだけでなく、リクエストあたりの二酸化炭素排出量を大幅に削減しながら、増加するトラフィックを処理することが可能になります。</p>
+	<p><b>グローバルエッジアップグレードのための第12世代と比較して60%高いラックスループット</b>：ラックの電力バジェットを一定に保ちながら、このスループット密度を実現したため、この次世代コンピューティングを、当社のグローバルエッジネットワーク全体で世界中どこにでもシームレスにデプロイでき、お客様が必要とするまさにその場所で最高レベルのパフォーマンスを提供できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="gen-13-fl2-ready-for-the-edge">第13世代 + FL2：エッジで利用可能</h2>
+		<a href="https://blog.cloudflare.com/#gen-13-fl2-ready-for-the-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>レイヤーFL1を提供する当社のレガシーリクエストは、Gen13のキャッシュコンテンツウォールにヒットし、スループットとレイテンシーの間で許容できないトレードオフを余儀なくされました。妥協する代わりに、当社はFL2を構築したのです。</p>
+	<p>非常に無駄のないメモリアクセスパターンで設計されたFL2は、巨大なL3キャッシュへの依存を解消し、コア数による直線的なスケーリングを可能にします。第13世代AMD Turinプラットフォームで稼働するFL2は、スループットが2倍になり、電力効率が50%向上すると同時に、遅延をSLA内に抑えることができます。この飛躍的な前進は、ハードウェアとソフトウェアの共同設計の重要性を改めて認識するものです。キャッシュ制限に制約なく、第13世代サーバーをデプロイして、Cloudflareのグローバルネットワーク全体で何百万ものリクエストを処理できるようになりました。</p>
+	<p>もしあなたがグローバル規模でのインフラストラクチャに取り組むことに興奮しているなら、<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>当社は採用中です</u></a>。</p>
+</div>

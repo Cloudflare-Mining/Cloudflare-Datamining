@@ -1,0 +1,367 @@
+<div class="mb2 gray5">Lesezeit: 18&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-speed-brain">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-speed-brain">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-speed-brain">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-speed-brain">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-speed-brain">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-speed-brain">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-speed-brain">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pwJnviaM9hXlQcCbb4uXe/deedbd33b4e0df917e700a29b0f4724b/BLOG-2422_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Jedes Mal, wenn ein Nutzer Ihre Webseite besucht, beginnt für ihn ein Wettlauf um den schnellstmöglichen Erhalt von Inhalten. Die Performance ist ein kritischer <a href="https://www.speedcurve.com/blog/psychology-site-speed" target="_blank" rel="noopener noreferrer"><u>Faktor</u></a>, der beeinflusst, wie Besucher mit Ihrer Website interagieren. Manch einer könnte meinen, dass die Übertragung von Inhalten über den Globus eine erhebliche Latenzzeit mit sich bringt, aber seit einiger Zeit nähern sich die Netzwerk-Übertragungsgeschwindigkeiten ihren <a href="https://blog.cloudflare.com/fastest-internet"><u>theoretischen Grenzen</u></a>. Zum Vergleich: Die Daten von Cloudflare können die 11.000 Kilometer lange Hin- und Rückreise zwischen New York und London in etwa 76 Millisekunden zurücklegen&nbsp;– schneller als <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4043155/#:~:text=one%20blink%20lasts%20about%201/3%20s" target="_blank" rel="noopener noreferrer"><u>ein Wimpernschlag</u></a>.</p>
+	<p>Aufgrund der Komplexität der Verarbeitung von Anfragen, Antworten und Konfigurationen kommt es jedoch immer wieder zu Verzögerungen beim Laden von Webseiten. Zusätzlich zu den Fortschritten beim <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>Verbindungsaufbau</u></a>, der <a href="https://blog.cloudflare.com/de-de/this-is-brotli-from-origin"><u>Komprimierung</u></a>, der <a href="https://blog.cloudflare.com/de-de/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>Hardware</u></a> und der <a href="https://blog.cloudflare.com/de-de/pingora-open-source"><u>Software</u></a> haben wir eine neue Möglichkeit entwickelt, die Latenzzeit beim Laden von Seiten zu reduzieren, indem wir vorhersehen, wie Besucher mit einer bestimmten Webseite interagieren werden.&nbsp;</p>
+	<p>Heute freuen wir uns sehr, Ihnen die neueste Innovation in Sachen Geschwindigkeit vorstellen zu können: <b>Speed Brain</b>. Sie stützt sich auf die <a href="https://developer.chrome.com/docs/web-platform/prerender-pages" target="_blank" rel="noopener noreferrer"><u>Speculation Rules-API</u></a>, um den Inhalt der wahrscheinlichen nächsten Navigationen des Nutzers <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prefetch" target="_blank" rel="noopener noreferrer"><u>vorab abzurufen</u></a>.&nbsp; Das Hauptziel von Speed Brain ist es, eine Webseite in den Browser-Cache herunterzuladen, bevor ein Nutzer zu ihr navigiert, sodass Seiten fast sofort geladen werden, wenn die eigentliche Navigation stattfindet.&nbsp;</p>
+	<p>Unser erster Ansatz verwendet ein <a href="https://developer.chrome.com/blog/speculation-rules-improvements#eagerness" target="_blank" rel="noopener noreferrer"><u>konservatives</u></a> Modell, das statische Inhalte für die nächste Seite vorab abruft, wenn ein Nutzer ein Touch- oder <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event" target="_blank" rel="noopener noreferrer"><u>Klickereignis</u></a> auslöst. Bis zum vierten Quartal 2024 und bis 2025 werden wir aggressivere Spekulationsmodelle wie spekulatives <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prerender" target="_blank" rel="noopener noreferrer"><u>Prerendering</u></a> (die Seite wird nicht nur vor der Navigation abgerufen, sondern vollständig gerendert) anbieten, um ein noch schnelleres Erlebnis zu bieten. Schließlich wird Speed Brain lernen, wie man die Latenz für Ihre statische Website ohne jegliche Konfiguration eliminiert und mit Browsern zusammenarbeitet, um sicherzustellen, dass sie so schnell wie möglich geladen wird.&nbsp;&nbsp;</p>
+	<p>Stellen Sie sich zur Veranschaulichung eine E-Commerce-Website vor, auf der Kleidung verkauft wird. Anhand der Erkenntnisse aus unseren globalen Anfrageprotokollen können wir mit hoher Genauigkeit vorhersagen, dass ein typischer Besucher auf der übergeordneten Seite „Herren &gt; Kleidung“ wahrscheinlich auf „Hemden“ klicken wird. So können wir statische Inhalte wie Bilder bereitstellen, bevor der Kunde überhaupt auf den Link „T-Shirts“ klickt. Dadurch wird die Seite sofort geladen, wenn der Kunde darauf klickt. <b>Kürzliche durchgeführte Tests unserer aggressiven Lademodell-Implementierung haben gezeigt, dass der </b><a href="https://developer.mozilla.org/en-US/docs/Glossary/Largest_contentful_paint" target="_blank" rel="noopener noreferrer"><b><u>Largest Contentful Paint (Largest Contentful Paint, LCP)</u></b></a>, also die Zeit, die das größte sichtbare Element (z. B. ein Bild, ein Video oder ein Textblock) zum Laden und Rendern im Browser benötigt, um bis zu 75&nbsp;% reduziert werden konnte.</p>
+	<p>Das beste an all dem? Wir machen Speed Brain für alle Tarifstufen sofort und kostenlos verfügbar. Aktivieren Sie einfach die Speed Brain-Funktion für Ihre Website über das <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank" rel="noopener noreferrer"><u>Dashboard</u></a> oder die <a href="https://developers.cloudflare.com/api/operations/zone-settings-get-speed-brain-setting" target="_blank" rel="noopener noreferrer"><u>API</u></a>. Es wird sich wie Magie anfühlen, aber hinter den Kulissen steckt eine Menge clevere Technik.&nbsp;</p>
+	<p>Wir haben Speed Brain bereits standardmäßig für alle kostenlosen Domains aktiviert und stellen <b>bei erfolgreichen Prefetches eine Reduzierung des LCP um 45&nbsp;%</b> fest. Für Pro-, Business- und Enterprise-Domains muss Speed Brain manuell aktiviert werden. Falls Sie dies noch nicht getan haben, empfehlen wir Ihnen <b>dringend</b>, <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><u>auch Real User Measurements (RUM)</u></a> über Ihr Dashboard zu aktivieren, damit Sie die neue und verbesserte Performance Ihrer Webseite sehen können. Als Bonus hilft uns die Aktivierung von RUM für Ihre Domain, in naher Zukunft <b>verbesserte</b> und <b>individuelle</b> Prefetching- und Prerendering-Regeln für Ihre Website bereitzustellen!</p>
+	<div class="flex anchor relative">
+		<h2 id="how-browsers-work-at-a-glance">Die Funktionsweise von Browsern auf einen Blick</h2>
+		<a href="https://blog.cloudflare.com/#how-browsers-work-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor wir darauf eingehen, wie Speed Brain dazu beitragen kann, Inhalte außergewöhnlich schnell zu laden, müssen wir uns zunächst die Komplexität des Ladens von Inhalten in Browsern vergegenwärtigen. Jedes Mal, wenn ein Nutzer Ihre Webseite aufruft, muss eine Reihe von Anfrage- und Antwortzyklen durchlaufen werden.&nbsp;</p>
+	<p>Nachdem der Browser <a href="https://www.debugbear.com/blog/http-server-connections" target="_blank" rel="noopener noreferrer"><u>eine sichere Verbindung mit einem Server hergestellt</u></a> hat, sendet er eine HTTP-Anfrage, um das Basisdokument der Webseite abzurufen. Der Server verarbeitet die Anfrage, erstellt das erforderliche HTML-Dokument und sendet es in der Antwort an den Browser zurück.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hxlOWcShKyU4y6sqNYQs1/5717e4ebc130887376d629f9926d7a98/BLOG-2422_2.png" alt="BLOG-2422 2" class="kg-image" width="1371" height="1821" loading="lazy">
+	</figure>
+	<p>Wenn der Browser ein HTML-Dokument empfängt, beginnt er sofort <a href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work#parsing" target="_blank" rel="noopener noreferrer"><u>mit dem Parsing</u></a> des Inhalts.&nbsp; Während dieses Prozesses kann es auf Verweise auf externe Ressourcen wie CSS-Dateien, JavaScript, Bilder und Schriftarten stoßen. Diese untergeordneten Ressourcen sind für die korrekte Darstellung der Seite unerlässlich, sodass der Browser zusätzliche HTTP-Anfragen ausgibt, um sie abzurufen. Wenn diese Ressourcen jedoch im Cache des Browsers verfügbar sind, kann der Browser sie lokal abrufen, wodurch die <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer"><u>Latenzzeit des Netzwerks</u></a> erheblich reduziert und die Seitenladezeiten verbessert werden.</p>
+	<p>Während der Browser HTML, CSS und JavaScript verarbeitet, beginnt die Rendering-Engine, die Inhalte auf dem Bildschirm darzustellen. Sobald die visuellen Elemente der Seite angezeigt werden, führen Benutzerinteraktionen wie das Anklicken eines Links dazu, dass der Browser einen Großteil dieses Prozesses neu startet, um neuen Inhalt für die nächste Seite abzurufen. Dieser Arbeitsablauf ist typisch für jede Browsersitzung: Während die Nutzer navigieren, ruft der Browser kontinuierlich neue oder nicht zwischengespeicherte Ressourcen ab und rendert sie, wodurch eine Verzögerung entsteht, bevor die neue Seite vollständig geladen wird.</p>
+	<p>Nehmen wir das oben beschriebene Beispiel eines Nutzers, der auf einer Shopping-Website navigiert. Wenn der Kunde von der Homepage über den „Herren“-Bereich der Website zum Bereich „Kleidung“- und dann zum „Hemden“-Bereich wechselt, kann sich die Zeit, die er für das Abrufen jeder dieser nachfolgenden Seiten verbringt, summieren und dazu beitragen, dass der Käufer die Website verlässt, bevor er die Transaktion abschließt.&nbsp;&nbsp;</p>
+	<p>Im Idealfall würden die vorbereiteten und gerenderten Seiten im Browser zum Zeitpunkt des Anklickens der Links einen Großteil der Netzwerklatenz eliminieren, sodass der Browser die Inhalte sofort laden kann und ein reibungsloseres Nutzererlebnis gewährleistet ist.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="wait-ive-heard-this-story-before-how-did-we-get-to-speed-brain">Moment einmal, das kommt mir bekannt vor (wie kam es zur Entwicklung von Speed Brain?)</h2>
+		<a href="https://blog.cloudflare.com/#wait-ive-heard-this-story-before-how-did-we-get-to-speed-brain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir wissen, was Sie sich denken. Prefetching gibt es schon seit Jahren. In der Vergangenheit gab es sogar bereits mehrere Ansätze für spekulatives Prefetching. Das haben Sie alles schon einmal gehört. Inwiefern ist das jetzt anders?</p>
+	<p>Sie haben natürlich recht. Im Laufe der Jahre haben Entwickler und Browserhersteller ständig versucht, die Seitenladezeiten zu optimieren und die Nutzererfahrung im gesamten Web zu verbessern. Es wurden zahlreiche Techniken entwickelt, die sich über verschiedene Schichten des Internet -Stacks erstrecken von der Optimierung der Konnektivität auf der Netzwerkschicht bis hin zum Vorladen von Anwendungsinhalten in größerer Nähe zum Client.</p>
+	<div class="flex anchor relative">
+		<h4 id="early-prefetching-lack-of-data-and-flexibility">Frühes Prefetching: Mangel an Daten und Flexibilität</h4>
+		<a href="https://blog.cloudflare.com/#early-prefetching-lack-of-data-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Web Prefetching ist eine solche Technik, die es schon seit mehr als einem Jahrzehnt gibt. Sie beruht auf der Annahme, dass bestimmte untergeordnete Ressourcen wahrscheinlich in naher Zukunft benötigt werden; warum sie also nicht proaktiv abrufen? Das kann alles sein, von HTML-Seiten bis hin zu Bildern, Stylesheets oder Skripten, die der Nutzer beim Navigieren durch eine Website benötigen könnte. Tatsächlich ist das Kernkonzept der spekulativen Ausführung nicht neu. Es handelt sich um eine allgemeine Technik, die seit Jahren in verschiedenen Bereichen der Informatik eingesetzt wird, wobei <a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="noopener noreferrer"><u>die Sprungvorhersage</u></a> in CPUs als bestes Beispiel gilt.</p>
+	<p>In den frühen Tagen des Internets entstanden mehrere benutzerdefinierte Prefetching-Lösungen zur Steigerung der Performance. So stellte Google 2005 den <a href="https://google.fandom.com/wiki/Google_Web_Accelerator" target="_blank" rel="noopener noreferrer"><u>Google Web Accelerator</u></a> vor, eine clientseitige Anwendung, die das Surfen für Breitbandnutzer beschleunigen sollte. Obwohl das Projekt innovativ war, war es aufgrund von Datenschutz- und Kompatibilitätsproblemen nur von kurzer Dauer (wir werden weiter unten beschreiben, wie sich Speed Brain davon unterscheidet). Dem Predictive Prefetching fehlten damals die Dateneinblicke und die API-Unterstützung, um das Verhalten der Nutzer zu erfassen, insbesondere bei sensiblen Aktionen wie Löschungen oder Käufen.</p>
+	<div class="flex anchor relative">
+		<h4 id="static-lists-and-manual-effort">Statische Listen und manueller Aufwand</h4>
+		<a href="https://blog.cloudflare.com/#static-lists-and-manual-effort" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Traditionell wurde das Prefetching durch die Verwendung des Attributs &lt;link rel="prefetch"&gt; als einem der <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch" target="_blank" rel="noopener noreferrer"><u>Resource Hints</u></a>&nbsp; erreicht. Die Entwickler mussten das Attribut auf jeder Seite manuell für jede Ressource angeben, die der Browser im Voraus abrufen und im Speicher zwischenspeichern sollte.Dieser manuelle Aufwand war nicht nur mühsam, sondern den Entwicklern fehlte auch oft der Einblick in die Ressourcen, die vorab geholt werden sollten, was die Qualität der von ihnen angegebenen Hinweise minderte.</p>
+	<p>In ähnlicher Weise <a href="https://developers.cloudflare.com/speed/optimization/content/prefetch-urls" target="_blank" rel="noopener noreferrer"><u>bietet Cloudflare seit 2015 eine URL-Prefetching-Funktion an</u></a>. Anstatt die Daten im Browser-Cache vorab abzurufen, können Kunden mit Cloudflare eine statische Liste von Ressourcen vorab in den CDN-Cache abrufen. Diese Funktion ermöglicht es, Ressourcen schon vor dem Zeitpunkt abzurufen, an dem sie tatsächlich benötigt werden, d.&nbsp;h. in der Regel während der Leerlaufzeit oder wenn die Netzwerkbedingungen günstig sind. Allerdings gelten für das CDN-Prefetching ähnliche Bedenken, da die Kunden für jede Seite, die sie besitzen, manuell entscheiden müssen, welche Ressourcen für das Prefetching in Frage kommen. Bei einer Fehlkonfiguration kann das Prefetching von statischen Links zu einer <a href="https://en.wiktionary.org/wiki/footgun" target="_blank" rel="noopener noreferrer"><u>Verlangsamung</u></a> und dazu führen, dass sich die Ladezeit von Webseite tatsächlich verschlechtert.</p>
+	<div class="flex anchor relative">
+		<h4 id="server-push-and-its-struggles">Server Push und damit verbundene Probleme</h4>
+		<a href="https://blog.cloudflare.com/#server-push-and-its-struggles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc9113#name-server-push" target="_blank" rel="noopener noreferrer"><u>„Server Push“ von HTTP/2</u></a> war ein weiterer Versuch, die Webperformance zu verbessern, indem Ressourcen an den Client übertragen wurden, bevor sie angefordert wurden. Theoretisch würde dies die Latenzzeit verringern, da zusätzliche Roundtrips für zukünftige Assets entfallen. Die Server-zentrierte, diktatorische Art des „Pushens" von Ressourcen an den Client warf jedoch erhebliche Probleme auf, vor allem aufgrund des fehlenden Kontexts darüber, was bereits im Browser zwischengespeichert war. Dadurch wurde nicht nur Bandbreite verschwendet, sondern es bestand auch die Gefahr, dass die Bereitstellung kritischer Ressourcen wie Basis-HTML und CSS aufgrund von Wettlaufsituationen bei Browserabrufen beim Rendern der Seite verlangsamt wurde. Die <a href="https://datatracker.ietf.org/doc/html/draft-kazuho-h2-cache-digest-01" target="_blank" rel="noopener noreferrer"><u>vorgeschlagene Lösung mit „Cache Digests“</u></a>, die Server über den Inhalt des Client-Cache informiert hätte, fand nie breite Anwendung, sodass die Server Ressourcen blindlings pushen können. <a href="https://developer.chrome.com/blog/removing-push" target="_blank" rel="noopener noreferrer"><u>Im Oktober 2022 entfernte Google Chrome die Server Push-Unterstützung</u></a>, und im September 2024 <a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/vU9hJg343U8/m/4cZsHz7TAQAJ" target="_blank" rel="noopener noreferrer">zog Firefox nach</a>.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-step-forward-with-early-hints">Ein Schritt vorwärts mit Early Hints</h4>
+		<a href="https://blog.cloudflare.com/#a-step-forward-with-early-hints" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Als Nachfolger wurde <a href="https://datatracker.ietf.org/doc/html/rfc8297" target="_blank" rel="noopener noreferrer"><u>Early Hints</u></a> 2017 spezifiziert, aber erst 2022 weit verbreitet, als <a href="https://blog.cloudflare.com/early-hints"><u>wir mit Browsern und wichtigen Kunden zusammenarbeiteten, um es zu implementieren</u></a>. Es bietet eine effizientere Alternative, indem es den Clients „Hinweise“ darauf gibt, welche Ressourcen geladen werden sollen, und so eine bessere Priorisierung je nach den Bedürfnissen des Browsers ermöglicht. Konkret sendet der Server den HTTP-Statuscode „103 Early Hints“ mit einer Liste der wichtigsten Seitenelemente, die der Browser laden soll, während die Hauptantwort noch in Vorbereitung ist. Dies verschafft dem Browser einen Vorsprung beim Abrufen wichtiger Ressourcen und vermeidet überflüssiges Vorladen, wenn Assets bereits im Cache gespeichert sind. Obwohl sich Early Hints (noch) nicht an das Verhalten von Nutzern oder dynamische Seitenbedingungen anpasst, beschränkt sich seine Verwendung in erster Linie auf das Vorladen bestimmter Assets und nicht auf vollständige Webseiten insbesondere in Fällen, in denen die HTML-Erzeugung über eine lange Server-„Denkzeit“ erfolgt.</p>
+	<p>Mit der Weiterentwicklung des Web werden Tools, die komplexe, dynamische Nutzerinteraktionen bewältigen können, immer wichtiger, um die Performance-Gewinne der spekulativen Ausführung mit ihren potenziellen Nachteilen für Endnutzer in Einklang zu bringen. Cloudflare bietet seit Jahren Performance-basierte Lösungen an, die sich an das Verhalten der Nutzer anpassen und dafür sorgen, dass Geschwindigkeit und Korrektheit von Entscheidungen im gesamten Internet in eine gesunde Balance gebracht werden, wie <a href="https://www.cloudflare.com/application-services/products/argo-smart-routing" target="_blank" rel="noopener noreferrer"><u>Argo Smart Routing</u></a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation"><u>Smart Tiered Cache</u></a> und <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>. Heute machen wir einen weiteren Schritt in Richtung eines anpassungsfähigen Frameworks für die blitzschnelle Bereitstellung von Inhalten.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="enter-speed-brain-what-makes-it-different">Hier kommt Speed Brain ins Spiel: Was zeichnet es aus?</h2>
+		<a href="https://blog.cloudflare.com/#enter-speed-brain-what-makes-it-different" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain bietet einen robusten Ansatz für die Implementierung von prädiktiven Prefetching-Strategien direkt im Browser, basierend auf dem von unseren Servern zurückgesendeten Regelsatz. Aufbauend auf den Erkenntnissen aus früheren Versuchen verlagert es die Verantwortung für die Ressourcenvorhersage auf den Client und ermöglicht so dynamischere und personalisierte Optimierungen auf der Grundlage der Interaktion des Nutzers&nbsp;– z. B. wenn er mit dem Mauszeiger über einen Link fährt&nbsp;– und seiner Gerätefähigkeiten. Anstatt dass der Browser tatenlos darauf wartet, dass die nächste Webseite vom Benutzer angefordert wird, nimmt er Hinweise daran, wie ein Benutzer mit einer Seite interagiert, und beginnt, nach der nächsten Webseite zu fragen, bevor der Benutzer auf einen Link geklickt hat.</p>
+	<p>Hinter den Kulissen wird all diese Magie durch die <a href="https://developer.chrome.com/docs/web-platform/prerender-pages#speculation-rules-api" target="_blank" rel="noopener noreferrer"><u>Speculation Rules-API</u></a> ermöglicht, einen neuen Google-Standard im Bereich der Webperformance. Wenn das Speed Brain-Feature von Cloudflare aktiviert ist, wird ein HTTP-Header namens Speculation-Rules den Antworten von Webseite hinzugefügt. Der Wert für diesen Header ist eine URL, die eine meinungsbasierte Regelkonfiguration hostet. Diese Konfiguration weist den Browser an, Prefetch-Anfragen für zukünftige Navigationen zu initiieren. Speed Brain verbessert die Seitenladezeit für die erste besuchte Seite einer Webseite nicht, kann sie aber für nachfolgende Webseiten derselben Website verbessern.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fu2ADDum0Pp9e5kq94Jd4/3eba0ffc4d94c42af67d4e9c1c708a29/BLOG-2422_3.png" alt="BLOG-2422 3" class="kg-image" width="1999" height="756" loading="lazy">
+	</figure>
+	<p>Die Idee scheint einfach zu sein, aber das <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching" target="_blank" rel="noopener noreferrer"><u>Prefetching bringt Herausforderungen mit sich</u></a>, da einige vorab abgerufene Inhalte möglicherweise nie verwendet werden. Mit der ersten Version von Speed Brain haben wir eine Lösung mit Leitplanken entwickelt, die zwei wichtige, aber unterschiedliche Probleme angeht, die frühere Spekulationsbemühungen ausgebremst haben&nbsp;– <i>veraltete Prefetch-Konfiguration</i> und <i>inkorrektes Prefetching. </i>Die Konfiguration der Speculation Rules-API , die wir für diese erste Version gewählt haben, wurde sorgfältig entwickelt, um ein ausgewogenes Maß an Sicherheit beim Prefetching zu gewährleisten und gleichzeitig die breite Anwendbarkeit der Regeln für die gesamte Website zu gewährleisten.</p>
+	<div class="flex anchor relative">
+		<h4 id="stale-prefetch-configuration">Veraltete Prefetch-Konfiguration</h4>
+		<a href="https://blog.cloudflare.com/#stale-prefetch-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Da sich Websites im Laufe der Zeit unweigerlich verändern, sind statische Prefetch-Konfigurationen oft veraltet, was zu ineffizientem oder ineffektivem Prefetching führt. Das galt insbesondere für Techniken wie das Attribut rel=prefetch oder statische CDN-Prefetching-URL-Sätze, bei denen die Entwickler relevante prefetchbare URL-Listen für jede Seite ihrer Website manuell pflegen mussten. Die meisten statischen Prefetch-Listen basieren auf der Intuition der Entwickler und nicht auf realen Navigationsdaten der Nutzer, wobei möglicherweise wichtige Prefetch-Möglichkeiten übersehen werden oder Ressourcen für unnötige Prefetches verschwendet werden.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="incorrect-prefetching">Falsches Prefetching</h4>
+		<a href="https://blog.cloudflare.com/#incorrect-prefetching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Da Prefetch-Anfragen genau wie normale Anfragen sind, nur mit einem `sec-purpose`-HTTP-Anfrage-Header, verursachen sie bei Client, Netzwerk und Server den gleichen Mehraufwand. Der entscheidende Unterschied besteht jedoch darin, dass Prefetch-Anfragen das Verhalten des Nutzers vorwegnehmen und die Antwort möglicherweise nicht verwendet wird, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching" target="_blank" rel="noopener noreferrer"><u>sodass der gesamte Aufwand verschwendet sein könnte</u></a>. Aus diesem Grund ist die Genauigkeit des Prefetching extrem wichtig, d.h. die Maximierung des Prozentsatzes der Prefetching-Seiten, die vom Nutzer tatsächlich angezeigt werden. Falsches Prefetching kann zu Ineffizienzen und unnötigen Kosten führen, z.&nbsp;B. durch das Zwischenspeichern von Ressourcen, die nicht angefordert werden, oder durch die Verschwendung von Bandbreite und Netzwerkressourcen, was besonders in mobilen Netzwerken mit Gebühren oder in Umgebungen mit geringer Bandbreite kritisch ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="guardrails">Leitplanken</h3>
+		<a href="https://blog.cloudflare.com/#guardrails" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mit der ersten Version von Speed Brain haben wir eine Lösung mit wichtigen Leitplanken zur Vermeidung von Nebeneffekten entwickelt, die das Risiko einer <i>veralteten Prefetch-Konfiguration</i> vollständig ausschließt und das Risiko eines<i> falschen Prefetchings</i> minimiert. Diese nachvollziehbare Konfiguration wird durch die Nutzung der <a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>Dokumentregeln (Document Rules)</u></a> und der <a href="https://developer.chrome.com/blog/speculation-rules-improvements#eagerness" target="_blank" rel="noopener noreferrer"><u>Eagerness</u></a>-Einstellungen der <a href="https://developer.chrome.com/docs/web-platform/prerender-pages#speculation-rules-api" target="_blank" rel="noopener noreferrer"><u>Speculation Rules-API</u></a> erreicht. Die von uns gewählte Konfiguration sieht wie folgt aus:</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "prefetch": [{
+    "source": "document",
+    "where": {
+      "and": [
+        { "href_matches": "/*", "relative_to": "document" },
+      ]
+    },
+    "eagerness": "conservative"
+  }]
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h5 id="document-rules">
+			Document Rules</h5>
+		<a href="https://blog.cloudflare.com/#document-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>Document Rules</u></a>, angegeben durch "source": "document" und den Schlüssel "where" in der Konfiguration, ermöglicht die dynamische Anwendung von Prefetching auf die gesamte Webseite. Dadurch wird eine vordefinierte statische URL-Liste für das Prefetching überflüssig. Das Problem <i>veralteter Prefetch-Konfigurationen,</i> wird damit beseitigt, da die für das Prefetching in Frage kommenden Links auf der Grundlage der aktiven Seitenstruktur ermittelt werden.</p>
+	<p>Unsere Verwendung von „relative_to“: „document“ in der where-Klausel weist den Browser an, das Prefetching auf Links zu derselben Website zu beschränken. Dies hat den zusätzlichen Vorteil, dass unsere Implementierung herkunftsübergreifende Prefetches vermeidet, um Auswirkungen auf die Privatsphäre der Nutzer zu vermeiden, da sie ihnen nicht durch das Web folgt.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h5 id="eagerness">Eagerness</h5>
+		<a href="https://blog.cloudflare.com/#eagerness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness" target="_blank" rel="noopener noreferrer"><u>Eagerness</u></a> steuert, wie aggressiv der Browser Inhalte vorab abruft. Es gibt vier mögliche Einstellungen:</p>
+	<ul>
+		<li>
+			<p><b><i>immediate (sofort)</i></b><i>: sofort: Wird so schnell wie möglich beim Laden der Seite verwendet&nbsp;– in der Regel beginnt der Browser, sobald er den Wert der Regel sieht, mit dem Prefetch der nächsten Seite.</i></p>
+		</li>
+		<li>
+			<p><b><i>eager (eifrig)</i></b><i>: Identisch mit der obigen sofortigen Einstellung, aber der Prefetch-Trigger verlässt sich zusätzlich auf leichte Interaktionen mit Nutzern, wie das Bewegen des Cursors in Richtung des Links (bald verfügbar).</i></p>
+		</li>
+		<li>
+			<p><b><i>moderate (moderat)</i></b><i>: Führt einen Prefetching durch, wenn Sie den Pointer länger als 200&nbsp;Millisekunden über einen Link halten (oder beim </i><a href="https://developer.mozilla.org/docs/Web/API/Element/pointerdown_event" target="_blank" rel="noopener noreferrer"><i><u>Pointerdown</u></i></a><i>-Ereignis, wenn das früher der Fall ist, und auf Mobilgeräten, wo es kein Hover-Event gibt).</i></p>
+		</li>
+		<li>
+			<p><b><i>conservative (konservativ)</i></b><i>: Ruft Prefetches beim Pointer oder Touch-Down auf dem Link ab.</i></p>
+		</li>
+	</ul>
+	<p>Unsere erste Version von Speed Brain nutzt den <b><u>konservativen</u></b> Eagerness-Wert, um das Risiko eines falschen Prefetchings zu minimieren, das zu unbeabsichtigter Ressourcenverschwendung führen kann, und macht Ihre Websites gleichzeitig spürbar schneller. Wir verlieren zwar die potenziellen Performanceverbesserungen, die aggressiveren Eagerness-Einstellungen bieten, aber wir haben diesen vorsichtigen Ansatz gewählt, um die Sicherheit für unsere Nutzer zu priorisieren. Für die Zukunft planen wir, dynamischere Eifer-Einstellungen für Websites zu erforschen, die von einer liberaleren Einstellung profitieren könnten, und wir werden unsere Regeln auch auf das <a href="https://developer.mozilla.org/en-US/docs/Glossary/Prerender" target="_blank" rel="noopener noreferrer"><u>Prerendering</u></a> erweitern.</p>
+	<p>Eine weitere wichtige Sicherheitsmaßnahme besteht darin, dass wir Prefetch-Anfragen nur für statische Inhalte akzeptieren, die bereits in unserem CDN-Cache gespeichert sind. Wenn die Inhalte nicht im Cache sind, lehnen wir die Prefetch-Anfrage ab. Durch den direkten Abruf von Inhalten aus unserem CDN-Cache für Prefetching-Anfragen können wir Bedenken hinsichtlich der Cache-Eignung ausräumen. Der Grund dafür ist einfach: Wenn eine Seite nicht für die Zwischenspeicherung in Frage kommt, wollen wir nicht, dass sie vorab im Browser-Cache abgerufen wird, da dies zu unbeabsichtigten Folgen und einer erhöhten Belastung des Ursprungsservers führen könnte. Beispielsweise kann das Vorabrufen einer Abmeldeseite den Benutzer frühzeitig abmelden, bevor der Benutzer seine Aktion tatsächlich beendet hat. Zustandsbehaftete Prefetching- oder Prerendering-Anfragen können unvorhersehbare Auswirkungen haben und möglicherweise den Zustand des Servers für Aktionen ändern, die der Client nicht bestätigt hat. Indem wir das Prefetching nur für Seiten erlauben, die sich bereits in unserem CDN-Cache befinden, haben wir die Gewissheit, dass sich diese Seiten nicht negativ auf die Nutzererfahrung auswirken.</p>
+	<p>Diese Leitplanken wurden für Performance-sensible Umgebungen implementiert. Anfang Juli 2024 haben wir die Auswirkungen unseres konservativen Bereitstellungsmodells auf alle Seiten in der <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Entwicklerdokumentation von Cloudflare</u></a> gemessen. Wir stellten fest, dass wir in <b>94</b>&nbsp;% der Fälle die richtigen Inhalte vorwegnehmen konnten, d.h. Inhalte, zu denen die Nutzer tatsächlich navigieren würden. Gleichzeitig konnten wir die Performance der Navigation verbessern, indem wir die LCP am p75-Quantil um <b>40</b>&nbsp;% reduzierten, ohne dass es zu unbeabsichtigten Nebenwirkungen kam. Die Ergebnisse waren erstaunlich!</p>
+	<div class="flex anchor relative">
+		<h2 id="explaining-cloudflares-implementation">So funktioniert die Implementierung von Cloudflare&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#explaining-cloudflares-implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unser globales <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Netzwerk</u></a> erstreckt sich über 330 Städte und ist innerhalb von 50 Millisekunden von 95&nbsp;% der mit dem Internet verbundenen Bevölkerung erreichbar. Dank dieser großen Reichweite können wir die Performance zwischenspeicherbarer Assets für unsere Kunden erheblich verbessern. Durch die Nutzung dieses Netzwerks für das intelligente Prefetching mit Speed Brain kann Cloudflare vorab abgerufene Inhalte direkt aus dem CDN-Cache bereitstellen und so die Latenzzeit auf praktisch sofortige reduzieren.</p>
+	<p>Unsere einzigartige Position innerhalb des Netzwerks gibt uns die Möglichkeit, Speed Brain automatisch zu aktivieren, ohne dass unsere Kunden Änderungen an den Konfigurationen ihrer Ursprungsserver vornehmen müssen. Dafür müssen Sie bloß einen Schalter umlegen! Unsere erste Version von Speed Brain ist jetzt live.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/O3RwzUlOj1GlJuMSrq5TW/55d9ef31a2de21034eb036b8c029d5b6/BLOG-2422_4.png" alt="BLOG-2422 4" class="kg-image" width="1370" height="1540" loading="lazy">
+	</figure>
+	<ul>
+		<li>
+			<p>Wenn eine Anfrage für eine Webseite mit aktiviertem Speed Brain eingeht, gibt der Cloudflare-Server einen zusätzlichen HTTP-Antwort-Header „Speculation-Rules“ zurück. Der Wert für diesen Header ist eine URL, die eine rechtmäßige Regelkonfiguration (wie oben erwähnt) hostet.</p>
+		</li>
+		<li>
+			<p>Wenn der Browser mit dem Parsen des Antwort-Headers beginnt, ruft er unsere Speculation-Rules-Konfiguration ab und lädt sie als Teil der Webseite.</p>
+		</li>
+		<li>
+			<p>Die Konfiguration weist den Browser an, wann er die nächste wahrscheinliche Seite von Cloudflare abrufen soll, zu der der Besucher navigieren kann, je nachdem, wie der Besucher die Seite nutzt.</p>
+		</li>
+		<li>
+			<p>Wenn eine Aktion des Nutzers (z.&nbsp;B. ein Mausklick auf den Link zur nächsten Seite) die Rules-Anwendung auslöst, sendet der Browser eine Prefetch-Anfrage für diese Seite mit dem HTTP-Anfrage-Header „sec-purpose: prefetch“.</p>
+		</li>
+		<li>
+			<p>Unser Server analysiert den Anfrage-Header, um die Prefetch-Anfrage zu identifizieren. Wenn der angeforderte Inhalt in unserem Cache vorhanden ist, geben wir ihn zurück; andernfalls<b> geben wir den HTTP-Statuscode 503 zurück </b>und lehnen die Prefetch-Anfrage ab. Dadurch entfällt das Risiko unsicherer Nebeneffekte beim Senden von Anfragen an Ursprungsserver oder Cloudflare Workers, die vom Prefetching nichts wissen. Es werden nur Inhalte zurückgegeben, die ausschließlich im Cache vorhanden sind.</p>
+		</li>
+		<li>
+			<p>Bei einer Erfolgsantwort ruft der Browser den Inhalt aus dem Speicher erfolgreich vor, und wenn der Besucher zu dieser Seite navigiert, lädt der Browser die Webseite direkt aus dem Browser-Cache und rendert sie sofort.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="common-troubleshooting-patterns">Gängige Muster bei der Fehlerbehebung&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#common-troubleshooting-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Unterstützung für Speed Brain basiert auf der <a href="https://developer.chrome.com/docs/web-platform/prerender-pages" target="_blank" rel="noopener noreferrer"><u>Speculation Rules-API</u></a>, einem neuen Webstandard. Ab September 2024 ist <a href="https://caniuse.com/mdn-http_headers_speculation-rules" target="_blank" rel="noopener noreferrer"><u>die Unterstützung für diesen neuen Standard</u></a> auf <b>Chromium-basierte Browser (Version 121 oder höher)</b> wie Google Chrome und Microsoft Edge beschränkt. Sobald die Web-Community einen Konsens über die API-Standardisierung erreicht, hoffen wir auf eine breitere Akzeptanz bei anderen Browser-Anbietern.</p>
+	<p>Prefetching gilt naturgemäß nicht für dynamische Inhalte, da sich der Zustand dieser Inhalte ändern kann, was möglicherweise dazu führt, dass veraltete oder überholte Daten an den Endnutzer übermittelt werden und die Ursprungsserver belastet. Daher funktioniert Speed Brain nur für nicht-dynamische Seiten Ihrer Website, die in unserem Netzwerk zwischengespeichert sind. Es hat keine Auswirkungen auf das Laden dynamischer Seiten. Um den größten Nutzen aus Speed Brain zu ziehen, empfehlen wir die Verwendung von <a href="https://developers.cloudflare.com/cache/how-to/cache-rules" target="_blank" rel="noopener noreferrer"><u>Cache-Regeln</u></a>, um sicherzustellen, dass alle statischen Inhalte (<b>insbesondere HTML-Inhalte</b>) auf Ihrer Website für die Zwischenspeicherung geeignet sind.</p>
+	<p>Wenn der Browser als Antwort auf eine spekulative Prefetch-Anfrage (gekennzeichnet durch den sec-purpose: prefetch-Header) den HTTP-Statuscode 503 empfängt, bricht er den Prefetch-Versuch ab. Obwohl ein 503-Fehler in der Konsole des Browsers alarmierend erscheinen mag, ist er für den Abbruch einer Prefetch-Anfrage völlig harmlos. In unseren ersten Tests hat der 503-Antwortcode bei einigen Websitebesitzern Bedenken ausgelöst. Wir arbeiten mit unseren Partnern daran, dies zu überarbeiten, um die Kundenerfahrung zu verbessern, aber im Moment folgen wir den Anweisungen der Spezifikation, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#:~:text=Using%20a%20non%2Dsuccess%20code%20(for%20example%20a%20503)%20is%20the%20easiest%20way%20to%20prevent%20speculative%20loading" target="_blank" rel="noopener noreferrer"><u>die eine 503-Antwort vorschlägt</u></a>, damit der Browser die spekulative Anfrage sicher verwerfen kann. Wir befinden uns in aktiven Gesprächen mit Chrome, basierend auf dem Feedback von ersten Beta-Testern, und sind der Meinung, nd glauben, dass ein neuer, nicht fehlerbezogener Antwortcode angemessener wäre und weniger Verwirrung stiften würde. In der Zwischenzeit sind 503-Antwortprotokolle für Prefetch-Anfragen im Zusammenhang mit Speed Brain harmlos. Wenn Ihr Tool es schwierig macht, diese Anfragen zu ignorieren, können Sie Speed Brain vorübergehend deaktivieren, bis wir mit dem Chrome-Team eine bessere Lösung gefunden haben.</p>
+	<p>Wenn eine Website außerdem sowohl ihre eigenen benutzerdefinierten Speculation Rules als auch das Speed Brain-Feature von Cloudflare verwendet, können beide Regelsätze gleichzeitig eingesetzt werden. Die Leitplanken von Cloudflare beschränken die Regeln für Spekulationen auf cachefähige Seiten, was für diejenigen mit bestehenden Implementierungen eine unerwartete Einschränkung darstellen kann. Wenn Sie ein solches Verhalten beobachten, sollten Sie erwägen, eine der Implementierungen für Ihre Website zu deaktivieren, um ein einheitliches Verhalten zu gewährleisten. Beachten Sie: Wenn Ihre Ursprungsserver Antworten den Speculation-Rules-Header enthalten, wird dieser nicht überschrieben. Daher besteht die Gefahr von Regelsatzkonflikten in erster Linie bei vordefinierten Regeln für Inline-Spekulationen.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-see-the-impact-of-speed-brain">Wie kann ich die Auswirkungen von Speed Brain sehen?</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-see-the-impact-of-speed-brain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Allgemeinen empfehlen wir Ihnen, Speed Brain und die meisten anderen Performance-<a href="https://developers.cloudflare.com/speed" target="_blank" rel="noopener noreferrer"><u>Funktionen</u></a> von Cloudflare zu nutzen, wenn unser <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><u>Tool zur Messung der RUM-Performance</u></a> aktiviert ist. Unsere RUM-Funktion hilft Entwicklern und Website-Betreibern zu verstehen, wie ihre Endnutzer die Performance ihrer Anwendung erleben, und bietet Einblick in:</p>
+	<ul>
+		<li>
+			<p><b>Laden</b>: Wie lange hat es gedauert, bis die Inhalte verfügbar waren?</p>
+		</li>
+		<li>
+			<p><b>Interaktivität: </b>Wie reaktionsfähig ist die Website, wenn Nutzer mit dieser interagieren?</p>
+		</li>
+		<li>
+			<p><b>Visuelle Stabilität</b>: Wie stark bewegt sich die Seite beim Laden?</p>
+		</li>
+	</ul>
+	<p>Wenn RUM aktiviert ist, können Sie im Dashboard zum Abschnitt „Web Analytics“ navigieren, um wichtige Informationen darüber anzuzeigen, wie Speed Brain zur Reduzierung der Latenzzeit bei Ihren <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer"><u>Core Web Vitals</u></a> wie Largest Contentful Paint (LCP) und der Ladezeit beiträgt.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zv2kRvsot12PSNwwaWCad/25e9e56d6f3769b04a8752f99c656f3b/BLOG-2422_5.png" alt="BLOG-2422 5" class="kg-image" width="1128" height="730" loading="lazy">
+	</figure>
+	<p><i>Beispiel für ein RUM-Dashboard für eine Website mit einem hohen Anteil an vorabrufbaren Inhalten, die Speed Brain um den 16. September herum aktiviert hat.</i></p>
+	<div class="flex anchor relative">
+		<h2 id="what-have-we-seen-in-our-rollout-so-far">Was haben wir bisher bei unserer Einführung festgestellt?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#what-have-we-seen-in-our-rollout-so-far" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben diese Funktion standardmäßig bei allen kostenlosen Tarifen aktiviert und dabei Folgendes festgestellt:</p>
+	<div class="flex anchor relative">
+		<h3 id="domains">Domains</h3>
+		<a href="https://blog.cloudflare.com/#domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare hat derzeit mehrere zehn Millionen Domains, die Speed Brain nutzen. Wir haben die LCP am 75. Quantil (p75) für diese Standorte gemessen und eine Verbesserung für diese Standorte zwischen 40&nbsp;% und 50&nbsp;% (im Durchschnitt etwa 45&nbsp;%) festgestellt.&nbsp;</p>
+	<p>Wir haben diese Verbesserung durch den Vergleich von navigationsbasierten Prefetches mit normalen (solchen ohne Prefetching) Seitenaufrufen für dieselbe Gruppe von Domains festgestellt.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fNrRh84I3iZpHiEieNPg8/a789d9d9a736a8eb76fa6120a84cdf10/BLOG-2422_6.png" alt="BLOG-2422 6" class="kg-image" width="682" height="334" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="requests">Anfragen</h3>
+		<a href="https://blog.cloudflare.com/#requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor Speed Brain aktiviert ist, haben die p75 der kostenlosen Websites auf Cloudflare einen LCP von etwa 2,2&nbsp;Sekunden. Wenn Speed Brain aktiviert ist, können diese Standorte erhebliche Latenzzeiteinsparungen bei LCP verzeichnen. Insgesamt spart Speed Brain bei jedem erfolgreichen Prefetch etwa 0,88 Sekunden und bis zu 1,1 Sekunden!&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="applicable-browsers">Anwendbare Browser</h3>
+		<a href="https://blog.cloudflare.com/#applicable-browsers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Derzeit ist die Speculation Rules-API nur in Chromium-Browsern verfügbar. Anhand von Cloudflare Radar können wir sehen, dass etwa <a href="https://radar.cloudflare.com/adoption-and-usage" target="_blank" rel="noopener noreferrer"><u>70&nbsp;% der Anfragen</u></a> von Besuchern von <a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank" rel="noopener noreferrer"><u>Chromium</u></a>-Browsern (Chrome, Edge usw.) stammen.</p>
+	<div class="flex anchor relative">
+		<h3 id="across-the-network">Über das Netzwerk hinweg</h3>
+		<a href="https://blog.cloudflare.com/#across-the-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare verzeichnet jeden Tag Hunderte von Milliarden von Anfragen für HTML-Inhalte. Von diesen Anfragen wird etwa die Hälfte zwischengespeichert (stellen Sie sicher, dass Ihr HTML cachefähig ist!). Etwa 1&nbsp;% dieser Anfragen sind für das Prefetching auf Basis der Navigation der Webbesucher bestimmt. Das bedeutet täglich erhebliche Einsparungen für die Besucher von Websites, auf denen Speed Brain aktiviert ist. Alle 24 Stunden kann <b>Speed Brain mehr als 82 Jahre an Latenzzeit einsparen!</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CIpcdPC17LY2EGjNxCjNo/cf1a915d16384e32d88951a48febed47/BLOG-2422_7.png" alt="BLOG-2422 7" class="kg-image" width="1210" height="1246" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Was ist als Nächstes geplant?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Was wir heute für Speed Brain anbieten, ist nur der Anfang. Für das Jahr 2025 haben wir eine Reihe von spannenden Ergänzungen zu erkunden und zu veröffentlichen.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="leveraging-machine-learning">Einsatz von Machine Learning</h3>
+		<a href="https://blog.cloudflare.com/#leveraging-machine-learning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unsere einzigartige Position im Internet bietet uns wertvolle Einblicke in die Muster beim Surfen im Internet, die wir zur Verbesserung der Web-Performance bei gleichzeitiger Wahrung der Privatsphäre der individuellen Nutzer nutzen können. Durch einen verallgemeinerten datengesteuerten Machine-Learning-Ansatz können wir genauere und standortspezifische Prefetch-Prädiktoren für die Seiten der Nutzer definieren.&nbsp;</p>
+	<p>Wir sind dabei, ein adaptives spekulatives Modell zu entwickeln, das unser derzeitiges konservatives Angebot erheblich verbessert. Dieses Modell verwendet eine datenschutzfreundliche Methode, um einen User-Traversal-Graph für jede Website auf der Grundlage von Referrer-Headern derselben Seite zu erstellen. Für zwei Seiten, die durch einen navigationsbasierten Hop miteinander verbunden sind, prognostiziert unser Modell die Wahrscheinlichkeit, dass ein typischer Nutzer zwischen den Seiten wechselt, indem es Erkenntnisse aus unseren aggregierten Traffic-Daten nutzt.</p>
+	<p>Dieses Modell ermöglicht es uns, Regelsätze mit benutzerdefinierten Eagerness-Werten für jeden relevanten Link zur nächsten Seite auf Ihrer Website zu erstellen. Bei Seiten, bei denen das Modell ein hohes Vertrauen in die Navigation des Nutzers voraussagt, wird das System diese aggressiv vorabrufen oder prerendern. Wenn das Modell keine Regel für eine Seite vorgibt, wird standardmäßig unser bestehender konservativer Ansatz verwendet, sodass die Vorteile des Speed Brain-Basismodells erhalten bleiben. Diese Signale leiten die Browser beim Prefetching und Prerendering der entsprechenden Seiten, was dazu beiträgt, die Navigation der Nutzer zu beschleunigen und gleichzeitig unsere aktuellen Sicherheitsleitplanken einzuhalten.</p>
+	<p>In Labortests verbesserte unser ML-Modell die LCP-Latenzzeit um 75&nbsp;% und sagte die Besuchernavigation mit einer Genauigkeit von ~98&nbsp;% voraus. Dadurch wurde sichergestellt, dass die richtigen Seiten vorgeladen wurden, um Ressourcenverschwendung für Nutzer zu vermeiden. Auf dem Weg zur Skalierung dieser Lösung konzentrieren wir uns darauf, das Modell regelmäßig zu trainieren, um es an das veränderte Verhalten der Nutzer und die sich entwickelnden Websites anzupassen. Durch den Einsatz eines internetbasierten Machine Learning-Ansatzes wird der Bedarf an manuellen Aktualisierungen und Abweichungen von Inhalten bei gleichbleibend hoher Genauigkeit drastisch reduziert&nbsp;– die Speed Brain Load-Lösung, die mit der Zeit immer intelligenter wird!</p>
+	<div class="flex anchor relative">
+		<h3 id="finer-observability-via-rum">Feinere Beobachtbarkeit durch RUM</h3>
+		<a href="https://blog.cloudflare.com/#finer-observability-via-rum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie wir bereits erwähnt haben, sind wir der Meinung, dass unsere RUM-Tools die besten Erkenntnisse darüber liefern, wie Speed Brain die Performance Ihrer Website verbessert. Für die Zukunft planen wir, RUM-Tools nach Navigationsart zu filtern, sodass Sie die Browser-Rendering von vorab abgerufenen Inhalten mit denen von nicht vorab abgerufenen Inhalten vergleichen können.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="prerendering">Prerendering</h3>
+		<a href="https://blog.cloudflare.com/#prerendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir bieten derzeit die Möglichkeit des Prefetching für zwischenspeicherbare Inhalte an. Beim Prefetching wird die primäre Dokumentressource der Seite vor der Navigation des Nutzers heruntergeladen, aber der Browser wird nicht angewiesen, die Seite vorzurendern oder zusätzliche Unterressourcen herunterzuladen.</p>
+	<p>In Zukunft wird das Speed Brain-Angebot von Cloudflare Inhalte in unseren CDN-Cache vorberechnen und dann mit den Browsern zusammenarbeiten, um zu wissen, welche Inhalte sich am besten für das Prerendering eignen. Dies wird dazu beitragen, dass statische Inhalte noch schneller gerendert werden können.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="argo-smart-browsing-speed-brain-smart-routing">Argo Smart Browsing: Speed Brain &amp; Smart Routing</h3>
+		<a href="https://blog.cloudflare.com/#argo-smart-browsing-speed-brain-smart-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speed Brain bietet in seiner ersten Implementierung einen unglaublichen Performance-Schub, bleibt aber bei der Implementierung immer noch konservativ; und zwar sowohl hinsichtlich der Eagerness als auch hinsichtlich des Ressourcenverbrauchs.</p>
+	<p>Wie bereits in diesem Beitrag erwähnt, haben Labortests mit einem aggressiveren Modell, das auf Machine Learning und einer höheren Eagerness basiert, eine <b>Reduzierung der LCP um 75&nbsp;%.</b> Wir prüfen, ob wir diese aggressivere, zusätzliche Implementierung von Speed Brain mit Argo Smart Routing in einem Produkt namens <b>„Argo Smart Browsing“</b> bündeln.</p>
+	<p>Cloudflare-Kunden können Speed Brain weiterhin nutzen. Wer jedoch eine noch bessere Performance wünscht, kann Argo Smart Browsing mit einem einzigen Mausklick aktivieren. Mit Argo Smart Browsing werden nicht nur cachefähige statische Inhalte dank der aggressiveren Modelle bis zu 75&nbsp;% schneller im Browser geladen. In Fällen, in denen Inhalte nicht gecacht werden können und die Anfrage an einen Ursprungsserver weitergeleitet werden muss, wird sie über den leistungsfähigsten Netzwerkpfad gesendet, was zu einer durchschnittlichen <b>Performance-Steigerung von 33&nbsp;% führt.</b> Performance-Optimierungen werden auf fast jedes Segment des Lebenszyklus von Anfragen angewandt, unabhängig davon, ob es sich um statische oder dynamische Inhalte handelt, ob sie im Cache gespeichert sind oder nicht.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">Fazit</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um die ersten Schritte mit Speed Brain zu setzen, navigieren Sie einfach im Cloudflare-Dashboard zu <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank" rel="noopener noreferrer"><b><u>Speed</u></b><u> &gt; Optimierung &gt; Content-Optimierung &gt; </u><b><u>Speed Brain</u></b></a> und aktivieren Sie die Lösung. Das ist alles! Die Funktion kann auch per <a href="https://developers.cloudflare.com/api/operations/zone-settings-get-speed-brain-setting" target="_blank" rel="noopener noreferrer"><u>API</u></a> aktiviert werden. Bei Domains im Free-Tarif ist Speed Brain standardmäßig aktiviert.</p>
+	<p>Wir empfehlen unseren Kunden dringend, auch <a href="https://developers.cloudflare.com/web-analytics/get-started/#sites-proxied-through-cloudflare" target="_blank" rel="noopener noreferrer"><b><u>RUM zu aktivieren</u></b></a>, das sich im selben Bereich des Dashboards befindet, um die Performance-Verbesserungen durch Speed Brain und andere Cloudflare-Funktionen und -Produkte zu sehen.&nbsp;</p>
+	<p>Wir freuen uns darauf, weiterhin Produkte und Funktionen zu entwickeln, die Performance des Internets zuverlässig schnell machen. Wenn Sie als Entwickler oder Entwicklerin daran interessiert sind, die Webperformance für alle zu verbessern, <a href="http://cloudflare.com/jobs" target="_blank" rel="noopener noreferrer">kommen Sie zu uns</a>!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaN8mrrAKAatOUCqGAsqu/15ac363626180a0f0ed1a0cdb8146e5f/BLOG-2422_8.png" alt="BLOG-2422 8" class="kg-image" width="1800" height="552" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Auf Cloudflare TV ansehen</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/6446ed524ea74cfb11e2325107f37113/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F6446ed524ea74cfb11e2325107f37113%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

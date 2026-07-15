@@ -1,0 +1,399 @@
+<div class="mb2 gray5">Lecture&nbsp;: 12 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/network-performance-update-cio-edition">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/network-performance-update-cio-edition">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/network-performance-update-cio-edition">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/network-performance-update-cio-edition">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/network-performance-update-cio-edition">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/network-performance-update-cio-edition">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/network-performance-update-cio-edition">简体中文</a>.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zG8VVHghZLep9r3jyuiHS/d15541cf92c99ee50be847737ad40f35/image11-1.png" alt="Cloudflare is faster than Zscaler" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>À l'occasion de chaque Innovation Week, Cloudflare examine les performances de son réseau par rapport à ses concurrents. Au cours des dernières semaines, nous nous sommes concentrés sur la rapidité qu'offre notre réseau <a href="https://www.cloudflare.com/cloudflare-vs-akamai" target="_blank" rel="noopener noreferrer">par rapport aux solutions de proxy inverse, comme Akamai</a>, ou aux plateformes de vente de capacité de traitement dans la périphérie comparables à notre Supercloud, comme Fastly et AWS. À l'occasion de la CIO Week, nous souhaitons vous montrer <a href="https://www.cloudflare.com/cio" target="_blank" rel="noopener noreferrer">comment notre réseau se positionne</a> par rapport à nos concurrents proposant des services de proxy de transfert. Ces produits font partie de notre plateforme Zero Trust, qui contribue à la <a href="https://www.cloudflare.com/application-services/solutions" target="_blank" rel="noopener noreferrer">sécurisation des applications</a> et des expériences Internet connectées à l'Internet public, par opposition à notre proxy inverse, qui protège vos sites web des utilisateurs extérieurs.</p>
+	<p>Nous avons réalisé une série de tests comparant nos services Zero Trust à Zscaler. Nous avons comparé Cloudflare Access, notre produit Zero Trust de protection des applications, à Zscaler Private Access&nbsp;(ZPA). Nous avons comparé Cloudflare Gateway, notre solution <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">Secure Web Gateway</a>, à Zscaler Internet Access&nbsp;(ZIA), et enfin, la solution d'isolement de navigateur à distance de Cloudflare à Zscaler Cloud Browser Isolation. Nous avons découvert que Cloudflare Gateway est 58&nbsp;% plus rapide que ZIA dans nos tests, que Cloudflare Access est 38&nbsp;% plus rapide que ZPA dans le monde entier et que la solution d'isolement de navigateur de Cloudflare est 45&nbsp;% plus rapide que Zscaler Cloud Browser Isolation dans le monde entier. Aux fins de chacun de ces tests, nous avons mesuré le 95e centile des temps jusqu'au premier octet&nbsp;(Time to First Byte, TTFB) et des temps de réponse&nbsp;(Response), qui caractérisent le temps nécessaire pour qu'un utilisateur transmette une requête et obtienne le début de la réponse (temps jusqu'au premier octet) et la fin de la réponse (réponse). Ces tests ont été conçus dans l'optique d'essayer de mesurer les performances du point de vue de l'utilisateur final.</p>
+	<p>Dans cet article de blog, nous expliquerons pourquoi les performances sont importantes pour chacun de ces produits, nous examinerons dans le détail les valeurs mesurées, afin de démontrer que nous sommes plus rapides, et nous expliquerons comment nous avons mesuré les performances pour chaque produit.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-does-performance-matter">Pourquoi les performances sont-elles importantes&nbsp;?</h3>
+		<a href="https://blog.cloudflare.com/#why-does-performance-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les performances sont importantes, car elles affectent l'expérience de votre personnel et sa capacité à accomplir son travail. Qu'il s'agisse d'accéder à des services par le biais de produits de contrôle des accès, d'établir des connexions à l'Internet public par l'intermédiaire d'une solution Secure Web Gateway ou de sécuriser des sites externes grâce à une solution d'<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">isolement de navigateur à distance</a>, toutes ces expériences doivent être fluides.</p>
+	<p>Supposons qu'Anna, qui travaille chez Acme Corporation, se connecte depuis Sydney à Microsoft&nbsp;365 ou Teams pour effectuer son travail. Si la solution Secure Web Gateway d'Acme est située à Singapour, loin d'Anna, le trafic est susceptible d'être acheminé depuis Sydney jusqu'à Singapour, puis de revenir à Sydney avant d'atteindre la messagerie d'Anna. Si Acme Corporation, comme de nombreuses autres entreprises, demande à Anna d'utiliser Microsoft Outlook en mode en ligne, son expérience, pendant qu'elle attend l'envoi et la réception de ses e-mails, risque d'être terriblement lente. <a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/best-practices-for-using-office-365-on-a-slow-network?view=o365-worldwide" target="_blank" rel="noopener noreferrer">Microsoft&nbsp;365 préconise</a> de maintenir une latence aussi réduite que possible et une bande passante aussi élevée que possible. Le saut supplémentaire que doit effectuer le trafic d'Anna via sa passerelle est susceptible de réduire le débit et d'augmenter la latence, offrant à Anna une expérience insatisfaisante.</p>
+	<p>Dans un autre exemple, si Anna se connecte à une application hébergée et protégée comme Jira pour renseigner des tickets, elle ne veut certainement pas passer son temps à attendre le chargement des pages ou l'authentification de ses requêtes. Dans une application exigeant le contrôle des accès, la première chose que vous faites, lorsque de la connexion, consiste à vous identifier. Si la procédure de connexion demande beaucoup de temps, vous risquez d'être distrait par un message quelconque d'un collègue ou simplement de ne pas avoir le courage d'effectuer votre travail. Et même une fois authentifié, vous souhaitez que l'expérience habituelle de cette application soit rapide et fluide&nbsp;: les utilisateurs ne devraient jamais remarquer la sécurité Zero Trust lorsqu'elle est déployée dans les meilleures conditions.</p>
+	<p>Si ces produits ou expériences se montrent lents, il peut arriver bien pire que les plaintes de vos utilisateurs&nbsp;: ces derniers peuvent chercher des manières de désactiver les produits ou de les contourner, au risque de compromettre la sécurité de votre entreprise. Une suite de produits Zero Trust est totalement inefficace si personne ne l'utilise en raison de sa lenteur. Garantir la rapidité d'une <a href="https://www.cloudflare.com/zero-trust/solutions" target="_blank" rel="noopener noreferrer">solution Zero Trust</a> est indispensable à son efficacité&nbsp;: le personnel ne cherchera pas à la désactiver, au risque de compromettre sa propre sécurité, s'il est à peine conscient de sa présence.</p>
+	<p>Un service tel que Zscaler peut s'avérer plus performant que de nombreuses solutions anciennes et obsolètes, mais le réseau sur lequel s'exécute le service n'est toujours pas à la hauteur d'un réseau performant et optimisé comme celui de Cloudflare. Nous avons testé tous nos produits Zero Trust face aux produits équivalents de Zscaler, et nous allons vous démontrer que nos solutions sont plus rapides. Alors, nous allons examiner les données dans le détail et vous montrer comment et pourquoi Cloudflare est plus rapide dans trois scénarios Zero Trust essentiels, en commençant par Secure Web Gateway&nbsp;: nous allons comparer Cloudflare Gateway et Zscaler Internet Access&nbsp;(ZIA).</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-gateway-a-performant-secure-web-gateway-at-your-doorstep">Cloudflare Gateway&nbsp;: une solution Secure Web Gateway performante à l'entrée de vos locaux</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-gateway-a-performant-secure-web-gateway-at-your-doorstep" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une solution Secure Web Gateway doit être rapide, car elle se comporte comme un «&nbsp;entonnoir&nbsp;» à travers lequel transite l'ensemble du trafic destiné à Internet d'une organisation. Lorsqu'une solution Secure Web Gateway est lente, c'est tout le trafic des utilisateurs destiné à Internet qui est ralenti. Si le trafic destiné à Internet est ralenti, les utilisateurs peuvent être tentés de désactiver la solution, au risque d'exposer l'organisation à des attaques.</p>
+	<p>Toutefois, en plus d'être proche des utilisateurs, une solution Secure Web Gateway performante doit également disposer d'un nombre suffisant d'interconnexions au reste d'Internet, afin d'éviter les chemins lents vers les sites web auxquels veulent accéder les utilisateurs. Gardez à l'esprit que le trafic acheminé par l'intermédiaire d'une solution Secure Web Gateway suit le chemin d'un proxy de transfert&nbsp;: les utilisateurs se connectent au proxy, et le proxy se connecte aux sites web auxquels essaient d'accéder les utilisateurs. Il incombe donc au proxy de disposer de connexions suffisantes, afin de veiller à ce que le trafic des utilisateurs puisse être acheminé le plus rapidement possible vers sa destination.</p>
+	<p>Lors de la comparaison de produits Secure Web Gateway, nous avons comparé Cloudflare Gateway et le client WARP à Zscaler Internet Access&nbsp;(ZIA), qui remplit les mêmes fonctions. Heureusement pour les utilisateurs de Cloudflare, la solution Gateway et le réseau Cloudflare bénéficient d'une intégration profonde aux réseaux du «&nbsp;dernier kilomètre&nbsp;» à proximité des utilisateurs, et le réseau de Cloudflare est également l'un des réseaux les mieux interconnectés du monde. Notre réseau le plus interconnecté se montre 55&nbsp;% plus rapide que ZIA pour les scénarios d'utilisation de la solution Gateway. Le diagramme de quartiles ci-dessous représente le 95e&nbsp;percentile du temps de réponse pour Cloudflare, Zscaler et un ensemble de contrôle n'utilisant aucune solution de passerelle&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qpPM98J0vbcqzZQHSu7zf/e2f01f3f8de9376a2f98d4f253051798/1-2.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Secure Web Gateway – Temps de réponse</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>95e percentile (ms)</td>
+			</tr>
+			<tr>
+				<td>Contrôle</td>
+				<td>142,22</td>
+			</tr>
+			<tr>
+				<td>Cloudflare</td>
+				<td>163,77</td>
+			</tr>
+			<tr>
+				<td>Zscaler</td>
+				<td>365,77</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Ces données démontrent que Cloudflare est non seulement beaucoup plus rapide que Zscaler pour les scénarios d'utilisation de solutions Gateway, mais que l'expérience avec Cloudflare est en réalité plus comparable à l'absence totale de solution de passerelle qu'à Zscaler.</p>
+	<p>Pour mesurer au mieux l'expérience des utilisateurs finaux de la solution Gateway, nous examinons le 95e&nbsp;percentile du temps de réponse de l'utilisateur final&nbsp;: nous mesurons le temps nécessaire pour qu'un utilisateur franchisse le proxy, pour que le proxy adresse une requête à un site web sur Internet, puis renvoie enfin la réponse. Cette mesure est importante, car elle fournit une représentation précise de l'expérience vécue par les utilisateurs.</p>
+	<p>Lorsque nous avons réalisé notre comparatif avec Zscaler, nous avons demandé à notre client utilisateur final d'essayer d'accéder à cinq sites web différents&nbsp;: un site web hébergé dans Azure, une instance Workers protégée par Cloudflare, Google, Slack et Zoom (c'est-à-dire des sites web auxquels les utilisateurs se connectent régulièrement). Dans chacun de ces cas, Cloudflare a surpassé Zscaler&nbsp;; et dans le cas de l'instance Workers protégée par Cloudflare, Gateway a même surpassé la valeur de contrôle correspondant au 95e&nbsp;percentile du temps de réponse. Voici un diagramme de quartiles représentant le 95e&nbsp;percentile de réponses, avec une répartition en fonction des points de terminaison auxquels étaient transmises les requêtes dans le cadre de nos tests&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5taVshZgfWnMS3a1EVvK3l/7081ceee8ac20f86c87658e5b01616ae/2-1.png" alt="" class="kg-image" width="1228" height="1222" loading="lazy">
+
+	</figure>
+	<p>Quelle que soit la ressource à laquelle vous accédez sur Internet, la solution Gateway de Cloudflare surpasse Zscaler Internet Access&nbsp;(ZIA) en termes de temps de réponse de bout en bout. Mais pourquoi sommes-nous tellement plus rapides que Zscaler&nbsp;? La réponse est liée à un paramètre que Zscaler appelle «&nbsp;latence du proxy&nbsp;».</p>
+	<p>La latence du proxy est le temps que passe une requête utilisateur sur une machine Zscaler avant d'être transmise à sa destination, puis retransmise à l'utilisateur. Cette valeur exclut complètement le temps que met un utilisateur pour joindre Zscaler, ainsi que le temps que met Zscaler pour joindre la destination, et limite la mesure aux millisecondes consacrées par Zscaler au traitement des requêtes.</p>
+	<p>Selon le SLA relatif à la latence de Zscaler, 95&nbsp;% des requêtes passent moins de 100&nbsp;ms sur un équipement Zscaler. Zscaler promet que la latence pouvant être mesurée à sa périphérie (et non la latence de bout en bout, qui importe réellement) sera de 100&nbsp;ms ou moins pour 95&nbsp;% des requêtes d'utilisateurs. Vous pouvez même consulter ces indicateurs dans Zscaler Digital Experience, si vous souhaitez les évaluer par vous-même. Si nous parvenons à extraire cette latence du proxy des journaux de Zscaler et à comparer cette valeur à l'indicateur équivalent de Cloudflare, nous pouvons évaluer nos performances par rapport aux indicateurs du SLA de Zscaler. Bien que ces indicateurs ne soient pas encore divulgués aux clients, nous avons pu activer le traçage sur Cloudflare, afin de mesurer la latence du proxy de Cloudflare.</p>
+	<p>Les résultats indiquent qu'au 95e&nbsp;percentile, Zscaler dépasse les conditions de son SLA, tandis que le proxy de Cloudflare affiche une latence de 7&nbsp;ms. Par ailleurs, lorsque la latence de notre proxy est de 100&nbsp;ms (et donc, conforme à l'accord de niveau de service de Zscaler), la latence du proxy de Zscaler est plus de 10&nbsp;fois supérieure. La latence du proxy de Zscaler explique l'écart de performances que nous observons au 95e&nbsp;percentile, Zscaler étant 140 à 240&nbsp;ms plus lent que Cloudflare pour chacun des sites. Voici les valeurs de latence du proxy Zscaler à différents percentiles&nbsp;; d'abord, pour tous les sites testés, puis avec une répartition par site&nbsp;:</p><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Zscaler Internet Access (ZIA)</th>
+				<th>Latence du proxy (ms) à P90</th>
+				<th>Latence du proxy (ms) à P95</th>
+				<th>Latence du proxy (ms) à P99</th>
+				<th>Latence du proxy (ms) à P99,9</th>
+				<th>Latence du proxy (ms) à P99,957</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Mondial</td>
+				<td>6,0</td>
+				<td><b>142,0</b></td>
+				<td>625,0</td>
+				<td>1&nbsp;071,7</td>
+				<td>1&nbsp;383,7</td>
+			</tr>
+			<tr>
+				<td>Site Azure</td>
+				<td>97,0</td>
+				<td><b>181,0</b></td>
+				<td>458,5</td>
+				<td>1&nbsp;032,7</td>
+				<td>1&nbsp;291,3</td>
+			</tr>
+			<tr>
+				<td>Zoom</td>
+				<td>206,0</td>
+				<td><b>254,2</b></td>
+				<td>659,8</td>
+				<td>1&nbsp;297,8</td>
+				<td>1&nbsp;455,4</td>
+			</tr>
+			<tr>
+				<td>Slack</td>
+				<td>118,8</td>
+				<td><b>186,2</b></td>
+				<td>454,5</td>
+				<td>1&nbsp;358,1</td>
+				<td>1&nbsp;625,8</td>
+			</tr>
+			<tr>
+				<td>Site Workers</td>
+				<td>97,8</td>
+				<td><b>184,1</b></td>
+				<td>468,3</td>
+				<td>1&nbsp;246,2</td>
+				<td>1&nbsp;288,6</td>
+			</tr>
+			<tr>
+				<td>Google</td>
+				<td>13,7</td>
+				<td><b>100,8<bb></bb></b></td>
+				<td>392,6</td>
+				<td>848,9</td>
+				<td>1&nbsp;115,0</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Au 95e&nbsp;percentile, les latences de proxy de Zscaler ne sont pas conformes à l'accord de niveau de service&nbsp;; par ailleurs, ces valeurs révèlent la différence entre Zscaler et Cloudflare&nbsp;: en prenant l'exemple de Zoom, si Zscaler n'appliquait pas la latence de proxy, sa solution serait au niveau de Cloudflare et de l'ensemble de contrôle. L'équivalent de la latence du proxy de Cloudflare est tellement faible qu'utiliser notre solution revient à utiliser l'Internet public&nbsp;:</p><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Cloudflare&nbsp;Gateway</th>
+				<th>Latence du proxy (ms) à P90</th>
+				<th>Latence du proxy (ms) à P95</th>
+				<th>Latence du proxy (ms) à P99</th>
+				<th>Latence du proxy (ms) à P99,9</th>
+				<th>Latence du proxy (ms) à P99,957</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Mondial</td>
+				<td>5,6</td>
+				<td>7,2</td>
+				<td>15,6</td>
+				<td>32,2</td>
+				<td>101,9</td>
+			</tr>
+			<tr>
+				<td>Site Azure</td>
+				<td>6,2</td>
+				<td>7,7</td>
+				<td>12,3</td>
+				<td>18,1</td>
+				<td>19,2</td>
+			</tr>
+			<tr>
+				<td>Zoom</td>
+				<td>5,1</td>
+				<td>6,2</td>
+				<td>9,6</td>
+				<td>25,5</td>
+				<td>31,1</td>
+			</tr>
+			<tr>
+				<td>Slack</td>
+				<td>5.3</td>
+				<td>6,5</td>
+				<td>10,5</td>
+				<td>12,5</td>
+				<td>12,8</td>
+			</tr>
+			<tr>
+				<td>Site Workers</td>
+				<td>5,1</td>
+				<td>6,1</td>
+				<td>9.4</td>
+				<td>17,3</td>
+				<td>20,5</td>
+			</tr>
+			<tr>
+				<td>Google</td>
+				<td>5.3</td>
+				<td>7,4</td>
+				<td>12,0</td>
+				<td>26,9</td>
+				<td>30,2</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Il peut sembler étrange d'inclure le percentile&nbsp;99,957, mais cette valeur représente le percentile auquel les latences du proxy de Cloudflare dépassent enfin 100&nbsp;ms. La latence du proxy de Cloudflare&nbsp;(99,957&nbsp;%) est même plus rapide que la latence du proxy de Zscaler au 90e&nbsp;percentile. Cloudflare est plus rapide que Zscaler, même au regard de l'indicateur qui intéresse Zscaler et au regard duquel Zscaler s'engage, bien que la latence du proxy ne soit pas l'indicateur qui intéresse ses clients.</p>
+	<p>Il n'a pas été facile d'obtenir cette représentation des données. Les systèmes de test existants, tels que Catchpoint, ne sont pas adaptés à cette tâche, car les tests de performance nécessitent l'exécution du client ZIA ou du client WARP sur le point de terminaison utilisé pour le test. Nous avons également veillé à exécuter les tests de Cloudflare et de Zscaler sur des machines similaires, au même endroit, afin de mesurer les performances aussi précisément que possible. Ceci nous permet de mesurer les réponses de bout en bout depuis un même endroit, là où s'exécutent les deux environnements de test&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GJPRWDlZDHcUT1AiEMlIA/4bf29f5963c3565e0b6dab5a2b2b9b40/image7.png" alt="" class="kg-image" width="1600" height="894" loading="lazy">
+
+	</figure>
+	<p>Dans notre configuration, nous avons disposé trois machines virtuelles dans le Cloud, côte à côte&nbsp;: la première exécutait Cloudflare WARP et se connectait à notre solution Gateway, la deuxième exécutait ZIA et la troisième n'exécutait aucun proxy, afin de fournir un ensemble de valeurs de contrôle. Ces machines virtuelles envoyaient des requêtes toutes les trois&nbsp;minutes aux cinq&nbsp;points de terminaison mentionnés ci-dessus, et ont enregistré, pour la durée de chaque requête, les temps de réponse du navigateur HTTP. Sur cette base, nous avons été en mesure d'obtenir une vue pertinente des performances, telles qu'elles sont observées par l'utilisateur.</p>
+	<p>Un bref récapitulatif jusqu'à présent&nbsp;: du point de vue des utilisateurs finaux, Cloudflare est plus rapide que Zscaler lorsque sa solution est utilisée pour protéger les utilisateurs de l'Internet public via une solution Secure Web Gateway. Cloudflare s'avère même plus rapide que Zscaler, selon la définition restreinte mise en avant par Zscaler des performances avec une solution Secure Web Gateway. Cependant, examinons les scénarios dans lesquels vous avez besoin d'un accès Zero Trust pour des applications spécifiques.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-access-the-fastest-zero-trust-proxy">Cloudflare Access&nbsp;: le plus rapide des proxys Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-access-the-fastest-zero-trust-proxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control" target="_blank" rel="noopener noreferrer">contrôle des accès</a> doit être fluide et transparent pour les utilisateurs&nbsp;: le meilleur compliment pouvant être adressé à une solution Zero Trust est que le personnel remarque à peine sa présence. Les services tels que Cloudflare Access et Zscaler Private Access&nbsp;(ZPA) permettent aux utilisateurs de mettre en cache les informations d'authentification sur le réseau du fournisseur, garantissant ainsi un accès sécurisé et rapide aux applications, afin d'offrir aux utilisateurs l'expérience fluide qu'ils désirent. Par conséquent, disposer d'un réseau permettant de minimiser le nombre de connexions nécessaires, tout en réduisant la latence des requêtes de vos applications, aide à assurer une expérience Internet rapide et réactive.</p>
+	<p>Cloudflare Access accomplit tout cela 38&nbsp;% plus rapidement que Zscaler Private Access&nbsp;(ZPA), vous assurant ainsi de bénéficier d'une application rapide et sécurisée, où que vous soyez dans le monde&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/718vm9moY0WSbW5mjVkWHT/2f449498faa08de2eed0c1cd9a1e1c69/4-1.png" alt="" class="kg-image" width="1308" height="786" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ZT Access&nbsp;– Temps jusqu'au premier octet (monde)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>95e percentile (ms)</td>
+			</tr>
+			<tr>
+				<td>Cloudflare</td>
+				<td>849</td>
+			</tr>
+			<tr>
+				<td>Zscaler</td>
+				<td>1&nbsp;361</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Lorsque nous examinons les données dans le détail, nous constatons que Cloudflare est systématiquement plus rapide, partout dans le monde. Prenons l'exemple de Tokyo, où le 95e&nbsp;percentile du temps jusqu'au premier octet de Cloudflare est 22&nbsp;% plus rapide que celui de Zscaler&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aF4xPH0Xf6KWrIQEQhhIi/61eaaa0e582f423c92ae4ac7f5fbf1a9/5.png" alt="" class="kg-image" width="1534" height="780" loading="lazy">
+
+	</figure>
+	<p>Lorsque nous évaluons Cloudflare par rapport à Zscaler dans le cadre de scénarios d'accès aux applications, nous examinons deux scénarios distincts, qui doivent être mesurés individuellement. Dans le premier scénario, un utilisateur se connecte à son application et doit s'authentifier. Dans ce cas, le service Zero Trust Access redirige l'utilisateur vers une page de connexion&nbsp;; l'utilisateur s'authentifie, puis il est redirigé vers son application.</p>
+	<p>Nous appelons cela une «&nbsp;nouvelle session&nbsp;», car aucune information d'authentification n'est mise en cache ou n'existe déjà sur le réseau d'accès. Le deuxième scénario est appelé «&nbsp;session existante&nbsp;», lorsqu'un utilisateur a déjà été authentifié et que ces informations d'authentification peuvent être mises en cache. Ce scénario est généralement beaucoup plus rapide, car son exécution ne nécessite pas d'appel supplémentaire à un fournisseur d'identité.</p>
+	<p>Nous tenons à mesurer ces scénarios séparément, car lorsque nous examinons les valeurs au 95e&nbsp;centile, nous observons presque toujours de nouvelles sessions, si nous regroupons les sessions nouvelles et existantes. Dans les deux scénarios, toutefois, Cloudflare s'avère systématiquement plus rapide, dans toutes les régions. Voici à quoi ressemblent ces données lorsque nous choisissons un endroit dans lequel Zscaler est plus susceptible de disposer d'une excellente connectivité&nbsp;: les utilisateurs situés à Chicago (Illinois, États-Unis) qui se connectent à une application hébergée dans la région centrale des États-Unis.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/14UmY46stGtBj3935PzhtK/f7c928bb7912d1b09539dc94b41e09e7/6-1.png" alt="" class="kg-image" width="1508" height="816" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th colspan="2">ZT Access – Temps jusqu'au premier octet&nbsp;(TTFB),<br>95e centile&nbsp;(Chicago)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>Nouvelles sessions (ms) </td>
+				<td>Sessions existantes (ms)</td>
+			</tr>
+			<tr>
+				<td>Cloudflare</td>
+				<td>1&nbsp;032</td>
+				<td>293</td>
+			</tr>
+			<tr>
+				<td>Zscaler</td>
+				<td>1&nbsp;373</td>
+				<td>338</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Là encore, Cloudflare est également plus rapide, dans l'ensemble. Voici un histogramme des temps de réponse au 95e&nbsp;percentile pour l'ensemble des nouvelles connexions&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mq9OsekTqklfYf5FEWjre/7cec04492ce7ec7577e54d4bc8fabd0a/7.png" alt="" class="kg-image" width="1600" height="984" loading="lazy">
+
+	</figure>
+	<p>Comme vous pouvez le constater, le réseau de Cloudflare améliore réellement les performances lors de la connexion, en aidant à trouver des chemins optimaux vers les fournisseurs d'authentification, afin de récupérer les identifiants de connexion. Pendant ce test, Cloudflare ne met jamais plus de 2,5&nbsp;secondes à renvoyer une réponse de connexion, tandis que la moitié des temps de réponse de Zscaler au 95e&nbsp;percentile sont presque deux fois plus longs, d'environ quatre secondes. Cela suggère que le réseau de Zscaler n'est pas aussi bien interconnecté, ce qui entraîne une latence dès les premiers stades de la connexion. Toutefois, cela peut également suggérer que Zscaler pourrait se montrer plus rapide lorsque la connexion est établie et que toutes les données sont mises en cache. Sur une connexion existante, toutefois, Cloudflare reste en tête&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7m7cdZSA4HeVNVnMOtVffn/c3efaf8c24c5d1e9f3acbb4d95a68a3a/8.png" alt="" class="kg-image" width="1600" height="987" loading="lazy">
+
+	</figure>
+	<p>Les performances de Zscaler et de Cloudflare sont plus proches dans les groupes de faibles latences&nbsp;; cependant, les temps de réponse de Cloudflare sont beaucoup plus cohérents, et comme vous pouvez le constater, le chargement de la moitié des réponses de Zscaler demande près d'une seconde. Cela montre à quel point le réseau de Cloudflare est bien interconnecté&nbsp;: parce que nous sommes présents dans un plus grand nombre d'endroits, nous proposons une meilleure expérience applicative et ne présentons pas autant de valeurs marginales avec une latence élevée et des performances applicatives insatisfaisantes.</p>
+	<p>Nous avons pris le parti de séparer ces sessions nouvelles et existantes, car il est important d'examiner les chemins de requêtes similaires pour établir une comparaison correcte. Par exemple, si nous comparons une requête transmise via Zscaler dans une session existante et une requête transmise via Cloudflare dans une nouvelle session, nous constatons que Cloudflare est beaucoup plus lent que Zscaler, en raison de la nécessité pour l'équipement de s'authentifier. Aussi, lorsque nous avons fait appel à un tiers pour élaborer ces tests, nous avons veillé à ce que ce paramètre soit pris en compte.</p>
+	<p>Aux fins de ces tests, Cloudflare a fait appel à une entreprise tierce, Miercom, pour exécuter une série de tests destinés à reproduire l'expérience d'un utilisateur final se connectant à une ressource protégée par Cloudflare ou Zscaler. Miercom a configuré des instances d'applications dans 14&nbsp;endroits à travers le monde et a élaboré un test consistant à se connecter à l'application par l'intermédiaire de différents fournisseurs d'accès Zero Trust, afin d'accéder à certains contenus. La méthodologie du test est décrite ci-dessous, mais vous pouvez consulter le rapport intégral, dans lequel Miercom détaille sa méthodologie de test, <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler" target="_blank" rel="noopener noreferrer">ici</a>&nbsp;:</p>
+	<ul>
+		<li>
+			<p>L'utilisateur se connecte à l'application depuis un navigateur imité par une instance Catchpoint&nbsp;– nouvelle session</p>
+		</li>
+		<li>
+			<p>L'utilisateur s'authentifie auprès de son fournisseur d'identité</p>
+		</li>
+		<li>
+			<p>L'utilisateur accède à la ressource</p>
+		</li>
+		<li>
+			<p>L'utilisateur actualise la page dans le navigateur et essaie d'accéder à la même ressource, cette fois avec des identifiants déjà présents&nbsp;– session existante</p>
+		</li>
+	</ul>
+	<p>Cette démarche nous permet de comparer Cloudflare et Zscaler en termes de performances applicatives pour les sessions nouvelles et existantes, et démontre que nous sommes plus rapides. Nous sommes également plus rapides dans les scénarios d'utilisation de solutions Secure Web Gateway.</p>
+	<p>Des scénarios d'utilisation de solutions Secure Web Gateway et d'accès Zero Trust peuvent être sécurisés davantage avec une solution d'isolement de navigateur à distance. La solution d'isolement de navigateur à distance propose une méthode sans client, permettant à la fois de sécuriser l'accès aux données au sein d'une application et d'offrir une protection contre les menaces lors de la consultation de ressources sur l'Internet public.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-browser-isolation-your-friendly-neighborhood-web-browser">Solution d'isolement de navigateur de Cloudflare&nbsp;: votre sympathique voisin navigateur web</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-browser-isolation-your-friendly-neighborhood-web-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les produits d'isolement de navigateur à distance sont fortement tributaires de l'Internet public&nbsp;: si votre connexion à votre produit d'isolement de navigateur n'est pas performante, votre expérience de navigation vous paraîtra déconcertante et lente. La solution d'isolement de navigateur à distance est très fortement tributaire des performances pour proposer aux utilisateurs une expérience fluide et sans heurts&nbsp;: si toutes les performances sont aussi rapides qu'elles devraient l'être, les utilisateurs ne devraient même pas remarquer qu'ils utilisent une solution d'isolement de navigateur. Aux fins de ce test, nous opposons Cloudflare Browser Isolation à Zscaler Cloud Browser Isolation.</p>
+	<p>Cloudflare s'avère, une fois encore, plus rapide que Zscaler en termes de performances d'une solution d'isolement de navigateur à distance. Si l'on compare le temps au premier octet au 95e&nbsp;percentile, Cloudflare est 45&nbsp;% plus rapide que Zscaler dans toutes les régions&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aNqY2zci3dx50EjSISlty/5571bddfc19cf19dbb51ae909879c9bf/9.png" alt="" class="kg-image" width="1230" height="736" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ZT RBI&nbsp;– Temps jusqu'au premier octet (monde)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>95e percentile (ms)</td>
+			</tr>
+			<tr>
+				<td>Cloudflare</td>
+				<td>2&nbsp;072</td>
+			</tr>
+			<tr>
+				<td>Zscaler</td>
+				<td>3&nbsp;781</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Si l'on compare le temps de réponse total, c'est-à-dire la capacité d'un produit d'isolement de navigateur à fournir une réponse complète à l'utilisateur, Cloudflare reste 39&nbsp;% plus rapide que Zscaler&nbsp;:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3nEf8b0LPQtMUDZk5fG7E1/9a95d008e5ea96fd8a3d31917dd34e57/10.png" alt="" class="kg-image" width="1240" height="738" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ZT RBI&nbsp;– Temps jusqu'au premier octet (monde)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>95e percentile (ms)</td>
+			</tr>
+			<tr>
+				<td>Cloudflare</td>
+				<td>2&nbsp;394</td>
+			</tr>
+			<tr>
+				<td>Zscaler</td>
+				<td>3&nbsp;932</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Le réseau de Cloudflare s'illustre vraiment ici, nous aidant à proposer la meilleure expérience utilisateur à nos clients. Le réseau de Cloudflare étant incroyablement performant et proche des appareils des utilisateurs finaux, nous sommes en mesure de réduire notre temps de réponse et notre temps jusqu'au premier octet, et ainsi, de contribuer à améliorer l'expérience des utilisateurs finaux.</p>
+	<p>Pour mesurer ces résultats, nous avons demandé à Miercom de nous aider à obtenir les données dont nous avions besoin. À cette fin, Miercom a établi des connexions entre les nœuds de Catchpoint et les solutions d'isolement de navigateur de Cloudflare et Zscaler dans le monde entier, depuis les 14&nbsp;mêmes sites, et a essayé d'accéder avec des équipements simulant des clients à des applications par le biais de produits d'isolement de navigateur dans chaque région. Pour plus d'informations sur la méthodologie de test, vous pouvez consulter le rapport de Miercom, disponible <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler" target="_blank" rel="noopener noreferrer">ici</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-generation-performance-in-a-zero-trust-world">Des performances de nouvelle génération dans un monde Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#next-generation-performance-in-a-zero-trust-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dans un monde dépourvu de solutions Zero Trust, vous et vos équipes informatiques étiez les opérateurs des réseaux, ce qui vous permettait d'en contrôler les performances. Si ce contrôle était rassurant, il représentait également une charge énorme pour vos équipes informatiques, qui devaient gérer les connexions du «&nbsp;kilomètre intermédiaire&nbsp;» entre les bureaux et les ressources. Dans le monde de l'architecture <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>, toutefois, votre réseau est désormais... eh bien, c'est l'Internet public. Cela signifie moins de travail pour vos équipes, mais beaucoup plus de responsabilités pour votre fournisseur d'accès Zero Trust, qui doit gérer les performances pour chacun de vos utilisateurs. Plus votre fournisseur d'accès Zero Trust est capable d'améliorer les performances de bout en bout, meilleure est l'expérience de vos utilisateurs et moins vous encourez de risques. Pour les applications en temps réel telles que l'authentification et les solutions Secure Web Gateway, il est essentiel que l'expérience utilisateur soit particulièrement réactive.</p>
+	<p>Un fournisseur d'accès Zero Trust doit non seulement sécuriser vos utilisateurs sur l'Internet public, mais il doit également optimiser l'Internet public, afin de s'assurer que vos utilisateurs bénéficient d'une protection continue. L'adoption d'une architecture Zero Trust ne réduit pas seulement le besoin de réseaux d'entreprise&nbsp;; elle permet également d'acheminer plus naturellement le trafic des utilisateurs vers les ressources. Cependant, étant donné que votre fournisseur d'accès Zero Trust doit veiller sur tous vos utilisateurs et vos applications, l'évaluation des performances est un aspect critique pour atténuer la frustration de vos utilisateurs et réduire la probabilité qu'ils se plaignent, qu'ils soient moins productifs, voire qu'ils désactivent les solutions. Cloudflare améliore continuellement son réseau, afin de s'assurer que les utilisateurs bénéficient toujours de la meilleure expérience possible&nbsp;– et cela, non seulement en appliquant des correctifs au routage, mais également en étendant les accords d'interconnexion et en ajoutant de nouveaux sites. C'est grâce à ces efforts infatigables que nous sommes aujourd'hui le plus rapide des fournisseurs d'accès Zero Trust.</p>
+	<p>Consultez la <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler" target="_blank" rel="noopener noreferrer">page de notre comparatif</a> pour des informations plus détaillées sur les performances de l'architecture réseau de Cloudflare face à Zscaler.</p>
+</div>

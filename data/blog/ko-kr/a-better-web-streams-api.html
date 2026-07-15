@@ -1,0 +1,1072 @@
+<div class="mb2 gray5">24분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/a-better-web-streams-api">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/a-better-web-streams-api">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qjBI2UpJXcpCqgAY4SJkH/9e6489cd148e2c74d1bdd25dd08e6db5/image7.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>스트림에서 데이터를 처리하는 것은 애플리케이션 구축 방법의 기본입니다. 어디에서든 스트리밍이 작동하도록 하기 위해 <a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer"><u>WHATWG Streams Standard</u></a> (비공식적으로 "웹 스트림")는 브라우저와 서버 전반에서 작동할 공통 API를 설정하도록 설계되었습니다. 브라우저로 배송되었고, Cloudflare Workers, Node.js, Deno, Bun의 기반이 되었으며, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a>와 같은 API의 토대가 되었습니다. 이는 중요한 사업이며, 이 프로젝트를 설계한 사람들은 그 당시의 제약과 도구로 어려운 문제를 해결하고 있었습니다.</p>
+	<p>하지만 웹 스트림을 기반으로 여러 해 동안 구축(Node.js와 Cloudflare Workers에 이를 구현하고, 고객과 런타임을 위해 프로덕션 문제를 디버깅하며, 개발자가 너무 많은 공통 함정을 겪을 수 있도록 지원)한 결과, 저는 표준 API가 이런 기능을 수행할 수 있다고 믿게 되었습니다. 점진적인 개선만으로는 쉽게 해결할 수 없는 근본적인 사용성, 성능 문제를 해결해야 합니다. 문제는 버그가 아닙니다. 10여 년 전에는 합리적이었을 수 있는 설계 결정의 결과였지만, 오늘날 JavaScript 개발자의 코드 작성 방식과는 맞지 않습니다.</p>
+	<p>이 게시물에서는 웹 스트림에서 발견한 몇 가지 근본적인 문제를 살펴보고, 더 나은 것이 가능하다는 것을 보여 주는 JavaScript 기본 언어를 기반으로 한 대체 접근 방식을 제시합니다.&nbsp;</p>
+	<p>벤치마크 결과, 이 대안은 제가 테스트해 본 모든 런타임 환경(Cloudflare Workers, Node.js 포함)에서 웹 스트림보다 2배에서 <i>120배까지</i> 빠른 속도를 보여줍니다. Deno, 번 및 모든 주요 브라우저). 이러한 성능 개선은 영리한 최적화 때문이 아니라, 최신 JavaScript 언어 기능을 더 효과적으로 활용하도록 설계를 근본적으로 변경했기 때문입니다. 이전의 사람들을 폄하하려는 것이 아닙니다. 다음으로 발생할 수 있는 문제에 대한 대화를 시작하려고 합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="where-were-coming-from">Cloudflare의 출발점</h2>
+		<a href="https://blog.cloudflare.com/#where-were-coming-from" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Streams Standard는 "낮은 수준의 I/O 기본 요소에 효율적으로 매핑되는 데이터 스트림을 생성, 구성, 소비하기 위한 API"를 제공한다는 야심찬 목표를 가지고 2014년부터 2016년까지 개발되었습니다. 웹 스트리밍이 등장하기 전의 웹 플랫폼에는 스트리밍 데이터를 처리하는 표준 방법이 없었습니다.</p>
+	<p>Node.js에는 브라우저에서도 작동하도록 포팅된 당시에 이미 자체 <a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener noreferrer"><u>스트리밍 API</u></a> 가 있었지만, WHATWG는 웹 브라우저의 요구 사항만 고려하도록 설계되었다는 점을 고려하여 이를 시작점으로 사용하지 않기로 결정했습니다. 서버 측 런타임이 웹 스트림을 채택한 것은 나중에서야, Cloudflare Workers와 Deno가 각각 최고의 웹 스트림 지원과 런타임 간 호환성을 우선시하면서 등장했습니다.</p>
+	<p>웹 스트림 설계는 JavaScript의 비동기 반복 이전보다 먼저 등장했습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of" target="_blank" rel="noopener noreferrer"><u><code>for await...of</code></u></a> 구문은 Streams Standard가 처음 마무리된 지 2년 후인 <a href="https://262.ecma-international.org/9.0" target="_blank" rel="noopener noreferrer"><u>ES2018</u></a>년에 이르러서야 등장했습니다. 이 시기에 API는 처음에는 JavaScript에서 비동기 시퀀스를 소비하는 관용적 방식이 될 것을 처음에는 활용할 수 없었습니다. 해당 사양은 자체적인 리더/라이터 획득 모델을 도입했고, 이러한 결정은 API의 모든 측면에 영향을 미쳤습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X0niHShBlgF4LlpWYB7eC/f0bbf35f12ecc98a3888e6e3835acf3a/1.png" alt="" class="kg-image" width="1042" height="421" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="excessive-ceremony-for-common-operations">공통 작업에 대한 과도한 서명</h4>
+		<a href="https://blog.cloudflare.com/#excessive-ceremony-for-common-operations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>스트림에서 가장 일반적인 작업은 끝까지 읽는 것입니다. 웹 스트림의 경우는 다음과 같습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// First, we acquire a reader that gives an exclusive lock
+// on the stream...
+const reader = stream.getReader();
+const chunks = [];
+try {
+  // Second, we repeatedly call read and await on the returned
+  // promise to either yield a chunk of data or indicate we're
+  // done.
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+} finally {
+  // Finally, we release the lock on the stream
+  reader.releaseLock();
+}</code></pre>
+	<p>이 패턴이 스트리밍에 내재되어 있다고 가정할 수도 있습니다. 그렇지 않습니다. 리더 획득, 잠금 관리, <code>{ value, done }</code> 프로토콜은 모두 요구 사항이 아닌 단순한 설계 선택 사항일 뿐입니다. 이는 웹 스트림 사양이 언제 어떻게 작성되었는지에 따른 아티팩트입니다. 비동기 반복은 시간이 지남에 따라 도착하는 시퀀스를 처리하기 위해 존재하지만, 스트림 사양이 작성되었을 때는 아직 비동기 반복이 존재하지 않았습니다. 여기서 복잡성은 근본적인 필요성이 아니라 순수한 API 오버헤드 때문입니다.</p>
+	<p>웹 스트림이 <code>for await...of</code>를 지원하므로, 이제 다른 접근법을 고려해 보세요:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const chunks = [];
+for await (const chunk of stream) {
+  chunks.push(chunk);
+}</code></pre>
+	<p>이렇게 하면 표준 방식이 훨씬 적다는 점에서 더 좋지만 모든 것이 해결되지는 않습니다. 비동기 반복이 이에 맞게 설계되지 않은 API를 개조하여 다시 장착되었습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB(Bring Your Own 버퍼)</u></a> 읽기와 같은 기능은 반복을 통해 액세스할 수 없습니다. 리더, 잠금, 컨트롤러의 근본적인 복잡성은 여전히 존재하며 숨겨져 있습니다. 문제가 발생하거나 API의 추가 기능이 필요할 때 개발자는 <code>스트림이</code> '잠긴' 이유나 릴리스락()이 예상대로 작동하지 않는 이유를 파악하면서 원래 API의 잔해로 되돌아가게 됩니다. 제어하지 않는 코드에서 병목 현상을 찾아낼 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="the-locking-problem">잠금 문제</h4>
+		<a href="https://blog.cloudflare.com/#the-locking-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 스트림은 잠금 모델을 사용하여 여러 소비자가 읽기를 인터리빙하는 것을 방지합니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader" target="_blank" rel="noopener noreferrer"><u><code>getReader()</code></u></a>를 호출하면 스트림이 잠깁니다. 잠겨 있는 동안에는 다른 어떤 작업도 스트림에서 직접 읽거나, 파이프로 전달하거나, 취소할 수 없으며, 실제로 리더를 잡고 있는 코드만 가능합니다.</p>
+	<p>이렇게 쉽게 잘못될 때까지는 그럴듯해 보입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function peekFirstChunk(stream) {
+  const reader = stream.getReader();
+  const { value } = await reader.read();
+  // Oops — forgot to call reader.releaseLock()
+  // And the reader is no longer available when we return
+  return value;
+}
+
+const first = await peekFirstChunk(stream);
+// TypeError: Cannot obtain lock — stream is permanently locked
+for await (const chunk of stream) { /* never runs */ }</code></pre>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><u><code>releaseLock()</code></u></a> 를 잊으면 스트림이 영구적으로 중단됩니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><u><code>잠김</code></u></a> 속성은 스트림이 잠겨 있다는 것은 알려줄 수 있지만, 왜, 누구에 의해, 또는 잠금을 여전히 사용할 수 있는지 여부는 알 수 없습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>파이핑</u></a> 은 내부적으로 잠금을 획득하므로 파이프 작업 중에 명확하지 않은 방식으로 스트림을 사용할 수 없게 됩니다.</p>
+	<p>읽기 보류가 포함된 잠금 해제의 의미도 여러 해 동안 명확하지 않았습니다. 읽기()를 호출했지만 기다리지 않고 릴리스락()을 호출했다면, 무슨 일이 일어났을까요? 이 사양은 잠금이 해제될 때 보류 중인 읽기를 취소하도록 최근에 명시되어 있었습니다. 하지만 다양한 구현이 있었으며, 이전에 지정하지 않은 동작에 의존했던 코드는 손상될 수 있습니다.</p>
+	<p>그렇긴 하지만, 자체 잠금이 나쁜 것은 아니라는 점을 인식하는 것이 중요합니다. 사실 애플리케이션이 적절하고 질서 정연하게 데이터를 소비하거나 생성할 수 있도록 보장하는 것은 중요한 목적에 기여합니다. 주요 과제는 <code>getReader() </code>및 <code>releaseLock()</code>과 같은 API를 사용하여 이를 수동으로 구현하는 데 있었습니다. 자동 잠금 기능과 비동기 이터러블을 포함한 리더 관리 기능이 등장하면서 사용자 관점에서 잠금에 대처하는 일이 훨씬 쉬워졌습니다.</p>
+	<p>구현자의 입장에서는 잠금 모델에 적지 않은 내부 부기가 추가됩니다. 모든 작업에서는 잠금 상태를 확인해야 하고, 리더를 추적해야 하며, 잠금, 취소, 오류 상태 간의 상호 작용으로 인해 모두 올바르게 처리해야 하는 엣지 케이스 매트릭스가 생성됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="byob-complexity-without-payoff">BYOB: 보상 없는 복잡성</h4>
+		<a href="https://blog.cloudflare.com/#byob-complexity-without-payoff" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB(Bring Your Own 버퍼)</u></a> 읽기는 개발자가 스트림에서 읽을 때 메모리 버퍼를 재사용할 수 있도록 설계되었으며, 이는 처리량이 높은 시나리오를 위한 중요한 최적화입니다. 각 청크에 대해 새 버퍼를 할당하는 대신 사용자가 자체 버퍼를 제공하면 스트림이 그 버퍼를 채웁니다.</p>
+	<p>실제로 (그리고 항상 예외가 존재합니다) BYOB를 사용했을 때 측정 가능한 이점이 있는 경우는 거의 없습니다. 이 API는 기본 읽기보다 훨씬 더 복잡하며, 별도의 리더 유형(<code>ReadableStreamBYOBReader</code>)과 기타 특수 클래스(예: <code>ReadableStreamBYOBRequest</code>), 세심한 버퍼 수명 주기 관리, 그리고 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers" target="_blank" rel="noopener noreferrer"><u><code>ArrayBuffer</code></u><u> 분리</u></a> 의미론에 대한 이해가 필요합니다. BYOB 읽기에 버퍼를 전달하면 버퍼가 분리(스트림으로 전송)되고 잠재적으로 다른 메모리에 대해 다른 보기가 제공됩니다. 이 전송 기반 모델은 오류가 발생하기 쉽고 혼란스럽습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const reader = stream.getReader({ mode: 'byob' });
+const buffer = new ArrayBuffer(1024);
+let view = new Uint8Array(buffer);
+
+const result = await reader.read(view);
+// 'view' should now be detached and unusable
+// (it isn't always in every impl)
+// result.value is a NEW view, possibly over different memory
+view = result.value; // Must reassign</code></pre>
+	<p>또한 BYOB는 비동기 반복 또는 TransformStream과 함께 사용할 수 없으므로, 카피 없는 읽기를 원하는 개발자는 어쩔 수 없이 수동 리더 루프로 다시 들어가야 합니다.</p>
+	<p>BYOB는 구현자에게 상당한 복잡성을 더합니다. 스트림은 보류 중인 BYOB 요청을 추적하고, 부분 채우기를 처리하며, 버퍼 분리를 올바르게 관리하고, BYOB 리더와 기본 소스 사이를 조정해야 합니다. <a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>가독성 있는 바이트 스트림을 위한 웹 플랫폼 테스트</u></a> 에는 분리된 버퍼, 잘못된 뷰, 대기열에 든 후 응답 순서 지정 등 BYOB 엣지 케이스를 위한 전용 테스트 파일이 포함되어 있습니다.</p>
+	<p>BYOB는 사용자와 구현자 모두에게 복잡하지만, 실제로 채택되는 경우는 거의 없습니다. 대부분의 개발자는 기본 읽기를 사용하고 할당 오버헤드를 감수합니다.</p>
+	<p>대부분의 사용자 영역에서 구현되는 사용자 지정 읽기 가능한 스트림은 일반적으로 기본 및 BYOB 읽기 지원을 단일 스트림에서 올바르게 구현하는 데 필요한 모든 절차를 방해하지 않습니다. 제대로 읽기 어렵고 시간이 많이 걸리는 코드의 대부분은 일반적으로 기본 읽기 경로로 대체됩니다. 아래 예시는 "올바른" 구현을 하기 위해 필요한 작업을 보여줍니다. 규모가 크고 복잡하며 오류가 발생하기 쉽고 일반적인 개발자가 실제로 처리해야 하는 복잡성 수준이 아닙니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">new ReadableStream({
+    type: 'bytes',
+    
+    async pull(controller: ReadableByteStreamController) {      
+      if (offset &gt;= totalBytes) {
+        controller.close();
+        return;
+      }
+      
+      // Check for BYOB request FIRST
+      const byobRequest = controller.byobRequest;
+      
+      if (byobRequest) {
+        // === BYOB PATH ===
+        // Consumer provided a buffer - we MUST fill it (or part of it)
+        const view = byobRequest.view!;
+        const bytesAvailable = totalBytes - offset;
+        const bytesToWrite = Math.min(view.byteLength, bytesAvailable);
+        
+        // Create a view into the consumer's buffer and fill it
+        // not critical but safer when bytesToWrite != view.byteLength
+        const dest = new Uint8Array(
+          view.buffer,
+          view.byteOffset,
+          bytesToWrite
+        );
+        
+        // Fill with sequential bytes (our "data source")
+        // Can be any thing here that writes into the view
+        for (let i = 0; i &lt; bytesToWrite; i++) {
+          dest[i] = (offset + i) &amp; 0xFF;
+        }
+        
+        offset += bytesToWrite;
+        
+        // Signal how many bytes we wrote
+        byobRequest.respond(bytesToWrite);
+        
+      } else {
+        // === DEFAULT READER PATH ===
+        // No BYOB request - allocate and enqueue a chunk
+        const bytesAvailable = totalBytes - offset;
+        const chunkSize = Math.min(1024, bytesAvailable);
+        
+        const chunk = new Uint8Array(chunkSize);
+        for (let i = 0; i &lt; chunkSize; i++) {
+          chunk[i] = (offset + i) &amp; 0xFF;
+        }
+        
+        offset += chunkSize;
+        controller.enqueue(chunk);
+      }
+    },
+    
+    cancel(reason) {
+      console.log('Stream canceled:', reason);
+    }
+  });</code></pre>
+	<p>예를 들어 호스트 런타임이 런타임 <code>자체의 바이트 지향 읽기 </code> <code>가능한 스트림을 가져오기 응답의 본문과</code> 같이 제공하는 경우, 런타임 자체가 최적화된 BYOB 읽기 구현을 제공하는 것이 훨씬 쉬운 경우가 많지만, 여전히 다음과 같아야 합니다. 기본 읽기 패턴과 BYOB 읽기 패턴을 모두 처리할 수 있는 시스템인데도 불구하고 상당히 복잡해졌습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="backpressure-good-in-theory-broken-in-practice">백프레셔: 이론상으로는 훌륭하지만 실제로는 한계가 있음</h4>
+		<a href="https://blog.cloudflare.com/#backpressure-good-in-theory-broken-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>배압(배압)(느린 소비자가 빠른 제작자에게 속도를 늦추라고 신호할 수 있는 능력)은 웹 스트림에서 가장 중요한 개념입니다. 이론상으로는요. 실제로 이 모델에는 몇 가지 심각한 결함이 있습니다.</p>
+	<p>기본 신호는 컨트롤러의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/desiredSize" target="_blank" rel="noopener noreferrer"><u><code>desiredSize</code></u></a> 입니다. 이 값은 양수(데이터 필요), 0(용량 초과), 음수(용량 초과) 또는 null(종료됨)일 수 있습니다. 제작자는 이 값을 확인하고 양이 아닐 때 대기열에넣기를 중지해야 합니다. 그러나 이를 강제하는 것은 없습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/enqueue" target="_blank" rel="noopener noreferrer"><u><code>controller.enqueue()</code></u></a> 원하는 크기가 아주 음수인 경우에도 항상 성공합니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">new ReadableStream({
+  start(controller) {
+    // Nothing stops you from doing this
+    while (true) {
+      controller.enqueue(generateData()); // desiredSize: -999999
+    }
+  }
+});</code></pre>
+	<p>Stream 구현은 백 프레셔를 무시할 수 있고, 무시할 수 있습니다. 일부 사양 정의 기능은 명시적으로 배압을 해제합니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><u><code>tee()</code></u></a>는 예를 들어 단일 스트림에서 두 개의 분기를 생성합니다. 한 분기가 다른 분기보다 빨리 읽히면 내부 버퍼에 제한 없이 데이터가 누적됩니다. 소비자의 속도가 빠르면 메모리가 무제한으로 증가하는 반면 느린 소비자는 메모리가 따라잡을 수 있으며, 이를 구성하거나 느린 분기를 취소하는 것 외에는 옵트아웃할 방법이 없습니다.</p>
+	<p>웹 스트림은 <code>하이워터마크</code> 옵션 및 사용자 지정 가능한 크기 계산의 형태로 배압 동작을 조정하는 명확한 메커니즘을 제공하지만, <code>원하는 크기만큼</code> 무시하기 쉽고 많은 애플리케이션에서 주의를 기울이지 않습니다.</p>
+	<p><code>WritableStream</code> 측에서도 동일한 문제가 존재합니다. <code>WritableStream</code> 에는 <code>highWaterMark</code> 와 <code>desiredSize</code>가 있습니다. <code>writer.ready에</code> 따르면 데이터 제작자는 주의를 기울여야 하지만, 그렇게 하지 않는 경우가 많습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const writable = getWritableStreamSomehow();
+const writer = writable.getWriter();
+
+// Producers are supposed to wait for the writer.ready
+// It is a promise that, when resolves, indicates that
+// the writables internal backpressure is cleared and
+// it is ok to write more data
+await writer.ready;
+await writer.write(...);</code></pre>
+	<p>백프레셔는 구현자에게 아무런 보장도 없이 복잡성을 가중시킵니다. 대기열 크기를 추적하고, <code>desiredSize</code>를 계산하며, 적시에 <code>pull()</code> 을 호출하는 장치는 모두 올바르게 구현되어야 합니다. 그러나 이러한 신호는 권고 사항일 뿐이므로 배압으로 해결해야 할 문제를 실제로 방지하지는 못합니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="the-hidden-cost-of-promises">Promise의 숨겨진 비용</h4>
+		<a href="https://blog.cloudflare.com/#the-hidden-cost-of-promises" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 스트림 사양에 따라 여러 지점에서 프라미스를 생성해야 하며, 이러한 지점은 종종 핫패스가 되고 사용자에게는 보이지 않는 경우가 많습니다. 각 <code>read()</code> 호출은 프라미스를 반환할 뿐만 아니라, 대기열 관리, <code>pull()</code> 조정, 백프레셔 시그널링을 위해 추가 프라미스를 내부적으로 생성합니다.</p>
+	<p>이 오버헤드는 사양이 버퍼 관리, 완료, 백 프레셔 신호에 대한 프라미스에 의존하기 때문에 발생합니다. 그 중 일부는 구현에 따라 다를 수 있지만, 작성된 사양을 따르고 있다면 대부분은 피할 수 없습니다. 비디오 프레임, 네트워크 패킷, 실시간 데이터 등 빈도가 높은 스트리밍의 경우 이 오버헤드가 상당합니다.</p>
+	<p>문제는 파이프라인에서 복잡해집니다. 각 <code>TransformStream</code> 은 소스와 싱크 사이에 또 다른 Promise 메커니즘 계층을 추가합니다. 이 사양에서는 동기식 빠른 경로가 정의되지 않으므로 데이터를 즉시 사용할 수 있는 경우에도 프라미스 메커니즘은 계속 실행됩니다.</p>
+	<p>구현자 입장에서는 이렇게 약속이 무거운 설계는 최적화 기회를 제약합니다. 이 사양에는 특정 프라미스 확인 순서가 의무화되므로 미묘한 규제 준수 실패의 위험을 감수하지 않고 작업을 일괄 처리하거나 불필요한 비동기 경계를 건너뛰기 어렵게 됩니다. 구현자가 실제로 수행하는 숨겨진 내부 최적화 작업이 많이 있지만, 이러한 작업은 복잡하고 제대로 수행하기 어려울 수 있습니다.</p>
+	<p>이 블로그 게시물을 작성하는 동안, Vercel의 Malte Ubl은 Node.js의 성능을 개선하기 위해 Vercel이 진행하고 있는 몇 가지 연구 작업을 설명하는 자체 블로그 <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>게시물을 게시했습니다.</u></a> 웹 스트림 구현. 그 게시물에서 이들은 모든 웹 스트림 구현에서 직면하는 것과 동일한 기본적인 성능 최적화 문제를 논의합니다.</p>
+	<blockquote>
+		<p>"또는 PipeTo()를 고려해 보세요. 각 청크는 읽기, 쓰기, 배압 검사, 반복의 전체 프라미스 체인을 통과합니다. {value, done} 결과 개체는 읽기당 할당됩니다. 오류 전파로 인해 Promise 분기가 추가로 생성됩니다.</p>
+		<p>잘못된 것은 없습니다. 스트림이 보안 경계를 가로지르거나, 취소 시맨틱이 기밀해야 하며, 파이프의 양쪽 끝을 모두 제어할 수 없는 브라우저에서 이러한 보장은 중요합니다. 하지만 서버에서 React Server Components를 1KB 청크의 세 가지 변환을 통해 파이핑하면 비용이 누적됩니다.</p>
+		<p>우리는 1KB 청크에 대해 630MB/s의 네이티브 WebStream 파이프 쓰루를 벤치마킹했습니다. 동일한 통과 변환이 적용된 Node.js 파이프라인(): ~7,900MB/s. 이는 12배이며 그 차이는 거의 전적으로 프라미스(Promise)와 개체 할당 오버헤드입니다."
+			- Malte Ubl, <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster</u></a></p>
+	</blockquote>
+	<p>연구의 일환으로 Carrefour에서는 Node.js의 특정 코드 경로에서 프라미스를 제거하는 웹 스트림 구현으로 속도가 최대 10배까지 현저하게 향상될 수 있으며, 이는 요점을 증명합니다. 프라미스는 유용하기는 하지만, 상당한 오버헤드를 추가한다는 것입니다. Node.js의 핵심 유지 관리자 중 한 명으로서 Malte와 Vercel 직원들이 제안한 개선 사항이 상륙하는 데 도움이 되기를 기대합니다!</p>
+	<p>Cloudflare Workers에 대한 최근 업데이트에서 저는 내부 데이터 파이프라인에도 비슷한 종류의 수정을 가하여 특정 응용 프로그램 시나리오에서 생성되는 JavaScript 프라미스 수를 최대 200배까지 줄였습니다. 그 결과 이러한 응용 프로그램에서는 성능이 몇 배나 됩니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="real-world-failures">실제 장애</h3>
+		<a href="https://blog.cloudflare.com/#real-world-failures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="exhausting-resources-with-unconsumed-bodies">소모되지 않은 본문으로 리소스 고갈</h4>
+		<a href="https://blog.cloudflare.com/#exhausting-resources-with-unconsumed-bodies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>fetch()</code> 가 응답을 반환할 때 본문은 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/body" target="_blank" rel="noopener noreferrer"><u><code>읽기 가능한 스트림</code></u></a>입니다. 상태만 확인하고 본문을 소비하거나 취소하지 않으면 어떻게 될까요? 그 대답은 구현 방식에 따라 다르지만, 일반적인 결과는 리소스 유출입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function checkEndpoint(url) {
+  const response = await fetch(url);
+  return response.ok; // Body is never consumed or cancelled
+}
+
+// In a loop, this can exhaust connection pools
+for (const url of urls) {
+  await checkEndpoint(url);
+}</code></pre>
+	<p>이 패턴으로 인해 <a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a> (Node.js에 내장된 <code>fetch() </code>구현)를 사용하는 Node.js 애플리케이션에서 연결 풀이 고갈되고 다른 런타임에서도 비슷한 문제가 발생한 적이 있습니다. 스트림은 기본 연결에 대한 참조를 보유하며, 명시적으로 사용하거나 취소하지 않으면 연결이 가비지 컬렉션까지 지속될 수 있습니다.</p>
+	<p>암묵적으로 스트림 분기를 생성하는 API 때문에 문제가 더욱 복잡해집니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><u><code>Request.clone()</code></u></a> 및 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><u><code>Response.clone()</code></u></a> 암시적인 <code>tee()</code> 작업을 수행하는 데 적합합니다. 세부 사항을 놓치기 쉽습니다. 로깅 또는 재시도 논리에 대한 요청을 복제하는 코드는 자신도 모르게 독립적으로 소비되어야 하는 분기된 스트림을 생성하여 리소스 관리 부담이 가중될 수 있습니다.</p>
+	<p>확실히, 이러한 유형의 문제는 <i>구현 버그입니다</i>. 연결 유출은 undici가 자체 구현에서 수정해야 하는 부분이지만, 사양이 복잡하다고해서 이러한 유형의 문제에 쉽게 대처할 수는 없습니다.</p>
+	<blockquote>
+		<p>"Node.js의 fetch() 구현에서 스트림을 복제하는 것은 생각보다 어렵습니다. 요청 본문이나 응답 본문을 복제할 때는 tee()를 호출하게 됩니다. 이렇게 하면 단일 스트림이 둘 다 사용해야 하는 두 개의 분기로 나뉩니다. 한 소비자가 다른 소비자보다 빨리 읽으면 데이터 버퍼는 느린 분기를 기다리면서 메모리가 무제한입니다. 두 분기를 모두 적절하게 소비하지 않으면 기본 연결이 유출됩니다. 하나의 소스를 공유하는 두 리더가 협력하면 실수로 원래 요청을 깨뜨리거나 연결 풀을 소진시킬 수 있습니다. 간단한 API 호출로 이루어질 수 있으며, 기본 메커니즘이 복잡하지만, 제대로 실행하기는 어렵습니다." - Matteo Collina, Ph.D. - Platformatic 공동 창업자 겸 CTO, Node.js 기술 운영 위원장</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h4 id="falling-headlong-off-the-tee-memory-cliff">Tee() 메모리 벼랑에서 떨어져</h4>
+		<a href="https://blog.cloudflare.com/#falling-headlong-off-the-tee-memory-cliff" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><u><code>tee()</code></u></a> 는 스트림을 두 개의 분기로 분할합니다. 직관적인 것처럼 보이지만 구현하려면 버퍼링이 필요합니다. 한 브랜치가 다른 브랜치보다 빠르게 읽히면 데이터는 느린 브랜치가 따라잡을 때까지 어딘가에 보관되어야 합니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const [forHash, forStorage] = response.body.tee();
+
+// Hash computation is fast
+const hash = await computeHash(forHash);
+
+// Storage write is slow — meanwhile, the entire stream
+// may be buffered in memory waiting for this branch
+await writeToStorage(forStorage);</code></pre>
+	<p>이 사양에서는 <code>tee()</code>에 대한 버퍼 제한을 의무화하지 않습니다. 공정하게 말하자면, 사양은 사양에서 준수할 수 있는 규범적 요구 사항이 충족되는 한 적합하다고 생각하는 모든 방식으로 tee() 및 기타 API에 대한 실제 내부 메커니즘을 구현할 수 <code>있습니다.</code> 그러나 구현 시 스트림 사양에 설명된 특정 방식으로 <code>tee()</code> 를 구현하기로 선택하면 <code>tee()</code> 에는 해결하기 어려운 내장 메모리 관리 문제가 함께 발생합니다.</p>
+	<p>이를 처리하기 위한 구현에서는 자체 전략을 개발해야 했습니다. Firefox는 처음에 소비율 차이에 비례하여 O<code>(n)</code> 메모리 증가를 유발하는 연결 목록 접근 방식을 사용했습니다. Cloudflare Workers에서 우리는 공유 버퍼 모델을 구현하기로 결정했는데, 이때 가장 빠른 소비자가 아니라 가장 느린 소비자가 배압을 알리는 신호를 보냅니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cl4vqYfaHaVXiHjLSXv0a/03a0b9fe4c9c0594e181ffee43b63998/2.png" alt="" class="kg-image" width="782" height="531" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="transform-backpressure-gaps">배압 격차 해소</h4>
+		<a href="https://blog.cloudflare.com/#transform-backpressure-gaps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><code>TransformStream</code> 은 처리 로직 사이에 <code>읽기/쓰기</code> 쌍을 생성합니다. <code>transform()</code> 함수는 읽을 때가 아니라 <i>쓸 때</i> 실행됩니다. 변환 처리는 준비가 되었는지 여부와 관계없이 데이터가 도착하는 즉시 즉시 이루어집니다. 소비자가 느리고 양측 사이의 배압 신호에 부하가 걸리더라도 무제한의 버퍼링을 초래할 수 있는 간격이 있으면 불필요한 작업이 발생합니다. 사양에서는 변환되는 데이터의 제작자가 변환의 쓰기 가능한 쪽의 <code>writer.ready</code> 신호에 주의를 기울이고 있지만, 제작자가 이를 단순히 무시하는 경우가 많습니다.</p>
+	<p>변환의 <code>transform() </code>작업이 동기식이고 항상 출력을 즉시 대기열에 추가하는 경우, 다운스트림 소비자가 느린 경우에도 쓰기 가능한 쪽에서 역압박 신호를 보내지 않습니다. 이는 많은 개발자가 간과하는 사양 설계의 결과입니다. 브라우저에서 사용자가 한 명만 있고 일반적으로 특정 시간에 스트림 파이프라인 수가 적은 경우에는 이러한 유형의 소용없는 경우가 많지만, 런타임 시 서버 측이나 에지 성능에 큰 영향을 미칩니다. 수천 건의 동시 요청을 처리할 수 있습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const fastTransform = new TransformStream({
+  transform(chunk, controller) {
+    // Synchronously enqueue — this never applies backpressure
+    // Even if the readable side's buffer is full, this succeeds
+    controller.enqueue(processChunk(chunk));
+  }
+});
+
+// Pipe a fast source through the transform to a slow sink
+fastSource
+  .pipeThrough(fastTransform)
+  .pipeTo(slowSink);  // Buffer grows without bound</code></pre>
+	<p>TransformStreams가 해야만 하는 일은 컨트롤러에 가해지는 배압을 확인하고 프라미스를 사용하여 이를 작성기에 다시 전달하는 것입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const fastTransform = new TransformStream({
+  async transform(chunk, controller) {
+    if (controller.desiredSize &lt;= 0) {
+      // Wait on the backpressure to clear somehow
+    }
+
+    controller.enqueue(processChunk(chunk));
+  }
+});</code></pre>
+	<p>하지만 여기서 문제가 되는 것은 <code>TransformStreamDefaultController</code> 에는 라이터와 같은 준비된 프라미스 메커니즘이 없다는 것입니다. 따라서 <code>TransformStream</code> 구현은 <code>controller.desiredSize</code>&nbsp;가 다시 양수가 되는 시기를 주기적으로 확인하는 폴링 메커니즘을 구현해야 합니다.</p>
+	<p>문제는 파이프라인에서 더 악화됩니다. 구문 분석, 변환, 직렬화와 같이 여러 변환을 연결하는 경우 각 <code>TransformStream</code> 에는 자체 내부 읽기 및 쓰기 버퍼가 있습니다. 구현자가 사양을 엄격하게 준수하면 데이터는 푸시 지향 방식으로 이러한 버퍼를 통해 캐스케이딩됩니다. 소스가 트랜스폼 A로 푸시하고, 트랜스폼 B로 푸시하고, 트랜스폼 C로 푸시하여 최종 소비자가 다음과 같은 작업을 하기 전에 각각 중간 버퍼에 데이터가 축적됩니다 끌어오기 시작했습니다. 세 번의 변환으로 6개의 내부 버퍼를 동시에 채울 수 있습니다.</p>
+	<p>Streams API를 사용하는 개발자는 소스, 변환, 쓰기 가능한 대상을 만들 때 <code>highWaterMark</code> 와 같은 옵션을 기억해야 하지만, 이를 잊거나 무시하는 경우가 많습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">source
+  .pipeThrough(parse)      // buffers filling...
+  .pipeThrough(transform)  // more buffers filling...
+  .pipeThrough(serialize)  // even more buffers...
+  .pipeTo(destination);    // consumer hasn't started yet</code></pre>
+	<p>구현 방식은 ID 변환을 축소하거나, 관찰할 수 없는 경로를 단락시키며, 버퍼 할당을 지연하거나, JavaScript를 전혀 실행하지 않는 네이티브 코드로 폴백하여 변환 파이프라인을 최적화하는 방법을 찾았습니다. Deno, Bun, Cloudflare Workers에서는 모두 오버헤드의 상당 부분을 제거하는 데 도움이 되는 '네이티브 경로' 최적화를 성공적으로 구현했으며, Vercel의 최근 <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a> 연구에서는 Node.js를 위한 유사한 최적화 작업이 진행되고 있습니다. 그러나 최적화 자체가 상당한 복잡성을 더하며, 여전히 TransformStream이 사용하는 본질적으로 푸시 지향적인 모델을 완전히 벗어날 수 없습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64FcAUPYrTvOSYOPoT2FkR/cc91e0d32dd47320e8ac9d6f431a2fda/3.png" alt="" class="kg-image" width="922" height="481" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="gc-thrashing-in-server-side-rendering">서버 측 렌더링에서의 GC 스래싱</h4>
+		<a href="https://blog.cloudflare.com/#gc-thrashing-in-server-side-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>스트리밍 서버 측 렌더링(SSR)은 특히 골칫거리입니다. 일반적인 SSR 스트림은 각각 스트림 기계를 통과하는 수천 개의 작은 HTML 조각을 렌더링할 수 있습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Each component enqueues a small chunk
+function renderComponent(controller) {
+  controller.enqueue(encoder.encode(`&lt;div&gt;${content}&lt;/div&gt;`));
+}
+
+// Hundreds of components = hundreds of enqueue calls
+// Each one triggers promise machinery internally
+for (const component of components) {
+  renderComponent(controller);  // Promises created, objects allocated
+}</code></pre>
+	<p>모든 프래그먼트는 <code>read()</code> 호출을 위해 생성된 프라미스, 배압 조정에 대한 프라미스, 중간 버퍼 할당, <code>{ value, done } </code>개의 결과 개체를 의미하며, 대부분 즉시 쓰레기가 됩니다.</p>
+	<p>이는 부하 상태에서 GC 압력이 발생하여 처리량이 저하될 수 있습니다. JavaScript 엔진은 유용한 작업을 수행하는 대신 수명이 짧은 개체를 수집하는 데 상당한 시간을 할애합니다. GC가 중단 요청 처리를 일시 중지하므로 대기 시간을 예측할 수 없게 됩니다. 저는 가비지 수집이 요청당 총 CPU 시간의 상당한 부분(최대 50% 이상)을 차지하는 SSR 워크로드를 본 적이 있습니다. 그 시간이 실제로 콘텐츠를 렌더링하는 데 쓸 수 있는 시간입니다.</p>
+	<p>아이러니하게도 스트리밍 SSR은 콘텐츠를 점진적으로 전송하여 성능을 개선해야 합니다. 그러나 스트림 기계의 오버헤드는 특히 작은 구성 요소가 많은 페이지의 경우 이러한 이점을 무효화할 수 있습니다. 개발자들이 때로는 전체 응답을 버퍼링하는 것이 웹 스트림을 통해 스트리밍하는 것보다 더 빨라서 그 목적이 완전히 무색해질 수도 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-optimization-treadmill">최적화 러닝 머신</h3>
+		<a href="https://blog.cloudflare.com/#the-optimization-treadmill" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 주요 런타임은 사용 가능한 성능을 달성하기 위해 웹 스트림을 위한 비표준 내부 최적화에 의존해 왔습니다. Node.js, Deno, 번 및 Cloudflare Workers는 모두 자체적인 해결 방법을 개발했습니다. 이는 시스템 수준 I/O에 연결된 스트림의 경우 특히 두드러집니다. 시스템의 많은 부분이 관찰되지 않고 합선될 수 있기 때문입니다.</p>
+	<p>이러한 최적화 기회를 찾는 것은 그 자체로 중요한 일이 될 수 있습니다. 어떤 동작을 관찰할 수 있고 어떤 동작을 안전하게 제거할 수 있는지 식별하려면 사양을 엔드투엔드로 이해해야 합니다. 그럼에도 불구하고 주어진 최적화가 실제로 사양을 준수하는지 여부가 불확실한 경우가 많습니다. 구현자는 호환성을 깨뜨리지 않고 어떤 시맨틱을 완화할 수 있는지 판단해야 합니다. 이로 인해 런타임 팀에서는 허용 가능한 성능을 달성하려고 사양 전문가가 되어야 한다는 엄청난 압박을 받게 됩니다.</p>
+	<p>이러한 최적화는 구현하기 어렵고 오류가 발생하기 쉬우며 런타임 전반에 걸쳐 일관되지 않은 동작으로 이어집니다. 번(Bun)의 "<a href="https://bun.sh/docs/api/streams#direct-readablestream" target="_blank" rel="noopener noreferrer"><u>Direct Streams</u></a>" 최적화는 의도적으로, 그리고 눈에 띄게 비표준 접근 방식을 취하여 사양의 기계 대부분을 완전히 우회합니다. Cloudflare Workers의 <a href="https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream" target="_blank" rel="noopener noreferrer"><u><code>IdentityTransformStream</code></u></a> 은 통과 변환을 위한 빠른 경로를 제공하지만, Workers에 특화되어 있으며 <code>TransformStream</code>의 표준이 아닌 동작을 구현합니다. 각 런타임에는 자체적인 트릭이 있으며 자연스럽게 비표준 솔루션으로 향하는 경향이 있습니다. 비표준 솔루션이 작업을 빠르게 만드는 유일한 방법인 경우가 많기 때문입니다.</p>
+	<p>이러한 분편화 때문에 이동성이 저해됩니다. 하나의 런타임에서 잘 작동하는 코드가 "표준" APIs를 사용하더라도 다른 런타임에서는 다르게 작동하거나 저조하게 작동할 수 있습니다. 런타임 구현자의 복잡성 부담은 막대하며, 미묘한 동작 차이로 인해 교차 런타임 코드를 작성하려는 개발자, 특히 여러 런타임 환경에서 효율적으로 실행할 수 있어야 하는 프레임워크를 유지하는 개발자에게 마찰이 생깁니다.</p>
+	<p>또한, 대부분의 최적화는 사양 중 사용자 코드가 관찰할 수 없는 부분에서만 가능하다는 점도 강조할 필요가 있습니다. 번 "Direct Streams" 같은 대안은 사양이 정의된 관찰 가능한 동작에서 의도적으로 벗어나는 것입니다. 이는 최적화가 '불완전하다'고 느끼는 경우가 많다는 것을 의미합니다. 스크립트는 일부 시나리오에서는 작동하지만 다른 시나리오에서는 작동하지 않거나, 일부 런타임에서는 작동하지만, 다른 런타임에서는 작동하지 않는 등의 방식입니다. 이러한 모든 경우는 웹 스트림 접근 방식의 전반적으로 지속 불가능한 복잡성을 가중시키므로 대부분의 런타임 구현자가 적합성 테스트를 통과한 후에는 스트림 구현을 추가로 개선하기 위해 큰 노력을 기울이지 않습니다.</p>
+	<p>구현자는 이러한 고비를 넘길 필요가 없습니다. 합리적인 성능을 달성하기 위해 사양 의미 체계를 완화하거나 우회해야 한다면, 사양 자체에 문제가 있다는 신호입니다. 잘 설계된 스트리밍 API는 기본적으로 효율적이어야 하며, 각 런타임에서 자체적인 비상구를 발명할 필요가 없어야 합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-compliance-burden">규제 준수 부담</h3>
+		<a href="https://blog.cloudflare.com/#the-compliance-burden" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>복잡한 사양은 복잡한 에지 케이스를 만듭니다. <a href="https://github.com/web-platform-tests/wpt/tree/master/streams" target="_blank" rel="noopener noreferrer"><u>스트림용 웹 플랫폼 테스트</u></a> 는 70개 이상의 테스트 파일에 걸쳐 있으며, 포괄적인 테스트도 좋지만, 중요한 것은 테스트할 내용입니다.</p>
+	<p>구현을 하려면 반드시 통과해야 하는 보다 모호한 테스트를 몇 가지 고려해 보겠습니다.</p>
+	<ul>
+		<li>
+			<p>프로토타입 오염 방어: 하나의 테스트는 <code>Object.prototype.</code>then을 패치하여 프로미스 확인을 가로챈 다음, <code>pipeTo()</code> 및 <code>tee()</code> 작업이 프로토타입 체인을 통해 내부 값을 유출하지 않는지 확인합니다. 사양의 약속이 무거운 내부로 인해 공격면이 생기기 때문에 존재하는 보안 속성을 테스트하는 것입니다.</p>
+		</li>
+		<li>
+			<p>WebAssembly 메모리 거부: BYOB 읽기는 일반 버퍼처럼 보이지만 전송할 수 없는 WebAssembly 메모리로 지원되는 arrayBuffer를 명시적으로 거부해야 합니다. 이 특이한 사례는 사양의 버퍼 분리 모델 때문에 존재합니다. 더 간단한 API는 이를 처리할 필요가 없습니다.</p>
+		</li>
+		<li>
+			<p>상태 시스템 충돌에 대한 크래시 회귀: 하나의 테스트에서는 <code>byobRequest.respond()</code> 를 호출하여 <code>enqueue()</code> 이후 런타임이 충돌하지 않습니다. 이 시퀀스는 내부 상태 시스템에 충돌을 일으킵니다. 즉, <code>enqueue()</code> 는 보류 중인 읽기를 완료하고 <code>byobRequest</code>를 무효화해야 하지만, 구현 시 메모리를 손상시키는 대신 후속 <code>respond()</code> 를 적절하게 처리해야 합니다. 이는 개발자가 복잡한 API를 올바르게 사용하지 않을 가능성이 매우 높기 때문입니다.</p>
+		</li>
+	</ul>
+	<p>이 시나리오는 허허허허허허허허허허허허허허허허허_허허허허허허허허허허... 이는 사양 설계에 따른 결과로, 실제 버그를 반영합니다.</p>
+	<p>런타임 구현자에게 WPT 제품군을 통과한다는 것은 대부분의 애플리케이션 코드에서 절대 발생하지 않는 복잡한 코너 케이스를 처리하는 것을 의미합니다. 테스트는 행복 경로뿐만 아니라 리더, 라이터, 컨트롤러, 대기열, 전략, 이 모두를 연결하는 프라미스 장치 간의 상호 작용의 전체 매트릭스를 인코딩합니다.</p>
+	<p>API가 더 단순할수록 개념이 줄어들고, 개념 간의 상호 작용이 줄어들며, 올바르게 작동하는 에지 케이스가 줄어들어 구현이 실제로 일관되게 작동한다는 확신이 더 커집니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-takeaway">요약</h3>
+		<a href="https://blog.cloudflare.com/#the-takeaway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 스트림은 사용자와 구현자 모두에게 복잡합니다. 사양의 문제는 버그가 아닙니다. 이들은 설계된 대로 API를 사용함으로써 생겨납니다. 이는 점진적인 개선만으로 해결할 수 있는 문제가 아닙니다. 이는 기본적인 설계 선택에서 비롯된 결과입니다. 상황을 개선하려면 다른 기반이 필요합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-better-streams-api-is-possible">더 나은 스트림 API가 가능합니다</h2>
+		<a href="https://blog.cloudflare.com/#a-better-streams-api-is-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>서로 다른 런타임에 걸쳐 웹 스트림 사양을 여러 번 구현하고 문제점을 직접 확인한 후, 저는 오늘날 이것이 첫 번째 원칙에 따라 설계된다면 더 나은 대안적인 스트리밍 API는 어떤 모습일지 탐구해야 한다고 생각했습니다.</p>
+	<p>다음은 개념 증명입니다. 완성된 표준도 아니고, 프로덕션에 사용할 수 있는 라이브러리도 아니며, 새로운 것을 위한 구체적인 제안도 아니며, 웹 스트림의 문제가 스트리밍에 내재된 것이 아니라는 것을 보여주는 논의의 출발점이기도 합니다. 자체; 이는 다르게 할 수 있는 특정 설계 선택의 결과입니다. 이 정확한 API가 올바른 답인지 여부는 스트리밍 기본 요소에서 실제로 무엇이 필요한지에 대한 생산적인 대화를 이끌어내는지 여부보다 덜 중요합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-a-stream">스트림이란?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-a-stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API 디자인을 살펴보기 전에, 스트림이란 무엇인가?</p>
+	<p>기본적으로 스트림은 시간이 지남에 따라 도착하는 데이터의 시퀀스일 뿐입니다. 모든 것을 한 번에 가질 수는 없습니다. 정보가 입수되면 점진적으로 처리해야 합니다.</p>
+	<p>Unix 파이프는 이 아이디어를 다음과 같이 표현한 가장 순수한 표현일 것입니다.</p>
+	<pre class="language-Shell"><code class="language-Shell">cat access.log | grep "error" | sort | uniq -c</code></pre>
+	<p>
+		데이터는 왼쪽에서 오른쪽으로 흐릅니다. 각 단계에서는 입력을 읽고, 작업을 수행하고, 출력을 씁니다. 파이프 리더를 얻을 필요도 없고, 관리해야 할 컨트롤러 잠금도 없습니다. 다운스트림 단계가 느리면 업스트림 단계도 자연스럽게 느려집니다. 배압은 모델에 암시적이며, 학습하거나 무시해야 하는 별도의 메커니즘이 아닙니다.</p>
+	<p>JavaScript에서 "시간이 지남에 따라 도착하는 일련의 시퀀스"에 대한 기본적인 기본 요소는 비동기 이터러블(async iterable)이라는 언어에 이미 있습니다. <code>for await...of</code>와 함께 사용합니다. 반복을 중단하면 사용을 중단합니다.</p>
+	<p>새로운 API가 유지하려는 직관은 스트림이 반복처럼 느껴져야 하는 직관입니다. 웹 스트림의 복잡성(리더, 라이터, 컨트롤러, 잠금, 대기열 전략)이 이러한 근본적인 단순성을 모호하게 만듭니다. 더 나은 API는 단순한 경우를 단순하게 만들어야 하며 실제로 필요한 경우에만 복잡성을 더해야 합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AUAA4bitbTOVSQg7Pd7fv/0856b44d78899dcffc4493f4146fb64f/4.png" alt="" class="kg-image" width="892" height="626" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="design-principles">설계 원칙</h3>
+		<a href="https://blog.cloudflare.com/#design-principles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저는 다른 원칙 집합을 중심으로 개념 증명 대안을 구축했습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="streams-are-iterables">스트림은 반복 가능합니다.</h4>
+		<a href="https://blog.cloudflare.com/#streams-are-iterables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>내부 상태가 숨겨진 사용자 지정 <code>ReadableStream</code> 클래스가 없습니다. 읽을 수 있는 스트림은 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols" target="_blank" rel="noopener noreferrer"><u><code>AsyncIterable&lt;Uint8Array[]&gt;</code></u></a>입니다. <code>for await...of</code>를 사용하여 사용합니다. 리더를 구입하거나 잠금을 관리할 필요가 없습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="pull-through-transforms">풀스루 변환</h4>
+		<a href="https://blog.cloudflare.com/#pull-through-transforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>소비자가 끌어올 때까지 변환은 실행되지 않습니다. 즉시 평가도, 숨겨진 버퍼링도 없습니다. 데이터는 필요에 따라 소스에서 변환을 거쳐 소비자에게 전달됩니다. 반복을 중지하면 처리가 중지됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bEXBTEOHBMnCRKGA7odt5/cf51074cce3bb8b2ec1b5158c7560b68/5.png" alt="" class="kg-image" width="721" height="546" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="explicit-backpressure">명시적 배압</h4>
+		<a href="https://blog.cloudflare.com/#explicit-backpressure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>기본적으로 배압은 엄격합니다. 버퍼가 가득 차면 쓰기가 자동으로 누적되지 않고 거부됩니다. 공간이 확보될 때까지 차단, 오래된 삭제, 최신 최신 삭제 등 대체 정책을 구성할 수도 있지만, 반드시 선택해야 합니다. 소리 없이 메모리를 늘리지 않아도 됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="batched-chunks">일괄 청크</h4>
+		<a href="https://blog.cloudflare.com/#batched-chunks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>스트림은 반복당 하나의 청크를 생성하는 대신 <code>Uint8Array[]:</code> 청크 배열을 생성합니다. 비동기 오버헤드를 여러 청크에 걸쳐 분할 상각하여 핫 경로에서 프라미스 생성과 마이크로태스킹 대기 시간을 줄입니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="bytes-only">바이트만</h4>
+		<a href="https://blog.cloudflare.com/#bytes-only" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API는 바이트(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array" target="_blank" rel="noopener noreferrer"><u><code>Uint8Array</code></u></a>)만을 다룹니다. 문자열은 자동으로 UTF-8로 인코딩됩니다. '가치 흐름'과 '바이트 흐름'의 이분법은 없습니다. 임의의 JavaScript 값을 스트리밍하려면 async iterables를 직접 사용하세요. API는 <code>Uint8Array</code>를 사용하지만 청크를 불투명한 것으로 처리합니다. 스트리밍 기계 자체 내에서는 부분 소비, BYOB 패턴, 바이트 수준 작업이 없습니다. 청크는 변환으로 명시적으로 수정되지 않는 한 변경되지 않고 청크가 들어오고 나가게 됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="synchronous-fast-paths-matter">동기식 빠른 경로의 중요성</h4>
+		<a href="https://blog.cloudflare.com/#synchronous-fast-paths-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>API는 동기 데이터 소스가 필수적이고 일반적이라는 것을 인식합니다. 애플리케이션은 단순히 비동기 예약의 유일한 옵션이 제공된다는 이유로 항상 비동기 예약의 성능 비용을 감수해야 해서도 안 됩니다. 동시에, 동기 처리와 비동기 처리를 혼합하는 것은 위험할 수 있습니다. 동기 경로는 항상 하나의 대안이 되어야 하며 항상 명시적이어야 합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-new-api-in-action">작동하는 새로운 API</h3>
+		<a href="https://blog.cloudflare.com/#the-new-api-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="creating-and-consuming-streams">스트림 생성 및 이용</h4>
+		<a href="https://blog.cloudflare.com/#creating-and-consuming-streams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 스트림에서 간단한 제작자/소비자 쌍을 생성하려면 <code>TransformStream</code>, 수동 인코딩, 신중한 잠금 관리가 필요합니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const { readable, writable } = new TransformStream();
+const enc = new TextEncoder();
+const writer = writable.getWriter();
+await writer.write(enc.encode("Hello, World!"));
+await writer.close();
+writer.releaseLock();
+
+const dec = new TextDecoder();
+let text = '';
+for await (const chunk of readable) {
+  text += dec.decode(chunk, { stream: true });
+}
+text += dec.decode();</code></pre>
+	<p>비교적 깨끗한 이 버전도 <code>TransformStream</code>, 수동 <code>TextEncoder</code> 및 <code>TextDecoder</code>, 명시적 잠금 해제가 필요합니다.</p>
+	<p>다음은 새로운 API와 동일한 기능입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Stream } from 'new-streams';
+
+// Create a push stream
+const { writer, readable } = Stream.push();
+
+// Write data — backpressure is enforced
+await writer.write("Hello, World!");
+await writer.end();
+
+// Consume as text
+const text = await Stream.text(readable);</code></pre>
+	<p>가독성은 비동기 이터러블일 뿐입니다. 전체 스트림을 수집하고 디코딩하는 <code>Stream.text()</code> 를 포함하여, 문자열을 예상하는 모든 함수에 이 스트림을 전달할 수 있습니다.</p>
+	<p>이 라이터에는 단순한 인터페이스가 있습니다. <code>쓰기(), 일괄 쓰기용 쓰기v()</code>, <code>완료를 알리는 end()</code>, <code>오류용 abort()</code> 를 사용합니다. 여기까지입니다.</p>
+	<p>라이터는 구체적인 클래스가 아닙니다. <code>write()</code>, <code>end()</code>, <code>abort()</code> 를 구현하는 모든 객체는 작성자가 될 수 있으므로 기존 API를 쉽게 조정하거나 서브클래싱 없이 특수 구현을 만들 수 있습니다. <code>UnderlyingSink</code> 프로토콜은 <code>start()</code>, <code>write()</code>, <code>close()</code>, <code>및 abort()</code> 콜백을 통해 조정해야 하는 복잡한 <code>WritableStream</code>에 바인딩된 컨트롤러의 라이프사이클 및 상태와 독립적인 프로토콜은 존재하지 않습니다.</p>
+	<p>다음은 작성된 모든 데이터를 수집하는 간단한 인메모리 작성기입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// A minimal writer implementation — just an object with methods
+function createBufferWriter() {
+  const chunks = [];
+  let totalBytes = 0;
+  let closed = false;
+
+  const addChunk = (chunk) =&gt; {
+    chunks.push(chunk);
+    totalBytes += chunk.byteLength;
+  };
+
+  return {
+    get desiredSize() { return closed ? null : 1; },
+
+    // Async variants
+    write(chunk) { addChunk(chunk); },
+    writev(batch) { for (const c of batch) addChunk(c); },
+    end() { closed = true; return totalBytes; },
+    abort(reason) { closed = true; chunks.length = 0; },
+
+    // Sync variants return boolean (true = accepted)
+    writeSync(chunk) { addChunk(chunk); return true; },
+    writevSync(batch) { for (const c of batch) addChunk(c); return true; },
+    endSync() { closed = true; return totalBytes; },
+    abortSync(reason) { closed = true; chunks.length = 0; return true; },
+
+    getChunks() { return chunks; }
+  };
+}
+
+// Use it
+const writer = createBufferWriter();
+await Stream.pipeTo(source, writer);
+const allData = writer.getChunks();</code></pre>
+	<p>확장할 기본 클래스, 구현할 추상 메서드, 조정할 컨트롤러가 없습니다. 올바른 모양을 가진 개체일 뿐입니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="pull-through-transforms">풀스루 변환</h4>
+		<a href="https://blog.cloudflare.com/#pull-through-transforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>새로운 API 설계에서는 데이터가 사용될 때까지 변환이 어떤 작업도 수행해서는 안 됩니다. 이것이 기본 원칙입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Nothing executes until iteration begins
+const output = Stream.pull(source, compress, encrypt);
+
+// Transforms execute as we iterate
+for await (const chunks of output) {
+  for (const chunk of chunks) {
+    process(chunk);
+  }
+}</code></pre>
+	<p><code>Stream.pull()</code> 은 지연 파이프라인을 생성합니다. 출력 반복을 시작할 때까지 <code>압축</code> 및 <code>암호화</code> 변환이 실행되지 않습니다. 반복할 때마다 필요에 따라 파이프라인을 통해 데이터를 가져옵니다.</p>
+	<p>이는 파이프를 설정하자마자 소스에서 변환으로 데이터를 적극적으로 펌핑하기 시작하는 웹 스트림의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><u><code>pipeThrough()</code></u></a>와는 근본적으로 다릅니다. 풀 시맨틱은 처리가 발생하고 반복을 중지하면 처리가 중지되는 시기를 제어할 수 있음을 의미합니다.</p>
+	<p>변환은 상태 비저장 또는 상태 저장이 될 수 있습니다. 상태 비저장 변환은 청크를 가져와 변환된 청크를 반환하는 함수일 뿐입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateless transform — a pure function
+// Receives chunks or null (flush signal)
+const toUpperCase = (chunks) =&gt; {
+  if (chunks === null) return null; // End of stream
+  return chunks.map(chunk =&gt; {
+    const str = new TextDecoder().decode(chunk);
+    return new TextEncoder().encode(str.toUpperCase());
+  });
+};
+
+// Use it directly
+const output = Stream.pull(source, toUpperCase);</code></pre>
+	<p>상태 저장 변환은 호출에 걸쳐 상태를 유지하는 멤버 함수가 있는 간단한 개체입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateful transform — a generator that wraps the source
+function createLineParser() {
+  // Helper to concatenate Uint8Arrays
+  const concat = (...arrays) =&gt; {
+    const result = new Uint8Array(arrays.reduce((n, a) =&gt; n + a.length, 0));
+    let offset = 0;
+    for (const arr of arrays) { result.set(arr, offset); offset += arr.length; }
+    return result;
+  };
+
+  return {
+    async *transform(source) {
+      let pending = new Uint8Array(0);
+      
+      for await (const chunks of source) {
+        if (chunks === null) {
+          // Flush: yield any remaining data
+          if (pending.length &gt; 0) yield [pending];
+          continue;
+        }
+        
+        // Concatenate pending data with new chunks
+        const combined = concat(pending, ...chunks);
+        const lines = [];
+        let start = 0;
+
+        for (let i = 0; i &lt; combined.length; i++) {
+          if (combined[i] === 0x0a) { // newline
+            lines.push(combined.slice(start, i));
+            start = i + 1;
+          }
+        }
+
+        pending = combined.slice(start);
+        if (lines.length &gt; 0) yield lines;
+      }
+    }
+  };
+}
+
+const output = Stream.pull(source, createLineParser());</code></pre>
+	<p>중단 시 정리가 필요한 변환의 경우 중단 처리기를 추가하세요.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Stateful transform with resource cleanup
+function createGzipCompressor() {
+  // Hypothetical compression API...
+  const deflate = new Deflater({ gzip: true });
+
+  return {
+    async *transform(source) {
+      for await (const chunks of source) {
+        if (chunks === null) {
+          // Flush: finalize compression
+          deflate.push(new Uint8Array(0), true);
+          if (deflate.result) yield [deflate.result];
+        } else {
+          for (const chunk of chunks) {
+            deflate.push(chunk, false);
+            if (deflate.result) yield [deflate.result];
+          }
+        }
+      }
+    },
+    abort(reason) {
+      // Clean up compressor resources on error/cancellation
+    }
+  };
+}</code></pre>
+	<p>구현자에게는 자체 숨겨진 상태 머신과 버퍼링 메커니즘을 가진 <code>TransformStream</code> 클래스에 전달되는 <code>start(),</code> <code>transform()</code>, <code>flush()</code> 메서드와 컨트롤러 조정 기능이 있는 트랜스포머 프로토콜이 없습니다. 변환은 함수 또는 단순한 개체이므로, 구현과 테스트가 훨씬 간단합니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="explicit-backpressure-policies">명시적 백프레셔 정책</h4>
+		<a href="https://blog.cloudflare.com/#explicit-backpressure-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>한정된 버퍼가 가득 차서 제작자가 더 많이 쓰려면 다음과 같은 몇 가지 방법밖에 없습니다.</p>
+	<ol>
+		<li>
+			<p>쓰기 거부: 더 많은 데이터 수락 거부</p>
+		</li>
+		<li>
+			<p>대기: 사용 가능한 공간이 생길 때까지 차단</p>
+		</li>
+		<li>
+			<p>오래된 데이터 삭제: 이미 버퍼링되어 있는 데이터를 제거하여 공간 확보</p>
+		</li>
+		<li>
+			<p>새 데이터 삭제: 수신되는 데이터 삭제</p>
+		</li>
+	</ol>
+	<p>다 됐습니다. 다른 모든 응답은 이들의 변형(예: '버퍼 크기 조정', 실제로는 선택을 미루는 것)이거나 일반 스트리밍 기본 요소에 속하지 않는 도메인별 논리입니다. 현재 웹 스트림은 항상 기본적으로 대기를 선택합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68339c8QsvNmb7JcZ2lSDO/e52a86a9b8f52b52eb9328d5ee58f23a/6.png" alt="" class="kg-image" width="621" height="586" loading="lazy">
+	</figure>
+	<p>새로운 API를 사용하면 다음 네 가지 중 하나를 명시적으로 선택할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p><code>엄격</code> (기본값): 버퍼가 가득 차서 너무 많은 쓰기가 보류될 때 쓰기를 거부합니다. 제작자가 배압을 무시하는 '작동 후 잊어버리기' 패턴을 포착합니다.</p>
+		</li>
+		<li>
+			<p><code>블록</code>: 버퍼 공간을 사용할 수 있을 때까지 쓰기를 기다립니다. 제작자가 쓰기를 적절하게 기다릴 수 있다고 신뢰할 때 사용하세요.</p>
+		</li>
+		<li>
+			<p><code>drop-oldest</code>: 버퍼된 가장 오래된 데이터를 삭제하여 공간을 확보합니다. 오래된 데이터가 가치를 잃게 되는 라이브 피드에 유용합니다.</p>
+		</li>
+		<li>
+			<p><code>drop-newest</code>: 가득 차면 들어오는 데이터를 삭제합니다. 가진 것을 압도하지 않고 처리하고 싶을 때 유용합니다.</p>
+		</li>
+	</ul>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const { writer, readable } = Stream.push({
+  highWaterMark: 10,
+  backpressure: 'strict' // or 'block', 'drop-oldest', 'drop-newest'
+});</code></pre>
+	<p>희망을 가진 제작자는 더 이상 협력할 필요가 없습니다. 어떤 정책을 선택하느냐에 따라 버퍼가 가득 찰 때 어떤 일이 발생하는지 결정됩니다.</p>
+	<p>제작자가 소비자가 읽는 것보다 더 빨리 쓸 때 각 정책이 작동하는 방식은 다음과 같습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// strict: Catches fire-and-forget writes that ignore backpressure
+const strict = Stream.push({ highWaterMark: 2, backpressure: 'strict' });
+strict.writer.write(chunk1);  // ok (not awaited)
+strict.writer.write(chunk2);  // ok (fills slots buffer)
+strict.writer.write(chunk3);  // ok (queued in pending)
+strict.writer.write(chunk4);  // ok (pending buffer fills)
+strict.writer.write(chunk5);  // throws! too many pending writes
+
+// block: Wait for space (unbounded pending queue)
+const blocking = Stream.push({ highWaterMark: 2, backpressure: 'block' });
+await blocking.writer.write(chunk1);  // ok
+await blocking.writer.write(chunk2);  // ok
+await blocking.writer.write(chunk3);  // waits until consumer reads
+await blocking.writer.write(chunk4);  // waits until consumer reads
+await blocking.writer.write(chunk5);  // waits until consumer reads
+
+// drop-oldest: Discard old data to make room
+const dropOld = Stream.push({ highWaterMark: 2, backpressure: 'drop-oldest' });
+await dropOld.writer.write(chunk1);  // ok
+await dropOld.writer.write(chunk2);  // ok
+await dropOld.writer.write(chunk3);  // ok, chunk1 discarded
+
+// drop-newest: Discard incoming data when full
+const dropNew = Stream.push({ highWaterMark: 2, backpressure: 'drop-newest' });
+await dropNew.writer.write(chunk1);  // ok
+await dropNew.writer.write(chunk2);  // ok
+await dropNew.writer.write(chunk3);  // silently dropped</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="explicit-multi-consumer-patterns">노골적인 다중 소비자 패턴</h4>
+		<a href="https://blog.cloudflare.com/#explicit-multi-consumer-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Share with explicit buffer management
+const shared = Stream.share(source, {
+  highWaterMark: 100,
+  backpressure: 'strict'
+});
+
+const consumer1 = shared.pull();
+const consumer2 = shared.pull(decompress);</code></pre>
+	<p>무제한 버퍼가 숨겨진 <code>tee()</code> 대신 명시적인 다중 소비자 기본 요소를 얻을 수 있습니다. <code>Stream.share()</code> 는 풀 기반입니다. 소비자는 공유 소스에서 데이터를 가져오고, 버퍼 제한과 백프레셔 정책을 미리 구성합니다.</p>
+	<p>푸시 기반 다중 소비자 시나리오를 위한 <code>Stream.broadcast()</code> 도 있습니다. 두 가지 모두 소비자의 속도로 실행할 때 어떤 일이 발생하는지에 대해 생각해야 합니다. 이는 실제적인 우려 사항이므로 숨겨져서는 안 됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="sync-async-separation">동기/비동기 분리</h4>
+		<a href="https://blog.cloudflare.com/#sync-async-separation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 스트리밍 워크로드에 I/O가 포함되는 것은 아닙니다. 소스가 인메모리이고 변환이 순수 함수인 경우 비동기 기계는 이점 없이 오버헤드만 추가됩니다. 아무런 이점이 없는 "대기" 시간을 조정하는 데 비용을 지불하는 것입니다.</p>
+	<p>새로운 API에는 완벽한 병렬 동기화 버전인 <code>Stream.pullSync()</code>, <code>Stream.bytesSync()</code>, <code>Stream.textSync()</code> 등입니다. 소스와 변환이 모두 동기식이라면 단일 프라미스 없이 전체 파이프라인을 처리할 수 있습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Async — when source or transforms may be asynchronous
+const textAsync = await Stream.text(source);
+
+// Sync — when all components are synchronous
+const textSync = Stream.textSync(source);</code></pre>
+	<p>이렇게 압축, 변환, 소비하여 비동기식 오버헤드가 없는 완전한 동기식 파이프라인을 구축했습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// Synchronous source from in-memory data
+const source = Stream.fromSync([inputBuffer]);
+
+// Synchronous transforms
+const compressed = Stream.pullSync(source, zlibCompressSync);
+const encrypted = Stream.pullSync(compressed, aesEncryptSync);
+
+// Synchronous consumption — no promises, no event loop trips
+const result = Stream.bytesSync(encrypted);</code></pre>
+	<p>전체 파이프라인은 단일 호출 스택에서 실행됩니다. 프로미스가 생성되지 않고, 마이크로태스크 대기열 예약이 발생하지 않으며, 수명이 짧은 비동기 기계로 인한 GC 압력이 없습니다. 인메모리 데이터의 구문 분석, 압축, 변환 등 CPU 집약적인 워크로드의 경우 이는 모든 구성 요소가 동기식인 경우에도 비동기식 경계를 강제로 적용하는 해당 웹 스트림 코드보다 훨씬 빠를 수 있습니다.</p>
+	<p>웹 스트림에는 동기 경로가 없습니다. 소스에 데이터가 준비되어 있고 변환이 순수 함수인 경우에도 여전히 모든 작업의 프라미스 생성과 마이크로태스킹 예약에 대한 비용을 지불해야 합니다. 기다림이 실제로 필요한 경우에는 프라미스가 환상적이지만, 항상 필요한 것은 아닙니다. 새로운 API를 사용하면 필요할 때 동기화 상태를 유지할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="bridging-the-gap-between-this-and-web-streams">이 스트림과 웹 스트림 간의 격차 해소</h4>
+		<a href="https://blog.cloudflare.com/#bridging-the-gap-between-this-and-web-streams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>비동기 반복자 기반 접근 방식은 이러한 대체 접근 방식과 웹 스트림 사이의 자연스러운 다리를 제공합니다. readableStream에서 이 새로운 접근 방식으로 나아갈 때,readableStream이 바이트를 생성하도록 설정된 경우 단순히 readable 을 입력으로 전달하면 예상대로 작동합니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const readable = getWebReadableStreamSomehow();
+const input = Stream.pull(readable, transform1, transform2);
+for await (const chunks of input) {
+  // process chunks
+}</code></pre>
+	<p>읽기/쓰기 스트림에 적응할 때는 다른 접근 방식이 청크 배치를 생성하기 때문에 조금 더 많은 작업이 필요하지만, 적응 계층은 그만큼 간단합니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">async function* adapt(input) {
+  for await (const chunks of input) {
+    for (const chunk of chunks) {
+      yield chunk;
+    }
+  }
+}
+
+const input = Stream.pull(source, transform1, transform2);
+const readable = ReadableStream.from(adapt(input));</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="how-this-addresses-the-real-world-failures-from-earlier">이를 통해 이전의 실제 문제를 해결하는 방법</h4>
+		<a href="https://blog.cloudflare.com/#how-this-addresses-the-real-world-failures-from-earlier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>소비되지 않은 본문: 풀 시맨틱은 반복할 때까지 아무 일도 일어나지 않는다는 것을 의미합니다. 숨겨진 리소스가 유지되지 않습니다. 스트림을 소비하지 않으면 연결을 유지하는 백그라운드 기계가 없습니다.</p>
+		</li>
+		<li>
+			<p>The <code>tee()</code> 메모리 벽: <code>Stream.share()</code> 명시적 버퍼 구성이 필요합니다. <code>highWaterMark</code> 및 배압 정책을 미리 선택하는 것입니다. 소비자가 다양한 속도로 작동할 때 더 이상 조용하고 무한한 성장이 아닙니다.</p>
+		</li>
+		<li>
+			<p>배압 격차 해소: 풀스루 변환은 필요에 따라 실행됩니다. 데이터는 중간 버퍼를 통해 전달되지 않습니다. 소비자가 끌어올 때만 흐르기 때문입니다. 반복을 멈추고 처리를 멈추세요.</p>
+		</li>
+		<li>
+			<p>SSR에서의 GC 스래싱: 일괄 처리 청크(<code>Uint8Array[]</code>)는 비동기 오버헤드를 상각합니다. <code>Stream.pullSync()</code> 를 통해 파이프라인 동기화 CPU 위주의 워크로드에 대한 프라미스 할당을 완전히 제거합니다.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="performance">성능</h3>
+		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>설계 선택은 성능에 영향을 미칩니다. 다음은 이 가능한 대안의 참조 구현에서 웹 스트림(Node.js v24.x, Apple M1 Pro, 10회 이상 실행):</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>시나리오</b></p>
+				</td>
+				<td>
+					<p><b>대안</b></p>
+				</td>
+				<td>
+					<p><b>웹 스트림</b></p>
+				</td>
+				<td>
+					<p><b>차이점</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>작은 청크(1KB x 5000)</p>
+				</td>
+				<td>
+					<p>~13GB/s</p>
+				</td>
+				<td>
+					<p>~4GB/s</p>
+				</td>
+				<td>
+					<p>~3배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>작은 청크(100B x 10000)</p>
+				</td>
+				<td>
+					<p>~4GB/s</p>
+				</td>
+				<td>
+					<p>~450MB/s</p>
+				</td>
+				<td>
+					<p>~8배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>비동기 반복(8KB x 1000)</p>
+				</td>
+				<td>
+					<p>~530GB/s</p>
+				</td>
+				<td>
+					<p>~35GB/s</p>
+				</td>
+				<td>
+					<p>~15배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>연쇄적인 3x 변환 (8KB x 500)</p>
+				</td>
+				<td>
+					<p>~275GB/s</p>
+				</td>
+				<td>
+					<p>~3GB/s</p>
+				</td>
+				<td>
+					<p><b>80~90배 더 빠른 속도</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>고빈도 (64B x 20000)</p>
+				</td>
+				<td>
+					<p>~7.5GB/s</p>
+				</td>
+				<td>
+					<p>~280MB/s</p>
+				</td>
+				<td>
+					<p>~25배 더 빠른 속도</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>체인 변환 결과는 특히 놀랍습니다. 풀스루 시맨틱이 웹 스트림 파이프라인을 괴롭히는 중간 버퍼링을 제거합니다. 각각의 <code>TransformStream</code> 이 열심히 내부 버퍼를 채우는 대신, 데이터는 필요에 따라 소비자에서 소스로 흐릅니다.</p>
+	<p>솔직히 말해서, Node.js는 웹 스트림 구현의 성능을 완전히 최적화하기 위해 아직 큰 노력을 기울이지 않았습니다. 핫 경로를 최적화하기 위해 약간의 노력을 기울이면 Node.js의 성능 결과를 상당히 개선할 여지가 있습니다. 즉, Deno와 번에서 이 벤치마크를 실행한 결과, 이 반복자 기반 접근법을 사용하면 웹 스트림을 구현했을 때보다 성능이 크게 향상되었습니다.</p>
+	<p>브라우저 벤치마크(Chrome/Blink, 3회 실행에 대한 평균)에서도 일관된 증가세를 보였습니다.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>시나리오</b></p>
+				</td>
+				<td>
+					<p><b>대안</b></p>
+				</td>
+				<td>
+					<p><b>웹 스트림</b></p>
+				</td>
+				<td>
+					<p><b>차이점</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3KB 청크 푸시</p>
+				</td>
+				<td>
+					<p>~135,000ops/s</p>
+				</td>
+				<td>
+					<p>~24,000개 작업/초</p>
+				</td>
+				<td>
+					<p>5~6배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>100KB 청크 푸시</p>
+				</td>
+				<td>
+					<p>~24,000개 작업/초</p>
+				</td>
+				<td>
+					<p>~3,000개 작업/초</p>
+				</td>
+				<td>
+					<p>7~8배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3 변환 체인</p>
+				</td>
+				<td>
+					<p>~4.6k ops/s</p>
+				</td>
+				<td>
+					<p>~880ops/s</p>
+				</td>
+				<td>
+					<p>~5배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5 트랜스폼 체인</p>
+				</td>
+				<td>
+					<p>~2.4k ops/s</p>
+				</td>
+				<td>
+					<p>~550ops/s</p>
+				</td>
+				<td>
+					<p>~4배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>bytes() 소비</p>
+				</td>
+				<td>
+					<p>~73k ops/s</p>
+				</td>
+				<td>
+					<p>~11,000개 작업/초</p>
+				</td>
+				<td>
+					<p>6~7배 더 빠른 속도</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>비동기 반복</p>
+				</td>
+				<td>
+					<p>~110만 작업/초</p>
+				</td>
+				<td>
+					<p>~10,000개 작업/초</p>
+				</td>
+				<td>
+					<p><b>~40~100배 더 빠른 속도</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>이 벤치마크는 제어된 시나리오에서의 처리량을 측정합니다. 실제 성능은 사용 사례에 따라 달라집니다. Node.js와 browser 이득의 차이에는 각 환경마다 웹 스트림에 대해 취하는 고유한 최적화 경로가 반영됩니다.</p>
+	<p>이 벤치마크에서 새로운 API의 순수한 TypeScript/JavaScript 구현을 각 런타임별 웹 스트림의 네이티브(JavaScript/C++/Rust) 구현과 비교한다는 점에 주목할 필요가 있습니다. 새로운 API의 참조 구현에는 성능 최적화 작업이 없었습니다. 전적으로 설계에서 얻을 수 있는 이점입니다. 네이티브 구현을 통해 더욱 개선될 가능성이 높습니다.</p>
+	<p>일괄 처리로 비동기 오버헤드를 상각하고, 풀 시맨틱으로 중간 버퍼링을 제거하며, 데이터를 사용할 수 있을 때 즉시 동기식 빠른 경로를 사용할 수 있는 자유 등 기본적인 설계 선택 사항이 얼마나 복합적으로 기여하는지 알 수 있습니다.</p>
+	<blockquote>
+		<p>"저희는 노드 스트림의 성능과 일관성을 개선하기 위해 많은 작업을 수행했지만, 처음부터 시작하는 것은 독보적으로 강력합니다. New Streams는 최신 런타임 현실을 레거시 부담 없이 수용하며, 더 간단하고 성능이 뛰어나며 일관된 스트림 모델을 구현할 수 있습니다."
+			- Robert Nagy, Node.js TSC 회원 및 Node.js 스트림 기고가</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">다음 단계</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저는 대화를 시작하려고 이 글을 게시합니다. 내가 옳게 말한 것은 무엇인가? 내가 놓친 것은 무엇일까요? 이 모델에 맞지 않는 사용 사례가 있나요? 이 접근 방식의 마이그레이션 경로는 어떤 모습일까요? 목표는 웹 스트림의 불편함을 경험하고 더 나은 API가 어떤 모습이어야 하는지 의견이 있는 개발자의 피드백을 수집하는 것입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-yourself">직접 사용해 보세요</h3>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 대체 접근법의 참조 구현은 현재 이용 가능하며, <a href="https://github.com/jasnell/new-streams" target="_blank" rel="noopener noreferrer"><u>https://github.com/jasnell/new-streams</u></a>에서 찾아볼 수 있습니다.</p>
+	<ul>
+		<li>
+			<p>API 참조: 자세한 내용은 <a href="https://github.com/jasnell/new-streams/blob/main/API.md" target="_blank" rel="noopener noreferrer"><u>API.md</u></a> 를 참조하십시오.</p>
+		</li>
+		<li>
+			<p>예: <a href="https://github.com/jasnell/new-streams/tree/main/samples" target="_blank" rel="noopener noreferrer"><u>샘플 디렉터리</u></a> 에는 공통 패턴에 대한 작업 코드가 있습니다.</p>
+		</li>
+	</ul>
+	<p>이슈, 토론, 풀 요청을 환영합니다. 아직 다루지 않은 웹 스트림 문제가 발생하거나 이 접근 방식에 공백이 있다면 알려주시기 바랍니다. 하지만 여기서도 "이 반짝이는 새 물건을 모두 사용합시다!" 라는 말이 아닙니다. 이 자리는 Web Streams의 현상 유지를 살펴보고 첫 번째 원칙으로 돌아가는 논의를 시작하기 위한 것입니다.</p>
+	<p>웹 스트림은 아무것도 존재하지 않았던 시대에 웹 플랫폼에 스트리밍을 도입한 야심 찬 프로젝트였습니다. 설계자들은 비동기 반복 이전, 다년간의 프로덕션 경험으로 엣지 케이스가 드러나기 전인 2014년의 제약을 고려하여 합리적인 선택을 했습니다.</p>
+	<p>그 이후로 우리는 많은 것을 배웠습니다. JavaScript는 발전했습니다. 오늘날 설계된 스트리밍 API는 더 간단하고 언어에 더 적합할 수 있으며 배후 압력, 다중 소비자 행동 등의 중요한 사항을 더 명시적으로 나타낼 수 있습니다.</p>
+	<p>우리에게는 더 나은 스트림 API가 필요합니다. 이제 이 기능이 어떤 모습일지 살펴보겠습니다.</p>
+</div>

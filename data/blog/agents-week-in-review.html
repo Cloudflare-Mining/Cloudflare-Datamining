@@ -1,361 +1,335 @@
-<div class="mb2 gray5">8 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/agents-week-in-review">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/agents-week-in-review">Français</a>, <a href="https://blog.cloudflare.com/de-de/agents-week-in-review">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/agents-week-in-review">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/agents-week-in-review">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/agents-week-in-review">한국어</a>, <a href="https://blog.cloudflare.com/es-la/agents-week-in-review">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/es-es/agents-week-in-review">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/agents-week-in-review">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JDUBjXv45ARm2pvdCN3DP/c95854c24522463acee97bffb40a4ced/BLOG-3239_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Today marks the end of our first Agents Week, an innovation week dedicated entirely to the age of agents. It couldn’t have been more timely: over the past year, agents have swiftly changed how people work. Coding agents are helping developers ship faster than ever. Support agents resolve tickets end-to-end. Research agents validate hypotheses across hundreds of sources in minutes. And people aren't just running one agent: they're running several in parallel and around the clock.</p>
-	<p>As Cloudflare's CTO Dane Knecht and VP of Product Rita Kozlov noted in our <a href="https://blog.cloudflare.com/welcome-to-agents-week"><u>welcome to Agents Week post</u></a>, the potential scale of agents is staggering: If even a fraction of the world's knowledge workers each run a few agents in parallel, you need compute capacity for tens of millions of simultaneous sessions. The one-app-serves-many-users model the cloud was built on doesn't work for that. But that's exactly what developers and businesses want to do: build agents, deploy them to users, and run them at scale.</p>
-	<p>Getting there means solving problems across the entire stack. Agents need <b>compute</b> that scales from full operating systems to lightweight isolates. They need <b>security</b> and identity built into how they run.&nbsp; They need an <b>agent toolbox</b>: the right models, tools, and context to do real work. All the code that agents generate needs a clear path from afternoon <b>prototype to production</b> app. And finally, as agents drive a growing share of Internet traffic, the web itself needs to adapt for the emerging <b>agentic web</b>. Turns out, the containerless, serverless compute platform we launched eight years ago with Workers was ready-made for this moment. Since then, we've grown it into a full platform, and this week we shipped the next wave of primitives purpose-built for agents, organized around exactly those problems.</p>
-	<p>We are here to create Cloud 2.0 — the agentic cloud. Infrastructure designed for a world where agents are a primary workload.&nbsp;</p>
-	<p>Here's a list of everything we announced this week — we wouldn’t want you to miss a thing.</p>
-	<div class="flex anchor relative">
-		<h2 id="compute">Compute</h2>
-		<a href="https://blog.cloudflare.com/#compute" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It starts with compute. Agents need somewhere to run, and somewhere to store and run the code they write. Not all agents need the same thing: some need a full operating system to install packages and run terminal commands, most need something lightweight that starts in milliseconds and scales to millions. This week we shipped the environments to run them, as well as a new Git-compatible workspace for agents:</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Announcement</b></p>
+<p>Today marks the end of our first Agents Week, an innovation week dedicated entirely to the age of agents. It couldn’t have been more timely: over the past year, agents have swiftly changed how people work. Coding agents are helping developers ship faster than ever. Support agents resolve tickets end-to-end. Research agents validate hypotheses across hundreds of sources in minutes. And people aren't just running one agent: they're running several in parallel and around the clock.</p>
+<p>As Cloudflare's CTO Dane Knecht and VP of Product Rita Kozlov noted in our <a href="https://blog.cloudflare.com/welcome-to-agents-week" target="_blank" rel="noopener noreferrer"><u>welcome to Agents Week post</u></a>, the potential scale of agents is staggering: If even a fraction of the world's knowledge workers each run a few agents in parallel, you need compute capacity for tens of millions of simultaneous sessions. The one-app-serves-many-users model the cloud was built on doesn't work for that. But that's exactly what developers and businesses want to do: build agents, deploy them to users, and run them at scale.</p>
+<p>Getting there means solving problems across the entire stack. Agents need <strong>compute</strong> that scales from full operating systems to lightweight isolates. They need <strong>security</strong> and identity built into how they run.&nbsp; They need an <strong>agent toolbox</strong>: the right models, tools, and context to do real work. All the code that agents generate needs a clear path from afternoon <strong>prototype to production</strong> app. And finally, as agents drive a growing share of Internet traffic, the web itself needs to adapt for the emerging <strong>agentic web</strong>. Turns out, the containerless, serverless compute platform we launched eight years ago with Workers was ready-made for this moment. Since then, we've grown it into a full platform, and this week we shipped the next wave of primitives purpose-built for agents, organized around exactly those problems.</p>
+<p>We are here to create Cloud 2.0 — the agentic cloud. Infrastructure designed for a world where agents are a primary workload.&nbsp;</p>
+<p>Here's a list of everything we announced this week — we wouldn’t want you to miss a thing.</p>
+<h2>Compute</h2>
+<p>It starts with compute. Agents need somewhere to run, and somewhere to store and run the code they write. Not all agents need the same thing: some need a full operating system to install packages and run terminal commands, most need something lightweight that starts in milliseconds and scales to millions. This week we shipped the environments to run them, as well as a new Git-compatible workspace for agents:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Announcement</p>
 				</th>
-				<th>
-					<p><b>Summary</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Summary</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta"><u>Artifacts: Versioned storage that speaks Git</u></a></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Artifacts: Versioned storage that speaks Git</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Give your agents, developers, and automations a home for code and data. We’ve just launched Artifacts: Git-compatible versioned storage built for agents. Create tens of millions of repos, fork from any remote, and hand off a URL to any Git client.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/sandbox-ga"><u>Agents have their own computers with Sandboxes GA</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Agents have their own computers with Sandboxes GA</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Cloudflare Sandboxes give AI agents a persistent, isolated environment: a real computer with a shell, a filesystem, and background processes that starts on demand and picks up exactly where it left off.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/sandbox-auth"><u>Dynamic, identity-aware, and secure: egress controls for Sandboxes</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Dynamic, identity-aware, and secure: egress controls for Sandboxes</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Outbound Workers for Sandboxes provide a programmable, zero-trust egress proxy for AI agents. This allows developers to inject credentials and enforce dynamic security policies without exposing sensitive tokens to untrusted code.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers"><u>Durable Objects in Dynamic Workers: Give each AI-generated app its own database</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Durable Objects in Dynamic Workers: Give each AI-generated app its own database</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Durable Object Facets allows Dynamic Workers to instantiate Durable Objects with their own isolated SQLite databases. This enables developers to build platforms that run persistent, stateful code generated on-the-fly.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/workflows-v2"><u>Rearchitecting the Workflows control plane for the agentic era</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Rearchitecting the Workflows control plane for the agentic era</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Cloudflare Workflows, a durable execution engine for multi-step applications, now supports 50,000 concurrency and 300 creation rate limits through a rearchitectured control plane, helping scale to meet the use cases for durable background agents.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GiG5cEdgwoLU94AuUuLfS/f9022abc8ce823ef2468860474598b6f/BLOG-3239_2.png" alt="BLOG-3239 2" class="kg-image" width="1999" height="531" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="security">Security</h2>
-		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Running agents and their code is only half the challenge. Agents connect to private networks, access internal services, and take autonomous actions on behalf of users. When anyone in an organization can spin up their own agents, security can't be an afterthought. It has to be the default. This week, we launched the tools to make that easy.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Announcement</b></p>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="190" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=715&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=640&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=715&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=750&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=828&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1080&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1280&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1430&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="190" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Security</h2>
+<p>Running agents and their code is only half the challenge. Agents connect to private networks, access internal services, and take autonomous actions on behalf of users. When anyone in an organization can spin up their own agents, security can't be an afterthought. It has to be the default. This week, we launched the tools to make that easy.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Announcement</p>
 				</th>
-				<th>
-					<p><b>Summary</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Summary</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/mesh"><u>Secure private networking for everyone: users, nodes, agents, Workers — introducing Cloudflare Mesh</u></a></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Secure private networking for everyone: users, nodes, agents, Workers — introducing Cloudflare Mesh</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Cloudflare Mesh provides secure, private network access for users, nodes, and autonomous AI agents. By integrating with Workers VPC, developers can now grant agents scoped access to private databases and APIs without manual tunnels.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/managed-oauth-for-access"><u>Managed OAuth for Access: make internal apps agent-ready in one click</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Managed OAuth for Access: make internal apps agent-ready in one click</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Managed OAuth for Cloudflare Access helps AI agents securely navigate internal applications. By adopting RFC 9728, agents can authenticate on behalf of users without using insecure service accounts.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/improved-developer-security"><u>Securing non-human identities: automated revocation, OAuth, and scoped permissions</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Securing non-human identities: automated revocation, OAuth, and scoped permissions</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Cloudflare is introducing scannable API tokens, enhanced OAuth visibility, and GA for resource-scoped permissions. These tools help developers implement a true least-privilege architecture while protecting against credential leakage.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/enterprise-mcp"><u>Scaling MCP adoption: our reference architecture for enterprise MCP deployments</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Scaling MCP adoption: our reference architecture for enterprise MCP deployments</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>We share Cloudflare's internal strategy for governing MCP using Access, AI Gateway, and MCP server portals. We also launch Code Mode to slash token costs and recommend new rules for detecting Shadow MCP in Cloudflare Gateway.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dT2Kw2vS0AJvk6Nw1oAg2/c1b9ca10314f85664ce6a939339f1247/BLOG-3239_3.png" alt="BLOG-3239 3" class="kg-image" width="1999" height="491" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="agent-toolbox">Agent Toolbox</h2>
-		<a href="https://blog.cloudflare.com/#agent-toolbox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A capable agent needs to be able to think and remember, communicate, and see. This means being powered with the right models, with access to the right tools and the right context for their task at hand. This week we shipped the primitives — inference, search, memory, voice, email, and a browser — that turn an agent into something that actually gets work done.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Announcement</b></p>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 3"></div>
+</figure>
+<h2>Agent Toolbox</h2>
+<p>A capable agent needs to be able to think and remember, communicate, and see. This means being powered with the right models, with access to the right tools and the right context for their task at hand. This week we shipped the primitives — inference, search, memory, voice, email, and a browser — that turn an agent into something that actually gets work done.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Announcement</p>
 				</th>
-				<th>
-					<p><b>Summary</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Summary</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/project-think"><u>Project Think: building the next generation of AI agents on Cloudflare</u></a></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Project Think: building the next generation of AI agents on Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Announcing a preview of the next edition of the Agents SDK — from lightweight primitives to a batteries-included platform for AI agents that think, act, and persist.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/voice-agents"><u>Add voice to your agent</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Add voice to your agent</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>An experimental voice pipeline for the Agents SDK enables real-time voice interactions over WebSockets. Developers can now build agents with continuous STT and TTS in just ~30 lines of server-side code.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/email-for-agents"><u>Cloudflare Email Service: now in public beta. Ready for your agents</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Cloudflare Email Service: now in public beta. Ready for your agents</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Agents are becoming multi-channel. That means making them available wherever your users already are — including the inbox. Cloudflare Email Service enters public beta with the infrastructure layer to make that easy: send, receive, and process email natively from your agents.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/ai-platform"><u>Cloudflare's AI platform: an inference layer designed for agents&nbsp;</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Cloudflare's AI platform: an inference layer designed for agents&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>We're building Cloudflare into a unified inference layer for agents, letting developers call models from 14+ providers. New features include Workers binding for running third-party models and an expanded catalog with multimodal models.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/high-performance-llms"><u>Building the foundation for running extra-large language models</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Building the foundation for running extra-large language models</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>We built a custom technology stack to run fast large language models on Cloudflare’s infrastructure. This post explores the engineering trade-offs and technical optimizations required to make high-performance AI inference accessible.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/unweight-tensor-compression"><u>Unweight: how we compressed an LLM 22% without sacrificing quality</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Unweight: how we compressed an LLM 22% without sacrificing quality</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Running large LLMs across Cloudflare’s network requires us to be smarter and more efficient about GPU memory bandwidth. That’s why we developed Unweight, a lossless inference-time compression system that achieves up to a 22% model footprint reduction, so that we can deliver faster and cheaper inference than ever before.&nbsp;</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/introducing-agent-memory"><u>Agents that remember: introducing Agent Memory</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Agents that remember: introducing Agent Memory</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Cloudflare Agent Memory is a managed service that gives AI agents persistent memory, allowing them to recall what matters, forget what doesn't, and get smarter over time.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/ai-search-agent-primitive"><u>AI Search: the search primitive for your agents</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>AI Search: the search primitive for your agents</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AI Search is the search primitive for your agents. Create instances dynamically, upload files, and search across instances with hybrid retrieval and relevance boosting. Just create a search instance, upload, and search.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/browser-run-for-ai-agents"><u>Browser Run: give your agents a browser</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Browser Run: give your agents a browser</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Browser Rendering is now Browser Run, with Live View, Human in the Loop, CDP access, session recordings, and 4x higher concurrency limits for AI agents.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sTmO0Pt0PabTR2g8pZ963/a3f523a17db3a13301072232664b11c2/BLOG-3239_4.png" alt="BLOG-3239 4" class="kg-image" width="1999" height="491" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="prototype-to-production">Prototype to production</h2>
-		<a href="https://blog.cloudflare.com/#prototype-to-production" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The best infrastructure is also one that’s easy to use. We want to meet developers and their agents where they’re already working: in the terminal, in the editor, in a prompt, and make the full Cloudflare platform accessible without context-switching.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Announcement</b></p>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 4"></div>
+</figure>
+<h2>Prototype to production</h2>
+<p>The best infrastructure is also one that’s easy to use. We want to meet developers and their agents where they’re already working: in the terminal, in the editor, in a prompt, and make the full Cloudflare platform accessible without context-switching.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Announcement</p>
 				</th>
-				<th>
-					<p><b>Summary</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Summary</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/cf-cli-local-explorer"><u>Building a CLI for all of Cloudflare</u></a></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Building a CLI for all of Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>We’re introducing cf, a new unified CLI designed for consistency across the Cloudflare platform, alongside Local Explorer for debugging local data. These tools simplify how developers and AI agents interact with our nearly 3,000 API operations.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/introducing-agent-lee"><u>Introducing Agent Lee - a new interface to the Cloudflare stack</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Introducing Agent Lee - a new interface to the Cloudflare stack</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Agent Lee is an in-dashboard agent that shifts Cloudflare’s interface from manual tab-switching to a single prompt. Using sandboxed TypeScript, it helps you troubleshoot and manage your stack as a grounded technical collaborator.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/flagship"><u>Introducing Flagship: feature flags built for the age of AI</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Introducing Flagship: feature flags built for the age of AI</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Introducing Flagship, a native feature flag service built on Cloudflare’s global network to eliminate the latency of third-party providers. By using KV and Durable Objects, Flagship allows for sub-millisecond flag evaluation.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers"><u>Deploy Postgres and MySQL databases with PlanetScale + Workers</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Deploy Postgres and MySQL databases with PlanetScale + Workers</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Learn how to deploy PlanetScale Postgres and MySQL databases via Cloudflare and connect Cloudflare Workers.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/registrar-api-beta"><u>Register domains wherever you build: Cloudflare Registrar API now in beta</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Register domains wherever you build: Cloudflare Registrar API now in beta</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>The Cloudflare Registrar API is now in beta. Developers and AI agents can search, check availability, and register domains at cost directly from their editor, their terminal, or their agent — without leaving their workflow.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1BuOIU5Q3gfMIekZJEiBra/732c42b78aa397e7bb19b3816c7d1516/BLOG-3239_5.png" alt="BLOG-3239 5" class="kg-image" width="1999" height="583" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="agentic-web">Agentic Web</h2>
-		<a href="https://blog.cloudflare.com/#agentic-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As more agents come online, they're still browsing an Internet that was built for people. Existing websites need new tools to control what bots can access their content, package and present it for agents, and measure how ready they are for this shift.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Announcement</b></p>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="209" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=640&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=750&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=828&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1080&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1280&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1430&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="209" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 5"></div>
+</figure>
+<h2>Agentic Web</h2>
+<p>As more agents come online, they're still browsing an Internet that was built for people. Existing websites need new tools to control what bots can access their content, package and present it for agents, and measure how ready they are for this shift.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>Announcement</p>
 				</th>
-				<th>
-					<p><b>Summary</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Summary</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/agent-readiness"><u>Introducing the Agent Readiness score. Is your site agent-ready?</u></a></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Introducing the Agent Readiness score. Is your site agent-ready?</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>The Agent Readiness score can help site owners understand how well their websites support AI agents. Here we explore new standards, share Radar data, and detail how we made Cloudflare’s docs the most agent-friendly on the web.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/ai-redirects"><u>Redirects for AI Training enforces canonical content</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Redirects for AI Training enforces canonical content</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Soft directives don’t stop crawlers from ingesting deprecated content. Redirects for AI Training allows anybody on Cloudflare to redirect verified crawlers to canonical pages with one toggle and no origin changes.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/network-performance-agents-week"><u>Agents Week: Network performance update</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Agents Week: Network performance update</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>By migrating our request handling layer to a Rust-based architecture called FL2, Cloudflare has increased its performance lead to 60% of the world’s top networks. We use real-user measurements and TCP connection trimeans to ensure our data reflects the actual experience of people on the Internet</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="https://blog.cloudflare.com/shared-dictionaries"><u>Shared dictionary compression that keeps up with the agentic web</u></a></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Shared dictionary compression that keeps up with the agentic web</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>We give you a sneak peek of our support for shared compression dictionaries, show you how it improves page load times, and reveal when you’ll be able to try the beta yourself.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jKSnMla0hclK999LtHfuu/886f66ffda1c699a5a15bf6748a6cf9b/BLOG-3239_6.png" alt="BLOG-3239 6" class="kg-image" width="1999" height="642" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="thats-a-wrap">That’s a wrap</h2>
-		<a href="https://blog.cloudflare.com/#thats-a-wrap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Agents Week 2026 is ending, but the agentic cloud is just getting started. Everything we shipped this week — from compute and security to the agent toolbox and the agentic web — is the foundation. We're going to keep building on it to give you everything you need to build what's next.</p>
-	<p>We also have more blog posts coming out today and tomorrow to continue the story, so keep an eye out for the latest <a href="https://blog.cloudflare.com"><u>at our blog</u></a>.</p>
-	<p>If you're building on any of what we announced this week, we want to hear about it. Come find us on <a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>X</u></a> or <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, or head to the <a href="https://developers.cloudflare.com/products/?product-group=Developer+platform" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a>. </p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YLNvB0KU0Eh3KpAj6YgD6/77c190843d1fa76b212571f1d607d8d2/BLOG-3239_7.png" alt="BLOG-3239 7" class="kg-image" width="1200" height="295" loading="lazy">
-	</figure>
-	<p></p>
 </div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 6"></div>
+</figure>
+<h2>That’s a wrap</h2>
+<p>Agents Week 2026 is ending, but the agentic cloud is just getting started. Everything we shipped this week — from compute and security to the agent toolbox and the agentic web — is the foundation. We're going to keep building on it to give you everything you need to build what's next.</p>
+<p>We also have more blog posts coming out today and tomorrow to continue the story, so keep an eye out for the latest <a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>at our blog</u></a>.</p>
+<p>If you're building on any of what we announced this week, we want to hear about it. Come find us on <a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>X</u></a> or <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, or head to the <a href="https://developers.cloudflare.com/products/?product-group=Developer+platform" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a>. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3239 7"></div>
+</figure>
+<p></p>

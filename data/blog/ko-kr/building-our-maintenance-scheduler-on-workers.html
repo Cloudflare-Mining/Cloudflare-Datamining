@@ -1,0 +1,210 @@
+<div class="mb2 gray5">10분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/building-our-maintenance-scheduler-on-workers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/building-our-maintenance-scheduler-on-workers">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/building-our-maintenance-scheduler-on-workers">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/building-our-maintenance-scheduler-on-workers">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uh8ZB8SROnxZis8Lkpnhm/4bb490e346ff2c0df8dcd391dc4b7c5d/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>Cloudflare는 전 세계 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330여 개 도시에 데이터 센터를 보유하고 있으므로</u></a>, 데이터 센터 운영을 계획할 때 사용자들이 알지 못하는 사이에 데이터 센터가 쉽게 중단될 수 있다고 생각할 수도 있습니다. 하지만 서비스 <a href="https://developers.cloudflare.com/support/disruptive-maintenance" target="_blank" rel="noopener noreferrer"><u>중단을 지원하려면 신중한 계획이 필요한 것이 현실이 되었고</u></a>, Cloudflare가 성장하면서 인프라와 네트워크 운영 전문가 간의 수동 조정으로 이러한 복잡성을 관리하는 것이 거의 불가능해졌습니다.</p>
+	<p>사람이 중복되는 모든 유지보수 요청을 추적하거나 모든 고객별 라우팅 규칙을 실시간으로 고려하는 것은 이제 불가능합니다. 우리는 수동 감독만으로는 어느 지역에서 일상적인 하드웨어 업데이트가 다른 지역의 중요 경로와 의도치 않게 충돌하지 않는다는 것을 보장할 수 없는 지경에 이르렀습니다.</p>
+	<p>저희는 보호 장치 역할을 할 중앙 집중식 자동화된 '두 뇌', 즉 전체 네트워크 상태를 한 번에 볼 수 있는 시스템이 필요하다는 것을 깨달았습니다. <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>에서 이 스케줄러를 구축함으로써 저희는 안전 제약 조건을 프로그래밍 방식으로 적용할 수 있는 방법을 마련했으며, 이를 통해 고객이 의존하는 서비스의 안정성을 결코 희생시키지 않는다는 것을 보장했습니다.</p>
+	<p>이 블로그 게시물에서는 Cloudflare에서 이를 어떻게 구축했는지 설명하고 현재 확인 중인 결과를 공유해 보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-a-system-to-de-risk-critical-maintenance-operations">중요한 유지 관리 작업의 위험을 줄이기 위한 시스템 구축</h2>
+		<a href="https://blog.cloudflare.com/#building-a-system-to-de-risk-critical-maintenance-operations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>대도시 지역에서 운영되는 많은 Cloudflare 데이터 센터에 공용 인터넷을 공동으로 연결하는 소규모의 이중화 게이트웨이 그룹 중 하나의 역할을 하는 에지 라우터를 상상해 보세요. 인구가 많은 도시에서는 라우터가 모두 동시에 오프라인 상태가 되어 이 작은 라우터 클러스터 뒤에 있는 여러 데이터 센터가 중단되지 않도록 해야 합니다.&nbsp;</p>
+	<p>유지보수 문제는 Cloudflare의 Zero Trust 제품인 전용 CDN 송신 IP에서 비롯됩니다. 이를 이용하는 고객은 짧은 대기 시간을 위해 사용자 트래픽을 Cloudflare에서 나가서 지리적으로 가까운 원본 서버로 전송할 특정 데이터 센터를 선택할 수 있습니다. (이 게시물은 간략함을 위해 Dedicated CDN 송신 IP 제품을 이전 이름에서였던 "Aegis"라고 부르겠습니다.) 고객이 선택한 모든 데이터 센터가 한 번에 오프라인 상태인 경우 대기 시간이 더 길어지고 5XX 오류가 발생할 수 있으며, Cloudflare는 이를 피해야 합니다.&nbsp;</p>
+	<p>Cloudflare 유지 관리 스케줄러는 이와 같은 문제를 해결합니다. 특정 영역에서 항상 하나 이상의 에지 라우터를 활성화할 수 있도록 할 수 있습니다. 또한 유지 관리를 예약할 때, 여러 예약된 이벤트가 결합되어 고객의 Aegis 풀의 모든 데이터 센터가 동시에 오프라인 상태가 되는지 확인할 수 있습니다.</p>
+	<p>스케줄러를 만들기 전에는 이러한 파괴적인 이벤트가 동시에 발생하면 고객에게 가동 중지 시간이 발생할 수 있습니다. 이제 스케줄러를 통해 내부 운영자에게 잠재적인 충돌 가능성을 알려 다른 관련 데이터 센터 유지 관리 이벤트와 겹치지 않도록 새로운 시간을 제안할 수 있습니다.</p>
+	<p>저희는 에지 라우터 가용성 및 고객 규칙과 같은 이러한 운영 시나리오를 더 예측 가능하고 안전한 유지 관리 계획을 수립할 수 있는 유지 관리 제약 조건으로 정의합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="maintenance-constraints">유지 관리 제약</h2>
+		<a href="https://blog.cloudflare.com/#maintenance-constraints" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 제약 조건은 네트워크 라우터 또는 서버 목록과 같은 일련의 제안된 유지 관리 항목에서 시작됩니다. 그런 다음 캘린더에서 제안된 유지 관리 기간과 겹치는 모든 유지 관리 이벤트를 찾습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vHCauxOGRXzhrO6DNDr2S/cf38b93ac9b812e5e064f800e537e549/image4.png" alt="" class="kg-image" width="1600" height="862" loading="lazy">
+	</figure>
+	<p>다음으로, Aegis 고객 IP 풀 목록과 같은 제품 APIs를 집계합니다. Aegis는 아래와 같이 고객이 특정 데이터 센터 ID에서 송신을 요청한 IP 범위 세트를 반환합니다.</p>
+	<pre class="language-JSON"><code class="language-JSON">[
+    {
+      "cidr": "104.28.0.32/32",
+      "pool_name": "customer-9876",
+      "port_slots": [
+        {
+          "dc_id": 21,
+          "other_colos_enabled": true,
+        },
+        {
+          "dc_id": 45,
+          "other_colos_enabled": true,
+        }
+      ],
+      "modified_at": "2023-10-22T13:32:47.213767Z"
+    },
+]</code></pre>
+	<p>이 시나리오에서는 Aegis 고객 9876이 Cloudflare의 송신 트래픽을 수신하기 위한 데이터 센터가 하나 이상 필요하므로 데이터 센터 21과 데이터 센터 45가 서로 연관되어 있습니다. 21번 데이터 센터와 45번 데이터 센터를 동시에 가동 중지시키려고 하면, 코디네이터가 해당 고객의 워크로드에 의도하지 않은 결과가 발생할 수 있다고 경고합니다.</p>
+	<p>처음에는 모든 데이터를 단일 Worker에 로드하는 순진한 솔루션을 가지고 있었습니다. 여기에는 모든 서버 관계, 제품 구성, 제품 및 인프라 상태에서 제약 조건을 계산하는 메트릭이 포함되었습니다. 개념 증명 단계에서도 '메모리 부족' 오류 문제가 발생했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1v4Q6bXsZLBXLbrbRrcW3o/00d291ef3db459e99ae9b620965b6bc7/image2.png" alt="" class="kg-image" width="1686" height="534" loading="lazy">
+	</figure>
+	<p>Workers의 <a href="https://developers.cloudflare.com/workers/platform/limits" target="_blank" rel="noopener noreferrer"><u>플랫폼 제한</u></a>을 더 잘 인식할 필요가 있었습니다. 이를 위해서는 제약 조건의 비즈니스 로직을 처리하는 데 절대적으로 필요한 만큼의 데이터만 로드하면 되었습니다. 독일 프랑크푸르트에 있는 라우터 유지보수 요청이 들어올 경우, 이 요청은 지역 간에 중복되는 일이 없기 때문에 호주에서 무슨 일이 일어나든 전혀 신경 쓰지 않습니다. 따라서 독일의 인접한 데이터 센터에 대한 데이터만 로드해야 합니다. 데이터세트의 관계를 처리할 수 있는 보다 효율적인 방법이 필요했습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="graph-processing-on-workers">Workers에서의 그래프 처리</h2>
+		<a href="https://blog.cloudflare.com/#graph-processing-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>제약 조건을 살펴보면 각 제약 조건이 개체 및 연결이라는 두 가지 개념으로 귀결되는 패턴이 나타났습니다. 그래프 이론에서는 이러한 구성 요소를 각각 꼭짓점과 간선이라고 합니다. 개체는 네트워크 라우터가 될 수 있고, 연결은 라우터를 온라인 상태로 만들기 위해 필요한 데이터 센터의 Aegis 풀 목록이 될 수 있습니다. Cloudflare는 Facebook의 <a href="https://research.facebook.com/publications/tao-facebooks-distributed-data-store-for-the-social-graph" target="_blank" rel="noopener noreferrer"><u>TAO</u></a> 연구 논문에서 영감을 받아 제품 및 인프라 데이터 위에 그래프 인터페이스를 구축했습니다. API는 다음과 같은 모습입니다.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">type ObjectID = string
+
+interface MainTAOInterface&lt;TObject, TAssoc, TAssocType&gt; {
+  object_get(id: ObjectID): Promise&lt;TObject | undefined&gt;
+
+  assoc_get(id1: ObjectID, atype: TAssocType): AsyncIterable&lt;TAssoc&gt;
+}</code></pre>
+	<p>핵심 인사이트는 연결이 입력된다는 것입니다. 예를 들어, 제약 조건은 Aegis 제품 데이터를 검색하기 위해 그래프 인터페이스를 호출합니다.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">async function constraint(c: AppContext, aegis: TAOAegisClient, datacenters: string[]): Promise&lt;Record&lt;string, PoolAnalysis&gt;&gt; {
+  const datacenterEntries = await Promise.all(
+    datacenters.map(async (dcID) =&gt; {
+      const iter = aegis.assoc_get(c, dcID, AegisAssocType.DATACENTER_INSIDE_AEGIS_POOL)
+      const pools: string[] = []
+      for await (const assoc of iter) {
+        pools.push(assoc.id2)
+      }
+      return [dcID, pools] as const
+    }),
+  )
+
+  const datacenterToPools = new Map&lt;string, string[]&gt;(datacenterEntries)
+  const uniquePools = new Set&lt;string&gt;()
+  for (const pools of datacenterToPools.values()) {
+    for (const pool of pools) uniquePools.add(pool)
+  }
+
+  const poolTotalsEntries = await Promise.all(
+    [...uniquePools].map(async (pool) =&gt; {
+      const total = aegis.assoc_count(c, pool, AegisAssocType.AEGIS_POOL_CONTAINS_DATACENTER)
+      return [pool, total] as const
+    }),
+  )
+
+  const poolTotals = new Map&lt;string, number&gt;(poolTotalsEntries)
+  const poolAnalysis: Record&lt;string, PoolAnalysis&gt; = {}
+  for (const [dcID, pools] of datacenterToPools.entries()) {
+    for (const pool of pools) {
+      poolAnalysis[pool] = {
+        affectedDatacenters: new Set([dcID]),
+        totalDatacenters: poolTotals.get(pool),
+      }
+    }
+  }
+
+  return poolAnalysis
+}</code></pre>
+	<p>위의 코드에서는 두 가지 연결 유형을 사용합니다.</p>
+	<ol>
+		<li>
+			<p>DATACENTER_INSIDE_AEGIS_POL - 데이터 센터가 있는 Aegis 고객 풀을 검색합니다.</p>
+		</li>
+		<li>
+			<p>AEGIS_POL_CONTAINS_DATACENTER는 Aegis 풀이 트래픽을 처리하는 데 필요한 데이터 센터를 검색합니다.</p>
+		</li>
+	</ol>
+	<p>이러한 연관성은 서로 역전된 지표입니다. 액세스 패턴은 이전과 완전히 동일하지만, 이제 그래프 구현에서 쿼리하는 데이터의 양을 훨씬 더 잘 제어할 수 있습니다. 이전에는 모든 Aegis 풀을 메모리에 로드하고 비즈니스 로직을 필터링해야 했습니다. 이제 애플리케이션에 중요한 데이터만 직접 가져올 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4b68YLIHiOPt5EeyTUTeBt/5f624f0d0912e7dfd0e308a3427d194c/unnamed.png" alt="" class="kg-image" width="1600" height="700" loading="lazy">
+	</figure>
+	<p>이 인터페이스는 그래프 구현이 비즈니스 로직을 복잡하게 만들지 않고도 백그라운드에서 성능을 개선할 수 있기 때문에 강력합니다. 따라서 Workers의 확장성과 Cloudflare CDN을 사용하여 내부 시스템에서 데이터를 매우 빠르게 가져올 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="fetch-pipeline">가져오기 파이프라인</h2>
+		<a href="https://blog.cloudflare.com/#fetch-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 새로운 그래프 구현을 사용하도록 전환하여 더 대상이 지정된 API 호출을 보냈습니다. 하룻밤 사이에 응답 크기가 100배까지 감소했고, 로딩이 적은 요청에서 작은 요청 다수로 전환되었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/71aDOicyippmUbj4ypXKw/73dacdf16ca0ac422efdfec9e86e9dbf/image5.png" alt="" class="kg-image" width="1999" height="962" loading="lazy">
+	</figure>
+	<p>이렇게 하면 메모리에 과도하게 많은 것을 로드하는 문제가 해결되지만, 몇 가지 큰 HTTP 요청 대신 작은 요청을 훨씬 더 많이 수행하기 때문에 하위 요청 문제가 발생합니다. Cloudflare는 하루아침에 하위 요청 제한을 지속해서 위반하기 시작했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36KjfOU8xIuUkwF7QOlNkK/e2275a50ff1bef497cdb201c2d3a6249/image3.png" alt="" class="kg-image" width="1999" height="967" loading="lazy">
+	</figure>
+	<p>이 문제를 해결하기 위해 Cloudflare에서는 그래프 구현과 <code>fetch</code> API 사이에 스마트 미들웨어 계층을 구축했습니다.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export const fetchPipeline = new FetchPipeline()
+  .use(requestDeduplicator())
+  .use(lruCacher({
+    maxItems: 100,
+  }))
+  .use(cdnCacher())
+  .use(backoffRetryer({
+    retries: 3,
+    baseMs: 100,
+    jitter: true,
+  }))
+  .handler(terminalFetch);</code></pre>
+	<p>바둑에 익숙하신 분이라면 <a href="https://pkg.go.dev/golang.org/x/sync/singleflight" target="_blank" rel="noopener noreferrer"><u>singleflight</u></a> 패키지를 본 적이 있을 것입니다. 저희는 이 아이디어에서 영감을 얻었고 가져오기 파이프라인의 첫 번째 미들웨어 구성 요소가 전송 중인 HTTP 요청의 중복을 제거하여 동일한 Worker에서 중복 요청을 생성하는 대신 데이터에 대해 모두 동일한 프라미스를 기다립니다. 다음으로, 경량 LRU(최소 최근 사용) 캐시를 사용하여 이전에 이미 본 요청을 내부적으로 캐시합니다.</p>
+	<p>이 두 가지를 모두 완료하면 Cloudflare의 <code>caches.default.match</code> 함수를 사용하여 Worker가 실행 중인 지역에서 모든 GET 요청을 캐시합니다. 성능 특성이 서로 다른 데이터 소스가 여러 개 있으므로 Time To Live(TTL) 값을 신중하게 선택합니다. 예를 들어, 실시간 데이터는 1분 동안만 캐시됩니다. 비교적 정적인 인프라 데이터는 데이터 유형에 따라 1~24시간 동안 캐시될 수 있었습니다. 전원 관리 데이터는 에지에서 더 오래 캐시할 수 있도록 수동으로 그리고 자주 변경될 수 있습니다.</p>
+	<p>이러한 계층 외에도 표준 지수 백오프, 재시도, 지터가 있습니다. <code>이렇게 하면 다운스트림 리소스를</code> 일시적으로 사용할 수 없게 되는 가져오기 호출을 줄이는 데 도움이 됩니다. 뒤로 물러서면 다음 요청을 성공적으로 가져올 확률이 높아집니다. 반대로, Worker가 백오프 없이 지속해서 요청을 보내는 경우 원본이 5xx 오류를 반환하기 시작할 때 하위 요청 제한을 쉽게 위반하게 됩니다.</p>
+	<p>이 모든 것을 종합해보면 캐시 적중률은 약 99%에 달합니다. <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer"><u>캐시</u></a> 적중률은 Cloudflare의 빠른 캐시 메모리에서 처리된 HTTP 요청의 비율('적중')과 Cloudflare의 제어판에서 실행 중인 데이터 소스에 대한 느린 요청('실패')의 비율로, (적중 / (적중 + 누락))으로 계산합니다 . Worker의 캐시에서 데이터를 쿼리하는 것은 다른 지역에 있는 원본 서버에서 데이터를 가져오는 것보다 훨씬 빠르므로 속도가 높으면 HTTP 요청 성능이 개선되고 비용이 절감됩니다. 설정을 조정한 후 인메모리 및 CDN 캐시의 캐시 적중률이 극적으로 증가했습니다. 워크로드의 대부분이 실시간이므로 분당 한 번 이상 새 데이터를 요청해야 하므로 적중률 100%는 불가능합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jifI33QpBkQPd7tE5Tapi/186a74b922faac3abe091b79f03d640b/image1.png" alt="" class="kg-image" width="1120" height="1082" loading="lazy">
+	</figure>
+	<p>가져오기 계층의 개선에 대해서는 이야기했지만, 원본 HTTP 요청의 속도를 개선하는 방법에 대해서는 이야기하지 않았습니다. 유지보수 담당자는 데이터 센터 내 네트워크 성능 저하 및 장비 장애에 실시간으로 대응해야 합니다. Cloudflare는 분산형 <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale"><u>Prometheus</u></a> 쿼리 엔진인 Thanos를 사용하여 에지에서 코디네이터로 고성능 메트릭을 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="thanos-in-real-time">실시간으로 제공하는 타노스</h2>
+		<a href="https://blog.cloudflare.com/#thanos-in-real-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>그래프 처리 인터페이스 사용 선택이 실시간 쿼리에 어떤 영향을 미쳤는지 설명하기 위해 예를 들어 보겠습니다. 에지 라우터의 상태를 분석하기 위해 다음 쿼리를 보낼 수 있습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">sum by (instance) (network_snmp_interface_admin_status{instance=~"edge.*"})</code></pre>
+	<p>원래 Cloudflare는 각 에지 라우터의 현재 상태 목록을 요청하고 Worker 내부 유지 관리와 관련된 라우터를 수동으로 필터링했습니다. 이는 여러 가지 이유로 최적이 아닙니다. 예를 들어, 타노스는 디코딩과 인코딩에 필요한 멀티 MB 응답을 반환했습니다. 또한 Worker는 특정 유지 관리 요청을 처리하는 동안 대부분의 데이터를 필터링하기 위해 이러한 대규모 HTTP 응답을 캐시하고 디코딩하면 되었습니다. TypeScript는 단일 스레드이고 JSON 데이터 구문 분석은 CPU에 의존하므로 두 개의 큰 HTTP 요청을 전송하면 하나는 차단되어 다른 요청이 구문 분석을 마칠 때까지 기다리게 됩니다.</p>
+	<p>대신 그래프를 사용하여 <code>EDGE_ROUTER_NETWORK_CONNECTS_TO_SPINE</code>으로 표시되는 에지와 스파인 라우터 간의 인터페이스 링크와 같은 표적 관계를 찾기만 하면 됩니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">sum by (lldp_name) (network_snmp_interface_admin_status{instance=~"edge01.fra03", lldp_name=~"spine.*"})</code></pre>
+	<p>그 결과 여러 MB가 나타나는 대신 평균 1Kb이거나 약 1,000배 더 작습니다. 우리는 대부분의 역직렬화를 타사로 오프로드하므로 Worker 내부에 필요한 CPU 양도 크게 줄어듭니다. 앞서 설명한 것처럼 이는 더 많은 수의 작은 가져오기 요청을 수행해야 하지만, Tanos 앞에 있는 로드 밸런서를 통해 요청을 균등하게 분산하여 이 사용 사례의 처리량을 늘릴 수 있습니다.&nbsp;</p>
+	<p>그래프 구현 및 가져오기 파이프라인은 수천 건의 작은 실시간 요청이라는 '끔찍한 무리'를 성공적으로 처리했습니다. 하지만 이력 분석은 I/O와는 다른 문제를 제시합니다. 작고 구체적인 관계를 가져오는 대신 몇 달치의 데이터를 스캔하여 충돌하는 유지 관리 기간을 찾아야 합니다. 과거에는 Thanos가 개체 저장소인 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a>에 대량의 무작위 읽기를 발행했습니다. 성능을 그대로 유지하면서 이 막대한 대역폭 저하를 해결하기 위해 저희는 올해 내부적으로 Observability 팀에서 개발한 새로운 접근 방식을 채택했습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="historical-data-analysis">과거 데이터 분석</h2>
+		<a href="https://blog.cloudflare.com/#historical-data-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>당사의 솔루션이 정확하고 Cloudflare 네트워크의 성장에 따라 확장될지 여부를 판단하려면 과거 데이터에 의존해야 할 정도로 유지 관리 사용 사례가 많습니다. Cloudflare는 사고를 일으키고 싶지 않으며, 제안된 물리적 유지 보수가 불필요하게 차단되지 않도록 방지하고자 합니다. 이 두 가지 우선순위의 균형을 유지하기 위해, 2개월 전이나 1년 전에 발생한 유지 관리 이벤트에 대한 시계열 데이터를 사용하여 유지 관리 이벤트가 제약 조건 중 하나를 위반하는 빈도를 알 수 있습니다. 에지 라우터 가용성 또는 Aegis입니다. 저희는 올해 초에 타노스를 사용하여 <a href="https://blog.cloudflare.com/safe-change-at-any-scale"><u>자동으로 소프트웨어를 출시하고 에지로 되돌리는 것에</u></a> 대해 블로그에 게시한 적이 있습니다.</p>
+	<p>Tanos는 주로 Prometheus를 사용하지만, Prometheus의 유지가 쿼리에 응답하기에 충분하지 않은 경우 개체 스토리지(이 경우 R2)에서 데이터를 다운로드해야 합니다. Prometheus TSDB 블록은 원래 로컬 SSD용으로 설계되었으며, 개체 스토리지로 이동할 때 병목 현상이 발생하는 무작위 액세스 패턴에 의존합니다. 스케줄러가 충돌하는 제약 조건을 식별하기 위해 몇 달 동안의 유지 관리 데이터를 분석해야 할 때 개체 스토리지에서 무작위 읽기는 막대한 I/O 페널티를 초래합니다. 이 문제를 해결하기 위해 Cloudflare는 이러한 블록을 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 파일로 변환하는 변환 계층을 구현했습니다. Parquet은 행이 아닌 열별로 데이터를 구성하는 빅데이터 분석에 기본인 열 형식으로, 풍부한 통계와 함께 필요한 항목만 가져올 수 있습니다.</p>
+	<p>또한 TSDB 블록을 Parquet 파일로 다시 작성하므로 데이터를 순차적으로 큰 청크로 읽을 수 있는 방식으로 저장할 수도 있습니다.</p>
+	<pre class="language-Rust"><code class="language-Rust">sum by (instance) (hmd:release_scopes:enabled{dc_id="45"})</code></pre>
+	<p>위의 예에서는 "(__name__, dc_id)" 튜플을 기본 정렬 키로 선택하여 이름이 "hmd:release_scopes:활성화"이고 "dc_id"에 동일한 값을 가진 메트릭이 가깝게 정렬되도록 했습니다.</p>
+	<p>이제 Parquet 게이트웨이는 쿼리와 관련된 특정 열만 가져오기 위해 정확한 R2 범위 요청을 발행합니다. 따라서 악의적인 페이로드가 메가바이트에서 킬로바이트로 줄어듭니다. 또한 이러한 파일 세그먼트는 변경할 수 없으므로 Cloudflare CDN에 적극적으로 캐시할 수 있습니다.</p>
+	<p>이렇게 하면 R2가 대기 시간이 짧은 쿼리 엔진으로 전환되므로 복잡한 유지 관리 시나리오를 장기 추세에 대해 즉시 백테스트할 수 있어 원래 TSDB 형식에서 발생했던 제한 시간 초과 및 긴 대기 시간을 피할 수 있습니다. 아래 그래프는 최근의 부하 테스트로, 동일한 쿼리 패턴에서 이전 시스템에 비해 Parquet의 P90 성능이 최대 15배에 달한 것을 보여줍니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lVj6W4W4MMUy6cEsDpk5G/21614b7ac003a86cb5162a2ba75f4c42/image8.png" alt="" class="kg-image" width="1999" height="622" loading="lazy">
+	</figure>
+	<p>Parquet 구현이 작동하는 방식을 더 심층적으로 이해하려면 PromCon EU 2025에서 개최되는<a href="https://www.youtube.com/watch?v=wDN2w2xN6bA&amp;list=PLoz-W_CUquUlHOg314_YttjHL0iGTdE3O&amp;index=16" target="_blank" rel="noopener noreferrer"><u>'TSDB를 넘어서: 최신 규모를 위한 Parquet를 통해 Prometheus 활용하기'를 시청할</u></a> 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-for-scale">확장성을 위한 구축</h2>
+		<a href="https://blog.cloudflare.com/#building-for-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>저희는 Cloudflare Workers를 활용하여 메모리가 부족한 시스템에서 데이터를 지능적으로 캐시하고 효율적인 관찰 가능성 도구를 사용하여 제품 및 인프라 데이터를 실시간으로 분석하는 시스템으로 전환했습니다. 우리는 네트워크 성장과 제품 성능 사이의 균형을 유지하는 유지 관리 스케줄러를 구축했습니다.</p>
+	<p>하지만 '균형'은 움직이는 목표입니다.</p>
+	<p>매일 우리는 전 세계에 걸쳐 더 많은 하드웨어를 추가하고 있으며, 고객 트래픽을 방해하지 않고 하드웨어를 유지하는 데 필요한 로직은 제품 및 유지 관리 작업의 유형이 많아질수록 기하급수적으로 어려워지고 있습니다. Cloudflare는 첫 번째 일련의 문제를 해결했지만, 이제 이렇게 방대한 규모에서만 나타나는 보다 미묘하고 복잡한 문제를 자세히 살펴보고 있습니다.</p>
+	<p>우리에게는 어려운 문제를 두려워하지 않는 엔지니어가 필요합니다. <a href="https://www.cloudflare.com/careers/jobs/?department=Infrastructure" target="_blank" rel="noopener noreferrer"><u>Cloudflare 인프라 팀에</u></a> 합류하여 함께 구축해 보세요.</p>
+</div>

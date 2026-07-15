@@ -1,0 +1,159 @@
+<div class="mb2 gray5">Lecture&nbsp;: 8 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-one">English</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-one">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-one">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/cloudflare-one">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-one">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-one">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HxaNoErGbDzswuvzR8ZOH/4d898a83c25f447a3dce8594461a255d/cloudflare-one.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>La gestion d’un réseau d’entreprise sécurisé est une tâche vraiment difficile. Des employés disséminés aux quatre coins du monde travaillent depuis leur domicile. Les applications sont exécutées depuis des datacenters, hébergées dans un Cloud public et fournies en tant que services. Des pirates informatiques persistants et motivés exploitent la moindre vulnérabilité.</p>
+	<p>Les entreprises construisaient autrefois des réseaux qui ressemblaient à un château fort entouré de douves. Les murs et les douves empêchaient les pirates d’entrer et les données de sortir. Les membres de l’équipe entraient dans le château via un pont-levis, et restaient généralement à l’intérieur des murs. Les entreprises comptaient sur les personnes à l’intérieur du château pour se comporter correctement et déployaient toutes les applications nécessaires dans la relative tranquillité du périmètre réseau sécurisé.</p>
+	<p>Toutefois, Internet, l’approche SaaS et « le Cloud » ont contrecarré ce plan. Aujourd’hui, la plupart des charges de travail d’une entreprise moderne sont exécutées <i>à l’extérieur</i> du château fort, plutôt qu’<i>à l’intérieur</i>. Alors, pourquoi les entreprises dépensent-elles encore de l’argent pour créer des environnements toujours plus compliqués et inefficaces ?</p>
+	<p>Aujourd’hui, nous sommes ravis de présenter <i>Cloudflare One™</i>, notre vision pour affronter la tâche complexe de la sécurité et de la connectivité réseau de l’entreprise.</p>
+	<p>Cloudflare One réunit des produits réseau qui permettent aux employés de donner le meilleur d’eux-mêmes au travail, où qu’ils se trouvent, avec des contrôles de sécurité cohérents déployés dans le monde entier.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KPU0ZjyI3gJLqCCqN400Q/882df35b0fd94f591642aa73e9f432f2/image3-7.png" alt="" class="kg-image" width="1239" height="598" loading="lazy">
+
+	</figure>
+	<p>Vous pouvez dès aujourd’hui commencer à remplacer le réacheminement du trafic vers des équipements de sécurité par Cloudflare WARP et Gateway pour filtrer le trafic Internet sortant. Pour les réseaux de vos agences, nous prévoyons d’intégrer, avec Magic Firewall, des fonctionnalités de pare-feu de nouvelle génération à Magic Transit, afin de vous permettre de vous débarrasser des appareils de pare-feu qui encombrent vos étagères.</p>
+	<p>En proposant « bretelles d’accès » à Internet via Cloudflare et l’élimination du trafic réacheminé, nous avons l’intention de rendre la gestion du routage plus simple et économique que les modèles MPLS et SD-WAN. Cloudflare Magic WAN offrira un plan de contrôle permettant de gérer le routage du trafic transitant sur notre réseau.</p>
+	<p>Vous pouvez utiliser Cloudflare One dès aujourd’hui pour remplacer l’autre fonction de votre VPN : placer les utilisateurs sur un réseau privé afin de contrôler les accès. Cloudflare Access offre des contrôles Zero Trust qui peuvent remplacer les modèles de sécurité des réseaux privés. Plus tard dans la semaine, nous vous annoncerons comment étendre Access à toutes les applications, notamment aux applications SaaS. Nous présenterons également en avant-première notre technologie d’isolation du navigateur, qui protège les points de terminaison connectés à ces applications contre les logiciels malveillants.</p>
+	<p>Enfin, les produits de Cloudflare One fournissent à votre équipe des fichiers journaux et des outils pour comprendre, puis résoudre les problèmes. Dans le cadre du lancement de notre solution de filtrage Gateway cette semaine, nous incluons des fichiers journaux qui offrent une visibilité sur le trafic quittant votre organisation. Plus tard cette semaine, nous expliquerons comment ces journaux deviennent plus intelligents grâce au nouveau système de détection d’intrusions (Intrusion Detection System), qui détecte et arrête les tentatives d’intrusion.</p>
+	<p>Un grand nombre de ces composants sont disponibles aujourd’hui ; de nouvelles fonctionnalités suivront cette semaine et d’autres composants seront lancés prochainement. Ensemble, nous sommes ravis de partager cette vision pour l’avenir du réseau des entreprises.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Lhza66At9UlwNsbmXR8KY/b82550e7e23283fd7e654e970761399a/image1-10.png" alt="" class="kg-image" width="2000" height="1186" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="problems-in-enterprise-networking-and-security">Problèmes de connectivité réseauet de sécurité des entreprises</h2>
+		<a href="https://blog.cloudflare.com/#problems-in-enterprise-networking-and-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les exigences imposées au réseau des entreprises ont considérablement changé. L’informatique a évolué d’une fonction purement administrative vers celle d’une mission vitale. Parallèlement à l’intégration toujours plus avancée des réseaux, les utilisateurs ont quitté leurs bureaux pour travailler depuis leurs domiciles. Les applications ont quitté le datacenter et sont désormais exécutées depuis plusieurs Clouds ou directement mises en œuvre sur Internet par des fournisseurs.</p>
+	<div class="flex anchor relative">
+		<h3 id="direct-network-paths-became-hairpin-turns">Les chemins directs du réseau sont devenus</h3>
+		<a href="https://blog.cloudflare.com/#direct-network-paths-became-hairpin-turns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>des lacets de montagne</p>
+	<p>Les employés assis à leur bureau pouvaient se connecter, via un réseau privé, à des applications exécutées dans un datacenter situé à proximité. Lorsque les membres de l'équipe quittaient leur bureau, ils pouvaient utiliser un VPN pour se reconnecter discrètement au réseau depuis un endroit situé hors des murs. Les succursales se connectaient elles aussi à ce réseau via de coûteuses liaisons MPLS.</p>
+	<p>Lorsque les applications ont quitté le datacenter et les utilisateurs ont quitté leurs bureaux, les organisations ont réagi en essayant de faire entrer de force ce monde disséminé dans le modèle traditionnel du château fort entouré de douves. Les entreprises ont acheté davantage de licences VPN et ont remplacé les liaisons MPLS par des déploiements SD-WAN difficiles à mettre en œuvre. Les réseaux sont devenus plus complexes dans le but d’imiter un modèle de connectivité réseau plus ancien, lorsqu’en réalité, l’Internet était devenu le nouveau réseau de l’entreprise.</p>
+	<div class="flex anchor relative">
+		<h3 id="defense-in-depth-splintered"><b>La défense en profondeur vole en éclats</b></h3>
+		<a href="https://blog.cloudflare.com/#defense-in-depth-splintered" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les pirates cherchant à compromettre les réseaux d’entreprises ont une multitude d’outils à leur disposition et peuvent exécuter des attaques chirurgicales avec des logiciels malveillants, lancer une véritable montagne de données sur votre réseau, mais également employer de nombreuses autres tactiques. Traditionnellement, la défense contre chaque classe d’attaque était assurée par du matériel distinct et spécialisé, exécuté dans un datacenter.</p>
+	<p>Les contrôles de sécurité étaient autrefois relativement faciles, lorsque chaque utilisateur et chaque application se trouvaient au même endroit. Lorsque les employés ont quitté les bureaux et les charges de travail ont quitté les datacenters, ces mêmes contrôles de sécurité ont eu des difficultés à les suivre. Les entreprises ont déployé un patchwork de solutions ponctuelles, essayant de reconstruire les équipements de pare-feu qui encombraient leurs étagères dans des environnements hybrides et dynamiques.</p>
+	<div class="flex anchor relative">
+		<h3 id="high-visibility-required-high-effort">Une grande visibilité exigeait de grands efforts</h3>
+		<a href="https://blog.cloudflare.com/#high-visibility-required-high-effort" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La transition vers un modèle en « patchwork » a exigé de sacrifier bien plus que la défense en profondeur : les entreprises ont perdu la visibilité de ce qui se déroulait sur leurs réseaux et dans leurs applications. Nos clients nous indiquent que la capture et la standardisation des fichiers journaux sont devenues l’un de leurs principaux défis. Ils ont acheté de coûteux outils d’ingestion, d’analyse, de stockage et de données analytiques.</p>
+	<p>Les entreprises se fient désormais à plusieurs solutions ponctuelles, l’un des principaux défis étant devenu la capture et la standardisation des fichiers journaux. L’augmentation de la pression en matière de réglementation et de conformité impose de prioriser la conservation et l’analyse des données. Les solutions de sécurité fragmentées sont devenues un cauchemar au regard de la gestion des données.</p>
+	<div class="flex anchor relative">
+		<h3 id="fixing-issues-relied-on-best-guesses">La résolution des problèmes reposait</h3>
+		<a href="https://blog.cloudflare.com/#fixing-issues-relied-on-best-guesses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>sur les meilleures suppositions</p>
+	<p>Dénuées de visibilité sur ce nouveau modèle de connectivité réseau, les équipes de sécurité étaient contraintes de deviner quels incidents pouvaient se produire. Les organisations qui avaient opté pour un modèle de « supposition de violation » luttaient pour déterminer quel type de violation pouvait se produire, et tentaient de résoudre le problème avec toutes les solutions possibles.</p>
+	<p>Nous parlons avec des entreprises qui achètent de nouveaux services d’analyse et de filtrage, fournis dans des équipements virtuels, pour résoudre des problèmes qu’elles ne sont pas sûres d’avoir. Ces équipes tentent de remédier manuellement à tous les événements imaginables, car elles manquent de visibilité, plutôt que de cibler des événements spécifiques et d’adapter le modèle de sécurité en conséquence.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-cloudflare-one-fit">Comment Cloudflare One s’intègre-t-ilà cette approche ?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-one-fit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Au cours des dernières années, nous avons assemblé les composants de Cloudflare One. Nous avons lancé des produits individuels pour cibler certains de ces problèmes, un à la fois. Nous sommes ravis de présenter notre vision et leur intégration dans Cloudflare One.</p>
+	<div class="flex anchor relative">
+		<h3 id="flexible-data-planes">Plans de données flexibles</h3>
+		<a href="https://blog.cloudflare.com/#flexible-data-planes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare s’exécute comme un proxy inverse. Les clients placent leurs propriétés Internet sur notre réseau, sur lequel ils acheminent également leur public connecté à ces destinations spécifiques. Cloudflare One représente des années de lancements qui permettent à notre réseau de traiter n’importe quel type de trafic circulant dans le sens « avant » ou « arrière ».</p>
+	<p>En 2019, <a href="https://blog.cloudflare.com/1111-warp-better-vpn">nous avons lancé</a> Cloudflare WARP, une application mobile qui préservait la confidentialité du trafic Internet avec une connexion chiffrée à notre réseau, tout en le rendant plus rapide et plus fiable. Nous intégrons désormais cette même technologie dans une version pour entreprise, qui sera lancée cette semaine, permettant de connecter les employés nomades à Cloudflare Gateway.</p>
+	<p>Vos datacenters et bureaux devraient disposer du même avantage. <a href="https://blog.cloudflare.com/magic-transit">Nous avons lancé</a> Magic Transit l’année dernière pour sécuriser vos réseaux contre les attaques sur la couche IP. Notre objectif initial, avec Magic Transit, était de fournir une atténuation des attaques DDoS d’exception aux réseaux sur site. Les attaques DDoS sont une épine persistante dans le pied des opérateurs de réseaux, et Magic Transit permet d’atténuer efficacement le danger qu’elles représentent, sans imposer de compromis en matière de performance. Cette solide capacité d’atténuation des attaques DDoS est la fondation idéale sur laquelle bâtir des fonctions de sécurité de niveau supérieur, qui s’appliquent au trafic circulant déjà sur notre réseau.</p>
+	<p>Plus tôt cette année, nous avons étendu ce modèle lorsque <a href="https://blog.cloudflare.com/cloudflare-network-interconnect">nous avons lancé</a> Cloudflare Network Interconnect (CNI) pour permettre à nos clients d’interconnecter directement les succursales et les datacenters avec Cloudflare. Avec Cloudflare One, nous appliquerons le filtrage sortant à cette même connexion.</p>
+	<p>Cloudflare One ne devrait pas seulement aider votre équipe à utiliser Internet en lui fournissant un réseau d’entreprise : il devrait être plus rapide qu’Internet. Notre réseau est indépendant des opérateurs, exceptionnellement bien connecté et interconnecté et propose le même ensemble de services dans le monde entier. Nous ajoutons à chacune de ces « bretelles d’accès » un routage plus intelligent, reposant sur notre technologie Argo Smart Routing, qui possède la capacité démontrée de réduire de 30 % ou plus la latence dans le monde réel. Sécurité + performance, parce qu’ils sont meilleurs ensemble.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-single-unified-control-plane">Un plan de contrôle unifié et unique</h3>
+		<a href="https://blog.cloudflare.com/#a-single-unified-control-plane" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Lorsque les utilisateurs se connectent à Internet depuis des succursales et des équipements, ils contournent complètement les appareils de pare-feu qui se trouvaient auparavant dans le siège social. Pour suivre le rythme, les entreprises doivent disposer d’un moyen de sécuriser le trafic qui ne réside plus entièrement dans les limites leur réseau. Cloudflare One applique des contrôles de sécurité standard à l’ensemble du trafic, quel que soit le point d’origine de cette connexion ou l’endroit où elle réside dans la pile réseau.</p>
+	<p>Cloudflare Access commence par introduire l’identité sur le réseau de Cloudflare. Les équipes appliquent des filtres en fonction de l’identité et du contexte des connexions entrantes et sortantes. Toutes les connexions, requêtes et réponses sont traitées en proxy par le réseau Cloudflare, quel que soit l’emplacement du serveur ou de l’utilisateur. L’étendue de notre réseau et sa distribution permettent de filtrer et journaliser le trafic de l’entreprise, sans compromettre la performance.</p>
+	<p>Cloudflare Gateway permet de sécuriser les connexions au reste d’Internet. Cloudflare One inspecte le trafic sortant des appareils et des réseaux à la recherche de menaces et d’événements de pertes de données dissimulés à l’intérieur des connexions au niveau de la couche application. Gateway, qui sera lancé prochainement, abaissera ce même niveau de contrôle dans la pile, à la couche transport.</p>
+	<p>Vous devez idéalement disposer du même niveau de contrôle sur la façon dont vos réseaux transmettent le trafic. Nous sommes ravis d’annoncer Magic Firewall, un pare-feu de nouvelle génération pour tout le trafic sortant de vos bureaux et datacenters. Avec Gateway et Magic Firewall, vous pouvez créer une règle une fois seulement et l’exécuter partout, ou vous pouvez adapter les règles à des scénarios d’utilisation spécifiques dans un plan de contrôle unique.</p>
+	<p>Nous savons que certaines attaques ne peuvent pas être filtrées parce qu’elles sont lancées avant que les filtres existants ne puissent les arrêter. Cloudflare Browser, notre technologie de navigateur isolé, offre à votre équipe une interface ultra-résistante contre les menaces pouvant échapper aux filtres connus. Dans le courant de la semaine, nous inviterons les clients à s’inscrire pour participer à la version bêta. Ils pourront ainsi naviguer sur Internet sur le réseau de périphérie de Cloudflare sans risquer que du code ne jaillisse de leur navigateur pour infecter un point de terminaison.</p>
+	<p>Enfin, l’infrastructure PKI qui sécurise votre réseau doit être moderne et plus simple à gérer. Certains de nos clients ont décrit la gestion des certificats comme l’un des principaux problèmes grevant la transition vers un modèle de sécurité plus performant. Cloudflare fonctionne en symbiose, plutôt qu’en opposition, avec les normes de chiffrement modernes telles que TLS 1.3. Cloudflare a simplifié l’ajout en un clic du chiffrement à vos sites Internet. Nous allons intégrer cette facilité de gestion aux fonctions de réseau que vous exécutez sur Cloudflare One.</p>
+	<div class="flex anchor relative">
+		<h3 id="one-place-to-get-your-logs-one-location-for-all-of-your-security-analysis">Un emplacement unique pour vos fichiers journaux,</h3>
+		<a href="https://blog.cloudflare.com/#one-place-to-get-your-logs-one-location-for-all-of-your-security-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>une interface unique pour toutes vos analyses de sécurité</p>
+	<p>Le réseau de Cloudflare traite en moyenne 18 millions de requêtes HTTP par seconde. Nous avons construit des pipelines de journalisation qui permettent à certaines des plus grandes propriétés Internet du monde de capturer et d’analyser leurs fichiers journaux à grande échelle. Cloudflare One étend cette même fonctionnalité.</p>
+	<p>Cloudflare Access et Gateway capturent chaque requête, entrante ou sortante, sans aucune modification du code côté serveur ni configuration avancée côté client. Votre équipe peut exporter ces journaux vers le fournisseur SIEM de votre choix grâce à notre service Cloudflare Logpush, c’est-à-dire le même pipeline qui exporte les événements de requête HTTP à grande échelle pour les sites publics. Magic Transit étend cette capacité de journalisation à des agences et des réseaux entiers, afin de vous assurer de ne jamais perdre votre visibilité, où que vous vous trouviez.</p>
+	<p>Nous allons au-delà de la simple journalisation d'événements. Disponible dès aujourd’hui pour vos sites web, Cloudflare Web Analytics convertit les fichiers journaux en informations. Nous avons l’intention de continuer à étendre cette visibilité au fonctionnement de votre réseau, par ailleurs. Comme Cloudflare a remplacé les « boîtes à pansements » qui exécutaient des fonctions réseau disparates en les unifiant sous la forme d’un réseau de périphérie cohérent et adaptable, nous avons l’intention de faire de même pour l’écosystème fragmenté, difficile d’utilisation et coûteux des données analytiques de sécurité. D’autres informations seront bientôt disponibles.</p>
+	<div class="flex anchor relative">
+		<h3 id="smarter-faster-remediation">Des mesures correctives plus intelligentes</h3>
+		<a href="https://blog.cloudflare.com/#smarter-faster-remediation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>et plus rapides</p>
+	<p>Les données et les données analytiques devraient révéler des événements auxquels une équipe peut remédier. Les systèmes de journalisation permettant de remédier aux problèmes en un clic peuvent être des outils puissants, mais nous voulons automatiser ces mesures correctives.</p>
+	<p>Cloudflare Intrusion Detection System (IDS), qui sera présenté en avant-première exclusive dans le courant de la semaine, analysera de manière proactive votre réseau à la recherche d'événements anormaux et préconisera des actions ou, mieux encore, exécuter des actions pour remédier aux problèmes. Nous prévoyons d’appliquer cette même approche proactive d’analyse et d’application de mesures correctives à Cloudflare Access et Cloudflare Gateway.</p>
+	<div class="flex anchor relative">
+		<h2 id="run-your-network-on-our-globally-scaled-network">Exécutez votre réseau sur notre réseaude portée mondiale</h2>
+		<a href="https://blog.cloudflare.com/#run-your-network-on-our-globally-scaled-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Plus de 25 millions de propriétés Internet comptent sur le réseau de Cloudflare pour atteindre leur public. Plus de 10 % de tous les sites web se connectent via notre proxy inverse, notamment 16 % des sociétés du classement Fortune 1000. Cloudflare accélère le trafic d’une immense partie de l’Internet en fournissant des services depuis des datacenters présents aux quatre coins du monde.</p>
+	<p>Nous fournissons Cloudflare One depuis ces mêmes datacenters. Et surtout, chaque datacenter que nous exploitons fournit le même ensemble de services, qu’il s’agisse de Cloudflare Access, WARP, Magic Transit ou notre pare-feu WAF. À titre d’exemple, lorsque vos employés se connectent via Cloudflare WARP à l’un de nos datacenters, il y a de vraies chances qu’ils n’aient jamais besoin de quitter notre réseau ou ce datacenter pour atteindre le site ou les données dont ils ont besoin. Par conséquent, toute leur expérience d’Internet devient extraordinairement rapide, où qu’ils soient dans le monde.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yKWZHFUbzxe76mjgODPHA/661e95956c79f69b77947e952490f2ba/image2-9.png" alt="" class="kg-image" width="1999" height="1184" loading="lazy">
+
+	</figure>
+	<p>Nous pensons que ce bonus de performance deviendra encore plus significatif à mesure que la navigation migre vers le réseau de périphérie de Cloudflare avec Cloudflare Browser. Les navigateurs isolés exécutés dans les datacenters de Cloudflare peuvent demander des contenus distants de quelques centimètres seulement. De plus, à l’heure où des propriétés web toujours plus nombreuses comptent sur Cloudflare Workers pour exécuter leurs applications, des flux de travail entiers peuvent rester à l’intérieur d’un datacenter, à moins de 100 ms de vos employés.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Et ensuite ?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bien qu’un nombre important de ces fonctionnalités soient disponibles aujourd’hui, nous allons lancer plusieurs nouvelles fonctionnalités dans les jours à venir, dans le cadre de l’événement Cloudflare Zero Trust Week. Restez à l’écoute des annonces qui, chaque jour de la semaine, ajouteront de nouvelles pièces à l’ensemble de fonctionnalités de Cloudflare One.</p>
+</div>

@@ -1,0 +1,109 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors">English</a>、<a href="https://blog.cloudflare.com/fr-fr/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors">Français</a>、<a href="https://blog.cloudflare.com/de-de/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors">Deutsch</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MiYnl8qvRHgb1hghXE6Md/5a770a9ca54b0b3aff04b26f349c4643/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>毎日、インターネット上では、何か悪いこと（しかし、完全にノーマルなこと）が起こります。たとえば、何千もの<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server" target="_blank" rel="noopener noreferrer">オリジンサーバー</a>がダウンし、接続エラーを招き、ユーザーは不満を懐きます。Cloudflareのユーザーは、到達不能なオリジンサーバーからのレスポンスがエラーメッセージとして送られてくるのを毎日4年半以上待ち続けています。しかし、訪問者はエラーページを見たいのではありません。彼らが見たいのはコンテンツなのです！</p>
+	<p>インターネットがより強力で耐障害性が高く、重要な冗長性を持つことを望む人にとって、今の時代は面白いでしょう。CloudflareはAlways Onlineサービスに新しい機能性をもたらすために、Internet Archiveと提携したことを発表いたします。</p>
+	<p>Always Onlineは、当社の顧客Webサイトの保険として機能します。顧客のオリジンがオフラインになったり、タイムアウトしたり、それ以外の方法で中断したりした場合は、Always Onlineが介入し、訪問者にWebページのアーカイブコピーを提供します。<a href="https://archive.org" target="_blank" rel="noopener noreferrer">Internet Archive</a>は、インターネット経由で数十億のWebサイトのスナップショットを保存するサービス、Wayback Machineを運営する非営利団体です。Internet Archiveとの提携により、Cloudflareは到達不能なWebサイトへのレスポンスをシームレスに提供することができ、Internet Archiveは、すべての知識へのアクセスを提供するためにWebをアーカイブするというその使命を継続することができます。</p>
+	<p>Cloudflareダッシュボードで「Always Online」を有効にすると、当社はお客様のホスト名をWeyback Machineと共有し、お客様のWebサイトをアーカイブすることができます。Webサイトのオリジンがダウンしても、CloudflareはInternet Archiveに移動して、サイトの最新アーカイブバージョンを取得できるため、訪問者は引き続きサイトのコンテンツを閲覧することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="trying-to-reach-a-busted-origin">壊れたオリジンへの到達を試みる</h3>
+		<a href="https://blog.cloudflare.com/#trying-to-reach-a-busted-origin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ユーザーがCloudflare Webサイトを訪問すると、ノートパソコン/電話/タブレット/スマート冷蔵庫から、Cloudflareのエッジへとリクエストが送られます。当社のエッジでは、最初にキャッシュされたコンテンツで応答できるかどうかを調べます。リクエストされたコンテンツがキャッシュにない、または有効期限が切れていると判断した場合は、オリジンから新しいコピーを取得します。キャッシュされていない/期限切れのオリジンフェッチの任務を果たすため、キャッシュを更新し、後続のリクエストが訪問者により迅速／安全に提供されるようにします。オリジンに到達できない場合、さらに数回接続を試みて、必要があればオリジンがダウンしていることをマークし、訪問者にエラーページを提供します。エラーページを受け取ることは誰にとっても望ましくはないため、Cloudflareを利用しているWebサイトへの訪問者が、たとえオリジンに困難が伴う場合であっても、何らかのコンテンツを得ることができるように、私たちは本当に懸命に努力しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UQvDJTgMjVKUNJC4CMool/823ee42b3a3faad9910cb90193a10d4c/image3-8.png" alt="" class="kg-image" width="1468" height="522" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="a-brief-history-of-always-online">Always Online の略歴</h3>
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-always-online" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareが10年前に設立されたとき、当社お客様のほとんどは小規模で、頻繁にダウンタイムが発生するホスト上で稼働していました。初期のお客様は、検索エンジンがそのサイトのインデックスを作成しているときに、ホストがダウンしてしまうことを恐れていました。検索エンジンのクローラーは、ダウンしたサイトを非応答として報告し、検索ランキングではサイトの順位が下がってしまいます。Always Onlineはこのような懸念から生まれました。</p>
+	<p><a href="https://blog.cloudflare.com/always-online-because-downtime-sucks">過去10年間に及ぶ</a> Always Online の運用を通じて、シンプルで目立たないツールでインターネットのダウンタイムと戦うことに、お客様とそのユーザーは深く価値を見出してくれることを私達は知りました。いくつかの機能は、何回も書き換えられていますが、当社のコードの他の部分は、時間の経過にも関わらず比較的手つかずのまま残されており、堅牢性の証となっています。たとえば、Always Online では、オリジンに到達不能のため、ページのアーカイブバージョンを提供していることを示すバナーが明確に表示されますが、この透明性はWebサイトの所有者と訪問者の両方に好評です。</p>
+	<p>当社では最近、Always Onlineをより良くするための取り組みをはじめました。当社はお客様が望むものを保存したかったのです。Always Online を通じて利用できるコンテンツの量を増やし、コンテンツを可能な限り新しい状態に保つとともに、オリジンサーバーがダウンしたときのユーザー体験を可能な限りシームレスに維持し、このアーカイブをインターネットをより良い場所にするという目標の達成に向けて使いたいと考えました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PdftwORCurkDNOT3fF0pd/6c4a7657f984ade2be754d04b6eb8587/image1-10.png" alt="" class="kg-image" width="1999" height="1321" loading="lazy">
+
+	</figure>
+	<p>Always Onlineで訪問者が目にするもの</p>
+	<div class="flex anchor relative">
+		<h3 id="enter-the-internet-archive">Internet Archiveに参加する</h3>
+		<a href="https://blog.cloudflare.com/#enter-the-internet-archive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Internet ArchiveのWayback Machineと提携し、次世代のAlways Onlineを実現することで、これらの目標をすべて達成できます。Internet Archiveのミッションは、すべての知識への普遍的なアクセスを提供することです。1996年以来、Internet Archiveの Wayback Machine は、パブリックWebサイトの多くをアーカイブしています。つまり、アーカイブされなければ失われていたであろう数百万のWebサイトやページを保存し、利用できるようにしています。自社のミッションのために、彼らは4680億以上の<a href="http://archive.org/web" target="_blank" rel="noopener noreferrer">Webページ</a>をアーカイブし、情報量に換算すると、45ペタバイト以上をアーカイブしていることになります。</p>
+	<p>Always Online とInternet Archiveとの統合は、Archiveがインターネットに関する記録を拡張するのに役立ちます。Always Online 機能をオプトインするドメインの多くは、Archiveのクローラーによって発見されていなければ、存在していない可能性があります。Archiveは、Cloudflareのお客様のために、Archiveがなければエラーになってしまうコンテンツへのアクセスをシームレスに提供します。</p>
+	<p>つまり、CloudflareはInternet Archiveと提携することで、インターネットをより良く、より強く、誰もが利用できるように変えることができるのです。</p>
+	<blockquote>
+		<p>「_Cloudflare_とのパートナーシップを通じて、このパートナーシップがなければ、特に知る機会もなかったであろう_Web_ページについて学び、そのページをアーカイブしています。そして_Cloudflare_の <i>Always Online</i> サービスと統合することで、それらのページのアーカイブを、アクセスを試みたけれど、ライブ_Web_を介しては利用できなくなった人々に提供することができます」_—Mark Graham_氏、 <i>Internet Archive</i>、<i>Wayback Machine</i>、ディレクター</p>
+	</blockquote>
+	<blockquote>
+		<p>「_Cloudflare_と協力できることをうれしく思います。このパートナーシップが、インターネットに重要な冗長性をもたらし、インターネットをより便利で信頼できるものにするために、当社がさらに歩を進めるよい機会になると考えています。」_—Brewster Kahle_氏、<i>Internet Archive</i>、創設者兼デジタルライブラリアン</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="how-does-the-new-always-online-work-behind-the-scenes">新しいAlways Onlineは舞台裏ではどのように機能しますか？</h3>
+		<a href="https://blog.cloudflare.com/#how-does-the-new-always-online-work-behind-the-scenes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareダッシュボードの新しい Always Online にアップグレードすると、インターネットアーカイブを使用してWebサイトに関するいくつかの基本情報（ホスト名や人気のURLなど）を共有できるため、定期的にWebサイトをクロールしてアーカイブすることができます。この情報の共有とクロールにより、コンテンツはAlways Onlineで利用できるようになり、アーカイブを通じて直接利用できるコンテンツライブラリをさらに充実させることができます。</p>
+	<p>オリジンがダウンしたり、到達不能になった場合、Cloudflare のエッジは 520 から527 の範囲のステータスコードを返します。これは、オリジンへの接続に問題があることを示します。このような場合、Cloudflareは最初にローカルエッジデータセンターを調べて、Webサイト訪問者に提供できるコンテンツの古くなったバージョンまたは有効期限が切れたバージョンがないかどうかを確認します。ローカルキャッシュにバージョンがない場合、CloudflareはInternet Archiveに移動し、サイトの最新アーカイブバージョンを取得し、訪問者にサービスを提供します。その場合、Always Online はアーカイブされたコンテンツをバナーとともに提供し、オリジンに問題があることを訪問者に知らせます。バナーを使用すると、訪問者はワンクリックでオリジンがオンラインに戻ったかどうかを確認できます。オリジンサーバーとの通信を必要とする動的コンテンツは、訪問者（Webアプリケーションやショッピングカートなど）にエラーを表示しますが、多くの場合、基本コンテンツは Always Online で入手できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rEChK9jt95qwILX9qsuki/bb442dd4bb47a9aef0352c84819a76de/image5-5.png" alt="" class="kg-image" width="1232" height="614" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="enabling-the-new-always-online">新しいAlways Onlineを有効にする</h3>
+		<a href="https://blog.cloudflare.com/#enabling-the-new-always-online" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今のところ、古いAlways Onlineサービスは引き続き利用可能ですが、すぐにInternet Archiveと提携したバージョンに完全に移行する予定です。</p>
+	<p>Cloudflareのお客様は、ダッシュボードでAlways Onlineを有効にすることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bPl4B1VGluBuQxJrfgyeE/b2f2c5bee301cf3ff98342c4c8f59a7b/J42AtNZv8xNcyQPPefVywiAGEhJyNbtqEE1pclEjIEwdDKdrNri9IFx8QK21QKo5wZD1B96CplW24pAEXJlpIZJ-LQesFDkcCeyIF3ITXhv-owHH63Az-zIptuJk.png" alt="" class="kg-image" width="1600" height="550" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="learn-more">詳細</h3>
+		<a href="https://blog.cloudflare.com/#learn-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Always Online、およびその仕組みの詳細についてはt、当社のドキュメントをご覧ください。</p>
+		</li>
+		<li>
+			<p>Always Online の使用を開始するには、Cloudflareダッシュボードにログインして「オン」に切り替えてください。</p>
+		</li>
+		<li>
+			<p>Internet Archiveによる当社とのパートナーシップの発表は<a href="http://blog.archive.org/2020/09/17/internet-archive-partners-with-cloudflare-to-help-make-the-web-more-useful-and-reliable" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+		</li>
+		<li>
+			<p>Always Online、またはインターネットのその他の部分に関する改善を支援するには、<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">こちらから</a>ご連絡ください 。</p>
+		</li>
+	</ul>
+</div>

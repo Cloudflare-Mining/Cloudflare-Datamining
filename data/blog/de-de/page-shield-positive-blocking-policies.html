@@ -1,0 +1,259 @@
+<div class="mb2 gray5">Lesezeit: 5&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/page-shield-positive-blocking-policies">English</a>, <a href="https://blog.cloudflare.com/zh-tw/page-shield-positive-blocking-policies">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/page-shield-positive-blocking-policies">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/page-shield-positive-blocking-policies">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/page-shield-positive-blocking-policies">한국어</a>, <a href="https://blog.cloudflare.com/es-es/page-shield-positive-blocking-policies">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/page-shield-positive-blocking-policies">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QqRf8Pp8SpSokNQ9ypFuu/5f1a35b23155f13a1f84e8415211e5c8/page-shield-positive-blocking-policies.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Von Webentwicklungsteams wird erwartet, dass sie Anwendungen mit einer Fülle von Funktionen im Handumdrehen bereitstellen. Zu ihrer Unterstützung gibt es Tausende von vorerstellten JavaScript-Bibliotheken, die mit wenig Aufwand integriert werden können.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72U4mGkIMlR2xtRGMJpNhN/ed196886c95d2b2f27e63c5141df7f22/image3-10.png" alt="Locking down your JavaScript: positive blocking with Page Shield policies" class="kg-image" width="1201" height="675" loading="lazy">
+
+	</figure>
+	<p>Diese Bibliotheken sind jedoch nicht immer mit gehärteten Sicherheitsvorkehrungen ausgestattet, die verhindern, dass der von ihnen bereitgestellte Code von Kriminellen manipuliert wird. Dadurch steigt letztlich das Risiko für die Kompromittierung einer Anwendung.</p>
+	<p>Doch ab sofort ist es leichter, die mit externen JavaScript-Bibliotheken einhergehenden Gefahren einzuhegen. Denn wir fügen unserer clientseitigen Sicherheitslösung eine neue Funktion hinzu: <a href="https://www.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a>-Richtlinien. Damit können Sie jetzt einfach mit dem Durchgehen einer Checkliste sicherstellen, dass nur zugelassene und überprüfte Bibliotheken von Ihrer Anwendung ausgeführt werden.</p>
+	<div class="flex anchor relative">
+		<h2 id="client-side-libraries">Clientseitige Bibliotheken</h2>
+		<a href="https://blog.cloudflare.com/#client-side-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zum Zeitpunkt der Erstellung dieses Texts sind bei dem beliebten JavaScript-Repository <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a> mehr als 4.373 Bibliotheken verfügbar. Diese bieten Zugang zu vorerstellten Funktionen für die Entwicklung von Webanwendungen. Der Screenshot unten zeigt die beliebtesten Bibliotheken der Plattform, darunter <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">React</a>, <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue.js</a> und <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer">Bootstrap</a>. Allein Bootstrap kommt nach Angaben von W3Techs <a href="https://w3techs.com/technologies/overview/javascript_library" target="_blank" rel="noopener noreferrer">bei mehr als einem Fünftel aller Websites zum Einsatz</a>.</p>
+	<p>Neben Bibliotheks-Repositorys wie cdnjs gibt es Tausende von Plugins, die direkt von SaaS-Plattformen bereitgestellt werden, unter anderem von Google, Meta und Microsoft.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5czifSwe8ugZHJ9pjNlLTw/3b121f648aa38c9c141e3979d8b5b17f/image1-14.png" alt="A list of the most popular libraries on cdnjs" class="kg-image" width="1810" height="1250" loading="lazy">
+
+	</figure>
+	<p>Unseren Page Shield-Daten zufolge lädt jede große Unternehmensanwendung Dutzende, wenn nicht Hunderte von verschiedenen Zielen für Analysen, Zahlungen, die Nachverfolgung echter Nutzer, die Konversionsverfolgung, das Kundenbeziehungsmanagement und viele andere Funktionen, die zu den Must-Haves interner Teams gehören, <b>UND</b> stellt darüber hinaus Verbindungen zu diesen her.</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-xmkd{background-color:#EFEFEF;text-align:center;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-xmkd {
+			background-color: #EFEFEF;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-xmkd"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Script hosts</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(JavaScript loaded from...)</span></th>
+				<th class="tg-xmkd"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Connection hosts </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Data sent to...)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hotjar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Prospect One</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OneTrust</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Open JS Foundation</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pinterest</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TikTok</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hotjar</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PayPal</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hCaptcha</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Snapchat</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Fly.io</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">NewRelic</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Skript-Hosts(JavaScript geladen von …)</p>
+	<p>Verbindungs-Hosts(Daten gesendet an …)</p>
+	<p>Google</p>
+	<p>Google</p>
+	<p>Facebook</p>
+	<p>Facebook</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SG4JmBvsppxxCQv3O67L2/f381b9e23b62496555cca45e72dabba0/image5-2.png" alt="Page Shield detecting an active exploit on a customer website" class="kg-image" width="1999" height="393" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xgWKk4Vh8USmts82AWUCH/0d8d436e8418ab236fa39886e3506258/image6-4.png" alt="Connection details indicating the active exploit on a customer website" class="kg-image" width="1700" height="1006" loading="lazy">
+
+	</figure>
+	<p>Cloudflare</p>
+	<p>Microsoft</p>
+	<p>Salesforce</p>
+	<p>Hotjar</p>
+	<p>Prospect One</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tfGiisqgDNNi4fMVnMezY/82e81839fd18fda628bc1047223790ea/image7-1.png" alt="Page Shield’s new policies feature" class="kg-image" width="1999" height="1092" loading="lazy">
+
+	</figure>
+	<p>OneTrust</p>
+	<p>Open JS Foundation</p>
+	<p>Pinterest</p>
+	<p>Microsoft</p>
+	<p>TikTok</p>
+	<p>Hotjar</p>
+	<p>PayPal</p>
+	<p>hCaptcha</p>
+	<p>Snapchat</p>
+	<p>Fly.io</p>
+	<p>NewRelic</p>
+	<p>Letzten Endes ist es für die meisten Unternehmen schwierig, ohne externe JavaScript-Bibliotheken auszukommen.</p>
+	<div class="flex anchor relative">
+		<h2 id="yet-another-vector-for-attackers">Noch ein Angriffsvektor</h2>
+		<a href="https://blog.cloudflare.com/#yet-another-vector-for-attackers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es gibt gute Gründe, externen JavaScript-Code in eine Anwendung einzubetten. Doch die Verbreitung von clientseitigen Bibliotheken, insbesondere bei SaaS-Anbietern, hat verstärkt die Aufmerksamkeit von Kriminellen auf sich gezogen. Diese suchen neue Wege, um Webanwendungen für ihre Zwecke zu missbrauchen. Ein einziger kompromittierter SaaS-Anbieter, der eine clientseitige Bibliothek bereitstellt, kann direkten Zugang zu Tausenden von Anwendungen bieten. Das macht eine „Hacker“-Investition erheblich lohnender.</p>
+	<p>Clientseitige Sicherheitsprobleme sind nichts Neues. Angriffsmethoden wie das „<a href="https://en.wikipedia.org/wiki/Web_skimming" target="_blank" rel="noopener noreferrer">Web-Skimming</a>“, das im Zusammenhang mit Zahlungsseiten auch als „Magecart-Style“ bezeichnet wird, gibt es schon lange. Dennoch konzentrieren sich die Kernprodukte für die Anwendungssicherheit häufig nicht auf den Schutz der Endnutzerdaten, sondern der zugrunde liegenden Webanwendung. Die Folge ist eine große Angriffsfläche, die die meisten Sicherheitsteams einfach nicht im Blick haben. Dieser durch „<a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack" target="_blank" rel="noopener noreferrer">Lieferketten</a>“ verursachte blinde Fleck hat uns zur Entwicklung von <a href="https://blog.cloudflare.com/de-de/introducing-page-shield-de-de">Page Shield</a> veranlasst, der nativen clientseitigen Sicherheitslösung von Cloudflare.</p>
+	<p>Obwohl das Risiko von Lieferkettenangriffen inzwischen allgemein bekannt ist, stellen sie immer noch eine aktive Bedrohung dar. Jeden Monat werden neue Untersuchungen von Anbietern in diesem Bereich veröffentlicht, die auf laufende Angriffskampagnen hinweisen. Das Payment Card Industry Security Standards Council hat mit <a href="https://blog.pcisecuritystandards.org/pci-dss-v4-0-resource-hub" target="_blank" rel="noopener noreferrer">PCI DSS 4.0</a>* neue Anforderungen eingeführt, die Unternehmen zur Verwendung von Systemen und Prozessen für die Bekämpfung von clientseitigen Bedrohungen verpflichten.</p>
+	<p>Page Shield selbst hat bereits erfolgreich Kunden vor laufenden Angriffen auf ihre Anwendungen gewarnt. Der folgende Screenshot etwa zeigt eine aktive bösartige ausgehende Verbindung von einem Magecart-ähnlichen Angriff auf eine E-Commerce-Anwendung eines Kunden.</p>
+	<p>* Die Anforderungen 6.4.3 und 11.6.1 des PCI DSS 4.0 sind nur zwei Beispiele für den Fokus auf clientseitige Sicherheit.</p>
+	<div class="flex anchor relative">
+		<h2 id="reducing-the-attack-surface">Verringerung der Angriffsfläche</h2>
+		<a href="https://blog.cloudflare.com/#reducing-the-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5grJjTZkxtafDfDnKd1t8R/d0735f9410c8b1946663ba1f3d98af93/image4-9.png" alt="Defining the policy scope" class="kg-image" width="1380" height="562" loading="lazy">
+
+	</figure>
+	<p>Page Shield ist darauf ausgelegt, schädliche Aktivitäten in der Client-Umgebung zu erkennen und Alarm zu schlagen. Das ist nach wie vor ein Schwerpunkt, während wir die Erkennungsmöglichkeiten weiter verbessern.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Hc6rVyXxcDfEtIIayEHTF/e6e7fb1108aabbb7db561804f672e486/image2-8.png" alt="Page Shield’s policy suggestions interface" class="kg-image" width="1390" height="1020" loading="lazy">
+
+	</figure>
+	<p>Wir befassen uns außerdem mit einer Erweiterung der Funktionen, um Angreifern die Möglichkeit zu nehmen, eine Anwendung überhaupt erst zu kompromittieren. Kurz gesagt sollen durch das Reduzieren der Angriffsfläche Attacken von vornherein verhindert werden.</p>
+	<p>Heute kündigen geben wir die Einführung unserer ersten wichtigen Funktion in diesem Bereich bekannt: Page Shield-Richtlinien. Diese sieht so aus:</p>
+	<div class="flex anchor relative">
+		<h3 id="positive-blocking-policies">Positive Blockierrichtlinien</h3>
+		<a href="https://blog.cloudflare.com/#positive-blocking-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Durch die Nutzung unserer Position im Protokollstapel als Reverse-Proxy und durch die Verwendung von Page Shield-Richtlinien können Sie nun erzwingen, dass Client-Browser JavaScript-Bibliotheken nur aus einer zuvor genehmigten Liste zulässiger Quellen laden und ausführen, wodurch ein positives Sicherheitsmodell implementiert wird.</p>
+	<p>So kann ein Angreifer – auch wenn es ihm gelingt, ein Skript in eine Seite einzuschleusen – Nutzer nicht kompromittieren, da die Browser das Laden des Skripts verweigern. Gleichzeitig laufen geprüfte Tools ohne Probleme.</p>
+	<p>In Kürze wird es auch möglich sein, in den Richtlinien Datenziele (Verbindungsendpunkte) festzulegen. Man wird nicht nur festlegen können, von wo aus JavaScript-Dateien geladen werden, sondern auch, wohin der Browser Daten senden kann. Auf diese Weise wird das Risiko von „Magecart“-Angriffen drastisch verringert.</p>
+	<div class="flex anchor relative">
+		<h3 id="csps-as-the-core-mechanism">CSPs als zentraler Mechanismus</h3>
+		<a href="https://blog.cloudflare.com/#csps-as-the-core-mechanism" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Page Shield-Richtlinien werden derzeit mit <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank" rel="noopener noreferrer">Content Security Policys</a> (CSPs) implementiert. Diese Funktion wird von allen wichtigen Browsern nativ unterstützt.</p>
+	<p>Bei CSPs handelt es sich um speziell formatierte HTTP-Antwort-Header, die beim Laden einer HTML-Seite hinzugefügt werden. Diese Kopfzeilen können eine oder mehrere Anweisungen enthalten, die dem Browser mitteilen, was er im Kontext der jeweiligen Seite ausführen soll und wie.</p>
+	<p>Ab sofort unterstützen Page Shield-Richtlinien die <code>script-src</code>-Direktive. Mit dieser Direktive können Anwendungseigentümer festlegen, von wo JavaScript-Dateien geladen werden dürfen. In Kürze wird auch die <code>connect-src</code>-Direktive unterstützt werden, die sich ähnlich wie <code>script-src</code> verhält, jedoch angibt, <i>wohin</i> der Browser Daten senden darf.</p>
+	<p>Sehen wir uns ein Beispiel an. Angenommen, wir öffnen die Webseite <code>www.example.com/index.html</code> und der Browser empfängt den folgenden CSP-Header:</p>
+	<p><code>Content-Security-Policy: script-src 'self' *.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js</code></p>
+	<p>Der Header weist den Browser an, das Laden von Skripten (definiert durch die Verwendung der <code>script-src</code>-Direktive) von demselben Hostnamen wie die Seite selbst (definiert durch <code>self</code>) sowie von einer beliebigen Subdomain (<code>*.example.com</code>) zuzulassen. Außerdem werden alle Skripte unter cdnjs und nur ein spezielles Skript für Google Analytics und keine anderen Skripte unter der Google-eigenen Domain zugelassen.</p>
+	<p>So wird sichergestellt, dass ein von einem Angreifer injiziertes Skript von verschiedenen Hosts nicht ausgeführt wird, wodurch die Angriffsfläche drastisch schrumpft.</p>
+	<p>Hätten wir statt <code>Content-Security-Policy</code> einen <code>Content-Security-Policy-Report-Only</code>-Header erhalten, würde die Richtlinie nicht durchgesetzt werden. Die Browser würden dann lediglich Berichte über Verstöße senden, die Sie darüber informieren, was außerhalb der Richtlinie liegt.</p>
+	<p>Dies ist beim Testen hilfreich und bei der Untersuchung neuer Skripte, die zu Ihrer Anwendung hinzugefügt wurden.</p>
+	<p>Zusätzliche Anweisungen sind ebenfalls verfügbar und werden von Page Shield innerhalb der <code>script-src</code>-Direktive unterstützt, um Inline-JavaScript (<code>unsafe-inline</code>) oder normalerweise unsichere Funktionsaufrufe (<code>unsafe-eval</code>) zu blockieren. Diese Direktiven helfen dabei, andere Angriffsarten wie Cross-Site-Scripting-Angriffe (XSS) zu verhindern.</p>
+	<div class="flex anchor relative">
+		<h3 id="making-policy-management-easy">Einfache Richtlinienverwaltung</h3>
+		<a href="https://blog.cloudflare.com/#making-policy-management-easy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CSPs, das den Page Shield-Richtlinien zugrunde liegende System, sind großartig, aber schwer zu verwalten. Je größer die Anwendung, desto komplexer werden die CSPs und desto mehr Nadelöhre entstehen für die Anwendungsentwicklungsteams. Das führt dazu, dass CSPs unwirksam werden, weil Sicherheitsteams die Liste der zulässigen Hosts so stark ausweiten, dass dadurch ihr Sinn und Zweck infrage gestellt wird.</p>
+	<p>Die Verwaltung von Richtlinien zu vereinfachen und sicherzustellen, dass sie effektiv sind, war eines der Hauptziele unseres Entwicklungsprozesses. Das hat uns dazu bewogen, eine Vorschlagsfunktion einzurichten.</p>
+	<p>Bei der Bereitstellung einer Richtlinie muss zunächst entschieden werden, <i>wo</i> sie angewendet werden soll. Typische Beispiele sind womöglich nur der Checkout-Flow oder die Verwaltungsseiten. Dies geschieht mithilfe der <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer">Wirefilter-Syntax</a>, auf die auch die <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF von Cloudflare</a> zurückgreift.</p>
+	<p>Sobald der Filter unter Verwendung der bereits von Page Shield erhobenen Daten spezifiziert ist, stellt die Schnittstelle eine Liste mit vorgeschlagenen Richtlinienwerten bereit. Mit dieser ist es ein Kinderspiel, die einfachste und effektivste Richtlinie für Ihre Anwendung zu erstellen. Sie brauchen sich keine Gedanken über die Syntax zu machen, denn die Vorschau der Richtlinie wird vor der Bestätigung angezeigt.</p>
+	<p>Und schließlich können Richtlinien sowohl als „report only/log“ (nur melden/protokollieren) als auch als „enforce/allow“ (erzwingen/erlauben) eingesetzt werden, sodass Sie nach Bedarf kontrollieren und testen können.</p>
+	<p>Wir stehen kurz vor der Fertigstellung unseres Warnsystems, dass Sie alarmieren wird, wenn wir einen Anstieg von Meldungen über Verstöße registrieren. Auf diese Weise können Sie ganz einfach zur Richtlinienerstellung zurückkehren und diese mit jedem neuen Skript aktualisieren, das von Ihrem Entwicklungsteam hinzugefügt wurde.</p>
+	<div class="flex anchor relative">
+		<h3 id="positive-blocking-policies-are-not-enough">Positive Blockierungsmaßnahmen sind unzureichend</h3>
+		<a href="https://blog.cloudflare.com/#positive-blocking-policies-are-not-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nicht vergessen werden sollte, dass CSPs keine Sicherheit oder Erkennung schädlicher Aktivitäten innerhalb der Liste der zugelassenen Endpunkte bieten. Sie sollen die Wahrscheinlichkeit eines Angriffs verringern, indem sie die Angriffsfläche reduzieren. Deshalb wird die automatische Erkennung bösartiger Aktivitäten von Page Shield auch weiterhin im Hintergrund funktionieren, unabhängig von der Anwendung einer Richtlinie.</p>
+	<div class="flex anchor relative">
+		<h2 id="secure-your-end-user-data-today">Endnutzerdaten noch heute absichern</h2>
+		<a href="https://blog.cloudflare.com/#secure-your-end-user-data-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Alle zahlenden Cloudflare-Kunden haben jetzt Zugang zu einem Teil der <a href="https://www.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a>-Funktionen. Die Aktivierung des Seitenschutzes ist so einfach wie ein Klick auf eine Schaltfläche. Rufen Sie <b>Sicherheit</b> &gt; <b>Page Shield</b> auf und probieren Sie es aus!</p>
+	<p>Wenn Sie Enterprise-Kunde sind und sich für Page Shield-Richtlinien interessieren, wenden Sie sich an Ihre/n Ansprechpartner/in bei uns, damit wir sämtliche Funktionen für Sie freischalten.</p>
+</div>

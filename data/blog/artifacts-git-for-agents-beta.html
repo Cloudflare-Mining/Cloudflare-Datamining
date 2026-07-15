@@ -1,294 +1,188 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-ha-ns-cn/artifacts-git-for-agents-beta"></a>, <a href="https://blog.cloudflare.com/fr-fr/artifacts-git-for-agents-beta">Français</a>, <a href="https://blog.cloudflare.com/de-de/artifacts-git-for-agents-beta">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/artifacts-git-for-agents-beta">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/artifacts-git-for-agents-beta">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/artifacts-git-for-agents-beta">한국어</a>, <a href="https://blog.cloudflare.com/es-la/artifacts-git-for-agents-beta">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/es-es/artifacts-git-for-agents-beta">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/artifacts-git-for-agents-beta">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZ163MhASDRQW86DQm86r/2e89a01820f1b0a87af22d18208f470c/BLOG-3269_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Agents have changed how we think about source control, file systems, and persisting state. Developers and agents are generating more code than ever — more code will be written over the next 5 years than in all of programming history — and it’s driven an order-of-magnitude change in the scale of the systems needed to meet this demand. Source control platforms are especially struggling here: they were built to meet the needs of humans, not a 10x change in volume driven by agents who never sleep, can work on several issues at once, and never tire.</p>
-	<p>We think there’s a need for a new primitive: a distributed, versioned filesystem that’s built for agents first and foremost, and that can serve the types of applications that are being built today.</p>
-	<p>We’re calling this Artifacts: a versioned file system that speaks Git. You can create repositories programmatically, alongside your agents, sandboxes, Workers, or any other compute paradigm, and connect to it from any regular Git client.</p>
-	<p>Want to give every agent session a repo? Artifacts can do it. Every sandbox instance? Also Artifacts. Want to create 10,000 forks from a known-good starting point? You guessed it: Artifacts again. Artifacts exposes a REST API and native Workers API for creating repositories, generating credentials, and commits for environments where a Git client isn’t the right fit (i.e. in any serverless function).</p>
-	<p>Artifacts is available in private beta and we’re aiming to open this up as a public beta by early May.</p>
-	<pre class="language-Typescript"><code class="language-Typescript">// Create a repo
-const repo = await env.AGENT_REPOS.create(name)
-// Pass back the token &amp; remote to your agent
-return { repo.remote, repo.token }</code></pre>
-
-	<pre class="language-Shell"><code class="language-Shell"># Clone it and use it like any regular git remote
-$ git clone https://x:${TOKEN}@123def456abc.artifacts.cloudflare.net/git/repo-13194.git
-</code></pre>
-	<p>That’s it. A bare repo, ready to go, created on the fly, that any git client can operate it against.</p>
-	<p>And if you want to bootstrap an Artifacts repo from an existing git repository so that your agent can work on it independently and push independent changes, you can do that too with .import():</p>
-	<pre class="language-Typescript"><code class="language-Typescript">interface Env {
-  ARTIFACTS: Artifacts
-}
-
-export default {
-  async fetch(request: Request, env: Env) {
-    // Import from GitHub
-    const { remote, token } = await env.ARTIFACTS.import({
-      source: {
-        url: "https://github.com/cloudflare/workers-sdk",
-        branch: "main",
-      },
-      target: {
-        name: "workers-sdk",
-      },
-    })
-
-    // Get a handle to the imported repo
-    const repo = await env.ARTIFACTS.get("workers-sdk")
-
-    // Fork to an isolated, read-only copy
-    const fork = await repo.fork("workers-sdk-review", {
-      readOnly: true,
-    })
-
-    return Response.json({ remote: fork.remote, token: fork.token })
-  },
-}</code></pre>
-	<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Check out the documentation</u></a> to get started, or if you want to understand how Artifacts is being used, how it was built, and how it works under the hood: read on.</p>
-	<div class="flex anchor relative">
-		<h2 id="why-git-whats-a-versioned-file-system">Why Git? What’s a versioned file system?</h2>
-		<a href="https://blog.cloudflare.com/#why-git-whats-a-versioned-file-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Agents know Git. It’s deep in the training data of most models. The happy path <i>and </i>the edge cases are well known to agents, and code-optimized models (and/or harnesses) are particularly good at using git.</p>
-	<p>Further, Git’s data model is not only good for source control, but for <i>anything</i> where you need to track state, time travel, and persist large amounts of small data. Code, config, session prompts and agent history: all of these are things (“objects”) that you often want to store in small chunks (“commits”) and be able to revert or otherwise roll back to (“history”).&nbsp;</p>
-	<p>We could have invented an entirely new, bespoke protocol… but then you have the bootstrap problem. AI models don’t know it, so you have to distribute skills, or a CLI, or hope that users are plugged into your docs MCP… all of that adds friction.
-
-		If we can just give agents an authenticated, secure HTTPS Git remote URL and have them operate as if it were a Git repo, though? That turns out to work pretty well. And for non-Git-speaking clients — such as a Cloudflare Worker, a Lambda function, or a Node.js app — we’ve exposed a REST API and (soon) language-specific SDKs. Those clients can also use <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>, but in many cases a simpler TypeScript API can reduce the API surface needed.</p>
-	<div class="flex anchor relative">
-		<h3 id="not-just-for-source-control">Not just for source control</h3>
-		<a href="https://blog.cloudflare.com/#not-just-for-source-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Artifacts’ Git API might make you think it’s just for source control, but it turns out that the Git API and data model is a powerful way to persist state in a way that allows you to fork, time-travel and diff state for <i>any</i> data.</p>
-	<p>Inside Cloudflare, we’re using Artifacts for our internal agents: automatically persisting the current state of the filesystem <i>and</i> the session history in a per-session Artifacts repo. This enables us to:</p>
-	<ul>
-		<li>
-			<p>Persist sandbox state without having to provision (and keep) block storage around.</p>
-		</li>
-		<li>
-			<p>Share sessions with others and allow them to time-travel back through both session (prompt) state <i>and</i> file state, irrespective of whether there were commits to the “actual” repository (source control).</p>
-		</li>
-		<li>
-			<p>And the best: <i>fork</i> a session from any point, allowing our team to share sessions with a co-worker and have them pick it up from them. Debugging something and want another set of eyes? Send a URL and fork it. Want to riff on an API? Have a co-worker fork it and pick up from where you left off.</p>
-		</li>
-	</ul>
-	<p>We’ve also spoken to teams who want to use Artifacts in cases where the Git protocol isn’t a requirement at all, but the semantics (reverting, cloning, diffing) <i>are</i>. Storing per-customer config as part of your product, and want the ability to roll back? Artifacts can be a good representation of this.</p>
-	<p>We’re excited to see teams explore the non-Git use-cases around Artifacts just as much as the Git-focused ones.</p>
-	<div class="flex anchor relative">
-		<h2 id="under-the-hood">Under the hood</h2>
-		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Artifacts are built on top of Durable Objects. The ability to create millions (or tens of millions+) of instances of stateful, isolated compute is inherent to how Durable Objects work today, and that’s exactly what we needed for supporting millions of Git repos per namespace.</p>
-	<p>Major League Baseball (for live game fan-out), Confluence Whiteboards, and our own <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> use Durable Objects under the hood at significant scale, and so we’re building this on a primitive that we’ve had in production for some time.</p>
-	<p>What we did need, however, was a Git server implementation that could run on Cloudflare Workers. It needed to be small, as complete as possible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>), and efficient. So we built one in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>, and compiled it to Wasm.</p>
-	<p>Why did we use Zig? Three reasons:</p>
-	<ol>
-		<li>
-			<p>&nbsp;The entire git protocol engine is written in pure Zig (no libc), compiled to a ~100KB WASM binary (with room for optimization!). It implements SHA-1, zlib inflate/deflate, delta encoding/decoding, pack parsing, and the full git smart HTTP protocol — all from scratch, with zero external dependencies other than the standard library.</p>
-		</li>
-		<li>
-			<p>&nbsp;Zig gives us&nbsp; manual control over memory allocation which is important in constrained environments like Durable Objects. The Zig Build System lets us easily share&nbsp; code between the WASM runtime (production) and native builds (testing against libgit2 for correctness verification).</p>
-		</li>
-		<li>
-			<p>The WASM module communicates with the JS host via a thin callback interface: 11 host-imported functions for storage operations (host_get_object, host_put_object, etc.) and one for streaming output (host_emit_bytes). The WASM side is fully testable in isolation.</p>
-		</li>
-	</ol>
-	<p>Under the hood, Artifacts also uses R2 (for snapshots) and KV (for tracking auth tokens):</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35SxJbQfntIscpotc0GBt8/48ae11213d7483c9b488321baacf78e7/BLOG-3269_2.png" alt="BLOG-3269 2" class="kg-image" width="1800" height="1000" loading="lazy">
-	</figure>
-	<p><sup><code><i>How Artifacts works (Workers, Durable Objects, and WebAssembly)</i></code></sup></p>
-	<p>A Worker acts as the front-end, handling authentication &amp; authorization, key metrics (errors, latency) and looking up each Artifacts repository (Durable Object) on the fly.&nbsp;</p>
-	<p>Specifically:</p>
-	<ul>
-		<li>
-			<p>Files are stored in the underlying Durable Object’s SQLite database.</p>
-			<ul>
-				<li>
-					<p>Durable Object storage has a 2MB max row size, so large Git objects are chunked and stored across multiple rows.</p>
-				</li>
-				<li>
-					<p>We make use of the sync KV API (state.storage.kv)&nbsp; which is backed by SQLite under the hood.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p>&nbsp;DOs have ~128MB memory limits: this means we can spawn tens of millions of them (they’re fast and light) but have to work within those limits.</p>
-			<ul>
-				<li>
-					<p>We make heavy use of streaming in both the fetch and push paths, directly returning a `ReadableStream&lt;Uint8Array&gt;` built from the raw WASM output chunks.</p>
-				</li>
-				<li>
-					<p>We avoid calculating our own git deltas, instead,&nbsp; the raw deltas and base hashes are persisted alongside the resolved object. On fetch, if the requesting client already has the base object, Zig emits the delta instead of the full object, which saves bandwidth <i>and</i> memory.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p>Support for both v1 and v2 of the git protocol.</p>
-			<ul>
-				<li>
-					<p>We support capabilities including ls-refs, shallow clones (deepen, deepen-since, deepen-relative), and incremental fetch with have/want negotiation.</p>
-				</li>
-				<li>
-					<p>We have an extensive test suite with conformance tests against git clients and verification tests against a libgit2 server designed to validate protocol support.</p>
-				</li>
-			</ul>
-		</li>
-	</ul>
-	<p>On top of this, we have native support for <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>. Artifacts is designed to be agent-first, and notes enable agents to add notes (metadata) to Git objects. This includes prompts, agent attribution and other metadata that can be read/written from the repo without mutating the objects themselves.</p>
-	<div class="flex anchor relative">
-		<h2 id="big-repos-big-problems-meet-artifactfs">Big repos, big problems? Meet ArtifactFS.</h2>
-		<a href="https://blog.cloudflare.com/#big-repos-big-problems-meet-artifactfs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Most repos aren’t that big, and Git is <a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>designed to be extremely efficient</u></a> in terms of storage: most repositories take only a few seconds to clone at most, and that’s dominated by network setup time, auth, and <a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>checksumming</u></a>. In most agent or sandbox scenarios, that’s workable: just clone the repo as the sandbox starts and get to work.</p>
-	<p>But what about a multi-GB repository and/or repos with millions of objects? How can we clone that repo quickly, without blocking the agent’s ability to get to work for minutes and consuming compute?</p>
-	<p>A popular web framework (at 2.4GB and with a long history!) takes close to 2 minutes to clone. A shallow clone is faster, but not enough to get down to single digit seconds, and we don’t always want to omit history (agents find it useful).</p>
-	<p>Can we get large repos down to ~10-15 seconds so that our agent can get to work? Well, yes: with a few tricks.</p>
-	<p>As part of our launch of Artifacts, <a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>we’re open-sourcing ArtifactFS</u></a>, a filesystem driver designed to mount large Git repos as quickly as possible, hydrating file contents on the fly instead of blocking on the initial clone. It's ideal for agents, sandboxes, containers and other use cases where startup time is critical. If you can shave ~90-100 seconds off your sandbox startup time for every large repo, and you’re running 10,000 of those sandbox jobs per month: that’s 2,778 sandbox hours saved.</p>
-	<p>You can think of ArtifactFS as “Git clone but async”:</p>
-	<ul>
-		<li>
-			<p>ArtifactFS runs a blobless clone of a git repository: it fetches the file tree and refs, but not the file contents. It can do that during sandbox startup, which then allows your agent harness to get to work.</p>
-		</li>
-		<li>
-			<p>In the background, it starts to hydrate (download) file contents concurrently via a lightweight daemon.</p>
-		</li>
-		<li>
-			<p>It prioritizes files that agents typically want to operate on first: package manifests (<code>package.json, go.mod</code>), configuration files, and code, deprioritizing binary blobs (images, executables and other non-text-files) where possible so that agents can scan the file tree as the files themselves are hydrated.</p>
-		</li>
-		<li>
-			<p>If a file isn’t fully hydrated when the agent tries to read it, the read will block until it has.</p>
-		</li>
-	</ul>
-	<p>The filesystem does not attempt to “sync” files back to the remote repository: with thousands or millions of objects, that’s typically very slow, and since we’re speaking git, we don’t need to. Your agent just needs to commit and push, as it would with any repository. No new APIs to learn.</p>
-	<p>Importantly, ArtifactFS works with any Git remote, not just our own Artifacts. If you’re cloning large repos from GitHub, GitLab, or self-hosted Git infrastructure: you can still use ArtifactFS.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-coming">What’s coming?</h2>
-		<a href="https://blog.cloudflare.com/#whats-coming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our release today is just the beta, and we’re already working on a number of features that you’ll see land over the next few weeks:</p>
-	<ul>
-		<li>
-			<p>Expanding the <a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>available metrics</u></a> we expose. Today we’re shipping metrics for key operations counts per namespace, repo and stored bytes per repo, so that managing millions of Artifacts isn’t toilsome.</p>
-		</li>
-		<li>
-			<p>Support for <a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>Event Subscriptions</u></a> for repo-level events so that we can emit events on pushes, pulls, clones, and forks to any repository within a namespace. This will also allow you to consume events, write webhooks, and use those events to notify end-users, drive lifecycle events within your products, and/or run post-push jobs (like CI/CD).</p>
-		</li>
-		<li>
-			<p>Native TypeScript, Go and Python client SDKs for interacting with the Artifacts API</p>
-		</li>
-		<li>
-			<p>Repo-level search APIs and namespace-wide search APIs, e.g. “find all the repos with a <code>package.json</code> file”.&nbsp;</p>
-		</li>
-	</ul>
-	<p>We’re also planning an API for <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>, allowing you to run CI/CD jobs on any agent-driven workflow.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-will-it-cost-me">What will it cost me?</h2>
-		<a href="https://blog.cloudflare.com/#what-will-it-cost-me" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re still early with Artifacts, but want our pricing to work at agent-scale: it needs to be cost effective to have millions of repos, unused (or rarely used) repos shouldn’t be a drag, and our pricing should match the massively-single-tenant nature of agents.</p>
-	<p>You also shouldn’t have to think about whether a repo is going to be used or not, whether it’s hot or cold, and/or whether an agent is going to wake it up. We’ll charge you for the storage you consume and the operations (e.g. clones, forks, pushes &amp; pulls) against each repo.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
+<p>Agents have changed how we think about source control, file systems, and persisting state. Developers and agents are generating more code than ever — more code will be written over the next 5 years than in all of programming history — and it’s driven an order-of-magnitude change in the scale of the systems needed to meet this demand. Source control platforms are especially struggling here: they were built to meet the needs of humans, not a 10x change in volume driven by agents who never sleep, can work on several issues at once, and never tire.</p>
+<p>We think there’s a need for a new primitive: a distributed, versioned filesystem that’s built for agents first and foremost, and that can serve the types of applications that are being built today.</p>
+<p>We’re calling this Artifacts: a versioned file system that speaks Git. You can create repositories programmatically, alongside your agents, sandboxes, Workers, or any other compute paradigm, and connect to it from any regular Git client.</p>
+<p>Want to give every agent session a repo? Artifacts can do it. Every sandbox instance? Also Artifacts. Want to create 10,000 forks from a known-good starting point? You guessed it: Artifacts again. Artifacts exposes a REST API and native Workers API for creating repositories, generating credentials, and commits for environments where a Git client isn’t the right fit (i.e. in any serverless function).</p>
+<p>Artifacts is available in private beta and we’re aiming to open this up as a public beta by early May.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a repo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AGENT_REPOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(name)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Pass back the token &amp; remote to your agent</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> { repo.remote, repo.token }</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Clone it and use it like any regular git remote</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://x:</span><span class="sk-24292e-fff">${TOKEN}</span><span class="sk-032f62-99ffe4">@123def456abc.artifacts.cloudflare.net/git/repo-13194.git</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>That’s it. A bare repo, ready to go, created on the fly, that any git client can operate it against.</p>
+<p>And if you want to bootstrap an Artifacts repo from an existing git repository so that your agent can work on it independently and push independent changes, you can do that too with .import():</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  ARTIFACTS</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Artifacts</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Import from GitHub</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">remote</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">token</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">import</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      source: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        url: </span><span class="sk-032f62-99ffe4">"https://github.com/cloudflare/workers-sdk"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        branch: </span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      target: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">"workers-sdk"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get a handle to the imported repo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workers-sdk"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Fork to an isolated, read-only copy</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> fork</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> repo.</span><span class="sk-6f42c1-ffc799">fork</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workers-sdk-review"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      readOnly: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ remote: fork.remote, token: fork.token })</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Check out the documentation</u></a> to get started, or if you want to understand how Artifacts is being used, how it was built, and how it works under the hood: read on.</p>
+<h2>Why Git? What’s a versioned file system?</h2>
+<p>Agents know Git. It’s deep in the training data of most models. The happy path <em>and </em>the edge cases are well known to agents, and code-optimized models (and/or harnesses) are particularly good at using git.</p>
+<p>Further, Git’s data model is not only good for source control, but for <em>anything</em> where you need to track state, time travel, and persist large amounts of small data. Code, config, session prompts and agent history: all of these are things (“objects”) that you often want to store in small chunks (“commits”) and be able to revert or otherwise roll back to (“history”).&nbsp;</p>
+<p>We could have invented an entirely new, bespoke protocol… but then you have the bootstrap problem. AI models don’t know it, so you have to distribute skills, or a CLI, or hope that users are plugged into your docs MCP… all of that adds friction.<br><br>If we can just give agents an authenticated, secure HTTPS Git remote URL and have them operate as if it were a Git repo, though? That turns out to work pretty well. And for non-Git-speaking clients — such as a Cloudflare Worker, a Lambda function, or a Node.js app — we’ve exposed a REST API and (soon) language-specific SDKs. Those clients can also use <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>, but in many cases a simpler TypeScript API can reduce the API surface needed.</p>
+<h3>Not just for source control</h3>
+<p>Artifacts’ Git API might make you think it’s just for source control, but it turns out that the Git API and data model is a powerful way to persist state in a way that allows you to fork, time-travel and diff state for <em>any</em> data.</p>
+<p>Inside Cloudflare, we’re using Artifacts for our internal agents: automatically persisting the current state of the filesystem <em>and</em> the session history in a per-session Artifacts repo. This enables us to:</p>
+<ul>
+	<li>Persist sandbox state without having to provision (and keep) block storage around.</li>
+	<li>Share sessions with others and allow them to time-travel back through both session (prompt) state <em>and</em> file state, irrespective of whether there were commits to the “actual” repository (source control).</li>
+	<li>And the best: <em>fork</em> a session from any point, allowing our team to share sessions with a co-worker and have them pick it up from them. Debugging something and want another set of eyes? Send a URL and fork it. Want to riff on an API? Have a co-worker fork it and pick up from where you left off.</li>
+</ul>
+<p>We’ve also spoken to teams who want to use Artifacts in cases where the Git protocol isn’t a requirement at all, but the semantics (reverting, cloning, diffing) <em>are</em>. Storing per-customer config as part of your product, and want the ability to roll back? Artifacts can be a good representation of this.</p>
+<p>We’re excited to see teams explore the non-Git use-cases around Artifacts just as much as the Git-focused ones.</p>
+<h2>Under the hood</h2>
+<p>Artifacts are built on top of Durable Objects. The ability to create millions (or tens of millions+) of instances of stateful, isolated compute is inherent to how Durable Objects work today, and that’s exactly what we needed for supporting millions of Git repos per namespace.</p>
+<p>Major League Baseball (for live game fan-out), Confluence Whiteboards, and our own <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> use Durable Objects under the hood at significant scale, and so we’re building this on a primitive that we’ve had in production for some time.</p>
+<p>What we did need, however, was a Git server implementation that could run on Cloudflare Workers. It needed to be small, as complete as possible, extensible (<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>notes</u></a>, <a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>), and efficient. So we built one in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a>, and compiled it to Wasm.</p>
+<p>Why did we use Zig? Three reasons:</p>
+<ol>
+	<li>&nbsp;The entire git protocol engine is written in pure Zig (no libc), compiled to a ~100KB WASM binary (with room for optimization!). It implements SHA-1, zlib inflate/deflate, delta encoding/decoding, pack parsing, and the full git smart HTTP protocol — all from scratch, with zero external dependencies other than the standard library.</li>
+	<li>&nbsp;Zig gives us&nbsp; manual control over memory allocation which is important in constrained environments like Durable Objects. The Zig Build System lets us easily share&nbsp; code between the WASM runtime (production) and native builds (testing against libgit2 for correctness verification).</li>
+	<li>The WASM module communicates with the JS host via a thin callback interface: 11 host-imported functions for storage operations (host_get_object, host_put_object, etc.) and one for streaming output (host_emit_bytes). The WASM side is fully testable in isolation.</li>
+</ol>
+<p>Under the hood, Artifacts also uses R2 (for snapshots) and KV (for tracking auth tokens):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3269 2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><span data-portabletext-unknown="mark"><em><code>How Artifacts works (Workers, Durable Objects, and WebAssembly)</code></em></span></p>
+<p>A Worker acts as the front-end, handling authentication &amp; authorization, key metrics (errors, latency) and looking up each Artifacts repository (Durable Object) on the fly.&nbsp;</p>
+<p>Specifically:</p>
+<ul>
+	<li>Files are stored in the underlying Durable Object’s SQLite database.<ul>
+			<li>Durable Object storage has a 2MB max row size, so large Git objects are chunked and stored across multiple rows.</li>
+			<li>We make use of the sync KV API (state.storage.kv)&nbsp; which is backed by SQLite under the hood.</li>
+		</ul>
+	</li>
+	<li>&nbsp;DOs have ~128MB memory limits: this means we can spawn tens of millions of them (they’re fast and light) but have to work within those limits.<ul>
+			<li>We make heavy use of streaming in both the fetch and push paths, directly returning a `ReadableStream&lt;Uint8Array&gt;` built from the raw WASM output chunks.</li>
+			<li>We avoid calculating our own git deltas, instead,&nbsp; the raw deltas and base hashes are persisted alongside the resolved object. On fetch, if the requesting client already has the base object, Zig emits the delta instead of the full object, which saves bandwidth <em>and</em> memory.</li>
+		</ul>
+	</li>
+	<li>Support for both v1 and v2 of the git protocol.<ul>
+			<li>We support capabilities including ls-refs, shallow clones (deepen, deepen-since, deepen-relative), and incremental fetch with have/want negotiation.</li>
+			<li>We have an extensive test suite with conformance tests against git clients and verification tests against a libgit2 server designed to validate protocol support.</li>
+		</ul>
+	</li>
+</ul>
+<p>On top of this, we have native support for <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>. Artifacts is designed to be agent-first, and notes enable agents to add notes (metadata) to Git objects. This includes prompts, agent attribution and other metadata that can be read/written from the repo without mutating the objects themselves.</p>
+<h2>Big repos, big problems? Meet ArtifactFS.</h2>
+<p>Most repos aren’t that big, and Git is <a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>designed to be extremely efficient</u></a> in terms of storage: most repositories take only a few seconds to clone at most, and that’s dominated by network setup time, auth, and <a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>checksumming</u></a>. In most agent or sandbox scenarios, that’s workable: just clone the repo as the sandbox starts and get to work.</p>
+<p>But what about a multi-GB repository and/or repos with millions of objects? How can we clone that repo quickly, without blocking the agent’s ability to get to work for minutes and consuming compute?</p>
+<p>A popular web framework (at 2.4GB and with a long history!) takes close to 2 minutes to clone. A shallow clone is faster, but not enough to get down to single digit seconds, and we don’t always want to omit history (agents find it useful).</p>
+<p>Can we get large repos down to ~10-15 seconds so that our agent can get to work? Well, yes: with a few tricks.</p>
+<p>As part of our launch of Artifacts, <a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>we’re open-sourcing ArtifactFS</u></a>, a filesystem driver designed to mount large Git repos as quickly as possible, hydrating file contents on the fly instead of blocking on the initial clone. It's ideal for agents, sandboxes, containers and other use cases where startup time is critical. If you can shave ~90-100 seconds off your sandbox startup time for every large repo, and you’re running 10,000 of those sandbox jobs per month: that’s 2,778 sandbox hours saved.</p>
+<p>You can think of ArtifactFS as “Git clone but async”:</p>
+<ul>
+	<li>ArtifactFS runs a blobless clone of a git repository: it fetches the file tree and refs, but not the file contents. It can do that during sandbox startup, which then allows your agent harness to get to work.</li>
+	<li>In the background, it starts to hydrate (download) file contents concurrently via a lightweight daemon.</li>
+	<li>It prioritizes files that agents typically want to operate on first: package manifests (<code>package.json, go.mod</code>), configuration files, and code, deprioritizing binary blobs (images, executables and other non-text-files) where possible so that agents can scan the file tree as the files themselves are hydrated.</li>
+	<li>If a file isn’t fully hydrated when the agent tries to read it, the read will block until it has.</li>
+</ul>
+<p>The filesystem does not attempt to “sync” files back to the remote repository: with thousands or millions of objects, that’s typically very slow, and since we’re speaking git, we don’t need to. Your agent just needs to commit and push, as it would with any repository. No new APIs to learn.</p>
+<p>Importantly, ArtifactFS works with any Git remote, not just our own Artifacts. If you’re cloning large repos from GitHub, GitLab, or self-hosted Git infrastructure: you can still use ArtifactFS.</p>
+<h2>What’s coming?</h2>
+<p>Our release today is just the beta, and we’re already working on a number of features that you’ll see land over the next few weeks:</p>
+<ul>
+	<li>Expanding the <a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>available metrics</u></a> we expose. Today we’re shipping metrics for key operations counts per namespace, repo and stored bytes per repo, so that managing millions of Artifacts isn’t toilsome.</li>
+	<li>Support for <a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>Event Subscriptions</u></a> for repo-level events so that we can emit events on pushes, pulls, clones, and forks to any repository within a namespace. This will also allow you to consume events, write webhooks, and use those events to notify end-users, drive lifecycle events within your products, and/or run post-push jobs (like CI/CD).</li>
+	<li>Native TypeScript, Go and Python client SDKs for interacting with the Artifacts API</li>
+	<li>Repo-level search APIs and namespace-wide search APIs, e.g. “find all the repos with a <code>package.json</code> file”.&nbsp;</li>
+</ul>
+<p>We’re also planning an API for <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>, allowing you to run CI/CD jobs on any agent-driven workflow.</p>
+<h2>What will it cost me?</h2>
+<p>We’re still early with Artifacts, but want our pricing to work at agent-scale: it needs to be cost effective to have millions of repos, unused (or rarely used) repos shouldn’t be a drag, and our pricing should match the massively-single-tenant nature of agents.</p>
+<p>You also shouldn’t have to think about whether a repo is going to be used or not, whether it’s hot or cold, and/or whether an agent is going to wake it up. We’ll charge you for the storage you consume and the operations (e.g. clones, forks, pushes &amp; pulls) against each repo.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
 					<p></p>
 				</th>
-				<th>
-					<p><b>$/unit</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>$/unit</p>
 				</th>
-				<th>
-					<p><b>Included</b></p>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Included</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Operations</b></p>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Operations</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>$0.15 per 1,000 operations</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>First 10k included (per month)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Storage</b></p>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Storage</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>$0.50/GB-mo</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>First 1GB included.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Big, busy repos will cost more than smaller, less-often-used repos, whether you have 1,000, 100,000, or 10 million of them.</p>
-	<p>We’ll also be bringing Artifacts to the Workers Free plan (with some fair limits) as the beta progresses, and we’ll provide updates throughout the beta should this pricing change and ahead of billing any usage.</p>
-	<div class="flex anchor relative">
-		<h2 id="where-do-i-start">Where do I start?&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#where-do-i-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
+</div>
+<p>Big, busy repos will cost more than smaller, less-often-used repos, whether you have 1,000, 100,000, or 10 million of them.</p>
+<p>We’ll also be bringing Artifacts to the Workers Free plan (with some fair limits) as the beta progresses, and we’ll provide updates throughout the beta should this pricing change and ahead of billing any usage.</p>
+<h2>Where do I start?&nbsp;</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3269 3"></div>
+</figure>
+<p>Artifacts is launching in private beta, and we expect public beta to be ready in early May (2026, to be clear!). We’ll be allowing customers in progressively over the next few weeks, and <a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>you can register interest for the private beta</u></a> directly.</p>
+<p>In the meantime, you can learn more about Artifacts by:</p>
+<ul>
+	<li>Reading the <a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>getting started guide</u></a> in the docs.</li>
+	<li>Visiting the Cloudflare dashboard (Build &gt; Storage &amp; Databases &gt; Artifacts)</li>
+	<li>Reading through the <a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API examples</u></a></li>
+	<li>Learning more about <a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>how Artifacts works</u></a> under the hood</li>
+</ul>
+<p>Follow <a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>the changelog</u></a> to track the beta as it progresses.</p>
+<h2>Watch on Cloudflare TV</h2>
+<div id="html-block-k6j" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
 	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xLMMKCN1HNGWbkSyq0tDZ/2a8d49383957804f3ce204783e11ae80/BLOG-3269_3.png" alt="BLOG-3269 3" class="kg-image" width="1999" height="1125" loading="lazy">
-	</figure>
-	<p>Artifacts is launching in private beta, and we expect public beta to be ready in early May (2026, to be clear!). We’ll be allowing customers in progressively over the next few weeks, and <a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>you can register interest for the private beta</u></a> directly.</p>
-	<p>In the meantime, you can learn more about Artifacts by:</p>
-	<ul>
-		<li>
-			<p>Reading the <a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>getting started guide</u></a> in the docs.</p>
-		</li>
-		<li>
-			<p>Visiting the Cloudflare dashboard (Build &gt; Storage &amp; Databases &gt; Artifacts)</p>
-		</li>
-		<li>
-			<p>Reading through the <a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API examples</u></a></p>
-		</li>
-		<li>
-			<p>Learning more about <a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>how Artifacts works</u></a> under the hood</p>
-		</li>
-	</ul>
-	<p>Follow <a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>the changelog</u></a> to track the beta as it progresses.</p>
-	<div class="flex anchor relative">
-		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<div style="position: relative; padding-top: 56.25%;">
-		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p></p>
 </div>

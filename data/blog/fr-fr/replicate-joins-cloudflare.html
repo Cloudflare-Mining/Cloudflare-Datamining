@@ -1,0 +1,112 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/replicate-joins-cloudflare">English</a>, en <a href="https://blog.cloudflare.com/de-de/replicate-joins-cloudflare">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/replicate-joins-cloudflare">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/replicate-joins-cloudflare">한국어</a>, en <a href="https://blog.cloudflare.com/es-la/replicate-joins-cloudflare">Español (Latinoamérica)</a>, en <a href="https://blog.cloudflare.com/nl-nl/replicate-joins-cloudflare">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-tw/replicate-joins-cloudflare">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D5M72O0Dl0m6ndTklDea3/ef6f18f53a1a1170381e4f29134f2e89/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Nous avons d'importantes nouvelles à communiquer aujourd'hui&nbsp;: Replicate, la principale plateforme d'exécution de modèles d'IA, rejoint Cloudflare.</p>
+	<p>Au-delà d'une simple passion pour les palettes de couleurs vives, ce sont nos nombreux points communs qui nous ont poussés à engager la discussion avec Replicate. Notre mission vis-à-vis de la plateforme de développement Workers de Cloudflare a été de simplifier au maximum la création et le déploiement d'applications full-stack. Entre-temps, Replicate s'est donné une mission similaire&nbsp;: faire en sorte qu'il soit aussi simple de déployer des modèles d'IA que d'écrire une seule ligne de code. Nous avons réalisé que nous pouvions construire quelque chose d'encore mieux ensemble en intégrant directement la plateforme Replicate à Cloudflare.</p>
+	<p>Nous sommes ravis d'annoncer cette nouvelle et encore plus enthousiastes à l'idée des avantages qu'elle apportera à nos clients. Avec l'intégration des outils de Replicate dans Cloudflare, notre plateforme de développement continuera d'être le meilleur endroit sur Internet pour créer et déployer n'importe quel flux de travail IA ou agentique.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-does-this-mean-for-you">Qu’est-ce que cela signifie pour vous&nbsp;?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#what-does-this-mean-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant de consacrer plus de temps à l'avenir de l'IA, nous souhaitons répondre aux questions qui préoccupent le plus les utilisateurs de Replicate et de Cloudflare. En bref :&nbsp;</p>
+	<p><b>Pour les utilisateurs Replicate existants&nbsp;:</b> vos API et flux de travail continueront de fonctionner sans interruption. Vous bénéficierez bientôt d'une amélioration des performances et de la fiabilité du réseau mondial de Cloudflare.</p>
+	<p><b>Pour les utilisateurs existants de Workers AI&nbsp;:</b> préparez-vous à un enrichissement massif du catalogue de modèles et à des possibilités nouvelles en matière de précision des réglages et de modèles personnalisés directement sur Workers AI.</p>
+	<p>Maintenant, revenons à ce qui nourrit notre enthousiasme concernant notre avenir commun.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-ai-revolution-was-not-televised-but-it-started-with-open-source">La révolution de l'IA n'a pas été retransmise à la télévision, mais elle a commencé avec l'open source.</h2>
+		<a href="https://blog.cloudflare.com/#the-ai-revolution-was-not-televised-but-it-started-with-open-source" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avant que l'IA ne soit l'IA, et le sujet de <i>toutes</i> les conversations, elle existait depuis des décennies sous le nom d'«&nbsp;apprentissage automatique&nbsp;». C'était un domaine spécialisé, presque académique. Les progrès ont été constants, mais isolés, les percées se produisant au sein de quelques grands laboratoires de recherche bien financés. Les modèles étaient monolithiques, les données étaient propriétaires et les outils étaient inaccessibles à la plupart des développeurs. Tout a changé lorsque la culture de la collaboration open source, la force motrice derrière l'Internet moderne, a rencontré l'apprentissage automatique. Les chercheurs et les entreprises ont alors commencé à publier non seulement leurs articles, mais aussi les poids de leurs modèles et leur code.</p>
+	<p>Cela a déclenché une formidable explosion d'innovation. Le rythme des évolutions de ces dernières années a été vertigineux&nbsp;; ce qui était à la pointe de la technologie il y a 18 mois (ou parfois, il semble que ce n'était qu'il y a quelques jours) est désormais la norme. Cette accélération est particulièrement visible dans le domaine de l'IA générative.&nbsp;</p>
+	<p>Nous sommes passés de curiosités étranges et floues à la génération d'images photoréalistes en un clin d'œil. Les modèles open source comme Stable Diffusion ont ouvert la voie à une créativité immédiate pour les développeurs, et ce n'était que le début. Si vous consultez aujourd'hui le catalogue de modèles de Replicate, vous y trouverez des milliers de modèles d'images de toutes sortes, chacun itérant sur le précédent.&nbsp;</p>
+	<p>Cela s'est produit non seulement avec les modèles d'image, mais aussi avec la vidéo, l'audio, les modèles de langage, pour ne citer que quelques exemples.&nbsp;</p>
+	<p>Cependant, cette progression incroyable, portée par la communauté, s'est accompagnée d'une difficulté majeure pour la mise en pratique&nbsp;: comment <i>exécuter</i> concrètement ces modèles&nbsp;? Chaque nouveau modèle est associé à des dépendances différentes, exige du matériel GPU spécifique (et suffisamment) et fait appel à une infrastructure de service complexe pour assurer l'évolutivité. Les développeurs ont passé plus de temps à s'efforcer des régler des problèmes liés aux pilotes CUDA et les fichiers requirements.txt qu'à réellement développer leurs applications.</p>
+	<p>C'est exactement ce que Replicate a permis de résoudre. Ils ont mis au point une plateforme qui élimine toute cette complexité (en utilisant leur outil open source <a href="https://github.com/replicate/cog" target="_blank" rel="noopener noreferrer"><u>Cog</u></a> pour regrouper les modèles dans des conteneurs standard et reproductibles), ce qui permet à n'importe quel développeur ou expert en science des données d'exécuter même les modèles open source les plus complexes avec un simple appel d'API.&nbsp;</p>
+	<p>Aujourd'hui, le catalogue de Replicate comprend plus de 50&nbsp;000&nbsp;modèles open source et modèles affinés. Si l'open source a ouvert de nombreuses possibilités, la suite d'outils de Replicate va encore plus loin en permettant aux développeurs d'accéder à tous les modèles dont ils ont besoin, en un seul endroit. Point final. Grâce à sa place de marché, elle offre également un accès transparent aux principaux modèles propriétaires tels que GPT-5 et Claude Sonnet, le tout via une API unifiée.</p>
+	<p>Il est intéressant de noter que l'équipe de Replicate n'a pas simplement créé un service d'inférence ; ils ont bâti une <b>communauté</b>. De nombreuses innovations peuvent avoir lieu parce qu'elles s'inspirent de ce que font d'autres, en s'appuyant sur des itérations et en améliorant les solutions. Replicate est devenu la plateforme de référence sur laquelle les développeurs peuvent découvrir, partager, ajuster et expérimenter les derniers modèles dans un environnement public.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="stronger-together-the-ai-catalog-meets-the-ai-cloud">Plus forts ensemble : le catalogue d'IA rencontre le cloud IA</h2>
+		<a href="https://blog.cloudflare.com/#stronger-together-the-ai-catalog-meets-the-ai-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pour en revenir à la mission de Workers Platform&nbsp;: notre objectif a toujours été de permettre aux développeurs de créer des applications full-stack sans avoir à se soucier de l'infrastructure. Et si rien n'a changé à cet égard, l'IA a toutefois modifié les exigences des applications.</p>
+	<p>Les types d'applications que les développeurs créent évoluent&nbsp;; il y a trois ans, personne ne développait d'agents ni ne créait de vidéos de lancement générées par IA. Aujourd'hui, c'est le cas. En conséquence, l'évolution concerne également ce dont ils ont besoin et ce qu'ils attendent du cloud, ou du <b>cloud IA</b>.</p>
+	<p>Pour répondre aux besoins des développeurs, Cloudflare a mis en place les piliers fondamentaux du cloud IA, conçu pour exécuter l'inférence en périphérie, au plus près des utilisateurs. Il ne s'agit pas simplement d'un produit, mais d'une pile complète&nbsp;:</p>
+	<ul>
+		<li>
+			<p><b>Workers AI&nbsp;:</b> inférence GPU serverless sur notre réseau mondial.</p>
+		</li>
+		<li>
+			<p><b>AI Gateway&nbsp;:</b> un plan de contrôle pour la mise en cache, le contrôle du volume des requêtes et l'observation de toute API d'IA.</p>
+		</li>
+		<li>
+			<p><b>Pile de données&nbsp;:</b> dont Vectorize (notre base de données vectorielle) et R2 (pour le stockage de modèles et de données).</p>
+		</li>
+		<li>
+			<p><b>Orchestration&nbsp;:</b> des outils tels que AI Search (anciennement Autorag), Agents et Workflows, pour créer des applications complexes en plusieurs étapes.</p>
+		</li>
+		<li>
+			<p><b>Fondation&nbsp;:</b> tout est basé sur notre plateforme de développement principale, Workers, Durable Objects et le reste de notre pile.</p>
+		</li>
+	</ul>
+	<p>Tandis que nous aidions les développeurs à faire évoluer leurs applications, Replicate s'est donné une mission similaire : faire en sorte qu'il soit aussi simple de déployer des modèles d'IA que de déployer du code. C'est là que tout se rejoint. Replicate propose un <b>catalogue de modèles et une communauté de développeurs</b> parmi les plus riches et les plus dynamiques du secteur. Cloudflare apporte un <b>réseau mondial et une plateforme d'inférence sans serveur</b> incroyablement performants. Ensemble, nous pouvons offrir le meilleur des deux mondes&nbsp;: la sélection la plus complète de modèles, exécutables sur une plateforme d'inférence rapide, fiable et abordable.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-shared-vision">Notre vision commune</h2>
+		<a href="https://blog.cloudflare.com/#our-shared-vision" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="for-the-community-the-hub-for-ai-exploration">Pensé pour la communauté&nbsp;: un centre d'exploration de l'IA</h3>
+		<a href="https://blog.cloudflare.com/#for-the-community-the-hub-for-ai-exploration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Au coeur-même de la communauté Replicate figure la possibilité de partager des modèles, de publier des réglages précis, de collecter des étoiles et d'expérimenter dans l'environnement de test. Nous continuerons d'investir et de développer cette plateforme pour en faire la destination de référence pour la découverte et l'expérimentation en matière d'IA, désormais <b>optimisée par le réseau mondial de Cloudflare</b> pour une expérience encore plus rapide et réactive pour tous.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-inference-one-platform-all-models">L'avenir de l'inférence : une plateforme, tous les modèles</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-inference-one-platform-all-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Notre projet est de réunir le meilleur des deux plateformes. Nous allons intégrer l'intégralité du catalogue Replicate, soit plus de 50&nbsp;000 modèles et réglages précis dans Workers AI. C'est ce qui vous offre le choix par excellence&nbsp;: exécuter les modèles dans l'environnement flexible de Replicate ou sur la plateforme serverless de Cloudflare, le tout depuis un seul endroit.</p>
+	<p>Mais nous ne nous contentons pas d'enrichir le catalogue. Nous sommes ravis d'annoncer l'ajout de fonctionnalités de réglage précis à Workers AI, grâce à la solide expertise de Replicate. Nous rendons également Workers AI plus flexible que jamais. Bientôt, vous pourrez <b>apporter vos propres modèles personnalisés</b> à notre réseau. Nous allons nous appuyer sur l'expertise de Replicate avec <b>Cog</b> pour rendre ce processus transparent, reproductible et facile.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-ai-cloud-more-than-just-inference">Le cloud IA&nbsp;: bien plus que de l'inférence</h3>
+		<a href="https://blog.cloudflare.com/#the-ai-cloud-more-than-just-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'exécution d'un modèle n'est qu'un élément du casse-tête. La magie opère lorsque vous connectez l'IA à l'ensemble de votre application. Imaginez ce que vous pouvez créer lorsque l'immense catalogue de Replicate est étroitement intégré à la plateforme pour développeurs Cloudflare : exécutez un modèle et stockez les résultats directement dans <b>R2</b> ou <b>Vectorize</b>&nbsp;; déclenchez l'inférence depuis une instance <b>Worker</b> ou une <b>file d'attente</b>&nbsp;; utilisez des <b>Durable Objects</b> pour gérer l'état d'un agent IA&nbsp;; ou créez une interface utilisateur générative en temps réel avec <b>WebRTC</b> et les protocoles WebSocket.</p>
+	<p>Pour gérer tout cela, nous intégrerons étroitement notre plateforme d'inférence unifiée avec la <b>AI Gateway</b> et vous offrons ainsi un plan de contrôle unique pour l'observabilité, la gestion des invites, les tests A/B et l'analyse des coûts sur <i>tous</i> vos modèles, qu'ils soient exécutés sur Cloudflare, Replicate ou un autre fournisseur, quel qu'il soit.</p>
+	<div class="flex anchor relative">
+		<h2 id="welcome-to-the-team">Bienvenue dans l’équipe !</h2>
+		<a href="https://blog.cloudflare.com/#welcome-to-the-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous sommes extrêmement heureux d'accueillir l'équipe Replicate chez Cloudflare. Leur passion pour la communauté des développeurs et leur expertise de l'écosystème de l'IA sont sans égal. Nous sommes impatients de bâtir ensemble l'avenir de l'IA.</p>
+</div>

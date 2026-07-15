@@ -1,479 +1,360 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SSUnTaOJo0tCdiJyk9LUz/9e3d1277adba150d22ab7ba07028723d/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>More than 1 billion unique IP addresses pass through the <a href="https://blog.cloudflare.com/tag/cloudflare-network">Cloudflare Network</a> each day, serving on average 11 million HTTP requests per second and operating within 100ms of 95% of the Internet-connected population globally. Our network spans 200 cities in more than 90 countries, and our engineering teams have built an extremely <a href="https://blog.cloudflare.com/tag/speed-and-reliability">fast and reliable infrastructure</a>.</p>
-	<p>We’re extremely proud of our work and are determined to help make the Internet a <a href="https://www.fastcompany.com/most-innovative-companies/2019/sectors/security" target="_blank" rel="noopener noreferrer">better and more secure place</a>. Cloudflare engineers who are involved with hardware get down to servers and their components to understand and select the best hardware to maximize the performance of our stack.</p>
-	<p>Our software stack is compute intensive and is very much CPU bound, driving our engineers to work continuously at optimizing Cloudflare’s performance and reliability at all layers of our stack. With the server, a straightforward solution for increasing computing power is to have more CPU cores. The more cores we can include in a server, the more output we can expect. This is important for us since the diversity of our products and customers has grown over time with increasing demand that requires our servers to do more. To help us drive compute performance, we needed to increase core density and that's what we did. Below is the processor detail for servers we’ve deployed since 2015, including the core counts:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>More than 1 billion unique IP addresses pass through the <a href="https://blog.cloudflare.com/tag/cloudflare-network">Cloudflare Network</a> each day, serving on average 11 million HTTP requests per second and operating within 100ms of 95% of the Internet-connected population globally. Our network spans 200 cities in more than 90 countries, and our engineering teams have built an extremely <a href="https://blog.cloudflare.com/tag/speed-and-reliability">fast and reliable infrastructure</a>.</p>
+<p>We’re extremely proud of our work and are determined to help make the Internet a <a href="https://www.fastcompany.com/most-innovative-companies/2019/sectors/security" target="_blank" rel="noopener noreferrer">better and more secure place</a>. Cloudflare engineers who are involved with hardware get down to servers and their components to understand and select the best hardware to maximize the performance of our stack.</p>
+<p>Our software stack is compute intensive and is very much CPU bound, driving our engineers to work continuously at optimizing Cloudflare’s performance and reliability at all layers of our stack. With the server, a straightforward solution for increasing computing power is to have more CPU cores. The more cores we can include in a server, the more output we can expect. This is important for us since the diversity of our products and customers has grown over time with increasing demand that requires our servers to do more. To help us drive compute performance, we needed to increase core density and that's what we did. Below is the processor detail for servers we’ve deployed since 2015, including the core counts:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
 					<p>---</p>
-				</td>
-				<td>
-					<p><b>Gen 6</b></p>
-				</td>
-				<td>
-					<p><b>Gen 7</b></p>
-				</td>
-				<td>
-					<p><b>Gen 8</b></p>
-				</td>
-				<td>
-					<p><b>Gen 9</b></p>
-				</td>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Gen 6</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Gen 7</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Gen 8</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Gen 9</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Start of service</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2015</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2016</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2017</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2018</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>CPU</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Intel Xeon E5-2630 v3</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Intel Xeon E5-2630 v4</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Intel Xeon Silver 4116</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Intel Xeon Platinum 6162</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Physical Cores</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 8</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 10</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 12</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 24</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>TDP</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 85W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 85W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 85W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 150W</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>TDP per Core</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>10.65W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>8.50W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7.08W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>6.25W</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>In 2018, we made a big jump in total number of cores per server with <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>. Our physical footprint was reduced by 33% compared to Gen 8, giving us increased capacity and computing power per rack. Thermal Design Power (TDP aka typical power usage) are mentioned above to highlight that we've also been more power efficient over time. Power efficiency is important to us: first, because we'd like to be as <a href="https://blog.cloudflare.com/a-carbon-neutral-north-america">carbon friendly</a> as we can; and second, so we can better utilize our provisioned power supplied by the data centers. But we know we can do better.</p>
-	<p>Our main defining metric is Requests per Watt. We can increase our Requests per Second number with more cores, but we have to stay within our power budget envelope. We are constrained by the data centers’ power infrastructure which, along with our selected power distribution units, leads us to power cap for each server rack. Adding servers to a rack obviously adds more power draw increasing power consumption at the rack level. Our Operational Costs significantly increase if we go over a rack’s power cap and have to provision another rack. What we need is more compute power inside the same power envelope which will drive a higher (better) Requests per Watt number – our key metric.</p>
-	<p>As you might imagine, we look at power consumption carefully in the design stage. From the above you can see that it’s not worth the time for us to deploy more power-hungry CPUs if TDP per Core is higher than our current generation which would hurt our Requests per Watt metric. As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today, and we’ve made our decision. We’re moving on from Gen 9's 48-core setup of dual socket <a href="https://ark.intel.com/content/www/us/en/ark/products/136869/intel-xeon-platinum-6162-processor-33m-cache-1-90-ghz.html" target="_blank" rel="noopener noreferrer">Intel® Xeon® Platinum 6162</a>'s to a 48-core single socket <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642" target="_blank" rel="noopener noreferrer">AMD EPYC™ 7642</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ub4NDKC4KKIMsXY2cFPJW/2bb5250e410aa4c75cad9651ab1b84f7/1.jpg" alt="" class="kg-image" width="1999" height="1333" loading="lazy">
-
-	</figure>
-	<p> Gen X server setup with single socket 48-core AMD EPYC 7642.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>---</b></p>
-				</td>
-				<td>
-					<p><b>Intel</b></p>
-				</td>
-				<td>
-					<p><b>AMD</b></p>
-				</td>
+</div>
+<p>In 2018, we made a big jump in total number of cores per server with <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9</a>. Our physical footprint was reduced by 33% compared to Gen 8, giving us increased capacity and computing power per rack. Thermal Design Power (TDP aka typical power usage) are mentioned above to highlight that we've also been more power efficient over time. Power efficiency is important to us: first, because we'd like to be as <a href="https://blog.cloudflare.com/a-carbon-neutral-north-america">carbon friendly</a> as we can; and second, so we can better utilize our provisioned power supplied by the data centers. But we know we can do better.</p>
+<p>Our main defining metric is Requests per Watt. We can increase our Requests per Second number with more cores, but we have to stay within our power budget envelope. We are constrained by the data centers’ power infrastructure which, along with our selected power distribution units, leads us to power cap for each server rack. Adding servers to a rack obviously adds more power draw increasing power consumption at the rack level. Our Operational Costs significantly increase if we go over a rack’s power cap and have to provision another rack. What we need is more compute power inside the same power envelope which will drive a higher (better) Requests per Watt number – our key metric.</p>
+<p>As you might imagine, we look at power consumption carefully in the design stage. From the above you can see that it’s not worth the time for us to deploy more power-hungry CPUs if TDP per Core is higher than our current generation which would hurt our Requests per Watt metric. As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today, and we’ve made our decision. We’re moving on from Gen 9's 48-core setup of dual socket <a href="https://ark.intel.com/content/www/us/en/ark/products/136869/intel-xeon-platinum-6162-processor-33m-cache-1-90-ghz.html" target="_blank" rel="noopener noreferrer">Intel® Xeon® Platinum 6162</a>'s to a 48-core single socket <a href="https://www.amd.com/en/products/cpu/amd-epyc-7642" target="_blank" rel="noopener noreferrer">AMD EPYC™ 7642</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48678WA9HWHZ3V7JYJK9QR.jpg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - ZhDgZ0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - ZhDgZ0"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p> Gen X server setup with single socket 48-core AMD EPYC 7642.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>---</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Intel</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>AMD</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>CPU</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Xeon Platinum 6162</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>EPYC 7642</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Microarchitecture</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>“Skylake”</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>“Zen 2”</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Codename</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>“Skylake SP”</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>“Rome”</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Process</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>14nm</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7nm</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Physical Cores</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 24</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>48</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Frequency</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1.9 GHz</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2.4 GHz</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>L3 Cache / socket</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>24 x 1.375MiB</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>16 x 16MiB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Memory / socket</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>6 channels, up to DDR4-2400</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>8 channels, up to DDR4-3200</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>TDP</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2 x 150W</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>225W</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>PCIe / socket</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>48 lanes</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>128 lanes</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>ISA</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>x86-64</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>x86-64</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>From the specs, we see that with the AMD chip we get to keep the same amount of cores and lower TDP. Gen 9's TDP per Core was 6.25W, Gen X's will be 4.69W... That's a 25% decrease. With higher frequency, and perhaps going to a more simplified setup of single socket, we can speculate that the AMD chip will perform better. We're walking through a series of tests, simulations, and live production results in the rest of this blog to see how much better AMD performs.</p>
-	<p>As a side note before we go further, TDP is a simplified metric from the manufacturers’ datasheets that we use in the early stages of our server design and CPU selection process. A quick Google search leads to thoughts that AMD and Intel define TDP differently, which basically makes the spec unreliable. Actual CPU power draw, and more importantly server system power draw, are what we really factor in our final decisions.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ue5oOlAdewYkerMSsEPWN/5cf921da1bc31eccd575af6670af66d3/2.png" alt="" class="kg-image" width="1999" height="560" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="ecosystem-readiness">Ecosystem Readiness</h3>
-		<a href="https://blog.cloudflare.com/#ecosystem-readiness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the beginning of our journey to choose our next CPU, we got a variety of processors from different vendors that could fit well with our software stack and services, which are written in C, LuaJIT, and Go. More details about benchmarking for our stack were explained when we benchmarked <a href="https://blog.cloudflare.com/arm-takes-wing">Qualcomm's ARM® chip in the past</a>. We're going to go through the same suite of tests as Vlad's blog this time around since it is a quick and easy "sniff test". This allows us to test a bunch of CPUs within a manageable time period before we commit to spend more engineering effort and need to apply our software stack.</p>
-	<p>We tried a variety of CPUs with different number of cores, sockets, and frequencies. Since we're explaining how we chose the AMD EPYC 7642, all the graphs in this blog focus on how AMD compares with our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9's Intel Xeon Platinum 6162 CPU</a> as a baseline.</p>
-	<p>Our results correspond to server node for both CPUs tested; meaning the numbers pertain to 2x 24-core processors for Intel, and 1x 48-core processor for AMD – a two socket Intel based server and a one socket AMD EPYC powered server. Before we started our testing, we changed the Cloudflare lab test servers’ BIOS settings to match our production server settings. This gave us CPU frequencies yields for AMD at 3.03 Ghz and Intel at 2.50 Ghz on average with very little variation. With gross simplification, we expect that with the same amount of cores AMD would perform about 21% better than Intel. Let’s start with our crypto tests.</p>
-	<div class="flex anchor relative">
-		<h3 id="cryptography">Cryptography</h3>
-		<a href="https://blog.cloudflare.com/#cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AZYQDj2nhVofkFNuK7fhb/dea112fd9ae2b2e91514b62e21d242d6/3.png" alt="" class="kg-image" width="1999" height="1239" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OpcfNqi2hraQrS8fZV0Lw/29fcc9dcf3ec73400a8fe784a12b26f5/4.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<p>Looking promising for AMD. In public key cryptography, it does 18% better. Meanwhile, for symmetric key, AMD loses on AES-128-GCM, but it’s comparable overall.</p>
-	<div class="flex anchor relative">
-		<h3 id="compression">Compression</h3>
-		<a href="https://blog.cloudflare.com/#compression" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We do a lot of compression at the edge to save bandwidth and help deliver content faster. We go through both zlib and brotli libraries written in C. All tests are done on <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> HTML file in memory.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IVKryfCIXY2c6vXt8KsPc/eab9765ff8650fc9fbe97a82cf89f0cf/5.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ycU6O5cbLREXNJV29sPDI/4472bc4ae36cfedae67535d08e5e10f8/6.png" alt="" class="kg-image" width="1999" height="1239" loading="lazy">
-
-	</figure>
-	<p>AMD wins by an average of 29% using gzip across all qualities. It does even better with brotli with tests lower than quality 7, which we use for dynamic compression. There’s a throughput cliff starting brotli-9 which <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad’s explanation</a> is that Brotli consumes lots of memory and thrashes cache. Nevertheless, AMD wins by a healthy margin.</p>
-	<p>A lot of our services are written in Go. In the following graphs we’re redoing the crypto and compression tests in Go along with RegExp on 32KB strings and the strings' library.</p>
-	<div class="flex anchor relative">
-		<h3 id="go-cryptography">Go Cryptography</h3>
-		<a href="https://blog.cloudflare.com/#go-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JRYfDXEC61iGL6Ds7LjL1/16b8980b2b2cf5bdda22769d0dad5fa6/7.png" alt="" class="kg-image" width="1999" height="1240" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-compression">Go Compression</h3>
-		<a href="https://blog.cloudflare.com/#go-compression" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5U6GEnTLU1VVvqbZtJZ1df/0e3a0fa77bbb3ce709e36503e9eaba66/Screen-Shot-2020-02-24-at-14.37.27.png" alt="" class="kg-image" width="2000" height="1234" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YQTrE7SfEiCXjivU7NXXf/c5b22a8a38b2eb48c0658d4b9b3a1f63/9.png" alt="" class="kg-image" width="1999" height="1240" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-regexp">Go Regexp</h3>
-		<a href="https://blog.cloudflare.com/#go-regexp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ZQn6rtg7fE6IJ3wNgpCf/9886faae1855b658347fccfe72802a0a/10.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vvUuNzVuRrgGqVrGOxagJ/720667e78cb5b34eda7f4ca0d445bd9f/11.png" alt="" class="kg-image" width="1999" height="1239" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="go-strings">Go Strings</h3>
-		<a href="https://blog.cloudflare.com/#go-strings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BY6NTdgjUWGiDBwC0NMNv/8943902a6f047eb8d2f9079e9b1e432b/12.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<p>AMD performs better in all of our Go benchmarks except for ECDSA P256 Sign losing by 38%, which is peculiar since with the test in C it does 24% better. It’s worth investigating what’s going on here. Other than that, AMD doesn’t win by as much of a margin, but it still proves to be better.</p>
-	<div class="flex anchor relative">
-		<h3 id="luajit">LuaJIT</h3>
-		<a href="https://blog.cloudflare.com/#luajit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We rely a lot on LuaJIT in our stack. As <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad said</a>, it’s the glue that holds Cloudflare together. We’re glad to show that AMD wins here as well.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VM41wrmwYIpaJSvR70ztl/95f5f48fad6f48034422ea69b62c73b6/13.png" alt="" class="kg-image" width="1999" height="1240" loading="lazy">
-
-	</figure>
-	<p>Overall our tests show a single EPYC 7642 to be more competitive than two Xeon Platinum 6162. While there are a couple of tests where AMD loses out such as OpenSSL AES-128-GCM and Go OpenSSL ECDSA-P256 Sign, AMD wins in all the others. By scanning quickly and treating all tests equally, AMD does on average 25% better than Intel.</p>
-	<div class="flex anchor relative">
-		<h3 id="performance-simulations">Performance Simulations</h3>
-		<a href="https://blog.cloudflare.com/#performance-simulations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After our ‘sniff’ tests, we put our servers through another series of emulations which apply synthetic workloads simulating our edge software stack. Here we are simulating workloads of scenarios with different types of requests we see in production. Types of requests vary from asset size, whether they go through HTTP or HTTPS, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a>, Workers, or one of many additional variables. Below shows the throughput comparison between the two CPUs of the types of requests we see most typically.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Rj1NqqXfYroVsefnGQQgS/c598bbf7b324ab6944236e91d5f5e28a/14.png" alt="" class="kg-image" width="1999" height="1310" loading="lazy">
-
-	</figure>
-	<p>The results above are ratios using Gen 9's Intel CPUs as the baseline normalized at 1.0 on the X-axis. For example, looking at simple requests of 10KiB assets over HTTPS, we see that AMD does 1.50x better than Intel in Requests per Second. On average for the tests shown on the graph above, AMD performs 34% better than Intel. Considering that the TDP for the single AMD EPYC 7642 is 225W, when compared to two Intel's being 300W, we're looking at AMD delivering up to 2.0x better Requests per Watt vs. the Intel CPUs!</p>
-	<p>By this time, we were already leaning heavily toward a single socket setup with AMD EPYC 7642 as our CPU for Gen X. We were excited to see exactly how well AMD EPYC servers would do in production, so we immediately shipped a number of the servers out to some of our data centers.</p>
-	<div class="flex anchor relative">
-		<h3 id="live-production">Live Production</h3>
-		<a href="https://blog.cloudflare.com/#live-production" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Step one of course was to get all our test servers set up for a production environment. All of our machines in the fleet are loaded with the same processes and services which makes for a great apples-to-apples comparison. &nbsp;Like data centers everywhere, we have multiple generations of servers deployed, and we deploy our servers in clusters such that each cluster is pretty homogeneous by server generation. In some environments this can lead to varying utilization curves between clusters. &nbsp;This is not the case for us. Our engineers have optimized CPU utilization across all server generations so that no matter if the machine's CPU has 8 cores or 24 cores, CPU usage is generally the same.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2CiOx8dprb9NuYH2kUrZQ/ef686808c946d6cc55aa2983dc50c839/15.png" alt="" class="kg-image" width="1999" height="1236" loading="lazy">
-
-	</figure>
-	<p>As you can see above and to illustrate our ‘similar CPU utilization’ comment, there is no significant difference in CPU usage between Gen X AMD powered servers and Gen 9 Intel based servers. This means both test and baseline servers are equally loaded. Good. This is exactly what we want to see with our setup, to have a fair comparison. The 2 graphs below show the comparative number of requests processed at the CPU single core and all core (server) level.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18XOFPOFmKWcIuheu6HWl8/e84fa7ff38c6c3f39115b60882a7c106/16.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rwWBZrTmfJvIs7Em9aCXT/19945cb240e37ca3ba61853b3e72bf5b/17.png" alt="" class="kg-image" width="1999" height="1236" loading="lazy">
-
-	</figure>
-	<p>We see that AMD does on average about 23% more requests. That's really good! We talked a lot about bringing more muscle in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>. We have the same number of cores, yet AMD does more work, and does it with less power. Just by looking at the specs for number of cores and TDP in the beginning, it's really nice to see that AMD also delivers significantly more performance with better power efficiency.</p>
-	<p>But as we mentioned earlier, TDP isn’t a standardized spec across manufacturers so let’s look at real power usage below. Measuring server power consumption along with requests per second (RPS) yields the graph below:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DnPzngVCU8da71wGJUleo/b132d4256abe8c60809cf7b2c6d27ea4/18.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<p>Observing our servers request rate over their power consumption, the AMD Gen X server performs 28% better. While we could have expected more out of AMD since its TDP is 25% lower, keep in mind that TDP is very ambiguous. In fact, we saw that AMD actual power draw ran nearly at spec TDP with it's much higher than base frequency; Intel was far from it. Another reason why TDP is becoming a less reliable estimate of power draw. Moreover, CPU is just one component contributing to the overall power of the system. Let’s remind that Intel CPUs are integrated in a multi-node system as described in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>, while AMD is in a regular 1U form-factor machine. That actually doesn’t favor AMD since multi-node systems are designed for high density capabilities at lower power per node, yet it still outperformed the Intel system on a power per node basis anyway.</p>
-	<p>Through the majority of comparisons from the datasheets, test simulations, and live production performance, the 1P AMD EPYC 7642 configuration performed significantly better than the 2P Intel Xeon 6162. We’ve seen in some environments that AMD can do up to 36% better in live production, and we believe we can achieve that consistently with some optimization on both our hardware and software.</p>
-	<p>So that's it. AMD wins.</p>
-	<p>The additional graphs below show the median and p99 NGINX processing mostly on-CPU time latencies between the two CPUs throughout 24 hours. On average, AMD processes about 25% faster. At p99, it does about 20-50% depending on the time of day.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Fty1XuK9w4yupvRyHzLmu/0f1e8bc02e8f04d0c33752f6ff67fd98/19.png" alt="" class="kg-image" width="1999" height="1235" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yWj3MsDnro619KjtJwVAW/0868d32c8aa3f5c594b8e660e608eb6c/20.png" alt="" class="kg-image" width="1999" height="1237" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Hardware and Performance engineers at Cloudflare do significant research and testing to figure out the best server configuration for our customers. Solving big problems like this is why <a href="https://www.fastcompany.com/best-workplaces-for-innovators/2019" target="_blank" rel="noopener noreferrer">we love working here</a>, and we're also helping to solve yours with our services like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">serverless</a> edge compute and the array of security solutions such as <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a>, and <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS protection</a>. All of our servers on the Cloudflare Network are designed to make our products work reliably, and we strive to make each new generation of our server design better than its predecessor. We believe the AMD EPYC 7642 is the answer for our Gen X's processor question.</p>
-	<p>With <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, developers have enjoyed deploying their applications to our <a href="https://blog.cloudflare.com/tag/cloudflare-network">Network</a>, which is ever expanding across the globe. We’ve been proud to empower our customers by letting them focus on writing their code while we are managing the security and reliability in the cloud. We are now even more excited to say that their work will be deployed on our Gen X servers powered by 2nd Gen AMD EPYC processors.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yI4yio6UovXiaJi79a78l/d248e04fd2b5c98c68b7312af953c54f/21.jpg" alt="" class="kg-image" width="1000" height="667" loading="lazy">
-
-	</figure>
-	<p>Expanding Rome to a data center near you</p>
-	<p>Thanks to AMD, using the EPYC 7642 allows us to increase our capacity and expand into more cities easier. Rome wasn’t built in one day, but it will be <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">very close to many of you</a>.</p>
-	<p>In the last couple of years, we've been experimenting with many Intel and AMD x86 chips along with ARM CPUs. We look forward to having these CPU manufacturers partner with us for future generations so that together we can help build a better Internet.</p>
 </div>
+<p>From the specs, we see that with the AMD chip we get to keep the same amount of cores and lower TDP. Gen 9's TDP per Core was 6.25W, Gen X's will be 4.69W... That's a 25% decrease. With higher frequency, and perhaps going to a more simplified setup of single socket, we can speculate that the AMD chip will perform better. We're walking through a series of tests, simulations, and live production results in the rest of this blog to see how much better AMD performs.</p>
+<p>As a side note before we go further, TDP is a simplified metric from the manufacturers’ datasheets that we use in the early stages of our server design and CPU selection process. A quick Google search leads to thoughts that AMD and Intel define TDP differently, which basically makes the spec unreliable. Actual CPU power draw, and more importantly server system power draw, are what we really factor in our final decisions.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="200" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=640&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=750&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=828&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=1080&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=1280&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472V70V2DQ12TJ6GJ09JZK.png&amp;w=1430&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - 29zVZm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="200" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - 29zVZm"></div>
+</figure>
+<h3>Ecosystem Readiness</h3>
+<p>At the beginning of our journey to choose our next CPU, we got a variety of processors from different vendors that could fit well with our software stack and services, which are written in C, LuaJIT, and Go. More details about benchmarking for our stack were explained when we benchmarked <a href="https://blog.cloudflare.com/arm-takes-wing">Qualcomm's ARM® chip in the past</a>. We're going to go through the same suite of tests as Vlad's blog this time around since it is a quick and easy "sniff test". This allows us to test a bunch of CPUs within a manageable time period before we commit to spend more engineering effort and need to apply our software stack.</p>
+<p>We tried a variety of CPUs with different number of cores, sockets, and frequencies. Since we're explaining how we chose the AMD EPYC 7642, all the graphs in this blog focus on how AMD compares with our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9's Intel Xeon Platinum 6162 CPU</a> as a baseline.</p>
+<p>Our results correspond to server node for both CPUs tested; meaning the numbers pertain to 2x 24-core processors for Intel, and 1x 48-core processor for AMD – a two socket Intel based server and a one socket AMD EPYC powered server. Before we started our testing, we changed the Cloudflare lab test servers’ BIOS settings to match our production server settings. This gave us CPU frequencies yields for AMD at 3.03 Ghz and Intel at 2.50 Ghz on average with very little variation. With gross simplification, we expect that with the same amount of cores AMD would perform about 21% better than Intel. Let’s start with our crypto tests.</p>
+<h3>Cryptography</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TY1EYAPTEZ6E7JYCBASZ.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - K9WAqS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - K9WAqS"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458YBYG4MVRYTJ76992CKX.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - x20KdD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - x20KdD"></div>
+</figure>
+<p>Looking promising for AMD. In public key cryptography, it does 18% better. Meanwhile, for symmetric key, AMD loses on AES-128-GCM, but it’s comparable overall.</p>
+<h3>Compression</h3>
+<p>We do a lot of compression at the edge to save bandwidth and help deliver content faster. We go through both zlib and brotli libraries written in C. All tests are done on <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> HTML file in memory.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XSXZJ16YYRW4336795GZ.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - eMgZll" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - eMgZll"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PDJCYQSNDY1DDBSH08EK.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - SdZ9He" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - SdZ9He"></div>
+</figure>
+<p>AMD wins by an average of 29% using gzip across all qualities. It does even better with brotli with tests lower than quality 7, which we use for dynamic compression. There’s a throughput cliff starting brotli-9 which <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad’s explanation</a> is that Brotli consumes lots of memory and thrashes cache. Nevertheless, AMD wins by a healthy margin.</p>
+<p>A lot of our services are written in Go. In the following graphs we’re redoing the crypto and compression tests in Go along with RegExp on 32KB strings and the strings' library.</p>
+<h3>Go Cryptography</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="444" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=750&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=828&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=1080&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=1280&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVMAVKNJ1JC951Y11499.png&amp;w=1430&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - FCF6c8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="444" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - FCF6c8"></div>
+</figure>
+<h3>Go Compression</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="441" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=640&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=750&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=828&amp;h=511&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=1080&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=1280&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FWWKF3Q2KKMF5JVXWJCM.png&amp;w=1430&amp;h=882&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - mvsmUD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="441" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - mvsmUD"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="444" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=750&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=828&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=1080&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=1280&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463NA1BXSWVNP46GSBCM6B.png&amp;w=1430&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - srXy9t" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="444" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - srXy9t"></div>
+</figure>
+<h3>Go Regexp</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NA75EV0XY7SV9RED418X.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - NcqOli" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - NcqOli"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MVZPZC25X0PNSC6VVKX9.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - iKW1UW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - iKW1UW"></div>
+</figure>
+<h3>Go Strings</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V91Q1ECMW2PB14PF3AX8.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - odtiuw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - odtiuw"></div>
+</figure>
+<p>AMD performs better in all of our Go benchmarks except for ECDSA P256 Sign losing by 38%, which is peculiar since with the test in C it does 24% better. It’s worth investigating what’s going on here. Other than that, AMD doesn’t win by as much of a margin, but it still proves to be better.</p>
+<h3>LuaJIT</h3>
+<p>We rely a lot on LuaJIT in our stack. As <a href="https://blog.cloudflare.com/arm-takes-wing">Vlad said</a>, it’s the glue that holds Cloudflare together. We’re glad to show that AMD wins here as well.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="444" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=715&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=750&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=828&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=1080&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=1280&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S1C6JEHMYQCNWRWVTAMA.png&amp;w=1430&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - LAHI0I" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="444" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - LAHI0I"></div>
+</figure>
+<p>Overall our tests show a single EPYC 7642 to be more competitive than two Xeon Platinum 6162. While there are a couple of tests where AMD loses out such as OpenSSL AES-128-GCM and Go OpenSSL ECDSA-P256 Sign, AMD wins in all the others. By scanning quickly and treating all tests equally, AMD does on average 25% better than Intel.</p>
+<h3>Performance Simulations</h3>
+<p>After our ‘sniff’ tests, we put our servers through another series of emulations which apply synthetic workloads simulating our edge software stack. Here we are simulating workloads of scenarios with different types of requests we see in production. Types of requests vary from asset size, whether they go through HTTP or HTTPS, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a>, Workers, or one of many additional variables. Below shows the throughput comparison between the two CPUs of the types of requests we see most typically.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="469" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=715&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=640&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=715&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=750&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=828&amp;h=543&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=1080&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=1280&amp;h=840&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A4N0PJQP4XTMA1965TDX.png&amp;w=1430&amp;h=938&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - gQCrQR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="469" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - gQCrQR"></div>
+</figure>
+<p>The results above are ratios using Gen 9's Intel CPUs as the baseline normalized at 1.0 on the X-axis. For example, looking at simple requests of 10KiB assets over HTTPS, we see that AMD does 1.50x better than Intel in Requests per Second. On average for the tests shown on the graph above, AMD performs 34% better than Intel. Considering that the TDP for the single AMD EPYC 7642 is 225W, when compared to two Intel's being 300W, we're looking at AMD delivering up to 2.0x better Requests per Watt vs. the Intel CPUs!</p>
+<p>By this time, we were already leaning heavily toward a single socket setup with AMD EPYC 7642 as our CPU for Gen X. We were excited to see exactly how well AMD EPYC servers would do in production, so we immediately shipped a number of the servers out to some of our data centers.</p>
+<h3>Live Production</h3>
+<p>Step one of course was to get all our test servers set up for a production environment. All of our machines in the fleet are loaded with the same processes and services which makes for a great apples-to-apples comparison. &nbsp;Like data centers everywhere, we have multiple generations of servers deployed, and we deploy our servers in clusters such that each cluster is pretty homogeneous by server generation. In some environments this can lead to varying utilization curves between clusters. &nbsp;This is not the case for us. Our engineers have optimized CPU utilization across all server generations so that no matter if the machine's CPU has 8 cores or 24 cores, CPU usage is generally the same.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454A50X31RSCGWQ66SB7TD.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - m3RGzF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - m3RGzF"></div>
+</figure>
+<p>As you can see above and to illustrate our ‘similar CPU utilization’ comment, there is no significant difference in CPU usage between Gen X AMD powered servers and Gen 9 Intel based servers. This means both test and baseline servers are equally loaded. Good. This is exactly what we want to see with our setup, to have a fair comparison. The 2 graphs below show the comparative number of requests processed at the CPU single core and all core (server) level.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AQZDG0R2112H1PQPWD02.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - ZanLOu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - ZanLOu"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KKNYQRHD4V310YBY007T.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - bIoJDy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - bIoJDy"></div>
+</figure>
+<p>We see that AMD does on average about 23% more requests. That's really good! We talked a lot about bringing more muscle in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>. We have the same number of cores, yet AMD does more work, and does it with less power. Just by looking at the specs for number of cores and TDP in the beginning, it's really nice to see that AMD also delivers significantly more performance with better power efficiency.</p>
+<p>But as we mentioned earlier, TDP isn’t a standardized spec across manufacturers so let’s look at real power usage below. Measuring server power consumption along with requests per second (RPS) yields the graph below:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W4C6KSM6MXNPRCX1SWCH.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - xsCHXY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - xsCHXY"></div>
+</figure>
+<p>Observing our servers request rate over their power consumption, the AMD Gen X server performs 28% better. While we could have expected more out of AMD since its TDP is 25% lower, keep in mind that TDP is very ambiguous. In fact, we saw that AMD actual power draw ran nearly at spec TDP with it's much higher than base frequency; Intel was far from it. Another reason why TDP is becoming a less reliable estimate of power draw. Moreover, CPU is just one component contributing to the overall power of the system. Let’s remind that Intel CPUs are integrated in a multi-node system as described in the <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 blog</a>, while AMD is in a regular 1U form-factor machine. That actually doesn’t favor AMD since multi-node systems are designed for high density capabilities at lower power per node, yet it still outperformed the Intel system on a power per node basis anyway.</p>
+<p>Through the majority of comparisons from the datasheets, test simulations, and live production performance, the 1P AMD EPYC 7642 configuration performed significantly better than the 2P Intel Xeon 6162. We’ve seen in some environments that AMD can do up to 36% better in live production, and we believe we can achieve that consistently with some optimization on both our hardware and software.</p>
+<p>So that's it. AMD wins.</p>
+<p>The additional graphs below show the median and p99 NGINX processing mostly on-CPU time latencies between the two CPUs throughout 24 hours. On average, AMD processes about 25% faster. At p99, it does about 20-50% depending on the time of day.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496E4CR37CA4J8EZQSBF1J.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - WADmuG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - WADmuG"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D7FKY0QFZDDAME3FB151.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - EilnEA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - EilnEA"></div>
+</figure>
+<h3>Conclusion</h3>
+<p>Hardware and Performance engineers at Cloudflare do significant research and testing to figure out the best server configuration for our customers. Solving big problems like this is why <a href="https://www.fastcompany.com/best-workplaces-for-innovators/2019" target="_blank" rel="noopener noreferrer">we love working here</a>, and we're also helping to solve yours with our services like <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">serverless</a> edge compute and the array of security solutions such as <a href="https://blog.cloudflare.com/magic-transit-network-functions">Magic Transit</a>, <a href="https://blog.cloudflare.com/argo-tunnel">Argo Tunnel</a>, and <a href="https://blog.cloudflare.com/unmetered-mitigation">DDoS protection</a>. All of our servers on the Cloudflare Network are designed to make our products work reliably, and we strive to make each new generation of our server design better than its predecessor. We believe the AMD EPYC 7642 is the answer for our Gen X's processor question.</p>
+<p>With <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, developers have enjoyed deploying their applications to our <a href="https://blog.cloudflare.com/tag/cloudflare-network">Network</a>, which is ever expanding across the globe. We’ve been proud to empower our customers by letting them focus on writing their code while we are managing the security and reliability in the cloud. We are now even more excited to say that their work will be deployed on our Gen X servers powered by 2nd Gen AMD EPYC processors.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GV624MS4YSR4B26PKTQJ.jpg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - oTyOIa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: An EPYC trip to Rome: AMD is Cloudflare's 10th-generation Edge server CPU Embedded Image - oTyOIa"></div>
+</figure>
+<p>Expanding Rome to a data center near you</p>
+<p>Thanks to AMD, using the EPYC 7642 allows us to increase our capacity and expand into more cities easier. Rome wasn’t built in one day, but it will be <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">very close to many of you</a>.</p>
+<p>In the last couple of years, we've been experimenting with many Intel and AMD x86 chips along with ARM CPUs. We look forward to having these CPU manufacturers partner with us for future generations so that together we can help build a better Internet.</p>

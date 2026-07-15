@@ -1,0 +1,103 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-side-channel-attack-mitigated">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-side-channel-attack-mitigated">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ai-side-channel-attack-mitigated">Français</a>、<a href="https://blog.cloudflare.com/de-de/ai-side-channel-attack-mitigated">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-side-channel-attack-mitigated">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/ai-side-channel-attack-mitigated">Português</a>、<a href="https://blog.cloudflare.com/es-es/ai-side-channel-attack-mitigated">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-side-channel-attack-mitigated">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JSNy1RBfkYuXFXI331Y0G/09190108c844a05bc1d7dcb23f494573/ai-side-channel-attack-mitigated.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://en.wikipedia.org/wiki/CRIME" target="_blank" rel="noopener noreferrer">CRIME</a>、<a href="https://breachattack.com" target="_blank" rel="noopener noreferrer">BREACH</a>、<a href="https://media.blackhat.com/eu-13/briefings/Beery/bh-eu-13-a-perfect-crime-beery-wp.pdf" target="_blank" rel="noopener noreferrer">TIME</a>、<a href="https://en.wikipedia.org/wiki/Lucky_Thirteen_attack" target="_blank" rel="noopener noreferrer">Lucky -13</a>などの発見以降、長さをベースとするサイドチャネル攻撃は実用性があると考えられてきました。パケットは暗号化されていましたが、パケット長やタイミング情報などのメタデータを分析することによって、その基礎となるプレーンテキストに関する情報を推測し、攻撃することが可能でした。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5do9zHtgVCZfCILMjoXAmV/0f7e2e3b4bdb298d7fd8c0a97d3b2a19/Mitigating-a-Token-Length-Side-Channel-attack-in-our-AI-products.png" alt="Mitigating a token-length side-channel attack in our AI products" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>先般、Cloudflareは、「<a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf" target="_blank" rel="noopener noreferrer">What Was Your Prompt? A Remote Keylogging Attack on AI Assistants</a>」の著者である<a href="https://cris.bgu.ac.il/en" target="_blank" rel="noopener noreferrer">ベングリオン大学</a>の研究者グループから連絡を受けました。その論文では、「Web上でAIアシスタントからの暗号化された応答を読み取るために使用できる新しいサイドチャネル」について説明されています。</p>
+	<p>Workers AI/AI Gatewayチームは、<a href="https://blog.cloudflare.com/cloudflare-bug-bounty-program">パブリックバグバウンティプログラム</a>を通じてこれらのセキュリティ研究者グループと緊密に協力し、LLMプロバイダーに影響を及ぼす脆弱性を発見し、完全にパッチを適用しました。詳細な調査報告は<a href="https://cdn.arstechnica.net/wp-content/uploads/2024/03/LLM-Side-Channel.pdf" target="_blank" rel="noopener noreferrer">こちら</a>からご覧いただけます。</p>
+	<p>この脆弱性について通知を受けて以降、CloudflareはWorkers AI/AI Gatewayのすべてのお客様を保護するために、対策を実装しました。当社が評価した限り、Workers AI/AI Gatewayのお客様への顕著なリスクはありませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-the-side-channel-attack-work">サイドチャネル攻撃のメカニズム</h3>
+		<a href="https://blog.cloudflare.com/#how-does-the-side-channel-attack-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>そのホワイトペーパーでは、筆者らは、LLMプロバイダーとのチャットセッションのストリームの傍受、ネットワークパケットヘッダーを使用した各トークン長の推測、そのシーケンスを抽出したセグメント化、さらに、独自の専用LLMを使って応答を推測する方法について述べています。</p>
+	<p>攻撃を成功させるための2つの主な要件は、<b>ストリーミング</b>モードで実行するAIチャットクライアントと、攻撃者がクライアントとAIチャットサービス間のネットワークトラフィックをキャプチャできる状態であることです。ストリーミングモードでは、LLMトークンが順次送信され、トークン長のサイドチャネルが発生します。攻撃者は、パブリックネットワークやインターネットサービスプロバイダー（ISP）を介してパケットを傍受する可能性があります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EeuXpPSqqvqIZKZUFPKEY/951a777d273caf172933639d9f5d6f12/pasted-image-0--2--3.png" alt="" class="kg-image" width="1600" height="1045" loading="lazy">
+
+	</figure>
+	<p>サイドチャネル攻撃に対して脆弱なリクエストの例は次のようなものです。</p>
+	<p><a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer">Wireshark</a>を使って、ストリーミング中のLLMチャットセッションでネットワークパケットを検査してみましょう。</p>
+	<pre class="language-bash"><code class="language-bash">curl -X POST \
+https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8 \
+  -H "Authorization: Bearer &lt;Token&gt;" \
+  -d '{"stream":true,"prompt":"tell me something about portugal"}'</code></pre>
+	<p>最初のパケットの長さは95で、長さ4のトークン「ポート」に対応しています。 2番目のパケットの長さは93で、長さが2のトークン「ug」に対応するというようになります。 ネットワークのパケット長からトークンのエンベロープを取り除くと、暗号化されたネットワークデータをスニッフィングするだけで、送信された送信数、そのシーケンスと個々の長さを簡単に推測することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sII07hkJGaVXBKlWoBoEW/a1c3be395e0bee3ec5ed690947737d51/media.png" alt="" class="kg-image" width="1600" height="770" loading="lazy">
+
+	</figure>
+	<p>攻撃者には個々のトークン長のシーケンスが必要なので、この脆弱性はストリーミングを使用したテキスト生成モデルにのみ影響します。 つまり、Workers AIのように、LLMとのやり取りに最も一般的な方法であるストリーミングを使用するAI推論プロバイダーが脆弱である可能性があるということです。</p>
+	<p>この方法では、攻撃者が同じネットワーク上にいるか、通信トラフィックを傍受できる位置にある必要があり、その精度はターゲットLLMの記述スタイルを知ることに依存します。 研究者グループによれば、理想的な状態下では、攻撃者のシステムは「AIアシスタントの応答の29%を再構築し、その55%からトピックを推測できる」といいます。また、他のサイドチャネル攻撃とは異なり、この場合、攻撃者には自分の予測を事実に照らして評価する方法がないことにも留意する必要があります。 つまり、完璧に近い精度のセンテンスが得られる可能性もあれば、接続詞しか一致しないセンテンスが得られる可能性もあるということです。</p>
+	<div class="flex anchor relative">
+		<h3 id="mitigating-llm-side-channel-attacks">LLMサイドチャネル攻撃の軽減</h3>
+		<a href="https://blog.cloudflare.com/#mitigating-llm-side-channel-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このタイプの攻撃は、パケットから推測できるトークン長に依存しているため、トークンのサイズを隠蔽することによって簡単に軽減することができます。 研究者グループは、これらのサイドチャネル攻撃を軽減するために、いくつかの戦略を提案しました。その1つは最もシンプルで、トークン応答をランダムな長さのノイズでかさ上げし、パケットから応答が推測できないようにトークン長を隠蔽することです。 私たちはすぐに、自社の推論サービスであるWorkers AIに対策のための機能を追加しましたが、それをAI Gatewayに追加して、お客様がどこでLLMを実行していても、LLMを保護できるようにしたいと考えました。</p>
+	<p>現在、Workers AI/AI Gatewayのすべてのユーザーは、このサイドチャネル攻撃から自動的に保護されています。</p>
+	<div class="flex anchor relative">
+		<h3 id="what-we-did">Cloudflareが行ったこと</h3>
+		<a href="https://blog.cloudflare.com/#what-we-did" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この調査結果と、この技術を悪用するとCloudflareのAIサービスに影響を与えることができるという話を聞き、私たちはこのような状況下で通常行うことを実行しました。すなわち、システムエンジニア、セキュリティエンジニア、プロダクトマネージャーのチームを集め、リスクについて、そして戦略と次のステップについて議論を行ったのです。 研究者グループとも連絡を取り合いました。彼らは積極的に参加し、彼らの結論を提示し、Cloudflareチームの質問に答えてくれました。</p>
+	<p>研究者チームは、攻撃の結果の検証に使用できるテストノートブックを提供してくれました。 私たちはノートブックのサンプルの結果を再現することができましたが、さまざまなプロンプト応答と異なるLLMを使用したテストでは、精度に大きなばらつきがあることがわかりました。それでも、論文には有効性があり、リスクは無視できません。</p>
+	<p>私たちは、論文で提示された最初の対策を実装することにしました。すなわち、各メッセージにランダムなかさ上げを加えることで、ストリーム中のトークンの実際の長さを隠蔽し、ネットワークパケットサイズのみに基づいて情報を推測しようとする試みを難しくするものです。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-ai-our-inference-product-is-now-protected">Cloudflareの推論サービス、Workers AIの保護</h3>
+		<a href="https://blog.cloudflare.com/#workers-ai-our-inference-product-is-now-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの「inference-as-a-service（サービスとしての推論）」サービスを使用すれば、誰でも<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>プラットフォームを使用し、サポートされているAIモデルにAPI呼び出しを行うことができます。これは、モデル間で行われる推論リクエストを監視することを意味します。そのため、Cloudflareはサービスの安全性を確保し、潜在的な脆弱性から保護する責任を負っています。Cloudflareは、調査結果の通知を受けた後、すぐに修正プログラムをロールアウトしました。現在、 Workers AIのすべてのお客様は、このサイドチャネル攻撃から自動的に保護されています。研究者による倫理的テスト以外に、この脆弱性を悪用した悪意のある攻撃は確認されていません。</p>
+	<p>CloudflareのWorkers AIに対するソリューションは、論文で示唆された軽減策を修正したものです。 未加工のトークンではなく、JSONオブジェクトをストリーミングし、トークンを空白文字でかさ上げする代わりに、ランダムな長さの文字列値を持つ新しいプロパティ「p」（かさ上げ用）を追加しました。</p>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" target="_blank" rel="noopener noreferrer">SSE</a>シンタックスを使用したストリーミングレスポンスのサンプル</p>
+	<p>これには、SDKやクライアントコードの変更が不要で、エンドユーザーには変更が見えず、お客様からの操作が不要という利点があります。 JSONオブジェクトにランダムな変数の長さを追加することで、同じネットワークレベルの変動性が導入され、攻撃者は本質的に、（攻撃に）必要な入力シグナルを失うことになります。お客様は、この機能で保護されながら、今までどおりWorkers AIを使い続けることができます。</p>
+	<pre class="language-js"><code class="language-js">data: {"response":"portugal","p":"abcdefghijklmnopqrstuvwxyz0123456789a"}
+data: {"response":" is","p":"abcdefghij"}
+data: {"response":" a","p":"abcdefghijklmnopqrstuvwxyz012"}
+data: {"response":" southern","p":"ab"}
+data: {"response":" European","p":"abcdefgh"}
+data: {"response":" country","p":"abcdefghijklmno"}
+data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="one-step-further-ai-gateway-protects-users-of-any-inference-provider">さらなるステップ：AI Gatewayはあらゆる推論プロバイダーのユーザーを保護</h3>
+		<a href="https://blog.cloudflare.com/#one-step-further-ai-gateway-protects-users-of-any-inference-provider" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareはAI推論サービスに保護を追加しましたが、あらゆるプロバイダーへのリクエストをプロキシするサービス、<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">AI Gateway</a>も存在します。AI Gatewayは、ユーザーとサポートされた推論プロバイダーとの間のプロキシとして機能し、開発者はAIアプリの制御、パフォーマンス、可観測性を得ることができます。より良いインターネットの構築を支援するというCloudflareの使命に沿って、利用しているプロバイダーやそのプロバイダーにこの攻撃を防止するための対策があるかどうかにかかわらず、テキスト生成AIを使用するすべてのお客様を支援できる修正を迅速にロールアウトしたいと考えました。そのために、AI Gatewayを経由してプロキシされたすべてのストリーミング応答を可変長のランダムノイズでかさ上げする同様のソリューションを実装しました。</p>
+	<p>現在、CloudflareのAI Gatewayのお客様は、アップストリームの推論プロバイダーがまだ脆弱性への対策を行っていない場合でも、このサイドチャネル攻撃から自動的に保護されます。 推論プロバイダーがこの脆弱性に対策をしているかどうかが不明な場合は、AI Gatewayを使用してリクエストをプロキシし、保護を確実にしてください。</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">まとめ</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの使命は、より良いインターネットの構築を支援することです。これは、私たちが、皆様の技術スタックがどのようなものであっても、インターネット上のすべての人々を大切にしているという意味です。私たちは、透明性を保ちながら、お客様からの操作を必要としない方法でAIサービスのセキュリティを向上させる取り組みを続けています。</p>
+	<p>この脆弱性を発見し、Cloudflareが問題の領域を把握するために非常な協力してくれた研究者の皆さんに感謝します。Cloudflare製品の安全性向上に関心をお持ちのセキュリティ研究者の皆様には、Cloudflareのバグバウンティプログラム <a href="http://hackerone.com/cloudflare" target="_blank" rel="noopener noreferrer">hackerone.com/cloudflare</a>をご検討いただければ幸いです。</p>
+</div>

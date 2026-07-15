@@ -1,0 +1,78 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/langchain-support-for-workers-ai-vectorize-and-d1">English</a>、<a href="https://blog.cloudflare.com/zh-tw/langchain-support-for-workers-ai-vectorize-and-d1">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/langchain-support-for-workers-ai-vectorize-and-d1">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/langchain-support-for-workers-ai-vectorize-and-d1">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FdsWC93DdHDIkxgMMupNg/956c0476606e307cca5eb7351d4b96e6/langchain-support-for-workers-ai-vectorize-and-d1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Developer Weekの期間中、<a href="https://blog.cloudflare.com/langchain-and-cloudflare">Cloudflare Workersに対するLangChainのサポート</a>を発表しました。Langchainは、開発者が宣言型API Workersを使用して、さまざまなモデル、プロバイダー、プラグインを組み合わせることによって、強力なAIワークフローを作成することができるオープンソースのフレームワークです。また、フルスタックのAIを使用したアプリケーションを作成するためのWorkersと完全に適合します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vfmv2IUCSWhFxb0iIhRwp/d0ac73a938febe9bc24538979871acba/X2uuTU5jqOf4kskV9IUy6-EFJtW1QL7NCTeaIK1Ezs29fHv5rxii32xZ_eAu-9IHMQQhzevrxEeUR4Zq5_C0Y_HmIciI-GZaj-RbEnRI4vnshmYAV6jymeq1KXQr.png" alt="LangChain Support for Workers AI, Vectorize and D1" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>これを受けて、私たちはCloudflareの開発者プラットフォーム全体で多くのツールのより深い統合に向けてLangChainチームと協力してきました。私たちのこれまでの成果を皆様にお伝えできることをうれしく思います。</p>
+	<p>本日、当社はLangChainとの新たな5つの主な統合を発表します。</p>
+	<ol>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/chat/cloudflare_workersai" target="_blank" rel="noopener noreferrer">Workers AI チャットモデル</a>：<a href="https://developers.cloudflare.com/workers-ai/models/text-generation" target="_blank" rel="noopener noreferrer">Workers AI テキスト生成</a>を使用することで、LangChain.jsを使用したアプリ内のチャットモデルを強化します。</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/llms/cloudflare_workersai" target="_blank" rel="noopener noreferrer">Workers AI指示モデル</a>：MistralやCodeLlamaなどのユースケースを指示するために微調整されたWorkers AIモデルを、Langchain.jsを使用したアプリ内で使用できるようになります。</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/text_embedding/cloudflare_ai" target="_blank" rel="noopener noreferrer">テキスト埋め込みモデル</a>：テキストの埋め込みを使用する場合、LangChain.jsで<a href="https://developers.cloudflare.com/workers-ai/models/text-embeddings" target="_blank" rel="noopener noreferrer">Workers AIテキスト埋め込み</a>機能を使用できるようになりました。</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/vectorstores/cloudflare_vectorize" target="_blank" rel="noopener noreferrer">Vectorize Vector Store</a>：ベクトルデータベースとLangChain.jsを使用する場合、Cloudflareの強力なベクトルデータベースである<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>を使用するオプションが利用できるようになりました。</p>
+		</li>
+		<li>
+			<p><a href="https://js.langchain.com/docs/integrations/chat_memory/cloudflare_d1" target="_blank" rel="noopener noreferrer">Cloudflare D1によるチャットメモリのサポート</a>：長時間持続するチャットセッションに備え、LangChainのデフォルトのメモリ内chatHistoryを<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">Cloudflare D1インスタンス</a>に置き換えてCloudflare D1インスタンスのBufferMemoryのようなチャットメモリクラスをサポートすることができます。</p>
+		</li>
+	</ol>
+	<p>これら5つのCloudflare AIツールがLangChainに加わったことで、開発者は新規および既存のAIアプリに統合するための強力な新たなプリミティブを手に入れることができます。LangChainのAIツールとモデルの混在とマッチングに使う表現力豊かなツールがあれば、Vectorize、Cloudflare AIのテキスト埋め込みおよび生成モデル、Cloudflare D1を使って、わずか数行のコードで完全な機能を備えたAIアプリを構築することができます。</p>
+	<blockquote>
+		<p>This is a full persistent chat app powered by an LLM in 10 lines of code–deployed to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Cloudflare</a> Workers, powered by <a href="https://twitter.com/LangChainAI?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@LangChainAI</a> and <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Cloudflare</a> D1.</p>
+		<p>You can even pass in a unique sessionId and have completely user/session-specific conversations 🤯 <a href="https://t.co/le9vbMZ7Mc" target="_blank" rel="noopener noreferrer">https://t.co/le9vbMZ7Mc</a> <a href="https://t.co/jngG3Z7NQ6" target="_blank" rel="noopener noreferrer">pic.twitter.com/jngG3Z7NQ6</a></p>
+		<p>— Kristian Freeman (@kristianf_) <a href="https://twitter.com/kristianf_/status/1704592544099631243?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">September 20, 2023</a></p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-a-cloudflare-langchain-nuxt-multi-source-chatbot-template">マルチソースチャットボットテンプレート（Cloudflare + LangChain + Nuxt）の利用を開始する</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-a-cloudflare-langchain-nuxt-multi-source-chatbot-template" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LangChainのCloudflareチャットボットテンプレートを使用して始めてみましょう：<a href="https://github.com/langchain-ai/langchain-cloudflare-nuxt-template" target="_blank" rel="noopener noreferrer">https://github.com/langchain-ai/langchain-cloudflare-nuxt-template</a></p>
+	<p>このアプリケーションでは、Cloudflare Workers AIのさまざまな部分がどのように組み合わされているかを見ることができます。複数のデータソース間を行き来して、与えられた質問を基により関連性の高いものを選択する対話型検索システムを構築するために、<a href="https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai" target="_blank" rel="noopener noreferrer">検索拡張生成（RAG）</a>の概念を拡張しています。この方法は、単一のデータベースのみを使用する場合にベクトルストアの類似性検索によって引き起こされる可能性のある、関連性のない文書が引き出されることによる混乱を減らすことができます。</p>
+	<p>基本バージョンは、Llama 2-7Bモデルを使用してCloudflare Workers AIスタック上で完全に動作します。下記を使います：</p>
+	<ul>
+		<li>
+			<p>Cloudflare Workers AIで動作するLlama 2-7Bのチャット亜種</p>
+		</li>
+		<li>
+			<p>Cloudflare Workers AI埋め込みモデル</p>
+		</li>
+		<li>
+			<p>2つのCloudflare Vectorize DB（さらに追加することも可能）</p>
+		</li>
+		<li>
+			<p>Cloudflare Pages（ホスティング用）</p>
+		</li>
+		<li>
+			<p>LangChain.js（調整用）</p>
+		</li>
+		<li>
+			<p>Nuxt + Vue（フロントエンド用）</p>
+		</li>
+	</ul>
+	<p>デフォルトのデータソースは、<a href="https://www.cloudflare.com/resources/assets/slt3lc6tev37/3HWObubm6fybC0FWUdFYAJ/5d5e3b0a4d9c5a7619984ed6076f01fe/Cloudflare_for_Campaigns_Security_Guide.pdf" target="_blank" rel="noopener noreferrer">Cloudflareの機能の一部を説明したPDF</a>と、<a href="https://lilianweng.github.io/posts/2023-06-23-agent" target="_blank" rel="noopener noreferrer">OpenAIのLilian Weng氏による自律エージェントに関するブログ投稿記事</a>の2つです。</p>
+	<p>ボットは、与えられた質問がCloudflareに関するものであるか、AIに関するものであるか、またはそのどちらでもないものかに分類し、対応するデータソースを利用してより的を絞った結果を取得します。すべてが完全にカスタマイズ可能となっており、取り込んだデータの内容、使用するモデル、すべてのプロンプトの変更が可能です。</p>
+	<p>また、<a href="https://smith.langchain.com" target="_blank" rel="noopener noreferrer">LangSmith</a>ベータ版へのアクセスが可能であれば、アプリにはトレースがセットアップされているため、アプリの<a href="https://smith.langchain.com/public/24807f4a-4335-497e-bfbf-3a1de019b22e/r" target="_blank" rel="noopener noreferrer">各ステップを簡単に確認してデバッグ</a>することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="we-cant-wait-to-see-what-you-build">皆様がどのようなものを構築されるのか楽しみにしています</h3>
+		<a href="https://blog.cloudflare.com/#we-cant-wait-to-see-what-you-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>LangChainとCloudflareを使って皆様がどのようなものを構築されるのか楽しみにしています。是非、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a>や<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">コミュニティフォーラム</a>でお知らせください。</p>
+</div>

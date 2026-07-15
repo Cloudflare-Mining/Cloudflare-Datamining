@@ -1,0 +1,143 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare">English</a>、<a href="https://blog.cloudflare.com/zh-tw/a-step-by-step-guide-to-transferring-domains-to-cloudflare">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/a-step-by-step-guide-to-transferring-domains-to-cloudflare">Français</a>、<a href="https://blog.cloudflare.com/de-de/a-step-by-step-guide-to-transferring-domains-to-cloudflare">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/a-step-by-step-guide-to-transferring-domains-to-cloudflare">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/a-step-by-step-guide-to-transferring-domains-to-cloudflare">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Joqdyk5YX96Jcx0cz0Jni/dba077fd62c95de47ff082f69f9e4ed2/a-step-by-step-guide-to-transferring-domains-to-cloudflare.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>ドメインを新しいレジストラに移管することは日々行うことではありません。また、プロセスの手順を間違えるとダウンタイムや中断を招く可能性があります。そこで、今回のSpeed Weekでドメイン移管チェックリストをご用意しました。私たちは、誰もが自分のドメインを、手順を見落としたり疑問を抱くことなくCloudflare Registrarに迅速に移管できるようにしたいと考えています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m5xyu3d7H4TFzymFCKDWZ/56264f55a7a3d1d72f799f4018577c62/image1-36.png" alt="A step-by-step guide to transferring domains to Cloudflare" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="domain-transfer-checklist">ドメイン移管チェックリスト</h2>
+		<a href="https://blog.cloudflare.com/#domain-transfer-checklist" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="confirm-eligibility">適格性の確認</h3>
+		<a href="https://blog.cloudflare.com/#confirm-eligibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>**Cloudflareのネームサーバーの利用を考えていることを確認します：**当社のレジストラは<a href="https://blog.cloudflare.com/cloudflare-registrar">Cloudflareの他の製品をご利用の方向けに構築されています</a>。そのため、Cloudflareで登録されたドメインは、当社のネームサーバー以外を利用することはできません。<i>お客様のドメインがCloudflare以外のネームサーバーを必要とする場合、当社はお客様に適したレジストラではありません。</i></p>
+		</li>
+		<li>
+			<p>**Cloudflareがお客様のドメインのTLDをサポートしていることを確認します：**当社が<a href="https://www.cloudflare.com/tld-policies" target="_blank" rel="noopener noreferrer">現在サポートしているTLDの全リストはこちら</a>からご覧いただけます。<i>注：2023年7月中旬までに.devと.appのサポートを予定しています。</i></p>
+		</li>
+		<li>
+			<p>**お客様のドメインがプレミアムドメインまたは国際化ドメイン名（IDN）でないことを確認します：**現在、Cloudflareはプレミアムドメインや国際化ドメイン名（Unicode）をサポートしていません。</p>
+		</li>
+		<li>
+			<p>**ドメインが過去60日以内に登録または移管されていないことを確認します：**ICANNの規則では、ドメインが過去60日以内に登録または移管されている場合、そのドメインを移管することは禁止されています。</p>
+		</li>
+		<li>
+			<p>**WHOISの登録者の連絡先情報が過去60日間に更新されていないことを確認します：**ICANNの規則では、 WHOISの登録者の連絡先情報が過去60日以内に変更された場合も、ドメインの移管が禁止されています。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="before-you-transfer">移管前</h3>
+		<a href="https://blog.cloudflare.com/#before-you-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>**現在のレジストラの資格情報を確認します：**お客様の現在のレジストラに関する資格情報がお手元にあることを確認します。何年もログインしておらず、パスワードのリセットが必要な場合があります。</p>
+		</li>
+		<li>
+			<p>**現在のDNSの設定内容をメモします：**ドメインを移管する際、Cloudflare は自動的にDNSレコードを読み取りますが、問題が発生した場合に備えて現在の設定内容を記録しておくことをお勧めします。</p>
+		</li>
+		<li>
+			<p>**WHOISのプライバシーを解除します (必要な場合)：**ほとんどの場合、WHOISのプライバシーサービスが有効になっていてもドメインの移管は可能ですが、一部のレジストラは有効な場合に移管を禁止する場合があります。</p>
+		</li>
+		<li>
+			<p>**DNSSECを無効にします：**現在のDNSホストでDSレコードを削除し、<a href="https://developers.cloudflare.com/registrar/account-options/enable-dnssec" target="_blank" rel="noopener noreferrer">CloudflareダッシュボードでDNSSECを無効</a>にすることで<a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a>を無効にすることができます。</p>
+		</li>
+		<li>
+			<p>**ドメインの更新を15日以内に控えている場合、ドメインを更新します：**ドメインの更新を控えている場合、移管開始前にドメインを更新する必要があります。</p>
+		</li>
+		<li>
+			<p>**ドメインのロックを解除します：**レジストラには、不正なレジストラ移管を阻止するための軽量な保護手段（しばしばレジストラまたはドメインロックと呼ばれます）が搭載されています。このロックにより、他のレジストラによる移管が阻止されます。ロックを有効または無効にできるのは登録者だけで、通常レジストラの管理インターフェイスで行います。</p>
+		</li>
+		<li>
+			<p>**Cloudflareに登録します：**まだCloudflareのアカウントをお持ちでない方は、<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">こちらから登録してください</a>。</p>
+		</li>
+		<li>
+			<p><b>お使いのドメインをCloudflareに追加します：</b><a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site" target="_blank" rel="noopener noreferrer">こちらの手順に従い、</a>Cloudflareアカウントに新しいドメインを追加します。</p>
+		</li>
+		<li>
+			<p>**Cloudflareアカウントに有効なクレジットカードを追加します：**まだCloudflareダッシュボードの請求プロフィールに支払い方法を追加していない場合、ドメインを追加する際に追加するよう求められます。</p>
+		</li>
+		<li>
+			<p>**CloudflareのDNSレコードを見直します：**ドメイン追加後、<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#review-dns-records" target="_blank" rel="noopener noreferrer">Cloudflareが自動的に設定したDNSレコード</a>と現在のレジストラで使用しているレコードと照合し、漏れがないことを確認します。</p>
+		</li>
+		<li>
+			<p>**DNSのネームサーバーをCloudflareに変更します：**ドメインを移管するには<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup" target="_blank" rel="noopener noreferrer">ネームサーバーをCloudflareに設定</a>する必要があります。</p>
+		</li>
+		<li>
+			<p>（<b>オプション）Cloudflare Email Routingを設定します：</b><a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing" target="_blank" rel="noopener noreferrer">メール転送機能</a>を使用している場合、<a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">こちらのガイドに従い、Cloudflare Email Routingに移行</a>します。</p>
+		</li>
+		<li>
+			<p>**DNSの変更が反映されるまで待機します：**レジストラによるネームサーバーの更新処理は24時間かかることがあります。 Cloudflareがこれらの変更が反映されたことを確認すると、お客様宛にメールが届きます。このプロセスが完了するまで、ドメインの移管作業を続行することはできません。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="initiating-and-confirming-transfer-process">移管手続きの開始と確認</h3>
+		<a href="https://blog.cloudflare.com/#initiating-and-confirming-transfer-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>**認証コードを要求します：**Cloudflareは移管フローが承認されていることを旧レジストラに確認する必要があります。そのために、旧レジストラはお客様に認証コードを提供します。このコードは、認証コード、authコード、authinfoコード、または移管コードと呼ばれます。Cloudflareへの移管を完了するために、そのコードを入力する必要があります。当社はこのコードを使用して移管が真正であることを確認します。</p>
+		</li>
+		<li>
+			<p>**Cloudflare への移管を開始します：**Cloudflare ダッシュボードの<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fdomains%2Ftransfer" target="_blank" rel="noopener noreferrer">ドメイン移管セクション</a>にアクセスします。ここには移管可能なドメインが表示されます。ドメインが表示されていない場合は、手順がすべて完了していることを確認してください。完了している場合、<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#5-initiate-your-transfer-to-cloudflare" target="_blank" rel="noopener noreferrer">こちらページのリスト</a>を確認してお客様のドメインに該当するものがあるかどうかを確認してください。</p>
+		</li>
+		<li>
+			<p><b>移管にかかる価格を確認します：</b><b><b>ドメインを移管する際、有効期限を1年延長するための支払いがICANNから求められます。このステップでは請求は行われません。 Cloudflareは、移管リクエストの最終段階で、認証コードを入力し、連絡先情報を確認した後に、お客様のカードに請求を行います</b></b>。****</p>
+		</li>
+		<li>
+			<p>**認証コードを入力します：**次のページで、移管する各ドメインの認証コードを入力します。</p>
+		</li>
+		<li>
+			<p>**連絡先情報の確認または入力を行います：**移管プロセスの最終段階では、登録の連絡先情報を入力します。Cloudflare Registrarはデフォルトでこの情報を編集しますが、この登録のための正規の連絡先情報を収集する必要があります</p>
+		</li>
+		<li>
+			<p>**Cloudflareで移管を承認します：**移管を申請すると、 Cloudflareによる移管の処理が開始され、公開されているWHOIS データベースに情報がある場合、ドメイン移管を承認するFOA（認証フォーム）メールが登録者に送信されます。</p>
+		</li>
+		<li>
+			<p><b>以前のレジストラで移管を承認します：</b> このステップの後、以前のレジストラからも、移管リクエストに対する確認メールが送信されます。ほとんどのレジストラからのメールには、移管リクエストを確認するためのリンクが含まれています。そのリンクに従うことで、移管作業を早期に完了することができます。従わない場合、レジストラはCloudflareへの移管処理に最大5日間の待機期間が発生する場合があります。また、現在のレジストラのダッシュボード内から移管を承認できる場合もあります。</p>
+		</li>
+		<li>
+			<p>**Cloudflareダッシュボードで移管状況を確認します：**ドメインの<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-statuses" target="_blank" rel="noopener noreferrer">移管状況</a>は、[Account Home]（アカウントホーム） &gt; [Overview]（概要） &gt; [Domain Registration]（ドメイン登録）で確認できます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="after-you-transfer">移管後</h3>
+		<a href="https://blog.cloudflare.com/#after-you-transfer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>**サイトとメールのテストを実施します：**移管完了後、サイトが正常に機能していることをテストします。問題が発生した場合や質問がある場合、いつでも<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">コミュニティフォーラム</a> または <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discordサーバー</a>から私たちまでお問い合わせください。</p>
+		</li>
+		<li>
+			<p>**何か新しいものを構築します：**おそらくこれは、購入したもののまだ何も立ち上げていないドメインでしょう。ドメインを移管した今、このドメインで何か新しいものを構築して立ち上げる絶好のチャンスです。<a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank" rel="noopener noreferrer">C3を使用してお好みのフロントエンドフレームワークで構築した新しいプロジェクトを立ち上げたり</a>、<a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity" target="_blank" rel="noopener noreferrer">Cloudflare PagesでNuxt.jsとSanity.ioを使用してブログを構築</a>したり、<a href="https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">Cloudflare Workersを使用して始めてのChatGPTプラグインを構築</a>してみましょう。</p>
+		</li>
+	</ul>
+</div>

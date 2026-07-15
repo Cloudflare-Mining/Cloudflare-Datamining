@@ -1,70 +1,31 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2F8pJFpLVTpsESvptu57Se/7bc945f6e838c9b8ddcfdf07a6372e46/app-goodbye-apture-hello-highlight.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="the-problem-apture-disappearing">The Problem: Apture Disappearing</h3>
-		<a href="https://blog.cloudflare.com/#the-problem-apture-disappearing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since its June introduction as a CloudFlare App, Apture's contextual search service has been popular. Thousands of CloudFlare customers installed the app.</p>
-	<p>In November, we heard that Apture was shutting down their service, as part of their acquisition by Google. Good for them, but we thought immediately "What can we do for CloudFlare site owners?"</p>
-	<p>Our first instinct was to look around for a replacement service, or more than one, but no obvious alternative emerged. And Apture's deadline for turning the service off was set to Tuesday, December 20.</p>
-	<p>What to do?</p>
-	<div class="flex anchor relative">
-		<h3 id="the-response-one-day-hackathon">The Response: One-Day Hackathon</h3>
-		<a href="https://blog.cloudflare.com/#the-response-one-day-hackathon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Three folks on the CloudFlare team -- Ram, Chris, and Kevin -- decided they could make something similar and useful, given a little bit of time. Offered a single day, as a mini-hackathon, the enthusiastic trio agreed. Our positive experience with <a href="https://blog.cloudflare.com/favris-is-cloudflare-winner-at-techcrunch-dis">larger hackathons</a> helped set the model and expectations.</p>
-	<p>On December 7, Ram, Chris and Kevin closed the door of a conference room and ignored the rest of the team. They started with pastries and coffee. A clean whiteboard was quickly filled.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6czXGXMoFjfIXrnDNuJX8c/9d1450ce1f9116827ecafce6101ebbde/whiteboard-and-pastries.jpg.scaled500.jpg" alt="App: Goodbye Apture, Hello Highlight" class="kg-image" width="500" height="290" loading="lazy">
-
-	</figure>
-	<p>Later in the day, brief interruptions were tolerated for delivery of burritos and Red Bull.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/uDEAvD8JUVMmWwVt9SPXj/25ddb674a8e0d8cfc0b361f556bbbe49/burritos.jpg.scaled500.jpg" alt="App: Goodbye Apture, Hello Highlight" class="kg-image" width="500" height="332" loading="lazy">
-
-	</figure>
-	<p>The team combined several technologies, internal and external, to deliver a simple, polished experience. Free APIs from Bing and DuckDuckGo were explored and put to use. <a href="http://js.cloudflare.com" target="_blank" rel="noopener noreferrer">CloudFlareJS</a> as a JavaScript loader made performance straightforward.</p>
-	<p>Many additional ideas were discussed, but 12 hours isn't much time. The team decided on delivering the core functions of web search, definitions, and (a nice touch) incorporating the "read aloud" benefits of Pronounce, an existing CloudFlare app.</p>
-	<p>It was a long day, but ultimately successful for Ram, Chris, and Kevin. And for CloudFlare customers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fMtWwKAI290dtPNAlFBne/c5ed6268f43be3488db6c455d9aa433f/Ram_Chris_Kevin_Finished_Work.JPG.scaled500.jpg" alt="App: Goodbye Apture, Hello Highlight" class="kg-image" width="500" height="332" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="the-result-highlight">The Result: Highlight</h3>
-		<a href="https://blog.cloudflare.com/#the-result-highlight" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">Highlight</a> is a one-click install on your CloudFlare-powered site. Highlight gives your site visitors contextual web search and definitions -- and no one needs to leave your site.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FLPNcUeHcMfksfi2GSDZQ/6e659f98fe2697a18de7a42b0b40b4a6/highlight-detail.png.scaled500.png" alt="App: Goodbye Apture, Hello Highlight" class="kg-image" width="465" height="220" loading="lazy">
-
-	</figure>
-	<p>Visitors select a word or phrase, and a quiet tooltip appears, inviting them to seek more info or simply listen to the word or phrase read out loud.</p>
-	<div class="flex anchor relative">
-		<h3 id="invitation-to-apture-customers">Invitation to Apture Customers</h3>
-		<a href="https://blog.cloudflare.com/#invitation-to-apture-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare customers looking to replace Apture simply need to <a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">turn on Highlight</a>.</p>
-	<p>Not yet a CloudFlare customer? Take five minutes and <a href="https://www.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">sign up for CloudFlare</a>. And then use CloudFlare Apps to <a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">install Highlight</a> as a worthy replacement to Apture.</p>
-</div>
+<h3>The Problem: Apture Disappearing</h3>
+<p>Since its June introduction as a CloudFlare App, Apture's contextual search service has been popular. Thousands of CloudFlare customers installed the app.</p>
+<p>In November, we heard that Apture was shutting down their service, as part of their acquisition by Google. Good for them, but we thought immediately "What can we do for CloudFlare site owners?"</p>
+<p>Our first instinct was to look around for a replacement service, or more than one, but no obvious alternative emerged. And Apture's deadline for turning the service off was set to Tuesday, December 20.</p>
+<p>What to do?</p>
+<h3>The Response: One-Day Hackathon</h3>
+<p>Three folks on the CloudFlare team -- Ram, Chris, and Kevin -- decided they could make something similar and useful, given a little bit of time. Offered a single day, as a mini-hackathon, the enthusiastic trio agreed. Our positive experience with <a href="https://blog.cloudflare.com/favris-is-cloudflare-winner-at-techcrunch-dis">larger hackathons</a> helped set the model and expectations.</p>
+<p>On December 7, Ram, Chris and Kevin closed the door of a conference room and ignored the rest of the team. They started with pastries and coffee. A clean whiteboard was quickly filled.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="290" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=500&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=500&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=750&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=828&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489145G26D4SWTS9VWCDA9.jpg&amp;w=1000&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="App: Goodbye Apture, Hello Highlight" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="290" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: App: Goodbye Apture, Hello Highlight"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Later in the day, brief interruptions were tolerated for delivery of burritos and Red Bull.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45537A5RE4Y8H8MA8EM88M.jpg&amp;w=1000&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="App: Goodbye Apture, Hello Highlight" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="332" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: App: Goodbye Apture, Hello Highlight"></div>
+</figure>
+<p>The team combined several technologies, internal and external, to deliver a simple, polished experience. Free APIs from Bing and DuckDuckGo were explored and put to use. <a href="http://js.cloudflare.com" target="_blank" rel="noopener noreferrer">CloudFlareJS</a> as a JavaScript loader made performance straightforward.</p>
+<p>Many additional ideas were discussed, but 12 hours isn't much time. The team decided on delivering the core functions of web search, definitions, and (a nice touch) incorporating the "read aloud" benefits of Pronounce, an existing CloudFlare app.</p>
+<p>It was a long day, but ultimately successful for Ram, Chris, and Kevin. And for CloudFlare customers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=500&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QD0YSA4BYFY2A5X46XWG.jpg&amp;w=1000&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="App: Goodbye Apture, Hello Highlight" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="332" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: App: Goodbye Apture, Hello Highlight"></div>
+</figure>
+<h3>The Result: Highlight</h3>
+<p><a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">Highlight</a> is a one-click install on your CloudFlare-powered site. Highlight gives your site visitors contextual web search and definitions -- and no one needs to leave your site.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="465" height="220" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=465&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=465&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 465w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=640&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=750&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=828&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45WNGJ86Q88G1SQHCRP9PG.png&amp;w=930&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 930w" alt="App: Goodbye Apture, Hello Highlight" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 465px) 465px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="465" height="220" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: App: Goodbye Apture, Hello Highlight"></div>
+</figure>
+<p>Visitors select a word or phrase, and a quiet tooltip appears, inviting them to seek more info or simply listen to the word or phrase read out loud.</p>
+<h3>Invitation to Apture Customers</h3>
+<p>CloudFlare customers looking to replace Apture simply need to <a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">turn on Highlight</a>.</p>
+<p>Not yet a CloudFlare customer? Take five minutes and <a href="https://www.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">sign up for CloudFlare</a>. And then use CloudFlare Apps to <a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">install Highlight</a> as a worthy replacement to Apture.</p>

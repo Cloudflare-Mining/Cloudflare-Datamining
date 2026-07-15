@@ -1,0 +1,154 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/enhancing-security-analysis-with-cloudflare-zero-trust-logs-and-elastic-siem">English</a>、<a href="https://blog.cloudflare.com/zh-tw/enhancing-security-analysis-with-cloudflare-zero-trust-logs-and-elastic-siem">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/enhancing-security-analysis-with-cloudflare-zero-trust-logs-and-elastic-siem">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/enhancing-security-analysis-with-cloudflare-zero-trust-logs-and-elastic-siem">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tWVYPN3vPmm40W5rh28Jp/be1d313fe7727a6246bc872034817455/enhancing-security-analysis-with-cloudflare-zero-trust-logs-and-elastic-siem.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、Elasticでの新しいCloudflare Zero Trustダッシュボードを発表できることを嬉しく思います。Elasticを使用する共通のお客様は、これらのあらかじめ構築された<a href="https://docs.elastic.co/integrations/cloudflare_logpush#zero-trust-events" target="_blank" rel="noopener noreferrer">ダッシュボードを使用して、Zero Trustログを保存、検索、分析</a>することができるようになりました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/696ov5uPtgNwN7Qm735ESm/6f88ef27e4cacb8057d6e600fd20d378/image3-7.png" alt="Enhancing security analysis with Cloudflare Zero Trust logs and Elastic SIEM" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>組織が<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustアーキテクチャ</a>の導入を検討する際、多くのコンポーネントを正しく設定する必要があります。製品に設定ミスがあったり、悪意を持って使用されたり、プロセス中に何らかの形でセキュリティが侵害された場合、データから迅速かつ効率的に知見を得ることができずに、潜在的なセキュリティリスクに企業をさらす可能性があります。</p>
+	<p>CloudflareのテクノロジーパートナーであるElasticは、アプリケーションをスムーズに稼働させ、<a href="https://www.cloudflare.com/products/zero-trust/threat-defense" target="_blank" rel="noopener noreferrer">サイバー脅威から保護</a>しながら、Cloudflareのお客様が必要なものをより早く見つけることができるよう支援します。Elasticの最高収益責任者であるMark Dodds氏は、「Cloudflareとのコラボレーションにより、ログおよび分析ダッシュボードの展開がさらに容易になったことを嬉しく思います。このパートナーシップは、ElasticのオープンなアプローチとCloudflareの実用的なソリューションを組み合わせたもので、企業の検索、可観測性、セキュリティのデプロイのための分かりやすいツールを提供します」と、説明しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="value-of-zero-trust-logs-in-elastic">ElasticにおけるZero Trustログの価値</h2>
+		<a href="https://blog.cloudflare.com/#value-of-zero-trust-logs-in-elastic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kDqbu2kQvUL1P47N6aDMY/8dacf9b75432a900b32cb900f080366a/image5-3.png" alt="" class="kg-image" width="1999" height="1152" loading="lazy">
+
+	</figure>
+	<p>この共同ソリューションにより、お客様はLogpushジョブを介してZero TrustログをElasticにシームレスに転送することが簡単にできました。これは、Restful API経由で直接実現することも、AWS S3やGoogle Cloudのような中間ストレージソリューションを通じて実現することもできます。さらに、CloudflareのElasticとの連携機能は、Cloudflareによって生成されたZero Trustログのすべてのカテゴリーを包含するように改善が行われています。</p>
+	<p><b>この連携機能によって提供される主な機能を以下に詳しく説明します</b>：</p>
+	<ul>
+		<li>
+			<p><b>包括的な可視性</b>：CloudflareのLogpushをElasticと連携することで、組織はZero Trustに関連するイベントをリアルタイムかつ包括的に見ることができるようになります。これにより、リソースやアプリケーションに誰が、どこから、いつアクセスしているかを詳細に把握することができます。可視性を向上することで、異常な挙動や潜在的なセキュリティ脅威をより効果的に検出し、早期な対応と緩和が可能になります。</p>
+		</li>
+		<li>
+			<p><b>フィールドの正規化</b>：Zero TrustログからのデータをElasticにまとめることで、Zero Trustログだけでなく他のソースのフィールドも正規化して統一した形式で表示することができます。これにより、検索と分析のプロセスが簡素化されます。正規化により、アラートの作成や、悪意のある、または異常なアクティビティのパターンの特定も容易になります。</p>
+		</li>
+		<li>
+			<p><b>効率的な検索と分析</b>：Elasticは強力なデータ検索と分析機能を提供します。ElasticにZero Trustログを入れることで、特定の情報を迅速かつ正確に検索できます。これはセキュリティインシデントの調査、ワークフローの理解、情報に基づいた意思決定を行うために非常に重要です。</p>
+		</li>
+		<li>
+			<p><b>相関関係と脅威の検出</b>：Zero Trustデータを他のセキュリティイベントやデータと組み合わせることで、Elasticによる、より深くより効果的な相関関係の検出が可能になります。これは、各データソースを個別に分析することでは気付くことができない可能性のある脅威を検出するために不可欠です。相関関係は、パターン識別と高度な攻撃の検出に役立ちます。</p>
+		</li>
+		<li>
+			<p><b>既製のダッシュボード</b>：この連携機能により、主要な指標やパターンを迅速に視覚化できる、すぐに使えるダッシュボードが提供されます。これらのダッシュボードは、セキュリティチームがセキュリティの状態を明確かつ簡潔に可視化するのに役立ちます。この連携機能により、利用者はZero Trustデータセット用に設計された既成のダッシュボードをの利点を利用できますが、独自の可視化を作成することもできます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="whats-new-on-the-dashboards">ダッシュボードの新機能</h2>
+		<a href="https://blog.cloudflare.com/#whats-new-on-the-dashboards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この連携の主な特徴の1つは、Zero Trustログの各タイプに専用にカスタマイズされた既成のダッシュボードです。これらのダッシュボードからいくつかをより詳細に取り上げ、可視性の面でどのように役立つかを見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="gateway-http">ゲートウェイHTTP</h3>
+		<a href="https://blog.cloudflare.com/#gateway-http" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このダッシュボードは、HTTPトラフィックに焦点を当てたもので、Cloudflareの<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">セキュアWebゲートウェイ</a>を通過するHTTPリクエストを監視、分析することができます。</p>
+	<p>このダッシュボードでは、トラフィックのパターンを特定し、潜在的な脅威を検出し、ネットワーク内でリソースがどのように使用されているかをより深く理解することができます。</p>
+	<p>ステージ上のすべての視覚化表現はインタラクティブです。そのため、ダッシュボード全体が有効化されたフィルターに適応し、フィルターはダッシュボード間でピン留めして利用できます。たとえば、アクションを示すドーナツチャートのセクションの1つをクリックすると、その値に自動的にフィルターが適用され、ダッシュボード全体がそれに基づいて更新されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2C5VeJ6U4MfZjn7cmHgAPn/0e2600c2f5cfdd83d9f9713d60454cc0/image2-10.png" alt="" class="kg-image" width="1999" height="1068" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="casb">CASB</h3>
+		<a href="https://blog.cloudflare.com/#casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oHgZ74rXxV1we32WHqsye/ae9d1d99546257b6a6140e0a94947ca8/image1-9.png" alt="" class="kg-image" width="1999" height="1094" loading="lazy">
+
+	</figure>
+	<p>別の視点から説明すると、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer">CASB（クラウドアクセスセキュリティブローカー）</a>ダッシュボードは、ユーザーが利用するクラウドアプリを可視化します。その視覚化は、脅威を効果的に検出することを目的としたもので、リスク管理と規制コンプライアンスに役立ちます。</p>
+	<p>これらの例は、CloudflareとElasticを連携したダッシュボードによる、Zero Trustの実用的かつ効果的なデータ可視化を示しています。これにより、データに基づいた意思決定を行、行動パターンの特定、脅威に対する積極的な対応が可能になります。これらのダッシュボードで簡単に関連する情報を視覚的に表現できるようになることで、セキュリティ体勢を強化し、Zero Trust環境におけるより効率的なリスク管理が可能になります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79LR83kaKlJg7kzZS5ewTq/5e86a9bcf83db0940d14aef082c7fdde/image4-5.png" alt="" class="kg-image" width="1999" height="1079" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">使用開始手順</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セットアップと導入は簡単です。CloudflareのダッシュボードまたはAPIを使用して、Elasticに取り込む各データセットに対してすべてのフィールドを有効にしたLogpushジョブを作成します。現在、Elasticに取り込むことができる8つのアカウントスコープのデータセット（アクセス要求、監査ログ、CASBの問題検出機能、DNS、ネットワーク、HTTPを含むゲートウェイログ、Zero Trustセッションログ）が利用可能です。</p>
+	<p>以下のいずれかの方法で、Elasticの宛先に<a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/elastic" target="_blank" rel="noopener noreferrer">Logpushのジョブ</a>を設定します：</p>
+	<ul>
+		<li>
+			<p><b>HTTPエンドポイントモード</b>：ElasticエージェントがホストするHTTPエンドポイントにCloudflareが直接ログをプッシュします。</p>
+		</li>
+		<li>
+			<p><b>AWS S3ポーリングモード</b>：CloudflareはS3にデータを書き込み、ElasticエージェントがS3バケットをポーリングしてその内容を一覧表示して新しいファイルを読み取みます。</p>
+		</li>
+		<li>
+			<p><b>AWS S3 SQSモード</b>：CloudflareはS3にデータを書き込み、データが書き込まれるとS3は新規オブジェクト通知をSQSにプッシュし、続いてElasticエージェントはSQSから通知を受け取るとS3オブジェクトを読み取ります。このモードでは複数のエージェントを使用することができます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="enabling-the-integration-in-elastic">Elasticでこの連携機能を有効にする</h3>
+		<a href="https://blog.cloudflare.com/#enabling-the-integration-in-elastic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p>Kibanaで、[管理] &gt; [連携] の順に移動します。</p>
+		</li>
+		<li>
+			<p>連携の検索バーに「Cloudflare Logpush」と入力します。</p>
+		</li>
+		<li>
+			<p>検索結果から「Cloudflare Logpush連携」をクリックします。</p>
+		</li>
+		<li>
+			<p>「Cloudflare Logpushの追加」ボタンをクリックして、Cloudflare Logpushの連携を追加します。</p>
+		</li>
+		<li>
+			<p>HTTPエンドポイント、AWS S3入力、またはGCS入力との連携を有効化します。</p>
+		</li>
+		<li>
+			<p>AWS S3入力の下には、「AWS S3バケットの使用」と「SQSの使用」の2種類の入力があります。</p>
+		</li>
+		<li>
+			<p>Cloudflareを、Elasticエージェントにログを送信するように設定します。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>組織のZero Trustアーキテクチャの採用が進むにつれて、組織のセキュリティ体制を理解することが最重要になっています。ダッシュボードは、可視性、早期検出、効果的な脅威対応を中心とした堅牢なセキュリティ戦略の構築に必要なツールを提供します。<a href="https://www.cloudflare.com/learning/security/what-is-siem" target="_blank" rel="noopener noreferrer">データの統合、</a>フィールドの正規化、検索の容易化、カスタムダッシュボードの作成を可能にすることにより、この統合は、セキュリティ体制の強化を目指すサイバーセキュリティチームにとって価値あるアセットになります。</p>
+	<p>Cloudflareのお客様と当社のテクノロジーパートナーコミュニティをつなぎ、Zero Trustアーキテクチャの導入を支援できることを楽しみにしています。</p>
+	<p>この新しい連携機能を今すぐご確認ください。</p>
+</div>

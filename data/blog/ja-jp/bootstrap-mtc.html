@@ -1,0 +1,210 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/bootstrap-mtc">English</a>および<a href="https://blog.cloudflare.com/ko-kr/bootstrap-mtc">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sJBsQ55nUSWxEq5SO0PS1/3265c773d1b11dafa78ea7e17354d408/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>世界は、従来の最大級のスーパーコンピューターでさえ実現不可能な現実的な問題を解決できる初の量子コンピューターの開発に躍起になっています。量子コンピューティングのパラダイムは多くの利点をもたらす一方で、私たちが頼りにする暗号化技術の多くを破ることで、インターネットのセキュリティを脅かすことにもなっています。</p>
+	<p>この脅威を軽減するために、Cloudflareはインターネットのポスト量子（PQ）暗号への移行を支援しています。現在、Cloudflareのエッジネットワークへのトラフィックの<a href="https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption" target="_blank" rel="noopener noreferrer"><u>約50%</u></a>は、最も緊急性の高い脅威から保護されています。攻撃者は、今日暗号化されたトラフィックを傍受して保存し、量子コンピューターの助けを借りて将来復号化できる可能性があります。これは<a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>収穫は今、復号は後で</u></a>という脅威と呼ばれています。</p>
+	<p>しかし、これは当社が対処すべき脅威の1つに過ぎません。量子コンピューターは、サーバーの<a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">TLS証明書</a>を解読するためにも使用でき、攻撃者は、疑いを持たないクライアントに対してサーバーになりすますことができます。良いニュースは、量子安全な認証に使用できるPQアルゴリズムがすでにあることです。悪いことに、TLSでこれらのアルゴリズムを採用するには、インターネット上で最も複雑でセキュリティ重要なシステムの1つであるWebパブリックキーインフラストラクチャ（WebPKI）に大幅な変更が必要になります。</p>
+	<p>中心的な問題は、これらの新しいアルゴリズムの規模の多さです。NISTによって標準化された最も高性能なPQアルゴリズムの1つであるML-DSA-44の署名は、2,420バイトの長さであるのに対し、最も人気のあるECDSA-P256の64バイトと比較して、 -PQ署名が現在使用されている。パブリックキーの長さは、ECDSAのわずか64バイトと比較して、1,312バイトです。これは約20倍のサイズ増加です。さらに悪いことに、平均的なTLSハンドシェイクには多数のパブリックキーと署名が含まれており、ハンドシェイク1回あたり最大10キロバイトのオーバーヘッドが追加されます。これは、TLSのパフォーマンスに<a href="https://blog.cloudflare.com/another-look-at-pq-signatures/#how-many-added-bytes-are-too-many-for-tls"><u>顕著な影響</u></a>を与えるのに十分です。</p>
+	<p>そのため、ドロップイン型PQ証明書を販売するのは難しいのです。Qデー（暗号的に適切な量子コンピューターが到着する日）の前にセキュリティ上の利点をもたらすことはありませんが、パフォーマンスは低下します。Q-dayが1年先になるまで座って待つこともできますが、それは火消しです。移行には常に予想以上の時間がかかり、それを待つことで、私たちにとって<a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" target="_blank" rel="noopener noreferrer"><u>大切な</u></a>インターネットのセキュリティとプライバシーが危険にさらされます。</p>
+	<p>ポスト量子証明書を、購入できる人だけでなく、すべての人がデフォルトでデプロイできるほど安価にする方法を見つけなければならないことは明らかです。本記事では、業界パートナーと共同で<a href="https://datatracker.ietf.org/group/plants/about" target="_blank" rel="noopener noreferrer"><u>IETF</u></a>に提出した計画をご紹介します。この計画は、WebPKIを再設計し、パフォーマンスへの影響なし（むしろパフォーマンス向上が期待できる！）でPQ認証への円滑な移行を実現することを目的としています。ここでは、TLSハンドシェイクの公開鍵と署名の数を必要最低限に減らすことを目的とした、<a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs" target="_blank" rel="noopener noreferrer"><u>Merkle Tree Certificates（MTC）</u></a>と呼ばれる1つの具体的な提案の概要を説明します。</p>
+	<p>話をするのは簡単なことではありません。私たちの<a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet"><u>経験</u></a><a href="https://blog.cloudflare.com/announcing-encrypted-client-hello"><u>から</u></a>、インターネットのあらゆる変更と同様に、早期かつ頻繁にテストすることが重要であることを<a href="https://blog.cloudflare.com/experiment-with-pq"><u>知っています</u></a>。<b>本日、Chrome Securityとの提携により、MTCを実験的に導入する意向を発表します。</b>この記事では、この実験の範囲、そこから学んだこと、そしてそれを安全に行う方法について説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-webpki-today-an-old-system-with-many-patches">現在のWebPKI — 多くのパッチが適用された古いシステム</h2>
+		<a href="https://blog.cloudflare.com/#the-webpki-today-an-old-system-with-many-patches" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>TLSハンドシェイクに多くの公開鍵や署名がある理由は？</p>
+	<p>暗号技術101から始めましょう。ブラウザがWebサイトに接続すると、サーバーに認証を求め、偽装者ではなく実際のサーバーと通信していることを<b>確認します</b>。これは通常、デジタル署名方式として知られる暗号プリミティブ（ECDSAやML-DSAなど）で実現されます。TLSでは、サーバーはクライアントとサーバーの間でやり取りされるメッセージに<b>秘密鍵</b>を使用して署名し、クライアントはサーバーの<b>パブリックキー</b>を使用して署名を検証します。有効な署名を生成できたのはサーバーだけなので、サーバーはクライアントと同じ会話があったことをこのようにして確認します。</p>
+	<p>クライアントがすでにサーバーのパブリックキーを知っている場合、サーバーを認証するのに必要な署名は<b>1つの署名</b>だけです。しかし、実際のところ、これは選択肢ではありません。現在のWebは約10億のTLSサーバーで構成されているため、すべてのクライアントにすべてのサーバーのパブリックキーを提供することは非現実的です。さらに、新しいサーバーがオンラインになると、既存のサーバーが鍵をローテーションするにつれて、パブリックキーのセットは時間の経過とともに変更されます。そのため、これらの変更をクライアントにプッシュする何らかの方法が必要になります。</p>
+	<p>このスケーリングの問題は、すべてのPKIの設計の核心です。</p>
+	<div class="flex anchor relative">
+		<h3 id="trust-is-transitive">信頼は推移的</h3>
+		<a href="https://blog.cloudflare.com/#trust-is-transitive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>サーバーは、クライアントがサーバーのパブリックキーを事前に知るのではなく、TLSハンドシェイク中にそのパブリックキーを送信するだけの場合もあります。しかし、クライアントはパブリックキーが実際にサーバーに属するものをどのように知るのでしょうか。<b>証明書</b>の役割はこれです。</p>
+	<p>証明書は、公開鍵とサーバーのIDを結び付けます。通常はDNS名（例：<code>cloudflareresearch.com</code>）です。証明書は、パブリックキーがクライアントに知られている認証局（CA）によって署名されます。サーバーのハンドシェイク署名の検証に加えて、クライアントはこの証明書の署名を検証します。これにより、信頼の連鎖が確立されます。証明書を受け入れることで、クライアントは、パブリックキーが実際にそのIDを持つサーバーに属することをCAが検証したことを信頼しているということです。</p>
+	<p>クライアントは通常、多くのCAを信頼するように構成され、それぞれにパブリックキーを使用してプロビジョニングする必要があります。しかし、CAは数十億ではなく数百しかないので、物事ははるかに簡単になります。さらに、クライアントを更新することなく、新しい証明書を作成できます。</p>
+	<p>これらの効率性の費用は比較的低いものです：自宅でカウントしている場合、<b>+1</b>署名と<b>+1</b>パブリックキー、TLSハンドシェイクごとに合計<b>2署名と1パブリックキー</b>が必要になります。</p>
+	<p>しかし、話はこれで終わりではありません。WebPKIが進化するにつれて、この信頼の連鎖も少し長くなってきました。現在では、チェーンが1つだけでなく、2つ以上の証明書で構成されていることが一般的です。これは、CAもサーバーと同じように鍵をローテーションする必要があるためです。しかし、新しい鍵を使い始める前に、対応するパブリックキーをクライアントに配布する必要があります。これには、何十億ものクライアントがトラストストアを更新する必要があるため、時間がかかります。ギャップを埋めるために、CAは古い鍵を使用して新しい鍵のための証明書を発行し、この証明書をチェーンの最後に追加することがあります。</p>
+	<p>つまり、<b>+1</b>署名と<b>+1</b>のパブリックキーで、<b>3つの署名と2のパブリックキー</b>が得られます。そして、まだCloudflareの可能性は残ります。</p>
+	<div class="flex anchor relative">
+		<h3 id="trust-but-verify">信頼するが検証する</h3>
+		<a href="https://blog.cloudflare.com/#trust-but-verify" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CAの主な仕事は、サーバーが証明書を要求しているドメインを制御していることを確認することです。このプロセスは、煩雑なCA固有のプロセスから数年の間に進化し、Web上のほとんどの証明書発行に使用される標準化された<a href="https://datatracker.ietf.org/doc/html/rfc8555" target="_blank" rel="noopener noreferrer"><u>ほぼ自動化されたプロセス</u></a>に使用されました。（ただし、すべてのCAが自動化を完全にサポートしているわけではありません。）この進化は、証明書が<b>誤ってサーバー</b>以外の者に発行され、CAを信頼するクライアントに対してサーバーになりすますことができた多くのセキュリティインシデントによって特徴付けられます。</p>
+	<p>自動化は役立ちますが、依然として<a href="https://en.wikipedia.org/wiki/DigiNotar#Issuance_of_fraudulent_certificates" target="_blank" rel="noopener noreferrer"><u>攻撃</u></a>が可能であり、ミスはほぼ避けられません。<a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1"><u>今年初め</u></a>、Cloudflareの暗号化された1.1.1.1リゾルバーの複数の証明書が、Cloudflareの関与または承認なしに発行されました。これは明らかに偶然発生したものの、それでも1.1.1.1のユーザーを危険にさらすことになりました。（誤って発行された証明書は失効しています。）</p>
+	<p>誤発行を検出できるようにするのは、Certificate Transparency（証明書の透明性、CT）エコシステムの仕事です。基本的な考え方は、CAによって発行された各証明書が公開<b>ログ</b>に追加されるということです。サーバーは、これらのログを監査して、自身の名前で発行された証明書を探すことができます。自分自身を要求していない証明書が発行された場合、サーバーのオペレーターは発行が行われたことを証明することができ、PKIエコシステムは証明書がクライアントから信頼されないようにするための措置を講じることができます。</p>
+	<p>FirefoxやChromeとその派生モデルを含む主要なブラウザは、信頼できるようになる前に証明書をログに記録する必要があります。例えば、Chrome、Safari、およびFirefox は、ブラウザが信頼するように設定されている少なくとも2つのログに表示された場合にのみ、サーバーの証明書を受け入れます。このポリシーは簡単明瞭ですが、実際に実装するのは難しいです。</p>
+	<ol>
+		<li>
+			<p>従来、CTログの運用にはかなりのコストがかかりました。ログは、その有効期間中に数十億もの証明書を取り込みます。インシデントが発生した場合や、負荷が高い場合でも、ログが監査人が新しいエントリを利用できるようになるまでに時間がかかることがあります。</p>
+		</li>
+		<li>
+			<p>クライアントは、実際には監査ログ自体を監査することができません。それは、クライアントの閲覧履歴（つまり、接続したいサーバー）をログオペレーターに公開してしまうためです。</p>
+		</li>
+	</ol>
+	<p>どちらの問題を解決するためには、CTログからの署名と証明書を含めることができます。署名は、証明書をログに記録するリクエストに対して即座に作成され、24時間以内にログに証明書を含めるというログの意図を証明します。</p>
+	<p>ブラウザポリシーによると、Certificate TransparencyはTLSハンドシェイクに<b>+2</b>の署名（ログごとに1つ）を追加します。これにより、公開Web上の通常のハンドシェイクで、合計<b>5つの署名と2つのパブリックキー</b>が得られます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-webpki">将来のWebPKI</h3>
+		<a href="https://blog.cloudflare.com/#the-future-webpki" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebPKIは、他に類を見ない高度な分散型システムです。長年にわたり、私たちは何度もパッチを適用しなければならなかったものの、機能を維持するために、私たちのニーズをうまく満たしてきました。</p>
+	<p>以前は、WebPKIで何かを更新する必要があるたびに、別の署名を追加していました。従来の暗号化技術は非常に安価であるため、この戦略がうまく機能しているのです。しかし、各TLSハンドシェイクごとに平均して<b>5つの署名と2つのパブリックキー</b>があると、これから大きなPQ署名に対処するには不十分です。</p>
+	<p>幸いなことに、既存のものを賢明な方法で移動させることで、必要な署名の数を大幅に減らすことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="crash-course-on-merkle-tree-certificates">Merkle Tree Certificatesの集中コース</h3>
+		<a href="https://blog.cloudflare.com/#crash-course-on-merkle-tree-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs" target="_blank" rel="noopener noreferrer"><u>Merkle Tree Certificates（MTC）</u></a>は、Cloudflareが実装中のWebPKIの次世代提案であり、実験的な展開を予定しています。主な特徴は次のとおりです。</p>
+	<ol>
+		<li>
+			<p>クライアントがMerkle Tree証明書を検証するのに必要なすべての情報は、帯域外で配布することができます。クライアントが十分に最新である場合、TLS<b> ハンドシェイクは1つの署名、1つのパブリックキー、および1つのMerkleツリーインクルージョン証明を必要とするだけです。</b>これは、ポスト量子アルゴリズムを使用しているとしても、非常に小規模なものです。</p>
+		</li>
+		<li>
+			<p>MTC仕様は、各CAが発行した証明書の独自のログを実行することで、証明書の透明性をPKIの第一級の機能としています。</p>
+		</li>
+	</ol>
+	<p>可能性を少し掘り下げてみましょう。以下は、社内テストの1つによって生成されたMTCです。これは、TLSハンドシェイクでサーバーからクライアントに送信されます。</p>
+	<pre class="language-Rust"><code class="language-Rust">-----BEGIN CERTIFICATE-----
+MIICSzCCAUGgAwIBAgICAhMwDAYKKwYBBAGC2ksvADAcMRowGAYKKwYBBAGC2ksv
+AQwKNDQzNjMuNDguMzAeFw0yNTEwMjExNTMzMjZaFw0yNTEwMjgxNTMzMjZaMCEx
+HzAdBgNVBAMTFmNsb3VkZmxhcmVyZXNlYXJjaC5jb20wWTATBgcqhkjOPQIBBggq
+hkjOPQMBBwNCAARw7eGWh7Qi7/vcqc2cXO8enqsbbdcRdHt2yDyhX5Q3RZnYgONc
+JE8oRrW/hGDY/OuCWsROM5DHszZRDJJtv4gno2wwajAOBgNVHQ8BAf8EBAMCB4Aw
+EwYDVR0lBAwwCgYIKwYBBQUHAwEwQwYDVR0RBDwwOoIWY2xvdWRmbGFyZXJlc2Vh
+cmNoLmNvbYIgc3RhdGljLWN0LmNsb3VkZmxhcmVyZXNlYXJjaC5jb20wDAYKKwYB
+BAGC2ksvAAOB9QAAAAAAAAACAAAAAAAAAAJYAOBEvgOlvWq38p45d0wWTPgG5eFV
+wJMhxnmDPN1b5leJwHWzTOx1igtToMocBwwakt3HfKIjXYMO5CNDOK9DIKhmRDSV
+h+or8A8WUrvqZ2ceiTZPkNQFVYlG8be2aITTVzGuK8N5MYaFnSTtzyWkXP2P9nYU
+Vd1nLt/WjCUNUkjI4/75fOalMFKltcc6iaXB9ktble9wuJH8YQ9tFt456aBZSSs0
+cXwqFtrHr973AZQQxGLR9QCHveii9N87NXknDvzMQ+dgWt/fBujTfuuzv3slQw80
+mibA021dDCi8h1hYFQAA
+-----END CERTIFICATE-----</code></pre>
+	<p>平均的なPEMエンコードされた証明書のように見えます。デコードして、パラメータを見てみましょう：</p>
+	<pre class="language-Text"><code class="language-Text">$ openssl x509 -in merkle-tree-cert.pem -noout -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 531 (0x213)
+        Signature Algorithm: 1.3.6.1.4.1.44363.47.0
+        Issuer: 1.3.6.1.4.1.44363.47.1=44363.48.3
+        Validity
+            Not Before: Oct 21 15:33:26 2025 GMT
+            Not After : Oct 28 15:33:26 2025 GMT
+        Subject: CN=cloudflareresearch.com
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:70:ed:e1:96:87:b4:22:ef:fb:dc:a9:cd:9c:5c:
+                    ef:1e:9e:ab:1b:6d:d7:11:74:7b:76:c8:3c:a1:5f:
+                    94:37:45:99:d8:80:e3:5c:24:4f:28:46:b5:bf:84:
+                    60:d8:fc:eb:82:5a:c4:4e:33:90:c7:b3:36:51:0c:
+                    92:6d:bf:88:27
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature
+            X509v3 Extended Key Usage:
+                TLS Web Server Authentication
+            X509v3 Subject Alternative Name:
+                DNS:cloudflareresearch.com, DNS:static-ct.cloudflareresearch.com
+    Signature Algorithm: 1.3.6.1.4.1.44363.47.0
+    Signature Value:
+        00:00:00:00:00:00:02:00:00:00:00:00:00:00:02:58:00:e0:
+        44:be:03:a5:bd:6a:b7:f2:9e:39:77:4c:16:4c:f8:06:e5:e1:
+        55:c0:93:21:c6:79:83:3c:dd:5b:e6:57:89:c0:75:b3:4c:ec:
+        75:8a:0b:53:a0:ca:1c:07:0c:1a:92:dd:c7:7c:a2:23:5d:83:
+        0e:e4:23:43:38:af:43:20:a8:66:44:34:95:87:ea:2b:f0:0f:
+        16:52:bb:ea:67:67:1e:89:36:4f:90:d4:05:55:89:46:f1:b7:
+        b6:68:84:d3:57:31:ae:2b:c3:79:31:86:85:9d:24:ed:cf:25:
+        a4:5c:fd:8f:f6:76:14:55:dd:67:2e:df:d6:8c:25:0d:52:48:
+        c8:e3:fe:f9:7c:e6:a5:30:52:a5:b5:c7:3a:89:a5:c1:f6:4b:
+        5b:95:ef:70:b8:91:fc:61:0f:6d:16:de:39:e9:a0:59:49:2b:
+        34:71:7c:2a:16:da:c7:af:de:f7:01:94:10:c4:62:d1:f5:00:
+        87:bd:e8:a2:f4:df:3b:35:79:27:0e:fc:cc:43:e7:60:5a:df:
+        df:06:e8:d3:7e:eb:b3:bf:7b:25:43:0f:34:9a:26:c0:d3:6d:
+        5d:0c:28:bc:87:58:58:15:00:00</code></pre>
+	<p>パラメーターの中には、見慣れたものもあるかもしれませんが、他は異常に見えるかもしれません。慣れ親しんだ側では、サブジェクトとパブリックキーはまさに私たちが想定するものです。DNS名は<code>cloudflareresearch.com</code>で、パブリックキーは使い慣れた署名アルゴリズムECDSA-P256のためのものです。もちろん、このアルゴリズムはPQではありません。将来的には、ML-DSA-44を配置することになります。</p>
+	<p>異常な側としては、OpenSSLは発行者の署名アルゴリズムを認識せず、生のOIDと署名のバイトを出力するだけのようです。これにはもっともな理由があります。MTCにはまったく署名がないからです。では、私たちは具体的にどのようなものを検討しているのでしょうか？</p>
+	<p>署名を省くのは、Merkle Tree Certification Authority（MTCA）が、<i>署名のない</i>証明書を個別ではなく<i>バッチで生成する</i>というから説明できます。証明書には、署名の代わりに、MTCAによって署名された証明書のバッチに<b>証明書が含まれている</b>ことを証明するものがあります。</p>
+	<p>インクルージョン証明がどのように機能するかを理解するために、MTC仕様を少し簡略化したバージョンについて考えてみましょう。バッチを発行するために、MTCAは、無署名の証明書を<b>Merkleツリー</b>と呼ばれるデータ構造に配置し、以下のようにします：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LGhISsS07kbpSgDkqx8p2/68e3b36deeca7f97139654d2c769df68/image3.png" alt="" class="kg-image" width="1494" height="1026" loading="lazy">
+	</figure>
+	<p>ツリーの各事実上の採用情報は証明書に対応しており、各内部ノードはその子のハッシュ値に相当します。バッチに署名するために、MTCAは秘密鍵を使用してツリーのヘッドに署名します。ツリー構造は、バッチ内の各証明書がMTCAによって署名されていることを保証します。証明書の1つでもビットを微調整しようとすると、ツリーヘッドの値が異なる結果になり、署名が失敗します。</p>
+	<p>証明書のインクルージョン証明は、証明書からツリーヘッドまでのパスにある同属ノードのハッシュ値で構成されています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UZZHkRwsBLWXRYeop4rXv/8598cde48c27c112bc4992889f3d5799/image1.gif" alt="" class="kg-image" width="1494" height="1026" loading="lazy">
+	</figure>
+	<p>検証済みのツリーヘッドがあれば、このハッシュシーケンスは、ツリーに証明書が含まれていることを証明するのに十分です。つまり、MTCを検証するためには、クライアントもMTCAから署名されたツリーヘッドを取得する必要があります。</p>
+	<p>これがMTCの効率性の鍵です。</p>
+	<ol>
+		<li>
+			<p>署名されたツリーヘッドは、クライアントに帯域外で配布され、オフラインで検証することができます。検証済みの各ツリーヘッドは、対応するバッチ内の証明書を検証するために使用できるため、各サーバー証明書の署名を取得する必要はありません。</p>
+		</li>
+		<li>
+			<p>TLSハンドシェイク時に、クライアントはサーバーにどのツリーヘッドがあるかを伝えます。サーバーがこれらのツリーヘッドの1つにカバーされた署名のない証明書を持つ場合は、その証明書を使用して自身を認証できます。これは、認証されるサーバーに対して、ハンドシェイク<b>1つあたりの署名、1つのパブリックキー、1つのインクルージョン証明</b>を作成するものです。</p>
+		</li>
+	</ol>
+	<p>これが簡略化されたものです。MTCには、さらにいくつかの付属の仕組みがあります。まず、各バッチに個別のMerkleツリーを作成するのではなく、1つの大きな木を成長させることで、透明性を向上させるために使用されます。このツリーが成長するにつれて、定期的に（サブ）ツリーヘッドが選択され、ブラウザに出荷されます。これを<b>ランドマーク</b>と呼びます。一般的な場合、ブラウザは最新のランドマークを取得することができ、サーバーはバッチの発行を待つことができますが、フォールバックが必要です。MTCは、すぐに発行でき、ランドマークを検証する必要のない証明書もサポートしていますが、これらはそれほど小さくありませんサーバーは両方のタイプのMerkleツリー証明書をプロビジョニングするので、一般的な場合は高速で、例外的な場合は低速になりますが、少なくとも動作することになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="experimental-deployment">実験的なデプロイメント</h2>
+		<a href="https://blog.cloudflare.com/#experimental-deployment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MTCの初期設計が登場して以来、私たちはこのアイデアを試すことを熱望してきました。「<a href="https://www.ietf.org/runningcode" target="_blank" rel="noopener noreferrer"><u>コードを実行する</u></a>」というIETFの原則に沿って、設計内の問題を解決するためには、多くの場合、プロトコルの実装が必要になります。同時に、ユーザーのセキュリティを犠牲にすることはできません。このセクションでは、信頼関係を変更すること<i>なく</i>、Merkletree証明書の設計の一部を試す方法について説明します。</p>
+	<p>希望する内容から始めましょう。私たちは、そのアプローチを検証する、あるいはプロトコルの修正を必要とする落とし穴を発見するのに役立つ質問がたくさんあります。実際、<a href="https://www.cs.ru.nl/masters-theses/2025/M_Pohl___Implementation_and_Analysis_of_Merkle_Tree_Certificates_for_Post-Quantum_Secure_Authentication_in_TLS.pdf" target="_blank" rel="noopener noreferrer"><u>Maximilian Pohl</u></a>と<a href="https://www.ietf.org/archive/id/draft-davidben-tls-merkle-tree-certs-07.html#name-acknowledgements" target="_blank" rel="noopener noreferrer"><u>Mia Celeste</u></a>によるMTCの初期草案の実装は、まさにこれを実現したのです。知りたいことは：</p>
+	<p><b>なぜ壊れるのか？</b>プロトコルの柔軟化（実装バグがプロトコルの変更を困難にする傾向）は、プロトコル変更のリリースにおいて常に存在する問題です。特にTLSは、内蔵型の柔軟性があるにもかかわらず、その柔軟性が定期的に使用されていなければ、バグの多い実装やミドルボックスが認識しないものを目にしたときに壊れる可能性があることが、時間が経つにつれて難しくなっています。TLS 1.3のデプロイは、まさにこのような理由から、<a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet"><u>希望よりも数年長くかかりました</u></a>。また、最近では、TLSでのPQ鍵交換の展開により、Client Helloが複数のTCPパケットに分割されるようになりました。これは、多くのミドルボックスが<a href="https://tldr.fail" target="_blank" rel="noopener noreferrer"><u>対応できていませんでした</u></a>。</p>
+	<p><b>パフォーマンスへの影響は？</b>実際、MTCはハンドシェイクのサイズを<i>小さくする</i>ことができ、現在の非PQ証明書と比較しても小さくなるでしょう。また、CPUコストも削減されます。ML-DSAの署名検証はECDSAとほぼ同じ速さで、検証する署名の数も大幅に少なくなります。したがって、<i>遅延の減少</i>が期待できます。測定可能なパフォーマンス改善があるかどうかを確認したいのです。</p>
+	<p><b>最新の状態を維持できるクライアントは何分の1か？ </b>MTCのパフォーマンス上の利点を得るためには、クライアントとサーバーが互いにほぼ同期している必要があります。MTCの寿命は1週間ほどと予想されます。つまり、クライアントの最新のランドマークが1週間より経過している場合、サーバーはより大きな証明書にフォールバックする必要があるということです。このフォールバックがどの程度の頻度で発生するかを知ることで、プロトコルのパラメータを調整し、フォールバックの可能性を減らすことができます。</p>
+	<p>これらの疑問にお答えするために、TLSスタックと証明書発行インフラストラクチャにMTCサポートを実装しています。Chromeはその一部として、独自のTLSスタックにMTCサポートを実装しており、ユーザーにランドマークを配布するためのインフラストラクチャを立ち上げます。</p>
+	<p>過去の実験で行ったように、有用な測定値が得られるのに十分なトラフィックを持つ無料プランのお客様のサブセットに対してMTCを有効にする予定です。Chromeは、実験的なロールアウトを制御します。ゆっくりとスケールアップし、都度測定し、バグが見つかれば元に戻すことが可能です。</p>
+	<p>それでは、最後の質問になります。Merkle Tree CAを実行するのは誰でしょうか？</p>
+	<div class="flex anchor relative">
+		<h3 id="bootstrapping-trust-from-the-existing-webpki">既存のWebPKIから信頼をブートストラップ</h3>
+		<a href="https://blog.cloudflare.com/#bootstrapping-trust-from-the-existing-webpki" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>適切なCAを構築するのは簡単なことではありません。主要なブラウザーから信頼されるようになるには、何年もかかるからです。それがCloudflareがこの実験の「本物の」CAになることはなく、Chromeが当社を直接信頼することはないのです。</p>
+	<p>代わりに、デューデリジェンスを犠牲にすることなく、合理的な期間内に進行するために、MTCAの役割を「モック」する予定です。（<a href="https://blog.cloudflare.com/azul-certificate-transparency-log"><u>StaticCTログ</u></a>に基づいて<a href="https://github.com/cloudflare/azul" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>上で）MTCAを実行しますが、発行するMTCごとに、それに同意する信頼できるCAからの既存の証明書も公開します。これを<b>ブートストラップ証明書</b>と呼んでいます。ChromeのインフラストラクチャがMTCAログから更新を取得する際、これらのブートストラップ証明書も取得し、同意するかどうかを確認します。一致する場合のみ、対応するランドマークをChromeクライアントにプッシュします。つまり、Cloudflareは事実上、既存の証明書（信頼できるCAによってドメイン検証が行われたもの）をMTCとして「再エンコード」しているだけであり、Chromeは証明書の透明性を使用して私たちを誠実に保っています。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のトラフィックのほぼ50%はすでにポスト量子暗号化で保護されており、ポスト量子安全なインターネット実現の半ばです。しかし、この行程で最も困難なのがポスト量子証明書です。単純なドロップインアップグレードでは、パフォーマンスへの影響が顕著になり、Q-day以前はセキュリティ上のメリットは得られません。つまり、現在デフォルトで有効にするのは無理ということです。しかし、移行には常に予想以上の時間がかかるという状況です。ユビキタスでプライベートで安全なインターネットを維持するためには、<b>今日</b>のデフォルトで有効にできる十分なパフォーマンスを備えたポスト量子ソリューションが必要です。</p>
+	<p>Merkle Tree Certificates（MTC）は、WebPKIの必須プロパティを維持しつつ、署名とパブリックキーの数を最低限に抑えることにより、この問題を解決します。来年初頭までに一部の無料アカウントにMTCを展開する予定です。これは、Chromeの実験に参加していない訪問者には影響しません。ブートストラップ証明書のおかげで、セキュリティへの影響はありません。</p>
+	<p><i></i>私たちは、インターネットの高速性と安全性を維持することに興奮しています。そして、この実験の結果について、近いうちに報告する予定です。このスペースをご覧ください！これより、MTCは進化を続けています。参加をご希望の方は、IETF<a href="https://mailman3.ietf.org/mailman3/lists/plants@ietf.org" target="_blank" rel="noopener noreferrer"><u> PLANTS</u></a> メーリングリストに参加してください。</p>
+</div>

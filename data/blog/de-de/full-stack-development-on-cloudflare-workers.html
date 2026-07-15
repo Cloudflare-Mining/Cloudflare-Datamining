@@ -1,0 +1,330 @@
+<div class="mb2 gray5">Lesezeit: 11&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/full-stack-development-on-cloudflare-workers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/full-stack-development-on-cloudflare-workers">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/full-stack-development-on-cloudflare-workers">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/full-stack-development-on-cloudflare-workers">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/full-stack-development-on-cloudflare-workers">한국어</a>, <a href="https://blog.cloudflare.com/es-es/full-stack-development-on-cloudflare-workers">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/full-stack-development-on-cloudflare-workers">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XxYGJI8hHbY3GQWzuM2BA/bfad24f662883f169142de42806316b3/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/builder-day-2024-announcements/#static-asset-hosting"><u>Im September 2024</u></a> haben wir die Beta-Unterstützung für das kostenlose Hosten, Speichern und Bereitstellen <a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>statischer Assets</u></a> auf Cloudflare Workers eingeführt – etwas, das bisher nur auf <a href="https://blog.cloudflare.com/cloudflare-pages"><u>Cloudflare Pages</u></a> möglich war. Die Möglichkeit, diese Assets – clientseitiges JavaScript, HTML, CSS, Schriftarten und Bilder – zu hosten, war ein wichtiges fehlendes Element für Entwicklerinnen und Entwickler, die eine Full-Stack-Anwendung innerhalb eines <b>einzigen Workers</b> erstellen wollten.&nbsp;</p>
+	<p>Heute stellen wir zehn große Verbesserungen für die App-Entwicklung auf Cloudflare vor. Diese neuen Funktionen ermöglichen es Ihnen, alles von einfachen statischen Websites bis hin zu komplexen Full-Stack-Anwendungen direkt auf Cloudflare Workers zu entwickeln und zu hosten:</p>
+	<ul>
+		<li>
+			<p>Cloudflare Workers bietet jetzt produktionsreife, <b>allgemein verfügbare</b> (GA) Unterstützung für <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/remix" target="_blank" rel="noopener noreferrer"><u>React Router v7 (Remix)</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/hono" target="_blank" rel="noopener noreferrer"><u>Hono</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/vue" target="_blank" rel="noopener noreferrer"><u>Vue.js</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nuxt" target="_blank" rel="noopener noreferrer"><u>Nuxt</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/svelte" target="_blank" rel="noopener noreferrer"><u>Svelte (SvelteKit)</u></a>, und <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>mehr</u></a>. Die allgemeine Verfügbarkeit der Unterstützung für weitere Frameworks einschließlich <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>, <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/angular" target="_blank" rel="noopener noreferrer"><u>Angular</u></a> und <a href="https://developers.cloudflare.com/workers/frameworks/framework-guides/solid" target="_blank" rel="noopener noreferrer"><u>SolidJS</u></a> (SolidStart) wird im zweiten Quartal 2025 folgen. </p>
+		</li>
+		<li>
+			<p>Sie können komplette Full-Stack-Anwendungen auf Workers ohne Framework entwickeln: Sie können „<a href="https://docs.google.com/document/d/1G8XQGNxAsGs15LqPw3l9MJlCZrBBZLyyOs6ydqnz6Bo/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><u>einfach Vite</u></a>“ und React zusammen verwenden und eine Backend-API in demselben Worker erstellen. Ein Beispiel finden Sie in unserer <a href="https://github.com/cloudflare/templates/tree/staging/vite-react-template" target="_blank" rel="noopener noreferrer"><u>Vite + React -Vorlage</u></a>.</p>
+		</li>
+		<li>
+			<p>Der Adapter für Next.js – <a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>@opennextjs/cloudflare</u></a>, der im September 2024 als frühe Alpha-Version eingeführt wurde, <a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter"><u>ist jetzt v1.0-beta</u></a> und wird in den kommenden Wochen allgemein verfügbar sein. Diejenigen, die den OpenNext-Adapter verwenden, können auch problemlos ein Upgrade auf die <a href="https://github.com/vercel/next.js/discussions/77740" target="_blank" rel="noopener noreferrer"><u>kürzlich angekündigte Next.js Deployments API</u></a> durchführen. </p>
+		</li>
+		<li>
+			<p>Das <a href="https://blog.cloudflare.com/introducing-the-cloudflare-vite-plugin"><u>Cloudflare Vite-Plugin</u></a> ist jetzt v1.0 und allgemein verfügbar. Das Vite-Plugin ermöglicht es Ihnen, den Entwicklungsserver von Vite in der Workers-Laufzeitumgebung (<code>workerd</code>) zu betreiben. Das bedeutet, dass Sie alle Vorteile von Vite erhalten, einschließlich <a href="https://vite.dev/guide/features.html#hot-module-replacement" target="_blank" rel="noopener noreferrer"><u>Hot Module Exchange</u></a>, und gleichzeitig Funktionen nutzen können, die ausschließlich Workers zur Verfügung stehen (wie Durable Objects).</p>
+		</li>
+		<li>
+			<p>Sie können jetzt statische <a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u>_headers</u></a>- und <a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a>-Konfigurationsdateien für Ihre Anwendungen auf Workers verwenden, was bisher nur auf Pages möglich war. Diese Dateien ermöglichen es Ihnen, einfache Header hinzuzufügen und Umleitungen zu konfigurieren, ohne Worker-Code auszuführen. </p>
+		</li>
+		<li>
+			<p>Zusätzlich zu <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-postgres" target="_blank" rel="noopener noreferrer"><u>PostgreSQL</u></a> können Sie jetzt auch von Cloudflare Workers aus über Hyperdrive eine Verbindung zu <a href="https://blog.cloudflare.com/building-global-mysql-apps-with-cloudflare-workers-and-hyperdrive"><u>MySQL-Datenbanken</u></a> herstellen. Bringen Sie Ihre bestehende Planetscale-, AWS-, GCP-, Azure- oder andere MySQL-Datenbank mit, und Hyperdrive kümmert sich um das Pooling von Verbindungen zu Ihrer Datenbank und eliminiert unnötige Roundtrips durch die Zwischenspeicherung von Abfragen.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/#node-js-compatibility"><u>Weitere Node.js-APIs sind in der Workers-Laufzeitumgebung verfügbar</u></a>, darunter auch APIs der Module <code>crypto</code>, <code>tls</code>, <code>net</code> und <code>dns</code>. Wir haben auch die maximale CPU-Zeit für eine Workers-Anfrage von 30 Sekunden auf 5 Minuten erhöht.</p>
+		</li>
+		<li>
+			<p>Sie können jetzt <a href="https://blog.cloudflare.com/deploy-workers-applications-in-seconds"><u>jedes Repository von GitHub oder GitLab einbinden, das eine Worker-Anwendung enthält</u></a>, und <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a> übernimmt automatisch die Bereitstellung der Anwendung als neuen Worker in Ihrem Konto. <a href="https://blog.cloudflare.com/#workers-builds"><u>Workers Builds startet auch viel schneller</u></a> (um bis zu 6 Sekunden für jeden Build).&nbsp;</p>
+		</li>
+		<li>
+			<p>Sie können Workers Builds jetzt so einrichten, dass sie in <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>nicht in der Produktionsumgebung befindlichen Branches („non-production branches“)</u></a> ausgeführt werden, und Vorschau-URLs <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>als Kommentar an GitHub gesendet werden</u></a>.&nbsp;</p>
+		</li>
+		<li>
+			<p>Die <a href="https://developers.cloudflare.com/images/transform-images/bindings" target="_blank" rel="noopener noreferrer"><u>Images-Bindung in Workers</u></a> ist allgemein verfügbar und ermöglicht es Ihnen, flexiblere, programmatische Arbeitsabläufe zu erstellen.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Dank dieser Verbesserungen können Sie sowohl einfache statische Websites als auch komplexere, serverseitig gerenderte Anwendungen erstellen. Wie bei Pages werden Ihnen nur Kosten berechnet, wenn Ihr Worker-Code ausgeführt wird. Das bedeutet, dass Sie statische Websites kostenlos hosten und bereitstellen können. Wenn Sie ein Rendering auf dem Server durchführen möchten oder eine API erstellen müssen, fügen Sie einfach einen Worker hinzu, der Ihr Backend übernimmt. Und wenn Sie Daten in Ihrer Anwendung lesen oder schreiben müssen, können Sie eine Verbindung zu einer bestehenden Datenbank mit <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a> herstellen oder eine unserer Speicherlösungen verwenden: <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> oder <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>.&nbsp;</p>
+	<p>Wenn Sie direkt in den Code eintauchen möchten, können Sie eine mit Vite und React erstellte Single-Page-Anwendung bereitstellen, mit der Möglichkeit, über Hyperdrive eine Verbindung zu einer gehosteten Datenbank herzustellen, indem Sie auf die Schaltfläche „Deploy to Cloudflare“ (<i>„Bereitstellen über Cloudflare“</i>) klicken:&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-postgres-fullstack-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Bereitstellen über Cloudflare"></a>
+	<p></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="start-with-workers">Starten Sie mit Workers</h2>
+		<a href="https://blog.cloudflare.com/#start-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bisher mussten Sie sich entscheiden, ob Sie auf Cloudflare Pages oder Workers entwickeln möchten (oder Pages für einen Teil Ihrer Anwendung und Workers für einen anderen verwenden). Sie mussten also schon zu Beginn alle Anforderungen Ihrer Anwendung kennen – und hoffen, dass sich das Projekt nicht so weiterentwickelt, dass Plattform oder Architektur zur Einschränkung werden. Workers wurde als flexible Plattform konzipiert, die es Entwicklerinnen und Entwicklern ermöglicht, Projekte nach Bedarf weiterzuentwickeln – und so haben wir im Laufe der Jahre daran gearbeitet, <a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience"><u>Teile von Pages in Workers zu integrieren</u></a>.&nbsp;&nbsp;</p>
+	<p>Da Workers nun sowohl die Bereitstellung statischer Assets <b>als auch </b>serverseitiges Rendern unterstützt, sollten Sie <b>mit Workers</b> beginnen. Cloudflare Pages wird weiterhin unterstützt, aber in Zukunft werden alle unsere Investitionen, Optimierungen und Features der Verbesserung von Workers gewidmet sein. Wir wollen Workers zur besten Plattform für die Entwicklung von Full Stack-Anwendungen machen. Dabei werten wir Ihr Feedback aus, was mit Pages gut funktioniert hat und was wir verbessern könnten.&nbsp;</p>
+	<p>Früher bedeutete das Erstellen einer App mit Pages einen einfachen und stark geführten Einstieg – aber sobald die Anwendung komplexer wurde, stieß man schnell an Grenzen. Wenn Sie Durable Objects zur Statusverwaltung verwenden wollten, müssten Sie dafür einen völlig separaten Worker einrichten, was zu einer komplizierten Bereitstellung und mehr Aufwand führt. Außerdem waren Sie auf Echtzeit-Protokolle beschränkt und konnten die Änderungen nur auf einmal implementieren.&nbsp;</p>
+	<p>Wenn Sie auf Workers entwickeln, können Sie sofort an jeden anderen Dienst der Entwicklungsplattform (einschließlich <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer"><u>E-Mail-Workers</u></a> und mehr) anbinden und sowohl Ihr Front-End als auch Ihr Back-End in einem einzigen Projekt verwalten – und das alles mit einer einzigen Bereitstellung. Sie erhalten auch die gesamte Suite von <a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Beobachtungstools für Workers</u></a>, die in die Plattform integriert sind, wie z.&nbsp;B. <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a>. Und wenn Sie Änderungen nur für einen bestimmten Prozentsatz des Traffics vornehmen möchten, können Sie dies mit <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>Gradual Deployments</u></a> machen.&nbsp;&nbsp;</p>
+	<p>Diese neuesten Verbesserungen sind Teil unseres Bestrebens, das Beste von Pages in Workers zu integrieren. So unterstützen wir jetzt beispielsweise statische <a href="https://developers.cloudflare.com/workers/static-assets/headers" target="_blank" rel="noopener noreferrer"><u>_headers</u></a>- und <a href="https://developers.cloudflare.com/workers/static-assets/redirects" target="_blank" rel="noopener noreferrer"><u>_redirects</u></a>-Konfigurationsdateien, sodass Sie ein bestehendes Projekt von Pages (oder einer anderen Plattform) ganz einfach auf Workers übertragen können, ohne Ihr Projekt ändern zu müssen. Wir integrieren uns auch direkt in GitHub und GitLab mit <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a> und bieten automatische Builds und Bereitstellungen. Ab heute werden die <a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>Vorschau-URLs</u></a> <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>als Kommentar in Ihr Repository</u></a> zurückgesendet, wobei Feature-Branch-Aliase und Umgebungen in Kürze verfügbar sind.&nbsp;</p>
+	<p>Um zu erfahren, wie Sie ein bestehendes Projekt von Pages zu Workers migrieren können, lesen Sie unseren <a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>Leitfaden zur Migration</u></a>.&nbsp;</p>
+	<p>Als Nächstes wollen wir uns anschauen, wie man auf Workers Anwendungen mit verschiedenen Rendering-Modi erstellen kann.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="building-static-sites-spas-and-ssr-on-workers">Aufbau von statischen Websites, SPAs und SSR auf Workers</h2>
+		<a href="https://blog.cloudflare.com/#building-static-sites-spas-and-ssr-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Als kurze Einführung bieten wir hier alle Architekturen und Rendering-Modi an, die von Workers unterstützt werden:&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Statische Websites</b>: Wenn Sie eine statische Website besuchen, gibt der Server sofort vorgefertigte statische Assets zurück: HTML, CSS, JavaScript, Bilder und Schriftarten. Zur Anfragezeit findet auf dem Server kein dynamisches Rendering statt. Statische Assets werden in der Regel zum Zeitpunkt der Erstellung generiert und direkt von einem <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>CDN</u></a> aus bereitgestellt, wodurch statische Websites schnell und einfach zwischengespeichert werden können. Dieser Ansatz funktioniert gut für Websites mit Inhalten, die sich selten ändern. </p>
+		</li>
+		<li>
+			<p><b>Single-Page-Anwendungen (SPAs)</b>: Wenn Sie eine SPA laden, sendet der Server zunächst eine minimale HTML-Shell und ein JavaScript-Paket (als statische Assets bereitgestellt). Ihr Browser lädt dieses JavaScript herunter, das dann die Darstellung der gesamten Benutzeroberfläche clientseitig übernimmt. Nach dem ersten Laden erfolgt die gesamte Navigation ohne vollständige Seitenaktualisierungen, in der Regel über clientseitiges Routing. Dies schafft ein schnelles, App-ähnliches Erlebnis.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Serverseitig gerenderte (SSR) Anwendungen</b>: Wenn Sie eine Website mit SSR zum ersten Mal besuchen, generiert der Server bei Bedarf eine vollständig gerenderte HTML-Seite für diese Anfrage. Ihr Browser zeigt diesen vollständigen HTML-Code sofort an, was zu einer schnellen Ladezeit der ersten Seite führt. Nach dem Laden „<a href="https://en.wikipedia.org/wiki/Hydration_(web_development)" target="_blank" rel="noopener noreferrer"><u>hydriert</u></a>“ JavaScript die Seite und sorgt für Interaktivität. Spätere Navigationen können entweder neue, auf dem Server gerenderte Seiten auslösen oder in vielen modernen Frameworks in ein clientseitiges Rendering ähnlich einem SPA übergehen.</p>
+		</li>
+	</ul>
+	<p>Als Nächstes schauen wir uns an, wie Sie diese Art von Anwendungen auf Workers erstellen können. Wir beginnen mit der Einrichtung Ihrer Entwicklungsumgebung.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="setup-build-and-dev">Setup: Bauen und Entwickeln</h3>
+		<a href="https://blog.cloudflare.com/#setup-build-and-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor Sie Ihre Anwendung hochladen, müssen Sie Ihren gesamten clientseitigen Code in ein Verzeichnis mit <b>statischen Assets</b> bündeln. Wrangler bündelt und erstellt Ihren Code, wenn Sie <code>wrangler dev</code> ausführen, aber wir unterstützen jetzt auch Vite mit unserem <a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>neuen Vite-Plugin</u></a>. Dies ist eine großartige Option für diejenigen, die bereits das Build-Tool und den Entwicklungsserver von Vite verwenden – Sie können die Entwicklung (und die Tests mit <a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a>) über den Entwicklungsserver von Vite weiterführen und dabei die Workers Laufzeitumgebung nutzen.&nbsp;</p>
+	<p>Um mit der Verwendung des Cloudflare Vite-Plugins zu beginnen, können Sie mit Vite und unserem Plugin ein Scaffolding einer React-Anwendung vornehmen, indem Sie Folgendes ausführen:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-react-app -- --framework=react</code></pre>
+	<p>Wenn Sie das Projekt öffnen, sollten Sie eine Verzeichnisstruktur wie diese vorfinden:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p>Wenn Sie <code>npm run build</code> ausführen, wird ein neuer Ordner mit dem Namen <code>/dist</code> angezeigt.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">...
+├── api
+│   └── index.ts
+├── dist
+│   └── ...
+├── public
+│   └── ...
+├── src
+│   └── ...
+...
+├── index.html
+├── package.json
+├── vite.config.ts
+└── wrangler.jsonc</code></pre>
+	<p>Das Vite-Plugin informiert Wrangler darüber, dass dieses <code>/dist</code>-Verzeichnis die erstellten statischen Assets des Projekts enthält, zu denen in diesem Fall clientseitiger Code, einige CSS-Dateien und Bilder gehören.&nbsp;</p>
+	<p>Nach der Implementierung sieht diese Single-Page-Application-(SPA)-Architektur in etwa so aus:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6syBGxC8udJi8wlsqvLTXW/526d05095a953cb6d29526abfd4f4b3a/2.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>Wenn eine Anfrage eingeht, prüft Cloudflare den Pfadnamen und stellt automatisch alle statischen Assets bereit, die diesem Pfadnamen entsprechen. Wenn sich beispielsweise im Verzeichnis Ihrer statischen Assets eine Datei <code>blog.html</code> befindet, wird bei Anfragen an <code>example.com/blog</code> diese Datei bereitgestellt.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="static-sites">Statische Websites</h3>
+		<a href="https://blog.cloudflare.com/#static-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie eine statische Website von einem Statischen Website-Generator (Static Site Generator, SSG) wie <a href="https://docs.astro.build/en/concepts/why-astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a> erstellen lassen, müssen Sie lediglich eine <code>wrangler.jsonc</code>-Datei (oder <code>wrangler.toml</code>) erstellen und Cloudflare mitteilen, wo sich Ihre erstellten Assets befinden:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">// wrangler.jsonc 
+
+{
+  "name": "my-static-site",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "directory": "./dist",
+  }
+}</code></pre>
+	<p>Sobald Sie diese Konfiguration hinzugefügt haben, können Sie einfach Ihr Projekt erstellen und wrangler deploy ausführen.&nbsp; Ihre gesamte Website wird dann hochgeladen und ist bereit für den Traffic auf Workers. Nach der Bereitstellung und dem Eintreffen von Anfragen wird Ihre statische Website im <a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>Cache des Cloudflare-Netzwerks</u></a> zwischengespeichert.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OaFnoUfvhzfjwv537fh5S/763524c2ed3b2beb61304576723667ea/3.jpg" alt="" class="kg-image" width="892" height="582" loading="lazy">
+	</figure>
+	<p>Sie können noch heute versuchen, ein neues Astro-Projekt auf Workers zu starten, indem Sie Folgendes ausführen:</p>
+	<pre class="language-Rust"><code class="language-Rust">npm create cloudflare@latest my-astro-app -- --framework=astro</code></pre>
+	<p>Unsere anderen unterstützten Frameworks und erste Schritte finden Sie in unseren <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>Framework-Leitfäden</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="single-page-applications-spas">Single-Page-Anwendungen (SPAs)&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#single-page-applications-spas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie eine Single-Page-Anwendung haben, können Sie den <code>single-page-application</code>-Modus in Ihrer Wrangler Konfiguration explizit aktivieren:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">{
+ "name": "example-spa-worker-hyperdrive",
+ "main": "api/index.js",
+ "compatibility_flags": ["nodejs_compat"],
+ "compatibility_date": "2025-04-01",
+ },
+ "assets": {
+   "directory": "./dist",
+   "binding": "ASSETS",
+   "not_found_handling": "single-page-application"
+ },
+ "hyperdrive": [
+   {
+     "binding": "HYPERDRIVE",
+     "id": "d9c9cfb2587f44ee9b0730baa692ffec",
+     "localConnectionString": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+   }
+ ],
+ "placement": {
+   "mode": "smart"
+ }
+}</code></pre>
+	<p>Bei Aktivierung dieser Option geht die Plattform davon aus, dass alle Navigationsanfragen (Anfragen, die einen <code>Sec-Fetch-Modus: navigate</code>-Header enthalten) für statische Assets bestimmt sind und gibt <code>index.html</code> aus, wenn kein passendes statisches Asset gefunden wird. Bei Nicht-Navigationsanfragen (z.&nbsp;B. Datenanfragen), die nicht mit einem statischen Asset übereinstimmen, ruft Cloudflare das Worker-Skript auf. Mit diesem Setup können Sie das Frontend mit React rendern, einen Worker für die Abwicklung der Backend-Vorgänge verwenden und Vite verwenden, um die beiden miteinander zu verbinden. Diese Option eignet sich hervorragend für die Portierung älterer SPAs, die mit <code>create-react-app</code> erstellt wuden&nbsp;– <a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>einem Tool, dessen Entwicklung kürzlich eingestellt wurde</u></a>.&nbsp;</p>
+	<p>Noch etwas, das Sie in dieser Wrangler-Konfigurationsdatei beachten sollten: Wir haben eine Hyperdrive-Bindung definiert und <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> aktiviert. Hyperdrive ermöglicht die Nutzung einer bestehenden Datenbank<i> und</i> übernimmt das Pooling von Verbindungen. Damit wird die seit langem bestehende Herausforderung gelöst, Workers (die in einer hochverteilten, serverlosen Umgebung ausgeführt werden) direkt mit traditionellen Datenbanken zu verbinden. Der Grund liegt im Design: Workers werden systembedingt in schlanken V8-Isolaten ohne persistente TCP-Sockets und mit strenger CPU-/Speicherbegrenzung betrieben. Diese Isolierung ist großartig für die Sicherheit und Geschwindigkeit, aber sie erschwert das offene Aufrechterhalten von Datenbankverbindungen. Hyperdrive begegnet diesen Einschränkungen, indem es als „Brücke“ zwischen dem Netzwerk von Cloudflare und Ihrer Datenbank fungiert und sich um die schwere Arbeit der Aufrechterhaltung stabiler Verbindungen oder Pools kümmert, damit Workers diese wiederverwenden können.&nbsp; Mit aktiviertem Smart Placement wird außerdem gewährleistet, dass Cloudflare bei Anfragen an unseren Worker, die aufgrund großer Entfernung zur Datenbank Latenz verursachen, sowohl den Worker (zuständig für die Datenbankverbindung) als auch die Hyperdrive-„Brücke“ näher zur Datenbank verlagert, was ​​die Umlaufzeiten reduziert.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="spa-example-worker-code">SPA-Beispiel: Worker-Code</h4>
+		<a href="https://blog.cloudflare.com/#spa-example-worker-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sehen wir uns das <a href="https://github.com/korinne/example-spa-worker" target="_blank" rel="noopener noreferrer"><u>Beispiel „Bereitstellen über Cloudflare“</u></a> am Anfang dieses Blogbeitrags an. In <code>api/index.js</code> haben wir eine API definiert (mit Hono), die über Hyperdrive eine Verbindung zu einer gehosteten Datenbank herstellt.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">import { Hono } from "hono";
+import postgres from "postgres";
+import booksRouter from "./routes/books";
+import bookRelatedRouter from "./routes/book-related";
+
+const app = new Hono();
+
+// Setup SQL client middleware
+app.use("*", async (c, next) =&gt; {
+ // Create SQL client
+ const sql = postgres(c.env.HYPERDRIVE.connectionString, {
+   max: 5,
+   fetch_types: false,
+ });
+
+ c.env.SQL = sql;
+
+ // Process the request
+ await next();
+
+ // Close the SQL connection after the response is sent
+ c.executionCtx.waitUntil(sql.end());
+});
+
+app.route("/api/books", booksRouter);
+app.route("/api/books/:id/related", bookRelatedRouter);
+
+
+export default {
+ fetch: app.fetch,
+};</code></pre>
+	<p>Nach der Bereitstellung sieht die Architektur unserer Anwendung in etwa so aus:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56hrgUpOebvOdzbI8j6liw/bc9e7d01dde8cb6a8a4623aec3abc883/1.jpg" alt="" class="kg-image" width="1798" height="582" loading="lazy">
+	</figure>
+	<p>Wenn Smart Placement die Platzierung meines Workers näher an meiner Datenbank verschiebt, könnte das folgendermaßen aussehen:&nbsp;</p>
+	<div style="position: relative; padding-top: 46.844919786096256%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ac4737ba9a53e0d4285654e7dfeaac75/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fac4737ba9a53e0d4285654e7dfeaac75%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-rendering-ssr">Serverseitiges Rendering (SSR)</h3>
+		<a href="https://blog.cloudflare.com/#server-side-rendering-ssr" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie das Rendering auf dem Server durchführen möchten, unterstützen wir eine Reihe beliebter Full-Stack-<a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>Frameworks</u></a>.&nbsp;</p>
+	<p>Hier ist eine Version unseres vorherigen Beispiels, die jetzt das serverseitige Rendering von React Router v7 verwendet:</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Freact-router-postgres-ssr-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Bereitstellen über Cloudflare"></a>
+	<p></p>
+	<p>Sie können Next.js auch mit dem <a href="https://opennext.js.org/cloudflare" target="_blank" rel="noopener noreferrer"><u>OpenNext-Adapter</u></a> oder jedem anderen <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>Framework verwenden, das in unseren Framework-Leitfäden aufgeführt ist</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="deploy-to-workers-with-as-few-changes-as-possible">Mit so wenigen Änderungen wie möglich für Workers bereitstellen</h2>
+		<a href="https://blog.cloudflare.com/#deploy-to-workers-with-as-few-changes-as-possible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="node-js-compatibility">Kompatibilität mit Node.js</h3>
+		<a href="https://blog.cloudflare.com/#node-js-compatibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Auch bei der Unterstützung von Node.js-APIs haben wir weitere Fortschritte gemacht und kürzlich auch die Unterstützung für die Module <code>crypto</code>, <code>tls</code>, <code>net</code> und <code>dns</code> hinzugefügt. Dadurch können bestehende Anwendungen und Bibliotheken, die auf diese Node.js-Module angewiesen sind, auf Workers ausgeführt werden. Schauen wir uns ein konkretes Beispiel an:</p>
+	<p>Wenn Sie bisher versucht haben, das <code>mongodb</code>-Paket zu verwenden, ist der folgende Fehler aufgetreten:</p>
+	<pre class="language-Rust"><code class="language-Rust">Error: [unenv] dns.resolveTxt is not implemented yet!</code></pre>
+	<p>Dies geschah, wenn <code>mongodb</code> das Modul <code>node:dns</code> verwendete, um einen DNS-Lookup für einen Hostnamen durchzuführen. Selbst wenn Sie dieses Problem vermieden hätten, wäre ein weiterer Fehler aufgetreten, wenn <code>mongodb</code> versucht hätte, <code>node:tls</code> zu verwenden, um eine sichere Verbindung zu einer Datenbank herzustellen.</p>
+	<p>Jetzt können Sie <code>mongodb</code> wie erwartet verwenden, da <code>node:dns</code> und <code>node:tls</code> unterstützt werden. Das Gleiche gilt für Bibliotheken, die auf <code>node:crypto</code> und <code>node:net</code> angewiesen sind.</p>
+	<p>Außerdem <a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u>stellen Workers jetzt Umgebungsvariablen und Secrets über das process.env-Objekt bereit</u></a>, sofern das <code>Nodejs_compat</code>-Kompatibilitäts-Flag gesetzt ist und das Kompatibilitätsdatum auf den <code>01.04.2025</code> oder ein späteres Datum gesetzt ist. Einige Bibliotheken (und Entwicklerinnen bzw. Entwickler) gehen davon aus, dass dieses Objekt mit Variablen gefüllt wird, und verlassen sich bei der Top-Level-Konfiguration darauf. Ohne diese Anpassung konnten Bibliotheken zuvor unerwartet ausfallen, und Entwicklerinnen und Entwickler mussten zusätzliche Logik für die Handhabung von Variablen auf Cloudflare Workers schreiben</p>
+	<p>Jetzt können Sie einfach wie in Node.js auf Ihre Variablen zugreifen.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const LOG_LEVEL = process.env.LOG_LEVEL || "info";</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="additional-worker-cpu-time">Zusätzliche Worker-CPU-Zeit</h3>
+		<a href="https://blog.cloudflare.com/#additional-worker-cpu-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben auch die <a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>maximale CPU-Zeit pro Worker-Anfrage</u></a> von 30 Sekunden auf 5 Minuten erhöht. Dadurch können rechenintensive Vorgänge länger ohne Timeouts ausgeführt werden. Angenommen, Sie möchten das neu unterstützte <code>node:crypto</code>-Modul verwenden, um eine sehr große Datei zu hashen, so können Sie dies jetzt auf Workers machen, ohne sich bei CPU-intensiven Vorgängen auf externe Rechenleistung verlassen zu müssen.</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-builds">Workers Builds&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#workers-builds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir haben auch <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a> verbessert, die es Ihnen ermöglichen, ein Git-Repository mit Ihrem Worker zu verbinden, sodass Sie bei jeder übertragenen Änderung automatische Builds und Bereitstellungen erhalten. Workers Builds wurde während des <a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery"><u>Builder Day 2024</u></a> eingeführt und erlaubte Ihnen zunächst nur, ein Repository mit einem bestehenden Worker zu verbinden. Jetzt können Sie ein Repository aufbauen und <a href="http://blog-2711" target="_blank" rel="noopener noreferrer"><u>es sofort als neuen Worker bereitstellen</u></a>. Das reduziert die Setup-Bemühungen und Schaltflächenklicks, die zum Übertragen eines Projekts erforderlich sind. Wir haben die Performance von Workers Builds verbessert, indem wir die Latenzzeit von Build-Starts um <b>6 Sekunden</b> reduziert haben — sie beginnen jetzt im Durchschnitt innerhalb <b>von 10 Sekunden.</b> Wir haben auch die Reaktionsfähigkeit der API verbessert und dank Smart Placement eine <b>7-fache</b> Verbesserung der Latenzzeit erreicht.&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Hinweis</b>: Am 2. April 2025 ging Workers Builds zu einem neuen Preismodell über, wie beim <a href="https://blog.cloudflare.com/builder-day-2024-announcements"><u>Builder Day 2024</u></a> angekündigt. Benutzer des Free-Tarifs sind jetzt auf 3.000 Minuten Erstellungszeit begrenzt, und Benutzer des Workers Paid-Abonnements erhalten ein neues nutzungsbasiertes Modell mit 6.000 Freiminuten, danach fallen Kosten von 0,0005 USD pro Build-Minute an. Um gleichzeitige Builds besser zu unterstützen, erhalten kostenpflichtige Tarife jetzt auch sechs (6) gleichzeitige Builds, was das Arbeiten mit mehreren Projekten und Monorepos erleichtert. Weitere Informationen zu den Preisen finden Sie in der <a href="https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing" target="_blank" rel="noopener noreferrer"><u>Dokumentation</u></a>.</p>
+		</li>
+	</ul>
+	<p>Sie können Workers Builds auch so einrichten, dass sie in <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>nicht in der Produktionsumgebung eingesetzten Branches ausgeführt werden</u></a>, und Vorschau-URLs werden <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>als Kommentar an GitHub zurückgesendet</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="bind-the-images-api-to-your-worker">Binden Sie die Images API an Ihren Worker</h3>
+		<a href="https://blog.cloudflare.com/#bind-the-images-api-to-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Letzte Woche haben wir einen <a href="https://blog.cloudflare.com/improve-your-media-pipelines-with-the-images-binding-for-cloudflare-workers"><u>Blog-Beitrag</u></a> verfasst, in dem wir darauf eingehen, wie die Images-Bindung flexiblere, programmatische Workflows zur Bildoptimierung ermöglicht.</p>
+	<p>Bisher konnten Sie auf Funktionen zur Bildoptimierung zugreifen, indem Sie <code>fetch()</code> in Ihrem Worker aufruften. Für diese Methode muss das Originalbild über die URL abrufbar sein. Es kann jedoch vorkommen, dass Bilder nicht über eine URL zugänglich sind, z.&nbsp;B. wenn Sie von Nutzern hochgeladene Bilder komprimieren möchten, bevor sie in Ihren Speicher hochgeladen werden. Mit der Images-Bindung können Sie ein Bild direkt optimieren, indem Sie seinen Body als Byte-Stream bearbeiten.</p>
+	<p>Weitere Informationen finden Sie in unserer Anleitung zur <a href="https://developers.cloudflare.com/images/tutorials/optimize-user-uploaded-image" target="_blank" rel="noopener noreferrer"><u>Transformierung eines Bildes, bevor es auf R2 hochgeladen wird</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">Jetzt mit der Entwicklung starten</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir sind gespannt darauf, was Sie entwickeln werden, und konzentrieren uns auf neue Funktionen und Verbesserungen, die die Erstellung von Anwendungen auf Workers erleichtern werden. Ein Großteil dieser Arbeit wurde durch Feedback aus der Community noch besser gemacht, und wir ermutigen alle, sich <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>in unserem Discord</u></a> an der Diskussion zu beteiligen.&nbsp;</p>
+	<p><b>Hilfreiche Ressourcen für den Einstieg:</b></p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>Framework-Anleitungen</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets/migrate-from-pages" target="_blank" rel="noopener noreferrer"><u>Leitfaden zur Migration</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>Dokumentation statischer Assets</u></a>&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Dokumentation zum Cloudflare Vite-Plugin</u></a></p>
+		</li>
+	</ul>
+	<p></p>
+</div>

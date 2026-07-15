@@ -1,0 +1,163 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/february-28-2024-workersai-catalog-update">English</a>、<a href="https://blog.cloudflare.com/zh-tw/february-28-2024-workersai-catalog-update">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/february-28-2024-workersai-catalog-update">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/february-28-2024-workersai-catalog-update">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1evYIoMrhK80DKj7tCm4q8/1f66dcd7760827bb0659ada72c0c177c/february-28-2024-workersai-catalog-update.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2024年2月6日に、テキスト生成、分類、コード生成のユースケースのカタログに追加した<a href="https://blog.cloudflare.com/ja-jp/february-2024-workersai-catalog-update-ja-jp">8つの新しいモデルを発表しました</a>。本日、Cloudflareは17以上 (！) のモデルを用いて、Workers AIでの新しいタイプのタスクとユースケースの実現に焦点を当てます。現在、カタログには40近くのモデルがあるため、ユーザーが新しいモデルを簡単に検索して発見できるように、開発者向けドキュメントの刷新も行うことにしました。</p>
+	<p></p>
+	<p>新しいモデルは以下のとおりです。Workers AIの完全版カタログは、<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">新しい開発者向けドキュメント</a>でご覧いただけます。</p>
+	<p><b>テキスト生成</b></p>
+	<ul>
+		<li>
+			<p><b><b><b>@cf/deepseek-ai/deepseek-math-7b-instruct</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/openchat/openchat-3.5-0106</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/microsoft/phi-2</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/tinyllama/tinyllama-1.1b-chat-v1.0</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/thebloke/discolm-german-7b-v1-awq</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/qwen/qwen1.5-0.5b-chat</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/qwen/qwen1.5-1.8b-chat</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/qwen/qwen1.5-7b-chat-awq</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/qwen/qwen1.5-14b-chat-awq</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/tiiuae/falcon-7b-instruct</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/defog/sqlcoder-7b-2</b></b></b></p>
+		</li>
+	</ul>
+	<p><b>要約</b></p>
+	<ul>
+		<li>
+			<p><b><b><b>@cf/facebook/bart-large-cnn</b></b></b></p>
+		</li>
+	</ul>
+	<p><b>テキストから画像</b></p>
+	<ul>
+		<li>
+			<p><b><b><b>@cf/lykon/dreamshaper-8-lcm</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/runwayml/stable-diffusion-v1-5-inpainting</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/runwayml/stable-diffusion-v1-5-img2img</b></b></b></p>
+		</li>
+		<li>
+			<p><b><b><b>@cf/bytedance/stable-diffusion-xl-lightning</b></b></b></p>
+		</li>
+	</ul>
+	<p><b>画像からテキスト</b></p>
+	<ul>
+		<li>
+			<p><b><b><b>@cf/unum/uform-gen2-qwen-500m</b></b></b></p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="new-language-models-fine-tunes-and-quantizations">新しい言語モデル、ファインチューニング、量子化</h3>
+		<a href="https://blog.cloudflare.com/#new-language-models-fine-tunes-and-quantizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日のカタログアップデートには、開発者がユースケースに最適なLLMを選択できるように、新しい言語モデルが多数含まれています。ほとんどのLLMはどのインスタンスでも機能するように一般化できますが、特定のユースケースに合わせてモデルを選択することには多くの利点があるのです。私たちは、新しい大規模言語モデル（LLM）、小規模言語モデル（SLM）、多言語サポート、そしてファインチューニングおよび量子化されたモデルをご紹介できることを嬉しく思っています。</p>
+	<p>最新のLLMには、<code>falcon-7b-instruct</code>が含まれています。これは、高精度のレスポンスを生成するためにマルチクエリーアテンションを革新的に使用する点で、特にエキサイティングです。また、<code>discolm_german_7b</code>と<code>qwen1.5</code>モデルでは、言語サポートが向上しています。これらのモデルは多言語データでトレーニングされており、英語だけでなくドイツ語（<code>discolm</code>）と中国語（<code>qwen1.5</code>で優れたLLM出力を誇っています。Qwenモデルは、0.5Bから14Bのパラメーター範囲で、当社のテストでは特に優れた精度を示しています。新しいSLMもいくつかリリースしており、これは、精度を損なうことなく、より速く、より安価に推論を行うことができるため、人気が高まっています。SLMには、Llamaの1.1Bパラメーターバージョン（<code>tinyllama-1.1b-chat-v1.0</code>）やMicrosoftの1.3Bパラメーターモデル（<code>phi-2</code>）など、小さいながらも性能の高いモデルを導入しています。</p>
+	<p>AI業界が加速し続ける中、優秀な人材はモデルのパフォーマンスと精度を向上させ、最適化する方法を見出してきました。また、<a href="https://arxiv.org/abs/2309.11235" target="_blank" rel="noopener noreferrer">条件付き強化学習ファインチューニング（C-RLFT）</a>を実装するファインチューニングモデル（openchat-3.5）を追加しました。C-RLFTは、簡単に収集可能な混在品質データを使用して、オープンソース言語モデルの開発を可能にする技術です。</p>
+	<p>これらの新しいテキスト生成モデルすべてを、今日当社のプラットフォームに導入できることを本当に嬉しく思います。オープンソースコミュニティは、新しいAIのブレークスルーの開発においてすばらしい成果を上げており、これらのモデルのトレーニング、ファインチューニング、量子化に向け貢献してくださった皆さんに感謝しています。開発者がAIを使用して新しいアプリケーションを迅速かつ簡単に構築するために、これらのモデルをホストし、誰もが利用できるようになることに感激しています。新しいモデルとそのAPIスキーマについては、<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="new-image-generation-models">新たな画像生成モデル</h3>
+		<a href="https://blog.cloudflare.com/#new-image-generation-models" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいStable Diffusionパイプラインと最適化を追加し、強力な新しい画像編集と生成のユースケースを可能にします。わずか2回の推論ステップで高画質画像を生成するStable Diffusion XL Lightningのサポートを追加しました。テキストから画像へのテキストプロンプトを取得し、その入力に基づいてモデルに画像を生成させたい人にとって非常に人気のあるタスクですが、Stable Diffusionは、実際にははるかに多くの機能を備えています。この新しいWorkers AIリリースによって新しいパイプラインが解放されたことで、Stable Diffusionで入力とタスクのさまざまな様相を試せるようになります。</p>
+	<p>Workers AIで、Stable Diffusionを、画像から画像への適用、またはユースケースの修復に使用できるようになりました。Image-to-imageでは、入力画像を別の画像に変換することが可能です。例えば、Stable Diffusionに依頼して、肖像画の漫画バージョンを作成することができます。インペインティングでは、ユーザーが画像をアップロードして、同じ画像を新しいものに変換することができます。インペインティングの例には、写真の背景の「拡大」やモノクロ写真の色付けなどがあります。</p>
+	<p>インペインティングを使用するには、画像、マスク、およびプロンプトを入力する必要があります。画像は修正する元の写真で、マスクは塗り替えたい領域を強調するモノクロの画面で、プロンプトはその領域に何を生成するべきかをモデルに指示します。以下は、インペインティングを実行するための入力とリクエストテンプレートの例です。</p>
+	<div class="flex anchor relative">
+		<h3 id="new-use-cases">新たなユースケース</h3>
+		<a href="https://blog.cloudflare.com/#new-use-cases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RdRXcGbrGjlfhlZ3iF5Wj/f122e6a9405cfcfc1f8e8faa5fd6ec50/RIgkPzrxrrjSz2YPCYJItmJrOftfe5ZgcA-oS2mvIYI3L7enm62_lmSV9ua2d663tj2kpXSDUf__lVJAsaU2XOhlnUw-XS9Kt8CiwygsD30Mptndu1vQDrhafph6.png" alt="" class="kg-image" width="1600" height="477" loading="lazy">
+
+	</figure>
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
+
+export default {
+    async fetch(request, env) {
+        const formData = await request.formData();
+        const prompt = formData.get("prompt")
+        const imageFile = formData.get("image")
+        const maskFile = formData.get("mask")
+
+        const imageArrayBuffer = await imageFile.arrayBuffer();
+        const maskArrayBuffer = await maskFile.arrayBuffer();
+
+        const ai = new Ai(env.AI);
+        const inputs = {
+            prompt,
+            image: [...new Uint8Array(imageArrayBuffer)],
+            mask: [...new Uint8Array(maskArrayBuffer)],  
+            strength: 0.8, // Adjust the strength of the transformation
+            num_steps: 10, // Number of inference steps for the diffusion process
+        };
+
+        const response = await ai.run("@cf/runwayml/stable-diffusion-v1-5-inpainting", inputs);
+
+        return new Response(response, {
+            headers: {
+                "content-type": "image/png",
+            },
+        });
+    }
+}</code></pre>
+	<p>また、Workers AIには、数学の問題を解決することに特化したLLM（<code>deepseek-math-7b-instruct</code>）、SQLコード生成（<code>sqlcoder-7b-2</code>）、テキスト要約（<code>bart-large-cnn</code> ）、画像キャプション（<code>uform-gen2-qwen-500m</code>）など、さまざまな特殊なタスクやユースケースを可能にする新たなモデルを追加しました。</p>
+	<p>私たちはこの新しいモデルを一般に公開して、あなたがこれらを使って構築を始められるようにしたいのですが、今後数週間の間にさらにデモとチュートリアルコンテンツを公開する予定です。これら新しいモデルの使用方法の詳細については、<a href="https://twitter.com/CloudflareDev" target="_blank" rel="noopener noreferrer">Xアカウント</a>と<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">開発者向けドキュメント</a>にて、今後の動きにご注目ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="optimizing-our-model-catalog">モデルカタログの最適化</h3>
+		<a href="https://blog.cloudflare.com/#optimizing-our-model-catalog" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AIモデルのイノベーションは急速に進歩しており、高速かつ効率的な推論を実現するためのツールや技術も急速に進歩しています。すべての人に最高の推論プラットフォームを提供できるように、モデルの最適化に役立つ新しいツールを組み込むことを嬉しく思います。通常、AI推論を最適化する際、モデルを<a href="https://onnxruntime.ai" target="_blank" rel="noopener noreferrer">ONNX</a>などのフォーマットにシリアル化すると有用です。ONNXは、このユースケースで最も一般的に適用可能なオプションの1つであり、広範なハードウェアとモデルアーキテクチャをサポートするものです。ONNXモデルは、<a href="https://github.com/NVIDIA/TensorRT" target="_blank" rel="noopener noreferrer">TensorRT</a>エンジンに変換することでさらに最適化することができます。このフォーマットはNvidia GPU用に特別に設計されたもので、推論の遅延を短縮し、LLMからの合計スループットの向上が可能になります。適切なフォーマットを選択することは、通常、特定のモデルアーキテクチャと推論に利用できるハードウェアから、最適なサポートを受けることになります。当社は、新しいStable Diffusionパイプラインには、TensorRTとONNXの両方のフォーマットを活用することにしました。これらのパイプラインは、特定のタスクに適用された一連のモデルを表しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="explore-more-on-our-new-developer-docs">新しい開発者向けドキュメントを活用する</h3>
+		<a href="https://blog.cloudflare.com/#explore-more-on-our-new-developer-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの新しいモデルは、<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">新しい開発者向けドキュメント</a>で読むことができます。ここでは、個々のモデル、プロンプトテンプレート、コンテキストトークンの制限などのプロパティの詳細について学ぶことができます。私たちはモデルページを刷新し、開発者が新しいモデルを検討してその使用方法を学習しやすいように、よりシンプルなものにしました。検索しやすくするためにすべてのモデルを1つのページに表示し、右側にタスクタイプを表示するようにしました。そして、個々のモデルのページをクリックすると、それらのモデルの使用方法に関するコード例を確認することができます。</p>
+	<p>これらの新しいモデルを試し、Workers AIで新しくなにかを構築していただけることを願っています。デモ、チュートリアル、Workers AIの価格設定など、さらなる最新情報が近日中に発表される予定です。あなたが現在取り組んでいるものや、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a>でご覧になりたい他のモデルがある場合は、当社までお気軽にお知らせください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vsVFSfZ9pvpWkTXdl6iWw/9b03d7b28a3420f378564da0eae5fe44/image3.png" alt="" class="kg-image" width="1556" height="687" loading="lazy">
+
+	</figure>
+</div>

@@ -1,0 +1,359 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/making-full-stack-easier-d1-ga-hyperdrive-queues">English</a>、<a href="https://blog.cloudflare.com/zh-tw/making-full-stack-easier-d1-ga-hyperdrive-queues">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/making-full-stack-easier-d1-ga-hyperdrive-queues">Français</a>、<a href="https://blog.cloudflare.com/de-de/making-full-stack-easier-d1-ga-hyperdrive-queues">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/making-full-stack-easier-d1-ga-hyperdrive-queues">한국어</a>、<a href="https://blog.cloudflare.com/es-es/making-full-stack-easier-d1-ga-hyperdrive-queues">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/making-full-stack-easier-d1-ga-hyperdrive-queues">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CqPYh1lx30p4YeSmvMQYE/9b51f2dad6f6bf67eef60aa39e656c9e/making-full-stack-easier-d1-ga-hyperdrive-queues.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="making-full-stack-easier">フルスタックをより簡単に</h3>
+		<a href="https://blog.cloudflare.com/#making-full-stack-easier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BKrpfqvHnl6yaHdXXsCoc/70280206c43fc4ecfa026968440f52f0/image4-31.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>エイプリルフールの今日、誰もが楽しく過ごしたい一方、弊社からはまじめな発表をお届けします。冗談は一切抜きに、Cloudflareのプラットフォーム上で構築する開発者の数は、今日時点で200万人を超えています！</p>
+	<p>今回のDeveloper Weekは、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">弊社サーバーレスSQLデータベースであるD1</a>、_既存の_データベースを分散型（しかもより高速）のように感じさせる<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Hyperdrive</a>、そして弊社時系列データベースである<a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>の3製品での「プロダクション・レディ（本番環境で利用可能）」への転換をもって皮切りとなります。</p>
+	<p>開発者がスタック全体をCloudflareに持ち込めるよう長い間取り組んできた一方、Cloudflareで構築するアプリケーションはどのようなものとなるのでしょうか。</p>
+	<p>概念図自体は、すでに慣れ親しんだツールとそう大きくは変わりません。コアユーザーデータには、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">データベース</a>が必要になります。アセットとユーザーコンテンツには、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">オブジェクトストレージ</a>が必要となります。メールやアップロード処理などのバックグラウンドでのタスクには、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">キュー</a>が必要となるでしょう。ランタイムのコンフィグには、<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">高速なkey-value store</a>が必要になります。さらに、ユーザーイベントおよびパフォーマンスデータの集計には、<a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">時系列データベース</a>も必要になります。これは、わずかな例を挙げれば検索、推奨、および画像分析タスクなどの多くのアプリケーションの核となりつつある<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">AI</a>登場前の話です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5D3F21rYXhLv0bI6FID3Kc/4b0ca6dfc52e168a852599345e111a02/image6-11.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+
+	</figure>
+	<p>しかし、考えるまでもなく、このアーキテクチャは地球全体で実行されており、つまりスケーラビリティ、信頼性、さらにスピードのすべてが整っていることになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="d1-ga-production-ready">D1一般公開：本番環境で利用可能</h3>
+		<a href="https://blog.cloudflare.com/#d1-ga-production-ready" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コアデータベースは、インフラストラクチャで最も重要なものの1つで、非常に高い信頼性が必要です。データを紛失することがあってはならず、スケーリングできる必要があります。そのため弊社では、昨年D1が本番環境で利用可能となるよう取り組んできており、この度、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">弊社のグローバルサーバーレスSQLデータベース</a>であるD1の一般利用が開放されたことをお知らせします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FBwcKFjSHTCL2LcJRtNCo/46c6a403e7f8c743ac8a4dff252d85e4/image2-35.png" alt="" class="kg-image" width="1800" height="713" loading="lazy">
+
+	</figure>
+	<p>D1の一般公開では、次に挙げる最も需要の高い機能を実現しました。</p>
+	<ul>
+		<li>
+			<p>10GBデータベース、アカウント当たりデータベース50,000件のサポート</p>
+		</li>
+		<li>
+			<p>新しいデータエクスポート機能</p>
+		</li>
+		<li>
+			<p>最も時間またはコストを消費している、もしくは単に非効率的なクエリを把握するための強化されたクエリデバッギング（「D1 Insights」と命名 &nbsp;</p>
+		</li>
+	</ul>
+	<p>これにより、開発者がD1で本番環境で利用可能なアプリケーション構築し、すべてのリレーショナルSQLのニーズを満たすことを支えます。さらに、「無料プラン」または「趣味向けプラン」の概念が廃れつつあると思われる時勢の中、弊社では、D1の無料ティアを廃止したり、$5/月のWorkers有料プランに含まれる_読み取り行数250億行_を減らしたりすることはありません。</p>
+	<p>プラン</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="143">
+			<col width="179">
+			<col width="211">
+			<col width="200">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Plan</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Rows Read</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Rows Written</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Storage</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Paid</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">First 25 billion / month included</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">+ $0.001 / million rows</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">First 50 million / month included</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">+ $1.00 / million rows</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">First 5 GB included</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">+ $0.75 / GB-mo</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Workers Free</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5 million / day</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">100,000 / day</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span class="Apple-tab-span" style="white-space:pre;"> </span></span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5 GB (total)</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>読み取り行数</p>
+	<p>書き込み行数</p>
+	<p>ストレージ</p>
+	<pre class="language-js"><code class="language-js">export default {
+  async fetch(request: Request, env: Env) {
+    const {pathname} = new URL(request.url);
+    let resp = null;
+    let session = env.DB.withSession(token); // An optional commit token or mode
+
+    // Handle requests within the session.
+    if (pathname === "/api/orders/list") {
+      // This statement is a read query, so it will work against any
+      // replica that has a commit equal or later than `token`.
+      const { results } = await session.prepare("SELECT * FROM Orders");
+      resp = Response.json(results);
+    } else if (pathname === "/api/orders/add") {
+      order = await request.json();
+
+      // This statement is a write query, so D1 will send the query to
+      // the primary, which always has the latest commit token.
+      await session.prepare("INSERT INTO Orders VALUES (?, ?, ?)")
+        .bind(order.orderName, order.customer, order.value);
+        .run();
+
+      // In order for the application to be correct, this SELECT
+      // statement must see the results of the INSERT statement above.
+      //
+      // D1's new Session API keeps track of commit tokens for queries
+      // within the session and will ensure that we won't execute this
+      // query until whatever replica we're using has seen the results
+      // of the INSERT.
+      const { results } = await session.prepare("SELECT COUNT(*) FROM Orders")
+        .run();
+      resp = Response.json(results);
+    }
+
+    // Set the token so we can continue the session in another request.
+    resp.headers.set("x-d1-token", session.latestCommitToken);
+    return resp;
+  }
+}</code></pre>
+	<p>Workers 有料</p>
+	<p>月当り250億行込み</p>
+	<p>+ 以降100万行当たり$0.001</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47WBGHvqFpRkza2ldA5RBi/7f7f47055e1f4f066e213b88e9e98737/image1-37.png" alt="" class="kg-image" width="1800" height="647" loading="lazy">
+
+	</figure>
+	<p>月当り500億行込み</p>
+	<p>+ 以降100万行当たり$1.00</p>
+	<p>5 GB込み</p>
+	<pre class="language-js"><code class="language-js">// Use the popular 'pg' driver? Easy. Hyperdrive just exposes a connection string
+// to your Worker.
+const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+await client.connect();
+
+// Prefer using an ORM like Drizzle? Use it with Hyperdrive too.
+// https://orm.drizzle.team/docs/get-started-postgresql#node-postgres
+const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+await client.connect();
+const db = drizzle(client);</code></pre>
+	<p>+ $0.75 / GB（月当たり</p>
+	<p>Workers 無料</p>
+	<p>500万 / 日</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="189">
+			<col width="253">
+			<col width="249">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Plan</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Price per query</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Connection Pooling</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Paid</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">$0&nbsp;</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">$0</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>100,000件 / 日</p>
+	<p>5GB（合計）</p>
+	<p><i>D1を開始当初からご覧になっている皆様へ：これは</i><a href="https://blog.cloudflare.com/d1-open-beta-is-here"><i>オープンベータ版</i></a><i>で発表した価格と同じです</i></p>
+	<p>しかし、一般公開だけに留まるわけではありません。D1には、グローバルなリードレプリケーション、さらに大規模なデータベース、データベースの分岐を可能にするより強力な<a href="https://developers.cloudflare.com/d1/reference/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>機能、Worker内から動的なクエリおよび新規データベースをオンザフライで作成するための新APIなど、主要新機能を複数用意しています。</p>
+	<pre class="language-js"><code class="language-js">// Pull and acknowledge messages from a Queue using any HTTP client
+$  curl "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull" -X POST --data '{"visibilityTimeout":10000,"batchSize":100}}' \
+     -H "Authorization: Bearer ${QUEUES_TOKEN}" \
+     -H "Content-Type:application/json"
+
+// Ack the messages you processed successfully; mark others to be retried.
+$ curl "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack" -X POST --data '{"acks":["lease-id-1", "lease-id-2"],"retries":["lease-id-100"]}' \
+     -H "Authorization: Bearer ${QUEUES_TOKEN}" \
+     -H "Content-Type:application/json"</code></pre>
+	<p>D1のリードレプリケーションは、必要に応じてリードレプリカを自動的にデプロイし、ユーザーにより近いデータを取得します。さらに、これはスピンアップ、スケーリングの管理、または一貫性（レプリケーションのラグ）問題に煩わされることなく実現します。以下、D1で予定しているレプリケーションAPIの例を掲載します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UUkrE3bqqIdQiemV49Hal/496c2d539b366a794d58479c99b1c9ec/image5-19.png" alt="" class="kg-image" width="1800" height="600" loading="lazy">
+
+	</figure>
+	<p>要点として、セッションベースの一貫性を保てる能力を開発者に提供するため、ユーザーは自らの変化が反映されていることを認識でき、一方でレプリケーションがもたらすパフォーマンスと遅延向上のメリットが得られます。</p>
+	<pre class="language-js"><code class="language-js">// Apply a delay to a message when sending it
+await env.YOUR_QUEUE.send(msg, { delaySeconds: 3600 })
+
+// Delay a message (or a batch of messages) when marking it for retry
+for (const msg of batch.messages) {
+	msg.retry({delaySeconds: 300})
+} </code></pre>
+	<p>D1のリードレプリケーションが内部でどのように機能するかについては、<a href="https://blog.cloudflare.com/building-d1-a-global-database">詳細を解説した投稿</a>でご覧いただけます。また、さっそくD1上で構築を始めたい場合、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>で最初のデータベースを作成してください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RhxWjKGRmoJtgQ4toybvY/57469d1ee721096a3c2b7551bbd277a4/image3-35.png" alt="" class="kg-image" width="1800" height="405" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="hyperdrive-ga">Hyperdrive: <b><b>一般公開</b></b></h3>
+		<a href="https://blog.cloudflare.com/#hyperdrive-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>弊社では、<a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">昨年9月のバースデーウィーク中</a>にHyperdriveをオープンベータ化し、現在一般提供しています。つまり、攻撃テスト済みかつ本番環境で利用可能となっています。</p>
+	<p>Hyperdriveについて把握できていない方のために説明すると、すでに運用している集約化されたデータベースがグローバルなものに感じられるよう設計されたものです。弊社の<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">グローバルネットワーク</a>を活用し、データベースへのより早いルート取得、コネクションプールの準備を整え、最も頻繁に実行されるクエリを可能な限りユーザーの近くにキャッシュします。</p>
+	<p>要点として、Hyperdriveは最も人気が高くすぐに使えるドライバーかつORM（オブジェクト・リレーショナル・マッパー）ライブラリであり、クエリを再学習またはリライトする必要はありません。</p>
+	<p>しかし、Hyperdriveでの取り組みは「一般公開」となったことだけでは終わりません。今後数か月にかけ、最も広範にわたりデプロイされた_他の_データベースエンジンであるMySQLをサポートする予定です。また、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>と<a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>を経由したプライベートネットワーク（クラウドVPCネットワークを含む）内のデータベースへの接続もサポートする予定です。これに加え、インバリデーションとキャッシング戦略に関する設定可能性を高める計画で、パフォーマンス対データのフレッシュネスに関しよりきめ細かな判断ができるようになります。</p>
+	<p>Hyperdriveの値段設定について検討するに当たり、課金は不適切であると弊社は判断しました。結局、Hyperdriveがもたらすパフォーマンスのメリットは重要であるだけでなく、従来型のデータベースエンジンに接続するにあたり不可欠なものです。Hyperdriveがない場合、データベースに接続またはクエリを実行するたびにリクエスト当たり6回以上の遅延のオーバーヘッドが発生するのは、正しい状況ではありません。</p>
+	<p>このため、<b>Workers有料プランをご利用中のあらゆる開発者には、Hyperdriveを無料</b>にしています。これには、複数のHyperdriveを作成する機能とともに、クエリキャッシングと接続プーリングの両方が含まれます。これにより、各種アプリケーション、本番対ステージングの分別、または各種コンフィギュレーション（キャッシュ化対未キャッシュ化など）の提供が実現します。</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="170">
+			<col width="218">
+			<col width="224">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Plan</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Data points written</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Read queries</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Paid</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">10 million included per month</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">+$0.25 per additional million</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1 million included per month</span></p>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">+$1.00 per additional million</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Workers Free</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">100,000 included per day</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">10,000 included per day</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>プラン</p>
+	<p>クエリごとの料金</p>
+	<p>接続プーリング</p>
+	<p>Workers 有料</p>
+	<p>$0&nbsp;</p>
+	<p>$0</p>
+	<p>Hyperdriveを使い始める場合、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">ドキュメントをお読みになり</a>、Workersからご利用中の既存のデータベースへの接続およびクエリの開始についてご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="queues-pull-from-anywhere">Queues：場所を問わずにプル可能</h3>
+		<a href="https://blog.cloudflare.com/#queues-pull-from-anywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>タスクキューは、現代的なフルスタックのアプリケーション構築においてますます重要な要素となっており、弊社はオープンベータ版の<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>を<a href="https://blog.cloudflare.com/cloudflare-queues-open-beta">発表した当時</a>、このことを気にかけていました。以来Queuesの複数の主要機能に取り組み、その内のプルベースのコンシューマーと新メッセージ配信制御の2つを今週リリースすることにしました。</p>
+	<p>すべてのHTTPを活用するクライアントは、<a href="https://developers.cloudflare.com/queues/reference/pull-consumers" target="_blank" rel="noopener noreferrer">これよりキューからメッセージをプルできるようになります</a>。キューの新しい/pullエンドポイントをメッセージのバッチから呼び出したり、/ackエンドポイントを呼び出し処理する中、各メッセージ（またはメッセージのバッチ）を認識できるようになります。</p>
+	<p>プルベースのコンシューマーはどこからでも実行でき、既存の従来型クラウドインフラストラクチャと併せてキューコンシューマーを実行できます。Cloudflareの社内チームは、デバイスのテレメトリを<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310以上のデータセンター</a>からのキューに書き込み、Kubernetesで実行される舞台裏のインフラストラクチャ内で消費される1つのユースケースに着目し、これを早くより採用しました。重要なのは、弊社のグローバルに分散したキューインフラストラクチャは、コンシューマーによる処理準備が整うまでメッセージがキュー内にとどまることを意味している点になります。</p>
+	<p>Queuesはまた、キューに送信する際、およびリトライ時にメッセージを作成する際の両方において、<a href="https://developers.cloudflare.com/queues/reference/batching-retries/#delay-messages" target="_blank" rel="noopener noreferrer">メッセージを遅らせることに対応することになりました</a>。これは、将来のタスクを順番待ちとする際、および上流APIまたはインフラストラクチャがメッセージ処理のスピードを調整する必要がある際のレート制限を設けている場合の保険メカニズムとして役立ちます。</p>
+	<p>弊社ではまた、今後Queuesを一般公開するにあたり大幅に増強されたper-queueを提供する予定でもいます。Queruesが_非常に_信頼性の高いものであることも弊社にとって重要な点です。メッセージが失われたり見落とされたりすると、ユーザーは注文確定メールやパスワードリセット通知を受け取れなかったり、アップロードが処理されなくなったりします。こうした事態はユーザーに影響を及ぼし、修正が難しくなります。</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-analytics-engine-is-ga">Workers Analytics Engineが一般公開</h3>
+		<a href="https://blog.cloudflare.com/#workers-analytics-engine-is-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>は、Workersからのデータポイントを書き込む内蔵API、およびそのデータをクエリするSQL APIにより、無制限カーディナリティ分析を大規模に提供します。</p>
+	<p>Workers Analytics Engineは、Cloudflareで長年にわたり頼りにされてきた同じClickHouseベースのシステムによって支えられています。弊社では、自社サービスの健全性を確認するために使用しており、請求のための製品利用状況を把握し、特定の顧客の利用パターンについての質問に答えています。ほとんどすべてのCloudflareのネットワークへのリクエストついて、少なくとも1つのデータポイントがこのシステムに書き込まれます。Workers Analytics Engineにより、弊社側が困難な部分を担当しながら、この同じインフラストラクチャを用い独自のカスタム分析を構築できるようになります。</p>
+	<p><a href="https://blog.cloudflare.com/workers-analytics-engine">ベータローンチ</a>以降、大型企業から<a href="https://github.com/benvinegar/counterscale" target="_blank" rel="noopener noreferrer">Counterscale</a>などのオープンソースプロジェクトまで、こうした同じユースケースなどで開発者はWorkers Analytics Engineに頼りはじめました。Workers Analytics Engineは、長年にわたりミッションクリティカルなワークロードを本番スケールで稼働させてきました。しかし、弊社は本日まで、価格情報について一切の情報を提供してきませんでした。</p>
+	<p>弊社では、2つの指標に基づき、Workers Analytics Engineの価格をシンプルに保ちます。</p>
+	<ol>
+		<li>
+			<p><b>書き込まれるデータポイント</b> — <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank" rel="noopener noreferrer">writeDataPoint()</a>をWorkerで呼び出す際、1つのデータポイントに書き込まれたとカウントします。データポイントごとに、同額となります。他のプラットフォームとは異なり、ディメンションやカーディナリティ追加に対しペナルティはなく、圧縮されたデータポイントのサイズとコストを予想する必要はありません。</p>
+		</li>
+		<li>
+			<p><b>クエリの読み取り</b> — Workers Analytics Engineの<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api" target="_blank" rel="noopener noreferrer">SQL API</a>に配信するたびに、1回のクエリ読み取りとしてカウントします。クエリごとに、同額となります。他のプラットフォームとは異なり、クエリの複雑性に対しペナルティはなく、各クエリによって読み取られるデータの行数を勘案する必要はありません。</p>
+		</li>
+	</ol>
+	<p>Workers FreeおよびWorkers Paidプランの両方で、クエリ書き込みおよび読み取りのデータポイント割当を含んでおり、付加的な利用についてのプライシングは次のようになります。</p>
+	<p>プラン</p>
+	<p>書き込まれるデータポイント</p>
+	<p>クエリ読み取り</p>
+	<p>Workers 有料</p>
+	<p>1か月あたり、1,000万込み</p>
+	<p>追加100万ごとに、+$0.25</p>
+	<p>1か月あたり、100万込み</p>
+	<p>追加100万ごとに、+$1.00</p>
+	<p>Workers 無料</p>
+	<p>1日当たり、100,000込み</p>
+	<p>1日当たり、10,000込み</p>
+	<p>このプライシングにより、Workerで機能を呼び出す回数、およびHTTP APIエンドポイントをリクエストする回数を数えることで、Workers Analytics Engineの利用料金が分かります。複雑な計算は不要で、手計算で算出できるほどシンプルなものとなっています。</p>
+	<p>このプライシングは、今後あらゆるお客様に適用されるようになります。現時点よりそれまでの間、Workers Analytics Engineは無料でご利用いただけます。<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#limits" target="_blank" rel="noopener noreferrer">今日からさっそく、ご利用中のWorkerからデータポイントを書き込み始めていただけます。</a>必要な時間はわずか数分で、10行未満のコードでデータの取得を始められます。ぜひ、ご利用体験をお聞かせください。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-week-is-just-getting-started"><b>週は始まったばかり</b></h3>
+		<a href="https://blog.cloudflare.com/#the-week-is-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Developer Weekの2日目となる明日のお届け内容も、ぜひご確認ください。ご質問がある場合、またはすでに構築されたものについて共有いただける場合、ぜひ開発者向け<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><i>Discord</i></a>でお聞かせください。</p>
+</div>

@@ -1,0 +1,143 @@
+<div class="mb2 gray5">Lecture&nbsp;: 7 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/chaos-in-cloudflare-lisbon-office-securing-the-internet-with-wave-motion">English</a>, en <a href="https://blog.cloudflare.com/pt-br/chaos-in-cloudflare-lisbon-office-securing-the-internet-with-wave-motion">Português</a>, en <a href="https://blog.cloudflare.com/nl-nl/chaos-in-cloudflare-lisbon-office-securing-the-internet-with-wave-motion">Nederlands</a> et en <a href="https://blog.cloudflare.com/de-de/chaos-in-cloudflare-lisbon-office-securing-the-internet-with-wave-motion">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2J0BiaLyDMtbEcZrETkdWu/26d0ae2c2dd564138723922bd9612dec/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Au fil des ans, Cloudflare s'est rendue célèbre pour de nombreux éléments, notamment pour son blog technique, mais aussi en tant qu'<a href="https://www.wired.com/story/cloudflare-lava-lamps-protect-from-hackers" target="_blank" rel="noopener noreferrer"><u>entreprise technologique sécurisant Internet à l'aide de </u><u><b>lampes à lave</b></u></a>, une histoire qui a commencé sous la forme d'un projet de recherche/Science il y a près de 10 ans. En mars 2025, nous avons ajouté une nouvelle couche à son caractère traditionnel : un « mur d'entropie » constitué de 50 <b>machines à vagues </b>en mouvement constant dans nos bureaux de Lisbonne, le siège de l'entreprise en Europe continentale.&nbsp;</p>
+	<p>Ces machines à vagues sont une nouvelle source d'entropie, rejoignant les <b>lampes à lave</b> de San Francisco, les <b>arcs-en-ciel suspendus</b> d'Austin et les <b>pendules doubles chaotiques</b> de Londres. L'entropie qu'ils génèrent contribue à la sécurisation de l'Internet <a href="https://blog.cloudflare.com/#lavarand-origins-and-walls-of-entropy"><u>par le biais de LavaRand</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sp4ZXYnpwUGAabVB0fRKW/f56edd916efeb49173c623e99b87bc70/DSC00336.JPG" alt="" class="kg-image" width="3104" height="2064" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1D1cayhBpPyuUNKV4JCcvF/e6d493a71e41c3622dd4f895505a3f43/DSC00450.JPG" alt="" class="kg-image" width="3104" height="2064" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EE2gOFRrXCGM5ASh3uCl7/b282e0ed651cb5c354b183bc33aff116/image4.jpg" alt="" class="kg-image" width="1999" height="1330" loading="lazy">
+	</figure>
+	<p><i><sup>Le mur des nouvelles vagues au bureau de Cloudflare à Lisbonne se trouve à côté de l'affichage Radar des informations globales d'Internet, avec en arrière-plan le pont du 25 avril surplombant le Tage.</sup></i></p>
+	<p>&nbsp;Il est très intéressant de voir les vagues du Portugal jouer désormais un rôle dans la sécurisation de l'Internet, surtout si l'on considère la longue histoire maritime du Portugal.</p>
+	<p>L'installation met à l'honneur la passion du Portugal pour la mer et l'exploration de l'inconnu, avec des débuts bien célèbres il y a plus de 600 ans, en 1415, avec des navires pionniers tels que des <a href="https://en.wikipedia.org/wiki/Caravel" target="_blank" rel="noopener noreferrer"><u>caravelles</u></a>, précurseurs des galions et autres navires. L'exploration de la mer portugaise a été marquée par des écoles de navigation et des voyages historiques <i>« au travers de mers dans lesquelles personne n'avait jamais navigué auparavant »</i> (<i>« Por mares nunca dantes navegados » </i>en portugais), comme le décrit le célèbre poète portugais, Luís Vaz de Camões, né il y a 500 ans (1524).</p>
+	<p>Quiconque connaît le Portugal sait que <a href="https://en.wikipedia.org/wiki/History_of_Portugal#Naval_exploration_and_Portuguese_Empire_(15th%E2%80%9316th_centuries)" target="_blank" rel="noopener noreferrer"><u>la mer constitue un élément central</u></a> de son identité. Ce petit pays compte 980 km de côtes et c'est là que se trouvent la plupart de ses villes principales. Les zones maritimes représentent 90 % de son territoire, y compris les Açores au milieu de l'Atlantique. En 1998, l'exposition mondiale <a href="https://en.wikipedia.org/wiki/Expo_%2798" target="_blank" rel="noopener noreferrer"><u>Expo 98 de Lisbonne</u></a> a mis à l'honneur les océans et ce patrimoine maritime. Depuis 2011, la petite ville de Nazaré est également devenue <a href="https://allwaves.surf/waves-explained-nazare" target="_blank" rel="noopener noreferrer"><u>célèbre au sein de la communauté des surfeurs</u></a> pour ses <a href="https://earthobservatory.nasa.gov/images/149486/monster-waves-of-nazare" target="_blank" rel="noopener noreferrer"><u>vagues géantes</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zN2XfhmWnjbFmkXfTiYGw/fa321c61b54e676136f93d050364ee8b/image6.jpg" alt="" class="kg-image" width="1916" height="639" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Tyu4Wlgn1NMihceYSCUvI/45905ee3820880371b508dc13c32f11b/image2.jpg" alt="" class="kg-image" width="1999" height="692" loading="lazy">
+	</figure>
+	<p><i><sup>Les vagues de Nazaré, célèbres depuis que Garrett McNaMara y a surfé sur une vague de 23,8 m en 2011, détenant ainsi le </sup></i><a href="https://www.guinnessworldrecords.com/world-records/78115-largest-wave-surfed-unlimited" target="_blank" rel="noopener noreferrer"><i><sup><u>record du Guinness</u></sup></i></a><i><sup> des plus grandes vagues jamais surfées. Photos : Sam Khawasé et beatriz Paula, de Cloudflare.
+
+			</sup></i></p>
+	<p>La culture maritime du Portugal a également inspiré la littérature et la musique, notamment le poète Fernando Pessoa, qui y a fait référence dans son livre de 1934 <a href="https://en.wikipedia.org/wiki/Mensagem" target="_blank" rel="noopener noreferrer"><u>Mensagem</u></a>, et le musicien Rui Veloso, qui a dédié son album de 1990, <a href="https://open.spotify.com/album/2mzMuD3bxwFaFgfjU2vigY" target="_blank" rel="noopener noreferrer"><u>Auto da Pimenta</u></a>, au lien historique entre le Portugal et la mer.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-this-chaos-came-to-be">Comment est apparu ce chaos</h3>
+		<a href="https://blog.cloudflare.com/#how-this-chaos-came-to-be" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Comme l'a récemment <a href="https://x.com/eastdakota/status/1899226252956827846" target="_blank" rel="noopener noreferrer"><u>dit</u></a> le CEO de Cloudflare, Matthew Prince, l'idée de ce nouveau mur d'entropie a commencé à germer en 2023 : « Que pouvions-nous utiliser pour assurer un caractère aléatoire qui ressemble à notre mur de lampes à lave de San Francisco, mais qui représenterait notre équipe au Portugal ? »</p>
+	<p>L'inspiration originale est venue de ces gadgets de bureau sous forme de machines à mouvement des vagues qui étaient populaires parmi certains des membres de notre équipe. Les vagues et l'océan sont non seulement une source de mouvement et d'aléatoire, mais ils s'alignent également sur l'histoire maritime du Portugal et le panorama visible depuis les bureaux.</p>
+	<p>Cependant, c'était plus facile à dire qu'à faire. Il s'avère que la construction d'un mur de machines à vagues relève d'une véritable gageure, étant donné que ces jouets ne sont pas aussi populaires qu'ils l'étaient par le passé, et ne sont pas fabriqués dans les dimensions dont nous avions besoin. Nous avons consulté eBay et d'autres sources, mais nous n'avons pas pu trouver suffisamment de machines à vague, d'un style harmonisé et en état de marche. Nous avons également découvert que les modèles prêts à l'emploi n'étaient pas conçus pour fonctionner 24 h/24 et 7 j/7, ce qui était une condition essentielle pour notre utilisation.</p>
+	<div class="flex anchor relative">
+		<h4 id="artistry-to-create-wave-machines">L'art de créer des machines à vagues</h4>
+		<a href="https://blog.cloudflare.com/#artistry-to-create-wave-machines" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Loin de se décourager, l'<a href="https://blog.cloudflare.com/cloudflare-top-100-most-loved-workplaces-in-2022"><u>équipe Places de Cloudflare chargée de penser nos lieux de travail</u></a> en veillant à ce que nos bureaux reflètent nos valeurs et notre culture a rencontré un <a href="https://wavemotionmachines.com" target="_blank" rel="noopener noreferrer"><u>artiste originaire des États-Unis</u></a>, spécialisé dans la protection des vagues maritimes, afin de concevoir des machines à vagues. Depuis 2009, son entreprise individuelle, <a href="https://wavemotionmachines.com" target="_blank" rel="noopener noreferrer"><u>Hughes Wave Motion Machines</u></a>, réunit l'art, l'ingénierie et la recherche, après son transfert depuis Lockheed Martin Space Systems, où il concevait des satellites militaires et commerciaux.</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/82638d9e81c68911d07fc2a0db093b74/iframe?muted=true&amp;preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F82638d9e81c68911d07fc2a0db093b74%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p><i><sup>Mouvement régulier des fascinantes vagues de bureau au rythme d'une chanson générée par IA.</sup></i></p>
+	<p>Au terme d'une collaboration étroite, nous avons mis au point une machine à vagues rectangulaire personnalisée (45 cm de long) qui fonctionne sans interruption (tâche ô combien difficile), ce qui a nécessité des centaines d'heures de tests et de nombreuses itérations. Avec des disques rotatifs, des moteurs continus et une formule fluide unique, ces machines créent des vagues réalistes, semblables à celles des océans, en vert, bleu et orange, la signature de Cloudflare.&nbsp;</p>
+	<p>Voici une citation de l'artiste lui-même au sujet de ces machines à vagues :</p>
+	<blockquote>
+		<p><i>« La conception de la machine est un exercice d'équilibre entre l'association de composants et leur positionnement afin d'obtenir une certaine réponse des fluides selon la configuration. Il existe une relation complexe, mais délicate, entre la visibilité, la gravité spécifique, les dimensions et la conception du contenant, et le placement de chaque interface mécanique. Tout doit être aligné avec précision, centré sur le fluide, comme une fonction mathématique. J'aime dire que c'est comme « équilibrer un plateau d'échecs sur un ballon de plage dans le vent ».</i></p>
+	</blockquote>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3K9fpTU0D0xi831MHFOFBj/570b8c307fea1078f3c0262e13447bf6/image7.jpg" alt="" class="kg-image" width="1500" height="1999" loading="lazy">
+	</figure>
+	<p><i><sup>L'équipe Places de Cloudflare, avec les architectes des bureaux de Lisbonne et des sous-traitants en train de tester le positionnement des machines à vagues, les étagères, l'éclairage et les miroirs, afin de renforcer le mouvement et la réflexion, mars 2024.</sup></i></p>
+	<p>Malgré des retards, les machines à vagues de Lisbonne ont finalement été mises en place le 10 mars 2025 ; un moment particulièrement excitant pour l'équipe Places.</p>
+	<p><b>Quelques chiffres concernant notre mur d'entropie de machines à vagues :</b></p>
+	<ul>
+		<li>
+			<p>50 machines à vagues, 50 roues motrices et moteurs, 50 conteneurs en fluides remplis de la formule Hughes Wave Flow (deux <a href="https://www.sciencedirect.com/topics/engineering/immiscible-liquid" target="_blank" rel="noopener noreferrer"><u>liquides immiscibles</u></a>)</p>
+		</li>
+		<li>
+			<p>3 couleurs Liquides : bleu, vert et orange</p>
+		</li>
+		<li>
+			<p>15 mois du concept à la finalisation</p>
+		</li>
+		<li>
+			<p>14 rotations (mouvements d'équilibrage côté à côté) par minute, soit plus de 20 000 par jour</p>
+		</li>
+		<li>
+			<p>Plus de 15 vagues par minute</p>
+		</li>
+		<li>
+			<p>Environ 0,5 litre de fluide par machine</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="lavarand-origins-and-walls-of-entropy">Les origines et les murs d'entropie de LavaRand</h3>
+		<a href="https://blog.cloudflare.com/#lavarand-origins-and-walls-of-entropy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les serveurs de Cloudflare traitent en moyenne 71 millions de requêtes HTTP par seconde, avec 100 millions de requêtes par seconde en période de pointe. <a href="https://radar.cloudflare.com/adoption-and-usage#http-vs-https" target="_blank" rel="noopener noreferrer"><u>La plupart de ces requêtes sont sécurisées via TLS</u></a>, qui repose sur un caractère aléatoire sécurisé pour l'intégrité cryptographique. Un générateur de nombres pseudo-aléatoires cryptographiquement sécurisé (<a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption" target="_blank" rel="noopener noreferrer"><u>CSPRNG</u></a>) garantit l'imprévisibilité, mais uniquement lorsqu'il est nourri d'une entropie de qualité élevée. Le mouvement chaotique DU monde réel étant véritablement aléatoire, Cloudflare a conçu un système pour le maîtriser. Notre <a href="https://blog.cloudflare.com/harnessing-office-chaos"><u>article de blog de 2024</u></a> développe ce sujet de manière plus technique, mais en voici un bref résumé.</p>
+	<p>En <a href="https://blog.cloudflare.com/randomness-101-lavarand-in-production"><u>2017</u></a>, Cloudflare a lancé LavaRand, inspiré du <a href="https://www.wired.com/1997/03/lava-lites-easy-to-break-hard-to-crack" target="_blank" rel="noopener noreferrer"><u>concept de Silicon Graphics en 1997</u></a>. Toutefois, la nécessité de l'aléatoire dans la sécurité était déjà un sujet d'actualité sur notre blog avant cela, comme dans nos discussions concernant la <a href="https://blog.cloudflare.com/why-randomness-matters"><u>sécurisation des systèmes</u></a> et la <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>cryptographie</u></a>. À l'origine, LavaRand collectait l'entropie à partir d'un mur de lampes à lave placé dans son bureau de San Francisco, alimentant une API interne que les serveurs interrogent périodiquement pour l'inclure dans leurs pools d'entropie. Au fil du temps, nous avons étendu LavaRand au-delà des lampes à lave, en intégrant <a href="https://blog.cloudflare.com/harnessing-office-chaos/#londons-unpredictable-pendulums"><u>de nouvelles sources de chaos dans les bureaux</u></a> tout en maintenant la même méthode de base.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v6Wvde8j8R7482QjBsSrV/89b37c652654e27c13d328e9acac6489/image9.png" alt="" class="kg-image" width="1612" height="381" loading="lazy">
+	</figure>
+	<p>Une caméra capture des images d'affichages aléatoires dynamiques et imprévisibles. Les ombres, les changements d'éclairage et même le bruit des capteurs contribuent à l'entropie. Chaque image est ensuite traitée dans un hachage compact, qui la convertit en une séquence d'octets aléatoires. Ces valeurs, combinées à la graine précédente et à l'entropie du système local, servent d'entrée à une fonction de dérivation de clé<a href="https://en.wikipedia.org/wiki/Key_derivation_function" target="_blank" rel="noopener noreferrer"><u> (KDF</u></a>), qui génère une nouvelle graine pour un CSPRNG, capable de produire des octets aléatoires pratiquement illimités sur demande. Les vagues qui surviennent dans notre bureau de Lisbonne contribuent désormais à ce pool d'éléments aléatoires.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XFFjr4jhRMQlz6akHKZm4/44759c4e879de3792cd21b4ce2525c90/image5.png" alt="" class="kg-image" width="1491" height="400" loading="lazy">
+	</figure>
+	<p>API LavaRand de Cloudflare rend cet élément aléatoire accessible en interne, renforçant ainsi la sécurité cryptographique de l'ensemble de notre infrastructure mondiale. Par exemple, lorsque vous utilisez <i>Math.random()</i> dans <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>, une partie de ce caractère aléatoire provient de LavaRand. De la même manière, une interrogation envoyée à notre <a href="https://blog.cloudflare.com/harnessing-office-chaos/#drand-distributed-and-verifiable-public-randomness"><u>API drand</u></a> passe également par un accès à LavaRand. Cloudflare propose cette API pour permettre à tout le monde de générer des nombres aléatoires et même d'ensemencer ses propres systèmes.</p>
+	<div class="flex anchor relative">
+		<h3 id="our-new-lisbon-office-space">Notre nouvel espace de bureau à Lisbonne</h3>
+		<a href="https://blog.cloudflare.com/#our-new-lisbon-office-space" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ivPkCfTkGxfo6Swt6p9qY/e7414a14b88bef7ac7e0ef6f737b58c6/image8.jpg" alt="" class="kg-image" width="1999" height="1330" loading="lazy">
+	</figure>
+	<p><i><sup>Photo de la vue depuis notre bureau de Lisbonne dont le plafond est orné de lumières en formes de vagues.</sup></i></p>
+	<p>L'entropie a également inspiré l'éthique de la conception de notre nouveau bureau de Lisbonne, le mur de vagues et le bureau faisant partie du même projet. Dès que vous entrez, vous êtes accueilli non seulement par le mouvement du mur d'entropie, mais également par le mouvement constant de la planète Terre sur notre écran Cloudflare Radar qui se trouve à côté. Mais les vagues ne s'arrêtent pas là : de plus en plus d'éléments dans l'espace imitent le flux dynamique de l'Internet lui-même. Contrairement aux marées des océans, le trafic Internet suit le mouvement du soleil et non de la lune.</p>
+	<p>Lorsque vous traversez un bureau, les vagues sont omniprésentes, dans les plafonniers, les contours architecturaux et même les sols, soigneusement conçus par notre architecte pour refléter le mouvement fluide de l'eau. Les éléments visuels créent une expérience homogène, renforçant l'impression de mouvement. Chaque salle de réunion adopte cette thématique maritime, elles portent d'ailleurs le nom des célèbres plages portugaises, dont Nazaré, naturellement.</p>
+	<p>Nous nous sommes associés à un incroyable groupe de fournisseurs locaux portugais pour ce projet de construction, dont toutes les responsables étaient des femmes, ce qui est incroyablement rare pour le secteur. Les équipes locales ont travaillé avec passion, en portant fièrement les T-shirts de Cloudflare et ont contribué à une atmosphère conviviale.@ Ils ont été ouvertement fiers du projet, confiant à quel point il se démarquait de tout ce sur quoi ils avaient travaillé auparavant.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lpuurEtWfpIPKvHVqmD0L/0b0561097859f286d6b5e98db82f1e0f/image3.jpg" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><i><sup>Notre formidable équipe externe et notre équipe interne Places, arborant fièrement les T-shirts de Cloudflare après avoir donné vie à ce projet.</sup></i></p>
+	<div class="flex anchor relative">
+		<h3 id="help-us-select-a-name-for-our-new-wall-of-entropy">Aidez-nous à choisir un nom pour notre nouveau mur d'entropie</h3>
+		<a href="https://blog.cloudflare.com/#help-us-select-a-name-for-our-new-wall-of-entropy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Enfin, nous avons plusieurs options de nom pour ce nouveau mur d'entropie. Aidez-nous à décider du meilleur et enregistrez votre vote à l'aide de <a href="https://forms.gle/L2gAqoJTwQmJFkmy8" target="_blank" rel="noopener noreferrer"><u>ce formulaire</u></a>.</p>
+	<blockquote>
+		<p><b>The Surf Board</b></p>
+		<p><b>Chaos Reef</b></p>
+		<p><b>Waves of Entropy</b></p>
+		<p><b>Wall of Waves</b></p>
+		<p><b>Whiring Wave Wall</b></p>
+		<p><b>Chaotic Wave Wall</b></p>
+		<p><b>Waves of Chaos</b></p>
+	</blockquote>
+	<p>Si vous souhaitez travailler au bureau de Cloudflare à Lisbonne, nous recrutons ! Notre <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u><b>page de recrutement</b></u></a> répertorie nos postes vacants à Lisbonne et dans nos autres sites situés aux États-Unis, au Mexique, en Europe et en Asie.</p>
+	<p><i><sup>Remerciements : ce projet n'a été possible que grâce à l'effort, à la vision et à l'aide de John Graham-Cumming, Caroline Quick, Jen Preston, Laura Atwall, Caroline Beja, Hughes Wave Motion Machines, P4 Planning and Project Management, Gensler Europe, Openbook Architecture, et Vector Mais.</sup></i></p>
+</div>

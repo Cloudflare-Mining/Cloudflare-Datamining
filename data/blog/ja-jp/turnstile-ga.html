@@ -1,0 +1,77 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/turnstile-ga">English</a>、<a href="https://blog.cloudflare.com/zh-tw/turnstile-ga">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/turnstile-ga">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/turnstile-ga">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fFVRKtqZDPv6z4oPgiXn9/107bf56f9274cb7a2fd97b6c3c0a91a3/turnstile-ga.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>何年もの間、私たちはCAPTCHAが私たちをイライラさせると<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">書いてきました</a>。人間がCAPTCHAパズルをあきらめる割合は<a href="https://www.math.unipd.it/~gaggi/doc/ads20.pdf" target="_blank" rel="noopener noreferrer">約15％</a>にのぼり、しかも厄介なことに、人間よりも<a href="https://www.usenix.org/conference/usenixsecurity23/presentation/searles" target="_blank" rel="noopener noreferrer">ボットの方が圧倒的にCAPTCHAを解きやすい</a>のです。私たちは過去3年半を費やして、ボットを阻止する効果のある、人間にとってより良いエクスペリエンスの構築に取り組んできました。今月の時点で、Cloudflareによって発行されるすべてのCAPTCHAを、<a href="https://www.cloudflare.com/products/turnstile" target="_blank" rel="noopener noreferrer">CAPTCHAの新しい代替</a>であるTurnstileに置き換えました（下の写真）。Cloudflareはいかなる理由であれ、もう誰に対してもビジュアルパズルを発行することはありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2562yydO3PNFG88W5iTE0P/ee8cda8c9929f566e738c0e0f75b2a9b/image3-37.png" alt="" class="kg-image" width="1200" height="676" loading="lazy">
+
+	</figure>
+	<p>CloudflareでCAPTCHAを廃止した今、他のCloudflareサービスを使っていなくても、誰でも簡単に同じことができるようにしたいと考えています。私たちはTurnstileをプラットフォームから切り離し、<a href="https://github.com/cloudflare/turnstile-demo-workers/blob/main/src/explicit.html#L74-L85" target="_blank" rel="noopener noreferrer">数行のコードを</a>追加するだけで、どのプラットフォームのどのWebサイト運営者でもTurnstileを使用できるようにしました。Turnstileの一般利用が可能になり、<b>Turnstileの「マネージド」モードが無制限で誰でも完全に無料で利用できるようになったことを発表できることを嬉しく思います</b>。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10LzRAr38KzxAANQIVxwZT/0fe5ec0867c70f8217a6deff4b244f9b/image2.gif" alt="" class="kg-image" width="878" height="300" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="easy-on-humans-hard-on-bots-private-for-everyone">人間には優しく、ボットには厳しく、誰でもプライベートに</h3>
+		<a href="https://blog.cloudflare.com/#easy-on-humans-hard-on-bots-private-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Turnstileのシンプルなチェックボックスには、誰にとっても使いやすく、ユーザーのプライバシーを守り、<a href="https://www.cloudflare.com/learning/bots/what-is-a-bot" target="_blank" rel="noopener noreferrer">ボットを</a>阻止するために多くの工夫が凝らされています。すべての人にとってチャレンジが使いやすくなっているのは、1つにはどのブラウザを使用していても、すべての人が同じ優れたエクスペリエンスを得られるためです。ビジュアルパズルが採用されていないため、弱視や目の不自由なユーザーも他のユーザーと同じように使いやすいチャレンジの流れを得ることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DQmrvGrrHUPlLMHrknjyY/99ea339af6278970204cb33bcdf5520f/image6-5.png" alt="" class="kg-image" width="1999" height="607" loading="lazy">
+
+	</figure>
+	<p>誰もが利用しやすい体験を提供するために、音声CAPTCHAに逆戻りしないようにすることが特に重要でした。音声CAPTCHAは、人間が解くにはビジュアルCAPTCHAよりもはるかに難しいことが多く、<a href="https://web.stanford.edu/~jurafsky/burszstein_2010_captcha.pdf" target="_blank" rel="noopener noreferrer">音声チャレンジのうち、</a>実際に正しい解答が何であるか3人で合意できたのは31.2%にすぎません。無料の音声テキスト化サービスの普及により、ボットが音声CAPTCHAを解くことも容易になっており、<a href="https://uncaptcha.cs.umd.edu/papers/uncaptcha_woot17.pdf" target="_blank" rel="noopener noreferrer">最近の調査では</a>、ボットは85%以上の試行で音声CAPTCHAを正確に解くことができるという結果が出ています。TurnstileがWCAG 2.1レベルAAに準拠しており、ビジュアルCAPTCHAだけでなく音声CAPTCHAの必要性も排除していることは私たちの誇りです。</p>
+	<p>当社では、プライバシーを重視するためにもTurnstileを作成しました。Turnstileは、<a href="https://www.cloudflare.com/learning/privacy/what-is-eprivacy-directive" target="_blank" rel="noopener noreferrer">ePrivacy Directive</a>、<a href="https://www.cloudflare.com/learning/privacy/what-is-the-gdpr" target="_blank" rel="noopener noreferrer">GDPR</a>、<a href="https://www.cloudflare.com/learning/privacy/what-is-the-ccpa" target="_blank" rel="noopener noreferrer">CCPA</a>のコンプライアンス要件、および当社のプライバシーに関するコミットメントの厳格な要件を満たしています。さらに、Cloudflareの<a href="https://marketplace.fedramp.gov/products/FR2000863987" target="_blank" rel="noopener noreferrer">FedRAMP Moderate認証取得済みパッケージ</a>である「Cloudflare for Government」にはTurnstileが含まれています。ユーザーが人間かロボットかの判断は、他のどのWebサイトを訪問したかといったユーザーデータの追跡には依存していません。当社のビジネスは、広告を販売することではなく、Webサイトを保護することです。したがって、事業者は、ユーザーのデータが安全であることがわかっているTurnstileを導入することができます。</p>
+	<p>Turnstileのチャレンジをパスするのがいかに_簡単_であるかを強調したところで、ボットをどうやって止めることができるのかという疑問が起こるのは当然でしょう。もしボットが、私たちよりも早く、粒子の粗い写真から<a href="https://www.vox.com/22436832/captchas-getting-harder-ai-artificial-intelligence" target="_blank" rel="noopener noreferrer">横断歩道のあるすべての画像を</a>見つけることができるのであれば、同様にチェックボックスをチェックすることもできるはずです。ボットは間違いなくボックスをチェックでき、その際、<a href="https://arxiv.org/abs/1903.01003" target="_blank" rel="noopener noreferrer">人間のマウスの不規則な動きを模倣する</a>ことさえできます。Turnstileにとり、ボックスをチェックするという実際の行為は重要ではありません。重要なのは、ボックスがチェックされている間に解析しているバックグラウンドデータです。一連のブラウザ内テストを実行し、ブラウザの特性、ネイティブブラウザAPIをチェックし、ブラウザに簡単なテスト（プルーフオブワークテスト、プルーフオブスペーステストなど）に合格するよう求め、それが実際のブラウザであることを証明することで、ボットを発見し、阻止します。Turnstileの現在のデプロイメントでは、毎日何十億ものWeb訪問者をチェックしており、ボットがこれらのテストに合格しようとして示すブラウザの異常を特定することができます。</p>
+	<p>1年以上にわたって、<a href="https://blog.cloudflare.com/end-cloudflare-captcha">当社はManaged Challengeを用いて</a>、CAPTCHAと当社独自のTurnstileチャレンジを交互に使用し、その効果を比較しました。<b>ユーザーにやりとりをまったく求めない場合でも</b>、TurnstileはCAPTCHAと同じほど効果的であることがわかりました。この結果がボット作成者からの反応に対処するのに有効であることを確認した後、CAPTCHAチャレンジを独自のチェックボックス・ソリューションに置き換えました。私たちは、潜在的に不審なシグナルが見られた場合にこの追加テストを行い、さらに高いセキュリティのレイヤーを提供するのに役立っています。</p>
+	<div class="flex anchor relative">
+		<h3 id="turnstile-is-great-for-fighting-fraud">Turnstileは詐欺対策に最適</h3>
+		<a href="https://blog.cloudflare.com/#turnstile-is-great-for-fighting-fraud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>無料でサービスを提供するすべてのサイトと同様に、Cloudflareでも、自動アカウント登録が一定の割合で発生しています。この中には、悪質な業者が当社のプラットフォームを悪用するために多数の異なるアカウントを自動作成する「新規アカウント詐欺」が含まれることがあります。このような悪用に対抗するため、Turnstileの不可視モードを導入し、当社のサインアップページを保護しています。今月は、Turnstileを使用して<b>100万回以上の自動サインアップの試行</b>をブロックしましたが、誤検知の報告や、このサインアップフローに依存しているセルフサービスの請求に変更はありませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="lessons-from-the-turnstile-beta">Turnstileベータ版からの教訓</h3>
+		<a href="https://blog.cloudflare.com/#lessons-from-the-turnstile-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>過去12ヶ月の間、多くの人々がTurnstileの試用を希望し、その後それを信頼して、彼らのWebアプリに統合してくださり、とても感謝しています。開発者コミュニティがTurnstileを同様に受け入れてくださっていることも実り多いことでした。<a href="https://www.cloudflare.com/integrations/wordpress" target="_blank" rel="noopener noreferrer">WordPress</a>、Angular、Vue、そしてCloudflareが推奨する<a href="https://www.npmjs.com/package/@marsidev/react-turnstile" target="_blank" rel="noopener noreferrer">Reactライブラリとの</a>統合を含む、コミュニティが作成したTurnstile統合の一部を<a href="https://developers.cloudflare.com/turnstile/community-resources" target="_blank" rel="noopener noreferrer">ここに</a>リストアップします。お客様からのフィードバックに基づき、<a href="https://developers.cloudflare.com/turnstile/reference/supported-languages" target="_blank" rel="noopener noreferrer">17の新しい言語</a>、<a href="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering" target="_blank" rel="noopener noreferrer">新しいコールバック</a>、<a href="https://developers.cloudflare.com/turnstile/reference/client-side-errors" target="_blank" rel="noopener noreferrer">新しいエラーコード</a>のサポートが追加されています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Fiihb5s0WfTPdtLrqx4ro/7b93471efb6a16ba777e5249405ee726/image5-11.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>76,000人以上のユーザーが登録しましたが、最大のテストとなったのは<a href="https://blog.cloudflare.com/how-cloudflare-scaled-and-protected-eurovision-2023-voting">ユーロビジョンの最終投票</a>でした。Turnstileは2,500万以上のCloudflare Webサイトのチャレンジページで実行されています。ユーロビジョンの最終投票が行われるまでは、通常はCloudflareがTurnstileの最大の利用者でした。その1時間の間に、ユーロビジョンの投票サイトからのチャレンジトラフィックは、2,500万サイトを合わせたチャレンジページの利用を上回りました！Turnstileは、トラフィックの膨大なスパイクを問題なく処理しました。</p>
+	<p>Turnstileのベータ版では多くのことがうまくいきましたが、学ぶべき機会もいくつかありました。私たちは当初、Turnstileチャレンジが失敗した理由を開示することに抵抗がありました。結局のところ、私たちが解決しようとしていることを悪質な行為者が知れば、新しい検出手段が導入されるまで、ボットが私たちのチャレンジを欺くことは容易になります。しかし、Turnstileのベータ版では、正当なユーザーがチャレンジをパスできないシナリオがいくつか見られました。これらのシナリオでは、Turnstileに引っかかるような方法でブラウザを変更した可能性のある個人を助けるために、チャレンジが失敗した理由について透明性を確保する必要があることが明らかでした。チャレンジが失敗した理由を明らかにするために、クライアント側の詳細なエラーコードを公開するようにしました。予想もしていなかった2つのシナリオが何度か出てきました。</p>
+	<p>まず、少なくとも10年以上前のデスクトップパソコンは、マザーボードのバッテリーの寿命が切れていることが多く、また、マザーボードのバッテリーが悪いパソコンは、正確な時刻を刻んでいないことが非常に多いことがわかりました。これは、マザーボードのバッテリーがないと、コンピューターの電源が切れているときにデスクトップコンピュータの時計が作動しなくなるためです。チャレンジページをキャッシングするとパスできなくなるため、Turnstileは、Webサイト運営者が誤ってチャレンジページをキャッシュするように設定した場合を検出するため、コンピューターのシステム時間をチェックします。残念なことに、意図せずにこの同じチェックで、単に時刻を更新する必要のあるユーザーが引っかかっていたのです。この問題が発生した場合、エンドユーザーに対してシステム時刻を更新するようにと、明確なエラーメッセージを表示するようにしました。私たちは、そもそもエラーを表面化する必要をなくすことを望んでいます。そのため、実際のユーザーに影響を与えない仕方で、キャッシュされたコンテンツをチェックする新しい方法の開発に取り組んでいます。</p>
+	<p>第二に、プライバシーを重視する少数のユーザーは、匿名性を維持するために、ブラウザに標準的な慣行以上の事柄を求める場合が多くあります。これには、ユーザーエージェントを変更したり（ボットも同様に検出を回避するために行います）、サードパーティのスクリプトが完全に実行されないようにしたりすることが含まれます。この動作によって引き起こされる問題は、Turnstileウィジェットで明確に表示できるようになったため、ユーザーは問題を即座に理解し、ブラウザがチャレンジを通過することを許可するかどうかを慎重に選択できるようになりました。</p>
+	<p>Cloudflareには非常に感度の良い、綿密に構築された監視システムがありますが、当社側でこれらの問題を発見することはできません。何が問題なのかを理解するためには、この問題に影響を受けたユーザーに話を聞く必要がありました。今後は、直接のコミュニケーションラインを常にオープンにしておきたいと思います。Turnstileウィジェットに新しいフィードバックフォームを設置し、今後発生するあらゆる問題に迅速かつ緊急に対応できるようにします。</p>
+	<div class="flex anchor relative">
+		<h3 id="turnstile-ga-and-free-for-everyone">Turnstile: すべての人に無料で一般提供</h3>
+		<a href="https://blog.cloudflare.com/#turnstile-ga-and-free-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cydzYwhoIVTnaMCPmrYVV/f7ff6163cf69dee1abe00f7b5421cd8f/Screenshot-2023-09-29-at-11.37.58.png" alt="" class="kg-image" width="1608" height="464" loading="lazy">
+
+	</figure>
+	<p>Turnstileの一般提供開始を発表したことは、Turnstileが完全に製品化され、マネージドモードの可視ウィジェットで無制限に無料で利用できるようになったことを意味します。Turnstile Enterpriseには、SaaSプラットフォームのサポートと、Cloudflareロゴのない可視モードが含まれます。セルフサービスのお客様には、2024年初頭に高度な機能の従量課金オプションが利用可能になる見込みです。Turnstileの高度な機能へのアクセスは、ベータ期間中と同様、100万siteverifyリクエストの制限以下で継続できます。Turnstileを試してみたい方は、<a href="https://www.cloudflare.com/products/turnstile" target="_blank" rel="noopener noreferrer">サインアップページ</a>にアクセスしてアカウントを作成してください！</p>
+</div>

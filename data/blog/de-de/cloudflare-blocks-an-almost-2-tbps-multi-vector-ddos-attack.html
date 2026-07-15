@@ -1,0 +1,53 @@
+<div class="mb2 gray5">Lesezeit: 1&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">한국어</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dqirQtpHmYSt5N89JGA7J/d7172ec91a8d958507a8d7773f699143/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Anfang dieser Woche hat Cloudflare einen <a href="https://www.cloudflare.com/de-de/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">DDoS-Angriff</a> automatisch erkannt und abgewehrt, der bei knapp 2 Tbit/s seinen Höhepunkt erreichte. Bei dieser größten von uns bislang jemals verzeichneten Attacke handelte es sich um einen Multi-Vektor-Angriff, bei dem <a href="https://www.cloudflare.com/de-de/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer">DNS Amplification</a> und <a href="https://www.cloudflare.com/de-de/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer">UDP-Flooding</a> kombiniert wurden. Dafür wurden rund 15.000 Bots eingesetzt, die eine Abwandlung des ursprünglichen Mirai-Codes auf IoT-Geräten und <a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild" target="_blank" rel="noopener noreferrer">ungepatchten GitLab-Instanzen</a> ausführten.</p>
+	<p></p>
+	<p>DDoS-Angriff erreicht Höhepunkt bei knapp 2 Tbit/s‌‌</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69O75xM8BJ3AQ4xboaaJc8/05b4efd41d8beb38aabe8f5df3b1e48c/image4-11.png" alt="DDoS attack peaking just below 2 Tbps" class="kg-image" width="1874" height="591" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-increased-by-44">Zunahme der Angriffe auf Vermittlungsschicht um 44 %</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-increased-by-44" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im vergangenen Quartal haben wir DDoS-Angriffe mit einem Umfang von mehreren Terabit beobachtet. Bei der jüngsten Attacke hat sich der Trend erhöhter Angriffsintensität fortgesetzt. Eine weitere wichtige Erkenntnis aus unserem <a href="https://blog.cloudflare.com/de-de/ddos-attack-trends-for-2021-q3-de-de">Bericht zu den Trends bei DDoS-Angriffen</a>: DDoS-Angriffe auf Vermittlungsschicht haben sich gegenüber den vorangegangenen drei Monaten um 44 % erhöht. Das vierte Quartal ist zwar noch nicht abgeschlossen, doch wir haben bereits jetzt erneut Angriffe in einem Umfang von mehreren Terabit auf Cloudflare-Kunden registriert.</p>
+	<p>DDoS-Angriffe erreichen Höhepunkt bei 1–1,4 Tbit/s</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16L0jRaxzWrkoprzjXWbEU/ebb62af9ba073ea608920f1b14c34a12/image1-21.png" alt="DDoS attacks peaking at 1-1.4 Tbps" class="kg-image" width="1812" height="714" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-did-cloudflare-mitigate-this-attack">Wie hat Cloudflare diese Attacke durchkreuzt?</h3>
+		<a href="https://blog.cloudflare.com/#how-did-cloudflare-mitigate-this-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zunächst einmal analysieren unsere Systeme kontinuierlich Stichproben des Traffics außerhalb des Netzwerkpfads. Dadurch können wir DDoS-Angriffe asynchron erkennen, ohne Latenz zu verursachen oder die Performance zu schwächen. Nachdem der Angriffs-Traffic erkannt worden war (also innerhalb von Sekundenbruchteilen), haben unsere Systeme eine Echtzeit-Signatur erzeugt, die mit chirurgischer Präzision den Angriffsmustern zugeordnet wird. So kann die Attacke abgewehrt werden, ohne den regulären Datenverkehr zu beeinträchtigen.</p>
+	<p>Sind diese „Fingerabdrücke“ einmal generiert, werden sie in Form einer kurzlebigen Abwehrregel zur kosteneffizienten Bekämpfung an den am besten geeigneten Standort von Cloudflare übertragen. In diesem konkreten Fall wurde die Regel wie bei den meisten DDoS-Angriffen auf Schicht 3 und 4 innerhalb des Netzwerkspfads an den Linux-Kernel <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">eXpress Data Path</a> (XDP) übermittelte, damit das Angriffspaket unverzüglich verworfen wird.</p>
+	<p>Diagramm zu den Cloudflare-Systemen für DDoS-Schutz</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aDR60Hnanrkb1TJ5cNgMO/e173eb50b8433d027d2e5ab834e4ee52/image3-17.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+
+	</figure>
+	<p>Erfahren Sie mehr über <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer">die DDoS-Abwehrsysteme von Cloudflare</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-build-a-better-internet">Unser Ziel: ein besseres Internet</h3>
+		<a href="https://blog.cloudflare.com/#helping-build-a-better-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare hat das Ziel, ein besseres Internet zu schaffen, dass für jedermann sicher, schneller und zuverlässiger funktioniert. Daraus speist sich die Vision unseres DDoS-Teams: Wir wollen DDoS-Angriffen ihren Schrecken nehmen. Das Cloudflare-Netzwerk erkennt und neutralisiert DDoS-Angriffe automatisch – ob diese das <a href="https://blog.cloudflare.com/meris-botnet">Meris-Botnetz</a> einsetzen, mit dem eine der <a href="https://blog.cloudflare.com/de-de/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-de-de">größten jemals verzeichneten HTTP-DDoS-Attacken</a> ausgeführt wurde, sich wie in jüngster Zeit gegen <a href="https://blog.cloudflare.com/update-on-voip-attacks">VoIP-Anbieter</a> richten oder eine Mirai-Variante nutzen, die Websites und Internetanwendungen mit Anfragen überzieht. Cloudflare stellt eine sichere, zuverlässige, leistungsstarke und <a href="https://blog.cloudflare.com/http-ddos-managed-rules">anpassbare</a> Plattform für verschiedenste Websites und Internetanwendungen bereit.Wenn Sie sich näher für den DDoS-Schutz von Cloudflare interessieren, <a href="https://www.cloudflare.com/de-de/enterprise" target="_blank" rel="noopener noreferrer">wenden Sie sich an uns</a> oder probieren Sie ihn mit unserem Free-Tarif <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">hier</a> kostenlos aus.</p>
+</div>

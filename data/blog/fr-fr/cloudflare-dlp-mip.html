@@ -1,0 +1,69 @@
+<div class="mb2 gray5">Lecture&nbsp;: 3 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-dlp-mip">English</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-dlp-mip">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-dlp-mip">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-dlp-mip">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-dlp-mip">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iWZ9XKbcRZPuodd2IMIwh/dc9f30a2799c875cbcf213d353f99477/cloudflare-dlp-mip.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Les joyaux de la couronne d'une entreprise sont souvent ses données, et la première étape de leur protection devrait consister à localiser l'endroit où résident les informations les plus critiques. Néanmoins, il est plus difficile qu'il n'y paraît de tenir à jour un inventaire complet des données sensibles, et cette tâche demande généralement un effort considérable aux équipes responsables de la sécurité. Pour aider ses clients à surmonter leurs problèmes en matière de sécurité des données, Microsoft propose des outils de classification et de protection des données. Les <a href="https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide" target="_blank" rel="noopener noreferrer">étiquettes de confidentialité</a> disponibles dans Microsoft Purview Information Protection constituent un choix populaire. Cependant, les clients ont besoin de pouvoir suivre les mouvements de données sensibles lors de leur migration au-delà de la visibilité de Microsoft.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jkiK9oFdQLF3mw1d4Hzqh/3944042c79449119e9960e7cfc33e90d/Cloudflare-One-customers-can-sync-Microsoft-Labels-with-a-DLP-Profile-and-create-policies-to-block-based-on-those-labels--ie.png" alt="Cloudflare One DLP integrates with Microsoft Information Protection labels" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Aujourd'hui, nous avons le plaisir d'annoncer que <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a> propose désormais, dans son service de prévention de la perte de données (DLP), des détections des étiquettes de confidentialité de Microsoft Purview Information Protection. Il vous suffit de configurer l'intégration à votre compte Microsoft, de récupérer vos étiquettes, puis de créer des règles afin de guider le mouvement des données étiquetées. Cette intégration permet d'étendre la puissance des étiquettes de Microsoft à l'ensemble du trafic de votre entreprise, en quelques clics seulement.</p>
+	<div class="flex anchor relative">
+		<h3 id="data-classification-with-microsoft-labels">Classification des données avec les étiquettes Microsoft</h3>
+		<a href="https://blog.cloudflare.com/#data-classification-with-microsoft-labels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toute entreprise doit gérer une pléthore de données, qu'il s'agisse de données accessibles au public, telles que la documentation, ou de données internes, telles que la date de lancement d'un nouveau produit. Et bien entendu, il existe également des données nécessitant des niveaux de protection maximaux, à l'image des informations d'identification personnelle des clients. Les entreprises ont la responsabilité de confiner les données aux destinations appropriées, tout en préservant leur accessibilité et la productivité des utilisateurs, ce qui n'est pas une mince affaire.</p>
+	<p><a href="https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide" target="_blank" rel="noopener noreferrer">Microsoft Purview Information Protection propose des étiquettes de confidentialité</a> qui vous permettent de catégoriser les données de votre organisation. Avec ces étiquettes, Microsoft offre la capacité de protéger les données sensibles, tout en soutenant la productivité et la collaboration. Les étiquettes de confidentialité peuvent être utilisées dans un certain nombre d'applications Microsoft, notamment via la possibilité d'appliquer les étiquettes aux documents Microsoft Office. Les étiquettes reflètent la confidentialité des données contenues dans le fichier, par exemple « Public », « Confidentiel » ou « Hautement confidentiel ».</p>
+	<p>Les étiquettes sont intégrées dans les métadonnées d'un document et sont conservées même lorsque celui-ci quitte l'environnement Microsoft (par exemple, lorsqu'il est téléchargé depuis OneDrive).</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41QutoLBdbHHwNdPWnypc4/57ddb8d52610e327131b4e243a0498a2/sensitivity-label-in-excel-1.png" alt="" class="kg-image" width="700" height="359" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="sync-cloudflare-one-and-microsoft-information-protection">Synchronisation de Cloudflare One et de Microsoft Information Protection</h3>
+		<a href="https://blog.cloudflare.com/#sync-cloudflare-one-and-microsoft-information-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare One, la plateforme SASE réunissant une plateforme NaaS (Network-as-a-Service) et une solution de sécurité Zero Trust intégrée, permet de connecter les utilisateurs aux ressources de l'entreprise et offre un large éventail d'opportunités de sécurisation du trafic de l'entreprise, notamment l'inspection des données transitant via la suite de productivité de Microsoft. Nous avons conçu Cloudflare One dans l'optique de proposer à votre entreprise une interface unique. Cela signifie qu'après avoir déployé l'un de nos services Zero Trust, qu'il s'agisse de l'accès réseau Zero Trust ou de Secure Web Gateway, vous n'êtes plus qu'à quelques clics (et non à quelques mois) de déployer les solutions de <a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">prévention des pertes de données</a>, CASB (Cloud Access Security Broker), de sécurité des e-mails et d'isolement de navigateur – et ainsi, de renforcer votre sécurité Microsoft et la protection de vos données dans sa globalité.</p>
+	<p>Plus précisément, la solution CASB (Cloud Access Security Broker) orientée API de Cloudflare peut analyser les applications SaaS telles que Microsoft 365 afin de détecter les configurations incorrectes, l'activité d'utilisateurs non autorisés, le Shadow IT et d'autres problèmes affectant la sécurité des données pouvant survenir après la connexion d'un utilisateur.</p>
+	<p>Grâce à cette nouvelle intégration, la solution CASB peut désormais récupérer les étiquettes d'Information Protection depuis votre compte Microsoft. Si vous avez configuré des étiquettes, lors de l'intégration, la solution CASB les ajoutera automatiquement à un profil de la solution de prévention des pertes de données (DLP) de Cloudflare.</p>
+	<p>Les profils DLP sont les éléments constitutifs indispensables à l'application de la fonction d'analyse de la solution DLP. C'est dans ces profils que vous identifiez les données sensibles que vous souhaitez protéger, telles que les données étiquetées par Microsoft, les numéros de carte de crédit ou les mots-clés personnalisés. Vos étiquettes sont stockées sous forme d'entrées dans le profil « Microsoft Purview Information Protection Sensitivity Labels » comportant le nom de votre intégration à CASB. Vous pouvez également ajouter les étiquettes à des profils DLP personnalisés, afin de bénéficier d'une flexibilité accrue en matière de détection.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cNvA8cmM3mGFY4QAetFjx/d268d12ad308093a3eabea2f22e06831/Screenshot-2023-02-24-at-3.37.22-PM.png" alt="" class="kg-image" width="1600" height="431" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="build-dlp-rules">Élaboration de règles DLP</h3>
+		<a href="https://blog.cloudflare.com/#build-dlp-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vous pouvez désormais étendre la puissance des étiquettes Microsoft afin de protéger vos données pendant leur transfert vers d'autres plateformes. En élaborant des règles DLP, vous déterminez de quelle manière les données étiquetées peuvent circuler au sein de votre réseau d'entreprise et hors de celui-ci. Peut-être ne souhaitez-vous pas autoriser le téléchargement d'étiquettes « Hautement confidentiel » depuis votre compte OneDrive, ou peut-être voulez-vous interdire le transfert de données d'un niveau de sensibilité supérieur à « Confidentiel » vers des sites de partage de fichiers que vous n'utilisez pas. Toutes ces règles peuvent être mises en œuvre avec DLP et Cloudflare Gateway.</p>
+	<p>Accédez simplement à la section « Firewall Policies » (Politiques du pare-feu) de Gateway et commencez à élaborer des règles avec vos profils DLP :</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">Comment commencer</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/K7hvEwZxTkZDNxoJjwWQg/ff7ea0b8d2b65537404849933b9e0774/Screenshot-2023-03-03-at-5.53.30-PM-1.png" alt="" class="kg-image" width="1600" height="745" loading="lazy">
+
+	</figure>
+	<p>Pour obtenir un accès à DLP, demandez une <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">consultation</a> ou contactez votre responsable de compte.</p>
+</div>

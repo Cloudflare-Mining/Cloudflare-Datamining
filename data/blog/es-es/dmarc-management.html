@@ -1,0 +1,138 @@
+<div class="mb2 gray5">6 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/dmarc-management">English</a>, <a href="https://blog.cloudflare.com/fr-fr/dmarc-management">Français</a>, <a href="https://blog.cloudflare.com/de-de/dmarc-management">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/dmarc-management">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/dmarc-management">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RPX2G6DYZGp2LxRBKybv1/7fdd7535589613e9c5259ae88ac14b44/dmarc-management.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>A finales de 2021, Cloudflare <a href="https://blog.cloudflare.com/security-center">lanzó Security Center</a>, una solución unificada que combina nuestro conjunto de productos de seguridad y nuestra información única sobre Internet. Permite a los equipos de seguridad identificar con rapidez los posibles riesgos y amenazas de seguridad de sus organizaciones, trazar su superficie de ataque y mitigar estos riesgos con solo unos clics. El objetivo principal de Security Center era inicialmente la seguridad de las aplicaciones, pero ahora estamos añadiendo información Zero Trust esencial para mejorar aún más sus funciones.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VDPUUYhG7ru1WvkSMQjEI/dc8c4470547b35874809bbc1c0486c07/Security-Center-now-includes-ZT--DLP-and-email-.png" alt="Stop brand impersonation with Cloudflare DMARC Management." class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Cuando tu marca es apreciada y cuenta con la confianza de los clientes y clientes potenciales, estos están deseando leer los correos electrónicos que les envías. Imagínate ahora que reciben un correo electrónico tuyo: tiene tu marca, el asunto es interesante y tiene un enlace para registrarse para alguna oportunidad exclusiva. ¿Cómo se pueden resistir?</p>
+	<p>Sin embargo, ¿qué pasaría si no fueras tú el remitente de ese correo? ¿Y si hacer clic en ese enlace supone una estafa y resultan víctimas de un fraude o del robo de identidad? ¿Y si creyeran que tú has sido el responsable? La realidad es que incluso las personas a las que les preocupa la seguridad en ocasiones son víctimas de correos electrónicos de suplantación ingeniosamente diseñados.</p>
+	<p>Esto supone un riesgo para tu empresa y para tu reputación. Un riesgo que no deseas correr. Nadie quiere. La suplantación de marca es un <a href="https://blog.cloudflare.com/2022-march-hackness-phishing-bracket">problema importante para organizaciones de todo el mundo</a>. Por este motivo, hemos desarrollado DMARC Management, ya disponible en la versión beta.</p>
+	<p>Con DMARC Management, cuentas con completa información sobre quién está enviando correos electrónicos en tu nombre. Con un solo clic puedes aprobar cada origen que sea un remitente legítimo para tu dominio. A continuación, puedes definir tu política <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank" rel="noopener noreferrer">DMARC</a> para rechazar los correos electrónicos enviados por clientes no aprobados.</p>
+	<p>Cuando la plataforma de encuestas que utiliza tu empresa envía correos electrónicos desde tu dominio, no hay nada de lo que preocuparse, ya que lo has configurado de esa forma. Sin embargo, si un servicio de correo desconocido de un país remoto está enviando correos electrónicos utilizando tu dominio, eso podría ser muy preocupante, y lo querrás resolver. Veamos cómo.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5V4jHlhrGCxkmpTmaEwd7Y/486d9851a7ad4ded33940bee10638200/DMARC-1.jpg" alt="On the DMARC Management one can see trends of messages passing or failing DMARC, and a breakdown by sending client (source)" class="kg-image" width="1419" height="1600" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="anti-spoofing-mechanisms">Mecanismos contra la suplantación</h3>
+		<a href="https://blog.cloudflare.com/#anti-spoofing-mechanisms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM) y Domain-based Message Authentication Reporting and Conformance (DMARC) son tres métodos comunes de autenticación del correo electrónico. Juntos, ayudan a evitar que los spammers, los usuarios de phishing y otras personas no autorizadas envíen correos electrónicos en nombre de un dominio del que no son propietarios.</p>
+	<p><b>SPF</b> es una forma para que un dominio liste todos los servidores desde los que la empresa envía mensajes de correo electrónico. Lo podríamos considerar como un directorio de empleados disponible públicamente que ayuda a confirmar si un empleado trabaja para una organización. Los <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank" rel="noopener noreferrer">registros SPF</a> listan todas las direcciones IP de todos los servidores que pueden enviar correos electrónicos desde el dominio.</p>
+	<p><b>DKIM</b> permite que los propietarios de dominios "firmen" automáticamente los correos electrónicos de sus dominios. Específicamente, DKIM utiliza <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">criptografía de clave pública</a>:</p>
+	<ol>
+		<li>
+			<p>Un <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record" target="_blank" rel="noopener noreferrer">registro DKIM</a> almacena la <i>clave pública</i> del dominio, y los servidores de correo que reciben los correos electrónicos del dominio pueden comprobar este registro para obtener la <a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key" target="_blank" rel="noopener noreferrer">clave</a> pública.</p>
+		</li>
+		<li>
+			<p>La <i>clave privada</i> la mantiene en secreto el remitente, que firma el encabezado del correo electrónico con esta clave.</p>
+		</li>
+		<li>
+			<p>Los servidores de correo que reciben el correo electrónico pueden verificar que la clave privada del remitente se ha utilizado aplicando la clave pública. Esto también garantiza que el correo electrónico no se ha manipulado indebidamente mientras estaba en tránsito.</p>
+		</li>
+	</ol>
+	<p><b>DMARC</b> indica al servidor de correo electrónico receptor qué hacer después de evaluar los resultados de SPF y DKIM. La política DMARC de un dominio se puede definir de distintas formas: puede indicar a los servidores de correo que pongan en cuarentena los correos electrónicos que no pasen SPF o DKIM (o ambos), que rechacen estos correos electrónicos, o bien que no los entreguen.</p>
+	<p>Sin embargo, es importante configurar y mantener SPF y DMARC. Si tu configuración es demasiado estricta, los correos electrónicos legítimos se descartarán o se marcarán como correo no deseado. Si es demasiado laxa, es posible que tu dominio se utilice indebidamente para la suplantación de correo electrónico. Prueba de ello es que estos mecanismos de autenticación (SPF/DKIM/DMARC) han existido durante más de 10 años, y aún hay <a href="https://dmarc.org/stats/dmarc" target="_blank" rel="noopener noreferrer">menos de 6 millones de registros DMARC activos</a>.</p>
+	<p>Los informes DMARC pueden ayudarte, y una solución integral como DMARC Management reduce la carga de creación y mantenimiento de la configuración adecuada.</p>
+	<div class="flex anchor relative">
+		<h3 id="dmarc-reports">Informes DMARC</h3>
+		<a href="https://blog.cloudflare.com/#dmarc-reports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Todos los proveedores de buzones compatibles con DMARC admiten los informes DMARC agregados a una dirección de correo electrónico que elijas. Estos informes especifican los servicios que han enviado correos electrónicos, así como el porcentaje de mensajes que han pasado DMARC, SPF y DKIM. Tienen gran importancia, ya que proporcionan a los administradores la información que necesitan para decidir cómo ajustar sus políticas DMARC. Por ejemplo, de esta forma los administradores saben si sus correos electrónicos legítimos no pasan SPF y DKIM, o si un spammer está intentando enviar correos electrónicos ilegítimos.</p>
+	<p>Sin embargo, debes tener cuidado. Probablemente no quieras enviar informes DMARC a una dirección de correo electrónico supervisada por personas, ya que estos entrarán con rapidez e intensidad procedentes de prácticamente cada uno de los proveedores de correo electrónico a los que tu organización envíe mensajes, y se entregan en formato XML. Los administradores suelen configurar los informes para que se envíen a un servicio como nuestra solución DMARC Management, que los reduce a un formato más utilizable. <i>Nota: Estos informes no contienen información de identificación personal.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbeRaBvxsO0xRukkFLRHs/4a648e0386f5568f0a83b55222d318c7/pasted-image-0--1--7.png" alt="Email messages reach their destination, and an action is taken by the server according to the DMARC policies published in our DNS records. Then, the receiver sends a report back to the source." class="kg-image" width="1600" height="1085" loading="lazy">
+
+	</figure>
+	<p>DMARC Management crea automáticamente una dirección de correo electrónico a la que enviar esos informes, y añade el <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record" target="_blank" rel="noopener noreferrer">registro RUA</a> correspondiente a tu DNS de Cloudflare para anunciar a los proveedores de buzones dónde enviar los informes. Y, efectivamente, si te interesa saberlo, estas direcciones de correo electrónico se crean utilizando el <a href="https://www.cloudflare.com/products/email-routing" target="_blank" rel="noopener noreferrer">enrutamiento del correo electrónico de Cloudflare</a>.</p>
+	<p><i>Nota: Hoy, el DNS de Cloudflare es un requisito de DMARC Management.</i></p>
+	<p>Cuando se reciben los informes en esta dirección de correo electrónico dedicada, un <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Worker</a> los procesa y extrae los datos relevantes, que analiza y envía a nuestra solución de análisis. Y, has vuelto a acertar, eso se implementa mediante <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer">Workers de correo electrónico</a>. Puedes obtener más información sobre la implementación técnica <a href="https://blog.cloudflare.com/how-we-built-dmarc-management">aquí</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CQaK1cwJWRVbNseX4W5TV/9167d60ea6753e64eb00000abe42f49a/DMARC--1--1.jpg" alt="There is a preview of the DMARC record being created with this RUA" class="kg-image" width="1600" height="684" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="taking-action">Acción</h3>
+		<a href="https://blog.cloudflare.com/#taking-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ahora que los informes están entrando, puedes revisar los datos y actuar según corresponda.</p>
+	<p><i>Nota: Es posible que los proveedores de buzones tarden hasta 24 horas en empezar a enviar informes y a que estos análisis estén a tu disposición.</i></p>
+	<p>En la parte superior de DMARC Management puedes consultar de un vistazo la configuración de seguridad de salida de tu dominio, más concretamente, DMARC, DKIM y SPF. En breve, DMARC Management empezará a crear informes sobre la seguridad del correo electrónico de entrada, y esto incluye informes STARTTLS, MTA-STS, DANE y TLS.</p>
+	<p>La sección central muestra el volumen de correo electrónico a lo largo del tiempo, con líneas individuales que muestran los mensajes que han pasado DMARC y los que no.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XFAP5YG8knRRkIj50zkJ8/00ef5789a08c69c3103b672b7521a9b4/1.jpg" alt="Banner showing the DMARC, SPF and DKIM configuration status for this domain." class="kg-image" width="1600" height="213" loading="lazy">
+
+	</figure>
+	<p>A continuación, encontrarás información adicional que incluye el número de mensajes de correo electrónico que ha enviado cada origen (por informe DMARC), así como las estadísticas de DMARC, SPF y DKIM correspondientes. Puedes aprobar (es decir, incluir en SPF) cualquiera de estos orígenes haciendo clic en "…", y detectar fácilmente las aplicaciones que es posible que no tengan DKIM correctamente configurado.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4uciHpDAy18iUp1stqQugo/721ebb2f2f365220a86943e56ea4535a/1--1-.jpg" alt="Email volume accounted for in DMARC reports, over time, and separated between DMARC pass and fail." class="kg-image" width="1600" height="562" loading="lazy">
+
+	</figure>
+	<p>Al hacer clic en cualquier origen obtienes las mismas estadísticas de DMARC, SPF y DKIM por dirección IP de ese origen. Así es cómo identificas si hay alguna dirección IP adicional que deberías incluir en tu registro SPF, por ejemplo.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rO4J9bwiA9m0tHupExWhk/0ad0478984602bd8fcace328bdfe2681/Frame-4121.png" alt="Volume of emails sent by each source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1133" loading="lazy">
+
+	</figure>
+	<p>Las que no han pasado serán sobre las que querrás actuar, ya que será necesario aprobarlas (lo que técnicamente significa incluirlas en el registro <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank" rel="noopener noreferrer">SPF</a>) si son legítimas, o bien dejarlas sin aprobar y que el servidor receptor las rechace cuando la política DMARC esté configurada como p=reject.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aItdZkn7WlVOiNtCQsXAp/9b6484590faa502e884308d2a6a65c11/DMARC--2-.jpg" alt="Source view shows each individual IP address that was identified for that source, and the corresponding DMARC, SPF and DKIM statistics." class="kg-image" width="1600" height="1034" loading="lazy">
+
+	</figure>
+	<p>El objetivo es obtener una política DMARC de rechazo. Sin embargo, no querrás aplicar una política tan restrictiva hasta que tengas un nivel de confianza alto de que SPF (y DKIM, si corresponde) da cuenta de todos los servicios de envío legítimos. Esto puede requerir unas semanas, en función del número de servicios que tengas enviando mensajes desde tu dominio, pero con DMARC Management sabrás rápidamente cuándo estás listo para hacerlo.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-else-is-needed">Qué más necesitas</h3>
+		<a href="https://blog.cloudflare.com/#what-else-is-needed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando hayas aprobado todos los remitentes de correo electrónico autorizados (orígenes) y configurado DMARC para poner en cuarentena o rechazar, podrás estar seguro de que tu marca y tu organización están mucho más seguras. A partir de entonces, la supervisión de tu lista de orígenes aprobados será una operación muy sencilla que no llevará a tu equipo más de unos minutos al mes. Idealmente, cuando se implementen en tu empresa nuevas aplicaciones que envíen correos electrónicos desde tu dominio, incluirás proactivamente las direcciones IP correspondientes en tu registro SPF.</p>
+	<p>Sin embargo, incluso si no haces esto, encontrarás en la pestaña Security Insights de Security Center avisos acerca de nuevos remitentes no aprobados, junto con otros aspectos importantes de la seguridad que puedes revisar y gestionar.</p>
+	<p>O bien, puedes comprobar la lista de direcciones no aprobadas en DMARC Management cada ciertas semanas.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WUjs0E5i27cLGp1USdAgw/d12e33553da78ba00802dda73c6a610b/Screenshot-with-unapproved-senders.jpg" alt="The Insights Overview section of Cloudflare Security Center will show a notice when you have new unapproved senders" class="kg-image" width="1277" height="1600" loading="lazy">
+
+	</figure>
+	<p>Siempre que veas un origen de remitente legítimo que se muestre como no aprobado, ya sabes qué hacer: hacer clic en "…" y marcarlo como aprobado.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-coming-next">¿Qué será lo siguiente?</h3>
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DMARC Management lleva la seguridad del correo electrónico un paso más allá. Y esto es solo el comienzo.</p>
+	<p>Nos complace demostrar nuestras inversiones en funciones que proporcionan a los clientes aún más información de su seguridad. Más adelante, conectaremos los análisis de seguridad del <a href="https://www.cloudflare.com/products/zero-trust/casb" target="_blank" rel="noopener noreferrer">agente de seguridad de acceso a la nube</a> (CASB) de Cloudflare a <a href="https://www.cloudflare.com/securitycenter" target="_blank" rel="noopener noreferrer">Security Center</a>.</p>
+	<p>Esta integración de producto proporcionará a los clientes una manera de comprender el estado de su seguridad SaaS más amplia de un solo vistazo. Descubriendo la composición de los resultados de CASB (o los problemas de seguridad identificados en populares aplicaciones SaaS) por la gravedad, el estado de la integración SaaS y el número de problemas ocultos, los administradores de TI y de seguridad tendrán una forma de comprender el estado de su superficie de seguridad más amplia desde una única fuente.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61fj6NVQkeRVMDzJYl0SmR/b632b4000dd7a47769a91d0fe5e025fe/pasted-image-0--2--4.png" alt="" class="kg-image" width="1342" height="336" loading="lazy">
+
+	</figure>
+	<p>Sigue atento a más noticias acerca de CASB en el Centro de seguridad. Mientras tanto, puedes unirte hoy mismo, de forma gratuita, a la <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Femail%2Fdmarc-management" target="_blank" rel="noopener noreferrer">lista de espera del programa beta de DMARC Management</a>. Si no lo has hecho aún, te recomendamos que también eches un vistazo a Cloudflare Area 1 y que <a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank" rel="noopener noreferrer">solicites una evaluación del riesgo de phishing</a> para impedir que los correos electrónicos de phishing, suplantación y no deseados accedan a tu entorno.</p>
+</div>

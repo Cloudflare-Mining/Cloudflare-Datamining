@@ -1,0 +1,192 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/future-of-page-rules">English</a>、<a href="https://blog.cloudflare.com/es-es/future-of-page-rules">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/future-of-page-rules">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YosEQ2FrSwprhU93qNaQp/ca33186c505070028720c832b9738833/future-of-page-rules.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>ページルールは、最もよく使われている製品の一つです。数百万人のユーザーに採用され、キャッシュからセキュリティレベルまであらゆる設定に使用されています。これはCloudflareの「If This Then That」（IFTTT）です。「If...」はURLで、「Then That」は「ゾーン」の特定の部分へのトラフィックを処理する方法を変更するものです。しかし、限界がないわけではありません。</p>
+	<p></p>
+	<p>ページルールは、URLまたはURLパターンにのみトリガーすることができます。1つのゾーンにつき、最大125のページルールを設定することができます。また、ページルールはデバッグが面倒です。「ページ」という言葉も、今ではかなり古くさく聞こえます。</p>
+	<p>私たちはページルールを4つの新しい専用の製品に置き換えることで、ルール枠の拡大、機能性の向上、粒度の向上を実現しました。これらの製品は、すぐにでも試験的に使用することが可能です。ページルールはまだ廃止されていませんが、近々正式に廃止手続きの開始を見込んでいます。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-change">なぜ変えるのか？</h3>
+		<a href="https://blog.cloudflare.com/#why-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ページルールは<a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">発売</a>から10年の間にすっかり定着し、広く採用されている製品になりました。ページルールは、過去3ヶ月間だけでも_100万_もの数が導入されました。</p>
+	<p>ページルールは、ファイルのキャッシュ期間を調整するために使用されます。ページルールは、特定のURLのゾーン全体の設定を上書きするために使用されます。ページルールは、単純なURLリダイレクトを作成するために使用されます。ページルールは、HTTPヘッダーを選択的に追加／削除するために使用されます。ページルールは、製品の_十徳ナイフ_です。</p>
+	<p>Photo by <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Andrey Matveev</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cyicKWH3ZiZNtQmjNSGEi/2f7fbea400ccc34e9d4996c999fa5980/image3-33.png" alt="" class="kg-image" width="1999" height="1500" loading="lazy">
+
+	</figure>
+	<p>十徳ナイフやその他の万能製品のように、ページルールは多くのことに「適した」機能性を発揮しますが、何に対してもベスト・オブ・ブリードというわけではありません。これには、一般論で言うトレードオフがあります。私たちは企業として成長するにつれ、お客様からは当然のように、より多くを要求されるようになりました。URLだけのフィルタリングではもはや不十分であり、ユーザーからはより多くの要求があります。そして現在私たちはそれを実現しています。</p>
+	<p>この2年間、私たちはページルールの将来について考え、何百ものフィードバックから、次のような共通のテーマを抽出してきました。</p>
+	<ol>
+		<li>
+			<p>125以上のページルールが欲しい</p>
+		</li>
+		<li>
+			<p>URL以外からもページルールをトリガーできるようにして欲しい</p>
+		</li>
+		<li>
+			<p>ページルールで正規表現を使用できるようにして欲しい</p>
+		</li>
+		<li>
+			<p>異なるページルールが互いにどのように影響し合っているのか理解するのが難しい</p>
+		</li>
+		<li>
+			<p>ページルールのデバッグが難しい</p>
+		</li>
+		<li>
+			<p>ページルール内のアクションを増やして欲しい</p>
+		</li>
+	</ol>
+	<p>これらのテーマを分析した結果、ページルールにとって最良のことは、ページルールを分解して、それぞれが関連する分野でベスト・オブ・ブリードとなるような新しい個別製品を作ることであるとの結論に至りました。このように分解することで、相互運用（キャッシュ、コンフィギュレーション、...）がより明確になり、デバッグもより簡単になります。</p>
+	<p>本日、これらの新製品を以下に紹介します：</p>
+	<p><b>1.Cache Rules</b>：「すべてのキャッシュ」を設定および調整するための専用製品。</p>
+	<p><b>2.Configuration Rules</b>：ゾーン全体の設定を行い、選択的に有効化、無効化、上書きするための専用製品。</p>
+	<p><b>3.Dynamic Redirects</b>：「転送先URL」のようなものですが、上限が11に変わりました。訪問者の国、好んで使用する言語、デバイスの種類、正規表現の使用（プランレベルによる）などに基づいてリダイレクトします。</p>
+	<p><b>4.Origin Rules</b>：「Cloudflareを離れた後のトラフィックの向かう先」専用の製品です。この新製品（ENTのみ）は、ホストヘッダを追加してオーバーライドを解決するだけでなく、お客様が宛先ポートを選択的にオーバーライドできるようにすることで、別の一般的なWorkersの使用事例も製品化されました。また、サーバー名表示（SNI）を上書きする機能も追加されました。</p>
+	<p>現在、これら4つの製品はすべて、ダッシュボード、API、Terraformを通じて利用可能であり、Transform Rulesと並んで、最終的にページルールの廃止を告知できる代替製品群として提供しています。</p>
+	<p>当社ではそれぞれの製品に対する専用ブログを用意しており、提供する機能やどのような問題に対処できるかについてのより詳細な情報を提供しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="order-of-execution">実行順序</h3>
+		<a href="https://blog.cloudflare.com/#order-of-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この新しい製品群の主な利点のひとつは、そのわかりやすさです。</p>
+	<p>ページルールは、トラフィックが入り、「何かが起こり」、トラフィックが出てくる、といったブラックボックスです。キャッシュ、設定、ヘッダーの変更などで行われたやりとりの内容をデバッグするのは難しく、また、完全にユーザー定義であるため、ゾーンごとに異なる可能性があります。</p>
+	<p>「機能」ごとに領域が分かれていることで、HTTPリクエストの流れをより簡単に可視化することができます。</p>
+	<p>ページルールのように一塊ではなく、最初にオリジンルールが実行され、次にキャッシュルール、コンフィギュレーションルール、最後に動的リダイレクトが実行されるという動きを可視化できるようになりました。 つまり、キャッシュの設定を調整する前に、まずホストヘッダを変更することになります。また、特定のトラフィックに対して有効にする設定を変更する前に、キャッシュのパラメータを調整します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WNh8WO5B7n3AeI9oczS8I/01e83a7564af29aa0014de69ff245de9/image1-58.png" alt="" class="kg-image" width="1999" height="378" loading="lazy">
+
+	</figure>
+	<p>また、これらの新製品は、<a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">Traffic Sequence</a>のダッシュボードの要素にも統合されています。</p>
+	<p>（ページルールとこの新しい製品群の両方を使用しているゾーンの場合、新しい製品がページルールよりも優先されます。つまり、競合が発生した場合、ページルールは上書きされることになります）。</p>
+	<div class="flex anchor relative">
+		<h3 id="i-need-more-than-125-page-rules">125以上のページルールが欲しい</h3>
+		<a href="https://blog.cloudflare.com/#i-need-more-than-125-page-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ページルールの制約のひとつは、各ページルールのバックエンドアーキテクチャへの保存と実行方法にありました。余分な負荷がかかるため、ゾーンごとに125を超えるページルールを提供することはできません。ページルールとリクエストとの比較評価に時間がかかり、HTTPリクエストの待ち時間が長くなってしまいます。この制限に対処するため、ユーザーは単純なワークロードをWorkersに移動させたり、ゾーンを複数のサブドメインに分割して、それぞれに125のページルールの枠を持たせたりしています。どちらもお客様が理想的とするものではありません。</p>
+	<p>この制限に対処するために、私たちは_すべての_代替製品を、Transform Rules、Custom Rules（WAF）、Bulk Redirect、API Shieldなどの製品を実行する、当社が誇る超高速の<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer">ルールセットエンジン</a>の上に構築しました。</p>
+	<p>このエンジンは、1製品あたり125ルールをはるかに超える拡張性を持つように構築されているため、お客様に、より多くの枠を提供することができます。以下の表は、これらの新製品がもたらす影響の前と後をまとめたもので、プランごとの既定のルールの枠数を示しています。</p>
+	<p>Plan</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Plan</th>
+				<th>Page Rules</th>
+				<th>Origin Rules</th>
+				<th>Cache Rules</th>
+				<th>Config Rules</th>
+				<th>Dynamic Redirects</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Enterprise</td>
+				<td>125</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+			</tr>
+			<tr>
+				<td>Business</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Pro</td>
+				<td>20</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+			</tr>
+			<tr>
+				<td>Free</td>
+				<td>3</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Page Rules</p>
+	<p>Origin Rules</p>
+	<p>Cache Rules</p>
+	<p>Config Rules</p>
+	<p>Dynamic Redirects</p>
+	<p>Enterprise</p>
+	<p>125</p>
+	<p>125+</p>
+	<p>125+</p>
+	<p>125+</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hfXLnp7HiV9sziDFJl9zw/cf888d5c543db9380d81398bb60b46c2/image4-15.png" alt="" class="kg-image" width="1800" height="956" loading="lazy">
+
+	</figure>
+	<p>125+</p>
+	<p>Business</p>
+	<p>50</p>
+	<p>50</p>
+	<p>50</p>
+	<p>50</p>
+	<p>50</p>
+	<p>Pro</p>
+	<p>20</p>
+	<p>25</p>
+	<p>25</p>
+	<p>25</p>
+	<p>25</p>
+	<p>Free</p>
+	<p>3</p>
+	<p>10</p>
+	<p>10</p>
+	<p>10</p>
+	<p>10</p>
+	<p><i>これらの新製品は、追加ルールの購入ができません。</i></p>
+	<p>そのため、Enterpriseプランのゾーンは、これまで125個のページルールでしたが、最低でも<b>500</b>個のルールを使用することができるようにしています。Enterpriseプランで使用できる新製品の枠数は交渉可能です。Proプランのゾーンでは、使用できるページルールは、20～100個になります。これらの変更により、ルールセットエンジンが提供するきめ細かな制御と組み合わせることで、お客様はゾーンのトラフィックを細部までカスタマイズすることができます。</p>
+	<p>これらすべての製品をこのルールセットエンジンの上に構築するもう一つのメリットは、拡張性です。現在、このルールセットエンジン上で構築・稼働している製品は30を超えます。これらの製品は、基本的に「フェーズ」と呼ばれる論理的なバケットであり、その製品に対応する単一のルールセットを含んでいます。各フェーズは、特定のアクションとフィールドに制限されます。例えば、http_request_transformでは、URL書き換え時にボットスコアを計算していないため、cf.bot_management.scoreというフィールドは使用できません。また、許可されるアクションは「<code>rewrite</code>」のみです。一方、当社がOrigin Rules（http_request_origin）に許可しているアクションは「<code>route</code>」のみです。</p>
+	<p>ルールセットエンジンの上に構築された製品に作成された新しい機能は、後日、他の製品に拡張することが非常に簡単です。</p>
+	<p>一例として、私たちは今年の初めにTransform Rulesに新しく<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank" rel="noopener noreferrer">「field」</a>、「<code>http.request.accepted_languages</code>」を追加しました。最近まで、これはTransform Rulesでしか使えませんでした。しかし、両製品は<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer">Rulesets Engine</a>の上に構築されているため、Dynamic Redirectsのような他の製品でこの機能を有効にするのは簡単でした。これは、フィールドが既に実装されているため、お客様が訪問者の言語設定に基づいてURLリダイレクトを実行することを可能にし、エンジニアリングの観点から見た場合の私たちへのコストはごくわずかです。</p>
+	<p>また、将来的にお客様のご要望により、Cache Rulesに新しいフィールドが作成された場合、例えば、以下のようになります。http.request.super_cool_fieldを使えば、複数のプラットフォームで重複した作業をすることなく、クリック数回で他の30製品にもこのフィールドを有効にすることが可能です。</p>
+	<p>つまり、Rulesets Engineの上に多くの製品を作れば作るほど、より速く、より多くの機能をユーザーに届けることができるのです。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-single-user-experience"><b>シングルユーザーエクスペリエンス</b></h3>
+		<a href="https://blog.cloudflare.com/#a-single-user-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最も特筆すべき利点は一貫性です。これらの製品には、一貫性のある予測可能なAPIがあります。一貫性のある予測可能なTerraformの設定と、ダッシュボードでの一貫性のある予測可能なユーザーエクスペリエンス。ルールセットエンジンを使用すると、「アクション」以外はすべて同じ状態に維持することができます。フィルタリングはそのまま、APIもそのまま、UIも（ほぼ）そのままで、ルールのアクション部分である「...then」だけが唯一の変更点です。</p>
+	<p>これにより、ユーザーがダッシュボードをクリックして新しいゾーンを設定する際に、個々の製品のページとその操作方法を学ぶ必要がなくなります。学ぶ必要があるのは、その製品の特徴である、_アクション_だけです。</p>
+	<p>最後に、新しい製品を追加するとき、それをサポートするためにTerraformプロバイダを拡張するのは些細なことです。その一貫した経験が、今回のプロジェクトでも、そして将来のプロジェクトでも、私たちの進むべき道を示す羅針盤となるでしょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-them-now">今すぐ試す</h3>
+		<a href="https://blog.cloudflare.com/#try-it-them-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ページルールは新しい製品スイートで置き換えられます。新しいスイートの各製品がベスト・オブ・ブリードの一助となり、より多くの機能を提供するよう設計されています。新製品については、それぞれの専用ブログで詳しくご紹介しています。是非ご自身で<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Frules%2F" target="_blank" rel="noopener noreferrer">体験</a>してください！</p>
+</div>

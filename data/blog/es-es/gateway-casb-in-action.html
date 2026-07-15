@@ -1,0 +1,98 @@
+<div class="mb2 gray5">3 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/gateway-casb-in-action">English</a>, <a href="https://blog.cloudflare.com/ja-jp/gateway-casb-in-action">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/gateway-casb-in-action">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oWKBIP0YRXLUs0bF3ZeH5/881f946322339c0d080870f0b141dd19/gateway-casb-in-action.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En junio, <a href="https://blog.cloudflare.com/announcing-gateway-and-casb">anunciamos</a> el próximo lanzamiento de una función que permitiría a los usuarios de Cloudflare Zero Trust crear fácilmente políticas HTTP precargadas en <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gateway</a> (la solución de puerta de enlace web segura de Cloudflare) a partir de los problemas identificados por CASB, un <a href="https://blog.cloudflare.com/casb-ga">nuevo producto de Cloudflare</a> que conecta, explora y supervisa tus aplicaciones SaaS, como Google Workspace y Microsoft 365, en busca de problemas de seguridad.</p>
+	<p></p>
+	<p>La 12.ª Semana aniversario de Cloudflare está a punto de terminar, y queríamos destacar, de la forma que nos caracteriza, esta nueva función en la práctica.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-casb-what-is-gateway">¿Qué es CASB? ¿Qué es Gateway?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-casb-what-is-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mSpcUDLz1bZgXJbt1nTfR/e04400bed656f582031080e1433eeda7/image2-65.png" alt="" class="kg-image" width="1325" height="1163" loading="lazy">
+
+	</figure>
+	<p>Para resumirlo rápidamente, Cloudflare CASB, basado en la API, ofrece a los equipos de TI y de seguridad una manera rápida y eficaz de conectar, explorar y supervisar sus aplicaciones SaaS en busca de problemas de seguridad, como exposiciones de archivos, configuraciones incorrectas y Shadow IT. En solo unos clics, los usuarios pueden ver una lista completa de los problemas de seguridad que podrían estar afectando a la seguridad de sus aplicaciones SaaS, entre ellas, Google Workspace, Microsoft 365, Slack y GitHub.</p>
+	<p>Cloudflare Gateway, nuestra oferta de enlace de puerta web segura (SWG), permite a los equipos supervisar y controlar las conexiones de salida que se originan en los dispositivos de punto final. Por ejemplo, ¿no quieres que tus empleados accedan a sitios web de apuestas o redes sociales en los dispositivos de la empresa? Simplemente bloquea el acceso a estas páginas en nuestro panel de control de Zero Trust, fácil de usar.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-problems-at-hand">Problemas existentes</h3>
+		<a href="https://blog.cloudflare.com/#the-problems-at-hand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Como destacamos en nuestra publicación anterior, la Shadow IT (o las aplicaciones de terceros no aprobadas que utilizan los empleados) sigue siendo uno de los mayores desafíos de los administradores de TI en la era de la nube. Cuando los empleados otorgan acceso a servicios externos sin el consentimiento de su departamento de TI o de seguridad, se arriesgan a que actores maliciosos accedan a los datos más confidenciales de la empresa que alojan estas aplicaciones SaaS.</p>
+	<p>Otro problema importante que afecta a la seguridad de los datos almacenados en la nube es la exposición de archivos debido a un uso compartido excesivo. Cuando un empleado comparte un documento confidencial de Google Doc con otra persona mediante un enlace público, ¿lo sabe tu equipo de TI o de seguridad? Y, aunque así sea, ¿tienen la manera de minimizar el riesgo y bloquear el acceso al mismo?</p>
+	<p>Ahora que clientes de todo el mundo utilizan estos dos productos, nos complace compartir cómo se puede ir más allá de la visibilidad y de un conocimiento básico de los problemas de seguridad de SaaS. ¿Qué se supone que deben hacer los administradores a continuación?</p>
+	<div class="flex anchor relative">
+		<h3 id="gateway-casb-blocking-identified-threats-in-three-yes-three-clicks">Gateway + CASB: bloquear las amenazas identificadas en tres (sí, tres) clics</h3>
+		<a href="https://blog.cloudflare.com/#gateway-casb-blocking-identified-threats-in-three-yes-three-clicks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ahora, cuando CASB descubre un problema (lo que llamamos un <i>Resultado</i>), es posible crear fácilmente una política de Gateway correspondiente en solo tres clics.</p>
+	<p>Esto significa que ahora los usuarios pueden generar automáticamente políticas de Gateway detalladas para impedir la continuidad de comportamientos inadecuados específicos, al mismo tiempo que se sigue permitiendo el acceso y el uso esperados conformes con la política de la empresa.</p>
+	<div class="flex anchor relative">
+		<h3 id="example-1-block-employees-from-uploading-to-their-personal-google-drive">Ejemplo 1: impedir que los empleados puedan cargar archivos a su Google Drive personal</h3>
+		<a href="https://blog.cloudflare.com/#example-1-block-employees-from-uploading-to-their-personal-google-drive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un caso de uso común que escuchamos durante el programa beta de CASB es la tendencia de los empleados a cargar datos corporativos (documentos, hojas de cálculo, archivos, carpetas, etc.) a sus cuentas personales de Google Drive (o similar), con el subsiguiente riesgo que supone que la propiedad intelectual salga de un entorno corporativo seguro. Combinando Gateway y CASB, ahora los administradores de TI pueden <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control" target="_blank" rel="noopener noreferrer">bloquear directamente la actividad de carga de archivos</a>, para que solo se pueda realizar en el inquilino corporativo de Google Drive o Microsoft OneDrive.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TBhfuLYq8CDoKSh96WedR/80b80b4b13d281adc149dbce061b2759/image3-49.png" alt="" class="kg-image" width="1999" height="1667" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="example-2-restrict-repeat-oversharers-from-uploading-and-downloading-files">Ejemplo 2: restringir las funciones de carga y descarga a aquellos usuarios que compartan una cantidad excesiva de archivos de forma reiterada</h3>
+		<a href="https://blog.cloudflare.com/#example-2-restrict-repeat-oversharers-from-uploading-and-downloading-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un buen caso de uso existente de Cloudflare CASB ha sido la capacidad de identificar a los empleados que habitualmente comparten una cantidad excesiva de archivos en sus inquilinos de Google o Microsoft &nbsp;con cualquier persona que tenga el enlace, mediante correos electrónicos fuera de su empresa, etc.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17jgB11afm3st3RD6lncrp/42492a4ff1466915e6a12f1677630f91/image1-80.png" alt="" class="kg-image" width="1999" height="1522" loading="lazy">
+
+	</figure>
+	<p>Ahora, una vez identificados estos empleados, los administradores de CASB pueden crear políticas de Gateway para bloquear la actividad de carga y descarga de archivos a usuarios específicos hasta que se haya corregido el comportamiento.</p>
+	<div class="flex anchor relative">
+		<h3 id="example-3-prevent-file-uploads-to-unapproved-shadow-it-applications">Ejemplo 3: impedir las cargas de archivos a las aplicaciones no aprobadas y de Shadow IT</h3>
+		<a href="https://blog.cloudflare.com/#example-3-prevent-file-uploads-to-unapproved-shadow-it-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para abordar la preocupación sobre Shadow IT, es posible personalizar las políticas de Gateway que se originan en CASB, incluso restringir los sucesos de carga y descarga de archivos solo a las aplicaciones SaaS que utiliza tu organización. Supongamos que tu empresa utiliza Box como su solución de almacenamiento de archivos. En solo unos clics, puedes utilizar tu Resultado de CASB identificado para crear una política de Gateway que bloquee la actividad a cualquier aplicación de uso compartido de archivos que no sea Box. Esto ofrece a los administradores de TI y de seguridad la tranquilidad de que sus archivos solo llegarán a las aplicaciones en la nube aprobadas que utilicen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HWqMKv1qTuHvEh45HwSX/92e3016aaa54185167ee6e8051d77e2c/image4-27.png" alt="" class="kg-image" width="1999" height="1858" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today-with-the-cloudflare-zero-trust">Empieza hoy con Cloudflare Zero Trust</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today-with-the-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En última instancia, el poder de Cloudflare Zero Trust reside en ser una única plataforma unificada cuya fortaleza radica en su combinación de productos y funciones. Mientras continuamos trabajando para llevar estas nuevas e interesantes soluciones al mercado, creemos que es igualmente importante destacar sus sinergias y casos de uso asociados, esta vez de Cloudflare Gateway y CASB.</p>
+	<p>Si aún no utilizas Cloudflare Zero Trust, no dudes en empezar hoy mismo. <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Regístrate aquí</a> para descubrir tú mismo la plataforma con 50 usuarios gratuitos.</p>
+	<p>Si ya conoces y te gusta Cloudflare Zero Trust, ponte en contacto con tu representante de ventas de Cloudflare para empezar con CASB y Gateway. Estamos deseando escuchar los interesantes casos de uso que descubres en esta funcionalidad de productos cruzados.</p>
+</div>

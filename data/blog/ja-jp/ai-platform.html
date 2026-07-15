@@ -1,0 +1,131 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-platform">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-platform">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-platform">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-platform">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X6ztVtj3iJSS3DYOfoLJE/80fe31ee69c066db012e7790e6b240a2/BLOG-3209_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>AIモデルは急速に変化しています。現在エージェンティックコーディングに使用するのに最適なモデルも、3か月後には別のプロバイダーからまったく別のモデルになっているかもしれません。その上、現実世界のユースケースでは、複数のモデルを呼び出す必要がある場合がよくあります。カスタマーサポートエージェントは、高速で安価なモデルを使用してユーザーのメッセージを分類するかもしれません。大規模な推論モデルでアクションを計画軽量なモデルで個々のタスクを実行します。</p>
+	<p>つまり、単一のプロバイダーに財務的・運用的に縛られることなく、すべてのモデルにアクセスする必要があるのです。また、プロバイダー全体のコストを監視し、1つのプロバイダーで障害が発生したときの信頼性を確保し、ユーザーの居場所にかかわらず遅延を管理するために、適切なシステムを導入する必要があります。</p>
+	<p>こうした課題は、AIで構築する際には必ず発生するものですが、<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>の構築時はさらに緊急を要する課題となります。単純なチャットボットは、ユーザーのプロンプトごとに1回の<a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>推論</u></a>呼び出しを行うかもしれません。エージェントが1つのタスクを完了するために10回のコールを連鎖させた場合、突然、1つの遅いプロバイダーが50ミリ秒を追加するのではなく、500ミリ秒を追加します。1つの失敗したリクエストは、リトライではなく、突然、ダウンストリームの障害が連鎖して発生します。</p>
+	<p>AI GatewayとWorkers AIのリリース以来、Cloudflare上でAI搭載アプリケーションを構築する開発者からの多大な採用が見られ、それに対応するために急速に製品を提供してきました。この数か月で、ダッシュボードを刷新し、ゼロセットアップのデフォルトゲートウェイを追加し、アップストリーム障害発生時の自動リトライを実行し、よりきめ細かいログ制御を実装しました。これにより、Cloudflareを統合推論レイヤーにします。1つのAPIが、あらゆるプロバイダーからあらゆるAIモデルにアクセスでき、高速で信頼性が高いものになるように構築しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="one-catalog-one-unified-endpoint">1つのカタログ、1つの統合エンドポイント</h3>
+		<a href="https://blog.cloudflare.com/#one-catalog-one-unified-endpoint" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、同じAI.run()を使ってサードパーティモデルを呼び出すことができます。Workers AIで既にお使いのバインディングです。Workersを使用している場合、CloudflareがホストするモデルからOpenAI、Anthropic、またはその他のプロバイダーのモデルへの切り替えは1行の変更です。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('anthropic/claude-opus-4-6',{
+input: 'What is Cloudflare?',
+}, {
+gateway: { id: "default" },
+});</code></pre>
+	<p>Workersをご利用でない方のために、REST APIサポートを今後数週間のうちにリリースする予定です。これにより、どの環境からでもモデルのフルカタログにアクセスできるようになります。</p>
+	<p>また、12以上のプロバイダーにわたり、70以上のモデルにアクセスできるようになったこともお知らせできて嬉しく思います。すべてを1つのAPI、1つのコードで切り替える仕組み、そしてそれらに対する支払いに1セットのクレジットをご利用いただけるようになりました。そして、当社はこれを急速に拡大していきます。</p>
+	<p>当社の<a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>モデルカタログ</u></a>では、Cloudflare Workers AIでホストされているオープンソースモデルから、主要なモデルプロバイダーが提供する独自のモデルまで、ユースケースに最適なモデルを見つけることができます。<b>Alibaba Cloud、AssemblyAI、Bytedance、Google、InWorld、MiniMax、OpenAI、Pixverse、Recraft、Runway、Vidu</b>からのモデルへのアクセスを拡大できることを嬉しく思います。これらの企業はAI Gatewayを通してモデルを提供します。特に、モデルの提供を拡大して、画像、動画、音声モデルを含め、マルチモーダルアプリケーションの構築を可能にしています</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ez5tichGEEn5k6SzCgWLm/380a685b14ee9732fdf87c6f88c8f39e/BLOG-3209_2.png" alt="BLOG-3209 2" class="kg-image" width="1999" height="1388" loading="lazy">
+	</figure>
+	<p>1つのAPIを通じてすべてのモデルにアクセスできるということは、すべてのAI関連の支出を1つの場所で管理できるということです。現在、ほとんどの企業は、複数のプロバイダーにまたがって<a href="https://aidbintel.com/pulse-survey" target="_blank" rel="noopener noreferrer"><u>平均3.5個のモデル</u></a>を呼び出しています。つまり、AIの利用状況を全体的に把握できるプロバイダーはひとつもないということです。<b>AI Gatewayを使用すれば、AI支出の監視と管理を一元的に行うことができます。</b></p>
+	<p>リクエストにカスタムメタデータを含めることで、無料ユーザーと有料ユーザー、個々の顧客、アプリの特定のワークフロー別の支出など、最も関心を持つ属性におけるコスト内訳を把握することができます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('@cf/moonshotai/kimi-k2.5',
+      {
+prompt: 'What is AI Gateway?'
+      },
+      {
+metadata: { "teamId": "AI", "userId": 12345 }
+      }
+    );</code></pre>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ez3O7rmbrCUdD5R5UcuP9/4c219ff5ce1e24a0485a931b6af47608/BLOG-3209_3.png" alt="BLOG-3209 3" class="kg-image" width="1999" height="1364" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="bring-your-own-model">独自モデルの持ち込み（BYOIP）</h3>
+		<a href="https://blog.cloudflare.com/#bring-your-own-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI Gatewayは、1つのAPIを通じてすべてのプロバイダーからのモデルにアクセスできるようにします。しかし、時には独自のデータで微調整したモデルや、特定のユースケースに最適化したモデルを実行する必要がある場合があります。そのため、ユーザーが独自のモデルをWorkers AIに持ち込める取り組みを進めています。</p>
+	<p>当社のトラフィックの圧倒的多数は、当社のプラットフォームでカスタムモデルを実行しているEnterpriseのお客様の専用インスタンスから発生しており、当社はこれをより多くのお客様に提供したいと考えています。そのために、Replicateの<a href="https://cog.run" target="_blank" rel="noopener noreferrer"><u>Cog</u></a>技術を活用して、機械学習モデルのコンテナ化を支援します。</p>
+	<p>Cogは非常にシンプルに設計されています。必要なのは、cog.yamlファイルに依存関係を記述し、Pythonファイルに推論コードを記述することだけです。Cogは、CUDAの依存関係、Pythonのバージョン、重みの読み込みなど、MLモデルのパッケージ化に関する難しいことをすべて抽象化します。 </p>
+	<p><code>cog.yaml</code>ファイルの例：</p>
+	<pre class="language-XML"><code class="language-XML">build:
+  python_version: "3.13"
+  python_requirements: requirements.txt
+predict: "predict.py:Predictor"</code></pre>
+	<p>以下は、モデルをセットアップする関数と、推論リクエスト（予測）を受け取ったときに実行される関数を含む<a href="http://predict.py" target="_blank" rel="noopener noreferrer"><u><code>predict.py</code></u></a>ファイルの例です。</p>
+	<pre class="language-Python"><code class="language-Python">from cog import BasePredictor, Path, Input
+import torch
+
+class Predictor(BasePredictor):
+    def setup(self):
+        """Load the model into memory to make running multiple predictions efficient"""
+        self.net = torch.load("weights.pth")
+
+    def predict(self,
+            image: Path = Input(description="Image to enlarge"),
+            scale: float = Input(description="Factor to scale image by", default=1.5)
+    ) -&gt; Path:
+        """Run a single prediction on the model"""
+        # ... pre-processing ...
+        output = self.net(input)
+        # ... post-processing ...
+        return output</code></pre>
+	<p>次に、cog buildを実行してコンテナ画像を構築し、CogコンテナをWorkers AIにプッシュします。モデルは当社がデプロイして提供しますので、ご利用中のWorkers AI APIからご利用いただけます。</p>
+	<p>私たちは、これをより多くのお客様に提供できるよう、いくつかの大きなプロジェクトに取り組んでいます。たとえば、お客様向けのAPIやWranglerコマンドを使用することで、お客様は独自のコンテナをプッシュできます。また、GPUスナップショットによるコールドスタートの高速化などです。これは、Cloudflareチームと、私たちのビジョンを示してくれる社外のお客様を対象に、社内でテストを行ってきました。当社とのデザインパートナーになることに関心をお持ちの方は、ご連絡ください。間もなく、誰でも自分のモデルをパッケージ化し、Workers AIを通じて使用できるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-fast-path-to-first-token">最初のトークンまでの最短パス</h3>
+		<a href="https://blog.cloudflare.com/#the-fast-path-to-first-token" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers AIモデルとAI Gatewayの併用は、ライブエージェントの構築に特に強力です。ユーザーの速度に対する認識は、完全な応答時間ではなく、最初のトークンまでの時間（TTFB）やエージェントが応答開始する速さで決まります。たとえ合計推論が3秒であっても、最初のトークンを50ミリ秒速くすることで、エージェントがスピーディに感じるものと遅く感じられるものの差が生まれます。</p>
+	<p>世界330都市に広がるCloudflareのデータセンターネットワークにより、AI Gatewayはユーザーと推論エンドポイントの両方の近くに配置され、ストリーミング開始前のネットワーク時間を最小限に抑えることができます。</p>
+	<p>Workers AIは、公開カタログでオープンソースモデルもホストしており、現在、<a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a>やリアルタイムの音声モデルなど、エージェント向けに特別に構築された大規模なモデルが含まれています。これらのCloudflareのホスト型モデルをAI Gatewayを通じて呼び出すと、コードと推論が同じグローバルネットワーク上で実行されるため、パブリックインターネットを介した余分なホップはなく、エージェントの遅延を可能な限り最小化することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="built-for-reliability-with-automatic-failover">自動フェイルオーバーによる信頼性の確保</h3>
+		<a href="https://blog.cloudflare.com/#built-for-reliability-with-automatic-failover" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントを構築する際、ユーザーが重要視する要素は速度だけではありません。信頼性も重要です。エージェントワークフローのすべてのステップは、その前のステップによって異なります。1つの呼び出しの失敗が下流の連鎖全体に影響を与える可能性があるため、信頼できる推論はエージェントにとって非常に重要です。</p>
+	<p>AI Gatewayを通じて、複数のプロバイダーで利用可能なモデルを呼び出す場合、1つのプロバイダーがダウンした場合、フェイルオーバーロジックを作成することなく、別の利用可能なプロバイダーに自動的にルーティングします。</p>
+	<p>Agents SDKを使用して<a href="https://blog.cloudflare.com/project-think"><u>長時間実行されるエージェント</u></a>を構築している場合、ストリーミング推論呼び出しも切断に強いです。AI Gatewayは、エージェントの有効期間に関係なく、生成されたストリーミングレスポンスをバッファリングします。エージェントが推論の途中で中断された場合、AI Gatewayに再接続してレスポンスを取得するために、新たな推論呼び出しを行ったり、同じ出力トークンに対して2回支払いをしたりする必要はありません。Agents SDKに組み込まれたチェックポイントと組み合わせることで、エンドユーザーは決して気付くことはありません。</p>
+	<div class="flex anchor relative">
+		<h3 id="replicate">Replicate</h3>
+		<a href="https://blog.cloudflare.com/#replicate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Replicateチームは正式にAIプラットフォームチームに<a href="https://blog.cloudflare.com/replicate-joins-cloudflare"><u>加わりました</u></a>。もはや別々のチームだとすら考えていません。ReplicateとCloudflareの統合に尽力し、ReplicateモデルをすべてAI Gateway上に取り込み、ホストされたモデルをCloudflareインフラストラクチャ上でリプラットフォームしました。近日中に、Replicateで使用したモデルにAI Gatewayを通じてアクセスし、ReplicateにデプロイしたモデルをWorkers AIでもホストできるようになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started">利用開始</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まずは、<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> または <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> のドキュメントをご覧ください。Cloudflare上でのエージェント構築の詳細については、<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>をご覧ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/952f874333c5cdcb89acf49c272e99f4/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F952f874333c5cdcb89acf49c272e99f4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

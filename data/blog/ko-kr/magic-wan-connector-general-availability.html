@@ -1,0 +1,278 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/magic-wan-connector-general-availability">English</a>, <a href="https://blog.cloudflare.com/zh-tw/magic-wan-connector-general-availability">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/magic-wan-connector-general-availability">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/magic-wan-connector-general-availability">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69EmEc30BYiVjb4sQVT4oX/f8e12b47ef7735774a4c299b347c6a22/magic-wan-connector-general-availability.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>오늘, Cloudflare의 <a href="https://www.cloudflare.com/network-services/products/magic-wan" target="_blank" rel="noopener noreferrer">SASE</a> 플랫폼인 Cloudflare One의 핵심 구성 요소 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">Magic WAN Connector</a>의 일반 제공을 발표합니다. Magic WAN Connector는 기존 네트워크 하드웨어와 Cloudflare의 네트워크를 연결하는 접착제 역할을 하며, Cloudflare 인증 하드웨어에 사전 설치되는 매우 간소화된 소프트웨어 솔루션을 제공하며 Cloudflare One 대시보드에서 완전히 관리됩니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6C3g58PPEB5JrT1nTVF2Fp/27aa99e113979042f578d83b50c35aea/Magic-WAN-Connector--buy-our-box-or-BYO-.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Magic WAN Connector는 개봉 후 몇 분이면 네트워크 트래픽이 가장 가까운 Cloudflare 위치로 자동 라우팅되어 전체 Zero Trust 보안 제어 스택을 거쳐 목적지(사설 네트워크의 다른 위치, SaaS 앱, 개방형 인터넷의 모든 애플리케이션이든 상관없이)로 가속화된 경로를 따라 이동하는 것을 확인할 수 있습니다.</p>
+	<p>올해 초 베타 버전을 <a href="https://blog.cloudflare.com/magic-wan-connector">발표</a>한 이후 전 세계 여러 조직에서 네트워크 위치를 연결하고 보호하기 위해 Magic WAN Connector를 배포했습니다. SASE 혁신을 대규모로 가속화할 Magic WAN Connector의 일반 출시를 기쁘게 생각합니다.</p>
+	<p>고객들이 SASE를 도입하기까지의 여정에 대해 이야기할 때 우리가 가장 많이 듣는 이야기 중 하나는 다음과 같습니다.</p>
+	<blockquote>
+		<p><i>우리는 원격 근무 인력부터 시작하여 내부 앱과 인터넷 리소스에 대한 보안 액세스를 위하여 최신 솔루션을 배포했습니다. 하지만 이제 기업 네트워크 연결과 보안에 대한 더 광범위한 환경을 살펴보고 있습니다. 모든 인프라를 클라우드 및 인터넷 중심 모델로 전환하고 싶지만, 어떻게 시작해야 할지 고민하고 있습니다.</i></p>
+	</blockquote>
+	<p>Magic WAN Connector는 이러한 문제를 해결하기 위해 만들어졌습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-touch-connectivity-to-your-new-corporate-wan">새로운 기업 WAN에 대한 제로 터치 연결</h3>
+		<a href="https://blog.cloudflare.com/#zero-touch-connectivity-to-your-new-corporate-wan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>을 사용하면 규모와 관계없이 모든 조직에서 글로벌 <a href="https://www.cloudflare.com/connectivity-cloud" target="_blank" rel="noopener noreferrer">클라우드 연결성</a>으로 제공되는 통합 플랫폼으로 모든 사용자, 장치, 앱, 네트워크, 데이터를 연결하고 보호할 수 있습니다. <a href="https://www.cloudflare.com/network-services/products/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>은 Cloudflare One의 네트워크 연결 "접착제"로, 고객이 기존 사설 회로에서 마이그레이션하여 자사 네트워크의 확장으로 사용할 수 있게 해줍니다.</p>
+	<p>이전에는 고객이 에지 네트워크 장비(일반적으로 기존 라우터 또는 방화벽)에 구성된 Anycast GRE 또는 IPsec 터널을 통해 자신의 위치를 Magic WAN에 연결하거나 <a href="https://www.cloudflare.com/network-services/products/network-interconnect" target="_blank" rel="noopener noreferrer">CNI</a>를 통해 직접 연결했습니다. 하지만 지난 몇 년 동안 수백 명의 고객으로부터 제로 터치 방식으로 자체 지사를 연결해 달라는 요청을 받았습니다. <i>플러그를 꽂고 켜기만 하면 나머지는 알아서 처리해 주는 무언가를 원했던 것입니다.</i></p>
+	<p>Magic WAN Connector가 바로 이 '무언가'에 해당합니다. 고객은 당사 소프트웨어가 사전 설치된 Cloudflare 인증 하드웨어를 받게 되며, 모든 것이 Cloudflare 대시보드를 통해 제어됩니다. 과거에는 시간이 많이 걸리고 복잡했던 프로세스를 이제 몇 분이면 완료할 수 있으므로 모든 트래픽에 대한 강력한 Zero Trust 보호가 가능합니다.</p>
+	<p>Magic WAN Connector는 터널과 라우팅 정책을 자동으로 구성하여 네트워크 트래픽을 Cloudflare로 보내는 것 외에도 트래픽을 조정하고 형성하며 장애 조치를 처리하므로 패킷이 항상 가장 가까운 Cloudflare 네트워크 위치(단 몇 밀리초 거리에 있을 수 있음)로 이동하는 최적의 경로를 사용할 수 있습니다. 또한 분석 및 로그에서 모든 트래픽 흐름에 대한 향상된 가시성이 확보되므로 지사와 Cloudflare 네트워크를 통한 트래픽 모두에서 통합된 가시성 환경이 제공됩니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-trust-security-for-all-your-traffic">모든 트래픽에 대한 Zero Trust 보안</h3>
+		<a href="https://blog.cloudflare.com/#zero-trust-security-for-all-your-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크 위치에 Magic WAN Connector가 배포되면 공개 및 비공개 트래픽 모두에 Zero Trust 보안 정책을 적용할 수 있는 자동 액세스 권한이 부여됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-secure-on-ramp-to-the-internet">인터넷에 대한 보안 온램프(on-ramp)</h4>
+		<a href="https://blog.cloudflare.com/#a-secure-on-ramp-to-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kj1RPtJdlJHyz4A5kwDb8/e0c0f7cac3b5f849c102ee4e2d31be42/Branch-Connector-Diagram.png" alt="" class="kg-image" width="1600" height="782" loading="lazy">
+
+	</figure>
+	<p>네트워크 위치를 Cloudflare에 연결한 후 조직의 보안 상태를 개선하는 쉬운 첫 단계는 랜섬웨어, 피싱, 기타 위협을 방어하는 보안 웹 게이트웨이 정책을 만들어 더 빠르고 안전한 인터넷 브라우징을 하는 것입니다. 기본적으로 Magic WAN Connector가 있는 위치의 모든 인터넷 트래픽은 Cloudflare Gateway를 통해 라우팅되므로 물리적 위치 및 원격 근무 직원들로부터의 트래픽을 위한 통합 제어판이 제공됩니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-more-secure-private-network">더욱 안전한 사설 네트워크</h4>
+		<a href="https://blog.cloudflare.com/#a-more-secure-private-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>또한 Magic WAN Connector를 사용하면 여러 계층의 네트워크 및 Zero Trust 보안 제어를 통해 네트워크 위치 간에 비공개 트래픽을 라우팅할 수 있습니다. 보안 하드웨어 스택을 배포 및 관리하고 필터링을 위해 중앙 위치를 통해 분기 트래픽을 백홀해야 하는 기존 네트워크 아키텍처와는 달리, SASE 아키텍처는 분산된 네트워크에 적용되지만 단일 대시보드 인터페이스 또는 API에서 관리되는 비공개 트래픽 필터링 및 제어 기능을 기본으로 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h4 id="a-simpler-approach-for-hybrid-cloud">하이브리드 클라우드를 위한 더 간단한 접근 방식</h4>
+		<a href="https://blog.cloudflare.com/#a-simpler-approach-for-hybrid-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare One은 위치 유형에 따라 간편한 온램프(on-ramp)를 통해 모든 물리적 또는 클라우드 네트워크에 연결할 수 있습니다. Magic WAN Connector는 지사에 간편한 연결을 제공할 뿐만 아니라 클라우드 네이티브 구성(예: VPN 게이트웨이)을 사용하여 연결된 VPC 또는 직접 클라우드 연결(<a href="https://blog.cloudflare.com/cloud-cni">클라우드 CNI</a>를 통한)을 포함한 다른 네트워크에 대한 자동 연결도 제공합니다. IT 및 보안 팀에서는 물리적 인프라 및 클라우드 인프라 전반에서 통합된 연결 및 제어판을 통해 멀티 및 하이브리드 클라우드 네트워크 관리에 드는 오버헤드와 비용을 줄일 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="single-vendor-sase-dramatically-reduces-cost-and-complexity">비용과 복잡성을 획기적으로 줄여 주는 단일 벤더 SASE</h3>
+		<a href="https://blog.cloudflare.com/#single-vendor-sase-dramatically-reduces-cost-and-complexity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Magic WAN Connector를 일반 사용자가 이용할 수 있게 됨에 따라 처음부터 완전히 통합되어 개발된 통합 SASE 플랫폼을 제공하기 위한 마지막 조각이 완성되었습니다. 네트워킹 및 보안을 위해 서로 다른 솔루션을 조합하는 대신 단일 벤더를 통해 SASE의 모든 구성 요소를 배포하고 관리하면 복잡성과 잠재적인 통합 문제가 줄어들기 때문에 배포 및 관리가 크게 간소화됩니다. 전체 SASE 솔루션을 판매하는 많은 벤더가 실제로는 인수를 통해 개별 제품을 하나로 묶어 여러 벤더를 별도로 배포하고 관리하는 것과 유사한 통합되지 않은 환경을 제공합니다. 반면, Cloudflare One(현재 간소화된 분기 기능을 위한 Magic WAN Connector 포함)을 사용하면 조직에서는 총소유 비용을 절감하고 최신 디지털 환경의 진화하는 요구 사항에 적응하는 간소화되고 효율적이며 매우 안전한 네트워크 및 보안 인프라라는 SASE의 진정한 약속을 달성할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="evolving-beyond-sd-wan">SD-WAN을 넘어서는 진화</h3>
+		<a href="https://blog.cloudflare.com/#evolving-beyond-sd-wan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare One은 조직에서 네트워킹 운영을 간소화하기 위해 SD-WAN을 배포할 때 남겨진 많은 문제를 해결합니다. SD-WAN은 장치와 구성을 한 곳에서 관리할 수 있는 오케스트레이션 기능과 기존 라우터에서 가능한 것보다 더 정교한 로직을 기반으로 트래픽을 조정하고 형성하는 라스트 마일 트래픽 관리 기능을 제공합니다. 하지만 SD-WAN 장치에는 일반적으로 보안 제어 기능이 내장되어 있으므로 팀에서 하드웨어, 가상화, 클라우드 기반 도구를 짜깁기하여 네트워크를 안전하게 유지해야 합니다. 고객 분기에서 트래픽을 전송하는 최적의 방법에 대한 결정을 내릴 수는 있지만, 라스트 마일과 트래픽의 목적지 사이의 트래픽 홉에 영향을 미칠 수 있는 방법은 없습니다. 일부 SD-WAN 공급자는 클라우드 환경에 배포할 수 있는 가상화된 버전의 장비를 출시했지만, 네이티브 클라우드 연결을 지원하지 않으며 클라우드로의 전환을 용이하게 하기보다는 복잡하게 만들 수 있습니다.</p>
+	<p><a href="https://www.cloudflare.com/the-net/?utm_campaign=thenet&amp;utm_medium=blog" target="_blank" rel="noopener noreferrer"></a></p>
+	<p>Cloudflare One은 엔터프라이즈 네트워킹의 차세대 진화를 대표하는 제품으로, 레거시 네트워킹이나 SD-WAN과는 근본적으로 다른 아키텍처를 갖추고 있습니다. 이는 물리적 위치(또는 가상 네트워크 내의 가상 하드웨어(예: 클라우드 VPC))에 필요한 최소한의 하드웨어를 배포하고 저비용 인터넷 연결을 사용하여 가장 가까운 "서비스 에지" 위치에 도달하는 "가벼운 분기, 견고한 클라우드" 원칙에 기반합니다. 이러한 위치에서 트래픽은 보안 제어를 통과하여 고객의 사설 네트워크 내의 다른 위치든 공용 인터넷의 앱이든 목적지로 이동하는 도중에 최적화될 수 있습니다. 이 아키텍처 덕분에 연결된 네트워크에 대한 원격 사용자 액세스도 가능합니다.</p>
+	<p>이러한 전환은 대부분의 "스마트"를 분기에서 분산된 글로벌 네트워크 에지로 옮기고 로컬 존재가 반드시 필요한 기능만 분기에 남겨둡니다. 이러한 전환으로 Magic WAN Connector를 통해 제공하는 고객의 현재 문제가 해결되고 연결 및 공격 환경이 계속 진화함에 따라 더 쉬운 관리와 강력한 보안 태세를 갖추도록 설정됩니다.</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="109">
+			<col width="124">
+			<col width="136">
+			<col width="169">
+			<col width="169">
+		</colgroup>
+		<tbody>
+			<tr style="height:23.25pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #c1c7d0 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#003682;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Aspect</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #c1c7d0 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#003682;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Example</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #c1c7d0 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#003682;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">MPLS/VPN Service</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #c1c7d0 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#003682;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SD-WAN</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #c1c7d0 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#003682;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SASE with&nbsp;</span></p>
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cloudflare One&nbsp;</span></p>
+				</td>
+			</tr>
+			<tr style="height:57pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Configuration</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">New site setup, configuration and management</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#f4cccc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">By MSP through service request</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#e3fcef;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Simplified orchestration and&nbsp; </span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">management via centralized controller</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #c1c7d0 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Automated orchestration via SaaS portal</span></p>
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Single Dashboard</span></p>
+				</td>
+			</tr>
+			<tr style="height:57pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Last mile&nbsp;</span></p>
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">traffic control</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Traffic balancing, QoS, and failover</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Covered by MPLS SLAs</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Best Path selection available </span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">in SD-WAN appliance&nbsp;</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Minimal on-prem deployment to control local decision making</span></p>
+				</td>
+			</tr>
+			<tr style="height:57pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Middle mile&nbsp;</span></p>
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">traffic control</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Traffic steering around middle mile congestion</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Covered by MPLS SLAs</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#f4cccc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">“Tunnel Spaghetti” and still no control over the middle mile</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Integrated traffic management &amp; private backbone controls in a unified dashboard</span></p>
+				</td>
+			</tr>
+			<tr style="height:43pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cloud integration</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Connectivity for cloud migration</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#fff2cc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Centralized breakout</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#fff2cc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Decentralized breakout</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Native connectivity with Cloud Network Interconnect</span></p>
+				</td>
+			</tr>
+			<tr style="height:43pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Security</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Filter in &amp; outbound Internet traffic for malware</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#fff2cc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Patchwork of hardware controls</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#fff2cc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Patchwork of hardware </span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><br></span><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">and/or software controls</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Native integration with user, data, application &amp; network security tools</span></p>
+				</td>
+			</tr>
+			<tr style="height:43pt">
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e2f5fa;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:600;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cost</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Maximize ROI for network investments</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#fff2cc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">High cost for hardware and connectivity</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#f4cccc;padding:0pt 7pt 0pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Optimized connectivity costs at the expense of increased&nbsp;</span></p>
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">hardware and software costs</span></p>
+				</td>
+				<td style="border-left:solid #c1c7d0 1pt;border-right:solid #c1c7d0 1pt;border-bottom:solid #a9afa9 1pt;border-top:solid #a9afa9 1pt;vertical-align:middle;background-color:#e3fcef;padding:7pt 7pt 7pt 7pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.38;margin-left: 0pt;margin-right: 0pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:9pt;font-family:Inter,sans-serif;color:#172b4d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Decreased hardware and connectivity costs for maximized ROI</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>측면</p>
+	<p>예시</p>
+	<p>MPLS/VPN 서비스</p>
+	<p>SD-WAN</p>
+	<p>SASE와 함께&nbsp;</p>
+	<p>Cloudflare One&nbsp;</p>
+	<p>구성</p>
+	<p>새로운 사이트 설정, 구성, 관리</p>
+	<p>서비스 요청으로 MSP에서 제공</p>
+	<p>중앙화된 컨트롤러를&nbsp;통한 오케스트레이션 및 관리 간소화</p>
+	<p>SaaS 포털을 통한 자동화된 오케스트레이션</p>
+	<p>단일 대시보드</p>
+	<p>라스트마일&nbsp;</p>
+	<p>트래픽 제어</p>
+	<p>트래픽 밸런싱, QoS, 장애 조치</p>
+	<p>MPLS SLA에서 보장됨</p>
+	<p>SD-WAN 장비에서최적 경로 선택 가능</p>
+	<p>최소한의 온프레미스 배포로 로컬 의사 결정 제어</p>
+	<p>미들마일&nbsp;</p>
+	<p>트래픽 제어</p>
+	<p>미들마일 정체 시 트래픽 조정</p>
+	<p>MPLS SLA에서 보장됨</p>
+	<p>“터널 스파게티” 및 미들마일을 통해 제어 불가</p>
+	<p>통합 트래픽 관리 및 통합 대시보드에서의 사설 백본 제어</p>
+	<p>클라우드 통합</p>
+	<p>클라우드 마이그레이션을 위한 연결</p>
+	<p>중앙화된 브레이크아웃</p>
+	<p>탈중앙화된 브레이크아웃</p>
+	<p>클라우드 네트워크 상호 연결로 네이티브 연결</p>
+	<p>보안</p>
+	<p>맬웨어 검사를 위한 인/아웃바운드 인터넷 트래픽 필터링</p>
+	<p>짜깁기 형태의 하드웨어 제어</p>
+	<p>짜깁기 형태의 하드웨어및/또는 소프트웨어 제어</p>
+	<p>사용자, 데이터, 애플리케이션, 네트워크 보안 도구와 기본 통합</p>
+	<p>비용</p>
+	<p>네트워크 투자에 대한 ROI 극대화</p>
+	<p>하드웨어 및 연결에 대한 높은 비용</p>
+	<p>하드웨어 및 소프트웨어 비용의 증가를 감수하고&nbsp;</p>
+	<p>최적화한 연결 비용</p>
+	<p>하드웨어 및 연결 비용 절감으로 ROI 극대화</p>
+	<p><i>레거시, SD-WAN 기반, SASE 아키텍처 고려 사항 요약</i></p>
+	<p>현재의 SD-WAN 벤더가 마음에 들어서 계속 이용하고 싶으신가요? 문제 없습니다. IPsec 또는 GRE를 지원하는 모든 장비를 Cloudflare One의 온램프(on-ramp)로 계속 사용할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="ready-to-simplify-your-sase-journey">SASE 여정을 간소화할 준비가 되셨나요?</h3>
+		<a href="https://blog.cloudflare.com/#ready-to-simplify-your-sase-journey" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>장치 사양, 특정 기능 정보, 온보딩 프로세스 세부 정보 등 Magic WAN Connector에 대한 자세한 내용은 <a href="https://developers.cloudflare.com/magic-wan/connector" target="_blank" rel="noopener noreferrer">개발자 문서</a>에서 확인하거나 지금 바로 <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank" rel="noopener noreferrer">문의하여</a> 시작하세요.</p>
+</div>

@@ -1,0 +1,401 @@
+<div class="mb2 gray5">10分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/enforce-first-as-bgp">English</a>および<a href="https://blog.cloudflare.com/ko-kr/enforce-first-as-bgp">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LHQlPltNtbqeI2Ol9ywUg/eb6361cb63c9bcd62593a16a59595be1/BLOG-3306_image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Spamhausが報告した最近の<a href="https://x.com/spamhaus/status/2043708364941627683?s=20" target="_blank" rel="noopener noreferrer"><u>ルートハイジャック</u></a>のいくつかに注目しました。こうしたハイジャックの試みの多くでは、明らかな悪意ある攻撃者が、未使用の<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>自律システム番号</u></a>（ASN）を利用していました。これらのハイジャックでは、攻撃者が宛先に向けて偽のAS_PATHを作成し、トラフィックを予期しない経路に誤って誘導しているようです。</p>
+	<p>偽造したAS_PATHを作成することで、ハイジャッカーはIDを隠そうとしながら、通常は意図しない場所へトラフィックを誘導しようとします。ハイジャッカーは、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer"><u>ボーダーゲートウェイプロトコル</u></a>（BGP）プレフィックスのオリジンであることを装う可能性がある、ネットワークパスから十分な情報を盗み出すことができるからです。攻撃者は、このハイジャックされたルートを使用して、トラフィックを傍受したり、その他の悪意のある目的に使用することができます。</p>
+	<p>これらのケースに対するシンプルなソリューションがあります。それは、BGPピア自律システム（AS）が常に、アドバタイズされたルートの「最初のAS」としてネットワークを含むことの基本的な検証です。こうした安全対策がどの程度適切に実装されているかを把握するため、主要なネットワークにストレステストを行い、BGP実装について調査を行いました。これにより、私たちが学んだことを振り返ることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="examining-route-hijacks-involving-forged-paths">偽造されたパスを含むルートハイジャックの調査</h2>
+		<a href="https://blog.cloudflare.com/#examining-route-hijacks-involving-forged-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パス内のありえない<a href="https://www.caida.org/catalog/datasets/as-relationships" target="_blank" rel="noopener noreferrer"><u>AS関係</u></a>を詳しく調べると、アクターが偽のAS_PATHを作成しているという考えは裏付けられます。たとえば、Spamhausが報告したハイジャックの1つとして、フランスの通信会社Orange SAに属するプレフィックスを取り上げてみましょう。<a href="https://github.com/bgpkit/monocle" target="_blank" rel="noopener noreferrer"><u>モノクル</u></a>ツールを使用すると、ハイジャックに関連する<a href="https://datatracker.ietf.org/doc/html/rfc4271#section-4.3" target="_blank" rel="noopener noreferrer"><u>BGP UPDATEメッセージ</u></a>を<a href="https://radar.cloudflare.com/routing/mrt-explorer?url=https%3A%2F%2Fdata.ris.ripe.net%2Frrc26%2F2026.04%2Fupdates.20260413.0020.gz&amp;q=90.98.0.0%2F15" target="_blank" rel="noopener noreferrer"><u>簡単に見つける</u></a>ことができます。</p>
+	<pre class="language-Rust"><code class="language-Rust">➜  ~ monocle search --start-ts 2026-04-13T00:20:00Z --end-ts 2026-04-13T00:23:59Z --prefix 90.98.0.0/15 --collector rrc26 --json
+{
+  "aggr_asn": null,
+  "aggr_ip": null,
+  "as_path": "48237 1299 199524 270118 17072 41128",
+  "atomic": false,
+  "collector": "rrc26",
+  "communities": null,
+  "local_pref": 0,
+  "med": 0,
+  "next_hop": "185.1.8.3",
+  "origin": "IGP",
+  "peer_asn": 48237,
+  "peer_ip": "185.1.8.3",
+  "prefix": "90.98.0.0/15",
+  "timestamp": 1776039612.0,
+  "type": "ANNOUNCE"
+}</code></pre>
+	<p>AS1299 (<a href="https://www.arelion.com" target="_blank" rel="noopener noreferrer"><u>Arelion</u></a>) は <a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank" rel="noopener noreferrer"><u>Tier 1 ネットワーク</u></a>であることがわかっています。つまり、パスの右側にあるすべての AS は、アップストリーム (顧客とプロバイダー) の関係を記述しています。これは、AS17072がAS41128のトランジットプロバイダーであることを意味し、AS170118はAS17072のトランジットプロバイダーであることを意味します。これらのネットワークについて詳しく見ると、次のようになります：</p>
+	<ul>
+		<li>
+			<p>AS41128はOrange Franceに属する未使用自律システム番号です</p>
+		</li>
+		<li>
+			<p>AS17072は、主にメキシコに拠点を置くISPです。</p>
+		</li>
+		<li>
+			<p>AS270118はメキシコに拠点を置くホスティングプロバイダーです。</p>
+		</li>
+		<li>
+			<p>AS199524 は<a href="https://gcore.com" target="_blank" rel="noopener noreferrer"><u>Gcore</u></a>で、<a href="https://www.peeringdb.com/net/5499" target="_blank" rel="noopener noreferrer"><u>グローバルなピアリングプレゼンス</u></a>を持つプロバイダーです。</p>
+		</li>
+	</ul>
+	<p>上記のメッセージのASの順序は、未使用のオレンジフランスのASがメキシコのISPからトランジットを購入し、その後GcoreプロバイダーとTier 1プロバイダーにアップストリームされることを示唆していますが、これはまったく奇妙です。</p>
+	<p>別の例では、オリジンAS36429からプレフィックス47.1.0.0/16および47.2.0.0/16のハイジャックが報告され、AS_PATH「199524 270118 17072 13335 36429」にCloudflareのメイン自律システム番号である13335も含まれていました。これらのBGP UPDATEsの例を、Cloudflare Radarの<a href="https://radar.cloudflare.com/routing/mrt-explorer?url=https%3A%2F%2Fdata.ris.ripe.net%2Frrc11%2F2026.04%2Fupdates.20260411.1245.gz&amp;q=47.1.0.0%2F16" target="_blank" rel="noopener noreferrer"><u>MRT Explorer</u></a>で見ることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GRO488rbjQjXDht7DyzL0/dc61e2e2cc4029ba4b15c235d1104ac1/BLOG-3306_image5.png" alt="BLOG-3306 image5" class="kg-image" width="1999" height="1208" loading="lazy">
+	</figure>
+	<p>当社（Cloudflare、AS13335）は、Charter社が所有する、現在は使用されていないAS36429とは<a href="https://en.wikipedia.org/wiki/Peering" target="_blank" rel="noopener noreferrer"><u>隣接性</u></a>が<b>ない</b>ことを、権威をもって確認できます。つまり、これはハイジャッカーによる偽造経路で、Cloudflareの自律システム番号を、Gcore（AS199524）に向けて伝播されたアドバタイズの偽のアップストリームネットワークの1つとして含めたのです。さらに、Spamhaus氏は、すべてのハイジャックルートがシカゴのGcoreピアリングの背後にある<a href="https://x.com/spamhaus/status/2043708367705608605?s=46" target="_blank" rel="noopener noreferrer"><u>ネットワークにつながっていた</u></a>と正しく指摘しました。実際にはフォワーディング経路でメキシコのISPやCloudflareのネットワークを経由することはありませんでした。</p>
+	<p>このため、これらのパスは、<i>最も左の</i>共通AS（この場合はAS199524です）まで偽造されていると合理的に結論づけることができます。残りのパスはありそうもないと思われるためです。ここで起きていることは、ハイジャッカーによる特定の戦略の結果であると考えられます。次のステップなどです：</p>
+	<ol>
+		<li>
+			<p>「パークされた」プレフィックスに対するBGPアナウンスメントをオリジンする</p>
+		</li>
+		<li>
+			<p><b>ハイジャッカー自身のローカル自律システム番号を含めずに</b>、AS_PATHを完全に偽造する</p>
+		</li>
+		<li>
+			<p>これらのルートをGcore、AS199524にアドバタイズする</p>
+		</li>
+	</ol>
+	<p>これらのハイジャックでは、Gcore（AS199524）が、ある顧客の自律システム番号に一致する最初のASの検証と適用をスキップしているようです。（この記事の後半で、これらのステップを省略する理由を説明します。）その結果、偽造されたパスが受け入れられ、ハイジャックされたプレフィックスは上流のプロバイダーとピアに伝播されます。</p>
+	<p>自律システムプロバイダ許可（<a href="https://blog.cloudflare.com/aspa-secure-internet"><u>ASPA</u></a>）は、これらの偽造パスを無効にするのに役立ちますが、攻撃者は、<a href="https://blog.cloudflare.com/rpki-updates-data"><u>RPKI-ROV</u></a>が有効なオリジンAS、または正当なASPA上流ASを含めるだけで、それを回避することができます。これらの特定のハイジャックを阻止するには、BGPにすでに組み込まれている別の保護メカニズム、つまり、<b>最初のASチェックと適用</b>に依存する必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-importance-of-first-as-checking">First ASチェックの重要性</h2>
+		<a href="https://blog.cloudflare.com/#the-importance-of-first-as-checking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネット上でトラフィックをルーティングすることは、小包を配送するようなものです。荷物が出荷されると、その荷物を扱うすべての宅配便のログが残されます。BGPでは、これは<a href="https://datatracker.ietf.org/doc/html/rfc4271?cf_target_id=92E6615B667307BF24A862703DCAF12F#section-5.1.2" target="_blank" rel="noopener noreferrer"><u>AS_PATH</u></a>（自律システムパス）と呼ばれ、そのルートのパスにある各ネットワークを追跡します。</p>
+	<p>BGPのAS_PATH属性は、<a href="https://www.juniper.net/documentation/us/en/software/junos/vpn-l2/bgp/topics/concept/routing-protocols-address-representation.html" target="_blank" rel="noopener noreferrer"><u>パス選択</u></a>に使用されます。この選択アルゴリズムは、目的地までの最適なホップリストを通過するルートを決定します。「ベスト」は複数の変数で定義されます。また、ループ防止にも使用され、ネットワークが自分のネットワークを既に通過したパスを受け入れないことを決定することができます。BGP UPDATE、ひいてはルートが通過するネットワークの記録を保持する以外に、AS_PATHは、オペレータが設定したルーティングポリシーによって検証することもできます。たとえば、予期せぬ影響を与える<a href="https://developers.cloudflare.com/radar/investigate/bgp-anomalies" target="_blank" rel="noopener noreferrer"><u>BGPの異常</u></a>を回避するために、<a href="https://github.com/job/peerlock" target="_blank" rel="noopener noreferrer"><u>所定のASを回避</u></a>したり、意図的にルーティングしたりすることもできます。</p>
+	<p>BGPは信頼に基づいて構築されており、AS_PATHは簡単に操作できます。トラフィックを移動させるための<a href="https://blog.cloudflare.com/prepends-considered-harmful"><u>ASプリペンド</u></a>のような一見正当な理由から、トラフィックを人為的に引き寄せたり、オリジン攻撃を実行するために短縮するような悪意のある理由まで、様々です。</p>
+	<p>この2種類の悪意のあるBGP操作がどのように実行されるかを見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="example-1-forged-origin-attacks"><b>例1：</b>偽造オリジン攻撃</h3>
+		<a href="https://blog.cloudflare.com/#example-1-forged-origin-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>AS64506は、ルートオリジン認証（Route Origin Authorization）レコードでルートに暗号署名を行い、ルートオリジンのハイジャックを防ぎます。</p>
+		</li>
+		<li>
+			<p>AS64506はASPAオブジェクトを作成し、有効プロバイダーとしてAS64503<b>のみ</b>を指定します</p>
+		</li>
+		<li>
+			<p>AS64505は、AS_PATHを操作して、AS64505を削除し、AS64506に発信します。</p>
+		</li>
+		<li>
+			<p>AS64502は最初のASを強制しない</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xVIAFtmdXnloqo4xn6ZHj/d487ff2260925946987795bf0648d9e6/BLOG-3306_image4.png" alt="BLOG-3306 image4" class="kg-image" width="1999" height="995" loading="lazy">
+	</figure>
+	<p>ルートは、RPKI-ROV有効で、最短パスであり、トラフィックを効果的にハイジャックします。AS64506は、プレフィックスアドバタイズに有効なROAを指定することで、すべてを正しく行いました。また、唯一のプロバイダーであるAS64503からなるASPAオブジェクトも設定しています。</p>
+	<p>残念ながら、AS64505を実行しているハイジャッカーは、AS64506向けのトラフィックを引き付けることができます。顧客であるAS64501とそのプロバイダーであるAS64502が<a href="https://blog.cloudflare.com/aspa-secure-internet"><u>ASPA検証</u></a>を実行しても、無効なパスは見つかりません。なぜなら、パス「64502 64506」にバレーが存在しないからです。つまり、AS64505は、AS_PATHに自身の自律システム番号を含めることさえしない方法で、中間ASホップなしでAS64506であると偽装することができるのです。</p>
+	<p>既存のツールでこのハイジャックを防ぐ正しい方法は、AS_PATHの最初のASを強制することです。このルールを適用すると、AS64502はAS64505からのルートを適切にドロップします。</p>
+	<div class="flex anchor relative">
+		<h3 id="example-2-shortening-the-as_path-to-attract-traffic"><b>例2:</b> AS_PATHを短縮してトラフィックを集中させる</h3>
+		<a href="https://blog.cloudflare.com/#example-2-shortening-the-as_path-to-attract-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>AS64506には、AS64503とAS64505の2つのトランジットプロバイダーがあります。</p>
+		</li>
+		<li>
+			<p>AS64505は、トラフィック使用率に基づいて顧客にAS64506を請求します。</p>
+		</li>
+		<li>
+			<p>AS64505はパスから自身を削除し、ピアであるAS64504は最初のASを強制しません。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vJhTqme76V9YRuD3lrjJ2/1a511f852b159b245e4bc2f24e9b26b8/BLOG-3306_image1.png" alt="BLOG-3306 image1" class="kg-image" width="1999" height="1306" loading="lazy">
+	</figure>
+	<p>BGPパス選択アルゴリズムは、AS64501からAS64504経由のルートを最適なパスとして選択するようになりました。AS64506は、インターネットからのトラフィックを配信するために、プロバイダーであるAS64503とAS64505の両方に料金を支払います。しかし、現在、AS64505は、遠エンドの送信元からより短いBGPパスを提供しています。つまり、AS64505はAS64506に向けたすべてのトラフィックを処理し、その際に支払いを行いますが、AS64503は一切支払われません。</p>
+	<p>これらのBGPの脆弱性は、<b>最初のAS</b>を受信したAS_PATH内の<b>ピアAS</b>と一致するように強制することによって非常に簡単に解決できます。</p>
+	<p>オペレータがBGPネイバーを設定する場合、相互接続しているネットワークのリモートASを設定する必要があります。AS_PATHの最初のASがこの値に一致しない場合、パスは操作されています。最初のAS適用手順は、RFC 4271の<a href="https://datatracker.ietf.org/doc/html/rfc4271#section-6.3" target="_blank" rel="noopener noreferrer"><u>セクション6.3</u></a>で、次のように非常に明確に概説されています。</p>
+	<blockquote>
+		<p>「UPDATEメッセージを外部ピアから受信した場合、ローカルの</p>
+		<p>一番左（ポジションに関して</p>
+		<p>プロトコルメッセージのオクテット数) AS_PATH属性のASが</p>
+		<p>リクエストを送信したピアの自律システム番号に相当する</p>
+		<p>送られます。チェックがこれに該当しないと判断した場合、</p>
+		<p>サブコードがマルフォームドAS_PATHに設定されていなければならない。」</p>
+	</blockquote>
+	<p><a href="https://www.rfc-editor.org/info/rfc7606" target="_blank" rel="noopener noreferrer"><u>RFC 7606</u></a>では、後にベンダーによるエラー処理の実装方法が修正され、不正なAS_PATHを含むルートは<i>treat-as-withdraw</i>方式で破棄されるべきであると提案されています。これにより、ルーターはBGPセッション全体を中断することなく、不正な属性を持つ特定のプレフィックスをドロップすることができます。</p>
+	<p>現在のASPA草案では、最初のASの適用の重要性が<a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-25#section-5-2" target="_blank" rel="noopener noreferrer"><u>明確に強調されており</u></a>、不正なアナウンスによって十分なAS_PATH情報が不足しているパスはASPAが<b>処理できない</b>と述べています。AS_PATHの最初のASを強制することは、インターネットルーティングセキュリティに<b>必須</b>です。</p>
+	<div class="flex anchor relative">
+		<h2 id="measurement-by-breaking-the-first-as-rule-on-purpose">First ASルールを意図的に破壊して測定する</h2>
+		<a href="https://blog.cloudflare.com/#measurement-by-breaking-the-first-as-rule-on-purpose" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、最初のASルールの違反に関する理論的な障害事例や過去の公表されたインシデントに縛られるのではなく、これらのAS_PATH違反がインターネット上でどの程度広く受け入れられるかを独自に測定したいと考えました。そのために、意図的にルールを<b>違反した</b>近隣へのBGPアナウンスを設定します。私たちが行った成果を以下に示します：</p>
+	<ol>
+		<li>
+			<p>Tier 1 External BGP（EBGP）のネイバーへアドバタイズするために、1つはIPv4用、もう1つはIPv6用の2つのIPプレフィックスを割り当て</p>
+		</li>
+		<li>
+			<p>Tier 1の近隣へのテストプレフィックスアドバタイズを、Cloudflareが所有する非13335 自律システム番号（AS402542）で13335の前に意図的にプリペンド</p>
+		</li>
+	</ol>
+	<p>たとえば、Genevaの通常のBGPセッションからAS1299にプレフィックスをアドバタイズしています。当社のローカルASはAS13335ですが、AS402542をAS_PATHの最初のASとして明確に含めています。</p>
+	<pre class="language-Rust"><code class="language-Rust">bryton@edge01.gva01&gt; show configuration policy-options policy-statement 4-TELIA-ACCEPT-EXPORT term ADV-FIRST-AS-PROBE-CR-1695522
+from {
+    community ANYCAST-ROUTE;
+    prefix-list fl_first_as_prober;
+    route-type internal;
+}
+then {
+    origin igp;
+    as-path-prepend 402542;
+    next-hop self;
+    accept;
+}
+
+bryton@edge01.gva01&gt; show route advertising-protocol bgp &lt;redacted_1299_ip&gt; 162.159.82.0/24 detail | grep "AS path: "
+     AS path: 402542 [13335] I</code></pre>
+	<p>この構成では、次のことを想定しています：</p>
+	<ol>
+		<li>
+			<p>enforce-first-asを<b>実行する</b>ネットワークは、RFC 7606 の撤回方式に従って、そのルートを黙って破棄します </p>
+		</li>
+		<li>
+			<p>First-asを強制し<b>ない</b>ネットワークはルートを<i>受け入れ</i>、インストールしてテストプレフィックスに向けて転送します</p>
+		</li>
+	</ol>
+	<p>どちらの結果も、BGPパブリックルートビューに表示されます。当初の目標は、<b>すべての</b>ピアに向けて、アナウンスの際にFirst ASのルールに意図的に違反するプレフィックスの継続的なアナウンスを実装し、どのISPがFirst ASを検証するか、そしてそうでないISPをチェックするための<a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer"><u>ツールを皆に提供する</u></a>ことでした。しかし、不正なBGP AS_PATHを受信した際にRFC 7606に公開されているガイダンスを実装しておらず、<i>treat-as-withdraw</i>動作ではなくBGPセッションをリセットするネットワークがまだ存在することがわかりました。つまり、Cloudflareへの実際のトラフィックに影響を与えることなく、First ASルールに違反する一連のアナウンスを安全に実装することはできないということです。</p>
+	<p>しかし、ポリシーが最も大きな影響を与えるネットワーク、Tier 1ネットワークについて詳しく見ることができます。これらのネットワークはインターネットのバックボーンを構成し、誰よりも最大のAS <a href="https://asrank.caida.org/about" target="_blank" rel="noopener noreferrer"><u>顧客コーン</u></a>を持っているため、これらのピアによるハイジャックや不正な経路は最も広範な影響を及ぼします。まず、エニーキャストプレフィックス <i>通常の</i> 伝播、<a href="https://radar.cloudflare.com/routing/prefix/1.1.1.0/24" target="_blank" rel="noopener noreferrer"><u>1.1.1.0/24</u></a> を調べてみましょう。提供することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ip0roG2Wle8A5mFmCsncg/7eed8ff66cfc68786bb59ed6dadd7095/BLOG-3306_image6.png" alt="BLOG-3306 image6" class="kg-image" width="1344" height="1960" loading="lazy">
+	</figure>
+	<p>1.1.1.0/24の伝播現在、Cloudflareが直接隣接しているすべてのTier 1ネットワークから直接到達できます。</p>
+	<p>それでは、意図的に不正な方法で行われたプレフィックス162.159.82.0/24のアナウンスと比較してみましょう。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uzzCBYR1Zh4IeXwEduPRt/19e8dadea31bb4b21c6ce137d723ff47/BLOG-3306_image3.png" alt="BLOG-3306 image3" class="kg-image" width="1999" height="1907" loading="lazy">
+	</figure>
+	<p><i><sup>注：AS5511（Orange SA）はパブリックルートビューへの存在が限定的であるため、上記の写真にはされていませんが、当社のテストと測定の一部でした。</sup></i></p>
+	<p>プレフィックスの伝播方法は、1.1.1.0/24 とは大きく異なる方法です。– Cloudflareからのアナウンスを直接受け入れるTier 1ネットワークの数は、はるかに少ないのです（この場合、AS402542がプリペンドされたAS13335からのもの）。以下は、前述のテスト基準に基づき、確認された結果です。</p>
+	<p>（無効なアナウンスを削除することで）First AS ルールを適用している<b>Tier 1ネットワーク</b>：</p>
+	<ul>
+		<li>
+			<p>AS174（Cogent）</p>
+		</li>
+		<li>
+			<p>AS1299（Arelion）</p>
+		</li>
+		<li>
+			<p>AS3257（GTT）</p>
+		</li>
+		<li>
+			<p>AS3491 (PCCW)</p>
+		</li>
+		<li>
+			<p>AS5511（Orange SA）</p>
+		</li>
+		<li>
+			<p>AS6453 (Tata)</p>
+		</li>
+		<li>
+			<p>AS7018 (AT&amp;T)</p>
+		</li>
+	</ul>
+	<p>最初のASルールを<b>実施して</b><b>いない</b>Tier 1ネットワーク（プレフィックスを受け入れてインストールする）：</p>
+	<ul>
+		<li>
+			<p>AS701（Verizon）</p>
+		</li>
+		<li>
+			<p>AS2914（NTT）</p>
+		</li>
+		<li>
+			<p>AS3356（Lumen/Colt/Cirion）</p>
+		</li>
+		<li>
+			<p>AS6461（Zayo）</p>
+		</li>
+		<li>
+			<p>AS6762 (Sparkle)</p>
+		</li>
+		<li>
+			<p>AS6830 (Liberty Global)</p>
+		</li>
+		<li>
+			<p>AS12956（Telefonica）</p>
+		</li>
+	</ul>
+	<p>このテストにより、Tier 1ネットワークの<b>半分がFirst ASルールに違反するハイジャックに対して脆弱であるという厄介な現実が明らかになりました。</b></p>
+	<p>この測定調査ではTier 1ネットワークのみをテストしましたが、Tier 1以外のネットワークも数多くあり、First ASのルールを破っていることは間違いありません。</p>
+	<p>最初のAS違反テストに不合格となったTier 1ネットワークの大半がJuniper Networksルーターを実行しており、ピアのMACアドレスで識別されていることが判明しました。</p>
+	<p>これは、ベンダーのデフォルトの動作によって、First AS違反ベースの攻撃に対して「すぐに」ネットワークがどの程度安全であるかを定義することを浮き彫りにしています。デフォルトで保護されている人、されない人をより深く理解するために、BGPの実装とそのデフォルトのいくつかを見ていきましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="bgp-implementations-and-default-behaviors">BGPの実装とデフォルトの動作</h2>
+		<a href="https://blog.cloudflare.com/#bgp-implementations-and-default-behaviors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下の表は、主要なルーティング/ネットワーキングベンダーとそのBGPポリシーを一覧にしたものです。ここで、「Yes」は、デフォルトでBGP実装がFirst ASを適用することを意味しており、これは良いことだと言えます。「いいえ」は、BGP実装がデフォルトで脆弱であることを意味します。</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>BGPの実装</b></p>
+				</td>
+				<td>
+					<p><b>最初のASがデフォルトで適用</b></p>
+				</td>
+				<td>
+					<p><b>ドキュメンテーション</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cisco IOS/XE/XR</p>
+				</td>
+				<td>
+					<p><b>はい</b>&nbsp;</p>
+				</td>
+				<td>
+					<p><a href="https://www.cisco.com/c/en/us/td/docs/ios/iproute_bgp/command/reference/irg_book/irg_bgp1.html#wp1114079" target="_blank" rel="noopener noreferrer"><u>BGPforce-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Junos OS / Junos OS Evolved</p>
+				</td>
+				<td>
+					<p><b>いいえ</b></p>
+				</td>
+				<td>
+					<p><a href="https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/enforce-first-as-edit-protocols.html" target="_blank" rel="noopener noreferrer"><u>enforce-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Arista EOS</p>
+				</td>
+				<td>
+					<p><b>はい</b></p>
+				</td>
+				<td>
+					<p><a href="https://www.arista.com/en/um-eos/eos-border-gateway-protocol-bgp#xx1144440" target="_blank" rel="noopener noreferrer"><u>BGPforce-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nokia SR OS</p>
+				</td>
+				<td>
+					<p><b>いいえ</b></p>
+				</td>
+				<td>
+					<p><a href="https://infocenter.nokia.com/public/7750SR195R1A/index.jsp?topic=%2Fcom.sr.unicast%2Fhtml%2Fbgp-cli.html" target="_blank" rel="noopener noreferrer"><u>enforce-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Huawei</p>
+				</td>
+				<td>
+					<p><b>はい</b></p>
+				</td>
+				<td>
+					<p><a href="https://support.huawei.com/enterprise/en/doc/EDOC1100096312/15b843f2/check-first-as" target="_blank" rel="noopener noreferrer"><u>Check-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>極端なSLX-OS</p>
+				</td>
+				<td>
+					<p><b>いいえ</b></p>
+				</td>
+				<td>
+					<p><a href="https://documentation.extremenetworks.com/slxos/sw/20xx/20.3.4/commands/GUID-DB0E9DB7-9B95-4B36-A227-905E2FA21958.shtml" target="_blank" rel="noopener noreferrer"><u>enforce-first-as</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ルーターOS</p>
+				</td>
+				<td>
+					<p><b>いいえ</b></p>
+				</td>
+				<td>
+					<p><i>設定ができません</i></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BIRD</p>
+				</td>
+				<td>
+					<p><b>いいえ</b></p>
+				</td>
+				<td>
+					<p><a href="https://bird.network.cz/?get_doc=&amp;v=20&amp;f=bird-6.html#:~:text=enforce%20first%20as%20%5Bswitch%5D" target="_blank" rel="noopener noreferrer"><u>エンドユーザーに最も近い場所に</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>OpenBPD</p>
+				</td>
+				<td>
+					<p><b>はい</b></p>
+				</td>
+				<td>
+					<p><a href="https://man.openbsd.org/bgpd.conf#enforce~2" target="_blank" rel="noopener noreferrer"><u>Neむ-asを適用</u></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>FRR</p>
+				</td>
+				<td>
+					<p><b>あり </b>（<a href="https://github.com/FRRouting/frr/pull/14661" target="_blank" rel="noopener noreferrer"><u>2023年10月パッチ</u></a>以降）</p>
+				</td>
+				<td>
+					<p><a href="https://docs.frrouting.org/en/latest/bgp.html#clicmd-bgp-enforce-first-as" target="_blank" rel="noopener noreferrer"><u>BGPforce-first-as</u></a></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>一部のベンダーからのデフォルトの適用がないことは、最初のASが外部BGP（EBGP）セッションに適用されない唯一の有効なユースケースである<i>インターネットエクスチェンジ（IX）ルートサーバー</i>に起因する場合があります。</p>
+	<p>ルートサーバーは、ファブリック上のピア間でルートを透明に（AS_PATHに追加せずに）配布する役割を担います。これにより、ネットワークがファブリックに参加するたびに、ピアは新しいBGPセッションを設定する必要がなくなり、ルートサーバーだけでピアリングできるようになります。</p>
+	<p>実際には、ほとんどの本番ネットワークでは、透明性のあるIXルートサーバーで<b>ない</b>ネイバーとのセッションが、透明性のある近隣よりもはるかに多くなって<b>います</b>。ネットワーク内のすべてのピアに対して手動で「first-as」を有効にするよりも、わずかなルートサーバーセッションで「noenforce-first-as」を設定する方がはるかに理にかなっています。</p>
+	<p>「デフォルトで安全」のアプローチは、最初のAS違反から保護するには最適ですが、ベンダーに長年守られてきたデフォルトを変更するように説得するのは、一般的に<a href="https://datatracker.ietf.org/doc/html/rfc8212" target="_blank" rel="noopener noreferrer"><u>困難な道のり</u></a>です。ベンダーは、ルートを正常に受信するために「ファーストパーティを強制しない」設定を必要とするIXルートサーバーのBGPセッションに影響を与えないように、これを慎重に行う方法を導入する必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="safer-internet-routing-with-your-help-enforce-the-first-as">お客様の協力でより安全なインターネットルーティング：最初のASを適用</h2>
+		<a href="https://blog.cloudflare.com/#safer-internet-routing-with-your-help-enforce-the-first-as" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>攻撃者は、意図的にAS_PATHを偽装し、BGPセキュリティメカニズムを回避します。RPKIベースのASPAパス検証でさえ、パスがオリジンAS以外のすべてが完全に削除され、ASPAが無効化するものが何もないような偽造されたオリジンハイジャックから保護することはできません。</p>
+	<p>良いニュースは、これらのケースに対する緩和策を<i>すでに</i>持っていることです。最初のASがBGPピアASと一致していることを確認し、常に適用することができます。提供した上記の表の対応する「ドキュメント」列を参照してください。IXルートサーバーネイバーに直面するものを除き、外部BGP（EBGP）セッションにFirst ASを適用することは安全でなければなりません。</p>
+	<p><b>ネットワーク事業者の方は、今すぐルーターにFirst ASを適用して、ネットワークとインターネット全体を保護してください。</b></p>
+	<p>ルーターベンダー、またはBGP実装の選択がデフォルトでFirst ASを強制する場合は、すでに安全であり、First AS違反を拒否する必要があります。</p>
+	<p>協力することで、こうした種類のハイジャックからインターネットをより安全なものにすることができます。</p>
+</div>

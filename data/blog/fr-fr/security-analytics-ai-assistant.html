@@ -1,0 +1,108 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/security-analytics-ai-assistant">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/security-analytics-ai-assistant">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/security-analytics-ai-assistant">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/security-analytics-ai-assistant">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/security-analytics-ai-assistant">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/security-analytics-ai-assistant">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/security-analytics-ai-assistant">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sLQEpManUoOfFAZr9EThy/07d078664697be022101dd43f8b8611c/security-analytics-ai-assistant.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Imaginez que vous assistiez à une attaque ciblant votre application de production la plus cruciale et que vous ayez besoin de comprendre ce qui se passe. Quel serait votre soulagement si vous pouviez simplement vous connecter au tableau de bord et saisir une question telle que "Comparer le trafic d'attaques entre les États-Unis et le Royaume-Uni" ou "Comparer les blocs de limitation du débit pour le trafic automatisé et les blocs de limitation du débit du trafic humain", puis afficher un graphique de série chronologique sans devoir au préalable sélectionner un assortiment complexe de filtres ?</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XqHKAmbIZ4NBeFBXsnaFp/4d66b61833021c41d054dbfd5d8d23c6/AI-Assistant-for-Security-AnalyticsNatural-Language.png" alt="Cloudflare launches AI Assistant for Security Analytics" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Aujourd'hui, nous inaugurons un assistant IA pour vous aider à interroger vos données sur les événements de sécurité, vous permettant ainsi d'identifier plus rapidement les anomalies et les attaques de sécurité potentielles. Vous pouvez maintenant utiliser le langage simple pour interroger les analyses de données de Cloudflare et nous confier le soin de laisser opérer la magie.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-did-we-build">Qu'avons-nous créé ?</h2>
+		<a href="https://blog.cloudflare.com/#what-did-we-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'un des principaux défis lors de l'analyse d'un pic de trafic ou d'une anomalie du trafic consiste à créer des filtres permettant d'isoler la cause fondamentale d'un problème. En effet, cela exige de se familiariser avec des tableaux de bord et des outils souvent complexes, de savoir où cliquer et en fonction de quelles données configurer les filtres.</p>
+	<p>Par ailleurs, les tableaux de bord de sécurité traditionnels offrent des possibilités limitées en raison de la manière dont les données sont stockées, de la manière dont les bases de données sont indexées et des champs autorisés lors de la création de filtres. Avec notre vue Security Analytics, par exemple, il était difficile de comparer des séries chronologiques présentant des caractéristiques différentes. Par exemple, il était impossible de comparer le trafic provenant de l'adresse IP x.x.x.x avec le trafic automatisé provenant d'Allemagne sans ouvrir une multitude d'onglets sur Security Analytics, puis filtrer séparément chaque catégorie de données. D'un point de vue technique, il serait extrêmement difficile de développer un système qui permette d'effectuer ce type de comparaisons sans contraintes.</p>
+	<p>Avec l'assistant IA, nous éliminons cette complexité en tirant parti de notre plateforme Workers AI pour développer un outil qui peut vous aider à interroger les données de votre requête HTTP et de votre événement de sécurité et à générer des graphiques chronologiques sur la base d'une requête formulée en langage naturel. L'assistant IA se charge désormais de déterminer les filtres nécessaires et peut, en outre, représenter plusieurs séries de données sur un même graphique, afin de faciliter les comparaisons. Ce nouvel outil ouvre la voie à une nouvelle façon d'interroger les données et les journaux, sans les restrictions imposées par les tableaux de bord traditionnels.</p>
+	<p>Il est désormais plus facile que jamais d'obtenir de puissantes informations sur la sécurité de vos applications en interrogeant vos données en langage simple, et ainsi, de mieux comprendre comment Cloudflare protège votre entreprise. Le nouvel assistant IA est accessible depuis le tableau de bord Security Analytics et s'intègre avec fluidité aux filtres existants. Il vous suffit de poser une question pour obtenir les réponses que vous recherchez.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-can-you-ask">Que pouvez-vous demander ?</h2>
+		<a href="https://blog.cloudflare.com/#what-can-you-ask" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65fA9saL0RoHlbErGhKGhL/53e0498be059490a3d442ea383136d8e/Screenshot-2024-02-29-at-13.35.32.png" alt="" class="kg-image" width="1600" height="922" loading="lazy">
+
+	</figure>
+	<p>Pour offrir une démonstration des fonctionnalités de l'assistant IA, nous avons commencé par examiner les questions que nous nous posons chaque jour lorsque nous aidons nos clients à déployer les meilleures solutions de sécurité pour leurs applications.</p>
+	<p>Pour vous aider à vous lancer, nous avons inclus, dans le tableau de bord, quelques exemples sur lesquels vous pouvez cliquer.</p>
+	<p>Vous pouvez utiliser l'assistant IA pour :</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lHKu9aErFzilFDlPId4lL/80a67fb2e3e558ea0a4626ff166fdbd3/ai-analytics.png" alt="" class="kg-image" width="1600" height="939" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p>Identifier la source d'un pic dans le trafic d'attaques en demandant : « Compare attack traffic between US and UK »</p>
+		</li>
+		<li>
+			<p>Identifier la cause fondamentale d'erreurs 5xx en demandant : « Compare origin and edge 5xx errors »</p>
+		</li>
+		<li>
+			<p>Identifier les navigateurs plébiscités par vos utilisateurs en demandant : « Compare traffic across major web browsers ».</p>
+		</li>
+		<li>
+			<p>Pour un site d'e-commerce, comprendre le pourcentage d'utilisateurs qui consultent le site et d'utilisateurs qui ajoutent des articles à leur panier en demandant : « Compare traffic between /api/login and /api/basket ».</p>
+		</li>
+		<li>
+			<p>Identifier les attaques de bots ciblant votre site d'e-commerce en demandant : « Show requests to /api/basket with a bot score less than 20 »</p>
+		</li>
+		<li>
+			<p>Identifier les versions HTTP utilisées par les clients en demandant : « Compare traffic by each HTTP version »</p>
+		</li>
+		<li>
+			<p>Identifier le trafic automatisé indésirable vers des points de terminaison spécifiques en demandant : « Show POST requests to /admin with a Bot Score over 30 »</p>
+		</li>
+	</ul>
+	<p>Vous pouvez commencer par ces requêtes lorsque vous explorez les fonctionnalités de l'assistant IA.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 57.57839721254355%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b17fbe1e0c1f38752fd057ca0cd465d6/iframe?autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb17fbe1e0c1f38752fd057ca0cd465d6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">Comment fonctionne cette solution ?</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Avec <a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI</a>, la puissante plateforme d'inférence réseau mondiale de Cloudflare, nous avons pu utiliser un grand modèle de langage (LLM) prêt à l'emploi proposé sur la plateforme pour convertir les requêtes de clients en filtres GraphQL. En formant un modèle d'IA avec les filtres disponibles dans notre ensemble de données GraphQL Security Analytics, nous pouvons demander au modèle IA de transformer une requête telle que "<i>Compare attack traffic on /api and /admin endpoints</i>" en un ensemble de filtres structurés correspondants :</p>
+	<p>Puis, en utilisant les filtres fournis par le modèle IA, nous pouvons transmettre des requêtes à nos <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">API GraphQL</a>, collecter les données requises, puis produire une visualisation de données afin de répondre à la requête du client.</p>
+	<pre class="language-bash"><code class="language-bash">```
+[
+  {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},
+  {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}
+]
+```</code></pre>
+	<p>Cette méthode nous permet de préserver la confidentialité des informations concernant les clients et d'éviter d'exposer les analyses de données de sécurité au modèle IA lui-même, tout en permettant aux humains d'interroger facilement leurs données. Cette approche garantit que vos requêtes ne seront jamais utilisées à des fins de formation du modèle. Et parce que Workers AI héberge une instance locale du LLM directement sur le réseau de Cloudflare, vos requêtes et les données résultantes ne quittent jamais le réseau de Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="future-development">Développements futurs</h2>
+		<a href="https://blog.cloudflare.com/#future-development" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous n'en sommes qu'aux premières étapes du développement de cette capacité, et nous prévoyons d'étendre rapidement les fonctionnalités de l'assistant IA de Security Analytics. Ne soyez pas surpris si nous ne sommes pas capables de traiter certaines de vos requêtes au début. Lors du lancement, nous sommes en mesure de prendre en charge les requêtes de base qui peuvent être représentées sur un graphique de série chronologique, telles que « show me » ou « compare » pour tous les champs de données pouvant actuellement être filtrés.</p>
+	<p>Cependant, nous sommes conscients qu'il existe un certain nombre de scénarios d'utilisation auxquels nous n'avons même pas pensé, et nous sommes ravis de lancer la version bêta de l'assistant IA pour tous les clients des offres Business et Entreprise, afin de vous permettre de tester la fonctionnalité et d'examiner ce qu'elle vous permet d'accomplir. Nous serions ravis de recevoir vos commentaires et d'en savoir plus sur les aspects qui vous paraissent utiles et les nouveautés que vous aimeriez voir intégrées à la prochaine version. Les versions futures vous permettront de poser des questions telles que « Did I experience any attacks yesterday? ». et utiliser l'IA pour générer automatiquement des règles de pare-feu WAF que vous pouvez appliquer pour atténuer les attaques.</p>
+	<div class="flex anchor relative">
+		<h2 id="beta-availability">Disponibilité de la version bêta</h2>
+		<a href="https://blog.cloudflare.com/#beta-availability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dès aujourd'hui, l'assistant IA est disponible pour quelques utilisateurs seulement, et son accès sera étendu à l'ensemble des clients souscripteurs des offres Business et Entreprise durant le mois de mars. Restez à l'écoute, essayez-le gratuitement et dites-nous ce que vous en pensez en cliquant sur le lien <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKtXvPvKUZpjoKZa93ceTk_NAdRY4CF_PpjvFwZwa69o7i6A/viewform?entry.2073820081=Account+security+analytics" target="_blank" rel="noopener noreferrer">Comments</a> accessible en haut de la page de Security Analytics.La tarification définitive sera déterminée avant le lancement en disponibilité générale.</p>
+</div>

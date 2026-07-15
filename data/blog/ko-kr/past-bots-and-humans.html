@@ -1,0 +1,224 @@
+<div class="mb2 gray5">15분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/past-bots-and-humans">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/past-bots-and-humans">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1S6cVaYlvtLrfsvMvbuUb4/353840366c0520a33caf31396c4e3be2/image5.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>인간이 온라인 세계와 상호 작용하려면 키보드, 화면, 브라우저, 장치 등의 게이트웨이가 필요합니다. 온라인에서 "인간 감지"라고 불리는 것은 인간이 이러한 장치와 상호 작용할 때 사용하는 패턴입니다. 이러한 패턴은 최근 몇 년간 바뀌었습니다. 이제 스타트업에서 뉴스를 요약하기 위해 CEO가 브라우저를 이용하고, 기술 애호가는 야간 판매가 시작될 때 콘서트 티켓을 예약하고, 시각 장애가 있는 사람이 스크린 리더와 회사에서 접근성을 활성화합니다 직원 트래픽을 Zero Trust 프록시를 통해 라우팅합니다.</p>
+	<p>동시에 웹 사이트 소유자는 여전히 자신의 데이터를 보호하고, 리소스를 관리하며, 콘텐츠 배포를 제어하고, 남용을 방지하려고 합니다. 이러한 문제는 클라이언트가 사람인지 봇인지 알면 해결되지 않습니다. 수배 봇과 원치 않는 사람이 있습니다. 이러한 문제를 해결하려면 의도와 행동을 알아야 합니다. 자동화를 감지하는 기능은 여전히 중요합니다. 그러나 행위자 간의 구분이 모호해짐에 따라 우리가 구축하는 시스템은 "봇 대 인간"이 중요한 데이터 포인트가 아닌 미래를 수용해야 합니다.</p>
+	<p>실제로 중요한 것은 추상적인 인간애가 아니라, 이 공격 트래픽인가, 크롤러 부하가 반환 트래픽에 비례하는지, 이 사용자가 이 새로운 국가에서 접속할 것으로 예상할 수 있는가, 내 광고가 게임으로 연결되고 있는가?와 같은 질문입니다.</p>
+	<p>우리가 "봇"이라는 용어에 대해 이야기하고 싶은 것은 사실 두 가지 이야기입니다. 첫 번째 문제는 웹 사이트 소유자가 알려진 크롤러에게 트래픽을 돌려받지 못할 때 이를 허용해야 하는지 여부입니다. 위장하지 않고 신원을 확인하려는 크롤러를 위해 <a href="https://blog.cloudflare.com/web-bot-auth"><u>http 메시지 서명을 통한 봇 인증</u></a> 과 관련하여 이 문제를 다루었습니다. 두 번째는 웹 브라우저가 과거에 그랬던 것처럼 동일한 동작을 내장하지 않는 새로운 클라이언트의 등장으로, <a href="https://blog.cloudflare.com/private-rate-limiting"><u>비공개 레이트 리미트</u></a>와 같은 시스템에 중요한 문제가 됩니다.</p>
+	<p>이 게시물에서는 오늘날 웹 보호가 어떻게 작동하는지, 봇과 인간의 경계가 사라질 때 웹 보호는 어떻게 발전해야 하는지 살펴봅니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-web-we-had">웹</h2>
+		<a href="https://blog.cloudflare.com/#the-web-we-had" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹을 사용할 때는 매일 상호 작용하는 수천 대의 서버와 직접 통신하는 것이 아닙니다. 당사는 웹 브라우저를 이용합니다. 이러한 것들은 "<a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-user-agents" target="_blank" rel="noopener noreferrer"><u>사용자 에이전트</u></a>"라고도 불리는데, 이는 컴퓨터나 휴대폰 전체에 대한 액세스 권한을 사이트에 제공하지 않고도 웹을 안전하게 쇼핑하고 읽고 시청할 수 있도록 우리의 이익을 대변하여 행동하기 때문입니다.</p>
+	<p>웹 사이트에서는 브라우저의 작동 방식에도 관심이 있습니다. 이들은 콘텐츠가 정확하게 표현되는지 확인하기를 원합니다(모바일 화면에 맞고, 배경색이 올바르고, 언어가 올바른지). 웹 사이트는 또한 사람들이 구매를 완료하거나, 글을 읽거나, 마이크를 사용하거나, 비밀번호 없이 안전하게 로그인할 수 있는 것을 원합니다. 또한 기사 옆에 광고가 표시되기를 원합니다.</p>
+	<p>브라우저 사용자와 웹 사이트의 이익 사이의 이러한 긴장은 오랫동안 지속되고 있습니다. 일반적으로 퍼블리셔는 사용자 경험이 픽셀 수준으로 제어되기를 원하지만, 브라우저 반대편에 있는 사람들은 퍼블리셔가 구상하지 않은 방식으로 액세스하는 데이터를 사용하려는 경우가 많습니다.</p>
+	<p>웹 브라우저 벤더들과 이들을 둘러싼 표준 생태계는 이러한 이해관계의 균형을 맞추기 위해 <a href="https://www.w3.org/TR/design-principles" target="_blank" rel="noopener noreferrer"><u>신중한 주의</u></a> 를 기울였지만, 때로는 큰 논란이 되었습니다. 예를 들어, 브라우저 확장을 사용하여 광고를 차단할 수 있지만, 시간이 지남에 따라 <a href="https://arstechnica.com/gadgets/2024/08/chromes-manifest-v3-and-its-changes-for-ad-blocking-are-coming-real-soon" target="_blank" rel="noopener noreferrer"><u>브라우저</u></a> 가 그러한 확장 프로그램이 할 수 있는 일을 제한했습니다. 접근성 표준(예: <a href="https://www.w3.org/WAI" target="_blank" rel="noopener noreferrer"><u>WCAG</u></a>)은 많은 곳에서 규제 요구 사항의 지원을 받아 픽셀이 아닌 방식으로 웹 콘텐츠를 사용하는 기반을 마련했습니다. 각각의 절충 사항에 대한 세부 사항에 의문이 생길 수 있지만, 절충안은 패키지로 제공됩니다. 웹에 참여하려면 게시자든 사용자든 관계없이 웹을 수락해야 합니다.</p>
+	<p>하지만 이제는 그 균형이 바뀌고 있습니다. 어시스턴트가 뉴스나 연구 결과를 요약하도록 하는 것은 새로운 개념은 아니지만, AI는 모든 사람을 위해 이러한 기능을 대중화합니다. 이러한 마찰은 이러한 신흥 클라이언트의 운영 방식에서 비롯됩니다. 인간 비서는 발행자 모르게 기사를 인쇄하거나 스크린샷을 찍을 수 있지만, 애초에 표준 웹 브라우저를 사용합니다. AI 에이전트는 이 단계를 우회하여 브라우저가 구축한 게시자와 사용자의 권리에 대한 균형 잡힌 접근 방식을 방해합니다. 페이지를 렌더링하지 않고 원시 데이터를 조용히 가져옵니다. 게시자의 경우 이러한 클라이언트는 기존 브라우저 트래픽과 겹치기 때문에 본질적으로 불투명합니다. 웹 사이트 소유자는 가져온 콘텐츠가 하나의 비공개 보고서를 제공하고(왜곡되거나 속성이 지정되지 않았을 수 있음) 백만 명의 사용자의 예측 가능한(그리고 수익화 가능한) 트래픽을 방해하여 사이트를 온라인 상태로 유지하는 데 사용되는 모델을 학습시키는 데 수집되고 있는지 알 수 없습니다.</p>
+	<p>웹을 작동하게 한 암묵적인 합의가 무너지고 있습니다. 다음 섹션에서는 인터넷의 일반적인 아키텍처를 살펴보는 방법을 이해하기 위해 노력합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-client-server-model">클라이언트-서버 모델</h2>
+		<a href="https://blog.cloudflare.com/#the-client-server-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>한 걸음 물러서서 인터넷의 주요 배포 패턴 중 하나인 클라이언트-서버 모델을 살펴보겠습니다. 클라이언트가 서버에 요청하여 리소스를 확보합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61L0GkCvWVQl8TH2i2iwFp/899b2a1936aa7fbfaab45fca71d319d6/1.png" alt="" class="kg-image" width="1022" height="396" loading="lazy">
+	</figure>
+	<p><i><sup>그림 1: 클라이언트-서버 모델. 클라이언트가 요청을 전송하면, 서버가 응답합니다.</sup></i></p>
+	<p>더 많은 요청을 처리하기 위해 웹 사이트는 서비스 용량을 늘릴 수 있습니다. 서버를 추가로 배포하거나 캐시를 정적 트래픽 앞에 배치할 수 있습니다. 마찬가지로, 한 클라이언트가 더 많은 요청을 하거나 클라이언트 수가 늘어나면 클라이언트 측에서 들어오는 요청 수가 증가할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62BXZeYAXNXnwjKA5kNLWS/6c27205cf2467a42f568a8eaeaa46d7e/2.png" alt="" class="kg-image" width="1634" height="928" loading="lazy">
+	</figure>
+	<p><i><sup>그림 2: 여러 클라이언트가 여러 서버에 여러 요청을 보내고 그 중 하나는 CDN이 앞에 있습니다.</sup></i></p>
+	<p>이러한 단순함은 웹이 성공할 수 있었던 비결의 일부입니다. 이를 통해 많은 종류의 클라이언트가 존재할 수 있고, 각 서버가 다른 쪽 끝에 있는 소프트웨어를 정확히 알 필요 없이 네트워크가 발전할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36loD91fUU6WotaZraCVHb/ddb9b5d9ad3fa9fc49f4c258dd56ed2b/3.png" alt="" class="kg-image" width="1466" height="746" loading="lazy">
+	</figure>
+	<p><i><sup>그림 3: 서버에 요청을 전송하는 두 개의 서로 다른 클라이언트 컨텍스트. 각 서버는 요청만을 볼 수 있으며, 요청 뒤에 있는 최종 사용자는 볼 수 없습니다.</sup></i></p>
+	<p>이러한 개방성은 또한 불확실성을 만들어냅니다. 웹 사이트는 리소스에 대한 유효한 요청을 볼 수는 있지만, 일반적으로 응답이 서버를 떠난 후에는 어떤 일이 일어나는지 알 수 없습니다. 자동으로 요청을 하고, 응답을 보관하며, 색인화하고, 더 큰 시스템에 제공하는 독립 프로그램인 경우입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="bot-management-today">오늘날의 봇 관리</h2>
+		<a href="https://blog.cloudflare.com/#bot-management-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이 모델은 놀라울 정도로 잘 작동합니다. 그렇기 때문에 웹 사이트를 운영하는 것은 인터넷에 연결된 웹 서버를 시작하는 것만큼 간단할 수 있습니다. 서버가 어떤 요청을 처리하거나 신뢰할 수 있는지, 또는 우선순위를 지정할 수 있는지 결정해야 할 때까지만 대기가 보류됩니다.</p>
+	<p>때로는 용량이 중요한 경우도 있습니다. 서비스가 전 세계적으로 초당 100개의 요청을 처리하도록 프로비저닝되었지만, 200개의 요청을 수신하는 경우 특정 요청을 삭제해야 합니다. 서버에 CPU가 1개뿐이지만 들어오는 요청에 CPU가 2개가 필요한 경우 요청을 삭제해야 합니다. 200개를 제공하는 비용이 부담스러운 경우에는 모든 요청에 대해 속도 제한을 적용해야 합니다.</p>
+	<p>요청을 무작위로 삭제할 수 있습니다. 공정하지 않을 수도 있고, 수배된 클라이언트에게 영향을 미쳐 대상을 놓칠 수도 있지만, 효과가 있습니다. 다른 신호가 없다면 다른 선택의 여지는 없습니다.</p>
+	<p>용량은 그림의 일부일 뿐입니다. 서버는 또한 일반 트래픽으로부터 공격을 분리함, 악의적이지 않은 로드를 관리하기, 데이터 추출을 방지하기, 광고 사기를 제한하기, 가짜 계정 생성을 방지하기, 자동화된 작업이 수행되지 않도록 하기 등 여러 가지 이유로 클라이언트를 구별합니다. 공격할 수 있습니다.</p>
+	<p>어려움은 웹 클라이언트가 기본적으로 인증되지 않으면서도 여전히 많은 부분 신호를 노출한다는 점입니다. 따라서 대부분의 서버는 수신한 정보를 기반으로 액세스 제어 논리를 적용하기로 결정합니다. 하나의 IP 주소에서 다른 주소보다 10배 더 많은 요청을 하게 되면 차단될 수 있습니다. 더 나아가서, 서버는 이 IP 주소가 VPN에서 사용된다고 추론할 수 있으며, 따라서 <a href="https://blog.cloudflare.com/detecting-cgn-to-reduce-collateral-damage"><u>두 명 이상의 사용자</u></a>의 트래픽을 프록시합니다. 이 서비스는 계수를 적용하기로 결정할 수 있습니다. 각 클라이언트가 초당 10개의 요청을 할 수 있다고 가정하면, 공유된 IP 주소는 100rps가 허용되어 요청이 삭제되는 것을 보게 됩니다.</p>
+	<p>이것이 봇 관리의 핵심 중 하나입니다. 서버의 결정에 도움이 되는 클라이언트에 대한 더 많은 정보를 제공하는 것을 목표로 합니다. 클라이언트는 서버의 제어를 받지 않으므로 이 정보는 본질적으로 부정확합니다. 또한 동일한 정보로 서버에서 개인화된 광고와 같은 다양한 목적으로 사용할 수 있는 <a href="https://en.wikipedia.org/wiki/Fingerprint_(computing)" target="_blank" rel="noopener noreferrer"><u>지문</u></a> 벡터가 생성됩니다. 그러면 완화 벡터가 추적 벡터로 변환됩니다.</p>
+	<p>높은 수준에서 서버는 클라이언트로부터 다음과 같은 신호를 봅니다.</p>
+	<ol>
+		<li>
+			<p><b>수동 클라이언트 신호</b>: 인터넷 요청을 수행하는 데 필요합니다. 클라이언트는 필연적으로 IP 주소를 보내고 일반적으로 TLS 세션을 설정합니다.</p>
+		</li>
+		<li>
+			<p><b>활성 클라이언트 신호</b>: 클라이언트가 자발적으로 제공하는 신호로, 최종 사용자에게는 보이지 않는 경우가 많습니다. 여기에는 User-Agent 헤더 또는 인증 자격 증명이 포함됩니다.</p>
+		</li>
+		<li>
+			<p><b>서버 신호</b>: 요청을 처리하는 에지 서버의 지리적 위치 또는 요청이 수신된 현지 시간과 같이 서버가 관찰하는 정보입니다.</p>
+		</li>
+	</ol>
+	<p>볼류메트릭 남용을 제한하고 제한하기 위해 원본 서버에게 중요한 것은 여러 요청을 할 수 있는 클라이언트의 능력과 의도입니다. 광고 자금을 이용하는 웹 사이트의 경우, 원본은 광고가 실제로 최종 사용자에게 표시된다는 확신이 필요합니다. 오리진은 브랜드를 유지하기 위해 클라이언트에 PDF 리더, SVG 렌더러, 가상 키보드와 같은 특정 렌더링 기능이 있는지 확인하려고 할 수 있습니다. 요청이 가로채기 프록시에서 오는 경우 원본은 요청이 실제로 최종 클라이언트에서 온 것인지 확인하고자 할 수 있습니다.</p>
+	<p>트래픽이 증가하면 운영 비용도 늘어납니다. 클라이언트가 금전적이든 아니든 가치를 창출하지 않으면 서버는 그 비용을 충당할 인센티브가 없습니다.</p>
+	<p>이러한 환경에는 운영자마다 다르게 대응합니다. 일부 대규모 크롤러와 플랫폼에서는 예측 가능한 액세스가 귀속되는 데 따른 비용 가치가 있다고 해서 자체를 드러냅니다. 도움이 될 수도 있습니다. 차단될 것으로 예상되기 때문에, 익명성을 추구하기 때문에, 최종 사용자를 대신하여 활동하고 있기 때문에 신원 확인을 피하려고 시도하는 사람들도 있습니다. 그 결과 부분적인 신호에 따라 불안정한 균형이 초래됩니다.</p>
+	<p>이것이 인간 대 봇 프레임워크가 오해의 소지가 있는 이유입니다. 오리진이 신경 쓰는 것은 인간애가 아니라 클라이언트가 사이트가 지원할 수 있는 방식으로 행동하는지 여부입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-digression-the-rate-limit-trilemma">탈피: 레이트 리미팅 3가지 문제</h2>
+		<a href="https://blog.cloudflare.com/#a-digression-the-rate-limit-trilemma" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FUj1FBUj2t46fUeyG3NES/616b8505016c40648659baa21093cca7/Rate_limit_trilemma_1_.png" alt="" class="kg-image" width="800" height="400" loading="lazy">
+	</figure>
+	<p><i><sup>그림 4: 레이트 리미팅 트릴레마. 탈중앙화, 익명성, 책임성 — 2개 선택</sup></i></p>
+	<p>우리가 인터넷에서의 액세스를 관리하는 방식에는 탈중앙화, 익명, 책임성이라는 근본적인 긴장이 존재합니다. 두 가지를 선택하세요.</p>
+	<ol>
+		<li>
+			<p><b>완전히 분산되어 있고 익명</b> 이라는 것은 책임이 없다는 것을 의미합니다. 차단된 클라이언트는 평판에 영향을 주지 않고 새 계정을 생성할 수 있습니다. 이는 원본들이 리소스를 관리하기 위해 더 많은 투자를 해야 함을 의미합니다. <i>이것이 웹의 기본값입니다</i>.</p>
+		</li>
+		<li>
+			<p><b>분산화되고 책임을 진다는 것</b> 은 모두가 여러분의 존재를 알고 있다는 것을 의미하며, 이는 특정 사용 사례에 효과가 있지만 분명한 단점이 있습니다. 계정을 등록하고 제3자에게 활동을 공개해야 하는 "다음으로 로그인"과 같은 <a href="https://datatracker.ietf.org/wg/oauth/about" target="_blank" rel="noopener noreferrer"><u>OAuth</u></a> 메커니즘을 생각해 보세요.</p>
+		</li>
+		<li>
+			<p><b>익명 + 책임감 있는</b> 조직에는 아마도 거버넌스, 규칙, 시행이 필요할 수 있습니다. 널리 배포된 시스템에서는 동일한 행위자에 대해 두 가지 속성을 모두 달성하지 못합니다. 가장 가까운 선례는 거버넌스(CA 정책, 인증서 투명성)를 통해 서버가 책임지는 <a href="https://icannwiki.org/Web_PKI" target="_blank" rel="noopener noreferrer"><u>웹 PKI</u></a>입니다. <a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1"><u>해당 거버넌스가 실패하면</u></a> 그에 따른 결과가 따릅니다. 현재 클라이언트 측에는 이에 상응하는 것이 존재하지 않습니다.</p>
+		</li>
+	</ol>
+	<p>현재 도구는 첫 번째 공간의 요소를 기반으로 구축되어 두 번째 공간을 확보하기 위해 노력합니다. 즉, TLS 지문, IP 주소, robots.txt가 있습니다. 공격은 책임을 묻려고 시도하지만, 파생된 지문이 안정적으로 유지되는 동안만 유효합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-important-distinctions-are-what-not-who">중요한 차이는 '누가'가 아니라 '무엇이'</h2>
+		<a href="https://blog.cloudflare.com/#the-important-distinctions-are-what-not-who" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>들어오는 트래픽을 처리하는 방법을 결정하는 웹 사이트 소유자에게 의미 있는 구분은 봇인지 사람인지만은 아닙니다. 이는 수신하는 트래픽을 이해하려는 원본의 요구와 개인 정보를 보호하려는 클라이언트의 요구 사이에서 균형을 유지하는 것입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="platforms-and-services-that-want-to-be-identifiable">개인 식별을 원하는 플랫폼 및 서비스</h3>
+		<a href="https://blog.cloudflare.com/#platforms-and-services-that-want-to-be-identifiable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2m1T5Ukuy3Ton2aUjTMNcj/6ebfdb2e3cf33dcb07f2a485bbe59d24/5.png" alt="" class="kg-image" width="1022" height="396" loading="lazy">
+	</figure>
+	<p><i>그림 5: 크롤러가 서버에 여러 번 요청하는 경우</i></p>
+	<p>일부 트래픽은 검색 엔진 크롤러, 클라우드 플랫폼, 엔터프라이즈 인프라 등 대량의 요청을 하는 알려진 운영자로부터 발생합니다. 이러한 행위자는 개인정보 보호 기대치가 낮은 경우가 많습니다. 식별 가능한 소스로부터 수백만 건의 요청을 생성하는 인프라입니다. 요청의 출처를 식별할 수 있는 기능은 인프라 공급자가 너무 많은 요청을 보내거나 허용해서는 안 되는 페이지에 액세스하는 경우 판단 오류를 완화하는 데 도움이 됩니다. 자체 식별은 저희가 제안한 <a href="https://blog.cloudflare.com/building-a-better-internet-with-responsible-ai-bot-principles"><u>책임감 있는 AI 봇에 대한 원칙</u></a> 중 하나입니다. Cloudflare는 이러한 원칙에 따라 <a href="https://radar.cloudflare.com/scan" target="_blank" rel="noopener noreferrer"><u>Radar용 URL 스캐너</u></a>를 운영하거나 <a href="https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>크롤링 기능</u></a>을 노출합니다.</p>
+	<p>이 트래픽에 ID가 작동합니다. 더 정확하게 말하자면, 일부 운영자는 신뢰할 수 있는 액세스가 가치가 있으므로 귀속 가능한 요청을 허용할 수 있습니다. <a href="https://blog.cloudflare.com/web-bot-auth"><u>웹 봇 인증</u></a> 은 HTTP 메시지 서명을 사용하여 운영자가 자신의 요청에 암호화된 방식으로 서명할 수 있도록 합니다. 예를 들어 <a href="https://help.openai.com/en/articles/11845367-chatgpt-agent-allowlisting" target="_blank" rel="noopener noreferrer"><u>OpenAI</u></a>, <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent" target="_blank" rel="noopener noreferrer"><u>Google</u></a>, <a href="https://blog.cloudflare.com/agent-registry"><u>Cloudflare</u></a> 또는 <a href="https://blog.cloudflare.com/agent-registry"><u>AWS</u></a>는 자체 플랫폼에서 시작된 요청에 서명합니다. 원본은 IP 범위나 사용자 에이전트 문자열에 의존하지 않고 "이 요청이 실제로 플랫폼 인프라에서 전송되었는지"를 확인할 수 있습니다.</p>
+	<p>인간 및 기타 최종 사용자가 자신의 액세스와 경험의 품질을 희생하지 않으면서 익명성을 유지하기 위해 식별 가능한 기대 이외의 기대치를 갖는 것은 당연한 일입니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="distributed-traffic-that-needs-anonymity">익명성이 필요한 분산 트래픽</h3>
+		<a href="https://blog.cloudflare.com/#distributed-traffic-that-needs-anonymity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BjltTNLM7u2OXd5IF8MAx/d46604ea762973096496193ebfd3e79b/6.png" alt="" class="kg-image" width="1022" height="928" loading="lazy">
+	</figure>
+	<p><i><sup>그림 6: 서로 다른 세 가지 브라우저에서 서버에 요청합니다. 하나는 사람이 운영하고, 다른 하나는 장치상의 어시스턴트가하며, 다른 하나는 기업 프록시를 통해 프록시됩니다.</sup></i></p>
+	<p>각각의 요청이 상대적으로 적은 다양한 소스에서 다른 트래픽도 발생합니다. 여기에는 웹을 탐색하는 인간, 측정을 수행하는 연구자, 주거지 프록시를 사용하는 스크래퍼, 인간을 대신하여 행동하는 AI 비서 등이 포함됩니다.</p>
+	<p>그리고 봇과 인간의 구분이 점점 모호해지고 있습니다. 콘서트 티켓을 예약하는 AI 어시스턴트와 수동으로 예약하는 인간 사이에는 의미 있는 차이가 없습니다. 둘 다 분산되어 있습니다. 둘 다 익명성이 필요합니다. 각각의 경우에 원본은 서비스를 남용하기보다는 서비스를 의도한 대로 사용하려는 사용자에게 마찰을 줄이기를 원할 것입니다.</p>
+	<p>ID가 작동할 수 있습니다. 우리가 IP 주소에 대해 가지고 있던 오래된 가정을 대체하기 위해 계정 로그인, 이메일 주소, 하드웨어 키를 통해 입증되는 특정 클라이언트에 연계된 고유하고 검증 가능한 속성 세트를 제공해야 합니다. 그러나 웹 사이트에 액세스할 때 이 ID를 제시해야 합니다. 또한 <a href="https://blog.cloudflare.com/internet-privacy"><u>개인정보 보호</u></a>도 약화됩니다.</p>
+	<p>우리는 신원을 증명하지 않고 행동을 증명하는 최신 솔루션을 구축하고자 합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-credentials-for-the-web">웹용 익명 자격 증명</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-credentials-for-the-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2019년부터 Cloudflare를 통해 웹 사이트에 액세스하는 클라이언트는 요청과 함께 개인정보 보호 토큰을 전송하여 이러한 행동 증명을 제공할 수 있었습니다. 이는 Cloudflare의 초기 <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass"><u>Privacy Pass 지원</u></a> 때문입니다. <a href="https://datatracker.ietf.org/doc/html/rfc9576" target="_blank" rel="noopener noreferrer"><u>클라이언트는 RFC 9576</u></a> 및<a href="https://datatracker.ietf.org/doc/html/rfc9578" target="_blank" rel="noopener noreferrer"><u>RFC 9578에서</u></a> 표준화된 Privacy Pass를 이용하면, 해당 결과를 안정적인 식별자로 바꾸지 않고 인증 문제 해결과 같은 사전 수표에 대한 발급자 지원 증빙을 소지할 수 있습니다. 이전의 방문, 요청 또는 세션과 <i>연결할 수 없는</i> 토큰을 정의합니다.</p>
+	<p>이는 지문 인식과는 다른 모델을 제공하기 때문에 중요합니다. 서버에서는 수동적인 신호를 수집하는 대신 클라이언트에 적극적인 개인정보 보호 신호를 요청할 수 있습니다.</p>
+	<p>이렇게 하면 세션 설정 시 마찰이 줄어듭니다. Privacy Pass는 주로 <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard"><u>개인정보 보호 중계 서비스를</u></a> 목적으로 Cloudflare의 인프라에서 매일 <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard"><u>수십억 개의 토큰으로</u></a> 확장되었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JBjW747zg5fBv2jCyhBrv/5de23a5ddb6b5057580224eedb9ba0a9/7.png" alt="" class="kg-image" width="866" height="372" loading="lazy">
+	</figure>
+	<p><i><sup>그림 7:</sup></i><a href="https://datatracker.ietf.org/doc/html/rfc9576#section-3.1" target="_blank" rel="noopener noreferrer"><i><sup><u>RFC 9576 섹션 3.1의</u></sup></i></a> Privacy Pass 사용 및 발급 프로토콜 상호 작용</p>
+	<p>RFC에서는 네 가지 역할을 강조합니다. 발급자는 자격 증명(RFC의 경우 토큰)을 발급하기 전에 몇 가지 확인을 수행할 한 명 이상의 증명자를 신뢰합니다. 고객은 이러한 자격 증명을 보유하고 올바른 범위 내에서 이를 제출하는 시기를 결정합니다. 오리진은 여전히 어떤 발급자를 신뢰하고, 각 표시의 의미를 제어할 수 있습니다. 이는 남용 또는 정책 질문을 제거하는 것이 아니라, 클라이언트와 서버에서 개인정보를 보호하는 방법으로 이를 처리할 수 있도록 하는 것입니다.</p>
+	<p>이 시스템은 간단하지만, 한계도 있습니다. 예를 들어, 동적 속도 제한을 허용하지 않습니다. 100개의 토큰이 발급된 클라이언트가 첫 번째 또는 두 번째 세션 이후에 너무 많은 리소스를 소비하기 시작하면 이전에 발급된 나머지 토큰을 무효화할 방법이 없습니다.</p>
+	<p>또한 비연결성 속성으로 인해 새로운 발급자가 등장하기 어렵습니다. 발급기관 토큰이 전달하는 신호의 품질과 관련하여 원본이 제공할 수 있는 피드백 메커니즘은 없습니다.</p>
+	<p>마지막으로, 발급기관에서 제공하는 토큰의 수와 토큰이 교환될 때 해당 토큰으로 연결할 수 없는 제시의 수 사이에는 1:1 관계가 있으며, 이는 프레젠테이션당 하나의 토큰입니다. 이상적으로는 클라이언트가 발급자에 문의한 후 나중에 특정 출처 컨텍스트를 범위로 하여 여러 번 제시할 수 있는 시스템이 필요합니다. 이는 사용자 에이전트가 일회용 토큰을 반복해서 획득하는 대신, 인증된 자격 증명을 보유하고 파생된 증명을 제출하도록 유도합니다.</p>
+	<p>저희 목표는 개방형 <a href="https://blog.cloudflare.com/private-rate-limiting"><u>비공개 레이트 리미팅</u></a> 생태계를 구축하는 데 도움을 주는 것입니다. 이러한 정신에 따라 Cloudflare는 <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-arc-protocol" target="_blank" rel="noopener noreferrer"><u>익명 속도 제한 자격 증명</u></a> (ARC) 및 <a href="https://datatracker.ietf.org/doc/html/draft-schlesinger-privacypass-act-01" target="_blank" rel="noopener noreferrer"><u>익명 신용 토큰</u></a> (ACT)과 같은 새로운 Privacy Pass 기본 요소를 개발하고 탐색하는 데 도움을 드리고 있습니다.</p>
+	<p>예를 들어 ACT를 사용하면 클라이언트는 "나는 이 사용자입니다"라고 공개하지 않고도 "나는 이 서비스에 대한 양호한 기록이 있습니다"와 같은 것을 증명할 수 있습니다. ACT는 주요 암호화 속성인 프로토콜 수준에서 프레젠테이션 간의 연결 불가능성을 유지합니다. RFC 9576의 섹션 4.3에 있는 <a href="https://www.rfc-editor.org/rfc/rfc9576.html#name-joint-origin-and-issuer" target="_blank" rel="noopener noreferrer"><u>공동 발급자-원본 배포 모델</u></a> 에서도 프로토콜은 토큰 발급과 프레젠테이션이 직접 연결할 수 없도록 설계되었습니다. 그렇다고 IP 주소, 쿠키, 계정 상태, 타이밍 등의 다른 계층을 통한 상관관계가 제거되는 것은 아닙니다. ACT가 구현하는 <a href="https://datatracker.ietf.org/doc/draft-meunier-privacypass-reverse-flow" target="_blank" rel="noopener noreferrer"><u>역방향 흐름 프레임워크 내에서</u></a> <a href="https://datatracker.ietf.org/doc/html/rfc9578#name-issuance-protocol-for-priva" target="_blank" rel="noopener noreferrer"><u>표준화된 VOPRF</u></a> 및 <a href="https://datatracker.ietf.org/doc/html/rfc9578#name-issuance-protocol-for-publi" target="_blank" rel="noopener noreferrer"><u>BlindRSA</u></a> 프리미티브를 사용하여 동일한 속성을 제공할 수 있습니다.</p>
+	<p>생태계가 성공하려면 발급자 생태계가 개방되어야 합니다. 실제로 이는 누구나 자격 증명을 발급할 수 있다는 의미 이상입니다. 원본 서버는 어떤 발급자를 신뢰할 수 있는지 결정할 수 있어야 합니다. 사용자 에이전트는 요청되는 것을 표현하기 위한 일관된 방법이 필요합니다. 또한 생태계에서 발급기관이 평판을 확립하고 신뢰 당사자가 낮은 수준의 발급기관을 신뢰하지 않을 수 있는 방법이 필요합니다. 어떠한 게이트키퍼도 참여를 제어해서는 안 됩니다.</p>
+	<p>이렇게 하려면, 브라우저와 다른 사용자 에이전트에서 작동하는 프로토콜과 클라이언트 API가 필요합니다. 보안 방화벽은 배포가 간단하고, 사용자에게 명확해야 하며, 브라우저가 남용 방지 요청을 단순히 표시하는 것이 아니라 제한을 설정할 수 있을 만큼 좁혀야 합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-trajectory-if-we-do-nothing">아무것도 하지 않을 경우</h2>
+		<a href="https://blog.cloudflare.com/#the-trajectory-if-we-do-nothing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>웹 사이트 소유자들은 이미 <a href="https://blog.cloudflare.com/from-googlebot-to-gptbot-whos-crawling-your-site-in-2025/#robots-txt-ai-bots-gptbot-leads-twice"><u>신흥 클라이언트로 인한 혼란</u></a>에 대응하고 있습니다. 이 문제의 원인은 부분적으로는 대규모 <a href="https://blog.google/innovation-and-ai/technology/safety-security/serpapi-lawsuit" target="_blank" rel="noopener noreferrer"><u>스크래핑</u></a> 과 <a href="https://redditinc.com/hubfs/Reddit%20Inc/Content/Reddit%20v.%20SerpApi.pdf" target="_blank" rel="noopener noreferrer"><u>모델 학습</u></a> 때문이며, <a href="https://www.aboutamazon.com/news/company-news/amazon-perplexity-comet-statement" target="_blank" rel="noopener noreferrer"><u>사이트에서 예상하지 못한 방식</u></a>으로 작동하는 사용자 에이전트 때문이기도 합니다. 따라서 웹 사이트에서는 AI 크롤러와 관련 도구를 차단할 수 있는 기술적 수단을 요청해 왔습니다. 봇과 인간의 경계가 점점 흐려지는 생태계에서, 현재 우리가 하는 조치들은 독자적으로는 그 효과가 약해질 것입니다.</p>
+	<p>이러한 조치가 효과가 없다면 사이트가 모든 콘텐츠를 볼 수 있도록 계정을 요구하거나 안정적인 식별자에 대한 액세스를 연결하는 방식이 바뀔 것으로 예상됩니다. 즉, 광고 지원 로그인 없이도 무료 아티클을 사용할 수 없으며, "한 달에 세 가지 무료 아티클"도 제공되지 않습니다. 다른 콘텐츠 비즈니스는 웹에서 완전히 벗어나 유료로 또는 대규모 플랫폼에서 운영하는 벽으로 둘러싸인 AI 벤더에게 데이터와 서비스를 직접 제공할 수 있습니다.</p>
+	<p>이러한 결과는 좋지 않습니다. 웹이 제공하는 정보에 대한 공개 액세스의 이점을 누구나 누릴 수 있습니다. 모든 사이트에서 이러한 선택을 하는 것은 아닙니다. 온라인에서 콘텐츠를 제공하는 데는 여러 가지 이유가 있지만, 그 이유 모두가 상업적인 것은 아닙니다. 하지만 많은 사이트가 변화한다면, 웹의 "정상"을 더 나쁜 상황으로 바꿉니다.</p>
+	<p>이는 개방형 웹이 다양한 클라이언트가 소수의 공급자에게 의존하지 않고도 다양한 출처에서 정보를 수집할 수 있는 환경이므로 이러한 점이 중요합니다. 또한, 정보의 원천이 다양하여 이점을 누리고 있습니다. 정보에 대한 액세스가 소수의 회사를 통해 주로 매개되는 웹에서는 너무 많은 권한을 너무 적은 수의 회사에 부여합니다. 그 결과 익명의 클라이언트에게는 더 많은 마찰이 생길 뿐만 아니라, 인터넷이 더 불안정해지고 게시자가 사용자를 만날 방법이 줄어들게 됩니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-authentication-brings-some-risk-too">익명 인증에도 약간의 위험이 따릅니다</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-authentication-brings-some-risk-too" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>무엇을 구축하고 있는지 명확해야 합니다. 속성 증빙을 위한 인프라는 속성을 요구하는 인프라가 될 수 있습니다. 익명 자격 증명은 자격 증명 소유자에 대해 무엇인가 증명하기 위한 것입니다. 예: "인증 질문을 해결했습니다" 또는 "레이트 리미팅을 초과하지 않았습니다". 그러나 하나의 속성을 증명할 수 있는 시스템은 다른 속성도 증명할 수 있으며, 이는 문제가 될 수 있습니다.</p>
+	<p>오늘날 Privacy Pass 토큰을 제시하는 것은 <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass"><u>"캡차 해결"을 의미할 수 있습니다</u></a>. 나중에는 동일한 시스템이 완전히 다른 속성으로 판명될 수 있습니다. 예를 들어, '장치 인증이 있는' 장치에만 토큰을 발급할 때, 구형 장치 및 해당 사용자는 제외됩니다. 마찬가지로, "Apple 또는 Google 계정이 있음"과 같은 속성을 요구할 경우 비주류 플랫폼의 사용자는 제외됩니다.</p>
+	<p>익명 증명을 검증할 인프라가 일단 구축되면 검증 대상이 확장될 수 있습니다. 이렇게 하면 인터넷 액세스가 차단되지 않도록 해야 합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-we-should-build-it-anyway">그럼에도 불구하고 Cloudflare를 구축해야 하는 이유</h3>
+		<a href="https://blog.cloudflare.com/#why-we-should-build-it-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>게이트는 이미 존재합니다. 플랫폼에서는 점점 더 ID를 요구하고 있습니다. 웹 사이트가 공유 프록시에서 들어오는 트래픽을 차단하고 있습니다. 문제는 게이트가 나타날 것인가가 아니라 사용자가 프라이버시를 유지할 수 있는가 하는 것입니다.</p>
+	<p>이미 설명한 것처럼 봇을 관리하려면 몇 가지 신호를 공유해야 합니다. 익명 증명에 대한 대안은 더 나쁩니다. 속성을 익명으로 증명할 수 있는 기능이 없으면 모든 게이트에 지문이 필요합니다. 특정 브라우저에서 다시 시도하고, 계정을 연결하고, VPN을 사용하지 않습니다. <a href="https://blog.cloudflare.com/detecting-cgn-to-reduce-collateral-damage"><u>연결이 프록시 설정되는지 모르는</u></a> 옵션과 같이 사람들에게는 옵션이 아닐 수도 있습니다.</p>
+	<p>개인정보 보호를 위한 자격 증명이 있다고 해서 신뢰나 정책의 필요성이 없어지는 것은 아닙니다. 조직에서는 이러한 요구 사항을 더 명시적이고 덜 침투적으로 만들 수 있습니다. 지문과 달리 증명은 명시적입니다. 사용자는 요청되는 내용을 볼 수 있으며 웹 브라우저 및 AI 어시스턴트와 같은 클라이언트가 동의를 강제할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="to-decide-use-this-guardrail">이 가드레일을 이용해 결정하기</h3>
+		<a href="https://blog.cloudflare.com/#to-decide-use-this-guardrail" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 사람에게 서비스를 제공하는 인터넷을 위한 다음 방법을 평가하기 위한 간단한 테스트가 있습니다. 전 세계 어디서나 누구나 이 방법을 통해 자신의 장치와 브라우저를 구축하고 모든 운영 체제를 사용하며 웹에 액세스할 수 있나요? . 이 속성이 유효하지 않거나 특정 제조업체의 장치 인증만이 유효한 신호가 된다면 중단해야 합니다.</p>
+	<p>즉, 단일 게이트키퍼가 참여할 수 있는 사람을 결정하지 않는 개방형 발급자 생태계를 조성해야 합니다. 속도 제한 트릴레마에 따르면, 개방형 웹에서는 탈중앙화가 필수적입니다. 구축 방법을 아직 완전히 알지는 못하지만, 육성해야 한다는 것은 알고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-new-balance">새로운 균형</h2>
+		<a href="https://blog.cloudflare.com/#a-new-balance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>지금까지 웹은 대체로 균형을 유지했습니다. 일부 면에서는 운이 따랐을 수 있는 반면, 다른 면에서는 불가피할 수 있습니다. 많은 최종 사용자 및 게시자에게, Cloudflare가 효과가 있었던 것은, 비슷하게 다양한 리소스에 액세스하는 다양한 클라이언트를 지원할 수 있을 만큼 웹이 개방되어 있었기 때문입니다.</p>
+	<p>그 균형이 위험에 처해 있습니다. 웹에서의 개인정보 보호의 기본은 개인정보 보호, 개방성, 책임성 등 다른 성과를 구축하려는 시도입니다. 성공을 보장하지는 않습니다. 하지만 기다리는 것보다는 낫습니다.</p>
+	<p>이 작업을 추적하고 참여하고 싶다면, IETF와 W3C에서 공개적으로 진행됩니다. 사람들이 모여든 현재의 웹을 형성했던 기존의 장소가 미래의 웹을 설계하기에 가장 좋은 장소라고 생각합니다.&nbsp;</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc8890.html" target="_blank" rel="noopener noreferrer"><u>인터넷은 최종 사용자의 것</u></a>이며, 사용자는 그 중심에 있어야 합니다.</p>
+</div>

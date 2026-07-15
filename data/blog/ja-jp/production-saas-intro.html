@@ -1,0 +1,118 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/production-saas-intro">English</a>および<a href="https://blog.cloudflare.com/zh-cn/production-saas-intro">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3FT0Odwog6j5oMG2RhDLEv/1034c61b25c7ecb6ab0b8f51224d11f7/production-saas-intro.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareのドキュメント</a>は、コンセプトを学習したり、APIの使用上の注意を確認したりする場合や、APIやコンセプトを説明するための簡潔なスニペットが必要な場合に役立つ資料です。しかし、その資料が網羅的であるとしても、Cloudflare Workersプラットフォームの新規ユーザーは、導入例に掲載されているスニペットと実際の本番環境に対応したアプリケーションの移行の間の、大きなギャップを埋める必要があります。この一部は（他のプラットフォームと同様に）Wokersに固有である可能性がありますが、_世界中_の開発者は、サーバーレスの世界でアプリケーションを構築する方法を考えています。大規模なサーバーレスアプリケーションの構築には、開発者の経験レベルに関係なく、学習曲線の行程が必要です。</p>
+	<p></p>
+	<p>Cloudflareでも、同じ変遷をたどらなければならなかったため、そのことは十分に承知しています。当社には世界クラスのエンジニアが在籍しており、分散パラダイムを補完する製品を巧みに設計および製造をしています…しかし、専門家は一夜にして生まれるわけではありません。当社にはその経験があり、より速いスタートと理解の助けになれることを望んでいます。</p>
+	<p>これを念頭に置いて、業界特有の何かを行うことにし、Cloudflareスタック上に完全に構築されるフィーチャーコンプリートSaaSアプリケーションの例を作成しています。これは完全に無料で、<a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">GitHubでオープンソース化</a>され、公に開発されています。独自のSaaSアプリケーションを起動するためのテンプレートとしても使用できるので、これは素晴らしい時間になります。実際、GitHubリポジトリのクローンを作成し、いくつかのサービストークンを更新し、ビルド済みのアプリケーションを数分以内に独自のCloudflareアカウントにデプロイできます。</p>
+	<p>もちろん、例とテンプレートは素晴らしいですが、テクノロジーとベストプラクティスは決して進化を止めません。 Cloudflareも例外ではなく、常に新しい製品や製品機能を繰り返し導入しています。さらに、これにはSaaSアプリケーションがWorkersプラットフォームとともに進化する_生きた手本_である必要があります — これは私たちの取り組みの一環です。</p>
+	<p>||<b>お見逃しなく！</b><a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">GitHubのプロジェクト</a>に注意して、開発の進捗状況を追跡し、最新の変更と推奨事項を常に把握してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="application-overview"><b>アプリケーションの概要</b></h2>
+		<a href="https://blog.cloudflare.com/#application-overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ここで、実際にアプリケーションを構築することとは別に、ケーススタディの役割として納得できる、十分な複雑さと十分なシンプルさ（あるいは自己完結型の）の両方を持ったSaaSアプリケーションの例をバランスよく選択する必要がありました。これにより開発者はすぐにソースを辿り、関連するコンポーネントと、それらが使用される理由および/または方法を理解することができます。</p>
+	<p>最終的に、当社はアプリケーションの原型として長年にわたって変化してきたコンテンツ管理システム（CMS）のサンプルを作成することに決めました。従来、CMSはハードウェアを借りて運用し、長寿命のサーバーが受信するリクエストを処理し、SQLのようなデータベースを照会してリクエストされたコンテンツを取得し、HTMLページにレンダリングし、それを何度も繰り返してきました。<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a>は、このアプローチの非常に一般的な例であり、現在も変わりありません。</p>
+	<p>当然、このアプリケーションアーキテクチャは何年にもわたって改善されてきました。キャッシングのレイヤーが導入され、処理される行数を最小限に抑えるようにデータベーススキーマが再設計され、一部のフレームワークはデータベースを完全にスキップし始め、すべてのコンテンツを静的HTMLページとして事前にレンダリングするビルドステップを好むようになりました。（これは現在「静的サイトジネレーション」として知られており、今でも非常に人気のあるアプローチです。）</p>
+	<p>サーバーレスの時代の現在では、多くの「ヘッドレスCMS」の選択肢が数多く用意されています。これらは、リクエストごとにHTMLをレンダリングするモノリシックWebサーバーではないため、「ヘッドレス」になっています。代わりに、コンテンツを生のJSONデータとして返すAPIエンドポイントを提供します。これにより、Web開発者は、好みのツールやフレームワークを使用して、Webサイト用の完全にカスタム化されたテンプレートを作成できます。このアプローチは、コンテンツや画像アセットなどを整理する機能を損なうことなく、開発者に非常に大きな柔軟性を与えます。経験豊かな老舗ともいえるWordPressは、ヘッドレスモード_と_「ヘッドフル」モードを提供できる数少ないものの1つです。<a href="https://www.sanity.io" target="_blank" rel="noopener noreferrer">Sanity.io</a>と<a href="https://www.contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a>などの他のヘッドレスの選択肢も非常に人気があります。</p>
+	<p>CMSアプリケーションモデルは、オープンソースの例の優れたケーススタディです。エッジファーストデザインの主要理念の1つは、コンテンツを要求するユーザーに物理的に可能な限り近い場所で提供することです。また、サーバーレスアーキテクチャは、もはや単一障害点が存在しない、あるいは存在すべきではないことを意味します。これらは両方ともCMSの原型に直接利益をもたらし、実装すると明確なパフォーマンスの向上が期待できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="current-progress"><b>現在の進捗</b></h2>
+		<a href="https://blog.cloudflare.com/#current-progress" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ロードマップへと突入してこのプロジェクトがどのように進行するかを説明する前に、このプロジェクトは_すでに継続的な取り組みであり_、今後も継続していくことをお伝えすることが重要です。現在、<a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">GitHubでプロジェクト</a>を検索して、完了済みの作業をお調べいただくことができます。今のところ、このアプリケーションは、Workers、Workers KV、Cloudflare for SaaSをすでに組み合わせており、PagesとDurable Objectsによるレート制限機能は、今後のマイルストーンで追加される予定です。</p>
+	<p><b>フェーズ1</b>（以下を参照）は完了に近づいており、これが完了すると、非常に重要なマイルストーンの終わりを告げることになります。これまでのプロジェクトのハイライトと技術概要を網羅した本ブログ投稿シリーズの新しいアップデートが発行されます。<b>フェーズ1</b>は、_それ自体_でフルスタックアプリケーションを正常に動かすことができるため、重要であり、すぐに役立ちます。</p>
+	<div class="flex anchor relative">
+		<h2 id="development-milestones"><b>開発のマイルストーン</b></h2>
+		<a href="https://blog.cloudflare.com/#development-milestones" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CMSアプリケーションはマイルストーン形式で進行します。当社はすでにプロジェクトをリリースしており、ロードマップ（下記）に従ってプロジェクトを構築し続けます。<a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">GitHubの熱心な読者</a>は、進捗状況を把握するか、少なくとも、フォローしたいマイルストーンの更新分のみを購読することができます。</p>
+	<p>各マイルストーンは、それ自体がかなり大きなチェックポイントです。以下に示すように、プロジェクトのロードマップは、各フェーズでかなりの数の新機能が追加されたり、新しいCloudflare製品と統合されたりするように計画されています。すべてのポイントで、アプリケーションは機能を維持します。また、実演形式のインタラクティブデモを継続して、立ち寄っていただいた方に最新の機能をすぐに実演します。</p>
+	<p>この形式が選択されたのは、実際のアプリケーション（および実際の製品）が開発される方法だからです。当社の目標は、GitHubリポジトリが<b>決して</b>時代遅れにならないようにすることです。また、開発構造により、過去のマイルストーンのリストを_常に_検討し、Xの移行に必要だった変更や、製品Yがどのように統合されたかを確認することができます。</p>
+	<p>||<b>注：</b><a href="https://github.com/cloudflare/production-saas/milestones" target="_blank" rel="noopener noreferrer">GitHubマイルストーン</a>にアクセスして、詳細を表示し、更新をサブスクライブしてください。ここにリストされるより多くのものがあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-1-json-api"><b>フェーズ1 – JSON API</b></h3>
+		<a href="https://blog.cloudflare.com/#phase-1-json-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プロジェクトは、データの管理と操作を開始するために、いくつかのAPIエンドポイントから開始する必要があります。このマイルストーン内の作業では、WorkersとWorkers KVを使用して残りのアプリケーションが必要とするコア機能を処理する堅牢なJSON APIの構築に焦点を当てます。</p>
+	<p>このフェーズには、HTML、CSS、またはクライアント側のJavaScriptは含まれていません。代わりに、ここでの作業は、データへのアクセス方法、モデルの相互関係、およびこれらの関係をWorkers KV内で構造化および保存するための最適な方法にのみ焦点を当てる必要があります。たとえば、個人は、個人のユーザーアカウントまたは所属する組織に属するワークスペースを作成および管理できる必要があります。</p>
+	<p>さらに、コンテンツを作成するときは、ドキュメントが割り当てられた既存のスキーマに対してドキュメントを検証する必要があります。この機能は、ワークスペース内で数千のドキュメントを処理することを計画しているCMSプラットフォームで重要です。これがないと、コンテンツのJSON表現が一貫して構造化されているという確信はほぼ持てません。</p>
+	<p>他にも多くの機能（<a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>を介したサブスクリプション管理と請求、<a href="https://sendgrid.com" target="_blank" rel="noopener noreferrer">SendGrid</a>を介したトランザクションメールの送信、<a href="https://blog.cloudflare.com/cloudflare-for-saas-for-all-now-generally-available">Cloudflare for SaaS</a>を介したワークスペースへのバニティードメインの割り当て）が計画されています。最後に、もちろん、標準的なハウスキーピングタスクが設定されます。これには、APIテストとの継続的統合（CI）および自動化された継続的展開（CD）が含まれます。</p>
+	<p>このフェーズの終了時には、プロジェクトは、それ自体が完全なアプリケーションであるAPIエンドポイントの集合として存在することになります。curlコマンド（またはHTTPリクエストを手動で作成するためのその他の推奨される方法）でのみアクセスできますが、<b>フェーズ1</b>を完了すると、プロジェクトはすでにフルスタックアプリケーションとして認定され、実際のSaaS製品にサービスを提供_することが可能になります_。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50epXtqsrSebofS2ulnpsu/124d13127e4db7bd3fe160db00b563b0/image2-20.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
+
+	</figure>
+	<p>さらに、リポジトリには、長期的な成長と保守のためにテストの作成、デプロイの自動化、およびソースの整理を行うためのすべてのベストプラクティスが含まれます。また、JSON APIから始めたため、プロジェクトは既存のビルドツールやフレームワークと統合できすぐに役立ちます。言い換えれば、<a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">熱心な読者</a>であればプロジェクトをパーソナライズされたヘッドレスCMSとして自分のアカウントにデプロイできます。もしかしたら、GatsbyまたはEleventyプラグインを作成する人もいるかもしれませんが、その場合は、お知らせください。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-2-dashboard-ui"><b>フェーズ2 —ダッシュボードUI</b></h3>
+		<a href="https://blog.cloudflare.com/#phase-2-dashboard-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>curlと同じくらい楽しいかもしれませんが、多くのユーザーは、何らかの形で対話できる視覚的なインターフェイスを好みます。このフェーズでは、CMSアプリケーションのダッシュボードとして機能するフロントエンドを組み立てます。</p>
+	<p>当社ではユーザーインターフェースを構築するためのJavaScriptフレームワークである<a href="https://svelte.dev" target="_blank" rel="noopener noreferrer">Svelte</a>を使用します。すべての人がこの決定に満足し同意しているわけではありませんが、テンプレート構文は標準のHTMLマークアップに似ており、フロントエンドの開発者でない人でも何が起こっているかを追跡して測定できます。</p>
+	<p>Svelteは、設計システム用の<a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</a>と組み合わされます。Tailwindは、非常に人気のあるユーティリティファーストのCSSフレームワークであり、開発者は事前定義された再利用可能なHTML「クラス」名を使用してスタイルを作成できます。</p>
+	<p>結果はシングルページアプリケーション（SPA）になり、Cloudflare Pagesでホストされます。これはつまり、ダッシュボードは、<a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access" target="_blank" rel="noopener noreferrer">Accessで保護されたプレビュー展開</a>、<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank" rel="noopener noreferrer">インスタントロールバック</a>、自動展開、包括的な分析などが、すぐに利用できるということです。</p>
+	<p>最後に、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp">PagesがWorkersと直接統合したため</a>、<b>フェーズ1</b>のJSON APIは新しいリポジトリ構造に移行されます。これは純粋なリファクタリングのように見えるかもしれませんが、実際にはJSON APIの驚くべき機能セット（<a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access" target="_blank" rel="noopener noreferrer">アクセス防止のプレビューデプロイメント</a>、<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank" rel="noopener noreferrer">インスタントロールバック</a>、自動デプロイメント）を解き放つものです。そうです、これらは上記のPages機能と同じです。これは、当社のAPIが継続的かつアトミックにバージョン管理されており、APIに依存するクライアントダッシュボードと_一緒に_安全に開発を継続できることを意味しているため、驚くべきことです。言い換えれば、APIとダッシュボードが分岐して互いの期待がずれてしまうようなリスクはゼロということです。アプリケーション_全体_が単一のPagesユニットとして動作するため、インスタントロールバックもAPIに適用されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tr1PMuybglLESZjeCxqvS/621ceb9d180069a2d499c94d870257d4/image1-53.png" alt="" class="kg-image" width="1156" height="698" loading="lazy">
+
+	</figure>
+	<p>前のフェーズではSaaS製品機能のコアを構築することができますが、このフェーズを完了すると、日常的に起動して使用できる実際の製品のように感じることができます。実のところ、<b>フェーズ2</b>が終了したことで、このアプリケーションはヘッドレスCMSサービス分野の有力な候補に位置付けられます。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-3-article-edge-rendering"><b>フェーズ3 — 記事のエッジレンダリング</b></h3>
+		<a href="https://blog.cloudflare.com/#phase-3-article-edge-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前のフェーズは、最小限の実行可能なヘッドレスCMS製品の組み立てに焦点を当てていますが、<b>フェーズ3</b>は、この既成概念にとらわれずに成長することを目指します。これは、JSONコンテンツを事前定義されたテンプレートに挿入することでアプリケーションがHTML Webページをレンダリングできるようにすることで実現します。</p>
+	<p>WordPressと同様に、CMSアプリケーションでは、ユーザーが「ヘッドレス」機能を引き続き使用するか、完全なテンプレートエンジンを使用するかを選択できるようにする必要があります。HTML出力を選択した場合、Cloudflareプロジェクトには、ユーザーが選択できるいくつかの既成のテンプレートのみが含まれますが、もちろん、これは独自のプロジェクトでカスタマイズできます。</p>
+	<p>このフェーズではモノリシックCMSの原型が再導入されますが、これは、以前の単一のオールインワンサーバーよりもはるかに安全かつ高速で、復元力のあるアーキテクチャです。CMSコンテンツは引き続き世界中に配布され、お客様の読者の近くにありますが、コンテンツは世界中のどこからでも非常に低い遅延で_レンダリング_できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-4-feature-upgrades"><b>フェーズ4 — 機能のアップグレード</b></h3>
+		<a href="https://blog.cloudflare.com/#phase-4-feature-upgrades" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この段階で、アプリケーションは（ほとんどの部分が）完成しています。機能的で見栄えがよく、グローバルに機能する、2つのまったく異なる方法で使用できます。</p>
+	<p>実際のSaaS製品に関しては、開発はユーザーが喜ぶ新機能の追加またはプロジェクトの健全性の維持にシフトし始めます。たとえば、<b>フェーズ4</b>では、<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp">Durable Objects</a>を利用して、複数のユーザーがリアルタイムのコラボレーション環境で同じドキュメントを編集できるドキュメントエディタを導入します。</p>
+	<p>また、<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp">Cloudflare R2ストレージ</a>がメディアアセットのバックエンドとして導入され、ユーザーがワークスペース内で画像をアップロードおよび管理できるようになる可能性が非常に高くなります。恐らく当社ではこれに<a href="https://blog.cloudflare.com/announcing-cloudflare-images">Cloudflare Images</a>を使用することにして、コンテンツバックアップのインポートとエクスポートにR2を使用します。</p>
+	<p>ご想像のとおり、このマイルストーンは未知のもので溢れていますが、それは未来が無限の可能性を秘めているためです。プロジェクトは、Cloudflareと時間とともに進化し、拡大し続けます。</p>
+	<p>もちろん、機能に関するアイデアや提案がある場合は、GitHubでディスカッションを開始してください。ご連絡をお待ちしております。</p>
+	<div class="flex anchor relative">
+		<h2 id="next-steps"><b>次のステップ</b></h2>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本記事は、進行中のシリーズ（今後の予定）の紹介記事でした。各マイルストーンが完了した際には、過去の情報やその章の作業の重要な側面の技術的なウォークスルーを交えてこのシリーズの新しい投稿を公開していきます。</p>
+	<p>さあエキサイティングな旅の始まりです。あなたが興味を持ってくれることを願っています！</p>
+	<p>GitHubでプロジェクトにスターを付けるか<a href="https://github.com/cloudflare/production-saas" target="_blank" rel="noopener noreferrer">フォローする</a>ことで、サポートを表明することができます。すべてのリリース、ディスカッション、およびマイルストーントラッキングは、リポジトリ内に存在します。次世代のSaaSアプリケーションはCloudflare上に構築されます—サブスクライブしてさっそく始めましょう！</p>
+</div>

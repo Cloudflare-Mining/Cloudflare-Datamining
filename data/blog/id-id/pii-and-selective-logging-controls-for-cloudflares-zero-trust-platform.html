@@ -1,0 +1,70 @@
+<div class="mb2 gray5">3 menit dibaca</div>
+<div class="mt4">Postingan ini juga tersedia dalam bahasa <a href="https://blog.cloudflare.com/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform">English</a>, <a href="https://blog.cloudflare.com/ja-jp/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform">日本語</a>, <a href="https://blog.cloudflare.com/th-th/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform">ไทย</a>, dan <a href="https://blog.cloudflare.com/zh-cn/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3annqpZgwrDqbq3rJP81VT/106adbb42a059729f8452e3873dbd2ae/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Di Cloudflare, kami percaya Anda tak perlu kompromi dengan privasi demi keamanan. Tahun lalu, kami meluncurkan Gateway Cloudflare — Secure Web Gateway komprehensif dengan kontrol penelusuran Zero Trust bawaan bagi organisasi Anda. Hari ini, kami dengan gembira membagikan rangkaian fitur privasi terkini yang disediakan bagi administrator guna memasukkan log dan mengaudit peristiwa berdasarkan kebutuhan tim Anda.</p>
+	<p></p>
+	<div class="flex anchor relative">
+		<h3 id="protecting-your-organization"><b>Melindungi organisasi Anda</b></h3>
+		<a href="https://blog.cloudflare.com/#protecting-your-organization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Gateway Cloudflare membantu organisasi mengganti firewall lama sekaligus menerapkan kontrol Zero Trust bagi pengguna mereka. Gateway menemui Anda di mana pun pengguna Anda berada serta mengizinkan mereka terhubung ke Internet atau bahkan jaringan pribadi Anda yang ada di Cloudflare. Hal ini memperluas perimeter keamanan Anda tanpa perlu membeli atau memelihara kotak tambahan.</p>
+	<p>Organisasi juga diuntungkan dengan peningkatan kinerja pengguna, yang lebih dari sekadar menghilangkan backhaul lalu lintas ke kantor atau pusat data. Jaringan Cloudflare menghadirkan filter keamanan yang lebih dekat dengan pengguna di lebih dari 250 kota di dunia. Pelanggan akan memulai koneksi mereka menggunakan <a href="https://blog.cloudflare.com/announcing-1111">resolver DNS tercepat di dunia</a>. Setelah terhubung, Cloudflare dengan cerdas merutekan lalu lintas mereka melalui jaringan kami dengan filter jaringan layer 4 dan layer 7 HTTP.</p>
+	<p>Untuk memulai, administrator memberlakukan klien Cloudflare (WARP) pada perangkat pengguna, baik macOS, Windows, iOS, Android, ChromeOS, maupun Linux. Klien kemudian mengirimkan semua lalu lintas layer 4 keluar ke Cloudflare, beserta identitas pengguna pada perangkat.</p>
+	<p>Dengan mengaktifkan proxy dan deskripsi TLS, Cloudflare akan memasukkan log semua lalu lintas yang dikirimkan melalui Gateway, lalu menampilkannya pada dasbor Cloudflare berupa raw log dan analitik agregat. Akan tetapi, dalam sejumlah kasus, administrator mungkin tidak ingin menyimpan log atau mengizinkan akses ke semua anggota tim keamanannya.</p>
+	<p>Alasannya beragam, tetapi hasil akhirnya sama: administrator harus mampu mengontrol cara data pengguna dikumpulkan dan siapa yang dapat mengaudit catatan tersebut.</p>
+	<p>Biasanya, solusi lama memberi administrator penyelesaian yang kurang efisien dan tanpa titik tengah. Organisasi dapat mengaktifkan atau menonaktifkan semua penyimpanan log. Tanpa penyimpanan log, layanan tersebut tidak merekam informasi identitas pribadi (PII). Dengan menghindari PII, administrator tak lagi perlu mengkhawatirkan izin kendali atau akses, tetapi mereka kehilangan semua visibilitas untuk menyelidiki peristiwa keamanan.</p>
+	<p>Kurangnya visibilitas kian menyulitkan keadaan saat tim perlu menangani tiket dari pengguna mereka untuk menjawab pertanyaan seperti "mengapa saya terblokir?", "mengapa permintaan itu gagal?", atau "bukankah itu seharusnya sudah diblokir?". Tanpa log terkait peristiwa tersebut, tim Anda tidak dapat membantu pengguna akhir mendiagnosis jenis masalah ini.</p>
+	<div class="flex anchor relative">
+		<h3 id="protecting-your-data"><b>Melindungi data Anda</b></h3>
+		<a href="https://blog.cloudflare.com/#protecting-your-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mulai sekarang, tim Anda memiliki lebih banyak opsi untuk menentukan jenis informasi yang disimpan ke log oleh Gateway Cloudflare dan siapa yang dapat meninjaunya dalam organisasi Anda. Kami meluncurkan akses dasbor berbasis peran untuk halaman penyimpanan log dan analitik, serta penyimpanan log selektif peristiwa. Dengan akses berbasis peran, informasi PII mereka yang dapat mengakses akun Anda akan dihapus dari dasbor mereka secara default.</p>
+	<p>Kami dengan gembira membantu organisasi menyusun kontrol dengan hak paling rendah dalam cara mereka mengelola pemberlakuan Gateway Cloudflare. Anggota tim keamanan dapat terus mengelola kebijakan atau menyelidiki serangan agregat. Namun, sejumlah peristiwa perlu diselidiki lebih lanjut. Dengan perilisan hari ini, tim Anda dapat mendelegasikan kemampuan untuk meninjau dan mencari menggunakan PII bagi anggota tim tertentu.</p>
+	<p>Kami tahu sejumlah pelanggan ingin mengurangi log yang disimpan, dan kami pun dengan senang hati membantu mereka mengatasinya. Kini administrator dapat memilih tingkat log yang akan disimpan Cloudflare bagi mereka. Mereka dapat mengendalikannya untuk setiap komponen, DNS, Jaringan, atau HTTP dan bahkan dapat memilih untuk hanya menyimpan log peristiwa blokir.</p>
+	<p>Pengaturan ini bukan berarti semua log Anda hilang — hanya saja Cloudflare tidak pernah menyimpannya. Penyimpanan log selektif, apabila digabungkan dengan <a href="https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush">layanan Logpush</a> yang dirilis sebelumnya, memungkinkan pengguna menghentikan penyimpanan log pada Cloudflare, lalu mengaktifkan tugas Logpush pada tujuan di lokasi yang mereka pilih.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started"><b>Cara Memulai</b></h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Untuk memulai, pelanggan Gateway Cloudflare dapat mengunjungi <a href="https://dash.teams.cloudflare.com/settings/network" target="_blank" rel="noopener noreferrer">dasbor Cloudflare for Teams</a> dan membuka Pengaturan &gt;Jaringan. Opsi pertama pada halaman akan berfungsi untuk menetapkan preferensi Anda bagi penyimpanan log aktivitas. Gateway secara default akan menyimpan log semua peristiwa, termasuk kueri DNS, permintaan HTTP, dan sesi Jaringan. Dalam halaman pengaturan jaringan, Anda dapat menyempurnakan jenis peristiwa yang log-nya ingin disimpan. Anda akan menemukan tiga opsi untuk setiap komponen Gateway:</p>
+	<ol>
+		<li>
+			<p>Rekam semua</p>
+		</li>
+		<li>
+			<p>Hanya rekam yang diblokir</p>
+		</li>
+		<li>
+			<p>Jangan rekam</p>
+		</li>
+	</ol>
+	<p>Selain itu, ada juga opsi untuk secara default menghilangkan semua PII dari log. Ini akan menghilangkan semua informasi yang mungkin dapat digunakan untuk mengenali pengguna, termasuk Nama Pengguna, Email Pengguna, ID Pengguna, ID Perangkat, IP sumber, URL, referrer, dan agen pengguna.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51cwm1HCCSZ2XblS4aQuFc/8a14ff5ea45b8f16cc9d71d65e97b99f/image2-10.png" alt="" class="kg-image" width="1084" height="422" loading="lazy">
+
+	</figure>
+	<p>Kami juga menyertakan peran baru dalam <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dasbor Cloudflare</a>, yang memberikan granularitas lebih baik saat membagi akses Administrator ke komponen Access atau Gateway. Peran baru ini akan diluncurkan pada Januari 2022 dan dapat diubah pada akun perusahaan dengan mengunjungi Beranda Akun → Anggota.</p>
+	<p>Apabila Anda belum siap membuat akun tetapi ingin menelusuri layanan Zero Trust kami, <a href="https://www.cloudflare.com/teams/self-guided-tour-of-zero-trust-platform" target="_blank" rel="noopener noreferrer">tengok demo interaktif kami</a> di mana Anda dapat mengikuti tur mandiri pada platform dengan narasi panduan kasus penggunaan utama, termasuk mengatur DNS dan filter HTTP dengan Gateway Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next"><b>Apa Selanjutnya</b></h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ke depannya, kami bersemangat untuk terus menambahkan lebih banyak fitur privasi yang akan memberi Anda dan tim Anda lebih banyak kontrol granular terhadap lingkungan Anda. Fitur yang diumumkan hari ini tersedia bagi pengguna pada semua paket; tim Anda dapat membuka tautan ini untuk <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">memulai sekarang</a>.</p>
+</div>

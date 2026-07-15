@@ -1,0 +1,126 @@
+<div class="mb2 gray5">Lesezeit: 5&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-ai-agent">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-ai-agent">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-ai-agent">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-ai-agent">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-ai-agent">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-ai-agent">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-ai-agent">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xorIrMANoEkjSDTPof0Zz/435411092defa3c7b10fd49035879891/BLOG-2692_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Heute ist ein großer Tag hier bei Cloudflare! Es ist nicht nur Security Week – Cloudflare unternimmt heute den ersten Schritt in einen völlig neuen Bereich von Funktionen, der die Interaktion unserer Benutzer mit all unseren Produkten und den Nutzen, den sie daraus ziehen, verbessern soll.</p>
+	<p>Wir freuen uns darauf, Ihnen einen ersten Einblick in die Art und Weise zu geben, wie wir KI-Funktionen in die Verwaltung von Cloudflare-Produkten einbinden, die Sie kennen und lieben. Unsere erste Aufgabe? Uns auf die Sicherheit zu fokussieren und die Verwaltung von Regeln und Richtlinien zu optimieren. Ziel ist es, die zeitraubende Aufgabe der manuellen Überprüfung und Kontextualisierung von benutzerdefinierten Regeln in Cloudflare WAF und Gateway-Richtlinien in Cloudflare One zu automatisieren. So können Sie sofort nachvollziehen, was jede Richtlinie bewirkt, welche Lücken sie aufweist und was Sie unternehmen müssen, um diese zu beheben.</p>
+	<div class="flex anchor relative">
+		<h3 id="meet-cloudy-cloudflares-first-ai-agent">Wir präsentieren Cloudy, den ersten KI-Agenten von Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#meet-cloudy-cloudflares-first-ai-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unser erster Schritt in Richtung eines vollständig KI-fähigen Produkts ist die Einführung von <i>Cloudy</i>, der ersten Version von Cloudflare AI Agents, einer assistenzähnlichen Funktionalität, die Nutzern helfen soll, ihre Cloudflare-Konfigurationen in mehreren Bereichen der Produktsuite schnell zu verstehen und zu optimieren. Sie werden sehen, dass die Cloudy-Funktionalität nahtlos in zwei Cloudflare-Produkte im Dashboard eingebettet ist, worüber wir weiter unten sprechen werden.</p>
+	<p>Der Name <i>Cloudy</i> mag lustig und heiter klingen, wir verfolgen damit jedoch ein ernsthaftes Ziel: Wir wollen Cloudflare- und KI-gestützte Funktionen in jeden Bereich von Cloudflare bringen und die Art und Weise optimieren, wie unsere Nutzer ihre bevorzugten Cloudflare-Produkte bedienen und verwalten. Beginnen wir mit zwei Stellen, an denen Cloudy jetzt live und für alle Kunden verfügbar ist, die die WAF- und Gateway-Produkte verwenden.</p>
+	<div class="flex anchor relative">
+		<h3 id="waf-custom-rules">Benutzerdefinierte WAF-Regeln</h3>
+		<a href="https://blog.cloudflare.com/#waf-custom-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Beginnen wir mit zunächst mit KI-gestützten Übersichten <a href="https://developers.cloudflare.com/waf/custom-rules" target="_blank" rel="noopener noreferrer"><u>über Benutzerdefinierte WAF-Regeln</u></a> Für diejenigen, die es nicht kennen: Die Web Application Firewall (WAF) von Cloudflare hilft, Webanwendungen vor Angriffen wie SQL-Injection, Cross-Site-Scripting (XSS) und anderen Schwachstellen zu schützen.&nbsp;</p>
+	<p>Eine Besonderheit der WAF ist die Möglichkeit, Benutzerdefinierte WAF-Regeln zu erstellen. Diese ermöglichen es Nutzern, die Sicherheitsrichtlinien so anzupassen, dass sie Traffic auf der Grundlage bestimmter Attribute oder Sicherheitskriterien blockieren, einer Sicherheitsprüfung unterziehen (Challenge) oder erlauben.</p>
+	<p>Für Kunden, die Dutzende oder gar Hunderte von Regeln im Unternehmen implementiert haben, kann es jedoch schwierig sein, einen klaren Überblick über ihr Sicherheitsniveau zu behalten. Regelkonfigurationen entwickeln sich im Laufe der Zeit weiter und werden oft von verschiedenen Teammitgliedern verwaltet, was zu potenziellen Ineffizienzen und Sicherheitslücken führen kann. Welches Problem könnte Cloudy besser lösen?</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zcFRfhRWGQWhoza9TolDu/25e1357540db32e59150609e6eddd1e0/BLOG-2692_2.png" alt="BLOG-2692 2" class="kg-image" width="1999" height="1774" loading="lazy">
+	</figure>
+	<p>Unterstützt von <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, zeigen wir Ihnen heute, wie Cloudy Ihnen dabei helfen wird, Ihre benutzerdefinierten WAF-Regeln zu überprüfen und eine Zusammenfassung der darin konfigurierten Regeln zu geben. Cloudy wird Ihnen auch helfen, Probleme zu erkennen und zu lösen:</p>
+	<ul>
+		<li>
+			<p><b>Erkennung redundanter Regeln</b>: Erkennen Sie, wenn mehrere Regeln die gleiche Funktion erfüllen oder ähnliche Felder verwenden, und optimieren Sie so Ihre Konfiguration.</p>
+		</li>
+		<li>
+			<p><b>Optimierung der Ausführungsreihenfolge</b>: Erkennen Sie Fälle, in denen die Reihenfolge der Regeln sich auf die Funktionalität auswirkt, z.&nbsp;B. wenn eine beendende Regel (Blockierungs-/Challenge-Aktion) die Ausführung nachfolgender Regeln verhindert.</p>
+		</li>
+		<li>
+			<p><b>Analyse widersprüchlicher Regeln</b>: Erkennen, wenn Regeln einander entgegenwirken, z.&nbsp;B. wenn eine Regel Traffic blockiert, den eine andere Regel zulassen oder protokollieren soll.</p>
+		</li>
+		<li>
+			<p><b>Identifizierung deaktivierter Regeln</b>: Heben Sie potenziell wichtige Sicherheitsregeln hervor, die deaktiviert sind, und helfen Sie so, sicherzustellen, dass kritische Schutzmaßnahmen nicht versehentlich inaktiv bleiben.</p>
+		</li>
+	</ul>
+	<p>Cloudy fasst nicht nur Ihre Regeln zusammen. Die Lösung analysiert die Beziehungen und Interaktionen zwischen Regeln, um Empfehlungen abzugeben, die umsetzbar sind. Für Sicherheitsteams, die komplexe Gruppen von benutzerdefinierten Regeln verwalten, bedeutet dies, dass sie weniger Zeit mit der Überprüfung von Konfigurationen verbringen und mehr Vertrauen in Ihre Sicherheitsmaßnahmen haben.</p>
+	<p>Wir freuen uns, zeigen zu können, wie die Cloudflare AI Agents die Benutzerfreundlichkeit unserer Produkte verbessern können, angefangen bei Benutzerdefinierten WAF-Regeln, die allen Nutzern zur Verfügung stehen. Aber das ist erst der Anfang.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflare-one-firewall-policies">Cloudflare One Firewall-Richtlinien</h3>
+		<a href="https://blog.cloudflare.com/#cloudflare-one-firewall-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CXHQVlO3GGqwp6DGyOklJ/3068c434c4a303cf22c328c302947fcb/BLOG-2692_3.png" alt="BLOG-2692 3" class="kg-image" width="766" height="783" loading="lazy">
+	</figure>
+	<p>Außerdem haben wir Cloudy zu unserer SASE-Plattform <a href="https://www.cloudflare.com/static/e9ea5dfaa69c554cc1cbaa7f3e441acf/Cloudflare_One_at_a_glance.pdf" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> hinzugefügt, mit der Unternehmen die Sicherheit ihrer Mitarbeitenden und Tools über ein einziges Dashboard verwalten können.</p>
+	<p>In <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>, unserem Secure Web Gateway-Angebot, können Kunden Richtlinien konfigurieren, um zu verwalten, wie Mitarbeitende ihre Arbeit im Internet erledigen. Diese Gateway-Richtlinien können unter anderem den Zugriff auf böswillige Websites blockieren, Verstöße gegen Datenverluste verhindern und den Benutzerzugriff kontrollieren.</p>
+	<p>Aber ähnlich wie benutzerdefinierte WAF-Regeln können auch Gateway-Richtlinienkonfigurationen mit der Zeit zu kompliziert und unübersichtlich werden, mit alten, vergessenen Richtlinien, die alles Mögliche tun. Mehrere Selektoren und Operatoren, die kontraintuitiv arbeiten. Einige blockieren den Traffic, andere lassen ihn zu. Richtlinien, die mehrere Nutzergruppen einschließen, aber bestimmte Mitarbeitende ausnehmen. Wir haben sogar Richtlinien gesehen, die Hunderte von URLs in einem einzigen Schritt blockieren. Die Verwaltung von jahrelangen Gateway-Richtlinien kann irgendwann überwältigend werden.</p>
+	<p>Warum also nicht Cloudy die Gateway-Richtlinien so zusammenfassen lassen, dass ihr Zweck klar und präzise ist?</p>
+	<p>Verfügbar für alle Cloudflare Gateway-Nutzer (erstellen Sie <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><u>hier</u></a> ein kostenloses Cloudflare One-Konto). Cloudy bietet jetzt eine schnelle Zusammenfassung aller Gateway-Richtlinien, die Sie anzeigen. Es ist jetzt einfacher denn je, sich auf einen Blick ein klares Bild jeder Richtlinie zu verschaffen, was es Administratoren ermöglicht, Fehlkonfigurationen, redundante Kontrollen oder andere Bereiche für Verbesserungen zu erkennen und bedenkenlos weiterzuentwickeln.</p>
+	<div class="flex anchor relative">
+		<h3 id="built-on-workers-ai">Basiert auf Workers AI</h3>
+		<a href="https://blog.cloudflare.com/#built-on-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Das Herzstück unserer neuen Funktionalität ist <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers AI</u></a> (ja, dieselbe Version, die jeder nutzt!), die fortschrittliche Large Language Models (LLMs) nutzt, um große Mengen an Informationen zu verarbeiten; in diesem Fall handelt es sich um Richtlinien- und Regeldaten. Traditionell ist die manuelle Überprüfung und Kontextualisierung komplexer Konfigurationen eine entmutigende Aufgabe für jedes Sicherheitsteam. Mit Workers AI automatisieren wir diesen Prozess und wandeln die Konfigurations-Rohdaten in einheitliche, klare Zusammenfassungen und umsetzbare Empfehlungen um.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works"><b>So funktioniert’s</b></h4>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers AI nimmt Richtlinien- und Regelkonfigurationen aus Ihrem Cloudflare-Setup auf und kombiniert sie mit einem speziell entwickelten LLM-Prompt. Wir nutzen dieselben <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>öffentlich zugänglichen LLM-Modelle</u></a>, die wir auch unseren Kunden anbieten, und reichen dann den Prompt mit einigen zusätzlichen Daten ein, um ihn mit Kontext zu versehen. Für diese spezielle Aufgabe der Analyse und Zusammenfassung von Richtlinien- und Regeldaten haben wir das LLM bereitgestellt:</p>
+	<ul>
+		<li>
+			<p><b>Richtlinien- und Regeldaten</b>: Dies sind die primären Daten selbst, einschließlich der aktuellen Konfiguration von Richtlinien/Regeln, die Cloudy zusammenfasst und für die er Vorschläge macht.</p>
+		</li>
+		<li>
+			<p><b>Dokumentation zu den Produktfähigkeiten:</b> Wir stellen dem Modell zusätzliche technische Details zu den Richtlinien-/Regelkonfigurationen zur Verfügung, die mit jedem Produkt möglich sind, sodass das Modell weiß, welche Art von Empfehlungen im Rahmen seiner Möglichkeiten liegen.</p>
+		</li>
+		<li>
+			<p><b>Angereicherte Datensätze</b>: Wenn benutzerdefinierte WAF-Regeln oder CF1-Gateway-Richtlinien andere „Listen“ nutzen (z.&nbsp;B. eine WAF-Regel, die sich auf mehrere Länder bezieht, eine Gateway-Richtlinie, die eine bestimmte Inhaltskategorie nutzt), müssen die ausgewählten Listenelemente zuerst von einer ID übersetzt werden in Klartext umwandeln, damit das LLM interpretieren kann, welche Richtlinien-/Regelwerte tatsächlich verwendet werden.</p>
+		</li>
+		<li>
+			<p><b>Output-Anweisungen</b>: Wir geben dem Modell an, in welchem Format wir die Ausgabe erhalten möchten. In diesem Fall verwenden wir JSON, um die Handhabung zu vereinfachen.</p>
+		</li>
+		<li>
+			<p><b>Zusätzliche Klarstellungen</b>: Schließlich weisen wir den LLM ausdrücklich an, sich seiner Ausgabe sicher zu sein, da wir diesen Aspekt über alles andere stellen. Auf diese Weise können wir sicherstellen, dass keine Halluzinationen in die endgültige Ausgabe gelangen.</p>
+		</li>
+	</ul>
+	<p>Durch die Automatisierung der Analyse Ihrer benutzerdefinierten WAF-Regeln und Gateway-Richtlinien spart Cloudflare Workers AI nicht nur Zeit, sondern erhöht auch die Sicherheit, indem es die Gefahr menschlicher Fehler verringert. Sie erhalten klare, verwertbare Erkenntnisse, die es Ihnen ermöglichen, Ihre Konfigurationen zu optimieren, Anomalien schnell zu erkennen und ein hohes Sicherheitsniveau zu wahren– und das alles ohne arbeitsaufwändige manuelle Überprüfungen.</p>
+	<div class="flex anchor relative">
+		<h4 id="whats-next-for-cloudy">Was ist die Zukunft von Cloudy?</h4>
+		<a href="https://blog.cloudflare.com/#whats-next-for-cloudy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Beta-Vorschau von Cloudy ist ab heute für alle Cloudflare-Kunden live. Doch das ist nur der Anfang dessen, was wir uns für KI-gestützte Funktionen in unserer gesamten Produktpalette vorstellen.</p>
+	<p>Für den Rest des Jahres 2025 planen wir die Einführung zusätzlicher KI-Agenten-Funktionen in anderen Bereichen von Cloudflare. Diese neuen Funktionen helfen Kunden nicht nur dabei, die Sicherheit effizienter zu verwalten, sondern sie enthalten auch intelligente Empfehlungen zur Optimierung der Performance, zur Rationalisierung von Abläufen und zur Verbesserung der allgemeinen Nutzererfahrung.</p>
+	<p>Wir sind gespannt auf Ihre Meinung, wenn Sie Cloudy kennenlernen und diese neuen KI-Funktionen ausprobieren. Schicken Sie uns Ihr Feedback an <a href="https://blog.cloudflare.com/#"><u>cloudyfeedback@cloudflare.com</u></a>, oder posten Sie Ihre Gedanken auf X, LinkedIn oder Mastodon mit dem Hashtag #SecurityWeek! Ihr Feedback wird uns dabei helfen, unsere Roadmap für KI-Verbesserungen zu gestalten und unseren Nutzern intelligentere und effizientere Werkzeuge an die Hand zu geben, die allen zu mehr Sicherheit verhelfen.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gGseiyO6pbddpdSVQ5wfJ/ae1d0d5a2f8ec01f571de7a85b655370/BLOG-2692_4.png" alt="BLOG-2692 4" class="kg-image" width="1999" height="347" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Auf Cloudflare&nbsp;TV ansehen</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a17f6d8c6e2bd7401e443b67ed780120/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa17f6d8c6e2bd7401e443b67ed780120%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

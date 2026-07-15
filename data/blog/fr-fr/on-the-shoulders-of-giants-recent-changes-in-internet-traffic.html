@@ -1,0 +1,83 @@
+<div class="mb2 gray5">Lecture&nbsp;: 2 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">English</a>, en <a href="https://blog.cloudflare.com/de-de/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">日本語</a> et en <a href="https://blog.cloudflare.com/zh-cn/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AcedKSSXUKh3y9NDnsafx/f89e4c0d3d9d7dcd6b30b3e0a395ab48/on-the-shoulders-of-giants-recent-changes-in-internet-traffic.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Tandis que se poursuit la crise de la COVID-19 et qu’un nombre croissant de villes et de pays mettent en place des mesures de quarantaines ou des cordons sanitaires, Internet est devenu pour beaucoup de gens le principal outil leur permettant de rester en contact avec leurs amis et leur famille. En outre, il constitue le principal moteur de l’économie mondiale, car de nombreuses entreprises emploient des salariés en télétravail.</p>
+	<p>Le trafic à destination des visioconférences, des services de streaming et des sites d’information et de commerce électronique a explosé. Nous avons constaté une hausse du trafic provenant de réseaux domestiques à haut débit, et une diminution du trafic provenant des entreprises et des universités.</p>
+	<p>L’équipe Cloudflare est parfaitement préparée à répondre aux exigences du marché, et le Centre de gestion du réseau (NOC) observe l’évolution du trafic dans les quelque 200 villes où sont installés nos équipements.</p>
+	<p>Il n’est pas rare que le trafic Internet subisse de grandes variations. Elles se produisent souvent à l’occasion de grands événements sportifs tels que les Jeux olympiques ou la Coupe du monde, d’événements culturels comme le concours Eurovision de la chanson et même pendant le ramadan, au moment de la rupture du jeûne quotidienne.</p>
+	<p>Internet a été conçu de manière à s’adapter à un environnement en constante évolution. D’ailleurs, il a été véritablement créé, testé, débogué et conçu pour faire face à des modèles de charge variables.</p>
+	<p>Au cours des dernières semaines, l’équipe chargée du réseau chez Cloudflare a observé de nouvelles tendances, et nous avons voulu vous en présenter quelques-unes.</p>
+	<div class="flex anchor relative">
+		<h3 id="entire-countries-are-watching-their-leaders">Des pays entiers regardent leurs dirigeants</h3>
+		<a href="https://blog.cloudflare.com/#entire-countries-are-watching-their-leaders" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vendredi soir dernier, le président américain a annoncé l’état d’urgence aux États-Unis. Peu de temps après, nos datacenters américains ont dû gérer un volume de trafic 20 % supérieur à la normale. À titre de comparaison, la ligne rouge représente la journée de vendredi, et les lignes grises représentent les jours précédents.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cgutP0x9kF0enY9jPw64F/780b1c10b856b77f516ba6e594cf854a/image1-5.png" alt="" class="kg-image" width="1984" height="910" loading="lazy">
+
+	</figure>
+	<p>Le dimanche 15 mars à 17h30 (heure locale, 16h30 UTC), le gouvernement néerlandais a annoncé à la radio la fermeture des commerces non essentiels. Ce dimanche, le trafic a fortement diminué par rapport à la normale ce jour de la semaine :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mlVGpkTYIKqtjQkuhRGAV/ff910d999d562225d7adea5a927c1991/image7-1.png" alt="" class="kg-image" width="1999" height="822" loading="lazy">
+
+	</figure>
+	<p>Le président français a fait deux annonces nationales, le 12 mars (courbe rose) et le 16 mars (courbe rouge) à 20h00 (heure locale, 19h00 UTC). L’annonce du confinement du 16 mars a fait chuter de moitié le trafic en France, puis l’a fait monter en flèche :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wMGp2Wl969Ek1CemyQ0RH/c31be1dcd18381944593953c70168095/image5-3.png" alt="" class="kg-image" width="1999" height="782" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="evolution-of-traffic-in-quarantine">Évolution du trafic pendant le confinement</h3>
+		<a href="https://blog.cloudflare.com/#evolution-of-traffic-in-quarantine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En Italie, le trafic quotidien a augmenté de 20 à 40 % depuis le confinement :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NAmXuIRyCKo3Yc2dCc6vd/8cd4f1b03e0e12bc16146f23be5b6479/image9-1.png" alt="" class="kg-image" width="1280" height="960" loading="lazy">
+
+	</figure>
+	<p>Avec la fermeture des universités, certains réseaux de centres de recherche nationaux ont une activité (presque) aussi calme que celle d’un week-end (en violet). La journée en cours est en rouge et les jours précédents en gris (avec chevauchement de la semaine précédente) :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DebqRByRJsTzFv5zd9b3S/bc6aff29fdd652f119b50f4a802ba52e/image8.png" alt="" class="kg-image" width="1999" height="676" loading="lazy">
+
+	</figure>
+	<p>Les <a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener noreferrer">points d’échange Internet</a>, qui sont une composante essentielle de l’infrastructure d’Internet et où les fournisseurs de services internet et les fournisseurs de contenu peuvent échanger des données directement (plutôt que par l’intermédiaire d’un tiers), ont également connu des pics de trafic. Beaucoup d’entre eux publient des graphiques illustrant le trafic.</p>
+	<p>À Amsterdam (<a href="https://www.ams-ix.net/ams/documentation/total-stats" target="_blank" rel="noopener noreferrer">AMS-IX</a>), à Londres (<a href="https://portal.linx.net/stats/lans" target="_blank" rel="noopener noreferrer">LINX</a>) et à Francfort (<a href="https://www.de-cix.net/en/locations/germany/frankfurt/statistics" target="_blank" rel="noopener noreferrer">DE-CIX</a>), on constate une augmentation d’environ 10 à 20 % aux alentours du 9 mars :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MkJVBKFZ8bfuwDONUyvvP/a4938b1a5b7d815f8b9f7a258919c017/image2-3.png" alt="" class="kg-image" width="1262" height="710" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mfzZoAApV2YCsc6sSiuc7/9f8bd6c37df6378914f021ed25d22042/image6-1.png" alt="" class="kg-image" width="1176" height="676" loading="lazy">
+
+	</figure>
+	<p>À Milan (<a href="https://www.mix-it.net/statistiche" target="_blank" rel="noopener noreferrer">MXP-IX</a>), le point d’échange montre une augmentation de 40 % le mercredi 9 mars 2020, jour du début du confinement :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yJaXB8BYVIQNK8zfRxyiP/b041486940597caba4bcf3545d1a0f26/image4-2.png" alt="" class="kg-image" width="597" height="264" loading="lazy">
+
+	</figure>
+	<p>En Asie, à Hong Kong (<a href="https://www.hkix.net/hkix/stat/aggt/hkix-aggregate.html" target="_blank" rel="noopener noreferrer">HKIX</a>), on observe une augmentation plus rapide depuis la fin du mois de janvier, ce qui correspond vraisemblablement au confinement de Hubei du 23 janvier :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2einyNzLMBNCo0VgBBlh3C/fe61b319c1b6b5f69443eeeae398367d/image3-1.png" alt="" class="kg-image" width="697" height="311" loading="lazy">
+
+	</figure>
+	<p>L’état d’urgence a un impact non négligeable sur les services Internet et sur nos vies. Bien qu’il soit difficile de quantifier exactement l’augmentation, on observe des pourcentages allant de 10 à 40 % selon les pays et la nature des mesures prises par les gouvernements dans ces pays.</p>
+	<p>Même si, de temps en temps, des services individuels, tels qu’un site web ou une application, connaissent des pannes, le cœur d’Internet est très robuste. Le trafic migre des réseaux d’entreprises et d’universités vers les réseaux domestiques à haut débit, mais Internet a été conçu pour répondre à des besoins en mutation.</p>
+	<p>Consultez le blog Cloudflare pour obtenir des informations complémentaires.</p>
+</div>

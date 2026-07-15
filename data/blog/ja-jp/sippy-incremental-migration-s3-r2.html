@@ -1,0 +1,103 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/sippy-incremental-migration-s3-r2">English</a>、<a href="https://blog.cloudflare.com/zh-tw/sippy-incremental-migration-s3-r2">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/sippy-incremental-migration-s3-r2">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/sippy-incremental-migration-s3-r2">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ma9L1XTpVHd6DLN4YHCSK/115b4a7eafc74eef4886c293c27d177b/sippy-incremental-migration-s3-r2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023年の初めに、<a href="https://blog.cloudflare.com/r2-super-slurper-ga">Super Slurper</a>を発表しました。これは他のクラウドオブジェクトストレージプロバイダーから<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>への大容量データのコピーを容易にするデータ移行ツールです。この発表以来、開発者はSuper Slurperを使って何千ものR2への移行を成功させてきました！</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4whKfl7szHhdKNWCiCETR3/d65f22ad8c25598a41426bd1de59188e/image1-16.png" alt="Sippy helps you avoid egress fees while incrementally migrating data from S3 to R2" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Super Slurperは、すべてのデータを一度にR2に移行したい場合に最適ですが、時間をかけて少しずつデータを移行したいシナリオもあります。<a href="https://www.cloudflare.com/learning/cloud/what-is-aws-data-transfer-pricing" target="_blank" rel="noopener noreferrer">AWSのデータ転送に</a>かかる初期費用を避けたい場合もあるでしょう。あるいは、アクセスされることのないレガシーデータがあり、必要なものだけを移行したいかもしれません。</p>
+	<p>本日、<a href="https://developers.cloudflare.com/r2/data-migration/sippy" target="_blank" rel="noopener noreferrer">Sippy</a>のオープンベータを発表します。Sippyは、大量のデータを移行する際に一般的に発生する不要なクラウドエグレス料金を支払うことなく、リクエストに応じてS3（他のクラウドプロバイダーも近日サポート予定！）からR2へデータをコピーする段階的移行サービスです。<a href="https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in" target="_blank" rel="noopener noreferrer">ベンダーロックインに</a>対処するだけでなく、Sippyはストレスと時間のかかる移行を過去のものにします。アプリのS3エンドポイントを置き換えるか、ドメインを新しいR2バケットにアタッチするだけで、データのコピーが開始されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">その仕組みは？</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sippyは、R2バケットに直接組み込まれた段階的移行サービスです。移行特有の<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">エグレス料金</a>は、既にエグレス料金を支払っているアプリのフロー内のリクエストを活用し、同時にオブジェクトをR2にコピーすることで削減されます。その仕組みは以下の通りです。</p>
+	<p><a href="https://developers.cloudflare.com/r2/api/workers" target="_blank" rel="noopener noreferrer">Workers</a>、<a href="https://developers.cloudflare.com/r2/api/s3" target="_blank" rel="noopener noreferrer">S3 API</a>、または<a href="https://developers.cloudflare.com/r2/buckets/public-buckets" target="_blank" rel="noopener noreferrer">パブリックバケットから</a>オブジェクトがリクエストされた場合、それが見つかればお客様のR2バケットから提供されます。</p>
+	<p>オブジェクトがR2に見つからない場合は、同時にS3バケットから返され、R2にコピーされます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QSl0q22LEdoOUp6BzkWhE/12f69030f3c5a4d53edf0a7d62af8b43/image2-16.png" alt="" class="kg-image" width="1620" height="1340" loading="lazy">
+
+	</figure>
+	<p>注意：大きなオブジェクトの中には、コピーに複数のリクエストを要するものがあります。</p>
+	<p>つまり、オブジェクトがコピーされた後、後続のリクエストはR2から提供され、すぐにエグレス料金の節約を開始できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ok5dS498ocJgCBRR1V5HU/683129c203b3343af7a4aa1c29e15b8a/image3-22.png" alt="" class="kg-image" width="1620" height="750" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="start-incrementally-migrating-data-from-s3-to-r2">S3からR2への段階的データ移行開始</h2>
+		<a href="https://blog.cloudflare.com/#start-incrementally-migrating-data-from-s3-to-r2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="create-an-r2-bucket">R2バケットを作成</h3>
+		<a href="https://blog.cloudflare.com/#create-an-r2-bucket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>段階的移行を始めるには、まずR2バケットを作成する必要があります。Cloudflareダッシュボードから新しいR2バケットを以下の方法で作成します。</p>
+	<ol>
+		<li>
+			<p><a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボードに</a>ログインし、<b>R2</b>を選択します。</p>
+		</li>
+		<li>
+			<p>[<b>バケットの作成</b>]を選択します。</p>
+		</li>
+		<li>
+			<p>バケットに名前を付け、<b>バケットの作成</b>を選択します。</p>
+		</li>
+	</ol>
+	<p>​​R2バケットの他の作成方法については、<a href="https://developers.cloudflare.com/r2/buckets/create-buckets" target="_blank" rel="noopener noreferrer">バケットの作成</a>に関するドキュメントを参照してください。</p>
+	<div class="flex anchor relative">
+		<h3 id="enable-sippy-on-your-r2-bucket">R2バケットでSippyを有効化</h3>
+		<a href="https://blog.cloudflare.com/#enable-sippy-on-your-r2-bucket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>次に、作成したR2バケット用にSippyを有効にします。ベータ期間中は、APIを使用してこれを行うことができます。R2バケットでcURLを使用してSippyを有効にする方法の例です。</p>
+	<p>開始するための詳細については<a href="https://developers.cloudflare.com/r2/data-migration/sippy" target="_blank" rel="noopener noreferrer">ドキュメント</a>を参照してください。有効化すると、R2バケットにまだデータが存在しない場合、バケットへのリクエストはS3からデータをコピーし始めるようになります。</p>
+	<pre class="language-curl"><code class="language-curl">curl -X PUT https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets/{bucket_name}/sippy \
+--header "Authorization: Bearer &lt;API_TOKEN&gt;" \
+--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="finish-your-migration-with-super-slurper">Super Slurperで移行を終了</h3>
+		<a href="https://blog.cloudflare.com/#finish-your-migration-with-super-slurper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>段階的移行は好きなだけ実行できますが、最終的にはR2への移行を完了させたいと思うかもしれません。そのためには、Sippyを<a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer">Super Slurper</a>と組み合わせることで、まだアクセスされていない残りのデータを簡単にR2に移行することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>オープンベータにわくわくしていますが、まだスタート地点に立ったばかりです。次に、Cloudflareのダッシュボードから段階的移行を設定できるようにし、移行の進捗状況や、これまでにコピーされたオブジェクトのエグレス料金を支払わなくて済むことで節約できている金額を表示する分析情報を完備しました。</p>
+	<p>R2への段階的なデータ移行をお考えの方で、次に当社が何を構築すべきかについてご質問やご意見がある方は、ぜひ<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discordコミュニティ</a>にご参加ください！</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OxNi1UZsYR9ITa7KbaQ11/753b4c01ddbed65d637c55b0b91a47de/Kfb7dwYUUzfrLKPH_ukrJRTvRlfl4E8Uy00vwEQPCTiW0IQ--fxpikjv1p0afm4A5J3JfVjQiOVjN3RMNeMcu3vhnz97pEmENCkNIuwdW_m-aW7ABfZnmUpJB_jh.png" alt="" class="kg-image" width="1600" height="467" loading="lazy">
+
+	</figure>
+</div>

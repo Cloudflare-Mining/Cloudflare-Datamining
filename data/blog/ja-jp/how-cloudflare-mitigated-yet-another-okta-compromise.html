@@ -1,0 +1,97 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">English</a>、<a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-mitigated-yet-another-okta-compromise">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-mitigated-yet-another-okta-compromise">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-mitigated-yet-another-okta-compromise">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uxI0nb27T2YAwE7nghISd/131e9b05b696d2f4021a941fcecc36bc/how-cloudflare-mitigated-yet-another-okta-compromise.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2023年10月18日（水）、Oktaに起因するシステムへの攻撃が発見されました。脅威者は、Oktaで漏洩した認証トークンを利用して、CloudflareのOktaインスタンスに侵入しました。これは厄介なセキュリティインシデントでしたが、当社のセキュリティインシデント対応チーム（SIRT）のリアルタイム検知と迅速な対応により、被害を食い止め、Cloudflareのシステムとデータへの影響を最小限に抑えることができました。当社の迅速な対応により、<b>Cloudflareの顧客情報やシステムに影響がなかったことを確認しています</b>。Oktaは現在、このインシデントに関する<a href="https://sec.okta.com/harfiles" target="_blank" rel="noopener noreferrer">公式声明</a>を発表しています。</p>
+	<p>CloudflareがOktaのシステム侵害の影響を受けたのはこれが2度目です。<a href="https://blog.cloudflare.com/ja-jp/cloudflare-investigation-of-the-january-2022-okta-compromise-ja-jp">2022年3月</a>、当社はOktaの侵害がCloudflareにどのような影響を与えたかに関する調査についてブログを書きました。このインシデントでは、Cloudflareの多要素認証にハードキーを使用していたため、脅威行為者から当社のシステムやデータへのアクセスはなかったものと結論づけました。</p>
+	<p>今週のインシデントを軽減できた鍵は、当社のチームが早期に発見し、即座に対応したことです。実際、Oktaのシステム侵害について、先方からの通知を受ける前にこちらから連絡しました。攻撃者はOktaのオープンセッションを管理者権限で使用し、当社のOktaインスタンスにアクセスしました。Cloudflare Zero Trust Access、Gateway、Data Loss PreventionとCloudforce Oneの脅威調査を利用してインシデントの範囲を確認し、攻撃者が顧客データや顧客システム、本番ネットワークにアクセスする前に、インシデントを阻止することができました。この確信を得たことで、当社は、脅威行為者が持続性を確立する前に、インシデントを迅速に緩和することができました。</p>
+	<p>Oktaの声明によると、脅威行為者はOktaのカスタマーサポートシステムにアクセスし、最近のサポートケースの一部として特定のOktaの顧客がアップロードしたファイルを閲覧しました。当社のケースでは、脅威行為者はCloudflareの従業員が作成したサポートチケットからセッショントークンを乗っ取ることができたようです。Oktaから抽出されたトークンを使用して、脅威行為者は10月18日にCloudflareのシステムにアクセスしました。この巧妙な攻撃では、脅威行為者がOktaプラットフォーム内の2つのCloudflare従業員アカウントを侵害したことが確認されています。当社は、Oktaから侵害の通知を受ける24時間以上前に、この活動を社内で検知しました。発見後、当社のSIRTは迅速に対応し、侵害された全範囲を特定し、セキュリティインシデントを阻止することができました。Cloudflareの<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustアーキテクチャ</a>が当社の本番環境を保護し、お客様への影響を防ぐことができました。</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-okta">Oktaに関する推奨事項</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-okta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oktaには、以下のベストプラクティスの実施を検討するよう強く求めます。</p>
+	<ul>
+		<li>
+			<p>セキュリティ侵害の報告を真摯に受け止め、被害を最小限に抑えるために直ちに行動すること。本ケースでは、Oktaは<a href="https://www.beyondtrust.com/blog/entry/okta-support-unit-breach" target="_blank" rel="noopener noreferrer">BeyondTrust</a>から2023年10月2日に最初に通知を受けていましたが、攻撃者は少なくとも2023年10月18日までサポートシステムにアクセスしていました。</p>
+		</li>
+		<li>
+			<p>システムの侵害が顧客に影響を及ぼしたことが判明した場合、タイムリーで責任ある開示を顧客に提供すること。</p>
+		</li>
+		<li>
+			<p>サードパーティ・サポートプロバイダーを含むすべてのシステムを保護するために、ハードウェアキーを要求すること。</p>
+		</li>
+	</ul>
+	<p>Oktaのような重要なセキュリティサービスプロバイダーにとって、これらのベストプラクティスに従うことは当然のことだと考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="recommendations-for-oktas-customers">Oktaのお客様への推奨事項</h2>
+		<a href="https://blog.cloudflare.com/#recommendations-for-oktas-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oktaをご利用のお客様は、お客様の組織への影響について、Oktaに問い合わせることをお勧めします。当社では、次のアクションをとることもお勧めします。</p>
+	<ul>
+		<li>
+			<p>すべてのユーザーアカウントに対してハードウェアMFAを有効化する。パスワードだけでは、攻撃を退けるために必要なレベルの保護はできません。ハードウェアキーの使用を強くお勧めします。MFAの他の方法では、フィッシング攻撃に対し脆弱になる可能性があるためです。</p>
+		</li>
+		<li>
+			<p>以下について調査し、対応する。</p>
+			<ul>
+				<li>
+					<p>Oktaインスタンスの予期せぬすべてのパスワードとMFAの変更。</p>
+				</li>
+				<li>
+					<p>不審なサポート開始イベント。</p>
+				</li>
+				<li>
+					<p>すべてのパスワードリセットが有効であることを確認し、疑いのあるものについては強制的にパスワードをリセットする。</p>
+				</li>
+				<li>
+					<p>不審なMFA関連イベントがあれば、有効なMFAキーのみがユーザのアカウント構成に存在することを確認する。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>以下を監視する。</p>
+			<ul>
+				<li>
+					<p>新しいOktaユーザーの作成。</p>
+				</li>
+				<li>
+					<p>Oktaユーザーの再アクティベーション。</p>
+				</li>
+				<li>
+					<p>すべてのセッションには適切な認証が関連付けられていること。</p>
+				</li>
+				<li>
+					<p>すべてのOktaアカウントと権限の変更。</p>
+				</li>
+				<li>
+					<p>MFAポリシーの上書き、MFAの変更、MFAの削除。</p>
+				</li>
+				<li>
+					<p>機密アプリの委任。</p>
+				</li>
+				<li>
+					<p>テナントにアクセスするサプライチェーンプロバイダー。</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>セッションハイジャック攻撃を制限するために、セッションの有効期限ポリシーを見直す。</p>
+		</li>
+		<li>
+			<p>Cloudflare Accessデバイスポスチャーチェックなど、重要なシステムに接続されているデバイスを検証するツールを活用する。</p>
+		</li>
+		<li>
+			<p>検出と監視の戦略のために多層防御を実践する。</p>
+		</li>
+	</ul>
+	<p>CloudflareのセキュリティおよびITチームは、今回の侵害後も引き続き警戒を続けています。Oktaからさらなる情報が開示された場合、または追加のログ分析によって発見された場合は、この投稿を更新して公開します。</p>
+	<p><i>Cloudflareのセキュリティインシデント対応チームは</i><a href="http://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>募集を行って</i></a><i>います。</i></p>
+</div>

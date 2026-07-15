@@ -1,0 +1,86 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/end-cloudflare-captcha">English</a>、<a href="https://blog.cloudflare.com/zh-tw/end-cloudflare-captcha">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/end-cloudflare-captcha">Français</a>、<a href="https://blog.cloudflare.com/de-de/end-cloudflare-captcha">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/end-cloudflare-captcha">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/end-cloudflare-captcha">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6afBKtuyPDB9rM9LkWhabS/0dfcf4aa5ba395e973fe668cddc7c1b9/end-cloudflare-captcha.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/learning/bots/how-captchas-work" target="_blank" rel="noopener noreferrer">CAPTCHAが</a>煩雑なユーザーエクスペリエンスを生み出すという事実を蒸し返すことに意味はありません。これに関しては<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">このブログで</a>以前にも、そして他の場所でも何度となく取り上げられています。CAPTCHAの作成者の一人は、「人間の脳のサイクルという貴重な資源を<a href="https://thewalrus.ca/human-resources" target="_blank" rel="noopener noreferrer">10秒単位で何百万時間も浪費する</a>システムを無意識のうちに作り上げてしまった」と公に嘆いています。私たちも、皆さんもCAPTCHAを好んではいません。</p>
+	<p></p>
+	<p>そこで当社はCAPTCHAの使用をやめることにしました。反復的なプラットフォームアプローチにより、当社はすでに過去1年間で<b>CAPTCHAの数を91％削減しました</b>。</p>
+	<p>当社が取り組んできたことや、皆さんはどのように協力できるのかをお話しする前に、まずは簡単な質問から始めましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-in-the-world-is-captcha-still-used-anyway">世の中では一体なぜCAPTCHAがまだ使われているのでしょうか？</h3>
+		<a href="https://blog.cloudflare.com/#why-in-the-world-is-captcha-still-used-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CAPTCHAがそれほど悪いものだと誰もが認めているのなら、また15年も前からCAPTCHAを廃止しようという声が上がっているのなら、さらには作成者がCAPTCHAを作ったことを後悔しているのなら、なぜいまだに広く使われているのでしょうか？</p>
+	<p>もどかしいことに、CAPTCHAは、CAPTCHA解決サービスが存在するにもかかわらず、本物の人間ユーザーとボットを区別するための効果的なツールであり続けています。もちろん、これはユーザビリティという点では大きなトレードオフを伴いますが、一般的にCAPTCHAの代わりとなるものは、トラフィックをブロックするか許可することであり、これは性質上、正当性の誤判定を増加させることになります。誤判定エラーが増えるか、それともユーザーエクスペリエンスが低下するか（CAPTCHA）の二者択一で、多くのサイトはCAPTCHAを選択します。</p>
+	<p>CAPTCHAは他の多くのサイトでも使われているため、安全な選択です。不正使用への対応をサードパーティに委託し、シンプルな統合でWebサイトからリスクを取り除きます。最も一般的な解決策を使っても、トラブルに巻き込まれることはほとんどありません。プラグ、プレイ、忘却。</p>
+	<p>最後に、CAPTCHAが有用なのは、長い歴史があり、既知の安定した基準値があるからです。私たちは、CAPTCHA（またはチャレンジ）解決率と呼ばれる指標を長年追跡してきました。CAPTCHA解決率は、解決されたCAPTCHAの数をページロード数で割ったものです。調査の目的上、CAPTCHAを解くことに失敗した場合も、解かなかった場合も、どちらの場合もユーザーが望むコンテンツにアクセスできないため、失敗としてカウントします。この指標は通常、特定のWebサイトにおいて安定しています。つまり、解決率が1%であれば、時間が経過しても1%のままである傾向があります。また、解決率の変化（上昇または下降）は、攻撃が進行中であることを示す強力な指標であることも分かっています。<a href="https://developers.cloudflare.com/bots/concepts/challenge-solve-rate" target="_blank" rel="noopener noreferrer">お客様はログをスキャンして解答率の変化を監視</a>し、何が起きているかを調査することができます。</p>
+	<p>CAPTCHAに代わるものは、当社の<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp">Cryptographic Attestationを</a>含め、数多く試みられてきました。しかし、現在までのところ、CAPTCHAのように広く普及したものはありません。私たちは、CAPTCHAを単一の代替手段で置き換える試みが主な理由であると考えています。CAPTCHAを置き換えると、解答率の安定した履歴が失われ、判断が難しくなります。テキストの解読から画像のピッキングに切り替えた場合、得られる結果は大きく異なります。その結果の良し悪しをどうやって判断すればいいのでしょうか。そこで、私たちは別のアプローチをとりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="many-solutions-not-one">解決策は1つではなく、多く存在する</h3>
+		<a href="https://blog.cloudflare.com/#many-solutions-not-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>一方的にCAPTCHAを廃止し、単一の代替案で置き換えようとするのではなく、私たちは多くの代替案をテストし、CAPTCHAの置き換えとしてどれが最も可能性が高いかを確認するためのプラットフォームを構築しました。私たちはこれをCloudflare Managed Challengeと呼んでいます。</p>
+	<p>Managed Challengeは、CAPTCHAよりもスマートなソリューションです。ビジュアルパズルを提供するかどうかの決定を、ブラウザからより多くの情報を入手した後のフローの後の時点に延期します。以前は、Cloudflareのお客様は、セキュリティまたはファイアウォールルールのアクションとして、CAPTCHAかJavaScriptチャレンジのどちらかしか選択できませんでした。現在、Managed Challengeオプションは、チャレンジ_中に_示されたクライアントの行動や、Web訪問者から受け取ったテレメトリに基づいて、ビジュアルパズルや人間性を証明するその他の手段をWeb訪問者に表示するかどうかを決定します。お客様は、「<i>このタイプのトラフィックにチャレンジするための適切なアクションをCloudflareが必要に応じて取るように</i>」と指示するだけです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bea8fFfhozl0zs4YaANEV/b993fdc8ae1922c672464db938c5b984/image3.png" alt="" class="kg-image" width="1796" height="752" loading="lazy">
+
+	</figure>
+	<p>Managed Challengeでは、実際のチャレンジ結果を個々のWeb訪問者／ブラウザに適応させます。その結果、チャレンジ自体の難易度を微調整し、90％以上の人間のリクエストにはビジュアルパズルを見せないようにすることができます。同時に、人間以外の行動を示すWeb訪問者には、より難しいチャレンジを提示することができます。</p>
+	<p>Web訪問者がManaged Challengeに遭遇すると、まず、一連の小さな非インタラクティブなJavaScriptチャレンジを実行し、Web訪問者／ブラウザ環境に関するより多くのシグナルを収集します。これは、リクエストが行われた時点で、ブラウザ内の検出とチャレンジを展開することを意味します。チャレンジは、Web訪問者が示している特徴や、Web訪問者に関する最初の情報に基づいて選択されます。これらのチャレンジには、プルーフオブワーク、プルーフオブスペース、Web APIのプロービングなど、ブラウザの異常や人間の動作を検出するためのさまざまなチャレンジが含まれますが、これらに限定されるものではありません。</p>
+	<p>また、これには<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">機械学習モデル</a>が搭載されており、これまでにCAPTCHAをパスできたWeb訪問者の共通点を検出します。これらのイニシャルチャレンジの計算難易度はWeb訪問者によって異なりますが、高速に動作することを目標としています。Managed Challengeは、ボット検出からのシグナルとデータを取り入れることで、<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">Cloudflareボット管理</a>と<a href="https://blog.cloudflare.com/ja-jp/super-bot-fight-mode-ja-jp">Super Bot Fightモード</a>システムにも統合されています。</p>
+	<p>非インタラクティブなチャレンジが実行された後、収集されたシグナルを評価します。これらの信号の組み合わせにより、Web訪問者が人間である可能性が高いと確信した場合、それ以上のアクションは行われず、Web訪問者はやりとりの必要なく目的のページにリダイレクトされます。しかし、シグナルが弱い場合は、人間であることを証明するために、Web訪問者にビジュアルパズルを提示する場合もあります。Managed Challengeのコンテキストでは、ビジュアルパズルのステップを使用する時間を減らしていくために、人間であることを<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp">証明する他のプライバシー保護手段</a>も実験しています。</p>
+	<p>当社は昨年からManaged Challengeのテストを開始し、当初はサブセットをローテーションしてチャレンジを選んでいましたが、そのうちの1つがCAPTCHAでした。当初、CAPTCHAはまだ大半のケースで使われていました。対象とする新しいチャレンジの解答率と、既存の安定したCAPTCHAの解答率を比較しました。CAPTCHAの解答率を目標として、CAPTCHAの代替案を改善し、時間をかけてより良いものを作っていきました。チャレンジプラットフォームにより、当社のエンジニアは顧客に影響を与えることなく、新しいタイプのチャレンジを簡単に作成、展開、テストすることができます。チャレンジが役に立たないと分かったら、単に使用を停止するだけです。役に立つと分かれば、使用頻度を増やします。また、真偽を確認するために、少数のWeb訪問者をランダムに選び、常にビジュアルパズルを解いてもらい、当社のシグナルを検証します。</p>
+	<div class="flex anchor relative">
+		<h3 id="managed-challenge-performs-better-than-captcha">Managed ChallengeはCAPTCHAより優れたパフォーマンスを発揮</h3>
+		<a href="https://blog.cloudflare.com/#managed-challenge-performs-better-than-captcha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>チャレンジプラットフォームは、以前使用されていたCAPTCHAと同じ安定した解答率を実現しました。</p>
+	<p>反復的なプラットフォームアプローチにより、<b>CAPTCHAの数を91%削減しました</b>。これは始まりに過ぎません。年末までに、チャレンジとしてのCAPTCHAの使用を1％未満に減らします。ほぼすべてのWeb訪問者のビジュアルパズルのステップをスキップすることで、Web訪問者がチャレンジに費やす時間を平均32秒から、当社の非インタラクティブなチャレンジを実行する平均わずか1秒に短縮することができました。また、解約率の改善も見られます。当社のテレメトリによると、人間のプロパティを持つWeb訪問者は、従来のCAPTCHAアクションよりもManaged Challengeを放棄する可能性が31%低くなっています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OBYoKWypTH4XZbBFzKWdS/1385d0b02278881fcacb3caeac86e447/image4.png" alt="" class="kg-image" width="1200" height="642" loading="lazy">
+
+	</figure>
+	<p>現在、Managed Challengeプラットフォームは、多くのチャレンジを交互に使用しています。Managed Challengeのインスタンスは、多くのサブチャレンジで構成されています。その中には、確立された効果的なものもあれば、当社が試行錯誤している新しいチャレンジもあります。これらはすべて、ユーザーにとってCAPTCHAよりもはるかに速く、簡単に完了することができ、ほとんどの場合、Web訪問者のインタラクションを必要としません。</p>
+	<div class="flex anchor relative">
+		<h3 id="managed-challenge-replaces-captcha-for-cloudflare">Managed ChallengeがCloudflareのCAPTCHAに置き換わる</h3>
+		<a href="https://blog.cloudflare.com/#managed-challenge-replaces-captcha-for-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、Cloudflareネットワーク全体にManaged Challengeを展開しています。Web訪問者にCAPTCHAを表示する場合は、Managed Challengeプラットフォームを経由し、他のチャレンジが同様に機能していることを確認するためのベンチマークとしてのみ表示されます。</p>
+	<p>Cloudflareをご利用のすべてのお客様は、CAPTCHAの代わりにファイアウォールルールの応答オプションとして<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions" target="_blank" rel="noopener noreferrer">Managed Challengeを選択</a>できるようになりました。また、ダッシュボードも更新し、すべてのCloudflareのお客様にこの選択を推奨しています。</p>
+	<p>CAPTCHAオプションの名前を「Legacy CAPTCHA」に変更したことにお気づきでしょう。これは、CAPTCHAが何であるかをより正確に表しています。つまり、時代遅れで、使用すべきではないツールであるということです。その結果、Cloudflareネットワーク全体におけるCAPTCHAの使用率は大幅に低下し、Managed Challengeの使用率は劇的に増加しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DuK6g4cLulBlDRNGQIbDb/0be6f7f969b976731333449a4df6bea0/image5.png" alt="" class="kg-image" width="1834" height="1024" loading="lazy">
+
+	</figure>
+	<p>上述したように、現在CAPTCHAはManaged Challengeの解答数の9％を占めています（水色）が、その数は年内には1％以下に減少するでしょう。また、上のグレーのバーが表示されていますが、これはファイアウォールルールのトリガーに対する応答としてCAPTCHAを表示することをお客様が選択した場合を示しています。この数字がゼロになることを望んでいますが、良いニュースとしては、63％のお客様が、チャレンジ応答アクションを持つファイアウォールルールを作成する際に、CAPTCHAではなくManaged Challengeを選択しているということです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TZAEqYf9KGS3YrrFZAcec/e9b5173caedfae16fcc1362629de437d/image2-1.png" alt="" class="kg-image" width="1200" height="740" loading="lazy">
+
+	</figure>
+	<p>この数字は、時間の経過とともにさらに増加すると予想しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3esUPPcHGlKTY5oYoatGHK/c6c5063878186c2ed55320799458d3d0/image6.png" alt="" class="kg-image" width="1999" height="1081" loading="lazy">
+
+	</figure>
+	<p>Cloudflare WAFを使用している場合、今すぐ<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fwaf%2Ffirewall-rules" target="_blank" rel="noopener noreferrer">ダッシュボードにログイン</a>し、すべてのファイアウォールルールを確認してください。いずれかのルールが応答として_「Legacy CAPTCHA」_を使用している場合は、今すぐ変更してください！代わりに「<i>Managed Challenge</i>」応答オプションを選択してください。現在と同じレベルの保護を維持しながら、より良いエクスペリエンスをユーザーに提供することができます。現在Cloudflareをご利用でないお客様も、CAPTCHAの使用を減らす方法についてご覧ください。</p>
+</div>

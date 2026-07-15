@@ -1,0 +1,173 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/python-workflows">English</a>および<a href="https://blog.cloudflare.com/ko-kr/python-workflows">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IZcX00fxskNhpBQTSfnaC/512aa8861ef7d00e14a477b044fce2be/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>開発者は<a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>すでに</u></a>Cloudflare Workflowsを使用して、長時間実行されるマルチステップアプリケーションをWorkers上で構築することができます。今回、Python Workflowsが登場しました。つまり、選択した言語を使用して、マルチステップのアプリケーションをオーケストレーションできるようになったのです。</p>
+	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>を使用すると、組み込みのエラー処理と再試行動作を使用して、アプリケーション内のべき等ステップのシーケンスを自動化できます。しかし、Workflowsは元々TypeScriptでのみサポートされていました。Pythonは、データパイプライン、人工知能/機械学習、タスク自動化のためのデファクト言語です。これらはすべて、オーケストレーションに大きく依存しているため、これが多くの開発者にとって摩擦を引き起こしました。</p>
+	<p>長年にわたり、開発者に、Pythonでアプリケーションを構築するためのツールをCloudflare上で提供してきました。2020年には、<a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support"><u>Transcrypt経由でPythonをWorkersに導入</u></a>し、2024年にはPythonを<a href="https://github.com/cloudflare/workerd?cf_target_id=33101FA5C99A5BD54E7D452C9B282CD8" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>に直接統合しました。今年初め、私たちはmatprotlibやpandasのように、<a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html" target="_blank" rel="noopener noreferrer"><u>Pyodideでビルドされたパッケージとともに</u></a>、<a href="https://developers.cloudflare.com/workers/languages/python/stdlib" target="_blank" rel="noopener noreferrer"><u>CPython</u></a>のサポートをWorkersで構築しました。現在、Python Workflowsもサポートされているため、開発者は、慣れ親しんだ言語を使用して堅牢なアプリケーションを作成できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-python-for-workflows">なぜPython for Workflowsなのか？</h2>
+		<a href="https://blog.cloudflare.com/#why-python-for-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>LLM</u></a>を訓練しているところを想像してみてください。データセットにラベルを付け、データをフィードし、モデルが実行するのを待ち、損失を評価し、モデルを調整し、これを繰り返す必要があります。自動化がなければ、各ステップを開始し、完了まで手動で監視し、次のステップを始める必要があります。代わりに、ワークフローを使用してモデルのトレーニングを調整し、前のステップの完了を保留して各ステップをトリガーすることができます。損失を評価し、それに応じてモデルを調整するなど、手動調整が必要な場合は、通知を行うステップを実装して、必要な入力を待つことができます。</p>
+	<p>データパイプラインを考えてみましょう。これは、データを取り込み処理するためのPythonの主なユースケースです。開発者は、一連の識別されたステップによってデータパイプラインを自動化することにより、データパイプライン全体を処理するワークフローをデプロイできます。</p>
+	<p>別の例として、<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>の構築、例えば食料品を管理するエージェントを構築するといった場合です。毎週、レシピのリストを入力すると、エージェントが(1) 必要な食材リストを作成し、(2) 先週から買いことがてある食材をチェックし、(3) 近所の食料品からの受け取りを注文する可能性があります。Workflowを使用すると、次のようになります：</p>
+	<ol>
+		<li>
+			<p><code>await step.wait_for_event()</code> ユーザーが食料品リストを入力する</p>
+		</li>
+		<li>
+			<p><code>step.do()</code>必要な材料のリストをコンパイルする</p>
+		</li>
+		<li>
+			<p><code>step.do()</code>残りの食材に対して必要な材料のリストを確認する</p>
+		</li>
+		<li>
+			<p><code>step.do()</code>は、API呼び出しを実行して注文を配置します。</p>
+		</li>
+		<li>
+			<p><code>step.do()</code>支払い手続きに進む</p>
+		</li>
+	</ol>
+	<p><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare上でエージェントを構築する</u></a>ためのツールとしてworkflowsを使用することで、エージェントのアーキテクチャを簡素化し、個々のステップのリトライやステートの永続化によって、完了に達する確率を高めることができます。Python Workflowsのサポートにより、Pythonを使用したエージェントの構築がこれまで以上に容易になります。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-python-workflows-work">Python Workflowsの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-python-workflows-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workflowsは、耐久性のある実行のために当社が作成した基盤となるインフラストラクチャを使用し、Pythonユーザーがワークフローを記述できるようにします。さらに、JavascriptとPython SDK間で完全な機能パリティを目指しました。これはCloudflare Workersがランタイム自体でPythonを直接サポートしているから可能です。</p>
+	<div class="flex anchor relative">
+		<h4 id="creating-a-python-workflow">Python Workflowの作成</h4>
+		<a href="https://blog.cloudflare.com/#creating-a-python-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workflowsは、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>上に完全に構築されています。各要素は、Workflowのメタデータとインスタンスレベルの情報を保存する役割を果たします。Workflowsプラットフォームの仕組みの詳細については、<a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>こちらのブログ記事をご覧ください</u></a>。</p>
+	<p>Workflowsコントロールプレーンの最下部にはユーザーのWorkerがあり、これが<code>WorkflowEntrypoint</code>です。Workflowインスタンスが実行する準備ができると、WorkflowエンジンはRPC経由でユーザーWorkerの<code>run</code>メソッドを呼び出します（この場合はPython Worker）。</p>
+	<p>これは、公式ドキュメントで提供されているWorkflow宣言のスクレイピングの例です。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+  async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+    // Steps here
+  }
+}</code></pre>
+	<p><code>run</code>メソッドは、前述のように、耐久性のある実行APIを実装する<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstep" target="_blank" rel="noopener noreferrer"><u>WorkflowStep</u></a>パラメータを提供します。これは、ユーザーが同時実行できるようにするものです。これらのAPIsはJavaScriptで実装されており、Python Workerのコンテキスト内でアクセスする必要があります。</p>
+	<p><code>WorkflowStep</code>は、RPCバリアを通過しなければなりません。つまり、エンジン（呼び出し元）は、WorkflowStepを<code>RpcTarget</code>として公開することになるのです。このセットアップにより、ユーザーのWorkflow（コール）は、パラメータをスタブに置き換えることができます。このスタブは、RPCをエンジンに戻すことで、Workflowsの耐久性のある実行APIsの使用を可能にします。RPCの直列化と、呼び出し元と呼び出し先から関数を渡す方法については、<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>Remote-Procedure呼び出しのドキュメント</u></a>をご覧ください。</p>
+	<p>Workflows側からユーザーWorkerの呼び出し方法を実際に変更するわけではないため、これはPython WorkflowsとJavaScript Workflowsの両方に当てはまります。しかし、Pythonの場合は、PythonとJavaScriptモジュールの間に言語ブリッジという別の障壁があります。RPCリクエストがPython Workerをターゲットとする場合、Pythonスクリプトによって処理されるようにリクエストをプロキシして、呼び出し元に返される責任を負うJavascriptエントリポイントモジュールがあります。このプロセスでは、通常、リクエスト処理の前後にタイプ変換が行われます。</p>
+	<div class="flex anchor relative">
+		<h4 id="overcoming-the-language-barrier">言語障壁の克服</h4>
+		<a href="https://blog.cloudflare.com/#overcoming-the-language-barrier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python workersは<a href="https://pyodide.org/en/stable" target="_blank" rel="noopener noreferrer"><u>Pyodide</u></a>を使用します。PyodideはCPythonのWebAssemblyへのポートです。Pyodideは、Pythonに外部関数インターフェース（FFI）を提供しており、PythonからJavaScriptメソッドを呼び出すことができます。この仕組みによって、他のバインディングやPythonパッケージもWorkersプラットフォーム内で動作するようになります。したがって、このFFIレイヤーを使用することで、Workflowバインディングの直接使用を可能にするだけでなく、Pythonで<code>WorkflowStep</code>メソッドを提供することも可能になります。つまり、<code>WorkflowEntrypoint</code>がランタイムにとって特別なクラスであると考慮することで、runメソッドは手動でラップされ、<code>WorkflowStep</code>が他のJavaScriptオブジェクトのように型変換されるのではなく、<a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html?cf_target_id=B32B42023AAEDEF833BCC2D9FD6096A3#pyodide.ffi.JsProxy" target="_blank" rel="noopener noreferrer"><u>JsProxy</u></a>として公開されます。さらに、ユーザーWorkerの視点からAPIsをラップすることで、単にJavaScript SDKを異なる意味の言語に公開するのではなく、開発体験全体にいくつかの調整を加えることができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="making-the-python-workflows-sdk-pythonic">Python Workflows SDKをPython化する</h4>
+		<a href="https://blog.cloudflare.com/#making-the-python-workflows-sdk-pythonic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WorkflowsをPythonに移植する際の大部分は、Pythonユーザーが使い慣れた、問題なく使用できるインターフェイスを公開することです。これは、JavaScript APIsで起こることと同様です。少し戻って、Workflow（Typescriptで記述）定義のスニペットを見てみましょう。</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent} from 'cloudflare:workers';
+ 
+export class MyWorkflow extends WorkflowEntrypoint {
+    async run(event: WorkflowEvent&lt;YourEventType&gt;, step: WorkflowStep) {
+        let state = step.do("my first step", async () =&gt; {
+          // Access your properties via event.payload
+          let userEmail = event.payload.userEmail
+          let createdTimestamp = event.payload.createdTimestamp
+          return {"userEmail": userEmail, "createdTimestamp": createdTimestamp}
+	    })
+ 
+        step.sleep("my first sleep", "30 minutes");
+ 
+        await step.waitForEvent&lt;EventType&gt;("receive example event", { type: "simple-event", timeout: "1 hour" })
+ 
+   	 const developerWeek = Date.parse("22 Sept 2025 13:00:00 UTC");
+        await step.sleepUntil("sleep until X times out", developerWeek)
+    }
+}</code></pre>
+	<p>Workflows APIのPython実装には、doメソッドの変更が必要です。他の言語とは異なり、Pythonは匿名コールバックを簡単にサポートしません。この動作は通常、<a href="https://www.w3schools.com/python/python_decorators.asp" target="_blank" rel="noopener noreferrer"><u>デコレータ</u></a>の使用によって実現されます。この場合、メソッドをインターセプトして慣用的に公開することができます。つまり、すべてのパラメータは元の順序を維持し、デプロイされたメソッドがコールバックとして機能します。</p>
+	<p><code>waitForEvent</code>、<code>sleep</code>、<code>sleepUntil</code>は、名前がヘビケースに変換されている限り、元の署名を保持できます。</p>
+	<p>同じワークフローで、同様の動作を実現するPythonのバージョンは以下の通りです：</p>
+	<pre class="language-Python"><code class="language-Python">from workers import WorkflowEntrypoint
+ 
+class MyWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do("my first step")
+        async def my_first_step():
+            user_email = event["payload"]["userEmail"]
+            created_timestamp = event["payload"]["createdTimestamp"]
+            return {
+                "userEmail": user_email,
+                "createdTimestamp": created_timestamp,
+            }
+ 
+        await my_first_step()
+ 
+        step.sleep("my first sleep", "30 minutes")
+ 
+         await step.wait_for_event(
+            "receive example event",
+            "simple-event",
+            timeout="1 hour",
+        )
+ 
+        developer_week = datetime(2024, 10, 24, 13, 0, 0, tzinfo=timezone.utc)
+        await step.sleep_until("sleep until X times out", developer_week)</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="dag-workflows">DAG Workflows</h4>
+		<a href="https://blog.cloudflare.com/#dag-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workflowsを設計する際、これらのタスクの一部は同時に処理できる場合でも、ステップ間の依存関係を管理することがよくあります。考えていないとしても、多くのWorkflowsには、有向非巡回グラフ（DAG）の実行フローがあります。PyodideはJavascriptのthenablesをキャプチャし、Python awaitablesにプロキシするため、Python Workflowsの最初のイテレーション（つまり、Python Workersへの最小ポート）で並行処理が可能です。 </p>
+	<p>結果として、<code>asyncio.gather</code>は<code>Promise.all</code>に対応するものとして機能します。これは全く問題なくSDKで使用できますが、宣言的なアプローチもサポートしています。</p>
+	<p>doメソッドをコーディングする利点の1つは、オリジナルのAPIでさらなる抽象化を提供し、エントリーポイントラッパーで動作させることができるということです。以下は、導入されたDAGの機能を使用するPython APIの例です。</p>
+	<pre class="language-Python"><code class="language-Python">from workers import Response, WorkflowEntrypoint
+
+class PythonWorkflowDAG(WorkflowEntrypoint):
+    async def run(self, event, step):
+
+        @step.do('dependency 1')
+        async def dep_1():
+            # does stuff
+            print('executing dep1')
+
+        @step.do('dependency 2')
+        async def dep_2():
+            # does stuff
+            print('executing dep2')
+
+        @step.do('demo do', depends=[dep_1, dep_2], concurrent=True)
+        async def final_step(res1=None, res2=None):
+            # does stuff
+            print('something')
+
+        await final_step()</code></pre>
+	<p>この種のアプローチにより、Workflows宣言ははるかにクリーンになり、状態管理はWorkflowsエンジンのデータプレーンとPython WorkersWorkflowsラッパーに任せられます。同じ名前で複数のステップを実行できる場合でも、エンジンは一意性を確保するために、各ステップの名前をわずかに変更することに注意してください。Python Workflowsでは、依存関係は、その依存関係に関わる最初のステップが正常に完了すると解決されたものとみなされます。</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">ぜひお試しください</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>PythonでのWorkersの記述</u></a>をチェックして、今すぐ最初の<a href="https://developers.cloudflare.com/workflows/python" target="_blank" rel="noopener noreferrer"><u>Pythonワークフローを作成しましょう</u></a>！機能リクエストがある場合、またはバグにお気づきの点がある場合は、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>DiscordのCloudflare開発者コミュニティ</u></a>に参加して、Cloudflareチームに直接フィードバックを共有してください。</p>
+</div>

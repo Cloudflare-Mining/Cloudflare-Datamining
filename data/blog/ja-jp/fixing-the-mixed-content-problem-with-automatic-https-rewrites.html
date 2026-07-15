@@ -1,0 +1,124 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/fixing-the-mixed-content-problem-with-automatic-https-rewrites">English</a>、<a href="https://blog.cloudflare.com/fr-fr/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Français</a>、<a href="https://blog.cloudflare.com/de-de/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/fixing-the-mixed-content-problem-with-automatic-https-rewrites">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/fixing-the-mixed-content-problem-with-automatic-https-rewrites">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77UoCKX1MDvvgaAZ9Q3PQ8/2e16989c71cdfc7e858e05ba47ad8ce6/fixing-the-mixed-content-problem-with-automatic-https-rewrites.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは、暗号化されていないインターネットに終止符を打つことを目指しています。しかし、WebのHTTPSの移行については、ニワトリとタマゴのように、どちらが先かと言う問題があります。</p>
+	<p>昔は、HTTPSケーブルWebサイトをセットアップすることは、困難で、高価で、時間がかかることでした。そこで登場したのが、Cloudflareの<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>のような、<a href="http://xn--https-p63d3p//%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%82%92%E3%80%81%E3%83%9C%E3%82%BF%E3%83%B31%E3%81%A4%E3%82%92%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B%E3%81%A0%E3%81%91%E3%81%A7%E7%B0%A1%E5%8D%98%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A7%E3%81%99%E3%80%82%E3%83%AF%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%A7%E3%80%81%E7%84%A1%E6%96%99%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%99%BA%E8%A1%8C%E3%81%97%E3%81%A6%E3%80%81%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92HTTPS%E3%81%A7%E6%8F%90%E4%BE%9B%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82" target="_blank" rel="noopener noreferrer">http://からhttps://への移行を、ボタン1つをクリックするだけで簡単にできるサービスです。ワンクリックで、無料の新しいSSL証明書を発行して、サイトをHTTPSで提供できるようになりました。</a></p>
+	<p>ここで大きな変化がもたらされます。</p>
+	<p>突然、WebサイトはHTTPS経由で利用可能になり、最新のWebプロトコルである<a href="https://www.cloudflare.com/ja-jp/website-optimization/http2" target="_blank" rel="noopener noreferrer">HTTP/2</a>を活用することができるようになったことで、Webサイトは高速化しました。</p>
+	<p>しかし、話はここで終わりません。他の面では安全な多くのサイトが、混合コンテンツの問題に頭を悩まされることになりました。また、混合コンテンツは、完全に安全とは言い切れないため、<a href="https://xn--v8jss5dp2h8dqc7hzg9h0415a3xmx98jpnozorl2xf97b." target="_blank" rel="noopener noreferrer">https://サイトに緑色の南京錠が表示されません。</a></p>
+	<p>そして、問題が起きるのは、<a href="https://xn--web-bc4bla14a2dvg" target="_blank" rel="noopener noreferrer">https://のWebサイトに</a> <a href="http://xn--()-g73a5a5b2a1b9cdh6ea4sza2ab3nfk48bb05ahbc79avb3bd86jba2556vx11av6aia4727a484r3sra3m4erwvbmv6i.xn--q6j5h1ayg6hbg3ltf7cyr4uenz995bh7nqo6kejrak9tfi1ajr2c.xn--javascript-bh3iaka93i1c2sra1fd22diqffbb70brdumd37awyvrma5808y8nxj" target="_blank" rel="noopener noreferrer">http://経由で配信されたサイト（サイト独自のものも含む）コンテンツが含まれている場合です。その場合は、緑色の鍵マークが表示されません。これは、画像、JavaScript、オーディオ、ビデオなどのリソースが</a> <a href="http://xn--web-3y3bwnqa2jra7cwb1agfl0bt92alag9c6lta1mxqxa9uyhogum1by2b3jufnb75c8168fo2patqxbg1b631aw23tp4sc0jap572e.xn--()-883a6bofse4x4h8exjzcxe7440drwfvss3z3obcsc4k0b." target="_blank" rel="noopener noreferrer">http://経由で組み込まれている場合、安全なWebサイトにセキュリティホールを作ってしまうためです。問題の侵入経路（バックドア）になるのです。</a></p>
+	<p>Webブラウザはこれが問題であることを、実に長い間認識してきました。1997年まで遡ると、Internet Explore 3.0.2は、次のダイアログボックスを使用して、サイトユーザーに混在コンテンツを警告していました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fFSyQa1HkTERZMaHgzcd7/17cf2d14f450feaa32164ac0ac3c6a7b/IC310968.gif" alt="" class="kg-image" width="332" height="157" loading="lazy">
+
+	</figure>
+	<p>現在、Google Chromeでは安全でないコンテンツが含まれるhttps: //では、マルで囲んだ「i」が表示されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UbRZJMuwMEpCkstNVdxAh/5938aa65b3bea23c830841646df74ad9/Screen-Shot-2016-09-22-at-11.22.08.png" alt="" class="kg-image" width="302" height="138" loading="lazy">
+
+	</figure>
+	<p>また、Firefoxでは、警告のマークが書かれた南京錠が表示されます。これらのブラウザで緑色の南京錠を表示するには、すべてのサブリソース（ページによって読み込まれるリソース）をHTTPS経由で提供する必要があります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/567KKnhwZN2f9MjwnOXzaE/9c7eb09e29684c2a6f0b9684eff925f2/Screen-Shot-2016-09-22-at-11.23.45.png" alt="" class="kg-image" width="330" height="129" loading="lazy">
+
+	</figure>
+	<p>1997年だったら、「はい」をクリックした場合、Internet Explorerは混合コンテンツの危険性を無視し、平文のHTTPを使用してサブリソースを読み込んでいました。そして、[いいえ] をクリックすると、読み込みを防止しました (多くの場合、破損しているけれども安全なWebページが表示されることになりました)。</p>
+	<div class="flex anchor relative">
+		<h3 id="transitioning-to-fully-secure-content">完全に安全なコンテンツへの移行</h3>
+		<a href="https://blog.cloudflare.com/#transitioning-to-fully-secure-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>混合コンテンツの解決策を「<a href="https://xn--web-3y3bda6fwwac5bd0bo2etb8dxaen1b8gwcydb7anrc1g6fqnsgnaa1k6nja0c1ofg9du8b2xl1am213iymeqx3b1yhpi43a1ryd6zp2p5ecw2bta9766mblrc1i4h.xn--webweb-hr3ekdj48crbh6hvd2dsgqavpnce7cefiy52b2a3lpgh0irjntkcb6bg91d5bfh3npvfcdv5emi8a89af4sy9dba00cdec79465ctbja600c8q2avr5efkyabn0gljsanxan39wzqtbed3rdg6gojmbbmzf8dzf92h." target="_blank" rel="noopener noreferrer">https://を使ってすべてを読み込み、Webサイトを修正するだけで」いいと簡単に考えることは、魅力的かもしれませんが、甘い考えです。残念ながら、ファーストパーティやサードパーティのWebサイトから最新のWebサイトに読み込まれた混合コンテンツの変更を「簡単に」行うことは非常に困難なのです。</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5z1ldg0RSCpvmwSsUEr3At/fb802e6f873ddeec6da07219cb2081cd/14127169401_54ca5e9c1f_z.jpg" alt="" class="kg-image" width="640" height="348" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe" target="_blank" rel="noopener noreferrer">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/jeepersmedia" target="_blank" rel="noopener noreferrer">Mike Mozart</a></p>
+	<p>Wiredはブログ投稿の中で、<a href="https://への移行について取り上げ、すべてをHTTPSに移行することがどれほど大変なことかを[文書にまとめて](https://www.wired.com/2016/09/now-encrypting-wired-com/)います。彼らは[4月](https://www.wired.com/2016/04/wired-launching-https-security-upgrade/)に開始し、5か月をそのプロセスに費やしました（メインWebサイトをhttps://にするのに、すでに何か月も費やした後の話です）。5月には、[問題点](https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/)に関する記事を投稿しています：">https://への移行について取り上げ、すべてをHTTPSに移行することがどれほど大変なことかを[文書にまとめて](https://www.wired.com/2016/09/now-encrypting-wired-com/)います。彼らは[4月](https://www.wired.com/2016/04/wired-launching-https-security-upgrade/)に開始し、5か月をそのプロセスに費やしました（メインWebサイトをhttps://にするのに、すでに何か月も費やした後の話です）。5月には、[問題点](https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/)に関する記事を投稿しています：</a></p>
+	<p><i>「[...] HTTPSへの移行における最大の課題の1つは、すべてのコンテンツを安全な接続で配信できるように準備することです。ページが HTTPS 経由で読み込まれる場合、他のすべてのアセット (画像やJavascriptファイルなど) も HTTPS 経由で読み込む必要があります。これらの「混在コンテンツ」の問題を報告する大量のレポートや、安全な HTTPS ページのコンテキストに安全ではないHTTPアセットが読み込まれるイベントを目にしています。適切に移行するには、混在したコンテンツの問題がより少なくなるように確認する必要があります。つまり、WIRED.comのコンテンツの多くをできる限り安全な状態で、配信できるようにする必要があるのです。</i></p>
+	<p>2014年に、ニューヨーク・タイムズは、混合コンテンツを安全化への<a href="http://open.blogs.nytimes.com/2014/11/13/embracing-https" target="_blank" rel="noopener noreferrer">大きな障害</a><i>だと指摘しました。</i></p>
+	<p><i>「HTTPS に正常に移行するには、ページアセットへのすべてのリクエストを安全なチャネル経由で行う必要があります。これは困難な課題であり、可動部分がたくさんあります。JavaScriptから広告アセットまで、安全でないドメインから現在読み込まれているリソースを考慮しなければなりません。」</i></p>
+	<p>W3Cは、これを大きな問題として<a href="https://www.wired.com/2016/09/now-encrypting-wired-com" target="_blank" rel="noopener noreferrer">認識し</a>、_「中でも注目すべきなのは、混合コンテンツの確認は、大量のレガシーコンテンツをHTTPSに移行させるという作業を担当する管理者の頭を悩ませる可能性があることです。特に、古いコンテンツを確認して、リソースURLを手動で書き換えるという作業は、とても大変な作業です。」と述べています。_そして、困難な例として、BBCの<a href="https://www.bbc.co.uk/blogs/internet/entries/f7126d19-2afa-3231-9c4e-0f7198c468ab" target="_blank" rel="noopener noreferrer">巨大アーカイブ</a><i>を引用しています。</i></p>
+	<p>しかし、混合コンテンツの問題を抱えているのは、メディアサイトだけではありません。CMSユーザーの多くは、CMSが生成するすべてのリンクを更新することは困難または不可能だと考えています。設定ファイル、ソースコード、またはデータベースにリンクが埋もれている可能性があるためです。さらに、ユーザーが生成したコンテンツを処理する必要があるサイトも、<a href="http://uri" target="_blank" rel="noopener noreferrer">http://URI</a> の問題に直面します。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-dangers-of-mixed-content">混在コンテンツの危険性</h3>
+		<a href="https://blog.cloudflare.com/#the-dangers-of-mixed-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>混合コンテンツには、アクティブとパッシブの2種類があります。最新のWebブラウザがどのように危険性に対処するかというと、アクティブ混合コンテンツ（最も危険）は自動的に完全にブロックし、パッシブ混合コンテンツは許可しますが、警告を表示します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CleAMTHGwVEkjUZX07Dko/dc8d461778fb08337f10c53e00a7ee4b/6714200883_2ba8167533_b.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/99mph/6714200883/in/photolist-bej31c-szQAb-i2swr-fnz3A-avkaMz-SB8LC-4kKK2r-6UFtFq-5EhUFH-i2sBe-dHEMmA-A4cie-aC6Wtc-4ZRUkX-srjkGs-5raEpY-eosHU-Ee7Ye-6vWtxh-6Pd2Nq-5Yz5u2-nU1Pfn-nBPiU4-N6B99-7WL2J9-FEkU5X-dU1PPb-JbHZad-aBEqKL-6w5v1r-65Nths-6DbhPs-nsfgLN-67jbBc-nAxzxi-7krEou-4GxJDe-nUsvgg-9kk75E-8AAsi-jJpNkj-4a5Znf-NQtE-d5xmAL-qiBCh-8cM-qXdkTc-9aLMpU-dWVoe-4A1jyr" target="_blank" rel="noopener noreferrer">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/99mph" target="_blank" rel="noopener noreferrer">Ben Tilley</a></p>
+	<p>アクティブコンテンツはDOM（Webページ自体）を変更できるものすべてを指します。リソースは <code>&lt;script&gt;</code>、 <code>&lt;link&gt;</code>、 <code>&lt;iframe&gt;</code>または <code>&lt;object&gt;</code> タグを経由して取り込まれ、CSSは、URLを使用するリソースを優先し、XMLHTTPリクエストを使用している全リクエスト は、ページの変更、Cookieの読み取り、ユーザー資格情報へのアクセスが可能です。</p>
+	<p>パッシブコンテンツはそれ以外のものです：ページには組み込まれているけれども、それ自体でページにアクセスすることはできない画像、オーディオ、ビデオがこれにあたります。</p>
+	<p>アクティブコンテンツは本当の脅威になります。攻撃者が <a href="http://uri" target="_blank" rel="noopener noreferrer">http://URI</a> のリクエストを傍受した場合、コンテンツを独自のコンテンツに置き換えることができるためです。これは理論上の問題ではありません。2015年にGithubは、<a href="https://citizenlab.ca/2015/04/chinas-great-cannon" target="_blank" rel="noopener noreferrer">Great Cannon</a>と呼ばれるシステムによって攻撃を受けました。Great Cannonは、HTTP経由で一般的なJavaScriptファイルのリクエストを傍受し、JavaScript攻撃スクリプトに置き換えました。TCPを傍受し、<a href="http://uri" target="_blank" rel="noopener noreferrer">http://URI</a> から読み込んだアクティブコンテンツに固有の脆弱性を悪用することで、罪のないユーザーのマシンを武器にしたのです。</p>
+	<p>パッシブコンテンツはタイプの異なる脅威です。パッシブコンテンツに対するリクエストは（暗号化されず）平文で送信されるため、傍受者はリクエストを監視し、情報を抽出することができます。たとえば、傍受者が適切な場所にいれば、Cookie、訪問先のWebページ、さらに、もしかすると認証情報も監視できるかもしれません。</p>
+	<p><a href="http://codebutler.com/firesheep" target="_blank" rel="noopener noreferrer">Firesheep</a> Firefoxアドオンは、ローカルネットワーク（例えば、コーヒーショップにあるネットワーク）で、リクエストがHTTPで送信されるのを監視し、自動的にCookieを盗み、誰かのIDをワンクリックで乗っ取ることができてしまいます。</p>
+	<p>現在、最新のブラウザでは、安全でない状態で読み込まれているアクティブコンテンツをブロックしますが、パッシブコンテンツは通過させてしまいます。やはり、すべてを<a href="https://xn--q6j4huaxdaaa9ilcc6ajd1cacb7p4a20bgah01d9hofpjkj6bk50hze3lb4688xpkau80kg10apbbrz2ci31ctp1f9m1c7vktw8kuv9fq1sfik1a." target="_blank" rel="noopener noreferrer">https://へと移行することが、混在コンテンツに関するすべてのセキュリティ上の問題に対処する唯一の方法なのです。</a></p>
+	<div class="flex anchor relative">
+		<h3 id="fixing-mixed-content-automatically">混合コンテンツを自動的に修正する</h3>
+		<a href="https://blog.cloudflare.com/#fixing-mixed-content-automatically" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社ではWebを完全に暗号化することを目標として掲げているため、長い間、混合コンテンツを適切に修正したいと考えてきました。そして、他のCloudflareサービスと同様に、私たちはこれを「ワンクリック」で実現できる体験にしたいと考えました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28Wmhnv7H20f0tjIPihGlt/b4ce58dc1aa7db8ab248029a3cc1a2fd/1078317132_0e96301aef_b--1-.jpg" alt="" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/pinkmoose/1078317132/in/photolist-2DhE7G-pvcxy5-k8yyU-dGahX9-7cRyRV-byeo7f-cNka9m-5VqLgk-byenTE-dG4STe-dGafYU-dG4RnT-tAGvqC-tAGA6u-uxhxfW-4Wrx7L-dGahZQ-dGafW9-dG4QiZ-dGagHY-4K5jAk-dwrgVQ-dGafTE-xyEYA-dG4SYP-9LEfKd-7cRy3F-dGainJ-dGahAN-4LPBp9-bnWEe3-bNknmF-pTFtg2-dG4Ra8-6hZDxR-AobuPS-bM92up-dGafDC-yuJw-q8ZsgV-4GGuAM-4Twy1U-dGaf9s-dG4QfX-52rQZg-dpK5hj-dG4RSz-dpJU8v-4EJ5JP-5pvYKT" target="_blank" rel="noopener noreferrer">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/pinkmoose" target="_blank" rel="noopener noreferrer">Anthony Easton</a></p>
+	<p>当社はいくつかのアプローチを検討しました。</p>
+	<p><i>the upgrade-insecure-requests CSPディレクティブを自動的に挿入する</i></p>
+	<p><a href="https://www.w3.org/TR/upgrade-insecure-requests" target="_blank" rel="noopener noreferrer">upgrade-insecure-requests</a>ディレクティブは<a href="https://www.w3.org/TR/CSP" target="_blank" rel="noopener noreferrer">Content Security Policy</a>ヘッダーに次のように追加されます。</p>
+	<pre class="language-bash"><code class="language-bash">Content-Security-Policy: upgrade-insecure-requests</code></pre>
+	<p><code>Content-Security-Policy：upgrader-insecure-requests</code></p>
+	<p>これは、HTTPリクエストをHTTPSに自動的にアップグレードするようにブラウザに指示します。これは、Webサイトの所有者がすべてのサブリソースが HTTPS 経由で利用可能であることを知っている場合に便利です。Webサイトは実際にWebサイトに埋め込まれている<a href="http://xn--urihttps-ro4g" target="_blank" rel="noopener noreferrer">http://URIをhttps</a>: //に変更する必要はありません。ブラウザが自動的にこれを処理します。</p>
+	<p>しかしながら、upgrade-insecure-requestsには大きな欠点があります。ブラウザは、結果として得られるURIが実際にページで動作するかどうかなどはお構いなしで、ひたすらすべてのURIをhttps: //にアップグレードするので、ページが<a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank" rel="noopener noreferrer">壊れる</a>可能性があるのです。</p>
+	<p><a href="https://xn--p8ja1dud3gva7be4x3u9c8408bqgbc8jus2j" target="_blank" rel="noopener noreferrer"><i>https://を使うように全リンクを修正する</i></a></p>
+	<p>Cloudflare Webサイトの訪問者が使用するすべてのブラウザがupgrade-insecure-requestsをサポートしているわけではないため、Cloudflareでは当社サービスを使って、すべての<a href="http://xn--uri-rg4b" target="_blank" rel="noopener noreferrer">http://URIを</a> <a href="https://xn--28jiaf7a1cs0nne2c1isgvj5cskzmljw053gq20e.xn--webupgrade-insecure-requests-m510apj1bx8irh3af4a3q5a7je5a1c7a2yxjqbfb7am0b3e8b7jc74g3tfa0b55arb94evd6f75b5a7a1jrfqquwyzvf0kzith60a0b9dx8e3a7a52565d8oedz7v2rrbqg0ig5xdulle966e." target="_blank" rel="noopener noreferrer">https://にアップグレードすることを検討しました。Webページをリアルタイムで解析して変更することができるので、ブラウザのサポートに依存しない「upgrade-insecure-requests」サービスを作成することができました。</a></p>
+	<p>残念ながら、このサービスでも、<a href="http://uri" target="_blank" rel="noopener noreferrer">http://URI</a> を<a href="https://xn--https-0t3da94csa2dcat0fh7dhnh4c6oxaecq0dn6ij94bra0a7a93azad0b1uc3c87fymvf84fza20b4on116jsusbqgndi7bmxcf85cw56g341jv3rjdh7ats1avy8f9gva." target="_blank" rel="noopener noreferrer">https://に変換すると、リンクが壊れるという同じ問題が起こりますが、実際にはHTTPSを使用してリソースを読み込むことはできません。</a></p>
+	<p><i>他のCloudflareサイトを指すリンクを修正する</i></p>
+	<p>Cloudflareでは、400万人のお客様に無料で<a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>を提供しており、Webトラフィックの大部分をカバーしているため、<a href="http://xn--https-p63d3p//%E3%81%AB%E5%BD%93%E7%A4%BE%E3%81%8C%E6%8A%8A%E6%8F%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BURI%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%80%81%EF%BC%88URI%E3%81%8C%E5%BD%93%E7%A4%BE%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%A7%EF%BC%89%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%A8%E8%80%83%E3%81%88%E3%81%A6%E3%81%84%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82" target="_blank" rel="noopener noreferrer">http://からhttps//に当社が把握しているURIをアップグレードすることは、（URIが当社のサービスを使用しているので）できると考えていました。</a></p>
+	<p>これは問題の一部を解決しますが、HTTPからHTTPSへのアップグレードに関する一般的問題の解決にはなりません。</p>
+	<p><i>既知のHTTPS対応のURIを書き換えるシステムを作成する</i></p>
+	<p>最終的には、スマートな方法で解決することができました。リソースがHTTPSを使って提供できることがわかっている場合には、URIを<a href="http://xn--https-p63d3p//%E3%81%AB%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%E3%81%A9%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%8C%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E5%8F%AF%E8%83%BD%E3%81%8B%E3%82%92%E6%8A%8A%E6%8F%A1%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%80%81EFF%E3%81%AE%E5%84%AA%E3%82%8C%E3%81%9F[HTTPS" target="_blank" rel="noopener noreferrer">http://からhttps://にアップグレードしました。どのリンクがアップグレード可能かを把握するために、EFFの優れた[HTTPS</a> Everywhere](<a href="https://www.eff.org/https-Everywhere)%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%A8Google" target="_blank" rel="noopener noreferrer">https://www.eff.org/https-Everywhere)拡張機能とGoogle</a> Chromeの<a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank" rel="noopener noreferrer">HSTS Preload</a>リストを使用して、SSLが有効になっているCloudflareサイトに関する知識を強化しました。</p>
+	<p>EFFがこのプロジェクトを手伝ってくれたことにとても感謝しています。</p>
+	<pre class="language-bash"><code class="language-bash">&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
+gstatic\.com/" to="https://$1.gstatic.com/"/&gt;</code></pre>
+	<p>HTTPS Everywhere ルールセットは、<a href="http://xn--u8jwg" target="_blank" rel="noopener noreferrer">http://から</a> <a href="https://xn--uri()-0t3dprzaazxi5n1gjk1code6c1h6dxhc7wlb3bybzn64b4lne6g32ca43dia29904a78ernszw2cyd7bvy2eszyb3w4dh23te1ja.xn--gstatic-xo3fwwfhsdre.xn--comhttp-xe4fa3861izu9f" target="_blank" rel="noopener noreferrer">https://への切り替えに加えて、非常に特殊なURIをターゲットにできるルール（および除外）が含まれています。たとえば、gstatic.comの実際のHTTP</a> Everywhereルールは次のようになります。</p>
+	<p>HTTPS Everywhereは、正規表現を使用して、HTTPSを使用するために安全にアップグレードできるgstatic.comのサブドメインを識別します。完全なルールのセットは<a href="https://www.eff.org/https-everywhere/atlas" target="_blank" rel="noopener noreferrer">こちら</a>で参照できます。</p>
+	<p>Webページに埋め込まれた膨大な数のURIをアップグレードする必要があるため（毎秒500万前後になると見積もっています）、既存のHTMLパーサー（当社独自のものを含む）をベンチマークとし、このタイプの書き換えタスクのために新しいものを書くことにしました。今後のブログ記事では、その設計、テスト、パフォーマンスについての詳細を投稿する予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="automatic-https-rewrites">HTTPS の自動リライト</h3>
+		<a href="https://blog.cloudflare.com/#automatic-https-rewrites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DZLdLkvnV1oot1cCmSTR/8eddcb3deaaeb16f0bead6cea6817a52/Screen-Shot-2016-09-22-at-11.06.05.png" alt="" class="kg-image" width="968" height="221" loading="lazy">
+
+	</figure>
+	<p>HTTPSの自動リライトは、Cloudflareのお客様にカスタマーダッシュボードからご利用いただけます。現在、この機能はデフォルトで無効になっており、「ワンクリック」で有効にすることができます。</p>
+	<p>当社ではこの機能のパフォーマンスと有効性をモニタリングし、今年後半にFreeおよびProプランのお客様に向けて、デフォルトでこの機能を有効にする予定です。また、Content Security Policyのレポート機能を使用して、すべての <a href="https://への移行ができるだけ簡単に行えるように、アップグレードするURIの自動表示をお客様に提供する予定です。Wiredが[報告](https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/)しているように、変更が必要なURIを見つける作業そのものが非常に難しい場合があります。">https://への移行ができるだけ簡単に行えるように、アップグレードするURIの自動表示をお客様に提供する予定です。Wiredが[報告](https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/)しているように、変更が必要なURIを見つける作業そのものが非常に難しい場合があります。</a></p>
+	<p>この機能をご利用になったお客様の感想をぜひお聞かせください。</p>
+</div>

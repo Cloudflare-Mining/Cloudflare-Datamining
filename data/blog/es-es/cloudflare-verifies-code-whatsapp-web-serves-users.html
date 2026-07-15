@@ -1,0 +1,62 @@
+<div class="mb2 gray5">4 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-verifies-code-whatsapp-web-serves-users">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-verifies-code-whatsapp-web-serves-users">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-verifies-code-whatsapp-web-serves-users">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-verifies-code-whatsapp-web-serves-users">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-verifies-code-whatsapp-web-serves-users">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/cloudflare-verifies-code-whatsapp-web-serves-users">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FPeCci2N2veV6Go4sj7XD/5294cc38f6afc509e6bf14d83a7ced0d/cloudflare-verifies-code-whatsapp-web-serves-users.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>¿Cómo sabes que el código que descarga tu navegador web cuando visitas un sitio es el código que el sitio web quería que ejecutaras? A diferencia de una aplicación móvil descargada de una tienda de aplicaciones de confianza, la web no ofrece el mismo grado de garantía de que el código no ha sido manipulado. Hoy, <a href="https://engineering.fb.com/2022/03/10/security/code-verify" target="_blank" rel="noopener noreferrer">estamos encantados de asociarnos con WhatsApp</a> para ofrecer un sistema que garantiza a los usuarios que el código que se ejecuta cuando visitan WhatsApp en la web es el código legítimo de WhatsApp. &nbsp;</p>
+	<p></p>
+	<p>El aumento del uso de WhatsApp en navegadores y el creciente número de usuarios en riesgo, entre ellos periodistas, activistas y defensores de los derechos humanos, motivaron a WhatsApp a tomar medidas para ofrecer garantías a los usuarios que utilizan la versión para navegador. Se pusieron en contacto con nosotros para que les ayudáramos a elevar los estándares contra terceros que pretenden poner en riesgo o manipular de alguna manera el código responsable del cifrado de extremo a extremo de los mensajes entre los usuarios de WhatsApp.</p>
+	<p>¿Cómo funcionará? Cloudflare guarda un hash del código que los usuarios de WhatsApp deben ejecutar. Cuando los usuarios ejecutan WhatsApp en su navegador, la extensión WhatsApp Code Verify compara un hash de ese código que se está ejecutando en su navegador con el hash que tiene Cloudflare, lo que les permite ver fácilmente si el código que se está ejecutando es el que debería ser.</p>
+	<p>La idea en sí, comparar los hash para detectar la manipulación o incluso los archivos corruptos, no es nueva, pero sí lo es automatizarla, implementarla a escala y asegurarse de que "funciona" para los usuarios de WhatsApp. Dado el alcance de WhatsApp y la confianza implícita depositada en Cloudflare, queremos explicar en detalle cómo funciona realmente este sistema desde una perspectiva técnica.</p>
+	<p>Antes de entrar en materia, hay un aspecto importante que hay que señalar de manera explícita. Cloudflare ofrece un parámetro de auditoría de confianza para respaldar Code Verify. Los mensajes, chats u otro tipo de tráfico entre los usuarios de WhatsApp nunca se envían a Cloudflare, es decir, siguen siendo privados y están encriptados de un extremo a otro. Ni los mensajes ni el contenido multimedia transitan por la red de Cloudflare como parte de este sistema, una propiedad importante desde la perspectiva de Cloudflare en nuestro papel como tercero de confianza.</p>
+	<div class="flex anchor relative">
+		<h3 id="making-verification-easier">Facilitamos la verificación</h3>
+		<a href="https://blog.cloudflare.com/#making-verification-easier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Volvamos a 2003, cuando se lanzó Fedora, una popular distribución de Linux basada en Red Hat. Te interesa descargarla, pero quieres asegurarte de que es la "auténtica" Fedora, y que la descarga no es una versión "falsa" que desvía tus contraseñas o registra tus pulsaciones de teclas. Vas a la página para iniciar la descarga y ves un hash MD5 (considerado seguro en ese momento) junto a la descarga. Una vez se completa la descarga, se ejecuta "md5 fedora-download.iso" y se compara el resultado hash con el hash de la página de descarga. Coinciden, todo va bien y procedes a instalar Fedora en tu equipo.</p>
+	<p>Pero espera un segundo. Si el mismo sitio web que proporciona la descarga también proporciona el hash, ¿no podría un actor malintencionado reemplazar tanto la descarga como el hash con sus propios valores? La comprobación "md5" que ejecutamos anteriormente se validaría, pero no hay garantía de que tengamos la versión "real" (no manipulada) del software que pretendíamos descargar.</p>
+	<p>Alojar el hash en el mismo servidor que el software sigue siendo habitual en 2022</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dgKR5431UkYjRzHyN9WgY/1925fb13127679c9f3ef1596bf9e7c6c/image2-6.png" alt="Hosting the hash on the same server as the software is still common in 2022." class="kg-image" width="1192" height="556" loading="lazy">
+
+	</figure>
+	<p>Hay otros enfoques que intentan mejorar este planteamiento, por ejemplo, proporcionar firmas que los usuarios puedan comprobar que se firmaron con claves públicas "conocidas" alojadas en otro lugar. Alojar esas firmas (o "hashes") con un tercero de confianza eleva drásticamente los estándares en lo que respecta a la manipulación, pero ahora requerimos que el usuario sepa en quién confiar y conozca herramientas como <a href="https://www.debian.org/CD/verify" target="_blank" rel="noopener noreferrer">GnuPG</a>. Eso no nos ayuda a confiar y verificar el software a la escala de la red de Internet moderna.</p>
+	<p>Aquí es donde entran en juego la <a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/related" target="_blank" rel="noopener noreferrer">extensión Code Verify</a> y Cloudflare. La extensión Code Verify, publicada por Meta Open Source, automatiza esta tarea. Calcula localmente el hash criptográfico de las bibliotecas que usa WhatsApp Web <i>y</i> compara ese hash con el de una fuente de terceros de confianza (Cloudflare, en este caso).</p>
+	<p>Te lo mostramos en esta imagen para aclarar un poco cómo funciona y cómo interactúan cada una de las tres partes: el usuario, WhatsApp y Cloudflare.</p>
+	<p>Diagrama de los cuatro pasos para verificar el código de la web WhatsApp</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RshV8E1rSCsZh7Mms0eBF/c287591348f5964965f72bc2bf5097f8/image1-5.png" alt="A diagram of the four steps for verifying code from WhatsApp web." class="kg-image" width="1999" height="1649" loading="lazy">
+
+	</figure>
+	<p>Hay cuatro pasos principales para verificar que el código no ha sido manipulado:</p>
+	<ol>
+		<li>
+			<p>WhatsApp publica la última versión de sus bibliotecas JavaScript en sus servidores y el hash correspondiente a esa versión en el parámetro de auditoría de Cloudflare.</p>
+		</li>
+		<li>
+			<p>Un cliente web de WhatsApp obtiene las últimas bibliotecas de WhatsApp.</p>
+		</li>
+		<li>
+			<p>A continuación, la extensión del navegador Code Verify obtiene el hash de esa versión de Cloudflare a través de una conexión segura e independiente.</p>
+		</li>
+		<li>
+			<p>Code Verify compara el hash "conocido" de Cloudflare con el hash de las bibliotecas que ha calculado localmente.</p>
+		</li>
+	</ol>
+	<p>Si los hashes coinciden, como debería ocurrir en casi cualquier circunstancia, el código está "verificado" desde el punto de vista de la extensión. Si por el contrario los hashes <i>no</i> coinciden, significa que el código que se ejecuta en el navegador del usuario es diferente del código que WhatsApp pretende ejecutar en todos los navegadores de sus usuarios.</p>
+	<div class="flex anchor relative">
+		<h3 id="security-needs-to-be-convenient">La seguridad tiene que ser fácil</h3>
+		<a href="https://blog.cloudflare.com/#security-needs-to-be-convenient" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es este proceso, y el hecho de que esté automatizado en nombre del usuario, lo que ayuda a proporcionar transparencia de forma escalable. Si los usuarios tuvieran que obtener, calcular y comparar manualmente los hashes, solo una pequeña parte de usuarios técnicos detectarían alteraciones. Para un servicio tan grande como WhatsApp, no sería un enfoque particularmente accesible o intuitivo.</p>
+	<p>Este enfoque también tiene paralelismos con una serie de tecnologías que se utilizan hoy en día. Una de ellas es la <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank" rel="noopener noreferrer">Integridad de subrecursos</a> en los navegadores web. Cuando se obtiene un activo de terceros (como un script o una hoja de estilo), el navegador valida que el activo devuelto coincida con el hash descrito. Si no es así, rechaza la carga de ese activo, lo que evita que los scripts potencialmente en riesgo desvíen los datos del usuario. Otro ejemplo es el proyecto <a href="https://certificate.transparency.dev" target="_blank" rel="noopener noreferrer">Transparencia de certificados</a> y los proyectos relacionados de <a href="https://binary.transparency.dev" target="_blank" rel="noopener noreferrer">Transparencia binaria</a>. Ambos proporcionan transparencia auditable públicamente para los activos críticos, incluidos los certificados WebPKI y otros blobs binarios. El sistema descrito en este artículo no se adapta a activos arbitrarios, pero estamos explorando formas de ampliar este servicio para que sea más general y útil, como la Transparencia binaria.</p>
+	<p>Nuestra colaboración con el equipo de WhatsApp es solo el comienzo del trabajo que estamos haciendo para ayudar a mejorar la privacidad y la seguridad en la web. &nbsp;Nuestro objetivo es ayudar a otras organizaciones a verificar que el código que se entrega a los usuarios es el que deben ejecutar. Proteger a los usuarios de Internet a escala y garantizar la privacidad son principios fundamentales de lo que hacemos en Cloudflare, y esperamos continuar con este trabajo a lo largo de 2022.</p>
+</div>

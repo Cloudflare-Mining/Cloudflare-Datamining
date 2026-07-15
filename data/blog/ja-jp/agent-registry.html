@@ -1,0 +1,133 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/agent-registry">English</a>および<a href="https://blog.cloudflare.com/ko-kr/agent-registry">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7riCaFcHkMwsVDyXVBYkGJ/11d1004e27ac6e22036e8e1114cdb527/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>ボットやエージェントが<a href="https://blog.cloudflare.com/web-bot-auth"><u>リクエストに暗号署名を付け始める</u></a>につれ、Webサイト運営者がサービスをセットアップする際にパブリックキーを知る必要性が高まっています。有名なフェッチングやクローラーのパブリックキー素材を見つけることはできるかもしれませんが、次の1,000、次の1,000,000ではどうなるでしょうか？また、彼らが本人であることを確認するために、どのようにパブリックキー材料を見つければいいのでしょうか？この問題を<i>ディスカバリー</i>と呼びます。</p>
+	<p>この問題は、高度なエージェントを大規模に構築、デプロイ、運用するための包括的エージェンティックプラットフォームである<a href="https://aws.amazon.com/bedrock/agentcore" target="_blank" rel="noopener noreferrer"><u>Amazon Bedrock AgentCore</u></a>、およびAIエージェントによる大規模なWebサイトとのインタラクションを可能にする、高速かつ安全なクラウドベースのブラウザランタイムである<a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/browser-tool.html" target="_blank" rel="noopener noreferrer"><u>AgentCore Browser</u></a>と共有します。AgentCoreチームは、各顧客がそれぞれのリクエストに簡単に署名できるようにしたいと考えています。これにより、CloudflareやCDNインフラストラクチャの他のオペレーターは、AgentCoreからのエージェント署名をモノリスとではなく、個々のエージェントから見ることができます。（注：この方法は個々のユーザーを識別するものではありません。）そのために、CloudflareはAgentCoreのお客様のパブリックキーを大量に取り込み、登録する方法を必要としていました。</p>
+	<p>このブログ記事では、インターネット上で簡単に発見する方法として、ボットとエージェントのレジストリを提案します。また、<a href="https://blog.cloudflare.com/web-bot-auth"><u>Webボット認証</u></a>をレジストリ形式で拡張する方法についても概説しています。誰でも作成可能で簡単にインポートできるIPリストと同様に、<a href="https://datatracker.ietf.org/doc/draft-meunier-webbotauth-registry" target="_blank" rel="noopener noreferrer"><u>レジストリ形式</u></a>はエージェントキーを取得するためのURLのリストであり、誰でも作成およびインポートできます。</p>
+	<p>当社は、そうしたレジストリは、Webサイト運営者が信頼できるオープンなキュレーターのエコシステムを育み、強化すべきだと考えています。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-need-for-more-trustworthy-authentication">より信頼できる認証の必要性</h2>
+		<a href="https://blog.cloudflare.com/#a-need-for-more-trustworthy-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は5月に「<a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a>」というプロトコル提案を発表しました。これは、ボットやエージェントの開発者がインフラストラクチャからのリクエストに暗号署名する方法を定めたものです。</p>
+	<p>現在、<a href="https://vercel.com/changelog/vercels-bot-verification-now-supports-web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Vercel</u></a>、<a href="https://changelog.shopify.com/posts/authorize-custom-crawlers-and-tools-with-new-crawler-access-keys" target="_blank" rel="noopener noreferrer"><u>Shopify</u></a>、<a href="https://www.cloudflare.com/press/press-releases/2025/cloudflare-collaborates-with-leading-payments-companies-to-secure-and-enable-agentic-commerce" target="_blank" rel="noopener noreferrer"><u>Visa</u></a>など、プロトコル提案の実装が複数存在しています。これは積極的に<a href="https://mailarchive.ietf.org/arch/browse/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>議論され</u></a>、貢献もされています。Webボット認証は、IPやユーザーエージェントのような脆弱な識別から、より信頼できる暗号による認証に移行するための第一歩となります。ただし、IPアドレスと同様に、暗号化キーは仮名型のIDです。大規模なCDNのスケールやリーチがないWebサイトを運営している場合、既知のクローラーのパブリックキーはどのようにして検出されますか？</p>
+	<p>最初のプロトコル提案では、1つのアプローチを提案していました。ボットオペレーターは、鍵をホストするHTTPエンドポイントを指す、新しく定義されたHTTPヘッダーSignature-Agentを提供するというものでした。IPアドレスと同様に、デフォルトはすべてを許可することになっていますが、特定のオペレーターがあまりにも多くのリクエストを行っている場合、レート制限の引き上げやオペレーターへの連絡などの対策を講じることができます。</p>
+	<p>こちらは、<a href="https://help.shopify.com/en/manual/promoting-marketing/seo/crawling-your-store" target="_blank" rel="noopener noreferrer"><u>Shopifyのオンラインストア</u></a>の例です。</p>
+	<pre class="language-Rust"><code class="language-Rust">Signature-Agent: "https://shopify.com"</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="a-registry-format">レジストリ形式</h2>
+		<a href="https://blog.cloudflare.com/#a-registry-format" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>こうしたことをすべて念頭に置いた結果、次の問題が生じました。Cloudflareは、顧客が許可したいトラフィックを適切なデフォルトで制御できるようにしつつ、顧客や小規模なオリジンに縛られないオープンキュレーションのエコシステムを発展させるにはどうすればよいでしょうか？</p>
+	<p>このようなエコシステムは、IPアドレスのリスト（例：<a href="https://github.com/antoinevastel/avastel-bot-ips-lists/blob/master/avastel-proxy-bot-ips-1day.txt" target="_blank" rel="noopener noreferrer"><u> avestel-bots-ip-lists</u></a>）やrobots.txt（例：<a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noopener noreferrer"><u> ai-robots-txt</u></a>）に対して存在します。どちらについても、インターネット上の正規リストを見つけ、これらのIPからのトラフィックを許可または拒否するようにWebサイトを簡単に設定することができます。NGINXやHAプロキシの直接設定を提供し、それを使ってCloudflareアカウントを設定することができます。たとえば、次のようなrobots.txtをインポートします。</p>
+	<pre class="language-Python"><code class="language-Python">User-agent: MyBadBot
+Disallow: /</code></pre>
+	<p>ここでレジストリ形式が登場し、署名エージェントキーを指すURLのリストを提供します。</p>
+	<pre class="language-Python"><code class="language-Python"># AI Crawler
+https://chatgpt.com/.well-known/http-message-signatures-directory
+https://autorag.ai.cloudflare.com/.well-known/http-message-signatures-directory
+ 
+# Test signature agent card
+https://http-message-signatures-example.research.cloudflare.com/.well-known/http-message-signatures-directory</code></pre>
+	<p>これだけです。レジストリには、すべての既知の署名エージェントのリスト、学術研究エージェント用の厳選されたリスト、検索エージェント用などを含めることができます。</p>
+	<p>誰でもこれらのリストを保守、ホストすることができます。IPやrobots.txtリストと同様に、このようなレジストリは任意のパブリックファイルシステムでホストすることができます。つまり、GitHubでリポジトリを作成したり、Cloudflare R2にファイルを配置したり、メールの添付ファイルとして送信したりすることができます。Cloudflareは、このレジストリの最初のインスタンスの1つを提供し、他の人がそのレジストリに貢献したり、自分で構築する際に参照したりできるようにする予定です。</p>
+	<div class="flex anchor relative">
+		<h2 id="learn-more-about-an-incoming-request">受信したリクエストの詳細を知る</h2>
+		<a href="https://blog.cloudflare.com/#learn-more-about-an-incoming-request" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>署名エージェントを知ることは素晴らしいことですが、それだけではありません。たとえば、検証済みボットであるためには、Cloudflareが、そのインフラストラクチャからのリクエストが突然失敗したり、形式を変更したりして、予期しないエラーが発生する場合に備えて、連絡方法を必要とします。実際、運営者の名前、連絡先方法、ロゴ、予想されるクロール速度など、オリジンが知りたい情報はたくさんあります。</p>
+	<p>そのため、レジストリ形式を補完するために、JWKSディレクトリ（<a href="https://www.rfc-editor.org/rfc/rfc7517" target="_blank" rel="noopener noreferrer"><u>RFC 7517</u></a>）を追加のメタデータで拡張する<a href="https://thibmeu.github.io/http-message-signatures-directory/draft-meunier-webbotauth-registry.html#name-signature-agent-card" target="_blank" rel="noopener noreferrer"><u>署名エージェントカード形式</u></a>を提案しました。昔ながらの連絡先カードに似たようなこのカードには、エージェントやクローラーについて誰かが知りたいと思うような重要な情報がすべて記載されています。</p>
+	<p>以下に説明のための例を示します。フィールドは変更される可能性があることに注意してください：jwks-uriの導入、ロゴがより説明的になるなどです。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "client_name": "Example Bot",
+  "client_uri": "https://example.com/bot/about.html",
+  "logo_uri": "https://example.com/",
+  "contacts": ["mailto:bot-support@example.com"],
+  "expected-user-agent": "Mozilla/5.0 ExampleBot",
+  "rfc9309-product-token": "ExampleBot",
+  "rfc9309-compliance": ["User-Agent", "Allow", "Disallow", "Content-Usage"],
+  "trigger": "fetcher",
+  "purpose": "tdm",
+  "targeted-content": "Cat pictures",
+  "rate-control": "429",
+  "rate-expectation": "avg=10rps;max=100rps",
+  "known-urls": ["/", "/robots.txt", "*.png"],
+  "keys": [{
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "kid": "NFcWBst6DXG-N35nHdzMrioWntdzNZghQSkjHNMMSjw",
+    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs",
+    "use": "sig",
+    "nbf": 1712793600,
+    "exp": 1715385600
+  }]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="operating-a-registry">レジストリの運用</h2>
+		<a href="https://blog.cloudflare.com/#operating-a-registry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大規模にAIエージェントを構築・デプロイするためのエージェンティックプラットフォームであるAmazon Bedrock AgentCoreは、AgentCore BrowserサービスにWeb ボット Authを採用しました（詳細については<a href="https://aws.amazon.com/blogs/machine-learning/reduce-captchas-for-ai-agents-browsing-the-web-with-web-bot-auth-preview-in-amazon-bedrock-agentcore-browser" target="_blank" rel="noopener noreferrer">投稿</a>をご覧ください）。AgentCore Browserは、プロトコルの成熟を見計らって、現在パブリックプレビューで利用可能なサービス署名鍵からお客様固有の鍵に移行する予定です。Cloudflareやオリジン保護サービスを提供する他の運営者は、AgentCoreの全体ではなく、個々のAgentCoreのお客様からの署名を見て検証することができます。</p>
+	<p>また、Cloudflareは、信頼するボットやエージェントのレジストリをRadarを通じて提供しています。<a href="https://assets.radar.cloudflare.com/bots/signature-agent-registry.txt" target="_blank" rel="noopener noreferrer"><u>レジストリ形式</u></a>を使用することで、Cloudflareが信頼するボットのサーバー上での利用を可能にします。</p>
+	<p>これらのレジストリは、今日から使用できます。Go for <a href="https://caddyserver.com" target="_blank" rel="noopener noreferrer"><u>Caddyサーバー</u></a>では、複数のレジストリからキーをインポートすることを可能にするデモを提供しています。それは<a href="https://github.com/cloudflare/web-bot-auth/pull/52" target="_blank" rel="noopener noreferrer"><u>cloudflare/web-ボット-auth</u></a>にあります。構成は次のようになります：</p>
+	<pre class="language-Rust"><code class="language-Rust">:8080 {
+    route {
+        # httpsig middleware is used here
+        httpsig {
+            registry "http://localhost:8787/test-registry.txt"
+            # You can specify multiple registries. All tags will be checked independantly
+            registry "http://example.test/another-registry.txt"
+        }
+
+        # Responds if signature is valid
+        handle {
+            respond "Signature verification succeeded!" 200
+        }
+    }
+}</code></pre>
+	<p><a href="https://www.ietf.org/archive/id/draft-meunier-webbotauth-registry-01.html#name-signature-agent-card" target="_blank" rel="noopener noreferrer"><u>署名エージェントカード形式</u></a>を活用してレジストリを運用し、キュレートしたい理由はいくつかあります：</p>
+	<ol>
+		<li>
+			<p><b>着信</b><code><b>署名エージェント</b></code><b>を監視</b>これにより、お客様のドメインに到達するエージェントの署名エージェントカードを収集できるはずです。</p>
+		</li>
+		<li>
+			<p><b>既存のレジストリからインポートし、自分で分類します。</b>上記の監視ステップから構築された一般的なレジストリはありますが、レジストリは、より多くのカテゴリに対してより有用である可能性があります。</p>
+		</li>
+		<li>
+			<p><b>エージェントとの直接の関係を確立する。</b>たとえば、Cloudflareが<a href="https://radar.cloudflare.com/bots#verified-bots" target="_blank" rel="noopener noreferrer"> <u>ボットレジストリ</u></a>に対してこれを行ったり、GitHub公開リポジトリを使ってユーザーが問題をオープンできたりする場合もあります。</p>
+		</li>
+		<li>
+			<p><b>ユーザーについて学びましょう。</b>セキュリティサービスを提供する場合、顧客が通過させたいレジストリ/署名エージェントを指定できるようにすることで、貴重なインサイトを得ることができます。</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="moving-forward">今後の取り組み</h2>
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ボットやエージェントの暗号認証が増えるにつれ、検出の必要性も高まっています。</p>
+	<p>当社は、Signature-Agentにメタデータを付加し、レジストリの形でキュレートする軽量フォーマットと仕様の導入により、このニーズに対応し始めました。HTTPメッセージ署名のディレクトリ形式は拡張されていて、自己認証型のメタデータもいくつか含まれるようになり、レジストリはキュレーションエコシステムを維持しています。</p>
+	<p>将来的には、クライアントとオリジンが信頼できる署名エージェントを選択し、共通のフォーマットでCDNプロバイダー間で設定を移行し、キュレーションにはサードパーティのレジストリが必要になると予測しています。現在、ボット管理とルールエンジンへの機能統合に取り組んでいます。</p>
+	<p>試してみたい方は、<a href="https://github.com/cloudflare/web-bot-auth/pull/52" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>にあるデモをご覧ください。当社を助けたいとお考えでしたら、来年度中に<a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>1,111名のインターンを採用し</u></a>、求人を<a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><u>募集しています</u></a>。</p>
+</div>

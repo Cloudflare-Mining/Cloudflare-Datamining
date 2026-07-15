@@ -1,0 +1,133 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/content-signals-policy">English</a>, <a href="https://blog.cloudflare.com/fr-fr/content-signals-policy">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/content-signals-policy">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/content-signals-policy">한국어</a>, <a href="https://blog.cloudflare.com/es-es/content-signals-policy">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/content-signals-policy">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-cn/content-signals-policy">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZnWk49LOi8USluhXstwJJ/36c179d0ef439bc7701c86e620212e71/BLOG-2956_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Soll das offene und florierende Web erhalten werden, brauchen Content Creator mehr Werkzeuge, mit denen sie signalisieren können, wie ihre Daten verwendet werden dürfen – und zwar, ohne dabei den Zugang einzuschränken. Die derzeit zur Verfügung stehenden Möglichkeiten reichen nicht aus. Wenn Website-Betreiber zulassen, dass man über das Internet auf ihre Inhalte zugreift, riskieren sie, dass der Content für unerwünschte Zwecke genutzt wird. Wird er jedoch mit einer Anmeldeschranke versehen, begrenzt dies seine Reichweite.</p>
+	<p>Als Antwort auf die Bedenken unserer Kunden bezüglich der Verwendung ihrer Inhalte durch Crawler und Data Scraper führen wir die „Content Signals“-Richtlinie ein. Mit dieser neuen Ergänzung von robots.txt können Sie Ihre Vorlieben dafür zum Ausdruck bringen, wie Ihre Inhalte nach dem Zugriff verwendet werden dürfen.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-robots-txt-does-and-does-not-do-today">Was <code>robots.txt</code> heute bewirkt und was nicht</h2>
+		<a href="https://blog.cloudflare.com/#what-robots-txt-does-and-does-not-do-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><u>Robots.txt</u></a> ist eine einfache, auf Ihrer Domain gehostete Textdatei, die das <a href="https://www.rfc-editor.org/rfc/rfc9309.html" target="_blank" rel="noopener noreferrer"><u>Robots Exclusion Protocol</u></a> implementiert. Sie können damit angeben, welche Crawler und Bots auf welche Teile Ihrer Website zugreifen dürfen.&nbsp; Viele Crawler und einige Bots befolgen die Vorgaben von robots.txt-Dateien, allerdings nicht alle.</p>
+	<p>Wenn Sie beispielsweise allen Crawlern Zugriff auf jeden Teil Ihrer Website gewähren möchten, könnten Sie eine robots.txt-Datei hosten, die Folgendes enthält:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Allow: /
+</code></pre>
+	<p>Ein User Agent ist der Weg, über den sich ein Browser oder Bot gegenüber der Ressource identifiziert, auf die er zugreift. In diesem Fall zeigt das Sternchen den Besuchern an, dass jeder User Agent auf jedem Gerät oder Browser auf die Inhalte zugreifen darf. Das / im Feld <code>„Allow“</code> signalisiert dem Besucher, dass er auch auf jeden Bereich der Website zugreifen kann.</p>
+	<p>Die <code>robots.txt</code>-Datei kann auch Kommentare enthalten. Diese werden nach dem #-Symbol hinzugefügt. Bots und Maschinen ignorieren diese Kommentare zwar, doch damit können einem Menschen, der sich die Datei ansieht, lesbare Anmerkungen hinterlassen werden. Das kann <a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>beispielsweise</u></a> folgendermaßen aussehen:</p>
+	<pre class="language-Rust"><code class="language-Rust">#    .__________________________.
+#    | .___________________. |==|
+#    | | ................. | |  |
+#    | | ::[ Dear robot ]: | |  |
+#    | | ::::[ be nice ]:: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | |  |
+#    | | ::::::::::::::::: | | ,|
+#    | !___________________! |(c|
+#    !_______________________!__!
+#   /                            \
+#  /  [][][][][][][][][][][][][]  \
+# /  [][][][][][][][][][][][][][]  \
+#(  [][][][][____________][][][][]  )
+# \ ------------------------------ /
+#  \______________________________/
+</code></pre>
+	<p>Die <code>robots.txt</code>-Datei kann konkreter gefasst werden, indem bestimmte User Agents aufgelistet werden (z. B., um nur bestimmte Bot-User Agents oder Browser-User Agents zuzulassen) und angeben wird, welche Teile einer Website durchsucht werden dürfen oder nicht. In dem folgenden Beispiel werden Bots angewiesen, den Archivpfad nicht zu durchsuchen.</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: * 
+Disallow: /archives/
+</code></pre>
+	<p>Dieses Beispiel wird hier konkreter, weil der Google-Bot angewiesen wird, das Crawlen des Archivpfads zu unterlassen.</p>
+	<pre class="language-Rust"><code class="language-Rust">User-agent: Googlebot 
+Disallow: /archives/
+</code></pre>
+	<p>So kann festgelegt werden, welche Crawler zugelassen sind und auf welche Abschnitte einer Website sie zugreifen dürfen. Was sie nach dem Zugriff mit den Inhalten tun können, wird ihnen jedoch nicht mitgeteilt. Wie von vielen bereits <a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>festgestellt</u></a>, muss es eine standardisierte, maschinenlesbare Methode zur Übermittlung der Regeln für die Nutzung der Daten auch nach dem Zugriff geben.&nbsp;</p>
+	<p>Hier kommt unsere „Content Signals“-Richtlinie ins Spiel: Mit dieser können Sie Ihre Präferenzen hinsichtlich der Verwendung Ihrer Inhalte durch einen Crawler zum Ausdruck bringen.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-we-launching-the-content-signals-policy-now">Warum führen wir die „Content Signals“-Richtlinie jetzt ein?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-are-we-launching-the-content-signals-policy-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Manche Unternehmen lesen jeden Tag riesige Mengen Daten aus dem Internet aus. Für Website-Betreiber sind diese Dienste mit echten Kosten verbunden. Das gilt umso mehr, wenn sie dafür keine Vergütung erhalten. Wir haben es hier also mit einem klassischen <a href="https://en.wikipedia.org/wiki/Free-rider_problem" target="_blank" rel="noopener noreferrer"><u>Trittbrettfahrerproblem</u></a> zu tun. Und dies wird sich nur noch verschlimmern. Wir erwarten, dass der durch Bots verursachte Traffic den von Menschen generierten Datenverkehr im Internet Ende 2029 übertreffen und 2031 höher als der gesamte aktuelle Internet-Traffic ausfallen wird.&nbsp;</p>
+	<p>Dass es so weit gekommen ist, liegt an den Standards, die im Internet de facto angewandt wurden. Es war Usus, dass Daten eingespeist wurden, die Urheber der Inhalte dafür aber etwas zurückbekamen. Entweder erhielten sie monetarisierbaren Referral-Traffic – also Datenverkehr von Links, die auf sie als ursprüngliche Quelle verweisen – oder sie wurden zumindest als Urheber genannt und so mit einer gewissen Form der Anerkennung bedacht. Man denke an die Praxis des <a href="https://en.wikipedia.org/wiki/Linkback" target="_blank" rel="noopener noreferrer"><u>Linkback</u></a> in den frühen Tagen des Bloggens, mit der man ein Werk seinem Urheber zuschreiben konnte. Es wechselte zwar kein Geld den Besitzer, doch diese Art der Zuschreibung erleichterte eine künftige Entdeckung und hatte somit einen intrinsischen Wert. Diese Gewohnheit wurde in vielen permissiven Lizenzen wie <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener noreferrer"><u>MIT</u></a> und <a href="https://creativecommons.org/share-your-work/cclicenses" target="_blank" rel="noopener noreferrer"><u>Creative Commons</u></a> übernommen, die jeweils die Nennung des Urhebers verlangten.&nbsp;</p>
+	<p>Inzwischen hat sich die Lage verändert. Heute werden die von Scrapern erfassten Inhalte teilweise verwendet, um wirtschaftlich mit dem ursprünglichen Urheber zu konkurrieren. Viele werden vor eine eigentlich <a href="https://blog.cloudflare.com/introducing-ai-crawl-control"><u>unmögliche Wahl</u></a> gestellt: Sollen sie den Zugang zu Ihren Inhalten und Daten sperren oder sich mit weniger Verweisen und einer bestenfalls minimalen Anerkennung ihrer Urheberschaft abfinden? Wenn sie sich nur durch Abschottung zur Wehr setzen können, beeinträchtigt das den offenen Austausch im Internet. Außerdem werden neuere Akteure im KI-Ökosystem benachteiligt, weil sie dadurch größere Schwierigkeiten haben, ihre Modelle zu trainieren.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-cloudflare-content-signals-policy">Die „Content Signals“-Richtlinie von Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-content-signals-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die „Content Signal“-Richtlinie wird in die robots.txt-Dateien von Websites integriert. Es handelt sich um Text, der von Menschen lesbar ist und auf das #-Symbol folgt, das ihn als Kommentar kennzeichnet. In der Richtlinie werden drei sogenannte Inhaltssignale – Suche, KI-Speisung und KI-Training – und deren Relevanz für Crawler definiert.</p>
+	<p>Ein Website-Betreiber kann dann optional seine Vorlieben durch maschinenlesbare Inhaltssignale zum Ausdruck bringen.&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust"># As a condition of accessing this website, you agree to abide by the following content signals:
+
+# (a)  If a content-signal = yes, you may collect content for the corresponding use.
+# (b)  If a content-signal = no, you may not collect content for the corresponding use.
+# (c)  If the website operator does not include a content signal for a corresponding use, the website operator neither grants nor restricts permission via content signal with respect to the corresponding use.
+
+# The content signals and their meanings are: 
+
+# search: building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents).  Search does not include providing AI-generated search summaries.
+# ai-input: inputting content into one or more AI models (e.g., retrieval augmented generation, grounding, or other real-time taking of content for generative AI search answers). 
+# ai-train: training or fine-tuning AI models.
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET. </code></pre>
+	<p>Dieser Text besteht aus drei Teilen:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Der erste Absatz erklärt den Unternehmen, wie ein Inhaltssignal zu interpretieren ist.&nbsp; „Ja“ bedeutet „Los“ und „nein“ bedeutet „Stop“. Die Abwesenheit eines Signals übermittelt keine Bedeutung. Diese letzte, neutrale Option ist wichtig: Sie ermöglicht es Website-Betreibern, eine Vorliebe in Bezug auf ein Inhaltssignal zum Ausdruck zu bringen, ohne dies für ein anderes tun müssen.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>Im zweiten Absatz wird das Vokabular der Inhaltssignale definiert. Wir haben uns auf einfache Signale beschränkt, damit sie von jedem leicht befolgt werden können, der auf Inhalte zugreift.&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p>Der letzte Absatz ruft denjenigen, die den Datenzugriff automatisieren, in Erinnerung, dass diese Inhaltssignale in verschiedenen Ländern mit bestimmten Rechten einhergehen könnten.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Ein Website-Betreiber kann dann seine konkreten Vorlieben in maschinenlesbarem Text mit einer durch Kommas getrennten „Ja“- oder „Nein“-Syntax bekannt geben. Wenn er die Suche zulassen, das Training aber untersagen möchte und bezüglich der KI-Speisung keine Präferenzen äußert, könnte er Folgendes in seine robots.txt-Datei aufnehmen:</p>
+	<pre class="language-Rust"><code class="language-Rust">User-Agent: *
+Content-Signal: search=yes, ai-train=no 
+Allow: / 
+</code></pre>
+	<p>Lässt er das Inhaltssignal für KI-Speisung wie im obigen Beispiel leer, heißt das nicht zwangsläufig, dass er keine Vorliebe bezüglich der Verwendung hat. Es bedeutet nur, dass er diesen Teil seiner robots.txt-Datei nicht benutzt hat, um diese zu bekunden.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-add-content-signals-to-your-website">Wie einer Website Inhaltssignale hinzugefügt werden</h2>
+		<a href="https://blog.cloudflare.com/#how-to-add-content-signals-to-your-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie bereits wissen, wie Sie Ihre robots.txt-Datei konfigurieren, ist das Implementieren von Inhaltssignalen so leicht wie das Hinzufügen der oben genannten „Content Signals“-Richtlinie und das Definieren Ihrer Vorlieben mit einem Inhaltssignal.&nbsp;&nbsp;</p>
+	<p>Wir möchten die Integration von Inhaltssignalen leicht ermöglichen. Bei Cloudflare-Kunden ist die verwaltete robots.txt-Funktion bereits für über 3,8 Millionen Domains aktiviert. Damit teilen sie anderen Unternehmen mit, dass sie nicht möchten, dass die Inhalte auf diesen Domains für das Trainieren von KI verwendet werden. Wir werden die robots.txt-Datei, die wir bereits im Auftrag dieser Kunden bereitstellen, im Zuge einer Aktualisierung um die „Content Signals“-Richtlinie und die folgenden Signale erweitern:</p>
+	<pre class="language-Rust"><code class="language-Rust">Content-Signal: search=yes, ai-train=no</code></pre>
+	<p>Unseren Kunden mit verwalteten robots.txt-Dateien werden wir kein „KI-Speisung“-Signal bereitstellen, da wir nicht wissen, welche Präferenz sie diesbezüglich haben, und auch nicht raten wollen.&nbsp;&nbsp;</p>
+	<p>Ab heute stellen wir die kommentierte, für den Menschen lesbare „Content Signals“-Richtlinie für jede kostenlose Kunden-Zone bereit, die noch nicht über eine robots.txt-Datei verfügt. Dies bedeutet in der Praxis, dass eine Anfrage an robots.txt auf dieser Domain mit den Kommentaren beantwortet wird, die Inhaltssignale definieren. Diese Kommentare werden jedoch von Crawlern ignoriert. Wichtig ist, dass keine „Allow“- oder „Disallow“-Anweisungen enthalten sind und keine eigentlichen Inhaltssignale übermittelt werden. Die Nutzer sind diejenigen, die über ihre tatsächlichen Präferenzen entscheiden und diese zum Ausdruck bringen, wenn und wann sie dazu bereit sind. Kunden mit einer vorhandenen robots.txt-Datei werden keine Änderungen bemerken.</p>
+	<p>Für Zonen mit kostenloser Tarifoption kann die „Content Signals“-Richtlinie unter „Security Settings“ (Sicherheitseinstellungen) im Cloudflare-Dashboard sowie unter „Overview“ (Übersicht) deaktiviert werden.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69VPgMTwoI1KqUTP4cNqG5/9576a3ca6eeee93b58688aea7f7ff0ae/BLOG-2956_2.png" alt="BLOG-2956 2" class="kg-image" width="1686" height="684" loading="lazy">
+	</figure>
+	<p>Wenn Sie Ihre eigenen Inhaltssignale erstellen möchten, kopieren Sie einfach den Text, den Sie mit unserer Hilfe unter <a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>ContentSignals.org</u></a> generieren, und fügen Sie ihn in Ihre <code>robots.txt</code>-Datei ein oder implementieren Sie ihn sofort über die Schaltfläche „Deploy to Cloudflare“ (Bei Cloudflare implementieren). Alternativ können Sie unsere <a href="https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt" target="_blank" rel="noopener noreferrer"><u>verwaltete robots.txt-Funktion</u></a> aktivieren, wenn Sie zu verstehen geben wollen, dass Sie kein Datensammeln zu Trainingszwecken wünschen.&nbsp;</p>
+	<p>Es ist wichtig, zu beachten, dass mit Inhaltssignalen nur Vorlieben zum Ausdruck gebracht werden. Es handelt sich dabei nicht um technischen Maßnahmen gegen Content-Scraping. Es kann also sein, dass sie von manchen Unternehmen einfach ignoriert werden. Wenn Sie Inhalte auf einer Website veröffentlichen und die Kontrolle darüber haben möchten, was andere damit anstellen, würden wir Ihnen empfehlen, Ihre Inhaltssignale mit <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer"><u>WAF</u></a>-Regeln und <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>Bot-Management</u></a> zu kombinieren.</p>
+	<p>Mit diesen Cloudflare-Funktionen soll zwar eigentlich die Nutzung vereinfacht werden, wir möchten aber auch dafür sorgen, dass sie überall von allen genutzt werden. Um dies zu fördern, veröffentlichen wir die Richtlinie unter einer <a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank" rel="noopener noreferrer"><u>CC0-Lizenz</u></a>, die es jedem erlaubt, sie frei zu implementieren und zu verwenden.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">Was steht als Nächstes an?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unsere Kunden haben die volle Kontrolle darüber, welche Crawler sie zulassen und welche sie blockieren. Einige wollen womöglich zur Entstehung einer Superintelligenz beitragen, während andere sich mehr Kontrolle wünschen: Wir sind der Meinung, dass die Entscheidung allein bei ihnen liegen sollte.</p>
+	<p>Mit Inhaltssignalen kann jeder zum Ausdruck bringen, wie die eigenen urheberrechtlich geschützten Inhalte verwendet werden dürfen, nachdem darauf zugegriffen wurde. Eine Möglichkeit zu schaffen, diese Vorlieben zu bekunden, war überfällig.&nbsp;</p>
+	<p>Wir wissen, dass die Arbeit noch lange nicht getan ist. Verkehrsregeln funktionieren nur, wenn sie von allen anerkannt und geachtet werden. Deshalb werden wir uns weiterhin in Normungsgremien für die Entwicklung und Standardisierung von Lösungen einsetzen, die den Anforderungen unserer Kunden gerecht und von der Internet-Community allgemein akzeptiert werden.</p>
+	<p>Wir hoffen, dass Sie sich uns bei diesen Bemühungen anschließen werden: Das offene Web ist es wert, dafür zu kämpfen.</p>
+</div>

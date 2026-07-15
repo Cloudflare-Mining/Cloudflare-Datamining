@@ -1,0 +1,378 @@
+<div class="mb2 gray5">16分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/paris-2024-olympics-recap">English</a>、<a href="https://blog.cloudflare.com/de-de/paris-2024-olympics-recap">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/paris-2024-olympics-recap">한국어</a>、<a href="https://blog.cloudflare.com/es-es/paris-2024-olympics-recap">Español</a>、<a href="https://blog.cloudflare.com/fr-fr/paris-2024-olympics-recap">Français</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OdDeBQpuwWnmWf6FXdXZ9/6386864e16528f7b3612ccdaf18b24f8/2501-1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2024年8月11日、パリ2024夏季オリンピックが16日間の競技を終え、スタッド・ド・フランスでオリンピック旗が降ろされて幕を閉じました。32競技329種目にわたり、204か国から1万人以上の選手がメダルと栄光を目指して参加し、大会期間中にはオンラインで盛り上がる瞬間も生まれました。この記事では、閉会式、さまざまなオリンピックの瞬間がインターネットトラフィックに与えた影響、そしてスポンサーが直面したサイバー攻撃に注目します。また、シモーネ・バイルス選手、スヌープ・ドッグ選手、イマネ・ケリフ選手に言及したオリンピックに関連するメールのトレンドについても検証します。</p>
+	<p>Cloudflareは、330以上の都市にデータセンターを擁し、さまざまなツールや製品を使用して数百万の顧客をサポートしており、インターネット上で何が起こっているかをグローバルな視点で把握します。これは、セキュリティ、プライバシー、効率、速度を向上させるために役立つだけでなく、インターネットの混乱やトラフィックのトレンドを観察するのにも役立ちます。</p>
+	<p>前回の<a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">開会式と大会初期の数日について書いたブログ記事</a>では、フランスがオリンピックの影響を受け、主要イベント中にトラフィックが明らかに減少したことを紹介しました。最も大幅な低下を引き起こしたのは、開会式で、前週と比較して20%もトラフィックが減少しました。他の国々でも同様に、インターネット利用が減り、テレビ放送に時間を費やす傾向が見られました。</p>
+	<div class="flex anchor relative">
+		<h2 id="closing-ceremony-impact-in-france">フランスにおける閉会式のインパクト</h2>
+		<a href="https://blog.cloudflare.com/#closing-ceremony-impact-in-france" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2WMTcMXB7ekSuPAqUiFn6X/993532e5913227e9f31070b9211da047/2501-2.jpg" alt="2501-2" class="kg-image" width="1999" height="1500" loading="lazy">
+	</figure>
+	<p><sub><i>閉会式でゴールデンボイジャー（金色に輝き踊るキャラクター）が空から降りてくる瞬間。会場にいたCloudflareのCEO、Matthew Princeが撮影した</i></sub><a href="https://x.com/eastdakota/status/1822768634323702208/photo/1" target="_blank" rel="noopener noreferrer"><sub><i>写真</i></sub></a><sub><i>に収められました。</i></sub></p>
+	<p>夏季オリンピックが<a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">始まって</a>から2週間以上経った2024年8月11日。3時間にわたる閉会式は、開会式と同様にフランスのインターネットトラフィックに影響を与えましたが、その影響はやや軽微でした。閉会式が始まった19:15 UTC頃には、前週に比べて最大14％のトラフィック減少が見られました。以下は、開会式中の前週と比較した上位3つのトラフィック減少の内訳と、その時間帯に発生したイベントの詳細です。当社のデータは、15分単位の粒度でインサイトを提供します。</p>
+	<div class="flex anchor relative">
+		<h3 id="moments-of-the-closing-ceremony-by-traffic-drop-in-france">閉会式中にフランスでトラフィックが減少した時間帯</h3>
+		<a href="https://blog.cloudflare.com/#moments-of-the-closing-ceremony-by-traffic-drop-in-france" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>減少した時間帯（UTC）</p>
+				</td>
+				<td>
+					<p>減少率（%）</p>
+				</td>
+				<td>
+					<p>同時期のイベント</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>#1</p>
+				</td>
+				<td>
+					<p>～119:15</p>
+				</td>
+				<td>
+					<p>-14%</p>
+				</td>
+				<td>
+					<p>フランスの水泳スター、レオン・マルシャンが、チュイルリー庭園にある大釜からスタッド・ド・フランスまでランタンを運びました。その後、各国のオリンピック委員会の旗がスタジアムに入り、続いて選手たちが入場しました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>#2</p>
+				</td>
+				<td>
+					<p>～120:15</p>
+				</td>
+				<td>
+					<p>-13%</p>
+				</td>
+				<td>
+					<p>フランスの歴史をモチーフにしたゴールデンボイジャーが空から降り、その後に勝利の女神ニケが続きました。観客席では、<a href="https://blog.jgc.org/2024/05/controlling-taylor-swift-eras-tour.html" target="_blank" rel="noopener noreferrer">テイラー・スウィフトのコンサート</a>で使われるようなLEDブレスレットが、アスリート、平和の鳩、そしてオリンピックの五輪を描き出しました。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>#3</p>
+				</td>
+				<td>
+					<p>～121:30</p>
+				</td>
+				<td>
+					<p>-10%</p>
+				</td>
+				<td>
+					<p>カリフォルニア出身のアーティストH.E.R.がアメリカ国歌を歌い、その後、トム・クルーズが登場して『ミッション・インポッシブル』のスタントを披露し、オリンピック旗をパリからロサンゼルスへ運ぶ演出が行われました。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>閉会式中、19:00～22:00 UTCの間、フランスのインターネットトラフィックは前週に比べて3％～14％低下しました。中盤から終盤にかけての減少はそれほど顕著ではありませんでしたが、バンドのパフォーマンスや公式閉会スピーチの際にはインターネットリクエストが増加しました。イスルトがフランク・シナトラの「マイ・ウェイ」を歌ったフィナーレの際にもトラフィックが上昇し、それとは対照的に、開会式の最後に行われたセリーヌ・ディオンのパフォーマンス時には大幅な減少が見られました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77GvukZSuDkYnKNE13aICC/b73c37e5fbdc53a9e893e60f3f2dcb95/2501-3.png" alt="2501-3" class="kg-image" width="1999" height="571" loading="lazy">
+	</figure>
+	<p>他国のトラフィック傾向を調査したところ、閉会式は開会式ほど明確な影響を与えていないことが分かりました。</p>
+	<p>オリンピック期間全体のフランスのトラフィックを広く見ると、7月28日に1日あたりのトラフィックは8%も減少しましたが、その後はかなり安定しており、8月8日に3%減少しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Sx8SfcdfAlUcxgkGUUHxh/192029a3fa8dbc9c157abae14d224d35/2501-4.png" alt="2501-4" class="kg-image" width="1999" height="561" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="mobile-device-use-rose-in-france">フランスでモバイル端末の利用が急増</h2>
+		<a href="https://blog.cloudflare.com/#mobile-device-use-rose-in-france" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>オリンピック期間中、モバイル端末によるトラフィックの割合は増加し続け、より多くの人々がモバイル端末を使ってインターネットにアクセスしていることがわかりました。このフランスにおけるモバイル利用の増加傾向は、オリンピック期間中に国内に多くの観光客や訪問者がいたことに加え（一般的に、訪問者はモバイル端末からインターネットにアクセスすることが多い）、フランス人がこの時期に休暇を取り、仕事を減らしていた状況とも一致しています。フランスにおける週間モバイル端末トラフィックの割合は、6月中旬には49%でしたが、オリンピックが始まってからは、53%から54%に増加しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3z1HQY87H1QAMNF9eUDPFn/c65f51905e5aebdbbd484b467fa02692/2501-5.png" alt="2501-5" class="kg-image" width="1999" height="589" loading="lazy">
+	</figure>
+	<p>フランスでは、モバイル端末の使用率は週末に高くなります。しかし、日次の推移を見ると、平日のモバイルトラフィックの割合は、オリンピックが始まった7月26日以降、明らかに高くなっています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24sntT0Ze9FzlzdoZfbugW/e68979f7284df5d05ae309bf08bb2292/2501-6.png" alt="2501-6" class="kg-image" width="1732" height="644" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="parisians-left-olympic-tourists-arrived">パリ市民が郊外へ行き、オリンピック観光客が到着</h2>
+		<a href="https://blog.cloudflare.com/#parisians-left-olympic-tourists-arrived" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前、パリ市民がオリンピックの直前に<a href="https://www.barrons.com/articles/where-are-parisians-going-during-the-olympics-281b7676" target="_blank" rel="noopener noreferrer">街（および地域）を離れる</a>様子が確認されていました。イル＝ド＝フランス地域圏では、オリンピック期間中、イベント初週の7月30日に前週比で最大6％のトラフィック減少が見られました。オリンピックの2週目の週末にはトラフィックが若干回復しましたが、2週目および最終週にはさらに減少しました。</p>
+	<p>下のグラフは、イル＝ド＝フランス地域圏への1日あたりのトラフィックを示したもので、オリンピック前の週末に顕著な減少が見られ、開催中はより顕著でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BCOdZ8EjmrXUE83o5Y1GA/aea2e40376af22c9093dbbffd5e5feee/2501-7.png" alt="2501-7" class="kg-image" width="1868" height="596" loading="lazy">
+	</figure>
+	<p>オリンピックが始まった週には、1週間あたりのトラフィックが8％減少し、翌週も安定した状態が続きました。それでも、オリンピック最終週である8月4日までに、イル＝ド＝フランス地方のトラフィックは、最近のピークであった6月30日の週と比べて23％も低くなっていました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4twrYfUyal5JSLtVlQbOIc/135e663b0f1515cba663f367146cb3c0/2501-8.png" alt="2501-8" class="kg-image" width="1934" height="592" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="significant-moments-from-simone-biles-to-breakdancing-debut">注目すべき瞬間：シモーネ・バイルス選手からブレイキン競技の初登場まで</h2>
+		<a href="https://blog.cloudflare.com/#significant-moments-from-simone-biles-to-breakdancing-debut" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以下に、2024年7月27日（土）の大会初日から観測された、インターネットトラフィックに影響を与えた特定のオリンピックイベントを、（獲得メダル数に基づいて順位付けした）さまざまな場所から収集したデータを元に紹介します。</p>
+	<p>開催国であるフランスは、オリンピックの重要な瞬間において、インターネットトラフィックにより大きな影響を受けたことが明らかでした。</p>
+	<p><b>アメリカ</b>：4度のオリンピック金メダリストであるシモーネ・バイルス選手が出場した体操競技は、開会式よりもアメリカのインターネットトラフィックに大きな影響を与えました。7月26日から28日にかけて、特にバイルス選手の演技中にトラフィックが大きく減少しました。28日には、彼女の平均台の演技が行われた10:00 UTCには、前週と比べてトラフィックがすでに4％低下しており、10:45 UTCの床運動と跳馬の演技中には6％の減少が見られました。</p>
+	<p>また、7月29日19:30 UTCには、ライアン・マーフィー選手が男子100m背泳ぎの決勝で銅メダルを獲得した競泳中に、トラフィックが4％減少しました。</p>
+	<p>さらに、8月10日には、15:00 UTC頃に行われたブラジル対アメリカの女子サッカー決勝戦中にトラフィックが7％減少し、その後、同日の男子バスケットボール決勝戦（フランス対アメリカ）の際には、トラフィックが最大6％減少しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rshO8keLOmWBGiCzmQz0o/7ab3fa9629c9a880761253200528ae09/2501-9.png" alt="2501-9" class="kg-image" width="1999" height="570" loading="lazy">
+	</figure>
+	<p><b>イギリス</b>：オリンピック初週の週末には、明確なトラフィックの減少が見られ、2024年7月28日の15:00 UTC頃には前週比で10％の減少が確認されました。この忙しい日々にイギリスの選手たちはいくつかの競技に参加しました。翌週末のトラフィックは、オリンピック初週の週末よりもやや高かったものの、最終日である8月11日には再び減少しました。</p>
+	<p><b>フランス</b>：<a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">既に述べたとおり</a>、7月28日にフランスの水泳選手レオン・マルシャン選手が男子400メートル個人メドレーで金メダルを獲得し、オリンピック記録を樹立した際、フランスのインターネットトラフィックに最も大きな影響を与えました。開会式中の20％の減少を除けば、オリンピック期間中で最大の影響がありました。彼の競技中の18:30 UTCには、トラフィックが17％減少しており、この減少は閉会式中に見られた減少と同じレベルでした。その他の水泳競技でも同様の影響が見られました。</p>
+	<ul>
+		<li>
+			<p>7月29日19:45 UTC、ヨアン・ヌドイブルアール選手が出場した男子100メートル背泳ぎ決勝中に14%の減少。</p>
+		</li>
+		<li>
+			<p>7月30日19:00 UTC、レオン・マルシャン選手が出場した男子200メートルバタフライ準決勝中に12％の減少。</p>
+		</li>
+		<li>
+			<p>7月31日18:30～20:30 UTC、レオン・マルシャン選手が出場した男子200メートルバタフライ決勝中に7％～10％の減少。</p>
+		</li>
+		<li>
+			<p>8月1日18:45 UTC、水泳準決勝および決勝中に8％の減少。</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/o5gPCCJQ39gNKx4Atuirq/32409905e3714469c0ee9240eb879bae/2501-10.png" alt="2501-10" class="kg-image" width="1922" height="642" loading="lazy">
+	</figure>
+	<p>他にも注目すべきトラフィック減少が見られたのが、ブレイキン競技です。</p>
+	<ul>
+		<li>
+			<p>8月9日14:30 UTC、フランスが参加したブレイキン競技のデビュー戦中に10％の減少。</p>
+		</li>
+		<li>
+			<p>8月10日18:45～21:00 UTC、男子ブレイキン競技決勝戦および男子バスケットボール決勝戦（フランス対アメリカ）中に7％の減少。</p>
+		</li>
+		<li>
+			<p>8月11日07:00 UTC、女子マラソン中に8％の減少。</p>
+		</li>
+	</ul>
+	<p><b>オーストラリア</b>：7月29日、モリー・オキャラハン選手が女子200メートル自由形で優勝した、20:00 UTC頃にオーストラリアのトラフィックは前週比で5％減少しており、開会式中の2％減少よりも大きな減少が見られました。</p>
+	<p>8月1日18:45 UTC頃、オーストラリアが女子4x200メートル自由形リレーで金メダルを獲得した水泳競技中に、トラフィックは前週比で10％低下しました。そして、8月11日07:00 UTC頃、オーストラリアの選手が参加した女子マラソン中に、トラフィックは前週比で7％減少しました。</p>
+	<p><b>日本</b>：オリンピック期間中、日本で最も著しくトラフィックが減少したのは8月6日でした。文田健一郎選手が男子グレコローマンレスリング60kg級の決勝で金メダルを獲得すると、アーティスティックスイミングや女子卓球競技が続き、18:15 UTCにはトラフィックが12％減少しました。</p>
+	<p>さらに、8月10日17:30 UTC以降数時間にわたり、日本のトラフィックは通常よりも低く、最大14％の減少が確認されました。この減少は、女子やり投げで日本が金メダルを獲得したことや、男子ブレイキン競技の準々決勝および準決勝と一致していました。</p>
+	<p><b>イタリア</b>：アリチェ・ダマト選手が女子平均台でイタリアに初の金メダルをもたらした体操競技中、10:45 UTC頃にトラフィックが5％減少しました。</p>
+	<p><b>オランダ</b>：7月28日、大会2日目の朝、オランダでは前週と比較してトラフィックが最大20％減少しました。この日は複数の競技にオランダの選手が参加していました。</p>
+	<p>8月11日には、06:30から09:30 UTCの間にトラフィックが減少し、08:15 UTCには最大16％の減少が確認されました。この時間帯にオランダのランナー、シファン・ハッサン選手が女子マラソンで金メダルを獲得しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hFur0vUHzuamcvIJwf6PI/ad83d900e609cbfbaf1357c670eb7953/2501-11.png" alt="2501-11" class="kg-image" width="1918" height="634" loading="lazy">
+	</figure>
+	<p><b>韓国</b>：7月28日15:30 UTCに韓国女子アーチェリーチームが金メダルを獲得した際、トラフィックが8％減少しました。これは、7月26日から7月29日の間に韓国で確認された最も大きな減少でした。</p>
+	<p>8月7日19:45 UTCには、パク・テジュン選手が男子テコンドー -58kg（58kg未満）級で金メダルを獲得した際、トラフィックが9％減少しました。</p>
+	<p><b>ブラジル</b>：7月27日19:30 UTC頃、ブラジルのトラフィックは前週比で15％減少し、開会式の影響を上回りました。この減少は、ブラジルのギリェルメ・コスタ選手とマリア・フェルナンダ・コスタ選手が男子および女子400メートル自由形競泳に出場していた際に発生しました。</p>
+	<p>8月2日、ガブリエル・メディナ選手が出場した男子サーフィン準々決勝中の00:30 UTC頃にトラフィックが5％減少し、タチアナ・ウェストンウェブ選手が出場した女子サーフィン準々決勝中の01:00 UTC頃にはトラフィックが8％減少しました。</p>
+	<p><b>カーボベルデ</b>：アフリカ西岸沖のこの群島国家では、デビッド・ピナ選手がボクシングで初のオリンピックメダルを獲得しました。8月4日、アマチュアボクサーである彼が銅メダルを獲得した試合中、15:00 UTC頃にカーボベルデ国内のトラフィックが12％減少しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="dns-trends-for-official-olympic-websites-by-country">オリンピック公式Webサイトの国別DNSトレンド</h2>
+		<a href="https://blog.cloudflare.com/#dns-trends-for-official-olympic-websites-by-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>7月22日、オリンピックが始まる前に、当社はオリンピック公式Webサイトへの関心の高まりを<a href="https://blog.cloudflare.com/countdown-to-paris-2024-france-leads-in-olympic-web-interest">報告しました</a>。これは、当社の<a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a> DNSリゾルバーからのリクエストデータに基づくもので、当初、フランスが24％のDNSトラフィックでリードしており、次いでイギリス（20％）、アメリカ（17％）が続いていました。しかし、オリンピックが始まると、アメリカが首位に立ち、その地位を大会期間中ずっと維持しました。</p>
+	<p>下のチャートは、パリ2024夏季オリンピック期間中に国別で最も多くのDNSリクエストトラフィックを記録した国のシェアをまとめたものです。オリンピックが進行するにつれて、関心が国全体に広がっていったことがわかります。これは、当社の『<a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">パリ2024オリンピックレポート</a>』にある、イベント日ごとの動的マップで確認できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I3Voeh4O4s16wb9OhXdHj/6fabdbbf9bd7d2f25fb1ba2dfefb6cd7/2501-12.png" alt="2501-12" class="kg-image" width="1999" height="1218" loading="lazy">
+	</figure>
+	<p>オリンピック期間中、オリンピック公式Webサイトに対するDNSトラフィックが最も多かったトップ10の国を以下にまとめました。アメリカが「金メダル」、フランスが「銀メダル」、イギリスが「銅メダル」を獲得しました。</p>
+	<ol>
+		<li>
+			<p><b>アメリカ：18%</b></p>
+		</li>
+		<li>
+			<p><b>フランス：16%</b></p>
+		</li>
+		<li>
+			<p><b>イギリス：10%</b></p>
+		</li>
+		<li>
+			<p>ドイツ：7%</p>
+		</li>
+		<li>
+			<p>ブラジル：6%</p>
+		</li>
+		<li>
+			<p>オーストラリア：5%</p>
+		</li>
+		<li>
+			<p>カナダ：2%</p>
+		</li>
+		<li>
+			<p>日本：2%</p>
+		</li>
+		<li>
+			<p>インド：2%</p>
+		</li>
+		<li>
+			<p>ロシア連邦：2%</p>
+		</li>
+	</ol>
+	<p>当社の観察によれば、アメリカはオリンピックが始まる数日前にフランスを抜いて1位の座を獲得しました。フランスは7月27日、大会初日にドイツに抜かれて3位に落ち、その後、8月2日以降も同様に3位のままでしたが、興味深いことに、オリンピックが終了した翌日には再び2位に戻りました。</p>
+	<p>下の日次ランキングチャートに示されているように、イギリスはイベントが始まる前は3位でしたが、8月1日に4位に落ちました。オーストラリアは7月29日に最高位の3位に立ち、8月10日と11日には4位にランクインしました。ブラジルは7月24日～25日、そして7月30日、31日、8月1日に3位を記録しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PtLJCSiHuBeoRPYeL0ti6/64a31339695f57776006f27d06bfd4cf/2501-13.png" alt="2501-13" class="kg-image" width="1810" height="934" loading="lazy">
+	</figure>
+	<p>当社の1.1.1.1リゾルバーへのDNSトラフィック量では、オリンピックが始まってから最初の1週間が、オリンピック公式Webサイト関連のリクエストが最も多く、オリンピック開始前の1週間と比較して637%増加しました。最初の週にトラフィックがピークに達するこの傾向は、ほとんどの国で一貫していました。ドイツ、スペイン、インド、イタリア、ロシアでは、最終週にDNSリゾルバートラフィックが増加しました。</p>
+	<p>1日単位では、オリンピック公式ドメインへの全世界のDNSトラフィックは、8月2日にピークを迎え、その後8月4日と8月5日にもピークがあり、これらは大会第2週目と最終週の開始を示しています。以下は、トラフィック量が最も多かった上位3か国における、オリンピック公式WebサイトへのDNSトラフィックが最も多かったトップ3の日です。</p>
+	<ul>
+		<li>
+			<p>アメリカ：7月30日（女子体操チームが金メダルを獲得し、水泳でも複数のメダルが獲得された日）、7月29日、8月5日。</p>
+		</li>
+		<li>
+			<p>フランス：7月31日（レオン・マルシャン選手が男子200メートルバタフライ決勝で金メダルを獲得した日）、7月29日、8月1日。</p>
+		</li>
+		<li>
+			<p>ドイツ：7月27日（ルーカス・マーテンス選手が男子400メートル自由形決勝で金メダルを獲得した日）、8月8日、8月7日。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="sports-news-sites">スポーツニュースサイト</h3>
+		<a href="https://blog.cloudflare.com/#sports-news-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スポーツニュースサイトへのDNSトラフィックを各国で見ると、オリンピックの2週間は、6月以降の他の週を上回るトラフィックを記録しました。これは、6月14日から7月14日に開催された主要なサッカーイベントである<a href="https://blog.cloudflare.com/euro-2024s-impact-on-internet-traffic-a-closer-look-at-finalists-spain-and-england">UEFA Euro 2024</a>期間中をも含みます。オリンピック期間中の2週間のトラフィックは、オリンピック前の週よりも17％多く、Euro 2024の最もトラフィックが多かった週（6月22日〜29日）よりも4％多いDNSトラフィックが記録されました。</p>
+	<p>日別で見ると、スポーツニュースサイトへのトラフィックが最も多かった日は、8月10日、8月3日、7月28日、そして7月14日（Euro 2024決勝に関連）でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3srIwa7L0YTGNgHN3ud0Hg/132580c79003c88a5c6d51edcaf46f64/2501-14.png" alt="2501-14" class="kg-image" width="1999" height="715" loading="lazy">
+	</figure>
+	<p>アメリカでは、NBCがオリンピックの公式放送局であり、専用のWebサイトも作成しました。NBCのスポーツおよびNBCオリンピックのWebサイトでは、世界中でDNSトラフィックが大幅に増加し、7月28日には前週と比べて最大1,640％の増加が見られました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4T1R6rUvHZj1MhdgwzpwOa/4288ac048ddf97245898b823e158fd42/2501-15.png" alt="2501-15" class="kg-image" width="1999" height="782" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="from-official-streaming-services-to-olympic-sponsors">公式ストリーミングサービスからオリンピックスポンサーまで</h3>
+		<a href="https://blog.cloudflare.com/#from-official-streaming-services-to-olympic-sponsors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>オリンピックは依然としていくつかの伝統的な国営TVネットワークで放送されましたが、ストリーミングも重要な役割を果たしました。Peacock TV（アメリカおよびカナダ）、<a href="https://www.hollywoodreporter.com/tv/tv-news/olympics-boosts-max-streaming-growth-europe-1235964619" target="_blank" rel="noopener noreferrer">ヨーロッパ</a>ではMax（Warner Bros. Discovery提供）が、毎日数時間にわたりオリンピックコンテンツを提供しました。これらのプラットフォームへの全世界のトラフィックの増加は明らかで、週単位で見ると、オリンピックイベントを配信するストリーミングプラットフォームへのDNSリクエストトラフィックは最大65％増加しました。1日あたりのトラフィックのピークは7月30日（前週比68％増加）で、次いで7月29日と8月4日が続きました。トラフィックの面では、Peacock TVがMaxを上回っていました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1r0g9vEj8ipe6HKWgo7Iy8/b5967366133e54d394157275bde06fc5/2501-16.png" alt="2501-16" class="kg-image" width="1999" height="891" loading="lazy">
+	</figure>
+	<p>ブレイクダンシング（「ブレイキン競技」）は、2024年の夏季オリンピックで初登場し、特に8月9日と10日にブレイキン競技関連のWebサイトへのDNSトラフィックが急増しました。トラフィックのピークは8月9日で、前週比215%増となりました。これは、オーストラリアのレイチェル・ガン選手のパフォーマンスなど、オンラインで盛り上がる瞬間によって引き起こされました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ieZ4U5xBmL6Ju3ESEfUj6/c5dee9e9be4416484664e1a011d5071a/2501-17.png" alt="2501-17" class="kg-image" width="1999" height="812" loading="lazy">
+	</figure>
+	<p>パリオリンピックのスポンサー企業に関しても、DNSトラフィックが増加しました。特に大会初期とその前後の日に顕著で、ピークトラフィックは7月29日に記録され（前週比で15％の増加）ました。次いで、7月25日と24日（開会式の2日前）に増加が見られました。Samsungはオリンピックの初期に最も大きな影響を受け、Airbnbは開会式の直前（7月25日）にトラフィックが急増しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7avHcEpEpv2MyJtFEZqrCz/61e2aed8f0b4bbbe20c4df9dae634c06/2501-18.png" alt="2501-18" class="kg-image" width="1999" height="897" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="next-stop-la-2028">次回オリンピック：LA 2028</h3>
+		<a href="https://blog.cloudflare.com/#next-stop-la-2028" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>閉会式では、パリ2024からロサンゼルス2028への象徴的なトーチの引き継ぎが行われました。シモーネ・バイルス選手がオリンピック旗をトム・クルーズに手渡し、彼は『ミッション・インポッシブル』風にその旗をパリからロサンゼルスのベニスビーチで開催されたコンサートに運びました。このコンサートには、レッド・ホット・チリ・ペッパーズやビリー・アイリッシュなどが出演しました。予想通り、<a href="http://la28.org" target="_blank" rel="noopener noreferrer">LA 2028</a>公式WebサイトへのDNSトラフィックは、8月11日に前週比で1600％の急増を記録しました。​</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yKQKlBwmvv5k955T0mX0/be83a271bca9afe834464139ee606210/2501-19.png" alt="2501-19" class="kg-image" width="1999" height="768" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attacks-targeting-olympic-related-and-sponsor-websites">オリンピック関連やスポンサーのWebサイトを標的としたDDoS攻撃</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attacks-targeting-olympic-related-and-sponsor-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2024年の<a href="https://blog.cloudflare.com/tag/election-security">選挙期間</a>中、特に<a href="https://blog.cloudflare.com/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts">フランスの選挙</a>を含む大きなイベントにおいて、DDoS（<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">分散型サービス妨害</a>）攻撃の標的となったのは、政党だけではありません。攻撃者は大規模な世界的イベントを認識しており、<a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">以前の関連ブログ記事</a>では、フランスの交通機関や政府のWebサイトを対象とした攻撃について取り上げました。以下では、オリンピック関連企業やスポンサー企業に着目します。</p>
+	<p>7月、CloudflareはオリンピックパートナーのWebサイトで、2024年の他の月よりも急増するDDoS攻撃をブロックしました。1日あたりのDDoS攻撃リクエストは2億件にまで急増し、8月のわずか11日間で、2024年のオリンピック前のどの月よりも多くのDDoSリクエスト（9,000万件）がブロックされました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63a6o0KABRDjWCDRAb7PVk/ba936a0bebbc23ff9682a8ad97bfbc9f/2501-20.png" alt="2501-20" class="kg-image" width="1912" height="890" loading="lazy">
+	</figure>
+	<p>最大の攻撃急増は7月29日で、3つのスポンサーWebサイトを同時に標的とし、この日だけで8,400万件のDDoS関連リクエストが記録されました。最も激しいDDoS攻撃は、10:20 UTCに1秒あたり19万件のリクエストに達しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5umkKauSWq6863fcKC3btV/311dea77951f696894f034bd65f199b9/2501-21.png" alt="2501-21" class="kg-image" width="1742" height="922" loading="lazy">
+	</figure>
+	<p>​​最も重大な特定の攻撃は、大会最終日の8月11日に発生し、フランスの交通機関のウェブサイトが標的となりました。この攻撃は4分間続き、05:09 UTCに1秒あたり50万件以上のリクエストに達しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fxmOqYMVWOjlY0FCIp5aa/d3e037b415f1f9fbc2c89a912ad36caa/2501-22.png" alt="2501-22" class="kg-image" width="1746" height="930" loading="lazy">
+	</figure>
+	<p>当社の<a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q2-ja-jp">第2四半期DDoSレポート</a>で強調したように、DDoS攻撃の多くは短期間で終わる傾向がありますが、前述の2つの攻撃でもそれが確認されました。1秒あたり50万リクエスト（rps）の攻撃はCloudflareにとっては大きな規模ではありませんが、そうしたトラフィックレベルに対応できないWebサイトにとっては壊滅的な影響を与える可能性があります。</p>
+	<p>Cloudflareを利用しているオリンピックパートナーWebサイトの同じプールを分析すると、総リクエスト数（正当なトラフィックと攻撃を含む）は7月に増加し、42億件に達しました。これは5月と比べて27％、6月と比べて11％の増加です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pZNb4q76uPGVr9YDsAzUQ/abcac9116d6e6a2a367159fa91af687c/2501-23.png" alt="2501-23" class="kg-image" width="1904" height="894" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="rise-in-olympics-and-paris-2024-emails">「<i>オリンピック</i>」と「<i>パリ2024</i>」メールの増加</h2>
+		<a href="https://blog.cloudflare.com/#rise-in-olympics-and-paris-2024-emails" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大きなイベントでは、スパムや悪意のあるメールなど、メール領域で注目を集めることが多く、オリンピックも例外ではありませんでした。 2024年1月から8月11日までに、<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">CloudflareのCloud Email Security</a>サービスは、件名に「オリンピック」または「パリ2024」を含む170万通以上のメールを処理しました。そのうち、半数以上（89万通）がオリンピック期間中（7月26日から8月11日）に送信されており、最も多かった（15万通のメール）のは開会式当日の7月26日でした。</p>
+	<p>7月22日から28日の週は、オリンピック開催の最初の数日と重なっていて、その前の週に比べて304%の増加が見られ、1月の最も忙しい週と比較すると3111%という驚異的な増加が見られました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AqXkZhyTfNzulzpH1wA8p/2b87dceb078fffcd4c1e9164bc5ef7a8/2501-24.png" alt="2501-24" class="kg-image" width="1918" height="646" loading="lazy">
+	</figure>
+	<p>オリンピック期間中（7月26日～8月11日）、関連するメールの件数が多かったものの、スパムや悪意のあるメッセージの割合は以前よりも低くなっています。しかし、それでも6,200通以上のメールがスパムとして分類され（全体の0.7％）、248通が悪意のあるメールまたはフィッシングメールとして特定されました（全体の0.07％）。</p>
+	<p>以前のブログ記事で述べたように、2024年1月1日以降、件名に「オリンピック」または「パリ2024」を含むすべてのメールのうち、スパムは1.3％、悪意のあるメールは0.1％を占めていました。1,000通のメールをサンプルとすると、約13通がスパム、1通が悪意のあるメールという割合です。オリンピック関連の悪意のあるメールのピークは5月6日の週で、0.6％が悪意のあるメールとして分類されました。このピーク後には減少がみられましたが、7月にわずかに増加し、7月8日には0.4%に達しました。7月22日の週に量が急増したにもかかわらず、悪意のあるメールはわずか0.05%でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68T1b5FmULhgm4U1F8P0hH/387be6dc0db082d2efa0eb86649014ac/2501-25.png" alt="2501-25" class="kg-image" width="1990" height="660" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="simone-biles-and-snoop-dogg-popular-via-email">メールではシモーネ・バイルズ選手とスヌープ・ドッグ選手が人気</h2>
+		<a href="https://blog.cloudflare.com/#simone-biles-and-snoop-dogg-popular-via-email" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>有名人は、攻撃者によるメールフィッシングにしばしば利用されます。イベントで輝いているアスリートの中で、シモーネ・バイルズ選手に関連するメールが最も多く作成されましたが、そのうちの非常に少数がスパムや悪意のあるものでした。バイルズ選手は、以下に示す他の有名選手の名前を押さえて、イベント中に最も多くのメールが作成されました。メール数の順に並べると、ケイティ・レデッキー選手（アメリカ）、イマン・ケリフ選手（アルジェリア）、ノバク・ジョコビッチ選手（セルビア）、ステフ・カリー選手（米国）、レオン・マルシャン選手（フランス）となります。</p>
+	<p>7月1日以降、CloudflareのCloud Email Securityサービスによって処理された16万通以上のメールに「シモーネ・バイルズ」または「バイルズ」という件名が含まれていましたが、そのうちのわずか0.5％がスパムと見なされ、0.01％が悪意のあるものと分類されました（そして、その16万通のメールの97％は、オリンピックが7月26日に始まって以来送信されたものです）。最も多くのメールが送信されたのは8月5日で、次いで8月2日と7月28日でした。スパム率は7月24日にピークに達し、全メールの5％がスパムと見なされました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45rjTYCvK35NRVLRFJLD3W/550bfcbed455518e400c6e051a37d997/2501-26.png" alt="2501-26" class="kg-image" width="1898" height="620" loading="lazy">
+	</figure>
+	<p>有名選手の中では、スヌープ・ドッグ選手が他のアメリカチームのサポーターであるマーサ・スチュワート、フレイヴァ・フレイヴ、ジェイソン・ケルスを押さえてトップに立ちました。7月以降、「スヌープ・ドッグ」という件名が付いたメールが6,600通以上送信され、そのうち40通がスパム（0.6％）、4通が悪意のあるメール（0.06％）と分類されました。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion-from-paris-to-los-angeles">結論：パリからロサンゼルスへ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion-from-paris-to-los-angeles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パリ2024夏季オリンピックは、世界中の何百万もの人々をスリリングなスポーツ競技で魅了しただけでなく、世界のインターネットトラフィックにも大きな影響を与えました。当社のデータから、特にフランスで、主要なオリンピックイベント中にインターネット活動が顕著に減少することが分かりました。これは、視聴者がオンライン活動からライブ中継に移行したためです。このトレンドは、デジタル化が進む時代においても、世界的なイベントの間、放送メディアの絶え間ない影響力を裏付けています。</p>
+	<p>さらに、オリンピック公式WebサイトでのDNSトラフィックの増加と、イベントを配信するストリーミングプラットフォームのDNSトラフィックの急増は、特定の視聴者層の間でオンライン報道への強い関心を示しており、これは世界中の国営ネットワークによる従来のテレビ視聴を補完するものです。</p>
+	<p>最後に、スポンサーサイトへのDDoS攻撃や、オリンピック関連のメール（スパムや悪意のあるものを含む）の増加など、サイバーセキュリティの脅威が高まっていることは、この世界的イベントのマーケティングへの影響とその脆弱性の両方を強調しています。</p>
+	<p>そして、パリ2024夏季オリンピックの後には、すぐに<a href="https://en.wikipedia.org/wiki/2024_Summer_Paralympics" target="_blank" rel="noopener noreferrer">2024年夏季パラリンピック</a>（8月28日～9月8日）が控えており、4年後には<a href="https://en.wikipedia.org/wiki/2028_Summer_Olympics" target="_blank" rel="noopener noreferrer">LA 2028</a>が開催されます。</p>
+	<p>パリ2024オリンピックを通じて見られたように、オリンピック精神は依然として多くの関心を集め、さまざまなメディアを通じて関連性を保っています。この精神は、古代ギリシャ以来2,800年間も脈々と受け継がれており（紀元前776年に遡る）、今なお人類を魅了し、力を与えています。</p>
+	<p><i>（このブログ記事は、</i><a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><i>Cloudflare Radar</i></a><i>チームのJorge Pachecoが寄稿してくれました）</i></p>
+</div>

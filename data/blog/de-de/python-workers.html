@@ -1,0 +1,362 @@
+<div class="mb2 gray5">Lesezeit: 14&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/python-workers">English</a>, <a href="https://blog.cloudflare.com/pt-br/python-workers">Português</a>, <a href="https://blog.cloudflare.com/es-es/python-workers">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/python-workers">Français</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63CDrfoebRdeBzURcaBzQS/3a4ca7a6bb8dff8c209aecdb7e7544a2/python-workers.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ab sofort können Sie in der Open Beta-Version <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer">Cloudflare-Worker in Python schreiben</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BCvEmK49aK7qLQuTkUsI1/0aecc2333aabe7e94ee99cdf9f830ef6/pythonweba.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Dieser neue Unterstützung für Python unterscheidet sich von der Art und Weise, wie Workers in der Vergangenheit andere Sprachen neben JavaScript unterstützt hat – in diesem Fall haben wir eine Python-Implementierung direkt in <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>, der Open-Source-Laufzeitumgebung von Workers, integriert. Alle <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">Bindungen</a>, einschließlich der Bindungen an <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>, <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a> und <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, werden vom ersten Tag an unterstützt. Python-Worker können einen Teil beliebter Python-<a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Pakete</a> importieren, darunter <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer">FastAPI</a>, <a href="https://python.langchain.com/docs/get_started/introduction" target="_blank" rel="noopener noreferrer">Langchain</a> und <a href="https://numpy.org" target="_blank" rel="noopener noreferrer">Numpy</a>. Es sind keine zusätzlichen Build-Schritte oder externe Toolchains erforderlich.</p>
+	<p>Dafür mussten wir die Grenzen aller unserer Systeme verschieben, von der Laufzeitumgebung selbst über unser Bereitstellungssystem bis hin zu den Inhalten des Worker-Pakets, das über unser <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Netzwerk</a> veröffentlicht wird. Sie können <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer">die Begleitdokumentation dazu lesen</a> und noch heute anfangen, die Lösung zu nutzen.</p>
+	<p>Dieser Beitrag soll einen Einblick in den internen Lebenszyklus eines Python-Worker geben. Außerdem wollen wir von unseren Erkenntnissen bei der Arbeit an diesem Angebot berichten und unsere weiteren Pläne vorstellen.</p>
+	<div class="flex anchor relative">
+		<h2 id="beyond-just-compile-to-webassembly">Mehr als die bloße Kompilierung in WebAssembly</h2>
+		<a href="https://blog.cloudflare.com/#beyond-just-compile-to-webassembly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare-Worker unterstützen WebAssembly <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">seit 2018</a>: Jeder Worker ist eine <a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer">V8-Isolierung</a>, die von derselben JavaScript-Engine unterstützt wird wie der Chrome-Webbrowser. Im Prinzip ist es seit Jahren <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">möglich</a>, Worker in jeder Sprache einschließlich Python zu schreiben, solange zunächst eine Kompilierung für WebAssembly oder JavaScript stattfindet.</p>
+	<p>Nur weil etwas möglich ist, heißt es nicht, dass es sich in der Praxis ohne Weiteres umsetzen lässt. Und nur weil „hello world“ funktioniert, bedeutet das noch lange nicht, dass Sie auch zuverlässig eine Anwendung erstellen können. Zur Programmierung einer vollständigen Applikation ist die Unterstützung eines Ökosystems von Paketen erforderlich, mit denen Entwickler zu arbeiten gewohnt sind. Bei der Unterstützung einer Programmiersprache ist es nicht damit getan, dass auf einer Plattform gezeigt wird, wie sich Quellcode mit externen Toolchains kompilieren lässt.</p>
+	<p>Python-Worker unterscheiden sich von dem, was wir bisher angeboten haben. Das Produkt befindet sich noch in der Beta-Phase und damit in einem Frühstadium. Wir glauben aber, dass sich damit demonstrieren lässt, wie die Bereitstellung erstklassiger Unterstützung für Programmiersprachen jenseits von JavaScript für Worker aussehen kann.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-lifecycle-of-a-python-worker">Der Lebenszyklus eines Python-Worker</h2>
+		<a href="https://blog.cloudflare.com/#the-lifecycle-of-a-python-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Da Pyodide jetzt <a href="https://github.com/cloudflare/workerd/tree/main/src/pyodide" target="_blank" rel="noopener noreferrer">in workerd integriert</a> ist, kann ein Worker wie folgt geschrieben werden:</p>
+	<p>… mit einer wrangler.toml-Datei, die auf eine .py-Datei verweist:</p>
+	<pre class="language-js"><code class="language-js">from js import Response
+
+async def on_fetch(request, env):
+    return Response.new("Hello world!")</code></pre>
+	<p>… und wenn Sie <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer">npx wrangler@latest dev</a> ausführen, tut die Workers-Laufzeitumgebung Folgendes:</p>
+	<pre class="language-js"><code class="language-js">name = "hello-world-python-worker"
+main = "src/entry.py"
+compatibility_date = "2024-03-18"
+compatibility_flags = ["python_workers"]</code></pre>
+	<ol>
+		<li>
+			<p>Die erforderliche <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Pyodide-Version</a> anhand Ihres <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer">Kompatibilitätsdatums</a> ermitteln</p>
+		</li>
+		<li>
+			<p>Eine Isolierung für Ihren Worker erstellen und Pyodide automatisch injizieren</p>
+		</li>
+		<li>
+			<p>Ihren Python-Quellcode mit Pyodide bereitstellen</p>
+		</li>
+	</ol>
+	<p>Dies alles geschieht im Hintergrund: Es sind weder eine weitere Toolchain noch zusätzliche Vorkompilierungsschritte erforderlich. Die Python-Laufzeitumgebung wird Ihnen bereitgestellt und reproduziert die Funktionsweise von Workern, die in JavaScript geschrieben wurden.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-python-interpreter-built-into-the-workers-runtime">Ein in die Workers-Laufzeitumgebung integrierter Python-Interpreter</h2>
+		<a href="https://blog.cloudflare.com/#a-python-interpreter-built-into-the-workers-runtime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ebenso wie JavaScript über <a href="https://en.wikipedia.org/wiki/List_of_ECMAScript_engines" target="_blank" rel="noopener noreferrer">viele Engines</a> verfügt, gibt es in Python <a href="https://wiki.python.org/moin/PythonImplementations" target="_blank" rel="noopener noreferrer">viele Implementierungen</a>, die Python-Quellcode ausführen können. <a href="https://github.com/python/cpython" target="_blank" rel="noopener noreferrer">CPython</a> ist die Referenzimplementierung von Python. Wenn Sie Python schon einmal verwendet haben, dann mit ziemlicher Sicherheit diese Implementierung, die im Allgemeinen einfach als „Python“ bezeichnet wird.</p>
+	<p><a href="https://pyodide.org/en/stable" target="_blank" rel="noopener noreferrer">Pyodide</a> ist eine Portierung von CPython für WebAssembly. Damit wird Python-Quellcode interpretiert, ohne dass er vorher in ein anderes Format vorkompiliert werden muss. Sie läuft in einem Webbrowser: Hier eine <a href="https://pyodide-console.pages.dev" target="_blank" rel="noopener noreferrer">REPL</a> dazu. Die Lösung entspricht dem CPython, das Python-Entwickler kennen und erwarten, und stellt <a href="https://developers.cloudflare.com/workers/languages/python/stdlib" target="_blank" rel="noopener noreferrer">den größten Teil der Python-Standardbibliothek</a> bereit. Sie bietet ein Foreign Function Interface (FFI) für JavaScript, über das Sie die JavaScript-API direkt von Python aus aufrufen können (mehr dazu erfahren Sie weiter unten). Außerdem stehen beliebte quelloffene <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Pakete</a> zur Verfügung und reine Python-Pakete lassen sich direkt aus PyPI importieren.</p>
+	<p>Pyodide erschien uns als perfekte Lösung für Workers. Das Produkt ist so konzipiert, dass der Core-Interpreter und jedes native Python-Modul als separate WebAssembly-Module erstellt und zur Laufzeit dynamisch verlinkt werden. Dadurch kann der Code-Footprint für diese Module von allen Workern, die auf demselben Rechner laufen, gemeinsam genutzt werden – anstatt dass jeder Worker über eine eigene Kopie verfügen muss. Das ist unerlässlich, damit WebAssembly in der Workers-Umgebung gut funktioniert, in der wir oft <a href="https://www.infoq.com/presentations/cloudflare-v8" target="_blank" rel="noopener noreferrer">Tausende von Workern pro Rechner</a> ausführen. Die Worker müssen dieselbe Programmiersprache verwenden, um ihren Laufzeitcode-Footprint weitergeben zu können. Der Einsatz von Tausenden von Workern auf jedem Rechner ermöglicht es uns, jede Anwendung an jedem Standort zu einem <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero">angemessenen Preis</a> bereitzustellen.</p>
+	<p>Genau wie bei JavaScript-Workern stellen wir auch bei Python-Workern die Laufzeitumgebung für Sie bereit:</p>
+	<p>Pyodide ist derzeit eine Ausnahme: Die meisten auf WebAssembly ausgerichteten Sprachen unterstützen noch keine dynamische Verlinkung, sodass letztlich jede Anwendung eine eigene Kopie ihrer Sprachlaufzeitumgebung mitbringt. Wir hoffen, dass in Zukunft mehr Sprachen die dynamische Verlinkung unterstützen werden, damit wir sie effektiver in Workers einbringen können.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eCllqbVYDOzao6swhou7t/c4731707e15b9b37b4198f05a88682ee/VMs--Containers--ans-Isolates-comparison.png" alt="" class="kg-image" width="1600" height="798" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-pyodide-works">So funktioniert Pyodide</h3>
+		<a href="https://blog.cloudflare.com/#how-pyodide-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Pyodide führt Python-Quellcode in WebAssembly aus. Dabei handelt es sich um eine von der Host-Laufzeitumgebung getrennte Sandbox-Umgebung. Anders als bei der Ausführung von nativem Quellcode müssen alle Vorgänge, die nicht der reinen Rechenleistung zuzurechnen sind (wie das Lesen von Dateien), von einer Laufzeitumgebung bereitgestellt und dann vom WebAssembly-Modul <i>importiert</i> werden.</p>
+	<p><a href="https://llvm.org" target="_blank" rel="noopener noreferrer">LLVM</a> bietet drei Target Triple für WebAssembly:</p>
+	<ol>
+		<li>
+			<p><b>wasm32-unknown-unknown</b>: Dieses Backend bietet keine C-Standardbibliothek und keine Systemaufrufschnittstelle; um dieses Backend zu unterstützen und Importe zu verwenden, die wir in der Laufzeitumgebung selbst definieren würden, müssten wir jeden System- oder Bibliotheksaufruf manuell umschreiben.</p>
+		</li>
+		<li>
+			<p><b>wasm32-wasi</b>: WASI ist eine standardisierte Systemschnittstelle und definiert einen Standardsatz von Importen, die in WASI-Laufzeitumgebungen wie <a href="https://github.com/bytecodealliance/wasmtime" target="_blank" rel="noopener noreferrer">wasmtime</a> implementiert werden.</p>
+		</li>
+		<li>
+			<p><b>wasm32-unknown-emscripten</b>: Emscripten definiert wie WASI die Importe, die ein WebAssembly-Programm ausführen muss, gibt aber auch eine begleitende JavaScript-Bibliothek aus, die diese importierten Funktionen implementiert.</p>
+		</li>
+	</ol>
+	<p>Pyodide verwendet Emscripten und bietet drei Dinge:</p>
+	<ol>
+		<li>
+			<p>Eine mit Emscripten kompilierte Distribution des CPython-Interpreters</p>
+		</li>
+		<li>
+			<p>Ein Foreign Function Interface (FFI) zwischen Python und JavaScript</p>
+		</li>
+		<li>
+			<p>Eine Reihe von Python-Paketen von Drittanbietern, die mit dem Compiler von Emscripten zu WebAssembly kompiliert wurden</p>
+		</li>
+	</ol>
+	<p>Von diesen Targets unterstützt derzeit nur Emscripten eine dynamische Verlinkung, die – wie bereits erwähnt – für die Bereitstellung einer von allen Isolierungen gemeinsam genutzten Sprachlaufzeitumgebung für Python unerlässlich ist. Emscripten <a href="https://emscripten.org/docs/compiling/Dynamic-Linking.html" target="_blank" rel="noopener noreferrer">stellt Implementierungen von dlopen und dlsym bereit</a>, die mithilfe der zugehörigen JavaScript-Bibliothek die Tabelle des WebAssembly-Programms so modifizieren, dass zusätzliche WebAssembly-kompilierte Module zur Laufzeit verknüpft werden. WASI bietet noch <a href="https://github.com/WebAssembly/component-model/blob/main/design/mvp/examples/SharedEverythingDynamicLinking.md#runtime-dynamic-linking" target="_blank" rel="noopener noreferrer">keine Unterstützung</a> der von CPython verwendeten dynamischen Verlinkungs-Abstraktionen dlpen/dlsym.</p>
+	<div class="flex anchor relative">
+		<h2 id="pyodide-and-the-magic-of-foreign-function-interfaces-ffi">Pyodide und die Magie von Foreign Function Interfaces (FFI)</h2>
+		<a href="https://blog.cloudflare.com/#pyodide-and-the-magic-of-foreign-function-interfaces-ffi" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vielleicht ist Ihnen aufgefallen, dass wir in unserem „Hello World“-Python-Worker Response aus dem js-Modul importieren:</p>
+	<p>Was ist der Grund dafür?</p>
+	<pre class="language-js"><code class="language-js">from js import Response
+
+async def on_fetch(request, env):
+    return Response.new("Hello world!")</code></pre>
+	<p>Die meisten Worker sind in JavaScript geschrieben, und der größte Teil unseres technischen Aufwands für die Workers-Laufzeitumgebung fließt in die Verbesserung von JavaScript-Workern. Wird eine zweite Sprache hinzugefügt, besteht das Risiko, dass sie niemals Feature-Parität mit der ersten Sprache erreicht und immer stiefmütterlich behandelt wird. Das Foreign Function Interface (FFI) von Pyodide ist entscheidend, um dies zu vermeiden. Es bietet von Python aus Zugriff auf alle JavaScript-Funktionen. Dies kann vom Autor des Worker direkt genutzt werden und wird auch verwendet, damit Pakete wie <a href="https://developers.cloudflare.com/workers/languages/python/packages/fastapi" target="_blank" rel="noopener noreferrer">FastAPI</a> und <a href="https://developers.cloudflare.com/workers/languages/python/packages/langchain" target="_blank" rel="noopener noreferrer">Langchain</a> sofort funktionieren, wie wir in diesem Beitrag noch zeigen werden.</p>
+	<p>Ein FFI ist ein System zum Aufrufen von Funktionen in einer Sprache, die in einer anderen Sprache implementiert sind. In den meisten Fällen wird ein FFI durch eine übergeordnete Sprache definiert, um Funktionen aufzurufen, die in einer Systemsprache, häufig C, implementiert sind. Das <a href="https://docs.python.org/3/library/ctypes.html#module-ctypes" target="_blank" rel="noopener noreferrer">ctypes-Modul</a> von Python ist ein solches System. Diese Art von FFI sind aufgrund der Natur von C-API oft schwer zu verwenden.</p>
+	<p>Bei dem FFI von Pyodide handelt es sich um eine Schnittstelle zwischen Python und JavaScript, zwei objektorientierten Programmiersprachen mit vielen strukturellen Gemeinsamkeiten. Unveränderliche Typen wie Zeichenfolgen und Zahlen werden bei der Weitergabe von einer Sprache in eine andere transparent übersetzt. Alle veränderbaren Objekte sind in einen geeigneten Proxy verpackt.</p>
+	<p>Wird ein JavaScript-Objekt an Python übergeben, ermittelt Pyodide, welches JavaScript-Protokoll das Objekt unterstützt, und <a href="https://github.com/pyodide/pyodide/blob/main/src/core/jsproxy.c#L3781-L3791" target="_blank" rel="noopener noreferrer">erstellt dynamisch</a> eine entsprechende Python-Klasse, die das passende Python-Protokoll implementiert. Wenn beispielsweise das JavaScript-Objekt das <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener noreferrer">JavaScript-Iterationsprotokoll</a> unterstützt, dann unterstützt der Proxy das <a href="https://docs.python.org/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener noreferrer">Python-Iterationsprotokoll</a>. Ist das JavaScript-Objekt ein Promise-Objekt oder ein anderes <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables" target="_blank" rel="noopener noreferrer">thenable</a>, dann ist das Python-Objekt ein <a href="https://docs.python.org/3/reference/datamodel.html#awaitable-objects" target="_blank" rel="noopener noreferrer">awaitable</a>.</p>
+	<p>Der Lebenszyklus einer Anfrage an einen Python-Worker nutzt das FFI von Pyodide, wobei das eingehende JavaScript-<a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">Anfrage</a>-Objekt in ein <a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy" target="_blank" rel="noopener noreferrer">JsProxy</a>-Objekt verpackt wird, das in Ihrem Python-Quellcode zugänglich ist. Anschließend wird der vom <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers" target="_blank" rel="noopener noreferrer">Handler</a> des Python-Worker zurückgegebene Wert in ein JavaScript-<a href="https://developers.cloudflare.com/workers/runtime-apis/response" target="_blank" rel="noopener noreferrer">Antwort</a>-Objekt konvertiert, das an den Client zurückgesendet werden kann:</p>
+	<pre class="language-js"><code class="language-js">from js import JSON
+
+js_array = JSON.parse("[1,2,3]")
+
+for entry in js_array:
+   print(entry)</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="why-dynamic-linking-is-essential-and-static-linking-isnt-enough">Warum dynamische Verlinkungen unverzichtbar sind und statische Verlinkungen nicht ausreichen</h2>
+		<a href="https://blog.cloudflare.com/#why-dynamic-linking-is-essential-and-static-linking-isnt-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/736nXjbNS1gxb4dm8xaptB/9f4dd0232d22e7d7070b1f716813a7e6/Python-Worker-Request-Lifecycle.png" alt="" class="kg-image" width="978" height="400" loading="lazy">
+
+	</figure>
+	<p>Python ist mit <a href="https://cffi.readthedocs.io/en/stable" target="_blank" rel="noopener noreferrer">einem C-FFI</a> ausgestattet und viele Python-Pakete nutzen dieses FFI, um native Bibliotheken zu importieren. Diese Bibliotheken sind in der Regel in C geschrieben, sodass sie zunächst zu WebAssembly kompiliert werden müssen, um mit der Workers-Laufzeitumgebung zu funktionieren. Wie oben dargelegt, wird Pyodide mit Emscripten erstellt, das das C-FFI von Python überschreibt. Jedes Mal, wenn ein Paket versucht, eine native Bibliothek zu laden, wird es stattdessen aus einem von der Workers-Laufzeitumgebung bereitgestellten WebAssembly-Modul geladen. Möglich macht dies eine dynamische Verlinkung, dank derer wir das C-FFI von Python überschreiben können, sodass Pyodide viele <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Python-Pakete</a> unterstützen kann, bei denen Abhängigkeiten zu nativen Bibliotheken bestehen.</p>
+	<p>Dynamische Verlinkung bedeutet Zahlung nach Bedarf, statische Verlinkung dagegen Zahlung im Voraus – wenn Quellcode statisch mit Ihrer Binärdatei verlinkt ist, muss er zum Ausführen der Binärdatei im Voraus geladen werden, auch wenn er nie verwendet wird.</p>
+	<p>Dank dynamischer Verlinkung kann die Workers-Laufzeitumgebung die zugrunde liegenden WebAssembly-Module von Paketen für verschiedene, auf demselben Rechner laufende Worker zu nutzen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JiF8v11hINyO6CpNnuP6a/52fad68dedc7a4d1c6beba46eb13f964/Python-Workers---Runtime.png" alt="" class="kg-image" width="772" height="400" loading="lazy">
+
+	</figure>
+	<p>Wir werden hinsichtlich der <a href="https://emscripten.org/docs/compiling/Dynamic-Linking.html#runtime-dynamic-linking-with-dlopen" target="_blank" rel="noopener noreferrer">Funktionsweise der dynamischen Verlinkung in Emscripten</a> nicht zu sehr ins Detail gehen. Der wichtigste Aspekt ist aber, dass die Emscripten-Laufzeitumgebung WebAssembly-Module aus einer in JavaScript bereitgestellten Dateisystem-Abstraktion abruft. Für jeden Worker generieren wir zur Laufzeit ein Dateisystem, dessen Struktur einer Python-Distribution ähnelt, bei der die Abhängigkeiten des Worker installiert sind, deren zugrunde liegende Dateien aber von den Workern gemeinsam genutzt werden. Dies ermöglicht die gemeinsame Verwendung von Python- und WebAssembly-Dateien durch mehrere Worker, die dieselbe Abhängigkeit importieren. Aktuell können diese Dateien zwischen verschiedenen Workern ausgetauscht werden, sie werden aber in jede neue Isolierung kopiert. Wir glauben, dass wir noch weiter gehen können, indem wir <a href="https://en.wikipedia.org/wiki/Copy-on-write" target="_blank" rel="noopener noreferrer">Copy-on-Write</a>-Verfahren einsetzen, damit die zugrunde liegende Ressource von vielen Workern genutzt werden kann.</p>
+	<div class="flex anchor relative">
+		<h2 id="supporting-server-and-client-libraries">Unterstützung von Server- und Client-Bibliotheken</h2>
+		<a href="https://blog.cloudflare.com/#supporting-server-and-client-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python verfügt über eine Vielzahl beliebter HTTP-Client-Bibliotheken, darunter <a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer">httpx</a>, <a href="https://pypi.org/project/urllib3" target="_blank" rel="noopener noreferrer">urllib3</a> und <a href="https://pypi.org/project/requests" target="_blank" rel="noopener noreferrer">requests</a>. Leider ist keine davon bei Pyodide sofort einsatzbereit. Die entsprechende Unterstützung gehörte zu den Dauerbrennern unter den Nutzeranfragen für das Pyodide-Projekt. Die HTTP-Client-Bibliotheken von Python arbeiten alle mit unformatierten Sockets, und das Browser-Sicherheitsmodell und CORS lassen dies nicht zu. Deshalb musste auf anderem Weg dafür gesorgt werden, dass sie in der Workers-Laufzeitumgebung funktionieren.</p>
+	<div class="flex anchor relative">
+		<h3 id="async-client-libraries">Asynchrone Client-Bibliotheken</h3>
+		<a href="https://blog.cloudflare.com/#async-client-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Für Bibliotheken wie <a href="https://docs.aiohttp.org/en/stable/index.html" target="_blank" rel="noopener noreferrer">aiohttp</a> und <a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer">httpx</a>, die Anfragen asynchron stellen können, kann die <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">Fetch-API</a> zum Stellen von Anfragen verwendet werden. Dafür wird die Bibliothek gepatcht und angewiesen, die Fetch-API von JavaScript zu verwenden, wodurch die Vorteile des FFI von Pyodide genutzt werden. <a href="https://github.com/cloudflare/pyodide/blob/main/packages/httpx/httpx_patch.py" target="_blank" rel="noopener noreferrer">Der httpx-Patch</a> ist letzten Endes nicht allzu kompliziert und umfasst weniger als 100 Zeilen Quellcode. Noch weiter vereinfacht sieht er folgendermaßen aus:</p>
+	<div class="flex anchor relative">
+		<h3 id="synchronous-client-libraries">Synchrone Client-Bibliotheken</h3>
+		<a href="https://blog.cloudflare.com/#synchronous-client-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">from js import Headers, Request, fetch
+
+def py_request_to_js_request(py_request):
+    js_headers = Headers.new(py_request.headers)
+    return Request.new(py_request.url, method=py_request.method, headers=js_headers)
+
+def js_response_to_py_response(js_response):
+  ... # omitted
+
+async def do_request(py_request):
+  js_request = py_request_to_js_request(py_request)
+    js_response = await fetch(js_request)
+    py_response = js_response_to_py_response(js_response)
+    return py_response</code></pre>
+	<p>Eine weitere Herausforderung bei der Unterstützung von HTTP-Client-Bibliotheken in Python besteht darin, dass viele Python-API synchron sind. Für diese Bibliotheken kann die <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">Fetch-API</a> also nicht direkt verwendet werden, da sie asynchron ist.</p>
+	<p>Glücklicherweise hat Joe Marshall kürzlich <a href="https://urllib3.readthedocs.io/en/stable/reference/contrib/emscripten.html" target="_blank" rel="noopener noreferrer">einen Beitrag zu urllib3 geleistet</a>, der die Unterstützung von Pyodide in Webbrowsern folgendermaßen ermöglicht:</p>
+	<ol>
+		<li>
+			<p>Prüfen, ob das Blockieren mit <code>Atomics.wait()</code> möglich ista. Wenn ja, einen Fetch-Worker-Thread startenb. Den Abrufvorgang an den Worker-Thread delegieren und die Antwort in einen SharedArrayBuffer serialisierenc. Im Python-Thread Atomics.wait verwenden, um die Antwort im SharedArrayBuffer zu blockieren</p>
+		</li>
+		<li>
+			<p>Falls <code>Atomics.wait()</code> nicht funktioniert, kann auf eine synchrone XMLHttpRequest zurückgegriffen werden</p>
+		</li>
+	</ol>
+	<p>Trotzdem unterstützen Cloudflare-Worker aktuell weder <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener noreferrer">worker-Threads</a> noch synchrone <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener noreferrer">XMLHttpRequest</a>, sodass keiner dieser Ansätze bei Python-Workern funktionieren wird. Wir unterstützen derzeit zwar keine synchronen Anfragen, es gibt aber trotzdem eine Lösung …</p>
+	<div class="flex anchor relative">
+		<h3 id="webassembly-stack-switching">Stack-Switching bei WebAssembly</h3>
+		<a href="https://blog.cloudflare.com/#webassembly-stack-switching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es gibt einen Ansatz, mit dem wir synchrone Anfragen unterstützen können. Bei WebAssembly existiert <a href="https://github.com/WebAssembly/js-promise-integration" target="_blank" rel="noopener noreferrer">ein Stufe 3-Vorschlag für die Unterstützung von Stack-Switching</a> und <a href="https://v8.dev/blog/jspi" target="_blank" rel="noopener noreferrer">v8 verfügt über eine entsprechende Implementierung</a>. Pyodide-Mitwirkende arbeiten seit September 2022 an einer Unterstützung von Stack-Switching in Pyodide und stehen kurz vor dem Ziel.</p>
+	<p>Im Zuge dieser Unterstützung stellt Pyodide eine Funktion namens <code>run_sync</code> zur Verfügung, die den Abschluss eines „awaitable“ blockieren kann:</p>
+	<div class="flex anchor relative">
+		<h3 id="fastapi-and-pythons-asynchronous-server-gateway-interface">FastAPI und das Gateway-Interface für asynchrone Server von Python</h3>
+		<a href="https://blog.cloudflare.com/#fastapi-and-pythons-asynchronous-server-gateway-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-js"><code class="language-js">from pyodide.ffi import run_sync
+
+def sync_fetch(py_request):
+   js_request = py_request_to_js_request(py_request)
+   js_response  = run_sync(fetch(js_request))
+   return js_response_to_py_response(js_response)</code></pre>
+	<p><a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer">FastAPI</a> ist eine der beliebtesten Bibliotheken zur Definition von Python-Servern. FastAPI-Anwendungen verwenden ein Protokoll namens <a href="https://asgi.readthedocs.io/en/latest" target="_blank" rel="noopener noreferrer">Asynchronous Server Gateway Interface</a> (ASGI). Das bedeutet, dass FastAPI selbst niemals von einem Socket liest oder in ihn schreibt. Eine ASGI-Anwendung erwartet, mit einem ASGI-Server verbunden zu sein, und zwar normalerweise mit <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreferrer">uvicorn</a>. Der ASGI-Server verwaltet alle Raw Sockets für die Anwendung.</p>
+	<p>Praktisch bedeutet dies für uns, dass FastAPI in Cloudflare Workers ohne Patch oder Änderungen an FastAPI selbst funktioniert. Wir müssen lediglich <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreferrer">uvicorn</a> durch einen geeigneten ASGI-Server ersetzen, der innerhalb eines Worker ausgeführt werden kann. Unsere erste Implementierung befindet sich <a href="https://github.com/cloudflare/workerd/blob/main/src/pyodide/internal/asgi.py" target="_blank" rel="noopener noreferrer">hier</a> in dem von uns unterhaltenen <a href="https://github.com/cloudflare/pyodide" target="_blank" rel="noopener noreferrer">Fork von Pyodide</a>. Wir hoffen, dass wir einen umfassenderen Funktionsumfang und eine Testabdeckung hinzufügen und diese Implementierung dann in Pyodide einbinden können.</p>
+	<p>Sie können das selbst ausprobieren, indem Sie <a href="https://github.com/cloudflare/python-workers-examples" target="_blank" rel="noopener noreferrer">cloudflare/python-workers-examples</a> klonen und <code>npx wrangler@latest dev</code> im Verzeichnis des FastAPI-Beispiels ausführen.</p>
+	<div class="flex anchor relative">
+		<h2 id="importing-python-packages">Importieren von Python-Paketen</h2>
+		<a href="https://blog.cloudflare.com/#importing-python-packages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python-Worker unterstützen <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">eine Untergruppe von Python-Paketen</a>, die <a href="https://github.com/cloudflare/pyodide/tree/main/packages" target="_blank" rel="noopener noreferrer">direkt von Pyodide bereitgestellt werden</a>, darunter <a href="https://numpy.org" target="_blank" rel="noopener noreferrer">numpy</a>, <a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer">httpx</a>, <a href="https://developers.cloudflare.com/workers/languages/python/packages/fastapi" target="_blank" rel="noopener noreferrer">FastAPI</a> und <a href="https://developers.cloudflare.com/workers/languages/python/packages/langchain" target="_blank" rel="noopener noreferrer">Langchain</a>. Die Kompatibilität mit der Pyodide-Laufzeitumgebung wird sichergestellt, indem Paketversionen an Pyodide-Versionen angeheftet werden. Gleichzeitig kann Pyodide interne Implementierungen patchen, wie oben am Fall von httpx bereits gesehen.</p>
+	<p>Um ein Paket zu importieren, können Sie es einfach ohne Versionsnummer in Ihre <code>requirements.txt</code>-Datei einfügen. Eine spezielle Version des Pakets wird direkt von Pyodide bereitgestellt. Aktuell können Sie Pakete bei der lokalen Entwicklung verwenden und in den kommenden Wochen werden Sie Worker einsetzen können, die Abhängigkeiten in einer <code>requirements.txt</code>-Datei definieren. Im weiteren Verlauf dieses Beitrags werden wir auf die Überlegungen eingehen, die wir im Hinblick auf die Verwaltung neuer Versionen von Pyodide und Paketen anstellen.</p>
+	<p>Wir unterhalten unseren eigenen Pyodide-Fork. Das ermöglicht es uns, Patches speziell für die Workers-Laufzeitumgebung bereitzustellen und unsere Unterstützung von Paketen in Python-Workern schnell zu erweitern. Gleichzeitig wollen wir unsere Änderungen auf Pyodide rückübertragen, damit das gesamte Entwickler-Ökosystem davon profitiert.</p>
+	<p>Python-Pakete sind allerdings oft groß und speicherintensiv und können beim Importieren eine Menge Arbeit machen. Wie lässt sich also sicherstellen, dass die benötigten Pakete ohne lange Kaltstartzeiten bezogen werden können?</p>
+	<div class="flex anchor relative">
+		<h2 id="making-cold-starts-faster-with-memory-snapshots">Schnellere Kaltstarts mit Speicher-Snapshots</h2>
+		<a href="https://blog.cloudflare.com/#making-cold-starts-faster-with-memory-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In dem Beispiel zu Beginn dieses Beitrags haben wir bei der lokalen Entwicklung erwähnt, dass Sie Pyodide in Ihren Worker einspeisen können. Pyodide selbst hat einen Umfang von 6,4 MB und Python-Pakete können auch recht groß sein.</p>
+	<p>Wenn wir Pyodide einfach in Ihren Worker einfügen und bei Cloudflare hochladen würden, wäre das ein ziemlich großer Worker, der in eine neue Isolierung geladen werden müsste. Das bedeutet, dass Kaltstarts langsam erfolgen würden. Auf einem schnellen Computer mit einer guten Netzwerkverbindung benötigt Pyodide etwa zwei Sekunden für die Initialisierung in einem Webbrowser, eine Sekunde Netzwerkzeit und eine Sekunde CPU-Zeit. Es wäre nicht akzeptabel, Pyodide jedes Mal zu initialisieren, wenn Sie Ihren Quellcode für jede Isolierung aktualisieren, in der Ihr Worker im <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare-Netzwerk</a> läuft.</p>
+	<p>Wenn Sie stattdessen <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">npx wrangler@latest deploy</a> ausführen, geschieht Folgendes:</p>
+	<ol>
+		<li>
+			<p>Wrangler lädt Ihren Python-Quellcode und Ihre <code>requirements.txt</code>-Datei in die Workers API hoch</p>
+		</li>
+		<li>
+			<p>Wir senden Ihren Python-Quellcode und Ihre <code>requirements.txt</code>-Datei zur Validierung an die Workers-Laufzeitumgebung</p>
+		</li>
+		<li>
+			<p>Wir erstellen eine neue Isolierung für Ihren Worker und injizieren automatisch Pyodide sowie alle <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Pakete</a>, die Sie in Ihrer <code>requirements.txt</code>-Datei angegeben haben</p>
+		</li>
+		<li>
+			<p>Wir durchsuchen den Quellcode des Worker nach Import-Anweisungen, führen diese aus und erstellen dann einen Snapshot des linearen WebAssembly-Speichers des Worker. Faktisch führen wir die teure Arbeit des Importierens von Paketen nicht zur Laufzeit, sondern zum Implementierungszeitpunkt durch</p>
+		</li>
+		<li>
+			<p>Wir implementieren diesen Snapshot zusammen mit dem Python-Quellcode Ihres Worker im Cloudflare-Netzwerk</p>
+		</li>
+		<li>
+			<p>Genau wie bei einem JavaScript-Worker führen wir den <a href="https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time" target="_blank" rel="noopener noreferrer">Top-Level-Bereich</a> des Worker aus</p>
+		</li>
+	</ol>
+	<p>Wenn eine Anfrage bei Ihrem Worker eingeht, laden wir diesen Snapshot und verwenden ihn, um Ihren Worker in einer Isolierung zu booten und so teure Initialisierungszeit zu vermeiden:</p>
+	<p>So nimmt ein Kaltstart eines einfachen Python-Worker weniger als eine Sekunde in Anspruch. Doch damit geben wir uns noch nicht zufrieden. Wir sind zuversichtlich, dass wir dies noch deutlich weiter senken können. Wie wir das anstellen wollen? Durch die Wiederverwendung von Speicher-Snapshots.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q0ztvdb60NUqlAsOWWFX4/203e421e31e25c5794f5fada1ad94c40/apipyth.png" alt="" class="kg-image" width="1200" height="475" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="reusing-memory-snapshots">Wiederverwendung von Speicher-Snapshots</h3>
+		<a href="https://blog.cloudflare.com/#reusing-memory-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie einen Python-Worker hochladen, generieren wir einen einzigen Speicher-Snapshot der Top-Level-Importe des Worker, einschließlich Pyodide und etwaiger Abhängigkeiten. Dieser Snapshot ist spezifisch für Ihren Worker. Er kann nicht weitergegeben werden, obwohl der größte Teil seines Inhalts mit dem anderer Python-Worker übereinstimmt.</p>
+	<p>Stattdessen können wir einen einzigen, gemeinsamen Snapshot im Voraus erstellen und ihn in einer Gruppe von „warmgelaufenen“ Isolierungen vorladen. In diesen Isolierungen wäre die Pyodide-Laufzeitumgebung bereits geladen und einsatzbereit, sodass ein Python-Worker genau wie ein JavaScript-Worker funktionieren würde. Der zugrunde liegende Interpreter und die zugrunde liegende Ausführungsumgebung werden in beiden Fällen von der Workers-Laufzeitumgebung bereitgestellt und sind bei Bedarf unverzüglich verfügbar. Der einzige Unterschied besteht darin, dass bei Python der Interpreter in WebAssembly innerhalb des Worker ausgeführt wird.</p>
+	<p>Snapshots sind ein gängiges Muster bei Laufzeit- und Ausführungsumgebungen. Node.js <a href="https://docs.google.com/document/d/1YEIBdH7ocJfm6PWISKw03szNAgnstA2B3e8PZr_-Gp4/edit#heading=h.1v0pvnoifuah" target="_blank" rel="noopener noreferrer">verwendet V8-Snapshots, um die Startzeit zu verkürzen</a>. Sie können <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md" target="_blank" rel="noopener noreferrer">Snapshots von Firecracker-microVM erstellen</a> und die Ausführung in einem anderen Prozess fortsetzen. Hier können wir noch viel mehr tun – nicht nur für Python-Worker, sondern auch für in JavaScript geschriebene Worker: So lassen sich Snapshots von kompiliertem Quellcode aus dem Top-Level-Bereich und vom Zustand der Isolierung selbst erstellen. Worker sind so schnell und effizient, dass wir bisher keine Snapshots auf diese Weise erstellen mussten. Wir glauben jedoch, dass sich die Performance noch beträchtlich steigern lässt.</p>
+	<p>Dies ist unser größter Beitrag zur Reduzierung der Kaltstartzeiten im weiteren Verlauf des Jahres 2024.</p>
+	<div class="flex anchor relative">
+		<h2 id="future-proofing-compatibility-with-pyodide-versions-and-compatibility-dates">Zukunftssichere Kompatibilität mit Pyodide-Versionen und Kompatibilitätsdatumsangaben</h2>
+		<a href="https://blog.cloudflare.com/#future-proofing-compatibility-with-pyodide-versions-and-compatibility-dates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie einen Worker bei Cloudflare implementieren, erwarten Sie, dass er auf unbestimmte Zeit läuft, selbst wenn Sie ihn nie wieder aktualisieren. Bestimmte Worker, die 2018 implementiert wurden, funktionieren im Produktivbetrieb immer noch einwandfrei.</p>
+	<p>Wir erreichen dies durch die Verwendung von <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer">Kompatibilitätsdatumsangaben</a> und <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#compatibility-flags" target="_blank" rel="noopener noreferrer">Kompatibilitäts-Flags</a>, die explizite Opt-in-Mechanismen für neues Verhalten und möglicherweise nicht abwärtskompatible Änderungen bieten, und zwar ohne Auswirkungen auf bestehende Worker.</p>
+	<p>Das Ganze klappt zum Teil, weil dabei die Funktionsweise des Internet und der Webbrowser übernommen wird. Sie veröffentlichen eine Webseite mit JavaScript und erwarten zu Recht, dass sie dauerhaft funktioniert. Webbrowser und Cloudflare-Worker haben gegenüber Entwicklern die gleiche Verpflichtung zur Stabilität.</p>
+	<p>Bei Python besteht jedoch eine Herausforderung: Sowohl für Pyodide als auch für CPython existieren <a href="https://devguide.python.org/versions" target="_blank" rel="noopener noreferrer">verschiedene Versionen</a>. Regelmäßig werden aktualisierte Versionen veröffentlicht, die teils tiefgreifende Änderungen umfassen. Zudem bietet Pyodide eine Reihe von <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">integrierten Paketen</a> mit jeweils einer angehefteten Versionsnummer. Daher stellt sich die Frage: Wie sollen wir Ihnen erlauben, Ihren Worker auf eine neuere Version von Pyodide zu aktualisieren?</p>
+	<p>Die Antwort lautet: mit <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer">Kompatibilitätsdatumsangaben</a> und <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#compatibility-flags" target="_blank" rel="noopener noreferrer">Kompatibilitäts-Flags</a>.</p>
+	<p>Eine neue Version von Python wird jedes Jahr im August veröffentlicht und eine neue Version von Pyodide erscheint sechs Monate später. Wird eine neue Pyodide-Version veröffentlicht, nehmen wir diese in Workers auf, indem wir sie mit einem Kompatibilitäts-Flag versehen, der erst nach einem bestimmten Kompatibilitätsdatum aktiviert wird. So können wir kontinuierlich Updates bereitstellen, ohne zu riskieren, dass durch Änderungen Störungen verursacht werden. Das erlaubt es uns, die für JavaScript gemachten Zusagen auf Python auszuweiten.</p>
+	<p>Jede Python-Version hat ein <a href="https://devguide.python.org/versions" target="_blank" rel="noopener noreferrer">Unterstützungszeitfenster von fünf Jahren</a>. Sobald dieses Fenster für eine bestimmte Python-Version abgelaufen ist, werden keine neuen Sicherheits-Patches mehr angewendet, sodass man sich auf diese Version nicht mehr verlassen kann. Wir wollen dieses Risiko mindern und gleichzeitig unserer Verpflichtung zu Stabilität und langfristiger Unterstützung so weit wie möglich gerecht werden. Deshalb wird nach fünf Jahren jeder Python-Worker, der sich in einem Python-Release außerhalb des Unterstützungszeitfensters befindet, automatisch in die nächstälteste Python-Version verschoben. Da es sich bei Python um eine ausgereifte und stabile Sprache handelt, gehen wir davon aus, dass Ihr Python-Worker in den meisten Fällen problemlos weiterlaufen wird. Wir würden allerdings empfehlen, das Kompatibilitätsdatum Ihres Worker regelmäßig zu aktualisieren, damit er innerhalb des Unterstützungszeitfensters bleibt.</p>
+	<p>Wir beabsichtigen, mit demselben Opt-in-Mechanismus auch zwischen Python-Releases Aktualisierungen vorzunehmen und weitere <a href="https://developers.cloudflare.com/workers/languages/python/packages/%255C" target="_blank" rel="noopener noreferrer">Python-Pakete</a> hinzuzufügen. Ein Kompatibilitäts-Flag ist eine Kombination aus der Python-Version und dem Veröffentlichungsdatum einer Reihe von Paketen, zum Beispiel python_3.17_packages_2025_03_01.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-bindings-work-in-python-workers">So funktionieren Bindungen in Python-Workern</h2>
+		<a href="https://blog.cloudflare.com/#how-bindings-work-in-python-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie bereits erwähnt, stellt Pyodide ein Foreign Function Interface (FFI) für JavaScript bereit. Das bedeutet, dass JavaScript-Objekte, -Methoden, -Funktionen und mehr direkt in Python verwendet werden können.</p>
+	<p>Somit werden vom ersten Tag an alle API, die <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">Bindungen</a> zu anderen Cloudflare-Ressourcen herstellen, von Cloudflare-Workern unterstützt. Das von Handlern in Python-Workern bereitgestellte env-Objekt ist ein JavaScript-Objekt, für das Pyodide eine Proxy-API bietet. Darüber werden <a href="https://www.google.com/url?q=https%3A%2F%2Fpyodide.org%2Fen%2Fstable%2Fusage%2Ftype-conversions.html&amp;sa=D&amp;source=docs&amp;ust=1711500261494409&amp;usg=AOvVaw1P3IikGyge76epx-RzbR_O" target="_blank" rel="noopener noreferrer">Typübersetzungen</a> automatisch aus verschiedenen Sprachen übernommen.</p>
+	<p>Um beispielsweise von einem Python-Worker aus in einen <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a>-Namespace zu schreiben und von dort zu lesen, würden Sie Folgendes schreiben:</p>
+	<p>Das funktioniert auch für Web-API: Sehen Sie, wie „Response“ aus dem js-Modul importiert wird? Auf diese Weise lässt sich jeder beliebige allgemeine JavaScript-Quellcode importieren.</p>
+	<pre class="language-js"><code class="language-js">from js import Response
+
+async def on_fetch(request, env):
+    await env.FOO.put("bar", "baz")
+    bar = await env.FOO.get("bar")
+    return Response.new(bar) # returns "baz"</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="get-this-javascript-out-of-my-python">Holen Sie dieses JavaScript aus meinem Python!</h2>
+		<a href="https://blog.cloudflare.com/#get-this-javascript-out-of-my-python" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sie lesen diesen Beitrag wahrscheinlich, weil Sie nicht in Javascript, sondern <i>stattdessen</i> in Python schreiben wollen. <code>from js import Response</code> passt einfach nicht zu Python. Uns ist das bewusst und wir haben diese Herausforderung bereits bei einer anderen Sprache (<a href="https://blog.cloudflare.com/workers-rust-sdk">Rust</a>) gemeistert. Wir glauben, dass wir es für Python noch besser machen können.</p>
+	<p>Wir haben <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer">workers-rs</a> im Jahr 2021 eingeführt, um das Schreiben von Workern in <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer">Rust</a> zu ermöglichen. Für jede JavaScript-API in Workers haben wir zusammen mit Open-Source-Anbietern Bindungen geschrieben, die eine idiomatischere Rust-API offenlegen.</p>
+	<p>Dasselbe planen wir für Python-Worker, angefangen mit Bindungen für <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> und <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>. Doch während workers-rs die Verwendung und Aktualisierung externer Abhängigkeiten erfordert, werden die mit Python-Workern bereitgestellten API direkt in die Workers-Laufzeitumgebung integriert. Sie müssen einfach nur Ihr Kompatibilitätsdatum aktualisieren, um über die neuesten, am besten auf Python abgestimmten API zu verfügen.</p>
+	<p>Es geht jedoch um mehr als nur darum, die Bindung an Ressourcen auf Cloudflare Python-gerechter zu gestalten – es geht um die Kompatibilität mit dem Ökosystem.</p>
+	<p>Wir haben kürzlich workers-rs so <a href="https://github.com/cloudflare/workers-rs/pull/477" target="_blank" rel="noopener noreferrer">angepasst</a>, dass <a href="https://crates.io/crates/http" target="_blank" rel="noopener noreferrer">http</a>-Typen verwendet werden. Das macht es leicht, <a href="https://docs.rs/axum/latest/axum" target="_blank" rel="noopener noreferrer">axum</a> zum Routing einzusetzen. Dasselbe streben wir jetzt auch für Python-Worker an. Beispielsweise bietet die Python-Standardbibliothek eine <a href="https://docs.python.org/3/library/socket.html" target="_blank" rel="noopener noreferrer">Raw Socket-API</a>, von der viele Python-Pakete abhängen. Workers stellt bereits <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer">connect()</a> bereit, eine JavaScript-API für die Arbeit mit unformatierten Sockets. Wir sehen die Chance, zumindest einen Teil der Socket-API der Python-Standardbibliothek in Workern zur Verfügung zu stellen, sodass eine breitere Palette von Python-Paketen auf Workern funktioniert und Patches seltener erforderlich sind.</p>
+	<p>Letztendlich hoffen wir, den Anstoß für die Erstellung einer standardisierten Serverless-API für Python zu geben. Diese sollte für jeden Python-Entwickler leicht zu verwenden sein und die gleichen Möglichkeiten wie JavaScript bieten.</p>
+	<div class="flex anchor relative">
+		<h2 id="were-just-getting-started-with-python-workers">Wir fangen mit Python-Workern gerade erst an</h2>
+		<a href="https://blog.cloudflare.com/#were-just-getting-started-with-python-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Echte Unterstützung für eine neue Programmiersprache zu bieten, bedeutet eine große Investition, die weit über das Funktionieren von „hello world“ hinausgeht. Die Entscheidung für Python ist sehr bewusst gefallen, schließlich handelt es sich dabei um die <a href="https://survey.stackoverflow.co/2023/#technology-most-popular-technologies" target="_blank" rel="noopener noreferrer">zweitbeliebteste Programmiersprache nach JavaScript</a>. Es ist unser festes Ziel, die Performance weiter zu steigern und unsere Unterstützung für Python-Pakete zu erweitern.</p>
+	<p>Wir sind all denen, die an Pyodide arbeiten, und der Python-Community im Allgemeinen dankbar und würden uns freuen, von Ihnen zu hören. Schauen Sie doch einfach in dem <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord-Kanal von Cloudflare für Entwickler</a> vorbei, der Python Workern gewidmet ist, oder <a href="https://github.com/cloudflare/workerd/discussions/categories/python-packages" target="_blank" rel="noopener noreferrer">diskutieren Sie auf Github</a> darüber, was Sie sich als Nächstes von uns wünschen und welche Python-Pakete wir noch unterstützen sollen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1nmt4B6AYocqmJCw21v5pL/112dcd395906643cbf8a67de22470e13/Workers-and-Python.png" alt="" class="kg-image" width="1600" height="421" loading="lazy">
+
+	</figure>
+</div>

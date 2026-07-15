@@ -1,100 +1,73 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ygxyha7vtHlNn3mpCzMeR/b83bf9429e6631e092d322aa5b42873a/accelerating-node-js-applications-with-http-2-server-push.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In April, we announced support for <a href="https://www.cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">HTTP/2 Server Push</a> via the HTTP <code>Link</code> header. My coworker John has demonstrated how easy it is to <a href="https://blog.cloudflare.com/using-http-2-server-push-with-php">add Server Push to an example PHP</a> application.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cTvkkBKYrTnHNyFrfyrYI/05d92efb1903cd4700d8a9020e430b40/489477622_594bf9e3d9_z.jpg" alt="" class="kg-image" width="500" height="334" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/nickyfern/489477622/in/photolist-KfGDm-4WuA7B-4WySRS-a8ijnt-4WuByk-4WuB9M-bE3e6V-665C6K-eeQRx1-b97viM-qzYJ8z-9n2aTS-8EsaQK-aqxV42-jWDkD2-jKyWKv-jzs7yy-9TKcYn-4iAQTa-ECjYJ-96MvXy-bP43v2-rEmKWR-5p3k5r-pVZhDo-os1Njy-5CEEnU-8RhgUX-7JV4jr-9bC7me-sSKqA-72Mppz-maZfyL-6KfUge-dDvw4S-ngyFgY-aPxqsP-7b24QV-5opdXV-sEA7Xj-mZohS-8GFkMr-twfh93-7ZXqtJ-dvRbXj-a8mRiU-4NCzeD-qFXKpj-4n7K7j-34D66Q" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/nickyfern" target="_blank" rel="noopener noreferrer">Nicky Fernandes</a></p>
-	<p>We wanted to make it easy to improve the performance of contemporary websites built with <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a>. we developed the <a href="https://github.com/cloudflare/netjet" target="_blank" rel="noopener noreferrer">netjet</a> middleware to parse the generated HTML and automatically add the <code>Link</code> headers. When used with an example Express application you can see the headers being added:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yzfZDbCTajZyJDNnbqrUm/ab28553b5d5e878e10b93f115a0f602e/2016-08-11_13-32-45.png" alt="" class="kg-image" width="314" height="252" loading="lazy">
-
-	</figure>
-	<p>We use <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> to power this blog, so if your browser supports HTTP/2 you have already benefited from Server Push without realizing it! More on that below.</p>
-	<p>In netjet, we use the <a href="https://github.com/posthtml/posthtml" target="_blank" rel="noopener noreferrer">PostHTML</a> project to parse the HTML with a custom plugin. Right now it is looking for images, scripts and external stylesheets. You can implement this same technique in other environments too.</p>
-	<p>Putting an HTML parser in the response stack has a downside: it will increase the page load latency (or "time to first byte"). In most cases, the added latency will be overshadowed by other parts of your application, such as database access. However, netjet includes an adjustable LRU cache keyed by <code>ETag</code> headers, allowing netjet to insert <code>Link</code> headers quickly on pages already parsed.</p>
-	<p>If you are designing a brand new application, however, you should consider storing metadata on embedded resources alongside your content, eliminating the HTML parse, and possible latency increase, entirely.</p>
-	<p>Netjet is compatible with any Node.js HTML framework that supports Express-like middleware. Getting started is as simple as adding netjet to the beginning of your middleware chain.</p>
-	<pre class="language-javascript"><code class="language-javascript">var express = require('express');
-var netjet = require('netjet');
-var root = '/path/to/static/folder';
-
-express()
-  .use(netjet({
-    cache: {
-      max: 100
-    }
-  }))
-  .use(express.static(root))
-  .listen(1337);</code></pre>
-	<p>With a little more work, you can even use netjet without frameworks.</p>
-	<pre class="language-javascript"><code class="language-javascript">var http = require('http');
-var netjet = require('netjet');
-
-var port = 1337;
-var hostname = 'localhost';
-var preload = netjet({
-  cache: {
-    max: 100
-  }
-});
-
-var server = http.createServer(function (req, res) {
-  preload(req, res, function () {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/html');
-      res.end('&lt;!doctype html&gt;&lt;h1&gt;Hello World&lt;/h1&gt;');
-  });
-});
-
-server.listen(port, hostname, function () {
-  console.log('Server running at http://' + hostname + ':' + port+ '/');
-});</code></pre>
-	<p>See the <a href="https://www.npmjs.com/package/netjet" target="_blank" rel="noopener noreferrer">netjet documentation</a> for more information on the supported options.</p>
-	<div class="flex anchor relative">
-		<h2 id="seeing-whats-pushed">Seeing what’s pushed</h2>
-		<a href="https://blog.cloudflare.com/#seeing-whats-pushed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qCaQEt8gl74hBdoZVEzBS/d29a6028893b87b888cad5ba438b3a78/2016-08-02_10-49-33.png" alt="" class="kg-image" width="679" height="217" loading="lazy">
-
-	</figure>
-	<p>Chrome's Developer Tools makes it easy to verify that your site is using Server Push. The Network tab shows pushed assets with "Push" included as part of the initiator.</p>
-	<p>Unfortunately, Firefox's Developers Tools don't yet directly expose if the resource pushed. You can, however, check for the <code>cf-h2-pushed</code> header in the page's response headers, which contains a list of resources that CloudFlare offered browsers over Server Push.</p>
-	<p>Contributions to improve netjet or the documentation are greatly appreciated. I'm excited to hear where people are using netjet.</p>
-	<div class="flex anchor relative">
-		<h2 id="ghost-and-server-push">Ghost and Server Push</h2>
-		<a href="https://blog.cloudflare.com/#ghost-and-server-push" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Ghost is one such exciting integration. With the aid of the Ghost team, I've integrated netjet, and it has been available as an opt-in beta since version 0.8.0.</p>
-	<p>If you are running a Ghost instance, you can enable Server Push by modifying the server's <code>config.js</code> file and add the <code>preloadHeaders</code> option to the <code>production</code> configuration block.</p>
-	<pre class="language-javascript"><code class="language-javascript">production: { 
-  url: 'https://my-ghost-blog.com', 
-  preloadHeaders: 100, 
-  // ... 
-}</code></pre>
-	<p>Ghost has put together <a href="http://support.ghost.org/preload-headers" target="_blank" rel="noopener noreferrer">a support article</a> for Ghost(Pro) customers.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With netjet, your Node.js applications can start to use browser preloading and, when used with CloudFlare, HTTP/2 Server Push today.</p>
-	<p>At CloudFlare, we're excited to make tools to help increase the performance of websites. If you find this interesting, we are <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in Austin, Texas; Champaign, Illinois; London; San Francisco; and Singapore.</p>
+<p>In April, we announced support for <a href="https://www.cloudflare.com/http2/server-push" target="_blank" rel="noopener noreferrer">HTTP/2 Server Push</a> via the HTTP <code>Link</code> header. My coworker John has demonstrated how easy it is to <a href="https://blog.cloudflare.com/using-http-2-server-push-with-php">add Server Push to an example PHP</a> application.</p>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/nickyfern/489477622/in/photolist-KfGDm-4WuA7B-4WySRS-a8ijnt-4WuByk-4WuB9M-bE3e6V-665C6K-eeQRx1-b97viM-qzYJ8z-9n2aTS-8EsaQK-aqxV42-jWDkD2-jKyWKv-jzs7yy-9TKcYn-4iAQTa-ECjYJ-96MvXy-bP43v2-rEmKWR-5p3k5r-pVZhDo-os1Njy-5CEEnU-8RhgUX-7JV4jr-9bC7me-sSKqA-72Mppz-maZfyL-6KfUge-dDvw4S-ngyFgY-aPxqsP-7b24QV-5opdXV-sEA7Xj-mZohS-8GFkMr-twfh93-7ZXqtJ-dvRbXj-a8mRiU-4NCzeD-qFXKpj-4n7K7j-34D66Q" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/nickyfern" target="_blank" rel="noopener noreferrer">Nicky Fernandes</a></p>
+<p>We wanted to make it easy to improve the performance of contemporary websites built with <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a>. we developed the <a href="https://github.com/cloudflare/netjet" target="_blank" rel="noopener noreferrer">netjet</a> middleware to parse the generated HTML and automatically add the <code>Link</code> headers. When used with an example Express application you can see the headers being added:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="314" height="252" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474D5R6SD7EB6P1M1BTGS1.png&amp;w=314&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474D5R6SD7EB6P1M1BTGS1.png&amp;w=314&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 314w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474D5R6SD7EB6P1M1BTGS1.png&amp;w=628&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 628w" alt="Accelerating Node.js applications with HTTP/2 Server Push Embedded Image - 3XySG2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 314px) 314px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="314" height="252" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Accelerating Node.js applications with HTTP/2 Server Push Embedded Image - 3XySG2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We use <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> to power this blog, so if your browser supports HTTP/2 you have already benefited from Server Push without realizing it! More on that below.</p>
+<p>In netjet, we use the <a href="https://github.com/posthtml/posthtml" target="_blank" rel="noopener noreferrer">PostHTML</a> project to parse the HTML with a custom plugin. Right now it is looking for images, scripts and external stylesheets. You can implement this same technique in other environments too.</p>
+<p>Putting an HTML parser in the response stack has a downside: it will increase the page load latency (or "time to first byte"). In most cases, the added latency will be overshadowed by other parts of your application, such as database access. However, netjet includes an adjustable LRU cache keyed by <code>ETag</code> headers, allowing netjet to insert <code>Link</code> headers quickly on pages already parsed.</p>
+<p>If you are designing a brand new application, however, you should consider storing metadata on embedded resources alongside your content, eliminating the HTML parse, and possible latency increase, entirely.</p>
+<p>Netjet is compatible with any Node.js HTML framework that supports Express-like middleware. Getting started is as simple as adding netjet to the beginning of your middleware chain.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> express </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'express'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> netjet </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'netjet'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> root </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '/path/to/static/folder'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">express</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">use</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">netjet</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    cache: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      max: </span><span class="sk-005cc5-ffc799">100</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }))</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">use</span><span class="sk-24292e-fff">(express.</span><span class="sk-6f42c1-ffc799">static</span><span class="sk-24292e-fff">(root))</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1337</span><span class="sk-24292e-fff">);</span></span></code></pre>
 </div>
+<p>With a little more work, you can even use netjet without frameworks.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> http </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'http'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> netjet </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'netjet'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> port </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1337</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> hostname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'localhost'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> preload </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> netjet</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  cache: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    max: </span><span class="sk-005cc5-ffc799">100</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> server </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> http.</span><span class="sk-6f42c1-ffc799">createServer</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  preload</span><span class="sk-24292e-fff">(req, res, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-24292e-fff">      res.statusCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">      res.</span><span class="sk-6f42c1-ffc799">setHeader</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">      res.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'&lt;!doctype html&gt;&lt;h1&gt;Hello World&lt;/h1&gt;'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">server.</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(port, hostname, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Server running at http://'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> hostname </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> ':'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> port</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>See the <a href="https://www.npmjs.com/package/netjet" target="_blank" rel="noopener noreferrer">netjet documentation</a> for more information on the supported options.</p>
+<h2>Seeing what’s pushed</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="679" height="217" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=679&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=679&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 679w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=1080&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=1280&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K3YTP5H54DP6D9EN7W79.png&amp;w=1358&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 1358w" alt="Accelerating Node.js applications with HTTP/2 Server Push Embedded Image - VZgBAd" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 679px) 679px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="679" height="217" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Accelerating Node.js applications with HTTP/2 Server Push Embedded Image - VZgBAd"></div>
+</figure>
+<p>Chrome's Developer Tools makes it easy to verify that your site is using Server Push. The Network tab shows pushed assets with "Push" included as part of the initiator.</p>
+<p>Unfortunately, Firefox's Developers Tools don't yet directly expose if the resource pushed. You can, however, check for the <code>cf-h2-pushed</code> header in the page's response headers, which contains a list of resources that CloudFlare offered browsers over Server Push.</p>
+<p>Contributions to improve netjet or the documentation are greatly appreciated. I'm excited to hear where people are using netjet.</p>
+<h2>Ghost and Server Push</h2>
+<p>Ghost is one such exciting integration. With the aid of the Ghost team, I've integrated netjet, and it has been available as an opt-in beta since version 0.8.0.</p>
+<p>If you are running a Ghost instance, you can enable Server Push by modifying the server's <code>config.js</code> file and add the <code>preloadHeaders</code> option to the <code>production</code> configuration block.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">production</span><span class="sk-24292e-fff">: { </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'https://my-ghost-blog.com'</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  preloadHeaders</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Ghost has put together <a href="http://support.ghost.org/preload-headers" target="_blank" rel="noopener noreferrer">a support article</a> for Ghost(Pro) customers.</p>
+<h2>Conclusion</h2>
+<p>With netjet, your Node.js applications can start to use browser preloading and, when used with CloudFlare, HTTP/2 Server Push today.</p>
+<p>At CloudFlare, we're excited to make tools to help increase the performance of websites. If you find this interesting, we are <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in Austin, Texas; Champaign, Illinois; London; San Francisco; and Singapore.</p>

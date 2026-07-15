@@ -1,0 +1,146 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/firewall-for-ai">English</a>、<a href="https://blog.cloudflare.com/zh-tw/firewall-for-ai">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/firewall-for-ai">Français</a>、<a href="https://blog.cloudflare.com/de-de/firewall-for-ai">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/firewall-for-ai">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/firewall-for-ai">Português</a>、<a href="https://blog.cloudflare.com/es-es/firewall-for-ai">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/firewall-for-ai">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/r6YXGuOONNpsx6nEtBooL/20cea44884356cded6669cc9cb1a949c/firewall-for-ai.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは本日、<a href="https://www.cloudflare.com/en-gb/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">大規模言語モデル（LLM）</a>の前衛に配置しモデルに到達する前に不正活動を特定できる保護レイヤー、「Firewall for AI」の開発を発表しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EdkABBZiYVEgdEQ42QaUf/c73d263a1fbae676983868a314e2acf5/WAF-for-AI.png" alt="Cloudflare announces Firewall for AI" class="kg-image" width="1600" height="905" loading="lazy">
+
+	</figure>
+	<p>AIモデル、特にLLMが急増している一方、LLMを確保するための最善の戦略についての懸念がお客様より聞かれています。インターネットに接続されたアプリケーションの一部としてLLMを使用するに当たり、新たな脆弱性が生まれ、悪意のあるアクターに乱用される可能性が出てきます。</p>
+	<p>従来のWebやAPI アプリケーションに影響する脆弱性は、インジェクションやデータ流出など、LLMの世界にも該当します。しかし、LLMの仕組みに起因する新たな脅威も存在します。例えば、AIコラボレーション・プラットフォームでモデルを乗っ取り、不正なアクションが実行され得る脆弱性が研究者により<a href="https://thehackernews.com/2024/02/new-hugging-face-vulnerability-exposes.html" target="_blank" rel="noopener noreferrer">最近発見</a>されました。</p>
+	<p>Firewall for AIは、LLMを使用するアプリケーションに特化した先進的<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Webアプリケーション・ファイアウォール（WAF）</a>です。脆弱性の検出およびモデルの所有者に可視性を提供するため、アプリケーションの前に配置できるツールのセットで構成されるものです。このツールキットには、レート制限や機密データ検出など、すでにWAFの一部となっている製品に加え、現在開発中の新しい保護レイヤーが含まれます。この新しい検証の仕組みにより、エンドユーザーによって提出されたプロンプトが分析され、データを抽出するためにモデルを悪用しようとする試みやその他の不正使用を特定します。Cloudflareネットワークの規模を活用し、Firewall for AIは可能な限りユーザーの近くで動作するため、攻撃を早期に特定し、エンドユーザーとモデルの両方を悪用や攻撃から保護できます。</p>
+	<p>Firewall for AIの機能の詳細、そしてその全機能について掘り下げる前に、まずLLMの特徴、そしてLLMが導入する攻撃対象領域について検証します。ここでは、<a href="https://owasp.org/www-project-top-10-for-large-language-model-applications" target="_blank" rel="noopener noreferrer">OWASPのLLMトップ10</a>を参考にします。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-are-llms-different-from-traditional-applications">LLMと従来アプリケーションとの違い</h2>
+		<a href="https://blog.cloudflare.com/#why-are-llms-different-from-traditional-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>インターネットに接続されたアプリケーションとしてLLMを考える場合、より伝統的なWebアプリとの比較において主に2つの違いがあります。</p>
+	<p>まず、ユーザーが製品とやり取りする方法が異なります。従来のアプリは、元来決定論的となっています。銀行のアプリケーションをみてみると、一連の操作（残高確認、振込、など）によって定義されています。ビジネスオペレーション（とデータ）のセキュリティは、これらのエンドポイントによって受け入れられる細かい操作のセットを制御する（「GET /balance」や「POST /transfer」など）ことによって確立されます。</p>
+	<p>LLM演算は設計上、非決定論的なものです。LLMでのやりとりはそもそも自然言語に基づいているため、攻撃シグネチャのマッチングよりも問題のあるリクエストを特定する方が難しいのです。さらに、応答がキャッシュされない限り、同じ入力プロンプトが繰り返されたとしても、LLMは通常毎回異なる応答を返します。このため、ユーザーとアプリケーションのインタラクション方法を制限することがより難しくなります。この点は、ユーザーにとっても脅威となります。誤った情報にさらされることで、モデルの信頼性が損なわれてしまうからです。</p>
+	<p>2つ目の大きな違いは、アプリケーション・コントロール・プレーンがデータとの相互作用の在り方になります。従来のアプリケーションでは、制御プレーン（コード）とデータプレーン（データベース）はうまく分離されていました。定義された操作は、基礎となるデータを操作する唯一の方法となります（例：支払い取引の履歴を表示）。これにより、セキュリティ担当者は、コントロール・プレーンにチェックとガードレール機構を追加することに集中でき、間接的にデータベースを保護できます。</p>
+	<p>LLMでは、トレーニングデータがトレーニングプロセスを通じてモデル自体の一部になるという点で異なります。そのため、ユーザーからのプロンプトの結果、そのデータの共有の在り方を制御することは非常に困難です。LLMを異なるレベルに分離してデータを分離するなど、いくつかのアーキテクチャ上の解決策が検討されています。しかし、まだ特効薬となる解決策は見つかっていません。</p>
+	<p>セキュリティの観点からは、このような違いにより、攻撃者がLLMをターゲットとし、従来のWebアプリケーション用に設計された既存のセキュリティツールのレーダーをかいくぐれる、新たな攻撃ベクトルを作り上げることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="owasp-llm-vulnerabilities">OWASP LLMの脆弱性</h3>
+		<a href="https://blog.cloudflare.com/#owasp-llm-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://owasp.org" target="_blank" rel="noopener noreferrer">OWASP</a>財団は、<a href="https://owasp.org/www-project-top-10-for-large-language-model-applications" target="_blank" rel="noopener noreferrer">LLMの脆弱性クラストップ10</a>とした一覧を発表し、言語モデルをセキュアにする方法を考えるための有用なフレームワークを提供しました。ここでの脅威は、<a href="https://owasp.org/www-project-top-ten" target="_blank" rel="noopener noreferrer">Webアプリケーション向けOWASPトップ10</a>を彷彿とさせるもの、また言語モデルに特有なものとなっています。</p>
+	<p>Webアプリケーションと同様、これらの脆弱性の一部には、LLMアプリが設計、開発、および訓練されるタイミングでの対処がもっとも効果的です。例えば、新しいモデルをトレーニングするために使用されるトレーニングデータセットに脆弱性を導入することにより、_トレーニング・データ・ポイズニング_を実行できます。汚染された情報は、モデルが稼動したときにユーザーに提示されます。サードパーティのソフトウェアパッケージのようにモデルに追加されるコンポーネントに導入される脆弱性には、_サプライチェーンの脆弱性_と_Insecure Plugin Design（安全でないプラグイン設計）_があります。最後に、「<i>Excessive Agency（過剰な依存）</i>」に対処する場合、権限とパーミッションの管理が極めて重要になります。過剰な依存では、制約のないモデルがより広範なアプリやインフラストラクチャ内で無許可のアクションを実行する可能性があります。</p>
+	<p>逆に、<i>プロンプト・インジェクション</i>、<i>モデルDoS</i>、_機密情報漏洩_は、CloudflareのFirewall for AI のようなプロキシ・セキュリティ・ソリューションを採用することで軽減できます。以下のセクションでは、これらの脆弱性の詳細を説明し、Cloudflareがこれらの脆弱性軽減においていかに最適なソリューションであるかについて説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="llm-deployments">LLMの展開</h3>
+		<a href="https://blog.cloudflare.com/#llm-deployments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>言語モデルのリスクは、デプロイ時のモデルに依存します。現状のLLMには、社内、公開、製品の3つの主要な展開アプローチがあります。この3つのシナリオすべてにおいて、悪用からのモデルの保護、モデルに保存されている専有データの保護、エンドユーザーを誤った情報や不適切なコンテンツにさらされないための保護が必要になります。</p>
+	<ul>
+		<li>
+			<p>**社内LLM：**企業では、従業員の日常業務を支援するためにLLMを開発しています。これらは企業の資産とみなされ、従業員以外がアクセスすべきではないものになります。例えば、営業データや顧客とのやり取りを学習したAIツールがオーダーメイドの提案を生成したり、社内のナレッジベースを学習したLLMがエンジニアから問い合わせを受けたりするものが挙げられます。</p>
+		</li>
+		<li>
+			<p>**パブリックLLM：**企業の枠を超えてアクセスできるLLMが該当します。多くの場合、これらのソリューションには誰でも使える無料版があり、一般的な知識や公共の知識に基づいて訓練されています。OpenAIの<a href="https://openai.com/gpt-4" target="_blank" rel="noopener noreferrer">GPT</a>やAuthropicの<a href="https://www.anthropic.com/product" target="_blank" rel="noopener noreferrer">Claude</a>などがその例となります。</p>
+		</li>
+		<li>
+			<p>**製品LLM：**企業の観点から見ると、LLMは顧客に提供する製品やサービスの一部となり得ます。これらは通常、企業のリソースと対話するためのツールとして利用可能な、セルフホスティング型のカスタマイズされたソリューションとなります。例として、カスタマーサポートのチャットボットや<a href="https://blog.cloudflare.com/security-analytics-ai-assistant">CloudflareのAIアシスタント</a>などが挙げられます。</p>
+		</li>
+	</ul>
+	<p>リスクの観点から見ると、プロダクトLLMとパブリックLLMの違いは、攻撃が成功した場合の影響を誰が受けるか、になります。公開LLMは、データにとって脅威であると考えられています。なぜなら、モデルの中にあるデータは事実上誰でもアクセスできるからです。多くの企業が、一般に利用可能なサービスのプロンプトに機密情報を使用しないよう従業員に助言している理由の1つがこれになります。製品LLMは、モデルがトレーニング中に（意図的または偶然に）社外秘情報にアクセスした場合、企業やその知的財産に対する脅威と見なされる可能性があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="firewall-for-ai">Firewall for AI</h2>
+		<a href="https://blog.cloudflare.com/#firewall-for-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CloudflareのFirewall for AIは、従来のWAFのようにデプロイされ、LLMプロンプトが表示されたすべてのAPIリクエストをスキャンし、攻撃の可能性のあるパターンとシグネチャーを探します。</p>
+	<p>Firewall for AIは、Cloudflare <a href="https://blog.cloudflare.com/ja-jp/workers-ai-ja-jp">Workers AI</a>プラットフォーム上でホストされているモデル、およびその他のサードパーティインフラストラクチャ上でホストされているモデルの前に導入できます。また、Cloudflare<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">AI Gateway</a>と並行で使用も可能で、お客様側でWAFコントロール・プレーンを用いFirewall for AIを制御および設定できます。</p>
+	<p><i>Firewall for AIは、従来のWebファイアウォール・アプリケーションのように動作します。LLMアプリの前に配置され、攻撃シグネチャを特定するためにすべてのリクエストをスキャンします。</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kwApAqMHjSChjXkdc3H89/09efa7f0ed81746bf77c62376457d1c8/image1-1.png" alt="" class="kg-image" width="1690" height="573" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="prevent-volumetric-attacks">帯域幅消費型攻撃を防ぐ</h3>
+		<a href="https://blog.cloudflare.com/#prevent-volumetric-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>OWASPがリストアップした脅威のひとつに、Model Denial of Service（モデルDoS）があります。従来のアプリケーションと同様に、<a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer">DoS攻撃</a>は非常に多くのリソースを消費することで行われ、その結果としてサービス品質の低下やモデルの実行コストの増加につながる可能性があります。LLMの実行に必要なリソースの量、およびユーザー入力の予測不可能性を考えると、この種の攻撃は有害となりますす。</p>
+	<p>このリスクは、個々のセッションからのリクエストのレートを制御し、コンテキストウィンドウを制限するレート制限ポリシーを採用することで軽減できます。Cloudflareを経由してモデルをプロキシすることで、<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS攻撃対策</a>をすぐに行えます。また、Rate Limitingおよび<a href="https://blog.cloudflare.com/ja-jp/advanced-rate-limiting-ja-jp">Advanced Rate Limiting</a>を使用し、セッション中に個々のIPアドレスまたはAPIキーによって実行されるリクエストの最大レートを設定することにより、モデルに到達することを許可されるリクエストのレートを管理できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="identify-sensitive-information-with-sensitive-data-detection">機密データ検出機能による機密情報の特定</h3>
+		<a href="https://blog.cloudflare.com/#identify-sensitive-information-with-sensitive-data-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>機密データには、モデルとデータを所有しているか、あるいは公開LLMにユーザーがデータを送信するのを防ぎたいかに応じて、2つのユースケースがあります。</p>
+	<p><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications" target="_blank" rel="noopener noreferrer">OWASP</a>によって定義されている通り、LLMが不注意に回答中の機密データを暴露した場合に_機密情報の漏洩_が起こり、不正なデータアクセス、プライバシー侵害、セキュリティ侵害につながります。これを防ぐ1つの方法に、厳格なプロンプト検証の追加が挙げられます。もう1つの方法に、個人を特定できる情報（PII）がモデルから離れるタイミングの特定があります。例えば、社会保障番号のようなPII、社外秘のコード、またはアルゴリズムなどの機密情報を含む可能性のある企業の知識ベースでモデルがトレーニングされた場合に有効です。</p>
+	<p>Cloudflare WAFの庇護のもとLLMモデルを使用しているお客様は、Sensitive Data Detection (SDD) WAFによるマネージドルールセットを使用し、レスポンスでモデルから返される特定のPIIを識別できます。WAFセキュリティイベントで、SDDの一致を確認できます。今日、財務情報（クレジットカード番号など）と機密情報（APIキー）をスキャンするように設計された管理ルールセットとしてSDDが提供されています。ロードマップの一環として、弊社ではお客様が独自のカスタム指紋を作成できるようにする計画です。</p>
+	<p>もう1つのユースケースは、OpenAIやAnthropicのような外部のLLMプロバイダおよびユーザーがPIIやその他の機密情報を共有することを防ぐことを目的としています。このシナリオから保護するため、SDDを拡張してリクエストプロンプトをスキャンし、その出力をAI Gatewayに統合の上、プロンプトの履歴と共に特定の機密データがリクエストに含まれているかどうかを検出します。弊社では、まずは既存のSDDルールを使用し、お客様が独自のシグネチャを作成できるようにする予定です。これに関連して、難読化も多くのお客様から聞かれる機能となっています。この拡張SDDが利用可能になれば、プロンプトにより特定の機密データがモデルに届く前に難読化されるようになります。現在、リクエストフェーズのSDDを開発中です。</p>
+	<div class="flex anchor relative">
+		<h2 id="preventing-model-abuses">モデルの乱用防止</h2>
+		<a href="https://blog.cloudflare.com/#preventing-model-abuses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>モデルの乱用は、より広範な乱用のカテゴリに該当します。「プロンプト・インジェクション」のようなアプローチや、ハルシネーションを発生させたり、不正確、不快、不適切、あるいは単にトピックから外れた回答を導くようなリクエストの提出も含まれます。</p>
+	<p>プロンプト・インジェクションとは、特別に細工された入力によって言語モデルを操作し、LLMの意図しない応答を引き起こすことを指します。インジェクションの結果は、機密情報を引き出すものから、モデルとの通常のやり取りを模倣して意思決定に影響を与えるものまで様々です。プロンプト・インジェクションの典型的な例は、履歴書を操作して<a href="https://kai-greshake.de/posts/inject-my-pdf" target="_blank" rel="noopener noreferrer">履歴書スクリーニングツール</a>の出力に影響を与えることが挙げられます。</p>
+	<p>AI Gatewayをご利用いただいているお客様からよく聞かれる要望に、アプリケーションによる有害、攻撃的、または問題のある言語の生成を避けたいというものがあります。モデルの結果をコントロールしない場合、風評被害、信頼できない応答を提供することによるエンドユーザーへの損害などのリスクがあります。</p>
+	<p>このような不正使用には、モデルの前に保護レイヤーを追加することで対処できます。このレイヤーを訓練し、インジェクションの試みをブロックしたり、不適切なカテゴリに分類されるプロンプトをブロックできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="prompt-and-response-validation">プロンプトとレスポンスの検証</h3>
+		<a href="https://blog.cloudflare.com/#prompt-and-response-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Firewall for AIは、プロンプト・インジェクションの試行、トピックがモデル所有者によって定義された境界内に留まることを確認するなど、その他の不正を識別するように設計された一連の検出を実行します。他の既存のWAF機能と同様に、Firewall for AIは、HTTPリクエストに埋め込まれたプロンプトを自動的に検索したり、リクエストのJSONボディのどこにプロンプトがあるかに基づいてルールを作成したりできます。</p>
+	<p>有効にすると、ファイアウォールがすべてのプロンプトを分析し、それが悪意あるものである可能性に基づいてスコアを提供します。また、事前に定義されたカテゴリに基づいてプロンプトにタグを付けます。スコアは1～99の範囲でつけられ、1が最も可能性が高く、99が最も可能性が高いことを示しています。</p>
+	<p>お客様は、これらの次元の一方または両方において特定のスコアを持つリクエストをブロックまたは処理するWAFルールを作成できるようになります。このスコアを他の既存のシグナル（ボットスコアやアタックスコアなど）と組み合わせて、リクエストがモデルに到達すべきかブロックされるべきかを判断できます。例えば、ボットスコアと組み合わせ、リクエストが悪意を持ち自動化されたソースによって生成されたかどうかを識別できます。</p>
+	<p><i>Firewall for AIの対応範囲には、プロンプト・インジェクションやプロンプト不正使用の検出が含まれます。製品設計の初期段階での検出。</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dxfO29U9BurRgBykPOao0/5aa1619fa5ea3414b7954c78771d1360/Slice-1.png" alt="" class="kg-image" width="1600" height="1018" loading="lazy">
+
+	</figure>
+	<p>スコアのほかに、これらのカテゴリに属するプロンプトがモデルに到達しないようにルールを作成するときに使用するタグを各プロンプトに割り当てます。例えば、特定のトピックをブロックするルールを作成できます。例えば、宗教、性的な内容、政治などに関連し、攻撃的と分類される単語を使用したプロンプトなどが考えられます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-can-i-use-firewall-for-ai-who-gets-this">Firewall for AI利用と対象となるお客様</h2>
+		<a href="https://blog.cloudflare.com/#how-can-i-use-firewall-for-ai-who-gets-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Enterprise アプリセキュリティアドバンスドをご利用のお客様は、Advanced Rate LimitingとSensitive Data Detection（レスポンスフェーズ）をすぐにご利用いただけます。両製品はCloudflareダッシュボードのWAFセクションにあります。Firewall for AIのプロンプト検証機能は現在開発中で、今後数か月のうちにすべてのWorkers AIユーザーにベータ版がリリースされる予定です。<a href="https://cloudflare.com/lp/firewall-for-ai" target="_blank" rel="noopener noreferrer">ウェイティングリストに登録</a>いただければ、この機能が利用可能になった際に通知が届きます。</p>
+	<div class="flex anchor relative">
+		<h2 id="conclusion">まとめ</h2>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、AIアプリケーションのセキュリティを確保するための一連のツールを発表した最初のセキュリティプロバイダの1社です。Firewall for AIの活用により、言語モデルに到達するプロンプトやリクエストを制御できるようになり、不正使用やデータ流出のリスクを低減できます。AIアプリケーションのセキュリティの進化にご期待ください。</p>
+</div>

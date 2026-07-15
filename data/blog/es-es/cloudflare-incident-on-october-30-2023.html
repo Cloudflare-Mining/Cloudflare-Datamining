@@ -1,0 +1,319 @@
+<div class="mb2 gray5">4 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/cloudflare-incident-on-october-30-2023">English</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-october-30-2023">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/cloudflare-incident-on-october-30-2023">Français</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-october-30-2023">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-october-30-2023">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-october-30-2023">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-october-30-2023">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aGFjt2xnNYMcO5Khj5no1/5c2e5b66f9a636343d6fc96cefaa766c/cloudflare-incident-on-october-30-2023.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Numerosos servicios de Cloudflare dejaron de estar disponibles durante 37 minutos el 30 de octubre de 2023 debido a la mala configuración de una herramienta de implementación utilizada por Workers KV. Fue un incidente frustrante, que se complicó por la dependencia de Cloudflare de nuestro propio conjunto de productos. Lamentamos profundamente el impacto que tuvo en los clientes. A continuación explicamos lo que salió mal, cómo se resolvió el incidente y el trabajo que estamos realizando para garantizar que no vuelva a ocurrir.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fuf2Zu6hQEVim57ZP2cze/0c4311c85148c448749069bf6cb900a4/Vulnerabilitiy-1.png" alt="" class="kg-image" width="2401" height="1350" loading="lazy">
+
+	</figure>
+	<p>Workers KV es nuestro almacén de pares clave-valor distribuido globalmente. Lo utilizan tanto nuestros clientes como los equipos de Cloudflare para gestionar datos de configuración, búsquedas de enrutamiento, paquetes de activos estáticos, tokens de autenticación y otros datos que necesitan un acceso de baja latencia.</p>
+	<p>Durante la incidencia, KV mostró lo que creía que era un código de error HTTP 401 (no autorizado) válido, en lugar del par o pares clave-valor solicitados debido a un error en una nueva herramienta de implementación utilizada por KV.</p>
+	<p>Estos errores se manifestaron de forma diferente en cada producto en función de cómo utiliza KV cada servicio, y a continuación detallamos su impacto.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-was-impacted">Consecuencias</h3>
+		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Varios servicios de Cloudflare dependen de Workers KV para distribuir globalmente la configuración, la información de enrutamiento, el servicio de activos estáticos y el estado de autenticación. En su lugar, estos servicios mostraron un error HTTP 401 (no autorizado) al realizar cualquier operación get, put, delete o list en un espacio de nombres KV.</p>
+	<p>Los clientes que utilizan los siguientes productos de Cloudflare observaron mayores tasas de error o no pudieron acceder a algunas o todas las funciones durante el incidente:</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-7s56{background-color:#F4F5F7;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7s56 {
+			background-color: #F4F5F7;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Product</span></th>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Impact</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers KV</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Customers with applications leveraging KV saw those applications fail during the duration of this incident, including both the KV API within Workers, and the REST API.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers applications not using KV were not impacted.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Applications hosted on Pages were unreachable for the duration of the incident and returned HTTP 500 errors to users. New Pages deployments also returned HTTP 500 errors to users for the duration.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Access</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Users who were unauthenticated could not log in; any origin attempting to validate the JWT using the /certs endpoint would fail; any application with a device posture policy failed for all users.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Existing logged-in sessions that did not use the /certs endpoint or posture checks were unaffected. Overall, a large percentage of existing sessions were still affected.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WARP / Zero Trust</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Users were unable to register new devices or connect to resources subject to policies that enforce Device Posture checks or WARP Session timeouts.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Devices already enrolled, resources not relying on device posture, or that had re-authorized outside of this window were unaffected.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Images</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">The Images API returned errors during the incident. Existing image delivery was not impacted.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache Purge (single file)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Single file purge was partially unavailable for the duration of the incident as some data centers could not access configuration data in KV. Data centers that had existing configuration data locally cached were unaffected.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Other cache purge mechanisms, including purge by tag, were unaffected.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Uploading or editing Workers through the dashboard, wrangler or API returned errors during the incident. Deployed Workers were not impacted, unless they used KV. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway was not able to proxy requests for the duration of the incident.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room configuration is stored at the edge in Workers KV. Waiting Room configurations, and configuration changes, were unavailable and the service failed open.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">When access to KV was restored, some Waiting Room users would have experienced queuing as the service came back up. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile and Challenge Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile's JavaScript assets are stored in KV, and the entry point for Turnstile (api.js) was not able to be served. Clients accessing pages using Turnstile could not initialize the Turnstile widget and would have failed closed during the incident window.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Challenge Pages (which products like Custom, Managed and Rate Limiting rules use) also use Turnstile infrastructure for presenting challenge pages to users under specific conditions, and would have blocked users who were presented with a challenge during that period.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Dashboard</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Parts of the Cloudflare dashboard that rely on Turnstile and/or our internal feature flag tooling (which uses KV for configuration) returned errors to users for the duration. </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Producto</p>
+	<p>Carbono</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ppch {
+			background-color: #F4F5F7;
+			color: #000000;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-096r {
+			color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">Time</span></th>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 18:58 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">The Workers KV team began a progressive deployment of a new KV build to production.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">The internal progressive deployment API returns staging build GUID to a call to list production builds. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:40 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">The progressive deployment API was used to continue rolling out the release. This routed a percentage of traffic to the wrong destination, triggering alerting and leading to the decision to roll back.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:54 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Rollback via progressive deployment API attempted, traffic starts to fail at scale. </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— IMPACT START —</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:15 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Cloudflare engineers manually edit (via break glass mechanisms) deployment routes to revert to last known good build for the majority of traffic.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Workers KV error rates return to normal pre-incident levels, and impacted services recover within the following minute.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:31 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Impact resolved </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— IMPACT END — </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Workers KV</p>
+	<p>Las aplicaciones de los clientes que utilizan KV fallaron durante el incidente, incluida la API de KV en Workers y REST API.Las aplicaciones Workers que no utilizan KV no se vieron afectadas.</p>
+	<p>Pages</p>
+	<p>No se pudo acceder a las aplicaciones alojadas en Pages durante el incidente y se mostraron errores HTTP 500 a los usuarios. Las nuevas implementaciones de Pages también mostraron errores HTTP 500 a los usuarios.</p>
+	<p>Access</p>
+	<p>Los usuarios que no estaban autenticados no pudieron iniciar sesión. Cualquier servidor de origen que intentara validar el token web JSON (JWT) utilizando el punto final /certs falló, así como cualquier aplicación con una política de postura de dispositivo.Las sesiones ya iniciadas que no utilizaron el punto final /certs ni las políticas de comprobaciones de postura no se vieron afectadas. En general, un gran porcentaje de las sesiones existentes se vieron perjudicadas.</p>
+	<p>WARP / Zero Trust</p>
+	<p>Los usuarios no pudieron registrar nuevos dispositivos ni conectarse a recursos sujetos a políticas que aplican comprobaciones de postura de dispositivos o tiempos de espera de sesiones WARP.Los dispositivos registrados, los recursos que no dependían de la postura del dispositivo o que se habían vuelto a autorizar fuera de este periodo no se vieron afectados.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YKI1LYglUMvikcDlkZF41/ff8ba4a17059a4139884ee71524a8209/image1.png" alt="" class="kg-image" width="1749" height="894" loading="lazy">
+
+	</figure>
+	<p>Images</p>
+	<p>La API de Images mostró errores durante el incidente. La entrega de imágenes existentes no se vio afectada.</p>
+	<p>Depuración de caché (archivo único)</p>
+	<p>La depuración de archivo único se interrumpió parcialmente durante el incidente, ya que algunos centros de datos no pudieron acceder a los datos de configuración en KV. Los centros de datos que tenían datos de configuración existentes almacenados localmente en caché no se vieron afectados.Otros mecanismos de depuración de caché, incluida la depuración por etiqueta, siguieron funcionando con normalidad.</p>
+	<p>Workers</p>
+	<p>La carga o la edición de Workers a través del panel de control, wrangler o API mostró errores durante el incidente. Los Workers implementados no se vieron afectados, a menos que estuvieran usando KV.</p>
+	<p>AI Gateway</p>
+	<p>AI Gateway no fue capaz de procesar solicitudes durante el incidente.</p>
+	<p>Waiting Room</p>
+	<p>La configuración de Waiting Room se almacena en el perímetro en Workers KV. No se pudo acceder a las configuraciones, ni a los cambios de configuración de Waiting Room, y el servicio falló al abrirse.Cuando se restableció el acceso a KV, algunos usuarios de Waiting Room tuvieron que hacer cola cuando el servicio volvió a funcionar.</p>
+	<p>Turnstile y Challenge Pages</p>
+	<p>Los activos JavaScript de Turnstile se almacenan en KV, y el punto de entrada de Turnstile (api.js) no se pudo servir. Los clientes que accedieron a páginas que utilizan Turnstile no pudieron inicializar el widget de Turnstile y el cierre falló durante el incidente.Challenge Pages (usado por productos como reglas personalizadas, administradas y de limitación de velocidad) también usan la infraestructura de Turnstile para mostrar páginas de desafío a los usuarios en condiciones específicas, y bloquearon a los usuarios a los que se les mostró un desafío en el momento del incidente.</p>
+	<p>Panel de control de Cloudflare</p>
+	<p>Los elementos del panel de control de Cloudflare que dependen de Turnstile o de nuestra herramienta interna de señalización de funciones (que utiliza KV para la configuración) también mostraron errores a los usuarios.</p>
+	<div class="flex anchor relative">
+		<h3 id="timeline">Cronograma</h3>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>Todas las fechas y horas a las que se hace referencia están expresadas en tiempo universal coordinado (UTC).</i></p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ppch{background-color:#F4F5F7;color:#000000;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-096r{color:#000000;text-align:left;vertical-align:top}</p>
+	<p>Cronología</p>
+	<p>Descripción</p>
+	<p>2023-10-30 18:58 UTC</p>
+	<p>El equipo de Workers KV comenzó una implementación progresiva de una nueva compilación de KV a producción.</p>
+	<p>2023-10-30 19:29 UTC</p>
+	<p>La API interna de implementación progresiva devuelve el GUID de la compilación provisional a una llamada para listar las compilaciones de producción.</p>
+	<p>2023-10-30 19:40 UTC</p>
+	<p>Se utilizó la API de implementación progresiva para seguir poniendo en marcha la versión. Esta acción dirigió un porcentaje del tráfico a un destino incorrecto, lo que activó la alerta que dio lugar a la decisión de retroceder.</p>
+	<p>2023-10-30 19:54 UTC</p>
+	<p>La recuperación a través de la API de implementación progresiva provocó un fallo del tráfico a escala. — COMIENZA LA INCIDENCIA —</p>
+	<p>2023-10-30 20:15 UTC</p>
+	<p>Los ingenieros de Cloudflare editan manualmente (mediante mecanismos break glass) las rutas de implementación para recuperar la última compilación verificada para la mayoría del tráfico.</p>
+	<p>2023-10-30 20:29 UTC</p>
+	<p>Las tasas de error de Workers KV vuelven a los niveles normales anteriores a la incidencia, y los servicios afectados se recuperan en el minuto siguiente.</p>
+	<p>2023-10-30 20:31 UTC</p>
+	<p>Incidencia resuelta — FIN DE LA INCIDENCIA —</p>
+	<p>Esta cronología muestra que hubo un retraso entre el momento en que nos dimos cuenta de que teníamos un problema a las 19:54 UTC y el momento en que realmente pudimos realizar la recuperación a las 20:15 UTC.</p>
+	<p>Este retraso se debió a que varias herramientas de Cloudflare dependen de Workers KV, entre ellas Cloudflare Access. Access utiliza Workers KV como parte de su proceso de verificación de solicitudes. Por esta razón, no pudimos usar nuestras herramientas internas y tuvimos que utilizar mecanismos <i>break glass</i> para eludir las herramientas normales. Como se describe más adelante, no habíamos dedicado tiempo suficiente a probar los mecanismos de recuperación. Tenemos previsto mejorarlo en el futuro.</p>
+	<div class="flex anchor relative">
+		<h3 id="resolution">Solución</h3>
+		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los ingenieros de Cloudflare cambiaron manualmente (mediante el mecanismo <i>break glass</i>) la ruta de producción a la versión de trabajo anterior de Workers KV, lo que eliminó inmediatamente la ruta de solicitud que fallaba y, posteriormente, resolvió el problema con la implementación de Workers KV.</p>
+	<div class="flex anchor relative">
+		<h3 id="analysis">Análisis</h3>
+		<a href="https://blog.cloudflare.com/#analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers KV es un almacén de pares clave-valor de baja latencia que permite a los usuarios almacenar datos permanentes en la red de Cloudflare, lo más cerca posible de los usuarios. Este almacén distribuido de pares clave-valor se utiliza en muchas aplicaciones, algunas de las cuales son productos de Cloudflare como Pages, Access y Zero Trust.</p>
+	<p>El equipo de Workers KV estaba implementando progresivamente una nueva versión utilizando una herramienta de implementación especializada. El mecanismo de implementación contiene un entorno de ensayo y otro de producción, y utiliza un proceso en el que el entorno de producción se actualiza a la nueva versión en porcentajes progresivos hasta que todos los entornos de producción se actualizan a la compilación de producción más reciente. La herramienta de implementación tenía un error implícito en la forma de devolver lanzamientos y sus respectivas versiones. En lugar de devolver versiones de un único entorno, la herramienta devolvía una lista de versiones más amplia de lo previsto, lo que provocaba que las versiones de producción y de ensayo se devolvieran juntas.</p>
+	<p>En este incidente, el servicio se implementó y probó de forma provisional. Sin embargo, debido al error de automatización de la implementación, al pasar a producción, se hizo referencia incorrectamente a un script que se había implementado en la cuenta provisional, en lugar de a la versión de preproducción de la cuenta de producción. Como resultado, el mecanismo de implementación dirigió el entorno de producción a una versión que no se estaba ejecutando en ninguna parte del entorno de producción, lo que bloqueó el tráfico en la práctica.</p>
+	<p>Cuando ocurrió, Workers KV dejó de estar disponible en producción, ya que las llamadas al producto se dirigían a una versión que no estaba autorizada para el acceso en producción, mostrando un código de error HTTP 401. Esto provocó el fallo de los productos dependientes que almacenaban pares clave-valor en KV, independientemente de si el par clave-valor se almacenaba en caché localmente o no.</p>
+	<p>Aunque las alertas automáticas detectaron el problema inmediatamente, hubo un retraso entre el momento en que nos dimos cuenta de que teníamos un problema y el momento en que pudimos realizar la recuperación. Este retraso se debió a que varias herramientas de Cloudflare dependen de Workers KV, entre ellas Cloudflare Access. Access utiliza Workers KV como parte del proceso de verificación de los JWT de los usuarios.</p>
+	<p>Estas herramientas incluyen el panel de control que se utilizó para revertir el cambio, y el mecanismo de autenticación para acceder a nuestro sistema de integración continua. Como Workers KV dejó de funcionar, tampoco lo hicieron estos servicios. Las recuperaciones automáticas a través de nuestro sistema de integración continua se habían probado con éxito anteriormente, pero los problemas de autenticación (Access depende de KV) debidos al incidente imposibilitaron el acceso a los secretos necesarios para revertir la implementación.</p>
+	<p>En última instancia, la solución consistió en cambiar manualmente la ruta de compilación de producción a un estado anterior verificado.Se sabía que esta ruta se había implementado y era la compilación de producción anterior al intento de implementación.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Próximos pasos</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Conforme se han creado más equipos de Cloudflare en Workers, hemos llegado "orgánicamente" a un punto en el que Workers KV es ahora la base de gran parte de nuestros productos y servicios. Esta incidencia ha seguido reafirmando la necesidad de que revisemos cómo podemos reducir el impacto de las dependencias críticas, lo que incluye mejorar la sofisticación de nuestras herramientas de implementación, su facilidad de uso para nuestros equipos internos y los controles a nivel de producto para estas dependencias. Estamos priorizando este trabajo para garantizar que no se repita este incidente.</p>
+	<p>Este incidente también refuerza la necesidad de que Cloudflare mejore las herramientas, y su seguridad, en torno a las implementaciones progresivas de las aplicaciones de Workers internamente y para los clientes.</p>
+	<p>Esto incluye (entre otras) la siguiente lista de acciones clave de seguimiento (sin ningún orden específico) este trimestre:</p>
+	<ol>
+		<li>
+			<p>Incorporar las implantaciones de KV a modelos de implantación estandarizados de Workers que utilicen sistemas automatizados para la detección y recuperación de incidencias.</p>
+		</li>
+		<li>
+			<p>Garantizar que el proceso de recuperación tenga acceso a un identificador de implementación verificado cuando Cloudflare Access esté inactivo.</p>
+		</li>
+		<li>
+			<p>Añadir comprobaciones previas a las implementaciones que validen los parámetros de entrada para garantizar que los desajustes de versión no se propaguen a los entornos de producción.</p>
+		</li>
+		<li>
+			<p>Mejorar la herramienta de implementación progresiva para que funcione de forma que esté diseñada para una arquitectura de varios clientes. El diseño actual asume un modelo de cliente único.</p>
+		</li>
+		<li>
+			<p>Añadir validación adicional a los scripts de implementación progresiva para verificar que la implementación coincide con el entorno de la aplicación (producción, ensayo, etc.).</p>
+		</li>
+	</ol>
+	<p>Una vez más, lamentamos enormemente esta incidencia y nos tomamos muy en serio el impacto que ha tenido en nuestros clientes.</p>
+</div>

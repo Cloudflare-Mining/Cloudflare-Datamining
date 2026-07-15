@@ -1,0 +1,83 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">English</a>、<a href="https://blog.cloudflare.com/fr-fr/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">Français</a>、<a href="https://blog.cloudflare.com/de-de/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">Deutsch</a>、<a href="https://blog.cloudflare.com/zh-cn/on-the-shoulders-of-giants-recent-changes-in-internet-traffic">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AcedKSSXUKh3y9NDnsafx/f89e4c0d3d9d7dcd6b30b3e0a395ab48/on-the-shoulders-of-giants-recent-changes-in-internet-traffic.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>新型コロナウイルスの緊急事態が続き、多くの国や都市が検疫所や拡大防止の防疫線を設けたことで、インターネットは多くの人にとって、家族や友人と連絡を取り合う一番の手段となりました。また、数多くの企業が在宅勤務する従業員を抱えているため、世界経済の重要な原動力となっています。</p>
+	<p>ビデオ会議、ストリーミングサービス、ニュース配信、電子商取引Webサイトのトラフィックは急増しています。家庭用ブロードバンドネットワークからのトラフィックが増加し、企業や大学からのトラフィックは減少しています。</p>
+	<p>Cloudflareのチームは通常通りの運用を続けており、ネットワークオペレーティングセンター（NOC）は200以上の都市でハードウェアを運用し、トラフィックパターンの変化を監視しています。</p>
+	<p>インターネットトラフィックの大きな変化は、珍しいことではありません。オリンピックやワールドカップのような大規模なスポーツイベントやユーロビジョンソングコンテストのような文化イベント、また、ラマダン（イスラム教の断食月）は毎日の断食明けの時間も、トラフィックが変化します。</p>
+	<p>インターネットは、絶えず変化する環境に対応するように構築されています。絶えず変化する負荷パターンに対応するために、作成、試験、デバッグ、設計というプロセスから構築されています。</p>
+	<p>ここ数週間、Cloudflareネットワークチームは新しいパターンがいくつかあることに気づいたため、このパターンについてご紹介することにしました。</p>
+	<div class="flex anchor relative">
+		<h3 id="entire-countries-are-watching-their-leaders">国全体が、リーダーの動きに注目する</h3>
+		<a href="https://blog.cloudflare.com/#entire-countries-are-watching-their-leaders" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>先週金曜日の夕方、アメリカ大統領が米国で非常事態宣言を発表しました。それからすぐに、当社の米国データセンターは、通常の20%以上のトラフィックに対応しました。赤色の線は金曜日を示し、グレー色の線は比較として、その前の日を示しています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3cgutP0x9kF0enY9jPw64F/780b1c10b856b77f516ba6e594cf854a/image1-5.png" alt="" class="kg-image" width="1984" height="910" loading="lazy">
+
+	</figure>
+	<p>3月15日（日曜日）、オランダ政府は現地時間の午後5時30分に必要不可欠ではない事業の停止をラジオで発表しました（午後4:30 UTC時間）。日曜日の通常トラフィックで、急激な低下が次のように発生しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mlVGpkTYIKqtjQkuhRGAV/ff910d999d562225d7adea5a927c1991/image7-1.png" alt="" class="kg-image" width="1999" height="822" loading="lazy">
+
+	</figure>
+	<p>3月12日（ピンク色の曲線）と3月16日（赤色の曲線）の現地時間午後8時（午後7時 UTC時間）にフランスの大統領が二回、フランス国内で発表しました。3月16日の都市封鎖宣言によって、フランス国内のトラフィックが半分に低下し、その後、トラフィックの急増が発生しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wMGp2Wl969Ek1CemyQ0RH/c31be1dcd18381944593953c70168095/image5-3.png" alt="" class="kg-image" width="1999" height="782" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="evolution-of-traffic-in-quarantine">隔離中におけるトラフィックの進化</h3>
+		<a href="https://blog.cloudflare.com/#evolution-of-traffic-in-quarantine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>都市封鎖が始まってからイタリア国内で1日あたりのトラフィックが20~40%増加しました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NAmXuIRyCKo3Yc2dCc6vd/8cd4f1b03e0e12bc16146f23be5b6479/image9-1.png" alt="" class="kg-image" width="1280" height="960" loading="lazy">
+
+	</figure>
+	<p>大学が閉校となり、国立リサーチネットワークは今も（ほぼ）週末のような静けさが続いています（紫色）。赤色は今日、灰色は（前週と重なる）前の日です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DebqRByRJsTzFv5zd9b3S/bc6aff29fdd652f119b50f4a802ba52e/image8.png" alt="" class="kg-image" width="1999" height="676" loading="lazy">
+
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank" rel="noopener noreferrer">インターネット相互接続点</a>、インターネットインフラストラクチャの重要な部分で、インターネットサービスプロバイダーとコンテンツプロバイダーが（サードパーティを経由するのではなく）直接データを交換するところでも、トラフィックにスパイクが見られました。多くは、パブリックトラフィックグラフを提供しています。</p>
+	<p>アムステルダム（<a href="https://www.ams-ix.net/ams/documentation/total-stats" target="_blank" rel="noopener noreferrer">AMS-IX</a>）、ロンドン（<a href="https://portal.linx.net/stats/lans" target="_blank" rel="noopener noreferrer">LINX</a>）そしてフランクフルト（<a href="https://www.de-cix.net/en/locations/germany/frankfurt/statistics" target="_blank" rel="noopener noreferrer">DE-CIX</a>）では、3月9日前後に10~20%の増加がありました。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MkJVBKFZ8bfuwDONUyvvP/a4938b1a5b7d815f8b9f7a258919c017/image2-3.png" alt="" class="kg-image" width="1262" height="710" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mfzZoAApV2YCsc6sSiuc7/9f8bd6c37df6378914f021ed25d22042/image6-1.png" alt="" class="kg-image" width="1176" height="676" loading="lazy">
+
+	</figure>
+	<p>ミラノ（<a href="https://www.mix-it.net/statistiche" target="_blank" rel="noopener noreferrer">MXP-IX</a>）で、隔離が始まった2020年3月9日の水曜日、相互接続点が40%の増加を示しています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yJaXB8BYVIQNK8zfRxyiP/b041486940597caba4bcf3545d1a0f26/image4-2.png" alt="" class="kg-image" width="597" height="264" loading="lazy">
+
+	</figure>
+	<p>アジアでは、香港（<a href="https://www.hkix.net/hkix/stat/aggt/hkix-aggregate.html" target="_blank" rel="noopener noreferrer">HKIX</a>）で、1月末以降、急速な増加が見られ、1月23日の湖北省での都市封鎖にほぼ相当します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2einyNzLMBNCo0VgBBlh3C/fe61b319c1b6b5f69443eeeae398367d/image3-1.png" alt="" class="kg-image" width="697" height="311" loading="lazy">
+
+	</figure>
+	<p>緊急事態は、否応なくインターネットサービスや私たちの生活に影響を与えます。この増加を正確に数値化することは難しいものの、地域や州政府の対応によって10%から40%までの数値を観察しています。</p>
+	<p>Webサイトやアプリといった個々のサービスが時々停止したにも関わらず、インターネットの中核部は堅牢です。トラフィックは、企業や大学のネットワークから家庭用ブロードバンドへと移行しつつあります。しかし、インターネットは変化に対応できるように設計されています。</p>
+	<p>新しいアップデートとインサイトについては、Cloudflareのブログをご覧ください。</p>
+</div>

@@ -1,191 +1,117 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/advanced-rate-limiting">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/advanced-rate-limiting">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61VzeLFM9T9ii3MxR3R7bU/1ddcdf96dbec15a14bfbbace852e5cd9/advanced-rate-limiting.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Still relying solely on IP firewalling? It’s time to change that.</p>
-	<p>While the IP address might still be one of the core technologies allowing networks to function, its value for security is long gone. IPs are rarely static; nowadays, mobile operators use carrier-grade network address translation (CGNAT) to share the same IP amongst thousands of individual devices or users. Bots then carry out distributed attacks with low request volume from different IPs to elude throttling. Furthermore, many countries consider IP addresses to be personal data, and it would be a great advancement for privacy if a replacement could be found for elements of security that currently rely on IP addresses to function. A product that is affected by this trend is rate limiting.</p>
-	<p>Rate limiting is designed to stop requests from overloading a server. It relies on rules. A rate limiting rule is defined by a filter (which typically is a path, like <code>/login</code>) and the maximum number of requests allowed from each user over a period of time. When this threshold is exceeded, an action is triggered (usually a block) for subsequent requests from the same user for a period of time (known as a timeout). Traditional throttling solutions bucket together requests with the same IP since they follow the logic “requests from the same IP equals requests from the same user”. However, we hear from customers how not effective it is to use IP-based rate limiting to protect traffic, especially for authenticated APIs.</p>
-	<p>We are excited to launch Advanced Rate Limiting, a leap forward for throttling technologies. It allows counting requests based on virtually any characteristics of the HTTP request, regardless of its source IP. Rate Limiting is a great defense against brute force, <a href="https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping" target="_blank" rel="noopener noreferrer">scraping</a>, or targeted DDoS attacks. Consequences of these attacks include leaking of sensitive data, <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention" target="_blank" rel="noopener noreferrer">account takeover</a> or exhausting back-end resources. Keeping the rate of requests under control is especially crucial for <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> where each call can trigger costly computation on the server origin.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-step-change-innovation-for-throttling">A step-change innovation for throttling</h2>
-		<a href="https://blog.cloudflare.com/#a-step-change-innovation-for-throttling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Advanced Rate Limiting is now part of the <a href="https://blog.cloudflare.com/new-waf-experience">Web Application Firewall</a> (WAF). It’s integrated with Firewall Rules and allows counting requests based on characteristics other than IP.</p>
-	<p>With Advanced Rate Limiting, you can:</p>
-	<ol>
-		<li>
-			<p>Define the rule filter using all HTTP request characteristics, such as URI, method, headers, cookies and body fields. Customers on a Bot Management plan get access to the bot score dynamic field too. You can also use two characteristics of the HTTP response to trigger rate limiting: status code and response headers.</p>
-		</li>
-		<li>
-			<p>Choose to count requests based on: IP, country, header, cookie, AS Number (ASN), value of a query parameter, or bots fingerprint (JA3). You can use any of these fields individually or by combining them, so that requests are bucketed when these values are the same. It can also set the threshold as the maximum complexity your origin can handle, rather than the maximum number of requests you want to allow.</p>
-		</li>
-		<li>
-			<p>Use it on all your traffic. As an Enterprise customer, Rate Limiting could be bought on a portion of your total traffic. With Advanced Rate Limiting, you can use the product on all of your traffic without having to worry about caps. Finally, Advanced Rate Limiting is available on the entire Cloudflare network, including in China.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h2 id="designed-to-integrate-with-your-application">Designed to integrate with your application</h2>
-		<a href="https://blog.cloudflare.com/#designed-to-integrate-with-your-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this section, we discuss a few common use cases for using Advanced Rate Limiting to <a href="https://www.cloudflare.com/application-services/solutions/api-security" target="_blank" rel="noopener noreferrer">protect your web or API traffic</a>. You can mix and match all these configurations to better suit your security needs and your application. All these use cases can be achieved via dashboard, API and Terraform.</p>
-	<div class="flex anchor relative">
-		<h3 id="use-case-protect-web-traffic-with-more-granular-rules">Use case - Protect web traffic with more granular rules</h3>
-		<a href="https://blog.cloudflare.com/#use-case-protect-web-traffic-with-more-granular-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Flexible filters.</b> You can now write rate limiting rules using all the fields of the HTTP request. For example, you can trigger a rule for requests with specific headers (such as User Agent) or throttle traffic from bots sharing the same ASN.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jlTSXDikimPc7kIb8Yj5z/1e8498567d467a2310891306ffef1d4f/image3-19.png" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder." class="kg-image" width="879" height="1192" loading="lazy">
-
-	</figure>
-	<p><b>Separate mitigation expression.</b> You can now separate the mitigation expression from the counting expression. This allows you to define on what part of your website you want to block users once the threshold is reached, and what conditions the request (and response) needs to meet in order to increase the counter. For example, you can count requests to your <code>/login</code> endpoint and then block the same user on the whole site. This is especially useful when you want to include response fields in your counting expression, for example, by counting only requests that return a specific response code but then block a larger portion of traffic.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/p43VNOCn2MV2I1xJmOAM2/69dc9fbf784c1bc33a76fc3ff79e686c/image2-40.png" alt="With Advanced Rate Limiting you can count on a path and block across your whole website." class="kg-image" width="1651" height="1999" loading="lazy">
-
-	</figure>
-	<p><b>Use dynamic fields.</b> Customers can now combine Rate Limiting with rules detecting known vulnerabilities, such as <a href="https://blog.cloudflare.com/waf-ml">WAF machine learning score</a>. For example, you can block eyeballs after a number of consecutive requests flagged as SQLi have hit your site. Another use case is to trigger a throttling rule only for requests likely originated from bots (by using the bot score in the rule filter) or after a number of login attempts with stolen credentials have been performed (<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check" target="_blank" rel="noopener noreferrer">link</a>). You can also use the JA3 fingerprint as a counting dimension, so that you leverage our Bot Machine Learning algorithm to bucket traffic from bots with the same fingerprint.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28PgBzrw0RSnTEBdPRazR8/ed289896eccaf20b68385208081ae528/image4-4.png" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter." class="kg-image" width="1780" height="674" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="use-case-protect-apis-by-integrating-rate-limiting-with-your-application">Use case - Protect APIs by integrating Rate Limiting with your application</h3>
-		<a href="https://blog.cloudflare.com/#use-case-protect-apis-by-integrating-rate-limiting-with-your-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Count requests based on session ID.</b> API traffic is often authenticated, and the session can be tracked with a cookie, header (such as <code>x-api-key</code>) or query value. Advanced Rate Limiting allows you to define where the ID is in the request and track the number of requests relative to the same session, regardless of the IP. This can be an effective way to fend off distributed bot attacks that scrape sensitive data, such as product prices or airline passenger data.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TWf8VzKMQTdl3DIQvCbpw/3505e5b768af0506ffc0a30028dcfc32/image5-5.png" alt="You can group requests based on cookie, header, query and other characteristics." class="kg-image" width="1999" height="1313" loading="lazy">
-
-	</figure>
-	<p><b>Trigger rule based on a request body content.</b> The rule filter gives access to the raw body and the JSON-parsed body. You can count requests where a body JSON field has a specific value using the function <code>lookup_json_string</code> available in the rule filter. This can be useful for GraphQL APIs, where different calls (or mutations) can be performed through the same endpoint but specifying different operations in the request body.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1R8vFFvmCerK66QUvqq5ti/f7c7c139682643a175157078ea0dafdc/image6-1.png" alt="You can trigger rules based on request body content." class="kg-image" width="1964" height="1999" loading="lazy">
-
-	</figure>
-	<p><b>Rate Limiting based on complexity (coming soon in beta available now via API)</b>. Some API calls are more complex to serve than others, so counting on the number of requests doesn’t really reflect the actual cost to serve. GraphQL APIs are an example: each call complexity can vary widely based on how much processing the server needs to carry out to serve the request. Your origin can estimate the complexity of each request and return it along with the response, and rate limiting can increment the counter by the complexity estimate provided by the origin. You can then set a complexity threshold in the rule and, when it’s exceeded, subsequent requests will trigger an action, such as block.</p>
-	<div class="flex anchor relative">
-		<h2 id="packaging">Packaging</h2>
-		<a href="https://blog.cloudflare.com/#packaging" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Advanced Rate Limiting is generally available for Enterprise customers on the new Advanced plan. See below for more details on what’s included in each plan. Reach out to your Cloudflare account team or Customer Success Manager (CSM) to learn more. If you are a Pro or Biz customer, you won’t be able to use Advanced Rate Limiting, but we are planning to give some advantages to Pro and Biz plans as well.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b></b></p>
-				</td>
-				<td>
-					<p><b>Enterprise Core</b></p>
-				</td>
-				<td>
-					<p><b>Enterprise Advanced</b></p>
-				</td>
+<p>Still relying solely on IP firewalling? It’s time to change that.</p>
+<p>While the IP address might still be one of the core technologies allowing networks to function, its value for security is long gone. IPs are rarely static; nowadays, mobile operators use carrier-grade network address translation (CGNAT) to share the same IP amongst thousands of individual devices or users. Bots then carry out distributed attacks with low request volume from different IPs to elude throttling. Furthermore, many countries consider IP addresses to be personal data, and it would be a great advancement for privacy if a replacement could be found for elements of security that currently rely on IP addresses to function. A product that is affected by this trend is rate limiting.</p>
+<p>Rate limiting is designed to stop requests from overloading a server. It relies on rules. A rate limiting rule is defined by a filter (which typically is a path, like <code>/login</code>) and the maximum number of requests allowed from each user over a period of time. When this threshold is exceeded, an action is triggered (usually a block) for subsequent requests from the same user for a period of time (known as a timeout). Traditional throttling solutions bucket together requests with the same IP since they follow the logic “requests from the same IP equals requests from the same user”. However, we hear from customers how not effective it is to use IP-based rate limiting to protect traffic, especially for authenticated APIs.</p>
+<p>We are excited to launch Advanced Rate Limiting, a leap forward for throttling technologies. It allows counting requests based on virtually any characteristics of the HTTP request, regardless of its source IP. Rate Limiting is a great defense against brute force, <a href="https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping" target="_blank" rel="noopener noreferrer">scraping</a>, or targeted DDoS attacks. Consequences of these attacks include leaking of sensitive data, <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention" target="_blank" rel="noopener noreferrer">account takeover</a> or exhausting back-end resources. Keeping the rate of requests under control is especially crucial for <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> where each call can trigger costly computation on the server origin.</p>
+<h2>A step-change innovation for throttling</h2>
+<p>Advanced Rate Limiting is now part of the <a href="https://blog.cloudflare.com/new-waf-experience">Web Application Firewall</a> (WAF). It’s integrated with Firewall Rules and allows counting requests based on characteristics other than IP.</p>
+<p>With Advanced Rate Limiting, you can:</p>
+<ol>
+	<li>Define the rule filter using all HTTP request characteristics, such as URI, method, headers, cookies and body fields. Customers on a Bot Management plan get access to the bot score dynamic field too. You can also use two characteristics of the HTTP response to trigger rate limiting: status code and response headers.</li>
+	<li>Choose to count requests based on: IP, country, header, cookie, AS Number (ASN), value of a query parameter, or bots fingerprint (JA3). You can use any of these fields individually or by combining them, so that requests are bucketed when these values are the same. It can also set the threshold as the maximum complexity your origin can handle, rather than the maximum number of requests you want to allow.</li>
+	<li>Use it on all your traffic. As an Enterprise customer, Rate Limiting could be bought on a portion of your total traffic. With Advanced Rate Limiting, you can use the product on all of your traffic without having to worry about caps. Finally, Advanced Rate Limiting is available on the entire Cloudflare network, including in China.</li>
+</ol>
+<h2>Designed to integrate with your application</h2>
+<p>In this section, we discuss a few common use cases for using Advanced Rate Limiting to <a href="https://www.cloudflare.com/application-services/solutions/api-security" target="_blank" rel="noopener noreferrer">protect your web or API traffic</a>. You can mix and match all these configurations to better suit your security needs and your application. All these use cases can be achieved via dashboard, API and Terraform.</p>
+<h3>Use case - Protect web traffic with more granular rules</h3>
+<p><strong>Flexible filters.</strong> You can now write rate limiting rules using all the fields of the HTTP request. For example, you can trigger a rule for requests with specific headers (such as User Agent) or throttle traffic from bots sharing the same ASN.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="970" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=715&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=640&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=715&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=750&amp;h=1017&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=828&amp;h=1123&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=1080&amp;h=1465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=1280&amp;h=1737&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B5X47KSAKB93VRM2T8KD.png&amp;w=1430&amp;h=1940&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="970" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder."></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Separate mitigation expression.</strong> You can now separate the mitigation expression from the counting expression. This allows you to define on what part of your website you want to block users once the threshold is reached, and what conditions the request (and response) needs to meet in order to increase the counter. For example, you can count requests to your <code>/login</code> endpoint and then block the same user on the whole site. This is especially useful when you want to include response fields in your counting expression, for example, by counting only requests that return a specific response code but then block a larger portion of traffic.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="866" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=715&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=640&amp;h=775&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=715&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=750&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=828&amp;h=1003&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=1080&amp;h=1308&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=1280&amp;h=1550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49JGWQ4GD0E3FTAMAAWCDE.png&amp;w=1430&amp;h=1732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="With Advanced Rate Limiting you can count on a path and block across your whole website." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="866" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: With Advanced Rate Limiting you can count on a path and block across your whole website."></div>
+</figure>
+<p><strong>Use dynamic fields.</strong> Customers can now combine Rate Limiting with rules detecting known vulnerabilities, such as <a href="https://blog.cloudflare.com/waf-ml">WAF machine learning score</a>. For example, you can block eyeballs after a number of consecutive requests flagged as SQLi have hit your site. Another use case is to trigger a throttling rule only for requests likely originated from bots (by using the bot score in the rule filter) or after a number of login attempts with stolen credentials have been performed (<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check" target="_blank" rel="noopener noreferrer">link</a>). You can also use the JA3 fingerprint as a counting dimension, so that you leverage our Bot Machine Learning algorithm to bucket traffic from bots with the same fingerprint.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="271" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=715&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=640&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=715&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=750&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=828&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=1080&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=1280&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452GV6WPG3CSG314YYXXED.png&amp;w=1430&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="271" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: With Advanced Rate Limiting you can use dynamic fields in the rule filter."></div>
+</figure>
+<h3>Use case - Protect APIs by integrating Rate Limiting with your application</h3>
+<p><strong>Count requests based on session ID.</strong> API traffic is often authenticated, and the session can be tracked with a cookie, header (such as <code>x-api-key</code>) or query value. Advanced Rate Limiting allows you to define where the ID is in the request and track the number of requests relative to the same session, regardless of the IP. This can be an effective way to fend off distributed bot attacks that scrape sensitive data, such as product prices or airline passenger data.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="470" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=640&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=750&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=828&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=1080&amp;h=710&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=1280&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AW6C3JEQZ0NJ4RDZZBXG.png&amp;w=1430&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="You can group requests based on cookie, header, query and other characteristics." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="470" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: You can group requests based on cookie, header, query and other characteristics."></div>
+</figure>
+<p><strong>Trigger rule based on a request body content.</strong> The rule filter gives access to the raw body and the JSON-parsed body. You can count requests where a body JSON field has a specific value using the function <code>lookup_json_string</code> available in the rule filter. This can be useful for GraphQL APIs, where different calls (or mutations) can be performed through the same endpoint but specifying different operations in the request body.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="728" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=715&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=640&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=715&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=750&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=828&amp;h=843&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=1080&amp;h=1100&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=1280&amp;h=1303&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HS2T55Q42X8RF841MD5D.png&amp;w=1430&amp;h=1456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="You can trigger rules based on request body content." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="728" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: You can trigger rules based on request body content."></div>
+</figure>
+<p><strong>Rate Limiting based on complexity (coming soon in beta available now via API)</strong>. Some API calls are more complex to serve than others, so counting on the number of requests doesn’t really reflect the actual cost to serve. GraphQL APIs are an example: each call complexity can vary widely based on how much processing the server needs to carry out to serve the request. Your origin can estimate the complexity of each request and return it along with the response, and rate limiting can increment the counter by the complexity estimate provided by the origin. You can then set a complexity threshold in the rule and, when it’s exceeded, subsequent requests will trigger an action, such as block.</p>
+<h2>Packaging</h2>
+<p>Advanced Rate Limiting is generally available for Enterprise customers on the new Advanced plan. See below for more details on what’s included in each plan. Reach out to your Cloudflare account team or Customer Success Manager (CSM) to learn more. If you are a Pro or Biz customer, you won’t be able to use Advanced Rate Limiting, but we are planning to give some advantages to Pro and Biz plans as well.</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p></p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Enterprise Core</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>Enterprise Advanced</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Available request fields in filter</p>
 				</td>
-				<td>
-					<p>Selected standard fields:
-						URL
-						Method
-						Headers
-						Source IP</p>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Selected standard fields:<br>URL<br>Method<br>Headers<br>Source IP</p>
 				</td>
-				<td>
-					<p>All standard fields
-						Body fields
-						Account takeover fields
-						Dynamic fields (including Bot Score*)</p>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>All standard fields<br>Body fields<br>Account takeover fields<br>Dynamic fields (including Bot Score*)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Available response fields in counting filter</p>
 				</td>
-				<td>
-					<p>Response code
-						Response Headers</p>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Response code<br>Response Headers</p>
 				</td>
-				<td>
-					<p>Response code
-						Response Headers</p>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>Response code<br>Response Headers</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Counting characteristics</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>IP</p>
 				</td>
-				<td>
-					<p>IP
-						IP with NAT awareness
-						ASN
-						Country
-						Headers
-						Cookie
-						Query
-						JA3*</p>
+				<td data-astro-cid-ohylgzgj="true">
+					<p>IP<br>IP with NAT awareness<br>ASN<br>Country<br>Headers<br>Cookie<br>Query<br>JA3*</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Complexity</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>No</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Yes</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Maximum sampling period</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>10 minutes</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1 hour</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>*requires Bot Management plan</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next-for-rate-limiting">What’s next for Rate Limiting</h2>
-		<a href="https://blog.cloudflare.com/#whats-next-for-rate-limiting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the coming months, we are going to collect feedback from our customers to decide what additional features we should include in Advanced Rate Limiting. We have already a few ideas we are exploring, including automatically profiling your traffic and recommending thresholds for your rules.</p>
 </div>
+<p>*requires Bot Management plan</p>
+<h2>What’s next for Rate Limiting</h2>
+<p>In the coming months, we are going to collect feedback from our customers to decide what additional features we should include in Advanced Rate Limiting. We have already a few ideas we are exploring, including automatically profiling your traffic and recommending thresholds for your rules.</p>

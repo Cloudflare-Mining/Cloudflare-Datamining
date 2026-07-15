@@ -1,0 +1,712 @@
+<div class="mb2 gray5">13分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/aim-database-for-internet-quality">English</a>、<a href="https://blog.cloudflare.com/zh-tw/aim-database-for-internet-quality">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/aim-database-for-internet-quality">Français</a>、<a href="https://blog.cloudflare.com/de-de/aim-database-for-internet-quality">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/aim-database-for-internet-quality">한국어</a>、<a href="https://blog.cloudflare.com/es-es/aim-database-for-internet-quality">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/aim-database-for-internet-quality">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1s4xuXHEkuImmUduklMmrF/9a7dbe9c1dc9459dd4535f63ddd8a504/aim-database-for-internet-quality.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>休日に家族を訪ねてWiFiに接続し、Netflixの読み込みがいつもより速くないことに気づいたとします。speed.Cloudflare.com、fast.com、speedtest.netに行くか、またはGoogle Chromeに「speed test」と入力して、インターネット接続に問題があるかどうかを調べると、以下のような結果が出ます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3IimU9cm3fV1XvBvAJwmdE/06aabe48db2f742bfdd6e88a34cdfba6/111.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>この数字がどのようなものかをお知りになりたい方は、<a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。しかし、これらの数値は何を意味するのでしょうか。これらの数値は、Netflixがロードされていないかどうかや、その他の一般的な使用例（ゲームのプレイや、友人や大切な人とのオーディオ／ビデオチャットなど）とどのように関係しているのでしょうか。ネットワークエンジニアでさえ、スピードテストをインターネットを利用するユーザーエクスペリエンスに関連付けるのは難しいと感じています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FH3ra6GdbzBMT650WqWeG/9f9a58e5031c5a7363c07e70b7fdfc5d/112.png" alt="" class="kg-image" width="1600" height="657" loading="lazy">
+
+	</figure>
+	<p>驚くべきことに、インターネットの利用方法は大きく変化しているにもかかわらず、スピードテストは20年近くほとんど変わっていません。インターネットを利用する人が増えたことで、スピードテストとネットワーク品質に関するユーザーの体感とのギャップはますます大きくなっています。この問題は非常に重要であるため、インターネットの標準化団体も<a href="https://datatracker.ietf.org/doc/rfc9318" target="_blank" rel="noopener noreferrer">注目して</a>います。</p>
+	<p>大局的に見れば、ネットワークテストには3つの大きな課題があります。</p>
+	<ol>
+		<li>
+			<p>ネットワークの品質を効率的かつ正確に測定し、その品質がエンドユーザーにどのような影響を与えるかを伝える方法を見つけること。</p>
+		</li>
+		<li>
+			<p>問題が見つかった場合、ワイヤレス接続、またはインターネットを構成する多くのケーブルやマシンなど、どこに問題があるかを特定すること。</p>
+		</li>
+		<li>
+			<p>一人のユーザーのテスト結果を近隣のユーザーのテスト結果と照らし合わせて理解したり、結果をアーカイブして、例えば近隣と比較したり、ネットワークが良くなっているのか悪くなっているのかを知ること。</p>
+		</li>
+	</ol>
+	<p>Cloudflareは、この3つの課題すべてに対処するための新しいAggregated Internet Measurement（AIM）イニシアチブを発表できることを嬉しく思います。AIMは、インターネットのエンドユーザーが納得できる方法でインターネット品質を表示するための新しくオープンなフォーマットです。特定の種類のインターネットパフォーマンスを要求するユースケースを中心にしながらも、エンジニアがインターネット上の問題をトラブルシューティングするために必要なネットワークデータをすべて保持します。嬉しいことに、このプロジェクトで<a href="https://www.measurementlab.net" target="_blank" rel="noopener noreferrer">Measurement Lab</a>と提携し、このデータをすべて<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">一般に公開されたリポジトリ</a>に保存することができます。それにアクセスすると、スピードテストのページに表示されるスコアの背後にあるデータを分析することができます。そのソースコードは、AIMのスコア計算とともに<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">オープンソース化</a>されています。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-a-speed-test">スピードテストとは何ですか？</h2>
+		<a href="https://blog.cloudflare.com/#what-is-a-speed-test" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スピードテストは、インターネット接続のポイントインタイム測定です。スピードテストに接続すると、通常、大きなファイルの取得（<a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming" target="_blank" rel="noopener noreferrer">ビデオストリーミングで</a>重要）、パケットロステスト（ゲーミングで重要）、ジッター測定（ビデオ／VoIP通話で重要）、遅延測定（すべてのインターネット使用ケースで重要）が行われます。このテストの目的は、基本的なタスクを実行するためのインターネット接続の能力を測定することです。</p>
+	<p>このアプローチには、単純な観察から始まるいくつかの課題があります。データやパケットを移動させるインターネットの「<a href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer" target="_blank" rel="noopener noreferrer">ネットワーク層</a>」では、直接観測できる尺度は以下の3つしかありません。</p>
+	<ul>
+		<li>
+			<p>利用可能な_帯域幅_。「スループット」と呼ばれることもある。</p>
+		</li>
+		<li>
+			<p>定常状態ではインターネット全体で極めて低いレベルで発生するパケット_ロス。_</p>
+		</li>
+		<li>
+			<p><i>遅延</i>。しばしば<a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">ラウンドトリップタイム（RTT）</a>と呼ばれる。</p>
+		</li>
+	</ul>
+	<p>この3つの性質は密接に絡み合っています。特に、ユーザーが実際に達成する利用可能な帯域幅の割合（スループット）は、損失と遅延に直接影響されます。コンピュータは損失と遅延を利用して、パケットを送信するかどうかを決定します。多少の損失や遅延は想定内であり、必要でさえあります！どちらも多すぎると、帯域幅が低下し始めます。</p>
+	<p>これらは単純な数値ですが、その関係は単純ではありません。xとyを足して100_にする_方法（x + y ≤ 100）を考えてみましょう。xとyがちょうど合っていれば、足して100になります。しかし、xとyの組み合わせはたくさんあります。さらに悪いことに、xかyのどちらか、あるいは両方が少し間違っていると、足し算が100未満になってしまいます。この例では、xとyは損失と遅延で、100は利用可能な帯域幅です。</p>
+	<p>この数字がすべてというわけではなく、他の要因も働いています。しかし、これらだけが直接観測できる数値です。それぞれの意味と、診断に重要な理由が重要ですので、順番に説明し、Aggregated Internet Measurementがそれぞれをどのように解決しようとしているのかを説明しましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-do-the-numbers-in-a-speed-test-mean">スピードテストの数値は何を意味しますか？</h2>
+		<a href="https://blog.cloudflare.com/#what-do-the-numbers-in-a-speed-test-mean" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ほとんどのスピードテストでは、実行されると、帯域幅、遅延、ジッター、パケットロスなど、上で見たような数値が表示されます。これらの数字が何を意味するのか、それぞれをかみ砕いて説明しましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="bandwidth">帯域幅</h3>
+		<a href="https://blog.cloudflare.com/#bandwidth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>帯域幅とは、通信リンクの最大スループット／容量のことです。帯域幅の定義によく使われる例えは、インターネット接続を高速道路に例えた場合、帯域幅は高速道路の車線の数とそこに収まる車の数です。インターネットサービスプロバイダーは、大きなファイルをダウンロードするのにかかる時間として速度を測定するため、帯域幅はこれまでしばしば「速度」と呼ばれてきました。接続の帯域幅が広ければ、より速くダウンロードできます。</p>
+	<div class="flex anchor relative">
+		<h3 id="packet-loss">パケットロス</h3>
+		<a href="https://blog.cloudflare.com/#packet-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パケットロスは、その名の通り、送信元から宛先にパケットを送信しても、宛先で受信されないことです。これは多くのアプリにとって大きな影響を及ぼします。もし情報が受信者への転送中に失われた場合、受者は何をっいのか解るこが難くる（受信者は何を送っているのか理解することが難しくなる）からです。</p>
+	<div class="flex anchor relative">
+		<h3 id="latency">遅延</h3>
+		<a href="https://blog.cloudflare.com/#latency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">遅延</a>とは、パケット／メッセージがA地点からB地点まで移動するのにかかる時間のことです。インターネットは、その中核において、電気信号または光線の形で信号をケーブル経由で他のコンピュータに送信するコンピューターによって構成されています。遅延は一般に、電気信号がケーブルやファイバーを通じてあるコンピューターから別のコンピューターに到達するのにかかる時間と定義されています。したがって、遅延を減らす方法の一つは、信号が目的地に到達するまでに必要な移動距離を短くすることです。</p>
+	<p>遅延には、アイドル時の遅延と負荷時の遅延の区別があります。これは、ルーターやスイッチにはキューがあり、データパケットが送信可能な速度よりも速く到着した場合に、そのパケットを保存するためです。設計上、キューイングは正常であり、データの流れを正しく保ちます。しかし、キューが大きすぎたり、他のアプリケーションの動作が自分のものと大きく異なったりすると、接続が実際よりも遅く感じられることがあります。この現象は<a href="https://www.bufferbloat.net/projects" target="_blank" rel="noopener noreferrer">バッファブロートと</a>呼ばれます。</p>
+	<p>当社のAIMテストでは、アイドル時の遅延を見て、ユーザーの遅延の_推定値_を示しますが、日々のインターネット体験における遅延をよりよく反映する負荷時の遅延も収集します。</p>
+	<div class="flex anchor relative">
+		<h3 id="jitter">ジッター</h3>
+		<a href="https://blog.cloudflare.com/#jitter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ジッターは遅延を測定する特別な方法です。インターネット接続の遅延のばらつきです。ジッターが高い場合、パケットによっては到着までに時間がかかることがあり、音声通信のようにコンテンツをリアルタイムで配信する必要のあるインターネットシナリオに影響を与える可能性があります。</p>
+	<p>ジッターについて考える良い方法は、あるルートや経路に沿って通勤することを考えることです。遅延は単独で、「時間で測った目的地までの距離は？」と問いかけています。例えば、列車の平均所要時間は40分です。所要時間の代わりに、ジッターは「私の所要時間はどれだけ安定しているか」を問います。通勤時間を考えると、ジッターがゼロということは、電車はいつも40分かかるということです。しかし、もしジッターが15であれば、通勤時間は25分から55分かかることになり、より困難になります。</p>
+	<p>しかし、これらの数字を理解したとして、そこから_何が_起きているのかを知ることはできても、_どこで_何かが起きているのかを知ることはできません。</p>
+	<div class="flex anchor relative">
+		<h2 id="is-wifi-or-my-internet-connection-the-problem">WiFiやインターネット接続が問題なのでしょうか？</h2>
+		<a href="https://blog.cloudflare.com/#is-wifi-or-my-internet-connection-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スピードテストを実行する場合、インターネットサービスプロバイダーに接続するだけでなく、そこに接続するあなたのローカルネットワークにも接続することになります。あなたのローカルネットワークにも問題があるかもしれません。パケットロスやジッターが大きいスピードテストの場合には、一般的に、ネットワーク上の何かがパケットをドロップしている可能性があります。通常、インターネットサービスプロバイダーに電話すると、「WiFiアクセスポイントに近づけるか、エクステンダーを買ってください」などと言われることが多いでしょう。</p>
+	<p>これは重要な点です。WiFiは電波を使って情報を送信するため、レンガや漆喰、コンクリートなどの素材によって電波が妨害されたり、アクセスポイントから離れるほど電波が弱くなったりします。Nest WiFiやEeroのようなメッシュWiFiアプライアンスは、このような問題を検出するために、メインアクセスポイントからのスピードテストを定期的に行っています。そのため、高いパケットロスやジッターのような問題に対する<a href="https://developers.cloudflare.com/fundamentals/speed/aim" target="_blank" rel="noopener noreferrer">迅速な解決策となり得る手段</a>を用意し、それを前もってユーザーに提供することで、問題がワイヤレス接続のセットアップに関連しているかどうかをユーザーがよりよく確認することができます。</p>
+	<p>これはインターネット上で見られるほとんどの問題に当てはまります。ネットワーク事業者が単にユーザーにアクセスポイントに近づくよう指示するだけでなく、このデータを集約して見ることができれば、多くの場合役に立ちます。スピードテストがネットワーク事業者やその地域の他のユーザーが見ることができる場所に送られた場合、ネットワークエンジニアは、ユーザーから報告を受ける前に問題を事前に検出できる可能性があります。これはユーザーのみならず、ネットワークプロバイダーにも役立ちます。ユーザー設定に起因する問題のために電話を受けたり技術者を派遣したりすることは、時間がかかるだけでなくコストもかかるからです。</p>
+	<p>これはAIMの目標の1つです。電話がかかってくる前に問題を解決する手助けをすることです。エンドユーザーは、自分のインターネット接続で何ができ、何ができないのか、どうすれば改善できるのかを理解するのに役立つ一連のヒントを読みやすい形式で得ることができ、ネットワーク事業者は、電話がかかってくる前にラストマイルの問題を検出するために必要なすべてのデータを得ることができ、時間とコストを節約できます。実際の例を挙げながら、それがどのように機能するかをご説明しましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="an-example-from-a-real-life">実生活における例</h2>
+		<a href="https://blog.cloudflare.com/#an-example-from-a-real-life" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>スピードテストの結果が表示されると、その数字に惑わされることがあります。これらの数字がどのように組み合わさってインターネット体験に影響を与えているかを理解していない可能性があるためです。実例を挙げて、それがお客様にどう影響するかをご説明しましょう。</p>
+	<p>4つのオフィスとメインエリアがあるビルで働いているとします。</p>
+	<p>あなたは一日中クライアントとビデオ通話をしなければならないのに、無線アクセスポイントから一番遠いオフィスに座っています。通話が途切れ途切れになり、たいへん不愉快な経験をしています。彼女のオフィスからスピードテストを実行すると、次の結果が表示されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4mI2OjDE4asb8FmKeHtJCP/a0e9c36be7927a996729a833f3f9457a/113.png" alt="" class="kg-image" width="1588" height="1096" loading="lazy">
+
+	</figure>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Far away from access point</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Close to access point</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Download Bandwidth</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21.8 Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25.7 Mbps</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Upload Bandwidth</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.66 Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.26 Mbps</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Unloaded Latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19.6 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19.5 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">61.4 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37.9 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Packet Loss</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.7%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>指標</p>
+	<p>アクセスポイントから遠い</p>
+	<p>アクセスポイントに近い</p>
+	<p>ダウンロード帯域幅</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-d6mv {
+			background-color: #666;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kyaz {
+			background-color: #D9D9D9;
+			color: #172B4D;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Metric</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">0 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">5 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">10 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">20 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">30 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">50 points</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Loss Rate</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 5%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 5%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1%</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Unloaded latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 100ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Download Throughput</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000Mbps</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Upload Throughput</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000Mbps</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Difference between loaded and unloaded latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>21.8Mbps</p>
+	<p>25.7Mbps</p>
+	<p>アップロード帯域幅</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Result</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25/70 pts (Average)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/40 pts (Poor)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/50 pts (Average)</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>5.66Mbps</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Result</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">45/70 pts (Good)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/40 pts (Great)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/50 pts (Great)</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>5.26Mbps</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CrZxqJ79VLN4MM6O0gMOX/440836054b316ba12616cb623b6ecd0f/114.png" alt="" class="kg-image" width="1600" height="657" loading="lazy">
+
+	</figure>
+	<p>無負荷時遅延</p>
+	<p>19.6ミリ秒</p>
+	<p>19.5ミリ秒</p>
+	<p>ジッタ</p>
+	<p>61.4ミリ秒</p>
+	<p>37.9ミリ秒</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HSlY2m75rAmNht9BuCjZc/9ff7bf8ea97bd8f49fa0ae46d8c487eb/Screenshot-2023-02-10-at-11.43.27.png" alt="" class="kg-image" width="2000" height="626" loading="lazy">
+
+	</figure>
+	<p>パケットロス</p>
+	<p>7.7%</p>
+	<p>0%</p>
+	<p>これらをどう理解しますか？ネットワークエンジニアは、高いジッターとパケットロスを見て、「このユーザーは、より良い信号を得るためにルーターの近くに移動する必要があるのだろう」と考えるでしょう。しかし、この結果を見てもさっぱりわからず、ネットワークエンジニアに助けを求めなければならないかもしれず、インターネットサービスプロバイダーに問い合わせることになり、時間とお金を無駄にしてしまうかもしれません。しかし、WiFiアクセスポイントを移動する必要があるかどうか、あるいはインターネットサービスプロバイダー側の原因で問題が生じているのかどうかを把握するために、ネットワークエンジニアに相談する必要はありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4AVAz6PoQwTJszzgx0Bi3Z/32e6ad5e435711d326e0d5810726eb13/116.png" alt="" class="kg-image" width="1600" height="1199" loading="lazy">
+
+	</figure>
+	<p>Aggregated Internet Measurementは、スピードテストの数値に定性的な評価を割り当て、これらの数値の意味を理解するよう支援します。私たちはシナリオ別のスコアを作成しました。これはシナリオレベルで計算される単一の定性的な値で、お客様が何をしようとしているかに基づいて、さまざまな質のスコアを計算します。手始めに、3つのAIMスコアを作成しました：ストリーミング、ゲーミング、Webチャット／リアルタイム通信です。これらのスコアは、アプリケーションが正常に実行されるために必要なインターネットの条件に基づいて、各指標に異なる重みを付けます。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">City</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average Streaming Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average Gaming Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average RTC Score</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tokyo</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New York</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mumbai</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dublin</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>AIMの採点基準では、テストに基づいてお客様の接続に点数を付けます。私たちはAIMを「加重スコア」でリリースしていますが、この加重スコアは、そのシナリオで最も重要な指標に基づいてポイント値が計算されます。これらの点数は固定的なものではありません。アプリケーション開発者、ネットワーク事業者、インターネットコミュニティが、さまざまなパフォーマンス特性が各シナリオのアプリ体験にどのような影響を与えているかについて知ることに基づいて向上するように設計されています。また、M-Labにデータを送信するもう一つの理由は、コミュニティが良い採点メカニズムを設計し、実現させるのに役立つからです。</p>
+	<p>ルーブリックの全体と、今日の評価基準に基づく各スコアは以下の通りです。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-d6mv{background-color:#666;color:#FFF;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-kyaz{background-color:#D9D9D9;color:#172B4D;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>指標</p>
+	<p>0点</p>
+	<p>5点</p>
+	<p>10点</p>
+	<p>20点</p>
+	<p>30点</p>
+	<p>50点</p>
+	<p>損失率</p>
+	<p>&gt; 5%</p>
+	<p>&lt; 5%</p>
+	<p>&lt; 1%</p>
+	<p>ジッタ</p>
+	<p>&gt; 20ミリ秒</p>
+	<p>&lt; 20ミリ秒</p>
+	<p>&lt; 10ミリ秒</p>
+	<p>無負荷時遅延</p>
+	<p>&gt; 100ミリ秒</p>
+	<p>&lt; 50ミリ秒</p>
+	<p>&lt; 20ミリ秒</p>
+	<p>&lt; 10ミリ秒</p>
+	<p>ダウンロードスループット</p>
+	<p>&lt; 1Mbps</p>
+	<p>&lt; 10Mbps</p>
+	<p>&lt; 50Mbps</p>
+	<p>&lt; 100Mbps</p>
+	<p>&lt; 1000Mbps</p>
+	<p>アップロードスループット</p>
+	<p>&lt; 1Mbps</p>
+	<p>&lt; 10Mbps</p>
+	<p>&lt; 50Mbps</p>
+	<p>&lt; 100Mbps</p>
+	<p>&lt; 1000Mbps</p>
+	<p>負荷時と無負荷時の遅延の差</p>
+	<p>&gt; 50ミリ秒</p>
+	<p>&lt; 50ミリ秒</p>
+	<p>&lt; 20ミリ秒</p>
+	<p>&lt; 10ミリ秒</p>
+	<p>また、各シナリオにおいて、どの数値が重要で、どのようにスコアを算出しているのか、簡単にご紹介します。</p>
+	<ul>
+		<li>
+			<p>ストリーミング：ダウンロード帯域幅＋無負荷時遅延＋パケットロス＋(負荷時と無負荷時の遅延の差)</p>
+		</li>
+		<li>
+			<p>ゲーミング：パケットロス＋無負荷時遅延＋(負荷時と無負荷時の遅延の差）</p>
+		</li>
+		<li>
+			<p>リアルタイム通信／ビデオ：パケットロス＋ジッター＋無負荷時遅延＋（負荷時と無負荷時の遅延の差）</p>
+		</li>
+	</ul>
+	<p>各スコアを計算するには、スピードテストのポイント値を取り、そのシナリオで可能な合計ポイントから計算します。その結果に基づいて、お客様のインターネット接続をシナリオごとに判定します：たいへん悪い、悪い、平均、良い、たいへん良い。例えば、ビデオ通話の場合、パケットロス、ジッター、無負荷時遅延、および負荷時と無負荷時の遅延の差は、インターネット品質がビデオ通話に適しているかどうかを判断する際に重要です。お客様のスピードテスト値から得られたポイント値を合計し、お客様のインターネット品質が完璧なビデオ通話体験ができる状態からどの程度悪くなっているかを示すスコアを算出します。スピードテストに基づき、アクセスポイントから遠く離れたオフィスでのAIMスコアを以下に示します。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>指標</p>
+	<p>結果</p>
+	<p>ストリーミング・スコア</p>
+	<p>25／70点（平均）</p>
+	<p>ゲーミング・スコア</p>
+	<p>15／40点（悪い）</p>
+	<p>リアルタイム通信スコア</p>
+	<p>15／50ポイント（平均）</p>
+	<p>「帯域幅はXで、ジッターはYです」と言う代わりに、「あなたのインターネットはNetflixには問題ありませんが、ゲーミングには適しておらず、Zoomには平均的です」と言うことができます。この場合、WiFiアクセスポイントをフロアのより中心に移動することが解決策となり、AIMのスコアが次のようにになりました。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>指標</p>
+	<p>結果</p>
+	<p>ストリーミング・スコア</p>
+	<p>45／70点（良い）</p>
+	<p>ゲーミング・スコア</p>
+	<p>35／40点（たいへん良い）</p>
+	<p>リアルタイム通信スコア</p>
+	<p>35／50ポイント（たいへん良い）</p>
+	<p>Cloudflareのスピードテストでは、これらの結果をNetwork Quality Scoreとして見ることができます。</p>
+	<p>このケースでは、インターネットサービスプロバイダーに電話する必要はなく、ネットワークエンジニアに相談することもありませんでした。アクセスポイントをオフィスの中央付近に移動させるだけで、全員のエクスペリエンスが改善され、電話をかける必要もなくなり、全員にとってよりシームレスなエクスペリエンスが提供されるようになりました。</p>
+	<p>AIMは、ネットワークエンジニアが注意を払っている指標を、お客様が使用しようとしているアプリに基づき、より人が読みやすい指標に変換します。集計されたデータは匿名化されます（当社の<a href="https://www.cloudflare.com/privacypolicy" target="_blank" rel="noopener noreferrer">プライバシーポリシーに</a>準拠）、そのため、インターネットサービスプロバイダーは、お住まいの地域のスピードテストを実際に調べることができます。インターネットサービスプロバイダーは、ユーザーの苦情をネットワークエンジニアが対応可能なものとして理解するための基礎データを得ることができます。さらに、ポリシー策定者や研究者は、集計データを調べることで、地域社会のユーザーが経験していることをよりよく理解し、インターネットの品質向上のためのロビー活動に役立てることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="working-conditions">実稼働環境</h2>
+		<a href="https://blog.cloudflare.com/#working-conditions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>興味深い質問があります：スピードテストを実行するとき、お客様はどこに接続し、接続の反対側のインターネットはどのようなものですか？スピードテストがしばしば直面する課題のひとつは、テストを実行するサーバーが、Webサイトを運営または保護しているサーバーと同じではないということです。このため、スピードテストが相手側のホストに送るネットワーク経路は大きく異なる可能性があり、できるだけ多くのスピードテストに対応できるように最適化されている可能性もあります。つまり、スピードテストは、トラフィックが通常使用するアプリに到達する際の経路をテストしているわけではありません。お客様が実行したテストはネットワーク経路を測定していますが、それは普段お使いのネットワーク経路ではありません。</p>
+	<p>スピードテストは、複数のアプリ、ブラウザタブ、およびデバイスがすべて接続性を競っているような、人々がインターネットを使用する方法を反映した実世界のネットワーク条件下で実行する必要があります。アプリ向けのツールを使用してインターネット接続を測定し、ネットワークができるだけ使用されている状態で測定するというこのコンセプトは、実稼働環境下での測定と呼ばれています。今日、スピードテストが実行される際には、ネットワークパフォーマンスのテスト用に確保されたWebサイトにまったく新しい接続が行われます。残念ながら、日常的なインターネット利用は、スピードテスト専用のWebサイトへの新規接続では行われません。これは多くのインターネットアプリで、Webサイトへの同じ接続を再利用するよう設計されているためで、それにより暗号化の確立や証明書の交換などで発生するコストのかかる遅延をなくし、エンドユーザーにより良いパフォーマンスを提供しようとしています。</p>
+	<p>AIMはいくつかの方法でこの問題の解決に貢献しています。1つ目は、すべてのテストをアプリと同じ方法で実装し、実稼働環境で測定していることです。お客様のインターネット接続が実際に使用されているときにどのような挙動を示すかを示すため、負荷遅延を測定しています。今日のスピードテストでおわかりいただけると思います。</p>
+	<p>もう1つは、現在使用しているエンドポイントに対するスピードテストの結果を収集していることです。Cloudflareや他のサイトに対するスピードテストを測定することで、日常生活で頻繁に使用されるネットワークに対するエンドユーザーのインターネット品質を表示し、実際の稼働環境をよりよく知ることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="aim-database">AIMデータベース</h2>
+		<a href="https://blog.cloudflare.com/#aim-database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日、Measurement Lab (M-Lab)との提携により、AIMデータが<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">一般公開</a>され、エンドユーザーやネットワークエンジニアが様々なネットワークのネットワーク品質データを解析できるようになりました。M-LabとCloudflareの両社は、スピードテストから得られたAIMスコアを計算し、共有データベースに格納する予定です。エンドユーザーもネットワーク事業者も、さまざまなスピードテストを通じて、できるだけ多くの観点からインターネットの品質を確認することができます。</p>
+	<p>ほんの一例ですが、このデータを使って、10月第1週の東京のシナリオごとのスコア（Cloudflareのデータのみ使用）をプロットした表を見てみましょう。</p>
+	<p>この結果から、5,814件のスピードテストのうち、50.7%のユーザーが良好なストリーミング品質でしたが、48.2%は平均的な品質であったことがわかります。東京では39％のユーザーにとってゲーミング体験が悪い結果になっており、ゲーミングは比較的難しいようです。しかし、ほとんどのユーザーは、平均的か良好なリアルタイム通信の体験をしました。他の都市との比較を見てみましょう。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+	<p>市</p>
+	<p>平均ストリーミング・スコア</p>
+	<p>平均ゲーミング・スコア</p>
+	<p>リアルタイム通信の平均スコア</p>
+	<p>東京都</p>
+	<p>31</p>
+	<p>13</p>
+	<p>16</p>
+	<p>ニューヨーク</p>
+	<p>33</p>
+	<p>13</p>
+	<p>17</p>
+	<p>ムンバイ</p>
+	<p>25</p>
+	<p>13</p>
+	<p>16</p>
+	<p>ダブリン</p>
+	<p>32</p>
+	<p>14</p>
+	<p>18</p>
+	<p>このデータによると、ムンバイが少し遅れている以外は、ほとんどのユーザーがビデオストリーミングに問題ないことがわかります。ゲーミング・スコアの主な要因である高遅延のため、ユーザーのゲーミング体験は一般的にばらつきがありますが、リアルタイム通信アプリはやや良好で、すべてのロケールで概ね平均的です。</p>
+	<div class="flex anchor relative">
+		<h2 id="collaboration-with-m-lab">M-Labとのコラボレーション</h2>
+		<a href="https://blog.cloudflare.com/#collaboration-with-m-lab" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>M-Labはオープンなインターネット測定レポジトリで、その使命はインターネットを測定し、データを保存し、誰でもアクセス可能で有用なものにすることです。ネットワーク事業者向けにAIMデータへの無料かつオープンなアクセスを提供するだけでなく、M-Labはポリシー策定者、学術研究者、ジャーナリスト、デジタル・インクルージョンの提唱者、その他インターネット改善に役立つ重要な意思決定に必要なデータへのアクセスを提供します。</p>
+	<p>M-Labは、ポリシー策定者や学者にインターネット品質データをオープンに共有することで、すでに定評のある企業であることに加え、Googleに「スピードテスト」と入力すると実行されるのと同じ、ネットワーク診断テスト（NDT）と呼ばれる「スピード」テストをすでに提供しています。M-Labと提携することで、当社はより多くのユーザーからAggregated Internet Measurementの指標を得ることができます。私たちは、他のスピードテストとも提携し、できるだけ多くのユーザーのために、インターネット品質が世界中でどのようにマッピングされているかの全体像を把握したいと考えています。現在、インターネットのパフォーマンスを測定しているのであれば、私たちとぜひ一緒に、ユーザーにインターネットの本当の良さを伝えるお手伝いをしてください。</p>
+	<div class="flex anchor relative">
+		<h2 id="speed-test-now-open-sourced">スピードテスト、オープンソースに</h2>
+		<a href="https://blog.cloudflare.com/#speed-test-now-open-sourced" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>M-Labとの提携に加え、スピードテストクライアントをオープンソース化しました。スピードテストのオープンソース化は、アプリがCloudflareを通してスピード測定にアクセスできるようにするための重要なステップであり、お客様のアプリのAIMスコアを計算する簡単な方法です。当社のスピードテストは現在javascriptアプリとして埋め込み可能で、ブラウザに移動することなくネットワーク品質テストを実行できます。このアプリは、今日のスピードテストに使用しているすべての測定値を提供するだけでなく、Cloudflareにプライベートな方法で結果をアップロードします。また、このリポジトリではAIMスコアの計算方法も示しており、エンドユーザーに対してネットワーク品質がどのように定義され、それがリアルタイムでどのように変化するのか、その内部構造を見ることができます。オープンソースのスピードテストで開発を始めるには、<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">オープンソースのリンク</a>をチェックしてください。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-bright-future-for-internet-quality">インターネット品質の明るい未来</h2>
+		<a href="https://blog.cloudflare.com/#a-bright-future-for-internet-quality" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、さまざまなテストやネットワークにおけるインターネットの品質を示すために、このデータをまとめることに興奮を覚えています。このデータを分析し、スコアシステムを改善する予定です。私たちがどのようにスピードテストの測定値を使用して、さまざまな異なるアプリでインターネットの品質を測定しているかをご覧いただけるよう、また、ご自身でAIMを導入していただけるよう、これをオープンソース化しました。また、今日ご覧いただいたすべてのテストに加え、AIMのスコアもスピードテストに追加しましたので、お客様のインターネットが何に適しているかをよりよく理解することができます。</p>
+	<p>現在スピードテストを実施中で、ユーザーエクスペリエンスで見たインターネットの品質に関するデータ収集にご協力いただける場合は、<a href="https://blog.cloudflare.com/#">ぜひご連絡ください</a>。インターネットをより良いものにするために協力しましょう。また、インターネット品質を測定したいアプリを実行している場合は、当社の<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">オープンソースリポジトリ</a>をチェックしてください。すぐにでも開発を始められます。</p>
+	<p>インターネットが何に適しているかを理解するために、ネットワークの専門家になる必要はありません。私たちがお役に立てます。AIMを使い、MLabの協力を得て、お客様のインターネットで何ができるかをお伝えし、またその情報をインターネットをより良いものにするために役立てたいと考えています。</p>
+</div>

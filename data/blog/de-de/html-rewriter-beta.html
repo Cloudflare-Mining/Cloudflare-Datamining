@@ -1,0 +1,91 @@
+<div class="mb2 gray5">Lesezeit: 3&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/html-rewriter-beta">English</a>, <a href="https://blog.cloudflare.com/fr-fr/html-rewriter-beta">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/html-rewriter-beta">日本語</a>, <a href="https://blog.cloudflare.com/es-es/html-rewriter-beta">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/html-rewriter-beta">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pJBHLvxZFAZf57LzN8f3G/39b9ff4219e367ca91aec264c408e690/html-rewriter-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Wir freuen uns, HTMLRewriter Beta ankündigen zu können – einen Streaming-HTML-Parser mit einer einfach anzuwendenden, Auswahl-basierten JavaScript-API für DOM-Manipulationen, verfügbar in der Cloudflare-Workers-Runtime.</p>
+	<p>Für diejenigen unter Ihnen, die <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> nicht kennen: Es handelt sich um eine einfache, serverlose Plattform, die es Entwicklern ermöglicht, Cloudflares Netzwerk zu nutzen, um vorhandene Anwendungen zu erweitern oder völlig neue Anwendungen zu erstellen, ohne dass die Infrastruktur konfiguriert oder verwaltet werden muss.</p>
+	<div class="flex anchor relative">
+		<h2 id="static-sites-to-dynamic-applications"><b>Von statischen Sites zu dynamischen Anwendungen</b></h2>
+		<a href="https://blog.cloudflare.com/#static-sites-to-dynamic-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Am vergangenen Freitag haben wir <a href="https://workers.cloudflare.com/sites" target="_blank" rel="noopener noreferrer">Workers Sites</a> vorgestellt: ein Workflow zur Bereitstellung statischer Websites, der in das <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>-CLI-Tool integriert ist. Jetzt können Sie in Verbindung mit der HTML-Rewriter-API über Ihrem statischen HTML-Code DOM-Transformationen direkt in der Cloudflare-Edge ausführen.</p>
+	<p>Sie konnten das auch früher schon tun, indem Sie den gesamten Antworttext in Worker erfassten, jedoch war diese Methode problemanfällig. Erstens stieß das Parsen einer großen Datei früher oder später auf Speicher- oder CPU-Beschränkungen. Darüber hinaus wurde Ihr TTFB davon betroffen, da der Text nicht mehr gestreamt werden konnte, und der Browser wurde daran gehindert, spekulatives Parsen auszuführen, um nachfolgende Ressourcen zu laden.</p>
+	<p>HTMLRewriter war das fehlende Teil, um Ihre Anwendung vollständig in der Edge auszuführen – von Anfang bis Ende. Sie können <a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">Ihre API</a> auf Cloudflare Workers als serverlose Funktion erstellen, die statischen Elemente Ihres Front-Ends auf <a href="https://workers.cloudflare.com/sites" target="_blank" rel="noopener noreferrer">Workers Sites</a> hosten lassen und sie mithilfe der HTMLRewriter-API dynamisch miteinander verbinden.</p>
+	<div class="flex anchor relative">
+		<h2 id="enter-jamstack"><b>Da kommt JAMStack ins Spiel</b></h2>
+		<a href="https://blog.cloudflare.com/#enter-jamstack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Vielleicht denken Sie jetzt: „Moment mal – JavaScript, serverlose APIs ... das hört sich alles ein bisschen bekannt an.“ Uns kam es auch bekannt vor.</p>
+	<blockquote>
+		<p>I've ported <a href="https://t.co/2bfz7ph4Ex" target="_blank" rel="noopener noreferrer">https://t.co/2bfz7ph4Ex</a> to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Cloudflare</a> Workers Sites and Zola! <a href="https://t.co/wqlZCy83Ze" target="_blank" rel="noopener noreferrer">https://t.co/wqlZCy83Ze</a></p>
+		<p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177613915200610309?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">September 27, 2019</a></p>
+	</blockquote>
+	<p>Ist das JAMStack?</p>
+	<p>Lassen Sie uns zunächst die Frage beantworten: Was ist JAMStack? JAMStack ist ein Begriff, der von Mathias Biilmann geprägt wurde und für JavaScript, APIs und Markup steht. JAMStack-Anwendungen sind für sehr einfache Skalierbarkeit vorgesehen, da sie auf vereinfachter statischer Website-Bereitstellung basieren. Sie sind auch dafür vorgesehen, den Webentwicklungs-Workflow insbesondere für Front-End-Entwickler zu vereinfachen, indem Datenmanipulation und Rendering, die traditionell auf dem Back-End stattgefunden haben, zum Front-End gebracht werden und die Interaktion mit dem Back-End nur über API-Aufrufe erfolgt.</p>
+	<p>Insofern, ja, das ist JAMStack. HTMLRewriter geht jedoch noch einen Schritt weiter.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-edge-not-quite-client-not-quite-server"><b>Die Edge: Nicht ganz Client, nicht ganz Server</b></h2>
+		<a href="https://blog.cloudflare.com/#the-edge-not-quite-client-not-quite-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die meisten JAMStack-Anwendungen basieren auf clientseitigen Aufrufen an Drittanbieter-APIs, bei denen das Rendering clientseitig mit JavaScript gehandhabt werden kann, sodass Front-End-Entwickler mit Toolketten und Sprachen arbeiten können, mit denen sie bereits vertraut sind. Das bedeutet jedoch, dass der Client bei jedem Seitenladevorgang zum Ursprung gehen, auf HTML und JS warten und dann – nachdem geparst und geladen wurde – mehrere Aufrufe an APIs vornehmen muss. Darüber hinaus geschieht all dies auf clientseitigen Geräten, die unweigerlich weniger leistungsfähig sind als Server und potenziell unzuverlässige Last-Mile-Verbindungen aufweisen.</p>
+	<p>Mit HTMLRewriter in Workers können Sie diese API-Aufrufe von der Edge aus vornehmen, wo Fehler viel weniger wahrscheinlich sind als bei Verbindungen mit Clientgeräten, und die Ergebnisse können häufig zwischengespeichert werden. Besser noch, Sie können die APIs selbst in Workers schreiben und die Ergebnisse direkt in den HTML-Code integrieren – alles auf derselben leistungsstarken Edge-Maschine. Der Einsatz dieser Maschinen zum „Edge-Side-Rendering“ mit HTMLRewriter geschieht immer so nahe wie möglich an Ihren Endbenutzern, ohne auf dessen Gerät selbst stattzufinden. Dabei wird die Latenz für den langen Weg bis zum Ursprung eliminiert.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-does-the-htmlrewriter-api-look-like"><b>Wie sieht die HTMLRewriter-API aus?</b></h2>
+		<a href="https://blog.cloudflare.com/#what-does-the-htmlrewriter-api-look-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die HTMLRewriter-Klasse ist eine jQuery-ähnliche Funktion direkt in Ihrer Workers-Anwendung, die es Entwicklern ermöglicht, zutiefst funktionelle Anwendungen zu erstellen, die auf einer leistungsstarken JavaScript-API basieren, um HTML zu parsen und zu transformieren.</p>
+	<p>Im Folgenden finden Sie ein Beispiel dafür, wie Sie HTMLRewriter einsetzen können, um Links auf einer Webseite von HTTP in HTTPS umzuschreiben.</p>
+	<pre class="language-javascript"><code class="language-javascript">const REWRITER = new HTMLRewriter()
+    .on('a.avatar', { element:  e =&gt; rewriteUrl(e, 'href') })
+    .on('img', { element: e =&gt; rewriteUrl(e, 'src') });
+
+async function handleRequest(req) {
+  const res = await fetch(req);
+  return REWRITER.transform(res);
+}</code></pre>
+	<p>Im obigen Beispiel erstellen wir eine neue Instanz von HTMLRewriter, verwenden den Selektor, um alle Instanzen von a- und img-Elementen zu finden, und rufen die rewriteURL-Funktion für die href- bzw. src-Eigenschaften auf.</p>
+	<p>Internationalisierungs- und Lokalisierungs-Tutorial: Wenn Sie noch einen Schritt weitergehen möchten, haben wir ein <a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website" target="_blank" rel="noopener noreferrer">vollständiges Tutorial</a> dazu, wie Sie Ihre Anwendung mit HTMLRewriter an i18n anpassen können.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Hx5zCalSwUhO7RfpEy6v/94ec193602747f661e591403b262b118/i18n-htmlrewriter.jpg" alt="" class="kg-image" width="1280" height="779" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="getting-started"><b>Erste Schritte</b></h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie Cloudflare Workers bereits verwenden, können Sie einfach unsere <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">Dokumentation</a> konsultieren, um mit HTMLRewriter zu beginnen (keine Anmeldung oder sonst etwas erforderlich!). Wenn Sie neu bei Cloudflare Workers sind, empfehlen wir Ihnen, sich zuerst <a href="https://workers.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">hier</a> anzumelden.</p>
+	<p>Wenn Sie sich für die grundlegenden Details der Funktionsweise von HTMLRewriter interessieren und bereit sind, mehr zu lernen, als Sie jemals über DOM-Parsen wissen wollten, haben Sie etwas Geduld. Wir werden Ihnen alle Details in einem zukünftigen Beitrag mitteilen.</p>
+	<p>Noch ein letzter Punkt – Sie sind nicht ausschließlich auf Workers-Sites beschränkt. Da Cloudflare Workers vor jeder Anwendung als Proxy bereitgestellt werden kann, können Sie HTMLRewriter als elegante Möglichkeit einsetzen, um Ihre vorhandene Website zu erweitern und dynamische Elemente unabhängig vom Back-End hinzuzufügen.</p>
+	<div class="flex anchor relative">
+		<h2 id="we-love-to-hear-from-you"><b>Wir freuen uns, von Ihnen zu hören!</b></h2>
+		<a href="https://blog.cloudflare.com/#we-love-to-hear-from-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir arbeiten ständig daran, unsere Produkte auf der Grundlage von Kundenfeedback zu verbessern! Bitte helfen Sie uns und nehmen Sie an <a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">unserer Umfrage</a> über Ihre Erfahrungen teil.</p>
+	<hr>
+	<p><i>Haben Sie mit etwas Interessantes mit Workers entwickelt? Erzählen Sie es uns</i> <a href="https://twitter.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><i>@CloudflareDev</i></a><i>!</i></p>
+</div>

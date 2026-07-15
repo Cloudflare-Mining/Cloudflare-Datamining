@@ -1,0 +1,150 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/partial-cloudflare-outage-on-october-25-2022">English</a>, <a href="https://blog.cloudflare.com/fr-fr/partial-cloudflare-outage-on-october-25-2022">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/partial-cloudflare-outage-on-october-25-2022">日本語</a>, <a href="https://blog.cloudflare.com/es-es/partial-cloudflare-outage-on-october-25-2022">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/partial-cloudflare-outage-on-october-25-2022">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zud7OXWGXTGPHnVK1TVcR/bd0bdb9dd780b80ff80c6255553314d7/partial-cloudflare-outage-on-october-25-2022.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Aufgrund einer Anpassung bei unserem Tiered Cache-System wurden in einigen Fällen Anfragen von Nutzern mit einer 530-Fehlermeldung beantwortet. Der Vorfall dauerte insgesamt sechs Stunden. Unserer Schätzung nach schlugen auf seinem Höhepunkt etwa 5 % aller Anfragen fehl. Wegen der hohen Komplexität unseres Systems und eines blinden Flecks bei unseren Tests haben wir dies bei Einführung der Änderung in unserer Testumgebung nicht erkannt.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hJhY1sHBOZSpglFZVl7Hq/df78cb9e5dccac95d320287b3cb42dd8/1-2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<p>Die Ausfälle wurden durch Begleiterscheinungen unseres Umgangs mit zwischenspeicherbaren Anfragen an verschiedenen Standorten ausgelöst. Zunächst hatte es den Anschein, als würde der Fehler durch ein anderes System verursacht, bei dem zuvor ein Release gestartet worden war. Unsere Teams brauchten mehrere Anläufe, bis sie die Fehlerquelle gefunden hatten. Anschließend haben wir innerhalb von 87 Minuten ein Rollback durchgeführt.</p>
+	<p>Wir bedauern diesen Vorfall und unternehmen die nötigen Schritte, um sicherzustellen, dass er sich nicht wiederholt.</p>
+	<div class="flex anchor relative">
+		<h3 id="background">Hintergrund</h3>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zu den Produkten von Cloudflare zählt unser Content Delivery Network (CDN). Dieses wird verwendet, um Assets für Websites weltweit zwischenzuspeichern. Man kann sich jedoch nicht darauf verlassen, dass ein Rechenzentrum ein Asset zwischengespeichert hat. Es kann neu, abgelaufen oder gelöscht worden sein. Wenn das der Fall ist und ein Nutzer dieses Asset anfordert, muss unser CDN eine neue Kopie vom Ursprungsserver der Website abrufen. Doch das Rechenzentrum, auf das der User zugreift, ist unter Umständen relativ weit vom Ursprungsserver entfernt. Das stellt für Kunden ein zusätzliches Problem dar: Jedes Mal, wenn ein Asset nicht im Rechenzentrum zwischengespeichert ist, müssen wir eine neue Kopie vom Ursprungsserver abrufen.</p>
+	<p>Zur Verbesserung der Cache-Trefferquoten haben wir <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a> eingeführt. Mit Tiered Cache ordnen wir unsere Rechenzentren im CDN in eine Hierarchie ein. Dabei wird unterschieden zwischen „Lower Tiers“, die näher an den Endnutzern liegen, und „Upper Tiers“, die näher am Ursprungsserver liegen. Wenn ein Cache-Fehler bei einem als „Lower Tier“ eingestuften Rechenzentrum auftritt, wird die „Upper Tier“-Kategorie überprüft. Findet sich dort eine neue Kopie des Assets, können wir diese als Antwort auf die Anfrage bereitstellen. Dadurch verbessert sich die Performance. Zugleich muss Cloudflare seltener zum Abruf von Assets, die nicht in den „Lower Tier“-Rechenzentren zwischengespeichert sind, auf einen Ursprungsserver zugreifen.</p>
+	<div class="flex anchor relative">
+		<h3 id="incident-timeline-and-impact">Zeitlicher Ablauf und Auswirkungen des Vorfalls</h3>
+		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yyZ1ow2W0dM1zPPSWlYDb/442072566ebc71758aa6e70c0193a9fd/2-2.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
+
+	</figure>
+	<p>Um 10:40 Uhr (MESZ) begann ein langsamer Rollout der Softwareversion einer CDN-Komponente, die einen Fehler enthielt. Der Fehler kam zum Tragen, wenn ein Nutzer eine Website besuchte, für die entweder Tiered Cache, Cloudflare Images oder Bandwidth Alliance konfiguriert war. Er führte zur Ausgabe des HTTP-Statuscodes 530 – und damit einer Fehlermeldung – bei einem Teil dieser Kunden. Inhalte, die direkt aus dem lokalen Cache eines Rechenzentrums bereitgestellt werden konnten, waren davon nicht betroffen.</p>
+	<p>Nachdem die fehlerhafte Komponente für eine Untergruppe von Rechenzentren freigegeben worden war und bei uns im Anschluss daran Kundenberichte über einen zeitweiligen Anstieg solcher Fehlermeldungen eingegangen waren, begannen wir, Nachforschungen anzustellen.</p>
+	<p>Als die Version weltweit an die verbleibenden Rechenzentren verteilt wurde, lösten ein sprunghafter Anstieg der 530-Meldungen sowie weitere Berichte von Kunden Warnmeldungen aus, weshalb ein Incident ausgerufen wurde.</p>
+	<p><i>Anfragen, die zu einer Fehlermeldung mit dem Statuscode 530 führen</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GRoqSuj9kxooMxIeQ7X6o/e751538115c6108f2335261d3f835807/3-2.png" alt="Requests resulting in a response with status code 530" class="kg-image" width="1600" height="705" loading="lazy">
+
+	</figure>
+	<p>Um uns zu vergewissern, dass eine fehlerhafte Version für die Vorfälle verantwortlich war, setzten wir die Version in einem Rechenzentrum um 19:03 Uhr zurück. Nach dem Rollback registrierten wir einen Rückgang der 530-Fehlermeldungen. Im Anschluss an diese Bestätigung begann ein beschleunigter globaler Rollback und die Zahl der 530-Fehlermeldungen nahm ab. Die Störungen endeten, sobald die Version um 20:04 Uhr in allen nach dem Tiered Cache-System als „Upper Tiers“ konfigurierten Rechenzentren zurückgesetzt worden war.</p>
+	<p>Zeitlicher Ablauf:</p>
+	<ul>
+		<li>
+			<p>25.10.2022, 10:40 Uhr (MESZ): Die Version wird zunächst an eine kleine Gruppe von Rechenzentren verteilt.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 12:35 Uhr: Ein individueller Kundenalarm wird ausgelöst, der eine Zunahme von 500-Fehlermeldungen anzeigt.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 13:20: Nach einer Untersuchung wird ein einzelnes kleines Rechenzentrum als Quelle des Problems ausgemacht und aus dem Verkehr gezogen, während die Teams dem dort auftretenden Problem auf den Grund gehen.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 14:30 Uhr: Das Problem breitet sich immer weiter aus, je mehr Rechenzentren die Codeänderungen erhalten.</p>
+		</li>
+		<li>
+			<p>2022-10-25 14:22 Uhr: 530-Fehlermeldungen nehmen zu, da die Version langsam in unseren größten Rechenzentren verteilt wird.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 16:39 Uhr: Mehrere Teams werden an der Untersuchung beteiligt, da immer mehr Kunden eine Fehlerzunahme melden.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 19:03 Uhr: Die CDN-Version wird in Atlanta zurückgesetzt und der Verdacht hinsichtlich der Fehlerquelle kann bestätigt werden.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 19:28 Uhr: Auf dem Höhepunkt des Vorfalls führen etwa 5 % aller HTTP-Anfragen zu einem Fehler mit dem Statuscode 530.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 19:38 Uhr: Ein beschleunigter Rollback wird fortgesetzt, wobei große Rechenzentren für viele Kunden als „Upper Tier“ fungieren.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 20:04 Uhr: Der Rollback ist in allen „Upper Tier“-Rechenzentren abgeschlossen.</p>
+		</li>
+		<li>
+			<p>25.10.2022, 20:30 Uhr: Der Rollback ist vollständig abgeschlossen.</p>
+		</li>
+	</ul>
+	<p>In der Anfangsphase der Untersuchung deutete alles darauf hin, dass es sich um ein Problem mit unserem internen DNS-System handelte, das zur gleichen Zeit ebenfalls eine neue Version einführte. Wie der folgende Abschnitt zeigt, handelte es sich dabei jedoch nur um eine Begleiterscheinung und nicht um die Ursache des Ausfalls.</p>
+	<div class="flex anchor relative">
+		<h3 id="adding-distributed-tracing-to-tiered-cache-introduced-the-problem">Auslöser des Problems: Erweiterung von Tiered Cache um dezentrale Nachverfolgung</h3>
+		<a href="https://blog.cloudflare.com/#adding-distributed-tracing-to-tiered-cache-introduced-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um unsere Performance zu verbessern fügen wir routinemäßig Kontrollcode zu verschiedenen Teilen unserer Dienste hinzu. Dieser gibt uns einen Einblick in die Performance der verschiedenen Komponenten und ermöglicht es uns, Engpässe zu ermitteln, sodass wir uns verbessern können. Unser Team hat vor kurzem unsere Tiered-Cache-Logik um eine zusätzliche dezentrale Nachverfolgung erweitert. Der Einsprungspunktcode von Tiered Cache sieht folgendermaßen aus:</p>
+	<p>* Vorher:</p>
+	<p>* Nachher:</p>
+	<pre class="language-lua"><code class="language-lua">function _M.go()
+   -- code to run here
+end
+</code></pre>
+	<p>Der Code umhüllt die vorhandene go()-Funktion mit trace_fn(), die die go()-Funktion aufruft und dann deren Ausführungszeit meldet.</p>
+	<pre class="language-lua"><code class="language-lua">local trace_fn = require("opentracing").trace_fn
+
+local function go()
+  -- code to run here
+end
+
+function _M.go()
+  trace_fn(ngx.ctx, "tiered_cache_rewrite", go)
+end</code></pre>
+	<p>Die Logik, die eine Funktion in das Opentracing-Modul injiziert, löscht jedoch bei jeder Anfrage die Control-Header:</p>
+	<p>Normalerweise extrahieren wir bei der Verarbeitung von Anfragen routinemäßig Daten aus diesen Control-Headern, bevor wir sie löschen.</p>
+	<pre class="language-lua"><code class="language-lua">require("opentracing").configure_module(conf,
+  -- control header extractor
+  function(ctx)
+    -- Always clear the headers.
+    clear_control_headers()
+    -- </code></pre>
+	<p>Der interne Tiered Cache-Traffic erwartet jedoch, dass die Control-Header der „Lower Tier“-Rechenzentren unverändert weitergegeben werden. Aufgrund der Löschung von Headern in Kombination mit der Nutzung von „Upper Tier“-Rechenzentren waren Informationen, die für die Weiterleitung der Anfrage entscheidend sein könnten, nicht verfügbar. Bei der betroffenen Anfragengruppe fehlte uns der Hostname, der von unserem internen DNS-Lookup für die IP-Adressen der Ursprungsserver aufgelöst wird. Infolgedessen wurde eine 530-DNS-Fehlermeldung an den Client übermittelt.</p>
+	<div class="flex anchor relative">
+		<h3 id="remediation-and-follow-up-steps">Abhilfe- und Folgemaßnahmen</h3>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um dies zu verhindern, haben wir neben der Behebung des Fehlers eine Reihe von Änderungen vorgenommen, die uns helfen, solche Probleme in Zukunft zu erkennen und zu vermeiden:</p>
+	<ul>
+		<li>
+			<p>Aufnahme eines größeren, im Tiered Cache-System als „Upper Tier“ konfiguriertes Rechenzentrum in den Release-Plan, und zwar in einer früheren Phase. Auf diese Weise können wir ähnliche Probleme vor einer weltweiten Verteilung schneller erkennen.</p>
+		</li>
+		<li>
+			<p>Ausweitung der Akzeptanztests auf eine breitere Palette von Konfigurationen, einschließlich verschiedener Tiered Cache-Topologien.</p>
+		</li>
+		<li>
+			<p>Offensivere Warnungen in Situationen, in denen wir nicht über den vollständigen Kontext der Anfragen verfügen und die zusätzlichen Host-Informationen in den Control-Headern benötigen.</p>
+		</li>
+		<li>
+			<p>Sicherstellung eines schnellen Fails unseres Systems bei einem vergleichbaren Fehler, was dazu beigetragen hätte, das Problem in der Entwicklungs- und Testphase zu erkennen.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Fazit</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Es gab einen Vorfall, von dem eine große Anzahl von Kunden betroffen war, die Tiered Cache verwenden. Nachdem wir die fehlerhafte Komponente identifiziert hatten, konnten wir schnell ein Rollback durchführen und das Problem beheben. Wir entschuldigen uns für die Störungen, die für unsere Kunden und Endnutzer beim Zugriff auf Services aufgetreten sind.</p>
+	<p>Maßnahmen, mit denen verhindert wird, dass sich ein solcher Vorfall in Zukunft wiederholt, werden so schnell wie möglich eingeleitet.</p>
+</div>

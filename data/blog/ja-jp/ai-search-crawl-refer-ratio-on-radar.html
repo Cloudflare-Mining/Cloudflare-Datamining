@@ -1,0 +1,123 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-search-crawl-refer-ratio-on-radar">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-search-crawl-refer-ratio-on-radar">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/ai-search-crawl-refer-ratio-on-radar">Français</a>、<a href="https://blog.cloudflare.com/de-de/ai-search-crawl-refer-ratio-on-radar">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-search-crawl-refer-ratio-on-radar">한국어</a>、<a href="https://blog.cloudflare.com/es-es/ai-search-crawl-refer-ratio-on-radar">Español</a>、<a href="https://blog.cloudflare.com/nl-nl/ai-search-crawl-refer-ratio-on-radar">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-search-crawl-refer-ratio-on-radar">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5yGt6mn3PufbFqkZkJRC6b/93bc2c87536521dc47bf2fbc59fd2604/The_crawl_before_the_fall.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>コンテンツパブリッシャーは、検索エンジンのクローラーやボットを歓迎していました。サイトへのトラフィックを高めるのに役立つからです。<a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer"><u>クローラー</u></a>はサイトで公開されている内容を確認し、その情報を検索しているユーザーに表示します。短いタイトル以上の情報にアクセスするにはページをクリックする必要があるため、サイト所有者はコンテンツを収益化することができました。</p>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>人工知能（AI）</u></a>ボットもサイトのコンテンツをクロールしますが、得た情報を提供するモデルはまったく異なります。これらの<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer"><u>大規模言語モデル（LLM）</u></a>は、ウェブ上の情報を読み取り、システムを訓練してユーザー向けにコンテンツを再パッケージ化します。これにより、ユーザーはオリジナルのコンテンツを訪問する必要はなくなります。</p>
+	<p>AIアプリはそれでもオリジナルのコンテンツから引用しようとするかもしれませんが、AIボットが特定のWebサイトを<a href="https://www.cloudflare.com/learning/bots/what-is-content-scraping" target="_blank" rel="noopener noreferrer"><u>スクレイピング</u></a>する頻度に比べると、実際にオリジナルのWebサイトをクリックするユーザーはほとんどいないことがわかりました。私たちはこの課題について、小さな範囲で議論してきましたが、この度<a href="https://radar.cloudflare.com/ai-insights#crawl-to-refer-ratio" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarの「AIのインサイト」ページに表示される新しい指標</u></a>として、当社の調査結果を公開いたしました。</p>
+	<p>Cloudflare Radarの訪問者は、特定のAIモデルがサイトをクロールする頻度と比較して、そのサイトにトラフィックを送信する頻度を確認できるようになりました。Cloudflareはこの分析情報を幅広いオーディエンスに向けて共有しております。これにより、サイト所有者は、どのAIボットを許可またはブロックするかを決定するのに役立つ情報を得ることができるようになり、またユーザーは、AIの使用が全体としてインターネットトラフィックにどのように影響を与えるかを理解できるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-does-this-measurement-work">測定の仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-does-this-measurement-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HTMLページはおそらくクローラーにとって最も価値のあるコンテンツであり、この指標で表示される比率は、特定の検索からのリクエスト数、または応答が<code>Content-type: text/html</code>であるAIユーザーエージェントからのリクエスト数を、<code>Referer</code>ヘッダーに検索プラットフォームまたはAIプラットフォームの1つに関連付けられたホスト名が含まれるHTMLコンテンツに対するリクエスト数で割って計算されます。</p>
+	<p>以下の図は、一般的な2つのクローリングのシナリオを表しており、企業がクローラーの目的に応じて異なるユーザーエージェントを使用することを示しています。上部にあるものは、サンプルAIプラットフォームがLLMのトレーニングを目的としてコンテンツをリクエストする単純なトランザクションを表し、これを<code>AIBot</code>としています。下の例は、あるAIプラットフォームがユーザーからのリクエストに応えるためにコンテンツを取得している状況を示しています（たとえば、フライト情報を探している場合など）。この場合、AIプラットフォームは<code>AIBot-User</code>という名前で自らを識別しています。これらの両方のユーザーエージェントからのリクエストトラフィックは、分析の目的のために、単一のプラットフォーム名に集約されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SOsmpe6TAWwqK6g9irLI2/cca037eadf97578f7851e24ba6b90af4/image9.png" alt="" class="kg-image" width="1673" height="1350" loading="lazy">
+	</figure>
+	<p>ユーザーがWebサイトやアプリケーションのリンクをクリックすると、クライアントはターゲットサイトへのリクエストの一部として<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referer" target="_blank" rel="noopener noreferrer"><u><code>Referer:</code></u><u>ヘッダー</u></a>を送信することが多くあります。以下の図では、サンプルAIプラットフォームが、ユーザーの操作に応じて外部サイトへのリンクを含むコンテンツを返しています。ユーザーがリンクをクリックすると、<code>Referer:</code>ヘッダーに<code>ai.example.com</code>を含むコンテンツプロバイダーにリクエストが行われ、そのリクエストのトラフィックがどこから来たかを知らせます。分析の目的により、ホスト名はそれぞれのプラットフォームに関連付けられています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WqrD6q6k4ng8sBLbgzp42/b139464c5653d3cab533bf6413930a62/image10.png" alt="" class="kg-image" width="1761" height="882" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="observations">確認された内容</h2>
+		<a href="https://blog.cloudflare.com/#observations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="reviewing-the-ratios">比率の検証</h3>
+		<a href="https://blog.cloudflare.com/#reviewing-the-ratios" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しい指標は、特定のプラットフォームに関連付けられたクローラー（ユーザーエージェント）からのHTMLページリクエストの集約数と、特定のプラットフォームに関連付けられたホスト名によって参照されるクライアントからのHTMLページリクエストの数を比較した単純な表として表示されます。計算された割合は常に、1つの参照リクエストに正規化されます。</p>
+	<p>下の表は、2025年6月19日から26日までの期間について、Anthropicの70,900:1からMistralの0.1:1までの比率の範囲を示しています。これは、AnthropicのAIプラットフォームのClaudeがHTMLページの参照ごとに71,000件近いHTMLページリクエストを送信していたのに対して、Mistralはクロールリクエストの10の参照トラフィックを送信したことを意味します。（ただし、Claudeのネイティブアプリによって参照されるトラフィックには、<code>Referer:</code>ヘッダーが含まれていません。他のネイティブアプリから生成されたトラフィックについても、同じことが言えると考えられます。そのため、参照トラフィックの数にはプロバイダーが提供するWebベースのツールからのトラフィックのみが含まれるため、これらの計算は、それぞれの比率を誇張している可能性がありますが、その程度は不明です）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JaUDnjXMlq5YMxuKZGh7b/31210c8cd80779974450adfb4909f1cd/image7.png" alt="" class="kg-image" width="1137" height="506" loading="lazy">
+	</figure>
+	<p>もちろん、クローリングパターンの変化もあるため、これらの比率は時間の経過とともに変化します。上の表は、DuckDuckGoとYandexの6%以上の増加やGoogleの19.4%の減少など、前期と比較した変化を示しています。Googleが前週比で減少したことは、6月24日から<code>GoogleBot</code>からのクローリングトラフィックの減少したことに関連していますが、Yandexの前週比の増加は、下のグラフに見られるように、6月21日に開始された<code>YandexBot</code>のクローリング活動の増加に関連しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2UThXDeJepqM6jQCzXMvvw/f2d75d2202c33711f9eaa0a38c01a9f3/image3.png" alt="" class="kg-image" width="1600" height="774" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FDYlEWYztxZCJZMg5RPvf/b4a3dac2dc4a06b709e2ef8d74ea1bc0/image10.png" alt="" class="kg-image" width="1600" height="774" loading="lazy">
+	</figure>
+	<p>RadarのData Explorerには、以下のBaiduの例のように、これらの比率が<a href="https://crawl-refer.radar-frontend.pages.dev/explorer?dataSet=bots.crawlers&amp;groupBy=crawl_refer_ratio&amp;dt=2025-05-01_2025-05-28" target="_blank" rel="noopener noreferrer"><u>時間の経過とともに変化する様子</u></a>を示す時系列ビューが含まれています。この時系列データは、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots/subresources/web_crawlers/methods/timeseries_groups" target="_blank" rel="noopener noreferrer"><u>APIエンドポイント</u></a>からも利用できます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZhjXmCQ7t8OLUv8XFFa8I/4f032669956cb7b7cc75aab409cba4f2/image11.png" alt="" class="kg-image" width="1600" height="1106" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="patterns-in-referral-traffic">参照トラフィックのパターン</h3>
+		<a href="https://blog.cloudflare.com/#patterns-in-referral-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>基盤となるアクティビティの変化や傾向は、<a href="https://radar.cloudflare.com/explorer?dataSet=bots.crawlers&amp;groupBy=referer&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>関連付けられたData Explorerビュー</u></a>、APIエンドポイント経由で入手できる生データ（<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots/subresources/web_crawlers/methods/timeseries_groups" target="_blank" rel="noopener noreferrer"><u>時系列</u></a>、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots/subresources/web_crawlers/methods/summary" target="_blank" rel="noopener noreferrer"><u>サマリー</u></a>）で見ることができます。なお、参照トラフィックとクロールトラフィックの両方の割合は、グラフに含まれるリファラーとクローラーのデータセットに対するものであり、Cloudflareのトラフィック全体ではありません。</p>
+	<p>例えば、2025年6月の最初の約4週間を対象とした以下のリファラー中心のビューでは、参照トラフィックは検索プラットフォームGoogleによるものが圧倒的であり、データには1日のうちに変化するかなり一貫したパターンが見られます。（<code>google.*</code>エントリーは、<a href="http://google.com" target="_blank" rel="noopener noreferrer"><u>google.com</u></a>からの参照トラフィックに加えて、<a href="http://google.es" target="_blank" rel="noopener noreferrer"><u>google.es</u></a>または<a href="http://google.com.tw" target="_blank" rel="noopener noreferrer"><u>google.com.tw</u></a>などの各国のGoogleサイトからのトラフィックも含んでいます）。<a href="https://developer.chrome.com/blog/search-speculation-rules" target="_blank" rel="noopener noreferrer"><u>推測ルール</u></a>の使用によるプリフェッチングにより、Googleの自律システム番号（AS15169）からの参照トラフィックは、アクティブなユーザーによるコンテンツ消費を表さないため、ここでは分析から除外しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pNnqBHkfJEEGioN1dhpi5/65251de2ad63e0cef0ee2340e79f2f4b/image14.png" alt="" class="kg-image" width="1051" height="627" loading="lazy">
+	</figure>
+	<p>他の検索プラットフォームの参照リクエストにも、1日のうちに変化するかなり一貫したパターンが見られます。ただしリクエスト数における割合は、Googleが占める割合と比べるとほんのわずかです。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5flVZwDhtYlseH5uYDk76U/a03e9957a10983e87e4fcd8f6a9e59bf/image4.png" alt="" class="kg-image" width="814" height="648" loading="lazy">
+	</figure>
+	<p>6月を通して、AIプラットフォームによる参照トラフィックの割合は大幅に低く、合計で見ても、検索プラットフォームによる参照トラフィックの割合よりも大幅に低くなっていました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/705m9ac6GXGgT4qshubY70/3c6c0ca43be66114be53fa607bcb857d/image8.png" alt="" class="kg-image" width="814" height="648" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="changes-in-crawling-traffic">クローリングトラフィックの変化</h3>
+		<a href="https://blog.cloudflare.com/#changes-in-crawling-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前述のように、経時的なこの比率の値の変化の大部分は、クローリングアクティビティのの変動によって影響を受けることがあります。これらの変化は、<a href="https://radar.cloudflare.com/explorer?dataSet=bots.crawlers&amp;groupBy=user_agent&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a>で確認できるクローリングトラフィックの割合、およびAPIエンドポイント経由で得られる生データ（<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots/subresources/web_crawlers/methods/timeseries_groups" target="_blank" rel="noopener noreferrer"><u>時系列</u></a>、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots/subresources/web_crawlers/methods/summary" target="_blank" rel="noopener noreferrer"><u>サマリー</u></a>）にも表れています。以下のクローラー中心のビューでは、2025年6月の最初の約4週間を見てみると、<code>Googlebot</code>と<code>GoogleOther</code>の両方のGoogleのクローリングアクティビティに関するリクエストの割合が、いくつかの増減の波（ピークと谷）を経ながら月を通して徐々に減少していることがわかります。同じ期間中における、<a href="https://radar.cloudflare.com/explorer?dataSet=http&amp;loc=as15169&amp;dt=2025-05-31_2025-06-27" target="_blank" rel="noopener noreferrer"><u>GoogleのAS15169からのHTTPリクエストのトラフィックにも、これと似たようなパターンが見られました</u></a>。このことは、先ほどの割合の減少とおおよそ一致しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1K92yRMz57QrRH7iPvNH4V/0f7d7816fb3b22232dbee8359127b367/image11.png" alt="" class="kg-image" width="814" height="648" loading="lazy">
+	</figure>
+	<p>さらに、OpenAIの<code>GPTBot</code>では月間を通してクローリングアクティビティがほぼ、またはまったく確認されない期間が複数回ありました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sXdBr25Y4toS2t3nvPKMm/e1313d3356130bc333a2e03574e56661/image13.png" alt="" class="kg-image" width="814" height="648" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="what-this-means-for-content-providers">コンテンツプロバイダーにとってこのデータが示す意味</h2>
+		<a href="https://blog.cloudflare.com/#what-this-means-for-content-providers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの比率は、インターネット上のコンテンツ公開の実行可能性に直接影響します。これらの比率は時間の経過とともに変化しますが、相互に比較すると、クロールが多く、参照が少ないという傾向は継続的なものです。従来の検索インデックスクローラーは、訪問者によって送信されたリクエストごとに、数回、またはそれ以下の回数でコンテンツをスキャンしていました。以前はサイトがクローラーに公開されたことで、同社の収益モデルの実現可能性は、低下するのではなく向上していました。</p>
+	<p>当社で確認している新しいデータは、もはやそうではないことを示唆しています。これらのモデルでは、コンテンツのソースに同程度またはより少ない送信するトラフィックを送信するにもかかわらず、より頻繁に、より多くのコンテンツを消費し続けます。</p>
+	<p>Cloudflareはこの1年の間、サイト所有者がコントロールを取り戻せるよう、<a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers"><u>新しいツールをいくつかリリース</u></a>してきました。パブリッシャーは、ワンクリックで、自社のコンテンツを学習に利用するAIクローラーをブロックすることができます。そして本日、私たちは両サイドの価値交換を公平にするための<a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>新しい方法を発表しました</u></a>。それでもなお、私たちはコンテンツクリエイターがAIクローラーを監査し、その後、希望するポリシーをAIクローラーに適用することを引き続き推奨します。</p>
+	<div class="flex anchor relative">
+		<h2 id="one-more-thing">さらにもう一点...</h2>
+		<a href="https://blog.cloudflare.com/#one-more-thing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>クローリングや参照トラフィック、それに関連する傾向について新たなインサイトを提供するだけでなく、Verified Bots（検証済みボット）に関するコンテンツも拡充しました。<a href="https://radar.cloudflare.com/bots" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarの「ボット」ページ</u></a>の一部で、<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>検証済みボット</u></a>の一覧を確認することができます。この一覧では、ボット名、運営元、カテゴリ、リクエスト数に基づくランクを確認することができます。また、ボットの一覧を<a href="https://radar.cloudflare.com/bots/directory" target="_blank" rel="noopener noreferrer"><u>「ボット」セクション内の専用ディレクトリ</u></a>として独立しました。この新しいディレクトリでは、検証済みボットがカード形式で表示され、ボット名、説明、運営元、カテゴリ、検証ステータスなどを確認することができます。ボット名、運営元、説明文で検索できるほか、カテゴリごとの絞り込み（たとえば「<i>モニタと分析</i>」ボットのみ表示）も可能です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nTytFwnB1NVuwnAeAduX8/40efad4c333d8046d28a7ee44a8d91ca/image2.png" alt="" class="kg-image" width="1470" height="687" loading="lazy">
+	</figure>
+	<p>カード内のボット名をクリックすると、そのボット専用の詳細ページが開き、「ボットのメタデータ」、「そのボットのユーザーエージェントの<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent" target="_blank" rel="noopener noreferrer"><u>HTTPリクエストヘッダー</u></a>内での表記」、「<a href="https://datatracker.ietf.org/doc/html/rfc9309#name-the-user-agent-line" target="_blank" rel="noopener noreferrer"><u>robots.txtディレクティブでの指定内容</u></a>」、「指定した期間におけるHTTPリクエストのトラフィック推移グラフ（デフォルトは前の期間との比較）」を確認することができます。関連データは、<a href="https://developers.cloudflare.com/api/resources/radar/subresources/bots" target="_blank" rel="noopener noreferrer"><u>API</u></a>からも利用可能です。今後このボット専用ページに情報が追加された際は、<a href="https://developers.cloudflare.com/changelog/?product=radar" target="_blank" rel="noopener noreferrer"><u>Changelogエントリ</u></a>でお知らせします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SY1pwRzVnvC1sFNANrPxx/003260c3fdd3792cdff55d3a95628592/image12.png" alt="" class="kg-image" width="1471" height="763" loading="lazy">
+	</figure>
+	<p></p>
+</div>

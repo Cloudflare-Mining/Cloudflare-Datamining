@@ -1,0 +1,399 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/thirteen-new-mcp-servers-from-cloudflare">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PApvLyvZ23hcLXCAAte0k/8b31682bfe25ef4d6e8551e5c11555bf/BLOG-2808_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareが最初に一般公開した<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>リモートモデルコンテキストプロトコル（MCP）</u></a>サーバーに、（<a href="http://anthropic.com/news/integrations" target="_blank" rel="noopener noreferrer"><u>リモートMCP接続をサポートする</u></a>）Claude.aiや、Cursor、Windsurf、または当社の<a href="https://modelcontextprotocol.io/clients" target="_blank" rel="noopener noreferrer"><u>AI Playground</u></a>など他の<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>MCPクライアント</u></a>から接続できるようになりました。以下の新しいMCPサーバースイートを通じて、Cloudflareのツール、リソース、リアルタイム情報をご活用いただけます。&nbsp;</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-2tr3 {
+			background-color: #F60;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-8fnt {
+			color: #15C;
+			font-weight: bold;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-2tr3"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">サーバー</span></th>
+					<th class="tg-2tr3"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">説明 </span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflareドキュメントサーバー</span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareの開発者向けドキュメントから最新の参照情報を入手する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Workersバインディングサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ストレージ、AI、コンピューティングのプリミティブを使用してWorkersアプリケーションを構築する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Workers Observabilityサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">デバッグして、Workersアプリケーションのログと分析に関する洞察を得る</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/sandbox-container"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">コンテナサーバー</span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サンドボックス開発環境をスピンアップする </span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/browser-rendering"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">ブラウザレンダリングサーバー</span></a><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Webページを取得し、マークダウンに変換して、スクリーンショットを作成する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Radarサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">全世界のインターネットトラフィックに関する洞察、トレンド、URLスキャン、その他のユーティリティを入手する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/logpush"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Logpushサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Logpushジョブの正常性に関する簡単な概要を入手する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/ai-gateway"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">AI Gatewayサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ログを検索し、プロンプトとレスポンスの詳細を入手する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/autorag"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">AutoRAGサーバー</span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AutoRAG上のドキュメントを一覧表示し、検索する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/auditlogs"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">監査ログサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">監査ログを照会して、レビュー用レポートを生成する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">DNS Analyticsサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">現在の設定に基づいてDNSのパフォーマンスを最適化し、問題をデバッグする</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Digital Experience Monitoringサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">組織の重要なアプリケーションに関する洞察をすばやく入手する</span></td>
+				</tr>
+				<tr>
+					<td class="tg-8fnt"><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/cloudflare-one-casb"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare One CASBサーバー </span></a></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SaaSアプリケーションのセキュリティの設定ミスを迅速に特定し、アプリケーション、ユーザー、データを保護する</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>...全てを自然言語インターフェースでご利用いただけます。&nbsp;</p>
+	<p>本日、<a href="https://claude.ai" target="_blank" rel="noopener noreferrer"><u>Claude</u></a>ユーザーにリモートMCPを提供するための<a href="https://blog.cloudflare.com/mcp-demo-day"><u>Anthropicとの提携も発表し</u></a>、<a href="https://www.atlassian.com/platform/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>Atlassian</u></a>、<a href="https://developer.paypal.com/tools/mcp-server" target="_blank" rel="noopener noreferrer"><u>PayPal</u></a>、<a href="https://docs.sentry.io/product/sentry-mcp" target="_blank" rel="noopener noreferrer"><u>Sentry</u></a>、<a href="https://mcp.webflow.com" target="_blank" rel="noopener noreferrer"><u>Webflow</u></a>などの他のリーディングカンパニーが、どのようにCloudflare上にリモートMCPサーバーを構築してユーザーへのサービスを拡張しているかをご紹介しました。また、同じインフラストラクチャとツールを使用して独自のリモートサーバースイートを構築してきました。本日、準備ができたものをお客様にお見せし、これまでに学んだことを共有できることをうれしく思います。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-mcp-servers-available-today">現在、利用可能なCloudflareのMCPサーバーは以下のとおりです。&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-mcp-servers-available-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらのMCPサーバーにより、<a href="https://modelcontextprotocol.io/clients" target="_blank" rel="noopener noreferrer"><u>MCPクライアント</u></a>は、アカウントから設定を読み取り、情報を処理し、データに基づいて提案し、さらにその提案を変更することができます。これらのアクションは全て、アプリケーション開発、セキュリティ、パフォーマンスなど、Cloudflareの多くのサービス全体で発生します。</p>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-documentation-server-get-up-to-date-reference-information-on-cloudflare"><b>Cloudflareドキュメントサーバー：</b>Cloudflareに関する最新の参照情報を入手する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-documentation-server-get-up-to-date-reference-information-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize" target="_blank" rel="noopener noreferrer"><u>Cloudflareドキュメントサーバー</u></a>により、モデルのトレーニングデータから得られた古い情報に頼るのではなく、あらゆるMCPクライアントが最新の<a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>にリアルタイムでアクセスできるようになります。Cloudflareで構築するのが初めての場合、このサーバーは当社のドキュメントから直接情報を統合し、MCPクライアントに公開します。これにより、「AIエージェントを構築する最適な方法をCloudflareで検索してください」といった複雑な質問に対して、信頼できる最新のレスポンスを得ることができます。&nbsp;&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vanQPwy6YSwI7bsDTk2md/09cb4763ddbd4858fcd90aca00106bb9/BLOG-2808_2.png" alt="BLOG-2808 2" class="kg-image" width="762" height="806" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="workers-bindings-server-build-with-developer-resources"><b>Workersバインディングサーバー：</b>開発者向けリソースで構築する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#workers-bindings-server-build-with-developer-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings" target="_blank" rel="noopener noreferrer"><u>バインディングMCPサーバー</u></a>に接続すると、Workersアプリケーションを構築する際に、D1データベース、R2オブジェクトストレージ、Key Valueストアなどのアプリケーション開発のプリミティブをオンザフライで活用できます。MCPクライアントを活用してコードを生成する場合、バインディングサーバーは、アカウントから既存のリソースを読み取ったり、アプリケーションに実装するために新しいリソースを作成したりするためのアクセスを提供します。堅牢なWorkersアプリケーションの構築をサポートするようにデザインされた<a href="https://developers.cloudflare.com/workers/get-started/prompting" target="_blank" rel="noopener noreferrer"><u>ベースプロンプト</u></a>と組み合わせて、バインディングMCPサーバーを追加することで、自然言語からフルスタックアプリケーションの生成を開始するために必要なすべての機能をクライアントに提供することができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6N0Y8BCBz5ULSHbj0JCIkL/3a6a9ef269202a6c05d18444f313ce87/BLOG-2808_3.png" alt="BLOG-2808 3" class="kg-image" width="1358" height="1116" loading="lazy">
+	</figure>
+	<p>
+		WorkersバインディングMCPサーバーを使用した完全な出力例は、<a href="https://claude.ai/share/273dadf7-b060-422d-b2b6-4f436d537136" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>でご覧いただけます。</p>
+	<div class="flex anchor relative">
+		<h4 id="workers-observability-server-debug-your-application"><b>Workers Observabilityサーバー：</b>アプリケーションをデバッグする&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#workers-observability-server-debug-your-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability" target="_blank" rel="noopener noreferrer"><u>Workers Observability MCPサーバー</u></a>は<a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workersのログ</u></a>と統合し、呼び出しログやエラーを閲覧し、呼び出し全体の統計を計算し、特定の基準に一致する特定の呼び出しを検索します。このMCPサーバーは、すべてのWorkersのログを照会することで、エラーや傾向を迅速に特定するのに役立ちます。MCPサーバーが返すテレメトリデータも、新しい視覚資料の作成と観測可能性の向上に使用することができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rydyUALBbwtPrT477xAKM/81547e1fb3cec5ffadd90ee5e68e1a5e/BLOG-2808_4.png" alt="BLOG-2808 4" class="kg-image" width="1505" height="895" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="container-server-spin-up-a-development-environment"><b>コンテナサーバー：</b>開発環境をスピンアップする</h4>
+		<a href="https://blog.cloudflare.com/#container-server-spin-up-a-development-environment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/sandbox-container" target="_blank" rel="noopener noreferrer"><u>コンテナMCPサーバー</u></a>は、Cloudflareのネットワーク上で実行される安全で隔離された実行環境へのアクセスをMCPクライアントに提供します。MCPクライアントに組み込みの開発環境（例：claude.ai）がない場合は、ここでコードを実行してテストすることができます。アプリケーションコードを構築・生成する際、これによりAIは独自のコマンドを実行し、リアルタイムでその仮定を検証することができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rXgpQ3znIE01ccY1Qd2cQ/058902719a90af14175b8e838b09b78e/BLOG-2808_5.png" alt="BLOG-2808 5" class="kg-image" width="657" height="804" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="browser-rendering-server-fetch-and-convert-web-pages-take-screenshots"><b>ブラウザレンダリングサーバー：</b>Webページを取得して変換し、スクリーンショットを作成する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#browser-rendering-server-fetch-and-convert-web-pages-take-screenshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ブラウザレンダリング</u></a>MCPサーバーは、スクリーンショットのキャプチャ、HTMLコンテンツの展開、ページのマークダウンへの変換など、一般的なブラウザアクションのために、<a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>RESTfulインターフェース</u></a>からAIフレンドリーなツールを提供します。これらは、Webブラウザとの対話を必要とするエージェントを構築する場合に特に有用です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aQtQxzj1hP6cbtbY4CHXI/27535e9f9a041187c12f6b41ba36afdb/BLOG-2808_6.png" alt="BLOG-2808 6" class="kg-image" width="1999" height="1515" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="radar-server-ask-questions-about-how-we-see-the-internet-and-scan-urls"><b>Radarサーバー：</b>当社のインターネットの見方について質問し、URLをスキャンします。</h4>
+		<a href="https://blog.cloudflare.com/#radar-server-ask-questions-about-how-we-see-the-internet-and-scan-urls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar MCPサーバー</u></a>は、あらゆるMCPクライアントが、当社の<a href="https://radar.cloudflare.com/traffic#http-traffic" target="_blank" rel="noopener noreferrer"><u>HTTPトラフィックデータ</u></a>の調査、<a href="https://radar.cloudflare.com/traffic/as701" target="_blank" rel="noopener noreferrer"><u>自律システム</u></a>（AS）および<a href="https://radar.cloudflare.com/ip/72.74.50.251" target="_blank" rel="noopener noreferrer"><u>IPアドレス</u></a>に関する情報の取得、<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer"><u>障害センター</u></a>からのトラフィック異常の一覧表示、<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>トレンドドメイン</u></a>の取得、およびドメインランキングの情報の取得を可能にするツールを公開しています。図を作成することもできます。ここでは、「先週の<a href="https://claude.ai/public/artifacts/34c8a494-abdc-4755-9ca7-cd8e0a8bea41" target="_blank" rel="noopener noreferrer"><u>ポルトガルからのHTTPトラフィック</u></a>を見せてください」と依頼するチャットをご紹介します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9yg9Fnkoz6t6QOwUK1a5r/b11756fd82058f04037740678160cc7c/BLOG-2808_7.png" alt="BLOG-2808 7" class="kg-image" width="1999" height="1515" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="logpush-server-get-quick-summaries-for-logpush-job-health"><b>Logpushサーバー：</b>Logpushジョブの正常性の簡単な概要を入手する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#logpush-server-get-quick-summaries-for-logpush-job-health" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>ジョブは、選択した宛先に包括的なログを配信し、ほぼリアルタイムの情報処理を可能にします。Logpush MCPサーバーは、Logpushジョブの結果を分析し、高いレベルでジョブの正常性を理解するのに役立ち、関心のあるジョブやシナリオをフィルタリングして絞り込むことができます。たとえば、「最近失敗したジョブのリストを提供してください」と依頼することができます。これで、どのジョブがいつ、どのエラーメッセージで失敗しているのかを、人間が読める形式にまとめた情報を使ってすぐに知ることができるようになります。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ltuXD2TgEhiblx6aNhm4d/d63b14f151fd3a239b0a3cf0dfb92ebf/BLOG-2808_8.png" alt="BLOG-2808 8" class="kg-image" width="960" height="946" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="ai-gateway-server-check-out-your-ai-gateway-logs"><b>AI Gatewayサーバー：</b>AI Gatewayログを確認する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#ai-gateway-server-check-out-your-ai-gateway-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/ai-gateway" target="_blank" rel="noopener noreferrer"><u>MCPサーバー</u></a>を使ってAI Gatewayのログを調べ、プロンプトやAIモデルのレスポンスからデータの詳細を取得します。この例では、エージェントに「<i>Cloudflare Radar</i>アカウントのAI Gatewayログの平均遅延はどれくらいですか？」と質問しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dYzkZ0cYcXPjFKlhdqkMp/52f2b7e62fe2bb05c91fc563738ddfc2/BLOG-2808_9.png" alt="BLOG-2808 9" class="kg-image" width="549" height="655" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="autorag-server-list-and-search-documents-on-your-autorags"><b>AutoRAGサーバー：</b>AutoRAG上のドキュメントを一覧表示し、検索する</h4>
+		<a href="https://blog.cloudflare.com/#autorag-server-list-and-search-documents-on-your-autorags" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AutoRAG RAGをMCPツールとしてクエリーに使用できるようにすることで、一般的な静的情報に対するワンショット検索を大幅に拡張し、エージェントが1つ異常のRAGから情報を取得するかどうか、またいつ取得するかを動的に決定し、それらを他のツールやAPIと組み合わせ、情報をクロスチェックして、より豊かで完全な最終回答を生成するユースケースへの扉を開くことができます。</p>
+	<p>ここでは、レトロコンピューターについて書かれたブログ記事をいくつか持つRAGを紹介します。「ブログcelso autoragを使用してamiga 1000を復元することについて教えてください」と依頼すると、エージェントは以下の一連の<a href="https://claude.ai/share/18f1be31-9936-48c0-9de0-151d64f3534e" target="_blank" rel="noopener noreferrer"><u>推論ステップ</u></a>に進みます。</p>
+	<ul>
+		<li>
+			<p>「ブログcelsoからのAmiga 1000の復元に関する情報を入手したので、より具体的な詳細を検索します」</p>
+		</li>
+		<li>
+			<p>「Amiga 1000のハードウェアのアップグレードと修正に関するより具体的な情報を取得します」</p>
+		</li>
+		<li>
+			<p>「DiagROMや復元に使用されたその他のツールに関する詳細情報を取得します」</p>
+		</li>
+		<li>
+			<p>「ブログで言及されたGBA1000やその他の拡張機能についての情報を検索します」</p>
+		</li>
+		<li>
+			<p>そして、「ブログCelso AutoRAGから収集した包括的な情報に基づいて、Amiga 1000の復元に関する詳細なガイドを提供できるようになりました」と返します。</p>
+		</li>
+	</ul>
+	<p>そして最終的に、全クエリーの全データに基づいて、非常に詳細な答えを生成します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Z8BJSvd4x233FPZDePeSk/e59b8676a92f828d32feb1d28381a216/BLOG-2808_10.png" alt="BLOG-2808 10" class="kg-image" width="1999" height="1515" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="audit-logs-server-query-audit-logs-and-generate-reports-for-review"><b>監査ログサーバー：</b>監査ログを照会して、レビュー用のレポートを生成する</h4>
+		<a href="https://blog.cloudflare.com/#audit-logs-server-query-audit-logs-and-generate-reports-for-review" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>監査ログは、システム内のアクションやイベントに関する詳細な情報を記録し、全アクティビティの透過的な履歴を提供します。ただし、これらのログはサイズが大きく複雑であるため、クエリーを実行して明確なイベントシーケンスを再構築するためには労力が必要です。<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/auditlogs" target="_blank" rel="noopener noreferrer"><u>監査ログMCPサーバー</u></a>は、監査ログを照会し、レポートを生成することができます。一般的なクエリーには、1日の特定の時間帯にユーザーの管理下にあるCloudflareアカウントで顕著なことが起きたかどうか、またはユーザーの誰かがAPIキーを使用してアカウント上でアクションを実行したかどうかの特定が含まれます。たとえば、「昨日の午後に、Cloudflareのアカウントに不審な変更が行われましたか？」と質問することができます。次のレスポンスが得られます：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YdV73LhsCmjdQtOK8U7Ii/89f11db15e079190a234665ac4794754/BLOG-2808_11.png" alt="BLOG-2808 11" class="kg-image" width="1282" height="960" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="dns-analytics-server-optimize-dns-performance-and-debug-issues-based-on-current-set-up"><b>DNS Analyticsサーバー：</b>現在の設定に基づいてDNSのパフォーマンスを最適化し、問題をデバッグする</h4>
+		<a href="https://blog.cloudflare.com/#dns-analytics-server-optimize-dns-performance-and-debug-issues-based-on-current-set-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/application-services/products/analytics" target="_blank" rel="noopener noreferrer"><u>CloudflareのDNS Analytics</u></a>は、DNSトラフィックに関する詳細な洞察を提供します。これにより、ドメイン全体のDNSのパフォーマンスとセキュリティを監視、分析、トラブルシューティングできます。Cloudflareの<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics" target="_blank" rel="noopener noreferrer"><u>DNS Analytics MCPサーバー</u></a>では、アカウント内の全てのドメインに関するDNS設定を確認し、包括的なDNSパフォーマンスレポートにアクセスし、パフォーマンス改善のための推奨事項を入手することができます。MCPサーバーはドキュメントを活用することで、パフォーマンス向上の機会を特定することができます。&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X7w64xQvvFbv24HaFeLDv/3fefb7ff9e912207c5897200beefd26f/image4.png" alt="" class="kg-image" width="1498" height="1514" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="digital-experience-monitoring-server-get-quick-insight-on-critical-applications-for-your-organization"><b>Digital Experience Monitoringサーバー</b>：組織の重要なアプリケーションに関する洞察をすばやく入手する&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#digital-experience-monitoring-server-get-quick-insight-on-critical-applications-for-your-organization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Digital Experience Monitoring（DEM）は、ネットワーク担当者が、JiraやBitbucketのようなセルフホスト型アプリケーションからFigmaやSalesforceのようなSaaSアプリケーションまで、重要なアプリケーションのパフォーマンスと可用性を理解できるように構築されています。<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis" target="_blank" rel="noopener noreferrer"><u>Digital Experience Monitoring MCPサーバー</u></a>は、DEMテストの結果を取得し、Cloudflare Oneデプロイメントにおけるパフォーマンスと可用性のトレンドを表面化し、ユーザー、アプリケーション、および接続されているネットワークに関する洞察をすばやく提供します。次のような質問をすることができます。「最も悪い体験をしたのはどのユーザーですか？」「アプリケーションのパフォーマンスが最も高まった時間帯と最も弱まった時間帯はいつですか？」「HTTPステータスエラーが最も多く発生するのはいつですか？」「ネットワークパスで最も短い遅延、最も長い遅延、または最も不安定な状態が発生するのはいつですか？」&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ctxdt7tw04Rfzl9Ihxnkw/fc9c9ab553daa58f59e024dd66dd3dea/BLOG-2808_12.png" alt="BLOG-2808 12" class="kg-image" width="1266" height="1282" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="casb-server-insights-from-saas-integrations"><b>CASBサーバー</b>：SaaS統合からの洞察</h4>
+		<a href="https://blog.cloudflare.com/#casb-server-insights-from-saas-integrations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a>は、組織の<a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations" target="_blank" rel="noopener noreferrer"><u>SaaSおよびクラウドアプリケーション</u></a>と統合してアセットを検出し、存在する可能性のあるセキュリティの設定ミスを明らかにする機能を提供します。中核となるタスクは、1つのSaaSアプリケーションを超えて、ユーザー、ファイル、その他の大事なアセットに関する情報をセキュリティチームが理解できるようにすることです。<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/cloudflare-one-casb" target="_blank" rel="noopener noreferrer"><u>CASB MCPサーバー</u></a>は、ユーザー、ファイル、その他多くのアセットカテゴリを調査し、多くの異なる統合に存在する可能性のあるデータから関係を理解するのを助けます。よくあるクエリーは、「「Frank Meszaros」と、彼らがアクセスしたと思われるSaaSツールについて教えてください」などです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aJOta5YYZ1FqZyHF0wVnx/2c79512fb674eb2762395e5ccaac9700/BLOG-2808_13.png" alt="BLOG-2808 13" class="kg-image" width="1008" height="1148" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="get-started-with-our-mcp-servers">MCPサーバーの使用を開始する&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#get-started-with-our-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare MCPサーバーの利用を今すぐ始めましょう。各サーバーで利用できる特定のツールの詳細については、<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main" target="_blank" rel="noopener noreferrer"><u>GitHub公開リポジトリ</u></a>でご覧いただけます。各サーバーは、次のようなサーバーのURLにデプロイされます。</p>
+	<p><code>https://observability.mcp.cloudflare.com/sse.</code></p>
+	<p>MCPクライアントがリモートMCPサーバーの一流のサポートを有している場合、クライアントはそのインターフェース内で直接サーバーのURLを受け入れる方法を提供します。たとえば、<a href="https://claude.ai/settings/profile" target="_blank" rel="noopener noreferrer"><u>Claude.ai</u></a>を使用している方は次のことができます。&nbsp;</p>
+	<ol>
+		<li>
+			<p><a href="https://claude.ai/settings/profile" target="_blank" rel="noopener noreferrer"><u>設定</u></a>に移動し、MCPサーバーのURLを入力して新しい「統合」を追加する</p>
+		</li>
+		<li>
+			<p>Cloudflareで認証する</p>
+		</li>
+		<li>
+			<p>claude.aiに呼び出して使えるツールを選択する</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zWyWq2gS08CZsCQNB2fFZ/4e2c88abc90e11055159127e2abaf7b2/BLOG-2808_14.png" alt="BLOG-2808 14" class="kg-image" width="1999" height="567" loading="lazy">
+	</figure>
+	<p>クライアントがまだリモートMCPサーバーをサポートしていない場合は、<a href="https://www.npmjs.com/package/mcp-remote" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a>を使ってそれぞれの構成ファイル（mcp_config.json）を設定し、クライアントがアクセスできるサーバーを指定する必要があります。</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+	"mcpServers": {
+		"cloudflare-observability": {
+			"command": "npx",
+			"args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"]
+		},
+		"cloudflare-bindings": {
+			"command": "npx",
+			"args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"]
+		}
+	}
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="have-feedback-on-our-servers">当社のサーバーに関するご意見をお聞かせください</h3>
+		<a href="https://blog.cloudflare.com/#have-feedback-on-our-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社は最初にこれらのMCPサーバー13製品をローンチしていますが、まだまだこれからです。AIを活用する日常業務において貴社チームに最も価値をもたらす既存のCloudflare MCPサーバーを洗練させ、さらに拡張するに当たり、ご意見をお聞かせください。フィードバックの提供、新しいMCPサーバーのリクエスト、バグの報告を希望される方は、<a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main" target="_blank" rel="noopener noreferrer"><u>GitHubリポジトリ</u></a>で問題をご報告ください。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="building-your-own-mcp-server">独自のMCPサーバーを構築ますか？</h3>
+		<a href="https://blog.cloudflare.com/#building-your-own-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>独自サーバーの構築にご興味のある方のために、当社が構築した際の貴重なベストプラクティスをお客様と共有できることを嬉しく思います。MCPはまさに勢いを増し始めており、多くの組織が独自サーバーを構築し始めていますが、これらの原則は、お客様が顧客のためにMCPサーバーを構築し始める際の指針となるでしょう。&nbsp;</p>
+	<ol>
+		<li>
+			<p><b>MCPサーバーはAPIスキーマ全体ではない：</b>当社の目標は、CloudflareのAPIスキーマ全ての大きなラッパーを構築することではなく、実行する特定のジョブの最適化と結果の信頼性に焦点を当てることです。これは、MCPサーバーの1つのツールを1つのAPIにマッピングするのに対し、別のツールを多数のAPIにマッピングすることを意味します。少ないながらも強力なツールのほうが、エージェントにとってコンテキストウィンドウが小さく、コストが抑えられ、出力が速く、LLMからの有効な回答が多くなるなど、より良いものであることがわかりました。当社のMCPサーバーは、Cloudflareのこれらの各分野（アプリケーション開発、セキュリティ、パフォーマンス）を担当する製品チームが直接作成し、ユーザーストーリーを念頭に置いて設計したものです。これは、今後もCloudflareのサーバーを拡張する際に使用するパターンとなるでしょう。&nbsp;</p>
+		</li>
+		<li>
+			<p><b>複数のサーバーの権限を特化：</b>正確な権限範囲の設定によるセキュリティの確保という重大な理由から、1台ではなく複数の専用サーバーを構築しました。各MCPサーバーは、特定のタスクに必要な権限だけで動作します。それ以上のものはありません。それぞれ独自の認証範囲を有する複数のサーバーを通して機能を分離することで、過剰な特権アクセスという一般的なセキュリティの落とし穴を防止します。&nbsp;</p>
+		</li>
+		<li>
+			<p><b>パラメーター内に堅牢なサーバー説明を追加：</b>ツールの説明は、エージェントに有用なコンテキストを提供する上で、中心的な役割を果たしました。より詳細に説明することで、エージェントは予想されるデータ型だけでなく、パラメータの目的、許容値の範囲、サーバーの動作への影響も理解できることがわかりました。このコンテキストにより、エージェントは恣意的で潜在的に問題のある入力を行うのではなく、パラメータ値についてインテリジェントな決定を行うことができるため、自然言語をエージェントでさらに活用できるようになります。&nbsp;</p>
+		</li>
+		<li>
+			<p><b>各イテレーションでevalを使用：</b>各サーバーに対し、モデルが指示に従う能力、適切なツールを選択する能力、それらのツールに正しい引数を提供する能力を評価するために、評価テスト（「eval」）を実装しました。これにより、特にツールの説明を微調整する際に、イテレーションごとに後退が発生しているかどうかをプログラム的に把握できるようになりました。&nbsp;</p>
+		</li>
+	</ol>
+	<p>構築を始めませんか？最初のリモートMCPサーバーを本番環境にデプロイするには、下のボタンをクリックしてください。&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Cloudflareへデプロイ"></a>
+	<p></p>
+	<p>詳細についてはドキュメントをご覧ください。ご質問やご意見がございましたら、<a href="https://blog.cloudflare.com/#"><u>1800-mcp@cloudflare.com</u></a>までメールでご連絡いただくか、<a href="https://discord.com/channels/595317990191398933/1354548448635912324" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a>でチャットにご参加ください。</p>
+</div>

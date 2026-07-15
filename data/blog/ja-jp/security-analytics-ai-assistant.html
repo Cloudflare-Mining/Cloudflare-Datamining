@@ -1,0 +1,109 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/security-analytics-ai-assistant">English</a>、<a href="https://blog.cloudflare.com/zh-tw/security-analytics-ai-assistant">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/security-analytics-ai-assistant">Français</a>、<a href="https://blog.cloudflare.com/de-de/security-analytics-ai-assistant">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/security-analytics-ai-assistant">한국어</a>、<a href="https://blog.cloudflare.com/es-es/security-analytics-ai-assistant">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/security-analytics-ai-assistant">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sLQEpManUoOfFAZr9EThy/07d078664697be022101dd43f8b8611c/security-analytics-ai-assistant.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>最重要とする本番稼働中のアプリケーションが今まさに攻撃を受けており、現状を把握する必要がある状況を想像してください。ダッシュボードにログインして、「米国-英国間の攻撃トラフィックの比較」や「自動送信トラフィックと人間のトラフィックのレート制限ブロックの比較」などの質問を入力するだけで、複雑なフィルタセットを選択することなく、時系列グラフが画面に表示されるとしたら、どんなに素晴らしいことでしょう。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XqHKAmbIZ4NBeFBXsnaFp/4d66b61833021c41d054dbfd5d8d23c6/AI-Assistant-for-Security-AnalyticsNatural-Language.png" alt="Cloudflare launches AI Assistant for Security Analytics" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>本日、セキュリティイベントデータを照会し、異常や潜在的なセキュリティ攻撃のより迅速な発見を可能にするAIアシスタントをご紹介します。話しかけるような言葉で質問するだけで、Cloudflareアナリティクスを使用することができるようになりました。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-did-we-build">私たちが構築したもの</h2>
+		<a href="https://blog.cloudflare.com/#what-did-we-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>トラフィックの急増やトラフィックの異常を分析する際の大きな課題の1つは、問題の根本原因を切り分けるフィルタを作成することです。そのためには、クリックする場所や、適用すべきフィルターなどを知り、複雑なダッシュボードやツールを使いこなしている必要があります。</p>
+	<p>これに加えて、従来のセキュリティダッシュボードは、データの保存方法、データベースのインデックス作成方法、フィルタ作成時に許可されるフィールドによって実現できることが制限されています。例えば、セキュリティ分析ビューでは、特性の異なる時系列を比較することは困難でした。例えば、IPアドレスx.x.x.xからのトラフィックとドイツからの自動送信トラフィックを比較するには、セキュリティ分析に複数のタブを開いて別々にフィルタリングする必要があります。エンジニアリングの観点からは、このような制約のない比較を可能にするシステムを構築するのは非常に困難です。</p>
+	<p>AIアシスタントは当社のWorkers AIプラットフォームを活用して、HTTPリクエストとセキュリティイベントデータを照会し、自然言語で作成されたリクエストに基づいて時系列チャートを生成することができるツールを構築することで、このような複雑さを取り除きます。AIアシスタントが比較を行うための必要なフィルタを見つけるための難しい作業を担い、さらに複数のデータ系列を1つのグラフにプロットします。この新しいツールは、従来のダッシュボードの制約にとらわれることなく、データやログを調査する新しい方法を切り開きます。</p>
+	<p>データを話し言葉で尋ねることで、Cloudflareによって保護された内容を見ることができ、アプリケーションセキュリティに関する強力な洞察を得ることがこれまで以上に簡単になりました。この新しいAIアシスタントはセキュリティ分析ダッシュボードに登場し、既存のフィルターとシームレスに連携します。必要な答えは、質問するだけで見つかけることができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-can-you-ask">問い合わせ可能な内容は？</h2>
+		<a href="https://blog.cloudflare.com/#what-can-you-ask" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65fA9saL0RoHlbErGhKGhL/53e0498be059490a3d442ea383136d8e/Screenshot-2024-02-29-at-13.35.32.png" alt="" class="kg-image" width="1600" height="922" loading="lazy">
+
+	</figure>
+	<p>AIアシスタントの能力を実証するために、私たちは、お客様のアプリケーションに最適なセキュリティソリューションの導入を支援する際に私たちが日々自問する質問について考えることから始めました。</p>
+	<p>ダッシュボードにクリック可能な例をいくつか用意しました。</p>
+	<p>AIアシスタントを使用してできること</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lHKu9aErFzilFDlPId4lL/80a67fb2e3e558ea0a4626ff166fdbd3/ai-analytics.png" alt="" class="kg-image" width="1600" height="939" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p>「Compare attack traffic between US and UK」と問い合わせて、攻撃トラフィックの急増の原因を特定する</p>
+		</li>
+		<li>
+			<p>「Compare origin and edge 5xx errors」と問い合わせて、5xxエラーの根本原因を特定する</p>
+		</li>
+		<li>
+			<p>「Compare traffic across major web browsers」と問い合わせて、最も使用されているブラウザを確認する</p>
+		</li>
+		<li>
+			<p>eコマースサイトにおいて、「Compare traffic between /api/login and /api/basket」と問い合わせて、ユーザーの何パーセントがショッピングカートに商品を追加したかを確認する</p>
+		</li>
+		<li>
+			<p>「Show requests to /api/basket with a bot score less than 20」と問い合わせて、eコマースサイトに対するボット攻撃ボットによる攻撃を特定する</p>
+		</li>
+		<li>
+			<p>「Compare traffic by each HTTP version」と問い合わせて、クライアントが使用するHTTPバージョンを特定する</p>
+		</li>
+		<li>
+			<p>「Show POST requests to /admin with a Bot Score over 30」と問い合わせて、特定のエンドポイントに対する不要な自動送信トラフィックを特定する</p>
+		</li>
+	</ul>
+	<p>AIアシスタントを探索する際は、これらから始めることができます。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 57.57839721254355%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b17fbe1e0c1f38752fd057ca0cd465d6/iframe?autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb17fbe1e0c1f38752fd057ca0cd465d6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h2 id="how-does-it-work">その仕組みは？</h2>
+		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareの強力な<a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI</a>グローバルネットワーク推論プラットフォームを使用することで、プラットフォーム上で提供されている既製の大規模言語モデル（LLM）の1つを使用して、お客様のクエリをGraphQLフィルタへの変換に成功しました。当社のセキュリティ分析GraphQLデータセットで利用可能なフィルタをAIモデルにティーチングすることで、「<i>Compare attack traffic on /api and /admin endpoints</i>」といったリクエストを、AIモデルに構造化されたフィルタのマッチングセットに変換させることができます：</p>
+	<p>次に、AIモデルによって提供されるフィルターを使用して、<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a>にリクエストを行い、お客様のクエリに答えるために必要なデータを収集・プロットして可視化します。</p>
+	<pre class="language-bash"><code class="language-bash">```
+[
+  {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},
+  {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}
+]
+```</code></pre>
+	<p>この方法により、お客様の情報の機密性を保ち、AIモデル自体にセキュリティ解析データを公開することなく、人間がデータを簡単にクエリできるようにしています。これにより、お客様のクエリがモデルの学習に使用されることはありません。また、Workers AIはCloudflare独自のネットワーク上でLLMのローカルインスタンスをホストしているため、クエリや結果のデータがCloudflareのネットワークを離れることはありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="future-development">今後の展開</h2>
+		<a href="https://blog.cloudflare.com/#future-development" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはこの機能の開発の初期段階にあり、セキュリティ分析AIアシスタントの持つ能力の急速な拡張を予定しています。最初のうちは、お客様のご要望にお応えできない場合もございますが、ご容赦ください。発表当初は、現在フィルタリング可能なすべてのフィールドについて、「show me」や「compare」など、時系列グラフにプロットできる基本的な問い合わせであれば対応することができます。</p>
+	<p>しかし、私たちが考えてもみなかったような使用例が数多くあることを実感しています。私たちは、AIアシスタントのベータ版をすべてのBusiness、Enterpriseのお客様にリリースし、この機能をテストしていただき、この機能で何ができるかをご覧いただけることをうれしく思います。皆様からのご意見、ご感想をお待ちしております。また、どのような点が便利であるか、次にどのような機能を追加したいかについてもご意見をお聞かせください。将来のバージョンでは、「Did I experience any attacks yesterday?」といった質問にも対応します。また、AIを使用してWAFルールを自動生成し、そのルールを適用して軽減することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="beta-availability">ベータ版の提供</h2>
+		<a href="https://blog.cloudflare.com/#beta-availability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日より、AIアシスタントは一部のユーザー向けに提供され、3月中にすべてのBusiness 、Enterpriseのお客様に展開します。是非無料でお試しいただき、セキュリティ分析のページ上部にある<a href="https://docs.google.com/forms/d/e/1FAIpQLSfKtXvPvKUZpjoKZa93ceTk_NAdRY4CF_PpjvFwZwa69o7i6A/viewform?entry.2073820081=Account+security+analytics" target="_blank" rel="noopener noreferrer">フィードバック</a>リンクから、ご意見をお聞かせください。</p>
+	<p>最終価格は一般販売開始前の決定となります。</p>
+</div>

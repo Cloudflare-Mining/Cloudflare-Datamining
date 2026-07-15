@@ -1,0 +1,256 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/unified-risk-posture">English</a>、<a href="https://blog.cloudflare.com/zh-tw/unified-risk-posture">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/unified-risk-posture">Français</a>、<a href="https://blog.cloudflare.com/de-de/unified-risk-posture">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/unified-risk-posture">한국어</a>、<a href="https://blog.cloudflare.com/es-es/unified-risk-posture">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/unified-risk-posture">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5a2emFGRunuw95JweORPOj/2da348ffffb0ed4e26d3230f8127f644/unified-risk-posture.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>リスクポスチャの管理ビジネスにおけるリスクの評価、優先順位付け、軽減方法は、決して容易ではありません。しかし、<a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface" target="_blank" rel="noopener noreferrer">攻撃対象領域</a>が急速に拡大し続ける中、その作業はますます複雑になり、非効率になってきています。ある世界的調査<a href="https://securityintelligence.com/articles/socs-spend-32-percent-day-incidents-pose-no-threat" target="_blank" rel="noopener noreferrer">によると</a>、SOCチームメンバーは1日の勤務時間の平均3分の1を脅威ではないインシデントに費やしています。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12txl9X9aO1mdmmdNUBM9U/9544e21096e2c3233982efa99acd984b/image5.png" alt="Introducing Cloudflare for Unified Risk Posture" class="kg-image" width="1999" height="1172" loading="lazy">
+
+	</figure>
+	<p>この状況下、<b>より少ない労力</b>と<b>ノイズ</b>で<b>リスクを軽減できる</b>としたらどうでしょうか。</p>
+	<p>この投稿では、お客様がこれを実現するに当たり、<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">セキュアアクセスサービスエッジ（SASE）</a>と<a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">WebアプリおよびAPI（WAAP）</a>のセキュリティポートフォリオ全体の機能を統合した新しいスイートをもってCloudflareがどのように支援できるかを探ります。具体的には、以下について説明します。</p>
+	<ul>
+		<li>
+			<p>このアプローチが、攻撃対象領域の保護の強化、およびセキュリティオペレーションの作業労力削減を実現できる理由</p>
+		</li>
+		<li>
+			<p>3つの主要なユースケース — CrowdStrikeパートナーシップの拡大に伴うZero Trustの実現など</p>
+		</li>
+		<li>
+			<p>これらの機能に基づき、弊社が検討している他の新しいプロジェクト</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-for-unified-risk-posture">CloudflareによるUnified Risk Posture</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-for-unified-risk-posture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日、<a href="https://www.cloudflare.com/cybersecurity-risk-management" target="_blank" rel="noopener noreferrer"><b>Cloudflare for Unified Risk Posture</b></a>を発表します。サイバーセキュリティリスク管理機能の新しいスイートとして、拡大する攻撃対象領域全体に<b>自動かつ動的なリスクポスチャ</b>を適用して企業を支援するものです。現在、単一の統合プラットフォームによって、企業は以下のことを実現できます。</p>
+	<ul>
+		<li>
+			<p><b>人とアプリにまたがるリスクを評価</b>：Cloudflareは人がもたらすリスクを<a href="https://www.cloudflare.com/learning/security/what-is-ueba" target="_blank" rel="noopener noreferrer">ユーザーエンティティと挙動分析（UEBA）</a>モデルにより評価し、アプリ、API、サイトへのリスクを悪意のあるペイロード、zero-day脅威、サイトボット検出モデルにより評価しています。</p>
+		</li>
+		<li>
+			<p><b>クラス最高のパートナーとリスク指標を交換</b>：Cloudflareは、クラス最高の<a href="https://www.cloudflare.com/learning/security/glossary/endpoint-security" target="_blank" rel="noopener noreferrer">エンドポイント保護（EPP）</a>と<a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank" rel="noopener noreferrer">IDプロバイダー（IDP）</a>パートナーからリスクスコアを取り込み、<a href="https://www.cloudflare.com/learning/security/what-is-siem" target="_blank" rel="noopener noreferrer">セキュリティ情報およびイベント管理（SIEM）</a>と拡張検出とさらに分析するためのレスポンス（XDR）プラットフォームを使用します。これらはすべて、統一APIとのワンタイム統合によって実現します。</p>
+		</li>
+		<li>
+			<p><b>大規模なリスク制御を実施</b>：Cloudflareは、ファーストパーティとサードパーティの動的なリスクスコアに基づき、世界中のあらゆる場所でユーザーとアプリに対する一貫したリスク制御を実施します。</p>
+		</li>
+	</ul>
+	<p><b>図1：Unified Risk Posture図</b></p>
+	<p>前述の通り、このスイートはSASEおよびWAAPセキュリティポートフォリオの機能を当社のグローバルネットワークに統合しています。これらの既存のポートフォリオの一環として、パッケージ化された内蔵型のリスク管理機能をご利用いただけるようになります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WLbotRM1RL1VFQwZbNZ8y/8bf5d12d3ed85dba51448b4fad75b4e9/image3.png" alt="" class="kg-image" width="1128" height="547" loading="lazy">
+
+	</figure>
+	<p>このローンチは、組織が進化するリスクに適応しやすくするファーストパーティの可視性とコントロール、サードパーティとの統合を拡張するための進歩的な取り組みに基づいています。たとえば、2024年<a href="https://www.cloudflare.com/security-week" target="_blank" rel="noopener noreferrer">Security Week</a>の一環として、<a href="https://blog.cloudflare.com/ja-jp/cf1-user-risk-score-ja-jp">行動ベースのユーザーリスクスコアリングの一般提供、</a>およびアプリが直面するリスクの分析に役立つ<a href="https://blog.cloudflare.com/ja-jp/security-analytics-ai-assistant-ja-jp">AI対応アシスタント</a>のベータ版提供を発表しました。また、<a href="https://blog.cloudflare.com/cloudflare-email-security-now-works-with-crowdstrike-falcon-logscale">2023年秋に行った統合</a>により、クラウドメールセキュリティを利用するお客様がCrowdStrike Falcon®次世代SIEMダッシュボード内で弊社の高速通信の検出を取り込み、脅威を表示できるようになったことを発表しました。</p>
+	<p>リスクポスチャをさらに管理するため、以下を含むCloudflareの新機能と統合を活用できます。</p>
+	<ul>
+		<li>
+			<p>Cloudflare Zero TrustとメールログデータをCrowdStrike Falconの次世代SIEMで共有する新たな統合_（現在利用可能）_</p>
+		</li>
+		<li>
+			<p>CloudflareのユーザーリスクスコアをOktaと共有し、アクセスポリシーを適用するための新しい統合_（2024年第2四半期末までに予定）_</p>
+		</li>
+		<li>
+			<p>デバイスポスチャーチェックに基づくユーザーリスクスコアを含む、新しいファーストパーティUEBAモデル_（2024年第2四半期までに予定）_</p>
+		</li>
+	</ul>
+	<p>リスク管理の評価、情報交換、実施の段階をCloudflareのプラットフォームに統合することで、セキュリティリーダーは少ない労力でリスクを軽減することができます。外部インフラと内部インフラの両方を保護するサイバーセキュリティベンダーとして、Cloudflareはお客様の拡大する攻撃対象領域の広範囲を保護するため、独自の立ち位置にあります。動的なファーストパーティリスクスコアリング、柔軟な統合、自動化された実施を組み合わせることで、次の2つの主要なビジネス成果の推進に役立ちます。</p>
+	<ol>
+		<li>
+			<p>手作業でのポリシー作成を減らし、インシデント対応における俊敏性を高め、<b>セキュリティオペレーション担当者の手間を削減</b>。つまり、ポリシーを構築するためのクリックが減り、ワークフローの自動化が進み、平均検出時間MTTDとインシデントへの平均対応時間MTTRが短縮されます。</p>
+		</li>
+		<li>
+			<p>人、アプリを可視化および制御することによる、<b>サイバーリスクの低減</b>。これは、重大なインシデントが減少し、より多くの脅威が自動的にブロックされることを意味します。</p>
+		</li>
+	</ol>
+	<p>世界ナンバーワンの求人サイトである<a href="https://www.indeed.com/about" target="_blank" rel="noopener noreferrer">Indeed</a>などの弊社お客様は、Cloudflareとの提携により既にこうした効果を実感しています。</p>
+	<blockquote>
+		<p>「Cloudflareのおかげで少ない手間でリスクを効果的に低減でき、組織全体に渡るZero Trust導入が簡単になりました。」— <b>Anthony Moisant</b>氏、<b>Indeed</b> SVP、最高情報責任者（CIO）兼最高セキュリティ責任者（CSO）</p>
+	</blockquote>
+	<div class="flex anchor relative">
+		<h2 id="problem-too-many-risks-across-too-much-attack-surface">課題広すぎる攻撃対象領域には、あまりにも多くのリスクがあります</h2>
+		<a href="https://blog.cloudflare.com/#problem-too-many-risks-across-too-much-attack-surface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>リスク体制の管理は本質的に、内部の危険と外部の脅威をすべての攻撃ベクトルをカバーすることになる広範な課題です。以下は、CISOとそのセキュリティチームにおいて、人、アプリ、データの3つの日常的な側面に渡って追跡するリスク要因のサンプルです。</p>
+	<ul>
+		<li>
+			<p><b>人のリスク</b>：フィッシング、ソーシャルエンジニアリング、マルウェア、ランサムウェア、リモートアクセス、内部脅威、物理的アクセスの侵害、サードパーティ/サプライチェーン、モバイルデバイス/BYOD</p>
+		</li>
+		<li>
+			<p><b>アプリのリスク</b>：サービス拒否、zero-day攻撃、SQLインジェクション、Cross-site scripting、リモートコード実行、クレデンシャルスタッフィング、アカウント乗っ取り、シャドーITの使用、APIの悪用</p>
+		</li>
+		<li>
+			<p><b>データリスク</b>：データ損失/流出、データ窃盗/漏洩、プライバシー侵害、コンプライアンス違反、データ改ざん</p>
+		</li>
+	</ul>
+	<p>ポイントソリューションは、これらの特定のリスクと攻撃ベクトルの一部をロックダウンするために登場しました。しかし、相互に対話し、より全体的なリスクの可視性を構築する能力が制限される中、時間の経過とともに組織は多くのサービスを蓄積してきました。各ツールのきめ細かなテレメトリは、すでに過剰な負荷がかかっていることが多いセキュリティスタッフにとって、情報過多につながっています。セキュリティ情報・イベント管理（SIEM）と拡張検出対応（XDR）プラットフォームは、環境全体のリスクデータを集約し分析に基づいて脅威を軽減する上で重要な役割を果たしますが、これらのツールを効果的に運用するには、依然として時間、リソース、専門知識が必要です。こうした問題は、企業がハイブリッドワークを受け入れ新しいデジタルアプリを構築したり、最近ではAIを試したりする中、攻撃対象領域が急速に拡大するとともに悪化しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-helps-manage-risk-posture">Cloudflareによるリスク体制の管理の支援</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-helps-manage-risk-posture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この複雑さのコントロールの回復のため、Cloudflare for Unified Risk Postureは、お客様のビジネスが既に利用しているセキュリティツールを補完しながら全世界かつIT環境全体でのリスク評価、指標交換、動的コントロールの実施を実現する単一のプラットフォームを提供します。</p>
+	<p>Cloudflareが軽減できる特定のリスクは上記の箇条書きにまとめたサンプルすべてのリスクを含め多岐に及ぶものの、以下の3つのユースケースは弊社が提供する機能の全範囲を表したもので、今日からご利用開始いただけます。</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-1-enforce-zero-trust-with-cloudflare-crowdstrike">ユースケース#1：CloudflareとCrowdStrikeでのZero Trustの強化</h3>
+		<a href="https://blog.cloudflare.com/#use-case-1-enforce-zero-trust-with-cloudflare-crowdstrike" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この最初のユースケースは、Cloudflareがお客様のセキュリティエコシステムに柔軟に適合し、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustのベストプラクティス</a>を導入しやすくするものです。</p>
+	<p>Cloudflareは、クラス最高の<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/service-providers" target="_blank" rel="noopener noreferrer">EPP</a>および<a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration" target="_blank" rel="noopener noreferrer">IDP</a>パートナーと統合してセキュリティ信号を取り込み、あらゆる宛先へのアクセス要求に対してIDとデバイスポスチャーのチェックを実施します。複数のプロバイダーを一度にオンボードして、異なるコンテキストで異なるポリシーを適用することもできます。例えば、CrowdStrike Falcon®と統合することで、お客様は<a href="https://blog.cloudflare.com/ja-jp/cloudflare-crowdstrike-partnership-ja-jp">Falcon Zero Trust Assessment（ZTA）スコアに基づいてポリシーを適用できる</a>ようになります。これにより、場所、ネットワーク、ユーザーに関係なく、組織内のすべてのエンドポイントに対し、継続的にリアルタイムのセキュリティ体制評価を提供します。さらに、希望する<a href="https://developers.cloudflare.com/fundamentals/reference/partners" target="_blank" rel="noopener noreferrer">クラウドストレージプロバイダーまたは分析プロバイダー</a>にCloudflareによって生成されたすべてのアクセスリクエストを含む<a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer">アクティビティログをプッシュ</a>できます。</p>
+	<p>弊社は本日、CrowdStrikeとのパートナーシップを拡大し、深い分析やさらなる調査を行えるようにするため次世代Falcon SIEMとログを共有できるようになったことを<a href="https://www.cloudflare.com/press-releases/2024/cloudflare-announces-unified-risk-posture-to-provide-comprehensive-and" target="_blank" rel="noopener noreferrer">発表</a>いたします。Falconの次世代SIEMは、ファーストパーティおよびサードパーティのデータ、ネイティブな脅威インテリジェンス、AI、ワークフロー自動化を統合し、SOC変革を推進してより優れた脅威からの保護を実施します。Cloudflare Zero Trustとメールログを次世代Falcon SIEMに統合することで、共通のお客様はZero Trustのネットワーキングとメールのリスクを特定・調査し、他のログソースとデータを分析して隠れた事例を発見することができるようになります。</p>
+	<blockquote>
+		<p>CrowdStrike Falcon Next-Gen SIEMは、旧型SIEMやSIEMの代替品として位置付けられている製品と比較して最大150倍高速な検索パフォーマンスを発揮します。弊社の革新的なテレメトリーとCloudflareの強固なZero Trust機能の融合は、空前のパートナーシップを提供します。今日の増大する脅威に対抗するために、あらゆる規模の組織が取り組まなければならない、リスク管理パズルの最も重要な2つのピースを私たちは協力して融合させようとしているのです。」— <b>Daniel Bernard</b>氏、<b>CrowdStrike</b>最高事業責任者</p>
+	</blockquote>
+	<p>以下は、CloudflareとCrowdStrikeが連携してZero Trustポリシーを適用し、新たなリスクを軽減するためのワークフロー例です。CloudflareとCrowdStrikeは、アクティビティとリスクデータを交換し、リスクベースのポリシーと修復ステップを適用することで相互に補完しています。</p>
+	<p><b>図2：CloudflareとCrowdStrikeでZero Trustを適用</b></p>
+	<p>フェーズ1：自動化された調査</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sKCifQqdVmtJO1K7BIGP5/9536d135c30aad7f2367bb96dd84031c/image4.png" alt="" class="kg-image" width="958" height="396" loading="lazy">
+
+	</figure><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="307">
+			<col width="307">
+			<col width="282">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 1: Automated investigation</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 2: Zero Trust enforcement</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#00379c;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Phase 3: Remediation</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Cloudflare and CrowdStrike help an organization detect that a user is compromised.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In this example, Cloudflare has recently blocked web browsing to risky websites and phishing emails, serving as the first line of defense. Those logs are then sent to CrowdStrike Falcon Next-Gen SIEM, which alerts your organization’s analyst about suspicious activity.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">At the same time, CrowdStrike Falcon Insight XDR automatically scans that user’s device and detects that it is infected. As a result, the Falcon ZTA score reflecting the device’s health is lowered.</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">This org has set up device posture checks via Cloudflare’s </span><a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Zero Trust Network Access</span></a><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> (ZTNA), only allowing access when the Falcon ZTA risk score is above a specific threshold they have defined.&nbsp;</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Our ZTNA denies the user’s next request to access an application because the Falcon ZTA score falls below that threshold.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Because of this failed device posture check, Cloudflare increases the risk score for that user, which places them in a group with more restrictive controls.&nbsp;</span></p><br><br><br>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In parallel, CrowdStrike’s Next-GenSIEM has continued to analyze the specific user’s activity and broader risks throughout the organization’s environment. Using machine learning models, CrowdStrike surfaces top risks and proposes solutions for each risk to your analyst.</span></p><br>
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The analyst can then review and select remediation tactics — for example, quarantining the user’s device — to further reduce risk throughout the organization.&nbsp;</span></p><br>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>フェーズ2：Zero Trustの適用</p>
+	<p>フェーズ3：改善</p>
+	<p>CloudflareとCrowdStrikeは、ユーザーの安全性が損なわれたことを組織が検出できるように支援します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68uD20AuCjTQwmC5lLzE1U/cb4a75aaa0af26941d404555dbb6d9f8/image1.png" alt="" class="kg-image" width="1999" height="1148" loading="lazy">
+
+	</figure>
+	<p>この例では、Cloudflareは最近、防衛の最初の一手として危険なWebサイトのWebブラウジングやフィッシングメールをブロックしています。これらのログは、CrowdStrike Falcon次世代SIEMに送信され、組織のアナリストに疑わしい活動をアラートします。</p>
+	<p>同時に、CrowdStrike Falcon Insight XDRがそのユーザーのデバイスを自動的にスキャンし、感染していることを検出します。その結果、デバイスの健全性を反映するFalcon ZTAスコアが低下します。</p>
+	<p>この組織では、Cloudflareの<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">Zero Trustネットワークアクセス</a>（ZTNA）を介してデバイスポスチャーチェックを設定し、Falcon ZTAリスクスコアが定義した特定のしきい値を超えた場合のみ、アクセスを許可しました。</p>
+	<p>Falcon ZTAスコアが閾値を下回っているため、弊社のZTNAがユーザーの次のアプリケーションアクセスリクエストを拒否します。</p>
+	<p>このデバイスポスチャー確認に失敗したため、Cloudflareはそのユーザーのリスクスコアを上げ、より制限の厳しい制御を持つグループに分類します。&nbsp;</p>
+	<p>同時に、CrowdStrikeの次世代SIEMは、企業の環境全体における特定のユーザーのアクティビティとより広範なリスクを分析し続けました。CrowdStrikeが機械学習モデルを使用して主要なリスクを表面化し、各リスクに対応するソリューションをアナリストに提案します。</p>
+	<p>その後、アナリストはユーザーのデバイスの隔離など、組織全体でさらにリスクを低減するための修復戦術を確認、選択することができます。&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-2-protect-apps-apis-websites">ユースケース#2：アプリ、API、Webサイトの保護</h3>
+		<a href="https://blog.cloudflare.com/#use-case-2-protect-apps-apis-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この次のユースケースは、脅威アクターやボットからのアプリ、API、Webサイトの保護に焦点を当てたものです。多くのお客様はこのユースケースを目指しまずCloudflareを採用するものの、保護の基盤となるリスク評価アルゴリズムを把握していない場合があります。</p>
+	<p><b>図3L機械学習に基づく脅威インテリジェンスでアプリ、API、サイトを保護</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DA2cbnXZDIx3sGMXGvwfJ/b8cf1f547ec36cbc1e976d554ecf05b5/image2.jpg" alt="" class="kg-image" width="958" height="321" loading="lazy">
+
+	</figure>
+	<p>Cloudflareの<a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">アプリケーションサービス</a>は、以下を例とする<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">機械学習</a>（ML）に基づくリスクモデルを用い、悪意のあるペイロードやボットを検出および軽減します。</p>
+	<ul>
+		<li>
+			<p>リクエストがzero-day侵害を含んでいるかどうか、もしくは<a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer">SQLインジェクション</a>、<a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank" rel="noopener noreferrer">Cross-site scripting</a>、<a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution" target="_blank" rel="noopener noreferrer">リモートコード実行</a>おペイロードなどのOWASPトップ10リスクが含まれているかを評価する弊社の****<a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer"><b>WAF Attack Score</b></a>****</p>
+		</li>
+		<li>
+			<p>リクエストがボットから来た可能性を評価する弊社****<a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer"><b>ボットスコア</b></a>****</p>
+		</li>
+		<li>
+			<p>Webサイト訪問者におけるブラウザスクリプトの危険性を調べる、<a href="https://developers.cloudflare.com/page-shield/how-it-works/malicious-script-detection" target="_blank" rel="noopener noreferrer"><b>悪意のあるスクリプト分類</b></a></p>
+		</li>
+	</ul>
+	<p>これらのリスクモデルは、<a href="https://www.cloudflare.com/what-is-cloudflare" target="_blank" rel="noopener noreferrer">Webサイト全体のほぼ20%</a>がリバースプロキシとして使用され1日あたり約3兆件のDNSクエリーを閲覧しているCloudflareのグローバルネットワークからのテレメトリにおいて主に訓練されています。独自のリアルタイムの可視性によって脅威インテリジェンスが強化され、<a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">他社よりも先にzero-dayを検出および軽減</a>することも可能です。</p>
+	<p>Cloudflareはまた、前提となる顧客の入力を必要とせずに、<a href="https://blog.cloudflare.com/ja-jp/ml-api-discovery-and-schema-learning-ja-jp">新しいAPIエンドポイントとスキーマを発見する</a>ためにMLを使用しています。これにより、企業は保護を適用する前に認証されていないAPIを発見し、<a href="https://www.cloudflare.com/2024-api-security-management-report/#:~:text=APIs%20%E2%80%94%20the%20programmable%20interfaces%20comprising,throughout%20the%20API%2Dcentric%20world." target="_blank" rel="noopener noreferrer">拡大する攻撃対象領域</a>をマッピングすることができます。</p>
+	<p>他のベンターとことなり、Cloudflareのネットワークアーキテクチャは、外部インフラと内部インフラにおけるリスク評価モデルとセキュリティコントロールを弊社の全サービスで共有することを可能にします。つまり、セルフホスト型のJiraやConfluenceサーバーのような内部アプリの前に、アプリの脆弱性悪用、DDoS攻撃、ボットに対する保護を適用し、新たzero-day脅威から保護することができることになります。</p>
+	<p>API企業は、Cloudflareのセキュリティセンター内でアプリ、Webサイトのリスクポスチャに影響を与える潜在的な設定ミス、データ漏洩のリスク、脆弱性を精査できます。私たちは、セキュリティポートフォリオ全体にアラートとインサイトを統合することにより、リスクポスチャ管理を一元的に支援するビューに投資しています。実際に弊社では、貴組織におけるCloudflareサービスのデプロイのギャップの存在を強調した<a href="https://blog.cloudflare.com/ja-jp/security-insights-quick-ciso-view-ja-jp">更新を最近発表</a>しました。</p>
+	<p>最後に、弊社ではセキュリティイベントを直接調査しやすくしており、<a href="https://blog.cloudflare.com/ja-jp/log-explorer-ja-jp">Log Explorerのベータ版利用開始を最近発表</a>しました。このベータ版には、検索、分析ダッシュボード、フィルターが組み込まれ、セキュリティチームはすべてのHTTPトラフィックを1か所で見ることができます。これらの機能により、Cloudflareプラットフォーム内でのサードパーティツールへのエクスポートと比較し、より多くのリスク要因を監視できます。</p>
+	<div class="flex anchor relative">
+		<h3 id="use-case-3-protect-sensitive-data-with-ueba">ユースケース#：3UEBAを使用して機密データを保護</h3>
+		<a href="https://blog.cloudflare.com/#use-case-3-protect-sensitive-data-with-ueba" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この3番目のユースケースは、多くのお客様が機密データの漏えいや誤処理の防止を目的に<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score" target="_blank" rel="noopener noreferrer">ユーザーリスク/UEBAスコア</a>の活用を検討する上での一般的な方法の1つをまとめたものです。</p>
+	<p><b>図4：機械学習に基づく脅威インテリジェンスでアプリ、API、サイトを保護</b></p>
+	<ul>
+		<li>
+			<p><b>フェーズ1</b>：この例では、セキュリティチームが機密データを含むトラフィックを検出してブロックするため、<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">データ損失防止DLP</a>ポリシーをすでに設定しています。これらのポリシーにより、1人のユーザーが複数回繰り返し<a href="https://blog.cloudflare.com/ja-jp/dlp-ocr-sourcecode-ja-jp">ソースコード</a>をGitHubリポジトリにアップロードする試みを防止できます。</p>
+		</li>
+		<li>
+			<p><b>フェーズ2</b>：このユーザーは短期間に多数のDLPポリシーに違反したため、アップロードの意図が悪意によるものか良性であるかにかかわらず、Cloudflareは疑わしいユーザーを高リスクと判定しています。セキュリティチームは、最近のログアクティビティすべてを確認するなど、特定のユーザーの詳細な調査を行うことができるようになりました。</p>
+		</li>
+		<li>
+			<p><b>フェーズ3</b>：管理者は、特定の高リスクユーザーまたは高リスクユーザーグループに対してZTNAや<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">ブラウザ分離</a>ルールを設定し、他の機密データを含むアプリケーションへのアクセスをブロックまたは分離できます。</p>
+		</li>
+	</ul>
+	<p>全体として、このワークフローは、評価から強制まで、Cloudflareのリスクポスチャコントロールが疑わしい行動にどのように適応しているかを示しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started-with-unified-risk-posture-management">統合リスクポスチャ管理の導入開始方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started-with-unified-risk-posture-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>上記のユースケースは、弊社お客様がリスク管理をCloudflareで統合する方法を反映したものです。お客様との会話の中で、拡大する攻撃対象領域のリスク管理を支援するとの弊社ビジョンに対しお客様の確信が得られる理由が複数見つかりました。</p>
+	<ul>
+		<li>
+			<p><b>シンプルな統合プラットフォーム</b>：SASEとWAAPリスクスコアリング、そして人とアプリの管理を統合しています。さらに、すべてのCloudflareサービスに対応する単一のAPIにより、<a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Terraform</a>などのInfrastructure-as-Codeツールを用い、ワークフローの自動化やカスタマイズを容易に行えます。</p>
+		</li>
+		<li>
+			<p><b>統合の柔軟性</b>：弊社では、お客様が既にご利用のEPP、IDP、XDR、SIEMプロバイダーとリスクシグナル情報を交換しており、ツールとデータにおける可能性をさらに広げています。さらに、すべてのサービスで機能し一度で済む統合により、機敏性をもってIT環境全体に制御を拡張できます。</p>
+		</li>
+		<li>
+			<p><b>グローバルネットワークの規模</b>：320以上のロケーション、1.3万以上の相互接続に広がる弊社ネットワークにまたがり、場所を問わずに実行できできます。このように、シングルパス検査とリスクポリシーの適用を常に迅速に、かつ一貫性と適応力をもってユーザーとアプリの近くから提供します。</p>
+		</li>
+	</ul>
+	<p>Cloudflareがリスク管理において活躍する様子を詳しくお知りになりたい方は、今すぐ<a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">相談をご依頼</a>ください。RSA Conference 2024にご参加される方は、<a href="https://www.cloudflare.com/rsa-conference-2024" target="_blank" rel="noopener noreferrer">弊社が開催する対面イベント</a>のいずれかにぜひご参加ください。</p>
+	<p>引き続き、リスクの評価、リスク指標の交換、リスク管理の実施におけるCloudflareの活躍について詳しくお知りになりたい方は、<a href="https://www.cloudflare.com/cybersecurity-risk-management" target="_blank" rel="noopener noreferrer">弊社Webサイトの他リソース</a>を<a href="https://www.cloudflare.com/cybersecurity-risk-management" target="_blank" rel="noopener noreferrer">ご覧ください</a>。</p>
+</div>

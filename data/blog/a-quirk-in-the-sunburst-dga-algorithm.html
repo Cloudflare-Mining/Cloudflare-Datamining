@@ -1,28 +1,19 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5lypqCT188LGgkVsUxun0K/beb63fa4b8ff6791d1e97ff470214230/a-quirk-in-the-sunburst-dga-algorithm.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>On Wednesday, December 16, the RedDrip Team from QiAnXin Technology <a href="https://mp.weixin.qq.com/s/v-ekPFtVNZG1W7vWjcuVug" target="_blank" rel="noopener noreferrer">released their discoveries</a> (<a href="https://twitter.com/RedDrip7/status/1339168187619790848?s=20" target="_blank" rel="noopener noreferrer">tweet</a>, <a href="https://github.com/RedDrip7/SunBurst_DGA_Decode" target="_blank" rel="noopener noreferrer">github</a>) regarding the random subdomains associated with the SUNBURST malware which was present in the SolarWinds Orion compromise. In studying queries performed by the malware, Cloudflare has uncovered additional details about how the Domain Generation Algorithm (DGA) encodes data and exfiltrates the compromised hostname to the command and control servers.</p>
-	<div class="flex anchor relative">
-		<h3 id="background">Background</h3>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The RedDrip team discovered that the DNS queries are created by combining the previously reverse-engineered unique guid (based on hashing of hostname and MAC address) with a payload that is a custom base 32 encoding of the hostname. The article they published includes screenshots of decompiled or reimplemented C# functions that are included in the compromised DLL. This background primer summarizes their work so far (which is published in Chinese).</p>
-	<p>RedDrip discovered that the DGA subdomain portion of the query is split into three parts:</p>
-	<p><code><b>&lt;encoded_guid&gt; + &lt;byte&gt; + &lt;encoded_hostname&gt;</b></code></p>
-	<p>An example malicious domain is:</p>
-	<p><code><b>7cbtailjomqle1pjvr2d32i2voe60ce2.appsync-api.us-east-1.avsvmcloud.com</b></code></p>
-	<p>Where the domain is split into the three parts as</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>On Wednesday, December 16, the RedDrip Team from QiAnXin Technology <a href="https://mp.weixin.qq.com/s/v-ekPFtVNZG1W7vWjcuVug" target="_blank" rel="noopener noreferrer">released their discoveries</a> (<a href="https://twitter.com/RedDrip7/status/1339168187619790848?s=20" target="_blank" rel="noopener noreferrer">tweet</a>, <a href="https://github.com/RedDrip7/SunBurst_DGA_Decode" target="_blank" rel="noopener noreferrer">github</a>) regarding the random subdomains associated with the SUNBURST malware which was present in the SolarWinds Orion compromise. In studying queries performed by the malware, Cloudflare has uncovered additional details about how the Domain Generation Algorithm (DGA) encodes data and exfiltrates the compromised hostname to the command and control servers.</p>
+<h3>Background</h3>
+<p>The RedDrip team discovered that the DNS queries are created by combining the previously reverse-engineered unique guid (based on hashing of hostname and MAC address) with a payload that is a custom base 32 encoding of the hostname. The article they published includes screenshots of decompiled or reimplemented C# functions that are included in the compromised DLL. This background primer summarizes their work so far (which is published in Chinese).</p>
+<p>RedDrip discovered that the DGA subdomain portion of the query is split into three parts:</p>
+<p><strong><code>&lt;encoded_guid&gt; + &lt;byte&gt; + &lt;encoded_hostname&gt;</code></strong></p>
+<p>An example malicious domain is:</p>
+<p><strong><code>7cbtailjomqle1pjvr2d32i2voe60ce2.appsync-api.us-east-1.avsvmcloud.com</code></strong></p>
+<p>Where the domain is split into the three parts as</p>
+<div id="html-block-kq" class="html-block">
+	<style>
+		#html-block-kq .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-kq .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -33,7 +24,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-kq .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -45,7 +36,7 @@
 			word-break: normal;
 		}
 
-		.tg .tg-yzei {
+		#html-block-kq .tg .tg-yzei {
 			border-color: #343434;
 			font-size: 18px;
 			font-weight: bold;
@@ -53,14 +44,14 @@
 			vertical-align: middle
 		}
 
-		.tg .tg-z6tn {
+		#html-block-kq .tg .tg-z6tn {
 			border-color: #343434;
 			font-size: 18px;
 			text-align: center;
 			vertical-align: middle
 		}
 
-		.tg .tg-8tm3 {
+		#html-block-kq .tg .tg-8tm3 {
 			background-color: #efefef;
 			border-color: #343434;
 			font-size: 18px;
@@ -68,7 +59,7 @@
 			vertical-align: middle
 		}
 
-		.tg .tg-v8qi {
+		#html-block-kq .tg .tg-v8qi {
 			background-color: #efefef;
 			border-color: #343434;
 			font-size: 18px;
@@ -77,11 +68,11 @@
 			vertical-align: middle
 		}
 	</style>
-	<table class="tg" style="undefined;table-layout: fixed; width: 683px">
+	<table class="tg">
 		<colgroup>
-			<col style="width: 265px">
-			<col style="width: 180px">
-			<col style="width: 238px">
+			<col style="width:265px">
+			<col style="width:180px">
+			<col style="width:238px">
 		</colgroup>
 		<thead>
 			<tr>
@@ -97,48 +88,36 @@
 				<td class="tg-z6tn"><span style="font-weight:700;font-style:normal;text-decoration:none">vr2d32i2voe60ce2</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>The work from the RedDrip Team focused on the encoded hostname portion of the string, we have made additional insights related to the encoded hostname and encoded guid portions.</p>
-	<p>At a high level the encoded hostnames take one of two encoding schemes. If all of the characters in the hostname are contained in the set of domain name-safe characters <code>"0123456789abcdefghijklmnopqrstuvwxyz-_."</code> then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Decode</code> algorithm, explained in the article, is used. If there are characters outside of that set in the hostname, then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Encode</code> is used instead and ‘00’ is prepended to the encoding. This allows us to simply check if the first two characters of the encoded hostname are ‘00’ and know how the hostname is encoded.</p>
-	<p>These function names within the compromised DLL are meant to resemble the names of legitimate functions, but in fact perform the message encoding for the malware. The DLL function Base64Decode is meant to resemble the legitimate function name base64decode, but its purpose is actually to perform the encoding of the query (which is a variant of base32 encoding).</p>
-	<p>The RedDrip Team has posted Python code for encoding and decoding the queries, including identifying random characters inserted into the queries at regular character intervals.</p>
-	<p>One potential issue we encountered with their implementation is the inclusion of a check clause looking for a ‘0’ character in the encoded hostname (line 138 of the decoding script). This line causes the decoding algorithm to ignore any encoded hostnames that do not contain a ‘0’. We believe this was included because ‘0’ is the encoded value of a ‘0’, ‘.’, ‘-’ or ‘_’. Since fully qualified hostnames are comprised of multiple parts separated by ‘.’s, e.g. ‘example.com’, it makes sense to be expecting a ‘.’ in the unencoded hostname and therefore only consider encoded hostnames containing a ‘0’. However, this causes the decoder to ignore many of the recorded DGA domains.</p>
-	<p>As we explain below, we believe that long domains are split across multiple queries where the second half is much shorter and unlikely to include a ‘.’. For example ‘www2.example.c’ takes up one message, meaning that in order to transmit the entire domain ‘www2.example.c’ a second message containing just ‘om’ would also need to be sent. This second message does not contain a ‘.’ so its encoded form does not contain a ‘0’ and it is ignored in the RedDrip team’s implementation.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-quirk-hostnames-are-split-across-multiple-queries">The quirk: hostnames are split across multiple queries</h3>
-		<a href="https://blog.cloudflare.com/#the-quirk-hostnames-are-split-across-multiple-queries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A list of observed queries performed by the malware was published publicly on <a href="https://github.com/bambenek/research/blob/main/sunburst/uniq-hostnames.txt" target="_blank" rel="noopener noreferrer">GitHub</a>. Applying the decoding script to this set of queries, we see some queries appear to be truncated, such as <code>grupobazar.loca</code>, but also some decoded hostnames are curiously short or incomplete, such as “com”, “.com”, or a single letter, such as “m”, or “l”.</p>
-	<p>When the hostname does not fit into the available payload section of the encoded query, it is split up across multiple queries. Queries are matched up by matching the GUID section after applying a byte-by-byte exclusive-or (xor).</p>
-	<div class="flex anchor relative">
-		<h3 id="analysis-of-first-15-characters">Analysis of first 15 characters</h3>
-		<a href="https://blog.cloudflare.com/#analysis-of-first-15-characters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Noticing that long domains are split across multiple requests led us to believe that the first 16 characters encoded information to associate multipart messages. This would allow the receiver on the other end to correctly re-assemble the messages and get the entire domain. The RedDrip team identified the first 15 bytes as a GUID, we focused on those bytes and will refer to them subsequently as the header.</p>
-	<p>We found the following queries that we believed to be matches without knowing yet the correct pairings between message 1 and message 2 (payload has been altered):</p>
-	<p><b>Part 1 - Both decode to “www2.example.c”</b><code>r1q6arhpujcf6jb6qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.com</code><code>r8stkst71ebqgj66qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.com</code></p>
-	<p><b>Part 2 - Both decode to “om”</b><code>0oni12r13ficnkqb2h.appsync-api.us-west-2.avsvmcloud.com</code><code>ulfmcf44qd58t9e82h.appsync-api.us-west-2.avsvmcloud.com</code></p>
-	<p>This gives us a final combined payload of <b>www2.example.com</b></p>
-	<p>This example gave us two sets of messages where we were confident the second part was associated with the first part, and allowed us to find the following relationship where message1 is the header of the first message and message2 is the header of the second:</p>
-	<p><code>_Base32Decode(message1) XOR KEY = Base32Decode(message2)_</code></p>
-	<p>The KEY is a single character. That character is xor’d with each byte of the Base32Decoded first header to produce the Base32Decoded second header. We do not currently know how to infer what character is used as the key, but we can still match messages together without that information. Since A XOR B = C where we know A and C but not B, we can instead use A XOR C = B. This means that in order to pair messages together we simply need to look for messages where XOR’ing them together results in a repeating character (the key).</p>
-	<p><code><i>Base32Decode(message1) XOR Base32Decode(message2) = KEY</i></code></p>
-	<p>Looking at the examples above this becomes</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>The work from the RedDrip Team focused on the encoded hostname portion of the string, we have made additional insights related to the encoded hostname and encoded guid portions.</p>
+<p>At a high level the encoded hostnames take one of two encoding schemes. If all of the characters in the hostname are contained in the set of domain name-safe characters <code>"0123456789abcdefghijklmnopqrstuvwxyz-_."</code> then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Decode</code> algorithm, explained in the article, is used. If there are characters outside of that set in the hostname, then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Encode</code> is used instead and ‘00’ is prepended to the encoding. This allows us to simply check if the first two characters of the encoded hostname are ‘00’ and know how the hostname is encoded.</p>
+<p>These function names within the compromised DLL are meant to resemble the names of legitimate functions, but in fact perform the message encoding for the malware. The DLL function Base64Decode is meant to resemble the legitimate function name base64decode, but its purpose is actually to perform the encoding of the query (which is a variant of base32 encoding).</p>
+<p>The RedDrip Team has posted Python code for encoding and decoding the queries, including identifying random characters inserted into the queries at regular character intervals.</p>
+<p>One potential issue we encountered with their implementation is the inclusion of a check clause looking for a ‘0’ character in the encoded hostname (line 138 of the decoding script). This line causes the decoding algorithm to ignore any encoded hostnames that do not contain a ‘0’. We believe this was included because ‘0’ is the encoded value of a ‘0’, ‘.’, ‘-’ or ‘_’. Since fully qualified hostnames are comprised of multiple parts separated by ‘.’s, e.g. ‘example.com’, it makes sense to be expecting a ‘.’ in the unencoded hostname and therefore only consider encoded hostnames containing a ‘0’. However, this causes the decoder to ignore many of the recorded DGA domains.</p>
+<p>As we explain below, we believe that long domains are split across multiple queries where the second half is much shorter and unlikely to include a ‘.’. For example ‘www2.example.c’ takes up one message, meaning that in order to transmit the entire domain ‘www2.example.c’ a second message containing just ‘om’ would also need to be sent. This second message does not contain a ‘.’ so its encoded form does not contain a ‘0’ and it is ignored in the RedDrip team’s implementation.</p>
+<h3>The quirk: hostnames are split across multiple queries</h3>
+<p>A list of observed queries performed by the malware was published publicly on <a href="https://github.com/bambenek/research/blob/main/sunburst/uniq-hostnames.txt" target="_blank" rel="noopener noreferrer">GitHub</a>. Applying the decoding script to this set of queries, we see some queries appear to be truncated, such as <code>grupobazar.loca</code>, but also some decoded hostnames are curiously short or incomplete, such as “com”, “.com”, or a single letter, such as “m”, or “l”.</p>
+<p>When the hostname does not fit into the available payload section of the encoded query, it is split up across multiple queries. Queries are matched up by matching the GUID section after applying a byte-by-byte exclusive-or (xor).</p>
+<h3>Analysis of first 15 characters</h3>
+<p>Noticing that long domains are split across multiple requests led us to believe that the first 16 characters encoded information to associate multipart messages. This would allow the receiver on the other end to correctly re-assemble the messages and get the entire domain. The RedDrip team identified the first 15 bytes as a GUID, we focused on those bytes and will refer to them subsequently as the header.</p>
+<p>We found the following queries that we believed to be matches without knowing yet the correct pairings between message 1 and message 2 (payload has been altered):</p>
+<p><strong>Part 1 - Both decode to “www2.example.c”</strong><code>r1q6arhpujcf6jb6qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.comr8stkst71ebqgj66qqqb0trmuhd1r0ee.appsync-api.us-west-2.avsvmcloud.com</code></p>
+<p><strong>Part 2 - Both decode to “om”</strong><code>0oni12r13ficnkqb2h.appsync-api.us-west-2.avsvmcloud.comulfmcf44qd58t9e82h.appsync-api.us-west-2.avsvmcloud.com</code></p>
+<p>This gives us a final combined payload of <strong>www2.example.com</strong></p>
+<p>This example gave us two sets of messages where we were confident the second part was associated with the first part, and allowed us to find the following relationship where message1 is the header of the first message and message2 is the header of the second:</p>
+<p><code>_Base32Decode(message1) XOR KEY = Base32Decode(message2)_</code></p>
+<p>The KEY is a single character. That character is xor’d with each byte of the Base32Decoded first header to produce the Base32Decoded second header. We do not currently know how to infer what character is used as the key, but we can still match messages together without that information. Since A XOR B = C where we know A and C but not B, we can instead use A XOR C = B. This means that in order to pair messages together we simply need to look for messages where XOR’ing them together results in a repeating character (the key).</p>
+<p><em><code>Base32Decode(message1) XOR Base32Decode(message2) = KEY</code></em></p>
+<p>Looking at the examples above this becomes</p>
+<div id="html-block-k2b" class="html-block">
+	<style>
+		#html-block-k2b .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2b .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -149,7 +128,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2b .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -161,13 +140,13 @@
 			word-break: normal;
 		}
 
-		.tg .tg-wa1i {
+		#html-block-k2b .tg .tg-wa1i {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: middle
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2b .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
@@ -192,31 +171,35 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">110110010010000011010010000</span><br><span style="font-weight:400;font-style:normal;text-decoration:none">001000110110110100111100100</span><br><span style="font-weight:400;font-style:normal;text-decoration:none">00100011111111000000000100</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>We’ve truncated the results slightly, but below shows the two binary representations and the third line shows the result of the XOR.</p>
-	<p>101101000100110110111111011010010000000011001010111111011110001010011101110110010010000011010010000001000110110110100111100100001000111111110000011011010110110101101101011011010110110101101101011011010110110101101101</p>
-	<p>We can see the XOR result is the repeating sequence ‘01101101’meaning the original key was 0x6D or ‘m’.</p>
-	<p>We provide the following python code as an implementation for matching paired messages (Note: the decoding functions are those provided by the RedDrip team):</p>
-	<pre class="language-bash"><code class="language-bash"># string1 is the first 15 characters of the first message
-# string2 is the first 15 characters of the second message
-def is_match(string1, string2):
-    encoded1 = Base32Decode(string1)
-    encoded2 = Base32Decode(string2)
-    xor_result = [chr(ord(a) ^ ord(b)) for a,b in zip(encoded1, encoded2)]
-    match_char = xor_result[0]
-    for character in xor_result[0:9]:
-        if character != match_char:
-            return False, None
-    return True, "0x{:02X}".format(ord(match_char))</code></pre>
-	<p>The following are additional headers which based on the payload content Cloudflare is confident are pairs (the payload has been redacted because it contains hostname information that is not yet publicly available):</p>
-	<p><b>Example 1:</b></p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>We’ve truncated the results slightly, but below shows the two binary representations and the third line shows the result of the XOR.</p>
+<p>101101000100110110111111011010010000000011001010111111011110001010011101110110010010000011010010000001000110110110100111100100001000111111110000011011010110110101101101011011010110110101101101011011010110110101101101</p>
+<p>We can see the XOR result is the repeating sequence ‘01101101’meaning the original key was 0x6D or ‘m’.</p>
+<p>We provide the following python code as an implementation for matching paired messages (Note: the decoding functions are those provided by the RedDrip team):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># string1 is the first 15 characters of the first message</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># string2 is the first 15 characters of the second message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> is_match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string1,</span><span class="sk-032f62-99ffe4"> string2</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    encoded1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Base32Decode</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    encoded2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Base32Decode</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string2</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    xor_result</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [chr(ord(a) ^ ord(</span><span class="sk-6f42c1-ffc799">b</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> a,b in zip(</span><span class="sk-6f42c1-ffc799">encoded1,</span><span class="sk-032f62-99ffe4"> encoded2</span><span class="sk-24292e-fff">)]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    match_char</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> xor_result[0]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> character </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> xor_result[0:9</span><span class="sk-24292e-fff">]:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> character</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> match_char:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-032f62-99ffe4"> False,</span><span class="sk-032f62-99ffe4"> None</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> True,</span><span class="sk-032f62-99ffe4"> "0x{:02X}".format</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">ord(match_char</span><span class="sk-24292e-fff">))</span></span></code></pre>
+</div>
+<p>The following are additional headers which based on the payload content Cloudflare is confident are pairs (the payload has been redacted because it contains hostname information that is not yet publicly available):</p>
+<p><strong>Example 1:</strong></p>
+<div id="html-block-k2r" class="html-block">
+	<style>
+		#html-block-k2r .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2r .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -227,7 +210,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2r .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -239,7 +222,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2r .tg .tg-0lax {
 			font-size: 20px;
 			text-align: left;
 			vertical-align: top
@@ -256,16 +239,18 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">aob0ceh5l8cr6mco</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>xorkey: 0x4E</p>
-	<p><b>Example 2:</b></p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>xorkey: 0x4E</p>
+<p><strong>Example 2:</strong></p>
+<div id="html-block-k2w" class="html-block">
+	<style>
+		#html-block-k2w .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2w .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -276,7 +261,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2w .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -288,7 +273,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2w .tg .tg-0lax {
 			font-size: 20px;
 			text-align: left;
 			vertical-align: top
@@ -305,16 +290,18 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">aob0ceh5l8cr6mco</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>xorkey: 0x54</p>
-	<p><b>Example 3:</b></p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>xorkey: 0x54</p>
+<p><strong>Example 3:</strong></p>
+<div id="html-block-k31" class="html-block">
+	<style>
+		#html-block-k31 .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k31 .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -325,7 +312,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k31 .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -337,7 +324,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg .tg-60hs {
+		#html-block-k31 .tg .tg-60hs {
 			font-size: 20px;
 			text-align: left;
 			vertical-align: top
@@ -354,32 +341,29 @@ def is_match(string1, string2):
 				<td class="tg-60hs"><span style="font-weight:400;font-style:normal;text-decoration:none">6gpt7s654cfn4h6h</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>xorkey: 0x2B</p>
-	<p>We hypothesize that the xorkey can be derived from the header bytes and/or padding byte of the two messages, though we have not yet determined the relationship.</p>
-	<hr>
-	<div class="flex anchor relative">
-		<h2 id="update-12-18-2020">Update (12/18/2020):</h2>
-		<a href="https://blog.cloudflare.com/#update-12-18-2020" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Erik Hjelmvik posted a blog <a href="https://www.netresec.com/?page=Blog&amp;month=2020-12&amp;post=Reassembling-Victim-Domain-Fragments-from-SUNBURST-DNS" target="_blank" rel="noopener noreferrer">explaining where the xor key is located</a>. Based on his code, we provide a python implementation for converting the header (first 16 bytes) into the decoded GUID as a string. Messages can then be paired by matching GUID’s to reconstruct the full hostname.</p>
-	<pre class="language-bash"><code class="language-bash">def decrypt_secure_string(header):
-    decoded = Base32Decode(header[0:16])
-    xor_key = ord(decoded[0])
-    decrypted = ["{0:02x}".format(ord(b) ^ xor_key) for b in decoded]
-    return ''.join(decrypted[1:9])</code></pre>
-	<p>Updated example:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>xorkey: 0x2B</p>
+<p>We hypothesize that the xorkey can be derived from the header bytes and/or padding byte of the two messages, though we have not yet determined the relationship.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
+<h2>Update (12/18/2020):</h2>
+<p>Erik Hjelmvik posted a blog <a href="https://www.netresec.com/?page=Blog&amp;month=2020-12&amp;post=Reassembling-Victim-Domain-Fragments-from-SUNBURST-DNS" target="_blank" rel="noopener noreferrer">explaining where the xor key is located</a>. Based on his code, we provide a python implementation for converting the header (first 16 bytes) into the decoded GUID as a string. Messages can then be paired by matching GUID’s to reconstruct the full hostname.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> decrypt_secure_string</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">header</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    decoded</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Base32Decode</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">header[0:16]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    xor_key</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ord</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">decoded[0]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    decrypted</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"{0:02x}"</span><span class="sk-24292e-fff">.format(ord(b) ^ xor_key) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> b </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> decoded</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> ''.join</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">decrypted[1:9]</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Updated example:</p>
+<div id="html-block-k3h" class="html-block">
+	<style>
+		#html-block-k3h .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k3h .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -390,7 +374,7 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k3h .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -402,13 +386,13 @@ def is_match(string1, string2):
 			word-break: normal;
 		}
 
-		.tg .tg-wa1i {
+		#html-block-k3h .tg .tg-wa1i {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: middle
 		}
 
-		.tg .tg-0lax {
+		#html-block-k3h .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
@@ -444,5 +428,5 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">00f90bddb47e495629</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
+	</table>
 </div>

@@ -1,0 +1,121 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/stream-automatic-captions-with-ai">English</a>、<a href="https://blog.cloudflare.com/zh-tw/stream-automatic-captions-with-ai">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/stream-automatic-captions-with-ai">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/stream-automatic-captions-with-ai">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4s3m1Zca3fBe4M88XVnWNU/37928ef2ba267235d2484b0842a3870b/stream-automatic-captions-with-ai.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>お客様は、Streamの最新機能であるAIによるキャプション生成機能を使用することで、オンデマンド動画やライブストリーミングの録画中に、ワンクリックで簡単に動画のキャプションを生成することができるようになりました。この機能は、より良いインターネットの構築を支援するというCloudflareの使命の一環として、すべてのStreamのお客様に追加料金なしでご利用いただけます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZNOCnu9XDN7qU6CIDuysv/e297849f3d6bae5663bfae0866febbfe/image3-6.png" alt="" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>このソリューションはシンプルさを重視して設計されていることから、サードパーティ製の文字起こしサービスや複雑なワークフローは不要です。キャプションなどのアクセシビリティ機能がない動画の場合、特に大規模な動画ライブラリでは、手作業による文字起こしは時間がかかり、現実的ではありません。従来、音声をテキスト化して動画と一緒に配信して再生時に表示できるように、専門サービス、時には専用チームが関わっていました。倫理的義務、法令順守、視聴者の嗜好の変化など、さまざまな理由でキャプションがより広く期待されるようになったため、私たちはこの負担を軽減したいと考えました。</p>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Streamの統合ソリューション</a>を使用することで、キャプション生成プロセスが既存の動画管理ワークフローにシームレスに統合され、時間とリソースの節約が可能となります。いつアップロードした動画でも、自動キャプションを追加してアクセシビリティを高めることができます。キャプションは、Cloudflareダッシュボード内またはAPI呼び出しを介して、すべて使い慣れた統合されたStreamプラットフォーム内で生成できるようになっています。</p>
+	<p>この機能は、プライバシーとデータ保護を最大限に考慮して設計されています。外部エンティティとコンテンツを共有する可能性がある他のサードパーティ製の文字起こしサービスとは異なり、お客様のデータはキャプション生成プロセス中を通してCloudflareのエコシステム内に安全に保持されます。Cloudflareは、モデルのトレーニング目的のためにコンテンツを使用することはありません。データ保護の詳細については、<a href="https://developers.cloudflare.com/workers-ai/privacy" target="_blank" rel="noopener noreferrer">お客様のデータとWorkers AI</a>を確認してください。</p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">利用をはじめる</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本機能のベータ版は2024年6月20日より、すべてのStreamのお客様、およびProプランとBusinessプランをご契約のお客様にご利用いただけます。ベータ版には100分間の動画ストレージが含まれます。</p>
+	<p>まず、(Cloudflare <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">ダッシュボード</a>から<a href="https://developers.cloudflare.com/stream/uploading-videos/upload-video-file" target="_blank" rel="noopener noreferrer">、</a>または<a href="https://developers.cloudflare.com/stream/uploading-videos/upload-video-file" target="_blank" rel="noopener noreferrer">API</a>経由で)Streamに動画をアップロードします。</p>
+	<p>次に、動画の「キャプション」タブに移動し、「キャプションを追加」をクリックしてから、言語を選択して、「AIでキャプションを生成する」を選択します。最後に、「保存」をクリックすると、数分以内に、新しいキャプションがキャプションマネージャーに表示され、自動的にプレイヤーでも利用できるようになります。キャプションは<a href="https://developers.cloudflare.com/stream/edit-videos/adding-captions" target="_blank" rel="noopener noreferrer">APIを介して生成する</a>こともできます。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c92f8ddaa17659355d27401d20ca68e7/iframe?muted=true&amp;preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc92f8ddaa17659355d27401d20ca68e7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div><!--kg-card-end: html-->
+	<p>キャプションは通常、数分で生成されます。キャプションの準備ができると、Streamプレーヤーは自動的に更新され、ユーザーにキャプションを提供します。HLSとDASHマニフェストも更新されるため、テキストトラックをサポートするサードパーティ製のプレイヤーでも生成されたキャプションを表示できるようになります。</p>
+	<p>オンデマンドの動画やライブストリーミングの録画は、作成時期を問わずサポートされます。ベータ版では、2時間以内の動画に限定され、生成可能なキャプションは英語のみです。文字起こしの品質は、音声が明瞭で背景の雑音が最小限の動画で最も良い結果となります。</p>
+	<p>私たちのテストでは、AIモデルがさまざまなタイプのコンテンツをうまく文字起こししてくれたことに満足しています。とはいえ、完璧な結果とはいかない場合もあるため、ユースケースによっては別の方法の方が有効な場合があります。生成されたキャプションの精度がニーズに適しているかどうかを確認することが重要です。</p>
+	<div class="flex anchor relative">
+		<h2 id="technical-details">技術的な詳細</h2>
+		<a href="https://blog.cloudflare.com/#technical-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="built-using-workers-ai">Workers AIで構築</h3>
+		<a href="https://blog.cloudflare.com/#built-using-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Streamのエンジニアリングチームは、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>を使用してこの新機能を構築しました。これにより、1回のAPI呼び出しでオープンソースの自動音声認識モデルである<a href="https://developers.cloudflare.com/workers-ai/models/whisper" target="_blank" rel="noopener noreferrer">Whisper</a>モデルにアクセスできるようにしました。Workers AIを使用することで、追加作業なしにAIモデルのデプロイメント、統合、スケーリングを大幅に簡素化することができます。チームはインフラストラクチャの複雑性に対応する必要がなくなり、自動キャプション機能の構築のみに集中できるようになりました。</p>
+	<p>AIモデルを活用するソフトウェアの作成には、いくつかの課題が伴います。まず、適切なハードウェアインフラストラクチャを構成することの難しさがあります。AIモデルを効率的に実行するためには、膨大な計算リソースが必要であり、また、GPUなどの専用ハードウェアも必要とするため、高価で管理が複雑になる可能性があります。また、AIモデルを大規模にデプロイするという困難なタスクもあり、これには、ワークロード分散のバランスを取り、遅延を最小限に抑え、スループットを最適化し、高可用性を維持するという複雑さがあります。Workers AIは、基盤となるインフラストラクチャ管理の問題を解決するだけでなく、必要に応じて自動的にスケールします。</p>
+	<p>Workers AIにより、音声ファイルを文字起こしする困難な作業が30行にも満たないWorkerコードになりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="quickly-captioning-videos-at-scale">大規模な動画への迅速なキャプションの付加</h3>
+		<a href="https://blog.cloudflare.com/#quickly-captioning-videos-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-typescript"><code class="language-typescript">import { Ai } from '@cloudflare/ai'
+
+
+export interface Env {
+ AI: any
+}
+
+
+export type AiVTTOutput = {
+ vtt?: string
+}
+
+
+export default {
+ async fetch(request: Request, env: Env) {
+   const blob = await request.arrayBuffer()
+
+
+   const ai = new Ai(env.AI)
+   const input = {
+     audio: [...new Uint8Array(blob)],
+   }
+
+
+   try {
+     const response: AiVTTOutput = (await ai.run(
+       '@cf/openai/whisper-tiny-en',
+       input
+     )) as any
+     return Response.json({ vtt: response.vtt })
+   } catch (e) {
+     const errMsg =
+       e instanceof Error
+         ? `${e.name}\n${e.message}\n${e.stack}`
+         : 'unknown error type'
+     return new Response(`${errMsg}`, {
+       status: 500,
+       statusText: 'Internal error',
+     })
+   }
+ },
+}</code></pre>
+	<p>Streamチームはこの機能を大規模動画に対して高速かつ高性能にしたいと考えていました。これを実現するために、大量の動画を再生時間に関係なく処理できるようにするためのエンジニアリング作業が必要でした。</p>
+	<p>まず、わたしたちのチームは、入力がWhisperの入力フォーマットと要件に適合することを確認するために、<a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">AI推論</a>を実行する前に音声を事前処理する必要がありました。</p>
+	<p>動画コンテンツには、携帯電話で撮影された短時間の粒度の粗い動画から、ハリウッドで制作された数時間にわたる高画質の映画まで、幅広いバリエーションが存在します。動画には無音のものや、アクションによって生じた雑音が含まれているものもあります。また、Streamのオンデマンド動画にはライブストリームの録画が含まれますが、ファイル全体としてアップロードされた動画とはパッケージ化が異なるものになっています。この可変性により、音声入力はさまざまなコンテナフォーマットで様々な持続時間、様々なファイルサイズで保存されます。私たちは、私たちの音声ファイルがWhisperの要件に適合する適切な形式にフォーマットされていることを確認しました。</p>
+	<p>前処理の1つの側面は、最適な推論のためにファイルの長さを適切に保つことです。Whisperでは文字起こしのために音声ファイルの長さは「30秒」が最適であるとされています。<a href="https://github.com/openai/whisper/discussions/1118" target="_blank" rel="noopener noreferrer">Githubでのディスカッション</a>の中で、_「短すぎると周囲の文脈が不足し、文章が途中で切れ、多くの場合意味をなさなくなります。長すぎるとモデルが追跡すべき意味の複雑さを保持するために、ますます大きなモデルが必要になる、ますます大きなモデルが必要になります。」と記されています。_幸いなことに、Streamはすでに動画を小さなセグメントに分割して、Webでの再生中に高速配信を実現しています。私たちはWorkers AIに送信する前に、これらの小さなセグメントを30秒のバッチに連結する機能を作成しました。</p>
+	<p>処理速度を最適化するために、私たちのチームは可能な限り多くの操作をパラレル化しました。30秒の音声バッチの作成とWorkers AIへのリクエスト送信を同時に行うことで、Workers AIプラットフォームのスケーラビリティを最大限に活用します。これにより、キャプション生成にかかる時間は大幅に短縮されますが、多少の複雑性が増すことになります。Workers AIへのリクエストの送信は並行して行われるため、文字起こしの応答が順不同で届く可能性があります。たとえば、動画の長さが1分の場合、動画の後半30秒のキャプション生成リクエストが、動画の前半30秒のリクエストより早く完了することがあります。キャプションは順次動画と整合する必要があるため、当社のチームは最終的な<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API" target="_blank" rel="noopener noreferrer">WebVTTキャプションファイル</a>が動画と適切に同期するように、音声のバッチ順序を把握し続ける必要がありました。受信したWorkers AIの応答を並べ替えて、最終的な正確な文字起こしのためにタイムスタンプの順序を再配置します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hAKps3VE8xMCHQX99y7th/28e47409eb8ed6e794683c878e4c0c32/image1-17.png" alt="" class="kg-image" width="1440" height="677" loading="lazy">
+
+	</figure>
+	<p>その結果、より長い動画のキャプションを迅速かつ効率的に大規模に生成できるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-now">今すぐお試しください！</h2>
+		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日、すべての契約者と<a href="https://www.cloudflare.com/plans/pro" target="_blank" rel="noopener noreferrer">Pro</a>プランおよび<a href="https://www.cloudflare.com/plans/business" target="_blank" rel="noopener noreferrer">Business</a>プランのお客様にこの機能をオープンベータとして提供できることを嬉しく思います。まずは<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">Streamに動画をアップロード</a>してこの機能を体験してください。チュートリアルやベータ版の制限に関する情報は、<a href="https://developers.cloudflare.com/stream/edit-videos/adding-captions" target="_blank" rel="noopener noreferrer">当社のドキュメント</a>をご覧ください。今後は、対応言語の追加と、より長い動画のサポートに注力する予定です。</p>
+</div>

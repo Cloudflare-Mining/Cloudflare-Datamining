@@ -1,0 +1,78 @@
+<div class="mb2 gray5">2分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/threats-lurking-office-365-cloudflare-email-retro-scan">English</a>、<a href="https://blog.cloudflare.com/zh-tw/threats-lurking-office-365-cloudflare-email-retro-scan">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/threats-lurking-office-365-cloudflare-email-retro-scan">Français</a>、<a href="https://blog.cloudflare.com/de-de/threats-lurking-office-365-cloudflare-email-retro-scan">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/threats-lurking-office-365-cloudflare-email-retro-scan">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/threats-lurking-office-365-cloudflare-email-retro-scan">Português</a>、<a href="https://blog.cloudflare.com/es-es/threats-lurking-office-365-cloudflare-email-retro-scan">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/threats-lurking-office-365-cloudflare-email-retro-scan">Рyсский</a>、<a href="https://blog.cloudflare.com/pl-pl/threats-lurking-office-365-cloudflare-email-retro-scan">Polski</a>、<a href="https://blog.cloudflare.com/he-il/threats-lurking-office-365-cloudflare-email-retro-scan">עברית</a>、<a href="https://blog.cloudflare.com/zh-cn/threats-lurking-office-365-cloudflare-email-retro-scan">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RWybqXkpJAhDWm5j7VHFO/44ff0b256bc8947caa6645fac09ddbec/threats-lurking-office-365-cloudflare-email-retro-scan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>この度、Cloudflareをご利用のお客様向けに、Office 365の受信トレイ内の古いメッセージをスキャンして脅威を検出する機能を発表しました。このRetro Scanでは、その時点でメールセキュリティツールが見逃している脅威を7日14日前にさかのぼり確認できます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ev0RiZp3HLU82CLkO5CFW/d91c85faf8cccb3040fc99cbc70c90e2/image6-9.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-run-a-retro-scan">Retro Scanを実行する理由</h2>
+		<a href="https://blog.cloudflare.com/#why-run-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様と話していると、組織のメールボックスの状況を把握していないという声をよく耳にします。組織は<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">メールセキュリティツール</a>を導入しているか、Microsoftの組み込み保護機能を使用していますが、現在のソリューションがどの程度効果的なのかを理解していません。このようなツールは、悪意のあるメールをフィルターに通してしまうことが多く、社内の情報漏洩リスクを高めていることがわかります。</p>
+	<p>より良いインターネットの構築を支援するため、Cloudflareのお客様向けに、当社の高度な機械学習モデルを使用して受信トレイ内のメッセージをスキャンできるよう、Retro Scanを無料で利用できるようにしました。Retro Scanは、発見された脅威を検出し、ハイライト表示することで、お客様がメールアカウント内で対処して受信トレイをクリーンアップできるようにします。この情報により、お客様はCloudflareやお客様が希望するソリューションの使用など、今後同様の脅威がメールボックスに到達するのを防ぐための追加的な制御を実施することもできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="running-a-retro-scan">Retro Scanの実行</h2>
+		<a href="https://blog.cloudflare.com/#running-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様はCloudflareのダッシュボードに移動し、[エリア1]タブの下にあるRetro Scanオプションを確認できます。</p>
+	<p>スキャンするメッセージにアクセスできるようにするには、Cloudflareがメッセージをスキャンできるようにするための認証が必要です。Cloudflareにメッセージをスキャンする適切な権限を与えることでこのプロセスを開始します。2つ目の認証は、CloudflareアプリがActive Directoryにアクセスすることを許可します。これは、組織内のどのユーザーが、どのグループに属しているかを理解するために必要であり、メッセージが悪意のあるものであるかどうかをアルゴリズムがより適切に評価するのに役立ちます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ts8XaDTCCbeQnXHaLcDvB/f14d668e9c7f3b2350fc8daf41d0f902/image4-20.png" alt="" class="kg-image" width="1921" height="1080" loading="lazy">
+
+	</figure>
+	<p>すべての承認が完了したら、最後のステップとして、スキャンするドメインを選択し、受信トレイを保護している他のメールセキュリティベンダーの情報を提供してください。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Jy3hy3WT81WeaLMs5hXpv/d359be11ce51116fc2fdaef3c1876f95/image1-43.png" alt="" class="kg-image" width="1177" height="825" loading="lazy">
+
+	</figure>
+	<p>最後にお客様が「Generate Retro Scan」（Retro Scanを開始）をクリックすると、Cloudflare Area 1 Email Securityが古いメッセージのスキャンを開始します。このプロセスには時間がかかるため、スキャンが完了したらお客様にメールでお知らせします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Cw3b6VsrjNmVnE22P7YwY/772455c6d46e0816bc99718cffa51c78/image5-12.png" alt="" class="kg-image" width="1096" height="896" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="analyzing-the-results">結果の分析</h2>
+		<a href="https://blog.cloudflare.com/#analyzing-the-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>お客様の組織のメール受信トレイの中にどのような脅威があるのか、簡単な内訳が表示されます。一番上のセクションは、すべての検出をタイプ別に分類したものです。ここでは、悪意のあるメッセージ、疑わしいメッセージ、なりすましメッセージ、スパムメッセージ、バルクメッセージの数を確認できます。また、フィッシュメールの中で最も重要なものも取り上げています。[検索]ボタンをクリックすると、そのラベルの付いたメールの詳細情報を得ることができます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bqwVJ4a0Pp3bwc4tSeCoI/9b7e128161f2327595430f01dea10172/Screenshot-2023-09-28-at-8.59.52-PM.png" alt="" class="kg-image" width="1200" height="1106" loading="lazy">
+
+	</figure>
+	<p>また、このレポートでは、標的となる従業員のトップと、脅威の発生源として最も多い場所も紹介しています。これらの統計はすべて、お客様の受信トレイ内で何が起こっているかをよりよく理解するためのものです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qYK2pXMDnaoZqPvidj3oP/d7459545d59847c80ff16d5b9a73d364/Screenshot-2023-09-28-at-9.01.37-PM.png" alt="" class="kg-image" width="1228" height="712" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="how-to-sign-up">サインアップの方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-sign-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Retro Scanは現在クローズドベータ中です。Office 365メールドメインのRetro Scanにご興味がある方は、Cloudflareの担当者にご連絡ください。お客様のアカウントに追加いたします。</p>
+	<p>Retro Scanを実行し、その結果を確認した後、Cloudflare Area 1を購入して今後の脅威が受信トレイに侵入するのを防ぐか、Area 1製品の30日間無料トライアルであるフィッシングリスク評価を設定するかを選択することができます。Retro Scanは潜在的な脅威を確認するのに最適なツールですが、フィッシングリスク評価はメールボックスをクリーンな状態に保つために使用している全てのツールを把握しやすくするのに役立ちます。</p>
+	<p>Retro Scanレポートの下部にある「Request Trial」（トライアルを希望）ボタンをクリックし、対応するフォームにご記入ください。Cloudflareの担当者がご連絡いたします。または、Cloudflareの担当者に直接ご連絡ください。</p>
+</div>

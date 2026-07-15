@@ -1,0 +1,241 @@
+<div class="mb2 gray5">9 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">English</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">Français</a>, <a href="https://blog.cloudflare.com/de-de/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oWX173TYNYhwBecZAf7lU/a9bc6be9b7687ba354e9db1f46f0e685/BLOG-2586_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Desde principios de septiembre, <a href="https://developers.cloudflare.com/ddos-protection/about/components/#autonomous-edge" target="_blank" rel="noopener noreferrer"><u>los sistemas de protección contra DDoS de Cloudflare</u></a> han estado combatiendo una campaña de un mes de duración de ataques DDoS hipervolumétricos a las capas 3 y 4. Las soluciones de protección de Cloudflare mitigaron más de cien ataques DDoS hipervolumétricos a las capas 3/4 a lo largo del mes. Muchos de estos ataques superaron los 2000 millones de paquetes por segundo y los 3 terabits por segundo (Tb/s). El mayor ataque alcanzó un máximo de 3,8 Tb/s, el mayor ataque revelado públicamente por una organización. La detección y la mitigación fueron totalmente autónomas. Los gráficos siguientes representan dos ataques distintos dirigidos al mismo cliente de Cloudflare y que se mitigaron de forma autónoma.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7hXUgmEd37kzZrMs0KPXLl/21a4779022bdff91f760dc66759eb955/BLOG-2586_2.png" alt="BLOG-2586 2" class="kg-image" width="1999" height="922" loading="lazy">
+	</figure>
+	<p><i>Un ataque DDoS mitigado de 3,8 terabits por segundo que duró 65 segundos</i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uxvtlkdFoH6KU6waXxK3o/d17fe7cf0e33c20e64a47b3ca0e6ca63/BLOG-2586_3.png" alt="BLOG-2586 3" class="kg-image" width="1999" height="1076" loading="lazy">
+	</figure>
+	<p><i>Un ataque DDoS mitigado de 2140 millones de paquetes por segundo que duró 60 segundos</i></p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-customers-are-protected">Los clientes de Cloudflare están protegidos</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-customers-are-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los clientes de Cloudflare que utilizan los servicios de proxy inverso HTTP de Cloudflare (por ejemplo, el <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer"><u>WAF de Cloudflare</u></a> y la <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer"><u>CDN de Cloudflare</u></a>) están protegidos automáticamente.</p>
+	<p>Los clientes de Cloudflare que utilizan <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a> y <a href="https://developers.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer"><u>Magic Transit</u></a> también están protegidos automáticamente. Los clientes de Magic Transit pueden optimizar aún más su protección implementando reglas de &nbsp;<a href="https://developers.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer"><u>Magic Firewall</u></a> para aplicar un estricto modelo de seguridad positiva y negativa en la capa de paquetes.</p>
+	<div class="flex anchor relative">
+		<h2 id="other-internet-properties-may-not-be-safe">Puede que otras propiedades de Internet no estén protegidas</h2>
+		<a href="https://blog.cloudflare.com/#other-internet-properties-may-not-be-safe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La escala y la frecuencia de estos ataques no tienen precedentes. Debido a su gran tamaño y sus altas velocidades de bits/paquetes por segundo, estos ataques tienen la capacidad de interrumpir tanto las propiedades de Internet desprotegidas como las propiedades de Internet protegidas por equipos locales o por proveedores en la nube que simplemente carecen de la capacidad de red o de la cobertura global necesarias para gestionar estos volúmenes junto con el tráfico legítimo sin afectar al rendimiento.&nbsp;</p>
+	<p>Sin embargo, Cloudflare tiene la capacidad de red, la cobertura global y los sistemas inteligentes necesarios para absorber y mitigar automáticamente estos enormes ataques.&nbsp;</p>
+	<p>En esta publicación del blog, revisaremos la campaña de ataques y por qué sus ataques son tan graves. Describiremos la anatomía de un ataque DDoS a la capa 3/4, sus objetivos y cómo se generan los ataques. A continuación, detallaremos cómo los sistemas de Cloudflare fueron capaces de detectar y mitigar de forma autónoma estos enormes ataques sin afectar al rendimiento de nuestros clientes. Describiremos los aspectos clave de nuestras soluciones de protección, desde cómo nuestros sistemas generan firmas en tiempo real (dinámicas) para correlacionar el tráfico de ataque hasta cómo aprovechamos las funciones del kernel para descartar paquetes a velocidad de cable.</p>
+	<div class="flex anchor relative">
+		<h2 id="campaign-analysis">Análisis de la campaña</h2>
+		<a href="https://blog.cloudflare.com/#campaign-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hemos observado esta campaña de ataques dirigida a varios clientes de los sectores de servicios financieros, Internet y telecomunicaciones, entre otros. Esta campaña de ataques tiene como objetivo saturar el ancho de banda y agotar los recursos de las aplicaciones y los dispositivos en línea.</p>
+	<p>Los ataques utilizaron principalmente <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer"><u>UDP</u></a> en un puerto fijo. Provenían de todo el mundo, pero la mayor parte de ellos procedían de Vietnam, Rusia, Brasil, España y Estados Unidos.&nbsp;</p>
+	<p>Los ataques de alta velocidad de paquetes parecen originarse en varios tipos de dispositivos en riesgo, como dispositivos MikroTik, DVR y servidores web, orquestados para trabajar en conjunto e inundar el objetivo con volúmenes de tráfico excepcionalmente grandes. Los ataques de alta velocidad de bits parecen originarse en un gran número de enrutadores domésticos ASUS comprometidos, probablemente explotados mediante <a href="https://censys.com/june-20-improper-authentication-vulnerability-in-asus-routers" target="_blank" rel="noopener noreferrer"><u>una vulnerabilidad CVE 9.8 (crítica) que Censys descubrió recientemente</u></a>.</p>
+	<div style="margin-left:0pt;" dir="ltr" align="left">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+				<colgroup>
+					<col style="width:50%;" width="344">
+					<col style="width:50%;" width="100">
+				</colgroup>
+				<tbody>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Rusia</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">12,1 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Vietnam</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">11,6 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Estados Unidos</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">9,3 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">España</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">6,5 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Brasil</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4,7 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Francia</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4,7 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Rumanía</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4,4 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Taiwán</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3,4 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:19.5pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Reino Unido</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3,3 %</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:15.75pt;">
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Italiano</span></span></p>
+						</td>
+						<td style="border-color:#cccccc;border-width:0.75pt;overflow-wrap:break-word;overflow:hidden;padding:2pt;vertical-align:bottom;">
+							<p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;text-align:right;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2,8 %</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<p><sup><i>Porcentaje de paquetes observados por ubicación de origen</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="anatomy-of-ddos-attacks">Anatomía de los ataques DDoS</h2>
+		<a href="https://blog.cloudflare.com/#anatomy-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Antes de analizar cómo Cloudflare detectó y mitigó automáticamente los mayores ataques DDoS jamás vistos, es importante comprender los conceptos básicos de los ataques DDoS.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HLtAHnyjS33iiJAR1B9h9/2e1fc2cab871440fc95fa803989ae156/BLOG-2586_5.png" alt="BLOG-2586 5" class="kg-image" width="1190" height="830" loading="lazy">
+	</figure>
+	<p><i>Diagrama simplificado de un ataque DDoS</i></p>
+	<p>El objetivo de un <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataque de denegación de servicio distribuido (DDoS)</u></a> es denegar a los usuarios legítimos el acceso a un servicio. Para ello, los atacantes agotan los recursos que se necesitan para proporcionar el servicio. En el contexto de estos recientes ataques DDoS a las capas 3/4, ese recurso son los ciclos de CPU y el ancho de banda de la red.</p>
+	<div class="flex anchor relative">
+		<h3 id="exhausting-cpu-cycles">Agotamiento de los ciclos de CPU</h3>
+		<a href="https://blog.cloudflare.com/#exhausting-cpu-cycles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El procesamiento de un paquete consume ciclos de CPU. En el caso del tráfico normal (no de ataque), la recepción de un paquete <i>legítimo</i> en un servicio hará que ese servicio realice alguna acción, y distintas acciones requieren distintas cantidades de procesamiento de la CPU. Sin embargo, antes de la entrega de un paquete a un servicio, cada paquete requiere realizar ciertas tareas. Es necesario analizar y procesar los encabezados de los paquetes de la capa 3 para entregar el paquete a la máquina y la interfaz correctas. Los encabezados de los paquetes de la capa 4 deben procesarse y enrutarse al socket correcto (si lo hay). Puede haber varios pasos de procesamiento adicionales que inspeccionen cada paquete. Por lo tanto, si la velocidad de envío de paquetes de un ataque es suficientemente alta, puede potencialmente saturar los recursos de CPU disponibles, por lo que se denegará el servicio a los usuarios legítimos.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aBbNG4Fc7TY6MTugLl3BE/064fb17761aebbce737a5a4518a14235/BLOG-2586_6.png" alt="BLOG-2586 6" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p>Para protegerte contra los ataques de alta velocidad de paquetes, debes poder inspeccionar y descartar los paquetes malos utilizando el menor número posible de ciclos de CPU, dejando suficiente CPU para procesar los paquetes buenos. También tienes la opción de adquirir más CPU, o más rápidas, para realizar el procesamiento, pero ese puede ser un proceso muy largo que conlleva altos costes.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="exhausting-network-bandwidth">Agotamiento del ancho de banda de la red</h3>
+		<a href="https://blog.cloudflare.com/#exhausting-network-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El ancho de banda de la red es la cantidad total de datos que se pueden entregar a un servidor cada vez. Puedes pensar en el ancho de banda como un conducto para transportar agua. La cantidad de agua que podemos suministrar a través de una pajita es menor que la que podríamos suministrar a través de una manguera de jardín. Si un atacante es capaz de introducir más datos basura en el conducto de los que este puede entregar, tanto los datos malos <i>como</i> los buenos se descartarán en la parte superior, en la entrada del conducto, y el ataque DDoS habrá logrado su objetivo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OehVItOhGfP9ApllRvDDM/fce73e6f375173a1a53bc22026e0b9b1/BLOG-2586_7.png" alt="BLOG-2586 7" class="kg-image" width="1200" height="675" loading="lazy">
+	</figure>
+	<p>
+		La protección contra los ataques que pueden saturar el ancho de banda de la red puede ser difícil porque es muy poco lo que se puede hacer si se está en la parte inferior del conducto saturado. En realidad, tienes muy pocas opciones: puedes conseguir un conducto más grande, puedes encontrar potencialmente una forma de mover el tráfico bueno a un nuevo conducto que no esté saturado o, con suerte. puedes pedir a la parte superior del conducto que deje de enviar algunos o todos los datos al conducto.</p>
+	<div class="flex anchor relative">
+		<h2 id="generating-ddos-attacks">Generación de ataques DDoS</h2>
+		<a href="https://blog.cloudflare.com/#generating-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si pensamos en lo que esto significa desde el punto de vista de los atacantes, te darás cuenta de que existen limitaciones similares. Al igual que se necesitan ciclos de CPU para recibir un paquete, también se necesitan ciclos de CPU para crearlo. Si, por ejemplo, el coste de enviar y recibir un paquete fuera el mismo, el atacante necesitaría la misma cantidad de potencia de CPU para generar el ataque que nosotros para defendernos de él. En la mayoría de los casos, esto no es cierto: hay una asimetría de costes, ya que el atacante es capaz de generar paquetes utilizando menos ciclos de CPU de los que se necesitan para recibir esos paquetes. Sin embargo, cabe señalar que la generación de ataques no es gratuita y puede requerir una gran cantidad de potencia de la CPU.</p>
+	<p>Saturar el ancho de banda de la red puede ser aún más difícil para un atacante. En este caso, el atacante necesita poder generar más ancho de banda del que ha asignado el servicio de destino. En realidad, necesita poder superar la capacidad del servicio receptor. Esto es tan difícil que la forma más común de lograr un ataque de ancho de banda de red es utilizar un método de ataque de reflexión/amplificación, por ejemplo, un <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer"><u>ataque de amplificación de DNS</u></a>. Estos ataques permiten al atacante enviar un paquete pequeño a un servicio intermedio, y el servicio intermedio enviará un paquete grande a la víctima.</p>
+	<p>En ambos escenarios, el atacante necesita adquirir u obtener acceso a muchos dispositivos para generar el ataque. Estos dispositivos se pueden adquirir de distintas maneras. Pueden ser máquinas de clase servidor de proveedores de nube o servicios de alojamiento, o pueden ser dispositivos en riesgo como DVR, enrutadores y cámaras web que han sido infectados con el malware del atacante. Estas máquinas juntas forman la botnet.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-defends-against-large-attacks">Cómo Cloudflare protege contra los ataques a gran escala</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-defends-against-large-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ahora que entendemos los fundamentos de cómo funcionan los ataques DDoS, podemos explicar cómo Cloudflare puede proteger contra estos ataques.</p>
+	<div class="flex anchor relative">
+		<h3 id="spreading-the-attack-surface-using-global-anycast">Ampliación de la superficie de ataque mediante Anycast global</h3>
+		<a href="https://blog.cloudflare.com/#spreading-the-attack-surface-using-global-anycast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El primer ingrediente no tan secreto es que la red de Cloudflare se basa en <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>Anycast</u></a>. En resumen, Anycast permite que varias máquinas de cualquier parte del mundo anuncien una única dirección IP. Un paquete enviado a esa dirección IP lo servirá la máquina más cercana. Esto significa que cuando un atacante utiliza su botnet distribuida para lanzar un ataque, el ataque se recibirá de forma distribuida en toda la red de Cloudflare. Un DVR infectado en Dallas, Texas, enviará paquetes a un servidor de Cloudflare en Dallas. Una cámara web infectada en Londres enviará paquetes a un servidor de Cloudflare en Londres.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48tW6A6ACUT4Fd9h3l70F4/c6bcea8f037fc853477d0987c939e007/BLOG-2586_8.png" alt="BLOG-2586 8" class="kg-image" width="1999" height="1880" loading="lazy">
+	</figure>
+	<p><i>Redes Anycast vs Unicast</i></p>
+	<p>Además, nuestra red Anycast permite a Cloudflare asignar recursos informáticos y de ancho de banda más cerca de las regiones que más los necesitan. Las regiones densamente pobladas generarán mayores cantidades de tráfico legítimo, y los centros de datos ubicados en esas regiones tendrán más recursos de ancho de banda y de CPU para satisfacer esas necesidades. Las regiones escasamente pobladas generarán naturalmente menos tráfico legítimo, por lo que los centros de datos de Cloudflare en esas regiones se pueden dimensionar adecuadamente. Dado que el tráfico de ataque procede principalmente de dispositivos en riesgo, estos dispositivos tenderán a distribuirse de forma que coincida con los flujos de tráfico normales, enviando el tráfico de ataque de forma proporcional a los centros de datos que puedan gestionarlo. De la misma forma, en el centro de datos el tráfico se distribuye entre varias máquinas.</p>
+	<p>Además, para los ataques de ancho de banda alto, la red de Cloudflare ofrece otra ventaja. Una gran proporción del tráfico en la red de Cloudflare no consume ancho de banda de forma simétrica. Por ejemplo, una solicitud HTTP para obtener una página web de un sitio detrás de Cloudflare será un paquete entrante relativamente pequeño, pero devolverá una mayor cantidad de tráfico saliente al cliente. Esto significa que la red de Cloudflare tiende a enviar mucho más tráfico legítimo del que recibimos. No obstante, los enlaces de red y el ancho de banda asignado son simétricos, lo que significa que hay mucho ancho de banda de entrada disponible para recibir el tráfico de ataque volumétrico.</p>
+	<div class="flex anchor relative">
+		<h3 id="generating-real-time-signatures">Generación de firmas en tiempo real</h3>
+		<a href="https://blog.cloudflare.com/#generating-real-time-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cuando llegas a un servidor individual dentro de un centro de datos, el ancho de banda del ataque se ha distribuido lo suficiente como para que ninguno de los enlaces ascendentes esté saturado. Eso no significa que el ataque se haya detenido por completo, ya que no hemos descartado los paquetes maliciosos. Para ello, debemos obtener una muestra del tráfico, calificar un ataque y crear reglas para bloquear los paquetes maliciosos.&nbsp;</p>
+	<p>El encargado de obtener una muestra del tráfico y de descartar los paquetes malos es nuestro componente <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations"><u>l4drop</u></a>, que utiliza <a href="https://netdevconf.info/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank" rel="noopener noreferrer"><u>XDP (eXpress Data Path)</u></a> y aprovecha una versión ampliada de Berkeley Packet Filter, <a href="https://blog.cloudflare.com/tag/ebpf"><u>eBPF (BFP ampliado)</u></a>. Esto nos permite ejecutar código personalizado en el espacio del kernel y procesar (descartar, reenviar o modificar) cada paquete directamente en el nivel de la tarjeta de interfaz de red (NIC). Este componente ayuda al sistema a descartar paquetes de forma eficiente sin consumir excesivos recursos de CPU en la máquina.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NUxGTvKFs5l6G2UCSxvqw/3632f6728f9361123169d9694c807f0b/BLOG-2586_9.png" alt="BLOG-2586 9" class="kg-image" width="1999" height="1362" loading="lazy">
+	</figure>
+	<p><i>Descripción general del sistema de protección contra DDoS de Cloudflare</i></p>
+	<p>Utilizamos XDP para muestrear los paquetes y buscar atributos sospechosos que indiquen un ataque. Las muestras incluyen campos como la dirección IP de origen, el puerto de origen, la dirección IP de destino, el puerto de destino, el protocolo, los indicadores TCP, el número de secuencia, las opciones, la velocidad de paquetes y más. Este análisis lo realiza el <i>daemon de denegación de servicio (dosd). Dosd</i> es nuestro ingrediente secreto. Tiene muchos <i>filtros</i> que le indican, en función de nuestra heurística seleccionada, cuándo iniciar la mitigación. Para nuestros clientes, estos filtros se agrupan lógicamente por vectores de ataque y se exponen como <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer"><u>reglas administradas de DDoS</u></a>. Nuestros clientes pueden <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules" target="_blank" rel="noopener noreferrer"><u>personalizar su comportamiento</u></a> en cierta medida, según sea necesario.</p>
+	<p>Conforme recibe muestras de XDP, dosd generará múltiples permutaciones de huellas digitales para detectar patrones de tráfico sospechosos. A continuación, mediante un algoritmo de transmisión de datos, dosd identificará las huellas digitales óptimas para mitigar el ataque. Una vez calificado el ataque, dosd insertará una regla de mitigación en línea como un programa eBPF para descartar quirúrgicamente el tráfico de ataque.&nbsp;</p>
+	<p>dosd realiza la detección y la mitigación de los ataques a nivel de servidor, a nivel de centro de datos y a nivel global, y todo ello definido por el software. Por esta razón, nuestra red es extremadamente resistente y ofrece una mitigación casi instantánea. No hay "centros de depuración" o "dispositivos de depuración" fuera de ruta. En su lugar, cada servidor ejecuta la pila completa del conjunto de productos de Cloudflare, incluido el componente de detección y mitigación de DDoS. Todo se hace de forma autónoma. Cada servidor también realiza la <i>transmisión (multidifusión)</i> de las instrucciones de mitigación dentro de un centro de datos entre servidores, y globalmente entre centros de datos. Esto garantiza que, ya sea un ataque localizado o distribuido globalmente, dosd ya habrá instalado reglas de mitigación en línea para garantizar una mitigación eficaz.</p>
+	<div class="flex anchor relative">
+		<h2 id="strong-defenses-against-strong-attacks">Protección eficaz contra los ataques de gran envergadura</h2>
+		<a href="https://blog.cloudflare.com/#strong-defenses-against-strong-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nuestros sistemas de detección y mitigación de DDoS, autónomos y definidos por software, se ejecutan en toda nuestra red. En esta publicación nos hemos centrado principalmente en nuestras capacidades de huellas digitales dinámicas, pero nuestros recursos de protección van mucho más allá. El sistema de <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection" target="_blank" rel="noopener noreferrer"><u>protección TCP avanzada</u></a> y el sistema de <a href="https://developers.cloudflare.com/ddos-protection/dns-protection" target="_blank" rel="noopener noreferrer"><u>protección DNS avanzada</u></a> funcionan junto con nuestra huella digital dinámica para identificar los ataques DDoS sofisticados y altamente aleatorios basados en TCP y también aprovechan el análisis estadístico para impedir los ataques DDoS complejos basados en DNS. Nuestras soluciones de protección también incorporan información sobre amenazas en tiempo real, perfiles de tráfico y clasificación de aprendizaje automático como parte de nuestra <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer"><u>protección adaptable contra DDoS</u></a> para la mitigación de las anomalías de tráfico.&nbsp;</p>
+	<p>Combinados, estos sistemas, junto con toda la cartera de soluciones de seguridad de Cloudflare, se han desarrollado sobre la red de Cloudflare, una de las redes más grandes del mundo, para garantizar la protección de nuestros clientes contra los mayores ataques del mundo.</p>
+</div>

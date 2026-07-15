@@ -1,0 +1,213 @@
+<div class="mb2 gray5">Lettura di 6 min</div>
+<div class="mt4">Questo post è disponibile anche in <a href="https://blog.cloudflare.com/code-mode-mcp">English</a>, <a href="https://blog.cloudflare.com/zh-tw/code-mode-mcp">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/code-mode-mcp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/code-mode-mcp">한국어</a>, <a href="https://blog.cloudflare.com/vi-vn/code-mode-mcp">Tiếng Việt</a> e <a href="https://blog.cloudflare.com/zh-cn/code-mode-mcp">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YAHY3FwNCFMGMYtIDuri7/139b77ff4e1b71ca706af22064222f67/images_BLOG-3184_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Il <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol (MCP)</u></a> è diventato il modo standard per gli agenti IA di utilizzare strumenti esterni. Ma c'è una tensione al suo interno: gli agenti hanno bisogno di molti strumenti per svolgere un lavoro utile, ma ogni strumento aggiunto riempie la finestra di contesto del modello, lasciando meno spazio per il compito effettivo. </p>
+	<p><a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a> è una tecnica che abbiamo introdotto per la prima volta per ridurre l'utilizzo della finestra di contesto durante l'uso dello strumento agente. Invece di descrivere ogni operazione come uno strumento separato, lascia che il modello scriva codice su un SDK tipizzato ed esegua il codice in modo sicuro in un <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker Loader</u></a>. Il codice funge da piano compatto. Il modello può esplorare le operazioni degli strumenti, comporre più chiamate e restituire solo i dati di cui ha bisogno. Anthropic ha esplorato in modo indipendente lo stesso modello nel suo post <a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener noreferrer"><u>Esecuzione del codice con MCP</u></a>.</p>
+	<p>Oggi presentiamo <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>un nuovo server MCP</u></a> per <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer"><u>l'intera API Cloudflare</u></a>, da <a href="https://developers.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a> e <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Zero Trust</u></a> a <a href="https://workers.cloudflare.com/product/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> e <a href="https://workers.cloudflare.com/product/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, che utilizza Code Mode. Con solo due strumenti, search() ed execute(), il server è in grado di fornire l'accesso all'intera API di Cloudflare su MCP, consumando solo circa 1.000 token. L'impronta rimane fissa, indipendentemente dal numero di endpoint API esistenti.</p>
+	<p>Per un'API di grandi dimensioni come l'API Cloudflare, Code Mode riduce il numero di token di input utilizzati del 99,9%. Un server MCP equivalente senza Code Mode consumerebbe 1,17 milioni di token: più dell'intera finestra di contesto dei modelli di base più avanzati.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KqjQiI09KubtUSe9Dgf0N/6f37896084c7f34abca7dc36ab18d8e0/image2.png" alt="images/BLOG-3184 3" class="kg-image" width="1999" height="501" loading="lazy">
+	</figure>
+	<p><sup><i>Risparmi di Code Mode rispetto a MCP nativo, misurati con </i></sup><a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer"><i><sup><u>tiktoken</u></sup></i></a></p>
+	<p>Puoi iniziare a utilizzare questo nuovo server Cloudflare MCP oggi stesso. E stiamo anche rendendo open source un nuovo <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>SDK Code Mode</u></a> nell'<a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>SDK di agenti Cloudflare</u></a>, in modo che tu possa utilizzare lo stesso approccio sia con i server MCP che con gli agenti IA.</p>
+	<div class="flex anchor relative">
+		<h3 id="server-side-code-mode">Code Mode lato server</h3>
+		<a href="https://blog.cloudflare.com/#server-side-code-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ir1KOZHIjVNyqdC9FSuZs/334456a711fb2b5fa612b3fc0b4adc48/images_BLOG-3184_2.png" alt="images/BLOG-3184 2" class="kg-image" width="1999" height="1248" loading="lazy">
+	</figure>
+	<p>Questo nuovo server MCP applica Code Mode lato server. Invece di migliaia di strumenti, il server ne esporta solo due: <code>search()</code> ed <code>execute()</code>. Entrambi sono basati su Code Mode. Ecco l'intera superficie utensile che viene caricata nel contesto del modello:</p>
+	<pre class="language-javascript"><code class="language-javascript">[
+  {
+    "name": "search",
+    "description": "Search the Cloudflare OpenAPI spec. All $refs are pre-resolved inline.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "JavaScript async arrow function to search the OpenAPI spec"
+        }
+      },
+      "required": ["code"]
+    }
+  },
+  {
+    "name": "execute",
+    "description": "Execute JavaScript code against the Cloudflare API.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "JavaScript async arrow function to execute"
+        }
+      },
+      "required": ["code"]
+    }
+  }
+]
+</code></pre>
+	<p>Per scoprire cosa può fare, l'agente chiama <code>search()</code>. Scrive JavaScript su una rappresentazione tipizzata delle specifiche OpenAPI. L'agente può filtrare gli endpoint in base al prodotto, al percorso, ai tag o a qualsiasi altro metadato e limitare migliaia di endpoint al numero minimo necessario. La specifica OpenAPI completa non entra mai nel contesto del modello. L'agente interagisce con esso solo tramite il codice.</p>
+	<p>Quando l'agente è pronto ad agire, chiama <code>execute()</code>. L'agente scrive codice che può effettuare chiamate API Cloudflare, gestire l'impaginazione, controllare le risposte e concatenare le operazioni in un'unica esecuzione.&nbsp;</p>
+	<p>Entrambi gli strumenti eseguono il codice generato all'interno di un <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> isolato, una sandbox V8 leggera senza file system, senza variabili d'ambiente che possano essere esposte tramite iniezione di prompt e con richieste esterne disabilitate per impostazione predefinita. Le richieste in uscita possono essere controllate in modo esplicito con i gestori di recupero in uscita quando necessario.</p>
+	<div class="flex anchor relative">
+		<h4 id="example-protecting-an-origin-from-ddos-attacks">Esempio: Protezione di un'origine dagli attacchi DDoS</h4>
+		<a href="https://blog.cloudflare.com/#example-protecting-an-origin-from-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Supponiamo che un utente dica al proprio agente: "proteggi la mia origine dagli attacchi DDoS". Il primo passo dell’agente è consultare la documentazione. Potrebbe chiamare il <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>server MCP di Cloudflare Docs</u></a>, utilizzare una <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>skill Cloudflare</u></a> o eseguire ricerche direttamente sul Web. Dalla documentazione apprende: metti le regole di <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>Cloudflare WAF</u></a> e di <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>protezione da attacchi DDoS</u></a> davanti all'origine.</p>
+	<p><b>Fase 1: Ricerca degli endpoint giusti
+		</b>Lo strumento di <code>ricerca</code> fornisce al modello un oggetto <code>spec</code>: la specifica OpenAPI di Cloudflare completa con tutti i <code>$refs</code> prerisolti. Il modello scrive JavaScript su di esso. Qui l'agente cerca gli endpoint WAF e set di regole su una zona:</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const results = [];
+  for (const [path, methods] of Object.entries(spec.paths)) {
+    if (path.includes('/zones/') &amp;&amp;
+        (path.includes('firewall/waf') || path.includes('rulesets'))) {
+      for (const [method, op] of Object.entries(methods)) {
+        results.push({ method: method.toUpperCase(), path, summary: op.summary });
+      }
+    }
+  }
+  return results;
+}
+</code></pre>
+	<p>Il server esegue questo codice in un Workers isolato e restituisce:</p>
+	<pre class="language-javascript"><code class="language-javascript">[
+  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages",              "summary": "List WAF packages" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}", "summary": "Update a WAF package" },
+  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules", "summary": "List WAF rules" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}", "summary": "Update a WAF rule" },
+  { "method": "GET",    "path": "/zones/{zone_id}/rulesets",                           "summary": "List zone rulesets" },
+  { "method": "POST",   "path": "/zones/{zone_id}/rulesets",                           "summary": "Create a zone ruleset" },
+  { "method": "GET",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Get a zone entry point ruleset" },
+  { "method": "PUT",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Update a zone entry point ruleset" },
+  { "method": "POST",   "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules",        "summary": "Create a zone ruleset rule" },
+  { "method": "PATCH",  "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}", "summary": "Update a zone ruleset rule" }
+]
+</code></pre>
+	<p>La specifica completa dell’API Cloudflare ha oltre 2.500 endpoint. Il modello ha ristretto il campo agli endpoint WAF e al set di regole di cui ha bisogno, senza che nessuna delle specifiche entrasse nella finestra di contesto.&nbsp;</p>
+	<p>Il modello può anche approfondire lo schema di un endpoint specifico prima di chiamarlo. Qui esamina quali fasi sono disponibili sui set di regole di zona:</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const op = spec.paths['/zones/{zone_id}/rulesets']?.get;
+  const items = op?.responses?.['200']?.content?.['application/json']?.schema;
+  // Walk the schema to find the phase enum
+  const props = items?.allOf?.[1]?.properties?.result?.items?.allOf?.[1]?.properties;
+  return { phases: props?.phase?.enum };
+}
+
+{
+  "phases": [
+    "ddos_l4", "ddos_l7",
+    "http_request_firewall_custom", "http_request_firewall_managed",
+    "http_response_firewall_managed", "http_ratelimit",
+    "http_request_redirect", "http_request_transform",
+    "magic_transit", "magic_transit_managed"
+  ]
+}
+</code></pre>
+	<p>L'agente ora conosce le fasi esatte di cui ha bisogno: <code>ddos_l7 </code>per la protezione da attacchi DDoS e <code>http_request_firewall_managed</code> per WAF.</p>
+	<p><b>Fase 2: Agire sull'API
+		</b>L'agente passa all'utilizzo di <code>execute</code>. La sandbox ottiene un client <code>cloudflare.request()</code> in grado di effettuare chiamate autenticate all'API Cloudflare. Per prima cosa l'agente controlla quali set di regole esistono già nella zona:</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const response = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets`
+  });
+  return response.result.map(rs =&gt; ({
+    name: rs.name, phase: rs.phase, kind: rs.kind
+  }));
+}
+
+[
+  { "name": "DDoS L7",          "phase": "ddos_l7",                        "kind": "managed" },
+  { "name": "Cloudflare Managed","phase": "http_request_firewall_managed", "kind": "managed" },
+  { "name": "Custom rules",     "phase": "http_request_firewall_custom",   "kind": "zone" }
+]
+</code></pre>
+	<p>L’agente vede che i set di regole DDoS e WAF gestiti esistono già. Ora può concatenare le chiamate per ispezionare le loro regole e aggiornare i livelli di sensibilità in un'unica esecuzione:</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  // Get the current DDoS L7 entrypoint ruleset
+  const ddos = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets/phases/ddos_l7/entrypoint`
+  });
+
+  // Get the WAF managed ruleset
+  const waf = await cloudflare.request({
+    method: "GET",
+    path: `/zones/${zoneId}/rulesets/phases/http_request_firewall_managed/entrypoint`
+  });
+}
+</code></pre>
+	<p>L'intera operazione, dalla ricerca delle specifiche e dall'ispezione di uno schema all'elenco dei set di regole e al recupero delle configurazioni DDoS e WAF, ha richiesto quattro chiamate di strumenti.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-cloudflare-mcp-server">Il server Cloudflare MCP</h3>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Abbiamo iniziato con i server MCP per i singoli prodotti. Vuoi un agente che gestisca il DNS? Aggiungi il <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics" target="_blank" rel="noopener noreferrer"><u>server MCP DNS</u></a>. Vuoi i log Workers? Aggiungi il <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>server MCP Workers Observability.</u></a> Ogni server ha esportato un set fisso di strumenti mappati alle operazioni API. Funzionava quando il set di strumenti era piccolo, ma l'API di Cloudflare ha oltre 2.500 endpoint. Nessun insieme di server gestiti manualmente potrebbe tenere il passo.</p>
+	<p>Il server Cloudflare MCP semplifica questa operazione. Due strumenti, circa 1.000 token e la copertura di ogni endpoint nell'API. Quando aggiungiamo nuovi prodotti, gli stessi percorsi di codice <code>search()</code> ed <code>execute()</code> li rilevano e li chiamano, senza nuove definizioni di strumenti, né nuovi server MCP. Ha persino il supporto per <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer"><u>l'API GraphQL Analytics.</u></a></p>
+	<p>Il nostro server MCP è basato sulle ultime specifiche MCP. È compatibile con OAuth 2.1 e utilizza <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>Workers OAuth Provider</u></a> per limitare l'ambito del token alle autorizzazioni selezionate approvate dall'utente al momento della connessione. L’agente ottiene solo le funzionalità concesse esplicitamente dall’utente.&nbsp;</p>
+	<p>Per gli sviluppatori, questo significa che è possibile utilizzare un semplice ciclo di agenti e comunque consentire al proprio agente di accedere all'API completa di Cloudflare con funzionalità di rilevamento progressivo integrate.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60ZoSFdK6t6hR6DpAn6Bub/93b86239cedb06d7fb265859be7590e8/images_BLOG-3184_4.png" alt="images/BLOG-3184 4" class="kg-image" width="1552" height="1601" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="comparing-approaches-to-context-reduction">Confronto degli approcci alla riduzione del contesto</h3>
+		<a href="https://blog.cloudflare.com/#comparing-approaches-to-context-reduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sono emersi diversi approcci per ridurre il numero di token consumati dagli strumenti MCP:</p>
+	<p><b>Code Mode lato client</b> è stato il nostro primo esperimento. Il modello scrive TypeScript su SDK tipizzati e lo esegue in un Dynamic Worker Loader sul client. Il compromesso è che richiede che l'agente venga distribuito con un accesso sandbox sicuro. Code Mode è implementata in <a href="https://block.github.io/goose/blog/2025/12/15/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Goose</u></a> e Anthropics Claude SDK come <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling" target="_blank" rel="noopener noreferrer"><u>Programmatic Tool Calling</u></a>.</p>
+	<p>Le <b>interfacce della riga di comando (CLI) </b>sono un altro percorso. Le CLI sono auto-documentanti e rivelano le funzionalità man mano che l'agente esplora. Strumenti come <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a> e <a href="https://blog.cloudflare.com/moltworker-self-hosted-ai-agent"><u>Moltworker</u></a> convertono i server MCP in CLI utilizzando <a href="https://github.com/steipete/mcporter" target="_blank" rel="noopener noreferrer"><u>MCPorter</u></a> per fornire agli agenti una divulgazione progressiva. Il limite è ovvio: l'agente necessita di una shell, che non tutti gli ambienti forniscono e che introduce una superficie d'attacco molto più ampia rispetto a un isolato sandbox.</p>
+	<p>La <b>ricerca dinamica degli strumenti</b>, come quella utilizzata da <a href="https://x.com/trq212/status/2011523109871108570" target="_blank" rel="noopener noreferrer"><u>Anthropic in Claude Code</u></a>, evidenzia un set più piccolo di strumenti, auspicabilmente pertinenti all'attività corrente. Riduce l'uso del contesto ma ora richiede una funzione di ricerca che deve essere gestita e valutata, e ogni strumento corrispondente continua a utilizzare i token.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FPxVAuJggv7A08DbPsksb/aacb9087a79d08a1430ea87bb6960ad3/images_BLOG-3184_5.png" alt="images/BLOG-3184 5" class="kg-image" width="1999" height="1966" loading="lazy">
+	</figure>
+	<p>Ogni approccio risolve un problema reale. Ma specificamente per i server MCP, la modalità codice lato server combina i suoi punti di forza: costo fisso del token indipendentemente dalle dimensioni dell'API, nessuna modifica necessaria sul lato agente, rilevamento progressivo integrato ed esecuzione sicura all'interno di un ambiente isolato sandbox. L'agente richiama semplicemente due strumenti tramite codice. Tutto il resto avviene sul server.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">Inizia oggi stesso</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il server Cloudflare MCP è ora disponibile. Indirizza il tuo client MCP all'URL del server e verrai reindirizzato a Cloudflare per autorizzare e selezionare i permessi da concedere al tuo agente. Aggiungi questa configurazione al tuo client MCP:&nbsp;</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "mcpServers": {
+    "cloudflare-api": {
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
+  }
+}
+</code></pre>
+	<p>Per CI/CD, automazione o se preferisci gestire tu stesso i token, crea un token API Cloudflare con le autorizzazioni di cui hai bisogno. Sono supportati sia i token utente che quelli account e possono essere passati come token portatore nell'intestazione <code>Authorization</code>.</p>
+	<p>Ulteriori informazioni sulle diverse configurazioni di installazione MCP sono disponibili nel <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>repository Cloudflare MCP</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-forward">Cosa ci aspetta</h3>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Code Mode risolve i costi di contesto per una singola API. Ma gli agenti raramente parlano con un solo servizio. L'agente di uno sviluppatore potrebbe aver bisogno dell'API Cloudflare insieme a GitHub, un database e un server di documentazione interno. Ogni server MCP aggiuntivo comporta la stessa pressione della finestra di contesto con cui abbiamo iniziato.</p>
+	<p>I <a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>portali server MCP di Cloudflare</u></a> ti consentono di comporre più server MCP dietro un unico gateway con autenticazione unificata e controllo degli accessi. Stiamo sviluppando un'integrazione Code Mode di prima classe per tutti i tuoi server MCP e li stiamo esponendo ad agenti con rilevamento progressivo integrato e la stessa impronta di token fisso, indipendentemente dal numero di servizi presenti dietro il gateway.</p>
+</div>

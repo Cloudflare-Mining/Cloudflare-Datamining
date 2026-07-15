@@ -1,130 +1,86 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ai-platform">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/ai-platform">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ai-platform">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/ai-platform">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X6ztVtj3iJSS3DYOfoLJE/80fe31ee69c066db012e7790e6b240a2/BLOG-3209_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>AI models are changing quickly: the best model to use for agentic coding today might in three months be a completely different model from a different provider. On top of this, real-world use cases often require calling more than one model. Your customer support agent might use a fast, cheap model to classify a user's message; a large, reasoning model to plan its actions; and a lightweight model to execute individual tasks.</p>
-	<p>This means you need access to all the models, without tying yourself financially and operationally to a single provider. You also need the right systems in place to monitor costs across providers, ensure reliability when one of them has an outage, and manage latency no matter where your users are.</p>
-	<p>These challenges are present whenever you’re building with AI, but they get even more pressing when you’re building <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agents</u></a>. A simple chatbot might make one <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>inference</u></a> call per user prompt. An agent might chain ten calls together to complete a single task and suddenly, a single slow provider doesn't add 50ms, it adds 500ms. One failed request isn't a retry, but suddenly a cascade of downstream failures.&nbsp;</p>
-	<p>Since launching AI Gateway and Workers AI, we’ve seen incredible adoption from developers building AI-powered applications on Cloudflare and we’ve been shipping fast to keep up! In just the past few months, we've refreshed the dashboard, added zero-setup default gateways, automatic retries on upstream failures, and more granular logging controls. Today, we’re making Cloudflare into a unified inference layer: one API to access any AI model from any provider, built to be fast and reliable.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="one-catalog-one-unified-endpoint">One catalog, one unified endpoint</h3>
-		<a href="https://blog.cloudflare.com/#one-catalog-one-unified-endpoint" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
+<p>AI models are changing quickly: the best model to use for agentic coding today might in three months be a completely different model from a different provider. On top of this, real-world use cases often require calling more than one model. Your customer support agent might use a fast, cheap model to classify a user's message; a large, reasoning model to plan its actions; and a lightweight model to execute individual tasks.</p>
+<p>This means you need access to all the models, without tying yourself financially and operationally to a single provider. You also need the right systems in place to monitor costs across providers, ensure reliability when one of them has an outage, and manage latency no matter where your users are.</p>
+<p>These challenges are present whenever you’re building with AI, but they get even more pressing when you’re building <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agents</u></a>. A simple chatbot might make one <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>inference</u></a> call per user prompt. An agent might chain ten calls together to complete a single task and suddenly, a single slow provider doesn't add 50ms, it adds 500ms. One failed request isn't a retry, but suddenly a cascade of downstream failures.&nbsp;</p>
+<p>Since launching AI Gateway and Workers AI, we’ve seen incredible adoption from developers building AI-powered applications on Cloudflare and we’ve been shipping fast to keep up! In just the past few months, we've refreshed the dashboard, added zero-setup default gateways, automatic retries on upstream failures, and more granular logging controls. Today, we’re making Cloudflare into a unified inference layer: one API to access any AI model from any provider, built to be fast and reliable.&nbsp;</p>
+<h3>One catalog, one unified endpoint</h3>
+<p>Starting today, you can call third-party models using the same AI.run() binding you already use for Workers AI. If you’re using Workers, switching from a Cloudflare-hosted model to one from OpenAI, Anthropic, or any other provider is a one-line change.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'anthropic/claude-opus-4-6'</span><span class="sk-24292e-fff">,{</span></span>
+<span class="line"><span class="sk-24292e-fff">input: </span><span class="sk-032f62-99ffe4">'What is Cloudflare?'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}, {</span></span>
+<span class="line"><span class="sk-24292e-fff">gateway: { id: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>For those who don’t use Workers, we’ll be releasing REST API support in the coming weeks, so you can access the full model catalog from any environment.</p>
+<p>We’re also excited to share that you'll now have access to 70+ models across 12+ providers — all through one API, one line of code to switch between them, and one set of credits to pay for them. And we’re quickly expanding this as we go.</p>
+<p>You can browse through our <a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>model catalog</u></a> to find the best model for your use case, from open-source models hosted on Cloudflare Workers AI to proprietary models from the major model providers. We’re excited to be expanding access to models from <strong>Alibaba Cloud, AssemblyAI, Bytedance, Google, InWorld, MiniMax, OpenAI, Pixverse, Recraft, Runway, and Vidu</strong> — who will provide their models through AI Gateway. Notably, we’re expanding our model offerings to include image, video, and speech models so that you can build multimodal applications</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="496" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=640&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=750&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=828&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1080&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1280&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1430&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3209 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="496" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3209 2"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Accessing all your models through one API also means you can manage all your AI spend in one place. Most companies today are calling <a href="https://aidbintel.com/pulse-survey" target="_blank" rel="noopener noreferrer"><u>an average of 3.5 models</u></a> across multiple providers, which means no one provider is able to give you a holistic view of your AI usage. <strong>With AI Gateway, you’ll get one centralized place to monitor and manage AI spend.</strong></p>
+<p>By including custom metadata with your requests, you can get a breakdown of your costs on the attributes that you care about most, like spend by free vs. paid users, by individual customers, or by specific workflows in your app.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/moonshotai/kimi-k2.5'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">prompt: </span><span class="sk-032f62-99ffe4">'What is AI Gateway?'</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">metadata: { </span><span class="sk-032f62-99ffe4">"teamId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"userId"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">12345</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="488" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=640&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=750&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=828&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1080&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1280&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1430&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3209 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="488" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3209 3"></div>
+</figure>
+<h3>Bring your own model</h3>
+<p>AI Gateway gives you access to models from all the providers through one API. But sometimes you need to run a model you've fine-tuned on your own data or one optimized for your specific use case. For that, we are working on letting users bring their own model to Workers AI.&nbsp;</p>
+<p>The overwhelming majority of our traffic comes from dedicated instances for Enterprise customers who are running custom models on our platform, and we want to bring this to more customers. To do this, we leverage Replicate’s <a href="https://cog.run" target="_blank" rel="noopener noreferrer"><u>Cog</u></a> technology to help you containerize machine learning models.</p>
+<p>Cog is designed to be quite simple: all you need to do is write down dependencies in a cog.yaml file, and your inference code in a Python file. Cog abstracts away all the hard things about packaging ML models, such as CUDA dependencies, Python versions, weight loading, etc. </p>
+<p>Example of a <code>cog.yaml</code> file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">build:</span></span>
+<span class="line"><span class="sk-24292e-fff">  python_version: "3.13"</span></span>
+<span class="line"><span class="sk-24292e-fff">  python_requirements: requirements.txt</span></span>
+<span class="line"><span class="sk-24292e-fff">predict: "predict.py:Predictor"</span></span></code></pre>
+</div>
+<p>Example of a <a href="http://predict.py" target="_blank" rel="noopener noreferrer"><code><u>predict.py</u></code></a> file, which has a function to set up the model and a function that runs when you receive an inference request (a prediction):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> cog </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> BasePredictor, Path, Input</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> torch</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Predictor</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">BasePredictor</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    def</span><span class="sk-6f42c1-ffc799"> setup</span><span class="sk-24292e-fff">(self):</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        """Load the model into memory to make running multiple predictions efficient"""</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.net </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> torch.load(</span><span class="sk-032f62-99ffe4">"weights.pth"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    def</span><span class="sk-6f42c1-ffc799"> predict</span><span class="sk-24292e-fff">(self,</span></span>
+<span class="line"><span class="sk-24292e-fff">            image: Path </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Input(</span><span class="sk-e36209-fff">description</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Image to enlarge"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">            scale: </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Input(</span><span class="sk-e36209-fff">description</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Factor to scale image by"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">default</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1.5</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    ) -&gt; Path:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        """Run a single prediction on the model"""</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # ... pre-processing ...</span></span>
+<span class="line"><span class="sk-24292e-fff">        output </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.net(</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # ... post-processing ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> output</span></span></code></pre>
+</div>
+<p>Then, you can run cog build to build your container image, and push your Cog container to Workers AI. We will deploy and serve the model for you, which you then access through your usual Workers AI APIs.&nbsp;</p>
+<p>We’re working on some big projects to be able to bring this to more customers, like customer-facing APIs and wrangler commands so that you can push your own containers, as well as faster cold starts through GPU snapshotting. We’ve been testing this internally with Cloudflare teams and some external customers who are guiding our vision. If you’re interested in being a design partner with us, please reach out! Soon, anyone will be able to package their model and use it through Workers AI.</p>
+<h3>The fast path to first token</h3>
+<p>Using Workers AI models with AI Gateway is particularly powerful if you’re building live agents – where a user's perception of speed hinges on time to first token or how quickly the agent starts responding, rather than how long the full response takes. Even if total inference is 3 seconds, getting that first token 50ms faster makes the difference between an agent that feels zippy and one that feels sluggish.</p>
+<p>Cloudflare's network of data centers in 330 cities around the world means AI Gateway is positioned close to both users and inference endpoints, minimizing the network time before streaming begins.</p>
+<p>Workers AI also hosts open-source models on its public catalog, which now includes large models purpose-built for agents, including <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> and real-time voice models. When you call these Cloudflare-hosted models through AI Gateway, there's no extra hop over the public Internet since your code and inference run on the same global network, giving your agents the lowest latency possible.</p>
+<h3>Built for reliability with automatic failover</h3>
+<p>When building agents, speed is not the only factor that users care about – reliability matters too. Every step in an agent workflow depends on the steps before it. Reliable inference is crucial for agents because one call failing can affect the entire downstream chain.&nbsp;</p>
+<p>Through AI Gateway, if you're calling a model that's available on multiple providers and one provider goes down, we'll automatically route to another available provider without you having to write any failover logic of your own.&nbsp;</p>
+<p>If you’re building <a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>long-running agents with Agents SDK</u></a>, your streaming inference calls are also resilient to disconnects. AI Gateway buffers streaming responses as they’re generated, independently of your agent's lifetime. If your agent is interrupted mid-inference, it can reconnect to AI Gateway and retrieve the response without having to make a new inference call or paying twice for the same output tokens. Combined with the Agents SDK's built-in checkpointing, the end user never notices.</p>
+<h3>Replicate</h3>
+<p>The Replicate team has officially <a href="https://blog.cloudflare.com/replicate-joins-cloudflare" target="_blank" rel="noopener noreferrer"><u>joined</u></a> our AI Platform team, so much so that we don’t even consider ourselves separate teams anymore. We’ve been hard at work on integrations between Replicate and Cloudflare, which include bringing all the Replicate models onto AI Gateway and replatforming the hosted models onto Cloudflare infrastructure. Soon, you’ll be able to access the models you loved on Replicate through AI Gateway, and host the models you deployed on Replicate on Workers AI as well.</p>
+<h3>Get started</h3>
+<p>To get started, check out our documentation for <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> or <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. Learn more about building agents on Cloudflare through <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>.&nbsp;</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k33" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/952f874333c5cdcb89acf49c272e99f4/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F952f874333c5cdcb89acf49c272e99f4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
 	</div>
-	<p>Starting today, you can call third-party models using the same AI.run() binding you already use for Workers AI. If you’re using Workers, switching from a Cloudflare-hosted model to one from OpenAI, Anthropic, or any other provider is a one-line change.&nbsp;</p>
-	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('anthropic/claude-opus-4-6',{
-input: 'What is Cloudflare?',
-}, {
-gateway: { id: "default" },
-});</code></pre>
-	<p>For those who don’t use Workers, we’ll be releasing REST API support in the coming weeks, so you can access the full model catalog from any environment.</p>
-	<p>We’re also excited to share that you'll now have access to 70+ models across 12+ providers — all through one API, one line of code to switch between them, and one set of credits to pay for them. And we’re quickly expanding this as we go.</p>
-	<p>You can browse through our <a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>model catalog</u></a> to find the best model for your use case, from open-source models hosted on Cloudflare Workers AI to proprietary models from the major model providers. We’re excited to be expanding access to models from <b>Alibaba Cloud, AssemblyAI, Bytedance, Google, InWorld, MiniMax, OpenAI, Pixverse, Recraft, Runway, and Vidu</b> — who will provide their models through AI Gateway. Notably, we’re expanding our model offerings to include image, video, and speech models so that you can build multimodal applications</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ez5tichGEEn5k6SzCgWLm/380a685b14ee9732fdf87c6f88c8f39e/BLOG-3209_2.png" alt="BLOG-3209 2" class="kg-image" width="1999" height="1388" loading="lazy">
-	</figure>
-	<p>Accessing all your models through one API also means you can manage all your AI spend in one place. Most companies today are calling <a href="https://aidbintel.com/pulse-survey" target="_blank" rel="noopener noreferrer"><u>an average of 3.5 models</u></a> across multiple providers, which means no one provider is able to give you a holistic view of your AI usage. <b>With AI Gateway, you’ll get one centralized place to monitor and manage AI spend.</b></p>
-	<p>By including custom metadata with your requests, you can get a breakdown of your costs on the attributes that you care about most, like spend by free vs. paid users, by individual customers, or by specific workflows in your app.</p>
-	<pre class="language-Typescript"><code class="language-Typescript">const response = await env.AI.run('@cf/moonshotai/kimi-k2.5',
-      {
-prompt: 'What is AI Gateway?'
-      },
-      {
-metadata: { "teamId": "AI", "userId": 12345 }
-      }
-    );</code></pre>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ez3O7rmbrCUdD5R5UcuP9/4c219ff5ce1e24a0485a931b6af47608/BLOG-3209_3.png" alt="BLOG-3209 3" class="kg-image" width="1999" height="1364" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="bring-your-own-model">Bring your own model</h3>
-		<a href="https://blog.cloudflare.com/#bring-your-own-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>AI Gateway gives you access to models from all the providers through one API. But sometimes you need to run a model you've fine-tuned on your own data or one optimized for your specific use case. For that, we are working on letting users bring their own model to Workers AI.&nbsp;</p>
-	<p>The overwhelming majority of our traffic comes from dedicated instances for Enterprise customers who are running custom models on our platform, and we want to bring this to more customers. To do this, we leverage Replicate’s <a href="https://cog.run" target="_blank" rel="noopener noreferrer"><u>Cog</u></a> technology to help you containerize machine learning models.</p>
-	<p>Cog is designed to be quite simple: all you need to do is write down dependencies in a cog.yaml file, and your inference code in a Python file. Cog abstracts away all the hard things about packaging ML models, such as CUDA dependencies, Python versions, weight loading, etc. </p>
-	<p>Example of a <code>cog.yaml</code> file:</p>
-	<pre class="language-XML"><code class="language-XML">build:
-  python_version: "3.13"
-  python_requirements: requirements.txt
-predict: "predict.py:Predictor"</code></pre>
-	<p>Example of a <a href="http://predict.py" target="_blank" rel="noopener noreferrer"><code><u>predict.py</u></code></a> file, which has a function to set up the model and a function that runs when you receive an inference request (a prediction):</p>
-	<pre class="language-Python"><code class="language-Python">from cog import BasePredictor, Path, Input
-import torch
-
-class Predictor(BasePredictor):
-    def setup(self):
-        """Load the model into memory to make running multiple predictions efficient"""
-        self.net = torch.load("weights.pth")
-
-    def predict(self,
-            image: Path = Input(description="Image to enlarge"),
-            scale: float = Input(description="Factor to scale image by", default=1.5)
-    ) -&gt; Path:
-        """Run a single prediction on the model"""
-        # ... pre-processing ...
-        output = self.net(input)
-        # ... post-processing ...
-        return output</code></pre>
-	<p>Then, you can run cog build to build your container image, and push your Cog container to Workers AI. We will deploy and serve the model for you, which you then access through your usual Workers AI APIs.&nbsp;</p>
-	<p>We’re working on some big projects to be able to bring this to more customers, like customer-facing APIs and wrangler commands so that you can push your own containers, as well as faster cold starts through GPU snapshotting. We’ve been testing this internally with Cloudflare teams and some external customers who are guiding our vision. If you’re interested in being a design partner with us, please reach out! Soon, anyone will be able to package their model and use it through Workers AI.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-fast-path-to-first-token">The fast path to first token</h3>
-		<a href="https://blog.cloudflare.com/#the-fast-path-to-first-token" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Using Workers AI models with AI Gateway is particularly powerful if you’re building live agents – where a user's perception of speed hinges on time to first token or how quickly the agent starts responding, rather than how long the full response takes. Even if total inference is 3 seconds, getting that first token 50ms faster makes the difference between an agent that feels zippy and one that feels sluggish.</p>
-	<p>Cloudflare's network of data centers in 330 cities around the world means AI Gateway is positioned close to both users and inference endpoints, minimizing the network time before streaming begins.</p>
-	<p>Workers AI also hosts open-source models on its public catalog, which now includes large models purpose-built for agents, including <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> and real-time voice models. When you call these Cloudflare-hosted models through AI Gateway, there's no extra hop over the public Internet since your code and inference run on the same global network, giving your agents the lowest latency possible.</p>
-	<div class="flex anchor relative">
-		<h3 id="built-for-reliability-with-automatic-failover">Built for reliability with automatic failover</h3>
-		<a href="https://blog.cloudflare.com/#built-for-reliability-with-automatic-failover" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When building agents, speed is not the only factor that users care about – reliability matters too. Every step in an agent workflow depends on the steps before it. Reliable inference is crucial for agents because one call failing can affect the entire downstream chain.&nbsp;</p>
-	<p>Through AI Gateway, if you're calling a model that's available on multiple providers and one provider goes down, we'll automatically route to another available provider without you having to write any failover logic of your own.&nbsp;</p>
-	<p>If you’re building <a href="https://blog.cloudflare.com/project-think"><u>long-running agents with Agents SDK</u></a>, your streaming inference calls are also resilient to disconnects. AI Gateway buffers streaming responses as they’re generated, independently of your agent's lifetime. If your agent is interrupted mid-inference, it can reconnect to AI Gateway and retrieve the response without having to make a new inference call or paying twice for the same output tokens. Combined with the Agents SDK's built-in checkpointing, the end user never notices.</p>
-	<div class="flex anchor relative">
-		<h3 id="replicate">Replicate</h3>
-		<a href="https://blog.cloudflare.com/#replicate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Replicate team has officially <a href="https://blog.cloudflare.com/replicate-joins-cloudflare"><u>joined</u></a> our AI Platform team, so much so that we don’t even consider ourselves separate teams anymore. We’ve been hard at work on integrations between Replicate and Cloudflare, which include bringing all the Replicate models onto AI Gateway and replatforming the hosted models onto Cloudflare infrastructure. Soon, you’ll be able to access the models you loved on Replicate through AI Gateway, and host the models you deployed on Replicate on Workers AI as well.</p>
-	<div class="flex anchor relative">
-		<h3 id="get-started">Get started</h3>
-		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To get started, check out our documentation for <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> or <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. Learn more about building agents on Cloudflare through <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<div style="position: relative; padding-top: 56.25%;">
-		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/952f874333c5cdcb89acf49c272e99f4/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F952f874333c5cdcb89acf49c272e99f4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p></p>
 </div>

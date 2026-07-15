@@ -1,0 +1,241 @@
+<div class="mb2 gray5">10 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/mcp-demo-day">English</a>, <a href="https://blog.cloudflare.com/zh-tw/mcp-demo-day">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/mcp-demo-day">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/mcp-demo-day">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/mcp-demo-day">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/mcp-demo-day">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ihviGbGnxy0mMdYBWCwHN/37261f191c7eecb914cc693e9a8fd1fe/BLOG-2811_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Hoy estamos encantados de colaborar con Anthropic, Asana, Atlassian, Block, Intercom, Linear, PayPal, Sentry, Stripe y Webflow para ofrecer un conjunto completamente nuevo de servidores MCP remotos, todos ellos desarrollados en Cloudflare, que permitirán a los usuarios de <a href="https://claude.ai" target="_blank" rel="noopener noreferrer"><u>Claude</u></a> gestionar proyectos, generar facturas, consultar bases de datos e incluso implementar aplicaciones integrales, sin salir de la interfaz de chat.&nbsp;</p>
+	<p>Desde que <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>Anthropic presentó el Protocolo de contexto de modelo (MCP</u></a>) en noviembre, ha habido cada vez más interés al respecto, y parece que casi todos los días se lanza un nuevo servidor MCP.&nbsp;¡Y con razón!&nbsp; MCP ha sido la pieza que faltaba para hacer realidad los agentes de IA y ha ayudado a definir cómo interactúan los agentes de IA con las herramientas para realizar acciones y obtener contexto adicional.</p>
+	<p>Sin embargo, hasta la fecha, los usuarios finales han tenido que instalar servidores MCP en su dispositivo local para utilizarlos. Hoy, con el <a href="http://anthropic.com/news/integrations" target="_blank" rel="noopener noreferrer"><u>anuncio de Integrations de Anthropic</u></a>, puedes acceder a un servidor MCP de la misma manera que lo harías con un sitio web: escribe una URL y listo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FLvAIrlxVcKPZNRG5Qhwj/f252d4de66f45e1f06bb94d76e1bf4c1/BLOG-2811_2.png" alt="BLOG-2811 2" class="kg-image" width="1860" height="1999" loading="lazy">
+	</figure>
+	<p>En Cloudflare, nos hemos centrado en<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u> desarrollar las herramientas</u></a> que simplifican el desarrollo de servidores MCP remotos, para que los equipos de ingeniería de nuestros clientes puedan dedicar su tiempo a desarrollar las herramientas MCP para su aplicación, en lugar de gestionar las complejidades del protocolo. Y si te estás preguntando si es fácil implementar un servidor MCP remoto en Cloudflare, nos complace informarte de que solo se necesita un clic para obtener un servidor MCP, preconfigurado con compatibilidad con los últimos estándares MCP.&nbsp;</p>
+	<p>Pero no tienes por qué creernos, ¡compruébalo tú mismo! Los líderes del sector están aprovechando la facilidad de uso para ofrecer nuevas experiencias basadas en la IA a sus usuarios mediante el desarrollo de sus servidores MCP en Cloudflare. Ahora, tú puedes hacer lo mismo. Solo tienes que hacer clic en "Implementar en Cloudflare" para empezar.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementar en Cloudflare"></a>
+	<p></p>
+	<p>Sigue leyendo para obtener más información sobre las nuevas funciones que estas empresas están poniendo a disposición de sus usuarios y cómo han logrado ofrecerlas. O bien, únete a nosotros en el <a href="https://demo-day.mcp.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Demo Day</u></a> el 1 de mayo (hoy) a las 10:00 a.m. hora del Pacífico.&nbsp;</p>
+	<p>También ponemos a disposición de los clientes los <a href="https://blog.cloudflare.com/thirteen-new-mcp-servers-from-cloudflare"><u>servidores MCP remotos de Cloudflare</u></a> y te contamos lo que hemos aprendido durante su desarrollo.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="mcp-powering-the-next-generation-of-applications">MCP, el motor de la próxima generación de aplicaciones</h2>
+		<a href="https://blog.cloudflare.com/#mcp-powering-the-next-generation-of-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>No siempre se esperaba que todos los servicios, ya fueran tiendas, agencias inmobiliarias o servicios, tuvieran un sitio web. Pero a medida que más personas obtuvieron acceso a una conexión a Internet, eso se convirtió rápidamente en una realidad.</p>
+	<p>Ahora estamos en medio de una transición similar en la que todos los usuarios de la web tienen acceso a herramientas de IA, y recurren a ellas para muchas tareas. Si eres desarrollador, es probable que el primer lugar al que recurras ahora cuando escribes código sea una herramienta como Claude. Por lo tanto, parece razonable que, si Claude te ayuda a escribir el código, también te ayude a implementarlo.</p>
+	<p>O si no eres desarrollador, si Claude te ayuda a crear una receta, también te ayudará a hacer la compra de los ingredientes necesarios.&nbsp;</p>
+	<p>Con el servidor MCP remoto, todos estos escenarios ahora son posibles. Y al igual que las primeras empresas que se crearon en la web tuvieron la ventaja de ser pioneros, las primeras empresas que se creen con una estrategia orientada a MCP probablemente serán las que se beneficien de ello.&nbsp;</p>
+	<p>Cuanto más rápido un usuario pueda experimentar el valor de tu producto, más probable será que tenga éxito, que adquiera una versión superior y que continúe utilizándolo. Gracias a la conexión entre servicios y agentes que permite MCP, los usuarios pueden simplemente expresar lo que necesitan y el agente se ocupa de todo, ayudándolos a llegar antes a ese clic mental en el que todo cobra sentido.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="making-your-service-ai-first-with-mcp">Convierte tu servicio en una solución impulsada por IA con MCP</h2>
+		<a href="https://blog.cloudflare.com/#making-your-service-ai-first-with-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Quienes incorporen MCP percibirán pronto sus efectos positivos:&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="lower-the-barrier-to-entry">Menos complejidad inicial</h3>
+		<a href="https://blog.cloudflare.com/#lower-the-barrier-to-entry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>No todos los usuarios tienen tiempo para conocer tu panel de control o leer la documentación para entender tu producto. Con MCP, no es necesario. Simplemente describen lo que quieren, y el agente se encarga del resto.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="create-personalized-experiences">Experiencias personalizadas</h3>
+		<a href="https://blog.cloudflare.com/#create-personalized-experiences" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MCP puede realizar un seguimiento de las solicitudes e interacciones de un usuario, por lo que las futuras llamadas a la herramienta se pueden adaptar a sus patrones de uso y preferencias. De este modo, es más fácil ofrecer experiencias más personalizadas y relevantes basadas en el uso real que cada persona hace de tu producto.</p>
+	<div class="flex anchor relative">
+		<h3 id="drive-upgrades-naturally">Evolución natural hacia opciones avanzadas</h3>
+		<a href="https://blog.cloudflare.com/#drive-upgrades-naturally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En lugar de depender de las tablas de comparación de funciones, el agente de IA puede explicar cómo un plan de nivel superior ayuda a un usuario específico a lograr <i>sus</i> objetivos.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="ship-new-features-and-integrations">Nuevas funciones e integraciones</h3>
+		<a href="https://blog.cloudflare.com/#ship-new-features-and-integrations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>No necesitas desarrollar cada integración o experiencia internamente. Al exponer tus herramientas a través de MCP, permites que los usuarios conecten tu producto al resto de su pila. Los agentes pueden combinar herramientas de todos los proveedores, lo que permite integraciones sin necesidad de que tengas que dar soporte directamente a todos los servicios de terceros.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-build-mcp-on-cloudflare">¿Por qué desarrollar MCP en Cloudflare?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-build-mcp-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Desde el lanzamiento de MCP, hemos <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>explicado</u></a> cómo estamos facilitando a los desarrolladores la <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>creación e implementación de servidores MCP remotos</u></a>, desde la abstracción de la complejidad del protocolo hasta la gestión de la autenticación y el transporte, pasando por la <a href="https://blog.cloudflare.com/building-ai-agents-with-mcp-authn-authz-and-durable-objects"><u>compatibilidad con servidores MCP con estado completo</u></a> (por defecto) que <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u>"se suspenden"</u></a> cuando no se utilizan para minimizar los costes de inactividad.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rTqqs8gSYef4uIiS1aSqz/5147063aff613078af22e5b5b5b55570/BLOG-2811_3.png" alt="BLOG-2811 3" class="kg-image" width="1788" height="932" loading="lazy">
+	</figure>
+	<p>Seguimos lanzando actualizaciones periódicamente, <a href="https://blog.cloudflare.com/streamable-http-mcp-servers-python"><u>añadiendo compatibilidad</u></a> con los <a href="https://modelcontextprotocol.io/specification/2025-03-26" target="_blank" rel="noopener noreferrer"><u>últimos cambios</u></a> en el estándar MCP y facilitando aún más la puesta en producción de tu servidor:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/transport" target="_blank" rel="noopener noreferrer"><u><b>Compatibilidad con el nuevo transporte HTTP Streamable</b></u></a><b>:</b> tus servidores MCP ahora pueden utilizar el último transporte HTTP Streamable junto con SSE, lo que garantiza la compatibilidad con los últimos estándares. También hemos actualizado el entorno de pruebas de IA y el proxy <a href="https://www.npmjs.com/package/mcp-remote" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a>, lo que te ofrece un cliente MCP remoto para probar fácilmente el nuevo transporte.</p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/ai/tree/main/demos/python-workers-mcp" target="_blank" rel="noopener noreferrer"><u><b>Compatibilidad con Python para servidores MCP</b></u></a><b>: </b>ahora puedes crear servidores MCP en Cloudflare utilizando Python, no solo JavaScript/TypeScript.&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Documentos, plantillas de inicio y flujos de implementación mejorados:</b> hemos añadido <a href="https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless" target="_blank" rel="noopener noreferrer"><u>nuevas plantillas de inicio rápido</u></a>, hemos ampliado nuestra <a href="https://developers.cloudflare.com/agents/model-context-protocol/transport" target="_blank" rel="noopener noreferrer"><u>documentación</u></a> para incluir el nuevo método de transporte y hemos compartido <a href="https://developers.cloudflare.com/agents/model-context-protocol/#best-practices" target="_blank" rel="noopener noreferrer"><u>las prácticas recomendadas</u></a> para crear servidores MCP basadas en lo que hemos aprendido.&nbsp;</p>
+		</li>
+	</ul>
+	<p>Pero en lugar de contártelo, hemos pensado que sería mejor mostrarte lo que han creado nuestros clientes y por qué han elegido Cloudflare para su implementación de MCP.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="remote-mcp-servers-you-can-connect-to-today">Servidores MCP remotos a los que puedes conectarte hoy mismo</h2>
+		<a href="https://blog.cloudflare.com/#remote-mcp-servers-you-can-connect-to-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="asana">Asana</h3>
+		<a href="https://blog.cloudflare.com/#asana" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hoy en día, el trabajo está presente en muchas aplicaciones y servicios diferentes. Con la inversión en MCP, Asana puede satisfacer las necesidades de los usuarios allí donde se encuentren, lo que permite la interoperabilidad impulsada por los agentes entre herramientas y flujos de trabajo. Los usuarios pueden interactuar con Asana Work Graph utilizando el lenguaje natural para obtener actualizaciones de proyectos, buscar tareas, gestionar proyectos, enviar comentarios y actualizar plazos desde un cliente MCP.</p>
+	<p>Los usuarios podrán orquestar e integrar diferentes partes del trabajo sin problemas, por ejemplo, convertir un plan de proyecto o las notas de una reunión de otra aplicación en un conjunto de tareas completamente asignadas en Asana, o llevar las tareas de Asana directamente a un entorno de desarrollo integrado habilitado para MCP para su implementación. Esta flexibilidad hace que la gestión del trabajo en todos los sistemas sea más fácil, rápida y natural que nunca.</p>
+	<p>Para acelerar el lanzamiento de nuestro servidor MCP propio, Asana se basó en las herramientas de Cloudflare, aprovechando la infraestructura básica para moverse de forma rápida y fiable en este entorno en rápida evolución.</p>
+	<p><i>"En Asana, siempre nos hemos centrado en ayudar a los equipos a coordinar el trabajo sin esfuerzo. MCP conecta nuestro Work Graph directamente a herramientas de IA como Claude.ai, lo que permite que la IA se convierta en un verdadero compañero de equipo en la gestión del trabajo. Nuestra integración transforma el lenguaje natural en trabajo estructurado, creando proyectos a partir de notas de reuniones o incorporando actualizaciones a la IA. Gracias a la infraestructura de Cloudflare, pudimos implementar rápidamente el servicio y gestionar la autenticación y el escalado, mientras nos centrábamos en crear la mejor experiencia posible para nuestros usuarios". – Prashant Pandey, director técnico, Asana</i></p>
+	<p>Más información sobre el servidor MCP de Asana <a href="https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="atlassian">Atlassian</h3>
+		<a href="https://blog.cloudflare.com/#atlassian" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los clientes de Jira y Confluence Cloud ahora pueden interactuar de forma segura con sus datos directamente desde la aplicación Claude de Anthropic a través del servidor <a href="http://atlassian.com/platform/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>MCP remoto de Atlassian</u></a> en versión beta. Alojado en la infraestructura de Cloudflare, los usuarios pueden resumir el trabajo, crear incidencias o páginas y realizar acciones de varios pasos, todo ello manteniendo los datos seguros y dentro de los límites autorizados.</p>
+	<p>Los usuarios pueden acceder a la información de Jira y Confluence dondequiera que utilicen Claude para:</p>
+	<ul>
+		<li>
+			<p>Resumir los elementos de trabajo de Jira o las páginas de Confluence</p>
+		</li>
+		<li>
+			<p>Crear elementos de trabajo de Jira o páginas de Confluence directamente desde Claude</p>
+		</li>
+		<li>
+			<p>Conseguir que el modelo realice varias acciones a la vez, como crear incidencias o páginas de forma masiva</p>
+		</li>
+		<li>
+			<p>Enriquecer los elementos de trabajo de Jira con el contexto de muchas fuentes diferentes a las que Claude tiene acceso</p>
+		</li>
+		<li>
+			<p>¡Y mucho más!</p>
+		</li>
+	</ul>
+	<p><i>"La IA no es una solución única para todos y creemos que debe integrarse en las tareas que debe realizar un equipo. Por eso estamos tan entusiasmados de invertir en MCP y de conocer a equipos en más lugares donde ya trabajan. El alojamiento en la infraestructura de Cloudflare nos permite ofrecer esta eficaz integración a nuestros clientes más rápido y permitirles sacar más partido que nunca a Jira y Confluence, al tiempo que garantizan la seguridad de los datos de su empresa. Cloudflare nos proporcionó todo lo necesario, desde OAuth hasta soporte remoto MCP listo para usar, lo que nos permitió crear, proteger y ampliar rápidamente una configuración totalmente operativa". — Taroon Mandhana, responsable de ingeniería de producto, Atlassian</i></p>
+	<p>Más información sobre el servidor MCP de Atlassian <a href="https://www.atlassian.com/blog/announcements/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="intercom">Intercom</h3>
+		<a href="https://blog.cloudflare.com/#intercom" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En Intercom, el poder transformador de la IA es cada vez más evidente. Fin, el agente de IA de Intercom, resuelve ahora de forma autónoma más del 50&nbsp;% de las conversaciones de atención al cliente para empresas líderes como Anthropic. Con MCP, conectar la IA a las herramientas y sistemas internos es más fácil que nunca, lo que permite obtener un mayor valor empresarial.</p>
+	<p>Las conversaciones con los clientes, por ejemplo, ofrecen información valiosa sobre cómo se utilizan los productos y las experiencias de los clientes. Sin embargo, estos datos suelen estar bloqueados en la plataforma de soporte. El servidor MCP de Intercom te permite acceder a esta valiosa fuente de datos sobre los clientes, que puede consultar cualquier persona de la organización mediante herramientas de IA. Los ingenieros, por ejemplo, pueden aprovechar el historial de conversaciones y los datos de los usuarios de Intercom en herramientas como Cursor o Claude Code para diagnosticar y resolver los problemas de forma más eficiente.</p>
+	<p><i>"El impulso de MCP es emocionante. Cada vez es más fácil conectar asistentes como Claude.ai y agentes como Fin a tus sistemas y realizar tareas reales. El conjunto de herramientas de Cloudflare está acelerando aún más este avance. Su documentación clara, sus herramientas diseñadas específicamente y su plataforma para desarrolladores ayudaron a Intercom a pasar del concepto a la producción en menos de un día, lo que facilitó el lanzamiento del servidor MCP de Intercom. Animaremos a nuestros clientes a que utilicen Cloudflare para crear e implementar sus propios servidores MCP para conectar de forma segura y fiable sus sistemas internos con Fin y otros clientes". — Jordan Neill, vicepresidente sénior de ingeniería, Intercom</i></p>
+	<div class="flex anchor relative">
+		<h3 id="linear">Linear</h3>
+		<a href="https://blog.cloudflare.com/#linear" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El servidor MCP de Linear permite a los usuarios incorporar el contexto de sus problemas y el proceso de desarrollo de productos directamente en los asistentes de IA cuando es necesario, ya sea mejorando las especificaciones de un producto en Claude, colaborando en la corrección de un error con Cursor o creando incidencias sobre la marcha a partir de un correo electrónico.&nbsp;</p>
+	<p><i>"Estamos trabajando con Cloudflare para aprovechar sus marcos en este entorno en rápida evolución y su proceso flexible y rápido en el perímetro. Con MCP, estamos incorporando los flujos de trabajo de seguimiento de incidencias y desarrollo de productos de Linear directamente en sus herramientas de IA preferidas, lo que elimina el cambio de contexto para los equipos. Nuestro objetivo es simple: permitir que los desarrolladores y los equipos de producto accedan a su trabajo donde ya están, ya sea mejorando las especificaciones en Claude, depurando en Cursor o creando problemas a partir de conversaciones. Esta integración eficaz ayuda a nuestros clientes a mantener el flujo y a centrarse en crear productos fantásticos". — Tom Moor, responsable de ingeniería de EE.&nbsp;UU., Linear</i></p>
+	<p>Más información sobre el servidor MCP de Linear <a href="https://linear.app/docs/mcp" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="paypal">Paypal</h3>
+		<a href="https://blog.cloudflare.com/#paypal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>"Los MCP representan un nuevo paradigma para el desarrollo de software. Con el servidor MCP remoto de PayPal en Cloudflare, ahora los desarrolladores pueden delegar en un agente con lenguaje natural para integrarse eficazmente con la cartera de capacidades comerciales de PayPal. Ya se trate de la gestión de inventario, el procesamiento de pagos, el seguimiento de envíos o la gestión de reembolsos, los agentes de IA a través de MCP pueden aprovechar estas capacidades para ejecutar y optimizar de forma autónoma los flujos de trabajo comerciales. Se trata de un desarrollo revolucionario para el comercio, y lo mejor de todo es que los desarrolladores pueden empezar hoy mismo a integrarse con nuestro servidor MCP en Cloudflare". - Prakhar Mehrotra, vicepresidente sénior de inteligencia artificial, PayPal</i></p>
+	<p>Más información sobre el servidor MCP de PayPal <a href="https://developer.paypal.com/tools/mcp-server" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="sentry">Sentry</h3>
+		<a href="https://blog.cloudflare.com/#sentry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Con el servidor MCP de Sentry, los desarrolladores pueden consultar el contexto de Sentry directamente desde su entorno de desarrollo integrado, o un asistente como Claude, para obtener errores e información de problemas en todos los proyectos o incluso para archivos individuales.</p>
+	<p>Los desarrolladores también pueden utilizar el servidor MCP para crear proyectos, capturar información de configuración y consultar información de proyectos y organizaciones, y utilizar la información para configurar sus aplicaciones para Sentry. A medida que continuemos desarrollando el servidor MCP, permitiremos a los equipos incorporar análisis de causas raíz e información sobre soluciones desde Seer, nuestro agente, y también estudiaremos la posibilidad de simplificar la instrumentación de funciones de vigilancia como los rastreos y la gestión de excepciones.&nbsp;</p>
+	<p>Con el alojamiento en Cloudflare y el uso del servidor MCP remoto, pudimos evitar algunas de las complicaciones de intentar ejecutar localmente, como el escalado o la autenticación. El servidor MCP remoto nos permite aprovechar directamente la propia configuración de OAuth de Sentry. La compatibilidad con Durable Object también nos permite mantener el estado dentro del servidor MCP, lo cual es importante cuando no se está ejecutando localmente.&nbsp;</p>
+	<p><i>"El compromiso de Sentry siempre ha sido con el desarrollador, y con facilitar el funcionamiento estable del software de producción, y eso será aún más evidente en la era de la IA. Los desarrolladores están utilizando herramientas como el servidor MCP para integrar su pila con modelos de IA y fuentes de datos. Elegimos desarrollar nuestro servidor MCP en Cloudflare porque compartimos la idea de facilitar a los desarrolladores la entrega de software, y ambos queremos garantizar que los equipos puedan desarrollar y ejecutar de forma segura la próxima generación de agentes de IA. La depuración de las complejas interacciones que surgen de estas integraciones es cada vez más importante, y Sentry proporciona la visibilidad esencial necesaria para diagnosticar y resolver rápidamente los problemas. El servidor MCP integra este contexto crucial de Sentry directamente en el flujo de trabajo de los desarrolladores, lo que permite a los equipos crear e implementar de forma coherente aplicaciones fiables". — David Cramer, director de producto y cofundador, Sentry</i></p>
+	<p>Más información sobre el servidor MCP de Sentry <a href="https://docs.sentry.io/product/sentry-mcp" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="block">Block&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#block" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las <a href="https://developer.squareup.com/us/en" target="_blank" rel="noopener noreferrer"><u>API</u></a> de Square son un conjunto integral de herramientas que ayudan a los vendedores a aceptar pagos, crear y realizar un seguimiento de los pedidos, gestionar el inventario, organizar a los clientes y mucho más. Ahora, con un servidor MCP de Square dedicado, los comerciantes pueden contar con la ayuda de un agente de IA para desarrollar su negocio en todo el conjunto de recursos API y puntos finales de Square. Gracias a la integración con agentes de IA como Claude y <a href="https://block.github.io/goose" target="_blank" rel="noopener noreferrer"><u>Codename Goose</u></a>, los comerciantes pueden crear casos de uso sofisticados y personalizados que aprovechan al máximo las capacidades de Square, con una barrera técnica menor.</p>
+	<p>Más información sobre el servidor MCP de Block <a href="https://developer.squareup.com/docs/mcp" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="stripe">Stripe</h3>
+		<a href="https://blog.cloudflare.com/#stripe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><i>"MCP se perfila como una nueva interfaz de IA. En un futuro próximo, MCP puede convertirse en la forma predeterminada, o en algunos casos la única, de que las personas, las empresas y el código descubran e interactúen con los servicios. Con el </i><a href="https://docs.stripe.com/agents" target="_blank" rel="noopener noreferrer"><i><u>kit de herramientas para agentes de Stripe</u></i></a><i> y el SDK para agentes de Cloudflare, los desarrolladores pueden ahora monetizar sus servidores MCP con solo unas líneas de código". — Jeff Weinstein, responsable de producto de Stripe</i></p>
+	<div class="flex anchor relative">
+		<h3 id="webflow">Webflow</h3>
+		<a href="https://blog.cloudflare.com/#webflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El servidor MCP de Webflow admite la gestión de contenidos (CMS), la auditoría y la mejora de SEO, la localización de contenido, la publicación de sitios y mucho más. De esta forma, los usuarios pueden gestionar y mejorar su sitio directamente desde su agente de IA.&nbsp;</p>
+	<p><i>"Consideramos que MCP es una nueva forma de interactuar con Webflow que encaja perfectamente con nuestra misión de poner el gran potencial del desarrollo al alcance de todos. MCP no es solo una superficie diferente sobre nuestras API, sino que lo concebimos en términos de las acciones que admite: publicar un sitio web, crear una colección CMS, actualizar contenido y mucho más. MCP nos permite exponer esas acciones de una manera que es fácil de encontrar, segura y con un contexto muy detallado. Abre la puerta a nuevos flujos de trabajo en los que la IA y los humanos pueden trabajar codo con codo, sin necesidad de improvisar soluciones o gestionar detalles de API de bajo nivel. Cloudflare apoya este objetivo ofreciendo la fiabilidad, el rendimiento y las herramientas de desarrollo que necesitamos para crear una infraestructura web moderna. Su soporte para servidores MCP remotos es sólido y está bien integrado, y su enfoque de la autenticación y la durabilidad se alinea con nuestra forma de pensar sobre la escala y la seguridad de estas soluciones". — Utkarsh Sengar, vicepresidente de ingeniería, Webflow</i></p>
+	<p>Más información sobre el servidor MCP de Webflow <a href="https://mcp.webflow.com" target="_blank" rel="noopener noreferrer"><u>aquí</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="start-building-today">Empieza a desarrollar hoy mismo</h2>
+		<a href="https://blog.cloudflare.com/#start-building-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si quieres crear un servidor MCP remoto para tu servicio, empieza con nuestra documentación, echa un vistazo al tutorial a continuación o utiliza el botón de abajo para implementar un servidor MCP remoto inicial en producción. Una vez implementado el servidor MCP remoto, se puede utilizar desde <a href="https://claude.ai" target="_blank" rel="noopener noreferrer"><u>Claude</u></a>, el <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>entorno de pruebas de IA de Cloudflare</u></a>, o desde cualquier cliente MCP remoto.&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authless"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementar en Cloudflare"></a>
+	<p></p>
+	<p></p>
+	<p>Además, hemos publicado un <a href="https://youtu.be/Pjc8cC8zVRY" target="_blank" rel="noopener noreferrer"><u>nuevo vídeo de YouTube</u></a> en el que se explica cómo crear servidores MCP con dos de nuestras plantillas MCP.</p>
+	<p>Si tienes alguna pregunta o comentario, puedes ponerte en contacto con nosotros por correo electrónico en <a href="https://blog.cloudflare.com/#"><u>1800-mcp@cloudflare.com</u></a>. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WNNRZBcgfCv5xVM3MNYwI/39ebfda250c4524ebce323511bffc72e/BLOG-2811_4.png" alt="BLOG-2811 4" class="kg-image" width="1200" height="267" loading="lazy">
+	</figure>
+	<p></p>
+</div>

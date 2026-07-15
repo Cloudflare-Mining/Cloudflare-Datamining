@@ -1,0 +1,885 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">English</a>、<a href="https://blog.cloudflare.com/zh-tw/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Français</a>、<a href="https://blog.cloudflare.com/de-de/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">한국어</a>、<a href="https://blog.cloudflare.com/nl-nl/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ieTEQGalyYWqU0FkjLKKp/6395034c8fe69dd90646cf05ff92f833/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>人工知能（<a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>AI</u></a>）は人間の認知タスクをシミュレートまたは模倣する機械を含む広範な概念であり、<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>機械学習</u></a>（ML）はデータ駆動型のエンジンとして機能します。&nbsp;どちらも数十年前から存在していましたが、2022年後半にOpenAIのChatGPTが <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>リリース</u></a>された後、テキスト、画像、音声、コード、動画を作成できるAIモデルである<a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>生成AI</u></a>の人気が急増し、新たな勢いを増しています。このブログ記事では、最も人気のある生成AIサービスと、2024年から2025年初頭にかけてそれらがどのように進化したかを検証します。また、これらの生成AI Webサイトのトラフィックがどの程度増加したか、トラフィックの何割が悪意のあるものなのか、その他のインサイトに関する問いにCloudflareの視点からお答えします。</p>
+	<p>これらの問いにお応えするため、当社の<a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNSリゾルバー</u></a>から集計されたデータを用いて、特定の生成AIサービスの人気度を測定します。人気度測定は通常、「<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>一年を振り返って</u></a>」で行っておりますが、現在Cloudflare Radarの<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>DNSドメインランキングページ</u></a>でも行っています。このページでは、各サービスに関連するドメインのデータを集計し、ユーザーにサービスを提供するサイトを特定しています。全体的なトラフィック増加や攻撃の傾向については、パフォーマンス（AI推論を含む）とセキュリティを確保するためにCloudflareを使用している生成AIのお客様のコホートから集計されたデータに依存しています。</p>
+	<p>主なポイント：</p>
+	<ul>
+		<li>
+			<p><b>ChatGPTがトップの座を維持：</b>OpenAIのChatGPTは、生成AIの人気ナンバーワンの座を維持しており、インターネットドメインとしては、2023年後半の200位から上昇し、総合でトップ50位のあたりにいます。</p>
+		</li>
+		<li>
+			<p><b>トラフィックの急増：</b>2024年2月1日から2025年3月1日までの1年間で、生成AIサービスへの月間トラフィックは251%増加しました。</p>
+		</li>
+		<li>
+			<p><b>新規参入：</b>中国のチャットボットDeepSeekと、Grok/xAIが急速にランクインし、AI分野における新規参入の勢いを示しています。</p>
+		</li>
+		<li>
+			<p><b>地域によって異なるグローバルリーチ：</b>生成AIの訪問者数については、23%を占める米国がリードしている一方、poe.comのような特定のプラットフォームではアジアが圧倒的な数を占めています。ブラジルは複数のAIサービスを使いこなすパワーユーザーであることも明らかになりました。</p>
+		</li>
+		<li>
+			<p><b>サイバー攻撃の標的：</b>Cloudflareは昨年、1970億件を超える潜在的な攻撃リクエストをブロックしました。そのうち390億件がDDoS攻撃キャンペーンの一環で、特に一般的なAI型のチャットボットや画像生成サイトが影響を受けました。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="generative-ai-services-popularity-ranking-new-kids-in-town">生成AIサービス人気ランキング：新規参入者の台頭</h3>
+		<a href="https://blog.cloudflare.com/#generative-ai-services-popularity-ranking-new-kids-in-town" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>まずは、<a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarの新しい「AI」タブ</u></a>を使用して、生成AIサービスの人気度を見てみましょう。新たにトップ10にランクインしたのは、2025年1月10日にサービスを開始した中国のチャットボット、DeepSeekです。2025年1月26日に9位にランクインし、1月29日（旧正月）には3位まで上昇、2月4日までその順位を維持しましたが、現在は6位に落ち着いています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s9pGGWSp87CqvIOcbZ4gb/8a5a83deabdf8a0ed7f9898fc384c74d/image1.png" alt="Generative AI services popularity worldwide" class="kg-image" width="1600" height="900" loading="lazy">
+	</figure>
+	<p>またここで注目すべきは、最近人気を集めている別のAI型のチャットボット、XのGrok/xAIです。この生成AIサービスは2月にAndroidアプリをリリースし、2025年2月17日にGrok-3モデルを発表して<a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>注目</u></a>を集めました。生成AIのランキングでは、2025年2月21日に初めて9位でトップ10入りし、一時的にClaudeの８位の座を奪いましたが、現在は9位から10位の間につけています。</p>
+	<p>Cloudflare Radarの<a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>「AI」ページ</u></a>に掲載されている最新の生成AIトップ10をご覧ください。2025年の年初より3月9日現在、生成AIの首位にいるのは、ChatGPT/OpenAIです（この傾向は以下の表にあるように2024年にも見られました）。</p><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - 生成AIサービスの人気度" loading="lazy" style="border:0;max-width:100%;"></iframe>
+	<p>ランキングの変化と傾向を理解しやすいように、以下の表では、左側に2025年2月1日から3月1日の順位（月平均）が示されており、2024年以降に順位を下げたサービスは赤で表示されています。新規参入または上位にランクインしているものは緑色で表示されています。参考のため、2列目は「<a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024年を振り返って</u></a>」でのトップ10を示し（前年との比較を含む）、3列目は2023年のトップ10を示しています。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<figure class="table" style="width:100%;">
+		<table class="tg ck-table-resized">
+			<colgroup>
+				<col style="width:31.68%;">
+				<col style="width:33.12%;">
+				<col style="width:35.2%;">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2025年2月における&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>生成AIサービストップ10</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT/OpenAI（変動なし）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI（変動なし）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot（2024年は</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>4位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium（</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>3位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>7位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">DeepSeek（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>（6位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude/Anthropic（</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>5位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Suno AI（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2024年における生成AIサービストップ10（</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radarの「一年を振り返って」</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>）</strong></span></span><br><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT/OpenAI（変動なし）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI（変動なし）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot（2023年は3位）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude/Anthropic（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity（変動なし）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune（</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>7位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe（</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>5位</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Tabnine（</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>新規</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">）</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2023年における生成AIサービストップ10（</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radarの「一年を振り返って」</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>）</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT/OpenAI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Google Bard</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ProWritingAid</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Voicemod</span></span></th>
+				</tr>
+			</thead>
+		</table>
+	</figure>
+	<p>トップ10には、前述のDeepSeek、Grok/xAI、ChatGPT/OpenAIの他、AnthropicのClaudeなどのチャットボットや、他のタイプの生成AIサービスも含まれています。Character.AIは、キャラクターに基づいた人物を作成し、対話できるようにするための専用プラットフォームで、2位につけています。AI検索エンジンとして機能するPerplexityは7位、AIを活用したライティングアシスタントとして文章を言い換えたり、文法をチェックしたり要約するQuillBotは3位です。また、Windsurf AIのような開発者の生産性向上サービスを含むCodeium （4位）と、GitHub Copilot（5位）は、AIコーディングアシスタントとして機能します。</p>
+	<p>AIモデルのオープンソースハブであるHugging Faceは9位（他のAIモデルイネーブラーであるReplicateやStability AIと同様にHugging Faceも生成AIプラットフォームとして含めています）、テキストプロンプトから曲を作る音楽ジェネレーターであるSuno AIは10位です。</p>
+	<p>Grok/xAIは2月下旬にトップ10入りしましたが、２月の月間平均を用いているため、ここでは11位に表示されています。2025年2月のトップ20に入った他のサービスが気になりませんか？他のサービスではAIコーディングサービスが存在感を示しており、CodeiumとGitHub Copilotに加え、Sider AIとTabnineもリストに加わっています。</p>
+	<p>11位 Grok/xAI</p>
+	<p>12位 Poe</p>
+	<p>13位 Sider AI</p>
+	<p>14位 Civitail</p>
+	<p>15位 Tabnine</p>
+	<p>16位 Google Gemini</p>
+	<p>17位 Voicemod</p>
+	<p>18位 GliaCloud</p>
+	<p>19位 RunwayML</p>
+	<p>20位 Midjourney</p>
+	<p><a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023年</u></a>と<a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024年</u></a>のCloudflare Radar「一年を振り返って」の両方で、生成AIの人気度ランキングを発表していますが、どちらのランキングでもOpenAIのChatGPTが一貫して1位の座を維持しています。<a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024年</u></a>には、<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>ブログ記事</u></a>で説明したように、ChatGPTは総合ランキングでも上位に移動し、年末にはトップ50間近にランクインしています。（2023年は僅差でトップ100には入りませんでした）。</p>
+	<div class="flex anchor relative">
+		<h3 id="chatgpts-influence-in-the-overall-ranking">総合ランキングに対するChatGPTの影響力</h3>
+		<a href="https://blog.cloudflare.com/#chatgpts-influence-in-the-overall-ranking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Radarでは最近追加された<a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>「DNSセクション」</u></a>では、提供されるドメインの人気度ランキングの情報が更新され、多くの傾向が詳細と共に説明されています。ドメインランキング上位100のリストの横に、<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>トップ100インターネットサービス</u></a>が表示されています。ChatGPT/OpenAIは業界をリードする生成AIサービスで、通常Temu、eBay、Disney Plusなどの非AIサービスに次いで、平日は50位前後、週末は60位前後にランクされています（2025年3月初旬のインサイトに基づく）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4miBGzkADr0y6XTYzyFpCR/cea822eb3c9b7c8c25d27858a72762ca/image5.png" alt="BLOG-2764" class="kg-image" width="1294" height="1038" loading="lazy">
+	</figure>
+	<p><a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>「一年を振り返って」ブログ記事</u></a>で記したように、これまでの傾向を見ると、ChatGPT/OpenAIは2023年初頭に200位前後にランクインし、年末にはトップ100近くまで上昇しました。2024年は、僅差でトップ100入りを逃したところから始まったものの、５月には<a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>4oモデルのリリース</u></a>でトップ60に達し、従業員や学生が日常生活に戻ったタイミングと合わせて2024年９月からトップ50近くにあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="visitor-location-distribution-americas-europe-and-asia">訪問者の場所分布： 南北アメリカ、ヨーロッパ、アジア</h3>
+		<a href="https://blog.cloudflare.com/#visitor-location-distribution-americas-europe-and-asia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarの「ドメイン情報」ページ</u></a>では、<a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>特定のドメイン</u></a>の地域別の人気度（過去7日間のデータに基づく）を見ることができます。この情報は、2025年3月3日～4日の48時間（Radarのデフォルト）のCloudflare <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a>DNSリゾルバーのトラフィックデータに基づくものです。</p>
+	<p>これを見ると、<a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a>ドメインのDNSトラフィックのほとんどは米国から（17%）、次いでドイツ（7%）、ブラジル（4%）、インドネシア（4%）、インド（4%）からのものとなっています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MsCFiTsGRVF1N3c1oa87b/d5e02c68d7558b16e4fdb518ef5c776a/image2.png" alt="" class="kg-image" width="1999" height="1101" loading="lazy">
+	</figure>
+	<p>新たに登場した<a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>deepseek.com</u></a> の場合、1位は米国で、DNSトラフィックの14%を占めています。続いて中国（11%）、ドイツ（10%）、ブラジル（7%）、香港（5%）となっています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YKbSmz0ksNrbef2Xt7UE0/3fd694750f2cb413cd0e6e5001dfb248/image10.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
+	</figure>
+	<p>一方<a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a> は、米国からのトラフィックが20%、香港からのトラフィックが8%、ドイツからのトラフィックが6%、日本からのトラフィックが6%、ベトナムからのトラフィックが6%と、トップ5でアジアにおける存在感が示されています。有名な生成AI型のチャットボットドメインである <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>では、アジアがさらに上位を占めており、香港が1位（トラフィック全体の29%）、米国（13%）、日本（6%）、中国（6%）、シンガポール（5%）と続きます。</p>
+	<p>生成AIモデルプラットフォームであるHugging Face（<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>huggingface.co</u></a>）でも、米国がトップ（トラフィックの34%）となっていますが、トップ5にはフランス（6%）、英国（6%）、ドイツ（4%）、スウェーデン（4%）と、ヨーロッパの4か国が含まれています。</p>
+	<p>AI搭載のコーディングツールに注目すると、<a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com</u></a>のDNSトラフィックは主に米国（22%）、続いてドイツ（6%）、香港（5%）、インド（5%）、日本（5%）となっています。<a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a> でも同様のパターンが見られますが、米国が15%でリードし、続いて香港（8%）、日本（7%）、ブラジル（5%）、オランダ（5%）となっています。同様に、<a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>curs.com</u></a>では、 DNSトラフィックの20%が米国からのもので、次いで香港（10%）、インド（6%）、中国（6%）、日本（5%）からのものとなっています。AIコード補完ツールである<a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>の場合は、米国からのトラフィックが最も多く（15%）、次いでインド（6%）、ブラジル（5%）、ドイツ（5%）、香港（5%）となっています。</p>
+	<p>Cloudflare RadarのDNSトラフィックデータから、主要な生成AIおよびAIコーディングツールのすべてにおいて米国からの利用が多く、地域別の利用状況はプラットフォームによって異なることがわかります。（1.1.1.1DNSリゾルバーのユーザーベースが米国で大きいことは注意すべき点ではあるものの、これらの具体的な傾向はドメインによって異なります）。</p>
+	<ul>
+		<li>
+			<p>poe.comや、Codeium、CursorといったAIコーディングツールはアジアからの利用が多くを占めています。</p>
+		</li>
+		<li>
+			<p>Hugging FaceとGitHub Copilotでは、ヨーロッパが重要な役割を果たしています。</p>
+		</li>
+		<li>
+			<p>ブラジルが、特にDeepSeekとTabnineで注目に値するほど重要な役割を果たす存在として台頭しています。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="generative-ai-general-traffic-growth">生成AIの一般的なトラフィックの増加</h3>
+		<a href="https://blog.cloudflare.com/#generative-ai-general-traffic-growth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは、生成AIを利用する立場でもあることから、業界に対して独自の視点を持っています。Cloudflareは大小を問わず、多くの生成AIサービスを稼働させています。生成AIのお客様のコホート（最近人気のもの、古参のチャットボットや画像AIジェネレーター、最近サービスを開始したばかりのもの）から、過去数か月のHTTPリクエストデータと<a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>アプリケーション層への攻撃</u></a>傾向の両方を集計しました。</p>
+	<p>まずは、過去1年間のHTTPリクエストトラフィックの増加から見ていきましょう。2024年2月1日から2025年3月1日までの13か月間で、2024年2月と2025年2月を比較すると、<b>月間トラフィックは251%増加</b>し、Cloudflareが処理したリクエストの2%超が潜在的な攻撃として軽減されました。</p>
+	<p>生成AIのWebサイトコホートのエンティティのほとんどが増加しており、この251%の増加には最近生成AIを使い始めたお客様も含まれています。ただし、これらのお客様はほとんどが増加傾向にはあまり影響を与えていません。2024年後半から2025年初頭にCloudflareを導入した生成AIのお客様を除くと、年間の成長率は234%です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4323TeVxE3VqSEoFjopa8t/640305a2b4b3583218115f7a9c35cd60/image11.png" alt="" class="kg-image" width="1999" height="937" loading="lazy">
+	</figure>
+	<p>日次レベルで見ると、クリスマスや年末年始のホリデーシーズンには予想通りの減少がみられることが非常に明確です。もう一つの傾向が顕在化しています。Cloudflareの生成AIのお客様のコホートでは、週末よりも平日の利用が確実に多く、これは職場での利用が多いことを示唆しています。ホリデー期間中の明確な減少には、北半球の夏季も含まれています。たとえば、7月のピークトラフィックにわずかな減少が見られます（ほとんどの国の一般的なトラフィックで通常見られるものと同様です）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NvzlVxeom6omVtgFjwauB/a3088b03dc870581c9b6b1f86a810f6d/image12.png" alt="" class="kg-image" width="1960" height="608" loading="lazy">
+	</figure>
+	<p>また、Cloudflareでは、生成AI Webサイトの訪問者の上位国についても集計しています。1位は米国で、このカテゴリーの全リクエストの23%を占め、次いでインド（8%）、ブラジル（5%）、インドネシア（4%）、フィリピン（4%）がトップ5を占めています。その後は、英国やドイツなどのヨーロッパの国がランクインしています。以下に、トップ50を示します。なお、エジプトは南アフリカ（0.7%）と同じ32位で、ランキングに最初に登場したアフリカの国です。</p>
+	<p><b>生成AI Webサイトへのトラフィック上位を占める場所</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>ランク</b></p>
+				</td>
+				<td>
+					<p><b>国</b></p>
+				</td>
+				<td>
+					<p><b>全体に占める割合</b></p>
+				</td>
+				<td>
+					<p><b>ランク</b></p>
+				</td>
+				<td>
+					<p><b>国</b></p>
+				</td>
+				<td>
+					<p><b>全体に占める割合</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1</p>
+				</td>
+				<td>
+					<p>アメリカ合衆国</p>
+				</td>
+				<td>
+					<p>22.7%</p>
+				</td>
+				<td>
+					<p>26</p>
+				</td>
+				<td>
+					<p>シンガポール</p>
+				</td>
+				<td>
+					<p>1.1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2</p>
+				</td>
+				<td>
+					<p>インド</p>
+				</td>
+				<td>
+					<p>8.3%</p>
+				</td>
+				<td>
+					<p>27</p>
+				</td>
+				<td>
+					<p>ウクライナ</p>
+				</td>
+				<td>
+					<p>1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3</p>
+				</td>
+				<td>
+					<p>ブラジル</p>
+				</td>
+				<td>
+					<p>4.9%</p>
+				</td>
+				<td>
+					<p>28</p>
+				</td>
+				<td>
+					<p>台湾</p>
+				</td>
+				<td>
+					<p>0.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>4</p>
+				</td>
+				<td>
+					<p>インドネシア</p>
+				</td>
+				<td>
+					<p>4.2%</p>
+				</td>
+				<td>
+					<p>29</p>
+				</td>
+				<td>
+					<p>タイ</p>
+				</td>
+				<td>
+					<p>0.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>5</p>
+				</td>
+				<td>
+					<p>フィリピン</p>
+				</td>
+				<td>
+					<p>4%</p>
+				</td>
+				<td>
+					<p>30</p>
+				</td>
+				<td>
+					<p>チリ</p>
+				</td>
+				<td>
+					<p>0.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>6</p>
+				</td>
+				<td>
+					<p>英国</p>
+				</td>
+				<td>
+					<p>3.8%</p>
+				</td>
+				<td>
+					<p>31</p>
+				</td>
+				<td>
+					<p>アラブ首長国連邦</p>
+				</td>
+				<td>
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>7</p>
+				</td>
+				<td>
+					<p>ドイツ</p>
+				</td>
+				<td>
+					<p>3.7%</p>
+				</td>
+				<td>
+					<p>32</p>
+				</td>
+				<td>
+					<p>エジプト</p>
+				</td>
+				<td>
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>8</p>
+				</td>
+				<td>
+					<p>カナダ</p>
+				</td>
+				<td>
+					<p>3.2%</p>
+				</td>
+				<td>
+					<p>33</p>
+				</td>
+				<td>
+					<p>サウジアラビア</p>
+				</td>
+				<td>
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>9</p>
+				</td>
+				<td>
+					<p>フランス</p>
+				</td>
+				<td>
+					<p>3%</p>
+				</td>
+				<td>
+					<p>34</p>
+				</td>
+				<td>
+					<p>南アフリカ共和国</p>
+				</td>
+				<td>
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>10</p>
+				</td>
+				<td>
+					<p>メキシコ</p>
+				</td>
+				<td>
+					<p>2.7%</p>
+				</td>
+				<td>
+					<p>35</p>
+				</td>
+				<td>
+					<p>スウェーデン</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11</p>
+				</td>
+				<td>
+					<p>日本</p>
+				</td>
+				<td>
+					<p>2.4%</p>
+				</td>
+				<td>
+					<p>36</p>
+				</td>
+				<td>
+					<p>ベルギー</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12</p>
+				</td>
+				<td>
+					<p>ロシア連邦</p>
+				</td>
+				<td>
+					<p>2.2%</p>
+				</td>
+				<td>
+					<p>37</p>
+				</td>
+				<td>
+					<p>バングラデシュ</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13</p>
+				</td>
+				<td>
+					<p>スペイン</p>
+				</td>
+				<td>
+					<p>2%</p>
+				</td>
+				<td>
+					<p>38</p>
+				</td>
+				<td>
+					<p>スイス</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14</p>
+				</td>
+				<td>
+					<p>オーストラリア</p>
+				</td>
+				<td>
+					<p>2%</p>
+				</td>
+				<td>
+					<p>39</p>
+				</td>
+				<td>
+					<p>モロッコ</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>15</p>
+				</td>
+				<td>
+					<p>韓国</p>
+				</td>
+				<td>
+					<p>1.8%</p>
+				</td>
+				<td>
+					<p>40</p>
+				</td>
+				<td>
+					<p>エクアドル</p>
+				</td>
+				<td>
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>16</p>
+				</td>
+				<td>
+					<p>ベトナム</p>
+				</td>
+				<td>
+					<p>1.6%</p>
+				</td>
+				<td>
+					<p>41</p>
+				</td>
+				<td>
+					<p>イスラエル</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>17</p>
+				</td>
+				<td>
+					<p>イタリア</p>
+				</td>
+				<td>
+					<p>1.5%</p>
+				</td>
+				<td>
+					<p>42</p>
+				</td>
+				<td>
+					<p>ナイジェリア</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>18</p>
+				</td>
+				<td>
+					<p>マレーシア</p>
+				</td>
+				<td>
+					<p>1.5%</p>
+				</td>
+				<td>
+					<p>43</p>
+				</td>
+				<td>
+					<p>ルーマニア</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>19</p>
+				</td>
+				<td>
+					<p>トルコ</p>
+				</td>
+				<td>
+					<p>1.4%</p>
+				</td>
+				<td>
+					<p>44</p>
+				</td>
+				<td>
+					<p>ポルトガル</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>20</p>
+				</td>
+				<td>
+					<p>ポーランド</p>
+				</td>
+				<td>
+					<p>1.4%</p>
+				</td>
+				<td>
+					<p>45</p>
+				</td>
+				<td>
+					<p>カザフスタン</p>
+				</td>
+				<td>
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>21</p>
+				</td>
+				<td>
+					<p>オランダ</p>
+				</td>
+				<td>
+					<p>1.4%</p>
+				</td>
+				<td>
+					<p>46</p>
+				</td>
+				<td>
+					<p>オーストリア</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>22</p>
+				</td>
+				<td>
+					<p>アルゼンチン</p>
+				</td>
+				<td>
+					<p>1.2%</p>
+				</td>
+				<td>
+					<p>47</p>
+				</td>
+				<td>
+					<p>チェコ共和国</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>23</p>
+				</td>
+				<td>
+					<p>コロンビア</p>
+				</td>
+				<td>
+					<p>1.2%</p>
+				</td>
+				<td>
+					<p>48</p>
+				</td>
+				<td>
+					<p>香港</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>24</p>
+				</td>
+				<td>
+					<p>パキスタン</p>
+				</td>
+				<td>
+					<p>1.2%</p>
+				</td>
+				<td>
+					<p>49</p>
+				</td>
+				<td>
+					<p>アルジェリア</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>25</p>
+				</td>
+				<td>
+					<p>ペルー</p>
+				</td>
+				<td>
+					<p>1.1%</p>
+				</td>
+				<td>
+					<p>50</p>
+				</td>
+				<td>
+					<p>デンマーク</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="attacks-targeting-generative-ai-websites">生成AI Webサイトを狙った攻撃</h3>
+		<a href="https://blog.cloudflare.com/#attacks-targeting-generative-ai-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>セキュリティの面では、生成AIのWebサイトが注目を集め、攻撃が増えており、DDoS攻撃の主要な標的となっています。当社のCloudforce Oneチームは最近、AI関連企業を標的としたアノニマス・スーダンによる攻撃についての脅威分析を発表しました（「<a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>LameDuckの内側：アノニマス・スーダンの脅威活動を分析</u></a>」）。このレポートでは、米国司法省がLameDuckの背後にいるスーダン人の2人を、Skynetボットネットを介した35,000件以上のDDoS攻撃に関与しているものとして非難した経緯を説明しています。この事例では、彼らの活動の背後にある政治的動機と金銭的動機の両方が明らかにされていると共に、Cloudflareを含むグローバルなサイバーセキュリティ強化への取り組みの効果が明確に示されています。</p>
+	<p>2024年2月1日から2025年3月1日までの過去13か月間で、Cloudflareは、<b>1970億件のリクエスト</b>を潜在的な攻撃としてブロックしました。このうち<b>390億件</b>のリクエストが、生成AIのWebサイトを標的とした<b>DDoS攻撃</b>の一部でした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4R9GfQsKixZ3CcGB4GPazz/2e43fa46125d22a3058e2099a1c8c38e/image6.png" alt="" class="kg-image" width="1988" height="944" loading="lazy">
+	</figure>
+	<p>ブロックされた悪意のあるリクエストに関しては、2024年6月にCloudflareによってブロックされた潜在的な攻撃の数が最も多く、2025年1月がこれに続きました。DDoS攻撃は、2025年1月に最も多くの活動を記録し、次いで2024年11月、2024年2月と続きます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KtuwFvwQWbjHL464kDbUG/45bc21c813d9a0ab0fb621da4eb4367d/image14.png" alt="" class="kg-image" width="1999" height="925" loading="lazy">
+	</figure>
+	<p>日次レベルでDDoSトラフィックをより詳しく調べると、最大規模の攻撃が発生したのは2024年2月23日で、 DDoS攻撃の一環として37億件のリクエストがブロックされました。2番目に規模の大きいものは、2024年11月13日に発生した15億件のリクエストのDDoS攻撃でした。また、2025年1月20日から31日にかけてはDDoS攻撃が連日発生し、1月29日にはDDoS攻撃関連のリクエストが最も多く、10億件以上（月間合計で73億件）がありました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DpI9bSIUziw2mVCA6WwUh/06d00c656656af711cba830f6380ae98/image3.png" alt="" class="kg-image" width="1946" height="620" loading="lazy">
+	</figure>
+	<p>2024年2月23日に発生したDDoS攻撃では、特定の生成AIのお客様が標的となり、攻撃の一環として生成AIの全お客様にわたる全リクエストの20%以上がブロックされました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gh467o7mEZBvm0wu3s9eI/1e2a21f47e3645de4257549937bc5ba0/image8.png" alt="" class="kg-image" width="1956" height="610" loading="lazy">
+	</figure>
+	<p>この生成AIのお客様に対するDDoS攻撃をより詳しく見ると、攻撃は2024年2月22日22:45（UTC）に始まり、8時間以上継続的なトラフィックスパイクが続き、リクエストは1秒あたり27万件に達しました。その後、さらなる攻撃が続き、最も重大な攻撃は2024年2月26日03:45 UTCに発生しました。3分間の攻撃が発生し、リクエストは1秒あたり30万9,000件に達しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ccxcb4WCqyoZOpZvJkv8/1748a4044e7de327aff9f289d51e4fdc/image9.png" alt="" class="kg-image" width="1422" height="687" loading="lazy">
+	</figure>
+	<p>別の人気度の高い生成AIのお客様は、2025年1月25日から1月31日までDDoS攻撃のキャンペーンの標的となり、トラフィックのピークは1月30日で、リクエストは1秒あたり52万3,000件に達しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZBMBJXBlyk7kHc85TthBG/ba0309a070b3d920b9ba2f9651fb1343/image7.png" alt="" class="kg-image" width="1966" height="918" loading="lazy">
+	</figure>
+	<p>2024年2月から2025年2月までの攻撃で着目すべきもう一つの側面は、 DDoS攻撃の標的となった生成AI Webサイトのタイプです。型の一般的なAIチャットボットは、ブロックされたリクエストの80%以上を占めており、主な標的となっています。</p>
+	<p><b>生成AIカテゴリー別でのDDoS攻撃の標的</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>分類</b></p>
+				</td>
+				<td>
+					<p><b>割合</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>一般的なチャットボット</p>
+				</td>
+				<td>
+					<p>82.7%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>画像AIジェネレーター</p>
+				</td>
+				<td>
+					<p>8.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>コードアシスタント</p>
+				</td>
+				<td>
+					<p>3.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>その他</p>
+				</td>
+				<td>
+					<p>2.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIの研究・インフラ</p>
+				</td>
+				<td>
+					<p>1.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIによる音楽制作</p>
+				</td>
+				<td>
+					<p>1.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ライティングとコンテンツAI</p>
+				</td>
+				<td>
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>音声・動画AI</p>
+				</td>
+				<td>
+					<p>0.3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>ただし、各カテゴリーでDDoS攻撃としてブロックされた総トラフィックの割合を見ると、画像AI関連のWebサイトの割合が最も高く、総トラフィックの50%以上がブロックされています。</p>
+	<p><b>DDoS攻撃としてブロックされたトラフィックの割合が最も高いWebサイトカテゴリー</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>分類</b></p>
+				</td>
+				<td>
+					<p><b>ブロックされたDDoS（%）</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>画像AI</p>
+				</td>
+				<td>
+					<p>50.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI型のチャットボット</p>
+				</td>
+				<td>
+					<p>31%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI検索</p>
+				</td>
+				<td>
+					<p>9.4%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIコードアシスタント</p>
+				</td>
+				<td>
+					<p>6.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AIモデル</p>
+				</td>
+				<td>
+					<p>5.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI音楽</p>
+				</td>
+				<td>
+					<p>3.6%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AI企業</p>
+				</td>
+				<td>
+					<p>2.9%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-ai-transformation">結論：AIの変革</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-ai-transformation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>生成AIは成長を続け、インターネットの利用を変革し続けており、昨年1年間でAIサービスのトラフィックは250%以上増加しました。ChatGPTは間違いなく最も人気のあるサービスであり、当社の1.1.1.1DNSリゾルバーからのトラフィックの分析によると、全インターネットサービスのトップ50に接近するサービスです。DeepSeekやGrok/xAIのような新規参入企業は急速に人気ランキングを上昇しており、利用状況における地域的なパターンでは、米国、インド、ブラジルが訪問者トラフィック数で主導しています。</p>
+	<p>この急増がサイバー攻撃の原因にもなり、過去1年間で390億件のリクエストが特定の生成AIのWebサイトを標的としたDDoS攻撃であると特定されています。ほとんどの攻撃が一般的なAI型のチャットボットを狙っている一方、ブロックされたリクエストの割合が最も高かったのは画像生成サイトで、その割合は50%以上となっています。生成AIが進化する中で、その傾向を追跡することにより、トラフィックの急増、グローバルなリーチ、新たな脅威についての過去データの蓄積が可能になります。</p>
+	<p>インターネットに関するより詳細な傾向とインサイトにご興味のある方は、<a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>をご確認ください。<a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> （X）、 <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> （Mastodon）、 <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a> （Bluesky）などのソーシャルメディアで当社をフォローするか、電子メールでお問い合わせください。</p>
+</div>

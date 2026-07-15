@@ -1,0 +1,175 @@
+<div class="mb2 gray5">12분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/measuring-network-connections-at-scale">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/measuring-network-connections-at-scale">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HS6cY9WsXZnUQyeDcEnDG/dc5c64ca39e14bc0ec27aa81db1d6f27/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>웹 페이지 로드, 동영상 스트리밍, API 호출 등 인터넷에서의 모든 상호 작용은 연결로 시작됩니다. 이러한 기본적인 논리적 연결은 장치 간에 오가는 패킷 스트림으로 구성됩니다.</p>
+	<p>인터넷이 존재하는 이래로 네트워크 연결의 다양한 측면은 연구자와 실무자의 관심을 불러왔습니다. 심지어 연결에 대한 관심은 1991년의 획기적인 논문<a href="https://dl.acm.org/doi/10.1145/115994.116003" target="_blank" rel="noopener noreferrer"><u>"광역 TCP/IP 대화의 특성"에서 볼 수 있듯이 그</u></a> 이전부터 등장했습니다. 어쨌든 인터넷 측정 커뮤니티는 <i>수십 년 동안</i> 인터넷 통신의 특성을 파악하는 데 전념해 왔으며, "얼마나 오래 지속됩니까?"부터 "얼마나 큰가요?" "얼마나 자주?" 그리고 이는 이제 시작일 뿐입니다.</p>
+	<p>놀랍게도 광범위한 인터넷에서의 연결 특성을 대부분 사용할 수 없는 경우가 많습니다. 누구나 도구(예: <a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer"><u>Wireshark</u></a>)를 사용하여 로컬에서 데이터를 캡처할 수 있지만, 액세스 및 규모로 인해 연결을 전 세계적으로 측정하는 것은 사실상 불가능합니다. 또한 네트워크 운영자는 일반적으로 자신이 관찰하는 특성을 공유하지 않습니다. 네트워크 운영자는 이러한 특성을 관찰하는 데 상당한 시간과 노력을 들인다고 가정합니다.</p>
+	<p>이 블로그 게시물에서는 다른 방향으로 이동하여 Cloudflare의 글로벌 CDN을 통해 설정된 연결에 대한 집계 인사이트를 공유합니다. <a href="https://radar.cloudflare.com/adoption-and-usage" target="_blank" rel="noopener noreferrer"><u>Cloudflare에 대한 HTTP 요청의</u></a> 약 70%를 차지하는 <a href="https://developers.cloudflare.com/fundamentals/reference/tcp-connections" target="_blank" rel="noopener noreferrer"><u>TCP</u></a> 연결의 특성을 제시하며, 클라이언트 측 측정만으로는 얻기 어려운 경험적 인사이트를 제공합니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-connection-characteristics-matter">연결 특성이 중요한 이유</h2>
+		<a href="https://blog.cloudflare.com/#why-connection-characteristics-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>시스템 동작을 특성화하면 변경의 영향을 예측하는 데 도움이 됩니다. 네트워크 측면에서는 새로운 라우팅 알고리즘 또는 전송 프로토콜을 고려해보세요. 그 효과를 어떻게 측정할 수 있을까요? 한 가지 옵션은 변경 사항을 라이브 네트워크에 직접 배포하는 것이지만, 이는 위험합니다. 예상치 못한 결과가 발생하면 사용자나 네트워크의 다른 부분에 지장을 초래할 수 있어 '배포 우선' 접근 방식이 안전하지 않거나 윤리적으로 의심스러울 수 있습니다.</p>
+	<p>첫 번째 단계로 라이브 배포보다 안전한 대안은 시뮬레이션입니다. 설계자는 시뮬레이션을 사용하여 전체 버전을 구축하지 않고도 스키마에 대한 중요한 인사이트를 얻을 수 있습니다. 그러나 인터넷 전체를 시뮬레이션하는 것은 어려운 일입니다.<a href="https://dl.acm.org/doi/10.1145/268437.268737" target="_blank" rel="noopener noreferrer"><u>매우 유명한 저서인 " 인터넷을 어떻게 시뮬레이션해야 할지 모르는 이유 "에서 설명한 것처럼요.</u></a></p>
+	<p>유용한 시뮬레이션을 실행하려면 우리가 연구 중인 실제 시스템처럼 작동해야 합니다. 이는 실제 행동을 모방한 가상 데이터를 생성하는 것을 의미합니다. 이는 실제 데이터가 어떻게 작동하는지에 대한 수학적 설명인 통계 분포를 사용하는 경우가 많습니다. 그러나 이러한 분포를 만들려면 먼저 데이터를 특성화하여 주요 속성을 측정하고 이해해야 합니다. 그래야만 시뮬레이션을 통해 사실적인 결과를 얻을 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="unpacking-the-dataset">데이터세트 풀기</h2>
+		<a href="https://blog.cloudflare.com/#unpacking-the-dataset" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 데이터의 가치는 수집 메커니즘에 따라 달라집니다. 모든 데이터 세트에는 사각 지대, 편향성, 한계가 있으며, 이를 무시하면 잘못된 결론에 도달할 수 있습니다. 데이터가 어떻게 수집되었는지, 데이터가 표현하는 내용, 제외되는 내용 등 더 자세한 정보를 조사함으로써 우리는 데이터의 신뢰성을 더 잘 이해하고 데이터 사용 방법에 대해 정보에 입각한 결정을 내릴 수 있습니다. 수집된 원격 측정 결과를 자세히 살펴보겠습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ksUQ7xlzXPWp2hH7eX4dG/124456d20c6fd5e7e185d68865aee6fa/image5.png" alt="" class="kg-image" width="1380" height="266" loading="lazy">
+	</figure>
+	<p><b>데이터세트</b> 개요. 이 데이터는 위 다이어그램에서 <i>Cloudflare 방문자</i> 로 표시된 TCP 연결을 설명하며, 이 연결은 HTTP 1.0, 1.1, 2.0을 통해 글로벌 CDN 서버에서 수신되는 초당 평균 8,400만 건의 HTTP 요청 중 <a href="https://radar.cloudflare.com/adoption-and-usage" target="_blank" rel="noopener noreferrer">약 70%</a> 를 처리합니다.</p>
+	<p><b>샘플링.</b> 수동적으로 수집된 데이터의 스냅샷은 2025년 10월 7일부터 10월 15일 사이에 Cloudflare에 대한 균일하게 샘플링된 모든 TCP 연결 1%에서 가져온 것입니다. 클라이언트 대면 서버 각각에서 샘플링을 수행하여 데이터 센터 수준에서 샘플링하여 나타날 수 있는 편향성을 완화합니다.</p>
+	<p><b>다양성.</b> 주로 트래픽을 자체 소유하고 검색, 소셜 미디어 또는 스트리밍 비디오와 같은 소수의 서비스에 의해 지배되는 많은 대형 사업자와는 달리, Cloudflare의 워크로드의 대다수는 고객으로부터 발생합니다. 고객은 웹 사이트 앞에 Cloudflare를 두어 보호를 제공하고, 성능을 개선하고, 비용을 절감하도록 지원합니다. 이러한 고객의 다양성으로 인해 전 세계에 걸쳐 수많은 웹 애플리케이션, 서비스, 사용자가 찾아옵니다. 그 결과로 우리가 관찰하는 연결은 끊임없이 진화하는 광범위한 클라이언트 장치와 애플리케이션별 동작에 의해 형성됩니다.</p>
+	<p><b>Cloudflare가 기록합니다.</b> 로그의 각 항목은 SNI 및 연결 중 요청 수와 함께 Linux 커널의 <a href="https://man7.org/linux/man-pages/man7/tcp.7.html" target="_blank" rel="noopener noreferrer"><u>TCP_INFO</u></a> 구조를 통해 캡처된 소켓 레벨 메타데이터로 구성됩니다. 로그에서 개별 HTTP 요청, 트랜잭션, 세부 정보는 제외됩니다. 전송된 패킷의 지속 시간과 수, HTTP 요청 처리 건수 등의 연결 메타데이터 통계에 대한 로그 사용을 제한합니다.</p>
+	<p><b>데이터 캡처.</b> <a href="https://blog.cloudflare.com/tcp-resets-timeouts/#tcp-connections-from-establishment-to-close"><u>우리는 FIN 패킷으로</u></a> 정상적으로 닫히는 연결만 특성화하여 완전히 처리된 '유용한' 연결을 데이터 세트에 나타내기로 선택했습니다. 공격 완화로 가로채기 되었거나, 제한 시간 초과가 되었거나, RST 패킷 때문에 중단된 연결은 제외됩니다.</p>
+	<p>단계적 종료 자체가 '유용한' 연결을 의미하는 것은 아니므로, 이 분석에서 유휴 또는 비 HTTP 연결을 필터링하기 위해서는 추가로 이 분석에서 유휴 연결이나 비 HTTP<b>연결을 제외하기 위해서는 연결 중 최소 한 번의 성공적인 HTTP 요청이 필요합니다. FIN 패킷으로 닫히는 Cloudflare로의 연결을</b></p>
+	<p><a href="https://blog.cloudflare.com/how-we-make-sense-of-too-much-data"><u>자세한 내용은 이전에 블로그에 Cloudflare의 전체 로깅 메커니즘</u></a> 및 <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse"><u>후처리 파이프라인에</u></a> 대한 자세한 내용을 다룬 내용을 참고하시기 바랍니다.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="visualizing-connection-characteristics">연결 특성 시각화</h2>
+		<a href="https://blog.cloudflare.com/#visualizing-connection-characteristics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크는 본질적으로 동적이며 시간이 지남에 따라 추세가 변할 수 있지만, 전역 인프라에서 관찰되는 대규모 패턴은 시간이 지나도 놀라울 정도로 일관되게 유지됩니다. 저희 데이터는 연결 특성에 대한 글로벌 보기를 제공하지만, 그 분포는 지역 트래픽 패턴에 따라 여전히 다를 수 있습니다.</p>
+	<p>시각화에서 특성은 <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="noopener noreferrer"><u>누적 분포 함수(CDF)</u></a> 그래프로 표현되며, 특히 <a href="https://en.wikipedia.org/wiki/Empirical_distribution_function" target="_blank" rel="noopener noreferrer"><u>경험에 따르면</u></a> 그렇습니다. CDF는 분포를 거시적으로 파악하는 데 특히 유용합니다. 이를 통해 일반적인 사례와 극단적인 사례를 모두 하나의 보기에서 명확하게 파악할 수 있습니다. 아래 그림에서는 이들 변수를 사용하여 대규모 패턴을 이해합니다. 분포를 더 잘 해석하기 위해 로그 스케일링된 축을 사용하여 네트워킹 데이터에 일반적인 극단 값의 존재를 설명했습니다.</p>
+	<p>인터넷 연결에 대한 오래된 질문은<a href="https://en.wikipedia.org/wiki/Elephant_flow" target="_blank" rel="noopener noreferrer"><u>'코끼리와 쥐'와</u></a> 관련이 있습니다. 실무자와 연구자들은 대부분의 흐름이 소규모이고 일부는 대규모라는 사실을 완전히 알고 있지만, 이를 구분할 수 있는 데이터가 거의 없습니다. 여기에서 프레젠테이션이 시작됩니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="packet-counts">패킷 수</h3>
+		<a href="https://blog.cloudflare.com/#packet-counts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>먼저 Cloudflare 서버에서 클라이언트로 연결에 전송된 응답 패킷의 수 <i>분포</i> 를 살펴보겠습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qaPCul0l7bdOQfaxL1Wbn/d0ef9cc108ba35d49593029baed7cb86/image12.png" alt="" class="kg-image" width="1999" height="790" loading="lazy">
+	</figure>
+	<p>그래프에서 x축은 전송된 응답 패킷 수를 로그 스케일로 나타내고 y축은 각 패킷 수 아래의 누적 연결 비율을 나타냅니다. 평균 응답은 약 240개의 패킷으로 구성되어 있지만, 그 분포는 매우 왜곡되어 있습니다. 중앙값은 12 패킷으로, 인터넷 연결의 50%가 <i>매우 적은 패킷</i>으로 구성되어 있음을 나타냅니다. 90번째 백분위까지 확장하면, 연결은 107개의 패킷만 전달합니다.</p>
+	<p>이러한 대조는 인터넷 트래픽의 헤비 테일 특성을 극명하게 보여줍니다. 소수의 연결은 비디오 스트림 또는 대규모 파일 전송과 같은 대량의 데이터를 전송하지만, 대부분의 상호 작용은 아주 작아서 작은 웹 개체, 마이크로서비스 트래픽 또는 API 응답을 전달합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Mf6VwD2Xq8aBwQP1V9aX5/1a20d6fa2caab5c719591db8b232f6a1/image11.png" alt="" class="kg-image" width="1999" height="1213" loading="lazy">
+	</figure>
+	<p>위 도표는 패킷 카운트 분포를 HTTP 프로토콜 버전별로 보여줍니다. HTTP/1.X(HTTP 1.0 및 1.1 결합) 연결의 경우 응답 중앙값이 10패킷으로 구성되며, 전체 연결의 90%는 63개 미만의 응답 패킷을 전달합니다. 이와는 대조적으로 HTTP/2 연결은 중앙값 16패킷과 170패킷의 90번째 백분위수에서 더 큰 응답을 보입니다. 이러한 차이는 HTTP/2가 단일 연결을 통해 여러 스트림을 다중화하는 방식을 반영하는 것으로 보이며, 더 많은 요청과 응답을 더 적은 수의 연결로 통합하는 경우가 많으므로 연결당 교환되는 총 패킷 수가 증가하는 경우가 많습니다. 또한 HTTP/2 연결에는 응답 패킷 수를 늘리는 제어 평면 프레임과 흐름 제어 메시지가 추가로 있습니다.</p>
+	<p>이러한 차이점에도 불구하고 결합된 보기는 동일한 헤비 테일 패턴을 표시합니다.<a href="https://en.wikipedia.org/wiki/Mouse_flow" target="_blank" rel="noopener noreferrer"><u>작은 부분의 연결이</u></a><a href="https://en.wikipedia.org/wiki/Elephant_flow" target="_blank" rel="noopener noreferrer"><u>엄청난 양의 데이터를 전달하여(코끼리</u></a> 플로우) 수백만 개의 패킷으로 확장되는 반면, 대부분은 대부분 가벼운 상태로 유지됩니다(마우스 플로우).</p>
+	<p>지금까지는 서버에서 클라이언트로 전송된 패킷의 총 수에 초점을 맞추었지만, 연결 동작의 또 다른 중요한 차원은 아래 그림과 같이 전송 및 수신된 패킷 간의 균형입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VZeU0d2EYLxPl3SaTPJBb/6b46a793d6eea178838c4f5b2572caf1/image2.png" alt="" class="kg-image" width="1999" height="796" loading="lazy">
+	</figure>
+	<p>x축은 클라이언트로부터 수신한 패킷에 대한 Cloudflare의 서버에서 전송한 패킷의 비율을 나타내며, CDF로 시각화됩니다. 모든 연결에서 비율의 중앙값은 0.91로, 전체 연결의 절반에서 클라이언트가 서버가 응답하는 것보다 약간 더 많은 패킷을 전송한다는 것을 의미합니다. 이러한 과도한 클라이언트 측 패킷은 주로 <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer"><u>TLS</u></a> 핸드셰이크 시작(ClientHello), HTTP 제어 요청 헤더, 데이터 승인(ACK)을 반영하며, 일반적으로 클라이언트는 서버가 콘텐츠 악의적인 페이로드와 함께 반환하는 것보다 더 많은 패킷을 전송하게 됩니다. 배포에 영향을 미쳤습니다.</p>
+	<p>이는 CDN 워크로드의 전형적인 대량 다운로드와 같이 클라이언트 사용량이 많은 연결의 롱테일로 인해 1.28로 더 높습니다. 대부분의 연결은 상대적으로 좁은 범위에 속합니다. 전체 연결 중 10%의 비율은 0.67 미만이고 90%는 1.85 미만입니다. 그러나 롱테일 동작은 인터넷 트래픽의 다양성을 강조합니다. 업로드와 다운로드가 많은 연결에서 모두 극단적인 값이 발생합니다. 분산 3.71은 이러한 비대칭적인 흐름을 반영하는 반면, 연결 대량의 업로드-다운로드 교환은 대략적으로 균형을 유지하고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="bytes-sent">전송된 바이트</h3>
+		<a href="https://blog.cloudflare.com/#bytes-sent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>데이터를 살펴봐야 할 또 다른 측면은 서버에서 클라이언트로 전송하는 바이트를 사용하는 것입니다. 이는 각 연결을 통해 전달되는 실제 데이터 양을 포착합니다. 이 메트릭은 tcpi_bytes_sent에서 파생되었으며, <a href="https://github.com/torvalds/linux/blob/v6.14/include/uapi/linux/tcp.h#L222-L312" target="_blank" rel="noopener noreferrer"><u>linux/tcp.h</u></a>에 정의된 대로 TCP 헤더를 제외하면서 (재)전송된 세그먼트 페이로드도 포함합니다.<a href="https://www.rfc-editor.org/rfc/rfc4898.html" target="_blank" rel="noopener noreferrer"><u>RFC 4898</u></a>(TCP 확장 통계 MIB)을 준수합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VZs6F65RQjyyEUUxZSP2L/b0edd986738e9128c16dcbecb7d83761/image3.png" alt="" class="kg-image" width="1999" height="1215" loading="lazy">
+	</figure>
+	<p>위 그래프는 HTTP 프로토콜 버전에서 전송한 바이트를 분석한 것입니다. x축은 각 연결을 통해 서버에서 전송한 총 바이트를 나타냅니다. 이러한 패턴은 패킷 카운트에서 관찰한 결과와 일반적으로 일치합니다.</p>
+	<p>HTTP/1.X의 경우, 응답 중앙값은 4.8KB이며, 연결의 90%는 51KB 미만을 전송합니다. 반면 HTTP/2 연결은 중앙값이 6KB이고 90번째 백분위수는 146KB로 약간 더 큰 응답을 보여줍니다. 평균은 HTTP/1.x의 경우 224KB로 훨씬 높습니다. HTTP/2의 경우 390KB로, 소수의 초대형 전송을 반영합니다. 이처럼 긴 종단이 있는 극단적인 흐름은 연결당 수십 기가바이트에 도달할 수 있으며, 일부 매우 가벼운 연결은 최소 페이로드(HTTP/1.X의 최소값은 115바이트, HTTP/2의 경우 202바이트)를 전달합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xRYaXYQbte6MszIT92uky/837ebdc842c9784a9c413ad886f7a5d6/image6.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+	</figure>
+	<p>이제 tcpi_bytes_received 지표를 사용하여 전송한 바이트 수 대 수신한 바이트 수의 비율을 연결별로 살펴보면 데이터 교환의 균형을 더 잘 이해할 수 있습니다. 이 비율은 각 연결이 얼마나 비대칭적인지, 기본적으로는 클라이언트로부터 수신하는 데이터와 비교하여 서버를 전송하는 데이터의 양을 표시합니다. 모든 연결에서 중앙값 비율은 3.78로, 전체의 절반에서 서버가 수신하는 데이터보다 4배 가까이 더 많은 데이터를 전송한다는 의미입니다. 평균은 81.06으로 훨씬 높으며, 이는 다운로드가 많은 플로우로 인한 강력한 롱테일을 보여줍니다. 여기서도 롱테일 분포가 무거운 것을 볼 수 있습니다. 극단적인 사례 중 일부는 그 비율이 수백만 달러에 달하며, 클라이언트에게 전송되는 데이터의 경우에는 더 극단적인 값을 가집니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="connection-duration">연결 지속 시간</h3>
+		<a href="https://blog.cloudflare.com/#connection-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>패킷 및 바이트 카운트는 교환되는 데이터의 양을 포착하는 반면, 연결 지속 시간은 시간이 지남에 따라 교환이 어떻게 진행되는지에 대한 인사이트를 제공합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5noP7Acqu2Ky4hCGtETH1F/92c7bd220d57232fb40440624d227a78/image8.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+	</figure>
+	<p>위의 CDF에는 연결 지속 시간(수명)의 분포가 초 단위로 나와있습니다. x축은 로그 척도라는 것을 상기시킵니다. 모든 연결에서 지속 시간 중앙값은 4.7초로, 전체 연결의 절반이 5초 이내에 완료됨을 의미합니다. 평균은 96초로 훨씬 높으며, 이는 수명이 긴 연결이 소수로 평균이 왜곡된 것을 반영합니다. 대부분의 연결은 0.1초(10번째 백분위수)~300초(90번째 백분위수)의 범위에 속합니다. 또한 일부 연결은 며칠 동안 지속되며, 이러한 연결은 <a href="https://developers.cloudflare.com/fundamentals/reference/connection-limits" target="_blank" rel="noopener noreferrer"><u>기본 유휴</u></a> <a href="https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#tcp-connections-and-keep-alives" target="_blank" rel="noopener noreferrer"><u>제한</u></a> 시간 초과 제한에 도달하지 않고 연결 재사용을 위해 유지를 통해 유지 관리될 수 있습니다. 이러한 수명이 긴 연결은 일반적으로 영구 세션 또는 멀티미디어 트래픽을 나타내는 반면, 웹 트래픽의 대부분은 짧고 버스트이며 일시적입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="request-counts">요청 수</h3>
+		<a href="https://blog.cloudflare.com/#request-counts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>단일 연결은 웹 트래픽에 대한 여러 HTTP 요청을 전달할 수 있습니다. 이렇게 하면 연결 멀티플렉싱에 대한 패턴이 드러납니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hsoigL4rFtIyRJpdSUXwh/5ef82b3c0cf5b25b8dc13ed38761f895/image7.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+	</figure>
+	<p>위의 표에는 단일 연결에서 확인되는 HTTP 요청 수(로그 척도)가 HTTP 프로토콜 버전별로 분류되어 있습니다. HTTP/1.X(평균 3개 요청) 연결과 HTTP/2(평균 8개 요청) 연결 모두 요청의 중앙값이 1개에 불과하므로, 연결 재사용이 제한적으로 만연해 있음을 확인할 수 있습니다. 그러나 HTTP/2는 단일 연결을 통해 여러 스트림 멀티플렉싱을 지원하므로 90번째 백분위수는 10개의 요청으로 증가하며, 때로는 수천 개의 요청을 처리하는 극단적인 경우도 있으며, 이는 <a href="https://blog.cloudflare.com/connection-coalescing-experiments"><u>연결 병합</u></a>으로 인해 증폭될 수 있습니다. 이와는 대조적으로, HTTP/1.X 연결은 요청 수가 훨씬 적습니다. 이는 프로토콜 설계와도 일맥상통합니다. HTTP/1.0은 "연결당 하나의 요청" 철학을 따르는 반면, HTTP/1.1은 지속적인 연결을 도입했습니다. 백분위수.</p>
+	<p>이러한 연결의 단기적인 만연은 부분적으로는 수명이 긴 세션을 유지하기보다는 새로운 연결을 여는 경향이 있는 자동화된 클라이언트나 스크립트 때문일 수 있습니다. 이러한 직관을 넓히기 위해 클라이언트 ASN을 프록시로 사용하여 데이터 센터에서 발생한 트래픽(자동화되었을 가능성이 높음)과 일반적인 사용자 트래픽(사용자 기반)으로 데이터를 분할했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DhUbNv8cjQVGOqKUai7KU/fecc8eaa488ec216bfb14084a518501b/image9.png" alt="" class="kg-image" width="1999" height="793" loading="lazy">
+	</figure>
+	<p>위의 그래프를 보면 비 DC(사용자 주도) 트래픽은 연결당 요청 수가 약간 더 많으며, 평균은 5개, 요청당 5개의 요청의 90 백분위수는 단일 영구 연결을 통해 여러 리소스를 가져오는 브라우저나 앱과 일치합니다 연결합니다. 이와는 대조적으로 DC에서 시작된 트래픽은 평균이 약 3개 요청과 90번째 백분위수가 2개이므로 저희 예상이 맞았습니다. 이러한 차이에도 불구하고 요청의 중앙값 수는 두 그룹 모두에서 1로 유지되어 있으며, 이를 통해 연결 원본에 관계없이 대부분 진정으로 짧다는 점을 강조할 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="inferring-path-characteristics-from-connection-level-data">연결 수준 데이터에서 경로 특성 추론</h2>
+		<a href="https://blog.cloudflare.com/#inferring-path-characteristics-from-connection-level-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>연결 수준 측정을 통해 기본 경로 특성에 대한 인사이트도 제공할 수 있습니다. 이제 더 자세히 살펴보겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="path-mtu">경로 최대 전송 단위</h3>
+		<a href="https://blog.cloudflare.com/#path-mtu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>네트워크 경로를 따른 최대 전송 단위(<a href="https://www.cloudflare.com/learning/network-layer/what-is-mtu" target="_blank" rel="noopener noreferrer"><u>MTU</u></a>)는 경로 MTU(PMTU)라고 부르는 경우가 많습니다. PMTU는 처리량, 효율성, 대기 시간에 영향을 미치는 조각화나 패킷 끊김 없이 연결을 통과할 수 있는 가장 큰 패킷 크기를 결정합니다. Cloudflare 서버의 Linux TCP 스택은 경로 최대 전송 단위 <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice"><u>발견의 일환으로, 연결 경로를 따라 분할 없이 전송할 수 있는 가장 큰 세그먼트 크기를 추적합니다.</u></a></p>
+	<p>해당 데이터에서 PMTU의 중앙값(그리고 90번째 백분위수!)이 1500바이트임을 확인했는데, 이는 일반적인 이더넷 최대 전송 단위와 일치하며 대부분의 인터넷 경로의 <a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit" target="_blank" rel="noopener noreferrer"><u>표준으로 간주됩니다</u></a>. 흥미롭게도 10번째 백분위수는 1,420바이트로, 일부 <a href="https://blog.cloudflare.com/migrating-from-vpn-to-access"><u>VPN</u></a>, <a href="https://blog.cloudflare.com/increasing-ipv6-mtu"><u>IPv6tov4 터널</u></a> 또는 분할을 피하기 위해 더 엄격한 제한을 적용하는 구형 네트워킹 장비에서 흔히 볼 수 있는 약간 더 작은 MTU를 가진 네트워크 링크가 경로에 포함되는 경우를 반영합니다. 극단적으로 말하면 IPv4 연결의 경우 <a href="https://www.kernel.org/doc/html/v6.5/networking/ip-sysctl.html#:~:text=Default%3A%20FALSE-,min_pmtu,-%2D%20INTEGER" target="_blank" rel="noopener noreferrer"><u>Linux 커널에서</u></a> 허용하는 최소 PMTU 값에 해당하는 552바이트만큼 작은 최대 전송 단위도 발견되었습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="initial-congestion-window">초기 정체 기간</h3>
+		<a href="https://blog.cloudflare.com/#initial-congestion-window" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>전송 프로토콜의 핵심 매개변수는 수신자의 승인을 기다리지 않고 전송될 수 있는 패킷의 수인 혼잡 윈도우(CWND)입니다. 이러한 패킷 또는 바이트를 "전송 중"이라고 부릅니다. 연결 중 정체 기간은 연결 전체에서 동적으로 변화합니다.</p>
+	<p>그러나 데이터 전송이 시작될 때의 초기 정체 윈도우(ICWND)는 위에서 본 인터넷 트래픽을 지배하는 수명이 짧은 연결의 경우 특히 큰 영향을 미칠 수 있습니다. ICWND가 너무 낮게 설정되면 중소 규모 전송 시 병목 대역폭에 도달하는 데 왕복 시간이 더 걸리므로 전송이 느려집니다. 반대로 값이 너무 높으면 발신자가 네트워크를 압도하여 불필요한 패킷 손실과 재전송을 초래할 위험이 있으며, 잠재적으로 병목 링크를 공유하는 모든 연결에서 발생합니다.</p>
+	<p>ICWND의 합리적인 추정치는 TCP 발신자가 <a href="https://www.rfc-editor.org/rfc/rfc5681#section-3.1" target="_blank" rel="noopener noreferrer"><u>느린 시작</u></a>에서 벗어나는 순간의 정체 창 크기로 취할 수 있습니다. 이 전환은 발신자가 더 이상 성장하면 혼잡의 위험이 있을 수 있다고 추론한 후 기하급수적인 증가에서 혼잡 회피로 전환하는 지점입니다. 아래 그림에는 BBR에서 계산한 시점에 느린 시작이 종료되는 시점의 <a href="https://blog.cloudflare.com/http-2-prioritization-with-nginx/#bbr-congestion-control"><u>정체 창 크기</u></a> 분포가 나와 있습니다. 중앙값은 약 464KB로, 일반적인 1,500바이트 최대 전송 단위의 경우 연결당 약 310패킷에 해당하며, 극단적인 흐름은 수십 메가바이트를 전송합니다. 이러한 차이는 다양한 TCP 연결과 동적으로 진화하는 트래픽을 전달하는 네트워크의 특성을 반영하는 것입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BzqE6HSQgkriWisqS3Yx3/de4dc12a453d162884e9a015ccb40348/image4.png" alt="" class="kg-image" width="1999" height="1421" loading="lazy">
+	</figure>
+	<p>이러한 값은 Cloudflare와 최종 사용자 간의 경로뿐만 아니라 일반적으로 잘 프로비저닝되고 더 높은 대역폭을 제공하는 Cloudflare와 인접 데이터 센터 사이의 경로를 포함하는 다양한 네트워크 경로를 반영한다는 점을 강조하는 것이 중요합니다.</p>
+	<p>위의 분포를 처음 검사했을 때 값이 매우 높은 것 같아 의심스러웠습니다. 그제서야 이 수치는 BBR 특유의 행동에서 기인한 결과라는 것을 알게 됐습니다. 경로의 가용 용량 추정치인 <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product" target="_blank" rel="noopener noreferrer"><u>대역폭 지연 곱(BDP)</u></a>보다 혼잡 윈도우를 높게 설정하는 것입니다. <a href="https://www.ietf.org/archive/id/draft-cardwell-iccrg-bbr-congestion-control-01.html#name-state-machine-operation" target="_blank" rel="noopener noreferrer"><u>의도적으로</u></a> 값이 부풀려진 것입니다. 이 가설을 증명하기 위해 BBR의 추정 BDP와 함께 아래 그림의 분포를 다시 그래프로 표시합니다. BBR의 확인되지 않은 패킷의 정체 기간과 BDP 추정치 사이에는 차이가 명확합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34YFSv4Zdp82qszNM79XsH/3c147dfd5c5006fe55abb53dab47bef1/image10.png" alt="" class="kg-image" width="1999" height="1421" loading="lazy">
+	</figure>
+	<p>위 그래프는 연결 원격 측정과 관련하여 계산된 BDP 값을 더합니다. BDP의 중앙값은 약 77KB로, 약 50패킷입니다. 이를 위에서 사용한 혼잡 기간 분포와 비교하면 최근에 닫은 연결의 BDP 추정치가 훨씬 더 안정적임을 알 수 있습니다.</p>
+	<p>Cloudflare에서는 이러한 인사이트를 사용하여 합리적인 초기 정체 창 크기와 해당 상황을 파악하고 있습니다. 내부적으로 Cloudflare의 자체 실험 결과, ICWND 크기가 더 작은 연결의 경우에 30~40%까지 성능에 영향을 미치는 것으로 나타났습니다. 이러한 통찰력은 10여 년 동안 10 <a href="https://datatracker.ietf.org/doc/html/rfc6928" target="_blank" rel="noopener noreferrer"><u>패킷</u></a> 의 기본값이었던 더 나은 초기 정체 창 값을 찾기 위한 노력을 다시 살펴보는 데 잠재적으로 도움이 될 것입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="deeper-understanding-better-performance">더 깊은 이해, 더 나은 성능</h3>
+		<a href="https://blog.cloudflare.com/#deeper-understanding-better-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>우리는 인터넷 연결이 매우 이질적인 것을 관찰했으며,<a href="https://en.wikipedia.org/wiki/Elephant_flow" target="_blank" rel="noopener noreferrer"><u>'코끼리와 쥐'</u></a> 현상과 일치하는 강한 헤비 테일 특성이 수십 년 동안 관찰되었음을 확인했습니다. 업로드 바이트 대 다운로드 바이트의 비율은 큰 흐름에서는 놀랍지 않지만 짧은 흐름에서는 놀라울 정도로 작아 인터넷 트래픽의 비대칭 특성을 강조합니다. 이러한 연결 특성을 이해하면 연결 성능, 안정성 및 사용자 경험을 계속 개선할 수 있습니다.</p>
+	<p>저희는 이 작업을 계속해서 발전시켜 다른 사람들도 비슷한 혜택을 누릴 수 있도록 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> 에 연결 수준 통계를 게시할 계획입니다.</p>
+	<p>네트워크를 개선하기 위한 작업은 현재 진행 중이며, 연구자, 학계, <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>인턴</u></a> 등 이 분야에 관심이 있는 모든 분은 <a href="https://blog.cloudflare.com/#"><u>ask-research@cloudflare.com</u></a>으로 연락 주시기 바랍니다. 지식을 공유하고 협력함으로써 우리 모두는 모두를 위해 인터넷을 더 빠르고, 안전하고, 더 신뢰할 수 있도록 계속 만들 수 있습니다.</p>
+</div>

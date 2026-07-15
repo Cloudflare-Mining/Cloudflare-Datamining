@@ -1,0 +1,173 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/monitoring-machine-learning-models-for-bot-detection">English</a>、<a href="https://blog.cloudflare.com/zh-tw/monitoring-machine-learning-models-for-bot-detection">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/monitoring-machine-learning-models-for-bot-detection">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/monitoring-machine-learning-models-for-bot-detection">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LrZTa9sMhVxRUMAOwdB55/8807d11458f61d5222a31d88d8eda587/monitoring-machine-learning-models-for-bot-detection.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareの<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">ボット管理</a>は、ボットによる自動化されたトラフィックを積極的に検出して軽減するために、世界中の組織で使用されています。これを行うために、Cloudflareは機械学習モデルを活用し、特定のHTTPリクエストがボットからのものであるかどうか、さらに良性ボットであるか悪性ボットであるかを見極めます。Cloudflareでは毎秒5,500万件以上のHTTPリクエストを処理しており、私たちの機械学習モデルはこの規模で実行する必要があります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VESHCwzMz14WZD7uL9VfD/b448fcd03ff4209734a660fa01b3ea8a/image4-5.png" alt="Monitoring machine learning models for bot detection" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>私たちは、最新の脅威インテリジェンスを確実に取り入れるため、ボット管理を強化するモデルに改善を加え続けています。このような反復のプロセスは、お客様が悪意のある行為者の一歩先を行くことを確実にするための重要な要素であり、実験、展開、継続的な観察のための厳格なプロセスが必要です。</p>
+	<p>私たちは先日、<a href="https://blog.cloudflare.com/mlops">CloudflareのMLOps</a>に対するアプローチについてご紹介しました。この記事では、Cloudflareにおけるモデルのトレーニングとデプロイメントプロセスの全体的な概要をご紹介します。この投稿では、監視についてさらに掘り下げ、私たちが<a href="https://www.cloudflare.com/learning/bots/what-is-bot-management" target="_blank" rel="noopener noreferrer">ボット管理</a>を強化するモデルを継続的に評価している方法についてご紹介します。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-monitoring-matters">監視が重要である理由</h2>
+		<a href="https://blog.cloudflare.com/#why-monitoring-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはボット検出モデルをリリースする前に、大規模なモデルテスト/検証プロセスを実施し、検出が期待通りに実行されることを確認しています。展開後のモデルの性能を詳細に把握するため、ブラウザ、HTTPプロトコル、およびその他のディメンション別に、Webのトラフィックセグメント全体で性能検証を実施しています。確認が終わると、そのモデルは段階的に本番環境にリリースされ、ボット検知のレベルも上がっていきます。</p>
+	<p>モデルが本番環境に展開された後で粒度レベルで性能を可視化することは困難です。もちろん、<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank" rel="noopener noreferrer">ボットスコア</a>の分布や<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank" rel="noopener noreferrer">チャレンジ</a>の解決率など、成果ベースの指標を見ることはできます。これらは有益ですが、ボットスコアリングやチャレンジの解決率に変更があった場合、「Webトラフィックのどのセグメントがこの変更によって最も影響を受けるのか？予想されていたものか？」という疑問が残ります。</p>
+	<p>インターネット用のモデルを訓練するということは、動いている標的に対してモデルを訓練するということです。入力が変化しなければ、誰でも静的なデータでモデルを訓練し、素晴らしい結果を得ることができるでしょう。新たな脅威、ブラウザ、ボットが登場する将来を見据えた汎化モデルを構築することは、より難しい課題です。機械学習による監視は、厳密で反復可能なプロセスを使用してモデルが汎化され続けることを保証して信頼を提供するために重要な役割を担います。</p>
+	<p>機械学習による監視が導入される以前、チームはWebトラフィックのパターンやモデルのスコアリング結果を分析して、ボットまたは人間としてスコアリングされたWebリクエストの割合を追跡していました。このざっくりとした指標は、全体としてモデルの性能を評価するのに役立ちますが、特定のタイプのトラフィックでモデルがどのように動作しているかについての詳細な情報は得られませんでした。より詳細な分析を行うには、ChromeブラウザからのトラフィックやiOSを使用するクライアントからのトラフィックなど、個々のトラフィックセグメントごとに対する性能調査が必要です。</p>
+	<p>機械学習による監視を使用すると、モデルの振る舞いを概観的なものだけでなく、より詳細な方法で把握することができます。この監視は、「ボット検出モデルは_本番環境で_どのように機能しているか」という重要な質問に答えることで、フィードバックのループを閉じます。監視は、本番稼動中のすべてのモデルに適用されること以外に、デプロイ前のモデル検証／テストから得られるのと同じレベルの信頼性を私たちに与えてくれます。</p>
+	<p>監視の有用性が証明された事例には、以下のようなものがあります：</p>
+	<ul>
+		<li>
+			<p><b>異常なボットスコアの調査</b>：顧客から機械学習によるスコアリングの偽陽性／偽陰性が報告され、検知のサブセット全体でより広範な問題が疑われる場合、監視によってその答えを突き止めることができます。エンジニアは、グローバル監視ダッシュボードを使用して洞察を得たり、特定のデータセットに対する性能に注目することができます。</p>
+		</li>
+		<li>
+			<p><b>任意のモデルの予測やリクエストフィールドの監視</b>：監視サービスは柔軟で、Webリクエストデータベースに保存されているあらゆるリクエストアーティファクトに観測可能レイヤーを追加することができます。モデルの予測や関心のある結果がリクエストログと一緒に保存されていれば、それらを監視することができます。エンジニアリングチームの垣根を越えて協力し、どのような結果に対しても監視を可能にします。</p>
+		</li>
+		<li>
+			<p><b>新しいモデルの展開</b>：新しいモデルのバージョンが段階的に展開され、最終的にはCloudflareのグローバルWebトラフィック全体で稼働するようになります。私たちはその過程で、新しいモデルを次の段階であるリリースへと進める前に、一連のチェックを行っています。監視によって、最新モデルと旧バージョンを、各展開段階のきめ細かなトラフィックセグメントと比較することができ、ロールアウトを進める際の確信につながります。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-does-machine-learning-monitoring-work">機械学習による監視の仕組み</h2>
+		<a href="https://blog.cloudflare.com/#how-does-machine-learning-monitoring-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このプロセスは、ground-truthデータセットから始まります。これは、人間またはボットによって生成されたことがわかっている一連のトラフィックデータであり、適切かつ正確にラベル付けされています。モデルが特定の要求をボットトラフィックとして識別し、ground-truthラベルがそれが人間から発信されたことを示している場合、モデルが要求を誤って分類したことがわかります（その逆も同様）。私たちのモデルは、最初に検出を学ぶために、ボットまたは人間のトラフィックをフラグ付けしたこの種のラベル付きデータに基づいて訓練されています。</p>
+	<p>トレーニング時に収集されたデータセットを使用して、その時点でのトレーニング済みモデルの性能を評価することができます。本番環境でも継続的にモデルの性能を評価したいため、同様にリアルタイムでラベル付けされたデータを取得してボットのスコアと比較する必要があります。Webリクエストが特定のアクター（ボットか人間か）から来ることが確実な場合、この目的のためにラベル付きデータセットを生成することができます。例えば、私たちの<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#heuristics" target="_blank" rel="noopener noreferrer">ヒューリスティックエンジン</a>は信頼性の高いラベル付きデータのソースの一つです。その他の信頼性の高いラベル付きデータのソースとしては、顧客からのフィードバックや攻撃パターンの調査などがあります。</p>
+	<p>最近ラベル付けされたデータセットに対して、Webリクエストに対する私たちのモデルのボットスコアを直接比較することで、モデルの性能を判断することができます。経時的なモデルのスコア評価をする際、同じ条件の比較を確実に行うには、一貫性が最も重要です。データ自体は異なりますが、方法論、条件、フィルターはサンプリングウィンドウ間で同じままにしておきます。私たちはこのプロセスを自動化し、ラベル付きデータセットをリアルタイムで生成することで、モデルの性能を分刻みで把握できるようにしました。</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-granular-performance-metrics">詳細な性能の指標の取得</h3>
+		<a href="https://blog.cloudflare.com/#getting-granular-performance-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>例えば、ボットトラフィックとしてラベル付けされたデータセットで精度が急激に低下（検出でボットが人間のトラフィックとして誤ってスコア付けされた）したことを検出したとします。私たちは、スコアリングミスの原因となっているトラフィックの正確なサブセットを特定したいと考えます。最新のChromeブラウザからのトラフィックでしょうか、それとも特定の<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">自律システム番号</a>からのトラフィックでしょうか？</p>
+	<p>これに答えるために、性能監視では、関心のあるディメンション（ブラウザの種類や自律システム番号など）に焦点を当てるためにデータセットに対して適用されるフィルターである特殊化を使用します。データセットに特殊化を適用することで、トラフィックに_本来_期待されたスコアリングと、ミスの原因となった正確なディメンションに関する洞察の両方を得ることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="integrating-monitoring-into-our-bots-machine-learning-platform">ボット機械学習プラットフォームへの監視の統合</h3>
+		<a href="https://blog.cloudflare.com/#integrating-monitoring-into-our-bots-machine-learning-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>監視システムは、モデルのトレーニングと検証、モデルの解釈可能性、ボット検出を実行しているサーバーへの最新情報の配信など、ボットに関連する機械学習のあらゆる側面を処理するために構築された_Endeavor_と呼ばれる統一プラットフォーム上で動作しています。監視は、データセットを取得するための監視クエリの生成、性能指標の計算、指標の保存という、いくつかのタスクに分解することができます。Endeavourはワークフロー実行エンジンである<a href="https://airflow.apache.org" target="_blank" rel="noopener noreferrer">Airflow</a>を使用しているため、kubernetesクラスタとGPUの上で監視タスクを実行するのに最適な環境が提供されています。また、Postgresと<a href="https://clickhouse.com" target="_blank" rel="noopener noreferrer">ClickHouse</a>データベースへのアクセスも可能です。</p>
+	<div class="flex anchor relative">
+		<h3 id="rendering-monitoring-queries">監視クエリの生成</h3>
+		<a href="https://blog.cloudflare.com/#rendering-monitoring-queries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52wZKzjuR1lNMYAdyFS0Kb/1bcfe3a0f290772ee1cbd369cbcdf937/Monitoring-machine-learning-models-for-bot-detection.png" alt="" class="kg-image" width="1772" height="1248" loading="lazy">
+
+	</figure>
+	<p>監視クエリは、<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">ClickHouse Webリクエストデータベース</a>に対するSQLクエリで、「機械学習のスコアリングの現状は？」といった問い合わせが可能です。このクエリは、データセットと特殊化条件を追加することでより正確になり、「この既知の（非）自動トラフィックセットについて、関心のあるこれらのディメンションに対する機械学習のスコアリングの現状は？」という、より洗練された問い合わせが可能です。</p>
+	<p>私たちのシステムでは、トレーニングと検証のためのデータセットは、ヒューリスティックエンジンによってボットとしてフラグ付けされたトラフィックなど、リクエストトラフィックのセグメントを捕捉するように調整されたSQLクエリを使用して決定されます。モデルの監視のために、これらのクエリを適合させて精度などの性能指標を測定し、最新のモデルの性能を測定するために時間範囲を継続的に更新します。トレーニングおよび検証に使用された各データセットごとに、モデルの性能に関するリアルタイムな詳細を提供する監視クエリを生成することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="computing-performance-metrics">性能指標の計算</h3>
+		<a href="https://blog.cloudflare.com/#computing-performance-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>生成された監視クエリの準備ができたら、Webリクエストデータベースからボットのスコア分布を取得します。<code>MetricsComputer</code>でボットのスコア分布を入力として取り込み、設定可能な時間間隔で精度などの関連する性能指標を生成します。</p>
+	<p>これを使用して関心のある任意の指標に沿ったモデルの性能を評価することができます。<code>MetricInterface</code>は性能指標のブループリントとして機能するPythonインターフェースです。新しく追加された指標は、インターフェースの<code>compute_metric</code>メソッドを実装するだけでよく、これにより<code>MetricsComputer</code>がどのように計算を実行するかが定義されます。</p>
+	<div class="flex anchor relative">
+		<h3 id="storing-metrics">指標の保存</h3>
+		<a href="https://blog.cloudflare.com/#storing-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>監視が実行されると、データセット、モデルのバージョン、特殊化値による性能指標がClickHouseの<code>ml_performance</code>テーブルに格納されます。メトリクスを事前に計算することで、長期間のデータ保持が可能になり、モデルのバージョンや関心のあるディメンションごとのモデルの性能の経時的なレビューが可能になります。<code>ml_performance</code>テーブルには、各指標の計算に使用されたスコア分布も格納されているため、新しく追加された性能指標を必要に応じて埋め戻すことができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="running-tasks-on-gpus">GPUでのタスク実行</h3>
+		<a href="https://blog.cloudflare.com/#running-tasks-on-gpus" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>指標の計算はGPUで実行されている<code>endeavour-worker</code>インスタンス間で負荷分散されます。システムの観点からは、<a href="https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/scheduler.html" target="_blank" rel="noopener noreferrer"><code>airflow-scheduler</code></a>が監視タスクを<a href="https://redis.com/glossary/redis-queue" target="_blank" rel="noopener noreferrer">Redisキュー</a>に追加し、各GPU上で動作する<a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/celery.html" target="_blank" rel="noopener noreferrer">Airflow Celeryワーカー</a>が処理のためにキューからタスクを引き出します。これによりアドホックなモデルトレーニングワークロードのみを実行することでは得られない、GPUによって常時駆動される本番サービスを持つメリットを得ることができます。その結果、監視サービスは、さまざまなEndeavourコンポーネントがGPU上で適切に機能しているかどうかを確認する正常性チェックとして機能します。これにより、GPUが常に更新され、モデルトレーニング／検証タスクを問題なく実行できるようになります。</p>
+	<div class="flex anchor relative">
+		<h2 id="machine-learning-monitoring-in-action">実際の機械学習による監視</h2>
+		<a href="https://blog.cloudflare.com/#machine-learning-monitoring-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareが機械学習監視をどのように使用しているかをよりよく説明するために、最近の例をいくつか見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h2 id="improving-accuracy-of-machine-learning-bot-detection">機械学習によるボット検知の精度向上</h2>
+		<a href="https://blog.cloudflare.com/#improving-accuracy-of-machine-learning-bot-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは監視システムを最初に展開してからすぐに異常を発見しました。私たちのモデルはHTTP/3を使用したWebトラフィックでは適切に動作していなかったのです。当時、HTTP/3の使用はWeb全体でほとんど使用されておらず、本番環境のプライマリモデルはHTTP/3トラフィックでトレーニングされていなかったため、不正確なボットスコアが生じていました。幸いなことに、もう一つのボット検出レイヤーである<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#heuristics" target="_blank" rel="noopener noreferrer">ヒューリスティックエンジン</a>は、HTTP/3を使用するボットを正確に検出していたため、お客様は動作を継続することができました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mqzj2axLlpyV7dkdwX3Oo/47762be749130e966783c03bd3e3a274/Screenshot-2023-10-26-at-4.03.36-PM.png" alt="" class="kg-image" width="1600" height="488" loading="lazy">
+
+	</figure>
+	<p>それでも、この発見は、次のモデル反復のための重要な改善点を指摘するものでした。これにより、私たちは多層防御を改善し、次回のモデルの反復では、前回のモデルのバージョンと比較して3.5倍以上の高い精度で、ボットと人間が開始したHTTP/3のWebリクエストの一貫した区別に成功しました。より多くのデータセットと特殊化を可能にすることで、モデルをトレーニングしながら特定のブラウザ、OS、その他の性能向上に役立つディメンションを発見することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="early-detection-quick-intervention">早期発見、迅速な介入</h3>
+		<a href="https://blog.cloudflare.com/#early-detection-quick-intervention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>世界100カ国に広がるデータセンターで稼働する機械学習をグローバル規模で展開することは困難です。計画通りに進むことは多くありません。</p>
+	<p>数年前、私たちは機械学習によるボット検出のアップデートを展開したところ、偽陽性のボット検出が増加しました。一部の正当なトラフィックに誤ってボットトラフィックとしてフラグを設定していたのです。私たちの監視システムは、ほとんどが非自動化トラフィックであると予想される住宅向け自律システム番号での性能の低下をすぐに示しました。</p>
+	<p><b>上のグラフは、1～3の3つのコロケーションの「階層」に対する展開を示したものです。ソフトウェアの展開は階層3のコロケーションセンターから始まり、徐々に階層1へと移行して行き、その影響も同じように広がります。</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Kv74hWqjzZHzbP175NLGy/761d8f84c577923bfe4d85c58f3f7dae/Screenshot-2023-10-26-at-9.52.45-AM.png" alt="In the graph above, deployments are shown to three colo “tiers”, 1-3. Since software deployments start on tier 3 colocation centers and gradually move up to tier 1, the impact followed the same pattern." class="kg-image" width="1600" height="541" loading="lazy">
+
+	</figure>
+	<p>同時に、あるソフトウェアリリースがグローバルネットワークに展開されていましたが、それが性能低下の原因であるかどうかまではわかりませんでした。私たちは展開を段階的に行い、グローバルトラフィックに到達する前に、一度に1つのデータセンターでソフトウェアを更新します。監視ダッシュボードはまさにこの展開パターンに従った性能の低下を示しました。リリースは当社の最大のデータセンターに到達する手前でした。</p>
+	<p>監視ダッシュボードは、ソフトウェアアップデートに続くパターンを明確に示していました。私たちは、アップデートがほとんどのデータセンターに届く前にこの変更を元に戻し、機械学習によるボット検知の性能を正常な状態に戻しました。監視により、性能の異常をキャッチし、根本原因を究明し、迅速に対策を講じることができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="model-deployment-monitoring-for-all">すべてのモデル展開の監視</h3>
+		<a href="https://blog.cloudflare.com/#model-deployment-monitoring-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、モデルと展開を監視および制御できることに多くの価値を見てきましたが、私たち以外も同じ課題に直面しているに違いないことに気付きました。今後数ヶ月の間に、私たちはAI Gateway（AIアプリやモデルのより良い観察・制御に役立つ当社のプロキシ）のより高度な機能を構築する予定です。AI Gatewayを使用すると、ボット検出モデルで行ってきたのと同じ展開、監視、最適化戦略の全てを、1つの統合されたコントロールプレーンで行うことができます。私たちは、これらの新機能を社内で使用することに興奮していますが、これらの機能を一般に公開することで、誰もがAIや機械学習モデルの使用方法を展開、テスト、監視、改善できるようになることにさらに興奮しています。</p>
+	<div class="flex anchor relative">
+		<h3 id="next-up">次の予定</h3>
+		<a href="https://blog.cloudflare.com/#next-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、機械学習による監視は、性能の問題を調査したり、新しいモデルを展開する際の性能を監視するのに役立っています。しかし、私たちはまだスタートラインに立ったに過ぎません！</p>
+	<p>私たちは今年、ボット検知のための機械学習モデルの反復を加速させ、これまで以上に迅速な検知を実現します。監視は、迅速かつ安全な展開を可能にするための鍵となります。モデルの性能に応じたアラート機能を追加することに興奮しています。これにより、モデルの性能が私たちの予想外に逸脱した場合に自動的に通知されるようになります。</p>
+	<p><a href="https://blog.cloudflare.com/ja-jp/workers-ai-ja-jp">Workers AI</a>の立ち上げと同時に、私たちは最近100以上の都市にGPUを配備し、グローバル規模で演算リソースをレベルアップしました。この刷新された新しいインフラによって、モデルの反復プロセスも、これまで以上に強力なボット検出機能を備えた新しい最先端のモデルの探求も、リソースを気にすることなく行うことができるようになりました。GPU上でモデルを実行することで、推論がユーザーにより近くなり、モデルのパフォーマンスと遅延が改善されます。また、ボット検知モデルにも新しいGPUの演算能力を活用できることを嬉しく思います。</p>
+</div>

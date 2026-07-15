@@ -1,0 +1,159 @@
+<div class="mb2 gray5">4分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration">English</a>、<a href="https://blog.cloudflare.com/fr-fr/introducing-concurrent-streaming-acceleration">Français</a>、<a href="https://blog.cloudflare.com/de-de/introducing-concurrent-streaming-acceleration">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/introducing-concurrent-streaming-acceleration">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-concurrent-streaming-acceleration">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ONUtiW1HgrSfxEBi8yOBM/5dcd97df14ece217a420901d0ef66942/introducing-concurrent-streaming-acceleration.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>今日は、<a href="https://www.cloudflare.com/products/stream-delivery" target="_blank" rel="noopener noreferrer">ストリーム配信</a>を利用する際に、Web 上のライブ動画のエンドツーエンドのレイテンシーを短縮するための新しい手法である、同時ストリーミングアクセラレーションの導入をご紹介できることを嬉しく思います。</p>
+	<p>ライブストリーミングのレイテンシーがなぜそれほど重要なのか、そして、遅延を改善するために、どんな対応が行われてきたのかを掘り下げてみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-live-is-live-video"><b>「ライブ」動画の「生き生き」感はどのくらい？</b></h3>
+		<a href="https://blog.cloudflare.com/#how-live-is-live-video" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ライブストリーミングは、ウェブ上の動画のシェアを増やしています。テレビ放送でもライブゲームショーでも、オンライン講義などでも、ユーザーは動画が迅速でスムーズに到着することを期待しています。そして、「ライブ」が保証することは、ユーザーがイベントで今起きている瞬間を見ているということです。しかし、「リアルタイム」にどれだけ近ければ、インターネット動画は「ライブ」ですか?</p>
+	<p>インターネット上でのライブ動画配信は依然として_困難_で、多くのレイテンシーが発生します_。_</p>
+	<ol>
+		<li>
+			<p>コンテンツソースは動画を記録し、エンコードサーバーに送信します。</p>
+		</li>
+		<li>
+			<p>配信元サーバーは、このビデオを DASH、HLS、CMAF などの形式に変換し、数百万台のデバイスに効率的に配信できます。</p>
+		</li>
+		<li>
+			<p>CDNは通常、エンコードされた動画を世界中に配信するために使用されます。</p>
+		</li>
+		<li>
+			<p>クライアントのプレーヤーは、動画をデコードし、スクリーン上でレンダリングします。</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40U4L4lZHzdpS4NiSGbscr/43773418e54f5f8e58c1d7427dfe531a/Content-Processing.jpg" alt="" class="kg-image" width="1280" height="236" loading="lazy">
+
+	</figure>
+	<p>そしてこのすべてで時間に制約があり、プロセス全体が数秒で起こる必要があります。さもなければ、ビデオ体験が損なわれることになります。動画が撮影されてからエンドユーザーのデバイスで視聴できるまでの合計遅延を「エンドツーエンドのレイテンシー」と呼びます（カメラのレンズから携帯電話の画面までの時間と考えてください）。</p>
+	<div class="flex anchor relative">
+		<h3 id="traditional-segmented-delivery"><b>従来のセグメント化された配信</b></h3>
+		<a href="https://blog.cloudflare.com/#traditional-segmented-delivery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DASH、HLS、CMAF などの動画フォーマットは、動画を「セグメント」と呼ばれる小さなファイルに分割することで機能します。一般的なセグメントの持続時間は 6 秒です。</p>
+	<p>クライアントのプレーヤーが6秒のセグメント全体がエンコードされ、CDN 経由で送信され、デコードされるまで待機する必要があるとすると、長い待機時間となることがあります。クライアントがセグメントのバッファを構築して配信の中断を防ぐ場合は、さらに時間がかかります。HLS の一般的なプレーヤーバッファは、次の3 つのセグメントです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tcODrUGXuyxbAcxPWiF4g/d148c796c8cc6e0ca2a7130c036691d2/Buffering.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
+
+	</figure>
+	<p>_Clients may have to buffer three 6-second chunks, introducing at least 18s of latency_‌‌</p>
+	<p><b>クライアントは 3つの6秒間のチャンクをバッファリングする必要があり、少なくとも 18秒のレイテンシーが発生する可能性があります。</b></p>
+	<p>エンコードの遅延を考慮すると、インターネット上のライブストリーミングのレイテンシーが通常約 20 ~ 30 秒であった理由がよく分かります。当社はこれを向上させます。</p>
+	<div class="flex anchor relative">
+		<h3 id="reduced-latency-with-chunked-transfer-encoding"><b>チャンク転送エンコードによるレイテンシー短縮</b></h3>
+		<a href="https://blog.cloudflare.com/#reduced-latency-with-chunked-transfer-encoding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この問題を解決する自然な方法は、クライアントのプレイヤーがダウンロード中、または作成中でもチャンクの再生を開始できるようにすることです。これを可能にするには、「チャンク・エンコーディング」と呼ばれる特別な方法でファイルをエンコードして配信するためにちょっと気の利いた連携が必要です。 これには、セグメントを小さな「一口サイズ」または「チャンク(塊)」に分割することが必要です。チャンクエンコーディングにより、ライブのレイテンシーを5秒または10 秒に低下させることができます。</p>
+	<p>分かりにくいのですが、「チャンク」という言葉は、次の 2 つの異なる意味で利用されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DXyeaG7liLUlMff7v32vq/e1cbb7a57139f17a35fe0ad71a245c76/Chunked-Encoding.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
+
+	</figure>
+	<ol>
+		<li>
+			<p>CMAF、またはHLS チャンク。セグメント（通常は 1秒）の小さな部分で、キーフレームに合わせたもの</p>
+		</li>
+		<li>
+			<p>HTTP チャンク。Web 経由で任意のファイルを配信する方法</p>
+		</li>
+	</ol>
+	<p><b>チャンクエンコーディングはセグメントを短いチャンクに分割する</b></p>
+	<p>Webクライアントはデータストリームを処理する能力が限られているため、HTTP チャンクは重要です。クライアントのほとんどは、完全なHTTP 応答を受信した後か、少なくとも完全な HTTP チャンクを受け取った後にだけデータの操作ができます。HTTPチャンク転送エンコードを使用することで、動画プレーヤーが動画の解析とデコードを早く開始できるようになります。</p>
+	<p>デコーダーが実際にHTTPチャンク内のビットを_再生するために、_CMAFチャンクは_重要です。_慎重に動画をエンコードしないと、デコーダーは再生できない動画ファイルのランダムビットを持つことになります。</p>
+	<div class="flex anchor relative">
+		<h3 id="cdns-can-introduce-additional-buffering"><b>CDNが追加のバッファリングを実施</b></h3>
+		<a href="https://blog.cloudflare.com/#cdns-can-introduce-additional-buffering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>HLSとCMAF を使用したチャンクエンコーディングは今日、Web全体で使用されています。このテクニックが優れたものとなるのは、HTTPチャンクエンコーディングがCDNで広くサポートされているためです。これは20年に渡り、HTTPスペックの一部でした。</p>
+	<p>CDNのサポートで、レイテンシーの低いライブ動画をスケールアップし、数千人または数百万人の同時視聴者にリーチできるため、現在はHTTP以外の他のプロトコルでは非常に困難です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cAKXFSt7jASVx88HncQH/70ac4a2acffeeab6fc60cd2e797392af/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+
+	</figure>
+	<p>残念ながら、チャンク化を有効にして配信を最適化しても、セグメント全体をバッファリングして、CDN が有害な動作をしている可能性があります。なぜかを理解するには、多くのユーザーが同時にライブセグメントを要求した場合に何が起こるかを考えてみてください。</p>
+	<p>ファイルがすでにキャッシュにあれば素晴らしい！CDNは、キャッシュファイルを非常に多数の対象ユーザーに配信する際に有用です。しかし、セグメントがまだキャッシュにない場合はどうなりますか?そしてご存知の通りこれはライブ動画の典型的なリクエストパターンです。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35E6JRDF51cSyaVMo1Rcuy/22abf6d762e78238356adf0920151fed/Stream-On-Cache-Misse.jpg" alt="" class="kg-image" width="1280" height="285" loading="lazy">
+
+	</figure>
+	<p>通常、CDN は配信元から「キャッシュミス時にストリーミング」ができます。図にすると次のようになります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Qx4ILMftvAnN3zSx0KEll/843373561c266f0f005174d305a50e73/One-at-a-Time.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+
+	</figure>
+	<p>繰り返しますが、複数のユーザーが一度にファイルを要求するとどうなりますか?CDNは通常、追加のビューアにサービスを提供する前に、ファイル全体がキャッシュに取り込まれる必要があります。</p>
+	<p><b>動画をストリーミングできるビューアは 1 つだけで、他のクライアントは CDNでセグメントがバッファリングされるのを待ちます。</b></p>
+	<p>この動作は理解できます。CDNデータセンターは、多くのサーバーで構成されています。配信元のオーバーロードを避けるために、これらのサーバーは通常、1 つのサーバーだけが特定の時点で特定のファイルを配信元から要求できるようにする"キャッシュロック"(mutex)を使用して、その間で調整します。副作用的としては、ファイルがキャッシュに取り込まれている間は、ファイルを要求した最初のユーザー以外のユーザーに提供できないことです。残念ながら、このキャッシュロックもチャンクエンコーディングを使用する目的にそぐわないものです！</p>
+	<p>ここまでざっと振り返りましょう。</p>
+	<ul>
+		<li>
+			<p>チャンクエンコーディングは、動画セグメントを小さな部分に分割する</p>
+		</li>
+		<li>
+			<p>これにより、配信元サーバでセグメントが生成されている場合でも、プレーヤーがチャンクをフェッチし、デコードできるようにすることで、エンドツーエンドのレイテンシーを短縮できる</p>
+		</li>
+		<li>
+			<p>一部のCDNは、クライアントに配信する前に CDN内のファイル全体をバッファリングすることで、エンコーディングの利点を中和してしまいます</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-solution-concurrent-streaming-acceleration"><b>Cloudflareの解決策:同時ストリーミングアクセラレーション</b></h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-solution-concurrent-streaming-acceleration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36X1svqoltq5egyP8fP5r2/68308cf8299e2e779973d42155e2e4ec/Simultaneously.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
+
+	</figure>
+	<p>ご推測のとおり、当社はもう少しうまくできると考えています。簡単に言うと、キャッシュされていないファイルを複数のクライアントに同時に配信し、配信元サーバーからファイルを 1 回取り込むことができるようになったのです。</p>
+	<p>シンプルな変更のように聞こえますが、これを安全に行うには繊細な作業がたくさんがあります。見えないところで、キャッシュロックを削除し、ファイルが書き込み中に一つのファイルから複数のクライアントが安全に読み込めるようにして、当社のキャッシュインフラストラクチャに重大な変化をもたらしました。</p>
+	<p>一番嬉しいことは、Cloudflare全体がこの方法で進めているということです！オプトインする必要もなければ、効果を得るために構成を変更する必要もありません。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ktb7f6UjResqOyWSoncyc/384471208538afdbea9134a592fe9107/Speed-Improvement.png" alt="" class="kg-image" width="1930" height="1118" loading="lazy">
+
+	</figure>
+	<p>当社は二ヶ月ほど前にこの機能を発表し、これまでの結果に本当に満足しています。「キャッシュロック待ち時間」つまり、ある要求が他の要求を待つ必要がある時間（Tiime To First Byteの直接コンポーネント）によって成功を測ります。 OTTのお客様が、このメトリックが P99の1.5からほぼ0に低下するのを見ました。</p>
+	<p>これは、エンドツーエンドのレイテンシーで1.5秒の改善が直接変換されます。ライブ動画がもっと生き生きとします。</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion"><b>最後に</b></h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>チャンクエンコーディングなどの新しいテクニックはライブ配信に革命をもたらし、サイトの所有者は低レイテンシーのライブ動画を大規模に配信できます。同時ストリーミングアクセラレーションは、CDNでこの技術の利点を引き出すのに役立ち、エンドツーエンドレイテンシーの貴重な数秒を短縮する可能性を持っています。</p>
+	<p>ライブ動画配信に Cloudflare を利用する場合は、<a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">エンタープライズセールスチームにお問い合わせください</a>。</p>
+	<p>そして、このようなプロジェクトに取り組み、インターネット全体のライブビデオ配信を改善することに興味がある場合は、<a href="https://www.cloudflare.com/careers/departments/engineering" target="_blank" rel="noopener noreferrer">エンジニアリングチーム</a>に参加してください!</p>
+</div>

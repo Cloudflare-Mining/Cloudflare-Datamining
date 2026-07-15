@@ -1,0 +1,409 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-outage-february-20-2026">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-outage-february-20-2026">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-outage-february-20-2026">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-outage-february-20-2026">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9f2k63fiixI2YXDgsnbGq/4d156aa83c47ff6cecf3bd5c747126ef/unnamed__1_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2026年2月20日17時48分（UTC）に、Cloudflareでサービス障害が発生しました。CloudflareのBring Your Own IP（BYOIP）サービスをご利用のお客様の一部で、ボーダーゲートウェイプロトコル（BGP）を通じた経路情報が取り下げられているのを確認しました。</p>
+	<p>この問題はサイバー攻撃や悪意のある行為によるものではなく、Cloudflareが、BYOIPで登録されたIPアドレスの管理方法を変更したことに起因するもので、これにより、Cloudflareで意図せずお客様のプレフィックスが取り下げらる事態が発生しました。</p>
+	<p>その結果、一部のBYOIPをご利用のお客様が、インターネット経由で関連するサービスやアプリケーションにタイムアウトや接続障害によりアクセスできなくなくなりました。また、CloudflareのDNSリゾルバ「1.1.1.1」のWebサイトでも、403エラーが発生しました。障害の総時間は6時間7分で、この間に行った主な復旧作業は、変更前の状態にIPプレフィックスの設定を戻すことでした。</p>
+	<p>Cloudflareのエンジニアが障害を確認後、原因となった変更を元に戻したところ、IPプレフィックスの取り下げは止まりましたが、この時点で既にCloudflareネットワークから約1,100件のBYOIPプレフィックスが取り下げられていました。一部のお客様については、CloudflareダッシュボードからIPアドレスを再アドバタイズすることで、自力でサービスを復元されました。最終的にすべてのプレフィックス設定を復元させることで、インシデント解決となりました。</p>
+	<p>お客様に多大なご迷惑をおかけしたことを深くお詫び申し上げます。今回、皆さまの期待を裏切る事態を引き起こしたこと、深くお詫び申し上げます。この記事は、今回の障害がどのように発生したのか、影響のあったシステムおよびプロセスについて詳細に説明します。また、このような障害が二度と起こらないようにするための対策についても概説します。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-the-outage-impact-customers">本障害によるお客様への影響について</h2>
+		<a href="https://blog.cloudflare.com/#how-did-the-outage-impact-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このグラフは、インシデント発生時にCloudflareがBGPネイバーにアドバタイズしたプレフィックスの数を示しています。これは、アドバタイズされなかったプレフィックスはインターネット上で到達できなかったため、影響の大きさを示す指標となります：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QnazHN20Gcf3vLH5r95Cd/c8f42e90f266dd3daeaa308945507024/BLOG-3193_2.png" alt="" class="kg-image" width="1970" height="1570" loading="lazy">
+	</figure>
+	<p>このピアにアドバタイズされた総プレフィックスは6,500件で、そのうち4,306件がBYOIPプレフィックスでした。これらのBYOIPプレフィックスはすべてのピアにアドバタイズされ、グローバルにアドバタイズされたすべてのBYOIPプレフィックスを表します。 </p>
+	<p>このインシデント中、6,500件中1,100件のプレフィックスが17:56～18:46（UTC）にかけて取り下げられ、4,306件のBYOIPプレフィックスのうち、25%が意図せず取り下げられました。影響は「1.1.1.1」の監視で検出でき、変更を元に戻すことでその他のプレフィックスへの影響範囲の拡大を止めました。19:19（UTC）に、Cloudflareダッシュボードにアクセスしてプレフィックスを再アドバタイズすることでお客様自身で自己復旧可能である旨のガイダンスを公開しました。</p>
+	<p>20:20（UTC）頃にアドバタイズの変更の大半である800件の復元に成功しました。一部、ソフトウェアのバグによりエッジサーバーからサービス設定が削除されたため、ダッシュボードから修正できないプレフィックスが300件近くありましたが、これについても、23:03（UTC）にCloudflareのエンジニアによって手動で復旧されました。</p>
+	<p>このインシデントにより影響を受けたBYOIPのお客様は一部に留まっています。その理由は、設定変更は即時にすべてのお客様に反映されるものではなく順次適用されるものであり、障害を検知すると同時に変更を元に戻したため、この時点で反映が行き届いていないお客様には影響が及んでいないためです。</p>
+	<p>影響を受けたBYOIPのお客様は、最初に<a href="https://blog.cloudflare.com/going-bgp-zombie-hunting"><u>BGPパスハンティング</u></a>と呼ばれる現象が発生しました。これは、エンドユーザーの接続が目的地IPへの経路を探してネットワークをさまよう状態で、接続がタイムアウトするまで続きます。プレフィックスがどこかでアドバタイズされるまで、この接続失敗の状態が続きます。この障害発生までループするシナリオは、インターネットへのアドバタイズにBYOIPを使用するすべての製品でこの影響が出ました。さらに、Cloudflareの再帰DNSリゾルバーのWebサイトである1.1.1.1の訪問者には、HTTP 403エラーと「Edge IP Restricted」というエラーメッセージが表示されました。ただし、1.1.1.1パブリックリゾルバによるDNS解決（DNS over HTTPSを含む）には影響はありませんでした。以下に、影響を受けたサービスの詳細を示します。</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 702px">
+			<colgroup>
+				<col style="width: 251px">
+				<col style="width: 451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">サービス/製品</span></th>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">影響の説明</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コアCDNおよびセキュリティサービス</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">トラフィックがCloudflareに到達不能になり、これらの範囲でアドバタイズされたWebサイトに対するユーザーからの接続も失敗</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Spectrum</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">トラフィックがCloudflareに到達不能になったため、BYOIP上で動作しているのSpectrumアプリもトラフィックのプロキシに失敗</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">専用エグレス</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BYOIPを活用したゲートウェイ専用エグレス、またはBYOIPを活用したCDNエグレスに専用IPを使用していたお客様のトラフィック送信が不能に</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transit</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transitによって保護されたアプリケーションに接続しているエンドユーザーは、インターネット上でアドバタイズされず、接続のタイムアウトや障害が発生</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>また、Cloudflareダッシュボードでプレフィックスを切り替えてもサービスを復旧できないお客様も一部見られました。これらのお客様へのサービスを復旧するために、エンジニアがプレフィックスの再アナウンスを開始した際、これらのお客様のIPアドレスがアドバタイズされているにもかかわらず、遅延と障害が増加した可能性があります。これは、当社独自のソフトウェアの問題により、一部のユーザーのアドレス指定設定がエッジサーバーから削除され、状態をエッジに戻す必要があったためです。</p>
+	<p>ここでは、アドレス指定システムのどの部分で異常が発生したかについて詳しく説明しますが、前提知識としてCloudflareのお客様のIPアドレスの基盤となる情報源であるAddressing APIについて簡単にお伝えする必要があります。</p>
+	<div class="flex anchor relative">
+		<h2 id="cloudflares-addressing-api">CloudflareのAddressing APIについて</h2>
+		<a href="https://blog.cloudflare.com/#cloudflares-addressing-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Addressing APIは、Cloudflareネットワーク上のIPアドレスの正確な情報を管理する公式データセットです。データセットに変更が加えられると、Cloudflareのグローバルネットワークに即座に反映されます。現在、Cloudflareでは「<a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>コードオレンジ：フェイルスモール</u></a>」という取り組みの一環として、こうしたシステムの変更展開方法を改善中ですが、現状では、お客様は、Cloudflareのエッジに変更を伝播する運用ワークフローをトリガーする一連のデータベースを設定する公開APIを通じて、IPアドレスを設定できるようになっています。つまり、Addressing APIへの変更はCloudflareエッジに即座に反映されます。</p>
+	<p>Cloudflare上でのIPアドレスのアドバタイズと設定には、いくつかの手順が必要です：</p>
+	<ul>
+		<li>
+			<p>お客様は、Addressing APIまたはBGP Controlを通じて、IPアドレスのアドバタイズ/取り下げの指示をCloudflareに送信します</p>
+		</li>
+		<li>
+			<p>Addressing APIが、プレフィクスのアドバタイズを変更するようマシンに指示します。</p>
+		</li>
+		<li>
+			<p>十分な数のマシンが通知を受信した時点で、ルーター上のBGPが更新され、プレフィックスが更新されます。</p>
+		</li>
+		<li>
+			<p>最後に、お客様は<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>サービスバインディング</u></a>を介して、BYOIPアドレスを使用するようにCloudflare製品を設定することができます。これにより、製品をこれらの範囲に割り当てることができます。</p>
+		</li>
+	</ul>
+	<p>Addressing APIを使用することで、アドレスのアドバタイズまたは取り下げに関するプロセスのほとんどを自動化できますが、一部のプロセスは依然として手動の操作が必要です。こうした手作業のプロセスは本番環境に近い操作になるため、リスクが高くなります。「<a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>オレンジ：フェイルスモール</u></a>」では、このAddressing APIでの手動操作を減らし、作業フローを安全なものに置き換えることも目的の一つとして取り組んでいました。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-did-the-incident-occur">インシデントの発生経由</h2>
+		<a href="https://blog.cloudflare.com/#how-did-the-incident-occur" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>具体的には、お客様が行うCloudflareのBYOIPサービスからプレフィックスを削除する操作の自動化を目的とした変更でした。この操作は現在、お客様からのリクエストとして定期的に発生する手作業の1つになっています。この手動プロセスを排除する試みは、「コードオレンジ：フェイルスモール」の一環として、自動化された安全な手順に置き換える目的で実施されました。BYOIPプレフィックスに関連するオブジェクトの件数は増大する可能性があるため、この処理は定期的に実行されるサブタスクとして実装され、削除対象のプレフィックスを確認してから削除するようになっていました。しかし、この定期クリーンアップサブタスクがAPIを呼び出す際にバグがありました。</p>
+	<p>クリーンアップサブタスクのAPIクエリを次に示します：</p>
+	<pre class="language-javascript"><code class="language-javascript"> resp, err := d.doRequest(ctx, http.MethodGet, `/v1/prefixes?pending_delete`, nil)
+</code></pre>
+	<p>API実装の関連部分を次に示します：</p>
+	<pre class="language-javascript"><code class="language-javascript">	if v := req.URL.Query().Get("pending_delete"); v != "" {
+		// ignore other behavior and fetch pending objects from the ip_prefixes_deleted table
+		prefixes, err := c.RO().IPPrefixes().FetchPrefixesPendingDeletion(ctx)
+		if err != nil {
+			api.RenderError(ctx, w, ErrInternalError)
+			return
+		}
+
+		api.Render(ctx, w, http.StatusOK, renderIPPrefixAPIResponse(prefixes, nil))
+		return
+	}
+</code></pre>
+	<p>サブタスクのAPIクエリで pending_delete が値なしで渡されていました。そのため、Query().Get("pending_delete") の結果が空文字（""）となり、APIサーバーは「削除対象のプレフィックスだけではなく、すべてのBYOIPプレフィックスを削除してほしい」という要求だと誤解してしまいました。システムは、返されたすべてのプレフィックスが削除待ちとして扱われていると解釈しました。その結果、サブタスクはすべてのBYOIPプレフィックスと、それに関連する<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>サービスバインディング</u></a>などの依存オブジェクトを順次削除し始めました。影響が確認され、エンジニアがサブタスクを特定して停止するまで、この状態が続きました。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing">なぜCloudflareはステージング環境やテストでこのバグを見つけられなかったのか</h3>
+		<a href="https://blog.cloudflare.com/#why-did-cloudflare-not-catch-the-bug-in-our-staging-environment-or-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のステージング環境には、本番環境に可能な限り近いデータを取り入れていますが、今回のケースを発見するためには不十分であり、発生する事象をシミュレートするために使用したモックデータも不十分でした。 </p>
+	<p>この機能にはテストが用意されていますが、今回のシナリオをカバーするテストは不完全でした。初期のテストやコードレビューは、BYOIPセルフサービスAPIの通常の利用フローを中心に行われ、問題なく完了していました。エンジニアは、お客様行う実際の手順をテストしましたが、タスク実行サービスが明示的な入力なしにユーザーデータを独自に変更するシナリオはテストされていませんでした。</p>
+	<div class="flex anchor relative">
+		<h3 id="why-was-recovery-not-immediate">復旧に時間がかかった理由</h3>
+		<a href="https://blog.cloudflare.com/#why-was-recovery-not-immediate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>影響を受けたBYOIPプレフィックスは、すべて同じ被害状態に陥ったわけではなく、それぞれ異なる状態にあったため、復旧作業にも段階的な対応が必要でした。Cloudflareでは「コードオレンジ：フェイルスモール」の一環として、運用状態のスナップショットを安全に展開できるシステムを構築中です。このシステムがあれば、予期せぬ動作が発生しても、既知の正常な状態にすぐにロールバックすることができます。しかし、このシステムはまだ本番環境には導入されていません。</p>
+	<p>今回の障害では、BYOIPプレフィックスの影響状態によって必要な対応が異なりました：</p>
+	<ul>
+		<li>
+			<p>影響を受けたお客様のほとんどは、単にプレフィックスが取り下げられただけでした。この状態お客様は、ダッシュボードにアクセスしてアドバタイズを切り替えることで、サービスを復旧することができました。</p>
+		</li>
+		<li>
+			<p>一部のお客様では、プレフィックスが取り下げられただけでなく、一部のバインディングも削除されました。この状態のお客様は、プレフィックスを部分的に切り替えることのみができたという部分的な復旧状態でした。</p>
+		</li>
+		<li>
+			<p>一部のお客様では、プレフィックスが取り下げられただけでなく、すべてのバインディングも削除されました。この状態のお客様は、関連する<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>サービス</u></a>（Magic Transit、Spectrum、CDN）がバインドされていなかったため、ダッシュボードでプレフィックスを切り替えることができず、Cloudflareのエッジ上のすべてのマシンに、これらすべてのお客様のサービスバインディングを再適用するためにグローバル設定の更新を開始する必要があったため、影響の緩和に最も時間がかかりました。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="how-does-this-incident-relate-to-code-orange-fail-small">このインシデントと「コードオレンジ：フェイルスモール」との関係</h3>
+		<a href="https://blog.cloudflare.com/#how-does-this-incident-relate-to-code-orange-fail-small" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このインシデントの原因ともなった変更は、Cloudflareのコードと設定の回復性の向上を目的とした、「コードオレンジ：フェイルスモール」の取り組みの一部として行ったものです。簡単に<a href="https://blog.cloudflare.com/fail-small-resilience-plan"><u>「コードオレンジ：フェイルスモール」</u></a>の取り組み内容を整理すると、主に3つの柱があります：</p>
+	<ul>
+		<li>
+			<p>ソフトウェアバイナリのリリースに対して現在行っているように、ネットワークに伝播されるすべての構成変更に対して、制御されたロールアウトを要求します。</p>
+		</li>
+		<li>
+			<p>社内の「ブレイクグラス」手順を変更し、循環依存関係を解消することで、インシデント発生時に弊社とお客様が迅速に行動し、問題なくすべてのシステムにアクセスできるようにします。</p>
+		</li>
+		<li>
+			<p>ネットワークトラフィックを処理するすべてのシステムの障害モードをレビュー、改善、テストし、予期しないエラー状態を含む、すべての条件下で明確に定義された動作を示すことを確認します。</p>
+		</li>
+	</ul>
+	<p>今回展開を試みた変更は、1つ目の柱に該当します。危険な手動操作を、安全な自動化された設定更新に置き換え、健康状態を確認しながら段階的に展開することで、サービスの信頼性向上を目指していました。</p>
+	<p>Addressing APIの設定変更サポートを強化するため、段階的なテストによる検証と正確性チェックの改善という重要な作業がすでに進行中でした。この作業は、今回展開された変更と並行して行われていました。予防策は障害発生前に完全には導入されていませんでしたが、チームは障害発生時もこれらのシステムに積極的に取り組んでいました。「コードオレンジ：フェイルスモール」の方針に従い、本番環境への変更は制御を適用しながら段階的展開を行うことを前提として、エンジニアチームはスタックの全層にわたり問題を特定し修正する作業に取り組んでいます。この障害自体は世界的なものではありませんでしたが、影響範囲と影響は許容できないほど大きく、ネットワーク上の変更が可能な限り段階的に行われることを保証する「コードオレンジ：フェイルスモール」の優先度が改めて強調されました。次に、これらのシステム改善について、より具体的に説明します。</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">改善とフォローアップ手順</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="api-schema-standardization">APIスキーマの標準化</h3>
+		<a href="https://blog.cloudflare.com/#api-schema-standardization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今回のインシデントの一因としてpending_deleteフラグが文字列として解釈されいたことがあり、クライアント側・サーバー側の両方でフラグの値を正しく扱うことが難しくなっていました。今後は、APIスキーマを改善して標準化を進め、API呼び出しが正しく形成されているかどうかを、テストやシステムが簡単に検証できるようにします。この作業は「コードオレンジ」の3つ目のワークストリームに含まれ、すべての条件下で明確な挙動を示すシステムを作ることを目的としています。</p>
+	<div class="flex anchor relative">
+		<h3 id="better-separation-between-operational-and-configured-state">運用状態と設定状態の明確な分離</h3>
+		<a href="https://blog.cloudflare.com/#better-separation-between-operational-and-configured-state" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在、お客様がAddressingスキーマに行った変更は、運用で使うデータベースと同じ権威データベースに保存されています。このため、エンジニアは、望ましい状態と実際の状態を比較検討するのではなく、データベースのスナップショットを活用する必要があるため、手動でのロールバックプロセスはより困難になります。今後は、ロールバック機能とデータベースの設計を見直し、変更を迅速にロールバックしやすくするとともに、顧客設定と本番環境の間にレイヤーを導入します。 </p>
+	<p>具体的には、データベースから読み取ったデータをスナップショットとして保存し、それを本番環境に適用する際には、他の本番環境の変更と同じ方法で、健康状態メトリクスを使った管理下で展開します。問題が発生した場合は自動で展開を停止できます。これにより、次回データベースが不正な状態になった場合でも、個々のお客様（またはすべてのお客様）をほぼ瞬時に正常に動作していたバージョンに戻すことが可能になります。</p>
+	<p>この仕組みによって、障害発生時にAPIを介して直接更新を行うことは制限される可能性がありますが、その期間中、ダウンするのではなく、データベースの修正作業を行っている間も、お客様のトラフィックに対応し続けることができます。この作業は、「コードオレンジ」の1つ目と2つ目のワークストリームに沿ったもので、迅速なロールバックと、安全で健全性を確保する設定のデプロイメントを実現します。</p>
+	<div class="flex anchor relative">
+		<h3 id="better-arbitrate-large-withdrawal-actions">大規模な取り下げ操作の管理を改善</h3>
+		<a href="https://blog.cloudflare.com/#better-arbitrate-large-withdrawal-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>今後は、BGPプレフィックスの迅速な取り下げや削除など、変更が不自然に急速または広範囲に及ぶものを監視して検出し、このような場合にはスナップショットのデプロイメントを無効にする仕組みを導入します。これにより、データベースを操作するプロセスが制御不能になっても、今回のインシデントのような大規模な影響を防ぐサーキットブレーカーの役割を果たします。</p>
+	<p>さらに、お客様が実行するサービスが正しく動作していることを直接監視するための作業も進行中です。この監視信号を使ってサーキットブレーカーを作動させ、調査が終わるまで危険な変更の適用を停止することも可能になります。この作業は、変更を安全にデプロイするという、「コードオレンジ」の1つ目のワークストリームに沿ったものです。</p>
+	<p>以下に、変更展開と修正対応を含む一連の出来事のタイムラインを示します： </p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg" style="undefined;table-layout: fixed; width: 803px">
+			<colgroup>
+				<col style="width: 151px">
+				<col style="width: 201px">
+				<col style="width: 451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">時間（UT</span><span style="font-style:normal;text-decoration:none;color:#000">C</span><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">）</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">ステータス</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">説明</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月05日 21時53分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コードをシステムに統合</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">問題のあるサブプロセスがコードベースに統合</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年2月20日 17時46分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コードがシステムにデプロイ</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">問題のあるサブプロセスを含むAddress APIのリリースが完了</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 17時56分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">影響が出始める</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">問題のあるサブプロセスが実行を開始。プレフィックスのアドバタイズ更新の伝達が開始され、プレフィックスの取り下げが開始される</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響開始 – </span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 18時13分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareが対応を開始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareが「1.1.1.1」の障害対応に着手</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 18時18分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">社内でインシデントが宣言される</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareのエンジニアが影響範囲の調査を続行</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年2月20日 18時21分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Addressing APIチームに連絡が入る</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Addressing APIを担当するエンジニアリングチームが対応に入り、デバッグを開始</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年2月20日 18時46分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">問題を特定</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">エンジニアが問題のあるサブプロセスを停止し、定期実行を無効化。復旧作業を開始</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 19時11分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">緩和作業開始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflareのエンジニアが取り下げられたプレフィックスのサービス復旧を開始。他のエンジニアが削除されたプレフィックスの対応にあたる。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 19時19分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">一部のプレフィックスが軽減</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">お客様がダッシュボードからプレフィックスの再アドバタイズしてサービスの自己復元を開始。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響のダウングレード –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年2月20日 19時44分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">追加の軽減策を継続</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">エンジニアが、削除されたプレフィックスのデータベース復旧作業を開始</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 20時30分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">最終的な復旧作業を開始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">エンジニアが既存のサービスバインディングを持つ取り下げられたプレフィックスを復元するためのリリースを完了。他のエンジニアは、削除されたプレフィックスについて引き続き対応にあたる</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> – 影響ダウングレード –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年2月20日 21時08分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">設定更新のデプロイ</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">エンジニアリングチームが、これまでの方法で自力で復旧できなかった、あるいは以前の対応で復旧されなかったプレフィックスを復旧するため、全世界のマシンへの設定展開を開始</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> – 影響ダウングレード –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026年02月20日 23時03分</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">構成の更新完了</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">残りのプレフィックスを復元するための全世界のマシンへの設定展開を完了。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響解消 –</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>本日は、このような事態を招き、当社のお客様に提供するサービス、そしてインターネット全体に影響を与えたことを深くお詫び申し上げます。変化に強いネットワークを提供することを目指していますが、お客様への約束を果たすことができませんでした。今後、この問題が再発するのを防ぎ、安定性を向上させるため、これらの改善を積極的に行っています。</p>
+</div>

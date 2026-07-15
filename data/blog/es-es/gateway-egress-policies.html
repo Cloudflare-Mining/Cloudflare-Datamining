@@ -1,0 +1,81 @@
+<div class="mb2 gray5">4 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/gateway-egress-policies">English</a>, <a href="https://blog.cloudflare.com/zh-tw/gateway-egress-policies">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/gateway-egress-policies">Français</a>, <a href="https://blog.cloudflare.com/de-de/gateway-egress-policies">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/gateway-egress-policies">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/gateway-egress-policies">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/gateway-egress-policies">Português</a> y <a href="https://blog.cloudflare.com/zh-cn/gateway-egress-policies">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HTg2rs1Ru06kkdbseVkVu/aef094bf0abaf46ccce263b979ca6c4a/gateway-egress-policies.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Antes de las reglas Zero Trust basadas en la identidad, algunas aplicaciones SaaS en la red pública confiaban en la dirección IP del usuario de la conexión como un modelo de seguridad. Los usuarios se conectarían desde ubicaciones de oficina conocidas, con rangos de direcciones IP fijas, y la aplicación SaaS comprobaría no solo sus credenciales de inicio de sesión sino también su dirección.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n2EL5cxGe6DoEC8l0uIfO/4f37f5248a6bdb58b8ac88ab7912f301/image5-1.png" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust" class="kg-image" width="1801" height="1013" loading="lazy">
+
+	</figure>
+	<p>Muchos sistemas aún ofrecen este método de segundo factor. Los clientes de Cloudflare One pueden utilizar una dirección IP de salida dedicada con esta finalidad como parte de su transición hacia un modelo Zero Trust. A diferencia de otras soluciones, los clientes que utilizan esta opción no necesitan implementar ninguna estructura propia. Sin embargo, no es necesario que todo el tráfico utilice estas direcciones IP de salida dedicadas.</p>
+	<p>Hoy anunciamos políticas que proporcionan a los administradores control sobre cuándo Cloudflare utiliza sus direcciones IP de salida dedicadas. Específicamente, los administradores pueden utilizar una herramienta de creación de reglas en el panel de control de Cloudflare para determinar qué dirección IP de salida se utiliza y cuándo, en función de atributos como la identidad, la aplicación, la dirección IP y la geolocalización. Esta funcionalidad está disponible para cualquier cliente con contrato empresarial que añada direcciones IP de salida dedicadas a su suscripción Zero Trust.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-did-we-build-this">¿Por qué creamos esto?</h3>
+		<a href="https://blog.cloudflare.com/#why-did-we-build-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En el entorno de trabajo híbrido actual, las organizaciones desean experiencias de seguridad y de TI más coherentes para gestionar la salida del tráfico de sus empleados desde las oficinas, los centros de datos y los usuarios de itinerancia. Para proporcionar una experiencia más ágil, muchas organizaciones están adoptando modernos servicios de proxy entregados en la nube como las <a href="https://www.cloudflare.com/es-es/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">puertas de enlace web seguras</a> (SWG) y retirando su compleja amalgama de dispositivos locales.</p>
+	<p>Tradicionalmente, estas herramientas heredadas ofrecían la comodidad de permitir crear políticas de lista de permitidos basadas en direcciones IP de origen estáticas. Cuando los usuarios estaban principalmente en una única ubicación, la verificación del tráfico según la ubicación de salida era fácil y suficientemente fiable. Muchas organizaciones quieren o deben mantener este método de validación del tráfico, incluso cuando sus usuarios ya no trabajan desde una única ubicación.</p>
+	<p>Hasta ahora, Cloudflare ha respaldado a estas organizaciones proporcionando direcciones IP de salida dedicadas como un complemento a nuestros <a href="https://www.cloudflare.com/es-es/products/zero-trust" target="_blank" rel="noopener noreferrer">servicios Zero Trust</a> de proxy. A diferencia de las direcciones IP de salida por defecto, estas direcciones IP de salida dedicadas no se comparten con otras cuentas de Gateway y solo se utilizan para la salida del tráfico redireccionado mediante proxy para la cuenta designada.</p>
+	<p>Como <a href="https://blog.cloudflare.com/es-es/gateway-dedicated-egress-policies-es-es">comentamos en una publicación anterior del blog</a>, los clientes ya utilizan las direcciones IP de salida dedicadas de Cloudflare para dejar de usar su VPN. Las utilizan para identificar el tráfico redireccionado mediante proxy de sus usuarios o para añadirlos a listas en proveedores de terceros. Estas organizaciones se benefician de la simplicidad de utilizar aún las direcciones IP fijas conocidas, al mismo tiempo que su tráfico evita los cuellos de botella y los redireccionamientos de los dispositivos locales tradicionales.</p>
+	<div class="flex anchor relative">
+		<h3 id="when-to-use-egress-policies">Cuándo utilizar políticas de salida</h3>
+		<a href="https://blog.cloudflare.com/#when-to-use-egress-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La herramienta de creación de políticas de salida de Gateway proporciona a los administradores más flexibilidad y una mayor especificidad para la salida del tráfico según la identidad del usuario, la postura de dispositivo, la dirección IP de origen/destino y mucho más.</p>
+	<p>Un caso de uso común es la salida del tráfico desde geoubicaciones determinadas para proporcionar experiencias geoespecíficas (p. ej., el formato de idioma, las diferencias regionales de la página) para grupos de usuarios seleccionados. Por ejemplo, Cloudflare actualmente está trabajando con el departamento de marketing de un conglomerado de medios de comunicación global. Sus diseñadores y sus expertos web, ubicados en la India, deben verificar el diseño de los anuncios publicitarios y de los sitios web que se utilizan en los distintos países.</p>
+	<p>Sin embargo, estos sitios web restringen o cambian el acceso en función de la geolocalización de la dirección IP de origen del usuario. Esto requiere que el equipo utilice un servicio de VPN adicional solo con esta finalidad. Con las políticas de salida, los administradores pueden crear una regla que relacione la dirección IP del dominio o la dirección IP del país de destino con los empleados de marketing y de geolocalización para que la salida del tráfico se realice desde una dirección IP de salida dedicada geolocalizada en el país donde necesitan verificar el dominio. Esto proporciona tranquilidad a su equipo de seguridad, puesto que ya no tienen que mantener otro servicio de VPN solo para marketing, que supone una vulnerabilidad en su protección perimetral, y pueden aplicar todas sus funcionalidades de filtrado a este tráfico.</p>
+	<p>Otro caso de uso de ejemplo es añadir a la lista de permitidos el acceso a aplicaciones o servicios que mantiene un tercero. Los administradores de seguridad pueden controlar cómo sus equipos acceden a sus recursos, e incluso aplicar el filtrado a su tráfico, pero no pueden modificar los controles de seguridad que aplican terceros. Por ejemplo, para trabajar con un importante procesador de crédito, utilizaban un servicio de terceros para verificar el nivel de riesgo de las transacciones redireccionadas mediante su red Zero Trust. Este proveedor de terceros requería la adición a la lista de permitidos de sus direcciones IP de origen.</p>
+	<p>Para satisfacer este objetivo, este cliente podría simplemente haber utilizado direcciones IP de salida dedicadas y nada más. Sin embargo, esto significaría que todo su tráfico ahora se redireccionaría mediante el centro de datos con direcciones IP de salida dedicadas. Por lo tanto, si un usuario deseara navegar a otro sitio, su experiencia sería mediocre, ya que es posible que su tráfico no siguiera la ruta más eficaz a los sistemas superiores. Ahora, sin embargo, con las políticas de salida el cliente puede aplicar solo esta dirección IP de salida dedicada al tráfico de su proveedor de terceros y dejar la salida del tráfico de todos los otros usuarios mediante las direcciones IP de salida de Gateway por defecto.</p>
+	<div class="flex anchor relative">
+		<h3 id="building-egress-policies">Creación de políticas de salida</h3>
+		<a href="https://blog.cloudflare.com/#building-egress-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Para demostrar la facilidad con la que un administrador puede configurar una política, analicemos el último escenario. Mi organización utiliza un servicio de terceros y, además de un inicio de sesión mediante nombre de usuario y contraseña, para acceder a su dominio requieren que utilicemos un rango de red o de direcciones IP de origen estáticas.</p>
+	<p>Para configurar esto, debo ir a Políticas de salida en Gateway en el panel de control de Zero Trust. Una vez allí, puedo hacer clic en "Crear política de salida":</p>
+	<p>En el caso de mi organización, la mayoría de mis usuarios que acceden a este servicio de terceros se encuentran en Portugal, por lo que utilizaré mis direcciones IP de salida dedicadas asignadas a Montijo (Portugal). Los usuarios accederán a example.com alojado en 203.0.113.10, por lo que utilizaré el selector de direcciones IP de destino para correlacionar todo el tráfico con este sitio. La configuración de política es la siguiente:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yuJg8Ppn8asHZyfbw1L9R/ae805efe79147a7df6b61e04cbf6d0e6/image3-1.png" alt="" class="kg-image" width="1999" height="809" loading="lazy">
+
+	</figure>
+	<p>Una vez creada mi política, añadiré una política más como genérica para mi organización para asegurarme de que no utilizan ninguna dirección IP de salida dedicada para destinos que no estén asociados con este servicio de terceros. Esta adición es clave, porque garantiza que mis usuarios obtienen la experiencia de red más eficiente, al mismo tiempo que mantienen su privacidad mediante la salida a través de nuestra agrupación de direcciones IP empresarial compartida. La configuración de política es la siguiente:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xfip4X6BAuf5PVeo0wDYE/18556fb7fc1620e4e621aaa9ec13fb6d/image2.png" alt="" class="kg-image" width="1869" height="1999" loading="lazy">
+
+	</figure>
+	<p>Si echamos un vistazo a la lista de políticas de salida, podemos observar que ambas políticas están activadas. Ahora cuando mis usuarios intentan acceder a example.com utilizarán la dirección IPv4 dedicada primaria o secundaria o el rango de direcciones IPv6 como la dirección IP de salida. Para todo el tráfico restante, se utilizarán las direcciones IP de salida de Cloudflare por defecto.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pybWxPAfzFcURsoGQ3MC5/9201edcdad977b2698ae8a11e87fadd4/image4.png" alt="" class="kg-image" width="1456" height="1178" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="next-steps">Pasos siguientes</h3>
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nW6c0Qx8QXR4tZT1IMNLH/dfec617aadbd186f79b4f6f5e3445463/image1-3.png" alt="" class="kg-image" width="1999" height="963" loading="lazy">
+
+	</figure>
+	<p>Reconocemos que las organizaciones, a medida que se alejan de sus dispositivos locales y redireccionan cada vez más tráfico a través de su conjunto de soluciones de seguridad en la nube, quieren simplicidad y control constantes. Con las políticas de salida de Gateway, ahora los administradores pueden controlar los flujos de tráfico de sus empleados cada vez más distribuidos.</p>
+	<p>Si te interesa la creación de políticas en torno a las direcciones IP de salida dedicadas de Cloudflare, puedes añadirlas a un <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">plan Enterprise de Cloudflare Zero Trust</a> o ponerte en contacto con tu gestor de cuenta.</p>
+</div>

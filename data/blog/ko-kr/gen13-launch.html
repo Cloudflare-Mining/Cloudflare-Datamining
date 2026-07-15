@@ -1,0 +1,548 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/gen13-launch">English</a> 및 <a href="https://blog.cloudflare.com/ja-jp/gen13-launch">日本語</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Pl3ibbeqtfWJS8biSF5ZG/24cbbe62932fe5ee076263d853c0492c/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</i></p>
+	<p>2년 전 Cloudflare에서는 방대한 3D V-Cache를 갖춘 AMD EPYC™ Genoa-X 프로세서를 기반으로 하는 <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>12세대 서버 제품군</u></a>을 배포했습니다. 이러한 캐시가 많이 사용되는 아키텍처는 당시의 요청 처리 계층(FL1)에 완벽하게 맞았습니다. 하지만 차세대 하드웨어를 평가하면서 저희는 딜레마에 직면했습니다. 처리량이 가장 많이 향상되는 CPU에는 상당한 캐시 감소가 제공된다는 점이었습니다. 당사의 레거시 소프트웨어 스택은 이러한 목적으로 최적화되어 있지 않았으며, 대기 시간 증가로 인해 잠재적 처리량 이점이 제한되고 있었습니다.</p>
+	<p>이 블로그에서는 Cloudflare의 핵심 요청 처리 계층을 Rust 기반으로 재작성한 <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>FL2 transition</u></a>을 통해 Gen 13의 잠재력을 최대한 입증하고 이전 스택에서는 불가능했을 성능 향상을 실현할 수 있었는지 설명합니다. FL2는 용량이 큰 캐시에 대한 의존을 제거하여, SLA를 유지하면서 코어와 함께 성능을 확장할 수 있도록 합니다. 오늘 FL2를 실행하는 AMD EPYC™ 5세대 토리노 기반 서버에 기반한 Cloudflare의 Gen 13을 출시하게 되어 자랑스럽게 생각하며, 에지에서 성능을 효과적으로 캡처하고 확장합니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-amd-epycturin-brings-to-the-table">AMD EPYCurin이 테이블에 제공하는 기능</h2>
+		<a href="https://blog.cloudflare.com/#what-amd-epycturin-brings-to-the-table" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD의 EPYC™ 5세대 튜린 기반 프로세서</u></a> 는 단순히 코어 수 증가 그 이상을 제공합니다. 이러한 아키텍처 덕분에 Cloudflare 서버에 필요한 모든 것을 여러 차원에 걸쳐 개선할 수 있습니다.</p>
+	<ul>
+		<li>
+			<p><b>2배 코어 수:</b> 12세대의 코어 96개 대비 최대 192개 코어, SMT는 384개 스레드</p>
+		</li>
+		<li>
+			<p><b>IPC 개선:</b> 아키텍처가 개선된 Zen 5는 Zen 4에 비해 사이클당 명령이 더 우수합니다</p>
+		</li>
+		<li>
+			<p><b>더 나은 전력 효율성</b>: 토리노는 코어 수가 더 많음에도 불구하고 Genoa-X에 비해 코어당 소비 와트가 최대 32% 적습니다</p>
+		</li>
+		<li>
+			<p><b>DDR5-6400 지원</b>: 모든 코어에 공급할 수 있는 더 높은 메모리 대역폭</p>
+		</li>
+	</ul>
+	<p>하지만 토리노의 고밀도 OPN에는 코어당 캐시보다 처리량이 우선순위가 높은 의도적으로 타협해야 합니다. Cloudflare의 토리노 스택에 대한 분석에서는 이러한 변화가 두드러지게 나타났습니다. 예를 들어, 최고 밀도의 토리노 OPN을 당사의 12세대 Genoa-X 프로세서와 비교하면 토리노의 192개 코어가 384MB의 L3 캐시를 공유하는 것을 알 수 있습니다. 따라서 각 코어는 12세대 할당의 6분의 1에 해당하는 2MB만 액세스할 수 있습니다. 우리의 경우처럼 캐시 지역성에 크게 의존하는 모든 워크로드의 경우 이러한 감소는 심각한 문제를 야기했습니다.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>세대</p>
+				</td>
+				<td>
+					<p>프로세서</p>
+				</td>
+				<td>
+					<p>코어/스 레드</p>
+				</td>
+				<td>
+					<p>L3 캐시/코어</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>12세대</p>
+				</td>
+				<td>
+					<p>AMD Genoa-X 9684X</p>
+				</td>
+				<td>
+					<p>96C/192T</p>
+				</td>
+				<td>
+					<p>12MB(3D V-캐시)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13세대 옵션 1</p>
+				</td>
+				<td>
+					<p>AMD Turin 9755</p>
+				</td>
+				<td>
+					<p>128C/256T</p>
+				</td>
+				<td>
+					<p>4MB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13세대 옵션 2</p>
+				</td>
+				<td>
+					<p>AMD Turin 9845</p>
+				</td>
+				<td>
+					<p>160C/320T</p>
+				</td>
+				<td>
+					<p>2MB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13세대 옵션 3</p>
+				</td>
+				<td>
+					<p>AMD Turin 9965</p>
+				</td>
+				<td>
+					<p>192C/384T</p>
+				</td>
+				<td>
+					<p>2MB</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h2 id="diagnosing-the-problem-with-performance-counters">성능 카운터로 문제 진단</h2>
+		<a href="https://blog.cloudflare.com/#diagnosing-the-problem-with-performance-counters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 FL1 요청 처리 계층인 NGINX 및 LuaJIT 기반 코드의 경우 이러한 캐시 감소가 큰 문제였습니다. 하지만 문제가 될 것이라고 가정만 하지는 않았습니다. 우리는 그것을 측정했습니다.</p>
+	<p>13세대 CPU 평가 단계에서 저희는 <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf 도구</u></a>를 사용하여 CPU 성능 카운터와 프로파일링 데이터를 수집하여 내부에서 무슨 일이 일어나고 있는지 정확히 파악했습니다. 데이터 결과:</p>
+	<ul>
+		<li>
+			<p>3D V 캐시 프로세서가 탑재된 12세대 서버에 비해 L3 캐시 누락률이 크게 증가했습니다</p>
+		</li>
+		<li>
+			<p>이전에 L3에 머물던 데이터가 이제 D램으로 이동해야 하므로 메모리 가져오기 대기 시간이 요청 처리 시간에 지배적임</p>
+		</li>
+		<li>
+			<p>Cloudflare에서는 CPU 사용량을 높게 조정하고 캐시 경합이 악화되었으므로 대기 시간 페널티는 가동률에 따라 확장되었습니다</p>
+		</li>
+	</ul>
+	<p>L3 캐시 적중은 약 50주기 내에 완료됩니다. D램 액세스가 필요한 L3 캐시 누락에는 350 사이클 이상이 걸리며, 이는 엄청난 차이입니다. 코어당 캐시가 6배 감소한 13세대의 FL1은 훨씬 더 자주 메모리를 공격했고, 이로 인해 대기 시간 페널티가 발생했습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-tradeoff-latency-vs-throughput">절충안: 대기 시간 대 처리량&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#the-tradeoff-latency-vs-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>13세대에서 FL1을 실행한 초기 테스트에서 성능 카운터가 이미 제안한 사항이 확인되었습니다. 토리노 프로세서의 경우 더 높은 처리량을 달성할 수 있었지만, 대기 시간 비용이 급격했습니다.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>메트릭</p>
+				</td>
+				<td>
+					<p>12세대(FL1)</p>
+				</td>
+				<td>
+					<p>13세대 - AMD Turin 9755 (FL1)</p>
+				</td>
+				<td>
+					<p>13세대 - AMD Turin 9845 (FL1)</p>
+				</td>
+				<td>
+					<p>13세대 - AMD Turin 9965(FL1)</p>
+				</td>
+				<td>
+					<p>Delta</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>코어 수</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>+33%</p>
+				</td>
+				<td>
+					<p>+67%</p>
+				</td>
+				<td>
+					<p>+100%</p>
+				</td>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>플로리다주 처리량</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>+10%</p>
+				</td>
+				<td>
+					<p>+31%</p>
+				</td>
+				<td>
+					<p>+62%</p>
+				</td>
+				<td>
+					<p>개선</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU 사용률이 낮거나 보통인 경우의 대기 시간</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>+10%</p>
+				</td>
+				<td>
+					<p>+30%</p>
+				</td>
+				<td>
+					<p>+30%</p>
+				</td>
+				<td>
+					<p>회귀</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>높은 CPU 활용도에서의 대기 시간</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>&gt; 20%&nbsp;</p>
+				</td>
+				<td>
+					<p>&gt; 50%&nbsp;</p>
+				</td>
+				<td>
+					<p>&gt; 50%&nbsp;</p>
+				</td>
+				<td>
+					<p>허용되지 않음</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>60%의 처리량 향상을 달성한 AMD Turin 9965를 탑재한 Gen 13 평가 서버는 매우 매력적이었고, 성능이 향상되어 Cloudflare의 총소유비용(TCO)이 가장 많이 개선되었습니다.&nbsp;</p>
+	<p>하지만 대기 시간이 50%를 초과하는 것은 허용되지 않습니다. 요청 처리 대기 시간의 증가는 고객 경험에 직접적인 영향을 미칩니다. 저희는 익숙한 인프라 문제에 직면했습니다. TCO 이점이 없는 솔루션을 수락할까요? 아니면 늘어난 대기 시간을 감수할 것인가, 아니면 대기 시간을 늘리지 않고 효율성을 높이는 방법을 찾아야 할까요?</p>
+	<div class="flex anchor relative">
+		<h2 id="incremental-gains-with-performance-tuning">성능 조정을 통한 점진적 이득</h2>
+		<a href="https://blog.cloudflare.com/#incremental-gains-with-performance-tuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>최적의 결과를 위한 경로를 찾기 위해 저희는 AMD와 협력하여 Turin 9965 데이터를 분석하고 표적화된 최적화 실험을 진행했습니다. 우리는 체계적으로 여러 구성을 테스트했습니다.</p>
+	<ul>
+		<li>
+			<p><b>하드웨어 조정:</b> 하드웨어 프리페처 및 Data Fabric(DF) 프로브 필터의 조정으로, 미미한 이득만 보임</p>
+		</li>
+		<li>
+			<p><b>Workers 확장</b>: 더 많은 FL1 Workers를 출시하여 처리량은 개선되었지만, 다른 프로덕션 서비스로부터 리소스를 잠식함</p>
+		</li>
+		<li>
+			<p><b>CPU 피닝 &amp; 격리:</b> 워크로드 격리 구성을 조정하여 최적의 조합 찾기, 하지만 성공은 제한적&nbsp;</p>
+		</li>
+	</ul>
+	<p>궁극적으로 가장 큰 가치를 제공한 구성은 <b>AMD의 플랫폼 서비스 품질(PQOS)이었습니다. PQOS </b>확장을 사용하면 캐시 및 메모리 대역폭과 같은 공유 리소스를 세밀하게 조정할 수 있습니다. 토리노 프로세서는 1개의 I/O 다이와 최대 12개의 코어 복합 다이(CCD)로 구성되어 있으며, 각각 최대 16개의 코어에서 L3 캐시를 공유하므로 이를 테스트하기 위한 과정입니다. 다양한 실험 구성의 성과는 다음과 같습니다.&nbsp;</p>
+	<p>첫째, 우리는 PQOS를 사용하여 FL1에 대해 단일 CCD 내에서 전용 L3 캐시 공유를 할당했습니다. 하지만 이 개념을 소켓 수준으로 확장하고 <i>전체</i> CCD를 FL1에만 할당했을 때 대기 시간은 허용할 만한 수준으로 유지한 채 처리량도 유의미하게 향상되었습니다.</p>
+	<div dir="ltr" style="margin-left: 0pt;" align="center">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse: collapse; border-style: none;">
+				<colgroup>
+					<col style="width: 25%;" width="116">
+					<col style="width: 25%;" width="122">
+					<col style="width: 25%;" width="320">
+					<col style="width: 25%;" width="136">
+				</colgroup>
+				<tbody>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">구성</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">설명</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">일러스트레이션</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">성능 향상</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">NUMA 인식 코어 선호도&nbsp;</span></span><br><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">(소켓 수준의 PQOS와 동일)</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">12개의 CCD 중 6개(numa 도메인과 일치)가 FL을 실행합니다.</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">모든 코어에서 공유되는 각 CCD의 32MB L3 캐시.&nbsp;</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 795px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 80w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 160w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 240w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 320w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" data-ckbox-resource-id="ScAsYReXHQlI" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&gt;15% 증분&nbsp;</span></span></p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">처리량 향상</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS 구성 1</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">각 물리적 코어에 있는 2개의 vCPU 중 1개 CCD에서 FL 실행.&nbsp;</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL은 각 CCD의 32MB L3 캐시의 75%를 차지합니다.</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 390px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 302px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 368w" type="image/webp" sizes="(max-width: 368px) 100vw, 368px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="Nl0jNxumjs7w" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% 증분 처리량 향상</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">기타 서비스는 경미한 성능 저하의 징후를 보임</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS 구성 2</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">vCPU 2개 중 1개 각 CCD의 물리적 코어에 있는 1개가 작동합니다.</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL은 각 CCD의 32MB L3 캐시의 50%를 차지합니다.</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 388px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 300px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 369w" type="image/webp" sizes="(max-width: 369px) 100vw, 369px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="6Es1KpqJZTZw" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% 증분 처리량 향상</span></span></p>
+						</td>
+					</tr>
+					<tr style="height: 0pt;">
+						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS 구성 3</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">2개의 vCPU(각 CCD에서 물리적 코어의 50%)는 실시간으로 실행됩니다.&nbsp;</span></span></p>
+							<p>&nbsp;</p>
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL은 각 CCD의 32MB L3 캐시의 50%를 차지합니다.</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 396px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
+										<picture>
+											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 80w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 160w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 240w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 320w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png" width="367" height="478" data-ckbox-resource-id="EA8Pplzp2IQX" alt="">
+										</picture>
+									</span></span></p>
+						</td>
+						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
+							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% 증분 처리량 향상</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+	<div class="flex anchor relative">
+		<h2 id="the-opportunity-fl2-was-already-in-progress">기회: FL2는 이미 진행 중</h2>
+		<a href="https://blog.cloudflare.com/#the-opportunity-fl2-was-already-in-progress" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>하드웨어 튜닝과 리소스 구성으로는 소폭의 이익이 제공되었지만, 13세대 아키텍처의 성능 잠재력을 진정으로 활용하려면 소프트웨어 스택을 다시 작성하여 시스템 리소스를 활용하는 방식을 근본적으로 바꾸어야 한다는 것을 알고 있었습니다.</p>
+	<p>다행히 처음부터 시작하지는 않았습니다. <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>2025년 창립기념일 주간에서 발표한 바와</u></a> 같이, Cloudflare는 이미 FL1을 기초부터 재구축하고 있었습니다. FL2는 <a href="https://blog.cloudflare.com/pingora-open-source"><u>Pingora</u></a> 및 <a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxy</u></a> 프레임워크를 기반으로 구축된 Rust의 요청 처리 계층을 완전히 재작성하여 15년간 사용된 NGINX 및 LuaJIT 코드를 대체합니다.</p>
+	<p>FL2 프로젝트는 13세대 캐시 문제를 해결하려고 시작된 것이 아닙니다. 더 나은 보안(Rust의 메모리 안전성), 더 빠른 개발 속도(엄격한 모듈 시스템), 전반적으로 향상된 성능(더 적은 CPU, 더 적은 모듈식 실행).</p>
+	<p>메모리 액세스 패턴이 더 개선되고 동적 할당이 덜한 깔끔한 FL2의 아키텍처는 FL1처럼 대규모 L3 캐시에 의존하지 않을 수 있습니다. 이를 통해 FL2 전환을 사용하여 13세대의 처리량 향상을 대기 시간 페널티 없이 실현할 수 있는지 여부를 증명할 수 있는 기회가 되었습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="proving-it-out-fl2-on-gen-13">그 성능 입증: 13세대 FL2</h2>
+		<a href="https://blog.cloudflare.com/#proving-it-out-fl2-on-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL2 롤아웃이 진행되면서 13세대 서버의 프로덕션 지표가 가설을 입증했습니다.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>메트릭</p>
+				</td>
+				<td>
+					<p>13세대 AMD Turin 9965(FL1)</p>
+				</td>
+				<td>
+					<p>13세대 AMD Turin 9965(FL2)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CPU당 FL 요청%</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>50% 이상</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>대기 시간과 12세대 비교</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>70% 감소</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>처리량과 12세대 비교</p>
+				</td>
+				<td>
+					<p>62% 이상</p>
+				</td>
+				<td>
+					<p>100% 이상</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>새로운 FL2 스택에서는 시스템 최적화 전에도 즉시 사용 가능한 효율성 향상이 막대했습니다. FL2는 대기 시간 페널티를 70% 줄임으로써 대기 시간 SLA를 엄격하게 준수하면서 13세대의 CPU 사용률을 높일 수 있었습니다. FL1이 없었다면 이는 불가능했을 것입니다.</p>
+	<p>FL2는 캐시 병목 현상을 효과적으로 제거함으로써 코어 수에 따라 처리량을 선형적으로 확장할 수 있습니다. 고밀도 AMD Turin 9965가 그 영향을 미친 것은 부인할 수 없습니다. 우리는 성능을 2배 개선하여 하드웨어의 진정한 잠재력을 실현했습니다. 시스템을 추가로 조정하면 13세대 제품군에서 더 많은 전력을 끌어낼 수 있을 것으로 예상됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jV1q0n9PgmbbNzDl8E1J1/2ead24a20cc10836ba041f73a16f3883/image6.png" alt="13세대에 걸친 세대 개선" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="generational-improvement-with-gen-13">13세대에 걸친 세대 개선</h2>
+		<a href="https://blog.cloudflare.com/#generational-improvement-with-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>코어 수가 많은 AMD Turin 9965의 엄청난 처리량을 선사하는 FL2를 통해, Cloudflare는 13세대 배포를 위해 이 프로세서들을 공식적으로 선택했습니다. 하드웨어 검증이 완료되었으며, 이제 13세대 서버가 글로벌 롤아웃을 지원할 수 있는 대규모로 출시되고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="performance-improvements">성능 개선</h3>
+		<a href="https://blog.cloudflare.com/#performance-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p>
+					</p>
+				</td>
+				<td>
+					<p>12세대&nbsp;</p>
+				</td>
+				<td>
+					<p>13세대&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>프로세서</p>
+				</td>
+				<td>
+					<p>AMD EPYC™ 4세대 Genoa-X 9684X</p>
+				</td>
+				<td>
+					<p>AMD EPYC™ 5세대 Turin 9965</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>코어 수</p>
+				</td>
+				<td>
+					<p>96C/192T</p>
+				</td>
+				<td>
+					<p>192C/384T</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>플로리다주 처리량</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>최대 +100%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>와트당 성능</p>
+				</td>
+				<td>
+					<p>기준선</p>
+				</td>
+				<td>
+					<p>최대 +50%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="gen-13-business-impact">13세대 비즈니스 영향</h3>
+		<a href="https://blog.cloudflare.com/#gen-13-business-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Gen 12 대비 최대 2배 처리량 </b>타협 없는 고객 경험을 위해: 대기 시간 SLA를 유지하면서 처리량을 두 배로 함으로써, Cloudflare에서는 애플리케이션의 빠른 응답성을 보장하고 대규모 트래픽 급증을 흡수할 수 있습니다.</p>
+	<p><b>지속 가능한 확장을 위해 12세대 대비 와트당 성능 50% 향상 </b>: 이러한 전력 효율성 향상은 데이터 센터 확장 비용을 절감할 뿐만 아니라 요청당 탄소 발자국을 크게 낮추며 증가하는 트래픽을 처리할 수 있게 합니다.</p>
+	<p><b>글로벌 에지 업그레이드의 경우 12세대 대비 60% 랙 </b>처리량: 랙 전력 예산을 일정하게 유지하면서 이러한 처리량 밀도를 달성했기 때문에 Cloudflare는 이 차세대 컴퓨팅을 글로벌 에지 네트워크를 통해 전 세계 모든 곳에 원활하게 배포할 수 있으며, 최고의 성능을 정확히 제공할 수 있습니다 제공할 수 있기 때문입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="gen-13-fl2-ready-for-the-edge">13세대 + FL2: 에지 준비 완료&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#gen-13-fl2-ready-for-the-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 레거시 요청 제공 계층 FL1이 13세대에서 캐시 경합 벽에 부딪혀 처리량과 대기 시간 사이에서 용납할 수 없는 절충안이 발생했습니다. 우리는 기능을 손상시키는 대신 FL2를 구축했습니다.&nbsp;</p>
+	<p>FL2를 사용하면 메모리 액세스 패턴이 대폭 간소화되며 대규모 L3 캐시에 대한 의존도가 없어지며 코어 수와 선형적으로 비례하여 규모를 확장할 수 있습니다. 13세대 AMD 토리노 플랫폼에서 실행되는 FL2는 SLA 범위 내에서 대기 시간을 유지하면서 2배의 처리량과 50%의 전력 효율성을 제공합니다. 이러한 도약은 하드웨어-소프트웨어 공동 설계의 중요성을 다시 한번 일깨우는 신호탄입니다. 이제 13세대 서버는 캐시 제한의 제약 없이 Cloudflare를 배포하여 Cloudflare의 전역 네트워크에서 수백만 건의 요청을 처리할 준비가 되었습니다.</p>
+	<p>글로벌 규모의 인프라 개발에 관심이 있으시다면, Cloudflare에서<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>인재를 채용하고 있습니다.</u></a></p>
+</div>

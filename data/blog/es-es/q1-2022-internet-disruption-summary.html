@@ -1,0 +1,162 @@
+<div class="mb2 gray5">7 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/q1-2022-internet-disruption-summary">English</a>, <a href="https://blog.cloudflare.com/fr-fr/q1-2022-internet-disruption-summary">Français</a>, <a href="https://blog.cloudflare.com/de-de/q1-2022-internet-disruption-summary">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/q1-2022-internet-disruption-summary">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/q1-2022-internet-disruption-summary">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jEHNdINcDuUJgnKeczrj4/cf23f15209534f35f10bf9490a5aa08c/q1-2022-internet-disruption-summary.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare opera en más de 250 ciudades en más de 100 países, donde nos interconectamos con más de 10 000 proveedores de red para ofrecer una amplia gama de servicios a millones de clientes. El alcance tanto de nuestra red como de nuestra base de clientes nos brinda una perspectiva única sobre la resiliencia de Internet, permitiéndonos observar el impacto de sus interrupciones. En muchos casos, estas interrupciones obedecen a un evento físico, mientras que en otros responden a la imposición de los gobiernos de manera intencionada. En esta publicación, revisamos una selección de las interrupciones de Internet que hemos observado durante el primer trimestre de 2022 e incluimos gráficos del tráfico de <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> y otras de nuestras herramientas internas, agrupadas por la causa asociada.</p>
+	<p></p>
+	<p><b>Tectónica de placas</b></p>
+	<p>Las interrupciones de Internet causadas por maquinaria pesada se deben con frecuencia al uso de <a href="http://www.catb.org/jargon/html/F/fiber-seeking-backhoe.html" target="_blank" rel="noopener noreferrer">retroexcavadoras</a> aisladas. Sin embargo, en el 1.er trimestre se produjeron dos caídas de Internet a causa de fenómenos geológicos más importantes: una erupción volcánica y un terremoto.</p>
+	<p>La primera afectó a la conectividad de la nación insular de <a href="https://radar.cloudflare.com/to" target="_blank" rel="noopener noreferrer">Tonga</a>, cuando la erupción volcánica de Hunga Tonga–Hunga Ha'apai <a href="https://www.submarinecablemap.com/submarine-cable/tonga-cable" target="_blank" rel="noopener noreferrer">dañó el cable submarino que conecta Tonga con Fiyi</a>, provocando un <a href="https://blog.cloudflare.com/internet-is-back-in-tonga-after-38-days-of-outage">corte del servicio de Internet de 38 días</a>. Después de la erupción del 14 de enero, se observó (a través de servicios por satélite) un tráfico de Internet mínimo desde Tonga. El 22 de febrero, la compañía de telecomunicaciones Digicel <a href="https://www.digicelgroup.com/to/en/news/2022/Feb/22nd/data-services-fully-restored.html" target="_blank" rel="noopener noreferrer">anunció</a> que se había restablecido la conexión en la isla principal una vez completadas las reparaciones iniciales del cable submarino. En el siguiente gráfico, se observa claramente la reactivación inmediata del flujo de tráfico. Sin embargo, se estimó que las reparaciones del cable doméstico, que conecta las islas exteriores, podrían prolongarse entre seis y nueve meses.</p>
+	<p>La segunda interrupción, causada por un <a href="https://twitter.com/CloudflareRadar/status/1504118499014291462" target="_blank" rel="noopener noreferrer">terremoto de magnitud 7,3 frente a la costa del centro de Japón</a> el 16 de marzo, fue significativamente más corta y su impacto fue mucho menor. El terremoto se produjo en torno a las 14:36 horas UTC y provocó cortes de energía que dejaron sin Internet a ciudades como Tokio durante varias horas, como se ve en el gráfico siguiente. Prácticamente 11 años antes, un terremoto de magnitud 8,9 tuvo también un <a href="https://web.archive.org/web/20110314134526/http:/www.renesys.com/blog/2011/03/japan-quake.shtml" target="_blank" rel="noopener noreferrer">impacto nominal</a> en la conectividad a Internet en el país nipón, según parece a consecuencia de los daños en los sistemas de cables submarinos.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EkFTJSGsJKosGbzDn3IYT/1e6be6f06a69745ba511e46dfc9e921c/image15-1.png" alt="" class="kg-image" width="1094" height="521" loading="lazy">
+
+	</figure>
+	<p><b>Daños a la infraestructura</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1KQ33azzZMtM7Nz0VVStUE/b639d83dd1f71a99c01dd411ef5d9983/image3-4.png" alt="" class="kg-image" width="997" height="358" loading="lazy">
+
+	</figure>
+	<p>Sin duda, la resiliencia de Internet depende en gran medida de la capacidad de la infraestructura física subyacente, incluidos los centros de datos, la fibra terrestre y los cables submarinos. Los daños a esta infraestructura suelen interrumpir la conectividad a Internet.</p>
+	<p>A primera hora de la mañana del 5 de enero, <a href="https://radar.cloudflare.com/gm" target="_blank" rel="noopener noreferrer">se interrumpió el servicio de Internet</a> en <a href="https://blog.cloudflare.com/the-gambia-without-internet">Gambia</a>. Como se aprecia en el gráfico siguiente, el incidente duró más de ocho horas, entre las 01:17 horas y las 09:45 horas UTC. Según un <a href="https://twitter.com/Gamtel/status/1478670244067651587" target="_blank" rel="noopener noreferrer">comunicado de prensa</a> de <a href="https://radar.cloudflare.com/asn/25250?date_filter=last_7_days" target="_blank" rel="noopener noreferrer">GAMTEL</a>, tras el fallo del vínculo principal (daños en el cable submarino <a href="https://www.submarinecablemap.com/submarine-cable/africa-coast-to-europe-ace" target="_blank" rel="noopener noreferrer">ACE</a>), el tráfico se dirigió a dos vínculos de reserva a través de Senegal. Sin embargo, estos también fallaron porque convergían en un lugar que finalmente se identificó como un único punto de error.</p>
+	<p>Alrededor de las 21:30 horas UTC del 20 de enero, <a href="https://blog.cloudflare.com/internet-outage-in-yemen-amid-airstrikes">apenas hubo tráfico de Internet en Yemen</a>, como se muestra en el gráfico siguiente, tras los bombardeos aéreos que alcanzaron un edificio de telecomunicaciones en Al-Hudaydah, donde llega el cable submarino <a href="https://www.submarinecablemap.com/submarine-cable/falcon" target="_blank" rel="noopener noreferrer">FALCON</a>, según se informó en ese momento. La interrupción duró cuatro días, tras los cuales se restauró el servicio a las 21:00 horas del 24 de enero. El corte afectó principalmente a <a href="https://radar.cloudflare.com/asn/30873" target="_blank" rel="noopener noreferrer">YemenNet (Public Telecommunication Corporation)</a>, proveedor estatal de telecomunicaciones.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6hEiRlH1u3OMTMmPKodF7T/4ee0c50c8e524f24b3c2f471dfe0256f/image7-2.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>El 1 de marzo, <a href="https://twitter.com/CloudflareRadar/status/1498608898349146117" target="_blank" rel="noopener noreferrer">Tasmania sufrió una interrupción de Internet de 6 horas y media</a> después de que se cortaran dos de los tres cables submarinos (<a href="https://www.submarinecablemap.com/submarine-cable/basslink" target="_blank" rel="noopener noreferrer">Basslink</a>, <a href="https://www.submarinecablemap.com/submarine-cable/bass-strait-1" target="_blank" rel="noopener noreferrer">Bass Strait-1</a> y <a href="https://www.submarinecablemap.com/submarine-cable/bass-strait-2" target="_blank" rel="noopener noreferrer">Bass Strait-2</a>) que conectan el estado con el continente australiano.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28vL7luP40rmWwkov276IW/2be7b0e0c06e0740798d827ac95a6beb/image18.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Según un <a href="https://www.abc.net.au/news/2022-03-01/widespread-telecommunications-and-internet-outage-in-tasmania/100871822" target="_blank" rel="noopener noreferrer">informe publicado</a>, uno de los cortes se produjo en Victoria (territorio continental) y el otro en Tasmania, y ambos fueron responsabilidad de "terceros". En el gráfico siguiente se aprecia una importante reducción del tráfico entre las 01:30 horas y las 08:00 horas UTC.</p>
+	<p>El <a href="https://www.datacenterdynamics.com/en/news/reported-fire-at-iranian-telco-data-center-cause-widespread-internet-outages" target="_blank" rel="noopener noreferrer">4 de marzo</a>, <a href="https://www.datacenterdynamics.com/en/news/reported-fire-at-iranian-telco-data-center-cause-widespread-internet-outages" target="_blank" rel="noopener noreferrer">un incendio en el centro de datos de Telecom Infrastructure Company (TIC)</a> causó una <a href="https://twitter.com/CloudflareRadar/status/1499733340760559620" target="_blank" rel="noopener noreferrer">interrupción de Internet de cuatro horas</a> en Irán. <a href="https://radar.cloudflare.com/asn/58224" target="_blank" rel="noopener noreferrer">Telecom Infrastructure Company (TIC)</a> es el único proveedor de infraestructuras de telecomunicaciones de todos los operadores públicos y privados de Irán. Como muestra el gráfico siguiente, el tráfico de Internet en el país cayó aproximadamente un 20 % a las 06:40 horas UTC, y se recuperó alrededor de las 10:30 horas UTC.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15uSHVpcn39gprGhNS1Fo3/296cc8316e2d9cc995992a74015e3c23/image12.png" alt="" class="kg-image" width="1021" height="327" loading="lazy">
+
+	</figure>
+	<p>El 15 de marzo, ETECSA, la empresa estatal de telecomunicaciones cubana, <a href="https://twitter.com/ETECSA_Cuba/status/1503821114811863040" target="_blank" rel="noopener noreferrer">informó</a> del corte de un cable de fibra óptica esa mañana en una vía pública de la capital. El impacto en el tráfico de Internet a <a href="https://radar.cloudflare.com/cu" target="_blank" rel="noopener noreferrer">Cuba</a> y <a href="https://radar.cloudflare.com/asn/27725" target="_blank" rel="noopener noreferrer">ETECSA</a> se observa en las gráficas que aparecen a continuación. La interrupción se produjo justo después de las 12:00 horas UTC, y duró más de seis horas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kQGpL8zrEySVvzA9WlzJA/7d4e972c37f2b641d4ca264ee51d75a8/image4-2.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Aunque en un principio se creyó que era el resultado de un <a href="https://twitter.com/vesinfiltro/status/1507058201296089092" target="_blank" rel="noopener noreferrer">corte de luz</a> (<a href="https://internetdisruption.report/tag/venezuela" target="_blank" rel="noopener noreferrer">algo muy común en Venezuela</a>), la <a href="https://twitter.com/CloudflareRadar/status/1507078068992679944" target="_blank" rel="noopener noreferrer">interrupción de Internet del 24 de marzo</a> en el país se debió finalmente a un <a href="https://twitter.com/salaprensaCantv/status/1507000854301216773" target="_blank" rel="noopener noreferrer">corte en un cable de fibra</a>. El tráfico de Internet de los clientes de <a href="https://radar.cloudflare.com/asn/8048" target="_blank" rel="noopener noreferrer">CANTV</a> en varios estados venezolanos se redujo significativamente entre las 11:40 horas y las 17:40 horas UTC, tal y como se aprecia en el gráfico siguiente. Además de esta interrupción, <a href="https://twitter.com/vesinfiltro" target="_blank" rel="noopener noreferrer">VE sin Filtro</a> informó de otras interrupciones del servicio de Internet de varias horas de duración en varios estados de Venezuela durante el primer trimestre.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yz2ceBZG3BocORGucaoiY/9e34e21f334f318d7df850f1a5681891/image8-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72BetUGVAg2XlnqEDCzlI4/a8454c93e7f30204c9e98edd04b4cb55/image2-4.png" alt="" class="kg-image" width="1033" height="359" loading="lazy">
+
+	</figure>
+	<p>El 31 de marzo, <a href="https://twitter.com/CloudflareRadar/status/1509526232307838976" target="_blank" rel="noopener noreferrer">el tráfico de Internet de Telenor Pakistan se redujo un 60 %</a> entre las 06:00 horas y las 07:45 horas UTC, como se observa en el siguiente gráfico. Según la <a href="https://twitter.com/telenorpakistan/status/1509472369475469313" target="_blank" rel="noopener noreferrer">respuesta</a> de Telenor Pakistan a cientos de quejas de clientes recibidas a través de Twitter, la interrupción se debió a varios cortes en el cable de fibra óptica en distintos lugares. Justo después de las 18:00 horas UTC, Telenor Pakistan <a href="https://twitter.com/telenorpakistan/status/1509592923649761284" target="_blank" rel="noopener noreferrer">tuiteó</a> que los servicios se habían restablecido por completo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gpklGwly0F5lyf2NmbuUd/3e1f3bc78b7060beda03f0d533d17869/image16.jpg" alt="" class="kg-image" width="1030" height="358" loading="lazy">
+
+	</figure>
+	<p><b>Interrupciones del suministro eléctrico</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cvFY5zVZWhNjLJ8tKRDPV/de223198235b2e6f29124f188ca38d12/image13.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Además de la infraestructura física, el suministro fiable de energía eléctrica también es fundamental para que la conectividad a Internet sea resistente. A nivel de proveedor, los cortes de electricidad pueden interrumpir centros de datos y enrutadores clave, afectando así a la conectividad de los clientes y otras redes conectadas. Los cortes de electricidad que sufren los consumidores pueden desconectar enrutadores domésticos y empresariales, así como dispositivos, obligando a los usuarios a recurrir a la conectividad móvil, en caso de que siga estando disponible.</p>
+	<p>Las redes eléctricas interconectadas de <a href="https://radar.cloudflare.com/kz" target="_blank" rel="noopener noreferrer">Kazajistán</a>, <a href="https://radar.cloudflare.com/uz" target="_blank" rel="noopener noreferrer">Uzbekistán</a> y <a href="https://radar.cloudflare.com/kg" target="_blank" rel="noopener noreferrer">Kirguistán</a> sufrieron cortes el 24 de enero después de que la línea eléctrica norte-sur de Kazajistán se desconectara <a href="https://www.reuters.com/world/asia-pacific/power-blackout-hits-kazakhstan-kyrgyzstan-uzbekistan-2022-01-25" target="_blank" rel="noopener noreferrer">debido a "desequilibrios de emergencia"</a>. Estos cortes de electricidad <a href="https://twitter.com/dbelson/status/1485965578112319501" target="_blank" rel="noopener noreferrer">interrumpieron el servicio de Internet durante varias horas en los tres países</a> desde las 06:00 horas UTC, tal y como se observa en los gráficos siguientes. El impacto en el tráfico en Kazajistán pareció ser bastante menor, si bien el tráfico disminuyó de forma significativa en Uzbekistán y Kirguistán y tardó más en recuperarse.</p>
+	<p>Una <a href="https://twitter.com/CloudflareRadar/status/1499372444326506499" target="_blank" rel="noopener noreferrer">interrupción en el suministro eléctrico en varios condados y ciudades de Taiwán</a> a la 01:00 h UTC del 3 de marzo provocó una breve interrupción de #Internet. En el gráfico siguiente observamos un descenso inicial nominal del tráfico, aunque se mantuvo bajo durante las horas siguientes. <a href="https://www.reuters.com/world/asia-pacific/taiwan-gradually-restores-power-after-major-plant-malfunction-2022-03-03" target="_blank" rel="noopener noreferrer">Al parecer,</a> el apagón fue causado por un fallo humano durante los trabajos de reparación anuales de un generador en la central eléctrica de Hsinta.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y7phjdaQwvCHiaZSTLNc/9f0efa440863016978feabe4f31ee388/image17.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g3ix4iU5C07YxiWLvJzph/c17f4a1561f29be2086793a04dfe533b/image25.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lDD3AbyUEUEuKMsGxbe20/1674fbc09b08f227ac7f9e28acb208b1/image19.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Además del corte de fibra comentado anteriormente, <a href="https://twitter.com/CloudflareRadar/status/1507023169651200000" target="_blank" rel="noopener noreferrer">los servicios de Internet en Cuba se interrumpieron por segunda vez</a> el 24 de marzo. Según un <a href="https://web.archive.org/web/20220324140850/https:/twitter.com/ETECSA_Cuba/status/1506994431685242891" target="_blank" rel="noopener noreferrer">tuit de ETECSA</a>, un fallo eléctrico interrumpió el servicio de voz, SMS y datos móviles. El análisis del tráfico de Internet tanto para <a href="https://radar.cloudflare.com/cu" target="_blank" rel="noopener noreferrer">Cuba</a> como para <a href="https://radar.cloudflare.com/asn/27725" target="_blank" rel="noopener noreferrer">ETECSA</a> revela que la interrupción comenzó alrededor de las 12:30 horas UTC, y duró aproximadamente 90 minutos, como se muestra a continuación.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7IadhyRrqcJEDbS4pThRYH/171d7c750f0b549c0e10f57bac9895fc/image6-2.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b>Ataques DDoS</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01NuT1sUwvWXxPVj3JRgfD/a08b7a345f132834f2bbdc16858c946d/image20.png" alt="" class="kg-image" width="802" height="386" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tpvYQdFUeYcMg9dpDDiak/7b09cbc3d56dcff4c2b120b5f6f4f8ee/image24.png" alt="" class="kg-image" width="1280" height="486" loading="lazy">
+
+	</figure>
+	<p>Aunque los ataques de denegación de servicio distribuido (DDoS) se suelen dirigir a servidores de sitios web o de aplicaciones en un intento de dejar fuera de servicio un determinado sitio web o aplicación, los ataques DDoS contra la infraestructura de red pueden tener un impacto mayor, no solo restringiendo el acceso a los sitios y aplicaciones alojados en esa red, sino también interrumpiendo la conectividad de los usuarios conectados a la misma.</p>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1503470338436382726" target="_blank" rel="noopener noreferrer">Un ataque DDoS de este tipo</a> tuvo como objetivo el sistema autónomo <a href="https://radar.cloudflare.com/asn/8867" target="_blank" rel="noopener noreferrer">AS8867</a> (E-Gov - proyecto Tehila) en <a href="https://radar.cloudflare.com/il" target="_blank" rel="noopener noreferrer">Israel</a> el 14 de marzo. El gráfico siguiente muestra que el tráfico de Internet hacia ese ASN comenzó a disminuir justo antes de las 15:30 horas UTC. Un <a href="https://www.haaretz.com/israel-news/.premium-israeli-government-sites-crash-in-cyberattack-1.10674433" target="_blank" rel="noopener noreferrer">informe publicado</a> señala que los sitios web de los ministerios de Interior, Sanidad, Justicia y Bienestar, así como el de la oficina del primer ministro, se desconectaron como consecuencia del ataque.</p>
+	<p><b>Causas técnicas no especificadas</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21eLICe9HWJbEDI4aaKsQd/58671c3c8619b8333aaf52dcd698a233/image11.png" alt="" class="kg-image" width="1999" height="707" loading="lazy">
+
+	</figure>
+	<p>Como ya se ha comentado, las causas técnicas o físicas subyacentes de las interrupciones de Internet suelen ser fácilmente identificables, a menudo gracias a las redes sociales u otras comunicaciones de los proveedores de red afectados. Sin embargo, a veces se observan interrupciones que están correlacionadas con un acontecimiento del mundo real (a menudo político) sin una causa técnica o física determinada, mientras que en otras ocasiones se observan interrupciones que no se correlacionan ni obedecen a un evento concreto.</p>
+	<p>En Kazajistán, el 5 de enero, se produjo una interrupción de Internet <a href="https://blog.cloudflare.com/internet-shut-down-in-kazakhstan-amid-unrest">en el contexto de las protestas masivas contra la repentina subida de los precios de la energía</a>. A las 10:30 horas UTC, el tráfico desde Kazajistán era prácticamente nulo. En el siguiente gráfico se observa que el tráfico recuperó un patrón diurno regular el 11 de enero, pero también se ve que la conectividad se restableció aparentemente en varias ocasiones durante la interrupción de seis días. Estos breves periodos de conectividad parecen coincidir con los discursos televisados o los anuncios del presidente kazajo.</p>
+	<p>En <a href="https://radar.cloudflare.com/bf" target="_blank" rel="noopener noreferrer">Burkina Faso</a>, se <a href="https://www.nytimes.com/2022/01/23/world/africa/burkina-faso-mutiny-gunfire.html" target="_blank" rel="noopener noreferrer">informó</a> acerca de fuertes disparos relacionados con un motín del ejército <a href="https://www.nytimes.com/2022/01/23/world/africa/burkina-faso-mutiny-gunfire.html" target="_blank" rel="noopener noreferrer">a primera hora de la mañana del 23 de enero.</a> Cloudflare Radar observó <a href="https://blog.cloudflare.com/internet-disruption-in-burkina-faso">un descenso significativo del tráfico procedente del país a las 09:15 horas UTC</a>. En <a href="https://radar.cloudflare.com/asn/37577" target="_blank" rel="noopener noreferrer">Orange</a>, <a href="https://radar.cloudflare.com/asn/25543" target="_blank" rel="noopener noreferrer">FasoNet</a> y <a href="https://radar.cloudflare.com/asn/37526" target="_blank" rel="noopener noreferrer">Telecel Faso</a> se registró una disminución de los volúmenes de tráfico. Como muestra el gráfico siguiente, la interrupción duró casi un día y medio y se recuperó alrededor de las 20:00 horas UTC del 24 de enero.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Nv9h7iPEHMUj00Gly1zjB/0390f4c3f26269e71a89a7fb3fee2710/image10-1.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p>Justo después de las 22:00 horas UTC del 15 de marzo, <a href="https://radar.cloudflare.com/ye" target="_blank" rel="noopener noreferrer">Yemen</a> experimentó una importante, aunque breve, interrupción del servicio de Internet, que duró solo 30 minutos. Como se observa en los siguientes gráficos, la interrupción se debió principalmente a un problema en <a href="https://radar.cloudflare.com/asn/30873" target="_blank" rel="noopener noreferrer">YemenNet</a>. Un <a href="https://mazpress-com.translate.goog/news12120.html?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp" target="_blank" rel="noopener noreferrer">informe publicado</a> afirmó que la interrupción fue intencionada por la milicia golpista Houthi.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QudF49o7lJ4vXiNrjeV3t/49cfdb0f4bf17b0d73f358ffb0c864b1/image1-6.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<p><b>Invasión rusa de Ucrania</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/x9QltFmOJ4jgIemHRvZE6/f3d6d3ec1332be080f07262eabfbbe7b/image9-4.png" alt="" class="kg-image" width="1000" height="500" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mtVbGJ74gZuA8iGL6teh8/37b0511cb11f45fe5f56783674583bf6/image22.png" alt="" class="kg-image" width="1999" height="706" loading="lazy">
+
+	</figure>
+	<p>La invasión rusa de Ucrania dura ya más de un mes. En algunos casos, la conectividad a Internet ha sido un daño colateral de la intervención militar cinética, mientras que en otros, los ataques contra proveedores de red y las interrupciones en el suministro eléctrico han afectado a la conectividad. Los técnicos de los proveedores de servicios ucranianos <a href="https://www.forbes.com/sites/thomasbrewster/2022/03/22/while-russians-bombs-fall-around-them-ukraines-engineers-battle-to-keep-the-internet-running" target="_blank" rel="noopener noreferrer">han arriesgado sus vidas para mantener el país en línea</a>, y lo han logrado. Los datos de tráfico de Cloudflare Radar para <a href="https://radar.cloudflare.com/ua" target="_blank" rel="noopener noreferrer">Ucrania</a> muestran que, a finales de marzo, los niveles máximos de tráfico se encontraban en el 85-90 % de los picos previos a la invasión. Una de las <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">publicaciones en nuestro blog</a> detalla los patrones de tráfico de Internet observados en Ucrania durante la primera semana después del comienzo del conflicto.</p>
+	<p>A continuación destacamos solo algunas interrupciones significativas observadas en los principales proveedores de red ucranianos en marzo.</p>
+	<p>Se observaron dos breves interrupciones en <a href="https://radar.cloudflare.com/asn/6849" target="_blank" rel="noopener noreferrer">Ukrtelecom</a> durante la segunda semana de marzo, que se muestran en el gráfico siguiente. La primera, el 8 de marzo, duró algo más de dos horas, mientras que la segunda, el 10 de marzo, duró aproximadamente 40 minutos. Se desconoce la causa de estas interrupciones.</p>
+	<p>Más adelante, el 28 de marzo, Ukrtelecom sufrió una interrupción de <a href="https://twitter.com/CloudflareRadar/status/1508460545170681862" target="_blank" rel="noopener noreferrer">aproximadamente 15 horas</a>, desde las 08:00 horas UTC hasta la 01:00 h del 29 de marzo, como se ve en el gráfico siguiente. Un <a href="https://twitter.com/dsszzi/status/1508528209075257347" target="_blank" rel="noopener noreferrer">hilo de Twitter del Servicio Estatal de Comunicaciones Especiales y Protección de la Información de Ucrania</a> explicaba que la interrupción se debió a "un potente ciberataque" contra la infraestructura de Ukrtelecom, y que "<i>con el fin de preservar su infraestructura de red y seguir prestando servicios a las Fuerzas Armadas de Ucrania y otras formaciones militares, así como a los clientes, Ukrtelecom había decidido limitar temporalmente la prestación de sus servicios a la mayoría de los usuarios privados y clientes empresariales"</i>. <a href="https://www.linkedin.com/posts/ukrtelecom_russiaukraineconflict-staywithukraine-ftth-activity-6914925170142978048-SPCU" target="_blank" rel="noopener noreferrer">Una publicación de Ukrtelecom en LinkedIn</a> también destacó que la empresa ha estado trabajando sin descanso para restablecer los servicios de telecomunicaciones en las regiones afectadas de todo el país.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2b2o82mvOQNr0NfvRzsfLn/9f3969bafd87f84e8d4f91b9386abcb7/image23.png" alt="" class="kg-image" width="1999" height="783" loading="lazy">
+
+	</figure>
+	<p>El gráfico siguiente muestra que, en torno a las 21:00 horas UTC del 9 de marzo, el proveedor de servicios de Internet ucraniano Triolan sufrió una importante interrupción, <a href="https://ukraine.segodnya.ua/ua/ukraine/hakery-rf-atakovali-ukrainskiy-internet-provayder-triolan-dostupa-k-seti-net-1607900.html" target="_blank" rel="noopener noreferrer">al parecer como consecuencia de un ciberataque</a>. El tráfico comenzó a recuperarse de manera gradual después de aproximadamente 10 horas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LoBO09baaasc6G7oBbPTB/e8d66281eea8991dba33fd16679b46af/image14.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p><b>Conclusión</b></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34UTfI7xD14UThJ2PTgARm/3fc9a2d794341b1ab04bd08e5f5e80bc/image21.jpg" alt="" class="kg-image" width="972" height="331" loading="lazy">
+
+	</figure>
+	<p>A pesar de las interrupciones puntuales de la conectividad, Internet sigue siendo una red notablemente resistente. Esta capacidad es cada vez más crítica conforme Internet se abre camino en más áreas de la vida cotidiana en todo el mundo. Además de proporcionar un <a href="https://www.cloudflare.com/about-overview" target="_blank" rel="noopener noreferrer">conjunto de soluciones</a> que respaldan esa resiliencia, utilizamos los datos extraídos de estas soluciones para supervisar la fiabilidad, la disponibilidad, la seguridad y el rendimiento de Internet.Sigue <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a> en Twitter para conocer en tiempo real las interrupciones de Internet, y consulta información actualizada sobre las tendencias de Internet en <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 53.56371490280778%;"><iframe src="https://iframe.videodelivery.net/420bcb700b8bd0388edcf02c6d9abd76?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F420bcb700b8bd0388edcf02c6d9abd76%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

@@ -1,0 +1,157 @@
+<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/cloud-computing-without-containers">English</a>, <a href="https://blog.cloudflare.com/fr-fr/cloud-computing-without-containers">Français</a>, <a href="https://blog.cloudflare.com/es-es/cloud-computing-without-containers">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HhFV0o3X8HeitagVRwg0W/0fef2e289b974b15a8ac0cd6b943a68f/cloud-computing-without-containers.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare hat eine Cloud-Computing-Plattform mit der Bezeichnung <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a>. <b>Anders als praktisch jede andere Cloud-Computing-Plattform, die mir bekannt ist, benutzt sie keine Container oder virtuelle Maschinen.</b> Wir glauben, dass hierin die Zukunft von serverlosem Computing und Cloud-Computing insgesamt liegt, und ich werde versuchen, Ihnen überzeugend darzulegen, warum das so ist.</p>
+	<div class="flex anchor relative">
+		<h3 id="isolates"><b>Isolates</b></h3>
+		<a href="https://blog.cloudflare.com/#isolates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JzV7eItWZDcmNaG7YVIMp/ba8cc6d8d8fcea22f15b3297c9ccb57f/Artboard-42_3x.png" alt="" class="kg-image" width="2000" height="729" loading="lazy">
+
+	</figure>
+	<p>Vor zwei Jahren hatten wir ein Problem. Die Anzahl der Funktionen und Optionen, die wir intern entwickeln konnten, war begrenzt, und wir mussten für Kunden eine Möglichkeit schaffen, sie selbst zu erstellen. Wir machten uns auf die Suche nach einem Weg, es Nutzern zu ermöglichen, auf unseren rund um die Welt aufgestellten Servern Code zu schreiben (wir hatten damals etwas über 100 Datenzentren, derzeit sind es 155). Unser System musste nicht vertrauenswürdigen Code mit wenig Overhead sicher ausführen können. Wir sitzen vor zehn Millionen Websites und verarbeiten Millionen und Abermillionen Anfragen pro Sekunde, also musste es auch sehr, sehr schnell laufen.</p>
+	<p>Die Lua-Entwicklungsumgebung, die wir vorher hatten, lief nicht in einer Sandbox. Kunden konnten ihren eigenen Code nicht ohne unsere Aufsicht schreiben. Herkömmliche Virtualisierungs- und Container-Technologien wie Kubernetes wären für alle Beteiligten außerordentlich kostspielig gewesen. Der Betrieb Tausender Kubernetes-Pods an einem einzigen Standort wäre ressourcenintensiv, und an 155 Standorten wäre es noch schlimmer. Sie zu skalieren wäre einfacher als ganz ohne Verwaltungssystem, es wäre aber trotzdem alles andere als trivial.</p>
+	<p>Wofür wir uns letztendlich entschieden haben, war eine Technologie, die vom Google Chrome-Team für das Javascript-Modul V8 im Chrome-Browser entwickelt wurde: Isolates.</p>
+	<p>Isolates sind schlanke Kontexte, die Variablen mit dem Code gruppieren, der sie bearbeiten kann. Vor allem aber kann ein einzelner Prozess Hunderte oder Tausende von Isolates ausführen und nahtlos zwischen ihnen umschalten. Durch Isolates wird es möglich, nicht vertrauenswürdigen Code von vielen unterschiedlichen Kunden innerhalb eines einzigen Betriebssystemprozesses auszuführen. Sie sind so konzipiert, dass sie sehr schnell starten (mehrere davon mussten in Ihrem Webbrowser starten, nur damit Sie diese Webseite laden konnten) und dass ein Isolate nicht auf den Speicher eines anderen zugreifen kann.</p>
+	<p>Wir nehmen den Overhead einer Javascript-Laufzeit einmal in Kauf, und dann können wir im Prinzip endlose Skripts ausführen, die keinen eigenen Overhead mit sich bringen. Jedes gegebene Isolate kann ungefähr hundertmal schneller starten, als ich einen Node-Prozess auf meiner Maschine starten kann. Noch wichtiger ist, dass sie um eine Größenordnung weniger Speicher brauchen als dieser Prozess.</p>
+	<p>Sie haben die komplette Function-as-a-Service-Ergonomie, man braucht also einfach nur Code zu schreiben und sich keine Gedanken über die Ausführung oder Skalierung zu machen. Gleichzeitig benutzen sie keine virtuelle Maschine oder einen Container, was bedeutet, <b>dass Sie tatsächlich</b> <b><i>näher</i></b> <b>an der Hardware sind als bei jeder anderen Form von Cloud-Computing, die mir bekannt ist.</b> Ich glaube, dass man mit diesem Modell nahe an die Wirtschaftlichkeit der Bare-Metal-Codeausführung herankommen kann, aber in einer vollständig serverlosen Umgebung.</p>
+	<p>Das ist nicht als Reklame für Workers gedacht, aber ich möchte Ihnen trotzdem ein Diagramm zeigen, damit Sie den großen Unterschied sehen können und verstehen, warum ich das für einen echten Paradigmenwechsel halte und nicht nur für eine iterative Verbesserung:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xFJ5UwlfTu85cGo0oU2st/4f3f90dcb86af6587ed2a2bf4ec435dc/image-2.png" alt="" class="kg-image" width="1516" height="934" loading="lazy">
+
+	</figure>
+	<p>Diese Daten spiegeln tatsächliche Anforderungen (einschließlich Netzwerklatenz) von einem Rechenzentrum wider, in dessen Nähe alle Funktionen bereitgestellt wurden und eine CPU-intensive Arbeitslast ausführten. <a href="https://blog.cloudflare.com/serverless-performance-with-cpu-bound-tasks">Quelle</a></p>
+	<p>Diese Daten spiegeln tatsächliche Anforderungen (einschließlich Netzwerklatenz) von einem Rechenzentrum wider, in dessen Nähe alle Funktionen bereitgestellt wurden und eine CPU-intensive Arbeitslast ausführten. Quelle</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Jjvoxu3PZsYBkVwjGRUmr/1b9a50c7e0b9ae19346c73b068c59c6e/Cold-start_3x.png" alt="" class="kg-image" width="1970" height="881" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="cold-starts"><b>Kaltstarts</b></h3>
+		<a href="https://blog.cloudflare.com/#cold-starts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nicht jeder versteht genau, wie eine herkömmliche serverlose Plattform wie Lambda funktioniert. Sie erzeugt einen Container-Prozess für Ihren Code. Sie führt Ihren Code in keiner schlankeren Umgebung aus als die Node-Ausführung auf Ihren eigenen Rechnern. Was sie dagegen macht, das ist die automatische Skalierung dieser Prozesse (auf etwas ungeschickte Weise). Diese automatische Skalierung erzeugt Kaltstarts.</p>
+	<p>Ein Kaltstart erfolgt, wenn eine neue Kopie Ihres Codes auf einem Rechner gestartet werden muss. Im Lambda-Universum bedeutet das die Erzeugung eines neuen, containerisierten Prozesses, was zwischen 500 Millisekunden und 10 Sekunden in Anspruch nehmen kann. Alle Anforderungen, die Sie erhalten, bleiben bis zu zehn Sekunden unbeantwortet – eine schreckliche Benutzererfahrung. Da ein Lambda nur jeweils eine einzige Anforderung bearbeiten kann, muss jedes Mal, wenn Sie zusätzlich eine gleichzeitige Anforderung erhalten, ein neues Lambda kaltgestartet werden. Das bedeutet, dass die langsame Reaktion immer wieder auftreten kann. Wenn Ihr Lambda nicht früh genug eine Anforderung erhält, wird es heruntergefahren, und alles beginnt wieder von vorne. Jedes Mal, wenn Sie neuen Code bereitstellen, beginnt alles wieder von Neuem, weil jedes Lambda wieder neu bereitgestellt werden muss. Dies wird berechtigterweise als ein Grund genannt, warum serverloses Computing nicht so toll ist, wie behauptet wird.</p>
+	<p>Da Workers keinen Prozess starten muss, starten Isolates in 5 Millisekunden – eine nicht wahrnehmbare Zeitdauer. Isolates werden auch genauso schnell skaliert und bereitgestellt, wodurch dieses Problem bei vorhandenen serverlosen Technologien vollständig beseitigt wird.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oMVH0pmrZXsiW5fPPnmvm/d69f39dce7eb820ca3f5e384c3c20249/multitasking-bars_3x.png" alt="" class="kg-image" width="2000" height="987" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="context-switching"><b>Kontextwechsel</b></h3>
+		<a href="https://blog.cloudflare.com/#context-switching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ein Hauptmerkmal eines Betriebssystems besteht darin, dass es Ihnen die Möglichkeit gibt, viele Prozesse gleichzeitig auszuführen. Es wechselt transparent zwischen den verschiedenen Prozessen, die zu einem bestimmten Zeitpunkt Code ausführen möchten. Um dies zu erreichen, führt es einen sogenannten „Kontextwechsel“ aus: der gesamte für einen Prozess benötigte Speicherinhalt wird verschoben und der für den nächsten Prozess benötigte Speicherinhalt eingelesen.</p>
+	<p>Dieser Kontextwechsel kann bis zu 100 Mikrosekunden in Anspruch nehmen. Wenn wir das mit all den Node-, Python- oder Go-Prozessen multiplizieren, die auf Ihrem durchschnittlichen Lambda-Server laufen, wird dadurch großer Overhead erzeugt. Das bedeutet, dass nicht die gesamte CPU-Leistung tatsächlich zur Ausführung des Kundencodes eingesetzt werden kann, weil sie für den Wechsel zwischen den Prozessen gebraucht wird.</p>
+	<p>Ein Isolate-basiertes System führt den gesamten Code in einem einzigen Prozess aus und setzt seine eigenen Mechanismen ein, um sicheren Speicherzugriff zu gewährleisten. Das bedeutet, dass es keine aufwendigen Kontextwechsel gibt und die Maschine praktisch ihre gesamte Laufzeit für Ihren Code benutzt.</p>
+	<div class="flex anchor relative">
+		<h3 id="memory"><b>Speicher</b></h3>
+		<a href="https://blog.cloudflare.com/#memory" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Node- oder Python-Laufzeiten waren dafür gedacht, von einzelnen Personen auf ihren eigenen Servern ausgeführt zu werden. Sie waren nie dafür vorgesehen, in einer mandantenfähigen Umgebung mit dem Code Tausender anderer Leute und strengen Speicheranforderungen zu laufen.</b> Ein grundlegendes Node-Lambda, das keinen echten Code ausführt, verbraucht 35 MB Speicher. Wenn alle Isolates die Laufzeit gemeinsam nutzen können – so wie bei uns – fällt dieser Bedarf auf ca. 3 MB.</p>
+	<p>Der Speicher macht oft die höchsten Kosten zur Ausführung von Kundencode aus (sogar mehr als die CPU), und wenn der Speicherbedarf um eine Größenordnung gesenkt wird, ändert sich die Wirtschaftlichkeit dramatisch.</p>
+	<p>V8 wurde grundlegend für Mandantenfähigkeit konzipiert. Es ist darauf ausgelegt, den Code der vielen Registerkarten in Ihrem Browser in isolierten Umgebungen innerhalb eines einzigen Prozesses auszuführen. Bei Node- und ähnlichen Laufzeiten ist das nicht der Fall, und das zeigt sich in den mandantenfähigen Systemen, die darauf aufgebaut sind.</p>
+	<div class="flex anchor relative">
+		<h3 id="security"><b>Sicherheit</b></h3>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn der Code mehrerer Kunden innerhalb desselben Prozesses ausgeführt wird, muss natürlich sehr auf die Sicherheit geachtet werden. Es wäre nicht produktiv oder effizient für Cloudflare gewesen, diese Isolierungsschicht selbst zu entwickeln. Um ein wirklich sicheres System derartiger Komplexität zu bauen, ist eine unglaubliche Menge an Tests, Fuzzing, Penetrationstests und zusätzlicher Arbeit nötig.</p>
+	<p>Der einzige Grund, warum das überhaupt möglich war, lag im Open-Source-Charakter von V8 und in seiner Stellung als die vielleicht am besten auf Sicherheit getestete Software der Welt. Wir haben auch selbst ein paar Sicherheitsschichten eingebaut, z. B. verschiedene Schutzmaßnahmen gegen Timing-Angriffe, aber V8 ist das eigentliche Wunder, das dieses Computingmodell möglich macht.</p>
+	<div class="flex anchor relative">
+		<h3 id="billing"><b>Abrechnung</b></h3>
+		<a href="https://blog.cloudflare.com/#billing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dies soll kein Referendum zur AWS-Abrechnung sein, der Punkt ist aber erwähnenswert, weil die Wirtschaftlichkeit interessant ist. Lambdas werden nach ihrer Ausführungszeit abgerechnet. Diese Abrechnung wird auf die nächsten 100 Millisekunden aufgerundet, was bedeutet, dass Nutzer bei jeder Ausführung im Durchschnitt für 50 Millisekunden zu viel bezahlen. Schlimmer noch – Ihnen wird die gesamte Laufzeit des Lambdas berechnet, auch wenn es nur darauf wartet, dass eine externe Anforderung abgeschlossen wird. Da externe Anforderungen Hunderte oder Tausende von ms in Anspruch nehmen können, kann es sein, dass Sie am Ende irrwitzige Beträge bezahlen.</p>
+	<p>Isolates haben einen so kleinen Speicherbedarf, dass wir es uns zumindest leisten können, Ihnen nur die Zeit zu berechnen, während der Ihr Code tatsächlich ausgeführt wird.</p>
+	<p>In unserem Fall ist Workers am Ende wegen des niedrigeren Overheads pro CPU-Zyklus ca. 3-mal billiger. Ein Worker, der 50 Millisekunden CPU zur Verfügung stellt, liegt bei 0,50 $ pro einer Million Anforderungen, während es sich bei einem äquivalenten Lambda um 1,84 $ pro Million handelt. Ich glaube, dass eine Kostensenkung auf ein Drittel für sich allein eine ausreichend starke Motivation ist, um Unternehmen dazu zu bewegen, zu Isolate-basierten Anbietern zu wechseln.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-network-is-the-computer"><b>Das Netzwerk ist der Computer</b></h3>
+		<a href="https://blog.cloudflare.com/#the-network-is-the-computer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Amazon hat ein Produkt mit der Bezeichnung Lambda@Edge für den Einsatz in seinen CDN-Rechenzentren. Leider ist es dreimal so teuer wie das herkömmliche Lambda, und die erste Bereitstellung dauert 30 Minuten. Es lässt auch keine beliebigen Anforderungen zu, wodurch sein Nutzen auf CDN-ähnliche Zwecke begrenzt wird.</p>
+	<p>Dagegen können wir mit Isolates wie bereits erwähnt jede Quelldatei in 155 Rechenzentren wirtschaftlicher bereitstellen, als Amazon es für ein einziges Rechenzentrum tun kann. Es könnte tatsächlich billiger sein, 155 Isolates auszuführen als einen einzigen Container. Oder vielleicht berechnet Amazon den Preis, den der Markt bereitwillig bezahlt, und der viel höher ist als die Kosten. Ich kenne Amazons Kalkulation nicht, aber ich weiß, dass wir uns mit unserer sehr wohl fühlen.</p>
+	<p>Es ist schon vor langer Zeit klargeworden, dass ein System an mehr als einem Ort auf der Welt bereitgestellt werden muss, wenn es wirklich zuverlässig sein soll. Ein Lambda läuft in einer einzigen Verfügbarkeitszone, in einer einzigen Region, in einem einzigen Rechenzentrum.</p>
+	<div class="flex anchor relative">
+		<h3 id="disadvantages"><b>Nachteile</b></h3>
+		<a href="https://blog.cloudflare.com/#disadvantages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Keine Technologie hat Zauberkräfte, jeder Übergang bringt auch Nachteile mit sich. Ein Isolate-basiertes System kann keinen beliebigen kompilierten Code ausführen. Durch Isolierung auf Prozessebene kann Ihr Lambda jeden Binärcode ausführen, den es brauchen könnte. In einem Isolate-Universum müssen Sie Ihren Code entweder in Javascript schreiben (wir benutzen viel TypeScript) oder in einer Sprache wie Go oder Rust, die auf WebAssembly abzielt.</p>
+	<p>Wenn Sie Ihre Prozesse nicht neu kompilieren können, können Sie sie nicht in einem Isolate ausführen. Das könnte bedeuten, dass Isolate-basiertes, serverloses Computing in unmittelbarer Zukunft nur für neuere, modernere Anwendungen geeignet ist. Es könnte auch bedeuten, dass anfänglich nur die latenzempfindlichsten Komponenten älterer Anwendungen in ein Isolate übertragen werden können. Vielleicht findet die Community auch neue und bessere Möglichkeiten, vorhandene Anwendungen in WebAssembly zu transpilieren und das Problem somit irrelevant zu machen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QHHWB6zgfeaEgDDvg84na/62c17628b583ed458ff8d8c4c387fe11/no-VM-_3x-3.png" alt="" class="kg-image" width="2000" height="792" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="your-help"><b>Ihre Hilfe</b></h3>
+		<a href="https://blog.cloudflare.com/#your-help" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ich fände es toll, wenn Sie <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers ausprobieren</a> und uns und der Community Ihre Erfahrungen mitteilen würden. Es gibt noch viel für uns zu tun und wir können Ihr Feedback gut gebrauchen.</p>
+	<p>Wir brauchen auch Techniker und Produktmanager, die dieses System interessant finden und es in neue Richtungen führen möchten. Wenn Sie in San Francisco, Austin oder London sind, dann melden Sie sich bitte.</p>
+	<hr>
+	<p>Sind Sie daran interessiert, einen Cloudflare Worker einzusetzen, ohne eine Domäne in Cloudflare einzurichten? Wir erleichtern Ihnen den Start beim Aufbau von serverlosen Anwendungen mit individuellen Subdomains auf <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>. <i>Wenn Sie bereits Cloudflare-Kunde sind, können Sie Workers</i> <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><i>hier</i></a> <i>zu Ihrer vorhandenen Website hinzufügen.</i></p><!--kg-card-begin: html-->
+	<style>
+		figcaption {
+			text-align: center;
+			font-size: .9em;
+			margin-bottom: .5em;
+		}
+
+		.post-content p {
+			font-size: 1.2em;
+		}
+
+		p+figure {
+			margin-top: 1em;
+		}
+
+		h3+figure {
+			margin-bottom: 1em;
+		}
+	</style><!--kg-card-end: html-->
+	<p><a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Eine workers.dev-Subdomain reservieren</a></p>
+	<hr>
+	<p>Tags: <a href="https://blog.cloudflare.com/tag/workers">Workers</a>, <a href="https://blog.cloudflare.com/tag/cloud-computing">Cloud Computing</a>, <a href="https://blog.cloudflare.com/tag/serverless">Serverless</a>, Programmierung</p>
+</div>

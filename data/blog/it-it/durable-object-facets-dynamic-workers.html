@@ -1,0 +1,226 @@
+<div class="mb2 gray5">Lettura di 4 min</div>
+<div class="mt4">Questo post è disponibile anche in <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/durable-object-facets-dynamic-workers">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/durable-object-facets-dynamic-workers">Français</a>, <a href="https://blog.cloudflare.com/de-de/durable-object-facets-dynamic-workers">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/durable-object-facets-dynamic-workers">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/durable-object-facets-dynamic-workers">한국어</a>, <a href="https://blog.cloudflare.com/es-la/durable-object-facets-dynamic-workers">Español (Latinoamérica)</a>, <a href="https://blog.cloudflare.com/es-es/durable-object-facets-dynamic-workers">Español</a> e <a href="https://blog.cloudflare.com/zh-cn/durable-object-facets-dynamic-workers">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DtVLberu9niPYikyiQ9wn/a3f8f279251e36bca9f96f2b73937d0a/Multifaceted_Durable_Objects.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Alcune settimane fa, abbiamo annunciato <a href="https://blog.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a>, una nuova funzionalità della piattaforma Workers che consente di caricare il codice Worker al volo in una sandbox sicura. L'API Dynamic Worker Loader fornisce essenzialmente accesso diretto alla primitiva di isolamento computazionale di base su cui Workers si è sempre basato: gli isolati, non i container. Gli isolati sono molto più leggeri dei container e, in quanto tali, possono essere caricati 100 volte più velocemente utilizzando 1/10 della memoria. Sono così efficienti che possono essere considerati "usa e getta": basta avviarne uno per eseguire qualche riga di codice e poi buttarlo via. Come una versione sicura di eval(). </p>
+	<p>I Dynamic Workers hanno molti usi. Nell'annuncio originale, ci siamo concentrati su come utilizzarli per eseguire codice generato da agenti IA in alternativa alle chiamate a strumenti. In questo caso d'uso, un agente IA esegue azioni su richiesta dell'utente scrivendo e mettendo in esecuzione alcune righe di codice. Il codice è monouso, destinato a svolgere un'unica attività una sola volta e viene scartato immediatamente dopo l'esecuzione.</p>
+	<p>Ma cosa succede se si desidera che un'intelligenza artificiale generi codice più persistente? E se volessi che la tua IA creasse una piccola applicazione con un'interfaccia utente personalizzata con cui l'utente possa interagire? Cosa succede se si desidera che l'applicazione abbia uno stato di lunga durata? Ovviamente, il tutto eseguito in una sandbox sicura.</p>
+	<p>Un modo per farlo sarebbe utilizzare Dynamic Workers e fornire semplicemente al Worker un'API <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> che gli dia accesso allo spazio di archiviazione. Utilizzando i <a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>binding</u></a>, potresti fornire al Dynamic Worker un'API che punti al tuo database SQL remoto (magari basato su <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a> o un database Postgres a cui accedi tramite <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, dipende da te).</p>
+	<p>Ma Workers ha anche un tipo di archiviazione unico ed estremamente veloce che potrebbe essere perfetto per questo caso d'uso: i <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>. Un Durable Object è un tipo speciale di Worker che ha un nome univoco, con un'istanza a livello globale per nome. Tale istanza ha un database SQLite collegato, che risiede <i>sul disco locale</i> sulla macchina su cui viene eseguito il Durable Object. Ciò rende l'accesso allo spazio di archiviazione incredibilmente veloce: la latenza è effettivamente <a href="https://blog.cloudflare.com/sqlite-in-durable-objects"><u>pari a zero</u></a>.</p>
+	<p>Forse, quindi, ciò che desideri veramente è che la tua IA scriva del codice per un Durable Object, e poi tu voglia eseguire quel codice in un Dynamic Worker.</p>
+	<div class="flex anchor relative">
+		<h2 id="but-how"><b>Ma in che modo?</b></h2>
+		<a href="https://blog.cloudflare.com/#but-how" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Questo rappresenta un problema strano. Normalmente, per utilizzare i Durable Objects devi:</p>
+	<ol>
+		<li>
+			<p>Scrivere una classe che estende <code>DurableObject</code>.</p>
+		</li>
+		<li>
+			<p>Esportarla dal modulo principale del tuo Worker.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/durable-objects/get-started/#5-configure-durable-object-class-with-sqlite-storage-backend" target="_blank" rel="noopener noreferrer"><u>Specificare nella configurazione di Wrangler</u></a> che lo spazio di archiviazione deve essere predisposto per questa classe. Ciò crea un namespace di Durable Object che punta alla tua classe per la gestione delle richieste in arrivo.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings" target="_blank" rel="noopener noreferrer"><u>Dichiara un binding del namespace di Durable Object</u></a> che punta al tuo namespace (o usa <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#exports" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a>), e usalo per effettuare richieste al tuo Durable Object.</p>
+		</li>
+	</ol>
+	<p>Tutto questo non si estende naturalmente ai Dynamic Workers. Innanzitutto, c'è il problema ovvio: il codice è dinamico. Lo si esegue senza invocare affatto l'API Cloudflare. Ma l'archiviazione di Durable Object deve essere fornita tramite l'API e il namespace deve puntare a una classe di implementazione. Non può puntare al tuo Dynamic Worker.</p>
+	<p>C'è inoltre un problema più grande: anche se fosse possibile configurare in qualche modo il namespace di un Durable Object in modo che punti direttamente a un Dynamic Worker, lo vorresti fare? Vuoi che il tuo agente (o utente) sia in grado di creare un intero namespace pieno di Durable Objects? Desideri usufruire di uno spazio di archiviazione illimitato distribuito in tutto il mondo?</p>
+	<p>Probabilmente no. Probabilmente vuoi un po' di controllo. Potresti voler limitare, o almeno tenere traccia, del numero di oggetti che vengono creati. Forse è meglio limitarli a un solo oggetto (probabilmente sufficiente per app personali con codifica a stato d'animo). Potresti voler aggiungere la registrazione e altra osservabilità. Metriche. Fatturazione. E altro ancora.</p>
+	<p>Per fare tutto questo, quello che vuoi davvero è che le richieste a questi Durable Objects vadano <i>prima</i> al <i>tuo</i> codice, dove puoi quindi eseguire tutta la "logistica" e <i>poi</i> inoltrare la richiesta nel codice dell'agente. Vuoi scrivere un <i>supervisor</i> che venga eseguito come parte di ogni Durable Object.</p>
+	<div class="flex anchor relative">
+		<h2 id="solution-durable-object-facets"><b>Soluzione: i Durable Object Facets</b></h2>
+		<a href="https://blog.cloudflare.com/#solution-durable-object-facets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oggi rilasciamo, in versione beta aperta, una funzionalità che risolve questo problema.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mUUk7svflWvIp5Ff3npbG/cd2ec9a7111681657c37e3560fd9af58/BLOG-3211_2.png" alt="" class="kg-image" width="1999" height="1108" loading="lazy">
+	</figure>
+	<p>I <a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a> consentono di caricare e istanziare una classe di Durable Object in modo dinamico, fornendo al contempo un database SQLite da utilizzare per l'archiviazione. Con Facets:</p>
+	<ul>
+		<li>
+			<p>Per prima cosa viene creato un normale namespace di Durable Object, che punta a una classe che <i>tu</i> scrivi.</p>
+		</li>
+		<li>
+			<p>In quella classe, si carica il codice dell'agente come un Dynamic Worker e lo si richiama.</p>
+		</li>
+		<li>
+			<p>Il codice del Dynamic Worker può implementare direttamente una classe Durable Object, cioè esporta letteralmente una classe dichiarata come <code>extends DurableObject</code>.</p>
+		</li>
+		<li>
+			<p>In questo modo viene creata un'istanza di quella classe come "facet" del tuo Durable Object.</p>
+		</li>
+		<li>
+			<p>Il facet ottiene un proprio database SQLite, che può utilizzare tramite le normali API di archiviazione di Durable Object. Questo database è separato dal database del supervisore, ma i due sono archiviati insieme come parte dello stesso Durable Object complessivo.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works"><b>Come funziona</b></h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ecco una semplice e completa implementazione di una piattaforma per app che carica ed esegue dinamicamente una classe Durable Object:</p>
+	<pre class="language-javascript"><code class="language-javascript">import { DurableObject } from "cloudflare:workers";
+
+// For the purpose of this example, we'll use this static
+// application code, but in the real world this might be generated
+// by AI (or even, perhaps, a human user).
+const AGENT_CODE = `
+  import { DurableObject } from "cloudflare:workers";
+
+  // Simple app that remembers how many times it has been invoked
+  // and returns it.
+  export class App extends DurableObject {
+    fetch(request) {
+      // We use storage.kv here for simplicity, but storage.sql is
+      // also available. Both are backed by SQLite.
+      let counter = this.ctx.storage.kv.get("counter") || 0;
+      ++counter;
+      this.ctx.storage.kv.put("counter", counter);
+
+      return new Response("You've made " + counter + " requests.\\n");
+    }
+  }
+`;
+
+// AppRunner is a Durable Object you write that is responsible for
+// dynamically loading applications and delivering requests to them.
+// Each instance of AppRunner contains a different app.
+export class AppRunner extends DurableObject {
+  async fetch(request) {
+    // We've received an HTTP request, which we want to forward into
+    // the app.
+
+    // The app itself runs as a child facet named "app". One Durable
+    // Object can have any number of facets (subject to storage limits)
+    // with different names, but in this case we have only one. Call
+    // this.ctx.facets.get() to get a stub pointing to it.
+    let facet = this.ctx.facets.get("app", async () =&gt; {
+      // If this callback is called, it means the facet hasn't
+      // started yet (or has hibernated). In this callback, we can
+      // tell the system what code we want it to load.
+
+      // Load the Dynamic Worker.
+      let worker = this.#loadDynamicWorker();
+
+      // Get the exported class we're interested in.
+      let appClass = worker.getDurableObjectClass("App");
+
+      return { class: appClass };
+    });
+
+    // Forward request to the facet.
+    // (Alternatively, you could call RPC methods here.)
+    return await facet.fetch(request);
+  }
+
+  // RPC method that a client can call to set the dynamic code
+  // for this app.
+  setCode(code) {
+    // Store the code in the AppRunner's SQLite storage.
+    // Each unique code must have a unique ID to pass to the
+    // Dynamic Worker Loader API, so we generate one randomly.
+    this.ctx.storage.kv.put("codeId", crypto.randomUUID());
+    this.ctx.storage.kv.put("code", code);
+  }
+
+  #loadDynamicWorker() {
+    // Use the Dynamic Worker Loader API like normal. Use get()
+    // rather than load() since we may load the same Worker many
+    // times.
+    let codeId = this.ctx.storage.kv.get("codeId");
+    return this.env.LOADER.get(codeId, async () =&gt; {
+      // This Worker hasn't been loaded yet. Load its code from
+      // our own storage.
+      let code = this.ctx.storage.kv.get("code");
+
+      return {
+        compatibilityDate: "2026-04-01",
+        mainModule: "worker.js",
+        modules: { "worker.js": code },
+        globalOutbound: null,  // block network access
+      }
+    });
+  }
+}
+
+// This is a simple Workers HTTP handler that uses AppRunner.
+export default {
+  async fetch(req, env, ctx) {
+    // Get the instance of AppRunner named "my-app".
+    // (Each name has exactly one Durable Object instance in the
+    // world.)
+    let obj = ctx.exports.AppRunner.getByName("my-app");
+
+    // Initialize it with code. (In a real use case, you'd only
+    // want to call this once, not on every request.)
+    await obj.setCode(AGENT_CODE);
+
+    // Forward the request to it.
+    return await obj.fetch(req);
+  }
+}
+</code></pre>
+	<p>In questo esempio:</p>
+	<ul>
+		<li>
+			<p><code>AppRunner</code> è un Durable Object "normale" scritto dallo sviluppatore della piattaforma (tu).</p>
+		</li>
+		<li>
+			<p>Ogni istanza di <code>AppRunner</code> gestisce un'applicazione. Memorizza il codice dell'app e lo carica su richiesta.</p>
+		</li>
+		<li>
+			<p>L'applicazione stessa implementa ed esporta una classe Durable Object, che la piattaforma si aspetta si chiami <code>App</code>.</p>
+		</li>
+		<li>
+			<p><code>AppRunner</code> carica il codice dell'applicazione utilizzando i Dynamic Workers, quindi esegue il codice come Durable Object Facet.</p>
+		</li>
+		<li>
+			<p>Ogni istanza di <code>AppRunner</code> è un Durable Object composto da <i>due</i> database SQLite: uno appartenente al genitore (l'applicazione <code>AppRunner</code> stessa) e uno appartenente al facet (<code>App</code>). Questi database sono isolati: l'applicazione non può leggere il database di <code>AppRunner</code>, ma solo il proprio.</p>
+		</li>
+	</ul>
+	<p>Per eseguire l'esempio, copia il codice sopra in un file <code>worker.j</code>s, abbinalo al seguente <code>wrangler.jsonc</code> ed eseguilo in locale con <code>npx wrangler dev</code>.</p>
+	<pre class="language-JSON"><code class="language-JSON">// wrangler.jsonc for the above sample worker.
+{
+  "compatibility_date": "2026-04-01",
+  "main": "worker.js",
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "AppRunner"
+      ]
+    }
+  ],
+  "worker_loaders": [
+    {
+      "binding": "LOADER",
+    },
+  ],
+}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="start-building"><b>Inizia a costruire</b></h2>
+		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I facet sono una funzionalità di Dynamic Workers, disponibile in versione beta immediatamente per gli utenti del piano a pagamento di Workers.</p>
+	<p>Consulta la documentazione per saperne di più su <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> e <a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>.</p>
+</div>

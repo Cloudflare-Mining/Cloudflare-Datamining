@@ -1,0 +1,173 @@
+<div class="mb2 gray5">7分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/introducing-agent-lee">English</a>、<a href="https://blog.cloudflare.com/zh-tw/introducing-agent-lee">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/introducing-agent-lee">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-agent-lee">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iEamiPfjO0IPBEaF4Ufrl/d8d458558a7c304f95d01a5aed69dcf4/BLOG-3231_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>その過程で小さな改善は見られますが、技術的な製品のインターフェースはインターネット黎明期からほとんど変わっていません。この機能は今でも残り、5ページまでクリックし、タブ間のログを相互参照し、隠れたトグルを探します。</p>
+	<p>AIは、そのすべてを再考する機会を与えてくれます。広大なグラフィカルユーザーインターフェース全体に広がる複雑さの代わりに、もしあなたが達成したかったことを簡単な言葉で説明できるとしたらどうでしょう？</p>
+	<p>これが未来であり、今日ローンチします。単にダッシュボードにエージェントを配置しただけではありません。私たちは、当社のプラットフォーム全体と対話するための、まったく新しい方法を作りたいと考えました。あらゆるタスク、あらゆるサーフェス、単一のプロンプト。</p>
+	<p>Introducing Agent Lee.</p>
+	<p>Agent Leeは、<b>お客様の</b>Cloudflareアカウントを理解するダッシュボード内AIアシスタントです。</p>
+	<p>モダナイゼーションは、現在では手作業で行われているトラブルシューティングにも役立ちます。UTC 02:00にWorkerが503を返し始めたら、R2バケット、ルート設定ミス、非表示のレート制限など、根本原因を見つけるために、いくつものタブを開き、パターンが認識されることを期待することでしょう。ほとんどの開発者には、午前2時に肩の上に立っているデータセンターの全体を把握しているチームメイトがいません。エージェント・リーが示します。</p>
+	<p>しかし、メールは午前2時にトラブルシューティングになるだけではありません。エージェント・リーがその場で問題を解決することもできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Iva79HIiHPUrK8NLukkwH/dd1cf1709ab04f6d5825124cecd20a5e/BLOG-3231_2.png" alt="BLOG-3231 2" class="kg-image" width="1999" height="1013" loading="lazy">
+	</figure>
+	<p>Agent Leeはアクティブベータ版として稼働しており、この期間は1日あたり18,000人以上のユーザーにサービスを提供し、1日あたりほぼ2分の1のツールコールを実行しています。現在の機能と本番環境の成功に確信を持っていますが、これは当社が継続的に開発中のシステムです。まだベータ版ですので、パフォーマンスを調整する際に、予期しない制限やエッジケースに遭遇するかもしれません。下のフィードバックフォームをご利用いただくことで、日々改善するためにぜひご利用ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-agent-lee-can-do">エージェント・リーができること</h2>
+		<a href="https://blog.cloudflare.com/#what-agent-lee-can-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェント・リーはダッシュボードに直接組み込まれ、アカウント内のリソースを把握します。Workers、ゾーン、DNS設定、エラー率を把握しています。現在、6つのタブと2つのブラウザウィンドウに存在するナレッジは、1つの場所に保存され、対話できるようになります。</p>
+	<p>自然言語を使うことで、次のことが可能になります。</p>
+	<ul>
+		<li>
+			<p><b>アカウントに関する質問に回答:</b> 「Workerに関するエラーメッセージトップ5を表示」</p>
+		</li>
+		<li>
+			<p><b>問題のデバッグ：</b>「www プレフィックスを使ってサイトにアクセスできません」</p>
+		</li>
+		<li>
+			<p>「ドメインのアクセスを有効にする」<b>という変更を適用します</b>。</p>
+		</li>
+		<li>
+			<p><b>リソースをデプロイ：</b>"写真用の新しいR2バケットを作成し、Workerに接続する"</p>
+		</li>
+	</ul>
+	<p>製品を切り替えるのではなく、自分が何をしたいのかを伝え、Agent Leeが指示と視覚化を用いてその目的を達成するのを支援します。コンテキストを取得し、適切なツールを使用し、質問のタイプに基づいて動的な視覚化を作成します。過去24時間のエラー率について質問すると、実際のトラフィックから取り出したインライングラフをレンダリングするため、別のAnalyticsページに送られることはありません。</p>
+	<div style="position: relative; padding-top: 44.08713692946058%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/16f8e9c688d9493c1ddb124e0d597d43/iframe?poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F16f8e9c688d9493c1ddb124e0d597d43%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p>エージェント・リーは、よくある質問に答えているのではありません。実際のアカウントに対して、大規模な作業を行っているのです。現在、Agent Leeは1日あたり18,000人のユーザーにサービスを提供し、DNS、Workers、SSL/TLS、R2、Registrar、キャッシュ、Cloudflare Tunnel、API Shieldなどに1日あたり最大25万回のツールコールを実行しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-built-it">構築方法</h2>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="codemode">コードモード</h3>
+		<a href="https://blog.cloudflare.com/#codemode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェント・リーは、MCPツールの定義をモデルに直接提示するのではなく、<a href="https://blog.cloudflare.com/code-mode"><u>Codemode</u></a> を使用してツールをTypeScript APIに変換し、それを呼び出すコードをモデルに記述させます。</p>
+	<p>これには、いくつかの理由があります。LLMは、膨大な量の実際のTypeScriptを見てきましたが、ツール呼び出しの例はほとんどなく、コードで作業する際にはより正確です。マルチステップのタスクの場合、モデルは1つのスクリプトで呼び出しを連鎖させ、最終結果だけを返し、最終的にラウンドトリップを省略することもできます。</p>
+	<p>生成されたコードは、サンドボックス化された実行のために上流のCloudflare MCPサーバーに送信されますが、認証情報付きプロキシとして機能するDurable Objectを通過します。呼び出しが実行される前に、DOはメソッドと本文を検査することで、生成されたコードを読み取りまたは書き込みに分類します。読み取り操作は直接プロキシされます。書き込み操作は、書き込みゲートウェイを通して明示的に承認するまでブロックされます。APIキーは生成コードには存在しません。APIキーはDO内部に保持され、アップストリームの呼び出しが行われたときにサーバー側に挿入されます。セキュリティの境界は、単に切り捨てるサンドボックスではありません。これは、許可アーキテクチャであり、許可なく書き込みが行われることを構造的に防ぎます。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-mcp-permission-system">MCP許可システム</h3>
+		<a href="https://blog.cloudflare.com/#the-mcp-permission-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent LeeはCloudflareのMCPサーバーに接続し、このサーバーでは、APIエンドポイントにクエリを実行するための検索ツールと、API呼び出しを実行するコードを書くための実行ツールという2つのツールを公開しています。これは、Agent Leeがお客様のアカウントを読み取り、承認時に書き込みを行うためのサーフェスです。</p>
+	<p>書き込み操作は、コードが実行される前に承認ステップを表面化する選出システムを介して行われます。エージェント・リーは、このステップをスキップすることができません。許可モデルは実施レイヤーであり、表示される確認プロンプトはユーザーエクスペリエンスではありません。建物の入り口です。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s8phQottGj8yVgc42Nzvl/3abb536756e10360b68cabc0522bcb30/BLOG-3231_4.png" alt="BLOG-3231 4" class="kg-image" width="1608" height="1378" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="built-on-the-same-stack-you-can-use">同じスタックで構築</h2>
+		<a href="https://blog.cloudflare.com/#built-on-the-same-stack-you-can-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Leeが構築したすべてのプリミティブは、すべてのお客様にご利用いただけます。<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、そしてCloudflareの開発者なら誰でも利用できるのと同じMCPインフラです。当社は、お客様が利用できない社内ツールを構築したのではありません。お客様がアクセスできるのと同じCloudflareのレゴブロックで構築したのです。</p>
+	<p>弊社のプリミティブ上にエージェント・リーを構築することは、単なる設計上の原理ではありませんでした。それは、何がうまくいき、何がうまくいかないかを、最速で見つける方法でした。これは本番環境で、実際のユーザーを使って、実際のアカウントに対して構築したものです。つまり、私たちが遭遇する制約はすべて、プラットフォーム内で修正可能な制約なのです。有効なパターンはすべて、その上に構築する次のチームが容易くできるものです。</p>
+	<p>これらは意見ではありません。これは、1日あたり18,000人のユーザーから発されるツールコール100万件の4分の1に関するものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6877BA4kZUUP6qTs5ONucr/50d572b38fecdb3e77ab38d7976f06ed/image5.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="generative-ui">生成UI</h2>
+		<a href="https://blog.cloudflare.com/#generative-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プラットフォームとのやりとりは、専門家と共同作業しているように感じられるべきです。会話は、単なるテキストを超えて解決されるべきです。Agent Leeを使用すると、対話が進化するにつれて、このプラットフォームはテキスト応答と共にUIコンポーネントを動的に生成し、より豊かで実用的な体験を提供します。</p>
+	<p>例えば、当月のWebサイトトラフィックの動向を尋ねても、単に数字だけを受け取るわけではありません。Agent Leeは、インタラクティブな線グラフをレンダリングし、アクティビティのピークと最初の地点を一目で可視化することができます。</p>
+	<p>完全なクリエイティブコントロールを可能にするため、すべての会話をアダプティブグリッド内で変化させることができます。ここでは、グリッド上でクリックしてドラッグして、新しいUIブロックを配置するスペースを切り分けることができます。その後、表示したいものを表示するだけで、エージェントに簡単な作業を任せることができます。</p>
+	<p>現在、Cloudflareは、動的テーブル、インタラクティブチャート、アーキテクチャマップなど、ビジュアルブロックの多様なライブラリに対応しています。自然言語の柔軟性と構造化UIの明瞭性を伴い、Agent Leeはチャット履歴を選択可能なダッシュボードに変換します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1oTLXzK5eYGyJm6Y54cKbz/98bae92dc7523f63ac6515d8088e70f7/image4.png" alt="" class="kg-image" width="1999" height="1032" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="measuring-quality-and-safety">品質と安全性の測定</h2>
+		<a href="https://blog.cloudflare.com/#measuring-quality-and-safety" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>アカウント上でアクションを実行できるエージェントは、信頼性と安全性が必要です。エリートにより、エージェントシステムは実行中にユーザーや他のシステムから情報、意向、承認を積極的に収集することができます。エージェント・リーがユーザーに代わって非読み取りアクションを実行する必要がある場合、ユーザーインターフェースで明示的な承認アクションを要求することで引き出しを使用します。こうしたガードレールにより、Agent Leeはお客様のパートナーとして、リソースを安全に管理することができます。</p>
+	<p>安全性に加えて、品質を継続的に測定します。</p>
+	<ul>
+		<li>
+			<p>評価により、会話の成功率や情報の正確性を測定</p>
+		</li>
+		<li>
+			<p>ユーザーの操作からのフィードバックシグナル（サムアップ／サムダウン）。</p>
+		</li>
+		<li>
+			<p>ツールコールの実行成功率とハルシネーションスコアラーを呼び出すツールです。</p>
+		</li>
+		<li>
+			<p>会話パフォーマンスの製品ごとの内訳。</p>
+		</li>
+	</ul>
+	<p>これらのシステムにより、ユーザーを制御しながら、エージェント・リーを徐々に改善することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="our-vision-ahead">当社の今後のビジョン</h2>
+		<a href="https://blog.cloudflare.com/#our-vision-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ダッシュボード上のAgent Leeは、ほんの始まりに過ぎません。</p>
+	<p>より大きなビジョンは、Agent LeeがCloudflareプラットフォーム全体に、どこからでも接続できるインターフェースにするということです。現在はダッシュボードが変化し、次はCLI、今はその次のステップが、進めているときです。使用するインターフェースは問題ではありません。自分の居場所に関わらず、必要なことを伝え、それを実行できなければなりません。</p>
+	<p>そこから、エージェント・リーは積極的に行動するようになります。質問を受けるのを待つのではなく、あなた、Workers、トラフィック、エラーしきい値など、あなたにとって重要なものを監視し、注意を引く必要があるときに連絡をとります。応答だけのエージェントでも有用です。最初に気づくものは、何か違います。</p>
+	<p>これらのすべての基盤となるのは、コンテキストです。Agent Leeはすでにアカウント構成を把握しています。時間が経つにつれて、以前の質問内容、現在表示されているページ、先週デバッグしていた内容など、より多くのことを知ることができるようになります。コンテキストの蓄積により、プラットフォームはツールというより共同作業者のように感じられます。</p>
+	<p>まだ到達していないのです。今日のエージェント・リーはその第一歩として、本番環境で動作し、大規模に実際の作業を行っています。アーキテクチャは、残りの部分に到達するために構築されています。 </p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">試してみる</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agent Leeは、Freeプランユーザーにベータ版でご利用いただけます。<a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にログインし、右上隅にあるAsk AIをクリックして開始します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FThQbf24TcV1mYT49yi39/05df8347e14c8ef5e591d224a1a38393/Screenshot_2026-04-13_at_3.37.29%C3%A2__PM.png" alt="BLOG-3231 5" class="kg-image" width="746" height="93" loading="lazy">
+	</figure>
+	<p>あなたが構築するもの、そしてAgent Leeで何を期待されるのか、ぜひお聞かせください。ご感想は<a href="https://forms.gle/dSCHNkHpJt6Uwsvc8" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>にお寄せください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NsNVsMvU9v3U03jY4kU54/28182a4d9f36f75f8e93e5fcf67c1f21/BLOG-3231_6.png" alt="BLOG-3231 6" class="kg-image" width="1200" height="350" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/14eb9ae6240bf8f289d213df0c321629/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F14eb9ae6240bf8f289d213df0c321629%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

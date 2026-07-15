@@ -1,0 +1,80 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/protect-your-domain-with-zone-holds">English</a>、<a href="https://blog.cloudflare.com/zh-tw/protect-your-domain-with-zone-holds">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/protect-your-domain-with-zone-holds">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/protect-your-domain-with-zone-holds">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lUYZdayn7xQIKWAReHZG5/c96ed66676e52d9a86cad89c60842b82/protect-your-domain-with-zone-holds.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、企業のお客様向けの新機能であるZone Holdsを発表します。この機能は、自分以外が同じゾーンを別のCloudflareアカウントに追加する権限および追加できるタイミングを制御できるようにするものです。社内の複数のチームがCloudflare Oneを使用する場合、誤って他のチームと干渉し、2つのアカウントで同じゾーンを管理しようとするかもしれません。Zone Holdsは、ゾーンのアカウント所有者から明示的な許可が与えられない限り、1つのアカウントだけが指定されたドメイン（必要に応じてサブドメインまたはカスタムホスト名を含む）を含めることができることを強制することによって、このようなことが起こらないようにします。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/473c1btS6iVaePEPi8kIwW/a409b87106e4a2d6d2143704514c221c/Protect-your-domain-with-Zone-Holds-1.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-can-go-wrong-today">今起こり得る問題</h3>
+		<a href="https://blog.cloudflare.com/#what-can-go-wrong-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareはすでに、トラフィックが当社のグローバルネットワークを介してプロキシされる前に、DNSを介してゾーンが認証されることを要求しています。これにより、ドメイン所有者のみがトラフィックの送信を許可し、Cloudflareで制御できるようになります。しかし、私たちのお客様の多くは、Webプロパティの保護と、高速化に努める多くのチームを擁する大企業です。このような場合、あるチームはあるドメインがすでにCloudflareで保護されていることに気づかないことがあります。Cloudflareで同じドメインの2つ目のインスタンスをアクティブ化すると、別のチームがすでにCloudflareで管理していた元のゾーンを置き換えることになります。これは、元のゾーンが再アクティブ化されるまでの間、ダウンタイムやセキュリティ問題を引き起こす可能性があります。もし、この2つのチームが互いのことを知り、コミュニケーションを取っていれば、ほとんどの場合、サブドメインやカスタムホスト名など、多くのオプションのいずれかを使って問題を回避できたでしょう。このようなミスを犯す前に、チームが潜在的なリスクを認識できるようにするにはどうすればいいのでしょうか？</p>
+	<div class="flex anchor relative">
+		<h3 id="how-zone-holds-protect-customers">Zone Holdsでお客様を保護する方法</h3>
+		<a href="https://blog.cloudflare.com/#how-zone-holds-protect-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zone Holdsを使用している場合、ホールドされているドメインを追加しようとすると、ドメイン所有者に連絡する必要があること知らせるエラーが返されます。Zone Holdsは、すべての企業のゾーンでデフォルトで有効になっています。ホールドはゾーン概要画面から管理できます。オプションで、ホールドを拡張してサブドメインやカスタムホスト名にも適用することができます。ホールドを無効にする場合、一定時間後にホールドを再び有効にするように設定することができます。これにより、誤ってホールドを永久に無効にしたままにすることがなくなります。Zone Holdsがどのようにお客様に役立つかを理解するために、例を挙げてみましょう。</p>
+	<p>サブドメインの保護を含まないアクティブゾーンのホールド</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53LWcBYYwA88TNpSzqAsrp/125314c04d1e876edf2e6d3530b4b8ef/image2-5.png" alt="" class="kg-image" width="711" height="244" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="example-corp-before-zone-holds">Example Corp（架空の企業）- Zone Holds使用前</h3>
+		<a href="https://blog.cloudflare.com/#example-corp-before-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Example CorpはCloudflareの大口顧客です。同社のインフラチームは、Cloudflareを使用してexample.comのすべてのトラフィックを保護しています。保護対象にはマーケティングサイトであるwww.example.comと、顧客向けAPIであるAPI.example.comも含まれます。同社はCloudflareを導入する際、会社のすべてのDNSを管理するIT部門に、example.comのすべてのトラフィックがCloudflareを経由するようにレジストラでDNSレコードを設定するよう指示しています。</p>
+	<p>それから1年後、マーケティング部門はwww.example.comのトラフィックにCloudflareの<a href="https://developers.cloudflare.com/bots" target="_blank" rel="noopener noreferrer">ボット管理ソリューション</a>を採用したいと考えました。マーケティング部門はexample.comを登録し、レジストラで提供されたNSレコードを設定するためにIT部門に連絡します。IT部門は、Cloudflareがすでに使用されていることに気づいていないため、インフラストラクチャチームによって管理されている既存のゾーンに影響が及ぶことを把握していません。新しいゾーンがアクティブ化され、www.example.comだけでなく、API.example.comへのトラフィックも影響を受けたため、インシデントが発生しました。Zone Holdsがあれば、この事故は避けられたでしょう。その方法を見てみましょう。</p>
+	<div class="flex anchor relative">
+		<h3 id="example-corp-now-with-zone-holds">Example Corp（架空の企業）- Zone Holds使用後</h3>
+		<a href="https://blog.cloudflare.com/#example-corp-now-with-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Example CorpはCloudflareにサインアップし、example.comをENTゾーンとしてアカウントに追加します。自動的にドメインでZone Holdが有効になり、他のCloudflareアカウントがexample.comを追加できなくなります。続いて、example.comのドメインの下にあるサブドメインまたはカスタムホスト名のホールドも有効にします。</p>
+	<p>その後、ACMEのマーケティング部門は、<a href="http://www.example.xn--comcloudflare-u03la7d3olb0hqgg9a9jxqmq6357dsd7b7dzj11rco86g.xn--cloudflare-lh3i4zrb3eb5i9a3a3bbdc4evpbf4eg3e42aqjpdecd2b8n1a78dua9o17cva84hwa59aooxa86bo664lzdyel70a986cjjwmblpal08c4p5aox5hksndy5gmqbvp." target="_blank" rel="noopener noreferrer">www.example.comでCloudflareの使用を開始したいと考えています。そのドメインをCloudflareに追加しようとすると、ドメイン所有者に連絡する必要があることを通知するエラーが表示されます。</a></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vOx5b4qJtcGshW7ZuLVOk/c3bf36c35bde72044367a3a484f448e2/image3-3.png" alt="" class="kg-image" width="1999" height="1369" loading="lazy">
+
+	</figure>
+	<p>ACMEのマーケティング部門が社内に問い合わせたところ、インフラチームがこのドメインを管理しており、このゾーンをアクティブにするとインシデントが発生することを知りました！代わりに、両チームは、マーケティングチームがマーケティングサイトをコントロールできるように、<a href="http://www.example.xn--com-k83buakc2j3bykofnde0wljmlrhkh5mq950d7nqbou3e5x0i.xn--acme-9c4c5l3gyfzdzd2e1e.xn--comwww-kr3epyvf1aacm10c1hnam8b3fqeta6f6o7dockc47a6ewd1cs74aijlai82agg63494aylso27jcxm1f.example.xn--com-083bk5t4ey910apo9f." target="_blank" rel="noopener noreferrer">www.example.comのサブドメインを追加することを決定します。インフラチームはacme.comのサブドメインのホールドを解除し、マーケティングチームは自分のアカウントにwww.example.comを追加します。</a></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zs5qEaFPmWuyyXoMQEx1j/0b2d4cac2f0ee8ed6353225bec8b17fb/image4-3.png" alt="" class="kg-image" width="1999" height="1374" loading="lazy">
+
+	</figure>
+	<p>セットアップとアクティブ化が完了すると、ボット管理を活用してマーケティングサイトを保護できるようになり、予期しない影響が発生する可能性はなくなります。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fWD0fdAJzRFIVWweFvBsb/d999ee91da29e18410bbf04af30034f8/image1-7.png" alt="" class="kg-image" width="1002" height="576" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="getting-started-with-zone-holds">Zone Holdsを始める</h3>
+		<a href="https://blog.cloudflare.com/#getting-started-with-zone-holds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zone Holdsは、すべての企業のゾーンで使用できるようになり、デフォルトで有効になっています。Zone Holdsは、企業のゾーンのゾーン概要画面から管理できます。オプションで、ホールドを拡張してサブドメインやカスタムホスト名にも適用することができます。ホールドを無効にする場合、一定時間後にホールドを再び有効にするように設定することができます。これにより、誤ってホールドを永久に無効にしたままにすることがなくなります。</p>
+</div>

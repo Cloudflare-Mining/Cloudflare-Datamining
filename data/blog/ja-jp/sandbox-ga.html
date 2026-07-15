@@ -1,0 +1,290 @@
+<div class="mb2 gray5">6分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/sandbox-ga">English</a>、<a href="https://blog.cloudflare.com/zh-tw/sandbox-ga">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/sandbox-ga">Français</a>、<a href="https://blog.cloudflare.com/de-de/sandbox-ga">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/sandbox-ga">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/sandbox-ga">한국어</a>、<a href="https://blog.cloudflare.com/es-la/sandbox-ga">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/sandbox-ga">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/sandbox-ga">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QxQLnc8Ysak3MyDb9orcq/9c3cb7cb9878f990da2be844fe8464ae/BLOG-3264_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>昨年6月に<a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a>をローンチしたときの前提条件はシンプルでした。<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AIエージェント</u></a>はコードを開発・実行する必要があり、それを安全な場所で行う必要があるということでした。</p>
+	<p>エージェントが開発者のように行動している場合、これは、リポジトリのクローン、多くの言語でのコードの構築、開発サーバーの実行などを意味します。これらのことを効果的に行うには、しばしばフルコンピューターが必要になります（そうでなくても、<a href="https://blog.cloudflare.com/dynamic-workers"><u>軽量のものを入手することもできます</u></a>！）。</p>
+	<p>多くの開発者は、VMや既存のコンテナソリューションを使ったソリューションを組み合わせてはいますが、まだまだ解決の難しい問題がたくさんあります。</p>
+	<ul>
+		<li>
+			<p><b>バースト性 -</b> 各セッションに固有のサンドボックスが必要なため、多くの場合、多くのサンドボックスを迅速に立ち上げる必要がありますが、待機中のアイドル状態のコンピューティングに対する支払いはしたくないと考えます。</p>
+		</li>
+		<li>
+			<p><b>迅速な状態復元</b> - 各セッションは迅速に開始および再開され、過去の状態を復元します。</p>
+		</li>
+		<li>
+			<p><b>セキュリティ</b> - エージェントはサービスに安全にアクセスする必要がありますが、資格情報を信頼することはできません。</p>
+		</li>
+		<li>
+			<p><b>制御</b> - サンドボックスのライフサイクルの制御、コマンドの実行、ファイルの処理などをプログラムで簡単に行える必要があります。</p>
+		</li>
+		<li>
+			<p><b>人間工学</b> - 人間とエージェントが一般的な操作を行えるように、シンプルなインターフェースを提供する必要があります。</p>
+		</li>
+	</ul>
+	<p>お客様がこれらの問題に悩まされることがないよう、当社は、これらの問題を解決するために多大な時間を費やしました。最初のリリース時と比較し、サンドボックスは大規模にエージェントを実行するのにさらに優れた場所となっています。<a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>など、コンテナ内でエージェントを実行している初期パートナー企業と協力してきました。</p>
+	<blockquote>
+		<p><i>「Figma Makeは、あらゆるバックグラウンドを持つビルダーやメーカーがアイデアから本番環境まで、より速く移行できるよう構築されています。その目標を達成するためには、信頼性の低いエージェントやユーザーが作成したコードでも実行でき、尚且つ信頼性が高く、拡張性に優れたサンドボックス環境を提供できるインフラソリューションが必要でした。Cloudflareのコンテナこそがその解決策なのです。」</i></p>
+		<p><i>- </i><i><b>Alex Mullans</b></i><i>、Figma AI・開発者プラットフォーム担当</i></p>
+	</blockquote>
+	<p>サンドボックスをさらに多くの素晴らしい企業に提供すべく、本日、<b>SandboxesとCloudflare Containersの両方が一般提供開始となったことを発表いたします。</b></p>
+	<p>サンドボックスへの最近の変更：</p>
+	<ul>
+		<li>
+			<p><b>セキュアなクレデンシャルインジェクション</b>により、エージェントが資格情報にアクセスすることなく、認証済みの呼び出しが可能&nbsp;&nbsp;</p>
+		</li>
+		<li>
+			<p><b>PTYサポート</b>は、ご自身とエージェントに実際の端末を提供</p>
+		</li>
+		<li>
+			<p><b>永続的なコードインタープリター</b>は、エージェントにステートフルなPython、JavaScript、およびTypeScriptをすぐに実行できる場所を提供</p>
+		</li>
+		<li>
+			<p><b>バックグラウンドプロセスとライブプレビューURL</b>で、開発サーバーと簡単にやり取りし、実行中の変更を検証</p>
+		</li>
+		<li>
+			<p><b>ファイル監視</b>は、エージェントが変更を行う際の反復速度を向上</p>
+		</li>
+		<li>
+			<p><b>スナップショット</b>でエージェントのコーディングセッションがすぐに回復</p>
+		</li>
+		<li>
+			<p><b>より高い上限とアクティブCPU課金</b>により、未使用のCPUサイクルに支払うことなく、エージェントを大規模に展開</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="sandboxes-101">Sandbox 101</h2>
+		<a href="https://blog.cloudflare.com/#sandboxes-101" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最近の変更点について説明する前に、まず基本事項を確認しましょう。</p>
+	<p>Cloudflare Sandboxは、<a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>Cloudflare Containers</u></a>によって提供される、永続的で隔離された環境です。サンドボックスを名前で指定します。実行中であれば、そのまま使用します。そうでない場合は、起動します。アイドリング中であれば、自動的にスリープ状態になり、リクエストを受け取ると起動します。<code>exec</code>、<code>gitClone</code>、<code>writeFile</code>などのメソッドを使えば、サンドボックスとプログラムで簡単にやりとりすることができます。<a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>詳細はこちら</u></a>。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { getSandbox } from "@cloudflare/sandbox";
+export { Sandbox } from "@cloudflare/sandbox";
+
+export default {
+  async fetch(request: Request, env: Env) {
+    // Ask for a sandbox by name. It starts on demand.
+    const sandbox = getSandbox(env.Sandbox, "agent-session-47");
+
+    // Clone a repository into it.
+    await sandbox.gitCheckout("https://github.com/org/repo", {
+      targetDir: "/workspace",
+      depth: 1,
+    });
+
+    // Run the test suite. Stream output back in real time.
+    return sandbox.exec("npm", ["test"], { stream: true });
+  },
+};
+</code></pre>
+	<p>同じIDを提供している限り、後続のリクエストは世界中どこからでも同じサンドボックスに到達できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="secure-credential-injection">セキュアな認証情報の挿入</h2>
+		<a href="https://blog.cloudflare.com/#secure-credential-injection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェンティックワークロードで最も難しい問題の1つが認証です。プライベートサービスにアクセスするにはエージェントが必要な場合が多くありますが、未加工の認証情報は完全に信頼することはできません。</p>
+	<p>サンドボックスは、プログラム可能なエグレスプロキシを使って、ネットワーク層で認証情報を挿入することにより、これを解決します。つまり、サンドボックスエージェントは決して認証情報にアクセスできないため、状況に合わせて認証ロジックを完全にカスタマイズすることができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">class OpenCodeInABox extends Sandbox {
+  static outboundByHost = {
+    "my-internal-vcs.dev": (request, env, ctx) =&gt; {
+      const headersWithAuth = new Headers(request.headers);
+      headersWithAuth.set("x-auth-token", env.SECRET);
+      return fetch(request, { headers: headersWithAuth });
+    }
+  }
+}
+</code></pre>
+	<p>ID認識型認証情報インジェクション、ルールの動的変更、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workersバインディング</u></a>との統合など、この仕組みの詳細については、<a href="https://blog.cloudflare.com/sandbox-auth"><u>サンドボックス認証</u></a>に関する最近のブログ記事をお読みください。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-real-terminal-not-a-simulation">シミュレーションではなく実端末</h2>
+		<a href="https://blog.cloudflare.com/#a-real-terminal-not-a-simulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>初期のエージェントシステムでは、多くの場合、シェルへのアクセスをリクエストレスポンスのループとしてモデル化していました。つまり、コマンドを実行し、出力を待ち、そのログをプロンプトに戻し、これを繰り返すという仕組みだったのです。動作はするものの、これは開発者が実際に端末を使用する方法ではありません。</p>
+	<p>人間は何かを実行し、アウトプットストリームを見て、中断し、後で再接続し、作業を継続します。エージェントも同じフィードバックループの恩恵を受けます。</p>
+	<p>2月にPTYサポートの提供を開始しました。<a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>と互換性があり、WebSocketを介してプロキシされるSandboxの擬似端末セッションです。</p>
+	<p><code>sandbox.terminalを呼び出すだけで、バックエンドを提供できます。</code></p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Worker: upgrade a WebSocket connection into a live terminal session
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+    if (url.pathname === "/terminal") {
+      const sandbox = getSandbox(env.Sandbox, "my-session");
+      return sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+    return new Response("Not found", { status: 404 });
+  },
+};
+
+</code></pre>
+	<p>そして、<code>xtermアドオン</code>を使ってクライアントから呼び出します。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Browser: connect xterm.js to the sandbox shell
+import { Terminal } from "xterm";
+import { SandboxAddon } from "@cloudflare/sandbox/xterm";
+
+const term = new Terminal();
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ origin }) =&gt; `${origin}/terminal`,
+});
+
+term.loadAddon(addon);
+term.open(document.getElementById("terminal-container")!);
+addon.connect({ sandboxId: "my-session" });
+</code></pre>
+	<p>これにより、エージェントと開発者は完全なPTYを使用して、これらのセッションをライブでデバッグできます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bgyxh8kg3MPfij2v1XXLE/9cff50318ad306b20c3346c3bd3554d9/BLOG-3264_2.gif" alt="BLOG-3264 2" class="kg-image" width="1120" height="382" loading="lazy">
+	</figure>
+	<p>各端末セッションには、それぞれに分離されたシェル、作業ディレクトリ、環境が割り当てられます。個人所有のマシンと同様、必要なだけ開いてください。出力はサーバー側でバッファリングされるため、再接続すると見逃したものを再生できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="a-code-interpreter-that-remembers">記憶するコードインタープリター</h2>
+		<a href="https://blog.cloudflare.com/#a-code-interpreter-that-remembers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>データ分析、スクリプト作成、探索的ワークフロー向けには、より高いレベルの抽象化である永続的なコード実行コンテキストも提供しています。</p>
+	<p>キーワードは「永続的」です。多くのコードインタープリターの実装は、各スニペットを分離して実行するため、呼び出しの間の状態は消失します。1つのステップで変数を設定し、次のステップで読み取ることはできません。</p>
+	<p>サンドボックスを使用すると、状態を保持する「コンテキスト」を作成できます。変数とインポートは、Jupyterノートブックの場合と同様、以下のように関数呼び出しをまたいで保持されます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Create a Python context. State persists for its lifetime.
+const ctx = await sandbox.createCodeContext({ language: "python" });
+
+// First execution: load data
+await sandbox.runCode(`
+  import pandas as pd
+  df = pd.read_csv('/workspace/sales.csv')
+  df['margin'] = (df['revenue'] - df['cost']) / df['revenue']
+`, { context: ctx });
+
+// Second execution: df is still there
+const result = await sandbox.runCode(`
+  df.groupby('region')['margin'].mean().sort_values(ascending=False)
+`, { context: ctx, onStdout: (line) =&gt; console.log(line.text) });
+
+// result contains matplotlib charts, structured json output, and Pandas tables in HTML
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="start-a-server-get-a-url-ship-it">サーバーを起動。URLを取得。発送。</h2>
+		<a href="https://blog.cloudflare.com/#start-a-server-get-a-url-ship-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントは、何かを構築してユーザーにすぐに表示できる場合、より有用だと言えます。サンドボックスは、バックグラウンドプロセス、準備状況チェック、<a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>プレビューURL</u></a>をサポートします。これにより、エージェントは開発サーバーを起動し、会話を離れることなくライブリンクを共有できます。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">// Start a dev server as a background process
+const server = await sandbox.startProcess("npm run dev", {
+  cwd: "/workspace",
+});
+
+// Wait until the server is actually ready — don't just sleep and hope
+await server.waitForLog(/Local:.*localhost:(\d+)/);
+
+// Expose the running service with a public URL
+const { url } = await sandbox.exposePort(3000);
+
+// url is a live public URL the agent can share with the user
+console.log(`Preview: ${url}`);
+</code></pre>
+	<p><i><code>waitForPort()</code></i>と<i><code>waitForLog()</code></i>を使用することで、エージェントは当て推量ではなく、実行中のプログラムからの実際のシグナルに基づいて作業のシーケンスを作成できます。これは、通常、<code>sleep(2000)</code>の後に期待が続くような一般的な代替手段よりもはるかに優れています。</p>
+	<div class="flex anchor relative">
+		<h2 id="watch-the-file-system-and-react-immediately">ファイルシステムを監視し、即座に反応</h2>
+		<a href="https://blog.cloudflare.com/#watch-the-file-system-and-react-immediately" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最新の開発ループはイベント駆動型です。ファイルを保存し、ビルドを再実行します。設定を編集し、サーバーを再起動します。テストを変更し、スイートを再実行します。</p>
+	<p>3月には<i>sandbox.watch()</i>を出荷しました。Linuxがファイルシステムイベントに使用するカーネルメカニズム、ネイティブの<a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>に支えられたSSEストリームを返します。</p>
+	<pre class="language-Typescript"><code class="language-Typescript">import { parseSSEStream, type FileWatchSSEEvent } from '@cloudflare/sandbox';
+
+const stream = await sandbox.watch('/workspace/src', {
+  recursive: true,
+  include: ['*.ts', '*.tsx']
+});
+
+for await (const event of parseSSEStream&lt;FileWatchSSEEvent&gt;(stream)) {
+  if (event.type === 'modify' &amp;&amp; event.path.endsWith('.ts')) {
+    await sandbox.exec('npx tsc --noEmit', { cwd: '/workspace' });
+  }
+}
+</code></pre>
+	<p>これは、エージェントのアクティビティの範囲をバックグラウンドで変更するプリミティブの1つです。ファイルシステムをリアルタイムで観察できるエージェントは、人間の開発者と同じフィードバックループに参加することができます。</p>
+	<div class="flex anchor relative">
+		<h2 id="waking-up-quickly-with-snapshots">スナップショットで高速起動</h2>
+		<a href="https://blog.cloudflare.com/#waking-up-quickly-with-snapshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ノートパソコンで作業する（人間の）開発者を想像してみてください。リポジトリを<code>git clone</code>し、<code>npm install</code>を実行し、コードを書き、PRをプッシュし、コードレビューを待つ間にノートパソコンを閉じます。業務を再開する時間になったら、ノートパソコンを再度開くだけで、中断した場所から作業を続けることができます。</p>
+	<p>エージェントがシンプルなコンテナプラットフォームでこのワークフローを複製しようとすると、問題に直面します。中断した場所からすぐに再開するにはどうすればよいでしょうか？サンドボックスを実行し続けることはできますが、アイドル状態のコンピューティングに対して料金を支払うことになります。コンテナイメージから新たに始めることもできますが、その場合、長い<code>git clone</code>と<code>npm install</code>を待つ必要があります。</p>
+	<p>その答えはスナップショットです。これは、今後数週間のうちに展開される予定です。</p>
+	<p>スナップショットは、コンテナの完全なディスク状態、OS設定、インストールされた依存関係、変更されたファイル、データファイルなどを保持します。その後、迅速な復元が可能です。</p>
+	<p>サンドボックスがスリープ状態になる時に自動的にスナップショットするように設定することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">class AgentDevEnvironment extends Sandbox {
+  sleepAfter = "5m";
+  persistAcrossSessions = {type: "disk"}; // you can also specify individual directories
+}
+</code></pre>
+	<p>プログラムでスナップショットを作成し、手動で復元することもできます。これは、作業のチェックポイントやセッションをフォークするのに便利です。たとえば、エージェントの4つのインスタンスを並行して実行したい場合、同じ状態から4つのサンドボックスを簡単に起動できます。</p>
+	<pre class="language-javascript"><code class="language-javascript">class AgentDevEnvironment extends Sandbox {}
+
+async forkDevEnvironment(baseId, numberOfForks) {
+  const baseInstance = await getSandbox(baseId);
+  const snapshotId = await baseInstance.snapshot();
+
+  const forks = Array.from({ length: numberOfForks }, async (_, i) =&gt; {
+    const newInstance = await getSandbox(`${baseId}-fork-${i}`);
+    return newInstance.start({ snapshot: snapshotId });
+  });
+
+  await Promise.all(forks);
+}
+</code></pre>
+	<p>スナップショットはアカウント内の<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>に保存され、耐久性と場所非依存性をもたらします。R2の<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>階層型キャッシング</u></a>システムにより、地球上のすべてのリージョンで高速リストアが可能です。</p>
+	<p>将来のリリースでは、ライブメモリの状態もキャプチャされ、実行中のプロセスが中断した場所から再開できるようになります。端末とエディターは、最後に閉じたときの正確な状態で再開します。</p>
+	<p>スナップショットが公開される前のセッション状態を復元することに興味がある方は、今すぐ<a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><u><code>バックアップと復元</code></u></a>の方法をご利用いただけます。これらも、R2を使ってディレクトリを永続化して復元しますが、真のVMレベルのスナップショットほどパフォーマンスは高くありません。それでも、セッションの状態を単純に再作成するよりも、かなりの速度改善につながる可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzVucBiNvxOh3NFn0ukxj/3b8e6cd9a5ca241b6c6a7c8556c0a529/BLOG-3264_3.gif" alt="BLOG-3264 3" class="kg-image" width="1493" height="393" loading="lazy">
+	</figure>
+	<p><i><sup>サンドボックスの起動、「axios」のクローン、npmのインストールには30秒かかります。バックアップからの復元には2秒かかります。</sup></i></p>
+	<p>公式スナップショットのリリースにご期待ください。</p>
+	<div class="flex anchor relative">
+		<h2 id="higher-limits-and-active-cpu-pricing">より高い上限とアクティブなCPU課金</h2>
+		<a href="https://blog.cloudflare.com/#higher-limits-and-active-cpu-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>設立以来、着実に容量を拡大しています。Standard料金プランのユーザーは、ライトインスタンスタイプを15,000、基本インスタンスを6,000、そして1,000以上の大規模インスタンスを同時に実行できるようになりました。それ以上の規模での運用をお望みなら、ぜひ<a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>お問い合わせください</u></a>！</p>
+	<p>また、大規模に運用するために、より費用対効果の高いものにするために価格設定モデルを変更しました。サンドボックスは、アクティブに使用された<a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>CPUサイクルに対してのみ</u></a>課金されるようになりました。つまり、エージェントがLLMの応答を待つ間、アイドル状態のCPU料金を支払わなくて済むということです。</p>
+	<div class="flex anchor relative">
+		<h2 id="this-is-what-a-computer-looks-like">コンピューターの姿</h2>
+		<a href="https://blog.cloudflare.com/#this-is-what-a-computer-looks-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>9か月前、当社はコマンドを実行し、ファイルシステムにアクセスできるサンドボックスを出荷しました。概念を証明するのに十分なものでした。</p>
+	<p>今あるものは異なる種類のものです。今日のサンドボックスは、ブラウザを接続できるターミナル、永続的な状態を持つコードインタープリター、ライブプレビューURLを備えたバックグラウンドプロセス、リアルタイムで変更イベントを出力するファイルシステム、安全なクレデンシャルインジェクションのためのエグレスプロキシ、そしてウォームスタートをほぼ瞬時に可能にするスナップショットメカニズムを備えた、完全な開発環境です。</p>
+	<p>その上に、満足のいくパターンが生まれます。それは、真のエンジニアリング作業を行うエージェントです。レポジトリをクローンし、インストールし、テストを実行し、失敗を読み取り、コードを編集し、再度テストを実行します。人間のエンジニアを効果的にする密接なフィードバックループが、今やエージェントにももたらされます。</p>
+	<p>現在、SDKのバージョン 0.8.9を使用しています。今すぐ始める：</p>
+	<p><code>npm i @cloudflare/sandbox@latest</code></p>
+</div>

@@ -1,479 +1,397 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HvLkomoA3kT5VBtnC5Xdu/13821ed0bd6654bcc9c736f3c01c48f2/98-percent-ipv6.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>It's 2016 and almost every site using Cloudflare (more than 4 million of them) is using IPv6. Because of this, Cloudflare sees significant IPv6 traffic globally where networks have enabled IPv6 to the consumer.</p>
-	<p>The top IPv6 networks are shown here.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Gfc6hlj4FtLgaCXSKUIYC/000d16623fe3eabcef6ea100ef8ae4bb/cloudflare-ipv6-percentage-vs-traffic.png" alt="" class="kg-image" width="3032" height="1318" loading="lazy">
-	</figure>
-	<p>The chart shows the percentage of IPv6 within a specific network vs. the relative bandwidth of that network. We will talk about specific networks below.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-ipv6-because-fast-internet">Why IPv6? Because fast internet.</h3>
-		<a href="https://blog.cloudflare.com/#why-ipv6-because-fast-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>IPv6 is faster for two reasons. The first is that many major operating systems and browsers like <a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg22455.html" target="_blank" rel="noopener noreferrer">iOS, macOS</a>, <a href="https://tools.ietf.org/html/rfc6555" target="_blank" rel="noopener noreferrer">Chrome and Firefox</a> impose anywhere from a 25ms to 300ms <a href="https://tools.ietf.org/html/rfc6555" target="_blank" rel="noopener noreferrer">artificial delay</a> on connections made over IPv4. The second is that some mobile networks won’t need to perform extra v4 → v6 and v6 → v4 translations to connect visitors to IPv6 enabled sites if the phone is only assigned an IPv6 address. (IPv6-only phones are becoming very common. If you have a phone on T-Mobile, Telstra, SK Telecom, Orange, or EE UK, to name a few, it’s likely you’re v6-only.)</p>
-	<p>How much faster is IPv6? Our data shows that visitors connecting over IPv6 were able to connect and load pages in 27% less time than visitors connecting over IPv4. LinkedIn found an even more dramatic effect, with up to a <a href="https://www.linkedin.com/pulse/ipv6-measurements-zaid-ali-kahn" target="_blank" rel="noopener noreferrer">40% performance boost</a> on mobile connections over IPv6. Facebook also found a significant performance increase, around <a href="https://code.facebook.com/posts/1192894270727351/ipv6-it-s-time-to-get-on-board" target="_blank" rel="noopener noreferrer">10-15% on IPv6</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="who-and-what-is-driving-ipv6">Who and what is driving IPv6?</h3>
-		<a href="https://blog.cloudflare.com/#who-and-what-is-driving-ipv6" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>IPv6 is clearly important for driving a faster, better internet, so who is driving IPv6 adoption?</p>
-	<p>In terms of countries, Belgium leads by a mile. Over the last 30 days, 56.47% of traffic (in bytes) to Belgians on Cloudflare has been over IPv6. This is largely due to Telenet, an ISP in Belgium, doing almost 96.8% of their traffic over IPv6!</p>
-	<ol>
-		<li>
-			<p>Belgium, 56.47%</p>
-		</li>
-		<li>
-			<p>Ireland, 31.75%*</p>
-		</li>
-		<li>
-			<p>Greece, 20.79%</p>
-		</li>
-		<li>
-			<p>Germany, 15.87%</p>
-		</li>
-		<li>
-			<p>Ecuador, 15.62%</p>
-		</li>
-		<li>
-			<p>Luxembourg, 15.51%</p>
-		</li>
-		<li>
-			<p>Portugal, 14.07%</p>
-		</li>
-		<li>
-			<p>Estonia, 13.75%</p>
-		</li>
-		<li>
-			<p>India, 11.84%</p>
-		</li>
-		<li>
-			<p>Peru, 10.57%</p>
-		</li>
-	</ol>
-	<p>*The Irish numbers are artificially high due to <a href="http://bgp.he.net/search?search%5Bsearch%5D=facebook" target="_blank" rel="noopener noreferrer">several of Facebook’s IPv6 ranges being registered in Ireland</a>. Facebook does an enormous amount of traffic over IPv6 –– 81% of Facebook’s traffic through Cloudflare is IPv6. In fact, Facebook’s crawling over IPv6 actually accounts for 6.9% of Cloudflare’s total outbound IPv6 traffic.</p>
-	<p>If you look just 6 months ago, less than 1% of India’s traffic was over IPv6. India has experienced an amazing rise in IPv6 connectivity, especially over the last month and a half.</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-15-at-4.29.22-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33dr4KAHjtOR7C4gntej7n/81780422e6745b0a0b9404a5fe1576f6/Screen-Shot-2016-11-15-at-4.29.22-PM.png" alt="" class="kg-image" width="1424" height="566" loading="lazy">
-		</a>
-	</figure>
-	<p>The US is ranked 17th on the global list at 8.78%. And since we have a Canadian co-founder (and three Canadian PoPs), it hasn’t gone unnoticed at Cloudflare that Canada is just beating the US in 16th place at 9.14%.</p>
-	<p>A handful of networks are responsible for the majority of IPv6 traffic through Cloudflare. In fact, the top 10 networks by IPv6 traffic to and from Cloudflare are responsible for over half (55.4%) of Cloudflare’s IPv6 traffic. Those networks are:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-16-at-2.56.58-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1o79gdePPcYaejhm5OIhv6/be78b3e338e79f6258dee2cfde6bac43/Screen-Shot-2016-11-16-at-2.56.58-PM.png" alt="" class="kg-image" width="974" height="370" loading="lazy">
-		</a>
-	</figure>
-	<p>The above chart shows which networks account for the highest percentage of IPv6 traffic through Cloudflare. In terms of which networks are promoting IPv6 on their own network traffic, these are the networks Cloudflare sees with the highest ratios of IPv6 to IPv4 traffic:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>#</b></p>
-				</td>
-				<td>
-					<p><b>IPv6 %</b></p>
-				</td>
-				<td>
-					<p><b>ASN</b></p>
-				</td>
-				<td>
-					<p><b>NAME</b></p>
-				</td>
+<p>It's 2016 and almost every site using Cloudflare (more than 4 million of them) is using IPv6. Because of this, Cloudflare sees significant IPv6 traffic globally where networks have enabled IPv6 to the consumer.</p>
+<p>The top IPv6 networks are shown here.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496NC68G3NPRFA9TF7D34W.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - SEfek6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - SEfek6"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The chart shows the percentage of IPv6 within a specific network vs. the relative bandwidth of that network. We will talk about specific networks below.</p>
+<h3>Why IPv6? Because fast internet.</h3>
+<p>IPv6 is faster for two reasons. The first is that many major operating systems and browsers like <a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg22455.html" target="_blank" rel="noopener noreferrer">iOS, macOS</a>, <a href="https://tools.ietf.org/html/rfc6555" target="_blank" rel="noopener noreferrer">Chrome and Firefox</a> impose anywhere from a 25ms to 300ms <a href="https://tools.ietf.org/html/rfc6555" target="_blank" rel="noopener noreferrer">artificial delay</a> on connections made over IPv4. The second is that some mobile networks won’t need to perform extra v4 → v6 and v6 → v4 translations to connect visitors to IPv6 enabled sites if the phone is only assigned an IPv6 address. (IPv6-only phones are becoming very common. If you have a phone on T-Mobile, Telstra, SK Telecom, Orange, or EE UK, to name a few, it’s likely you’re v6-only.)</p>
+<p>How much faster is IPv6? Our data shows that visitors connecting over IPv6 were able to connect and load pages in 27% less time than visitors connecting over IPv4. LinkedIn found an even more dramatic effect, with up to a <a href="https://www.linkedin.com/pulse/ipv6-measurements-zaid-ali-kahn" target="_blank" rel="noopener noreferrer">40% performance boost</a> on mobile connections over IPv6. Facebook also found a significant performance increase, around <a href="https://code.facebook.com/posts/1192894270727351/ipv6-it-s-time-to-get-on-board" target="_blank" rel="noopener noreferrer">10-15% on IPv6</a>.</p>
+<h3>Who and what is driving IPv6?</h3>
+<p>IPv6 is clearly important for driving a faster, better internet, so who is driving IPv6 adoption?</p>
+<p>In terms of countries, Belgium leads by a mile. Over the last 30 days, 56.47% of traffic (in bytes) to Belgians on Cloudflare has been over IPv6. This is largely due to Telenet, an ISP in Belgium, doing almost 96.8% of their traffic over IPv6!</p>
+<ol>
+	<li>Belgium, 56.47%</li>
+	<li>Ireland, 31.75%*</li>
+	<li>Greece, 20.79%</li>
+	<li>Germany, 15.87%</li>
+	<li>Ecuador, 15.62%</li>
+	<li>Luxembourg, 15.51%</li>
+	<li>Portugal, 14.07%</li>
+	<li>Estonia, 13.75%</li>
+	<li>India, 11.84%</li>
+	<li>Peru, 10.57%</li>
+</ol>
+<p>*The Irish numbers are artificially high due to <a href="http://bgp.he.net/search?search%5Bsearch%5D=facebook" target="_blank" rel="noopener noreferrer">several of Facebook’s IPv6 ranges being registered in Ireland</a>. Facebook does an enormous amount of traffic over IPv6 –– 81% of Facebook’s traffic through Cloudflare is IPv6. In fact, Facebook’s crawling over IPv6 actually accounts for 6.9% of Cloudflare’s total outbound IPv6 traffic.</p>
+<p>If you look just 6 months ago, less than 1% of India’s traffic was over IPv6. India has experienced an amazing rise in IPv6 connectivity, especially over the last month and a half.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="284" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=640&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=750&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=828&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=1080&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=1280&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RBBDK7FQ16HP3S4E5B29.png&amp;w=1430&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - vTvtRY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="284" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - vTvtRY"></div>
+</figure>
+<p>The US is ranked 17th on the global list at 8.78%. And since we have a Canadian co-founder (and three Canadian PoPs), it hasn’t gone unnoticed at Cloudflare that Canada is just beating the US in 16th place at 9.14%.</p>
+<p>A handful of networks are responsible for the majority of IPv6 traffic through Cloudflare. In fact, the top 10 networks by IPv6 traffic to and from Cloudflare are responsible for over half (55.4%) of Cloudflare’s IPv6 traffic. Those networks are:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="272" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=715&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=640&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=715&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=750&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=828&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=1080&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=1280&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44THMFPAZ5TJGMD92KH823.png&amp;w=1430&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - TfR6Gd" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="272" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - TfR6Gd"></div>
+</figure>
+<p>The above chart shows which networks account for the highest percentage of IPv6 traffic through Cloudflare. In terms of which networks are promoting IPv6 on their own network traffic, these are the networks Cloudflare sees with the highest ratios of IPv6 to IPv4 traffic:</p>
+<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
+	<table class="emdash-table" data-astro-cid-ohylgzgj="">
+		<thead data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<th data-astro-cid-ohylgzgj="">
+					<p>#</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>IPv6 %</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>ASN</p>
+				</th>
+				<th data-astro-cid-ohylgzgj="">
+					<p>NAME</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-ohylgzgj="">
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>1</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>100.0%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS43447</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Orange Polska</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>100.0%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS23910</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>China Next Generation Internet CERNET2</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>100.0%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS17419</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>HiNet IPv6 (Taiwan)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>4</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>96.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS6848</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Telenet (Belgium)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>5</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>91.5%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS12271</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Time Warner Cable</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>6</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>88.9%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS3651</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Sprint</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>7</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>81.0%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS32934</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>8</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>74.0%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS54500</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>EGIHosting</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>9</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>65.9%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS21321</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Areti Internet</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>10</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>63.9%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS3598</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Microsoft</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>11</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>61.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS4250</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Alentus</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>12</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>60.3%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS21928</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>T-Mobile USA</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>13</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>58.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS22394</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Verizon Wireless</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>14</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>57.6%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS18126</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Chubu Telecommunications Company</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>15</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>48.5%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS5607</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Sky (UK)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>16</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>47.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS16591</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Google Fiber</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>17</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>44.6%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS133481</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AIS Fibre (Thailand)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>18</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>43.6%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS7018</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AT&amp;T</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>19</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>43.3%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS6621</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>Hughes Network Systems</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-ohylgzgj="">
+				<td data-astro-cid-ohylgzgj="true">
 					<p>20</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>43.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>AS15943</p>
 				</td>
-				<td>
+				<td data-astro-cid-ohylgzgj="true">
 					<p>wilhelm.tel GmbH Norderstedt</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>In terms of devices, mobile traffic is 50% more likely to use IPv6 than desktop traffic (21.4% of mobile traffic uses IPv6 traffic, whereas only 13.6% of desktop traffic is over IPv6).</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-15-at-4.40.29-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m77EbJMCOtPQDZXENxGie/30f33fa5aaf285702b06efab91b25402/Screen-Shot-2016-11-15-at-4.40.29-PM.png" alt="" class="kg-image" width="1097" height="456" loading="lazy">
-		</a>
-	</figure>
-	<p>In mobile, iOS sends slightly more traffic than Android over IPv6, with iOS sending about a quarter of its traffic (23.5%) and Android sending about one fifth (18.7%).</p>
-	<p>For Windows, the newer the OS, the more traffic it sends over IPv6, with XP (2001) sending just 1.1% of requests over IPv6 and Windows 10 (2015) sending 18.7%, almost a fifth of all requests over IPv6.</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-15-at-3.25.02-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11qopJH2aqMhCjlPCX6zZu/ad54713703d8eab7c29f2882659287af/Screen-Shot-2016-11-15-at-3.25.02-PM.png" alt="" class="kg-image" width="1133" height="369" loading="lazy">
-		</a>
-	</figure>
-	<p>Here’s the full breakdown of browsers and operating systems to explain the effect of OS and browser on the percentage of IPv6 traffic. In it, you can see some interesting things, for example, iOS and ChromeOS apps tend to use IPv6 a lot more than other operating systems. Also, Chrome on mobile sends about twice as much IPv6 traffic than Chrome on desktop.</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-15-at-4.12.19-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VbCf50ROlGFxsFaRzLCy9/96b64e98522ab7e3fa574ae0a82f1e4b/Screen-Shot-2016-11-15-at-4.12.19-PM.png" alt="" class="kg-image" width="1355" height="367" loading="lazy">
-		</a>
-	</figure>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-15-at-4.07.32-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19jQCF3xGUoAOwUHS8i7Fh/d321d0cbd90a40178f2468dcbe87d0fa/Screen-Shot-2016-11-15-at-4.07.32-PM.png" alt="" class="kg-image" width="1001" height="369" loading="lazy">
-		</a>
-	</figure>
-	<p>Below you can see the net effect of using a specific browser or operating system on IPv6 traffic:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/effect-2.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58ZZ9nTaYFemmvGCb6IWlY/d8f026b8621a204445d3da438a9a5cd8/effect-2.png" alt="" class="kg-image" width="1048" height="1144" loading="lazy">
-		</a>
-	</figure>
-	<p>Even more interesting is that while only 10.97% of our total DNS traffic is over IPv6, 22.03% of our DNS packet floods are IPv6 as well as IPv4 (we see no IPv6-only attacks, all the attacks we see on IPv6 are also seen on IPv4).</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/Screen-Shot-2016-11-16-at-2.06.20-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77F3ATcp7zVdiI7RynKXaq/db18ace81134e4e286a5d375e155712f/Screen-Shot-2016-11-16-at-2.06.20-PM.png" alt="" class="kg-image" width="989" height="368" loading="lazy">
-		</a>
-	</figure>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/dns-packet-floods.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KuI9yTKtRmvnPBo0rQ7ll/f2e6af0b3e2dcfd443ec3127a869df6c/dns-packet-floods.png" alt="" class="kg-image" width="1192" height="369" loading="lazy">
-		</a>
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="making-the-push-for-ipv6">Making the push for IPv6</h2>
-		<a href="https://blog.cloudflare.com/#making-the-push-for-ipv6" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, we weren’t happy with only hundreds of thousands of IPv6-enabled websites. We wanted the millions and millions of Cloudflare customers to have IPv6. Over the last few months, we have been carefully enabling IPv6 for around 100,000 sites a day, all the time monitoring how our systems operated and how our traffic behaved. We also monitored customer support and of course, social media.</p>
-	<p>People noticed. People were happy. People posted what they saw!</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="https://www.facebook.com/groups/2234775539/permalink/10154502857425540">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zk7ldYLMuufHuBoIV0ZP0/bad69a7358c3e9d17071e4710123aaed/Screen-Shot-2016-11-20-at-11.26.46-PM.png" alt="" class="kg-image" width="621" height="535" loading="lazy">
-		</a>
-	</figure>
-	<p>Some with a long range view:</p>
-	<blockquote>
-		<p>there is rapid growth in number of AAAA websites from 76K (08/2016) to 109K (10/2016) (source <a href="https://twitter.com/dan_wing" target="_blank" rel="noopener noreferrer">@dan_wing</a> dataset: <a href="https://t.co/CRzN5TweKz" target="_blank" rel="noopener noreferrer">https://t.co/CRzN5TweKz</a> ) <a href="https://t.co/0KNhqBMFsS" target="_blank" rel="noopener noreferrer">pic.twitter.com/0KNhqBMFsS</a></p>
-		<p>— Vaibhav Bajpai (@bajpaivaibhav) <a href="https://twitter.com/bajpaivaibhav/status/791181419913572352" target="_blank" rel="noopener noreferrer">October 26, 2016</a></p>
-	</blockquote>
-	<p>Some zoomed into the last few months:</p>
-	<blockquote>
-		<p>there is rapid growth in number of AAAA websites from 76K (08/2016) to 134K (11/2016) (source <a href="https://twitter.com/dan_wing" target="_blank" rel="noopener noreferrer">@dan_wing</a> dataset: <a href="https://t.co/CRzN5TweKz" target="_blank" rel="noopener noreferrer">https://t.co/CRzN5TweKz</a>) <a href="https://t.co/ygFEVSNSps" target="_blank" rel="noopener noreferrer">pic.twitter.com/ygFEVSNSps</a></p>
-		<p>— Vaibhav Bajpai (@bajpaivaibhav) <a href="https://twitter.com/bajpaivaibhav/status/798558510086836224" target="_blank" rel="noopener noreferrer">November 15, 2016</a></p>
-	</blockquote>
-	<p>In both of the above graphs, you can really see the impact of Cloudflare enabling IPv6 for all of our customers’ sites, starting in August and wrapping up this week. Below is one more public measurement from <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=y&amp;pct=y" target="_blank" rel="noopener noreferrer">Eric Vyncke</a> where you can see the effect on world IPv6 measurements:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/11/plotsite-2016-11-21-1.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q3XTCyc5YRUDIMEABnWHn/2089b5485a6c3b859de0b894277b7bcb/plotsite-2016-11-21-1.png" alt="" class="kg-image" width="1024" height="700" loading="lazy">
-		</a>
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="the-ietf-and-ipv6">The IETF and IPv6</h3>
-		<a href="https://blog.cloudflare.com/#the-ietf-and-ipv6" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As of a late 2016, the IETF’s Internet Architecture Board has taken one more step in its path towards v6 adoption. It's taken the bold step of saying that <a href="https://www.iab.org/2016/11/07/iab-statement-on-ipv6" target="_blank" rel="noopener noreferrer">new protocols don't need to be v4 backward compatible</a>. This can usher-in some great new protocol designs and solutions that simply don't need to live in v4's <a href="https://tools.ietf.org/html/draft-howard-sunset4-v4historic-00" target="_blank" rel="noopener noreferrer">legacy world</a>. At Cloudflare, we've always been aggressive with our desire to provide our customers cutting edge solutions. We can't wait to see what's cooking!</p>
-	<div class="flex anchor relative">
-		<h3 id="the-growing-ipv6-address-usage">The growing IPv6 address usage</h3>
-		<a href="https://blog.cloudflare.com/#the-growing-ipv6-address-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Along with the increased bandwidth observed, at Cloudflare, we are seeing a solid increase in unique IPv6 addresses seen.</p>
-	<blockquote>
-		<p>In June number of IPv6 addresses (/64 masked) crossed IPv4 addresses connecting to <a href="https://twitter.com/Cloudflare" target="_blank" rel="noopener noreferrer">@CloudFlare</a> for the first time. <a href="https://t.co/eTPFNoueHQ" target="_blank" rel="noopener noreferrer">pic.twitter.com/eTPFNoueHQ</a></p>
-		<p>— Matthew Prince (@eastdakota) <a href="https://twitter.com/eastdakota/status/765699957449895936" target="_blank" rel="noopener noreferrer">August 17, 2016</a></p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="final-thoughts">Final thoughts</h3>
-		<a href="https://blog.cloudflare.com/#final-thoughts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare is <a href="https://blog.cloudflare.com/evenly-distributed-future">committed</a> to bringing the most up to date, fastest and most secure technologies to our customers. We are committed to IPv6, <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a">TLS 1.3</a> and <a href="https://blog.cloudflare.com/introducing-universal-dnssec">ubiquitous DNSSEC</a>. Just like we'd never go back to an unencrypted life, there's no going back to a v4-only world.</p>
-	<p>PS - Want to live an IPv6 life? We’re <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a>.</p>
-	<p><i>Big thanks to Dani Grant, Igor Postelnik, Lukasz Mierzwa and Marty Strong.</i></p>
 </div>
+<p>In terms of devices, mobile traffic is 50% more likely to use IPv6 than desktop traffic (21.4% of mobile traffic uses IPv6 traffic, whereas only 13.6% of desktop traffic is over IPv6).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="297" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=640&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=750&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=828&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=1080&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=1280&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PCGY0513BRRF403VJPH8.png&amp;w=1430&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - P0dRLA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="297" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - P0dRLA"></div>
+</figure>
+<p>In mobile, iOS sends slightly more traffic than Android over IPv6, with iOS sending about a quarter of its traffic (23.5%) and Android sending about one fifth (18.7%).</p>
+<p>For Windows, the newer the OS, the more traffic it sends over IPv6, with XP (2001) sending just 1.1% of requests over IPv6 and Windows 10 (2015) sending 18.7%, almost a fifth of all requests over IPv6.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="233" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=750&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=828&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=1080&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=1280&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447WAF7K6N8Q6PNKETWPRN.png&amp;w=1430&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - 0aGWsP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="233" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - 0aGWsP"></div>
+</figure>
+<p>Here’s the full breakdown of browsers and operating systems to explain the effect of OS and browser on the percentage of IPv6 traffic. In it, you can see some interesting things, for example, iOS and ChromeOS apps tend to use IPv6 a lot more than other operating systems. Also, Chrome on mobile sends about twice as much IPv6 traffic than Chrome on desktop.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="194" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=640&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=750&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=828&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=1080&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=1280&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462Q5HC9V3V4G29RDJPNZH.png&amp;w=1430&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - 5Pj9t1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="194" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - 5Pj9t1"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="264" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=640&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=750&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=828&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=1080&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=1280&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B6299B8YT9JMF6VQTQQ2.png&amp;w=1430&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - xoNcRu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="264" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - xoNcRu"></div>
+</figure>
+<p>Below you can see the net effect of using a specific browser or operating system on IPv6 traffic:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="780" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=715&amp;h=780&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=640&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=715&amp;h=780&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=750&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=828&amp;h=903&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=1080&amp;h=1178&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=1280&amp;h=1396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477X31TR2631WZ79HG4YC7.png&amp;w=1430&amp;h=1560&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - NkYeFe" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="780" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - NkYeFe"></div>
+</figure>
+<p>Even more interesting is that while only 10.97% of our total DNS traffic is over IPv6, 22.03% of our DNS packet floods are IPv6 as well as IPv4 (we see no IPv6-only attacks, all the attacks we see on IPv6 are also seen on IPv4).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="266" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=640&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=750&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=828&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=1080&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=1280&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M6P7HSJECHQFZM0VGCZK.png&amp;w=1430&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - gO6hyc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="266" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - gO6hyc"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CEMJ2GHFSBS4HEHVRVHC.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - CRY3vY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - CRY3vY"></div>
+</figure>
+<h2>Making the push for IPv6</h2>
+<p>At Cloudflare, we weren’t happy with only hundreds of thousands of IPv6-enabled websites. We wanted the millions and millions of Cloudflare customers to have IPv6. Over the last few months, we have been carefully enabling IPv6 for around 100,000 sites a day, all the time monitoring how our systems operated and how our traffic behaved. We also monitored customer support and of course, social media.</p>
+<p>People noticed. People were happy. People posted what they saw!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="621" height="535" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=621&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=621&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 621w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=640&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=750&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=828&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=1080&amp;h=930&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PT36X4FN6754Y41Y4S94.png&amp;w=1242&amp;h=1070&amp;f=webp&amp;fit=cover&amp;position=center 1242w" alt="98.01% of sites on Cloudflare now use IPv6 Embedded Image - JFlraf" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 621px) 621px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="621" height="535" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: 98.01% of sites on Cloudflare now use IPv6 Embedded Image - JFlraf"></div>
+</figure>
+<p>Some with a long range view:</p>
+<blockquote>
+	<p>there is rapid growth in number of AAAA websites from 76K (08/2016) to 109K (10/2016) (source <a href="https://twitter.com/dan_wing" target="_blank" rel="noopener noreferrer">@dan_wing</a> dataset: <a href="https://t.co/CRzN5TweKz" target="_blank" rel="noopener noreferrer">https://t.co/CRzN5TweKz</a> ) <a href="https://t.co/0KNhqBMFsS" target="_blank" rel="noopener noreferrer">pic.twitter.com/0KNhqBMFsS</a></p>
+	<p>— Vaibhav Bajpai (@bajpaivaibhav) <a href="https://twitter.com/bajpaivaibhav/status/791181419913572352" target="_blank" rel="noopener noreferrer">October 26, 2016</a></p>
+</blockquote>
+<p>Some zoomed into the last few months:</p>
+<blockquote>
+	<p>there is rapid growth in number of AAAA websites from 76K (08/2016) to 134K (11/2016) (source <a href="https://twitter.com/dan_wing" target="_blank" rel="noopener noreferrer">@dan_wing</a> dataset: <a href="https://t.co/CRzN5TweKz" target="_blank" rel="noopener noreferrer">https://t.co/CRzN5TweKz</a>) <a href="https://t.co/ygFEVSNSps" target="_blank" rel="noopener noreferrer">pic.twitter.com/ygFEVSNSps</a></p>
+	<p>— Vaibhav Bajpai (@bajpaivaibhav) <a href="https://twitter.com/bajpaivaibhav/status/798558510086836224" target="_blank" rel="noopener noreferrer">November 15, 2016</a></p>
+</blockquote>
+<p>In both of the above graphs, you can really see the impact of Cloudflare enabling IPv6 for all of our customers’ sites, starting in August and wrapping up this week. Below is one more public measurement from <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=y&amp;pct=y" target="_blank" rel="noopener noreferrer">Eric Vyncke</a> where you can see the effect on world IPv6 measurements:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="489" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=715&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=640&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=715&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=750&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=828&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=1080&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=1280&amp;h=875&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YPC3NH0P58XRA8N0Y65Y.png&amp;w=1430&amp;h=978&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Less Is More - Why The IPv6 Switch Is Missing Embedded Image - LB8iJa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="489" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Less Is More - Why The IPv6 Switch Is Missing Embedded Image - LB8iJa"></div>
+</figure>
+<h3>The IETF and IPv6</h3>
+<p>As of a late 2016, the IETF’s Internet Architecture Board has taken one more step in its path towards v6 adoption. It's taken the bold step of saying that <a href="https://www.iab.org/2016/11/07/iab-statement-on-ipv6" target="_blank" rel="noopener noreferrer">new protocols don't need to be v4 backward compatible</a>. This can usher-in some great new protocol designs and solutions that simply don't need to live in v4's <a href="https://tools.ietf.org/html/draft-howard-sunset4-v4historic-00" target="_blank" rel="noopener noreferrer">legacy world</a>. At Cloudflare, we've always been aggressive with our desire to provide our customers cutting edge solutions. We can't wait to see what's cooking!</p>
+<h3>The growing IPv6 address usage</h3>
+<p>Along with the increased bandwidth observed, at Cloudflare, we are seeing a solid increase in unique IPv6 addresses seen.</p>
+<blockquote>
+	<p>In June number of IPv6 addresses (/64 masked) crossed IPv4 addresses connecting to <a href="https://twitter.com/Cloudflare" target="_blank" rel="noopener noreferrer">@CloudFlare</a> for the first time. <a href="https://t.co/eTPFNoueHQ" target="_blank" rel="noopener noreferrer">pic.twitter.com/eTPFNoueHQ</a></p>
+	<p>— Matthew Prince (@eastdakota) <a href="https://twitter.com/eastdakota/status/765699957449895936" target="_blank" rel="noopener noreferrer">August 17, 2016</a></p>
+</blockquote>
+<h3>Final thoughts</h3>
+<p>Cloudflare is <a href="https://blog.cloudflare.com/evenly-distributed-future">committed</a> to bringing the most up to date, fastest and most secure technologies to our customers. We are committed to IPv6, <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a">TLS 1.3</a> and <a href="https://blog.cloudflare.com/introducing-universal-dnssec">ubiquitous DNSSEC</a>. Just like we'd never go back to an unencrypted life, there's no going back to a v4-only world.</p>
+<p>PS - Want to live an IPv6 life? We’re <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a>.</p>
+<p><em>Big thanks to Dani Grant, Igor Postelnik, Lukasz Mierzwa and Marty Strong.</em></p>

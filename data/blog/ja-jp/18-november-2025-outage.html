@@ -1,0 +1,338 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/18-november-2025-outage">English</a>、<a href="https://blog.cloudflare.com/zh-tw/18-november-2025-outage">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/18-november-2025-outage">Français</a>、<a href="https://blog.cloudflare.com/de-de/18-november-2025-outage">Deutsch</a>、<a href="https://blog.cloudflare.com/it-it/18-november-2025-outage">Italiano</a>、<a href="https://blog.cloudflare.com/ko-kr/18-november-2025-outage">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/18-november-2025-outage">Português</a>、<a href="https://blog.cloudflare.com/es-la/18-november-2025-outage">Español (Latinoamérica)</a>、<a href="https://blog.cloudflare.com/es-es/18-november-2025-outage">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/18-november-2025-outage">Рyсский</a>、<a href="https://blog.cloudflare.com/pl-pl/18-november-2025-outage">Polski</a>、<a href="https://blog.cloudflare.com/nl-nl/18-november-2025-outage">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/18-november-2025-outage">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9f2k63fiixI2YXDgsnbGq/4d156aa83c47ff6cecf3bd5c747126ef/unnamed__1_.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2025年11月18日11時20分（UTC）（このブログでは時刻はすべてUTCで記載します）を起点に、Cloudflareのネットワークにおいて、中核となるネットワークトラフィック配信で重大な障害が発生しました。これにより、当社の顧客が運営するサイトにアクセスを試みたユーザーにエラーページ（Cloudflareネットワーク内でエラーが発生したことを示す）が表示されました。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ony9XsTIteX8DNEFJDddJ/7da2edd5abca755e9088002a0f5d1758/BLOG-3079_2.png" alt="HTTP error page displayed during the incident" class="kg-image" width="1258" height="854" loading="lazy">
+	</figure>
+	<p><b>この問題はサイバー攻撃や悪意のある行為によるものではなく、</b>当社の行ったデータベースシステムに対する権限変更に起因するものであり、ボット管理システムで使用される「フィーチャーファイル」に複数のエントリが出力され、ファイルサイズが予想以上に倍増したことでした。その大きくなったフィーチャーファイルは、ネットワークを構成するすべての機器へと伝播されました。</p>
+	<p>伝播先の機器上で動作するネットワーク全体のトラフィックをルーティングするソフトウェアは通常、このフィーチャーファイルを読み込んでボット管理システムを最新の状態に維持することで常に変化する脅威に対応しますが、伝播されたフィーチャーファイルのサイズがソフトウェアで設けられているファイルサイズの上限を超えており、結果、ソフトウェアが正しく機能しなくなる事態へと繋がりました。</p>
+	<p>当初、私たちはこの障害の疑いを大規模DDoS攻撃に向けていましたが、原因を正しく特定し、この大きくなったフィーチャーファイルの伝播を停止し、以前のバージョンに置き換えました。結果、主要トラフィックについては、14:30までにほぼ通常どおりに流れるようになりました。その後、増加した負荷に対応するため数時間作業を行い、17:06にはCloudflareの全システムが正常に稼働しました。</p>
+	<p>お客様、そしてインターネット全体に与えた影響について、深くお詫び申し上げます。Cloudflareはインターネットエコシステムにおいて重要な存在であるため、どのシステムの障害も容認されるものではありません。当社のネットワークが一定期間トラフィックをルーティングできなかったことは、チームのメンバー全員にとって非常に苦しい出来事でした。今回、皆さまの期待を裏切る事態を引き起こしたこと、深くお詫び申し上げます。</p>
+	<p>この記事は、今回の障害がどのように発生したのか、影響のあったシステムおよびプロセスについて詳細に説明します。また、このような障害が二度と発生しないようにするための今後の対策についても説明しています。</p>
+	<div class="flex anchor relative">
+		<h2 id="the-outage">障害</h2>
+		<a href="https://blog.cloudflare.com/#the-outage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>下のグラフは、Cloudflareネットワークで発生したHTTPのステータスコードである5xxエラーの件数を示しています。本来、この数は非常に少なくなるはずであり、実際、障害が始まるまでは正常な件数を示していました。 </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GdZcWhEqNjwOmLcsKOXT0/fca7e6970d422d04c81b2baafb988cbe/BLOG-3079_3.png" alt="Volume of HTTP 5xx requests served by the Cloudflare network" class="kg-image" width="1507" height="733" loading="lazy">
+	</figure>
+	<p>11:20以前の数値は、ネットワーク全体で通常観測される5xxエラーの基準値です。その後の急増や変動は、不正な機能ファイルを読み込んだことでシステムに異常が発生したことを示しています。特徴的なのは、一時的にシステムが回復することがあった点で、内部エラーとしては非常に珍しい挙動でした。</p>
+	<p>原因は、このファイルがClickHouseデータベースクラスタ上で5分ごとに生成されていたことにあります。クラスタは権限管理を改善するために段階的に更新されていました。更新されたクラスタの一部でクエリが実行された場合にのみ、不正なデータが生成されました。そのため、5分ごとに正常または不正な設定ファイルのどちらかが生成され、それらがネットワーク全体に急速に伝播されるという動きになっていました。</p>
+	<p>この変動により、システム全体の回復と失敗が繰り返されたことで状況が分かりにくく、当初は攻撃によるものと誤解していました。最終的に、すべてのClickHouseノードで不正な設定ファイルが生成されるようになり、変動は障害状態で安定しました。</p>
+	<p>このエラーは、14:30に根本的な問題が特定され解決されるまで継続することとなりました。不正なフィーチャーファイルの生成と伝播を停止し、既知の正常なフィーチャーファイルを手動で配布キューに挿入することで、この問題が解決しました。また、コアプロキシの強制的な再起動も行いました。</p>
+	<p>上のグラフの残りの長い尾は、異常状態に入っていた残りのサービスをチームが順次再起動したことを示しており、5xxエラーコードの件数は17:06に正常な状態に戻りました。</p>
+	<p>影響を受けたサービスは以下のとおりです：</p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>サービス/製品</b></p>
+				</th>
+				<th>
+					<p><b>影響の説明</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>コアCDNおよびセキュリティサービス</p>
+				</td>
+				<td>
+					<p>HTTP 5xxが発生。ブログ冒頭のスクリーンショットのようなエラーページがエンドユーザーに表示される。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Turnstile</p>
+				</td>
+				<td>
+					<p>Turnstileの読み込みに失敗。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Workers KV</p>
+				</td>
+				<td>
+					<p>コアプロキシの障害により、KVの「フロントエンド」ゲートウェイへのリクエストが失敗し、HTTP 5xxエラーが大幅に増加。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ダッシュボード</p>
+				</td>
+				<td>
+					<p>ダッシュボードはほぼ運用可能であったものの、ログインページでTurnstileが利用できなかったため、ほとんどのユーザーがログインに失敗。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>メールセキュリティ</p>
+				</td>
+				<td>
+					<p>メール処理と配信に対する影響はなかったものの、IPレピュテーションソースへの一時的にアクセスできなかったためスパム検出の精度が低下し、新規ドメインの検知が一部で機能せず。重大な顧客への影響は確認されていません。また、一部の自動移動処理が失敗しましたが、対象メッセージはすべて確認、修正済みです。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Access</p>
+				</td>
+				<td>
+					<p>インシデント開始時から13:05のロールバック開始まで、多くのユーザーで認証が失敗。既に接続済みのAccessセッションは影響を受けませんでした。</p>
+					<p>
+					</p>
+					<p>認証失敗時はエラーページが表示され、目的のアプリへのアクセスが不能になる。この期間中の成功したログインは正しく記録されています。</p>
+					<p>
+					</p>
+					<p>この間試行されたAccessの設定変更は、完全な失敗、または非常に遅れて反映されました。すべての設定の更新は元に戻っています。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>HTTP 5xxエラーに加え、影響期間中は当社のCDNからの応答遅延が大幅に増加したことを確認しました。これは、デバッグおよび可観測性システムが大量のCPUを消費していたためであり、これらのシステムが捕捉されなかったエラーに追加のデバッグ情報を自動的に付け足す処理を行うため、処理が重くなった結果です。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-cloudflare-processes-requests-and-how-this-went-wrong-today">Cloudflareがリクエストを処理する仕組みと、今回どこで問題が起きたか</h2>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-processes-requests-and-how-this-went-wrong-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare に届くすべてのリクエストは、明確に定義された経路をたどり当社のネットワーク上を進みます。これは、ブラウザからのWebページ読み込み、モバイルアプリのAPI呼び出し、サービス間の自動トラフィックなど、どんな種類のリクエストでも同じです。これらのリクエストは、まずHTTPおよびTLS層で受け取られた後でコアプロキシシステム（FL、「Frontline」と呼ばれる）へと渡り、最後にPingoraを通過します。Pingoraは、必要に応じてキャッシュルックアップを実行するか、オリジンからデータを取得します。</p>
+	<p>コアプロキシの仕組みの詳細については、以前紹介した<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>こちら</u></a>の記事を参照してください。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qlWXM3gh4SaYYvsGc7mFV/99294b22963bb414435044323aed7706/BLOG-3079_4.png" alt="Diagram of our reverse proxy architecture" class="kg-image" width="1999" height="846" loading="lazy">
+	</figure>
+	<p>リクエストがコアプロキシを通過する間に、当社のネットワークで利用可能な様々なセキュリティおよびパフォーマンス製品が実行されます。プロキシでは、お客様ごとの構成と設定に従い、WAFルール、DDoS攻撃対策、および開発者プラットフォームやR2へのルーティングを適用します。これは、プロキシを通過するトラフィックに構成ルールとポリシールールを適用するドメイン固有のモジュールのセットによって実現されます。</p>
+	<p>今回の障害の原因となったのは、この中の「ボット管理モジュール」でした。</p>
+	<p>Cloudflareの<a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>ボット管理</u></a>には、数あるシステムの中でも機械学習モデルを搭載しているもので、当社ではこのモデルを使用して、当社のネットワークを通過するすべてのリクエストに対してボットスコアを生成しています。Cloudflareのお客様は、ボットスコアを使用して、ボットごとにサイトアクセスの可否を制御します。</p>
+	<p>モデルは、「フィーチャー」設定ファイルをインプットとします。ここでの「フィーチャー」は、機械学習モデルが該当のリクエストが自動化されたものかどうかを予測するための個々の特性のことです。フィーチャー設定ファイルは、こうした個々の機能（特徴）をまとめたファイルです。</p>
+	<p>このフィーチャーファイルは数分ごとに更新され、当社のネットワーク全体へ配布されます。これにより、インターネット上のトラフィックの変化に素早く対応でき、新種のボットや新たなボット攻撃に対応できるようになっています。悪意のある攻撃者は頻繁にその手口を変えるため、このファイルは頻繁かつ迅速に展開する必要があります。</p>
+	<p>しかし今回、このファイルを生成する ClickHouse のクエリ（後述）が変更されたことで、大量の重複するフィーチャー行が出力され、ファイルサイズが固定サイズを超えてしまいました。これにより、これまで固定的なサイズであったフィーチャー設定ファイルのサイズが変わってしまい、ボットモジュールでエラーが発生しました。</p>
+	<p>その結果、ボットモジュールに依存している通信については、お客様のトラフィック処理を担当するコアプロキシシステムからHTTP 5xxエラーコードが返されるようになってしまいました。これは、コアプロキシに依存するWorkers KVとAccessにも影響しました。</p>
+	<p>このインシデントとは関係ありませんが、当社はお客様のトラフィックをプロキシサービスの新バージョン（社内では<a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>FL2</u></a>と呼んでいます）に移行しており、両方のバージョンが今回の障害の影響を受けましたが、それぞれ観察された影響は異なっていました。</p>
+	<p>新しいFL2プロキシエンジンを利用しているお客様では、HTTP 5xxエラーが発生しました。旧プロキシエンジン（FL）をご利用のお客様にはエラーは表示されませんでしたが、ボットスコアが正しく生成されず、すべてのトラフィックがボットスコア0と判定されました。ボットをブロックするルールを設定していたお客様は、多数の誤検出が発生したと考えられます。ルールでボットスコアを使用していなかったお客様には影響はありませんでした。</p>
+	<p>今回の障害中、Cloudflareのステータスページまで落ちたため、「攻撃を受けているのでは？」という疑いが強まりました。ステータスページはCloudflareとは無関係の外部インフラで動作しています。結果的には偶然でしたが、この問題の診断にあたった関係者は、当社のシステムとステータスページの両方が標的にされている可能性があるという考えるに至りました。その間にステータスページを開くと、次のエラーメッセージが表示されました：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7LwbB5fv7vdoNRWWDGN7ia/dad8cef76eee1305e0216d74a813612b/BLOG-3079_5.png" alt="Error on the Cloudflare status page" class="kg-image" width="1999" height="478" loading="lazy">
+	</figure>
+	<p>こうした状況もあり、社内インシデントチャットルームでは、今回の障害の原因が、最近多発している<a href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/defending-the-cloud-azure-neutralized-a-record-breaking-15-tbps-ddos-attack/4470422" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a>の大規模<a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos"><u>DDoS攻撃</u></a>の続きであることが懸念されるほどでした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ph13HSsOGC0KYRfoeZmSy/46522e46ed0132d2ea551aef4c71a5d6/BLOG-3079_6.png" alt="Internal chat screenshot" class="kg-image" width="1188" height="278" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-query-behaviour-change">クエリ動作の変更について</h3>
+		<a href="https://blog.cloudflare.com/#the-query-behaviour-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前述したように、基盤となるクエリの動作が変わったことで、フィーチャーファイルに大量の重複行が追加されるようになりました。問題のデータベースシステムは、ClickHouseのソフトウェアを使用しています。</p>
+	<p>参考として、ClickHouseの分散クエリがどのように機能するかを知っておくと役立ちます。ClickHouseクラスタは、多数のシャード（データを分割して複数のデータベースサーバーに分散させる仕組み）で構成されています。すべてのシャードからデータを取得するには、<code>default</code>というデータベース内にある、<code>Distributed</code>というテーブルエンジンを使った「分散テーブル」を利用します。Distributedエンジンは、r0というデータベースの基となるテーブルに対してクエリを実行します。この基になるテーブルが、ClickHouseクラスタの各シャードにデータが保存されている場所です。</p>
+	<p>分散テーブルへのクエリは、共有のシステムアカウントを使って実行されます。分散クエリのセキュリティと信頼性を向上させる取り組みの一環として、現在はこれを元のユーザーアカウントで実行されるようにする作業が進められています。</p>
+	<p>これまで、ClickHouseのユーザーが<code>system.tables</code>や<code>system.columns</code>などのシステムテーブルからテーブルのメタデータを参照すると、<code>default</code>データベース内のテーブルのみが表示されていました。</p>
+	<p>ユーザーはすでに<code>r0</code>データベースの基となるテーブルに暗黙的アクセス権を持っているため、11:05に変更を加えてこのアクセスを明示的にし、ユーザーがこれらのテーブルのメタデータも確認できるようにしました。さらに、すべての分散サブクエリを元のユーザーで実行できるようにすることで、クエリの制限とアクセス許可をより詳細に評価できるようになり、あるユーザーによる不適切なサブクエリが他のユーザーに影響を与えるのを防ぐことができます。</p>
+	<p>この変更により、すべてのユーザーが、アクセス権のあるテーブルに関する正確なメタデータにアクセスできるようになりました。ただし、これまではクエリで返される列のリストには、「<code>default</code>」データベースのみが含まれるという前提がありました。</p>
+	<p><code>SELECT
+			name,
+			type
+			FROM system.columns
+			WHERE
+			table = 'http_requests_features'
+			order by name;</code></p>
+	<p>このクエリではデータベース名での絞り込みが行われていない点に注意してください。11:05の変更以降、特定のClickHouseクラスタのユーザーに対する明示的な許可を段階的に展開していく中で、上記のクエリは、r0データベースに保存されている基になるテーブルの列の「重複」を返すようになりました。</p>
+	<p>残念ながら、これはこのセクションの冒頭で触れたファイルに使われる各入力「フィーチャー」を作成するために、ボット管理のファイル生成ロジックが実行していたタイプのクエリでした。</p>
+	<p>上記のクエリを実行すると、次のような列の一覧（簡略化した例）を返していました：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZIC5X8vMM7ifbJc0vxgLD/49dd33e7267bdb03b265ee0acccf381d/Screenshot_2025-11-18_at_2.51.24%C3%A2__PM.png" alt="Example of code block" class="kg-image" width="548" height="121" loading="lazy">
+	</figure>
+	<p>しかし、ユーザーに付与された追加の権限により、レスポンスには<code>r0</code>スキーマのすべてのメタデータが含まれるようになり、結果として返される行数が実質的に倍増し、最終的なファイル出力における行数（つまり機能数）に影響を与えました。</p>
+	<div class="flex anchor relative">
+		<h3 id="memory-preallocation">メモリの事前割り当て</h3>
+		<a href="https://blog.cloudflare.com/#memory-preallocation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のプロキシサービスで実行される各モジュールには、メモリの無制限消費を防ぎ、パフォーマンスを最適化するためにメモリを事前割り当てする仕組みが設けられています。今回のケースとなったボット管理が実行時に使用できる機械学習フィーチャーの数には制限があり、現在、その制限は200に設定されています。この件数は現在の使用量である約60機能を大幅に上回っています。依然として制限を設けている理由は、フィーチャーにメモリを事前に確保することでパフォーマンスを安定させるためです。</p>
+	<p>しかし今回、200を超えるフィーチャーを持つ不正なファイルがサーバーに伝播した際ことで、この制限に達し、システムがパニックを起こしました。チェックを行い、未処理エラーの原因となったFL2 Rustコードを以下に示します：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/640fjk9dawDk7f0wJ8Jm5S/668bcf1f574ae9e896671d9eee50da1b/BLOG-3079_7.png" alt="code that generated the error" class="kg-image" width="1472" height="456" loading="lazy">
+	</figure>
+	<p>これにより、次のような混乱が発生し、5xxエラーが発生する事態となりました：</p>
+	<p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p>
+	<div class="flex anchor relative">
+		<h3 id="other-impact-during-the-incident">インシデント中のその他の影響</h3>
+		<a href="https://blog.cloudflare.com/#other-impact-during-the-incident" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>コアプロキシに依存する他のシステムも、今回のインシデントで影響を受けました。影響を受けたシステムには Workers KVとCloudflare Access が含まれます。13:04にWorkers KVにパッチを適用してコアプロキシをバイパスすることで、これらのシステムへの影響を軽減できました。その後、Workers KVに依存するすべての下流システム（Access自体など）でも、エラー率の低下が確認されました。</p>
+	<p>Cloudflareダッシュボードも、内部でWorkers KVが使われていること、ログインフローの一部としてCloudflare Turnstileが導入されていることから、影響を受けました。</p>
+	<p>Turnstileはこの障害の影響を受け、既にダッシュボードに接続しているお客様以外はログインできず利用できなくなりました。この影響時間は11:30～13:10と14:40～15:30の2つの時間帯に及びました（下図参照）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nB2ZlYyXiGTNngsVotyjN/479a0f9273c160c63925be87592be023/BLOG-3079_8.png" alt="availability of Cloudflare internal APIs during the incident" class="kg-image" width="1999" height="674" loading="lazy">
+	</figure>
+	<p>1回目の影響（11:30～13:10）は、この障害がWorkers KVに影響したことが原因で、一部のコントロールプレーンおよびダッシュボード機能に支障が出ました。この影響は、Workers KVがコアプロキシシステムをバイパスするようになった13:10に復旧しました。
+
+		ダッシュボードへの2回目の影響は、フィーチャー構成データの復元後に発生し、ログイン試行のバックログによるダッシュボードの圧迫と再試行が重なった結果、遅延が増加し、ダッシュボードの可用性が低下しました。コントロールプレーンの同時処理能力を拡張することで、15:30頃に可用性は回復しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-and-follow-up-steps">改善とフォローアップ手順</h2>
+		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>現在システムは正常に稼働しており、今後同様の障害が発生した場合に備え、以下を重点とするシステムを強化する取り組みに着手しています。：</p>
+	<ul>
+		<li>
+			<p>Cloudflareが生成した構成ファイルを取り込む際に、ユーザーが生成したものと同等の基準で扱うよう強化する</p>
+		</li>
+		<li>
+			<p>特定の機能をグローバルにキルする仕組みの有効範囲を広げる</p>
+		</li>
+		<li>
+			<p>コアダンプやその他のエラーレポートがシステムリソースを圧迫する可能性を排除する</p>
+		</li>
+		<li>
+			<p>コアプロキシのすべてのモジュールにおけるエラー状態の障害モードを見直す</p>
+		</li>
+	</ul>
+	<p>今日の障害は、Cloudflareにとって、<a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019"><u>2019年以降</u></a>で最悪の障害となりました。これまでにも<a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage"><u>ダッシュボードが使用できなくなる</u></a>障害や<a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025"><u>新しい機能</u></a>が一時的に利用できなくなる障害を経験しましたが、過去6年以上で、コアトラフィックの大部分がネットワークを通過しなくなるような障害はありませんでした。</p>
+	<p>今回のような障害は容認できるものではありません。Cloudflareのシステムは、トラフィックが安定して常に流れ続けるように、障害に対する高い耐性を持つように設計されています。過去の障害も、常により耐障害性の高い新しいシステムを構築するきっかけとなってきました。</p>
+	<p>Cloudflareチーム全体を代表し、本日インターネットに多大なるご迷惑をおかけしましたことを深くお詫び申し上げます。 </p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p>時間 (UTC)</p>
+				</th>
+				<th>
+					<p>ステータス</p>
+				</th>
+				<th>
+					<p>説明</p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>11:05</p>
+				</td>
+				<td>
+					<p>正常。</p>
+				</td>
+				<td>
+					<p>データベースアクセス制御の変更を展開。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11:28</p>
+				</td>
+				<td>
+					<p>影響が出始める。</p>
+				</td>
+				<td>
+					<p>展開が顧客環境に到達し、顧客のHTTPトラフィックで最初のエラーを確認。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>11:32～13:05</p>
+				</td>
+				<td>
+					<p>担当チームがWorkers KVサービスへのトラフィック増加とエラーを調査。</p>
+					<p>
+
+					</p>
+				</td>
+				<td>
+					<p>最初の症状として、Workers KVの応答速度の低下が見られ、下流に位置する他のCloudflareのサービスに影響も影響。</p>
+					<p>
+					</p>
+					<p>Workers KV サービスを通常状態に戻すため、トラフィック操作やアカウント制限などの緩和策を実施。</p>
+					<p>
+					</p>
+					<p>11:31に最初の自動テストで問題を検出、11:32に手動調査を開始。11:35にインシデントコールを作成。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13:05</p>
+				</td>
+				<td>
+					<p>Workers KVおよびCloudflare Accessのバイパスを実施 — 影響を軽減。</p>
+				</td>
+				<td>
+					<p>調査中、内部システムバイパスを使用してWorkers KVとCloudflare Accessを以前のバージョンのコアプロキシにフォールバック。この問題は、以前のバージョンのプロキシにも存在していたものの、以下に説明するように影響はより小さいものでした。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>13:37</p>
+				</td>
+				<td>
+					<p>ボット管理設定ファイルを、正常に動作していた中の最新バージョンにロールバックすることに注視した作業を実施。</p>
+				</td>
+				<td>
+					<p>ボット管理の設定ファイルが、今回のインシデントのトリガーになっていたことを確信していたため、サービス復旧のために並行作業で対応にあたり、その中で最速の方法である「設定ファイルを正常に動作していた中の最新バージョンに復元する」作業を実施。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:24</p>
+				</td>
+				<td>
+					<p>ボット管理設定ファイルの新規作成と伝播を停止。</p>
+				</td>
+				<td>
+					<p>500 エラーの原因がボット管理モジュールにあり、不正な設定ファイルが原因であることを特定し、新しいボット管理設定ファイルの自動展開を停止。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:24</p>
+				</td>
+				<td>
+					<p>新規ファイルのテストを完了。</p>
+				</td>
+				<td>
+					<p>旧バージョンの設定ファイルを使用することで復旧が成功したことを確認し、その後、修正をグローバルに展開することに注力。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>14:30</p>
+				</td>
+				<td>
+					<p>主な影響を解消。下流の影響を受けたサービスでも、エラーの減少が確認され始める。</p>
+				</td>
+				<td>
+					<p>正しいボット管理設定ファイルがグローバルに展開され、ほとんどのサービスが正常稼働を再開。</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>17:06</p>
+				</td>
+				<td>
+					<p>すべてのサービスが復旧。影響が解消。</p>
+				</td>
+				<td>
+					<p>下流のすべてのサービスを再起動し、すべての機能が完全に復元。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+</div>

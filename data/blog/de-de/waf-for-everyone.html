@@ -1,0 +1,99 @@
+<div class="mb2 gray5">Lesezeit: 3&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/waf-for-everyone">English</a>, <a href="https://blog.cloudflare.com/zh-tw/waf-for-everyone">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/waf-for-everyone">Français</a>, <a href="https://blog.cloudflare.com/it-it/waf-for-everyone">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/waf-for-everyone">한국어</a>, <a href="https://blog.cloudflare.com/es-es/waf-for-everyone">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/waf-for-everyone">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PjEkXpjLFpphl4QLx937H/e5f4d2ff7ae2ad29eb89da036e9f7e54/waf-for-everyone.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Bei Cloudflare mögen wir Ideen, die Veränderung bringen. Außerdem sind wir der festen Überzeugung, dass jeder ein Recht auf Sicherheit hat und das Internet dadurch für alle besser und gefahrloser wird.</p>
+	<p></p>
+	<p>Das sind keine hohlen Phrasen. Beispielsweise haben wir im Jahr 2014 <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> präsentiert. Damals stellten wir über Nacht SSL/TLS-Verschlüsselung für mehr als eine Million Websites und Internetanwendungen bereit, ohne dass irgendwer auch nur einen Cent dafür bezahlen oder ein Zertifikat konfigurieren musste. Davon haben nicht nur unsere Kunden profitiert, sondern jeder, der im Internet unterwegs ist.</p>
+	<p>2017 stellten wir dann die <a href="https://blog.cloudflare.com/unmetered-mitigation">zeitlich unbeschränkte DDoS-Abwehr</a> vor. Wir haben von unseren Kunden nie verlangt, für die bei DDoS-Angriffen in Anspruch genommene Bandbreite aufzukommen, weil uns das falsch erschien. Doch es dauerte einige Zeit, bis unser Netzwerk die erforderliche Größe erreichte, um eine zeitlich völlig unbeschränkte DDoS-Abwehr für alle bereitzustellen – ob zahlende Kunden oder nicht.</p>
+	<p>Man stellt mir aber oft die Frage, wie wir das schaffen. Das ist eigentlich ganz einfach. Es gelingt uns, indem wir großartige und effiziente Technologie entwickeln, die sich gut skalieren lässt. Auf diese Weise können wir die Kosten niedrig halten.</p>
+	<p><b><i>Jetzt knüpfen wir daran an, indem wir bei allen Cloudflare-Tarifen kostenlos eine WAF (Web Application Firewall) mit verwaltetem Regelsatz bereitstellen.</i></b></p>
+	<div class="flex anchor relative">
+		<h3 id="why-are-we-doing-this">Warum tun wir das?</h3>
+		<a href="https://blog.cloudflare.com/#why-are-we-doing-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aufsehenerregende Sicherheitslücken haben gewaltige Auswirkungen auf das Internet und Unternehmen unterschiedlichster Größe. Dies ließ sich <a href="https://blog.cloudflare.com/tag/log4j">kürzlich bei Log4J beobachten</a>. Doch auch frühere schwerwiegende Schwachstellen wie <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a> und <a href="https://blog.cloudflare.com/tag/heartbleed">Heartbleed</a> sind am World Wide Web nicht spurlos vorübergegangen.</p>
+	<p>Kleine Anwendungsbetreiber und Teams haben nicht immer Zeit, sich bezüglich der rasanten Entwicklung bei Sicherheitspatches auf dem Laufenden zu halten, sodass viele Anwendungen kompromittiert bzw. für unlautere Zwecke missbraucht werden können.</p>
+	<p>Cloudflare dient Millionen Websites und Internetanwendungen als Proxy. Daher haben wir die Pflicht, dafür zu sorgen, dass das Internet sicher bleibt. Und genau das haben wir bei Log4J durch die <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">Anwendung von Abwehrregeln</a> auf den gesamten Traffic einschließlich des Datenverkehrs in den FREE-Zonen getan. Jetzt bekräftigen wir unser Engagement durch die Bereitstellung eines kostenlosen von Cloudflare verwalteten Regelsatzes (Cloudflare Free Managed Ruleset) zusätzlich zu unserer neuen WAF-Engine.</p>
+	<div class="flex anchor relative">
+		<h3 id="when-are-we-doing-this">Wann ist es soweit?</h3>
+		<a href="https://blog.cloudflare.com/#when-are-we-doing-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wenn Sie den FREE-Tarif nutzen, sind Sie bereits geschützt. In den nächsten Monaten erhalten darüber hinaus auch alle Nutzer unseres FREE-Zonen-Tarifs im Dashboard Zugang zur Benutzeroberfläche der Cloudflare-WAF. So werden sie in der Lage sein, den neuen Regelsatz anzuwenden und zu konfigurieren. Dieser wird Abwehrregeln für bekannte Sicherheitslücken wie Shellshock und Log4J umfassen.</p>
+	<p>Um unsere breitere Palette an WAF-Regelsätzen (Managed Rules, OWASP Core Ruleset und Leaked Credential Check Ruleset) sowie erweiterte WAF-Funktionen nutzen zu können, müssen Kunden weiterhin über einen PRO-Tarif oder eine höhere Tarifoption verfügen.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-challenge">Herausforderung</h3>
+		<a href="https://blog.cloudflare.com/#the-challenge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Da pro Sekunde 32 Millionen HTTP-Anfragen durch das globale Cloudflare-Netzwerk geleitet werden, ist es alles andere als leicht, die WAF bei jeder einzelnen Anfrage einzusetzen.</p>
+	<p>WAFs sichern alle Bestandteile einer HTTP-Anfrage einschließlich des Nachrichtenrumpfs (Body) durch das Anwenden einer Reihe von Regeln, die auch als Signaturen bezeichnet werden. Diese suchen nach bestimmten Mustern, die auf einen schädlichen Payload hinweisen können. Solche Regeln sind unterschiedlich komplex und je mehr davon eingesetzt werden, desto schwerer lässt sich ein System optimieren. Viele Regeln machen sich Regex-Funktionen zunutze, was die Anwendung komplexer Abgleichslogik erlaubt.</p>
+	<p>All dies darf die Latenz jedoch nicht wesentlich steigern, schließlich sollte Sicherheit nicht auf Kosten der Performance gehen. Dies insbesondere deswegen, weil sich viele Anwendungsbetreiber gerade deshalb an Cloudflare wenden, weil sie sich eine bessere Performance erhoffen.</p>
+	<p>Durch den Einsatz unserer neuen Edge Rules Engine, auf der die <a href="https://blog.cloudflare.com/new-cloudflare-waf">neue WAF aufbaut</a>, konnten wir für uns akzeptable Werte bei Performance und Speicher erreichen. Das erlaubt es uns, jedem einen soliden WAF-Basisschutz zu bieten. Weg frei für den neuen kostenlosen verwalteten Regelsatz von Cloudflare!</p>
+	<div class="flex anchor relative">
+		<h3 id="the-free-cloudflare-managed-ruleset">Der kostenlose verwaltete Regelsatz von Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#the-free-cloudflare-managed-ruleset" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dieser Regelsatz kommt automatisch bei jeder neuen Cloudflare-Zone zum Einsatz und ist speziell darauf ausgelegt, falsch-positive Ergebnisse bei einem sehr breiten Spektrum an Traffic-Typen auf ein Mindestmaß zu reduzieren. Die Kunden werden ihn wenn nötig deaktivieren oder den Traffic-Filter oder einzelne Regeln selbst konfigurieren können. Aktuell umfasst er folgende Regeln:</p>
+	<ul>
+		<li>
+			<p>Log4J-Regeln zum Abgleich von Nutzlasten in der URI und den HTTP-Headern;</p>
+		</li>
+		<li>
+			<p>Shellshock-Regeln;</p>
+		</li>
+		<li>
+			<p>Regeln für sehr häufige WordPress-Exploits;</p>
+		</li>
+	</ul>
+	<p>Kommt eine Regel zum Einsatz, wird dies immer in der Registerkarte „Sicherheitsübersicht“ in Form einer Ereignismeldung angezeigt, sodass die betreffende Anfrage geprüft werden kann.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ooomtu9SplFlHMJIY0Bu4/727fde44302b99b52ee3834cb6a1ef26/image1-28.png" alt="" class="kg-image" width="1999" height="908" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="deploying-and-configuring">Einsatz und Konfiguration</h3>
+		<a href="https://blog.cloudflare.com/#deploying-and-configuring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der Regelsatz wird automatisch auf alle neuen FREE-Zonen angewandt. Die Regeln haben sich im Cloudflare-Netzwerk bereits bewährt und können für die meisten Anwendungen sofort eingesetzt werden. In jedem Fall können die Kunden die Konfiguration des Regelsatzes in folgender Weise anpassen:</p>
+	<ul>
+		<li>
+			<p>Überlagern aller Regeln durch „LOG“ (reines Protokollieren) oder eine andere Aktion</p>
+		</li>
+		<li>
+			<p>Überlagern bestimmter Regeln durch „LOG“ oder eine andere Aktion</p>
+		</li>
+		<li>
+			<p>Vollständiges Deaktivieren des Regelsatzes oder beliebiger Einzelregeln</p>
+		</li>
+	</ul>
+	<p>Alle Optionen sind über das Dashboard leicht zugänglich, können aber auch über die API ausgeführt werden. Die Dokumentation zur Konfiguration des Regelsatzes finden Sie, sobald er in der Benutzeroberfläche verfügbar ist, auf unserer <a href="https://developers.cloudflare.com/waf/managed-rulesets" target="_blank" rel="noopener noreferrer">Seite für Developer</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Was kommt als Nächstes?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare aktualisiert den kostenlosen verwalteten Regelsatz immer dann, wenn eine relevante weitreichende Sicherheitslücke entdeckt wird. Updates für den Regelsatz werden in unserem <a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">Änderungsprotokoll</a> veröffentlicht, damit sich die Kunden jederzeit über neue Regeln informieren können.Wir lieben es, spannende neue Technik zu entwickeln. Genauso gern sorgen wir aber dafür, dass die Technologie der Allgemeinheit verfügbar gemacht wird und leicht zu benutzen ist. Daher freuen wir uns sehr, das Web mit einer WAF, die Sie nichts kostet, für alle erheblich sicherer machen zu können. Wenn Sie sich selbst ein Bild machen möchten, können Sie sich <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">hier</a> für unseren Free-Tarif registrieren.</p>
+</div>

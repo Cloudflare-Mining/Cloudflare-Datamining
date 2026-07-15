@@ -1,43 +1,16 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-the-beta-for-warp-for-macos-and-windows">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/announcing-the-beta-for-warp-for-macos-and-windows">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-the-beta-for-warp-for-macos-and-windows">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/announcing-the-beta-for-warp-for-macos-and-windows">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/58Mk4dlAlm9W4N4L7NYvQU/ed322f0eda0eda6135df20f4c5c1add2/announcing-the-beta-for-warp-for-macos-and-windows.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Last April 1 we announced WARP — an option within the 1.1.1.1 iOS and Android app to secure and speed up Internet connections. Today, millions of users have secured their mobile Internet connections with WARP.</p>
-	<p>While WARP started as an option within the 1.1.1.1 app, it's really a technology that can benefit any device connected to the Internet. In fact, one of the most common requests we've gotten over the last year is support for WARP for macOS and Windows. Today we're announcing exactly that: the start of the WARP beta for macOS and Windows.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-the-same-fast-secure-and-free">What's The Same: Fast, Secure, and Free</h3>
-		<a href="https://blog.cloudflare.com/#whats-the-same-fast-secure-and-free" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We always wanted to build a WARP client for macOS and Windows. We started with mobile because it was the hardest challenge. And it turned out to be a lot harder than we anticipated. While we announced the beta of 1.1.1.1 with WARP on April 1, 2019 it took us until late September before we were able to open it up to general availability. We don't expect the wait for macOS and Windows WARP to be nearly as long.</p>
-	<p>The WARP client for macOS and Windows relies on the same fast, efficient Wireguard protocol to secure Internet connections and keep them safe from being spied on by your ISP. Also, just like WARP on the 1.1.1.1 mobile app, the basic service will be free on macOS and Windows.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2f9xd6DKnT1pbycvX25WmS/ecf9495a96e32589fb1fc99589b4f8f7/warp-desktop.png" alt="" class="kg-image" width="1024" height="512" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="warp-gets-you-there-faster">WARP+ Gets You There Faster</h3>
-		<a href="https://blog.cloudflare.com/#warp-gets-you-there-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We plan to add WARP+ support in the coming months to allow you to leverage Cloudflare's <a href="https://www.cloudflare.com/products/argo-smart-routing" target="_blank" rel="noopener noreferrer">Argo</a> network for even faster Internet performance. We will provide a plan option for existing WARP+ subscribers to add additional devices at a discount. In the meantime, existing WARP+ users will be among the first to be invited to try WARP for macOS and Windows. If you are a WARP+ subscriber, check your 1.1.1.1 app over the coming weeks for a link to an invitation to try the new WARP for macOS and Windows clients.</p>
-	<p>If you're not a WARP+ subscriber, you can add yourself to the waitlist by signing up on the page linked below. We'll email as soon as it's ready for you to try.</p>
-	<p><a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer">https://one.one.one.one</a></p>
-	<div class="flex anchor relative">
-		<h3 id="linux-support">Linux Support</h3>
-		<a href="https://blog.cloudflare.com/#linux-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We haven't forgotten about Linux. About 10% of Cloudflare's employees run Linux on their desktops. As soon as we get the macOS and Windows clients out we’ll turn our attention to building a WARP client for Linux.</p>
-	<p>Thank you to everyone who helped us make WARP fast, efficient, and reliable on mobile. It's incredible how far it's come over the last year. If you tried it early in the beta last year but aren't using it now, I encourage you to give it another try. We're looking forward to bringing WARP speed and security to even more devices.</p>
-</div>
+<p>Last April 1 we announced WARP — an option within the 1.1.1.1 iOS and Android app to secure and speed up Internet connections. Today, millions of users have secured their mobile Internet connections with WARP.</p>
+<p>While WARP started as an option within the 1.1.1.1 app, it's really a technology that can benefit any device connected to the Internet. In fact, one of the most common requests we've gotten over the last year is support for WARP for macOS and Windows. Today we're announcing exactly that: the start of the WARP beta for macOS and Windows.</p>
+<h3>What's The Same: Fast, Secure, and Free</h3>
+<p>We always wanted to build a WARP client for macOS and Windows. We started with mobile because it was the hardest challenge. And it turned out to be a lot harder than we anticipated. While we announced the beta of 1.1.1.1 with WARP on April 1, 2019 it took us until late September before we were able to open it up to general availability. We don't expect the wait for macOS and Windows WARP to be nearly as long.</p>
+<p>The WARP client for macOS and Windows relies on the same fast, efficient Wireguard protocol to secure Internet connections and keep them safe from being spied on by your ISP. Also, just like WARP on the 1.1.1.1 mobile app, the basic service will be free on macOS and Windows.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="358" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=750&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=828&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=1080&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=1280&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F1ZAV9S3GJ6BMJDZHNA9.png&amp;w=1430&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Announcing the Beta for WARP for macOS and Windows Embedded Image - CPHlHi" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="358" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Announcing the Beta for WARP for macOS and Windows Embedded Image - CPHlHi"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>WARP+ Gets You There Faster</h3>
+<p>We plan to add WARP+ support in the coming months to allow you to leverage Cloudflare's <a href="https://www.cloudflare.com/products/argo-smart-routing" target="_blank" rel="noopener noreferrer">Argo</a> network for even faster Internet performance. We will provide a plan option for existing WARP+ subscribers to add additional devices at a discount. In the meantime, existing WARP+ users will be among the first to be invited to try WARP for macOS and Windows. If you are a WARP+ subscriber, check your 1.1.1.1 app over the coming weeks for a link to an invitation to try the new WARP for macOS and Windows clients.</p>
+<p>If you're not a WARP+ subscriber, you can add yourself to the waitlist by signing up on the page linked below. We'll email as soon as it's ready for you to try.</p>
+<p><a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer">https://one.one.one.one</a></p>
+<h3>Linux Support</h3>
+<p>We haven't forgotten about Linux. About 10% of Cloudflare's employees run Linux on their desktops. As soon as we get the macOS and Windows clients out we’ll turn our attention to building a WARP client for Linux.</p>
+<p>Thank you to everyone who helped us make WARP fast, efficient, and reliable on mobile. It's incredible how far it's come over the last year. If you tried it early in the beta last year but aren't using it now, I encourage you to give it another try. We're looking forward to bringing WARP speed and security to even more devices.</p>

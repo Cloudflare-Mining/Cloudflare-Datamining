@@ -1,0 +1,273 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/20-percent-internet-upgrade">English</a>、<a href="https://blog.cloudflare.com/fr-fr/20-percent-internet-upgrade">Français</a>、<a href="https://blog.cloudflare.com/de-de/20-percent-internet-upgrade">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/20-percent-internet-upgrade">한국어</a>、<a href="https://blog.cloudflare.com/nl-nl/20-percent-internet-upgrade">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/20-percent-internet-upgrade">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GUKNR9jGUpLX1qjIFcV2h/f4706e05785de7f027f9bd4a2a7161cc/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflareは世界最速ネットワークの構築と運用に弛まず努力しており、<a href="https://blog.cloudflare.com/tag/network-performance-update"><u>2021年からネットワークパフォーマンスを追跡して報告</u></a>しています。最新情報は<a href="https://blog.cloudflare.com/tag/network-performance-update"><u>こちら</u></a>でご確認いただけます。</p>
+	<p>最速のネットワークを構築するには、多くの分野での取り組みが必要です。Cloudflareでは、効率的で高速なマシンを配備するため、ハードウェアに多くの時間を投資しています。最小限の遅延でインターネットのあらゆる部分と通信できるよう、ピアリング接続に投資しているほか、ネットワークを運用するためのソフトウェアにも投資しなければなりません。そうしなければ、特に新製品を導入する際に処理遅延が増大する可能性があるためです。</p>
+	<p>メッセージの到着がどんなに速くても、ソフトウェアがリクエストの処理と応答の方法を考えるのに時間がかかりすぎればボトルネックが生じます。本日、応答時間を10ミリ秒（中央値）短縮し、パフォーマンスを25%改善する（サードパーティのCDNパフォーマンステストの測定結果）重要なソフトウェアアップグレードを発表できることを嬉しく思います。</p>
+	<p>当社はここ一年でシステムの主要コンポーネントを再構築し、数百万のお客様のために、ネットワークのトラフィック遅延を大幅に削減しました。それと同時にシステムのセキュリティを強化し、新製品の構築とリリースにかかる時間を短縮しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="where-did-we-start">事の始まり</h2>
+		<a href="https://blog.cloudflare.com/#where-did-we-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareにヒットするリクエストはすべて、まず当社のネットワークを通過します。これは、ブラウザのWebページ読み込み、モバイルアプリのAPI呼び出し、サービス間の自動トラフィックなど、どんな種類のリクエストでも同じです。これらのリクエストは、まず当社のHTTPおよびTLS層で終端処理され、次に「FL」と呼ばれるシステムに渡され、最後に<a href="https://blog.cloudflare.com/pingora-open-source"><u>Pingora</u></a>を通過します。Pingoraは、必要に応じてキャッシュルックアップを実行するか、オリジンからデータを取得します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CKW3jrB9vw4UhXx6OYJpt/928b9e9c1c794f7622fc4ad469d66b60/image3.png" alt="" class="kg-image" width="1999" height="846" loading="lazy">
+	</figure>
+	<p>FLはCloudflareの頭脳です。リクエストがFLに到達すると、当社のネットワークでさまざまなセキュリティ機能とパフォーマンス機能を実行します。<a href="https://developers.cloudflare.com/waf/managed-rules" target="_blank" rel="noopener noreferrer"><u>WAFルール</u></a>と<a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>DDoS攻撃対策</u></a>の適用から、<a href="https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to-devplat" target="_blank" rel="noopener noreferrer"><u>開発者プラットフォーム</u></a>と<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>へのトラフィックルーティングまで、お客様固有の構成や設定が適用されます。</p>
+	<p>15年以上前に構築されたFLは、Cloudflareネットワークの中核です。FLは幅広い機能の提供を可能にしましたが、時の経過とともにその柔軟性が課題になってきたのです。製品を追加するにつれて、FLの保守がより困難になり、リクエストの処理速度が低下し、拡張が難しくなりました。新機能を追加するたびに既存のロジック全体を慎重にチェックしなければならず、わずかな遅延が生じて、期待するパフォーマンスを維持しづらくなっていきました。</p>
+	<p>FLが当社のシステムにとっていかに重要かは、私たちがしばしばFLをCloudflareの「頭脳」と呼んでいることからもおわかりいただけると思います。FLは当社システムの最も古い部分の1つでもあります。コードベースへの初回コミットは、初回ローンチのずっと前に創業者の1人Lee Hollowayによって行われています。当社は今週15周年を迎えますが、このシステムはそのさらに9か月前に稼働を開始しました！</p>
+	<pre class="language-Rust"><code class="language-Rust">commit 39c72e5edc1f05ae4c04929eda4e4d125f86c5ce
+Author: Lee Holloway &lt;q@t60.(none)&gt;
+Date:   Wed Jan 6 09:57:55 2010 -0800
+
+    nginx-fl initial configuration</code></pre>
+	<p>初回コミットのタイミングからお察しの通り、FLの最初のバージョンはNGINXウェブサーバーをベースに実装され、製品ロジックはPHPで実装されました。3年後、システムは複雑になりすぎて効果的な管理が難しくなり、応答が遅くなったため、稼働中のシステムのほぼ完全な書き換えが行われました。これにより再び重要なコミットが、今度は現CTOのDane Knechtによって行われました。</p>
+	<pre class="language-Rust"><code class="language-Rust">commit bedf6e7080391683e46ab698aacdfa9b3126a75f
+Author: Dane Knecht
+Date:   Thu Sep 19 19:31:15 2013 -0700
+
+    remove PHP.</code></pre>
+	<p>この時から、FLの実装ではNGINX、<a href="https://openresty.org/en" target="_blank" rel="noopener noreferrer"><u>OpenResty</u></a>フレームワーク、<a href="https://luajit.org" target="_blank" rel="noopener noreferrer"><u>LuaJIT</u></a>が用いられました。これは長い間うまく機能していましたが、ここ数年で古さが感じられるようになりました。LuaJITの不明瞭なバグの修正や回避に費やす時間が増加しました。当社のLuaコードの非常に動的かつ非構造的な性質は、当初ロジックを迅速に実装する際には利点でしたが、多くの複雑な製品ロジックを統合しようとする際はエラーと遅延の原因になりました。新製品が導入されるたびに、すべての既存製品を調べて、新しいロジックの影響を受けるかどうかを確認する必要がありました。</p>
+	<p>見直しが必要なのは明らかでした。そこで2024年7月に、初回コミットを全く新しい根本的に異なる実装に置き換えました。新たな名称について合意する時間を省くために単に「FL2」と名付け、元のFLを「FL1」と呼ぶようになったのです。</p>
+	<pre class="language-Rust"><code class="language-Rust">commit a72698fc7404a353a09a3b20ab92797ab4744ea8
+Author: Maciej Lechowski
+Date:   Wed Jul 10 15:19:28 2024 +0100
+
+    Create fl2 project</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="rust-and-rigid-modularization">Rustと厳格なモジュール化</h2>
+		<a href="https://blog.cloudflare.com/#rust-and-rigid-modularization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちはゼロから始めたのではありません。以前、当社のレガシーシステムの1つをPingoraにリプレースしたことについて<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet"><u>ブログ</u></a>投稿しましたが、Pingoraは<a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer"><u>Rust</u></a>プログラミング言語で、<a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"><u>Tokio</u></a>ランタイムを使って構築されています。また、Rustでプロキシを構築するための社内フレームワークである<a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxy</u></a>についてもブログを投稿しています。当社はRustをよく使い、十分に使いこなしています。</p>
+	<p>当社は、Oxy上でRustを用いてFL2を構築し、FL2の全ロジックを構造化するための厳格なモジュールフレームワークを構築しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="why-oxy">Oxyを使った理由</h2>
+		<a href="https://blog.cloudflare.com/#why-oxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL2の構築に着手した際、単に古いシステムを置き換えるのではなく、Cloudflareの基盤そのものを再構築しているのだと認識していました。つまり、必要なのは単なるプロキシではなく、当社とともに進化し、ネットワークの巨大な規模に対応し、安全性やパフォーマンスを犠牲にすることなくチームが迅速に動けるようなフレームワークだったのです。</p>
+	<p>Oxyなら、パフォーマンス、安全性、柔軟性の強力な組み合わせが実現します。Rustで構築されたこのフレームワークは、Cレベルのパフォーマンスを提供しながら、メモリ安全性の問題やデータ競合など、NGINX/LuaJITベースのFL1を悩ませたバグのクラス全体を排除します。Cloudflareの規模では、この保証は単なる「あったら嬉しいもの」ではなく不可欠です。1リクエストにつき1マイクロ秒の節約でも、実感としてのユーザーエクスペリエンス向上につながり、クラッシュやエッジケースを逐一回避することがインターネットの円滑な稼働を維持することになるのです。Rustの厳格なコンパイル時保証は、製品モジュールとその入出力の間に明確な契約を義務付けるFL2のモジュール構造との相性が抜群です。</p>
+	<p>しかし、選択の決め手は言語だけではありませんでした。Oxyは、長年にわたる高性能プロキシ構築経験の集大成です。当社の<a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Zero Trust</u></a> Gatewayから<a href="https://blog.cloudflare.com/icloud-private-relay"><u>AppleのiCloud Private Relay</u></a>まで、すでに複数の主要なCloudflareサービスで使われているため、FL2で扱うような多様なトラフィックパターンやプロトコルの組み合わせを処理できることがわかっていました。その拡張性モデルにより、<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"><u>レイヤー3～7</u></a>のトラフィックを傍受、分析、操作することができ、別のレイヤーでトラフィックをデカプセル化して再処理することも可能です。この柔軟性はFL2の設計において重要です。HTTPから未加工IPトラフィックまで一貫して処理でき、基本的な部分を書き換えることなくプラットフォームを進化させることで、新しいプロトコルや機能をサポートできるからです。</p>
+	<p>Oxyには、以前は大量のカスタムコードを必要とした豊富なビルトイン機能も搭載されています。監視、ソフトリロード、動的構成の読み込みとスワップなどは、すべてこのフレームワークの一環です。これにより、製品チームは基本的な部分をいちいち作らずに済み、モジュールの固有のビジネスロジックに集中することができます。この堅固な基盤があるため、自信を持って変更を加え、迅速に出荷し、デプロイ後も期待どおりに動作すると確信できるのです。</p>
+	<div class="flex anchor relative">
+		<h2 id="smooth-restarts-keeping-the-internet-flowing">スムーズな再起動 - インターネットのフローを維持</h2>
+		<a href="https://blog.cloudflare.com/#smooth-restarts-keeping-the-internet-flowing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Oxyがもたらす最も効果的な改善点の1つは、再起動処理の改善です。継続的に開発と改善が行われているソフトウェアは、いずれアップデートが必要になります。デスクトップソフトウェアなら簡単で、プログラムを閉じて更新をインストールし、再度開くだけです。Webの場合はなかなか大変です。当社のソフトウェアは常に使用されているため、簡単には停止できません。HTTPリクエストが中断されるとページが読み込めなくなる可能性があり、接続が切れるとビデオ通話が強制終了する可能性があります。信頼性は任意ではなく必須の要素なのです。</p>
+	<p>FL1では、アップグレードの際にプロキシプロセスの再起動（リスタート）が必要でした。プロキシの再起動はプロセスの完全な終了を意味し、アクティブな接続は即座に中断されました。これは、WebSocketやストリーミングセッション、リアルタイムAPIといった長期間接続では特に問題でした。計画されたアップグレードでもユーザーから見える中断が発生しかねず、インシデント中の計画外の再起動はさらに厄介でした。</p>
+	<p>この状況をOxyが変えます。<a href="https://blog.cloudflare.com/oxy-the-journey-of-graceful-restarts"><u>グレースフルリスタート</u></a>の組み込みメカニズムが含まれており、接続をできるだけ切断せずに新しいバージョンをロールアウトできます。Oxyベースのサービスの新しいインスタンスが起動すると、古いインスタンスは新たな接続の受け入れを停止しますが、既存の接続には引き続き対応するため、これらのセッションは自然に終了するまで中断されずに継続します。</p>
+	<p>つまり、当社が新しいバージョンをデプロイする際に進行中のWebSocketセッションがある場合、そのセッションは再起動によって強制終了されず、自然に終了するまで中断なく継続できるということです。Cloudflareのフリート全体でデプロイメントが数時間にわたって調整されるため、集約的なロールアウトはスムーズで、エンドユーザーにはほとんど見えません。</p>
+	<p>さらに、systemdソケットアクティベーションを使用します。各プロキシがそれぞれソケットを管理するのではなく、systemdがソケットを作成し、所有するようにします。これで、ソケットの有効期間がOxyアプリケーション自体の有効期間から切り離されます。Oxyプロセスが再起動またはクラッシュしても、ソケットは開いたままで新しい接続を受け入れることができ、接続は新しいプロセスが稼働次第提供されます。これにより、FL1では再起動時に発生する可能性があった「Connection Refused（接続拒否）」エラーが排除され、アップグレード中の全体的な可用性が向上します。</p>
+	<p>また、<a href="https://github.com/cloudflare/tableflip" target="_blank" rel="noopener noreferrer"><u>tableflip</u></a>のようなGoライブラリを<a href="https://github.com/cloudflare/shellflip" target="_blank" rel="noopener noreferrer"><u>shellflip</u></a>にリプレースするために、Rustで独自の調整メカニズムを構築しました。再起動調整ソケットを使用して構成を検証し、新しいインスタンスを生成し、古いバージョンがシャットダウンする前に新しいバージョンが正常であることを確認します。これによりフィードバックループが改善されるため、事前情報のないブラインド状態での再起動ではなく、自動化ツールで障害を即座に検出して対応できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="composing-fl2-from-modules">モジュールからFL2を構成</h2>
+		<a href="https://blog.cloudflare.com/#composing-fl2-from-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL1で発生した問題を回避するために、FL2は製品ロジック間のすべてのインタラクションが明確で理解しやすい設計にしたいと考えました。</p>
+	<p>そこで、Oxyが提供する基盤の上に、当社製品のすべてのロジックを明確に定義されたモジュールに分離するプラットフォームを構築しました。いくつかの実験と研究を経て、以下の厳格なルールを適用するモジュールシステムを設計しました：</p>
+	<ul>
+		<li>
+			<p>モジュールは、IO（入出力）を一切実行できない。</p>
+		</li>
+		<li>
+			<p>モジュールは<b>フェーズ</b>のリストを提供する。</p>
+		</li>
+		<li>
+			<p>フェーズは厳密に定められた順序で評価される。これはすべてのリクエストに共通である。</p>
+		</li>
+		<li>
+			<p>プラットフォームが提供する一連の入力と、プラットフォームが出力する一連の出力を、各フェーズで定義する。</p>
+		</li>
+	</ul>
+	<p>以下はモジュールフェーズ定義の例です：</p>
+	<pre class="language-Rust"><code class="language-Rust">Phase {
+    name: phases::SERVE_ERROR_PAGE,
+    request_types_enabled: PHASE_ENABLED_FOR_REQUEST_TYPE,
+    inputs: vec![
+        InputKind::IPInfo,
+        InputKind::ModuleValue(
+            MODULE_VALUE_CUSTOM_ERRORS_FETCH_WORKER_RESPONSE.as_str(),
+        ),
+        InputKind::ModuleValue(MODULE_VALUE_ORIGINAL_SERVE_RESPONSE.as_str()),
+        InputKind::ModuleValue(MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT.as_str()),
+        InputKind::ModuleValue(MODULE_VALUE_RULESETS_UPSTREAM_ERROR_DETAILS.as_str()),
+        InputKind::RayId,
+        InputKind::StatusCode,
+        InputKind::Visitor,
+    ],
+    outputs: vec![OutputValue::ServeResponse],
+    filters: vec![],
+    func: phase_serve_error_page::callback,
+}</code></pre>
+	<p>このフェーズは、当社のカスタムエラーページ製品に関するものです。訪問者のIPアドレス、ヘッダーなどのHTTP情報、「モジュール値」といったいくつかの情報の入力が必要です。モジュール値は、あるモジュールから別のモジュールに情報を渡すことを可能にし、モジュールシステムの厳密な特性を機能させる上で重要です。たとえば、このモジュールには、ルールセットベースの当社カスタムエラー製品の出力によって生成された情報（"<code>MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT</code>"の入力）が必要です。これらの入出力定義はコンパイル時に適用されます。</p>
+	<p>これらのルールは厳格ですが、このフレームワーク内で当社の製品ロジックをすべて実装できることがわかりました。そうすることで、互いに影響を与える可能性のある他の製品をすぐに特定できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-replace-a-running-system">実行中のシステムをリプレースする方法</h2>
+		<a href="https://blog.cloudflare.com/#how-to-replace-a-running-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>フレームワークを構築することと、製品ロジックをすべて構築して正しく動作させ、お客様がパフォーマンスの向上以外何も気づかないようにすることは、別の課題です。</p>
+	<p>FLのコードベースは15年間にわたりCloudflare製品を支えており、常に変化しています。開発を止めるわけにはいきませんので、まず移行をより簡単かつ安全にする方法を見つけることが先決でした。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-1-rust-modules-in-openresty">ステップ 1 - OpenRestyにRustモジュール</h3>
+		<a href="https://blog.cloudflare.com/#step-1-rust-modules-in-openresty" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rustでの製品ロジック再構築は、お客様への製品リリースから注意が逸れてしまうほどの作業です。全チームに製品ロジックを2バージョン維持させ、移行が完了するまで変更のたびに2度再実装させるのは、負担が大きすぎました。</p>
+	<p>そこで、NGINXとOpenRestyをベースとする旧FLにレイヤーを実装し、新しいモジュールを実行できるようにしました。各チームは、並行実装を維持するのではなく、Rustでロジックを実装して、古いシステムの完全なリプレースを待つことなく、古いLuaのロジックをリプレースすることができました。</p>
+	<p>たとえば、これは以前に定義されたカスタムエラーページモジュールフェーズの実装の一部です（退屈な詳細をいくつか省略しているため、このままではコンパイルできません）：</p>
+	<pre class="language-Rust"><code class="language-Rust">pub(crate) fn callback(_services: &amp;mut Services, input: &amp;Input&lt;'_&gt;) -&gt; Output {
+    // Rulesets produced a response to serve - this can either come from a special
+    // Cloudflare worker for serving custom errors, or be directly embedded in the rule.
+    if let Some(rulesets_params) = input
+        .get_module_value(MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT)
+        .cloned()
+    {
+        // Select either the result from the special worker, or the parameters embedded
+        // in the rule.
+        let body = input
+            .get_module_value(MODULE_VALUE_CUSTOM_ERRORS_FETCH_WORKER_RESPONSE)
+            .and_then(|response| {
+                handle_custom_errors_fetch_response("rulesets", response.to_owned())
+            })
+            .or(rulesets_params.body);
+
+        // If we were able to load a body, serve it, otherwise let the next bit of logic
+        // handle the response
+        if let Some(body) = body {
+            let final_body = replace_custom_error_tokens(input, &amp;body);
+
+            // Increment a metric recording number of custom error pages served
+            custom_pages::pages_served("rulesets").inc();
+
+            // Return a phase output with one final action, causing an HTTP response to be served.
+            return Output::from(TerminalAction::ServeResponse(ResponseAction::OriginError {
+                rulesets_params.status,
+                source: "rulesets http_custom_errors",
+                headers: rulesets_params.headers,
+                body: Some(Bytes::from(final_body)),
+            }));
+        }
+    }
+}</code></pre>
+	<p>各モジュールの内部ロジックはデータ処理から明確に分離されており、Rust言語の設計により、非常に明確かつ明示的なエラー処理が推奨されています。</p>
+	<p>当社で最も活発に開発されているモジュールの多くはこの方法で処理され、チームは移行期間中も変更のベロシティを維持できました。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-2-testing-and-automated-rollouts">ステップ 2 - テストと自動ロールアウト</h3>
+		<a href="https://blog.cloudflare.com/#step-2-testing-and-automated-rollouts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OElHIMjnkIQmsbx92ZOYc/545a26ba623a253ea1a5c6b13279301d/image4.png" alt="" class="kg-image" width="1999" height="743" loading="lazy">
+	</figure>
+	<p>このような移行には、非常に強力なテストフレームワークが不可欠です。当社は、数千のフルエンドツーエンドのテストリクエストを本番環境とプリプロダクションのシステムに対して同時に実行できるシステム（社内でFlamingoと名付けました）を構築しました。FL1とFL2に対して同じテストを実行することで、動作が変わらないことを確認できます。</p>
+	<p>変更をデプロイする際、トラフィック量を段階的に増加させながら、複数の段階にわたって徐々に変更をロールアウトします。各段階は自動的に評価され、すべてのテストが正常に実行され、全体的なパフォーマンスとリソース使用量の指標が許容範囲内にある場合にのみ、合格となります。このシステムは完全に自動化されており、テストが失敗した場合、変更は一時停止またはロールバックされます。
+	</p>
+	<p>利点は、FL2で新しい製品機能を48時間以内に構築し、リリースできることです。FL1では数週間かかっていたでしょう。実は、今週の発表はそのような変更に関わるものが複数あります！</p>
+	<div class="flex anchor relative">
+		<h3 id="step-3-fallbacks">ステップ 3：フォールバック</h3>
+		<a href="https://blog.cloudflare.com/#step-3-fallbacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FL2には100人以上のエンジニアが携わっており、モジュールは130以上あります。まだこれで終わりではありません。このシステムがFL1の動作をすべて確実に再現するよう、最後の仕上げをしているところです。</p>
+	<p>すべての処理ができないFL2に、どのようにトラフィックを送信するのでしょうか？FL2がリクエストまたはリクエストの構成の一部を受け取り、その処理方法がわからない場合は、諦めて<b>フォールバック</b>と呼ばれるプロセスを行います。つまり、すべてをFL1に引き渡すのです。これはネットワークレベルで実行され、バイトをFL1に渡すだけです。</p>
+	<p>これには、完了を待たずしてFL2にトラフィックを送信できるだけでなく、もう1つ大きなメリットがあります。FL2に新しい機能を実装し、FL1と同様に動作するか確認したい場合は、FL2で機能を評価してからフォールバックをトリガーできます。2つのシステムの動作を比較できるため、実装が正しかったという強い確信が得られます。</p>
+	<div class="flex anchor relative">
+		<h3 id="step-4-rollout">ステップ 4：ロールアウト</h3>
+		<a href="https://blog.cloudflare.com/#step-4-rollout" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025年初頭からお客様のトラフィックをFL2で流し始め、年間を通して、FL2経由のトラフィック量を徐々に増やしてきました。基本的には2つのグラフを監視してきました。1つはFL2へルーティングされるトラフィックの割合の上昇を、もう1つはFL2で処理できずFL1にフォールバックするトラフィックの割合の減少を示しています。</p>
+	<p>このプロセスは、まず無料プランのお客様のトラフィックを新システムに通すことから始めました。システムが正しく機能することを証明し、主要モジュールのフォールバック率を下げることができました。<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflareコミュニティ</u></a>のMVPが早期警報システムとして機能し、新たに報告された問題の原因が新プラットフォームではないかと思われる時はスモークテストを実施し、フラグを立ててくれました。彼らのサポートのおかげで、当社のチームは迅速に調査し、的を絞った修正を適用するか、FL2への移行が原因でないことを確認することができました。</p>
+	<p>
+		その後、有料プランをご利用のお客様にも広げ、このシステムを利用するお客様の数を徐々に増やしていきました。また、FL2のパフォーマンス向上効果を期待されていた大規模なお客様数社と密接に協力して、システムに関するフィードバックを多数提供していただく条件で早期オンボーディングを行いました。</p>
+	<p>現在、ほとんどのお客様はFL2を使用しています。まだ完成すべき機能がいくつかあり、すべてのお客様をオンボードするまでは至っていませんが、あと数か月内にFL1を廃止することを目標にしています。</p>
+	<div class="flex anchor relative">
+		<h2 id="impact-of-fl2">FL2の効果</h2>
+		<a href="https://blog.cloudflare.com/#impact-of-fl2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この記事の冒頭で説明したように、FL2はFL1よりずっと高速です。最大の理由は、単純にFL2の処理負荷が少ないからです。モジュール定義の例で、ある行にお気づきになったかもしれません：</p>
+	<pre class="language-Rust"><code class="language-Rust">    filters: vec![],</code></pre>
+	<p>各モジュールは、実行するか否かを制御する一連のフィルターを提供できます。つまり、すべてのリクエストに対してすべての製品のロジックを実行するのではなく、必要なモジュールだけを簡単に選択できるということです。新製品を開発するたびにかかっていた増分費用はなくなりました。</p>
+	<p>パフォーマンスが向上するもう1つの大きな理由は、FL2が単一のコードベースであり、パフォーマンスを重視した言語で実装されている点です。それに比べ、FL1はNGINX（C言語で記述）をベースにLuaJIT（LuaとCのインターフェースレイヤー）を組み合わせて使っており、多くのRustモジュールも含んでいました。FL1では、ある言語で必要とされる表現形式から別の言語で必要とされる表現形式へデータを変換するために、多くの時間とメモリを費やしていました。</p>
+	<p>そのため、社内の測定で、FL2のCPU使用がFL1の半分以下、メモリ使用は半分よりさらに大幅に低いという結果が出ています。これは予想以上の効果です。CPUをお客様により多くの機能を提供するために使えます！</p>
+	<div class="flex anchor relative">
+		<h2 id="how-do-we-measure-if-we-are-getting-better">効果の測定方法は？</h2>
+		<a href="https://blog.cloudflare.com/#how-do-we-measure-if-we-are-getting-better" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社独自のツールと<a href="https://www.cdnperf.com" target="_blank" rel="noopener noreferrer"><u>CDNPerf</u></a>のような独立したベンチマークを使用して、FL2をネットワーク全体にロールアウトした時の効果を測定しました。結果は明らかです。Webサイトの応答速度（中央値）が10ミリ秒向上し、パフォーマンスが25%向上しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eDqQvbAfrQoSXPZed0fd7/d7fe0d28e33a3f2e8dfcd27cf79c900f/image1.png" alt="" class="kg-image" width="1999" height="1092" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="security">セキュリティ</h2>
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>また、FL2は設計上、FL1より安全性が高くなっています。完璧なソフトウェアシステムは存在しませんが、Rust言語はLuaJITより遥かに優れています。Rustには、コンパイル時の強力なメモリチェックと、主要なエラークラスを回避する型システムが備わっています。それを当社の厳格なモジュールシステムと合わせれば、たいていの変更は自信を持って行うことができます。</p>
+	<p>もちろん、どんなシステムも悪用されれば安全性は損なわれます。Rustでコードを書くのは簡単で、簡単であるがゆえにメモリ破壊が起こります。リスクを軽減するため、当社では厳格なコーディング規約、テスト、レビュープロセスに加え、コンパイル時の強力なリンティングとチェックを維持しています。</p>
+	<p>Cloudflareでは昔から、システムで原因不明のクラッシュが発生した場合は<a href="https://blog.cloudflare.com/however-improbable-the-story-of-a-processor-bug"><u>調査を優先事項として実施</u></a>するというポリシーを貫いています。これまでのところ、FL2における新規クラッシュの主因はハードウェアの故障ですが、そのポリシーを緩和するつもりはありません。クラッシュの発生率が大幅に下がることで、十分な調査を行う時間を確保できます。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025年内はFL1からFL2への移行の完了に費やし、2026年初頭にはFL1を停止する予定です。お客様のパフォーマンスと開発速度の面ですでに改善効果が表れており、それらのメリットをすべてのお客様に提供するのを楽しみにしています。</p>
+	<p>完全に移行するサービスがもう1つあります。一番上にある図の「HTTPとTLS終端」もNGINXサービスであり、現在Rustで書き換え中です。現在、この移行は順調に進んでおり、来年初頭に完了する見込みです。</p>
+	<p>その後、すべてがRustモジュール化され、テストされ、スケーリングされたら、本格的に最適化を開始できます！モジュールの相互接続を再編成して簡素化し、RPCやストリームなどの非HTTPトラフィックのサポートを拡大するなどの作業を進めていきます。</p>
+	<p>この取り組みへの参加に関心をお持ちの方は、当社の<a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><u>採用情報ページ</u></a>で募集職種をご確認ください。当社はより良いインターネットの構築を支援しており、その活動に貢献してくれる新たな人材を常に探しています。</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/8d9b2a46a830add5b19c64aaa77f1ff1/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F8d9b2a46a830add5b19c64aaa77f1ff1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

@@ -1,0 +1,75 @@
+<div class="mb2 gray5">Lesezeit: 2&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/edm-beta">English</a>, <a href="https://blog.cloudflare.com/zh-tw/edm-beta">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/edm-beta">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/edm-beta">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/edm-beta">한국어</a>, und <a href="https://blog.cloudflare.com/zh-cn/edm-beta">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44r4ZzUV8ct3pnkZsfnDqC/b234c764df7812c8d83b841cb1cb1b09/edm-beta.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Von den bekanntesten Datenpannen – denjenigen, die Sicherheitsfachleuten schlaflose Nächte bereiten – sind Millionen von Nutzern betroffen. Dabei können Namen, Anschriften, E-Mail-Adressen, Sozialversicherungsnummern, Passwörter und jede Menge anderer vertraulicher Informationen an die Öffentlichkeit dringen. Obwohl der Schutz solcher Daten hat für IT-Sicherheitsabteilungen höchste Priorität hat, haben diese häufig sogar schon Mühe, solche Datenlecks überhaupt zu erkennen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Eo6buEcQO3gzGxn3E38WU/75f5818a9929582e239646268739c556/image4-2.png" alt="DLP Exact Data Match beta now available" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Die jCloudflare-Produkte zum Schutz vor Datenverlust (Data Loss Prevention – DLP) bieten bereits die Möglichkeit, sensible Daten wie Kreditkartennummern zu identifizieren. Doch in Anbetracht der Unmenge an täglich übertragenen Daten lässt sich teilweise nur schwer einschätzen, welche der Transaktionen, die vertrauliche Informationen umfassen, tatsächlich problematisch sind. Von Kunden hören wir Dinge wie: „Mir ist egal, ob eine[r] meine[r] Mitarbeitenden für Online-Einkäufe eine private Kreditkarte nutzt. Ich möchte aber informiert werden, wenn die Kreditkartendaten eines Kunden geleakt werden.“</p>
+	<p>Deshalb haben wir uns auf die Suche nach einer Methode gemacht, mit der eine beliebige Kreditkarte von der eines bestimmten Kunden unterschieden werden kann. Wir freuen uns, die Einführung einer neuen Funktion unserer DLP-Lösung bekannt geben zu können: Exact Data Match (EDM). Damit können uns Kunden auf sichere Weise mitteilen, welche Daten sie schützen möchten. Wir ermitteln und protokollieren dann, ob solche Daten vorhanden sind oder übertragen werden und blockieren dies gegebenenfalls. Wenn Sie uns beispielsweise eine Reihe von Kreditkartennummern nennen, durchsuchen wir im Rahmen der DLP Ihren Traffic oder Ihre Repositorys nur nach diesen Karten. Auf diese Weise können Sie eine gezielte DLP-Erkennung für Ihr Unternehmen einrichten.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-is-exact-data-match">Worum handelt es sich bei Exact Data Match?</h3>
+		<a href="https://blog.cloudflare.com/#what-is-exact-data-match" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DLP-Erkennung beginnt nicht selten mit der allgemeinen Identifizierung eines Musters, wofür häufig ein regulärer Ausdruck genutzt wird. Anschließend erfolgt eine Validierung anhand zusätzlicher Kriterien. Dabei kann ein breites Spektrum an Verfahren eingesetzt werden, von Prüfsummen bis zu Modellen maschinellen Lernens. Allerdings wird damit nur bestätigt, dass es sich bei dem Muster um <i>eine</i> Kreditkarte handelt, nicht jedoch, dass es <i>Ihre</i> Kreditkarte ist.</p>
+	<p>Mit Exact Data Match können Sie ganz genau festlegen, welche Daten Sie schützen wollen, ohne dass wir diese je im Klartext sehen. Sie liefern uns eine Datenliste Ihrer Wahl, die beispielsweise aus Namen, Anschriften oder Kreditkartennummern bestehen kann. Diese Daten werden in Hashwerte umgewandelt, bevor sie Cloudflare überhaupt erreichen. Wir speichern diese Hashwerte und durchsuchen Ihren Traffic oder Ihre Inhalte danach. Wenn wir einen Treffer erhalten, protokollieren wir diesen oder nehmen eine Blockierung vor – je nachdem, was Ihre Richtlinien vorsehen.</p>
+	<p>Weil die von uns genutzte Liste nur eine begrenzte Zahl von Daten umfasst, fällt die Zahl der Fehlalarme deutlich niedriger aus als bei einer allgemeinen Musterzuordnung. Gleichzeitig sorgt das Hashing der Daten dafür, dass der Datenschutz gewahrt wird. Es ist uns ein besonderes Anliegen, dass Sie Ihren Datenschutzanforderungen gerecht werden.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-use-it">Wie wird die Funktion verwendet?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wir bieten Ihnen jetzt die Möglichkeit, DLP-Datensätze hochzuladen, die dann für Ihre DLP-Erkennung eingesetzt werden können.</p>
+	<p>Ihre Datensätze sollten jeweils einen Namen, eine Beschreibung und eine Datei mit der für die Treffersuche zu verwendenden Daten umfassen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ypSYCeUurEhwpeB0gmxKf/3a6b64d7a28a812f52ae09291df418cb/Screenshot-2023-07-12-at-18.38.25.png" alt="" class="kg-image" width="1612" height="318" loading="lazy">
+
+	</figure>
+	<p>Wenn Sie die Datei hochladen, werden die Daten direkt in Ihrem Browser von Cloudflare per Einweg-Hashfunktion umgewandelt. Anschließend werden die gehashten Daten per API an Cloudflare übermittelt, während die Klartextdaten Ihren Browser nie verlassen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1wPppeLrZflpYyNhe694yt/b7406bf169a6dd12f7803953e3b7588d/image5-2.png" alt="" class="kg-image" width="1999" height="826" loading="lazy">
+
+	</figure>
+	<p>In der Datensatztabelle wird Ihnen der Upload-Status angezeigt.</p>
+	<p>Nun kann der Datensatz zur Erkennung in ein DLP-Profil eingefügt werden. Außerdem können Sie andere vor- und benutzerdefinierte Einträge demselben DLP-Profil hinzufügen.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xNNEvH9xmpR0eHVZEtwD8/d23da33f99f35ab827bdf8ef2dec5540/image1-7.png" alt="" class="kg-image" width="1999" height="408" loading="lazy">
+
+	</figure>
+	<p>DLP-Profile können für <a href="https://blog.cloudflare.com/inline-dlp-ga">Inline-Scans und -Schutz mit Cloudflare Gateway</a> oder für das Scannen Ihrer Daten im Ruhezustand mit Cloudflare CASB verwendet werden.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1dc55hQQJI9siKmqxdwFVg/76795252343e0667e2628277342ba55f/image2-6.png" alt="" class="kg-image" width="882" height="354" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="can-i-join-the-beta">Kann ich die Beta-Version nutzen?</h3>
+		<a href="https://blog.cloudflare.com/#can-i-join-the-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Exact Data Match steht jetzt allen DLP-Abonnenten zur Verfügung. Sollten Sie kein DLP-Kunde sein, aber mehr über Cloudflare One und DLP erfahren wollen, <a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">beraten wir Sie gern</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Was steht als Nächstes an?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Je nach Kunde können die Daten in unterschiedlichen Formaten vorliegen und es können verschiedene Anforderungen an ihre Überwachung bestehen. Wir möchten Ihrem Unternehmen die Flexibilität bieten, die es benötigt, um seine Datenschutzvorgaben zu erfüllen.</p>
+</div>

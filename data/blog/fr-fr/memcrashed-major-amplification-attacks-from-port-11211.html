@@ -1,0 +1,248 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">English</a>, en <a href="https://blog.cloudflare.com/de-de/memcrashed-major-amplification-attacks-from-port-11211">Deutsch</a>, en <a href="https://blog.cloudflare.com/es-es/memcrashed-major-amplification-attacks-from-port-11211">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/memcrashed-major-amplification-attacks-from-port-11211">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EjZkyPaSccN7e2OwJkhT9/dd9672607702749993229286c095c971/memcrashed-major-amplification-attacks-from-port-11211.jpg" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ces derniers jours, nous avons constaté une forte augmentation d'un dangereux vecteur d'attaque par amplification utilisant le <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank" rel="noopener noreferrer">protocole memcached</a>, provenant du port UDP 11211.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Mh7uCbRBwKf3LjeioLBFy/34ac14cf2982454843c1cac88d77c6db/3829936641_f112ed1665_b.jpg" alt="3829936641_f112ed1665_b" class="kg-image" width="1024" height="680" loading="lazy">
+
+	</figure>
+	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> &nbsp;&nbsp;<a href="https://www.flickr.com/photos/trawin/3829936641" target="_blank" rel="noopener noreferrer">image</a> &nbsp;de David Trawin</p>
+	<p>Nous avons beaucoup parlé par le passé des attaques par amplification sur internet. Voici nos deux derniers articles à ce sujet :</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/ssdp-100gbps">Amplifications SSDP dépassant les 100 Gbits/s</a>. Curieusement, depuis lors, nous étions la cible d’une attaque SSDP à 196 Gbits/s.</p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/reflections-on-reflections">Statistiques générales concernant les différentes attaques par amplification que nous observons</a>.</p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16dgrwlKcAnFbOkNxSYolX/b1b7cff8a4fb93e7c0ce826bbed621a8/spoofing-1.png" alt="spoofing-1" class="kg-image" width="640" height="411" loading="lazy">
+
+	</figure>
+	<p>L'idée générale derrière toutes les attaques par amplification est la même. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing" target="_blank" rel="noopener noreferrer">Un intrus en mesure d'usurper les adresses IP</a> envoie de fausses requêtes à un serveur UDP vulnérable. Ignorant que la requête est falsifiée, le serveur UDP prépare poliment la réponse. Cela se produit lorsque des milliers de réponses sont envoyées à un hôte cible non averti, ce qui écrase ses ressources, le plus souvent le réseau lui-même.</p>
+	<p>Les attaques par amplification sont efficaces, car souvent les paquets de réponse sont beaucoup plus volumineux que les paquets de requêtes. Une technique soigneusement préparée permet à un assaillant ayant une capacité d'usurpation d'adresse IP limitée (par exemple 1 Gbits/s) de lancer des attaques très importantes (atteignant 100 Gbits/s) en « amplifiant » sa bande passante.</p>
+	<div class="flex anchor relative">
+		<h3 id="memcrashed"><b>Memcrashed</b></h3>
+		<a href="https://blog.cloudflare.com/#memcrashed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les attaques par amplification se produisent sans cesse. Il est fréquent de voir des paquets « chargen » ou « call of duty » attaquer nos serveurs.</p>
+	<p>Il est cependant rare que l'on découvre un nouveau vecteur d'amplification permettant une très grande amplification. Ce nouveau DDoS UDP memcached se classe incontestablement dans cette catégorie.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xImt2QRqij9hJLNe8uJm7/ea08387f1f5246b4f3c8866d2666ad3f/memcached-ddosmon.png" alt="memcached-ddosmon" class="kg-image" width="1862" height="922" loading="lazy">
+
+	</figure>
+	<p>Le <a href="https://ddosmon.net/insight" target="_blank" rel="noopener noreferrer">DDosMon de Qihoo 360</a> surveille les vecteurs d'attaque d'amplification et ce graphique montre les récentes attaques memcached/11211 :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VD1Yd7gkKpd68RBfW2xYu/44afafe112b0d94774ddd44621e80a72/memcached-pps.png" alt="memcached-pps" class="kg-image" width="2328" height="488" loading="lazy">
+
+	</figure>
+	<p>Le nombre d'attaques memcached était relativement stable jusqu'à ce qu'il commence à augmenter il y a seulement quelques jours. Nos graphiques le confirment également, voici les attaques regroupées en paquets par seconde au cours des quatre derniers jours :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1THC5a2xHEdnadw4AOEuoB/c169b23cbf7b4a735478a77e7f0a760a/memcached-gpb.png" alt="memcached-gpb" class="kg-image" width="1713" height="497" loading="lazy">
+
+	</figure>
+	<p>Bien que le nombre de paquets par seconde ne soit pas si impressionnant, la bande passante générée l'est :</p>
+	<pre class="language-bash"><code class="language-bash">$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
+IP 87.98.205.10.11211 &gt; 104.28.1.1.1635: UDP, length 13
+IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 5.196.85.159.11211 &gt; 104.28.1.1.1635: UDP, length 1400
+IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13</code></pre>
+	<p>Au plus fort, nous avons vu 260 Gbits/s de trafic memcached UDP entrant. C’est énorme pour un nouveau vecteur d’amplification. Mais les chiffres ne mentent pas. Cela est rendu possible par le fait que tous les paquets réfléchis sont très volumineux. Voici à quoi cela ressemble dans tcpdump :</p>
+	<p>La plupart des paquets ont une taille de 1400 octets. 23 Mbps x 1400 octets donne 257 Gbps de bande passante, soit exactement ce que montre le graphique.</p>
+	<div class="flex anchor relative">
+		<h3 id="memcached-does-udp"><b>Memcached utilise le protocole UDP ?</b></h3>
+		<a href="https://blog.cloudflare.com/#memcached-does-udp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>J'ai été surpris d'apprendre que memcached utilise le protocole UDP, mais c'est le cas. Les <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank" rel="noopener noreferrer">spécifications du protocole</a> montrent qu’il est l’un des <i>meilleurs protocoles pour l'amplification</i> ! Il n'y a absolument aucun contrôle, et les données &nbsp;<i>seront</i> transmises au client, à une vitesse fulgurante ! De plus, la requête peut être minuscule et la réponse énorme (jusqu'à 1 Mo).</p>
+	<p>Ce type d'attaque est facile à lancer. Tout d'abord, l'assaillant impose une charge utile importante à un serveur memcached vulnérable. Ensuite, l'attaquant falsifie le message de requête GET avec l'IP source cible.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo tcpdump -ni eth0 port 11211 -t
+IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
+IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+...(repeated hundreds times)...</code></pre>
+	<p>L'exécution synthétique avec Tcpdump montre le trafic :</p>
+	<p>15 octets de requête déclenchent 134 Ko de réponse. Cela équivaut à un coefficient d'amplification de 10 000 ! En pratique, nous avons observé qu'une requête de 15 octets donne une réponse de 750 ko (soit une amplification de 51 200).</p>
+	<div class="flex anchor relative">
+		<h3 id="source-ips"><b>Adresses IP sources</b></h3>
+		<a href="https://blog.cloudflare.com/#source-ips" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70pC9m63FE7QI31oRMluQW/b75920090ae2490ccfc1844dde812ed1/memcached-map2.png" alt="memcached-map2" class="kg-image" width="1026" height="495" loading="lazy">
+
+	</figure>
+	<p>Les serveurs memcached vulnérables sont répartis dans le monde entier, avec une plus forte concentration en Amérique du Nord et en Europe. Voici une carte des adresses IP sources que nous avons repérées dans chacun de nos quelques 120 points de présence :</p>
+	<pre class="language-bash"><code class="language-bash">┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
+│ 578 │ AS16276 │ OVH                                          │
+│ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
+│ 231 │ AS7684  │ SAKURA-A SAKURA Internet Inc.                │
+│ 199 │ AS9370  │ SAKURA-B SAKURA Internet Inc.                │
+│ 165 │ AS12876 │ AS12876                                      │
+│ 119 │ AS9371  │ SAKURA-C SAKURA Internet Inc.                │
+│ 104 │ AS16509 │ AMAZON-02 - Amazon.com, Inc.                 │
+│ 102 │ AS24940 │ HETZNER-AS                                   │
+│  81 │ AS26496 │ AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC │
+│  74 │ AS36351 │ SOFTLAYER - SoftLayer Technologies Inc.      │
+│  65 │ AS20473 │ AS-CHOOPA - Choopa, LLC                      │
+│  49 │ AS49981 │ WORLDSTREAM                                  │
+│  48 │ AS51167 │ CONTABO                                      │
+│  48 │ AS33070 │ RMH-14 - Rackspace Hosting                   │
+│  45 │ AS19994 │ RACKSPACE - Rackspace Hosting                │
+│  44 │ AS60781 │ LEASEWEB-NL-AMS-01 Netherlands               │
+│  42 │ AS45899 │ VNPT-AS-VN VNPT Corp                         │
+│  41 │ AS2510  │ INFOWEB FUJITSU LIMITED                      │
+│  40 │ AS7506  │ INTERQ GMO Internet,Inc                      │
+│  35 │ AS62567 │ DIGITALOCEAN-ASN-NY2 - DigitalOcean, LLC     │
+│  31 │ AS8100  │ ASN-QUADRANET-GLOBAL - QuadraNet, Inc        │
+│  30 │ AS14618 │ AMAZON-AES - Amazon.com, Inc.                │
+│  30 │ AS31034 │ ARUBA-ASN                                    │
+└─────┴─────────┴──────────────────────────────────────────────┘</code></pre>
+	<p>Il est intéressant de noter que nos centres de traitement de données de Newark, Hambourg et Hong-Kong enregistrent un nombre anormalement élevé d'adresses IP corrompues. Cela s'explique par le fait que la plupart des serveurs vulnérables sont situés dans de grands fournisseurs d'hébergement. Numéros AS des adresses IP que nous avons vues.</p>
+	<p>La plupart des serveurs memcached que nous avons vus venaient de AS16276 - OVH, AS14061 - Digital Ocean et AS7684 - Sakura.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3M4vOFeXyjG82X94Qb5OdW/c1c32822cad31a0825bae7adf06a50ed/memcached-shodan.png" alt="memcached-shodan" class="kg-image" width="970" height="567" loading="lazy">
+
+	</figure>
+	<p>Au total, nous n'avons vu que 5 729 adresses IP sources uniques sur des serveurs memcached. Nous nous attendons à voir des attaques beaucoup plus importantes à l'avenir, car <a href="https://www.shodan.io" target="_blank" rel="noopener noreferrer">Shodan</a> fait état de 88 000 serveurs memcached ouverts :</p>
+	<div class="flex anchor relative">
+		<h3 id="lets-fix-it-up"><b>Faisons le nécessaire pour remédier à la situation</b></h3>
+		<a href="https://blog.cloudflare.com/#lets-fix-it-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Il est indispensable de remédier à cette situation et d'empêcher de nouvelles attaques. Voici une liste de mesures à prendre.</p>
+	<div class="flex anchor relative">
+		<h4 id="memcached-users"><b>Utilisateurs de memcached</b></h4>
+		<a href="https://blog.cloudflare.com/#memcached-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Si vous utilisez memcached, désactivez le support UDP si vous ne l'utilisez pas. Au démarrage de memcached, vous pouvez spécifier --listen 127.0.0.1 pour écouter uniquement l'hôte local et -U 0 pour désactiver complètement le protocole UDP. <i>Par défaut, memcached écoute sur INADDR_ANY et fonctionne avec le support UDP ACTIVÉ</i>. Documents :</p>
+	<ul>
+		<li>
+			<p><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp" target="_blank" rel="noopener noreferrer">https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></p>
+		</li>
+	</ul>
+	<pre class="language-bash"><code class="language-bash">$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
+STAT pid 21357
+STAT uptime 41557034
+STAT time 1519734962
+...</code></pre>
+	<p>Vous pouvez facilement tester si votre serveur est vulnérable en exécutant la commande :</p>
+	<p>Si vous obtenez une réponse non vide (comme celle ci-dessus), votre serveur est vulnérable.</p>
+	<div class="flex anchor relative">
+		<h4 id="system-administrators"><b>Administrateurs système</b></h4>
+		<a href="https://blog.cloudflare.com/#system-administrators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">$ nmap TARGET -p 11211 -sU -sS --script memcached-info
+Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
+Nmap scan report for xxxx
+Host is up (0.011s latency).
+PORT      STATE         SERVICE
+11211/tcp open          memcache
+| memcached-info:
+|   Process ID           21357
+|   Uptime               41557524 seconds
+|   Server time          2018-02-27T12:44:12
+|   Architecture         64 bit
+|   Used CPU (user)      36235.480390
+|   Used CPU (system)    285883.194512
+|   Current connections  11
+|   Total connections    107986559
+|   Maximum connections  1024
+|   TCP Port             11211
+|   UDP Port             11211
+|_  Authentication       no
+11211/udp open|filtered memcache</code></pre>
+	<p>Assurez-vous que vos serveurs memcached sont protégés par un pare-feu ! Pour vérifier s'il est possible d'y accéder par le protocole UDP, je recommande l'exemple ncci-dessus, pour vérifier si le protocole TCP est fermé, exécutez nmap :</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Dmq5baGJDRlwdmxqz9hHg/b9a8188adb7776dd16a7689d8936baa8/memcached-reflector.png" alt="memcached-reflector" class="kg-image" width="944" height="573" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="internet-service-providers"><b>Fournisseurs d'accès à internet</b></h4>
+		<a href="https://blog.cloudflare.com/#internet-service-providers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Afin de contrer ce type d'attaques à l'avenir, nous devons corriger les protocoles vulnérables et empêcher l'usurpation d'adresse IP. Tant que l'usurpation d'adresse IP est possible sur internet, nous continuerons d'avoir des problèmes.</p>
+	<p>Aidez-nous en traquant les responsables de ces attaques. Nous ne cherchons pas à savoir qui a des problèmes avec les serveurs memcached, mais <i>qui leur a envoyé des requêtes en premier lieu</i>. Nous ne pouvons rien faire sans votre aide !</p>
+	<div class="flex anchor relative">
+		<h4 id="developers"><b>Développeurs</b></h4>
+		<a href="https://blog.cloudflare.com/#developers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous vous en supplions : Cessez d’utiliser le protocole UDP. Si vous devez absolument l’utiliser, ne l’activez surtout pas par défaut. Si vous ne savez pas ce qu'est une attaque d'amplification, vous ne devez surtout jamais taper SOCK_DGRAM dans votre éditeur.</p>
+	<p>Nous avons vécu cette situation beaucoup trop souvent. DNS, NTP, Chargen, SSDP et maintenant memcached. Si vous utilisez le protocole UDP, vous devez toujours répondre avec une taille de paquets strictement <i>inférieure</i> &nbsp;à celle de la requête. Sinon, votre protocole sera utilisé à mauvais escient. N'oubliez pas non plus que la plupart des gens oublient de se doter d'un pare-feu. Soyez un bon citoyen. N'inventez pas un protocole basé sur UDP sans authentification.</p>
+	<div class="flex anchor relative">
+		<h3 id="thats-all"><b>C'est tout</b></h3>
+		<a href="https://blog.cloudflare.com/#thats-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Personne ne peut prédire l'ampleur des attaques memcached avant le nettoyage des serveurs vulnérables. On a entendu ces derniers jours des rumeurs évoquant des amplifications à 0,5 Tbps, et ce n'est que le début.</p>
+	<p>En conclusion, tout va bien si vous êtes un client Cloudflare. L'architecture Anycast de Cloudflare est bien adaptée pour distribuer la charge en cas d'attaques par amplification importante, et à moins que votre IP d'origine ne soit vulnérable, vous êtes protégé(e) par Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="prologue"><b>Prologue</b></h3>
+		<a href="https://blog.cloudflare.com/#prologue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Un commentaire (voir ci-dessous) fait remarquer que la possibilité d'utiliser memcached pour DDoS a été discutée dans le cadre<a href="http://powerofcommunity.net/poc2017/shengbao.pdf" target="_blank" rel="noopener noreferrer">d'une conférence en 2017</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="dernieres-nouvelles">Dernières nouvelles</h2>
+		<a href="https://blog.cloudflare.com/#dernieres-nouvelles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Digital Ocean, OVH, Linode et Amazon nous ont informés qu'ils s'attaquaient au problème memcached, leurs réseaux ne devraient pas faire office de vecteurs des attaques futures. Youpi !</p>
+	<hr>
+	<p><i>La gestion des attaques DDoS vous intéresse ? Rejoignez notre</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>équipe à la renommée mondiale</i></a> <i>à Londres, Austin, San Francisco et notre filiale d'élite à Varsovie en Pologne</i>.</p>
+</div>

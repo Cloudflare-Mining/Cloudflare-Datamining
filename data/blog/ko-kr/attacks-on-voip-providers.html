@@ -1,0 +1,120 @@
+<div class="mb2 gray5">5분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/attacks-on-voip-providers">English</a>, <a href="https://blog.cloudflare.com/zh-tw/attacks-on-voip-providers">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/attacks-on-voip-providers">Français</a>, <a href="https://blog.cloudflare.com/de-de/attacks-on-voip-providers">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/attacks-on-voip-providers">日本語</a>, <a href="https://blog.cloudflare.com/es-es/attacks-on-voip-providers">Español</a>, <a href="https://blog.cloudflare.com/id-id/attacks-on-voip-providers">Indonesia</a>, <a href="https://blog.cloudflare.com/vi-vn/attacks-on-voip-providers">Tiếng Việt</a>, <a href="https://blog.cloudflare.com/th-th/attacks-on-voip-providers">ไทย</a> 및 <a href="https://blog.cloudflare.com/zh-cn/attacks-on-voip-providers">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TA4pgLFsPf07U0zpJ0fMo/c9770e9adc9608218caafa963db58085/attacks-on-voip-providers.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>지난 달에 다수의 VoIP(Voice over Internet Protocol) 공급자가 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">분산 서비스 거부</a>(DDoS) 공격을 받았으며, 공격자는 자신들이 <a href="https://en.wikipedia.org/wiki/REvil" target="_blank" rel="noopener noreferrer">REvil</a>이라고 주장했습니다. 이 멀티벡터 공격은 주요 HTTP 웹 사이트 및 API 엔드포인트를 목표로 하는 L7 공격과 VoIP 서버 인프라를 목표로 하는 L3/4 공격을 결합한 것이었습니다. 이 공격으로 대상 공급자의 VoIP 서비스 및 웹 사이트/API 가용성에 심각한 영향이 있었던 경우도 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5scnckYKmaLjLhcqAKlM2z/0cdff1ded9d8716758ebd4c5f000c624/image-2-1.png" alt="" class="kg-image" width="1360" height="772" loading="lazy">
+
+	</figure>
+	<p>Cloudflare의 네트워크는 전 세계를 대상으로 하는 고급 트래픽 필터링 기능과 공격 패턴에 대한 고유의 시각, 위협 인텔리전스를 이용해 음성 및 비디오 인프라를 효과적으로 보호하면서 가속화할 수 있습니다.</p>
+	<p>DDoS 공격, 랜섬 공격, 갈취 시도 등이 있다면 인터넷 자산을 보호하기 위해 즉각적인 도움을 찾는 것이 좋습니다. Cloudflare는 요구하는 돈을 지불하지 말고 <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">현지 법 집행 기관에 신고</a>하도록 권고합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="voice-and-video-emojis-conferences-cat-memes-and-remote-classrooms-over-ip">VoIP(Voice over IP, 비디오, 이모티콘, 원격 회의, 고양이 밈, 원격 강의실 등 모두 포함)</h3>
+		<a href="https://blog.cloudflare.com/#voice-and-video-emojis-conferences-cat-memes-and-remote-classrooms-over-ip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>VoIP(Voice over IP)는 인터넷을 통해 멀티미디어를 교환하는 기술들을 통칭하는 용어입니다. 이러한 기술이 있으므로 FaceTime을 이용해 친구와 화상 통화할 수 있고, Zoom을 통해 가상 강의실 강의를 수강할 수 있는 것은 물론이고 <a href="https://en.wikipedia.org/wiki/Voice_over_LTE" target="_blank" rel="noopener noreferrer">휴대 전화에서 거는</a> "일반적인" 전화의 일부도 가능합니다.</p>
+	<p>VoIP의 기반이 되는 원칙은 회로 전환 네트워크를 통한 전통적인 디지털 통화와 유사합니다. 주요한 차이는 인코딩된 미디어(음성 또는 비디오)가 작은 비트 단위로 분할되어 특별히 정의된 미디어 프로토콜에 따라 IP 패킷의 페이로드로서 인터넷을 통해 전달된다는 점입니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25Rq1Fpa8Yk3Nk6JjTMTzD/60e01d58150e99d9a48302efcb258181/fBF3R0cMoiiEcrbpmZOCBTNJj2hyTWnxNDcKQGJFragPFf1vf-9sIlPrYOYtHo4r3pJqTqCiVJCG6bSb0vQ4-EcsUJRpwd2tacBhHsHAXN5TMv8CUQKxeXibq4dB.png" alt="Child on a video conference all" class="kg-image" width="1100" height="619" loading="lazy">
+
+	</figure>
+	<p>음성 데이터의 이러한 "패킷 교환"은 전통적인 회로 전환에 비해 네트워크 자원을 훨씬 효율적으로 이용합니다. 결과적으로 VoIP를 통해 통화하는 것이 POTS(“plain old telephone service”)보다 크게 비용효과적입니다. VoIP로 전환하게 되면 기업의 <a href="https://telzio.com/blog/cost-benefits-switching-voip-service/#:~:text=Companies%20can%20reduce%20monthly%20telecom%20costs%20by%20over%2050%25%20by%20switching%20to%20VoIP." target="_blank" rel="noopener noreferrer">통신 비용 절감</a>이 50% 이상에 달하므로 3개 중 하나의 기업이 <a href="https://hostingtribunal.com/blog/voip-stats/#:~:text=61%25%20of%20businesses%20switch%20to%20a%20VoIP%20system" target="_blank" rel="noopener noreferrer">이미 VoIP 기술을 채택</a>한 것은 놀라운 현상이 아닙니다. VoIP는 유연하고, 확장성이 있으며 특히 팬데믹 기간에 멀리 떨어진 사람들을 한 자리에 모으는 데 유용하게 활용되었습니다.</p>
+	<p>대부분의 VoIP 통화에서 기반이 되는 핵심 프로토콜은 SIP(<a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank" rel="noopener noreferrer">Session Initiation Protocol</a>)입니다. SIP는 최초에 <a href="https://datatracker.ietf.org/doc/html/rfc2543" target="_blank" rel="noopener noreferrer">RFC-2543</a>(1999)에서 규정되었으며 음성이든 비디오든 또는 두 명 사이이든 그 이상이 되든 관계 없이 통화("세션")을 초기화하기 위한 유연한 모듈식 프로토콜로 설계되었습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="speed-is-key-for-voip"><b>VoIP에서는 속도가 핵심</b></h3>
+		<a href="https://blog.cloudflare.com/#speed-is-key-for-voip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>사람들 사이의 실시간 통신은 자연스럽고 즉각적이며 반응이 좋아야 합니다. 그러므로 좋은 VoIP 서비스의 가장 중요한 특징에는 속도가 포함됩니다. 사용자는 지체나 끊김 없이 자연스러운 음성과 고화질 비디오로 경험하게 됩니다. 통화 품질에 대한 사용자의 인식은 주로 <a href="https://en.wikipedia.org/wiki/Perceptual_Evaluation_of_Speech_Quality" target="_blank" rel="noopener noreferrer">음성 품질에 대한 인식적 평가</a>나 <a href="https://en.wikipedia.org/wiki/Mean_opinion_score" target="_blank" rel="noopener noreferrer">평균 의견 점수</a> 등의 지표로 측정됩니다. SIP 및 기타 VoIP 프로토콜은 <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP</a>나 <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a>를 기반 프로토콜로 실행할 수 있지만, 대개는 라우터와 서버의 처리가 빠른 UDP를 선택합니다.</p>
+	<p>UPD는 안정성이 낮고, 상태를 저장하지 않으며, 서비스 품질(QoS) 보장이 없는 프로토콜입니다. 이는 라우터와 서버가 UDP 패킷을 처리할 때 사용하는 메모리 및 컴퓨팅 용량이 적으므로 초당 처리하는 패킷 수가 많다는 뜻입니다. 패킷을 빠르게 처리하면 패킷의 페이로드(인코딩된 미디어)를 빠르게 조립할 수 있으므로 통화 품질이 좋아집니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AmGmFZIFpA4s42yh86k9z/47d171fcc57bc62e711e79efc423c979/pasted-image-0--1-.png" alt="" class="kg-image" width="1638" height="1044" loading="lazy">
+
+	</figure>
+	<p>VoIP 서버는 _빠른 것이 좋다_는 지침 아래 선입선출 기준으로 패킷을 최대한 빨리 처리하려고 합니다. UDP는 상태를 저장하지 않으므로 어떤 패킷이 기존 통화에 속하는 것이고 어떤 패킷이 새로운 통화를 시도하는 것인지 구별하지 못합니다. 이러한 세부 정보는 SIP 헤더에 요청 및 응답의 형태로 포함되며 이는 네트워크 스택으로 올라가야만 처리됩니다.</p>
+	<p>초당 패킷 속도가 라우터 또는 서버의 용량보다 크게 증가하면 _빠른 것이 좋다_는 지침이 불리하게 작용하게 됩니다. 전통적인 회로 전환 시스템에서는 용량의 한계에 달하면 새로운 연결을 거부하고 기존 연결을 장애 없이 유지하려 하지만, VoIP 서버는 최대한 많은 패킷을 처리하려고 하므로 용량 한계를 넘어서면 모든 패킷 또는 모든 통화를 처리할 수 없습니다. 결과적으로 진행 중인 통화에 대기 시간 및 중단이 발생하게 되며 새로운 통화를 걸거나 받을 수 없게 됩니다.</p>
+	<p>적절한 보호 대책이 없다면 탁월한 통화 품질을 제공하기 위해 보안이라는 비용이 발생하게 될 것이고, 공격자들은 이를 노리고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="ddosing-voip-servers">VoIP 서버에 대한 DDoS 공격</h3>
+		<a href="https://blog.cloudflare.com/#ddosing-voip-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>공격자들은 UDP 및 SIP 프로토콜을 악용하여 특별히 설계한 UDP 패킷을 폭주시켜 보호되지 않은 VoIP 서버를 압도할 수 있습니다. 공격자들이 VoIP 서버를 공격하는 방법에는 통화를 새로 시작하는 것처럼 가장하는 것이 있습니다. 악의적인 통화 시작 요청이 피해자에게 도착할 때마다 피해자의 서버는 컴퓨팅 능력과 메모리를 이용해 해당 요청을 인증해야 합니다. 공격자가 통화 시작 요청을 많이 생성할 수 있다면 피해자의 서버를 압도하여 정상적인 통화를 처리하지 못하게 할 수 있습니다. 이것이 SIP에 적용되던 전통적인 DDoS 기법입니다.</p>
+	<p>이 기법을 조금 변형한 것이 SIP 반사 공격입니다. 앞의 기법과 마찬가지로 악의적인 통화 시작 요청을 활용합니다. 하지만 여기에서는 공격자가 악의적 트패릭을 피해자에게 직접 보내지 않습니다. 대신 인터넷 상에 있는 SIP 서버 수천 대를 무작위로 골라 이들 서버가 모르는 사이에 악의적 트래픽의 소스를 피해자의 소스로 스푸핑합니다. 이렇게 하면 수천 대의 SIP 서버가 피해자에게 피해자가 요청하지 않은 응답을 보내게 되는데, 피해자 서버는 컴퓨팅 자원을 이용해 이들이 정당한지 파악해야 합니다. 또한 피해자 서버는 정당한 통화를 처리하기 위해 필요한 자원이 부족하게 되어 사용자에게는 서비스 거부 이벤트가 광범위하게 발생합니다. 적절한 보호 대책이 없다면 VoIP 서버는 DDoS 공격에 매우 취약할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44Gt0qiZEnPizgMU0Tm4qF/398c2973aae58df7060167d794bd296e/image-3-1.png" alt="Illustration of a DDoS attack preventing access to legitimate clients" class="kg-image" width="746" height="452" loading="lazy">
+
+	</figure>
+	<p>아래 그래프는 Cloudflare의 <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> 서비스로 보호되는 VoIP 인프라를 대상으로 최근해 행해진 멀티벡터 UDP DDoS 공격에 대한 것입니다. 공격이 정점에 달했을 때 트래픽은 70Gbps 및 초당 1,600만 패킷을 넘었습니다. 이는 Cloudflare가 관찰한 최대 규모의 공격은 아니었지만, 이 정도 규모의 공격이며 보호되지 않는 인프라에 상당한 영향을 줄 수 있습니다. 이 공격 자체는 10시간 조금 넘게 지속되었으며 자동으로 감지되고 완화되었습니다.</p>
+	<p>아래에 있는 두 개의 그래프는 지난 주에 SIP 인프라를 대상으로 행해진 유사한 공격에 대한 것입니다. 첫 번째 그래프에서는 다수의 프로토콜을 이용해 공격을 자행했는데, 많은 트래픽이 (스푸핑된) DNS 반사 벡터와 기타 널리 쓰이는 증폭 및 반사 벡터로부터 온 것이었습니다. 이러한 공격들은 130Gbps 및 17.4M pps 이상에서 정점을 이뤘습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/783B5mU5tkeQh3WCy6sZZw/3646fc97616f8cdcb79a33a10383f77d/1.png" alt="Graph of a 70 Gbps DDoS attack against a VoIP provider" class="kg-image" width="2048" height="834" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="protecting-voip-services-without-sacrificing-performance">성능을 희생하지 않는 VoIP 서비스의 보호</h3>
+		<a href="https://blog.cloudflare.com/#protecting-voip-services-without-sacrificing-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Nkjw09j6s8NeJz2iUJ0F8/f53003ab380dbdf93e89ad659d87c865/2.png" alt="" class="kg-image" width="1706" height="834" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Lt858PFam9TDqQCXZa60A/afe2971a7febc08ae82eb3161e339290/3.png" alt="Graph of a 130 Gbps DDoS attack against a different VoIP provider" class="kg-image" width="1706" height="842" loading="lazy">
+
+	</figure>
+	<p>양질의 VoIP 서비스 제공에서 가장 중요한 요인에는 속도가 있습니다. 대기 시간이 짧을수록 좋은 것입니다. Cloudflare의 <a href="https://www.cloudflare.com/de-de/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> 서비스를 이용하면 대기 시간 및 통화 품질에 영향을 주지 않으면서 주요 VoIP 인프라를 보호할 수 있습니다.</p>
+	<p>Cloudflare의 Anycast 아키텍처와 네트워크의 규모를 활용하면 트래픽이 Cloudflare를 통과하게 함으로써 대기 시간을 최소화할 수 있으며 공공 인터넷을 통과하는 것보다 단축할 수 있습니다. Cloudflare의 Speed Week에 게시된 <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">최근 게시물</a>에서 어떻게 이러한 일이 가능한지를 알아보고 Magic Transit을 사용하는 실제 고객 네트워크에서 전 세계적으로 평균 36%의 성능 향상을 가져온 테스트 결과를 확인해 보시기 바랍니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mZSrIvKNLTyiYElhv7Ydp/8b18d4e784c5ec1f3cf94ab14a3aebf8/4.png" alt="Diagram of Cloudflare Magic Transit routing" class="kg-image" width="2048" height="910" loading="lazy">
+
+	</figure>
+	<p>또한 Cloudflare 데이터 센터로 유입된 모든 패킷에 대해 대기 시간을 회피할 수 있는 다양한 비경로상 감지 기능으로 DDoS 공격 여부를 분석합니다. 공격이 감지되면 해당 에지가 공격 패킷의 특성과 일치하는 실시간 지문을 생성합니다. 이 지문은 Linux 커널 XDP(eXpress Data Path)와 비교하여 정당한 패킷에 대한 부수적 피해 없이 빛의 속도로 공격 패킷을 누락시킵니다. 또한 Cloudflare는 최근에 UDP 트래픽을 검사하여 유효한 SIP 트래픽인지 여부를 판단하는 특정 완화 규칙을 추가로 배포하였습니다.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/654f4KI1t80kWgpSp9CzAh/99c1d83370a21d9f1213df79163d7c81/5.png" alt="World map of Cloudflare locations" class="kg-image" width="1134" height="642" loading="lazy">
+
+	</figure>
+	<p>이러한 감지 및 완화는 모든 Cloudflare 에지 서버에서 자율적으로 수행되며, 용량과 배포 범위가 제한된 "스크러빙 센터"는 이용하지 않습니다. 또한, 전체 네트워크에 위협 인텔리전스가 자동으로 실시간 공유되어 다른 에지 서버에도 해당 공격에 대한 지식을 전파합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BOr4wRSTZL3RGXjSTooLk/947d19c3f66ff3a213fa139c21377460/6.png" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems" class="kg-image" width="1560" height="866" loading="lazy">
+
+	</figure>
+	<p>또한 에지 감지 기능은 완전히 구성 가능합니다. Cloudflare <a href="https://www.cloudflare.com/de-de/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> 고객은 <a href="https://developers.cloudflare.com/waf/ddos-l34-mitigation" target="_blank" rel="noopener noreferrer">L3/4 DDoS 관리형 규칙 세트</a>를 이용해 DDoS 방어 설정을 조정하고 최적화할 수 있으며 <a href="https://developers.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">Magic Firewall</a>을 이용하는 사용자 지정 패킷 수준 방화벽 규칙(심층 패킷 검사 포함)을 설정해 적극적 보안 모델을 구현할 수도 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="bringing-people-together-remotely"><b>멀리 있는 사람들을 모으기</b></h3>
+		<a href="https://blog.cloudflare.com/#bringing-people-together-remotely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 사명은 더 나은 인터넷을 만드는 데 지원하는 것입니다. 이러한 사명을 달성하기 위해 중요한 것은 전 세계의 사람들이 친구, 가족, 동료와 방해받지 않고 소통할 수 있게 하는 것이며, 이는 특히 팬데믹 기간에 중요합니다. Cloudflare의 네트워크는 <a href="https://blog.cloudflare.com/announcing-our-real-time-communications-platform">실시간 통신 시스템을 구축하는 개발자들을 돕거나</a> VoIP 공급자들을 온라인으로 유지함으로써 세상의 연결 상태를 유지하는 데 도움을 드리는 독특한 위치에 있습니다.</p>
+	<p>Cloudflare는 네트워크의 속도와 항상 가동되는 자율 DDoS 방어 기술로 VoIP 공급자들이 성능을 희생하거나 랜섬 DDoS 공격에 돈을 지불하지 않으면서 고객에 대한 서비스를 계속할 수 있도록 도움을 드리고 있습니다.</p>
+	<p>Cloudflare 전문가와 상담하여 <a href="https://www.cloudflare.com/lp/voip-ddos-protection" target="_blank" rel="noopener noreferrer">자세한 내용을 알아보세요</a>.</p>
+	<p><b>공격을 받고 있습니까?</b> Cloudflare <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">핫라인</a>에 연락하여 바로 상담하시기 바랍니다.</p>
+</div>

@@ -1,0 +1,295 @@
+<div class="mb2 gray5">Lesezeit: 7&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q2">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-for-2024-q2">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-for-2024-q2">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-for-2024-q2">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-for-2024-q2">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/ddos-threat-report-for-2024-q2">Português</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-for-2024-q2">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-for-2024-q2">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3A4eYiW2ZUj72kwYgTepXn/3de49869ef21930f3e7b1e5a1891f32a/ddos-threat-report-for-2024-q2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Willkommen zur 18. Ausgabe des Cloudflare-Berichts zur DDoS-Bedrohungslandschaft. Diese Berichte erscheinen vierteljährlich und bieten eine eingehende Analyse der DDoS-Bedrohungslandschaft, wie sie im gesamten <a href="https://www.cloudflare.com/en-gb/network" target="_blank" rel="noopener noreferrer">Cloudflare-Netzwerk</a> beobachtet wird. Diese Ausgabe konzentriert sich auf das zweite Quartal 2024.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H7tZjcmMtTkqI4vnZh1cU/57e3e3bcf83b65ac75c5fcaa72389270/image13-1.png" alt="DDoS threat report for 2024 Q2" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>Mit einem Netzwerk mit 280 Terabit pro Sekunde (Tbit/s) in mehr als 230 Städten weltweit, <a href="https://w3techs.com/technologies/details/cn-cloudflare" target="_blank" rel="noopener noreferrer">das von 19 % aller Websites genutzt wird</a>, verfügt Cloudflare über einen einzigartigen Blickwinkel, der es uns ermöglicht, der Internet-Community wertvolle Einblicke und Trends zu vermitteln.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-insights-for-2024-q2">Wichtige Erkenntnisse für das zweite Quartal 2024</h2>
+		<a href="https://blog.cloudflare.com/#key-insights-for-2024-q2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ul>
+		<li>
+			<p>Cloudflare verzeichnete im Vergleich zum Vorjahr einen Anstieg der DDoS-Angriffe um 20 %.</p>
+		</li>
+		<li>
+			<p>1 von 25 an der Umfrage teilnehmenden Personen gab an, dass gegen sie gerichtete DDoS-Angriffe von staatlichen oder staatlich gesponserten Bedrohungsakteuren durchgeführt wurden.</p>
+		</li>
+		<li>
+			<p>Die Aktivitäten der Bedrohungsakteure erreichten ein Allzeithoch, da unsere automatisierten Verteidigungssysteme 10 Mal mehr Fingerprints generierten, um die äußerst raffinierten DDoS-Angriffe abzuwehren und zu neutralisieren.</p>
+		</li>
+	</ul>
+	<p>Sehen Sie sich die interaktive Version dieses Berichts bei <a href="https://radar.cloudflare.com/reports/ddos-2024-q2" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> an.</p>
+	<div class="flex anchor relative">
+		<h3 id="quick-recap-what-is-a-ddos-attack">Kurz zur Erinnerung: Was ist ein DDoS-Angriff?</h3>
+		<a href="https://blog.cloudflare.com/#quick-recap-what-is-a-ddos-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Bevor wir tiefer in die Materie eintauchen, wollen wir noch einmal zusammenfassen, was ein DDoS-Angriff ist, kurz für <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a>: Ein DDoS-Angriff ist eine Art von Cyberangriff, der darauf abzielt, Internetdienste wie Websites oder mobile Apps lahmzulegen oder zu stören, sodass sie für Nutzer nicht mehr verfügbar sind. Dies geschieht in der Regel, indem der Server des Opfers mit mehr Traffic überlastet wird, als er bewältigen kann. Dieser Traffic kommt in der Regel aus mehreren Internetquellen und ist daher nicht mehr in der Lage, legitimen Nutzer-Traffic zu verarbeiten.</p>
+	<p>Darstellung eines DDoS-Angriffs</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2S7TgrtK197L1YGvjBgZm2/0664811e82a92b1c9c1a178458f75550/unnamed-4.png" alt="Diagram of a DDoS attack" class="kg-image" width="1600" height="849" loading="lazy">
+
+	</figure>
+	<p>Wenn Sie mehr über DDoS-Angriffe und andere Arten von Cyberbedrohungen erfahren möchten, besuchen Sie unser <a href="https://www.cloudflare.com/learning" target="_blank" rel="noopener noreferrer">Lernzentrum</a>, greifen Sie auf <a href="https://blog.cloudflare.com/tag/ddos-reports">frühere Berichte zur DDoS-Bedrohungslandschaft</a> im Cloudflare Blog zu oder besuchen Sie unseren interaktiven Hub, <a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>. Es gibt auch eine <a href="https://developers.cloudflare.com/radar" target="_blank" rel="noopener noreferrer">kostenlose API</a> für diejenigen, die diese und andere Internettrends untersuchen möchten.</p>
+	<p>Informationen zur Erstellung von Berichten finden Sie in unseren <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank" rel="noopener noreferrer">Methodologien</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="threat-actor-sophistication-fuels-the-continued-increase-in-ddos-attacks">Die Raffinesse der Bedrohungsakteure fördert die kontinuierliche Zunahme von DDoS-Angriffen</h3>
+		<a href="https://blog.cloudflare.com/#threat-actor-sophistication-fuels-the-continued-increase-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im ersten Halbjahr 2024 haben wir 8,5 Millionen DDoS-Angriffe abgewehrt: 4,5 Millionen im ersten Quartal und 4 Millionen im zweiten Quartal. Insgesamt ging die Zahl der DDoS-Angriffe im zweiten Quartal im Vergleich zum Vorquartal um 11 % zurück, stieg aber im Jahresvergleich um 20 % an.</p>
+	<p>Verteilung der DDoS-Angriffe nach Arten und Vektoren</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ctaeSKgnNEYe46W7UEKGs/fa4f515c4ed4fcbeac3e685ebc9a721f/unnamed--1--3.png" alt="Distribution of DDoS attacks by types and vectors" class="kg-image" width="1480" height="819" loading="lazy">
+
+	</figure>
+	<p>Zum Vergleich: Im gesamten Jahr 2023 haben wir 14 Millionen DDoS-Angriffe abgewehrt, und zur Hälfte des Jahres 2024 haben wir bereits 60 % der Zahl des Vorjahres abgewehrt.</p>
+	<p>Cloudflare hat 10,2 Billionen HTTP-DDoS-Anfragen und 57 Petabyte an DDoS-Angriffstraffic auf der Netzwerkebene erfolgreich abgewehrt, sodass der Traffic die Ursprungsserver unserer Kunden nicht erreichen konnte.</p>
+	<p>Statistiken über DDoS-Angriffe im zweiten Quartal 2024</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WyUYhLUD166Po7ah6ZEQp/16f3d7d1c48488ae6d4dc3475329a432/unnamed--2--2.png" alt="DDoS attacks stats for 2024 Q2" class="kg-image" width="1508" height="846" loading="lazy">
+
+	</figure>
+	<p>Wenn wir die Zahlen weiter aufschlüsseln, setzen sich diese 4 Millionen DDoS-Angriffe aus 2,2 Millionen DDoS-Angriffen auf der Netzwerkebene und 1,8 Millionen HTTP-DDoS-Angriffen zusammen. Diese Zahl von 1,8 Millionen HTTP-DDoS-Angriffen wurde normalisiert, um die explosionsartige Zunahme ausgeklügelter und randomisierter HTTP-DDoS-Angriffe zu kompensieren. Unsere automatisierten Abwehrsysteme erstellen Echtzeit-Fingerprints für DDoS-Angriffe. Da diese ausgeklügelten Angriffe nach dem Zufallsprinzip ablaufen, haben wir beobachtet, dass viele Fingerprints für einzelne Angriffe erstellt wurden. Die tatsächliche Anzahl der erzeugten Fingerprints lag eher bei 19 Millionen – mehr als zehnmal so hoch wie die normalisierte Zahl von 1,8 Millionen. Die Millionen von Fingerprints, die zur Randomisierung erzeugt wurden, beruhten auf nur wenigen Regeln. Diese Regeln haben ihre Aufgabe erfüllt, Angriffe zu verhindern, aber sie haben die Zahlen aufgebläht, sodass wir sie aus der Berechnung ausgeschlossen haben.</p>
+	<p>HTTP-DDoS-Angriffe nach Quartal, mit Ausnahme der Fingerprints</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NbYriDgdvtAormXB1spNP/c8ef433d3386dd7f44ee72c7625fd980/unnamed--3--2.png" alt="HTTP DDoS attacks by quarter, with the excluded fingerprints" class="kg-image" width="1140" height="675" loading="lazy">
+
+	</figure>
+	<p>Dieser zehnfache Unterschied unterstreicht den dramatischen Wandel in der Bedrohungslandschaft. Die Tools und Funktionen, die es Bedrohungsakteuren ermöglichen, solche randomisierten und ausgefeilten Angriffe durchzuführen, wurden bisher mit Fähigkeiten in Verbindung gebracht, die staatlichen Akteuren oder staatlich gesponserten Akteuren vorbehalten waren. Doch mit dem Aufkommen von generativer KI und Autopilot-Systemen, die den Akteuren helfen können, schneller besseren Code zu schreiben, haben nun auch gewöhnliche Cyberkriminelle diese Fähigkeiten erlangt.</p>
+	<div class="flex anchor relative">
+		<h2 id="ransom-ddos-attacks">Ransom-DDoS-Angriffe</h2>
+		<a href="https://blog.cloudflare.com/#ransom-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im Mai 2024 erreichte der Prozentsatz der angegriffenen Cloudflare-Kunden, die berichteten, von einem Bedrohungsakteur per DDoS-Angriff bedroht oder einem <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank" rel="noopener noreferrer">Ransom-DDoS-Angriffs</a> ausgesetzt worden zu sein, 16 % – und damit den höchsten Wert der letzten 12 Monate. Das Quartal begann relativ niedrig: 7 % der Kunden meldeten eine Bedrohung oder einen Ransom-Angriff. Dieser Wert stieg im Mai schnell auf 16 % an und ging im Juni leicht auf 14 % zurück.</p>
+	<p>Anteil der Kunden, die DDoS-Bedrohungen oder Erpressung mit Lösegeldforderungen melden (nach Monat)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16Ppdz9v4IcH0Xgii7EhdM/5551f7fdf2b2d8db252ea7a9cf845dc9/unnamed--4--2.png" alt="Percentage of customers reporting DDoS threats or ransom extortion (by month)" class="kg-image" width="1325" height="778" loading="lazy">
+
+	</figure>
+	<p>Insgesamt haben die Ransom-DDoS-Angriffe im vergangenen Jahr im Quartalsvergleich zugenommen. Im zweiten Quartal 2024 lag der Anteil der Kunden, die angaben, bedroht oder erpresst worden zu sein, bei 12,3 % und war damit etwas höher als im Vorquartal (10,2 %), aber ähnlich hoch wie im Vorjahr (ebenfalls 12,0 %).</p>
+	<p>Anteil der Kunden, die DDoS-Bedrohungen oder Erpressung mit Lösegeldforderung melden (nach Quartal)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WxCgT7fCSV3btCf6PmAIw/212c7d54d431c8b0c4aef091b68eda25/unnamed--5--2.png" alt="Percentage of customers reporting DDoS threats or ransom extortion (by quarter)" class="kg-image" width="1128" height="665" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="threat-actors">Bedrohungsakteure</h2>
+		<a href="https://blog.cloudflare.com/#threat-actors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>75 &nbsp;% der Befragten gaben an, dass sie nicht wissen, wer sie angegriffen hat und warum. Bei diesen Befragten handelt es sich um Cloudflare-Kunden, die von HTTP-DDoS-Angriffen betroffen waren.</p>
+	<p>Von den Befragten, die behaupten, es gewusst zu haben, gaben 59 % an, dass sie von einem Konkurrenten angegriffen wurden. Weitere 21 % gaben an, dass der DDoS-Angriff von einem verärgerten Kunden oder Nutzer durchgeführt wurde, und weitere 17 % gaben an, dass die Angriffe von staatlichen oder staatlich gesponserten Bedrohungsakteuren durchgeführt wurden. Die restlichen 3 % gaben an, dass es sich um einen selbst herbeigeführten DDoS-Angriff handelte.</p>
+	<p>Prozentualer Anteil der von Cloudflare-Kunden gemeldeten Arten von Bedrohungsakteuren, ohne unbekannte Angreifer und Ausreißer</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fktInA0cQbth4up5dPB6M/366eda36e7c414c4e114c9a1f3e2cb27/unnamed--6--2.png" alt="Percentage of threat actor type reported by Cloudflare customers, excluding unknown attackers and outliers" class="kg-image" width="1208" height="675" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-attacked-countries-and-regions">Am stärksten angegriffene Länder und Regionen</h2>
+		<a href="https://blog.cloudflare.com/#top-attacked-countries-and-regions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im zweiten Quartal 2024 war China das am <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#countries-as-source-or-target-of-attacks" target="_blank" rel="noopener noreferrer">meisten angegriffene Land</a> der Welt. Dieses Ranking berücksichtigt HTTP-DDoS-Angriffe, DDoS-Angriffe auf der Netzwerkebene, das Gesamtvolumen und den prozentualen Anteil des DDoS-Angriffstraffics am gesamten Traffic, und die Diagramme zeigen die gesamte DDoS-Angriffsaktivität pro Land oder Region. Ein längerer Balken im Diagramm bedeutet mehr Angriffsaktivität.</p>
+	<p>Nach China lag die Türkei an zweiter Stelle, gefolgt von Singapur, Hongkong, Russland, Brasilien und Thailand. Die übrigen Länder und Regionen der 15 am häufigsten angegriffenen Länder sind in der nachstehenden Tabelle aufgeführt.</p>
+	<p>Die 15 am häufigsten angegriffenen Länder und Regionen im zweiten Quartal 2024</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6C3FspFSjHCEwIuauYTQYg/bcc283b99df5eb93428f138eea18a676/unnamed--7--2.png" alt="15 most attacked countries and regions in 2024 Q2" class="kg-image" width="1292" height="771" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="most-attacked-industries">Am häufigsten angegriffene Branchen</h2>
+		<a href="https://blog.cloudflare.com/#most-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Der Bereich Informationstechnologie und Dienste wurde im zweiten Quartal 2024 als die <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#target-industry" target="_blank" rel="noopener noreferrer">am stärksten betroffene Branche</a> eingestuft. Die Ranking-Methoden, die wir hier verwendet haben, folgen den gleichen Prinzipien wie zuvor beschrieben, um das Gesamtvolumen und den relativen Angriffsverkehr für DDoS-Angriffe auf HTTP- und Netzwerkebene in ein einziges Ranking der DDoS-Angriffsaktivitäten zu destillieren.</p>
+	<p>Der Sektor Telekommunikation, Dienstleistungsanbieter und Carrier belegte den zweiten Platz. Konsumgüter belegten den dritten Platz.</p>
+	<p>Die 15 am häufigsten angegriffenen Branchen im zweiten Quartal 2024</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/M7x6hcaQ3rq20x0SZ61y9/a370d20f43aa968efd1892dd4e8619c6/unnamed--8--1.png" alt="15 most attacked industries in 2024 Q2" class="kg-image" width="1377" height="762" loading="lazy">
+
+	</figure>
+	<p>Betrachtet man nur die HTTP-DDoS-Angriffe, ergibt sich ein anderes Bild. Die Gaming- und Glücksspielbranche verzeichnete die meisten Angriffe, gemessen am HTTP-DDoS-Anfragevolumen. Die Aufschlüsselung nach Regionen finden Sie unten.</p>
+	<p>Am häufigsten angegriffene Branchen nach Region (HTTP-DDoS-Angriffe)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ElWJHm7iaazkMY0i3FbAY/438d6fb1fd9f515cc8961c88770039c9/unnamed--9--1.png" alt="Top attacked industries by region (HTTP DDoS attacks)" class="kg-image" width="1303" height="1087" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="largest-sources-of-ddos-attacks">Wichtigste Ursprungsländer von DDoS-Angriffen</h2>
+		<a href="https://blog.cloudflare.com/#largest-sources-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Argentinien wurde im zweiten Quartal 2024 als <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#countries-as-source-or-target-of-attacks" target="_blank" rel="noopener noreferrer">wichtigstes Ursprungsland</a> von DDoS-Angriffen eingestuft. Die Ranking-Methoden, die wir hier verwendet haben, folgen den gleichen Prinzipien wie zuvor beschrieben, um das Gesamtvolumen und den relativen Angriffs-Traffic sowohl für HTTP- als auch für DDoS-Angriffe auf der Netzwerkebene in ein einziges Ranking der DDoS-Angriffsaktivitäten zu destillieren.</p>
+	<p>Indonesien folgte dicht auf dem zweiten Platz, gefolgt von den Niederlanden auf dem dritten.</p>
+	<p>Die 15 wichtigsten Ursprungsländer von DDoS-Angriffen im zweiten Quartal 2024</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EsagO6GQdPElCwfU735Ed/ee71ca617bbd2281c45db36cebb6f0a8/unnamed--10--1.png" alt="15 largest sources of DDoS attacks in 2024 Q2" class="kg-image" width="1357" height="788" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="ddos-attack-characteristics">Merkmale eines DDoS-Angriffs</h2>
+		<a href="https://blog.cloudflare.com/#ddos-attack-characteristics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attack-vectors">Vektoren der DDoS-Angriffe auf Vermittlungsschicht</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Trotz eines Rückgangs von 49 % gegenüber dem Vorquartal sind DNS-basierte DDoS-Attacken nach wie vor der häufigste Angriffsvektor, wobei der Anteil von <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank" rel="noopener noreferrer">DNS-Floods</a> und <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer">DNS-Amplification</a>--Angriffen bei insgesamt 37 % liegt. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer">SYN-Floods</a> belegten mit einem Anteil von 23 % den zweiten Platz, gefolgt von RST-Floods mit etwas mehr als 10 %. SYN-Floods und RST-Floods sind beides Arten von TCP-basierten DDoS-Angriffen. Zusammen machten alle Arten von TCP-basierten DDoS-Angriffen 38 % aller DDoS-Angriffe auf der Netzwerkebene aus.</p>
+	<p>Wichtigste Angriffsvektoren (Netzwerkebene)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2C8gqiEuTXWaZJYOC4l29Z/eeb4e6734ec7c42f328c02dc46f3a0ba/unnamed--11--1.png" alt="Top attack vectors (network-layer)" class="kg-image" width="1600" height="922" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="http-ddos-attack-vectors">HTTP-DDoS-Angriffsvektoren</h3>
+		<a href="https://blog.cloudflare.com/#http-ddos-attack-vectors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Einer der Vorteile des Betriebs eines großen Netzwerks ist, dass wir viel Traffic und Angriffe verzeichnen. Das hilft uns, unsere Erkennungs- und Abwehrsysteme zum Schutz unserer Kunden zu verbessern. Im letzten Quartal wurde die Hälfte aller <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer">HTTP-DDoS-Angriffe</a> mit proprietären Heuristiken abgewehrt, die es auf Cloudflare bekannte Botnetze abgesehen hatten. Diese Heuristiken leiten unsere Systeme an, einen Echtzeit-Fingerprint zu erstellen, der mit den Angriffen abgeglichen wird.</p>
+	<p>Bei weiteren 29 % handelte es sich um HTTP-DDoS-Angriffe, die gefälschte User Agents verwendeten, sich als Browser ausgaben oder von Headless Browsern ausgingen. Weitere 13 % wiesen verdächtige HTTP-Attribute auf, die unser automatisiertes System auslösten, und 7 % wurden als generische Floods markiert. Zu beachten ist, dass sich diese Angriffsvektoren oder Angriffsgruppen nicht unbedingt ausschließen. Beispielsweise geben sich bekannte Botnetze auch als Browser aus und haben verdächtige HTTP-Attribute, aber diese Aufschlüsselung ist unser erster Versuch, die HTTP-DDoS-Angriffe zu kategorisieren.</p>
+	<p>Wichtigste Angriffsvektoren (HTTP)</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Q30Uxkud0qxOCbzTjgUjc/86ec3083a7d52167e143fd79ad847f77/unnamed--12-.png" alt="Top attack vectors (HTTP)" class="kg-image" width="1161" height="663" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="http-versions-used-in-ddos-attacks">Bei DDoS-Angriffen verwendete HTTP-Versionen</h3>
+		<a href="https://blog.cloudflare.com/#http-versions-used-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Im zweiten Quartal nutzte etwa die Hälfte des gesamten Web-Traffics HTTP/2, 29 % nutzten HTTP/1.1, ein weiteres Fünftel verwendete HTTP/3, fast 0,62 % verwendeten HTTP/1.0, und 0,01 % nutzten HTTP/1.2.</p>
+	<p>Verteilung des Web-Traffics nach HTTP-Version</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4iG2zFOZIR91P56H7DiNFw/30d39a97fadf6f974acc35f588418e5e/unnamed--13-.png" alt="Distribution of web traffic by HTTP version" class="kg-image" width="1116" height="688" loading="lazy">
+
+	</figure>
+	<p>HTTP-DDoS-Angriffe folgen einem ähnlichen Muster in Bezug auf die Versionsübernahme, wenn auch mit einer größeren Ausrichtung auf HTTP/2. 76 % des HTTP-DDoS-Angriffs-Traffics liefen über die HTTP/2-Version und fast 22 % über HTTP/1.1 ab. HTTP/3 hingegen wurde in viel geringerem Umfang genutzt. Nur 0,86 % des HTTP-DDoS-Angriffstraffics erfolgte über HTTP/3 – im Gegensatz zu der viel breiteren Nutzung von 20 % im gesamten Webtraffic.</p>
+	<p>Verteilung des HTTP-DDoS-Angriffs-Traffics nach HTTP-Version</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qSkeg0USHPZn76shu5lAc/ce683586034c622a798326b4d8c05447/unnamed--14-.png" alt="Distribution of HTTP DDoS attack traffic by HTTP version" class="kg-image" width="1074" height="687" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ddos-attack-duration">Dauer der DDoS-Angriffe</h3>
+		<a href="https://blog.cloudflare.com/#ddos-attack-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die überwiegende Mehrheit der DDoS-Angriffe ist nur von kurzer Dauer. Über 57 % der HTTP-DDoS-Angriffe und 88 % der DDoS-Angriffe auf der Netzwerkebene enden innerhalb von 10 Minuten oder weniger. Dies unterstreicht den Bedarf an automatisierten Inline-Erkennungs- und Abwehrsystemen. Zehn Minuten sind kaum genug Zeit für einen Menschen, um auf eine Warnung zu reagieren, den Traffic zu analysieren und manuelle Abwehrmaßnahmen zu ergreifen.</p>
+	<p>Auf der anderen Seite der Diagramme sehen wir, dass etwa ein Viertel der HTTP-DDoS-Angriffe mehr als eine Stunde dauern und fast ein Fünftel länger als einen Tag dauert. Auf der Netzwerkebene sind längere Angriffe deutlich seltener. Nur 1 % der DDoS-Angriffe auf der Netzwerkebene dauern länger als 3 Stunden.</p>
+	<p>HTTP-DDoS-Angriffe: Aufgeschlüsselt nach Dauer</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5THWXBww1SvjFhGz3faxvf/27b48ed6dac038a9342c84ec0661caa4/unnamed--15-.png" alt="HTTP DDoS attacks: distribution by duration" class="kg-image" width="1600" height="916" loading="lazy">
+
+	</figure>
+	<p>DDoS-Angriffe auf der Netzwerkschicht: Aufgeschlüsselt nach Dauer</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jCKPONG0sxuKYTVU1dne5/69f9f38dae5d46b0b2c5b40f9d97f2a3/unnamed--16-.png" alt="Network-layer DDoS attacks: distribution by duration" class="kg-image" width="1600" height="920" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ddos-attack-size">Größe des DDoS-Angriffs</h3>
+		<a href="https://blog.cloudflare.com/#ddos-attack-size" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die meisten DDoS-Angriffe sind relativ klein. Über 95 % der DDoS-Angriffe auf der Netzwerkebene bleiben unter 500 Megabit pro Sekunde und 86 % bleiben unter 50.000 Paketen pro Sekunde.</p>
+	<p>Verteilung der DDoS-Angriffe auf der Netzwerkebene nach Bitrate</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KtVJSY1wf4G0dcalUVRYu/7bf4d928903b3c69e29c251205046e79/unnamed--17-.png" alt="Distribution of network-layer DDoS attacks by bit rate" class="kg-image" width="1600" height="919" loading="lazy">
+
+	</figure>
+	<p>Aufschlüsselung der DDoS-Angriffe auf der Netzwerkebene nach Paketrate</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Xdwy1icebxX20wmq3DE2g/8911a08a43185159155cf00317cc7dbd/unnamed--18-.png" alt="Distribution of network-layer DDoS attacks by packet rate" class="kg-image" width="1600" height="914" loading="lazy">
+
+	</figure>
+	<p>Ebenso bleiben 81 % der HTTP-DDoS-Angriffe unter 50.000 Anfragen pro Sekunde. Obwohl diese Raten für die Größenordnung von Cloudflare gering sind, können sie für eine ungeschützte Website, die an solche Traffic-Aufkommen nicht gewöhnt ist, dennoch verheerend sein.</p>
+	<p>Aufschlüsselung der HTTP-DDoS-Angriffe nach Anfragerate</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NMeVYFSRo9RKwnmPsqOBj/67655da4382355f8424a2525b2bf5f74/unnamed--19-.png" alt="Distribution of HTTP DDoS attacks by request rate" class="kg-image" width="1600" height="923" loading="lazy">
+
+	</figure>
+	<p>Obwohl die meisten Angriffe klein sind, hat die Zahl der größeren volumetrischen Angriffe zugenommen. Einer von 100 DDoS-Angriffen auf der Netzwerkebene überschreitet 1 Million Pakete pro Sekunde (pps), und zwei von 100 überschreiten 500 Gbit/s. In der Anwendungsschicht überschreiten vier von 1.000 HTTP-DDoS-Angriffen 1 Million Anfragen pro Sekunde.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-takeaways">Wichtigste Eckpunkte</h2>
+		<a href="https://blog.cloudflare.com/#key-takeaways" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die meisten DDoS-Angriffe sind klein und schnell. Doch selbst diese Angriffe können Online-Dienste stören, die nicht den <a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks" target="_blank" rel="noopener noreferrer">bewährten Methoden der DDoS-Abwehr</a>folgen.</p>
+	<p>Darüber hinaus werden die Bedrohungsakteure immer raffinierter, was möglicherweise auf die Verfügbarkeit von generativer KI und Copilot-Tools für Entwickler zurückzuführen ist, was zu einem Angriffscode führt, der DDoS-Angriffe verursacht, die schwieriger abzuwehren sind. Schon bevor die Angriffe immer raffinierter wurden, hatten viele Unternehmen Schwierigkeiten, sich selbst gegen diese Bedrohungen zu schützen. Aber das ist auch nicht nötig. Cloudflare steht Ihnen zur Seite. Wir investieren beträchtliche Ressourcen – damit Sie das nicht müssen – um sicherzustellen, dass unsere automatisierten Verteidigungsmaßnahmen zusammen mit dem gesamten Portfolio der Cloudflare-Sicherheitsprodukte vor bestehenden und neuen Bedrohungen schützen.</p>
+</div>

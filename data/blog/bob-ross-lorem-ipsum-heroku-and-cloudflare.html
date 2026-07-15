@@ -1,119 +1,90 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33af7SU5eESxrPMsvStsbr/b0232edee1018fd355fec68bdaf006ac/bob-ross-lorem-ipsum-heroku-and-cloudflare.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>It may not be immediately obvious how these things are related, but bear with me... It was 4pm Friday and one of the engineers on the Cloudflare Tools team came to me with an emergency. "<i>Steve! The Bob Ross Ipsum generator is down!</i>".</p>
-	<p>If you've not heard of <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener noreferrer">Lorem Ipsum</a>, it's an extract from a latin poem that designers use as placeholder text when designing the layout of a document. There are generators all over the web that will spit out as much text as you need.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AuGhmLTCklTkAseu8noU3/87b59bfb7d627aefd95a28772c27315a/Lorem_ipsum_design.svg" alt="" class="kg-image" width="1008" height="1132" loading="lazy">
-
-	</figure>
-	<p><i>Source: Wikipedia</i></p>
-	<p>Of course, the web being the web that we all love, there are also endless parodies of Lorem Ipsum. You can generate <a href="https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups" target="_blank" rel="noopener noreferrer">Hodor Ipsum, Cat Ipsum and Hipster Ipsum</a>. I have a new, undisputed favourite: Bob Ross Ipsum.</p>
-	<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg" target="_blank" rel="noopener noreferrer">paint a landscape</a>, you should do that now. He built a following as host of the TV show “<i>The Joy of Painting</i>” which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like “Happy Little Trees”</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DX6AWOOqrnYTYZqdgA6N6/c81f86420c79f8cb0c7d7cd5a33342e9/image.png" alt="" class="kg-image" width="500" height="549" loading="lazy">
-
-	</figure>
-	<p>Here's a sneak peek of the sort of language you'll hear. I feel better already!</p>
-	<blockquote>
-		<p>Remember how free clouds are. They just lay around in the sky all day long. These things happen automatically. All you have to do is just let them happen. There are no mistakes. You can fix anything that happens. Volunteering your time; it pays you and your whole community fantastic dividends. You create the dream - then you bring it into your world. You can do anything here - the only prerequisite is that it makes you happy. A tree needs to be your friend if you're going to paint him. Nice little clouds playing around in the sky. Pretend you're water. Just floating without any effort. Having a good day. Nature is so fantastic, enjoy it. Let it make you happy.</p>
-	</blockquote>
-	<p>OK, so it turned out the distressed engineer always uses Bob Ross Ipsum when he's building UIs. But the site was down!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HG6w0ZTvvThA8IYYJT9Nq/f30b3edf2d0f27d78ef6e3322ae589fc/site-down.png" alt="" class="kg-image" width="1388" height="922" loading="lazy">
-
-	</figure>
-	<p>My guess is the site got popular enough that the VPS wasn't worth paying, or the hosting provider didn't appreciate the traffic. As a well-trained Cloudflarian, my initial response was:</p>
-	<div class="flex anchor relative">
-		<h3 id="i-could-build-one-of-these-in-about-5-minutes-using">"<i>I could build one of these in about 5 minutes using </i><a href="https://developers.cloudflare.com/workers/about"><i>Workers</i></a><i>!!</i>"</h3>
-		<a href="https://blog.cloudflare.com/#i-could-build-one-of-these-in-about-5-minutes-using" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>OK Step 1, stand on the shoulders of giants. Has anyone open sourced a Bob Ross Lorem Ipsum Generator?</p>
-	<pre class="language-bash"><code class="language-bash">$npm search "bob ross"
-NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS       
-postcss-bob-ross-palette  | Bring a little Bob…  | =jonathantneal  | 2015-12-01 | 1.0.1    | postcss css pos
-bob-ross                  | Bob Ross Color…      | =azz            | 2017-02-14 | 1.0.0    | Bob Ross Color 
-hubot-ross                | A hubot script to…   | =tcrammond      | 2015-03-31 | 1.0.1    | hubot hubot scr
-bob-ross-lipsum           | Phrases from Bob…    | =forresto       | 2016-01-15 | 1.1.1    | lorem ipsum</code></pre>
-	<p>Of course they have! And the code is delightfully simple:</p>
-	<pre class="language-javascript"><code class="language-javascript">function getPhrase () {
-  return phrases[Math.floor(Math.random()*phrases.length)]
-}
-
-function getPhrases (length) {
-  if (!length) length = 1
-  var happyPhrases = []
-  for (var i=0; i&lt;length; i++) {
-    happyPhrases.push(getPhrase())
-  }
-  return happyPhrases.join(' ')
-}
-
-// Compiled by http://www.bobrosslipsum.com/ 2016 January
-var phrases = [...elided for clarity...]</code></pre>
-	<p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website" target="_blank" rel="noopener noreferrer">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p>
-	<p>I'm going to:</p>
-	<ol>
-		<li>
-			<p>Launch workers</p>
-		</li>
-		<li>
-			<p>Confirm I get console output</p>
-		</li>
-		<li>
-			<p>Put a test response</p>
-		</li>
-		<li>
-			<p>Paste in my code to generate Bob Ross Lorem Ipsum</p>
-		</li>
-		<li>
-			<p>Test it out</p>
-		</li>
-		<li>
-			<p>Add a route</p>
-		</li>
-		<li>
-			<p>Save*</p>
-		</li>
-		<li>
-			<p>Request it in the browser</p>
-		</li>
-	</ol>
-	<p>* This pushes it to 150+ data centers... no biggie.</p>
-	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda"><i>fast</i></a><i>.</i></p>
-	<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform.</p>
-	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum" target="_blank" rel="noopener noreferrer">Github</a>.</p>
-	<pre class="language-javascript"><code class="language-javascript">const ui = '...basic html page...';
-
-async function handleRequest(request) {
-
-    let url = new URL(request.url);
-    //Serve the UI
-    if (url.pathname === "/" ) {
-        let init = { "status" : 200 , "headers" : { 'Content-Type': 'text/html' } };
-        return new Response(ui, init);
-    }
-
-    let phraseCount = Math.min(parseInt(url.searchParams.get("phrases") || 100), 10000);
-    let newLine = Math.min(parseInt(url.searchParams.get("newline") || 0), 10000);
-
-    let phraseArr = getPhrasesArr(phraseCount);
-    if (newLine &gt; 0) {
-        phraseArr = breakLines(phraseArr, newLine);
-    }
-    return new Response(phraseArr.join(''));
-}</code></pre>
-	<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com" target="_blank" rel="noopener noreferrer">https://www.bobrossloremipsum.com</a></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HhtsmrQre7phjaweK2dkW/bf9cc451b372cf2faa2faffebcc6c7c8/bob-ross-worker-full.gif" alt="" class="kg-image" width="1024" height="600" loading="lazy">
-
-	</figure>
-	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482" target="_blank" rel="noopener noreferrer">I’m hiring in Austin and San Francisco</a></p>
+<p>It may not be immediately obvious how these things are related, but bear with me... It was 4pm Friday and one of the engineers on the Cloudflare Tools team came to me with an emergency. "<em>Steve! The Bob Ross Ipsum generator is down!</em>".</p>
+<p>If you've not heard of <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener noreferrer">Lorem Ipsum</a>, it's an extract from a latin poem that designers use as placeholder text when designing the layout of a document. There are generators all over the web that will spit out as much text as you need.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="803" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=715&amp;h=803&amp;f=svg&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=640&amp;h=719&amp;f=svg&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=715&amp;h=803&amp;f=svg&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=750&amp;h=842&amp;f=svg&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=828&amp;h=930&amp;f=svg&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=1080&amp;h=1213&amp;f=svg&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=1280&amp;h=1438&amp;f=svg&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMT0B9PPW8MPPV4QD6NQ.svg&amp;w=1430&amp;h=1606&amp;f=svg&amp;fit=cover&amp;position=center 1430w" alt="Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - jRqP3G" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="803" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - jRqP3G"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Source: Wikipedia</em></p>
+<p>Of course, the web being the web that we all love, there are also endless parodies of Lorem Ipsum. You can generate <a href="https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups" target="_blank" rel="noopener noreferrer">Hodor Ipsum, Cat Ipsum and Hipster Ipsum</a>. I have a new, undisputed favourite: Bob Ross Ipsum.</p>
+<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg" target="_blank" rel="noopener noreferrer">paint a landscape</a>, you should do that now. He built a following as host of the TV show “<em>The Joy of Painting</em>” which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like “Happy Little Trees”</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=500&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=500&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=640&amp;h=703&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=750&amp;h=824&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=828&amp;h=909&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48092FVHK16ZT4ST4RYAWH.png&amp;w=1000&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - b7Owhx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="549" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - b7Owhx"></div>
+</figure>
+<p>Here's a sneak peek of the sort of language you'll hear. I feel better already!</p>
+<blockquote>Remember how free clouds are. They just lay around in the sky all day long. These things happen automatically. All you have to do is just let them happen. There are no mistakes. You can fix anything that happens. Volunteering your time; it pays you and your whole community fantastic dividends. You create the dream - then you bring it into your world. You can do anything here - the only prerequisite is that it makes you happy. A tree needs to be your friend if you're going to paint him. Nice little clouds playing around in the sky. Pretend you're water. Just floating without any effort. Having a good day. Nature is so fantastic, enjoy it. Let it make you happy.</blockquote>
+<p>OK, so it turned out the distressed engineer always uses Bob Ross Ipsum when he's building UIs. But the site was down!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="475" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=715&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=715&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=1080&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=1280&amp;h=850&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481PCRNKXGBTVKGCA0A61C.png&amp;w=1430&amp;h=950&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - 3Sbvkh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="475" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - 3Sbvkh"></div>
+</figure>
+<p>My guess is the site got popular enough that the VPS wasn't worth paying, or the hosting provider didn't appreciate the traffic. As a well-trained Cloudflarian, my initial response was:</p>
+<h3>"<em>I could build one of these in about 5 minutes using <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers</a>!!</em>"</h3>
+<p>OK Step 1, stand on the shoulders of giants. Has anyone open sourced a Bob Ross Lorem Ipsum Generator?</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$npm search </span><span class="sk-032f62-99ffe4">"bob ross"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">NAME</span><span class="sk-d73a49-a0a0a0">                      |</span><span class="sk-6f42c1-ffc799"> DESCRIPTION</span><span class="sk-d73a49-a0a0a0">          |</span><span class="sk-6f42c1-ffc799"> AUTHOR</span><span class="sk-d73a49-a0a0a0">          |</span><span class="sk-6f42c1-ffc799"> DATE</span><span class="sk-d73a49-a0a0a0">       |</span><span class="sk-6f42c1-ffc799"> VERSION</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> KEYWORDS</span><span class="sk-24292e-fff">       </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">postcss-bob-ross-palette</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> Bring</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> little</span><span class="sk-032f62-99ffe4"> Bob…</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-032f62-99ffe4"> =jonathantneal</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 2015-12-01</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1.0.1</span><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799"> postcss</span><span class="sk-032f62-99ffe4"> css</span><span class="sk-032f62-99ffe4"> pos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bob-ross</span><span class="sk-d73a49-a0a0a0">                  |</span><span class="sk-6f42c1-ffc799"> Bob</span><span class="sk-032f62-99ffe4"> Ross</span><span class="sk-032f62-99ffe4"> Color…</span><span class="sk-d73a49-a0a0a0">      |</span><span class="sk-032f62-99ffe4"> =azz</span><span class="sk-d73a49-a0a0a0">            |</span><span class="sk-6f42c1-ffc799"> 2017-02-14</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1.0.0</span><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799"> Bob</span><span class="sk-032f62-99ffe4"> Ross</span><span class="sk-032f62-99ffe4"> Color</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hubot-ross</span><span class="sk-d73a49-a0a0a0">                |</span><span class="sk-6f42c1-ffc799"> A</span><span class="sk-032f62-99ffe4"> hubot</span><span class="sk-032f62-99ffe4"> script</span><span class="sk-032f62-99ffe4"> to…</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-032f62-99ffe4"> =tcrammond</span><span class="sk-d73a49-a0a0a0">      |</span><span class="sk-6f42c1-ffc799"> 2015-03-31</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1.0.1</span><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799"> hubot</span><span class="sk-032f62-99ffe4"> hubot</span><span class="sk-032f62-99ffe4"> scr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bob-ross-lipsum</span><span class="sk-d73a49-a0a0a0">           |</span><span class="sk-6f42c1-ffc799"> Phrases</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Bob…</span><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-032f62-99ffe4"> =forresto</span><span class="sk-d73a49-a0a0a0">       |</span><span class="sk-6f42c1-ffc799"> 2016-01-15</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1.1.1</span><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799"> lorem</span><span class="sk-032f62-99ffe4"> ipsum</span></span></code></pre>
 </div>
+<p>Of course they have! And the code is delightfully simple:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getPhrase</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> phrases[Math.</span><span class="sk-6f42c1-ffc799">floor</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">random</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">phrases.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">)]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getPhrases</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">length</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">length) length </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> happyPhrases </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> i</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">length; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    happyPhrases.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">getPhrase</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> happyPhrases.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Compiled by http://www.bobrosslipsum.com/ 2016 January</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> phrases </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">elided for clarity</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>Assuming we've registered a domain and <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-Cloudflare-account-and-add-a-website" target="_blank" rel="noopener noreferrer">put it on Cloudflare</a>, let's see how quickly can we get a globally distributed, highly available API running in 150+ data centers, to generate some Bob Ross Lorem Ipsum.</p>
+<p>I'm going to:</p>
+<ol>
+	<li>Launch workers</li>
+	<li>Confirm I get console output</li>
+	<li>Put a test response</li>
+	<li>Paste in my code to generate Bob Ross Lorem Ipsum</li>
+	<li>Test it out</li>
+	<li>Add a route</li>
+	<li>Save*</li>
+	<li>Request it in the browser</li>
+</ol>
+<p>* This pushes it to 150+ data centers... no biggie.</p>
+<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <em><a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">fast</a>.</em></p>
+<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform.</p>
+<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ui</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '...basic html page...'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //Serve the UI</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-24292e-fff"> ) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> init </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> { </span><span class="sk-032f62-99ffe4">"status"</span><span class="sk-24292e-fff"> : </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> , </span><span class="sk-032f62-99ffe4">"headers"</span><span class="sk-24292e-fff"> : { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> } };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(ui, init);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> phraseCount </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">min</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parseInt</span><span class="sk-24292e-fff">(url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"phrases"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-ffc799">10000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> newLine </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">min</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parseInt</span><span class="sk-24292e-fff">(url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"newline"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-ffc799">10000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> phraseArr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getPhrasesArr</span><span class="sk-24292e-fff">(phraseCount);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (newLine </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        phraseArr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> breakLines</span><span class="sk-24292e-fff">(phraseArr, newLine);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(phraseArr.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com" target="_blank" rel="noopener noreferrer">https://www.bobrossloremipsum.com</a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="419" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=640&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=750&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=828&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=1080&amp;h=633&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=1280&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QZ0MCAH2R148GTWREN4R.gif&amp;w=1430&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - h2omV2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="419" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Bob Ross, Lorem Ipsum, Heroku and Cloudflare Workers Embedded Image - h2omV2"></div>
+</figure>
+<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482" target="_blank" rel="noopener noreferrer">I’m hiring in Austin and San Francisco</a></p>

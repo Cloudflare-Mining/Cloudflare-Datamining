@@ -1,0 +1,226 @@
+<div class="mb2 gray5">1分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ga-week-2022-recap">English</a>、<a href="https://blog.cloudflare.com/es-es/ga-week-2022-recap">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/ga-week-2022-recap">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3al14rq6EkiLlUyblIKlNd/f828af58f23e24bca0c24240b373640d/ga-week-2022-recap.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2019年当時、私はCloudflareのIPOに対するS-1資料のために、2010年にCloudflareが立ち上げられてからの主なリリースを示すグラフを作成しました。以下がそのグラフです。</p>
+	<p>もちろん、このグラフは私たちが出荷したすべてを表しているわけではありませんが、この曲線は、私たちがより多くの製品やサービスを出荷し続けているという、成長企業の真実を示しています。これらの中には、β版から始まるものもあり、オープンβの場合もあればプライベートβの物も含まれます。しかし、ベータ期間終了後にはすべてが一般公開されます。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mPxKF8Z2syd5Sf2UJUO5T/2f25e481d82696eb78e0efd6e4c90d18/image1-40.png" alt="" class="kg-image" width="1870" height="1590" loading="lazy">
+
+	</figure>
+	<p>例えば2014年当時、大きなリリースは年に数回しかありませんでした。しかし、年月が経ち、会社が成長するにつれ、私たちは継続的にアップデート、リリース、変更を繰り返し行っています。今年は、9月に一般発売される製品が集中したため、GA Weekにまとめることにしました。</p>
+	<p>GA Weekが終わり、チームはバースデーウィーク（今週の日曜日に開催！）の仕上げに取り掛かっているところですが、ここで今週発売したすべてのものを振り返ってみましょう。</p>
+	<p>発売されたもの</p><!--kg-card-begin: html-->
+	<table style="font-size:16px">
+		<thead>
+			<tr>
+				<th>What launched</th>
+				<th>Summary</th>
+				<th>Available for?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Monday (September 19)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cloudforce-one-is-now-ga">Cloudforce One</a></td>
+				<td>Our threat operations and research team, Cloudforce One, is now open for business and has begun conducting threat briefings.</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/domain-scoped-roles-ga">Improved Access Control: Domain Scoped Roles are now generally available</a></td>
+				<td>It is possible to scope your users’ access to specific domains with Domain Scoped Roles. This will allow all users access to roles, and the ability to access within zones. </td>
+				<td>Currently available to all Free plans, and coming to Enterprise shortly.</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/account-waf">Account WAF now available to Enterprise customers</a></td>
+				<td>Users can manage and configure the WAF for all of their zones from a single pane of glass. This includes custom rulesets and managed rulesets (Core/OWASP and Managed).</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/adaptive-ddos-protection">Introducing Cloudflare Adaptive DDoS Protection - our new traffic profiling system for mitigating DDoS attacks</a></td>
+				<td>Cloudflare’s new Adaptive DDoS Protection system learns your unique traffic patterns and constantly adapts to protect you against sophisticated DDoS attacks.</td>
+				<td>Built into our Advanced DDoS product</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/advanced-ddos-alerts">Introducing Advanced DDoS Alerts</a></td>
+				<td>Cloudflare’s Advanced DDoS Alerts provide tailored and actionable notifications in real-time.</td>
+				<td>Built into our Advanced DDoS product</td>
+			</tr>
+			<tr>
+				<td>Tuesday (September 20)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/casb-ga">Detect security issues in your SaaS apps with Cloudflare CASB</a></td>
+				<td>By leveraging API-driven integrations, receive comprehensive visibility and control over SaaS apps to prevent data leaks, detect Shadow IT, block insider threats, and avoid compliance violations.</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/inline-dlp-ga">Cloudflare Data Loss Prevention now Generally Available</a></td>
+				<td>Data Loss Prevention is now available for Cloudflare customers, giving customers more options to protect their sensitive data.</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cloudflare-one-partner-program-acceleration">Cloudflare One Partner Program acceleration</a></td>
+				<td>The Cloudflare One Partner Program gains traction with existing and prospective partners.</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/magic-gateway-browser-isolation">Isolate browser-borne threats on any network with WAN-as-a-Service</a></td>
+				<td>Defend any network from browser-borne threats with Cloudflare Browser Isolation by connecting legacy firewalls over IPsec / GRE</td>
+				<td>Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/email-security">Cloudflare Area 1 - how the best Email Security keeps getting better</a></td>
+				<td>Cloudflare started using Area 1 in 2020 and later acquired the company in 2022. We were most impressed how phishing, responsible for 90+% of cyberattacks, basically became a non-issue overnight when we deployed Area 1. But our vision is much bigger than preventing phishing attacks.</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td>Wednesday (September 21)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/r2-ga">R2 is now Generally Available</a></td>
+				<td>R2 gives developers object storage minus the egress fees. With the GA of R2, developers will be free to focus on innovation instead of worrying about the costs of storing their data.</td>
+				<td>All plans</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/stream-live-ga">Stream Live is now Generally Available</a></td>
+				<td>Stream live video to viewers at a global scale.</td>
+				<td>All plans</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/workers-for-platforms-ga">The easiest way to build a modern SaaS application</a></td>
+				<td>With Workers for Platforms, your customers can build custom logic to meet their needs right into your application.</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/workers-todo-part-1">Going originless with Cloudflare Workers – Building a Todo app – Part 1: The API</a></td>
+				<td>Today we go through Part 1 in a series on building completely serverless applications on Cloudflare’s Developer Platform.</td>
+				<td>Free for all Workers users</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/store-and-retrieve-logs-on-r2">Store and Retrieve your logs on R2</a></td>
+				<td>Log Storage on R2: a cost-effective solution to store event logs for any of our products!</td>
+				<td>Enterprise (as part of Logpush)</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/svg-support-in-cloudflare-images">SVG support in Cloudflare Images</a></td>
+				<td>Cloudflare Images now supports storing and delivering SVG files.</td>
+				<td>Part of Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Thursday (September 22)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/regional-services-comes-to-apac">Regional Services Expansion</a></td>
+				<td>Cloudflare is launching the Data Localization Suite for Japan, India and Australia.</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/api-management-metrics">API Endpoint Management and Metrics are now GA</a></td>
+				<td>API Shield customers can save, update, and monitor the performance of API endpoints.</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/zaraz-uses-managed-components-and-dlp-to-make-tools-private">Cloudflare Zaraz supports Managed Components and DLP to make third-party tools private</a></td>
+				<td>Third party tools are the only thing you can’t control on your website, unless you use Managed Components with Cloudflare Zaraz.</td>
+				<td>Available on all plans</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/logpush-filters-alerts">Logpush: now lower cost and with more visibility</a></td>
+				<td>Logpush jobs can now be filtered to contain only logs of interest. Also, you can receive alerts when jobs are failing, as well as get statistics on the health of your jobs.</td>
+				<td>Enterprise</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>まとめ</p>
+	<p>利用可能</p>
+	<p>月曜日（9月19日)</p>
+	<p><a href="https://blog.cloudflare.com/cloudforce-one-is-now-ga">Cloudforce One</a></p>
+	<p>当社の脅威対策・研究チーム「Cloudforce One」が、運営を開始。また、脅威に関するブリーフィングの指揮を執り始めています。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f6c2058c44f9977045d7a026ab8073ca/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff6c2058c44f9977045d7a026ab8073ca%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D5s%26height%3D600&amp;startTime=4s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>Enterprise</p>
+	<p><a href="https://blog.cloudflare.com/domain-scoped-roles-ga">アクセス制御の向上：ドメインスコープ指定ロールが一般にご利用いただけるようになりました</a></p>
+	<p>ドメインスコープ指定ロールを使用して、ユーザーのアクセス範囲を特定のドメインに限定することができます。これにより、すべてのユーザーがロールにアクセスし、ゾーン内でアクセスすることができるようになります。</p>
+	<p>現在はすべてのFreeプランで利用可能ですが、間もなくEnterpriseにも対応します。</p>
+	<p><a href="https://blog.cloudflare.com/account-waf">アカウントWAFは、現在Enterpriseプランのお客様が利用可能です</a></p>
+	<p>ユーザーは、1つのパネルを通してすべてのゾーンのWAFを管理および設定することができます。これには、カスタムルールセットとマネージドルールセット（Core/OWASPとManaged）が含まれます。</p>
+	<p>Enterprise</p>
+	<p><a href="https://blog.cloudflare.com/adaptive-ddos-protection">Cloudflare Adaptive DDoS攻撃対策の導入 - DDoS攻撃を軽減するための新しいトラフィックプロファイリングシステム</a></p>
+	<p>Cloudflareの新しいAdaptive DDoS攻撃対策システムは、お客様に固有のトラフィックパターンを学習し、高度なDDoS攻撃からお客様を保護するために絶えず適応を続けます。</p>
+	<p>アドバンストDDoS製品に搭載</p>
+	<p><a href="https://blog.cloudflare.com/advanced-ddos-alerts">高度DDoSアラートの導入</a></p>
+	<p>Cloudflareの高度DDoSアラートは、リアルタイムで使う人に合わせた、実用的な通知を提供します。</p>
+	<p>アドバンストDDoS製品に搭載</p>
+	<p>火曜日（9月20日)</p>
+	<p><a href="https://blog.cloudflare.com/casb-ga">Cloudflare CASBを使用して、SaaSアプリケーション内のセキュリティの問題を検出する</a></p>
+	<p>APIを利用した統合によって、SaaSアプリの包括的な可視化と制御を実現し、データ漏洩の防止、シャドーITの検出、インサイダー脅威の阻止、コンプライアンス違反の防止を実現します。</p>
+	<p>Enterprise Zero Trust</p>
+	<p><a href="https://blog.cloudflare.com/inline-dlp-ga">Cloudflare Data Loss Prevention（データ損失防止）が一般利用可能に</a></p>
+	<p>Cloudflareのお客様は、機密データを保護するためのより多くのオプションを提供するData Loss Prevention（データ損失防止）が利用できるようになりました。</p>
+	<p>Enterprise Zero Trust</p>
+	<p><a href="https://blog.cloudflare.com/cloudflare-one-partner-program-acceleration">Cloudflare Oneパートナープログラム促進</a></p>
+	<p>Cloudflare Oneパートナープログラムは、既存パートナーや見込みパートナーの間で支持が広がっています。</p>
+	<p>Enterprise Zero Trust</p>
+	<p><a href="https://blog.cloudflare.com/magic-gateway-browser-isolation">WAN as a Serviceを使用して、あらゆるネットワーク上のブラウザ経由の脅威を分離</a></p>
+	<p>IPSec / GREでレガシーファイアウォールに接続することで、Cloudflareのブラウザの分離でブラウザから発生する脅威からあらゆるネットワークを保護</p>
+	<p>Zero Trust</p>
+	<p><a href="https://blog.cloudflare.com/email-security">Cloudflare Area 1 - 最高のメールセキュリティはどのように改善を続けているか</a></p>
+	<p>Cloudflareは2020年にArea 1の利用者となり、その後の2022年に同社を買収の道を進めました。最も印象的だったのは、「Area 1」を導入した際、サイバー攻撃の90%以上を占めるフィッシングが一夜で問題ではなくなったことです。しかし、当社のビジョンは、フィッシング攻撃を防ぐことよりも遥かに大きなところにあります。</p>
+	<p>Enterprise Zero Trust</p>
+	<p>水曜日（9月21日)</p>
+	<p><a href="https://blog.cloudflare.com/r2-ga">R2の一般提供を開始しました</a></p>
+	<p>R2は開発者にオブジェクトストレージを提供しますが、エグレス料金は発生しません。R2の一般公開により、開発者はデータ格納のコストを心配することなくイノベーションに注力できるようになります。</p>
+	<p>全プラン</p>
+	<p><a href="https://blog.cloudflare.com/stream-live-ga">Stream Liveが一般にご利用いただけるようになりました</a></p>
+	<p>世界中の視聴者に向けたライブ動画の配信。</p>
+	<p>全プラン</p>
+	<p><a href="https://blog.cloudflare.com/workers-for-platforms-ga">最新のSaaSアプリケーションを構築する最も簡単な方法</a></p>
+	<p>Workers for Platformsを使用することで、お客様のニーズに合わせたカスタムロジックをアプリケーションに組み込むことができます。</p>
+	<p>Enterprise</p>
+	<p><a href="https://blog.cloudflare.com/workers-todo-part-1">Cloudflare Workersでオリジンレス化 – Todoアプリの構築 – パート1：API</a></p>
+	<p>本日は、Cloudflareの開発者用プラットフォームで行う「完全なサーバーレスアプリケーションの構築」シリーズのパート1をご紹介します。</p>
+	<p>Workersユーザーは全員無料</p>
+	<p><a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2">ログの保存と取得をR2で</a></p>
+	<p>R2上のログストレージ：あらゆる製品のイベントログを保存できるコストパフォーマンスに優れたソリューションです。</p>
+	<p>Enterprise（Logpushの一部として）</p>
+	<p><a href="https://blog.cloudflare.com/svg-support-in-cloudflare-images">Cloudflare Images の SVG サポート</a></p>
+	<p>Cloudflare Images は、SVG ファイルの保存と配信をサポートするようになりました。</p>
+	<p>Cloudflare Imagesの一部</p>
+	<p>木曜日（9月22日)</p>
+	<p><a href="https://blog.cloudflare.com/regional-services-comes-to-apac">Regional Servicesの拡張</a></p>
+	<p>Cloudflareは、日本、インド、オーストラリア向けにData Localization Suiteの提供を開始します。</p>
+	<p>Enterprise</p>
+	<p><a href="https://blog.cloudflare.com/api-management-metrics">API エンドポイント管理とメトリクスが GA になりました</a></p>
+	<p>API Shieldを使用すると、APIエンドポイントのパフォーマンスの保存、更新、モニタリングができます。</p>
+	<p>Enterprise</p>
+	<p><a href="https://blog.cloudflare.com/zaraz-uses-managed-components-and-dlp-to-make-tools-private">Cloudflare Zarazが、Managed Componentsとサードパーティツールを非公開にするDLPをサポート</a></p>
+	<p>自社のWebサイトで管理できないのは、サードパーティツールのみでしょう。Cloudflare ZarazでManaged Componentsを使用すると、サードパーティのツールが管理できるようになります。</p>
+	<p>すべてのプランで利用可能</p>
+	<p><a href="https://blog.cloudflare.com/logpush-filters-alerts">Logpush: 低コストおよびより高い知名度</a></p>
+	<p>Logpushジョブは興味があるログのみを含めるようにフィルタ処理できるようになりました。また、ジョブが失敗するとき、ジョブの健全性に関する統計の取得と共に、警告を受信することができます。</p>
+	<p>Enterprise</p>
+	<p>もちろん、より多くの製品が一般公開されるまで1年待つ必要はありません。ベータ版の出荷や製品の一般公開は、年間を通じて行っていく予定です。そして、すべての製品が主流となるように、繰り返し開発を続けていきます。</p>
+	<p><i>次の内容を</i><a href="https://blog.cloudflare.com/ja-jp/welcome-to-ga-week-ja-jp"><i>GA Weekの冒頭</i></a><i>でお伝えしています。</i></p>
+	<blockquote>
+		<p>「しかし、それは単に製品を機能させ、利用可能にすることではなく、最高の品種を作ることです。当社は早期に出荷し、迅速に反復処理を行います。当社は、WAF、DDoS軽減、ボット管理、API保護、CDN、および開発者プラットフォームのために長年にわたってこれを行ってきました。今日、Gartner、Forrester、IDCなどのアナリスト企業は、これらすべての分野で当社をリーダーとして認識しています。」</p>
+	</blockquote>
+	<p>さあ、この次は<a href="https://blog.cloudflare.com/tag/birthday-week">バースデーウィーク</a>です！</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+</div>

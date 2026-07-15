@@ -1,0 +1,234 @@
+<div class="mb2 gray5">Lecture&nbsp;: 5 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ih6FFoOVX6GtgR7ZnmP20/136e933b69062f65c3d940fb6f880511/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="browser-rendering-api-is-now-available-to-all-paid-workers-customers-with-improved-session-management">L'API Browser Rendering est désormais accessible à tous les clients d'une offre Workers payante avec gestion améliorée des sessions</h3>
+		<a href="https://blog.cloudflare.com/#browser-rendering-api-is-now-available-to-all-paid-workers-customers-with-improved-session-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kiBNiPfz0fqooxige54uO/378848632e2d4633c9f41678f1cff82c/Workers-for-Platforms-now-available-for-PAYGO.png" alt="Browser Rendering API GA, rolling out Cloudflare Snippets, SWR, and bringing Workers for Platforms to our PAYGO plans" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>En mai 2023, nous avons <a href="https://blog.cloudflare.com/browser-rendering-open-beta">annoncé</a> le programme de version bêta ouverte de l'<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer">API Workers Browser Rendering</a>, qui permet aux développeurs de contrôler une instance de navigateur headless de manière programmatique, d'interagir avec celle-ci et de créer des flux d'automatisation pour leurs applications et leurs produits.</p>
+	<p>À la même période, nous avons lancé une version de la <a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer" target="_blank" rel="noopener noreferrer">bibliothèque Puppeteer</a> compatible avec Browser Rendering. Grâce à celle-ci, les développeurs peuvent utiliser une API familière en complément de Cloudflare Workers afin de créer toutes sortes de flux de travail, tels que des captures d'écran de pages ou des tests automatiques de logiciels.</p>
+	<p>Aujourd'hui, nous allons encore plus loin en faisant sortir Browser Rendering de la version bêta et en proposant le service à tous les utilisateurs souscripteurs d'une offre Workers payante. En outre, nous améliorons encore notre API et inaugurons une nouvelle fonctionnalité dont nous discutons depuis longtemps au sein de la communauté de la version bêta ouverte : la gestion des sessions.</p>
+	<div class="flex anchor relative">
+		<h3 id="session-management">Gestion des sessions</h3>
+		<a href="https://blog.cloudflare.com/#session-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La gestion des sessions permet aux développeurs de réutiliser les navigateurs précédemment ouverts dans les scripts de Workers. La réutilisation des sessions de navigateur présente un avantage : il n'est pas nécessaire d'instancier un nouveau navigateur pour chaque requête et chaque tâche, ce qui permet d'augmenter considérablement les performances, tout en réduisant les coûts.</p>
+	<p>Auparavant, pour maintenir l'activité d'une instance de navigateur et la réutiliser, vous deviez mettre en œuvre du code complexe avec Durable Objects. Aujourd'hui, nous avons simplifié les choses en maintenant l'activité de vos navigateurs en arrière-plan et en ajoutant à l'API Puppeteer de nouvelles <a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer/#session-management" target="_blank" rel="noopener noreferrer">méthodes de gestion des sessions</a> qui vous permettent d'accéder à toutes vos sessions en cours, à l'historique de vos activités et à vos limites actives.</p>
+	<p>Voici comment vous pouvez établir la liste de vos sessions actives :</p>
+	<p>Nous avons ajouté à la documentation pour développeurs un <a href="https://developers.cloudflare.com/browser-rendering/get-started/reuse-sessions/#4-code" target="_blank" rel="noopener noreferrer">exemple de script Workers consacré à la gestion de sessions.</a></p>
+	<pre class="language-js"><code class="language-js">const sessions = await puppeteer.sessions(env.RENDERING);
+console.log(sessions);
+[
+   {
+      "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
+      "connectionStartTime": 1711621704607,
+      "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
+      "startTime": 1711621703708
+   },
+   {
+      "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
+      "startTime": 1711621703808
+   }
+]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="analytics-and-logs">Analyses de données et fichiers journaux</h3>
+		<a href="https://blog.cloudflare.com/#analytics-and-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'observabilité est une composante essentielle de tout produit Cloudflare. Vous trouverez des analyses de données et des journaux détaillés de votre utilisation de Browser Rendering dans le tableau de bord, sous la section Workers &amp; Pages de votre compte.</p>
+	<p>Browser Rendering est maintenant disponible pour tous les clients souscripteurs d'une offre Workers payante. Pendant cette période, chaque compte est <a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">limité</a> à l'exécution de deux nouveaux navigateurs par minute et de deux navigateurs simultanés, sans frais. Consultez notre <a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer">page pour développeurs</a> pour faire vos premiers pas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jlU3vFhUa0fXCF7lKYq73/9e63676a0dc7bc54da3ab4cf5efd85dd/image4-10.png" alt="" class="kg-image" width="1999" height="1004" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="we-are-rolling-out-access-to-cloudflare-snippets">Nous déployons l'accès à Cloudflare Snippets</h3>
+		<a href="https://blog.cloudflare.com/#we-are-rolling-out-access-to-cloudflare-snippets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Puissants, programmables et gratuits, les fragments Snippets sont le meilleur moyen d'effectuer des modifications complexes de requêtes et de réponses HTTP dans Cloudflare. Les configurations qui étaient autrefois trop avancées pour être mises en œuvre avec les produits Rules sont désormais possibles avec Snippets. Depuis l'<a href="https://blog.cloudflare.com/snippets-announcement">annonce initiale</a> effectuée à l'occasion de la Developer Week 2022, la promesse d'étendre les fonctionnalités prêtes à l'emploi de Rules avec l'écriture de code JavaScript simple suscite l'enthousiasme de la communauté Cloudflare.</p>
+	<p>Rien qu'au cours des trois premiers mois de 2024, le volume de trafic transitant par Snippets a été multiplié par plus de 7, passant de 2 200 requêtes par seconde en moyenne au début du mois de janvier à plus de 17 000 en mars.</p>
+	<p>Cependant, au lieu d'ouvrir les vannes et de laisser des millions d'utilisateurs de Cloudflare tester Snippets (et potentiellement en provoquer une défaillance) de la manière la plus inattendue, nous allons prendre notre temps et opter pour un déploiement progressif, à l'instar des <a href="https://blog.cloudflare.com/workers-production-safety">déploiements graduels</a> récemment publiés pour Workers.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XCqU9QOeEcg9KoaOShf4x/94bba253b62bf832126baf20b18f5cb4/image2-14.png" alt="" class="kg-image" width="1999" height="882" loading="lazy">
+
+	</figure>
+	<p>Au cours des semaines à venir, 5 % des utilisateurs de Cloudflare commenceront à voir l'indication « Snippets » affichée sous l'onglet Rules du menu de niveau Zone de leur tableau de bord. Si vous faites partie des premiers 5 % d'utilisateurs, passez à l'action et testez la rapidité et la puissance de Snippets, même avec des <a href="https://blog.cloudflare.com/cloudflare-snippets-alpha#what-can-you-build-with-cloudflare-snippets">scénarios d'utilisation avancés</a> tels que les changements de date dynamiques dans les en-têtes ou les tests A/B avec la fonction `math.random`. Quelle que soit l'utilisation que vous ferez de Snippets, gardez une chose à l'esprit : il s'agit encore d'une version alpha ; aussi, n'utilisez pas Snippets pour le trafic de production, pour l'instant.</p>
+	<p>D'ici là, gardez un œil sur le nouvel onglet Snippets sur le tableau de bord de Cloudflare et, entre-temps, apprenez-en davantage sur la puissance et la flexibilité de Snippets dans la <a href="https://developers.cloudflare.com/rules/snippets" target="_blank" rel="noopener noreferrer">documentation pour développeurs</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45mBS7TWL4BL6skGoXRDn3/a99f87e1d885e457b1bb35af5773fdb2/Screenshot-2024-04-04-at-6.12.42-PM.png" alt="" class="kg-image" width="1188" height="638" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="coming-soon-asynchronous-revalidation-with-stale-while-revalidate">Disponible prochainement : la revalidation asynchrone avec la directive stale-while-revalidate</h3>
+		<a href="https://blog.cloudflare.com/#coming-soon-asynchronous-revalidation-with-stale-while-revalidate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'une des fonctionnalités les plus demandées par nos clients est la revalidation asynchrone avec la directive de cache stale-while-revalidate (SWR), que nous vous proposerons au cours de la seconde moitié de 2024. Cette fonctionnalité sera intrinsèquement disponible dans le cadre de notre nouvelle architecture de réseau CDN, qui a été développée avec Rust, en priorisant les performances et la sécurité de la mémoire.</p>
+	<p>Actuellement, lorsqu'un client demande une ressource (par exemple, une page web ou une image), Cloudflare vérifie si la ressource est présente dans le cache et fournit une copie en cache, le cas échéant. Si le fichier ne se trouve pas dans le cache ou si elle est périmée, Cloudflare se connecte au serveur d'origine afin de vérifier s'il existe une nouvelle version du fichier, puis transmet cette dernière à l'utilisateur final. Ce délai d'attente ajoute de la latence à ces requêtes et a un impact sur les performances.</p>
+	<p>Stale-while-revalidate est une directive de cache qui permet à la version expirée ou périmée d'une ressource d'être servie à l'utilisateur final, tout en permettant à Cloudflare de consulter le serveur d'origine afin de déterminer s'il existe une version plus récente de la ressource. S'il existe une version mise à jour, le serveur d'origine la transmet à Cloudflare, tout en mettant le cache à jour. Ce mécanisme permet au client de recevoir rapidement une réponse du cache, tout en assurant qu'il a toujours accès au contenu le plus récent. La directive stale-while-revalidate permet d'atteindre un équilibre entre la diffusion efficace du contenu et la garantie de sa récence, améliorant ainsi les performances et la fluidité de l'expérience utilisateur.</p>
+	<p>Les clients qui souhaitent faire partie de nos bêta-testeurs et participer à l'aventure peuvent s'inscrire <a href="https://forms.gle/EEFDtB97sLG5G5Ui9" target="_blank" rel="noopener noreferrer">ici</a> ; nous vous informerons lorsque la fonctionnalité sera prête à être testée !</p>
+	<div class="flex anchor relative">
+		<h3 id="coming-on-april-16-2024-workers-for-platforms-for-our-pay-as-you-go-plan">À venir le 16 avril 2024 : Workers for Platforms pour notre offre avec paiement en fonction de l'utilisation</h3>
+		<a href="https://blog.cloudflare.com/#coming-on-april-16-2024-workers-for-platforms-for-our-pay-as-you-go-plan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Aujourd'hui, nous sommes ravis de vous annoncer que le 16 avril, Workers for Platforms sera disponible pour tous les développeurs, grâce à notre nouvelle offre à 25 $ avec paiement en fonction de l'utilisation !</p>
+	<p>Workers for Platforms change la façon dont nous développons les logiciels, en vous donnant la possibilité d'intégrer la personnalisation et l'adaptation directement dans votre produit. Avec Workers for Platforms, vous pouvez déployer du code personnalisé au nom de vos utilisateurs ou laisser vos utilisateurs déployer directement leur code sur votre plateforme, sans que vous ou vos utilisateurs n'ayez à gérer une quelconque infrastructure. Vous pouvez utiliser Workers for Platforms avec toutes les annonces passionnantes qui ont été effectuées à l'occasion de cette Developer Week – la solution prend en charge toutes les <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">liaisons</a> fournies avec Workers (notamment <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a> et <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, ainsi que <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer">Python Workers</a>.</p>
+	<p>Voici ce que certains de nos clients, des grandes entreprises aux start-ups, développent avec Workers for Platforms :</p>
+	<ul>
+		<li>
+			<p><a href="https://www.shopify.com/plus/solutions/headless-commerce" target="_blank" rel="noopener noreferrer">Shopify Oxygen</a> est une plateforme d'hébergement pour Hydrogen, la plateforme d'e-commerce basée sur Remix, et a été conçue avec Workers for Platforms ! La combinaison Hydrogen/Oxygen permet aux commerçants de Shopify de contrôler l'expérience des acheteurs en s'affranchissant des restrictions inhérentes aux modèles de vitrine génériques.</p>
+		</li>
+		<li>
+			<p><a href="https://grafbase.com" target="_blank" rel="noopener noreferrer">Grafbase</a> est une plateforme de données permettant aux développeurs de créer une API GraphQL serverless qui unifie les sources de données d'une entreprise sur un point de terminaison unique. La solution utilise Workers for Platforms pour offrir aux développeurs le contrôle et la flexibilité indispensables au déploiement de code écrit en langage JavaScript/TypeScript ou WASM.</p>
+		</li>
+		<li>
+			<p><a href="https://www.triplit.dev" target="_blank" rel="noopener noreferrer">Triplit</a> est une base de données open source qui synchronise en temps réel les données entre le serveur et le navigateur. Elle permet aux utilisateurs de développer des applications en temps réel, à faible latence, avec des fonctionnalités intégrées telles que l'interrogation relationnelle, la gestion de schémas et le stockage côté serveur. Le moteur d'interrogation et de synchronisation de la solution est développé avec Durable Objects, et elle utilise Workers for Platforms pour permettre aux clients d'intégrer du code JavaScript personnalisé à leur instance de base de données Triplit.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="tools-for-observability-and-platform-level-controls">Outils pour l'observabilité et les contrôles au niveau de la plateforme</h3>
+		<a href="https://blog.cloudflare.com/#tools-for-observability-and-platform-level-controls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers for Platforms ne vous permet pas seulement de déployer Workers sur votre plateforme ; nous savons également à quel point il est important de pouvoir observer et contrôler les instances Workers de vos utilisateurs. Nous avons quelques solutions pour vous aider :</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/custom-limits" target="_blank" rel="noopener noreferrer">Limites personnalisées</a> : définissez des plafonds de temps processeur ou de sous-requêtes pour les instances Workers de vos utilisateurs. La solution peut être utilisée pour définir des limites afin de contrôler vos coûts sur Cloudflare et/ou de façonner votre propre modèle de tarification et de création d'offres. Par exemple, si vous proposez votre plateforme avec un modèle freemium, vous pouvez réduire la limite de temps processeur pour les clients utilisateurs de votre offre gratuite.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a> : les événements Tail Workers contiennent des métadonnées relatives à l'instance Workers, ainsi que des messages console.log(), et permettent de capturer toutes les exceptions non gérées. Ils peuvent être utilisés pour fournir à vos développeurs une fonctionnalité de journalisation en direct, afin d'identifier les erreurs et de résoudre les problèmes en temps réel.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/outbound-workers" target="_blank" rel="noopener noreferrer">Outbound Workers</a>: obtenez une visibilité de toutes les requêtes sortantes des instances Workers de vos utilisateurs. Outbound Workers réside entre l'instance Workers de l'utilisateur et les requêtes fetch() transmises par celle-ci, vous permettant d'avoir une visibilité totale sur la requête avant qu'elle ne soit transmise à Internet.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="pricing">Tarification</h3>
+		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous voulions nous assurer que Workers for Platforms serait proposée à un tarif abordable pour les passionnés, les développeurs solo et les développeurs indépendants. Workers for Platforms fait partie d'une nouvelle offre payante à 25 $ et propose les caractéristiques suivantes :</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Included Amounts</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Requests</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20 million requests/month </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.30 per additional million</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU time</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">60 million CPU milliseconds/month</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.02 per additional million CPU milliseconds</span></td>
+			</tr>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Scripts</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1000 scripts</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0.02 per additional script/month</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Montants inclus</p>
+	<p>Requêtes</p>
+	<p>20 millions de requêtes/mois+0,30 USD par million supplémentaire</p>
+	<p>Temps processeur</p>
+	<p>60 millions de millisecondes processeur/mois+0,02 $ par million de millisecondes processeur supplémentaires</p>
+	<p>Scripts</p>
+	<p>1 000 scripts+0,02 $ par script supplémentaire/mois</p>
+	<div class="flex anchor relative">
+		<h3 id="workers-for-platforms-will-be-available-to-purchase-on-april-16-2024">Workers for Platforms sera disponible à l'achat le 16 avril 2024 !</h3>
+		<a href="https://blog.cloudflare.com/#workers-for-platforms-will-be-available-to-purchase-on-april-16-2024" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers for Platforms sera disponible à l'achat depuis l'onglet Workers for Platforms du tableau de bord Cloudflare le 16 avril 2024.</p>
+	<p>En attendant, pour en savoir plus sur Workers for Platforms, consultez notre <a href="https://github.com/cloudflare/workers-for-platforms-example" target="_blank" rel="noopener noreferrer">projet de démarrage</a> et la <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">documentation pour développeurs</a>.</p>
+</div>

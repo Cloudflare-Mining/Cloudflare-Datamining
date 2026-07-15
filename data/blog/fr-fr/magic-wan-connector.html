@@ -1,0 +1,185 @@
+<div class="mb2 gray5">Lecture&nbsp;: 4 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/magic-wan-connector">English</a>, en <a href="https://blog.cloudflare.com/de-de/magic-wan-connector">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/magic-wan-connector">日本語</a>, en <a href="https://blog.cloudflare.com/es-es/magic-wan-connector">Español</a> et en <a href="https://blog.cloudflare.com/zh-cn/magic-wan-connector">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1axOYbLd4pjx1PSe2yFhiY/387175bcf60ae9f70951f63133bdac1e/magic-wan-connector.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare One aide les sociétés à moderniser leurs réseaux d'entreprise en connectant n'importe quelle source ou destination de trafic, puis en superposant à la connexion des politiques de sécurité <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>. Cette approche permet de réduire les coûts et la complexité pour les équipes informatiques et de proposer une meilleure expérience aux utilisateurs. Aujourd'hui, nous sommes ravis de faciliter encore la démarche d'établissement d'une connexion avec le connecteur Magic WAN : il s'agit d'un package logiciel léger que vous pouvez installer sur n'importe quel réseau physique ou cloud, permettant de connecter, diriger et réguler automatiquement tout flux de trafic IP.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x4P53d0PbmTYOlBqLqC04/3ae5cf230c0e205875d29528db19ae05/image4-4.png" alt="Announcing the Magic WAN Connector: the easiest on-ramp to your next generation network" class="kg-image" width="1999" height="1126" loading="lazy">
+
+	</figure>
+	<p>Vous pouvez installer le connecteur Magic WAN sur les équipements physiques ou virtuels dont vous disposez déjà ou l'acheter préinstallé sur un équipement certifié Cloudflare. Il garantit la meilleure connectivité à l'emplacement réseau Cloudflare le plus proche, où des contrôles de sécurité seront appliqués et le trafic sera acheminé vers sa destination suivant un itinéraire optimisé. L'adoption de l'architecture <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">SASE</a> n'a jamais été aussi simple.</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-todays-problems-and-setting-up-for-tomorrow">Résoudre les problèmes d'aujourd'hui et préparer l'avenir</h3>
+		<a href="https://blog.cloudflare.com/#solving-todays-problems-and-setting-up-for-tomorrow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ces dernières années, nous avons eu l'occasion d'apprendre des équipes informatiques comment leurs réseaux d'entreprise ont évolué et quels sont les défis auxquels elles sont confrontées aujourd'hui. La plupart des organisations décrivent un point de départ de connectivité privée et des contrôles de sécurité du type « château entouré de douves » : un réseau WAN d'entreprise constitué de circuits point à point et MPLS et d'équipements déployés sur le périmètre des réseaux physiques. Si ce modèle d'architecture était efficace dans le monde d'avant le cloud, à l'heure où les applications ont évolué hors des murs des datacenters d'entreprises et les utilisateurs travaillent toujours plus fréquemment depuis n'importe quel site, le concept de périmètre s'est effondré.</p>
+	<p>En réponse à ces évolutions, les fournisseurs de solutions traditionnelles de réseaux et de sécurité ont élaboré un large éventail de solutions dédiées, conçues pour combler des lacunes spécifiques : un équipement virtuel pour filtrer le trafic web, un équipement physique pour optimiser l'utilisation de la bande passante sur différents circuits, un outil cloud pour prévenir la perte de données et bien d'autres. Les équipes informatiques doivent désormais gérer une suite d'outils plus étendue que jamais et remédier aux lacunes résultantes en matière de sécurité, de visibilité et de contrôle.</p>
+	<p><i>Le réseau fragmenté des entreprises modernes</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qve46P1BhXgMXPq3Vl99p/6ad6959ea94207ae8578f6a74f4f1923/image3-7.png" alt="Today’s fragmented corporate network" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<p>À l'heure où les équipes informatiques sont aux prises avec un ensemble d'outils disparates et une interminable file d'attente de tickets, nous considérons cette situation comme une période de transition vers un monde où l'Internet constitue la fondation du réseau d'entreprise. Cloudflare One permet aux organisations de toute taille d'effectuer la transition vers l'architecture SASE : connecter toute source et toute destination de trafic à un réseau mondial sécurisé, rapide et fiable, sur lequel toutes les fonctions de sécurité sont mises en œuvre et le trafic est optimisé pendant l'acheminement vers sa destination, que ce soit sur un réseau privé ou sur l'Internet public.</p>
+	<p><i>L'architecture SASE (Secure Access Service Edge)</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qsXt9CqefEYzvzH18z8Ml/7e4294ece12db47f651af64838d0eeba/image1-18.png" alt="Secure Access Service Edge architecture" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="magic-wan-connector-the-easiest-way-to-connect-your-network-to-cloudflare">Connecteur Magic WAN : la façon la plus simple de connecter votre réseau à Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#magic-wan-connector-the-easiest-way-to-connect-your-network-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La première étape de l'adoption de l'architecture SASE consiste à établir une connexion, c'est-à-dire à établir un chemin sécurisé entre votre réseau existant et le site le plus proche où peuvent être mises en œuvre des politiques de sécurité Zero Trust. Cloudflare propose une vaste sélection de solutions « d'accès direct » pour mettre en œuvre cette connectivité, notamment des options d'accès avec ou sans client pour utilisateurs itinérants, des tunnels de couche application déployés par un démon logiciel léger, une connectivité de couche réseau avec des tunnels GRE ou IPsec standard, et une interconnexion physique ou virtuelle.</p>
+	<p>Aujourd'hui, pour rendre encore plus simple cette première étape du déploiement de l'architecture SASE, nous présentons un nouveau membre de cette famille de solutions d'accès direct. Le connecteur Magic WAN peut être déployé sur n'importe quel réseau physique ou cloud afin d'offrir une connectivité automatique au site du réseau Cloudflare le plus proche, en utilisant la connectivité Internet existante du « dernier kilomètre » et en supprimant la nécessité, pour les équipes informatiques, de configurer manuellement l'équipement réseau afin d'établir la connexion.</p>
+	<p><i>Le connecteur Magic WAN offre une connectivité aisée au réseau de Cloudflare</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Xs3oFe75DtE5m9uqsirPz/6468cd151f0ac9c824e1a12ec8026269/image2-10.png" alt="Magic WAN Connector provides easy connectivity to Cloudflare’s network" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="end-to-end-traffic-management">Gestion de bout en bout du trafic</h3>
+		<a href="https://blog.cloudflare.com/#end-to-end-traffic-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À l'issue de centaines de conversations avec nos clients au cours des dernières années, nous avons défini un ensemble restreint de fonctionnalités dont les clients ont besoin sur leurs réseaux sur site et dans le cloud. Ils ont décrit cette architecture ainsi : « une succursale légère, un cloud lourd » – la volonté de minimiser l'empreinte sur les sites du réseau d'entreprise et de transférer la majorité des fonctions jusqu'alors déployées sur des équipements sur site vers un réseau distribué à l'échelle mondiale.</p>
+	<p>Le connecteur Magic WAN inclut un ensemble de fonctionnalités essentielles permettant d'utiliser au mieux la connectivité disponible sur le « dernier kilomètre ». Cela inclut l'acheminement du trafic, l'équilibrage de charge et le basculement, l'orientation et la régulation de flux de trafic sensibles aux applications, ainsi que la configuration et l'orchestration automatiques. Ces capacités vous connectent automatiquement au site Cloudflare le plus proche, où le trafic est optimisé, puis acheminé vers sa destination. Cette approche vous permet d'utiliser le réseau de Cloudflare (présent dans 275 villes et 100 pays dans le monde entier, offrant plus de 11 000 interconnexions et une infrastructure sur fibre optique croissante) comme une extension du vôtre.</p>
+	<p>Fonction du réseau</p><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Network function</th>
+				<th>Magic WAN Connector</th>
+				<th>Cloudflare Network</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Branch routing (traffic shaping, failover, QoS)</td>
+				<td>Application-aware routing and traffic steering between multiple last mile Internet circuits</td>
+				<td>Application-aware routing and traffic steering across the middle mile to get traffic to its destination</td>
+			</tr>
+			<tr>
+				<td>Centralized device management</td>
+				<td>Connector config controlled from unified Cloudflare dashboard</td>
+				<td>Cloudflare unified dashboard portal, observability, Zero Trust services</td>
+			</tr>
+			<tr>
+				<td>Zero-touch configuration</td>
+				<td>Automagic config; boots with smart defaults and sets up tunnels + routes</td>
+				<td>Automagic config; Magic WAN Connector pulls down updates from central control plane</td>
+			</tr>
+			<tr>
+				<td>VPN + Firewall</td>
+				<td>VPN termination + basic network segmentation included</td>
+				<td>Full-featured SASE platform including ZTNA, FWaaS, DDoS, WAAP, and Email Security</td>
+			</tr>
+			<tr>
+				<td>Application-aware path selection</td>
+				<td>Application-aware traffic shaping for last mile</td>
+				<td>Application-aware Enhanced Internet for middle mile</td>
+			</tr>
+			<tr>
+				<td>Application auto discovery</td>
+				<td>Works with Cloudflare network to perform application discovery and classification in real time</td>
+				<td>1+1=3: Cloudflare Zero Trust application classification tools reused in this context</td>
+			</tr>
+			<tr>
+				<td><a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">Application performance visibility</a></td>
+				<td>Acts as telemetry source for Cloudflare observability tools</td>
+				<td>Cloudflare One Analytics platform &amp; Digital Experience Monitoring</td>
+			</tr>
+			<tr>
+				<td>Software can be deployed in the cloud</td>
+				<td>Software can be deployed as a public cloud VM</td>
+				<td>All configuration controlled via unified Cloudflare dashboard</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Connecteur Magic WAN</p>
+	<p>Réseau Cloudflare</p>
+	<p>Routage vers/depuis les succursales (régulation de flux, basculement, qualité de service)</p>
+	<p>Routage et orientation sensibles aux applications du trafic sur plusieurs circuits Internet du « dernier kilomètre »</p>
+	<p>Routage et orientation sensibles aux applications du trafic sur le « kilomètre intermédiaire », afin d'acheminer le trafic vers sa destination</p>
+	<p>Gestion centralisée des équipements</p>
+	<p>Contrôle de la configuration des connecteurs depuis le tableau de bord unifié de Cloudflare</p>
+	<p>Portail du tableau de bord unifié de Cloudflare, observabilité, services Zero Trust</p>
+	<p>Configuration sans intervention</p>
+	<p>Configuration automatique ; démarrage avec des valeurs par défaut intelligentes et configuration des tunnels et du routage</p>
+	<p>Configuration automatique ; le connecteur Magic WAN récupère les mises à jour depuis le plan de contrôle central</p>
+	<p>VPN + pare-feu</p>
+	<p>Point de terminaison du VPN + segmentation de base du réseau incluse</p>
+	<p>Plateforme SASE dotée de fonctionnalités complètes, par ex., ZTNA, FWaaS, protection anti-DDoS, WAAP et solution de sécurité des e-mails</p>
+	<p>Sélection sensible aux applications de l'itinéraire</p>
+	<p>Régulation de flux de trafic sensible aux applications sur le « dernier kilomètre »</p>
+	<p>Internet amélioré, sensible aux applications, pour le « kilomètre intermédiaire »</p>
+	<p>Auto-découverte d'applications</p>
+	<p>Fonctionne avec le réseau Cloudflare pour assurer la découverte et la classification des applications en temps réel</p>
+	<p>1+1=3 : réutilisation dans ce contexte des outils de classification d'applications Cloudflare Zero Trust</p>
+	<p>Visibilité des performances des applications</p>
+	<p>Se comporte comme une source d'informations télémétriques pour les outils d'observabilité de Cloudflare</p>
+	<p>Plateforme d'analyse de données Cloudflare One et Digital Experience Monitoring</p>
+	<p>Le logiciel peut être déployé dans le cloud</p>
+	<p>Le logiciel peut être déployé sous forme de VM dans le cloud public</p>
+	<p>Toute la configuration est contrôlée depuis le tableau de bord unifié de Cloudflare</p>
+	<div class="flex anchor relative">
+		<h3 id="fully-integrated-security-from-day-0">Sécurité entièrement intégrée dès le jour 0</h3>
+		<a href="https://blog.cloudflare.com/#fully-integrated-security-from-day-0" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Le connecteur Magic WAN, comme tous les produits de Cloudflare, a été fondamentalement développé pour offrir une intégration native aux autres solutions du portefeuille Cloudflare One. La connexion de votre réseau au réseau de Cloudflare avec le connecteur Magic WAN offre un accès automatique à une suite complète de fonctionnalités de sécurité SASE, notamment nos solutions Firewall-as-a-Service, d'accès réseau Zero Trust, Secure Web Gateway, de prévention des pertes de données, d'isolation de navigateur, Cloud Access Security Broker, de sécurité des e-mails, etc.</p>
+	<div class="flex anchor relative">
+		<h3 id="optionally-pre-packaged-to-make-deployment-easy">Intégration optionnelle sous forme de package, afin de faciliter le déploiement</h3>
+		<a href="https://blog.cloudflare.com/#optionally-pre-packaged-to-make-deployment-easy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'objectif de Cloudflare est de faciliter autant que possible l'accès direct à son réseau ; c'est pourquoi des options de déploiement flexibles sont disponibles pour le connecteur Magic WAN. Vous pouvez installer le logiciel sur des équipements Linux physiques ou virtuels que vous gérez ou l'acheter préinstallé et configuré sur un équipement physique, afin de faciliter autant que possible le déploiement la connectivité SASE. Raccordez l'équipement à votre réseau existant et, en quelques minutes seulement, vous serez automatiquement connecté au réseau Cloudflare et sécurisé par celui-ci.</p>
+	<div class="flex anchor relative">
+		<h3 id="and-open-source-to-make-it-even-easier">Open source, afin de faciliter encore le déploiement</h3>
+		<a href="https://blog.cloudflare.com/#and-open-source-to-make-it-even-easier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous sommes ravis de rendre ces fonctionnalités accessibles aux entreprises de tout type, notamment celles qui souhaitent gérer elles-mêmes davantage d'aspects de leurs déploiements réseau. À cette fin, nous proposerons le connecteur Magic WAN en open source, afin que de permettre aux clients de se connecter encore plus facilement au réseau de Cloudflare depuis leurs équipements existants.</p>
+	<div class="flex anchor relative">
+		<h3 id="part-of-a-growing-family-of-on-ramps">Membre d'une famille grandissante de solutions d'accès direct</h3>
+		<a href="https://blog.cloudflare.com/#part-of-a-growing-family-of-on-ramps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En plus d'inaugurer le connecteur Magic WAN aujourd'hui, nous continuons à développer de nouvelles options permettant aux clients de se connecter à notre réseau avec leurs équipements existants. Nous sommes ravis d'étendre nos <a href="https://www.cloudflare.com/network-onramp-partners" target="_blank" rel="noopener noreferrer">partenariats d'accès réseau direct</a> avec d'éminents spécialistes des réseaux tels que Cisco, SonicWall et Sophos, qui rejoignent les partenaires existants tels qu'Aruba, VMWare et Arista afin d'aider nos clients à intégrer facilement leur trafic sur Cloudflare.</p>
+	<p>Les clients peuvent se connecter à notre réseau depuis des équipements proposés par ces fournisseurs, avec des tunnels Anycast GRE ou IPSec. Nos partenaires ont validé leurs solutions et vérifié, au moyen de tests, que leurs équipements réseau peuvent se connecter à Cloudflare avec ces normes. Afin de faciliter l'installation pour nos clients communs, des instructions de configuration détaillées seront prochainement disponibles à la fois dans les documents destinés aux développeurs de Cloudflare et sur les sites web des partenaires.</p>
+	<p>Si vous êtes un fournisseur de solutions réseau et vous souhaitez rejoindre nos partenaires d'accès réseau direct, veuillez nous contacter <a href="https://www.cloudflare.com/partners/technology-partners" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/partners/technology-partners/ici</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="ready-to-start-building-the-future-of-your-corporate-network">Êtes-vous prêt à commencer à construire l'avenir de votre réseau d'entreprise ?</h3>
+		<a href="https://blog.cloudflare.com/#ready-to-start-building-the-future-of-your-corporate-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nous sommes absolument ravis de proposer le connecteur Magic WAN à nos clients et de les aider à donner le coup d'envoi de leur transition vers l'architecture SASE. Pour en savoir plus et vous inscrire afin de bénéficier d'un accès anticipé, suivez <a href="https://www.cloudflare.com/lp/magic-wan-connector" target="_blank" rel="noopener noreferrer">ce lien</a>.</p>
+</div>

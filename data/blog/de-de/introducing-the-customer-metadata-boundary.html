@@ -1,0 +1,100 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary">English</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-the-customer-metadata-boundary">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-the-customer-metadata-boundary">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-the-customer-metadata-boundary">Español</a>, <a href="https://blog.cloudflare.com/id-id/introducing-the-customer-metadata-boundary">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/introducing-the-customer-metadata-boundary">ไทย</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-the-customer-metadata-boundary">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zQZVocNWpi3O9YBnbLMoy/ff0e17bf8967685543ac34521b59a662/introducing-the-customer-metadata-boundary.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Das Thema Datenlokalisierung hat in den letzten Jahren viel Aufmerksamkeit erregt, denn viele Länder wollen auf diese Weise die Daten ihrer Bürger kontrollieren oder schützen. Länder wie Australien, China, Indien, Brasilien und Südkorea haben oder erwägen derzeit Regelungen, die in der einen oder anderen Form die rechtliche Souveränität über die persönlichen Daten ihrer Bürger sicherstellen – Daten des Gesundheitswesens müssen lokal gespeichert werden; öffentliche Einrichtungen dürfen nur mit lokalen Providern Verträge abschließen usw.</p>
+	<p></p>
+	<p>Durch die jüngste Entscheidung „Schrems II“ entstanden in der EU zusätzliche Anforderungen für Unternehmen, die persönliche Daten in Länder außerhalb der EU übertragen. Und zahlreiche stark regulierte Branchen verlangen, dass bestimmte Arten persönlicher Daten innerhalb der EU-Grenzen bleiben.</p>
+	<p>Wir bei Cloudflare wollen unseren Kunden dabei helfen, persönliche Daten in der EU zu behalten. Deshalb haben wir letztes Jahr eine <a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite">Data Localisation Suite</a> auf den Markt gebracht. Sie gibt den Kunden die Kontrolle darüber, wo ihre Daten geprüft und gespeichert werden.</p>
+	<p>Wir freuen uns, Ihnen heute die Customer Metadata Boundary vorstellen zu können. Sie erweitert die Data Localisation Suite, um zu garantieren, dass auch die Metadaten des Traffics eines Kunden in der EU verbleiben.</p>
+	<div class="flex anchor relative">
+		<h3 id="metadata-a-primer">Metadata: ein Primer</h3>
+		<a href="https://blog.cloudflare.com/#metadata-a-primer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>„Metadaten“ können ein furchterregender Begriff sein, aber es ist ein einfaches Konzept – es bedeutet einfach „Daten über Daten“. Anders ausgedrückt handelt es sich um eine Beschreibung von Aktivitäten, die in unserem Netzwerk stattgefunden haben. Jeder Dienst im Internet erfasst in irgendeiner Form Metadaten, die für die Sicherheit der Nutzer und die Verfügbarkeit des Netzwerks unerlässlich sind.</p>
+	<p>Bei Cloudflare sammeln wir Metadaten über die Nutzung unserer Produkte für verschiedene Zwecke:</p>
+	<ul>
+		<li>
+			<p>Bereitstellung von Analysen über unsere Dashboards und APIs</p>
+		</li>
+		<li>
+			<p>Weitergabe von Protokollen an Kunden</p>
+		</li>
+		<li>
+			<p>Neutralisierung von Sicherheitsbedrohungen wie Bots oder DDoS-Angriffen</p>
+		</li>
+		<li>
+			<p>Verbesserung der Performance unseres Netzwerks</p>
+		</li>
+		<li>
+			<p>Aufrechterhaltung der Zuverlässigkeit und Ausfallsicherheit unseres Netzwerks</p>
+		</li>
+	</ul>
+	<p>Wie sieht diese Sammlung bei Cloudflare konkret aus? Unser Edge-Netzwerk besteht aus Dutzenden von Diensten, darunter unsere Firewall, der Cache, der DNS-Resolver, die DDoS-Abwehrsysteme und die Workers-Laufzeit. Jeder Dienst gibt strukturierte Protokollnachrichten aus, die Felder wie Zeitstempel, URLs, die Nutzung von Cloudflare-Features sowie die Kennung des Kundenkontos und der Zone enthalten.</p>
+	<p>Diese Nachrichten umfassen nicht den <i>Inhalt</i> des Kunden-Traffics und somit auch keine Daten wie Nutzernamen, Kennwörter, persönliche Informationen und andere vertraulichen Einzelheiten zu den Endnutzern der Kunden. Allerdings können diese Protokolle die IP-Adressen der Endnutzer enthalten, diese werden in der EU den personenbezogenen Daten zugerechnet.</p>
+	<div class="flex anchor relative">
+		<h3 id="data-localisation-in-the-eu">Datenlokalisierung in der EU</h3>
+		<a href="https://blog.cloudflare.com/#data-localisation-in-the-eu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Datenschutz-Grundverordnung (DSGVO) der EU ist eines der umfassendsten (und bekanntesten) Datenschutzgesetze der Welt. Die DSGVO besteht jedoch <i>nicht</i> darauf, dass persönliche Daten in Europa bleiben müssen. Stattdessen sieht sie eine Reihe rechtlicher Mechanismen vor, die sicherstellen, dass persönlichen Daten in der EU auf dem Niveau der DSGVO geschützt werden, wenn sie außerhalb der EU in ein Drittland wie die USA übermittelt werden. Datenübermittlungen aus der EU in die USA waren bis vor kurzem im Rahmen eines Abkommens namens <a href="https://www.privacyshield.gov/welcome" target="_blank" rel="noopener noreferrer">„EU-U.S. Privacy Shield Framework“</a> zulässig.</p>
+	<p>Kurz nach Inkrafttreten der DSGVO reichte ein Datenschutzaktivist namens <a href="https://en.wikipedia.org/wiki/Max_Schrems" target="_blank" rel="noopener noreferrer">Max Schrems</a> Klage gegen Facebook ein. Der Grund waren die Praktiken der Datenerfassung. Im Juli 2020 erließ der Gerichtshof der EU das „Schrems II“-Urteil, das unter anderem das Privacy Shield Framework für ungültig erklärte. Das Gericht bestätigte jedoch andere gültige Übermittlungsmechanismen, die garantieren, dass persönliche Daten aus der EU nicht von US-Behörden in einer Weise eingesehen werden können, die gegen die DSGVO verstößt.</p>
+	<p>Seit der Schrems II-Entscheidung haben uns viele Kunden gefragt, wie wir die Daten von EU-Bürgern schützen. Glücklicherweise hat Cloudflare schon lange vor dem Fall Schrems II <a href="https://www.cloudflare.com/gdpr/introduction" target="_blank" rel="noopener noreferrer">Datenschutzvorkehrungen</a> getroffen, wie z.&nbsp;B. unsere <a href="https://assets.ctfassets.net/slt3lc6tev37/2RM2ZAb5XJiudjz4QHvth4/10ebea557c907aeefec8a0609beba51f/Whitepaper_Cf-policies-around-data-privacy-law-enforcement-requests_German_202102065.pdf" target="_blank" rel="noopener noreferrer">branchenführenden Verpflichtungen</a> in Bezug auf staatliche Datenanfragen. Insbesondere als Reaktion auf Schrems II haben wir unseren <a href="https://www.cloudflare.com/cloudflare-customer-dpa" target="_blank" rel="noopener noreferrer">Zusatz zur Datenverarbeitung</a> für Kunden (DPA) aktualisiert. Wir haben die neuesten <a href="https://www.cloudflare.com/cloudflare-customer-scc" target="_blank" rel="noopener noreferrer">Standardvertragsklauseln</a> aufgenommen, bei denen es sich um von der EU-Kommission genehmigte rechtliche Vereinbarungen handelt, die die Datenübermittlung ermöglichen. Außerdem haben wir zusätzliche Sicherheitsvorkehrungen hinzugefügt, wie sie in den Empfehlungen des <a href="https://edpb.europa.eu/news/news/2021/edpb-adopts-final-version-recommendations-supplementary-measures-letter-eu_en" target="_blank" rel="noopener noreferrer">EDSA vom Juni 2021 über ergänzende Maßnahmen</a> beschrieben sind. Schließlich sind die Dienste von Cloudflare nach dem Standard ISO 27701 zertifiziert, der den Anforderungen der DSGVO entspricht.</p>
+	<p>In Anbetracht dieser Maßnahmen sind wir überzeugt, dass unsere EU-Kunden die Dienste von Cloudflare in einer Weise nutzen können, die mit der DSGVO und der Schrems-II-Entscheidung vereinbar ist. Wir sind uns jedoch bewusst, dass viele unserer Kunden möchten, dass ihre persönlichen Daten in der EU bleiben. Einige unserer Kunden aus Branchen wie dem Gesundheitswesen, dem Rechtswesen und dem Finanzwesen können beispielsweise zusätzliche Anforderungen stellen. &nbsp;Aus diesem Grund haben wir eine optionale Reihe von Dienstleistungen entwickelt, die diese Anforderungen erfüllen. Wir nennen dies unsere Data Localisation Suite.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-the-data-localisation-suite-helps-today">Wie die Data Localisation Suite heute hilft</h3>
+		<a href="https://blog.cloudflare.com/#how-the-data-localisation-suite-helps-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Angesichts der großen Datenmengen ist Datenlokalisierung für Kunden eine Herausforderung. Wenn es um Cloudflare-Traffic geht, haben wir festgestellt, dass Kunden sich vor allem um drei Bereiche Gedanken machen:</p>
+	<ol>
+		<li>
+			<p>Wie kann ich sicherstellen, dass meine Verschlüsselungscodes in der EU bleiben?</p>
+		</li>
+		<li>
+			<p>Wie kann ich sicherstellen, dass Dienste wie Caching und WAF nur in der EU laufen?</p>
+		</li>
+		<li>
+			<p>Wie kann ich sicherstellen, dass Metadaten niemals außerhalb der EU übertragen werden?</p>
+		</li>
+	</ol>
+	<p>Als Antwort auf das erste Problem bietet Cloudflare seit langem <a href="https://www.cloudflare.com/ssl/keyless-ssl" target="_blank" rel="noopener noreferrer">Keyless SSL</a> und <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a> an. Die Dienste verhindern, dass privates SSL/TLS-Schlüsselmaterial die EU verlässt. Keyless SSL garantiert, dass Cloudflare niemals in den Besitz des privaten Schlüsselmaterials gelangt; Geo Key Manager verwendet Keyless SSL im Hintergrund, um sicherzustellen, dass die Schlüssel niemals die angegebene Region verlassen.</p>
+	<p>Letztes Jahr haben wir uns das zweite Problem mit unseren <a href="https://blog.cloudflare.com/introducing-regional-services">Regional Services</a> vorgenommen. Regional Services stellen sicher, dass Cloudflare den Inhalt des HTTP-Traffics nur innerhalb der EU entschlüsseln und prüfen kann. Mit anderen Worten: SSL-Verbindungen werden nur in der EU beendet, und alle unsere Sicherheits- und Performance-Dienste der Ebene 7 werden nur in unseren EU-Rechenzentren ausgeführt.</p>
+	<p>Heute bieten wir unseren Kunden auch eine Lösung für das dritte und letzte Problem: Jetzt können Sie auch Metadaten lokal speichern.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-the-metadata-boundary-works">Wie Metadata Boundary funktioniert</h3>
+		<a href="https://blog.cloudflare.com/#how-the-metadata-boundary-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Customer Metadata Boundary stellt einfach sicher, dass Endnutzer-Traffic-Metadaten, die einen Kunden identifizieren können, in der EU bleiben. Dazu gehören alle Protokolle und Analytics, die ein Kunde sieht.</p>
+	<p>Wie gelingt uns das? Alle Metadaten, mit denen ein Kunde identifiziert werden kann, fließen durch einen einzigen Dienst an unsere Edge, bevor sie an eines unserer zentralen Rechenzentren weitergeleitet werden.</p>
+	<p>Bei aktivierter Metadata Boundary stellt unsere Edge sicher, dass keine Protokollnachricht, anhand derer der betreffende Kunde identifiziert werden könnte (die also die Konto-ID dieses Kunden enthält), an ein Ziel außerhalb der EU gesendet wird. Die Daten werden nur an unser zentrales Rechenzentrum in der EU übertragen, nicht jedoch an unser zentrales Rechenzentrum in den USA.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">Was kommt als Nächstes?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12lcx2Efei67w6jfteXoMN/d3c2c22e54af6bf25d549067e559dae8/image2-14.png" alt="The Metadata Boundary ensures that a customer’s end user traffic metadata stays in the EU" class="kg-image" width="1108" height="992" loading="lazy">
+
+	</figure>
+	<p>Heute konzentriert sich unsere Data Localisation Suite darauf, unsere Kunden in der EU bei der Lokalisierung von Daten für ihren eingehenden HTTP-Traffic zu unterstützen. Dazu gehören unsere Produkte Cache, Firewall, DDoS-Schutz und Bot-Management.</p>
+	<p>Unsere Kunden haben uns gebeten, die Lokalisierung von Daten für mehr Produkte und mehr Regionen zu ermöglichen. Also die Ausweitung aller unserer Produkte zur Datenlokalisierung, einschließlich Geo Key Manager und Regional Services, auf die ganze Welt. Wir arbeiten auch an der Erweiterung der Metadata Boundary, um unsere Zero Trust-Produkte wie Cloudflare for Teams einzubeziehen. Wir halten Sie auf dem Laufenden!</p>
+</div>

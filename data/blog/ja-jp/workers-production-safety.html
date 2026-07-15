@@ -1,0 +1,282 @@
+<div class="mb2 gray5">9分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-production-safety">English</a>、<a href="https://blog.cloudflare.com/zh-tw/workers-production-safety">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/workers-production-safety">Français</a>、<a href="https://blog.cloudflare.com/de-de/workers-production-safety">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/workers-production-safety">한국어</a>、<a href="https://blog.cloudflare.com/es-es/workers-production-safety">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/workers-production-safety">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hLpLEVtsyV23PsJxG54dY/7f542d8c8f48c3af741b727c6c095148/workers-production-safety.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2024のDeveloper Weekは、弊社製品のプロダクションレディの状況に特化してお届けしています。4月1日月曜日、弊社は<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Hyperdrive</a>、および<a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>がプロダクションレディとなり、一般に利用可能になったことを<a href="https://blog.cloudflare.com/ja-jp/making-full-stack-easier-d1-ga-hyperdrive-queues-ja-jp">発表</a>しました。4月2日火曜日には、推論プラットフォームである弊社Workers AIでも同様の<a href="https://blog.cloudflare.com/ja-jp/workers-ai-ga-huggingface-loras-python-support-ja-jp">発表</a>を行いました。さらに今後も、弊社からの発表が続く予定です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HeyqozVOGygo2RCNnunIq/b429dc5b9f81c9fed6dfc0d200d296e5/image4-7.png" alt="New tools for production safety — Gradual deployments, Source maps, Rate Limiting, and new SDKs" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>一方で、プロダクションレディ対応は、構築するサービスのスケールと信頼性にとどまるものではありません。変更を安全かつ確実に行うためのツールも必要になります。Cloudflareが提供するものだけでなく、お客様のアプリケーションのニーズに合わせたCloudflareの挙動を正確に制御および調整できることも大切になります。</p>
+	<p>本日は、漸進的なデプロイメント、新しいTail Workersでのソースマップスタックトレース、新たなレート制限API、新たなAPI SDK、Durable Objectsのアップデートなど、ミッションクリティカルな本番環境サービスを念頭に置いた構築について5つのアップデートを発表します。弊社は、Workers、<a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer">Access</a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>、<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a>、<a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">Waiting Room</a>、<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>、<a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer">Stream</a>など、独自の製品を構築しています。これらの新機能は、弊社自身が本番環境への対応を確実にするに当たり活用しているもので、これを一般開放できるようになったことをうれしく思っています。</p>
+	<div class="flex anchor relative">
+		<h3 id="gradually-deploy-changes-to-workers-and-durable-objects">WorkersとDurable Objectsに漸次的にデプロイする変更</h3>
+		<a href="https://blog.cloudflare.com/#gradually-deploy-changes-to-workers-and-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workerのデプロイは、ほぼ瞬時で完了します。ほんの数秒で、変更が<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">あらゆる場所で</a>ライブになります。</p>
+	<p>本番スケールに到達すると、変更を加えるたびに、量的にも期待値的にもリスクが大きくなります。99.99%のアベイラビリティのSLAを達成する必要があったり、または要求内容が高いP90の遅延のSLOが必要になったりします。トラフィックの100%に対して45秒間ライブになるような質の悪いデプロイでは、何百万ものリクエストが失敗することを意味します。微妙なコード変更であっても、一挙に展開すれば、圧倒されたバックエンドにリトライの大群がどっと押し寄せることになり得ます。これらのリスクは、Workersを基盤とする自社サービスにおいて、弊社自身が対処および軽減しています。</p>
+	<p>これらのリスクを軽減する方法となるのは、一般にローリングデプロイメントと呼ばれる、変更の段階で来な展開です。</p>
+	<ol>
+		<li>
+			<p>その時点のアプリケーションのバージョンが本番環境で動作を継続。</p>
+		</li>
+		<li>
+			<p>アプリケーションの新バージョンを本番環境にデプロイするものの、トラフィックのごく一部だけをこの新バージョンにルーティングし、リグレッションやバグを監視しながら、本番環境に「浸透」するのを待つ。もし何か不具合が発生しても、それを早期かつトラフィックのうちに占める割合が小規模（1％など）のうちに把握でき、すぐに元に戻すことが可能。</p>
+		</li>
+		<li>
+			<p>トラフィックの割合を新バージョンのトラフィックが100%となるまで徐々に増やしていき、その時点で完全にロールアウトします。</p>
+		</li>
+	</ol>
+	<p>本日は、<a href="https://developers.cloudflare.com/api/operations/worker-deployments-list-deployments" target="_blank" rel="noopener noreferrer">Cloudflare API</a>または<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-wrangler" target="_blank" rel="noopener noreferrer">Wrangler CLI</a>、もしくは<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-the-cloudflare-dashboard" target="_blank" rel="noopener noreferrer">Workersダッシュボード</a>からWorkersとDurable Objectsにコードの変更を徐々にデプロイするファーストクラスの方法を公開します。Gradual Deploymentsは、オープンベータとなります。<a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers Freeプラン</a>のCloudflareアカウントでGradual Deploymentsを利用でき、まもなく<a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers Paid</a>およびEnterpriseプランのアカウントでもGradual Deploymentsを利用できるようになります。アカウントがアクセスできるようになると、ダッシュボードにバナーが表示されます。</p>
+	<p>本番環境でWorkerまたはDurable Objectの2つのバージョンを同時に実行する場合、ほとんどの場合、メトリクス、例外、およびログをバージョン別にフィルタリングできるようにしたいと思うでしょう。これは、新バージョンがトラフィックのごく一部にしかロールアウトされない場合、またはトラフィックを半々に分割した場合のパフォーマンス指標を比較する際、本番環境で発生する問題を早期に発見するのに役立ちます。また、プラットフォーム全体にわたり、バージョンレベルでの可観測性を追加しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5C2hc1EtfppDeWWDxJBh3K/3235bfa198e136bfac793f877415011d/pasted-image-0.png" alt="Splitting traffic between different versions of a Worker." class="kg-image" width="1600" height="791" loading="lazy">
+
+	</figure>
+	<ul>
+		<li>
+			<p>Workersダッシュボードおよび<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a>では、バージョンによって分析をフィルタリングできます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/observability/logging/logpush" target="_blank" rel="noopener noreferrer">Workers Trace Events</a>と<a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a>イベントには、WorkerのバージョンIDと、オプションのバージョン・メッセージとバージョン・タグ・フィールドが含まれます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail" target="_blank" rel="noopener noreferrer">wrangler tailを</a>使用してライブログを表示する場合、特定のバージョンのログを表示できます。</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata" target="_blank" rel="noopener noreferrer">Version Metadata</a>バインディングを設定することで、Workerのコード内からバージョンID、メッセージ、タグにアクセスできます。</p>
+		</li>
+	</ul>
+	<p>また、各クライアントやユーザーがWorkerの一貫したバージョンしか見ないようにしたい場合もあるでしょう。特定の識別子（ユーザー、セッション、または一意のIDなど）に関連付けられたリクエストが、常に一貫したバージョンのWorkerによって処理されるように、<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">Version Affinity</a>を追加しました。<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#setting-cloudflare-workers-version-key-using-ruleset-engine" target="_blank" rel="noopener noreferrer">Ruleset Engine</a>と一緒に使用すると、<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">Session Affinity</a>は「粘着性」を確保するために使用されるメカニズムと識別子の両方を完全に制御できます。</p>
+	<p>Gradual Deploymentsは、オープンベータとなります。GAに向け、弊社では次のサポートに取り組んでいます。</p>
+	<ul>
+		<li>
+			<p><b>バージョンの上書き</b>－本番トラフィックを提供する前にテストするため、Workerの特定のバージョンを起動します。これにより、ブルーグリーンデプロイメントを作成できます。</p>
+		</li>
+		<li>
+			<p><b>Cloudflare Pages</b>－Cloudflare PagesのCI/CDシステムに、デプロイを自動的に進行させられるようになります。</p>
+		</li>
+		<li>
+			<p><b>自動ロールバック</b>－Workerの新しいバージョンでエラー率が急増した場合、デプロイメントを自動的にロールバックします。</p>
+		</li>
+	</ul>
+	<p>フィードバックをお待ちしています！<a href="https://www.cloudflare.com/lp/developer-week-deployments" target="_blank" rel="noopener noreferrer">こちら</a>のフィードバックフォームからご意見をお聞かせいただくか、<a href="https://discord.gg/HJvPcPcN" target="_blank" rel="noopener noreferrer">開発者向けDiscord</a>の#workers-gradual-deployments-betaチャンネルまでご連絡ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="source-mapped-stack-traces-in-tail-workers">Tail Workersのソースマップスタックトレース</h3>
+		<a href="https://blog.cloudflare.com/#source-mapped-stack-traces-in-tail-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>生産準備とは、エラーや例外を追跡し、それらをゼロにすることを意味します。エラーが発生した際、一般的にはエラーの<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack" target="_blank" rel="noopener noreferrer">スタックトレース</a>、つまり、どの関数が、どの順番で、どの行から、どのファイルから、どの引数で呼び出されたかを最初に確認することになります。</p>
+	<p>ほとんどのJavaScriptコードは、Workers上だけでなくプラットフォーム全体において、本番環境にデプロイされる前にまずバンドルされ、多くの場合トランスパイルされ、そしてミニファイされます。これは、パフォーマンスを最適化するために小さなバンドルを作成し、必要に応じてTypescriptからJavascriptに変換するために、舞台裏で行われます。</p>
+	<p>例外が/src/index.js:1:342のようなスタックトレースを返すとしたら、関数のミニファイされたコードの342文字目でエラーが発生したことを意味しています。これは、デバッグにはあまり役に立たたないのは明らかです。</p>
+	<p><a href="https://web.dev/articles/source-maps" target="_blank" rel="noopener noreferrer">ソースマップ</a>が、これを解決します。まず、コンパイルされ最小化されたコードを、記述した元のコードにマップします。ソースマップは、JavaScriptランタイムが返すスタックトレースと組み合わされ、人間が読めるスタックトレースを表示します。たとえば、次のスタックトレースは、Workerがdown.tsファイルの30行目で予期しないnull値を受け取ったことを示しています。このように、デバッグのための便利な出発点となるため、スタックトレースを下に移動すればnull値が設定された関数が呼び出されたことが分かります。</p>
+	<p>仕組みは次の通りです：</p>
+	<pre class="language-bash"><code class="language-bash">Unexpected input value: null
+  at parseBytes (src/down.ts:30:8)
+  at down_default (src/down.ts:10:19)
+  at Object.fetch (src/index.ts:11:12)</code></pre>
+	<ol>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer">wrangler.toml</a>でupload_source_maps = trueを設定すると、<a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">wrangler deploy</a>または<a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions" target="_blank" rel="noopener noreferrer">wrangler versions upload</a>を実行した際、Wranglerが自動的にソースマップファイルを生成してアップロードします。</p>
+		</li>
+		<li>
+			<p>Workerが捕捉されない例外をスローすると、ソースマップを取得し、それを使って例外のスタックトレースをWorkerの元のソースコードの行にマッピングします。</p>
+		</li>
+		<li>
+			<p>そして、この難読化されたスタックトレースを<a href="https://developers.cloudflare.com/workers/observability/logging/real-time-logs" target="_blank" rel="noopener noreferrer">リアルタイムログ</a>または<a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a>で見ることができます。</p>
+		</li>
+	</ol>
+	<p>本日よりオープンベータとして、Workerをデプロイする際にソースマップをCloudflareにアップロードできるようになります。4月15日から、Workersランタイムはソースマップを使用してスタックトレースの難読化を解除します。<a href="https://developers.cloudflare.com/workers/observability/source-maps" target="_blank" rel="noopener noreferrer">ドキュメントをお読みになり、さっそくお試しください</a>。4月15日以降、Workersランタイムがソースマップされたスタックトレースを利用し始めます。ソースマップされたスタックとレースが利用可能になった時点で、Cloudflareダッシュボードに通知を掲載し、<a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener noreferrer">Cloudflare Developers X</a>アカウントに投稿します。</p>
+	<div class="flex anchor relative">
+		<h3 id="new-rate-limiting-api-in-workers">新しいレート制限API Workers</h3>
+		<a href="https://blog.cloudflare.com/#new-rate-limiting-api-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APIは、適切な<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">レート制限があって</a>初めて本番稼動が可能になります。そして成長するにつれ、特定の顧客のニーズのバランスを取ったり、サービスの健全性を保護したり、特定のシナリオで制限を実施したり調整したりするために、実施する必要のある制限の複雑さと多様性が増していきます。CloudflareのAPIにはこのような課題があります。Cloudflareの数十の製品それぞれに多くのAPIエンドポイントがあり、それぞれ異なるレート制限を実施する必要があります。</p>
+	<p>2017年以降、Cloudflareで<a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer">レート制限ルールを</a>設定できるようになりました。しかし今日まで、ダッシュボードまたはCloudflare APIを介してのみ制御できる状況でした。_ランタイム_中に動作を定義したり、レート制限と直接やりとりするコードをWorkerに書いたりすることはできませんでした。リクエストがWorkerにアクセスする前にレート制限されるかどうかのみしか制御できなかったのです。</p>
+	<p>本日、オープンベータ版として、Workerからレート制限に直接アクセスできる新しいAPIを発表します。非常に早く、memcachedによって支えらされ、ご利用中のWorkerに非常に簡単に追加できます。例えば、以下は60秒間に100リクエストのレート制限を定義する設定を例示したものです。</p>
+	<p>次に、Worker内でRATE_LIMITERバインディングのlimitメソッドを呼び出します。上記の設定だと、60秒以内に特定のパスへのリクエストが100回を超えると、このコードは<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429" target="_blank" rel="noopener noreferrer">HTTP 429</a>レスポンスステータスコードを返します。</p>
+	<pre class="language-bash"><code class="language-bash">[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001" # An identifier unique to your Cloudflare account
+
+# Limit: the number of tokens allowed within a given period, in a single Cloudflare location
+# Period: the duration of the period, in seconds. Must be either 60 or 10
+simple = { limit = 100, period = 60 } </code></pre>
+	<p>このように、Workers、memcachedのようなデータストアに直接接続できるようになりました。他に、カウンター、ロック、<a href="https://github.com/cloudflare/workerd/pull/1666" target="_blank" rel="noopener noreferrer">インメモリ・キャッシュ</a>など、実現できるものはあるかと思われるかもしれません。Rate Limitingは、Workerの多くの<a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">分離</a>の中でも、今後の提供を検討している多くの初歩的な段階の最初のものとなっています。現在、Workerのグローバルスコープに大きく依存している場合、弊社では特定のユースケースに特化したより良いプリミティブの開発に取り組んでいます。</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const { pathname } = new URL(request.url)
+
+    const { success } = await env.RATE_LIMITER.limit({ key: pathname })
+    if (!success) {
+      return new Response(`429 Failure – rate limit exceeded for ${pathname}`, { status: 429 })
+    }
+
+    return new Response(`Success!`)
+  }
+}</code></pre>
+	<p>WorkersのRate Limiting APIはオープンベータ化済で、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer">ドキュメントをお読みいただき</a>すぐにご利用いただけます。</p>
+	<div class="flex anchor relative">
+		<h3 id="new-auto-generated-sdks-for-cloudflares-api">CloudflareのAPI用に自動生成された新たなSDK</h3>
+		<a href="https://blog.cloudflare.com/#new-auto-generated-sdks-for-cloudflares-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プロダクションレディ対応とは、ダッシュボードのボタンをクリックして変更を加えることから、<a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">Terraform</a>や<a href="https://github.com/pulumi/pulumi-cloudflare" target="_blank" rel="noopener noreferrer">Pulumi</a>などのインフラストラクチャー・アズ・コード・アプローチを使用したり、独自またはSDK経由でAPIを直接呼び出し、プログラムで変更を加えることを意味します。</p>
+	<p><a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Cloudflare API</a>は大規模のもので、常に新しい機能を追加しています。平均して<a href="https://github.com/cloudflare/api-schemas/activity" target="_blank" rel="noopener noreferrer">1日に20～30回APIスキーマを更新</a>しています。一方、これまで弊社のAPI SDKは手作業で構築・保守されてきたため、これを自動化する必要がありました。</p>
+	<p>そして本日、弊社でこの取り組みが完了し、<a href="https://github.com/cloudflare/cloudflare-typescript" target="_blank" rel="noopener noreferrer">Typescript</a>、<a href="https://github.com/cloudflare/cloudflare-python" target="_blank" rel="noopener noreferrer">Python</a>、<a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>の3つの言語で新たなCloudflare API向けクライアントSDKを発表します。</p>
+	<p>各SDKは、当社の各APIエンドポイントの構造と機能を定義する<a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer">OpenAPIスキーマ</a>に基づき、<a href="https://www.stainlessapi.com" target="_blank" rel="noopener noreferrer">Stainless APIを</a>使用して自動的に生成されます。つまり、Cloudflare APIに新しい機能が追加されると、どのCloudflare製品においてもこれらのAPI SDKは自動的に再生成され新しいバージョンが発行されるため、正確で最新の状態に保たれます。</p>
+	<p>以下のいずれかのコマンドを実行し、SDKをインストールできます。</p>
+	<p>TerraformやPulumiを使う場合、Cloudflare'のTerraform Providerは現在、自動化されていない既存の<a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go SDK</a>を使っています。terraform applyを実行すると、Cloudflare Terraform ProviderがどのAPIをどの順番で作るかを決定し、Go SDKを使って実行します。</p>
+	<pre class="language-bash"><code class="language-bash">// Typescript
+npm install cloudflare
+
+// Python
+pip install cloudflare
+
+// Go
+go get -u github.com/cloudflare/cloudflare-go/v2</code></pre>
+	<p>新しく自動生成されたGo SDKは、すべてのCloudflare製品に対して、より包括的なTerraformサポートへの道を開き、最新のAPIの変更に対応した、正確で最新であると信頼できるツールの基本セットを提供します。弊社では、Cloudflareの製品チームがCloudflare APIを介して公開される新機能を構築するたびに、SDKによって自動的にサポートされる未来を描いて構築しています。2024年中の続報にご期待ください。</p>
+	<div class="flex anchor relative">
+		<h3 id="durable-object-namespace-analytics-and-websocket-hibernation-ga">Durable Objectのネームスペース分析とWebSocketハイバネーションGA</h3>
+		<a href="https://blog.cloudflare.com/#durable-object-namespace-analytics-and-websocket-hibernation-ga" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">Waiting Room</a>、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>、そして<a href="https://www.partykit.io" target="_blank" rel="noopener noreferrer">PartyKitの</a>などのプラットフォームを含む多くの弊社製品は、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>使用して構築しています。新しく追加されたオセアニア向けサポートを含め、グローバルに展開されているDurable Objectsは、一枚岩のWorkersとも言え、単一の調整ポイントを提供するとともに、<a href="https://developers.cloudflare.com/durable-objects/api/transactional-storage-api" target="_blank" rel="noopener noreferrer">状態を永続化</a>できます。インタラクティブなチャットや共同編集など、リアルタイムでのユーザー連携を必要とするアプリに最適です。アトラシアンはこれについて、次のように述べています。</p>
+	<blockquote>
+		<p><i>弊社で実現した新たな能力として、担当部署がより正式に文書化する前に、ブレーンストーミングや初期計画のような非構造化作業を自由形式で記録でき</i><a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer"><i>Confluenceホワイトボード</i></a><i>が挙げられます。担当部署では、リアルタイムのコラボレーションのために多くの選択肢を検討し、最終的にCloudflareのDurable Objectsの採用を決定しました。Durable Objectsは、インフラストラクチャを大幅に簡素化し、多数のユーザーに簡単に拡張できるユニークな機能性の組み合わせを備えており、この問題領域に見事にフィットすることが証明されました。 -</i> <a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer"><i>アトラシアン</i></a></p>
+	</blockquote>
+	<p>これまではダッシュボードで関連する分析傾向を公開していなかったため、<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a>を直接使用しない限り、<a href="https://developers.cloudflare.com/durable-objects/configuration/access-durable-object-from-a-worker/#generate-ids-randomly" target="_blank" rel="noopener noreferrer">Durable Objects</a>ネームスペース内の使用パターンやエラー率を理解することは困難でした。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fdurable-objects" target="_blank" rel="noopener noreferrer">Durable Objectsダッシュボード</a>が刷新され、メトリクスをドリルダウンして必要なだけ深く掘り下げることができるようになりました。</p>
+	<p>Durable Objectsは、初日から<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" target="_blank" rel="noopener noreferrer">WebSockets</a>をサポートし、多くのクライアントがDurable Objectに直接接続してメッセージを送受信できるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wFlllqLKz9G1J7ZU4cAfp/67b84ff52331c449bfbbb291fec01ffa/pasted-image-0--1-.png" alt="" class="kg-image" width="1342" height="1045" loading="lazy">
+
+	</figure>
+	<p>しかし、時にクライアントアプリケーションはWebSocket接続を開いた後、最終的に何もしなくなることがあります。5時間にわたり、ブラウザーで開いたまま触っていないタブを想像してみてください。メッセージの送受信にWebSocketsを使用している場合、実際には何も使用されていないTCP接続が長時間保たれることになります。この接続がDurable Objectへのものである場合、Durable Objectは実行され続け、何かが起こるのを待たなければならず、メモリを消費し、コストがかかります。</p>
+	<p>弊社ではこの問題を解決するため、<a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero">WebSocketハイバネーション</a>を初めて導入し、本日、この機能がベータ版から一般利用可能になったことを発表します。WebSocketハイバネーションでは、ハイバネーション中に使用する自動応答を設定し、状態をシリアライズしてハイバネーションに耐えられるようにします。これによりCloudflareは、クライアントからのオープンなWebSocket接続を維持しながら、Durable Objectをアクティブに実行しないように「ハイバネーション」するために必要なインプットを得ることができます。その結果、実際にステートが必要なときには常にインメモリで利用できるようになり、そうでないときには不必要に保持されなくなります。Durable Objectがハイバネーションしている間は、たとえアクティブなクライアントがその時点でWebSocket経由で接続しているとしても、その間は課金されません。</p>
+	<p>さらに、Durable ObjectsへのWebSocketメッセージの受信にかかるコストについて、リアルタイム通信のため、より小さくより頻繁なメッセージが好ましいとの開発者からのフィードバックを聞いてきました。本日より、これまでのように1メッセージが1リクエストに相当するのではなく、受信WebSocketメッセージへの課金はリクエストの20分の1相当となります。<a href="https://developers.cloudflare.com/durable-objects/platform/pricing/#example-4" target="_blank" rel="noopener noreferrer">価格設定</a>の例を以下に示します。</p>
+	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-4kyp{color:#0E101A;text-align:left;vertical-align:top} .tg .tg-bhdc{color:#0E101A;font-weight:bold;text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-4kyp {
+			color: #0E101A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-bhdc {
+			color: #0E101A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">WebSocket Connection Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Incoming WebSocket Messages</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Billed Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Request Billing</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Before</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432,010,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$64.65</span></td>
+			</tr>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">After</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">21,610,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$3.09</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>WebSocket接続リクエスト</p>
+	<p>受信WebSocketメッセージ</p>
+	<p>課金対象リクエスト</p>
+	<p>課金リクエスト</p>
+	<p>使用前</p>
+	<p>10千</p>
+	<p>432百万</p>
+	<p>432,010,000</p>
+	<p>$64.65</p>
+	<p>使用後</p>
+	<p>10千</p>
+	<p>432百万</p>
+	<p>21,610,000</p>
+	<p>$3.09</p>
+	<div class="flex anchor relative">
+		<h3 id="production-ready-without-production-complexity">複雑な本番設定を必要とせず、プロダクションレディ</h3>
+		<a href="https://blog.cloudflare.com/#production-ready-without-production-complexity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>前世代のクラウドプラットフォームでプロダクションレディになるということは、出荷速度を落とすことを意味しました。つまり、バラバラのツールをつなぎ合わせたり、チーム全体を立ち上げて社内のプラットフォームに取り組ませたりしていました。障害物が立ちはだかるプラットフォームに、独自の生産性レイヤーを後付けしなければならなかったのです。</p>
+	<p>Cloudflare Developer Platformは成長し、プロダクションレディとなりました。製品が直感的に連動し、同じことをする上で無数の異なる方法を存在させず、連動し合うものを理解するのに役立つ互換性マトリックスが不要な統合プラットフォームであり続けます。アップデートはそれぞれ、Cloudflareの製品やプラットフォームの一部に新機能を統合し、前述の思想を体現しています。</p>
+	<p>弊社では、お客様に次に求められているものが何かだけではなく、さらにシンプルにできると思う点、もしくは弊社製品がさらに優れた在り方で連携できると思う点について、皆さまからのご意見をお待ちしています。いつでも、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>にてお知らせください。</p>
+</div>

@@ -1,0 +1,233 @@
+<div class="mb2 gray5">5分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-ai-update-hello-mistral-7b">English</a>、<a href="https://blog.cloudflare.com/zh-tw/workers-ai-update-hello-mistral-7b">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/workers-ai-update-hello-mistral-7b">Français</a>、<a href="https://blog.cloudflare.com/de-de/workers-ai-update-hello-mistral-7b">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/workers-ai-update-hello-mistral-7b">한국어</a>、<a href="https://blog.cloudflare.com/nl-nl/workers-ai-update-hello-mistral-7b">Nederlands</a>、<a href="https://blog.cloudflare.com/zh-cn/workers-ai-update-hello-mistral-7b">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EvWsMf3whYL6fKg9YhekN/a81b321cc0a48054834db993a636b342/workers-ai-update-hello-mistral-7b.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>本日、Workers AIにMistral-7B-v0.1-instructを追加したことをお知らせします。Mistral 7Bは、73億のパラメーターを持つ言語モデルで、多くのユニークな利点を備えています。Mistral AIの創設者の協力のもと、Mistral 7Bモデルのハイライトをいくつか紹介します。この機会に「Attention」とそのバリエーションであるMulti-Query AttentionやGrouped-Query Attentionについても深く掘り下げてみましょう。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vOF3ZSPVvD4CPRyt6PCZi/10554230ab60f8f2252ca5ee0eae47c7/Mistral-1.png" alt="Workers AI Update: Hello, Mistral 7B!" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="mistral-7b-tl-dr">Mistral 7B tl;dr:</h2>
+		<a href="https://blog.cloudflare.com/#mistral-7b-tl-dr" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mistral 7Bは、<a href="https://mistral.ai/news/announcing-mistral-7b" target="_blank" rel="noopener noreferrer">ベンチマークで素晴らしい数字</a>を叩き出す73億パラメーターのモデルです。以下は本モデルの特長です。</p>
+	<ul>
+		<li>
+			<p>13Bモデルと比較してすべてのベンチマークで性能を上回る。</p>
+		</li>
+		<li>
+			<p>34Bモデルと比較して多くのベンチマークで性能を上回る。</p>
+		</li>
+		<li>
+			<p>CodeLlama 7Bに匹敵するコード性能を持ちつつ、英語タスクの優秀さも維持。</p>
+		</li>
+		<li>
+			<p>導入されたチャットの微調整バージョンは、Mistralが提供したベンチマークで、2 13Bチャットを上回る。</p>
+		</li>
+	</ul>
+	<p>以下は、<a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank" rel="noopener noreferrer">REST API</a>を使用してストリーミングを行う例です：</p>
+	<p>以下は、Workerスクリプトを使用した例です。</p>
+	<pre class="language-bash"><code class="language-bash">curl -X POST \
+“https://api.cloudflare.com/client/v4/accounts/{account-id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1” \
+-H “Authorization: Bearer {api-token}” \
+-H “Content-Type:application/json” \
+-d '{ “prompt”: “What is grouped query attention”, “stream”: true }'
+
+API Response: { response: “Grouped query attention is a technique used in natural language processing  (NLP) and machine learning to improve the performance of models…” }</code></pre>
+	<p>Mistralは推論を高速化するために<a href="https://arxiv.org/abs/2305.13245" target="_blank" rel="noopener noreferrer">グループ化されたクエリ注意</a>を利用します。この最近開発されたテクニックは、出力の質を落とすことなく推論の速度を向上させます。グループ化されたクエリ注意のおかげで、70億のパラメーターモデルに対して、MistralはLlamaの4倍近いトークンを1秒間に生成することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Ai } from '@cloudflare/ai';
+export default {
+    async fetch(request, env) {
+        const ai = new Ai(env.AI);
+        const stream = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+            prompt: 'What is grouped query attention',
+            stream: true
+        });
+        return Response.json(stream, { headers: { “content-type”: “text/event-stream” } });
+    }
+}</code></pre>
+	<p>Mistral-7Bを使い始めるのに、これ以上の情報は必要ありません。<a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.Cloudflare.com</a>で今すぐテストできます。AttentionとGrouped-Query Attentionについてもっと知りたい方は、こちらをお読みください！</p>
+	<div class="flex anchor relative">
+		<h2 id="so-what-is-attention-anyway">そもそも「Attention」とは何でしょうか？</h2>
+		<a href="https://blog.cloudflare.com/#so-what-is-attention-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Attentionの基本的なメカニズム、具体的には画期的な論文「<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">Attention Is All You Need</a>」で紹介された「Scaled Dot-Product Attention」は以下のように非常にシンプルです。</p>
+	<blockquote>
+		<p>私たちはこの特定のAttentionを「Scale Dot-Product Attention」（スケール化ドット積注意）と呼んでいます。入力はクエリ、次元のキー「d_k」、次元の値「d_v」から構成されます。クエリとすべてのキーのドット積を計算し、それぞれを平方根(d_k)で割り、softmax関数を適用して値の重みを求めます。</p>
+	</blockquote>
+	<p>具体的には次のようになります。</p>
+	<p><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">ソース</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gLX5h3XWjtQugoqf4Yqjh/9f4879fc9078fa291da9caacab1925d7/Screenshot-2023-11-21-at-09.12.30.png" alt="" class="kg-image" width="1882" height="680" loading="lazy">
+
+	</figure>
+	<p>もっと簡単に言えば、これによってモデルは入力の重要な部分に集中することができます。ある文章を読んでいて、それを理解しようとしているところを想像してみてください。Scaled dot product attentionでは、関連性に基づいて特定の単語により多くの注意を払うことができます。これは、文中の各単語（K）とクエリ（Q）の類似度を計算することによって行なわれます。次に、類似度スコアをクエリの次元の平方根で割ってスケーリングします。このスケーリングは、極端に小さい値や極端に大きい値を避けるのに役立ちます。最後に、これらの類似度スコアを使用して、各単語がどの程度注目されるか、または重要視されるかを決定します。このAttentionメカニズムは、モデルが重要な情報（V）を識別し、理解と翻訳能力を向上させるのに役立ちます。</p>
+	<p>簡単でしょう？この単純なメカニズムから、「ジェリーがバブルソート・アルゴリズムを学習する『となりのサインフェルド』エピソード」を書けるAIになるには、もっと複雑にする必要があります。実際、今取り上げたものには、学習されたパラメーター（モデルのトレーニング中に学習され、Attentionブロックの出力をカスタマイズする定数値）すらありません！「<i>Attention is All You Need</i>」スタイルのAttentionブロックは、主に以下の3種類の複雑さを加えます。</p>
+	<div class="flex anchor relative">
+		<h3 id="learned-parameters">学習されたパラメーター</h3>
+		<a href="https://blog.cloudflare.com/#learned-parameters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>学習されたパラメーターとは、モデルのパフォーマンスを向上させるために学習過程で調整される値や重みのことです。これらのパラメーターは、モデル内の情報の流れやAttentionを制御するために使用され、入力データの最も関連性の高い部分に焦点を当てることができます。もっと簡単に言えば、学習されたパラメーターは、機械の調節可能なつまみのようなもので、それを回すことで動作を最適化することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="vertical-stacking-layered-attention-blocks">垂直スタッキング - Attentionブロックを重ねる</h3>
+		<a href="https://blog.cloudflare.com/#vertical-stacking-layered-attention-blocks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>垂直レイヤースタッキングとは、複数のAttention機構を積み重ねる方法で、各レイヤーは前のレイヤーのアウトプットの上に構築されます。これにより、モデルは抽象度の異なる入力データの異なる部分に焦点を当てることができ、特定のタスクでより優れたパフォーマンスを発揮することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="horizontal-stacking-aka-multi-head-attention">水平スタッキング - 別名Multi-Head Attention</h3>
+		<a href="https://blog.cloudflare.com/#horizontal-stacking-aka-multi-head-attention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>論文に掲載された図は、Multi-Head Attentionモジュールの全容を示したものです。複数のAttention操作は並行して行われ、それぞれのQ-K-V入力は、同じ入力データ（学習されたパラメーターのユニークなセットによって定義される）のユニークな線形射影によって生成されます。これらの並列Attentionブロックは「Attentionヘッド」と呼ばれます。すべてのAttentionヘッドの加重和出力は1つのベクトルに連結され、最終出力を得るために別のパラメーター化された線形変換に渡されます。</p>
+	<p><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">ソース</a></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IhI1kh7JOS9ERb3aFuVHg/95e10b554d0f5029bf08fb10262cc29b/Screenshot-2023-11-21-at-09.13.49.png" alt="" class="kg-image" width="1806" height="722" loading="lazy">
+
+	</figure>
+	<p>このメカニズムにより、モデルは入力データの異なる部分に同時に焦点を当てることができます。文章や段落のような複雑な情報を理解しようとしているところを想像してみてください。それを理解するためには、同時にさまざまな部分に注意を払う必要があります。例えば、文の意味を理解するためには、文の主語、動詞、目的語に同時に注意を払う必要があるかもしれません。Multi-Head Attentionも同様です。これは、複数のAttentionの「ヘッド」を使用することによって、モデルが入力データの異なる部分に同時に注意を払うことを可能にします。Attentionの各ヘッドは入力データの異なる側面に焦点を当て、すべてのヘッドの出力は、モデルの最終的な出力を生成するために結合されます。</p>
+	<div class="flex anchor relative">
+		<h2 id="styles-of-attention">Attentionのスタイル</h2>
+		<a href="https://blog.cloudflare.com/#styles-of-attention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>近年開発された大規模言語モデルで使用されるAttentionブロックには、Multi-Head Attention、Grouped-Query Attention、Multi-Query Attentionの3つの一般的な配置があります。これらは、クエリーベクトルの数に対するKとVのベクトルの数が異なります。<b>Multi-Head Attention</b>はQベクトルと同じ数のKベクトルとVベクトルを使用します。下表では「N」で示されています。<b>Multi-Query Attention</b>は、単一のKとVベクトルだけを使用します。<b>Grouped-Query Attention</b>は、Mistral 7Bモデルで使用されているタイプで、Qベクトルをそれぞれ「G」ベクトルを含むグループに均等に分割し、各グループに単一のKおよびVベクトルを使用して、合計NをKおよびVベクトルのGセットで分割します。この違いを要約し、以下にその意味を説明します。</p>
+	<p>&nbsp;</p><!--kg-card-begin: html-->
+	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+		<tbody>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">&nbsp;</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Number of Key/Value Blocks</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Quality</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Memory Usage</strong></span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-head attention (MHA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Best</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Most</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Grouped-query attention (GQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N / G</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Better</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Less</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-query attention (MQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">1</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Good</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Least</span></span></span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align:center"><span style="font-size:9pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Summary of attention styles</span></span></span></p><!--kg-card-end: html-->
+	<p><b>キー／値ブロックの数</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n8Qcj00djVDN2KEGUB7Ul/4cbd4f808b5d51e3f470852ecaff8214/image1-6.png" alt="" class="kg-image" width="1112" height="388" loading="lazy">
+
+	</figure>
+	<p><b>品質</b></p>
+	<p><b>メモリ使用量</b></p>
+	<p><b>Multi-head attention (MHA)</b></p>
+	<p>N</p>
+	<p>ベスト</p>
+	<p>最も多い</p>
+	<p><b>Grouped-query attention (GQA)</b></p>
+	<p>N / G</p>
+	<p>良い</p>
+	<p>少ない</p>
+	<p><b>Multi-query attention (MQA)</b></p>
+	<p>1</p>
+	<p>良い</p>
+	<p>最も少ない</p>
+	<p>Attentionスタイルのまとめ</p>
+	<p>そしてこの図は、3つのスタイルの違いを説明するのに役立ちます。</p>
+	<p><a href="https://arxiv.org/pdf/2305.13245.pdf" target="_blank" rel="noopener noreferrer">ソース</a></p>
+	<div class="flex anchor relative">
+		<h3 id="multi-query-attention">Multi-Query Attention</h3>
+		<a href="https://blog.cloudflare.com/#multi-query-attention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Multi-Query Attentionは、2019年にGoogleからの論文<a href="https://arxiv.org/abs/1911.02150" target="_blank" rel="noopener noreferrer">「Fast Transformer Decoding: One Write-Head is All You Need」</a>（トランスフォーマーの高速デコード: 必要なのは1つのライトヘッドのみ）で説明されました。このアイデアは、上記のMulti-Head Attentionのように、Attention機構内のすべてのQベクトルに対して別々のKとVエントリを作成する代わりに、Qベクトルのセット全体に対して単一のKとVベクトルだけを使用するというものです。このように、複数のクエリを1つのAttention機構にまとめたものがこの名前です。論文では、これを翻訳タスクでベンチマークし、ベンチマークタスクでMulti-Head Attentionと同等の性能を示しました。</p>
+	<p>もともとは、モデルの推論を実行する際にアクセスされるメモリの総サイズを小さくすることでした。それ以来、一般化されたモデルが出現し、パラメーターの数が増えるにつれて、必要なGPUメモリがボトルネックになることが多く、3つのAttentionタイプの中でアクセラレーターメモリの必要が最小となるMulti-Query Attentionの強みとなっています。しかし、モデルのサイズが大きくなり、一般性が増すにつれて、Multi-Query AttentionのパフォーマンスはMulti-Head Attentionに比べて低下しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="grouped-query-attention">Grouped-Query Attention</h3>
+		<a href="https://blog.cloudflare.com/#grouped-query-attention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>最も新しいスタイルで、Mistralでも使われているものは、Grouped-Query Attentionです。2023年5月にarxiv.orgで発表された論文<a href="https://arxiv.org/abs/2305.13245" target="_blank" rel="noopener noreferrer">「GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints」</a>（GQA: マルチヘッドチェックポイントからの一般化マルチクエリー変換モデルの学習）で説明されています。Grouped-Query Attentionは、Multi-Head Attentionの品質、およびMulti-Query Attentionの速度と低いメモリ使用量という両方の長所を兼ね備えています。KとVのベクトル1セット、またはQベクトルごとに1セットの代わりに、QベクトルごとにKとVのベクトル1セットの固定比率が使用され、メモリ使用量を削減しながら、多くのタスクで高いパフォーマンスを維持します。</p>
+	<p>多くの場合、生産作業のためにモデルを選択する場合、単に入手可能な最良のモデルを選ぶわけではありません。パフォーマンス、メモリ使用量、バッチサイズ、利用可能なハードウェア（またはクラウドコスト）の間のトレードオフを考慮しなければならないからです。この3つのAttentionスタイルを理解することは、そうした決断の指針になり、状況に応じて特定のモデルを選択する場合を理解するのに役立ちます。</p>
+	<div class="flex anchor relative">
+		<h2 id="enter-mistral-try-it-today">Mistralをどうぞ今すぐお試しください</h2>
+		<a href="https://blog.cloudflare.com/#enter-mistral-try-it-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Grouped-Query Attentionを活用し、それをSliding Window Attentionと組み合わせた最初の大規模言語モデルの1つであるMistralは、「生命維持可能領域」に到達したようです。低遅延、高スループットであり、大型モデル（13B）と比べてもベンチマークで非常に良い結果を出しています。そのサイズにしてはパンチがあるということです。そして、Workers AIを通じて、すべての開発者が今日利用できるようになったことは、何よりの喜びです。</p>
+	<p>まずは<a href="https://developers.cloudflare.com/workers-ai/models/text-generation" target="_blank" rel="noopener noreferrer">開発者用ドキュメント</a>をご覧になって、開始してください。ヘルプが必要な場合、フィードバックが必要な場合、作っているものを共有なさりたい場合は、<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">開発者用Discord</a>においでください！</p>
+	<p>Workers AIチームも雇用を拡大しています。AIエンジニアリングに情熱を持ち、グローバルなサーバーレスGPU推論プラットフォームの構築と発展に貢献したい方は、<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">求人ページ</a>で募集職種をご覧ください。</p>
+</div>

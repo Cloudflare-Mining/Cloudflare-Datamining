@@ -1,0 +1,127 @@
+<div class="mb2 gray5">Lesezeit: 7&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/introducing-cloudflare-realtime-and-realtimekit">English</a>, <a href="https://blog.cloudflare.com/zh-tw/introducing-cloudflare-realtime-and-realtimekit">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-cloudflare-realtime-and-realtimekit">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-realtime-and-realtimekit">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-cloudflare-realtime-and-realtimekit">한국어</a>, <a href="https://blog.cloudflare.com/es-es/introducing-cloudflare-realtime-and-realtimekit">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-realtime-and-realtimekit">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36e6C9Uk8B37htAzchs7SJ/dcd144ea019bdf84bec5d5df9e0461dd/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>In den vergangenen Jahren haben Entwicklerinnen und Entwickler die Grenzen des Machbaren im Bereich der Echtzeitkommunikation verschoben – Tools für kollaboratives Arbeiten, große Online-Watch-Partys und interaktive Live-Klassenräume gewinnen rasant an Beliebtheit.</p>
+	<p>Wir nutzen KI immer mehr in unserem Alltag. Textbasierte Interaktionen entwickeln sich zu etwas Natürlicherem: Sprache und Video. Wenn Nutzenden mit den Anwendungen und Tools interagieren, die von KI-Entwicklerinnen und -Entwicklern geschaffen wurden, erwarten wir eine schnelle Reaktionszeit und eine stabile Verbindung. Komplexe KI-Anwendungen basieren nicht nur auf einem Tool, sondern auf einer Kombination mehrerer Werkzeuge&nbsp;– oft von verschiedenen Anbietern. Dafür braucht es eine gut vernetzte Cloud-Infrastruktur, die als zentrale Koordinationsplattform verschiedener KI-Tools fungiert.</p>
+	<p>Entwicklerinnen und Entwickler nutzen bereits <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> und unsere WebRTC <a href="https://developers.cloudflare.com/calls" target="_blank" rel="noopener noreferrer"><u>SFU</u></a>- und <a href="https://developers.cloudflare.com/calls/turn" target="_blank" rel="noopener noreferrer"><u>TURN</u></a>-Services, um leistungsstarke Apps zu erstellen, ohne sich Gedanken über die Koordinierung von Rechen- oder Mediendiensten machen zu müssen, um ihrem Nutzenden am nächsten zu sein. Für Echtzeitanwendungen ist es nur logisch, dass es eine einzige <a href="https://blog.cloudflare.com/best-place-region-earth-inference"><u>„Region: Erde“</u></a> geben sollte.</p>
+	<p>Wir freuen uns, Ihnen <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Realtime</u></a> vorzustellen – eine Produktreihe, mit der Sie Ihre Anwendungen durch Echtzeit-Audio- und Videoerlebnisse wirklich interaktiv gestalten können. Cloudflare Realtime vereint jetzt unsere SFU-, STUN- und TURN-Dienste zusammen mit dem neuen RealtimeKit.</p>
+	<div class="flex anchor relative">
+		<h2 id="say-hello-to-realtimekit">Begrüßen Sie RealtimeKit</h2>
+		<a href="https://blog.cloudflare.com/#say-hello-to-realtimekit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>RealtimeKit ist eine Sammlung von SDKs für Mobilgeräte (iOS, Android, React Native, Flutter), SDKs für das Web (React, Angular, Vanilla JS, WebComponents) und serverseitigen Diensten (Aufzeichnung, Koordination, Transkription), die es einfacher denn je macht, Sprach-, Video- und KI-Anwendungen in Echtzeit zu erstellen. RealtimeKit enthält auch Komponenten für die Benutzeroberfläche, um Schnittstellen schnell zu erstellen.&nbsp;</p>
+	<p>Das großartige Team hinter <a href="https://dyte.io" target="_blank" rel="noopener noreferrer"><u>Dyte</u></a>, einem führenden Unternehmen im Bereich Echtzeit-Ökosystem, hat sich Cloudflare angeschlossen, um die Entwicklung von RealtimeKit zu beschleunigen. Das Dyte-Team arbeitet seit Jahren daran, Echtzeit-Erlebnisse für Entwicklerinnen und Entwicklern aller Erfahrungsstufen zugänglich zu machen. Mit einem tiefen Verständnis für die Entwicklerperspektive schufen sie Abstraktionen, die die Komplexität von WebRTC verbergen, ohne dessen Leistungsfähigkeit einzuschränken.</p>
+	<p>Dyte war bereits Nutzer von Cloudflare-Produkten und deshalb eine perfekte Ergänzung zu der bestehenden Echtzeit-Infrastruktur von Cloudflare, die sich über mehr als 300 Städte weltweit erstreckt. Sie schufen eine Entwicklererfahrungsebene, die komplexe Medienfunktionen einfach zugänglich macht. Wir freuen uns sehr, dass sich ihr Team Cloudflare anschließen wird, um Entwicklerinnen und Entwickler dabei zu helfen, die Zukunft der Benutzerinteraktion für Echtzeitanwendungen als ein Team zu definieren.</p>
+	<div class="flex anchor relative">
+		<h2 id="interactive-applications-shouldnt-require-webrtc-expertise">Für interaktive Anwendungen sollten keine WebRTC-Kenntnisse erforderlich sein&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#interactive-applications-shouldnt-require-webrtc-expertise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Was für viele Entwicklerinnen und Entwickler als einfaches Vorhaben beginnt – etwa einen Video-Chat zu integrieren – entwickelt sich oft zu einem aufwendigen, mehrwöchigen Eintauchen in komplexe Technologien wie WebSockets und WebRTC. Wir sind zwar vom <a href="https://blog.cloudflare.com/tag/webrtc"><u>Potenzial von WebRTC</u></a> überzeugt, wissen aber auch, dass es gerade bei der erstmaligen Entwicklung echte Herausforderungen mit sich bringt. Beim Debuggen von WebRTC-Sitzungen müssen sich Entwicklerinnen und Entwickler oft mit komplexen Themen wie <a href="https://webrtcforthecurious.com/docs/03-connecting/#ice" target="_blank" rel="noopener noreferrer"><u>Ausfällen von ICE-Kandidaten</u></a>, <a href="https://webrtcforthecurious.com/docs/03-connecting/#turn" target="_blank" rel="noopener noreferrer"><u>TURN-Serverkonfigurationen</u></a> und <a href="https://webrtcforthecurious.com/docs/03-connecting/#turn" target="_blank" rel="noopener noreferrer"><u>Problemen bei der SDP-Aushandlung</u></a> auseinandersetzen.</p>
+	<p>Das sind jedoch noch nicht alle Herausforderungen, die bei der erstmaligen Entwicklung einer WebRTC-App entstehen können. Durch die Geräteverwaltung nimmt die Komplexität noch einmal zu. Uneinheitliche Kamera- und Mikrofon-APIs in verschiedenen Browsern und mobilen Plattformen führen zu unerwartetem Verhalten in der Produktionsumgebung. Chrome geht mit dem Wechsel der Auflösung auf eine bestimmte Weise um, Safari auf eine andere – und Android WebViews sorgen auf ihre ganz eigene, frustrierende Art für Probleme. Wir erleben regelmäßig, dass Anwendungen, die in Testumgebungen perfekt funktionieren, auf unerklärliche Weise scheitern, wenn sie auf bestimmten Geräten oder Browsern bereitgestellt werden.</p>
+	<p>Systeme, die mit fünf Testnutzern reibungslos funktionieren, brechen unter der Last von 50 echten Teilnehmern zusammen. Die Anpassung der Bandbreite gerät ins Stocken, das Verbindungsmanagement wird unübersichtlich, und eine gleichbleibend hohe Qualität unter verschiedenen Netzwerkbedingungen ist ohne spezielles Fachwissen kaum zu gewährleisten.&nbsp;</p>
+	<p>Was als einfaches Feature beginnt, wird zu einem mehrmonatigen Projekt, das einfache technische Maßnahmen erfordert, um Probleme zu lösen, die nicht zum Kern Ihres Unternehmens gehören.</p>
+	<p>Uns wurde klar, dass wir unsere Produkte auf Client-Geräte ausweiten mussten, um diese Probleme zu lösen.</p>
+	<div class="flex anchor relative">
+		<h2 id="realtimekit-sdks-for-kotlin-react-native-swift-javascript-flutter">RealtimeKit-SDKs für Kotlin, React Native, Swift, JavaScript, Flutter</h2>
+		<a href="https://blog.cloudflare.com/#realtimekit-sdks-for-kotlin-react-native-swift-javascript-flutter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20EM65tMDpRznldLcfRYSo/90db0a5576bcecf0eaa3d28f7feaa65e/Final.png" alt="" class="kg-image" width="3012" height="2433" loading="lazy">
+	</figure>
+	<p>RealtimeKit ist unser Toolkit zur Entwicklung von Echtzeitanwendungen ohne die üblichen WebRTC-Probleme. Der Kern von RealtimeKit ist eine Reihe von plattformübergreifenden SDKs, die alle technischen Details im Hintergrund übernehmen – vom Sitzungsaufbau und Medienberechtigungen bis hin zu NAT-Traversal und Verbindungsverwaltung. Anstatt Wochen damit zu verbringen, diese Grundlagen zu implementieren und zu debuggen, können Sie sich ganz darauf konzentrieren, einzigartige Erfahrungen für Ihre Nutzenden zu schaffen.</p>
+	<p>Die Aufzeichnungsfunktion ist integriert, wodurch eine der am häufigsten nachgefragten, aber am schwersten zu implementierenden Funktionen in Echtzeit-Anwendungen entfällt. Ob Sie Meetings aus Compliance-Gründen aufzeichnen, virtuelle Unterrichtseinheiten für abwesende Schüler speichern oder Content Creators das Archivieren ihrer Streams ermöglichen möchten – RealtimeKit übernimmt die gesamte Medienverarbeitung. Kein Kampf mit MediaRecorder-APIs oder Aufbau einer benutzerdefinierten Aufnahmeinfrastruktur mehr – es funktioniert einfach und skaliert mit Ihrer Nutzerbasis.</p>
+	<p>Wir haben auch Sprach-KI-Funktionen („Voice AI“) von Anbietern wie ElevenLabs direkt in die Plattform integriert. Das Hinzufügen von KI-Teilnehmern zu Gesprächen bedarf nur mehr eines Funktionsaufrufs und eröffnet völlig neue Interaktionsmodelle. Diese KI-Stimmen arbeiten mit der gleichen niedrigen Latenz wie menschliche Teilnehmer – mehrere zehn Millisekunden in unserem globalen Netzwerk – und schaffen so wirklich synchrone Erfahrungen, in denen KI und Mensch sich auf natürliche Weise unterhalten. In Kombination mit der Fähigkeit von RealtimeKit, auf Millionen von gleichzeitigen Teilnehmern zu skalieren, ermöglicht dies völlig neue Kategorien von Anwendungen, die vorher nicht möglich waren.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-developer-experience">Das Entwicklererlebnis</h2>
+		<a href="https://blog.cloudflare.com/#the-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GAxgCMn36QUgxSlF7m0xL/34574d1d1ba3da305e46b41bc455e769/2.png" alt="" class="kg-image" width="1932" height="1724" loading="lazy">
+	</figure>
+	<p>RealtimeKit konzentriert sich darauf, was Entwicklerinnen und Entwickler erreichen wollen, und nicht darauf, wie die zugrunde liegenden Protokolle funktionieren. Das Hinzufügen von Teilnehmern oder das Aktivieren der Aufzeichnung sind nur einen API-Aufruf entfernt. SDKs übernehmen die Geräteaufzählung, Berechtigungsanfragen und das plattformübergreifende Rendern von Benutzeroberflächen. Hinter den Kulissen lösen wir die heiklen Probleme der Medien-Orchestrierung und des Zustandsmanagements, deren Debugging eine Herausforderung sein kann.</p>
+	<p>Wir haben seit Jahren im Stillen auf die Einführung des Cloudflare RealtimeKit hingearbeitet. Unser globales Netzwerk wurde von Anfang an optimiert, um die Latenzzeit zwischen unserem Netzwerk und den Endnutzern zu minimieren, denn dadurch entstehen die meisten Netzwerkstörungen.</p>
+	<p>Wir haben eine <a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc"><u>Selective Forwarding Unit (SFU)</u></a> entwickelt, die Medienstreams auf intelligente Weise zwischen den Teilnehmern routet und die Qualität dynamisch an die Netzwerkbedingungen anpasst. Unsere <a href="https://blog.cloudflare.com/lt-lt/webrtc-turn-using-anycast"><u>TURN-Infrastruktur</u></a> löst das <a href="https://webrtchacks.com/an-intro-to-webrtcs-natfirewall-problem" target="_blank" rel="noopener noreferrer"><u>komplexe Problem des NAT-Traversal</u></a>, sodass Verbindungen zuverlässig hinter Firewalls hergestellt werden können. Mit Workers AI haben wir Inferenzfunktionen an die Edge gebracht und damit die Latenz für KI-gestützte Interaktionen minimiert. Workers und Durable Objects stellten die WebSockets-Koordinationsebene bereit, die zur Aufrechterhaltung eines einheitlichen Status aller Beteiligten erforderlich ist.</p>
+	<div class="flex anchor relative">
+		<h2 id="sfu-and-turn-services-are-now-generally-available">SFU- und TURN-Dienste sind jetzt allgemein verfügbar</h2>
+		<a href="https://blog.cloudflare.com/#sfu-and-turn-services-are-now-generally-available" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Außerdem kündigen wir die allgemeine Verfügbarkeit unserer SFU- und TURN-Dienste für WebRTC-Entwicklerinnen und -Entwickler an, die mehr Kontrolle und eine Low-Level-Integration mit dem Cloudflare-Netzwerk benötigen.</p>
+	<p>SFU unterstützt jetzt Simulcast – ein häufig geäußerter Feature-Wunsch. Mit Simulcast können Entwicklerinnen und Entwickler Medienstreams aus mehreren Optionen auswählen, ähnlich wie bei der Auswahl der Qualitätsstufe eines Online-Videos, aber für WebRTC. Benutzer mit unterschiedlichen Netzwerkqualitäten können nun verschiedene Qualitätsstufen erhalten, die entweder automatisch von der SFU definiert oder manuell ausgewählt werden.</p>
+	<p>Unser TURN-Dienst bietet jetzt erweiterte Analytics mit Einblicken in Nutzungsmetriken auf regionaler, Länder- und Städte-Ebene. Zusammen mit <a href="https://developers.cloudflare.com/calls/turn/replacing-existing/#tag-users-with-custom-identifiers" target="_blank" rel="noopener noreferrer"><u>Custom Identifiers</u></a> und widerrufbaren Token bietet der TURN-Service von Cloudflare einen detaillierten Einblick in die Nutzung und hilft, Missbrauch zu vermeiden.</p>
+	<p>Unsere SFU- und TURN-Produkte zählen nach wie vor zu den erschwinglichsten Möglichkeiten, WebRTC-Anwendungen in großem Maßstab zu entwickeln, und zwar für 5 Cent pro GB nach 1.000 GB kostenloser Nutzung pro Monat.</p>
+	<div class="flex anchor relative">
+		<h2 id="partnering-with-hugging-face-to-make-realtime-ai-communication-seamless">Partnerschaft mit Hugging Face für eine nahtlose KI-Kommunikation in Echtzeit</h2>
+		<a href="https://blog.cloudflare.com/#partnering-with-hugging-face-to-make-realtime-ai-communication-seamless" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://fastrtc.org" target="_blank" rel="noopener noreferrer"><u>FastRTC</u></a> ist eine leichtgewichtige Python-Bibliothek von Hugging Face, die es einfach macht, Audio und Video in Echtzeit in und aus KI-Modellen mit WebRTC zu streamen. TURN-Server sind ein wichtiger Bestandteil der WebRTC-Infrastruktur und stellen sicher, dass Medien-Streams zuverlässig über Firewalls und NATs hinweg eine Verbindung herstellen können. Für Nutzende von FastRTC kann sich die Einrichtung eines weltweit verteilten TURN-Servers als kompliziert und kostspielig erweisen.&nbsp;&nbsp;</p>
+	<p>Dank unserer neuen Partnerschaft mit Hugging Face haben FastRTC-Nutzende ab sofort kostenlosen Zugang zu dem TURN-Server-Produkt von Cloudflare, das ihnen eine zuverlässige, sofort einsatzbereite Verbindung ermöglicht. Entwicklerinnen und Entwickler erhalten mit nur einem Hugging Face-Token jeden Monat 10 GB TURN-Bandbreite – keine Einrichtung, keine Kreditkarte, keine zu verwaltenden Server. Wenn Projekte wachsen, können sie einfach zu einem Cloudflare-Konto wechseln, um mehr Kapazität und eine höhere kostenlose Tarifstufe zu erhalten.</p>
+	<p>Dank dieser Integration können sich KI-Entwicklerinnen und -Entwickler auf die Erstellung von Sprachschnittstellen, Video-Pipelines und multimodalen Apps konzentrieren, ohne sich Gedanken über NAT-Traversal oder Netzwerkzuverlässigkeit machen zu müssen. FastRTC vereinfacht den Code und Cloudflare sorgt dafür, dass er überall funktioniert. Sehen Sie sich diese <a href="https://huggingface.co/fastrtc" target="_blank" rel="noopener noreferrer"><u>Demos</u></a> an, um loszulegen.</p>
+	<div class="flex anchor relative">
+		<h2 id="ship-ai-powered-realtime-apps-in-days-not-weeks">KI-basierte Echtzeitanwendungen – in Tagen live, nicht erst in Wochen.</h2>
+		<a href="https://blog.cloudflare.com/#ship-ai-powered-realtime-apps-in-days-not-weeks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b4lK5Qvq1ImlBa3lFEH7l/bf212f51a1f178285747e759c1365ec9/3.png" alt="" class="kg-image" width="1999" height="934" loading="lazy">
+	</figure>
+	<p>Mit RealtimeKit können Entwicklerinnen und -Entwickler jetzt komplexe Echtzeiterlebnisse innerhalb weniger Stunden implementieren. Die SDKs abstrahieren die zeitaufwändigsten Aspekte der WebRTC-Entwicklung und stellen gleichzeitig APIs bereit, die auf gängige Implementierungsmuster zugeschnitten sind. Hier sind einige der Möglichkeiten:&nbsp;</p>
+	<ul>
+		<li>
+			<p><b>Videokonferenzen</b>: Fügen Sie mit nur wenigen Codezeilen Videoanrufe mit mehreren Teilnehmern zu Ihrer Anwendung hinzu. RealtimeKit kümmert sich um das Verbindungsmanagement, die Bandbreite und die Geräteberechtigungen, die in der Regel Wochen an Entwicklungszeit in Anspruch nehmen.</p>
+		</li>
+		<li>
+			<p><b>Live-Streaming</b>: Entwickeln Sie interaktive Formate, in denen Moderatoren an ein großes Publikum streamen und ausgewählte Teilnehmende auf den Bildschirm holen können. Die SFU optimiert das Medien-Routing automatisch auf der Grundlage der Rollen der Teilnehmer und der Netzwerkbedingungen.</p>
+		</li>
+		<li>
+			<p><b>Echtzeit-Synchronisation</b>: Implementieren Sie Watch-Partys oder gemeinsame Zuschauererlebnisse, bei denen die Wiedergabe von Inhalten mit allen Teilnehmern synchronisiert wird. Die Timing-API übernimmt die komplexen Verzögerungsberechnungen und Anpassungen, die traditionell erforderlich sind.</p>
+		</li>
+		<li>
+			<p><b>Voice AI-Integrationen</b>: Fügen Sie Transkriptions- und KI-Voice-Teilnehmer hinzu, ohne benutzerdefinierte Media-Pipelines zu erstellen. Die Medienverarbeitungs-APIs von RealtimeKit integrieren sich nahtlos in Ihre bestehenden Authentifizierungs- und Speichersysteme – ganz ohne zusätzliche Infrastruktur.</p>
+		</li>
+	</ul>
+	<p>Unsere frühen Tester berichten, dass RealtimeKit nicht nur bestehende Vorhaben beschleunigt, sondern auch neue Projektideen ermöglicht, die zuvor nicht umsetzbar gewesen wären.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started-with-realtimekit">Erste Schritte mit RealtimeKit</h2>
+		<a href="https://blog.cloudflare.com/#get-started-with-realtimekit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ab heute werden Sie einen neuen <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Frealtime" target="_blank" rel="noopener noreferrer"><u>Echtzeit-Bereich in Ihrem Cloudflare Dashboard</u></a> bemerken. In diesem Bereich werden unsere TURN- und SFU-Produkte sowie unser neuestes Produkt, RealtimeKit, vorgestellt.&nbsp;</p>
+	<p>RealtimeKit befindet sich derzeit in einer geschlossenen Beta-Phase und steht ausgewählten Kunden zum ersten Testen bereit. Die Nutzung während der Beta-Phase ist derzeit kostenlos. Jetzt Early Access sichern – <a href="https://www.cloudflare.com/cloudflare-realtimekit-signup" target="_blank" rel="noopener noreferrer"><u>hier</u></a> klicken oder direkt über Ihr <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Frealtime" target="_blank" rel="noopener noreferrer"><u>Cloudflare-Dashboard</u></a>. Wir sind schon äußerst gespannt, was Sie entwickeln werden. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53RI7RZhs5Y0zHMHKg6fLh/e155081853355a7714e052ff23db6269/4.png" alt="" class="kg-image" width="1800" height="524" loading="lazy">
+	</figure>
+	<p></p>
+</div>

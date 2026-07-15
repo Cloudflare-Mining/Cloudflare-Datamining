@@ -1,0 +1,133 @@
+<div class="mb2 gray5">Lesezeit: 4&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/casb-ai-integrations">English</a>, <a href="https://blog.cloudflare.com/fr-fr/casb-ai-integrations">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-ai-integrations">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/casb-ai-integrations">한국어</a>, <a href="https://blog.cloudflare.com/es-es/casb-ai-integrations">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/casb-ai-integrations">Nederlands</a>, und <a href="https://blog.cloudflare.com/zh-tw/casb-ai-integrations">繁體中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17jgL6LTm3bmYYzS8kAHtX/711a8621064f76ade67964cbc5da5b73/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Ab sofort können alle Nutzer unserer <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>Secure Access Service Edge (SASE)</u></a>-Plattform <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> unseren API-basierten <a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloud Access Security Broker (CASB)</u></a> für eine Sicherheitsbewertung ihrer auf generativer KI beruhenden Tools verwenden – namentlich <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><u>ChatGPT</u></a> (OpenAI), <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer"><u>Claude</u></a> (Anthropic) und <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer"><u>Gemini</u></a> (Google). Unternehmen können das von ihnen genutzte Tool unter ihrem Account einbinden und binnen Minuten mit der Ermittlung unter anderem von Fehlkonfigurationen, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>Data Loss Prevention (DLP)</u></a>-Treffern, Datenoffenlegung und -freigabe und Compliance-Risiken beginnen. Dafür müssen sie nicht erst mühsam Software auf den Geräten von Nutzern installieren.</p>
+	<p>Weil immer mehr Unternehmen <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>generative KI</u></a> einsetzen, müssen IT- und Sicherheitsabteilungen dringend darauf achten, dass sie hinsichtlich der <a href="https://www.cloudflare.com/the-net/generative-ai-zero-trust" target="_blank" rel="noopener noreferrer"><u>&nbsp;Gefahren und der Herausforderungen in puncto Compliance</u></a> dieser leistungsstarken Technologie auf dem Laufenden bleiben. Angesichts der Dynamik in diesem Kontext brauchen sie Werkzeuge, mit denen nicht nur eine KI-Einführung ermöglicht, sondern zugleich die Sicherheit ihrer Firmennetzwerke und -daten gewährleistet werden kann.&nbsp;</p>
+	<p>Der API-basierte und der interne CASB von Cloudflare arbeiten Hand in Hand, um Unternehmen bei der sicheren Implementierung von KI-Tools zu unterstützen. Die Integration des API-basierten CASB erlaubt einen externen Überblick über gespeicherte Daten und den Sicherheitsstatus beliebter KI-Tools wie ChatGPT, Claude und Gemini. Gleichzeitig ermöglicht Cloudflare Gateway <a href="https://blog.cloudflare.com/ai-prompt-protection"><u>interne Prompt-Kontrollen</u></a> und die Identifizierung von <a href="https://blog.cloudflare.com/shadow-AI-analytics"><u>Schatten-KI</u></a>. Die Lösung wendet Richtlinien und DLP auf den Datenverkehr an, der auf dem Weg zu diesen KI-Anbietern ist. Gemeinsam stellen diese Funktionen Unternehmen eine übergreifende Steuerungsebene bereit, mit der sie den Einsatz generativer KI absichern können.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-new">Neueste Entwicklungen</h3>
+		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sowohl ChatGPT als auch Claude und Gemini sind jetzt im Rahmen der von dem <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank" rel="noopener noreferrer"><u>API-basierten CASB von Cloudflare</u></a> unterstützten Integrationen verfügbar. Diese können von allen Cloudflare One-Nutzern verwendet werden. Account-Inhaber können ihre auf generative KI beruhenden Mandanten ganz unkompliziert verbinden. Der CASB kann dann nach Sicherheitsproblemen in verschiedenen Bereichen suchen:</p>
+	<ul>
+		<li>
+			<p><b>Verbindungen ohne Agenten:</b> Die Verbindung zu ChatGPT, Claude und Gemini kann über API-basierte Integrationen ohne Agenten hergestellt werden, um Sicherheitsstatus und Datenrisiken zu untersuchen. Eine Endgerät-Software muss in diesem Fall nicht installiert werden.</p>
+		</li>
+		<li>
+			<p><b>Verwaltung des Sicherheitsstatus:</b> Damit lassen sich unsichere Einstellungen und Fehlkonfigurationen ermitteln, die zur Offenlegung oder zum Missbrauch von Daten führen können.</p>
+		</li>
+		<li>
+			<p><b>DLP-Erkennung:</b> Es wird ermittelt, wo <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>sensible Daten</u></a> in Chat-Anhängen hochgeladen wurden (dieser Service ist in Kürze auch für Prompts verfügbar).</p>
+		</li>
+		<li>
+			<p><b>Erkenntnisse speziell zu generativer KI:</b> Es werden Risiken aufgezeigt, die mit den konkreten Funktionen des Instrumentariums eines bestimmten KI-Anbieters verbunden sind.</p>
+		</li>
+	</ul>
+	<p>Administratoren können jetzt Fragen beantworten wie: Was machen unsere Mitarbeitenden bei ChatGPT? Welche Daten werden bei Claude hochgeladen und verwendet? Ist Gemini im Google Workspace richtig konfiguriert?</p>
+	<p>Schauen wir uns jetzt die einzelnen Integration genauer an.</p>
+	<div class="flex anchor relative">
+		<h3 id="openai-chatgpt">ChatGPT von OpenAI</h3>
+		<a href="https://blog.cloudflare.com/#openai-chatgpt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dO0h3q9modcmRPAQeiCOH/d8d54f5233e0026a63569b53cbb8d9a6/image2.png" alt="" class="kg-image" width="1999" height="1753" loading="lazy">
+	</figure>
+	<p>Die CASB-Integration von Cloudflare bei ChatGPT von OpenAI durchsucht das Tool nach verschiedenen Arten von Informationen:</p>
+	<ul>
+		<li>
+			<p><b>Nutzung bestimmter Funktionen</b>: Es werden spezielle ChatGPT-Funktionen hervorgehoben, etwa <a href="https://platform.openai.com/docs/actions/introduction" target="_blank" rel="noopener noreferrer"><u>Aktionen</u></a>, die <a href="https://platform.openai.com/docs/guides/tools-code-interpreter" target="_blank" rel="noopener noreferrer"><u>Ausführung von Code</u></a> und <a href="https://help.openai.com/en/articles/9237897-chatgpt-search" target="_blank" rel="noopener noreferrer"><u>Zugriff auf das Web</u></a>.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>Äußere Gefährdung: </b>Chats und generative vortrainierte Transformer (Generative Pre-trained Transformers – GPT), die außerhalb des Mandanten weitergegeben werden, etwa öffentlich zugängliche oder im <a href="https://openai.com/index/introducing-the-gpt-store" target="_blank" rel="noopener noreferrer"><u>GPT Store</u></a> gelistete GPT, werden ermittelt und zur schnelleren Voreinstufung ihren Urhebern zugeordnet.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>Secrets, Keys und Einladungen</b>: Zur Gewährleistung ordnungsgemäßer Anmeldedaten werden API-Schlüssel identifiziert, die nicht ausgetauscht wurden oder nicht mehr verwendet werden. Außerdem werden Einladungen ermittelt, die zu umfangreiche Rechte gewähren oder veraltet sind.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>Sensible Inhalte (mittels DLP)</b>: Vertrauliche Daten (z. B Anmeldedaten und Secrets, Finanz-/Gesundheitsinformationen, Quellcode usw.) werden per <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer"><u>DLP-Profilabgleich</u></a> in hochgeladenen Chat-Anhängen identifiziert, damit gezielt darauf reagiert werden kann.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="anthropic-claude">Claude von Anthropic</h3>
+		<a href="https://blog.cloudflare.com/#anthropic-claude" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Für Claude kann Cloudflare Folgendes extern (Out-of-Band) ermitteln:</p>
+	<ul>
+		<li>
+			<p><b>Secrets, Schlüssel und Einladungen:</b> Risikoreiche Einladungen und eine Verschiebung von Berechtigungen werden frühzeitig angezeigt, damit das Prinzip der Vergabe geringstmöglicher Rechte möglichst strikt eingehalten wird. Ungenutzte API-Schlüssel und Lücken bei der Passwortänderung werden erkannt, bevor sie die Sicherheit beeinträchtigen.</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>Sensible Inhalte (über DLP)</b>: Hochgeladene Dateien werden auf <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank" rel="noopener noreferrer"><u>vertrauliche Daten</u></a> hin überwacht, damit Claude in Unternehmen auf sichere und vorschriftsmäßige Weise benutzt werden kann. IT-Sicherheitsabteilungen erhalten diese Informationen so schnell, wie der CASB scannt. Das verschafft ihnen den nötigen Überblick, um Mitarbeitenden dabei zu helfen, Claude produktiv und sicher mit vertraulichen Daten zu verwenden.</p>
+		</li>
+	</ul>
+	<p>Während Anthropic die API-Möglichkeiten und -Funktionen von Claude weiter ausbaut, wird Cloudflare entsprechende Sicherheits-Erkennungslösungen hinzufügen, damit neue Features unterstützt werden können, sobald sie verfügbar sind.</p>
+	<div class="flex anchor relative">
+		<h3 id="google-gemini">Gemini von Google</h3>
+		<a href="https://blog.cloudflare.com/#google-gemini" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Die Erkennungslösung von Cloudflare für Google Gemini erscheint als Teil unserer API-CASB-Integration im Google Workspace:</p>
+	<ul>
+		<li>
+			<p><b>Identität und Multi-Faktor-Authentifizierung (MFA)</b>: Gemini-Nutzer und -Administratoren ohne MFA werden identifiziert, da sie dies zu bevorzugten Zielen für eine Kompromittierung macht. Stellen Sie sich vor, ein IT-Administrator verarbeitet täglich mit Gemini Firmendaten, doch sein Google Workspace-Konto ist nicht mit MFA gesichert. Dann reicht eine einzige erfolgreiche Phishing-E-Mail, um einem Angreifer privilegierten Zugang zu Gemini und der gesamten Google Workspace-Umgebung zu verschaffen. So könnte sich ein kleines Versäumnis zu einem das gesamte Unternehmen betreffenden Sicherheitsvorfall ausweiten.&nbsp;</p>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<p><b>Lizenzpflege</b>: Zur Kostensenkung und zum Eindämmen der Gefährdung werden gesperrte Konten gekennzeichnet, die noch über Gemini- oder <a href="https://support.google.com/a/answer/16345165" target="_blank" rel="noopener noreferrer"><u>AI Ultra</u></a>-Lizenzen verfügen. Ein AI Ultra-Nutzer hat Zugang zu leistungsfähigeren und risikoreicheren Funktionen, beispielsweise <a href="https://deepmind.google/models/project-mariner" target="_blank" rel="noopener noreferrer"><u>Project Mariner</u></a>. Dabei handelt es sich um einen Forschungsprototyp, der als autonomer Agent fungiert und in der Lage ist, bis zu zehn Aufgaben gleichzeitig in verschiedenen Webbrowsern automatisch auszuführen. Somit kann ein Angreifer auch größeren Schaden anrichten, wenn er einen AI Ultra-Nutzer kompromittiert. Deshalb haben wir dies in unsere Erkennungsfunktion aufgenommen.</p>
+		</li>
+	</ul>
+	<p>Die Gemini-Integration hat einen begrenzteren Umfang, weil das Produkt und die API von Google anders strukturiert sind, als dies bei OpenAI oder Anthropic der Fall ist. Unternehmen wird Gemini als <a href="https://workspace.google.com" target="_blank" rel="noopener noreferrer"><u>Add-on für Google Workspace</u></a> angeboten. Sie aktivieren Gemini-Funktionen in Gmail, Docs, Sheets und anderen Google Workspace-Anwendungen über Add-On-Lizenzen wie Gemini Enterprise oder AI Ultra. Unsere CASB-Erkennung konzentriert sich auf Identität, MFA und Lizenzpflege, nicht auf Sicherheitsstatusprobleme wie öffentliche Freigabe oder die Veröffentlichungen benutzerdefinierter Assistenten, da Gemini diese API-Endpunkte noch nicht bereitstellt.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-future-of-genai-posture-management">Zukünftige Absicherung generativer KI</h3>
+		<a href="https://blog.cloudflare.com/#the-future-of-genai-posture-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Wie etliche andere Unternehmen führt auch Cloudflare generative KI ein, um diese Umgebungen noch sicherer zu machen, als sie es heute sind. Wir freuen uns, dass wir unseren Kunden nun die Möglichkeit geben können, mit dieser Technologie Innovationen voranzutreiben. Mit Blick auf die Zukunft stimmt es uns zuversichtlich, dass Anbieter generativer KI konkrete Maßnahmen ergreifen, um Sicherheit, Compliance und Datenschutz noch fester in ihre Plattformen zu verankern.</p>
+	<div class="flex anchor relative">
+		<h3 id="secure-genai-beyond-the-reach-of-inline-controls">Schutz generativer KI jenseits interner Kontrollen</h3>
+		<a href="https://blog.cloudflare.com/#secure-genai-beyond-the-reach-of-inline-controls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Durch die Einführung generativer KI werden neue Anforderungen an die Sicherheit gestellt. Der CASB von Cloudflare bietet zusätzlich zu internen Kontrollen einen externen (Out-of-Band) Überblick über diese Tools und liefert Erkenntnisse dazu. So haben Unternehmen Sicherheit, Zugang und Daten im Griff. Das erlaubt ihnen eine sorgenfreie und sichere Implementierung generativer KI.</p>
+	<p><b>Erste Schritte:</b></p>
+	<ul>
+		<li>
+			<p><b>Für bestehende Cloudflare One-Kunden:</b> Wenden Sie sich an Ihre/n Kundenbetreuer/in oder aktivieren Sie die Integrationen direkt in Ihrem Dashboard.</p>
+		</li>
+		<li>
+			<p><b>Neu bei Cloudflare One?</b> Dann <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>melden Sie sich jetzt an</u></a>, um 50 kostenlose Lizenzen zu erhalten und generative KI sofort sicher nutzen zu können. Wird eine umfangreichere Bereitstellung benötigt, können Sie einen Termin für ein <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>Beratungsgespräch mit unseren Fachleuten</u></a> vereinbaren.</p>
+		</li>
+	</ul>
+	<p>Wenn Sie einen Ausblick auf weitere neue Funktionen erhalten und unsere Roadmap mitgestalten möchten, <a href="https://www.cloudflare.com/lp/ai-security-user-research-program-2025" target="_blank" rel="noopener noreferrer"><u>melden Sie Ihr Interesse an unserem Nutzerforschungsprogramm</u></a> für KI-Sicherheit an. </p>
+</div>

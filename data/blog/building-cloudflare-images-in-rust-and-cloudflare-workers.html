@@ -1,242 +1,94 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vts7EELfGtvXeEkzKzM3B/0bed2d7c96c8cdb043a810e2c64c96e9/image3-14.png" alt="Building Cloudflare Images in Rust and Cloudflare Workers" class="kg-image" width="1800" height="1013" loading="lazy">
-
-	</figure>
-	<p>This post explains how we implemented the Cloudflare Images product with reusable Rust libraries and Cloudflare Workers. It covers the technical design of <a href="https://developers.cloudflare.com/image-resizing" target="_blank" rel="noopener noreferrer">Cloudflare Image Resizing</a> and Cloudflare Images. Using Rust and Cloudflare Workers helps us quickly iterate and deliver product improvements over the coming weeks and months.</p>
-	<div class="flex anchor relative">
-		<h3 id="reuse-of-code-in-rusty-image-projects">Reuse of code in Rusty image projects</h3>
-		<a href="https://blog.cloudflare.com/#reuse-of-code-in-rusty-image-projects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We developed <a href="https://developers.cloudflare.com/image-resizing" target="_blank" rel="noopener noreferrer">Image Resizing</a> in Rust. It's a web server that receives HTTP requests for images along with resizing options, fetches the full-size images from the origin, applies resizing and other image processing operations, compresses, and returns the HTTP response with the optimized image.</p>
-	<p>Rust makes it easy to split projects into libraries (called crates). The image processing and compression parts of Image Resizing are usable as libraries.</p>
-	<p>We also have a product called &nbsp;<a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a>, which is a Golang-based service that recompresses images in our cache. Polish was initially designed to run command-line programs like <code>jpegtran</code> and <code>pngcrush</code>. We took the core of Image Resizing and wrapped it in a command-line executable. This way, when Polish needs to apply lossy compression or generate WebP images or animations, it can use Image Resizing via a command-line tool instead of a third-party tool.</p>
-	<p>Reusing libraries has allowed us to easily unify processing between Image Resizing and Polish (for example, to ensure that both handle metadata and color profiles in the same way).</p>
-	<p>Cloudflare Images is another product we've built in Rust. It added support for a custom storage back-end, variants (size presets), support for signing URLs and more. We made it as a collection of Rust crates, so we can reuse pieces of it in other services running anywhere in our network. Image Resizing provides image processing for Cloudflare Images and shares libraries with Images to understand the new URL scheme, access the storage back-end, and database for variants.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-image-resizing-works">How Image Resizing works</h3>
-		<a href="https://blog.cloudflare.com/#how-image-resizing-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LlxMguVop5gSnpNNOszTn/b14d2635eabab9622b6b7dcbada2f408/image-resizing-diagram.png" alt="Image Resizing request flow" class="kg-image" width="921" height="752" loading="lazy">
-
-	</figure>
-	<p>The Image Resizing service runs at the edge and is deployed on every server of the Cloudflare global network. Thanks to Cloudflare's global Anycast network, the closest Cloudflare data center will handle eyeball image resizing requests. Image Resizing is tightly integrated with the Cloudflare cache and handles eyeball requests only on a cache miss.</p>
-	<p>There are two ways to use Image Resizing. The default <a href="https://developers.cloudflare.com/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL scheme</a> provides an easy, declarative way of specifying image dimensions and other options. The other way is to use a JavaScript API in a <a href="https://developers.cloudflare.com/image-resizing/resizing-with-workers" target="_blank" rel="noopener noreferrer">Worker</a>. Cloudflare Workers give powerful programmatic control over every image resizing request.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-cloudflare-images-work">How Cloudflare Images work</h3>
-		<a href="https://blog.cloudflare.com/#how-cloudflare-images-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uCiQpHMXkjdKzBhvIruxh/1c1930777fee1539e201b30eb9bf530a/DES-3375-2.png" alt="How Cloudflare Images work" class="kg-image" width="1130" height="787" loading="lazy">
-
-	</figure>
-	<p>Cloudflare Images consists of the following components:</p>
-	<ul>
-		<li>
-			<p>The Images core service that powers the public API to manage images assets.</p>
-		</li>
-		<li>
-			<p>The Image Resizing service responsible for image transformations and caching.</p>
-		</li>
-		<li>
-			<p>The Image delivery Cloudflare Worker responsible for serving images and passing corresponding parameters through to the Imaging Resizing service.</p>
-		</li>
-		<li>
-			<p>Image storage that provides access and storage for original image assets.</p>
-		</li>
-	</ul>
-	<p>To support Cloudflare Images scenarios for image transformations, we made several changes to the Image Resizing service:</p>
-	<ul>
-		<li>
-			<p>Added access to Cloudflare storage with original image assets.</p>
-		</li>
-		<li>
-			<p>Added access to variant definitions (size presets).</p>
-		</li>
-		<li>
-			<p>Added support for signing URLs.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="image-delivery">Image delivery</h3>
-		<a href="https://blog.cloudflare.com/#image-delivery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The primary use case for Cloudflare Images is to provide a simple and easy-to-use way of managing images assets. To cover egress costs, we provide image delivery through the Cloudflare managed imagedelivery.net domain. It is configured with <a href="https://blog.cloudflare.com/tiered-cache-smart-topology">Tiered Caching</a> to maximize the cache hit ratio for image assets. imagedelivery.net provides <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">image hosting</a> without a need to configure a custom domain to proxy through Cloudflare.</p>
-	<p>A Cloudflare Worker powers image delivery. It parses image URLs and passes the corresponding parameters to the image resizing service.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-we-store-cloudflare-images">How we store Cloudflare Images</h3>
-		<a href="https://blog.cloudflare.com/#how-we-store-cloudflare-images" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are several places we store information on Cloudflare Images:</p>
-	<ul>
-		<li>
-			<p>image metadata in Cloudflare's core data centers</p>
-		</li>
-		<li>
-			<p>variant definitions in Cloudflare's edge data centers</p>
-		</li>
-		<li>
-			<p>original images in core data centers</p>
-		</li>
-		<li>
-			<p>optimized images in Cloudflare cache, physically close to eyeballs.</p>
-		</li>
-	</ul>
-	<p>Image variant definitions are stored and delivered to the edge using Cloudflare's distributed key-value store called <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>. We use a single source of truth for variants. The Images core service makes calls to Quicksilver to read and update variant definitions.</p>
-	<p>The rest of the information about the image is stored in the image URL itself:<a href="https://imagedelivery.net" target="_blank" rel="noopener noreferrer">https://imagedelivery.net/</a>//</p>
-	<p> contains a flag, whether it's publicly available or requires access verification. It's not feasible to store any image metadata in Quicksilver as the data volume would increase linearly with the number of images we host. Instead, we only allow a finite number of variants per account, so we responsibly utilize available disk space on the edge. The downside of storing image metadata as part of is that will change on access change.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-we-keep-cloudflare-images-up-to-date">How we keep Cloudflare Images up to date</h3>
-		<a href="https://blog.cloudflare.com/#how-we-keep-cloudflare-images-up-to-date" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The only way to access images is through the use of variants. Each variant is a named <a href="https://developers.cloudflare.com/image-resizing/resizing-with-workers#fetch-options" target="_blank" rel="noopener noreferrer">image resizing configuration</a>. Once the image asset is fetched, we cache the transformed image in the Cloudflare cache. The critical question is how we keep processed images up to date. The answer is by purging the Cloudflare cache when necessary. There are two use cases:</p>
-	<ul>
-		<li>
-			<p>access to the image is changed</p>
-		</li>
-		<li>
-			<p>the variant definition is updated</p>
-		</li>
-	</ul>
-	<p>In the first instance, we purge the cache by calling a URL:<a href="https://imagedelivery.net" target="_blank" rel="noopener noreferrer"><i>https://imagedelivery.net/</i></a><i>/</i></p>
-	<p>Then, the customer updates the variant we issue a cache purge request by tag:<i>account-id/variant-name</i></p>
-	<p>To support cache purge by tag, the image resizing service adds the necessary tags for all transformed images.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-we-restrict-access-to-cloudflare-images">How we restrict access to Cloudflare Images</h3>
-		<a href="https://blog.cloudflare.com/#how-we-restrict-access-to-cloudflare-images" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Image resizing service supports restricted access to images by using URL signatures with expiration. URLs are signed with an SHA-256 HMAC key. The steps to produce valid signatures are:</p>
-	<ol>
-		<li>
-			<p>Take the path and query string (the path starts with /).</p>
-		</li>
-		<li>
-			<p>Compute the path’s SHA-256 HMAC with the query string, using the Images' URL signing key as the secret. The key is configured in the Dashboard.</p>
-		</li>
-		<li>
-			<p>If the URL is meant to expire, compute the Unix timestamp (number of seconds since 1970) of the expiration time, and append <code>?exp=</code> and the timestamp as an integer to the URL.</p>
-		</li>
-		<li>
-			<p>Append <code>?</code> or <code>&amp;</code> to the URL as appropriate (<code>?</code> if it had no query string; <code>&amp;</code> if it had a query string).</p>
-		</li>
-		<li>
-			<p>Append <code>sig=</code> and the HMAC as hex-encoded 64 characters.</p>
-		</li>
-	</ol>
-	<p>A signed URL looks like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5M87aEfnYeWRuAJk9MJaI0/c8d289f755d39a2885fc247358f9a32a/signed-1.png" alt="example of signed URL" class="kg-image" width="2048" height="143" loading="lazy">
-
-	</figure>
-	<p>A signed URL with an expiration timestamp looks like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cVOACVdzpkmfB6BHXsxk/23c586690ee6d72a0460f866b8f7bcdf/signed-2.png" alt="example of signed URL with expiration" class="kg-image" width="2048" height="115" loading="lazy">
-
-	</figure>
-	<p>Signature of /hello/world URL with a secret ‘this is a secret’ is <code>6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code>.</p>
-	<p><code>https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SZF6WjgpV8GjeqEFbT9Yk/516d7148a25154db914bd6f41f685a3b/JS.png" alt="example of signature generation in JavaScript" class="kg-image" width="1428" height="422" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nkNNkzLLNwZAYLSzt6NPI/3696a549ae7cee402d4d335419b88c19/Rust.png" alt="example of signature generation in Rust" class="kg-image" width="1420" height="500" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="direct-creator-uploads-with-cloudflare-worker-and-kv">Direct creator uploads with Cloudflare Worker and KV</h3>
-		<a href="https://blog.cloudflare.com/#direct-creator-uploads-with-cloudflare-worker-and-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Similar to <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>, Images supports direct creator uploads. That allow users to upload images without API tokens. Everyday use of direct creator uploads is by web apps, client-side applications, or mobile apps where users upload content directly to Cloudflare Images.</p>
-	<p>Once again, we used our serverless platform to support direct creator uploads. The successful API call stores the account's information in Workers KV with the specified expiration date. A simple Cloudflare Worker handles the upload URL, which reads the KV value and grants upload access only on a successful call to KV.</p>
-	<div class="flex anchor relative">
-		<h3 id="future-work">Future Work</h3>
-		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Images product has an exciting product roadmap. Let’s review what’s possible with the current architecture of Cloudflare Images.</p>
-	<div class="flex anchor relative">
-		<h4 id="resizing-hints-on-upload">Resizing hints on upload</h4>
-		<a href="https://blog.cloudflare.com/#resizing-hints-on-upload" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the moment, no image transformations happen on upload. That means we can serve the image globally once it is uploaded to Image storage. We are considering adding resizing hints on image upload. That won't necessarily schedule image processing in all cases but could provide a valuable signal to resize the most critical image variants. An example could be to <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">generate an AVIF</a> variant for the most vital image assets.</p>
-	<div class="flex anchor relative">
-		<h4 id="serving-images-from-custom-domains">Serving images from custom domains</h4>
-		<a href="https://blog.cloudflare.com/#serving-images-from-custom-domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We think serving images from a domain we manage (with Tiered Caching) is a great default option for many customers. The downside is that loading Cloudflare images requires additional TLS negotiations on the client-side, adding latency and impacting loading performance. On the other hand, serving Cloudflare Images from custom domains will be a viable option for customers who set up a website through Cloudflare. The good news is that we can support such functionality with the current architecture without radical changes in the architecture.</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Cloudflare Images product runs on top of the Cloudflare global network. We built Cloudflare Images in Rust and Cloudflare Workers. This way, we use Rust reusable libraries in several products such as Cloudflare Images, Image Resizing, and Polish. Cloudflare’s serverless platform is an indispensable tool to build Cloudflare products internally. If you are interested in building innovative products in Rust and Cloudflare Workers, <a href="https://www.cloudflare.com/careers/jobs/?department=Emerging+Technology+and+Incubation&amp;location=default" target="_blank" rel="noopener noreferrer">we're hiring</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>This post explains how we implemented the Cloudflare Images product with reusable Rust libraries and Cloudflare Workers. It covers the technical design of <a href="https://developers.cloudflare.com/image-resizing" target="_blank" rel="noopener noreferrer">Cloudflare Image Resizing</a> and Cloudflare Images. Using Rust and Cloudflare Workers helps us quickly iterate and deliver product improvements over the coming weeks and months.</p>
+<h3>Reuse of code in Rusty image projects</h3>
+<p>We developed <a href="https://developers.cloudflare.com/image-resizing" target="_blank" rel="noopener noreferrer">Image Resizing</a> in Rust. It's a web server that receives HTTP requests for images along with resizing options, fetches the full-size images from the origin, applies resizing and other image processing operations, compresses, and returns the HTTP response with the optimized image.</p>
+<p>Rust makes it easy to split projects into libraries (called crates). The image processing and compression parts of Image Resizing are usable as libraries.</p>
+<p>We also have a product called &nbsp;<a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a>, which is a Golang-based service that recompresses images in our cache. Polish was initially designed to run command-line programs like <code>jpegtran</code> and <code>pngcrush</code>. We took the core of Image Resizing and wrapped it in a command-line executable. This way, when Polish needs to apply lossy compression or generate WebP images or animations, it can use Image Resizing via a command-line tool instead of a third-party tool.</p>
+<p>Reusing libraries has allowed us to easily unify processing between Image Resizing and Polish (for example, to ensure that both handle metadata and color profiles in the same way).</p>
+<p>Cloudflare Images is another product we've built in Rust. It added support for a custom storage back-end, variants (size presets), support for signing URLs and more. We made it as a collection of Rust crates, so we can reuse pieces of it in other services running anywhere in our network. Image Resizing provides image processing for Cloudflare Images and shares libraries with Images to understand the new URL scheme, access the storage back-end, and database for variants.</p>
+<h3>How Image Resizing works</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="584" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=715&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=640&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=715&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=750&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=828&amp;h=676&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=1080&amp;h=882&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=1280&amp;h=1045&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483C0V8X9VK9AZG4M9WDZK.png&amp;w=1430&amp;h=1168&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Image Resizing request flow" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="584" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Image Resizing request flow"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The Image Resizing service runs at the edge and is deployed on every server of the Cloudflare global network. Thanks to Cloudflare's global Anycast network, the closest Cloudflare data center will handle eyeball image resizing requests. Image Resizing is tightly integrated with the Cloudflare cache and handles eyeball requests only on a cache miss.</p>
+<p>There are two ways to use Image Resizing. The default <a href="https://developers.cloudflare.com/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL scheme</a> provides an easy, declarative way of specifying image dimensions and other options. The other way is to use a JavaScript API in a <a href="https://developers.cloudflare.com/image-resizing/resizing-with-workers" target="_blank" rel="noopener noreferrer">Worker</a>. Cloudflare Workers give powerful programmatic control over every image resizing request.</p>
+<h3>How Cloudflare Images work</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="498" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=715&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=640&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=715&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=750&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=828&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=1080&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=1280&amp;h=892&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4XG3HJE69FN9S1WYPZF.png&amp;w=1430&amp;h=996&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Cloudflare Images work" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="498" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: How Cloudflare Images work"></div>
+</figure>
+<p>Cloudflare Images consists of the following components:</p>
+<ul>
+	<li>The Images core service that powers the public API to manage images assets.</li>
+	<li>The Image Resizing service responsible for image transformations and caching.</li>
+	<li>The Image delivery Cloudflare Worker responsible for serving images and passing corresponding parameters through to the Imaging Resizing service.</li>
+	<li>Image storage that provides access and storage for original image assets.</li>
+</ul>
+<p>To support Cloudflare Images scenarios for image transformations, we made several changes to the Image Resizing service:</p>
+<ul>
+	<li>Added access to Cloudflare storage with original image assets.</li>
+	<li>Added access to variant definitions (size presets).</li>
+	<li>Added support for signing URLs.</li>
+</ul>
+<h3>Image delivery</h3>
+<p>The primary use case for Cloudflare Images is to provide a simple and easy-to-use way of managing images assets. To cover egress costs, we provide image delivery through the Cloudflare managed imagedelivery.net domain. It is configured with <a href="https://blog.cloudflare.com/tiered-cache-smart-topology">Tiered Caching</a> to maximize the cache hit ratio for image assets. imagedelivery.net provides <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">image hosting</a> without a need to configure a custom domain to proxy through Cloudflare.</p>
+<p>A Cloudflare Worker powers image delivery. It parses image URLs and passes the corresponding parameters to the image resizing service.</p>
+<h3>How we store Cloudflare Images</h3>
+<p>There are several places we store information on Cloudflare Images:</p>
+<ul>
+	<li>image metadata in Cloudflare's core data centers</li>
+	<li>variant definitions in Cloudflare's edge data centers</li>
+	<li>original images in core data centers</li>
+	<li>optimized images in Cloudflare cache, physically close to eyeballs.</li>
+</ul>
+<p>Image variant definitions are stored and delivered to the edge using Cloudflare's distributed key-value store called <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>. We use a single source of truth for variants. The Images core service makes calls to Quicksilver to read and update variant definitions.</p>
+<p>The rest of the information about the image is stored in the image URL itself:<a href="https://imagedelivery.net" target="_blank" rel="noopener noreferrer">https://imagedelivery.net/</a>//</p>
+<p> contains a flag, whether it's publicly available or requires access verification. It's not feasible to store any image metadata in Quicksilver as the data volume would increase linearly with the number of images we host. Instead, we only allow a finite number of variants per account, so we responsibly utilize available disk space on the edge. The downside of storing image metadata as part of is that will change on access change.</p>
+<h3>How we keep Cloudflare Images up to date</h3>
+<p>The only way to access images is through the use of variants. Each variant is a named <a href="https://developers.cloudflare.com/image-resizing/resizing-with-workers#fetch-options" target="_blank" rel="noopener noreferrer">image resizing configuration</a>. Once the image asset is fetched, we cache the transformed image in the Cloudflare cache. The critical question is how we keep processed images up to date. The answer is by purging the Cloudflare cache when necessary. There are two use cases:</p>
+<ul>
+	<li>access to the image is changed</li>
+	<li>the variant definition is updated</li>
+</ul>
+<p>In the first instance, we purge the cache by calling a URL:<em><a href="https://imagedelivery.net" target="_blank" rel="noopener noreferrer">https://imagedelivery.net/</a>/</em></p>
+<p>Then, the customer updates the variant we issue a cache purge request by tag:<em>account-id/variant-name</em></p>
+<p>To support cache purge by tag, the image resizing service adds the necessary tags for all transformed images.</p>
+<h3>How we restrict access to Cloudflare Images</h3>
+<p>The Image resizing service supports restricted access to images by using URL signatures with expiration. URLs are signed with an SHA-256 HMAC key. The steps to produce valid signatures are:</p>
+<ol>
+	<li>Take the path and query string (the path starts with /).</li>
+	<li>Compute the path’s SHA-256 HMAC with the query string, using the Images' URL signing key as the secret. The key is configured in the Dashboard.</li>
+	<li>If the URL is meant to expire, compute the Unix timestamp (number of seconds since 1970) of the expiration time, and append <code>?exp=</code> and the timestamp as an integer to the URL.</li>
+	<li>Append <code>?</code> or <code>&amp;</code> to the URL as appropriate (<code>?</code> if it had no query string; <code>&amp;</code> if it had a query string).</li>
+	<li>Append <code>sig=</code> and the HMAC as hex-encoded 64 characters.</li>
+</ol>
+<p>A signed URL looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="50" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=715&amp;h=50&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=640&amp;h=45&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=715&amp;h=50&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=750&amp;h=52&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=828&amp;h=58&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=1080&amp;h=76&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=1280&amp;h=90&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CX62X9NHKZENFCG6YB6J.png&amp;w=1430&amp;h=100&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="example of signed URL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="50" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: example of signed URL"></div>
+</figure>
+<p>A signed URL with an expiration timestamp looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="40" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=715&amp;h=40&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=640&amp;h=36&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=715&amp;h=40&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=750&amp;h=42&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=828&amp;h=46&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=1080&amp;h=60&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=1280&amp;h=72&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488TTV8982QXH0GX7T16JT.png&amp;w=1430&amp;h=80&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="example of signed URL with expiration" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="40" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: example of signed URL with expiration"></div>
+</figure>
+<p>Signature of /hello/world URL with a secret ‘this is a secret’ is <code>6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code>.</p>
+<p><code>https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34</code></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="211" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=640&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=750&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=828&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=1080&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=1280&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FFY2YCR7DPR5XRVAS5G8.png&amp;w=1430&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="example of signature generation in JavaScript" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="211" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: example of signature generation in JavaScript"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="252" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=640&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=750&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=828&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=1080&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=1280&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z8RRWK3PG0AG6FRYHB35.png&amp;w=1430&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="example of signature generation in Rust" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="252" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: example of signature generation in Rust"></div>
+</figure>
+<h3>Direct creator uploads with Cloudflare Worker and KV</h3>
+<p>Similar to <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>, Images supports direct creator uploads. That allow users to upload images without API tokens. Everyday use of direct creator uploads is by web apps, client-side applications, or mobile apps where users upload content directly to Cloudflare Images.</p>
+<p>Once again, we used our serverless platform to support direct creator uploads. The successful API call stores the account's information in Workers KV with the specified expiration date. A simple Cloudflare Worker handles the upload URL, which reads the KV value and grants upload access only on a successful call to KV.</p>
+<h3>Future Work</h3>
+<p>Cloudflare Images product has an exciting product roadmap. Let’s review what’s possible with the current architecture of Cloudflare Images.</p>
+<h4>Resizing hints on upload</h4>
+<p>At the moment, no image transformations happen on upload. That means we can serve the image globally once it is uploaded to Image storage. We are considering adding resizing hints on image upload. That won't necessarily schedule image processing in all cases but could provide a valuable signal to resize the most critical image variants. An example could be to <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">generate an AVIF</a> variant for the most vital image assets.</p>
+<h4>Serving images from custom domains</h4>
+<p>We think serving images from a domain we manage (with Tiered Caching) is a great default option for many customers. The downside is that loading Cloudflare images requires additional TLS negotiations on the client-side, adding latency and impacting loading performance. On the other hand, serving Cloudflare Images from custom domains will be a viable option for customers who set up a website through Cloudflare. The good news is that we can support such functionality with the current architecture without radical changes in the architecture.</p>
+<h3>Conclusion</h3>
+<p>The Cloudflare Images product runs on top of the Cloudflare global network. We built Cloudflare Images in Rust and Cloudflare Workers. This way, we use Rust reusable libraries in several products such as Cloudflare Images, Image Resizing, and Polish. Cloudflare’s serverless platform is an indispensable tool to build Cloudflare products internally. If you are interested in building innovative products in Rust and Cloudflare Workers, <a href="https://www.cloudflare.com/careers/jobs/?department=Emerging+Technology+and+Incubation&amp;location=default" target="_blank" rel="noopener noreferrer">we're hiring</a>.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k5c" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

@@ -1,0 +1,207 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/agents-platform-flue-sdk">English</a>および<a href="https://blog.cloudflare.com/ko-kr/agents-platform-flue-sdk">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Eij5hJzfa11JW9u0oYS9g/65fa2e51cdf045703fef1924d72569a5/BLOG-3336_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>2026年は、エージェントを活用して本番環境に移行する年です。モデルの外部世界へのアクセスを制御するソフトウェア（Codeex、Claude Code、OpenCode、Pi、Project Thinkなどを利用）は、チームが単なるプロトタイプではなく、実際の、負荷がかかるインフラストラクチャとしてデプロイできるまで成熟しました。</p>
+	<p>しかし、本番稼働を続けるエージェントを構築するのは簡単ではありません。</p>
+	<p>当社は、<a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a>の構築を身をもって体験し、ファーストパーティのエージェントを活用することを学びました。お客様と協力してエージェントを本番環境で実行する中で、クラウドで実行する場合、どのエージェントも直面する共通の分散システム問題がいくつか明らかになりました。エージェントが中断された場合、コンテキストを失ったり、トークンを浪費したりすることなく、中断した場所から自動的に再開できるのでしょうか？エージェントが信頼できないコードを安全に実行するにはどうすればいいでしょうか？エージェントはトレーニングを受けたツールをどのように活用できるでしょうか？</p>
+	<p>これらの問題は、ハーネスだけで解決することはできません。ステート、ストレージ、コンピューティングに縛られています。つまり、エージェントが実行するプラットフォームに依存しているのです。そのため、本番環境向けに<a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a>を強化した際の知見を活かし、それを<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>の基盤レイヤーとして導入しています。耐久性のある実行、動的コード実行、耐久性のあるファイルシステム、動的ワークフローが、Agents SDK上に構築するあらゆるハーネスで利用可能になりました。</p>
+	<p>同時に、ハーネスの上に新たな層が出現しました。<a href="https://flueframework.com" target="_blank" rel="noopener noreferrer">Flue</a>のようなフレームワークは、エージェントの構築を生産的にするプロジェクト構造、慣行、統合、開発者エクスペリエンスを包含します。</p>
+	<p>こうしたスケーリングの課題を解決するために、プロダクショングレードのAIを構築するための新しい3層スタックが登場しています。ユーザー向けの開発者エクスペリエンスから基盤となるプラットフォームのプリミティブまで、この構成要素がどのように組み合わされるかは、以下の通りです：</p>
+	<ul>
+		<li>
+			<p><b>フレームワーク（Flue）</b> — プロジェクト構造、規則、統合、CLI、エージェント構築のための開発者エクスペリエンス。</p>
+		</li>
+		<li>
+			<p><b>ハーネス</b> <b>(Pi, Project Think)</b> — ツールを呼び出し、結果を読み取り、コンテキストを管理し、タスクが完了するまで進行し続けるエージェンティックループ。</p>
+		</li>
+		<li>
+			<p><b>ランタイム/プラットフォーム</b> <b>(Cloudflare Agents SDK)</b> — 上記のすべてが依存するコンピューティング、状態、ストレージのプリミティブ</p>
+		</li>
+	</ul>
+	<p>Agents SDKはその最下層であり、あらゆるハーネスやあらゆるフレームワークで利用できる耐久性のある実行のようなプリミティブを作成します。Astroの背後にいるチームが提供する新しいオープンソースフレームワークであるFlueは、<a href="https://astro.build" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>を基盤として構築された最初のものです。方法はこちらから。</p>
+	<div class="flex anchor relative">
+		<h2 id="flue">Flue</h2>
+		<a href="https://blog.cloudflare.com/#flue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://flueframework.com" target="_blank" rel="noopener noreferrer"><u>Flue</u></a>は今週、<a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>を構築しているのと同じ<a href="https://pi.dev" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>だけのハーネスを使用して構築された1.0ベータ版をリリースしました。エージェントフレームワークとして異なるのは、そのアプローチです。エージェントが行うことをスクリプトではなく、エージェントが知っていることを記述します。エージェントに必要なコンテキスト（モデル、スキル、サンドボックス、指示）を定義し、与えられたタスクを自律的に解決します。オーケストレーションループを書く必要がありません。</p>
+	<p>この宣言的モデルによって、エージェントの作成は容易になります。ここではバグレポートを傍受し、サンドボックスで再現し、25行以下で問題を診断するトリアージエージェントを紹介します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5U50mjNZpg7RD3fb0pOLLs/5e20ad63c1e6ab92cf5d334b79996c1a/image5.png" alt="BLOG-3336 2" class="kg-image" width="1986" height="1370" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="the-flue-developer-experience">Flueの開発者体験</h3>
+		<a href="https://blog.cloudflare.com/#the-flue-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Flueのパワーは、エージェントが単独では存在しないという事実から生まれるのです。ユーザーがすでに作業している場所に存在するように構築され、好みのツールと統合することができます。</p>
+	<ul>
+		<li>
+			<p><b>どこでもエージェント</b>：イベント検証を処理する事前設定されたChannelsで、エージェントをSlack、GitHub、Linear、Discordにドロップすることができます。</p>
+		</li>
+		<li>
+			<p><b>ヘッドレス、しかしUI対応</b>：エージェントがブラックボックス内に置かれてはならない。Flueエージェントはバックグラウンドタスクのために完全にヘッドレスで実行できますが、<a href="https://flueframework.com/blog/flue-1-0-beta/#introducing-fluereact" target="_blank" rel="noopener noreferrer"><u>@flue/react</u></a>は、エージェントの状態、ツールの実行、ライブメッセージをフロントエンドアプリケーションに直接ストリーミングするネイティブなフロントエンドフックを提供します。カスタムリアルタイムプラミングをゼロから構築する必要はありません。</p>
+		</li>
+		<li>
+			<p><b>エコシステム対応</b>: Flue を使用すると、<code>flue add channel slack</code> のようなコマンドで統合の追加やアップグレードが簡単になり、独自のコーディングエージェントが読み取り、変更し、コードベースに直接クリーンに統合できる Markdown 設計図が生成されます。</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="designed-for-production-not-just-prototypes">試運転だけでなく、本番運用を想定した設計</h3>
+		<a href="https://blog.cloudflare.com/#designed-for-production-not-just-prototypes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントをローカル端末から本番エコシステムに移動させると、従来型の分散型システム障害が発生します。ホストのクラッシュ、LLMプロバイダーからのAPIタイムアウト、予期しない再起動により、実行中のエージェントターンの短期記憶が消去される恐れがあります。</p>
+	<p>FlueはDurable Streamsでこれを解決します。実行履歴の各イベントは、追加専用ログに追加されます。すべてのプロンプト、ツール応答、モデルの選択を変更不可能な台帳として処理することで、エージェントの状態は決して変動しません。プロセスが終了すると、別のプロセスはログを取り上げ、中断したステップから続行します。</p>
+	<div class="flex anchor relative">
+		<h3 id="deploy-anywhere-including-cloudflare">Cloudflareなど、どこにでもデプロイ</h3>
+		<a href="https://blog.cloudflare.com/#deploy-anywhere-including-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Flueはマルチクラウドフレームワークです。<a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>では、各エージェントは長期間実行されるプロセスとして動作します。任意のVMやコンテナにデプロイし、GitHub Actionsで実行したり、既存のサーバーに埋め込むことができます。しかし、Cloudflareを標的にすると、各エージェントはDurable Objectになります。</p>
+	<p>各FlueエージェントをそれぞれのDurable Object内で実行することで、Cloudflareは必要な数のエージェントに自動的に拡張でき、それぞれが分離されたストレージとコンピューティングを備えています。サーバーのプロビジョニングも、費用対効果の高いセッションを管理する必要も、煩雑な近隣者を心配する必要もありません。また、FlueエージェントをCloudflareにデプロイすると、Agents SDKの<code>runFiber()</code>、<code>stash()</code>、<code>onFiberRecovered()</code>メソッドを使って耐久性のある実行を実現します。Flueは、<code>@cloudflare/codemode</code>と<code>@cloudflare/shell</code>を使用して、耐久性のあるワークスペースに対するサンドボックス化されたコード実行を行うこともできます。</p>
+	<div class="flex anchor relative">
+		<h2 id="what-harnesses-need-out-of-an-agentic-platform">エージェンティックプラットフォームに必要なものを活用すること</h2>
+		<a href="https://blog.cloudflare.com/#what-harnesses-need-out-of-an-agentic-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>FlueのCloudflareターゲットは、私たちがAgents SDKに組み込んだコアプリミティブに明確にマッピングされるため、非常に効果的に機能します。<a href="https://github.com/withastro/flue/blob/0fd59475d303d8e8d5bc184a9d3fc4ed58c0de93/packages/runtime/src/session.ts#L13" target="_blank" rel="noopener noreferrer"><u>Flueのソースコードを調べれば</u></a>、基盤となるハーネスであるPiがCloudflare Agents SDK上でどのように動作するように適応されているかを理解することもできます。</p>
+	<p>FlueがどのようにAgents SDKをその内部で活用しているか、そして最新のエージェントを確実に、大規模に実行するために必要な要素をご紹介します。</p>
+	<div class="flex anchor relative">
+		<h3 id="every-agent-harness-needs-durable-execution">エージェントを活用する場合は、すべて耐久性のある実行が必要</h3>
+		<a href="https://blog.cloudflare.com/#every-agent-harness-needs-durable-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントターンは単一のリクエストではありません。このモデルは、トークンをストリーミングしたり、ツールを呼び出したり、結果を待ち、人間に承認を求めたり、サブエージェントに作業を委任したりすることもあります。この一連の動作には数秒かかる場合があり、その時点で、プロセスが中断されたり、クラッシュしたりする可能性があります。そうなると、メモリにあったエージェントの状態はすべて消えてしまいます。エージェントが順番に作業していたストリーミング接続、保留中のツール呼び出しなどです。もちろん、会話履歴はディスクに残りますが、ユーザーには解決されないスピナーが見えます。それはユーザー体験の悪化です。</p>
+	<p><a href="https://developers.cloudflare.com/agents/runtime/execution/durable-execution" target="_blank" rel="noopener noreferrer"><u>Fibers</u></a>は、エージェントの基盤となる<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a>内部に直接ネイティブチェックポイントメカニズムを提供することで、この問題を解決します。<code>runFiber()</code> は、エージェントターンの作業が開始される前にDurable ObjectのSQLiteストレージへの進行状況を記録し、ターンが進むに伴い、<code>stash()</code> でチェックポイントを作成します。中断後に新しいエージェントインスタンスが起動すると、<code>onFiberRecovered()</code>は最後のチェックポイントを配信するため、エージェントはターンが中断されたことを認識し、どこに到達したのかを認識し、続行方法を決定することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">import { Agent } from "agents";
+import type { FiberRecoveryContext } from "agents";
+
+class MyAgent extends Agent {
+  async doWork() {
+    await this.runFiber("my-task", async (ctx) =&gt; {
+      const step1 = await expensiveOperation();
+      ctx.stash({ step1 });
+
+      const step2 = await anotherExpensiveOperation(step1);
+      this.setState({ ...this.state, result: step2 });
+    });
+  }
+
+  async onFiberRecovered(ctx: FiberRecoveryContext) {
+    if (ctx.name !== "my-task") return;
+
+    const { step1 } = (ctx.snapshot ?? {}) as { step1?: unknown };
+    if (step1) {
+      const step2 = await anotherExpensiveOperation(step1);
+      this.setState({ ...this.state, result: step2 });
+    }
+  }
+}</code></pre>
+	<p>Flueは、まさにこれのために、<a href="https://github.com/withastro/flue/blob/cf775a84e7cf1d7037a464b947d8b2f7e9efcfd1/packages/runtime/src/cloudflare/agent-coordinator.ts#L475" target="_blank" rel="noopener noreferrer"><u>Cloudflareターゲット</u></a>で<code>runFiber()</code>を使用しています。<code>onFiberRecovered()</code>フックを使用することで、ハーネスは、ターンの状態を修復するProject Thinkのような完全な再構築モデルを試みるか、ターンの特定の部分を再現するかなど、ターンの実行を再開する方法を決定することができます。</p>
+	<div class="flex anchor relative">
+		<h3 id="executing-code-is-better-than-overloading-agents-with-tools">エージェントをツールで過負荷状態にするよりもコードを実行する方がよい</h3>
+		<a href="https://blog.cloudflare.com/#executing-code-is-better-than-overloading-agents-with-tools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントを活用することで、モデルはツールを通じて外部世界へアクセスできるようになります。しかし、ツール対象領域は急速に拡大しており、リストが長くなり、コンテキストウィンドウがツール定義でいっぱいになると、モデルは適切なツールを選ぶのが難しくなります。より良いパターンは、コードを実行する1つのツールをモデルに与えることです。モデルは、必要なAPIを呼び出すTypeScript関数を記述し、ハーネスはそれを実行します。これについては、<a href="https://blog.cloudflare.com/code-mode"><u>コードモード</u></a>を導入した時に書きました。</p>
+	<p>問題は、そのコードがどこで実行されているかです。LLMで生成されたコードを安全に実行するには、サンドボックスが必要です。しかし、一般的なサンドボックスでは、ツール呼び出しごとに実行するのに遅く、法外なコストがかかり、非効率的です。そのため、Agents SDKは、<a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>を提供し、<a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>をラップして、提供されたバインディングのみで、LLMが生成したコードを独自のWorker分離環境で実行します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NCq9AP9xL1b70WyB0iqE0/7569fc7ee43b6071f0b98945d872e9c7/BLOG-3336_3.png" alt="BLOG-3336 3" class="kg-image" width="1999" height="840" loading="lazy">
+	</figure>
+	<p>コードモードは、各スニペットごとに新しいDynamic Workerを作成し、実行し、破棄します。分離は10ミリ秒以内、1読み込みあたり0.002ドルから開始でき、エージェントが短いコードを実行する必要があるたびにコンテナを起動するよりも大幅に速く、低い実行コストが得られます。Flueは、Cloudflareターゲットで<a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/codemode</code></u></a>を使用してコードツールを強化します。エージェントはワークスペースに対してJavaScriptを記述し、コードモードで実行します。</p>
+	<div class="flex anchor relative">
+		<h3 id="you-dont-need-a-full-container-for-most-workspace-tasks">ワークスペースのほとんどのタスクにフルコンテナは不要</h3>
+		<a href="https://blog.cloudflare.com/#you-dont-need-a-full-container-for-most-workspace-tasks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントの利用は、ファイルの読み取り、アウトプットの書き込み、コードの検索、相違の理解など、ファイルシステムを必要とすることがよくあります。特にコーディングエージェントはファイルシステムに存在します。しかし、ハーネスがサーバーレス環境で実行されている場合、実行をまたいで永続的になる耐久性のあるファイルシステムを実現するにはどうすればよいのでしょうか。</p>
+	<p>よくある答えはコンテナです。効果はあるものの、エージェントの主な仕事にとっては高価です。エージェントが生成するファイルシステム操作の大半はテキストです。ファイルを読み取ったり、ソースコードを解読したり、パッチを記述することのできるレビューエージェントを考えてみましょう。そのため、完全なLinuxブートは必要ありません。</p>
+	<p><a href="https://github.com/cloudflare/agents/tree/main/packages/shell" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/shell</code></u></a>は、エージェントのDurable Object内に、SQLiteに支えられた耐久性のある仮想ファイルシステムを提供します。エージェントがツールとして使用できる、型付けされたファイル操作（読み取り、書き込み、編集、検索、情報収集、定義）が可能です。</p>
+	<p>個々のツールを呼び出す代わりに、Cloudflareターゲット上で実行されるFlueエージェントは、ワークスペースの仮想ファイル状態APIに対してJavaScriptを書き込みます。Durable Object内でより多くの操作を実行することで、エージェントは分離モデルのより効率的な実行プロセスの恩恵を受け、コンテナのオーバーヘッドを完全に回避することができます。</p>
+	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
+  const files = await state.glob("src/**/*.ts");
+  const results = [];
+  for (const file of files) {
+    const content = await state.readFile(file);
+    const todos = content.match(/\/\/ TODO:.*/g);
+    if (todos) results.push({ file, todos });
+  }
+  return results;
+}</code></pre>
+	<p>これは、シェルおよびファイルシステム操作を実行して作業を完了するエージェントにとって、より高速でコスト効率の高いサンドボックス環境になります。また、npmインストール、git、またはコンパイラーを実行するために完全なOSを必要とするエージェントのために、 Cloudflare Containersがそれを提供します。また、<a href="https://github.com/cloudflare/workspace" target="_blank" rel="noopener noreferrer"><u><code>@cloudflare/workspace</code></u></a>も構築中です。これにより、特定のDurable Objectの仮想ファイルシステムをコンテナと同期して、軽量なWorkersからLinux環境へのシームレスな移行が必要な時だけ可能になります。</p>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-workflows-let-agents-write-their-own-workflows-to-repeat-tasks-consistently">動的ワークフロー：エージェントが独自のワークフローを作成でき、一貫してタスクを繰り返します。</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-workflows-let-agents-write-their-own-workflows-to-repeat-tasks-consistently" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>しかし、エージェントがファイルを読んだり、単一のコードスニペットを実行する以上のことを行う必要がある場合はどうなるでしょうか。バグをうまく解決するコードレビューや、良い結果を生み出すリサーチワークフローなど、時間をかけて一貫して繰り返さなければならない、大規模で複数のステップを踏む必要がある場合はどうなるのでしょうか？ハーネスは、耐久性のあるマルチステップ実行を可能にします。プラットフォームは各ステップを永続化し、失敗の再試行を行い、中断後に再開する必要があります。</p>
+	<p>このパターンは広がりつつあります。Claude Codeは最近、<a href="https://code.claude.com/docs/en/workflows" target="_blank" rel="noopener noreferrer"><u>動的ワークフロー</u></a>をリリースしました。これは、Claudeが実行時にJavaScriptスクリプトを記述し、数十のサブエージェントに作業を引き渡し、ランタイムがそれを永続的に実行するものです。<a href="https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>@cloudflare/dynamic-workflows</u></a>は、Agents SDK上で実行されているハーネスに対してこれを提供します。エージェントは実行時にワークフローを生成し、Workflowsエンジンは各ステップを実行し、失敗を再試行し、何時間もスリープしたり、人間の承認などの外部イベントを待つことができます。</p>
+	<p>エージェントクラスから、<code>runWorkflow()</code>は、エージェントを<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>エンジンに接続します。エージェントはワークフローを開始して、スリープ状態にすることができます。ワークフローはRPC経由でエージェントに生じ、進捗の報告、状態の更新、または承認リクエストを行います。ワークフローが終了すると、エージェントは結果を返して起動します。</p>
+	<div class="flex anchor relative">
+		<h3 id="direct-access-to-the-cloudflare-ecosystem">Cloudflareエコシステムへの直接アクセス</h3>
+		<a href="https://blog.cloudflare.com/#direct-access-to-the-cloudflare-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>エージェントを活用する場合、コンピューティングとストレージに加えて、Webブラウジング、メール、メモリ、検索、推論などの外部機能へのアクセスも必要とします。利用者は、これらを個別に統合したり、それぞれのAPIキーを管理したり、エージェントが生成したコードを通じて認証情報が漏洩することを心配する必要はありません。</p>
+	<p>Agentクラスは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>バインディング</u></a>を通じてCloudflareの他の部分へのアクセスを可能にします。<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>はエージェントごとの支出追跡と制限のため、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a>はWeb自動化のため、<a href="https://developers.cloudflare.com/email-service" target="_blank" rel="noopener noreferrer"><u>Email Service</u></a>は受信トレイワークフローのため、<a href="https://developers.cloudflare.com/agents/api-reference/agent-memory" target="_blank" rel="noopener noreferrer"><u>Agent Memory</u></a>は永続的な呼び出しのため、<a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>は検索のため、<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>はフルOSを必要とするワークロードのため、そして<a href="https://blog.cloudflare.com/ai-platform"><u>14以上のモデルプロバイダー</u></a>にわたる推論に対応します。バインディングは、認証情報を公開せずに機能を付与します。エージェントはバインディングを使用しますが、キーがエージェント生成コードを入力することはありません。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jLx08K0FuCd8mJ4xIjwop/3833967f110d119a260979608cc57fce/BLOG-3336_4.png" alt="BLOG-3336 4" class="kg-image" width="1999" height="1549" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="bring-your-agents-to-the-agentic-cloud">エージェンティッククラウドへエージェントを導入する</h2>
+		<a href="https://blog.cloudflare.com/#bring-your-agents-to-the-agentic-cloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このアプローチが有効なのは、<a href="https://blog.cloudflare.com/project-think"><u>Project Think</u></a>を構築する際に使用したアーキテクチャの基盤であり、当社のファーストパーティエージェントが活用できることを私たちは知っています。Project Thinkは依然としてCloudflareエージェントのネイティブエージェント体験のための高度に最適化された、すぐに使えるソリューションですが、Agents SDKは、より広範なオープンソースエコシステムがFlueを含む、攻撃テスト済みのプリミティブを活用できるようにします。</p>
+	<p>Flueを使ってエージェントを構築している場合、わずか数クリックでCloudflareにデプロイできます。独自のエージェント活用機能を構築したり、エージェントフレームワークを構築したりする場合は、Agents SDKを対象とすることで、無料でプラットフォーム統合を利用できます。</p>
+	<ul>
+		<li>
+			<p>Agents SDK: <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>developers.cloudflare.com/agents</u></a></p>
+		</li>
+		<li>
+			<p>Flue: <a href="https://flueframework.com" target="_blank" rel="noopener noreferrer"><u>flueframework.com</u></a>,<a href="https://www.npmjs.com/package/@flue/runtime" target="_blank" rel="noopener noreferrer"><u><code>npm install @flue/runtime</code></u></a></p>
+		</li>
+		<li>
+			<p>参照：<a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a></p>
+		</li>
+		<li>
+			<p>Cloudflareコミュニティ: <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>community.cloudflare.com</u></a></p>
+		</li>
+	</ul>
+	<p></p>
+</div>

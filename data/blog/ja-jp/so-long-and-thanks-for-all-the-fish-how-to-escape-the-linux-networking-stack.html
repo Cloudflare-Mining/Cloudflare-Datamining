@@ -1,0 +1,162 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/so-long-and-thanks-for-all-the-fish-how-to-escape-the-linux-networking-stack">English</a>および<a href="https://blog.cloudflare.com/ko-kr/so-long-and-thanks-for-all-the-fish-how-to-escape-the-linux-networking-stack">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fOktF0s69EPk5vhB016nD/692ac1bf85d78a09b4bd74bb43065901/unnamed.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
+	<p>ある人は、Linuxネットワークスタックが何をするのか、なぜそうするのかを正確に発見したら、即座に消え、さらに不思議で説明しきれないものに置き換えられるという<a href="https://www.goodreads.com/quotes/2397-there-is-a-theory-which-states-that-if-ever-anyone" target="_blank" rel="noopener noreferrer"><u>理論もあります</u></a>。</p>
+	<p>また、これの回数を追跡するために、Gitが作成されたという説もあります。</p>
+	<p>Cloudflareの製品の多くは、ネットワークハードウェアとソフトウェアの限界を押し広げて、パフォーマンスの向上、効率性の向上、あ<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>るいはデータセンター間でIPサブネットを共有する方法</u></a>であるソフトunicastなどの新しい機能を実現するために、必ず使用できます。幸いなことに、ほとんどの人は、オペレーティングシステムがネットワークやインターネットアクセスをどのように処理するかという複雑な情報を知る必要はありません。そう、Cloudflare内のほとんどの人がそうなのです。</p>
+	<p>しかし、CloudflareはLinuxのネットワークスタックの設計意図を十分に超えようとすることがあります。これは、その試みの1つについて話します。</p>
+	<div class="flex anchor relative">
+		<h2 id="hard-solutions-for-soft-problems">ソフト問題に対するハードソリューション</h2>
+		<a href="https://blog.cloudflare.com/#hard-solutions-for-soft-problems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>以前、Linuxのネットワークスタックについて書いた記事では、ソフトunicastの理想的なモデルとIPパケット転送ルールという基本的な現実と一致する問題を指摘しました。ソフトunicastは、マシン間でIPアドレスを共有するCloudflareの方法に付けられた名前です。<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>当社がその製品で実現した素晴らしいことすべてについて知っていただけるかもしれません</u></a>が、1台のマシンに関しても、数十から数百のIPアドレスと送信元ポート範囲の組み合わせがあり、そのいずれかが発信接続で使用するために選択される可能性があります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NsU3FdxgJ0FNL78SDCo9D/65a27e8fd4339d3318a1b55b5979e3c6/image3.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+	</figure>
+	<p>iptablesのSNATターゲットは、NAT中に選択されたポートを制限するソースポート範囲オプションをサポートしています。理論的には、この目的のためにiptablesを使用し続け、複数のIP/ポートの組み合わせをサポートするには、別々のパケットマークまたは複数のTUNデバイスを使用することができました。実際のデプロイメントでは、多数のiptablesルールや場合によってはネットワークデバイスの管理、パケットマークの他の用途への干渉、既存IP範囲のデプロイメントと再割り当てなどの課題を克服しなければなりません。</p>
+	<p>そこで、ファイアウォールの負荷を増大させるのではなく、ソフトunicastアドレス空間でIPパケットのエグレスに特化した単一目的のサービスを書きました。考えられなかった理由から、SLATFATF、つまり「フィッシング」という名前を付けました。このサービスの唯一の責任は、ソフトunicastアドレス空間を使用してIPパケットをプロキシし、それらのアドレスのリースを管理することです。</p>
+	<p>当社のネットワークにあるソフトunicast IPスペースのユーザーは、WARPだけではありません。多くのCloudflare製品およびサービスは、ソフトunicast機能を使用しており、その多くは、HTTP接続や他のTCPベースのプロトコルをプロキシまたは転送するために、TCPソケットを作成するシナリオで使用しています。したがって、フィッシングは、オープンソケットで使用されていないアドレスをリースし、フィッシングがリースしたアドレスに対してソケットが開かれないようにする必要があります。</p>
+	<p>最初の試みは、フィッシングでクライアントごとに異なるアドレスを使い、Netfilter/contrackerにSNATルールを適用し続けることでした。しかし、LinuxのソケットサブシステムとNetfilter接続モジュールの間に、パケットの書き換えを使うとはっきりとわかるような、不幸な相互作用があることを発見しました。</p>
+	<div class="flex anchor relative">
+		<h2 id="collision-avoidance">競合回避</h2>
+		<a href="https://blog.cloudflare.com/#collision-avoidance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ソフトunicastのアドレススライス198.51.100.10:9000-9009があるとします。そして、198.51.100.10:9000でTCPソケットをバインドし、203.0.113.1:443に接続したい2つの別々のプロセスがあるとします。最初のプロセスはこれに成功しますが、2番目のプロセスが接続を試みるとエラーが発生します。これは、要求された5タプルに一致するソケットがすでに存在するためです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2eXmHlyC0pdDUkZ9OI3JI/b83286088b4efa6ddee897e8b5d3b191/image8.png" alt="" class="kg-image" width="1466" height="364" loading="lazy">
+	</figure>
+	<p>ソケットを作成するのではなく、同じ送信先IPであって一意の送信元IPを持つTUNデバイス上でパケットを送信し、送信元NATを使用してこれらのパケットをこの範囲のアドレスに書き換えるとどうなるでしょうか？</p>
+	<p>ソースアドレスを198.51.100.10:9000-9009に書き換えるnftables「snat」ルールを追加すると、Netfilterは、fishtun上で見られる新しい接続ごとにconnectテーブルにエントリを作成し、新しいソースアドレスを元のアドレスにマッピングします。そのTUNデバイス上でさらに多くの接続を同じ宛先IPに転送しようとすると、使用可能な10個のポートがすべて割り当てられるまで、要求された範囲内で新しい送信元ポートが選択されます。これが発生すると、既存の接続が期限切れになるまで新しい接続がドロップされ、接続テーブルのエントリが解放されます。</p>
+	<p>ソケットをバインドするときとは異なり、Netfilterは単にconnecttrackテーブルの最初の空きスペースを選ぶだけです。ただし、テーブルで可能なすべてのエントリを使い切ると、<a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows"><u>IPパケットを書き込むときにEPERMエラーが発生します。</u></a>カーネルソケットをバインドするか、conntrackを使ってパケットを書き換えるかにかかわらず、要件に一致する自由エントリがない場合、エラーが表示されます。</p>
+	<p>ここで、2つのアプローチを組み合わせたとします。最初のプロセスがTUNデバイスのIPパケットを送信し、そのパケットがソフトunicastポート範囲上のパケットに書き換えられます。次に、2番目のプロセスで、そのIPパケットと同じアドレスのTCPソケットをバインドして接続します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57KuCP4vkp4TGPiLwDRPZv/c066279cd8a84a511f09ed5218488cec/image7.png" alt="" class="kg-image" width="1720" height="780" loading="lazy">
+	</figure>
+	<p>最初の問題は、<code>connect()</code>の呼び出しが行われた時点で、2番目のプロセスが198.51.100.10:9000から203.0.113.1:443までのアクティブな接続があることを知る方法がないことです。2つ目の問題は、その2番目のプロセスの観点から接続が成功しているということです。</p>
+	<p>2つの接続が同じ5タプルを共有することは不可能であるべきです。実際は、そうではありません。その代わりに、TCPソケットのソースアドレスは、<a href="https://github.com/torvalds/linux/blob/v6.15/net/netfilter/nf_nat_core.c#L734" target="_blank" rel="noopener noreferrer"><u>次の空きポートにサイレントに書き換えられます</u></a>。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DWpWJ5gBIDoEhimxIR8TT/fd3d8bd46353cd42ed09a527d4841da8/image6.png" alt="" class="kg-image" width="1536" height="654" loading="lazy">
+	</figure>
+	<p>この動作は、SNATルールまたはMASQUERADEルールのいずれもなく、contrackを使用する場合でも発生します。通常、conntrackエントリの有効期間は、関連するソケットの有効期間と一致しますが、これは保証されません。そして、ソケットのソースアドレスが生成されたIPパケットのソースアドレスと一致することに依存することはできません。</p>
+	<p>ソフトunicastにとって重要なのは、conntrackが接続を書き換えて、マシンに割り当てられたポートスライスの外に送信元ポートを持つ可能性があることを意味します。これにより、静かに接続が切断され、不要な遅延や接続タイムアウトの誤った報告が発生します。別のソリューションが必要になります。</p>
+	<div class="flex anchor relative">
+		<h2 id="taking-a-breather">一早く</h2>
+		<a href="https://blog.cloudflare.com/#taking-a-breather" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WARPの場合、当社が選択したソリューションは、IP パケットの書き換えと転送を停止し、サーバー内のすべてのTCP接続を終了し、正しいソフトunicastアドレスを持つローカルに作成されたTCPソケットにプロキシすることでした。これは、CDNに向けられた接続や、Zero TrustセキュアWeb Gatewayの一部として傍受される接続など、当社の接続の一部にすでに採用している簡単で実行可能なソリューションでした。ただし、現状と比較して、追加のリソース使用量や潜在的に遅延が増加する可能性はあります。私たちは、前進するための別の方法を見つけたいと考えました。</p>
+	<div class="flex anchor relative">
+		<h2 id="an-inefficient-interface">非効率なインターフェース</h2>
+		<a href="https://blog.cloudflare.com/#an-inefficient-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>パケット書き換えとバインドソケットの両方を使いたい場合は、単一の信頼できるソースに決定する必要があります。Netfilterはソケットサブシステムを認識しませんが、ソケットを使用し、ソフトunicastを認識するコードのほとんどは、Cloudflareが作成・制御するコードです。そこで、Netfilterの設計上、正しく動作するようにコードを変更することは理にかなっていると考えたのです。</p>
+	<p>最初の試みは、conntrackモジュールにNetlinkインターフェースを使用して、ソケットが作成される前に接続追跡テーブルを検査および操作することでした。<a href="https://docs.kernel.org/userspace-api/netlink/intro.html" target="_blank" rel="noopener noreferrer"><u>Netlinkは、さまざまなLinuxサブシステムへの拡張可能なインターフェースです</u></a>であり、<a href="https://man7.org/linux/man-pages/man8/ip.8.html" target="_blank" rel="noopener noreferrer"><u>ip</u></a>や、この場合は<a href="https://conntrack-tools.netfilter.org/manual.html" target="_blank" rel="noopener noreferrer"><u>conntrack-tools</u></a>などの多くのコマンドラインツールで使用されています。バインドしようとしているソケットのconntrackエントリを作成することで、conntrackが無効なポート番号に接続を書き換えないことを保証し、毎回成功を保証することができます。同様に、エントリーの作成に失敗した場合、別の有効なアドレスを試すことができます。この手法は、ソケットをバインドしているかIPパケットを転送しているかに関係なく機能します。</p>
+	<p>ただ、これはあまり効率的ではないという問題があります。ネットリンクはバインド/コネクトソケットダンに比べて低速で、接続追跡エントリを作成する際、フローのタイムアウトを指定し、接続試行に失敗した場合はエントリーを削除する必要があります。与えられた5タプルです。つまり、リソースが限られている高トラフィックの宛先をサポートするには、<a href="https://sysctl-explorer.net/net/ipv4/tcp_tw_reuse" target="_blank" rel="noopener noreferrer"><u>tcp_tw_reuse</u></a>オプションを手動で再実装する必要があるということです。さらに、やり取りが目的のRSTパケットが接続追跡エントリーを消去する可能性もあります。私たちの規模では、こういったことが起こり得ることです。脆弱なソリューションのための場所ではありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="socket-to-em">ソケットから</h2>
+		<a href="https://blog.cloudflare.com/#socket-to-em" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>contrackエントリを作成する代わりに、当社は自分たちの利益のためにカーネル機能を悪用することができます。少し前にLinuxでは、<a href="https://lwn.net/Articles/495304" target="_blank" rel="noopener noreferrer"><u>TCP_REPAIRソケットオプション</u></a>が追加されました。これは表向きはサーバー間の接続移行をサポートするもので、VMを再配置するためのものでした。この機能の範囲を使用すると、新しいTCPソケットを作成し、その接続状態全体を手動で指定できます。</p>
+	<p>これの別の使い方は、接続を確立するのに必要なTCP3ウェイハンドシェイクを実行していない「接続済み」ソケットを作成することです。少なくとも、カーネルはそうしませんでした。TCP SYNを含むIPパケットを転送している場合は、世界の予想される状態について、より確信が得られるのです。</p>
+	<p>しかし、<a href="https://en.wikipedia.org/wiki/TCP_Fast_Open" target="_blank" rel="noopener noreferrer"><u>TCP Fast Open</u></a>の導入により、これをさらにシンプルな方法で行うことができるようになりました。SYNパケットが最初の悪意のあるペイロードとともに送信された場合に、従来の3ウェイハンドシェイクを実行しない「接続された」ソケットを作成することができます。すぐに接続を確立するための有効なCookieが含まれています。しかし、ソケットに書き込むまでは何も送信されないため、これは当社のニーズに完全に応えます。</p>
+	<p>ご自身で試してみてください。</p>
+	<pre class="language-Rust"><code class="language-Rust">TCP_FASTOPEN_CONNECT = 30
+TCP_FASTOPEN_NO_COOKIE = 34
+s = socket(AF_INET, SOCK_STREAM)
+s.setsockopt(SOL_TCP, TCP_FASTOPEN_CONNECT, 1)
+s.setsockopt(SOL_TCP, TCP_FASTOPEN_NO_COOKIE, 1)
+s.bind(('198.51.100.10', 9000))
+s.connect(('1.1.1.1', 53))</code></pre>
+	<p>それにもかかわらず、実際のソケットに対応しない「接続された」ソケットをバインドすることには、1つの重要な特徴があります。他のプロセスがそのソケットと同じアドレスにバインドしようとすると、失敗するということです。これにより、当初パケット転送をソケットの使用と両立させるために抱えていた問題が、満足できるものになっています。</p>
+	<div class="flex anchor relative">
+		<h2 id="jumping-the-queue">キューをジャンプする</h2>
+		<a href="https://blog.cloudflare.com/#jumping-the-queue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これは1つの問題を解決する一方で、別の問題を生み出します。デフォルトでは、ローカルから発信されたパケットと転送されるパケットの両方にIPアドレスを使うことはできません。</p>
+	<p>例えば、TUNデバイスにIPアドレス198.51.100.10を割り当てます。これにより、どのプログラムでも198.51.100.10:9000というアドレスを使ってTCPソケットを作成することができます。また、アドレス198.51.100.10:9001でTUNデバイスにパケットを書き込むこともでき、Linuxはこれらのパケットをゲートウェイに転送するように設定することができ、TCPソケットと同じルートをたどります。ここまではいいのです。</p>
+	<p>インバウンドパスでは、198.51.100.10:9000にアドレス指定されたTCPパケットが受け入れられ、データがTCPソケットに入れられます。198.51.100.10:9001宛のTCPパケット、削除されますTUNデバイスには一切転送されません。</p>
+	<p>なぜでしょうか？ローカルルーティングは特別です。ローカルアドレスにパケットを受信した場合、適用すべきと思われるルーティングに関係なく、それらは「入力」として取り扱われ、転送されません。デフォルトのルーティングルールをそのまま示します：</p>
+	<p><code>cbranch@linux:~$ ip rule
+			cbranch@linux:~$ ip rule
+			0:&nbsp; &nbsp; &nbsp; &nbsp; from all lookup local
+			32766:&nbsp; &nbsp; from all lookup main
+			32767:&nbsp; &nbsp; from all lookup default</code></p>
+	<p>ルールの優先度は非負整数で、優先度値が小さいものから最初に評価されます。これは、マークされたパケットをパケット転送サービスのTUNデバイスにリダイレクトするルックアップルールを最初に「挿入」するために、わずかに厄介なルール操作を必要とします。既存のルールを削除し、適切な順序で新しいルールを作成する必要があります。しかし、ルーティングルールを操作しているときにパケットが失われた場合を考えると、「ローカル」テーブルへの経路を作成しないでください。最終的に、結果は次のようになります：</p>
+	<p><code>ip rule add fwmark 42 table 100 priority 10
+			ip rule add lookup local priority 11
+			ip rule del priority 0
+			ip route add 0.0.0.0/0 proto static dev fishtun table 100</code></p>
+	<p>WARPと同様に、「fishtun」インターフェースから来るパケットにマークを割り当てることにより、接続管理を簡素化します。ローカル発信のTCPソケットがこのマークを適用するのを防ぐため、IPをfishtunではなくループバックインターフェースに割り当て、アドレスが割り当てられない状態にします。しかし、現在は明示的なルーティングルールがあるので、その必要はありません。</p>
+	<div class="flex anchor relative">
+		<h2 id="uncharted-territory">未開の領域</h2>
+		<a href="https://blog.cloudflare.com/#uncharted-territory" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この最後の修正プログラムをテストしている間、不幸な問題に直面しました。当社の本番環境では機能しませんでした。</p>
+	<p>Linuxのネットワークスタックを通るパケットの経路をデバッグするのは簡単ではありません。nftablesでnftraceを設定したり、iptablesでLOG/TRACEターゲットを適用したりするなど、使用できるツールはいくつかあります。これらは、与えられたパケットにどのルールやテーブルが適用されるかを把握するのに役立ちます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ofuljq2tDVVUyzyPOMYSp/3da5954ef254aa3aae5397b310f6dcad/image5.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+	</figure>
+	<p><a href="https://en.m.wikipedia.org/wiki/File:Netfilter-packet-flow.svg" target="_blank" rel="noopener noreferrer"><sup><u>Linuxネットワークを経由するパケットフローパスのスキーマと*テーブル</u></sup></a>：<a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh" target="_blank" rel="noopener noreferrer"><sup>Jan Engelhardt</sup></a><sup>作成者</sup></p>
+	<p>私たちが予想するのは、パケットがプリルーティングフックを通過し、パケットをTUNデバイスに送信するためのルーティング決定が行われ、その後、パケットがフォワードテーブルを通過することです。テストホストのIPから発信されたパケットを追跡することで、パケットがプレルーティングフェーズに入りますが、「ルーティング決定」ブロック後に消去することがわかります。</p>
+	<p>図には「ソケットルックアップ」のブロックがありますが、これは入力テーブルを処理した後に発生します。パケットは入力テーブルに入ることはありません。唯一の変更は、ローカルソケットを作成することでした。ソケットの作成を中止すると、パケットは以前と同じようにフォワードテーブルに渡されます。</p>
+	<p>「ルーティング決定」の部分に、プロトコル固有の処理が含まれることがわかりました。IPパケットの場合、<a href="https://github.com/torvalds/linux/blob/89be9a83ccf1f88522317ce02f854f30d6115c41/net/ipv4/ip_input.c#L317" target="_blank" rel="noopener noreferrer"><u>ルーティングに関する決定をキャッシュ</u></a>することができ、基本的なアドレス検証を実行します。2012年には、<a href="https://lore.kernel.org/all/20120619.163911.2094057156011157978.davem@davemloft.net" target="_blank" rel="noopener noreferrer"><u>早期デミックス</u></a>という機能が追加されました。合理的理由は、パケット処理のこの時点ですでに何かを検索しており、受信されたパケットの大半は、未知のパケットやどこかに転送する必要があるパケットではなく、ローカルソケット向けであると予想されるからです。この場合、ソケットを直接検索して、余分なルートルックアップの手間を省けますか？</p>
+	<div class="flex anchor relative">
+		<h2 id="the-workaround-at-the-end-of-the-universe">エンドユーザーでの回避策</h2>
+		<a href="https://blog.cloudflare.com/#the-workaround-at-the-end-of-the-universe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>残念なことに、私たちはソケットを作成しただけで、パケットを受信することを望んではいませんでした。ソケットが見つかると、そのルーティングルックアップは完全にスキップされるため、ルーティングテーブルの調整は無視されます。未加工ソケットは、ルーティング決定に関係なく、すべてのパケットを受信することでこれを回避しますが、これを効率的に行うにはパケットレートが高すぎます。これを回避する唯一の方法は、早期デマルチのための機能を無効にすることです。ただし、パッチの主張によると、この機能はパフォーマンスを向上させるものです。無効にした場合、既存のワークロードのパフォーマンスはどの程度低下するのでしょうか？</p>
+	<p>簡単な実験が必要です：<a href="https://docs.kernel.org/6.16/networking/ip-sysctl.html" target="_blank" rel="noopener noreferrer"><u>net.ipv4.tcp_early_demux</u></a>を設定してください。データセンター内のいくつかのマシンでsyscallを0に適用し、しばらく実行してから、デフォルト設定でテスト対象のマシンと同じハードウェア構成を使用したマシンとのCPU使用率を比較します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ypZGWN811vIQu04YERP8m/709e115068bad3994c88ce899cdfba29/image4.png" alt="" class="kg-image" width="1668" height="614" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eF441OrGSDwvAFEFYWbtT/40c330d687bf7e30597d046274d959e1/image2.png" alt="" class="kg-image" width="1668" height="614" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34gBimlHXXvLLbGJpriVJA/39f7408dd6ef37aaff3f0fa50a37518f/image1.png" alt="" class="kg-image" width="1658" height="608" loading="lazy">
+	</figure>
+	<p>主要なメトリクスは、/process/statからのCPU使用率です。パフォーマンスの低下がある場合、ユーザー空間（上）またはカーネル時間（下）にほとんど変化なく、「softirq」（Linuxネットワーク処理が行われるコンテキスト）に割り当てられたCPU使用率が向上すると予想されます。観測される差はわずかで、ほとんどがオフピーク時間の効率低下のように見えます。</p>
+	<div class="flex anchor relative">
+		<h2 id="swimming-upstream">上流への流布</h2>
+		<a href="https://blog.cloudflare.com/#swimming-upstream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>IPパケット転送のさまざまなソリューションをテストしていますが、当社のネットワーク上ではTCP接続の終了を続けました。当初の懸念にもかかわらず、パフォーマンスへの影響は小さく、オリジンへの到達性の可視性が向上したこと、ネットワーク内の高速内部ルーティング、ソフトunicastアドレスの使用状況の簡単な観測が可能になったことによるメリットにより、証明の負担が純粋なものを実装しようとする価値はあったのか？ IPフォワーディングと、エグレスの2つの異なる層をサポートするか？</p>
+	<p>今までは、答えは「否」です。Phishは、現在当社のネットワーク上で実行されていますが、ICMPパケットの処理というかなり小さな責任を負っています。しかし、すべてのIPパケットをトンネル化する時、当社はそれをどう実現するかを正確に把握しています。</p>
+	<p>Cloudflareでの典型的なエンジニアリング職は、多くの奇妙で困難な問題を大規模に解決することです。目標志向のエンジニアで、ドキュメントが最小限であっても斬新なアプローチを試み、Linuxカーネルの可能性を探求する意欲をお持ちなら、<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>当社の求人情報</u></a>をご覧ください。ぜひご連絡をお待ちしております！</p>
+</div>

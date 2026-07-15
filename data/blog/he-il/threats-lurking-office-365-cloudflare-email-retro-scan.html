@@ -1,0 +1,72 @@
+<div class="mb2 gray5">זמן קריאה של 2 דקות</div>
+<div class="mt4">הפוסט הזה זמין גם ב<a href="https://blog.cloudflare.com/threats-lurking-office-365-cloudflare-email-retro-scan">English</a>, ב<a href="https://blog.cloudflare.com/zh-tw/threats-lurking-office-365-cloudflare-email-retro-scan">繁體中文</a>, ב<a href="https://blog.cloudflare.com/fr-fr/threats-lurking-office-365-cloudflare-email-retro-scan">Français</a>, ב<a href="https://blog.cloudflare.com/de-de/threats-lurking-office-365-cloudflare-email-retro-scan">Deutsch</a>, ב<a href="https://blog.cloudflare.com/ja-jp/threats-lurking-office-365-cloudflare-email-retro-scan">日本語</a>, ב<a href="https://blog.cloudflare.com/ko-kr/threats-lurking-office-365-cloudflare-email-retro-scan">한국어</a>, ב<a href="https://blog.cloudflare.com/pt-br/threats-lurking-office-365-cloudflare-email-retro-scan">Português</a>, ב<a href="https://blog.cloudflare.com/es-es/threats-lurking-office-365-cloudflare-email-retro-scan">Español</a>, ב<a href="https://blog.cloudflare.com/ru-ru/threats-lurking-office-365-cloudflare-email-retro-scan">Рyсский</a>, ב<a href="https://blog.cloudflare.com/pl-pl/threats-lurking-office-365-cloudflare-email-retro-scan">Polski</a>, וב<a href="https://blog.cloudflare.com/zh-cn/threats-lurking-office-365-cloudflare-email-retro-scan">简体中文</a>.</div><img class="ml2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RWybqXkpJAhDWm5j7VHFO/44ff0b256bc8947caa6645fac09ddbec/threats-lurking-office-365-cloudflare-email-retro-scan.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>אנחנו גאים להכריז שלקוחות Cloudflare יכולים כעת לסרוק הודעות ישנות בתיבות הדואר הנכנס שלהם ב-Office 365 כדי לאתר איומים. הסריקה לאחור תאפשר לכם לבחון את שבעת הימים האחרונים כדי לזהות את האיומים שכלי אבטחת הדוא"ל הנוכחי שלכם החמיץ.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ev0RiZp3HLU82CLkO5CFW/d91c85faf8cccb3040fc99cbc70c90e2/image6-9.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-run-a-retro-scan">מדוע להפעיל סריקה לאחור</h2>
+		<a href="https://blog.cloudflare.com/#why-run-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>בשיחות שלנו עם לקוחות, אנו שומעים לעיתים קרובות שהם אינם יודעים מה מצבן של תיבות הדואר הארגוניות שלהם. לארגונים יש כלי לאבטחת מערכת הדוא"ל שלהם, או שהם משתמשים בהגנות המובנות של Microsoft, אבל הם לא מבינים את מידת האפקטיביות של הפתרון הנוכחי שלהם. בבדיקות שאנו עורכים, אנו מוצאים שהכלים האלו מאפשרים להודעות דוא"ל זדוניות לחדור דרך המסננים שלהם לעיתים קרובות, דבר שמגביר את הסיכון להפרת אבטחה בתוך החברה.</p>
+	<p>כחלק מהניסיון שלנו לשיפור האינטרנט, אנחנו מאפשרים ללקוחות Cloudflare להשתמש בכלי הסריקה לאחור כדי לסרוק הודעות בתוך תיבות הדואר הנכנס שלהם בחינם באמצעות המודלים המתקדמים שלנו של למידת מכונה. הסריקה לאחור שלנו תאתר ותסמן את כל האיומים שנמצא כדי שלקוחות יוכלו לנקות את תיבות הדואר הנכנס שלהם על ידי טיפול בהן במסגרת חשבונות הדוא"ל שלהם. בעזרת המידע הזה, לקוחות יוכלו גם להטמיע בקרות נוספות, כגון שימוש ב-Cloudflare או בפתרון המועדף עליהם כדי למנוע חדירה של איומים דומים לתיבת הדואר שלהם בעתיד.</p>
+	<div class="flex anchor relative">
+		<h2 id="running-a-retro-scan">הפעלת סריקה לאחור</h2>
+		<a href="https://blog.cloudflare.com/#running-a-retro-scan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>לקוחות יכולים לעבור אל לוח המחוונים של Cloudflare, שבו, תחת לשונית Area 1, הם יוכלו לראות את אפשרות הסריקה לאחור:</p>
+	<p>כדי שתוכל לגשת להודעות שיש לסרוק, Cloudflare זקוקה להרשאה לסריקת ההודעות. כדי להתחיל בתהליך, יש להעניק ל-Cloudflare את ההרשאות הדרושות לסריקת הודעות. ההרשאה השנייה תאפשר ליישום Cloudflare לגשת אל ה-Active Directory. גישה זו דרושה כדי להבין מיהם המשתמשים השייכים לארגון ולאילו קבוצות הם שייכים וזאת כדי לעזור לאלגוריתם שלנו להעריך בצורה טובה יותר אם הודעה כלשהי היא זדונית.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Ts8XaDTCCbeQnXHaLcDvB/f14d668e9c7f3b2350fc8daf41d0f902/image4-20.png" alt="" class="kg-image" width="1921" height="1080" loading="lazy">
+
+	</figure>
+	<p>לאחר שכל ההרשאות ניתנו, בשלב האחרון, תתבקשו לבחור את הדומיינים שברצונכם לכלול בסריקה ולספק לנו פרטים בנוגע לספקים האחרים של שירותי אבטחת דוא"ל שמגנים על תיבות הדואר הנכנס שלכם.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Jy3hy3WT81WeaLMs5hXpv/d359be11ce51116fc2fdaef3c1876f95/image1-43.png" alt="" class="kg-image" width="1177" height="825" loading="lazy">
+
+	</figure>
+	<p>לבסוף, לקוחות יוכלו ללחוץ על "הפעלת סריקה לאחור" (Generate Retro Scan) כדי להתחיל בסריקת הודעות ישנות על ידי Cloudflare Area 1 Email Security. מכיוון שתהליך זה אורך זמן מה, אנחנו שולחים ללקוחות התראה בדוא"ל בתום הסריקה.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Cw3b6VsrjNmVnE22P7YwY/772455c6d46e0816bc99718cffa51c78/image5-12.png" alt="" class="kg-image" width="1096" height="896" loading="lazy">
+
+	</figure>
+	<p>ניתוח התוצאות</p>
+	<hr>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2bqwVJ4a0Pp3bwc4tSeCoI/9b7e128161f2327595430f01dea10172/Screenshot-2023-09-28-at-8.59.52-PM.png" alt="" class="kg-image" width="1200" height="1106" loading="lazy">
+
+	</figure>
+	<p>יוצג לכם פירוט קצר של האיומים שנמצאו בתיבות הדואר הנכנס של הארגון שלכם. החלק העליון מפרט את כל האיומים שאיתרנו לפי סוג. כאן תוכלו למצוא ספירה של הודעות זדוניות וחשודות, הודעות Spoof וזבל והודעות דוא"ל שנשלחו בצובר. אנחנו גם מדגישים את ההודעות החשובות ביותר שיש לבדוק תחת הקטגוריה של הודעות דיוג. תוכלו ללחוץ בכל שלב על הלחצן החיפוש (Search) כדי לקבל פרטים נוספים על הודעות הדוא"ל עם המקוטלגות כך.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qYK2pXMDnaoZqPvidj3oP/d7459545d59847c80ff16d5b9a73d364/Screenshot-2023-09-28-at-9.01.37-PM.png" alt="" class="kg-image" width="1228" height="712" loading="lazy">
+
+	</figure>
+	<p>הדוח יציג גם את עשרת העובדים שנחשפו למספר האיומים הרב ביותר וכן את המקורות הנפוצים ביותר מהם הגיעו האיומים. כל הנתונים הללו נועדו לספק לכם הבנה טובה יותר של המתרחש בתוך תיבת הדואר הנכנס הארגונית שלכם.</p>
+	<div class="flex anchor relative">
+		<h2 id="analyzing-the-results">איך מצטרפים</h2>
+		<a href="https://blog.cloudflare.com/#analyzing-the-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>הסריקה לאחור נמצאת כרגע בגרסת בתא סגורה. אם אתם מעוניינים בהפעלת סריקה לאחור בדומיינים של הדוא"ל שלכם ב-Office 365, צרו קשר עם איש הקשר שלכם ב-Cloudflare ואנחנו נוסיף את האפשרות לחשבונכם.</p>
+	<p>לאחר הפעלת סריקה לאחור וצפייה בתוצאות, תוכלו לבחור לרכוש את Cloudflare Area 1 כדי למנוע חדירה עתידית של איומים לתיבת הדואר הנכנס שלכם, או להגדיר הערכת סיכוני דיוג לקבלת גרסת ניסיון בחינם של מוצר Area 1 למשך 30 ימים. אף על פי שסריקה לאחור היא כלי מצוין כדי לראות את האיומים הרדומים הקיימים, הערכת סיכוני דיוג יכולה לעזור לכם להיחשף בצורה טובה יותר לכל הכלים שיש לנו כדי לשמור על תיבות דואר נקיות מאיומים.</p>
+	<p>כדי להתחיל, פשוט לחצו על לחצן "בקשת ניסיון" (“Request Trial”) שמופיע בתחתית דוח הסריקה לאחור, מלאו את הטופס המתאים ומישהו מ-Cloudflare ייצור איתכם קשר. לחלופין, תוכלו לפנות באופן ישיר לאיש הקשר שלכם ב-Cloudflare.</p>
+</div>

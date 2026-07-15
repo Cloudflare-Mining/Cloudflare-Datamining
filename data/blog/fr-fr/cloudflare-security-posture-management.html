@@ -1,0 +1,248 @@
+<div class="mb2 gray5">Lecture&nbsp;: 9 min.</div>
+<div class="mt4">Cet article est également disponible en <a href="https://blog.cloudflare.com/cloudflare-security-posture-management">English</a>, en <a href="https://blog.cloudflare.com/zh-tw/cloudflare-security-posture-management">繁體中文</a>, en <a href="https://blog.cloudflare.com/de-de/cloudflare-security-posture-management">Deutsch</a>, en <a href="https://blog.cloudflare.com/ja-jp/cloudflare-security-posture-management">日本語</a>, en <a href="https://blog.cloudflare.com/ko-kr/cloudflare-security-posture-management">한국어</a>, en <a href="https://blog.cloudflare.com/es-es/cloudflare-security-posture-management">Español</a>, en <a href="https://blog.cloudflare.com/nl-nl/cloudflare-security-posture-management">Nederlands</a> et en <a href="https://blog.cloudflare.com/zh-cn/cloudflare-security-posture-management">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3988DHhLlFgPJVTDowhBl8/96e42aa3bb6f90882a8ecf4ce562f2cb/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Dans le panorama numérique actuel qui évolue à un rythme effréné, les entreprises gèrent un ensemble d'environnements toujours plus complexe, des applications SaaS aux plateformes de cloud public, en passant par les datacenters sur site et les configurations hybrides. Cette infrastructure diversifiée offre flexibilité et évolutivité, mais elle ouvre également de nouvelles surfaces d'attaque.</p>
+	<p>Pour assurer à la fois la continuité de l'activité et les besoins en matière de sécurité, « la sécurité <a href="https://blog.cloudflare.com/welcome-to-security-week-2025/#how-can-we-help-make-the-internet-better"><u>ne doit plus se contenter de réagir, elle doit prévoir</u></a> ». L'entretien d'une stratégie de sécurité saine implique de surveiller et de renforcer vos défenses de sécurité afin d'identifier les risques, d'assurer la conformité et de vous protéger contre des menaces en évolution constante. Grâce à nos nouvelles fonctionnalités, vous pouvez désormais utiliser Cloudflare pour offrir une posture saine à l'ensemble de vos applications web et SaaS . Cette publication permet de répondre à la question incontournable (quotidienne) de toute équipe de sécurité : <i>vos ressources et documents sont-ils correctement protégés</i>?</p>
+	<p>Une stratégie de sécurité prédictive repose sur les éléments essentiels suivants :</p>
+	<ul>
+		<li>
+			<p>Identification et inventaire en temps réel de l'ensemble de vos ressources et documents</p>
+		</li>
+		<li>
+			<p>Détection des menaces et évaluation des risques en continu, en fonction des ressources</p>
+		</li>
+		<li>
+			<p>Des suggestions de mesures correctives prioritaires afin de renforcer votre protection</p>
+		</li>
+	</ul>
+	<p>Aujourd'hui, nous révélons la manière dont nous avons développé ces composants essentiels sur l'ensemble des applications SaaS et web, ainsi que la manière dont vous pouvez les utiliser pour gérer le niveau de sécurité de votre entreprise.</p>
+	<div class="flex anchor relative">
+		<h3 id="your-security-posture-at-a-glance">Votre niveau de sécurité en un coup d'œil</h3>
+		<a href="https://blog.cloudflare.com/#your-security-posture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Quelles que soient les applications que vous avez <a href="https://developers.cloudflare.com/reference-architecture/architectures/security/#using-cloudflare-to-protect-your-business" target="_blank" rel="noopener noreferrer"><u>connectées</u></a> à son réseau mondial, Cloudflare analyse activement les risques et les erreurs de configuration associés à chacune d'elles, à <a href="https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency" target="_blank" rel="noopener noreferrer"><u>intervalle régulier</u></a>. Les risques et les erreurs de configuration identifiés sont présentés dans le tableau de bord, sous le <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center" target="_blank" rel="noopener noreferrer"><u>centre de sécurité</u></a>, sous forme d'analyse détaillée.</p>
+	<p>Les informations sont regroupées en fonction de leur gravité, du type de risques et de la solution Cloudflare correspondante, afin de vous offrir différents angles d'approche sur lesquels vous souhaitez vous concentrer. Lorsqu'il y a lieu, une résolution en un clic est proposée pour certains types d'informations, notamment la définition de la <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls" target="_blank" rel="noopener noreferrer"><u>version minimale de TLS</u></a> sur 1.2, une <a href="https://developers.cloudflare.com/ssl/reference/protocols/#decide-which-version-to-use" target="_blank" rel="noopener noreferrer"><u>recommandation de la norme PCI DSS</u></a>. Cette simplicité est très appréciée des clients qui gèrent un ensemble croissant de ressources déployées sur l'ensemble de l'entreprise.</p>
+	<p>Pour réduire encore davantage le délai de résolution, nous avons récemment ajouté un <a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>contrôle des accès basé sur les rôles (RBAC)</u></a> aux <a href="https://developers.cloudflare.com/security-center/security-insights" target="_blank" rel="noopener noreferrer"><u>informations sur la sécurité</u></a> dans le tableau de bord Cloudflare. Désormais, pour chaque professionnel de la sécurité, il existe une vue passée au crible en fonction des analyses dignes d'intérêt pour son rôle. Un utilisateur disposant d'un <a href="https://developers.cloudflare.com/fundamentals/setup/manage-members/roles" target="_blank" rel="noopener noreferrer"><u>rôle d'administrateur</u></a> (un CSO, par exemple) dispose d'un accès et d'une visibilité sur toutes les informations.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bnaU55Fi2z9bxUxl5pf7o/818043fbba2ae13c5a7c4cb25e5e7ebc/1.png" alt="A screenshot of the Security Insights page where multiple insights are grouped by such severity and type of risks." class="kg-image" width="1999" height="1541" loading="lazy">
+	</figure>
+	<p>En plus des informations sur la sécurité à l'échelle du compte, nous proposons également des informations générales sur les niveaux de sécurité les plus proches des configurations de sécurité correspondantes à vos applications SaaS et web . Examinons maintenant chacune d'elles.</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-saas-applications">Sécurisation de vos applications SaaS</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-saas-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sans gestion centralisée du niveau de sécurité, les applications SaaS peuvent donner une impression de Far West de la sécurité. Elles contiennent pléthore d'informations sensibles : fichiers, bases de données, espaces de travail, conceptions, factures ou tout ce dont votre entreprise a besoin pour fonctionner. Cependant, le contrôle se limite aux paramètres du fournisseur, avec moins de visibilité et moins d'options de personnalisation. Qui plus est, les membres de l'équipe créent, mettent à jour et suppriment constamment du contenu susceptible d'entraîner une dérive de la configuration et une exposition des données ; par exemple, le partage public de fichiers, l'ajout d'informations d'identification personnelle dans des bases de données non conformes ou l'accès à des intégrations tierces. Avec Cloudflare, vous disposez d'une visibilité sur l'ensemble de votre parc d'applications SaaS depuis un tableau de bord unique.</p>
+	<div class="flex anchor relative">
+		<h4 id="posture-findings-across-your-saas-fleet">Résultats des analyses du niveau de sécurité sur l'ensemble de votre parc d'applications SaaS</h4>
+		<a href="https://blog.cloudflare.com/#posture-findings-across-your-saas-fleet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les informations sur la sécurité vous permettent de consulter les informations relatives à d'éventuels problèmes de sécurité SaaS :</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JRKfYveWKayrMxdLxLvDB/1c3383209462917214ad9dc6584e98fe/2.png" alt="A screenshot of the Security Insights page where examples of SaaS issues types are highlighted with corresponding severity." class="kg-image" width="1999" height="972" loading="lazy">
+	</figure>
+	<p>N'hésitez pas à aller plus loin avec la solution <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb" target="_blank" rel="noopener noreferrer"><u>CASB (Cloud Access Security Broker)</u></a> afin de procéder à un examen approfondi des erreurs de configuration, des risques et des manquements, afin de respecter les bonnes pratiques sur l'ensemble de votre flotte SaaS . Vous pouvez identifier une multitude d'informations de sécurité, parmi lesquelles :</p>
+	<ul>
+		<li>
+			<p>Fichiers accessibles au public ou partagés en externe</p>
+		</li>
+		<li>
+			<p>Applications tierces avec accès en lecture ou en modification</p>
+		</li>
+		<li>
+			<p>Accès d'utilisateurs inconnus ou anonymes</p>
+		</li>
+		<li>
+			<p>Des bases de données dont les identifiants ont été exposés</p>
+		</li>
+		<li>
+			<p>Utilisateurs sans authentification à deux facteurs</p>
+		</li>
+		<li>
+			<p>Comptes utilisateur inactifs</p>
+		</li>
+	</ul>
+	<p>Vous pouvez également explorer la page <i>Résultats de posture</i>, qui facilite la recherche et la navigation dans les documents stockés dans les applications SaaS.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6skScbapgiG31w5qRoTCjG/ba3b069de8cce0c0bfcb9f011a2df954/3.png" alt="A screenshot of the Posture Findings page where examples of SaaS insights types are highlighted with corresponding severity and instances of matches." class="kg-image" width="1726" height="970" loading="lazy">
+	</figure>
+	<p>En outre, vous pouvez concevoir des politiques permettant d'empêcher toute dérive potentielle au sein de la configuration de votre environnement. Les politiques basées sur la prévention contribuent à maintenir une configuration sécurisée et des normes de conformité, tout en épargnant aux équipes chargées des opérations la lassitude liée aux alertes. Ces politiques peuvent empêcher les mouvements inappropriés ou l'exfiltration de données sensibles. L'unification des contrôles et de la visibilité sur les environnements facilite le verrouillage des classes de données régulées, la gestion de pistes d'audit détaillées par l'intermédiaire de journaux et l'amélioration de votre stratégie de sécurité afin de réduire les risques de violations.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-it-works-new-real-time-saas-documents-discovery">Fonctionnement : nouvelle identification des documents SaaS en temps réel</h4>
+		<a href="https://blog.cloudflare.com/#how-it-works-new-real-time-saas-documents-discovery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Afin de fournir des informations sur la stratégie de sécurité SaaS à nos clients, nous devons collecter d'immenses volumes de données depuis un grand nombre de plateformes. Pour garantir la sécurité de tous les documents résidant dans vos applications SaaS (fichiers, modèles, etc.), nous devons collecter des informations concernant leur configuration. Sont-ils partagés publiquement ? Des applications tierces y accèdent-elles ? L'<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer"><u>authentification multifactorielle (MFA)</u></a> est-elle activée ?&nbsp;</p>
+	<p>Nous le faisions auparavant à l'aide de robots d'indexation chargés de l'extraction de données depuis des API SaaS. Cependant, lorsque nous travaillions avec des ensembles de données plus vastes, nous étions confrontés à un problème de contrôle du volume imposé par les fournisseurs SaaS. Cela nous obligeait à travailler par lots et à adapter le volume des analyses en fonction des autorisations des fournisseurs. Cette situation aboutissait à des conclusions obsolètes et rendait les mesures correctives difficiles à mettre en œuvre et peu claires. Par exemple, Cloudflare continuait de signaler un fichier comme étant toujours partagé publiquement pendant un certain temps après le retrait des autorisations, ce qui entraînait une dose de confusion chez les clients.</p>
+	<p>Pour remédier à ce problème, nous avons amélioré notre pipeline de collecte de données afin qu'il soit dynamique et en temps réel ; le but était qu'il réagisse à l'évolution de votre environnement à mesure qu'elle se produit, qu'il s'agisse d'un nouveau résultat affectant la sécurité, de la mise à jour d'une ressource ou d'une alerte critique émise par un fournisseur. Nous avons commencé par notre processus d'identification des ressources Microsoft et nos <a href="https://developers.cloudflare.com/cloudflare-one/applications/casb/casb-integrations/microsoft-365" target="_blank" rel="noopener noreferrer"><u>résultats d'analyse du niveau de sécurité</u></a>, afin de vous proposer des statistiques en temps réel sur vos configurations Microsoft Admin Center, OneDrive, Outlook et SharePoint. Nous allons étendre rapidement la prise en charge à d'autres fournisseurs de SaaS à l'avenir.</p>
+	<div class="flex anchor relative">
+		<h5 id="listening-for-update-events-from-cloudflare-workers">Détection des événements de mise à jour de Cloudflare Workers</h5>
+		<a href="https://blog.cloudflare.com/#listening-for-update-events-from-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers constitue le point d'entrée des webhooks des fournisseurs, en traitant les notifications de modification des ressources provenant de services externes. Le flux de travail se déroule comme suit :</p>
+	<ul>
+		<li>
+			<p><b>Auditeur webhook :</b> un Worker initial agit comme un auditeur webhook, à savoir qu'il reçoit des messages en provenance de fournisseurs l'informant de modification concernant les ressources.</p>
+		</li>
+		<li>
+			<p><b>Stockage et mise en file d'attente des données :</b> à réception d'un message, le Worker transfère le contenu malveillant brut de la notification de modification vers Cloudflare R2 afin de garantir la persistance et le publie sur une file d'attente Cloudflare dédiée aux modifications des ressources brutes.</p>
+		</li>
+		<li>
+			<p><b>Worker de transformation :</b> un deuxième Worker, lié en tant que consommateur à la file d'attente de modifications des ressources brutes, traite les messages entrants. Cette instance Worker transforme les données brutes spécifiques aux fournisseurs en un format générique adapté au CASB. Les données transformées sont alors :</p>
+			<ul>
+				<li>
+					<p>stockées dans Cloudflare R2 pour référence ultérieure.</p>
+				</li>
+				<li>
+					<p>publiées sur une autre file d'attente Cloudflare, désignée pour les messages transformés.</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h5 id="casb-processing-consumers-crawlers">Traitement par CASB : consommateurs et robots d'indexation</h5>
+		<a href="https://blog.cloudflare.com/#casb-processing-consumers-crawlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Une fois que les messages transformés atteignent la couche CASB, ils font l'objet d'un traitement supplémentaire :</p>
+	<ul>
+		<li>
+			<p><b>Consommateur d'interrogation :</b> le CASB dispose d'un consommateur qui interroge la file d'attente des messages transformés. À réception d'un message, il détermine le gestionnaire qui convient pour le traitement.</p>
+		</li>
+		<li>
+			<p><b>Exécution du robot d'indexation :</b> le gestionnaire associe ensuite le message à un robot d'indexation approprié, qui interagit avec l'API du fournisseur pour récupérer les détails les plus récents sur les ressources.</p>
+		</li>
+		<li>
+			<p><b>Stockage des données :</b> les données des ressources récupérées sont stockées dans la base de données du CASB, garantissant ainsi leur accessibilité à des fins de contrôles de sécurité et de conformité.</p>
+		</li>
+	</ul>
+	<p>Grâce à cette amélioration, nous traitons désormais 10 à 20 mises à jour Microsoft par seconde (soit 864 000 à 1,72 million de mises à jour par jour), afin d'offrir aux clients une visibilité incroyablement rapide sur leur environnement. Restez à l'écoute d'autres fournisseurs de SaaS seront concernés dans les mois à venir.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="securing-your-web-applications">Sécurisation de vos applications web</h3>
+		<a href="https://blog.cloudflare.com/#securing-your-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>L'une des difficultés uniques à la sécurisation des applications web tient au fait qu'il n'existe pas de solution unique adaptée à toute la situation. La gestion du niveau de sécurité en fonction des ressources apporte un compromis entre une solution de sécurité universelle et les besoins uniques des entreprises, en proposant des recommandations personnalisées aux équipes de sécurité afin de protéger ce qui importe.</p>
+	<div class="flex anchor relative">
+		<h4 id="posture-overview-from-attacks-to-threats-and-risks">Vue d'ensemble de la posture, des attaques aux menaces et aux risques</h4>
+		<a href="https://blog.cloudflare.com/#posture-overview-from-attacks-to-threats-and-risks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>À compter d'aujourd'hui, tous les clients Cloudflare auront accès à la Vue d'ensemble de la sécurité, une nouvelle page d'accueil personnalisée pour chacun de vos domaines intégrés. Cette page regroupe et classe par priorité les suggestions de sécurité pour l'ensemble de vos applications web :</p>
+	<ol>
+		<li>
+			<p>Toute attaque (en cours) détectée nécessitant une attention immédiate</p>
+		</li>
+		<li>
+			<p>Disposition (atténué, fourni par Cloudflare, diffusion par l'origine) de l'ensemble du trafic traité par proxy au cours des 7 derniers jours</p>
+		</li>
+		<li>
+			<p>Récapitulatif des modules de sécurité actuellement actifs qui détectent les menaces</p>
+		</li>
+		<li>
+			<p>Suggestions sur la manière d'améliorer votre stratégie de sécurité à l'aide d'un guide détaillé</p>
+		</li>
+		<li>
+			<p>Enfin, un aperçu des règles de sécurité les plus actives et les plus récemment mises à jour</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YhmhUZbZbAIZryUuTodpV/2b9563ac7768348bb4be46abc5fef7b3/4.png" alt="Visual summary of the new Security Overview page with 5 sections listed in order" class="kg-image" width="1999" height="1732" loading="lazy">
+	</figure>
+	<p>Ces suggestions de sécurité sur mesure sont présentées en fonction de votre profil de trafic et des besoins opérationnels de votre entreprise, ce qui est rendu possible par l'identification de vos actifs web mis en proxy.</p>
+	<div class="flex anchor relative">
+		<h4 id="discovery-of-web-assets">Découverte des ressources web</h4>
+		<a href="https://blog.cloudflare.com/#discovery-of-web-assets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>De nombreuses applications web, quel que soit leur secteur ou leur scénario d'utilisation, exigent des fonctionnalités similaires : identification de l'utilisateur, acceptation d'informations de paiement, etc. En identifiant les ressources au service de cette fonctionnalité, nous pouvons élaborer et exécuter une détection ciblée des menaces afin de les protéger en profondeur.</p>
+	<p>Par exemple, le trafic lié aux bots en direction des pages de marketing et des pages de connexion ont des répercussions commerciales différentes. Les attaques par extraction de contenus peuvent cibler vos supports marketing, et vous avez la possibilité d'autoriser ou non, tandis que les attaques par bourrage d'identifiants (Credential Stuffing) sur votre page de connexion méritent une attention immédiate.</p>
+	<p>Les ressources web sont décrites par une liste de points de terminaison ; et l'identification de chacun d'entre eux définit ses objectifs commerciaux. Prenons l'exemple simple des requêtes <code>POST</code> sur le chemin <code>/portal/login</code> qui correspond à probablement une API destinée à l'authentification des utilisateurs. Tandis que les requêtes <code>GET</code> sur le chemin <code>/portal/login</code> correspondent à la véritable page de connexion.</p>
+	<p>Les étiquettes sont utiles pour décrire les objectifs opérationnels des points de terminaison. Les requêtes <code>POST</code> transmises au point de terminaison <code>/portal/login</code> servant les utilisateurs finaux et au point de terminaison <code>/api/admin/login</code> utilisé par les employés peuvent toutes deux être étiquetées avec la même <code>étiquette gérée</code><a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#managed-labels" target="_blank" rel="noopener noreferrer"><u>cf-log-in</u></a> indiquant à Cloudflare que les noms d'utilisateur et les mots de passe sont à envoyer à ces points de terminaison.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jFh9mc7hyryXHIqeQwS9U/25ba022282b43cff9f09700d0ae81c76/5.png" alt="A screenshot of Cloudflare dashboard’s Endpoint Management overview which lists endpoints and labels attached to them" class="kg-image" width="1999" height="1107" loading="lazy">
+	</figure>
+	<p>Les clients utilisateurs d' API Shield peuvent déjà utiliser <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels" target="_blank" rel="noopener noreferrer"><u>l'étiquette de point de terminaison</u></a>. Au début du deuxième trimestre 2025, nous ajouterons des fonctionnalités d'identification et de suggestion d'étiquettes, en commençant par trois étiquettes : <code>cf-log-in</code>, <code>cf-sign-up</code> et <code>cf-rss-feed</code>. Tous les autres clients peuvent ajouter manuellement ces étiquettes aux <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank" rel="noopener noreferrer"><u>points de terminaison enregistrés</u></a>. L'exemple expliqué ci-dessous concerne le fait d'empêcher l'utilisation d'adresses e-mail à usage unique lors des inscriptions.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="always-on-threat-detection-and-risk-assessment">Détection des menaces et évaluation des risques en permanence</h4>
+		<a href="https://blog.cloudflare.com/#always-on-threat-detection-and-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h5 id="use-case-driven-threat-detection">Détection des menaces basée sur les scénarios d'utilisation</h5>
+		<a href="https://blog.cloudflare.com/#use-case-driven-threat-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Face à l'essor de l'IA générative, nos clients nous ont dit qu'ils avaient besoin d'aide pour sécuriser cette nouvelle technologie, sans entraver l'innovation. La capacité d'identifier les services optimisés par LLM permet d'affiner les contrôles de sécurité dignes d'intérêt pour cette technologie particulière tels que l'inspection des invites, le contrôle du volume d'invites en fonction de l'utilisation des jetons, etc. Dans un autre article de blog dédié à la Security Week, nous expliquerons comment nous préparons le pare-feu Cloudflare pour l'IA et comment vous pouvez facilement protéger vos charges de travail d'IA générative.</p>
+	<p>La détection de la fraude aux comptes, qui englobe plusieurs vecteurs d'attaque, constitue un autre enjeu pour nous en 2025.</p>
+	<p>Sur de nombreuses pages de connexion et d’inscription, une solution <a href="https://www.cloudflare.com/learning/bots/how-captchas-work" target="_blank" rel="noopener noreferrer"><u>CAPTCHA</u></a> est couramment utilisée pour autoriser uniquement les êtres humains, partant du principe que seuls les bots effectuent des actions indésirables. Outre le fait que la plupart des énigmes visuelles CAPTCHA peuvent aujourd’hui être facilement <a href="https://arstechnica.com/ai/2024/09/ai-defeats-traffic-image-captcha-in-another-triumph-of-machine-over-man" target="_blank" rel="noopener noreferrer"><u>résolues par l’IA</u></a>, cette solution ne permet pas de résoudre efficacement la <i>cause première</i> de la plupart des vecteurs de fraude aux comptes. Par exemple, des êtres humains utilisent des e-mails à usage unique pour créer des comptes à usage unique afin de bénéficier de promotions à l'inscription.</p>
+	<p>Pour résoudre ce problème d'inscriptions frauduleuses, une règle de sécurité actuellement en cours de développement pourrait être déployée comme suit : afin de bloquer toutes les tentatives utilisant des e-mails à usage unique comme identifiant d'utilisateur, indépendamment du fait que l'expéditeur soit automatisé ou non. Tous les points de terminaison <code>cf-log-in</code> et <code>cf-sign-up</code> existants ou à venir sont protégés par cette règle unique, car ils exigent tous deux l’identification de l’utilisateur.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7sJzdnjp9UWrp35Hd3SsGB/db0959b457c555a4a1e93e5515a1e61f/6.png" alt="A screenshot of a security rule configured to block requests when disposal email is detected using a tentative field" class="kg-image" width="1999" height="619" loading="lazy">
+	</figure>
+	<p>Nos mesures de détection des menaces orientées scénarios d'utilisation et à l'expansion rapide s'exécutent toutes par défaut dès le premier moment de l'intégration du trafic sur Cloudflare. Les résultats de détection instantanément disponibles peuvent être consultés dans les données d'analyse de sécurité, afin que vous puissiez prendre rapidement des décisions éclairées.</p>
+	<div class="flex anchor relative">
+		<h5 id="api-endpoint-risk-assessment">Évaluation des risques au point de terminaison d'API</h5>
+		<a href="https://blog.cloudflare.com/#api-endpoint-risk-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Les API comportent leur propre ensemble de risques et de vulnérabilités et, aujourd'hui, Cloudflare propose sept nouvelles analyses des risques dans le cadre de sa solution de gestion du niveau de sécurité des API. Cette nouvelle fonctionnalité d'API Shield contribue à réduire les risques en identifiant les problèmes de sécurité et en les corrigeant rapidement, avant que les API ne soient attaquées. Les API sont généralement constituées de nombreux services back-end différents. Les équipes de sécurité doivent donc identifier les services back-end vulnérables afin de permettre aux équipes de développement de remédier aux problèmes identifiés.</p>
+	<p>C'est exactement ce que font nos nouvelles analyses des risques liés à la gestion du niveau de sécurité des API : les utilisateurs peuvent identifier rapidement les points de terminaison d'API exposés à un certain nombre de vulnérabilités, notamment l'exposition de données sensibles, le statut d'authentification, les attaques par <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>violation de l'autorisation au niveau de l'objet (Broken Object Level Authorization, BOLA)</u></a> et bien d'autres.</p>
+	<p>La posture d'authentification est une analyse de risque que vous verrez dans le nouveau système. Nous avons concentré nos efforts autour de cet aspect dès le départ, car les données sensibles sont en danger lorsque l'authentification des API est censée être mise en œuvre, mais qu'elle est en réalité interrompue. <a href="https://developers.cloudflare.com/api-shield/security/authentication-posture" target="_blank" rel="noopener noreferrer"><u>La posture d'authentification</u></a> permet aux clients d'identifier les erreurs de configuration d'authentification pour les API et les alertes concernant leur présence. Pour ce faire, les requêtes réussies vers l'API sont analysées et leur statut d'authentification est pris en compte. API Shield analyse le trafic quotidiennement et étiquette les points de terminaison d'API dont l'authentification est absente ou mixte, afin de pouvoir les examiner de plus près.</p>
+	<p>Pour les clients qui ont configuré des ID de session dans API Shield, vous pouvez trouver les nouvelles étiquettes d'analyse des risques et les détails d'authentification par point de terminaison dans API Shield. Les équipes de sécurité peuvent apporter ce détail à leurs équipes de développement afin de combler la faille d'authentification.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21jVSrwsgfjKlyxyOZ5Qye/7963d95ea28a41f5e2b4f331ab5d5060/7.png" alt="A screenshot of API Shield highlighting new authentication detail widgets on the per-endpoint details page. The authentication widget shows a mixed-authentication status with 95.1% of successful requests being authenticated, meaning that 4.9% of requests could be bypassing authentication security." class="kg-image" width="1999" height="979" loading="lazy">
+	</figure>
+	<p>Nous annonçons aujourd'hui le lancement d'<a href="https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels" target="_blank" rel="noopener noreferrer"><u>analyses</u></a> de la stratégie d'authentification, des données sensibles, des API sous-protégées, des attaques BOLA et l'analyse des anomalies affectant les performances des API en fonction des erreurs, de la latence et du volume des réponses.</p>
+	<div class="flex anchor relative">
+		<h3 id="simplify-maintaining-a-good-security-posture-with-cloudflare">Simplifiez le maintien d'une bonne stratégie de sécurité avec Cloudflare</h3>
+		<a href="https://blog.cloudflare.com/#simplify-maintaining-a-good-security-posture-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La mise en œuvre d'une stratégie de sécurité satisfaisante au sein d'un environnement en évolution rapide nécessite des solutions innovantes, capables de transformer la complexité en simplicité. Notre première étape visant à soutenir les efforts de nos clients dans le maintien d'une stratégie de sécurité saine sera marquée par la consolidation sur une plateforme unique de la capacité d'évaluer en continu les menaces et les risques au sein des environnements informatiques publics et privés.</p>
+	<p>Pour renforcer encore l'intérêt des informations et des suggestions de sécurité fournies et vous aider à mieux hiérarchiser vos actions, nous envisageons d'intégrer la vision globale de Cloudflare sur le panorama des menaces. Cela vous permet de gagner en perspective, notamment sur les principales menaces pesant sur votre secteur et les cibles des acteurs malveillants à l'heure actuelle. Restez à l'écoute pour plus d'informations sur le sujet dans le courant de l'année.</p>
+	<p>Si vous ne l'avez pas encore fait, n'hésitez pas à <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fsecurity-center" target="_blank" rel="noopener noreferrer"><u>intégrer vos applications web et SaaS</u></a> sur Cloudflare dès aujourd'hui afin de bénéficier d'informations instantanées sur la marche à suivre pour améliorer la stratégie de sécurité de votre entreprise.</p>
+</div>

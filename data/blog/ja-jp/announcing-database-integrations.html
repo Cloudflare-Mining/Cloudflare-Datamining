@@ -1,0 +1,83 @@
+<div class="mb2 gray5">3分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/announcing-database-integrations">English</a>、<a href="https://blog.cloudflare.com/fr-fr/announcing-database-integrations">Français</a>、<a href="https://blog.cloudflare.com/de-de/announcing-database-integrations">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/announcing-database-integrations">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/announcing-database-integrations">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MbjTfQTdMcZnbMf2v3t7N/f03db904fd9dd77705770073adae99ea/announcing-database-integrations.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p><i>このブログ記事では、ドキュメントが更新された機能について言及しています。最新の参考資料については、</i><a href="https://developers.cloudflare.com/workers/databases/third-party-integrations" target="_blank" rel="noopener noreferrer"><i>https://developers.cloudflare.com/workers/databases/third-party-integrations/</i></a>をご覧ください。</p>
+	<p>開発者としての最高の喜びのひとつは、自分のアイデアが実現するのを見ることです。迅速に移行したい場合、Cloudflareの開発者プラットフォームは、数分以内にアプリケーションを0から100にするためのツールを提供します。</p>
+	<p><i>「Workersではどのデータベースが使えるのか？」</i>のような疑問が生じると、開発者は作業スピードを落としてしまいます。多くの開発者にとって、Workersと接続できるデータベースを探したり、Workersと互換性のある適切なライブラリやドライバを見つけたり、一般的なサンプルコードを当社の開発者プラットフォームで実行可能なものに変換する作業はつまずく要因となります。</p>
+	<p>本日、Database Integrationsを発表しました。これにより、Workers上で選択したデータベースとシームレスに接続できるようになります。まず、HTTP接続をサポートする最も人気のあるデータベース<a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a>、<a href="https://planetscale.com" target="_blank" rel="noopener noreferrer">PlanetScale</a>、<a href="https://supabase.com" target="_blank" rel="noopener noreferrer">Supabase</a>を追加しました。今後の予定としては、Prisma、Fauna、MongoDB Atlasなども追加していく予定です！</p>
+	<div class="flex anchor relative">
+		<h2 id="focus-more-on-code-less-on-config">設定よりもコードに焦点を</h2>
+		<a href="https://blog.cloudflare.com/#focus-more-on-code-less-on-config" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社のサーバーレスSQLデータベースである「D1」は、昨年オープンアルファ版として発売され、生産準備に引き続き投資をしています（今週末のエキサイティングなアップデートにご注目ください！）。また、私たちはデータベースには他にも多くの種類があることを認識しており、開発者が自分にとって最適なものを自由に選択し、それを当社の強力なコンピューティング製品と組み合わせることができるようにしたいと考えています。</p>
+	<p>Developer Week 2023の2日目では、データにスポットライトを当てています。当社は、Workersからのデータベースへの接続を可能にし、より高性能にするという大きな一歩を踏み出しています（ネタばれ注意！）：</p>
+	<ul>
+		<li>
+			<p><a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Cloudflare WorkersからTCPソケットを作成する新しいAPI「connect()」を発表</a></p>
+		</li>
+		<li>
+			<p><a href="https://blog.cloudflare.com/announcing-database-integrations">Smart Placementは、設定不要でバックエンドの近くにコードを移動することでアプリケーションを高速化します</a></p>
+		</li>
+	</ul>
+	<p>それを可能にし、高性能にすることは始まりにすぎません。私たちは、データベースに簡単に接続できるようにしたいと考えています。通常、データベースには、立ち上げて稼働させるために、特定のプロトコル、ドライバー、API、およびベンダー固有の機能などさまざまな理解が必要です。Database Integrationsでは、このプロセスをきわめて簡単なものにしたいと考えています。</p>
+	<p>初めてのプロジェクトの取り組みでも、100回目のプロジェクトの取り組みでも、目をつぶっていても、選択したデータベースに接続できるようにする必要があります。Database Integrationsで、設定に集中する時間を減らし、好きなことをする–アプリケーションの構築により多くの時間を費やすことができます！</p>
+	<div class="flex anchor relative">
+		<h2 id="what-does-this-experience-look-like">この体験はどのようなものなのでしょうか？</h2>
+		<a href="https://blog.cloudflare.com/#what-does-this-experience-look-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="discoverability">発見可能性</h3>
+		<a href="https://blog.cloudflare.com/#discoverability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ゼロからプロジェクトを開始する場合、またはWorkersを既存のデータベースに接続したい場合、<i>「何が選択できるか？」</i>を知る必要があります。</p>
+	<p>Workersは、HTTP経由で豊富なデータベースプロバイダーへの接続をサポートします。新しくリリースされた<a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">アウトバウンドTCPサポート</a>により、Workers上で接続可能なデータベースは増える一方です！</p>
+	<p>新しい[統合]タブでは、当社がサポートするすべてのデータベースを表示でき、ここから直接Workerに統合を追加できます。まず、Neon、PlanetScale、Supabaseをサポートし、さらに多くのサポートをしていく予定です。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72AInQBXAsWNkEcBr3DPeo/3c546a2d7e2cfdf403ffac91154f172a/image2-10.png" alt="Database integrations on the Cloudflare dashboard" class="kg-image" width="1999" height="1247" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="authentication">認証</h3>
+		<a href="https://blog.cloudflare.com/#authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>データベースの認証情報や接続文字列の他の部分をコピー＆ペーストする必要はありません。</p>
+	<p>[統合の追加]をクリックすると、データベースプロバイダーから適切な設定を自動的に取得し、暗号化された環境変数としてWorkersに追加するOAuth2フローをご案内します。</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DKr9USRBKD90foCkyPkLM/b9bedf4c535ed33c1b42bdc176f066c3/integration-flow.png" alt="Set up an integration between your database and Worker" class="kg-image" width="1714" height="1594" loading="lazy">
+
+	</figure>
+	<p>認証情報を設定したら、データプラットフォームのクライアントライブラリの使用を開始する方法の例に関する当社の<a href="https://developers.cloudflare.com/workers/learning/integrations/databases/#native-database-integrations-beta" target="_blank" rel="noopener noreferrer">ドキュメンテーション</a>を確認してください。さらに–より早く開始できるようにテンプレートも用意しています！</p>
+	<p>以上です！Database Integrationsを使用すると、数回クリックするだけでWorkerをデータベースに接続できます。[Worker ] &gt; [設定] &gt; [統合]に移動して、今すぐお試しください。</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Database Integrationsは、ほんの始まりにすぎず、まもなくさらに多くを追加していく予定です！</p>
+	<p>当社は、引き続き、より人気のあるデータプラットフォームのサポートを追加していきますが、移り変わる状況についていくことは不可能であることも承知しています。あらゆるデータベースプロバイダーが、Workersとの独自の統合を簡単に構築できるように、統合プラットフォームに取り組んできました。開発者として、これは、次の新しいデータベースをWorkers上ですぐに利用を開始できることを意味します。</p>
+	<p>さらに、CLIから直接統合の作成ができるように、wranglerサポートの追加に取り組んでいます。また、アカウント内のWorker全体で統合を共有するために、アカウントレベルの環境変数のサポートを追加する予定です。</p>
+	<p>当社は、ここでの可能性と、開発者たちの新しい作品を見ることをとても嬉しく思います！必ず<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare開発者Discord</a>に参加して、お客様のプロジェクトを共有してください。構築を楽しんでくださいね！</p>
+</div>

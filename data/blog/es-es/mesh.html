@@ -1,0 +1,223 @@
+<div class="mb2 gray5">10 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/mesh">English</a>, <a href="https://blog.cloudflare.com/zh-tw/mesh">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/mesh">Français</a>, <a href="https://blog.cloudflare.com/de-de/mesh">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/mesh">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/mesh">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/mesh">한국어</a>, <a href="https://blog.cloudflare.com/es-la/mesh">Español (Latinoamérica)</a> y <a href="https://blog.cloudflare.com/zh-cn/mesh">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dyrjyTkHrya7wNTkXOYZy/785fa3450c08e430f544dc049a72f779/BLOG-3215_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Los agentes de IA han cambiado la forma en que los equipos piensan sobre el acceso a la red privada. Tu agente de codificación necesita consultar una base de datos provisional. Tu agente de producción tiene que llamar a una API interna. Tu asistente personal de IA necesita llegar a un servicio que se ejecuta en tu red doméstica. Los clientes ya no son solo humanos o servicios. Son <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agentes</u></a> que funcionan de forma autónoma y realizan solicitudes que no has autorizado explícitamente, y que afectan a una infraestructura que debes mantener segura.</p>
+	<p>Cada uno de estos flujos de trabajo tiene el mismo problema subyacente: los agentes necesitan llegar a los recursos privados, pero las herramientas para hacerlo se crearon para humanos, no para software autónomo. Las VPN requieren un inicio de sesión interactivo. Los túneles SSH requieren una configuración manual. La exposición pública de los servicios es un riesgo para la seguridad. Y ninguno de estos enfoques te da visibilidad de lo que el agente está haciendo realmente una vez que está conectado.</p>
+	<p>Hoy, <b>anunciamos Cloudflare Mesh</b> para conectar tus redes privadas y proporcionar acceso seguro a tus agentes. También estamos integrando Mesh con la <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer"><u>plataforma para desarrolladores de Cloudflare</u></a> para que <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> y los agentes creados con el SDK de agentes puedan acceder directamente a tu infraestructura privada.</p>
+	<p>Si utilizas el <a href="https://www.cloudflare.com/sase" target="_blank" rel="noopener noreferrer"><u>conjunto de soluciones SASE y Zero Trust de Cloudflare One</u></a>, ya tienes acceso a Mesh. No necesitas un nuevo paradigma tecnológico para proteger las cargas de trabajo agénticas. Necesitas una arquitectura SASE diseñad para la era agéntica, y ese es Cloudflare One. Cloudflare Mesh es una nueva experiencia con una configuración más sencilla que aprovecha los accesos que ya conoces: WARP Connector <i>(ahora llamado nodo Cloudflare Mesh)</i> y WARP Client <i>(ahora llamado Cloudflare One Client)</i>. Juntos, crean una red privada para el tráfico de usuarios, desarrolladores y agentes. Mesh se integra directamente en tu implementación actual de Cloudflare One. Tus políticas de Gateway, reglas de Access y comprobaciones de la postura del dispositivo existentes se aplican al tráfico de Mesh de forma automática.</p>
+	<p>Si eres un desarrollador que solo quiere una red privada para tus agentes, servicios y equipo, Mesh es tu punto de partida. Configúralo en minutos, conecta tus redes y protege tu tráfico. Y como Mesh se ejecuta en la plataforma <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, puedes ampliar tus capacidades con el tiempo: red <a href="https://www.cloudflare.com/sase/products/gateway" target="_blank" rel="noopener noreferrer"><u>Gateway</u></a>, políticas de DNS y HTTP para un control detallado del tráfico, <a href="https://www.cloudflare.com/sase/use-cases/infrastructure-access" target="_blank" rel="noopener noreferrer"><u>Access for Infrastructure</u></a> para la gestión de sesiones SSH y RDP, <a href="https://www.cloudflare.com/sase/products/browser-isolation" target="_blank" rel="noopener noreferrer"><u>Browser Isolation</u></a> para un acceso web seguro, <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>DLP</u></a> para evitar que los datos confidenciales salgan de tu red, y <a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>CASB</u></a> para la seguridad de SaaS. No tendrás que planificar todo esto desde el primer día. No tienes por qué migrar justo cuando lo necesitas.</p>
+	<div class="flex anchor relative">
+		<h2 id="new-agentic-workflows">Nuevos flujos de trabajo agénticos</h2>
+		<a href="https://blog.cloudflare.com/#new-agentic-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las redes privadas siempre han consistido en conectar clientes a recursos: SSH en un servidor, consultar una base de datos, acceder a una API interna. Lo que ha cambiado es quiénes son los clientes. Hace un año, la respuesta eran tus desarrolladores y tus servicios. Hoy en día, son cada vez más tus agentes.</p>
+	<p>Esto no es solo teoría. Fíjate en el ecosistema. La proliferación de <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>servidores MCP (Protocolo de contexto del modelo)</u></a> que proporcionan acceso a herramientas, agentes de codificación que necesitan leer repositorios y bases de datos privados, asistentes personales que se ejecutan en hardware doméstico. Cada uno de estos patrones asume que el agente puede llegar a los recursos que necesita. Cuando esos recursos están aislados en redes privadas, el agente queda inoperativo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/12RTZcOBkkKwmaRe5VYn9k/e1b00401bee274a7643a4dfd4139e2df/BLOG-3215_2.png" alt="BLOG-3215 2" class="kg-image" width="1999" height="1345" loading="lazy">
+	</figure>
+	<p>Esto crea tres flujos de trabajo que hoy en día son difíciles de proteger:</p>
+	<ol>
+		<li>
+			<p>Acceder a un agente personal desde un dispositivo móvil. Estás ejecutando OpenClaw en un Mac mini en casa. Quieres acceder a él desde tu teléfono, tu portátil en una cafetería o tu ordenador del trabajo. Pero exponerlo a la red pública (aunque sea protegido con una contraseña) puede dejar algunas vulnerabilidades al descubierto. Tu agente tiene acceso al shell, al sistema de archivos y a tu red doméstica. Un error de configuración y cualquiera puede acceder a él.</p>
+		</li>
+		<li>
+			<p>Permitir que un desarrollador acceda a tu entorno de pruebas. Utilizas Claude Code, Cursor o Codex en tu portátil. Le pides que compruebe el estado de la implementación, que consulte los análisis de una base de datos provisional o que lea de un almacén de objetos interno. Pero esos servicios están alojados en una VPC de nube privada, así que tu agente no puede acceder a ellos sin exponerlos a Internet o sin conectar todo tu portátil a la VPC a través de un túnel.</p>
+		</li>
+		<li>
+			<p>Conectar los agentes implementados a los servicios privados. Estás integrando agentes en tu producto utilizando <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>SDK de agentes</u></a> en Cloudflare Workers. Esos agentes necesitan llamar a las API internas, consultar bases de datos y acceder a servicios que no están en la red pública. Necesitan acceso privado, pero con permisos específicos, registros de auditoría y sin fugas de credenciales.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="cloudflare-mesh-one-private-network-for-users-nodes-and-agents">Cloudflare Mesh: una red privada para usuarios, nodos y agentes</h2>
+		<a href="https://blog.cloudflare.com/#cloudflare-mesh-one-private-network-for-users-nodes-and-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Mesh es una red privada fácil de usar para desarrolladores. Un único conector ligero, un único binario, lo conecta todo: tus dispositivos personales, tus servidores remotos y los terminales de tus usuarios. No es necesario instalar herramientas independientes para cada patrón. Con un solo conector en tu red, todos los patrones de acceso funcionan.</p>
+	<p>Una vez conectados, los dispositivos de tu red privada pueden comunicarse entre sí a través de direcciones IP privadas, enrutadas a través de la red global de Cloudflare en más de 330&nbsp;ciudades, lo que te ofrece mayor fiabilidad y control sobre tu red.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ENfLb0kr1Zesh7PnuCvDK/830afd93d49b658023a9ece55e0e505b/BLOG-3215_3.gif" alt="BLOG-3215 3" class="kg-image" width="1800" height="761" loading="lazy">
+	</figure>
+	<p>Ahora, con Mesh, una única solución puede resolver todos los escenarios de agentes que hemos mencionado anteriormente:</p>
+	<ul>
+		<li>
+			<p>Con <b>Cloudflare One Client para iOS</b> en tu teléfono, puedes conectar de forma segura tus dispositivos móviles a tu Mac mini local con OpenClaw a través de una red privada Mesh.</p>
+		</li>
+		<li>
+			<p>Con <b>Cloudflare One Client para macOS</b> en tu portátil, puedes conectar tu portátil a tu red privada para que tus agentes de codificación puedan acceder a las bases de datos provisionales o las API y consultarlas.</p>
+		</li>
+		<li>
+			<p>Con <b>nodos mesh</b> en tus servidores Linux, puedes conectar las VPC en nubes externas entre sí, permitiendo que los agentes accedan a los recursos y a los MCP en redes privadas externas.</p>
+		</li>
+	</ul>
+	<p>Como Mesh funciona con <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client" target="_blank" rel="noopener noreferrer"><u>Cloudflare One Client</u></a>, cada conexión hereda los controles de seguridad de la plataforma Cloudflare One. Las políticas de Gateway se aplican al tráfico de Mesh. Las comprobaciones de la postura del dispositivo validan los dispositivos que se conectan. El filtrado de DNS detecta las consultas sospechosas. Esto ocurre sin necesidad de configuración adicional. Las mismas políticas que protegen tu tráfico de usuarios protegen también el tráfico de tus agentes.</p>
+	<div class="flex anchor relative">
+		<h2 id="choosing-between-mesh-and-tunnel">Mesh vs. Tunnel</h2>
+		<a href="https://blog.cloudflare.com/#choosing-between-mesh-and-tunnel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Con la llegada de Mesh, quizá te preguntes: ¿cuándo debería usar Mesh en lugar de Tunnel? Ambos conectan redes externas de forma privada a Cloudflare, pero tienen propósitos diferentes. <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> es la solución ideal para el tráfico unidireccional, donde Cloudflare redirige el tráfico desde el perímetro hacia servicios privados específicos (como un servidor web o una base de datos).&nbsp;</p>
+	<p>Por otro lado, Cloudflare Mesh ofrece una red bidireccional completa de tipo "muchos a muchos". Todos los dispositivos y nodos de tu red Mesh pueden acceder entre sí utilizando sus direcciones IP privadas. Una aplicación o agente que se ejecute en tu red puede descubrir y acceder a cualquier otro recurso en Mesh sin que cada recurso necesite su propio Tunnel.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="using-the-power-of-cloudflares-network">El poder de la red de Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#using-the-power-of-cloudflares-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Mesh te ofrece las ventajas de una red en malla (resiliencia, alta escalabilidad, baja latencia y alto rendimiento), pero, mediante el enrutamiento de todo a través de Cloudflare, resuelve un desafío clave de las redes en malla: el NAT transversal.</p>
+	<p>La mayor parte de Internet funciona con NAT (traducción de direcciones de red). Este mecanismo permite que toda una red local de dispositivos comparta una única dirección IP pública mediante la asignación del tráfico entre los encabezados públicos y las direcciones internas privadas. Cuando dos dispositivos funcionan con NAT, las conexiones directas pueden fallar y el tráfico tiene que recurrir a los servidores de retransmisión. Si tu infraestructura de retransmisión tiene pocos puntos de presencia, una parte considerable de tu tráfico pasa por esos retransmisores, lo que aumenta la latencia y reduce la fiabilidad. Y aunque es posible autoalojar tus propios servidores de retransmisión para compensar, eso significa asumir la carga de gestionar infraestructura adicional solo para conectar tu red existente.</p>
+	<p>Cloudflare Mesh adopta un enfoque diferente. Todo el tráfico de Mesh se enruta a través de la red global de Cloudflare, la misma infraestructura que sirve el tráfico para algunos de los sitios web más grandes de Internet. Para el tráfico entre regiones o multinube, esto supera sistemáticamente al enrutamiento público de Internet. No hay una ruta alternativa de reserva, porque el perímetro de Cloudflare es la ruta.</p>
+	<p>El enrutamiento a través de Cloudflare también significa que cada paquete pasa por la pila de seguridad de Cloudflare. Esta es la principal ventaja de desarrollar Mesh en la plataforma Cloudflare One: la seguridad no es un producto independiente que se añade más adelante. Y al aprovechar esta misma infraestructura global, podemos ofrecer estos pilares fundamentales a todos los equipos desde el primer día:</p>
+	<p><b>50 nodos y 50 usuarios gratis. </b>Todo tu equipo y todo tu entorno de pruebas en una sola red privada, incluido con cada cuenta de Cloudflare.&nbsp;</p>
+	<p><b>Enrutamiento perimetral global.</b> Más de 330&nbsp;ciudades, enrutamiento optimizado de la red troncal. Sin servidores de retransmisión con puntos de presencia limitados. No hay rutas alternativas de reserva.</p>
+	<p><b>Controles de seguridad desde el primer día.</b> Mesh se ejecuta en Cloudflare One. Las políticas de Gateway, el filtrado de DNS, DLP, la inspección del tráfico y las comprobaciones de la postura del dispositivo están disponibles en la misma plataforma. Empieza con una conectividad privada sencilla. Activa las políticas de Gateway cuando necesites filtrar el tráfico. Activa Access for Infrastructure cuando necesites controles a nivel de sesión para SSH y RDP. Añade DLP cuando necesites impedir que los datos confidenciales salgan de tu red. Todas las capacidades están a un solo paso.</p>
+	<p><b>Alta disponibilidad.</b> Crea un nodo Mesh con alta disponibilidad habilitada y activa varios conectores utilizando el mismo token en modo activo-pasivo. Anuncian las mismas rutas de dirección IP, por lo que si una falla, el tráfico conmuta por error automáticamente.</p>
+	<div class="flex anchor relative">
+		<h2 id="integrated-with-the-developer-platform-with-workers-vpc">Integración con la plataforma para desarrolladores con Workers VPC</h2>
+		<a href="https://blog.cloudflare.com/#integrated-with-the-developer-platform-with-workers-vpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mesh conecta tus agentes y recursos a través de nubes externas, pero también necesitas poder conectarte desde tus agentes integrados en Workers con SDK de agentes. Para ello, hemos ampliado <a href="https://blog.cloudflare.com/workers-vpc-open-beta"><u>Workers VPC</u></a> para que toda la red Mesh sea accesible para Workers y Durable Objects.</p>
+	<p>Esto significa que puedes conectarte a tu red Cloudflare Mesh desde Workers, haciendo que toda la red sea accesible desde una única llamada <code>fetch()</code> de un enlace. Esto complementa la compatibilidad existente de Workers VPC con Cloudflare Tunnel, dándote más opciones sobre cómo quieres proteger tus redes. Ahora, puedes especificar redes enteras a las que quieras conectarte en tu archivo <code>wrangler.jsonc</code>. Para enlazar a tu red Mesh, utiliza la palabra clave reservada <code>cf1:network</code> que te conecta a la red Mesh de tu cuenta:</p>
+	<pre class="language-Shell"><code class="language-Shell">"vpc_networks": [
+  { "binding": "MESH", "network_id": "cf1:network", "remote": true },
+  { "binding": "AWS_VPC", "tunnel_id": "350fd307-...", "remote": true }
+]
+</code></pre>
+	<p>Luego, puedes usarlo dentro de tu código de Worker o agente:</p>
+	<pre class="language-javascript"><code class="language-javascript">export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    // Reach any internal host on your Mesh, no pre-registration required
+    const apiResponse = await env.MESH.fetch("http://10.0.1.50/api/data");
+
+    // Internal hostname resolved via tunnel's private DNS resolver
+    const dbResponse = await env.AWS_VPC.fetch("http://internal-db.corp.local:5432");
+
+    return new Response(await apiResponse.text());
+  },
+};
+</code></pre>
+	<p>Si conectas la plataforma para desarrolladores a tus redes Mesh, puedes crear Workers que tengan acceso seguro a tus bases de datos privadas, API internas y MCP, lo que te permite crear agentes multinube y MCP que proporcionan capacidades de agente a tu aplicación. Pero también abre un mundo en el que los agentes pueden supervisar de forma autónoma toda tu pila de principio a fin, cruzar registros y sugerir optimizaciones en tiempo real.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-all-fits-together">Cómo encaja todo</h2>
+		<a href="https://blog.cloudflare.com/#how-it-all-fits-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Juntos, Cloudflare Mesh, Workers VPC y SDK de agentes proporcionan una red privada unificada para tus agentes que abarca tanto Cloudflare como tus nubes externas. Hemos fusionado la conectividad y el procesamiento para que tus agentes puedan acceder de forma segura a los recursos que necesitan, dondequiera que se encuentren, en todo el mundo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6tYFghWEN1H3jIwV0Kejc9/04dcaedda5692a9726a7081d19bc413c/BLOG-3215_4.png" alt="BLOG-3215 4" class="kg-image" width="1999" height="1345" loading="lazy">
+	</figure>
+	<p><b>Los nodos de Mesh</b> son tus servidores, máquinas virtuales y contenedores. Ejecutan una versión sin interfaz de usuario de Cloudflare One Client y obtienen una dirección IP de Mesh. Los servicios se comunican con los servicios a través de direcciones IP privadas, enrutados bidireccionalmente a través del perímetro de Cloudflare.&nbsp;</p>
+	<p><b>Los dispositivos</b> son tus portátiles y teléfonos. Ejecutan Cloudflare One Client y llegan directamente a los nodos de Mesh: SSH, consultas a bases de datos, llamadas API, todo ello a través de IP privadas. Tus agentes de codificación locales utilizan esta conexión para acceder a recursos privados.&nbsp;</p>
+	<p><b>Los agentes en Workers</b> acceden a servicios privados a través de los enlaces de la red de Workers VPC. Tienen acceso limitado a redes completas, gestionado por MCP. La red impone lo que el agente puede alcanzar. El servidor MCP impone lo que el agente puede hacer.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">¿Y ahora qué?</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>La versión actual de Mesh proporciona la base para una conectividad segura y unificada. Sin embargo, a medida que los flujos de trabajo de los agentes se vuelven más complejos, nuestro objetivo es ir más allá de la simple conectividad para crear una red que sea más intuitiva de gestionar y que permita identificar con mayor precisión quién o qué se comunica con sus servicios. Esto es lo que tenemos previsto para lo que queda de año.</p>
+	<div class="flex anchor relative">
+		<h4 id="hostname-routing">Enrutamiento de nombres de host</h4>
+		<a href="https://blog.cloudflare.com/#hostname-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este verano, ampliaremos el <a href="https://blog.cloudflare.com/tunnel-hostname-routing"><u>enrutamiento de nombres de host</u></a> de Cloudflare Tunnel a Mesh. Tus nodos Mesh podrán atraer tráfico para nombres de host privados como <code>wiki.local</code> o <code>api.staging.internal</code>, sin que tengas que gestionar listas de direcciones IP ni preocuparte por cómo se resuelven esos nombres de host en el perímetro de Cloudflare. Dirige el tráfico a los servicios por nombre, no por dirección IP. Si tu infraestructura utiliza direcciones IP dinámicas, grupos de escalado automático o contenedores efímeros, esto elimina toda una clase de problemas de enrutamiento.</p>
+	<div class="flex anchor relative">
+		<h4 id="mesh-dns">Mesh DNS</h4>
+		<a href="https://blog.cloudflare.com/#mesh-dns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hoy, llegas a los nodos Mesh por sus direcciones IP de Mesh: <code>ssh 100.64.0.5</code>. Funciona, pero no es así como piensas en tu infraestructura. Piensas en nombres: <code>postgres-staging</code>, <code>api-prod</code>, <code>nikitas-openclaw</code>.</p>
+	<p>A finales de este año, desarrollaremos DNS Mesh para que cada nodo y dispositivo que se una a tu red Mesh obtenga automáticamente un nombre de host interno enrutable. Sin configuración de DNS ni registros manuales. Añade un nodo llamado <code>postgres-staging</code>, y <code>postgres-staging.mesh</code> se resuelve en la dirección IP de Mesh correcta desde cualquier dispositivo de tu Mesh.</p>
+	<p>En combinación con el enrutamiento del nombre de host, podrás <code>ssh postgres-staging.mesh</code> o <code>curl http://api-prod.mesh:3000/health</code> sin conocer ni gestionar una dirección IP.</p>
+	<div class="flex anchor relative">
+		<h4 id="identity-aware-routing">Enrutamiento con reconocimiento de identidad</h4>
+		<a href="https://blog.cloudflare.com/#identity-aware-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hoy en día, los nodos Mesh se autentican en el perímetro de Cloudflare, pero comparten una identidad en la capa de red. Los dispositivos se autentican con la identidad del usuario a través de Cloudflare One Client, pero los nodos aún no tienen identidades distintas y enrutables que las políticas de Gateway puedan diferenciar.</p>
+	<p>Queremos que deje de ser así. El objetivo es el enrutamiento con reconocimiento de identidad para Mesh, donde cada nodo, cada dispositivo y, finalmente, cada agente obtiene una identidad distinta que las políticas pueden evaluar. En lugar de escribir reglas basadas en rangos de dirección IP, escribes reglas basadas en quién o qué se está conectando.</p>
+	<p>Esto es lo más importante para los agentes. Hoy en día, cuando un agente que se ejecuta en Workers llama a una herramienta a través de un enlace de VPC, el servicio de destino ve un Worker que realiza una solicitud. No sabe qué agente está llamando, quién lo autorizó o qué alcance se le concedió. En lo que respecta a Mesh, cuando un agente de codificación local de tu portátil se conecta a un servicio de pruebas, Gateway ve la identidad de tu dispositivo, pero no la del agente.</p>
+	<p>Estamos trabajando para lograr un modelo en el que los agentes lleven su propia identidad a través de la red:</p>
+	<ul>
+		<li>
+			<p>Principal / patrocinador: el ser humano que autorizó la acción (Nikita del equipo de la plataforma)</p>
+		</li>
+		<li>
+			<p>Agente: el sistema de IA que lo realiza (el asistente de implementación, sesión #abc123)</p>
+		</li>
+		<li>
+			<p>Alcance: lo que el agente puede hacer (leer implementaciones, activar reversiones, nada más)</p>
+		</li>
+	</ul>
+	<p>Esto te permitiría definir políticas como: se permiten las lecturas desde los agentes de Nikita, pero las escrituras deben realizarse directamente a través de Nikita. El tráfico de agentes se puede filtrar independientemente del tráfico humano. El acceso a la red de un agente se puede revocar sin tocar el de Nikita.</p>
+	<p>La infraestructura para ello ya está implementada. Los nodos de Mesh se configuran con tokens por nodo, los dispositivos se autentican con una identidad por usuario y los enlaces VPC de Workers limitan el acceso por servicio. La pieza que falta es hacer que estas identidades sean visibles para la capa de políticas, de modo que Gateway pueda tomar decisiones de enrutamiento y acceso en función de estas. Eso es lo que estamos desarrollando.</p>
+	<div class="flex anchor relative">
+		<h4 id="mesh-in-containers">Mesh en contenedores</h4>
+		<a href="https://blog.cloudflare.com/#mesh-in-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Hoy en día, los nodos Mesh se ejecutan en máquinas virtuales y servidores Linux sin sistema operativo. Sin embargo, la infraestructura moderna se ejecuta cada vez más en contenedores: pods de Kubernetes, pilas de Docker Compose, ejecutores efímeros de los canales de integración y distribución continuas (CI/CD). Estamos creando una imagen de Docker en Mesh que te permite añadir un nodo de Mesh a cualquier entorno en contenedores.</p>
+	<p>Esto significa que podrás incluir un complemento Mesh en tu pila de Docker Compose y dar acceso a la red privada a todos los servicios de esa pila. Un microservicio que se ejecute en un contenedor de tu clúster de staging podría acceder a una base de datos de tu VPC de producción a través de Mesh, sin que ninguno de los dos servicios necesite un punto de acceso público. </p>
+	<p>También es útil para los CI/CD que pueden acceder a la infraestructura privada durante las compilaciones y las pruebas: tu ejecutor de GitHub Actions extrae la imagen del contenedor Mesh, se une a tu red, ejecuta pruebas de integración en tu entorno de ensayo y la desconecta. Todo ello sin credenciales de VPN que gestionar ni túneles persistentes que mantener: el nodo desaparece cuando sale el contenedor.</p>
+	<p>Esperamos que la imagen de Mesh en Docker esté disponible a finales de este año.</p>
+	<div class="flex anchor relative">
+		<h2 id="get-started">Cómo empezar</h2>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Mientras seguimos desarrollando estas capacidades de identidad y enrutamiento, la base para una red segura y unificada ya está disponible. Puedes empezar a conectar tus nubes y proteger a tus agentes en solo unos minutos.</p>
+	<p><b>Empieza a usar Cloudflare Mesh</b>: ve a Redes &gt; Mesh en el <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmesh" target="_blank" rel="noopener noreferrer"><u>panel de control de Cloudflare</u></a>. Gratis para un máximo de 50 nodos y 50 usuarios.</p>
+	<p><b>Crea agentes con SDK de agentes y Workers VPC: </b>instala el SDK de agentes (`npm i agents`), sigue la <a href="https://developers.cloudflare.com/workers-vpc/get-started" target="_blank" rel="noopener noreferrer"><u>guía de inicio rápido de Workers VPC</u></a> y crea un <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>servidor MCP remoto</u></a> con acceso de backend privado.</p>
+	<p><b>¿Ya usas Cloudflare One?</b> Mesh funciona con tu configuración actual. Tus políticas de Gateway, las comprobaciones de la postura del dispositivo y las reglas de acceso se aplican al tráfico de Mesh de forma automática. Consulta la <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh" target="_blank" rel="noopener noreferrer"><u>documentación de Mesh</u></a> para añadir tu primer nodo.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KMBRDqq5wBjdLHyhM3LNW/98064f81453b6ff29d0bf4b86cfc251a/image1.png" alt="" class="kg-image" width="1999" height="491" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Ver en Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/dc3d6d5c1da851359c1271c23c26c8be/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fdc3d6d5c1da851359c1271c23c26c8be%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>

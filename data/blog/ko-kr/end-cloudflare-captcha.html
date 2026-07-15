@@ -1,0 +1,86 @@
+<div class="mb2 gray5">6분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/end-cloudflare-captcha">English</a>, <a href="https://blog.cloudflare.com/zh-tw/end-cloudflare-captcha">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/end-cloudflare-captcha">Français</a>, <a href="https://blog.cloudflare.com/de-de/end-cloudflare-captcha">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/end-cloudflare-captcha">日本語</a> 및 <a href="https://blog.cloudflare.com/zh-cn/end-cloudflare-captcha">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6afBKtuyPDB9rM9LkWhabS/0dfcf4aa5ba395e973fe668cddc7c1b9/end-cloudflare-captcha.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/learning/bots/how-captchas-work" target="_blank" rel="noopener noreferrer">캡차</a> 때문에 끔찍한 사용자 경험이 제공된다는 사실을 다시 언급할 필요는 없습니다. <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">이 블로그</a>에서도 이전에 상세하게 논의되고, 다른 곳에서도 수없이 많이 논의된 바 있습니다. 캡차 개발자 중 한 명은 자신이 "인간의 가장 소중한 자원인 뇌의 주기를 <a href="https://thewalrus.ca/human-resources" target="_blank" rel="noopener noreferrer">10초 단위로 수백만 시간씩 낭비하게 만드는</a> 시스템을 부지불식간에 만들었다"고 공개적으로 한탄한 바 있습니다. 우리도 그런 시스템을 좋아하지 않고 여러분도 그런 시스템을 좋아하지 않습니다.</p>
+	<p></p>
+	<p>그래서 우리는 캡차 사용을 중단하기로 결정했습니다. 반복적인 플랫폼 접근 방식을 사용하여 작년에 <b>이미 서비스하는 캡차 수를 91% 줄였습니다</b>.</p>
+	<p>어떻게 중단을 결정하게 되었는지, 여러분이 어떻게 도움을 주실 수 있는지에 대해 이야기하기 전에 먼저 간단한 질문부터 시작하겠습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-in-the-world-is-captcha-still-used-anyway">도대체 왜 아직도 캡차가 사용되고 있을까요?</h3>
+		<a href="https://blog.cloudflare.com/#why-in-the-world-is-captcha-still-used-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모두가 캡차가 그렇게 좋지 않다는 데 동의한다면, 15년 동안 캡차를 없애자는 요구가 있었다면, 제작자가 캡차를 만든 것을 후회한다면, 왜 캡차가 여전히 널리 사용되고 있을까요?</p>
+	<p>안타까운 사실은 캡차 해결 서비스가 존재함에도 불구하고 캡차는 여전히 실제 사용자와 봇을 구분하는 효과적인 도구라는 점입니다. 물론 캡차는 사용성 측면에서는 큰 단점이 있지만, 일반적으로 캡차의 대안은 트래픽을 차단하거나 허용하는 방식인데, 이는 본질적으로 긍정 오류 또는 부정 오류를 증가시킬 수 있습니다. 오류 증가와 열악한 사용자 경험(캡차) 사이에서 선택해야 하는 상황이므로 많은 사이트에서는 캡차를 선택합니다.</p>
+	<p>다른 많은 사이트에서도 캡차를 사용하므로 캡차는 안전한 선택입니다. 이러한 사이트에서는 남용에 대한 대응을 제3자에게 위임하고 간단한 통합을 통해 웹 사이트에서 위험을 제거하는 것입니다. 가장 일반적인 솔루션을 사용하면 문제가 발생하는 경우는 거의 없습니다. 플러그, 플레이, 잊어버리기.</p>
+	<p>마지막으로, 캡차는 오랜 역사를 통해 안정적으로 알려진 기준이 있으므로 유용합니다. Cloudflare에서는 여러 해에 걸쳐 캡차(또는 인증 질문) 해결률이라는 지표를 추적해 왔습니다. 캡차 해결률은 해결된 캡차 수를 페이지 로딩 수로 나눈 값입니다. 캡차를 풀지 못하거나 풀려고 시도하지 않는 것은 두 경우 모두 사용자가 원하는 콘텐츠에 액세스할 수 없으므로, 모두 실패로 간주합니다. 이 지표는 일반적으로 특정 웹 사이트에서 안정적인 것으로 나타났습니다. 즉, 해결률이 1%인 경우 시간이 지나도 1%로 유지되는 경향이 있습니다. 또한 해결률의 상승 또는 하락은 공격이 진행 중임을 나타내는 강력한 지표입니다. <a href="https://developers.cloudflare.com/bots/concepts/challenge-solve-rate" target="_blank" rel="noopener noreferrer">고객은 로그를 스캔하여 해결률 변화를 모니터링</a>해서 무슨 일이 일어나고 있는지 조사할 수 있습니다.</p>
+	<p>자체 <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">암호화 인증</a>등 캡차에 대한 많은 대안이 시도되었습니다. 하지만 현재까지 어느 것 하나 캡차만큼 널리 채택된 사례는 없습니다. 우리는 캡차를 단일 대안으로 대체하려는 시도하는 것이 가장 큰 이유라고 생각합니다. 캡차를 대체하면 해결률에 대한 안정적인 이력을 잃게 되고, 의사 결정이 더 어려워집니다. 텍스트 해독에서 이미지 선택으로 전환하면 완전히 다른 결과를 얻을 수 있습니다. 그 결과가 좋은지 나쁜지 어떻게 알 수 있을까요? 그래서 우리는 다른 접근 방식을 택했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="many-solutions-not-one">하나의 솔루션이 아닌 여러 솔루션</h3>
+		<a href="https://blog.cloudflare.com/#many-solutions-not-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare에서는 일방적으로 캡차 사용을 중단하고 하나의 대안으로 대체하는 대신, 여러 대안을 테스트하고 어떤 것이 캡차를 대체할 가능성이 가장 높은지 확인할 수 있는 플랫폼을 구축했습니다. 우리는 이를 Cloudflare 관리형 인증 질문이라고 부릅니다.</p>
+	<p>관리형 인증 질문은 캡차보다 더 스마트한 솔루션입니다. 이 솔루션에서는 시각적 퍼즐을 제공할지 여부에 대한 결정이 브라우저에서 더 많은 정보를 사용할 수 있게 된 후 나중에 결정하도록 연기됩니다. 이전에는 Cloudflare 고객이 보안 또는 방화벽 규칙의 동작으로 캡차 또는 JavaScript 인증 질문 중 하나만 선택할 수 있었습니다. 이제 관리형 인증 질문 옵션에서는 인증 질문 <i>도중에</i> 나타난 클라이언트 행동과 방문자로부터 받은 원격 분석을 기반으로 방문자에게 시각적 퍼즐 또는 기타 인간임을 증명하는 수단을 표시할지 여부가 결정됩니다. 고객은 간단히 우리에게 "<i>귀사(Cloudflare)에서 필요하다고 판단되는 경우 이러한 유형의 트래픽에 대해 적절한 조치를 취해 주시기 바랍니다</i>"라고 이야기하게 됩니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bea8fFfhozl0zs4YaANEV/b993fdc8ae1922c672464db938c5b984/image3.png" alt="" class="kg-image" width="1796" height="752" loading="lazy">
+
+	</figure>
+	<p>관리형 인증 질문을 사용하면 실제 인증 질문 결과를 개별 방문자/브라우저에 맞게 조정할 수 있습니다. 그 결과, 인증 질문 자체의 난이도를 미세 조정하여 90% 이상의 인간에게 시각적 퍼즐을 보여주지 않는 동시에 인간이 아닌 듯한 행동을 보이는 방문자에게는 더 어려운 인증 질문을 제시할 수 있게 되었습니다.</p>
+	<p>방문자가 관리형 인증 질문을 접할 때 우리는 먼저 일련의 작은 비대화형 JavaScript 인증 질문을 실행하여 방문자/브라우저 환경에 대한 더 많은 신호를 수집합니다. 이는 요청이 이루어진 시점에 브라우저 내 감지 및 인증 질문을 배포함을 의미합니다. 인증 질문은 방문자가 보이는 특성 및 방문자에 대하여 우리가 수집하게 되는 초기 정보를 바탕으로 선택됩니다. 이러한 인증 질문에는 작업 증명, 공간 증명, 웹 API 탐색, 브라우저 쿼크 및 인간 행동을 감지하기 위한 다양한 인증 질문이 포함되지만 이에 국한되지 않습니다.</p>
+	<p>이러한 인증 질문에는 또한 이전에 보안 문자를 통과한 최종 방문자의 일반적인 특징을 감지하는<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">머신 러닝 모델</a>도 포함되어 &nbsp;있습니다. 이러한 초기 인증 질문의 계산 난이도는 방문자마다 다를 수 있지만, 빠르게 실행되도록 설정되어 있습니다. 관리형 인증 질문은 봇 탐지의 신호와 데이터를 사용하여 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-bot-management-machine-learning-and-more-ko-kr">Cloudflare 봇 관리</a> 및 <a href="https://blog.cloudflare.com/super-bot-fight-mode">Super Bot Fight Mode</a> 시스템에도 통합됩니다.</p>
+	<p>비대화형 인증 질문이 실행된 후에는 수집된 신호를 평가합니다. 이러한 신호의 조합을 통해 방문자가 사람일 가능성이 높다고 확신하는 경우 추가 조치를 취하지 않고 방문자를 별도의 상호작용 없이 목적 페이지로 리디렉션합니다. 그러나 신호가 약한 경우에는 방문자가 인간임을 증명하기 위해 방문자에게 시각적 퍼즐을 제시하는 경우도 있습니다. 관리형 인증 질문의 맥락에서, 관리형 인증 질문에서 또한 <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">인간임을 증명하는 다른 개인정보 보호 수단</a>을 실험하여 시각적 퍼즐 단계를 사용하는 시간을 계속 줄이고 있습니다.</p>
+	<p>작년부터 관리형 인증 질문 테스트를 시작했으며, 처음에는 인증 질문의 하위 집합 중 하나를 선택했는데 그 중 하나가 바로 캡차였습니다. 처음에는 여전히 대부분의 경우에 캡차가 사용되었습니다. 문제가 되는 새로운 인증 질문에 대한 해결률과 기존의 안정적인 캡차 해결률을 비교했습니다. 따라서 우리는 캡차 해결률을 목표로 삼아 캡차 대안을 개선해 나갔고, 시간이 지남에 따라 점점 더 개선되고 있습니다. 인증 질문 플랫폼을 통해 엔지니어는 고객에게 영향을 주지 않고 새로운 유형의 인증 질문을 쉽게 생성, 배포, 테스트할 수 있습니다. 인증 질문이 유용하지 않은 것으로 판명되면 그저 더 이상 사용하지 않습니다. 유용하다고 판단되면 사용 빈도를 늘립니다. 또한 실측 데이터를 보존하기 위해 방문자 중 소수의 하위 집합을 무작위로 선정하여 항상 시각적 퍼즐을 풀도록 하여 신호를 검증합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="managed-challenge-performs-better-than-captcha">관리형 인증 질문은 캡차보다 성능이 우수합니다</h3>
+		<a href="https://blog.cloudflare.com/#managed-challenge-performs-better-than-captcha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>인증 질문 플랫폼은 이제 이전에 사용하던 캡차와 동일한 안정적인 해결률을 보입니다.</p>
+	<p>반복적인 플랫폼 접근 <b>방식을 사용하여 제공하는 캡차 수를 91%까지 줄였습니다</b>. 처음에는 여전히 대부분의 경우에 캡차가 사용되었습니다. 올해 말까지 캡차 사용률을 1% 미만으로 낮출 계획입니다. 거의 모든 방문자에게 시각적 퍼즐 단계를 생략함으로써 비대화형 인증 질문을 실행하는 데 소요되는 방문자의 시간을 평균 32초에서 단 1초로 단축할 수 있었습니다. 또한 이탈률도 개선되었습니다. 우리의 원격 측정에 따르면 인간의 속성을 가진 방문자가 관리형 인증 질문을 포기할 확률이 기존 캡차 작업보다 31% 낮은 것으로 나타났습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OBYoKWypTH4XZbBFzKWdS/1385d0b02278881fcacb3caeac86e447/image4.png" alt="" class="kg-image" width="1200" height="642" loading="lazy">
+
+	</figure>
+	<p>현재 관리형 인증 질문 플랫폼은 여러 인증 질문 사이를 순환하며 운영되고 있습니다. 관리형 인증 질문 인스턴스는 많은 하위 인증 질문으로 구성되며, 그중 일부는 이미 확립되어 있고 효과적인 인증 질문인 반면, 나머지 인증 질문은 새롭게 실험 중인 인증 질문입니다. 모두 캡차보다 사람이 훨씬 빠르고 쉽게 완료할 수 있으며, 거의 대부분 방문자의 상호작용이 필요하지 않습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="managed-challenge-replaces-captcha-for-cloudflare">관리형 인증 질문이 Cloudflare의 캡차를 대체합니다</h3>
+		<a href="https://blog.cloudflare.com/#managed-challenge-replaces-captcha-for-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이제 Cloudflare 네트워크 전체에 걸쳐 관리형 인증 질문을 배포했습니다. 방문자에게 캡차를 표시할 때마다 관리형 인증 질문 플랫폼을 통해 표시하며, 다른 인증 질문의 성능을 확인하기 위한 벤치마크로만 사용합니다.</p>
+	<p>이제 모든 Cloudflare 고객은 방화벽 규칙에 대한 응답 옵션으로 캡차 대신<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions" target="_blank" rel="noopener noreferrer">관리형 인증 질문을 선택할</a>수 있습니다 . 또한 모든 Cloudflare 고객이 이 옵션을 선택할 수 있도록 대시보드도 업데이트했습니다.</p>
+	<p>캡차 옵션의 이름이 '레거시 캡차'로 변경된 것을 확인할 수 있습니다. 이는 캡차란 사람들이 사용해서는 안 되는 구식 도구라는 것을 더 정확하게 설명합니다. 그 결과, Cloudflare 네트워크 전반에서 캡차 사용량이 크게 감소하고 관리형 인증 질문 사용량이 크게 증가했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DuK6g4cLulBlDRNGQIbDb/0be6f7f969b976731333449a4df6bea0/image5.png" alt="" class="kg-image" width="1834" height="1024" loading="lazy">
+
+	</figure>
+	<p>위에서 언급한 바와 같이 현재 관리형 인증 질문 해결 건수(하늘색)의 9%를 캡차가 차지하고 있지만, 연말에는 이 수치가 1% 미만으로 줄어들 것입니다. 또한 위에서 회색 막대도 볼 수 있는데, 이는 고객이 방화벽 규칙 트리거에 대한 응답으로 캡차 표시를 선택한 경우를 보여주는 경우입니다. 이 숫자가 0이 되기를 바라지만, 좋은 소식은 현재 고객 중 63%가 이 인증 질문 응답 동작이 포함된 방화벽 규칙을 만들 때 캡차 대신 관리형 인증 질문을 선택한다는 것입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TZAEqYf9KGS3YrrFZAcec/e9b5173caedfae16fcc1362629de437d/image2-1.png" alt="" class="kg-image" width="1200" height="740" loading="lazy">
+
+	</figure>
+	<p>시간이 지남에 따라 이 숫자는 더 늘어날 것으로 예상됩니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3esUPPcHGlKTY5oYoatGHK/c6c5063878186c2ed55320799458d3d0/image6.png" alt="" class="kg-image" width="1999" height="1081" loading="lazy">
+
+	</figure>
+	<p>Cloudflare WAF를 사용 중인 경우, 지금 바로<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fwaf%2Ffirewall-rules" target="_blank" rel="noopener noreferrer">대시보드</a>에 로그인하여 모든 방화벽 규칙을 확인하세요. 규칙 중 "<i>레거시 캡차</i>"를 응답으로 사용하고 있는 규칙이 있다면 지금 바로 변경하세요! 대신 "<i>관리형 인증 질문</i>" 응답 옵션을 선택하세요. 현재와 동일한 수준의 보호 기능을 유지하면서 사용자에게 더 나은 경험을 제공할 수 있습니다. 현재 Cloudflare 고객이 아닌 경우, 캡차 사용을 줄일 수 있는 방법에 대해 계속 지켜봐 주세요.</p>
+</div>

@@ -1,0 +1,178 @@
+<div class="mb2 gray5">7분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/ddos-threat-report-2025-q4">English</a>, <a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2025-q4">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2025-q4">Français</a>, <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-2025-q4">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2025-q4">日本語</a>, <a href="https://blog.cloudflare.com/es-es/ddos-threat-report-2025-q4">Español</a>, <a href="https://blog.cloudflare.com/nl-nl/ddos-threat-report-2025-q4">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2025-q4">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eRGuUxJiP3sPpTpzC8A4U/6cb4e560ea682da2c762b1981852e5fe/BLOG-3098_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare 분기별 DDoS 위협 보고서 제24호에 오신 것을 환영합니다. 이 보고서에서 <a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a>은 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>분산 서비스 거부(DDoS) 공격</u></a>의 변화하는 위협 환경을 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Cloudflare 네트워크</u></a> 데이터를 기반으로 종합적으로 분석합니다. 이번 호에서는 2025년 4분기에 중점을 두고, 2025년 전체 데이터를 함께 제공합니다.</p>
+	<p>2025년 4분기는 <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>Aisuru-Kimwolf 봇넷</u></a>이 실행한 전례 없는 폭격, 이른바 “크리스마스 전야” DDoS 공격 캠페인이 특징이었습니다. 이 캠페인은 Cloudflare 고객뿐만 아니라 Cloudflare의 대시보드와 인프라를 대상으로 대규모 볼류메트릭 HTTP DDoS 공격을 감행했으며, 공격 속도는 초당 2억 요청(rps)을 초과했습니다. 이는 기록적인 31.4테라비트(Tbps) 공격이 발생한 지 몇 주 만에 일어난 일입니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="key-insights">핵심 인사이트</h2>
+		<a href="https://blog.cloudflare.com/#key-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p>2025년에는 DDoS 공격이 121% 급증하여 시간당 평균 5,376건의 공격이 자동으로 완화되었습니다.</p>
+		</li>
+		<li>
+			<p>2025년 4분기 동안 홍콩은 순위가 12계단 상승하여 세계에서 두 번째로 많은 DDoS 공격을 받은 지역이 되었습니다. 영국 또한 무려 36계단이나 상승해 여섯 번째로 공격이 집중된 지역으로 기록되었습니다.</p>
+		</li>
+		<li>
+			<p>Aisuru-Kimwolf 봇넷에 속한 감염된 Android TV가 Cloudflare 네트워크에 대규모 볼류메트릭 HTTP DDoS 공격을 가했으며, 통신사(Telco)가 가장 많은 공격을 받은 업계로 나타났습니다.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="2025-saw-a-huge-spike-in-ddos-attacks">DDoS 공격이 급증한 2025년</h2>
+		<a href="https://blog.cloudflare.com/#2025-saw-a-huge-spike-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025년 DDoS 공격 총 건수는 무려 4,710만 건으로 두 배 이상 증가했습니다. 최근 몇 년간 이러한 공격이 급증했으며, 2023년에서 2025년 사이 DDoS 공격 건수는 236%나 급증했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gWz9fvMGvTVL30YfnFL55/57749a329c2be23e45f87227221aa440/BLOG-3098_2.png" alt="BLOG-3098 2" class="kg-image" width="1482" height="908" loading="lazy">
+	</figure>
+	<p>2025년에 Cloudflare는 매시간 평균 5,376건의 DDoS 공격을 완화했는데, 이 중 3,925건은 네트워크 계층 DDoS 공격, 1,451건은 HTTP DDoS 공격이었습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cANr8wDVOOMNIb9IPvPYb/56f75509048fcd68c188fdd87f68e883/.png" alt="BLOG-3098 3" class="kg-image" width="1688" height="716" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="network-layer-ddos-attacks-more-than-tripled-in-2025">2025년 네트워크 계층 DDoS 공격은 3배 이상 증가</h3>
+		<a href="https://blog.cloudflare.com/#network-layer-ddos-attacks-more-than-tripled-in-2025" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>가장 큰 증가세는 네트워크 계층 DDoS 공격에서 나타났으며, 전년 대비 세 배 이상 증가했습니다. Cloudflare는 2025년에 3,440만 건의 네트워크 계층 DDoS 공격을 완화했으며, 2024년의 1,140만 건과 비교됩니다.</p>
+	<p>네트워크 계층 공격의 상당 부분, 약 1,350만 건은 2025년 1분기 18일간 진행된 DDoS 캠페인의 일환으로 <a href="https://www.cloudflare.com/en-gb/network-services/products/magic-transit" target="_blank" rel="noopener noreferrer"><u>Cloudflare Magic Transit</u></a>와 Cloudflare 인프라를 직접 보호하는 전 세계 인터넷 인프라를 목표로 삼았습니다. 이 공격 중 690만 건은 Magic Transit 고객을, 나머지 660만 건은 Cloudflare 자체를 대상으로 했습니다.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jomtSPOraOer8LPDxJ3Aw/603db470ecbde1362579624193807e43/BLOG-3098_4.png" alt="BLOG-3098 4" class="kg-image" width="1556" height="918" loading="lazy">
+	</figure>
+	<p>이번 공격은 멀티 벡터 DDoS 캠페인으로, <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>SYN 폭주 공격</u></a>, <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank" rel="noopener noreferrer"><u>Mirai 기반 DDoS 공격</u></a>, <a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack" target="_blank" rel="noopener noreferrer"><u>SSDP 증폭 공격</u></a> 등을 포함했습니다. 당사 시스템은 이러한 공격을 자동으로 감지하고 완화했습니다. 사실, 이번 캠페인은 <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1"><u>2025년 1분기 DDoS 위협 보고서</u></a>를 준비하던 중에야 발견되었으며, 이는 Cloudflare의 DDoS 완화가 얼마나 효과적인지를 보여주는 사례입니다.</p>
+	<p>2025년 마지막 분기에 DDoS 공격의 건수는 이전 분기에 비해 31%, 2024년에 비해 58% 증가했습니다. 네트워크 계층 DDoS 공격이 그러한 증가세를 부추겼습니다. 2025년 4분기에, 네트워크 계층 DDoS 공격은 전체 DDoS 공격의 78%를 차지했습니다. HTTP DDoS 공격 건수는 변함이 없었지만, 공격 규모는 2023년 <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack"><u>HTTP/2 Rapid Reset DDoS 캠페인</u></a> 이후 본 적 없는 수준으로 급증했습니다. 최근 이러한 급증은 <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>Aisuru-Kimwolf 봇넷</u></a>에 의해 시작되었으며, 다음 섹션에서 이에 대해 설명합니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="the-night-before-christmas-ddos-campaign">“크리스마스 전야” DDoS 캠페인</h3>
+		<a href="https://blog.cloudflare.com/#the-night-before-christmas-ddos-campaign" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025년 12월 19일 금요일, <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>Aisuru-Kimwolf 봇넷</u></a>은 Cloudflare 인프라와 Cloudflare 고객을 표적으로 대규모 볼류메트릭 DDoS 공격을 퍼붓기 시작했습니다. 이번 캠페인에서 새로웠던 점은 공격 규모였습니다. 해당 봇넷은 초당 2,000만 요청(Mrps)을 초과하는 대규모 볼류메트릭 HTTP DDoS 공격을 사용했습니다.
+
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6CMbEWh6TwRcld7gccwE81/dbe9877483861026d2fec6c0112ca8bb/BLOG-3098_5.png" alt="BLOG-3098 5" class="kg-image" width="1508" height="748" loading="lazy">
+	</figure>
+	<p>Aisuru-Kimwolf 봇넷은 주로 Android TV를 포함한 <a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank" rel="noopener noreferrer"><u>맬웨어</u></a>에 감염된 장치로 구성된 대규모 집합체입니다. 이 봇넷은 약 100만~400만 대의 감염된 호스트로 구성된 것으로 추정됩니다. 이는 핵심 인프라를 마비시키고, 대부분의 기존 클라우드 기반 DDoS 방어 솔루션을 다운시키며, 심지어 국가 전체의 연결성을 교란할 수 있는 DDoS 공격을 실행할 수 있습니다.</p>
+	<p>캠페인 기간 동안 Cloudflare의 자율 DDoS 방어 시스템은 모든 공격을 탐지하고 완화했습니다. 총 902건의 초대용량 DDoS 공격이 있었으며, 이 중 384건은 패킷 중심 공격, 329건은 비트 중심 공격, 189건은 요청 중심 공격이었고, 하루 평균 53건의 공격이 발생했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GDQWNNnHac5Ovwm4z5Bug/052d194716063d069e4ccd2ff49e4228/BLOG-3098_6.png" alt="BLOG-3098 6" class="kg-image" width="1119" height="648" loading="lazy">
+	</figure>
+	<p>캠페인 기간 동안 대규모 볼류메트릭 DDoS 공격의 평균 규모는 3Bpps, 4Tbps, 54Mrps였습니다. 캠페인 중 기록된 최대 속도는 9Bpps, 24Tbps, 205Mrps였습니다.</p>
+	<p>이를 감안하면, 205Mrps DDoS 공격 규모는 영국, 독일, 스페인의 인구를 모두 합친 수가 동시에 웹사이트 주소를 입력하고 같은 순간 ‘엔터’를 누르는 것과 맞먹는 수준입니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7N0ruuQdsq6ncG7sQOMvv2/eb092b6380378031003760697d123f9d/BLOG-3098_7.png" alt="BLOG-3098 7" class="kg-image" width="1774" height="962" loading="lazy">
+	</figure>
+	<p>극적으로 보이지만, “크리스마스 전야” 캠페인은 연중 관측된 대규모 볼류메트릭 DDoS 공격 중 일부에 불과했습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="hyper-volumetric-ddos-attacks">대규모 볼류메트릭 DDoS 공격</h3>
+		<a href="https://blog.cloudflare.com/#hyper-volumetric-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>2025년 내내, Cloudflare는 대규모 볼류메트릭 DDoS 공격의 지속적인 증가세를 관찰했습니다. 2025년 4분기에만 대규모 볼류메트릭 공격은 전 분기 대비 40% 증가했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZZAyBKHY8TST9or2kXc7b/a5927b87b686c50aa7137847cd204b74/BLOG-3098_8.png" alt="BLOG-3098 8" class="kg-image" width="1093" height="670" loading="lazy">
+	</figure>
+	<p>2025년 동안 공격 건수가 증가함에 따라 공격 규모도 함께 커졌으며, 700% 이상 성장했습니다. 그중 하나는 단 35초 만에 31.4Tbps에 달하는 DDoS 공격을 기록했습니다. 아래 그래프는 Cloudflare가 탐지하고 차단한 DDoS 공격 규모의 급격한 증가를 보여줍니다. 각각의 공격은 당시 공개적으로 보고된 최대 규모로, 세계 기록에 해당합니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fqqJ2VBvAlhnv0vIpoGZF/bd260c5a7ab673b35865e94b9e86a6d7/BLOG-3098_9.png" alt="BLOG-3098 9" class="kg-image" width="1225" height="681" loading="lazy">
+	</figure>
+	<p>다른 모든 공격과 마찬가지로, 31.4Tbps DDoS 공격도 Cloudflare의 자율 DDoS 방어 시스템에 의해 자동으로 탐지되고 완화되었습니다. 이 시스템은 Aisuru-Kimwolf와 같은 봇넷을 신속하게 파악하고 대응할 수 있었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3piM1qb6UGpxBXExV0adHn/8f1cfbb2841dce9d6b462fb71704bca2/BLOG-3098_10.png" alt="BLOG-3098 10" class="kg-image" width="1239" height="618" loading="lazy">
+	</figure>
+	<p>대부분의 대규모 볼류메트릭 DDoS 공격은 통신, 서비스 제공업체 및 이동통신사 업계의 Cloudflare 고객을 대상으로 했습니다. 게임 업계의 Cloudflare 고객과 생성형 AI 서비스를 제공하는 고객들도 집중적인 공격을 받았습니다. 마지막으로, Cloudflare 자체 인프라도 <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>HTTP 폭주</u></a>, <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack" target="_blank" rel="noopener noreferrer"><u>DNS 공격</u></a>, <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank" rel="noopener noreferrer"><u>UDP 폭주</u></a> 등 여러 공격 벡터의 대상이 되었습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="most-attacked-industries">가장 많이 공격받은 업계</h3>
+		<a href="https://blog.cloudflare.com/#most-attacked-industries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>모든 규모의 DDoS 공격을 분석한 결과, 통신, 서비스 제공업체 및 이동통신사 업계가 가장 집중적인 표적이었습니다. 이전에는 정보기술(IT) 및 서비스 업계가 이 불운한 타이틀을 차지했었습니다.</p>
+	<p>도박 및 카지노와 게임 업계가 각각 3위와 4위를 차지했습니다. 상위 10위 내에서 이번 분기의 가장 큰 변화는 컴퓨터 소프트웨어와 비즈니스 서비스 업계로, 모두 몇 단계씩 상승했습니다.&nbsp;</p>
+	<p>가장 많이 공격받는 업계는 핵심 인프라 역할을 하거나, 다른 비즈니스의 중심적 기반을 제공하며, 서비스 중단이나 지연에 대해 즉각적이고 높은 재정적 민감도를 가진 업계로 정의됩니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zmtrvUq0cXCEKlprLopWg/80e622f255fa6466f5facfa1288d571b/image8.png" alt="BLOG-3098 11" class="kg-image" width="1999" height="1184" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="most-attacked-locations">가장 많이 공격받은 위치</h3>
+		<a href="https://blog.cloudflare.com/#most-attacked-locations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DDoS 환경에서는 세계에서 가장 공격이 집중된 지역들 사이에서 예측 가능한 안정성과 극적인 변화가 동시에 나타났습니다. 중국, 독일, 브라질, 미국과 같은 표적이 상위 다섯 개 지역을 차지하며, 공격자에게 지속적으로 매력적인 표적이 되었습니다.&nbsp;</p>
+	<p>홍콩은 무려 12단계나 뛰어 2위에 오르는 등 중요한 변화를 겪었습니다. 그러나 더 큰 이슈는 영국의 급등으로, 이번 분기에 무려 36계단 상승하며 6번째로 공격이 집중된 지역이 되었습니다.&nbsp;&nbsp;</p>
+	<p>베트남이 가장 공격을 많이 받은 지역 중 7위를 차지했고, 아제르바이잔이 8위, 인도가 9위, 싱가포르가 10위를 차지했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fbfabacHT9WNKaZLhShlP/465f20da2e2f728692d5c22fc788a0a3/image10.png" alt="BLOG-3098 12" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="top-attack-sources">상위 공격 출처</h3>
+		<a href="https://blog.cloudflare.com/#top-attack-sources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>방글라데시는 2025년 4분기에 인도네시아를 제치고 가장 많은 DDoS 공격 출처가 되었습니다. 인도네시아는 1년간 최다 공격 출처 자리를 차지하다가 3위로 떨어졌습니다. 에콰도르 또한 2계단 상승해 두 번째로 많은 공격 출처 국가가 되었습니다.</p>
+	<p>특히 아르헨티나는 무려 20계단 상승해 네 번째로 많은 DDoS 공격 출처 국가가 되었습니다. 홍콩은 3계단 올라 5위를 차지했고, 그 뒤를 우크라이나가 6위로 이었고, 베트남, 대만, 싱가포르, 페루가 뒤를 이었습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67THFzBjHYivQwttU61U9a/f8f5fe3afcca9495cb7d5fb7f61220fa/image5.png" alt="BLOG-3098 13" class="kg-image" width="1999" height="1467" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="top-source-networks">상위 출처 네트워크</h2>
+		<a href="https://blog.cloudflare.com/#top-source-networks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>공격 발생 네트워크 상위 10위 목록은 인터넷 거대 기업들의 리스트처럼 보이며, 현대 DDoS 공격의 구조에 대한 흥미로운 이야기를 보여줍니다. 공통점은 분명합니다. 공격자는 전 세계에서 가장 접근 가능하고 강력한 네트워크 인프라, 주로 대규모 공개 서비스를 활용하고 있습니다.&nbsp;</p>
+	<p>대부분의 DDoS 공격은 클라우드 컴퓨팅 플랫폼 및 클라우드 인프라 제공업체와 연관된 IP 주소에서 발생하며, 여기에는 <a href="https://radar.cloudflare.com/as14061" target="_blank" rel="noopener noreferrer"> <u>DigitalOcean(AS 14061)</u></a>, <a href="https://radar.cloudflare.com/as8075" target="_blank" rel="noopener noreferrer"> <u>Microsoft(AS 8075)</u></a>, <a href="https://radar.cloudflare.com/as132203" target="_blank" rel="noopener noreferrer"> <u>Tencent(AS 132203)</u></a>, <a href="https://radar.cloudflare.com/as31898" target="_blank" rel="noopener noreferrer"><u>Oracle(AS 31898)</u></a>, <a href="https://radar.cloudflare.com/as24940" target="_blank" rel="noopener noreferrer"> <u>Hetzner(AS 24940)</u></a>가 포함됩니다. 이는 쉽게 프로비저닝되는 가상 머신과 대규모 공격 사이의 강한 연관성을 보여줍니다. 이러한 클라우드 기반 출처는 주로 미국에 집중되어 있으며, 그 뒤를 이어 전통적인 통신사(Telco)와 연관된 IP 주소에서 발생하는 공격이 상당한 비중을 차지합니다. 이러한 통신사들은 주로 아시아태평양 지역(베트남, 중국, 말레이시아, 대만 포함)에 위치하며, 상위 10위 목록의 나머지를 구성합니다.</p>
+	<p>이러한 지리적, 조직적 다양성은 두 갈래로 이루어진 공격 현실을 확인시켜 줍니다. 상위 공격 출처의 대부분은 전 세계 클라우드 허브에서 발생하지만, 실제 문제는 전 세계에 걸쳐 있으며, 인터넷의 핵심 경로를 통해 전달됩니다. 많은 DDoS 공격에서 수천 개의 다양한 출처 ASN이 관측되며, 이는 봇넷 노드가 진정으로 전 세계에 분포하고 있음을 보여줍니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ga5hHIgrc1pTwosbpx9di/458a87c028e8d51e10c7c56b416d3b64/BLOG-3098_14.png" alt="BLOG-3098 14" class="kg-image" width="1560" height="597" loading="lazy">
+	</figure>
+	<p>호스팅 공급자, 클라우드 컴퓨팅 플랫폼 및 인터넷 서비스 공급자들이 이러한 공격을 시작하는 악성 IP 주소/계정을 식별하고 차단하도록 지원하기 위해, Cloudflare는 DDoS 공격에 대한 Cloudflare만의 고유한 관측 지점을 활용하여 <a href="https://developers.cloudflare.com/ddos-protection/botnet-threat-feed" target="_blank" rel="noopener noreferrer"><u>서비스 공급자를 위한 무료 DDoS 봇넷 위협 피드</u></a>를 제공합니다.&nbsp;</p>
+	<p>전 세계적으로 800여 개의 네트워크에서 이 피드에 가입했으며, 커뮤니티 전반에서 봇넷 노드를 제거하기 위한 협업이 잘 이루어지고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-defend-the-internet">인터넷 보호 지원</h3>
+		<a href="https://blog.cloudflare.com/#helping-defend-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DDoS 공격은 빠르게 정교해지고 규모가 커져, 이전에는 상상할 수 없던 수준을 넘어섰습니다. 이러한 변화하는 위협 환경은 많은 조직이 대응 속도를 유지하는 데 상당한 어려움을 줍니다. 현재 온프레미스 완화 장치나 온디맨드 스크러빙 센터에 의존하는 조직은 방어 전략을 재평가하는 것이 도움이 될 수 있습니다.</p>
+	<p>Cloudflare는 공격 규모, 지속 시간, 볼륨에 관계없이 모든 고객에게 <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"> <u>무료, 무제한 DDoS 보호</u></a> 기능을 제공하며, 이를 위해 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"> <u>방대한 글로벌 네트워크</u></a>와 <a href="https://developers.cloudflare.com/ddos-protection/about" target="_blank" rel="noopener noreferrer"> <u>자율 DDoS 완화 시스템</u></a>을 활용합니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="about-cloudforce-one">Cloudforce One 소개</h3>
+		<a href="https://blog.cloudflare.com/#about-cloudforce-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>인터넷을 방어한다는 사명을 기반으로, <a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a>은 웹의 약 20%를 보호하는 Cloudflare 전역 네트워크의 원격 측정을 활용하여 위협 연구 및 운영 대응을 주도하고 있으며, 전 세계 수백만 조직의 중요 시스템을 보호합니다.</p>
+</div>

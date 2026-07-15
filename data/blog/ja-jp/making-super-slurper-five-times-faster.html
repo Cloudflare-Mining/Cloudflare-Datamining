@@ -1,0 +1,207 @@
+<div class="mb2 gray5">8分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/making-super-slurper-five-times-faster">English</a>、<a href="https://blog.cloudflare.com/zh-tw/making-super-slurper-five-times-faster">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/making-super-slurper-five-times-faster">Français</a>、<a href="https://blog.cloudflare.com/de-de/making-super-slurper-five-times-faster">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/making-super-slurper-five-times-faster">한국어</a>、<a href="https://blog.cloudflare.com/es-es/making-super-slurper-five-times-faster">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/making-super-slurper-five-times-faster">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/IUEyoRTrUQ9O1wJzOyPQ3/1c1633d8685719af94afc3dd732533fa/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer"><u>Super Slurper</u></a>は、クラウドオブジェクトストレージプロバイダーと<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>間の大規模なデータ転送を簡単に行うために設計された、Cloudflareのデータ移行ツールです。ローンチ以来、何千もの開発者がSuper Slurperを使って、AWS S3、Google Cloud Storage、<a href="https://developers.cloudflare.com/r2/data-migration/super-slurper/#supported-cloud-storage-providers" target="_blank" rel="noopener noreferrer"><u>その他のS3互換サービス</u></a>からR2へ、数ペタバイトに及ぶデータを移行してきました。</p>
+	<p>しかし、当社は移行をさらに高速化する機会を見出しました。Cloudflareの開発者プラットフォームを使い、<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>を土台としてSuper Slurperのアーキテクチャを一から再構築し、転送速度を最大5倍に上げました。この記事では、オリジナルのアーキテクチャ、特定されたパフォーマンスのボトルネック、その解決方法、それらの改善が実世界にもたらす影響について掘り下げます。</p>
+	<div class="flex anchor relative">
+		<h2 id="initial-architecture-and-performance-bottlenecks">当初のアーキテクチャとパフォーマンスのボトルネック</h2>
+		<a href="https://blog.cloudflare.com/#initial-architecture-and-performance-bottlenecks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Super Slurperは当初、<a href="https://developers.cloudflare.com/images/upload-images/sourcing-kit" target="_blank" rel="noopener noreferrer"><u>SourcingKit</u></a>とアーキテクチャを共有していました。SourcingKitは、AWS S3から<a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Cloudflare Images</u></a>へ画像を一括インポートするために構築されたツールです。SourcingKitはKubernetes上にデプロイされ、<a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>サービスと共に稼働しました。当社はSuper Slurperの構築を始めた時に、Super Slurperを独自のKubernetesネームスペースに分割し、いくつかの新しいAPIを導入して、オブジェクトストレージのユースケースで使いやすくしました。このセットアップはうまく機能し、何千人もの開発者がR2へデータを移行するのに役に立ちました。</p>
+	<p>しかし、課題がなかったわけではありません。SourcingKitは、ペタバイト級の大容量転送に必要なスケールを処理するように設計されていませんでした。SourcingKitもSuper Slurperも、当社のコアデータセンターの1つにあるKubernetesクラスタ上で稼働していました。つまり、計算リソースと帯域幅をCloudflareのコントロールプレーン、分析、その他のサービスと共用しなければならなかったのです。こうしたリソースの制約は、移行件数が増えるにつれて明らかなボトルネックになりました。</p>
+	<p>オブジェクトストレージプロバイダー間でデータを転送するサービスの場合、ジョブはシンプルです。ソースからオブジェクトをリスト化し、宛先にコピーし、それを繰り返すだけです。これがまさに当初のSuper Slurperの仕組みです。ソースバケットからオブジェクトをリスト化し、そのリストをPostgresベースのキュー（<code>pg_queue</code>）へプッシュし、このキューから一定のペースでオブジェクトをコピーしていました。オブジェクトストレージ移行の規模を考えると、必然的に帯域幅の使用量が高くなる傾向にありました。そのため、スケーリングが困難でした。</p>
+	<p>当社のコアデータセンターだけでは帯域幅の制約があったため、それに対処するために<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を導入しました。コアデータセンターでデータのコピーを処理するのではなく、Workerを呼び出して実際のコピーを行うようにしたのです：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EgtILMnu88y3VzUvYLlPl/479e2f99a62155f7bd8047f98a2a9cd2/1_.png" alt="" class="kg-image" width="1284" height="894" loading="lazy">
+	</figure>
+	<p>Super Slurperの利用が増えるにつれて、Kubernetesリソースの消費量も増加しました。データ転送中のかなりの時間が、計算集約型のタスクの実行にではなく、ネットワークI/Oやストレージを待つのに費やされていました。そこで必要だったのはメモリやCPUの増設ではなく、コンカレンシーを高めることだったのです。</p>
+	<p>レプリカの数を増やし続けて需要に対応しましたが、終いには壁に突き当たりました。問題はスケーラビリティでした。数十ポッドで稼働していましたが、それを数桁上回る規模が必要だったのです。</p>
+	<p>私たちは、継承したアーキテクチャに依拠するのではなく、第一原理からアプローチ全体を再考することにしました。<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queuesを使った大まかな概念実証を一週間ほどで作成しました。</u></a>ソースバケットからオブジェクトをリスト化し、キューへプッシュし、キューからメッセージを消費して転送を開始しました。最初の実装の仕組みとよく似ているように聞こえますが、Cloudflareの開発者プラットフォーム上で構築したことにより、以前より数桁大きな規模の自動スケーリングが可能になりました。</p>
+	<ul>
+		<li>
+			<p><b>Cloudflare Queues</b>：非同期的なオブジェクト転送と、移行するオブジェクトの数に合わせた自動スケーリングが可能です。</p>
+		</li>
+		<li>
+			<p><b>Cloudflare Workers</b>：Kubernetesのオーバーヘッドなしで軽量の計算タスクを実行し、プロセスの各部分の実行場所を最適化することで、遅延を短縮し、パフォーマンスを向上させます。</p>
+		</li>
+		<li>
+			<p><b>SQLiteベースのDurable Objects（DO）</b>：完全に分散されたデータベースとして機能し、単一のPostgreSQLインスタンスの制限を排除します。</p>
+		</li>
+		<li>
+			<p><b>Hyperdrive</b>：オリジナルのPostgreSQLデータベースからジョブ履歴に高速アクセスし、アーカイブストアとして保持します。</p>
+		</li>
+	</ul>
+	<p>いくつかのテストを実施した結果、小規模な転送（数百のオブジェクト）では、概念実証のスピードが当初の実装よりも遅いことがわかりました。しかし、転送が数百万オブジェクトにスケールアップすると、当初実装のパフォーマンスに匹敵するレベルに達し、最終的にはそれを上回りました。これこそ、当社が概念実証から本番環境への移行に時間を投資する必要があるというサインでした。</p>
+	<p>当社は概念実証のハックを取り除き、安定性の確保に取り組み、転送をさらに高いコンカレンシーに拡張する新しい方法を見つけました。数回のイテレーションの後に、満足のいくものにたどり着きました。</p>
+	<div class="flex anchor relative">
+		<h2 id="new-architecture-workers-queues-and-durable-objects">新しいアーキテクチャ： Workers、Queues、Durable Objects</h2>
+		<a href="https://blog.cloudflare.com/#new-architecture-workers-queues-and-durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h4 id="processing-layer-managing-the-flow-of-migration">処理層：移行フローの管理</h4>
+		<a href="https://blog.cloudflare.com/#processing-layer-managing-the-flow-of-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ieLgJoWErEYEEa90QaXLC/81470021a99486a974753301d2d2f809/2.png" alt="" class="kg-image" width="1999" height="703" loading="lazy">
+	</figure>
+	<p>処理層の中心となるのは、<b>キュー、コンシューマー、ワーカー</b>です。プロセスは次のようになります：</p>
+	<div class="flex anchor relative">
+		<h4 id="kicking-off-a-migration">移行を開始</h4>
+		<a href="https://blog.cloudflare.com/#kicking-off-a-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>クライアントが移行をトリガーする際は、当社の<b>API Worker</b>にリクエストが送信されることから始まります。このワーカーは移行の詳細を取得してデータベースに保存し、<b>List Queue</b>にメッセージを追加してプロセスを開始します。</p>
+	<div class="flex anchor relative">
+		<h4 id="listing-source-bucket-objects">ソースバケットオブジェクトのリスト</h4>
+		<a href="https://blog.cloudflare.com/#listing-source-bucket-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>事が速く進み始めるのは<b>List Queue Consumer</b>においてです。List Queue Consumerはキューからメッセージをプルし、ソースバケットからオブジェクトリストを取得し、必要なフィルタを適用し、重要なメタデータをデータベースに保存します。次に、オブジェクト転送メッセージを <b>Transfer Queue</b>のキューに入れることにより、新しいタスクを作成します。</p>
+	<p>新しい作業のバッチをすぐにキューに入れ、コンカレンシー（同時実行数）を最大化します。スロットリングメカニズムが組み込まれており、依存関係するシステムがダウンするなどの予期せぬ障害が発生した時にキューにメッセージを追加できなくなっています。これにより、障害中も安定性を維持し過負荷を防ぐことができます。</p>
+	<div class="flex anchor relative">
+		<h4 id="efficient-object-transfers">効率的なオブジェクト転送</h4>
+		<a href="https://blog.cloudflare.com/#efficient-object-transfers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Transfer Queue Consumer</b> Workersは、オブジェクト転送メッセージをキューからプルし、データベースのオブジェクトキーをロックすることによって、各オブジェクトが一度だけ処理されるようにします。転送が終了するとオブジェクトのロックは解除されます。大きなオブジェクトの場合は管理可能なチャンクに分割し、マルチパートアップロードとして転送します。</p>
+	<div class="flex anchor relative">
+		<h4 id="handling-failures-gracefully">スムーズな障害対応</h4>
+		<a href="https://blog.cloudflare.com/#handling-failures-gracefully" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>どの分散システムでも障害は避けられず、確実な対応をする必要がありました。一時的な障害が発生した場合の自動リトライを実装したため、問題によって移行の流れが妨げられることはありません。しかし、リトライで解決できない場合は、メッセージは<b>Dead Letter Queue（DLQ）</b>に送られ、そこで後のレビューと解決のために記録されます。</p>
+	<div class="flex anchor relative">
+		<h4 id="job-completion-lifecycle-management">ジョブ完了とライフサイクル管理</h4>
+		<a href="https://blog.cloudflare.com/#job-completion-lifecycle-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>すべてのオブジェクトがリストにされ、転送が進行中になると、<b>Lifecycle Queue Consumer</b>はすべてを監視します。進行中の転送を監視し、オブジェクトが取り残されないようにします。すべての転送が完了すると、ジョブが完了とマークされ、移行プロセスが終了します。</p>
+	<div class="flex anchor relative">
+		<h3 id="database-layer-durable-storage-legacy-data-retrieval">データベース層：耐久性の高いストレージとレガシーデータの取得</h3>
+		<a href="https://blog.cloudflare.com/#database-layer-durable-storage-legacy-data-retrieval" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OhENQndBrRkVLNmWQ4mWP/815173a64ec1943b7b626b02247d4887/3.png" alt="" class="kg-image" width="1999" height="1339" loading="lazy">
+	</figure>
+	<p>私たちは新しいアーキテクチャを構築するにあたり、膨大なデータセットを処理できてジョブ履歴の取得が可能な堅牢なソリューションが必要であることを認識していました。そこで使ったのが<b>Durable Objects（DO）</b>と<b>Hyperdrive</b>の組み合わせです。</p>
+	<div class="flex anchor relative">
+		<h4 id="durable-objects">Durable Objects</h4>
+		<a href="https://blog.cloudflare.com/#durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>移行ジョブを追跡するため、各アカウントに専用のDurable Objectを与えました。各<b>ジョブのDO</b>には、バケット名、ユーザーオプション、ジョブの状態などの重要な詳細が保存されます。これにより、すべてが整理され、簡単に管理できるようになりました。また、大規模な移行をサポートするために、転送のためにキューに入れられたすべてのオブジェクトを管理し、転送状態、オブジェクトキー、追加のメタデータを保存する<b>Batch DO</b>も追加しました。</p>
+	<p>移行が<b>数十億ものオブジェクト</b>にスケールアップしたため、ストレージに関してもクリエイティブになる必要がありました。リクエストの負荷を分散するシャーディング戦略を実装してボトルネックを防止し、<b>SQLite DOの10 GB</b>のストレージ制限を回避しました。オブジェクトが転送されると、その詳細をクリーンアップし、その過程でストレージスペースを最適化します。10億のオブジェクトキーの保存に、びっくりするほどのストレージが必要なのです。</p>
+	<div class="flex anchor relative">
+		<h4 id="hyperdrive">Hyperdrive</h4>
+		<a href="https://blog.cloudflare.com/#hyperdrive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>何年もの移行履歴のあるシステムの再構築でしたので、過去の移行の詳細をすべて保存し、アクセス可能にする方法が必要でした。Hyperdriveは、レガシーシステムへのブリッジとして機能し、当社のコア<b>PostgreSQL</b>データベースからジョブ履歴をシームレスに取得することを可能にします。これは単なるデータ検索メカニズムではなく、複雑な移行シナリオのためのアーカイブです。</p>
+	<div class="flex anchor relative">
+		<h2 id="results-super-slurper-now-transfers-data-to-r2-up-to-5x-faster">結果：Super Slurperは最大5倍の速さでR2へデータを転送</h2>
+		<a href="https://blog.cloudflare.com/#results-super-slurper-now-transfers-data-to-r2-up-to-5x-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>結局、データ転送を高速化するという目標は実際に達成できたのでしょうか？</p>
+	<p>AWS S3からR2へ75,000個のオブジェクトを移行するテストを実施しました。前の実装では転送に15分30秒かかりました。パフォーマンス改善の後は、同じ移行がわずか3分25秒で完了しました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57Pmt9tVNGYWvmRQQyvYE9/43443656bc81743485c3bb0f7d65b134/4.png" alt="" class="kg-image" width="1003" height="505" loading="lazy">
+	</figure>
+	<p>2月に新サービスを利用した本番移行がスタートした時、特にオブジェクトサイズの分布によって、さらに大きな改善が見られたケースもありました。Super Slurperは<a href="https://blog.cloudflare.com/r2-super-slurper-ga"><u>約2年前</u></a>からありますが、パフォーマンスが向上し、より多くのデータを移行できるようになりました。Super Slurperがコピーした全オブジェクトの35%が、ここ2か月の移行です。</p>
+	<div class="flex anchor relative">
+		<h2 id="challenges">課題</h2>
+		<a href="https://blog.cloudflare.com/#challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>新しいアーキテクチャの最大の課題の1つは、重複メッセージの処理でした。重複が発生する可能性はいくつかあります：</p>
+	<ul>
+		<li>
+			<p>Queuesは少なくとも1回の配信を行います。つまり、配信を保証するために、コンシューマーは同じメッセージを複数回受信する場合があるということです。</p>
+		</li>
+		<li>
+			<p>失敗と再試行で、明らかな重複が発生する場合があります。例えば、オブジェクトが既に転送された後にDurable Objectへのリクエストが失敗した場合、リトライで同じオブジェクトが再処理される可能性があります。</p>
+		</li>
+	</ul>
+	<p>正しく処理されないと、同じオブジェクトが複数回転送されることになります。これを解決するために、各オブジェクトが正確に記録され、転送が一度だけ行われるようにするいくつかの戦略を実装しました：</p>
+	<ol>
+		<li>
+			<p>リストは順次処理されるため（例えば、オブジェクト2の取得にはオブジェクト1のリストからの継続トークンが必要）、各リスト化操作にシークエンスIDを割り当てています。これにより、重複するリストを検出し、複数のプロセスが同時に開始されることを防げます。データベースやキューの操作完了を待たずとも次のバッチをリスト化できるため、特に有用です。リスト2が失敗すれば再試行できます。リスト3が既に開始されている場合は、不要な再試行を省くことができます。</p>
+		</li>
+		<li>
+			<p>転送が開始されると各オブジェクトはロックされ、同じオブジェクトの並列転送を防ぎます。転送が正常に完了すると、データベースからそのオブジェクトのキーを削除することでロックが解除されます。そのオブジェクトのメッセージが後で再び表示されたとしても、キーがもはや存在しなければ、既に転送されたと考えて大丈夫です。</p>
+		</li>
+		<li>
+			<p>カウントの正確性の維持は、データベースのトランザクションに依存しています。オブジェクトがロック解除されなければ、カウントは変わりません。同様に、データベースへのオブジェクトキー追加が失敗すればカウントは更新されず、操作は後で再試行されます。</p>
+		</li>
+		<li>
+			<p>最後の安全策として、オブジェクトが既にターゲットバケットに存在し、移行開始後に公開されたことを確認します。確認できれば、当社のプロセス（または別のプロセス）によって転送されたと想定し、スキップします。</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17zkULEDjrPDlG6mNIpomw/5c95bde32595daf0684a558729ee055a/5.png" alt="" class="kg-image" width="1200" height="383" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-super-slurper">Super Slurperの今後の展開は？</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-super-slurper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>私たちは、Super Slurperをより速く、よりスケーラブルにし、さらに使いやすくする方法を常に模索しています。今回の改善はほんの始まりに過ぎません。</p>
+	<ul>
+		<li>
+			<p>当社は最近、どの<a href="https://developers.cloudflare.com/changelog/2025-02-24-r2-super-slurper-s3-compatible-support" target="_blank" rel="noopener noreferrer"><u>S3互換ストレージプロバイダー</u></a>からでも移行できる機能をローンチしました！</p>
+		</li>
+		<li>
+			<p>データ移行は、現在のところアカウントあたり同時移行3回に制限されていますが、この制限を引き上げたいと考えています。それにより、オブジェクトのプレフィックスを別の移行に分割して並列処理することができ、バケットの移行速度を大幅に向上させることができます。Super Slurperの詳細と既存のオブジェクトストレージからR2へのデータ移行の方法については、当社の<a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</p>
+		</li>
+	</ul>
+	<p>P.S.今回のアップデートの一環として、APIとのやり取りを簡素化したため、移行を<a href="https://developers.cloudflare.com/api/resources/r2/subresources/super_slurper" target="_blank" rel="noopener noreferrer"><u>プログラムで管理</u></a>できるようになりました！</p>
+</div>

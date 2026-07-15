@@ -1,0 +1,339 @@
+<div class="mb2 gray5">10 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/application-security-report-2024-update">English</a>, <a href="https://blog.cloudflare.com/zh-tw/application-security-report-2024-update">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/application-security-report-2024-update">Français</a>, <a href="https://blog.cloudflare.com/de-de/application-security-report-2024-update">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/application-security-report-2024-update">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/application-security-report-2024-update">한국어</a> y <a href="https://blog.cloudflare.com/zh-cn/application-security-report-2024-update">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iGqYMDZ2E4bmRonFyd2mf/157ee2fe65df66a5503da1c780e539a6/application-security-report-2024-update.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>En los últimos doce meses, el panorama de la seguridad en Internet ha cambiado drásticamente. La incertidumbre geopolítica, junto con el hecho de que en 2024 se celebren elecciones en muchos países de todo el mundo, ha provocado un aumento considerable de las actividades relacionadas con el tráfico malicioso en Internet. En este informe, analizamos la perspectiva de Cloudflare sobre la seguridad de las aplicaciones de Internet.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/QISWKhi85GFq3Aqcj9NSX/a983a69c4df14e83712ecc0beb71117a/AD_4nXftYZ9tWp6nRYAEltNHH2LVZZDWKRMZn4Y8oTwdLKuFY-wcPHiULhXzJouGXdjVVDpCeR9T63J_cCxqSzKoq4QsgeXVxQ7MmkL5GS0muw5jhWFRr1fhfpVoH314" alt="Application Security report: 2024 update" class="kg-image" width="1600" height="900" loading="lazy">
+
+	</figure>
+	<p>Este informe es la cuarta edición de nuestro informe sobre la seguridad de las aplicaciones y es una actualización oficial de nuestro <a href="https://blog.cloudflare.com/application-security-report-q2-2023">informe del segundo trimestre de 2023</a>. Como novedad, incluye una sección centrada en la seguridad del lado cliente en el contexto de las aplicaciones web.</p>
+	<p>En el informe analizamos distinta información. Desde un punto de vista global, el tráfico mitigado en toda la red representa ahora un promedio del 7 %, y las mitigaciones de WAF y de bots generan más de la mitad de ese tráfico. Aunque los ataques DDoS siguen siendo el principal vector de ataque utilizado contra las aplicaciones web, también vale la pena tener en cuenta los ataques CVE selectivos, ya que hemos observado explotaciones de vulnerabilidades que se han producido tan solo 22 minutos después del lanzamiento de una prueba de concepto.</p>
+	<p>Si nos centramos en los bots, aproximadamente una tercera parte de todo el tráfico que observamos está automatizado, y la gran mayoría (93 %) de ese tráfico no lo generan bots de la lista verificada de Cloudflare y es potencialmente malicioso.</p>
+	<p>El tráfico de API también sigue creciendo, ya que representa el 60 % de todo el tráfico, y quizás lo más preocupante es que las organizaciones tienen hasta una cuarta parte de sus puntos finales de la API no contabilizados.</p>
+	<p>También abordamos la seguridad del lado del cliente y la proliferación de integraciones de terceros en las aplicaciones web. De promedio, los sitios empresariales integran 47 puntos finales de terceros, según los datos de Page Shield.</p>
+	<p>También vale la pena mencionar que, desde el último informe, nuestra red, de la que recopilamos los datos y la información, es más grande y más rápida: ahora procesamos un promedio de 57 millones de solicitudes HTTP/segundo (<b>+23,9 %</b> interanual) y 77 millones en su punto máximo (<b>+22,2 %</b> interanual). Desde la perspectiva del DNS, gestionamos 35 millones de consultas DNS por segundo (<b>+40 %</b> interanual). Es la suma de las solicitudes autoritativas y de resolución atendidas por nuestra infraestructura.</p>
+	<p>Quizá sea aún más destacado que, si nos centramos solo en las solicitudes HTTP, en el primer trimestre de 2024 Cloudflare bloqueó un promedio de 209 000 millones de ciberamenazas al día (<b>+86,6 %</b> interanual). Se trata de un aumento considerable en términos relativos en comparación con el mismo periodo del año pasado.</p>
+	<p>Como de costumbre, debemos definir nuestros términos antes de empezar.</p>
+	<div class="flex anchor relative">
+		<h2 id="definitions">Definiciones</h2>
+		<a href="https://blog.cloudflare.com/#definitions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En este informe, haremos referencia a los términos siguientes:</p>
+	<ul>
+		<li>
+			<p><b>Tráfico mitigado:</b> cualquier solicitud HTTP* de un visitante a la que la plataforma de Cloudflare haya aplicado una acción de "terminación". Estas acciones son: <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank" rel="noopener noreferrer"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank" rel="noopener noreferrer"><code>JS_CHALLENGE</code></a> y <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank" rel="noopener noreferrer"><code>MANAGED_CHALLENGE</code></a>. No incluye las solicitudes a las que se aplicaron las siguientes acciones: <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code>. También representaron un porcentaje relativamente pequeño de las solicitudes. Además, hemos mejorado nuestro cálculo con respecto a las acciones de tipo <code>CHALLENGE</code> para garantizar que solo los desafíos no resueltos se contabilicen como mitigados. Puedes encontrar una &nbsp;<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank" rel="noopener noreferrer">descripción detallada de las acciones</a> en nuestra documentación para desarrolladores. Esto no ha cambiado desde el informe del año pasado.</p>
+		</li>
+		<li>
+			<p><b>Tráfico de bots/tráfico automatizado</b>: cualquier solicitud HTTP* que el sistema de <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">gestión de bots</a> de Cloudflare identifique que ha sido generada por un bot. Incluye las solicitudes con una <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">puntuación de bot</a> entre <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">1 y 29</a>, ambas inclusive. Esto no ha cambiado desde el informe del año pasado.</p>
+		</li>
+		<li>
+			<p><b>Tráfico de API</b>: cualquier solicitud HTTP* con un tipo de contenido de respuesta XML o JSON. Cuando el tipo de contenido de la respuesta no está disponible, como en el caso de las solicitudes mitigadas, se utiliza en su lugar el tipo de contenido Accept equivalente (especificado por el agente de usuario). En este último caso, el tráfico de API no se tendrá en cuenta en su totalidad, pero a efectos de información sigue proporcionando una buena representación. Esto no ha cambiado desde el informe del año pasado.</p>
+		</li>
+	</ul>
+	<p>A menos que se indique lo contrario, el periodo evaluado en esta publicación es el periodo comprendido entre el 1 de abril de 2023 y el 31 de marzo de 2024, ambos inclusive.</p>
+	<p>Por último, ten en cuenta que los datos se calculan de acuerdo solo con el tráfico observado en la red de Cloudflare, y no representan necesariamente los patrones de tráfico HTTP globales de Internet.</p>
+	<p><sup>*Cuando hacemos referencia al tráfico HTTP, nos referimos tanto a tráfico HTTP como a tráfico HTTPS.</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="global-traffic-insights">Información del tráfico global</h2>
+		<a href="https://blog.cloudflare.com/#global-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="average-mitigated-daily-traffic-increases-to-nearly-7">El tráfico diario promedio mitigado aumenta a casi un 7 %</h3>
+		<a href="https://blog.cloudflare.com/#average-mitigated-daily-traffic-increases-to-nearly-7" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>En comparación con el periodo anterior de 12 meses, Cloudflare mitigó un mayor porcentaje de tráfico de la capa de aplicación y de ataques DDoS a esta capa entre el segundo trimestre de 2023 y el primer trimestre de 2024, pasando del 6 % al 6,8 %.</p>
+	<p><b>Figura 1:</b> Porcentaje de aumento del tráfico HTTP mitigado en los últimos 12 meses</p>
+	<p>Durante los ataques globales a gran escala, podemos observar picos de tráfico mitigado que representan casi el 12 % de todo el tráfico HTTP. Se trata de picos mucho mayores de los que hemos observado hasta la fecha en toda nuestra red.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HrbJsLZMv12tBdVLAJEwk/56519fe3c06a1996324ba7a0e710fe5e/unnamed-6.png" alt="" class="kg-image" width="1600" height="490" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="waf-and-bot-mitigations-accounted-for-53-9-of-all-mitigated-traffic">Las mitigaciones de WAF y de bots representaron el 53,9 % de todo el tráfico mitigado</h3>
+		<a href="https://blog.cloudflare.com/#waf-and-bot-mitigations-accounted-for-53-9-of-all-mitigated-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Conforme la plataforma de Cloudflare sigue exponiendo señales adicionales para identificar el tráfico potencialmente malicioso, los clientes han estado utilizando activamente estas señales en las reglas personalizadas del WAF para mejorar su postura de seguridad. Algunos ejemplos de señales son nuestra solución <a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer">WAF Attack Score</a>, que identifica la carga malintencionada, y nuestra <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">puntuación de bots</a>, que identifica el tráfico automatizado.</p>
+	<p>Tras las mitigaciones del WAF y de bots, las reglas DDoS HTTP son la segunda solución que más contribuye al tráfico mitigado. La reputación de dirección IP (que utiliza nuestra <a href="https://developers.cloudflare.com/waf/tools/security-level" target="_blank" rel="noopener noreferrer">puntuación de amenaza de dirección IP</a> para bloquear el tráfico) y las reglas de acceso (que son simplemente bloqueos de dirección IP y de país) ocupan la tercera y cuarta posición, respectivamente.</p>
+	<p><b>Figura 2: Tráfico mitigado por grupo de productos de Cloudflare</b></p>
+	<div class="flex anchor relative">
+		<h3 id="cves-exploited-as-fast-as-22-minutes-after-proof-of-concept-published">Explotación de CVE en tan solo 22 minutos después de la publicación de la prueba de concepto</h3>
+		<a href="https://blog.cloudflare.com/#cves-exploited-as-fast-as-22-minutes-after-proof-of-concept-published" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/l9emHl05MUfrpqsLehyMr/51e8d8d327a5d78d90126de82bebcc38/unnamed--5--3.png" alt="" class="kg-image" width="1600" height="713" loading="lazy">
+
+	</figure>
+	<p><a href="https://www.cloudflare.com/learning/security/threats/zero-day-exploit" target="_blank" rel="noopener noreferrer">Las vulnerabilidades de día cero</a> (también conocidas como amenazas de día cero) van en aumento, al igual que la velocidad con la que las CVE divulgadas se utilizan como arma. En 2023, se <a href="https://cloud.google.com/blog/topics/threat-intelligence/2023-zero-day-trends" target="_blank" rel="noopener noreferrer">explotaron en el entorno</a> 97 vulnerabilidades de día cero, lo que se suma a un aumento del 15 % de las <a href="https://www.cve.org/About/Overview" target="_blank" rel="noopener noreferrer">CVE</a> divulgadas entre 2022 y 2023.</p>
+	<p>En cuanto a los intentos de explotación de CVE contra los clientes, Cloudflare observó principalmente actividad de exploración, seguida de inyecciones de comandos, y algunos intentos de explotación de vulnerabilidades que tenían pruebas de concepto disponibles en línea, entre ellas, <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-50164" target="_blank" rel="noopener noreferrer">CVE-2023-50164</a> y <a href="https://nvd.nist.gov/vuln/detail/cve-2022-33891" target="_blank" rel="noopener noreferrer">CVE-2022-33891</a> de Apache, <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-29298" target="_blank" rel="noopener noreferrer">CVE-2023- 29298</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38203" target="_blank" rel="noopener noreferrer">CVE-2023-38203</a> y <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-26360" target="_blank" rel="noopener noreferrer">CVE-2023-26360</a> de Coldfusion y <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-35082" target="_blank" rel="noopener noreferrer">CVE-2023-35082</a> de MobileIron.</p>
+	<p>Esta tendencia de la actividad de intentos de explotación de CVE indica que los atacantes se dirigen primero a los objetivos más fáciles, y es probable que tengan éxito en algunos casos dada la actividad constante relacionada con vulnerabilidades antiguas.</p>
+	<p>Como ejemplo, Cloudflare observó intentos de explotación de <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-27198" target="_blank" rel="noopener noreferrer">CVE-2024-27198</a> (omisión de autenticación de JetBrains TeamCity) a las 19:45 UTC del 4 de marzo, tan solo 22 minutos después de la publicación del código de prueba de concepto.</p>
+	<p><b>Figura 3:</b> Cronología de la omisión de la autenticación de JetBrains TeamCity</p>
+	<p>La velocidad de explotación de las CVE divulgadas suele ser más rápida que la velocidad a la que los humanos pueden crear reglas WAF o crear e implementar revisiones para mitigar los ataques. Esto también se aplica a nuestro propio equipo interno de analistas de seguridad que mantiene el conjunto de reglas administradas del WAF, lo que nos ha llevado a <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">combinar las firmas escritas por humanos con un enfoque basado en el aprendizaje automático</a> para lograr el mejor equilibrio entre un número bajo de falsos positivos y la velocidad de respuesta.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2193b87OL8QLpaE3hxF7RP/06b61f3bdcac2d4ce8364a4b408e35f4/image8-2.png" alt="CVE speed of exploitation by attackers" class="kg-image" width="1110" height="540" loading="lazy">
+
+	</figure>
+	<p>Las campañas de explotación de CVE de ciberdelincuentes específicos son claramente visibles cuando nos centramos en un subconjunto de categorías de CVE. Por ejemplo, si filtramos las CVE que dan lugar a la ejecución remota de código (RCE), observamos evidentes intentos de explotar las instalaciones de Apache y Adobe a finales de 2023 y a principios de 2024, junto con una importante campaña contra Citrix en mayo de este año.</p>
+	<p><b>Figura 4:</b> Número de solicitudes de CVE de ejecución de código al día a nivel mundial</p>
+	<p>Otras vistas similares son claramente visibles si nos centramos en otras CVE o categorías de ataque específicas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5A2f3Shrcp7rw6zmE9VoNa/90dd0ab1a3e9a80dddfc3c893bebb283/unnamed--1--4.png" alt="CVE exploit campaigns clearly visible in attack traffic" class="kg-image" width="1600" height="393" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="ddos-attacks-remain-the-most-common-attack-against-web-applications">Los ataques DDoS siguen siendo el ataque más habitual contra las aplicaciones web</h3>
+		<a href="https://blog.cloudflare.com/#ddos-attacks-remain-the-most-common-attack-against-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los ataques DDoS siguen siendo el tipo de ataque más habitual contra las aplicaciones web, y los ataques DDoS representaron el 37,1 % de todo el tráfico mitigado de las aplicaciones durante el periodo evaluado.</p>
+	<p><b>Figura 5:</b> Volumen de ataques DDoS HTTP a lo largo del tiempo</p>
+	<p>Observamos un gran aumento de los ataques volumétricos en febrero y marzo de 2024. Esto se debió en parte a la mejora de las detecciones implementadas por nuestros equipos, así como al aumento de la actividad relacionada con ataques. Solo en el primer trimestre de 2024, las soluciones de protección automatizada de Cloudflare mitigaron 4,5 millones de ataques DDoS únicos, una cantidad equivalente al 32 % de todos los ataques DDoS mitigados por Cloudflare en 2023. En concreto, los ataques DDoS HTTP a la capa de aplicación aumentaron un 93 % respecto al año anterior y un 51 % en términos intertrimestrales.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3578XXGADnTHyYT6Kdf6ez/19dc83ad5c2b4989d0542f39fb755fa5/unnamed--6--3.png" alt="" class="kg-image" width="1600" height="356" loading="lazy">
+
+	</figure>
+	<p>Cloudflare correlaciona el tráfico de ataques DDoS y define ataques únicos observando las horas de inicio y finalización de los incidentes junto con el destino objetivo.</p>
+	<p>Los motivos de los ataques DDoS van desde intentar obtener beneficios económicos (un rescate) atacando a organizaciones específicas, probar la capacidad de las botnets, u objetivos políticos atacando a instituciones y países. Por ejemplo, Cloudflare observó un aumento del 466 % de los ataques DDoS contra Suecia tras su incorporación a la alianza de la OTAN el 7 de marzo de 2024. Esto reflejó el patrón de DDoS observado durante la aceptación de Finlandia en la OTAN en 2023. El tamaño de los propios ataques DDoS también va en aumento.</p>
+	<p>En agosto de 2023, Cloudflare mitigó un ataque DDoS <a href="https://blog.cloudflare.com/es-es/zero-day-rapid-reset-http2-record-breaking-ddos-attack-es-es">hipervolumétrico HTTP/2 Rapid Reset</a> que alcanzó un máximo de 201 millones de solicitudes por segundo (rps), tres veces mayor que cualquier ataque observado hasta esa fecha. En el ataque, los ciberdelincuentes explotaron una vulnerabilidad de día cero en el protocolo HTTP/2 que tenía el potencial de incapacitar casi cualquier servidor o aplicación compatible con HTTP/2. Esto subraya la gran amenaza que suponen las vulnerabilidades DDoS para las organizaciones desprotegidas.</p>
+	<p>Las empresas de videojuegos y apuestas fueron el sector más afectado por los ataques DDoS, seguidas de las empresas de tecnología de Internet y la criptominería.</p>
+	<p><b>Figura 6:</b> Mayores ataques DDoS HTTP observados por Cloudflare, por año</p>
+	<div class="flex anchor relative">
+		<h2 id="bot-traffic-insights">Información acerca del tráfico de bots</h2>
+		<a href="https://blog.cloudflare.com/#bot-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FYxByBvHz2MQQ8WhKErWk/a7f757447c04820ea5a642838b3e5e10/image1.jpg" alt="Largest DDoS attacks by year" class="kg-image" width="1092" height="637" loading="lazy">
+
+	</figure>
+	<p>Cloudflare ha seguido invirtiendo mucho en nuestros sistemas de detección de bots. A principios de julio, declaramos la <a href="https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click">independencia de la IA</a> para ayudar a garantizar la seguridad de Internet a los creadores de contenido, ofreciendo un nuevo "botón fácil" para bloquear todos los bots de IA. Está disponible para todos los clientes, incluidos los de nuestro plan gratuito.</p>
+	<p>También se han realizado importantes avances en otros sistemas complementarios, como nuestra solución Turnstile, una alternativa a CAPTCHA fácil de usar y que garantiza la privacidad.</p>
+	<p>Todos estos sistemas y tecnologías nos ayudan a identificar y diferenciar mejor el tráfico humano del tráfico de bots automatizados.</p>
+	<div class="flex anchor relative">
+		<h3 id="on-average-bots-comprise-one-third-of-all-application-traffic">Los bots representan de promedio una tercera parte de todo el tráfico de las aplicaciones</h3>
+		<a href="https://blog.cloudflare.com/#on-average-bots-comprise-one-third-of-all-application-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El 31,2 % de todo el tráfico de las aplicaciones procesado por Cloudflare es tráfico de bots. Este porcentaje se ha mantenido relativamente constante (alrededor del 30 %) durante los últimos tres años.</p>
+	<p>El término "tráfico de bots" puede tener una connotación negativa, pero en realidad el tráfico de bots no es necesariamente bueno o malo; todo depende de la finalidad de los bots. Algunos son "buenos" y prestan un servicio necesario, como los bots de chat de atención al cliente y los rastreadores de motores de búsqueda autorizados. Sin embargo, algunos bots hacen un uso indebido de un producto o servicio en línea y es necesario bloquearlos.</p>
+	<p>Los criterios sobre lo que se considera un bot "malo" pueden diferir entre distintos propietarios de aplicaciones. Por ejemplo, es posible que algunas organizaciones quieran bloquear un bot de apropiación de contenido que implementa un competidor para batir sus precios, mientras que la apropiación de contenido puede no resultar preocupante para una organización que no se dedique a la venta de productos o servicios. Cloudflare clasifica los bots conocidos y buenos como "bots verificados".</p>
+	<div class="flex anchor relative">
+		<h3 id="93-of-bots-we-identified-were-unverified-bots-and-potentially-malicious">El 93 % de los bots que identificamos eran bots no verificados y potencialmente maliciosos</h3>
+		<a href="https://blog.cloudflare.com/#93-of-bots-we-identified-were-unverified-bots-and-potentially-malicious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Los bots no verificados suelen crearse con fines disruptivos y dañinos, como acumular inventario, lanzar ataques DDoS o intentar apropiarse de una cuenta mediante la fuerza bruta o el relleno de credenciales. Los bots verificados son aquellos que se sabe que son seguros, como los rastreadores de los motores de búsqueda, y Cloudflare tiene como objetivo verificar a todos los principales operadores de bots legítimos. Puedes encontrar <a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank" rel="noopener noreferrer">una lista de todos los bots verificados</a> en nuestra documentación.</p>
+	<p>Los atacantes que aprovechan los bots se centran principalmente en los sectores que podrían aportarles grandes beneficios económicos. Por ejemplo, los sitios web de bienes de consumo suelen ser el objetivo de ataques de acumulación de inventario y extracción de precios lanzados por competidores o por aplicaciones automatizadas cuyo objetivo es explotar algún tipo de arbitraje (por ejemplo, bots de zapatillas deportivas). Este tipo de abuso puede tener un impacto financiero importante para la organización afectada.</p>
+	<p><b>Figura 8:</b> Sectores con el mayor porcentaje medio diario de tráfico de bots</p>
+	<div class="flex anchor relative">
+		<h2 id="api-traffic-insights">Información acerca del tráfico de API</h2>
+		<a href="https://blog.cloudflare.com/#api-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/XIeyHN59gsaqxq0OQvCKV/4e23e2b081263ae09c6ca3de6aac2cdd/unnamed--7--3.png" alt="" class="kg-image" width="1600" height="714" loading="lazy">
+
+	</figure>
+	<p>Los consumidores y usuarios finales siguen esperando experiencias web y móviles dinámicas, basadas en las API. Para las empresas, las API maximizan las ventajas competitivas: mayor inteligencia comercial, implementaciones en la nube más rápidas, integración de nuevas funciones de IA y mucho más.</p>
+	<p>Sin embargo, las API introducen nuevos riesgos al proporcionar a terceros superficies de ataque adicionales con las que acceder a las aplicaciones y a las bases de datos, que también deben protegerse. Como consecuencia, numerosos ataques que observamos ahora tienen como primer objetivo los puntos finales de AP en lugar de las interfaces web tradicionales.</p>
+	<p>Por supuesto, los problemas de seguridad adicionales no están ralentizando la adopción de las aplicaciones que priorizan las API.</p>
+	<div class="flex anchor relative">
+		<h3 id="60-of-dynamic-non-cacheable-traffic-is-api-related">El 60 % del tráfico dinámico (no susceptible de almacenamiento en la caché) está relacionado con las API</h3>
+		<a href="https://blog.cloudflare.com/#60-of-dynamic-non-cacheable-traffic-is-api-related" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Representa un aumento de dos puntos porcentuales en comparación con el informe del año pasado. De este 60 %, nuestros sistemas de seguridad mitigan alrededor del 4 % de media.</p>
+	<p><b>Figura 9</b>: Porcentaje de tráfico de API mitigado</p>
+	<p>Entre el 11 y el 17 de enero se observa un pico importante que representa un aumento de casi el 10 % del porcentaje de tráfico solo durante ese periodo. Esto se debió a que una zona de cliente específica recibió tráfico de ataque que fue mitigado por una regla personalizada del WAF.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YmPWYVWpG250GqjO2noHu/63582e53d5f43cda2068385ea9713976/unnamed--3--3.png" alt="% of API mitigated traffic" class="kg-image" width="1600" height="409" loading="lazy">
+
+	</figure>
+	<p>Si analizamos las fuentes de mitigación del tráfico de API, observamos que el WAF es el que más contribuye, ya que la carga malintencionada estándar suele aplicarse tanto a los puntos finales de API como a las aplicaciones web estándar.</p>
+	<p><b>Figura 10:</b> Tráfico mitigado de API desglosado por grupo de productos</p>
+	<div class="flex anchor relative">
+		<h2 id="a-quarter-of-apis-are-shadow-apis">Una cuarta parte de las API son "API paralelas"</h2>
+		<a href="https://blog.cloudflare.com/#a-quarter-of-apis-are-shadow-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76D0iSJOzvx4ArJYIXIfLI/a4bf06a320cc8e9cc03b7da2ab6f35b3/unnamed--4--3.png" alt="WAF contributes towards 67% of all API mitigated traffic" class="kg-image" width="1600" height="455" loading="lazy">
+
+	</figure>
+	<p>No puedes proteger lo que no puedes ver. Además, muchas organizaciones carecen de inventarios de API precisos, incluso cuando creen que pueden identificar correctamente el tráfico de API.</p>
+	<p>Con nuestro modelo de aprendizaje automático propio, que analiza no solo las llamadas API conocidas, sino todas las solicitudes HTTP (identificando el tráfico de API que es posible que no se esté teniendo en cuenta), descubrimos que las organizaciones tenían un 33 % más de puntos finales de API disponibles al público de lo que creían. Esta cifra era la media, y se calculó comparando el número de puntos finales de API detectados mediante el descubrimiento basado en el aprendizaje automático frente a los identificadores de sesión proporcionados por los clientes.</p>
+	<p>Esto sugiere que casi una cuarta parte de las API son "API paralelas" y que es posible que no estén debidamente inventariadas y protegidas.</p>
+	<div class="flex anchor relative">
+		<h2 id="client-side-risks">Riesgos del lado del cliente</h2>
+		<a href="https://blog.cloudflare.com/#client-side-risks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Las aplicaciones web de la mayoría de las organizaciones se basan en programas o fragmentos de código independientes de proveedores externos (normalmente en JavaScript). El uso de scripts de terceros acelera el desarrollo de aplicaciones web modernas y permite a las organizaciones acelerar el lanzamiento de funciones al mercado, sin tener que desarrollar internamente todas las nuevas funciones de las aplicaciones.</p>
+	<p>Con el producto de seguridad del lado cliente de Cloudflare, <a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a>, podemos ver el nivel de popularidad de las bibliotecas de terceros utilizadas en Internet y el riesgo que suponen para las organizaciones. Recientemente, este hecho se hizo más evidente debido al <a href="http://polyfill.io" target="_blank" rel="noopener noreferrer">incidente de Polyfill.io</a> que afectó a más de cien mil sitios.</p>
+	<div class="flex anchor relative">
+		<h3 id="enterprise-applications-use-47-third-party-scripts-on-average">Las aplicaciones empresariales utilizan de media 47 scripts de terceros</h3>
+		<a href="https://blog.cloudflare.com/#enterprise-applications-use-47-third-party-scripts-on-average" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El cliente empresarial típico de Cloudflare utiliza un promedio de 47 scripts de terceros, y una mediana de 20 scripts de terceros. El promedio es mucho más alto que la mediana debido a los proveedores de SaaS, que a menudo tienen miles de subdominios que pueden utilizar scripts de terceros. Estos son algunos de los principales proveedores de scripts de terceros que los clientes de Cloudflare utilizan habitualmente:</p>
+	<ul>
+		<li>
+			<p>Google (Tag Manager, Analytics, Ads, Translate, reCAPTCHA, YouTube)</p>
+		</li>
+		<li>
+			<p>Meta (Facebook Pixel, Instagram)</p>
+		</li>
+		<li>
+			<p>Cloudflare (Web Analytics)</p>
+		</li>
+		<li>
+			<p>jsDelivr</p>
+		</li>
+		<li>
+			<p>New Relic</p>
+		</li>
+		<li>
+			<p>Appcues</p>
+		</li>
+		<li>
+			<p>Microsoft (Clarity, Bing, LinkedIn)</p>
+		</li>
+		<li>
+			<p>jQuery</p>
+		</li>
+		<li>
+			<p>WordPress (Web Analytics, complementos alojados)</p>
+		</li>
+		<li>
+			<p>Pinterest</p>
+		</li>
+		<li>
+			<p>UNPKG</p>
+		</li>
+		<li>
+			<p>TikTok</p>
+		</li>
+		<li>
+			<p>Hotjar</p>
+		</li>
+	</ul>
+	<p>Aunque es útil, las dependencias de software de terceros a menudo las carga directamente el navegador del usuario final (es decir, se cargan en el lado del cliente), lo que pone en riesgo a las organizaciones y a sus clientes, ya que las organizaciones no tienen un control directo sobre sus medidas de seguridad. Por ejemplo, en el sector del comercio minorista, el 18 % de todas las fugas de datos <a href="https://www.verizon.com/business/resources/reports/dbir" target="_blank" rel="noopener noreferrer">se originan en ataques de tipo Magecart</a>, según el informe 2024 Data Breach Investigations de Verizon.</p>
+	<div class="flex anchor relative">
+		<h3 id="enterprise-applications-connect-to-nearly-50-third-parties-on-average">Las aplicaciones empresariales se conectan a un promedio de casi 50 terceros</h3>
+		<a href="https://blog.cloudflare.com/#enterprise-applications-connect-to-nearly-50-third-parties-on-average" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cargar un script de terceros en tu sitio web conlleva riesgos, más aún cuando ese script "llama a casa" para enviar datos a fin de realizar la función prevista. Un ejemplo típico aquí es Google Analytics: cada vez que un usuario realiza una acción, el script de Google Analytics enviará datos a los servidores de Google. Identificamos estas acciones como conexiones.</p>
+	<p>De promedio, cada sitio web empresarial se conecta a 50 destinos de terceros distintos, con una mediana de 15. Cada una de estas conexiones también supone un riesgo potencial para la seguridad del lado del cliente, ya que los atacantes suelen utilizarlas para exfiltrar datos adicionales sin ser detectados.</p>
+	<p>Estas son algunas de las principales conexiones de terceros que los clientes de Cloudflare utilizan habitualmente:</p>
+	<ul>
+		<li>
+			<p>Google (Analytics, Ads)</p>
+		</li>
+		<li>
+			<p>Microsoft (Clarity, Bing, LinkedIn)</p>
+		</li>
+		<li>
+			<p>Meta (Facebook Pixel)</p>
+		</li>
+		<li>
+			<p>Hotjar</p>
+		</li>
+		<li>
+			<p>Kaspersky</p>
+		</li>
+		<li>
+			<p>Sentry</p>
+		</li>
+		<li>
+			<p>Criteo</p>
+		</li>
+		<li>
+			<p>tawk.to</p>
+		</li>
+		<li>
+			<p>OneTrust</p>
+		</li>
+		<li>
+			<p>New Relic</p>
+		</li>
+		<li>
+			<p>Paypal</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="looking-forward">Perspectivas</h2>
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Este informe sobre la seguridad de las aplicaciones también está <a href="https://www.cloudflare.com/2024-application-security-trends" target="_blank" rel="noopener noreferrer">disponible en formato PDF,</a> e incluye recomendaciones adicionales sobre cómo abordar muchos de los problemas planteados, junto con información adicional.</p>
+	<p>También publicamos muchos de nuestros informes con gráficos dinámicos en <a href="https://radar.cloudflare.com/reports" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, por lo que son un excelente recurso para mantenerse al día del estado de Internet.</p>
+</div>

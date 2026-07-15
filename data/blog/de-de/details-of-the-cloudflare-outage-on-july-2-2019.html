@@ -1,0 +1,375 @@
+<div class="mb2 gray5">Lesezeit: 16&nbsp;Min.</div>
+<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019">English</a>, <a href="https://blog.cloudflare.com/fr-fr/details-of-the-cloudflare-outage-on-july-2-2019">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/details-of-the-cloudflare-outage-on-july-2-2019">日本語</a>, und <a href="https://blog.cloudflare.com/zh-cn/details-of-the-cloudflare-outage-on-july-2-2019">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Pp9DIF07pZuUxDoCm9ib0/137143c72e1ef111d0596c0954c34c7a/details-of-the-cloudflare-outage-on-july-2-2019.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Vor etwa neun Jahren war Cloudflare noch ein winziges Unternehmen und ich war ein Kunde, kein Mitarbeiter. Cloudflare gab es erst seit einem Monat. Eines Tages wurde ich darüber benachrichtigt, dass bei meiner kleinen Website <a href="https://jgc.org" target="_blank" rel="noopener noreferrer">jgc.org</a> der DNS-Service nicht mehr funktionierte. Cloudflare hat seine Verwendung von <a href="https://developers.google.com/protocol-buffers" target="_blank" rel="noopener noreferrer">Protocol Buffers</a> angepasst und dadurch wurde der DNS-Service unterbrochen.</p>
+	<p>Ich habe eine E-Mail mit dem Titel „Where‘s my dns?“ (Wo ist mein DNS) direkt an Matthew Prince gesendet und er hat mit einer langen, detaillierten, technischen Erklärung reagiert (Sie können den <a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08" target="_blank" rel="noopener noreferrer">vollständigen E-Mail-Austausch hier lesen</a>), auf die ich antwortete:</p>
+	<pre class="language-bash"><code class="language-bash">From: John Graham-Cumming
+Date: Thu, Oct 7, 2010 at 9:14 AM
+Subject: Re: Where's my dns?
+To: Matthew Prince
+
+Awesome report, thanks. I'll make sure to call you if there's a
+problem.  At some point it would probably be good to write this up as
+a blog post when you have all the technical details because I think
+people really appreciate openness and honesty about these things.
+Especially if you couple it with charts showing your post launch
+traffic increase.
+
+I have pretty robust monitoring of my sites so I get an SMS when
+anything fails.  Monitoring shows I was down from 13:03:07 to
+14:04:12.  Tests are made every five minutes.
+
+It was a blip that I'm sure you'll get past.  But are you sure you
+don't need someone in Europe? :-)</code></pre>
+	<p>Darauf antwortete er:</p>
+	<pre class="language-bash"><code class="language-bash">From: Matthew Prince
+Date: Thu, Oct 7, 2010 at 9:57 AM
+Subject: Re: Where's my dns?
+To: John Graham-Cumming
+
+Thanks. We've written back to everyone who wrote in. I'm headed in to
+the office now and we'll put something on the blog or pin an official
+post to the top of our bulletin board system. I agree 100%    
+transparency is best.</code></pre>
+	<p>Und so kommt es, dass ich heute ein Mitarbeiter eines deutlich größeren Cloudflare bin und für Transparenz sorge, indem ich über unsere Fehler, ihre Auswirkungen und unsere Gegenmaßnahmen schreibe.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-events-of-july-2">Die Ereignisse des 2. Juli</h3>
+		<a href="https://blog.cloudflare.com/#the-events-of-july-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Am 2. Juli haben wir eine neue Regel zu unseren WAF Managed Rules hinzugefügt, durch die <a href="https://blog.cloudflare.com/cloudflare-outage">alle CPU-Kerne überlastet wurden</a>, die HTTP/HTTPS-Traffic im weltweiten Cloudflare-Netzwerk verarbeiten. Wir optimieren die WAF Managed Rules kontinuierlich, um neue Schwachstellen und Bedrohungen zu eliminieren. Zum Beispiel haben wir mit einem schnellen WAF-Update im Mai <a href="https://blog.cloudflare.com/stopping-cve-2019-0604">eine Regel implementiert</a>, um eine schwerwiegende SharePoint-Schwachstelle zu schließen. Die Möglichkeit, Regeln schnell und global bereitzustellen, ist ein besonders wichtiges Feature unserer WAF.</p>
+	<p>Leider enthielt das Update vom letzten Dienstag einen regulären Ausdruck, der ein enormes Backtracking ausgelöst hat und die CPUs der HTTP/HTTPS-Verarbeitung überlastet hat. Dadurch wurden die grundlegenden Proxy-, CDN- und WAF-Funktionen von Cloudflare deaktiviert. Auf dem folgenden Graphen können Sie sehen, dass die CPUs für den HTTP/HTTPS-Traffic bei allen Servern unseres Netzwerks fast zu 100 % ausgelastet waren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MnDqPQIRm0bORmq8VfJel/7d6ede3ccccdd8eb21d3a3904052e2d3/cpu-goes-boom.png" alt="" class="kg-image" width="2000" height="821" loading="lazy">
+
+	</figure>
+	<p>CPU-Auslastung bei einem unserer PoPs während des Vorfalls</p>
+	<p>Deshalb wurde unseren Kunden (und deren Kunden) beim Aufrufen einer beliebigen Cloudflare-Domain eine 502-Fehlerseite angezeigt. Die 502-Fehler wurden von den Cloudflare-Webservern erzeugt, die noch über CPU-Kerne verfügten, aber die Prozesse für den HTTP/HTTPS-Traffic nicht erreichen konnten.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gI4GAm9Xyp9pmIGOs1YfQ/02425f89dc6b13e46bfc427c7ea7111c/502-bad-gateway.png" alt="" class="kg-image" width="1600" height="709" loading="lazy">
+
+	</figure>
+	<p>Wir wissen, wie sehr der Vorfall unseren Kunden geschadet hat. Wir schämen uns dafür. Auch unsere eigenen Betriebsabläufe waren betroffen, als wir Gegenmaßnahmen ergriffen haben.</p>
+	<p>Der Ausfall muss Ihnen als Kunde enormen Stress, Frustration und vielleicht sogar Verzweiflung bereitet haben. Wir hatten seit sechs Jahren keinen <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">globalen Ausfall</a> mehr, entsprechend groß war unser Ärger.</p>
+	<p>Die CPU-Überlastung wurde von einer einzigen WAF-Regel verursacht, die einen schlecht geschriebenen regulären Ausdruck enthielt, der ein enormes Backtracking auslöste. Dies ist der reguläre Ausdruck, der den Ausfall verursacht hat: <code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code></p>
+	<p>Obwohl dieser reguläre Ausdruck für viele Personen von Interesse ist (und unten genauer beschrieben wird), sind die genauen Gründe für die 27 Minuten lange Nichtverfügbarkeit des Cloudflare-Services deutlich komplexer, als dass einfach nur ein schlecht geschriebener regulärer Ausdruck implementiert wurde. Wir haben uns die Zeit genommen, die Ereigniskette aufzuschreiben, die zum Ausfall geführt hat und unsere Reaktion gebremst hat. Wenn Sie mehr über das Backtracking bei regulären Ausdrücken und die möglichen Gegenmaßnahmen erfahren möchten, sehen Sie sich den Anhang am Ende des Beitrags an.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-happened">Was passiert ist</h3>
+		<a href="https://blog.cloudflare.com/#what-happened" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Betrachten wir die Ereignisse in ihrer Reihenfolge. Alle Zeitangaben in diesem Blog basieren auf UTC.</p>
+	<p>Um 13:42 hat ein Engineer des Firewall-Teams eine kleine Änderung an den Regeln der <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank" rel="noopener noreferrer">XSS</a>-Erkennung mithilfe eines automatischen Prozesses implementiert. Dadurch wurde ein Ticket für eine Änderungsanfrage erzeugt. Wir verwenden Jira, um diese Tickets zu bearbeiten und unten sehen Sie einen Screenshot davon.</p>
+	<p>Drei Minuten später ist die erste PagerDuty-Seite ausgefallen, was auf einen Fehler bei der WAF hingedeutet hat. Das war ein synthetischer Test, mit dem außerhalb von Cloudflare überprüft wird, ob die WAF ordnungsgemäß funktioniert (wir nutzen Hunderte solcher Tests). Direkt darauf folgten die Meldungen weiterer End-to-End-Tests über die Ausfälle von Cloudflare-Services bei Websites, eine Warnung wegen einer rapide Abnahme des globalen Traffics, eine enorme Anzahl an 502-Fehlern und dann viele Berichte von unseren PoPs (Points-of-Presence) in Städten auf der ganzen Welt, die eine CPU-Überlastung anzeigten.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xcBZg45cch5C07Quo2Fcq/fddf5747eb92394814692e3de6a8f7b0/pager-duty-1345.png" alt="" class="kg-image" width="750" height="228" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FzCjO9IEzriDywsT9aFZY/43ef7c5c586e559a707cdbf455a65eef/pager-duty-1346.jpg" alt="" class="kg-image" width="750" height="242" loading="lazy">
+
+	</figure>
+	<p>Einige dieser Meldungen wurden auf meiner Uhr angezeigt und ich bin während des Meetings aufgesprungen und war gerade auf dem Weg zu meinem Schreibtisch, als ein leitender Solutions Engineer mich darüber informierte, dass wir 80 % unseres Traffics verloren hatten. Ich rannte zu unserer SRE-Abteilung, wo das Team gerade die Situation analysierte. Anfangs wurde sogar spekuliert, ob es sich um einen Angriff ungeahnten Ausmaßes handeln könnte.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9qOCsRkTpHvns6U9tL8Yy/ac00df0e19af1a0109f40b500c3e0a6a/pager-duty-1348.jpg" alt="" class="kg-image" width="750" height="231" loading="lazy">
+
+	</figure>
+	<p>Das SRE-Team von Cloudflare ist auf der ganzen Welt verteilt, damit rund um die Uhr für Monitoring gesorgt ist. Warnungen wie diese, die meist nur sehr spezifische Probleme mit überschaubaren Auswirkungen betreffen, werden mit internen Dashboards überwacht und mehrfach täglich überprüft und behandelt. Diese Menge an Websites und Warnungen deutete aber darauf hin, dass etwas äußerst Schwerwiegendes vorgefallen ist, weshalb das SRE-Team dies sofort als P0-Vorfall deklariert hat und ihn zum leitenden Engineering und System Engineering eskaliert hat.</p>
+	<p>Das Engineering-Team aus London befand sich gerade im zentralen Veranstaltungsraum und hörte sich einen internen Tech Talk an. Der Tech Talk wurde unterbrochen, das Team versammelte sich in einem großen Konferenzraum und andere schalteten sich dazu. Das war kein normales Problem, um das sich das SRE-Team alleine kümmern konnte: Alle relevanten Teams mussten gleichzeitig verfügbar sein.</p>
+	<p>Um 14:00 wurde erkannt, dass die WAF der Ursprung des Problems ist, und die Möglichkeit eines Angriffs wurde ausgeschlossen. Das Performance Team konnte CPU-Daten in Echtzeit abrufen, die eindeutig belegten, dass die WAF ursächlich war. Ein Teammitglied konnte dies mit strace bestätigen. Ein anderes Team erhielt Fehlerprotokolle, die auf Probleme bei der WAF hindeuteten. Um 14:02 wandten sich alle Blicke des Teams zu mir, als die Verwendung eines „global kill“ im Raum stand, eines Cloudflare-Mechanismus, mit dem eine bestimmte Komponente weltweit deaktiviert werden kann.</p>
+	<p>Aber dazu mussten wir erst einmal die Fähigkeit zu einem „global kill“ der WAF erhalten. Ohne Weiteres war dies nicht möglich. Wir verwenden unsere eigenen Produkte und da unser <a href="https://www.cloudflare.com/en-gb/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Access</a>-Dienst nicht mehr funktionierte, konnten wir uns bei unserem internen Control Panel nicht authentifizieren (wir haben festgestellt, dass einige Teammitglieder ihren Zugriff verloren hatten, weil eine Sicherheitsfunktion ihre Anmeldedaten deaktiviert, wenn sie das interne Control Panel nicht regelmäßig verwenden).</p>
+	<p>Und wir konnten andere interne Dienste wie Jira oder das Build-System nicht mehr aufrufen. Wir mussten dieses Problem mit einem Mechanismus umgehen, der nur sehr selten verwendet wurde (und ein weiterer Prozess, den wir nach dem Vorfall genauer unter die Lupe nahmen). Letztendlich konnte ein Teammitglied um 14:07 den „global kill“ der WAF ausführen und um 14:09 befanden sich Traffic und CPU-Niveaus wieder weltweit im normalen Bereich. Der restliche Cloudflare-Schutzmechanismus war wieder aktiv.</p>
+	<p>Dann sorgten wir dafür, dass die WAF wieder funktionierte. Da dieser Vorfall ziemlich ernst war, führten wir in einer einzigen Stadt sowohl negative Tests (mit der Frage, ob wirklich diese eine Änderung das Problem verursacht hatte) als auch positive Tests (zur Überprüfung, ob der Rollback wirklich funktioniert hatte) mit einem Teil des Traffics durch, nachdem wir den Traffic unserer zahlenden Kunden von diesem Standort abgezogen hatten.</p>
+	<p>Um 14:52 waren wir zu 100 % davon überzeugt, dass wir die Ursache verstanden hatten, das Problem behoben war und die WAF wieder global aktiv war.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-operates">Wie Cloudflare arbeitet</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-operates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare verfügt über ein Engineering-Team, das an WAF Managed Rules arbeitet. Es optimiert kontinuierlich die Erkennungsraten, minimiert die falsch-positiven Ergebnisse und reagiert unmittelbar auf neue Bedrohungen. In den vergangenen 60 Tagen wurden 476 Änderungsanfragen für die WAF Managed Rules bearbeitet (durchschnittlich eine alle 3 Stunden).</p>
+	<p>Diese spezielle Änderung wurde im „Simulationsmodus“ bereitgestellt, in dem der echte Kunden-Traffic zwar von der Regel überprüft wird, er aber ungehindert durchgeleitet wird. Mit diesem Modus testen wir die Effektivität einer Regel und messen die Raten falsch-positiver und falsch-negativer Ergebnisse. Aber selbst im „Simulationsmodus“ müssen die Regeln tatsächlich ausgeführt werden und in diesem Fall enthielt die Regel einen regulären Ausdruck, der eine CPU-Überlastung auslöste.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16x7kdRpp79whMvSA9cxcB/2069494cb95affef11fef139f5c73227/change-request.png" alt="" class="kg-image" width="1470" height="926" loading="lazy">
+
+	</figure>
+	<p>Wie oben in der Änderungsanfrage ersichtlich, gibt es einen Bereitstellungsplan, einen Rollbackplan und einen Link zum internen Standard Operating Procedure (SOP) für diese Art von Bereitstellung. Das SOP erlaubt ausdrücklich die globale Implementierung einer Regeländerung. Diese Methodik unterscheidet sich deutlich von unserem normalen Ansatz bei der Software-Veröffentlichung, wo SOP die Software zunächst bei einem internen Dogfooding-Netzwerk-PoP (Point of Presence) implementiert (den unsere Kunden nur passieren), dann bei einer geringen Kundenzahl an einem isolierten Standort, gefolgt von einer großen Kundenzahl und schließlich weltweit. „Dogfooding“ ist übrigens ein englischer Ausdruck dafür, dass ein Unternehmen sein eigenes Produkt verwendet.</p>
+	<p>Der Prozess zur Software-Veröffentlichung sieht folgendermaßen aus: Wir verwenden intern git mittels BitBucket. Die Engineers, die Änderungen bearbeiten, schreiben Code, der in TeamCity erstellt wird. Wenn das Build bestätigt wird, werden Prüfer zugewiesen. Sobald ein Pull Request bestätigt wurde, wird der Code erstellt und die Test-Suite (erneut) ausgeführt.</p>
+	<p>Wenn der Build-Test erfolgreich war, wird bei Jira eine Änderungsanfrage erstellt und die Änderung muss von der zuständigen Führungskraft oder einer technischen Leitung bestätigt werden. Nach der Bestätigung erfolgt die Bereitstellung an den „Animal PoPs“, wie wir sie nennen: DOG, PIG und <a href="https://en.wikipedia.org/wiki/Sentinel_species" target="_blank" rel="noopener noreferrer">Canaries</a>.</p>
+	<p>Der DOG-PoP ist ein Cloudflare-PoP (genau wie eine unserer Städte auf der Welt), der aber nur von Cloudflare-Mitarbeitern verwendet wird. Mithilfe dieses Dogfooding-PoPs können wir Probleme beheben, bevor ein Kunden-Traffic damit in Kontakt kommt. Und genau das passiert auch häufig.</p>
+	<p>Wenn der DOG-Test erfolgreich abgeschlossen wird, geht der Code in die PIG-Phase über (Englisch „Guinea Pig“, zu Deutsch „Meerschweinchen“). Dies ist ein Cloudflare-PoP, an dem ein kleiner Anteil des Traffics von kostenlosen Benutzern den neuen Code durchläuft.</p>
+	<p>Wenn dieser Test erfolgreich ist, geht der Code zu den „Canaries“ (Kanarienvögeln) über. Wir verfügen über drei auf die ganze Welt verteilte Canary-PoPs, über die der Traffic von zahlenden und kostenlosen Kunden geleitet wird, damit der neue Code noch ein letztes Mal auf Fehler überprüft werden kann.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sxCQQWRdbtZpVh4UBxFKS/2352efb87e4a488bfff06c33dc17b5b5/animal-deploy-1.png" alt="" class="kg-image" width="1946" height="986" loading="lazy">
+
+	</figure>
+	<p>Veröffentlichungsprozess bei Cloudflare-Software</p>
+	<p>Nach dem erfolgreichen Canary-Test ist der Code zur globalen Implementierung freigegeben. Je nach Codeänderung können mehrere Stunden oder Tage bis zum Abschluss des gesamten Prozesses aus DOG, PIG, Canary und Global vergehen. Dank der Vielseitigkeit des Netzwerks und der Kunden von Cloudflare können wir den Code gründlich überprüfen, bevor eine neue Version global für alle Kunden eingeführt wird. Im Falle der WAF findet dieser Prozess aber keine Anwendung, da Bedrohungen ja eine schnelle Reaktion erfordern.</p>
+	<div class="flex anchor relative">
+		<h3 id="waf-threats">WAF-Bedrohungen</h3>
+		<a href="https://blog.cloudflare.com/#waf-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In den vergangenen Jahren mussten wir eine drastische Zunahme an Schwachstellen bei gängigen Anwendungen feststellen. Das lässt sich auf die steigende Verfügbarkeit von Softwaretestingtools mit Methoden wie Fuzzing zurückführen (einen neuen Blog-Beitrag zum Thema Fuzzing haben wir erst kürzlich <a href="https://blog.cloudflare.com/a-gentle-introduction-to-linux-kernel-fuzzing">hier</a> veröffentlicht).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pixnb5M7HDmnsIbYXbQNe/675aadfadad4196b5c2bd7afadc535f4/Number-of-CVEs-per-year.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+
+	</figure>
+	<p>Quelle: <a href="https://cvedetails.com" target="_blank" rel="noopener noreferrer">https://cvedetails.com/</a></p>
+	<p>Häufig wird ein Proof of Concept (PoC) erstellt und direkt auf Github veröffentlicht, damit Teams, die Anwendungen ausführen und bearbeiten, ihre Tests durchführen können, um sicherzustellen, dass sie über geeignete Schutzmaßnahmen verfügen. Deshalb muss Cloudflare unbedingt so schnell wie möglich auf neue Bedrohungen reagieren und Softwarepatches für seine Kunden bereitstellen.</p>
+	<p>Ein gutes Beispiel für diesen proaktiven Schutz von Cloudflare ist die Bereitstellung der Schutzmaßnahmen wegen der SharePoint-Schwachstelle im Mai <a href="https://blog.cloudflare.com/stopping-cve-2019-0604">hier im Blog</a>). Direkt nach der öffentlichen Bekanntgabe verzeichneten wir einen signifikanten Anstieg der Exploit-Versuche bei den SharePoint-Installationen unserer Kunden. Unser Team hält kontinuierlich Ausschau nach neuen Bedrohungen und schreibt Regeln, um sie im Sinne unserer Kunden zu bekämpfen.</p>
+	<p>Bei der spezifischen Regel, die den Ausfall am letzten Dienstag verursachte, ging es um XSS-Angriffe (Cross-Site Scripting). Auch diese haben in den letzten Jahren signifikant zugenommen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33MloziZUz1FN0kzcyNOzJ/5e10c2f974e4ef23787cdfa2d833c8b2/Number-of-XSS-CVEs-by-year.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+
+	</figure>
+	<p>Quelle: <a href="https://cvedetails.com" target="_blank" rel="noopener noreferrer">https://cvedetails.com/</a></p>
+	<p>Im Rahmen des Standardverfahrens für eine Anpassung der WAF Managed Rules sind erfolgreiche CI-Tests (Continuous Integration) vor der globalen Bereitstellung vorgesehen. Diese wurden am letzten Dienstag erfolgreich durchgeführt und die Regeln wurden bereitgestellt. Um 13:31 hat ein Engineer des Teams einen Pull Request mit der Änderung implementiert, nachdem sie bestätigt worden war.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UVYKUe8LnxOMfMtjBHKX2/1e5d2075afd8359024a5cfac59984a0f/change-details.png" alt="" class="kg-image" width="1338" height="316" loading="lazy">
+
+	</figure>
+	<p>Um 13:37 hat TeamCity die Regeln erstellt, seine Tests durchgeführt und grünes Licht gegeben. Die WAF-Testsuite überprüft die grundlegenden WAF-Funktionen und besteht aus einer großen Testsammlung für individuelle Abgleichfunktionen. Nach dem Testlauf werden die individuellen WAF-Regeln getestet, indem eine große Anzahl an HTTP-Anfragen unter Einbeziehung der WAF ausgeführt wird. Diese HTTP-Anfragen sind als Testanfragen konzipiert, die von der WAF blockiert werden sollen (damit potenzielle Angriffe abgewehrt werden) bzw. nicht blockiert werden sollen (damit nicht zu viel blockiert wird und keine falsch-positiven Ergebnisse entstehen). Nicht getestet wurde jedoch die übermäßige CPU-Auslastung durch die WAF. Auch die Überprüfung der Protokolldateien von vorherigen WAF-Builds hat ergeben, dass bei der Regel keine überhöhte Testsuite-Laufzeit erkannt wurde, die letztendlich eine CPU-Auslastung verursachen könnte.</p>
+	<p>Die Tests wurden erfolgreich abgeschlossen und TeamCity begann um 13:42 mit der automatischen Bereitstellung der Änderung.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Fj2DnT9zMYICUwJs5p41v/23d717e3e06f17d6472c2ee7643e87ae/build-process.png" alt="" class="kg-image" width="1348" height="810" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="quicksilver">Quicksilver</h3>
+		<a href="https://blog.cloudflare.com/#quicksilver" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Da WAF-Regeln akute Bedrohungen abwehren müssen, werden sie mit unserer verteilten Schlüssel-Werte-Datenbank Quicksilver bereitgestellt, die Änderungen in wenigen Sekunden global implementiert. Diese Technologie wird von allen unseren Kunden für Konfigurationsänderungen in unserem Dashboard oder per API verwendet und darauf beruht unsere Fähigkeit, auf Änderungen äußerst schnell zu reagieren.</p>
+	<p>Bis jetzt haben wir noch nicht viel über Quicksilver gesprochen. Zuvor haben wir <a href="https://fallabs.com/kyototycoon" target="_blank" rel="noopener noreferrer">Kyoto Tycoon</a>als globalen Schlüssel-Werte-Speicher (KV-Speicher) verwendet, aber wir hatten damit Probleme im Betrieb und erstellten dann unseren eigenen KV-Speicher, der für unsere über 180 Standorte repliziert wird. Mit Quicksilver übertragen wir Änderungen an Kundenkonfigurationen, aktualisieren wir WAF-Regeln und verteilen JavaScript-Code, der von Kunden mit Cloudflare Workers geschrieben wurde.</p>
+	<p>Es dauert vom Klicken auf eine Schaltfläche im Dashboard oder Tätigen eines API-Aufrufs zum Ändern der Konfiguration nur ein paar Sekunden, bis die Änderung aktiv ist – global. Die Kunden lieben mittlerweile diese Konfigurierbarkeit mit Höchstgeschwindigkeit. Sie erwarten bei Workers eine praktisch sofortige, globale Softwarebereitstellung. Quicksilver verteilt durchschnittlich etwa 350 Änderungen pro Sekunde.</p>
+	<p>Und Quicksilver ist sehr schnell. &nbsp;Unser P99 für die Verteilung einer Änderung an jeden Rechner weltweit lag bei durchschnittlich 2,29 s. Diese Geschwindigkeit ist normalerweise eine tolle Sache. Wenn man ein Feature aktiviert oder den Cache entleert, weiß man, dass diese Änderung praktisch sofort live ist, weltweit. Jede Codeübermittlung mit Cloudflare Workers erfolgt mit der gleichen Geschwindigkeit. Das ist Teil des Versprechens der schnellen Updates von Cloudflare, die da sind, wenn man sie braucht.</p>
+	<p>In diesem Fall hieß die Geschwindigkeit jedoch, dass eine Änderung an den Regeln innerhalb von Sekunden global live war. Wie Sie sehen, nutzt der WAF-Code Lua. Cloudflare nutzt Lua bei der Produktion in hohem Maße. Details zu <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua in der WAF</a> <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank" rel="noopener noreferrer">wurden bereits erörtert</a>. Die Lua-WAF nutzt intern <a href="https://www.pcre.org" target="_blank" rel="noopener noreferrer">PCRE</a> und verwendet Backtracking zum Abgleich. Sie hat keine Schutzvorrichtung gegen aus der Reihe tanzende Ausdrücke. Mehr dazu, und was wir dagegen tun, lesen Sie unten.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lThtGZGRjedEbbekP2uYq/79e0d557ae341374aecd6f20563db791/rule-deployment.png" alt="" class="kg-image" width="1690" height="166" loading="lazy">
+
+	</figure>
+	<p>Alles bis zum Zeitpunkt der Regelbereitstellung erfolgte „korrekt“: eine Pull-Anfrage wurde gestellt, sie wurde genehmigt, CI/CD erstellte den Code und testete ihn, eine Änderungsanfrage mit einem SOP mit Details zu Rollout und Rollback wurde eingereicht und das Rollout wurde ausgeführt.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5X4juGcqYkEpoT9TBBCWT5/7f17924aabb9449665c1e9a02d2fe501/WAF-deploy-1.png" alt="" class="kg-image" width="1946" height="734" loading="lazy">
+
+	</figure>
+	<p>Bereitstellungsprozess für Cloudflare WAF</p>
+	<div class="flex anchor relative">
+		<h3 id="what-went-wrong"></h3>
+		<a href="https://blog.cloudflare.com/#what-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Was ist schiefgelaufen?</p>
+	<p>Wie erwähnt, stellen wir jede Woche Dutzende neuer Regeln für die WAF bereit und haben mehrere Systeme installiert, um negative Auswirkungen dieser Bereitstellungen zu vermeiden. Wenn also etwas schiefgeht, ist die Ursache normalerweise ein unwahrscheinliches Zusammentreffen mehrerer Faktoren. Die Suche nach einer einzigen Grundursache mag zwar befriedigend sein, geht aber oft an der Realität vorbei. Dies sind die Verwundbarkeiten, die alle zusammentrafen, bis der Punkt erreicht war, an dem die Cloudflare-Services für HTTP/HTTPS offline gingen.</p>
+	<ol>
+		<li>
+			<p>Ein Techniker schrieb einen regulären Ausdruck, der leicht ein enormes <a href="https://www.regular-expressions.info/catastrophic.html" target="_blank" rel="noopener noreferrer">Backtracking</a> bewirken konnte.</p>
+		</li>
+		<li>
+			<p>Ein Schutz vor übermäßiger CPU-Auslastung durch einen regulären Ausdruck wurde versehentlich einige Wochen vorher während einer Umgestaltung der WAF entfernt. Die Umgestaltung war Teil des Bemühens, die CPU-Nutzung durch die WAF zu reduzieren.</p>
+		</li>
+		<li>
+			<p>Die verwendete Engine für reguläre Ausdrücke hatte keine Komplexitätsgarantien.</p>
+		</li>
+		<li>
+			<p>Die Testsuite konnte eine übermäßige CPU-Nutzung nicht erkennen.</p>
+		</li>
+		<li>
+			<p>Das SOP erlaubte, dass eine nicht mit einem Notfall zusammenhängende Regeländerung global in die Produktion ging, ohne dass ein gestaffelter Rollout stattfand.</p>
+		</li>
+		<li>
+			<p>Der Rollback-Plan erforderte, dass die komplette WAF zweimal ausgeführt wird, was zu lange dauerte.</p>
+		</li>
+		<li>
+			<p>Das Auslösen der ersten Warnmeldung für den globalen Traffic-Rückgang dauerte zu lange.</p>
+		</li>
+		<li>
+			<p>Unsere Statusseite wurde nicht schnell genug aktualisiert.</p>
+		</li>
+		<li>
+			<p>Wir hatten wegen des Ausfalls Probleme, auf unsere eigenen Systeme zuzugreifen, und die Mitarbeiter waren für das Umgehungsverfahren nicht gut geschult.</p>
+		</li>
+		<li>
+			<p>Die SREs hatten den Zugriff auf einige Systeme verloren, da ihre Anmeldedaten aus Sicherheitsgründen ausgesetzt wurden.</p>
+		</li>
+		<li>
+			<p>Unsere Kunden konnten nicht auf das Cloudflare-Dashboard oder die Cloudflare-API zugreifen, da sie durch das Cloudflare-Edge laufen.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="whats-happened-since-last-tuesday">Das ist seit letztem Dienstag passiert</h3>
+		<a href="https://blog.cloudflare.com/#whats-happened-since-last-tuesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zunächst stellten wir alle Release-Arbeiten am WAF komplett ein und widmeten uns Folgendem:</p>
+	<ol>
+		<li>
+			<p>Wiedereinführung des entfernten Schutzes vor übermäßiger CPU-Auslastung (erledigt)</p>
+		</li>
+		<li>
+			<p>Manuelles Überprüfen aller 3.868 Regeln in den WAF Managed Rules, um etwaige andere Fälle von potenziell übermäßigem Backtracking zu finden und zu korrigieren (Prüfung abgeschlossen)</p>
+		</li>
+		<li>
+			<p>Einführung von Performanceprofilierung für alle Regeln an die Testsuite (voraussichtl. &nbsp;Juli 2019)</p>
+		</li>
+		<li>
+			<p>Wechsel zur <a href="https://github.com/google/re2" target="_blank" rel="noopener noreferrer">re2-</a> oder <a href="https://docs.rs/regex/1.1.9/regex" target="_blank" rel="noopener noreferrer">Rust regex-Engine</a>, die beide Laufzeitgarantien bieten (voraussichtl. 31. Juli)</p>
+		</li>
+		<li>
+			<p>Ändern der SOP, sodass gestaffelte Rollouts von Regeln erfolgen, wie sie auch für andere Software bei Cloudflare durchgeführt werden; dabei soll die Fähigkeit für globale Notfallbereitstellungen bei aktiven Angriffen erhalten bleiben</p>
+		</li>
+		<li>
+			<p>Implementieren einer Notfallfunktion zum Entfernen von Cloudflare-Dashboard und -API aus dem Cloudflare-Edge</p>
+		</li>
+		<li>
+			<p>Automatisieren von Aktualisierungen der <a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflare Status</a>-Seite</p>
+		</li>
+	</ol>
+	<p>Langfristig möchten wir von der Lua-WAF abrücken, die ich vor Jahren schrieb. Wir migrieren die WAF, sodass sie die <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">neue Firewall-Engine</a> nutzen kann. Dadurch wird die WAF schneller und es wird eine weitere Schutzebene hinzugefügt.</p>
+	<div class="flex anchor relative">
+		<h3 id="conclusion">Schlussfolgerung</h3>
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Dieser Ausfall war für unsere Kunden und das Team äußerst ärgerlich. Wir reagierten schnell, um das Problem zu beheben, und korrigieren nun die Mängel im Prozess, die den Ausfall möglich machten. Wir gehen der Sache auf den Grund, um Schutz vor weiteren potenziellen Problemen durch die Verwendung regulärer Ausdrücke zu bieten, indem wir die zugrunde liegende Technologie ersetzen.</p>
+	<p>Wir sind beschämt über den Ausfall und entschuldigen uns bei unseren Kunden für die Auswirkungen. Wir denken, dass die von uns vorgenommenen Änderungen dafür sorgen, dass ein solcher Ausfall nie mehr auftreten wird.</p>
+	<div class="flex anchor relative">
+		<h3 id="appendix-about-regular-expression-backtracking">Anhang: Über das Backtracking von regulären Ausdrücken</h3>
+		<a href="https://blog.cloudflare.com/#appendix-about-regular-expression-backtracking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Um genau zu verstehen, wie &nbsp;<code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code> die CPU-Überlastung verursachte, müssen wir etwas darüber wissen, wie eine Standard-Engine für reguläre Ausdrücke funktioniert. Der kritische Teil ist <code>.*(?:.*=.*)</code>. Das <code>(?:</code> und die passende <code>)</code> sind eine Gruppe ohne Erfassung (d. h., der Ausdruck innerhalb der Klammern ist als ein einziger Ausdruck zusammen gruppiert).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4l74jgKpXyveETH9FQ1xWN/c547b3fd1961edd53ad5cf283dfad0e1/regex.png" alt="" class="kg-image" width="644" height="198" loading="lazy">
+
+	</figure>
+	<p>Bei der Diskussion, warum dieses Muster eine CPU-Überlastung verursachte, können wir ihn getrost ignorieren und das Muster als <a href="https://www.debuggex.com/r/DpHY-UOB9tRCJ62L" target="_blank" rel="noopener noreferrer"><code>.*.*=.*</code></a> behandeln. Wenn es darauf reduziert wird, sieht das Muster natürlich unnötig komplex aus; das Wichtige ist jedoch, dass jeder Ausdruck aus der „realen Welt“ (wie die komplexen Ausdrücke in unseren WAF-Regeln), der von der Engine verlangt, „irgendetwas gefolgt von irgendetwas abzugleichen“, zu katastrophalem Backtracking führen kann. Hier ist der Grund:</p>
+	<p>In einem regulären Ausdruck bedeutet <code>.</code> den Abgleich eines einzigen Zeichens. <code>.*</code> bedeutet einen „gierigen“ (greedy) Abgleich von null oder mehr Zeichen (d. h. einen Abgleich von so viel wie möglich). <code>.*.*=.*</code> bedeutet also den Abgleich von null oder mehr Zeichen, dann den Abgleich von null oder mehr Zeichen, dann das Finden eines literalen <code>=</code>-Zeichens, dann den Abgleich von null oder mehr Zeichen.</p>
+	<p>Nehmen wir die Testzeichenfolge <code>x=x</code>. Sie entspricht dem Ausdruck <code>.*.*=.*</code>. Die <code>.*.*</code> vor dem Gleichheitszeichen können mit dem ersten &nbsp;x abgeglichen werden (einer der <code>.*</code> entspricht dem <code>x</code>, der andere entspricht null Zeichen). Der <code>.*</code> nach dem <code>=</code> entspricht dem letzten <code>x</code>.</p>
+	<p>Dieser Abgleich erfordert 23 Schritte. Der erste <code>.*</code> in <code>.*.*=.*</code> verhält sich gierig und gleicht die gesamte Zeichenfolge <code>x=x</code> ab. Die Engine fährt dann mit dem nächsten <code>.*</code> fort. Es sind keine passenden Zeichen mehr übrig, also entspricht der zweite <code>.*</code> null Zeichen (das ist zulässig). Dann fährt die Engine mit dem <code>=</code> fort. Da keine Zeichen zum Abgleichen übrig sind (der erste <code>.*</code> hat alle <code>x=x</code> aufgebraucht), schlägt der Abgleich fehl.</p>
+	<p>An diesem Punkt führt die Engine für reguläre Ausdrücke Backtracking durch. Sie kehrt zum ersten <code>.*</code> zurück und gleicht ihn mit &nbsp;<code>x=</code> (anstatt <code>x=x</code>) ab, dann wechselt sie zum zweiten <code>.*</code>. Dieser .* entspricht dem zweiten <code>x</code>. Nun sind keine weiteren Zeichen zum Abgleichen übrig. Deshalb schlägt der Abgleich fehl, wenn die Engine nun versucht, das <code>=</code> in <code>.*.*=.*</code> abzugleichen. Die Engine führt erneut Backtracking durch.</p>
+	<p>Dieses Mal führt sie das Backtracking so durch, dass der erste <code>.*</code> noch <code>x=</code> entspricht, der zweite <code>.*</code> jedoch nicht mehr x, sondern null Zeichen entspricht. Die Engine fährt dann damit fort, das Literal <code>=</code> im Muster <code>.*.*=.*</code> zu suchen, aber das schlägt fehl (weil es bereits mit dem ersten <code>.*</code> abgeglichen wurde). Die Engine führt erneut Backtracking durch.</p>
+	<p>Dieses Mal entspricht der erste <code>.*</code> nur dem ersten <code>x</code>. Der zweite <code>.*</code> verhält sich jedoch gierig und gleicht <code>=x</code> ab. Sie ahnen, was nun kommt. Wenn die Engine versucht, das Literal <code>=</code> abzugleichen, schlägt dies fehl und sie führt erneut Backtracking durch.</p>
+	<p>Der erste <code>.*</code> entspricht immer noch nur dem ersten <code>x</code>. Nun entspricht der zweite <code>.*</code> nur <code>=</code>. Die Engine kann aber, Sie ahnen es, das Literal <code>=</code> nicht abgleichen, weil ihm der zweite <code>.*</code> entsprach. Die Engine führt also erneut Backtracking durch. Denn bei all dem geht es ja, Sie erinnern sich, darum, eine Zeichenfolge aus drei Zeichen abzugleichen.</p>
+	<p>Nun, da der erste <code>.*</code> nur dem ersten x entspricht und der zweite <code>.*</code> null Zeichen entspricht, kann die Engine schließlich den Literal <code>=</code> im Ausdruck mit dem <code>=</code> in der Zeichenfolge abgleichen. Sie fährt fort und der letzte <code>.*</code> entspricht dem letzten <code>x</code>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1klUH23Ln0g7wzuzeF8zXh/f51ca63d7c440fcb68ece621cd1c3b95/23-steps-1.gif" alt="" class="kg-image" width="600" height="296" loading="lazy">
+
+	</figure>
+	<p>23 Schritte zum Abgleich von <code>x=x</code>. Hier ist ein kurzes Video davon mit dem Perl <a href="https://metacpan.org/pod/Regexp::Debugger" target="_blank" rel="noopener noreferrer">Regexp::Debugger</a>, das die durchgeführten Schritte und Backtrackings zeigt.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/492t92b72E9LlQk3sSwRi1/1ddfcdc4e3d3b7fbae0bae2257199e4f/matching-x-x.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+
+	</figure>
+	<p>Das ist viel Arbeit. Was aber passiert, wenn die Zeichenfolge von <code>x=x</code> zu <code>x=xx</code> geändert wird? Dieses Mal erfordert der Abgleich 33 Schritte. Und wenn die Eingabe <code>x=xxx</code> lautet, sind es 45. Das ist nicht linear. Hier ist ein Diagramm, das den Abgleich von <code>x=x</code> bis <code>x=xxxxxxxxxxxxxxxxxxxx</code> zeigt (20 <code>x</code> nach dem <code>=</code>). Bei 20 <code>x</code> nach dem <code>=</code> benötigt die Engine 555 Schritte für den Abgleich! (Und wenn das <code>x=</code> fehlen würde, sodass die Zeichenfolge nur aus 20 <code>x</code> bestünde, würde die Engine sogar 4.067 Schritte benötigen, um herauszufinden, dass das Muster nicht übereinstimmt).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jHgZTutfW1tcTQkXpQlr2/1d10ecf75e3d30e37fb06c08f4fcaafb/555-steps.gif" alt="" class="kg-image" width="600" height="310" loading="lazy">
+
+	</figure>
+	<p>Dieses Video zeigt alle notwendigen Backtrackings zum Abgleich von <code>x=xxxxxxxxxxxxxxxxxxxx:</code></p>
+	<p>Das ist schlecht, denn wenn die Eingabegröße sich erhöht, steigt die Abgleichzeit superlinear. Es hätte jedoch noch schlimmer kommen können, wenn der reguläre Ausdruck etwas anders aussähe. Angenommen, er hätte <code>.*.*=.*;</code> gelautet (d. h. mit einem literalen Semikolon am Ende des Musters). Dieser Ausdruck könnte z. B. geschrieben werden, um einen Ausdruck wie <code>foo=bar;</code> abzugleichen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sBXHPU222SATdzCf03M1L/942994d5935e94453a5c87c16a5719dd/failing-x-x.png" alt="" class="kg-image" width="600" height="371" loading="lazy">
+
+	</figure>
+	<p>Dieses Mal wäre das Backtracking katastrophal gewesen. Der Abgleich von <code>x=x</code> erfordert 90 Schritte statt 23. Und die Zahl der Schritte wächst sehr schnell. Das Abgleichen von <code>x=</code> gefolgt von 20 <code>x</code> erfordert 5.353 Schritte. Hier ist das entsprechende Diagramm. Sehen Sie sich die Y-Achsen-Werte genau an und vergleichen Sie sie mit dem vorherigen Diagramm.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rKCfjvp7ntf7NhXd0JcHq/f6568463a8e119557e4d779355c9a199/5353.gif" alt="" class="kg-image" width="600" height="270" loading="lazy">
+
+	</figure>
+	<p>Um das Bild zu vervollständigen, sind hier alle 5.353 Schritte des fehlgeschlagenen Abgleichs von <code>x=xxxxxxxxxxxxxxxxxxxx</code> mit <code>.*.*=.*;</code></p>
+	<p>Durch die Verwendung „fauler“ (lazy) anstelle gieriger Abgleiche lässt sich die Zahl der Backtrackings reduzieren, die in diesem Fall auftreten. Wenn der ursprüngliche Ausdruck zu <code>.*?.*?=.*?</code> geändert wird, erfordert der Abgleich von <code>x=x</code> 11 Schritte (statt 23). Genauso ist es beim Abgleich von <code>x=xxxxxxxxxxxxxxxxxxxx</code>. Der Grund ist, dass das <code>?</code> &nbsp;nach dem <code>.*</code> die Engine anweist, zuerst die kleinste Anzahl von Zeichen abzugleichen, bevor sie mit den nächsten Schritten fortfährt.</p>
+	<p>Faulheit ist aber keine umfassende Lösung für dieses Backtracking-Verhalten. Wenn im Beispiel mit dem katastrophalen Backtracking <code>.*.*=.*;</code> zu <code>.*?.*?=.*?;</code> geändert wird, verändert sich seine Laufzeit überhaupt nicht. x=xerfordert weiterhin 555 Schritte und &nbsp;<code>x=</code> gefolgt von 20 <code>x</code> erfordert weiterhin 5.353 Schritte.</p>
+	<p>Die einzige echte Lösung, abgesehen von einem kompletten Umschreiben des Musters, ist, von einer Engine für reguläre Ausdrücke mit diesem Backtracking-Mechanismus abzurücken. Genau das tun wir innerhalb der nächsten paar Wochen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4n156xYlxhI3MDEeDRthnP/5d5f998f0aa1dc890888c1223a1e239a/thompson-1968.png" alt="" class="kg-image" width="1904" height="1434" loading="lazy">
+
+	</figure>
+	<p>Die Lösung dieses Problems ist seit 1968 bekannt, als Ken Thompson den Artikel „<a href="https://dl.acm.org/citation.cfm?doid=363347.363387" target="_blank" rel="noopener noreferrer">Programming Techniques: Regular expression search algorithm</a>“ veröffentlichte. Darin wird ein Mechanismus zum Umwandeln eines regulären Ausdrucks in einen NEA (nichtdeterministischer endlicher Automat) beschrieben. Außerdem werden die Zustandswechsel im NEA erläutert, die einem Algorithmus folgen, der zeitlich linear für die Größe der abgeglichenen Zeichenfolge ausgeführt wird.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pdDjKS5C8WBlPqkoo9MHa/ec5984b58b493875c75123b4752ed6a2/nfa.png" alt="" class="kg-image" width="1826" height="574" loading="lazy">
+
+	</figure>
+	<p>\</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2uKtWhF7BRnnOvYbe4hqSe/3183b44bcb32385be4593666baa68bd5/figure-0_1.5x.png" alt="" class="kg-image" width="2049" height="1433" loading="lazy">
+
+	</figure>
+	<p>Thompsons Artikel nimmt nicht direkt Bezug auf den NEA, aber der Algorithmus mit linearer Zeit wird genau erklärt und ein ALGOL-60-Programm, das Assemblersprachencode für den IBM 7094 generiert, wird vorgestellt. Die Implementierung mag obskur erscheinen, die Idee ist es nicht.</p>
+	<p>So sähe der reguläre Ausdruck <code>.*.*=.*</code> aus, wenn er gemäß den Zeichnungen in Thompsons Artikel dargestellt würde:</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gdODacQaWntch4rJ49FQ6/9553dd137e88877d35ca7e801f888980/figure-1_1.5x.png" alt="" class="kg-image" width="2049" height="1433" loading="lazy">
+
+	</figure>
+	<p>Abbildung 0 zeigt fünf Zustände, angefangen mit 0. Die drei Kreise zeigen die Zustände 1, 2 und 3. Sie entsprechen den drei <code>.*</code> im regulären Ausdruck. Die drei Rhomben mit Punkten darin entsprechen einem einzelnen Zeichen. Der Rhombus mit einem <code>=</code>-Zeichen entspricht dem literalen <code>=</code>-Zeichen. Zustand 4 ist der Endzustand. Wenn er erreicht ist, wurde der reguläre Ausdruck abgeglichen.</p>
+	<p>Um zu prüfen, wie ein solches Zustandsdiagramm zum Abgleich des regulären Ausdrucks <code>.*.*=.*</code> verwendet werden kann, sehen wir uns nun den Abgleich der Zeichenfolge <code>x=x</code> an. Das Programm beginnt mit Zustand 0, wie in Abbildung 1 gezeigt.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bbx0IwgTR4AnIusx8mQh7/15a0654b0c54569aae46af4ff1f32c46/figure-2_1.5x.png" alt="" class="kg-image" width="2049" height="1433" loading="lazy">
+
+	</figure>
+	<p>Der Schlüssel dazu, diesen Algorithmus zum Funktionieren zu bringen, ist, dass der Zustandsautomat gleichzeitig mehrere Zustände aufweist. Der NEA führt jeden Wechsel, den er erreichen kann, gleichzeitig durch.</p>
+	<p>Noch bevor er eine Eingabe liest, wechselt er sofort <i>sowohl</i> in Zustand 1 als auch in Zustand 2, wie in Abbildung 2 gezeigt.</p>
+	<p>In Abbildung 2 sehen wir, was passieren würde, wenn er zuerst <code>x</code> in <code>x=x</code> berücksichtigt. Das <code>x</code> kann dem obersten Punkt entsprechen, indem von Zustand 1 gewechselt und wieder zurück zu Zustand 1 gewechselt wird. Oder das <code>x</code> kann dem Punkt darunter entsprechen, indem von Zustand 2 gewechselt und wieder zurück zu Zustand 2 gewechselt wird.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5k61w05lI8prOu8bz6lNsa/44ef75e636aac8a41a03d020273940eb/figure-3_1.5x.png" alt="" class="kg-image" width="2049" height="1433" loading="lazy">
+
+	</figure>
+	<p>Nach dem Abgleich des ersten <code>x</code> in <code>x=x</code> sind die Zustände also weiterhin 1 und 2. Die Zustände 3 oder 4 können nicht erreicht werden, da dazu ein literales <code>=</code>-Zeichen benötigt wird.</p>
+	<p>Als nächstes nimmt sich der Algorithmus das <code>=</code> in <code>x=x</code> vor. Ähnlich wie das <code>x</code> zuvor kann es einem der beiden oberen Kreise mit dem Wechsel von Zustand 1 zu Zustand 1 bzw. Zustand 2 zu Zustand 2 entsprechen. Zusätzlich kann jedoch das Literal <code>=</code> abgeglichen werden und der Algorithmus kann von Zustand 2 zu Zustand 3 (und sofort zu Zustand 4) wechseln. Das ist in Abbildung 3 veranschaulicht.</p>
+	<p>Als nächstes erreicht der Algorithmus das letzte <code>x</code> in <code>x=x</code>. Von den Zuständen 1 und 2 sind die gleichen Wechsel zurück zu den Zuständen 1 und 2 möglich. Von Zustand 3 kann das <code>x</code> dem Punkt auf der rechten Seite entsprechen und zurück zu Zustand 3 wechseln.</p>
+	<p>An diesem Punkt wurde jedes Zeichen in <code>x=x</code> berücksichtigt; da Zustand 4 erreicht wurde, entspricht der reguläre Ausdruck dieser Zeichenfolge. Jedes Zeichen wurde einmal verarbeitet. Der Algorithmus war also linear für die Länge der Eingabezeichenfolge. Und kein Backtracking war erforderlich.</p>
+	<p>Es mag offensichtlich sein, aber nachdem Zustand 4 erreicht wurde (nach dem Abgleich von <code>x=</code>), war der reguläre Ausdruck abgeglichen und der Algorithmus konnte enden, ohne das letzte <code>x</code> überhaupt zu berücksichtigen.</p>
+	<p>Der Algorithmus ist linear für die Größe seiner Eingabe.</p>
+</div>

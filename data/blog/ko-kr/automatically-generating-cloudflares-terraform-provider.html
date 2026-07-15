@@ -1,0 +1,294 @@
+<div class="mb2 gray5">10분 읽기</div>
+<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider">English</a>, <a href="https://blog.cloudflare.com/zh-tw/automatically-generating-cloudflares-terraform-provider">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/automatically-generating-cloudflares-terraform-provider">Français</a>, <a href="https://blog.cloudflare.com/de-de/automatically-generating-cloudflares-terraform-provider">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/automatically-generating-cloudflares-terraform-provider">日本語</a>, <a href="https://blog.cloudflare.com/es-es/automatically-generating-cloudflares-terraform-provider">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/automatically-generating-cloudflares-terraform-provider">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zh37HN3XlMPz8Imlc1pkQ/c93812e87ed5454947b29df8f6aa0671/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>2022년 11월 저희는 <a href="https://blog.cloudflare.com/open-api-transition"><u>Cloudflare API의 OpenAPI 스키마 전환</u></a>을 발표했습니다. 당시 Cloudflare는 SDK 에코시스템과 참조 사항 문서화를 사실적인 소스로 삼는 OpenAPI 스키마를 만들겠다는 대담한 목표를 갖고 있었습니다. 2024년 Developer Week에 저희는 <a href="https://blog.cloudflare.com/workers-production-safety"><u>SDK 라이브러리가 이러한 OpenAPI 스키마로부터 자동 생성된다고 발표</u></a>했습니다. 자동 생성 에코시스템의 최신 부분인 Terraform 공급자와 API 참조 문서화를 오늘 발표하게 되어 기쁩니다.</p>
+	<p>즉, 새로운 기능이나 속성이 Cloudflare 제품에 추가되고 팀에서 문서를 작성하는 순간 SDK 에코시스템 전체에서 해당 기능이 어떻게 사용되는지 확인하고&nbsp; 즉시 사용할 수 있습니다. 더 이상 지연되지 않습니다. 더 이상 API 엔드포인트에 대한 커버리지가 부족하지 않습니다.&nbsp;</p>
+	<p>새 문서화 사이트는 <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/api-next/</u></a>에서 확인하실 수 있으며, <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/5.0.0-alpha1/docs" target="_blank" rel="noopener noreferrer"><u>5.0.0-alpha1</u></a>을 설치하여 Terraform 공급자 프리뷰 릴리스 후보를 사용해 보실 수 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-terraform">왜 Terraform인가요?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.terraform.io" target="_blank" rel="noopener noreferrer"><u>Terraform </u></a>에 익숙하지 않은 분들을 위해 설명드리자면, Terraform은 애플리케이션 코드와 마찬가지로 인프라를 코드로 관리하기 위한 도구입니다. Cloudflare의 크고 작은 많은 고객이 Terraform에 의존하여 기술에 구애받지 않는 방식으로 인프라를 조율합니다. 내부적으로는 기본적으로 수명 주기 관리 기능이 내장된 HTTP 클라이언트로, 리소스의 수명 동안 생성, 읽기, 업데이트, 삭제하는 방법을 이해하는 방식으로 공개적으로 문서화된 API를 사용합니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="keeping-terraform-updated-the-old-way">Terraform을 최신 상태로 유지하기 - 과거의 방식</h2>
+		<a href="https://blog.cloudflare.com/#keeping-terraform-updated-the-old-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>과거 Cloudflare는 Terraform 공급자를 직접 유지 관리해 왔지만, 내부적으로 Terraform만의 업무 방식이 필요했기 때문에 유지 관리 및 지원 책임은 소수의 개인에게 맡겨져 있었습니다. 공급자의 단일 변경 사항을 제공하는 데 상당한 인지적 오버헤드가 발생했기 때문에, 서비스 팀은 변경 사항의 수를 따라잡는 데 항상 어려움을 겪었습니다. 한 팀이 공급자에 변경 사항을 가져오려면, 최소 3건의 풀 리퀘스트(<a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer"><u>cf-terraforming</u></a>에 지원을 추가하는 경우 4개의 풀 리퀘스트)가 필요했습니다.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6spvs4QAkY7BXLNfABDSQs/838f9b224838cd174376eb413cce7848/image6.png" alt="" class="kg-image" width="1318" height="898" loading="lazy">
+	</figure>
+	<p>4개의 풀 리퀘스트가 완료되더라도 사용 가능한 모든 속성의 적용 범위를 보장하지 않았기 때문에, 작지만 중요한 세부 사항이 잊혀져 고객에게 노출되지 않아 리소스를 구성 시 불편을 겪을 수 있었습니다.</p>
+	<p>이 문제를 해결하기 위해, Terraform 공급자는 나머지 SDK 에코시스템이 <a href="https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline"><u>이미 활용하고 있는 것</u></a>과 동일한 OpenAPI 스키마를 사용해야 했습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="updating-terraform-automatically">자동으로 Terraform 업데이트하기</h2>
+		<a href="https://blog.cloudflare.com/#updating-terraform-automatically" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Terraform이 SDK와 차별화되는 점은 리소스의 수명 주기를 관리한다는 점입니다. 이로 인해 알려진 값과 요청 및 응답 페이로드의 차이 관리와 관련된 새로운 범위의 문제가 발생했습니다. 새 DNS 레코드를 만들고 다시 가져오는 두 가지 방법을 비교해 보겠습니다.</p>
+	<p>Go SDK 사용 시:</p>
+	<pre class="language-GOLANG"><code class="language-GOLANG">// Create the new record
+record, _ := client.DNS.Records.New(context.TODO(), dns.RecordNewParams{
+	ZoneID: cloudflare.F("023e105f4ecef8ad9ca31a8372d0c353"),
+	Record: dns.RecordParam{
+		Name:    cloudflare.String("@"),
+		Type:    cloudflare.String("CNAME"),
+        Content: cloudflare.String("example.com"),
+	},
+})
+
+
+// Wasteful fetch, but shows the point
+client.DNS.Records.Get(
+	context.Background(),
+	record.ID,
+	dns.RecordGetParams{
+		ZoneID: cloudflare.String("023e105f4ecef8ad9ca31a8372d0c353"),
+	},
+)
+</code></pre>
+	<p>
+		Terraform 사용 시:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">resource "cloudflare_dns_record" "example" {
+  zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+  name    = "@"
+  content = "example.com"
+  type    = "CNAME"
+}</code></pre>
+	<p>표면적으로는 Terraform의 접근 방식이 더 단순해 보이는데, 여러분의 생각이 맞을 것입니다. 새로운 리소스를 만들고 변경 사항을 유지하는 방법을 인지하는 것의 복잡성은 자동으로 처리됩니다. 하지만 Terraform이 이러한 추상화 및 데이터 보장을 제공하려면 적용 시점에 모든 값을 알고 있어야 한다는 문제가 있습니다. 즉, 프록시 설정된 값을 사용하지 않더라도, Terraform이 상태 파일에 저장하고 해당 속성을 관리하기 위해 필요한 값을 Terraform이 알아야 합니다. 다음 오류는 적용 시 값을 알 수 없을 때 Terraform 운영자가 공급자에게서 흔히 보게 되는 오류입니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">Error: Provider produced inconsistent result after apply
+
+When applying changes to example_thing.foo, provider "provider[\"registry.terraform.io/example/example\"]"
+produced an unexpected new value: .foo: was null, but now cty.StringVal("").</code></pre>
+	<p>반면 SDK를 사용할 때는 필드가 필요하지 않은 경우 생략하면 되므로, 알려진 값을 유지 관리하는 데 신경 쓸 필요가 없습니다.</p>
+	<p>OpenAPI 스키마에서 이 문제를 해결하는 것은 쉬운 일이 아니었습니다. Terraform 세대 지원을 도입한 이후로 스키마의 품질이 크게 향상되었습니다. 이제 존재하는 모든 기본값, 요청 페이로드에 따른 가변 응답 속성, 서버 측 계산 속성을 명시적으로 호출합니다. 이 모든 것은 Cloudflare API와 상호 작용하는 모든 사람에게 더 나은 경험을 제공한다는 의미입니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="making-the-jump-from-terraform-plugin-sdk-to-terraform-plugin-framework">terraform-plugin-sdk에서 terraform-plugin-framework로의 이동</h3>
+		<a href="https://blog.cloudflare.com/#making-the-jump-from-terraform-plugin-sdk-to-terraform-plugin-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Terraform 공급자를 구축하고 리소스 또는 데이터 소스를 운영자에게 노출하려면 공급자 서버와 공급자라는 두 가지 주요 준비물이 필요합니다.</p>
+	<p>공급자 서버는 Terraform 코어(CLI를 통해)가 리소스를 관리하거나 운영자 제공 구성에서 데이터 소스를 읽을 때 통신에 사용하는 <a href="https://github.com/hashicorp/terraform/blob/main/docs/plugin-protocol/README.md" target="_blank" rel="noopener noreferrer"><u>gRPC 서버</u></a>를 노출합니다.</p>
+	<p>공급자는 리소스와 데이터 소스를 래핑하고, 원격 서비스와 통신하고, 상태 파일을 관리할 책임이 있습니다. 이를 위해서는 내부를 올바르게 관리하기 위해 Terraform에서 제공하는 모든 인터페이스와 메서드가 포함된 <a href="https://github.com/hashicorp/terraform-plugin-sdk" target="_blank" rel="noopener noreferrer"><u>terraform-plugin-sdk</u></a>(일반적으로 SDKv2라고 부름) 또는 <a href="https://github.com/hashicorp/terraform-plugin-framework" target="_blank" rel="noopener noreferrer"><u>terraform-plugin-framework</u></a>에 의존합니다. 사용할 플러그인은 공급자의 연혁에 따라 결정됩니다. SDKv2는 더 오래 사용되어 왔으며 대부분의 Terraform 공급자들이 사용하고 있지만, 오래되었고 복잡하기 때문에 사용하는 사람들의 이전 버전과의 용이한 호환성을 위해 해결해야 할 핵심 문제가 많이 남아 있습니다. <code>terraform-plugin-framework</code>는 SDKv2의 광범위한 기능은 부족하지만, 공급자 구축에 Go와 더 유사한 접근 방식을 제공하며 SDKv2의 많은 기본 버그를 해결하는 새로운 버전입니다.</p>
+	<p><i>(SDKv2와 프레임워크를 더 자세히 비교하고 싶다면 </i><a href="https://www.youtube.com/watch?v=4P69E44mJGo" target="_blank" rel="noopener noreferrer"><i><u>Octopus Deploy의 John Bristowe와의 대화</u></i></a><i>를 참고하세요.)</i></p>
+	<p>대부분의 Cloudflare Terraform 공급자는 SDKv2를 사용하여 구축되었지만, 2023년 초에 저희는 <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/2170" target="_blank" rel="noopener noreferrer"><u>멀티플렉스로의 전환을 단행하여</u></a> 두 가지를 모두 공급자에게 제공하기로 결정했습니다. 이것이 왜 필요한지 이해하려면 SDKv2를 약간 이해해야 합니다. SDKv2의 구조 방식은 null 또는 “설정되지 않은” 값을 일관되고 안정적으로 표현하는 데 도움이 되지 않습니다. <a href="https://pkg.go.dev/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema#ResourceData.GetRawConfig" target="_blank" rel="noopener noreferrer"><u>실험적인 ResourceData.GetRawConfig</u></a>를 사용하여 구성에서 값이 설정되었는지, null인지 또는 알 수 없는지 확인할 수는 있지만, 이를 다시 null로 쓰는 것은 실제로 지원되지 않습니다.</p>
+	<p>이 주의 사항은 에지 규칙 엔진(규칙 세트)이 새로운 서비스를 온보딩하기 시작했을 때, 그리고 이러한 서비스가 각각 고유한 추론과 목적을 가지고 설정되지 않은(또는 누락된), 참 또는 거짓 상태의 불(boolean)을 포함하는 API 응답을 지원해야 할 때 처음 나타났습니다. 이것은 Cloudflare의 기존 API 설계는 아니지만, 우리가 함께 할 수 있어야 하는 작업을 수행하는 유효한 방법입니다. 그러나 위에서 언급했듯이 SDKv2 공급자는 그렇게 할 수 없었습니다. 응답에 값이 없거나 상태를 읽어들일 수 없는 경우 기본값으로 Go와 호환되는 0 값을 가져오기 때문입니다. 이는 값이 거짓 값으로 상태에 쓰여진 후 값을 설정 해제할 수 없는(또는 그 반대의 경우) 현상으로 나타났습니다.</p>
+	<p>이러한 불(boolean) 값의 세 가지 상태를 안정적으로 사용하기 위한 유일한 해결책은 <a href="https://github.com/hashicorp/terraform-plugin-framework/blob/main/types/bool_value.go" target="_blank" rel="noopener noreferrer"><u>설정되지 않은 값을 다시 쓰는 기능이 올바르게 구현</u></a>되어 있는 <code>terraform-plugin-framework</code>로 마이그레이션하는 것 입니다.</p>
+	<p>이전 공급자에서 <code>terraform-plugin-framework</code>를 사용하여 더 많은 기능을 추가하기 시작하자 더 나은 개발자 환경이라는 것이 분명해졌고, 무의식적으로 이 문제에 부딪히지 않도록 앞으로 SDKv2 사용을 방지하는 <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/2871" target="_blank" rel="noopener noreferrer"><u>래칫을 추가</u></a>했습니다.</p>
+	<p>Terraform 공급자를 자동으로 생성하기로 결정했을 때, Cloudflare는 모든 리소스도 <code>terraform-plugin-framework</code>에 기반하도록 가져오고 SDKv2의 문제는 영원히 남겨두는 것이 맞다고 생각했습니다. 내부가 개선되면서 스키마 및 <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank" rel="noopener noreferrer"><u>CRUD 작업</u></a>과 같은 주요 구성 요소를 변경해야 했기 때문에 마이그레이션이 복잡해지긴 했지만 익숙해져야 했습니다. 하지만 이렇게 함으로써 미래에 대비하여 공급자의 기반을 다질 수 있게 되었고, 레거시 내부의 많은 버그로 인해 훌륭한 Terraform 경험을 저해하는 일이 줄어들었기 때문에 이는 가치 있는 투자였습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="iteratively-finding-bugs">반복적으로 버그 찾기&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#iteratively-finding-bugs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>코드 생성 파이프라인의 일반적인 어려움 중 하나는 새로운 것을 구현하는 기존 도구가 없으면 작동하는지 또는 사용하기에 합리적인지 판단하기 어렵다는 것입니다. 물론 새로운 것을 시험하기 위해 테스트를 생성할 수도 있지만, 파이프라인에 버그가 있는 경우 버그가 예상된 동작을 표시하는 테스트 어설션을 생성하므로 버그로 인식하지 못할 가능성이 높습니다.&nbsp;</p>
+	<p>저희가 겪었던 필수 피드백 루프 중 하나는 기존의 승인 테스트 스위트입니다. 기존 공급자의 모든 리소스에 대한 회귀 테스트와 기능 테스트가 이루어졌습니다. 무엇보다도 테스트 스위트가 실제 리소스를 생성하고 관리하기 때문에 원격 엔드포인트에서 API 호출의 수락 여부를 HTTP 트래픽을 통해 확인함으로써 결과물이 제대로 구현되었는지를 매우 쉽게 알 수 있었습니다. 테스트 스위트를 포팅하는 작업은 기존 테스트를 모두 복사하고 테스트 실행을 시작하기 전에 유형 어설션 차이(예: 리스트에서 단일 중첩 리스트)를 확인하여 리소스가 올바르게 작동하는지 확인하기만 하면 되었습니다.&nbsp;</p>
+	<p>중앙 집중식 스키마 파이프라인은 스키마 수정이 전체 에코시스템에 거의 즉시 전파된다는 점에서 삶의 질을 크게 개선했지만, 다른 버그를 숨기는 표면화 버그를 해결하는 데는 도움이 되지 못했습니다. Terraform에서 문제를 해결할 때 오류가 발생할 수 있는 위치가 세 군데 있기 때문에 이 작업은 시간 소모적이었습니다.</p>
+	<ol>
+		<li>
+			<p>API 호출이 이루어지기 전에 Terraform은 논리적 스키마 유효성 검사를 구현하고 유효성 검사 오류가 발생하면 즉시 중지합니다.</p>
+		</li>
+		<li>
+			<p>API 호출이 실패하면 CRUD 작업에서 멈추고 진단을 반환하여 즉시 중단됩니다.</p>
+		</li>
+		<li>
+			<p>CRUD 작업이 실행된 후 Terraform은 모든 값이 알려져 있는지 확인하기 위해 검사를 수행합니다.</p>
+		</li>
+	</ol>
+	<p>즉, 1단계에서 버그를 발견한 후 수정했다면, 두 개의 버그를 더 발견하지 못했으리라는 보장이나 방법이 없었습니다. 2단계에서 버그를 발견하고 수정본을 배포했다면 다음 테스트 라운드에서 첫 번째 단계의 버그를 발견하지 못할 수도 있다는 것은 말할 것도 없습니다.</p>
+	<p>여기에는 별다른 해결 방법이 없습니다. 대신 스키마 동작에서 문제 패턴을 발견하고 코드 생성 파이프라인에 들어가기 전에 OpenAPI 스키마 내에서 CI 린트 규칙을 적용하는 것이 해결 방법입니다. 이러한 접근 방식을 취함으로써 1단계와 2단계의 버그 수를 점차 줄여나가다가 3단계에서는 해당 유형만 처리하게 되었습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-more-reusable-approach-to-model-and-struct-conversion">모델 및 구조체 변환에 대한 재사용이 가능한 접근법 &nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#a-more-reusable-approach-to-model-and-struct-conversion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Terraform 공급자 CRUD 작업 내에서 다음과 같은 상용구를 흔히 볼 수 있습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">var plan ThingModel
+diags := req.Plan.Get(ctx, &amp;plan)
+resp.Diagnostics.Append(diags...)
+if resp.Diagnostics.HasError() {
+	return
+}
+
+out, err := r.client.UpdateThingModel(ctx, client.ThingModelRequest{
+	AttrA: plan.AttrA.ValueString(),
+	AttrB: plan.AttrB.ValueString(),
+	AttrC: plan.AttrC.ValueString(),
+})
+if err != nil {
+	resp.Diagnostics.AddError(
+		"Error updating project Thing",
+		"Could not update Thing, unexpected error: "+err.Error(),
+	)
+	return
+}
+
+result := convertResponseToThingModel(out)
+tflog.Info(ctx, "created thing", map[string]interface{}{
+	"attr_a": result.AttrA.ValueString(),
+	"attr_b": result.AttrB.ValueString(),
+	"attr_c": result.AttrC.ValueString(),
+})
+
+diags = resp.State.Set(ctx, result)
+resp.Diagnostics.Append(diags...)
+if resp.Diagnostics.HasError() {
+	return
+}</code></pre>
+	<p>개요:</p>
+	<ul>
+		<li>
+			<p><code>req.Plan.Get()</code>을 사용하여 제안된 업데이트(플랜)를 가져옵니다</p>
+		</li>
+		<li>
+			<p>새 값으로 API 호출을 수행합니다</p>
+		</li>
+		<li>
+			<p>Go 유형의 데이터를 Terraform 모델로 조작합니다 (<code>convertResponseToThingModel</code>)</p>
+		</li>
+		<li>
+			<p><code>resp.State.Set()</code>을 호출해 상태를 설정합니다</p>
+		</li>
+	</ul>
+	<p>처음에는 이것이 큰 문제가 없어 보입니다. 그러나 Go 유형을 Terraform 모델로 변경하는 세 번째 단계는 유형과 관련 Terraform 모델 간의 전환을 위해 모든 리소스가 이 작업을 수행해야 하기 때문에 번거롭고 오류가 발생하기 쉽고 복잡합니다.</p>
+	<p>필요 이상으로 복잡한 코드가 생성되는 것을 방지하기 위해 모든 CRUD 메서드가 구조 태그를 기반으로 변환 및 처리 로직을 중앙 집중화하여 이 문제를 해결하는 통합 <code>apijson.Marshal, apijson.Unmarshal</code>, 및 <code>apijson.UnmarshalComputed</code> 메서드를 사용하도록 개선되었습니다.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">var data *ThingModel
+
+resp.Diagnostics.Append(req.Plan.Get(ctx, &amp;data)...)
+if resp.Diagnostics.HasError() {
+	return
+}
+
+dataBytes, err := apijson.Marshal(data)
+if err != nil {
+	resp.Diagnostics.AddError("failed to serialize http request", err.Error())
+	return
+}
+res := new(http.Response)
+env := ThingResultEnvelope{*data}
+_, err = r.client.Thing.Update(
+	// ...
+)
+if err != nil {
+	resp.Diagnostics.AddError("failed to make http request", err.Error())
+	return
+}
+
+bytes, _ := io.ReadAll(res.Body)
+err = apijson.UnmarshalComputed(bytes, &amp;env)
+if err != nil {
+	resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
+	return
+}
+data = &amp;env.Result
+
+resp.Diagnostics.Append(resp.State.Set(ctx, &amp;data)...)</code></pre>
+	<p>유형-모델 변환 메서드의 수백 가지 인스턴스를 생성할 필요 없이 올바른 태그로 Terraform 모델을 장식하고 일관된 방식으로 데이터의 마샬링 및 언마샬링을 처리할 수 있습니다. 이는 코드의 사소한 변경이지만 장기적으로 세대의 재사용성과 가독성을 높이는 데 도움이 됩니다. 여기에 더해, 이 접근 방식은 특정 유형의 필드에서 버그를 식별하고 통합 인터페이스에서 수정하면, 아직 발견하지 못한 다른 유형의 버그도 수정할 수 있어 버그 수정에 매우 유용하다는 이점도 있습니다.</p>
+	<div class="flex anchor relative">
+		<h2 id="but-wait-theres-more-docs">잠시만요, 더 많은 문서가 있습니다!</h2>
+		<a href="https://blog.cloudflare.com/#but-wait-theres-more-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>OpenAPI 스키마 사용에 더해, <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>새로운 API 문서화 사이트</u></a>와의 SDK 통합을 강화하고 있습니다. Cloudflare는 지난 2년 동안 투자한 파이프라인을 그대로 사용하고 있으며 몇 가지 일반적인 사용 문제를 해결하고 있습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="sdk-aware">SDK 인식&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#sdk-aware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare의 API 문서화 사이트를 이용하셨다면 curl과 같은 명령줄 도구를 사용하여 API와 상호 작용하는 예시를 제공한다는 것을 알고 계실 것입니다. 이렇게 하는 것도 좋지만, SDK 라이브러리 중 하나를 사용하는 경우 사용하려는 메서드나 유형 정의로 변환하기 위해 정신적인 체조를 해야 합니다. 이제 동일한 파이프라인을 사용하여 SDK <b>및</b> 문서화를 생성하고 있으므로, curl뿐만 아니라 사용<i>할 수 있는</i> 모든 라이브러리에서 예제를 제공하여 이 문제를 해결하고 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SNCehksc30kXXQvVKYC47/a3a6071be64d006a2da9b2e615d143ae/image2.png" alt="" class="kg-image" width="1528" height="334" loading="lazy">
+
+	</figure>
+	<p><i>cURL을 사용하여 모든 영역을 가져오는 예제입니다.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50PeyK8oOLb51mCLF4ikds/764db96a24232b611ec88d5ff8f8844f/image4.png" alt="" class="kg-image" width="1534" height="658" loading="lazy">
+
+	</figure>
+	<p><i>Typescript 라이브러리를 사용하여 모든 영역을 가져오는 예제입니다.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rQn6OY3R1yi5iot1oxti4/09cf62ea46ede21d1541b5012497efdb/image5.png" alt="" class="kg-image" width="1534" height="568" loading="lazy">
+
+	</figure>
+	<p><i>Python 라이브러리를 사용하여 모든 영역을 가져오는 예제입니다.</i></p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Na9y9ta3fLBMEAvJK4uaH/41ecf061a5a088f4bdb313d70b173a9a/image7.png" alt="" class="kg-image" width="1530" height="974" loading="lazy">
+
+	</figure>
+	<p><i>Go 라이브러리를 사용하여 모든 영역을 가져오는 예제입니다.</i></p>
+	<p>이 개선 사항에서는 선택한 언어도 기억하므로 Typescript 라이브러리를 사용하여 문서화를 확인하도록 선택한 후 계속 클릭하면 해당 언어가 바뀔 때까지 Typescript를 사용한 예제를 계속 표시합니다.</p>
+	<p>무엇보다도, 기존 엔드포인트에 새로운 속성을 도입하거나 SDK 언어를 추가할 때 이 문서화 사이트가 자동으로 파이프라인과 동기화됩니다. 이제 모든 데이터를 최신 상태로 유지하는 데 큰 노력이 필요하지 않습니다.</p>
+	<div class="flex anchor relative">
+		<h3 id="faster-and-more-efficient-rendering">더 빠르고 효율적인 렌더링</h3>
+		<a href="https://blog.cloudflare.com/#faster-and-more-efficient-rendering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare가 항상 직면해 온 문제는 API 엔드포인트의 수와 이를 표현하는 방법이 너무 많다는 것이었습니다. 이 글을 게시하는 현재 시점에는 1,330개의 엔드포인트가 있으며, 각 엔드포인트에는 요청 페이로드, 응답 페이로드 및 이와 관련된 여러 유형이 있습니다. 이렇게 많은 양의 정보를 렌더링할 때, 과거에 사용했던 솔루션은 일부 표현을 위해 타협점을 찾아야 했습니다.</p>
+	<p>다음 API 문서화 사이트에서는 다음과 같은 몇 가지 방법으로 이 문제를 해결합니다.</p>
+	<ul>
+		<li>
+			<p>대화형 클라이언트 측 경험 및 정적 사전 렌더링된 콘텐츠를 결합하는 최신 React 애플리케이션으로 구현되어 초기 로딩이 빠르고 탐색이 빠릅니다. (네, JavaScript를 활성화하지 않고도 작동합니다!)&nbsp;</p>
+		</li>
+		<li>
+			<p>사용자가 탐색하는 동안 기본 데이터를 점진적으로 가져옵니다.</p>
+		</li>
+	</ul>
+	<p>이 근본적인 문제를 해결함으로써 과거처럼 타협하지 않고도 사용자 경험을 개선할 수 있도록 문서화 사이트와 SDK 에코시스템에 대한 다른 계획된 개선 사항을 실현할 수 있게 되었습니다.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="permissions">권한</h3>
+		<a href="https://blog.cloudflare.com/#permissions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>문서화 사이트에 다시 구현해 달라는 요청이 가장 많았던 기능 중 하나는 API 엔드포인트에 필요한 최소 권한이었습니다. 이전 문서화 사이트에서는 이를 이용할 수 있었습니다. 그러나 이 기능을 사용하는 대부분의 사용자가 이 값을 수동으로 유지 관리해야 했고, 종종 부정확한 값으로 인해 지원 티켓이 발생하고 사용자가 불편을 겪었습니다.&nbsp;</p>
+	<p>Cloudflare의 ID 및 액세스 관리 시스템에서 "이 엔드포인트에 액세스하려면 무엇이 필요합니까?"라는 질문에 답하는 것은 간단한 일이 아닙니다. 그 이유는 제어 영역에 대한 요청의 정상적인 흐름에서는 질문의 일부를 제공하기 위해 두 개의 서로 다른 시스템이 필요하며, 이를 결합하여 전체 답변을 제공할 수 있기 때문입니다. 처음에는 이 작업을 OpenAPI 파이프라인의 일부로 자동화할 수 없었기 때문에 이를 검증할 방법이 없는 부정확한 답변을 드리는 대신 제외하기로 결정했습니다.&nbsp;</p>
+	<p>다시 오늘로 돌아와서, Cloudflare는 엔드포인트 권한이 돌아왔다는 소식을 전하게 되어 기쁩니다! 저희는 이 질문에 대한 답을 코드 생성 파이프라인에 통합하고 모든 엔드포인트가 이 정보를 자동으로 가져올 수 있는 방식으로 추상화하는 새로운 도구를 구축했습니다. 다른 코드 생성 플랫폼과 마찬가지로 서비스팀이 별도의 작업 없이도 부가 가치를 추가하여 재사용할 수 있는 고품질 스키마를 소유하고 유지 관리하도록 하는 데 중점을 두고 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/641gSS5MLQpCvEANYXcVK6/447cf0b873ecb60fdbbc415df0424363/image3.png" alt="" class="kg-image" width="1534" height="360" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="stop-waiting-for-updates">업데이트를 기다리지 마세요</h2>
+		<a href="https://blog.cloudflare.com/#stop-waiting-for-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>이번 발표를 통해 SDK 에코시스템에 업데이트가 적용되기를 기다리는 일은 이제 끝났습니다. 이러한 새로운 개선 사항을 통해 팀이 새로운 어트리뷰트 및 엔드포인트를 문서화하는 즉시 기능을 간소화할 수 있습니다. 무엇을 기다리시나요? 지금 바로 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/5.0.0-alpha1/docs" target="_blank" rel="noopener noreferrer"><u>Terraform 공급자</u></a> 및 <a href="https://developers.cloudflare.com/api-next" target="_blank" rel="noopener noreferrer"><u>API 문서화 사이트</u></a>를 확인하세요.</p>
+</div>

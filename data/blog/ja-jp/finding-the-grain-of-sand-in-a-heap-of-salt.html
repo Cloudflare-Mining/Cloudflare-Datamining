@@ -1,0 +1,292 @@
+<div class="mb2 gray5">12分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/finding-the-grain-of-sand-in-a-heap-of-salt">English</a>および<a href="https://blog.cloudflare.com/ko-kr/finding-the-grain-of-sand-in-a-heap-of-salt">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/714qZwpH4BDJ6T69EnoiHE/db1ae0a3666dbb1abec3c57b21d81fc5/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>数千のサーバーで、15分間に数百の変更がピークに達するときに、設定管理が失敗する根本原因をどうやって特定しますか？</p>
+	<p>これは、当社が構成管理ツールのSaltの不具合によるリリースの遅れを減らすインフラストラクチャを構築した際に直面した課題でした。（当社は最終的にはエッジでの失敗を5%以上軽減しました。詳細は次で説明します）。Saltの基礎とCloudflareでの使用方法を探ります。そして、一般的な障害モードと、それらがお客様にサービスを提供するための価値ある変更のリリースをどのように遅らせるかについて説明します。</p>
+	<p>最初にアーキテクチャの問題を解決することで、サーバー、データセンター、データセンター群におけるSalt障害の根本原因を見つけるためのセルフサービスメカニズムの基盤を提供しました。このシステムは、gitコミット、外部サービスの失敗、アドホックなリリースと関連付けることができます。この結果、ソフトウェアリリースの遅延が短縮され、SREのための面倒な繰り返しの選別が全体的に減りました。</p>
+	<p>まず、Cloudflareネットワークの基本と、その中でSaltがどのように機能するかについて説明します。そして、大量のソルトからリクエストを見つけることに似た問題を解決した経緯について説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="how-salt-works">Saltの仕組み</h3>
+		<a href="https://blog.cloudflare.com/#how-salt-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>構成管理（CM）は、システムがその設定情報に対応していることを保証し、時間をかけてその情報の完全性と追跡可能性を維持するものです。優れた構成管理システムは、システムが「ドリフト」、つまり望ましい状態から逸脱しないことを保証します。最新のCMシステムには、インフラストラクチャの詳細な説明、これらの説明のためのバージョン管理、および異なる環境間で望ましい状態を強制するためのその他のメカニズムが含まれています。CMがなければ、管理者は手動でシステムを設定しなければならず、エラーが発生しやすく、再現も困難なプロセスです。</p>
+	<p><a href="https://docs.saltproject.io/en/latest/topics/tutorials/walkthrough.html" target="_blank" rel="noopener noreferrer"><u>Salt</u></a>は、こうしたCMツールの一例です。高速なリモート実行と構成管理を目的に設計されており、シンプルでスケーラブルなモデルで大規模なフリートを管理します。成熟したCMツールとして、チームと組織の境界を越えた一貫性、再現性、変更管理、監査可能性、コラボレーションを提供します。</p>
+	<p>Saltの設計は、<b>マスター</b>/<b>ミニオン</b>アーキテクチャ、ZeroMQ上に構築されたメッセージバス、宣言的ステートシステムを中心に展開されています。（Cloudflareでは、「マスター」や「ミニオン」という用語は通常避けます。しかし、Saltがアーキテクチャを表す方法として、ここではそれらを使います。)<b>ソルトマスター</b>は、ジョブや設定データを配布する中央コントローラーです。メッセージバスのリクエストをリッスンし、標的のミニオンにコマンドをディスパッチします。ステートファイル、ピラーデータ、キャッシュファイルも保存します。<b>ソルトミニオン</b>は、各マネージドホスト／サーバーにインストールされる軽量エージェントです。各ミニオンはZeroMQを介してマスターとの接続を維持し、公開されたジョブをサブスクライブします。ジョブがミニオンと一致すると、リクエストされた関数を実行し、結果を返します。</p>
+	<p>以下の図は、このブログ記事の目的のために、<a href="https://docs.saltproject.io/en/3006/topics/salt_system_architecture.html" target="_blank" rel="noopener noreferrer"><u>ドキュメントで説明されている</u></a>ソルトアーキテクチャを簡略化したものです。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19pmijzWlmIf3ACxW5M4hF/1c2ff0aab6afd76d1bc2286953ef509b/image5.png" alt="" class="kg-image" width="1386" height="1092" loading="lazy">
+	</figure>
+	<p><b>ステートシステム</b>は宣言的な構成管理を提供します。ステートはYAMLで記述され、リソース（パッケージ、ファイル、サービス、ユーザーなど）と必要な属性を記述しています。一般的な例は、パッケージの状態で、パッケージが特定のバージョンにインストールされていることを確認します。</p>
+	<pre class="language-YAML"><code class="language-YAML"># /srv/salt/webserver/init.sls
+include:
+  - common
+
+nginx:
+  pkg.installed: []
+
+/etc/nginx/nginx.conf:
+  file.managed:
+    - source: salt://webserver/files/nginx.conf
+    - require:
+      - pkg: nginx</code></pre>
+	<p>ステートは、システムアクションを実装するPython関数である<b>実行モジュール</b>を呼び出すことができます。ステートを適用すると、Saltは、ステートが成功したか（<code>結果：True/False</code>）、コメント、変更、および期間を含む構造化された結果を返します。</p>
+	<div class="flex anchor relative">
+		<h3 id="salt-at-cloudflare">Cloudflareのソルト</h3>
+		<a href="https://blog.cloudflare.com/#salt-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社はSaltを使って増え続けるマシンを管理しており、以前、当社の<a href="https://blog.cloudflare.com/tag/salt"><u>広範な使用</u></a>について書いています。前述のマスターミニオンアーキテクチャによって、数千台のサーバーにステートの形で設定をプッシュすることができ、当社のネットワーク維持に欠かせません。影響範囲を保護するために、変更の伝達を設計しました。こうした保護が機能することで、<a href="https://docs.saltproject.io/en/3006/ref/states/highstate.html" target="_blank" rel="noopener noreferrer"><u>ハイステート</u></a>障害は顧客に影響を与えるイベントではなく、シグナルとして扱われます。</p>
+	<p>このリリース設計は意図的なものであり、ハードに失敗するのではなく、「フェイルセーフ」を選択しました。さらに<a href="https://blog.cloudflare.com/safe-change-at-any-scale"><u>ガードレールを追加して</u></a>、機能がすべてのユーザーに到達する前に新しいコードを安全にリリースすることで、障害がデフォルトでSaltデプロイパイプラインを停止することを確信して、変更を伝達することができます。しかし、停止するたびに他の設定のデプロイメントがブロックされ、根本原因の特定には人為的な介入が必要になります。これは繰り返し発生するステップであり、持続的な価値をもたらすことがないため、すぐに面倒なプロセスになる可能性があります。</p>
+	<p>Saltの変更に対するデプロイメントパイプラインの一部では、<a href="https://en.wikipedia.org/wiki/APT_(software)" target="_blank" rel="noopener noreferrer"><u>Apt</u></a>を使用しています。X分ごとにマスターブランチにマージされ、Y分ごとにそれらのマージはバンドルされてAPTサーバーにデプロイされます。APTサーバーからSalt Master設定を取得するためのキーファイルは、APTソースファイルです。</p>
+	<pre class="language-Shell"><code class="language-Shell"># /etc/apt/sources.list.d/saltcodebase.sources
+# MANAGED BY SALT -- DO NOT MODIFY
+
+Types: deb
+URIs: mirror+file:/etc/apt/mirrorlists/saltcodebase.txt
+Suites: stable canary
+Components: cloudflare
+Signed-By: /etc/apt/keyrings/cloudflare.gpg</code></pre>
+	<p>このファイルは、マスターに特定の環境の正しいスイートを誘導するものです。そのスイートを使用して、関連するSalt Debianパッケージを含む最新の変更を加えることで、最新のパッケージを取得します。そのパッケージをインストールし、含まれる設定のデプロイを開始します。設定をマシンにデプロイすると、マシンは<a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale"><u>Prometheus</u></a>を使用して正常性を報告します。バージョンが健全な場合、次の環境へ進行します。続行する前に、バージョンは特定のソークしきい値を通過してエラーを発生させる必要があり、より複雑な問題が明らかになります。それは幸いなことです。</p>
+	<p>この場合は、さまざまな問題が発生します。プログレッシブデプロイメントを行うため、1つのバージョンが壊れると、それ以降のバージョンも壊れます。また、破損したバージョンは新しいバージョンに取って代わられることも多いため、デプロイメントを完全に停止する必要があります。バージョンが壊れている場合は、できるだけ早く修正することが重要です。これは、このブログ記事の核となる質問です。壊れたSaltバージョンが環境全体に伝播されたら、私たちはデプロイを放棄し、できるだけ早く修正を始める必要があるのでしょうか?</p>
+	<div class="flex anchor relative">
+		<h3 id="the-pain-how-salt-breaks-and-reports-errors-and-how-it-affects-cloudflare">課題：Saltがどのように壊れ、エラーを報告するか（それがCloudflareに影響するか）</h3>
+		<a href="https://blog.cloudflare.com/#the-pain-how-salt-breaks-and-reports-errors-and-how-it-affects-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Saltは一意で予測可能な設定を目指しますが、レンダリング、コンパイル、実行の段階で障害が発生することがあります。これらの失敗は、多くの場合、設定ミスが原因です。Ginjaテンプレートのエラーまたは無効なYAMLは、レンダリング段階で失敗する可能性があります。例としては、コロンがない、不正なインデント、未定義の変数などがあります。シンタックスエラーは、問題のある行を指すスタックトレースで発生することがよくあります。</p>
+	<p>よくあるもう一つの原因は、柱や粒度のデータが欠落していることです。ピラーデータはマスター上でコンパイルされるため、ピラートップファイルの更新やピラーの更新を忘れると、<i>KeyError</i>例外が発生する可能性があります。要件を使用して順序を維持するシステムとして、要件が誤って設定されると、ステートが順番に実行されなかったり、スキップされたりする可能性があります。失敗は、ミニオンがマスターで認証できない場合や、ネットワークやファイアウォールの問題によってマスターに到達できない場合にも発生することがあります。</p>
+	<p>Saltは、いくつかの方法でエラーを報告します。デフォルトでは、<code>salt</code> コマンドと <code>salt-call</code> コマンドは、いずれかの状態が失敗すると、retcode <b>1 </b> で終了します。Saltはまた、特定のケースに対する内部リコードを設定します。1はコンパイルエラーの場合、2はステートがFalseを返す場合、5は柱のコンパイルエラーの場合です。テストモードでは、実際に実行せずにどのような変更が行われるかを示しますが、構文や順序付けの問題を把握するのに役立ちます。デバッグログは、<code>-l debug</code> CLIオプション（ソルト<code> &lt;minion&gt;state.highstate -l debug</code> ）を使用して切り替えることができます。</p>
+	<p>ステートリターンには、個々のステート障害の詳細（期間、タイムスタンプ、機能、結果など）も含まれます。Saltファイルサーバーに存在しないファイルを参照することによって、 <code>file.managed</code> の状態に障害を発生させると、この障害が表示されます。</p>
+	<pre class="language-JSON"><code class="language-JSON">web1:
+----------
+          ID: nginx
+    Function: pkg.installed
+      Result: True
+     Comment: Package nginx is already installed
+     Started: 15:32:41.157235
+    Duration: 256.138 ms
+     Changes:   
+
+----------
+          ID: /etc/nginx/nginx.conf
+    Function: file.managed
+      Result: False
+     Comment: Source file salt://webserver/files/nginx.conf not found in saltenv 'base'
+     Started: 15:32:41.415128
+    Duration: 14.581 ms
+     Changes:   
+
+Summary for web1
+------------
+Succeeded: 1 (changed=0)
+Failed:    1
+------------
+Total states run:     2
+Total run time: 270.719 ms</code></pre>
+	<p>リターンは、JSONでも表示することができます。</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "web1": {
+    "pkg_|-nginx_|-nginx_|-installed": {
+      "comment": "Package nginx is already installed",
+      "name": "nginx",
+      "start_time": "15:32:41.157235",
+      "result": true,
+      "duration": 256.138,
+      "changes": {}
+    },
+    "file_|-/etc/nginx/nginx.conf_|-/etc/nginx/nginx.conf_|-managed": {
+      "comment": "Source file salt://webserver/files/nginx.conf not found in saltenv 'base'",
+      "name": "/etc/nginx/nginx.conf",
+      "start_time": "15:32:41.415128",
+      "result": false,
+      "duration": 14.581,
+      "changes": {}
+    }
+  }
+}</code></pre>
+	<p>出力フォーマットの柔軟性ということは、人間がカスタムスクリプトで解析を行うことが可能であることを意味します。しかし、さらに重要なのは、より複雑で相互接続された自動化システムによっても消費される可能性があるという点です。私たちは、これらの出力を簡単に解析して、ソース管理の変更、外部サービスの障害、ソフトウェアリリースなどの入力を用いて、Salt失敗の原因を特定することができることを知っていました。しかし、欠けているものがあります。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-solutions">ソリューション</h3>
+		<a href="https://blog.cloudflare.com/#the-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>設定エラーは、大規模なシステムでよくある障害の原因です。これらのいくつかは、完全なシステム停止につながりさえする可能性がありますが、当社のリリースアーキテクチャで防止しています。新しいリリースや設定が本番環境で発生した場合、SREチームはリリースの遅延を回避するために、根本的な原因を見つけて修正する必要があります。以前にも述べたように、この選別は面倒で、システムが複雑であるため、ますます困難になっています。</p>
+	<p>一部の組織は自動化された根本原因分析など正式な手法を使っていますが、ほとんどのトリアージはいまだに手作業で行われており、イライラが募る内容になっています。問題の範囲を評価した後、自動化されたアプローチを採用することにしました。このセクションでは、本番環境におけるこの広範で複雑な問題を解決するための段階的な方法について説明します。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-one-retrievable-cm-inputs">フェーズ1：取得可能なCM入力</h3>
+		<a href="https://blog.cloudflare.com/#phase-one-retrievable-cm-inputs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>MinionでSalt Highstateに障害が発生した場合、SREチームは、面倒な調査プロセスに直面しました。手動でミニオンにSSH接続し、ログを検索してエラーメッセージを検索し、ジョブID（JID）を追跡し、JIDに関連付けられた複数の関連するジョブを見つけ出すという作業です。マスターすることです。これはすべて、マスターログの4時間の保持ウィンドウと競争している間です。根本的な問題はアーキテクチャでした。ジョブの結果は、実行されるミニオンではなくソルトマスター上に存在し、オペレーターはどのマスターがジョブを処理したのか（それぞれにSSH接続）を推測することを余儀なくされ、マスターアクセスできないユーザーの可視性も制限されることになりました。</p>
+	<p>マスター用に存在する <a href="https://docs.saltproject.io/en/3006/ref/returners/all/index.html" target="_blank" rel="noopener noreferrer"><u>local_cache</u></a> リターナーと同様に、ジョブ結果をミニオンに直接キャッシュするソリューションを構築しました。これにより、ローカルジョブの取得と保存期間の延長が可能になります。これにより、複数のステップを踏む、時間に制約のある調査が単一のクエリーに変換されました。オペレーターは、ジョブの詳細を取得し、エラーコンテキストを自動的に抽出し、特定のファイルの変更にまでさかのぼり、作成者をコミットすることができます。カスタムリターナーは、キャッシュサイズをインテリジェントにフィルタリングして管理し、「どのマスター？」の違いを排除また、自動エラー特定が可能となり、解決までの時間を短縮し、日常的なトラブルシューティングから人の作業を排除することもできます。</p>
+	<p>ジョブ履歴を分散化し、ソースで照会できるようにすることで、障害が自動的にコンテキストに基づいて特定され、属性が特定されるため、SREチームはフォレンジックではなく修正に集中できるようになりました。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-two-self-service-using-a-salt-blame-module">フェーズ2：Salt Blameモジュールを使用したセルフサービス</h3>
+		<a href="https://blog.cloudflare.com/#phase-two-self-service-using-a-salt-blame-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ミニオンでジョブ情報を利用できるようになってから、どのマスターが失敗したジョブをトリガーしたのかを解決する必要がなくなりました。次のステップは、Salt実行モジュールを書くことで、外部サービスがジョブ情報、より具体的には失敗したジョブ情報を、Saltの内部を知る必要なくクエリできるようにすることでした。これが、<i><b>Salt Blame</b></i>というモジュールを書くきっかけとなりました。Cloudflareは、非難のない文化、一方でソフトウェアを誇りにしています。</p>
+	<p>blMモジュールは次の3つをまとめる責任を負います：</p>
+	<ul>
+		<li>
+			<p>ローカルジョブ履歴情報</p>
+		</li>
+		<li>
+			<p>CM入力（ジョブ中に存在する最新のコミット）</p>
+		</li>
+		<li>
+			<p>Gitリポジトリのコミット履歴</p>
+		</li>
+	</ul>
+	<p>私たちは、Saltの内部を理解する必要性から外部の自動化を切り離し、さらなるトラブルシューティングのためにオペレーターが使用する可能性もあるため、シンプルにするために実行モジュールを書くことにしました。実行モジュールの作成はすでに運用チーム内で確立されており、ユニットテスト、リンティング、広範なピアレビューなど、明確に定義されたベストプラクティスが順守されています。</p>
+	<p>モジュールは当然非常にシンプルです。ローカルキャッシュ内のジョブを逆時系列で反復し、最初のジョブの失敗を時系列で探し、次にその直前の成功したジョブを探します。これは、真の最初の失敗を絞り込み、状態結果の前後を示す以外に理由はありません。この段階で、呼び出し元にコンテキストを提示する方法がいくつかあります。コミットの原因の可能性を見つけるために、最後の成功したジョブIDと失敗の間のすべてのコミットを調べて、これらのファイルのいずれかが失敗に関連するかどうかを判断します。また、根本原因を特定するための別の手段として、障害が発生した状態とその出力のリストを提供しました。当社は、幅広い障害の可能性に対応できる柔軟性が重要であると学びました。</p>
+	<p>また、通常の失敗状態とコンパイルエラーの区別もできます。<a href="https://docs.saltproject.io/en/3007/topics/return_codes/index.html" target="_blank" rel="noopener noreferrer"><u>Salt docsに記載されているように</u></a>、各ジョブは結果に基づいて異なるリコードを返します。</p>
+	<ul>
+		<li>
+			<p>コンパイルエラー：状態コンパイラでエラーが発生した場合に1が設定されます。</p>
+		</li>
+		<li>
+			<p>Failed State：2は、ステートが<code>False</code>結果を返す場合に設定されます。</p>
+		</li>
+	</ul>
+	<p>失敗のほとんどは、ソースコントロールの変更の結果として、失敗状態として顕在化します。お客様のために新機能を構築するエンジニアが、CIとソルトマスターのテストでは検知できなかった障害を意図せず導入してしまうかもしれません。モジュールの最初のイテレーションでは、すべての失敗した状態をリストアップすることで、ハイステート障害の根本原因を特定するのに十分でした。</p>
+	<p>しかし、死角があることに気づきました。コンパイルエラーは、ステートが実行されないため、失敗状態にはなりません。これらのエラーは当社がチェックしたものとは異なるリコードを返したため、モジュールは完全に気付かない状態でした。コンパイルエラーの多くは、ステートコンパイル段階でSaltサービスの依存関係に失敗した場合に発生します。また、ソース管理の変更の結果として起こることもありますが、それはまれなことです。</p>
+	<p>ステート失敗とコンパイルエラーの両方を考慮することで、問題を特定する能力が大幅に向上しました。当社は、SREにこのモジュールをリリースしました。SREは、迅速なソルトトリアージの利点にすぐ気付きました。</p>
+	<pre class="language-Shell"><code class="language-Shell"># List all the recent failed states
+minion~$ salt-call -l info blame.last_failed_states
+local:
+    |_
+      ----------
+      __id__:
+          /etc/nginx/nginx.conf
+      __run_num__:
+          5221
+      __sls__:
+          foo
+      changes:
+          ----------
+      comment:
+          Source file salt://webserver/files/nginx.conf not found in saltenv 'base'
+      duration:
+          367.233
+      finish_time_stamp:
+          2025-10-22T10:00:17.289897+00:00
+      fun:
+          file.managed
+      name:
+          /etc/nginx/nginx.conf
+      result:
+          False
+      start_time:
+          10:00:16.922664
+      start_time_stamp:
+          2025-10-22T10:00:16.922664+00:00
+
+# List all the commits that correlate with a failed state
+minion~$ salt-call -l info blame.last_highstate_failure
+local:
+    ----------
+    commits:
+        |_
+          ----------
+          author_email:
+              johndoe@cloudflare.com
+          author_name:
+              John Doe
+          commit_datetime:
+              2025-06-30T15:29:26.000+00:00
+          commit_id:
+              e4a91b2c9f7d3b6f84d12a9f0e62a58c3c7d9b5a
+          path:
+              /srv/salt/webserver/init.sls
+    message:
+        reviewed 5 change(s) over 12 commit(s) looking for 1 state failure(s)
+    result:
+        True
+
+# List all the compile errors
+minion~$ salt-call -l info blame.last_compile_errors
+local:
+    |_
+      ----------
+      error_types:
+      job_timestamp:
+          2025-10-24T21:55:54.595412+00:00
+      message: A service failure has occured
+      state: foo
+      traceback:
+          Full stack trace of the failure
+      urls: http://url-matching-external-service-if-found</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="phase-three-automate-automate-automate">フェーズ3：自動化、自動化、自動化</h3>
+		<a href="https://blog.cloudflare.com/#phase-three-automate-automate-automate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>より高速なトリアージは常に歓迎される開発であり、エンジニアは、ミニオン上でローカルコマンドを実行して Salt の障害をトリアージすることに抵抗がありませんでした。しかし、多忙なシフトでは時間がかかってしまいます。複数のデータセンターやマシンにまたがる障害が発生した場合、それらすべてのミニオンにコマンドを実行するのは容易になりました。このソリューションには、複数のノードとデータセンター間でコンテキストを切り替える必要がありました。そこで、単一のコマンド、プレプロダクションデータセンター、本番データセンターという、一般的な障害の種類を集約する方法が必要だったのです。</p>
+	<p>選別を簡素化し、手動でのトリガーを排除するために、いくつかのメカニズムを実装しました。当社は、このツールをトリアージ場所（チャットなど）にできるだけ近づけることを目指しました。3つの異なるコマンドを使用することで、エンジニアはチャットスレッドから直接Salt障害のトリアージができるようになりました。</p>
+	<p>階層的なアプローチにすることで、ミニオン、データセンター、データセンターグループに対して、個々の選別を可能にしました。階層により、このアーキテクチャは完全に拡張可能で、柔軟で自己組織化することができます。エンジニアは1つのミニオンで、必要に応じて同時にデータセンター全体の障害をトリアージすることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0lEOmpdw9err62tIWqn0Y/3905580de41daf9fc81928a740c2dd14/image2.png" alt="" class="kg-image" width="1999" height="1011" loading="lazy">
+	</figure>
+	<p>複数のデータセンターで同時にトリアージできる機能は、プリプロダクションデータセンターでの障害の根本原因を特定するのにすぐに役立ちました。この障害により、他のデータセンターへの変更の反映が遅れ、顧客機能の変更、バグ修正、インシデント修復のための変更のリリースができなくなります。このトリアージオプションの追加により、Salt障害のデバッグと修正にかかる時間が5%以上短縮され、お客様にとって重要な変更を継続的にリリースできるようになりました。</p>
+	<p>5%はすぐに大幅な改善があるようには見えませんが、魔法のような効果は累積的に現れます。リリースの遅れに関する実際の数値は発表しませんが、簡単な思考実験を行うことができます。1日あたりわずか60分であっても、5％削減されると1か月あたり90分（1時間30分）の節約になります。</p>
+	<p>もう1つの間接的なメリットは、より効率的なフィードバックループにあります。エンジニアは複雑な設定に費やす時間が短縮されるため、そのエネルギーは再発防止に活用され、全体の時間を測定できないほど短縮されます。今後は、これらの直接・間接フィードバックループの成果を理解するための、測定とデータ分析を予定しています。</p>
+	<p>以下の画像は、プリプロダクショントリアージの出力例です。そして、gitコミット、リリース、外部サービスの障害と障害を関連付けることができるのです。忙しいシフトに、この情報は、障害を迅速に修正するために非常に役立ちます。平均して、各ミニオンの「非難」にかかる時間は30秒未満であり、複数のデータセンターは1分以内に結果を返すことができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70qnYIpPDFI1gl0u7FrT4o/51899c016dabc382fb3346ccaab254b5/Screenshot_2025-11-12_at_20.40.53.png" alt="" class="kg-image" width="2040" height="808" loading="lazy">
+	</figure>
+	<p>以下の画像は、階層型モデルを説明したものです。階層の各ステップは並行して実行され、超高速の結果を得ることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HpNSQrNN4wZMjpOG9J30o/912164038586e57e1e09124f36998ff8/image6.png" alt="" class="kg-image" width="1550" height="878" loading="lazy">
+	</figure>
+	<p>これらのメカニズムを利用できることで、既知の条件、特にリリースパイプラインに影響を与える条件でトリアージ自動化をトリガーすることで、トリアージ時間をさらに短縮することができました。これにより、根本原因を見つけて修正を加えるか、元に戻すまでの時間が短縮されたため、エッジへの変更の速度が直接向上しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="phase-four-measure-measure-measure">フェーズ4：測定、測定、測定</h3>
+		<a href="https://blog.cloudflare.com/#phase-four-measure-measure-measure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>大量のソルトトリアージが発生した後、根本原因を測定する方法が必要になりました。個々の根本原因はすぐには価値がありませんが、過去の分析は重要と考えられました。当社は、特にお客様に価値を提供する能力を妨げる一般的な障害の原因を理解したいと考えました。この知識がフィードバックループを生み出し、障害数を低く抑えることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QeJ1C9CT3rlDqaqHsQjdA/02ac41494ef3594ced1fddc0f801fae7/image1.png" alt="" class="kg-image" width="1550" height="778" loading="lazy">
+	</figure>
+	<p>PrometheusとGrafanaを使用して、gitコミット、リリース、外部サービス障害、および不属性な失敗状態など、障害の主な原因を追跡します。失敗した状態のリストは、繰り返し違反者を把握し、安定したリリース慣行の導入を促進したいため、特に有用です。また、特に根本原因にも関心があります。gitコミットによる失敗数の急増は、より良いコーディング方法とリンティングを採用する必要性を示しており、外部サービスの失敗の急増は、内部システムの回帰を調査する必要があることを示しています。リリースベースの障害の急増は、リリースまでの管理を改善する必要性を示唆しています。</p>
+	<p>これらの指標を月単位で分析し、内部チケットやエスカレーションを通じてフィードバックメカニズムを提供しています。これらの取り組みの直接的な影響は、まだ取り組みが始めたばかりであるため、直接的な影響は表れませんが、破損の量を減らすことで、Saltackインフラストラクチャとリリースプロセス全体の健全性を改善できると考えています。</p>
+	<div class="flex anchor relative">
+		<h3 id="the-broader-picture">全体像</h3>
+		<a href="https://blog.cloudflare.com/#the-broader-picture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>運用作業の多くは「必要悪」と見なされることが多いです。運用担当者は、障害が発生した際に介入し、障害を修正するよう求められます。インフラストラクチャを運用し続けるには、このアラート対応のサイクルが必要ですが、多くの場合、トラブルにつながります。以前のブログ記事では、<a href="https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare"><u>トツールの影響について説明しました</u></a>。</p>
+	<p>この作業は、正しい方向への次の一歩を踏み出します。オンコールSREの手間を省き、貴重な時間を斬新な問題に取り組むための貴重な時間を割くことができるということです。この記事が他のオペレーションエンジニアのきっかけになり、組織全体のツール削減に向けた進捗状況を共有していただけることを願っています。また、Saltstack自体の社内でも、こうした取り組みが採用されることを期待していますが、複数の企業にわたる本番環境のシステムの均一性の欠如から、採用は難しいと考えています。</p>
+	<p>将来的には、検出の精度を向上させ、失敗した結果の根本原因を特定するために、入力の外部相関に依存することを減らす予定です。当社では、このロジックをネイティブSaltstackモジュールにさらに移行して、プロセスをさらに合理化し、外部システムがドリフトした場合の退行を回避する方法を検討します。</p>
+	<p>もし、こうした仕事にご関心がおありでしたら、当社の<a href="https://www.cloudflare.com/en-gb/careers" target="_blank" rel="noopener noreferrer"><u>キャリアページ</u></a>をご覧いただくことをお勧めします。</p>
+</div>

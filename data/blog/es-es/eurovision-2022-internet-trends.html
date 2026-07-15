@@ -1,0 +1,175 @@
+<div class="mb2 gray5">8 min de lectura</div>
+<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/eurovision-2022-internet-trends">English</a>, <a href="https://blog.cloudflare.com/de-de/eurovision-2022-internet-trends">Deutsch</a> y <a href="https://blog.cloudflare.com/fr-fr/eurovision-2022-internet-trends">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/t6065df913XVpMB2wyrnf/38242fd853c4eac52d01f9504f28b60c/eurovision-2022-internet-trends.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Solo hay un concurso de canciones que tiene más de seis décadas de antigüedad y que no solo presenta muchas canciones nuevas (<a href="https://www.youtube.com/watch?v=3FsVeMz1F5c" target="_blank" rel="noopener noreferrer">ABBA</a>, <a href="https://www.youtube.com/watch?v=w6b7BHGkKQA" target="_blank" rel="noopener noreferrer">Celine Dion</a>, <a href="https://www.youtube.com/watch?v=ChvTMWYplAk" target="_blank" rel="noopener noreferrer">Julio Iglesias</a> y <a href="https://www.youtube.com/watch?v=quJVER_NmdQ" target="_blank" rel="noopener noreferrer">Domenico Modugno</a> hicieron su aparición allí), sino que también tiene un escenario global en el que participan 40 países: los artistas representan a esos países y el público vota. La <a href="https://en.wikipedia.org/wiki/Eurovision_Song_Contest_2022" target="_blank" rel="noopener noreferrer">66.ª edición</a> del <a href="https://en.wikipedia.org/wiki/Eurovision_Song_Contest" target="_blank" rel="noopener noreferrer">Festival de Eurovisión</a>, celebrada en Turín (Italia), tuvo dos semifinales (10 y 12 de mayo) y una final (14 de mayo), todas ellas con momentos estelares, incluida la victoria de Ucrania.</p>
+	<p></p>
+	<p>En nuestra <a href="https://blog.cloudflare.com/watching-eurovision-2022-on-cloudflare-radar">página dedicada a Eurovisión</a> se podía ver el nivel de tráfico de Internet en los 40 países participantes, y <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">nosotros twiteamos</a> algunos momentos destacados durante la final.</p>
+	<blockquote>
+		<p><a href="https://twitter.com/hashtag/Ukraine?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#Ukraine</a> just won the <a href="https://twitter.com/hashtag/Eurovision?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#Eurovision</a> in Turin, <a href="https://twitter.com/hashtag/Italy?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#Italy</a>Video platforms DNS traffic in Ukraine today, during the event, was 22% higher at 23:00 CEST compared to the previous Saturday. The <a href="https://twitter.com/Eurovision?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Eurovision</a> final is being transmitted live via YouTube.— <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@Cloudflare</a> data. <a href="https://t.co/juBmtDj1FP" target="_blank" rel="noopener noreferrer">pic.twitter.com/juBmtDj1FP</a></p>
+		<p>— Cloudflare Radar (@CloudflareRadar) <a href="https://twitter.com/CloudflareRadar/status/1525614328644358146?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">May 14, 2022</a></p>
+	</blockquote>
+	<p>Primero, algunos tecnicismos. La línea de base para los valores que utilizamos en los siguientes gráficos es la media de la semana anterior, excepto para la vista más detallada minuto a minuto que utiliza la media de tráfico del 9 y 10 de mayo como línea de base. Para estimar el tráfico a los distintos tipos de sitios web de los 40 países participantes, utilizamos los datos de resolución de nombres DNS. En esta entrada del blog, utilizamos CEST, horario de verano de Europa Central.</p>
+	<p>No es frecuente que un evento de entretenimiento tenga repercusión en Internet de un país. Entonces, ¿hubo un impacto en las noches de Eurovisión?</p>
+	<p>Empecemos por el tráfico agregado de Internet en los 40 países participantes (incluida Australia). En la <b>primera semifinal del 10 de mayo</b>, parece haber un ligero descenso del tráfico durante el concurso - tiene sentido si pensamos que la mayoría de la gente probablemente estaba viendo la emisión en la televisión nacional (y no en YouTube, que también estaba transmitiendo en directo el evento). El tráfico fue menor que en el periodo anterior entre las 21:00 y las 23:00 (el evento fue entre las 21:00 y las 23:14), pero volvió a la normalidad a las 23:00.</p>
+	<p>En la segunda semifinal esa tendencia es menos clara. Pero la final del 14 de mayo (que duró desde las 21:00 CEST hasta la 01:10) fue una historia diferente. El tráfico fue un 6 % inferior al del sábado anterior a partir de las 21:00 horas, sobre todo en torno a las 22:00 horas, y a partir de las 23:15 horas fue realmente superior (entre un 4 % y un 6 %) al anterior y continuó así hasta las 02:00 horas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rEKkCCASGoIQ0AOqAmHoT/05083cc5453e76e958bb7c6da1cd050f/image12.png" alt="" class="kg-image" width="1589" height="652" loading="lazy">
+
+	</figure>
+	<p>¿Qué pasó a esa hora (23:15) en Eurovisión? La última de las 25 canciones del concurso fue "Hope" de Estonia, de Stefan, y terminó a las 23:14 (también en esta entrada del blog veremos cómo a las 23:16 se produjo el mayor pico de tráfico de DNS en los sitios web de los fans durante la final). Este es el <b>gráfico del tráfico de Internet en los países participantes el 14 de mayo</b>.</p>
+	<p>Hubo varios países que mostraron un impacto similar en términos de cambio de tráfico durante al menos la final. Francia, Reino Unido, Alemania, Islandia, Grecia y Suiza son ejemplos.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1if0eOWww5KwT6nsotpDFa/53d8112d2cf9f5d84fc24c731d330f90/image3-36.png" alt="" class="kg-image" width="1600" height="720" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="eurovision-the-uk">Eurovisión y el Reino Unido</h3>
+		<a href="https://blog.cloudflare.com/#eurovision-the-uk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>El Reino Unido fue uno de los países en los que parece haber más repercusión durante el tiempo de la gran final: el año pasado, según las <a href="https://tellymix.co.uk/tv/582626-eurovision-scores-biggest-viewing-figures-in-seven-years-as-uk-rank-last.html" target="_blank" rel="noopener noreferrer">clasificaciones</a>, ocho millones vieron la transmisión de la BBC con el comentarista Graham Norton.El tráfico comenzó a descender a niveles más bajos de lo habitual a las 20:30 (unos minutos antes de la final) y fue un 20 % más bajo a las 22:00, comenzando a acercarse a los niveles normales después de las 23:00, cuando el conjunto de las 25 canciones finalistas llegó a su fin.</p>
+	<p>Esta es la tendencia del <b>tráfico en Internet de UK</b> durante la final de Eurovisión del 14 de mayo:</p>
+	<div class="flex anchor relative">
+		<h3 id="fan-sites-what-a-difference-a-winner-makes">Sitios de fans: qué diferencia hace un ganador</h3>
+		<a href="https://blog.cloudflare.com/#fan-sites-what-a-difference-a-winner-makes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JOd5Yp161C2sv3EVonnag/3a399c889798c7dc867c58ae4ea12374/image11-1.png" alt="" class="kg-image" width="1787" height="935" loading="lazy">
+
+	</figure>
+	<p>Lo más obvio para comprobar la repercusión son las <b>páginas web de fans</b>. Eurovisión tiene muchos, algunos generales (está la <a href="https://en.wikipedia.org/wiki/OGAE" target="_blank" rel="noopener noreferrer">OGAE</a>, <i>Organización General de Fans de Eurovisión</i>), otros más locales. Y el tráfico DNS hacia ellos se vio claramente afectado.</p>
+	<p>La primera semifinal, el 10 de mayo, tuvo 33 veces más tráfico que la media de la semana anterior, con un pico de actividad muy evidente a las 22:00 CEST. Pero la segunda semifinal, el 12 de mayo, la superó, con un tráfico 42 veces mayor a la misma hora. La final, con los 25 finalistas, lo superó claramente y a las 22:00 horas el tráfico ya era de 70x. Pero como la final fue mucho más larga (en las semifinales se anunciaron los finalistas en torno a las 23:00 horas), el pico se alcanzó a las 23:00 horas, con un tráfico 86 veces superior al habitual.</p>
+	<blockquote>
+		<p>"Tenemos un ganador. El ganador del Festival de Eurovisión 2022 es... ¡Ucrania!". — <b>Alessandro Cattelan</b>, <b>Laura Pausini</b> y <b>Mika</b> a las 01:01 CEST, 15 de mayo de 2022.</p>
+	</blockquote>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mDZ71yb3Sn4JpfknsDRSk/b6eeb1208c04a3bf94ebde6e78dd489d/image5-19.png" alt="" class="kg-image" width="2000" height="1000" loading="lazy">
+
+	</figure>
+	<p>La final del sábado duró más de cuatro horas (las semifinales duraron poco más de dos horas), y terminó unos minutos después de la 01:00 CEST. El tráfico de DNS a los sitios web de los fans bajó de 86x a 45x a medianoche, pero volvió a subir hasta 49x más de tráfico cuando ya era la 01:00 CEST en la mayor parte de Europa y se anunció a Ucrania como ganadora de Eurovisión 2022. El siguiente gráfico muestra el cambio de tráfico de la <b>final del sábado 14 de mayo a los sitios de los fans</b>:</p>
+	<p>También podemos ver claramente que el domingo por la mañana, a las 09:00, hubo un pico de 20 más actividad en los sitios de fans, y también a las 11:00 (17 %).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ulRUxcaBgKUVnjtOGmyvS/9b1919961c29c17ba4e3821b56c09c75/image14.png" alt="" class="kg-image" width="1999" height="983" loading="lazy">
+
+	</figure>
+	<p>Ahora, profundicemos en una visión minuto a minuto (los gráficos anteriores muestran datos por hora) del tráfico de DNS a los sitios de los aficionados. En las dos semifinales es fácil ver que en el momento en que se anunciaron los finalistas, y que el evento estaba por terminar, alrededor de las 23:12, fue cuando el tráfico fue mayor. Así se ve el crecimiento de los sitios de fans de las <b>dos semifinales el 10 de mayo (amarillo) y el 12 de mayo (verde)</b>:</p>
+	<p>Además del anuncio de los finalistas, en los sitios web de los fans también podemos ver algunos momentos destacados de la semifinal, que fueron sin duda los más populares de ambas noches. En primer lugar, el 10 de mayo hubo más tráfico antes del evento (21:00) que el 12 de mayo, por lo que la gente parece tener mayores expectativas en el primer evento de Eurovisión 2022 de la semana. En cuanto a los picos (antes de los anuncios de los ganadores), creamos una lista de momentos en el tiempo con más interés para los sitios web de los fans y los relacionamos con los eventos que estaban teniendo lugar en ese momento en Eurovisión (ordenados por impacto):</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5q20JtspYZJP7GxxWHkNUP/c11c163d37a6b0cca50721a3c19d50ad/image13.png" alt="" class="kg-image" width="1600" height="621" loading="lazy">
+
+	</figure>
+	<p><b>Primera semifinal, mayo de 10</b>#1. 22:47 Resumen de todas las canciones.#2. 22:25 La canción de Noruega (Subwoolfer, "Give That Wolf a Banana").#3. 21:42 La canción de Bulgaria (Intelligent Music Project, "Intention").#4. 21:51 Canción de Moldavia (Zdob și Zdub y Advahov Brothers, "Trenulețul").#5. 22:20 Canción de Grecia (Amanda Georgiadi Tenfjord, "Die Together").</p>
+	<p><b>Segunda semifinal, mayo 12</b>#1. 21:22 Entre Serbia (Konstrakta, "In corpore sano") y Azerbaiyán (Nadir Rustamli, "Fade to Black").#2. 22:48 Comienza el periodo de votación.#3. 22:30 Canción de la República Checa (We Are Domi, "Lights Off").#4. 22:38 <a href="https://www.youtube.com/watch?v=z0NIA6ZYFus" target="_blank" rel="noopener noreferrer">actuación</a> de Laura Pausini &amp; Mika ("Fragile", versión de Sting).#5. 22:21 Canción de Bélgica (Jérémie Makiese, "Miss You")</p>
+	<p>¿Qué tal la final del 14 de mayo? Este gráfico (seguido de una lista de clasificación) muestra los picos de tráfico DNS en <b>los sitios de fans en la final del sábado</b>:</p>
+	<p><b>Final, mayo 14</b>#1. 23:11 Entre Serbia (Konstrakta, "In corpore sano") y Estonia (Stefan, "Hope").#2. 23:33 Resumen de todas las canciones.#3. 23:57 Fin de la votación.#4. 23:19 Resumen de todas las canciones.#5. 23:01 Final de la canción del Reino Unido (Sam Ryder, "Space Man").</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VyHy7AS136VcJEemTdcKr/91fdc7463ff771b67468105475781c4a/image1-55.png" alt="" class="kg-image" width="1600" height="577" loading="lazy">
+
+	</figure>
+	<blockquote>
+		<p>no words, just <a href="https://twitter.com/hashtag/teamSPACEMAN?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#teamSPACEMAN</a>?‍? pure joy backstage after <a href="https://twitter.com/hashtag/Eurovision?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#Eurovision</a> <a href="https://twitter.com/SamRyderMusic?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@SamRyderMusic</a> <a href="https://twitter.com/grahnort?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@grahnort</a> <a href="https://twitter.com/BBCiPlayer?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@BBCiPlayer</a> <a href="https://t.co/UMplMpFeXl" target="_blank" rel="noopener noreferrer">pic.twitter.com/UMplMpFeXl</a></p>
+		<p>— BBC Eurovision?? | ?‍?#teamSPACEMAN (@bbceurovision) <a href="https://twitter.com/bbceurovision/status/1525846053735608321?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">May 15, 2022</a></p>
+	</blockquote>
+	<p>(El intérprete y representante del Reino Unido, Sam Ryder, con Graham Norton, el comentarista de la BBC de Eurovisión desde 2009 — la BBC emite el evento desde 1956).</p>
+	<div class="flex anchor relative">
+		<h3 id="the-broadcasters-show">Las emisoras muestran</h3>
+		<a href="https://blog.cloudflare.com/#the-broadcasters-show" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>¿Qué hay de los sitios web de las <b>emisoras nacionales oficiales</b>? Alrededor de las 23:00 CEST, el tráfico hacia el conjunto de los 40 organismos de radiodifusión fue, en general, mayor en las noches de las semifinales y la final (representado en gris en el siguiente gráfico). Esto es más claro en la final a las 23:00, cuando el tráfico de DNS fue un 18 % mayor que el sábado anterior (y un 50 % en comparación con el día anterior). Durante las semifinales la diferencia es más sutil, pero a las 23:00 el tráfico tanto del 10 como del 12 de mayo fue un 6 % mayor que en los días anteriores.</p>
+	<p>Cuando nos centramos en la visualización minuto a minuto también en los sitios de las <b>emisoras, pero en las tres veladas de Eurovisión</b>, el mayor crecimiento del tráfico se produce también durante la final (como vimos en los sitios de los fans), principalmente después de las 23:00 horas, lo que parece normal, teniendo en cuenta que la final fue mucho más larga en el tiempo que las semifinales que terminaron alrededor de esa hora.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3YMwcpSchf1mAOyysOVqjO/e9804d7838c50ef95ed1962cbd4c3fd7/image10-4.png" alt="" class="kg-image" width="1999" height="857" loading="lazy">
+
+	</figure>
+	<p>Durante la final (representada en rosa en el gráfico anterior), hubo algunos picos claros. Los hemos añadido a una clasificación que también muestra lo que estaba ocurriendo en el evento en ese momento.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vwTiQuxFK38VCLrXeeTWY/809a09ff3bd7a3a03830119fdde1397e/image7-11.png" alt="" class="kg-image" width="1600" height="588" loading="lazy">
+
+	</figure>
+	<p><b>Picos de sitio de radiodifusión. Final, mayo 14</b>#1. 21:52 Clip de los mejores momentos de las dos semifinales pico#2. 21:00 Comienza el concurso#3. 00:24 Sam Ryder, el representante del Reino Unido (con la canción "Space Man") siendo entrevistado tras alcanzar el n.º 1 en el proceso de votación#4. 01:09 Actuación de Ucrania (Kalush Orchestra, "Stefania") como ganadora#5. 01:02 Ucrania es anunciada como ganadora de Eurovisión 2022.</p>
+	<div class="flex anchor relative">
+		<h3 id="video-platforms-the-post-final-growth">Plataformas de vídeo: el crecimiento postfinal</h3>
+		<a href="https://blog.cloudflare.com/#video-platforms-the-post-final-growth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Eurovisión utiliza plataformas de vídeo como YouTube y TikTok para compartir todas las canciones, los clips de los eventos y los intérpretes, y también hubo una transmisión en directo en YouTube de las tres noches. Por ello, hemos analizado el tráfico DNS de las plataformas de vídeo de forma agregada para los 40 países participantes. Entonces, ¿hubo un impacto en estas plataformas sociales y de vídeo tan conocidas y de alto rendimiento? La respuesta corta es: sí.</p>
+	<p>La final fue también el ejemplo más evidente, sobre todo a partir de las 23:15, cuando ya actuaron las 25 canciones finalistas y el evento tuvo dos horas más de actuaciones no participantes, videoclips que resumen las canciones y el proceso de votación, el famoso momento en Europa para saber quién conseguirá de cada uno de los 40 países participantes el máximo de 12 puntos.</p>
+	<p>En esta comparación entre las semifinales y el día de la final, podemos ver cómo el 10 de mayo, día de la primera semifinal, <b>el tráfico de la plataforma video</b> tuvo más crecimiento antes de que comenzara el concurso, lo que no es tan sorprendente dado que era el primer evento de Eurovisión 2022 y quizás había curiosidad por comprobar quiénes eran los otros concursantes (para entonces Eurovisión tenía vídeos de todos ellos en YouTube).</p>
+	<p>Pero la final del 14 de mayo muestra un mayor crecimiento del tráfico de DNS que los otros días de Eurovisión después de las 23:16 (como vimos antes, era el momento en que ya se habían interpretado todas las canciones de los finalistas). La diferencia de tráfico con respecto a las semifinales fue mayor a la 1:11 CEST. En ese momento, la final llegó a su fin el sábado por la noche, y en ese momento alcanzó un 31 % más de tráfico a las plataformas de vídeo que el 10 de mayo, y un 38 % que el 12 de mayo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1k2WNY7537aG6iiAp3KFxr/ce71a645d6d020b2e68256c7d07cc4aa/image4-29.png" alt="" class="kg-image" width="1600" height="597" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="australias-impact-with-an-eight-hours-difference">El impacto de Australia (con ocho horas de diferencia)</h3>
+		<a href="https://blog.cloudflare.com/#australias-impact-with-an-eight-hours-difference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Australia era uno de los 40 participantes, y tenía una diferencia horaria importante (hay ocho horas de diferencia con respecto a CEST). Continuando con las plataformas de vídeo, el tráfico de DNS en Australia era un 22 % más alto a las 23:00 CEST (07:00 hora local) que el sábado anterior y continuaba con un 17 % de aumento unas horas después. Antes de la hora punta de las 23:00, el tráfico era un 20 % mayor a las 22:00 y un 17 % a las 21:00, cuando empezaba el evento.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-winners-social-media">Los ganadores y las redes sociales</h3>
+		<a href="https://blog.cloudflare.com/#the-winners-social-media" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1bomlwaabubUhHiRSwY9Xb/e9c36a844ef59e79670235ab721d2851/image9-5.png" alt="" class="kg-image" width="1708" height="920" loading="lazy">
+
+	</figure>
+	<p><b>Las redes sociales</b> en general en los 40 países participantes no tuvieron tanto impacto, pero hubo un pico a la 01:00 CEST durante la final en torno a la hora en que se decidió la elección del ganador entre Ucrania y el Reino Unido: a la 01:01 se anunció que Ucrania era el ganador de Eurovisión 2022.</p>
+	<p>También podemos ver un impacto en <b>las redes sociales de Ucrania</b>, cuando la canción "Stefania" de Kalush Orchestra fue anunciada como ganadora en la final del sábado 14 de mayo (ya era más de la medianoche del 15 de mayo). La habitual tendencia nocturna de ralentización del tráfico que se observa en otros días se interrumpió claramente a partir de las 01:02 CEST (02:02 hora local en Ucrania).</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SN1SzMB1WzGB3UhtkBVrO/bdebddfab6f1594ab460455f9b0c06e8/unnamed-1.png" alt="" class="kg-image" width="1600" height="750" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="conclusion-the-eurovision-effect">Conclusión: el efecto Eurovisión</h3>
+		<a href="https://blog.cloudflare.com/#conclusion-the-eurovision-effect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3e0rHJWUnpIsQxgY7cVWjC/f71c13885c79ae8dd479af8c36dfa8f8/unnamed--1--2.png" alt="" class="kg-image" width="1600" height="746" loading="lazy">
+
+	</figure>
+	<p>Cuando se produce un evento como Eurovisión, hay diferentes patrones en Internet en los países participantes, normalmente todos en Europa (aunque este año también estaba Australia). Los sitios web de los aficionados y de las emisoras tienen un impacto específico debido al acontecimiento, pero en un evento tan multimedia, también hay algunos cambios en el tráfico de DNS de las plataformas de vídeo.</p>
+	<p>Y esa tendencia llega hasta el tráfico de Internet de los países participantes a un nivel más general, algo que parece indicar que la gente, al menos en algunas partes de Eurovisión y en algunos países, estaba más centrada en su emisión televisiva nacional.</p>
+	<p>Internet es definitivamente un lugar centrado en el ser humano, como hemos visto antes en diferentes momentos como los <a href="https://blog.cloudflare.com/oscars-2022-impact">Oscars de 2022</a>, <a href="https://blog.cloudflare.com/who-won-super-bowl-lvi-a-look-at-internet-traffic-during-the-big-game">el Super Bowl</a>, <a href="https://blog.cloudflare.com/french-elections-2022-runoff">las elecciones francesas</a>, <a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends">el Ramadán</a> o incluso <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">la guerra de Ucrania</a> y el impacto en <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">el Internet abierto en Rusia</a>.</p>
+</div>

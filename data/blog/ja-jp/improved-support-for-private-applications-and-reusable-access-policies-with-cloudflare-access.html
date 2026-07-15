@@ -1,0 +1,271 @@
+<div class="mb2 gray5">11分で読了</div>
+<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/improved-support-for-private-applications-and-reusable-access-policies-with-cloudflare-access">English</a>および<a href="https://blog.cloudflare.com/zh-cn/improved-support-for-private-applications-and-reusable-access-policies-with-cloudflare-access">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HXr6PzawyWo42y2sn3UXq/a95f69bc23ba3bc472de796adad6aaba/Feature_Image.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<div class="flex anchor relative">
+		<h3 id="simplifying-secure-access-for-every-application">あらゆるアプリケーションへのセキュアなアクセスを簡単に実現</h3>
+		<a href="https://blog.cloudflare.com/#simplifying-secure-access-for-every-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflareは長年にわたり、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer"><u>Zero Trustネットワークアクセス（ZTNA）</u></a>サービスである<a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>を通じてID認識型アクセス制御を提供することによって、企業が社内リソースへのアクセスを最新化できるよう支援してきました。当社のお客様は、パブリックホスト名に紐づいたAccessアプリケーションの直感的ワークフローを使って、特にWebベースアプリケーションへのZTNA実装を加速しています。</p>
+	<p>しかし、当社のアーキテクチャ設計上、プライベートネットワークアプリケーション（プライベートIPアドレスやプライベートホスト名に紐付けられたアプリケーション）のアクセスは、主に当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer"><u>セキュアWebゲートウェイ（SWG）</u></a>サービスのネットワークファイアウォールコンポーネントである<a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>で処理してきました。当社はAccessで小さなラッパーを提供し、それら2つの体験を結んでいました。この実装は技術的には目的を達していましたが、いくつかの明らかな欠点があり、お客様からは一貫性の欠如をよく指摘されていました。</p>
+	<p>ですから、Access内のセルフホスト型プライベートアプリケーションの管理を再設計してパブリックホスト名のWebベースアプリの管理体験と一致させたことを本日発表でき、たいへん嬉しく思います。プライベートホスト名とプライベートIPアドレスで定義されたアプリケーションをAccessで直接サポートし、アクセスポリシーも再利用可能にします。これらのアップデートにより、ZTNAをデプロイして継続的なポリシー管理を合理化することがさらに容易になります。</p>
+	<p>この機能によってAccessの全体的な機能性がどう向上するかをよりよくご理解いただくため、「プライベート」アプリケーションの構成要素、それらへの一般的なアクセス方法、この機能の実現前に可能であったこと、この新機能で可能になることについて考察しましょう。ネットワーキングの専門家や愛好家の方は、<a href="https://blog.cloudflare.com/#a-look-back-protecting-private-applications-with-cloudflare-zero-trust-before-access-private-ip-address-and-hostname-support"><u>振り返り：Cloudflare Zero Trustによるプライベートアプリケーションの保護 - AccessのプライベートIPアドレス・ホスト名サポート機能が登場する前</u></a> へお進みください。</p>
+	<div class="flex anchor relative">
+		<h3 id="private-applications">プライベートアプリケーション</h3>
+		<a href="https://blog.cloudflare.com/#private-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この文脈でのプライベートアプリケーションは、プライベートIPアドレスまたはプライベートホスト名を通してのみアクセス可能なアプリケーションです。</p>
+	<div class="flex anchor relative">
+		<h4 id="private-ip-addresses">プライベートIPアドレス</h4>
+		<a href="https://blog.cloudflare.com/#private-ip-addresses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プライベートIPアドレスはよく<a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener noreferrer"><u>RFC 1918 IPアドレス</u></a>と呼ばれますが、範囲が特定のネットワークに設定されており、そのネットワーク上のユーザーしかアクセスできません。パブリックIPアドレスはインターネット全体で一意でなければなりませんが、プライベートIPアドレスはネットワーク間で再利用できます。すべてのデバイス、仮想マシンにプライベートIPアドレスがあります。例えば、私が自分のWindowsマシンで<i>ipconfig</i>を実行すると、192.168.86.172のアドレスが表示されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40guiajv2H8LiUIPj3I80L/392c59c79ae2cd5d1edec8eba485610f/1.png" alt="" class="kg-image" width="913" height="635" loading="lazy">
+	</figure>
+	<p>これは、私のネットワーク上の他のすべてのマシンが、参照やこのマシンとの通信に使用できるアドレスです。プライベートIPアドレスは再利用可能で、特定のネットワーク内で一意でありさえすればよいため、アプリケーションや一時的なインフラストラクチャ（動的にスピンアップ・スピンダウンするシステム）に有用です。これは、リソースにパブリックIPv4アドレスを発行するよりも管理がはるかに簡単です。実際、<a href="https://blog.cloudflare.com/cloudflare-research-two-years-in/#case-study-3-ip-address-agility"><u>利用可能なパブリックIPv4アドレス空間が不足</u></a>しています！</p>
+	<p>私のネットワーク内のマシンでアプリケーションをホストするには、そのアプリケーションをネットワーク内の他のマシンで利用できるようにする必要があります。これは通常、アプリケーションを特定のポートに割り当てることで行われます。すると、そのアプリケーションへのリクエストは<a href="http://10.128.0.6:443" target="_blank" rel="noopener noreferrer"><u>http://10.128.0.6:443</u></a>といった感じになります。平易な英語にすると、「ハイパーテキスト転送プロトコルを使って、私のネットワークの10.128.0.6というアドレスのマシンに接触し、443番ポートに接続してください」という意味です。アプリケーションへの接続は、ブラウザ、SSH、RDP、シッククライアントアプリケーションなど、IPアドレスを介してリソースにアクセスする方法がいろいろあります。</p>
+	<p>ここにApache2のサンプルWebサーバーがあり、そのアドレスとポートの組み合わせで動作しています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/zmLj88okpYkIdg6FmBYow/5a07a43478ede91223f42960a9539251/2.png" alt="" class="kg-image" width="948" height="722" loading="lazy">
+	</figure>
+	<p>Webサーバーを実行しているこのマシンと同じネットワークの外でこのIPアドレスにアクセスしようとすると、「アクセスできません」になるか、まったく異なるアプリケーションに到達します（他のネットワークでそのIPアドレスとポートのコンビネーションで実行するものが他にある場合）。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46reRgnUQMGTx7BO4yYgYh/f46096a704b24789e6ceba6c400b72a2/3.png" alt="" class="kg-image" width="964" height="745" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="private-hostnames">プライベートホスト名</h4>
+		<a href="https://blog.cloudflare.com/#private-hostnames" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>このアプリケーションにアクセスするのに10.128.0.6をいちいち覚えておくのは面倒です。インターネットと同様、プライベートネットワークでもDNSを使用することができます。パブリックDNSはインターネット全体の電話帳のような役割を果たしますが、プライベートDNSはキャンパス内の電話番号だけが記載された校内電話帳のようなものです。</p>
+	<p>プライベートアプリケーションでも、パブリックWebサイトを世界に公開する場合と同様にDNSレコードを設定できます。しかし、そうする代わりに、私のネットワーク内でのみアクセス可能なプライベートIPアドレスにDNSレコードをマッピングします。また、プライベートDNSは、レジストラーにドメインを登録する必要も、決められたトップレベルドメインを使う必要もありません。<i>application.mycompany</i>でアプリケーションをホストできます。有効な内部DNSレコードです。</p>
+	<p>この例では、Google CloudでWebサーバーを実行しています。アプリケーションを<i>kennyapache.local</i>と呼ぶことにします。私のローカルDNSで、<i>kennyapache.local</i>には、Google Cloud（GCP）上のプライベートネットワーク内のIPv4アドレスにマッピングするAレコードがあります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2OhO8VmCvfQ0H0ks1qUIir/74f5f4f764cef89393abf4989f0203e3/4.png" alt="" class="kg-image" width="569" height="509" loading="lazy">
+	</figure>
+	<p>これは、私のネットワーク内のすべてのマシンが、明示的なIPアドレスを覚えていなくても<i>https://kennyapache.local</i>を使えるということを意味します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43nfcR2QZ6DtIhVGcdxlu4/2e72db9cdea772c15abf6a061926f531/5.png" alt="" class="kg-image" width="923" height="743" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="accessing-private-applications-outside-the-private-network">プライベートネットワーク外のプライベートアプリケーションへのアクセス</h3>
+		<a href="https://blog.cloudflare.com/#accessing-private-applications-outside-the-private-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>プライベートネットワークでは、ターゲットのプライベートIPアドレスまたはプライベートホスト名と同じネットワークに、マシン（物理または仮想）を直接接続する必要があります。これは、無認可のユーザーがアプリケーションにアクセスするのを防ぐのに役立つプロパティですが、使いたいアプリケーションがローカルネットワークの外にある場合は厄介です。</p>
+	<p>仮想プライベートネットワーク（VPN）、フォワードプロキシ、プロキシプロトコル（別名「<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file" target="_blank" rel="noopener noreferrer"><u>PACファイル</u></a>」）はすべて、プライベートネットワーク外のマシンからプライベートネットワーク内のプライベートIPアドレス/ホスト名に到達できるようにするための方法です。これらのツールは、マシンに別のネットワークインタフェースを追加して、特定のリクエストを、マシンが現在接続されているローカルネットワーク経由やパブリックインターネットへではなく、リモートのプライベートネットワークを介してルーティングするよう指定することで機能します。</p>
+	<p>私のマシンをフォワードプロキシ（この場合はCloudflareのデバイスクライアントである<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"><u>WARP</u></a>）に接続し、<i>ipconfig</i>を実行すると、新しいネットワークインタフェースとIPアドレスがリストに追加されているのが確認できます：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ETxtHA0R29eZkPMGXQiKA/3a698067576e625491695ea31f9aae77/6.png" alt="" class="kg-image" width="972" height="846" loading="lazy">
+	</figure>
+	<p>この追加のネットワークインタフェースは特定のネットワークリクエストを制御し、私のローカルネットワークでそのIPアドレスにルーティングするというマシンのデフォルト動作をとらず、外部のプライベートネットワークへルーティングします。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-look-back-protecting-private-applications-with-cloudflare-zero-trust-before-access-private-ip-address-and-hostname-support">振り返り：Cloudflare Zero Trustによるプライベートアプリケーションの保護 - AccessのプライベートIPアドレス・ホスト名サポート機能が登場する<i>前</i></h3>
+		<a href="https://blog.cloudflare.com/#a-look-back-protecting-private-applications-with-cloudflare-zero-trust-before-access-private-ip-address-and-hostname-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>引き続き、GCPプライベートドメインでホストされているApache2サーバーをプライベートアプリケーションの例として使用します。Cloudflare Zero Trustが従来プライベートアプリケーションの保護にどう使われてきたか、そして、この新機能がなぜ大きな前進なのかを簡単に説明します。Cloudflare Zero Trustには、アプリケーショントラフィックの保護に使用される主要コンポーネントが2つあります：Cloudflare AccessとGatewayです。</p>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-access">Cloudflare Access</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>は、従来型VPNを必要とせずに内部アプリケーションと内部リソースを保護するように設計されています。Accessを使えば、Okta、Azure AD、Google WorkspaceといったIDプロバイダーを通してユーザーの認証と認可を行った上で、内部のシステムやWebベースアプリケーションへのアクセスを認めることが可能になります。</p>
+	<p>これまでAccessでは、パブリックDNSレコードでアプリケーションを定義する必要がありました。つまり、ユーザーがAccessを活用し、そのきめ細かなセキュリティ機能をすべて使うためには、アプリケーションをインターネットに公開する必要があったのです。ただ、Accessでユーザー、デバイス、ネットワークの強力なセキュリティ制御が適用できるため、さほど怖いことではありません。実際、<a href="https://www.nist.gov" target="_blank" rel="noopener noreferrer"><u>NIST</u></a>をはじめ多くの主要なセキュリティ機関がこのモデルを支持しています。</p>
+	<p>実務は、管理者がアプリコネクタである<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a>を使って、内部のIPアドレスまたはホスト名をパブリックURLにマッピングします。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2A5ipHt6Fle2B0va6u800e/aec1cc48f17d5599ea24259ea2724854/7.png" alt="" class="kg-image" width="658" height="559" loading="lazy">
+	</figure>
+	<p>次に、管理者はそのパブリックURLに対応するAccessアプリケーションを作成します。すると、そのアプリケーションに対するあらゆるリクエストに対し、Cloudflareがシングルサインオンフローをユーザーに送信します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3lJup7iAXJn4spQ9c1FdxA/d66d0e2e0139021c4a28c6498cd6e1b4/image2.png" alt="" class="kg-image" width="587" height="333" loading="lazy">
+	</figure>
+	<p>しかし、このアプローチは、アプリケーションをパブリックDNSで公開してはならないという厳しい要件がある企業には向きません。また、SSH、RDP、FTP、その他のシッククライアントアプリケーションはすべてプライベートアプリケーションへの接続オプションですが、そのようなブラウザ外のアプリケーションではこのアプローチは機能しません。</p>
+	<p>Accessで保護されたパブリックホスト名にSSH接続しようとすると、SSHとブラウザでのシングルサインオンを併せて行うのが難しく、認証する方法がないため、エラーメッセージが表示されます。</p>
+	<div class="flex anchor relative">
+		<h4 id="access-private-network-applications">プライベートネットワークアプリケーションへのアクセス</h4>
+		<a href="https://blog.cloudflare.com/#access-private-network-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これまではAccessの運用にパブリックホスト名が使われていたため、お客様のプライベートネットワークアクセスは、Cloudflare Gatewayのネットワークファイアウォール部分で処理してきました。当社は数年前にAccessプライベートネットワークアプリケーションを<a href="https://blog.cloudflare.com/zero-trust-private-networking-rules"><u>ローンチ</u></a>しました。必要なGatewayブロックポリシーを自動的に生成するものですが、要は2つのGatewayポリシーの前にラッパーを置いただけの限定的なアプローチでした。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Cyudmxym7VXQ5wLvslHqV/cc6bde76f33bcdddaea69e7f62e69ab0/9.png" alt="" class="kg-image" width="1848" height="552" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="cloudflare-gateway">Cloudflare Gateway</h4>
+		<a href="https://blog.cloudflare.com/#cloudflare-gateway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>は、DNSとWebトラフィックをフィルタリングし、セキュアにすることによってパブリックインターネット上の脅威からユーザーを保護するセキュアなWebゲートウェイです。Gatewayは、悪意のあるドメインのブロック、危険なサイトカテゴリーへのアクセス制限、<a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration" target="_blank" rel="noopener noreferrer"><u>データ流出</u></a>の防止などのセキュリティ制御を適用することにより、エンドユーザーとオンラインリソースの間の保護レイヤーとして機能します。</p>
+	<p>Gatewayは、ユーザートラフィックをプライベートネットワークにルーティングするためにも使用され、フォワードプロキシとして機能します。プライベートIPアドレスとプライベートホスト名に関するポリシーも作成できます。Gatewayが、ユーザーのマシンからGatewayサービス自体へプロキシされるトラフィックに依存しているからです。これが最も多く行われるのが、Cloudflare WARPクライアントです。WARPでは、どのIPアドレスやホスト名をGatewayに送信してフィルタリングとルーティングを行うかを設定できます。</p>
+	<p>プライベートネットワークに接続すると、ユーザーはGatewayで、そのネットワーク用に設定されたプライベートIPアドレスやプライベートホスト名に直接接続できます。</p>
+	<p>次に、特定のネットワークファイアウォールポリシーを設定し、プライベートIPアドレス宛のトラフィックを許可またはブロックすることができます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EtfhktReyry4NLabqunR/cb81b20c2e916c39fbd388ec3b8cbc8a/10.png" alt="" class="kg-image" width="701" height="851" loading="lazy">
+	</figure>
+	<p>良かった！プライベートアプリケーションの保護の問題をGatewayで解決できたようです。と思いたいところですが、残念ながらそうとは言い切れません。実はGatewayには、アプリケーションに焦点を当てたセキュリティモデルとして理想的とはいえないコンポーネントがいくつかあるのです。上では触れませんでしたが、アプリケーションのアクセス制御にGatewayを使用した際、次のような課題が浮かび上がりました：</p>
+	<ul>
+		<li>
+			<p>プライベートアプリケーションが一般的なGatewayネットワークファイアウォールルールと混在しており、設定と保守が複雑になっていました</p>
+		</li>
+		<li>
+			<p>Terraformでは、プライベートアプリケーションの定義と管理ができませんでした</p>
+		</li>
+		<li>
+			<p>アプリケーションアクセスログは、ネットワークファイアウォールの一般ログ（全社の全インターネットトラフィックが含まれる場合もあります！）に埋もれていました</p>
+		</li>
+		<li>
+			<p>Gateway内の適用は特定のWARPクライアントセッションに依存しており、詳細なID情報が欠けていました</p>
+		</li>
+		<li>
+			<p>管理者は、Accessルールグループなど、アプリケーションのアクセス制御管理用に特別に構築されたAccess機能を使えませんでした</p>
+		</li>
+	</ul>
+	<p>もっとうまいやり方があるはずだと思いました。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-unified-approach-to-application-access">アプリケーションアクセスへの統合的アプローチ</h3>
+		<a href="https://blog.cloudflare.com/#a-unified-approach-to-application-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>当社はこうした限界があることを認識した上で、あらゆるアプリケーションをサポートすべくAccessの拡張を始めました。パブリックかプライベートかは関係ありません。これを指針として、Cloudflare Accessで統一されたアプリケーション定義の作成に取り組みました。セルフホスト型アプリケーションは、パブリックにルーティング可能かプライベートにルーティング可能かにかかわらず、単一のアプリケーションタイプで定義する必要があります。結果は単純明快です：<b>Accessアプリケーションは、</b><a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/self-hosted-private-app" target="_blank" rel="noopener noreferrer"><u><b>プライベートIPアドレスとプライベートホスト名</b></u></a>をサポートするようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H0E6kyDN9Cm1f5R7OAPBm/c9630a990c52ab553c062deb14c6bd48/11.png" alt="" class="kg-image" width="1266" height="498" loading="lazy">
+	</figure>
+	<p>しかし、エンジニアの作業は、Cloudflare AccessにプライベートIPアドレスとプライベートホスト名のオプションを追加するだけといった単純なものではありませんでした。当社プラットフォームのアーキテクチャでは、Accessはプライベートリクエストを単独でルーティングする手段を持ちません。そのコンポーネントに関しては、やはりGatewayとWARPクライアントに依存せざるを得ません。</p>
+	<div class="flex anchor relative">
+		<h4 id="an-application-aware-firewall">アプリケーション認識型ファイアウォール</h4>
+		<a href="https://blog.cloudflare.com/#an-application-aware-firewall" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>つまり、Gatewayのファイアウォールにアプリケーションに特化したフェーズを追加する必要があったのです。この新しいフェーズでは、ユーザーのトラフィックが定義されたアプリケーションと一致するかどうかを検出して、一致する場合はトラフィックをAccessに送り、ユーザーとそのセッションの認証と承認を行います。そのためには、Gatewayのネットワークファイアウォールを拡張して、どのプライベートIPアドレスとプライベートホスト名がアプリケーションとして定義されているかを知る必要がありました。</p>
+	<p>この新たなファイアウォールフェーズのおかげで、管理者は現在、ネットワークファイアウォール全体のどこでプライベートアプリケーションを評価するかを厳密に設定できるようになっています。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ruRjFqas4YtimtubJ2JH7/14f3a539536ffda5e7054e7bbff8638c/12.png" alt="" class="kg-image" width="592" height="555" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="private-application-sessions">プライベートアプリケーションのセッション</h4>
+		<a href="https://blog.cloudflare.com/#private-application-sessions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>もう1つ解決しなければならないコンポーネントは、アプリケーションごとのセッション管理でした。Accessのパブリックアプリケーションでは、JSON Webトークン（JWT）をCookieとして発行しますが、都合のいいことにCookieには有効期限が設定されています。これがセッションの有効期限として機能します。プライベートアプリケーションの場合、当社が必ずCookieを保存できるとは限りません。リクエストがブラウザを経由しなければ、Cookieを置いておく場所がありません。</p>
+	<p>ブラウザベースのプライベートアプリケーションの場合は、パブリックアプリケーションとまったく同じパターンに従い、セッションを追跡する手段としてJWTを発行します。アプリ管理者には、これらのアプリについて<a href="https://www.bing.com/ck/a?%21=&amp;p=034518a2a9cf39217e3915ed984384030a9abdb4123d9e9e96cf917622fcd122JmltdHM9MTc0MDcwMDgwMA&amp;ptn=3&amp;ver=2&amp;hsh=4&amp;fclid=25d5373c-34a7-676d-2f67-229d35ee66b4&amp;psq=cloudflare+access+jwt+validation&amp;u=a1aHR0cHM6Ly9kZXZlbG9wZXJzLmNsb3VkZmxhcmUuY29tL2Nsb3VkZmxhcmUtb25lL2lkZW50aXR5L2F1dGhvcml6YXRpb24tY29va2llL3ZhbGlkYXRpbmctanNvbi8&amp;ntb=1" target="_blank" rel="noopener noreferrer"><u>JWT検証</u></a>を行えるという追加メリットもあります。ブラウザベースでないアプリケーションの場合は、Gatewayのファイアウォールにアプリケーションごとのセッションを新たに追加する必要がありました。これらのアプリケーションセッションは特定のデバイスにバインドされており、ユーザーがアプリケーションにアクセスする前に認証を行わなければならない次回のタイミングを追跡します。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20A2Xu4A9i66sKBB5JMFcy/c856a90127a540608d92a9d139b67515/13.png" alt="" class="kg-image" width="1999" height="772" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="access-private-applications">プライベートアプリケーションへのアクセス</h4>
+		<a href="https://blog.cloudflare.com/#access-private-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Gatewayのファイアウォールでアプリケーションの認識とセッション管理の問題を解決したら、Accessを拡張して、プライベートIPアドレスとプライベートホスト名で定義されたアプリケーションをサポートすることができました。管理者は、プライベートIPアドレスとプライベートホスト名を使ってAccessアプリケーションを直接定義できるようになりました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lbk2iY0Nxp83UYPKjqT9r/6a473d16691d49e9fa6c24b7483c9f29/14.png" alt="" class="kg-image" width="1273" height="549" loading="lazy">
+	</figure>
+	<p>プライベートホスト名とプライベートIPアドレスがAccessアプリケーションを定義する際の設定オプションとなっていることがわかります。</p>
+	<p>非HTTPSアプリケーション（HTTPでも非ブラウザでも）の場合は、再認証を促すクライアントポップアップが表示されます：</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MODs8OeSp1zarNyfSybRs/c0625e682c94be2076769bf45516f443/15.png" alt="" class="kg-image" width="1471" height="748" loading="lazy">
+	</figure>
+	<p>HTTPSアプリケーションの動作は、パブリックホスト名を持つAccessアプリケーションとまったく同じです。ユーザーはシングルサインオンでログインするよう促され、次に、その特定のドメインにJWTが発行されます。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2JKV68fl0w38N7G3CbIx3S/12c2fb6911938fae28e8dee8cf3518b5/16.png" alt="" class="kg-image" width="571" height="466" loading="lazy">
+	</figure>
+	<p>そして、アプリケーション自体にJWTが発行されたことがわかります。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pjbbZZatyS5vTg9LBxwyA/8ae31cbbff12494508c686fbd2a60f99/17.png" alt="" class="kg-image" width="1819" height="590" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="introducing-reusable-policies">Reusable Policiesの導入</h3>
+		<a href="https://blog.cloudflare.com/#introducing-reusable-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>この作業の一環で、Accessの長年の問題に対処することができました。複数のアプリケーションにわたるポリシーの管理は、時間がかかり、エラーが発生しやすいプロセスでした。ポリシーは個々のアプリケーションにネストされたオブジェクトであり、管理者はAccessグループに大きく依存するか、アプリケーションごとに同じ設定を繰り返す必要がありました。</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VXOFmgC6ckvmnIaGY8kLL/50ce63a57b6f59625f8a0277f59a3153/18.png" alt="" class="kg-image" width="1175" height="473" loading="lazy">
+	</figure>
+	<p>管理者は、<b>Reusable Policies</b>（再利用可能なポリシー）を使って高リスク、中リスク、低リスクなどの標準化されたポリシーを作成し、複数のアプリケーションに割り当てることができるようになりました。再利用可能なポリシーは、1つ変更を加れば関連するすべてのアプリケーションに伝播するため、管理が大幅に簡素化されます。この新機能によって、お客様の多くは管理するアクセスポリシーを数百から一握りに減らすことができるでしょう。また、実際の関数に合わせ、IDプロバイダー（IdP）グループとの混同を防ぐために、名前を「Accessグループ」から「ルールグループ」へ変更しました。</p>
+	<div class="flex anchor relative">
+		<h3 id="a-redesigned-user-interface">再設計されたユーザーインターフェース</h3>
+		<a href="https://blog.cloudflare.com/#a-redesigned-user-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>これらの機能アップデートに加え、長年のユーザーフィードバックに基づいてUIの大幅な刷新を行いました。新しいインターフェースでは、より多くの情報が一目でわかり、アプリケーションの定義と管理のワークフローが一貫性のある直感的なものになっています。</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-ahead">将来を見据える</h3>
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>本日のリリースは大きな前進ですが、今後もさらなる改善を予定しています。現在、プライベートホスト名のサポートは、TLS検査が有効になっているポート443に限定されています。2025年後半には、あらゆるポートとプロトコルの任意のプライベートホスト名にサポートを拡張し、Accessの機能をさらに広げる予定です。</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started-today">今すぐ始めましょう</h3>
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Accessのこれらの新機能は既に稼働しており、すぐにご利用いただけます。リモートアクセスの最新化をまだ開始されていないなら、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer"><u>無料アカウントを作成</u></a>してお試しください。<a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/self-hosted-private-app" target="_blank" rel="noopener noreferrer"><u>プライベートリソースの保護</u></a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management" target="_blank" rel="noopener noreferrer"><u>ポリシー管理の簡素化</u></a>のいずれの目的でも、これらのアップデートがお客様のゼロトラスト推進につながることを楽しみにしています。これまでと同様にお手伝いしますので、質問やフィードバックがございましたら、担当アカウントチームまでお気軽にお問い合わせください。</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a3b1a8432b2c9b4e67f23f8c0f591dc4/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa3b1a8432b2c9b4e67f23f8c0f591dc4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+</div>
